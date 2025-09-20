@@ -34,6 +34,7 @@ export default function HvacSizingCalculator() {
     defaultValues: {
       unit: 'feet',
       climate: climates.moderate,
+      area: undefined,
     },
   });
 

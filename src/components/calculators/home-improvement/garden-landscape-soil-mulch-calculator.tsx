@@ -28,6 +28,9 @@ export default function GardenLandscapeSoilMulchCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       unit: 'feet',
+      length: undefined,
+      width: undefined,
+      depth: undefined,
     },
   });
 

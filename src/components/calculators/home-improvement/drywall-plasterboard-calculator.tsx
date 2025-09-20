@@ -32,6 +32,9 @@ export default function DrywallPlasterboardCalculator() {
       unit: 'feet',
       sheetSize: '4x8',
       includeCeiling: true,
+      roomLength: undefined,
+      roomWidth: undefined,
+      roomHeight: undefined,
     },
   });
 

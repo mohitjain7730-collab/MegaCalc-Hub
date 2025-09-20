@@ -38,6 +38,7 @@ export default function CostEstimatorRenovationCalculator() {
     defaultValues: {
       unit: 'feet',
       renovationType: renovationCosts.basicKitchen,
+      area: undefined,
     },
   });
 

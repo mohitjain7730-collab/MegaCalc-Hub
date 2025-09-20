@@ -31,6 +31,10 @@ export default function TileFlooringCalculator() {
     defaultValues: {
       unit: 'feet',
       wastage: 10,
+      areaLength: undefined,
+      areaWidth: undefined,
+      tileLength: undefined,
+      tileWidth: undefined,
     },
   });
 

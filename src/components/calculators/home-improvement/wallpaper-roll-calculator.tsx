@@ -31,6 +31,10 @@ export default function WallpaperRollCalculator() {
     defaultValues: {
         unit: 'feet',
         patternRepeat: 0,
+        wallHeight: undefined,
+        wallWidth: undefined,
+        rollLength: undefined,
+        rollWidth: undefined,
     },
   });
 

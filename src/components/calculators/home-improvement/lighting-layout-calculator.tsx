@@ -39,6 +39,8 @@ export default function LightingLayoutCalculator() {
       unit: 'feet',
       lumensPerFixture: 800,
       roomType: roomTypes.livingRoom,
+      roomLength: undefined,
+      roomWidth: undefined,
     },
   });
 

@@ -28,6 +28,7 @@ export default function LumberFramingCalculator() {
     defaultValues: {
       unit: 'feet',
       studSpacing: 16,
+      wallLength: undefined,
     },
   });
 

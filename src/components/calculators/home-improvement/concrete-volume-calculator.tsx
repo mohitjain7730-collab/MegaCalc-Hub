@@ -28,6 +28,9 @@ export default function ConcreteVolumeCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       unit: 'feet',
+      length: undefined,
+      width: undefined,
+      thickness: undefined,
     },
   });
 

@@ -28,6 +28,7 @@ export default function RoofingShingleCalculator() {
     defaultValues: {
       unit: 'feet',
       pitch: 4,
+      area: undefined,
     },
   });
 

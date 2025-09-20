@@ -31,6 +31,8 @@ export default function DeckingMaterialsCalculator() {
       unit: 'feet',
       boardWidth: 5.5,
       joistSpacing: 16,
+      deckLength: undefined,
+      deckWidth: undefined,
     },
   });
 

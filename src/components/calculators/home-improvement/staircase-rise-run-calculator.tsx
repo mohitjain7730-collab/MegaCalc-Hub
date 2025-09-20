@@ -26,6 +26,7 @@ export default function StaircaseRiseRunCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       unit: 'inches',
+      totalRise: undefined,
     },
   });
 
