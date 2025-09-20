@@ -59,7 +59,7 @@ export default function HydraulicHeadLossCalculator() {
                 <FormItem><FormLabel>Pipe Diameter (D)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="fluidVelocity" render={({ field }) => (
-                <FormItem><FormLabel>Fluid Velocity (v)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormMessage /></FormItem>
+                <FormItem><FormLabel>Fluid Velocity (v)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>
