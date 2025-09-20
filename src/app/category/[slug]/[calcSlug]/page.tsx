@@ -25,6 +25,21 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'cost-estimator-renovation': dynamic(() => import('@/components/calculators/home-improvement/cost-estimator-renovation-calculator')),
     'water-usage-plumbing-flow': dynamic(() => import('@/components/calculators/home-improvement/water-usage-plumbing-flow-calculator')),
     'garden-landscape-soil-mulch': dynamic(() => import('@/components/calculators/home-improvement/garden-landscape-soil-mulch-calculator')),
+    'beam-bending': dynamic(() => import('@/components/calculators/engineering/beam-bending-calculator')),
+    'truss-analysis': dynamic(() => import('@/components/calculators/engineering/truss-analysis-calculator')),
+    'pipe-flow': dynamic(() => import('@/components/calculators/engineering/pipe-flow-calculator')),
+    'hydraulic-head-loss': dynamic(() => import('@/components/calculators/engineering/hydraulic-head-loss-calculator')),
+    'concrete-mix': dynamic(() => import('@/components/calculators/engineering/concrete-mix-calculator')),
+    'steel-weight': dynamic(() => import('@/components/calculators/engineering/steel-weight-calculator')),
+    'column-buckling': dynamic(() => import('@/components/calculators/engineering/column-buckling-calculator')),
+    'pump-power': dynamic(() => import('@/components/calculators/engineering/pump-power-calculator')),
+    'hydraulic-cylinder-force': dynamic(() => import('@/components/calculators/engineering/hydraulic-cylinder-force-calculator')),
+    'pressure-vessel-thickness': dynamic(() => import('@/components/calculators/engineering/pressure-vessel-thickness-calculator')),
+    'slope-stability': dynamic(() => import('@/components/calculators/engineering/slope-stability-calculator')),
+    'moment-of-inertia': dynamic(() => import('@/components/calculators/engineering/moment-of-inertia-calculator')),
+    'electrical-circuit': dynamic(() => import('@/components/calculators/engineering/electrical-circuit-calculator')),
+    'thermal-expansion': dynamic(() => import('@/components/calculators/engineering/thermal-expansion-calculator')),
+    'gear-ratio-torque': dynamic(() => import('@/components/calculators/engineering/gear-ratio-torque-calculator')),
   };
 
 export async function generateStaticParams() {
