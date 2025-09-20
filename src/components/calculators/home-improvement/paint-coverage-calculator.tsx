@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { PaintBucket } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
   length: z.number().positive('Must be positive'),
@@ -54,6 +55,7 @@ export default function PaintCoverageCalculator() {
   const onSubmit = (values: FormValues) => {
     const { length, width, height, coats, unit, coveragePerUnit } = values;
 
+    // We're assuming a rectangular room and including the ceiling.
     const wallArea1 = length * height;
     const wallArea2 = width * height;
     const totalWallArea = (wallArea1 + wallArea2) * 2;
@@ -69,14 +71,14 @@ export default function PaintCoverageCalculator() {
   const handleUnitChange = (unit: 'meters' | 'feet') => {
     form.setValue('unit', unit);
     if (unit === 'meters') {
-        form.setValue('coveragePerUnit', 10); // 10 sq meters per liter
+        form.setValue('coveragePerUnit', 10); // Approx. 10 sq meters per liter
     } else {
-        form.setValue('coveragePerUnit', 350); // 350 sq ft per gallon
+        form.setValue('coveragePerUnit', 350); // Approx. 350 sq ft per gallon
     }
   }
 
   return (
-    <div>
+    <div className="space-y-8">
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -93,8 +95,8 @@ export default function PaintCoverageCalculator() {
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        <SelectItem value="feet">Feet</SelectItem>
-                                        <SelectItem value="meters">Meters</SelectItem>
+                                        <SelectItem value="feet">Feet (ft)</SelectItem>
+                                        <SelectItem value="meters">Meters (m)</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </FormItem>
@@ -146,7 +148,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Number of Coats</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))}/>
+                                    <Input type="number" step="1" {...field} onChange={e => field.onChange(parseInt(e.target.value))}/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -187,6 +189,42 @@ export default function PaintCoverageCalculator() {
                 </CardContent>
             </Card>
         )}
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="how-it-works">
+            <AccordionTrigger>How This Calculator Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+              <p>The calculator determines the total paintable area and divides it by the paint's coverage rate.</p>
+              <ol className="list-decimal list-inside space-y-1">
+                  <li><strong>Calculates Wall Area:</strong> It finds the area of all four walls using the formula: `(2 * Length * Height) + (2 * Width * Height)`.</li>
+                  <li><strong>Calculates Ceiling Area:</strong> It finds the area of the ceiling: `Length * Width`. This is included by default.</li>
+                  <li><strong>Total Area:</strong> It sums the wall and ceiling areas. The calculation does not subtract for windows or doors, as this extra amount is a good buffer.</li>
+                  <li><strong>Coats:</strong> The total area is multiplied by the number of coats you plan to apply.</li>
+                  <li><strong>Paint Needed:</strong> Finally, it divides the total area to be painted by the coverage per gallon/liter specified on your paint can.</li>
+              </ol>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="pro-tips">
+            <AccordionTrigger>Pro Tips for Your Painting Project</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Check Your Paint Can</h4>
+                  <p>The `Paint Coverage` value is the most important factor for accuracy. You can almost always find this on the paint can label, listed as sq ft per gallon or sq m per liter.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Surface Texture Matters</h4>
+                  <p>Porous, unprimed, or heavily textured surfaces (like popcorn ceilings or rough plaster) will absorb more paint, reducing the actual coverage. You may need up to 25% more paint for these surfaces.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Primer is Your Friend</h4>
+                  <p>Using a primer, especially when painting over a dark color with a lighter one, can save you from needing extra coats of your more expensive top-coat paint.</p>
+              </div>
+               <div>
+                  <h4 className="font-semibold text-foreground mb-1">Buy a Little Extra</h4>
+                  <p>It's always a good rule of thumb to buy about 10-15% more paint than you estimate. This ensures you have enough for touch-ups and won't have to make a frantic trip back to the store for a slightly different color batch.</p>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
     </div>
   );
 }
