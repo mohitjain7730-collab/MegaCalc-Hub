@@ -69,13 +69,13 @@ export default function SlopeStabilityCalculator() {
                         <FormItem><FormLabel>Friction Angle (φ) in degrees</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="slopeAngle" render={({ field }) => (
-                        <FormItem><FormLabel>Slope Angle (β) in degrees</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormMessage /></FormItem>
+                        <FormItem><FormLabel>Slope Angle (β) in degrees</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="unitWeight" render={({ field }) => (
-                        <FormItem><FormLabel>Soil Unit Weight (γ)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormMessage /></FormItem>
+                        <FormItem><FormLabel>Soil Unit Weight (γ)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
                     )} />
                      <FormField control={form.control} name="height" render={({ field }) => (
-                        <FormItem className="md:col-span-2"><FormLabel>Slope Height (H)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormMessage /></FormItem>
+                        <FormItem className="md:col-span-2"><FormLabel>Slope Height (H)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
                     )} />
                 </div>
                 <Button type="submit">Calculate</Button>
