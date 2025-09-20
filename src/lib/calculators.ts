@@ -216,7 +216,7 @@ export const calculators: Calculator[] = [
     id: 30,
     name: 'Gear Ratio & Torque Calculator',
     description: 'Compute gear ratios, output speed, and torque in mechanical systems.',
-slug: 'gear-ratio-torque',
+    slug: 'gear-ratio-torque',
     category: 'engineering',
   },
   // Cognitive & Psychology
@@ -307,13 +307,6 @@ slug: 'gear-ratio-torque',
     category: 'environment',
   },
   // DIY & Crafts
-  {
-    id: 43,
-    name: 'Paint Coverage Estimator',
-    description: 'Calculates amount of paint needed for a project.',
-    slug: 'paint-coverage-estimator',
-    category: 'diy-crafts',
-  },
   {
     id: 44,
     name: 'Knitting Pattern Calculator',
