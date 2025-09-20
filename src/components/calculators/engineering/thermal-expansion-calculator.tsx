@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Thermometer } from 'lucide-react';
 
@@ -52,11 +53,16 @@ export default function ThermalExpansionCalculator() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="material" render={({ field }) => (
-                <FormItem><FormLabel>Material</FormLabel><Form, FormControl, FormField, FormItem, FormLabel, FormMessage onValueChange={(v) => field.onChange(parseFloat(v))} defaultValue={String(field.value)}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent>
-                    {Object.entries(expansionCoefficients).map(([key, value]) => (
-                        <SelectItem key={key} value={String(value)}>{key.charAt(0).toUpperCase() + key.slice(1)}</SelectItem>
-                    ))}
-                </SelectContent></Select></FormItem>
+                <FormItem><FormLabel>Material</FormLabel>
+                <Select onValueChange={(v) => field.onChange(parseFloat(v))} defaultValue={String(field.value)}>
+                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+                    <SelectContent>
+                        {Object.entries(expansionCoefficients).map(([key, value]) => (
+                            <SelectItem key={key} value={String(value)}>{key.charAt(0).toUpperCase() + key.slice(1)}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+                </FormItem>
             )} />
             <FormField control={form.control} name="initialLength" render={({ field }) => (
                 <FormItem><FormLabel>Initial Length</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
