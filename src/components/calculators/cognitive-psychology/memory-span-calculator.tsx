@@ -35,7 +35,7 @@ export default function MemorySpanCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const totalDigits = values.trials.reduce((sum, trial) => sum + trial.digits, 0);
+    const totalDigits = values.trials.reduce((sum, trial) => sum + (trial.digits || 0), 0);
     const memorySpan = totalDigits / values.trials.length;
     setResult(memorySpan);
   };
@@ -56,7 +56,7 @@ export default function MemorySpanCalculator() {
                             render={({ field }) => (
                                 <FormItem className='flex-grow'>
                                     <FormControl>
-                                        <Input type="number" placeholder={`Trial ${index + 1} score`} {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value))}/>
+                                        <Input type="number" placeholder={`Trial ${index + 1} score`} {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)}/>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

@@ -61,7 +61,7 @@ export default function CognitiveLoadCalculator() {
                 </FormItem>
             )} />
             <FormField control={form.control} name="timeMinutes" render={({ field }) => (
-                <FormItem><FormLabel>Time to Complete (minutes)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl></FormItem>
+                <FormItem><FormLabel>Time to Complete (minutes)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Cognitive Load</Button>
