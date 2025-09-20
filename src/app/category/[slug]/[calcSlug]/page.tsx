@@ -56,6 +56,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'knitting-pattern-calculator': dynamic(() => import('@/components/calculators/diy-crafts/knitting-pattern-calculator')),
     'sewing-fabric-yardage-calculator': dynamic(() => import('@/components/calculators/diy-crafts/sewing-fabric-yardage-calculator')),
     'woodworking-material-calculator': dynamic(() => import('@/components/calculators/diy-crafts/woodworking-material-calculator')),
+    'artifact-dating-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/artifact-dating-calculator')),
+    'historical-population-density-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/historical-population-density-calculator')),
+    'archaeological-site-excavation-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/archaeological-site-excavation-calculator')),
+    'ancient-civilization-timeline-generator': dynamic(() => import('@/components/calculators/historical-archaeological/ancient-civilization-timeline-generator')),
   };
 
 export async function generateStaticParams() {
@@ -67,7 +71,7 @@ export async function generateStaticParams() {
 
 export default function CalculatorPage({ params }: { params: { slug: string, calcSlug: string } }) {
   const category = categories.find((c) => c.slug === params.slug);
-  const calculator = calculators.find((c) => c.slug === params.calcSlug &amp;&amp; c.category === params.slug);
+  const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
 
   if (!category || !calculator) {
     notFound();

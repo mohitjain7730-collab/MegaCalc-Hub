@@ -172,6 +172,12 @@ export const categories: Category[] = [
     Icon: 'Sprout',
   },
   {
+    name: 'Historical & Archaeological',
+    slug: 'historical-archaeological',
+    description: 'Tools for dating artifacts and analyzing historical data.',
+    Icon: 'Trowel',
+  },
+  {
     name: 'Fun & Games',
     slug: 'fun-games',
     description: 'Calculators for gaming, hobbies, and entertainment.',
