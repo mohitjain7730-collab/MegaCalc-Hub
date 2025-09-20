@@ -65,19 +65,19 @@ export default function BeamBendingCalculator() {
                 <FormItem className="md:col-span-2"><FormLabel>Beam Type & Load</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="simply-supported-center">Simply Supported (Load at Center)</SelectItem><SelectItem value="cantilever-end">Cantilever (Load at End)</SelectItem></SelectContent></Select></FormItem>
             )} />
             <FormField control={form.control} name="load" render={({ field }) => (
-                <FormItem><FormLabel>Load (P)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Load (P)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="length" render={({ field }) => (
-                <FormItem><FormLabel>Beam Length (L)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Beam Length (L)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="momentOfInertia" render={({ field }) => (
-                <FormItem><FormLabel>Moment of Inertia (I)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Moment of Inertia (I)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="modulusOfElasticity" render={({ field }) => (
-                <FormItem><FormLabel>Modulus of Elasticity (E)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Modulus of Elasticity (E)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="distanceFromSupport" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Distance from neutral axis to outer fiber (c)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2"><FormLabel>Distance from neutral axis to outer fiber (c)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>
