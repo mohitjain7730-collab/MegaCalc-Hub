@@ -13,7 +13,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'paint-coverage': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
     'tile-flooring': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
     'wallpaper-roll': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),
-    'drywall-plasterboard': dynamic(() => import('@/components/calculators/home-improvement/drywall-plasterboard-calculator')),
+    'drywall-plasterboard': dynamic(() => import('@/components/calculators/home-improvement/drywall_plasterboard-calculator')),
     'insulation-r-value': dynamic(() => import('@/components/calculators/home-improvement/insulation-r-value-calculator')),
     'decking-materials': dynamic(() => import('@/components/calculators/home-improvement/decking-materials-calculator')),
     'roofing-shingle': dynamic(() => import('@/components/calculators/home-improvement/roofing-shingle-calculator')),
@@ -52,6 +52,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'water-usage-efficiency': dynamic(() => import('@/components/calculators/environment/water-usage-efficiency-calculator')),
     'recycling-impact': dynamic(() => import('@/components/calculators/environment/recycling-impact-calculator')),
     'sustainable-diet-impact': dynamic(() => import('@/components/calculators/environment/sustainable-diet-impact-calculator')),
+    'paint-coverage-estimator': dynamic(() => import('@/components/calculators/diy-crafts/paint-coverage-estimator')),
+    'knitting-pattern-calculator': dynamic(() => import('@/components/calculators/diy-crafts/knitting-pattern-calculator')),
+    'sewing-fabric-yardage-calculator': dynamic(() => import('@/components/calculators/diy-crafts/sewing-fabric-yardage-calculator')),
+    'woodworking-material-calculator': dynamic(() => import('@/components/calculators/diy-crafts/woodworking-material-calculator')),
   };
 
 export async function generateStaticParams() {
@@ -63,7 +67,7 @@ export async function generateStaticParams() {
 
 export default function CalculatorPage({ params }: { params: { slug: string, calcSlug: string } }) {
   const category = categories.find((c) => c.slug === params.slug);
-  const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
+  const calculator = calculators.find((c) => c.slug === params.calcSlug &amp;&amp; c.category === params.slug);
 
   if (!category || !calculator) {
     notFound();

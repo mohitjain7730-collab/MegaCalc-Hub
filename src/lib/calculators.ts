@@ -306,4 +306,33 @@ export const calculators: Calculator[] = [
     slug: 'sustainable-diet-impact',
     category: 'environment',
   },
+  // DIY & Crafts
+  {
+    id: 43,
+    name: 'Paint Coverage Estimator',
+    description: 'Calculates amount of paint needed for a project.',
+    slug: 'paint-coverage-estimator',
+    category: 'diy-crafts',
+  },
+  {
+    id: 44,
+    name: 'Knitting Pattern Calculator',
+    description: 'Determines yarn requirements for custom patterns.',
+    slug: 'knitting-pattern-calculator',
+    category: 'diy-crafts',
+  },
+  {
+    id: 45,
+    name: 'Sewing Fabric Yardage Calculator',
+    description: 'Estimates fabric needed based on garment size and style.',
+    slug: 'sewing-fabric-yardage-calculator',
+    category: 'diy-crafts',
+  },
+  {
+    id: 46,
+    name: 'Woodworking Material Calculator',
+    description: 'Assesses wood requirements for furniture projects.',
+    slug: 'woodworking-material-calculator',
+    category: 'diy-crafts',
+  },
 ];
