@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { AlertCircle, Bot } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
@@ -20,7 +21,7 @@ function SubmitButton() {
 
 export function AIFinder() {
   const initialState: State = { message: null };
-  const [state, dispatch] = useFormState(findCategory, initialState);
+  const [state, dispatch] = useActionState(findCategory, initialState);
 
   return (
     <Card className="w-full max-w-3xl mx-auto my-8 border-primary/20 shadow-lg">
