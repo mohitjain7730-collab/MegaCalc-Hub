@@ -34,7 +34,7 @@ const prompt = ai.definePrompt({
   prompt: `You are an AI assistant helping users find the right calculator category on MegaCalc Hub.
 
   Given the user's query, suggest the most relevant calculator category from the following list:
-  Finance, Health & Fitness, Home Improvement, Engineering, Cognitive & Psychology, Education, Technology, Travel & Distance, Cooking & Food, Environment, Personal Budgeting, Business & Startup, Crypto & Web3, Parenting, Sports & Training, DIY & Crafts, Time & Date, Gardening, Fun & Games, Data & Statistics, Miscellaneous.
+  Finance, Health & Fitness, Home Improvement, Engineering, Cognitive & Psychology, Education, Technology, Travel & Adventure, Cooking & Food, Environment, Personal Budgeting, Business & Startup, Crypto & Web3, Parenting, Sports & Training, DIY & Crafts, Time & Date, Gardening, Fun & Games, Data & Statistics, Miscellaneous, Genetic & Ancestry, Historical & Archaeological.
 
   Query: {{{query}}}
 
