@@ -44,6 +44,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'memory-span-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/memory-span-calculator')),
     'cognitive-load-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/cognitive-load-calculator')),
     'personality-trait-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/personality-trait-calculator')),
+    'ancestry-composition-estimator': dynamic(() => import('@/components/calculators/genetic-ancestry/ancestry-composition-estimator')),
+    'genetic-trait-probability-calculator': dynamic(() => import('@/components/calculators/genetic-ancestry/genetic-trait-probability-calculator')),
+    'pedigree-analysis-calculator': dynamic(() => import('@/components/calculators/genetic-ancestry/pedigree-analysis-calculator')),
+    'genealogy-timeline-generator': dynamic(() => import('@/components/calculators/genetic-ancestry/genealogy-timeline-generator')),
   };
 
 export async function generateStaticParams() {

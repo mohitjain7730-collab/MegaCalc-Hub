@@ -21,6 +21,7 @@ import {
   BarChart,
   Shapes,
   BrainCircuit,
+  GitBranch,
 } from 'lucide-react';
 
 export interface Category {
@@ -52,6 +53,7 @@ export const icons: {[key: string]: LucideIcon} = {
   BarChart,
   Shapes,
   BrainCircuit,
+  GitBranch,
 };
 
 export const categories: Category[] = [
@@ -84,6 +86,12 @@ export const categories: Category[] = [
     slug: 'cognitive-psychology',
     description: 'Explore aspects of cognition and personality.',
     Icon: 'BrainCircuit',
+  },
+  {
+    name: 'Genetic & Ancestry',
+    slug: 'genetic-ancestry',
+    description: 'Explore your heritage and genetic traits with these tools.',
+    Icon: 'GitBranch',
   },
   {
     name: 'Education',

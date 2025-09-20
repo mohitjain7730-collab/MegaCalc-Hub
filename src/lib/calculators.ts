@@ -248,4 +248,33 @@ export const calculators: Calculator[] = [
     slug: 'personality-trait-calculator',
     category: 'cognitive-psychology',
   },
+  // Genetic & Ancestry
+  {
+    id: 35,
+    name: 'Ancestry Composition Estimator',
+    description: 'A simplified tool to estimate ethnic background percentages for entertainment.',
+    slug: 'ancestry-composition-estimator',
+    category: 'genetic-ancestry',
+  },
+  {
+    id: 36,
+    name: 'Genetic Trait Probability Calculator',
+    description: 'Predict likelihood of inheriting specific traits using Punnett squares.',
+    slug: 'genetic-trait-probability-calculator',
+    category: 'genetic-ancestry',
+  },
+  {
+    id: 37,
+    name: 'Pedigree Analysis Calculator',
+    description: 'Assess simple genetic relationships and inheritance patterns within family trees.',
+    slug: 'pedigree-analysis-calculator',
+    category: 'genetic-ancestry',
+  },
+  {
+    id: 38,
+    name: 'Genealogy Timeline Generator',
+    description: 'Visualize an estimated ancestral lineage and key dates over time.',
+    slug: 'genealogy-timeline-generator',
+    category: 'genetic-ancestry',
+  },
 ];
