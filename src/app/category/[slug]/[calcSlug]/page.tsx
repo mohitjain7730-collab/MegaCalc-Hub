@@ -48,6 +48,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'genetic-trait-probability-calculator': dynamic(() => import('@/components/calculators/genetic-ancestry/genetic-trait-probability-calculator')),
     'pedigree-analysis-calculator': dynamic(() => import('@/components/calculators/genetic-ancestry/pedigree-analysis-calculator')),
     'genealogy-timeline-generator': dynamic(() => import('@/components/calculators/genetic-ancestry/genealogy-timeline-generator')),
+    'carbon-footprint-reduction': dynamic(() => import('@/components/calculators/environment/carbon-footprint-reduction-calculator')),
+    'water-usage-efficiency': dynamic(() => import('@/components/calculators/environment/water-usage-efficiency-calculator')),
+    'recycling-impact': dynamic(() => import('@/components/calculators/environment/recycling-impact-calculator')),
+    'sustainable-diet-impact': dynamic(() => import('@/components/calculators/environment/sustainable-diet-impact-calculator')),
   };
 
 export async function generateStaticParams() {

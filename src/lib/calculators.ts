@@ -277,4 +277,33 @@ export const calculators: Calculator[] = [
     slug: 'genealogy-timeline-generator',
     category: 'genetic-ancestry',
   },
+  // Environment
+  {
+    id: 39,
+    name: 'Carbon Footprint Reduction Calculator',
+    description: 'Suggests actions to reduce personal carbon emissions.',
+    slug: 'carbon-footprint-reduction',
+    category: 'environment',
+  },
+  {
+    id: 40,
+    name: 'Water Usage Efficiency Calculator',
+    description: 'Estimates water conservation potential in households.',
+    slug: 'water-usage-efficiency',
+    category: 'environment',
+  },
+  {
+    id: 41,
+    name: 'Recycling Impact Calculator',
+    description: 'Quantifies environmental benefits of recycling efforts.',
+    slug: 'recycling-impact',
+    category: 'environment',
+  },
+  {
+    id: 42,
+    name: 'Sustainable Diet Impact Calculator',
+    description: 'Analyzes environmental impact of dietary choices.',
+    slug: 'sustainable-diet-impact',
+    category: 'environment',
+  },
 ];
