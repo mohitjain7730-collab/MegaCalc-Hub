@@ -11,7 +11,20 @@ import { CategoryIcon } from '@/components/category-icon';
 
 const calculatorComponents: { [key: string]: React.ComponentType } = {
     'paint-coverage': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
-    // Add other calculators here as they are created
+    'tile-flooring': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
+    'wallpaper-roll': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),
+    'drywall-plasterboard': dynamic(() => import('@/components/calculators/home-improvement/drywall-plasterboard-calculator')),
+    'insulation-r-value': dynamic(() => import('@/components/calculators/home-improvement/insulation-r-value-calculator')),
+    'decking-materials': dynamic(() => import('@/components/calculators/home-improvement/decking-materials-calculator')),
+    'roofing-shingle': dynamic(() => import('@/components/calculators/home-improvement/roofing-shingle-calculator')),
+    'concrete-volume': dynamic(() => import('@/components/calculators/home-improvement/concrete-volume-calculator')),
+    'lumber-framing': dynamic(() => import('@/components/calculators/home-improvement/lumber-framing-calculator')),
+    'lighting-layout': dynamic(() => import('@/components/calculators/home-improvement/lighting-layout-calculator')),
+    'hvac-sizing': dynamic(() => import('@/components/calculators/home-improvement/hvac-sizing-calculator')),
+    'staircase-rise-run': dynamic(() => import('@/components/calculators/home-improvement/staircase-rise-run-calculator')),
+    'cost-estimator-renovation': dynamic(() => import('@/components/calculators/home-improvement/cost-estimator-renovation-calculator')),
+    'water-usage-plumbing-flow': dynamic(() => import('@/components/calculators/home-improvement/water-usage-plumbing-flow-calculator')),
+    'garden-landscape-soil-mulch': dynamic(() => import('@/components/calculators/home-improvement/garden-landscape-soil-mulch-calculator')),
   };
 
 export async function generateStaticParams() {
