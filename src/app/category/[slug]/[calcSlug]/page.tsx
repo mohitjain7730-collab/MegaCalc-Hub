@@ -40,6 +40,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'electrical-circuit': dynamic(() => import('@/components/calculators/engineering/electrical-circuit-calculator')),
     'thermal-expansion': dynamic(() => import('@/components/calculators/engineering/thermal-expansion-calculator')),
     'gear-ratio-torque': dynamic(() => import('@/components/calculators/engineering/gear-ratio-torque-calculator')),
+    'iq-score-estimator': dynamic(() => import('@/components/calculators/cognitive-psychology/iq-score-estimator')),
+    'memory-span-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/memory-span-calculator')),
+    'cognitive-load-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/cognitive-load-calculator')),
+    'personality-trait-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/personality-trait-calculator')),
   };
 
 export async function generateStaticParams() {

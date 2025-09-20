@@ -219,4 +219,33 @@ export const calculators: Calculator[] = [
     slug: 'gear-ratio-torque',
     category: 'engineering',
   },
+  // Cognitive & Psychology
+  {
+    id: 31,
+    name: 'IQ Score Estimator',
+    description: 'Estimate IQ based on standardized test scores.',
+    slug: 'iq-score-estimator',
+    category: 'cognitive-psychology',
+  },
+  {
+    id: 32,
+    name: 'Memory Span Calculator',
+    description: 'Measure short-term memory capacity.',
+    slug: 'memory-span-calculator',
+    category: 'cognitive-psychology',
+  },
+  {
+    id: 33,
+    name: 'Cognitive Load Calculator',
+    description: 'Estimate mental effort for a task.',
+    slug: 'cognitive-load-calculator',
+    category: 'cognitive-psychology',
+  },
+  {
+    id: 34,
+    name: 'Personality Trait Calculator (Big 5)',
+    description: 'Estimate 5 personality traits based on a simple self-report scale.',
+    slug: 'personality-trait-calculator',
+    category: 'cognitive-psychology',
+  },
 ];

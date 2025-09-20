@@ -20,6 +20,7 @@ import {
   Gamepad2,
   BarChart,
   Shapes,
+  BrainCircuit,
 } from 'lucide-react';
 
 export interface Category {
@@ -50,6 +51,7 @@ export const icons: {[key: string]: LucideIcon} = {
   Gamepad2,
   BarChart,
   Shapes,
+  BrainCircuit,
 };
 
 export const categories: Category[] = [
@@ -76,6 +78,12 @@ export const categories: Category[] = [
     slug: 'engineering',
     description: 'Solve complex engineering problems and conversions.',
     Icon: 'Construction',
+  },
+  {
+    name: 'Cognitive & Psychology',
+    slug: 'cognitive-psychology',
+    description: 'Explore aspects of cognition and personality.',
+    Icon: 'BrainCircuit',
   },
   {
     name: 'Education',
