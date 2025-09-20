@@ -216,7 +216,7 @@ export const calculators: Calculator[] = [
     id: 30,
     name: 'Gear Ratio & Torque Calculator',
     description: 'Compute gear ratios, output speed, and torque in mechanical systems.',
-    slug: 'gear-ratio-torque',
+slug: 'gear-ratio-torque',
     category: 'engineering',
   },
   // Cognitive & Psychology
@@ -363,5 +363,34 @@ export const calculators: Calculator[] = [
     description: 'Visualizes historical events and timelines.',
     slug: 'ancient-civilization-timeline-generator',
     category: 'historical-archaeological',
+  },
+  // Travel & Adventure
+  {
+    id: 51,
+    name: 'Backpacking Load Weight Calculator',
+    description: 'Assesses optimal backpack weight for treks.',
+    slug: 'backpacking-load-weight-calculator',
+    category: 'travel-adventure',
+  },
+  {
+    id: 52,
+    name: 'Hiking Elevation Gain Calculator',
+    description: 'Estimates elevation changes during hikes.',
+    slug: 'hiking-elevation-gain-calculator',
+    category: 'travel-adventure',
+  },
+  {
+    id: 53,
+    name: 'Travel Budget Estimator',
+    description: 'Calculates expected expenses for trips.',
+    slug: 'travel-budget-estimator',
+    category: 'travel-adventure',
+  },
+  {
+    id: 54,
+    name: 'Adventure Activity Risk Calculator',
+    description: 'Assesses risk levels of various adventure sports.',
+    slug: 'adventure-activity-risk-calculator',
+    category: 'travel-adventure',
   },
 ];

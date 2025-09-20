@@ -106,9 +106,9 @@ export const categories: Category[] = [
     Icon: 'Laptop',
   },
   {
-    name: 'Travel & Distance',
-    slug: 'travel-distance',
-    description: 'Plan your trips with fuel cost and distance calculators.',
+    name: 'Travel & Adventure',
+    slug: 'travel-adventure',
+    description: 'Plan your trips, hikes, and adventures.',
     Icon: 'Plane',
   },
   {

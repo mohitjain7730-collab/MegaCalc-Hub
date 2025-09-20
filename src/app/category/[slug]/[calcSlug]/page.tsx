@@ -60,6 +60,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'historical-population-density-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/historical-population-density-calculator')),
     'archaeological-site-excavation-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/archaeological-site-excavation-calculator')),
     'ancient-civilization-timeline-generator': dynamic(() => import('@/components/calculators/historical-archaeological/ancient-civilization-timeline-generator')),
+    'backpacking-load-weight-calculator': dynamic(() => import('@/components/calculators/travel-adventure/backpacking-load-weight-calculator')),
+    'hiking-elevation-gain-calculator': dynamic(() => import('@/components/calculators/travel-adventure/hiking-elevation-gain-calculator')),
+    'travel-budget-estimator': dynamic(() => import('@/components/calculators/travel-adventure/travel-budget-estimator')),
+    'adventure-activity-risk-calculator': dynamic(() => import('@/components/calculators/travel-adventure/adventure-activity-risk-calculator')),
   };
 
 export async function generateStaticParams() {
