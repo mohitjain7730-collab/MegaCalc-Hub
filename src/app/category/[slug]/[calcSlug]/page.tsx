@@ -24,6 +24,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'inflation-calculator': dynamic(() => import('@/components/calculators/finance/inflation-calculator')),
     'roth-ira-contribution-limit-calculator': dynamic(() => import('@/components/calculators/finance/roth-ira-contribution-limit-calculator')),
     'emergency-fund-calculator': dynamic(() => import('@/components/calculators/finance/emergency-fund-calculator')),
+    'water-footprint-of-food-calculator': dynamic(() => import('@/components/calculators/health-fitness/water-footprint-of-food-calculator')),
     'paint-coverage-calculator': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
     'tile-flooring-calculator': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
     'wallpaper-roll-calculator': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),
@@ -180,3 +181,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
+
+    

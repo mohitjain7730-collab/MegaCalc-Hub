@@ -93,6 +93,14 @@ export const calculators: Calculator[] = [
     slug: 'emergency-fund-calculator',
     category: 'finance',
   },
+  // Health & Fitness
+  {
+    id: 107,
+    name: 'Water Footprint of Food Calculator',
+    description: 'Estimate the total volume of water required to produce different food items. Understand the hidden water usage in your diet.',
+    slug: 'water-footprint-of-food-calculator',
+    category: 'health-fitness'
+  },
   // Home Improvement
   {
     id: 1,
@@ -762,3 +770,5 @@ export const calculators: Calculator[] = [
     category: 'fun-games',
   },
 ];
+
+    
