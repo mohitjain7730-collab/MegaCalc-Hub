@@ -87,10 +87,27 @@ export default function LoanEmiCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="what-is-emi">
+          <AccordionTrigger>What is an EMI?</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>An Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month. EMIs are used to pay off both interest and principal each month so that over a specified number of years, the loan is paid off in full.</p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="understanding-loan">
+          <AccordionTrigger>Understanding Your Loan</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-2">
+             <ul className="list-disc list-inside space-y-1 pl-4">
+                <li><strong>Principal (Loan Amount):</strong> The initial amount of money you borrow from the lender.</li>
+                <li><strong>Interest Rate:</strong> The percentage of the principal charged by the lender for the use of its money.</li>
+                <li><strong>Tenure:</strong> The total time period over which you will repay the loan. A longer tenure means lower EMIs but higher total interest paid, while a shorter tenure means higher EMIs but lower total interest.</li>
+            </ul>
+            <p className="mt-2 font-semibold">In the initial years of your loan, a larger portion of your EMI goes towards paying off the interest. As the loan matures, a larger portion goes towards paying off the principal.</p>
+          </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator uses the standard formula for an Equated Monthly Installment (EMI) to determine your fixed monthly payment. The formula accounts for the loan principal, the monthly interest rate, and the total number of payments.</p>
+                <p>This calculator uses the standard formula for an Equated Monthly Installment (EMI) to determine your fixed monthly payment. The formula accounts for the loan principal, the monthly interest rate (annual rate divided by 12), and the total number of payments (tenure in years multiplied by 12).</p>
             </AccordionContent>
         </AccordionItem>
       </Accordion>
