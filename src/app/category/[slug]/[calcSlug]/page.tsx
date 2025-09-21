@@ -18,6 +18,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'compound-interest-calculator': dynamic(() => import('@/components/calculators/finance/compound-interest-calculator')),
     '401k-contribution-calculator': dynamic(() => import('@/components/calculators/finance/401k-contribution-calculator')),
     'net-worth-calculator': dynamic(() => import('@/components/calculators/finance/net-worth-calculator')),
+    'credit-card-payoff-calculator': dynamic(() => import('@/components/calculators/finance/credit-card-payoff-calculator')),
     'paint-coverage-calculator': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
     'tile-flooring-calculator': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
     'wallpaper-roll-calculator': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),
@@ -174,6 +175,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
 
     

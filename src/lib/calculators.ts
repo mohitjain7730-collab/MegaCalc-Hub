@@ -18,8 +18,8 @@ export const calculators: Calculator[] = [
   },
   {
     id: 96,
-    name: 'Loan / EMI Calculator',
-    description: 'Calculate your Equated Monthly Installment (EMI) for any loan. Understand your repayment schedule with a detailed breakdown of principal and interest payments over the loan tenure.',
+    name: 'Loan & Mortgage Payment Calculator',
+    description: 'Calculate your monthly payment (EMI) for any loan, including mortgages, auto loans, or personal loans. Understand your repayment schedule with a detailed amortization graph.',
     slug: 'loan-emi-calculator',
     category: 'finance',
   },
@@ -49,6 +49,13 @@ export const calculators: Calculator[] = [
     name: 'Net Worth Calculator',
     description: 'Get a clear picture of your financial health by calculating your net worth. Track your assets and liabilities to understand your overall wealth and financial progress.',
     slug: 'net-worth-calculator',
+    category: 'finance',
+  },
+  {
+    id: 101,
+    name: 'Credit Card Payoff Calculator',
+    description: 'Find out how long it will take to pay off your credit card balance based on your monthly payment. See the total interest you\'ll pay and get a plan to become debt-free.',
+    slug: 'credit-card-payoff-calculator',
     category: 'finance',
   },
   // Home Improvement
@@ -455,7 +462,7 @@ export const calculators: Calculator[] = [
   {
     id: 57,
     name: 'Overclocking Thermal Calculator',
-    description: 'Estimate CPU/GPU temps from voltage & frequency changes.',
+    description: 'Estimate CPU/GPU temps from voltage &amp; frequency changes.',
     slug: 'overclocking-thermal-calculator',
     category: 'technology',
   },
@@ -518,7 +525,7 @@ export const calculators: Calculator[] = [
   {
     id: 66,
     name: 'Image Compression Size Calculator',
-    description: 'Predict final file size for given compression ratio & resolution.',
+    description: 'Predict final file size for given compression ratio &amp; resolution.',
     slug: 'image-compression-size-calculator',
     category: 'technology',
   },
@@ -532,7 +539,7 @@ export const calculators: Calculator[] = [
   {
     id: 68,
     name: 'Hash Collision Probability Calculator',
-    description: 'Estimate chance of collisions for given hash length & number of items.',
+    description: 'Estimate chance of collisions for given hash length &amp; number of items.',
     slug: 'hash-collision-probability-calculator',
     category: 'technology',
   },
@@ -652,7 +659,7 @@ export const calculators: Calculator[] = [
   {
     id: 85,
     name: 'Meme Lifespan',
-    description: 'Estimate how long a meme will stay trendy based on shares & likes.',
+    description: 'Estimate how long a meme will stay trendy based on shares &amp; likes.',
     slug: 'meme-lifespan',
     category: 'fun-games',
   },
@@ -720,8 +727,5 @@ export const calculators: Calculator[] = [
     category: 'fun-games',
   },
 ];
-
-    
-    
 
     
