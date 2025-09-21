@@ -10,6 +10,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CategoryIcon } from '@/components/category-icon';
 
 const calculatorComponents: { [key: string]: React.ComponentType } = {
+    'sip-calculator': dynamic(() => import('@/components/calculators/finance/sip-calculator')),
+    'loan-emi-calculator': dynamic(() => import('@/components/calculators/finance/loan-emi-calculator')),
     'paint-coverage-calculator': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
     'tile-flooring-calculator': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
     'wallpaper-roll-calculator': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),

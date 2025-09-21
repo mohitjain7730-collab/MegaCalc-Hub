@@ -7,6 +7,21 @@ export interface Calculator {
 }
 
 export const calculators: Calculator[] = [
+  // Finance
+  {
+    id: 95,
+    name: 'SIP Returns Calculator',
+    description: 'Estimate the future value of recurring investments.',
+    slug: 'sip-calculator',
+    category: 'finance',
+  },
+  {
+    id: 96,
+    name: 'Loan / EMI Calculator',
+    description: 'Calculate monthly loan payments and total interest.',
+    slug: 'loan-emi-calculator',
+    category: 'finance',
+  },
   // Home Improvement
   {
     id: 1,
