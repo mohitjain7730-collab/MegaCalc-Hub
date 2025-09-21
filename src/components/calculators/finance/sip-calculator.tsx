@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Landmark } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const formSchema = z.object({
   monthlyInvestment: z.number().positive(),
@@ -20,8 +21,16 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+interface CalculationResult {
+  futureValue: number;
+  totalInvestment: number;
+  totalProfit: number;
+  chartData: { year: number; totalInvestment: number; futureValue: number }[];
+}
+
+
 export default function SipCalculator() {
-  const [result, setResult] = useState<{ futureValue: number; totalInvestment: number; totalProfit: number } | null>(null);
+  const [result, setResult] = useState<CalculationResult | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -37,11 +46,23 @@ export default function SipCalculator() {
     const r = annualInterestRate / 12 / 100;
     const n = investmentPeriodYears * 12;
 
-    const futureValue = monthlyInvestment * ( (Math.pow(1 + r, n) - 1) / r ) * (1 + r);
+    const chartData = [];
+    for (let year = 1; year <= investmentPeriodYears; year++) {
+      const currentN = year * 12;
+      const yearEndFutureValue = monthlyInvestment * ( (Math.pow(1 + r, currentN) - 1) / r ) * (1 + r);
+      const yearEndTotalInvestment = monthlyInvestment * currentN;
+      chartData.push({
+        year: year,
+        totalInvestment: Math.round(yearEndTotalInvestment),
+        futureValue: Math.round(yearEndFutureValue),
+      });
+    }
+
+    const futureValue = chartData[chartData.length - 1].futureValue;
     const totalInvestment = monthlyInvestment * n;
     const totalProfit = futureValue - totalInvestment;
 
-    setResult({ futureValue, totalInvestment, totalProfit });
+    setResult({ futureValue, totalInvestment, totalProfit, chartData });
   };
 
   return (
@@ -56,7 +77,7 @@ export default function SipCalculator() {
                 <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="investmentPeriodYears" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Investment Period (Years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2"><FormLabel>Investment Period (Years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>
@@ -81,6 +102,19 @@ export default function SipCalculator() {
                             <p className="text-xl font-semibold">${result.totalProfit.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
                         </div>
                     </div>
+                </div>
+                 <div className="mt-8 h-80">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={result.chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="year" unit="yr" />
+                      <YAxis tickFormatter={(value) => `$${(value/1000)}k`} />
+                      <Tooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
+                      <Legend />
+                      <Line type="monotone" dataKey="totalInvestment" name="Total Investment" stroke="hsl(var(--muted-foreground))" activeDot={{ r: 8 }} />
+                      <Line type="monotone" dataKey="futureValue" name="Estimated Value" stroke="hsl(var(--primary))" />
+                    </LineChart>
+                  </ResponsiveContainer>
                 </div>
             </CardContent>
         </Card>
