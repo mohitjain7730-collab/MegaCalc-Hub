@@ -18,7 +18,7 @@ export const calculators: Calculator[] = [
   },
   {
     id: 96,
-    name: 'Loan & Mortgage Payment Calculator',
+    name: 'Loan/EMI Calculator',
     description: 'Calculate your monthly payment (EMI) for any loan, including mortgages, auto loans, or personal loans. Understand your repayment schedule with a detailed amortization graph.',
     slug: 'loan-emi-calculator',
     category: 'finance',
@@ -56,6 +56,20 @@ export const calculators: Calculator[] = [
     name: 'Credit Card Payoff Calculator',
     description: 'Find out how long it will take to pay off your credit card balance based on your monthly payment. See the total interest you\'ll pay and get a plan to become debt-free.',
     slug: 'credit-card-payoff-calculator',
+    category: 'finance',
+  },
+  {
+    id: 102,
+    name: 'Mortgage Payment Calculator',
+    description: 'Estimate your monthly mortgage payment with our easy-to-use calculator. See how principal, interest, and loan term affect your payment.',
+    slug: 'mortgage-payment-calculator',
+    category: 'finance',
+  },
+  {
+    id: 103,
+    name: 'Student Loan Repayment Calculator',
+    description: 'Understand your student loan repayment options. Calculate your monthly payment and the total interest you\'ll pay over the life of the loan.',
+    slug: 'student-loan-repayment-calculator',
     category: 'finance',
   },
   // Home Improvement
@@ -727,5 +741,3 @@ export const calculators: Calculator[] = [
     category: 'fun-games',
   },
 ];
-
-    
