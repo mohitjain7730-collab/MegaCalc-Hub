@@ -30,6 +30,13 @@ export const calculators: Calculator[] = [
     slug: 'retirement-savings-calculator',
     category: 'finance',
   },
+  {
+    id: 98,
+    name: 'Compound Interest Calculator',
+    description: 'Calculate the future value of an investment using the power of compound interest. Visualize how your savings can grow over time with different compounding frequencies.',
+    slug: 'compound-interest-calculator',
+    category: 'finance'
+  },
   // Home Improvement
   {
     id: 1,

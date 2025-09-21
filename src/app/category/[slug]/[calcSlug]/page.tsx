@@ -14,6 +14,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'sip-calculator': dynamic(() => import('@/components/calculators/finance/sip-calculator')),
     'loan-emi-calculator': dynamic(() => import('@/components/calculators/finance/loan-emi-calculator')),
     'retirement-savings-calculator': dynamic(() => import('@/components/calculators/finance/retirement-savings-calculator')),
+    'compound-interest-calculator': dynamic(() => import('@/components/calculators/finance/compound-interest-calculator')),
     'paint-coverage-calculator': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
     'tile-flooring-calculator': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
     'wallpaper-roll-calculator': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),
