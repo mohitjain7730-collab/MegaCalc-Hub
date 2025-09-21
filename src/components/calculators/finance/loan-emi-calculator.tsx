@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { HandCoins } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const formSchema = z.object({
   loanAmount: z.number().positive(),
@@ -20,8 +21,15 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+interface CalculationResult {
+  emi: number;
+  totalPayment: number;
+  totalInterest: number;
+  chartData: { year: number; remainingBalance: number; totalInterestPaid: number }[];
+}
+
 export default function LoanEmiCalculator() {
-  const [result, setResult] = useState<{ emi: number; totalPayment: number; totalInterest: number } | null>(null);
+  const [result, setResult] = useState<CalculationResult | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -38,11 +46,48 @@ export default function LoanEmiCalculator() {
     const r = annualInterestRate / 12 / 100;
     const n = loanTenureYears * 12;
 
+    if (r === 0) {
+        const emi = P / n;
+        const totalPayment = P;
+        const totalInterest = 0;
+        const chartData = Array.from({ length: loanTenureYears }, (_, i) => {
+            const year = i + 1;
+            const balance = P - emi * year * 12;
+            return {
+                year,
+                remainingBalance: Math.max(0, balance),
+                totalInterestPaid: 0,
+            };
+        });
+        setResult({ emi, totalPayment, totalInterest, chartData });
+        return;
+    }
+
     const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
     const totalPayment = emi * n;
     const totalInterest = totalPayment - P;
+
+    const chartData = [];
+    let remainingBalance = P;
+    let cumulativeInterest = 0;
+
+    for (let year = 1; year <= loanTenureYears; year++) {
+      let yearlyInterest = 0;
+      for (let month = 1; month <= 12; month++) {
+        const interestPayment = remainingBalance * r;
+        const principalPayment = emi - interestPayment;
+        yearlyInterest += interestPayment;
+        remainingBalance -= principalPayment;
+      }
+      cumulativeInterest += yearlyInterest;
+      chartData.push({
+        year: year,
+        remainingBalance: Math.max(0, remainingBalance), // Ensure balance doesn't go negative
+        totalInterestPaid: Math.round(cumulativeInterest),
+      });
+    }
     
-    setResult({ emi, totalPayment, totalInterest });
+    setResult({ emi, totalPayment, totalInterest, chartData });
   };
 
   return (
@@ -82,6 +127,19 @@ export default function LoanEmiCalculator() {
                             <p className="text-xl font-semibold">${result.totalInterest.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
                         </div>
                     </div>
+                </div>
+                 <div className="mt-8 h-80">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={result.chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="year" unit="yr" />
+                      <YAxis tickFormatter={(value) => `$${(value/1000)}k`} />
+                      <Tooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
+                      <Legend />
+                      <Line type="monotone" dataKey="totalInterestPaid" name="Total Interest Paid" stroke="hsl(var(--muted-foreground))" activeDot={{ r: 8 }} />
+                      <Line type="monotone" dataKey="remainingBalance" name="Remaining Balance" stroke="hsl(var(--primary))" />
+                    </LineChart>
+                  </ResponsiveContainer>
                 </div>
             </CardContent>
         </Card>
@@ -124,5 +182,3 @@ export default function LoanEmiCalculator() {
     </div>
   );
 }
-
-    
