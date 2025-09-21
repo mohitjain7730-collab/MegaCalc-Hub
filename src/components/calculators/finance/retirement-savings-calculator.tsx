@@ -58,10 +58,7 @@ export default function RetirementSavingsCalculator() {
     const n = (retirementAge - currentAge) * 12;
 
     const chartData = [];
-    let fvCurrent = currentSavings;
-    let fvContrib = 0;
-    let totalInvested = currentSavings;
-
+    
     for (let year = 1; year <= retirementAge - currentAge; year++) {
       const currentN = year * 12;
       const age = currentAge + year;
@@ -205,4 +202,3 @@ export default function RetirementSavingsCalculator() {
     </div>
   );
 }
-
