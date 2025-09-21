@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -85,10 +86,38 @@ export default function SipCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="how-it-works">
+        <AccordionItem value="what-is-sip">
+          <AccordionTrigger>What is a SIP?</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>A Systematic Investment Plan (SIP) is a method of investing a fixed amount of money in mutual funds at regular intervals (usually monthly). It helps in disciplined investing, rupee cost averaging, and harnessing the power of compounding. Instead of investing a large lump sum at once, you invest smaller amounts over time, which can reduce the risk of market volatility.</p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="understanding-returns">
+          <AccordionTrigger>Understanding Returns: Risk vs. Reward</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>The "Expected Annual Return" is a crucial input that significantly impacts the final amount. It is not a guaranteed figure. The return rate depends on the type of fund you invest in:</p>
+            <ul className="list-disc list-inside space-y-1 pl-4">
+                <li><strong>High Risk / High Return (e.g., Equity Funds):</strong> Historically, equity markets have provided higher returns over the long term, often in the range of <strong>10-15%</strong> annually, but they also carry higher risk and can be volatile in the short term.</li>
+                <li><strong>Moderate Risk / Moderate Return (e.g., Hybrid Funds):</strong> These funds balance investments between stocks and bonds. Expected returns might be in the <strong>8-12%</strong> range.</li>
+                <li><strong>Low Risk / Safe Returns (e.g., Debt Funds or Fixed Deposits):</strong> These are much safer investments with more predictable, but lower, returns, typically in the <strong>5-7%</strong> range.</li>
+            </ul>
+             <p className="mt-2 font-semibold">Disclaimer: Past performance is not indicative of future results. The figures above are for educational purposes only.</p>
+          </AccordionContent>
+        </AccordionItem>
+         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
                 <p>This calculator uses the future value of a series formula to project the growth of your systematic investments over time, factoring in the effect of compound interest on your monthly contributions.</p>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="further-reading">
+            <AccordionTrigger>Further Reading</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+              <p>To learn more about Systematic Investment Plans and related concepts, you can visit these credible resources:</p>
+               <ul className="list-disc list-inside space-y-1 pl-4">
+                  <li><a href="https://www.investopedia.com/terms/s/systematicinvestmentplan.asp" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investopedia: What Is a Systematic Investment Plan (SIP)?</a></li>
+                  <li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investor.gov (U.S. SEC): Mutual Funds</a></li>
+              </ul>
             </AccordionContent>
         </AccordionItem>
       </Accordion>
