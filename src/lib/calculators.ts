@@ -1,3 +1,4 @@
+
 export interface Calculator {
   id: number;
   name: string;
@@ -11,7 +12,7 @@ export const calculators: Calculator[] = [
   {
     id: 95,
     name: 'SIP Returns Calculator',
-    description: 'Estimate the future value of recurring investments.',
+    description: 'Project the future value of your Systematic Investment Plan (SIP). See how regular, disciplined investing and the power of compounding can help you reach your financial goals.',
     slug: 'sip-calculator',
     category: 'finance',
   },
@@ -25,9 +26,9 @@ export const calculators: Calculator[] = [
   // Home Improvement
   {
     id: 1,
-    name: 'Paint Coverage Calculator',
-    description: 'How many litres/gallons of paint are needed for a given room size and number of coats.',
-    slug: 'paint-coverage-calculator',
+    name: 'Paint Coverage Estimator',
+    description: 'Calculates amount of paint needed for a project.',
+    slug: 'paint-coverage-estimator',
     category: 'home-improvement',
   },
   {
@@ -691,3 +692,5 @@ export const calculators: Calculator[] = [
     category: 'fun-games',
   },
 ];
+
+    
