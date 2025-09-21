@@ -1,4 +1,5 @@
 
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -15,6 +16,8 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'loan-emi-calculator': dynamic(() => import('@/components/calculators/finance/loan-emi-calculator')),
     'retirement-savings-calculator': dynamic(() => import('@/components/calculators/finance/retirement-savings-calculator')),
     'compound-interest-calculator': dynamic(() => import('@/components/calculators/finance/compound-interest-calculator')),
+    '401k-contribution-calculator': dynamic(() => import('@/components/calculators/finance/401k-contribution-calculator')),
+    'net-worth-calculator': dynamic(() => import('@/components/calculators/finance/net-worth-calculator')),
     'paint-coverage-calculator': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
     'tile-flooring-calculator': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
     'wallpaper-roll-calculator': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),
@@ -172,3 +175,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
   );
 }
 
+
+    

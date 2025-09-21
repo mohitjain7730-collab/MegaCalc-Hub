@@ -19,7 +19,7 @@ export const calculators: Calculator[] = [
   {
     id: 96,
     name: 'Loan / EMI Calculator',
-    description: 'Calculate your Equated Monthly Installment (EMI) for any loan. See a full breakdown of interest and principal payments to better plan your finances.',
+    description: 'Calculate your Equated Monthly Installment (EMI) for any loan. Understand your repayment schedule with a detailed breakdown of principal and interest payments over the loan tenure.',
     slug: 'loan-emi-calculator',
     category: 'finance',
   },
@@ -36,6 +36,20 @@ export const calculators: Calculator[] = [
     description: 'Calculate the future value of an investment using the power of compound interest. Visualize how your savings can grow over time with different compounding frequencies.',
     slug: 'compound-interest-calculator',
     category: 'finance'
+  },
+  {
+    id: 99,
+    name: '401(k) Contribution Calculator',
+    description: 'Estimate your 401(k) growth by retirement, including your contributions, employer match, and investment returns. Visualize your path to a secure retirement.',
+    slug: '401k-contribution-calculator',
+    category: 'finance',
+  },
+  {
+    id: 100,
+    name: 'Net Worth Calculator',
+    description: 'Get a clear picture of your financial health by calculating your net worth. Track your assets and liabilities to understand your overall wealth and financial progress.',
+    slug: 'net-worth-calculator',
+    category: 'finance',
   },
   // Home Improvement
   {
@@ -708,4 +722,6 @@ export const calculators: Calculator[] = [
 ];
 
     
+    
+
     
