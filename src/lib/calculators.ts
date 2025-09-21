@@ -23,6 +23,13 @@ export const calculators: Calculator[] = [
     slug: 'loan-emi-calculator',
     category: 'finance',
   },
+  {
+    id: 97,
+    name: 'Retirement Savings Calculator',
+    description: 'Plan for your future by estimating your retirement corpus based on current savings, contributions, and expected returns. Find out if you are on track to meet your retirement goals.',
+    slug: 'retirement-savings-calculator',
+    category: 'finance',
+  },
   // Home Improvement
   {
     id: 1,
