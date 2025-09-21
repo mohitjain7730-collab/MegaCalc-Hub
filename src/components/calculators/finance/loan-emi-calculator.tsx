@@ -110,7 +110,19 @@ export default function LoanEmiCalculator() {
                 <p>This calculator uses the standard formula for an Equated Monthly Installment (EMI) to determine your fixed monthly payment. The formula accounts for the loan principal, the monthly interest rate (annual rate divided by 12), and the total number of payments (tenure in years multiplied by 12).</p>
             </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="further-reading">
+            <AccordionTrigger>Further Reading</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+              <p>To learn more about EMIs and loan amortization, you can visit these credible resources:</p>
+               <ul className="list-disc list-inside space-y-1 pl-4">
+                  <li><a href="https://www.investopedia.com/terms/e/emi.asp" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investopedia: Equated Monthly Installment (EMI)</a></li>
+                  <li><a href="https://www.consumerfinance.gov/owning-a-home/loan-options/" target="_blank" rel="noopener noreferrer" className="text-primary underline">Consumer Financial Protection Bureau: Loan Options</a></li>
+              </ul>
+            </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </div>
   );
 }
+
+    

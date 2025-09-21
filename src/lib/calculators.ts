@@ -19,7 +19,7 @@ export const calculators: Calculator[] = [
   {
     id: 96,
     name: 'Loan / EMI Calculator',
-    description: 'Calculate monthly loan payments and total interest.',
+    description: 'Calculate your Equated Monthly Installment (EMI) for any loan. See a full breakdown of interest and principal payments to better plan your finances.',
     slug: 'loan-emi-calculator',
     category: 'finance',
   },
@@ -693,4 +693,5 @@ export const calculators: Calculator[] = [
   },
 ];
 
+    
     
