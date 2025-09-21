@@ -61,7 +61,7 @@ export const calculators: Calculator[] = [
   {
     id: 102,
     name: 'Mortgage Payment Calculator',
-    description: 'Estimate your monthly mortgage payment with our easy-to-use calculator. See how principal, interest, and loan term affect your payment.',
+    description: 'Estimate your monthly mortgage payment. See how principal, interest, and loan term affect your payment and view a detailed amortization schedule.',
     slug: 'mortgage-payment-calculator',
     category: 'finance',
   },
@@ -70,6 +70,27 @@ export const calculators: Calculator[] = [
     name: 'Student Loan Repayment Calculator',
     description: 'Understand your student loan repayment options. Calculate your monthly payment and the total interest you\'ll pay over the life of the loan.',
     slug: 'student-loan-repayment-calculator',
+    category: 'finance',
+  },
+  {
+    id: 104,
+    name: 'Inflation Calculator',
+    description: 'See how the value of your money may decrease over time due to inflation. Understand the future purchasing power of your savings.',
+    slug: 'inflation-calculator',
+    category: 'finance',
+  },
+  {
+    id: 105,
+    name: 'Roth IRA Contribution Limit Calculator',
+    description: 'Determine your maximum allowed Roth IRA contribution for the current tax year based on your income, filing status, and age.',
+    slug: 'roth-ira-contribution-limit-calculator',
+    category: 'finance',
+  },
+  {
+    id: 106,
+    name: 'Emergency Fund Calculator',
+    description: 'Calculate how much cash you should set aside for unexpected expenses. Determine your ideal safety net based on your monthly costs.',
+    slug: 'emergency-fund-calculator',
     category: 'finance',
   },
   // Home Improvement
