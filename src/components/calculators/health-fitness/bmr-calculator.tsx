@@ -109,9 +109,9 @@ export default function BmrCalculator() {
                     <h3 className="text-lg font-semibold text-center mb-4">Daily Calorie Needs by Activity Level</h3>
                      <div className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                            <BarChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 40 }}>
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" angle={-45} textAnchor="end" height={60} interval={0} />
+                                <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} dy={10} />
                                 <YAxis />
                                 <Tooltip
                                     content={({ active, payload, label }) => {
