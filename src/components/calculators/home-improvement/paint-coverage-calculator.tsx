@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -22,14 +23,15 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { PaintBucket } from 'lucide-react';
+import { PaintBucket, HelpCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const formSchema = z.object({
   length: z.number().positive('Must be positive'),
   width: z.number().positive('Must be positive'),
   height: z.number().positive('Must be positive'),
-  coats: z.number().min(1, 'Minimum 1 coat').default(1),
+  coats: z.number().min(0, 'Cannot be negative').default(2),
   unit: z.enum(['meters', 'feet']),
   coveragePerUnit: z.number().positive('Must be positive'),
 });
@@ -147,7 +149,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Number of Coats</FormLabel>
                                 <FormControl>
-                                    <Input type="number" step="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} />
+                                    <Input type="number" step="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value, 10) || 0)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -158,7 +160,19 @@ export default function PaintCoverageCalculator() {
                         name="coveragePerUnit"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Paint Coverage ({form.getValues('unit') === 'feet' ? 'sq ft / gallon' : 'sq m / liter'})</FormLabel>
+                                <FormLabel className="flex items-center gap-2">
+                                  Paint Coverage ({form.getValues('unit') === 'feet' ? 'sq ft / gallon' : 'sq m / liter'})
+                                  <TooltipProvider>
+                                    <Tooltip>
+                                      <TooltipTrigger asChild>
+                                        <button type="button" className='p-0 m-0'><HelpCircle className="h-4 w-4 text-muted-foreground" /></button>
+                                      </TooltipTrigger>
+                                      <TooltipContent>
+                                        <p className="max-w-xs text-sm">Most paints cover 350-400 sq ft per gallon (9-10 sq m per liter). Check your paint can for the most accurate value.</p>
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  </TooltipProvider>
+                                </FormLabel>
                                 <FormControl>
                                     <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                                 </FormControl>
