@@ -152,7 +152,11 @@ export default function FourOhOneKCalculator() {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="age" unit="yrs" />
                       <YAxis tickFormatter={(value) => `${(value * 100).toFixed(0)}%`} />
-                      <Tooltip formatter={(value: number, name: string, props) => `$${(props.payload[name]).toLocaleString()}`} />
+                      <Tooltip formatter={(value: number, name: string, props) => {
+                          const payloadValue = props.payload?.[props.dataKey] as number | undefined;
+                          if (payloadValue === undefined) return null;
+                          return `$${payloadValue.toLocaleString()}`;
+                      }} />
                       <Legend />
                       <Area type="monotone" dataKey="yourContributions" stackId="1" name="Your Contributions" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" />
                       <Area type="monotone" dataKey="employerContributions" stackId="1" name="Employer Match" stroke="hsl(var(--chart-2))" fill="hsl(var(--chart-2))" />
@@ -196,5 +200,3 @@ export default function FourOhOneKCalculator() {
     </div>
   );
 }
-
-    
