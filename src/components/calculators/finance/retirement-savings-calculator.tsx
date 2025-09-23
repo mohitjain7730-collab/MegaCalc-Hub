@@ -43,11 +43,12 @@ export default function RetirementSavingsCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      currentAge: 30,
-      retirementAge: 60,
-      currentSavings: 50000,
-      monthlyContribution: 500,
-      annualReturn: 8,
+      currentAge: undefined,
+      retirementAge: undefined,
+      currentSavings: undefined,
+      monthlyContribution: undefined,
+      annualReturn: undefined,
+      targetCorpus: undefined,
     },
   });
   
@@ -105,8 +106,8 @@ export default function RetirementSavingsCalculator() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(calculateRetirement)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="currentAge" render={({ field }) => ( <FormItem><FormLabel>Current Age</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="retirementAge" render={({ field }) => ( <FormItem><FormLabel>Retirement Age</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="currentAge" render={({ field }) => ( <FormItem><FormLabel>Current Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="retirementAge" render={({ field }) => ( <FormItem><FormLabel>Retirement Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
             <FormField control={form.control} name="currentSavings" render={({ field }) => ( <FormItem><FormLabel>Current Savings</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
             <FormField control={form.control} name="annualReturn" render={({ field }) => ( <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
             
@@ -202,3 +203,4 @@ export default function RetirementSavingsCalculator() {
     </div>
   );
 }
+
