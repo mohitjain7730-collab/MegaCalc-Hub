@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Droplets } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const fixtureUnits = {
   kitchenSink: 2,
@@ -129,6 +131,33 @@ export default function WaterUsagePlumbingFlowCalculator() {
           </CardContent>
         </Card>
       )}
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="what-is-wsfu">
+          <AccordionTrigger>What is a WSFU?</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>WSFU stands for "Water Supply Fixture Unit." It's a standardized unit used in plumbing to measure the probable water demand of different types of fixtures. It's not a direct flow rate (like gallons per minute), but rather a design factor.</p>
+            <p>Simply adding up the maximum flow rates of all fixtures would result in oversized, expensive plumbing, because it's extremely unlikely that all fixtures will be used simultaneously. The WSFU system provides a way to estimate a realistic peak demand.</p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How Peak Demand is Calculated (Hunter's Curve)</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <p>This calculator converts the total WSFU value to an estimated peak demand in Gallons Per Minute (GPM) using a well-established plumbing engineering method called "Hunter's Curve."</p>
+                 <p className="mt-2">This curve is a probability model that predicts the likely maximum water flow in a system. The key insight is that the more fixtures you have, the lower the probability that a high percentage of them will be running at the exact same time. This calculator uses a mathematical approximation of Hunter's Curve to provide the GPM estimate.</p>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="why-is-it-important">
+            <AccordionTrigger>Why This is Important</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+              <p>Properly sizing the main water supply line is crucial for your home's plumbing system. The "Peak Demand" GPM is the single most important factor in this decision.</p>
+               <ul className="list-disc list-inside space-y-1 pl-4">
+                  <li><strong>Pipe Too Small:</strong> If the main supply line is too small for the peak demand, you'll experience a significant drop in water pressure when multiple fixtures are used at once (e.g., flushing a toilet while someone is in the shower).</li>
+                  <li><strong>Pipe Too Large:</strong> While less problematic, an oversized pipe is more expensive and can lead to lower water velocity, which might allow sediment to settle in the pipes over time.</li>
+              </ul>
+              <p className="mt-2 font-semibold">This calculator provides a solid estimate for planning, but it's essential to consult local plumbing codes and a licensed plumber for any new construction or major renovation work.</p>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }
