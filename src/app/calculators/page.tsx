@@ -8,6 +8,8 @@ import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function AllCalculatorsPage() {
+  let calculatorCount = 0;
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
       <div className="w-full max-w-4xl">
@@ -45,19 +47,22 @@ export default function AllCalculatorsPage() {
                   </h2>
                 </div>
                 <div className="space-y-3">
-                  {categoryCalculators.map((calc, calcIndex) => (
-                    <Link
-                      href={`/category/${category.slug}/${calc.slug}`}
-                      key={calc.id}
-                      className="group block"
-                    >
-                      <Card className="transition-all duration-200 ease-in-out group-hover:bg-muted/50 group-hover:border-primary/30">
-                        <CardHeader>
-                          <CardTitle className="text-lg group-hover:text-primary">{calcIndex + 1}. {calc.name}</CardTitle>
-                        </CardHeader>
-                      </Card>
-                    </Link>
-                  ))}
+                  {categoryCalculators.map((calc, calcIndex) => {
+                    calculatorCount++;
+                    return (
+                        <Link
+                        href={`/category/${category.slug}/${calc.slug}`}
+                        key={calc.id}
+                        className="group block"
+                        >
+                        <Card className="transition-all duration-200 ease-in-out group-hover:bg-muted/50 group-hover:border-primary/30">
+                            <CardHeader>
+                            <CardTitle className="text-lg group-hover:text-primary">{calculatorCount}. {calcIndex + 1}. {calc.name}</CardTitle>
+                            </CardHeader>
+                        </Card>
+                        </Link>
+                    );
+                  })}
                 </div>
               </section>
             );
