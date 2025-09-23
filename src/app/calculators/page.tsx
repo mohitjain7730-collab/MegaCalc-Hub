@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
@@ -26,7 +27,7 @@ export default function AllCalculatorsPage() {
         </div>
 
         <div className="space-y-12">
-          {categories.map((category) => {
+          {categories.map((category, categoryIndex) => {
             const categoryCalculators = calculators.filter(
               (calc) => calc.category === category.slug
             );
@@ -40,11 +41,11 @@ export default function AllCalculatorsPage() {
                 <div className="flex items-center gap-4 mb-6">
                   <CategoryIcon name={category.Icon} className="h-8 w-8 text-primary" strokeWidth={1.5} />
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                    {category.name}
+                     {String.fromCharCode(97 + categoryIndex)}. {category.name}
                   </h2>
                 </div>
                 <div className="space-y-3">
-                  {categoryCalculators.map((calc) => (
+                  {categoryCalculators.map((calc, calcIndex) => (
                     <Link
                       href={`/category/${category.slug}/${calc.slug}`}
                       key={calc.id}
@@ -52,8 +53,7 @@ export default function AllCalculatorsPage() {
                     >
                       <Card className="transition-all duration-200 ease-in-out group-hover:bg-muted/50 group-hover:border-primary/30">
                         <CardHeader>
-                          <CardTitle className="text-lg group-hover:text-primary">{calc.name}</CardTitle>
-                          <CardDescription className="pt-1">{calc.description}</CardDescription>
+                          <CardTitle className="text-lg group-hover:text-primary">{calcIndex + 1}. {calc.name}</CardTitle>
                         </CardHeader>
                       </Card>
                     </Link>
