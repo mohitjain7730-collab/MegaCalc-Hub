@@ -1,6 +1,9 @@
 import { AIFinder } from '@/components/ai-finder';
 import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { List } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -16,8 +19,16 @@ export default function Home() {
       </div>
 
       <AIFinder />
+      <div className="mt-4">
+        <Button asChild variant="link" className="text-muted-foreground">
+          <Link href="/calculators">
+            <List className="mr-2 h-4 w-4" />
+            Or, see a list of all calculators
+          </Link>
+        </Button>
+      </div>
 
-      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-12">
+      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-8">
         {categories.map((category) => (
           <CategoryCard key={category.slug} {...category} />
         ))}
