@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Scale } from 'lucide-react';
+import { Scale, ArrowUp } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
@@ -22,10 +22,44 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const getBmiCategory = (bmi: number) => {
-  if (bmi < 18.5) return { name: 'Underweight', color: 'text-yellow-500' };
-  if (bmi < 25) return { name: 'Normal weight', color: 'text-green-500' };
-  if (bmi < 30) return { name: 'Overweight', color: 'text-orange-500' };
-  return { name: 'Obese', color: 'text-red-500' };
+  if (bmi < 18.5) return { name: 'Underweight', color: 'bg-yellow-400' };
+  if (bmi < 25) return { name: 'Normal weight', color: 'bg-green-500' };
+  if (bmi < 30) return { name: 'Overweight', color: 'bg-orange-500' };
+  return { name: 'Obese', color: 'bg-red-500' };
+};
+
+const BmiChart = ({ bmiValue }: { bmiValue: number }) => {
+    const categories = [
+        { name: 'Underweight', range: '< 18.5', min: 10, max: 18.5, color: 'bg-yellow-400' },
+        { name: 'Normal', range: '18.5 - 24.9', min: 18.5, max: 25, color: 'bg-green-500' },
+        { name: 'Overweight', range: '25 - 29.9', min: 25, max: 30, color: 'bg-orange-500' },
+        { name: 'Obese', range: '30+', min: 30, max: 40, color: 'bg-red-500' },
+    ];
+    
+    const totalRange = 30; // from 10 to 40
+    const position = Math.max(0, Math.min(100, ((bmiValue - 10) / totalRange) * 100));
+
+    return (
+        <div className="w-full mt-6">
+            <div className="relative h-8 w-full flex rounded-full overflow-hidden">
+                {categories.map((cat, index) => (
+                    <div key={index} className={`${cat.color} h-full`} style={{ width: `${((cat.max - cat.min) / totalRange) * 100}%` }}></div>
+                ))}
+            </div>
+             <div className="relative h-4 w-full" style={{ left: `${position}%` }}>
+                <ArrowUp className="h-6 w-6 -ml-3 text-foreground" />
+                <span className="absolute -ml-4 mt-1 text-xs font-bold">{bmiValue.toFixed(1)}</span>
+            </div>
+            <div className="flex justify-between text-xs text-muted-foreground mt-4">
+                 {categories.map((cat, index) => (
+                    <div key={index} className="flex flex-col items-center text-center">
+                        <span className='font-bold'>{cat.name}</span>
+                        <span>{cat.range}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 };
 
 export default function BmiCalculator() {
@@ -78,8 +112,9 @@ export default function BmiCalculator() {
             <CardContent>
                 <div className="text-center space-y-2">
                     <p className="text-4xl font-bold">{result.bmi.toFixed(1)}</p>
-                    <p className={`text-2xl font-semibold ${result.category.color}`}>{result.category.name}</p>
+                    <p className={`text-2xl font-semibold`}>{result.category.name}</p>
                 </div>
+                 <BmiChart bmiValue={result.bmi} />
             </CardContent>
         </Card>
       )}
@@ -88,6 +123,7 @@ export default function BmiCalculator() {
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
                 <p>Body Mass Index (BMI) is a simple calculation using a person's height and weight. The formula is BMI = kg/m2 where kg is a person's weight in kilograms and m2 is their height in metres squared. For imperial units, the formula is (lbs / in^2) * 703.</p>
+                 <p className="mt-2">For adults 20 years old and older, BMI is interpreted using standard weight status categories that are the same for all ages and for both men and women.</p>
             </AccordionContent>
         </AccordionItem>
         <AccordionItem value="further-reading">
@@ -95,7 +131,7 @@ export default function BmiCalculator() {
             <AccordionContent className="text-muted-foreground space-y-2">
               <p>For more detailed information on BMI and its implications for health, consult these authoritative sources:</p>
                <ul className="list-disc list-inside space-y-1 pl-4">
-                  <li><a href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html" target="_blank" rel="noopener noreferrer" className="text-primary underline">Centers for Disease Control and Prevention (CDC) – About Adult BMI</a></li>
+                  <li><a href="https://www.cdc.gov/bmi/faq/?CDC_AAref_Val=https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html" target="_blank" rel="noopener noreferrer" className="text-primary underline">Centers for Disease Control and Prevention (CDC) – BMI FAQ</a></li>
               </ul>
             </AccordionContent>
         </AccordionItem>
