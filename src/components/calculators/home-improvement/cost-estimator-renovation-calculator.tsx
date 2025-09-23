@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -86,6 +87,61 @@ export default function CostEstimatorRenovationCalculator() {
             </CardContent>
         </Card>
       )}
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How The Estimate Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+                <p>This calculator provides a rough budget estimate based on industry-standard cost-per-square-foot averages for different levels of renovation. It is not a formal quote.</p>
+                <ol className="list-decimal list-inside space-y-1">
+                    <li><strong>Cost per Square Foot:</strong> Each renovation type (e.g., "Mid-Range Kitchen") is assigned a baseline cost per square foot.</li>
+                    <li><strong>Base Calculation:</strong> The calculator multiplies your area by this baseline cost.</li>
+                    <li><strong>Range:</strong> It then provides a -20% to +20% range around that base cost to account for some variability in materials and labor.</li>
+                </ol>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="renovation-levels">
+          <AccordionTrigger>Understanding Renovation Levels</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground">Basic / Economy</h4>
+              <p>Focuses on cosmetic updates without changing the layout. Think of it as a refresh.</p>
+              <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                <li><strong>Kitchen:</strong> Painting existing cabinets, new laminate countertops, basic sink/faucet, vinyl flooring.</li>
+                <li><strong>Bathroom:</strong> New toilet and vanity, reglazing the tub, new vinyl flooring, fresh paint.</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground">Mid-Range</h4>
+              <p>The most common type of renovation. It involves replacing most fixtures and finishes with good quality, but not luxury, materials.</p>
+              <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                <li><strong>Kitchen:</strong> New semi-custom cabinets, granite or quartz countertops, new standard appliances, tile backsplash.</li>
+                <li><strong>Bathroom:</strong> New tile floor and shower surround, new tub, new vanity with stone top, improved lighting.</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground">High-End / Luxury</h4>
+              <p>Involves top-of-the-line materials, custom work, and potentially changing the layout of the room.</p>
+              <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                <li><strong>Kitchen:</strong> Custom cabinetry, high-end stone countertops, professional-grade appliances, complex lighting, possible structural changes.</li>
+                <li><strong>Bathroom:</strong> Moving walls, expanding the space, walk-in shower with frameless glass, heated floors, custom vanity.</li>
+              </ul>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+         <AccordionItem value="whats-not-included">
+            <AccordionTrigger>What's Not Included in These Estimates</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+                <p>This simple calculator cannot account for many factors that significantly impact cost. These estimates likely DO NOT include:</p>
+                <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                    <li><strong>Structural Changes:</strong> Moving walls, windows, or doors.</li>
+                    <li><strong>Plumbing/Electrical Relocation:</strong> Moving sinks, toilets, outlets, or lighting fixtures.</li>
+                    <li><strong>Permit Fees:</strong> Costs associated with obtaining building permits from your local municipality.</li>
+                    <li><strong>Architectural/Design Fees:</strong> The cost of hiring a professional to design the space.</li>
+                    <li><strong>Unforeseen Issues:</strong> Problems discovered after demolition, such as water damage, mold, or outdated wiring.</li>
+                </ul>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }
