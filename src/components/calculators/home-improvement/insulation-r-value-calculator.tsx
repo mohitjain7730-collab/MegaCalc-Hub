@@ -164,6 +164,30 @@ export default function InsulationRValueCalculator() {
             </ol>
           </AccordionContent>
         </AccordionItem>
+         <AccordionItem value="understanding-inputs">
+          <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Insulation Types</h4>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Fiberglass Batt:</strong> The most common and affordable insulation, typically comes in pre-cut batts for standard framing.</li>
+                <li><strong>Rockwool Batt:</strong> Offers slightly better R-value than fiberglass and is also fire-resistant and sound-dampening.</li>
+                <li><strong>Cellulose (Blown-in):</strong> Made from recycled paper, it's great for filling existing wall cavities or attics without major demolition.</li>
+                <li><strong>Spray Foam (Open Cell):</strong> Expands significantly to create a great air seal. Good for soundproofing but has a lower R-value than closed cell.</li>
+                <li><strong>Spray Foam (Closed Cell):</strong> The highest R-value per inch. It's dense, provides structural rigidity, and acts as a vapor barrier. More expensive.</li>
+                <li><strong>XPS Foam Board:</strong> Rigid panels that are great for foundations, basements, and exterior sheathing. High R-value and moisture resistant.</li>
+              </ul>
+            </div>
+             <div>
+              <h4 className="font-semibold text-foreground mb-2">Target R-Values</h4>
+              <p>The recommended R-value depends on your climate zone and where you're insulating. These are common targets based on U.S. Department of Energy recommendations:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>R-13 to R-21:</strong> Typically used for walls in most climates. R-13 fits in a 2x4 wall, while R-21 is for 2x6 walls.</li>
+                <li><strong>R-30 to R-49:</strong> Common for attics. Colder climates (Northern U.S.) should aim for R-49 or even R-60, while warmer climates (Southern U.S.) might be fine with R-30.</li>
+              </ul>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </div>
   );
