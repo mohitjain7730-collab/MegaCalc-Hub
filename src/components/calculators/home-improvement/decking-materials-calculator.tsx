@@ -9,14 +9,15 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator } from 'lucide-react';
+import { Calculator, HelpCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const formSchema = z.object({
   deckLength: z.number().positive(),
   deckWidth: z.number().positive(),
-  boardWidth: z.number().positive().default(5.5),
-  joistSpacing: z.number().positive().default(16),
+  boardWidth: z.number().positive(),
+  joistSpacing: z.number().positive(),
   unit: z.enum(['feet', 'meters']),
 });
 
@@ -29,8 +30,8 @@ export default function DeckingMaterialsCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       unit: 'feet',
-      boardWidth: 5.5,
-      joistSpacing: 16,
+      boardWidth: undefined,
+      joistSpacing: undefined,
       deckLength: undefined,
       deckWidth: undefined,
     },
@@ -78,10 +79,24 @@ export default function DeckingMaterialsCalculator() {
                 <FormItem><FormLabel>Deck Width ({unit})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="boardWidth" render={({ field }) => (
-                <FormItem><FormLabel>Deck Board Width ({unit === 'feet' ? 'in' : 'cm'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Deck Board Width ({unit === 'feet' ? 'in' : 'cm'})</FormLabel><FormControl><Input type="number" {...field} placeholder={unit === 'feet' ? 'e.g., 5.5' : 'e.g., 14'} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="joistSpacing" render={({ field }) => (
-                <FormItem><FormLabel>Joist Spacing ({unit === 'feet' ? 'in' : 'cm'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem>
+                    <FormLabel className="flex items-center gap-2">
+                        Joist Spacing ({unit === 'feet' ? 'in' : 'cm'})
+                         <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild><button type="button" className='p-0 m-0'><HelpCircle className="h-4 w-4 text-muted-foreground" /></button></TooltipTrigger>
+                                <TooltipContent><p>The center-to-center distance between support joists. Common spacing is 16 inches.</p></TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </FormLabel>
+                    <FormControl>
+                        <Input type="number" {...field} placeholder={unit === 'feet' ? 'e.g., 16' : 'e.g., 40'} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                    </FormControl>
+                    <FormMessage />
+                </FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>
