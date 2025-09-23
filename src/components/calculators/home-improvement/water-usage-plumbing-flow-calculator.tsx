@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Droplets } from 'lucide-react';
+import { Droplets } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 
 const fixtureUnits = {
@@ -66,6 +66,7 @@ export default function WaterUsagePlumbingFlowCalculator() {
               <FormItem>
                 <div className="mb-4">
                   <FormLabel className="text-base">Fixtures</FormLabel>
+                   <CardDescription>Select all the water fixtures in your home.</CardDescription>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {Object.keys(fixtureUnits).map((fixtureId) => (

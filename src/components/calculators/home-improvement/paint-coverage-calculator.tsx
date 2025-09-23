@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import {
   Form,
   FormControl,
@@ -43,9 +42,9 @@ export default function PaintCoverageCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      length: 10,
-      width: 12,
-      height: 8,
+      length: undefined,
+      width: undefined,
+      height: undefined,
       coats: 2,
       unit: 'feet',
       coveragePerUnit: 350, // 350 sq ft per gallon
@@ -109,7 +108,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Room Length</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))}/>
+                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -122,7 +121,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Room Width</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))}/>
+                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -135,7 +134,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Room Height</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))}/>
+                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -148,7 +147,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Number of Coats</FormLabel>
                                 <FormControl>
-                                    <Input type="number" step="1" {...field} onChange={e => field.onChange(parseInt(e.target.value))}/>
+                                    <Input type="number" step="1" {...field} onChange={e => field.onChange(parseInt(e.target.value))} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -161,7 +160,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Paint Coverage ({form.getValues('unit') === 'feet' ? 'sq ft / gallon' : 'sq m / liter'})</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))}/>
+                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

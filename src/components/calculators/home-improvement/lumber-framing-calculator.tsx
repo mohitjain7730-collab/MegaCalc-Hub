@@ -37,7 +37,7 @@ export default function LumberFramingCalculator() {
 
     if (unit === 'meters') {
         wallLength *= 3.28084;
-        studSpacing *= 0.393701;
+        studSpacing /= 2.54; // cm to inches
     }
 
     const studs = Math.ceil((wallLength * 12 / studSpacing)) + 1;
@@ -62,7 +62,7 @@ export default function LumberFramingCalculator() {
                 <FormItem><FormLabel>Total Wall Length ({unit})</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="studSpacing" render={({ field }) => (
-                <FormItem><FormLabel>Stud Spacing (on center)</FormLabel><FormControl><Input type="number" placeholder={unit === 'feet' ? '16' : '40'} {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Stud Spacing (on center, {unit === 'feet' ? 'in' : 'cm'})</FormLabel><FormControl><Input type="number" placeholder={unit === 'feet' ? '16' : '40'} {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>

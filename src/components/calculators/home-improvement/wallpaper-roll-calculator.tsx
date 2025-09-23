@@ -39,7 +39,17 @@ export default function WallpaperRollCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const { wallHeight, wallWidth, rollLength, rollWidth, patternRepeat, unit } = values;
+    let { wallHeight, wallWidth, rollLength, rollWidth, patternRepeat, unit } = values;
+
+    if (unit === 'feet') {
+      // convert roll width and pattern repeat from inches to feet
+      rollWidth /= 12;
+      patternRepeat /= 12;
+    } else { // meters
+      // convert roll width and pattern repeat from cm to meters
+      rollWidth /= 100;
+      patternRepeat /= 100;
+    }
 
     const wastageFactor = 1.1; // 10% wastage
 
@@ -53,16 +63,12 @@ export default function WallpaperRollCalculator() {
     const dropsPerRoll = Math.floor(rollLength / dropLength);
 
     if (dropsPerRoll === 0) {
-        // This indicates a single roll isn't long enough for even one drop.
-        // This is an edge case, but good to handle.
-        // Let's calculate based on total length needed.
         const totalLengthNeeded = dropsNeeded * dropLength;
         const rollsNeeded = Math.ceil(totalLengthNeeded / rollLength);
-        setResult(rollsNeeded);
+        setResult(Math.ceil(rollsNeeded * wastageFactor));
         return;
     }
 
-    // Calculate the number of rolls needed
     const rollsNeeded = Math.ceil(dropsNeeded / dropsPerRoll);
     
     setResult(Math.ceil(rollsNeeded * wastageFactor));

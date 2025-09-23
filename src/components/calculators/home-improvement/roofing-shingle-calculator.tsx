@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Home } from 'lucide-react';
+import { Home } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
@@ -69,7 +69,7 @@ export default function RoofingShingleCalculator() {
                 <FormItem><FormLabel>Roof Footprint Area ({unit === 'feet' ? 'sq ft' : 'sq m'})</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
              <FormField control={form.control} name="pitch" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Roof Pitch (e.g., 4/12)</FormLabel><FormControl><Input type="number" min="1" max="12" {...field} onChange={e => field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2"><FormLabel>Roof Pitch (e.g., 4 in 4/12)</FormLabel><FormControl><Input type="number" min="1" max="12" {...field} onChange={e => field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>

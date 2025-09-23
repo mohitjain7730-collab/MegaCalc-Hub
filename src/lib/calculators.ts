@@ -125,9 +125,9 @@ export const calculators: Calculator[] = [
   // Home Improvement
   {
     id: 1,
-    name: 'Paint Coverage Estimator',
+    name: 'Paint Coverage Calculator',
     description: 'Calculates amount of paint needed for a project.',
-    slug: 'paint-coverage-estimator',
+    slug: 'paint-coverage-calculator',
     category: 'home-improvement',
   },
   {

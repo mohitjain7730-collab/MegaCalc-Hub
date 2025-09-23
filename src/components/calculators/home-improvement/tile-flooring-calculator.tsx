@@ -41,11 +41,15 @@ export default function TileFlooringCalculator() {
   const onSubmit = (values: FormValues) => {
     const { areaLength, areaWidth, tileLength, tileWidth, wastage, unit } = values;
 
-    const areaUnit = unit === 'feet' ? 'sq ft' : 'sq m';
-    const tileUnitFactor = unit === 'feet' ? 144 : 10000;
+    let tileUnitToAreaUnit;
+    if (unit === 'feet') {
+      tileUnitToAreaUnit = 144; // inches in sq ft
+    } else {
+      tileUnitToAreaUnit = 10000; // cm in sq m
+    }
 
     const totalArea = areaLength * areaWidth;
-    const tileArea = (tileLength * tileWidth) / tileUnitFactor;
+    const tileArea = (tileLength * tileWidth) / tileUnitToAreaUnit;
     const tilesForArea = totalArea / tileArea;
     const tilesNeeded = Math.ceil(tilesForArea * (1 + wastage / 100));
 
@@ -140,9 +144,9 @@ export default function TileFlooringCalculator() {
                 <AccordionContent className="text-muted-foreground space-y-2">
                     <ol className="list-decimal list-inside space-y-1">
                         <li><strong>Total Area Calculation:</strong> It first calculates the total area to be tiled by multiplying `Area Length` by `Area Width`.</li>
-                        <li><strong>Tile Area Calculation:</strong> It then calculates the area of a single tile. If using feet/inches, it converts tile dimensions from inches to feet before multiplying. If using meters/cm, it converts from cm to meters.</li>
+                        <li><strong>Tile Area Calculation:</strong> It then calculates the area of a single tile, converting from inches/cm to feet/meters as needed.</li>
                         <li><strong>Basic Tile Count:</strong> It divides the `Total Area` by the `Single Tile Area` to find the number of tiles that would perfectly fit.</li>
-                        <li><strong>Wastage:</strong> The calculator adds the specified wastage percentage to the tile count. This accounts for cuts, breakage, and mistakes. The final number is rounded up to the nearest whole tile.</li>
+                        <li><strong>Wastage:</strong> The calculator adds the specified wastage percentage to the tile count. This accounts for cuts, breakage, and mistakes. The final number is rounded up.</li>
                     </ol>
                 </AccordionContent>
             </AccordionItem>

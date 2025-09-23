@@ -42,8 +42,8 @@ export default function DeckingMaterialsCalculator() {
     if (unit === 'meters') {
         deckLength *= 3.28084;
         deckWidth *= 3.28084;
-        boardWidth *= 0.393701;
-        joistSpacing *= 0.393701;
+        boardWidth /= 2.54; // cm to inches
+        joistSpacing /= 2.54; // cm to inches
     }
 
     const deckArea = deckLength * deckWidth;
