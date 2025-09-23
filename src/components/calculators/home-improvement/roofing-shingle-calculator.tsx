@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,8 +10,10 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Home } from 'lucide-react';
+import { Home, HelpCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Legend } from 'recharts';
 
 const formSchema = z.object({
   area: z.number().positive(),
@@ -20,8 +23,14 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+interface CalculationResult {
+  bundles: number;
+  underlayment: number;
+  chartData: { name: string; quantity: number }[];
+}
+
 export default function RoofingShingleCalculator() {
-  const [result, setResult] = useState<{ bundles: number; underlayment: number } | null>(null);
+  const [result, setResult] = useState<CalculationResult | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -51,8 +60,18 @@ export default function RoofingShingleCalculator() {
     
     // 1 roll of underlayment covers approx 200 or 400 sq ft (2 or 4 squares)
     const underlaymentRolls = Math.ceil(squares / 4);
+    
+    const finalBundles = Math.ceil(bundles * 1.1);
+    const finalUnderlayment = Math.ceil(underlaymentRolls * 1.1);
 
-    setResult({ bundles: Math.ceil(bundles * 1.1), underlayment: Math.ceil(underlaymentRolls * 1.1) });
+    setResult({ 
+        bundles: finalBundles, 
+        underlayment: finalUnderlayment,
+        chartData: [
+            { name: 'Shingle Bundles', quantity: finalBundles },
+            { name: 'Underlayment Rolls', quantity: finalUnderlayment }
+        ]
+    });
   };
 
   const unit = form.watch('unit');
@@ -66,10 +85,33 @@ export default function RoofingShingleCalculator() {
                 <FormItem><FormLabel>Units</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="feet">Square Feet</SelectItem><SelectItem value="meters">Square Meters</SelectItem></SelectContent></Select></FormItem>
             )} />
             <FormField control={form.control} name="area" render={({ field }) => (
-                <FormItem><FormLabel>Roof Footprint Area ({unit === 'feet' ? 'sq ft' : 'sq m'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem>
+                    <FormLabel className="flex items-center gap-2">
+                        Roof Footprint Area ({unit === 'feet' ? 'sq ft' : 'sq m'})
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild><button type="button" className='p-0 m-0'><HelpCircle className="h-4 w-4 text-muted-foreground" /></button></TooltipTrigger>
+                                <TooltipContent><p className="max-w-xs">Measure the length and width of the ground area your house covers and multiply them. The calculator will adjust for the roof's slope.</p></TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </FormLabel>
+                    <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage />
+                </FormItem>
             )} />
              <FormField control={form.control} name="pitch" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Roof Pitch (e.g., 4 in 4/12)</FormLabel><FormControl><Input type="number" min="1" max="12" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value, 10) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2">
+                     <FormLabel className="flex items-center gap-2">
+                        Roof Pitch (e.g., 4 in 4/12)
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild><button type="button" className='p-0 m-0'><HelpCircle className="h-4 w-4 text-muted-foreground" /></button></TooltipTrigger>
+                                <TooltipContent><p className="max-w-xs">The slope of your roof. A "4" means the roof rises 4 inches for every 12 inches of horizontal run.</p></TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </FormLabel>
+                    <FormControl><Input type="number" min="1" max="12" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value, 10) || 0)} /></FormControl>
+                    <FormMessage />
+                </FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>
@@ -79,11 +121,26 @@ export default function RoofingShingleCalculator() {
         <Card className="mt-8">
             <CardHeader><div className='flex items-center gap-4'><Home className="h-8 w-8 text-primary" /><CardTitle>Estimated Materials</CardTitle></div></CardHeader>
             <CardContent>
-                <ul className="list-disc pl-5 text-lg space-y-2">
-                    <li><strong>{result.bundles} bundles</strong> of shingles.</li>
-                    <li><strong>{result.underlayment} rolls</strong> of underlayment.</li>
-                </ul>
-                <CardDescription className='mt-4'>Includes ~10% for wastage, starter strips, and ridge caps. Always buy extra.</CardDescription>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <ul className="list-disc pl-5 text-lg space-y-2">
+                            <li><strong>{result.bundles} bundles</strong> of shingles.</li>
+                            <li><strong>{result.underlayment} rolls</strong> of underlayment.</li>
+                        </ul>
+                        <CardDescription className='mt-4'>Includes ~10% for wastage, starter strips, and ridge caps. Always buy extra.</CardDescription>
+                    </div>
+                    <div className="h-64">
+                         <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={result.chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="name" />
+                                <YAxis allowDecimals={false} />
+                                <RechartsTooltip />
+                                <Bar dataKey="quantity" fill="hsl(var(--primary))" name="Quantity" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </div>
             </CardContent>
         </Card>
       )}
