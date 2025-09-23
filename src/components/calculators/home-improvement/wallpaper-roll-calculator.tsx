@@ -73,7 +73,7 @@ export default function WallpaperRollCalculator() {
     const dropLength = wallHeight + (patternRepeat > 0 ? patternRepeat : 0);
     
     // Calculate how many full drops can be cut from a single roll
-    const dropsPerRoll = patternRepeat > 0 ? Math.floor(rollLength / dropLength) : Math.floor(rollLength / wallHeight);
+    const dropsPerRoll = Math.floor(rollLength / dropLength);
 
     let rollsNeeded;
     if (dropsPerRoll > 0) {
