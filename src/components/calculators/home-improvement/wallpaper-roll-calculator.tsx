@@ -11,6 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calculator } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 const formSchema = z.object({
   wallHeight: z.number().positive(),
@@ -23,8 +25,18 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+interface CalculationResult {
+    rolls: number;
+    chartData: {
+        name: string;
+        needed: number;
+        purchased: number;
+    }[];
+    unit: string;
+}
+
 export default function WallpaperRollCalculator() {
-  const [result, setResult] = useState<number | null>(null);
+  const [result, setResult] = useState<CalculationResult | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -40,6 +52,7 @@ export default function WallpaperRollCalculator() {
 
   const onSubmit = (values: FormValues) => {
     let { wallHeight, wallWidth, rollLength, rollWidth, patternRepeat, unit } = values;
+    let lengthUnit = unit;
 
     if (unit === 'feet') {
       // convert roll width and pattern repeat from inches to feet
@@ -60,18 +73,30 @@ export default function WallpaperRollCalculator() {
     const dropLength = wallHeight + (patternRepeat > 0 ? patternRepeat : 0);
     
     // Calculate how many full drops can be cut from a single roll
-    const dropsPerRoll = Math.floor(rollLength / dropLength);
+    const dropsPerRoll = patternRepeat > 0 ? Math.floor(rollLength / dropLength) : Math.floor(rollLength / wallHeight);
 
-    if (dropsPerRoll === 0) {
+    let rollsNeeded;
+    if (dropsPerRoll > 0) {
+        rollsNeeded = Math.ceil(dropsNeeded / dropsPerRoll);
+    } else {
+        // This case handles when a single drop is longer than a roll
         const totalLengthNeeded = dropsNeeded * dropLength;
-        const rollsNeeded = Math.ceil(totalLengthNeeded / rollLength);
-        setResult(Math.ceil(rollsNeeded * wastageFactor));
-        return;
+        rollsNeeded = Math.ceil(totalLengthNeeded / rollLength);
     }
-
-    const rollsNeeded = Math.ceil(dropsNeeded / dropsPerRoll);
     
-    setResult(Math.ceil(rollsNeeded * wastageFactor));
+    const finalRolls = Math.ceil(rollsNeeded * wastageFactor);
+    const totalLengthNeeded = dropsNeeded * dropLength;
+    const totalLengthPurchased = finalRolls * rollLength;
+
+    setResult({ 
+        rolls: finalRolls,
+        chartData: [{
+            name: 'Wallpaper',
+            needed: parseFloat(totalLengthNeeded.toFixed(2)),
+            purchased: parseFloat(totalLengthPurchased.toFixed(2)),
+        }],
+        unit: lengthUnit
+    });
   };
   
   const unit = form.watch('unit');
@@ -116,8 +141,25 @@ export default function WallpaperRollCalculator() {
             <Card className="mt-8">
                 <CardHeader><div className='flex items-center gap-4'><Calculator className="h-8 w-8 text-primary" /><CardTitle>Result</CardTitle></div></CardHeader>
                 <CardContent>
-                    <p className="text-lg">You will need approximately <strong>{result} rolls</strong> of wallpaper.</p>
-                    <CardDescription className='mt-2'>This includes a 10% wastage factor. It's always better to have a little extra.</CardDescription>
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <p className="text-lg">You will need approximately <strong>{result.rolls} rolls</strong> of wallpaper.</p>
+                            <CardDescription className='mt-2'>This includes a 10% wastage factor. It's always better to have a little extra.</CardDescription>
+                        </div>
+                        <div className='h-48'>
+                             <ResponsiveContainer width="100%" height="100%">
+                                <BarChart data={result.chartData} layout="vertical" margin={{ left: 10 }}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis type="number" unit={result.unit} />
+                                <YAxis type="category" dataKey="name" hide />
+                                <Tooltip formatter={(value, name) => `${value} ${result.unit}`} />
+                                <Legend />
+                                <Bar dataKey="needed" name="Wallpaper Needed" fill="hsl(var(--muted-foreground))" />
+                                <Bar dataKey="purchased" name="Wallpaper Purchased" fill="hsl(var(--primary))" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </div>
                 </CardContent>
             </Card>
         )}
