@@ -11,6 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calculator } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 const formSchema = z.object({
   areaLength: z.number().positive('Must be positive'),
@@ -23,8 +25,16 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+interface CalculationResult {
+  tilesNeeded: number;
+  totalArea: number;
+  chartData: { name: string; value: number }[];
+}
+
+const COLORS = ['hsl(var(--primary))', 'hsl(var(--muted-foreground))'];
+
 export default function TileFlooringCalculator() {
-  const [result, setResult] = useState<{ tilesNeeded: number; totalArea: number } | null>(null);
+  const [result, setResult] = useState<CalculationResult | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -51,9 +61,15 @@ export default function TileFlooringCalculator() {
     const totalArea = areaLength * areaWidth;
     const tileArea = (tileLength * tileWidth) / tileUnitToAreaUnit;
     const tilesForArea = totalArea / tileArea;
-    const tilesNeeded = Math.ceil(tilesForArea * (1 + wastage / 100));
+    const wastageTiles = tilesForArea * (wastage / 100);
+    const tilesNeeded = Math.ceil(tilesForArea + wastageTiles);
 
-    setResult({ tilesNeeded, totalArea });
+    const chartData = [
+        { name: 'Usable Tiles', value: Math.ceil(tilesForArea) },
+        { name: 'Wastage Tiles', value: Math.ceil(wastageTiles) },
+    ];
+
+    setResult({ tilesNeeded, totalArea, chartData });
   };
   
   const unit = form.watch('unit');
@@ -70,9 +86,7 @@ export default function TileFlooringCalculator() {
                             <FormItem className="md:col-span-2">
                                 <FormLabel>Units</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                        <SelectTrigger><SelectValue placeholder="Select unit" /></SelectTrigger>
-                                    </FormControl>
+                                    <FormControl><SelectTrigger><SelectValue placeholder="Select unit" /></SelectTrigger></FormControl>
                                     <SelectContent>
                                         <SelectItem value="feet">Feet / Inches</SelectItem>
                                         <SelectItem value="meters">Meters / Centimeters</SelectItem>
@@ -129,12 +143,38 @@ export default function TileFlooringCalculator() {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-lg">
-                        For a total area of <strong>{result.totalArea.toFixed(2)} {unit === 'feet' ? 'sq ft' : 'sq m'}</strong>, you will need approximately <strong>{result.tilesNeeded} tiles</strong>.
-                    </p>
-                    <CardDescription className='mt-2'>
-                        This includes a {form.getValues('wastage')}% wastage factor.
-                    </CardDescription>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                             <p className="text-lg">
+                                For a total area of <strong>{result.totalArea.toFixed(2)} {unit === 'feet' ? 'sq ft' : 'sq m'}</strong>, you will need approximately:
+                            </p>
+                            <p className="text-3xl font-bold my-2">{result.tilesNeeded} tiles</p>
+                            <CardDescription className='mt-2'>
+                                This includes a {form.getValues('wastage')}% wastage factor.
+                            </CardDescription>
+                        </div>
+                        <div className="h-48">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <PieChart>
+                                <Pie
+                                    data={result.chartData}
+                                    cx="50%"
+                                    cy="50%"
+                                    labelLine={false}
+                                    outerRadius={80}
+                                    fill="#8884d8"
+                                    dataKey="value"
+                                >
+                                    {result.chartData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    ))}
+                                </Pie>
+                                <Tooltip formatter={(value: number) => `${value} tiles`} />
+                                <Legend />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </div>
                 </CardContent>
             </Card>
         )}
