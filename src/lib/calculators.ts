@@ -180,13 +180,6 @@ export const calculators: Calculator[] = [
     category: 'home-improvement',
   },
   {
-    id: 9,
-    name: 'Lumber/Framing Calculator',
-    description: 'Quantity of studs, plates, and beams for building or remodeling walls.',
-    slug: 'lumber-framing-calculator',
-    category: 'home-improvement',
-  },
-  {
     id: 10,
     name: 'Lighting Layout Calculator',
     description: 'Number and placement of light fixtures needed to achieve a target lux/foot-candle level.',

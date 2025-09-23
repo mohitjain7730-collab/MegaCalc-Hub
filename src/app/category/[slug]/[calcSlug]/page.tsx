@@ -36,7 +36,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'decking-materials-calculator': dynamic(() => import('@/components/calculators/home-improvement/decking-materials-calculator')),
     'roofing-shingle-calculator': dynamic(() => import('@/components/calculators/home-improvement/roofing-shingle-calculator')),
     'concrete-volume-calculator': dynamic(() => import('@/components/calculators/home-improvement/concrete-volume-calculator')),
-    'lumber-framing-calculator': dynamic(() => import('@/components/calculators/home-improvement/lumber-framing-calculator')),
     'lighting-layout-calculator': dynamic(() => import('@/components/calculators/home-improvement/lighting-layout-calculator')),
     'hvac-sizing-calculator': dynamic(() => import('@/components/calculators/home-improvement/hvac-sizing-calculator')),
     'staircase-rise-run-calculator': dynamic(() => import('@/components/calculators/home-improvement/staircase-rise-run-calculator')),
