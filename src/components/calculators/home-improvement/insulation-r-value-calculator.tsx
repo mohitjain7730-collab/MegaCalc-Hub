@@ -8,32 +8,40 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Thermometer } from 'lucide-react';
+import { Thermometer, HelpCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Legend } from 'recharts';
+
 
 const insulationTypes = {
-  fiberglassBatt: 3.2,
-  rockwoolBatt: 3.8,
-  celluloseBlown: 3.5,
-  sprayFoamOpen: 3.6,
-  sprayFoamClosed: 6.5,
-  xpsFoamBoard: 5.0,
+  fiberglassBatt: { name: 'Fiberglass Batt', rValue: 3.2 },
+  rockwoolBatt: { name: 'Rockwool Batt', rValue: 3.8 },
+  celluloseBlown: { name: 'Cellulose (Blown-in)', rValue: 3.5 },
+  sprayFoamOpen: { name: 'Spray Foam (Open Cell)', rValue: 3.6 },
+  sprayFoamClosed: { name: 'Spray Foam (Closed Cell)', rValue: 6.5 },
+  xpsFoamBoard: { name: 'XPS Foam Board', rValue: 5.0 },
 };
 
 const formSchema = z.object({
-  insulationType: z.nativeEnum(insulationTypes),
-  targetRValue: z.number().positive(),
+  insulationType: z.coerce.number(),
+  targetRValue: z.coerce.number().positive(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
+interface ChartDataItem {
+    name: string;
+    thickness: number;
+}
+
 export default function InsulationRValueCalculator() {
-  const [result, setResult] = useState<number | null>(null);
+  const [result, setResult] = useState<{ thickness: number, chartData: ChartDataItem[] } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      insulationType: insulationTypes.fiberglassBatt,
+      insulationType: insulationTypes.fiberglassBatt.rValue,
       targetRValue: 21
     },
   });
@@ -41,7 +49,13 @@ export default function InsulationRValueCalculator() {
   const onSubmit = (values: FormValues) => {
     const { insulationType, targetRValue } = values;
     const thickness = targetRValue / insulationType;
-    setResult(thickness);
+
+    const chartData = Object.values(insulationTypes).map(type => ({
+        name: type.name,
+        thickness: parseFloat((targetRValue / type.rValue).toFixed(2)),
+    }));
+
+    setResult({ thickness, chartData });
   };
 
   return (
@@ -54,15 +68,21 @@ export default function InsulationRValueCalculator() {
               name="insulationType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Insulation Type</FormLabel>
+                  <FormLabel className="flex items-center gap-2">
+                    Insulation Type
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild><button type="button" className='p-0 m-0'><HelpCircle className="h-4 w-4 text-muted-foreground" /></button></TooltipTrigger>
+                        <TooltipContent><p>This is the material's thermal resistance per inch of thickness.</p></TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </FormLabel>
                   <Select onValueChange={(val) => field.onChange(parseFloat(val))} defaultValue={String(field.value)}>
-                    <FormControl>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
-                    </FormControl>
+                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                     <SelectContent>
-                      {Object.entries(insulationTypes).map(([key, value]) => (
-                        <SelectItem key={key} value={String(value)}>
-                          {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())} (R-{value}/inch)
+                      {Object.values(insulationTypes).map((type) => (
+                        <SelectItem key={type.name} value={String(type.rValue)}>
+                          {type.name} (R-{type.rValue}/inch)
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -76,16 +96,24 @@ export default function InsulationRValueCalculator() {
               name="targetRValue"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Target R-Value</FormLabel>
+                  <FormLabel className="flex items-center gap-2">
+                    Target R-Value
+                     <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild><button type="button" className='p-0 m-0'><HelpCircle className="h-4 w-4 text-muted-foreground" /></button></TooltipTrigger>
+                        <TooltipContent><p className="max-w-xs">Total thermal resistance needed. Varies by climate and location (e.g., walls, attic). Higher is better.</p></TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </FormLabel>
                   <FormControl>
                     <Select onValueChange={(val) => field.onChange(parseInt(val))} defaultValue={String(field.value)}>
                         <SelectTrigger><SelectValue /></SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="13">R-13 (2x4 Walls)</SelectItem>
-                            <SelectItem value="21">R-21 (2x6 Walls)</SelectItem>
-                            <SelectItem value="30">R-30 (Attic)</SelectItem>
-                            <SelectItem value="38">R-38 (Attic)</SelectItem>
-                            <SelectItem value="49">R-49 (Attic)</SelectItem>
+                            <SelectItem value="13">R-13 (Standard 2x4 Walls)</SelectItem>
+                            <SelectItem value="21">R-21 (Standard 2x6 Walls)</SelectItem>
+                            <SelectItem value="30">R-30 (Attic - Mild Climates)</SelectItem>
+                            <SelectItem value="38">R-38 (Attic - Moderate Climates)</SelectItem>
+                            <SelectItem value="49">R-49 (Attic - Cold Climates)</SelectItem>
                         </SelectContent>
                     </Select>
                   </FormControl>
@@ -102,14 +130,25 @@ export default function InsulationRValueCalculator() {
           <CardHeader>
             <div className='flex items-center gap-4'>
               <Thermometer className="h-8 w-8 text-primary" />
-              <CardTitle>Result</CardTitle>
+              <CardTitle>Results for Target R-{form.getValues('targetRValue')}</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-lg">
-              You will need approximately <strong>{result.toFixed(2)} inches</strong> of your chosen insulation to achieve an R-Value of {form.getValues('targetRValue')}.
+            <p className="text-lg mb-6">
+              You will need approximately <strong>{result.thickness.toFixed(2)} inches</strong> of your chosen insulation.
             </p>
-            <CardDescription className='mt-2'>This is a direct calculation. Always check manufacturer specifications.</CardDescription>
+            <CardDescription className='mb-4'>Comparison of required thickness across different materials:</CardDescription>
+             <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={result.chartData} layout="vertical" margin={{ left: 100 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis type="number" unit=" in" />
+                        <YAxis type="category" dataKey="name" width={100} interval={0} />
+                        <RechartsTooltip formatter={(value) => `${value} inches`} />
+                        <Bar dataKey="thickness" name="Required Thickness" fill="hsl(var(--primary))" />
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
           </CardContent>
         </Card>
       )}
