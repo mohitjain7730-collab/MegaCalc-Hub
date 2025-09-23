@@ -12,6 +12,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Flame } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 const formSchema = z.object({
   age: z.number().positive().int(),
@@ -22,6 +24,14 @@ const formSchema = z.object({
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+const activityLevels = [
+    { name: 'Sedentary', description: 'Little or no exercise', multiplier: 1.2 },
+    { name: 'Lightly Active', description: 'Light exercise (1-3 days/week)', multiplier: 1.375 },
+    { name: 'Moderately Active', description: 'Moderate exercise (3-5 days/week)', multiplier: 1.55 },
+    { name: 'Very Active', description: 'Hard exercise (6-7 days/week)', multiplier: 1.725 },
+    { name: 'Extra Active', description: 'Very hard exercise & physical job', multiplier: 1.9 },
+];
 
 export default function BmrCalculator() {
   const [result, setResult] = useState<number | null>(null);
@@ -57,6 +67,12 @@ export default function BmrCalculator() {
   
   const unit = form.watch('unit');
 
+  const chartData = result ? activityLevels.map(level => ({
+      name: level.name,
+      calories: Math.round(result * level.multiplier),
+      description: level.description,
+  })) : [];
+
   return (
     <div className="space-y-8">
       <Form {...form}>
@@ -89,6 +105,33 @@ export default function BmrCalculator() {
                     <p className="text-4xl font-bold">{result.toFixed(0)}</p>
                     <CardDescription>Calories/day your body burns at rest.</CardDescription>
                 </div>
+                <div className="mt-8">
+                    <h3 className="text-lg font-semibold text-center mb-4">Daily Calorie Needs by Activity Level</h3>
+                     <div className="h-80">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="name" angle={-45} textAnchor="end" height={60} interval={0} />
+                                <YAxis />
+                                <Tooltip
+                                    content={({ active, payload, label }) => {
+                                        if (active && payload && payload.length) {
+                                            return (
+                                                <div className="bg-background border p-2 rounded-lg shadow-lg">
+                                                    <p className="font-bold">{label}</p>
+                                                    <p className='text-sm text-muted-foreground'>{payload[0].payload.description}</p>
+                                                    <p className="text-primary mt-1">{`Calories: ${payload[0].value}`}</p>
+                                                </div>
+                                            );
+                                        }
+                                        return null;
+                                    }}
+                                />
+                                <Bar dataKey="calories" fill="hsl(var(--primary))" name="Estimated Daily Calories" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </div>
             </CardContent>
         </Card>
       )}
@@ -97,6 +140,7 @@ export default function BmrCalculator() {
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
                 <p>This calculator uses the Mifflin-St Jeor equation, which is considered one of the most accurate formulas for estimating Basal Metabolic Rate (BMR). BMR is the number of calories your body needs to accomplish its most basic (basal) life-sustaining functions.</p>
+                <p>The chart above estimates your Total Daily Energy Expenditure (TDEE) by multiplying your BMR by an activity factor. This gives you an estimate of how many calories you burn per day based on your activity level.</p>
             </AccordionContent>
         </AccordionItem>
         <AccordionItem value="further-reading">
