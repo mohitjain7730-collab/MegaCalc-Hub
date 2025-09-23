@@ -84,35 +84,35 @@ export default function TileFlooringCalculator() {
                     <FormField control={form.control} name="areaLength" render={({ field }) => (
                         <FormItem>
                             <FormLabel>Area Length ({unit})</FormLabel>
-                            <FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl>
+                            <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                             <FormMessage />
                         </FormItem>
                     )} />
                     <FormField control={form.control} name="areaWidth" render={({ field }) => (
                         <FormItem>
                             <FormLabel>Area Width ({unit})</FormLabel>
-                            <FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl>
+                            <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                             <FormMessage />
                         </FormItem>
                     )} />
                     <FormField control={form.control} name="tileLength" render={({ field }) => (
                         <FormItem>
                             <FormLabel>Tile Length ({unit === 'feet' ? 'in' : 'cm'})</FormLabel>
-                            <FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl>
+                            <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                             <FormMessage />
                         </FormItem>
                     )} />
                     <FormField control={form.control} name="tileWidth" render={({ field }) => (
                         <FormItem>
                             <FormLabel>Tile Width ({unit === 'feet' ? 'in' : 'cm'})</FormLabel>
-                            <FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl>
+                            <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                             <FormMessage />
                         </FormItem>
                     )} />
                     <FormField control={form.control} name="wastage" render={({ field }) => (
                         <FormItem className="md:col-span-2">
                             <FormLabel>Wastage (%)</FormLabel>
-                            <FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} /></FormControl>
+                            <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value, 10) || 0)} /></FormControl>
                             <FormMessage />
                         </FormItem>
                     )} />

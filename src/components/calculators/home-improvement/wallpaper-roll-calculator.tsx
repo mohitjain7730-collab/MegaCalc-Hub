@@ -94,19 +94,19 @@ export default function WallpaperRollCalculator() {
                         </FormItem>
                     )} />
                     <FormField control={form.control} name="wallHeight" render={({ field }) => (
-                        <FormItem><FormLabel>Wall Height ({unit})</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                        <FormItem><FormLabel>Wall Height ({unit})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="wallWidth" render={({ field }) => (
-                        <FormItem><FormLabel>Total Wall Width ({unit})</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                        <FormItem><FormLabel>Total Wall Width ({unit})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="rollLength" render={({ field }) => (
-                        <FormItem><FormLabel>Roll Length ({unit})</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                        <FormItem><FormLabel>Roll Length ({unit})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="rollWidth" render={({ field }) => (
-                        <FormItem><FormLabel>Roll Width ({unit === 'feet' ? 'in' : 'cm'})</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                        <FormItem><FormLabel>Roll Width ({unit === 'feet' ? 'in' : 'cm'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="patternRepeat" render={({ field }) => (
-                        <FormItem className="md:col-span-2"><FormLabel>Pattern Repeat ({unit === 'feet' ? 'in' : 'cm'}) (0 if none)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                        <FormItem className="md:col-span-2"><FormLabel>Pattern Repeat ({unit === 'feet' ? 'in' : 'cm'}) (0 if none)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
                     )} />
                 </div>
                 <Button type="submit">Calculate</Button>

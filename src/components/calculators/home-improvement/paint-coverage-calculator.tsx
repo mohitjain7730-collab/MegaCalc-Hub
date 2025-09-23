@@ -108,7 +108,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Room Length</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                                    <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -121,7 +121,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Room Width</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                                    <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -134,7 +134,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Room Height</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                                    <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -147,7 +147,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Number of Coats</FormLabel>
                                 <FormControl>
-                                    <Input type="number" step="1" {...field} onChange={e => field.onChange(parseInt(e.target.value))} />
+                                    <Input type="number" step="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -160,7 +160,7 @@ export default function PaintCoverageCalculator() {
                             <FormItem>
                                 <FormLabel>Paint Coverage ({form.getValues('unit') === 'feet' ? 'sq ft / gallon' : 'sq m / liter'})</FormLabel>
                                 <FormControl>
-                                    <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                                    <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -180,7 +180,7 @@ export default function PaintCoverageCalculator() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-lg">
-                        You will need approximately <strong>{result.paintNeeded.toFixed(2)} {result.unit}</strong> of paint.
+                        You will need approximately <strong>{Math.ceil(result.paintNeeded)} {result.unit}</strong> of paint.
                     </p>
                     <CardDescription className='mt-2'>
                         This is an estimate. It's recommended to buy a little extra to account for touch-ups and variations in surface porosity.

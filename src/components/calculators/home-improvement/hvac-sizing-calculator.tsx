@@ -67,7 +67,7 @@ export default function HvacSizingCalculator() {
                 </SelectContent></Select></FormItem>
             )} />
              <FormField control={form.control} name="area" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Conditioned Area ({unit === 'feet' ? 'sq ft' : 'sq m'})</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2"><FormLabel>Conditioned Area ({unit === 'feet' ? 'sq ft' : 'sq m'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>
