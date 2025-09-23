@@ -97,6 +97,42 @@ export default function HvacSizingCalculator() {
                 </ol>
             </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="hvac-defined">
+            <AccordionTrigger>What is HVAC?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+                <p>HVAC stands for Heating, Ventilation, and Air Conditioning. It's the technology of indoor and vehicular environmental comfort. Its goal is to provide thermal comfort and acceptable indoor air quality. HVAC systems are the central units that heat your home in the winter and cool it in the summer.</p>
+            </AccordionContent>
+        </AccordionItem>
+         <AccordionItem value="btu-defined">
+            <AccordionTrigger>What is a BTU?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+                <p>A British Thermal Unit (BTU) is a unit of heat. Specifically, it is the amount of heat required to raise the temperature of one pound of water by one degree Fahrenheit. In HVAC terms, a BTU rating indicates how much energy a unit can add to or remove from the air per hour.</p>
+                 <ul className="list-disc list-inside space-y-1">
+                    <li>A <strong>higher BTU</strong> rating means more heating or cooling power.</li>
+                </ul>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="tonnage-defined">
+            <AccordionTrigger>What is "Tonnage" in HVAC?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+                <p>In the context of air conditioning, a "ton" is a unit of cooling capacity. It does not refer to the weight of the unit. One ton of cooling is the rate of heat removal required to freeze 1 short ton (2,000 lbs) of water into ice in 24 hours.</p>
+                <ul className="list-disc list-inside space-y-1">
+                    <li><strong>1 Ton of Cooling = 12,000 BTU/hr</strong>.</li>
+                    <li>Residential HVAC units typically range from 1.5 to 5 tons.</li>
+                </ul>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="sizing-matters">
+            <AccordionTrigger>Why Proper Sizing Matters</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+                <p>Choosing the right size HVAC unit is critical for both comfort and efficiency.</p>
+                <ul className="list-disc list-inside space-y-1">
+                    <li><strong>Too Small:</strong> An undersized unit will run constantly, struggling to heat or cool your home effectively. This leads to high energy bills and premature wear and tear on the system.</li>
+                    <li><strong>Too Large:</strong> An oversized unit will cool the air too quickly and shut off before it has had a chance to dehumidify the air properly, leading to a cold, clammy feeling. This frequent on-and-off cycling (short-cycling) is also highly inefficient and stresses the system's components.</li>
+                </ul>
+                 <p className="mt-2 font-semibold">A professionally conducted "Manual J" calculation is the industry standard for accurately sizing an HVAC system, as it considers many factors beyond just square footage.</p>
+            </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </div>
   );
