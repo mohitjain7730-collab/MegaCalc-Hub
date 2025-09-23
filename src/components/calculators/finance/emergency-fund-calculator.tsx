@@ -25,7 +25,7 @@ export default function EmergencyFundCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      monthlyExpenses: 3000,
+      monthlyExpenses: undefined,
       coverageMonths: 6,
     },
   });
@@ -87,3 +87,5 @@ export default function EmergencyFundCalculator() {
     </div>
   );
 }
+
+    

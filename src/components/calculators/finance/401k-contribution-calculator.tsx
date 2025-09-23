@@ -49,14 +49,14 @@ export default function FourOhOneKCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      currentAge: 30,
-      retirementAge: 65,
-      currentBalance: 50000,
-      annualSalary: 80000,
-      monthlyContributionPercent: 10,
-      annualReturn: 7,
-      employerMatchPercent: 50,
-      employerMatchLimit: 6,
+      currentAge: undefined,
+      retirementAge: undefined,
+      currentBalance: undefined,
+      annualSalary: undefined,
+      monthlyContributionPercent: undefined,
+      annualReturn: undefined,
+      employerMatchPercent: undefined,
+      employerMatchLimit: undefined,
     },
   });
 
@@ -119,14 +119,14 @@ export default function FourOhOneKCalculator() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="currentAge" render={({ field }) => ( <FormItem><FormLabel>Current Age</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="retirementAge" render={({ field }) => ( <FormItem><FormLabel>Retirement Age</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="currentBalance" render={({ field }) => ( <FormItem><FormLabel>Current 401(k) Balance</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="annualSalary" render={({ field }) => ( <FormItem><FormLabel>Annual Salary</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="monthlyContributionPercent" render={({ field }) => ( <FormItem><FormLabel>Your Contribution (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="annualReturn" render={({ field }) => ( <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="employerMatchPercent" render={({ field }) => ( <FormItem><FormLabel>Employer Match (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="employerMatchLimit" render={({ field }) => ( <FormItem><FormLabel>Employer Match Limit (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="currentAge" render={({ field }) => ( <FormItem><FormLabel>Current Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="retirementAge" render={({ field }) => ( <FormItem><FormLabel>Retirement Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="currentBalance" render={({ field }) => ( <FormItem><FormLabel>Current 401(k) Balance</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="annualSalary" render={({ field }) => ( <FormItem><FormLabel>Annual Salary</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="monthlyContributionPercent" render={({ field }) => ( <FormItem><FormLabel>Your Contribution (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="annualReturn" render={({ field }) => ( <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="employerMatchPercent" render={({ field }) => ( <FormItem><FormLabel>Employer Match (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+            <FormField control={form.control} name="employerMatchLimit" render={({ field }) => ( <FormItem><FormLabel>Employer Match Limit (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
           </div>
           <Button type="submit">Calculate</Button>
         </form>

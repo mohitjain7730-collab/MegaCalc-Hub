@@ -26,9 +26,9 @@ export default function InflationCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      initialAmount: 10000,
-      inflationRate: 3,
-      years: 10,
+      initialAmount: undefined,
+      inflationRate: undefined,
+      years: undefined,
     },
   });
 
@@ -96,3 +96,5 @@ export default function InflationCalculator() {
     </div>
   );
 }
+
+    

@@ -40,8 +40,8 @@ export default function RothIraContributionLimitCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       filingStatus: 'single',
-      magi: 120000,
-      age: 35,
+      magi: undefined,
+      age: undefined,
     },
   });
 
@@ -84,7 +84,7 @@ export default function RothIraContributionLimitCalculator() {
                 </FormItem>
             )} />
             <FormField control={form.control} name="age" render={({ field }) => (
-                <FormItem><FormLabel>Your Age</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Your Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
              <FormField control={form.control} name="magi" render={({ field }) => (
                 <FormItem className="md:col-span-2"><FormLabel>Modified Adjusted Gross Income (MAGI)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
@@ -136,3 +136,5 @@ export default function RothIraContributionLimitCalculator() {
     </div>
   );
 }
+
+    
