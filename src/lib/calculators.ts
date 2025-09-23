@@ -101,6 +101,27 @@ export const calculators: Calculator[] = [
     slug: 'water-footprint-of-food-calculator',
     category: 'health-fitness'
   },
+   {
+    id: 108,
+    name: 'Body Mass Index (BMI) Calculator',
+    description: 'Quickly assess whether you are underweight, healthy, overweight, or obese using this standard health indicator.',
+    slug: 'bmi-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 109,
+    name: 'Basal Metabolic Rate (BMR) Calculator',
+    description: 'Estimate the number of calories your body burns at rest per day. A crucial metric for creating a weight management plan.',
+    slug: 'bmr-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 110,
+    name: 'Target Heart Rate Calculator',
+    description: 'Determine your optimal heart rate zone for moderate and vigorous exercise to maximize the effectiveness of your workouts.',
+    slug: 'target-heart-rate-calculator',
+    category: 'health-fitness'
+  },
   // Home Improvement
   {
     id: 1,
@@ -770,5 +791,3 @@ export const calculators: Calculator[] = [
     category: 'fun-games',
   },
 ];
-
-    
