@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -51,10 +52,10 @@ export default function PipeFlowCalculator() {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <FormField control={form.control} name="diameter" render={({ field }) => (
-                            <FormItem><FormLabel>Pipe Inner Diameter</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                            <FormItem><FormLabel>Pipe Inner Diameter</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                         )} />
                         <FormField control={form.control} name="velocity" render={({ field }) => (
-                            <FormItem><FormLabel>Fluid Velocity</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                            <FormItem><FormLabel>Fluid Velocity</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                         )} />
                     </div>
                     <Button type="submit">Calculate Flow Rate</Button>
