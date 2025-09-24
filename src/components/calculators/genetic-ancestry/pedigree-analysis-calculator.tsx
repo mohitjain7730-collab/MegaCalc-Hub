@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -16,8 +17,8 @@ const memberSchema = z.object({
   id: z.string().min(1),
   sex: z.enum(['male', 'female']),
   phenotype: z.enum(['affected', 'unaffected', 'unknown']),
-  p1: z.string().optional(),
-  p2: z.string().optional(),
+  p1: z.string().optional().or(z.literal('none')),
+  p2: z.string().optional().or(z.literal('none')),
 });
 
 const formSchema = z.object({
@@ -34,8 +35,8 @@ export default function PedigreeAnalysisCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       members: [
-        { id: 'I-1', sex: 'male', phenotype: 'unaffected', p1: '', p2: '' },
-        { id: 'I-2', sex: 'female', phenotype: 'affected', p1: '', p2: '' },
+        { id: 'I-1', sex: 'male', phenotype: 'unaffected', p1: 'none', p2: 'none' },
+        { id: 'I-2', sex: 'female', phenotype: 'affected', p1: 'none', p2: 'none' },
         { id: 'II-1', sex: 'female', phenotype: 'affected', p1: 'I-1', p2: 'I-2' },
         { id: 'II-2', sex: 'male', phenotype: 'unaffected', p1: 'I-1', p2: 'I-2' },
       ],
@@ -85,15 +86,15 @@ export default function PedigreeAnalysisCalculator() {
                         <FormItem><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="affected">Affected</SelectItem><SelectItem value="unaffected">Unaffected</SelectItem><SelectItem value="unknown">Unknown</SelectItem></SelectContent></Select><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name={`members.${index}.p1`} render={({ field }) => (
-                        <FormItem><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="">-</SelectItem>{memberIds.filter(id => id !== form.getValues(`members.${index}.id`)).map(id => <SelectItem key={id} value={id}>{id}</SelectItem>)}</SelectContent></Select></FormItem>
+                        <FormItem><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="none">-</SelectItem>{memberIds.filter(id => id !== form.getValues(`members.${index}.id`)).map(id => <SelectItem key={id} value={id}>{id}</SelectItem>)}</SelectContent></Select></FormItem>
                     )} />
                     <FormField control={form.control} name={`members.${index}.p2`} render={({ field }) => (
-                        <FormItem><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="">-</SelectItem>{memberIds.filter(id => id !== form.getValues(`members.${index}.id`)).map(id => <SelectItem key={id} value={id}>{id}</SelectItem>)}</SelectContent></Select></FormItem>
+                        <FormItem><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="none">-</SelectItem>{memberIds.filter(id => id !== form.getValues(`members.${index}.id`)).map(id => <SelectItem key={id} value={id}>{id}</SelectItem>)}</SelectContent></Select></FormItem>
                     )} />
                     <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)} disabled={fields.length <= 1}><XCircle className="h-5 w-5 text-destructive" /></Button>
                 </div>
               ))}
-               <Button type="button" variant="outline" size="sm" onClick={() => append({ id: '', sex: 'male', phenotype: 'unknown', p1: '', p2: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Member</Button>
+               <Button type="button" variant="outline" size="sm" onClick={() => append({ id: '', sex: 'male', phenotype: 'unknown', p1: 'none', p2: 'none' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Member</Button>
               <Button type="submit" className="w-full">Analyze Pedigree</Button>
             </form>
           </Form>
