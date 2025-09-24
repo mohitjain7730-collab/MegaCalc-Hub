@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -106,16 +107,16 @@ export default function GeneticTraitProbabilityCalculator() {
                 <Card>
                     <CardHeader><CardTitle>Punnett Square</CardTitle></CardHeader>
                     <CardContent>
-                        <div className="grid grid-cols-[30px,1fr,1fr] grid-rows-[30px,1fr,1fr] gap-1 text-center font-mono">
-                            <div></div>
-                            <div className="p-2 font-bold">{form.getValues('p1')[0]}</div>
-                            <div className="p-2 font-bold">{form.getValues('p1')[1]}</div>
-                            <div className="p-2 font-bold">{form.getValues('p2')[0]}</div>
-                            <div className="p-4 border bg-muted">{result.punnettSquare[0][0]}</div>
-                            <div className="p-4 border bg-muted">{result.punnettSquare[0][1]}</div>
-                            <div className="p-2 font-bold">{form.getValues('p2')[1]}</div>
-                            <div className="p-4 border bg-muted">{result.punnettSquare[1][0]}</div>
-                            <div className="p-4 border bg-muted">{result.punnettSquare[1][1]}</div>
+                        <div className="grid grid-cols-[auto,1fr,1fr] grid-rows-[auto,1fr,1fr] gap-1 text-center font-mono">
+                            <div className="p-2 self-end">P2↓ P1→</div>
+                            <div className="p-2 font-bold text-lg">{form.getValues('p1')[0]}</div>
+                            <div className="p-2 font-bold text-lg">{form.getValues('p1')[1]}</div>
+                            <div className="p-2 font-bold text-lg">{form.getValues('p2')[0]}</div>
+                            <div className="p-4 border bg-muted rounded-md">{result.punnettSquare[0][0]}</div>
+                            <div className="p-4 border bg-muted rounded-md">{result.punnettSquare[0][1]}</div>
+                            <div className="p-2 font-bold text-lg">{form.getValues('p2')[1]}</div>
+                            <div className="p-4 border bg-muted rounded-md">{result.punnettSquare[1][0]}</div>
+                            <div className="p-4 border bg-muted rounded-md">{result.punnettSquare[1][1]}</div>
                         </div>
                     </CardContent>
                 </Card>
@@ -123,7 +124,7 @@ export default function GeneticTraitProbabilityCalculator() {
                     <CardHeader><div className='flex items-center gap-4'><Dna className="h-8 w-8 text-primary" /><CardTitle>Offspring Probabilities</CardTitle></div></CardHeader>
                     <CardContent className="space-y-4">
                         <div>
-                            <h3 className="font-semibold mb-2">Genotype</h3>
+                            <h3 className="font-semibold mb-2">Genotype Probabilities</h3>
                             {Object.entries(result.genotypes).map(([geno, perc]) => (
                                 <div key={geno}>
                                     <div className='flex justify-between items-center mb-1'>
@@ -135,13 +136,13 @@ export default function GeneticTraitProbabilityCalculator() {
                             ))}
                         </div>
                          <div>
-                            <h3 className="font-semibold mb-2">Phenotype</h3>
-                             <div>
-                                <div className='flex justify-between items-center mb-1'><p>Dominant Trait</p><p className='text-sm text-muted-foreground'>{result.phenotypes.dominant}%</p></div>
+                            <h3 className="font-semibold mb-2">Phenotype Probabilities</h3>
+                             <div className='mb-4'>
+                                <div className='flex justify-between items-center mb-1'><p>Dominant Trait (Has at least one 'A')</p><p className='text-sm text-muted-foreground'>{result.phenotypes.dominant}%</p></div>
                                 <div className="w-full bg-muted rounded-full h-2.5"><div className="bg-primary h-2.5 rounded-full" style={{ width: `${result.phenotypes.dominant}%` }}></div></div>
                             </div>
                              <div>
-                                <div className='flex justify-between items-center mb-1'><p>Recessive Trait</p><p className='text-sm text-muted-foreground'>{result.phenotypes.recessive}%</p></div>
+                                <div className='flex justify-between items-center mb-1'><p>Recessive Trait (Has two 'a's)</p><p className='text-sm text-muted-foreground'>{result.phenotypes.recessive}%</p></div>
                                 <div className="w-full bg-muted rounded-full h-2.5"><div className="bg-primary h-2.5 rounded-full" style={{ width: `${result.phenotypes.recessive}%` }}></div></div>
                             </div>
                         </div>
@@ -154,12 +155,34 @@ export default function GeneticTraitProbabilityCalculator() {
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
                 <p>This tool uses a Punnett square to visualize and calculate the probability of an offspring inheriting a particular genotype and phenotype based on the parents' genotypes for a single gene, according to the principles of Mendelian genetics.</p>
-                <ul className="list-disc list-inside space-y-1">
-                    <li><strong>Genotype:</strong> The genetic makeup of an organism (e.g., AA, Aa, or aa).</li>
-                    <li><strong>Phenotype:</strong> The observable physical characteristic (e.g., brown eyes vs. blue eyes). A dominant allele (A) will mask a recessive allele (a).</li>
-                    <li><strong>Punnett Square:</strong> A diagram used to predict the genotypes of a particular cross or breeding experiment.</li>
-                </ul>
+                <p>The square shows every possible combination of alleles from the parents. By counting the outcomes, we can determine the statistical probability of each potential genotype and the resulting observable trait (phenotype).</p>
             </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="understanding-terms">
+          <AccordionTrigger>Understanding the Terms</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground">Allele</h4>
+              <p>An allele is a version of a gene. We use a capital letter (e.g., 'A') for a dominant allele and a lowercase letter ('a') for a recessive allele.</p>
+            </div>
+             <div>
+              <h4 className="font-semibold text-foreground">Genotype</h4>
+              <p>The genetic makeup of an organism, represented by the combination of two alleles (one from each parent).</p>
+               <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                  <li><strong>AA (Homozygous Dominant):</strong> Two dominant alleles.</li>
+                  <li><strong>Aa (Heterozygous):</strong> One dominant and one recessive allele.</li>
+                  <li><strong>aa (Homozygous Recessive):</strong> Two recessive alleles.</li>
+                </ul>
+            </div>
+             <div>
+              <h4 className="font-semibold text-foreground">Phenotype</h4>
+              <p>The observable physical characteristic that results from the genotype.</p>
+              <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                  <li><strong>Dominant Phenotype:</strong> The trait is expressed if at least one dominant allele ('A') is present (in genotypes AA or Aa).</li>
+                  <li><strong>Recessive Phenotype:</strong> The trait is only expressed if two recessive alleles ('a') are present (in genotype aa).</li>
+                </ul>
+            </div>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
