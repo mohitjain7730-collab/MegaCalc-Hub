@@ -336,20 +336,6 @@ export const calculators: Calculator[] = [
     category: 'cognitive-psychology',
   },
   {
-    id: 113,
-    name: 'Emotional Valence Scoring Calculator',
-    description: 'Quantify the positive vs. negative emotional tone of a short text passage.',
-    slug: 'emotional-valence-scoring-calculator',
-    category: 'cognitive-psychology',
-  },
-  {
-    id: 114,
-    name: 'Attention Span Estimator',
-    description: 'Estimate sustained attention capacity using a simplified performance test metric.',
-    slug: 'attention-span-estimator',
-    category: 'cognitive-psychology',
-  },
-  {
     id: 115,
     name: 'Sleep Debt Calculator',
     description: 'Determine your weekly sleep debt and its potential impact on cognitive performance.',
