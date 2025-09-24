@@ -257,6 +257,41 @@ export const calculators: Calculator[] = [
     slug: 'compressive-stress-calculator',
     category: 'engineering',
   },
+  {
+    id: 21,
+    name: 'Cantilever Beam Deflection Calculator',
+    description: 'Determine the vertical deflection at the free end of a cantilever beam.',
+    slug: 'cantilever-beam-deflection-calculator',
+    category: 'engineering',
+  },
+  {
+    id: 22,
+    name: 'Natural Frequency Calculator',
+    description: 'Calculate the natural frequency of a simple spring-mass system.',
+    slug: 'natural-frequency-calculator',
+    category: 'engineering',
+  },
+  {
+    id: 23,
+    name: 'Reynolds Number Calculator',
+    description: 'Determine whether a fluid flow is laminar, transitional, or turbulent.',
+    slug: 'reynolds-number-calculator',
+    category: 'engineering',
+  },
+  {
+    id: 24,
+    name: 'Thermal Expansion Calculator',
+    description: 'Compute the change in length of a material due to temperature change.',
+    slug: 'thermal-expansion-calculator',
+    category: 'engineering',
+  },
+  {
+    id: 25,
+    name: 'Shear Stress in a Shaft Calculator',
+    description: 'Calculate maximum shear stress in a circular shaft subjected to torsion.',
+    slug: 'shear-stress-calculator',
+    category: 'engineering',
+  },
   // Cognitive & Psychology
   {
     id: 31,
