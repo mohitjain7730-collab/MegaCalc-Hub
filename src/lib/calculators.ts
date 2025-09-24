@@ -230,13 +230,6 @@ export const calculators: Calculator[] = [
     category: 'engineering',
   },
   {
-    id: 17,
-    name: 'Truss Analysis Calculator',
-    description: 'Compute forces in truss members for a given load.',
-    slug: 'truss-analysis-calculator',
-    category: 'engineering',
-  },
-  {
     id: 18,
     name: 'Pipe Flow Calculator',
     description: 'Flow rate, velocity, and pressure drop in pipes (using Darcy-Weisbach).',

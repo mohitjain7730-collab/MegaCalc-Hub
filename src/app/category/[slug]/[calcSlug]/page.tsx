@@ -43,7 +43,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'water-usage-plumbing-flow-calculator': dynamic(() => import('@/components/calculators/home-improvement/water-usage-plumbing-flow-calculator')),
     'garden-landscape-soil-mulch-calculator': dynamic(() => import('@/components/calculators/home-improvement/garden-landscape-soil-mulch-calculator')),
     'beam-bending-calculator': dynamic(() => import('@/components/calculators/engineering/beam-bending-calculator')),
-    'truss-analysis-calculator': dynamic(() => import('@/components/calculators/engineering/truss-analysis-calculator')),
     'pipe-flow-calculator': dynamic(() => import('@/components/calculators/engineering/pipe-flow-calculator')),
     'hydraulic-head-loss-calculator': dynamic(() => import('@/components/calculators/engineering/hydraulic-head-loss-calculator')),
     'concrete-mix-calculator': dynamic(() => import('@/components/calculators/engineering/concrete-mix-calculator')),
