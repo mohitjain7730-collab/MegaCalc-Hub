@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -36,7 +37,7 @@ export default function BatteryLifeEstimator() {
 
   const formPower = useForm<FormValuesPower>({
     resolver: zodResolver(schemaByPower),
-    defaultValues: { capacity: undefined, voltage: 3.7, powerDraw: undefined },
+    defaultValues: { capacity: undefined, voltage: undefined, powerDraw: undefined },
   });
 
   const onCurrentSubmit = (values: FormValuesCurrent) => {

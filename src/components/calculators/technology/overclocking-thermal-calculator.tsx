@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -30,13 +31,13 @@ export default function OverclockingThermalCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-        p1: 95, // Watts
-        v1: 1.25, // Volts
-        f1: 3.6, // GHz
-        v2: 1.35, // Volts
-        f2: 4.0, // GHz
-        tAmbient: 25, // Celsius
-        thetaJA: 0.5, // °C/W
+        p1: undefined,
+        v1: undefined,
+        f1: undefined,
+        v2: undefined,
+        f2: undefined,
+        tAmbient: undefined,
+        thetaJA: undefined,
     },
   });
 

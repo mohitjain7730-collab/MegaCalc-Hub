@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -23,7 +24,7 @@ export default function NetworkBandwidthCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { users: 10, bitrate: 4 },
+    defaultValues: { users: undefined, bitrate: undefined },
   });
 
   const onSubmit = (values: FormValues) => {

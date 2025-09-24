@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -29,10 +30,7 @@ export default function PowerSupplyWattageCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       components: [
-        { name: 'CPU', tdp: 95 },
-        { name: 'GPU', tdp: 250 },
-        { name: 'Motherboard', tdp: 50 },
-        { name: 'RAM (per stick)', tdp: 5 },
+        { name: '', tdp: undefined },
       ],
     },
   });
