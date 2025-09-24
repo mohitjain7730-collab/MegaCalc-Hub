@@ -28,10 +28,12 @@ import { cn } from "@/lib/utils"
 
 const foregroundColors = [
   { name: 'Slate', value: '224 71.4% 4.1%' },
-  { name: 'Azure', value: '205 90% 45%' },
-  { name: 'Crimson', value: '347 77% 50%' },
-  { name: 'Emerald', value: '145 63% 40%' },
+  { name: 'Stone', value: '24 9.8% 10%' },
+  { name: 'Rose', value: '346.8 77.2% 49.8%' },
+  { name: 'Teal', value: '160 70% 35%' },
+  { name: 'Indigo', value: '221.2 83.2% 53.3%' },
   { name: 'Amber', value: '38 92% 50%' },
+  { name: 'Plum', value: '270 70% 40%' },
 ];
 
 const backgroundColors = [
@@ -39,7 +41,9 @@ const backgroundColors = [
   { name: 'Linen', value: '30 56% 95%' },
   { name: 'Mint', value: '160 60% 95%' },
   { name: 'Lavender', value: '250 60% 97%' },
+  { name: 'Sky', value: '198 80% 96%' },
   { name: 'Charcoal', value: '222.2 84% 4.9%' },
+  { name: 'Onyx', value: '240 10% 3.9%' },
 ];
 
 
@@ -52,7 +56,16 @@ export function ThemeToggle() {
     document.documentElement.style.setProperty('--background', bg);
     localStorage.setItem('custom-foreground', fg);
     localStorage.setItem('custom-background', bg);
-    setTheme('light'); // Use light mode as a base for custom styles
+    // Determine if the background is dark to apply the .dark class
+    const bgColorHsl = bg.split(' ').map(parseFloat);
+    const isDark = bgColorHsl[2] < 50; // Use lightness value to determine if it's a dark background
+    if (isDark) {
+        document.documentElement.classList.add('dark');
+        setTheme('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+        setTheme('light');
+    }
   }
   
   React.useEffect(() => {
