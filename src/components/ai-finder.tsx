@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground">
+    <Button type="submit" disabled={pending} className="w-full sm:w-auto">
       {pending ? 'Searching...' : 'Find Calculator'}
     </Button>
   );
