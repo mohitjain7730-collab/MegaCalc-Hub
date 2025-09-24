@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, PlusCircle, XCircle } from 'lucide-react';
+import { Users, PlusCircle, XCircle, Lightbulb } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const memberSchema = z.object({
@@ -27,9 +27,13 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 type Member = z.infer<typeof memberSchema>;
+type AnalysisResult = {
+  possibleModes: string[];
+  reasoning: string[];
+};
 
 export default function PedigreeAnalysisCalculator() {
-  const [chart, setChart] = useState<Member[] | null>(null);
+  const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -47,9 +51,46 @@ export default function PedigreeAnalysisCalculator() {
     control: form.control,
     name: 'members',
   });
+  
+  const analyzePedigree = (members: Member[]): AnalysisResult => {
+      const reasoning: string[] = [];
+      let isDominantPossible = true;
+      let isRecessivePossible = true;
+      
+      const memberMap = new Map(members.map(m => [m.id, m]));
+
+      // Check for key patterns
+      for (const member of members) {
+          const p1 = member.p1 && member.p1 !== 'none' ? memberMap.get(member.p1) : null;
+          const p2 = member.p2 && member.p2 !== 'none' ? memberMap.get(member.p2) : null;
+
+          if (p1 && p2) {
+              // Two unaffected parents have an affected child -> Must be recessive
+              if (p1.phenotype === 'unaffected' && p2.phenotype === 'unaffected' && member.phenotype === 'affected') {
+                  isDominantPossible = false;
+                  reasoning.push(`Unaffected parents (${p1.id}, ${p2.id}) having an affected child (${member.id}) strongly indicates a RECESSIVE trait.`);
+              }
+              // Two affected parents have an unaffected child -> Must be dominant
+              if (p1.phenotype === 'affected' && p2.phenotype === 'affected' && member.phenotype === 'unaffected') {
+                  isRecessivePossible = false;
+                  reasoning.push(`Affected parents (${p1.id}, ${p2.id}) having an unaffected child (${member.id}) strongly indicates a DOMINANT trait.`);
+              }
+          }
+      }
+
+      if (isDominantPossible && isRecessivePossible && reasoning.length === 0) {
+          reasoning.push("No definitive dominant or recessive patterns found. More data may be needed.");
+      }
+
+      const possibleModes: string[] = [];
+      if (isDominantPossible) possibleModes.push("Autosomal Dominant", "X-linked Dominant");
+      if (isRecessivePossible) possibleModes.push("Autosomal Recessive", "X-linked Recessive");
+
+      return { possibleModes, reasoning };
+  };
 
   const onSubmit = (values: FormValues) => {
-    setChart(values.members);
+    setAnalysis(analyzePedigree(values.members));
   };
 
   const memberIds = form.watch('members').map(m => m.id);
@@ -101,14 +142,32 @@ export default function PedigreeAnalysisCalculator() {
         </CardContent>
       </Card>
 
-      {chart && (
+      {analysis && (
         <Card className="mt-8">
             <CardHeader><div className='flex items-center gap-4'><Users className="h-8 w-8 text-primary" /><CardTitle>Pedigree Analysis</CardTitle></div></CardHeader>
             <CardContent>
-                <CardDescription>This is a data representation of your pedigree chart. Visualizing it would require a more complex graphical tool, but this data can be used to infer inheritance patterns (e.g., dominant, recessive, X-linked).</CardDescription>
-                <pre className="mt-4 p-4 bg-muted rounded-md text-sm overflow-x-auto">
-                    {JSON.stringify(chart, null, 2)}
-                </pre>
+                <div className="space-y-4">
+                    <div>
+                        <h3 className="font-semibold text-lg">Possible Modes of Inheritance</h3>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                            {analysis.possibleModes.map(mode => (
+                                <div key={mode} className="bg-primary/10 text-primary-foreground border border-primary/20 rounded-full px-3 py-1 text-sm font-medium text-primary">{mode}</div>
+                            ))}
+                        </div>
+                    </div>
+                     <div>
+                        <h3 className="font-semibold text-lg">Conclusion & Reasoning</h3>
+                        <div className="mt-2 text-muted-foreground space-y-2">
+                             {analysis.reasoning.map((reason, index) => (
+                                <div key={index} className="flex items-start gap-2">
+                                    <Lightbulb className="h-4 w-4 mt-1 shrink-0" />
+                                    <p>{reason}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <CardDescription className="mt-4 text-xs">This is a simplified analysis. Complex factors like incomplete penetrance or variable expressivity are not considered.</CardDescription>
+                    </div>
+                </div>
             </CardContent>
         </Card>
       )}
@@ -117,12 +176,12 @@ export default function PedigreeAnalysisCalculator() {
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This tool allows you to input data for a family pedigree. By analyzing the data—who is affected by a trait, their sex, and their relationship to others—geneticists can often determine the mode of inheritance for that trait.</p>
+                <p>This tool analyzes the data you provide to look for classic Mendelian inheritance patterns. By checking relationships between affected and unaffected individuals, it can make educated guesses about how a trait is passed down.</p>
                 <ul className="list-disc list-inside space-y-1">
-                    <li><strong>Dominant vs. Recessive:</strong> If a trait appears in every generation, it's likely dominant. If it skips generations, it's likely recessive.</li>
-                    <li><strong>Autosomal vs. X-linked:</strong> If a trait appears roughly equally in males and females, it's likely autosomal. If it appears more often in males, it may be X-linked recessive.</li>
+                    <li><strong>Dominant vs. Recessive:</strong> It looks for tell-tale signs, like unaffected parents having an affected child (which points to recessive) or the trait appearing in every generation (which suggests dominant).</li>
+                    <li><strong>Autosomal vs. X-linked:</strong> It can sometimes infer sex-linked traits, for example if a trait is seen far more often in males than females. This analysis is less definitive than dominant/recessive.</li>
                 </ul>
-                 <p className="mt-2">A full analysis requires a graphical chart, which is beyond the scope of this simple calculator. The JSON output represents the data you've structured.</p>
+                 <p className="mt-2">A full analysis requires a graphical chart and can be complex, but this provides a starting point for understanding your data.</p>
             </AccordionContent>
         </AccordionItem>
       </Accordion>
