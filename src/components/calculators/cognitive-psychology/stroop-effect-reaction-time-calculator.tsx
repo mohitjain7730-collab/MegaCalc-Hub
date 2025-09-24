@@ -7,8 +7,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
+import { Card, CardContent, CardDescription as UiCardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Timer } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -67,7 +67,7 @@ export default function StroopEffectReactionTimeCalculator() {
             <CardHeader><div className='flex items-center gap-4'><Timer className="h-8 w-8 text-primary" /><CardTitle>Stroop Interference Score</CardTitle></div></CardHeader>
             <CardContent>
                 <p className="text-3xl font-bold text-center">{result} ms</p>
-                <CardDescription className='mt-4 text-center'>A higher score indicates greater cognitive interference, meaning your brain worked harder to ignore the conflicting word and name the color.</CardDescription>
+                <UiCardDescription className='mt-4 text-center'>A higher score indicates greater cognitive interference, meaning your brain worked harder to ignore the conflicting word and name the color.</UiCardDescription>
             </CardContent>
         </Card>
       )}
