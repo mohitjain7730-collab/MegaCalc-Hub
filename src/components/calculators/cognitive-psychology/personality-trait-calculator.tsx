@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BarChart, User } from 'lucide-react';
+import { User } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -28,6 +28,40 @@ const traitDescriptions = {
     extraversion: "Extraversion: How outgoing and energetic are you?",
     agreeableness: "Agreeableness: How friendly and compassionate are you?",
     neuroticism: "Neuroticism: How sensitive and nervous are you?",
+}
+
+const interpretation = {
+    openness: {
+        Low: "Prefers routine, practical, and conventional.",
+        Moderate: "Balanced between a love for novelty and a need for routine.",
+        High: "Imaginative, curious, and open to new experiences."
+    },
+    conscientiousness: {
+        Low: "Easy-going, spontaneous, and sometimes disorganized.",
+        Moderate: "A blend of being reliable and flexible when needed.",
+        High: "Organized, disciplined, and dependable."
+    },
+    extraversion: {
+        Low: "Reserved, thoughtful, and enjoys solitude.",
+        Moderate: "Comfortable in social situations but also values alone time.",
+        High: "Outgoing, energetic, and thrives in social settings."
+    },
+    agreeableness: {
+        Low: "Analytical, detached, and can be seen as competitive.",
+        Moderate: "Cooperates but is not afraid to challenge others' perspectives.",
+        High: "Compassionate, cooperative, and friendly."
+    },
+    neuroticism: {
+        Low: "Calm, emotionally stable, and resilient.",
+        Moderate: "Generally stable but can experience occasional stress or worry.",
+        High: "Sensitive, and may experience emotions like anxiety or sadness more intensely."
+    },
+};
+
+const getScoreLevel = (score: number): 'Low' | 'Moderate' | 'High' => {
+    if (score <= 2) return 'Low';
+    if (score === 3) return 'Moderate';
+    return 'High';
 }
 
 export default function PersonalityTraitCalculator() {
@@ -72,18 +106,23 @@ export default function PersonalityTraitCalculator() {
         <Card className="mt-8">
             <CardHeader><div className='flex items-center gap-4'><User className="h-8 w-8 text-primary" /><CardTitle>Simplified Personality Profile</CardTitle></div></CardHeader>
             <CardContent>
-                <div className="space-y-4">
-                    {Object.entries(result).map(([trait, score]) => (
-                        <div key={trait}>
-                            <div className='flex justify-between items-center mb-1'>
-                                <p className='font-medium'>{trait.charAt(0).toUpperCase() + trait.slice(1)}</p>
-                                <p className='text-sm text-muted-foreground'>{score} / 5</p>
+                <div className="space-y-6">
+                    {Object.entries(result).map(([trait, score]) => {
+                        const level = getScoreLevel(score);
+                        const traitKey = trait as keyof typeof interpretation;
+                        return (
+                            <div key={trait}>
+                                <div className='flex justify-between items-baseline mb-1'>
+                                    <p className='font-bold text-lg'>{trait.charAt(0).toUpperCase() + trait.slice(1)}</p>
+                                    <p className='text-sm font-semibold text-primary'>{level}</p>
+                                </div>
+                                <div className="w-full bg-muted rounded-full h-2.5 mb-2">
+                                    <div className="bg-primary h-2.5 rounded-full" style={{ width: `${(score/5) * 100}%` }}></div>
+                                </div>
+                                <p className='text-sm text-muted-foreground'>{interpretation[traitKey][level]}</p>
                             </div>
-                            <div className="w-full bg-muted rounded-full h-2.5">
-                                <div className="bg-primary h-2.5 rounded-full" style={{ width: `${(score/5) * 100}%` }}></div>
-                            </div>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
                  <CardDescription className='mt-6 text-center'>This is a simplified, non-clinical tool for self-exploration based on the Big Five model. Scores represent tendencies, not definitive labels.</CardDescription>
             </CardContent>
@@ -107,4 +146,3 @@ export default function PersonalityTraitCalculator() {
     </div>
   );
 }
-
