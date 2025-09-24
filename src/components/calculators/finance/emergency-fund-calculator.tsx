@@ -67,6 +67,19 @@ export default function EmergencyFundCalculator() {
             <p>An emergency fund is a stash of money set aside to cover the financial surprises life throws your way. These unexpected events can be stressful and costly. The purpose of the fund is to have cash readily available to handle these events without having to dip into high-interest debt or sell your long-term investments.</p>
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Total Monthly Expenses</h4>
+                  <p>The sum of all your essential monthly living expenses. This should include rent/mortgage, utilities, food, transportation, insurance, and minimum debt payments.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Months of Coverage</h4>
+                  <p>The number of months you want your emergency fund to be able to cover your expenses without any income. Financial advisors typically recommend 3 to 6 months.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
@@ -87,5 +100,3 @@ export default function EmergencyFundCalculator() {
     </div>
   );
 }
-
-    

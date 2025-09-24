@@ -174,6 +174,39 @@ export default function FourOhOneKCalculator() {
             <p>A 401(k) is a retirement savings plan sponsored by an employer. It lets workers save and invest a piece of their paycheck before taxes are taken out. Taxes aren't paid until the money is withdrawn from the account. A key feature is the potential for an employer match, which is essentially free money contributed by your employer to your retirement account.</p>
           </AccordionContent>
         </AccordionItem>
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Current/Retirement Age</h4>
+                  <p>Your current age and the age you plan to retire. This determines your investment timeline.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Current 401(k) Balance</h4>
+                  <p>The amount of money you have already saved in your 401(k).</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Annual Salary</h4>
+                  <p>Your gross annual income, used to calculate contribution and match amounts.</p>
+              </div>
+               <div>
+                  <h4 className="font-semibold text-foreground mb-1">Your Contribution (%)</h4>
+                  <p>The percentage of your pre-tax salary you contribute to your 401(k) each paycheck.</p>
+              </div>
+               <div>
+                  <h4 className="font-semibold text-foreground mb-1">Expected Annual Return (%)</h4>
+                  <p>The average yearly growth rate you expect from your 401(k) investments.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Employer Match (%)</h4>
+                  <p>The percentage of your contribution that your employer matches. For example, a 50% match means they contribute $0.50 for every $1.00 you contribute.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Employer Match Limit (%)</h4>
+                  <p>The maximum percentage of your salary up to which your employer will match contributions. For instance, if the limit is 6%, your employer will not match any contributions you make beyond 6% of your salary.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

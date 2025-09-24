@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -83,6 +84,15 @@ export default function ConcreteVolumeCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Dimensions (Length, Width, Thickness)</h4>
+                  <p>Enter the three dimensions of the slab or footing you are pouring. Ensure your units are consistent: if you select 'Feet/Inches', the length and width should be in feet, and the thickness in inches. If you select 'Meters/CM', length and width should be in meters, and thickness in centimeters.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

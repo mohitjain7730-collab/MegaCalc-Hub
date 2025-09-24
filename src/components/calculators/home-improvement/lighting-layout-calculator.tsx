@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -95,6 +96,23 @@ export default function LightingLayoutCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Room Dimensions</h4>
+                  <p>The length and width of the room. This is used to calculate the total square footage.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Room Type</h4>
+                  <p>Different rooms require different levels of brightness. A kitchen or office needs more light (higher foot-candles) than a living room or bedroom.</p>
+              </div>
+               <div>
+                  <h4 className="font-semibold text-foreground mb-1">Lumens per Fixture/Bulb</h4>
+                  <p>The brightness of a single light bulb, measured in lumens. A standard 60W incandescent bulb is about 800 lumens. Check the packaging of your chosen bulb for its lumen rating.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

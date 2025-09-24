@@ -145,6 +145,23 @@ export default function StudentLoanRepaymentCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Loan Amount</h4>
+                  <p>The total principal amount of your student loan debt.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate (%)</h4>
+                  <p>The yearly interest rate on your loan. If you have multiple loans with different rates, you can use a weighted average.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Loan Term (Years)</h4>
+                  <p>The repayment period for your loan. A standard repayment plan is typically 10 years, but other options may be available.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

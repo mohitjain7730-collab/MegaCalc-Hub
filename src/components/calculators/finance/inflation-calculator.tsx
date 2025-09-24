@@ -76,6 +76,23 @@ export default function InflationCalculator() {
             <p>Inflation is the rate at which the general level of prices for goods and services is rising, and subsequently, purchasing power of currency is falling. This calculator shows you how the value of your money can decrease over time.</p>
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Initial Amount</h4>
+                  <p>The amount of money you want to project the future value of.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Annual Inflation Rate (%)</h4>
+                  <p>The expected average rate of inflation per year. You can use historical averages or government targets as an estimate.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Number of Years</h4>
+                  <p>The number of years into the future you want to calculate for.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
@@ -96,5 +113,3 @@ export default function InflationCalculator() {
     </div>
   );
 }
-
-    

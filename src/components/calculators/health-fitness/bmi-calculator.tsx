@@ -119,10 +119,27 @@ export default function BmiCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Units</h4>
+                  <p>Choose between Metric (kilograms and centimeters) or Imperial (pounds and inches) systems for your measurements.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Weight</h4>
+                  <p>Your current body weight in either kilograms or pounds.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Height</h4>
+                  <p>Your current height in either centimeters or inches.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
-                <p>Body Mass Index (BMI) is a simple calculation using a person's height and weight. The formula is BMI = kg/m2 where kg is a person's weight in kilograms and m2 is their height in metres squared. For imperial units, the formula is (lbs / in^2) * 703.</p>
+                <p>Body Mass Index (BMI) is a simple calculation using a person's height and weight. The formula is BMI = kg/m² where kg is a person's weight in kilograms and m² is their height in metres squared. For imperial units, the formula is (lbs / in²) * 703.</p>
                  <p className="mt-2">For adults 20 years old and older, BMI is interpreted using standard weight status categories that are the same for all ages and for both men and women.</p>
             </AccordionContent>
         </AccordionItem>

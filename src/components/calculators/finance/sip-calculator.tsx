@@ -126,16 +126,21 @@ export default function SipCalculator() {
             <p>A Systematic Investment Plan (SIP) is a method of investing a fixed amount of money in mutual funds at regular intervals (usually monthly). It helps in disciplined investing, rupee cost averaging, and harnessing the power of compounding. Instead of investing a large lump sum at once, you invest smaller amounts over time, which can reduce the risk of market volatility.</p>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="understanding-returns">
-          <AccordionTrigger>Understanding Returns: Risk vs. Reward</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>The "Expected Annual Return" is a crucial input that significantly impacts the final amount. It is not a guaranteed figure. The return rate depends on the type of fund you invest in:</p>
-            <ul className="list-disc list-inside space-y-1 pl-4">
-                <li><strong>High Risk / High Return (e.g., Equity Funds):</strong> Historically, equity markets have provided higher returns over the long term, often in the range of <strong>10-15%</strong> annually, but they also carry higher risk and can be volatile in the short term.</li>
-                <li><strong>Moderate Risk / Moderate Return (e.g., Hybrid Funds):</strong> These funds balance investments between stocks and bonds. Expected returns might be in the <strong>8-12%</strong> range.</li>
-                <li><strong>Low Risk / Safe Returns (e.g., Debt Funds or Fixed Deposits):</strong> These are much safer investments with more predictable, but lower, returns, typically in the <strong>5-7%</strong> range.</li>
-            </ul>
-             <p className="mt-2 font-semibold">Disclaimer: Past performance is not indicative of future results. The figures above are for educational purposes only.</p>
+        <AccordionItem value="understanding-inputs">
+          <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Monthly Investment</h4>
+              <p>The fixed amount of money you plan to invest every month.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Expected Annual Return (%)</h4>
+              <p>The rate of return you expect from your investment annually. This is not a guaranteed figure. For example, historically, equity funds have offered higher returns (e.g., 10-15%) with higher risk, while debt funds offer lower, more stable returns (e.g., 5-7%).</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Investment Period (Years)</h4>
+              <p>The total duration in years for which you plan to stay invested.</p>
+            </div>
           </AccordionContent>
         </AccordionItem>
          <AccordionItem value="how-it-works">

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -86,6 +87,27 @@ export default function GardenLandscapeSoilMulchCalculator() {
             </CardContent>
         </Card>
       )}
+      <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Bed Dimensions (Length, Width)</h4>
+                  <p>The length and width of your garden bed or landscape area.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Desired Depth</h4>
+                  <p>The thickness of the layer of soil or mulch you want to add. For mulch, 2-3 inches is common. For a new garden bed, 6-12 inches might be needed.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <p>The calculator computes the total volume of material needed by multiplying the length, width, and depth of your area. It then estimates the number of bags required based on standard bag sizes (2 cubic feet or 50 liters).</p>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

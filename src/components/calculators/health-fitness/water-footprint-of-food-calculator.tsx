@@ -108,6 +108,19 @@ export default function WaterFootprintOfFoodCalculator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Food Item</h4>
+                  <p>Select the type of food for which you want to calculate the water footprint.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Quantity (kg)</h4>
+                  <p>The weight of the food item in kilograms.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-4">
@@ -135,5 +148,3 @@ export default function WaterFootprintOfFoodCalculator() {
     </div>
   );
 }
-
-    

@@ -17,6 +17,7 @@ const formSchema = z.object({
   apr: z.number().positive(),
   monthlyPayment: z.number().positive(),
 }).refine(data => {
+    if (!data.balance || !data.apr) return true;
     const monthlyInterest = (data.apr / 100 / 12) * data.balance;
     return data.monthlyPayment > monthlyInterest;
 }, {
@@ -69,7 +70,7 @@ export default function CreditCardPayoffCalculator() {
       if (remainingMonths > 0) {
           result += `${years > 0 ? ' and ' : ''}${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
       }
-      return result;
+      return result || '0 months';
   }
 
   return (
@@ -114,6 +115,23 @@ export default function CreditCardPayoffCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Credit Card Balance</h4>
+                  <p>The total amount of debt you currently have on the credit card.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate (APR) (%)</h4>
+                  <p>The yearly interest rate charged on your balance. This can usually be found on your credit card statement.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Monthly Payment</h4>
+                  <p>The fixed amount you plan to pay towards your balance each month. To pay off the debt, this must be higher than the monthly interest charged.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
@@ -140,5 +158,3 @@ export default function CreditCardPayoffCalculator() {
     </div>
   );
 }
-
-    

@@ -118,6 +118,19 @@ export default function TargetHeartRateCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Age (years)</h4>
+                  <p>Your current age. This is the primary factor in estimating your maximum heart rate.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Resting Heart Rate (optional)</h4>
+                  <p>Your heart rate in beats per minute (bpm) when you are at complete rest. To get the most accurate reading, measure it in the morning right after you wake up, before getting out of bed. Providing this makes the calculation more personalized (using the Karvonen method).</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

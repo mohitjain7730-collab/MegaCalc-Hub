@@ -150,6 +150,27 @@ export default function CompoundInterestCalculator() {
             <p>Compound interest is the interest on an investment's principal plus the interest that has already been earned. This "interest on interest" effect is why investments can grow at an exponential rate over time. The more frequently interest is compounded, the faster the growth.</p>
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Principal Amount</h4>
+                  <p>The initial amount of money you are investing.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate (%)</h4>
+                  <p>The nominal annual interest rate for the investment.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Number of Years</h4>
+                  <p>The total number of years the money will be invested.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Compounding Frequency</h4>
+                  <p>How often the interest is calculated and added to the principal. More frequent compounding (e.g., daily) results in slightly higher returns than less frequent compounding (e.g., annually).</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
@@ -178,5 +199,3 @@ export default function CompoundInterestCalculator() {
     </div>
   );
 }
-
-    

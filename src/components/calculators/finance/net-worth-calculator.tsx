@@ -31,15 +31,15 @@ export default function NetWorthCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       assets: [
-        { name: 'Home', value: 350000 },
-        { name: 'Investments', value: 100000 },
-        { name: 'Savings Account', value: 25000 },
-        { name: 'Vehicle', value: 15000 },
+        { name: 'Home', value: 0 },
+        { name: 'Investments', value: 0 },
+        { name: 'Savings Account', value: 0 },
+        { name: 'Vehicle', value: 0 },
       ],
       liabilities: [
-        { name: 'Mortgage', value: 250000 },
-        { name: 'Car Loan', value: 8000 },
-        { name: 'Credit Card Debt', value: 5000 },
+        { name: 'Mortgage', value: 0 },
+        { name: 'Car Loan', value: 0 },
+        { name: 'Credit Card Debt', value: 0 },
       ],
     },
   });
@@ -72,7 +72,7 @@ export default function NetWorthCalculator() {
                   {assetFields.map((field, index) => (
                     <div key={field.id} className="grid grid-cols-[1fr,120px,auto] gap-2 items-start">
                       <FormField control={form.control} name={`assets.${index}.name`} render={({ field }) => ( <FormItem><FormLabel className="sr-only">Asset Name</FormLabel><FormControl><Input placeholder="e.g., Home" {...field} /></FormControl><FormMessage /></FormItem> )} />
-                      <FormField control={form.control} name={`assets.${index}.value`} render={({ field }) => ( <FormItem><FormLabel className="sr-only">Asset Value</FormLabel><FormControl><Input type="number" placeholder="Value" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
+                      <FormField control={form.control} name={`assets.${index}.value`} render={({ field }) => ( <FormItem><FormLabel className="sr-only">Asset Value</FormLabel><FormControl><Input type="number" placeholder="Value" {...field} value={field.value || ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
                       <Button type="button" variant="ghost" size="icon" onClick={() => removeAsset(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
                     </div>
                   ))}
@@ -87,7 +87,7 @@ export default function NetWorthCalculator() {
                   {liabilityFields.map((field, index) => (
                     <div key={field.id} className="grid grid-cols-[1fr,120px,auto] gap-2 items-start">
                       <FormField control={form.control} name={`liabilities.${index}.name`} render={({ field }) => ( <FormItem><FormLabel className="sr-only">Liability Name</FormLabel><FormControl><Input placeholder="e.g., Mortgage" {...field} /></FormControl><FormMessage /></FormItem> )} />
-                      <FormField control={form.control} name={`liabilities.${index}.value`} render={({ field }) => ( <FormItem><FormLabel className="sr-only">Liability Value</FormLabel><FormControl><Input type="number" placeholder="Value" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
+                      <FormField control={form.control} name={`liabilities.${index}.value`} render={({ field }) => ( <FormItem><FormLabel className="sr-only">Liability Value</FormLabel><FormControl><Input type="number" placeholder="Value" {...field} value={field.value || ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem> )} />
                       <Button type="button" variant="ghost" size="icon" onClick={() => removeLiability(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
                     </div>
                   ))}
@@ -125,6 +125,19 @@ export default function NetWorthCalculator() {
             <p>Net worth is a snapshot of your financial health. It's the value of all your assets (what you own) minus the total of all your liabilities (what you owe). A positive and growing net worth is a key indicator of financial progress.</p>
           </AccordionContent>
         </AccordionItem>
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Assets (What you own)</h4>
+                  <p>Anything you own that has monetary value. This includes cash in bank accounts, the market value of your home, cars, investments (stocks, bonds, 401(k)), and valuable personal property.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Liabilities (What you owe)</h4>
+                  <p>Any debt or financial obligation you have. This includes mortgages, car loans, student loans, credit card balances, personal loans, and any other money you owe.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
@@ -150,5 +163,3 @@ export default function NetWorthCalculator() {
     </div>
   );
 }
-
-    

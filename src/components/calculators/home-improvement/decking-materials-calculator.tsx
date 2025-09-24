@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -116,6 +117,23 @@ export default function DeckingMaterialsCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Deck Dimensions</h4>
+                  <p>The length and width of the planned deck area.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Deck Board Width</h4>
+                  <p>The actual width of one decking board. Note that a "5/4x6" board is typically 5.5 inches wide.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Joist Spacing</h4>
+                  <p>The center-to-center distance between the support joists underneath the deck boards. A common spacing is 16 inches (40 cm), but this can vary depending on the type of decking material and local building codes.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How This Calculator Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

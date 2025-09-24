@@ -136,6 +136,15 @@ export default function BmrCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Units, Gender, Age, Weight, Height</h4>
+                  <p>These are your basic physical measurements. The Mifflin-St Jeor equation uses gender, age, weight, and height as key variables, as metabolism varies based on these factors.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

@@ -203,6 +203,23 @@ export default function PaintCoverageCalculator() {
             </Card>
         )}
         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Room Dimensions</h4>
+                    <p>Enter the length, width, and height of your room. This calculator assumes a rectangular room and includes the ceiling area by default.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Number of Coats</h4>
+                    <p>The number of coats of paint you plan to apply. Two coats is standard for good coverage, especially when changing colors.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Paint Coverage</h4>
+                    <p>This is the most crucial value for an accurate estimate. It's found on the paint can label and tells you how much area one gallon (or liter) of that specific paint will cover. A common estimate is 350-400 sq ft per gallon.</p>
+                </div>
+            </AccordionContent>
+          </AccordionItem>
           <AccordionItem value="how-it-works">
             <AccordionTrigger>How This Calculator Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

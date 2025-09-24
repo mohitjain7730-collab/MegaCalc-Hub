@@ -151,16 +151,23 @@ export default function LoanEmiCalculator() {
             <p>An Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month. EMIs are used to pay off both interest and principal each month so that over a specified number of years, the loan is paid off in full.</p>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="understanding-loan">
-          <AccordionTrigger>Understanding Your Loan</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-             <ul className="list-disc list-inside space-y-1 pl-4">
-                <li><strong>Principal (Loan Amount):</strong> The initial amount of money you borrow from the lender.</li>
-                <li><strong>Interest Rate:</strong> The percentage of the principal charged by the lender for the use of its money.</li>
-                <li><strong>Tenure:</strong> The total time period over which you will repay the loan. A longer tenure means lower EMIs but higher total interest paid, while a shorter tenure means higher EMIs but lower total interest.</li>
-            </ul>
-            <p className="mt-2 font-semibold">In the initial years of your loan, a larger portion of your EMI goes towards paying off the interest. As the loan matures, a larger portion goes towards paying off the principal.</p>
-          </AccordionContent>
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding Your Loan</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Loan Amount (Principal)</h4>
+                  <p>The initial amount of money you borrow from the lender.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate</h4>
+                  <p>The percentage of the principal charged by the lender for the use of its money, on a yearly basis.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Loan Tenure (Years)</h4>
+                  <p>The total time period over which you will repay the loan. A longer tenure means lower EMIs but higher total interest paid, while a shorter tenure means higher EMIs but lower total interest.</p>
+              </div>
+              <p className="mt-2 font-semibold">In the initial years of your loan, a larger portion of your EMI goes towards paying off the interest. As the loan matures, a larger portion goes towards paying off the principal.</p>
+            </AccordionContent>
         </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>

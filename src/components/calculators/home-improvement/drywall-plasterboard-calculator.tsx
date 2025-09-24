@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -105,6 +106,23 @@ export default function DrywallPlasterboardCalculator() {
             </Card>
         )}
         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="understanding-inputs">
+                <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground space-y-4">
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Room Dimensions</h4>
+                        <p>The length, width, and height of the room. The calculator doesn't subtract for doors or windows, which provides a natural buffer for waste.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Sheet Size</h4>
+                        <p>Standard drywall sheets come in 4x8 ft and 4x12 ft sizes. Larger sheets mean fewer seams to finish but can be harder to handle.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Include Ceiling</h4>
+                        <p>Check this box if you also plan to drywall the ceiling of the room.</p>
+                    </div>
+                </AccordionContent>
+            </AccordionItem>
             <AccordionItem value="how-it-works">
                 <AccordionTrigger>How It Works</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground space-y-2">

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -152,7 +153,7 @@ export default function WallpaperRollCalculator() {
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis type="number" unit={result.unit} />
                                 <YAxis type="category" dataKey="name" hide />
-                                <Tooltip formatter={(value, name) => `${value} ${result.unit}`} />
+                                <Tooltip formatter={(value: number, name) => `${value} ${result.unit}`} />
                                 <Legend />
                                 <Bar dataKey="needed" name="Wallpaper Needed" fill="hsl(var(--muted-foreground))" />
                                 <Bar dataKey="purchased" name="Wallpaper Purchased" fill="hsl(var(--primary))" />
@@ -164,6 +165,23 @@ export default function WallpaperRollCalculator() {
             </Card>
         )}
         <Accordion type="single" collapsible className="w-full">
+             <AccordionItem value="understanding-inputs">
+                <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground space-y-4">
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Wall Dimensions</h4>
+                        <p>The height of the wall you are papering, and the total width (add the widths of all walls you plan to cover).</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Roll Dimensions</h4>
+                        <p>The length and width of a single roll of wallpaper, as specified by the manufacturer.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Pattern Repeat</h4>
+                        <p>The vertical distance before the wallpaper's pattern repeats itself. Enter 0 if your wallpaper has no pattern. This value is crucial for ensuring the pattern aligns correctly between strips and is a major source of waste.</p>
+                    </div>
+                </AccordionContent>
+            </AccordionItem>
             <AccordionItem value="how-it-works">
                 <AccordionTrigger>How This Calculator Works</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground space-y-2">

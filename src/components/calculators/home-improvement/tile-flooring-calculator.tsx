@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -179,6 +180,23 @@ export default function TileFlooringCalculator() {
             </Card>
         )}
         <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="understanding-inputs">
+                <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground space-y-4">
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Area Dimensions</h4>
+                        <p>The length and width of the rectangular area you plan to tile.</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Tile Dimensions</h4>
+                        <p>The length and width of a single tile. Make sure to use the correct units (inches for feet, centimeters for meters).</p>
+                    </div>
+                    <div>
+                        <h4 className="font-semibold text-foreground mb-1">Wastage (%)</h4>
+                        <p>An extra percentage of tiles to account for cuts, breakage, and mistakes. 10% is standard for simple layouts, but you might need 15-20% for complex patterns like herringbone.</p>
+                    </div>
+                </AccordionContent>
+            </AccordionItem>
             <AccordionItem value="how-it-works">
                 <AccordionTrigger>How This Calculator Works</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground space-y-2">

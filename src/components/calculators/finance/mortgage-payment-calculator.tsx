@@ -145,6 +145,23 @@ export default function MortgagePaymentCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Loan Amount</h4>
+                  <p>The total amount borrowed for the mortgage, after your down payment.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate (%)</h4>
+                  <p>The yearly interest rate for the mortgage. This does not include taxes or insurance.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Loan Term (Years)</h4>
+                  <p>The duration of the mortgage. Common terms are 15 or 30 years.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

@@ -87,7 +87,20 @@ export default function CostEstimatorRenovationCalculator() {
             </CardContent>
         </Card>
       )}
-      <Accordion type="single" collapsible className="w-full">
+       <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Renovation Type</h4>
+                  <p>Select the type and quality level of your project. "Basic" involves cosmetic updates, "Mid" includes replacing most fixtures, and "High" involves premium materials and layout changes.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Area</h4>
+                  <p>The square footage (or square meters) of the room you are renovating.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Estimate Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

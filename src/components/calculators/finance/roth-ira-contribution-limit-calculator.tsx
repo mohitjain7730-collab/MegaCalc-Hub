@@ -111,6 +111,23 @@ export default function RothIraContributionLimitCalculator() {
             <p>A Roth IRA is an individual retirement account that offers tax-free growth and tax-free withdrawals in retirement. Unlike a traditional IRA, your contributions are not tax-deductible. The amount you can contribute each year is limited by the IRS and depends on your income and filing status.</p>
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Filing Status</h4>
+                  <p>Your tax filing status as reported to the IRS. This determines the income limits for contributions.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Your Age</h4>
+                  <p>Your age determines if you are eligible for "catch-up" contributions, which allow individuals aged 50 and over to contribute an additional amount.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Modified Adjusted Gross Income (MAGI)</h4>
+                  <p>This is a specific calculation used by the IRS to determine eligibility for certain tax benefits. For most people, it's very close to their Adjusted Gross Income (AGI). Your eligibility to contribute to a Roth IRA is phased out and eventually eliminated as your MAGI increases.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
@@ -136,5 +153,3 @@ export default function RothIraContributionLimitCalculator() {
     </div>
   );
 }
-
-    

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -87,6 +88,19 @@ export default function HvacSizingCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Conditioned Area</h4>
+                  <p>The total square footage (or meters) of the living space you intend to heat and cool.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Climate Zone</h4>
+                  <p>A general classification of your local climate. 'Hot' climates (like the southern US) require more cooling power, while 'Cool' climates (like the northern US) require less.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

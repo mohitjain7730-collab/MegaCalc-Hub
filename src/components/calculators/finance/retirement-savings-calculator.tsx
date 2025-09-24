@@ -58,6 +58,20 @@ export default function RetirementSavingsCalculator() {
     const rMonthly = annualReturn / 12 / 100;
     const n = (retirementAge - currentAge) * 12;
 
+    let contribution = monthlyContribution;
+
+    if (calculationMode === 'target' && targetCorpus) {
+        const fvCurrent = currentSavings * Math.pow(1 + rMonthly, n);
+        const numerator = targetCorpus - fvCurrent;
+        const denominator = (Math.pow(1 + rMonthly, n) - 1) / rMonthly;
+        if (denominator > 0 && numerator > 0) {
+            contribution = numerator / denominator;
+        } else {
+            contribution = 0;
+        }
+    }
+
+
     const chartData = [];
     
     for (let year = 1; year <= retirementAge - currentAge; year++) {
@@ -65,10 +79,10 @@ export default function RetirementSavingsCalculator() {
       const age = currentAge + year;
 
       const fvCurrentSavings = currentSavings * Math.pow(1 + rMonthly, currentN);
-      const fvMonthlyContributions = monthlyContribution * ((Math.pow(1 + rMonthly, currentN) - 1) / rMonthly);
+      const fvMonthlyContributions = (contribution || 0) * ((Math.pow(1 + rMonthly, currentN) - 1) / rMonthly);
       
       const futureValue = fvCurrentSavings + fvMonthlyContributions;
-      const yearEndTotalInvestment = currentSavings + (monthlyContribution * currentN);
+      const yearEndTotalInvestment = currentSavings + ((contribution || 0) * currentN);
       
       chartData.push({
         age: age,
@@ -78,20 +92,16 @@ export default function RetirementSavingsCalculator() {
     }
 
     const totalSavings = chartData.length > 0 ? chartData[chartData.length - 1].futureValue : currentSavings;
-    const totalInvested = currentSavings + (monthlyContribution * n);
+    const totalInvested = currentSavings + ((contribution || 0) * n);
     const totalInterest = totalSavings - totalInvested;
 
-    let requiredMonthlyContribution: number | undefined;
-    if (calculationMode === 'target' && targetCorpus) {
-        const fvCurrent = currentSavings * Math.pow(1 + rMonthly, n);
-        const numerator = targetCorpus - fvCurrent;
-        const denominator = (Math.pow(1 + rMonthly, n) - 1) / rMonthly;
-        if (denominator > 0) {
-            requiredMonthlyContribution = numerator / denominator;
-        }
-    }
-
-    setResult({ totalSavings, totalInvested, totalInterest, chartData, requiredMonthlyContribution });
+    setResult({ 
+        totalSavings, 
+        totalInvested, 
+        totalInterest, 
+        chartData, 
+        requiredMonthlyContribution: calculationMode === 'target' ? contribution : undefined
+    });
   };
 
 
@@ -138,7 +148,7 @@ export default function RetirementSavingsCalculator() {
                 ) : (
                     <div className="text-center space-y-2">
                         <CardDescription>Required Monthly Contribution to reach your goal</CardDescription>
-                        {result.requiredMonthlyContribution && result.requiredMonthlyContribution > 0 ? (
+                        {result.requiredMonthlyContribution !== undefined && result.requiredMonthlyContribution > 0 ? (
                            <p className="text-3xl font-bold">${result.requiredMonthlyContribution.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
                         ) : (
                            <p className="text-lg text-destructive">Your current savings and returns already meet or exceed your goal. No additional monthly contribution is required.</p>
@@ -178,6 +188,31 @@ export default function RetirementSavingsCalculator() {
             <p>Retirement planning is the process of setting retirement income goals and the decisions and actions necessary to achieve those goals. It includes identifying sources of income, estimating expenses, implementing a savings program, and managing assets and risk. The power of compounding makes it crucial to start saving early.</p>
           </AccordionContent>
         </AccordionItem>
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Current Age & Retirement Age</h4>
+                  <p>Your current age and the age you plan to retire. The difference between these two determines your investment horizon.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Current Savings</h4>
+                  <p>The total amount you have already saved for retirement.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Monthly Contribution</h4>
+                  <p>The amount you plan to save and invest towards retirement each month.</p>
+              </div>
+               <div>
+                  <h4 className="font-semibold text-foreground mb-1">Expected Annual Return (%)</h4>
+                  <p>The average annual growth rate you expect from your investments. This varies based on risk (e.g., stocks vs. bonds).</p>
+              </div>
+               <div>
+                  <h4 className="font-semibold text-foreground mb-1">Target Retirement Corpus</h4>
+                  <p>The total amount of money you aim to have saved by the time you retire.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How The Calculation Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
@@ -186,7 +221,7 @@ export default function RetirementSavingsCalculator() {
                     <li><strong>Future Value of Current Savings:</strong> It projects how your existing savings will grow over time, untouched, based on the annual return rate. The formula is `FV = S * (1 + r)^n`.</li>
                     <li><strong>Future Value of Monthly Contributions:</strong> It calculates the future value of an ordinary annuity to determine how your series of monthly contributions will grow.</li>
                 </ol>
-                <p>The total retirement corpus is the sum of these two values.</p>
+                <p>The total retirement corpus is the sum of these two values. When calculating for a target, it rearranges the formula to solve for the required monthly contribution.</p>
             </AccordionContent>
         </AccordionItem>
         <AccordionItem value="further-reading">
@@ -203,4 +238,3 @@ export default function RetirementSavingsCalculator() {
     </div>
   );
 }
-
