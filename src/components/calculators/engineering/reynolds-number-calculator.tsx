@@ -26,10 +26,10 @@ export default function ReynoldsNumberCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      density: 1000, // water
+      density: undefined,
       velocity: undefined,
       diameter: undefined,
-      viscosity: 0.001, // water
+      viscosity: undefined,
     },
   });
 
@@ -52,7 +52,7 @@ export default function ReynoldsNumberCalculator() {
           <CardDescription>Ensure all inputs use consistent SI units (kg/m³, m/s, m, Pa·s).</CardDescription>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="density" render={({ field }) => (
-                <FormItem><FormLabel>Fluid Density (ρ)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Fluid Density (ρ)</FormLabel><FormControl><Input placeholder="e.g., 1000 for water" type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="velocity" render={({ field }) => (
                 <FormItem><FormLabel>Flow Velocity (v)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
@@ -61,7 +61,7 @@ export default function ReynoldsNumberCalculator() {
                 <FormItem><FormLabel>Pipe Diameter (D)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="viscosity" render={({ field }) => (
-                <FormItem><FormLabel>Dynamic Viscosity (μ)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Dynamic Viscosity (μ)</FormLabel><FormControl><Input placeholder="e.g., 0.001 for water" type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Reynolds Number</Button>
