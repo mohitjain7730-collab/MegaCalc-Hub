@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,8 +10,10 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator } from 'lucide-react';
+import { Calculator, HelpCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+
 
 const formSchema = z.object({
   load: z.number().positive(),
@@ -77,7 +80,17 @@ export default function BeamBendingCalculator() {
                 <FormItem><FormLabel>Modulus of Elasticity (E)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="distanceFromSupport" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Distance from neutral axis to outer fiber (c)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2">
+                     <FormLabel className="flex items-center gap-2">
+                        Distance from neutral axis (c)
+                         <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild><button type="button" className='p-0 m-0'><HelpCircle className="h-4 w-4 text-muted-foreground" /></button></TooltipTrigger>
+                                <TooltipContent><p className="max-w-xs">The distance from the center of the beam's cross-section to its outermost edge.</p></TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </FormLabel>
+                    <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate</Button>
@@ -96,6 +109,39 @@ export default function BeamBendingCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Load (P)</h4>
+                    <p>The force applied to the beam. For a center-loaded beam, this is a single point load at the middle. For a cantilever, it's at the unsupported end. Units: Pounds (lbs) or Newtons (N).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Beam Length (L)</h4>
+                    <p>The total length of the beam between its supports. For a cantilever beam, this is the length from the fixed support to the end where the load is applied. Units: Inches (in) or Meters (m).</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Modulus of Elasticity (E)</h4>
+                    <p>A material property indicating its stiffness. It's a measure of how much a material will deform under stress and then return to its original shape. You can find this value in engineering handbooks or material datasheets.</p>
+                     <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                        <li><strong>Steel:</strong> ~29,000,000 psi (or 29,000 ksi) / 200 GPa</li>
+                        <li><strong>Aluminum:</strong> ~10,000,000 psi (or 10,000 ksi) / 69 GPa</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Moment of Inertia (I)</h4>
+                    <p>A property of the beam's cross-sectional shape that measures its resistance to bending. A higher value means more resistance. It depends entirely on the geometry of the beam. This can be calculated with a Moment of Inertia calculator or found in tables for standard structural shapes (like I-beams).</p>
+                     <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                        <li><strong>For a rectangular beam:</strong> I = (base * height³) / 12</li>
+                        <li><strong>Units:</strong> Inches⁴ (in⁴) or Meters⁴ (m⁴).</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Distance from neutral axis (c)</h4>
+                    <p>This is the distance from the geometric center (neutral axis) of the beam's cross-section to its outermost fiber (the top or bottom edge). For a symmetrical shape like a rectangle or circle, this is simply half the total height. Units: Inches (in) or Meters (m).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
