@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Cube, Clock } from 'lucide-react';
+import { Box, Clock } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
@@ -84,7 +84,7 @@ export default function ThreeDPrintTimeMaterialCalculator() {
       
       {result !== null && (
         <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Cube className="h-8 w-8 text-primary" /><CardTitle>Print Estimate</CardTitle></div></CardHeader>
+            <CardHeader><div className='flex items-center gap-4'><Box className="h-8 w-8 text-primary" /><CardTitle>Print Estimate</CardTitle></div></CardHeader>
             <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
                     <div>
