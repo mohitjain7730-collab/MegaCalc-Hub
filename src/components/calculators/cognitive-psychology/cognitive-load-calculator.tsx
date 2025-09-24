@@ -11,6 +11,7 @@ import { Activity } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const formSchema = z.object({
   taskComplexity: z.number().min(1).max(10),
@@ -19,6 +20,13 @@ const formSchema = z.object({
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+const getLoadCategory = (load: number) => {
+  if (load < 20) return "Low";
+  if (load < 50) return "Medium";
+  if (load < 100) return "High";
+  return "Very High";
+};
 
 export default function CognitiveLoadCalculator() {
   const [result, setResult] = useState<number | null>(null);
@@ -40,6 +48,10 @@ export default function CognitiveLoadCalculator() {
   
   const complexity = form.watch('taskComplexity');
   const experience = form.watch('experienceLevel');
+
+  const chartData = result !== null ? [
+      { name: 'Your Score', load: parseFloat(result.toFixed(2)) },
+  ] : [];
 
   return (
     <div className="space-y-8">
@@ -71,8 +83,24 @@ export default function CognitiveLoadCalculator() {
         <Card className="mt-8">
             <CardHeader><div className='flex items-center gap-4'><Activity className="h-8 w-8 text-primary" /><CardTitle>Cognitive Load Score</CardTitle></div></CardHeader>
             <CardContent>
-                <p className="text-3xl font-bold text-center">{result.toFixed(2)}</p>
-                <CardDescription className='mt-4 text-center'>A higher score indicates greater mental effort is required. Use this to compare the relative difficulty of different tasks.</CardDescription>
+                <div className='grid md:grid-cols-2 gap-8 items-center'>
+                    <div className="text-center">
+                        <p className="text-4xl font-bold">{result.toFixed(2)}</p>
+                        <p className='text-xl font-semibold mt-2'>{getLoadCategory(result)} Load</p>
+                        <CardDescription className='mt-4'>A higher score indicates greater mental effort is required. Use this to compare the relative difficulty of different tasks.</CardDescription>
+                    </div>
+                    <div className="h-64">
+                         <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={chartData} layout="vertical" margin={{ left: 10 }}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis type="number" domain={[0, 'dataMax + 20']} />
+                                <YAxis type="category" dataKey="name" hide />
+                                <Tooltip cursor={{ fill: 'hsl(var(--muted))' }} />
+                                <Bar dataKey="load" name="Cognitive Load" fill="hsl(var(--primary))" barSize={40} />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </div>
             </CardContent>
         </Card>
       )}
