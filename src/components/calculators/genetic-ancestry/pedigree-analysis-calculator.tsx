@@ -12,6 +12,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, PlusCircle, XCircle, Lightbulb } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 const memberSchema = z.object({
   id: z.string().min(1),
@@ -30,6 +32,7 @@ type Member = z.infer<typeof memberSchema>;
 type AnalysisResult = {
   possibleModes: string[];
   reasoning: string[];
+  data: Member[];
 };
 
 export default function PedigreeAnalysisCalculator() {
@@ -52,7 +55,7 @@ export default function PedigreeAnalysisCalculator() {
     name: 'members',
   });
   
-  const analyzePedigree = (members: Member[]): AnalysisResult => {
+  const analyzePedigree = (members: Member[]): Omit<AnalysisResult, 'data'> => {
       const reasoning: string[] = [];
       let isDominantPossible = true;
       let isRecessivePossible = true;
@@ -90,7 +93,8 @@ export default function PedigreeAnalysisCalculator() {
   };
 
   const onSubmit = (values: FormValues) => {
-    setAnalysis(analyzePedigree(values.members));
+    const analysisResult = analyzePedigree(values.members);
+    setAnalysis({ ...analysisResult, data: values.members });
   };
 
   const memberIds = form.watch('members').map(m => m.id);
@@ -146,7 +150,33 @@ export default function PedigreeAnalysisCalculator() {
         <Card className="mt-8">
             <CardHeader><div className='flex items-center gap-4'><Users className="h-8 w-8 text-primary" /><CardTitle>Pedigree Analysis</CardTitle></div></CardHeader>
             <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-6">
+                    <div>
+                        <h3 className="font-semibold text-lg">Input Data</h3>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>ID</TableHead>
+                                    <TableHead>Sex</TableHead>
+                                    <TableHead>Phenotype</TableHead>
+                                    <TableHead>Parent 1</TableHead>
+                                    <TableHead>Parent 2</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {analysis.data.map((member) => (
+                                <TableRow key={member.id}>
+                                    <TableCell>{member.id}</TableCell>
+                                    <TableCell>{member.sex}</TableCell>
+                                    <TableCell>{member.phenotype}</TableCell>
+                                    <TableCell>{member.p1 === 'none' ? '-' : member.p1}</TableCell>
+                                    <TableCell>{member.p2 === 'none' ? '-' : member.p2}</TableCell>
+                                </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
+
                     <div>
                         <h3 className="font-semibold text-lg">Possible Modes of Inheritance</h3>
                         <div className="flex flex-wrap gap-2 mt-2">
@@ -162,7 +192,7 @@ export default function PedigreeAnalysisCalculator() {
                                 <div key={index} className="flex items-start gap-2">
                                     <Lightbulb className="h-4 w-4 mt-1 shrink-0" />
                                     <p>{reason}</p>
-                                </div>
+                                d</div>
                             ))}
                         </div>
                         <CardDescription className="mt-4 text-xs">This is a simplified analysis. Complex factors like incomplete penetrance or variable expressivity are not considered.</CardDescription>
