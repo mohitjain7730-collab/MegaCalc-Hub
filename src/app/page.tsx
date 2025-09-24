@@ -1,3 +1,4 @@
+
 import { AIFinder } from '@/components/ai-finder';
 import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
