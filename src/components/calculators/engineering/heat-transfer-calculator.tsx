@@ -71,6 +71,33 @@ export default function HeatTransferCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Thermal Conductivity (k)</h4>
+                    <p>A property of a material that indicates its ability to conduct heat. You can find this value in engineering handbooks or online material property databases. Units: W/m·K.</p>
+                    <ul className="list-disc list-inside space-y-1 pl-4 mt-1">
+                        <li><strong>Copper:</strong> ~400</li>
+                        <li><strong>Concrete:</strong> ~1.7</li>
+                        <li><strong>Glass:</strong> ~1.1</li>
+                        <li><strong>Fiberglass Insulation:</strong> ~0.04</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Area (A)</h4>
+                    <p>The cross-sectional area through which heat is being transferred, in square meters (m²).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Temperature Difference (ΔT)</h4>
+                    <p>The difference in temperature between the two sides of the material. Since it's a difference, you can use either Kelvin (K) or Celsius (°C) as the units are equivalent for changes in temperature.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Wall Thickness (d)</h4>
+                    <p>The thickness of the material that the heat must travel through, in meters (m).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
@@ -78,9 +105,9 @@ export default function HeatTransferCalculator() {
                 <p className='font-mono p-4 bg-muted rounded-md'>Q = (k * A * ΔT) / d</p>
                  <ul className="list-disc list-inside space-y-1 pl-4">
                     <li><strong>Q</strong> is the heat transfer rate in Watts (Joules per second).</li>
-                    <li><strong>k</strong> is the thermal conductivity of the material, a measure of its ability to conduct heat.</li>
-                    <li><strong>A</strong> is the cross-sectional area through which the heat is flowing.</li>
-                    <li><strong>ΔT</strong> is the temperature difference between the two sides of the material.</li>
+                    <li><strong>k</strong> is the thermal conductivity of the material.</li>
+                    <li><strong>A</strong> is the cross-sectional area.</li>
+                    <li><strong>ΔT</strong> is the temperature difference.</li>
                     <li><strong>d</strong> is the thickness of the material.</li>
                 </ul>
             </AccordionContent>

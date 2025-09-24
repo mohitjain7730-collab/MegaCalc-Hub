@@ -67,6 +67,23 @@ export default function ElectricalPowerCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Line-to-Line Voltage (V)</h4>
+                    <p>The voltage measured between any two of the three lines in a three-phase system. This is a standard value based on your electrical grid (e.g., 208V, 480V in the US; 400V in Europe).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Line Current (I, Amps)</h4>
+                    <p>The current flowing through any one of the lines supplying the load. This would be measured using a clamp meter or specified by the equipment's nameplate.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Power Factor (PF)</h4>
+                    <p>A dimensionless number between 0 and 1 representing how efficiently the electrical power is being used. A purely resistive load (like a heater) has a PF of 1. A motor or other inductive load will have a lower PF (e.g., 0.85). If unknown, 0.85 is a reasonable estimate for many motors.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
@@ -77,7 +94,7 @@ export default function ElectricalPowerCalculator() {
                     <li><strong>√3</strong> (approximately 1.732) is a constant used for three-phase calculations.</li>
                     <li><strong>V</strong> is the RMS line-to-line voltage.</li>
                     <li><strong>I</strong> is the RMS line current.</li>
-                    <li><strong>PF</strong> is the Power Factor, the ratio of real power to apparent power. A purely resistive load has a PF of 1.</li>
+                    <li><strong>PF</strong> is the Power Factor, the ratio of real power to apparent power.</li>
                 </ul>
             </AccordionContent>
         </AccordionItem>

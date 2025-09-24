@@ -72,6 +72,27 @@ export default function HydraulicPipeFlowCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Darcy Friction Factor (f)</h4>
+                    <p>A dimensionless value that accounts for the roughness of the pipe's inner surface and the nature of the fluid flow (laminar or turbulent). It is the most complex variable to determine and is often found using the Moody chart, which requires the Reynolds number and relative roughness of the pipe. For turbulent flow in common pipes, values often range from 0.015 to 0.03.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Pipe Length (L)</h4>
+                    <p>The total length of the pipe section being analyzed, in meters.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Pipe Diameter (D)</h4>
+                    <p>The internal diameter of the pipe, in meters.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Flow Velocity (v)</h4>
+                    <p>The average speed of the fluid moving through the pipe, in meters per second (m/s).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
@@ -79,7 +100,7 @@ export default function HydraulicPipeFlowCalculator() {
                 <p className='font-mono p-4 bg-muted rounded-md'>h_f = f * (L/D) * (v²/2g)</p>
                  <ul className="list-disc list-inside space-y-1 pl-4">
                     <li><strong>h_f</strong> is the head loss in meters.</li>
-                    <li><strong>f</strong> is the Darcy friction factor, which depends on the pipe's roughness and the flow regime (laminar or turbulent).</li>
+                    <li><strong>f</strong> is the Darcy friction factor.</li>
                     <li><strong>L</strong> is the pipe length in meters.</li>
                     <li><strong>D</strong> is the pipe's inner diameter in meters.</li>
                     <li><strong>v</strong> is the average flow velocity in m/s.</li>

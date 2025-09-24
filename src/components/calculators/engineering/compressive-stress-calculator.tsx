@@ -39,13 +39,13 @@ export default function CompressiveStressCalculator() {
     <div className="space-y-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <CardDescription>All inputs must be in standard metric units (Newtons, m²).</CardDescription>
+          <CardDescription>Ensure all inputs use consistent units (e.g., Newtons and m²).</CardDescription>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="force" render={({ field }) => (
-                <FormItem><FormLabel>Compressive Force (F, Newtons)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Compressive Force (F)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="area" render={({ field }) => (
-                <FormItem><FormLabel>Cross-sectional Area (A, m²)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Cross-sectional Area (A)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Stress</Button>
@@ -61,6 +61,19 @@ export default function CompressiveStressCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Compressive Force (F)</h4>
+                    <p>The total force applied perpendicular to the surface area of the object, pushing it together. For consistency, use Newtons (N).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Cross-sectional Area (A)</h4>
+                    <p>The area over which the force is distributed. For example, for a square column, this would be `side * side`. For consistency, use square meters (m²).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
