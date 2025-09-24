@@ -61,7 +61,7 @@ export default function ReynoldsNumberCalculator() {
                 <FormItem><FormLabel>Pipe Diameter (D)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="viscosity" render={({ field }) => (
-                <FormItem><FormLabel>Dynamic Viscosity (μ)</FormLabel><FormControl><Input placeholder="e.g., 0.001 for water" type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Dynamic Viscosity (μ)</FormLabel><FormControl><Input placeholder="e.g., 0.001 for water" type="number" step="any" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Reynolds Number</Button>
