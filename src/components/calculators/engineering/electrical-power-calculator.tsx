@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -27,7 +28,7 @@ export default function ElectricalPowerCalculator() {
     defaultValues: {
       voltage: undefined,
       current: undefined,
-      powerFactor: 1.0,
+      powerFactor: undefined,
     },
   });
 
@@ -50,7 +51,7 @@ export default function ElectricalPowerCalculator() {
                 <FormItem><FormLabel>Line Current (I, Amps)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="powerFactor" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Power Factor (PF)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2"><FormLabel>Power Factor (PF)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} placeholder="e.g., 0.85" /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Power</Button>
