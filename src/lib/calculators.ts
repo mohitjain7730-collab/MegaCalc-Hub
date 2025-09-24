@@ -229,6 +229,34 @@ export const calculators: Calculator[] = [
     slug: 'beam-bending-calculator',
     category: 'engineering',
   },
+  {
+    id: 17,
+    name: 'Hydraulic Pipe Flow Calculator',
+    description: 'Compute head loss due to friction in a pipe using the Darcy-Weisbach equation.',
+    slug: 'hydraulic-pipe-flow-calculator',
+    category: 'engineering',
+  },
+  {
+    id: 18,
+    name: 'Heat Transfer Calculator',
+    description: 'Find steady-state heat transfer rate through a flat wall by conduction.',
+    slug: 'heat-transfer-calculator',
+    category: 'engineering',
+  },
+  {
+    id: 19,
+    name: 'Electrical Power Calculator (3-Phase)',
+    description: 'Calculate total real power in a balanced 3-phase electrical system.',
+    slug: 'electrical-power-calculator',
+    category: 'engineering',
+  },
+  {
+    id: 20,
+    name: 'Compressive Stress Calculator',
+    description: 'Calculate stress when a compressive load is applied to a material.',
+    slug: 'compressive-stress-calculator',
+    category: 'engineering',
+  },
   // Cognitive & Psychology
   {
     id: 31,
