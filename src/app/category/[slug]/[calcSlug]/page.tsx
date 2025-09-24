@@ -56,6 +56,12 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'memory-span-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/memory-span-calculator')),
     'cognitive-load-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/cognitive-load-calculator')),
     'personality-trait-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/personality-trait-calculator')),
+    'stroop-effect-reaction-time-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/stroop-effect-reaction-time-calculator')),
+    'mental-fatigue-index-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/mental-fatigue-index-calculator')),
+    'emotional-valence-scoring-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/emotional-valence-scoring-calculator')),
+    'attention-span-estimator': dynamic(() => import('@/components/calculators/cognitive-psychology/attention-span-estimator')),
+    'sleep-debt-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/sleep-debt-calculator')),
+    'stress-level-index-calculator': dynamic(() => import('@/components/calculators/cognitive-psychology/stress-level-index-calculator')),
     'ancestry-composition-estimator': dynamic(() => import('@/components/calculators/genetic-ancestry/ancestry-composition-estimator')),
     'genetic-trait-probability-calculator': dynamic(() => import('@/components/calculators/genetic-ancestry/genetic-trait-probability-calculator')),
     'pedigree-analysis-calculator': dynamic(() => import('@/components/calculators/genetic-ancestry/pedigree-analysis-calculator')),
@@ -178,3 +184,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
+
+    

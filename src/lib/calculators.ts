@@ -321,6 +321,48 @@ export const calculators: Calculator[] = [
     slug: 'personality-trait-calculator',
     category: 'cognitive-psychology',
   },
+  {
+    id: 111,
+    name: 'Stroop Effect Reaction-Time Calculator',
+    description: 'Measure cognitive interference and selective attention by comparing reaction times.',
+    slug: 'stroop-effect-reaction-time-calculator',
+    category: 'cognitive-psychology',
+  },
+  {
+    id: 112,
+    name: 'Mental Fatigue Index Calculator',
+    description: 'Estimate the rate of mental fatigue after performing a cognitive task.',
+    slug: 'mental-fatigue-index-calculator',
+    category: 'cognitive-psychology',
+  },
+  {
+    id: 113,
+    name: 'Emotional Valence Scoring Calculator',
+    description: 'Quantify the positive vs. negative emotional tone of a short text passage.',
+    slug: 'emotional-valence-scoring-calculator',
+    category: 'cognitive-psychology',
+  },
+  {
+    id: 114,
+    name: 'Attention Span Estimator',
+    description: 'Estimate sustained attention capacity using a simplified performance test metric.',
+    slug: 'attention-span-estimator',
+    category: 'cognitive-psychology',
+  },
+  {
+    id: 115,
+    name: 'Sleep Debt Calculator',
+    description: 'Determine your weekly sleep debt and its potential impact on cognitive performance.',
+    slug: 'sleep-debt-calculator',
+    category: 'cognitive-psychology',
+  },
+  {
+    id: 116,
+    name: 'Stress Level Index (PSS) Calculator',
+    description: 'Score your perceived stress level over the past month using the Perceived Stress Scale.',
+    slug: 'stress-level-index-calculator',
+    category: 'cognitive-psychology',
+  },
   // Genetic & Ancestry
   {
     id: 35,
@@ -749,3 +791,5 @@ export const calculators: Calculator[] = [
     category: 'fun-games',
   },
 ];
+
+    
