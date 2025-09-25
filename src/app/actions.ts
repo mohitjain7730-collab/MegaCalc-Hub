@@ -39,21 +39,22 @@ export async function findCalculator(prevState: State, formData: FormData): Prom
   }
 
   try {
-    const result = await aiPoweredCalculatorFinder({ query });
+    // The AI flow now returns a simple string.
+    const calculatorName = await aiPoweredCalculatorFinder({ query });
 
-    if (!result || !result.calculatorName || typeof result.calculatorName !== 'string') {
+    if (!calculatorName || typeof calculatorName !== 'string') {
         return { message: 'Our AI could not find a matching calculator. Please try rephrasing your search.' };
     }
-
-    const calculatorName = result.calculatorName;
-
+    
+    // Perform a case-insensitive search for the calculator name.
     const foundCalculator = calculators.find(
-      (c) => c.name.toLowerCase() === calculatorName.toLowerCase()
+      (c) => c.name.toLowerCase() === calculatorName.trim().toLowerCase()
     );
 
     if (foundCalculator) {
       redirect(`/category/${foundCalculator.category}/${foundCalculator.slug}`);
     } else {
+      console.warn(`AI suggested calculator "${calculatorName}", but no match was found.`);
       return {
         message: `Our AI suggested a calculator, but we couldn't find a direct match. Please try a different search.`,
       };

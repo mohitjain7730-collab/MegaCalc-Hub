@@ -19,9 +19,8 @@ const AIPoweredCalculatorFinderInputSchema = z.object({
 });
 export type AIPoweredCalculatorFinderInput = z.infer<typeof AIPoweredCalculatorFinderInputSchema>;
 
-const AIPoweredCalculatorFinderOutputSchema = z.object({
-  calculatorName: z.string().describe('The name of the most relevant calculator for the query.'),
-});
+// The output is now a simple string for the calculator name.
+const AIPoweredCalculatorFinderOutputSchema = z.string().describe('The name of the most relevant calculator for the query.');
 export type AIPoweredCalculatorFinderOutput = z.infer<typeof AIPoweredCalculatorFinderOutputSchema>;
 
 export async function aiPoweredCalculatorFinder(input: AIPoweredCalculatorFinderInput): Promise<AIPoweredCalculatorFinderOutput> {
@@ -33,7 +32,7 @@ const calculatorList = calculators.map(c => `- ${c.name}: ${c.description}`).joi
 const prompt = ai.definePrompt({
   name: 'aiPoweredCalculatorFinderPrompt',
   input: {schema: AIPoweredCalculatorFinderInputSchema},
-  output: {schema: AIPoweredCalculatorFinderOutputSchema},
+  // No output schema needed here as we want a raw string.
   prompt: `You are an AI assistant helping users find the right calculator on MegaCalc Hub.
 
   Given the user's query, find the single most relevant calculator from the list below and return its full name.
@@ -43,7 +42,8 @@ const prompt = ai.definePrompt({
 
   User Query: {{{query}}}
 
-  Respond with only the full name of the most appropriate calculator.`,
+  Respond with ONLY the full name of the most appropriate calculator and nothing else.
+  `,
 });
 
 const aiPoweredCalculatorFinderFlow = ai.defineFlow(
@@ -53,7 +53,7 @@ const aiPoweredCalculatorFinderFlow = ai.defineFlow(
     outputSchema: AIPoweredCalculatorFinderOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    const {text} = await ai.generate({prompt: prompt.render(input)});
+    return text;
   }
 );
