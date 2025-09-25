@@ -61,16 +61,16 @@ export default function CloudCostEstimator() {
           <CardDescription>Estimate your monthly cloud computing costs based on typical usage. Costs are illustrative.</CardDescription>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="vcpus" render={({ field }) => (
-                <FormItem><FormLabel>Number of vCPUs</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Number of vCPUs</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="ram" render={({ field }) => (
-                <FormItem><FormLabel>RAM (GB)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>RAM (GB)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="storage" render={({ field }) => (
-                <FormItem><FormLabel>Storage (GB)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Storage (GB)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="bandwidth" render={({ field }) => (
-                <FormItem><FormLabel>Egress Bandwidth (GB)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Egress Bandwidth (GB)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Estimate Cost</Button>
@@ -88,6 +88,23 @@ export default function CloudCostEstimator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">vCPUs & RAM (GB)</h4>
+                    <p>The virtual CPU cores and Gigabytes of RAM for your compute instances (servers). This is the primary driver of compute cost.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Storage (GB)</h4>
+                    <p>The total amount of block or object storage your application uses, in Gigabytes.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Egress Bandwidth (GB)</h4>
+                    <p>The amount of data sent OUT from the cloud provider to the internet. Ingress (data coming in) is usually free, but egress is typically a significant cost.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">

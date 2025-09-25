@@ -48,10 +48,10 @@ export default function LatencyToThroughputCalculator() {
           <CardDescription>Calculate the maximum theoretical throughput (Bandwidth-Delay Product).</CardDescription>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="windowSize" render={({ field }) => (
-                <FormItem><FormLabel>TCP Receive Window Size (KB)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>TCP Receive Window Size (KB)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="latency" render={({ field }) => (
-                <FormItem><FormLabel>Round-Trip Latency (ms)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Round-Trip Latency (ms)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Throughput</Button>
@@ -69,6 +69,19 @@ export default function LatencyToThroughputCalculator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">TCP Receive Window Size (KB)</h4>
+                    <p>The size of the buffer on the receiving end of a TCP connection, in Kilobytes. It tells the sender how much data it can send before waiting for an acknowledgment.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Round-Trip Latency (ms)</h4>
+                    <p>The time it takes for a packet to travel from the source to the destination and back, measured in milliseconds. This is often measured with a `ping` command.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">

@@ -93,6 +93,31 @@ export default function InternetDataUsageEstimator() {
             </CardContent>
         </Card>
       )}
+       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Activity</h4>
+                    <p>The type of online activity. Different activities consume data at very different rates.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Hours/Day</h4>
+                    <p>The average number of hours you spend on this activity each day.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Data Rate (GB/hr)</h4>
+                    <p>The estimated amount of data the activity uses per hour, in Gigabytes. The default values are common estimates.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                For each activity, the calculator multiplies the daily hours by the data rate to get the daily data usage. This is then multiplied by 30 to estimate the total monthly usage in Gigabytes (GB). It sums the usage from all activities to provide a total monthly estimate.
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

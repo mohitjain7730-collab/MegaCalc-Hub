@@ -63,7 +63,7 @@ export default function DownloadTimeCalculator() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="fileSize" render={({ field }) => (
-                <FormItem><FormLabel>File Size</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>File Size</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
              <FormField control={form.control} name="fileUnit" render={({ field }) => (
                 <FormItem><FormLabel>File Size Unit</FormLabel>
@@ -75,7 +75,7 @@ export default function DownloadTimeCalculator() {
                 </FormItem>
             )} />
             <FormField control={form.control} name="speed" render={({ field }) => (
-                <FormItem><FormLabel>Internet Speed</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Internet Speed</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="speedUnit" render={({ field }) => (
                 <FormItem><FormLabel>Speed Unit</FormLabel>
@@ -100,10 +100,28 @@ export default function DownloadTimeCalculator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">File Size & Unit</h4>
+                    <p>The size of the file you are downloading (e.g., 10 GB).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Internet Speed & Unit</h4>
+                    <p>The speed of your internet connection, as advertised by your provider or measured by a speed test (e.g., 100 Mbps).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionTrigger>How It Works (Bits vs. Bytes)</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
-                The calculator converts your file size into Megabits (Mb) and your internet speed into Megabits per second (Mbps). It then divides the file size by the speed to determine the total download time in seconds, which is then formatted into a more readable format. Note the important difference: file sizes are usually in Bytes (MB, GB), while internet speeds are in bits (Mbps, Gbps). There are 8 bits in 1 byte.
+                <p>The key to this calculation is the difference between bits and bytes. There are 8 bits in 1 byte.</p>
+                <ul className="list-disc list-inside space-y-2 mt-2">
+                    <li>File sizes are measured in <strong>MegaBytes (MB)</strong> or <strong>GigaBytes (GB)</strong>.</li>
+                    <li>Internet speeds are measured in <strong>Megabits per second (Mbps)</strong> or <strong>Gigabits per second (Gbps)</strong>.</li>
+                </ul>
+                <p className="mt-2">The calculator converts your file size into Megabits and your internet speed into Megabits per second. It then divides the file size by the speed to determine the total download time in seconds, which is then formatted into a more readable format.</p>
             </AccordionContent>
         </AccordionItem>
       </Accordion>

@@ -55,10 +55,10 @@ export default function ApiRateLimitPlanner() {
           <CardDescription>Enter your API's rate limit quota to see the equivalent rates per second, minute, and hour.</CardDescription>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="requests" render={({ field }) => (
-                <FormItem><FormLabel>Number of Requests</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Number of Requests</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="timeValue" render={({ field }) => (
-                <FormItem><FormLabel>Time Value</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Time Value</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="timeUnit" render={({ field }) => (
                 <FormItem className="md:col-span-2"><FormLabel>Time Unit</FormLabel>
@@ -97,6 +97,19 @@ export default function ApiRateLimitPlanner() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Number of Requests</h4>
+                    <p>The total number of API calls allowed within a specific time window, as defined by the API's rate limit policy.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Time Value & Unit</h4>
+                    <p>The duration of the time window for the rate limit (e.g., 1000 requests per 15 minutes).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">

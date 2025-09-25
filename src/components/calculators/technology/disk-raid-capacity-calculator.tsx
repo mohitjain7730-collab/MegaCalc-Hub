@@ -101,10 +101,10 @@ export default function DiskRaidCapacityCalculator() {
                 </FormItem>
             )} />
             <FormField control={form.control} name="diskCount" render={({ field }) => (
-                <FormItem><FormLabel>Number of Disks</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Number of Disks</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="diskSize" render={({ field }) => (
-                <FormItem><FormLabel>Size of Smallest Disk</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Size of Smallest Disk</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="unit" render={({ field }) => (
                 <FormItem><FormLabel>Unit</FormLabel>
@@ -133,6 +133,23 @@ export default function DiskRaidCapacityCalculator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">RAID Level</h4>
+                    <p>The RAID configuration you plan to use. Each level offers a different balance of performance, storage capacity, and data redundancy.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Number of Disks</h4>
+                    <p>The total number of physical hard drives in the array.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Size of Smallest Disk</h4>
+                    <p>In a RAID array, the usable capacity is determined by the size of the smallest disk. The calculator assumes all disks are this size for simplicity.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">

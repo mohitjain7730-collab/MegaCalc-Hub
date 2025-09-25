@@ -48,10 +48,10 @@ export default function HashCollisionProbabilityCalculator() {
           <CardDescription>Estimate the probability of at least one hash collision occurring, based on the birthday problem approximation.</CardDescription>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="bits" render={({ field }) => (
-                <FormItem><FormLabel>Hash Length (bits)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Hash Length (bits)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="items" render={({ field }) => (
-                <FormItem><FormLabel>Number of Hashed Items</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Number of Hashed Items</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Probability</Button>
@@ -69,6 +69,19 @@ export default function HashCollisionProbabilityCalculator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Hash Length (bits)</h4>
+                    <p>The size of the hash output in bits. A larger bit length creates a larger space of possible unique hashes (e.g., 128-bit, 256-bit).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Number of Hashed Items</h4>
+                    <p>The total number of unique items you are hashing.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">

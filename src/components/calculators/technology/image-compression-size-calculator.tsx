@@ -52,16 +52,16 @@ export default function ImageCompressionSizeCalculator() {
           <CardDescription>Estimate the final file size of a compressed image.</CardDescription>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="width" render={({ field }) => (
-                <FormItem><FormLabel>Image Width (pixels)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Image Width (pixels)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="height" render={({ field }) => (
-                <FormItem><FormLabel>Image Height (pixels)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Image Height (pixels)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="bpp" render={({ field }) => (
-                <FormItem><FormLabel>Bits Per Pixel (BPP)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Bits Per Pixel (BPP)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
              <FormField control={form.control} name="compressionRatio" render={({ field }) => (
-                <FormItem><FormLabel>Compression Ratio (e.g., 10 for 10:1)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Compression Ratio (e.g., 10 for 10:1)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => e.target.value === '' ? field.onChange(undefined) : field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Estimate Size</Button>
@@ -78,6 +78,23 @@ export default function ImageCompressionSizeCalculator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Image Width/Height (pixels)</h4>
+                    <p>The dimensions of the image in pixels.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Bits Per Pixel (BPP)</h4>
+                    <p>The number of bits used to represent the color of a single pixel. Common values are 8 (grayscale), 24 (true color), or 32 (true color with alpha/transparency).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Compression Ratio</h4>
+                    <p>How much smaller the compressed image is compared to the original. A 10:1 ratio means the compressed file is 10 times smaller than the uncompressed data.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">

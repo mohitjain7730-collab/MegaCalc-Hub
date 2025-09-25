@@ -121,6 +121,27 @@ export default function BatteryLifeEstimator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Battery Capacity (mAh)</h4>
+                    <p>Milliampere-hours. A measure of the total charge a battery can store. This is usually printed on the battery itself.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Device Current Draw (mA)</h4>
+                    <p>The average current your device consumes in milliamps. This can often be found on the device's datasheet or measured with a multimeter.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Battery Voltage (V)</h4>
+                    <p>The nominal voltage of the battery (e.g., 3.7V for a LiPo, 1.5V for an AA battery).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Device Power Draw (mW)</h4>
+                    <p>The average power your device consumes in milliwatts. This is sometimes listed instead of current draw. Power (mW) = Voltage (V) * Current (mA).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">

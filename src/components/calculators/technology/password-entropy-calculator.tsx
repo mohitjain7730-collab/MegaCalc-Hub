@@ -57,7 +57,7 @@ export default function PasswordEntropyCalculator() {
       <Form {...form}>
         <form onSubmit={e => e.preventDefault()} className="space-y-6">
           <FormField control={form.control} name="password" render={({ field }) => (
-              <FormItem><FormLabel>Enter Password</FormLabel><FormControl><Input type="text" {...field} /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel>Enter Password</FormLabel><FormControl><Input type="text" {...field} value={field.value ?? ''} /></FormControl><FormMessage /></FormItem>
           )} />
         </form>
       </Form>
@@ -80,6 +80,15 @@ export default function PasswordEntropyCalculator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Password</h4>
+                    <p>The password you want to analyze. The calculator automatically detects which character sets are used (lowercase, uppercase, numbers, symbols).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
