@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -38,42 +38,45 @@ export default function CodeTimeComplexityEstimator() {
     defaultValues: { n: 100 },
   });
 
-  const onSubmit = (values: FormValues) => {
-    const { n } = values;
-    const data = [];
-    const steps = Math.min(n, 100);
-    const stepSize = n / steps;
+  const nValue = form.watch('n');
 
-    for (let i = 1; i <= steps; i++) {
-        const currentN = Math.round(i * stepSize);
-        const point: {[key: string]: number} = { n: currentN };
-        for (const key in complexities) {
-            const val = complexities[key as Complexity](currentN);
-            // Cap O(2^n) for visualization purposes
-            if (key === 'O(2^n)' && val > 1e9) {
-                point[key] = 1e9;
-            } else {
-                point[key] = val;
+  useEffect(() => {
+    const generateChartData = (n: number) => {
+        const data = [];
+        const steps = Math.min(n, 100);
+        if (steps <= 0) return;
+        const stepSize = n / steps;
+
+        for (let i = 1; i <= steps; i++) {
+            const currentN = Math.round(i * stepSize);
+            const point: {[key: string]: number} = { n: currentN };
+            for (const key in complexities) {
+                const val = complexities[key as Complexity](currentN);
+                if (key === 'O(2^n)' && val > 1e9) {
+                    point[key] = 1e9;
+                } else {
+                    point[key] = val;
+                }
             }
+            data.push(point);
         }
-        data.push(point);
+        setChartData(data);
+    };
+
+    if (nValue && form.formState.isValid) {
+        generateChartData(nValue);
     }
-    setChartData(data);
-  };
-  
-  // Generate chart on initial load
-  useState(() => {
-    onSubmit(form.getValues());
-  });
+  }, [nValue, form.formState.isValid]);
+
 
   return (
     <div className="space-y-8">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
           <FormField control={form.control} name="n" render={({ field }) => (
               <FormItem><FormLabel>Input Size (n)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
           )} />
-          <Button type="submit">Visualize Complexity</Button>
+          <Button type="submit" className='hidden'>Visualize Complexity</Button>
         </form>
       </Form>
       
