@@ -1,5 +1,6 @@
 
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -34,9 +35,11 @@ export default function RootLayout({
             defaultTheme="light"
             disableTransitionOnChange
           >
-            <AnalyticsProvider>
-              {children}
-            </AnalyticsProvider>
+            <Suspense>
+              <AnalyticsProvider>
+                {children}
+              </AnalyticsProvider>
+            </Suspense>
             <Toaster />
           </ThemeProvider>
         </FirebaseClientProvider>
