@@ -7,7 +7,7 @@ import { AlertCircle, Bot } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { findCategory, type State } from '@/app/actions';
+import { findCalculator, type State } from '@/app/actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 
 function SubmitButton() {
@@ -21,7 +21,7 @@ function SubmitButton() {
 
 export function AIFinder() {
   const initialState: State = { message: null };
-  const [state, dispatch] = useActionState(findCategory, initialState);
+  const [state, dispatch] = useActionState(findCalculator, initialState);
 
   return (
     <Card className="w-full max-w-3xl mx-auto my-8 border-primary/20 shadow-lg">

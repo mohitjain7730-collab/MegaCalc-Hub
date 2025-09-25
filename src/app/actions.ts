@@ -4,7 +4,7 @@
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { aiPoweredCalculatorFinder } from '@/ai/flows/ai-powered-calculator-finder';
-import { categories } from '@/lib/categories';
+import { calculators } from '@/lib/calculators';
 import { getAnalytics, isSupported, logEvent } from 'firebase/analytics';
 import { initializeFirebase } from '@/firebase';
 
@@ -16,7 +16,7 @@ export type State = {
   message?: string | null;
 };
 
-export async function findCategory(prevState: State, formData: FormData): Promise<State> {
+export async function findCalculator(prevState: State, formData: FormData): Promise<State> {
   const validatedFields = QuerySchema.safeParse({
     query: formData.get('query'),
   });
@@ -40,17 +40,17 @@ export async function findCategory(prevState: State, formData: FormData): Promis
 
   try {
     const result = await aiPoweredCalculatorFinder({ query });
-    const categoryName = result.category;
+    const calculatorSlug = result.calculatorSlug;
 
-    const foundCategory = categories.find(
-      (c) => c.name.toLowerCase() === categoryName.toLowerCase()
+    const foundCalculator = calculators.find(
+      (c) => c.slug.toLowerCase() === calculatorSlug.toLowerCase()
     );
 
-    if (foundCategory) {
-      redirect(`/category/${foundCategory.slug}`);
+    if (foundCalculator) {
+      redirect(`/category/${foundCalculator.category}/${foundCalculator.slug}`);
     } else {
       return {
-        message: `Our AI suggested "${categoryName}," but we couldn't find a direct match. Please try a different search.`,
+        message: `Our AI suggested a calculator, but we couldn't find a direct match. Please try a different search.`,
       };
     }
   } catch (error) {
