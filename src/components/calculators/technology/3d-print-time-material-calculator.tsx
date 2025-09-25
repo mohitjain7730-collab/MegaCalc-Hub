@@ -15,8 +15,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 const formSchema = z.object({
   filamentLength: z.number().positive(),
   printSpeed: z.number().positive(),
-  filamentDiameter: z.number().positive().default(1.75),
-  filamentDensity: z.number().positive().default(1.24), // PLA density
+  filamentDiameter: z.number().positive(),
+  filamentDensity: z.number().positive(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -38,8 +38,8 @@ export default function ThreeDPrintTimeMaterialCalculator() {
     defaultValues: {
         filamentLength: undefined,
         printSpeed: undefined,
-        filamentDiameter: 1.75,
-        filamentDensity: 1.24,
+        filamentDiameter: undefined,
+        filamentDensity: undefined,
     },
   });
 
@@ -72,10 +72,10 @@ export default function ThreeDPrintTimeMaterialCalculator() {
                 <FormItem><FormLabel>Average Print Speed (mm/s)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="filamentDiameter" render={({ field }) => (
-                <FormItem><FormLabel>Filament Diameter (mm)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Filament Diameter (mm)</FormLabel><FormControl><Input type="number" placeholder="e.g., 1.75" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
              <FormField control={form.control} name="filamentDensity" render={({ field }) => (
-                <FormItem><FormLabel>Filament Density (g/cm³)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Filament Density (g/cm³)</FormLabel><FormControl><Input type="number" placeholder="e.g., 1.24 for PLA" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Estimate</Button>
@@ -101,6 +101,27 @@ export default function ThreeDPrintTimeMaterialCalculator() {
       )}
 
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Filament Length (meters)</h4>
+                    <p>The total length of filament the slicer estimates will be used for the print. This is a primary output from slicer software like Cura or PrusaSlicer.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Average Print Speed (mm/s)</h4>
+                    <p>The average speed at which the printer extruder moves while printing. This is a simplification, as actual speed varies for walls, infill, and top/bottom layers.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Filament Diameter (mm)</h4>
+                    <p>The diameter of your filament. The most common sizes are 1.75mm and 2.85mm.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Filament Density (g/cm³)</h4>
+                    <p>The density of the plastic material. This is needed to convert the filament's volume to weight. Common densities are: PLA (~1.24 g/cm³), ABS (~1.04 g/cm³), PETG (~1.27 g/cm³).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
