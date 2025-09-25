@@ -1,0 +1,65 @@
+/**
+ * @fileoverview Firestore Security Rules for MegaCalc Hub Analytics.
+ *
+ * Core Philosophy:
+ * This ruleset allows public read access to all analytics data (calculator categories, page views, and search queries).
+ * All authenticated and unauthenticated users can create analytics events (page views and search queries).
+ * No update or delete operations are permitted on analytics data.
+ *
+ * Data Structure:
+ * - /calculator_categories/{calculatorCategoryId}: Stores calculator category metadata.
+ * - /calculator_page_views/{calculatorPageViewId}: Stores calculator page view events.
+ * - /search_queries/{searchQueryId}: Stores search queries made by users.
+ *
+ * Key Security Decisions:
+ * - Public Read Access: All analytics data is publicly readable to facilitate reporting and dashboards.
+ * - Write-Only Analytics: Only create operations are permitted for page views and search queries. Data immutability simplifies the analytics pipeline.
+ * - No User-Specific Data: Anonymous authentication means no user-specific data segregation is required.
+ * - No Update/Delete: Update and delete operations are explicitly denied for all users to ensure data integrity.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Grants public read access to calculator categories.
+     * @path /calculator_categories/{calculatorCategoryId}
+     * @allow (get, list) Any user can read calculator category data.
+     * @deny (create, update, delete) No user can create, update, or delete calculator category data.
+     * @principle Allows public read access for calculator category metadata.
+     */
+    match /calculator_categories/{calculatorCategoryId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Allows any user to create calculator page view events.
+     * @path /calculator_page_views/{calculatorPageViewId}
+     * @allow (create) Any user (signed in or anonymous) can create a page view event.
+     * @deny (get, list, update, delete) No user can read, list, update, or delete page view events.
+     * @principle Allows anonymous creation of page view events for analytics.
+     */
+    match /calculator_page_views/{calculatorPageViewId} {
+      allow create: if isSignedIn();
+      allow get, list, update, delete: if false;
+    }
+
+    /**
+     * @description Allows any user to create search query events.
+     * @path /search_queries/{searchQueryId}
+     * @allow (create) Any user (signed in or anonymous) can create a search query event.
+     * @deny (get, list, update, delete) No user can read, list, update, or delete search query events.
+     * @principle Allows anonymous creation of search query events for analytics.
+     */
+    match /search_queries/{searchQueryId} {
+      allow create: if isSignedIn();
+      allow get, list, update, delete: if false;
+    }
+
+    // Helper function to determine if a user is signed in.
+    function isSignedIn() {
+      return request.auth != null;
+    }
+  }
+}

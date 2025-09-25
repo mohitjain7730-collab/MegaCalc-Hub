@@ -1,0 +1,149 @@
+{
+  "entities": {
+    "CalculatorCategory": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CalculatorCategory",
+      "type": "object",
+      "description": "Represents a category of calculators within the MegaCalc Hub.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the calculator category."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the calculator category (e.g., Finance, Health & Fitness)."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the calculator category."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "CalculatorPageView": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CalculatorPageView",
+      "type": "object",
+      "description": "Represents a page view event for a specific calculator or category page.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the page view event."
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp of when the page view occurred.",
+          "format": "date-time"
+        },
+        "pageType": {
+          "type": "string",
+          "description": "The type of page being viewed (e.g., 'category', 'calculator')."
+        },
+        "categoryId": {
+          "type": "string",
+          "description": "Reference to CalculatorCategory. (Relationship: CalculatorCategory 1:N CalculatorPageView).  ID of the calculator category if the pageType is 'category'."
+        }
+      },
+      "required": [
+        "id",
+        "timestamp",
+        "pageType"
+      ]
+    },
+    "SearchQuery": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SearchQuery",
+      "type": "object",
+      "description": "Represents a search query made by a user in the MegaCalc Hub.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the search query."
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp of when the search query was made.",
+          "format": "date-time"
+        },
+        "queryText": {
+          "type": "string",
+          "description": "The text of the search query entered by the user."
+        },
+        "resultCount": {
+          "type": "number",
+          "description": "The number of search results returned for the query."
+        }
+      },
+      "required": [
+        "id",
+        "timestamp",
+        "queryText",
+        "resultCount"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/calculator_categories/{calculatorCategoryId}",
+        "definition": {
+          "entityName": "CalculatorCategory",
+          "schema": {
+            "$ref": "#/backend/entities/CalculatorCategory"
+          },
+          "description": "Stores the categories of calculators.  Calculator categories are globally accessible.",
+          "params": [
+            {
+              "name": "calculatorCategoryId",
+              "description": "The unique identifier for the calculator category."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/calculator_page_views/{calculatorPageViewId}",
+        "definition": {
+          "entityName": "CalculatorPageView",
+          "schema": {
+            "$ref": "#/backend/entities/CalculatorPageView"
+          },
+          "description": "Stores all calculator page view events. All users can create page view events.  No role-based access control is required.",
+          "params": [
+            {
+              "name": "calculatorPageViewId",
+              "description": "The unique identifier for the calculator page view event."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/search_queries/{searchQueryId}",
+        "definition": {
+          "entityName": "SearchQuery",
+          "schema": {
+            "$ref": "#/backend/entities/SearchQuery"
+          },
+          "description": "Stores all search queries made by users.  All users can create search query events. No role-based access control is required.",
+          "params": [
+            {
+              "name": "searchQueryId",
+              "description": "The unique identifier for the search query."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "This Firestore data structure is designed to support the analytics requirements of the MegaCalc Hub. It focuses on capturing calculator category page views and search queries. The structure is designed for scalability and efficient querying, leveraging collection groups for aggregated analytics. Since authentication is primarily anonymous, all analytics data is stored globally without user-specific segregation.  Authorization independence is not directly applicable here since there is no user-specific private data.  All the collections follow structural segregation since they contain similar data types with the same security needs. The QAPs are satisfied by allowing rules to validate all submitted data.  Because all access is public and write-only, structural segregation is not critical."
+  }
+}
