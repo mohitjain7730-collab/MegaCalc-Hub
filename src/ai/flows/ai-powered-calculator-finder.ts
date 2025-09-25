@@ -20,7 +20,7 @@ const AIPoweredCalculatorFinderInputSchema = z.object({
 export type AIPoweredCalculatorFinderInput = z.infer<typeof AIPoweredCalculatorFinderInputSchema>;
 
 const AIPoweredCalculatorFinderOutputSchema = z.object({
-  calculatorSlug: z.string().describe('The slug of the most relevant calculator for the query.'),
+  calculatorName: z.string().describe('The name of the most relevant calculator for the query.'),
 });
 export type AIPoweredCalculatorFinderOutput = z.infer<typeof AIPoweredCalculatorFinderOutputSchema>;
 
@@ -28,7 +28,7 @@ export async function aiPoweredCalculatorFinder(input: AIPoweredCalculatorFinder
   return aiPoweredCalculatorFinderFlow(input);
 }
 
-const calculatorList = calculators.map(c => `- ${c.name} (slug: ${c.slug}): ${c.description}`).join('\n');
+const calculatorList = calculators.map(c => `- ${c.name}: ${c.description}`).join('\n');
 
 const prompt = ai.definePrompt({
   name: 'aiPoweredCalculatorFinderPrompt',
@@ -36,14 +36,14 @@ const prompt = ai.definePrompt({
   output: {schema: AIPoweredCalculatorFinderOutputSchema},
   prompt: `You are an AI assistant helping users find the right calculator on MegaCalc Hub.
 
-  Given the user's query, find the single most relevant calculator from the list below and return its slug.
+  Given the user's query, find the single most relevant calculator from the list below and return its full name.
 
   Here is the list of available calculators:
   ${calculatorList}
 
   User Query: {{{query}}}
 
-  Respond with only the slug of the most appropriate calculator.`,
+  Respond with only the full name of the most appropriate calculator.`,
 });
 
 const aiPoweredCalculatorFinderFlow = ai.defineFlow(
