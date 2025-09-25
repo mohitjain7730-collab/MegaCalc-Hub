@@ -1,11 +1,11 @@
 
-import { AIFinder } from '@/components/ai-finder';
 import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { List } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { SearchBar } from '@/components/search-bar';
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ export default function Home() {
       </div>
 
 
-      <AIFinder />
+      <SearchBar />
       <div className="mt-4">
         <Button asChild variant="link" className="text-muted-foreground">
           <Link href="/calculators">
