@@ -40,6 +40,12 @@ export async function findCalculator(prevState: State, formData: FormData): Prom
 
   try {
     const result = await aiPoweredCalculatorFinder({ query });
+
+    // Check if the AI returned a valid slug
+    if (!result || !result.calculatorSlug || typeof result.calculatorSlug !== 'string') {
+        return { message: 'Our AI could not find a matching calculator. Please try rephrasing your search.' };
+    }
+
     const calculatorSlug = result.calculatorSlug;
 
     const foundCalculator = calculators.find(
