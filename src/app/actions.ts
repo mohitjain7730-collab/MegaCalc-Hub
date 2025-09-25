@@ -5,6 +5,8 @@ import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { aiPoweredCalculatorFinder } from '@/ai/flows/ai-powered-calculator-finder';
 import { categories } from '@/lib/categories';
+import { getAnalytics, isSupported, logEvent } from 'firebase/analytics';
+import { initializeFirebase } from '@/firebase';
 
 const QuerySchema = z.object({
   query: z.string().min(5, 'Please describe what you want to calculate in more detail.'),
@@ -26,6 +28,15 @@ export async function findCategory(prevState: State, formData: FormData): Promis
   }
 
   const { query } = validatedFields.data;
+
+  try {
+    const { analytics } = initializeFirebase();
+    if (analytics) {
+        logEvent(analytics, 'search', { search_term: query });
+    }
+  } catch (e) {
+    console.error('Firebase Analytics Error', e);
+  }
 
   try {
     const result = await aiPoweredCalculatorFinder({ query });
