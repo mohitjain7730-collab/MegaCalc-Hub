@@ -88,7 +88,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'ups-runtime-calculator': dynamic(() => import('@/components/calculators/technology/ups-runtime-calculator')),
     'internet-data-usage-estimator': dynamic(() => import('@/components/calculators/technology/internet-data-usage-estimator')),
     'disk-raid-capacity-calculator': dynamic(() => import('@/components/calculators/technology/disk-raid-capacity-calculator')),
-    'code-time-complexity-estimator': dynamic(() => import('@/components/calculators/technology/code-time-complexity-estimator')),
     'api-rate-limit-planner': dynamic(() => import('@/components/calculators/technology/api-rate-limit-planner')),
     'regex-performance-checker': dynamic(() => import('@/components/calculators/technology/regex-performance-checker')),
     'image-compression-size-calculator': dynamic(() => import('@/components/calculators/technology/image-compression-size-calculator')),
@@ -182,5 +181,7 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
+
+    
 
     

@@ -552,13 +552,6 @@ export const calculators: Calculator[] = [
     category: 'technology',
   },
   {
-    id: 63,
-    name: 'Code Time Complexity Estimator',
-    description: 'Quick reference for big-O growth when scaling input size.',
-    slug: 'code-time-complexity-estimator',
-    category: 'technology',
-  },
-  {
     id: 64,
     name: 'API Rate Limit Planner',
     description: 'Calculate calls per second/minute based on quota.',
@@ -777,5 +770,7 @@ export const calculators: Calculator[] = [
     category: 'fun-games',
   },
 ];
+
+    
 
     
