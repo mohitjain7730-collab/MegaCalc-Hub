@@ -49,7 +49,7 @@ export default function SustainableDietImpactCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       food: 'beef',
-      quantity: 1,
+      quantity: undefined,
     },
   });
 
