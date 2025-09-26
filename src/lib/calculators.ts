@@ -381,29 +381,29 @@ export const calculators: Calculator[] = [
   // Environment
   {
     id: 39,
-    name: 'Carbon Footprint Reduction Calculator',
-    description: 'Suggests actions to reduce personal carbon emissions.',
+    name: 'Carbon Footprint Calculator',
+    description: 'Estimate your annual carbon footprint based on your lifestyle.',
     slug: 'carbon-footprint-reduction-calculator',
     category: 'environment',
   },
   {
     id: 40,
     name: 'Water Usage Efficiency Calculator',
-    description: 'Estimates water conservation potential in households.',
+    description: 'Estimates water consumption and potential savings in your household.',
     slug: 'water-usage-efficiency-calculator',
     category: 'environment',
   },
   {
     id: 41,
     name: 'Recycling Impact Calculator',
-    description: 'Quantifies environmental benefits of recycling efforts.',
+    description: 'Quantify the environmental benefits of your recycling efforts.',
     slug: 'recycling-impact-calculator',
     category: 'environment',
   },
   {
     id: 42,
     name: 'Sustainable Diet Impact Calculator',
-    description: 'Analyzes environmental impact of dietary choices.',
+    description: 'Analyzes the water footprint of different dietary choices.',
     slug: 'sustainable-diet-impact-calculator',
     category: 'environment',
   },
@@ -799,5 +799,3 @@ export const calculators: Calculator[] = [
     category: 'cooking-food',
   },
 ];
-
-    
