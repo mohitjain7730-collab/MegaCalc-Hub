@@ -127,6 +127,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'dti-ratio-calculator': dynamic(() => import('@/components/calculators/personal-budgeting/dti-ratio-calculator')),
     'emergency-fund-goal-calculator': dynamic(() => import('@/components/calculators/personal-budgeting/emergency-fund-goal-calculator')),
     'savings-rate-calculator': dynamic(() => import('@/components/calculators/personal-budgeting/savings-rate-calculator')),
+    'break-even-point-calculator': dynamic(() => import('@/components/calculators/business-startup/break-even-point-calculator')),
+    'customer-acquisition-cost-calculator': dynamic(() => import('@/components/calculators/business-startup/customer-acquisition-cost-calculator')),
+    'lifetime-value-calculator': dynamic(() => import('@/components/calculators/business-startup/lifetime-value-calculator')),
+    'burn-rate-calculator': dynamic(() => import('@/components/calculators/business-startup/burn-rate-calculator')),
+    'roi-calculator': dynamic(() => import('@/components/calculators/business-startup/roi-calculator')),
   };
 
 export async function generateStaticParams() {

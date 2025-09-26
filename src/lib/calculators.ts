@@ -827,6 +827,42 @@ export const calculators: Calculator[] = [
     slug: 'savings-rate-calculator',
     category: 'personal-budgeting',
   },
+  // Business & Startup
+  {
+    id: 126,
+    name: 'Break-Even Point Calculator',
+    description: 'Find the sales volume required to cover all fixed and variable costs.',
+    slug: 'break-even-point-calculator',
+    category: 'business-startup',
+  },
+  {
+    id: 127,
+    name: 'Customer Acquisition Cost (CAC) Calculator',
+    description: 'Measure the cost of acquiring one paying customer.',
+    slug: 'customer-acquisition-cost-calculator',
+    category: 'business-startup',
+  },
+  {
+    id: 128,
+    name: 'Lifetime Value (LTV) Calculator',
+    description: 'Estimate the total revenue a single customer generates for your business.',
+    slug: 'lifetime-value-calculator',
+    category: 'business-startup',
+  },
+  {
+    id: 129,
+    name: 'Burn Rate Calculator',
+    description: 'Track how quickly a startup is using its available cash.',
+    slug: 'burn-rate-calculator',
+    category: 'business-startup',
+  },
+  {
+    id: 130,
+    name: 'Return on Investment (ROI) Calculator',
+    description: 'Measure profitability of a business investment.',
+    slug: 'roi-calculator',
+    category: 'business-startup',
+  },
 ];
 
     
