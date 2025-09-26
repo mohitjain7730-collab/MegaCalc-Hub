@@ -33,7 +33,10 @@ export default function NftMintingCostCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const mintingCost = (values.gasPrice * 1e-9) * values.gasLimit * values.ethPrice;
+    const { gasPrice, gasLimit, ethPrice } = values;
+    const totalGasGwei = gasPrice * gasLimit;
+    const totalGasEth = totalGasGwei / 1_000_000_000;
+    const mintingCost = totalGasEth * ethPrice;
     setResult(mintingCost);
   };
 
@@ -70,7 +73,7 @@ export default function NftMintingCostCalculator() {
             <AccordionContent className="text-muted-foreground space-y-2">
                 <p>This calculator estimates the cost of an Ethereum transaction, which is required to mint an NFT.</p>
                  <ol className="list-decimal list-inside space-y-1 pl-4">
-                    <li><strong>Transaction Fee (ETH):</strong> It first calculates the total gas fee in ETH by multiplying the `Gas Price` (in Gwei) by the `Gas Limit`. It also converts Gwei to ETH (1 Gwei = 10⁻⁹ ETH).</li>
+                    <li><strong>Transaction Fee (ETH):</strong> It first calculates the total gas fee in ETH by multiplying the `Gas Price` (in Gwei) by the `Gas Limit` and then converting from Gwei to ETH (1 ETH = 1,000,000,000 Gwei).</li>
                     <li><strong>Cost in USD:</strong> It then multiplies the transaction fee in ETH by the current price of ETH to get the final cost in USD.</li>
                 </ol>
             </AccordionContent>
