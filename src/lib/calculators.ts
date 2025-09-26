@@ -823,7 +823,7 @@ export const calculators: Calculator[] = [
   {
     id: 125,
     name: 'Savings Rate Calculator',
-    description: 'Track the percentage of income you save each month.',
+    description: 'Track the percentage of income you are saving each month.',
     slug: 'savings-rate-calculator',
     category: 'personal-budgeting',
   },
@@ -901,13 +901,6 @@ export const calculators: Calculator[] = [
   },
   // Parenting
   {
-    id: 136,
-    name: 'Child Growth Percentile Calculator',
-    description: 'Compare your child\'s growth with CDC/WHO standards.',
-    slug: 'child-growth-percentile-calculator',
-    category: 'parenting',
-  },
-  {
     id: 137,
     name: 'Pregnancy Due Date Calculator',
     description: 'Estimate your baby\'s due date based on your last menstrual period.',
@@ -936,3 +929,5 @@ export const calculators: Calculator[] = [
     category: 'parenting',
   },
 ];
+
+    
