@@ -32,7 +32,7 @@ export default function BriningSolutionCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       waterVolume: undefined,
-      concentration: 5,
+      concentration: undefined,
       sugarPercent: undefined,
     },
   });
