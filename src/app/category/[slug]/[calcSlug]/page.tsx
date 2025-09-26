@@ -3,6 +3,7 @@
 
 
 
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -144,6 +145,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'baby-feeding-amount-calculator': dynamic(() => import('@/components/calculators/parenting/baby-feeding-amount-calculator')),
     'college-savings-goal-calculator': dynamic(() => import('@/components/calculators/parenting/college-savings-goal-calculator')),
     'childcare-cost-affordability-calculator': dynamic(() => import('@/components/calculators/parenting/childcare-cost-affordability-calculator')),
+    'sports-training-bmi-calculator': dynamic(() => import('@/components/calculators/sports-training/bmi-calculator')),
+    'sports-training-bmr-calculator': dynamic(() => import('@/components/calculators/sports-training/bmr-calculator')),
+    'sports-training-target-heart-rate-calculator': dynamic(() => import('@/components/calculators/sports-training/target-heart-rate-calculator')),
+    'vo2-max-estimation-calculator': dynamic(() => import('@/components/calculators/sports-training/vo2-max-estimation-calculator')),
+    'one-rep-max-calculator': dynamic(() => import('@/components/calculators/sports-training/one-rep-max-calculator')),
   };
 
 export async function generateStaticParams() {

@@ -928,6 +928,40 @@ export const calculators: Calculator[] = [
     slug: 'childcare-cost-affordability-calculator',
     category: 'parenting',
   },
+  // Sports & Training
+  {
+    id: 141,
+    name: 'BMI (Body Mass Index) Calculator',
+    description: 'Assess your weight status category (underweight, normal, overweight, obese).',
+    slug: 'sports-training-bmi-calculator',
+    category: 'sports-training',
+  },
+  {
+    id: 142,
+    name: 'Basal Metabolic Rate (BMR) Calculator',
+    description: 'Calculate your daily calorie needs for weight management.',
+    slug: 'sports-training-bmr-calculator',
+    category: 'sports-training',
+  },
+  {
+    id: 143,
+    name: 'Target Heart Rate Zone Calculator',
+    description: 'Find your ideal heart rate range for fat burn or cardio fitness.',
+    slug: 'sports-training-target-heart-rate-calculator',
+    category: 'sports-training',
+  },
+  {
+    id: 144,
+    name: 'VO₂ Max Estimation Calculator',
+    description: 'Estimate your maximal oxygen uptake from a 1.5-mile run time.',
+    slug: 'vo2-max-estimation-calculator',
+    category: 'sports-training',
+  },
+  {
+    id: 145,
+    name: 'One-Rep Max (1RM) Calculator',
+    description: 'Estimate the maximum weight you can lift for one repetition.',
+    slug: 'one-rep-max-calculator',
+    category: 'sports-training',
+  },
 ];
-
-    
