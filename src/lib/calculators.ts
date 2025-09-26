@@ -785,13 +785,6 @@ export const calculators: Calculator[] = [
     category: 'cooking-food',
   },
   {
-    id: 119,
-    name: 'Recipe Nutrition Calculator',
-    description: 'Compute calories and macronutrients per serving for your recipes.',
-    slug: 'recipe-nutrition-calculator',
-    category: 'cooking-food',
-  },
-  {
     id: 120,
     name: 'Brining Solution Calculator',
     description: 'Calculate correct salt and sugar ratio for brines to ensure perfect flavor and texture.',

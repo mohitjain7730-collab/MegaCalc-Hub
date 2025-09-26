@@ -121,7 +121,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'karaoke-queue-time': dynamic(() => import('@/components/calculators/fun-games/karaoke-queue-time-calculator')),
     'recipe-ingredient-converter': dynamic(() => import('@/components/calculators/cooking-food/recipe-ingredient-converter')),
     'cooking-time-adjuster': dynamic(() => import('@/components/calculators/cooking-food/cooking-time-adjuster')),
-    'recipe-nutrition-calculator': dynamic(() => import('@/components/calculators/cooking-food/recipe-nutrition-calculator')),
     'brining-solution-calculator': dynamic(() => import('@/components/calculators/cooking-food/brining-solution-calculator')),
     'meat-thawing-time-calculator': dynamic(() => import('@/components/calculators/cooking-food/meat-thawing-time-calculator')),
   };
