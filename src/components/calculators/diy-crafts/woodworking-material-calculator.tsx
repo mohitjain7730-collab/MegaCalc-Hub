@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function WoodworkingMaterialCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will help assess wood requirements for furniture projects.
+                This calculator is under construction. It will help assess wood requirements (board feet) and generate cut lists, which requires specific domain knowledge.
             </p>
         </CardContent>
     </Card>

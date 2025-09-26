@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function KnittingPatternCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will help determine yarn requirements for custom knitting patterns.
+                This calculator is under construction. It will help determine yarn requirements and pattern adjustments based on gauge, which requires specific domain knowledge.
             </p>
         </CardContent>
     </Card>

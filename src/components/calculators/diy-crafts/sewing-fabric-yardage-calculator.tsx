@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function SewingFabricYardageCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will help estimate fabric needed based on garment size and style.
+                This calculator is under construction. It will help estimate fabric needed based on garment type, measurements, and fabric width, which requires complex logic.
             </p>
         </CardContent>
     </Card>
