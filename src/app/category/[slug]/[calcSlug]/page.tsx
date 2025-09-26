@@ -1,5 +1,6 @@
 
 
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -132,6 +133,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'lifetime-value-calculator': dynamic(() => import('@/components/calculators/business-startup/lifetime-value-calculator')),
     'burn-rate-calculator': dynamic(() => import('@/components/calculators/business-startup/burn-rate-calculator')),
     'roi-calculator': dynamic(() => import('@/components/calculators/business-startup/roi-calculator')),
+    'crypto-mining-profitability-calculator': dynamic(() => import('@/components/calculators/crypto-web3/crypto-mining-profitability-calculator')),
+    'crypto-tax-liability-calculator': dynamic(() => import('@/components/calculators/crypto-web3/crypto-tax-liability-calculator')),
+    'crypto-staking-reward-calculator': dynamic(() => import('@/components/calculators/crypto-web3/crypto-staking-reward-calculator')),
+    'nft-minting-cost-calculator': dynamic(() => import('@/components/calculators/crypto-web3/nft-minting-cost-calculator')),
+    'crypto-apy-calculator': dynamic(() => import('@/components/calculators/crypto-web3/crypto-apy-calculator')),
   };
 
 export async function generateStaticParams() {

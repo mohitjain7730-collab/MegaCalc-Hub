@@ -863,6 +863,42 @@ export const calculators: Calculator[] = [
     slug: 'roi-calculator',
     category: 'business-startup',
   },
+   // Crypto & Web3
+  {
+    id: 131,
+    name: 'Crypto Mining Profitability Calculator',
+    description: 'Estimate daily/monthly profit from crypto mining.',
+    slug: 'crypto-mining-profitability-calculator',
+    category: 'crypto-web3',
+  },
+  {
+    id: 132,
+    name: 'Crypto Tax Liability Calculator',
+    description: 'Estimate tax owed on crypto capital gains.',
+    slug: 'crypto-tax-liability-calculator',
+    category: 'crypto-web3',
+  },
+  {
+    id: 133,
+    name: 'Crypto Staking Reward Calculator',
+    description: 'Calculate total coins earned from staking.',
+    slug: 'crypto-staking-reward-calculator',
+    category: 'crypto-web3',
+  },
+  {
+    id: 134,
+    name: 'NFT Minting Cost Calculator',
+    description: 'Estimate total cost to mint an NFT in USD.',
+    slug: 'nft-minting-cost-calculator',
+    category: 'crypto-web3',
+  },
+  {
+    id: 135,
+    name: 'Crypto APY (Yield Farming) Calculator',
+    description: 'Calculate final amount after yield farming.',
+    slug: 'crypto-apy-calculator',
+    category: 'crypto-web3',
+  },
 ];
 
     
