@@ -22,6 +22,10 @@ import {
   Shapes,
   BrainCircuit,
   GitBranch,
+  Beaker,
+  IceCream2,
+  Utensils,
+  Clock,
 } from 'lucide-react';
 
 export interface Category {
@@ -54,6 +58,10 @@ export const icons: {[key: string]: LucideIcon} = {
   Shapes,
   BrainCircuit,
   GitBranch,
+  Beaker,
+  IceCream2,
+  Utensils,
+  Clock,
 };
 
 export const categories: Category[] = [
@@ -196,3 +204,5 @@ export const categories: Category[] = [
     Icon: 'Shapes',
   },
 ];
+
+    

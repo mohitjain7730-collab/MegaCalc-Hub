@@ -119,6 +119,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'party-budget-per-person': dynamic(() => import('@/components/calculators/fun-games/party-budget-per-person-calculator')),
     'bbq-food-drink-quantity': dynamic(() => import('@/components/calculators/fun-games/bbq-food-drink-quantity-calculator')),
     'karaoke-queue-time': dynamic(() => import('@/components/calculators/fun-games/karaoke-queue-time-calculator')),
+    'recipe-ingredient-converter': dynamic(() => import('@/components/calculators/cooking-food/recipe-ingredient-converter')),
+    'cooking-time-adjuster': dynamic(() => import('@/components/calculators/cooking-food/cooking-time-adjuster')),
+    'recipe-nutrition-calculator': dynamic(() => import('@/components/calculators/cooking-food/recipe-nutrition-calculator')),
+    'brining-solution-calculator': dynamic(() => import('@/components/calculators/cooking-food/brining-solution-calculator')),
+    'meat-thawing-time-calculator': dynamic(() => import('@/components/calculators/cooking-food/meat-thawing-time-calculator')),
   };
 
 export async function generateStaticParams() {
@@ -181,7 +186,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
-    
 
     

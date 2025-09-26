@@ -769,8 +769,42 @@ export const calculators: Calculator[] = [
     slug: 'karaoke-queue-time',
     category: 'fun-games',
   },
+  // Cooking & Food
+  {
+    id: 117,
+    name: 'Recipe Ingredient Converter',
+    description: 'Scale recipe ingredient quantities up or down for different serving sizes.',
+    slug: 'recipe-ingredient-converter',
+    category: 'cooking-food',
+  },
+  {
+    id: 118,
+    name: 'Cooking Time Adjuster',
+    description: 'Estimate new cooking time when you change the oven temperature.',
+    slug: 'cooking-time-adjuster',
+    category: 'cooking-food',
+  },
+  {
+    id: 119,
+    name: 'Recipe Nutrition Calculator',
+    description: 'Compute calories and macronutrients per serving for your recipes.',
+    slug: 'recipe-nutrition-calculator',
+    category: 'cooking-food',
+  },
+  {
+    id: 120,
+    name: 'Brining Solution Calculator',
+    description: 'Calculate correct salt and sugar ratio for brines to ensure perfect flavor and texture.',
+    slug: 'brining-solution-calculator',
+    category: 'cooking-food',
+  },
+  {
+    id: 121,
+    name: 'Meat Thawing Time Calculator',
+    description: 'Estimate safe refrigerator thawing time for frozen meat based on weight.',
+    slug: 'meat-thawing-time-calculator',
+    category: 'cooking-food',
+  },
 ];
-
-    
 
     
