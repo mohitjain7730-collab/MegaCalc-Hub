@@ -23,7 +23,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'student-loan-repayment-calculator': dynamic(() => import('@/components/calculators/finance/student-loan-repayment-calculator')),
     'inflation-calculator': dynamic(() => import('@/components/calculators/finance/inflation-calculator')),
     'roth-ira-contribution-limit-calculator': dynamic(() => import('@/components/calculators/finance/roth-ira-contribution-limit-calculator')),
-    'emergency-fund-calculator': dynamic(() => import('@/components/calculators/finance/emergency-fund-calculator')),
     'water-footprint-of-food-calculator': dynamic(() => import('@/components/calculators/health-fitness/water-footprint-of-food-calculator')),
     'bmi-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmi-calculator')),
     'bmr-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmr-calculator')),
@@ -123,6 +122,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'cooking-time-adjuster': dynamic(() => import('@/components/calculators/cooking-food/cooking-time-adjuster')),
     'brining-solution-calculator': dynamic(() => import('@/components/calculators/cooking-food/brining-solution-calculator')),
     'meat-thawing-time-calculator': dynamic(() => import('@/components/calculators/cooking-food/meat-thawing-time-calculator')),
+    '50-30-20-budget-calculator': dynamic(() => import('@/components/calculators/personal-budgeting/50-30-20-budget-calculator')),
+    'monthly-budget-surplus-deficit-calculator': dynamic(() => import('@/components/calculators/personal-budgeting/monthly-budget-surplus-deficit-calculator')),
+    'dti-ratio-calculator': dynamic(() => import('@/components/calculators/personal-budgeting/dti-ratio-calculator')),
+    'emergency-fund-goal-calculator': dynamic(() => import('@/components/calculators/personal-budgeting/emergency-fund-goal-calculator')),
+    'savings-rate-calculator': dynamic(() => import('@/components/calculators/personal-budgeting/savings-rate-calculator')),
   };
 
 export async function generateStaticParams() {
@@ -185,3 +189,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
+
+    
