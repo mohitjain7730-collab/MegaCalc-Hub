@@ -38,7 +38,7 @@ export default function CryptoApyCalculator() {
       initialInvestment: undefined,
       apy: undefined,
       duration: undefined,
-      compoundingFrequency: 365,
+      compoundingFrequency: undefined,
     },
   });
 
@@ -70,7 +70,7 @@ export default function CryptoApyCalculator() {
                 <FormItem><FormLabel>Duration (Years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="compoundingFrequency" render={({ field }) => (
-                <FormItem><FormLabel>Compounding Frequency (per Year)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Compounding Frequency (per Year)</FormLabel><FormControl><Input type="number" placeholder="e.g., 365" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Yield</Button>
