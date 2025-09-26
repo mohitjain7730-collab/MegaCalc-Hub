@@ -899,6 +899,40 @@ export const calculators: Calculator[] = [
     slug: 'crypto-apy-calculator',
     category: 'crypto-web3',
   },
+  // Parenting
+  {
+    id: 136,
+    name: 'Child Growth Percentile Calculator',
+    description: 'Compare your child\'s growth with CDC/WHO standards.',
+    slug: 'child-growth-percentile-calculator',
+    category: 'parenting',
+  },
+  {
+    id: 137,
+    name: 'Pregnancy Due Date Calculator',
+    description: 'Estimate your baby\'s due date based on your last menstrual period.',
+    slug: 'due-date-calculator',
+    category: 'parenting',
+  },
+  {
+    id: 138,
+    name: 'Baby Feeding Amount Calculator',
+    description: 'Calculate the recommended daily milk/formula intake for your baby.',
+    slug: 'baby-feeding-amount-calculator',
+    category: 'parenting',
+  },
+  {
+    id: 139,
+    name: 'College Savings Goal Calculator',
+    description: 'Estimate the monthly savings needed to meet future college tuition costs.',
+    slug: 'college-savings-goal-calculator',
+    category: 'parenting',
+  },
+  {
+    id: 140,
+    name: 'Childcare Cost Affordability Calculator',
+    description: 'Assess what percentage of your income is spent on childcare.',
+    slug: 'childcare-cost-affordability-calculator',
+    category: 'parenting',
+  },
 ];
-
-    

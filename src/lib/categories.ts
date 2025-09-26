@@ -204,5 +204,3 @@ export const categories: Category[] = [
     Icon: 'Shapes',
   },
 ];
-
-    

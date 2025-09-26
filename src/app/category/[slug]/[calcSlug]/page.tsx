@@ -1,6 +1,7 @@
 
 
 
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -138,6 +139,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'crypto-staking-reward-calculator': dynamic(() => import('@/components/calculators/crypto-web3/crypto-staking-reward-calculator')),
     'nft-minting-cost-calculator': dynamic(() => import('@/components/calculators/crypto-web3/nft-minting-cost-calculator')),
     'crypto-apy-calculator': dynamic(() => import('@/components/calculators/crypto-web3/crypto-apy-calculator')),
+    'child-growth-percentile-calculator': dynamic(() => import('@/components/calculators/parenting/child-growth-percentile-calculator')),
+    'due-date-calculator': dynamic(() => import('@/components/calculators/parenting/due-date-calculator')),
+    'baby-feeding-amount-calculator': dynamic(() => import('@/components/calculators/parenting/baby-feeding-amount-calculator')),
+    'college-savings-goal-calculator': dynamic(() => import('@/components/calculators/parenting/college-savings-goal-calculator')),
+    'childcare-cost-affordability-calculator': dynamic(() => import('@/components/calculators/parenting/childcare-cost-affordability-calculator')),
   };
 
 export async function generateStaticParams() {
@@ -200,5 +206,3 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
-    
