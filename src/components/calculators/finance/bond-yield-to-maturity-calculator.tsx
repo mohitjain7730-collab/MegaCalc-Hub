@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -28,10 +29,10 @@ export default function BondYieldToMaturityCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       currentPrice: undefined,
-      faceValue: 1000,
+      faceValue: undefined,
       couponRate: undefined,
       years: undefined,
-      paymentsPerYear: 2,
+      paymentsPerYear: undefined,
     },
   });
 
