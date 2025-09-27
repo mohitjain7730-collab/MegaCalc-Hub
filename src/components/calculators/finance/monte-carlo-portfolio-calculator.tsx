@@ -36,7 +36,7 @@ export default function MonteCarloPortfolioCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { initialValue: undefined, expectedReturn: undefined, volatility: undefined, timeHorizon: undefined, simulations: 1000 },
+    defaultValues: { initialValue: undefined, expectedReturn: undefined, volatility: undefined, timeHorizon: undefined, simulations: undefined },
   });
 
   // Standard Normal variate using Box-Muller transform
