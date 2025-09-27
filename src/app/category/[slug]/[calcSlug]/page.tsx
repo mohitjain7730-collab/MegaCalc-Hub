@@ -56,6 +56,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'alpha-investment-calculator': dynamic(() => import('@/components/calculators/finance/alpha-investment-calculator')),
     'volatility-standard-deviation-calculator': dynamic(() => import('@/components/calculators/finance/volatility-standard-deviation-calculator')),
     'correlation-coefficient-calculator': dynamic(() => import('@/components/calculators/finance/correlation-coefficient-calculator')),
+    'beta-asset-calculator': dynamic(() => import('@/components/calculators/finance/beta-asset-calculator')),
     'water-footprint-of-food-calculator': dynamic(() => import('@/components/calculators/health-fitness/water-footprint-of-food-calculator')),
     'bmi-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmi-calculator')),
     'bmr-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmr-calculator')),

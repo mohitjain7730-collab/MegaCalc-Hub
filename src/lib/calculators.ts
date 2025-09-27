@@ -324,6 +324,13 @@ export const calculators: Calculator[] = [
     slug: 'correlation-coefficient-calculator',
     category: 'finance',
   },
+  {
+    id: 194,
+    name: 'Beta (Asset) Calculator',
+    description: 'Measures an asset’s volatility relative to the market (systematic risk).',
+    slug: 'beta-asset-calculator',
+    category: 'finance',
+  },
   // Health & Fitness
   {
     id: 107,
