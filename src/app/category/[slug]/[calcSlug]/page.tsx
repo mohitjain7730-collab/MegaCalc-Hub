@@ -4,6 +4,7 @@
 
 
 
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -71,10 +72,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'water-usage-efficiency-calculator': dynamic(() => import('@/components/calculators/environment/water-usage-efficiency-calculator')),
     'recycling-impact-calculator': dynamic(() => import('@/components/calculators/environment/recycling-impact-calculator')),
     'sustainable-diet-impact-calculator': dynamic(() => import('@/components/calculators/environment/sustainable-diet-impact-calculator')),
-    'paint-coverage-estimator': dynamic(() => import('@/components/calculators/diy-crafts/paint-coverage-estimator')),
-    'knitting-pattern-calculator': dynamic(() => import('@/components/calculators/diy-crafts/knitting-pattern-calculator')),
-    'sewing-fabric-yardage-calculator': dynamic(() => import('@/components/calculators/diy-crafts/sewing-fabric-yardage-calculator')),
-    'woodworking-material-calculator': dynamic(() => import('@/components/calculators/diy-crafts/woodworking-material-calculator')),
     'artifact-dating-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/artifact-dating-calculator')),
     'historical-population-density-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/historical-population-density-calculator')),
     'archaeological-site-excavation-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/archaeological-site-excavation-calculator')),

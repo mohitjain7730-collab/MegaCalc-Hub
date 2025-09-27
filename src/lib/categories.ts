@@ -15,7 +15,6 @@ import {
   Bitcoin,
   Baby,
   Dumbbell,
-  Paintbrush,
   Calendar,
   Sprout,
   Gamepad2,
@@ -51,7 +50,6 @@ export const icons: {[key: string]: LucideIcon} = {
   Bitcoin,
   Baby,
   Dumbbell,
-  Paintbrush,
   Calendar,
   Sprout,
   Gamepad2,
@@ -161,12 +159,6 @@ export const categories: Category[] = [
     slug: 'sports-training',
     description: 'Optimize your training with pace and performance calculators.',
     Icon: 'Dumbbell',
-  },
-  {
-    name: 'DIY & Crafts',
-    slug: 'diy-crafts',
-    description: 'Tools for your creative projects and material needs.',
-    Icon: 'Paintbrush',
   },
   {
     name: 'Time & Date',
