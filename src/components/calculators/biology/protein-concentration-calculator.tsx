@@ -25,7 +25,7 @@ export default function ProteinConcentrationCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { a280: undefined, extinctionCoeff: undefined, pathLength: 1 },
+    defaultValues: { a280: undefined, extinctionCoeff: undefined, pathLength: undefined },
   });
 
   const onSubmit = (values: FormValues) => {
@@ -45,7 +45,7 @@ export default function ProteinConcentrationCalculator() {
                 <FormItem><FormLabel>Molar Extinction Coeff. (M⁻¹cm⁻¹)</FormLabel><FormControl><Input type="number" placeholder="e.g., 5500" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="pathLength" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Path Length (cm)</FormLabel><FormControl><Input type="number" placeholder="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2"><FormLabel>Path Length (cm)</FormLabel><FormControl><Input type="number" placeholder="e.g., 1" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Concentration</Button>
