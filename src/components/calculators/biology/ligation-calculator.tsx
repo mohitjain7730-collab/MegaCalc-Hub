@@ -26,7 +26,7 @@ export default function LigationCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { vectorMass: undefined, vectorLength: undefined, insertLength: undefined, molarRatio: 3 },
+    defaultValues: { vectorMass: undefined, vectorLength: undefined, insertLength: undefined, molarRatio: undefined },
   });
 
   const onSubmit = (values: FormValues) => {
