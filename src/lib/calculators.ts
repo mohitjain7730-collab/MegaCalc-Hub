@@ -283,13 +283,6 @@ export const calculators: Calculator[] = [
     category: 'finance',
   },
   {
-    id: 187,
-    name: 'Beta (Asset) Calculator',
-    description: 'Measures an asset’s volatility relative to the market (systematic risk).',
-    slug: 'beta-asset-calculator',
-    category: 'finance',
-  },
-  {
     id: 188,
     name: 'Sharpe Ratio Calculator',
     description: 'Evaluates risk-adjusted return of an investment.',

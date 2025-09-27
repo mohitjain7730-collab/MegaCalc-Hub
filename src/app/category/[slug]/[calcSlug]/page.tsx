@@ -50,7 +50,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'ebitda-ebit-calculator': dynamic(() => import('@/components/calculators/finance/ebitda-ebit-calculator')),
     'enterprise-value-calculator': dynamic(() => import('@/components/calculators/finance/enterprise-value-calculator')),
     'ev-ebit-ebitda-multiple-calculator': dynamic(() => import('@/components/calculators/finance/ev-ebit-ebitda-multiple-calculator')),
-    'beta-asset-calculator': dynamic(() => import('@/components/calculators/finance/beta-asset-calculator')),
     'sharpe-ratio-calculator': dynamic(() => import('@/components/calculators/finance/sharpe-ratio-calculator')),
     'sortino-ratio-calculator': dynamic(() => import('@/components/calculators/finance/sortino-ratio-calculator')),
     'treynor-ratio-calculator': dynamic(() => import('@/components/calculators/finance/treynor-ratio-calculator')),
