@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,6 +10,8 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Handshake } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 
 const formSchema = z.object({
   notional: z.number().positive(),
@@ -69,6 +72,40 @@ export default function ForwardRateAgreementCalculator() {
           </CardContent>
         </Card>
       )}
+       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Notional Principal</h4>
+                    <p>The hypothetical principal amount on which the interest payments are calculated. This amount is not actually exchanged.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Contract Rate (Rₖ)</h4>
+                    <p>The fixed interest rate that was agreed upon when the FRA was initiated.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Reference/Market Rate (Rₘ)</h4>
+                    <p>The actual market interest rate (like SOFR) on the settlement date, which determines the outcome of the agreement.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Days in Contract Period</h4>
+                    <p>The length of the forward period for which the interest rate was locked in.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+                <p>A Forward Rate Agreement (FRA) is a contract to lock in an interest rate on a notional amount for a future period. The calculator determines the cash settlement paid at the beginning of that period.</p>
+                <ol className="list-decimal list-inside space-y-1 mt-2">
+                  <li>It calculates the total interest difference between what would be paid at the market rate versus the contract rate.</li>
+                  <li>Because this settlement is paid at the start of the period, not the end, the amount must be discounted back to its present value using the current market rate.</li>
+                  <li>The direction of the payment depends on who benefited from the rate move. If market rates went up, the party who locked in the lower fixed rate receives a payment.</li>
+                </ol>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

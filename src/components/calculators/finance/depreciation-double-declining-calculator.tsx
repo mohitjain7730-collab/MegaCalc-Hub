@@ -90,9 +90,22 @@ export default function DepreciationDoubleDecliningCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <p>The inputs are the same as the Straight-Line method: Asset Cost, Salvage Value, and Useful Life.</p>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How Double Declining Balance Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">This accelerated method calculates depreciation at twice the straight-line rate. The expense is applied to the asset's book value at the start of each year, leading to higher depreciation in early years. The process stops when the book value reaches the salvage value.</AccordionContent>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>This is an accelerated depreciation method that results in higher depreciation expenses during the earlier years of an asset's life.</p>
+            <ol className='list-decimal list-inside space-y-2 mt-2'>
+              <li><strong>Calculate Rate:</strong> It first determines the straight-line rate (1 / Useful Life) and doubles it.</li>
+              <li><strong>Calculate Annual Depreciation:</strong> For each year, it multiplies this fixed rate by the asset's book value at the beginning of that year (not the depreciable base).</li>
+              <li><strong>Apply Salvage Value Rule:</strong> A key rule is that depreciation stops once the book value equals the salvage value. This calculator automatically adjusts the final year's depreciation to ensure the ending book value does not fall below the salvage value.</li>
+            </ol>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

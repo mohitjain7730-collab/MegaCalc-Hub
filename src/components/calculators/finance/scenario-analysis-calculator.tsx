@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -12,10 +13,10 @@ import { Drama } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const scenarioSchema = z.object({
-  unitsSold: z.number().nonnegative(),
-  pricePerUnit: z.number().nonnegative(),
-  variableCost: z.number().nonnegative(),
-  fixedCosts: z.number().nonnegative(),
+  unitsSold: z.number().nonnegative().optional(),
+  pricePerUnit: z.number().nonnegative().optional(),
+  variableCost: z.number().nonnegative().optional(),
+  fixedCosts: z.number().nonnegative().optional(),
 });
 
 const formSchema = z.object({
@@ -46,6 +47,7 @@ export default function ScenarioAnalysisCalculator() {
   });
 
   const calculateNPV = (values: z.infer<typeof scenarioSchema>, discountRate: number, projectLife: number, initialInvestment: number) => {
+    if(!values.unitsSold || !values.pricePerUnit || !values.variableCost || values.fixedCosts === undefined) return 0;
     const annualCashFlow = (values.pricePerUnit * values.unitsSold) - (values.variableCost * values.unitsSold) - values.fixedCosts;
     let npv = -initialInvestment;
     for (let t = 1; t <= projectLife; t++) {
@@ -105,9 +107,22 @@ export default function ScenarioAnalysisCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Project Assumptions</h4>
+                    <p>These are the core financial variables for your project: the upfront cost (`Initial Investment`), its lifespan in years, and the `Discount Rate` (your required rate of return) used to value future cash flows.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Scenario Variables</h4>
+                    <p>For each scenario (Worst, Base, Best), you define a complete set of assumptions for calculating annual cash flow: `Units Sold`, `Price Per Unit`, `Variable Cost Per Unit`, and total `Fixed Costs`.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">Scenario analysis evaluates a project's outcome under different sets of assumptions. This calculator runs a Net Present Value (NPV) calculation three times: once for your base-case assumptions, once for an optimistic (best-case) scenario, and once for a pessimistic (worst-case) scenario, showing the range of potential outcomes.</AccordionContent>
+          <AccordionContent className="text-muted-foreground">Scenario analysis evaluates a project's outcome under different, coherent sets of assumptions. This calculator runs a Net Present Value (NPV) calculation three times: once for your base-case assumptions, once for an optimistic (best-case) scenario, and once for a pessimistic (worst-case) scenario, showing the range of potential outcomes. This provides a clearer picture of the potential upside and downside risk than changing one variable at a time.</AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

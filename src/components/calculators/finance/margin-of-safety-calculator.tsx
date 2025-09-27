@@ -86,10 +86,23 @@ export default function MarginOfSafetyCalculator() {
           </CardContent>
         </Card>
       )}
-      <Accordion type="single" collapsible className="w-full">
+       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Current or Forecasted Sales</h4>
+                    <p>The total sales revenue for the period you are analyzing.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Break-Even Sales</h4>
+                    <p>The sales level at which total revenues equal total costs, resulting in zero profit. You can calculate this using the Break-Even Sales Dollar Amount Calculator.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">The Margin of Safety quantifies the difference between actual sales and the sales level required to break even. A higher margin indicates a lower risk of not breaking even and provides a cushion against sales declines.</AccordionContent>
+          <AccordionContent className="text-muted-foreground">The Margin of Safety quantifies the difference between actual or projected sales and the sales level required to break even. A higher margin indicates a lower risk of not breaking even and provides a cushion against sales declines. The calculator shows this both as a raw dollar amount and as a percentage of current sales for better context.</AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

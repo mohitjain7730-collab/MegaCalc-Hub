@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart2 } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
   amountForeign: z.number().positive(),
@@ -69,6 +71,36 @@ export default function CurrencyVolatilityCalculator() {
           </CardContent>
         </Card>
       )}
+       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Amount in Foreign Currency</h4>
+                    <p>The value of your transaction or asset in its original currency (e.g., 50,000 JPY).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Current Exchange Rate</h4>
+                    <p>The rate for converting 1 unit of the foreign currency into your domestic currency.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Expected Fluctuation (%)</h4>
+                    <p>The percentage change you want to model. Use a positive number for an appreciation of the foreign currency and a negative number for a depreciation.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <ol className="list-decimal list-inside space-y-2">
+                  <li>It calculates the initial value of your holding in your domestic currency.</li>
+                  <li>It adjusts the current exchange rate by the fluctuation percentage you provided to find the new rate.</li>
+                  <li>It calculates the new value of your holding using this new rate.</li>
+                  <li>Finally, it shows the difference between the new and initial values, quantifying the gain or loss due to currency movement.</li>
+                </ol>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

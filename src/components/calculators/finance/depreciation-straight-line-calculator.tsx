@@ -70,9 +70,30 @@ export default function DepreciationStraightLineCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Asset Cost</h4>
+                    <p>The original purchase price of the asset plus any costs required to get it ready for its intended use (e.g., shipping, installation).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Salvage Value</h4>
+                    <p>The estimated residual value of an asset at the end of its useful life. It's what the company expects to sell it for.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Useful Life</h4>
+                    <p>The estimated period over which the asset is expected to be used by the company.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How Straight-Line Depreciation Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">This method spreads the cost of an asset evenly over its useful life. It calculates the total depreciable amount (Cost - Salvage Value) and divides it by the useful life in years to find the constant annual depreciation expense.</AccordionContent>
+          <AccordionContent className="text-muted-foreground">
+            <p>This method spreads the cost of an asset evenly over its useful life. It's the simplest and most widely used depreciation method for financial accounting.</p>
+            <p className='mt-2 font-mono p-2 bg-muted rounded-md text-center'>(Asset Cost - Salvage Value) / Useful Life</p>
+            <p className='mt-2'>The calculator determines the total amount that can be depreciated (the "depreciable base") and divides it by the number of years the asset will be in service to find the constant annual depreciation expense.</p>
+            </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

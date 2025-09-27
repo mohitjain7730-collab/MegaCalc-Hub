@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Landmark } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -89,9 +89,22 @@ export default function DepreciationSumOfYearsDigitsCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                 <p>The inputs are the same as other depreciation methods: Asset Cost, Salvage Value, and Useful Life.</p>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How Sum-of-the-Years'-Digits Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">This accelerated method calculates depreciation based on a fraction. The denominator is the sum of the digits of the asset's useful life (e.g., 5+4+3+2+1=15 for a 5-year life). The numerator is the remaining useful life at the start of the year. This fraction is multiplied by the depreciable base (Cost - Salvage Value) to find the annual expense.</AccordionContent>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>This is another accelerated depreciation method that recognizes more depreciation in the early years of an asset's life.</p>
+            <ol className='list-decimal list-inside space-y-2 mt-2'>
+              <li><strong>Calculate the SYD:</strong> First, it calculates the "Sum-of-the-Years' Digits" (SYD). For a 5-year asset, this is 5 + 4 + 3 + 2 + 1 = 15. This sum becomes the denominator of the depreciation fraction.</li>
+              <li><strong>Determine the Fraction:</strong> For each year, the numerator of the fraction is the number of years of useful life remaining at the beginning of that year. So, for Year 1 of a 5-year asset, the fraction is 5/15. For Year 2, it's 4/15, and so on.</li>
+              <li><strong>Calculate Depreciation:</strong> The annual depreciation expense is calculated by multiplying this fraction by the total depreciable base (Asset Cost - Salvage Value).</li>
+            </ol>
+            </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

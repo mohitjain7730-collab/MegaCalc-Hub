@@ -92,9 +92,25 @@ export default function MacrsDepreciationCalculator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Asset Cost</h4>
+                    <p>The original cost basis of the asset.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Asset Class</h4>
+                    <p>The recovery period assigned to an asset by the IRS for tax purposes. This calculator uses the Half-Year convention, which is the most common.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How MACRS Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">The Modified Accelerated Cost Recovery System (MACRS) is the standard for tax depreciation in the US. It allows for larger deductions in the early years of an asset's life. The calculator uses pre-defined IRS tables for specific asset classes (3, 5, or 7-year property) to find the depreciation percentage for each year. Salvage value is always ignored under MACRS.</AccordionContent>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>The Modified Accelerated Cost Recovery System (MACRS) is the standard for tax depreciation in the US. It allows for larger tax deductions in the early years of an asset's life and is designed to incentivize business investment.</p>
+            <p>This calculator uses pre-defined IRS percentage tables for specific asset classes. For a given asset cost and class, it multiplies the cost by the appropriate percentage for each year in the recovery period to determine the annual depreciation deduction. A key feature of MACRS is that the salvage value of an asset is always considered to be zero.</p>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

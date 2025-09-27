@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
   swapRate: z.number(),
@@ -56,6 +58,27 @@ export default function SwapSpreadCalculator() {
           </CardContent>
         </Card>
       )}
+       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Swap Rate (%)</h4>
+                    <p>The fixed rate component of an interest rate swap for a specific maturity (e.g., the 10-year swap rate). This rate reflects the market's expectation of future short-term interest rates plus a premium for interbank credit risk.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Government Bond Yield (%)</h4>
+                    <p>The yield on a government bond of the same maturity as the swap. This is considered the "risk-free" benchmark rate.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <p>The calculator simply subtracts the benchmark government bond yield from the swap rate. The resulting difference, known as the swap spread, is a key market indicator. It essentially represents the additional premium the market demands for the credit risk of lending between banks compared to lending to the government. A widening spread often signals increasing stress or perceived risk in the financial system.</p>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

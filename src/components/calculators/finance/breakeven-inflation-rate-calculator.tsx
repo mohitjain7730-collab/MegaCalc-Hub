@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { TrendingUp } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
   nominalYield: z.number(),
@@ -59,6 +61,28 @@ export default function BreakevenInflationRateCalculator() {
           </CardContent>
         </Card>
       )}
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Nominal Bond Yield (%)</h4>
+                    <p>The yield on a standard government bond of a certain maturity (e.g., 10-year Treasury Note). This yield includes both the real return and an expected inflation component.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Real Yield (%)</h4>
+                    <p>The yield on an inflation-protected government bond of the same maturity (e.g., 10-year TIPS). The principal of this bond adjusts with inflation, so its yield represents a "real" return above inflation.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How It Works (Fisher Effect)</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <p>The breakeven inflation rate represents the inflation rate at which the return on a nominal bond and an inflation-protected bond (like TIPS) would be the same. It is calculated by finding the difference in their yields and is considered a measure of the market's inflation expectations.</p>
+                <p className='mt-2'>This calculator uses the precise Fisher Equation `(1 + Nominal) = (1 + Real) * (1 + Inflation)` and solves for the inflation rate, providing a more accurate result than simple subtraction.</p>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

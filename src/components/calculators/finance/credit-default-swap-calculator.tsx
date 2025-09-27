@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -10,6 +11,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield } from 'lucide-react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 
 const formSchema = z.object({
   pd: z.number().min(0).max(100),
@@ -38,7 +41,7 @@ export default function CreditDefaultSwapCalculator() {
     <div className="space-y-8">
        <Alert variant="destructive">
         <AlertTitle>Conceptual Tool Only</AlertTitle>
-        <AlertDescription>This calculator uses a highly simplified formula for educational purposes. Real-world CDS pricing is far more complex.</AlertDescription>
+        <AlertDescription>This calculator uses a highly simplified formula for educational purposes. Real-world CDS pricing is far more complex, involving credit curves and recovery rate assumptions.</AlertDescription>
       </Alert>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -62,6 +65,29 @@ export default function CreditDefaultSwapCalculator() {
           </CardContent>
         </Card>
       )}
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Probability of Default (PD)</h4>
+                    <p>An estimate of the likelihood that the debt issuer will default on its payments within a year. This is a complex value derived from credit ratings, market data, and financial analysis.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Loss Given Default (LGD)</h4>
+                    <p>The percentage of the total exposure that will be lost if a default occurs. It is calculated as `100% - Recovery Rate`. For example, if bondholders are expected to recover 40% of their investment after a default, the LGD is 60%.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How It Works (Conceptual)</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <p>A Credit Default Swap (CDS) is like an insurance policy against a bond default. This calculator demonstrates the basic principle behind its pricing.</p>
+                <p className="mt-2 font-mono p-2 bg-muted rounded-md text-center">CDS Spread ≈ PD × LGD</p>
+                <p className="mt-2">The annual premium (spread) that the buyer of protection must pay should be roughly equal to the expected loss on the bond for that year. The expected loss is the probability of the bad event happening (PD) multiplied by the financial impact if it does happen (LGD). The result is converted to basis points (bps), where 100 bps = 1%.</p>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }

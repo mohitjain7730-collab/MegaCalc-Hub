@@ -89,9 +89,32 @@ export default function AmortizationScheduleGenerator() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Principal Loan Amount</h4>
+                    <p>The total amount borrowed.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate</h4>
+                    <p>The nominal yearly interest rate for the loan.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Loan Term & Payments per Year</h4>
+                    <p>The total duration of the loan and how frequently payments are made (e.g., 12 for monthly).</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How An Amortization Schedule Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">An amortization schedule details each payment of a loan over its lifetime. It first calculates a fixed periodic payment. Then, for each payment, it determines how much goes toward interest (based on the current balance) and how much goes toward reducing the principal. In early payments, a larger portion covers interest; this shifts toward principal over time.</AccordionContent>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>An amortization schedule details each payment of a loan over its lifetime. It provides a clear picture of how your debt is paid down over time.</p>
+            <ol className='list-decimal list-inside space-y-2 mt-2'>
+              <li><strong>Calculate Periodic Payment (M):</strong> First, it calculates the fixed payment amount for each period using the loan details.</li>
+              <li><strong>Generate Schedule:</strong> It then iterates through each payment period. For each payment, it calculates how much goes toward interest (based on the current loan balance) and how much goes toward reducing the principal. In early payments, a larger portion covers interest; this gradually shifts toward principal over the life of the loan.</li>
+            </ol>
+            </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

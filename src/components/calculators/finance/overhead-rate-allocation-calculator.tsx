@@ -84,10 +84,31 @@ export default function OverheadRateAllocationCalculator() {
           </CardContent>
         </Card>
       )}
-      <Accordion type="single" collapsible className="w-full">
+       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Total Estimated Overhead Costs</h4>
+                    <p>The sum of all indirect costs expected to be incurred in a production process for a given period (e.g., factory rent, utilities, supervisor salaries).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Total Estimated Allocation Base</h4>
+                    <p>The total expected quantity of the activity that drives overhead costs. Common bases include direct labor hours, machine hours, or direct material costs.</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Unit for Allocation Base</h4>
+                    <p>The unit of measure for your allocation base (e.g., "hours", "dollars", "units").</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">The calculator divides total estimated overhead costs by the total estimated allocation base to determine a predetermined overhead rate. This rate allows for a systematic way to apply indirect costs to cost objects (like products) throughout an accounting period.</AccordionContent>
+            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <p>This calculator determines a predetermined overhead rate, which is a cornerstone of traditional job-order costing systems. This rate allows a company to apply indirect costs to products in a systematic and logical manner as they are being produced, rather than waiting until the end of an accounting period. The formula is a simple division:</p>
+                <p className='mt-2 font-mono p-2 bg-muted rounded-md text-center'>Overhead Rate = Total Overhead Costs / Total Allocation Base</p>
+                <p className="mt-2">Once calculated, this rate is used to apply overhead to a specific job by multiplying the rate by the actual amount of the allocation base consumed by that job.</p>
+            </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
