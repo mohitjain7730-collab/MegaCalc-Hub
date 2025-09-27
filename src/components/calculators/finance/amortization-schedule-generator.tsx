@@ -32,7 +32,7 @@ export default function AmortizationScheduleGenerator() {
       loanAmount: undefined,
       annualRate: undefined,
       loanTerm: undefined,
-      paymentsPerYear: 12,
+      paymentsPerYear: undefined,
     },
   });
 
