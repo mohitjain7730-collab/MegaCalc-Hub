@@ -27,7 +27,10 @@ const formSchema = z.object({
 }).refine(data => data.d < 1, {
   message: 'Down factor (d) must be < 1',
   path: ['d'],
-}).refine(data => (1 + data.r / 100) > data.d && (1 + data.r/100) < data.u, {
+}).refine(data => {
+    if(!data.r) return true;
+    return (1 + data.r / 100) > data.d && (1 + data.r/100) < data.u
+}, {
     message: 'Arbitrage opportunity exists. Ensure d < 1+r < u.',
     path: ['r'],
 });
@@ -39,7 +42,7 @@ export default function BinomialOptionPricingCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { s: 100, k: 100, t: 1, r: 5, u: 1.2, d: 0.8, optionType: 'call' },
+    defaultValues: { s: undefined, k: undefined, t: undefined, r: undefined, u: undefined, d: undefined, optionType: 'call' },
   });
 
   const onSubmit = (values: FormValues) => {
@@ -101,10 +104,41 @@ export default function BinomialOptionPricingCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Spot Price (S)</h4>
+                    <p>The current market price of the underlying asset (e.g., the stock).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Strike Price (K)</h4>
+                    <p>The price at which the option holder can buy (call) or sell (put) the underlying asset.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Time to Expiration (T, years)</h4>
+                    <p>The time remaining until the option expires, expressed in years (e.g., 0.25 for 3 months).</p>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Risk-Free Rate (r) %</h4>
+                    <p>The annualized rate of return of a virtually risk-free investment, like a government bond.</p>
+                </div>
+                 <div>
+                    <h4 className="font-semibold text-foreground mb-1">Up Factor (u) & Down Factor (d)</h4>
+                    <p>These represent the multiplicative factors for the two possible movements of the stock price in one time step. `u` must be greater than 1, and `d` must be less than 1.</p>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-2">
                 <p>The binomial model simplifies the possible evolution of the stock price into a tree of discrete up or down movements over time. This one-step version calculates the option's value at two possible future states (up or down) and then discounts it back to the present using risk-neutral probabilities.</p>
+                <ol className="list-decimal list-inside space-y-2">
+                  <li><strong>Calculate Future Stock Prices:</strong> The model determines two possible stock prices at expiration: an "up" price (S * u) and a "down" price (S * d).</li>
+                  <li><strong>Calculate Option Payoffs:</strong> It calculates the option's value (payoff) at each of these two future prices. For a call, this is `max(0, Future Price - Strike Price)`; for a put, it's `max(0, Strike Price - Future Price)`.</li>
+                  <li><strong>Calculate Risk-Neutral Probability (p):</strong> It calculates the probability of an upward movement in a risk-neutral world. This isn't the real-world probability, but a theoretical one that ensures the option price is arbitrage-free.</li>
+                  <li><strong>Discount to Present Value:</strong> The expected future payoff (a weighted average of the up and down payoffs using the risk-neutral probability) is discounted back to today using the risk-free rate. The result is the theoretical price of the option.</li>
+                </ol>
             </AccordionContent>
         </AccordionItem>
       </Accordion>
