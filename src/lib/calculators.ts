@@ -400,35 +400,6 @@ export const calculators: Calculator[] = [
     slug: 'sustainable-diet-impact-calculator',
     category: 'environment',
   },
-  // Historical & Archaeological
-  {
-    id: 47,
-    name: 'Artifact Dating Calculator',
-    description: 'Estimates age of artifacts based on decay rates.',
-    slug: 'artifact-dating-calculator',
-    category: 'historical-archaeological',
-  },
-  {
-    id: 48,
-    name: 'Historical Population Density Calculator',
-    description: 'Analyzes population trends over time.',
-    slug: 'historical-population-density-calculator',
-    category: 'historical-archaeological',
-  },
-  {
-    id: 49,
-    name: 'Archaeological Site Excavation Calculator',
-    description: 'Predicts excavation timelines and costs.',
-    slug: 'archaeological-site-excavation-calculator',
-    category: 'historical-archaeological',
-  },
-  {
-    id: 50,
-    name: 'Ancient Civilization Timeline Generator',
-    description: 'Visualizes historical events and timelines.',
-    slug: 'ancient-civilization-timeline-generator',
-    category: 'historical-archaeological',
-  },
   // Travel & Adventure
   {
     id: 51,
@@ -973,4 +944,5 @@ export const calculators: Calculator[] = [
   },
 ];
 
+    
     

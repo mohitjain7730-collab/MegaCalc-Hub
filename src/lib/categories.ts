@@ -16,10 +16,7 @@ import {
   Baby,
   Dumbbell,
   Calendar,
-  Sprout,
   Gamepad2,
-  BarChart,
-  Shapes,
   BrainCircuit,
   GitBranch,
   Beaker,
@@ -51,10 +48,7 @@ export const icons: {[key: string]: LucideIcon} = {
   Baby,
   Dumbbell,
   Calendar,
-  Sprout,
   Gamepad2,
-  BarChart,
-  Shapes,
   BrainCircuit,
   GitBranch,
   Beaker,
@@ -167,33 +161,11 @@ export const categories: Category[] = [
     Icon: 'Calendar',
   },
   {
-    name: 'Gardening',
-    slug: 'gardening',
-    description: 'Plan your garden with planting and soil calculators.',
-    Icon: 'Sprout',
-  },
-  {
-    name: 'Historical & Archaeological',
-    slug: 'historical-archaeological',
-    description: 'Tools for dating artifacts and analyzing historical data.',
-    Icon: 'Trowel',
-  },
-  {
     name: 'Fun & Games',
     slug: 'fun-games',
     description: 'Calculators for gaming, hobbies, and entertainment.',
     Icon: 'Gamepad2',
   },
-  {
-    name: 'Data & Statistics',
-    slug: 'data-statistics',
-    description: 'Tools for statistical analysis and data manipulation.',
-    Icon: 'BarChart',
-  },
-  {
-    name: 'Miscellaneous',
-    slug: 'miscellaneous',
-    description: 'A collection of various other useful calculators.',
-    Icon: 'Shapes',
-  },
 ];
+
+    

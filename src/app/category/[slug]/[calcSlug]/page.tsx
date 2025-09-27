@@ -66,10 +66,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'water-usage-efficiency-calculator': dynamic(() => import('@/components/calculators/environment/water-usage-efficiency-calculator')),
     'recycling-impact-calculator': dynamic(() => import('@/components/calculators/environment/recycling-impact-calculator')),
     'sustainable-diet-impact-calculator': dynamic(() => import('@/components/calculators/environment/sustainable-diet-impact-calculator')),
-    'artifact-dating-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/artifact-dating-calculator')),
-    'historical-population-density-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/historical-population-density-calculator')),
-    'archaeological-site-excavation-calculator': dynamic(() => import('@/components/calculators/historical-archaeological/archaeological-site-excavation-calculator')),
-    'ancient-civilization-timeline-generator': dynamic(() => import('@/components/calculators/historical-archaeological/ancient-civilization-timeline-generator')),
     'backpacking-load-weight-calculator': dynamic(() => import('@/components/calculators/travel-adventure/backpacking-load-weight-calculator')),
     'hiking-elevation-gain-calculator': dynamic(() => import('@/components/calculators/travel-adventure/hiking-elevation-gain-calculator')),
     'travel-budget-estimator': dynamic(() => import('@/components/calculators/travel-adventure/travel-budget-estimator')),
@@ -209,4 +205,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
   );
 }
 
+    
     
