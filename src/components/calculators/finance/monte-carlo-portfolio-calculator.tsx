@@ -11,7 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Landmark } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Histogram, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const formSchema = z.object({
   initialValue: z.number().positive(),
@@ -106,13 +106,13 @@ export default function MonteCarloPortfolioCalculator() {
                 </div>
                 <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
-                        <Histogram data={result.chartData}>
+                        <BarChart data={result.chartData}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="value" name="Portfolio Value" tickFormatter={(val) => `$${(val/1000).toFixed(0)}k`} />
                             <YAxis name="Frequency" />
                             <Tooltip formatter={(value, name, props) => [`Frequency: ${props.payload.length}`, `Range: $${props.payload.x.toLocaleString(undefined, {maximumFractionDigits:0})} - $${(props.payload.x + props.payload.width).toLocaleString(undefined, {maximumFractionDigits:0})}`]} />
                             <Bar dataKey="value" name="Frequency" fill="hsl(var(--primary))" />
-                        </Histogram>
+                        </BarChart>
                     </ResponsiveContainer>
                 </div>
             </CardContent>
