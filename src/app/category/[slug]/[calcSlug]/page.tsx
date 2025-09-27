@@ -98,8 +98,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'book-series-reading-time': dynamic(() => import('@/components/calculators/fun-games/book-series-reading-time-calculator')),
     'song-playlist-duration': dynamic(() => import('@/components/calculators/fun-games/song-playlist-duration-calculator')),
     'pop-culture-age': dynamic(() => import('@/components/calculators/fun-games/pop-culture-age-calculator')),
-    'pet-name-popularity': dynamic(() => import('@/components/calculators/fun-games/pet-name-popularity-calculator')),
-    'meme-lifespan': dynamic(() => import('@/components/calculators/fun-games/meme-lifespan-calculator')),
     'emoji-compatibility': dynamic(() => import('@/components/calculators/fun-games/emoji-compatibility-calculator')),
     'random-nickname-generator': dynamic(() => import('@/components/calculators/fun-games/random-nickname-generator-calculator')),
     'friendship-anniversary': dynamic(() => import('@/components/calculators/fun-games/friendship-anniversary-calculator')),
@@ -205,5 +203,4 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
   );
 }
 
-    
     

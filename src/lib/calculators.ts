@@ -628,20 +628,6 @@ export const calculators: Calculator[] = [
     category: 'fun-games',
   },
   {
-    id: 84,
-    name: 'Pet Name Popularity',
-    description: 'Rank a name’s popularity over time (using open datasets).',
-    slug: 'pet-name-popularity',
-    category: 'fun-games',
-  },
-  {
-    id: 85,
-    name: 'Meme Lifespan',
-    description: 'Estimate how long a meme will stay trendy based on shares &amp; likes.',
-    slug: 'meme-lifespan',
-    category: 'fun-games',
-  },
-  {
     id: 86,
     name: 'Emoji Compatibility',
     description: 'Enter two names, see a playful “compatibility score” with emojis.',
@@ -944,5 +930,4 @@ export const calculators: Calculator[] = [
   },
 ];
 
-    
     
