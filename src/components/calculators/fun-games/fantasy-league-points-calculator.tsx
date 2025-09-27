@@ -70,40 +70,47 @@ export default function FantasyLeaguePointsCalculator() {
     setResult(totalPoints);
   };
   
-  // No automatic submission, user will click a button.
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    calculateScore();
+  }
 
   return (
     <div className="space-y-8">
-      <div className="grid md:grid-cols-2 gap-8">
-         <Card>
-            <CardHeader><CardTitle>Scoring Rules</CardTitle><CardDescription>Enter your league's points per stat.</CardDescription></CardHeader>
-            <CardContent>
-                {scoringFields.map((field, index) => (
-                    <div key={field.id} className="grid grid-cols-[1fr,80px,auto] gap-2 items-start mb-2">
-                        <FormField control={form.control} name={`scoring.${index}.name`} render={({ field }) => ( <FormItem><FormControl><Input placeholder="Stat Name" {...field} /></FormControl></FormItem> )} />
-                        <FormField control={form.control} name={`scoring.${index}.points`} render={({ field }) => ( <FormItem><FormControl><Input type="number" placeholder="Points" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl></FormItem> )} />
-                        <Button type="button" variant="ghost" size="icon" onClick={() => removeScoring(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
-                    </div>
-                ))}
-                <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => appendScoring({ name: '', points: 0 })}><PlusCircle className="mr-2 h-4 w-4" /> Add Rule</Button>
-            </CardContent>
-         </Card>
-         <Card>
-            <CardHeader><CardTitle>Player Stats</CardTitle><CardDescription>Enter the player's performance for the game.</CardDescription></CardHeader>
-            <CardContent>
-                {statFields.map((field, index) => (
-                    <div key={field.id} className="grid grid-cols-[1fr,80px,auto] gap-2 items-start mb-2">
-                        <FormField control={form.control} name={`stats.${index}.name`} render={({ field }) => ( <FormItem><FormControl><Input placeholder="Stat Name" {...field} /></FormControl></FormItem> )} />
-                        <FormField control={form.control} name={`stats.${index}.value`} render={({ field }) => ( <FormItem><FormControl><Input type="number" placeholder="Value" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value))} /></FormControl></FormItem> )} />
-                        <Button type="button" variant="ghost" size="icon" onClick={() => removeStat(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
-                    </div>
-                ))}
-                <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => appendStat({ name: '', value: undefined })}><PlusCircle className="mr-2 h-4 w-4" /> Add Stat</Button>
-            </CardContent>
-         </Card>
-      </div>
+      <Form {...form}>
+        <form onSubmit={handleFormSubmit} className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card>
+                <CardHeader><CardTitle>Scoring Rules</CardTitle><CardDescription>Enter your league's points per stat.</CardDescription></CardHeader>
+                <CardContent>
+                    {scoringFields.map((field, index) => (
+                        <div key={field.id} className="grid grid-cols-[1fr,80px,auto] gap-2 items-start mb-2">
+                            <FormField control={form.control} name={`scoring.${index}.name`} render={({ field }) => ( <FormItem><FormControl><Input placeholder="Stat Name" {...field} /></FormControl></FormItem> )} />
+                            <FormField control={form.control} name={`scoring.${index}.points`} render={({ field }) => ( <FormItem><FormControl><Input type="number" step="any" placeholder="Points" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl></FormItem> )} />
+                            <Button type="button" variant="ghost" size="icon" onClick={() => removeScoring(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
+                        </div>
+                    ))}
+                    <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => appendScoring({ name: '', points: 0 })}><PlusCircle className="mr-2 h-4 w-4" /> Add Rule</Button>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader><CardTitle>Player Stats</CardTitle><CardDescription>Enter the player's performance for the game.</CardDescription></CardHeader>
+                <CardContent>
+                    {statFields.map((field, index) => (
+                        <div key={field.id} className="grid grid-cols-[1fr,80px,auto] gap-2 items-start mb-2">
+                            <FormField control={form.control} name={`stats.${index}.name`} render={({ field }) => ( <FormItem><FormControl><Input placeholder="Stat Name" {...field} /></FormControl></FormItem> )} />
+                            <FormField control={form.control} name={`stats.${index}.value`} render={({ field }) => ( <FormItem><FormControl><Input type="number" placeholder="Value" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value))} /></FormControl></FormItem> )} />
+                            <Button type="button" variant="ghost" size="icon" onClick={() => removeStat(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
+                        </div>
+                    ))}
+                    <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => appendStat({ name: '', value: undefined })}><PlusCircle className="mr-2 h-4 w-4" /> Add Stat</Button>
+                </CardContent>
+            </Card>
+          </div>
 
-      <Button onClick={calculateScore} className="w-full">Calculate Fantasy Score</Button>
+          <Button type="submit" className="w-full">Calculate Fantasy Score</Button>
+        </form>
+      </Form>
       
       {result !== null && (
         <Card className="mt-8">
