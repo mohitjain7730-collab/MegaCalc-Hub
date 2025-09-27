@@ -11,7 +11,7 @@ export function AnalyticsProvider({children}: {children: React.ReactNode}) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (analytics) {
+    if (analytics && typeof window !== 'undefined') {
       const url = pathname + searchParams.toString();
       logEvent(analytics, 'page_view', { page_path: url });
     }

@@ -12,7 +12,7 @@ interface FirebaseProviderProps {
   firebaseApp: FirebaseApp;
   firestore: Firestore;
   auth: Auth;
-  analytics: Promise<Analytics | null>;
+  analytics: Analytics | null;
 }
 
 // Internal state for user authentication
@@ -72,12 +72,6 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
     userError: null,
   });
 
-  const [analyticsInstance, setAnalyticsInstance] = useState<Analytics | null>(null);
-
-  useEffect(() => {
-    analytics.then(setAnalyticsInstance);
-  }, [analytics]);
-
   // Effect to subscribe to Firebase auth state changes
   useEffect(() => {
     if (!auth) { // If no Auth service instance, cannot determine user state
@@ -108,12 +102,12 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
       firebaseApp: servicesAvailable ? firebaseApp : null,
       firestore: servicesAvailable ? firestore : null,
       auth: servicesAvailable ? auth : null,
-      analytics: analyticsInstance,
+      analytics: analytics,
       user: userAuthState.user,
       isUserLoading: userAuthState.isUserLoading,
       userError: userAuthState.userError,
     };
-  }, [firebaseApp, firestore, auth, userAuthState, analyticsInstance]);
+  }, [firebaseApp, firestore, auth, userAuthState, analytics]);
 
   return (
     <FirebaseContext.Provider value={contextValue}>
