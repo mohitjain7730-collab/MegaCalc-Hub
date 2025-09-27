@@ -191,6 +191,41 @@ export const calculators: Calculator[] = [
     slug: 'return-on-investment-calculator',
     category: 'finance'
   },
+  {
+    id: 174,
+    name: 'Debt-to-Equity Ratio Calculator',
+    description: 'Measures a company’s financial leverage by comparing its total liabilities to its shareholders\' equity. A higher ratio indicates more debt financing, which can mean higher risk but also potentially higher returns.',
+    slug: 'debt-to-equity-ratio-calculator',
+    category: 'finance'
+  },
+  {
+    id: 175,
+    name: 'Interest Coverage Ratio Calculator',
+    description: 'Shows how easily a company can pay the interest on its outstanding debt. A higher ratio indicates a better ability to meet interest obligations, signaling lower risk to creditors and investors.',
+    slug: 'interest-coverage-ratio-calculator',
+    category: 'finance'
+  },
+  {
+    id: 176,
+    name: 'Current Ratio Calculator',
+    description: 'Evaluates a company’s short-term liquidity by comparing all of its current assets to its current liabilities. It indicates a company\'s ability to pay back its short-term obligations.',
+    slug: 'current-ratio-calculator',
+    category: 'finance'
+  },
+  {
+    id: 177,
+    name: 'Quick Ratio (Acid-Test) Calculator',
+    description: 'Measures a company’s ability to meet its short-term obligations with its most liquid assets, excluding less liquid inventory. It provides a more conservative measure of liquidity than the current ratio.',
+    slug: 'quick-ratio-calculator',
+    category: 'finance'
+  },
+  {
+    id: 178,
+    name: 'Working Capital Calculator',
+    description: 'Indicates the liquidity available to a business to meet its short-term obligations. Positive working capital means you have enough assets to cover liabilities, while negative working capital can be a sign of financial trouble.',
+    slug: 'working-capital-calculator',
+    category: 'finance'
+  },
   // Health & Fitness
   {
     id: 107,
@@ -561,7 +596,7 @@ export const calculators: Calculator[] = [
   {
     id: 57,
     name: 'Overclocking Thermal Calculator',
-    description: 'Estimate CPU/GPU temps from voltage &amp; frequency changes.',
+    description: 'Estimate CPU/GPU temps from voltage & frequency changes.',
     slug: 'overclocking-thermal-calculator',
     category: 'technology',
   },
@@ -617,7 +652,7 @@ export const calculators: Calculator[] = [
   {
     id: 66,
     name: 'Image Compression Size Calculator',
-    description: 'Predict final file size for given compression ratio &amp; resolution.',
+    description: 'Predict final file size for given compression ratio & resolution.',
     slug: 'image-compression-size-calculator',
     category: 'technology',
   },
@@ -631,7 +666,7 @@ export const calculators: Calculator[] = [
   {
     id: 68,
     name: 'Hash Collision Probability Calculator',
-    description: 'Estimate chance of collisions for given hash length &amp; number of items.',
+    description: 'Estimate chance of collisions for given hash length & number of items.',
     slug: 'hash-collision-probability-calculator',
     category: 'technology',
   },
