@@ -285,6 +285,15 @@ export const calculators: Calculator[] = [
     slug: 'shear-stress-calculator',
     category: 'engineering',
   },
+   // Biology
+  { id: 151, name: 'Annealing Temperature (Tm) Calculator', description: 'Estimate the optimal annealing temperature for PCR primers.', slug: 'annealing-temperature-calculator', category: 'biology' },
+  { id: 152, name: 'Generation Time Calculator', description: 'Calculate the time required for a cell population to double.', slug: 'generation-time-calculator', category: 'biology' },
+  { id: 153, name: 'Cell Dilution Calculator', description: 'Determine the volume needed to dilute a cell culture to a desired concentration.', slug: 'cell-dilution-calculator', category: 'biology' },
+  { id: 154, name: 'Cell Doubling Time Calculator', description: 'Calculate the time it takes for a cell population to double in number.', slug: 'cell-doubling-time-calculator', category: 'biology' },
+  { id: 155, name: 'DNA Concentration Calculator', description: 'Estimate DNA concentration from spectrophotometer (A260) readings.', slug: 'dna-concentration-calculator', category: 'biology' },
+  { id: 156, name: 'Ligation Calculator', description: 'Calculate the required amount of insert for a vector ligation.', slug: 'ligation-calculator', category: 'biology' },
+  { id: 157, name: 'Log Reduction Calculator', description: 'Determine the magnitude of microbial reduction after a disinfectant process.', slug: 'log-reduction-calculator', category: 'biology' },
+  { id: 158, name: 'Protein Concentration (A280) Calculator', description: 'Estimate protein concentration using absorbance at 280nm.', slug: 'protein-concentration-calculator', category: 'biology' },
   // Cognitive & Psychology
   {
     id: 31,
@@ -929,5 +938,3 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
-
-    

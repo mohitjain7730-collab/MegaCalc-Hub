@@ -140,6 +140,15 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'world-time-zone-converter': dynamic(() => import('@/components/calculators/time-date/world-time-zone-converter')),
     'day-of-the-week-calculator': dynamic(() => import('@/components/calculators/time-date/day-of-the-week-calculator')),
     'working-days-business-days-calculator': dynamic(() => import('@/components/calculators/time-date/working-days-business-days-calculator')),
+    // Biology
+    'annealing-temperature-calculator': dynamic(() => import('@/components/calculators/biology/annealing-temperature-calculator')),
+    'generation-time-calculator': dynamic(() => import('@/components/calculators/biology/generation-time-calculator')),
+    'cell-dilution-calculator': dynamic(() => import('@/components/calculators/biology/cell-dilution-calculator')),
+    'cell-doubling-time-calculator': dynamic(() => import('@/components/calculators/biology/cell-doubling-time-calculator')),
+    'dna-concentration-calculator': dynamic(() => import('@/components/calculators/biology/dna-concentration-calculator')),
+    'ligation-calculator': dynamic(() => import('@/components/calculators/biology/ligation-calculator')),
+    'log-reduction-calculator': dynamic(() => import('@/components/calculators/biology/log-reduction-calculator')),
+    'protein-concentration-calculator': dynamic(() => import('@/components/calculators/biology/protein-concentration-calculator')),
   };
 
 export async function generateStaticParams() {
@@ -202,5 +211,3 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
-    

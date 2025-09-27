@@ -23,6 +23,7 @@ import {
   IceCream2,
   Utensils,
   Clock,
+  FlaskConical,
 } from 'lucide-react';
 
 export interface Category {
@@ -55,6 +56,7 @@ export const icons: {[key: string]: LucideIcon} = {
   IceCream2,
   Utensils,
   Clock,
+  FlaskConical,
 };
 
 export const categories: Category[] = [
@@ -81,6 +83,12 @@ export const categories: Category[] = [
     slug: 'engineering',
     description: 'Solve complex engineering problems and conversions.',
     Icon: 'Construction',
+  },
+  {
+    name: 'Biology',
+    slug: 'biology',
+    description: 'Calculators for common molecular biology lab tasks.',
+    Icon: 'FlaskConical',
   },
   {
     name: 'Cognitive & Psychology',
@@ -167,5 +175,3 @@ export const categories: Category[] = [
     Icon: 'Gamepad2',
   },
 ];
-
-    
