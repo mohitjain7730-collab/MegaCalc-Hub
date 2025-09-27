@@ -44,13 +44,13 @@ export default function CellDilutionCalculator() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="c1" render={({ field }) => (
-                <FormItem><FormLabel>Initial Concentration (C₁)</FormLabel><FormControl><Input type="number" placeholder="e.g., 1000 cells/mL" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Initial Concentration (C₁)</FormLabel><FormControl><Input type="number" placeholder="e.g., 1000 cells/mL" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="v1" render={({ field }) => (
-                <FormItem><FormLabel>Initial Volume (V₁)</FormLabel><FormControl><Input type="number" placeholder="e.g., 10 mL" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Initial Volume (V₁)</FormLabel><FormControl><Input type="number" placeholder="e.g., 10 mL" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="c2" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Final Concentration (C₂)</FormLabel><FormControl><Input type="number" placeholder="e.g., 100 cells/mL" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                <FormItem className="md:col-span-2"><FormLabel>Final Concentration (C₂)</FormLabel><FormControl><Input type="number" placeholder="e.g., 100 cells/mL" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Dilution</Button>
