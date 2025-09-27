@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -66,10 +67,10 @@ export default function EsportsKdRatioCalculator() {
                         <form onSubmit={formKD.handleSubmit(onKDSubmit)} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <FormField control={formKD.control} name="kills" render={({ field }) => (
-                                    <FormItem><FormLabel>Total Kills</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                                    <FormItem><FormLabel>Total Kills</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                                 )} />
                                 <FormField control={formKD.control} name="deaths" render={({ field }) => (
-                                    <FormItem><FormLabel>Total Deaths</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                                    <FormItem><FormLabel>Total Deaths</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                                 )} />
                             </div>
                             <Button type="submit">Calculate K/D</Button>
@@ -89,14 +90,14 @@ export default function EsportsKdRatioCalculator() {
                         <form onSubmit={formTarget.handleSubmit(onTargetSubmit)} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <FormField control={formTarget.control} name="currentKills" render={({ field }) => (
-                                    <FormItem><FormLabel>Current Kills</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                                    <FormItem><FormLabel>Current Kills</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                                 )} />
                                 <FormField control={formTarget.control} name="currentDeaths" render={({ field }) => (
-                                    <FormItem><FormLabel>Current Deaths</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                                    <FormItem><FormLabel>Current Deaths</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                                 )} />
                             </div>
                             <FormField control={formTarget.control} name="targetKD" render={({ field }) => (
-                                <FormItem><FormLabel>Target K/D Ratio</FormLabel><FormControl><Input type="number" step="0.1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                                <FormItem><FormLabel>Target K/D Ratio</FormLabel><FormControl><Input type="number" step="0.1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                             )} />
                             <Button type="submit">Calculate</Button>
                         </form>
@@ -114,7 +115,7 @@ export default function EsportsKdRatioCalculator() {
             </CardContent>
         </Card>
       )}
-       {targetResult !== null && (
+       {targetResult !== null && formTarget.getValues('targetKD') && (
         <Card className="mt-8">
             <CardHeader><div className='flex items-center gap-4'><Crosshair className="h-8 w-8 text-primary" /><CardTitle>Kills to Target</CardTitle></div></CardHeader>
             <CardContent>

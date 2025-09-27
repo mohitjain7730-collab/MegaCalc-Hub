@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -14,10 +15,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 const formSchema = z.object({
   diceCount: z.number().int().min(1, "Must be at least 1 die").max(10, "Max 10 dice for performance"),
   targetSum: z.number().int().min(1, "Must be a positive number"),
-}).refine(data => data.targetSum >= data.diceCount, {
+}).refine(data => !data.diceCount || data.targetSum >= data.diceCount, {
     message: "Target sum must be at least the number of dice.",
     path: ["targetSum"],
-}).refine(data => data.targetSum <= data.diceCount * 6, {
+}).refine(data => !data.diceCount || data.targetSum <= data.diceCount * 6, {
     message: "Target sum cannot be greater than (dice count * 6).",
     path: ["targetSum"],
 });
@@ -30,8 +31,8 @@ export default function DiceRollProbabilityCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      diceCount: 2,
-      targetSum: 7,
+      diceCount: undefined,
+      targetSum: undefined,
     },
   });
 
@@ -72,17 +73,17 @@ export default function DiceRollProbabilityCalculator() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="diceCount" render={({ field }) => (
-                <FormItem><FormLabel>Number of Dice (d6)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Number of Dice (d6)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="targetSum" render={({ field }) => (
-                <FormItem><FormLabel>Target Sum</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Target Sum</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Probability</Button>
         </form>
       </Form>
       
-      {result !== null && (
+      {result !== null && form.getValues('diceCount') && form.getValues('targetSum') && (
         <Card className="mt-8">
             <CardHeader><div className='flex items-center gap-4'><Dices className="h-8 w-8 text-primary" /><CardTitle>Roll Probability</CardTitle></div></CardHeader>
             <CardContent>

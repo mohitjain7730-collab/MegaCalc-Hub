@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -58,14 +59,14 @@ export default function VideoGameXpLevelUpCalculator() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="currentXp" render={({ field }) => (
-                <FormItem><FormLabel>Current XP</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Current XP</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
             <FormField control={form.control} name="xpForNextLevel" render={({ field }) => (
-                <FormItem><FormLabel>Total XP for Next Level</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Total XP for Next Level</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           </div>
           <FormField control={form.control} name="xpPerHour" render={({ field }) => (
-                <FormItem><FormLabel>Average XP per Hour (Optional)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                <FormItem><FormLabel>Average XP per Hour (Optional)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
             )} />
           <Button type="submit">Calculate</Button>
         </form>

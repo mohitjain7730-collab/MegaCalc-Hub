@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -13,7 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 const scoreSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  points: z.number(),
+  points: z.number().optional(),
 });
 
 const formSchema = z.object({
@@ -29,9 +30,7 @@ export default function BoardGameScoringCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       scores: [
-        { name: 'Victory Points', points: 0 },
-        { name: 'Longest Road Bonus', points: 0 },
-        { name: 'Largest Army Bonus', points: 0 },
+        { name: '', points: undefined },
       ],
     },
   });
@@ -42,7 +41,7 @@ export default function BoardGameScoringCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const totalScore = values.scores.reduce((sum, score) => sum + score.points, 0);
+    const totalScore = values.scores.reduce((sum, score) => sum + (score.points || 0), 0);
     setResult(totalScore);
   };
 
@@ -58,14 +57,14 @@ export default function BoardGameScoringCalculator() {
                             <FormItem><FormLabel className="sr-only">Category Name</FormLabel><FormControl><Input placeholder="Category Name" {...field} /></FormControl><FormMessage /></FormItem>
                         )} />
                         <FormField control={form.control} name={`scores.${index}.points`} render={({ field }) => (
-                             <FormItem><FormLabel className="sr-only">Points</FormLabel><FormControl><Input type="number" placeholder="Points" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
+                             <FormItem><FormLabel className="sr-only">Points</FormLabel><FormControl><Input type="number" placeholder="Points" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
                         )} />
                         <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)} disabled={fields.length <= 1}>
                             <XCircle className="h-5 w-5 text-destructive" />
                         </Button>
                         </div>
                     ))}
-                    <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => append({ name: '', points: 0 })}>
+                    <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => append({ name: '', points: undefined })}>
                         <PlusCircle className="mr-2 h-4 w-4" /> Add Category
                     </Button>
                 </div>
