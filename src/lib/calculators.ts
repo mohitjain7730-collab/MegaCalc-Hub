@@ -394,6 +394,48 @@ export const calculators: Calculator[] = [
     slug: 'monte-carlo-portfolio-calculator',
     category: 'finance',
   },
+  {
+    id: 205,
+    name: 'Value at Risk (VaR) Calculator',
+    description: 'Estimate the maximum potential loss a portfolio could experience over a specific time period.',
+    slug: 'value-at-risk-calculator',
+    category: 'finance',
+  },
+  {
+    id: 206,
+    name: 'Conditional VaR (CVaR) / Expected Shortfall Calculator',
+    description: 'Measure the average loss that can be expected if the VaR threshold is breached.',
+    slug: 'conditional-value-at-risk-calculator',
+    category: 'finance',
+  },
+  {
+    id: 207,
+    name: 'Bond Yield to Maturity (YTM) Calculator',
+    description: 'Calculate the total annualized rate of return an investor will earn if they hold a bond to maturity.',
+    slug: 'bond-yield-to-maturity-calculator',
+    category: 'finance',
+  },
+  {
+    id: 208,
+    name: 'Bond Price Calculator',
+    description: 'Calculate the fair market price of a bond based on its characteristics and current market yield.',
+    slug: 'bond-price-calculator',
+    category: 'finance',
+  },
+  {
+    id: 209,
+    name: 'Bond Duration Calculator',
+    description: 'Measure a bond\'s price sensitivity to changes in interest rates.',
+    slug: 'bond-duration-calculator',
+    category: 'finance',
+  },
+  {
+    id: 210,
+    name: 'Bond Convexity Calculator',
+    description: 'Measure the curvature in the relationship between a bond\'s price and its yield for a more accurate risk estimate.',
+    slug: 'bond-convexity-calculator',
+    category: 'finance',
+  },
   // Health & Fitness
   {
     id: 107,
@@ -1246,5 +1288,3 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
-
-    

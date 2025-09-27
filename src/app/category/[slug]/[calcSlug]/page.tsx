@@ -66,6 +66,12 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'option-payoff-calculator': dynamic(() => import('@/components/calculators/finance/option-payoff-calculator')),
     'binomial-option-pricing-calculator': dynamic(() => import('@/components/calculators/finance/binomial-option-pricing-calculator')),
     'monte-carlo-portfolio-calculator': dynamic(() => import('@/components/calculators/finance/monte-carlo-portfolio-calculator')),
+    'value-at-risk-calculator': dynamic(() => import('@/components/calculators/finance/value-at-risk-calculator')),
+    'conditional-value-at-risk-calculator': dynamic(() => import('@/components/calculators/finance/conditional-value-at-risk-calculator')),
+    'bond-yield-to-maturity-calculator': dynamic(() => import('@/components/calculators/finance/bond-yield-to-maturity-calculator')),
+    'bond-price-calculator': dynamic(() => import('@/components/calculators/finance/bond-price-calculator')),
+    'bond-duration-calculator': dynamic(() => import('@/components/calculators/finance/bond-duration-calculator')),
+    'bond-convexity-calculator': dynamic(() => import('@/components/calculators/finance/bond-convexity-calculator')),
     'water-footprint-of-food-calculator': dynamic(() => import('@/components/calculators/health-fitness/water-footprint-of-food-calculator')),
     'bmi-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmi-calculator')),
     'bmr-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmr-calculator')),
@@ -255,5 +261,3 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
-    
