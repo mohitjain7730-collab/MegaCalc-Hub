@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function MemeLifespanCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will help estimate how long a meme will stay trendy based on shares & likes.
+                This calculator is under construction. It would require real-time social media trend analysis APIs to provide a meaningful (and still highly speculative) estimate, which is currently beyond its capabilities.
             </p>
         </CardContent>
     </Card>

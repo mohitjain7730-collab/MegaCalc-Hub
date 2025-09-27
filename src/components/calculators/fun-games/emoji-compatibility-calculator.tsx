@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function EmojiCompatibilityCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will provide a playful “compatibility score” with emojis.
+                This calculator is under construction. It will provide a playful “compatibility score” with emojis, but the logic needs to be designed first!
             </p>
         </CardContent>
     </Card>

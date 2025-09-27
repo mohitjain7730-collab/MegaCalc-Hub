@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function GolfHandicapCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will provide a quick estimate of a player’s handicap.
+                This calculator is under construction. Calculating an official golf handicap requires specific rules involving course rating, slope rating, and multiple scores. A simplified version will be implemented soon.
             </p>
         </CardContent>
     </Card>

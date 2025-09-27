@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function PetNamePopularityCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will help rank a name’s popularity over time.
+                This calculator is under construction. It requires a large, public dataset of pet names (like from city registrations or vet databases) to analyze trends, which is beyond the current scope.
             </p>
         </CardContent>
     </Card>

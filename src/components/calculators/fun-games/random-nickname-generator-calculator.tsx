@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function RandomNicknameGeneratorCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will help rate the “coolness” of a generated nickname.
+                This calculator is under construction. It requires a more complex algorithm and word lists to generate creative and relevant nicknames.
             </p>
         </CardContent>
     </Card>

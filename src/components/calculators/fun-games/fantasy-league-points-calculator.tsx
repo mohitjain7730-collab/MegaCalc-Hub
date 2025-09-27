@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,7 @@ export default function FantasyLeaguePointsCalculator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will help predict weekly fantasy team points.
+                This calculator is under construction. Fantasy sports scoring rules are highly variable between leagues. A customizable scoring calculator will be developed to support this.
             </p>
         </CardContent>
     </Card>
