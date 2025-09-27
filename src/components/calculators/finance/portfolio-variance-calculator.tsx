@@ -56,7 +56,7 @@ export default function PortfolioVarianceCalculator() {
             <FormField control={form.control} name="s1" render={({ field }) => ( <FormItem><FormLabel>Std. Dev. of Asset 1 (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
             <FormField control={form.control} name="w2" render={({ field }) => ( <FormItem><FormLabel>Weight of Asset 2 (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
             <FormField control={form.control} name="s2" render={({ field }) => ( <FormItem><FormLabel>Std. Dev. of Asset 2 (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="corr" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Correlation Coefficient (-1 to 1)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="corr" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Correlation Coefficient (-1 to 1)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
           </div>
           <Button type="submit">Calculate Risk</Button>
         </form>
@@ -77,6 +77,23 @@ export default function PortfolioVarianceCalculator() {
         </Card>
       )}
        <Accordion type="single" collapsible className="w-full">
+         <AccordionItem value="understanding-inputs">
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Weight of Asset (%)</h4>
+                  <p>The percentage of the total portfolio value that each asset represents. The sum of all weights must equal 100%.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Std. Dev. of Asset (%)</h4>
+                  <p>The standard deviation of each asset's returns, which measures its volatility or risk. A higher standard deviation implies greater risk.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Correlation Coefficient</h4>
+                  <p>A value between -1 and +1 that measures how two assets move in relation to each other. A value of +1 means they move perfectly together, -1 means they move perfectly opposite, and 0 means there is no correlation.</p>
+              </div>
+            </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
