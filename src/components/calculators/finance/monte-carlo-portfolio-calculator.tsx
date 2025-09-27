@@ -85,11 +85,11 @@ export default function MonteCarloPortfolioCalculator() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="initialValue" render={({ field }) => ( <FormItem><FormLabel>Initial Portfolio Value</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="expectedReturn" render={({ field }) => ( <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="volatility" render={({ field }) => ( <FormItem><FormLabel>Volatility (Std. Dev.) %</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="timeHorizon" render={({ field }) => ( <FormItem><FormLabel>Time Horizon (Years)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="simulations" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Number of Simulations</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="initialValue" render={({ field }) => ( <FormItem><FormLabel>Initial Portfolio Value</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="expectedReturn" render={({ field }) => ( <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="volatility" render={({ field }) => ( <FormItem><FormLabel>Volatility (Std. Dev.) %</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="timeHorizon" render={({ field }) => ( <FormItem><FormLabel>Time Horizon (Years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="simulations" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Number of Simulations</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
           </div>
           <Button type="submit">Run Simulation</Button>
         </form>
@@ -108,9 +108,15 @@ export default function MonteCarloPortfolioCalculator() {
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={result.chartData}>
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="value" name="Portfolio Value" tickFormatter={(val) => `$${(val/1000).toFixed(0)}k`} />
+                            <XAxis dataKey="value" name="Portfolio Value" type="number" domain={['dataMin', 'dataMax']} tickFormatter={(val) => `$${(val/1000).toFixed(0)}k`} />
                             <YAxis name="Frequency" />
-                            <Tooltip formatter={(value, name, props) => [`Frequency: ${props.payload.length}`, `Range: $${props.payload.x.toLocaleString(undefined, {maximumFractionDigits:0})} - $${(props.payload.x + props.payload.width).toLocaleString(undefined, {maximumFractionDigits:0})}`]} />
+                            <Tooltip formatter={(value, name, props) => {
+                                const payload = props.payload as any;
+                                if(payload && payload.value) {
+                                    return [`$${payload.value.toLocaleString(undefined, {maximumFractionDigits:0})}`, 'Value'];
+                                }
+                                return null;
+                            }} />
                             <Bar dataKey="value" name="Frequency" fill="hsl(var(--primary))" />
                         </BarChart>
                     </ResponsiveContainer>
