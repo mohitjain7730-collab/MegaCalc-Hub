@@ -27,10 +27,10 @@ export default function BondPriceCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      faceValue: 1000,
+      faceValue: undefined,
       couponRate: undefined,
       years: undefined,
-      paymentsPerYear: 2,
+      paymentsPerYear: undefined,
       ytm: undefined,
     },
   });
