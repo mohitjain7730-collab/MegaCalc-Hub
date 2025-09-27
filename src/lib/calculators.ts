@@ -86,6 +86,41 @@ export const calculators: Calculator[] = [
     slug: 'roth-ira-contribution-limit-calculator',
     category: 'finance',
   },
+  {
+    id: 159,
+    name: 'Present Value (PV) Calculator',
+    description: 'Find today’s value of a future cash flow or lump sum.',
+    slug: 'present-value-calculator',
+    category: 'finance',
+  },
+  {
+    id: 160,
+    name: 'Future Value (FV) Calculator',
+    description: 'Find the value of a present amount after earning compound interest.',
+    slug: 'future-value-calculator',
+    category: 'finance',
+  },
+  {
+    id: 161,
+    name: 'Annuity Payment Calculator',
+    description: 'Determine the periodic payment needed for a fixed annuity or loan.',
+    slug: 'annuity-payment-calculator',
+    category: 'finance',
+  },
+  {
+    id: 162,
+    name: 'Perpetuity Calculator',
+    description: 'Value an infinite stream of equal cash flows.',
+    slug: 'perpetuity-calculator',
+    category: 'finance',
+  },
+  {
+    id: 163,
+    name: 'Growing Annuity/Perpetuity Calculator',
+    description: 'Value cash flows that grow at a constant rate.',
+    slug: 'growing-annuity-calculator',
+    category: 'finance',
+  },
   // Health & Fitness
   {
     id: 107,
