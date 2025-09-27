@@ -12,11 +12,13 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Landmark } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const formSchema = z.object({
   s: z.number().positive(), // Spot price
   k: z.number().positive(), // Strike price
-  t: z.number().positive(), // Time to expiration (years)
+  t: z.number().positive(), // Time to expiration
+  timeUnit: z.enum(['years', 'months', 'days']),
   r: z.number().positive(), // Risk-free rate
   u: z.number().positive(), // Up factor
   d: z.number().positive(), // Down factor
@@ -29,9 +31,13 @@ const formSchema = z.object({
   path: ['d'],
 }).refine(data => {
     if(!data.r) return true;
-    return (1 + data.r / 100) > data.d && (1 + data.r/100) < data.u
+    let tInYears = data.t;
+    if (data.timeUnit === 'months') tInYears /= 12;
+    if (data.timeUnit === 'days') tInYears /= 365;
+
+    return (Math.exp(data.r / 100 * tInYears)) > data.d && (Math.exp(data.r / 100 * tInYears)) < data.u
 }, {
-    message: 'Arbitrage opportunity exists. Ensure d < 1+r < u.',
+    message: 'Arbitrage opportunity exists. Ensure d < e^(r*t) < u.',
     path: ['r'],
 });
 
@@ -42,15 +48,22 @@ export default function BinomialOptionPricingCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { s: undefined, k: undefined, t: undefined, r: undefined, u: undefined, d: undefined, optionType: 'call' },
+    defaultValues: { s: undefined, k: undefined, t: undefined, r: undefined, u: undefined, d: undefined, optionType: 'call', timeUnit: 'years' },
   });
 
   const onSubmit = (values: FormValues) => {
-    const { s, k, t, r, u, d, optionType } = values;
+    const { s, k, t, timeUnit, r, u, d, optionType } = values;
     const rate = r / 100;
 
+    let tInYears = t;
+    if (timeUnit === 'months') {
+        tInYears = t / 12;
+    } else if (timeUnit === 'days') {
+        tInYears = t / 365;
+    }
+
     // 1. Calculate risk-neutral probability 'p'
-    const p = (Math.exp(rate * t) - d) / (u - d);
+    const p = (Math.exp(rate * tInYears) - d) / (u - d);
     if(p < 0 || p > 1) {
         form.setError("r", { message: "Invalid risk-neutral probability. Check inputs."});
         setResult(null);
@@ -66,7 +79,7 @@ export default function BinomialOptionPricingCalculator() {
     const c_down = optionType === 'call' ? Math.max(0, s_down - k) : Math.max(0, k - s_down);
 
     // 4. Discount back to present value
-    const optionPrice = Math.exp(-rate * t) * (p * c_up + (1 - p) * c_down);
+    const optionPrice = Math.exp(-rate * tInYears) * (p * c_up + (1 - p) * c_down);
     setResult(optionPrice);
   };
 
@@ -86,7 +99,21 @@ export default function BinomialOptionPricingCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="s" render={({ field }) => ( <FormItem><FormLabel>Spot Price (S)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
             <FormField control={form.control} name="k" render={({ field }) => ( <FormItem><FormLabel>Strike Price (K)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="t" render={({ field }) => ( <FormItem><FormLabel>Time to Expiration (T, years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <div className="grid grid-cols-2 gap-2">
+                <FormField control={form.control} name="t" render={({ field }) => ( <FormItem><FormLabel>Time to Expiration</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+                <FormField control={form.control} name="timeUnit" render={({ field }) => (
+                    <FormItem><FormLabel>Unit</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl><SelectTrigger><SelectValue/></SelectTrigger></FormControl>
+                            <SelectContent>
+                                <SelectItem value="years">Years</SelectItem>
+                                <SelectItem value="months">Months</SelectItem>
+                                <SelectItem value="days">Days</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </FormItem>
+                )} />
+            </div>
             <FormField control={form.control} name="r" render={({ field }) => ( <FormItem><FormLabel>Risk-Free Rate (r) %</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
             <FormField control={form.control} name="u" render={({ field }) => ( <FormItem><FormLabel>Up Factor (u)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
             <FormField control={form.control} name="d" render={({ field }) => ( <FormItem><FormLabel>Down Factor (d)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
@@ -116,8 +143,8 @@ export default function BinomialOptionPricingCalculator() {
                     <p>The price at which the option holder can buy (call) or sell (put) the underlying asset.</p>
                 </div>
                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Time to Expiration (T, years)</h4>
-                    <p>The time remaining until the option expires, expressed in years (e.g., 0.25 for 3 months).</p>
+                    <h4 className="font-semibold text-foreground mb-1">Time to Expiration (T)</h4>
+                    <p>The time remaining until the option expires.</p>
                 </div>
                 <div>
                     <h4 className="font-semibold text-foreground mb-1">Risk-Free Rate (r) %</h4>
