@@ -36,7 +36,7 @@ export default function MonteCarloPortfolioCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { initialValue: 10000, expectedReturn: 8, volatility: 15, timeHorizon: 10, simulations: 1000 },
+    defaultValues: { initialValue: undefined, expectedReturn: undefined, volatility: undefined, timeHorizon: undefined, simulations: 1000 },
   });
 
   // Standard Normal variate using Box-Muller transform
@@ -85,11 +85,11 @@ export default function MonteCarloPortfolioCalculator() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="initialValue" render={({ field }) => ( <FormItem><FormLabel>Initial Portfolio Value</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="expectedReturn" render={({ field }) => ( <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="volatility" render={({ field }) => ( <FormItem><FormLabel>Volatility (Std. Dev.) %</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="timeHorizon" render={({ field }) => ( <FormItem><FormLabel>Time Horizon (Years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="simulations" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Number of Simulations</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="initialValue" render={({ field }) => ( <FormItem><FormLabel>Initial Portfolio Value</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="expectedReturn" render={({ field }) => ( <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="volatility" render={({ field }) => ( <FormItem><FormLabel>Volatility (Std. Dev.) %</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="timeHorizon" render={({ field }) => ( <FormItem><FormLabel>Time Horizon (Years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="simulations" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Number of Simulations</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
           </div>
           <Button type="submit">Run Simulation</Button>
         </form>
