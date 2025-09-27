@@ -9,13 +9,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Golf, PlusCircle, XCircle } from 'lucide-react';
+import { Flag, PlusCircle, XCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const scoreSchema = z.object({
-  score: z.number().int().min(50, "Score too low").max(150, "Score too high"),
-  courseRating: z.number().positive("Must be > 0").min(60).max(80),
-  slopeRating: z.number().int().positive("Must be > 0").min(55).max(155),
+  score: z.number().int().min(50, "Score too low").max(150, "Score too high").optional(),
+  courseRating: z.number().positive("Must be > 0").min(60).max(80).optional(),
+  slopeRating: z.number().int().positive("Must be > 0").min(55).max(155).optional(),
 });
 
 const formSchema = z.object({
@@ -40,7 +40,13 @@ export default function GolfHandicapCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const differentials = values.scores.map(s => ((s.score - s.courseRating) * 113) / s.slopeRating);
+    const validScores = values.scores.filter(s => s.score && s.courseRating && s.slopeRating);
+    if (validScores.length === 0) {
+      setResult(null);
+      return;
+    }
+
+    const differentials = validScores.map(s => ((s.score! - s.courseRating!) * 113) / s.slopeRating!);
     differentials.sort((a, b) => a - b);
     
     // Simplified logic: average the best differentials
@@ -71,7 +77,7 @@ export default function GolfHandicapCalculator() {
                         {fields.map((field, index) => (
                             <div key={field.id} className="grid grid-cols-[1fr,1fr,1fr,auto] gap-2 items-start mb-2">
                             <FormField control={form.control} name={`scores.${index}.score`} render={({ field }) => ( <FormItem><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
-                            <FormField control={form.control} name={`scores.${index}.courseRating`} render={({ field }) => ( <FormItem><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+                            <FormField control={form.control} name={`scores.${index}.courseRating`} render={({ field }) => ( <FormItem><FormControl><Input type="number" step="0.1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
                             <FormField control={form.control} name={`scores.${index}.slopeRating`} render={({ field }) => ( <FormItem><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
                             <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
                             </div>
@@ -88,7 +94,7 @@ export default function GolfHandicapCalculator() {
       
       {result !== null && (
         <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Golf className="h-8 w-8 text-primary" /><CardTitle>Estimated Golf Handicap</CardTitle></div></CardHeader>
+            <CardHeader><div className='flex items-center gap-4'><Flag className="h-8 w-8 text-primary" /><CardTitle>Estimated Golf Handicap</CardTitle></div></CardHeader>
             <CardContent>
                 <p className="text-3xl font-bold text-center">{result.toFixed(1)}</p>
                 <CardDescription className='mt-4 text-center'>This is a simplified estimate for entertainment purposes and is not an official USGA Handicap Index.</CardDescription>
