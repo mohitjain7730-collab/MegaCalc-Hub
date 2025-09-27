@@ -29,9 +29,14 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'growing-annuity-calculator': dynamic(() => import('@/components/calculators/finance/growing-annuity-calculator')),
     'irr-calculator': dynamic(() => import('@/components/calculators/finance/irr-calculator')),
     'npv-calculator': dynamic(() => import('@/components/calculators/finance/npv-calculator')),
-    'discount-rate-calculator': dynamic(() => import('@/components/calculators/finance/discount-rate-calculator')),
     'dcf-calculator': dynamic(() => import('@/components/calculators/finance/dcf-calculator')),
     'payback-period-calculator': dynamic(() => import('@/components/calculators/finance/payback-period-calculator')),
+    'discount-rate-calculator': dynamic(() => import('@/components/calculators/finance/discount-rate-calculator')),
+    'price-to-earnings-ratio-calculator': dynamic(() => import('@/components/calculators/finance/price-to-earnings-ratio-calculator')),
+    'earnings-per-share-calculator': dynamic(() => import('@/components/calculators/finance/earnings-per-share-calculator')),
+    'return-on-equity-calculator': dynamic(() => import('@/components/calculators/finance/return-on-equity-calculator')),
+    'return-on-assets-calculator': dynamic(() => import('@/components/calculators/finance/return-on-assets-calculator')),
+    'return-on-investment-calculator': dynamic(() => import('@/components/calculators/finance/return-on-investment-calculator')),
     'water-footprint-of-food-calculator': dynamic(() => import('@/components/calculators/health-fitness/water-footprint-of-food-calculator')),
     'bmi-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmi-calculator')),
     'bmr-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmr-calculator')),
@@ -221,3 +226,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
+
+    

@@ -89,72 +89,107 @@ export const calculators: Calculator[] = [
   {
     id: 159,
     name: 'Present Value (PV) Calculator',
-    description: 'Calculate the current worth of a future sum of money, a fundamental concept for making informed investment and financial decisions.',
+    description: 'Calculate the current worth of a future sum of money. This is a fundamental concept in finance that allows you to evaluate whether an investment is worth making today by understanding what a future cash flow is worth in today\'s dollars.',
     slug: 'present-value-calculator',
     category: 'finance',
   },
   {
     id: 160,
     name: 'Future Value (FV) Calculator',
-    description: 'Project the future worth of a current investment. This tool helps you see how your money can grow over time through the power of compounding interest.',
+    description: 'Project the future worth of a current investment given a specific rate of return. This tool helps you visualize how your money can grow over time, demonstrating the power of compounding interest on your initial savings.',
     slug: 'future-value-calculator',
     category: 'finance',
   },
   {
     id: 161,
     name: 'Annuity Payment Calculator',
-    description: 'Determine the fixed periodic payment required for a loan (like a mortgage) or to reach a specified future savings goal with an annuity.',
+    description: 'Determine the fixed periodic payment required for a loan or to reach a specified future savings goal. This is useful for understanding mortgage payments, car loans, or planning contributions for a retirement fund.',
     slug: 'annuity-payment-calculator',
     category: 'finance',
   },
   {
     id: 162,
     name: 'Perpetuity Calculator',
-    description: 'Calculate the present value of an infinite series of equal payments. This is a core concept used in finance to value assets with indefinite cash flows.',
+    description: 'Calculate the present value of an infinite series of equal payments. While a theoretical concept, it is crucial in finance for valuing assets with indefinite cash flows, such as preferred stocks or certain types of real estate.',
     slug: 'perpetuity-calculator',
     category: 'finance',
   },
   {
     id: 163,
     name: 'Growing Annuity/Perpetuity Calculator',
-    description: 'Value a stream of cash flows that grows at a constant rate, either for a finite number of periods (annuity) or indefinitely (perpetuity).',
+    description: 'Value a stream of cash flows that is expected to grow at a constant rate, either for a finite number of periods (annuity) or indefinitely (perpetuity). This is useful for valuing dividend-paying stocks or rental income that is projected to increase over time.',
     slug: 'growing-annuity-calculator',
     category: 'finance',
   },
   {
     id: 164,
     name: 'Internal Rate of Return (IRR) Calculator',
-    description: 'Find the discount rate that makes the Net Present Value (NPV) of all cash flows from a particular project equal to zero. IRR is a key metric for capital budgeting.',
+    description: 'Find the discount rate that makes the Net Present Value (NPV) of all cash flows from a particular project equal to zero. IRR is a key metric for capital budgeting to determine the profitability of potential investments.',
     slug: 'irr-calculator',
     category: 'finance',
   },
   {
     id: 165,
     name: 'Net Present Value (NPV) Calculator',
-    description: 'Determine the difference between the present value of cash inflows and the present value of cash outflows over a period of time. NPV is used in capital budgeting to analyze the profitability of a projected investment or project.',
+    description: 'Determine the difference between the present value of cash inflows and the present value of cash outflows over a period of time. A positive NPV indicates a profitable investment, making it a critical tool for capital budgeting.',
     slug: 'npv-calculator',
     category: 'finance',
   },
   {
     id: 166,
-    name: 'Discount Rate (CAPM) Calculator',
-    description: 'Estimate the required rate of return for an investment using the Capital Asset Pricing Model (CAPM), considering its risk relative to the market.',
+    name: 'Discount Rate Calculator',
+    description: 'Estimate the required rate of return for an investment using the Capital Asset Pricing Model (CAPM). This helps in assessing the risk and potential return of an asset compared to the overall market.',
     slug: 'discount-rate-calculator',
-    category: 'finance',
+    category: 'finance'
   },
   {
     id: 167,
     name: 'Discounted Cash Flow (DCF) Calculator',
-    description: 'Estimate the value of an investment based on its expected future cash flows. DCF analysis helps in determining a company\'s or project\'s intrinsic value.',
+    description: 'Estimate the intrinsic value of an investment or a company based on its expected future cash flows. DCF analysis helps you determine if an asset is undervalued or overvalued in the current market.',
     slug: 'dcf-calculator',
     category: 'finance',
   },
   {
     id: 168,
     name: 'Payback Period Calculator',
-    description: 'Determine the length of time required for an investment to generate cash flows sufficient to recover its initial cost.',
+    description: 'Determine the length of time required for an investment to generate cash flows sufficient to recover its initial cost. This is a simple way to assess the risk and liquidity of a project.',
     slug: 'payback-period-calculator',
     category: 'finance',
+  },
+  {
+    id: 169,
+    name: 'Price-to-Earnings (P/E) Ratio Calculator',
+    description: 'Calculate the P/E ratio to gauge a company\'s valuation, indicating how much investors are willing to pay per dollar of earnings. A key metric for value investing.',
+    slug: 'price-to-earnings-ratio-calculator',
+    category: 'finance'
+  },
+  {
+    id: 170,
+    name: 'Earnings per Share (EPS) Calculator',
+    description: 'Determine a company\'s profitability on a per-share basis. EPS is a fundamental metric used in calculating the P/E ratio and assessing a company\'s financial health.',
+    slug: 'earnings-per-share-calculator',
+    category: 'finance'
+  },
+  {
+    id: 171,
+    name: 'Return on Equity (ROE) Calculator',
+    description: 'Measure how effectively a company is using its shareholders\' equity to generate profits. A high ROE can indicate strong management efficiency and profitability.',
+    slug: 'return-on-equity-calculator',
+    category: 'finance'
+  },
+  {
+    id: 172,
+    name: 'Return on Assets (ROA) Calculator',
+    description: 'Evaluate how efficiently a company is using its total assets to generate earnings. ROA provides insight into a company\'s operational performance and asset management.',
+    slug: 'return-on-assets-calculator',
+    category: 'finance'
+  },
+  {
+    id: 173,
+    name: 'Return on Investment (ROI) Calculator',
+    description: 'Calculate the percentage return on an investment relative to its cost. ROI is a universal metric for evaluating the profitability of any investment.',
+    slug: 'return-on-investment-calculator',
+    category: 'finance'
   },
   // Health & Fitness
   {
@@ -1008,3 +1043,5 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
+
+    
