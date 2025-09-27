@@ -12,11 +12,13 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Landmark } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const formSchema = z.object({
   s: z.number().positive(),
   k: z.number().positive(),
   t: z.number().positive(),
+  timeUnit: z.enum(['years', 'months', 'days']),
   r: z.number().nonnegative(),
   marketPrice: z.number().positive(),
   optionType: z.enum(['call', 'put']),
@@ -58,29 +60,39 @@ export default function ImpliedVolatilityCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { s: undefined, k: undefined, t: undefined, r: undefined, marketPrice: undefined, optionType: 'call' },
+    defaultValues: { s: undefined, k: undefined, t: undefined, r: undefined, marketPrice: undefined, optionType: 'call', timeUnit: 'years' },
   });
 
   const onSubmit = (values: FormValues) => {
     setResult(null);
     setError(null);
-    const { s, k, t, r, marketPrice, optionType } = values;
+    const { s, k, t, timeUnit, r, marketPrice, optionType } = values;
     const rate = r / 100;
+    
+    let tInYears = t;
+    if (timeUnit === 'months') tInYears /= 12;
+    if (timeUnit === 'days') tInYears /= 365;
+
+    // Intrinsic value check
+    const intrinsicValue = optionType === 'call' ? Math.max(0, s - k) : Math.max(0, k - s);
+    if (marketPrice < intrinsicValue) {
+        setError(`Market price ($${marketPrice.toFixed(2)}) cannot be less than the intrinsic value ($${intrinsicValue.toFixed(2)}).`);
+        return;
+    }
     
     let low = 0;
     let high = 5; // Start with a high volatility range (500%)
-    let mid = (low + high) / 2;
     const maxIterations = 100;
     let i = 0;
 
     while (i < maxIterations) {
-        mid = (low + high) / 2;
-        if (mid < 1e-5) { // Prevent volatility from being too low
+        let mid = (low + high) / 2;
+        if (mid < 1e-5) { 
             mid = 1e-5;
         }
-        const price = blackScholes(s, k, t, rate, mid, optionType);
+        const price = blackScholes(s, k, tInYears, rate, mid, optionType);
         
-        if (Math.abs(price - marketPrice) < 1e-5) { // Found a close enough value
+        if (Math.abs(price - marketPrice) < 1e-5) {
             setResult(mid * 100);
             return;
         }
@@ -108,11 +120,25 @@ export default function ImpliedVolatilityCalculator() {
             </FormControl></FormItem>
           )} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="marketPrice" render={({ field }) => ( <FormItem><FormLabel>Option Market Price</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="s" render={({ field }) => ( <FormItem><FormLabel>Stock Price (S)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="k" render={({ field }) => ( <FormItem><FormLabel>Strike Price (K)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="t" render={({ field }) => ( <FormItem><FormLabel>Time to Expiration (T, years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="r" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Risk-Free Rate (r) %</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="marketPrice" render={({ field }) => ( <FormItem><FormLabel>Option Market Price</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="s" render={({ field }) => ( <FormItem><FormLabel>Stock Price (S)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="k" render={({ field }) => ( <FormItem><FormLabel>Strike Price (K)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <div className="grid grid-cols-2 gap-2">
+                <FormField control={form.control} name="t" render={({ field }) => ( <FormItem><FormLabel>Time to Expiration</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+                <FormField control={form.control} name="timeUnit" render={({ field }) => (
+                    <FormItem><FormLabel>Unit</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl><SelectTrigger><SelectValue/></SelectTrigger></FormControl>
+                            <SelectContent>
+                                <SelectItem value="years">Years</SelectItem>
+                                <SelectItem value="months">Months</SelectItem>
+                                <SelectItem value="days">Days</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </FormItem>
+                )} />
+            </div>
+            <FormField control={form.control} name="r" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Risk-Free Rate (r) %</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
           </div>
           <Button type="submit">Calculate Implied Volatility</Button>
         </form>
