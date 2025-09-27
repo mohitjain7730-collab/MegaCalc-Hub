@@ -70,3 +70,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.hero-pattern {
+    background-image: radial-gradient(hsl(var(--muted)) 1px, transparent 1px);
+    background-size: 16px 16px;
+}

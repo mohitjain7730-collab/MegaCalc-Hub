@@ -1,44 +1,71 @@
-
 import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { List } from 'lucide-react';
+import { List, Calculator } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { SearchBar } from '@/components/search-bar';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12 bg-background">
-      <div className="w-full max-w-4xl mx-auto flex justify-between items-center my-8 md:my-12">
-        <div className="text-left">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-            MegaCalc Hub
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-muted-foreground">
-            500+ Calculators for Every Niche – starting with Personal Finance &
-            Investing
-          </p>
-        </div>
-        <ThemeToggle />
-      </div>
-
-
-      <SearchBar />
-      <div className="mt-4">
-        <Button asChild variant="link" className="text-muted-foreground">
-          <Link href="/calculators">
-            <List className="mr-2 h-4 w-4" />
-            Or, see a list of all calculators
+    <div className="flex min-h-screen flex-col bg-background">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
+        <div className="container flex h-14 items-center">
+          <Link href="/" className="flex items-center gap-2 font-bold">
+            <Calculator className="h-6 w-6 text-primary" />
+            <span className="text-lg">MegaCalc Hub</span>
           </Link>
-        </Button>
-      </div>
+          <div className="ml-auto">
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
 
-      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-8">
-        {categories.map((category) => (
-          <CategoryCard key={category.slug} {...category} />
-        ))}
-      </div>
-    </main>
+      <main className="flex-1">
+        <section className="relative w-full py-20 md:py-32 hero-pattern">
+           <div className="container mx-auto text-center px-4">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+              Your Universal Calculator
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
+              From complex financial models to everyday tasks, get instant answers with our comprehensive collection of 500+ specialized calculators.
+            </p>
+            <div className='mt-8'>
+                <SearchBar />
+            </div>
+            <div className="mt-4">
+                <Button asChild variant="outline">
+                <Link href="/calculators">
+                    <List className="mr-2 h-4 w-4" />
+                    Browse All Calculators
+                </Link>
+                </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 md:py-24 bg-secondary/50">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tight">Explore Categories</h2>
+                    <p className="mt-2 text-muted-foreground">Find the perfect tool for your needs.</p>
+                </div>
+                <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    {categories.map((category) => (
+                    <CategoryCard key={category.slug} {...category} />
+                    ))}
+                </div>
+            </div>
+        </section>
+      </main>
+
+      <footer className="py-6 md:px-8 md:py-0 bg-background border-t">
+        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+            <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+            Built by You &amp; Firebase Studio.
+            </p>
+        </div>
+      </footer>
+    </div>
   );
 }
