@@ -42,6 +42,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'current-ratio-calculator': dynamic(() => import('@/components/calculators/finance/current-ratio-calculator')),
     'quick-ratio-calculator': dynamic(() => import('@/components/calculators/finance/quick-ratio-calculator')),
     'working-capital-calculator': dynamic(() => import('@/components/calculators/finance/working-capital-calculator')),
+    'cash-conversion-cycle-calculator': dynamic(() => import('@/components/calculators/finance/cash-conversion-cycle-calculator')),
+    'free-cash-flow-calculator': dynamic(() => import('@/components/calculators/finance/free-cash-flow-calculator')),
+    'operating-margin-calculator': dynamic(() => import('@/components/calculators/finance/operating-margin-calculator')),
+    'gross-margin-calculator': dynamic(() => import('@/components/calculators/finance/gross-margin-calculator')),
+    'net-profit-margin-calculator': dynamic(() => import('@/components/calculators/finance/net-profit-margin-calculator')),
     'water-footprint-of-food-calculator': dynamic(() => import('@/components/calculators/health-fitness/water-footprint-of-food-calculator')),
     'bmi-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmi-calculator')),
     'bmr-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmr-calculator')),
@@ -231,5 +236,3 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
-    

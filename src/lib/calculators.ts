@@ -201,7 +201,7 @@ export const calculators: Calculator[] = [
   {
     id: 175,
     name: 'Interest Coverage Ratio Calculator',
-    description: 'Shows how easily a company can pay the interest on its outstanding debt. A higher ratio indicates a better ability to meet interest obligations, signaling lower risk to creditors and investors.',
+    description: 'Shows how easily a company can pay the interest on its outstanding debt. A higher ratio indicates a better ability to meet its interest obligations, signaling lower risk to creditors and investors.',
     slug: 'interest-coverage-ratio-calculator',
     category: 'finance'
   },
@@ -225,6 +225,41 @@ export const calculators: Calculator[] = [
     description: 'Indicates the liquidity available to a business to meet its short-term obligations. Positive working capital means you have enough assets to cover liabilities, while negative working capital can be a sign of financial trouble.',
     slug: 'working-capital-calculator',
     category: 'finance'
+  },
+  {
+    id: 179,
+    name: 'Cash Conversion Cycle (CCC) Calculator',
+    description: 'Measures the time it takes for a company to convert its investments in inventory and other resources into cash from sales, indicating working capital efficiency.',
+    slug: 'cash-conversion-cycle-calculator',
+    category: 'finance',
+  },
+  {
+    id: 180,
+    name: 'Free Cash Flow (FCF) Calculator',
+    description: 'Calculates the cash a company generates after accounting for capital expenditures, showing the cash available for distribution to investors or to reinvest.',
+    slug: 'free-cash-flow-calculator',
+    category: 'finance',
+  },
+  {
+    id: 181,
+    name: 'Operating Margin Calculator',
+    description: 'Determines the profitability of a company\'s core business operations before deducting interest and taxes, expressed as a percentage of revenue.',
+    slug: 'operating-margin-calculator',
+    category: 'finance',
+  },
+  {
+    id: 182,
+    name: 'Gross Margin Calculator',
+    description: 'Calculates the percentage of revenue that exceeds the cost of goods sold (COGS), providing insight into a company\'s production efficiency.',
+    slug: 'gross-margin-calculator',
+    category: 'finance',
+  },
+  {
+    id: 183,
+    name: 'Net Profit Margin Calculator',
+    description: 'Measures how much net income is generated as a percentage of revenue. It is the ratio of net profits to revenues for a company or business segment.',
+    slug: 'net-profit-margin-calculator',
+    category: 'finance',
   },
   // Health & Fitness
   {
@@ -1078,5 +1113,3 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
-
-    
