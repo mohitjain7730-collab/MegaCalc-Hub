@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -147,6 +141,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'sports-training-target-heart-rate-calculator': dynamic(() => import('@/components/calculators/sports-training/target-heart-rate-calculator')),
     'vo2-max-estimation-calculator': dynamic(() => import('@/components/calculators/sports-training/vo2-max-estimation-calculator')),
     'one-rep-max-calculator': dynamic(() => import('@/components/calculators/sports-training/one-rep-max-calculator')),
+    'date-difference-calculator': dynamic(() => import('@/components/calculators/time-date/date-difference-calculator')),
+    'age-calculator': dynamic(() => import('@/components/calculators/time-date/age-calculator')),
+    'world-time-zone-converter': dynamic(() => import('@/components/calculators/time-date/world-time-zone-converter')),
+    'day-of-the-week-calculator': dynamic(() => import('@/components/calculators/time-date/day-of-the-week-calculator')),
+    'working-days-business-days-calculator': dynamic(() => import('@/components/calculators/time-date/working-days-business-days-calculator')),
   };
 
 export async function generateStaticParams() {
