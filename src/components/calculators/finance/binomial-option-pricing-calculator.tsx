@@ -39,9 +39,7 @@ export default function BinomialOptionPricingCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      s: 100, k: 100, t: 1, r: 5, u: 1.2, d: 0.8, optionType: 'call'
-    },
+    defaultValues: { s: 100, k: 100, t: 1, r: 5, u: 1.2, d: 0.8, optionType: 'call' },
   });
 
   const onSubmit = (values: FormValues) => {
@@ -83,12 +81,12 @@ export default function BinomialOptionPricingCalculator() {
             </FormControl></FormItem>
           )} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="s" render={({ field }) => ( <FormItem><FormLabel>Spot Price (S)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="k" render={({ field }) => ( <FormItem><FormLabel>Strike Price (K)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="t" render={({ field }) => ( <FormItem><FormLabel>Time to Expiration (T, years)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="r" render={({ field }) => ( <FormItem><FormLabel>Risk-Free Rate (r) %</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="u" render={({ field }) => ( <FormItem><FormLabel>Up Factor (u)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="d" render={({ field }) => ( <FormItem><FormLabel>Down Factor (d)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="s" render={({ field }) => ( <FormItem><FormLabel>Spot Price (S)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="k" render={({ field }) => ( <FormItem><FormLabel>Strike Price (K)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="t" render={({ field }) => ( <FormItem><FormLabel>Time to Expiration (T, years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="r" render={({ field }) => ( <FormItem><FormLabel>Risk-Free Rate (r) %</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="u" render={({ field }) => ( <FormItem><FormLabel>Up Factor (u)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="d" render={({ field }) => ( <FormItem><FormLabel>Down Factor (d)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
           </div>
           <Button type="submit">Calculate Option Price</Button>
         </form>

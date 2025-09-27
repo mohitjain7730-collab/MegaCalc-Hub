@@ -50,7 +50,7 @@ export default function CapmCalculator() {
               <FormItem>
                 <FormLabel>Risk-Free Rate (Rf) %</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="e.g., 4.5" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                  <Input type="number" placeholder="e.g., 4.5" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -59,7 +59,7 @@ export default function CapmCalculator() {
               <FormItem>
                 <FormLabel>Asset Beta (β)</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="e.g., 1.2" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                  <Input type="number" placeholder="e.g., 1.2" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -68,7 +68,7 @@ export default function CapmCalculator() {
               <FormItem className="md:col-span-2">
                 <FormLabel>Expected Market Return (Rm) %</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="e.g., 10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                  <Input type="number" placeholder="e.g., 10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

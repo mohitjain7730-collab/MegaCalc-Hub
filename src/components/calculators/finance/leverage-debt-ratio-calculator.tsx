@@ -43,14 +43,14 @@ export default function LeverageDebtRatioCalculator() {
             <FormField control={form.control} name="totalDebt" render={({ field }) => (
               <FormItem>
                 <FormLabel>Total Debt</FormLabel>
-                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                 <FormMessage />
               </FormItem>
             )} />
             <FormField control={form.control} name="totalAssets" render={({ field }) => (
               <FormItem>
                 <FormLabel>Total Assets</FormLabel>
-                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                 <FormMessage />
               </FormItem>
             )} />
