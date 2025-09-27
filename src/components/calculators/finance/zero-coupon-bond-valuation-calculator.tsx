@@ -27,10 +27,10 @@ export default function ZeroCouponBondValuationCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      faceValue: 1000,
+      faceValue: undefined,
       rate: undefined,
       years: undefined,
-      periods: 2,
+      periods: undefined,
     },
   });
 
