@@ -374,13 +374,6 @@ export const calculators: Calculator[] = [
     category: 'finance',
   },
   {
-    id: 201,
-    name: 'Implied Volatility Calculator',
-    description: 'Computes the volatility implied by the market price of an option.',
-    slug: 'implied-volatility-calculator',
-    category: 'finance',
-  },
-  {
     id: 202,
     name: 'Put / Call Option Payoff Calculator',
     description: 'Shows the profit or loss of a call or put at different underlying prices at expiration.',
@@ -1253,3 +1246,5 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
+
+    

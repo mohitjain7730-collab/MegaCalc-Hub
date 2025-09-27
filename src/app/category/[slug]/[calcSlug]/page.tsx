@@ -63,7 +63,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'wacc-calculator': dynamic(() => import('@/components/calculators/finance/wacc-calculator')),
     'leverage-debt-ratio-calculator': dynamic(() => import('@/components/calculators/finance/leverage-debt-ratio-calculator')),
     'black-scholes-calculator': dynamic(() => import('@/components/calculators/finance/black-scholes-calculator')),
-    'implied-volatility-calculator': dynamic(() => import('@/components/calculators/finance/implied-volatility-calculator')),
     'option-payoff-calculator': dynamic(() => import('@/components/calculators/finance/option-payoff-calculator')),
     'binomial-option-pricing-calculator': dynamic(() => import('@/components/calculators/finance/binomial-option-pricing-calculator')),
     'monte-carlo-portfolio-calculator': dynamic(() => import('@/components/calculators/finance/monte-carlo-portfolio-calculator')),
@@ -256,3 +255,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
+
+    
