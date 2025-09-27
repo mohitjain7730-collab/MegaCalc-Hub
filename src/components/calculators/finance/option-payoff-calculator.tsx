@@ -48,7 +48,7 @@ export default function OptionPayoffCalculator() {
         } else {
             profit = Math.max(0, strikePrice - underlyingPrice) - premium;
         }
-        chartData.push({ price: underlyingPrice.toFixed(2), profit: profit.toFixed(2) });
+        chartData.push({ price: parseFloat(underlyingPrice.toFixed(2)), profit: parseFloat(profit.toFixed(2)) });
     }
 
     setResult({ chartData, breakEven });
