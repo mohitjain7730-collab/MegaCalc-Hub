@@ -30,7 +30,7 @@ export default function PortfolioVarianceCalculator() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { w1: 50, w2: 50, s1: undefined, s2: undefined, corr: undefined },
+    defaultValues: { w1: undefined, w2: undefined, s1: undefined, s2: undefined, corr: undefined },
   });
 
   const onSubmit = (values: FormValues) => {
