@@ -8,37 +8,66 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calendar as CalendarIcon, Briefcase } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
-import { cn } from '@/lib/utils';
-import { format, differenceInDays, isSaturday, isSunday, isSameDay } from 'date-fns';
+import { Briefcase } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { differenceInDays, isSaturday, isSunday, isSameDay } from 'date-fns';
+
+const dateSchema = z.object({
+    year: z.number().int(),
+    month: z.number().int().min(1).max(12),
+    day: z.number().int().min(1).max(31),
+});
 
 const formSchema = z.object({
-  startDate: z.date({ required_error: "Start date is required." }),
-  endDate: z.date({ required_error: "End date is required." }),
-}).refine(data => data.endDate >= data.startDate, {
+  start: dateSchema,
+  end: dateSchema,
+}).refine(data => {
+    try {
+        const startDate = new Date(data.start.year, data.start.month - 1, data.start.day);
+        const endDate = new Date(data.end.year, data.end.month - 1, data.end.day);
+        return endDate >= startDate;
+    } catch {
+        return false;
+    }
+}, {
   message: "End date must be after start date.",
-  path: ["endDate"],
+  path: ["end"],
+}).refine(data => {
+    const date = new Date(data.start.year, data.start.month - 1, data.start.day);
+    return date.getFullYear() === data.start.year && date.getMonth() === data.start.month - 1 && date.getDate() === data.start.day;
+}, {
+    message: 'Invalid start date.',
+    path: ['start', 'day'],
+}).refine(data => {
+    const date = new Date(data.end.year, data.end.month - 1, data.end.day);
+    return date.getFullYear() === data.end.year && date.getMonth() === data.end.month - 1 && date.getDate() === data.end.day;
+}, {
+    message: 'Invalid end date.',
+    path: ['end', 'day'],
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-// Hardcoded US Federal Holidays for 2024
 const usHolidays2024 = [
-  new Date('2024-01-01'), // New Year's Day
-  new Date('2024-01-15'), // Martin Luther King, Jr. Day
-  new Date('2024-02-19'), // Washington's Birthday
-  new Date('2024-05-27'), // Memorial Day
-  new Date('2024-06-19'), // Juneteenth
-  new Date('2024-07-04'), // Independence Day
-  new Date('2024-09-02'), // Labor Day
-  new Date('2024-10-14'), // Columbus Day
-  new Date('2024-11-11'), // Veterans Day
-  new Date('2024-11-28'), // Thanksgiving Day
-  new Date('2024-12-25'), // Christmas Day
+  new Date('2024-01-01T12:00:00Z'),
+  new Date('2024-01-15T12:00:00Z'),
+  new Date('2024-02-19T12:00:00Z'),
+  new Date('2024-05-27T12:00:00Z'),
+  new Date('2024-06-19T12:00:00Z'),
+  new Date('2024-07-04T12:00:00Z'),
+  new Date('2024-09-02T12:00:00Z'),
+  new Date('2024-10-14T12:00:00Z'),
+  new Date('2024-11-11T12:00:00Z'),
+  new Date('2024-11-28T12:00:00Z'),
+  new Date('2024-12-25T12:00:00Z'),
 ];
+
+
+const currentYear = new Date().getFullYear();
+const years = Array.from({ length: 11 }, (_, i) => currentYear - 5 + i);
+const months = Array.from({ length: 12 }, (_, i) => i + 1);
+const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
 export default function WorkingDaysBusinessDaysCalculator() {
   const [result, setResult] = useState<number | null>(null);
@@ -48,7 +77,8 @@ export default function WorkingDaysBusinessDaysCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const { startDate, endDate } = values;
+    const startDate = new Date(values.start.year, values.start.month - 1, values.start.day);
+    const endDate = new Date(values.end.year, values.end.month - 1, values.end.day);
     const totalDays = differenceInDays(endDate, startDate) + 1;
     let workingDays = 0;
 
@@ -70,33 +100,35 @@ export default function WorkingDaysBusinessDaysCalculator() {
     <div className="space-y-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="startDate" render={({ field }) => (
-              <FormItem className="flex flex-col"><FormLabel>Start Date</FormLabel>
-                <Popover><PopoverTrigger asChild><FormControl>
-                  <Button variant={"outline"} className={cn("w-full pl-3 text-left font-normal", !field.value && "text-muted-foreground")}>
-                    {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
-                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                  </Button>
-                </FormControl></PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar mode="single" selected={field.value} onSelect={field.onChange} captionLayout="dropdown-nav" fromYear={1900} toYear={new Date().getFullYear() + 10} initialFocus/>
-                </PopoverContent></Popover><FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="endDate" render={({ field }) => (
-              <FormItem className="flex flex-col"><FormLabel>End Date</FormLabel>
-                <Popover><PopoverTrigger asChild><FormControl>
-                  <Button variant={"outline"} className={cn("w-full pl-3 text-left font-normal", !field.value && "text-muted-foreground")}>
-                    {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
-                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                  </Button>
-                </FormControl></PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar mode="single" selected={field.value} onSelect={field.onChange} captionLayout="dropdown-nav" fromYear={1900} toYear={new Date().getFullYear() + 10} initialFocus/>
-                </PopoverContent></Popover><FormMessage />
-              </FormItem>
-            )} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <FormLabel>Start Date</FormLabel>
+              <div className="grid grid-cols-3 gap-2 mt-2">
+                 <FormField control={form.control} name="start.day" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Day</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent>{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="start.month" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Month</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent>{months.map(m => <SelectItem key={m} value={String(m)}>{m}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="start.year" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Year</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent>{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+              </div>
+            </div>
+            <div>
+              <FormLabel>End Date</FormLabel>
+              <div className="grid grid-cols-3 gap-2 mt-2">
+                 <FormField control={form.control} name="end.day" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Day</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent>{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="end.month" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Month</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent>{months.map(m => <SelectItem key={m} value={String(m)}>{m}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="end.year" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Year</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent>{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+              </div>
+            </div>
           </div>
           <Button type="submit">Calculate Business Days</Button>
         </form>

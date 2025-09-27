@@ -7,23 +7,31 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
-import { cn } from '@/lib/utils';
-import { format } from 'date-fns';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const formSchema = z.object({
-  date: z.date({
-    required_error: "A date is required.",
-  }),
+    year: z.number().int(),
+    month: z.number().int().min(1).max(12),
+    day: z.number().int().min(1).max(31),
+}).refine(data => {
+    const date = new Date(data.year, data.month - 1, data.day);
+    return date.getFullYear() === data.year && date.getMonth() === data.month - 1 && date.getDate() === data.day;
+}, {
+    message: 'Invalid date.',
+    path: ['day'],
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+const currentYear = new Date().getFullYear();
+const years = Array.from({ length: 201 }, (_, i) => currentYear - 100 + i);
+const months = Array.from({ length: 12 }, (_, i) => i + 1);
+const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
 export default function DayOfTheWeekCalculator() {
   const [result, setResult] = useState<string | null>(null);
@@ -31,15 +39,17 @@ export default function DayOfTheWeekCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      date: new Date(),
-    },
+        year: undefined,
+        month: undefined,
+        day: undefined,
+    }
   });
 
   const onSubmit = (values: FormValues) => {
     // Zeller's Congruence
-    let q = values.date.getDate();
-    let m = values.date.getMonth() + 1;
-    let Y = values.date.getFullYear();
+    let q = values.day;
+    let m = values.month;
+    let Y = values.year;
 
     if (m < 3) {
       m += 12;
@@ -50,8 +60,7 @@ export default function DayOfTheWeekCalculator() {
     const J = Math.floor(Y / 100);
 
     const h = (q + Math.floor(13 * (m + 1) / 5) + K + Math.floor(K / 4) + Math.floor(J / 4) - 2 * J) % 7;
-    const dayIndex = (h + 6) % 7; // Adjust to make Sunday=0, Monday=1, etc. -> Our array is Sunday-first so it's correct.
-                                  // The +6 and mod 7 is a trick to handle negative results from the first modulo
+    const dayIndex = (h + 6) % 7; 
     
     setResult(daysOfWeek[dayIndex]);
   };
@@ -60,32 +69,18 @@ export default function DayOfTheWeekCalculator() {
     <div className="space-y-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField
-            control={form.control}
-            name="date"
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>Select a Date</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        className={cn("w-[240px] pl-3 text-left font-normal", !field.value && "text-muted-foreground")}
-                      >
-                        {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar mode="single" selected={field.value} onSelect={field.onChange} captionLayout="dropdown-nav" fromYear={1900} toYear={new Date().getFullYear() + 100} initialFocus />
-                  </PopoverContent>
-                </Popover>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormLabel>Select a Date</FormLabel>
+            <div className="grid grid-cols-3 gap-4">
+                <FormField control={form.control} name="day" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Day</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent>{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="month" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Month</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent>{months.map(m => <SelectItem key={m} value={String(m)}>{m}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="year" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Year</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent>{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+            </div>
           <Button type="submit">Calculate Day</Button>
         </form>
       </Form>
