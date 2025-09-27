@@ -18,7 +18,7 @@ const formSchema = z.object({
   s1: z.number().positive(),
   s2: z.number().positive(),
   corr: z.number().min(-1).max(1),
-}).refine(data => Math.abs(data.w1 + data.w2 - 100) < 0.01, {
+}).refine(data => Math.abs((data.w1 || 0) + (data.w2 || 0) - 100) < 0.01, {
     message: "Weights must add up to 100%",
     path: ['w2'],
 });
@@ -35,10 +35,10 @@ export default function PortfolioVarianceCalculator() {
 
   const onSubmit = (values: FormValues) => {
     const { w1, w2, s1, s2, corr } = values;
-    const weight1 = w1 / 100;
-    const weight2 = w2 / 100;
-    const stdDev1 = s1 / 100;
-    const stdDev2 = s2 / 100;
+    const weight1 = (w1 || 0) / 100;
+    const weight2 = (w2 || 0) / 100;
+    const stdDev1 = (s1 || 0) / 100;
+    const stdDev2 = (s2 || 0) / 100;
 
     const variance = Math.pow(weight1, 2) * Math.pow(stdDev1, 2) + Math.pow(weight2, 2) * Math.pow(stdDev2, 2) + 2 * weight1 * weight2 * stdDev1 * stdDev2 * corr;
     const stdDev = Math.sqrt(variance);
@@ -52,11 +52,11 @@ export default function PortfolioVarianceCalculator() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="w1" render={({ field }) => ( <FormItem><FormLabel>Weight of Asset 1 (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="s1" render={({ field }) => ( <FormItem><FormLabel>Std. Dev. of Asset 1 (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="w2" render={({ field }) => ( <FormItem><FormLabel>Weight of Asset 2 (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="s2" render={({ field }) => ( <FormItem><FormLabel>Std. Dev. of Asset 2 (%)</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
-            <FormField control={form.control} name="corr" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Correlation Coefficient (-1 to 1)</FormLabel><FormControl><Input type="number" step="0.01" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="w1" render={({ field }) => ( <FormItem><FormLabel>Weight of Asset 1 (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="s1" render={({ field }) => ( <FormItem><FormLabel>Std. Dev. of Asset 1 (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="w2" render={({ field }) => ( <FormItem><FormLabel>Weight of Asset 2 (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="s2" render={({ field }) => ( <FormItem><FormLabel>Std. Dev. of Asset 2 (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
+            <FormField control={form.control} name="corr" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Correlation Coefficient (-1 to 1)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )}/>
           </div>
           <Button type="submit">Calculate Risk</Button>
         </form>
