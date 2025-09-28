@@ -44,7 +44,7 @@ export default function FixedVsFloatingRateCalculator() {
       term: undefined,
       fixedRate: undefined,
       initialFloatingRate: undefined,
-      rateChanges: [{ year: 2, rate: undefined }],
+      rateChanges: [{ year: undefined, rate: undefined }],
     },
   });
 
@@ -57,7 +57,7 @@ export default function FixedVsFloatingRateCalculator() {
       principal: number,
       termYears: number,
       initialRate: number,
-      rateChanges: { year: number; rate: number }[] = []
+      rateChanges: { year?: number; rate?: number }[] = []
   ) => {
       const n = termYears * 12;
       let balance = principal;
@@ -70,11 +70,11 @@ export default function FixedVsFloatingRateCalculator() {
       for (let i = 0; i < n; i++) {
           const year = Math.floor(i / 12) + 1;
           const rateChange = rateChanges.find(rc => rc.year === year);
-          if (rateChange && i % 12 === 0) {
+          if (rateChange && rateChange.rate !== undefined && i % 12 === 0) {
               currentRate = rateChange.rate / 100 / 12;
           }
           
-          if(i === 0 || (rateChange && i % 12 === 0)) {
+          if(i === 0 || (rateChange && rateChange.rate !== undefined && i % 12 === 0)) {
             const remainingPeriods = n - i;
             if (currentRate > 0) {
                 monthlyPayment = balance * (currentRate * Math.pow(1 + currentRate, remainingPeriods)) / (Math.pow(1 + currentRate, remainingPeriods) - 1);
@@ -94,8 +94,9 @@ export default function FixedVsFloatingRateCalculator() {
   };
 
   const onSubmit = (values: FormValues) => {
+    const validRateChanges = values.rateChanges.filter(rc => rc.year && rc.rate !== undefined) as { year: number; rate: number }[];
     const fixedRateData = calculateAmortization(values.principal, values.term, values.fixedRate);
-    const floatingRateData = calculateAmortization(values.principal, values.term, values.initialFloatingRate, values.rateChanges);
+    const floatingRateData = calculateAmortization(values.principal, values.term, values.initialFloatingRate, validRateChanges);
 
     const chartData = Array.from({ length: values.term }, (_, i) => ({
         year: i + 1,
@@ -141,7 +142,7 @@ export default function FixedVsFloatingRateCalculator() {
                                      <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)} className="self-end"><XCircle className="h-5 w-5 text-destructive" /></Button>
                                 </div>
                             ))}
-                            <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => append({ year: 0, rate: undefined })}><PlusCircle className="mr-2 h-4 w-4" /> Add Change</Button>
+                            <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => append({ year: undefined, rate: undefined })}><PlusCircle className="mr-2 h-4 w-4" /> Add Change</Button>
                         </div>
                     </CardContent>
                 </Card>
