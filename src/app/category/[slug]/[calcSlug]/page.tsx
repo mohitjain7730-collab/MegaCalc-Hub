@@ -91,7 +91,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'currency-exchange-calculator': dynamic(() => import('@/components/calculators/finance/currency-exchange-calculator')),
     'currency-volatility-calculator': dynamic(() => import('@/components/calculators/finance/currency-volatility-calculator')),
     'fixed-vs-floating-rate-calculator': dynamic(() => import('@/components/calculators/finance/fixed-vs-floating-rate-calculator')),
-    'interest-rate-swap-calculator': dynamic(() => import('@/components/calculators/finance/interest-rate-swap-calculator')),
     'swap-spread-calculator': dynamic(() => import('@/components/calculators/finance/swap-spread-calculator')),
     'forward-rate-agreement-calculator': dynamic(() => import('@/components/calculators/finance/forward-rate-agreement-calculator')),
     'breakeven-inflation-rate-calculator': dynamic(() => import('@/components/calculators/finance/breakeven-inflation-rate-calculator')),

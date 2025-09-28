@@ -570,13 +570,6 @@ export const calculators: Calculator[] = [
     category: 'finance',
   },
   {
-    id: 234,
-    name: 'Interest Rate Swap Value Calculator',
-    description: 'Illustrates the concept of valuing a plain vanilla interest rate swap.',
-    slug: 'interest-rate-swap-calculator',
-    category: 'finance',
-  },
-  {
     id: 235,
     name: 'Swap Spread Calculator',
     description: 'Calculate the difference between a swap rate and a benchmark government bond yield.',
@@ -629,7 +622,7 @@ export const calculators: Calculator[] = [
   {
     id: 218,
     name: 'Contribution Margin per Unit Calculator',
-    description: 'Determine the revenue from one unit that covers fixed costs and generates profit.',
+    description: 'Determine the revenue from one unit sold that is left over after covering the variable costs associated with that unit.',
     slug: 'contribution-margin-calculator',
     category: 'business-startup',
   },
