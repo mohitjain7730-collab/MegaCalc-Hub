@@ -18,7 +18,7 @@ export default function Home() {
           </Link>
           <div className="ml-auto flex items-center gap-4">
             <nav className="flex items-center gap-4 text-sm font-medium text-muted-foreground">
-                <Link href="#" className="transition-colors hover:text-foreground">
+                <Link href="/learning" className="transition-colors hover:text-foreground">
                 Learning Hub
                 </Link>
             </nav>
