@@ -1,3 +1,4 @@
+
 import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
@@ -11,10 +12,15 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
         <div className="container flex h-14 items-center">
-          <Link href="/" className="flex items-center gap-2 font-bold">
+          <Link href="/" className="flex items-center gap-2 font-bold mr-6">
             <Calculator className="h-6 w-6 text-primary" />
             <span className="text-lg">MegaCalc Hub</span>
           </Link>
+          <nav className="flex items-center gap-4 text-sm font-medium text-muted-foreground">
+            <Link href="#" className="transition-colors hover:text-foreground">
+              Learning Hub
+            </Link>
+          </nav>
           <div className="ml-auto">
             <ThemeToggle />
           </div>
