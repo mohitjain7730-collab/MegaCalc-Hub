@@ -16,12 +16,12 @@ export default function Home() {
             <Calculator className="h-6 w-6 text-primary" />
             <span className="text-lg">MegaCalc Hub</span>
           </Link>
-          <nav className="flex items-center gap-4 text-sm font-medium text-muted-foreground">
-            <Link href="#" className="transition-colors hover:text-foreground">
-              Learning Hub
-            </Link>
-          </nav>
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-4">
+            <nav className="flex items-center gap-4 text-sm font-medium text-muted-foreground">
+                <Link href="#" className="transition-colors hover:text-foreground">
+                Learning Hub
+                </Link>
+            </nav>
             <ThemeToggle />
           </div>
         </div>
