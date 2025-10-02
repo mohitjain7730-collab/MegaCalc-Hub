@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { articles } from '@/lib/articles';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, BookOpen } from 'lucide-react';
+import { ArrowLeft, BookOpen, Construction } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function LearningHubPage() {
@@ -29,18 +29,34 @@ export default function LearningHubPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {articles.map((article) => (
-            <Link href={`/learning/${article.slug}`} key={article.slug} className="group block h-full">
-              <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
+        {articles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {articles.map((article) => (
+                <Link href={`/learning/${article.slug}`} key={article.slug} className="group block h-full">
+                <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
+                    <CardHeader>
+                    <CardTitle className="text-lg">{article.title}</CardTitle>
+                    <CardDescription className="pt-1">{article.description}</CardDescription>
+                    </CardHeader>
+                </Card>
+                </Link>
+            ))}
+            </div>
+        ) : (
+             <Card className="w-full text-center shadow-md mt-8">
                 <CardHeader>
-                  <CardTitle className="text-lg">{article.title}</CardTitle>
-                  <CardDescription className="pt-1">{article.description}</CardDescription>
+                    <Construction className="mx-auto h-16 w-16 mb-6 text-primary" strokeWidth={1.5} />
+                    <CardTitle className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                        Articles Coming Soon
+                    </CardTitle>
                 </CardHeader>
-              </Card>
-            </Link>
-          ))}
-        </div>
+                <CardContent className="p-8 pt-0">
+                    <p className="text-lg text-muted-foreground">
+                        We're hard at work creating detailed articles and guides. Check back soon!
+                    </p>
+                </CardContent>
+            </Card>
+        )}
       </div>
     </div>
   );

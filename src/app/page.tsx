@@ -34,12 +34,18 @@ export default function Home() {
             <div className='mt-8'>
                 <SearchBar />
             </div>
-            <div className="mt-4">
+            <div className="mt-4 flex justify-center gap-4">
+                <Button asChild>
+                    <Link href="/calculators">
+                        <List className="mr-2 h-4 w-4" />
+                        Browse All Calculators
+                    </Link>
+                </Button>
                 <Button asChild variant="outline">
-                <Link href="/calculators">
-                    <List className="mr-2 h-4 w-4" />
-                    Browse All Calculators
-                </Link>
+                    <Link href="/learning">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Learning Hub
+                    </Link>
                 </Button>
             </div>
           </div>
