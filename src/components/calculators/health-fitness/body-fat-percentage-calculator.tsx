@@ -20,7 +20,7 @@ const formSchema = z.object({
   neck: z.number().positive(),
   hip: z.number().positive().optional(),
   unit: z.enum(['cm', 'in']),
-}).refine(data => data.sex === 'female' ? data.hip !== undefined : true, {
+}).refine(data => data.sex === 'female' ? data.hip !== undefined && data.hip > 0 : true, {
     message: "Hip measurement is required for females.",
     path: ["hip"],
 });
@@ -48,25 +48,31 @@ export default function BodyFatPercentageCalculator() {
     defaultValues: {
       sex: 'male',
       unit: 'cm',
+      height: undefined,
+      waist: undefined,
+      neck: undefined,
+      hip: undefined,
     },
   });
 
   const onSubmit = (values: FormValues) => {
-    let { sex, height, waist, neck, hip, unit } = values;
-
-    if (unit === 'in') {
-      height *= 2.54;
-      waist *= 2.54;
-      neck *= 2.54;
-      if (hip) hip *= 2.54;
-    }
+    const { sex, height, waist, neck, hip, unit } = values;
 
     let bfp;
-    if (sex === 'male') {
-      bfp = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76;
-    } else {
-      bfp = 163.205 * Math.log10(waist + (hip || 0) - neck) - 97.684 * Math.log10(height) - 78.387;
+    if (unit === 'cm') {
+        if (sex === 'male') {
+          bfp = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+        } else {
+          bfp = 495 / (1.29579 - 0.35004 * Math.log10(waist + (hip || 0) - neck) + 0.22100 * Math.log10(height)) - 450;
+        }
+    } else { // inches
+        if (sex === 'male') {
+          bfp = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76;
+        } else {
+          bfp = 163.205 * Math.log10(waist + (hip || 0) - neck) - 97.684 * Math.log10(height) - 78.387;
+        }
     }
+
 
     setResult({ bfp, category: getBfpCategory(bfp, sex) });
   };
@@ -99,7 +105,7 @@ export default function BodyFatPercentageCalculator() {
             <CardContent>
                 <div className="text-center space-y-2">
                     <p className="text-4xl font-bold">{result.bfp.toFixed(1)}%</p>
-                    <p className={`text-2xl font-semibold ${result.category.color}`}>{result.category.name}</p>
+                    <p className={`text-2xl font-semibold`}>{result.category.name}</p>
                 </div>
             </CardContent>
         </Card>
@@ -108,12 +114,10 @@ export default function BodyFatPercentageCalculator() {
          <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
-                <p>This calculator uses the U.S. Navy method, which relies on body measurements to estimate body fat percentage. It's a convenient alternative to more complex methods like skinfold calipers or hydrostatic weighing.</p>
+                <p>This calculator uses the U.S. Navy method, which relies on body measurements to estimate body fat percentage. It's a convenient alternative to more complex methods like skinfold calipers or hydrostatic weighing. Different formulas are used for males and females to account for differences in body composition.</p>
             </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
   );
 }
-
-    
