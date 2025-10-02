@@ -75,6 +75,31 @@ export default function WaistToHeightRatioCalculator() {
                 <p>This calculator divides your waist circumference by your height. The general guideline is that your waist should be less than half your height. A ratio of 0.5 or higher suggests increased risk for health conditions related to central obesity.</p>
             </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="health-risks">
+            <AccordionTrigger>Health Risks & Mitigation</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Understanding the Risks</h4>
+                    <p>A high Waist-to-Height Ratio (0.5 or greater) is a strong indicator of central obesity. This means excess fat is stored around your abdomen, surrounding vital organs. This type of fat is metabolically active and increases the risk for:</p>
+                     <ul className="list-disc list-inside space-y-1 pl-4 mt-2">
+                        <li>Cardiovascular diseases</li>
+                        <li>Type 2 diabetes</li>
+                        <li>High blood pressure (hypertension)</li>
+                        <li>Metabolic syndrome</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">How to Improve Your Ratio</h4>
+                    <p>Improving your WHtR involves reducing abdominal fat through a combination of diet, exercise, and lifestyle changes. Always consult a healthcare professional before starting a new health regimen.</p>
+                    <ul className="list-disc list-inside space-y-1 pl-4 mt-2">
+                        <li><strong>Balanced Diet:</strong> Focus on whole foods, lean proteins, fruits, and vegetables. Reduce intake of processed foods, sugary drinks, and unhealthy fats.</li>
+                        <li><strong>Consistent Exercise:</strong> Combine cardiovascular exercise (like running, cycling, swimming) with strength training to build muscle and boost your metabolism.</li>
+                        <li><strong>Manage Stress:</strong> Chronic stress can increase cortisol levels, which is linked to abdominal fat storage.</li>
+                        <li><strong>Prioritize Sleep:</strong> Aim for 7-9 hours of quality sleep, as poor sleep affects appetite-regulating hormones.</li>
+                    </ul>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </div>
   );
