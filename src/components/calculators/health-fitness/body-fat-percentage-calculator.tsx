@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Ruler, ArrowUp } from 'lucide-react';
+import { Ruler } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
@@ -56,23 +56,23 @@ export default function BodyFatPercentageCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const { sex, height, waist, neck, hip, unit } = values;
-
+    const { sex, unit } = values;
+    let { height, waist, neck, hip } = values;
     let bfp;
-    if (unit === 'cm') {
-        if (sex === 'male') {
-          bfp = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
-        } else {
-          bfp = 495 / (1.29579 - 0.35004 * Math.log10(waist + (hip || 0) - neck) + 0.22100 * Math.log10(height)) - 450;
+
+    if (sex === 'male') {
+        if (unit === 'cm') {
+            bfp = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+        } else { // inches
+            bfp = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76;
         }
-    } else { // inches
-        if (sex === 'male') {
-          bfp = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76;
-        } else {
-          bfp = 163.205 * Math.log10(waist + (hip || 0) - neck) - 97.684 * Math.log10(height) - 78.387;
+    } else { // female
+        if (unit === 'cm') {
+            bfp = 495 / (1.29579 - 0.35004 * Math.log10(waist + (hip || 0) - neck) + 0.22100 * Math.log10(height)) - 450;
+        } else { // inches
+            bfp = 163.205 * Math.log10(waist + (hip || 0) - neck) - 97.684 * Math.log10(height) - 78.387;
         }
     }
-
 
     setResult({ bfp, category: getBfpCategory(bfp, sex) });
   };
@@ -116,6 +116,35 @@ export default function BodyFatPercentageCalculator() {
             <AccordionContent className="text-muted-foreground">
                 <p>This calculator uses the U.S. Navy method, which relies on body measurements to estimate body fat percentage. It's a convenient alternative to more complex methods like skinfold calipers or hydrostatic weighing. Different formulas are used for males and females to account for differences in body composition.</p>
             </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="reducing-fat">
+          <AccordionTrigger>Strategies for Healthy Fat Reduction</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+              <p>Reducing body fat in a healthy, sustainable way involves a combination of diet, exercise, and lifestyle habits. Consult with a healthcare professional before making significant changes.</p>
+              <ul className="list-disc list-inside space-y-2">
+                <li>
+                    <strong>Sustainable Calorie Deficit:</strong> The foundation of fat loss is consuming slightly fewer calories than your body burns. Aim for a moderate deficit of 300-500 calories per day for sustainable loss.
+                </li>
+                 <li>
+                    <strong>Prioritize Protein:</strong> Eating adequate protein (e.g., from lean meats, dairy, legumes) helps you feel full and preserves muscle mass while you lose fat.
+                </li>
+                 <li>
+                    <strong>Incorporate Strength Training:</strong> Building muscle through resistance training boosts your metabolism, as muscle tissue burns more calories at rest than fat tissue does.
+                </li>
+                 <li>
+                    <strong>Include Cardiovascular Exercise:</strong> Activities like running, cycling, or brisk walking help increase your total daily calorie expenditure.
+                </li>
+                 <li>
+                    <strong>Stay Hydrated:</strong> Drinking plenty of water is essential for optimal metabolic function and can help manage appetite.
+                </li>
+                 <li>
+                    <strong>Prioritize Sleep:</strong> Aim for 7-9 hours of quality sleep per night. Poor sleep can disrupt hormones that regulate appetite and promote fat storage.
+                </li>
+                 <li>
+                    <strong>Manage Stress:</strong> Chronic stress can lead to hormonal changes that encourage abdominal fat storage. Practice stress-reduction techniques like meditation or yoga.
+                </li>
+              </ul>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
