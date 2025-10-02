@@ -7,11 +7,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dumbbell } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const formSchema = z.object({
   bodyWeight: z.number().positive(),
@@ -48,7 +49,16 @@ export default function LeanBodyMassCalculator() {
                 <FormItem><FormLabel>Units</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="kg">Kilograms (kg)</SelectItem><SelectItem value="lbs">Pounds (lbs)</SelectItem></SelectContent></Select></FormItem>
             )} />
             <FormField control={form.control} name="bodyWeight" render={({ field }) => (<FormItem><FormLabel>Total Body Weight ({unit})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
-            <FormField control={form.control} name="bodyFatPercentage" render={({ field }) => (<FormItem className="md:col-span-2"><FormLabel>Body Fat Percentage (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
+            <FormField control={form.control} name="bodyFatPercentage" render={({ field }) => (
+                <FormItem className="md:col-span-2">
+                    <FormLabel>Body Fat Percentage (%)</FormLabel>
+                    <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                    <FormDescription>
+                        Need to find this? Use the <Link href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary underline">Body Fat Percentage Calculator</Link>.
+                    </FormDescription>
+                    <FormMessage />
+                </FormItem>
+            )} />
           </div>
           <Button type="submit">Calculate LBM</Button>
         </form>
