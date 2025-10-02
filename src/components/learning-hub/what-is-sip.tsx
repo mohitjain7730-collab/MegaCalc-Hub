@@ -145,13 +145,12 @@ export default function WhatIsSip() {
         <CardContent className="p-6">
           <h2 className="text-2xl font-bold mt-0">Ready to See Your Wealth Grow? Calculate Your Potential SIP Returns!</h2>
           <p className="text-muted-foreground">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future.</p>
-          <p>It helps you estimate the potential maturity amount of your investment based on three simple inputs:
+          <p>It helps you estimate the potential maturity amount of your investment based on three simple inputs:</p>
             <ul>
                 <li>Your monthly investment amount</li>
                 <li>The expected annual rate of return</li>
                 <li>The number of years you plan to invest</li>
             </ul>
-          </p>
           <p className="mt-4"><strong>Curious to see what your future could look like? Use our easy-to-use SIP Return Calculator now and take the first concrete step towards achieving your financial dreams!</strong></p>
         </CardContent>
       </Card>
