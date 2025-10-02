@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import { articles } from '@/lib/articles';
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, BookOpen, Construction } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
