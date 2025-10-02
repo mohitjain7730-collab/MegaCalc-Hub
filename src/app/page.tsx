@@ -3,7 +3,7 @@ import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { List, Calculator } from 'lucide-react';
+import { List, Calculator, BookOpen } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { SearchBar } from '@/components/search-bar';
 
@@ -16,6 +16,14 @@ export default function Home() {
             <Calculator className="h-6 w-6 text-primary" />
             <span className="text-lg">Mycalculating.com</span>
           </Link>
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+            <Link
+              href="/learning"
+              className="transition-colors hover:text-foreground/80 text-foreground/60"
+            >
+              Learning Hub
+            </Link>
+          </nav>
           <div className="ml-auto flex items-center gap-4">
             <ThemeToggle />
           </div>
