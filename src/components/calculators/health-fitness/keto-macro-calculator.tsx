@@ -48,8 +48,8 @@ export default function KetoMacroCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
         activityLevel: '1.375',
-        netCarbGoal: 25,
-        proteinRatio: 1.6,
+        netCarbGoal: undefined,
+        proteinRatio: undefined,
         calorieGoal: 'maintain',
     },
   });
@@ -103,8 +103,8 @@ export default function KetoMacroCalculator() {
             <FormField control={form.control} name="height" render={({ field }) => (<FormItem><FormLabel>Height (cm)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
             <FormField control={form.control} name="activityLevel" render={({ field }) => (<FormItem><FormLabel>Activity Level</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent>{Object.entries(activityLevels).map(([key, value]) => <SelectItem key={key} value={String(value)}>{key.charAt(0).toUpperCase() + key.slice(1)}</SelectItem>)}</SelectContent></Select></FormItem>)} />
             <FormField control={form.control} name="calorieGoal" render={({ field }) => (<FormItem><FormLabel>Calorie Goal</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="maintain">Maintain</SelectItem><SelectItem value="deficit">Weight Loss (20% deficit)</SelectItem><SelectItem value="surplus">Weight Gain (10% surplus)</SelectItem></SelectContent></Select></FormItem>)} />
-            <FormField control={form.control} name="netCarbGoal" render={({ field }) => (<FormItem><FormLabel>Net Carb Goal (g)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
-            <FormField control={form.control} name="proteinRatio" render={({ field }) => (<FormItem><FormLabel>Protein Ratio (g/kg LBM)</FormLabel><FormControl><Input type="number" step="0.1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
+            <FormField control={form.control} name="netCarbGoal" render={({ field }) => (<FormItem><FormLabel>Net Carb Goal (g)</FormLabel><FormControl><Input type="number" placeholder="e.g., 25" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
+            <FormField control={form.control} name="proteinRatio" render={({ field }) => (<FormItem><FormLabel>Protein Ratio (g/kg LBM)</FormLabel><FormControl><Input type="number" step="0.1" placeholder="e.g., 1.6" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
           </div>
           <Button type="submit">Calculate Keto Macros</Button>
         </form>
