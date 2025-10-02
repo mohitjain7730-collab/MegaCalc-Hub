@@ -114,6 +114,16 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'relative-fat-mass-calculator': dynamic(() => import('@/components/calculators/health-fitness/relative-fat-mass-calculator')),
     'calorie-deficit-calculator': dynamic(() => import('@/components/calculators/health-fitness/calorie-deficit-calculator')),
     'calorie-surplus-calculator': dynamic(() => import('@/components/calculators/health-fitness/calorie-surplus-calculator')),
+    'daily-calorie-needs-calculator': dynamic(() => import('@/components/calculators/health-fitness/daily-calorie-needs-calculator')),
+    'macro-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/macro-ratio-calculator')),
+    'protein-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/protein-intake-calculator')),
+    'carbohydrate-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/carbohydrate-intake-calculator')),
+    'fat-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/fat-intake-calculator')),
+    'keto-macro-calculator': dynamic(() => import('@/components/calculators/health-fitness/keto-macro-calculator')),
+    'intermittent-fasting-calculator': dynamic(() => import('@/components/calculators/health-fitness/intermittent-fasting-calculator')),
+    'glycemic-load-calculator': dynamic(() => import('@/components/calculators/health-fitness/glycemic-load-calculator')),
+    'meal-glycemic-load-calculator': dynamic(() => import('@/components/calculators/health-fitness/meal-glycemic-load-calculator')),
+    'hydration-needs-calculator': dynamic(() => import('@/components/calculators/health-fitness/hydration-needs-calculator')),
     'paint-coverage-calculator': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
     'tile-flooring-calculator': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
     'wallpaper-roll-calculator': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),
@@ -299,5 +309,3 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
-    

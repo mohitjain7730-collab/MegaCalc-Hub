@@ -669,6 +669,16 @@ export const calculators: Calculator[] = [
     category: 'business-startup',
   },
   // Health & Fitness
+  { id: 260, name: 'Daily Calorie Needs Calculator (TDEE)', description: 'Estimate the total calories you burn per day to maintain your current weight.', slug: 'daily-calorie-needs-calculator', category: 'health-fitness'},
+  { id: 261, name: 'Macro Ratio Calculator', description: 'Divide your daily calories into grams of protein, carbs, and fat based on your goals.', slug: 'macro-ratio-calculator', category: 'health-fitness'},
+  { id: 262, name: 'Protein Intake Calculator', description: 'Get a personalized daily protein recommendation based on your weight and fitness goals.', slug: 'protein-intake-calculator', category: 'health-fitness'},
+  { id: 263, name: 'Carbohydrate Intake Calculator', description: 'Estimate your daily carbohydrate needs based on your activity level to fuel performance.', slug: 'carbohydrate-intake-calculator', category: 'health-fitness'},
+  { id: 264, name: 'Fat Intake Calculator', description: 'Calculate your recommended daily fat intake as a percentage of total calories.', slug: 'fat-intake-calculator', category: 'health-fitness'},
+  { id: 265, name: 'Keto Macro Calculator', description: 'Calculate specific macronutrient targets for a ketogenic diet.', slug: 'keto-macro-calculator', category: 'health-fitness'},
+  { id: 266, name: 'Intermittent Fasting Calculator', description: 'Plan your daily eating and fasting windows for different IF protocols.', slug: 'intermittent-fasting-calculator', category: 'health-fitness'},
+  { id: 267, name: 'Glycemic Load Calculator', description: 'Measure how much a specific serving of food will raise your blood glucose levels.', slug: 'glycemic-load-calculator', category: 'health-fitness'},
+  { id: 268, name: 'Meal Glycemic Load Calculator', description: 'Calculate the total Glycemic Load (GL) of an entire meal.', slug: 'meal-glycemic-load-calculator', category: 'health-fitness'},
+  { id: 269, name: 'Hydration Needs Calculator', description: 'Estimate your daily water intake required to stay adequately hydrated.', slug: 'hydration-needs-calculator', category: 'health-fitness'},
   {
     id: 107,
     name: 'Water Footprint of Food Calculator',
@@ -1494,5 +1504,3 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
-
-    
