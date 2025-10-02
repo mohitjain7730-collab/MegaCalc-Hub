@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 
 const articleComponents: { [key: string]: React.ComponentType } = {
-    'what-is-sip': dynamic(() => import('@/components/learning-hub/what-is-sip')),
+    'what-is-sip': dynamic(() => import('@/components/learning-hub/what-is-sip').then(mod => mod.WhatIsSip)),
 };
 
 export async function generateStaticParams() {
