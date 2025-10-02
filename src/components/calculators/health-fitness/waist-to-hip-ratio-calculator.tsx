@@ -85,9 +85,33 @@ export default function WaistToHipRatioCalculator() {
                 <p>This calculator divides your waist circumference by your hip circumference. The resulting ratio is an indicator of body fat distribution. A higher ratio suggests more abdominal fat, which is linked to a higher risk of certain health conditions.</p>
             </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="health-risks">
+            <AccordionTrigger>Health Risks & Mitigation</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">Understanding the Risks</h4>
+                    <p>A high Waist-to-Hip Ratio is often linked to a higher amount of visceral fat—fat stored around your internal organs. This type of fat is metabolically active and is associated with an increased risk for several chronic conditions, including:</p>
+                     <ul className="list-disc list-inside space-y-1 pl-4 mt-2">
+                        <li>Cardiovascular disease (heart attacks, strokes)</li>
+                        <li>Type 2 diabetes</li>
+                        <li>High blood pressure (hypertension)</li>
+                        <li>Certain types of cancer</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground mb-1">How to Improve Your Ratio</h4>
+                    <p>Improving your WHR involves reducing abdominal fat through a combination of diet, exercise, and lifestyle changes. Remember to consult a healthcare professional before starting any new diet or exercise program.</p>
+                    <ul className="list-disc list-inside space-y-1 pl-4 mt-2">
+                        <li><strong>Balanced Diet:</strong> Focus on whole foods like fruits, vegetables, lean proteins, and whole grains. Reduce intake of processed foods, sugary drinks, and trans fats.</li>
+                        <li><strong>Regular Exercise:</strong> Aim for at least 150 minutes of moderate-intensity aerobic exercise (like brisk walking or cycling) or 75 minutes of vigorous-intensity exercise per week.</li>
+                        <li><strong>Strength Training:</strong> Incorporate resistance training 2-3 times per week. Building muscle increases your overall metabolic rate, helping to burn more fat.</li>
+                        <li><strong>Manage Stress:</strong> Chronic stress can lead to higher cortisol levels, which is linked to increased abdominal fat. Practice stress-reducing activities like meditation, yoga, or spending time in nature.</li>
+                        <li><strong>Prioritize Sleep:</strong> Aim for 7-9 hours of quality sleep per night, as poor sleep can affect hormones that regulate appetite and fat storage.</li>
+                    </ul>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </div>
   );
 }
-
-    
