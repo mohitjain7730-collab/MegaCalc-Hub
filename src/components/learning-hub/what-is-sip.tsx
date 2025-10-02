@@ -12,10 +12,10 @@ export default function WhatIsSip() {
         A Complete Guide to Systematic Investment Plans (SIP): Your First Step to Building Wealth
       </h1>
       <p className="lead">
-        Have you ever dreamt of building a significant financial corpus for your future—perhaps for a dream home, your child's education, or a comfortable retirement? For many, the idea of investing a large sum of money at once seems daunting, if not impossible. But what if there was a way to build substantial wealth by investing small, manageable amounts consistently over time? This is where the Systematic Investment Plan (SIP) comes in.
+        Have you ever dreamt of building a significant financial corpus for your future—perhaps for a dream home, your child's education, or a comfortable retirement? For many, the idea of investing a large sum of money at once seems daunting, if not impossible. But what if there was a way to build substantial wealth by investing small, manageable amounts consistently over time?
       </p>
       
-      <p>A SIP is not an investment product itself, but rather a powerful method of investing that instills discipline and leverages the market to your advantage. It’s a simple, smart, and accessible strategy that has transformed the financial journeys of millions of investors in India and across the world.</p>
+      <p>This is where the <strong>Systematic Investment Plan (SIP)</strong> comes in. A SIP is not an investment product itself, but rather a powerful method of investing that instills discipline and leverages the market to your advantage. It’s a simple, smart, and accessible strategy that has transformed the financial journeys of millions of investors in India and across the world.</p>
       <p>In this guide, we will break down everything you need to know about SIPs: what they are, how they work, their incredible benefits, and how you can start your own investment journey today.</p>
 
       <h2>What is a Systematic Investment Plan (SIP)?</h2>
@@ -136,16 +136,13 @@ export default function WhatIsSip() {
         <li><strong>Monitor, But Don't Panic:</strong> Once your SIP starts, it's good to review its performance periodically (perhaps once or twice a year). However, avoid making impulsive decisions based on short-term market news. Investing is a marathon, not a sprint.</li>
       </ol>
 
-      <h2>Ready to See Your Wealth Grow? Calculate Your Potential SIP Returns!</h2>
-      <p>Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future.</p>
-      <p>It helps you estimate the potential maturity amount of your investment based on three simple inputs:</p>
-      <ul>
-        <li>Your monthly investment amount</li>
-        <li>The expected annual rate of return</li>
-        <li>The number of years you plan to invest</li>
-      </ul>
-      <p>This simple calculation can be a powerful motivator, showing you just how impactful long-term, disciplined investing can be.</p>
-      <p><strong>Curious to see what your future could look like? Use our easy-to-use SIP Return Calculator now and take the first concrete step towards achieving your financial dreams!</strong></p>
+      <Card className="my-8 bg-accent/50 border-l-4 border-primary">
+        <CardContent className="p-6">
+          <h2 className="text-2xl font-bold mt-0">Ready to See Your Wealth Grow?</h2>
+          <p className="text-muted-foreground">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future. It helps you estimate the potential maturity amount of your investment based on your monthly investment, expected return, and investment duration. This simple calculation can be a powerful motivator, showing you just how impactful long-term, disciplined investing can be.</p>
+          <p className="mt-4"><strong>Curious to see what your future could look like? Use our easy-to-use SIP Return Calculator now and take the first concrete step towards achieving your financial dreams!</strong></p>
+        </CardContent>
+      </Card>
 
       <div className="text-center mt-12">
         <Button asChild size="lg">
