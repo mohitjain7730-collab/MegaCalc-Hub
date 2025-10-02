@@ -33,7 +33,9 @@ export default function WhatIsSip() {
 
       <h2>How Do SIPs Actually Work? The Mechanics Explained</h2>
       <p>The magic of a SIP lies in its simplicity. When you invest a fixed amount each month, you buy units of a mutual fund. The number of units you receive depends on the Net Asset Value (NAV) of the fund on that particular day.</p>
-      <p><strong>Net Asset Value (NAV):</strong> This is essentially the price of one unit of a mutual fund. It fluctuates daily based on the performance of the underlying stocks, bonds, or other assets in the fund's portfolio.</p>
+      <p>
+        <strong>Net Asset Value (NAV):</strong> This is essentially the price of one unit of a mutual fund. It fluctuates daily based on the performance of the underlying stocks, bonds, or other assets in the fund's portfolio.
+      </p>
       <p>Here’s a simple example. Let's say you start a monthly SIP of ₹5,000 in a mutual fund:</p>
 
       <Table>
@@ -141,20 +143,19 @@ export default function WhatIsSip() {
         <li><strong>Monitor, But Don't Panic:</strong> Once your SIP starts, it's good to review its performance periodically (perhaps once or twice a year). However, avoid making impulsive decisions based on short-term market news. Investing is a marathon, not a sprint.</li>
       </ol>
 
-      <Card className="my-8 bg-accent/50 border-l-4 border-primary">
+      <Card className="my-8 bg-accent/50 border-l-4 border-primary not-prose">
         <CardContent className="p-6">
-          <h2 className="text-2xl font-bold mt-0">Ready to See Your Wealth Grow? Calculate Your Potential SIP Returns!</h2>
-          <p className="text-muted-foreground">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future.</p>
-          <p>It helps you estimate the potential maturity amount of your investment based on three simple inputs:</p>
-            <ul>
-                <li>Your monthly investment amount</li>
-                <li>The expected annual rate of return</li>
-                <li>The number of years you plan to invest</li>
-            </ul>
+          <h2 className="text-2xl font-bold mt-0">Ready to See Your Wealth Grow?</h2>
+          <p className="text-muted-foreground">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future. It helps you estimate the potential maturity amount of your investment based on:</p>
+          <ul className="my-4 list-disc pl-5 text-muted-foreground">
+              <li>Your monthly investment amount</li>
+              <li>The expected annual rate of return</li>
+              <li>The number of years you plan to invest</li>
+          </ul>
           <p className="mt-4"><strong>Curious to see what your future could look like? Use our easy-to-use SIP Return Calculator now and take the first concrete step towards achieving your financial dreams!</strong></p>
         </CardContent>
       </Card>
-
+      
       <div className="text-center mt-12">
         <Button asChild size="lg">
           <Link href="/category/finance/sip-calculator">
@@ -183,3 +184,5 @@ export default function WhatIsSip() {
     </article>
   );
 }
+
+    
