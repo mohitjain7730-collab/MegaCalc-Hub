@@ -24,16 +24,16 @@ export default function WhatIsSip() {
   return (
     <article className="prose dark:prose-invert max-w-none">
       <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">A Complete Guide to Systematic Investment Plans (SIP)</h1>
-      <p className="lead">
+      <h2 className="lead text-xl text-muted-foreground">
         Why Small, Regular Investments Can Lead to Big Results
-      </p>
+      </h2>
       
       <p>
         Have you ever dreamt of building a significant financial corpus for your future—perhaps for a dream home, your child's education, or a comfortable retirement? For many, the idea of investing a large sum of money at once seems daunting, if not impossible. But what if there was a way to build substantial wealth by investing small, manageable amounts consistently over time?
       </p>
 
       <p>
-        This is where the <strong>Systematic Investment Plan (SIP)</strong> comes in. A SIP is not an investment product itself, but rather a powerful method of investing that instills discipline and leverages the market to your advantage. It’s a simple, smart, and accessible strategy that has transformed the financial journeys of millions of investors.
+        This is where the <strong>Systematic Investment Plan (SIP)</strong> comes in. A SIP is not an investment product itself, but rather a powerful method of investing that instills discipline and leverages the market to your advantage. It’s a simple, smart, and accessible strategy that has transformed the financial journeys of millions of investors in India and across the world.
       </p>
       
       <p>
@@ -53,7 +53,7 @@ export default function WhatIsSip() {
 
       <h2>How Do SIPs Actually Work? The Mechanics Explained</h2>
       <p>
-        The magic of a SIP lies in its simplicity. When you invest a fixed amount each month, you buy units of a mutual fund. The number of units you receive depends on the <strong>Net Asset Value (NAV)</strong> of the fund on that particular day.
+        The magic of a SIP lies in its simplicity. When you invest a fixed amount each month, you buy units of a mutual fund. The number of units you receive depends on the Net Asset Value (NAV) of the fund on that particular day.
       </p>
       <p>
         <strong>Net Asset Value (NAV):</strong> This is essentially the price of one unit of a mutual fund. It fluctuates daily based on the performance of the underlying stocks, bonds, or other assets in the fund's portfolio.
