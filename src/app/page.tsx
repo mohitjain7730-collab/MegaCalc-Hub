@@ -31,7 +31,7 @@ export default function Home() {
         <section className="relative w-full py-20 md:py-32 hero-pattern">
            <div className="container mx-auto text-center px-4">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-              Welcome to Mycalculating.com
+              Calculate everything you want to
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
               Your one-stop destination for all calculators. We offer a wide range of free online calculators for finance, health, and more.
