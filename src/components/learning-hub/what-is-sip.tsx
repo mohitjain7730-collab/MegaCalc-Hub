@@ -29,6 +29,9 @@ export default function WhatIsSip() {
       {/* 
         ================================================================
         YOUR DETAILED 1200-1500 WORD CONTENT GOES HERE.
+        You can replace the placeholder <p> tag below with your own 
+        detailed content, using standard HTML tags like <h2>, <h3>, 
+        <p>, <ul>, <li>, etc.
         ================================================================
       */}
       <p className="text-lg text-muted-foreground p-8 border-dashed border-2 rounded-lg text-center">
