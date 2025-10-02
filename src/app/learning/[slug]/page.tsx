@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 
 const articleComponents: { [key: string]: React.ComponentType } = {
-    // This will be populated as articles are created
+    'what-is-sip': dynamic(() => import('@/components/learning-hub/what-is-sip')),
 };
 
 export async function generateStaticParams() {
