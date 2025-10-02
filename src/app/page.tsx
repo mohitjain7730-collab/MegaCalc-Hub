@@ -70,6 +70,11 @@ export default function Home() {
             <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             Built by You &amp; Firebase Studio.
             </p>
+             <nav className="flex items-center gap-4 text-sm font-medium text-muted-foreground">
+                <Link href="/privacy-policy" className="transition-colors hover:text-foreground">
+                Privacy Policy
+                </Link>
+            </nav>
         </div>
       </footer>
     </div>
