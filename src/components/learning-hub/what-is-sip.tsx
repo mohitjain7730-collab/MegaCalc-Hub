@@ -23,11 +23,11 @@ const sipVsLumpsum = [
 export default function WhatIsSip() {
   return (
     <article className="prose dark:prose-invert max-w-none">
-      <h1>A Complete Guide to Systematic Investment Plans (SIP)</h1>
+      <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">A Complete Guide to Systematic Investment Plans (SIP)</h1>
       <p className="lead">
         Why Small, Regular Investments Can Lead to Big Results
       </p>
-
+      
       <p>
         Have you ever dreamt of building a significant financial corpus for your future—perhaps for a dream home, your child's education, or a comfortable retirement? For many, the idea of investing a large sum of money at once seems daunting, if not impossible. But what if there was a way to build substantial wealth by investing small, manageable amounts consistently over time?
       </p>
@@ -53,12 +53,16 @@ export default function WhatIsSip() {
 
       <h2>How Do SIPs Actually Work? The Mechanics Explained</h2>
       <p>
-        The magic of a SIP lies in its simplicity. When you invest a fixed amount each month, you buy units of a mutual fund. The number of units you receive depends on the <strong>Net Asset Value (NAV)</strong> of the fund on that particular day. The NAV is essentially the price of one unit of a mutual fund. It fluctuates daily based on the performance of the underlying stocks, bonds, or other assets in the fund's portfolio.
+        The magic of a SIP lies in its simplicity. When you invest a fixed amount each month, you buy units of a mutual fund. The number of units you receive depends on the <strong>Net Asset Value (NAV)</strong> of the fund on that particular day.
+      </p>
+      <p>
+        <strong>Net Asset Value (NAV):</strong> This is essentially the price of one unit of a mutual fund. It fluctuates daily based on the performance of the underlying stocks, bonds, or other assets in the fund's portfolio.
       </p>
       <p>
         Here’s a simple example. Let's say you start a monthly SIP of ₹5,000 in a mutual fund:
       </p>
 
+        <div className="not-prose my-6">
         <Table>
             <TableHeader>
                 <TableRow>
@@ -85,6 +89,7 @@ export default function WhatIsSip() {
                 </TableRow>
             </TableBody>
         </Table>
+        </div>
 
       <p>
         As you can see, when the NAV (price) is low, your fixed investment buys you more units. When the NAV is high, you get fewer units. This automatic mechanism leads to one of the most significant advantages of SIPs.
@@ -130,8 +135,9 @@ export default function WhatIsSip() {
         </Card>
       </div>
 
-      <h2>SIP vs. Lumpsum: Which is Right for You?</h2>
-        <p>Another way to invest in mutual funds is through a one-time, lumpsum investment. Here’s a quick comparison:</p>
+      <h2>SIP vs. Lumpsum: Which Investment Strategy is Right for You?</h2>
+        <p>Another way to invest in mutual funds is through a one-time, lumpsum investment. Here’s a quick comparison to help you decide:</p>
+        <div className="not-prose my-6">
         <Table>
             <TableHeader>
                 <TableRow>
@@ -150,15 +156,16 @@ export default function WhatIsSip() {
                 ))}
             </TableBody>
         </Table>
-        <p className="font-bold">Verdict: For the vast majority of retail investors aiming for long-term goals, the disciplined and risk-mitigating approach of a SIP is the highly recommended path.</p>
+        </div>
+        <p><strong>Verdict:</strong> For the vast majority of retail investors aiming for long-term goals, the disciplined and risk-mitigating approach of a <strong>SIP is the highly recommended path.</strong></p>
 
       
       <h2>How to Start Your First SIP: A Step-by-Step Guide</h2>
-      <ol className="list-decimal !pl-6">
+      <ol>
         <li><strong>Complete Your KYC:</strong> First, you need to be KYC (Know Your Customer) compliant. This is a one-time process requiring your PAN card, Aadhaar card, and a photograph. Most mutual fund websites and investment apps offer a completely online, paperless KYC process.</li>
-        <li><strong>Choose the Right Mutual Fund:</strong> This is the most crucial step. Your choice of fund should align with your financial goals, investment horizon, and risk tolerance. Funds are broadly categorized into Equity Funds, Debt Funds, and Hybrid Funds.</li>
-        <li><strong>Decide Your SIP Amount and Date:</strong> Choose an investment amount that you can comfortably set aside each month. It's often wise to select a SIP date that is 2-3 days after your salary is credited.</li>
-        <li><strong>Set Up the Auto-Debit Mandate:</strong> To automate the monthly payments, you'll need to set up a bank mandate. This gives the mutual fund house permission to debit the SIP amount from your bank account every month.</li>
+        <li><strong>Choose the Right Mutual Fund:</strong> This is the most crucial step. Your choice of fund should align with your financial goals, investment horizon (how long you plan to invest), and risk tolerance. Funds are broadly categorized into Equity Funds (for long-term growth, higher risk), Debt Funds (for stability, lower risk), and Hybrid Funds (a mix of both).</li>
+        <li><strong>Decide Your SIP Amount and Date:</strong> Choose an investment amount that you can comfortably set aside each month without straining your finances. It's often wise to select a SIP date that is 2-3 days after your salary is credited.</li>
+        <li><strong>Set Up the Auto-Debit Mandate:</strong> To automate the monthly payments, you'll need to set up a bank mandate. This gives the mutual fund house permission to debit the SIP amount from your bank account every month. This is also a simple, one-time online process.</li>
         <li><strong>Monitor, But Don't Panic:</strong> Once your SIP starts, it's good to review its performance periodically (perhaps once or twice a year). However, avoid making impulsive decisions based on short-term market news. Investing is a marathon, not a sprint.</li>
       </ol>
 
@@ -169,6 +176,13 @@ export default function WhatIsSip() {
                     <p className="text-primary-foreground/80">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future.</p>
                 </CardHeader>
                 <CardContent>
+                    <p>It helps you estimate the potential maturity amount of your investment based on three simple inputs:</p>
+                    <ul className="my-4 list-disc pl-5">
+                      <li>Your monthly investment amount</li>
+                      <li>The expected annual rate of return</li>
+                      <li>The number of years you plan to invest</li>
+                    </ul>
+                    <p className="mb-6">This simple calculation can be a powerful motivator, showing you just how impactful long-term, disciplined investing can be. Curious to see what your future could look like?</p>
                     <Button asChild variant="secondary" size="lg">
                         <Link href="/category/finance/sip-calculator">
                             Go to SIP Calculator <ArrowRight className="ml-2 h-5 w-5" />
@@ -179,7 +193,7 @@ export default function WhatIsSip() {
         </div>
 
 
-      <h2>Frequently Asked Questions (FAQs)</h2>
+      <h2>Frequently Asked Questions (FAQs) about SIPs</h2>
         <Accordion type="single" collapsible className="w-full not-prose">
             <AccordionItem value="item-1">
                 <AccordionTrigger>1. Can I stop my SIP anytime?</AccordionTrigger>
@@ -199,7 +213,7 @@ export default function WhatIsSip() {
             </AccordionItem>
         </Accordion>
 
-      <h2 className="border-t pt-8 mt-12">Conclusion: Your Journey Starts with a Single Step</h2>
+      <h2 className="border-t pt-8 mt-12">Conclusion: Your Journey to Financial Freedom Starts with a Single Step</h2>
       <p>
         A Systematic Investment Plan is more than just an investment method; it's a pathway to financial discipline and long-term prosperity. By leveraging the power of compounding and rupee cost averaging, SIPs empower you to build significant wealth in a steady, stress-free manner.
       </p>
