@@ -146,12 +146,15 @@ export default function WhatIsSip() {
       <Card className="my-8 bg-accent/50 border-l-4 border-primary not-prose">
         <CardContent className="p-6">
           <h2 className="text-2xl font-bold mt-0">Ready to See Your Wealth Grow?</h2>
-          <p className="text-muted-foreground">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future. It helps you estimate the potential maturity amount of your investment based on:</p>
-          <ul className="my-4 list-disc pl-5 text-muted-foreground">
-              <li>Your monthly investment amount</li>
-              <li>The expected annual rate of return</li>
-              <li>The number of years you plan to invest</li>
-          </ul>
+          <p className="text-muted-foreground">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future.</p>
+          <div className="mt-2">
+            <p>It helps you estimate the potential maturity amount of your investment based on three simple inputs:</p>
+             <ul className="my-4 list-disc pl-5 text-muted-foreground">
+                <li>Your monthly investment amount</li>
+                <li>The expected annual rate of return</li>
+                <li>The number of years you plan to invest</li>
+            </ul>
+          </div>
           <p className="mt-4"><strong>Curious to see what your future could look like? Use our easy-to-use SIP Return Calculator now and take the first concrete step towards achieving your financial dreams!</strong></p>
         </CardContent>
       </Card>
@@ -184,5 +187,3 @@ export default function WhatIsSip() {
     </article>
   );
 }
-
-    
