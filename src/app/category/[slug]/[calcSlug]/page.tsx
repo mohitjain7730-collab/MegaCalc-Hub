@@ -104,6 +104,16 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'bmi-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmi-calculator')),
     'bmr-calculator': dynamic(() => import('@/components/calculators/health-fitness/bmr-calculator')),
     'target-heart-rate-calculator': dynamic(() => import('@/components/calculators/health-fitness/target-heart-rate-calculator')),
+    'body-fat-percentage-calculator': dynamic(() => import('@/components/calculators/health-fitness/body-fat-percentage-calculator')),
+    'lean-body-mass-calculator': dynamic(() => import('@/components/calculators/health-fitness/lean-body-mass-calculator')),
+    'ideal-body-weight-calculator': dynamic(() => import('@/components/calculators/health-fitness/ideal-body-weight-calculator')),
+    'waist-to-hip-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/waist-to-hip-ratio-calculator')),
+    'waist-to-height-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/waist-to-height-ratio-calculator')),
+    'body-adiposity-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/body-adiposity-index-calculator')),
+    'ponderal-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/ponderal-index-calculator')),
+    'relative-fat-mass-calculator': dynamic(() => import('@/components/calculators/health-fitness/relative-fat-mass-calculator')),
+    'calorie-deficit-calculator': dynamic(() => import('@/components/calculators/health-fitness/calorie-deficit-calculator')),
+    'calorie-surplus-calculator': dynamic(() => import('@/components/calculators/health-fitness/calorie-surplus-calculator')),
     'paint-coverage-calculator': dynamic(() => import('@/components/calculators/home-improvement/paint-coverage-calculator')),
     'tile-flooring-calculator': dynamic(() => import('@/components/calculators/home-improvement/tile-flooring-calculator')),
     'wallpaper-roll-calculator': dynamic(() => import('@/components/calculators/home-improvement/wallpaper-roll-calculator')),
@@ -289,3 +299,5 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
+
+    

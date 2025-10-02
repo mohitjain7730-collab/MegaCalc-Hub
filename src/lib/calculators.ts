@@ -697,6 +697,16 @@ export const calculators: Calculator[] = [
     slug: 'target-heart-rate-calculator',
     category: 'health-fitness'
   },
+  { id: 250, name: 'Body Fat Percentage Calculator', description: 'Estimate your body fat percentage using the U.S. Navy method.', slug: 'body-fat-percentage-calculator', category: 'health-fitness' },
+  { id: 251, name: 'Lean Body Mass Calculator', description: 'Calculate the weight of your body minus all fat mass.', slug: 'lean-body-mass-calculator', category: 'health-fitness' },
+  { id: 252, name: 'Ideal Body Weight (IBW) Calculator', description: 'Estimate a healthy weight range based on your height and sex.', slug: 'ideal-body-weight-calculator', category: 'health-fitness' },
+  { id: 253, name: 'Waist-to-Hip Ratio Calculator', description: 'Assess health risks associated with abdominal fat.', slug: 'waist-to-hip-ratio-calculator', category: 'health-fitness' },
+  { id: 254, name: 'Waist-to-Height Ratio Calculator', description: 'A simple indicator of central obesity and health risk.', slug: 'waist-to-height-ratio-calculator', category: 'health-fitness' },
+  { id: 255, name: 'Body Adiposity Index (BAI) Calculator', description: 'Estimate body fat using hip circumference and height.', slug: 'body-adiposity-index-calculator', category: 'health-fitness' },
+  { id: 256, name: 'Ponderal Index Calculator', description: 'A measure of leanness, similar to BMI, for very tall or short individuals.', slug: 'ponderal-index-calculator', category: 'health-fitness' },
+  { id: 257, name: 'Relative Fat Mass (RFM) Calculator', description: 'Estimate body fat percentage using only height and waist circumference.', slug: 'relative-fat-mass-calculator', category: 'health-fitness' },
+  { id: 258, name: 'Calorie Deficit Calculator', description: 'Calculate daily calorie intake for sustainable weight loss.', slug: 'calorie-deficit-calculator', category: 'health-fitness' },
+  { id: 259, name: 'Calorie Surplus Calculator', description: 'Calculate daily calorie intake for muscle and weight gain.', slug: 'calorie-surplus-calculator', category: 'health-fitness' },
   // Home Improvement
   {
     id: 1,
@@ -1484,3 +1494,5 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
+
+    
