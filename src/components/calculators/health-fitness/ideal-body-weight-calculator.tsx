@@ -103,14 +103,17 @@ export default function IdealBodyWeightCalculator() {
       )}
        <Accordion type="single" collapsible className="w-full">
          <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-                <p>This calculator uses the G.J. Hamwi formula, a quick and easy method to estimate a person's ideal body weight. It provides a single-point estimate, and a healthy range is typically considered to be ±10% of this value. Note that this formula does not account for factors like frame size, muscle mass, or age.</p>
+            <AccordionTrigger>How the Hamwi Formula Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-2">
+                <p>This calculator uses the G.J. Hamwi formula, developed in 1964, which is a quick and easy method to estimate a person's ideal body weight. It provides a baseline weight for a height of 5 feet and adds a set amount of weight for each additional inch.</p>
+                <ul className="list-disc list-inside space-y-2 pl-4">
+                  <li><strong>For Males:</strong> It starts with a base of 48 kg (106 lbs) for the first 5 feet of height and adds 2.7 kg (6 lbs) for each additional inch.</li>
+                  <li><strong>For Females:</strong> It starts with a base of 45.5 kg (100 lbs) for the first 5 feet of height and adds 2.2 kg (5 lbs) for each additional inch.</li>
+                </ul>
+                <p>Note that this formula is an estimation and does not account for individual factors like frame size, muscle mass, or age, which can influence ideal weight.</p>
             </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
   );
 }
-
-    
