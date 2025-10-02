@@ -8,9 +8,9 @@ import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { AnalyticsProvider } from '@/components/analytics-provider';
 
 export const metadata: Metadata = {
-  title: 'MegaCalc Hub',
+  title: 'Mycalculating.com',
   description:
-    '500+ Calculators for Every Niche – starting with Personal Finance & Investing',
+    'Your one-stop destination for all calculators. Mycalculating.com offers a wide range of free online calculators for finance, health, and more.',
 };
 
 export default function RootLayout({

@@ -14,7 +14,7 @@ export default function Home() {
         <div className="container flex h-14 items-center">
           <Link href="/" className="flex items-center gap-2 font-bold mr-6">
             <Calculator className="h-6 w-6 text-primary" />
-            <span className="text-lg">MegaCalc Hub</span>
+            <span className="text-lg">Mycalculating.com</span>
           </Link>
           <div className="ml-auto flex items-center gap-4">
             <nav className="flex items-center gap-4 text-sm font-medium text-muted-foreground">
@@ -31,10 +31,10 @@ export default function Home() {
         <section className="relative w-full py-20 md:py-32 hero-pattern">
            <div className="container mx-auto text-center px-4">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-              Your Universal Calculator
+              Welcome to Mycalculating.com
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
-              From complex financial models to everyday tasks, get instant answers with our comprehensive collection of 500+ specialized calculators.
+              Your one-stop destination for all calculators. We offer a wide range of free online calculators for finance, health, and more.
             </p>
             <div className='mt-8'>
                 <SearchBar />
