@@ -11,11 +11,15 @@ export default function WhatIsSip() {
       <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
         A Complete Guide to Systematic Investment Plans (SIP): Your First Step to Building Wealth
       </h1>
+      
+      <h2>Why Small, Regular Investments Can Lead to Big Results</h2>
       <p className="lead">
         Have you ever dreamt of building a significant financial corpus for your future—perhaps for a dream home, your child's education, or a comfortable retirement? For many, the idea of investing a large sum of money at once seems daunting, if not impossible. But what if there was a way to build substantial wealth by investing small, manageable amounts consistently over time?
       </p>
       
-      <p>This is where the <strong>Systematic Investment Plan (SIP)</strong> comes in. A SIP is not an investment product itself, but rather a powerful method of investing that instills discipline and leverages the market to your advantage. It’s a simple, smart, and accessible strategy that has transformed the financial journeys of millions of investors in India and across the world.</p>
+      <p>
+        This is where the <strong>Systematic Investment Plan (SIP)</strong> comes in. A SIP is not an investment product itself, but rather a powerful method of investing that instills discipline and leverages the market to your advantage. It’s a simple, smart, and accessible strategy that has transformed the financial journeys of millions of investors in India and across the world.
+      </p>
       <p>In this guide, we will break down everything you need to know about SIPs: what they are, how they work, their incredible benefits, and how you can start your own investment journey today.</p>
 
       <h2>What is a Systematic Investment Plan (SIP)?</h2>
@@ -82,7 +86,8 @@ export default function WhatIsSip() {
       <p>Albert Einstein reportedly called compounding the "eighth wonder of the world." With SIPs, you experience this magic firsthand. Compounding is the process where you earn returns not just on your initial investment (the principal), but also on the accumulated returns. Over time, your money starts working for you, creating a snowball effect. A small monthly investment of ₹5,000 can grow into a surprisingly large sum over 15, 20, or 30 years, thanks to the relentless power of compounding.</p>
 
       <h3>2. Rupee Cost Averaging</h3>
-      <p>This is the direct benefit of the mechanism we saw earlier. Since you invest a fixed amount regardless of the market level, you automatically buy more units when the market is down and fewer units when it is up. This averages out your purchase cost per unit over time. It eliminates the stress and risk associated with "timing the market" (trying to buy low and sell high), which is nearly impossible to do consistently. Rupee cost averaging ensures you are always investing, turning market volatility from a threat into an opportunity.</p>
+      <p>This is the direct benefit of the mechanism we saw earlier. Since you invest a fixed amount regardless of the market level, you automatically buy more units when the market is down and fewer units when it is up.</p>
+      <p>This averages out your purchase cost per unit over time. It eliminates the stress and risk associated with "timing the market" (trying to buy low and sell high), which is nearly impossible to do consistently. Rupee cost averaging ensures you are always investing, turning market volatility from a threat into an opportunity.</p>
 
       <h3>3. Financial Discipline and Habit Formation</h3>
       <p>One of the biggest hurdles to wealth creation is a lack of discipline. SIPs solve this by automating the process. The money is invested before you have a chance to spend it, just like an EMI. This consistency helps you build a strong financial habit, ensuring you stay on track to meet your long-term goals.</p>
@@ -103,22 +108,22 @@ export default function WhatIsSip() {
           </TableHeader>
           <TableBody>
               <TableRow>
-                  <TableCell>Ideal For</TableCell>
+                  <TableCell><strong>Ideal For</strong></TableCell>
                   <TableCell>Salaried individuals, beginners, long-term goal planning.</TableCell>
                   <TableCell>Investors with a large, one-time amount of cash (e.g., bonus, inheritance).</TableCell>
               </TableRow>
               <TableRow>
-                  <TableCell>Market Volatility</TableCell>
+                  <TableCell><strong>Market Volatility</strong></TableCell>
                   <TableCell>Mitigates risk through rupee cost averaging. Less stressful.</TableCell>
                   <TableCell>High risk. Your returns depend heavily on the market level at the time of investment.</TableCell>
               </TableRow>
               <TableRow>
-                  <TableCell>Discipline</TableCell>
+                  <TableCell><strong>Discipline</strong></TableCell>
                   <TableCell>Enforces disciplined, regular investing.</TableCell>
                   <TableCell>Requires self-discipline for further investments.</TableCell>
               </TableRow>
               <TableRow>
-                  <TableCell>Investment Amount</TableCell>
+                  <TableCell><strong>Investment Amount</strong></TableCell>
                   <TableCell>Small, regular amounts.</TableCell>
                   <TableCell>A single, large amount.</TableCell>
               </TableRow>
@@ -138,8 +143,15 @@ export default function WhatIsSip() {
 
       <Card className="my-8 bg-accent/50 border-l-4 border-primary">
         <CardContent className="p-6">
-          <h2 className="text-2xl font-bold mt-0">Ready to See Your Wealth Grow?</h2>
-          <p className="text-muted-foreground">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future. It helps you estimate the potential maturity amount of your investment based on your monthly investment, expected return, and investment duration. This simple calculation can be a powerful motivator, showing you just how impactful long-term, disciplined investing can be.</p>
+          <h2 className="text-2xl font-bold mt-0">Ready to See Your Wealth Grow? Calculate Your Potential SIP Returns!</h2>
+          <p className="text-muted-foreground">Wondering how much your small monthly investments could grow into over the years? A SIP calculator is the perfect tool to help you visualize your financial future.</p>
+          <p>It helps you estimate the potential maturity amount of your investment based on three simple inputs:
+            <ul>
+                <li>Your monthly investment amount</li>
+                <li>The expected annual rate of return</li>
+                <li>The number of years you plan to invest</li>
+            </ul>
+          </p>
           <p className="mt-4"><strong>Curious to see what your future could look like? Use our easy-to-use SIP Return Calculator now and take the first concrete step towards achieving your financial dreams!</strong></p>
         </CardContent>
       </Card>
