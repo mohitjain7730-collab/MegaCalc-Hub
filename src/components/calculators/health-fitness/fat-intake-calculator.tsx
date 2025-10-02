@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -47,7 +48,7 @@ export default function FatIntakeCalculator() {
     defaultValues: {
         tdee: undefined,
         method: 'percentage',
-        fatPercentage: 25,
+        fatPercentage: undefined,
     },
   });
 
