@@ -228,81 +228,93 @@ export default function RetirementSavingsCalculator() {
          <AccordionItem value="retirement-guide">
             <AccordionTrigger>Complete guide on retirement savings</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
-                <h3>Retire on Your Own Terms: A Comprehensive Guide to Building Your Retirement Savings</h3>
-                <p>Imagine your ideal retirement. Is it traveling the world, pursuing a long-lost hobby, spending quality time with your family, or simply enjoying a life free from financial stress? Whatever your vision, it has one thing in common: it’s built on a foundation of smart financial planning done years, or even decades, in advance.</p>
-                <p>Retirement planning can feel like a monumental task. The numbers seem impossibly large, the future is uncertain, and the easiest option is often to say, "I'll start next year."</p>
-                <p>But the secret to a secure retirement isn't a single, heroic effort. It’s a series of small, consistent steps taken over a long period. This guide will break down the complex world of retirement savings into a clear, actionable roadmap. We’ll explore the core principles, strategies, and common pitfalls to help you move from anxiety to action.</p>
-                
-                <h4>Why Starting Early is Your Greatest Superpower: The Magic of Compounding</h4>
-                <p>If you take only one thing away from this article, let it be this: the single most important factor in your retirement savings success is not how much you earn, but how early you start.</p>
-                <p>The reason for this is a powerful force called compounding.</p>
-                <p>Compounding is the process where your investment returns begin to generate their own returns. It's like a snowball rolling downhill—it starts small, but as it rolls, it picks up more snow, growing bigger and faster. In finance, your initial investment is the snowball, and the returns are the extra snow it gathers.</p>
-                <p>Let’s illustrate this with the tale of two friends, Priya and Rohan:</p>
-                <p><strong>Priya</strong> starts investing at age 25. She puts ₹10,000 per month into an investment that yields an average of 12% annually. She invests consistently for 35 years until she retires at 60.</p>
-                <p><strong>Rohan</strong> delays and starts at age 35. To catch up, he invests double the amount, ₹20,000 per month, into the same investment for 25 years until he retires at 60.</p>
-                <p>Who do you think has more money at retirement?</p>
-                <p>Priya's Total Investment: ₹42 Lakhs (₹10,000 x 12 x 35)</p>
-                <p>Rohan's Total Investment: ₹60 Lakhs (₹20,000 x 12 x 25)</p>
-                <p>Despite Rohan investing ₹18 Lakhs more of his own money, the results are staggering:</p>
-                <p><strong>Priya's Retirement Corpus: Approximately ₹5.28 Crores</strong></p>
-                <p><strong>Rohan's Retirement Corpus: Approximately ₹3.79 Crores</strong></p>
-                <p>Priya’s head start of 10 years allowed her money to work for her for a longer period, resulting in a corpus that is nearly ₹1.5 Crores larger. That is the undeniable magic of compounding.</p>
-                
-                <h4>The Big Question: How Much Do You Actually Need to Retire?</h4>
-                <p>This is the central question of all retirement planning. While the exact number is unique to each individual, we can use a popular rule of thumb to get a solid estimate: The 4% Rule.</p>
-                <p>The 4% Rule suggests that you can safely withdraw 4% of your total retirement corpus in your first year of retirement, and then adjust that amount for inflation each subsequent year, without running out of money for about 30 years.</p>
-                <p>To use this rule to find your target corpus, you can simply reverse it:</p>
-                <p className="font-mono p-2 bg-muted rounded-md text-center">Your Target Retirement Corpus = Your Estimated Annual Expenses in Retirement × 25</p>
-                <p>For example, if you estimate you'll need ₹1 Lakh per month (or ₹12 Lakhs per year) to live comfortably in retirement, your target corpus would be:</p>
-                <p>₹12,00,000 × 25 = ₹3 Crores</p>
-                <p>This formula is a fantastic starting point, but remember to consider these critical factors:</p>
+                <h3>Retire on Your Terms: A Comprehensive Guide to Building Your Retirement Savings</h3>
+                <p>Imagine your ideal retirement. Is it seeing the national parks from an RV, living near the beach, spoiling your grandkids, or simply enjoying the peace of mind that comes from a life of financial security?</p>
+                <p>Whatever your version of the American dream looks like, it’s built on a foundation of smart financial planning done today. For many, the world of retirement savings feels like an overwhelming alphabet soup—401(k), 403(b), IRA, Roth, SEP. It’s easy to feel anxious and push it off for "next year."</p>
+                <p>But the secret to a secure retirement isn't winning the lottery. It's about taking small, consistent steps over a long period. This guide will demystify the U.S. retirement system and provide a clear, actionable roadmap to help you move from uncertainty to confidence.</p>
+                <h4>Your Greatest Financial Superpower: The Magic of Compounding</h4>
+                <p>If you learn only one thing about investing, let it be this: the single most important factor in your retirement success is not how much you earn, but how early you start.</p>
+                <p>This is because of a powerful force called compounding. It’s the process where your investment returns start to generate their own returns. Think of it as a snowball rolling downhill—it grows bigger and faster all on its own.</p>
+                <p>Let’s see this with two friends, Sarah and Michael:</p>
+                <p><strong>Sarah</strong> starts investing at age 25. She contributes $300 per month to her retirement account, which earns an average of 9% annually.</p>
+                <p><strong>Michael</strong> delays and starts at age 35. To try and catch up, he invests a larger amount, $500 per month, into the same type of account.</p>
+                <p>Who has more money when they both turn 65?</p>
+                <p>Sarah’s Total Investment: $144,000 ($300 x 12 x 40 years)</p>
+                <p>Michael’s Total Investment: $180,000 ($500 x 12 x 30 years)</p>
+                <p>Despite Michael investing $36,000 more of his own money, the results are staggering:</p>
+                <p><strong>Sarah’s Retirement Nest Egg: Approximately $1.4 million</strong></p>
+                <p><strong>Michael’s Retirement Nest Egg: Approximately $820,000</strong></p>
+                <p>Sarah’s 10-year head start allowed her money to work for her for an entire extra decade, making her a clear winner. That is the undeniable power of compounding.</p>
+                <h4>The Million-Dollar Question: How Much Do You Actually Need?</h4>
+                <p>This is the central question of retirement planning. A great starting point is a popular guideline called The 4% Rule.</p>
+                <p>The 4% Rule suggests that you can safely withdraw 4% of your total retirement savings in your first year of retirement, then adjust that amount for inflation each following year, with a high probability of your money lasting for at least 30 years.</p>
+                <p>To find your target, you can reverse the rule:</p>
+                <p className="font-mono p-2 bg-muted rounded-md text-center">Your Target Nest Egg = Your Estimated Annual Expenses × 25</p>
+                <p>For example, if you estimate you'll need $60,000 per year to live comfortably in retirement, your target would be:</p>
+                <p>$60,000 × 25 = $1.5 million</p>
+                <p>Remember to also consider these critical factors:</p>
                 <ul className="list-disc list-inside">
-                  <li><strong>Inflation:</strong> The ₹1 Lakh per month you need today will be much higher in 20 or 30 years. Inflation silently erodes the value of your money.</li>
-                  <li><strong>Lifestyle:</strong> Your desired retirement lifestyle heavily influences your annual expenses.</li>
-                  <li><strong>Healthcare:</strong> Medical costs tend to rise significantly in later years and must be factored in.</li>
-                  <li><strong>Life Expectancy:</strong> With advancements in medicine, people are living longer than ever. Your savings need to last.</li>
+                  <li><strong>Inflation:</strong> The cost of living will be much higher in 20 or 30 years.</li>
+                  <li><strong>Healthcare:</strong> Medical and long-term care costs are a significant and rising expense for retirees in the U.S.</li>
+                  <li><strong>Social Security:</strong> While you shouldn't rely on it entirely, Social Security will likely provide a foundational layer of income, reducing the amount you need to withdraw from your nest egg.</li>
                 </ul>
-
-                <h4>The Building Blocks: Where Should You Invest for Retirement?</h4>
-                <p>A successful retirement portfolio isn't built on a single investment. It requires a diversified approach that balances safety and growth. Here are the key investment avenues for Indian investors:</p>
-                <h5>1. The Foundational Pillars (Government-Backed Schemes)</h5>
-                <ul className="list-disc list-inside">
-                  <li><strong>Employees' Provident Fund (EPF):</strong> For salaried individuals, this is the automatic starting point. A portion of your salary is contributed by both you and your employer, creating a solid, tax-efficient base for your retirement.</li>
-                  <li><strong>National Pension System (NPS):</strong> A low-cost, voluntary pension scheme regulated by the government. It offers a mix of equity and debt, allowing you to choose your risk exposure. It also provides attractive tax benefits over and above Section 80C.</li>
-                  <li><strong>Public Provident Fund (PPF):</strong> A long-term savings scheme offering a guaranteed, tax-free return. It's an excellent tool for risk-averse investors looking for stability in their portfolio.</li>
+                <h4>The Building Blocks: Your Guide to U.S. Retirement Accounts</h4>
+                <p>The U.S. government provides powerful, tax-advantaged accounts designed to help you save for retirement. Here are the main ones you need to know.</p>
+                <h5>1. Employer-Sponsored Plans: Your Starting Point</h5>
+                <p>These are the plans you get through your job.</p>
+                <p><strong>401(k) & 403(b):</strong> The 401(k) is the most common retirement plan offered by private companies, while the 403(b) is its equivalent for non-profits and public schools. You contribute a percentage of your pre-tax salary, which lowers your taxable income today. The most important feature of these plans is the employer match.</p>
+                <p><strong>The Employer Match is Free Money:</strong> Most companies will match your contributions up to a certain percentage (e.g., "100% of the first 3% of your salary"). This is a 100% return on your investment, guaranteed. Contributing enough to get the full employer match should be your #1 financial priority.</p>
+                <h5>2. Individual Retirement Accounts (IRAs): Your Personal Power Tool</h5>
+                <p>Anyone with earned income can open an IRA, giving you more control and investment options.</p>
+                <p><strong>Traditional IRA:</strong> You may be able to deduct your contributions from your taxes today (pre-tax), your money grows tax-deferred, and you pay income tax on withdrawals in retirement.</p>
+                <p><strong>Roth IRA:</strong> You contribute with money you’ve already paid taxes on (post-tax). The magic is that your money grows completely tax-free, and all qualified withdrawals in retirement are also 100% tax-free. For many people, especially young earners, the Roth IRA is one of the best wealth-building tools available.</p>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Feature</TableHead>
+                      <TableHead>Traditional IRA</TableHead>
+                      <TableHead>Roth IRA</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Contributions</TableCell>
+                      <TableCell>Pre-tax (potentially tax-deductible)</TableCell>
+                      <TableCell>Post-tax (not deductible)</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Growth</TableCell>
+                      <TableCell>Tax-deferred</TableCell>
+                      <TableCell>Tax-free</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Withdrawals</TableCell>
+                      <TableCell>Taxed as ordinary income</TableCell>
+                      <TableCell>Tax-free and penalty-free</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+                <h4>Common (and Costly) Retirement Planning Mistakes to Avoid</h4>
+                <ul className='list-disc list-inside'>
+                    <li><strong>Not Getting the Full 401(k) Match:</strong> This is like turning down a pay raise. It is the most important "free money" you will ever be offered.</li>
+                    <li><strong>Cashing Out Your 401(k) When Changing Jobs:</strong> When you leave a job, it can be tempting to cash out your 401(k). Don't do it! You'll pay income taxes and a 10% penalty. Instead, execute a "rollover" to move the money into an IRA or your new employer's 401(k) plan.</li>
+                    <li><strong>Being Too Conservative:</strong> While safety is important, avoiding stocks means your savings may not outpace inflation. A diversified portfolio with a healthy allocation to low-cost index funds is crucial for long-term growth.</li>
+                    <li><strong>Procrastination:</strong> As Sarah and Michael's story showed, every single day you wait to invest is a day you lose the power of compounding.</li>
                 </ul>
-                <h5>2. The Growth Engines (Market-Linked Investments)</h5>
-                <ul className="list-disc list-inside">
-                  <li><strong>Equity Mutual Funds (via SIP):</strong> To beat inflation over the long term, you need the growth potential of equities. Investing in a diversified portfolio of equity mutual funds through a Systematic Investment Plan (SIP) is the most effective way for most people to build significant wealth.</li>
-                  <li><strong>Debt Mutual Funds:</strong> As you get closer to retirement, you'll want to reduce risk. Debt funds invest in fixed-income securities like bonds and offer more stability than equities, helping to preserve your accumulated capital.</li>
-                </ul>
-                <p>A balanced strategy involves using both foundational pillars for stability and growth engines to create wealth that outpaces inflation.</p>
-
-                <h4>Common Retirement Planning Mistakes to Avoid at All Costs</h4>
-                <p>Building wealth is as much about avoiding mistakes as it is about making the right moves. Here are some common pitfalls:</p>
-                <ul className="list-disc list-inside">
-                  <li><strong>Procrastination (The "I'll Start Tomorrow" Syndrome):</strong> As our example showed, delay is the single biggest enemy of wealth creation.</li>
-                  <li><strong>Underestimating Inflation:</strong> A corpus that seems huge today might be inadequate 25 years from now. Always factor in an inflation rate of 5-6% in your planning.</li>
-                  <li><strong>Being Too Conservative:</strong> While safety is important, avoiding equities entirely means your savings might not even keep up with inflation. A calculated exposure to growth assets is necessary.</li>
-                  <li><strong>Dipping Into Your Retirement Fund:</strong> Your retirement fund is sacrosanct. Withdrawing from it for a home renovation, a car, or a wedding is a critical error that can permanently damage your long-term financial security.</li>
-                  <li><strong>Not Having a Concrete Plan:</strong> Simply saving money without a target or a strategy is like sailing without a map. You need to know your destination (target corpus) and your route (investment strategy).</li>
-                </ul>
-
-                <h4>Creating Your Action Plan: From Theory to Reality</h4>
-                <p>So, how do you put all this together? It starts with a clear, personalized plan.</p>
+                <h4>Creating Your Action Plan: A Simple Savings Hierarchy</h4>
+                <p>So, where should you put your next dollar? For most people, this is the recommended order of operations:</p>
                 <ol className="list-decimal list-inside">
-                  <li><strong>Step 1: Define Your Retirement Vision.</strong> Get specific. What age do you want to retire? What will an average day look like? This emotional connection to your goal is a powerful motivator.</li>
-                  <li><strong>Step 2: Estimate Your Future Expenses.</strong> Take your current monthly expenses and project them into the future, accounting for inflation and lifestyle changes.</li>
-                  <li><strong>Step 3: Assess Your Current Savings.</strong> Tally up your existing investments in EPF, PPF, mutual funds, etc. This is your starting point.</li>
-                  <li><strong>Step 4: Calculate the Gap and the Required Monthly Savings.</strong> This is the most crucial step. You need to determine the gap between where you are and where you need to be, and then calculate the exact amount you need to save and invest every month to bridge that gap.</li>
+                  <li><strong>Step 1: The Match.</strong> Contribute to your workplace 401(k) or 403(b) just enough to get the full employer match.</li>
+                  <li><strong>Step 2: The IRA.</strong> After securing the match, fully fund a Roth or Traditional IRA. The annual contribution limit is set by the IRS ($7,000 in 2024 for those under 50).</li>
+                  <li><strong>Step 3: Max Out the 401(k).</strong> If you still have money to save, go back to your 401(k) and contribute more, up to the annual maximum ($23,000 in 2024 for those under 50).</li>
+                  <li><strong>Step 4: Other Accounts.</strong> Once you've maxed out your tax-advantaged accounts, you can save more in a Health Savings Account (HSA) if eligible, or a standard brokerage account.</li>
                 </ol>
-                <p>Figuring this out precisely—factoring in inflation, your existing savings, expected returns on different investments, and your target corpus—can be incredibly complex. A simple back-of-the-envelope calculation often misses critical variables.</p>
-                <p>This is where a robust tool can bring immense clarity. A good retirement savings calculator can help you model different scenarios, visualize your financial future, and determine the exact monthly investment needed to reach your goals. It transforms an abstract goal into a tangible monthly target.</p>
-
-                <h4>Conclusion: Your Future Self is Counting on You</h4>
-                <p>Retirement isn't an age; it's a financial number. It's the point where your assets generate enough income to cover your expenses, allowing you to work because you want to, not because you have to.</p>
-                <p>The journey to that number begins today. It begins with the decision to prioritize your future self. By starting early, investing wisely in a diversified portfolio, and staying disciplined, you can turn your dream of a comfortable, stress-free retirement into a reality. Don't leave it to chance. Create a plan, stick to it, and build the future you deserve.</p>
-                <p className="text-xs">Disclaimer: All investment-related information in this article is for educational purposes only and should not be considered financial advice. Mutual funds and other market-linked investments are subject to market risks. Please consult a certified financial advisor to create a personalized retirement plan.</p>
+                <p>Calculating the exact amount you need to save each month to bridge the gap between what you have and what you’ll need can be complex. This is where a robust tool can bring your personal situation into focus.</p>
+                <p>[Plan your secure future with our Retirement Savings Calculator.]</p>
+                <h4>Conclusion: Take Control of Your American Dream</h4>
+                <p>Retirement isn’t an age; it’s a financial destination. It’s the point where your assets can generate enough income to let you live life on your own terms. The journey to that destination starts not with a windfall, but with a plan.</p>
+                <p>By starting early, taking full advantage of "free money" like an employer match, choosing the right accounts, and staying consistent, you can turn the dream of a comfortable, stress-free retirement into your reality.</p>
+                <p>Disclaimer: This article is for educational purposes only and not financial advice. Contribution limits and tax laws are subject to change. Consult a certified financial professional to create a personalized retirement plan.</p>
             </AccordionContent>
         </AccordionItem>
         <AccordionItem value="further-reading">
