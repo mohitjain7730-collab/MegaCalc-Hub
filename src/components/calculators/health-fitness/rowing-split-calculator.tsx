@@ -99,8 +99,8 @@ export default function RowingSplitCalculator() {
       </Form>
       {result && (
         <Card className="mt-8">
-          <CardHeader><div className='flex items-center gap-4'><Ship className="h-8 w-8 text-primary" /><CardTitle>Result</CardTitle></div></CardHeader>
-          <CardContent><p className="text-3xl font-bold text-center">{result}</p></CardContent>
+            <CardHeader><div className='flex items-center gap-4'><Ship className="h-8 w-8 text-primary" /><CardTitle>Result</CardTitle></div></CardHeader>
+            <CardContent><p className="text-3xl font-bold text-center">{result}</p></CardContent>
         </Card>
       )}
     </div>
