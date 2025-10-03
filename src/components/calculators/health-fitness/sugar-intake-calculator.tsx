@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -14,8 +15,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 const itemSchema = z.object({
   name: z.string().optional(),
-  sugar: z.number().nonnegative(),
-  servings: z.number().int().positive(),
+  sugar: z.number().nonnegative("Cannot be negative").optional(),
+  servings: z.number().int().nonnegative("Servings cannot be negative.").optional(),
 });
 
 const formSchema = z.object({
@@ -32,7 +33,7 @@ export default function SugarIntakeCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       sex: 'female',
-      items: [{ name: '', sugar: undefined, servings: 1 }],
+      items: [{ name: '', sugar: undefined, servings: undefined }],
     },
   });
 
@@ -42,9 +43,9 @@ export default function SugarIntakeCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const totalSugar = values.items.reduce((sum, item) => sum + (item.sugar || 0) * item.servings, 0);
+    const totalSugar = values.items.reduce((sum, item) => sum + (item.sugar || 0) * (item.servings || 0), 0);
     const limit = values.sex === 'male' ? 36 : 25;
-    const percent = (totalSugar / limit) * 100;
+    const percent = limit > 0 ? (totalSugar / limit) * 100 : 0;
     setResult({ total: totalSugar, limit, percent });
   };
 
@@ -67,11 +68,13 @@ export default function SugarIntakeCalculator() {
                 <div key={field.id} className="grid grid-cols-[1fr,100px,80px,auto] gap-2 items-start mb-2">
                   <FormField control={form.control} name={`items.${index}.name`} render={({ field }) => (<FormItem><FormLabel className="sr-only">Product</FormLabel><FormControl><Input placeholder="Product Name" {...field} /></FormControl></FormItem>)} />
                   <FormField control={form.control} name={`items.${index}.sugar`} render={({ field }) => (<FormItem><FormLabel className="sr-only">Sugar</FormLabel><FormControl><Input type="number" placeholder="Sugar (g)" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)}/></FormControl></FormItem>)} />
-                  <FormField control={form.control} name={`items.${index}.servings`} render={({ field }) => (<FormItem><FormLabel className="sr-only">Servings</FormLabel><FormControl><Input type="number" placeholder="Servings" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)}/></FormControl></FormItem>)} />
+                  <FormField control={form.control} name={`items.${index}.servings`} render={({ field }) => (<FormItem><FormLabel className="sr-only">Servings</FormLabel><FormControl><Input type="number" placeholder="Servings" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)}/></FormControl></FormItem>)} />
                   <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
                 </div>
               ))}
-              <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ name: '', sugar: undefined, servings: 1 })}><PlusCircle className="mr-2 h-4 w-4" /> Add Item</Button>
+              <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ name: '', sugar: undefined, servings: 1 })}>
+                <PlusCircle className="mr-2 h-4 w-4" /> Add Item
+              </Button>
             </CardContent>
           </Card>
           <Button type="submit">Calculate Sugar Intake</Button>
