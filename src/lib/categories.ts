@@ -33,6 +33,7 @@ import {
   Waves,
   Scale,
   Shirt,
+  ArrowRightLeft,
 } from 'lucide-react';
 
 export interface Category {
@@ -75,6 +76,7 @@ export const icons: {[key: string]: LucideIcon} = {
   Waves,
   Scale,
   Shirt,
+  ArrowRightLeft,
 };
 
 export const categories: Category[] = [
@@ -89,6 +91,12 @@ export const categories: Category[] = [
     slug: 'health-fitness',
     description: 'Track your fitness goals, BMI, and calorie intake.',
     Icon: 'HeartPulse',
+  },
+  {
+    name: 'Conversions',
+    slug: 'conversions',
+    description: 'A collection of calculators for converting between different units of measurement.',
+    Icon: 'ArrowRightLeft',
   },
   {
     name: 'Home Improvement',
