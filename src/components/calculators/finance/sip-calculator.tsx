@@ -30,7 +30,7 @@ interface CalculationResult {
 }
 
 
-export default function SipCalculator() {
+export default function SipDcaCalculator() {
   const [result, setResult] = useState<CalculationResult | null>(null);
 
   const form = useForm<FormValues>({

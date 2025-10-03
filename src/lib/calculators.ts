@@ -11,8 +11,8 @@ export const calculators: Calculator[] = [
   // Finance
   {
     id: 95,
-    name: 'SIP Returns Calculator',
-    description: 'Project the future value of your Systematic Investment Plan (SIP). See how regular, disciplined investing and the power of compounding can help you reach your financial goals.',
+    name: 'SIP/DCA Return Calculator',
+    description: 'Project the future value of your Systematic Investment Plan (SIP) or Dollar-Cost Averaging (DCA) strategy. See how regular, disciplined investing can help you reach your financial goals.',
     slug: 'sip-calculator',
     category: 'finance',
   },
@@ -82,7 +82,7 @@ export const calculators: Calculator[] = [
   {
     id: 105,
     name: 'Roth IRA Contribution Limit Calculator',
-    description: 'Determine your maximum allowed Roth IRA contribution for the current tax year based on your income, filing status, and age.',
+    description: 'Determine your maximum allowed contribution for the current tax year based on your income, filing status, and age.',
     slug: 'roth-ira-contribution-limit-calculator',
     category: 'finance',
   },
