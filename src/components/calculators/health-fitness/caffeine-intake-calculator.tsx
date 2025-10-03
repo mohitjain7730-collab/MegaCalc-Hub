@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -23,7 +24,7 @@ const drinkTypes = {
 
 const drinkSchema = z.object({
   type: z.string(),
-  servings: z.number().int().positive(),
+  servings: z.number().int().nonnegative("Servings cannot be negative."),
 });
 
 const formSchema = z.object({
@@ -38,7 +39,7 @@ export default function CaffeineIntakeCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      drinks: [{ type: 'brewedCoffee', servings: 1 }],
+      drinks: [{ type: 'brewedCoffee', servings: undefined }],
     },
   });
 
@@ -49,8 +50,8 @@ export default function CaffeineIntakeCalculator() {
 
   const onSubmit = (values: FormValues) => {
     const totalCaffeine = values.drinks.reduce((sum, drink) => {
-        const caffeinePerServing = drinkTypes[drink.type as keyof typeof drinkTypes].caffeine;
-        return sum + (drink.servings * caffeinePerServing);
+        const caloriesPerServing = drinkTypes[drink.type as keyof typeof drinkTypes].caffeine;
+        return sum + ((drink.servings || 0) * caloriesPerServing);
     }, 0);
     const safeLimit = 400;
     const percent = (totalCaffeine / safeLimit) * 100;
@@ -72,12 +73,12 @@ export default function CaffeineIntakeCalculator() {
                     </Select></FormItem>
                   )} />
                    <FormField control={form.control} name={`drinks.${index}.servings`} render={({ field }) => (
-                    <FormItem><FormControl><Input type="number" placeholder="Qty" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || 0)} /></FormControl></FormItem>
+                    <FormItem><FormControl><Input type="number" placeholder="Qty" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl></FormItem>
                   )} />
                   <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
                 </div>
               ))}
-               <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ type: 'brewedCoffee', servings: 1 })}><PlusCircle className="mr-2 h-4 w-4" /> Add Drink</Button>
+               <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ type: 'brewedCoffee', servings: undefined })}><PlusCircle className="mr-2 h-4 w-4" /> Add Drink</Button>
             </CardContent>
           </Card>
           <Button type="submit">Calculate Caffeine</Button>
