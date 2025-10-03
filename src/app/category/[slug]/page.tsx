@@ -8,6 +8,7 @@ import { categories } from '@/lib/categories';
 import { CategoryIcon } from '@/components/category-icon';
 import { calculators } from '@/lib/calculators';
 import { CategorySearch } from '@/components/category-search';
+import { Separator } from '@/components/ui/separator';
 
 export default function CategoryPage({ params }: { params: { slug: string } }) {
   const category = categories.find((c) => c.slug === params.slug);
@@ -40,6 +41,13 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
             </div>
           </div>
         </div>
+        
+        {params.slug === 'conversions' && (
+            <div className="mb-8">
+                <h2 className="text-2xl font-bold tracking-tight text-foreground">Length Conversions</h2>
+                <Separator className="my-4" />
+            </div>
+        )}
 
         <CategorySearch
           calculators={categoryCalculators}
