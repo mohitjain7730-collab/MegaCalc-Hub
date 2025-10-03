@@ -24,6 +24,10 @@ import {
   Utensils,
   Clock,
   FlaskConical,
+  Droplets,
+  Cookie,
+  Coffee,
+  GlassWater,
 } from 'lucide-react';
 
 export interface Category {
@@ -57,6 +61,10 @@ export const icons: {[key: string]: LucideIcon} = {
   Utensils,
   Clock,
   FlaskConical,
+  Droplets,
+  Cookie,
+  Coffee,
+  GlassWater,
 };
 
 export const categories: Category[] = [

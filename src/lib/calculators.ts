@@ -669,15 +669,76 @@ export const calculators: Calculator[] = [
     category: 'business-startup',
   },
   // Health & Fitness
-  { id: 260, name: 'Daily Calorie Needs Calculator (TDEE)', description: 'Estimate the total calories you burn per day to maintain your current weight.', slug: 'daily-calorie-needs-calculator', category: 'health-fitness'},
-  { id: 261, name: 'Macro Ratio Calculator', description: 'Divide your daily calories into grams of protein, carbs, and fat based on your goals.', slug: 'macro-ratio-calculator', category: 'health-fitness'},
-  { id: 262, name: 'Protein Intake Calculator', description: 'Get a personalized daily protein recommendation based on your weight and fitness goals.', slug: 'protein-intake-calculator', category: 'health-fitness'},
-  { id: 264, name: 'Fat Intake Calculator', description: 'Calculate your recommended daily fat intake as a percentage of total calories.', slug: 'fat-intake-calculator', category: 'health-fitness'},
-  { id: 265, name: 'Keto Macro Calculator', description: 'Calculate specific macronutrient targets for a ketogenic diet.', slug: 'keto-macro-calculator', category: 'health-fitness'},
-  { id: 266, name: 'Intermittent Fasting Calculator', description: 'Plan your daily eating and fasting windows for different IF protocols.', slug: 'intermittent-fasting-calculator', category: 'health-fitness'},
-  { id: 267, name: 'Glycemic Load Calculator', description: 'Measure how much a specific serving of food will raise your blood glucose levels.', slug: 'glycemic-load-calculator', category: 'health-fitness'},
-  { id: 268, name: 'Meal Glycemic Load Calculator', description: 'Calculate the total Glycemic Load (GL) of an entire meal.', slug: 'meal-glycemic-load-calculator', category: 'health-fitness'},
-  { id: 269, name: 'Hydration Needs Calculator', description: 'Estimate your daily water intake required to stay adequately hydrated.', slug: 'hydration-needs-calculator', category: 'health-fitness'},
+  {
+    id: 260,
+    name: 'Daily Calorie Needs Calculator (TDEE)',
+    description: 'Estimate the total calories you burn per day to maintain your current weight.',
+    slug: 'daily-calorie-needs-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 261,
+    name: 'Macro Ratio Calculator',
+    description: 'Divide your daily calories into grams of protein, carbs, and fat based on your goals.',
+    slug: 'macro-ratio-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 262,
+    name: 'Protein Intake Calculator',
+    description: 'Get a personalized daily protein recommendation based on your weight and fitness goals.',
+    slug: 'protein-intake-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 263,
+    name: 'Carbohydrate Intake Calculator',
+    description: 'Estimate your daily carbohydrate needs to fuel your activity level and replenish glycogen stores.',
+    slug: 'carbohydrate-intake-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 264,
+    name: 'Fat Intake Calculator',
+    description: 'Calculate your recommended daily fat intake as a percentage of total calories.',
+    slug: 'fat-intake-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 265,
+    name: 'Keto Macro Calculator',
+    description: 'Calculate specific macronutrient targets for a ketogenic diet.',
+    slug: 'keto-macro-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 266,
+    name: 'Intermittent Fasting Calculator',
+    description: 'Plan your daily eating and fasting windows for different IF protocols.',
+    slug: 'intermittent-fasting-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 267,
+    name: 'Glycemic Load Calculator',
+    description: 'Measure how much a specific serving of food will raise your blood glucose levels.',
+    slug: 'glycemic-load-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 268,
+    name: 'Meal Glycemic Load Calculator',
+    description: 'Calculate the total Glycemic Load (GL) of an entire meal.',
+    slug: 'meal-glycemic-load-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 269,
+    name: 'Hydration Needs Calculator',
+    description: 'Estimate your daily water intake required to stay adequately hydrated.',
+    slug: 'hydration-needs-calculator',
+    category: 'health-fitness'
+  },
   {
     id: 107,
     name: 'Water Footprint of Food Calculator',
@@ -685,7 +746,7 @@ export const calculators: Calculator[] = [
     slug: 'water-footprint-of-food-calculator',
     category: 'health-fitness'
   },
-   {
+  {
     id: 108,
     name: 'Body Mass Index (BMI) Calculator',
     description: 'Quickly assess whether you are underweight, healthy, overweight, or obese using this standard health indicator.',
@@ -706,16 +767,111 @@ export const calculators: Calculator[] = [
     slug: 'target-heart-rate-calculator',
     category: 'health-fitness'
   },
-  { id: 250, name: 'Body Fat Percentage Calculator', description: 'Estimate your body fat percentage using the U.S. Navy method.', slug: 'body-fat-percentage-calculator', category: 'health-fitness' },
-  { id: 251, name: 'Lean Body Mass Calculator', description: 'Calculate the weight of your body minus all fat mass.', slug: 'lean-body-mass-calculator', category: 'health-fitness' },
-  { id: 252, name: 'Ideal Body Weight (IBW) Calculator', description: 'Estimate a healthy weight range based on your height and sex.', slug: 'ideal-body-weight-calculator', category: 'health-fitness' },
-  { id: 253, name: 'Waist-to-Hip Ratio Calculator', description: 'Assess health risks associated with abdominal fat.', slug: 'waist-to-hip-ratio-calculator', category: 'health-fitness' },
-  { id: 254, name: 'Waist-to-Height Ratio Calculator', description: 'A simple indicator of central obesity and health risk.', slug: 'waist-to-height-ratio-calculator', category: 'health-fitness' },
-  { id: 255, name: 'Body Adiposity Index (BAI) Calculator', description: 'Estimate body fat using hip circumference and height.', slug: 'body-adiposity-index-calculator', category: 'health-fitness' },
-  { id: 256, name: 'Ponderal Index Calculator', description: 'A measure of leanness, similar to BMI, for very tall or short individuals.', slug: 'ponderal-index-calculator', category: 'health-fitness' },
-  { id: 257, name: 'Relative Fat Mass (RFM) Calculator', description: 'Estimate body fat percentage using only height and waist circumference.', slug: 'relative-fat-mass-calculator', category: 'health-fitness' },
-  { id: 258, name: 'Calorie Deficit Calculator', description: 'Calculate daily calorie intake for sustainable weight loss.', slug: 'calorie-deficit-calculator', category: 'health-fitness' },
-  { id: 259, name: 'Calorie Surplus Calculator', description: 'Calculate daily calorie intake for muscle and weight gain.', slug: 'calorie-surplus-calculator', category: 'health-fitness' },
+  {
+    id: 250,
+    name: 'Body Fat Percentage Calculator',
+    description: 'Estimate your body fat percentage using the U.S. Navy method.',
+    slug: 'body-fat-percentage-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 251,
+    name: 'Lean Body Mass Calculator',
+    description: 'Calculate the weight of your body minus all fat mass.',
+    slug: 'lean-body-mass-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 252,
+    name: 'Ideal Body Weight (IBW) Calculator',
+    description: 'Estimate a healthy weight range based on your height and sex.',
+    slug: 'ideal-body-weight-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 253,
+    name: 'Waist-to-Hip Ratio Calculator',
+    description: 'Assess health risks associated with abdominal fat.',
+    slug: 'waist-to-hip-ratio-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 254,
+    name: 'Waist-to-Height Ratio Calculator',
+    description: 'A simple indicator of central obesity and health risk.',
+    slug: 'waist-to-height-ratio-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 255,
+    name: 'Body Adiposity Index (BAI) Calculator',
+    description: 'Estimate body fat using hip circumference and height.',
+    slug: 'body-adiposity-index-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 256,
+    name: 'Ponderal Index Calculator',
+    description: 'A measure of leanness, similar to BMI, for very tall or short individuals.',
+    slug: 'ponderal-index-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 257,
+    name: 'Relative Fat Mass (RFM) Calculator',
+    description: 'Estimate body fat percentage using only height and waist circumference.',
+    slug: 'relative-fat-mass-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 258,
+    name: 'Calorie Deficit Calculator',
+    description: 'Calculate daily calorie intake for sustainable weight loss.',
+    slug: 'calorie-deficit-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 259,
+    name: 'Calorie Surplus Calculator',
+    description: 'Calculate daily calorie intake for muscle and weight gain.',
+    slug: 'calorie-surplus-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 270,
+    name: 'Electrolyte Replacement Calculator',
+    description: 'Estimate sodium and potassium lost through sweat during exercise.',
+    slug: 'electrolyte-replacement-calculator',
+    category: 'health-fitness',
+  },
+  {
+    id: 271,
+    name: 'Vitamin & Mineral RDA Tracker',
+    description: 'Track your daily micronutrient intake against recommended dietary allowances.',
+    slug: 'vitamin-mineral-rda-tracker-calculator',
+    category: 'health-fitness',
+  },
+  {
+    id: 272,
+    name: 'Alcohol Calorie Impact Calculator',
+    description: 'Calculate the total "empty" calories consumed from alcoholic beverages.',
+    slug: 'alcohol-calorie-impact-calculator',
+    category: 'health-fitness',
+  },
+  {
+    id: 273,
+    name: 'Sugar Intake Calculator',
+    description: 'Track your daily consumption of added sugars against recommended limits.',
+    slug: 'sugar-intake-calculator',
+    category: 'health-fitness',
+  },
+  {
+    id: 274,
+    name: 'Caffeine Intake Limit Calculator',
+    description: 'Track daily caffeine consumption to stay within safe limits.',
+    slug: 'caffeine-intake-calculator',
+    category: 'health-fitness',
+  },
   // Home Improvement
   {
     id: 1,
@@ -1503,5 +1659,3 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
-
-    

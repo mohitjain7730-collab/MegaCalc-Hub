@@ -246,6 +246,12 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'ligation-calculator': dynamic(() => import('@/components/calculators/biology/ligation-calculator')),
     'log-reduction-calculator': dynamic(() => import('@/components/calculators/biology/log-reduction-calculator')),
     'protein-concentration-calculator': dynamic(() => import('@/components/calculators/biology/protein-concentration-calculator')),
+    'carbohydrate-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/carbohydrate-intake-calculator')),
+    'electrolyte-replacement-calculator': dynamic(() => import('@/components/calculators/health-fitness/electrolyte-replacement-calculator')),
+    'vitamin-mineral-rda-tracker-calculator': dynamic(() => import('@/components/calculators/health-fitness/vitamin-mineral-rda-tracker-calculator')),
+    'alcohol-calorie-impact-calculator': dynamic(() => import('@/components/calculators/health-fitness/alcohol-calorie-impact-calculator')),
+    'sugar-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/sugar-intake-calculator')),
+    'caffeine-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/caffeine-intake-calculator')),
   };
 
 export async function generateStaticParams() {
@@ -308,5 +314,3 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
-    
