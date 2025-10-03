@@ -28,6 +28,11 @@ import {
   Cookie,
   Coffee,
   GlassWater,
+  Zap,
+  Ship,
+  Waves,
+  Scale,
+  Shirt,
 } from 'lucide-react';
 
 export interface Category {
@@ -65,6 +70,11 @@ export const icons: {[key: string]: LucideIcon} = {
   Cookie,
   Coffee,
   GlassWater,
+  Zap,
+  Ship,
+  Waves,
+  Scale,
+  Shirt,
 };
 
 export const categories: Category[] = [
