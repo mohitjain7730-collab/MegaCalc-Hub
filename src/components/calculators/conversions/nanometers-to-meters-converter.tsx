@@ -46,7 +46,7 @@ export default function NanometersToMetersConverter() {
               <FormItem>
                 <FormLabel>Nanometers (nm)</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
