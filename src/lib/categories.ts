@@ -93,6 +93,12 @@ export const categories: Category[] = [
     Icon: 'HeartPulse',
   },
   {
+    name: 'Conversions',
+    slug: 'conversions',
+    description: 'Tools for converting between different units of measurement.',
+    Icon: 'ArrowRightLeft',
+  },
+  {
     name: 'Length Conversions',
     slug: 'length-conversions',
     description: 'A collection of calculators for converting between different units of length.',

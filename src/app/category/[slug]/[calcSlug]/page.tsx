@@ -334,5 +334,3 @@ export default function CalculatorPage({ params }: { params: { slug: string, cal
     </div>
   );
 }
-
-    
