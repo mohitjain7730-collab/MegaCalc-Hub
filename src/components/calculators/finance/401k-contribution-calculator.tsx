@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Landmark } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const formSchema = z.object({
   currentAge: z.number().int().positive(),
@@ -174,7 +175,116 @@ export default function FourOhOneKCalculator() {
             <p>A 401(k) is a retirement savings plan sponsored by an employer. It lets workers save and invest a piece of their paycheck before taxes are taken out. Taxes aren't paid until the money is withdrawn from the account. A key feature is the potential for an employer match, which is essentially free money contributed by your employer to your retirement account.</p>
           </AccordionContent>
         </AccordionItem>
-         <AccordionItem value="understanding-inputs">
+        <AccordionItem value="401k-contribution-guide">
+            <AccordionTrigger>Complete guide on 401k</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
+              <h3>The Ultimate Guide to Your 401(k) Contribution</h3>
+              <p>You just started a new job, and after a whirlwind of onboarding, you're handed the benefits package. Tucked inside, between health insurance forms and vacation policies, is the 401(k) plan—a document filled with terms like "employer match," "vesting," and "contribution limits."</p>
+              <p>Immediately, the big question hits you: "How much of my paycheck should I actually put into this thing?"</p>
+              <p>It's a question every American professional faces, and the answer can profoundly shape your financial future. Your 401(k) contribution isn't just a number; it's the single most powerful lever you can pull to build a secure and comfortable retirement.</p>
+              <p>This guide will demystify the entire process. We’ll break down exactly what you need to know to make a confident decision, from securing "free money" to understanding the IRS rules for 2025.</p>
+              
+              <h4>Rule #1: Never, Ever Leave Free Money on the Table</h4>
+              <p>Before we discuss percentages, limits, or investment choices, let's establish the golden rule of 401(k) contributions: <strong>Contribute at least enough to get your full employer match.</strong></p>
+              <p>An employer match is a benefit where your company contributes money to your 401(k) on your behalf, but only if you contribute first. It's the closest thing to "free money" you will ever find in the world of personal finance.</p>
+              <p>A common matching formula is "100% of the first 4% of your salary." Let's break down what this means with an example:</p>
+              <ul className="list-disc list-inside">
+                <li>Your Annual Salary: $70,000</li>
+                <li>Your Contribution (4%): $2,800 per year</li>
+                <li>Your Employer's Match (4%): $2,800 per year</li>
+                <li><strong>Your Total Contribution: $5,600 per year</strong></li>
+              </ul>
+              <p>By simply contributing 4% of your own money, you have instantly doubled it. This is a 100% guaranteed return on your investment before your money has even had a chance to grow in the market. Failing to get the full match is like turning down a pay raise every single year.</p>
+              <p><strong>Action Step:</strong> Find out your company's matching formula today. Make it your absolute minimum goal to contribute enough to capture every last cent of that match.</p>
+
+              <h4>The Big Decision: Traditional (Pre-Tax) vs. Roth 401(k) Contributions</h4>
+              <p>Once you've committed to getting the match, you'll often face a choice: should your contributions be Traditional or Roth? Your decision hinges on one question: <strong>Do you want to pay taxes now or later?</strong></p>
+              <h5>The Traditional 401(k): Pay Taxes Later</h5>
+              <p>When you contribute to a Traditional 401(k), the money comes out of your paycheck <strong>before</strong> federal and state income taxes are calculated.</p>
+              <ul className="list-disc list-inside">
+                <li><strong>The Benefit Now:</strong> This reduces your taxable income for the year, which means your take-home pay won't decrease by the full amount of your contribution.</li>
+                <li><strong>The Catch Later:</strong> Your money grows tax-deferred, but when you withdraw it in retirement, you will pay ordinary income tax on every dollar you take out.</li>
+              </ul>
+              <h5>The Roth 401(k): Pay Taxes Now</h5>
+              <p>When you contribute to a Roth 401(k), the money comes out of your paycheck <strong>after</strong> income taxes have been paid, just like the rest of your take-home pay.</p>
+               <ul className="list-disc list-inside">
+                <li><strong>The Benefit Later:</strong> The real magic happens down the road. Your money grows completely tax-free, and all qualified withdrawals in retirement are also 100% tax-free.</li>
+                <li><strong>The Catch Now:</strong> You don't get an immediate tax break, so your take-home pay will decrease by the full amount of your contribution.</li>
+              </ul>
+              <h5>How to Choose Between Traditional and Roth?</h5>
+               <Table>
+                  <TableHeader>
+                      <TableRow>
+                          <TableHead>Feature</TableHead>
+                          <TableHead>Traditional 401(k)</TableHead>
+                          <TableHead>Roth 401(k)</TableHead>
+                      </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                      <TableRow>
+                          <TableCell>Tax Treatment Now</TableCell>
+                          <TableCell>Contributions are pre-tax (lowers taxable income)</TableCell>
+                          <TableCell>Contributions are post-tax</TableCell>
+                      </TableRow>
+                       <TableRow>
+                          <TableCell>Growth</TableCell>
+                          <TableCell>Tax-deferred</TableCell>
+                          <TableCell>Tax-free</TableCell>
+                      </TableRow>
+                       <TableRow>
+                          <TableCell>Withdrawals</TableCell>
+                          <TableCell>Taxed as ordinary income</TableCell>
+                          <TableCell>Tax-free</TableCell>
+                      </TableRow>
+                       <TableRow>
+                          <TableCell>Best For...</TableCell>
+                          <TableCell>Those who are in a high tax bracket now and expect to be in a lower one in retirement.</TableCell>
+                          <TableCell>Those who are in a low tax bracket now (like young professionals) and expect to earn more later. Also great for tax diversification.</TableCell>
+                      </TableRow>
+                  </TableBody>
+              </Table>
+              <p>Many financial advisors suggest that younger employees, whose best earning years are ahead of them, can benefit greatly from the tax-free withdrawals of a Roth 401(k).</p>
+              
+              <h4>How Much Can You Contribute? Understanding the 2025 Limits</h4>
+              <p>The IRS sets annual limits on how much you can contribute to your 401(k). For 2025, these limits are:</p>
+               <ul className="list-disc list-inside">
+                <li><strong>Employee Contribution Limit:</strong> You can contribute up to <strong>$23,500</strong> of your own money. This applies to the total of your Traditional and Roth 401(k) contributions combined.</li>
+                <li><strong>Catch-Up Contribution:</strong> If you are age 50 or over at any point during the year, you can contribute an additional <strong>$8,000</strong>, bringing your total possible contribution to <strong>$31,500</strong>.</li>
+                <li><strong>Total Contribution Limit:</strong> There is a separate, higher limit ($69,000 in 2024, projected higher for 2025) that includes your contributions, your employer’s match, and any other employer contributions. Most people don't need to worry about this limit, but it's good to know it exists.</li>
+              </ul>
+              <p>(Note: These 2025 figures are based on projected inflation adjustments. Always check the official IRS website for the finalized annual limits.)</p>
+
+              <h4>Beyond the Match: A Roadmap to Increasing Your Contributions</h4>
+              <p>Getting the match is the starting line, not the finish line. To ensure a comfortable retirement, most experts agree you'll need to save more. Here’s a simple, step-by-step roadmap.</p>
+              <ol className="list-decimal list-inside space-y-2">
+                <li><strong>Step 1: Get the Match.</strong> We can't say it enough. This is your foundation.</li>
+                <li><strong>Step 2: Aim for 15% of Your Gross Income.</strong> This is the benchmark recommended by most financial planning firms like Fidelity and Vanguard. A 15% savings rate (including your employer's match) puts you on a strong trajectory for a healthy retirement.</li>
+                <li><strong>Step 3: "Max Out" Your 401(k).</strong> This means contributing the full IRS employee limit ($23,500 in 2025). While not feasible for everyone, this is a powerful goal for high earners or anyone who wants to accelerate their path to financial independence.</li>
+                <li><strong>Step 4: Automate Your Increases.</strong> The easiest way to save more is to make it painless. Many 401(k) plans offer an "auto-escalation" feature. By checking this box, you can set your contribution rate to automatically increase by 1% every year. This small, gradual increase is barely noticeable in your paycheck but can lead to hundreds of thousands of dollars more in retirement.</li>
+              </ol>
+
+              <h4>An Important Detail: The Vesting Schedule</h4>
+              <p>Your contributions are always 100% yours. But the money your employer contributes (the match) often comes with a vesting schedule. Vesting is the process of earning full ownership of those funds.</p>
+              <p>There are two common types:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Cliff Vesting:</strong> You gain 100% ownership after a specific period, like 3 years. If you leave your job before that, you forfeit all of the employer's contributions.</li>
+                <li><strong>Graded Vesting:</strong> You gain ownership gradually over time. For example, you might be 20% vested after one year, 40% after two, and so on, until you are 100% vested after five years.</li>
+              </ul>
+              <p>Understanding your vesting schedule is crucial if you are considering changing jobs.</p>
+
+              <h4>Conclusion: Your Most Powerful Wealth-Building Tool</h4>
+              <p>Your 401(k) contribution is far more than a line item on your paystub; it's a direct investment in your future self. By making informed choices today, you are paving the way for a future of freedom and security.</p>
+              <p>Let's recap your action plan:</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li><strong>Prioritize the Match:</strong> Capture every dollar of free money.</li>
+                <li><strong>Choose Your Contribution Type:</strong> Decide between the immediate tax break of a Traditional 401(k) or the future tax-free withdrawals of a Roth 401(k).</li>
+                <li><strong>Set Your Goal:</strong> Aim to save 15% of your income. If you can't start there, begin with the match and use auto-escalation to grow your savings over time.</li>
+              </ol>
+              <p>The journey to a million-dollar nest egg doesn't happen overnight. It happens one paycheck at a time, powered by the steady, disciplined habit of contributing to your 401(k).</p>
+              <p className="text-xs">Disclaimer: This article is for informational purposes only and is not intended as financial or tax advice. 401(k) rules and IRS limits are subject to change. Please consult with a qualified financial professional to discuss your individual situation.</p>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="understanding-inputs">
             <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-4">
               <div>
@@ -233,3 +343,5 @@ export default function FourOhOneKCalculator() {
     </div>
   );
 }
+
+    
