@@ -845,13 +845,6 @@ export const calculators: Calculator[] = [
     category: 'health-fitness',
   },
   {
-    id: 271,
-    name: 'Vitamin & Mineral RDA Tracker',
-    description: 'Track your daily micronutrient intake against recommended dietary allowances.',
-    slug: 'vitamin-mineral-rda-tracker-calculator',
-    category: 'health-fitness',
-  },
-  {
     id: 272,
     name: 'Alcohol Calorie Impact Calculator',
     description: 'Calculate the total "empty" calories consumed from alcoholic beverages.',
@@ -1659,3 +1652,5 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
+
+    
