@@ -122,7 +122,7 @@ export default function WaterFootprintOfFoodCalculator() {
             </AccordionContent>
         </AccordionItem>
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionTrigger>How It Works & Water Types</AccordionTrigger>
             <AccordionContent className="text-muted-foreground space-y-4">
                 <p>This calculator uses global average data from the Water Footprint Network to estimate the volume of water required to produce different food items. The total footprint is broken down into three components:</p>
                  <ul className="list-disc list-inside space-y-2">
