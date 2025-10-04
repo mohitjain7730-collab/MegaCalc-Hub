@@ -272,65 +272,26 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'fathoms-to-meters-converter': dynamic(() => import('@/components/calculators/conversions/fathoms-to-meters-converter')),
     'chains-to-meters-converter': dynamic(() => import('@/components/calculators/conversions/chains-to-meters-converter')),
     'rods-to-feet-converter': dynamic(() => import('@/components/calculators/conversions/rods-to-feet-converter')),
+    // Area Conversions
+    'square-meters-to-square-feet-converter': dynamic(() => import('@/components/calculators/conversions/square-meters-to-square-feet-converter')),
+    'square-feet-to-square-meters-converter': dynamic(() => import('@/components/calculators/conversions/square-feet-to-square-meters-converter')),
+    'square-kilometers-to-square-miles-converter': dynamic(() => import('@/components/calculators/conversions/square-kilometers-to-square-miles-converter')),
+    'square-miles-to-square-kilometers-converter': dynamic(() => import('@/components/calculators/conversions/square-miles-to-square-kilometers-converter')),
+    'acres-to-square-meters-converter': dynamic(() => import('@/components/calculators/conversions/acres-to-square-meters-converter')),
+    'square-meters-to-acres-converter': dynamic(() => import('@/components/calculators/conversions/square-meters-to-acres-converter')),
+    'hectares-to-acres-converter': dynamic(() => import('@/components/calculators/conversions/hectares-to-acres-converter')),
+    'acres-to-hectares-converter': dynamic(() => import('@/components/calculators/conversions/acres-to-hectares-converter')),
+    'square-yards-to-square-feet-converter': dynamic(() => import('@/components/calculators/conversions/square-yards-to-square-feet-converter')),
+    'square-feet-to-square-yards-converter': dynamic(() => import('@/components/calculators/conversions/square-feet-to-square-yards-converter')),
+    'square-inches-to-square-centimeters-converter': dynamic(() => import('@/components/calculators/conversions/square-inches-to-square-centimeters-converter')),
+    'square-centimeters-to-square-inches-converter': dynamic(() => import('@/components/calculators/conversions/square-centimeters-to-square-inches-converter')),
+    'square-miles-to-acres-converter': dynamic(() => import('@/components/calculators/conversions/square-miles-to-acres-converter')),
+    'acres-to-square-miles-converter': dynamic(() => import('@/components/calculators/conversions/acres-to-square-miles-converter')),
+    'square-meters-to-square-yards-converter': dynamic(() => import('@/components/calculators/conversions/square-meters-to-square-yards-converter')),
+    'square-yards-to-square-meters-converter': dynamic(() => import('@/components/calculators/conversions/square-yards-to-square-meters-converter')),
+    'square-centimeters-to-square-meters-converter': dynamic(() => import('@/components/calculators/conversions/square-centimeters-to-square-meters-converter')),
+    'square-meters-to-square-centimeters-converter': dynamic(() => import('@/components/calculators/conversions/square-meters-to-square-centimeters-converter')),
+    'hectares-to-square-kilometers-converter': dynamic(() => import('@/components/calculators/conversions/hectares-to-square-kilometers-converter')),
+    'square-kilometers-to-hectares-converter': dynamic(() => import('@/components/calculators/conversions/square-kilometers-to-hectares-converter')),
   };
-
-export async function generateStaticParams() {
-  return calculators.map((calc) => ({
-    slug: calc.category,
-    calcSlug: calc.slug,
-  }));
-}
-
-export default function CalculatorPage({ params }: { params: { slug: string, calcSlug: string } }) {
-  const category = categories.find((c) => c.slug === params.slug);
-  const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
-
-  if (!category || !calculator) {
-    notFound();
-  }
-
-  const CalculatorComponent = calculatorComponents[calculator.slug];
-
-  return (
-    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
-       <div className="w-full max-w-4xl">
-        <div className="mb-8">
-            <Button asChild variant="ghost" className='mb-4'>
-                <Link href={`/category/${category.slug}`}>
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to {category.name}
-                </Link>
-            </Button>
-            <Card className="w-full shadow-md">
-                <CardContent className="p-8 text-center">
-                    <CategoryIcon name={category.Icon} className="mx-auto h-16 w-16 mb-6 text-primary" strokeWidth={1.5} />
-                    <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                    {calculator.name}
-                    </h1>
-                    <p className='text-muted-foreground mb-4'>{category.name}</p>
-                    <p className="text-lg text-muted-foreground">
-                        {calculator.description}
-                    </p>
-                </CardContent>
-            </Card>
-        </div>
-
-        {CalculatorComponent ? (
-          <Card className='w-full shadow-md'>
-            <CardContent className='p-8'>
-              <CalculatorComponent />
-            </CardContent>
-          </Card>
-        ) : (
-            <Card className="w-full max-w-lg text-center shadow-md mx-auto">
-                <CardContent className="p-8">
-                    <p className="text-lg text-muted-foreground">
-                    This calculator is coming soon.
-                    </p>
-                </CardContent>
-            </Card>
-        )}
-      </div>
-    </div>
-  );
-}
+  

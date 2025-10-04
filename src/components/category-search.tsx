@@ -23,6 +23,44 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
       calc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       calc.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  
+  const lengthConverters = filteredCalculators.filter(calc => [
+    'meters-to-feet-converter', 'feet-to-meters-converter', 'centimeters-to-inches-converter', 
+    'inches-to-centimeters-converter', 'millimeters-to-inches-converter', 'inches-to-millimeters-converter', 
+    'meters-to-yards-converter', 'yards-to-meters-converter', 'miles-to-kilometers-converter', 
+    'kilometers-to-miles-converter', 'nautical-miles-to-kilometers-converter', 'kilometers-to-nautical-miles-converter', 
+    'micrometers-to-millimeters-converter', 'nanometers-to-meters-converter', 'light-years-to-kilometers-converter', 
+    'parsecs-to-light-years-converter', 'astronomical-units-to-kilometers-converter', 'fathoms-to-meters-converter', 
+    'chains-to-meters-converter', 'rods-to-feet-converter'
+  ].includes(calc.slug));
+  
+  const areaConverters = filteredCalculators.filter(calc => [
+    'square-meters-to-square-feet-converter', 'square-feet-to-square-meters-converter', 
+    'square-kilometers-to-square-miles-converter', 'square-miles-to-square-kilometers-converter', 
+    'acres-to-square-meters-converter', 'square-meters-to-acres-converter', 'hectares-to-acres-converter', 
+    'acres-to-hectares-converter', 'square-yards-to-square-feet-converter', 'square-feet-to-square-yards-converter', 
+    'square-inches-to-square-centimeters-converter', 'square-centimeters-to-square-inches-converter', 
+    'square-miles-to-acres-converter', 'acres-to-square-miles-converter', 'square-meters-to-square-yards-converter', 
+    'square-yards-to-square-meters-converter', 'square-centimeters-to-square-meters-converter', 
+    'square-meters-to-square-centimeters-converter', 'hectares-to-square-kilometers-converter', 'square-kilometers-to-hectares-converter'
+  ].includes(calc.slug));
+
+  const otherCalculators = filteredCalculators.filter(calc => !lengthConverters.find(c => c.id === calc.id) && !areaConverters.find(c => c.id === calc.id));
+
+  const renderCalculatorGrid = (calcs: Calculator[]) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {calcs.map((calc) => (
+        <Link href={`/category/${categorySlug}/${calc.slug}`} key={calc.id} className="group block h-full">
+          <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
+            <CardHeader>
+              <CardTitle className="text-lg">{calc.name}</CardTitle>
+              <CardDescription className="pt-1">{calc.description}</CardDescription>
+            </CardHeader>
+          </Card>
+        </Link>
+      ))}
+    </div>
+  );
 
   return (
     <>
@@ -37,26 +75,26 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
         />
       </div>
 
-      {searchQuery.length === 0 && categorySlug === 'conversions' && (
-        <>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">
-            Length conversion
-            </h2>
-        </>
-      )}
-
       {filteredCalculators.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCalculators.map((calc) => (
-            <Link href={`/category/${categorySlug}/${calc.slug}`} key={calc.id} className="group block h-full">
-              <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
-                <CardHeader>
-                  <CardTitle className="text-lg">{calc.name}</CardTitle>
-                  <CardDescription className="pt-1">{calc.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-          ))}
+        <div className="space-y-12">
+            {categorySlug === 'conversions' && lengthConverters.length > 0 && (
+                <div>
+                    <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Length conversion</h2>
+                    {renderCalculatorGrid(lengthConverters)}
+                </div>
+            )}
+            {categorySlug === 'conversions' && areaConverters.length > 0 && (
+                <div>
+                    <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Area converter</h2>
+                    {renderCalculatorGrid(areaConverters)}
+                </div>
+            )}
+            {otherCalculators.length > 0 && (
+                 <div>
+                    {categorySlug === 'conversions' && <div className="my-8"/>}
+                    {renderCalculatorGrid(otherCalculators)}
+                </div>
+            )}
         </div>
       ) : (
         <Card className="w-full text-center shadow-md mt-8">
@@ -73,12 +111,6 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
               </p>
           </CardContent>
         </Card>
-      )}
-
-      {searchQuery.length === 0 && categorySlug === 'conversions' && (
-        <h2 className="text-2xl font-bold tracking-tight text-foreground my-6">
-          Area converter
-        </h2>
       )}
     </>
   );
