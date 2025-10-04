@@ -37,10 +37,12 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
         />
       </div>
 
-      {categorySlug === 'conversions' && (
-        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">
-          Length conversions
-        </h2>
+      {searchQuery.length === 0 && categorySlug === 'conversions' && (
+        <>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">
+            Length conversion
+            </h2>
+        </>
       )}
 
       {filteredCalculators.length > 0 ? (
@@ -71,6 +73,12 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
               </p>
           </CardContent>
         </Card>
+      )}
+
+      {searchQuery.length === 0 && categorySlug === 'conversions' && (
+        <h2 className="text-2xl font-bold tracking-tight text-foreground my-6">
+          Area converter
+        </h2>
       )}
     </>
   );
