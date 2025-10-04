@@ -46,7 +46,26 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
   ].includes(calc.slug));
 
   const volumeConverters = filteredCalculators.filter(calc => [
-    // Add volume converter slugs here when they are created
+    'liters-to-gallons-converter',
+    'gallons-to-liters-converter',
+    'milliliters-to-cups-converter',
+    'cups-to-milliliters-converter',
+    'pints-to-liters-converter',
+    'liters-to-pints-converter',
+    'quarts-to-liters-converter',
+    'liters-to-quarts-converter',
+    'cubic-meters-to-liters-converter',
+    'liters-to-cubic-meters-converter',
+    'cubic-feet-to-gallons-converter',
+    'gallons-to-cubic-feet-converter',
+    'cubic-inches-to-milliliters-converter',
+    'milliliters-to-cubic-inches-converter',
+    'tablespoons-to-milliliters-converter',
+    'milliliters-to-tablespoons-converter',
+    'teaspoons-to-milliliters-converter',
+    'milliliters-to-teaspoons-converter',
+    'ounces-to-milliliters-converter',
+    'milliliters-to-ounces-converter',
   ].includes(calc.slug));
 
   const otherCalculators = filteredCalculators.filter(calc => 

@@ -906,6 +906,28 @@ export const calculators: Calculator[] = [
   { id: 337, name: 'Square Meters to Square Centimeters Converter', description: 'Convert square meters to square centimeters.', slug: 'square-meters-to-square-centimeters-converter', category: 'conversions' },
   { id: 338, name: 'Hectares to Square Kilometers Converter', description: 'Convert hectares to square kilometers.', slug: 'hectares-to-square-kilometers-converter', category: 'conversions' },
   { id: 339, name: 'Square Kilometers to Hectares Converter', description: 'Convert square kilometers to hectares.', slug: 'square-kilometers-to-hectares-converter', category: 'conversions' },
+  // Volume Conversions
+  { id: 340, name: 'Liters to Gallons Converter', description: 'Convert liters to US or Imperial gallons.', slug: 'liters-to-gallons-converter', category: 'conversions' },
+  { id: 341, name: 'Gallons to Liters Converter', description: 'Convert US or Imperial gallons to liters.', slug: 'gallons-to-liters-converter', category: 'conversions' },
+  { id: 342, name: 'Milliliters to Cups Converter', description: 'Convert milliliters to US or Imperial cups.', slug: 'milliliters-to-cups-converter', category: 'conversions' },
+  { id: 343, name: 'Cups to Milliliters Converter', description: 'Convert US or Imperial cups to milliliters.', slug: 'cups-to-milliliters-converter', category: 'conversions' },
+  { id: 344, name: 'Pints to Liters Converter', description: 'Convert US or Imperial pints to liters.', slug: 'pints-to-liters-converter', category: 'conversions' },
+  { id: 345, name: 'Liters to Pints Converter', description: 'Convert liters to US or Imperial pints.', slug: 'liters-to-pints-converter', category: 'conversions' },
+  { id: 346, name: 'Quarts to Liters Converter', description: 'Convert US or Imperial quarts to liters.', slug: 'quarts-to-liters-converter', category: 'conversions' },
+  { id: 347, name: 'Liters to Quarts Converter', description: 'Convert liters to US or Imperial quarts.', slug: 'liters-to-quarts-converter', category: 'conversions' },
+  { id: 348, name: 'Cubic Meters to Liters Converter', description: 'Convert cubic meters to liters.', slug: 'cubic-meters-to-liters-converter', category: 'conversions' },
+  { id: 349, name: 'Liters to Cubic Meters Converter', description: 'Convert liters to cubic meters.', slug: 'liters-to-cubic-meters-converter', category: 'conversions' },
+  { id: 350, name: 'Cubic Feet to Gallons Converter', description: 'Convert cubic feet to US or Imperial gallons.', slug: 'cubic-feet-to-gallons-converter', category: 'conversions' },
+  { id: 351, name: 'Gallons to Cubic Feet Converter', description: 'Convert US or Imperial gallons to cubic feet.', slug: 'gallons-to-cubic-feet-converter', category: 'conversions' },
+  { id: 352, name: 'Cubic Inches to Milliliters Converter', description: 'Convert cubic inches to milliliters.', slug: 'cubic-inches-to-milliliters-converter', category: 'conversions' },
+  { id: 353, name: 'Milliliters to Cubic Inches Converter', description: 'Convert milliliters to cubic inches.', slug: 'milliliters-to-cubic-inches-converter', category: 'conversions' },
+  { id: 354, name: 'Tablespoons to Milliliters Converter', description: 'Convert tablespoons to milliliters.', slug: 'tablespoons-to-milliliters-converter', category: 'conversions' },
+  { id: 355, name: 'Milliliters to Tablespoons Converter', description: 'Convert milliliters to tablespoons.', slug: 'milliliters-to-tablespoons-converter', category: 'conversions' },
+  { id: 356, name: 'Teaspoons to Milliliters Converter', description: 'Convert teaspoons to milliliters.', slug: 'teaspoons-to-milliliters-converter', category: 'conversions' },
+  { id: 357, name: 'Milliliters to Teaspoons Converter', description: 'Convert milliliters to teaspoons.', slug: 'milliliters-to-teaspoons-converter', category: 'conversions' },
+  { id: 358, name: 'Ounces (fl oz) to Milliliters Converter', description: 'Convert US or Imperial fluid ounces to milliliters.', slug: 'ounces-to-milliliters-converter', category: 'conversions' },
+  { id: 359, name: 'Milliliters to Ounces (fl oz) Converter', description: 'Convert milliliters to US or Imperial fluid ounces.', slug: 'milliliters-to-ounces-converter', category: 'conversions' },
+
   // Home Improvement
   {
     id: 1,

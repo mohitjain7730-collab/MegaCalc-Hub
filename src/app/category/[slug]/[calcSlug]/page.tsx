@@ -293,46 +293,25 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'square-meters-to-square-centimeters-converter': dynamic(() => import('@/components/calculators/conversions/square-meters-to-square-centimeters-converter')),
     'hectares-to-square-kilometers-converter': dynamic(() => import('@/components/calculators/conversions/hectares-to-square-kilometers-converter')),
     'square-kilometers-to-hectares-converter': dynamic(() => import('@/components/calculators/conversions/square-kilometers-to-hectares-converter')),
+    // Volume Conversions
+    'liters-to-gallons-converter': dynamic(() => import('@/components/calculators/conversions/liters-to-gallons-converter')),
+    'gallons-to-liters-converter': dynamic(() => import('@/components/calculators/conversions/gallons-to-liters-converter')),
+    'milliliters-to-cups-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-cups-converter')),
+    'cups-to-milliliters-converter': dynamic(() => import('@/components/calculators/conversions/cups-to-milliliters-converter')),
+    'pints-to-liters-converter': dynamic(() => import('@/components/calculators/conversions/pints-to-liters-converter')),
+    'liters-to-pints-converter': dynamic(() => import('@/components/calculators/conversions/liters-to-pints-converter')),
+    'quarts-to-liters-converter': dynamic(() => import('@/components/calculators/conversions/quarts-to-liters-converter')),
+    'liters-to-quarts-converter': dynamic(() => import('@/components/calculators/conversions/liters-to-quarts-converter')),
+    'cubic-meters-to-liters-converter': dynamic(() => import('@/components/calculators/conversions/cubic-meters-to-liters-converter')),
+    'liters-to-cubic-meters-converter': dynamic(() => import('@/components/calculators/conversions/liters-to-cubic-meters-converter')),
+    'cubic-feet-to-gallons-converter': dynamic(() => import('@/components/calculators/conversions/cubic-feet-to-gallons-converter')),
+    'gallons-to-cubic-feet-converter': dynamic(() => import('@/components/calculators/conversions/gallons-to-cubic-feet-converter')),
+    'cubic-inches-to-milliliters-converter': dynamic(() => import('@/components/calculators/conversions/cubic-inches-to-milliliters-converter')),
+    'milliliters-to-cubic-inches-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-cubic-inches-converter')),
+    'tablespoons-to-milliliters-converter': dynamic(() => import('@/components/calculators/conversions/tablespoons-to-milliliters-converter')),
+    'milliliters-to-tablespoons-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-tablespoons-converter')),
+    'teaspoons-to-milliliters-converter': dynamic(() => import('@/components/calculators/conversions/teaspoons-to-milliliters-converter')),
+    'milliliters-to-teaspoons-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-teaspoons-converter')),
+    'ounces-to-milliliters-converter': dynamic(() => import('@/components/calculators/conversions/ounces-to-milliliters-converter')),
+    'milliliters-to-ounces-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-ounces-converter')),
   };
-  
-export default function CalculatorPage({ params }: { params: { slug: string; calcSlug: string } }) {
-  const category = categories.find((c) => c.slug === params.slug);
-  const calculator = calculators.find(
-    (calc) => calc.category === params.slug && calc.slug === params.calcSlug
-  );
-
-  if (!category || !calculator) {
-    notFound();
-  }
-
-  const CalculatorComponent = calculatorComponents[calculator.slug] ?? null;
-
-  return (
-    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
-      <div className="w-full max-w-4xl">
-        <div className="mb-8">
-          <Button asChild variant="ghost" className="mb-4">
-            <Link href={`/category/${category.slug}`}>
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to {category.name}
-            </Link>
-          </Button>
-          <div className="flex items-center gap-4">
-            <CategoryIcon name={category.Icon} className="h-12 w-12 text-primary" strokeWidth={1.5} />
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-                {calculator.name}
-              </h1>
-              <p className="text-muted-foreground mt-1">{calculator.description}</p>
-            </div>
-          </div>
-        </div>
-        <Card>
-          <CardContent className='pt-6'>
-            {CalculatorComponent ? <CalculatorComponent /> : <p>Calculator component not found.</p>}
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  );
-}
