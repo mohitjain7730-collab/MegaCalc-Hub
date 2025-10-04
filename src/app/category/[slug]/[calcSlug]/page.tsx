@@ -295,3 +295,44 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'square-kilometers-to-hectares-converter': dynamic(() => import('@/components/calculators/conversions/square-kilometers-to-hectares-converter')),
   };
   
+export default function CalculatorPage({ params }: { params: { slug: string; calcSlug: string } }) {
+  const category = categories.find((c) => c.slug === params.slug);
+  const calculator = calculators.find(
+    (calc) => calc.category === params.slug && calc.slug === params.calcSlug
+  );
+
+  if (!category || !calculator) {
+    notFound();
+  }
+
+  const CalculatorComponent = calculatorComponents[calculator.slug] ?? null;
+
+  return (
+    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
+      <div className="w-full max-w-4xl">
+        <div className="mb-8">
+          <Button asChild variant="ghost" className="mb-4">
+            <Link href={`/category/${category.slug}`}>
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to {category.name}
+            </Link>
+          </Button>
+          <div className="flex items-center gap-4">
+            <CategoryIcon name={category.Icon} className="h-12 w-12 text-primary" strokeWidth={1.5} />
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+                {calculator.name}
+              </h1>
+              <p className="text-muted-foreground mt-1">{calculator.description}</p>
+            </div>
+          </div>
+        </div>
+        <Card>
+          <CardContent className='pt-6'>
+            {CalculatorComponent ? <CalculatorComponent /> : <p>Calculator component not found.</p>}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
