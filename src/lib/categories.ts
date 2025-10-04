@@ -99,12 +99,6 @@ export const categories: Category[] = [
     Icon: 'ArrowRightLeft',
   },
   {
-    name: 'Length Conversions',
-    slug: 'length-conversions',
-    description: 'A collection of calculators for converting between different units of length.',
-    Icon: 'ArrowRightLeft',
-  },
-  {
     name: 'Home Improvement',
     slug: 'home-improvement',
     description: 'Plan your next project, from paint to mortgage.',
