@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
 
@@ -78,10 +77,10 @@ export default function MetersToFeetConverter() {
           </CardContent>
         </Card>
       )}
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="formula">
-          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Formula & Explanation</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">Formula</h4>
               <p className='font-mono p-2 bg-muted rounded-md'>Feet = Meters × 3.28084</p>
@@ -90,51 +89,49 @@ export default function MetersToFeetConverter() {
               <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
               <p>The international foot is defined as exactly 0.3048 meters. To convert meters to feet, you divide by 0.3048, which is the same as multiplying by its reciprocal (approximately 3.28084). For example, a 10-meter diving platform is 10 × 3.28084 ≈ 32.81 feet high.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="conversion-table">
-          <AccordionTrigger>Conversion Table</AccordionTrigger>
-          <AccordionContent>
-             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Meters (m)</TableHead>
-                  <TableHead className="text-right">Feet (ft)</TableHead>
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Meters (m)</TableHead>
+                <TableHead className="text-right">Feet (ft)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.meters}>
+                  <TableCell>{item.meters}</TableCell>
+                  <TableCell className="text-right">{item.feet.toFixed(2)}</TableCell>
                 </TableRow>
-              </TableHeader>
-              <TableBody>
-                {conversionTable.map((item) => (
-                  <TableRow key={item.meters}>
-                    <TableCell>{item.meters}</TableCell>
-                    <TableCell className="text-right">{item.feet.toFixed(2)}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="faq">
-          <AccordionTrigger>FAQ</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">FAQ</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">How many feet are in a meter?</h4>
               <p>There are approximately 3.28084 feet in one meter.</p>
             </div>
-             <div>
+            <div>
               <h4 className="font-semibold text-foreground mb-1">Why do the US and UK use different units?</h4>
               <p>The US primarily uses the imperial system (inches, feet, pounds), a system inherited from the British Empire. While the UK has officially adopted the metric system (meters, grams), imperial units are still commonly used in everyday life. Most of the world uses the metric system for its simplicity and base-ten structure.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-converters">
-          <AccordionTrigger>Related Converters</AccordionTrigger>
-          <AccordionContent className="space-y-2">
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
+          <div className="space-y-2">
             <p><Link href="/category/conversions/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
             <p><Link href="/category/conversions/centimeters-to-inches-converter" className="text-primary underline">Centimeters to Inches Converter</Link></p>
             <p><Link href="/category/conversions/meters-to-yards-converter" className="text-primary underline">Meters to Yards Converter</Link></p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

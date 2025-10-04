@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
 
@@ -76,10 +75,10 @@ export default function NauticalMilesToKilometersConverter() {
           </CardContent>
         </Card>
       )}
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="formula">
-          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Formula & Explanation</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">Formula</h4>
               <p className='font-mono p-2 bg-muted rounded-md'>Kilometers = Nautical Miles × 1.852</p>
@@ -88,32 +87,30 @@ export default function NauticalMilesToKilometersConverter() {
               <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
               <p>One nautical mile is internationally defined as exactly 1,852 meters, or 1.852 kilometers. To convert from nautical miles to kilometers, you simply multiply the nautical mile value by 1.852. For example, a 200 nautical mile journey is 200 × 1.852 = 370.4 kilometers.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="conversion-table">
-          <AccordionTrigger>Conversion Table</AccordionTrigger>
-          <AccordionContent>
-             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Nautical Miles (nmi)</TableHead>
-                  <TableHead className="text-right">Kilometers (km)</TableHead>
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Nautical Miles (nmi)</TableHead>
+                <TableHead className="text-right">Kilometers (km)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.nmi}>
+                  <TableCell>{item.nmi}</TableCell>
+                  <TableCell className="text-right">{item.km.toFixed(2)}</TableCell>
                 </TableRow>
-              </TableHeader>
-              <TableBody>
-                {conversionTable.map((item) => (
-                  <TableRow key={item.nmi}>
-                    <TableCell>{item.nmi}</TableCell>
-                    <TableCell className="text-right">{item.km.toFixed(2)}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="faq">
-          <AccordionTrigger>FAQ</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">FAQ</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What is a nautical mile?</h4>
               <p>A nautical mile is a unit of measurement used in air and marine navigation. It is based on the circumference of the Earth and is equal to one minute of latitude.</p>
@@ -122,16 +119,16 @@ export default function NauticalMilesToKilometersConverter() {
               <h4 className="font-semibold text-foreground mb-1">Is a nautical mile the same as a regular mile?</h4>
               <p>No. A nautical mile is approximately 1.15 statute (regular) miles.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-converters">
-          <AccordionTrigger>Related Converters</AccordionTrigger>
-          <AccordionContent className="space-y-2">
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
+          <div className="space-y-2">
             <p><Link href="/category/conversions/kilometers-to-nautical-miles-converter" className="text-primary underline">Kilometers to Nautical Miles Converter</Link></p>
             <p><Link href="/category/conversions/miles-to-kilometers-converter" className="text-primary underline">Miles to Kilometers Converter</Link></p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

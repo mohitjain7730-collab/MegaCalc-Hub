@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
 
@@ -78,10 +77,10 @@ export default function CentimetersToInchesConverter() {
           </CardContent>
         </Card>
       )}
-      <Accordion type="single" collapsible className="w-full">
-         <AccordionItem value="formula">
-          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Formula & Explanation</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">Formula</h4>
               <p className='font-mono p-2 bg-muted rounded-md'>Inches = Centimeters × 0.393701</p>
@@ -90,32 +89,30 @@ export default function CentimetersToInchesConverter() {
               <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
               <p>The conversion is based on the international definition where 1 inch is exactly 2.54 centimeters. To convert centimeters to inches, you divide by 2.54, which is the same as multiplying by 1/2.54 (approximately 0.393701). For example, 30 cm is 30 × 0.393701 ≈ 11.81 inches.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="conversion-table">
-          <AccordionTrigger>Conversion Table</AccordionTrigger>
-          <AccordionContent>
-             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Centimeters (cm)</TableHead>
-                  <TableHead className="text-right">Inches (in)</TableHead>
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Centimeters (cm)</TableHead>
+                <TableHead className="text-right">Inches (in)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.cm}>
+                  <TableCell>{item.cm}</TableCell>
+                  <TableCell className="text-right">{item.inches.toFixed(2)}</TableCell>
                 </TableRow>
-              </TableHeader>
-              <TableBody>
-                {conversionTable.map((item) => (
-                  <TableRow key={item.cm}>
-                    <TableCell>{item.cm}</TableCell>
-                    <TableCell className="text-right">{item.inches.toFixed(2)}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="faq">
-          <AccordionTrigger>FAQ</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">FAQ</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">How many centimeters are in an inch?</h4>
               <p>There are exactly 2.54 centimeters in one inch.</p>
@@ -124,17 +121,17 @@ export default function CentimetersToInchesConverter() {
               <h4 className="font-semibold text-foreground mb-1">Why do the US and UK use different units?</h4>
               <p>The US primarily uses the imperial system (inches, feet, pounds), a system inherited from the British Empire. While the UK has officially adopted the metric system (meters, grams), imperial units are still commonly used in everyday life. Most of the world uses the metric system for its simplicity and base-ten structure.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-converters">
-          <AccordionTrigger>Related Converters</AccordionTrigger>
-          <AccordionContent className="space-y-2">
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
+          <div className="space-y-2">
             <p><Link href="/category/conversions/inches-to-centimeters-converter" className="text-primary underline">Inches to Centimeters Converter</Link></p>
             <p><Link href="/category/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
             <p><Link href="/category/conversions/millimeters-to-inches-converter" className="text-primary underline">Millimeters to Inches Converter</Link></p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

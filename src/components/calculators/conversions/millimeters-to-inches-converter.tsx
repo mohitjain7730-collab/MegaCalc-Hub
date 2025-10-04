@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
 
@@ -76,10 +75,10 @@ export default function MillimetersToInchesConverter() {
           </CardContent>
         </Card>
       )}
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="formula">
-          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Formula & Explanation</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">Formula</h4>
               <p className='font-mono p-2 bg-muted rounded-md'>Inches = Millimeters × 0.0393701</p>
@@ -88,46 +87,44 @@ export default function MillimetersToInchesConverter() {
               <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
               <p>One inch is defined as exactly 25.4 millimeters. To convert millimeters to inches, you divide the millimeter value by 25.4, which is the same as multiplying by its reciprocal (approximately 0.0393701). For example, a 10mm wrench is 10 × 0.0393701 ≈ 0.39 inches wide.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="conversion-table">
-          <AccordionTrigger>Conversion Table</AccordionTrigger>
-          <AccordionContent>
-             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Millimeters (mm)</TableHead>
-                  <TableHead className="text-right">Inches (in)</TableHead>
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Millimeters (mm)</TableHead>
+                <TableHead className="text-right">Inches (in)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.mm}>
+                  <TableCell>{item.mm}</TableCell>
+                  <TableCell className="text-right">{item.inches.toFixed(3)}</TableCell>
                 </TableRow>
-              </TableHeader>
-              <TableBody>
-                {conversionTable.map((item) => (
-                  <TableRow key={item.mm}>
-                    <TableCell>{item.mm}</TableCell>
-                    <TableCell className="text-right">{item.inches.toFixed(3)}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="faq">
-          <AccordionTrigger>FAQ</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">FAQ</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">How many millimeters are in an inch?</h4>
               <p>There are exactly 25.4 millimeters in one inch.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-converters">
-          <AccordionTrigger>Related Converters</AccordionTrigger>
-          <AccordionContent className="space-y-2">
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
+          <div className="space-y-2">
             <p><Link href="/category/conversions/inches-to-millimeters-converter" className="text-primary underline">Inches to Millimeters Converter</Link></p>
             <p><Link href="/category/conversions/centimeters-to-inches-converter" className="text-primary underline">Centimeters to Inches Converter</Link></p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

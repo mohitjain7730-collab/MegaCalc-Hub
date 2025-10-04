@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
 
@@ -76,10 +75,10 @@ export default function ChainsToMetersConverter() {
           </CardContent>
         </Card>
       )}
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="formula">
-          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Formula & Explanation</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">Formula</h4>
               <p className='font-mono p-2 bg-muted rounded-md'>Meters = Chains × 20.1168</p>
@@ -88,32 +87,30 @@ export default function ChainsToMetersConverter() {
               <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
               <p>One chain is an old surveying unit equal to 66 feet. To convert chains to meters, you multiply the number of chains by the conversion factor of 20.1168. For example, a property line of 10 chains is 10 × 20.1168 = 201.168 meters long.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="conversion-table">
-          <AccordionTrigger>Conversion Table</AccordionTrigger>
-          <AccordionContent>
-             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Chains</TableHead>
-                  <TableHead className="text-right">Meters (m)</TableHead>
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Chains</TableHead>
+                <TableHead className="text-right">Meters (m)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.chains}>
+                  <TableCell>{item.chains}</TableCell>
+                  <TableCell className="text-right">{item.meters.toFixed(3)}</TableCell>
                 </TableRow>
-              </TableHeader>
-              <TableBody>
-                {conversionTable.map((item) => (
-                  <TableRow key={item.chains}>
-                    <TableCell>{item.chains}</TableCell>
-                    <TableCell className="text-right">{item.meters.toFixed(3)}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="faq">
-          <AccordionTrigger>FAQ</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">FAQ</h3>
+          <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What is a chain?</h4>
               <p>A chain is a unit of length used in surveying, equal to 66 feet or 22 yards. It was historically significant in measuring land in the British Empire and the United States.</p>
@@ -122,17 +119,17 @@ export default function ChainsToMetersConverter() {
               <h4 className="font-semibold text-foreground mb-1">Why do some old land deeds use chains?</h4>
               <p>The chain was a convenient unit for land measurement because 10 square chains equals one acre, making area calculations straightforward for surveyors using a physical chain.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-         <AccordionItem value="related-converters">
-          <AccordionTrigger>Related Converters</AccordionTrigger>
-          <AccordionContent className="space-y-2">
+          </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
+          <div className="space-y-2">
             <p><Link href="/category/conversions/rods-to-feet-converter" className="text-primary underline">Rods to Feet Converter</Link></p>
             <p><Link href="/category/conversions/yards-to-meters-converter" className="text-primary underline">Yards to Meters Converter</Link></p>
             <p><Link href="/category/conversions/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
