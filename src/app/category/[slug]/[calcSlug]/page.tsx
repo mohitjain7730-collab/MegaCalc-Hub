@@ -315,3 +315,46 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'ounces-to-milliliters-converter': dynamic(() => import('@/components/calculators/conversions/ounces-to-milliliters-converter')),
     'milliliters-to-ounces-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-ounces-converter')),
   };
+
+  export default function CalculatorPage({
+    params,
+  }: {
+    params: { slug: string; calcSlug: string };
+  }) {
+    const category = categories.find((c) => c.slug === params.slug);
+    const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
+  
+    if (!category || !calculator) {
+      notFound();
+    }
+  
+    const CalculatorComponent = calculatorComponents[calculator.slug];
+  
+    return (
+      <div className="flex justify-center p-4 sm:p-8">
+        <div className="w-full max-w-4xl">
+          <Button asChild variant="ghost" className="mb-4">
+            <Link href={`/category/${params.slug}`}>
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to {category.name}
+            </Link>
+          </Button>
+          <Card>
+            <CardHeader>
+              <div className="flex items-start gap-4">
+                <CategoryIcon name={category.Icon} className="h-8 w-8 text-primary mt-1" strokeWidth={1.5} />
+                <div>
+                  <CardTitle className="text-2xl md:text-3xl">{calculator.name}</CardTitle>
+                  <CardDescription className="mt-2 text-base">{calculator.description}</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              {CalculatorComponent ? <CalculatorComponent /> : <p>Calculator not found.</p>}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+  
