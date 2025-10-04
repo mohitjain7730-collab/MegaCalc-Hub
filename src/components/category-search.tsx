@@ -37,6 +37,12 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
         />
       </div>
 
+      {categorySlug === 'conversions' && (
+        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">
+          Length conversions
+        </h2>
+      )}
+
       {filteredCalculators.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCalculators.map((calc) => (
