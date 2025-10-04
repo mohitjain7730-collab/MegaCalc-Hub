@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -54,7 +53,7 @@ export default function PoundsToKilogramsConverter() {
               <FormItem>
                 <FormLabel>Pounds (lbs)</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} onChange={field.onChange} />
+                  <Input type="number" {...field} value={field.value ?? ''} onChange={field.onChange} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
