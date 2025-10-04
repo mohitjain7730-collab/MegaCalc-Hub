@@ -69,7 +69,26 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
   ].includes(calc.slug));
 
   const weightMassConverters = filteredCalculators.filter(calc => [
-    // Future weight/mass conversion slugs will go here
+    'kilograms-to-pounds-converter',
+    'pounds-to-kilograms-converter',
+    'grams-to-ounces-converter',
+    'ounces-to-grams-converter',
+    'milligrams-to-grams-converter',
+    'grams-to-milligrams-converter',
+    'kilograms-to-ounces-converter',
+    'ounces-to-kilograms-converter',
+    'stones-to-pounds-converter',
+    'pounds-to-stones-converter',
+    'tons-metric-to-pounds-converter',
+    'pounds-to-tons-metric-converter',
+    'short-tons-us-to-metric-tons-converter',
+    'metric-tons-to-short-tons-us-converter',
+    'micrograms-to-milligrams-converter',
+    'milligrams-to-micrograms-converter',
+    'carats-to-grams-converter',
+    'grams-to-carats-converter',
+    'kilograms-to-stones-converter',
+    'stones-to-kilograms-converter',
   ].includes(calc.slug));
 
   const otherCalculators = filteredCalculators.filter(calc => 
@@ -127,7 +146,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                     </div>
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Weight/Mass Conversions</h2>
-                        {renderCalculatorGrid(weightMassConverters, categorySlug, "No weight/mass converters found. Coming soon!")}
+                        {renderCalculatorGrid(weightMassConverters, categorySlug, "No weight/mass converters found.")}
                     </div>
                 </>
             ) : null}

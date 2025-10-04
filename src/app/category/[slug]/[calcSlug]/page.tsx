@@ -314,6 +314,27 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'milliliters-to-teaspoons-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-teaspoons-converter')),
     'ounces-to-milliliters-converter': dynamic(() => import('@/components/calculators/conversions/ounces-to-milliliters-converter')),
     'milliliters-to-ounces-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-ounces-converter')),
+    // Weight/Mass Conversions
+    'kilograms-to-pounds-converter': dynamic(() => import('@/components/calculators/conversions/kilograms-to-pounds-converter')),
+    'pounds-to-kilograms-converter': dynamic(() => import('@/components/calculators/conversions/pounds-to-kilograms-converter')),
+    'grams-to-ounces-converter': dynamic(() => import('@/components/calculators/conversions/grams-to-ounces-converter')),
+    'ounces-to-grams-converter': dynamic(() => import('@/components/calculators/conversions/ounces-to-grams-converter')),
+    'milligrams-to-grams-converter': dynamic(() => import('@/components/calculators/conversions/milligrams-to-grams-converter')),
+    'grams-to-milligrams-converter': dynamic(() => import('@/components/calculators/conversions/grams-to-milligrams-converter')),
+    'kilograms-to-ounces-converter': dynamic(() => import('@/components/calculators/conversions/kilograms-to-ounces-converter')),
+    'ounces-to-kilograms-converter': dynamic(() => import('@/components/calculators/conversions/ounces-to-kilograms-converter')),
+    'stones-to-pounds-converter': dynamic(() => import('@/components/calculators/conversions/stones-to-pounds-converter')),
+    'pounds-to-stones-converter': dynamic(() => import('@/components/calculators/conversions/pounds-to-stones-converter')),
+    'tons-metric-to-pounds-converter': dynamic(() => import('@/components/calculators/conversions/tons-metric-to-pounds-converter')),
+    'pounds-to-tons-metric-converter': dynamic(() => import('@/components/calculators/conversions/pounds-to-tons-metric-converter')),
+    'short-tons-us-to-metric-tons-converter': dynamic(() => import('@/components/calculators/conversions/short-tons-us-to-metric-tons-converter')),
+    'metric-tons-to-short-tons-us-converter': dynamic(() => import('@/components/calculators/conversions/metric-tons-to-short-tons-us-converter')),
+    'micrograms-to-milligrams-converter': dynamic(() => import('@/components/calculators/conversions/micrograms-to-milligrams-converter')),
+    'milligrams-to-micrograms-converter': dynamic(() => import('@/components/calculators/conversions/milligrams-to-micrograms-converter')),
+    'carats-to-grams-converter': dynamic(() => import('@/components/calculators/conversions/carats-to-grams-converter')),
+    'grams-to-carats-converter': dynamic(() => import('@/components/calculators/conversions/grams-to-carats-converter')),
+    'kilograms-to-stones-converter': dynamic(() => import('@/components/calculators/conversions/kilograms-to-stones-converter')),
+    'stones-to-kilograms-converter': dynamic(() => import('@/components/calculators/conversions/stones-to-kilograms-converter')),
   };
 
   export default function CalculatorPage({
@@ -357,4 +378,3 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
       </div>
     );
   }
-  

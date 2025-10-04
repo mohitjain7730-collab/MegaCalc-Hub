@@ -927,6 +927,27 @@ export const calculators: Calculator[] = [
   { id: 357, name: 'Milliliters to Teaspoons Converter', description: 'Convert milliliters to teaspoons.', slug: 'milliliters-to-teaspoons-converter', category: 'conversions' },
   { id: 358, name: 'Ounces (fl oz) to Milliliters Converter', description: 'Convert US or Imperial fluid ounces to milliliters.', slug: 'ounces-to-milliliters-converter', category: 'conversions' },
   { id: 359, name: 'Milliliters to Ounces (fl oz) Converter', description: 'Convert milliliters to US or Imperial fluid ounces.', slug: 'milliliters-to-ounces-converter', category: 'conversions' },
+  // Weight/Mass Conversions
+  { id: 360, name: 'Kilograms to Pounds Converter', description: 'Convert kilograms to pounds.', slug: 'kilograms-to-pounds-converter', category: 'conversions' },
+  { id: 361, name: 'Pounds to Kilograms Converter', description: 'Convert pounds to kilograms.', slug: 'pounds-to-kilograms-converter', category: 'conversions' },
+  { id: 362, name: 'Grams to Ounces Converter', description: 'Convert grams to ounces.', slug: 'grams-to-ounces-converter', category: 'conversions' },
+  { id: 363, name: 'Ounces to Grams Converter', description: 'Convert ounces to grams.', slug: 'ounces-to-grams-converter', category: 'conversions' },
+  { id: 364, name: 'Milligrams to Grams Converter', description: 'Convert milligrams to grams.', slug: 'milligrams-to-grams-converter', category: 'conversions' },
+  { id: 365, name: 'Grams to Milligrams Converter', description: 'Convert grams to milligrams.', slug: 'grams-to-milligrams-converter', category: 'conversions' },
+  { id: 366, name: 'Kilograms to Ounces Converter', description: 'Convert kilograms to ounces.', slug: 'kilograms-to-ounces-converter', category: 'conversions' },
+  { id: 367, name: 'Ounces to Kilograms Converter', description: 'Convert ounces to kilograms.', slug: 'ounces-to-kilograms-converter', category: 'conversions' },
+  { id: 368, name: 'Stones to Pounds Converter', description: 'Convert stones to pounds.', slug: 'stones-to-pounds-converter', category: 'conversions' },
+  { id: 369, name: 'Pounds to Stones Converter', description: 'Convert pounds to stones.', slug: 'pounds-to-stones-converter', category: 'conversions' },
+  { id: 370, name: 'Tons (Metric) to Pounds Converter', description: 'Convert metric tons to pounds.', slug: 'tons-metric-to-pounds-converter', category: 'conversions' },
+  { id: 371, name: 'Pounds to Tons (Metric) Converter', description: 'Convert pounds to metric tons.', slug: 'pounds-to-tons-metric-converter', category: 'conversions' },
+  { id: 372, name: 'Short Tons (US) to Metric Tons Converter', description: 'Convert US short tons to metric tons.', slug: 'short-tons-us-to-metric-tons-converter', category: 'conversions' },
+  { id: 373, name: 'Metric Tons to Short Tons (US) Converter', description: 'Convert metric tons to US short tons.', slug: 'metric-tons-to-short-tons-us-converter', category: 'conversions' },
+  { id: 374, name: 'Micrograms to Milligrams Converter', description: 'Convert micrograms to milligrams.', slug: 'micrograms-to-milligrams-converter', category: 'conversions' },
+  { id: 375, name: 'Milligrams to Micrograms Converter', description: 'Convert milligrams to micrograms.', slug: 'milligrams-to-micrograms-converter', category: 'conversions' },
+  { id: 376, name: 'Carats to Grams Converter', description: 'Convert carats to grams.', slug: 'carats-to-grams-converter', category: 'conversions' },
+  { id: 377, name: 'Grams to Carats Converter', description: 'Convert grams to carats.', slug: 'grams-to-carats-converter', category: 'conversions' },
+  { id: 378, name: 'Kilograms to Stones Converter', description: 'Convert kilograms to stones.', slug: 'kilograms-to-stones-converter', category: 'conversions' },
+  { id: 379, name: 'Stones to Kilograms Converter', description: 'Convert stones to kilograms.', slug: 'stones-to-kilograms-converter', category: 'conversions' },
 
   // Home Improvement
   {
