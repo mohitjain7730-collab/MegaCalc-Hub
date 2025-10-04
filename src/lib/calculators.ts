@@ -948,7 +948,6 @@ export const calculators: Calculator[] = [
   { id: 377, name: 'Grams to Carats Converter', description: 'Convert grams to carats.', slug: 'grams-to-carats-converter', category: 'conversions' },
   { id: 378, name: 'Kilograms to Stones Converter', description: 'Convert kilograms to stones.', slug: 'kilograms-to-stones-converter', category: 'conversions' },
   { id: 379, name: 'Stones to Kilograms Converter', description: 'Convert stones to kilograms.', slug: 'stones-to-kilograms-converter', category: 'conversions' },
-
   // Home Improvement
   {
     id: 1,
@@ -1735,4 +1734,27 @@ export const calculators: Calculator[] = [
     slug: 'working-days-business-days-calculator',
     category: 'time-date',
   },
+  // Temperature Conversions
+  { id: 380, name: 'Celsius to Fahrenheit Converter', description: 'Convert Celsius to Fahrenheit.', slug: 'celsius-to-fahrenheit-converter', category: 'conversions' },
+  { id: 381, name: 'Fahrenheit to Celsius Converter', description: 'Convert Fahrenheit to Celsius.', slug: 'fahrenheit-to-celsius-converter', category: 'conversions' },
+  { id: 382, name: 'Celsius to Kelvin Converter', description: 'Convert Celsius to Kelvin.', slug: 'celsius-to-kelvin-converter', category: 'conversions' },
+  { id: 383, name: 'Kelvin to Celsius Converter', description: 'Convert Kelvin to Celsius.', slug: 'kelvin-to-celsius-converter', category: 'conversions' },
+  { id: 384, name: 'Fahrenheit to Kelvin Converter', description: 'Convert Fahrenheit to Kelvin.', slug: 'fahrenheit-to-kelvin-converter', category: 'conversions' },
+  { id: 385, name: 'Kelvin to Fahrenheit Converter', description: 'Convert Kelvin to Fahrenheit.', slug: 'kelvin-to-fahrenheit-converter', category: 'conversions' },
+  { id: 386, name: 'Celsius to Rankine Converter', description: 'Convert Celsius to Rankine.', slug: 'celsius-to-rankine-converter', category: 'conversions' },
+  { id: 387, name: 'Rankine to Celsius Converter', description: 'Convert Rankine to Celsius.', slug: 'rankine-to-celsius-converter', category: 'conversions' },
+  { id: 388, name: 'Fahrenheit to Rankine Converter', description: 'Convert Fahrenheit to Rankine.', slug: 'fahrenheit-to-rankine-converter', category: 'conversions' },
+  { id: 389, name: 'Rankine to Fahrenheit Converter', description: 'Convert Rankine to Fahrenheit.', slug: 'rankine-to-fahrenheit-converter', category: 'conversions' },
+  { id: 390, name: 'Kelvin to Rankine Converter', description: 'Convert Kelvin to Rankine.', slug: 'kelvin-to-rankine-converter', category: 'conversions' },
+  { id: 391, name: 'Rankine to Kelvin Converter', description: 'Convert Rankine to Kelvin.', slug: 'rankine-to-kelvin-converter', category: 'conversions' },
+  { id: 392, name: 'Reaumur to Celsius Converter', description: 'Convert Reaumur to Celsius.', slug: 'reaumur-to-celsius-converter', category: 'conversions' },
+  { id: 393, name: 'Celsius to Reaumur Converter', description: 'Convert Celsius to Reaumur.', slug: 'celsius-to-reaumur-converter', category: 'conversions' },
+  { id: 394, name: 'Fahrenheit to Reaumur Converter', description: 'Convert Fahrenheit to Reaumur.', slug: 'fahrenheit-to-reaumur-converter', category: 'conversions' },
+  { id: 395, name: 'Reaumur to Fahrenheit Converter', description: 'Convert Reaumur to Fahrenheit.', slug: 'reaumur-to-fahrenheit-converter', category: 'conversions' },
+  { id: 396, name: 'Kelvin to Reaumur Converter', description: 'Convert Kelvin to Reaumur.', slug: 'kelvin-to-reaumur-converter', category: 'conversions' },
+  { id: 397, name: 'Reaumur to Kelvin Converter', description: 'Convert Reaumur to Kelvin.', slug: 'reaumur-to-kelvin-converter', category: 'conversions' },
+  { id: 398, name: 'Rankine to Reaumur Converter', description: 'Convert Rankine to Reaumur.', slug: 'rankine-to-reaumur-converter', category: 'conversions' },
+  { id: 399, name: 'Reaumur to Rankine Converter', description: 'Convert Reaumur to Rankine.', slug: 'reaumur-to-rankine-converter', category: 'conversions' },
 ];
+
+    

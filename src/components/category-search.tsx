@@ -92,7 +92,26 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
   ].includes(calc.slug));
 
   const temperatureConverters = filteredCalculators.filter(calc => [
-    // Temperature calculator slugs will go here
+    'celsius-to-fahrenheit-converter',
+    'fahrenheit-to-celsius-converter',
+    'celsius-to-kelvin-converter',
+    'kelvin-to-celsius-converter',
+    'fahrenheit-to-kelvin-converter',
+    'kelvin-to-fahrenheit-converter',
+    'celsius-to-rankine-converter',
+    'rankine-to-celsius-converter',
+    'fahrenheit-to-rankine-converter',
+    'rankine-to-fahrenheit-converter',
+    'kelvin-to-rankine-converter',
+    'rankine-to-kelvin-converter',
+    'reaumur-to-celsius-converter',
+    'celsius-to-reaumur-converter',
+    'fahrenheit-to-reaumur-converter',
+    'reaumur-to-fahrenheit-converter',
+    'kelvin-to-reaumur-converter',
+    'reaumur-to-kelvin-converter',
+    'rankine-to-reaumur-converter',
+    'reaumur-to-rankine-converter',
   ].includes(calc.slug));
 
   const otherCalculators = filteredCalculators.filter(calc => 
@@ -186,3 +205,5 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     </>
   );
 }
+
+    
