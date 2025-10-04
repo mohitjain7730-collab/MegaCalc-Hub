@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 const formSchema = z.object({
   pints: z.coerce.number().positive('Must be a positive number'),
@@ -41,6 +42,14 @@ export default function PintsToLitersConverter() {
       setResult(values.pints * IMPERIAL_PINT_TO_LITERS);
     }
   };
+  
+  const pintType = form.watch('pintType');
+  const conversionTable = [
+    { pints: 1, liters: 1 * (pintType === 'us' ? US_PINT_TO_LITERS : IMPERIAL_PINT_TO_LITERS) },
+    { pints: 2, liters: 2 * (pintType === 'us' ? US_PINT_TO_LITERS : IMPERIAL_PINT_TO_LITERS) },
+    { pints: 8, liters: 8 * (pintType === 'us' ? US_PINT_TO_LITERS : IMPERIAL_PINT_TO_LITERS) }, // 1 gallon
+  ];
+
 
   return (
     <div className="space-y-8">
@@ -93,7 +102,26 @@ export default function PintsToLitersConverter() {
           </CardContent>
         </Card>
       )}
-      <div className="space-y-8">
+       <div className="space-y-8">
+        <div>
+            <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>{pintType === 'us' ? 'US' : 'Imperial'} Pints</TableHead>
+                        <TableHead className="text-right">Liters</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                {conversionTable.map((item) => (
+                    <TableRow key={item.pints}>
+                        <TableCell>{item.pints}</TableCell>
+                        <TableCell className="text-right">{item.liters.toFixed(3)}</TableCell>
+                    </TableRow>
+                ))}
+                </TableBody>
+            </Table>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">

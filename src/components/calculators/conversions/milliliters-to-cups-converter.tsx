@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -11,6 +10,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 const formSchema = z.object({
   ml: z.coerce.number().positive('Must be a positive number'),
@@ -37,6 +38,13 @@ export default function MillilitersToCupsConverter() {
       imperialCups: values.ml * ML_TO_IMPERIAL_CUP,
     });
   };
+  
+  const conversionTable = [
+    { ml: 100, usCups: 100 * ML_TO_US_CUP, imperialCups: 100 * ML_TO_IMPERIAL_CUP },
+    { ml: 236.59, usCups: 1, imperialCups: 236.59 * ML_TO_IMPERIAL_CUP },
+    { ml: 500, usCups: 500 * ML_TO_US_CUP, imperialCups: 500 * ML_TO_IMPERIAL_CUP },
+    { ml: 1000, usCups: 1000 * ML_TO_US_CUP, imperialCups: 1000 * ML_TO_IMPERIAL_CUP },
+  ];
 
   return (
     <div className="space-y-8">
@@ -81,10 +89,41 @@ export default function MillilitersToCupsConverter() {
         </Card>
       )}
       <div className="space-y-8">
+         <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Milliliters (ml)</TableHead>
+                <TableHead className="text-right">US Cups</TableHead>
+                <TableHead className="text-right">Imperial Cups</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.ml}>
+                  <TableCell>{item.ml.toFixed(0)}</TableCell>
+                  <TableCell className="text-right">{item.usCups.toFixed(2)}</TableCell>
+                  <TableCell className="text-right">{item.imperialCups.toFixed(2)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div>
+            <h3 className="text-lg font-semibold mb-2">FAQ</h3>
+            <div className="text-muted-foreground space-y-4">
+                <div>
+                <h4 className="font-semibold text-foreground mb-1">What's the difference between US and Imperial cups?</h4>
+                <p>A US customary cup is about 236.59 ml, while an Imperial cup is larger at about 284.13 ml. This is important for recipes from different regions.</p>
+                </div>
+            </div>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
             <p><Link href="/category/conversions/cups-to-milliliters-converter" className="text-primary underline">Cups to Milliliters Converter</Link></p>
+             <p><Link href="/category/conversions/liters-to-gallons-converter" className="text-primary underline">Liters to Gallons Converter</Link></p>
           </div>
         </div>
       </div>

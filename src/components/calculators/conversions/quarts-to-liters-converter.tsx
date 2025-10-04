@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const formSchema = z.object({
   quarts: z.coerce.number().positive('Must be a positive number'),
@@ -41,6 +41,13 @@ export default function QuartsToLitersConverter() {
       setResult(values.quarts * IMPERIAL_QUART_TO_LITERS);
     }
   };
+
+  const quartType = form.watch('quartType');
+  const conversionTable = [
+    { quarts: 1, liters: 1 * (quartType === 'us' ? US_QUART_TO_LITERS : IMPERIAL_QUART_TO_LITERS) },
+    { quarts: 4, liters: 4 * (quartType === 'us' ? US_QUART_TO_LITERS : IMPERIAL_QUART_TO_LITERS) }, // 1 gallon
+    { quarts: 10, liters: 10 * (quartType === 'us' ? US_QUART_TO_LITERS : IMPERIAL_QUART_TO_LITERS) },
+  ];
 
   return (
     <div className="space-y-8">
@@ -94,6 +101,25 @@ export default function QuartsToLitersConverter() {
         </Card>
       )}
       <div className="space-y-8">
+         <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>{quartType === 'us' ? 'US' : 'Imperial'} Quarts</TableHead>
+                <TableHead className="text-right">Liters</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.quarts}>
+                  <TableCell>{item.quarts}</TableCell>
+                  <TableCell className="text-right">{item.liters.toFixed(3)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">

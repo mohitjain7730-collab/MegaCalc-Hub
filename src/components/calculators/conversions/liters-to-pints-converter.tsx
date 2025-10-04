@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -8,9 +7,10 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const formSchema = z.object({
   liters: z.coerce.number().positive('Must be a positive number'),
@@ -37,6 +37,12 @@ export default function LitersToPintsConverter() {
       imperialPints: values.liters * LITERS_TO_IMPERIAL_PINTS,
     });
   };
+  
+  const conversionTable = [
+    { liters: 1, usPints: 1 * LITERS_TO_US_PINTS, imperialPints: 1 * LITERS_TO_IMPERIAL_PINTS },
+    { liters: 2, usPints: 2 * LITERS_TO_US_PINTS, imperialPints: 2 * LITERS_TO_IMPERIAL_PINTS },
+    { liters: 5, usPints: 5 * LITERS_TO_US_PINTS, imperialPints: 5 * LITERS_TO_IMPERIAL_PINTS },
+  ];
 
   return (
     <div className="space-y-8">
@@ -81,6 +87,27 @@ export default function LitersToPintsConverter() {
         </Card>
       )}
       <div className="space-y-8">
+        <div>
+            <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+            <Table>
+                <TableHeader>
+                <TableRow>
+                    <TableHead>Liters (L)</TableHead>
+                    <TableHead className="text-right">US Pints</TableHead>
+                    <TableHead className="text-right">Imperial Pints</TableHead>
+                </TableRow>
+                </TableHeader>
+                <TableBody>
+                {conversionTable.map((item) => (
+                    <TableRow key={item.liters}>
+                    <TableCell>{item.liters}</TableCell>
+                    <TableCell className="text-right">{item.usPints.toFixed(2)}</TableCell>
+                    <TableCell className="text-right">{item.imperialPints.toFixed(2)}</TableCell>
+                    </TableRow>
+                ))}
+                </TableBody>
+            </Table>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">FAQ</h3>
           <div className="text-muted-foreground space-y-4">

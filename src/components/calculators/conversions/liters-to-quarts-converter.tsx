@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -11,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const formSchema = z.object({
   liters: z.coerce.number().positive('Must be a positive number'),
@@ -37,6 +37,12 @@ export default function LitersToQuartsConverter() {
       imperialQuarts: values.liters * LITERS_TO_IMPERIAL_QUARTS,
     });
   };
+  
+  const conversionTable = [
+    { liters: 1, usQuarts: 1 * LITERS_TO_US_QUARTS, imperialQuarts: 1 * LITERS_TO_IMPERIAL_QUARTS },
+    { liters: 5, usQuarts: 5 * LITERS_TO_US_QUARTS, imperialQuarts: 5 * LITERS_TO_IMPERIAL_QUARTS },
+    { liters: 10, usQuarts: 10 * LITERS_TO_US_QUARTS, imperialQuarts: 10 * LITERS_TO_IMPERIAL_QUARTS },
+  ];
 
   return (
     <div className="space-y-8">
@@ -81,6 +87,27 @@ export default function LitersToQuartsConverter() {
         </Card>
       )}
       <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Liters</TableHead>
+                <TableHead className="text-right">US Quarts</TableHead>
+                <TableHead className="text-right">Imperial Quarts</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.liters}>
+                  <TableCell>{item.liters}</TableCell>
+                  <TableCell className="text-right">{item.usQuarts.toFixed(3)}</TableCell>
+                  <TableCell className="text-right">{item.imperialQuarts.toFixed(3)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">FAQ</h3>
           <div className="text-muted-foreground space-y-4">

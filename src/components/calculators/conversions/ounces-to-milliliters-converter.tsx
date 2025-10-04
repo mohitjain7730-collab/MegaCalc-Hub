@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const formSchema = z.object({
   ounces: z.coerce.number().positive('Must be a positive number'),
@@ -41,6 +41,14 @@ export default function OuncesToMillilitersConverter() {
       setResult(values.ounces * IMPERIAL_OZ_TO_ML);
     }
   };
+  
+  const ounceType = form.watch('ounceType');
+  const conversionTable = [
+    { ounces: 1, ml: 1 * (ounceType === 'us' ? US_OZ_TO_ML : IMPERIAL_OZ_TO_ML) },
+    { ounces: 8, ml: 8 * (ounceType === 'us' ? US_OZ_TO_ML : IMPERIAL_OZ_TO_ML) }, // 1 cup
+    { ounces: 12, ml: 12 * (ounceType === 'us' ? US_OZ_TO_ML : IMPERIAL_OZ_TO_ML) }, // 1 can of soda
+    { ounces: 16, ml: 16 * (ounceType === 'us' ? US_OZ_TO_ML : IMPERIAL_OZ_TO_ML) }, // 1 pint
+  ];
 
   return (
     <div className="space-y-8">
@@ -94,6 +102,25 @@ export default function OuncesToMillilitersConverter() {
         </Card>
       )}
       <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>{ounceType === 'us' ? 'US' : 'Imperial'} fl oz</TableHead>
+                <TableHead className="text-right">Milliliters (ml)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.ounces}>
+                  <TableCell>{item.ounces}</TableCell>
+                  <TableCell className="text-right">{item.ml.toFixed(1)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">

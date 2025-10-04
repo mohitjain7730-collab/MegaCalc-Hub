@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -41,9 +40,9 @@ export default function LitersToGallonsConverter() {
 
   const conversionTable = [
     { liters: 1, usGallons: 1 * LITERS_TO_US_GALLONS, imperialGallons: 1 * LITERS_TO_IMPERIAL_GALLONS },
+    { liters: 3.785, usGallons: 1, imperialGallons: 3.785 * LITERS_TO_IMPERIAL_GALLONS },
     { liters: 10, usGallons: 10 * LITERS_TO_US_GALLONS, imperialGallons: 10 * LITERS_TO_IMPERIAL_GALLONS },
-    { liters: 50, usGallons: 50 * LITERS_TO_US_GALLONS, imperialGallons: 50 * LITERS_TO_IMPERIAL_GALLONS },
-    { liters: 100, usGallons: 100 * LITERS_TO_US_GALLONS, imperialGallons: 100 * LITERS_TO_IMPERIAL_GALLONS },
+    { liters: 20, usGallons: 20 * LITERS_TO_US_GALLONS, imperialGallons: 20 * LITERS_TO_IMPERIAL_GALLONS },
   ];
 
   return (
@@ -88,7 +87,7 @@ export default function LitersToGallonsConverter() {
           </CardContent>
         </Card>
       )}
-      <div className="space-y-8">
+       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-2">Formula & Explanation</h3>
           <div className="text-muted-foreground space-y-4">
@@ -99,7 +98,7 @@ export default function LitersToGallonsConverter() {
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-1">Example</h4>
-              <p>A 2-liter soda bottle is equal to 2 * 0.264172 = 0.528 US gallons.</p>
+              <p>A 2-liter soda bottle is equal to 2 × 0.264172 = 0.528 US gallons.</p>
             </div>
           </div>
         </div>
@@ -123,6 +122,15 @@ export default function LitersToGallonsConverter() {
               ))}
             </TableBody>
           </Table>
+        </div>
+        <div>
+            <h3 className="text-lg font-semibold mb-2">FAQ</h3>
+            <div className="text-muted-foreground space-y-4">
+                <div>
+                <h4 className="font-semibold text-foreground mb-1">What's the difference between a US gallon and an Imperial gallon?</h4>
+                <p>A US liquid gallon is legally defined as 231 cubic inches, which is about 3.785 liters. An Imperial gallon, used in the UK and some Commonwealth countries, is defined as 4.54609 liters. The Imperial gallon is approximately 20% larger than the US gallon.</p>
+                </div>
+            </div>
         </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>

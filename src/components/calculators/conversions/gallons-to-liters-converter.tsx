@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 const formSchema = z.object({
   gallons: z.coerce.number().positive('Must be a positive number'),
@@ -43,6 +44,13 @@ export default function GallonsToLitersConverter() {
   };
 
   const gallonType = form.watch('gallonType');
+  
+  const conversionTable = [
+    { gallons: 1, liters: 1 * (gallonType === 'us' ? US_GALLON_TO_LITERS : IMPERIAL_GALLON_TO_LITERS) },
+    { gallons: 5, liters: 5 * (gallonType === 'us' ? US_GALLON_TO_LITERS : IMPERIAL_GALLON_TO_LITERS) },
+    { gallons: 10, liters: 10 * (gallonType === 'us' ? US_GALLON_TO_LITERS : IMPERIAL_GALLON_TO_LITERS) },
+    { gallons: 20, liters: 20 * (gallonType === 'us' ? US_GALLON_TO_LITERS : IMPERIAL_GALLON_TO_LITERS) },
+  ];
 
   return (
     <div className="space-y-8">
@@ -98,7 +106,7 @@ export default function GallonsToLitersConverter() {
           </CardContent>
         </Card>
       )}
-      <div className="space-y-8">
+       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-2">Formula & Explanation</h3>
           <div className="text-muted-foreground space-y-4">
@@ -112,16 +120,31 @@ export default function GallonsToLitersConverter() {
             </div>
           </div>
         </div>
+         <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>{gallonType === 'us' ? 'US' : 'Imperial'} Gallons</TableHead>
+                <TableHead className="text-right">Liters (L)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.gallons}>
+                  <TableCell>{item.gallons}</TableCell>
+                  <TableCell className="text-right">{item.liters.toFixed(3)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">FAQ</h3>
           <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What's the difference between a US gallon and an Imperial gallon?</h4>
               <p>The US gallon is smaller than the Imperial gallon. One Imperial gallon is equal to about 1.2 US gallons. This is a common source of confusion when dealing with international volume measurements.</p>
-            </div>
-             <div>
-              <h4 className="font-semibold text-foreground mb-1">Example</h4>
-              <p>A 10 US gallon tank holds approximately 37.85 liters.</p>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -11,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const formSchema = z.object({
   ml: z.coerce.number().positive('Must be a positive number'),
@@ -33,6 +33,13 @@ export default function MillilitersToCubicInchesConverter() {
   const onSubmit = (values: FormValues) => {
     setResult(values.ml * ML_TO_CUBIC_INCHES);
   };
+  
+  const conversionTable = [
+    { ml: 1, cubicInches: 1 * ML_TO_CUBIC_INCHES },
+    { ml: 100, cubicInches: 100 * ML_TO_CUBIC_INCHES },
+    { ml: 500, cubicInches: 500 * ML_TO_CUBIC_INCHES },
+    { ml: 1000, cubicInches: 1000 * ML_TO_CUBIC_INCHES },
+  ];
 
   return (
     <div className="space-y-8">
@@ -67,7 +74,26 @@ export default function MillilitersToCubicInchesConverter() {
           </CardContent>
         </Card>
       )}
-      <div className="space-y-8">
+       <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Milliliters (ml)</TableHead>
+                <TableHead className="text-right">Cubic Inches (in³)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.ml}>
+                  <TableCell>{item.ml.toLocaleString()}</TableCell>
+                  <TableCell className="text-right">{item.cubicInches.toFixed(3)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">

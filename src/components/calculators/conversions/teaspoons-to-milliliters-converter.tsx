@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -11,6 +10,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 const formSchema = z.object({
   tsp: z.coerce.number().positive('Must be a positive number'),
@@ -33,6 +34,13 @@ export default function TeaspoonsToMillilitersConverter() {
   const onSubmit = (values: FormValues) => {
     setResult(values.tsp * US_TSP_TO_ML);
   };
+  
+  const conversionTable = [
+    { tsp: 1, ml: 1 * US_TSP_TO_ML },
+    { tsp: 3, ml: 3 * US_TSP_TO_ML }, // 1 Tablespoon
+    { tsp: 5, ml: 5 * US_TSP_TO_ML },
+    { tsp: 10, ml: 10 * US_TSP_TO_ML },
+  ];
 
   return (
     <div className="space-y-8">
@@ -67,7 +75,26 @@ export default function TeaspoonsToMillilitersConverter() {
           </CardContent>
         </Card>
       )}
-      <div className="space-y-8">
+       <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Conversion Table</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>US Teaspoons</TableHead>
+                <TableHead className="text-right">Milliliters (ml)</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {conversionTable.map((item) => (
+                <TableRow key={item.tsp}>
+                  <TableCell>{item.tsp}</TableCell>
+                  <TableCell className="text-right">{item.ml.toFixed(2)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
