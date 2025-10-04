@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CategoryIcon } from '@/components/category-icon';
 
 const calculatorComponents: { [key: string]: React.ComponentType } = {
