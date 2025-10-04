@@ -8,7 +8,6 @@ import { categories } from '@/lib/categories';
 import { CategoryIcon } from '@/components/category-icon';
 import { calculators } from '@/lib/calculators';
 import { CategorySearch } from '@/components/category-search';
-import { Separator } from '@/components/ui/separator';
 
 export default function CategoryPage({ params }: { params: { slug: string } }) {
   const category = categories.find((c) => c.slug === params.slug);
@@ -19,30 +18,6 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
   const categoryCalculators = calculators.filter(
     (calc) => calc.category === category.slug
-  );
-
-  const lengthConverters = categoryCalculators.filter(
-    (calc) =>
-      calc.name.toLowerCase().includes('length') ||
-      calc.slug.includes('meter') ||
-      calc.slug.includes('feet') ||
-      calc.slug.includes('inch') ||
-      calc.slug.includes('yard') ||
-      calc.slug.includes('mile') ||
-      calc.slug.includes('fathom') ||
-      calc.slug.includes('chain') ||
-      calc.slug.includes('rod') ||
-      calc.slug.includes('light-year') ||
-      calc.slug.includes('parsec') ||
-      calc.slug.includes('astronomical-unit')
-  );
-
-  const areaConverters = categoryCalculators.filter(
-    (calc) =>
-      calc.name.toLowerCase().includes('area') ||
-      calc.slug.includes('square') ||
-      calc.slug.includes('acre') ||
-      calc.slug.includes('hectare')
   );
 
   return (
