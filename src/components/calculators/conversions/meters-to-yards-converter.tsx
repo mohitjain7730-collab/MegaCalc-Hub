@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import Link from 'next/link';
 
 const formSchema = z.object({
   meters: z.number().positive('Must be a positive number'),
@@ -34,6 +35,13 @@ export default function MetersToYardsConverter() {
   const onSubmit = (values: FormValues) => {
     setResult(values.meters * METERS_TO_YARDS);
   };
+
+  const conversionTable = [
+    { meters: 1, yards: 1 * METERS_TO_YARDS },
+    { meters: 5, yards: 5 * METERS_TO_YARDS },
+    { meters: 10, yards: 10 * METERS_TO_YARDS },
+    { meters: 50, yards: 50 * METERS_TO_YARDS },
+  ];
 
   return (
     <div className="space-y-8">
@@ -69,13 +77,54 @@ export default function MetersToYardsConverter() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="formula">
+          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Formula</h4>
+              <p className='font-mono p-2 bg-muted rounded-md'>Yards = Meters × 1.09361</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
+              <p>By international agreement, one yard is defined as exactly 0.9144 meters. To convert meters to yards, you divide by 0.9144, which is equivalent to multiplying by approximately 1.09361. For example, a 100-meter dash is 100 × 1.09361 ≈ 109.36 yards long.</p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="conversion-table">
+          <AccordionTrigger>Conversion Table</AccordionTrigger>
+          <AccordionContent>
+             <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Meters (m)</TableHead>
+                  <TableHead className="text-right">Yards</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {conversionTable.map((item) => (
+                  <TableRow key={item.meters}>
+                    <TableCell>{item.meters}</TableCell>
+                    <TableCell className="text-right">{item.yards.toFixed(2)}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="faq">
           <AccordionTrigger>FAQ</AccordionTrigger>
           <AccordionContent className="text-muted-foreground space-y-4">
             <div>
-              <h4 className="font-semibold text-foreground mb-1">What is this conversion based on?</h4>
-              <p>By international agreement, one yard is defined as exactly 0.9144 meters. This calculator uses the inverse of that value to convert meters to yards.</p>
+              <h4 className="font-semibold text-foreground mb-1">How many meters are in a yard?</h4>
+              <p>There are exactly 0.9144 meters in one yard.</p>
             </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="related-converters">
+          <AccordionTrigger>Related Converters</AccordionTrigger>
+          <AccordionContent className="space-y-2">
+            <p><Link href="/category/conversions/yards-to-meters-converter" className="text-primary underline">Yards to Meters Converter</Link></p>
+            <p><Link href="/category/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

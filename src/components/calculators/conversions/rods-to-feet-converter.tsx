@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import Link from 'next/link';
 
 const formSchema = z.object({
   rods: z.number().positive('Must be a positive number'),
@@ -34,6 +35,13 @@ export default function RodsToFeetConverter() {
   const onSubmit = (values: FormValues) => {
     setResult(values.rods * RODS_TO_FEET);
   };
+
+  const conversionTable = [
+    { rods: 1, feet: 1 * RODS_TO_FEET },
+    { rods: 4, feet: 4 * RODS_TO_FEET }, // 1 chain
+    { rods: 10, feet: 10 * RODS_TO_FEET },
+    { rods: 40, feet: 40 * RODS_TO_FEET }, // 1 furlong
+  ];
 
   return (
     <div className="space-y-8">
@@ -69,13 +77,54 @@ export default function RodsToFeetConverter() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="formula">
+          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Formula</h4>
+              <p className='font-mono p-2 bg-muted rounded-md'>Feet = Rods × 16.5</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
+              <p>One rod is defined as exactly 16.5 feet. To convert from rods to feet, you simply multiply the number of rods by 16.5. For example, a distance of 4 rods is 4 × 16.5 = 66 feet (which is also one chain).</p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="conversion-table">
+          <AccordionTrigger>Conversion Table</AccordionTrigger>
+          <AccordionContent>
+             <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Rods</TableHead>
+                  <TableHead className="text-right">Feet</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {conversionTable.map((item) => (
+                  <TableRow key={item.rods}>
+                    <TableCell>{item.rods}</TableCell>
+                    <TableCell className="text-right">{item.feet.toFixed(1)}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="faq">
           <AccordionTrigger>FAQ</AccordionTrigger>
           <AccordionContent className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What is a rod?</h4>
-              <p>A rod, also known as a pole or perch, is a historical unit of length used in surveying. It is equal to 16.5 feet.</p>
+              <p>A rod, also known as a pole or a perch, is a historical surveying unit of length equal to 16.5 feet. It was commonly used in England and its colonies for land measurement.</p>
             </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="related-converters">
+          <AccordionTrigger>Related Converters</AccordionTrigger>
+          <AccordionContent className="space-y-2">
+            <p><Link href="/category/conversions/chains-to-meters-converter" className="text-primary underline">Chains to Meters Converter</Link></p>
+            <p><Link href="/category/conversions/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

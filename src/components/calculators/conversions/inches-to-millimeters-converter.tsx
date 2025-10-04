@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import Link from 'next/link';
 
 const formSchema = z.object({
   inches: z.number().positive('Must be a positive number'),
@@ -34,6 +35,13 @@ export default function InchesToMillimetersConverter() {
   const onSubmit = (values: FormValues) => {
     setResult(values.inches * INCHES_TO_MM);
   };
+
+  const conversionTable = [
+    { inches: 1, mm: 1 * INCHES_TO_MM },
+    { inches: 2, mm: 2 * INCHES_TO_MM },
+    { inches: 5, mm: 5 * INCHES_TO_MM },
+    { inches: 10, mm: 10 * INCHES_TO_MM },
+  ];
 
   return (
     <div className="space-y-8">
@@ -69,13 +77,54 @@ export default function InchesToMillimetersConverter() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="formula">
+          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Formula</h4>
+              <p className='font-mono p-2 bg-muted rounded-md'>Millimeters = Inches × 25.4</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
+              <p>Since one inch is defined as exactly 2.54 centimeters, and there are 10 millimeters in every centimeter, it follows that one inch is equal to 25.4 millimeters. To convert inches to millimeters, simply multiply the inch value by 25.4. For example, 3 inches is 3 × 25.4 = 76.2 mm.</p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="conversion-table">
+          <AccordionTrigger>Conversion Table</AccordionTrigger>
+          <AccordionContent>
+             <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Inches (in)</TableHead>
+                  <TableHead className="text-right">Millimeters (mm)</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {conversionTable.map((item) => (
+                  <TableRow key={item.inches}>
+                    <TableCell>{item.inches}</TableCell>
+                    <TableCell className="text-right">{item.mm.toFixed(2)}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="faq">
           <AccordionTrigger>FAQ</AccordionTrigger>
           <AccordionContent className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What is this conversion based on?</h4>
-              <p>Since one inch is exactly 2.54 centimeters, and there are 10 millimeters in a centimeter, one inch is equal to 25.4 millimeters.</p>
+              <p>The international definition of an inch is exactly 2.54 centimeters, and a centimeter contains 10 millimeters.</p>
             </div>
+          </AccordionContent>
+        </AccordionItem>
+         <AccordionItem value="related-converters">
+          <AccordionTrigger>Related Converters</AccordionTrigger>
+          <AccordionContent className="space-y-2">
+            <p><Link href="/category/conversions/millimeters-to-inches-converter" className="text-primary underline">Millimeters to Inches Converter</Link></p>
+            <p><Link href="/category/conversions/inches-to-centimeters-converter" className="text-primary underline">Inches to Centimeters Converter</Link></p>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

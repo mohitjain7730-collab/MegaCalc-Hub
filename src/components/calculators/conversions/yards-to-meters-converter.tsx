@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +11,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRightLeft } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import Link from 'next/link';
 
 const formSchema = z.object({
   yards: z.number().positive('Must be a positive number'),
@@ -34,6 +35,13 @@ export default function YardsToMetersConverter() {
   const onSubmit = (values: FormValues) => {
     setResult(values.yards * YARDS_TO_METERS);
   };
+
+  const conversionTable = [
+    { yards: 1, meters: 1 * YARDS_TO_METERS },
+    { yards: 10, meters: 10 * YARDS_TO_METERS },
+    { yards: 50, meters: 50 * YARDS_TO_METERS },
+    { yards: 100, meters: 100 * YARDS_TO_METERS },
+  ];
 
   return (
     <div className="space-y-8">
@@ -69,13 +77,54 @@ export default function YardsToMetersConverter() {
         </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="formula">
+          <AccordionTrigger>Formula & Explanation</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Formula</h4>
+              <p className='font-mono p-2 bg-muted rounded-md'>Meters = Yards × 0.9144</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Step-by-step explanation</h4>
+              <p>By international agreement, one yard is defined as exactly 0.9144 meters. To convert from yards to meters, you multiply the number of yards by this value. For example, a 100-yard football field is 100 × 0.9144 = 91.44 meters long.</p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="conversion-table">
+          <AccordionTrigger>Conversion Table</AccordionTrigger>
+          <AccordionContent>
+             <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Yards</TableHead>
+                  <TableHead className="text-right">Meters (m)</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {conversionTable.map((item) => (
+                  <TableRow key={item.yards}>
+                    <TableCell>{item.yards}</TableCell>
+                    <TableCell className="text-right">{item.meters.toFixed(2)}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="faq">
           <AccordionTrigger>FAQ</AccordionTrigger>
           <AccordionContent className="text-muted-foreground space-y-4">
             <div>
-              <h4 className="font-semibold text-foreground mb-1">What is this conversion based on?</h4>
-              <p>By international agreement, one yard is defined as exactly 0.9144 meters.</p>
+              <h4 className="font-semibold text-foreground mb-1">How many yards are in a meter?</h4>
+              <p>There are approximately 1.09361 yards in one meter.</p>
             </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="related-converters">
+          <AccordionTrigger>Related Converters</AccordionTrigger>
+          <AccordionContent className="space-y-2">
+            <p><Link href="/category/conversions/meters-to-yards-converter" className="text-primary underline">Meters to Yards Converter</Link></p>
+            <p><Link href="/category/conversions/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
