@@ -91,11 +91,16 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     'stones-to-kilograms-converter',
   ].includes(calc.slug));
 
+  const temperatureConverters = filteredCalculators.filter(calc => [
+    // Temperature calculator slugs will go here
+  ].includes(calc.slug));
+
   const otherCalculators = filteredCalculators.filter(calc => 
     !lengthConverters.find(c => c.id === calc.id) && 
     !areaConverters.find(c => c.id === calc.id) &&
     !volumeConverters.find(c => c.id === calc.id) &&
-    !weightMassConverters.find(c => c.id === calc.id)
+    !weightMassConverters.find(c => c.id === calc.id) &&
+    !temperatureConverters.find(c => c.id === calc.id)
   );
 
   const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
@@ -147,6 +152,10 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Weight/Mass Conversions</h2>
                         {renderCalculatorGrid(weightMassConverters, categorySlug, "No weight/mass converters found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Temperature Conversions</h2>
+                        {renderCalculatorGrid(temperatureConverters, categorySlug, "No temperature converters found.")}
                     </div>
                 </>
             ) : null}
