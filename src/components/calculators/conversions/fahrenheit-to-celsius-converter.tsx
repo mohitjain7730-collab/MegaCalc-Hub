@@ -53,7 +53,7 @@ export default function FahrenheitToCelsiusConverter() {
               <FormItem>
                 <FormLabel>Fahrenheit (°F)</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={field.onChange} />
+                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -128,5 +128,3 @@ export default function FahrenheitToCelsiusConverter() {
     </div>
   );
 }
-
-    
