@@ -4,7 +4,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Construction } from "lucide-react";
 
-export default function AncientCivilizationTimelineGenerator() {
+export default function CaloriesBurnedCyclingCalculator() {
   return (
     <Card className="w-full text-center shadow-md mt-8">
         <CardHeader>
@@ -15,7 +15,7 @@ export default function AncientCivilizationTimelineGenerator() {
         </CardHeader>
         <CardContent className="p-8 pt-0">
             <p className="text-lg text-muted-foreground">
-                This calculator is under construction. It will generate timelines to visualize the rise and fall of ancient civilizations.
+                This calculator is under construction. It will use Metabolic Equivalent of Task (MET) values to estimate calories burned based on cycling duration, intensity, and body weight.
             </p>
         </CardContent>
     </Card>

@@ -65,33 +65,33 @@ export default function Vo2MaxEstimationCalculator() {
             </CardContent>
         </Card>
       )}
-       <Accordion type="single" collapsible className="w-full">
-         <AccordionItem value="understanding-inputs">
-            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4">
+       <div className="space-y-4">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Understanding the Inputs</h3>
+          <div className="text-muted-foreground space-y-4">
               <div>
                   <h4 className="font-semibold text-foreground mb-1">Time to complete 1.5 mile run</h4>
                   <p>The total time in minutes it took you to run 1.5 miles (2.41 km) at your best effort.</p>
               </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
+            </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">How It Works</h3>
+          <div className="text-muted-foreground space-y-2">
                 <p>This calculator uses the Cooper 1.5 Mile Run Test formula to provide an estimation of your VO₂ max. VO₂ max is the maximum rate of oxygen your body is able to use during exercise, and it is a key indicator of cardiovascular fitness and aerobic endurance.</p>
                 <p>The formula `VO₂ max = (483 / time) + 3.5` is an empirical formula derived from studies correlating running performance with laboratory-measured VO₂ max values. It is a simple and accessible way to estimate your fitness level without expensive equipment.</p>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="further-reading">
-            <AccordionTrigger>Further Reading & Official Sources</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
+            </div>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Further Reading & Official Sources</h3>
+          <div className="text-muted-foreground space-y-2">
               <p>For more information on VO₂ max and fitness testing:</p>
                <ul className="list-disc list-inside space-y-1 pl-4">
                   <li><a href="https://www.army.mil/acft/" target="_blank" rel="noopener noreferrer" className="text-primary underline">U.S. Army Public Health Center – Fitness Testing</a></li>
               </ul>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+            </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ShieldCheck } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const formSchema = z.object({
   monthlyExpenses: z.number().positive(),
@@ -60,16 +59,16 @@ export default function EmergencyFundGoalCalculator() {
             </CardContent>
         </Card>
       )}
-       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="why-needed">
-          <AccordionTrigger>Why You Need an Emergency Fund</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
+       <div className="space-y-8">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Why You Need an Emergency Fund</h3>
+          <div className="text-muted-foreground space-y-2">
             <p>An emergency fund is a stash of money set aside to cover the financial surprises life throws your way. These unexpected events can be stressful and costly. The purpose of the fund is to have cash readily available to handle these events without having to dip into high-interest debt or sell your long-term investments.</p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="understanding-inputs">
-            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4">
+          </div>
+        </div>
+        <div>
+            <h3 className="text-lg font-semibold mb-2">Understanding the Inputs</h3>
+            <div className="text-muted-foreground space-y-4">
               <div>
                   <h4 className="font-semibold text-foreground mb-1">Total Monthly Expenses</h4>
                   <p>The sum of all your essential monthly living expenses. This should include rent/mortgage, utilities, food, transportation, insurance, and minimum debt payments.</p>
@@ -78,17 +77,15 @@ export default function EmergencyFundGoalCalculator() {
                   <h4 className="font-semibold text-foreground mb-1">Months of Coverage</h4>
                   <p>The number of months you want your emergency fund to be able to cover your expenses without any income. Financial advisors typically recommend 3 to 6 months.</p>
               </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-it-works">
-            <AccordionTrigger>How The Calculation Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
+            </div>
+        </div>
+        <div>
+            <h3 className="text-lg font-semibold mb-2">How The Calculation Works</h3>
+            <div className="text-muted-foreground">
                 <p>This is a straightforward but powerful calculation. It simply multiplies your essential monthly expenses by the number of months you want to have covered. Financial experts typically recommend having enough to cover 3 to 6 months of living expenses.</p>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+            </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-    
