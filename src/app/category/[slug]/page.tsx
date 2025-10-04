@@ -48,12 +48,6 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           categorySlug={category.slug}
         />
 
-        {params.slug === 'conversions' && (
-            <div className="mt-8">
-                <h2 className="text-2xl font-bold tracking-tight text-foreground">Length Conversions</h2>
-                <Separator className="my-4" />
-            </div>
-        )}
       </div>
     </div>
   );
