@@ -68,25 +68,32 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     'milliliters-to-ounces-converter',
   ].includes(calc.slug));
 
+  const weightMassConverters = filteredCalculators.filter(calc => [
+    // Future weight/mass conversion slugs will go here
+  ].includes(calc.slug));
+
   const otherCalculators = filteredCalculators.filter(calc => 
     !lengthConverters.find(c => c.id === calc.id) && 
     !areaConverters.find(c => c.id === calc.id) &&
-    !volumeConverters.find(c => c.id === calc.id)
+    !volumeConverters.find(c => c.id === calc.id) &&
+    !weightMassConverters.find(c => c.id === calc.id)
   );
 
-  const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {calcs.map((calc) => (
-        <Link href={`/category/${categorySlug}/${calc.slug}`} key={calc.id} className="group block h-full">
-          <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
-            <CardHeader>
-              <CardTitle className="text-lg">{calc.name}</CardTitle>
-              <CardDescription className="pt-1">{calc.description}</CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-      ))}
-    </div>
+  const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
+    calcs.length > 0 ? (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {calcs.map((calc) => (
+          <Link href={`/category/${categorySlug}/${calc.slug}`} key={calc.id} className="group block h-full">
+            <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
+              <CardHeader>
+                <CardTitle className="text-lg">{calc.name}</CardTitle>
+                <CardDescription className="pt-1">{calc.description}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+        ))}
+      </div>
+    ) : <p className="text-muted-foreground">{noResultsMessage}</p>
   );
 
   return (
@@ -104,28 +111,31 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
 
       {filteredCalculators.length > 0 ? (
         <div className="space-y-12">
-            {categorySlug === 'conversions' && lengthConverters.length > 0 && (
-                <div>
-                    <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Length Conversions</h2>
-                    {renderCalculatorGrid(lengthConverters, categorySlug)}
-                </div>
-            )}
-            {categorySlug === 'conversions' && areaConverters.length > 0 && (
-                <div>
-                    <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Area Conversions</h2>
-                    {renderCalculatorGrid(areaConverters, categorySlug)}
-                </div>
-            )}
-            {categorySlug === 'conversions' && (
-                <div>
-                    <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Volume Conversions</h2>
-                    {volumeConverters.length > 0 ? renderCalculatorGrid(volumeConverters, categorySlug) : <p className="text-muted-foreground">No volume converters found.</p>}
-                </div>
-            )}
+            {categorySlug === 'conversions' ? (
+                <>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Length Conversions</h2>
+                        {renderCalculatorGrid(lengthConverters, categorySlug, "No length converters found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Area Conversions</h2>
+                        {renderCalculatorGrid(areaConverters, categorySlug, "No area converters found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Volume Conversions</h2>
+                        {renderCalculatorGrid(volumeConverters, categorySlug, "No volume converters found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Weight/Mass Conversions</h2>
+                        {renderCalculatorGrid(weightMassConverters, categorySlug, "No weight/mass converters found. Coming soon!")}
+                    </div>
+                </>
+            ) : null}
+
             {otherCalculators.length > 0 && (
                  <div>
                     {categorySlug === 'conversions' && <div className="my-8"/>}
-                    {renderCalculatorGrid(otherCalculators, categorySlug)}
+                    {renderCalculatorGrid(otherCalculators, categorySlug, "")}
                 </div>
             )}
         </div>
