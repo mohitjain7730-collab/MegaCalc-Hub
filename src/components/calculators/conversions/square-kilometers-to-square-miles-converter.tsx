@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -14,7 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import Link from 'next/link';
 
 const formSchema = z.object({
-  sqKm: z.number().positive('Must be a positive number'),
+  sqKm: z.coerce.number().positive('Must be a positive number'),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -53,7 +52,7 @@ export default function SquareKilometersToSquareMilesConverter() {
               <FormItem>
                 <FormLabel>Square Kilometers (km²)</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} />
+                  <Input type="number" {...field} value={field.value ?? ''} onChange={field.onChange} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
