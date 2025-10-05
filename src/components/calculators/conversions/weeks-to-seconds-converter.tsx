@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Clock } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import Link from 'next/link';
 
 const formSchema = z.object({
   weeks: z.coerce.number().nonnegative('Must be a positive number'),
@@ -124,9 +125,14 @@ export default function WeeksToSecondsConverter() {
             </div>
           </div>
         </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
+          <div className="space-y-2">
+            <p><Link href="/category/conversions/seconds-to-weeks-converter" className="text-primary underline">Seconds to Weeks Converter</Link></p>
+            <p><Link href="/category/conversions/weeks-to-days-converter" className="text-primary underline">Weeks to Days Converter</Link></p>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
-    
