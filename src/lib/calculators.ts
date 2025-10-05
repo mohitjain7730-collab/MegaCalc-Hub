@@ -1127,7 +1127,26 @@ export const calculators: Calculator[] = [
   { id: 437, name: 'Pounds per Square Inch to Kilopascals Converter', description: 'Convert psi to kPa.', slug: 'psi-to-kpa-converter', category: 'conversions' },
   { id: 438, name: 'Millimeters of Mercury to Bars Converter', description: 'Convert mmHg to bars.', slug: 'mmhg-to-bars-converter', category: 'conversions' },
   { id: 439, name: 'Bars to Millimeters of Mercury Converter', description: 'Convert bars to mmHg.', slug: 'bars-to-mmhg-converter', category: 'conversions' },
-
+  { id: 440, name: 'Joules to Kilojoules Converter', description: 'Convert Joules (J) to Kilojoules (kJ).', slug: 'joules-to-kilojoules-converter', category: 'conversions' },
+  { id: 441, name: 'Kilojoules to Joules Converter', description: 'Convert Kilojoules (kJ) to Joules (J).', slug: 'kilojoules-to-joules-converter', category: 'conversions' },
+  { id: 442, name: 'Joules to Calories Converter', description: 'Convert Joules (J) to thermochemical calories (cal).', slug: 'joules-to-calories-converter', category: 'conversions' },
+  { id: 443, name: 'Calories to Joules Converter', description: 'Convert thermochemical calories (cal) to Joules (J).', slug: 'calories-to-joules-converter', category: 'conversions' },
+  { id: 444, name: 'Joules to Kilocalories Converter', description: 'Convert Joules (J) to Kilocalories (kcal).', slug: 'joules-to-kilocalories-converter', category: 'conversions' },
+  { id: 445, name: 'Kilocalories to Joules Converter', description: 'Convert Kilocalories (kcal) to Joules (J).', slug: 'kilocalories-to-joules-converter', category: 'conversions' },
+  { id: 446, name: 'Joules to Watt-hours Converter', description: 'Convert Joules (J) to Watt-hours (Wh).', slug: 'joules-to-watt-hours-converter', category: 'conversions' },
+  { id: 447, name: 'Watt-hours to Joules Converter', description: 'Convert Watt-hours (Wh) to Joules (J).', slug: 'watt-hours-to-joules-converter', category: 'conversions' },
+  { id: 448, name: 'Kilowatt-hours to Joules Converter', description: 'Convert Kilowatt-hours (kWh) to Joules (J).', slug: 'kwh-to-joules-converter', category: 'conversions' },
+  { id: 449, name: 'Joules to Kilowatt-hours Converter', description: 'Convert Joules (J) to Kilowatt-hours (kWh).', slug: 'joules-to-kwh-converter', category: 'conversions' },
+  { id: 450, name: 'Calories to Kilocalories Converter', description: 'Convert small calories (cal) to nutritional Calories (kcal).', slug: 'calories-to-kilocalories-converter', category: 'conversions' },
+  { id: 451, name: 'Kilocalories to Calories Converter', description: 'Convert nutritional Calories (kcal) to small calories (cal).', slug: 'kilocalories-to-calories-converter', category: 'conversions' },
+  { id: 452, name: 'British Thermal Units to Joules Converter', description: 'Convert BTU to Joules (J).', slug: 'btu-to-joules-converter', category: 'conversions' },
+  { id: 453, name: 'Joules to British Thermal Units Converter', description: 'Convert Joules (J) to BTU.', slug: 'joules-to-btu-converter', category: 'conversions' },
+  { id: 454, name: 'Kilowatt-hours to BTU Converter', description: 'Convert kWh to British Thermal Units (BTU).', slug: 'kwh-to-btu-converter', category: 'conversions' },
+  { id: 455, name: 'BTU to Kilowatt-hours Converter', description: 'Convert British Thermal Units (BTU) to kWh.', slug: 'btu-to-kwh-converter', category: 'conversions' },
+  { id: 456, name: 'Electronvolts to Joules Converter', description: 'Convert electronvolts (eV) to Joules (J).', slug: 'electronvolts-to-joules-converter', category: 'conversions' },
+  { id: 457, name: 'Joules to Electronvolts Converter', description: 'Convert Joules (J) to electronvolts (eV).', slug: 'joules-to-electronvolts-converter', category: 'conversions' },
+  { id: 458, name: 'Foot-Pounds to Joules Converter', description: 'Convert foot-pounds (ft·lb) to Joules (J).', slug: 'foot-pounds-to-joules-converter', category: 'conversions' },
+  { id: 459, name: 'Joules to Foot-Pounds Converter', description: 'Convert Joules (J) to foot-pounds (ft·lb).', slug: 'joules-to-foot-pounds-converter', category: 'conversions' },
   // Home Improvement
   {
     id: 1,
@@ -1915,5 +1934,3 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
-
-    

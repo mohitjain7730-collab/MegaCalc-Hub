@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import { useState } from 'react';
@@ -169,7 +167,26 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
 
   const energyConverters = filteredCalculators.filter(calc => 
     [
-      // Will be added later
+      'joules-to-kilojoules-converter',
+      'kilojoules-to-joules-converter',
+      'joules-to-calories-converter',
+      'calories-to-joules-converter',
+      'joules-to-kilocalories-converter',
+      'kilocalories-to-joules-converter',
+      'joules-to-watt-hours-converter',
+      'watt-hours-to-joules-converter',
+      'kwh-to-joules-converter',
+      'joules-to-kwh-converter',
+      'calories-to-kilocalories-converter',
+      'kilocalories-to-calories-converter',
+      'btu-to-joules-converter',
+      'joules-to-btu-converter',
+      'kwh-to-btu-converter',
+      'btu-to-kwh-converter',
+      'electronvolts-to-joules-converter',
+      'joules-to-electronvolts-converter',
+      'foot-pounds-to-joules-converter',
+      'joules-to-foot-pounds-converter',
     ].includes(calc.slug)
   );
 
