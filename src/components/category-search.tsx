@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState } from 'react';
@@ -143,7 +144,26 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
 
   const pressureConverters = filteredCalculators.filter(calc => 
     [
-      // No pressure converters yet, this is a placeholder
+      'pascals-to-atmospheres-converter',
+      'atmospheres-to-pascals-converter',
+      'pascals-to-bars-converter',
+      'bars-to-pascals-converter',
+      'pascals-to-psi-converter',
+      'psi-to-pascals-converter',
+      'atmospheres-to-bars-converter',
+      'bars-to-atmospheres-converter',
+      'atmospheres-to-psi-converter',
+      'psi-to-atmospheres-converter',
+      'bars-to-psi-converter',
+      'psi-to-bars-converter',
+      'torr-to-pascals-converter',
+      'pascals-to-torr-converter',
+      'torr-to-atmospheres-converter',
+      'atmospheres-to-torr-converter',
+      'kpa-to-psi-converter',
+      'psi-to-kpa-converter',
+      'mmhg-to-bars-converter',
+      'bars-to-mmhg-converter'
     ].includes(calc.slug)
   );
 
