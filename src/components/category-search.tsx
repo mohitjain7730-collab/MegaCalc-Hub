@@ -167,6 +167,12 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
+  const energyConverters = filteredCalculators.filter(calc => 
+    [
+      // Will be added later
+    ].includes(calc.slug)
+  );
+
   const otherCalculators = filteredCalculators.filter(calc => 
     !lengthConverters.find(c => c.id === calc.id) && 
     !areaConverters.find(c => c.id === calc.id) &&
@@ -174,7 +180,8 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     !weightMassConverters.find(c => c.id === calc.id) &&
     !speedConverters.find(c => c.id === calc.id) &&
     !timeConverters.find(c => c.id === calc.id) &&
-    !pressureConverters.find(c => c.id === calc.id)
+    !pressureConverters.find(c => c.id === calc.id) &&
+    !energyConverters.find(c => c.id === calc.id)
   );
 
   const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
@@ -238,6 +245,10 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Pressure conversion</h2>
                         {renderCalculatorGrid(pressureConverters, categorySlug, "No pressure converters found.")}
+                    </div>
+                     <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Energy Conversions</h2>
+                        {renderCalculatorGrid(energyConverters, categorySlug, "No energy converters found.")}
                     </div>
                 </>
             ) : null}
