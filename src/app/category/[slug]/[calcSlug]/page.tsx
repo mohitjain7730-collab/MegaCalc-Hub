@@ -28,7 +28,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'annuity-payment-calculator': dynamic(() => import('@/components/calculators/finance/annuity-payment-calculator')),
     'perpetuity-calculator': dynamic(() => import('@/components/calculators/finance/perpetuity-calculator')),
     'growing-annuity-calculator': dynamic(() => import('@/components/calculators/finance/growing-annuity-calculator')),
-    'irr-calculator': dynamic(() => import('@/components/calculators/finance/irr-calculator')),
     'npv-calculator': dynamic(() => import('@/components/calculators/finance/npv-calculator')),
     'dcf-calculator': dynamic(() => import('@/components/calculators/finance/dcf-calculator')),
     'payback-period-calculator': dynamic(() => import('@/components/calculators/finance/payback-period-calculator')),
@@ -414,8 +413,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'ergs-per-second-to-watts-converter': dynamic(() => import('@/components/calculators/conversions/ergs-per-second-to-watts-converter')),
     'watts-to-ergs-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-ergs-per-second-converter')),
     'foot-pounds-per-second-to-watts-converter': dynamic(() => import('@/components/calculators/conversions/foot-pounds-per-second-to-watts-converter')),
-    'watts-to-foot-pounds-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-foot-pounds-per-second-converter')),
-};
+    'watts-to-foot-pounds-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-foot-pounds-per-second-converter'))};
 
 
 export default function CalculatorPage({

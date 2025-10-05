@@ -122,13 +122,6 @@ export const calculators: Calculator[] = [
     category: 'finance',
   },
   {
-    id: 164,
-    name: 'Internal Rate of Return (IRR) Calculator',
-    description: 'Find the discount rate that makes the Net Present Value (NPV) of all cash flows from a particular project equal to zero. IRR is a key metric for capital budgeting to determine the profitability of potential investments.',
-    slug: 'irr-calculator',
-    category: 'finance',
-  },
-  {
     id: 165,
     name: 'Net Present Value (NPV) Calculator',
     description: 'Determine the difference between the present value of cash inflows and the present value of cash outflows over a period of time. A positive NPV indicates a profitable investment, making it a critical tool for capital budgeting.',
@@ -1833,4 +1826,3 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
-
