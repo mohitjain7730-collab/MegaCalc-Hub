@@ -52,7 +52,7 @@ export default function AcresToHectaresConverter() {
               <FormItem>
                 <FormLabel>Acres</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value)} />
+                  <Input type="number" {...field} value={field.value ?? ''} onChange={field.onChange} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
