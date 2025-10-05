@@ -204,6 +204,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'party-budget-per-person': dynamic(() => import('@/components/calculators/fun-games/party-budget-per-person-calculator')),
     'bbq-food-drink-quantity': dynamic(() => import('@/components/calculators/fun-games/bbq-food-drink-quantity-calculator')),
     'karaoke-queue-time': dynamic(() => import('@/components/calculators/fun-games/karaoke-queue-time-calculator')),
+    'excel-calculator': dynamic(() => import('@/components/calculators/fun-games/excel-calculator')),
     'recipe-ingredient-converter': dynamic(() => import('@/components/calculators/cooking-food/recipe-ingredient-converter')),
     'cooking-time-adjuster': dynamic(() => import('@/components/calculators/cooking-food/cooking-time-adjuster')),
     'brining-solution-calculator': dynamic(() => import('@/components/calculators/cooking-food/brining-solution-calculator')),
@@ -413,7 +414,8 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'ergs-per-second-to-watts-converter': dynamic(() => import('@/components/calculators/conversions/ergs-per-second-to-watts-converter')),
     'watts-to-ergs-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-ergs-per-second-converter')),
     'foot-pounds-per-second-to-watts-converter': dynamic(() => import('@/components/calculators/conversions/foot-pounds-per-second-to-watts-converter')),
-    'watts-to-foot-pounds-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-foot-pounds-per-second-converter'))};
+    'watts-to-foot-pounds-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-foot-pounds-per-second-converter')),
+};
 
 
 export default function CalculatorPage({
@@ -421,14 +423,39 @@ export default function CalculatorPage({
 }: {
   params: { slug: string; calcSlug: string };
 }) {
-  const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
+  const calculator = calculators.find((c) => c.slug === params.calcSlug);
   const category = categories.find((c) => c.slug === params.slug);
 
-  if (!calculator || !category) {
+  if (!calculator || !category || calculator.category !== category.slug) {
     notFound();
   }
 
   const CalculatorComponent = calculatorComponents[params.calcSlug];
+
+  if (!CalculatorComponent) {
+    return (
+      <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
+        <div className="w-full max-w-4xl">
+           <Card className="w-full text-center shadow-md mt-8">
+            <CardContent className="p-8">
+                <Construction className="mx-auto h-16 w-16 mb-6 text-primary" strokeWidth={1.5} />
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  Calculator Not Found
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  The calculator you are looking for does not exist or has been moved.
+                </p>
+                 <Button asChild className='mt-6'>
+                    <Link href={`/category/${category.slug}`}>
+                        Back to {category.name}
+                    </Link>
+                </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
@@ -440,32 +467,25 @@ export default function CalculatorPage({
               Back to {category.name}
             </Link>
           </Button>
-          <div className="flex items-center gap-4">
+          <div className="flex items-start gap-4">
             <CategoryIcon
               name={category.Icon}
-              className="h-12 w-12 text-primary"
+              className="h-12 w-12 text-primary flex-shrink-0"
               strokeWidth={1.5}
             />
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-foreground">
                 {calculator.name}
               </h1>
-              <p className="text-muted-foreground mt-1">
+              <p className="text-muted-foreground mt-2 text-lg">
                 {calculator.description}
               </p>
             </div>
           </div>
         </div>
 
-          <Card className="shadow-lg">
-            <CardHeader>
-                <CardTitle>Calculator</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {CalculatorComponent ? <CalculatorComponent /> : <p>Calculator not found.</p>}
-            </CardContent>
-          </Card>
-        </div>
+        <CalculatorComponent />
       </div>
+    </div>
   );
 }

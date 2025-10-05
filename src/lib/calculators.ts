@@ -1623,6 +1623,13 @@ export const calculators: Calculator[] = [
     slug: 'karaoke-queue-time',
     category: 'fun-games',
   },
+  {
+    id: 500,
+    name: 'Excel',
+    description: 'Use a fully functional Excel spreadsheet.',
+    slug: 'excel-calculator',
+    category: 'fun-games',
+  },
   // Cooking & Food
   {
     id: 117,
