@@ -118,7 +118,26 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
 
   const timeConverters = filteredCalculators.filter(calc => 
     [
-      // Time converters will be added here
+      'seconds-to-minutes-converter',
+      'minutes-to-seconds-converter',
+      'minutes-to-hours-converter',
+      'hours-to-minutes-converter',
+      'hours-to-days-converter',
+      'days-to-hours-converter',
+      'days-to-weeks-converter',
+      'weeks-to-days-converter',
+      'weeks-to-months-converter',
+      'months-to-weeks-converter',
+      'months-to-years-converter',
+      'years-to-months-converter',
+      'seconds-to-hours-converter',
+      'hours-to-seconds-converter',
+      'seconds-to-days-converter',
+      'days-to-seconds-converter',
+      'seconds-to-weeks-converter',
+      'weeks-to-seconds-converter',
+      'minutes-to-days-converter',
+      'days-to-minutes-converter',
     ].includes(calc.slug)
   );
 
@@ -186,7 +205,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                         {renderCalculatorGrid(speedConverters, categorySlug, "No speed converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Time Conversions</h2>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Time conversion</h2>
                         {renderCalculatorGrid(timeConverters, categorySlug, "No time converters found.")}
                     </div>
                 </>
@@ -218,3 +237,5 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     </>
   );
 }
+
+    

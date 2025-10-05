@@ -315,28 +315,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'milliliters-to-teaspoons-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-teaspoons-converter')),
     'ounces-to-milliliters-converter': dynamic(() => import('@/components/calculators/conversions/ounces-to-milliliters-converter')),
     'milliliters-to-ounces-converter': dynamic(() => import('@/components/calculators/conversions/milliliters-to-ounces-converter')),
-    // Weight/Mass Conversions
-    'kilograms-to-pounds-converter': dynamic(() => import('@/components/calculators/conversions/kilograms-to-pounds-converter')),
-    'pounds-to-kilograms-converter': dynamic(() => import('@/components/calculators/conversions/pounds-to-kilograms-converter')),
-    'grams-to-ounces-converter': dynamic(() => import('@/components/calculators/conversions/grams-to-ounces-converter')),
-    'ounces-to-grams-converter': dynamic(() => import('@/components/calculators/conversions/ounces-to-grams-converter')),
-    'milligrams-to-grams-converter': dynamic(() => import('@/components/calculators/conversions/milligrams-to-grams-converter')),
-    'grams-to-milligrams-converter': dynamic(() => import('@/components/calculators/conversions/grams-to-milligrams-converter')),
-    'kilograms-to-ounces-converter': dynamic(() => import('@/components/calculators/conversions/kilograms-to-ounces-converter')),
-    'ounces-to-kilograms-converter': dynamic(() => import('@/components/calculators/conversions/ounces-to-kilograms-converter')),
-    'stones-to-pounds-converter': dynamic(() => import('@/components/calculators/conversions/stones-to-pounds-converter')),
-    'pounds-to-stones-converter': dynamic(() => import('@/components/calculators/conversions/pounds-to-stones-converter')),
-    'tons-metric-to-pounds-converter': dynamic(() => import('@/components/calculators/conversions/tons-metric-to-pounds-converter')),
-    'pounds-to-tons-metric-converter': dynamic(() => import('@/components/calculators/conversions/pounds-to-tons-metric-converter')),
-    'short-tons-us-to-metric-tons-converter': dynamic(() => import('@/components/calculators/conversions/short-tons-us-to-metric-tons-converter')),
-    'metric-tons-to-short-tons-us-converter': dynamic(() => import('@/components/calculators/conversions/metric-tons-to-short-tons-us-converter')),
-    'micrograms-to-milligrams-converter': dynamic(() => import('@/components/calculators/conversions/micrograms-to-milligrams-converter')),
-    'milligrams-to-micrograms-converter': dynamic(() => import('@/components/calculators/conversions/milligrams-to-micrograms-converter')),
-    'carats-to-grams-converter': dynamic(() => import('@/components/calculators/conversions/carats-to-grams-converter')),
-    'grams-to-carats-converter': dynamic(() => import('@/components/calculators/conversions/grams-to-carats-converter')),
-    'kilograms-to-stones-converter': dynamic(() => import('@/components/calculators/conversions/kilograms-to-stones-converter')),
-    'stones-to-kilograms-converter': dynamic(() => import('@/components/calculators/conversions/stones-to-kilograms-converter')),
-    // Speed Conversions
     'kilometers-per-hour-to-miles-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/kilometers-per-hour-to-miles-per-hour-converter')),
     'miles-per-hour-to-kilometers-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/miles-per-hour-to-kilometers-per-hour-converter')),
     'meters-per-second-to-kilometers-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/meters-per-second-to-kilometers-per-hour-converter')),
@@ -357,40 +335,73 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'knots-to-meters-per-second-converter': dynamic(() => import('@/components/calculators/conversions/knots-to-meters-per-second-converter')),
     'feet-per-second-to-miles-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/feet-per-second-to-miles-per-hour-converter')),
     'miles-per-hour-to-feet-per-second-converter': dynamic(() => import('@/components/calculators/conversions/miles-per-hour-to-feet-per-second-converter')),
-  };
+    'seconds-to-minutes-converter': dynamic(() => import('@/components/calculators/conversions/seconds-to-minutes-converter')),
+    'minutes-to-seconds-converter': dynamic(() => import('@/components/calculators/conversions/minutes-to-seconds-converter')),
+    'minutes-to-hours-converter': dynamic(() => import('@/components/calculators/conversions/minutes-to-hours-converter')),
+    'hours-to-minutes-converter': dynamic(() => import('@/components/calculators/conversions/hours-to-minutes-converter')),
+    'hours-to-days-converter': dynamic(() => import('@/components/calculators/conversions/hours-to-days-converter')),
+    'days-to-hours-converter': dynamic(() => import('@/components/calculators/conversions/days-to-hours-converter')),
+    'days-to-weeks-converter': dynamic(() => import('@/components/calculators/conversions/days-to-weeks-converter')),
+    'weeks-to-days-converter': dynamic(() => import('@/components/calculators/conversions/weeks-to-days-converter')),
+    'weeks-to-months-converter': dynamic(() => import('@/components/calculators/conversions/weeks-to-months-converter')),
+    'months-to-weeks-converter': dynamic(() => import('@/components/calculators/conversions/months-to-weeks-converter')),
+    'months-to-years-converter': dynamic(() => import('@/components/calculators/conversions/months-to-years-converter')),
+    'years-to-months-converter': dynamic(() => import('@/components/calculators/conversions/years-to-months-converter')),
+    'seconds-to-hours-converter': dynamic(() => import('@/components/calculators/conversions/seconds-to-hours-converter')),
+    'hours-to-seconds-converter': dynamic(() => import('@/components/calculators/conversions/hours-to-seconds-converter')),
+    'seconds-to-days-converter': dynamic(() => import('@/components/calculators/conversions/seconds-to-days-converter')),
+    'days-to-seconds-converter': dynamic(() => import('@/components/calculators/conversions/days-to-seconds-converter')),
+    'seconds-to-weeks-converter': dynamic(() => import('@/components/calculators/conversions/seconds-to-weeks-converter')),
+    'weeks-to-seconds-converter': dynamic(() => import('@/components/calculators/conversions/weeks-to-seconds-converter')),
+    'minutes-to-days-converter': dynamic(() => import('@/components/calculators/conversions/minutes-to-days-converter')),
+    'days-to-minutes-converter': dynamic(() => import('@/components/calculators/conversions/days-to-minutes-converter')),
+};
 
-  export default function CalculatorPage({
-    params,
-  }: {
-    params: { slug: string; calcSlug: string };
-  }) {
-    const category = categories.find((c) => c.slug === params.slug);
-    const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
-  
-    if (!category || !calculator) {
-      notFound();
-    }
-  
-    const CalculatorComponent = calculatorComponents[calculator.slug];
-  
-    return (
-      <div className="flex justify-center p-4 sm:p-8">
-        <div className="w-full max-w-4xl">
+
+export default function CalculatorPage({
+  params,
+}: {
+  params: { slug: string; calcSlug: string };
+}) {
+  const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
+  const category = categories.find((c) => c.slug === params.slug);
+
+  if (!calculator || !category) {
+    notFound();
+  }
+
+  const CalculatorComponent = calculatorComponents[params.calcSlug];
+
+  return (
+    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
+      <div className="w-full max-w-4xl">
+        <div className="mb-8">
           <Button asChild variant="ghost" className="mb-4">
-            <Link href={`/category/${params.slug}`}>
+            <Link href={`/category/${category.slug}`}>
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to {category.name}
             </Link>
           </Button>
-          <Card>
+          <div className="flex items-center gap-4">
+            <CategoryIcon
+              name={category.Icon}
+              className="h-12 w-12 text-primary"
+              strokeWidth={1.5}
+            />
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+                {calculator.name}
+              </h1>
+              <p className="text-muted-foreground mt-1">
+                {calculator.description}
+              </p>
+            </div>
+          </div>
+        </div>
+
+          <Card className="shadow-lg">
             <CardHeader>
-              <div className="flex items-start gap-4">
-                <CategoryIcon name={category.Icon} className="h-8 w-8 text-primary mt-1" strokeWidth={1.5} />
-                <div>
-                  <CardTitle className="text-2xl md:text-3xl">{calculator.name}</CardTitle>
-                  <CardDescription className="mt-2 text-base">{calculator.description}</CardDescription>
-                </div>
-              </div>
+                <CardTitle>Calculator</CardTitle>
             </CardHeader>
             <CardContent>
               {CalculatorComponent ? <CalculatorComponent /> : <p>Calculator not found.</p>}
@@ -398,5 +409,5 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
           </Card>
         </div>
       </div>
-    );
-  }
+  );
+}

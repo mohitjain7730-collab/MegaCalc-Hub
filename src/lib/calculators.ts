@@ -1087,6 +1087,27 @@ export const calculators: Calculator[] = [
   { id: 397, name: 'Knots to Meters per Second Converter', description: 'Convert knots to m/s.', slug: 'knots-to-meters-per-second-converter', category: 'conversions' },
   { id: 398, name: 'Feet per Second to Miles per Hour Converter', description: 'Convert ft/s to mph.', slug: 'feet-per-second-to-miles-per-hour-converter', category: 'conversions' },
   { id: 399, name: 'Miles per Hour to Feet per Second Converter', description: 'Convert mph to ft/s.', slug: 'miles-per-hour-to-feet-per-second-converter', category: 'conversions' },
+  { id: 400, name: 'Seconds to Minutes Converter', description: 'Convert seconds to minutes.', slug: 'seconds-to-minutes-converter', category: 'conversions' },
+  { id: 401, name: 'Minutes to Seconds Converter', description: 'Convert minutes to seconds.', slug: 'minutes-to-seconds-converter', category: 'conversions' },
+  { id: 402, name: 'Minutes to Hours Converter', description: 'Convert minutes to hours.', slug: 'minutes-to-hours-converter', category: 'conversions' },
+  { id: 403, name: 'Hours to Minutes Converter', description: 'Convert hours to minutes.', slug: 'hours-to-minutes-converter', category: 'conversions' },
+  { id: 404, name: 'Hours to Days Converter', description: 'Convert hours to days.', slug: 'hours-to-days-converter', category: 'conversions' },
+  { id: 405, name: 'Days to Hours Converter', description: 'Convert days to hours.', slug: 'days-to-hours-converter', category: 'conversions' },
+  { id: 406, name: 'Days to Weeks Converter', description: 'Convert days to weeks.', slug: 'days-to-weeks-converter', category: 'conversions' },
+  { id: 407, name: 'Weeks to Days Converter', description: 'Convert weeks to days.', slug: 'weeks-to-days-converter', category: 'conversions' },
+  { id: 408, name: 'Weeks to Months Converter', description: 'Convert weeks to months (approximate).', slug: 'weeks-to-months-converter', category: 'conversions' },
+  { id: 409, name: 'Months to Weeks Converter', description: 'Convert months to weeks (approximate).', slug: 'months-to-weeks-converter', category: 'conversions' },
+  { id: 410, name: 'Months to Years Converter', description: 'Convert months to years.', slug: 'months-to-years-converter', category: 'conversions' },
+  { id: 411, name: 'Years to Months Converter', description: 'Convert years to months.', slug: 'years-to-months-converter', category: 'conversions' },
+  { id: 412, name: 'Seconds to Hours Converter', description: 'Convert seconds to hours.', slug: 'seconds-to-hours-converter', category: 'conversions' },
+  { id: 413, name: 'Hours to Seconds Converter', description: 'Convert hours to seconds.', slug: 'hours-to-seconds-converter', category: 'conversions' },
+  { id: 414, name: 'Seconds to Days Converter', description: 'Convert seconds to days.', slug: 'seconds-to-days-converter', category: 'conversions' },
+  { id: 415, name: 'Days to Seconds Converter', description: 'Convert days to seconds.', slug: 'days-to-seconds-converter', category: 'conversions' },
+  { id: 416, name: 'Seconds to Weeks Converter', description: 'Convert seconds to weeks.', slug: 'seconds-to-weeks-converter', category: 'conversions' },
+  { id: 417, name: 'Weeks to Seconds Converter', description: 'Convert weeks to seconds.', slug: 'weeks-to-seconds-converter', category: 'conversions' },
+  { id: 418, name: 'Minutes to Days Converter', description: 'Convert minutes to days.', slug: 'minutes-to-days-converter', category: 'conversions' },
+  { id: 419, name: 'Days to Minutes Converter', description: 'Convert days to minutes.', slug: 'days-to-minutes-converter', category: 'conversions' },
+
   // Home Improvement
   {
     id: 1,
@@ -1874,3 +1895,5 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
+
+    
