@@ -5,6 +5,21 @@ import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { articles } from '@/lib/learning-hub-articles';
 import { CategoryIcon } from '@/components/category-icon';
+import { BmiChart } from '@/components/learning-hub/charts/bmi-chart';
+import { CompoundInterestChart } from '@/components/learning-hub/charts/compound-interest-chart';
+import { AprVsApyChart } from '@/components/learning-hub/charts/apr-vs-apy-chart';
+import { NewtonsSecondLawChart } from '@/components/learning-hub/charts/newtons-second-law-chart';
+import { PressureUnitsChart } from '@/components/learning-hub/charts/pressure-units-chart';
+import dynamic from 'next/dynamic';
+import { ComponentType } from 'react';
+
+const chartComponents: { [key: string]: ComponentType } = {
+  BmiChart,
+  CompoundInterestChart,
+  AprVsApyChart,
+  NewtonsSecondLawChart,
+  PressureUnitsChart,
+};
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
   const article = articles.find((a) => a.slug === params.slug);
@@ -12,6 +27,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   if (!article) {
     notFound();
   }
+  
+  const ChartComponent = article.chartComponent ? chartComponents[article.chartComponent as any] : null;
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
@@ -33,11 +50,15 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        <div 
-            className="prose dark:prose-invert max-w-none" 
-            dangerouslySetInnerHTML={{ __html: article.content }}
-        />
-
+        <div className="prose dark:prose-invert max-w-none">
+          <div dangerouslySetInnerHTML={{ __html: article.content }} />
+          
+          {ChartComponent && (
+            <div className="my-8">
+              <ChartComponent />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
