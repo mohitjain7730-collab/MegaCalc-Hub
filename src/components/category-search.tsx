@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -91,7 +92,28 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
   ].includes(calc.slug));
 
   const speedConverters = filteredCalculators.filter(calc => 
-    [].includes(calc.slug) // Add speed converter slugs here when they are created
+    [
+      'kilometers-per-hour-to-miles-per-hour-converter',
+      'miles-per-hour-to-kilometers-per-hour-converter',
+      'meters-per-second-to-kilometers-per-hour-converter',
+      'kilometers-per-hour-to-meters-per-second-converter',
+      'miles-per-hour-to-meters-per-second-converter',
+      'meters-per-second-to-miles-per-hour-converter',
+      'feet-per-second-to-meters-per-second-converter',
+      'meters-per-second-to-feet-per-second-converter',
+      'knots-to-kilometers-per-hour-converter',
+      'kilometers-per-hour-to-knots-converter',
+      'knots-to-miles-per-hour-converter',
+      'miles-per-hour-to-knots-converter',
+      'mach-number-to-kilometers-per-hour-converter',
+      'kilometers-per-hour-to-mach-number-converter',
+      'mach-number-to-miles-per-hour-converter',
+      'miles-per-hour-to-mach-number-converter',
+      'meters-per-second-to-knots-converter',
+      'knots-to-meters-per-second-converter',
+      'feet-per-second-to-miles-per-hour-converter',
+      'miles-per-hour-to-feet-per-second-converter',
+    ].includes(calc.slug)
   );
 
   const otherCalculators = filteredCalculators.filter(calc => 
@@ -155,6 +177,10 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Speed Conversions</h2>
                         {renderCalculatorGrid(speedConverters, categorySlug, "No speed converters found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Temperature Conversions</h2>
+                        {renderCalculatorGrid([], categorySlug, "No temperature converters found.")}
                     </div>
                 </>
             ) : null}

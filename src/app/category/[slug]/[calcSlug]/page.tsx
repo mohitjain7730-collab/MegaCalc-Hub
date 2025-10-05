@@ -1,4 +1,5 @@
 
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -335,6 +336,27 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'grams-to-carats-converter': dynamic(() => import('@/components/calculators/conversions/grams-to-carats-converter')),
     'kilograms-to-stones-converter': dynamic(() => import('@/components/calculators/conversions/kilograms-to-stones-converter')),
     'stones-to-kilograms-converter': dynamic(() => import('@/components/calculators/conversions/stones-to-kilograms-converter')),
+    // Speed Conversions
+    'kilometers-per-hour-to-miles-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/kilometers-per-hour-to-miles-per-hour-converter')),
+    'miles-per-hour-to-kilometers-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/miles-per-hour-to-kilometers-per-hour-converter')),
+    'meters-per-second-to-kilometers-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/meters-per-second-to-kilometers-per-hour-converter')),
+    'kilometers-per-hour-to-meters-per-second-converter': dynamic(() => import('@/components/calculators/conversions/kilometers-per-hour-to-meters-per-second-converter')),
+    'miles-per-hour-to-meters-per-second-converter': dynamic(() => import('@/components/calculators/conversions/miles-per-hour-to-meters-per-second-converter')),
+    'meters-per-second-to-miles-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/meters-per-second-to-miles-per-hour-converter')),
+    'feet-per-second-to-meters-per-second-converter': dynamic(() => import('@/components/calculators/conversions/feet-per-second-to-meters-per-second-converter')),
+    'meters-per-second-to-feet-per-second-converter': dynamic(() => import('@/components/calculators/conversions/meters-per-second-to-feet-per-second-converter')),
+    'knots-to-kilometers-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/knots-to-kilometers-per-hour-converter')),
+    'kilometers-per-hour-to-knots-converter': dynamic(() => import('@/components/calculators/conversions/kilometers-per-hour-to-knots-converter')),
+    'knots-to-miles-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/knots-to-miles-per-hour-converter')),
+    'miles-per-hour-to-knots-converter': dynamic(() => import('@/components/calculators/conversions/miles-per-hour-to-knots-converter')),
+    'mach-number-to-kilometers-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/mach-number-to-kilometers-per-hour-converter')),
+    'kilometers-per-hour-to-mach-number-converter': dynamic(() => import('@/components/calculators/conversions/kilometers-per-hour-to-mach-number-converter')),
+    'mach-number-to-miles-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/mach-number-to-miles-per-hour-converter')),
+    'miles-per-hour-to-mach-number-converter': dynamic(() => import('@/components/calculators/conversions/miles-per-hour-to-mach-number-converter')),
+    'meters-per-second-to-knots-converter': dynamic(() => import('@/components/calculators/conversions/meters-per-second-to-knots-converter')),
+    'knots-to-meters-per-second-converter': dynamic(() => import('@/components/calculators/conversions/knots-to-meters-per-second-converter')),
+    'feet-per-second-to-miles-per-hour-converter': dynamic(() => import('@/components/calculators/conversions/feet-per-second-to-miles-per-hour-converter')),
+    'miles-per-hour-to-feet-per-second-converter': dynamic(() => import('@/components/calculators/conversions/miles-per-hour-to-feet-per-second-converter')),
   };
 
   export default function CalculatorPage({

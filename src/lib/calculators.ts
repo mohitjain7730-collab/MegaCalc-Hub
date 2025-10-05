@@ -1,3 +1,4 @@
+
 export interface Calculator {
   id: number;
   name: string;
@@ -1066,6 +1067,26 @@ export const calculators: Calculator[] = [
     slug: 'stones-to-kilograms-converter',
     category: 'conversions',
   },
+  { id: 380, name: 'Kilometers per Hour to Miles per Hour Converter', description: 'Convert km/h to mph.', slug: 'kilometers-per-hour-to-miles-per-hour-converter', category: 'conversions' },
+  { id: 381, name: 'Miles per Hour to Kilometers per Hour Converter', description: 'Convert mph to km/h.', slug: 'miles-per-hour-to-kilometers-per-hour-converter', category: 'conversions' },
+  { id: 382, name: 'Meters per Second to Kilometers per Hour Converter', description: 'Convert m/s to km/h.', slug: 'meters-per-second-to-kilometers-per-hour-converter', category: 'conversions' },
+  { id: 383, name: 'Kilometers per Hour to Meters per Second Converter', description: 'Convert km/h to m/s.', slug: 'kilometers-per-hour-to-meters-per-second-converter', category: 'conversions' },
+  { id: 384, name: 'Miles per Hour to Meters per Second Converter', description: 'Convert mph to m/s.', slug: 'miles-per-hour-to-meters-per-second-converter', category: 'conversions' },
+  { id: 385, name: 'Meters per Second to Miles per Hour Converter', description: 'Convert m/s to mph.', slug: 'meters-per-second-to-miles-per-hour-converter', category: 'conversions' },
+  { id: 386, name: 'Feet per Second to Meters per Second Converter', description: 'Convert ft/s to m/s.', slug: 'feet-per-second-to-meters-per-second-converter', category: 'conversions' },
+  { id: 387, name: 'Meters per Second to Feet per Second Converter', description: 'Convert m/s to ft/s.', slug: 'meters-per-second-to-feet-per-second-converter', category: 'conversions' },
+  { id: 388, name: 'Knots to Kilometers per Hour Converter', description: 'Convert knots to km/h.', slug: 'knots-to-kilometers-per-hour-converter', category: 'conversions' },
+  { id: 389, name: 'Kilometers per Hour to Knots Converter', description: 'Convert km/h to knots.', slug: 'kilometers-per-hour-to-knots-converter', category: 'conversions' },
+  { id: 390, name: 'Knots to Miles per Hour Converter', description: 'Convert knots to mph.', slug: 'knots-to-miles-per-hour-converter', category: 'conversions' },
+  { id: 391, name: 'Miles per Hour to Knots Converter', description: 'Convert mph to knots.', slug: 'miles-per-hour-to-knots-converter', category: 'conversions' },
+  { id: 392, name: 'Mach Number to Kilometers per Hour Converter', description: 'Convert Mach to km/h.', slug: 'mach-number-to-kilometers-per-hour-converter', category: 'conversions' },
+  { id: 393, name: 'Kilometers per Hour to Mach Number Converter', description: 'Convert km/h to Mach.', slug: 'kilometers-per-hour-to-mach-number-converter', category: 'conversions' },
+  { id: 394, name: 'Mach Number to Miles per Hour Converter', description: 'Convert Mach to mph.', slug: 'mach-number-to-miles-per-hour-converter', category: 'conversions' },
+  { id: 395, name: 'Miles per Hour to Mach Number Converter', description: 'Convert mph to Mach.', slug: 'miles-per-hour-to-mach-number-converter', category: 'conversions' },
+  { id: 396, name: 'Meters per Second to Knots Converter', description: 'Convert m/s to knots.', slug: 'meters-per-second-to-knots-converter', category: 'conversions' },
+  { id: 397, name: 'Knots to Meters per Second Converter', description: 'Convert knots to m/s.', slug: 'knots-to-meters-per-second-converter', category: 'conversions' },
+  { id: 398, name: 'Feet per Second to Miles per Hour Converter', description: 'Convert ft/s to mph.', slug: 'feet-per-second-to-miles-per-hour-converter', category: 'conversions' },
+  { id: 399, name: 'Miles per Hour to Feet per Second Converter', description: 'Convert mph to ft/s.', slug: 'miles-per-hour-to-feet-per-second-converter', category: 'conversions' },
   // Home Improvement
   {
     id: 1,
