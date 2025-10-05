@@ -1,5 +1,6 @@
 
 export interface LearningHubArticle {
+  slug: string;
   title: string;
   Icon: string;
   content: string;
@@ -7,6 +8,7 @@ export interface LearningHubArticle {
 
 export const articles: LearningHubArticle[] = [
   {
+    slug: "what-is-compound-interest",
     title: "What is Compound Interest?",
     Icon: "PiggyBank",
     content: `
@@ -24,6 +26,7 @@ export const articles: LearningHubArticle[] = [
     `
   },
   {
+    slug: "apr-vs-apy",
     title: "Difference between APR and APY",
     Icon: "Percent",
     content: `
@@ -36,6 +39,7 @@ export const articles: LearningHubArticle[] = [
     `
   },
   {
+    slug: "what-is-bmi",
     title: "What is BMI and Why It Matters",
     Icon: "HeartPulse",
     content: `
@@ -47,6 +51,7 @@ export const articles: LearningHubArticle[] = [
     `
   },
   {
+    slug: "newtons-laws-of-motion",
     title: "Newton’s Laws of Motion – Explained Simply",
     Icon: "BookOpen",
     content: `
@@ -59,6 +64,7 @@ export const articles: LearningHubArticle[] = [
     `
   },
   {
+    slug: "units-of-pressure",
     title: "Units of Pressure and Their Conversion Chart",
     Icon: "ArrowRightLeft",
     content: `
