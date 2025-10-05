@@ -49,7 +49,7 @@ export default function KpaToPsiConverter() {
               <FormItem>
                 <FormLabel>Kilopascals (kPa)</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={field.onChange} />
+                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
