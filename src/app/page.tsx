@@ -3,9 +3,11 @@ import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { List, Calculator } from 'lucide-react';
+import { List, Calculator, BookMarked } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { SearchBar } from '@/components/search-bar';
+import { LearningHubCard } from '@/components/learning-hub-card';
+import { articles } from '@/lib/learning-hub-articles';
 
 export default function Home() {
   return (
@@ -43,6 +45,20 @@ export default function Home() {
                 </Button>
             </div>
           </div>
+        </section>
+
+        <section className="py-16 md:py-24">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tight">Learning Hub</h2>
+                    <p className="mt-2 text-muted-foreground">Understand the concepts behind the calculations.</p>
+                </div>
+                <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {articles.map((article) => (
+                    <LearningHubCard key={article.title} {...article} />
+                    ))}
+                </div>
+            </div>
         </section>
 
         <section className="py-16 md:py-24 bg-secondary/50">

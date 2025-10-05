@@ -34,6 +34,7 @@ import {
   Scale,
   Shirt,
   ArrowRightLeft,
+  BookMarked,
 } from 'lucide-react';
 
 export interface Category {
@@ -77,6 +78,7 @@ export const icons: {[key: string]: LucideIcon} = {
   Scale,
   Shirt,
   ArrowRightLeft,
+  BookMarked,
 };
 
 export const categories: Category[] = [
