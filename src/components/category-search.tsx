@@ -116,12 +116,19 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
+  const timeConverters = filteredCalculators.filter(calc => 
+    [
+      // Time converters will be added here
+    ].includes(calc.slug)
+  );
+
   const otherCalculators = filteredCalculators.filter(calc => 
     !lengthConverters.find(c => c.id === calc.id) && 
     !areaConverters.find(c => c.id === calc.id) &&
     !volumeConverters.find(c => c.id === calc.id) &&
     !weightMassConverters.find(c => c.id === calc.id) &&
-    !speedConverters.find(c => c.id === calc.id)
+    !speedConverters.find(c => c.id === calc.id) &&
+    !timeConverters.find(c => c.id === calc.id)
   );
 
   const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
@@ -177,6 +184,10 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Speed Conversions</h2>
                         {renderCalculatorGrid(speedConverters, categorySlug, "No speed converters found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Time Conversions</h2>
+                        {renderCalculatorGrid(timeConverters, categorySlug, "No time converters found.")}
                     </div>
                 </>
             ) : null}
