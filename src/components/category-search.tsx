@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -192,7 +193,26 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
   
   const powerConverters = filteredCalculators.filter(calc => 
     [
-      // This will be empty for now
+      'watts-to-kilowatts-converter',
+      'kilowatts-to-watts-converter',
+      'watts-to-megawatts-converter',
+      'megawatts-to-watts-converter',
+      'kilowatts-to-megawatts-converter',
+      'megawatts-to-kilowatts-converter',
+      'watts-to-horsepower-converter',
+      'horsepower-to-watts-converter',
+      'kilowatts-to-horsepower-converter',
+      'horsepower-to-kilowatts-converter',
+      'watts-to-dbm-converter',
+      'dbm-to-watts-converter',
+      'watts-to-btu-per-hour-converter',
+      'btu-per-hour-to-watts-converter',
+      'kilowatts-to-btu-per-hour-converter',
+      'btu-per-hour-to-kilowatts-converter',
+      'ergs-per-second-to-watts-converter',
+      'watts-to-ergs-per-second-converter',
+      'foot-pounds-per-second-to-watts-converter',
+      'watts-to-foot-pounds-per-second-converter',
     ].includes(calc.slug)
   );
 
