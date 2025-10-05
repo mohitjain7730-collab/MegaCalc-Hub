@@ -91,35 +91,11 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     'stones-to-kilograms-converter',
   ].includes(calc.slug));
 
-  const temperatureConverters = filteredCalculators.filter(calc => [
-    'celsius-to-fahrenheit-converter',
-    'fahrenheit-to-celsius-converter',
-    'celsius-to-kelvin-converter',
-    'kelvin-to-celsius-converter',
-    'fahrenheit-to-kelvin-converter',
-    'kelvin-to-fahrenheit-converter',
-    'celsius-to-rankine-converter',
-    'rankine-to-celsius-converter',
-    'fahrenheit-to-rankine-converter',
-    'rankine-to-fahrenheit-converter',
-    'kelvin-to-rankine-converter',
-    'rankine-to-kelvin-converter',
-    'reaumur-to-celsius-converter',
-    'celsius-to-reaumur-converter',
-    'fahrenheit-to-reaumur-converter',
-    'reaumur-to-fahrenheit-converter',
-    'kelvin-to-reaumur-converter',
-    'reaumur-to-kelvin-converter',
-    'rankine-to-reaumur-converter',
-    'reaumur-to-rankine-converter',
-  ].includes(calc.slug));
-
   const otherCalculators = filteredCalculators.filter(calc => 
     !lengthConverters.find(c => c.id === calc.id) && 
     !areaConverters.find(c => c.id === calc.id) &&
     !volumeConverters.find(c => c.id === calc.id) &&
-    !weightMassConverters.find(c => c.id === calc.id) &&
-    !temperatureConverters.find(c => c.id === calc.id)
+    !weightMassConverters.find(c => c.id === calc.id)
   );
 
   const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
@@ -171,10 +147,6 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Weight/Mass Conversions</h2>
                         {renderCalculatorGrid(weightMassConverters, categorySlug, "No weight/mass converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Temperature Conversions</h2>
-                        {renderCalculatorGrid(temperatureConverters, categorySlug, "No temperature converters found.")}
                     </div>
                 </>
             ) : null}
