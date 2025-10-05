@@ -178,10 +178,6 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Speed Conversions</h2>
                         {renderCalculatorGrid(speedConverters, categorySlug, "No speed converters found.")}
                     </div>
-                    <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Temperature Conversions</h2>
-                        {renderCalculatorGrid([], categorySlug, "No temperature converters found.")}
-                    </div>
                 </>
             ) : null}
 
