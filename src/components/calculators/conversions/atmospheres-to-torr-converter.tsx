@@ -48,7 +48,7 @@ export default function AtmospheresToTorrConverter() {
               <FormItem>
                 <FormLabel>Atmospheres (atm)</FormLabel>
                 <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
