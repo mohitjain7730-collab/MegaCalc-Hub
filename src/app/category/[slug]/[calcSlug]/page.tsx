@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Construction } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 import { Button } from '@/components/ui/button';
@@ -204,7 +204,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'party-budget-per-person': dynamic(() => import('@/components/calculators/fun-games/party-budget-per-person-calculator')),
     'bbq-food-drink-quantity': dynamic(() => import('@/components/calculators/fun-games/bbq-food-drink-quantity-calculator')),
     'karaoke-queue-time': dynamic(() => import('@/components/calculators/fun-games/karaoke-queue-time-calculator')),
-    'excel-calculator': dynamic(() => import('@/components/calculators/fun-games/excel-calculator')),
     'recipe-ingredient-converter': dynamic(() => import('@/components/calculators/cooking-food/recipe-ingredient-converter')),
     'cooking-time-adjuster': dynamic(() => import('@/components/calculators/cooking-food/cooking-time-adjuster')),
     'brining-solution-calculator': dynamic(() => import('@/components/calculators/cooking-food/brining-solution-calculator')),
