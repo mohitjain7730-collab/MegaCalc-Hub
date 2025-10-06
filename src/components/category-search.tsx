@@ -216,6 +216,12 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
+  const shoeSizeConverters = filteredCalculators.filter(calc => 
+    [
+      // No calculators here yet, but this sets up the section
+    ].includes(calc.slug)
+  );
+
   const otherCalculators = filteredCalculators.filter(calc => 
     !lengthConverters.find(c => c.id === calc.id) && 
     !areaConverters.find(c => c.id === calc.id) &&
@@ -225,7 +231,8 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     !timeConverters.find(c => c.id === calc.id) &&
     !pressureConverters.find(c => c.id === calc.id) &&
     !energyConverters.find(c => c.id === calc.id) &&
-    !powerConverters.find(c => c.id === calc.id)
+    !powerConverters.find(c => c.id === calc.id) &&
+    !shoeSizeConverters.find(c => c.id === calc.id)
   );
 
   const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
@@ -297,6 +304,10 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Power Conversions</h2>
                         {renderCalculatorGrid(powerConverters, categorySlug, "No power converters found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Shoe size converter</h2>
+                        {renderCalculatorGrid(shoeSizeConverters, categorySlug, "No shoe size converters found.")}
                     </div>
                 </>
             ) : null}
