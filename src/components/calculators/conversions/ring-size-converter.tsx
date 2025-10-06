@@ -89,18 +89,18 @@ export default function RingSizeConverter() {
       diameterMm = circumferenceMm / PI;
     } else if (unit === 'diameter' || unit === 'jp') {
       const v = Number(parsedValue);
-      if (!isFinite(v) || v <= 0) { alert('Enter a positive number for diameter in mm'); return; }
+      if (!isFinite(v) || v <= 0) { form.setError('value', { message: 'Enter a positive number for diameter in mm' }); return; }
       diameterMm = v;
       circumferenceMm = diameterMm * PI;
     } else if (unit === 'us') {
       const v = Number(parsedValue);
-      if (!isFinite(v) || v <= 0) { alert('Enter a positive numeric US size (e.g. 7 or 6.5)'); return; }
+      if (!isFinite(v) || v <= 0) { form.setError('value', { message: 'Enter a positive numeric US size (e.g. 7 or 6.5)' }); return; }
       diameterMm = diameterFromUS(v);
       circumferenceMm = diameterMm * PI;
     } else if (unit === 'uk') {
       const letter = String(parsedValue).toUpperCase();
       const entry = STANDARD_RING_SIZES.find(s => s.UK === letter);
-      if (!entry) { alert('UK/India letter not recognized. Use letters like F, G, H, I, J, K, L, M ... Z'); return; }
+      if (!entry) { form.setError('value', { message: 'UK/India letter not recognized. Use F, G, H, etc.'}); return; }
       diameterMm = entry.dia;
       circumferenceMm = entry.circ;
     }
@@ -241,69 +241,61 @@ export default function RingSizeConverter() {
         </Card>
       )}
         
-      <Accordion type="single" collapsible defaultValue='how-it-works' className="w-full">
+       <Accordion type="single" collapsible defaultValue="how-it-works" className="w-full">
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-                This converter uses a standard international ring size chart as its base. It first converts your input into a standardized metric (inner circumference in mm). Then, using that standard measurement, it finds the closest matching sizes in all other regional systems, including interpolating for US sizes for greater accuracy.
-            </AccordionContent>
+          <AccordionTrigger>How It Works</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground">
+            This converter uses a standard international ring size chart as its base. It first converts your input into a standardized metric (inner circumference in mm). Then, using that standard measurement, it finds the closest matching sizes in all other regional systems, including interpolating for US sizes for greater accuracy.
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
 
       <div className="space-y-4 prose prose-sm dark:prose-invert max-w-none">
-        <h3>🧭 Complete Understanding of Ring Size Conversion (US, UK, EU, India & Japan)</h3>
-        <p className="text-xs">Finding the perfect ring size can be surprisingly tricky — what fits perfectly in one country might feel loose or tight in another. That’s why having a ring size converter is essential when buying or gifting jewelry internationally.</p>
+        <h3>🧭 Complete Understanding of Ring Size Conversion</h3>
+        <p className="text-xs">Finding the perfect ring size can be tricky. This guide explains how global ring sizes work (US, UK, EU, India, and Japan), how to measure your size at home, and how to use conversion charts confidently.</p>
+        
         <h4><strong>🔹 What Is Ring Size?</strong></h4>
-        <p className="text-xs">Your ring size represents the inner circumference or diameter of a ring that fits comfortably on your finger. Each country follows its own measurement system.</p>
+        <p className="text-xs">Your ring size is the inner circumference or diameter of a ring. Each country has its own system.</p>
         <Table>
             <TableHeader><TableRow><TableHead>Country</TableHead><TableHead>System</TableHead><TableHead>Measured As</TableHead></TableRow></TableHeader>
             <TableBody>
-                <TableRow><TableCell>US</TableCell><TableCell>Numeric (e.g., 7, 8, 9)</TableCell><TableCell>Internal diameter in mm</TableCell></TableRow>
-                <TableRow><TableCell>UK / India</TableCell><TableCell>Alphabetic (e.g., M, N, O)</TableCell><TableCell>Internal circumference in mm</TableCell></TableRow>
-                <TableRow><TableCell>EU</TableCell><TableCell>Numeric (e.g., 52, 54, 56)</TableCell><TableCell>Circumference in mm</TableCell></TableRow>
+                <TableRow><TableCell>US</TableCell><TableCell>Numeric (e.g., 7, 8)</TableCell><TableCell>Internal diameter</TableCell></TableRow>
+                <TableRow><TableCell>UK / India</TableCell><TableCell>Alphabetic (e.g., M, N)</TableCell><TableCell>Internal circumference</TableCell></TableRow>
+                <TableRow><TableCell>EU</TableCell><TableCell>Numeric (e.g., 52, 54)</TableCell><TableCell>Circumference in mm</TableCell></TableRow>
                 <TableRow><TableCell>Japan</TableCell><TableCell>Numeric (e.g., 14, 15)</TableCell><TableCell>Diameter in mm</TableCell></TableRow>
             </TableBody>
         </Table>
-        <h4><strong>🔹 Formula to Convert Between Diameter and Circumference</strong></h4>
-        <p className="text-xs">The fundamental relation is simple: `Circumference (mm) = π × Diameter (mm)`.</p>
+
         <h4><strong>🔹 How to Measure Ring Size at Home</strong></h4>
-        <p className="text-xs"><strong>Method 1: Using a String or Paper Strip</strong></p>
-        <ol className="list-decimal list-inside text-xs space-y-1">
-          <li>Wrap a string or strip of paper around the base of your finger.</li>
-          <li>Mark where it overlaps.</li>
-          <li>Measure the length in millimeters — this is your circumference.</li>
-          <li>Use the chart below to find your corresponding US or UK size.</li>
-        </ol>
-        <p className="text-xs mt-2"><strong>Method 2: Using an Existing Ring</strong></p>
-         <ol className="list-decimal list-inside text-xs space-y-1">
-          <li>Take a ring that fits perfectly.</li>
-          <li>Measure the inner diameter in millimeters.</li>
-          <li>Match the diameter in the table to find your equivalent ring size.</li>
-        </ol>
-        <h4><strong>🔹 Average Ring Sizes (for Reference)</strong></h4>
-        <Table>
-            <TableHeader><TableRow><TableHead>Category</TableHead><TableHead>Common Sizes</TableHead></TableRow></TableHeader>
-            <TableBody>
-                <TableRow><TableCell>Women (India/US)</TableCell><TableCell>US 5 to 7.5 (UK J½ to O)</TableCell></TableRow>
-                <TableRow><TableCell>Men (India/US)</TableCell><TableCell>US 8.5 to 11 (UK Q½ to V½)</TableCell></TableRow>
-            </TableBody>
-        </Table>
+        <p className="text-xs"><strong>Method 1: String or Paper:</strong> Wrap a string around your finger, mark where it overlaps, and measure the length in mm (this is your circumference).</p>
+        <p className="text-xs"><strong>Method 2: Existing Ring:</strong> Measure the inner diameter of a ring that fits well and use the chart to find your size.</p>
+
+        <h4><strong>🔹 Average Ring Sizes</strong></h4>
+        <p className="text-xs">The average women’s ring size is US 6.5, and men’s is US 10.</p>
+
         <h4><strong>🔹 Common Mistakes to Avoid</strong></h4>
-        <ul className="list-disc list-inside text-xs space-y-1">
-          <li>Measuring cold fingers: Fingers shrink when cold — measure at the end of the day when they’re warm.</li>
-          <li>Ignoring band width: Wider rings fit tighter; go half a size up.</li>
-          <li>Using non-flat string: Thick string or tape can give inaccurate results.</li>
+        <ul className="list-disc list-inside text-xs">
+            <li>Measuring cold fingers (they shrink).</li>
+            <li>Ignoring band width (wider rings fit tighter).</li>
+            <li>Confusing diameter with circumference.</li>
         </ul>
-        <h4><strong>🔹 FAQs on Ring Size Conversion</strong></h4>
-        <p className="text-xs"><strong>1. What is the difference between US and UK ring sizes?</strong><br/>US sizes use numbers (like 7), while UK and India use letters (like O). US 7 = UK N = 17.3 mm diameter.</p>
-        <p className="text-xs"><strong>2. Are ring sizes unisex?</strong><br/>Yes. Both men and women use the same measurement scales; only the average range differs.</p>
-        <h4><strong>🔹 Related Calculators and Converters</strong></h4>
-         <ul className="list-disc list-inside text-xs space-y-1">
-            <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
-            <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
-            <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
+
+        <h4><strong>💬 FAQs on Ring Size Conversion</strong></h4>
+        <p className="text-xs"><strong>1. What is the difference between US and UK ring sizes?</strong><br/>US sizes use numbers (7), while UK/India use letters (N). A US 7 is a UK N.</p>
+        <p className="text-xs"><strong>2. Are ring sizes unisex?</strong><br/>Yes, the measurement scale is the same for men and women.</p>
+
+        <h4><strong>🔗 Related Calculators</strong></h4>
+        <ul className="list-disc list-inside text-xs">
+            <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">Shoe Size Converter</Link></li>
+            <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">Clothing Size Converter</Link></li>
+            <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">Hat Size Converter</Link></li>
         </ul>
+        
+        <h4><strong>📚 Final Thoughts</strong></h4>
+        <p className="text-xs">Understanding how ring sizes translate across regions saves time and hassle. With accurate measurements and a reliable converter, you can shop for rings globally with confidence.</p>
       </div>
     </div>
   );
 }
+
+    

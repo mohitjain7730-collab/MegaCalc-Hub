@@ -98,6 +98,17 @@ export default function HatSizeConverter() {
     });
   };
 
+  const clearAll = () => {
+    form.reset();
+    setResult(null);
+  }
+  
+  const example = () => {
+    form.setValue('unit', 'us');
+    form.setValue('value', 7.25);
+    form.handleSubmit(onSubmit)();
+  }
+
   return (
     <div className="space-y-8">
       <Form {...form}>
@@ -128,12 +139,16 @@ export default function HatSizeConverter() {
                     </FormItem>
                 )} />
             </div>
-            <Button type="submit" className="w-full">Convert Size</Button>
+            <div className="flex gap-2">
+                <Button type="submit">Convert</Button>
+                <Button type="button" variant="secondary" onClick={example}>Example: US 7 1/4</Button>
+                <Button type="button" variant="destructive" className="ml-auto" onClick={clearAll}>Clear</Button>
+            </div>
         </form>
       </Form>
       
       {result && (
-        <Card className="mt-8">
+        <Card id="result" className="mt-6">
             <CardHeader><div className='flex items-center gap-4'><Ruler className="h-8 w-8 text-primary" /><CardTitle>Converted Sizes</CardTitle></div></CardHeader>
             <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
@@ -174,7 +189,7 @@ export default function HatSizeConverter() {
           <li>Find your size using a conversion chart (like below).</li>
         </ol>
 
-        <h3>📊 Hat Size Conversion Chart</h3>
+        <h3 className='font-bold mt-4'>📊 Hat Size Conversion Chart</h3>
         <Table>
           <TableHeader><TableRow><TableHead>Head (cm)</TableHead><TableHead>Inches</TableHead><TableHead>US/UK</TableHead><TableHead>EU/India</TableHead><TableHead>General</TableHead></TableRow></TableHeader>
           <TableBody>
@@ -193,7 +208,7 @@ export default function HatSizeConverter() {
         </Table>
         <p className="text-xs">💡 Pro tip: If you’re between two sizes, always go for the larger one, especially for structured hats.</p>
 
-        <h3>🌍 Regional Hat Sizing Systems</h3>
+        <h3 className='font-bold mt-4'>🌍 Regional Hat Sizing Systems</h3>
         <p className="text-xs">Different regions have developed their own sizing standards over time. Here’s how they differ:</p>
         <ul className="list-disc list-inside text-xs">
             <li><strong>🇺🇸 US / 🇬🇧 UK Hat Sizes:</strong> Expressed as fractions of head circumference in inches divided by π (3.14).</li>
@@ -202,7 +217,7 @@ export default function HatSizeConverter() {
             <li><strong>🌏 International Sizes (Label System):</strong> Uses XS to XXL for general categorization.</li>
         </ul>
 
-        <h3>🎩 Common Hat Types and Their Fits</h3>
+        <h3 className='font-bold mt-4'>🎩 Common Hat Types and Their Fits</h3>
         <p className="text-xs">Not all hats fit the same. Here’s a quick rundown of popular styles:</p>
         <ol className="list-decimal list-inside text-xs">
           <li><strong>Baseball Caps:</strong> Usually adjustable (snapback or strapback).</li>
@@ -213,13 +228,13 @@ export default function HatSizeConverter() {
           <li><strong>Helmets / Safety Hats:</strong> Always refer to manufacturer’s guide, as sizes vary by brand and padding.</li>
         </ol>
 
-        <h3>🧮 The Hat Size Formula</h3>
+        <h3 className='font-bold mt-4'>🧮 The Hat Size Formula</h3>
         <p className="text-xs">To calculate hat size manually, use: `Hat Size (US/UK) = Head Circumference (in inches) / π`. For EU/India size, simply `Hat Size = Head Circumference (cm)`.</p>
         
-        <h3>🧢 Adjusting Between Brands</h3>
+        <h3 className='font-bold mt-4'>🧢 Adjusting Between Brands</h3>
         <p className="text-xs">Even within the same country, brand sizing can differ slightly. For example, a US size 7 in one brand may fit like 6 7/8 in another. Always check the brand’s specific size guide before purchase.</p>
         
-        <h3>👶 Children’s Hat Sizes</h3>
+        <h3 className='font-bold mt-4'>👶 Children’s Hat Sizes</h3>
         <p className="text-xs">Kids’ sizes grow quickly. A general guide:</p>
         <Table>
           <TableHeader><TableRow><TableHead>Age</TableHead><TableHead>Approx. Head (cm)</TableHead></TableRow></TableHeader>
@@ -231,27 +246,27 @@ export default function HatSizeConverter() {
           </TableBody>
         </Table>
         
-        <h3>🧵 Materials and Their Impact on Fit</h3>
+        <h3 className='font-bold mt-4'>🧵 Materials and Their Impact on Fit</h3>
         <ul className="list-disc list-inside text-xs">
           <li><strong>Wool:</strong> Shrinks slightly over time.</li>
           <li><strong>Cotton:</strong> Stable fit.</li>
           <li><strong>Leather:</strong> Stretches with use.</li>
         </ul>
         
-        <h3>🧼 Caring for Your Hat</h3>
+        <h3 className='font-bold mt-4'>🧼 Caring for Your Hat</h3>
         <p className="text-xs">Proper maintenance preserves shape and size. Avoid moisture, store in a dry place, and use a hat box or stand. Clean gently with a soft brush or lint roller for wool/felt.</p>
 
-        <h3>💡 Tips for Buying Hats Online</h3>
+        <h3 className='font-bold mt-4'>💡 Tips for Buying Hats Online</h3>
         <ul className="list-disc list-inside text-xs">
             <li>Always measure your head before buying.</li>
             <li>Check brand-specific size charts.</li>
             <li>Read product reviews for fit accuracy.</li>
         </ul>
-
-        <h3>🧭 Conclusion</h3>
+        
+        <h3 className='font-bold mt-4'>🧭 Conclusion</h3>
         <p className="text-xs">A perfect hat doesn’t just complement your outfit — it completes your personality. By understanding how to measure your head and how sizing systems differ, you can always find a comfortable, stylish fit.</p>
 
-        <h3>🔗 Related Calculators and Converters</h3>
+        <h3 className='font-bold mt-4'>🔗 Related Calculators and Converters</h3>
         <ul className="list-disc list-inside text-xs space-y-1">
             <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
             <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
@@ -261,3 +276,5 @@ export default function HatSizeConverter() {
     </div>
   );
 }
+
+    
