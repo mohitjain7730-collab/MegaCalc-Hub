@@ -61,6 +61,18 @@ export default function FootLengthToShoeSizeConverter() {
   };
   
   const unit = form.watch('unit');
+  
+  const sizeChartData = [
+      { footLength: 22.0, usMen: 4, usWomen: 5.5, uk: 3, eu: 35, jp: 22, india: 21 },
+      { footLength: 23.0, usMen: 5, usWomen: 6.5, uk: 4, eu: 36, jp: 23, india: 22 },
+      { footLength: 24.0, usMen: 6, usWomen: 7.5, uk: 5, eu: 37, jp: 24, india: 23 },
+      { footLength: 25.0, usMen: 7, usWomen: 8.5, uk: 6, eu: 38, jp: 25, india: 24 },
+      { footLength: 26.0, usMen: 8, usWomen: 9.5, uk: 7, eu: 39, jp: 26, india: 25 },
+      { footLength: 27.0, usMen: 9, usWomen: 10.5, uk: 8, eu: 40, jp: 27, india: 26 },
+      { footLength: 28.0, usMen: 10, usWomen: 11.5, uk: 9, eu: 41, jp: 28, india: 27 },
+      { footLength: 29.0, usMen: 11, usWomen: 12.5, uk: 10, eu: 42, jp: 29, india: 28 },
+      { footLength: 30.0, usMen: 12, usWomen: 13.5, uk: 11, eu: 43, jp: 30, india: 29 },
+  ];
 
   return (
     <div className="space-y-8">
@@ -136,11 +148,11 @@ export default function FootLengthToShoeSizeConverter() {
         </AccordionItem>
       </Accordion>
       <div className="space-y-4 prose prose-sm dark:prose-invert max-w-none">
-        <h3>Foot Length to Shoe Size Converter: Your Complete Guide for US, UK, EU, Japan, and India Sizes</h3>
+        <h3 className='font-bold text-xl'>Foot Length to Shoe Size Converter: Your Complete Guide for US, UK, EU, Japan, and India Sizes</h3>
         <p className="text-xs">Finding the right shoe size can be confusing, especially when buying shoes online or from international brands. Different countries have different sizing standards, and even the same brand can vary slightly. That’s why a foot length to shoe size converter is an essential tool for anyone looking to buy the perfect-fitting shoes.</p>
         <p className="text-xs">This guide explains how to measure your foot accurately, convert it to US, UK, EU, Japan, and India sizes, and offers tips for selecting shoes that fit comfortably.</p>
         
-        <h4>Why Knowing Your Foot Length Matters</h4>
+        <h4 className='font-bold'>Why Knowing Your Foot Length Matters</h4>
         <p className="text-xs">Many people buy shoes based on their typical size without measuring their foot length. This can lead to:</p>
         <ul className="list-disc list-inside text-xs pl-4 space-y-1">
           <li>Shoes that are too tight or too loose.</li>
@@ -150,7 +162,7 @@ export default function FootLengthToShoeSizeConverter() {
         </ul>
         <p className="text-xs">Using a foot length to shoe size converter ensures that you select a shoe that fits properly, giving you comfort and style.</p>
 
-        <h4>How Shoe Sizes Work Across Different Regions</h4>
+        <h4 className='font-bold'>How Shoe Sizes Work Across Different Regions</h4>
         <p className="text-xs">Shoe sizes vary from region to region:</p>
         <ul className="list-disc list-inside text-xs pl-4 space-y-1">
           <li><strong>US Sizes:</strong> Typically measured in inches; US Men and Women have slightly different scales.</li>
@@ -161,7 +173,7 @@ export default function FootLengthToShoeSizeConverter() {
         </ul>
         <p className="text-xs">A converter simplifies all these differences, letting you find your size in any region instantly.</p>
 
-        <h4>How to Measure Your Foot Length</h4>
+        <h4 className='font-bold'>How to Measure Your Foot Length</h4>
         <p className="text-xs">Accurate measurement is crucial for the correct shoe size:</p>
         <ol className="list-decimal list-inside text-xs pl-4 space-y-1">
           <li><strong>Prepare:</strong> Use a soft measuring tape or a ruler. Place your foot on a piece of paper.</li>
@@ -170,7 +182,7 @@ export default function FootLengthToShoeSizeConverter() {
           <li><strong>Record the Measurement:</strong> Use centimeters or inches, depending on your preference.</li>
         </ol>
 
-        <h4>Using a Foot Length to Shoe Size Converter</h4>
+        <h4 className='font-bold'>Using a Foot Length to Shoe Size Converter</h4>
         <p className="text-xs">A converter simplifies the process:</p>
         <ol className="list-decimal list-inside text-xs pl-4 space-y-1">
           <li>Enter your foot length in centimeters or inches.</li>
@@ -179,25 +191,27 @@ export default function FootLengthToShoeSizeConverter() {
         </ol>
         <p className="text-xs">This method eliminates guesswork and ensures a perfect fit every time.</p>
         
-        <h4>Approximate Shoe Size Chart</h4>
+        <h4 className='font-bold'>Approximate Shoe Size Chart</h4>
         <p className="text-xs">Here’s a reference chart based on foot length in centimeters:</p>
         <Table>
             <TableHeader><TableRow><TableHead>Foot Length (cm)</TableHead><TableHead>US Men</TableHead><TableHead>US Women</TableHead><TableHead>UK</TableHead><TableHead>EU</TableHead><TableHead>Japan</TableHead><TableHead>India</TableHead></TableRow></TableHeader>
             <TableBody>
-                <TableRow><TableCell>22.0</TableCell><TableCell>4</TableCell><TableCell>5.5</TableCell><TableCell>3</TableCell><TableCell>35</TableCell><TableCell>22</TableCell><TableCell>21</TableCell></TableRow>
-                <TableRow><TableCell>23.0</TableCell><TableCell>5</TableCell><TableCell>6.5</TableCell><TableCell>4</TableCell><TableCell>36</TableCell><TableCell>23</TableCell><TableCell>22</TableCell></TableRow>
-                <TableRow><TableCell>24.0</TableCell><TableCell>6</TableCell><TableCell>7.5</TableCell><TableCell>5</TableCell><TableCell>37</TableCell><TableCell>24</TableCell><TableCell>23</TableCell></TableRow>
-                <TableRow><TableCell>25.0</TableCell><TableCell>7</TableCell><TableCell>8.5</TableCell><TableCell>6</TableCell><TableCell>38</TableCell><TableCell>25</TableCell><TableCell>24</TableCell></TableRow>
-                <TableRow><TableCell>26.0</TableCell><TableCell>8</TableCell><TableCell>9.5</TableCell><TableCell>7</TableCell><TableCell>39</TableCell><TableCell>26</TableCell><TableCell>25</TableCell></TableRow>
-                <TableRow><TableCell>27.0</TableCell><TableCell>9</TableCell><TableCell>10.5</TableCell><TableCell>8</TableCell><TableCell>40</TableCell><TableCell>27</TableCell><TableCell>26</TableCell></TableRow>
-                <TableRow><TableCell>28.0</TableCell><TableCell>10</TableCell><TableCell>11.5</TableCell><TableCell>9</TableCell><TableCell>41</TableCell><TableCell>28</TableCell><TableCell>27</TableCell></TableRow>
-                <TableRow><TableCell>29.0</TableCell><TableCell>11</TableCell><TableCell>12.5</TableCell><TableCell>10</TableCell><TableCell>42</TableCell><TableCell>29</TableCell><TableCell>28</TableCell></TableRow>
-                <TableRow><TableCell>30.0</TableCell><TableCell>12</TableCell><TableCell>13.5</TableCell><TableCell>11</TableCell><TableCell>43</TableCell><TableCell>30</TableCell><TableCell>29</TableCell></TableRow>
+                {sizeChartData.map(row => (
+                    <TableRow key={row.footLength}>
+                        <TableCell>{row.footLength}</TableCell>
+                        <TableCell>{row.usMen}</TableCell>
+                        <TableCell>{row.usWomen}</TableCell>
+                        <TableCell>{row.uk}</TableCell>
+                        <TableCell>{row.eu}</TableCell>
+                        <TableCell>{row.jp}</TableCell>
+                        <TableCell>{row.india}</TableCell>
+                    </TableRow>
+                ))}
             </TableBody>
         </Table>
         <p className="text-xs">Note: These sizes are approximate and may vary by brand or style. Always check brand-specific size charts when possible.</p>
 
-        <h4>Tips for Choosing the Right Shoe Size</h4>
+        <h4 className='font-bold'>Tips for Choosing the Right Shoe Size</h4>
         <ul className="list-disc list-inside text-xs pl-4 space-y-1">
           <li><strong>Measure Both Feet:</strong> One foot is often slightly larger. Use the bigger foot as reference.</li>
           <li><strong>Consider Sock Thickness:</strong> If you wear thick socks, choose a slightly larger size.</li>
@@ -206,7 +220,7 @@ export default function FootLengthToShoeSizeConverter() {
           <li><strong>Use a Converter for International Brands:</strong> Converting foot length to multiple region sizes ensures a better fit.</li>
         </ul>
         
-        <h4>Common Mistakes to Avoid</h4>
+        <h4 className='font-bold'>Common Mistakes to Avoid</h4>
         <ul className="list-disc list-inside text-xs pl-4 space-y-1">
           <li><strong>Buying based on your usual size:</strong> Don’t assume your normal size fits every brand.</li>
           <li><strong>Ignoring foot width:</strong> Some shoes are narrow or wide. Consider width along with length.</li>
@@ -214,7 +228,7 @@ export default function FootLengthToShoeSizeConverter() {
           <li><strong>Buying shoes without trying:</strong> Especially for online shopping, use a converter first.</li>
         </ul>
 
-        <h4>Benefits of Using a Foot Length to Shoe Size Converter</h4>
+        <h4 className='font-bold'>Benefits of Using a Foot Length to Shoe Size Converter</h4>
         <ul className="list-disc list-inside text-xs pl-4 space-y-1">
             <li>Quick and accurate calculation of shoe sizes across US, UK, EU, Japan, and India.</li>
             <li>Reduces returns and exchanges due to incorrect sizing.</li>
@@ -222,7 +236,7 @@ export default function FootLengthToShoeSizeConverter() {
             <li>Ideal for online shopping or international purchases.</li>
         </ul>
 
-        <h4>Foot Length and Shoe Comfort</h4>
+        <h4 className='font-bold'>Foot Length and Shoe Comfort</h4>
         <p className="text-xs">Properly fitting shoes:</p>
         <ul className="list-disc list-inside text-xs pl-4 space-y-1">
           <li>Reduce risk of blisters and injuries.</li>
@@ -230,17 +244,17 @@ export default function FootLengthToShoeSizeConverter() {
           <li>Improve posture and walking comfort.</li>
         </ul>
 
-        <h4>FAQ: Foot Length to Shoe Size</h4>
+        <h4 className='font-bold'>FAQ: Foot Length to Shoe Size</h4>
         <p className="text-xs"><strong>Q1: Can I use the same size for men and women?</strong><br/>Not exactly. US Men and US Women sizes differ by approximately 1.5 sizes. Always use a converter.</p>
         <p className="text-xs"><strong>Q2: What if my foot is between sizes?</strong><br/>Choose the larger size for comfort, especially for closed-toe shoes.</p>
         <p className="text-xs"><strong>Q3: Does foot length change over time?</strong><br/>Yes, foot length can increase slightly with age or weight changes. Measure periodically.</p>
         <p className="text-xs"><strong>Q4: Are India sizes reliable?</strong><br/>India sizes are approximate but generally align with EU sizes minus 14. Using a converter ensures accuracy.</p>
 
-        <h4>Conclusion</h4>
+        <h4 className='font-bold'>Conclusion</h4>
         <p className="text-xs">Measuring your foot length and using a foot length to shoe size converter is the smartest way to ensure perfectly fitting shoes. With your measurement, you can quickly determine US, UK, EU, Japan, and India sizes, making online and international shopping hassle-free.</p>
         <p className="text-xs">Whether you’re buying sneakers, formal shoes, or sandals, a proper fit improves comfort, prevents foot problems, and makes every step more enjoyable. Always measure your feet, check size charts, and use a reliable converter to choose the right size for your lifestyle.</p>
 
-        <h4>🔗 Related Calculators</h4>
+        <h4 className='font-bold'>🔗 Related Calculators</h4>
         <ul className="list-disc list-inside text-xs space-y-1 pl-4">
             <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">Universal Clothing Size Converter</Link></li>
             <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">Ring Size Converter</Link></li>
