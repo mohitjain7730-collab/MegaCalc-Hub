@@ -141,21 +141,20 @@ export default function GloveSizeConverter() {
 
       <div className="space-y-4 prose prose-sm dark:prose-invert max-w-none">
         <h3>Ultimate Glove Size Guide: How to Choose the Perfect Glove for Men and Women</h3>
-        <p className="text-xs">Finding the right glove size is essential for comfort, performance, and safety. Gloves that are too tight can restrict movement and cause discomfort, while gloves that are too loose can slip off or reduce dexterity. A glove size converter makes it simple to determine your ideal glove size across multiple regions, including US, UK, EU, Japan, and India.</p>
-        <p className="text-xs">This guide explains how to measure your hand accurately, convert your measurements into different sizing systems, and choose the perfect glove for every activity.</p>
+        <p>Finding the right glove size is essential for comfort, performance, and safety. Gloves that are too tight can restrict movement and cause discomfort, while gloves that are too loose can slip off or reduce dexterity. A glove size converter makes it simple to determine your ideal glove size across multiple regions, including US, UK, EU, Japan, and India.</p>
+        <p>This guide explains how to measure your hand accurately, convert your measurements into different sizing systems, and choose the perfect glove for every activity.</p>
         
         <h4>Why Glove Size Matters</h4>
-        <p className="text-xs">Properly fitting gloves are critical for:</p>
-        <ul className="list-disc list-inside text-xs pl-4 space-y-1">
+        <ul className="list-disc list-inside">
             <li>Sports and outdoor activities: Improved grip and dexterity.</li>
             <li>Work and safety gloves: Prevent hand injuries and ensure protection.</li>
             <li>Fashion gloves: Comfort and proper style.</li>
         </ul>
-        <p className="text-xs">Using a glove size converter ensures your gloves fit comfortably, no matter where they’re purchased or which country’s sizing system they use.</p>
+        <p>Using a glove size converter ensures your gloves fit comfortably, no matter where they’re purchased or which country’s sizing system they use.</p>
 
         <h4>How Glove Sizes Are Measured</h4>
-        <p className="text-xs">Glove sizes are determined by the circumference of your dominant hand (excluding the thumb). Measurements can be taken in inches or centimeters.</p>
-        <ul className="list-disc list-inside text-xs pl-4 space-y-1">
+        <p>Glove sizes are determined by the circumference of your dominant hand (excluding the thumb). Measurements can be taken in inches or centimeters.</p>
+        <ul className="list-disc list-inside">
             <li><strong>US / UK Glove Size:</strong> Typically measured in inches.</li>
             <li><strong>EU Glove Size:</strong> Measured in centimeters.</li>
             <li><strong>Japan Glove Size:</strong> Same as EU, in centimeters.</li>
@@ -163,21 +162,20 @@ export default function GloveSizeConverter() {
         </ul>
 
         <h4>Step-by-Step Guide to Measuring Your Hand</h4>
-        <p className="text-xs">Follow these simple steps to measure your hand accurately:</p>
-        <ol className="list-decimal list-inside text-xs pl-4 space-y-1">
+        <ol className="list-decimal list-inside">
             <li><strong>Use a flexible measuring tape:</strong> Avoid rigid rulers.</li>
             <li><strong>Measure the widest part of your hand:</strong> Wrap the tape around your hand just below the knuckles, excluding the thumb.</li>
             <li><strong>Record the circumference:</strong> Note the measurement in inches or centimeters depending on your preference.</li>
         </ol>
 
         <h4>Using a Glove Size Converter</h4>
-        <p className="text-xs">A glove size converter makes converting your measurement easy:</p>
-        <ol className="list-decimal list-inside text-xs pl-4 space-y-1">
+        <p>A glove size converter makes converting your measurement easy:</p>
+        <ol className="list-decimal list-inside">
           <li>Enter your hand circumference in inches or centimeters.</li>
           <li>Select the unit of measurement.</li>
           <li>The calculator instantly provides glove sizes for US/UK, EU, Japan, and India.</li>
         </ol>
-        <p className="text-xs">This method eliminates guesswork, especially for online shopping or purchasing international brands.</p>
+        <p>This method eliminates guesswork, especially for online shopping or purchasing international brands.</p>
 
         <h4>Glove Size Chart (Approximate)</h4>
         <Table>
@@ -205,7 +203,7 @@ export default function GloveSizeConverter() {
         <p className="text-xs mt-2">Note: Sizes may vary slightly by brand or glove style.</p>
 
         <h4>Tips for Choosing the Right Glove</h4>
-        <ul className="list-disc list-inside text-xs pl-4 space-y-1">
+        <ul className="list-disc list-inside">
             <li><strong>Measure both hands:</strong> One hand may be slightly larger. Use the larger measurement.</li>
             <li><strong>Consider the glove type:</strong> Work gloves, winter gloves, and sports gloves may require slightly different fits.</li>
             <li><strong>Allow some room:</strong> Gloves should fit snugly but allow finger movement.</li>
@@ -213,7 +211,7 @@ export default function GloveSizeConverter() {
         </ul>
 
         <h4>Common Mistakes to Avoid</h4>
-        <ul className="list-disc list-inside text-xs pl-4 space-y-1">
+        <ul className="list-disc list-inside">
             <li>Buying gloves based on usual size: Always measure your hand.</li>
             <li>Ignoring regional sizing differences: Check US, UK, EU, Japan, and India conversions.</li>
             <li>Overlooking glove material: Leather gloves may stretch; synthetic materials may fit tighter.</li>
@@ -221,7 +219,7 @@ export default function GloveSizeConverter() {
         </ul>
 
         <h4>Benefits of Using a Glove Size Converter</h4>
-        <ul className="list-disc list-inside text-xs pl-4 space-y-1">
+        <ul className="list-disc list-inside">
             <li>Ensures a comfortable and accurate fit for gloves across all regions.</li>
             <li>Reduces returns and exchanges when buying online.</li>
             <li>Saves time by converting sizes for international purchases.</li>
@@ -229,14 +227,14 @@ export default function GloveSizeConverter() {
         </ul>
 
         <h4>FAQ: Glove Size</h4>
-        <p className="text-xs"><strong>Q1: How do I know my US glove size if I know my EU size?</strong><br/>Use a glove size converter. Typically, US/UK sizes are slightly smaller than EU sizes in centimeters.</p>
-        <p className="text-xs"><strong>Q2: Can I wear one size for men and women?</strong><br/>Gloves are generally unisex, but sizing may differ. Always measure your hand for the most accurate fit.</p>
-        <p className="text-xs"><strong>Q3: What if my measurement is between sizes?</strong><br/>Choose the larger size for comfort, especially for winter or work gloves.</p>
-        <p className="text-xs"><strong>Q4: Are India glove sizes reliable?</strong><br/>India sizes are approximate but usually based on EU size minus 1 cm. A converter ensures accuracy.</p>
+        <p><strong>Q1: How do I know my US glove size if I know my EU size?</strong><br/>Use a glove size converter. Typically, US/UK sizes are slightly smaller than EU sizes in centimeters.</p>
+        <p><strong>Q2: Can I wear one size for men and women?</strong><br/>Gloves are generally unisex, but sizing may differ. Always measure your hand for the most accurate fit.</p>
+        <p><strong>Q3: What if my measurement is between sizes?</strong><br/>Choose the larger size for comfort, especially for winter or work gloves.</p>
+        <p><strong>Q4: Are India glove sizes reliable?</strong><br/>India sizes are approximate but usually based on EU size minus 1 cm. A converter ensures accuracy.</p>
 
         <h4>Conclusion</h4>
-        <p className="text-xs">Measuring your hand and using a glove size converter is the easiest way to find gloves that fit perfectly. By understanding US, UK, EU, Japan, and India sizing, you can shop confidently online or in-store.</p>
-        <p className="text-xs">Properly fitted gloves improve comfort, protect your hands, and enhance performance, whether for sports, work, or fashion. Always measure your hand, use a reliable converter, and consult brand-specific size charts for the best results.</p>
+        <p>Measuring your hand and using a glove size converter is the easiest way to find gloves that fit perfectly. By understanding US, UK, EU, Japan, and India sizing, you can shop confidently online or in-store.</p>
+        <p>Properly fitted gloves improve comfort, protect your hands, and enhance performance, whether for sports, work, or fashion. Always measure your hand, use a reliable converter, and consult brand-specific size charts for the best results.</p>
       </div>
     </div>
   );
