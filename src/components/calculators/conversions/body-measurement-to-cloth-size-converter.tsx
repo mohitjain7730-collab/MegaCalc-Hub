@@ -247,10 +247,10 @@ export default function BodyMeasurementToClothSizeConverter() {
 
         <h4 className='font-bold'>Benefits of Using a Body Measurement to Clothing Size Converter</h4>
         <ul className="list-disc list-inside text-sm pl-4 space-y-1">
-          <li>Provides accurate sizes for multiple regions.</li>
-          <li>Reduces returns and exchanges from online shopping.</li>
-          <li>Ensures comfort and proper fit for every garment.</li>
-          <li>Ideal for international shopping, gifts, and special occasions.</li>
+            <li>Provides accurate sizes for multiple regions.</li>
+            <li>Reduces returns and exchanges from online shopping.</li>
+            <li>Ensures comfort and proper fit for every garment.</li>
+            <li>Ideal for international shopping, gifts, and special occasions.</li>
         </ul>
 
         <h4 className='font-bold'>FAQ</h4>
@@ -262,6 +262,15 @@ export default function BodyMeasurementToClothSizeConverter() {
         <h4 className='font-bold'>Conclusion</h4>
         <p className="text-sm">A body measurement to clothing size converter simplifies shopping by providing accurate sizes for US, UK, EU, India, and Japan. By measuring your chest/bust, waist, and hips correctly and using this tool, you can confidently purchase clothes that fit perfectly.</p>
         <p className="text-sm">Properly fitting clothing improves comfort, appearance, and confidence, whether you are buying casual wear, formal attire, or athletic apparel. Always measure, check the converter, and consult brand-specific charts for the best results.</p>
+      
+        <h4 className='font-bold'>🔗 Related Calculators</h4>
+        <ul className="list-disc list-inside text-sm space-y-1 pl-4">
+            <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
+            <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
+            <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
+            <li><Link href="/category/conversions/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
+            <li><Link href="/category/conversions/glove-size-converter" className="text-primary underline">🧤 Glove Size Converter</Link></li>
+        </ul>
       </div>
     </div>
   );
