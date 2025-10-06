@@ -216,9 +216,10 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
-  const shoeSizeConverters = filteredCalculators.filter(calc => 
+  const otherUsefulConverters = filteredCalculators.filter(calc => 
     [
       'shoe-size-converter',
+      'cloth-size-converter',
     ].includes(calc.slug)
   );
 
@@ -232,7 +233,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     !pressureConverters.find(c => c.id === calc.id) &&
     !energyConverters.find(c => c.id === calc.id) &&
     !powerConverters.find(c => c.id === calc.id) &&
-    !shoeSizeConverters.find(c => c.id === calc.id)
+    !otherUsefulConverters.find(c => c.id === calc.id)
   );
 
   const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
@@ -307,7 +308,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                     </div>
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Other useful conversions</h2>
-                        {renderCalculatorGrid(shoeSizeConverters, categorySlug, "No other useful converters found.")}
+                        {renderCalculatorGrid(otherUsefulConverters, categorySlug, "No other useful converters found.")}
                     </div>
                 </>
             ) : null}

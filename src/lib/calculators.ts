@@ -1040,6 +1040,7 @@ export const calculators: Calculator[] = [
   { id: 478, name: 'Foot-Pounds per Second to Watts Converter', description: 'Convert power in ft·lb/s to Watts.', slug: 'foot-pounds-per-second-to-watts-converter', category: 'conversions' },
   { id: 479, name: 'Watts to Foot-Pounds per Second Converter', description: 'Convert power in Watts to ft·lb/s.', slug: 'watts-to-foot-pounds-per-second-converter', category: 'conversions' },
   { id: 480, name: 'Shoe Size Converter', description: 'Convert shoe sizes between international systems (US, UK, EU, etc.).', slug: 'shoe-size-converter', category: 'conversions' },
+  { id: 481, name: 'Cloth Size Converter', description: 'Convert clothing sizes between international standards (US, UK, EU, etc.).', slug: 'cloth-size-converter', category: 'conversions' },
   // Home Improvement
   {
     id: 1,

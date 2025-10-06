@@ -415,51 +415,22 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'foot-pounds-per-second-to-watts-converter': dynamic(() => import('@/components/calculators/conversions/foot-pounds-per-second-to-watts-converter')),
     'watts-to-foot-pounds-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-foot-pounds-per-second-converter')),
     'shoe-size-converter': dynamic(() => import('@/components/calculators/conversions/shoe-size-converter')),
+    'cloth-size-converter': dynamic(() => import('@/components/calculators/conversions/cloth-size-converter')),
 };
 
-
-export default function CalculatorPage({
-  params,
-}: {
-  params: { slug: string; calcSlug: string };
-}) {
-  const calculator = calculators.find((c) => c.slug === params.calcSlug);
+export default function CalculatorPage({ params }: { params: { slug: string; calcSlug: string } }) {
   const category = categories.find((c) => c.slug === params.slug);
+  const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
 
-  if (!calculator || !category || calculator.category !== category.slug) {
+  if (!category || !calculator) {
     notFound();
   }
 
-  const CalculatorComponent = calculatorComponents[params.calcSlug];
-
-  if (!CalculatorComponent) {
-    return (
-      <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
-        <div className="w-full max-w-4xl">
-           <Card className="w-full text-center shadow-md mt-8">
-            <CardContent className="p-8">
-                <Construction className="mx-auto h-16 w-16 mb-6 text-primary" strokeWidth={1.5} />
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                  Calculator Not Found
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  The calculator you are looking for does not exist or has been moved.
-                </p>
-                 <Button asChild className='mt-6'>
-                    <Link href={`/category/${category.slug}`}>
-                        Back to {category.name}
-                    </Link>
-                </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    )
-  }
+  const CalculatorComponent = calculatorComponents[calculator.slug] || null;
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
-      <div className="w-full max-w-4xl">
+    <div className="flex flex-col items-center min-h-screen bg-secondary/50">
+      <div className="w-full max-w-4xl bg-background p-4 sm:p-8 flex-1">
         <div className="mb-8">
           <Button asChild variant="ghost" className="mb-4">
             <Link href={`/category/${category.slug}`}>
@@ -467,27 +438,35 @@ export default function CalculatorPage({
               Back to {category.name}
             </Link>
           </Button>
-          <div className="flex items-start gap-4">
-            <CategoryIcon
-              name={category.Icon}
-              className="h-12 w-12 text-primary flex-shrink-0"
-              strokeWidth={1.5}
-            />
+          <div className="flex items-center gap-4">
+             <CategoryIcon name={category.Icon} className="h-10 w-10 text-primary flex-shrink-0" strokeWidth={1.5} />
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
                 {calculator.name}
               </h1>
-              <p className="text-muted-foreground mt-2 text-lg">
-                {calculator.description}
-              </p>
+              <p className="text-muted-foreground mt-1">{calculator.description}</p>
             </div>
           </div>
         </div>
 
-        <CalculatorComponent />
+        {CalculatorComponent ? (
+          <CalculatorComponent />
+        ) : (
+          <Card className="w-full text-center shadow-md mt-8">
+            <CardHeader>
+                <Construction className="mx-auto h-16 w-16 mb-6 text-primary" strokeWidth={1.5} />
+                <CardTitle className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                    Calculator Coming Soon
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8 pt-0">
+                <p className="text-lg text-muted-foreground">
+                    This calculator is under construction. Please check back later!
+                </p>
+            </CardContent>
+        </Card>
+        )}
       </div>
     </div>
   );
 }
-
-    
