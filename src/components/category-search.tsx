@@ -306,8 +306,8 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                         {renderCalculatorGrid(powerConverters, categorySlug, "No power converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Shoe size converter</h2>
-                        {renderCalculatorGrid(shoeSizeConverters, categorySlug, "No shoe size converters found.")}
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Other useful conversions</h2>
+                        {renderCalculatorGrid(shoeSizeConverters, categorySlug, "No other useful converters found.")}
                     </div>
                 </>
             ) : null}
