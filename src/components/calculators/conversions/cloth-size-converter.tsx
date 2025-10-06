@@ -74,7 +74,8 @@ export default function ClothSizeConverter() {
       form.clearErrors('inputSize');
     } else {
       setResult(null);
-      form.setError('inputSize', { type: 'manual', message: 'No matching size found. Please check the value.' });
+      const availableSizes = chart.map(row => row[fromRegion as keyof typeof row]).join(', ');
+      form.setError('inputSize', { type: 'manual', message: `Size not found. Available sizes are: ${availableSizes}` });
     }
   };
 
