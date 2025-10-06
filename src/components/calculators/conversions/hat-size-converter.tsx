@@ -76,14 +76,21 @@ export default function HatSizeConverter() {
 
   const onSubmit = (values: FormValues) => {
     const { unit, value } = values;
+    
+    const parsedValue = typeof value === 'string' ? parseFloat(value.replace(',', '.')) : value;
+    if (isNaN(parsedValue)) {
+      form.setError('value', { message: 'Please enter a valid number.' });
+      return;
+    }
+
     let cm = 0;
 
     switch (unit) {
-      case "cm": cm = value; break;
-      case "in": cm = value * 2.54; break;
-      case "us": cm = value * Math.PI * 2.54; break;
-      case "eu": cm = value; break;
-      case "jp": cm = value; break;
+      case "cm": cm = parsedValue; break;
+      case "in": cm = parsedValue * 2.54; break;
+      case "us": cm = parsedValue * Math.PI * 2.54; break;
+      case "eu": cm = parsedValue; break;
+      case "jp": cm = parsedValue; break;
     }
 
     const inches = cm / 2.54;
@@ -118,7 +125,7 @@ export default function HatSizeConverter() {
             </CardDescription>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <FormField control={form.control} name="unit" render={({ field }) => (
-                    <FormItem><FormLabel>Input Unit</FormLabel>
+                    <FormItem><FormLabel>Input Type</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                             <SelectContent>
@@ -156,7 +163,7 @@ export default function HatSizeConverter() {
                     <div className="p-3 border rounded"><p className="text-gray-500">Inches (in)</p><p className="font-semibold text-lg">{result.in.toFixed(2)}</p></div>
                     <div className="p-3 border rounded"><p className="text-gray-500">US / UK Size</p><p className="font-semibold text-lg">{result.us}</p></div>
                     <div className="p-3 border rounded"><p className="text-gray-500">EU / India Size</p><p className="font-semibold text-lg">{result.eu}</p></div>
-                    <div className="p-3 border rounded"><p className="text-gray-500">Japan Size</p><p className="font-semibold text-lg">{result.jp}</p></div>
+                    <div className="p-3 border rounded"><p className="font-semibold text-lg">Japan Size</p><p className="font-semibold text-lg">{result.jp}</p></div>
                 </div>
                  <CardDescription className="mt-4 text-xs">Note: EU, India and Japan sizes usually correspond to head circumference in cm. If you’re between two sizes, choose the larger one for comfort.</CardDescription>
             </CardContent>
@@ -173,14 +180,14 @@ export default function HatSizeConverter() {
       </Accordion>
 
       <div className="space-y-4 prose prose-sm dark:prose-invert max-w-none">
-        <h3>🧠 Why Hat Size Matters</h3>
-        <p className="text-xs">Hats are more than just fashion accessories — they’re about comfort, confidence, and identity. Whether you’re buying a fedora, baseball cap, or sun hat, getting the right fit ensures the hat sits comfortably on your head, stays in place, and enhances your look.</p>
-        <p className="text-xs">A hat that’s too tight can cause headaches and leave marks, while a loose one will slide or blow away easily. Knowing your exact hat size saves you from constant adjustments and poor fits.</p>
+        <h3 className='font-bold text-lg'>🧠 Why Hat Size Matters</h3>
+        <p className="text-sm">Hats are more than just fashion accessories — they’re about comfort, confidence, and identity. Whether you’re buying a fedora, baseball cap, or sun hat, getting the right fit ensures the hat sits comfortably on your head, stays in place, and enhances your look.</p>
+        <p className="text-sm">A hat that’s too tight can cause headaches and leave marks, while a loose one will slide or blow away easily. Knowing your exact hat size saves you from constant adjustments and poor fits.</p>
         
-        <h3>📏 How to Measure Your Head for a Hat</h3>
-        <p className="text-xs">The first step in finding your hat size is measuring your head circumference accurately. Here’s how you can do it at home:</p>
+        <h3 className='font-bold text-lg mt-4'>📏 How to Measure Your Head for a Hat</h3>
+        <p className="text-sm">The first step in finding your hat size is measuring your head circumference accurately. Here’s how you can do it at home:</p>
         <h4 className='font-bold'>Step-by-Step Measurement Guide</h4>
-        <ol className="list-decimal list-inside text-xs space-y-1">
+        <ol className="list-decimal list-inside text-sm space-y-1 pl-4">
           <li>Get a flexible measuring tape. If you don’t have one, use a piece of string and a ruler.</li>
           <li>Wrap the tape around your head, placing it just above your eyebrows and ears, where a hat would normally sit.</li>
           <li>Make sure it’s level all around and not too tight or loose.</li>
@@ -189,7 +196,7 @@ export default function HatSizeConverter() {
           <li>Find your size using a conversion chart (like below).</li>
         </ol>
 
-        <h3 className='font-bold mt-4'>📊 Hat Size Conversion Chart</h3>
+        <h3 className='font-bold text-lg mt-4'>📊 Hat Size Conversion Chart</h3>
         <Table>
           <TableHeader><TableRow><TableHead>Head (cm)</TableHead><TableHead>Inches</TableHead><TableHead>US/UK</TableHead><TableHead>EU/India</TableHead><TableHead>General</TableHead></TableRow></TableHeader>
           <TableBody>
@@ -208,18 +215,18 @@ export default function HatSizeConverter() {
         </Table>
         <p className="text-xs">💡 Pro tip: If you’re between two sizes, always go for the larger one, especially for structured hats.</p>
 
-        <h3 className='font-bold mt-4'>🌍 Regional Hat Sizing Systems</h3>
-        <p className="text-xs">Different regions have developed their own sizing standards over time. Here’s how they differ:</p>
-        <ul className="list-disc list-inside text-xs">
+        <h3 className='font-bold text-lg mt-4'>🌍 Regional Hat Sizing Systems</h3>
+        <p className="text-sm">Different regions have developed their own sizing standards over time. Here’s how they differ:</p>
+        <ul className="list-disc list-inside text-sm pl-4">
             <li><strong>🇺🇸 US / 🇬🇧 UK Hat Sizes:</strong> Expressed as fractions of head circumference in inches divided by π (3.14).</li>
             <li><strong>🇪🇺 European Hat Sizes:</strong> Based directly on head circumference in centimeters.</li>
             <li><strong>🇮🇳 Indian Hat Sizes:</strong> Typically align with European sizes, measured in cm.</li>
             <li><strong>🌏 International Sizes (Label System):</strong> Uses XS to XXL for general categorization.</li>
         </ul>
 
-        <h3 className='font-bold mt-4'>🎩 Common Hat Types and Their Fits</h3>
-        <p className="text-xs">Not all hats fit the same. Here’s a quick rundown of popular styles:</p>
-        <ol className="list-decimal list-inside text-xs">
+        <h3 className='font-bold text-lg mt-4'>🎩 Common Hat Types and Their Fits</h3>
+        <p className="text-sm">Not all hats fit the same. Here’s a quick rundown of popular styles:</p>
+        <ol className="list-decimal list-inside text-sm pl-4">
           <li><strong>Baseball Caps:</strong> Usually adjustable (snapback or strapback).</li>
           <li><strong>Fedoras:</strong> Structured and fitted; exact size is important.</li>
           <li><strong>Panama Hats:</strong> Light straw hats that shrink slightly with moisture.</li>
@@ -228,14 +235,14 @@ export default function HatSizeConverter() {
           <li><strong>Helmets / Safety Hats:</strong> Always refer to manufacturer’s guide, as sizes vary by brand and padding.</li>
         </ol>
 
-        <h3 className='font-bold mt-4'>🧮 The Hat Size Formula</h3>
-        <p className="text-xs">To calculate hat size manually, use: `Hat Size (US/UK) = Head Circumference (in inches) / π`. For EU/India size, simply `Hat Size = Head Circumference (cm)`.</p>
+        <h3 className='font-bold text-lg mt-4'>🧮 The Hat Size Formula</h3>
+        <p className="text-sm">To calculate hat size manually, use: `Hat Size (US/UK) = Head Circumference (in inches) / π`. For EU/India size, simply `Hat Size = Head Circumference (cm)`.</p>
         
-        <h3 className='font-bold mt-4'>🧢 Adjusting Between Brands</h3>
-        <p className="text-xs">Even within the same country, brand sizing can differ slightly. For example, a US size 7 in one brand may fit like 6 7/8 in another. Always check the brand’s specific size guide before purchase.</p>
+        <h3 className='font-bold text-lg mt-4'>🧢 Adjusting Between Brands</h3>
+        <p className="text-sm">Even within the same country, brand sizing can differ slightly. For example, a US size 7 in one brand may fit like 6 7/8 in another. Always check the brand’s specific size guide before purchase.</p>
         
-        <h3 className='font-bold mt-4'>👶 Children’s Hat Sizes</h3>
-        <p className="text-xs">Kids’ sizes grow quickly. A general guide:</p>
+        <h3 className='font-bold text-lg mt-4'>👶 Children’s Hat Sizes</h3>
+        <p className="text-sm">Kids’ sizes grow quickly. A general guide:</p>
         <Table>
           <TableHeader><TableRow><TableHead>Age</TableHead><TableHead>Approx. Head (cm)</TableHead></TableRow></TableHeader>
           <TableBody>
@@ -246,28 +253,28 @@ export default function HatSizeConverter() {
           </TableBody>
         </Table>
         
-        <h3 className='font-bold mt-4'>🧵 Materials and Their Impact on Fit</h3>
-        <ul className="list-disc list-inside text-xs">
+        <h3 className='font-bold text-lg mt-4'>🧵 Materials and Their Impact on Fit</h3>
+        <ul className="list-disc list-inside text-sm pl-4">
           <li><strong>Wool:</strong> Shrinks slightly over time.</li>
           <li><strong>Cotton:</strong> Stable fit.</li>
           <li><strong>Leather:</strong> Stretches with use.</li>
         </ul>
         
-        <h3 className='font-bold mt-4'>🧼 Caring for Your Hat</h3>
-        <p className="text-xs">Proper maintenance preserves shape and size. Avoid moisture, store in a dry place, and use a hat box or stand. Clean gently with a soft brush or lint roller for wool/felt.</p>
+        <h3 className='font-bold text-lg mt-4'>🧼 Caring for Your Hat</h3>
+        <p className="text-sm">Proper maintenance preserves shape and size. Avoid moisture, store in a dry place, and use a hat box or stand. Clean gently with a soft brush or lint roller for wool/felt.</p>
 
-        <h3 className='font-bold mt-4'>💡 Tips for Buying Hats Online</h3>
-        <ul className="list-disc list-inside text-xs">
+        <h3 className='font-bold text-lg mt-4'>💡 Tips for Buying Hats Online</h3>
+        <ul className="list-disc list-inside text-sm pl-4">
             <li>Always measure your head before buying.</li>
             <li>Check brand-specific size charts.</li>
             <li>Read product reviews for fit accuracy.</li>
         </ul>
         
-        <h3 className='font-bold mt-4'>🧭 Conclusion</h3>
-        <p className="text-xs">A perfect hat doesn’t just complement your outfit — it completes your personality. By understanding how to measure your head and how sizing systems differ, you can always find a comfortable, stylish fit.</p>
+        <h3 className='font-bold text-lg mt-4'>🧭 Conclusion</h3>
+        <p className="text-sm">A perfect hat doesn’t just complement your outfit — it completes your personality. By understanding how to measure your head and how sizing systems differ, you can always find a comfortable, stylish fit.</p>
 
-        <h3 className='font-bold mt-4'>🔗 Related Calculators and Converters</h3>
-        <ul className="list-disc list-inside text-xs space-y-1">
+        <h3 className='font-bold text-lg mt-4'>🔗 Related Calculators and Converters</h3>
+        <ul className="list-disc list-inside text-sm space-y-1 pl-4">
             <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
             <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
             <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
@@ -276,5 +283,3 @@ export default function HatSizeConverter() {
     </div>
   );
 }
-
-    
