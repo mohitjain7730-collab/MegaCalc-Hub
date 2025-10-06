@@ -1041,6 +1041,12 @@ export const calculators: Calculator[] = [
   { id: 479, name: 'Watts to Foot-Pounds per Second Converter', description: 'Convert power in Watts to ft·lb/s.', slug: 'watts-to-foot-pounds-per-second-converter', category: 'conversions' },
   { id: 480, name: 'Shoe Size Converter', description: 'Convert shoe sizes between international systems (US, UK, EU, etc.).', slug: 'shoe-size-converter', category: 'conversions' },
   { id: 481, name: 'Cloth Size Converter', description: 'Convert clothing sizes between international standards (US, UK, EU, etc.).', slug: 'cloth-size-converter', category: 'conversions' },
+  { id: 482, name: 'Hat Size Converter', description: 'Convert between different hat sizing systems.', slug: 'hat-size-converter', category: 'conversions' },
+  { id: 483, name: 'Ring Size Converter', description: 'Find your equivalent ring size in different countries.', slug: 'ring-size-converter', category: 'conversions' },
+  { id: 484, name: 'Belt Size Converter', description: 'Convert belt sizes between different measurement systems.', slug: 'belt-size-converter', category: 'conversions' },
+  { id: 485, name: 'Foot Length to Centimeters Converter', description: 'Convert a foot measurement to centimeters.', slug: 'foot-length-to-cm-converter', category: 'conversions' },
+  { id: 486, name: 'Glove Size Converter', description: 'Find your glove size based on hand measurements.', slug: 'glove-size-converter', category: 'conversions' },
+  { id: 487, name: 'Body Measurement to Clothing Size Converter', description: 'Estimate your clothing size from body measurements.', slug: 'body-measurement-to-cloth-size-converter', category: 'conversions' },
   // Home Improvement
   {
     id: 1,
@@ -1828,5 +1834,7 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
+
+    
 
     

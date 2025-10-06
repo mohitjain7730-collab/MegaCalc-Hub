@@ -416,6 +416,12 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'watts-to-foot-pounds-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-foot-pounds-per-second-converter')),
     'shoe-size-converter': dynamic(() => import('@/components/calculators/conversions/shoe-size-converter')),
     'cloth-size-converter': dynamic(() => import('@/components/calculators/conversions/cloth-size-converter')),
+    'hat-size-converter': dynamic(() => import('@/components/calculators/conversions/hat-size-converter')),
+    'ring-size-converter': dynamic(() => import('@/components/calculators/conversions/ring-size-converter')),
+    'belt-size-converter': dynamic(() => import('@/components/calculators/conversions/belt-size-converter')),
+    'foot-length-to-cm-converter': dynamic(() => import('@/components/calculators/conversions/foot-length-to-cm-converter')),
+    'glove-size-converter': dynamic(() => import('@/components/calculators/conversions/glove-size-converter')),
+    'body-measurement-to-cloth-size-converter': dynamic(() => import('@/components/calculators/conversions/body-measurement-to-cloth-size-converter')),
 };
 
 export default function CalculatorPage({ params }: { params: { slug: string; calcSlug: string } }) {
@@ -470,3 +476,5 @@ export default function CalculatorPage({ params }: { params: { slug: string; cal
     </div>
   );
 }
+
+    

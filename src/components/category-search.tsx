@@ -220,6 +220,12 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     [
       'shoe-size-converter',
       'cloth-size-converter',
+      'hat-size-converter',
+      'ring-size-converter',
+      'belt-size-converter',
+      'foot-length-to-cm-converter',
+      'glove-size-converter',
+      'body-measurement-to-cloth-size-converter',
     ].includes(calc.slug)
   );
 
@@ -339,5 +345,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     </>
   );
 }
+
+    
 
     
