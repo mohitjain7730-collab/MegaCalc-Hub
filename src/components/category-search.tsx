@@ -218,7 +218,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
 
   const shoeSizeConverters = filteredCalculators.filter(calc => 
     [
-      // No calculators here yet, but this sets up the section
+      'shoe-size-converter',
     ].includes(calc.slug)
   );
 
@@ -338,3 +338,5 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     </>
   );
 }
+
+    

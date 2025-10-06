@@ -414,6 +414,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'watts-to-ergs-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-ergs-per-second-converter')),
     'foot-pounds-per-second-to-watts-converter': dynamic(() => import('@/components/calculators/conversions/foot-pounds-per-second-to-watts-converter')),
     'watts-to-foot-pounds-per-second-converter': dynamic(() => import('@/components/calculators/conversions/watts-to-foot-pounds-per-second-converter')),
+    'shoe-size-converter': dynamic(() => import('@/components/calculators/conversions/shoe-size-converter')),
 };
 
 
@@ -488,3 +489,5 @@ export default function CalculatorPage({
     </div>
   );
 }
+
+    
