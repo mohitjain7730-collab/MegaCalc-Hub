@@ -47,8 +47,8 @@ export default function GloveSizeConverter() {
     }
 
     const usUkSize = Math.round(handInInches * 2) / 2;
-    const euSize = Math.round(handInInches);
-    const japanSize = Math.round(handInInches * 2.54);
+    const euSize = Math.round(handInInches * 2.54);
+    const japanSize = euSize;
     const indiaSize = Math.round(handInInches * 2.54 -1);
 
     setResult({
@@ -130,7 +130,7 @@ export default function GloveSizeConverter() {
         </Card>
       )}
 
-      <Accordion type="single" collapsible defaultValue='how-it-works' className="w-full">
+       <Accordion type="single" collapsible defaultValue="how-it-works" className="w-full">
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
@@ -138,6 +138,7 @@ export default function GloveSizeConverter() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+
       <div className="space-y-4 prose prose-sm dark:prose-invert max-w-none">
         <h3>Ultimate Glove Size Guide: How to Choose the Perfect Glove for Men and Women</h3>
         <p className="text-xs">Finding the right glove size is essential for comfort, performance, and safety. Gloves that are too tight can restrict movement and cause discomfort, while gloves that are too loose can slip off or reduce dexterity. A glove size converter makes it simple to determine your ideal glove size across multiple regions, including US, UK, EU, Japan, and India.</p>
