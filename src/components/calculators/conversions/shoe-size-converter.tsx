@@ -185,50 +185,50 @@ export default function ShoeSizeConverter() {
       <div className="space-y-4 prose prose-sm dark:prose-invert max-w-none">
         <h3>Complete Understanding of Shoe Sizes and Conversions</h3>
         <h4><strong>🧩 1. Why Shoe Sizes Differ Around the World</strong></h4>
-        <p>If you’ve ever tried buying shoes from another country, you’ve probably noticed that the sizes never match. A US size 9 is not the same as a UK size 9 or a EU 43. This confusion happens because different countries use different measurement systems — some use inches, others use centimeters, and many have their own historical sizing standards.</p>
-        <p>For example:</p>
-        <ul className="list-disc list-inside">
+        <p className="text-xs">If you’ve ever tried buying shoes from another country, you’ve probably noticed that the sizes never match. A US size 9 is not the same as a UK size 9 or a EU 43. This confusion happens because different countries use different measurement systems — some use inches, others use centimeters, and many have their own historical sizing standards.</p>
+        <p className="text-xs">For example:</p>
+        <ul className="list-disc list-inside text-xs">
           <li>US sizing is based on inches but excludes the width of the stitching.</li>
           <li>UK sizing starts from a slightly smaller base size than the US.</li>
           <li>EU sizing uses a linear scale in centimeters (called Paris Points).</li>
         </ul>
-        <p>Understanding these differences is the first step to finding the perfect fit, especially when shopping online.</p>
+        <p className="text-xs">Understanding these differences is the first step to finding the perfect fit, especially when shopping online.</p>
         <h4><strong>📏 2. How Shoe Sizes Are Measured</strong></h4>
-        <p>Every shoe size is derived from foot length — the distance from the back of your heel to the tip of your longest toe. Manufacturers design shoes slightly longer than the actual foot to provide comfort and space.</p>
-        <p>Here’s a general idea:</p>
-        <ul className="list-disc list-inside">
+        <p className="text-xs">Every shoe size is derived from foot length — the distance from the back of your heel to the tip of your longest toe. Manufacturers design shoes slightly longer than the actual foot to provide comfort and space.</p>
+        <p className="text-xs">Here’s a general idea:</p>
+        <ul className="list-disc list-inside text-xs">
           <li>1 US shoe size ≈ 1/3 inch difference in foot length.</li>
           <li>1 EU size ≈ 2/3 cm difference.</li>
         </ul>
-        <p>This means if your foot is 27 cm long, your EU size will be around 42–43, while your US size may be 9–9.5, depending on the brand.</p>
+        <p className="text-xs">This means if your foot is 27 cm long, your EU size will be around 42–43, while your US size may be 9–9.5, depending on the brand.</p>
         <h4><strong>🧦 3. How to Measure Your Foot Accurately</strong></h4>
-        <p>To get your exact shoe size, follow these simple steps:</p>
-        <ol className="list-decimal list-inside">
+        <p className="text-xs">To get your exact shoe size, follow these simple steps:</p>
+        <ol className="list-decimal list-inside text-xs">
           <li>Place a sheet of paper on the floor against a wall.</li>
           <li>Stand barefoot with your heel touching the wall.</li>
           <li>Mark the tip of your longest toe on the paper.</li>
           <li>Measure the distance between the wall and the mark using a ruler.</li>
           <li>Repeat for both feet — one foot is often slightly larger.</li>
         </ol>
-        <p>Always choose your shoe size based on the larger foot measurement. For best results, measure your feet in the evening, as they tend to expand slightly throughout the day.</p>
+        <p className="text-xs">Always choose your shoe size based on the larger foot measurement. For best results, measure your feet in the evening, as they tend to expand slightly throughout the day.</p>
         <h4><strong>👠 4. Men’s vs. Women’s Shoe Sizes</strong></h4>
-        <p>Men’s and women’s shoe sizes differ in both length and width.</p>
-        <p>For example:</p>
-        <ul className="list-disc list-inside">
+        <p className="text-xs">Men’s and women’s shoe sizes differ in both length and width.</p>
+        <p className="text-xs">For example:</p>
+        <ul className="list-disc list-inside text-xs">
           <li>A men’s US 8 roughly equals a women’s US 9.5.</li>
           <li>Men’s shoes are generally wider in the heel and forefoot.</li>
         </ul>
-        <p>If you’re switching between men’s and women’s shoes, simply add 1.5 to 2 sizes to convert. So, a men’s US 7 ≈ women’s US 8.5–9.</p>
+        <p className="text-xs">If you’re switching between men’s and women’s shoes, simply add 1.5 to 2 sizes to convert. So, a men’s US 7 ≈ women’s US 8.5–9.</p>
         <h4><strong>👧 5. Kids’ Shoe Sizes Explained</strong></h4>
-        <p>Kids’ shoe sizes can be especially confusing because they go through three major stages:</p>
-        <ul className="list-disc list-inside">
+        <p className="text-xs">Kids’ shoe sizes can be especially confusing because they go through three major stages:</p>
+        <ul className="list-disc list-inside text-xs">
           <li>Infant (0–12 months) – sizes 0 to 4</li>
           <li>Toddler (1–4 years) – sizes 4 to 10</li>
           <li>Little/Big Kids (4–12 years) – sizes 10.5 to 6</li>
         </ul>
-        <p>Once your child outgrows size 6, they typically move to the adult size chart. Many brands also mark kids’ shoes with “K” or “Y” (for youth), like 3Y for youth size 3.</p>
+        <p className="text-xs">Once your child outgrows size 6, they typically move to the adult size chart. Many brands also mark kids’ shoes with “K” or “Y” (for youth), like 3Y for youth size 3.</p>
         <h4><strong>🌍 6. Global Shoe Size Comparison</strong></h4>
-        <p>Here’s a quick overview of how regions differ:</p>
+        <p className="text-xs">Here’s a quick overview of how regions differ:</p>
         <Table>
           <TableHeader><TableRow><TableHead>Region</TableHead><TableHead>Example (Men’s)</TableHead><TableHead>Foot Length (cm)</TableHead></TableRow></TableHeader>
           <TableBody>
@@ -240,9 +240,9 @@ export default function ShoeSizeConverter() {
             <TableRow><TableCell>Australia</TableCell><TableCell>8</TableCell><TableCell>26.8 cm</TableCell></TableRow>
           </TableBody>
         </Table>
-        <p>As you can see, EU and Japanese sizes often align more closely with actual foot length, making them easier for conversions.</p>
+        <p className="text-xs">As you can see, EU and Japanese sizes often align more closely with actual foot length, making them easier for conversions.</p>
         <h4><strong>⚙️ 7. Shoe Width – The Forgotten Factor</strong></h4>
-        <p>Length isn’t everything — width can completely change how a shoe fits. In the US system, width is indicated by letters:</p>
+        <p className="text-xs">Length isn’t everything — width can completely change how a shoe fits. In the US system, width is indicated by letters:</p>
         <Table>
           <TableHeader><TableRow><TableHead>Width</TableHead><TableHead>Men’s</TableHead><TableHead>Women’s</TableHead></TableRow></TableHeader>
           <TableBody>
@@ -252,36 +252,36 @@ export default function ShoeSizeConverter() {
             <TableRow><TableCell>Extra Wide</TableCell><TableCell>4E</TableCell><TableCell>2E</TableCell></TableRow>
           </TableBody>
         </Table>
-        <p>European and Asian brands rarely use letter widths, which is why some shoes may feel tight or loose even if the size number matches.</p>
+        <p className="text-xs">European and Asian brands rarely use letter widths, which is why some shoes may feel tight or loose even if the size number matches.</p>
         <h4><strong>💡 8. Conversion Example (US to UK / EU)</strong></h4>
-        <p>Let’s take an example: If you wear a US Men’s 10, your equivalent sizes are roughly:</p>
-        <ul className="list-disc list-inside">
+        <p className="text-xs">Let’s take an example: If you wear a US Men’s 10, your equivalent sizes are roughly:</p>
+        <ul className="list-disc list-inside text-xs">
           <li>UK: 9</li>
           <li>EU: 44</li>
           <li>CM: 28</li>
           <li>Japan: 28</li>
         </ul>
-        <p>Similarly, a Women’s US 8 converts to:</p>
-        <ul className="list-disc list-inside">
+        <p className="text-xs">Similarly, a Women’s US 8 converts to:</p>
+        <ul className="list-disc list-inside text-xs">
           <li>UK: 6</li>
           <li>EU: 39</li>
           <li>CM: 25</li>
         </ul>
-        <p>Since brands have small variations, it’s always wise to check their official sizing charts before ordering.</p>
+        <p className="text-xs">Since brands have small variations, it’s always wise to check their official sizing charts before ordering.</p>
         <h4><strong>📦 9. Why Sizes Differ Across Brands</strong></h4>
-        <p>Ever noticed that you fit a size 8 in Nike but 9 in Adidas? That’s because shoe size standards are not legally regulated in most countries. Each brand develops its own last (foot mold) — and that slight variation in shape can make shoes feel tighter or looser even if the size is the same.</p>
-        <p><strong>Pro tip:</strong> If you’re shopping online, always look for the foot length in centimeters on the product page — it’s the most accurate universal measure.</p>
+        <p className="text-xs">Ever noticed that you fit a size 8 in Nike but 9 in Adidas? That’s because shoe size standards are not legally regulated in most countries. Each brand develops its own last (foot mold) — and that slight variation in shape can make shoes feel tighter or looser even if the size is the same.</p>
+        <p className="text-xs"><strong>Pro tip:</strong> If you’re shopping online, always look for the foot length in centimeters on the product page — it’s the most accurate universal measure.</p>
         <h4><strong>👞 10. Shoe Size Conversion for Special Types</strong></h4>
-        <p>Certain types of shoes have their own sizing nuances:</p>
-        <ul className="list-disc list-inside">
+        <p className="text-xs">Certain types of shoes have their own sizing nuances:</p>
+        <ul className="list-disc list-inside text-xs">
           <li>Running Shoes: Usually 0.5 size larger than casual shoes for toe movement.</li>
           <li>Formal Shoes: Fit tighter, so stick to true size.</li>
           <li>Heels: May require 0.5 size smaller for better grip.</li>
           <li>Boots: Consider thicker socks; half size up may be better.</li>
         </ul>
         <h4><strong>🧠 11. Tips to Get the Perfect Fit Every Time</strong></h4>
-        <p>Here are a few universal tips:</p>
-        <ul className="list-disc list-inside">
+        <p className="text-xs">Here are a few universal tips:</p>
+        <ul className="list-disc list-inside text-xs">
           <li>Always measure both feet and use the larger one.</li>
           <li>Try shoes in the evening for realistic size.</li>
           <li>Wear the same type of socks you’ll wear with those shoes.</li>
@@ -302,14 +302,14 @@ export default function ShoeSizeConverter() {
           </TableBody>
         </Table>
         <h4><strong>📚 13. Frequently Asked Questions</strong></h4>
-        <p><strong>Q1. Is there a difference between US and Canadian shoe sizes?</strong><br/>No — US and Canadian shoe sizes are the same.</p>
-        <p><strong>Q2. How do I convert my shoe size to centimeters?</strong><br/>Measure your foot in cm and refer to the EU or JP size. 1 cm roughly equals 1 JP size unit.</p>
-        <p><strong>Q3. Are Indian sizes same as UK?</strong><br/>Indian shoe sizes are usually one size smaller than UK — but this varies by manufacturer.</p>
-        <p><strong>Q4. Can I use a shoe size converter for kids and adults?</strong><br/>Yes! But make sure to choose the correct category — kids’ sizing restarts after size 6.</p>
+        <p className="text-xs"><strong>Q1. Is there a difference between US and Canadian shoe sizes?</strong><br/>No — US and Canadian shoe sizes are the same.</p>
+        <p className="text-xs"><strong>Q2. How do I convert my shoe size to centimeters?</strong><br/>Measure your foot in cm and refer to the EU or JP size. 1 cm roughly equals 1 JP size unit.</p>
+        <p className="text-xs"><strong>Q3. Are Indian sizes same as UK?</strong><br/>Indian shoe sizes are usually one size smaller than UK — but this varies by manufacturer.</p>
+        <p className="text-xs"><strong>Q4. Can I use a shoe size converter for kids and adults?</strong><br/>Yes! But make sure to choose the correct category — kids’ sizing restarts after size 6.</p>
         <h4><strong>🌐 14. Final Thoughts</strong></h4>
-        <p>Finding your correct shoe size doesn’t have to be confusing. With a universal shoe size converter, you can easily compare measurements from any region — whether you’re buying from the US, UK, Japan, or Europe.</p>
-        <p>Remember, the best way to ensure comfort is to know your exact foot length in centimeters — once you have that, conversions become simple.</p>
-        <p>So, next time you shop online, use the Universal Shoe Size Converter above, check your measurements, and step into the perfect fit every time! 👣</p>
+        <p className="text-xs">Finding your correct shoe size doesn’t have to be confusing. With a universal shoe size converter, you can easily compare measurements from any region — whether you’re buying from the US, UK, Japan, or Europe.</p>
+        <p className="text-xs">Remember, the best way to ensure comfort is to know your exact foot length in centimeters — once you have that, conversions become simple.</p>
+        <p className="text-xs">So, next time you shop online, use the Universal Shoe Size Converter above, check your measurements, and step into the perfect fit every time! 👣</p>
       </div>
     </div>
   );
