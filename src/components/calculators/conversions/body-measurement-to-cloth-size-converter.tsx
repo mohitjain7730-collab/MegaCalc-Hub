@@ -33,11 +33,11 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 type Result = {
-  shirtSizes: { US: number; UK: number; EU: number; India: number; Japan: number; };
-  pantsSizes: { US: number; UK: number; EU: number; India: number; Japan: number; };
+  shirtSizes: { US: number, UK: number, EU: number, India: number, Japan: number },
+  pantsSizes: { US: number, UK: number, EU: number, India: number, Japan: number },
 } | {
-  topSizes: { US: number; UK: number; EU: number; India: number; Japan: number; },
-  bottomSizes: { US: number; UK: number; EU: number; India: number; Japan: number; };
+  topSizes: { US: number, UK: number, EU: number, India: number, Japan: number },
+  bottomSizes: { US: number, UK: number, EU: number, India: number, Japan: number },
 }
 
 export default function BodyMeasurementToClothSizeConverter() {
@@ -165,6 +165,5 @@ export default function BodyMeasurementToClothSizeConverter() {
     </div>
   );
 }
-    
 
     
