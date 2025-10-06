@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -13,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Shirt } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const sizeCharts = {
   men: [
@@ -76,7 +76,7 @@ export default function ClothSizeConverter() {
     } else {
       setResult(null);
       const availableSizes = chart.map(row => row[fromRegion as keyof typeof row]).join(', ');
-      form.setError('inputSize', { type: 'manual', message: `Size not found. Available sizes are: ${availableSizes}` });
+      form.setError('inputSize', { type: 'manual', message: `Size not found. Available sizes for this region are: ${availableSizes}` });
     }
   };
 
@@ -278,7 +278,7 @@ export default function ClothSizeConverter() {
         <h4 className='font-bold'>🔗 Related Calculators and Converters</h4>
         <p className="text-xs">To make your fashion shopping seamless, check out:</p>
         <ul className="list-disc list-inside text-xs">
-            <li>👟 Universal Shoe Size Converter</li>
+            <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
             <li>🎽 Body Measurement to Clothing Size Calculator</li>
             <li>💍 Ring Size Converter</li>
             <li>🧢 Hat Size Converter</li>
