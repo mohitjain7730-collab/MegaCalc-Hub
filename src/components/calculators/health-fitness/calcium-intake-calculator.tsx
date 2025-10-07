@@ -21,7 +21,7 @@ const rdaOptions = [
     { value: "1200", label: "51-70 years (Men)" },
     { value: "1200", label: "51-70 years (Women)" },
     { value: "1200", label: "71+ years" },
-    { value: "1300", label: "Pregnant or Lactating" }, // Updated to reflect higher end of recommendations
+    { value: "1000", label: "Pregnant or Lactating Women" }, 
 ];
 
 const dietOptions = [
@@ -94,7 +94,7 @@ export default function CalciumIntakeCalculator() {
               name="ageGroupRda"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Age Group</FormLabel>
+                  <FormLabel>Age Group:</FormLabel>
                   <Select onValueChange={(val) => field.onChange(parseInt(val))} defaultValue={String(field.value)}>
                     <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                     <SelectContent>
@@ -109,7 +109,7 @@ export default function CalciumIntakeCalculator() {
               name="diet"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Diet Type</FormLabel>
+                  <FormLabel>Diet Type:</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={String(field.value)}>
                     <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                     <SelectContent>
@@ -124,16 +124,16 @@ export default function CalciumIntakeCalculator() {
               name="calciumIntake"
               render={({ field }) => (
                 <FormItem className="md:col-span-2">
-                  <FormLabel>Average Daily Calcium Intake (mg)</FormLabel>
+                  <FormLabel>Average Daily Calcium Intake (mg):</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="Enter your current calcium intake" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                    <Input type="number" placeholder="Enter your current calcium intake" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <Button type="submit">Calculate</Button>
+          <Button type="submit">Calculate Recommended Calcium</Button>
         </form>
       </Form>
 
