@@ -154,7 +154,7 @@ export default function DateDifferenceCalculator() {
     setResult({ totalDays, years, months, days });
   };
   
-    const guideContent = `
+  const guideContent = `
     <h3>🧭 Date Difference Calculator – Calculate Days, Months, and Years Between Two Dates</h3>
     <p>The <strong>Date Difference Calculator</strong> helps you find the exact number of days, months, and years between two given dates. Whether you’re calculating your age, the duration between two historical events, or the number of days left for an upcoming milestone, this calculator gives you instant and accurate results.</p>
     <h4>📅 What Is a Date Difference Calculator?</h4>
@@ -174,7 +174,7 @@ export default function DateDifferenceCalculator() {
     <ol>
     <li><strong>Step 1:</strong> Write down both dates in DD/MM/YYYY format.<br><em>Example:</em><br>Start Date = 05/03/2020<br>End Date = 10/10/2025</li>
     <li><strong>Step 2:</strong> Subtract the earlier date from the later date. If the day or month goes negative, borrow from the previous month or year.</li>
-    <li><strong>Step 3:</strong> Use standard month lengths: [31, 28 (29 for leap year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]</li>
+    <li><strong>Step 3:</strong> Use standard month lengths:<br>[31, 28 (29 for leap year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]</li>
     <li><strong>Step 4:</strong> After adjusting for leap years and borrowings, you’ll get a difference in years, months, and days.</li>
     </ol>
     <h4>🧑‍🏫 Understanding Leap Years and Calendar Adjustments</h4>
@@ -333,5 +333,7 @@ export default function DateDifferenceCalculator() {
     </div>
   );
 }
+
+    
 
     
