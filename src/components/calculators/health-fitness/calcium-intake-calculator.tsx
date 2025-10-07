@@ -52,11 +52,11 @@ export default function CalciumIntakeCalculator() {
     let message = "";
 
     if (difference > 0) {
-      message = `You may need ~${difference.toFixed(0)} mg more calcium to meet your daily requirement of ${recommended} mg.`;
+      message = `🦴 You may need ~${difference.toFixed(0)} mg more calcium to meet your daily requirement of ${recommended} mg.`;
     } else if (difference < 0) {
-      message = `You are consuming ~${Math.abs(difference).toFixed(0)} mg more than the recommended ${recommended} mg per day.`;
+      message = `✅ You are consuming ${Math.abs(difference).toFixed(0)} mg more than the recommended ${recommended} mg per day.`;
     } else {
-      message = `You are meeting your daily calcium requirement of ${recommended} mg.`;
+      message = `🎯 Perfect! You are meeting your daily calcium requirement of ${recommended} mg.`;
     }
 
     setResult(message);
@@ -84,9 +84,10 @@ export default function CalciumIntakeCalculator() {
                       <SelectItem value="1000">4-8 years</SelectItem>
                       <SelectItem value="1300">9-18 years</SelectItem>
                       <SelectItem value="1000">19-50 years</SelectItem>
-                      <SelectItem value="1200">51-70 years</SelectItem>
+                      <SelectItem value="1200">51-70 years (Men)</SelectItem>
+                      <SelectItem value="1200">51-70 years (Women)</SelectItem>
                       <SelectItem value="1200">71+ years</SelectItem>
-                      <SelectItem value="1000">Pregnant/Lactating</SelectItem>
+                      <SelectItem value="1000">Pregnant or Lactating Women</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormItem>
@@ -133,7 +134,7 @@ export default function CalciumIntakeCalculator() {
               )}
             />
           </div>
-          <Button type="submit">Calculate</Button>
+          <Button type="submit">Calculate Recommended Calcium</Button>
         </form>
       </Form>
       {result && (
@@ -158,7 +159,7 @@ export default function CalciumIntakeCalculator() {
             <AccordionContent className="text-muted-foreground space-y-4">
               <div>
                   <h4 className="font-semibold text-foreground mb-1">Age Group</h4>
-                  <p>Different age groups have different Recommended Dietary Allowances (RDA) for calcium as set by health authorities like the NIH.</p>
+                  <p>Different age groups have different Recommended Dietary Allowances (RDA) for calcium.</p>
               </div>
               <div>
                   <h4 className="font-semibold text-foreground mb-1">Diet Type</h4>
