@@ -9,46 +9,32 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { differenceInDays, differenceInYears, differenceInMonths } from 'date-fns';
+import { differenceInDays, differenceInYears, differenceInMonths, format } from 'date-fns';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { cn } from '@/lib/utils';
 
-const dateSchema = z.object({
-    year: z.coerce.number().int(),
-    month: z.coerce.number().int().min(1).max(12),
-    day: z.coerce.number().int().min(1).max(31),
+const dropdownSchema = z.object({
+  startDay: z.coerce.number(),
+  startMonth: z.coerce.number(),
+  startYear: z.coerce.number(),
+  endDay: z.coerce.number(),
+  endMonth: z.coerce.number(),
+  endYear: z.coerce.number(),
 });
 
-const formSchema = z.object({
-  start: dateSchema,
-  end: dateSchema,
-}).refine(data => {
-    try {
-        const startDate = new Date(data.start.year, data.start.month - 1, data.start.day);
-        const endDate = new Date(data.end.year, data.end.month - 1, data.end.day);
-        return endDate >= startDate;
-    } catch {
-        return false;
-    }
-}, {
-  message: "End date must be on or after the start date.",
-  path: ["end.day"],
-}).refine(data => {
-    if (!data.start.year && data.start.year !== 0 || !data.start.month || !data.start.day) return true;
-    const date = new Date(data.start.year, data.start.month - 1, data.start.day);
-    return date.getFullYear() === data.start.year && date.getMonth() === data.start.month - 1 && date.getDate() === data.start.day;
-}, {
-    message: 'Invalid start date.',
-    path: ['start.day'],
-}).refine(data => {
-    if (!data.end.year && data.end.year !== 0 || !data.end.month || !data.end.day) return true;
-    const date = new Date(data.end.year, data.end.month - 1, data.end.day);
-    return date.getFullYear() === data.end.year && date.getMonth() === data.end.month - 1 && date.getDate() === data.end.day;
-}, {
-    message: 'Invalid end date.',
-    path: ['end.day'],
+const pickerSchema = z.object({
+  startDate: z.date().optional(),
+  endDate: z.date().optional(),
 });
 
-type FormValues = z.infer<typeof formSchema>;
+type FormValues = {
+    inputType: 'dropdown' | 'picker';
+    dropdown: z.infer<typeof dropdownSchema>;
+    picker: z.infer<typeof pickerSchema>;
+};
 
 interface Difference {
   totalDays: number;
@@ -57,92 +43,114 @@ interface Difference {
   days: number;
 }
 
-const currentYear = new Date().getFullYear();
-const years = Array.from({ length: currentYear + 1 }, (_, i) => currentYear - i);
-const months = Array.from({ length: 12 }, (_, i) => i + 1);
+const years = Array.from({ length: 5001 }, (_, i) => i);
+const months = Array.from({ length: 12 }, (_, i) => i);
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
+const monthNames = [
+    "January", "February", "March", "April", "May", "June", 
+    "July", "August", "September", "October", "November", "December"
+];
+
 
 export default function DateDifferenceCalculator() {
   const [result, setResult] = useState<Difference | null>(null);
 
   const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
-        start: { day: undefined, month: undefined, year: undefined },
-        end: { day: undefined, month: undefined, year: undefined },
+        inputType: 'dropdown',
+        dropdown: { startDay: undefined, startMonth: undefined, startYear: undefined, endDay: undefined, endMonth: undefined, endYear: undefined },
+        picker: { startDate: undefined, endDate: undefined },
     }
   });
 
   const onSubmit = (values: FormValues) => {
-    const startDate = new Date(values.start.year, values.start.month - 1, values.start.day);
-    const endDate = new Date(values.end.year, values.end.month - 1, values.end.day);
+    let startDate: Date;
+    let endDate: Date;
+
+    if (values.inputType === 'picker' && values.picker.startDate && values.picker.endDate) {
+        startDate = values.picker.startDate;
+        endDate = values.picker.endDate;
+    } else if (values.inputType === 'dropdown') {
+        const { startDay, startMonth, startYear, endDay, endMonth, endYear } = values.dropdown;
+        if(startDay && startMonth !== undefined && startYear !== undefined && endDay && endMonth !== undefined && endYear !== undefined) {
+             startDate = new Date(startYear, startMonth, startDay);
+             endDate = new Date(endYear, endMonth, endDay);
+        } else {
+            form.setError('dropdown.startDay', { message: 'All date fields are required.' });
+            return;
+        }
+    } else {
+        form.setError('picker.startDate', { message: 'Both dates are required.'});
+        return;
+    }
+
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+        setResult(null);
+        return;
+    }
+    
+    // Swap if end date is before start date
+    if (endDate < startDate) {
+        [startDate, endDate] = [endDate, startDate];
+    }
 
     const totalDays = differenceInDays(endDate, startDate);
 
     let years = differenceInYears(endDate, startDate);
-    let tempStartDate = new Date(startDate);
-    tempStartDate.setFullYear(startDate.getFullYear() + years);
+    let tempStartDateForMonths = new Date(startDate);
+    tempStartDateForMonths.setFullYear(startDate.getFullYear() + years);
+    let months = differenceInMonths(endDate, tempStartDateForMonths);
     
-    let months = differenceInMonths(endDate, tempStartDate);
-    let tempStartDate2 = new Date(tempStartDate);
-    tempStartDate2.setMonth(tempStartDate.getMonth() + months);
+    let tempStartDateForDays = new Date(tempStartDateForMonths);
+    tempStartDateForDays.setMonth(tempStartDateForMonths.getMonth() + months);
     
-    let days = differenceInDays(endDate, tempStartDate2);
-
-    if (days < 0) {
-        months--;
-        tempStartDate2.setMonth(tempStartDate2.getMonth() -1);
-        days = differenceInDays(endDate, tempStartDate2);
-    }
-    if (months < 0) {
-      years--;
-      months += 12;
+    let days = differenceInDays(endDate, tempStartDateForDays);
+    
+     if (months < 0) {
+        years--;
+        months += 12;
     }
 
-
-    setResult({
-      totalDays,
-      years,
-      months,
-      days
-    });
+    setResult({ totalDays, years, months, days });
   };
 
   return (
     <div className="space-y-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <FormLabel>Start Date</FormLabel>
-              <div className="grid grid-cols-3 gap-2 mt-2">
-                 <FormField control={form.control} name="start.day" render={({ field }) => (
-                    <FormItem><FormLabel className="sr-only">Day</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent>{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
-                )} />
-                <FormField control={form.control} name="start.month" render={({ field }) => (
-                    <FormItem><FormLabel className="sr-only">Month</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent>{months.map(m => <SelectItem key={m} value={String(m)}>{new Date(0, m-1).toLocaleString('default', { month: 'long' })}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
-                )} />
-                <FormField control={form.control} name="start.year" render={({ field }) => (
-                    <FormItem><FormLabel className="sr-only">Year</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent>{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
-                )} />
-              </div>
-            </div>
-            <div>
-              <FormLabel>End Date</FormLabel>
-              <div className="grid grid-cols-3 gap-2 mt-2">
-                 <FormField control={form.control} name="end.day" render={({ field }) => (
-                    <FormItem><FormLabel className="sr-only">Day</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent>{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
-                )} />
-                <FormField control={form.control} name="end.month" render={({ field }) => (
-                    <FormItem><FormLabel className="sr-only">Month</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent>{months.map(m => <SelectItem key={m} value={String(m)}>{new Date(0, m-1).toLocaleString('default', { month: 'long' })}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
-                )} />
-                <FormField control={form.control} name="end.year" render={({ field }) => (
-                    <FormItem><FormLabel className="sr-only">Year</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent>{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
-                )} />
-              </div>
-            </div>
-          </div>
-          <Button type="submit">Calculate Difference</Button>
+            <Tabs defaultValue="dropdown" onValueChange={(v) => form.setValue('inputType', v as 'dropdown' | 'picker')}>
+                <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="dropdown">Use Dropdowns</TabsTrigger>
+                    <TabsTrigger value="picker">Use Date Picker</TabsTrigger>
+                </TabsList>
+                <TabsContent value="dropdown">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+                        <div>
+                            <FormLabel>Start Date:</FormLabel>
+                            <div className="grid grid-cols-3 gap-2 mt-2">
+                                <FormField control={form.control} name="dropdown.startDay" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.startMonth" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{months.map(m => <SelectItem key={m} value={String(m)}>{monthNames[m]}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.startYear" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
+                            </div>
+                        </div>
+                         <div>
+                            <FormLabel>End Date:</FormLabel>
+                            <div className="grid grid-cols-3 gap-2 mt-2">
+                                <FormField control={form.control} name="dropdown.endDay" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.endMonth" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{months.map(m => <SelectItem key={m} value={String(m)}>{monthNames[m]}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.endYear" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
+                            </div>
+                        </div>
+                    </div>
+                </TabsContent>
+                <TabsContent value="picker">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+                        <FormField control={form.control} name="picker.startDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>Start Date</FormLabel><Popover><PopoverTrigger asChild><FormControl><Button variant={"outline"} className={cn("pl-3 text-left font-normal",!field.value && "text-muted-foreground")} >{field.value ? format(field.value, "PPP") : <span>Pick a date</span>}<CalendarIcon className="ml-auto h-4 w-4 opacity-50" /></Button></FormControl></PopoverTrigger><PopoverContent className="w-auto p-0" align="start"><Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus /></PopoverContent></Popover><FormMessage /></FormItem> )} />
+                        <FormField control={form.control} name="picker.endDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>End Date</FormLabel><Popover><PopoverTrigger asChild><FormControl><Button variant={"outline"} className={cn("pl-3 text-left font-normal",!field.value && "text-muted-foreground")} >{field.value ? format(field.value, "PPP") : <span>Pick a date</span>}<CalendarIcon className="ml-auto h-4 w-4 opacity-50" /></Button></FormControl></PopoverTrigger><PopoverContent className="w-auto p-0" align="start"><Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus /></PopoverContent></Popover><FormMessage /></FormItem> )} />
+                    </div>
+                </TabsContent>
+            </Tabs>
+          <Button type="submit" className="w-full">Calculate Difference</Button>
         </form>
       </Form>
 
