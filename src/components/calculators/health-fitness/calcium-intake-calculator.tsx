@@ -21,7 +21,7 @@ const rdaOptions = [
     { value: "1200", label: "51-70 years (Men)" },
     { value: "1200", label: "51-70 years (Women)" },
     { value: "1200", label: "71+ years" },
-    { value: "1000", label: "Pregnant or Lactating Women" },
+    { value: "1300", label: "Pregnant or Lactating" }, // Updated to reflect higher end of recommendations
 ];
 
 const dietOptions = [
@@ -33,7 +33,7 @@ const dietOptions = [
 const formSchema = z.object({
   ageGroupRda: z.coerce.number(),
   diet: z.enum(['normal', 'vegan', 'vegetarian']),
-  calciumIntake: z.number().nonnegative(),
+  calciumIntake: z.number().nonnegative("Intake cannot be negative."),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -58,14 +58,14 @@ export default function CalciumIntakeCalculator() {
 
   const onSubmit = (values: FormValues) => {
     if (values.calciumIntake === undefined) {
-        form.setError("calciumIntake", { message: "Please enter a valid calcium intake." });
+        form.setError("calciumIntake", { message: "Please enter your estimated calcium intake." });
         return;
     }
     
     let recommended = values.ageGroupRda;
 
     if (values.diet === "vegan") {
-      recommended += 200; // Vegans may need 200 mg extra due to low absorption
+      recommended += 200; // Vegans may need more due to lower absorption from plant sources.
     } else if (values.diet === "vegetarian") {
       recommended += 100;
     }
@@ -94,7 +94,7 @@ export default function CalciumIntakeCalculator() {
               name="ageGroupRda"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Age Group:</FormLabel>
+                  <FormLabel>Age Group</FormLabel>
                   <Select onValueChange={(val) => field.onChange(parseInt(val))} defaultValue={String(field.value)}>
                     <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                     <SelectContent>
@@ -109,7 +109,7 @@ export default function CalciumIntakeCalculator() {
               name="diet"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Diet Type:</FormLabel>
+                  <FormLabel>Diet Type</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={String(field.value)}>
                     <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                     <SelectContent>
@@ -124,7 +124,7 @@ export default function CalciumIntakeCalculator() {
               name="calciumIntake"
               render={({ field }) => (
                 <FormItem className="md:col-span-2">
-                  <FormLabel>Average Daily Calcium Intake (mg):</FormLabel>
+                  <FormLabel>Average Daily Calcium Intake (mg)</FormLabel>
                   <FormControl>
                     <Input type="number" placeholder="Enter your current calcium intake" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} />
                   </FormControl>
@@ -133,7 +133,7 @@ export default function CalciumIntakeCalculator() {
               )}
             />
           </div>
-          <Button type="submit">Calculate Recommended Calcium</Button>
+          <Button type="submit">Calculate</Button>
         </form>
       </Form>
 
