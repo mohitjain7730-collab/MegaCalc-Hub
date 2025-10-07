@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { differenceInDays, differenceInMonths, differenceInYears } from 'date-fns';
+import { differenceInDays, differenceInYears, differenceInMonths } from 'date-fns';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const dateSchema = z.object({
@@ -33,21 +33,20 @@ const formSchema = z.object({
   message: "End date must be on or after the start date.",
   path: ["end.day"],
 }).refine(data => {
-    if (!data.start.year || !data.start.month || !data.start.day) return true;
+    if (!data.start.year && data.start.year !== 0 || !data.start.month || !data.start.day) return true;
     const date = new Date(data.start.year, data.start.month - 1, data.start.day);
     return date.getFullYear() === data.start.year && date.getMonth() === data.start.month - 1 && date.getDate() === data.start.day;
 }, {
     message: 'Invalid start date.',
     path: ['start.day'],
 }).refine(data => {
-    if (!data.end.year || !data.end.month || !data.end.day) return true;
+    if (!data.end.year && data.end.year !== 0 || !data.end.month || !data.end.day) return true;
     const date = new Date(data.end.year, data.end.month - 1, data.end.day);
     return date.getFullYear() === data.end.year && date.getMonth() === data.end.month - 1 && date.getDate() === data.end.day;
 }, {
     message: 'Invalid end date.',
     path: ['end.day'],
 });
-
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -59,10 +58,9 @@ interface Difference {
 }
 
 const currentYear = new Date().getFullYear();
-const years = Array.from({ length: 201 }, (_, i) => currentYear - 100 + i);
+const years = Array.from({ length: currentYear + 1 }, (_, i) => currentYear - i);
 const months = Array.from({ length: 12 }, (_, i) => i + 1);
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
-
 
 export default function DateDifferenceCalculator() {
   const [result, setResult] = useState<Difference | null>(null);
