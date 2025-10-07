@@ -1,24 +1,23 @@
-
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { differenceInDays, differenceInYears, differenceInMonths, isValid, parse } from 'date-fns';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const dateSchema = z.object({
-    year: z.number().int().max(5000, 'Year is too large').min(0, "Year cannot be negative"),
-    month: z.number().int().min(0).max(11),
-    day: z.number().int().min(1).max(31),
+    year: z.number().int().max(5000, 'Year is too large').min(0, "Year cannot be negative").optional(),
+    month: z.number().int().min(0).max(11).optional(),
+    day: z.number().int().min(1).max(31).optional(),
 });
 
 const formSchema = z.object({
@@ -83,8 +82,7 @@ interface Difference {
   days: number;
 }
 
-const currentYear = new Date().getFullYear();
-const years = Array.from({ length: 5001 }, (_, i) => 5000 - i);
+const years = Array.from({ length: 5001 }, (_, i) => i);
 const months = Array.from({ length: 12 }, (_, i) => i);
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
 const monthNames = [
@@ -117,8 +115,9 @@ export default function DateDifferenceCalculator() {
         endDate = parse(values.text.endDate, 'yyyy-MM-dd', new Date());
     } else if (values.inputType === 'dropdown') {
         const { start, end } = values.dropdown;
-        startDate = new Date(start.year!, start.month!, start.day!);
-        endDate = new Date(end.year!, end.month!, end.day!);
+        if(start.year === undefined || start.month === undefined || start.day === undefined || end.year === undefined || end.month === undefined || end.day === undefined) return;
+        startDate = new Date(start.year, start.month, start.day);
+        endDate = new Date(end.year, end.month, end.day);
     } else {
         return; // Invalid state
     }
@@ -258,7 +257,7 @@ export default function DateDifferenceCalculator() {
     <p>The <strong>Date Difference Calculator</strong> is one of the simplest yet most useful tools for everyday life — whether you’re calculating your age, measuring work durations, or studying historical events.</p>
     <p>With support for every possible date between year 0 and 5000, leap-year adjustments, and accurate day counts, it offers an all-in-one solution for anyone who needs to find time differences quickly and reliably.</p>
     <p>Try the calculator above and get instant, precise results for any pair of dates — past, present, or future!</p>
-    `;
+  `;
 
   return (
     <div className="space-y-8">
@@ -333,7 +332,5 @@ export default function DateDifferenceCalculator() {
     </div>
   );
 }
-
-    
 
     
