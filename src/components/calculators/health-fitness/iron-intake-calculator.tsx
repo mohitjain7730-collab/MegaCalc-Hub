@@ -8,12 +8,12 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Utensils } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Progress } from '@/components/ui/progress';
 
-// RDA tables (mg/day) - values primarily from NIH ODS
 const RDA_NIH: Record<string, any> = {
     "inf0": 0.27,
     "inf1": 11,
@@ -24,10 +24,10 @@ const RDA_NIH: Record<string, any> = {
     "19-50": {male: 8, female:18},
     "51+": 8,
     "pregnant": 27,
-    "lactating": 9,
+    "lactating": 9, 
 };
 
-const RDA_ICMR: Record[string, any] = {
+const RDA_ICMR: Record[string, any> = {
     "inf0": 0.27,
     "inf1": 11,
     "1-3": 7,
@@ -77,9 +77,12 @@ export default function IronIntakeCalculator() {
     if (val === undefined) return null;
 
     if (typeof val === 'object') {
-      if (sex === 'male') return val.male ?? val;
-      if (sex === 'female') return val.female ?? val;
-      return (val.male && val.female) ? Math.round((val.male + val.female)/2) : (val.male || val.female);
+        if (val.male !== undefined && val.female !== undefined) {
+             if (sex === 'male') return val.male;
+             if (sex === 'female') return val.female;
+             return Math.round((val.male + val.female) / 2);
+        }
+        return val.teen || val.adult || val.male || val.female || 9; // Fallback for complex objects like lactating
     }
     return val;
   }
@@ -87,21 +90,26 @@ export default function IronIntakeCalculator() {
   const onSubmit = (values: FormValues) => {
     const { ageGroup, sex, countryPref, currentIntake } = values;
     
-    const rda = getRda(ageGroup, sex, countryPref);
+    let effectiveSex = sex;
+    if (ageGroup === 'pregnant' || ageGroup === 'lactating') {
+        effectiveSex = 'female';
+    }
 
-    if (rda === null) {
+    const rda = getRda(ageGroup, effectiveSex, countryPref);
+
+    if (rda === null || rda === undefined) {
       form.setError("ageGroup", { message: "RDA not available for this group." });
       setResult(null);
       return;
     }
 
     const diff = currentIntake - rda;
-    const percent = (currentIntake / rda) * 100;
+    const percent = rda > 0 ? (currentIntake / rda) * 100 : 0;
     const UL = 45; // Tolerable Upper Intake Level for adults
 
     let messages = [];
     if (currentIntake < rda) {
-        messages.push(`You are below the recommended intake for this group. Consider dietary adjustments (iron-rich foods) or discuss supplements with a health professional.`);
+        messages.push(`You are below the recommended intake for this group. Consider dietary adjustments or discuss supplements with a health professional.`);
     } else {
         messages.push(`You're meeting or exceeding the RDA. If you exceed ${UL} mg/day, be cautious: high-dose iron supplements can cause side effects and should be used under medical advice.`);
     }
@@ -156,7 +164,7 @@ export default function IronIntakeCalculator() {
               </Select></FormItem>
             )} />
             <FormField control={form.control} name="sex" render={({ field }) => (
-              <FormItem><FormLabel>Sex</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+              <FormItem><FormLabel>Sex (select if applicable)</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                   <SelectContent>
                     <SelectItem value="female">Female</SelectItem>
                     <SelectItem value="male">Male</SelectItem>
@@ -165,7 +173,7 @@ export default function IronIntakeCalculator() {
               </Select></FormItem>
             )} />
              <FormField control={form.control} name="countryPref" render={({ field }) => (
-              <FormItem><FormLabel>RDA Preference</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+              <FormItem><FormLabel>Regional RDA preference</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                   <SelectContent>
                      <SelectItem value="nih">NIH (US)</SelectItem>
                      <SelectItem value="icmr">ICMR / India (approx.)</SelectItem>
@@ -203,6 +211,29 @@ export default function IronIntakeCalculator() {
           </CardContent>
         </Card>
       )}
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="tips">
+          <AccordionTrigger>Quick Tips</AccordionTrigger>
+          <AccordionContent>
+            <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+              <li>Iron from animal sources (heme iron) is absorbed better than plant sources (non-heme iron).</li>
+              <li>Take iron with vitamin C (orange juice) to improve absorption; avoid tea/coffee near the dose.</li>
+              <li>Pregnant people often need higher iron — follow your clinician's advice before starting supplements.</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="sources">
+          <AccordionTrigger>Sources</AccordionTrigger>
+          <AccordionContent>
+            <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+              <li>NIH Office of Dietary Supplements — iron RDAs and life-stage tables.</li>
+              <li>WHO guidance on daily iron & folic acid in pregnancy.</li>
+              <li>ICMR / Indian recommendations (national RDA references).</li>
+            </ul>
+             <p className="text-xs text-muted-foreground mt-4">Note: RDAs and clinical needs can vary by health status (e.g., diagnosed iron deficiency, heavy menstrual bleeding, or chronic disease). This tool provides general guidance only—not medical advice.</p>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }
