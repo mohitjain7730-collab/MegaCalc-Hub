@@ -9,22 +9,45 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
-import { cn } from '@/lib/utils';
-import { format, differenceInDays } from 'date-fns';
+import { differenceInDays, differenceInMonths, differenceInYears } from 'date-fns';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+const dateSchema = z.object({
+    year: z.coerce.number().int(),
+    month: z.coerce.number().int().min(1).max(12),
+    day: z.coerce.number().int().min(1).max(31),
+});
 
 const formSchema = z.object({
-  startDate: z.date({
-    required_error: "A start date is required.",
-  }),
-  endDate: z.date({
-    required_error: "An end date is required.",
-  }),
-}).refine(data => data.endDate >= data.startDate, {
+  start: dateSchema,
+  end: dateSchema,
+}).refine(data => {
+    try {
+        const startDate = new Date(data.start.year, data.start.month - 1, data.start.day);
+        const endDate = new Date(data.end.year, data.end.month - 1, data.end.day);
+        return endDate >= startDate;
+    } catch {
+        return false;
+    }
+}, {
   message: "End date must be on or after the start date.",
-  path: ["endDate"],
+  path: ["end.day"],
+}).refine(data => {
+    if (!data.start.year || !data.start.month || !data.start.day) return true;
+    const date = new Date(data.start.year, data.start.month - 1, data.start.day);
+    return date.getFullYear() === data.start.year && date.getMonth() === data.start.month - 1 && date.getDate() === data.start.day;
+}, {
+    message: 'Invalid start date.',
+    path: ['start.day'],
+}).refine(data => {
+    if (!data.end.year || !data.end.month || !data.end.day) return true;
+    const date = new Date(data.end.year, data.end.month - 1, data.end.day);
+    return date.getFullYear() === data.end.year && date.getMonth() === data.end.month - 1 && date.getDate() === data.end.day;
+}, {
+    message: 'Invalid end date.',
+    path: ['end.day'],
 });
+
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -35,37 +58,49 @@ interface Difference {
   days: number;
 }
 
+const currentYear = new Date().getFullYear();
+const years = Array.from({ length: 201 }, (_, i) => currentYear - 100 + i);
+const months = Array.from({ length: 12 }, (_, i) => i + 1);
+const days = Array.from({ length: 31 }, (_, i) => i + 1);
+
+
 export default function DateDifferenceCalculator() {
   const [result, setResult] = useState<Difference | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+        start: { day: undefined, month: undefined, year: undefined },
+        end: { day: undefined, month: undefined, year: undefined },
+    }
   });
 
   const onSubmit = (values: FormValues) => {
-    const { startDate, endDate } = values;
+    const startDate = new Date(values.start.year, values.start.month - 1, values.start.day);
+    const endDate = new Date(values.end.year, values.end.month - 1, values.end.day);
 
-    if (!startDate || !endDate) return;
+    const totalDays = differenceInDays(endDate, startDate);
 
-    // Total difference in days
-    const diffTime = endDate.getTime() - startDate.getTime();
-    const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    // Detailed difference
-    let years = endDate.getFullYear() - startDate.getFullYear();
-    let months = endDate.getMonth() - startDate.getMonth();
-    let days = endDate.getDate() - startDate.getDate();
+    let years = differenceInYears(endDate, startDate);
+    let tempStartDate = new Date(startDate);
+    tempStartDate.setFullYear(startDate.getFullYear() + years);
+    
+    let months = differenceInMonths(endDate, tempStartDate);
+    let tempStartDate2 = new Date(tempStartDate);
+    tempStartDate2.setMonth(tempStartDate.getMonth() + months);
+    
+    let days = differenceInDays(endDate, tempStartDate2);
 
     if (days < 0) {
-      months--;
-      // Get the number of days in the previous month of the end date
-      const prevMonthLastDay = new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
-      days += prevMonthLastDay;
+        months--;
+        tempStartDate2.setMonth(tempStartDate2.getMonth() -1);
+        days = differenceInDays(endDate, tempStartDate2);
     }
     if (months < 0) {
       years--;
       months += 12;
     }
+
 
     setResult({
       totalDays,
@@ -80,64 +115,34 @@ export default function DateDifferenceCalculator() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <FormField
-                control={form.control}
-                name="startDate"
-                render={({ field }) => (
-                <FormItem className="flex flex-col">
-                    <FormLabel>Start Date</FormLabel>
-                    <Popover>
-                    <PopoverTrigger asChild>
-                        <FormControl>
-                        <Button
-                            variant={"outline"}
-                            className={cn(
-                            "w-full pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                            )}
-                        >
-                            {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                        </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus />
-                    </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name="endDate"
-                render={({ field }) => (
-                <FormItem className="flex flex-col">
-                    <FormLabel>End Date</FormLabel>
-                    <Popover>
-                    <PopoverTrigger asChild>
-                        <FormControl>
-                        <Button
-                            variant={"outline"}
-                            className={cn(
-                            "w-full pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                            )}
-                        >
-                            {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                        </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus />
-                    </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                </FormItem>
-                )}
-            />
+            <div>
+              <FormLabel>Start Date</FormLabel>
+              <div className="grid grid-cols-3 gap-2 mt-2">
+                 <FormField control={form.control} name="start.day" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Day</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent>{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="start.month" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Month</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent>{months.map(m => <SelectItem key={m} value={String(m)}>{new Date(0, m-1).toLocaleString('default', { month: 'long' })}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="start.year" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Year</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent>{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+              </div>
+            </div>
+            <div>
+              <FormLabel>End Date</FormLabel>
+              <div className="grid grid-cols-3 gap-2 mt-2">
+                 <FormField control={form.control} name="end.day" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Day</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent>{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="end.month" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Month</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent>{months.map(m => <SelectItem key={m} value={String(m)}>{new Date(0, m-1).toLocaleString('default', { month: 'long' })}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="end.year" render={({ field }) => (
+                    <FormItem><FormLabel className="sr-only">Year</FormLabel><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent>{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem>
+                )} />
+              </div>
+            </div>
           </div>
           <Button type="submit">Calculate Difference</Button>
         </form>
@@ -154,7 +159,9 @@ export default function DateDifferenceCalculator() {
                 <div className="text-center mt-4 pt-4 border-t">
                     <CardDescription>Detailed Breakdown</CardDescription>
                     <p className="text-3xl font-bold">
-                        {result.years} years, {result.months} months, {result.days} days
+                        {result.years > 0 && `${result.years} year${result.years > 1 ? 's' : ''}, `}
+                        {result.months > 0 && `${result.months} month${result.months > 1 ? 's' : ''}, `}
+                        {result.days} day{result.days !== 1 ? 's' : ''}
                     </p>
                 </div>
             </CardContent>
