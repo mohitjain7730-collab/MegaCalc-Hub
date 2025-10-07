@@ -16,6 +16,7 @@ import { Progress } from '@/components/ui/progress';
 const foodItemSchema = z.object({
   name: z.string().min(1, "Name is required"),
   iron: z.number().positive("Must be > 0"),
+  servings: z.number().int().positive("Must be > 0").default(1),
 });
 
 const profileSchema = z.object({
@@ -60,7 +61,7 @@ export default function IronIntakeCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       profile: { age: 30, sex: 'female', lifeStage: 'none' },
-      newFood: { name: '', iron: undefined },
+      newFood: { name: '', iron: undefined, servings: 1 },
       foodLog: [],
     },
   });
@@ -91,18 +92,20 @@ export default function IronIntakeCalculator() {
   }, [profile]);
   
   useEffect(() => {
-    const total = foodLog.reduce((sum, item) => sum + (item.iron || 0), 0);
+    const total = foodLog.reduce((sum, item) => sum + (item.iron || 0) * (item.servings || 0), 0);
     setTotalIron(total);
   }, [foodLog]);
 
   const handleAddFood = () => {
     const newFood = form.getValues('newFood');
-    if (newFood.name.trim() && newFood.iron && newFood.iron > 0) {
-        append({ name: newFood.name, iron: newFood.iron });
+    if (newFood.name.trim() && newFood.iron && newFood.iron > 0 && newFood.servings && newFood.servings > 0) {
+        append({ name: newFood.name, iron: newFood.iron, servings: newFood.servings });
         form.resetField('newFood');
+        form.setValue('newFood', { name: '', iron: undefined, servings: 1 });
     } else {
-        form.setError('newFood.name', { message: 'Enter a valid name.'});
-        form.setError('newFood.iron', { message: 'Enter a valid amount.'});
+        if (!newFood.name.trim()) form.setError('newFood.name', { message: 'Enter a valid name.'});
+        if (!newFood.iron || newFood.iron <= 0) form.setError('newFood.iron', { message: 'Enter a valid amount.'});
+        if (!newFood.servings || newFood.servings <= 0) form.setError('newFood.servings', { message: 'Enter a valid amount.'});
     }
   };
   
@@ -132,9 +135,10 @@ export default function IronIntakeCalculator() {
       <Card>
         <CardHeader><CardTitle>Add Food to Log</CardTitle></CardHeader>
         <CardContent>
-             <div className="grid grid-cols-[1fr,120px,auto] gap-2 items-end">
+             <div className="grid grid-cols-[1fr,100px,80px,auto] gap-2 items-end">
                 <FormField control={form.control} name="newFood.name" render={({ field }) => ( <FormItem><FormLabel>Food Item</FormLabel><FormControl><Input placeholder="e.g., Spinach, cooked" {...field} /></FormControl><FormMessage /></FormItem> )} />
                 <FormField control={form.control} name="newFood.iron" render={({ field }) => ( <FormItem><FormLabel>Iron (mg)</FormLabel><FormControl><Input type="number" step="0.1" placeholder="e.g., 2.7" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )} />
+                <FormField control={form.control} name="newFood.servings" render={({ field }) => ( <FormItem><FormLabel>Servings</FormLabel><FormControl><Input type="number" step="0.5" placeholder="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem> )} />
                 <Button type="button" onClick={handleAddFood}>Add</Button>
             </div>
         </CardContent>
@@ -146,7 +150,7 @@ export default function IronIntakeCalculator() {
               <div className="space-y-4">
                   <div>
                       <p><strong>Total Iron Intake:</strong> {totalIron.toFixed(1)} mg</p>
-                      <p><strong>Recommended Daily Allowance (RDA):</strong> {rda} mg</p>
+                      <p><strong>Your Recommended Daily Allowance (RDA):</strong> {rda} mg</p>
                   </div>
                   <div>
                     <Progress value={percentageOfRda} className="w-full h-4" />
@@ -159,7 +163,7 @@ export default function IronIntakeCalculator() {
                           <ul className="list-disc pl-5 space-y-1">
                               {fields.map((item, index) => (
                                   <li key={item.id} className="flex justify-between items-center">
-                                      <span>{item.name} - <strong>{foodLog[index]?.iron?.toFixed(1)} mg</strong></span>
+                                      <span>{item.name} ({foodLog[index]?.servings} serving{foodLog[index]?.servings > 1 ? 's' : ''}) - <strong>{((foodLog[index]?.iron || 0) * (foodLog[index]?.servings || 0)).toFixed(1)} mg</strong></span>
                                       <Button variant="ghost" size="icon" onClick={() => remove(index)}>
                                           <XCircle className="h-4 w-4 text-destructive" />
                                       </Button>
