@@ -5,13 +5,15 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { PieChartIcon } from 'lucide-react';
+import { PieChart as PieChartIcon } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Slider } from '@/components/ui/slider';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 const formSchema = z.object({
   tdee: z.number().positive(),
@@ -30,6 +32,8 @@ interface Result {
     carbs: number;
     fat: number;
 }
+
+const COLORS = ['hsl(var(--primary))', 'hsl(var(--chart-2))', 'hsl(var(--chart-3))'];
 
 export default function MacroRatioCalculator() {
   const [result, setResult] = useState<Result | null>(null);
@@ -55,13 +59,34 @@ export default function MacroRatioCalculator() {
   const carbs = form.watch('carbPercent');
   const fat = form.watch('fatPercent');
 
+  const chartData = result ? [
+    { name: 'Protein (30%)', value: result.protein },
+    { name: 'Carbs (40%)', value: result.carbs },
+    { name: 'Fat (30%)', value: result.fat },
+  ] : [];
+
   return (
     <div className="space-y-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField control={form.control} name="tdee" render={({ field }) => (
-            <FormItem><FormLabel>Total Daily Calories (TDEE)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-          )} />
+          <FormField
+            control={form.control}
+            name="tdee"
+            render={({ field }) => (
+              <FormItem>
+                <div className="flex justify-between items-center">
+                  <FormLabel>Total Daily Calories (TDEE)</FormLabel>
+                  <Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-xs text-primary underline">
+                    (Calculate)
+                  </Link>
+                </div>
+                <FormControl>
+                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           
           <div className="space-y-6">
             <FormField control={form.control} name="proteinPercent" render={({ field }) => (
@@ -90,18 +115,35 @@ export default function MacroRatioCalculator() {
       {result && (
         <Card className="mt-8">
             <CardHeader><div className='flex items-center gap-4'><PieChartIcon className="h-8 w-8 text-primary" /><CardTitle>Your Daily Macronutrient Goals</CardTitle></div></CardHeader>
-            <CardContent className="grid grid-cols-3 gap-4 text-center">
-                <div>
-                    <p className="font-bold text-lg">Protein</p>
-                    <p className="text-xl font-bold">{result.protein.toFixed(0)}g</p>
-                </div>
-                 <div>
-                    <p className="font-bold text-lg">Carbs</p>
-                    <p className="text-xl font-bold">{result.carbs.toFixed(0)}g</p>
-                </div>
-                 <div>
-                    <p className="font-bold text-lg">Fat</p>
-                    <p className="text-xl font-bold">{result.fat.toFixed(0)}g</p>
+            <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div className="space-y-4">
+                        <div>
+                            <p className="text-muted-foreground">Protein</p>
+                            <p className="text-2xl font-bold">{result.protein.toFixed(0)}g</p>
+                        </div>
+                        <div>
+                            <p className="text-muted-foreground">Carbohydrates</p>
+                            <p className="text-2xl font-bold">{result.carbs.toFixed(0)}g</p>
+                        </div>
+                        <div>
+                            <p className="text-muted-foreground">Fat</p>
+                            <p className="text-2xl font-bold">{result.fat.toFixed(0)}g</p>
+                        </div>
+                    </div>
+                    <div className="h-64">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie data={chartData} cx="50%" cy="50%" labelLine={false} outerRadius={80} fill="#8884d8" dataKey="value">
+                            {chartData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                          </Pie>
+                          <Tooltip formatter={(value: number) => `${value.toFixed(0)}g`} />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
                 </div>
             </CardContent>
         </Card>
@@ -117,4 +159,3 @@ export default function MacroRatioCalculator() {
     </div>
   );
 }
-
