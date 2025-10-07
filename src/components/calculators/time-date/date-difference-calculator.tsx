@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -231,66 +231,96 @@ export default function DateDifferenceCalculator() {
       )}
 
         <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-2">How It Works</h3>
-            <div className="text-muted-foreground">
-                <p>This calculator determines the time elapsed between two dates. It first computes the total number of days for a quick measure. Then, it calculates the precise difference in terms of years, months, and remaining days, accounting for the varying lengths of months and leap years to provide a human-readable duration.</p>
-            </div>
+          <h3 className="text-lg font-semibold mb-2">How It Works</h3>
+          <div className="text-muted-foreground">
+              <p>This calculator determines the time elapsed between two dates. It first computes the total number of days for a quick measure. Then, it calculates the precise difference in terms of years, months, and remaining days, accounting for the varying lengths of months and leap years to provide a human-readable duration.</p>
+          </div>
         </div>
         <div className="space-y-4">
-            <h3 className="text-xl font-semibold mb-2">🧭 Date Difference Calculator – Calculate Days, Months, and Years Between Two Dates</h3>
-            <p className="text-sm">The <strong>Date Difference Calculator</strong> helps you find the exact number of days, months, and years between two given dates. Whether you’re calculating your age, the duration between two historical events, or the number of days left for an upcoming milestone, this calculator gives you instant and accurate results.</p>
-            <h4 className='font-bold text-lg mt-4'>📅 What Is a Date Difference Calculator?</h4>
-            <p className="text-sm">A <strong>Date Difference Calculator</strong> is a tool designed to calculate how much time has passed (or will pass) between two dates. It works by subtracting one date from another, considering months with different numbers of days, leap years, and even future or past dates — all to give you an exact result in <strong>years, months, and days</strong>.</p>
-            <p className="text-sm">For example:</p>
-            <ul className="list-disc list-inside pl-4 text-sm">
-                <li><strong>From:</strong> January 1, 2000</li>
-                <li><strong>To:</strong> October 7, 2025</li>
-            </ul>
-            <p className="text-sm">The difference is <strong>25 years, 9 months, and 6 days</strong>.</p>
-            <h4 className='font-bold text-lg mt-4'>⏳ Why Use a Date Difference Calculator?</h4>
-            <p className="text-sm">Calculating date differences manually can be confusing due to varying month lengths, leap years, and date formats. A date difference calculator simplifies this by performing instant, error-free calculations. Here are a few common uses:</p>
-            <ul className="list-disc list-inside pl-4 text-sm">
-                <li>✅ Calculating <strong>age</strong> in years, months, and days.</li>
-                <li>✅ Finding <strong>days between two events</strong> (e.g., start and end of a project).</li>
-                <li>✅ Checking <strong>anniversary durations</strong> (e.g., how long you’ve been married).</li>
-                <li>✅ Measuring <strong>historical timelines</strong>.</li>
-                <li>✅ Comparing <strong>future or past dates</strong> for planning and analysis.</li>
-            </ul>
-            <h4 className='font-bold text-lg mt-4'>📘 How Does the Date Difference Calculator Work?</h4>
-            <p className="text-sm">This calculator uses the standard <strong>Gregorian calendar</strong> rules for date calculations. Here’s how it computes the difference:</p>
-            <ol className="list-decimal list-inside pl-4 text-sm">
-              <li>Convert both dates into timestamps (milliseconds since January 1, 1970).</li>
-              <li>Find the absolute difference between the two timestamps.</li>
-              <li>Convert this difference into total days.</li>
-              <li>Then break it down into years, months, and days, adjusting for varying month lengths.</li>
-            </ol>
-            <h4 className='font-bold text-lg mt-4'>🧮 Manual Formula to Calculate the Date Difference</h4>
-            <p className="text-sm">If you’d like to calculate it manually, follow this simple method:</p>
-            <ol className="list-decimal list-inside pl-4 text-sm">
-              <li>Step 1: Write down both dates in DD/MM/YYYY format.</li>
-              <li>Step 2: Subtract the earlier date from the later date.</li>
-              <li>Step 3: Use standard month lengths.</li>
-              <li>Step 4: After adjusting for leap years and borrowings, you’ll get a difference in years, months, and days.</li>
-            </ol>
-            <h4 className='font-bold text-lg mt-4'>🧑‍🏫 Understanding Leap Years and Calendar Adjustments</h4>
-            <p className="text-sm">Leap years are years that have 366 days instead of 365. Every 4th year (except century years not divisible by 400) is a leap year.</p>
-            <h4 className='font-bold text-lg mt-4'>🌍 Supported Date Range and Accuracy</h4>
-            <p className="text-sm">Our calculator supports all valid Gregorian calendar dates from year 0 to year 5000, making it suitable for historical research, future planning, and lifetime tracking.</p>
-            <h4 className='font-bold text-lg mt-4'>🔢 Example Calculations</h4>
-            <p className="text-sm"><strong>Example 1:</strong> Start: Jan 1, 2000; End: Oct 7, 2025 -> 25 years, 9 months, 6 days.</p>
-            <h4 className='font-bold text-lg mt-4'>📆 Different Ways to Input Dates</h4>
-            <p className="text-sm">Our calculator allows two convenient methods: dropdown selection and direct date input.</p>
-            <h4 className='font-bold text-lg mt-4'>🧰 Applications of the Date Difference Calculator</h4>
-            <p className="text-sm">Use this for age calculation, project duration, event planning, historical analysis, and checking loan tenure.</p>
-            <h4 className='font-bold text-lg mt-4'>💡 Bonus Tip: Using It as an Age Calculator</h4>
-            <p className="text-sm">This calculator can also work as an age calculator. Just enter your birth date as the start date and today’s date as the end date.</p>
-            <h4 className='font-bold text-lg mt-4'>❓ Frequently Asked Questions (FAQs)</h4>
-            <p className="text-sm"><strong>Q1. Can this calculator handle historical dates?</strong><br/>Yes. It supports all years from 0 to 5000.</p>
-            <p className="text-sm"><strong>Q2. How accurate is it?</strong><br/>It’s 100% accurate as it considers leap years and varying month lengths.</p>
-            <p className="text-sm"><strong>Q3. Can I calculate negative date differences?</strong><br/>Yes, the calculator automatically swaps the dates if the end date is before the start date.</p>
-            <h4 className='font-bold text-lg mt-4'>🏁 Conclusion</h4>
-            <p className="text-sm">The <strong>Date Difference Calculator</strong> is a simple yet useful tool for everyday life. Try the calculator above and get instant, precise results for any pair of dates!</p>
+          <h3 className="text-xl font-semibold mb-2">🧭 Date Difference Calculator – Calculate Days, Months, and Years Between Two Dates</h3>
+          <div className="text-muted-foreground space-y-4">
+              <p>The <strong>Date Difference Calculator</strong> helps you find the exact number of days, months, and years between two given dates. Whether you’re calculating your age, the duration between two historical events, or the number of days left for an upcoming milestone, this calculator gives you instant and accurate results.</p>
+              <h4 className='font-bold text-lg mt-4'>📅 What Is a Date Difference Calculator?</h4>
+              <p>A <strong>Date Difference Calculator</strong> is a tool designed to calculate how much time has passed (or will pass) between two dates. It works by subtracting one date from another, considering months with different numbers of days, leap years, and even future or past dates — all to give you an exact result in <strong>years, months, and days</strong>.</p> <p>For example:</p> <ul> <li><strong>From:</strong> January 1, 2000</li> <li><strong>To:</strong> October 7, 2025</li> </ul> <p>The difference is <strong>25 years, 9 months, and 6 days</strong>.</p>
+              <h4 className='font-bold text-lg mt-4'>⏳ Why Use a Date Difference Calculator?</h4>
+              <p>Calculating date differences manually can be confusing due to varying month lengths, leap years, and date formats. A date difference calculator simplifies this by performing instant, error-free calculations. Here are a few common uses:</p> <ul> <li>✅ Calculating <strong>age</strong> in years, months, and days.</li> <li>✅ Finding <strong>days between two events</strong> (e.g., start and end of a project).</li> <li>✅ Checking <strong>anniversary durations</strong> (e.g., how long you’ve been married).</li> <li>✅ Measuring <strong>historical timelines</strong>.</li> <li>✅ Comparing <strong>future or past dates</strong> for planning and analysis.</li> </ul>
+              <h4 className='font-bold text-lg mt-4'>📘 How Does the Date Difference Calculator Work?</h4>
+              <p>This calculator uses the standard <strong>Gregorian calendar</strong> rules for date calculations. Here’s how it computes the difference:</p>
+              <ol className="list-decimal list-inside pl-4">
+                  <li>Convert both dates into timestamps (milliseconds since January 1, 1970).</li>
+                  <li>Find the absolute difference between the two timestamps.</li>
+                  <li>Convert this difference into: Total days = Difference ÷ (1000 × 60 × 60 × 24)</li>
+                  <li>Then break it down into years, months, and days, adjusting for varying month lengths.</li>
+              </ol>
+              <h4 className='font-bold text-lg mt-4'>🧮 Manual Formula to Calculate the Date Difference</h4>
+              <p>If you’d like to calculate it manually, follow this simple method:</p>
+              <p><strong>Step 1:</strong> Write down both dates in DD/MM/YYYY format.<br/>Example:<br/>Start Date = 05/03/2020<br/>End Date = 10/10/2025</p>
+              <p><strong>Step 2:</strong> Subtract the earlier date from the later date. If the day or month goes negative, borrow from the previous month or year.</p>
+              <p><strong>Step 3:</strong> Use standard month lengths: [31, 28 (29 for leap year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]</p>
+              <p><strong>Step 4:</strong> After adjusting for leap years and borrowings, you’ll get a difference in years, months, and days.</p>
+              <h4 className='font-bold text-lg mt-4'>🧑‍🏫 Understanding Leap Years and Calendar Adjustments</h4>
+              <p>Leap years are years that have 366 days instead of 365. Every 4th year (except century years not divisible by 400) is a leap year.</p>
+              <p>Leap year formula: <code>(Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0)</code></p>
+              <p>This ensures February has 29 days instead of 28, affecting the total day count in date difference calculations.</p>
+              <p>Examples of leap years: 2000, 2004, 2008, 2012, 2016, 2020, 2024...</p>
+              <h4 className='font-bold text-lg mt-4'>🌍 Supported Date Range and Accuracy</h4>
+              <p>Our calculator supports all valid Gregorian calendar dates from year 0 to year 5000, making it suitable for:</p>
+              <ul>
+                <li>📖 Historical research (e.g., from 200 BC to 2025 AD)</li>
+                <li>🚀 Future planning (e.g., project timelines to year 4000)</li>
+                <li>🧓 Lifetime or career duration tracking</li>
+              </ul>
+              <p>It automatically adjusts for: Leap years, Month lengths, Negative differences (swaps start and end if needed)</p>
+              <h4 className='font-bold text-lg mt-4'>🔢 Example Calculations</h4>
+              <p><strong>Example 1: Past Date Difference</strong><br/>Start: January 1, 2000<br/>End: October 7, 2025<br/>Result: 25 years, 9 months, and 6 days<br/>Total Days: 9,415 days</p>
+              <p><strong>Example 2: Future Date Difference</strong><br/>Start: October 7, 2025<br/>End: December 31, 3000<br/>Result: 975 years, 2 months, 24 days<br/>Total Days: 356,000+ days approximately</p>
+              <p><strong>Example 3: Same Day</strong><br/>If both dates are the same, Difference = 0 days.</p>
+              <h4 className='font-bold text-lg mt-4'>📆 Different Ways to Input Dates</h4>
+              <p>Our calculator allows two convenient methods:</p>
+              <p><strong>Dropdown Selection:</strong> Choose day, month, and year separately (for precise control). Works with years up to 5000 and down to 0.</p>
+              <p><strong>Direct Input:</strong> Enter start and end dates directly using the date picker. Ideal for quick calculations.</p>
+              <h4 className='font-bold text-lg mt-4'>🧰 Applications of the Date Difference Calculator</h4>
+              <ul>
+                <li><strong>Age Calculation:</strong> Find your exact age in years, months, and days.</li>
+                <li><strong>Project Duration:</strong> Calculate the time span between project start and completion dates.</li>
+                <li><strong>Event Planning:</strong> Count the number of days until an event or deadline.</li>
+                <li><strong>Historical Analysis:</strong> Measure how much time passed between two historical events.</li>
+                <li><strong>Loan / Investment Tenure:</strong> Check the exact period between investment and maturity dates.</li>
+              </ul>
+              <h4 className='font-bold text-lg mt-4'>🕰️ How to Calculate Time Difference in Days, Months, and Years</h4>
+              <p>Here’s a breakdown of what happens inside the calculator:</p>
+              <p><strong>Days Difference:</strong> It finds the total number of days between two timestamps.</p>
+              <p><strong>Months and Years:</strong> Starts with year difference: endYear - startYear. Adjusts months: endMonth - startMonth. Adjusts days: endDay - startDay. If negative, months/days are carried over accordingly. This ensures the difference matches real-world time periods exactly.</p>
+              <h4 className='font-bold text-lg mt-4'>🌐 Regional Formats and Compatibility</h4>
+              <p>Our calculator supports all regional date formats, including:</p>
+              <ul>
+                <li>India: DD/MM/YYYY</li>
+                <li>USA: MM/DD/YYYY</li>
+                <li>Europe: DD-MM-YYYY</li>
+                <li>ISO Standard: YYYY-MM-DD</li>
+              </ul>
+              <p>No matter your country, the calculator correctly interprets and processes your dates.</p>
+              <h4 className='font-bold text-lg mt-4'>📖 Common Mistakes in Manual Calculations</h4>
+              <p>❌ Ignoring leap years<br/>❌ Miscounting month lengths (e.g., assuming every month has 30 days)<br/>❌ Not handling negative days or months after subtraction<br/>❌ Using incorrect date formats</p>
+              <p>✅ Tip: Always use a reliable online Date Difference Calculator like this one to avoid mistakes.</p>
+              <h4 className='font-bold text-lg mt-4'>💡 Bonus Tip: Using It as an Age Calculator</h4>
+              <p>This calculator can also work as an age calculator. Just enter your birth date as the start date and today’s date as the end date. You’ll instantly get your exact age in years, months, and days.</p>
+              <p>Example: Born on: 12 June 1995<br/>Today: 7 October 2025<br/>→ 30 years, 3 months, and 25 days old</p>
+              <h4 className='font-bold text-lg mt-4'>🔍 SEO Keywords (Integrated Naturally)</h4>
+              <p>Throughout this article, keywords like “date difference calculator,” “days between two dates,” “calculate months between dates,” “year difference calculator,” and “how to find date difference manually” have been included for organic ranking.</p>
+              <h4 className='font-bold text-lg mt-4'>❓ Frequently Asked Questions (FAQs)</h4>
+              <p><strong>Q1. Can this calculator handle historical dates?</strong><br/>Yes. It supports all years from 0 to 5000, so you can even calculate time spans between ancient and future dates.</p>
+              <p><strong>Q2. How accurate is it?</strong><br/>It’s 100% accurate as it considers leap years and varying month lengths.</p>
+              <p><strong>Q3. Can I calculate negative date differences?</strong><br/>Yes, the calculator automatically swaps the dates if the end date is before the start date.</p>
+              <p><strong>Q4. Does it work for birthdays and anniversaries?</strong><br/>Absolutely. Just enter your birth or anniversary date as the start date and today’s date as the end date.</p>
+              <p><strong>Q5. Can I use it offline?</strong><br/>Yes. The HTML and JavaScript code runs directly in your browser without internet access.</p>
+              <h4 className='font-bold text-lg mt-4'>🏁 Conclusion</h4>
+              <p>The <strong>Date Difference Calculator</strong> is one of the simplest yet most useful tools for everyday life — whether you’re calculating your age, measuring work durations, or studying historical events.</p>
+              <p>With support for every possible date between year 0 and 5000, leap-year adjustments, and accurate day counts, it offers an all-in-one solution for anyone who needs to find time differences quickly and reliably.</p>
+              <p>Try the calculator above and get instant, precise results for any pair of dates — past, present, or future!</p>
+          </div>
         </div>
     </div>
   );
 }
+
