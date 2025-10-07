@@ -3,45 +3,12 @@ import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { List, Calculator, BookOpen } from 'lucide-react';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { List } from 'lucide-react';
 import { SearchBar } from '@/components/search-bar';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
-        <div className="container flex h-14 items-center">
-          <Link href="/" className="flex items-center gap-2 font-bold mr-6">
-            <Calculator className="h-6 w-6 text-primary" />
-            <span className="text-lg">Mycalculating.com</span>
-          </Link>
-          <div className="ml-auto flex items-center gap-4">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Learning Hub
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem asChild>
-                  <Link href="/learning-hub">All Articles</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
-
       <main className="flex-1">
         <section className="relative w-full py-20 md:py-32 hero-pattern">
            <div className="container mx-auto text-center px-4">
