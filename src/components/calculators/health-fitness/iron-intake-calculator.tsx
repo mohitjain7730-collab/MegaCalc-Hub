@@ -11,8 +11,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Utensils } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Progress } from '@/components/ui/progress';
 
-// RDA tables (mg/day) - values primarily from NIH ODS, with ICMR as an alternative
+// RDA tables (mg/day) - values primarily from NIH ODS
 const RDA_NIH: Record<string, any> = {
     "inf0": 0.27,
     "inf1": 11,
@@ -23,10 +24,10 @@ const RDA_NIH: Record<string, any> = {
     "19-50": {male: 8, female:18},
     "51+": 8,
     "pregnant": 27,
-    "lactating": 9 // Simplification for both teen/adult
+    "lactating": 9,
 };
 
-const RDA_ICMR: Record<string, any> = {
+const RDA_ICMR: Record[string, any] = {
     "inf0": 0.27,
     "inf1": 11,
     "1-3": 7,
@@ -76,9 +77,9 @@ export default function IronIntakeCalculator() {
     if (val === undefined) return null;
 
     if (typeof val === 'object') {
-        if (sex === 'male') return val.male ?? val;
-        if (sex === 'female') return val.female ?? val;
-        return (val.male && val.female) ? Math.round((val.male + val.female)/2) : (val.male || val.female);
+      if (sex === 'male') return val.male ?? val;
+      if (sex === 'female') return val.female ?? val;
+      return (val.male && val.female) ? Math.round((val.male + val.female)/2) : (val.male || val.female);
     }
     return val;
   }
@@ -118,7 +119,6 @@ export default function IronIntakeCalculator() {
         countryPref: 'nih',
         currentIntake: 10
     });
-    // Trigger calculation after filling example
     setTimeout(() => form.handleSubmit(onSubmit)(), 0);
   }
   
@@ -142,34 +142,34 @@ export default function IronIntakeCalculator() {
               <FormItem><FormLabel>Age group</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                   <SelectContent>
-                    <option value="inf0">0–6 months</option>
-                    <option value="inf1">7–12 months</option>
-                    <option value="1-3">1–3 years</option>
-                    <option value="4-8">4–8 years</option>
-                    <option value="9-13">9–13 years</option>
-                    <option value="14-18">14–18 years</option>
-                    <option value="19-50">19–50 years</option>
-                    <option value="51+">51+ years</option>
-                    <option value="pregnant">Pregnant</option>
-                    <option value="lactating">Breastfeeding</option>
+                    <SelectItem value="inf0">0–6 months</SelectItem>
+                    <SelectItem value="inf1">7–12 months</SelectItem>
+                    <SelectItem value="1-3">1–3 years</SelectItem>
+                    <SelectItem value="4-8">4–8 years</SelectItem>
+                    <SelectItem value="9-13">9–13 years</SelectItem>
+                    <SelectItem value="14-18">14–18 years</SelectItem>
+                    <SelectItem value="19-50">19–50 years</SelectItem>
+                    <SelectItem value="51+">51+ years</SelectItem>
+                    <SelectItem value="pregnant">Pregnant</SelectItem>
+                    <SelectItem value="lactating">Breastfeeding</SelectItem>
                   </SelectContent>
               </Select></FormItem>
             )} />
             <FormField control={form.control} name="sex" render={({ field }) => (
               <FormItem><FormLabel>Sex</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                   <SelectContent>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
-                    <option value="other">Other / prefer not to say</option>
+                    <SelectItem value="female">Female</SelectItem>
+                    <SelectItem value="male">Male</SelectItem>
+                    <SelectItem value="other">Other / prefer not to say</SelectItem>
                   </SelectContent>
               </Select></FormItem>
             )} />
              <FormField control={form.control} name="countryPref" render={({ field }) => (
               <FormItem><FormLabel>RDA Preference</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                   <SelectContent>
-                     <option value="nih">NIH (US)</option>
-                     <option value="icmr">ICMR / India (approx.)</option>
-                     <option value="who">WHO guidance (pregnancy focus)</option>
+                     <SelectItem value="nih">NIH (US)</SelectItem>
+                     <SelectItem value="icmr">ICMR / India (approx.)</SelectItem>
+                     <SelectItem value="who">WHO guidance (pregnancy focus)</SelectItem>
                   </SelectContent>
               </Select></FormItem>
             )} />
