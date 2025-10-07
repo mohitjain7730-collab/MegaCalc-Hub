@@ -13,75 +13,53 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Bone } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-const rdaOptions = [
-    { value: "700", label: "1-3 years" },
-    { value: "1000", label: "4-8 years" },
-    { value: "1300", label: "9-18 years" },
-    { value: "1000", label: "19-50 years" },
-    { value: "1200", label: "51-70 years (Men)" },
-    { value: "1200", label: "51-70 years (Women)" },
-    { value: "1200", label: "71+ years" },
-    { value: "1000", label: "Pregnant or Lactating Women" }, 
-];
-
-const dietOptions = [
-    { value: "normal", label: "Regular Diet" },
-    { value: "vegan", label: "Vegan Diet" },
-    { value: "vegetarian", label: "Vegetarian Diet" },
-];
-
 const formSchema = z.object({
-  ageGroupRda: z.coerce.number(),
+  age: z.coerce.number(),
   diet: z.enum(['normal', 'vegan', 'vegetarian']),
-  calciumIntake: z.number().nonnegative("Intake cannot be negative."),
+  calciumIntake: z.number().nonnegative(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-interface Result {
-  message: string;
-  difference: number;
-  recommended: number;
-}
-
 export default function CalciumIntakeCalculator() {
-  const [result, setResult] = useState<Result | null>(null);
+  const [result, setResult] = useState<string | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      ageGroupRda: 1000,
+      age: 1000, // Default to 19-50 years
       diet: 'normal',
       calciumIntake: undefined,
     },
   });
 
   const onSubmit = (values: FormValues) => {
-    if (values.calciumIntake === undefined) {
-        form.setError("calciumIntake", { message: "Please enter your estimated calcium intake." });
-        return;
-    }
-    
-    let recommended = values.ageGroupRda;
+    const { age, diet, calciumIntake } = values;
+    let recommended = age;
 
-    if (values.diet === "vegan") {
-      recommended += 200; // Vegans may need more due to lower absorption from plant sources.
-    } else if (values.diet === "vegetarian") {
+    if (diet === 'vegan') {
+      recommended += 200;
+    } else if (diet === 'vegetarian') {
       recommended += 100;
     }
 
-    const difference = values.calciumIntake - recommended;
-    let message = "";
-
-    if (difference < 0) {
-      message = `You need ${Math.abs(difference)} mg more calcium to meet your daily requirement of ${recommended} mg.`;
-    } else if (difference > 0) {
-      message = `You are consuming ${difference} mg more than the recommended ${recommended} mg.`;
-    } else {
-      message = `Perfect! You are meeting your daily calcium requirement of ${recommended} mg.`;
+    if (isNaN(calciumIntake) || calciumIntake < 0) {
+      setResult("Please enter a valid calcium intake value.");
+      return;
     }
 
-    setResult({ message, difference, recommended });
+    const difference = recommended - calciumIntake;
+    let message = "";
+
+    if (difference > 0) {
+      message = `You may need ~${difference.toFixed(0)} mg more calcium to meet your daily requirement of ${recommended} mg.`;
+    } else if (difference < 0) {
+      message = `You are consuming ~${Math.abs(difference).toFixed(0)} mg more than the recommended ${recommended} mg per day.`;
+    } else {
+      message = `You are meeting your daily calcium requirement of ${recommended} mg.`;
+    }
+
+    setResult(message);
   };
 
   return (
@@ -91,85 +69,112 @@ export default function CalciumIntakeCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={form.control}
-              name="ageGroupRda"
+              name="age"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Age Group:</FormLabel>
+                  <FormLabel>Age Group</FormLabel>
                   <Select onValueChange={(val) => field.onChange(parseInt(val))} defaultValue={String(field.value)}>
-                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                    </FormControl>
                     <SelectContent>
-                      {rdaOptions.map(opt => <SelectItem key={opt.label} value={opt.value}>{opt.label}</SelectItem>)}
+                      <SelectItem value="700">1-3 years</SelectItem>
+                      <SelectItem value="1000">4-8 years</SelectItem>
+                      <SelectItem value="1300">9-18 years</SelectItem>
+                      <SelectItem value="1000">19-50 years</SelectItem>
+                      <SelectItem value="1200">51-70 years</SelectItem>
+                      <SelectItem value="1200">71+ years</SelectItem>
+                      <SelectItem value="1000">Pregnant/Lactating</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormItem>
               )}
             />
-             <FormField
+            <FormField
               control={form.control}
               name="diet"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Diet Type:</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={String(field.value)}>
-                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+                  <FormLabel>Diet Type</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                    </FormControl>
                     <SelectContent>
-                      {dietOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}
+                      <SelectItem value="normal">Regular Diet</SelectItem>
+                      <SelectItem value="vegan">Vegan Diet</SelectItem>
+                      <SelectItem value="vegetarian">Vegetarian Diet</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormItem>
               )}
             />
-             <FormField
+            <FormField
               control={form.control}
               name="calciumIntake"
               render={({ field }) => (
                 <FormItem className="md:col-span-2">
-                  <FormLabel>Average Daily Calcium Intake (mg):</FormLabel>
+                  <FormLabel>Average Daily Calcium Intake (mg)</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="Enter your current calcium intake" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                    <Input
+                      type="number"
+                      placeholder="Enter your current calcium intake"
+                      {...field}
+                      value={field.value ?? ''}
+                      onChange={e => field.onChange(parseInt(e.target.value) || undefined)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <Button type="submit">Calculate Recommended Calcium</Button>
+          <Button type="submit">Calculate</Button>
         </form>
       </Form>
-
       {result && (
         <Card className="mt-8">
           <CardHeader>
             <div className='flex items-center gap-4'>
               <Bone className="h-8 w-8 text-primary" />
-              <CardTitle>Calcium Intake Analysis</CardTitle>
+              <CardTitle>Calcium Intake Summary</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="text-center">
-             <p className={`text-lg font-semibold ${result.difference < 0 ? 'text-red-500' : 'text-green-500'}`}>{result.message}</p>
+          <CardContent>
+            <p className="text-lg text-center">{result}</p>
+            <CardDescription className="mt-4 text-center text-xs">
+              This is an estimate. Dietary needs vary. Consult a healthcare provider for personalized advice.
+            </CardDescription>
           </CardContent>
         </Card>
       )}
-
-      <Accordion type="single" collapsible className="w-full">
+       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="understanding-inputs">
-          <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
-            <div>
-              <h4 className="font-semibold text-foreground">Age Group & Diet</h4>
-              <p>Your age and diet are the primary factors determining your recommended daily allowance (RDA) for calcium.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground">Average Daily Calcium Intake</h4>
-              <p>An estimate of the total calcium you consume from all sources (food and supplements) in a typical day.</p>
-            </div>
-          </AccordionContent>
+            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground space-y-4">
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Age Group</h4>
+                  <p>Different age groups have different Recommended Dietary Allowances (RDA) for calcium as set by health authorities like the NIH.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Diet Type</h4>
+                  <p>Calcium from plant-based sources can be less bioavailable due to compounds like oxalates and phytates. This calculator adds a small buffer for vegan and vegetarian diets to account for this.</p>
+              </div>
+              <div>
+                  <h4 className="font-semibold text-foreground mb-1">Daily Calcium Intake (mg)</h4>
+                  <p>Your best estimate of the total calcium you consume daily from all sources, including food and supplements.</p>
+              </div>
+            </AccordionContent>
         </AccordionItem>
         <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <p>The calculator uses standard RDA values for different age groups and applies an adjustment based on diet type, as plant-based diets can sometimes require higher intake due to lower absorption rates of calcium from plant sources. It then compares this recommendation to your current intake.</p>
-          </AccordionContent>
+            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <p>This calculator determines your estimated daily calcium requirement based on standard RDA values for your age group. It then makes a slight upward adjustment for vegan or vegetarian diets and compares this recommendation to your stated current intake, providing feedback on the difference.</p>
+            </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
