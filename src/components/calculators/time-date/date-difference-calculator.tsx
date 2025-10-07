@@ -259,26 +259,25 @@ export default function DateDifferenceCalculator() {
             <h4 className='font-bold text-lg mt-4'>📘 How Does the Date Difference Calculator Work?</h4>
             <p className="text-sm">This calculator uses the standard <strong>Gregorian calendar</strong> rules for date calculations. Here’s how it computes the difference:</p>
             <ol className="list-decimal list-inside pl-4 text-sm">
-                <li>Convert both dates into timestamps (milliseconds since January 1, 1970).</li>
-                <li>Find the absolute difference between the two timestamps.</li>
-                <li>Convert this difference into total days.</li>
-                <li>Then break it down into years, months, and days, adjusting for varying month lengths.</li>
+              <li>Convert both dates into timestamps (milliseconds since January 1, 1970).</li>
+              <li>Find the absolute difference between the two timestamps.</li>
+              <li>Convert this difference into total days.</li>
+              <li>Then break it down into years, months, and days, adjusting for varying month lengths.</li>
             </ol>
             <h4 className='font-bold text-lg mt-4'>🧮 Manual Formula to Calculate the Date Difference</h4>
             <p className="text-sm">If you’d like to calculate it manually, follow this simple method:</p>
             <ol className="list-decimal list-inside pl-4 text-sm">
-                <li>Step 1: Write down both dates in DD/MM/YYYY format.</li>
-                <li>Step 2: Subtract the earlier date from the later date. If the day or month goes negative, borrow from the previous month or year.</li>
-                <li>Step 3: Use standard month lengths.</li>
-                <li>Step 4: After adjusting for leap years and borrowings, you’ll get a difference in years, months, and days.</li>
+              <li>Step 1: Write down both dates in DD/MM/YYYY format.</li>
+              <li>Step 2: Subtract the earlier date from the later date.</li>
+              <li>Step 3: Use standard month lengths.</li>
+              <li>Step 4: After adjusting for leap years and borrowings, you’ll get a difference in years, months, and days.</li>
             </ol>
             <h4 className='font-bold text-lg mt-4'>🧑‍🏫 Understanding Leap Years and Calendar Adjustments</h4>
             <p className="text-sm">Leap years are years that have 366 days instead of 365. Every 4th year (except century years not divisible by 400) is a leap year.</p>
-            <p className="text-sm">Leap year formula: <code>(Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0)</code></p>
             <h4 className='font-bold text-lg mt-4'>🌍 Supported Date Range and Accuracy</h4>
-            <p className="text-sm">Our calculator supports all valid Gregorian calendar dates from year 0 to year 5000.</p>
+            <p className="text-sm">Our calculator supports all valid Gregorian calendar dates from year 0 to year 5000, making it suitable for historical research, future planning, and lifetime tracking.</p>
             <h4 className='font-bold text-lg mt-4'>🔢 Example Calculations</h4>
-            <p className="text-sm"><strong>Example 1: Past Date Difference</strong><br/>Start: January 1, 2000<br/>End: October 7, 2025<br/>Result: 25 years, 9 months, and 6 days<br/>Total Days: 9,415 days</p>
+            <p className="text-sm"><strong>Example 1:</strong> Start: Jan 1, 2000; End: Oct 7, 2025 -> 25 years, 9 months, 6 days.</p>
             <h4 className='font-bold text-lg mt-4'>📆 Different Ways to Input Dates</h4>
             <p className="text-sm">Our calculator allows two convenient methods: dropdown selection and direct date input.</p>
             <h4 className='font-bold text-lg mt-4'>🧰 Applications of the Date Difference Calculator</h4>
