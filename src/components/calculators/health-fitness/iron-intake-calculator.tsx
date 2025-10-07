@@ -1,4 +1,3 @@
-
 export interface Calculator {
   id: number;
   name: string;
@@ -1834,11 +1833,3 @@ export const calculators: Calculator[] = [
     category: 'time-date',
   },
 ];
-
-    
-
-    
-
-
-
-
