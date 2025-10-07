@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -10,14 +10,15 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { differenceInDays, differenceInYears, differenceInMonths, isValid, parse } from 'date-fns';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { parse, isValid, differenceInDays, differenceInYears, differenceInMonths } from 'date-fns';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const dateSchema = z.object({
-    year: z.number().int().max(5000, 'Year is too large').min(0, "Year cannot be negative").optional(),
-    month: z.number().int().min(0).max(11).optional(),
-    day: z.number().int().min(1).max(31).optional(),
+    year: z.number().int().min(0, "Year cannot be negative").max(5000, "Year is too large"),
+    month: z.number().int().min(0).max(11),
+    day: z.number().int().min(1).max(31),
 });
 
 const formSchema = z.object({
@@ -192,8 +193,8 @@ export default function DateDifferenceCalculator() {
                 </TabsContent>
                 <TabsContent value="text">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
-                        <FormField control={form.control} name="text.startDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>Start Date</FormLabel><FormControl><Input type="date" {...field} value={field.value ?? ''} /></FormControl><FormMessage /></FormItem> )} />
-                        <FormField control={form.control} name="text.endDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>End Date</FormLabel><FormControl><Input type="date" {...field} value={field.value ?? ''} /></FormControl><FormMessage /></FormItem> )} />
+                        <FormField control={form.control} name="text.startDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>Start Date</FormLabel><FormControl><Input type="text" placeholder="YYYY-MM-DD" {...field} value={field.value ?? ''} /></FormControl><FormMessage /></FormItem> )} />
+                        <FormField control={form.control} name="text.endDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>End Date</FormLabel><FormControl><Input type="text" placeholder="YYYY-MM-DD" {...field} value={field.value ?? ''} /></FormControl><FormMessage /></FormItem> )} />
                     </div>
                 </TabsContent>
             </Tabs>
@@ -220,8 +221,15 @@ export default function DateDifferenceCalculator() {
             </CardContent>
         </Card>
       )}
+
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="how-it-works">
+            <AccordionTrigger>How It Works</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">
+                <p>This calculator determines the duration between two dates. First, it finds the total number of full days. Then, to provide a more intuitive breakdown, it calculates the number of full years, then the number of full months within the remaining period, and finally the leftover days.</p>
+            </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 }
-
-    
