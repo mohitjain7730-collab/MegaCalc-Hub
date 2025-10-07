@@ -9,32 +9,64 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { differenceInDays, differenceInYears, differenceInMonths, format } from 'date-fns';
+import { differenceInDays, differenceInYears, differenceInMonths, isValid, parse } from 'date-fns';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
-import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
 
 const dropdownSchema = z.object({
-  startDay: z.coerce.number(),
-  startMonth: z.coerce.number(),
-  startYear: z.coerce.number(),
-  endDay: z.coerce.number(),
-  endMonth: z.coerce.number(),
-  endYear: z.coerce.number(),
+  startDay: z.coerce.number().optional(),
+  startMonth: z.coerce.number().optional(),
+  startYear: z.coerce.number().optional(),
+  endDay: z.coerce.number().optional(),
+  endMonth: z.coerce.number().optional(),
+  endYear: z.coerce.number().optional(),
 });
 
-const pickerSchema = z.object({
-  startDate: z.date().optional(),
-  endDate: z.date().optional(),
+const textSchema = z.object({
+  startDate: z.string().optional(),
+  endDate: z.string().optional(),
 });
 
-type FormValues = {
-    inputType: 'dropdown' | 'picker';
-    dropdown: z.infer<typeof dropdownSchema>;
-    picker: z.infer<typeof pickerSchema>;
-};
+const formSchema = z.object({
+    inputType: z.enum(['dropdown', 'text']),
+    dropdown: dropdownSchema,
+    text: textSchema,
+}).superRefine((data, ctx) => {
+    if (data.inputType === 'dropdown') {
+        const { startDay, startMonth, startYear, endDay, endMonth, endYear } = data.dropdown;
+        if (startDay === undefined || startMonth === undefined || startYear === undefined) {
+             ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Start date is incomplete.", path: ['dropdown', 'startDay'] });
+        } else {
+            const startDate = new Date(startYear, startMonth, startDay);
+            if (!isValid(startDate) || startDate.getFullYear() !== startYear || startDate.getMonth() !== startMonth || startDate.getDate() !== startDay) {
+                ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Invalid start date.", path: ['dropdown', 'startDay'] });
+            }
+        }
+        if (endDay === undefined || endMonth === undefined || endYear === undefined) {
+             ctx.addIssue({ code: z.ZodIssueCode.custom, message: "End date is incomplete.", path: ['dropdown', 'endDay'] });
+        } else {
+            const endDate = new Date(endYear, endMonth, endDay);
+            if (!isValid(endDate) || endDate.getFullYear() !== endYear || endDate.getMonth() !== endMonth || endDate.getDate() !== endDay) {
+                ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Invalid end date.", path: ['dropdown', 'endDay'] });
+            }
+        }
+    } else { // text input
+        if (!data.text.startDate) {
+             ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Start date is required.", path: ['text', 'startDate'] });
+        } else if (!isValid(parse(data.text.startDate, 'yyyy-MM-dd', new Date()))) {
+             ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Invalid start date format.", path: ['text', 'startDate'] });
+        }
+         if (!data.text.endDate) {
+             ctx.addIssue({ code: z.ZodIssueCode.custom, message: "End date is required.", path: ['text', 'endDate'] });
+        } else if (!isValid(parse(data.text.endDate, 'yyyy-MM-dd', new Date()))) {
+             ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Invalid end date format.", path: ['text', 'endDate'] });
+        }
+    }
+});
+
+
+type FormValues = z.infer<typeof formSchema>;
 
 interface Difference {
   totalDays: number;
@@ -43,7 +75,7 @@ interface Difference {
   days: number;
 }
 
-const years = Array.from({ length: 5001 }, (_, i) => i);
+const years = Array.from({ length: 5001 }, (_, i) => i).reverse();
 const months = Array.from({ length: 12 }, (_, i) => i);
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
 const monthNames = [
@@ -56,10 +88,11 @@ export default function DateDifferenceCalculator() {
   const [result, setResult] = useState<Difference | null>(null);
 
   const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
         inputType: 'dropdown',
         dropdown: { startDay: undefined, startMonth: undefined, startYear: undefined, endDay: undefined, endMonth: undefined, endYear: undefined },
-        picker: { startDate: undefined, endDate: undefined },
+        text: { startDate: '', endDate: '' },
     }
   });
 
@@ -67,26 +100,15 @@ export default function DateDifferenceCalculator() {
     let startDate: Date;
     let endDate: Date;
 
-    if (values.inputType === 'picker' && values.picker.startDate && values.picker.endDate) {
-        startDate = values.picker.startDate;
-        endDate = values.picker.endDate;
+    if (values.inputType === 'text' && values.text.startDate && values.text.endDate) {
+        startDate = parse(values.text.startDate, 'yyyy-MM-dd', new Date());
+        endDate = parse(values.text.endDate, 'yyyy-MM-dd', new Date());
     } else if (values.inputType === 'dropdown') {
         const { startDay, startMonth, startYear, endDay, endMonth, endYear } = values.dropdown;
-        if(startDay && startMonth !== undefined && startYear !== undefined && endDay && endMonth !== undefined && endYear !== undefined) {
-             startDate = new Date(startYear, startMonth, startDay);
-             endDate = new Date(endYear, endMonth, endDay);
-        } else {
-            form.setError('dropdown.startDay', { message: 'All date fields are required.' });
-            return;
-        }
+        startDate = new Date(startYear!, startMonth!, startDay!);
+        endDate = new Date(endYear!, endMonth!, endDay!);
     } else {
-        form.setError('picker.startDate', { message: 'Both dates are required.'});
-        return;
-    }
-
-    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-        setResult(null);
-        return;
+        return; // Invalid state
     }
     
     // Swap if end date is before start date
@@ -106,6 +128,12 @@ export default function DateDifferenceCalculator() {
     
     let days = differenceInDays(endDate, tempStartDateForDays);
     
+     if (days < 0) {
+        months--;
+        tempStartDateForDays.setMonth(tempStartDateForDays.getMonth() -1);
+        days = differenceInDays(endDate, tempStartDateForDays);
+     }
+
      if (months < 0) {
         years--;
         months += 12;
@@ -118,35 +146,37 @@ export default function DateDifferenceCalculator() {
     <div className="space-y-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <Tabs defaultValue="dropdown" onValueChange={(v) => form.setValue('inputType', v as 'dropdown' | 'picker')}>
+            <Tabs defaultValue="dropdown" onValueChange={(v) => form.setValue('inputType', v as 'dropdown' | 'text')}>
                 <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="dropdown">Use Dropdowns</TabsTrigger>
-                    <TabsTrigger value="picker">Use Date Picker</TabsTrigger>
+                    <TabsTrigger value="dropdown">Select Date</TabsTrigger>
+                    <TabsTrigger value="text">Enter Date</TabsTrigger>
                 </TabsList>
                 <TabsContent value="dropdown">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
                         <div>
                             <FormLabel>Start Date:</FormLabel>
                             <div className="grid grid-cols-3 gap-2 mt-2">
-                                <FormField control={form.control} name="dropdown.startDay" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
-                                <FormField control={form.control} name="dropdown.startMonth" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{months.map(m => <SelectItem key={m} value={String(m)}>{monthNames[m]}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
-                                <FormField control={form.control} name="dropdown.startYear" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.day" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.month" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{months.map(m => <SelectItem key={m} value={String(m)}>{monthNames[m]}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.year" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent className="max-h-[20rem]">{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem> )}/>
                             </div>
+                            <FormMessage>{form.formState.errors.dropdown?.startDay?.message}</FormMessage>
                         </div>
                          <div>
                             <FormLabel>End Date:</FormLabel>
                             <div className="grid grid-cols-3 gap-2 mt-2">
-                                <FormField control={form.control} name="dropdown.endDay" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
-                                <FormField control={form.control} name="dropdown.endMonth" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{months.map(m => <SelectItem key={m} value={String(m)}>{monthNames[m]}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
-                                <FormField control={form.control} name="dropdown.endYear" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.endDay" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Day" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{days.map(d => <SelectItem key={d} value={String(d)}>{d}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.endMonth" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Month" /></SelectTrigger></FormControl><SelectContent className="max-h-60">{months.map(m => <SelectItem key={m} value={String(m)}>{monthNames[m]}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem> )}/>
+                                <FormField control={form.control} name="dropdown.endYear" render={({ field }) => ( <FormItem><Select onValueChange={val => field.onChange(parseInt(val))} value={field.value?.toString()}><FormControl><SelectTrigger><SelectValue placeholder="Year" /></SelectTrigger></FormControl><SelectContent className="max-h-[20rem]">{years.map(y => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}</SelectContent></Select><FormMessage /></FormItem> )}/>
                             </div>
+                            <FormMessage>{form.formState.errors.dropdown?.endDay?.message}</FormMessage>
                         </div>
                     </div>
                 </TabsContent>
-                <TabsContent value="picker">
+                <TabsContent value="text">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
-                        <FormField control={form.control} name="picker.startDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>Start Date</FormLabel><Popover><PopoverTrigger asChild><FormControl><Button variant={"outline"} className={cn("pl-3 text-left font-normal",!field.value && "text-muted-foreground")} >{field.value ? format(field.value, "PPP") : <span>Pick a date</span>}<CalendarIcon className="ml-auto h-4 w-4 opacity-50" /></Button></FormControl></PopoverTrigger><PopoverContent className="w-auto p-0" align="start"><Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus /></PopoverContent></Popover><FormMessage /></FormItem> )} />
-                        <FormField control={form.control} name="picker.endDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>End Date</FormLabel><Popover><PopoverTrigger asChild><FormControl><Button variant={"outline"} className={cn("pl-3 text-left font-normal",!field.value && "text-muted-foreground")} >{field.value ? format(field.value, "PPP") : <span>Pick a date</span>}<CalendarIcon className="ml-auto h-4 w-4 opacity-50" /></Button></FormControl></PopoverTrigger><PopoverContent className="w-auto p-0" align="start"><Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus /></PopoverContent></Popover><FormMessage /></FormItem> )} />
+                        <FormField control={form.control} name="text.startDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>Start Date</FormLabel><FormControl><Input type="date" {...field} value={field.value ?? ''} /></FormControl><FormMessage /></FormItem> )} />
+                        <FormField control={form.control} name="text.endDate" render={({ field }) => (<FormItem className="flex flex-col"><FormLabel>End Date</FormLabel><FormControl><Input type="date" {...field} value={field.value ?? ''} /></FormControl><FormMessage /></FormItem> )} />
                     </div>
                 </TabsContent>
             </Tabs>
