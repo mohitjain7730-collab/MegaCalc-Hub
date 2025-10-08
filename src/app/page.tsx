@@ -3,26 +3,40 @@ import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { List } from 'lucide-react';
-import { SearchBar } from '@/components/search-bar';
+import { List, Search } from 'lucide-react';
+import { search } from '@/app/actions';
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <main className="flex-1">
-        <section className="relative w-full py-20 md:py-32 hero-pattern">
+        <section className="relative w-full py-16 md:py-24 lg:py-32 hero-pattern">
            <div className="container mx-auto text-center px-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground">
               Calculate everything you want to
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
               Your one-stop destination for all calculators. We offer a wide range of free online calculators for finance, health, and more.
             </p>
-            <div className='mt-8'>
-                <SearchBar />
+            <div className='mt-8 max-w-2xl mx-auto'>
+              <form action={search} className="flex flex-col sm:flex-row gap-2">
+                <div className="relative flex-grow">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Input
+                    name="query"
+                    type="text"
+                    placeholder="e.g., 'Retirement', 'BMI', 'Mortgage'..."
+                    required
+                    className="w-full pl-10"
+                  />
+                </div>
+                <Button type="submit" className="w-full sm:w-auto">
+                  Search Calculators
+                </Button>
+              </form>
             </div>
-            <div className="mt-4 flex justify-center gap-4">
-                <Button asChild>
+            <div className="mt-6 flex justify-center gap-4">
+                <Button asChild variant="outline">
                     <Link href="/calculators">
                         <List className="mr-2 h-4 w-4" />
                         Browse All Calculators
