@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { List, Search } from 'lucide-react';
 import { search } from '@/app/actions';
+import { Input } from '@/components/ui/input';
 
 export default function Home() {
   return (
