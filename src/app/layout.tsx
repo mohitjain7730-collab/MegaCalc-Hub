@@ -4,12 +4,6 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { Calculator, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from '@/components/theme-toggle';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -55,19 +49,12 @@ export default function RootLayout({
                   <span className="text-lg">Mycalculating.com</span>
                 </Link>
                 <div className="ml-auto flex items-center gap-4">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        Learning Hub
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuItem asChild>
-                        <Link href="/learning-hub">All Articles</Link>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <Button asChild variant="ghost">
+                    <Link href="/learning-hub">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Learning Hub
+                    </Link>
+                  </Button>
                   <ThemeToggle />
                 </div>
               </div>
