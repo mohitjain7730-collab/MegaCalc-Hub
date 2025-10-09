@@ -312,6 +312,38 @@ export const articles: LearningHubArticle[] = [
       <p class="font-semibold">Is a lower body fat percentage always better?</p>
       <p>No. Dropping below essential fat levels can be dangerous and lead to serious health problems, including organ failure and hormonal disruptions. It's about finding a healthy, sustainable range for your body and lifestyle.</p>
     `
+  },
+  {
+    slug: "what-is-inflation",
+    title: "What Is Inflation and How Does It Affect Your Savings?",
+    Icon: "TrendingDown",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Silent Thief of Your Savings</h3>
+      <p>Have you ever noticed that the same amount of money buys you less than it did a few years ago? That's inflation in action. It's a fundamental economic concept that quietly erodes the value of your hard-earned money over time. Understanding it is the first step toward protecting your financial future.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is Inflation?</h4>
+      <p>Inflation is the rate at which the general level of prices for goods and services is rising, and subsequently, the purchasing power of currency is falling. In simple terms, your dollar tomorrow will buy less than your dollar today.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. How is it Measured?</h4>
+      <p>Inflation is typically measured by the Consumer Price Index (CPI), which tracks the average change in prices paid by urban consumers for a basket of consumer goods and services, including food, transportation, and medical care.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. The Impact on Your Savings</h4>
+      <p>If your savings are sitting in a low-interest bank account, inflation is effectively making you poorer. For example, if you have $10,000 in savings and the annual inflation rate is 3%, your money will only have the purchasing power of $9,700 in one year's time. To build real wealth, your investments must generate a return that is higher than the rate of inflation.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Real-World Example</h4>
+      <p>If you have $100,000 saved for retirement and inflation averages 3% per year, in 20 years that $100,000 will only be able to buy what about $55,367 buys today. This is why investing is crucial for long-term goals.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/finance/inflation-calculator" class="text-primary underline">Inflation Calculator</a></li>
+        <li><a href="/category/finance/real-rate-of-return-calculator" class="text-primary underline">Real Rate of Return Calculator</a></li>
+        <li><a href="/category/finance/compound-interest-calculator" class="text-primary underline">Compound Interest Calculator</a></li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">6. FAQs</h4>
+      <p class="font-semibold">Is inflation always bad?</p>
+      <p>A small, steady amount of inflation (around 2%) is generally considered a sign of a healthy, growing economy. It's high, unpredictable inflation that is damaging to savings and economic stability.</p>
+    `
   }
 ];
 
