@@ -36,6 +36,7 @@ import {
   ArrowRightLeft,
   Percent,
   Bone,
+  User,
 } from 'lucide-react';
 
 export interface Category {
@@ -81,6 +82,7 @@ export const icons: {[key: string]: LucideIcon} = {
   ArrowRightLeft,
   Percent,
   Bone,
+  User,
 };
 
 export const categories: Category[] = [
@@ -205,5 +207,3 @@ export const categories: Category[] = [
     Icon: 'Gamepad2',
   },
 ];
-
-    

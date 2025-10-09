@@ -273,6 +273,45 @@ export const articles: LearningHubArticle[] = [
       <h4 class="font-semibold mt-6 mb-2 text-lg">4. Practical Application</h4>
       <p>Once you know your TDEE (e.g., 2,200 calories), you can use it as a daily target. Tracking your food intake for a week or two using a calorie-counting app can give you a clear idea of your current consumption and help you adjust to meet your maintenance goal. Remember that this is an estimate; you may need to adjust your intake slightly based on how your weight responds over several weeks.</p>
     `
+  },
+  {
+    slug: "what-is-body-fat-percentage",
+    title: "What Is a Healthy Body Fat Percentage for Men and Women?",
+    Icon: "User",
+    chartComponent: "BfpChart",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Beyond the Scale: Understanding Body Fat Percentage</h3>
+      <p>While Body Mass Index (BMI) is a common starting point for assessing weight, it doesn't tell the whole story because it can't distinguish between fat and muscle. Body Fat Percentage (BFP) provides a more accurate and insightful look into your body composition and overall health.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is Body Fat Percentage?</h4>
+      <p>Body Fat Percentage is the proportion of your total body weight that is fat. The remaining percentage is your lean body mass, which includes muscle, bones, organs, and water. A certain amount of fat is essential for your body to function—it regulates body temperature, cushions organs, and is a primary source of energy.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Why is BFP a Better Metric Than BMI?</h4>
+      <p>BMI can be misleading for certain individuals. For example, a bodybuilder with a large amount of muscle mass might have a high BMI that classifies them as "overweight" or "obese," even with very low body fat. Conversely, an older adult with low muscle mass might have a "normal" BMI but a high body fat percentage, which still carries health risks. BFP provides a clearer picture of your actual body composition.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Healthy Body Fat Percentage Ranges</h4>
+      <p>Healthy ranges differ significantly between men and women due to physiological differences, including hormones and body composition related to childbearing.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. How to Measure Body Fat</h4>
+      <p>There are several methods, with varying accuracy and cost:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Skinfold Calipers:</strong> Measures the thickness of subcutaneous fat at several sites on the body. It is affordable but requires skill to be accurate.</li>
+        <li><strong>Bioelectrical Impedance Analysis (BIA):</strong> Found in many modern bathroom scales, it sends a harmless electrical current through the body. Accuracy can be affected by hydration levels.</li>
+        <li><strong>U.S. Navy Method:</strong> Uses body circumference measurements (neck, waist, and hips for women). Our <a href="/category/health-fitness/body-fat-percentage-calculator" class="text-primary underline">Body Fat Percentage Calculator</a> uses this method.</li>
+        <li><strong>DEXA Scan:</strong> Dual-Energy X-ray Absorptiometry is considered a gold standard. It provides a detailed breakdown of bone mass, fat mass, and lean mass.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/health-fitness/body-fat-percentage-calculator" class="text-primary underline">Body Fat Percentage Calculator</a></li>
+        <li><a href="/category/health-fitness/bmi-calculator" class="text-primary underline">BMI Calculator</a></li>
+        <li><a href="/category/health-fitness/lean-body-mass-calculator" class="text-primary underline">Lean Body Mass Calculator</a></li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">6. FAQs</h4>
+      <p class="font-semibold">Is a lower body fat percentage always better?</p>
+      <p>No. Dropping below essential fat levels can be dangerous and lead to serious health problems, including organ failure and hormonal disruptions. It's about finding a healthy, sustainable range for your body and lifestyle.</p>
+    `
   }
 ];
 
