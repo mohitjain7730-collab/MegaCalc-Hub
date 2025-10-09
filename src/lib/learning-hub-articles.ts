@@ -588,7 +588,7 @@ export const articles: LearningHubArticle[] = [
     `
   },
   {
-    slug: "steps-to-burn-500-calories",
+    slug: "how-to-burn-500-calories-with-steps",
     title: "How Many Steps Do You Need to Burn 500 Calories?",
     Icon: "Flame",
     content: `
@@ -688,7 +688,182 @@ export const articles: LearningHubArticle[] = [
         <li><a href="/category/finance/real-rate-of-return-calculator" class="text-primary underline">Real Rate of Return Calculator</a></li>
       </ul>
     `
+  },
+  {
+    slug: "how-to-calculate-monthly-budget",
+    title: "How to Calculate Your Monthly Budget Effectively",
+    Icon: "PiggyBank",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Mastering Your Money: A Simple Guide to Creating a Monthly Budget</h3>
+      <p>A budget is the single most powerful tool for taking control of your financial life. It's not about restriction; it's about awareness. A budget is simply a plan for your money. It helps you understand where your money is going, make intentional decisions about your spending, and achieve your financial goals faster.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. Step One: Calculate Your Monthly Income</h4>
+      <p>The first step is to know exactly how much money you have coming in each month. This is your total after-tax income (your "take-home pay"). If your income is irregular, look at your bank statements for the past 3-6 months and calculate a conservative monthly average.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Step Two: Track Your Expenses</h4>
+      <p>This is the most eye-opening part. For one month, track every single dollar you spend. Use a notebook, a spreadsheet, or a budgeting app. Group your expenses into categories:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Fixed Expenses:</strong> These are the costs that are the same every month, like rent/mortgage, car payments, and insurance premiums.</li>
+        <li><strong>Variable Expenses:</strong> These costs change each month, like groceries, gasoline, and utilities.</li>
+        <li><strong>Discretionary Spending:</strong> These are "wants," not "needs," such as dining out, entertainment, and shopping.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Step Three: Analyze and Create Your Plan</h4>
+      <p>At the end of the month, subtract your total expenses from your total income. The result is your monthly surplus or deficit.</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Income - Expenses = Surplus (or Deficit)</p>
+      <p>If you have a surplus, great! You can allocate that extra money toward your financial goals (like paying off debt or investing). If you have a deficit, it's time to review your "Wants" and find areas where you can cut back. A popular framework for allocating your income is the 50/30/20 rule.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/personal-budgeting/monthly-budget-surplus-deficit-calculator" class="text-primary underline">Monthly Budget Surplus/Deficit Calculator</a></li>
+        <li><a href="/category/personal-budgeting/50-30-20-budget-calculator" class="text-primary underline">50/30/20 Budget Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "what-is-net-worth",
+    title: "What Is Net Worth and How to Calculate It?",
+    Icon: "DollarSign",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Your Financial Report Card: Understanding Net Worth</h3>
+      <p>Your net worth is the single most important metric for tracking your financial health. It provides a clear, high-level snapshot of your financial position at a single point in time. Simply put, it's the answer to the question: "If I sold everything I own and paid off all my debts, what would I have left?"</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. The Net Worth Formula</h4>
+      <p>The calculation is straightforward:</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Assets - Liabilities = Net Worth</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. What are Assets? (What you OWN)</h4>
+      <p>An asset is anything you own that has monetary value. Common assets include:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Cash (checking, savings accounts)</li>
+        <li>Investments (stocks, bonds, 401(k)s, IRAs)</li>
+        <li>Real Estate (the market value of your home)</li>
+        <li>Vehicles (the current resale value)</li>
+        <li>Valuable personal property (jewelry, art)</li>
+      </ul>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. What are Liabilities? (What you OWE)</h4>
+      <p>A liability is any debt you have. Common liabilities include:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Mortgage balance</li>
+        <li>Car loan balance</li>
+        <li>Student loan debt</li>
+        <li>Credit card debt</li>
+        <li>Personal loans</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Why It Matters</h4>
+      <p>Tracking your net worth over time is more important than tracking your income. A high income with high expenses doesn't build wealth. A growing net worth, on the other hand, is the truest indicator of financial progress. It shows that you are accumulating assets and/or paying down debt, both of which are essential for long-term financial security.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/finance/net-worth-calculator" class="text-primary underline">Net Worth Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "how-to-determine-target-heart-rate",
+    title: "How to Determine Your Target Heart Rate for Exercise",
+    Icon: "HeartPulse",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Finding Your Zone: A Guide to Target Heart Rate</h3>
+      <p>To get the most out of your cardiovascular exercise, it's important to work at the right intensity. Your heart rate is one of the best indicators of how hard your body is working. A target heart rate zone is a range, in beats per minute (bpm), that helps you maximize the benefits of your workout, whether your goal is fat loss or improving cardiovascular fitness.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. Estimate Your Maximum Heart Rate (MHR)</h4>
+      <p>The first step is to estimate your MHR. While the most accurate way is a medically supervised stress test, a widely used and simple formula is:</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">220 - Your Age = Estimated MHR</p>
+      <p>For example, for a 40-year-old, the estimated MHR would be 220 - 40 = 180 bpm.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. The Target Heart Rate Zones</h4>
+      <p>Exercise intensity is often categorized into zones based on a percentage of your MHR:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Moderate Intensity Zone (50-70% of MHR):</strong> This is the ideal zone for general health benefits and fat burning. In this zone, you should be able to hold a conversation while exercising.</li>
+        <li><strong>Vigorous Intensity Zone (70-85% of MHR):</strong> This zone is for improving cardiovascular fitness and performance. It will feel challenging, and you'll be breathing too hard to speak in full sentences.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Example Calculation</h4>
+      <p>For our 40-year-old with an MHR of 180 bpm:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Moderate Zone:</strong> 180 * 0.50 to 180 * 0.70 = 90 to 126 bpm</li>
+        <li><strong>Vigorous Zone:</strong> 180 * 0.70 to 180 * 0.85 = 126 to 153 bpm</li>
+      </ul>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. The Karvonen Method (For a More Personalized Calculation)</h4>
+      <p>A more advanced formula, the Karvonen method, also incorporates your resting heart rate (RHR). It calculates your Heart Rate Reserve (HRR = MHR - RHR) and can provide a more accurate target zone, especially for very fit individuals. Our calculator can do this for you.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/health-fitness/target-heart-rate-calculator" class="text-primary underline">Target Heart Rate Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "how-to-use-mortgage-calculator",
+    title: "How to Use a Mortgage Calculator to Plan Home Loans",
+    Icon: "Home",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Demystifying Your Biggest Purchase: How a Mortgage Calculator Helps</h3>
+      <p>A mortgage is likely the largest loan you will ever take. Understanding your monthly payment is the first step toward responsible homeownership. A mortgage calculator is an essential tool that breaks down the complex loan formula into a simple, understandable number: your monthly payment.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. The Key Inputs</h4>
+      <p>A mortgage calculator requires three main pieces of information:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Loan Amount:</strong> The total amount you are borrowing (the home price minus your down payment).</li>
+        <li><strong>Annual Interest Rate:</strong> The rate quoted by your lender.</li>
+        <li><strong>Loan Term:</strong> The length of the loan, typically 15 or 30 years.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. What the Calculator Tells You</h4>
+      <p>By inputting these values, the calculator will tell you:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Your Monthly Payment (Principal & Interest):</strong> This is the core P+I payment that will remain fixed for the life of a fixed-rate loan. Note that your total monthly housing payment will also include property taxes and homeowners insurance (PITI).</li>
+        <li><strong>Total Interest Paid:</strong> This eye-opening number shows you the total cost of borrowing the money over the entire loan term. Often, it can be more than the loan amount itself!</li>
+        <li><strong>Amortization Schedule:</strong> A detailed, year-by-year breakdown showing how each payment is split between principal and interest, and how your loan balance decreases over time.</li>
+      </ul>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. How It Empowers You</h4>
+      <p>Using a mortgage calculator allows you to experiment with different scenarios. You can see how a slightly higher down payment reduces your monthly payment, how a 15-year term saves you a massive amount in interest compared to a 30-year term, or how a small change in the interest rate can affect your total cost over decades. This knowledge allows you to make an informed decision when choosing a loan that fits your budget and long-term financial goals.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/finance/mortgage-payment-calculator" class="text-primary underline">Mortgage Payment Calculator</a></li>
+        <li><a href="/category/finance/loan-emi-calculator" class="text-primary underline">Loan/EMI Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "what-is-50-30-20-budget-rule",
+    title: "What Is the 50/30/20 Budget Rule and How Does It Work?",
+    Icon: "PiggyBank",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">A Simple Framework for Your Finances: The 50/30/20 Rule</h3>
+      <p>Budgeting can feel complicated, but it doesn't have to be. The 50/30/20 rule is a popular and straightforward guideline for managing your money that provides a simple framework for allocating your after-tax income.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. The Three Categories</h4>
+      <p>The rule divides your take-home pay into three main categories:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>50% for Needs:</strong> These are your essential expenses—the things you must pay to live. This category includes housing (rent/mortgage), utilities, groceries, transportation, insurance, and minimum debt payments.</li>
+        <li><strong>30% for Wants:</strong> These are your non-essential, lifestyle expenses. This includes dining out, entertainment, hobbies, vacations, and any shopping that isn't for essential items.</li>
+        <li><strong>20% for Savings & Debt Repayment:</strong> This crucial category is for building your financial future. It includes saving for retirement (e.g., 401(k) contributions), building an emergency fund, and paying off debt beyond the minimum payments (like extra payments on student loans or credit cards).</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. How to Apply It</h4>
+      <p>To start, calculate your monthly after-tax income. Then, multiply that amount by 0.50, 0.30, and 0.20 to get your spending targets for each category.</p>
+      <p>For example, if your monthly take-home pay is $4,000:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Needs:</strong> $4,000 × 0.50 = $2,000</li>
+        <li><strong>Wants:</strong> $4,000 × 0.30 = $1,200</li>
+        <li><strong>Savings:</strong> $4,000 × 0.20 = $800</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Flexibility is Key</h4>
+      <p>The 50/30/20 rule is a guideline, not a strict law. If you live in a high-cost-of-living area, your "Needs" might take up 60% of your income. In that case, you might need to reduce your "Wants" category to 20% to ensure you can still meet your 20% savings goal. The most important part of the rule is to prioritize saving at least 20% of your income.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/personal-budgeting/50-30-20-budget-calculator" class="text-primary underline">50/30/20 Budget Calculator</a></li>
+        <li><a href="/category/personal-budgeting/monthly-budget-surplus-deficit-calculator" class="text-primary underline">Monthly Budget Surplus/Deficit Calculator</a></li>
+      </ul>
+    `
   }
 ];
-
-    
