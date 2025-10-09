@@ -242,6 +242,38 @@ export const articles: LearningHubArticle[] = [
       <p>No, you don't have to count calories meticulously. However, being mindful of portion sizes and choosing nutrient-dense, lower-calorie foods naturally helps create a deficit. Calorie counting is simply a tool to make this process more precise.</p>
     `
   },
+  {
+    slug: "how-to-maintain-weight",
+    title: "How Many Calories Should You Eat to Maintain Your Weight?",
+    Icon: "HeartPulse",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Finding Your Body's Equilibrium</h3>
+      <p>Weight management isn't just about losing or gaining; it's also about maintaining a healthy weight where you feel your best. The key to this stability is understanding your body's energy balance. Consuming the right number of calories to match the energy you expend is the cornerstone of weight maintenance.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. The Principle of Energy Balance</h4>
+      <p>Your body weight is regulated by the simple principle of "Calories In vs. Calories Out." To maintain your weight, the calories you consume must equal the calories your body burns.</p>
+       <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Calories In = Calories Out = Weight Maintenance</p>
+       <p>The "Calories Out" part of the equation is your Total Daily Energy Expenditure (TDEE).</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. What is TDEE?</h4>
+      <p>TDEE is the total number of calories your body burns in a 24-hour period. It's composed of two main parts:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Basal Metabolic Rate (BMR):</strong> The energy your body uses at complete rest to perform vital functions like breathing, circulating blood, and maintaining body temperature. This accounts for the majority of your daily calorie burn.</li>
+        <li><strong>Activity Level:</strong> This includes everything from walking to the kitchen to intense exercise. The more active you are, the higher your TDEE.</li>
+      </ul>
+      <p>To maintain your weight, your goal is to eat an amount of calories that is approximately equal to your TDEE.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Calculating Your Maintenance Calories</h4>
+      <p>The most reliable way to determine your TDEE is by using a calculator that incorporates the Mifflin-St Jeor equation for BMR and then applies an activity multiplier. Our calculators can help with this:</p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>First, find your BMR with the <a href="/category/health-fitness/bmr-calculator" class="text-primary underline">BMR Calculator</a>.</li>
+        <li>Then, use that BMR value in the <a href="/category/health-fitness/daily-calorie-needs-calculator" class="text-primary underline">Daily Calorie Needs (TDEE) Calculator</a> to find your maintenance calories.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Practical Application</h4>
+      <p>Once you know your TDEE (e.g., 2,200 calories), you can use it as a daily target. Tracking your food intake for a week or two using a calorie-counting app can give you a clear idea of your current consumption and help you adjust to meet your maintenance goal. Remember that this is an estimate; you may need to adjust your intake slightly based on how your weight responds over several weeks.</p>
+    `
+  }
 ];
 
     
