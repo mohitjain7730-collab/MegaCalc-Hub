@@ -44,15 +44,15 @@ export default function RootLayout({
           >
             <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
               <div className="container flex h-14 items-center">
-                <Link href="/" className="flex items-center gap-2 font-bold mr-6">
+                <Link href="/" className="flex items-center gap-2 font-bold mr-4">
                   <Calculator className="h-6 w-6 text-primary" />
-                  <span className="text-lg">Mycalculating.com</span>
+                  <span className="hidden sm:inline-block text-lg">Mycalculating.com</span>
                 </Link>
-                <div className="ml-auto flex items-center gap-4">
-                  <Button asChild variant="ghost">
+                <div className="ml-auto flex items-center gap-2 sm:gap-4">
+                  <Button asChild variant="ghost" className="px-2 sm:px-4">
                     <Link href="/learning-hub">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Learning Hub
+                      <BookOpen className="h-4 w-4 sm:mr-2" />
+                      <span className="hidden sm:inline-block">Learning Hub</span>
                     </Link>
                   </Button>
                   <ThemeToggle />
