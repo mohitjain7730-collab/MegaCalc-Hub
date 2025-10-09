@@ -328,9 +328,9 @@ export const articles: LearningHubArticle[] = [
       <p>Inflation is typically measured by the Consumer Price Index (CPI), which tracks the average change in prices paid by urban consumers for a basket of consumer goods and services, including food, transportation, and medical care.</p>
 
       <h4 class="font-semibold mt-6 mb-2 text-lg">3. The Impact on Your Savings</h4>
-      <p>If your savings are sitting in a low-interest bank account, inflation is effectively making you poorer. For example, if you have $10,000 in savings and the annual inflation rate is 3%, your money will only have the purchasing power of $9,700 in one year's time. To build real wealth, your investments must generate a return that is higher than the rate of inflation.</p>
+      <p>If your savings are sitting in a low-interest bank account, inflation is effectively making you poorer. For example, if you have $10,000 in savings and the annual inflation rate is 3%, your money will only have the purchasing power of $9,700 in one year's time. To build real wealth, your investments must generate a return that is higher than the rate of inflation. This is known as achieving a "real return." If your investments earn 7% and inflation is 3%, your real return is approximately 4%, meaning your purchasing power is growing.</p>
       
-      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Real-World Example</h4>
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. A Concrete Example</h4>
       <p>If you have $100,000 saved for retirement and inflation averages 3% per year, in 20 years that $100,000 will only be able to buy what about $55,367 buys today. This is why investing is crucial for long-term goals.</p>
 
       <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
@@ -339,10 +339,6 @@ export const articles: LearningHubArticle[] = [
         <li><a href="/category/finance/real-rate-of-return-calculator" class="text-primary underline">Real Rate of Return Calculator</a></li>
         <li><a href="/category/finance/compound-interest-calculator" class="text-primary underline">Compound Interest Calculator</a></li>
       </ul>
-
-      <h4 class="font-semibold mt-6 mb-2 text-lg">6. FAQs</h4>
-      <p class="font-semibold">Is inflation always bad?</p>
-      <p>A small, steady amount of inflation (around 2%) is generally considered a sign of a healthy, growing economy. It's high, unpredictable inflation that is damaging to savings and economic stability.</p>
     `
   },
   {
@@ -375,7 +371,7 @@ export const articles: LearningHubArticle[] = [
         <p>The right choice depends on your financial situation and goals:</p>
         <ul class="list-disc list-inside mt-2 space-y-2">
             <li><strong>Choose a shorter tenure if:</strong> You have a stable, high income and can comfortably afford the higher monthly payments. Your priority is to save on total interest and become debt-free as quickly as possible.</li>
-            <li><strong>Choose a longer tenure if:</strong> You need a lower, more affordable monthly payment to fit your budget. This frees up cash for other important goals, like investing in retirement accounts or building an emergency fund. You can always make extra payments to pay the loan off faster if your income increases.</li>
+            <li><strong>Choose a longer tenure if:</strong> You need a lower, more affordable monthly payment to fit your budget. This frees up cash flow for other important goals, like investing in retirement accounts or building an emergency fund. You can always make extra payments to pay the loan off faster if your income increases.</li>
         </ul>
 
         <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
@@ -454,7 +450,7 @@ export const articles: LearningHubArticle[] = [
     content: `
       <h3 class="text-xl font-semibold mb-2">The Ultimate Hydration Guide: How Much Water Should You Really Be Drinking?</h3>
       <p>You’ve heard it a million times: "Drink more water." It’s one of the simplest and most effective things you can do for your health. Proper hydration is critical for everything from brain function and energy levels to skin health and digestion. But how much is enough? The old "eight glasses a day" rule is a good start, but it’s not a one-size-fits-all solution.</p>
-
+      
       <h4 class="font-semibold mt-6 mb-2 text-lg">1. Why Hydration is Crucial</h4>
       <p>Your body is about 60% water, and it relies on this water for a huge range of functions:</p>
       <ul class="list-disc list-inside mt-2 space-y-2">
@@ -525,5 +521,174 @@ export const articles: LearningHubArticle[] = [
         <li><a href="/category/finance/mortgage-payment-calculator" class="text-primary underline">Mortgage Payment Calculator</a></li>
       </ul>
     `
+  },
+  {
+    slug: "how-to-calculate-retirement-corpus",
+    title: "How to Calculate Your Ideal Retirement Corpus",
+    Icon: "Landmark",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Ultimate Goal: Calculating Your Retirement Number</h3>
+      <p>Retirement planning can feel abstract. How much money do you actually need to stop working comfortably? The "Retirement Corpus" or "Retirement Nest Egg" is the total sum of money you need to have saved by retirement day. This calculator helps you estimate this crucial number using the 4% Rule, a widely respected guideline in financial planning.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. The 4% Rule Explained</h4>
+      <p>The 4% Rule states that you can safely withdraw 4% of your total retirement savings in your first year of retirement, and then adjust that amount for inflation each following year, with a very high probability that your money will last for at least 30 years. It provides a simple yet powerful framework for determining your retirement goal.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. The "Multiply by 25" Shortcut</h4>
+      <p>A simple way to apply the 4% rule is to work backward. If you can withdraw 4% each year, that means your total nest egg needs to be 25 times your desired annual withdrawal (since 1 / 0.04 = 25).</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Retirement Corpus = Desired Annual Income × 25</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Example Calculation</h4>
+      <p>Imagine you estimate that you will need $80,000 per year to live comfortably in retirement. Using the formula:</p>
+      <p class="mt-2 text-base">$80,000 (Annual Income) × 25 = $2,000,000 (Retirement Corpus)</p>
+      <p>This means your retirement savings goal would be $2 million.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Important Considerations</h4>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Inflation:</strong> Your annual income needs will be higher in the future due to inflation. You should estimate your retirement expenses in today's dollars and then adjust for inflation.</li>
+        <li><strong>Social Security & Pensions:</strong> Subtract any expected income from Social Security or pensions from your desired annual income before multiplying by 25. For example, if you need $80,000 but expect $30,000 from Social Security, you only need your portfolio to generate $50,000 per year ($50,000 x 25 = $1.25 million goal).</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/finance/retirement-savings-calculator" class="text-primary underline">Retirement Savings Calculator</a></li>
+        <li><a href="/category/finance/inflation-calculator" class="text-primary underline">Inflation Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "simple-vs-compound-interest",
+    title: "What Is the Difference Between Simple and Compound Interest?",
+    Icon: "PiggyBank",
+    chartComponent: "CompoundInterestChart",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Simple vs. Compound Interest: The Key to Wealth</h3>
+      <p>Understanding the difference between simple and compound interest is fundamental to personal finance. One builds wealth linearly, while the other builds it exponentially. The choice between them can mean the difference of hundreds of thousands of dollars over a lifetime.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. Simple Interest</h4>
+      <p><strong>Simple interest</strong> is calculated only on the original amount of money (the principal). The interest earned each period does not get added back to the principal, so you earn the exact same amount of interest every single time.</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Interest = Principal × Rate × Time</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Compound Interest</h4>
+      <p><strong>Compound interest</strong> is "interest on interest." At the end of each compounding period, the interest earned is added to the principal, forming a new, larger principal for the next period. This causes your investment to grow at an accelerating rate.</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Future Value = Principal × (1 + Rate)^Time</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. The Difference in Action</h4>
+      <p>As the chart below shows, if you invest $1,000 at a 10% annual rate, the difference is small at first. After 5 years, the compound investment is only worth about $1,100 more. But after 30 years, the compound investment is worth over $130,000 more than the simple interest investment. This is the "snowball effect" of compounding.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Where They Are Used</h4>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Simple Interest:</strong> Rarely used for long-term investments. Sometimes used for short-term loans like auto loans.</li>
+        <li><strong>Compound Interest:</strong> The standard for almost all modern investments, including savings accounts, retirement funds (401k, IRA), and stock market returns.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/finance/compound-interest-calculator" class="text-primary underline">Compound Interest Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "steps-to-burn-500-calories",
+    title: "How Many Steps Do You Need to Burn 500 Calories?",
+    Icon: "Flame",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Walking Your Way to a Calorie Deficit</h3>
+      <p>Burning an extra 500 calories per day is a common goal for weight loss, as it can lead to about one pound of fat loss per week. Walking is one of the most accessible ways to achieve this, but how many steps does it actually take?</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. The Basic Formula</h4>
+      <p>The number of calories burned while walking depends heavily on your body weight and the distance covered. A widely used, simple estimation is:</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Calories Burned Per Mile ≈ 0.57 × Body Weight (in lbs)</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Putting it into Steps</h4>
+      <p>The average person has a stride length of about 2.1 to 2.5 feet. This means it takes approximately <strong>2,000 to 2,200 steps to walk one mile</strong>. For simplicity, we'll use 2,100 steps per mile.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Example Calculation</h4>
+      <p>Let's calculate for a <strong>160-pound person</strong>:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Calories burned per mile:</strong> 0.57 × 160 = 91.2 calories</li>
+        <li><strong>Miles needed to burn 500 calories:</strong> 500 / 91.2 ≈ 5.5 miles</li>
+        <li><strong>Total steps needed:</strong> 5.5 miles × 2,100 steps/mile ≈ <strong>11,550 steps</strong></li>
+      </ul>
+      <p>For a <strong>200-pound person</strong>:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Calories burned per mile:</strong> 0.57 × 200 = 114 calories</li>
+        <li><strong>Miles needed to burn 500 calories:</strong> 500 / 114 ≈ 4.4 miles</li>
+        <li><strong>Total steps needed:</strong> 4.4 miles × 2,100 steps/mile ≈ <strong>9,240 steps</strong></li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Key Takeaways</h4>
+      <p>As you can see, the number of steps varies significantly with body weight. A heavier person burns more calories per step and therefore needs fewer steps to reach the 500-calorie goal. Remember, these are estimates. Factors like walking speed, terrain, and individual metabolism will also affect the final number.</p>
+    `
+  },
+  {
+    slug: "how-to-estimate-protein-requirements",
+    title: "How to Estimate Your Daily Protein Requirements",
+    Icon: "Utensils",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Fueling Your Body: A Guide to Daily Protein Needs</h3>
+      <p>Protein is a critical macronutrient essential for building and repairing tissues, making enzymes and hormones, and supporting immune function. But how much do you actually need? The answer isn't one-size-fits-all; it depends heavily on your age, body weight, and activity level.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. The Standard Guideline: Grams per Kilogram</h4>
+      <p>Protein recommendations are typically given in grams per kilogram (g/kg) of body weight per day.</p>
+      <p class="mt-2 text-base">To find your weight in kg, divide your weight in pounds by 2.2.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Protein Needs by Goal and Activity Level</h4>
+      <p>Here are the commonly accepted ranges:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Sedentary Adults:</strong> The Recommended Dietary Allowance (RDA) is <strong>0.8 g/kg</strong>. This is the minimum to prevent deficiency.</li>
+        <li><strong>Recreational Exercisers:</strong> If you're lightly to moderately active, aim for <strong>1.2 to 1.6 g/kg</strong> to support muscle repair and maintenance.</li>
+        <li><strong>Muscle Building (Strength Training):</strong> To maximize muscle protein synthesis, the evidence-based range is <strong>1.6 to 2.2 g/kg</strong>.</li>
+        <li><strong>Endurance Athletes:</strong> Those engaged in prolonged aerobic activity may need <strong>1.2 to 1.6 g/kg</strong> to repair muscle damage and replenish energy stores.</li>
+        <li><strong>Fat Loss:</strong> When in a calorie deficit, a higher protein intake of <strong>1.6 to 2.2 g/kg</strong> is crucial for preserving lean muscle mass and promoting satiety.</li>
+      </ul>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Example Calculation</h4>
+      <p>Let's take a <strong>180 lb person (81.8 kg)</strong> who is trying to build muscle:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Low End:</strong> 81.8 kg × 1.6 g/kg = <strong>131 g of protein per day</strong></li>
+        <li><strong>High End:</strong> 81.8 kg × 2.2 g/kg = <strong>180 g of protein per day</strong></li>
+      </ul>
+      <p>Their target range would be 131-180 grams of protein per day, distributed across their meals.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/health-fitness/protein-intake-calculator" class="text-primary underline">Protein Intake Calculator</a></li>
+        <li><a href="/category/health-fitness/macro-ratio-calculator" class="text-primary underline">Macro Ratio Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "how-inflation-reduces-money-value",
+    title: "How Does Inflation Reduce the Value of Money Over Time?",
+    Icon: "TrendingDown",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Shrinking Dollar: How Inflation Erodes Your Purchasing Power</h3>
+      <p>Inflation is one of the most powerful—and often misunderstood—forces in personal finance. It's the silent process that makes your money less valuable over time. While the number on a dollar bill never changes, what that dollar can buy does. Understanding this concept is essential for effective long-term financial planning.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is Purchasing Power?</h4>
+      <p>Purchasing power is the value of a currency expressed in terms of the amount of goods or services that one unit of money can buy. Inflation directly erodes purchasing power.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. The Mechanics of Inflation's Impact</h4>
+      <p>The calculation for the future value of money, adjusted for inflation, uses the formula for present value:</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Future Value = Present Amount / (1 + Inflation Rate)^Number of Years</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. A Concrete Example</h4>
+      <p>Let's say you have <strong>$100,000</strong> today, and you want to know what it will be worth in <strong>20 years</strong>, assuming an average annual inflation rate of <strong>3%</strong>.</p>
+      <p class="mt-2 text-base">Future Value = $100,000 / (1 + 0.03)²⁰</p>
+      <p class="mt-1 text-base">Future Value = $100,000 / 1.806</p>
+      <p class="mt-1 text-base">Future Value ≈ $55,367</p>
+      <p class="mt-2 text-base">This means that in 20 years, your $100,000 will only be able to buy the same amount of goods and services that <strong>$55,367</strong> can buy today. Your money's purchasing power has been nearly cut in half.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Why This Matters for Savings and Retirement</h4>
+      <p>This calculation highlights why simply saving cash is not enough for long-term goals. To grow your wealth, your money must be invested in assets that are expected to generate a rate of return <strong>higher</strong> than the rate of inflation. This is known as achieving a "real return." If your investments earn 7% and inflation is 3%, your real return is approximately 4%, meaning your purchasing power is growing.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/finance/inflation-calculator" class="text-primary underline">Inflation Calculator</a></li>
+        <li><a href="/category/finance/real-rate-of-return-calculator" class="text-primary underline">Real Rate of Return Calculator</a></li>
+      </ul>
+    `
   }
 ];
+
+    
