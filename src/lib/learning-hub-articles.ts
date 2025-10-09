@@ -446,5 +446,46 @@ export const articles: LearningHubArticle[] = [
         <li><a href="/category/finance/retirement-savings-calculator" class="text-primary underline">Retirement Savings Calculator</a></li>
       </ul>
     `
+  },
+  {
+    slug: "how-to-measure-water-intake",
+    title: "How to Measure Your Daily Water Intake for Optimal Hydration",
+    Icon: "Droplets",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Ultimate Hydration Guide: How Much Water Should You Really Be Drinking?</h3>
+      <p>You’ve heard it a million times: "Drink more water." It’s one of the simplest and most effective things you can do for your health. Proper hydration is critical for everything from brain function and energy levels to skin health and digestion. But how much is enough? The old "eight glasses a day" rule is a good start, but it’s not a one-size-fits-all solution.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. Why Hydration is Crucial</h4>
+      <p>Your body is about 60% water, and it relies on this water for a huge range of functions:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Regulating Body Temperature:</strong> Sweating cools you down.</li>
+        <li><strong>Transporting Nutrients:</strong> Water carries nutrients and oxygen to your cells.</li>
+        <li><strong>Flushing Waste:</strong> It helps your kidneys filter waste from your blood and excrete it in urine.</li>
+        <li><strong>Cognitive Function:</strong> Even mild dehydration can impair concentration, alertness, and short-term memory.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Calculating Your Baseline Water Needs</h4>
+      <p>A good starting point for your daily water intake is based on your body weight. A common formula used by health professionals is:</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Daily Intake (in ml) = Body Weight (in kg) × 35</p>
+      <p>For example, a 70 kg (154 lb) person would have a baseline need of approximately 2,450 ml (about 2.5 liters) per day.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Adjusting for Activity and Climate</h4>
+      <p>Your baseline need is just the start. You need to drink more water to compensate for fluid lost through sweat.</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Exercise:</strong> A general guideline is to add about 350 ml (12 oz) of water for every 30 minutes of moderate exercise.</li>
+        <li><strong>Hot Climate:</strong> In hot or humid weather, your sweat rate increases, so your water needs will be higher than on a cool day.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. How to Use the Hydration Calculator</h4>
+      <p>Our <a href="/category/health-fitness/hydration-needs-calculator" class="text-primary underline">Hydration Needs Calculator</a> simplifies this process. By entering your weight and daily exercise duration, it provides a personalized daily water intake goal, helping you stay properly hydrated for your specific needs.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. FAQs</h4>
+      <p class="font-semibold">Do other drinks count towards hydration?</p>
+      <p>Yes, beverages like milk, juice, and herbal teas contribute to your fluid intake. Even caffeinated drinks like coffee and tea can contribute, though they have a mild diuretic effect. However, plain water is the best source of hydration as it is calorie-free and sugar-free.</p>
+      <p class="font-semibold mt-2">How can I tell if I'm dehydrated?</p>
+      <p>The simplest way is to check the color of your urine. Pale, straw-colored urine is a good sign of hydration. Dark yellow or amber-colored urine usually indicates you need to drink more water. Thirst is also a key indicator, but by the time you feel thirsty, you are often already slightly dehydrated.</p>
+    `
   }
 ];
+
+    
