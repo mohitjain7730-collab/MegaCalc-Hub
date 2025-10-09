@@ -384,7 +384,33 @@ export const articles: LearningHubArticle[] = [
             <li><a href="/category/finance/mortgage-payment-calculator" class="text-primary underline">Mortgage Payment Calculator</a></li>
         </ul>
     `
+  },
+  {
+    slug: "what-is-bmr",
+    title: "What Is BMR and Why Is It Important for Weight Management?",
+    Icon: "Flame",
+    chartComponent: "BmrTdeeChart",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Your Body's Engine: An Introduction to BMR</h3>
+      <p>Your Basal Metabolic Rate (BMR) is the number of calories your body needs to perform its most basic, life-sustaining functions at rest. Think of it as the energy your body would burn if you stayed in bed all day. Understanding your BMR is the first and most critical step in setting accurate goals for weight loss, gain, or maintenance.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. Definition: BMR vs. TDEE</h4>
+      <p>While BMR is the energy burned at rest, your Total Daily Energy Expenditure (TDEE) is the total calories you burn in a day, including all physical activity. TDEE is calculated by multiplying your BMR by an activity factor.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. The Mifflin-St Jeor Equation</h4>
+      <p>This calculator uses the Mifflin-St Jeor equation, widely regarded as one of the most accurate methods for estimating BMR:</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">BMR (men) = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) + 5</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">BMR (women) = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) - 161</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Why BMR Matters for Weight Management</h4>
+      <p>Knowing your BMR helps you create a precise calorie target. To lose weight, you must consume fewer calories than your TDEE. To gain weight, you must consume more. Your BMR provides the baseline for this calculation, making your diet plan more effective.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/health-fitness/bmr-calculator" class="text-primary underline">BMR Calculator</a></li>
+        <li><a href="/category/health-fitness/daily-calorie-needs-calculator" class="text-primary underline">Daily Calorie Needs (TDEE) Calculator</a></li>
+        <li><a href="/category/health-fitness/calorie-deficit-calculator" class="text-primary underline">Calorie Deficit Calculator</a></li>
+      </ul>
+    `
   }
 ];
-
-    

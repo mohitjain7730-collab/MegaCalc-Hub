@@ -11,6 +11,7 @@ import { AprVsApyChart } from '@/components/learning-hub/charts/apr-vs-apy-chart
 import { NewtonsSecondLawChart } from '@/components/learning-hub/charts/newtons-second-law-chart';
 import { PressureUnitsChart } from '@/components/learning-hub/charts/pressure-units-chart';
 import { BfpChart } from '@/components/learning-hub/charts/bfp-chart';
+import { BmrTdeeChart } from '@/components/learning-hub/charts/bmr-tdee-chart';
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
 
@@ -21,6 +22,7 @@ const chartComponents: { [key: string]: ComponentType } = {
   NewtonsSecondLawChart,
   PressureUnitsChart,
   BfpChart,
+  BmrTdeeChart,
 };
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
