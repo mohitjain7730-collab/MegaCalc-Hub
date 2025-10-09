@@ -233,7 +233,7 @@ export const articles: LearningHubArticle[] = [
       <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
       <ul class="list-disc list-inside space-y-1">
         <li><a href="/category/health-fitness/calorie-deficit-calculator" class="text-primary underline">Calorie Deficit Calculator</a></li>
-        <li><a href="/category/health-fitness/daily-calorie-needs-calculator" class="text-primary underline">Daily Calorie Needs Calculator (TDEE)</a></li>
+        <li><a href="/category/health-fitness/daily-calorie-needs-calculator" class="text-primary underline">Daily Calorie Needs (TDEE) Calculator</a></li>
         <li><a href="/category/health-fitness/bmr-calculator" class="text-primary underline">BMR Calculator</a></li>
       </ul>
 
@@ -343,6 +343,46 @@ export const articles: LearningHubArticle[] = [
       <h4 class="font-semibold mt-6 mb-2 text-lg">6. FAQs</h4>
       <p class="font-semibold">Is inflation always bad?</p>
       <p>A small, steady amount of inflation (around 2%) is generally considered a sign of a healthy, growing economy. It's high, unpredictable inflation that is damaging to savings and economic stability.</p>
+    `
+  },
+  {
+    slug: "how-to-choose-loan-tenure",
+    title: "How to Choose the Right Loan Tenure for Your EMI",
+    Icon: "Calendar",
+    content: `
+        <h3 class="text-xl font-semibold mb-2">The Balancing Act: Choosing the Right Loan Tenure</h3>
+        <p>When you take out a loan, two numbers dominate your thoughts: the loan amount and the interest rate. But there's a third, equally critical factor that determines your monthly payment and the total cost of your debt: the loan tenure. Choosing the right tenure is a balancing act between long-term affordability and short-term cost savings.</p>
+        
+        <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is Loan Tenure?</h4>
+        <p>Loan tenure is simply the amount of time you have to repay your loan in full. It's usually expressed in years (e.g., a 30-year mortgage or a 5-year car loan).</p>
+
+        <h4 class="font-semibold mt-6 mb-2 text-lg">2. The Core Trade-Off: EMI vs. Total Interest Paid</h4>
+        <p>The length of your loan tenure creates a fundamental trade-off:</p>
+        <ul class="list-disc list-inside mt-2 space-y-2">
+            <li><strong>Shorter Tenure:</strong> This results in a higher Equated Monthly Installment (EMI), but you pay significantly less total interest over the life of the loan. You become debt-free faster.</li>
+            <li><strong>Longer Tenure:</strong> This results in a lower, more manageable EMI, which can free up cash flow for other needs. However, you will pay much more in total interest over the life of the loan.</li>
+        </ul>
+
+        <h4 class="font-semibold mt-6 mb-2 text-lg">3. Example: A $300,000 Loan at 7% Interest</h4>
+        <p>Let's see how tenure impacts a typical mortgage:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+            <li><strong>15-Year Term:</strong> Monthly EMI ≈ $2,696. Total Interest Paid ≈ $185,322.</li>
+            <li><strong>30-Year Term:</strong> Monthly EMI ≈ $1,996. Total Interest Paid ≈ $418,529.</li>
+        </ul>
+        <p>Choosing the 30-year term makes your monthly payment $700 lower, but it costs you an extra $233,207 in interest over the life of the loan.</p>
+
+        <h4 class="font-semibold mt-6 mb-2 text-lg">4. How to Choose</h4>
+        <p>The right choice depends on your financial situation and goals:</p>
+        <ul class="list-disc list-inside mt-2 space-y-2">
+            <li><strong>Choose a shorter tenure if:</strong> You have a stable, high income and can comfortably afford the higher monthly payments. Your priority is to save on total interest and become debt-free as quickly as possible.</li>
+            <li><strong>Choose a longer tenure if:</strong> You need a lower, more affordable monthly payment to fit your budget. This frees up cash for other important goals, like investing in retirement accounts or building an emergency fund. You can always make extra payments to pay the loan off faster if your income increases.</li>
+        </ul>
+
+        <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+        <ul class="list-disc list-inside space-y-1">
+            <li><a href="/category/finance/loan-emi-calculator" class="text-primary underline">Loan/EMI Calculator</a></li>
+            <li><a href="/category/finance/mortgage-payment-calculator" class="text-primary underline">Mortgage Payment Calculator</a></li>
+        </ul>
     `
   }
 ];
