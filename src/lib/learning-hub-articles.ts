@@ -485,7 +485,45 @@ export const articles: LearningHubArticle[] = [
       <p class="font-semibold mt-2">How can I tell if I'm dehydrated?</p>
       <p>The simplest way is to check the color of your urine. Pale, straw-colored urine is a good sign of hydration. Dark yellow or amber-colored urine usually indicates you need to drink more water. Thirst is also a key indicator, but by the time you feel thirsty, you are often already slightly dehydrated.</p>
     `
+  },
+  {
+    slug: "apr-vs-interest-rate",
+    title: "What Is the Difference Between APR and Interest Rate?",
+    Icon: "Percent",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">APR vs. Interest Rate: Unpacking the True Cost of Your Loan</h3>
+      <p>When you take out a loan—whether it's for a car, a house, or a personal expense—you'll see two key percentages: the interest rate and the Annual Percentage Rate (APR). They look similar, but they tell you two very different things about how much your loan will actually cost you. Understanding this difference is one of the most critical steps in becoming a savvy borrower.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is the Interest Rate?</h4>
+      <p>The <strong>Interest Rate</strong> is the base cost of borrowing money, expressed as a percentage. It is the direct fee the lender charges you for using their money. If you borrow $10,000 at a 5% interest rate, you are paying 5% of that principal amount in interest each year.</p>
+      <p class="mt-2 text-base">Think of it as the "sticker price" of the loan.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. What is the APR?</h4>
+      <p>The <strong>Annual Percentage Rate (APR)</strong> is a broader measure of the cost of borrowing. It includes the interest rate, but it also rolls in most of the other fees associated with the loan, such as:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Origination fees</li>
+        <li>Closing costs</li>
+        <li>Mortgage insurance premiums</li>
+        <li>Loan processing fees</li>
+      </ul>
+      <p class="mt-2 text-base">Because it includes these extra costs, the APR gives you a more complete, "all-in" picture of the true cost of your loan. By law in the United States, lenders are required to disclose the APR so that consumers can make an accurate, apples-to-apples comparison between different loan offers.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Example: A Mortgage Scenario</h4>
+      <p>Imagine you are offered a $300,000 mortgage:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Offer A:</strong> 6.5% interest rate with $5,000 in closing costs.</li>
+        <li><strong>Offer B:</strong> 6.7% interest rate with $1,000 in closing costs.</li>
+      </ul>
+      <p>At first glance, Offer A looks better because of the lower interest rate. But once the fees are factored in, Offer A's APR might be 6.65%, while Offer B's APR might be 6.78%. In this case, even with the lower interest rate, the higher upfront fees of Offer A make it more expensive over the life of the loan. The APR reveals this.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. The Bottom Line: Which Number Matters More?</h4>
+      <p>When comparing loans, the <strong>APR is almost always the more important number</strong> because it reflects the true annual cost. The interest rate determines your monthly payment, but the APR shows you the bigger picture of what you're really paying.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/finance/loan-emi-calculator" class="text-primary underline">Loan/EMI Calculator</a></li>
+        <li><a href="/category/finance/mortgage-payment-calculator" class="text-primary underline">Mortgage Payment Calculator</a></li>
+      </ul>
+    `
   }
 ];
-
-    
