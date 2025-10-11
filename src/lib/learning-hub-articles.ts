@@ -588,7 +588,7 @@ export const articles: LearningHubArticle[] = [
     `
   },
   {
-    slug: "how-to-burn-500-calories-with-steps",
+    slug: "how-to-burn-500-calories",
     title: "How Many Steps Do You Need to Burn 500 Calories?",
     Icon: "Flame",
     content: `
@@ -686,6 +686,7 @@ export const articles: LearningHubArticle[] = [
       <ul class="list-disc list-inside space-y-1">
         <li><a href="/category/finance/inflation-calculator" class="text-primary underline">Inflation Calculator</a></li>
         <li><a href="/category/finance/real-rate-of-return-calculator" class="text-primary underline">Real Rate of Return Calculator</a></li>
+        <li><a href="/category/finance/compound-interest-calculator" class="text-primary underline">Compound Interest Calculator</a></li>
       </ul>
     `
   },
@@ -865,5 +866,376 @@ export const articles: LearningHubArticle[] = [
         <li><a href="/category/personal-budgeting/monthly-budget-surplus-deficit-calculator" class="text-primary underline">Monthly Budget Surplus/Deficit Calculator</a></li>
       </ul>
     `
+  },
+   {
+    slug: "ideal-sleep-duration-by-age",
+    title: "How to Calculate Your Ideal Sleep Duration by Age",
+    Icon: "Bed",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Science of Sleep: Are You Getting Enough?</h3>
+      <p>Sleep is not a luxury; it's a biological necessity, as crucial to our health as food and water. The amount of sleep we need changes throughout our lives. This guide outlines the general recommendations from health organizations and explains why hitting your target is so important.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. Recommended Sleep by Age Group</h4>
+      <p>While individual needs vary, the following ranges are recommended by experts like the National Sleep Foundation:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Newborns (0-3 months):</strong> 14-17 hours per day</li>
+        <li><strong>Infants (4-11 months):</strong> 12-15 hours per day</li>
+        <li><strong>Toddlers (1-2 years):</strong> 11-14 hours per day</li>
+        <li><strong>Preschoolers (3-5 years):</strong> 10-13 hours per day</li>
+        <li><strong>School-Age Children (6-13 years):</strong> 9-11 hours per day</li>
+        <li><strong>Teenagers (14-17 years):</strong> 8-10 hours per day</li>
+        <li><strong>Young Adults & Adults (18-64 years):</strong> 7-9 hours per day</li>
+        <li><strong>Older Adults (65+ years):</strong> 7-8 hours per day</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. What is Sleep Debt?</h4>
+      <p>Sleep debt is the cumulative effect of not getting enough sleep. If your body needs 8 hours of sleep but you only get 6, you accumulate 2 hours of sleep debt. This debt builds up over time and can lead to chronic fatigue, impaired cognitive function, and other health issues.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Quality Over Quantity</h4>
+      <p>The duration of sleep is only part of the story. Sleep quality is just as important. Good quality sleep means you cycle through all sleep stages (light, deep, REM) without frequent interruptions. To improve sleep quality, maintain a consistent sleep schedule, create a dark and quiet environment, and avoid caffeine and heavy meals before bedtime.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/cognitive-psychology/sleep-debt-calculator" class="text-primary underline">Sleep Debt Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "what-is-credit-utilization",
+    title: "What Is Credit Utilization and Why Does It Matter?",
+    Icon: "CreditCard",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Second Most Important Number in Your Credit Score</h3>
+      <p>After your payment history, your credit utilization ratio is the most significant factor influencing your credit score. Understanding and managing this ratio is one of the quickest ways to improve your financial health and borrowing power.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is Credit Utilization?</h4>
+      <p>Your credit utilization ratio is the percentage of your available revolving credit that you are currently using. In simpler terms, it's your credit card balances divided by your total credit limits.</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">Credit Utilization = (Total Balances / Total Credit Limits) × 100</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Example Calculation</h4>
+      <p>Imagine you have two credit cards:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Card A:</strong> $1,000 balance / $5,000 limit</li>
+        <li><strong>Card B:</strong> $500 balance / $10,000 limit</li>
+      </ul>
+      <p>Your total balance is $1,500 and your total limit is $15,000. Your overall utilization is ($1,500 / $15,000) * 100 = 10%.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Why It Matters So Much</h4>
+      <p>Lenders see a high utilization ratio as a red flag. It suggests that you might be over-extended and have a higher risk of not being able to pay back new debt. Keeping your utilization low demonstrates that you can manage credit responsibly without relying on it too heavily.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. The Rule of Thumb</h4>
+      <p>While there's no magic number, most financial experts recommend keeping your overall credit utilization below <strong>30%</strong>. For the best possible scores, keeping it below <strong>10%</strong> is even better.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. How to Improve Your Ratio</h4>
+       <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Pay Down Balances:</strong> The most direct way to improve your ratio is to pay down your credit card debt.</li>
+        <li><strong>Request a Credit Limit Increase:</strong> If you have a history of on-time payments, you can ask your credit card issuer for a higher limit. This lowers your ratio without you having to change your spending.</li>
+        <li><strong>Make Multiple Payments:</strong> Instead of waiting for your statement, you can make a payment before the statement closing date to ensure a lower balance is reported to the credit bureaus.</li>
+      </ul>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">6. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/finance/credit-card-payoff-calculator" class="text-primary underline">Credit Card Payoff Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "how-much-water-by-weight",
+    title: "How Much Water Should You Drink Based on Your Weight?",
+    Icon: "Droplets",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">A Personalized Approach to Hydration</h3>
+      <p>The common advice to drink "eight glasses a day" is a good starting point, but it's not tailored to your individual body. A more personalized and widely accepted method for estimating daily water needs is based on your body weight, as a larger body requires more water to function optimally.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. The Weight-Based Formula</h4>
+      <p>A common guideline used by many health and nutrition experts is to drink approximately <strong>30-35 ml of water per kilogram</strong> of body weight each day.</p>
+      <p class="mt-2 text-base">For those using pounds, this is roughly <strong>0.5 to 1 ounce of water per pound</strong> of body weight.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Example Calculation</h4>
+      <p>Let's calculate for a person who weighs <strong>150 pounds (approx. 68 kg)</strong>:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Using pounds:</strong> 150 lbs × 0.5 oz/lb = 75 ounces per day.</li>
+        <li><strong>Using kilograms:</strong> 68 kg × 35 ml/kg = 2,380 ml per day.</li>
+      </ul>
+      <p>As you can see, both calculations lead to a similar result: about 2.4 liters, or roughly 10 cups (8 oz each) of water per day.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Adjusting for Other Factors</h4>
+      <p>This weight-based calculation is your baseline. You should increase your intake if:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>You exercise:</strong> Add 12-16 oz (350-475 ml) for every 30 minutes of activity.</li>
+        <li><strong>It's hot or humid:</strong> You'll need more to replace fluid lost through sweat.</li>
+        <li><strong>You are pregnant or breastfeeding:</strong> Needs increase significantly during this time.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Try Our Calculator</h4>
+      <p>For a quick and easy calculation that includes exercise adjustments, use our <a href="/category/health-fitness/hydration-needs-calculator" class="text-primary underline">Hydration Needs Calculator</a>.</p>
+    `
+  },
+  {
+    slug: "how-to-calculate-loan-eligibility",
+    title: "How to Calculate Loan Eligibility Based on Income",
+    Icon: "Landmark",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Key to Unlocking Credit: Your DTI Ratio</h3>
+      <p>When you apply for a major loan like a mortgage or auto loan, lenders are primarily concerned with one question: "Can this person afford to pay us back?" To answer this, they rely heavily on a crucial financial metric called the Debt-to-Income (DTI) ratio.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is Debt-to-Income Ratio?</h4>
+      <p>Your DTI ratio is the percentage of your gross monthly income (your income before taxes) that goes toward paying your monthly debt payments. It's a key indicator of your financial health and your capacity to take on new debt.</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">DTI = (Total Monthly Debt Payments / Gross Monthly Income) × 100</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. What Do Lenders Look For? The DTI Thresholds</h4>
+      <p>While every lender has slightly different criteria, here are the general benchmarks used in the U.S.:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>36% or less:</strong> Generally considered ideal. You are in a strong financial position and will likely qualify for the best interest rates.</li>
+        <li><strong>37% to 43%:</strong> Still considered good. You will likely be approved, but you may not get the most favorable rates. For mortgages, 43% is often the highest DTI a borrower can have and still get a Qualified Mortgage.</li>
+        <li><strong>44% to 50%:</strong> This is a high DTI. You may find it difficult to get approved for new loans, as lenders will see you as a higher risk.</li>
+        <li><strong>Above 50%:</strong> Generally considered a very high risk. It will be very difficult to qualify for most loans.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Example Calculation</h4>
+      <p>Let's say your gross monthly income is $6,000. Your monthly debt payments are:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Rent: $1,500</li>
+        <li>Car Payment: $400</li>
+        <li>Student Loan: $300</li>
+        <li>Credit Card Minimums: $150</li>
+        <li><strong>Total Monthly Debt:</strong> $2,350</li>
+      </ul>
+      <p>Your DTI would be: ($2,350 / $6,000) × 100 = <strong>39.2%</strong>. This is in the "manageable" range.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. How to Improve Your DTI</h4>
+      <p>A lower DTI makes you a more attractive borrower. You can improve it by:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Paying down existing debt:</strong> The most direct method.</li>
+        <li><strong>Increasing your income:</strong> Through a raise, promotion, or side hustle.</li>
+        <li><strong>Avoiding new debt:</strong> Refrain from taking on new loans or running up credit card balances before applying for a major loan.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/personal-budgeting/dti-ratio-calculator" class="text-primary underline">DTI Ratio Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "how-to-measure-body-fat-percentage",
+    title: "What Is Body Fat Percentage and How to Measure It?",
+    Icon: "User",
+    chartComponent: "BfpChart",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Beyond the Scale: Understanding Body Fat Percentage</h3>
+      <p>While Body Mass Index (BMI) is a common starting point for assessing weight, it doesn't tell the whole story because it can't distinguish between fat and muscle. Body Fat Percentage (BFP) provides a more accurate and insightful look into your body composition and overall health.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is Body Fat Percentage?</h4>
+      <p>Body Fat Percentage is the proportion of your total body weight that is fat. The remaining percentage is your lean body mass, which includes muscle, bones, organs, and water. A certain amount of fat is essential for your body to function—it regulates body temperature, cushions organs, and is a primary source of energy.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Why is BFP a Better Metric Than BMI?</h4>
+      <p>BMI can be misleading for certain individuals. For example, a bodybuilder with a large amount of muscle mass might have a high BMI that classifies them as "overweight" or "obese," even with very low body fat. Conversely, an older adult with low muscle mass might have a "normal" BMI but a high body fat percentage, which still carries health risks. BFP provides a clearer picture of your actual body composition.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Healthy Body Fat Percentage Ranges</h4>
+      <p>Healthy ranges differ significantly between men and women due to physiological differences, including hormones and body composition related to childbearing.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. How to Measure Body Fat</h4>
+      <p>There are several methods, with varying accuracy and cost:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Skinfold Calipers:</strong> Measures the thickness of subcutaneous fat at several sites on the body. It is affordable but requires skill to be accurate.</li>
+        <li><strong>Bioelectrical Impedance Analysis (BIA):</strong> Found in many modern bathroom scales, it sends a harmless electrical current through the body. Accuracy can be affected by hydration levels.</li>
+        <li><strong>U.S. Navy Method:</strong> Uses body circumference measurements (neck, waist, and hips for women). Our <a href="/category/health-fitness/body-fat-percentage-calculator" class="text-primary underline">Body Fat Percentage Calculator</a> uses this method.</li>
+        <li><strong>DEXA Scan:</strong> Dual-Energy X-ray Absorptiometry is considered a gold standard. It provides a detailed breakdown of bone mass, fat mass, and lean mass.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/health-fitness/body-fat-percentage-calculator" class="text-primary underline">Body Fat Percentage Calculator</a></li>
+        <li><a href="/category/health-fitness/bmi-calculator" class="text-primary underline">BMI Calculator</a></li>
+        <li><a href="/category/health-fitness/lean-body-mass-calculator" class="text-primary underline">Lean Body Mass Calculator</a></li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">6. FAQs</h4>
+      <p class="font-semibold">Is a lower body fat percentage always better?</p>
+      <p>No. Dropping below essential fat levels can be dangerous and lead to serious health problems, including organ failure and hormonal disruptions. It's about finding a healthy, sustainable range for your body and lifestyle.</p>
+    `
+  },
+  {
+    slug: "how-to-estimate-retirement-age",
+    title: "How to Estimate Your Retirement Age with Current Savings",
+    Icon: "Landmark",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">When Can You Retire? A Guide to Estimating Your Retirement Age</h3>
+      <p>Retirement isn't just an age; it's a financial number. The question "When can I retire?" is really "When will my savings be large enough to support my lifestyle indefinitely?" By working backward from your financial goal, you can get a surprisingly clear estimate of your retirement timeline.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. Step One: Define Your Retirement Nest Egg Goal</h4>
+      <p>First, you need a target. A common method is the "4% Rule," which suggests you need a portfolio 25 times the size of your desired annual withdrawal. For example, if you want to live on $70,000 per year in retirement, your goal is $70,000 × 25 = $1.75 million.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Step Two: Use a Retirement Savings Calculator</h4>
+      <p>Once you have a target, a <a href="/category/finance/retirement-savings-calculator" class="text-primary underline">Retirement Savings Calculator</a> becomes your time machine. You can plug in:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Your current retirement savings.</li>
+        <li>Your planned monthly contributions.</li>
+        <li>An expected annual rate of return on your investments (e.g., 7-9% is a common long-term stock market average).</li>
+      </ul>
+      <p>The calculator will project the growth of your portfolio year by year.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Step Three: Find Your Crossover Point</h4>
+      <p>By looking at the projection, you can find the year where your estimated portfolio value crosses your target nest egg amount. The age you will be in that year is your estimated retirement age based on your current plan.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Experiment with Variables</h4>
+      <p>The real power of this method is in experimentation. What happens if you increase your monthly contribution by $200? The calculator will show you how many years that could shave off your retirement timeline. This allows you to make tangible connections between your savings habits today and your freedom tomorrow.</p>
+    `
+  },
+  {
+    slug: "what-is-dti-ratio",
+    title: "What Is Debt-to-Income Ratio and How to Improve It?",
+    Icon: "Percent",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Key to Your Creditworthiness: Debt-to-Income Ratio Explained</h3>
+      <p>Your Debt-to-Income (DTI) ratio is one of the most important numbers in your financial life, especially when you want to borrow money. It's a key metric that lenders use to assess your ability to manage monthly payments and repay debts. A low DTI can open doors to better loan terms and lower interest rates.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is DTI?</h4>
+      <p>DTI is the percentage of your gross monthly income (your income before taxes) that goes toward paying your monthly debt obligations. These obligations include rent or mortgage, car payments, student loans, personal loans, and credit card minimum payments.</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">DTI = (Total Monthly Debt Payments / Gross Monthly Income) × 100</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Why It Matters to Lenders</h4>
+      <p>Lenders use DTI to gauge your financial health. A low DTI suggests you have a good balance between debt and income and can comfortably handle new payments. A high DTI signals that you may be overextended, making you a higher-risk borrower.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Ideal DTI Ratios</h4>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Below 36%:</strong> Excellent. You are in a strong position to qualify for new credit.</li>
+        <li><strong>36% to 43%:</strong> Good. Still generally acceptable for most loans, including mortgages.</li>
+        <li><strong>44% to 50%:</strong> Concerning. You may face difficulty getting approved for new loans.</li>
+        <li><strong>Above 50%:</strong> High Risk. Lenders will likely see you as overleveraged.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. How to Improve Your DTI Ratio</h4>
+      <p>Improving your DTI comes down to two main strategies:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Decrease Your Debt:</strong> The most effective method. Focus on paying down your loans, especially those with the highest monthly payments. Consolidating high-interest debt into a lower-interest personal loan can also help reduce your total monthly payments.</li>
+        <li><strong>Increase Your Income:</strong> This can be achieved through a raise, a promotion, taking on a side hustle, or finding a higher-paying job.</li>
+      </ul>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">5. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/personal-budgeting/dti-ratio-calculator" class="text-primary underline">DTI Ratio Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "how-to-measure-waist-to-hip-ratio",
+    title: "How to Measure Waist-to-Hip Ratio and What It Means for Health",
+    Icon: "Ruler",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">A Simple Metric for Assessing Health Risk</h3>
+      <p>While BMI is a useful screening tool, it doesn't tell you where your body stores fat. The Waist-to-Hip Ratio (WHR) is a simple measurement that helps assess body fat distribution. A higher WHR indicates more abdominal fat, which is linked to a higher risk of certain chronic diseases.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. How to Measure WHR Accurately</h4>
+      <p>You will need a flexible measuring tape.</p>
+      <ol class="list-decimal list-inside mt-2 space-y-2">
+        <li><strong>Waist Circumference:</strong> Measure around the narrowest part of your waist, typically just above your belly button. The tape should be snug but not compressing the skin.</li>
+        <li><strong>Hip Circumference:</strong> Measure around the widest part of your hips and buttocks.</li>
+        <li><strong>Calculate the Ratio:</strong> Divide your waist measurement by your hip measurement.</li>
+      </ol>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">WHR = Waist Circumference / Hip Circumference</p>
+      <p>Ensure you use the same units (e.g., inches or centimeters) for both measurements.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Understanding the Results</h4>
+      <p>The World Health Organization (WHO) defines abdominal obesity based on the following WHR thresholds:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>For Men:</strong> A WHR of <strong>0.90 or above</strong> is considered high risk.</li>
+        <li><strong>For Women:</strong> A WHR of <strong>0.85 or above</strong> is considered high risk.</li>
+      </ul>
+      <p>A high ratio suggests you are carrying more weight around your abdomen (an "apple" shape), which is associated with a greater risk of heart disease and type 2 diabetes than carrying weight on your hips and thighs (a "pear" shape).</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Improving Your Ratio</h4>
+      <p>Improving your WHR involves reducing abdominal fat through a combination of a balanced diet, regular cardiovascular exercise, and strength training. It's not possible to "spot reduce" fat from one area, but an overall reduction in body fat will lead to a smaller waist circumference and a healthier ratio.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/health-fitness/waist-to-hip-ratio-calculator" class="text-primary underline">Waist-to-Hip Ratio Calculator</a></li>
+        <li><a href="/category/health-fitness/body-fat-percentage-calculator" class="text-primary underline">Body Fat Percentage Calculator</a></li>
+      </ul>
+    `
+  },
+  {
+    slug: "what-is-cagr",
+    title: "What Is Compounded Annual Growth Rate (CAGR) and How to Calculate It?",
+    Icon: "TrendingUp",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">Smoothing Out the Bumps: Understanding CAGR</h3>
+      <p>When you look at an investment's performance over several years, the annual returns can be a rollercoaster. One year it's up 20%, the next it's down 10%. The Compounded Annual Growth Rate (CAGR) is a financial metric that cuts through this volatility to give you a single, smooth average rate of return.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. What is CAGR?</h4>
+      <p>CAGR is the mean annual growth rate of an investment over a specified period of time longer than one year. It tells you what an investment's annual return would have been if it had grown at a steady rate each year.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. The CAGR Formula</h4>
+      <p>The formula to calculate CAGR is:</p>
+      <p class="font-mono p-4 bg-muted rounded-md text-base my-2">CAGR = (Ending Value / Beginning Value)^(1 / Number of Years) - 1</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Ending Value (EV):</strong> The value of the investment at the end of the period.</li>
+        <li><strong>Beginning Value (BV):</strong> The value of the investment at the start of the period.</li>
+        <li><strong>Number of Years (n):</strong> The total number of years in the investment period.</li>
+      </ul>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Example Calculation</h4>
+      <p>Imagine you invested $10,000. After 5 years, it grew to $18,000. The annual returns were uneven, but you want to find the smoothed-out growth rate.</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>EV = $18,000</li>
+        <li>BV = $10,000</li>
+        <li>n = 5</li>
+      </ul>
+      <p>CAGR = ($18,000 / $10,000)^(1/5) - 1</p>
+      <p>CAGR = (1.8)^(0.2) - 1</p>
+      <p>CAGR ≈ 1.1247 - 1 = 0.1247</p>
+      <p>Your investment grew at a compounded annual growth rate of <strong>12.47%</strong>.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Why CAGR is Useful</h4>
+      <p>CAGR is one of the most accurate ways to compare the performance of different investments over time because it accounts for the effect of compounding and smooths out volatility. While it's a hypothetical number (your investment didn't actually grow at that exact rate each year), it provides a far more realistic picture of performance than a simple average.</p>
+    `
+  },
+  {
+    slug: "how-to-track-monthly-expenses",
+    title: "How to Track Your Monthly Expenses Effectively",
+    Icon: "PiggyBank",
+    content: `
+      <h3 class="text-xl font-semibold mb-2">The Foundation of Financial Control: Tracking Your Expenses</h3>
+      <p>You can't manage what you don't measure. Tracking your monthly expenses is the essential first step toward creating a budget, paying off debt, and reaching your savings goals. It’s the process of shining a light on where your money is actually going, often with surprising results.</p>
+      
+      <h4 class="font-semibold mt-6 mb-2 text-lg">1. Choose Your Tracking Method</h4>
+      <p>The best method is the one you'll stick with. Here are the most common options:</p>
+      <ul class="list-disc list-inside mt-2 space-y-2">
+        <li><strong>Budgeting Apps:</strong> Apps like Mint, YNAB (You Need A Budget), or Copilot automatically link to your bank accounts and credit cards, categorizing your spending for you. This is the easiest and most comprehensive method.</li>
+        <li><strong>Spreadsheets:</strong> For the hands-on budgeter, a simple spreadsheet (like Google Sheets or Microsoft Excel) allows you to manually enter and categorize every transaction.</li>
+        <li><strong>The Envelope System:</strong> A cash-based system where you allocate a set amount of cash into labeled envelopes for different spending categories (e.g., "Groceries," "Dining Out"). When an envelope is empty, you stop spending in that category for the month.</li>
+        <li><strong>Pen and Paper:</strong> The old-school method of writing down every purchase in a notebook. It’s simple and requires high intentionality.</li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">2. Categorize Your Spending</h4>
+      <p>As you track, group your expenses into meaningful categories. This will help you identify patterns. Key categories include:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Housing:</strong> Rent/Mortgage</li>
+        <li><strong>Utilities:</strong> Electricity, water, gas, internet</li>
+        <li><strong>Transportation:</strong> Car payments, gas, public transit</li>
+        <li><strong>Food:</strong> Groceries and dining out</li>
+        <li><strong>Debt Payments:</strong> Student loans, credit cards</li>
+        <li><strong>Entertainment & Hobbies</strong></li>
+        <li><strong>Personal Care</strong></li>
+      </ul>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">3. Review and Analyze at the End of the Month</h4>
+      <p>This is where the magic happens. At the end of the month, total up the spending in each category. Compare this to your income. You will likely be surprised by where your money went. This analysis allows you to answer critical questions:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Am I spending more than I earn?</li>
+        <li>Which categories are my biggest money drains?</li>
+        <li>Where can I realistically cut back to free up money for my savings goals?</li>
+      </ul>
+      <p>Tracking your expenses isn't about guilt or restriction. It's about empowerment. It provides you with the data you need to create an effective budget and align your spending with your values and long-term goals.</p>
+
+      <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
+      <ul class="list-disc list-inside space-y-1">
+        <li><a href="/category/personal-budgeting/monthly-budget-surplus-deficit-calculator" class="text-primary underline">Monthly Budget Surplus/Deficit Calculator</a></li>
+        <li><a href="/category/personal-budgeting/50-30-20-budget-calculator" class="text-primary underline">50/30/20 Budget Calculator</a></li>
+      </ul>
+    `
   }
-];
+]; //
+
+    
