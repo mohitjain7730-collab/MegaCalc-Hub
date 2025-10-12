@@ -3,7 +3,7 @@ import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { List, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { search } from '@/app/actions';
 import { Input } from '@/components/ui/input';
 
@@ -36,14 +36,7 @@ export default function Home() {
                 </Button>
               </form>
             </div>
-            <div className="mt-6 flex justify-center gap-4">
-                <Button asChild variant="outline">
-                    <Link href="/calculators">
-                        <List className="mr-2 h-4 w-4" />
-                        Browse All Calculators
-                    </Link>
-                </Button>
-            </div>
+            
           </div>
         </section>
 
