@@ -422,6 +422,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'foot-length-to-cm-converter': dynamic(() => import('@/components/calculators/conversions/foot-length-to-cm-converter')),
     'glove-size-converter': dynamic(() => import('@/components/calculators/conversions/glove-size-converter')),
     'body-measurement-to-cloth-size-converter': dynamic(() => import('@/components/calculators/conversions/body-measurement-to-cloth-size-converter')),
+    'height-converter': dynamic(() => import('@/components/calculators/conversions/height-converter')),
 };
 
 export default function CalculatorPage({ params }: { params: { slug: string; calcSlug: string } }) {

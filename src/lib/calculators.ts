@@ -863,6 +863,7 @@ export const calculators: Calculator[] = [
   { id: 301, name: 'Feet to Meters Converter', description: 'Convert feet to meters.', slug: 'feet-to-meters-converter', category: 'conversions' },
   { id: 302, name: 'Centimeters to Inches Converter', description: 'Convert centimeters to inches.', slug: 'centimeters-to-inches-converter', category: 'conversions' },
   { id: 303, name: 'Inches to Centimeters Converter', description: 'Convert inches to centimeters.', slug: 'inches-to-centimeters-converter', category: 'conversions' },
+  { id: 299, name: 'Height Converter', description: 'Convert height between feet/inches and centimeters/meters.', slug: 'height-converter', category: 'conversions' },
   { id: 304, name: 'Millimeters to Inches Converter', description: 'Convert millimeters to inches.', slug: 'millimeters-to-inches-converter', category: 'conversions' },
   { id: 305, name: 'Inches to Millimeters Converter', description: 'Convert inches to millimeters.', slug: 'inches-to-millimeters-converter', category: 'conversions' },
   { id: 306, name: 'Meters to Yards Converter', description: 'Convert meters to yards.', slug: 'meters-to-yards-converter', category: 'conversions' },
