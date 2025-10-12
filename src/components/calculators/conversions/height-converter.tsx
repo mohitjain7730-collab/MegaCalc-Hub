@@ -96,7 +96,7 @@ export default function HeightConverter() {
                   <FormItem>
                     <FormLabel>Feet (ft)</FormLabel>
                     <FormControl>
-                      <Input type="number" inputMode="decimal" {...field} value={field.value ?? ''} onChange={field.onChange} />
+                      <Input type="number" inputMode="decimal" placeholder="e.g., 5" {...field} value={field.value ?? ''} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -109,7 +109,7 @@ export default function HeightConverter() {
                   <FormItem>
                     <FormLabel>Inches (in)</FormLabel>
                     <FormControl>
-                      <Input type="number" inputMode="decimal" {...field} value={field.value ?? ''} onChange={field.onChange} />
+                      <Input type="number" inputMode="decimal" step="0.1" placeholder="e.g., 11.5" {...field} value={field.value ?? ''} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -125,7 +125,7 @@ export default function HeightConverter() {
                   <FormItem>
                     <FormLabel>Centimeters (cm)</FormLabel>
                     <FormControl>
-                      <Input type="number" inputMode="decimal" {...field} value={field.value ?? ''} onChange={field.onChange} />
+                      <Input type="number" inputMode="decimal" step="0.1" placeholder="e.g., 180" {...field} value={field.value ?? ''} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
