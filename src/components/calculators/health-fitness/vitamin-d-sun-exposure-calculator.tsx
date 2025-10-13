@@ -1,3 +1,111 @@
+'use client';
+
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import Link from 'next/link';
+import { Sun } from 'lucide-react';
+
+const formSchema = z.object({
+  skinType: z.enum(['I','II','III','IV','V','VI']),
+  uvIndex: z.number().min(1).max(11),
+  exposedArea: z.number().min(5).max(100), // % of body
+  minutes: z.number().min(1).max(180),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+function estimateVitaminDiu(values: FormValues): number {
+  // Highly approximate heuristic for educational purposes only
+  const skinFactor = { I: 1.0, II: 0.85, III: 0.7, IV: 0.55, V: 0.4, VI: 0.3 }[values.skinType];
+  const uvFactor = values.uvIndex / 10; // scale 0.1–1.1
+  const areaFactor = values.exposedArea / 25; // 25% ≈ baseline
+  const timeFactor = values.minutes / 15; // 15 min blocks
+  const baseIU = 1000; // baseline per block
+  return Math.round(baseIU * skinFactor * uvFactor * areaFactor * timeFactor);
+}
+
+export default function VitaminDSunExposureCalculator() {
+  const [result, setResult] = useState<number | null>(null);
+  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { skinType: undefined as unknown as 'I', uvIndex: undefined, exposedArea: undefined, minutes: undefined } });
+  const onSubmit = (v: FormValues) => setResult(estimateVitaminDiu(v));
+
+  return (
+    <div className="space-y-8">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField control={form.control} name="skinType" render={({ field }) => (
+              <FormItem><FormLabel>Skin Type (Fitzpatrick)</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent>{['I','II','III','IV','V','VI'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent></Select></FormItem>
+            )} />
+            <FormField control={form.control} name="uvIndex" render={({ field }) => (
+              <FormItem><FormLabel>UV Index (1–11)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+            )} />
+            <FormField control={form.control} name="exposedArea" render={({ field }) => (
+              <FormItem><FormLabel>Exposed Skin (% body)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+            )} />
+            <FormField control={form.control} name="minutes" render={({ field }) => (
+              <FormItem><FormLabel>Exposure Time (minutes)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+            )} />
+          </div>
+          <Button type="submit">Estimate Vitamin D (IU)</Button>
+        </form>
+      </Form>
+      {result !== null && (
+        <Card className="mt-8">
+          <CardHeader><div className='flex items-center gap-4'><Sun className="h-8 w-8 text-primary" /><CardTitle>Estimated Vitamin D</CardTitle></div></CardHeader>
+          <CardContent>
+            <div className="text-center space-y-2">
+              <p className="text-4xl font-bold">{result.toLocaleString()} IU</p>
+              <CardDescription>Very rough estimate for educational purposes. Use sun protection and follow medical guidance.</CardDescription>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+      <VitaminDGuide />
+    </div>
+  );
+}
+
+export function VitaminDGuide() {
+  return (
+    <section className="space-y-4 text-muted-foreground leading-relaxed" itemScope itemType="https://schema.org/Article">
+      <meta itemProp="headline" content="Vitamin D Sun Exposure Calculator – Understanding UV, Skin Type, and Safe Production" />
+      <meta itemProp="author" content="MegaCalc Hub Team" />
+      <meta itemProp="about" content="How vitamin D is synthesized, factors affecting production (UV index, skin type, latitude, season, clouds), safety tips, and diet/supplement backstops." />
+
+      <h2 itemProp="name" className="text-xl font-bold text-foreground">Vitamin D & Sunlight</h2>
+      <p itemProp="description">The skin produces vitamin D3 when exposed to UVB radiation. Production depends on UV index, time of day, season, latitude, altitude, skin pigmentation, age, exposed area, and sunscreen/clothing.</p>
+
+      <h3 className="font-semibold text-foreground mt-6">Factors That Increase/Decrease Cutaneous Vitamin D</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Higher UV index, midday sun, more exposed skin → more production</li>
+        <li>Darker skin types, winter months, high latitudes, heavy clouds → less production</li>
+        <li>Glass blocks UVB; shade and sunscreen reduce production (used for skin‑cancer prevention)</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Safety First</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Prevent burns and cumulative damage: short, regular exposures can be sufficient for some.</li>
+        <li>Use sun protection as advised; consider dietary vitamin D (fatty fish, fortified dairy/plant milks) or supplements under guidance.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+      <div className="space-y-2">
+        <p><Link href="/category/health-fitness/calcium-intake-calculator" className="text-primary underline">Calcium Intake Calculator</Link></p>
+        <p><Link href="/category/health-fitness/magnesium-intake-calculator" className="text-primary underline">Magnesium Intake Calculator</Link></p>
+      </div>
+      <p className="italic">Educational estimate only—not a medical or dermatology recommendation.</p>
+    </section>
+  );
+}
+
 export interface Calculator {
   id: number;
   name: string;

@@ -1,3 +1,110 @@
+'use client';
+
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import Link from 'next/link';
+import { Utensils } from 'lucide-react';
+
+const formSchema = z.object({ age: z.number().int().min(1).max(120), sex: z.enum(['male', 'female']) });
+type FormValues = z.infer<typeof formSchema>;
+
+function rdaZincMg(age: number, sex: 'male' | 'female'): number {
+  if (age >= 1 && age <= 3) return 3;
+  if (age >= 4 && age <= 8) return 5;
+  if (age >= 9 && age <= 13) return 8;
+  if (age >= 14 && age <= 18) return sex === 'male' ? 11 : 9;
+  return sex === 'male' ? 11 : 8;
+}
+
+export default function ZincRequirementCalculator() {
+  const [result, setResult] = useState<number | null>(null);
+  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { age: undefined, sex: 'male' } });
+  const onSubmit = (values: FormValues) => setResult(rdaZincMg(values.age, values.sex));
+
+  return (
+    <div className="space-y-8">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField control={form.control} name="age" render={({ field }) => (<FormItem><FormLabel>Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
+            <FormField control={form.control} name="sex" render={({ field }) => (<FormItem><FormLabel>Sex</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="male">Male</SelectItem><SelectItem value="female">Female</SelectItem></SelectContent></Select></FormItem>)} />
+          </div>
+          <Button type="submit">Calculate Zinc RDA</Button>
+        </form>
+      </Form>
+      {result !== null && (
+        <Card className="mt-8">
+          <CardHeader><div className='flex items-center gap-4'><Utensils className="h-8 w-8 text-primary" /><CardTitle>Recommended Daily Zinc</CardTitle></div></CardHeader>
+          <CardContent>
+            <div className="text-center space-y-2">
+              <p className="text-4xl font-bold">{result} mg/day</p>
+              <CardDescription>Approximate RDA based on age and sex.</CardDescription>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+      <ZincRequirementGuide />
+    </div>
+  );
+}
+
+export function ZincRequirementGuide() {
+  return (
+    <section className="space-y-4 text-muted-foreground leading-relaxed" itemScope itemType="https://schema.org/Article">
+      <meta itemProp="headline" content="Zinc Requirement Calculator – Complete Guide to Zinc, Immunity, Taste, and Recovery" />
+      <meta itemProp="author" content="MegaCalc Hub Team" />
+      <meta itemProp="about" content="Zinc functions, daily requirements, absorption and inhibitors, animal vs plant sources, deficiency signs, safety, and meal planning." />
+
+      <h2 itemProp="name" className="text-xl font-bold text-foreground">Zinc 101</h2>
+      <p itemProp="description">Zinc is crucial for immune defense, wound healing, taste and smell, protein synthesis, and hormone signaling. It supports growth and sexual maturation and helps maintain skin integrity.</p>
+
+      <h3 className="font-semibold text-foreground mt-6">Daily Requirements (Simplified)</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>1–3 years: ~3 mg/day</li>
+        <li>4–8 years: ~5 mg/day</li>
+        <li>9–13 years: ~8 mg/day</li>
+        <li>14+ years: ~8 mg/day (female), ~11 mg/day (male)</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Bioavailability & Diet Pattern</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li><strong>Animal sources</strong> (oysters, beef, poultry) are highly bioavailable.</li>
+        <li><strong>Phytates</strong> in whole grains/legumes reduce absorption—soak/sprout/ferment to improve.</li>
+        <li>Pair legumes and whole grains with vitamin‑C vegetables and leavened breads to enhance uptake.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Food Sources</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Top sources: oysters, beef, crab, dark meat poultry.</li>
+        <li>Plant sources: pumpkin seeds, chickpeas, lentils, nuts, fortified cereals.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Deficiency & Safety</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Signs: poor appetite, frequent infections, impaired wound healing, hair loss, taste changes.</li>
+        <li>Excess zinc can impair copper status—avoid high‑dose supplements unless supervised.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">How the Calculator Works</h3>
+      <p>Maps age/sex to simplified RDA values. Adjustments may be needed for high‑phytate diets or medical guidance.</p>
+
+      <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+      <div className="space-y-2">
+        <p><Link href="/category/health-fitness/iron-intake-calculator" className="text-primary underline">Iron Intake Calculator</Link></p>
+        <p><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary underline">Protein Intake Calculator</Link></p>
+      </div>
+      <p className="italic">Educational use only—consult your clinician for individualized advice.</p>
+    </section>
+  );
+}
+
 export interface Calculator {
   id: number;
   name: string;

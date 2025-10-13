@@ -1,3 +1,228 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import Link from 'next/link';
+import { Utensils } from 'lucide-react';
+
+const formSchema = z.object({
+  age: z.number().int().min(1).max(120),
+  sex: z.enum(['male', 'female']),
+  pregnant: z.boolean().default(false),
+  lactating: z.boolean().default(false),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+function rdaIronMg(age: number, sex: 'male' | 'female', pregnant: boolean, lactating: boolean): number {
+  // Simplified RDA (NIH/ODS) buckets
+  if (age >= 1 && age <= 3) return 7;
+  if (age >= 4 && age <= 8) return 10;
+  if (age >= 9 && age <= 13) return 8;
+  if (age >= 14 && age <= 18) {
+    if (pregnant) return 27;
+    if (lactating) return 10;
+    return sex === 'male' ? 11 : 15;
+  }
+  if (age >= 19 && age <= 50) {
+    if (pregnant) return 27;
+    if (lactating) return 9;
+    return sex === 'male' ? 8 : 18;
+  }
+  // 51+
+  return 8;
+}
+
+export default function IronIntakeCalculator() {
+  const [result, setResult] = useState<number | null>(null);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: { age: undefined, sex: 'female', pregnant: false, lactating: false },
+  });
+
+  const onSubmit = (values: FormValues) => {
+    setResult(rdaIronMg(values.age, values.sex, values.pregnant, values.lactating));
+  };
+
+  const sex = form.watch('sex');
+  useEffect(() => {
+    if (sex === 'male') {
+      form.setValue('pregnant', false, { shouldValidate: false, shouldDirty: false });
+      form.setValue('lactating', false, { shouldValidate: false, shouldDirty: false });
+    }
+  }, [sex, form]);
+
+  return (
+    <div className="space-y-8">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField control={form.control} name="age" render={({ field }) => (
+              <FormItem><FormLabel>Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+            )} />
+            <FormField control={form.control} name="sex" render={({ field }) => (
+              <FormItem><FormLabel>Sex</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="male">Male</SelectItem><SelectItem value="female">Female</SelectItem></SelectContent></Select></FormItem>
+            )} />
+            {sex === 'female' && (
+              <>
+                <FormField control={form.control} name="pregnant" render={({ field }) => (
+                  <FormItem><FormLabel>Pregnant</FormLabel><FormControl><Select onValueChange={(v) => field.onChange(v === 'true')} defaultValue={String(field.value)}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value="false">No</SelectItem><SelectItem value="true">Yes</SelectItem></SelectContent></Select></FormControl><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="lactating" render={({ field }) => (
+                  <FormItem><FormLabel>Lactating</FormLabel><FormControl><Select onValueChange={(v) => field.onChange(v === 'true')} defaultValue={String(field.value)}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value="false">No</SelectItem><SelectItem value="true">Yes</SelectItem></SelectContent></Select></FormControl><FormMessage /></FormItem>
+                )} />
+              </>
+            )}
+          </div>
+          <Button type="submit">Calculate Iron RDA</Button>
+        </form>
+      </Form>
+      {result !== null && (
+        <Card className="mt-8">
+          <CardHeader><div className='flex items-center gap-4'><Utensils className="h-8 w-8 text-primary" /><CardTitle>Recommended Daily Iron</CardTitle></div></CardHeader>
+          <CardContent>
+            <div className="text-center space-y-2">
+              <p className="text-4xl font-bold">{result} mg/day</p>
+              <CardDescription>Dietary Reference Intake (approximate). Individual needs may vary.</CardDescription>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+      <IronIntakeGuide />
+    </div>
+  );
+}
+
+// SEO Guide
+// A comprehensive, educational article is appended below. It is intentionally long-form
+// to help users understand concepts and improve search discoverability.
+export function IronIntakeGuide() {
+  return (
+    <section
+      className="space-y-4 text-muted-foreground leading-relaxed"
+      itemScope
+      itemType="https://schema.org/Article"
+    >
+      <meta itemProp="headline" content="Iron Intake Calculator – Complete Guide to Iron, RDA, Heme vs Non‑Heme, Absorption, and Meal Planning" />
+      <meta itemProp="author" content="MegaCalc Hub Team" />
+      <meta itemProp="about" content="What iron does, daily requirements across life stages, heme vs non‑heme iron, bioavailability, enhancers and inhibitors, deficiency risks, and practical food lists with sample menus." />
+
+      <h2 itemProp="name" className="text-xl font-bold text-foreground">Iron 101: Why It Matters</h2>
+      <p itemProp="description">
+        Iron is an essential mineral required to transport oxygen (via hemoglobin), enable cellular energy production,
+        and support immune function, cognitive development, and exercise performance. Inadequate iron can lead to fatigue,
+        reduced work capacity, compromised thermoregulation, hair loss, brittle nails, and—at extremes—iron‑deficiency anemia (IDA).
+        The Iron Intake Calculator above provides a quick <strong>RDA‑based</strong> target tailored by age, sex, and life stage (e.g., pregnancy/lactation).
+        Below, you will find a complete, practical guide to choosing foods, improving absorption, and troubleshooting common iron pitfalls.
+      </p>
+
+      <h3 className="font-semibold text-foreground mt-6">What Iron Does in the Body</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li><strong>Oxygen transport:</strong> Hemoglobin and myoglobin carry oxygen to working tissues.</li>
+        <li><strong>Mitochondrial energy:</strong> Iron‑containing enzymes drive ATP production.</li>
+        <li><strong>Neurotransmitters:</strong> Iron participates in dopamine, norepinephrine, and serotonin pathways.</li>
+        <li><strong>Immunity:</strong> Supports innate and adaptive immune responses.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Daily Requirements (RDA/AI, simplified)</h3>
+      <p>
+        Public‑health agencies publish age‑ and sex‑specific ranges. Our calculator uses representative values.
+        Adolescents and premenopausal women often need more due to growth and menstrual losses, while pregnancy significantly
+        elevates needs because of expanding blood volume and fetal development. After menopause, needs typically decline.
+      </p>
+
+      <h3 className="font-semibold text-foreground mt-6">Heme vs Non‑Heme Iron</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li><strong>Heme iron</strong> (animal sources like red meat, poultry, fish) is absorbed more efficiently (≈15–35%).</li>
+        <li><strong>Non‑heme iron</strong> (plants, eggs, dairy) has lower baseline absorption (≈2–20%) but can be improved with vitamin C and smart pairing.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Enhancers and Inhibitors of Absorption</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li><strong>Enhancers:</strong> Vitamin C (citrus, peppers, strawberries), meat/fish/poultry factor, mild acidic environments.</li>
+        <li><strong>Inhibitors:</strong> Polyphenols (coffee/tea/wine), phytates (bran, some legumes/grains), calcium supplements, excess fiber in the same meal.</li>
+      </ul>
+      <p>
+        Practical tip: If coffee or tea are part of your routine, have them <strong>between</strong> meals rather than with your highest‑iron meals,
+        and include a vitamin‑C source when eating plant iron. If you take a calcium supplement, avoid pairing with high‑iron meals.
+      </p>
+
+      <h3 className="font-semibold text-foreground mt-6">High‑Iron Foods (Typical Portions)</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li><strong>Heme:</strong> beef, lamb, liver, dark‑meat poultry, tuna/sardines/salmon.</li>
+        <li><strong>Non‑heme:</strong> lentils, chickpeas, black beans, tofu/tempeh, spinach, pumpkin seeds, quinoa, fortified cereals.</li>
+        <li><strong>Vitamin‑C boosters:</strong> citrus, kiwi, berries, tomatoes, bell peppers.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Sample One‑Day Menus (Omnivore & Plant‑Forward)</h3>
+      <p><strong>Omnivore (~18–20 mg):</strong></p>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Breakfast: fortified whole‑grain cereal + milk, orange slices (vitamin C).</li>
+        <li>Lunch: beef chili with beans; side salad with tomatoes; strawberries.</li>
+        <li>Snack: pumpkin seeds + Greek yogurt.</li>
+        <li>Dinner: salmon + quinoa + sautéed spinach with lemon.</li>
+      </ul>
+      <p><strong>Plant‑Forward (~18–22 mg):</strong></p>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Breakfast: oatmeal with chia + raisins; kiwi fruit (vitamin C).</li>
+        <li>Lunch: tofu/tempeh stir‑fry with broccoli, peppers (vitamin C), and brown rice.</li>
+        <li>Snack: hummus with whole‑grain pita; orange.</li>
+        <li>Dinner: lentil bolognese over whole‑grain pasta; side salad with lemon vinaigrette.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Deficiency, Insufficiency, and Lab Markers</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li><strong>Symptoms:</strong> fatigue, pallor, exertional breathlessness, brittle nails, hair shedding, pica.</li>
+        <li><strong>Labs:</strong> ferritin (storage), hemoglobin/hematocrit (oxygen‑carrying capacity), transferrin saturation, TIBC.</li>
+        <li><strong>Who’s at higher risk:</strong> menstruating individuals, pregnant people, frequent blood donors, endurance athletes, those with low‑iron diets, GI disorders, or malabsorption.</li>
+      </ul>
+      <p>
+        For diagnosis and treatment, consult a qualified clinician. Supplemental iron and dosing schedules (e.g., alternate‑day dosing)
+        should be individualized to minimize GI side effects and maximize repletion.
+      </p>
+
+      <h3 className="font-semibold text-foreground mt-6">Safety Considerations</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li><strong>Upper limits:</strong> Excess iron can be harmful; avoid high‑dose supplements unless prescribed.</li>
+        <li><strong>Hemochromatosis/iron overload:</strong> Individuals with iron‑loading conditions require medical management.</li>
+        <li><strong>Children:</strong> Keep iron supplements out of reach—overdose can be dangerous.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">How the Calculator Works</h3>
+      <p>
+        The tool maps your age, sex, and pregnancy/lactation status to a simplified RDA value (mg/day) from widely used references.
+        RDAs are population guidelines—they prioritize <em>minimum intake sufficient for nearly all healthy individuals</em>. Your optimal
+        intake might differ based on diet composition, absorption, altitude, training volume, and lab status.
+      </p>
+
+      <h3 className="font-semibold text-foreground mt-6">Action Plan</h3>
+      <ol className="list-decimal ml-6 space-y-1">
+        <li>Use the calculator to identify a daily iron target.</li>
+        <li>Choose 1–2 high‑iron foods per day and pair non‑heme sources with vitamin‑C foods.</li>
+        <li>Schedule coffee/tea away from iron‑rich meals to reduce inhibition.</li>
+        <li>Track symptoms and consider periodic labs with your clinician if you’re at risk.</li>
+      </ol>
+
+      <h3 className="font-semibold text-foreground mt-6">Related Calculators and Resources</h3>
+      <div className="space-y-2">
+        <p><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary underline">Protein Intake Calculator</Link></p>
+        <p><Link href="/category/health-fitness/fat-intake-calculator" className="text-primary underline">Fat Intake Calculator</Link></p>
+        <p><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary underline">Carbohydrate Intake Calculator</Link></p>
+      </div>
+
+      <p className="italic">Educational use only. This is not a diagnosis or prescription. Work with your healthcare provider for individualized advice.</p>
+    </section>
+  );
+}
+
 export interface Calculator {
   id: number;
   name: string;

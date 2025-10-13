@@ -1,3 +1,102 @@
+'use client';
+
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import Link from 'next/link';
+import { Utensils } from 'lucide-react';
+
+const formSchema = z.object({ calories: z.number().positive() });
+type FormValues = z.infer<typeof formSchema>;
+
+export default function FiberIntakeCalculator() {
+  const [result, setResult] = useState<number | null>(null);
+  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { calories: undefined } });
+  const onSubmit = (values: FormValues) => setResult((values.calories / 1000) * 14);
+
+  return (
+    <div className="space-y-8">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormField control={form.control} name="calories" render={({ field }) => (
+            <FormItem><FormLabel>Daily Calories</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+          )} />
+          <Button type="submit">Calculate Fiber Goal</Button>
+        </form>
+      </Form>
+      {result !== null && (
+        <Card className="mt-8">
+          <CardHeader><div className='flex items-center gap-4'><Utensils className="h-8 w-8 text-primary" /><CardTitle>Daily Fiber Target</CardTitle></div></CardHeader>
+          <CardContent>
+            <div className="text-center space-y-2">
+              <p className="text-4xl font-bold">{Math.round(result)} g/day</p>
+              <CardDescription>Based on 14 g per 1,000 kcal guideline.</CardDescription>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+      <FiberIntakeGuide />
+    </div>
+  );
+}
+
+export function FiberIntakeGuide() {
+  return (
+    <section className="space-y-4 text-muted-foreground leading-relaxed" itemScope itemType="https://schema.org/Article">
+      <meta itemProp="headline" content="Fiber Intake Calculator – Comprehensive Guide to Fiber Types, Gut Health, and Meal Planning" />
+      <meta itemProp="author" content="MegaCalc Hub Team" />
+      <meta itemProp="about" content="Soluble vs insoluble fiber, SCFAs and microbiome, appetite and cholesterol benefits, daily targets, food lists, and troubleshooting GI comfort." />
+
+      <h2 itemProp="name" className="text-xl font-bold text-foreground">Why Fiber Matters</h2>
+      <p itemProp="description">Dietary fiber supports digestive health, feeds beneficial gut microbes, produces short‑chain fatty acids (SCFAs), helps regulate cholesterol and blood sugar, and increases satiety. Most adults consume well below recommended levels.</p>
+
+      <h3 className="font-semibold text-foreground mt-6">Daily Target</h3>
+      <p>Start with ~14 g per 1,000 kcal (e.g., 28 g at 2,000 kcal). Increase gradually (3–5 g every few days) while hydrating to avoid GI discomfort.</p>
+
+      <h3 className="font-semibold text-foreground mt-6">Types of Fiber</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li><strong>Soluble</strong>: forms gels, can lower LDL and smooth glucose (oats, barley, psyllium, beans, chia).</li>
+        <li><strong>Insoluble</strong>: adds bulk and speeds transit (whole grains, wheat bran, many vegetables).</li>
+        <li><strong>Prebiotic</strong>: inulin, fructo‑ and galacto‑oligosaccharides—excellent for microbiome growth (onions, garlic, bananas, legumes).</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Best Sources</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Beans, lentils, chickpeas</li>
+        <li>Oats, barley, whole‑grain breads and cereals</li>
+        <li>Fruits (berries, pears) and vegetables (broccoli, carrots)</li>
+        <li>Nuts and seeds (chia, flax, pumpkin)</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Sample Day (≈30–35 g)</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Breakfast: oatmeal + chia + berries</li>
+        <li>Lunch: lentil soup + whole‑grain bread + salad</li>
+        <li>Snack: apple + almonds</li>
+        <li>Dinner: brown‑rice veggie stir‑fry + edamame</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Troubleshooting</h3>
+      <ul className="list-disc ml-6 space-y-1">
+        <li>Gas/bloating: increase fiber slowly; distribute across meals.</li>
+        <li>Very high fiber with low fluids may cause discomfort—drink water.</li>
+        <li>If on low‑FODMAP or with GI conditions, define a personalized plan with a dietitian.</li>
+      </ul>
+
+      <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+      <div className="space-y-2">
+        <p><Link href="/category/health-fitness/glycemic-load-calculator" className="text-primary underline">Glycemic Load Calculator</Link></p>
+        <p><Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary underline">Hydration Needs Calculator</Link></p>
+      </div>
+    </section>
+  );
+}
+
 export interface Calculator {
   id: number;
   name: string;
