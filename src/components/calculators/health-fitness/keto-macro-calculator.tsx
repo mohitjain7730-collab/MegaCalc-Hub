@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Utensils } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const activityLevels = {
     sedentary: 1.2,
@@ -141,6 +142,74 @@ export default function KetoMacroCalculator() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <section
+        className="space-y-4 text-muted-foreground leading-relaxed"
+        itemScope
+        itemType="https://schema.org/Article"
+      >
+        <meta itemProp="headline" content="Keto Macro Calculator – Complete Guide to Ketogenic Macros" />
+        <meta itemProp="author" content="MegaCalc Hub Team" />
+        <meta itemProp="about" content="Set keto macros with science: net carbs, protein by lean body mass, fat as a calorie lever. Electrolytes, fiber, hidden carbs, and plate examples." />
+
+        <h2 itemProp="name" className="text-xl font-bold text-foreground">How to Set Your Keto Macros (That Actually Work)</h2>
+        <p itemProp="description">Keto is not just “eat bacon.” Effective ketogenic diets prioritize <strong>adequate protein</strong>, a consistent <strong>low net‑carb target</strong>, and use <strong>fat</strong> to reach calories.
+          This calculator builds around those principles. Use the guidance below to implement day‑to‑day.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">1) Net Carbs: Keep It Low and Consistent</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Common starting point: <strong>20–30 g net carbs</strong> per day (fiber excluded).</li>
+          <li>Spread across meals to stabilize hunger and glucose; reserve more of your daily carbs around training if desired.</li>
+          <li>Track hidden carbs in sauces, dressings, and processed “keto” snacks.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">2) Protein: The Anchor</h3>
+        <p>Base protein on lean body mass (LBM) or target bodyweight: typically <strong>1.4–2.0 g/kg LBM</strong> (≈ <strong>0.6–0.9 g/lb LBM</strong>) to preserve muscle.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">3) Fat: The Calorie Lever</h3>
+        <p>After net carbs and protein are set, <strong>fat fills the rest of your calories</strong>. In a deficit, fat grams will be lower; in maintenance or surplus, higher.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">4) Electrolytes, Fiber, and Micronutrients</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Sodium:</strong> 3–5 g/day from broths, salted meals—especially during adaptation.</li>
+          <li><strong>Potassium & Magnesium:</strong> leafy greens, avocado, nuts/seeds; consider supplements if intake is low.</li>
+          <li><strong>Fiber:</strong> 20–30 g/day from non‑starchy vegetables, chia/flax, low‑sugar berries; fiber does not count toward net carbs.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">5) Plate Examples</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Egg omelet + spinach + feta + olive oil; side of avocado.</li>
+          <li>Salmon + asparagus + herb butter; mixed greens with olive‑oil vinaigrette.</li>
+          <li>Tofu stir‑fry in coconut oil with broccoli, mushrooms, and sesame seeds.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+        <div className="space-y-2">
+          <p><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary underline">Protein Intake Calculator</Link></p>
+          <p><Link href="/category/health-fitness/fat-intake-calculator" className="text-primary underline">Fat Intake Calculator</Link></p>
+          <p><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary underline">Carbohydrate Intake Calculator</Link></p>
+        </div>
+
+        <h3 className="font-semibold text-foreground mt-6">Keto Basics: What and Why</h3>
+        <p>
+          Nutritional ketosis is a metabolic state where ketone bodies provide a significant share of fuel. People choose keto for
+          appetite control, steady energy, or therapeutic reasons. Success hinges on <strong>consistency</strong> and <strong>nutrient‑dense food choices</strong>—not
+          unlimited fat.
+        </p>
+
+        <h3 className="font-semibold text-foreground mt-6">Common Mistakes</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Under‑eating protein and over‑relying on added fats.</li>
+          <li>Ignoring electrolytes, leading to headaches or fatigue.</li>
+          <li>Assuming all “keto snacks” fit your goals—many are high‑calorie and low in micronutrients.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">FAQ</h3>
+        <div className="space-y-3">
+          <p><strong>Do I need to be in ketosis to lose fat?</strong> No—calorie balance still governs fat loss. Keto is one tool among many.</p>
+          <p><strong>How do I handle social meals?</strong> Center the plate on protein + low‑starch vegetables; bring a dressing/olive oil if needed.</p>
+          <p><strong>Will keto hurt performance?</strong> For high‑intensity sports, many perform better with strategic carbs; for steady‑state, keto can feel fine once adapted.</p>
+        </div>
+      </section>
     </div>
   );
 }

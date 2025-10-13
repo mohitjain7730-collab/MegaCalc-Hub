@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Scale, ArrowUp } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const formSchema = z.object({
   weight: z.number().positive(),
@@ -153,6 +154,52 @@ export default function BmiCalculator() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <section
+        className="space-y-4 text-muted-foreground leading-relaxed"
+        itemScope
+        itemType="https://schema.org/Article"
+      >
+        <meta itemProp="headline" content="BMI Calculator – What Body Mass Index Tells You (and What It Doesn’t)" />
+        <meta itemProp="author" content="MegaCalc Hub Team" />
+        <meta itemProp="about" content="How BMI is calculated, population use cases, limitations for individuals, waist measures, and practical next steps." />
+
+        <h2 itemProp="name" className="text-xl font-bold text-foreground">Understanding BMI</h2>
+        <p itemProp="description">BMI is a simple height‑to‑weight index used at a population level to screen for weight categories. It does <strong>not</strong> measure body fat or health directly.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">Strengths</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Fast, inexpensive, and consistent across large groups.</li>
+          <li>Correlates with disease risk at a population level.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Limitations</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Cannot distinguish muscle from fat; athletes may read “overweight.”</li>
+          <li>Does not reflect fat distribution; abdominal fat is more strongly linked to risk.</li>
+          <li>Cutoffs may vary across ethnic groups; discuss results with a healthcare professional.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Better Context: Combine With Other Measures</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Waist circumference</strong> and <strong>waist‑to‑height ratio</strong> (target ≤0.5) for central adiposity.</li>
+          <li><strong>Body composition</strong> estimates (DEXA, BIA, skinfolds) when available.</li>
+          <li>Fitness, labs, sleep, and lifestyle patterns.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Next Steps</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Define a realistic goal (performance, health, aesthetics).</li>
+          <li>Set nutrition and training targets that match the goal—see related tools below.</li>
+          <li>Follow up with your clinician for individualized guidance.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+        <div className="space-y-2">
+          <p><Link href="/category/health-fitness/bmr-calculator" className="text-primary underline">BMR Calculator</Link></p>
+          <p><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary underline">Protein Intake Calculator</Link></p>
+          <p><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs (TDEE)</Link></p>
+        </div>
+      </section>
     </div>
   );
 }

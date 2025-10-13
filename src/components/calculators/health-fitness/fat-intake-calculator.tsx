@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Droplets } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import Link from 'next/link';
 
 const formSchema = z.object({
   tdee: z.number().positive(),
@@ -132,6 +133,81 @@ export default function FatIntakeCalculator() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <section
+        className="space-y-4 text-muted-foreground leading-relaxed"
+        itemScope
+        itemType="https://schema.org/Article"
+      >
+        <meta itemProp="headline" content="Fat Intake Calculator – How Much Fat Per Day?" />
+        <meta itemProp="author" content="MegaCalc Hub Team" />
+        <meta itemProp="about" content="Daily fat targets for health, hormones, and performance. Saturated vs unsaturated fat, omega‑3 sources, cooking oils, and meal examples." />
+
+        <h2 itemProp="name" className="text-xl font-bold text-foreground">How Much Dietary Fat Do You Need?</h2>
+        <p itemProp="description">A healthy intake typically lands between <strong>20–35% of calories</strong>. Use the calculator to set a gram target, then focus on food quality.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">Why Fat Matters</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Provides essential fatty acids (linoleic and alpha‑linolenic acids).</li>
+          <li>Aids absorption of fat‑soluble vitamins A, D, E, K.</li>
+          <li>Supports hormones, cell membranes, brain function, and satiety.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Fat Quality: Make Most Fats Unsaturated</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Monounsaturated:</strong> olive oil, avocado, nuts—great everyday staples.</li>
+          <li><strong>Polyunsaturated (Omega‑3):</strong> salmon, sardines, trout, flax, chia, walnuts—aim for 2–3 servings fatty fish/week or EPA/DHA supplements if needed.</li>
+          <li><strong>Saturated:</strong> butter, cheese, fatty meats—enjoy in moderation within your total fat budget.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Practical Targets</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Minimum intake:</strong> avoid chronically dipping far below ~15–20% of calories unless medically supervised.</li>
+          <li><strong>High‑carb athletes:</strong> you may feel best on 20–25% fat to prioritize carbs for training.</li>
+          <li><strong>Lower‑carb patterns:</strong> 30–40% fat (or more) can fit, provided protein and micronutrients are met.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Smart Cooking and Snacking</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Use olive oil for sautés and dressings; avocado or canola oil for higher‑heat applications.</li>
+          <li>Snack ideas: Greek yogurt + nuts, hummus + veggies, whole‑grain toast + peanut butter.</li>
+          <li>Choose minimally processed foods; keep an eye on deep‑fried items and ultra‑processed snacks.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+        <div className="space-y-2">
+          <p><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary underline">Protein Intake Calculator</Link></p>
+          <p><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary underline">Carbohydrate Intake Calculator</Link></p>
+          <p><Link href="/category/health-fitness/macro-ratio-calculator" className="text-primary underline">Macro Ratio Calculator</Link></p>
+        </div>
+
+        <h3 className="font-semibold text-foreground mt-6">What Is Dietary Fat?</h3>
+        <p>
+          Dietary fats are triglycerides composed of fatty acids. The <strong>saturation</strong> (number of double bonds) impacts
+          how the fat behaves in the body and at cooking temperatures. Beyond calories, fats carry fat‑soluble vitamins and provide
+          essential fats your body can’t make.
+        </p>
+
+        <h4 className="font-semibold text-foreground">Types of Fat</h4>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Monounsaturated (MUFA):</strong> olives, avocado, almonds, pistachios—cardiometabolic friendly.</li>
+          <li><strong>Polyunsaturated (PUFA):</strong> includes omega‑6 and omega‑3; focus on <strong>EPA/DHA</strong> from fish.</li>
+          <li><strong>Saturated:</strong> dairy fat and red meat; moderate intakes fit fine within a varied diet.</li>
+          <li><strong>Trans fats:</strong> avoid industrial trans fats (partially hydrogenated oils).</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Omega‑3s: Why They Matter</h3>
+        <p>
+          Long‑chain omega‑3s (EPA/DHA) support heart, brain, and inflammation balance. Aim for 2–3 fatty‑fish meals weekly or consider
+          a quality fish‑oil/algae‑oil supplement if intake is low.
+        </p>
+
+        <h3 className="font-semibold text-foreground mt-6">FAQ</h3>
+        <div className="space-y-3">
+          <p><strong>Do high‑fat diets harm cholesterol?</strong> It depends on the fat profile and the person. Emphasize MUFA/PUFA, manage saturated fat, and prioritize whole foods.</p>
+          <p><strong>Butter vs olive oil?</strong> Olive oil is a great default for day‑to‑day cooking and dressings; butter works for flavor in moderation.</p>
+          <p><strong>Should I avoid all seed oils?</strong> Current evidence supports using moderate amounts of unsaturated oils within an overall balanced diet.</p>
+        </div>
+      </section>
     </div>
   );
 }

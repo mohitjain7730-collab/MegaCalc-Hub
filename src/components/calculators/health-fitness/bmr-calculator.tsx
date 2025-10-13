@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Flame } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
@@ -162,6 +163,46 @@ export default function BmrCalculator() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <section
+        className="space-y-4 text-muted-foreground leading-relaxed"
+        itemScope
+        itemType="https://schema.org/Article"
+      >
+        <meta itemProp="headline" content="BMR Calculator – Understand Basal Metabolic Rate and Daily Energy Needs" />
+        <meta itemProp="author" content="MegaCalc Hub Team" />
+        <meta itemProp="about" content="What BMR is, how it’s estimated, differences vs TDEE, factors that influence metabolism, and how to use results to plan nutrition." />
+
+        <h2 itemProp="name" className="text-xl font-bold text-foreground">What Is BMR?</h2>
+        <p itemProp="description">Basal Metabolic Rate is the energy your body expends at rest to sustain vital functions: breathing, circulation, temperature regulation, and cellular maintenance.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">BMR vs RMR vs TDEE</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>BMR:</strong> strict, lab‑like resting conditions.</li>
+          <li><strong>RMR:</strong> resting metabolic rate; similar but measured under less strict conditions—often slightly higher.</li>
+          <li><strong>TDEE:</strong> total daily energy expenditure = RMR × activity + non‑exercise movement + thermic effect of food + exercise.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">What Changes Metabolism?</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Body mass and <strong>lean body mass</strong> (LBM)</li>
+          <li>Age, sex, genetics, hormones</li>
+          <li>Sleep, stress, medications, and chronic dieting history</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Using Your Result</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Maintenance: calories ≈ TDEE.</li>
+          <li>Fat loss: calories below TDEE; preserve protein and resistance training.</li>
+          <li>Muscle gain: calories above TDEE with progressive overload.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+        <div className="space-y-2">
+          <p><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs (TDEE)</Link></p>
+          <p><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary underline">Protein Intake Calculator</Link></p>
+          <p><Link href="/category/health-fitness/fat-intake-calculator" className="text-primary underline">Fat Intake Calculator</Link></p>
+        </div>
+      </section>
     </div>
   );
 }

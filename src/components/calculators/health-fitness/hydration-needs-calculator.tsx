@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Droplets } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const formSchema = z.object({
   weight: z.number().positive(),
@@ -87,6 +88,46 @@ export default function HydrationNeedsCalculator() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <section
+        className="space-y-4 text-muted-foreground leading-relaxed"
+        itemScope
+        itemType="https://schema.org/Article"
+      >
+        <meta itemProp="headline" content="Hydration Needs Calculator – Daily Water Intake, Electrolytes, and Practical Tips" />
+        <meta itemProp="author" content="MegaCalc Hub Team" />
+        <meta itemProp="about" content="How much water to drink each day, how exercise, heat, altitude, and diet change needs, signs of dehydration, and hydration strategies." />
+
+        <h2 itemProp="name" className="text-xl font-bold text-foreground">How Much Water Do You Need Per Day?</h2>
+        <p itemProp="description">A common starting point is <strong>~30–40 ml per kg</strong> bodyweight, plus extra during exercise and hot/humid days. Our calculator uses 35 ml/kg and adds ~350 ml per 30 minutes of activity.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">Factors That Increase Fluid Needs</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Exercise & heat:</strong> Higher sweat rates raise water and electrolyte requirements.</li>
+          <li><strong>Altitude & dry air:</strong> Faster breathing and low humidity increase losses.</li>
+          <li><strong>Diet:</strong> High‑fiber, high‑protein, or very salty/spicy meals can increase thirst.</li>
+          <li><strong>Illness:</strong> Fever, vomiting, diarrhea, or certain medications elevate needs—seek medical guidance.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Electrolytes 101</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Sodium:</strong> primary sweat electrolyte; replace during long sessions/hot weather.</li>
+          <li><strong>Potassium & Magnesium:</strong> found in fruits/veg, dairy, beans, nuts; consider electrolyte mixes for prolonged exercise.</li>
+          <li>Clear, pale‑yellow urine across the day is a simple hydration check.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Practical Strategies</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Front‑load fluids earlier in the day; sip regularly rather than chug all at once.</li>
+          <li>Use a bottle with volume markings; aim to finish set amounts by certain times.</li>
+          <li>Include hydrating foods: fruit, vegetables, soups, yogurt.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+        <div className="space-y-2">
+          <p><Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary underline">Electrolyte Replacement Calculator</Link></p>
+          <p><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs (TDEE)</Link></p>
+        </div>
+      </section>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Droplets } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 // Data from Water Footprint Network (waterfootprint.org), global averages in liters/kg
 const foodWaterFootprints = {
@@ -145,6 +146,38 @@ export default function WaterFootprintOfFoodCalculator() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <section
+        className="space-y-4 text-muted-foreground leading-relaxed"
+        itemScope
+        itemType="https://schema.org/Article"
+      >
+        <meta itemProp="headline" content="Water Footprint of Food – Understand Green, Blue, and Grey Water" />
+        <meta itemProp="author" content="MegaCalc Hub Team" />
+        <meta itemProp="about" content="How different foods use water, why location matters, and how to lower your dietary water footprint without compromising nutrition." />
+
+        <h2 itemProp="name" className="text-xl font-bold text-foreground">What Is the Water Footprint of Food?</h2>
+        <p itemProp="description">It’s the total volume of freshwater used to produce food, including rainwater (green), irrigation (blue), and water to dilute pollution (grey). Values vary by region, farming method, and yield.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">How to Interpret Results</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Compare similar foods (e.g., beef vs chicken vs legumes) to find lower‑impact swaps.</li>
+          <li>Consider nutrition per liter: protein, vitamins, and minerals matter—don’t optimize water alone.</li>
+          <li>Local conditions can outweigh global averages—water scarcity makes blue water more critical.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Ways to Reduce Your Dietary Water Footprint</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Shift some animal protein to legumes, soy, eggs, or poultry where appropriate.</li>
+          <li>Choose seasonal and local produce to reduce blue/grey water burdens.</li>
+          <li>Cut food waste: plan menus, store properly, and use leftovers creatively.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+        <div className="space-y-2">
+          <p><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary underline">Carbohydrate Intake Calculator</Link></p>
+          <p><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary underline">Protein Intake Calculator</Link></p>
+        </div>
+      </section>
     </div>
   );
 }

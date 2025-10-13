@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Leaf } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const formSchema = z.object({
   gi: z.number().min(0).max(100),
@@ -106,6 +107,61 @@ export default function GlycemicLoadCalculator() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <section
+        className="space-y-4 text-muted-foreground leading-relaxed"
+        itemScope
+        itemType="https://schema.org/Article"
+      >
+        <meta itemProp="headline" content="Glycemic Load Calculator – Understand GI vs GL and Real‑World Impact" />
+        <meta itemProp="author" content="MegaCalc Hub Team" />
+        <meta itemProp="about" content="How to use glycemic load to plan meals, manage blood sugar, pick smart carbs, and pair foods for better responses." />
+
+        <h2 itemProp="name" className="text-xl font-bold text-foreground">GI vs GL: What’s the Difference?</h2>
+        <p itemProp="description">GI measures speed; GL measures speed × amount. GL therefore predicts a meal’s real‑world impact more accurately.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">Practical Ways to Lower GL</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Choose minimally processed carbs (oats, brown rice, legumes, fruit).</li>
+          <li>Pair carbs with <strong>protein, fiber, and healthy fat</strong> to slow absorption.</li>
+          <li>Mind portion size—bigger servings raise GL even if GI is moderate.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Who Benefits from Tracking GL?</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>People focused on steady energy and appetite control.</li>
+          <li>Athletes balancing high‑ and low‑GI choices around training.</li>
+          <li>Those managing blood glucose under professional guidance.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+        <div className="space-y-2">
+          <p><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary underline">Carbohydrate Intake Calculator</Link></p>
+          <p><Link href="/category/health-fitness/intermittent-fasting-calculator" className="text-primary underline">Intermittent Fasting Calculator</Link></p>
+        </div>
+
+        <p className="italic">Educational use only. Work with your clinician for individualized nutrition targets.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">What Is Glycemic Load, Precisely?</h3>
+        <p>
+          <strong>GL = (GI × grams of available carbohydrate in the serving) ÷ 100.</strong> A food can have a high GI but a low GL if
+          the serving contains few carbs (e.g., watermelon). That’s why GL often aligns better with how meals feel in daily life.
+        </p>
+
+        <h3 className="font-semibold text-foreground mt-6">Sample GL of Common Foods (approximate)</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Apple (medium): low GL</li>
+          <li>White rice (1 cup cooked): medium–high GL depending on portion</li>
+          <li>Beans/lentils (1 cup cooked): low–medium GL with high fiber and protein</li>
+          <li>Whole‑grain bread (2 slices): medium GL—pair with lean protein for steadier response</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">FAQ</h3>
+        <div className="space-y-3">
+          <p><strong>Is GL all I need to track?</strong> No—overall nutrients and calories still matter. GL is one tool among many to shape meals.</p>
+          <p><strong>Can athletes use high‑GI foods?</strong> Around intense sessions, higher‑GI foods can be helpful for rapid fueling.</p>
+          <p><strong>Do protein and fat change GI?</strong> They don’t change GI of the carb itself, but they slow gastric emptying and lower the meal’s effective GL impact.</p>
+        </div>
+      </section>
     </div>
   );
 }

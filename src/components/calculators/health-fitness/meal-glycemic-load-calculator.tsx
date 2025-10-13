@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Leaf, PlusCircle, XCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const foodItemSchema = z.object({
   name: z.string().optional(),
@@ -109,6 +110,60 @@ export default function MealGlycemicLoadCalculator() {
             </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <section
+        className="space-y-4 text-muted-foreground leading-relaxed"
+        itemScope
+        itemType="https://schema.org/Article"
+      >
+        <meta itemProp="headline" content="Meal Glycemic Load Calculator – Build Lower‑GL Plates that Keep Energy Steady" />
+        <meta itemProp="author" content="MegaCalc Hub Team" />
+        <meta itemProp="about" content="How to calculate meal glycemic load, pair foods to reduce blood sugar spikes, portion strategies, examples, and FAQs." />
+
+        <h2 itemProp="name" className="text-xl font-bold text-foreground">How to Use Glycemic Load for Real Meals</h2>
+        <p itemProp="description">GL estimates a meal’s blood‑sugar impact by combining the <strong>Glycemic Index (GI)</strong> with the <strong>carbs in your serving</strong>. This tool sums GL across foods, giving you a clearer picture than single ingredients alone.</p>
+
+        <h3 className="font-semibold text-foreground mt-6">Meal GL Basics</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Formula:</strong> GL = GI × grams of available carbs ÷ 100 (per food); meal GL is the sum.</li>
+          <li><strong>Targets (per serving):</strong> 0–10 low, 11–19 medium, ≥20 high. For full meals, aim for a <strong>moderate total GL</strong> unless fueling hard training.</li>
+          <li><strong>Portions matter:</strong> Even low‑GI foods can create a high GL if servings are very large.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Lower‑GL Meal Building</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>Anchor the plate with <strong>protein</strong> (eggs, fish, chicken, tofu, Greek yogurt).</li>
+          <li>Use <strong>high‑fiber carbs</strong> (beans/lentils, oats, brown rice, whole‑grain breads, fruit) most of the time.</li>
+          <li>Add <strong>non‑starchy vegetables</strong> and <strong>healthy fats</strong> (olive oil, avocado, nuts) to slow digestion.</li>
+          <li>Save <strong>fast carbs</strong> (white rice, bread, sports drinks) for around intense workouts if needed.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Example Plates</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Burrito bowl:</strong> beans + rice (moderate portion) + chicken + salsa + avocado + lettuce → balanced, moderate GL.</li>
+          <li><strong>Breakfast:</strong> oats + milk/yogurt + berries + nuts → fiber‑rich, lower GL.</li>
+          <li><strong>Pasta night:</strong> whole‑grain pasta + turkey meat sauce + salad + olive‑oil dressing → moderate GL with protein and fiber.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">Special Situations</h3>
+        <ul className="list-disc ml-6 space-y-1">
+          <li><strong>Before hard training:</strong> slightly higher GL may help performance; prioritize easy‑to‑digest carbs.</li>
+          <li><strong>Desk days / weight loss phases:</strong> choose lower‑GL plates with more vegetables and legumes.</li>
+          <li><strong>Diabetes management:</strong> pair carbs with protein/fat, keep consistent portions, and follow clinician guidance.</li>
+        </ul>
+
+        <h3 className="font-semibold text-foreground mt-6">FAQ</h3>
+        <div className="space-y-3">
+          <p><strong>Is GL better than GI?</strong> GL better reflects real meals because it accounts for <em>how much</em> you eat.</p>
+          <p><strong>Do protein and fat reduce GL?</strong> They don’t change the GI of a carbohydrate, but they lower the <em>meal’s effective impact</em> by slowing absorption.</p>
+          <p><strong>Should I count GL forever?</strong> Use it as an <em>education tool</em>—once you learn which combinations keep you energized, you can eyeball portions.</p>
+        </div>
+
+        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+        <div className="space-y-2">
+          <p><Link href="/category/health-fitness/glycemic-load-calculator" className="text-primary underline">Single‑Food Glycemic Load</Link></p>
+          <p><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary underline">Carbohydrate Intake Calculator</Link></p>
+        </div>
+      </section>
     </div>
   );
 }
