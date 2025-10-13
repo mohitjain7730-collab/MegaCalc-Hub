@@ -123,6 +123,24 @@ export default function ParsecsToLightYearsConverter() {
             <p><Link href="/category/conversions/astronomical-units-to-kilometers-converter" className="text-primary underline">Astronomical Units to Kilometers Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Parsecs to Light-Years – Astrophysics Reference Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="Explain parsec vs light-year, when to prefer each unit, and how to report values in outreach and research settings." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Parsec vs Light‑Year</h3>
+          <p itemProp="description">Use <strong>parsecs</strong> in professional astronomy (tied to parallax) and <strong>light‑years</strong> for general audiences. Include both to maximize clarity.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Write: 8 pc (≈ 26.1 ly) to serve both expert and lay readers.</li>
+            <li>For catalogs, be consistent with the unit convention of the dataset.</li>
+            <li>Provide the cosmology parameters if distances depend on them.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

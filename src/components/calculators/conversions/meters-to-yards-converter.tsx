@@ -123,6 +123,24 @@ export default function MetersToYardsConverter() {
             <p><Link href="/category/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Meters to Yards – Sports & Field Dimensions Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="Context for converting meters to yards for track events, football fields, golf distances, and athletics." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Where yards are common</h3>
+          <p itemProp="description">Athletics and field sports often publish official distances in yards. Convert meters to yards when aligning with US rulebooks or broadcasts.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>100 m sprint ≈ 109.36 yd; 50 m pool length ≈ 54.68 yd.</li>
+            <li>American football field: 100 yd between goal lines (≈ 91.44 m).</li>
+            <li>Golf signage frequently uses yards; international events may list both.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

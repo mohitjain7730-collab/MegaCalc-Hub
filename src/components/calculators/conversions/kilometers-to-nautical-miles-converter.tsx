@@ -127,6 +127,24 @@ export default function KilometersToNauticalMilesConverter() {
             <p><Link href="/category/conversions/kilometers-to-miles-converter" className="text-primary underline">Kilometers to Miles Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Kilometers to Nautical Miles – Navigation Best Practices" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="Convert land-measured distances to nautical miles for chart plotting, waypoint planning, and coastal passages." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Planning with charts</h3>
+          <p itemProp="description">If a route is measured in kilometers on land maps, convert to nautical miles before plotting on marine or aeronautical charts to keep units consistent with bearings and VHF reports.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Waypoint lists should use <strong>nmi</strong> and <strong>knots</strong> together.</li>
+            <li>Cross-check distances with chart scale—many plotters display both units.</li>
+            <li>Add a margin for currents, swell, and traffic separation schemes.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

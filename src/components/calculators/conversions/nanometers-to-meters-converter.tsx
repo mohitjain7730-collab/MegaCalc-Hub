@@ -123,6 +123,24 @@ export default function NanometersToMetersConverter() {
             <p><Link href="/category/conversions/micrometers-to-millimeters-converter" className="text-primary underline">Micrometers to Millimeters Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Nanometers to Meters – Semiconductor & Photonics Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="Reporting nm-scale measurements with exponential notation, rounding, and context for chips and photonics." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Reporting nano-scale values</h3>
+          <p itemProp="description">When numbers are extremely small, display meters in scientific notation to preserve readability and precision (e.g., 550 nm = 5.50×10⁻⁷ m).</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Keep at least <strong>2–3 significant figures</strong> for nm measurements.</li>
+            <li>For spectra, include the medium (vacuum/air) if relevant.</li>
+            <li>Document instrument calibration and uncertainty where applicable.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

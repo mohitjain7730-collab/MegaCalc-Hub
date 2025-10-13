@@ -127,6 +127,24 @@ export default function FathomsToMetersConverter() {
             <p><Link href="/category/conversions/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Fathoms to Meters – Nautical Depth Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="How to convert fathoms to meters for charts, sonar logs, and harbor documentation with consistent units." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Use consistent depth units</h3>
+          <p itemProp="description">Modern electronic charts may show meters while legacy logs use fathoms. Convert once and keep the same unit across reports to avoid confusion during operations.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Mark soundings with the same datum as the chart (e.g., LAT, MLLW).</li>
+            <li>Record tide and draft separately; don’t mix them into depths.</li>
+            <li>Round to 0.1 m for general navigation; keep more precision for dredging.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

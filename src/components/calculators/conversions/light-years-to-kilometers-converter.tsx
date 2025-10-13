@@ -123,6 +123,24 @@ export default function LightYearsToKilometersConverter() {
             <p><Link href="/category/conversions/astronomical-units-to-kilometers-converter" className="text-primary underline">Astronomical Units to Kilometers Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Light-Years to Kilometers – Astronomy Data Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="Converting astronomical distances with scientific notation, significant figures, and context for publications and education." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Publish distances clearly</h3>
+          <p itemProp="description">For outreach or papers, include both the <strong>light-year</strong> figure and the <strong>kilometers in scientific notation</strong>. Provide a relatable comparison (e.g., Earth–Sun distance) to improve comprehension.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Include uncertainty and method (parallax, redshift, standard candle) where applicable.</li>
+            <li>Avoid mixing significant figures from different sources; round consistently.</li>
+            <li>Link to related units like <strong>parsec</strong> and <strong>AU</strong> for context.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

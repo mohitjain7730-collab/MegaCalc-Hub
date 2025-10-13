@@ -123,6 +123,24 @@ export default function YardsToMetersConverter() {
             <p><Link href="/category/conversions/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Yards to Meters – International Standards Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="How to convert yards to meters for international competitions, manufacturing drawings, and scientific reporting." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Publishing for a global audience</h3>
+          <p itemProp="description">Switch yards to meters when submitting to international federations or when sharing technical specs across borders.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Adopt meters and centimeters in official documentation and product datasheets.</li>
+            <li>If the source is in yards, include both units during a transition period.</li>
+            <li>Round consistently at the end of multi‑step calculations.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

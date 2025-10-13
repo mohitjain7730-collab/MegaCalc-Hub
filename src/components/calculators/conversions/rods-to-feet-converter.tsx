@@ -123,6 +123,24 @@ export default function RodsToFeetConverter() {
             <p><Link href="/category/conversions/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Rods to Feet – Historical Survey Units Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="Handling rods, poles, perches in modern documents and converting to feet with proper context." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Preserve provenance</h3>
+          <p itemProp="description">When transcribing historic surveys, retain the original text and show converted feet in parentheses to maintain authenticity and legal clarity.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>1 rod = 16.5 ft; 4 rods = 1 chain; 40 rods = 1 furlong.</li>
+            <li>For property disputes, cite both original and converted measurements.</li>
+            <li>Record measurement date and source to aid future audits.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

@@ -127,6 +127,25 @@ export default function NauticalMilesToKilometersConverter() {
             <p><Link href="/category/conversions/miles-to-kilometers-converter" className="text-primary underline">Miles to Kilometers Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Nautical Miles to Kilometers – Marine & Aviation Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="How and when to convert nautical miles to kilometers for maritime and flight planning, including knots and ETA considerations." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">When to use nmi → km</h3>
+          <p itemProp="description">Pilots and mariners plan in <strong>nautical miles (nmi)</strong> because 1 nmi corresponds to 1 minute of latitude and integrates cleanly with charts. Convert to <strong>kilometers</strong> for public reports, science communication, or local overland comparisons.</p>
+
+          <h4 className="font-semibold text-foreground">Operational tips</h4>
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Speed is commonly in <strong>knots</strong> (nmi/hour). For km/h, multiply knots by 1.852.</li>
+            <li>For ETA, convert distance and keep speed unit consistent to avoid errors.</li>
+            <li>Document the chart datum and route segments that include currents or wind drift.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

@@ -128,6 +128,24 @@ export default function KilometersToMilesConverter() {
             <p><Link href="/category/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Kilometers to Miles – Fitness & Mapping Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="How to convert kilometers to miles for workouts, cycling computers, and hiking maps, with rounding and pacing tips." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Make units consistent</h3>
+          <p itemProp="description">If your watch logs kilometers but your goal targets miles, convert once and keep the same unit across your plan, routes, and notes.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Training paces: keep either min/km or min/mi—avoid mixing within a session.</li>
+            <li>Cycling computers may switch between km and mi; align with group rides.</li>
+            <li>For social posts, include both units in parentheses for clarity.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

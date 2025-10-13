@@ -123,6 +123,25 @@ export default function MillimetersToInchesConverter() {
             <p><Link href="/category/conversions/centimeters-to-inches-converter" className="text-primary underline">Centimeters to Inches Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Millimeters to Inches – Engineering Notes" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="Guidelines for converting mm to inches for machining, tolerances, and CAD documentation without losing precision." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Converting for manufacturing</h3>
+          <p itemProp="description">When producing imperial drawings from metric designs, keep numeric integrity from CAD to shop floor.</p>
+
+          <h4 className="font-semibold text-foreground">Tips</h4>
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Do calculations in <strong>mm</strong>, then display inches only at the final step.</li>
+            <li>Show tolerances in the same unit as the dimension to avoid misinterpretation.</li>
+            <li>For fractional‑inch outputs (e.g., 3/8 in), convert decimals to the nearest common fraction only when required.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

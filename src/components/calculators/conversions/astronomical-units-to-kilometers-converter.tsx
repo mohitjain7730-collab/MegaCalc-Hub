@@ -128,6 +128,24 @@ export default function AstronomicalUnitsToKilometersConverter() {
             <p><Link href="/category/conversions/kilometers-to-miles-converter" className="text-primary underline">Kilometers to Miles Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Astronomical Units to Kilometers – Solar System Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="Converting AU to km for educational posters, mission planning summaries, and classroom materials." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Communicate scale effectively</h3>
+          <p itemProp="description">When teaching solar‑system scale, show AU for structure and kilometers for magnitude. Include both to help learners grasp the vast distances.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Use rounded km for public displays (e.g., Earth–Sun ≈ 150 million km).</li>
+            <li>For spacecraft mission briefs, keep more precision and the epoch of measurement.</li>
+            <li>Explain elliptical orbits—distances vary with time (perihelion/aphelion).</li>
+          </ul>
+        </section>
       </div>
     </div>
   );

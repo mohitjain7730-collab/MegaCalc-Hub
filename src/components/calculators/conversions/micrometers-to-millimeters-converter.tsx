@@ -123,6 +123,24 @@ export default function MicrometersToMillimetersConverter() {
             <p><Link href="/category/conversions/nanometers-to-meters-converter" className="text-primary underline">Nanometers to Meters Converter</Link></p>
           </div>
         </div>
+        <section
+          className="space-y-4 text-muted-foreground leading-relaxed"
+          itemScope
+          itemType="https://schema.org/Article"
+        >
+          <meta itemProp="headline" content="Micrometers to Millimeters – Laboratory & Optics Guide" />
+          <meta itemProp="author" content="MegaCalc Hub Team" />
+          <meta itemProp="about" content="How to convert µm to mm for microscopy, filters, and manufacturing tolerances with correct significant figures." />
+
+          <h3 itemProp="name" className="text-lg font-semibold text-foreground">Maintain significant figures</h3>
+          <p itemProp="description">For lab notebooks and QC reports, carry through the same number of significant figures when converting micrometer measurements to millimeters.</p>
+
+          <ul className="list-disc ml-6 space-y-1">
+            <li>Optics: report slit widths and wavelengths with scientific notation as needed.</li>
+            <li>Manufacturing: specify gauge and tolerance in one unit to avoid dual rounding.</li>
+            <li>Use the µ (mu) symbol or write "micrometer" to avoid confusion with "micron" in standards.</li>
+          </ul>
+        </section>
       </div>
     </div>
   );
