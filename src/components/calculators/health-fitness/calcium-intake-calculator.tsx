@@ -64,63 +64,324 @@ export default function CalciumIntakeCalculator() {
 
 export function CalciumIntakeGuide() {
   return (
-    <section className="space-y-4 text-muted-foreground leading-relaxed" itemScope itemType="https://schema.org/Article">
-      <meta itemProp="headline" content="Calcium Intake Calculator – Comprehensive Guide to Calcium, RDA, Bone Health, and Food Sources" />
-      <meta itemProp="author" content="MegaCalc Hub Team" />
-      <meta itemProp="about" content="What calcium does, daily requirements by age/sex, absorption and vitamin D, oxalates/phytates, dairy vs plant sources, supplementation, safety, and meal planning." />
+    <section
+  className="space-y-4 text-muted-foreground leading-relaxed"
+  itemScope
+  itemType="https://schema.org/Article"
+>
+  <meta
+    itemProp="headline"
+    content="Calcium Intake Calculator – Complete Guide to Daily Requirements, Bone Health, and Food Sources"
+  />
+  <meta itemProp="author" content="MegaCalc Hub Team" />
+  <meta
+    itemProp="about"
+    content="Understand your calcium needs by age, gender, and life stage. Learn about absorption factors, vitamin D interaction, oxalates, food vs supplements, safety, and how to maintain optimal bone density."
+  />
 
-      <h2 itemProp="name" className="text-xl font-bold text-foreground">Calcium 101: Structure, Signaling, and Health</h2>
-      <p itemProp="description">Calcium is the most abundant mineral in the body. About 99% resides in bones and teeth, while 1% supports muscle contraction, nerve transmission, blood clotting, and intracellular signaling. Adequate intake is essential across the lifespan—during growth, pregnancy, peak bone accrual, and aging.</p>
+  <h2 itemProp="name" className="text-xl font-bold text-foreground">
+    Calcium Intake: Why It Matters and How to Get It Right
+  </h2>
+  <p itemProp="description">
+    Calcium is one of the most essential minerals for human health, playing a
+    critical role in maintaining strong bones and teeth, regulating muscle
+    contractions, supporting nerve transmission, and aiding in blood clotting.
+    It’s not just about milk — your daily calcium intake depends on your age,
+    lifestyle, vitamin D levels, and the foods you eat. This comprehensive guide
+    explains <strong>how much calcium you need</strong>, where to get it from,
+    how absorption works, and how to use the <strong>Calcium Intake
+    Calculator</strong> to track your intake effectively.
+  </p>
 
-      <h3 className="font-semibold text-foreground mt-6">Daily Requirements (Simplified)</h3>
-      <ul className="list-disc ml-6 space-y-1">
-        <li>1–3 years: ~700 mg/day</li>
-        <li>4–8 years: ~1,000 mg/day</li>
-        <li>9–18 years: ~1,300 mg/day (peak accrual)</li>
-        <li>19–50 years: ~1,000 mg/day</li>
-        <li>51+ years: ~1,200 mg/day (women 51+, men 71+)</li>
-      </ul>
+  <h3 className="font-semibold text-foreground mt-6">
+    Recommended Daily Calcium Intake (RDA)
+  </h3>
+  <p>
+    The recommended dietary allowance (RDA) for calcium varies by age, gender,
+    and life stage. These values are based on guidelines from the
+    <strong> National Institutes of Health (NIH)</strong> and
+    <strong> World Health Organization (WHO)</strong>.
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Infants 0–6 months: 200 mg/day</li>
+    <li>Infants 7–12 months: 260 mg/day</li>
+    <li>Children 1–3 years: 700 mg/day</li>
+    <li>Children 4–8 years: 1,000 mg/day</li>
+    <li>Adolescents 9–18 years: 1,300 mg/day</li>
+    <li>Adults 19–50 years: 1,000 mg/day</li>
+    <li>Women 51+ years: 1,200 mg/day</li>
+    <li>Men 71+ years: 1,200 mg/day</li>
+    <li>Pregnant & Lactating Teens: 1,300 mg/day</li>
+    <li>Pregnant & Lactating Adults: 1,000 mg/day</li>
+  </ul>
 
-      <h3 className="font-semibold text-foreground mt-6">Absorption: Vitamin D, Meal Context, and Bioavailability</h3>
-      <ul className="list-disc ml-6 space-y-1">
-        <li><strong>Vitamin D</strong> increases intestinal calcium absorption. See the <Link href="/category/health-fitness/vitamin-d-sun-exposure-calculator" className="text-primary underline">Vitamin D Sun Exposure Calculator</Link>.</li>
-        <li><strong>Oxalates/phytates</strong> in spinach, beet greens, and some grains bind calcium, reducing absorption. Pair with lower‑oxalate veggies.</li>
-        <li><strong>Calcium carbonate</strong> supplements absorb best with meals; <strong>calcium citrate</strong> can be taken with or without food.</li>
-      </ul>
+  <h3 className="font-semibold text-foreground mt-6">
+    Why Calcium Is So Important
+  </h3>
+  <p>
+    Around <strong>99% of your body’s calcium</strong> is stored in bones and
+    teeth, providing them with structure and strength. The remaining 1% is
+    involved in crucial biological functions such as:
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Muscle contraction:</strong> Calcium ions enable muscles to
+      contract, including the heart.
+    </li>
+    <li>
+      <strong>Nerve function:</strong> Calcium helps transmit nerve impulses.
+    </li>
+    <li>
+      <strong>Blood clotting:</strong> It activates enzymes that are essential
+      for normal coagulation.
+    </li>
+    <li>
+      <strong>Cell communication:</strong> Acts as a messenger for many hormonal
+      and enzymatic reactions.
+    </li>
+  </ul>
+  <p>
+    When dietary calcium is low, the body pulls calcium from the bones to
+    maintain blood levels — leading to weakened bone density and increased risk
+    of <strong>osteoporosis</strong> over time.
+  </p>
 
-      <h3 className="font-semibold text-foreground mt-6">Food Sources</h3>
-      <ul className="list-disc ml-6 space-y-1">
-        <li><strong>Dairy:</strong> milk, yogurt, cheese (~300 mg per cup of milk/yogurt).</li>
-        <li><strong>Fortified:</strong> plant milks (soy/almond/oat), calcium‑set tofu, fortified juices/cereals.</li>
-        <li><strong>Fish with bones:</strong> canned salmon/sardines.</li>
-        <li><strong>Vegetables & legumes:</strong> kale, bok choy, white beans; note oxalate content.</li>
-      </ul>
+  <h3 className="font-semibold text-foreground mt-6">
+    Calcium Absorption and Vitamin D
+  </h3>
+  <p>
+    Your body can only use the calcium it absorbs. Vitamin D plays a crucial
+    role in this process — it promotes calcium absorption in the gut and
+    maintains appropriate blood levels. Without adequate vitamin D, even a
+    calcium-rich diet won’t provide full benefits.
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Vitamin D synergy:</strong> Get regular sun exposure or check out
+      the{" "}
+      <Link
+        href="/category/health-fitness/vitamin-d-sun-exposure-calculator"
+        className="text-primary underline"
+      >
+        Vitamin D Sun Exposure Calculator
+      </Link>{" "}
+      to estimate your daily requirements.
+    </li>
+    <li>
+      <strong>Meal timing:</strong> Calcium carbonate absorbs best when taken
+      with food, while calcium citrate can be taken anytime.
+    </li>
+    <li>
+      <strong>Absorption limit:</strong> The body absorbs calcium most
+      efficiently when doses are under 500 mg at a time.
+    </li>
+  </ul>
 
-      <h3 className="font-semibold text-foreground mt-6">Sample Menus to Hit Targets</h3>
-      <ul className="list-disc ml-6 space-y-1">
-        <li>Breakfast: fortified soy milk latte + fortified cereal + fruit (≈400–500 mg)</li>
-        <li>Lunch: tofu stir‑fry with bok choy; sesame dressing (≈300–400 mg)</li>
-        <li>Dinner: salmon with edible bones + kale salad (≈400 mg)</li>
-        <li>Snack: yogurt or skyr (≈200–300 mg)</li>
-      </ul>
+  <h3 className="font-semibold text-foreground mt-6">
+    Foods Rich in Calcium
+  </h3>
+  <p>
+    Getting calcium from food is always preferred over supplements. Here’s a
+    breakdown of top calcium sources across various diets:
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Dairy:</strong> Milk, yogurt, cheese (≈300 mg per cup of milk or
+      yogurt)
+    </li>
+    <li>
+      <strong>Fortified foods:</strong> Soy milk, almond milk, orange juice, and
+      breakfast cereals fortified with calcium
+    </li>
+    <li>
+      <strong>Leafy greens:</strong> Kale, collard greens, bok choy, and turnip
+      greens (avoid high-oxalate ones like spinach)
+    </li>
+    <li>
+      <strong>Legumes:</strong> Chickpeas, lentils, and white beans
+    </li>
+    <li>
+      <strong>Fish with bones:</strong> Sardines and salmon (canned with bones)
+    </li>
+    <li>
+      <strong>Tofu and tempeh:</strong> Especially if made with calcium sulfate
+    </li>
+    <li>
+      <strong>Nuts & seeds:</strong> Almonds, sesame seeds, and chia seeds
+    </li>
+  </ul>
 
-      <h3 className="font-semibold text-foreground mt-6">Supplementation & Safety</h3>
-      <ul className="list-disc ml-6 space-y-1">
-        <li>Prefer food first; if supplementing, divide doses (≤500 mg per serving) for better absorption.</li>
-        <li>Discuss total calcium (diet + supplements) with your clinician if you have kidney stones or vascular calcification risk.</li>
-      </ul>
+  <h3 className="font-semibold text-foreground mt-6">
+    Oxalates, Phytates, and Absorption Inhibitors
+  </h3>
+  <p>
+    Certain compounds in plant foods — especially <strong>oxalates</strong> and
+    <strong> phytates</strong> — can bind calcium and make it less absorbable.
+    Foods high in oxalates include spinach, beet greens, and rhubarb, while
+    phytates are found in whole grains and legumes. You don’t need to avoid them
+    entirely — instead, pair them with low-oxalate vegetables and vitamin
+    C-rich foods to boost absorption.
+  </p>
+  <p>
+    Cooking, soaking, or fermenting these foods can also reduce their
+    anti-nutrient levels and improve bioavailability.
+  </p>
 
-      <h3 className="font-semibold text-foreground mt-6">How the Calculator Works</h3>
-      <p>The calculator maps your age and sex to simplified RDAs. These are population guidelines; individual needs vary with vitamin D status, absorption, training, and medical history.</p>
+  <h3 className="font-semibold text-foreground mt-6">
+    Calcium Needs in Special Situations
+  </h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Pregnancy & breastfeeding:</strong> The body becomes more
+      efficient at absorbing calcium, but maintaining intake (~1,000–1,300 mg)
+      is crucial to protect maternal bone density.
+    </li>
+    <li>
+      <strong>Postmenopausal women:</strong> Estrogen decline accelerates bone
+      loss, increasing calcium and vitamin D needs.
+    </li>
+    <li>
+      <strong>Athletes:</strong> High physical stress and sweat calcium losses
+      may warrant slightly higher intakes.
+    </li>
+    <li>
+      <strong>Vegans:</strong> Should rely on fortified plant milks, tofu, and
+      calcium-set foods to meet RDA levels.
+    </li>
+  </ul>
 
-      <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
-      <div className="space-y-2">
-        <p><Link href="/category/health-fitness/vitamin-d-sun-exposure-calculator" className="text-primary underline">Vitamin D Sun Exposure Calculator</Link></p>
-        <p><Link href="/category/health-fitness/magnesium-intake-calculator" className="text-primary underline">Magnesium Intake Calculator</Link></p>
-        <p><Link href="/category/health-fitness/fiber-intake-calculator" className="text-primary underline">Fiber Intake Calculator</Link></p>
-      </div>
-      <p className="italic">Educational use only; consult your healthcare professional for individualized recommendations.</p>
-    </section>
+  <h3 className="font-semibold text-foreground mt-6">
+    Sample Daily Menus for Adequate Calcium
+  </h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Breakfast:</strong> Oatmeal with fortified soy milk + chia seeds +
+      orange slices (≈400 mg)
+    </li>
+    <li>
+      <strong>Lunch:</strong> Chickpea salad with kale, tahini dressing, and a
+      small yogurt (≈400 mg)
+    </li>
+    <li>
+      <strong>Dinner:</strong> Grilled salmon with bones + sautéed bok choy +
+      quinoa (≈500 mg)
+    </li>
+    <li>
+      <strong>Snack:</strong> Handful of almonds or a fortified smoothie (≈200
+      mg)
+    </li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">
+    Calcium Supplements: When and How to Use Them
+  </h3>
+  <p>
+    Supplements are useful when dietary intake is insufficient, but they’re not
+    a substitute for a balanced diet. Always prioritize food-based sources first
+    and consult a healthcare provider before adding supplements.
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Calcium carbonate:</strong> Higher elemental calcium but needs
+      stomach acid — best taken with meals.
+    </li>
+    <li>
+      <strong>Calcium citrate:</strong> Easier to digest, suitable for people on
+      antacids or with absorption issues.
+    </li>
+    <li>
+      <strong>Dosage tip:</strong> Split doses into ≤500 mg portions for better
+      uptake.
+    </li>
+    <li>
+      <strong>Safety:</strong> Excessive supplementation ({'>'}2,000–2,500 mg/day)
+      may increase risk of kidney stones or vascular calcification.
+    </li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">
+    Signs of Calcium Deficiency
+  </h3>
+  <p>
+    Mild calcium deficiency may go unnoticed, but chronic low levels can lead to
+    muscle cramps, brittle nails, tingling in fingers, and bone demineralization
+    over time. In children, it can impair growth; in adults, it raises the risk
+    of osteoporosis and fractures.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">
+    How the Calculator Works
+  </h3>
+  <p>
+    The <strong>Calcium Intake Calculator</strong> estimates your recommended
+    calcium intake based on age, sex, and physiological stage. It compares your
+    dietary inputs (like milk, tofu, nuts, etc.) with RDA levels to show how
+    close you are to meeting your daily needs. These are general guidelines; for
+    medical advice or bone health concerns, consult a registered dietitian or
+    healthcare professional.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">Quick FAQs</h3>
+  <div className="space-y-3">
+    <p>
+      <strong>Can you get too much calcium?</strong> Yes. Excessive intake from
+      supplements may lead to kidney stones and affect heart health. Stick to
+      the upper limit (2,000–2,500 mg/day).
+    </p>
+    <p>
+      <strong>Do plant sources provide enough calcium?</strong> Yes, especially
+      when you include fortified plant milks, tofu, and leafy greens low in
+      oxalates.
+    </p>
+    <p>
+      <strong>Does caffeine or sodium affect calcium?</strong> High caffeine and
+      sodium intake can increase calcium excretion. Balance with hydration and
+      nutrient-rich foods.
+    </p>
+  </div>
+
+  <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
+  <div className="space-y-2">
+    <p>
+      <Link
+        href="/category/health-fitness/vitamin-d-sun-exposure-calculator"
+        className="text-primary underline"
+      >
+        Vitamin D Sun Exposure Calculator
+      </Link>
+    </p>
+    <p>
+      <Link
+        href="/category/health-fitness/magnesium-intake-calculator"
+        className="text-primary underline"
+      >
+        Magnesium Intake Calculator
+      </Link>
+    </p>
+    <p>
+      <Link
+        href="/category/health-fitness/fiber-intake-calculator"
+        className="text-primary underline"
+      >
+        Fiber Intake Calculator
+      </Link>
+    </p>
+    <p>
+      <Link
+        href="/category/health-fitness/bmi-calculator"
+        className="text-primary underline"
+      >
+        BMI Calculator
+      </Link>
+    </p>
+  </div>
+
+  <p className="italic">
+    Disclaimer: This guide is for educational purposes only. Calcium needs vary
+    by individual health status. Always consult your doctor or registered
+    dietitian before starting supplements or major dietary changes.
+  </p>
+</section>
   );
 }
 
