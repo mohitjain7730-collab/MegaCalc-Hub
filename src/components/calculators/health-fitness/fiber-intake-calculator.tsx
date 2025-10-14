@@ -203,8 +203,8 @@ export function FiberIntakeGuide() {
   <h3 className="font-semibold text-foreground mt-6">FAQ</h3>
   <div className="space-y-3">
     <p><strong>How much fiber should I eat per day?</strong> Most adults need 25–38 grams daily depending on gender and calorie intake. Our calculator provides a personalized estimate.</p>
-    <p><strong>What’s the best source of fiber?</strong> Legumes, fruits with skin, whole grains, nuts, and seeds offer a mix of soluble and insoluble fiber.</p>
-    <p><strong>Can I eat too much fiber?</strong> Extremely high intakes (>60 g/day) may cause bloating or reduce mineral absorption. Increase gradually.</p>
+    <p><strong>What is the best source of fiber?</strong> Legumes, fruits with skin, whole grains, nuts, and seeds offer a mix of soluble and insoluble fiber.</p>
+    <p><strong>Can I eat too much fiber?</strong> Extremely high intakes ({'>'}60 g/day) may cause bloating or reduce mineral absorption. Increase gradually.</p>
     <p><strong>Does fiber help with weight loss?</strong> Yes, fiber increases satiety, slows digestion, and stabilizes blood sugar, all supporting healthy weight management.</p>
     <p><strong>Does cooking reduce fiber?</strong> Cooking slightly softens fiber but doesn’t significantly reduce total content. Steaming retains the most fiber.</p>
   </div>
