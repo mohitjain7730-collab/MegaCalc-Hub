@@ -195,7 +195,6 @@ export function OracGuide() {
   <h3 className="font-semibold text-foreground mt-6">Related Calculators</h3>
   <div className="space-y-2">
     <p><Link href="/category/health-fitness/fiber-intake-calculator" className="text-primary underline">Fiber Intake Calculator</Link></p>
-    <p><Link href="/category/health-fitness/vitamin-c-requirement-calculator" className="text-primary underline">Vitamin C Requirement Calculator</Link></p>
     <p><Link href="/category/health-fitness/zinc-requirement-calculator" className="text-primary underline">Zinc Requirement Calculator</Link></p>
     <p><Link href="/category/health-fitness/magnesium-intake-calculator" className="text-primary underline">Magnesium Intake Calculator</Link></p>
   </div>

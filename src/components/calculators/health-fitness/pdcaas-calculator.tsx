@@ -185,15 +185,6 @@ export function PdcaasGuide() {
     <p><strong>Is PDCAAS the same as protein digestibility?</strong> No. Digestibility is one factor; PDCAAS also includes amino acid balance.</p>
     <p><strong>Which is better: PDCAAS or DIAAS?</strong> DIAAS is more precise scientifically, but PDCAAS is the official labeling standard in most countries.</p>
   </div>
-
-  <h3 className="font-semibold text-foreground mt-6">Related Calculators</h3>
-  <div className="space-y-2">
-    <p><Link href="/category/health-fitness/protein-requirement-calculator" className="text-primary underline">Daily Protein Requirement Calculator</Link></p>
-    <p><Link href="/category/health-fitness/amino-acid-ratio-calculator" className="text-primary underline">Amino Acid Ratio Calculator</Link></p>
-    <p><Link href="/category/health-fitness/diaas-calculator" className="text-primary underline">DIAAS (Digestible Amino Acid Score) Calculator</Link></p>
-    <p><Link href="/category/health-fitness/muscle-protein-synthesis-calculator" className="text-primary underline">Muscle Protein Synthesis Calculator</Link></p>
-  </div>
-
   <h3 className="font-semibold text-foreground mt-6">Quick Takeaways</h3>
   <ul className="list-disc ml-6 space-y-1">
     <li>PDCAAS measures protein quality based on amino acid profile and digestibility.</li>
