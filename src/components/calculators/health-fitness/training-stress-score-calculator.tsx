@@ -277,26 +277,6 @@ export function TssGuide() {
 
   <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
   <div className="space-y-2">
-    <p>
-      <Link href="/category/fitness/ftp-calculator" className="text-primary underline">
-        FTP (Functional Threshold Power) Calculator
-      </Link>
-    </p>
-    <p>
-      <Link href="/category/fitness/heart-rate-zone-calculator" className="text-primary underline">
-        Heart Rate Zone Calculator
-      </Link>
-    </p>
-    <p>
-      <Link href="/category/fitness/trimp-calculator" className="text-primary underline">
-        TRIMP (Training Impulse) Calculator
-      </Link>
-    </p>
-    <p>
-      <Link href="/category/fitness/calorie-burn-calculator" className="text-primary underline">
-        Calorie Burn Calculator
-      </Link>
-    </p>
   </div>
 
   <p className="italic">
