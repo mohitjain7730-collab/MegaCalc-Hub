@@ -215,7 +215,6 @@ export function VitaminDGuide() {
     <p><Link href="/category/health-fitness/calcium-intake-calculator" className="text-primary underline">Calcium Intake Calculator</Link></p>
     <p><Link href="/category/health-fitness/magnesium-intake-calculator" className="text-primary underline">Magnesium Intake Calculator</Link></p>
     <p><Link href="/category/health-fitness/zinc-requirement-calculator" className="text-primary underline">Zinc Requirement Calculator</Link></p>
-    <p><Link href="/category/health-fitness/antioxidant-orac-calculator" className="text-primary underline">Daily Antioxidant (ORAC) Goal Calculator</Link></p>
   </div>
 
   <h3 className="font-semibold text-foreground mt-6">Quick Takeaways</h3>
