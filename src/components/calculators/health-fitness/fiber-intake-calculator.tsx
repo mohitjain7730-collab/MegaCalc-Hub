@@ -211,10 +211,8 @@ export function FiberIntakeGuide() {
 
   <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
   <div className="space-y-2">
-    <p><Link href="/category/health-fitness/calorie-intake-calculator" className="text-primary underline">Calorie Intake Calculator</Link></p>
     <p><Link href="/category/health-fitness/magnesium-intake-calculator" className="text-primary underline">Magnesium Intake Calculator</Link></p>
     <p><Link href="/category/health-fitness/zinc-requirement-calculator" className="text-primary underline">Zinc Requirement Calculator</Link></p>
-    <p><Link href="/category/health-fitness/water-intake-calculator" className="text-primary underline">Water Intake Calculator</Link></p>
   </div>
 
   <h3 className="font-semibold text-foreground mt-6">
