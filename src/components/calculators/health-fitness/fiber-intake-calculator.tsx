@@ -10,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { Utensils } from 'lucide-react';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({ calories: z.number().positive() });
 type FormValues = z.infer<typeof formSchema>;
@@ -41,6 +42,7 @@ export default function FiberIntakeCalculator() {
         </Card>
       )}
       <FiberIntakeGuide />
+      <EmbedWidget calculatorSlug="fiber-intake-calculator" calculatorName="Fiber Intake Calculator" />
     </div>
   );
 }

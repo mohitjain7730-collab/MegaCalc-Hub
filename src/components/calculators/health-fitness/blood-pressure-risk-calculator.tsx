@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   systolic: z.number().positive(),
@@ -151,6 +152,7 @@ export default function BloodPressureRiskCalculator() {
       <div className="space-y-6">
         <RelatedCalculators />
         <BloodPressureGuide />
+        <EmbedWidget calculatorSlug="blood-pressure-risk-calculator" calculatorName="Blood Pressure Risk Calculator" />
       </div>
     </div>
   );

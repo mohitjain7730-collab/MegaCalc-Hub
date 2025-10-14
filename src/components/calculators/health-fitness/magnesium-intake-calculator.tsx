@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { Utensils } from 'lucide-react';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({ age: z.number().int().min(1).max(120), sex: z.enum(['male', 'female']) });
 type FormValues = z.infer<typeof formSchema>;
@@ -53,6 +54,7 @@ export default function MagnesiumIntakeCalculator() {
         </Card>
       )}
       <MagnesiumIntakeGuide />
+      <EmbedWidget calculatorSlug="magnesium-intake-calculator" calculatorName="Magnesium Intake Calculator" />
     </div>
   );
 }

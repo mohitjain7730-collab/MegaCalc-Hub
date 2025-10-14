@@ -13,6 +13,7 @@ import { Droplets } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   tdee: z.number().positive(),
@@ -208,6 +209,8 @@ export default function FatIntakeCalculator() {
           <p><strong>Should I avoid all seed oils?</strong> Current evidence supports using moderate amounts of unsaturated oils within an overall balanced diet.</p>
         </div>
       </section>
+      
+      <EmbedWidget calculatorSlug="fat-intake-calculator" calculatorName="Fat Intake Calculator" />
     </div>
   );
 }

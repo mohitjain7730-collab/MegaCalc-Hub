@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Droplets } from 'lucide-react';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   glucose: z.number().positive(),
@@ -108,6 +109,7 @@ export default function BloodSugarToHbA1cConverter() {
       <div className="space-y-6">
         <RelatedCalculators />
         <BloodSugarGuide />
+        <EmbedWidget calculatorSlug="blood-sugar-to-hba1c-converter" calculatorName="Blood Sugar to HbA1c Converter" />
       </div>
     </div>
   );

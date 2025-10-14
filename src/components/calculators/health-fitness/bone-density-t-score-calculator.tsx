@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Bone } from 'lucide-react';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   bmd: z.number().positive(),
@@ -177,6 +178,7 @@ export default function BoneDensityTScoreCalculator() {
       <div className="space-y-6">
         <RelatedCalculators />
         <BoneDensityGuide />
+        <EmbedWidget calculatorSlug="bone-density-t-score-calculator" calculatorName="Bone Density T-Score Calculator" />
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Utensils } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const activityLevels = {
   low: { min: 2, max: 3, description: 'Low Intensity / Sedentary' },
@@ -194,9 +195,11 @@ export default function CarbohydrateIntakeCalculator() {
         <div className="space-y-3">
           <p><strong>Do carbs make you gain fat?</strong> Fat gain comes from a sustained calorie surplus. Carbs help training and can aid appetite control when paired with fiber and protein.</p>
           <p><strong>Is low‑carb best?</strong> It depends on preference and sport. Many people perform and feel better with moderate carbs matched to training.</p>
-          <p><strong>What about late‑night carbs?</strong> They’re fine if they fit your calories and sleep; many athletes recover well with an evening carb + protein meal.</p>
+          <p><strong>What about late‑night carbs?</strong> They're fine if they fit your calories and sleep; many athletes recover well with an evening carb + protein meal.</p>
         </div>
       </section>
+      
+      <EmbedWidget calculatorSlug="carbohydrate-intake-calculator" calculatorName="Carbohydrate Intake Calculator" />
     </div>
   );
 }

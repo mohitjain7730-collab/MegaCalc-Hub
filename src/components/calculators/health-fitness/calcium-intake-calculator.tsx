@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { Utensils } from 'lucide-react';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   age: z.number().int().min(1).max(120),
@@ -58,6 +59,7 @@ export default function CalciumIntakeCalculator() {
         </Card>
       )}
       <CalciumIntakeGuide />
+      <EmbedWidget calculatorSlug="calcium-intake-calculator" calculatorName="Calcium Intake Calculator" />
     </div>
   );
 }

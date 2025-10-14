@@ -13,6 +13,7 @@ import { Clock } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   protocol: z.enum(['16:8', '18:6', '20:4']),
@@ -160,6 +161,8 @@ export default function IntermittentFastingCalculator() {
           <p><strong>Should I fast daily?</strong> Many do; others cycle IF 3–5 days/week. Choose what fits your routine and recovery.</p>
         </div>
       </section>
+      
+      <EmbedWidget calculatorSlug="intermittent-fasting-calculator" calculatorName="Intermittent Fasting Calculator" />
     </div>
   );
 }

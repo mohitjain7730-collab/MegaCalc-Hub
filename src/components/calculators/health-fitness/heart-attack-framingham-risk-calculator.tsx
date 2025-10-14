@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   age: z.number().positive(),
@@ -212,6 +213,7 @@ export default function HeartAttackFraminghamRiskCalculator() {
       <div className="space-y-6">
         <RelatedCalculators />
         <FraminghamRiskGuide />
+        <EmbedWidget calculatorSlug="heart-attack-framingham-risk-calculator" calculatorName="Heart Attack (Framingham) Risk Calculator" />
       </div>
     </div>
   );

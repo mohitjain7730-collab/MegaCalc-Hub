@@ -10,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Clock } from 'lucide-react';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   workHours: z.number().min(0).max(24),
@@ -130,6 +131,7 @@ export default function WorkLifeBalanceTimeAllocationCalculator() {
       <div className="space-y-6">
         <RelatedCalculators />
         <WorkLifeBalanceGuide />
+        <EmbedWidget calculatorSlug="work-life-balance-time-allocation-calculator" calculatorName="Work-Life Balance Time Allocation Calculator" />
       </div>
     </div>
   );

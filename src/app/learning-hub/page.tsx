@@ -2,8 +2,7 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { articles } from '@/lib/learning-hub-articles';
-import { LearningHubCard } from '@/components/learning-hub-card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function LearningHubPage() {
   return (
@@ -20,14 +19,30 @@ export default function LearningHubPage() {
             Learning Hub
           </h1>
           <p className="mt-2 text-lg text-muted-foreground">
-            Expand your knowledge with our collection of finance and science articles.
+            Expand your knowledge with our collection of finance and health articles.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {articles.map((article) => (
-            <LearningHubCard key={article.slug} {...article} />
-          ))}
+          <Link href="/learning-hub/finance" className="group block h-full">
+            <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
+              <CardHeader>
+                <CardTitle>Finance</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Learn about loans, interest calculations, and financial planning.</p>
+              </CardContent>
+            </Card>
+          </Link>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle>Health</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">Coming soon...</p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Utensils } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const activityLevels = {
     sedentary: 1.2,
@@ -210,6 +211,8 @@ export default function KetoMacroCalculator() {
           <p><strong>Will keto hurt performance?</strong> For high‑intensity sports, many perform better with strategic carbs; for steady‑state, keto can feel fine once adapted.</p>
         </div>
       </section>
+      
+      <EmbedWidget calculatorSlug="keto-macro-calculator" calculatorName="Keto Macro Calculator" />
     </div>
   );
 }

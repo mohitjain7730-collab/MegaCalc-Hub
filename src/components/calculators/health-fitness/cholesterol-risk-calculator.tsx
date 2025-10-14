@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Activity } from 'lucide-react';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   totalCholesterol: z.number().positive(),
@@ -152,6 +153,7 @@ export default function CholesterolRiskCalculator() {
       <div className="space-y-6">
         <RelatedCalculators />
         <CholesterolGuide />
+        <EmbedWidget calculatorSlug="cholesterol-risk-calculator" calculatorName="Cholesterol Risk Calculator" />
       </div>
     </div>
   );

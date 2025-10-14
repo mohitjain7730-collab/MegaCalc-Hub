@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Zap } from 'lucide-react';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   age: z.number().positive(),
@@ -172,6 +173,7 @@ export default function DiabetesRiskType2Calculator() {
       <div className="space-y-6">
         <RelatedCalculators />
         <DiabetesRiskGuide />
+        <EmbedWidget calculatorSlug="diabetes-risk-type2-calculator" calculatorName="Diabetes Risk (Type 2) Calculator" />
       </div>
     </div>
   );

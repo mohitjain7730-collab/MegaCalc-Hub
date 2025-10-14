@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Flame } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
@@ -203,6 +204,8 @@ export default function BmrCalculator() {
           <p><Link href="/category/health-fitness/fat-intake-calculator" className="text-primary underline">Fat Intake Calculator</Link></p>
         </div>
       </section>
+      
+      <EmbedWidget calculatorSlug="bmr-calculator" calculatorName="Basal Metabolic Rate (BMR) Calculator" />
     </div>
   );
 }

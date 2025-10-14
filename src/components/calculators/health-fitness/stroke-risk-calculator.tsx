@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Activity } from 'lucide-react';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   age: z.number().positive(),
@@ -192,6 +193,7 @@ export default function StrokeRiskCalculator() {
       <div className="space-y-6">
         <RelatedCalculators />
         <StrokeRiskGuide />
+        <EmbedWidget calculatorSlug="stroke-risk-calculator" calculatorName="Stroke Risk Calculator" />
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Scale, ArrowUp } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   weight: z.number().positive(),
@@ -200,6 +201,8 @@ export default function BmiCalculator() {
           <p><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs (TDEE)</Link></p>
         </div>
       </section>
+      
+      <EmbedWidget calculatorSlug="bmi-calculator" calculatorName="Body Mass Index (BMI) Calculator" />
     </div>
   );
 }

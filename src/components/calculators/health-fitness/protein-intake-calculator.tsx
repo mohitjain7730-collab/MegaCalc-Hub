@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Utensils } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const goals = {
   sedentary: { min: 0.8, max: 1.2, description: 'Sedentary / Maintenance' },
@@ -266,6 +267,8 @@ export default function ProteinIntakeCalculator() {
           specific dietary needs, work with a qualified healthcare professional or registered dietitian.
         </p>
       </section>
+      
+      <EmbedWidget calculatorSlug="protein-intake-calculator" calculatorName="Protein Intake Calculator" />
     </div>
   );
 }
