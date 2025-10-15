@@ -27,22 +27,13 @@ export default function LearningHubPage() {
           <Link href="/learning-hub/finance" className="group block h-full">
             <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
               <CardHeader>
-                <CardTitle>Finance</CardTitle>
+                <CardTitle>Health & Fitness</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Learn about loans, interest calculations, and financial planning.</p>
+                <p className="text-muted-foreground">Evidence‑informed guides on BMI and body metrics, with practical tips for training, nutrition, and healthy weight management.</p>
               </CardContent>
             </Card>
           </Link>
-          
-          <Card>
-            <CardHeader>
-              <CardTitle>Health</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">Coming soon...</p>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </div>

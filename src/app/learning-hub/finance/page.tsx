@@ -23,38 +23,18 @@ export default function FinancePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Link href="/learning-hub/finance/how-to-calculate-loan-interest" className="group block h-full">
-            <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-lg">How to Calculate Loan Interest</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm">Learn the different methods to calculate loan interest and understand how it affects your payments.</p>
-              </CardContent>
-            </Card>
-          </Link>
-          
-          <Link href="/learning-hub/finance/fixed-vs-floating-rate-loans" className="group block h-full">
-            <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-lg">Fixed vs Floating Rate Loans</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm">Compare the pros and cons of fixed and floating interest rate loans to make informed borrowing decisions.</p>
-              </CardContent>
-            </Card>
-          </Link>
-          
-          <Link href="/learning-hub/finance/common-loan-mistakes" className="group block h-full">
-            <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-lg">Common Loan Mistakes</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm">Avoid these common pitfalls when taking out loans and protect your financial future.</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <Link href="/learning-hub/finance/what-is-bmi" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">What is BMI? Understanding Body Mass Index</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Science, formula, history, and medical context of BMI vs other metrics.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/how-to-calculate-your-bmi" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">How to Calculate Your BMI: Step by Step Guide</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Manual calculation, online tools, metric vs imperial, and error tips.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/bmi-ranges-meaning" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">BMI Ranges: What Do Your Scores Mean?</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Adult & youth categories, regional guidelines, and interpretation.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/bmi-vs-body-fat-percentage" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">BMI vs. Body Fat Percentage: Key Differences</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Compare BMI to body fat %, waist-to-hip ratio, and Ponderal Index.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/health-risks-of-bmi" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">Health Risks Associated with High or Low BMI</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Evidence for heart disease, diabetes, cancer, fertility; caveats included.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/bmi-and-children" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">BMI and Children: Growth Charts and Percentiles</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Child/teen BMI, percentile interpretation, and CDC growth charts.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/limitations-of-bmi" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">Limitations of BMI: When Is It Inaccurate?</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Why BMI misleads in athletes, elderly, and across ethnic groups.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/how-to-improve-your-bmi" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">How to Improve Your BMI: Healthy Weight Management Tips</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Evidence-based nutrition, training, sleep, and habit strategies.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/bmi-healthcare-policies" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">BMI and Access to Healthcare: Policies & Controversies</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">How BMI influences policy (e.g., IVF eligibility) and ethics.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/bmi-and-fitness-goals" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">BMI and Fitness Goals: Tracking Progress Effectively</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Using BMI among multiple metrics for athletes and gym-goers.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/bmi-calculators-accuracy" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">BMI Calculators: Accuracy, Reliability, Best Practices</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">What makes a calculator trustworthy and how to avoid mistakes.</p></CardContent></Card></Link>
+          <Link href="/learning-hub/finance/bmi-myths-and-facts" className="group block h-full"><Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50"><CardHeader><CardTitle className="text-lg">Myths and Facts About BMI You Should Know</CardTitle></CardHeader><CardContent><p className="text-muted-foreground text-sm">Debunks misconceptions with evidence-based answers.</p></CardContent></Card></Link>
         </div>
       </div>
     </div>
