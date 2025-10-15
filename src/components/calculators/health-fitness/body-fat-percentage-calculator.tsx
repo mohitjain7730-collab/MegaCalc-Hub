@@ -110,43 +110,224 @@ export default function BodyFatPercentageCalculator() {
             </CardContent>
         </Card>
       )}
-       <Accordion type="single" collapsible className="w-full">
-         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-                <p>This calculator uses the U.S. Navy method, which relies on body measurements to estimate body fat percentage. It's a convenient alternative to more complex methods like skinfold calipers or hydrostatic weighing. Different formulas are used for males and females to account for differences in body composition.</p>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="reducing-fat">
-          <AccordionTrigger>Strategies for Healthy Fat Reduction</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
-              <p>Reducing body fat in a healthy, sustainable way involves a combination of diet, exercise, and lifestyle habits. Consult with a healthcare professional before making significant changes.</p>
-              <ul className="list-disc list-inside space-y-2">
-                <li>
-                    <strong>Sustainable Calorie Deficit:</strong> The foundation of fat loss is consuming slightly fewer calories than your body burns. Aim for a moderate deficit of 300-500 calories per day for sustainable loss.
-                </li>
-                 <li>
-                    <strong>Prioritize Protein:</strong> Eating adequate protein (e.g., from lean meats, dairy, legumes) helps you feel full and preserves muscle mass while you lose fat.
-                </li>
-                 <li>
-                    <strong>Incorporate Strength Training:</strong> Building muscle through resistance training boosts your metabolism, as muscle tissue burns more calories at rest than fat tissue does.
-                </li>
-                 <li>
-                    <strong>Include Cardiovascular Exercise:</strong> Activities like running, cycling, or brisk walking help increase your total daily calorie expenditure.
-                </li>
-                 <li>
-                    <strong>Stay Hydrated:</strong> Drinking plenty of water is essential for optimal metabolic function and can help manage appetite.
-                </li>
-                 <li>
-                    <strong>Prioritize Sleep:</strong> Aim for 7-9 hours of quality sleep per night. Poor sleep can disrupt hormones that regulate appetite and promote fat storage.
-                </li>
-                 <li>
-                    <strong>Manage Stress:</strong> Chronic stress can lead to hormonal changes that encourage abdominal fat storage. Practice stress-reduction techniques like meditation or yoga.
-                </li>
-              </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+       <section
+  className="space-y-4 text-muted-foreground leading-relaxed"
+  itemScope
+  itemType="https://schema.org/Article"
+>
+  <meta
+    itemProp="headline"
+    content="Body Fat Percentage Calculator – Find Your Ideal Body Composition"
+  />
+  <meta itemProp="author" content="MegaCalc Hub Team" />
+  <meta
+    itemProp="about"
+    content="Calculate your body fat percentage using scientifically validated formulas. Understand your ideal body composition, healthy fat ranges by age and gender, and how to improve your ratio safely through diet and exercise."
+  />
+
+  <h2 itemProp="name" className="text-xl font-bold text-foreground">
+    Body Fat Percentage Calculator: Discover What Your Numbers Really Mean
+  </h2>
+  <p itemProp="description">
+    Your <strong>body fat percentage</strong> is one of the best indicators of overall health and fitness. Unlike
+    weight alone, it tells you how much of your body is made up of fat versus lean mass — giving a more accurate picture
+    of your progress and well-being. This guide explains how body fat is calculated, what the ideal percentages are, and
+    how to use this information to optimize your health.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">💡 What Is Body Fat Percentage?</h3>
+  <p>
+    Body fat percentage measures the proportion of fat in your body relative to everything else — muscle, bone, water,
+    and organs. It’s expressed as a percentage of total body weight.  
+    <br />
+    Example: If you weigh 70 kg and have 14 kg of fat, your body fat percentage is 20%.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">⚙️ How Body Fat Percentage Is Calculated</h3>
+  <p>
+    The calculator typically uses formulas developed from large-scale research studies. Two popular ones are:
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>U.S. Navy Formula:</strong> Based on measurements of waist, neck, and height for men; waist, neck, and hip
+      for women.
+    </li>
+    <li>
+      <strong>BMI-based Estimate:</strong> Uses your Body Mass Index and adjusts for gender and age.
+    </li>
+  </ul>
+  <p>
+    These formulas estimate fat distribution by correlating circumferences and body proportions with known density
+    values.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">📊 Healthy Body Fat Percentage Ranges</h3>
+  <p>The optimal percentage varies by age and gender:</p>
+  <div className="overflow-x-auto">
+    <table className="min-w-full border-collapse border border-gray-200 text-sm">
+      <thead>
+        <tr className="bg-muted text-left">
+          <th className="border p-2">Category</th>
+          <th className="border p-2">Women (%)</th>
+          <th className="border p-2">Men (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="border p-2">Essential Fat</td>
+          <td className="border p-2">10–13</td>
+          <td className="border p-2">2–5</td>
+        </tr>
+        <tr>
+          <td className="border p-2">Athletes</td>
+          <td className="border p-2">14–20</td>
+          <td className="border p-2">6–13</td>
+        </tr>
+        <tr>
+          <td className="border p-2">Fitness</td>
+          <td className="border p-2">21–24</td>
+          <td className="border p-2">14–17</td>
+        </tr>
+        <tr>
+          <td className="border p-2">Average</td>
+          <td className="border p-2">25–31</td>
+          <td className="border p-2">18–24</td>
+        </tr>
+        <tr>
+          <td className="border p-2">Obese</td>
+          <td className="border p-2">32+</td>
+          <td className="border p-2">25+</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    These ranges are general guidelines. Ideal targets depend on lifestyle, fitness goals, and body type.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">🎯 Why Body Fat Percentage Matters More Than Weight</h3>
+  <p>
+    Traditional scales only show your total weight — they don’t distinguish between fat and lean mass. Two people can
+    weigh the same but have vastly different health profiles. Tracking body fat gives a true measure of progress and
+    health risk.
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>High body fat is linked to heart disease, diabetes, and metabolic issues.</li>
+    <li>Low lean mass can affect metabolism, posture, and strength.</li>
+    <li>Optimal balance supports hormonal function, energy, and longevity.</li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">🧠 Factors Affecting Body Fat Percentage</h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Diet:</strong> Caloric intake, protein consumption, and macronutrient balance have direct effects on fat
+      storage and metabolism.
+    </li>
+    <li>
+      <strong>Exercise:</strong> Resistance training builds muscle mass and raises basal metabolic rate.
+    </li>
+    <li>
+      <strong>Hormones:</strong> Thyroid, cortisol, insulin, and sex hormones influence how fat is stored.
+    </li>
+    <li>
+      <strong>Sleep & Stress:</strong> Poor rest and chronic stress can increase fat retention, especially around the
+      abdomen.
+    </li>
+    <li>
+      <strong>Age & Genetics:</strong> Natural metabolic slowdown and inherited fat distribution play roles too.
+    </li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">📉 How to Reduce Body Fat Safely</h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Create a small calorie deficit (300–500 cal/day) — slow, steady fat loss is sustainable.</li>
+    <li>Prioritize strength training to preserve muscle while losing fat.</li>
+    <li>Eat high-protein, fiber-rich foods to improve satiety and metabolism.</li>
+    <li>Get 7–8 hours of quality sleep to balance hunger and recovery hormones.</li>
+    <li>Track progress every 2–4 weeks — not daily — for realistic trends.</li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">💪 How to Increase Muscle Mass Without Adding Fat</h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Eat in a slight calorie surplus (~200–300 cal/day) focused on lean proteins and complex carbs.</li>
+    <li>Train progressively — gradually increase resistance and intensity.</li>
+    <li>Include recovery days and stretch to reduce cortisol buildup.</li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">📏 Body Fat Measurement Methods (Compared)</h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Calipers (Skinfold):</strong> Affordable and portable. Accuracy depends on operator skill.
+    </li>
+    <li>
+      <strong>Bioelectrical Impedance (BIA):</strong> Uses electrical signals. Found in many smart scales.
+    </li>
+    <li>
+      <strong>DEXA Scan:</strong> The gold standard for clinical precision but expensive.
+    </li>
+    <li>
+      <strong>Hydrostatic Weighing:</strong> Measures body density via water displacement. Highly accurate.
+    </li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">🧩 Using Your Results</h3>
+  <p>
+    Once you know your current body fat percentage, set a realistic target based on your goals:
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li><strong>General Health:</strong> Men 15–20%, Women 22–28%</li>
+    <li><strong>Fitness Goals:</strong> Men 10–15%, Women 18–22%</li>
+    <li><strong>Performance / Aesthetic:</strong> Men 8–12%, Women 15–18%</li>
+  </ul>
+  <p>
+    Aim for gradual improvements. A 1–2% reduction per month is considered safe and sustainable.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">🧘 Maintaining a Healthy Body Composition</h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Balance strength, cardio, and flexibility in your routine.</li>
+    <li>Follow a nutrient-dense, minimally processed diet.</li>
+    <li>Stay hydrated — dehydration can distort body fat readings.</li>
+    <li>Track metrics over time rather than fixating on daily fluctuations.</li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">⚠️ When to Consult a Professional</h3>
+  <p>
+    If you’re planning significant weight changes or experience fatigue, hormonal issues, or irregular periods (for
+    women), consult a certified nutritionist or healthcare professional.  
+    Sudden or extreme fat reduction can harm metabolism and organ function.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">📚 FAQs</h3>
+  <div className="space-y-3">
+    <p>
+      <strong>What is a good body fat percentage for men and women?</strong>  
+      For men, 10–20% is generally healthy; for women, 18–28% is ideal depending on age and activity level.
+    </p>
+    <p>
+      <strong>How accurate are online body fat calculators?</strong>  
+      They offer good estimates based on proven formulas. For medical accuracy, use DEXA or hydrostatic testing.
+    </p>
+    <p>
+      <strong>How often should I measure my body fat?</strong>  
+      Every 3–4 weeks is ideal. Measuring too frequently can lead to stress over natural fluctuations.
+    </p>
+    <p>
+      <strong>Can you be skinny but have high body fat?</strong>  
+      Yes — this is known as “skinny fat.” It means low muscle mass but high fat percentage, often due to lack of
+      strength training.
+    </p>
+    <p>
+      <strong>What’s more important: BMI or body fat percentage?</strong>  
+      Body fat percentage is more accurate since BMI can’t distinguish between muscle and fat.
+    </p>
+  </div>
+
+  <p className="italic">
+    Disclaimer: This calculator and information are for general fitness and educational purposes only. Always consult
+    your healthcare provider before making major changes to your diet or exercise routine.
+  </p>
+</section>
     </div>
   );
 }

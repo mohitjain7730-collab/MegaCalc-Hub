@@ -101,19 +101,202 @@ export default function IdealBodyWeightCalculator() {
             </CardContent>
         </Card>
       )}
-       <Accordion type="single" collapsible className="w-full">
-         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How the Hamwi Formula Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator uses the G.J. Hamwi formula, developed in 1964, which is a quick and easy method to estimate a person's ideal body weight. It provides a baseline weight for a height of 5 feet and adds a set amount of weight for each additional inch.</p>
-                <ul className="list-disc list-inside space-y-2 pl-4">
-                  <li><strong>For Males:</strong> It starts with a base of 48 kg (106 lbs) for the first 5 feet of height and adds 2.7 kg (6 lbs) for each additional inch.</li>
-                  <li><strong>For Females:</strong> It starts with a base of 45.5 kg (100 lbs) for the first 5 feet of height and adds 2.2 kg (5 lbs) for each additional inch.</li>
-                </ul>
-                <p>Note that this formula is an estimation and does not account for individual factors like frame size, muscle mass, or age, which can influence ideal weight.</p>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+       <section
+  className="space-y-4 text-muted-foreground leading-relaxed"
+  itemScope
+  itemType="https://schema.org/Article"
+>
+  <meta
+    itemProp="headline"
+    content="Ideal Body Weight (IBW) Calculator – Find Your Healthy Weight Range by Height, Gender, and Frame Size"
+  />
+  <meta itemProp="author" content="MegaCalc Hub Team" />
+  <meta
+    itemProp="about"
+    content="Calculate your ideal body weight (IBW) using trusted medical formulas like Devine, Robinson, and Hamwi. Learn what IBW means, how it relates to health, BMI, and lean mass, and how to use it to set realistic fitness goals."
+  />
+
+  <h2 itemProp="name" className="text-xl font-bold text-foreground">
+    Ideal Body Weight (IBW) Calculator: Discover Your Optimal Weight for Health and Longevity
+  </h2>
+  <p itemProp="description">
+    Your Ideal Body Weight (IBW) represents the weight at which your body functions optimally — balancing lean mass, fat
+    percentage, and overall well-being. It’s not about being “perfect” or reaching a specific number, but finding the
+    healthiest weight range for your height, age, sex, and body frame. This guide explains the science behind IBW,
+    different formulas, and how to use it as part of a sustainable fitness plan.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">⚖️ What Is Ideal Body Weight (IBW)?</h3>
+  <p>
+    The concept of Ideal Body Weight dates back to the early 20th century, when doctors sought to identify weight ranges
+    linked with the lowest risk of disease and mortality. Today, IBW is used in medicine, nutrition, and fitness to guide
+    dosing, calorie needs, and health assessments. It provides a reference point — not a rigid goal.
+  </p>
+  <p>
+    IBW considers factors like <strong>height, sex, and body frame size</strong>. It doesn’t measure fat distribution or
+    muscle mass directly, but it helps estimate a balanced weight zone that supports cardiovascular, hormonal, and
+    metabolic health.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">📏 Common IBW Formulas</h3>
+  <p>
+    Different researchers have proposed equations to estimate IBW. All are based on the assumption that height is the
+    strongest determinant of ideal weight.
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Devine Formula (1974):</strong>  
+      Men: 50 kg + 2.3 kg for each inch over 5 ft  
+      Women: 45.5 kg + 2.3 kg for each inch over 5 ft  
+      <em>Widely used in medicine, especially for drug dosing.</em>
+    </li>
+    <li>
+      <strong>Robinson Formula (1983):</strong>  
+      Men: 52 kg + 1.9 kg for each inch over 5 ft  
+      Women: 49 kg + 1.7 kg for each inch over 5 ft
+    </li>
+    <li>
+      <strong>Hamwi Formula (1964):</strong>  
+      Men: 48.0 kg + 2.7 kg per inch over 5 ft  
+      Women: 45.5 kg + 2.2 kg per inch over 5 ft
+    </li>
+    <li>
+      <strong>Miller Formula (1983):</strong>  
+      Men: 56.2 kg + 1.41 kg per inch over 5 ft  
+      Women: 53.1 kg + 1.36 kg per inch over 5 ft
+    </li>
+  </ul>
+  <p>
+    These formulas typically provide slightly different results, offering a reasonable range rather than a single
+    “correct” number. The calculator averages them for a balanced estimate.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">🧬 Frame Size Adjustment</h3>
+  <p>
+    Two people of the same height can have different ideal weights depending on their body frame (bone structure and
+    limb proportions).  
+    You can estimate your frame size using the <strong>wrist circumference-to-height ratio</strong>:
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+  <li>Small frame: wrist &lt; 6.0 inches (for average adult height)</li>
+  <li>Medium frame: 6.0–6.75 inches</li>
+  <li>Large frame: &gt; 6.75 inches</li>
+</ul>
+  <p>
+    Typically, small-framed individuals fall toward the lower end of the IBW range, while large-framed individuals may be
+    healthy at slightly higher weights.
+  </p>
+
+  <h3 className="font-semibold text-foreground mt-6">📊 Example: Calculating IBW for a 5’8” Male</h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Devine: 50 + (2.3 × 8) = 68.4 kg</li>
+    <li>Robinson: 52 + (1.9 × 8) = 67.2 kg</li>
+    <li>Hamwi: 48 + (2.7 × 8) = 69.6 kg</li>
+    <li>Miller: 56.2 + (1.41 × 8) = 67.5 kg</li>
+  </ul>
+  <p>Average IBW = 68.2 kg (≈150 lb)</p>
+
+  <h3 className="font-semibold text-foreground mt-6">💪 IBW vs. BMI vs. Body Fat</h3>
+  <p>
+    Many people confuse IBW with BMI (Body Mass Index), but they measure different things. BMI is a population-based
+    indicator, while IBW is more individualized.
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>IBW:</strong> Based on height, provides a healthy weight range for medical and nutritional use.
+    </li>
+    <li>
+      <strong>BMI:</strong> A ratio of weight to height (kg/m²), often used in public health but doesn’t distinguish fat
+      vs. muscle.
+    </li>
+    <li>
+      <strong>Body Fat %:</strong> Measures fat composition directly — most accurate for tracking aesthetic or metabolic
+      goals.
+    </li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">🔥 Why Knowing Your IBW Matters</h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Helps identify healthy weight goals for dieting or bulking.</li>
+    <li>Improves dosing accuracy for medications and IV fluids in clinical settings.</li>
+    <li>Assists athletes in maintaining optimal power-to-weight ratios.</li>
+    <li>Provides a starting point for calculating caloric and macronutrient needs.</li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">🥗 Nutrition and IBW</h3>
+  <p>
+    Once you know your IBW, you can tailor your nutrition to reach or maintain it. The goal is not crash dieting but
+    building a long-term balance between calories, macronutrients, and activity.
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Eat a balanced diet with 45–65% carbs, 20–35% fat, and 15–25% protein.</li>
+    <li>Include plenty of fruits, vegetables, and whole grains for micronutrients.</li>
+    <li>Stay hydrated — water supports metabolism and digestion.</li>
+    <li>Avoid extreme calorie restriction — it reduces lean mass and metabolism.</li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">🏋️ Training and IBW</h3>
+  <p>
+    Exercise plays a critical role in maintaining ideal weight — especially by preserving lean mass. Resistance training
+    boosts metabolism, while cardio supports heart and lung health.
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Strength training: 3–4 sessions per week to maintain muscle.</li>
+    <li>Cardio: 150 minutes of moderate or 75 minutes of intense activity per week.</li>
+    <li>Flexibility and balance work: 2–3 sessions weekly (e.g., yoga, mobility drills).</li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">📉 When You’re Below or Above IBW</h3>
+  <p>
+    Being significantly below or above your IBW can have health implications — though context matters (e.g., athletes may
+    exceed IBW due to higher muscle mass).
+  </p>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>
+      <strong>Below IBW:</strong> May cause fatigue, nutrient deficiencies, hormonal imbalance, and weakened immunity.
+    </li>
+    <li>
+      <strong>Above IBW:</strong> May increase risk for hypertension, diabetes, and cardiovascular strain.
+    </li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">🧠 How to Use IBW in Real Life</h3>
+  <ul className="list-disc ml-6 space-y-1">
+    <li>Set realistic weight goals aligned with fitness or aesthetic preferences.</li>
+    <li>Estimate caloric maintenance or deficit levels more accurately.</li>
+    <li>Track progress alongside body fat % for a complete picture.</li>
+  </ul>
+
+  <h3 className="font-semibold text-foreground mt-6">📚 FAQs About Ideal Body Weight</h3>
+  <div className="space-y-3">
+    <p>
+      <strong>Is IBW the same as a healthy weight?</strong>  
+      Not exactly — IBW is a guideline, while “healthy weight” can vary based on muscle mass, age, and fitness level.
+    </p>
+    <p>
+      <strong>What’s more accurate: IBW or BMI?</strong>  
+      IBW is more personalized, but both should be considered alongside body composition.
+    </p>
+    <p>
+      <strong>Can you be healthy outside your IBW range?</strong>  
+      Absolutely. Many athletes and muscular individuals weigh more than their IBW but are extremely healthy.
+    </p>
+    <p>
+      <strong>How can I lower weight safely to reach IBW?</strong>  
+      Aim for 0.5–1 kg loss per week via moderate calorie deficit, resistance training, and high-protein meals.
+    </p>
+    <p>
+      <strong>Can IBW change with age?</strong>  
+      Slightly — lean mass tends to decrease with age, so ideal ranges may adjust downward unless countered with
+      strength training.
+    </p>
+  </div>
+
+  <p className="italic">
+    Disclaimer: The Ideal Body Weight Calculator provides educational estimates only. Always consult a qualified
+    healthcare or nutrition professional before making significant changes to diet, exercise, or medication.
+  </p>
+</section>
     </div>
   );
 }
