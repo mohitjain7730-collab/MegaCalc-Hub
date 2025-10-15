@@ -11,9 +11,12 @@ runConfig:
 build:
   steps:
     - name: fetch
+      artifactId: app-source
     - name: install
+      inputArtifactId: app-source
       commands:
         - npm ci --no-audit --no-fund
     - name: build
+      inputArtifactId: app-source
       commands:
         - npm run build
