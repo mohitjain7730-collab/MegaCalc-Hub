@@ -5,3 +5,15 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 1
+
+# Define remote build steps for Firebase App Hosting
+# See: https://firebase.google.com/docs/app-hosting/configure#build-steps
+build:
+  steps:
+    - name: fetch
+    - name: install
+      commands:
+        - npm ci --no-audit --no-fund
+    - name: build
+      commands:
+        - npm run build
