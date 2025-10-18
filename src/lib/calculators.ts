@@ -926,6 +926,16 @@ export const calculators: Calculator[] = [
   { id: 3032, name: 'Baby Sleep Needs Calculator', description: 'Calculate age-appropriate sleep requirements and nap patterns for babies and toddlers.', slug: 'baby-sleep-needs-calculator', category: 'health-fitness' },
   { id: 3033, name: 'Toddler Calorie Requirement Calculator', description: 'Calculate daily calorie needs for toddlers based on age, weight, and activity level.', slug: 'toddler-calorie-requirement-calculator', category: 'health-fitness' },
   { id: 3034, name: 'Resting Metabolic Rate (RMR) Calculator', description: 'Calculate resting metabolic rate, total daily energy expenditure, and macronutrient requirements.', slug: 'resting-metabolic-rate-calculator', category: 'health-fitness' },
+  // Cricket
+  { id: 3035, name: 'Batting Average Calculator', description: 'Calculate cricket batting average from runs scored and dismissals to measure batting performance.', slug: 'batting-average-calculator', category: 'cricket' },
+  { id: 3036, name: 'Bowling Average Calculator', description: 'Calculate cricket bowling average from runs conceded and wickets taken to measure bowling performance.', slug: 'bowling-average-calculator', category: 'cricket' },
+  { id: 3037, name: 'Strike Rate Calculator', description: 'Calculate cricket batting strike rate from runs scored and balls faced to measure scoring pace.', slug: 'strike-rate-calculator', category: 'cricket' },
+  { id: 3038, name: 'Bowling Economy Rate Calculator', description: 'Calculate cricket bowling economy rate from runs conceded and overs bowled to measure bowling control.', slug: 'bowling-economy-rate-calculator', category: 'cricket' },
+  { id: 3039, name: 'Net Run Rate (NRR) Calculator', description: 'Calculate cricket team net run rate for tournament standings and overall performance analysis.', slug: 'net-run-rate-calculator', category: 'cricket' },
+  { id: 3041, name: 'Required Run Rate Calculator', description: 'Calculate required run rate to achieve target runs in cricket matches with time pressure.', slug: 'required-run-rate-calculator', category: 'cricket' },
+  { id: 3042, name: 'Team Run Rate Calculator', description: 'Calculate cricket team run rate from runs scored and overs faced to measure batting performance.', slug: 'team-run-rate-calculator', category: 'cricket' },
+  { id: 3043, name: 'Player Performance Index Calculator', description: 'Calculate comprehensive cricket player performance index across batting, bowling, and fielding.', slug: 'player-performance-index-calculator', category: 'cricket' },
+  { id: 3044, name: 'Fantasy Points Calculator', description: 'Calculate fantasy cricket points based on batting, bowling, and fielding performance for fantasy leagues.', slug: 'fantasy-points-calculator', category: 'cricket' },
   // Conversions
   { id: 300, name: 'Meters to Feet Converter', description: 'Convert meters to feet.', slug: 'meters-to-feet-converter', category: 'conversions' },
   { id: 301, name: 'Feet to Meters Converter', description: 'Convert feet to meters.', slug: 'feet-to-meters-converter', category: 'conversions' },
@@ -1829,42 +1839,6 @@ export const calculators: Calculator[] = [
     description: 'Assess what percentage of your income is spent on childcare.',
     slug: 'childcare-cost-affordability-calculator',
     category: 'parenting',
-  },
-  // Sports & Training
-  {
-    id: 141,
-    name: 'BMI (Body Mass Index) Calculator',
-    description: 'Assess your weight status category (underweight, normal, overweight, obese).',
-    slug: 'sports-training-bmi-calculator',
-    category: 'sports-training',
-  },
-  {
-    id: 142,
-    name: 'Basal Metabolic Rate (BMR) Calculator',
-    description: 'Calculate your daily calorie needs for weight management.',
-    slug: 'sports-training-bmr-calculator',
-    category: 'sports-training',
-  },
-  {
-    id: 143,
-    name: 'Target Heart Rate Zone Calculator',
-    description: 'Find your ideal heart rate range for fat burn or cardio fitness.',
-    slug: 'sports-training-target-heart-rate-calculator',
-    category: 'sports-training',
-  },
-  {
-    id: 144,
-    name: 'VO₂ Max Estimation Calculator',
-    description: 'Estimate your maximal oxygen uptake from a 1.5-mile run time.',
-    slug: 'vo2-max-estimation-calculator',
-    category: 'sports-training',
-  },
-  {
-    id: 145,
-    name: 'One-Rep Max (1RM) Calculator',
-    description: 'Estimate the maximum weight you can lift for one repetition.',
-    slug: 'one-rep-max-calculator',
-    category: 'sports-training',
   },
   // Time & Date
   {

@@ -37,6 +37,13 @@ import {
   Percent,
   Bone,
   User,
+  Target,
+  Circle,
+  Square,
+  Triangle,
+  Hexagon,
+  Octagon,
+  Trophy,
 } from 'lucide-react';
 
 export interface Category {
@@ -83,6 +90,13 @@ export const icons: {[key: string]: LucideIcon} = {
   Percent,
   Bone,
   User,
+  Target,
+  Circle,
+  Square,
+  Triangle,
+  Hexagon,
+  Octagon,
+  Trophy,
 };
 
 export const categories: Category[] = [
@@ -205,5 +219,11 @@ export const categories: Category[] = [
     slug: 'fun-games',
     description: 'Calculators for gaming, hobbies, and entertainment.',
     Icon: 'Gamepad2',
+  },
+  {
+    name: 'Cricket',
+    slug: 'cricket',
+    description: 'Cricket performance calculators for batting, bowling, and team statistics.',
+    Icon: 'Trophy',
   },
 ];

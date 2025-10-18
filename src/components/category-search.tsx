@@ -229,6 +229,31 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
+  // Sports & Training subcategories
+  const cricketCalculators = filteredCalculators.filter(calc => 
+    ['batting-average-calculator'].includes(calc.slug)
+  );
+
+  const footballSoccerCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug) // Add football/soccer calculators here when available
+  );
+
+  const basketballCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug) // Add basketball calculators here when available
+  );
+
+  const tennisCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug) // Add tennis calculators here when available
+  );
+
+  const baseballCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug) // Add baseball calculators here when available
+  );
+
+  const volleyballCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug) // Add volleyball calculators here when available
+  );
+
   const otherCalculators = filteredCalculators.filter(calc => 
     !lengthConverters.find(c => c.id === calc.id) && 
     !areaConverters.find(c => c.id === calc.id) &&
@@ -239,7 +264,13 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     !pressureConverters.find(c => c.id === calc.id) &&
     !energyConverters.find(c => c.id === calc.id) &&
     !powerConverters.find(c => c.id === calc.id) &&
-    !otherUsefulConverters.find(c => c.id === calc.id)
+    !otherUsefulConverters.find(c => c.id === calc.id) &&
+    !cricketCalculators.find(c => c.id === calc.id) &&
+    !footballSoccerCalculators.find(c => c.id === calc.id) &&
+    !basketballCalculators.find(c => c.id === calc.id) &&
+    !tennisCalculators.find(c => c.id === calc.id) &&
+    !baseballCalculators.find(c => c.id === calc.id) &&
+    !volleyballCalculators.find(c => c.id === calc.id)
   );
 
   const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
@@ -319,9 +350,38 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                 </>
             ) : null}
 
+            {categorySlug === 'sports-training' ? (
+                <>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Cricket</h2>
+                        {renderCalculatorGrid(cricketCalculators, categorySlug, "No cricket calculators found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Football / Soccer</h2>
+                        {renderCalculatorGrid(footballSoccerCalculators, categorySlug, "No football/soccer calculators found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Basketball</h2>
+                        {renderCalculatorGrid(basketballCalculators, categorySlug, "No basketball calculators found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Tennis</h2>
+                        {renderCalculatorGrid(tennisCalculators, categorySlug, "No tennis calculators found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Baseball</h2>
+                        {renderCalculatorGrid(baseballCalculators, categorySlug, "No baseball calculators found.")}
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Volleyball</h2>
+                        {renderCalculatorGrid(volleyballCalculators, categorySlug, "No volleyball calculators found.")}
+                    </div>
+                </>
+            ) : null}
+
             {otherCalculators.length > 0 && (
                  <div>
-                    {categorySlug === 'conversions' && <div className="my-8"/>}
+                    {(categorySlug === 'conversions' || categorySlug === 'sports-training') && <div className="my-8"/>}
                     {renderCalculatorGrid(otherCalculators, categorySlug, "")}
                 </div>
             )}
