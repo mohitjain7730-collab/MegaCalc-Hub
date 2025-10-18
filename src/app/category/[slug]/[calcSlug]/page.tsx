@@ -10,6 +10,7 @@ import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CategoryIcon } from '@/components/category-icon';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const calculatorComponents: { [key: string]: React.ComponentType } = {
     'sip-calculator': dynamic(() => import('@/components/calculators/finance/sip-calculator')),
@@ -525,7 +526,12 @@ export default function CalculatorPage({ params }: { params: { slug: string; cal
         </div>
 
         {CalculatorComponent ? (
-          <CalculatorComponent />
+          <>
+            <CalculatorComponent />
+            
+            {/* Embed Widget Section */}
+            <EmbedWidget categorySlug={category.slug} calculatorSlug={calculator.slug} />
+          </>
         ) : (
           <Card className="w-full text-center shadow-md mt-8">
             <CardHeader>
