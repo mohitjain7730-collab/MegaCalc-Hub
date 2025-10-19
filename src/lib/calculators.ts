@@ -2159,6 +2159,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Somatotype Calculator - Ectomorph/Mesomorph/Endomorph',
     metaDescription: 'Determine your somatotype to understand your body type and optimize your training and nutrition approach for better results.'
   },
+  {
+    id: 166,
+    name: 'Chronic Training Load (CTL) Calculator',
+    description: 'Calculate your Chronic Training Load (CTL) to track long-term fitness and training stress over several weeks.',
+    slug: 'chronic-training-load-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Chronic Training Load (CTL) Calculator - Track Long-Term Fitness',
+    metaDescription: 'Calculate and understand Chronic Training Load (CTL) to monitor long-term fitness progression, training stress, and recovery needs for endurance athletes.'
+  },
+  {
+    id: 167,
+    name: 'Acute Training Load (ATL) Calculator',
+    description: 'Calculate your Acute Training Load (ATL) to track recent training stress and fatigue levels over the past week.',
+    slug: 'acute-training-load-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Acute Training Load (ATL) Calculator - Track Recent Training Stress',
+    metaDescription: 'Calculate and understand Acute Training Load (ATL) to monitor recent training stress, fatigue levels, and recovery needs for optimal training performance.'
+  },
+  {
+    id: 168,
+    name: 'Training Impulse (TRIMP) Calculator',
+    description: 'Calculate Training Impulse (TRIMP) to quantify training load based on heart rate data and physiological stress.',
+    slug: 'training-impulse-trimp-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Training Impulse (TRIMP) Calculator - Quantify Training Load',
+    metaDescription: 'Calculate Training Impulse (TRIMP) to measure training load based on heart rate data, providing a physiological approach to training stress quantification.'
+  },
+  {
+    id: 169,
+    name: 'Critical Power Calculator',
+    description: 'Calculate your Critical Power (CP) and W\' to determine sustainable power output and anaerobic work capacity.',
+    slug: 'critical-power-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Critical Power Calculator - Determine Sustainable Power',
+    metaDescription: 'Calculate Critical Power (CP) and W\' to understand your sustainable power output and anaerobic work capacity for optimal training and racing.'
+  },
+  {
+    id: 170,
+    name: 'Running Economy Calculator',
+    description: 'Calculate your running economy to understand how efficiently you use oxygen and energy while running.',
+    slug: 'running-economy-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Running Economy Calculator - Measure Running Efficiency',
+    metaDescription: 'Calculate running economy to understand how efficiently you use oxygen and energy while running, helping improve performance and training efficiency.'
+  },
+  {
+    id: 171,
+    name: 'Cycling Cadence Optimizer Calculator',
+    description: 'Optimize your cycling cadence to improve efficiency, reduce fatigue, and prevent injury during cycling.',
+    slug: 'cycling-cadence-optimizer-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Cycling Cadence Optimizer Calculator - Find Optimal Pedaling Rate',
+    metaDescription: 'Optimize your cycling cadence to improve efficiency, reduce fatigue, and prevent injury. Learn how to find and maintain your optimal pedaling rate.'
+  },
+  {
+    id: 172,
+    name: 'Swim Stroke Rate Calculator',
+    description: 'Calculate your swimming stroke rate to analyze efficiency and optimize technique for better performance.',
+    slug: 'swim-stroke-rate-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Swim Stroke Rate Calculator - Analyze Swimming Efficiency',
+    metaDescription: 'Calculate swimming stroke rate to analyze efficiency, optimize technique, and improve performance in all swimming strokes.'
+  },
+  {
+    id: 173,
+    name: 'Climbing Grade Difficulty to Calories Burned Calculator',
+    description: 'Calculate calories burned during rock climbing based on grade difficulty, climbing type, and experience level.',
+    slug: 'climbing-grade-difficulty-to-calories-burned-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Climbing Grade Difficulty to Calories Burned Calculator',
+    metaDescription: 'Calculate calories burned during rock climbing based on grade difficulty, climbing type, and experience level for accurate workout tracking.'
+  },
+  {
+    id: 174,
+    name: 'Rowing Drag Factor Calculator',
+    description: 'Calculate and optimize your rowing machine drag factor for better performance and training effectiveness.',
+    slug: 'rowing-drag-factor-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Rowing Drag Factor Calculator - Optimize Rowing Machine Settings',
+    metaDescription: 'Calculate and optimize rowing machine drag factor to improve performance, prevent injury, and maximize training effectiveness.'
+  },
+  {
+    id: 175,
+    name: 'Sleep Apnea Risk Calculator',
+    description: 'Assess your risk for sleep apnea using validated screening criteria and get recommendations for evaluation.',
+    slug: 'sleep-apnea-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Apnea Risk Calculator - Assess Your Risk',
+    metaDescription: 'Calculate your risk for sleep apnea using validated screening criteria and get recommendations for evaluation and treatment.'
+  },
 ];
 
     
