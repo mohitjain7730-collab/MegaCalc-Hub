@@ -2069,6 +2069,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Daily Activity Points Calculator - Health & Fitness Tracker',
     metaDescription: 'Track your daily health and fitness activities with a comprehensive point-based scoring system for better wellness.'
   },
+  {
+    id: 156,
+    name: 'Screen Time vs Sleep Impact Calculator',
+    description: 'Analyze the relationship between your screen time habits and sleep quality to optimize your digital wellness.',
+    slug: 'screen-time-vs-sleep-impact-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Screen Time vs Sleep Impact Calculator - Digital Wellness',
+    metaDescription: 'Analyze the relationship between your screen time habits and sleep quality to optimize your digital wellness and improve sleep.'
+  },
+  {
+    id: 157,
+    name: 'Habit Streak Tracker (health habits)',
+    description: 'Track and analyze your health habit streaks to build consistency and achieve your wellness goals.',
+    slug: 'habit-streak-tracker-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Habit Streak Tracker - Health Habits & Consistency',
+    metaDescription: 'Track and analyze your health habit streaks to build consistency and achieve your wellness goals with personalized insights.'
+  },
+  {
+    id: 158,
+    name: 'Body Surface Area (BSA) Calculator',
+    description: 'Calculate your body surface area for medical dosing, burn assessment, and clinical applications.',
+    slug: 'body-surface-area-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Body Surface Area (BSA) Calculator - Medical & Clinical',
+    metaDescription: 'Calculate your body surface area for medical dosing, burn assessment, and clinical applications with multiple formulas.'
+  },
+  {
+    id: 159,
+    name: 'Fat-Free Mass Index (FFMI) Calculator',
+    description: 'Calculate your fat-free mass index to assess muscle development and body composition relative to height.',
+    slug: 'fat-free-mass-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Fat-Free Mass Index (FFMI) Calculator - Muscle Assessment',
+    metaDescription: 'Calculate your fat-free mass index to assess muscle development and body composition relative to height for athletes and fitness enthusiasts.'
+  },
+  {
+    id: 160,
+    name: 'Frame Size Calculator',
+    description: 'Determine your body frame size based on height and wrist circumference to understand your ideal weight range.',
+    slug: 'frame-size-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Frame Size Calculator - Body Frame Assessment',
+    metaDescription: 'Determine your body frame size based on height and wrist circumference to understand your ideal weight range and body type.'
+  },
+  {
+    id: 161,
+    name: 'Limb Circumference Ratio Calculator',
+    description: 'Analyze the proportions between different limb circumferences to assess muscle development symmetry.',
+    slug: 'limb-circumference-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Limb Circumference Ratio Calculator - Muscle Symmetry',
+    metaDescription: 'Analyze the proportions between different limb circumferences to assess muscle development symmetry and balance.'
+  },
+  {
+    id: 162,
+    name: 'Muscle Mass Percentage Calculator',
+    description: 'Calculate your muscle mass percentage to assess your body composition and muscle development.',
+    slug: 'muscle-mass-percentage-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Muscle Mass Percentage Calculator - Body Composition',
+    metaDescription: 'Calculate your muscle mass percentage to assess your body composition and muscle development for fitness tracking.'
+  },
+  {
+    id: 163,
+    name: 'Android vs Gynoid Fat Ratio Calculator',
+    description: 'Analyze your fat distribution pattern to understand health risks and optimize your body composition.',
+    slug: 'android-vs-gynoid-fat-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Android vs Gynoid Fat Ratio Calculator - Fat Distribution',
+    metaDescription: 'Analyze your fat distribution pattern to understand health risks and optimize your body composition for better health.'
+  },
+  {
+    id: 164,
+    name: 'Hip-to-Shoulder Ratio Calculator',
+    description: 'Calculate your hip-to-shoulder ratio to determine your body shape and optimize your training approach.',
+    slug: 'hip-to-shoulder-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Hip-to-Shoulder Ratio Calculator - Body Shape Analysis',
+    metaDescription: 'Calculate your hip-to-shoulder ratio to determine your body shape and optimize your training approach for better results.'
+  },
+  {
+    id: 165,
+    name: 'Somatotype (Ectomorph/Mesomorph/Endomorph) Calculator',
+    description: 'Determine your somatotype to understand your body type and optimize your training and nutrition approach.',
+    slug: 'somatotype-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Somatotype Calculator - Ectomorph/Mesomorph/Endomorph',
+    metaDescription: 'Determine your somatotype to understand your body type and optimize your training and nutrition approach for better results.'
+  },
 ];
 
     
