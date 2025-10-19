@@ -5,6 +5,8 @@ export interface Calculator {
   description: string;
   slug: string;
   category: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export const calculators: Calculator[] = [
@@ -667,168 +669,216 @@ export const calculators: Calculator[] = [
     name: 'Daily Calorie Needs Calculator (TDEE)',
     description: 'Estimate the total calories you burn per day to maintain your current weight.',
     slug: 'daily-calorie-needs-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Daily Calorie Needs Calculator (TDEE)',
+    metaDescription: 'Calculate your Total Daily Energy Expenditure (TDEE) to know how many calories you need to maintain, lose, or gain weight.'
   },
   {
     id: 261,
     name: 'Macro Ratio Calculator',
     description: 'Divide your daily calories into grams of protein, carbs, and fat based on your goals.',
     slug: 'macro-ratio-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Macro Ratio Calculator - Balanced Nutrition Planner',
+    metaDescription: 'Determine the ideal protein, carb, and fat ratios for your diet with our easy Macro Ratio Calculator.'
   },
   {
     id: 262,
     name: 'Protein Intake Calculator',
     description: 'Get a personalized daily protein recommendation based on your weight and fitness goals.',
     slug: 'protein-intake-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Protein Intake Calculator - Daily Protein Needs',
+    metaDescription: 'Calculate your daily protein requirement based on weight, activity level, and fitness goals.'
   },
   {
     id: 263,
     name: 'Carbohydrate Intake Calculator',
     description: 'Estimate your daily carbohydrate needs to fuel your activity level and replenish glycogen stores.',
     slug: 'carbohydrate-intake-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Carb Intake Calculator - Daily Carbohydrate Needs',
+    metaDescription: 'Find out how many carbs you need daily to fuel your body effectively with our Carbohydrate Intake Calculator.'
   },
   {
     id: 264,
     name: 'Fat Intake Calculator',
     description: 'Calculate your recommended daily fat intake as a percentage of total calories.',
     slug: 'fat-intake-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Fat Intake Calculator - Daily Fat Requirement',
+    metaDescription: 'Determine your optimal daily fat intake for a balanced diet and healthy lifestyle.'
   },
   {
     id: 265,
     name: 'Keto Macro Calculator',
     description: 'Calculate specific macronutrient targets for a ketogenic diet.',
     slug: 'keto-macro-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Keto Macro Calculator - Keto Diet Planner',
+    metaDescription: 'Calculate protein, carb, and fat ratios to follow a ketogenic diet and reach your health goals.'
   },
   {
     id: 266,
     name: 'Intermittent Fasting Calculator',
     description: 'Plan your daily eating and fasting windows for different IF protocols.',
     slug: 'intermittent-fasting-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Intermittent Fasting Calculator - Best Eating Windows',
+    metaDescription: 'Find your ideal fasting and eating windows with our Intermittent Fasting Calculator for effective results.'
   },
   {
     id: 267,
     name: 'Glycemic Load Calculator',
     description: 'Measure how much a specific serving of food will raise your blood glucose levels.',
     slug: 'glycemic-load-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Glycemic Load Calculator - Manage Blood Sugar',
+    metaDescription: 'Calculate the glycemic load of your meals to manage blood sugar and maintain healthy energy levels.'
   },
   {
     id: 268,
     name: 'Meal Glycemic Load Calculator',
     description: 'Calculate the total Glycemic Load (GL) of an entire meal.',
     slug: 'meal-glycemic-load-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Meal Glycemic Load Calculator - Healthy Meal Guide',
+    metaDescription: 'Measure the glycemic load of an entire meal to control blood sugar spikes and maintain a balanced diet.'
   },
   {
     id: 269,
     name: 'Hydration Needs Calculator',
     description: 'Estimate your daily water intake required to stay adequately hydrated.',
     slug: 'hydration-needs-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Hydration Needs Calculator - Daily Water Intake',
+    metaDescription: 'Calculate how much water you should drink daily based on weight, activity level, and climate.'
   },
   {
     id: 107,
     name: 'Water Footprint of Food Calculator',
     description: 'Estimate the total volume of water required to produce different food items. Understand the hidden water usage in your diet.',
     slug: 'water-footprint-of-food-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Water Footprint Calculator - Eco-Friendly Food Guide',
+    metaDescription: 'Discover how much water is used to produce your meals and make sustainable dietary choices.'
   },
   {
     id: 108,
     name: 'Body Mass Index (BMI) Calculator',
     description: 'Quickly assess whether you are underweight, healthy, overweight, or obese using this standard health indicator.',
     slug: 'bmi-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'BMI Calculator - Body Mass Index Checker',
+    metaDescription: 'Quickly calculate your BMI to check if your weight is in a healthy range for your height.'
   },
   {
     id: 109,
     name: 'Basal Metabolic Rate (BMR) Calculator',
     description: 'Estimate the number of calories your body burns at rest per day. A crucial metric for creating a weight management plan.',
     slug: 'bmr-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'BMR Calculator - Basal Metabolic Rate Checker',
+    metaDescription: 'Find out how many calories your body burns at rest with our BMR Calculator.'
   },
   {
     id: 110,
     name: 'Target Heart Rate Calculator',
     description: 'Determine your optimal heart rate zone for moderate and vigorous exercise to maximize the effectiveness of your workouts.',
     slug: 'target-heart-rate-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Target Heart Rate Calculator - Fitness Zones',
+    metaDescription: 'Determine your optimal heart rate for fat burn and cardio workouts with our Target Heart Rate Calculator.'
   },
   {
     id: 250,
     name: 'Body Fat Percentage Calculator',
     description: 'Estimate your body fat percentage using the U.S. Navy method.',
     slug: 'body-fat-percentage-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Body Fat Percentage Calculator - Track Fitness',
+    metaDescription: 'Calculate your body fat percentage to monitor fitness progress and body composition changes.'
   },
   {
     id: 251,
     name: 'Lean Body Mass Calculator',
     description: 'Calculate the weight of your body minus all fat mass.',
     slug: 'lean-body-mass-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Lean Body Mass Calculator - Muscle & Fitness Tracker',
+    metaDescription: 'Measure your lean body mass to track muscle growth and overall fitness progress.'
   },
   {
     id: 252,
     name: 'Ideal Body Weight (IBW) Calculator',
     description: 'Estimate a healthy weight range based on your height and sex.',
     slug: 'ideal-body-weight-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Ideal Body Weight Calculator - Healthy Weight Guide',
+    metaDescription: 'Find your ideal body weight based on height, age, and gender for a balanced lifestyle.'
   },
   {
     id: 253,
     name: 'Waist-to-Hip Ratio Calculator',
     description: 'Assess health risks associated with abdominal fat.',
     slug: 'waist-to-hip-ratio-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Waist-to-Hip Ratio Calculator - Health Risk Checker',
+    metaDescription: 'Calculate your waist-to-hip ratio to assess body fat distribution and related health risks.'
   },
   {
     id: 254,
     name: 'Waist-to-Height Ratio Calculator',
     description: 'A simple indicator of central obesity and health risk.',
     slug: 'waist-to-height-ratio-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Waist-to-Height Ratio Calculator - Obesity Risk Guide',
+    metaDescription: 'Determine your waist-to-height ratio to assess health risks related to obesity and abdominal fat.'
   },
   {
     id: 255,
     name: 'Body Adiposity Index (BAI) Calculator',
     description: 'Estimate body fat using hip circumference and height.',
     slug: 'body-adiposity-index-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Body Adiposity Index Calculator - Body Fat Estimator',
+    metaDescription: 'Estimate your body fat percentage using your hip circumference and height with our BAI Calculator.'
   },
   {
     id: 256,
     name: 'Ponderal Index Calculator',
     description: 'A measure of leanness, similar to BMI, for very tall or very short individuals.',
     slug: 'ponderal-index-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Ponderal Index Calculator - Body Proportion Measure',
+    metaDescription: 'Calculate your Ponderal Index to evaluate body proportionality and compare it with healthy standards.'
   },
   {
     id: 257,
     name: 'Relative Fat Mass (RFM) Calculator',
     description: 'Estimate body fat percentage using only height and waist circumference.',
     slug: 'relative-fat-mass-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Relative Fat Mass Calculator - Body Fat Estimator',
+    metaDescription: 'Estimate your body fat percentage using the Relative Fat Mass (RFM) method for a precise fitness assessment.'
   },
   {
     id: 258,
     name: 'Calorie Deficit Calculator',
     description: 'Calculate daily calorie intake for sustainable weight loss.',
     slug: 'calorie-deficit-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Calorie Deficit Calculator - Weight Loss Planner',
+    metaDescription: 'Determine how many calories to cut daily to achieve your weight loss goals effectively and safely.'
   },
   {
     id: 259,
     name: 'Calorie Surplus Calculator',
     description: 'Calculate daily calorie intake for muscle and weight gain.',
     slug: 'calorie-surplus-calculator',
-    category: 'health-fitness'
+    category: 'health-fitness',
+    metaTitle: 'Calorie Surplus Calculator - Weight Gain Planner',
+    metaDescription: 'Calculate the extra calories you need to consume daily to gain weight or build muscle efficiently.'
   },
   {
     id: 270,
@@ -836,6 +886,8 @@ export const calculators: Calculator[] = [
     description: 'Estimate sodium and potassium lost through sweat during exercise.',
     slug: 'electrolyte-replacement-calculator',
     category: 'health-fitness',
+    metaTitle: 'Electrolyte Replacement Calculator - Hydration Guide',
+    metaDescription: 'Find out how much electrolytes you need to replace after exercise or dehydration for optimal health.'
   },
   {
     id: 272,
@@ -843,6 +895,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the total "empty" calories consumed from alcoholic beverages.',
     slug: 'alcohol-calorie-impact-calculator',
     category: 'health-fitness',
+    metaTitle: 'Alcohol Calorie Impact Calculator - Track Drinking Calories',
+    metaDescription: 'Calculate the calories from alcoholic drinks to manage your diet and maintain fitness goals.'
   },
   {
     id: 273,
@@ -850,6 +904,8 @@ export const calculators: Calculator[] = [
     description: 'Track your daily consumption of added sugars against recommended limits.',
     slug: 'sugar-intake-calculator',
     category: 'health-fitness',
+    metaTitle: 'Sugar Intake Calculator - Daily Sugar Tracker',
+    metaDescription: 'Track your daily sugar consumption and maintain a healthy diet with our Sugar Intake Calculator.'
   },
   {
     id: 274,
@@ -857,15 +913,81 @@ export const calculators: Calculator[] = [
     description: 'Track daily caffeine consumption to stay within safe limits.',
     slug: 'caffeine-intake-calculator',
     category: 'health-fitness',
+    metaTitle: 'Caffeine Intake Calculator - Safe Consumption Tracker',
+    metaDescription: 'Calculate your daily caffeine intake to stay within safe limits and avoid overstimulation.'
   },
-  { id: 275, name: 'VO₂ Max Calculator', description: 'Estimate VO₂ max from age and resting heart rate.', slug: 'vo2-max-calculator', category: 'health-fitness' },
-  { id: 276, name: 'Running Pace Calculator', description: 'Convert between distance, time, and pace.', slug: 'running-pace-calculator', category: 'health-fitness' },
-  { id: 277, name: 'Running Speed to Calories Burned Calculator', description: 'Estimate calories burned from running speed, weight, and duration.', slug: 'running-speed-to-calories-burned-calculator', category: 'health-fitness' },
-  { id: 278, name: 'Cycling Power Output (Watts) Calculator', description: 'Estimate cycling power output based on speed and parameters.', slug: 'cycling-power-output-calculator', category: 'health-fitness' },
-  { id: 279, name: 'Swimming Lap Time Calculator', description: 'Calculate lap time based on distance and pace.', slug: 'swimming-lap-time-calculator', category: 'health-fitness' },
-  { id: 280, name: 'Rowing Split Calculator', description: 'Convert between 500m split, time, and distance.', slug: 'rowing-split-calculator', category: 'health-fitness' },
-  { id: 281, name: 'METs (Metabolic Equivalent) Calories Burned Calculator', description: 'Calculate calories burned using METs, weight, and duration.', slug: 'mets-calories-burned-calculator', category: 'health-fitness' },
-  { id: 282, name: '1-Rep Max Strength Calculator', description: 'Estimate one-repetition maximum (1RM) from weight and reps.', slug: 'one-rep-max-strength-calculator', category: 'health-fitness' },
+  { 
+    id: 275, 
+    name: 'VO₂ Max Calculator', 
+    description: 'Estimate VO₂ max from age and resting heart rate.', 
+    slug: 'vo2-max-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'VO₂ Max Calculator - Cardiovascular Fitness Test',
+    metaDescription: 'Estimate your VO₂ Max to assess aerobic fitness and improve endurance performance.'
+  },
+  { 
+    id: 276, 
+    name: 'Running Pace Calculator', 
+    description: 'Convert between distance, time, and pace.', 
+    slug: 'running-pace-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Running Pace Calculator - Track Your Speed',
+    metaDescription: 'Calculate your running pace per kilometer or mile to optimize training and improve performance.'
+  },
+  { 
+    id: 277, 
+    name: 'Running Speed to Calories Burned Calculator', 
+    description: 'Estimate calories burned from running speed, weight, and duration.', 
+    slug: 'running-speed-to-calories-burned-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Running Speed to Calories Calculator - Burn Tracker',
+    metaDescription: 'Determine how many calories you burn while running based on your speed, distance, and weight.'
+  },
+  { 
+    id: 278, 
+    name: 'Cycling Power Output (Watts) Calculator', 
+    description: 'Estimate cycling power output based on speed and parameters.', 
+    slug: 'cycling-power-output-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Cycling Power Output Calculator - Measure Watts',
+    metaDescription: 'Calculate your cycling power output in watts to track performance and optimize training sessions.'
+  },
+  { 
+    id: 279, 
+    name: 'Swimming Lap Time Calculator', 
+    description: 'Calculate lap time based on distance and pace.', 
+    slug: 'swimming-lap-time-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Swimming Lap Time Calculator - Track Pool Speed',
+    metaDescription: 'Determine your lap time for any swimming distance to monitor performance and improve speed.'
+  },
+  { 
+    id: 280, 
+    name: 'Rowing Split Calculator', 
+    description: 'Convert between 500m split, time, and distance.', 
+    slug: 'rowing-split-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Rowing Split Calculator - Pace Per 500m',
+    metaDescription: 'Calculate your rowing split time per 500 meters to track performance and set fitness goals.'
+  },
+  { 
+    id: 281, 
+    name: 'METs (Metabolic Equivalent) Calories Burned Calculator', 
+    description: 'Calculate calories burned using METs, weight, and duration.', 
+    slug: 'mets-calories-burned-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'METS Calories Burned Calculator - Activity Tracker',
+    metaDescription: 'Estimate calories burned for any activity using METs values and your body weight.'
+  },
+  { 
+    id: 282, 
+    name: '1-Rep Max Strength Calculator', 
+    description: 'Estimate one-repetition maximum (1RM) from weight and reps.', 
+    slug: 'one-rep-max-strength-calculator', 
+    category: 'health-fitness',
+    metaTitle: '1-Rep Max Calculator - Maximum Strength Test',
+    metaDescription: 'Calculate your one-repetition maximum to track strength levels and plan your workouts.'
+  },
   { id: 283, name: 'Iron Intake Calculator', description: 'Estimate recommended daily iron needs based on age and sex.', slug: 'iron-intake-calculator', category: 'health-fitness' },
   { id: 284, name: 'Calcium Intake Calculator', description: 'Recommended daily calcium intake by age and sex.', slug: 'calcium-intake-calculator', category: 'health-fitness' },
   { id: 285, name: 'Zinc Requirement Calculator', description: 'Daily zinc requirement by age and sex.', slug: 'zinc-requirement-calculator', category: 'health-fitness' },
@@ -876,8 +998,24 @@ export const calculators: Calculator[] = [
   { id: 290, name: 'PDCAAS Protein Quality Calculator', description: 'Estimate protein quality with PDCAAS from amino acid score and digestibility.', slug: 'pdcaas-calculator', category: 'health-fitness' },
   { id: 291, name: 'Vitamin D Sun Exposure Calculator', description: 'Roughly estimate vitamin D from sun exposure parameters.', slug: 'vitamin-d-sun-exposure-calculator', category: 'health-fitness' },
   { id: 292, name: 'Training Stress Score (TSS) Calculator', description: 'Estimate cycling/running TSS from workout intensity and duration.', slug: 'training-stress-score-calculator', category: 'health-fitness' },
-  { id: 293, name: 'Strength-to-Weight Ratio Calculator', description: 'Compare your 1RM to body weight for key lifts.', slug: 'strength-to-weight-ratio-calculator', category: 'health-fitness' },
-  { id: 294, name: 'Training Volume Calculator', description: 'Total sets × reps × weight across exercises and sessions.', slug: 'training-volume-calculator', category: 'health-fitness' },
+  { 
+    id: 293, 
+    name: 'Strength-to-Weight Ratio Calculator', 
+    description: 'Compare your 1RM to body weight for key lifts.', 
+    slug: 'strength-to-weight-ratio-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Strength-to-Weight Ratio Calculator - Fitness Metric',
+    metaDescription: 'Measure your strength-to-weight ratio to evaluate relative strength and athletic performance.'
+  },
+  { 
+    id: 294, 
+    name: 'Training Volume Calculator', 
+    description: 'Total sets × reps × weight across exercises and sessions.', 
+    slug: 'training-volume-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Training Volume Calculator - Workout Planner',
+    metaDescription: 'Calculate total training volume for exercises to optimize workouts and track progress effectively.'
+  },
   { id: 295, name: 'Progressive Overload Calculator', description: 'Plan weekly increases to weight, reps, or sets.', slug: 'progressive-overload-calculator', category: 'health-fitness' },
   { id: 296, name: 'Rest Time Between Sets Calculator', description: 'Recommend rest intervals based on goal and last set effort.', slug: 'rest-time-between-sets-calculator', category: 'health-fitness' },
   { id: 297, name: 'Heart Rate Zone Training Calculator', description: 'Derive 5 HR zones from max/resting HR or field test.', slug: 'heart-rate-zone-training-calculator', category: 'health-fitness' },
@@ -1885,6 +2023,51 @@ export const calculators: Calculator[] = [
     description: 'Calculate the number of business days between two dates, excluding weekends and public holidays.',
     slug: 'working-days-business-days-calculator',
     category: 'time-date',
+  },
+  {
+    id: 151,
+    name: 'Post-Surgery Calorie Needs Calculator',
+    description: 'Calculate your daily calorie needs after surgery to support optimal healing and recovery.',
+    slug: 'post-surgery-calorie-needs-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Post-Surgery Calorie Needs Calculator - Recovery Nutrition',
+    metaDescription: 'Calculate your daily calorie needs after surgery to support optimal healing and recovery with personalized nutrition guidance.'
+  },
+  {
+    id: 152,
+    name: 'Muscle Soreness Recovery Estimator',
+    description: 'Estimate recovery time from muscle soreness based on exercise type, intensity, and recovery factors.',
+    slug: 'muscle-soreness-recovery-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Muscle Soreness Recovery Estimator - DOMS Recovery Time',
+    metaDescription: 'Estimate recovery time from muscle soreness based on exercise type, intensity, and recovery factors for optimal training.'
+  },
+  {
+    id: 153,
+    name: 'Step-to-Calorie Converter',
+    description: 'Convert your daily steps into calories burned based on your body composition and walking patterns.',
+    slug: 'step-to-calorie-converter',
+    category: 'health-fitness',
+    metaTitle: 'Step-to-Calorie Converter - Walking Calorie Calculator',
+    metaDescription: 'Convert your daily steps into calories burned based on your body composition and walking patterns for fitness tracking.'
+  },
+  {
+    id: 154,
+    name: 'Standing vs Sitting Calorie Burn Calculator',
+    description: 'Compare calorie burn between standing and sitting positions to optimize your daily activity.',
+    slug: 'standing-vs-sitting-calorie-burn-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Standing vs Sitting Calorie Burn Calculator - Activity Comparison',
+    metaDescription: 'Compare calorie burn between standing and sitting positions to optimize your daily activity and improve health.'
+  },
+  {
+    id: 155,
+    name: 'Daily Activity Points Calculator',
+    description: 'Track your daily health and fitness activities with a comprehensive point-based scoring system.',
+    slug: 'daily-activity-points-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Daily Activity Points Calculator - Health & Fitness Tracker',
+    metaDescription: 'Track your daily health and fitness activities with a comprehensive point-based scoring system for better wellness.'
   },
 ];
 
