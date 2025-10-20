@@ -2373,6 +2373,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'VO2 per kg Lean Mass Calculator',
     metaDescription: 'Compare VO2 normalized to body mass vs lean mass for clearer fitness insights.'
   },
+  {
+    id: 196,
+    name: 'Bulletproof Coffee Calorie Impact Calculator',
+    description: 'Estimate daily and weekly calorie impact of Bulletproof coffee on your diet.',
+    slug: 'bulletproof-coffee-calorie-impact-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Bulletproof Coffee Calorie Impact Calculator',
+    metaDescription: 'Calculate how butter and MCT oil coffee affects daily and weekly calorie intake and diet goals.'
+  },
+  {
+    id: 197,
+    name: 'Detox Juice Nutrient Calculator',
+    description: 'Evaluate calories, sugar, fiber, and vitamin C in your detox juice plan.',
+    slug: 'detox-juice-nutrient-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Detox Juice Nutrient Calculator',
+    metaDescription: 'Analyze detox juice macros and micronutrients to make smarter, balanced choices.'
+  },
+  {
+    id: 198,
+    name: 'Cheat Meal Impact on Weekly Calories Calculator',
+    description: 'See how a cheat meal changes your weekly calorie balance and goals.',
+    slug: 'cheat-meal-impact-on-weekly-calories-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Cheat Meal Impact on Weekly Calories Calculator',
+    metaDescription: 'Estimate the weekly calorie impact of a cheat meal to plan around it intelligently.'
+  },
+  {
+    id: 199,
+    name: 'Alcohol Metabolism Time Calculator',
+    description: 'Estimate time to metabolize alcohol based on number of drinks and rate.',
+    slug: 'alcohol-metabolism-time-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Alcohol Metabolism Time Calculator',
+    metaDescription: 'Estimate alcohol clearance time for safety, planning, and recovery guidance.'
+  },
+  {
+    id: 200,
+    name: 'Water Fasting Electrolyte Needs Calculator',
+    description: 'Estimate electrolyte totals needed over a water fast duration.',
+    slug: 'water-fasting-electrolyte-needs-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Water Fasting Electrolyte Needs Calculator',
+    metaDescription: 'Plan sodium, potassium, and magnesium intake during water fasting (with caution).'
+  },
+  {
+    id: 201,
+    name: 'Menstrual Cycle Phase Tracker Calculator',
+    description: 'Estimate current cycle phase and predicted ovulation day from typical cycle length.',
+    slug: 'menstrual-cycle-phase-tracker-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Menstrual Cycle Phase Tracker Calculator',
+    metaDescription: 'Track menstrual cycle phases and estimate ovulation window for planning and awareness.'
+  },
+  {
+    id: 202,
+    name: 'PMS Symptom Score Calculator',
+    description: 'Score PMS symptom severity to inform management strategies and care.',
+    slug: 'pms-symptom-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'PMS Symptom Score Calculator',
+    metaDescription: 'Assess PMS severity via a simple symptom index and get tailored tips.'
+  },
+  {
+    id: 203,
+    name: 'Menopause Symptom Index Calculator',
+    description: 'Composite symptom index to assess menopause-related symptom burden.',
+    slug: 'menopause-symptom-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Menopause Symptom Index Calculator',
+    metaDescription: 'Evaluate menopausal symptom severity and explore relief strategies.'
+  },
+  {
+    id: 204,
+    name: 'Iron Loss During Periods Calculator',
+    description: 'Estimate iron lost during menstruation from flow, duration, and iron concentration.',
+    slug: 'iron-loss-during-periods-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Iron Loss During Periods Calculator',
+    metaDescription: 'Estimate menstrual iron loss to guide nutrition and medical follow-up.'
+  },
+  {
+    id: 205,
+    name: 'Postpartum Calorie Needs Calculator',
+    description: 'Estimate postpartum maintenance calories including breastfeeding status.',
+    slug: 'postpartum-calorie-needs-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Postpartum Calorie Needs Calculator',
+    metaDescription: 'Calculate postpartum calorie needs with activity and breastfeeding adjustments.'
+  },
 ];
 
     
