@@ -106,7 +106,7 @@ export default function CodeTimeComplexityEstimator() {
         <AccordionItem value="how-it-works">
             <AccordionTrigger>How It Works</AccordionTrigger>
             <AccordionContent className="text-muted-foreground">
-                This tool visualizes how the number of operations for different common time complexities (Big-O notations) grows as the input size (n) increases. The Y-axis is on a logarithmic scale to make the massive differences in growth rates visible on a single chart. O(2^n) is intentionally left off the chart for n > 20 as its growth is too extreme to visualize with others.
+                This tool visualizes how the number of operations for different common time complexities (Big-O notations) grows as the input size (n) increases. The Y-axis is on a logarithmic scale to make the massive differences in growth rates visible on a single chart. O(2^n) is intentionally left off the chart for n &gt; 20 as its growth is too extreme to visualize with others.
             </AccordionContent>
         </AccordionItem>
       </Accordion>

@@ -73,7 +73,7 @@ export default function BetaAssetCalculator() {
           <CardContent>
             <p className="text-3xl font-bold text-center">{result.toFixed(2)}</p>
             <CardDescription className='mt-4 text-center'>
-              A beta of 1 means the asset moves with the market. >1 is more volatile, and &lt;1 is less volatile than the market.
+              A beta of 1 means the asset moves with the market. &gt;1 is more volatile, and &lt;1 is less volatile than the market.
             </CardDescription>
           </CardContent>
         </Card>

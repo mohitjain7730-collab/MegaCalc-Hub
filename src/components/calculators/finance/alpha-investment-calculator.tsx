@@ -120,7 +120,7 @@ export default function AlphaInvestmentCalculator() {
                 </div>
                  <div>
                     <h4 className="font-semibold text-foreground mb-1">Portfolio Beta (βp)</h4>
-                    <p>A measure of your portfolio's volatility, or systematic risk, in comparison to the market as a whole. A beta of 1 means it moves with the market; a beta > 1 is more volatile.</p>
+                    <p>A measure of your portfolio's volatility, or systematic risk, in comparison to the market as a whole. A beta of 1 means it moves with the market; a beta &gt; 1 is more volatile.</p>
                 </div>
                 <div>
                     <h4 className="font-semibold text-foreground mb-1">Market Return (Rm)</h4>

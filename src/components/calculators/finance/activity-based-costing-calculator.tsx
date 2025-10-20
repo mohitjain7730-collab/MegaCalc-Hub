@@ -98,7 +98,7 @@ export default function ActivityBasedCostingCalculator() {
             <p className="text-3xl font-bold text-center">${result.totalAllocatedCost.toFixed(2)}</p>
             <div className="mt-4 space-y-2">
                 {result.details.map(detail => (
-                    <p key={detail.activity} className="text-sm text-muted-foreground text-center">{detail.activity}: ${detail.rate.toFixed(2)} per {detail.unit} -> ${detail.allocatedCost.toFixed(2)}</p>
+                    <p key={detail.activity} className="text-sm text-muted-foreground text-center">{detail.activity}: ${detail.rate.toFixed(2)} per {detail.unit} → ${detail.allocatedCost.toFixed(2)}</p>
                 ))}
             </div>
           </CardContent>
