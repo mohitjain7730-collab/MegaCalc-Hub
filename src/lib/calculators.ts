@@ -2283,6 +2283,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Foam Rolling Pressure Estimator - Self-Myofascial Release',
     metaDescription: 'Estimate foam rolling pressure to guide safe, effective self-myofascial release intensity.'
   },
+  {
+    id: 186,
+    name: 'Breast Milk Production Estimate Calculator',
+    description: 'Estimate daily and weekly breast milk production based on schedule and output.',
+    slug: 'breast-milk-production-estimate-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Breast Milk Production Estimate Calculator',
+    metaDescription: 'Estimate breast milk production from pumping frequency and average output with guidance and tips.'
+  },
+  {
+    id: 187,
+    name: 'Conception Probability (per cycle) Calculator',
+    description: 'Approximate per-cycle conception probability based on age, cycle, and timing.',
+    slug: 'conception-probability-per-cycle-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Conception Probability Calculator (Per Cycle)',
+    metaDescription: 'Estimate the probability of conceiving in a cycle considering age, regularity, and fertile window timing.'
+  },
+  {
+    id: 188,
+    name: 'IVF Success Probability Calculator',
+    description: 'Estimate IVF success probability per cycle based on age, embryo quality, and history.',
+    slug: 'ivf-success-probability-calculator',
+    category: 'health-fitness',
+    metaTitle: 'IVF Success Probability Calculator',
+    metaDescription: 'Estimate IVF success likelihood using age, embryo quality, and prior cycles to inform expectations.'
+  },
+  {
+    id: 189,
+    name: 'Gestational Diabetes Risk Calculator',
+    description: 'Screening-oriented risk estimate based on age, BMI, and family history.',
+    slug: 'gestational-diabetes-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Gestational Diabetes Risk Calculator',
+    metaDescription: 'Estimate risk for gestational diabetes to guide screening and prenatal lifestyle planning.'
+  },
+  {
+    id: 190,
+    name: 'Prenatal Vitamin Dosage Calculator',
+    description: 'Evaluate key prenatal vitamin doses against common guideline ranges.',
+    slug: 'prenatal-vitamin-dosage-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Prenatal Vitamin Dosage Calculator',
+    metaDescription: 'Evaluate folate, iron, and vitamin D amounts relative to common prenatal guidance.'
+  },
+  {
+    id: 191,
+    name: 'Muscle Fiber Type Ratio Calculator',
+    description: 'Heuristic estimate of Type I vs Type II fiber ratio from performance tests.',
+    slug: 'muscle-fiber-type-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Muscle Fiber Type Ratio Calculator',
+    metaDescription: 'Estimate muscle fiber composition and tailor training for endurance or power.'
+  },
+  {
+    id: 192,
+    name: 'Anaerobic Power Output Calculator',
+    description: 'Estimate peak anaerobic power from jump height, mass, and time to peak.',
+    slug: 'anaerobic-power-output-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Anaerobic Power Output Calculator',
+    metaDescription: 'Estimate anaerobic power and power-to-weight for explosive performance planning.'
+  },
+  {
+    id: 193,
+    name: 'Blood Lactate Clearance Rate Calculator',
+    description: 'Estimate lactate clearance rate and half-life between two measurements.',
+    slug: 'blood-lactate-clearance-rate-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Blood Lactate Clearance Rate Calculator',
+    metaDescription: 'Estimate lactate clearance and half-life to inform recovery and aerobic development.'
+  },
+  {
+    id: 194,
+    name: 'Sweat Sodium Concentration Calculator',
+    description: 'Calculate sweat sodium concentration from total sodium lost and sweat volume.',
+    slug: 'sweat-sodium-concentration-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sweat Sodium Concentration Calculator',
+    metaDescription: 'Estimate sodium concentration of sweat to personalize hydration and electrolyte strategies.'
+  },
+  {
+    id: 195,
+    name: 'VO2 per kg Lean Mass Calculator',
+    description: 'Normalize VO2 to total body mass and lean mass to compare fitness.',
+    slug: 'vo2-per-kg-lean-mass-calculator',
+    category: 'health-fitness',
+    metaTitle: 'VO2 per kg Lean Mass Calculator',
+    metaDescription: 'Compare VO2 normalized to body mass vs lean mass for clearer fitness insights.'
+  },
 ];
 
     
