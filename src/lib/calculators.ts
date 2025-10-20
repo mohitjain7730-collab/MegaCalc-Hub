@@ -916,6 +916,76 @@ export const calculators: Calculator[] = [
     metaTitle: 'Caffeine Intake Calculator - Safe Consumption Tracker',
     metaDescription: 'Calculate your daily caffeine intake to stay within safe limits and avoid overstimulation.'
   },
+  {
+    id: 3100,
+    name: 'Critical Swim Speed (CSS) Calculator',
+    description: 'Estimate your critical swim speed from two time trials to set training paces.',
+    slug: 'critical-swim-speed-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3101,
+    name: 'Power-to-Heart Rate Efficiency Calculator',
+    description: 'Assess aerobic efficiency by relating mechanical power to heart rate.',
+    slug: 'power-to-heart-rate-efficiency-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3102,
+    name: 'Cardiac Output Calculator',
+    description: 'Compute cardiac output in L/min from heart rate and stroke volume.',
+    slug: 'cardiac-output-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3103,
+    name: 'Stroke Volume Calculator',
+    description: 'Estimate stroke volume from cardiac output and heart rate or from EDV−ESV.',
+    slug: 'stroke-volume-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3104,
+    name: 'Arterial Stiffness Index Calculator',
+    description: 'Estimate arterial stiffness index (m/s) from height and pulse transit time.',
+    slug: 'arterial-stiffness-index-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3105,
+    name: 'Thermic Effect of Food (TEF) Calculator',
+    description: 'Estimate calories burned digesting a meal based on macronutrient composition.',
+    slug: 'thermic-effect-of-food-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3106,
+    name: 'Rest vs Active Energy Burn Calculator',
+    description: 'Compare resting energy use to active burn based on METs, duration, and weight.',
+    slug: 'rest-vs-active-energy-burn-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3107,
+    name: 'Brown Fat Activation Estimator',
+    description: 'Estimate additional calories burned from cold exposure and brown fat activation.',
+    slug: 'brown-fat-activation-estimator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3108,
+    name: 'Non-Exercise Activity Thermogenesis (NEAT) Calculator',
+    description: 'Estimate daily NEAT calories from steps, standing time, and light activity.',
+    slug: 'neat-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3109,
+    name: 'Post-Exercise Oxygen Consumption (EPOC) Calculator',
+    description: 'Estimate excess post-exercise oxygen consumption (EPOC) calories from a workout.',
+    slug: 'post-exercise-oxygen-consumption-calculator',
+    category: 'health-fitness'
+  },
   { 
     id: 275, 
     name: 'VO₂ Max Calculator', 
