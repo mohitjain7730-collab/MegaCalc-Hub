@@ -2193,6 +2193,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Sleep Apnea Risk Calculator - Assess Your Risk',
     metaDescription: 'Calculate your risk for sleep apnea using validated screening criteria and get recommendations for evaluation and treatment.'
   },
+  {
+    id: 176,
+    name: 'Capillary Density Estimator',
+    description: 'Estimate muscle capillary density from microscopy counts and field area.',
+    slug: 'capillary-density-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Capillary Density Estimator - Aerobic Fitness Indicator',
+    metaDescription: 'Estimate skeletal muscle capillary density to understand aerobic conditioning and endurance readiness.'
+  },
+  {
+    id: 177,
+    name: 'Myoglobin Oxygen Storage Calculator',
+    description: 'Estimate intramuscular oxygen reserve bound to myoglobin based on muscle mass and concentration.',
+    slug: 'myoglobin-oxygen-storage-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Myoglobin Oxygen Storage Calculator - Muscle O2 Reserve',
+    metaDescription: 'Calculate estimated oxygen stored in muscle myoglobin to understand aerobic support and endurance potential.'
+  },
+  {
+    id: 178,
+    name: 'Glycogen Storage Capacity Calculator',
+    description: 'Estimate total muscle glycogen and energy capacity based on body composition and training.',
+    slug: 'glycogen-storage-capacity-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Glycogen Storage Capacity Calculator - Endurance Fuel',
+    metaDescription: 'Estimate muscle glycogen storage and energy capacity to plan fueling and training for endurance performance.'
+  },
+  {
+    id: 179,
+    name: 'Red Blood Cell Count Effect on VO2 Max Calculator',
+    description: 'Approximate the effect of hemoglobin and RBC count on VO2 Max from baseline.',
+    slug: 'red-blood-cell-count-effect-on-vo2-max-calculator',
+    category: 'health-fitness',
+    metaTitle: 'RBC/Hemoglobin Effect on VO2 Max - Estimator',
+    metaDescription: 'Estimate how hemoglobin and RBC count may alter VO2 Max from baseline to guide training and evaluation.'
+  },
+  {
+    id: 180,
+    name: 'Altitude Acclimatization Oxygen Need Calculator',
+    description: 'Adjust baseline oxygen requirement for training or activity at altitude.',
+    slug: 'altitude-acclimatization-oxygen-need-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Altitude Oxygen Need Calculator - Training Adjustment',
+    metaDescription: 'Adjust oxygen requirement at altitude to manage pacing, recovery, and acclimatization strategies.'
+  },
+  {
+    id: 181,
+    name: 'DOMS (Delayed Onset Muscle Soreness) Recovery Time Calculator',
+    description: 'Estimate time for DOMS to subside based on intensity, eccentric load, and volume.',
+    slug: 'doms-recovery-time-calculator',
+    category: 'health-fitness',
+    metaTitle: 'DOMS Recovery Time Calculator - Soreness Planning',
+    metaDescription: 'Estimate recovery time from DOMS to plan training frequency, volume, and recovery strategies.'
+  },
+  {
+    id: 182,
+    name: 'Physical Therapy Exercise Load Calculator',
+    description: 'Suggest therapeutic load and reps based on phase, pain, and estimated 1RM.',
+    slug: 'physical-therapy-exercise-load-calculator',
+    category: 'health-fitness',
+    metaTitle: 'PT Exercise Load Calculator - Rehab Loading',
+    metaDescription: 'Determine safe and effective therapeutic loading for rehab based on phase, pain, and strength.'
+  },
+  {
+    id: 183,
+    name: 'Post-Injury Mobility Progress Calculator',
+    description: 'Track progress toward target range of motion and weekly rate of improvement.',
+    slug: 'post-injury-mobility-progress-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Mobility Progress Calculator - Post-Injury ROM',
+    metaDescription: 'Evaluate mobility progress after injury by comparing baseline, current, and target ROM with weekly improvement rate.'
+  },
+  {
+    id: 184,
+    name: 'Ice Bath Duration & Temp Calculator',
+    description: 'Recommend cold exposure duration based on water temperature and desired goal.',
+    slug: 'ice-bath-duration-temp-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Ice Bath Duration & Temp Calculator - Cold Therapy',
+    metaDescription: 'Get a recommended ice bath duration tailored to water temperature and your recovery goals.'
+  },
+  {
+    id: 185,
+    name: 'Foam Rolling Pressure Estimator',
+    description: 'Estimate pressure applied during foam rolling from weight, area, and load distribution.',
+    slug: 'foam-rolling-pressure-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Foam Rolling Pressure Estimator - Self-Myofascial Release',
+    metaDescription: 'Estimate foam rolling pressure to guide safe, effective self-myofascial release intensity.'
+  },
 ];
 
     
