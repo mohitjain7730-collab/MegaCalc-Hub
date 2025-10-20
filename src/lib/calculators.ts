@@ -986,6 +986,76 @@ export const calculators: Calculator[] = [
     slug: 'post-exercise-oxygen-consumption-calculator',
     category: 'health-fitness'
   },
+  {
+    id: 3110,
+    name: 'Heart Rate Variability (HRV) Score Calculator',
+    description: 'Calculate your HRV score from RMSSD and age to assess recovery and stress resilience.',
+    slug: 'heart-rate-variability-hrv-score-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3111,
+    name: 'Cortisol Stress Response Estimator',
+    description: 'Estimate your stress hormone response based on lifestyle factors like sleep, stress, and exercise.',
+    slug: 'cortisol-stress-response-estimator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3112,
+    name: 'Meditation Breathing Rate Calculator',
+    description: 'Find your optimal breathing rate for meditation based on age, experience, and goals.',
+    slug: 'meditation-breathing-rate-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3113,
+    name: 'Mindful Minutes Tracking Calculator',
+    description: 'Track your weekly mindfulness practice and calculate consistency metrics.',
+    slug: 'mindful-minutes-tracking-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3114,
+    name: 'Burnout Risk Score Calculator',
+    description: 'Assess your risk of workplace burnout based on work hours, stress, sleep, and support factors.',
+    slug: 'burnout-risk-score-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3115,
+    name: 'VO₂ Reserve Calculator',
+    description: 'Calculate your VO₂ Reserve and training zones for precise aerobic training prescription.',
+    slug: 'vo2-reserve-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3116,
+    name: 'Anaerobic Capacity Calculator',
+    description: 'Estimate your anaerobic power capacity from 30-second and 5-minute power tests.',
+    slug: 'anaerobic-capacity-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3117,
+    name: 'Lactate Accumulation Rate Calculator',
+    description: 'Calculate lactate buildup rate during exercise to optimize training intensity.',
+    slug: 'lactate-accumulation-rate-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3118,
+    name: 'Oxygen Debt (EPOC) Calculator',
+    description: 'Estimate excess post-exercise oxygen consumption and recovery calorie burn.',
+    slug: 'oxygen-debt-epoc-calculator',
+    category: 'health-fitness'
+  },
+  {
+    id: 3119,
+    name: 'Maximal Aerobic Speed (MAS) Calculator',
+    description: 'Calculate your MAS from a time trial and get personalized training paces.',
+    slug: 'maximal-aerobic-speed-mas-calculator',
+    category: 'health-fitness'
+  },
   { 
     id: 275, 
     name: 'VO₂ Max Calculator', 
