@@ -2463,6 +2463,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Postpartum Calorie Needs Calculator',
     metaDescription: 'Calculate postpartum calorie needs with activity and breastfeeding adjustments.'
   },
+  {
+    id: 206,
+    name: 'Thyroid Function Basal Energy Calculator',
+    description: 'Estimate basal energy (BMR) adjusted by thyroid (TSH) context.',
+    slug: 'thyroid-function-basal-energy-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Thyroid Function Basal Energy Calculator',
+    metaDescription: 'Estimate basal energy using Mifflin-St Jeor and an adjustment heuristic from TSH context.'
+  },
+  {
+    id: 207,
+    name: 'Caloric Cost of Cold Exposure Calculator',
+    description: 'Estimate additional calories burned due to cold exposure time, temp, and clothing.',
+    slug: 'caloric-cost-of-cold-exposure-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Caloric Cost of Cold Exposure Calculator',
+    metaDescription: 'Estimate thermogenic calorie cost during cold exposure considering temperature and clothing insulation.'
+  },
+  {
+    id: 208,
+    name: 'Seasonal Energy Expenditure Calculator',
+    description: 'Compare extra calories burned outdoors in winter vs summer conditions.',
+    slug: 'seasonal-energy-expenditure-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Seasonal Energy Expenditure Calculator',
+    metaDescription: 'Estimate seasonal differences in outdoor thermogenic demand to adjust calorie plans.'
+  },
+  {
+    id: 209,
+    name: 'Adaptive Thermogenesis Calculator',
+    description: 'Estimate maintenance reduction from adaptive thermogenesis during weight loss.',
+    slug: 'adaptive-thermogenesis-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Adaptive Thermogenesis Calculator',
+    metaDescription: 'Estimate metabolic adaptation based on recent weight loss rate to refine calorie targets.'
+  },
+  {
+    id: 210,
+    name: 'Mitochondrial Efficiency Estimator',
+    description: 'Estimate oxygen cost per watt at submax as a proxy for efficiency.',
+    slug: 'mitochondrial-efficiency-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Mitochondrial Efficiency Estimator',
+    metaDescription: 'Estimate oxygen cost per watt at submax to gauge mitochondrial efficiency and economy.'
+  },
+  {
+    id: 211,
+    name: 'Paleo Compliance Score Calculator',
+    description: 'Heuristic diet adherence score to paleo-style eating patterns.',
+    slug: 'paleo-compliance-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Paleo Compliance Score Calculator',
+    metaDescription: 'Calculate a paleo compliance score to guide whole-food, minimally processed choices.'
+  },
+  {
+    id: 212,
+    name: 'FODMAP Load Calculator',
+    description: 'Sum key FODMAP group grams to estimate potential symptom load.',
+    slug: 'fodmap-load-calculator',
+    category: 'health-fitness',
+    metaTitle: 'FODMAP Load Calculator',
+    metaDescription: 'Estimate total FODMAP load to manage IBS symptoms with structured reintroduction.'
+  },
+  {
+    id: 213,
+    name: 'Plant-Based Protein Gap Calculator',
+    description: 'Find protein gap vs target on a plant-based diet.',
+    slug: 'plant-based-protein-gap-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Plant-Based Protein Gap Calculator',
+    metaDescription: 'Calculate protein target and gap to help meet needs on plant-based diets.'
+  },
+  {
+    id: 214,
+    name: 'Intermittent Fasting 5:2 Schedule Calculator',
+    description: 'Plan 5 normal and 2 reduced-calorie days; see weekly balance.',
+    slug: 'intermittent-fasting-5-2-schedule-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Intermittent Fasting 5:2 Schedule Calculator',
+    metaDescription: 'Plan a 5:2 intermittent fasting week and estimate the weekly calorie balance.'
+  },
+  {
+    id: 215,
+    name: 'Carb Cycling Macro Calculator',
+    description: 'Set low/high carb day macros around maintenance to match training.',
+    slug: 'carb-cycling-macro-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Carb Cycling Macro Calculator',
+    metaDescription: 'Calculate low vs high day macros for carb cycling tailored to your training.'
+  },
 ];
 
     
