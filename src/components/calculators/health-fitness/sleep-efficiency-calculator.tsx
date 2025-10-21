@@ -7,25 +7,210 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { MoonStar } from 'lucide-react';
-import Link from 'next/link';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { MoonStar, CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
+import { EmbedWidget } from '@/components/embed-widget';
 
-const formSchema = z.object({ timeInBedHours: z.number().positive(), totalSleepHours: z.number().nonnegative() });
+const formSchema = z.object({
+  timeInBedHours: z.number().positive().max(24),
+  totalSleepHours: z.number().nonnegative().max(24),
+  sleepOnsetLatency: z.number().min(0).max(300).optional(), // minutes
+  wakeAfterSleepOnset: z.number().min(0).max(300).optional(), // minutes
+  age: z.number().min(1).max(120).optional(),
+  sleepIssues: z.array(z.enum(['insomnia', 'frequent_waking', 'early_waking', 'difficulty_falling_asleep', 'none'])).optional(),
+});
+
 type FormValues = z.infer<typeof formSchema>;
 
-export default function SleepEfficiencyCalculator() {
-  const [eff, setEff] = useState<number | null>(null);
-  const [opinion, setOpinion] = useState<string>('');
-  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { timeInBedHours: undefined, totalSleepHours: undefined } });
+const calculateSleepEfficiency = (values: FormValues) => {
+  const efficiency = (values.totalSleepHours / values.timeInBedHours) * 100;
+  
+  // Determine sleep quality status
+  let status = 'excellent';
+  let statusColor = 'text-green-600';
+  let bgColor = 'bg-green-50';
+  let borderColor = 'border-green-200';
+  let icon = CheckCircle;
+  let statusText = 'Excellent Sleep Efficiency';
+  
+  if (efficiency < 85) {
+    status = 'poor';
+    statusColor = 'text-red-600';
+    bgColor = 'bg-red-50';
+    borderColor = 'border-red-200';
+    icon = XCircle;
+    statusText = 'Poor Sleep Efficiency';
+  } else if (efficiency < 90) {
+    status = 'fair';
+    statusColor = 'text-orange-600';
+    bgColor = 'bg-orange-50';
+    borderColor = 'border-orange-200';
+    icon = AlertTriangle;
+    statusText = 'Fair Sleep Efficiency';
+  } else if (efficiency >= 90 && efficiency < 95) {
+    status = 'good';
+    statusColor = 'text-blue-600';
+    bgColor = 'bg-blue-50';
+    borderColor = 'border-blue-200';
+    icon = CheckCircle;
+    statusText = 'Good Sleep Efficiency';
+  } else {
+    status = 'excellent';
+    statusColor = 'text-green-600';
+    bgColor = 'bg-green-50';
+    borderColor = 'border-green-200';
+    icon = CheckCircle;
+    statusText = 'Excellent Sleep Efficiency';
+  }
 
-  const onSubmit = (v: FormValues) => {
-    const pct = v.timeInBedHours > 0 ? (v.totalSleepHours / v.timeInBedHours) * 100 : 0;
-    setEff(pct);
-    let text = 'Good efficiency.';
-    if (pct < 85) text = 'Low efficiency. Try a consistent schedule and reduce time-in-bed without sleep.';
-    else if (pct >= 90) text = 'Excellent efficiency—keep habits consistent.';
-    setOpinion(text);
+  // Calculate additional metrics
+  const timeAwake = values.timeInBedHours - values.totalSleepHours;
+  const timeAwakeMinutes = timeAwake * 60;
+  
+  return {
+    efficiency,
+    status,
+    statusColor,
+    bgColor,
+    borderColor,
+    icon,
+    statusText,
+    timeAwake,
+    timeAwakeMinutes,
+    timeInBed: values.timeInBedHours,
+    totalSleep: values.totalSleepHours
+  };
+};
+
+const getDetailedInterpretation = (result: ReturnType<typeof calculateSleepEfficiency>, values: FormValues) => {
+  const interpretations = [];
+  
+  if (result.efficiency < 85) {
+    interpretations.push('Your sleep efficiency is below the clinical threshold for healthy sleep (85%)');
+    interpretations.push('This indicates significant time spent awake in bed, which may suggest insomnia or poor sleep hygiene');
+    interpretations.push('Consider implementing sleep restriction therapy or consulting a sleep specialist');
+  } else if (result.efficiency < 90) {
+    interpretations.push('Your sleep efficiency is approaching the healthy range but could be improved');
+    interpretations.push('You may benefit from better sleep hygiene practices');
+    interpretations.push('Focus on reducing time spent awake in bed');
+  } else if (result.efficiency >= 90 && result.efficiency < 95) {
+    interpretations.push('Your sleep efficiency is within the healthy range');
+    interpretations.push('You have good sleep quality with room for minor improvements');
+    interpretations.push('Maintain your current sleep habits');
+  } else {
+    interpretations.push('Your sleep efficiency is excellent');
+    interpretations.push('You are using your time in bed very effectively for sleep');
+    interpretations.push('Continue maintaining your healthy sleep habits');
+  }
+
+  // Add specific insights based on time awake
+  if (result.timeAwakeMinutes > 60) {
+    interpretations.push(`You spent ${result.timeAwakeMinutes.toFixed(0)} minutes awake in bed, which significantly impacts sleep quality`);
+  } else if (result.timeAwakeMinutes > 30) {
+    interpretations.push(`You spent ${result.timeAwakeMinutes.toFixed(0)} minutes awake in bed, which is moderate and could be improved`);
+  } else {
+    interpretations.push(`You spent only ${result.timeAwakeMinutes.toFixed(0)} minutes awake in bed, indicating very efficient sleep`);
+  }
+
+  return interpretations;
+};
+
+const getPersonalizedRecommendations = (result: ReturnType<typeof calculateSleepEfficiency>, values: FormValues) => {
+  const recommendations = [];
+  
+  if (result.efficiency < 85) {
+    recommendations.push('Implement the 20-minute rule: If you cannot fall asleep within 20 minutes, get out of bed');
+    recommendations.push('Use the bed only for sleep and intimacy - avoid reading, working, or watching TV in bed');
+    recommendations.push('Consider sleep restriction therapy: reduce time in bed to match your actual sleep time');
+    recommendations.push('Maintain a consistent wake-up time every day, even on weekends');
+    recommendations.push('Avoid caffeine, alcohol, and large meals close to bedtime');
+    recommendations.push('Create a relaxing bedtime routine to signal your body it is time to sleep');
+  } else if (result.efficiency < 90) {
+    recommendations.push('Focus on improving sleep hygiene to reach optimal efficiency');
+    recommendations.push('Ensure your bedroom is cool, dark, and quiet');
+    recommendations.push('Limit screen time before bed and use blue light filters');
+    recommendations.push('Practice relaxation techniques like deep breathing or meditation');
+  } else if (result.efficiency >= 90 && result.efficiency < 95) {
+    recommendations.push('Your sleep efficiency is good - maintain current habits');
+    recommendations.push('Consider minor optimizations like consistent sleep schedule');
+    recommendations.push('Monitor your sleep patterns to prevent any decline');
+  } else {
+    recommendations.push('Excellent sleep efficiency - continue your current sleep habits');
+    recommendations.push('Maintain your consistent sleep schedule and bedtime routine');
+    recommendations.push('Consider sharing your sleep hygiene tips with others');
+  }
+
+  // Add age-specific recommendations
+  if (values.age && values.age > 65) {
+    recommendations.push('Older adults may need slightly more time to fall asleep - this is normal');
+    recommendations.push('Consider a brief afternoon nap if needed, but keep it under 30 minutes');
+  }
+
+  // Add issue-specific recommendations
+  if (values.sleepIssues && values.sleepIssues.includes('insomnia')) {
+    recommendations.push('For insomnia, consider cognitive behavioral therapy for insomnia (CBT-I)');
+    recommendations.push('Keep a sleep diary to track patterns and identify triggers');
+  }
+  if (values.sleepIssues && values.sleepIssues.includes('frequent_waking')) {
+    recommendations.push('Address potential causes of frequent waking: noise, light, temperature, or stress');
+    recommendations.push('Consider using earplugs or a white noise machine');
+  }
+  if (values.sleepIssues && values.sleepIssues.includes('early_waking')) {
+    recommendations.push('For early waking, ensure you are getting enough total sleep time');
+    recommendations.push('Consider if you are going to bed too early or have underlying stress');
+  }
+
+  return recommendations;
+};
+
+const getSleepQualityInsights = (result: ReturnType<typeof calculateSleepEfficiency>, values: FormValues) => {
+  const insights = [];
+  
+  // Time in bed vs sleep time analysis
+  if (result.timeInBed > 9) {
+    insights.push('You are spending more than 9 hours in bed - consider if this is necessary');
+    insights.push('Excessive time in bed can actually reduce sleep efficiency');
+  } else if (result.timeInBed < 7) {
+    insights.push('You are spending less than 7 hours in bed - ensure you are getting enough sleep');
+    insights.push('Most adults need 7-9 hours of sleep per night');
+  }
+
+  // Sleep efficiency analysis
+  if (result.efficiency > 95) {
+    insights.push('Very high efficiency may indicate you are not spending enough time in bed');
+    insights.push('Consider if you have sleep debt and need more total sleep time');
+  }
+
+  // Age-specific insights
+  if (values.age && values.age < 18) {
+    insights.push('Teenagers typically need 8-10 hours of sleep per night');
+    insights.push('Your sleep needs may be higher than adults');
+  } else if (values.age && values.age > 65) {
+    insights.push('Older adults may experience more fragmented sleep, which is normal');
+    insights.push('Focus on total sleep time rather than continuous sleep');
+  }
+
+  return insights;
+};
+
+export default function SleepEfficiencyCalculator() {
+  const [result, setResult] = useState<ReturnType<typeof calculateSleepEfficiency> | null>(null);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      timeInBedHours: undefined,
+      totalSleepHours: undefined,
+      sleepOnsetLatency: undefined,
+      wakeAfterSleepOnset: undefined,
+      age: undefined,
+      sleepIssues: [],
+    },
+  });
+
+  const onSubmit = (values: FormValues) => {
+    const calculation = calculateSleepEfficiency(values);
+    setResult(calculation);
   };
 
   return (
@@ -33,26 +218,182 @@ export default function SleepEfficiencyCalculator() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="timeInBedHours" render={({ field }) => (<FormItem><FormLabel>Time in Bed (hours)</FormLabel><FormControl><Input type="number" step="0.1" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
-            <FormField control={form.control} name="totalSleepHours" render={({ field }) => (<FormItem><FormLabel>Total Sleep (hours)</FormLabel><FormControl><Input type="number" step="0.1" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
+            <FormField control={form.control} name="timeInBedHours" render={({ field }) => (
+              <FormItem>
+                <FormLabel>Time in Bed (hours)</FormLabel>
+                <FormControl>
+                  <Input 
+                    type="number" 
+                    step="0.1" 
+                    {...field} 
+                    value={field.value ?? ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    placeholder="e.g., 8.5"
+                  />
+                </FormControl>
+                <FormMessage />
+                <p className="text-sm text-muted-foreground">Total time from getting into bed until getting out of bed</p>
+              </FormItem>
+            )} />
+            
+            <FormField control={form.control} name="totalSleepHours" render={({ field }) => (
+              <FormItem>
+                <FormLabel>Total Sleep Time (hours)</FormLabel>
+                <FormControl>
+                  <Input 
+                    type="number" 
+                    step="0.1" 
+                    {...field} 
+                    value={field.value ?? ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    placeholder="e.g., 7.2"
+                  />
+                </FormControl>
+                <FormMessage />
+                <p className="text-sm text-muted-foreground">Actual time spent asleep</p>
+              </FormItem>
+            )} />
           </div>
-          <Button type="submit">Calculate Efficiency</Button>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField control={form.control} name="sleepOnsetLatency" render={({ field }) => (
+              <FormItem>
+                <FormLabel>Time to Fall Asleep (minutes) - Optional</FormLabel>
+                <FormControl>
+                  <Input 
+                    type="number" 
+                    {...field} 
+                    value={field.value ?? ''} 
+                    onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                    placeholder="e.g., 15"
+                  />
+                </FormControl>
+                <FormMessage />
+                <p className="text-sm text-muted-foreground">How long it takes to fall asleep after getting into bed</p>
+              </FormItem>
+            )} />
+            
+            <FormField control={form.control} name="wakeAfterSleepOnset" render={({ field }) => (
+              <FormItem>
+                <FormLabel>Time Awake During Night (minutes) - Optional</FormLabel>
+                <FormControl>
+                  <Input 
+                    type="number" 
+                    {...field} 
+                    value={field.value ?? ''} 
+                    onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                    placeholder="e.g., 20"
+                  />
+                </FormControl>
+                <FormMessage />
+                <p className="text-sm text-muted-foreground">Total time awake during the night</p>
+              </FormItem>
+            )} />
+          </div>
+
+          <FormField control={form.control} name="age" render={({ field }) => (
+            <FormItem>
+              <FormLabel>Age (years) - Optional</FormLabel>
+              <FormControl>
+                <Input 
+                  type="number" 
+                  {...field} 
+                  value={field.value ?? ''} 
+                  onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                  placeholder="e.g., 35"
+                />
+              </FormControl>
+              <FormMessage />
+              <p className="text-sm text-muted-foreground">Age affects sleep needs and patterns</p>
+            </FormItem>
+          )} />
+
+          <Button type="submit" className="w-full">
+            <MoonStar className="mr-2 h-4 w-4" />
+            Calculate Sleep Efficiency
+          </Button>
         </form>
       </Form>
 
-      {eff !== null && (
+      {result && (
         <Card className="mt-8">
-          <CardHeader><div className='flex items-center gap-4'><MoonStar className="h-8 w-8 text-primary" /><CardTitle>Sleep Efficiency</CardTitle></div></CardHeader>
-          <CardContent>
-            <div className="text-center space-y-2">
-              <p className="text-4xl font-bold">{eff.toFixed(0)}%</p>
-              <CardDescription>{opinion}</CardDescription>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <result.icon className={`h-5 w-5 ${result.statusColor}`} />
+              Sleep Efficiency Analysis
+            </CardTitle>
+            <CardDescription>
+              Your sleep quality assessment and recommendations
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className={`p-6 rounded-lg border ${result.bgColor} ${result.borderColor}`}>
+              <div className="text-center space-y-4">
+                <div>
+                  <p className="text-4xl font-bold">{result.efficiency.toFixed(1)}%</p>
+                  <p className={`text-lg font-semibold ${result.statusColor}`}>{result.statusText}</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="text-muted-foreground">Time in Bed</p>
+                    <p className="font-semibold">{result.timeInBed.toFixed(1)} hours</p>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">Total Sleep</p>
+                    <p className="font-semibold">{result.totalSleep.toFixed(1)} hours</p>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">Time Awake</p>
+                    <p className="font-semibold">{result.timeAwake.toFixed(1)} hours</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div className="space-y-4">
+              <h3 className="font-semibold text-foreground">Detailed Interpretation</h3>
+              <ul className="space-y-2">
+                {getDetailedInterpretation(result, form.getValues()).map((interpretation, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <MoonStar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">{interpretation}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="font-semibold text-foreground">Personalized Recommendations</h3>
+              <ul className="space-y-2">
+                {getPersonalizedRecommendations(result, form.getValues()).map((recommendation, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">{recommendation}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {getSleepQualityInsights(result, form.getValues()).length > 0 && (
+              <div className="space-y-4">
+                <h3 className="font-semibold text-foreground">Sleep Quality Insights</h3>
+                <ul className="space-y-2">
+                  {getSleepQualityInsights(result, form.getValues()).map((insight, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <AlertTriangle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{insight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </CardContent>
         </Card>
       )}
 
       <SeGuide />
+      
+      <EmbedWidget calculatorSlug="sleep-efficiency-calculator" calculatorName="Sleep Efficiency Calculator" />
     </div>
   );
 }
