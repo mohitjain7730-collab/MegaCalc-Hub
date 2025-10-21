@@ -42,7 +42,7 @@ export default function ConceptionProbabilityPerCycleCalculator() {
   const interpret = (p: number) => {
     if (p >= 30) return 'Higher-than-average chance per cycle with favorable timing.';
     if (p >= 15) return 'Typical probability per cycle; consistent timing helps.';
-    return 'Lower probability per cycle—optimize timing and consider consultation if trying >12 months.';
+    return 'Lower probability per cycle—optimize timing and consider consultation if trying &gt;12 months.';
   };
 
   const opinion = (p: number) => {

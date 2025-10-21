@@ -1197,6 +1197,114 @@ export const calculators: Calculator[] = [
   { id: 3025, name: 'Food Allergy Risk Score Calculator', description: 'Calculate food allergy risk based on family history, existing conditions, and environmental factors.', slug: 'food-allergy-risk-score-calculator', category: 'health-fitness' },
   { id: 3026, name: 'Total Energy Expenditure (TEE) Calculator', description: 'Calculate your daily total energy expenditure including BMR, activity, and exercise for comprehensive calorie needs.', slug: 'total-energy-expenditure-calculator', category: 'health-fitness' },
   { id: 3027, name: 'Respiratory Quotient (RQ) Calculator', description: 'Calculate your respiratory quotient to understand fuel utilization during exercise and metabolic efficiency.', slug: 'respiratory-quotient-calculator', category: 'health-fitness' },
+  { 
+    id: 3200, 
+    name: 'COPD Risk Score Calculator', 
+    description: 'Assess your risk of Chronic Obstructive Pulmonary Disease based on smoking history, symptoms, and environmental factors.', 
+    slug: 'copd-risk-score-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'COPD Risk Score Calculator - Assess Your Lung Health Risk',
+    metaDescription: 'Calculate your COPD risk score based on smoking history, symptoms, environmental exposure, and medical history for comprehensive lung health assessment.'
+  },
+  { 
+    id: 3201, 
+    name: 'Fracture Risk (FRAX) Calculator', 
+    description: 'Calculate your 10-year probability of hip fracture and major osteoporotic fracture using the WHO FRAX algorithm.', 
+    slug: 'fracture-risk-frax-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Fracture Risk (FRAX) Calculator - Osteoporosis Risk Assessment',
+    metaDescription: 'Assess your 10-year fracture risk using the validated FRAX algorithm to evaluate osteoporosis and bone health risk factors.'
+  },
+  { 
+    id: 3202, 
+    name: 'Metabolic Syndrome Risk Calculator', 
+    description: 'Evaluate your risk of metabolic syndrome using ATP III criteria including waist circumference, blood pressure, and laboratory values.', 
+    slug: 'metabolic-syndrome-risk-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Metabolic Syndrome Risk Calculator - Cardiovascular Risk Assessment',
+    metaDescription: 'Calculate your metabolic syndrome risk using ATP III criteria to assess cardiovascular and diabetes risk factors comprehensively.'
+  },
+  { 
+    id: 3203, 
+    name: 'Liver Fat (NAFLD) Risk Calculator', 
+    description: 'Assess your risk of Non-Alcoholic Fatty Liver Disease based on metabolic factors, lifestyle, and medical history.', 
+    slug: 'liver-fat-nafld-risk-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Liver Fat (NAFLD) Risk Calculator - Liver Health Assessment',
+    metaDescription: 'Evaluate your NAFLD risk based on metabolic factors, lifestyle choices, and medical history for comprehensive liver health assessment.'
+  },
+  { 
+    id: 3204, 
+    name: 'Kidney Function (eGFR) Calculator', 
+    description: 'Calculate your estimated Glomerular Filtration Rate using the CKD-EPI equation to assess kidney function and health.', 
+    slug: 'kidney-function-egfr-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Kidney Function (eGFR) Calculator - Renal Health Assessment',
+    metaDescription: 'Calculate your estimated glomerular filtration rate using the CKD-EPI equation to evaluate kidney function and assess renal health.'
+  },
+  { 
+    id: 3205, 
+    name: 'Waist-to-BMI Ratio Risk Calculator', 
+    description: 'Assess your central obesity and metabolic risk using the waist-to-BMI ratio for more accurate body composition evaluation.', 
+    slug: 'waist-to-bmi-ratio-risk-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Waist-to-BMI Ratio Risk Calculator - Central Obesity Assessment',
+    metaDescription: 'Calculate your waist-to-BMI ratio to assess central obesity and metabolic risk for more accurate body composition evaluation.'
+  },
+  { 
+    id: 3206, 
+    name: 'Hypertension Stage Calculator', 
+    description: 'Determine your blood pressure stage and cardiovascular risk using AHA guidelines with comprehensive risk factor assessment.', 
+    slug: 'hypertension-stage-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Hypertension Stage Calculator - Blood Pressure Assessment',
+    metaDescription: 'Calculate your hypertension stage and cardiovascular risk using AHA guidelines with comprehensive blood pressure evaluation.'
+  },
+  { 
+    id: 3207, 
+    name: 'Coronary Calcium Score Estimator', 
+    description: 'Estimate your coronary artery calcium burden and cardiovascular risk based on demographic and risk factors.', 
+    slug: 'coronary-calcium-score-estimator', 
+    category: 'health-fitness',
+    metaTitle: 'Coronary Calcium Score Estimator - Heart Disease Risk Assessment',
+    metaDescription: 'Estimate your coronary calcium score and cardiovascular risk based on demographic factors and medical history for heart health evaluation.'
+  },
+  { 
+    id: 3208, 
+    name: 'Cardiometabolic Age Calculator', 
+    description: 'Calculate your metabolic age compared to chronological age based on cardiovascular and metabolic risk factors.', 
+    slug: 'cardiometabolic-age-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Cardiometabolic Age Calculator - Metabolic Health Assessment',
+    metaDescription: 'Calculate your cardiometabolic age to assess how your cardiovascular and metabolic health compares to your chronological age.'
+  },
+  { 
+    id: 3209, 
+    name: 'Fat Mass Index Calculator', 
+    description: 'Calculate your Fat Mass Index (FMI) to assess body fat mass relative to height for better body composition evaluation.', 
+    slug: 'fat-mass-index-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Fat Mass Index Calculator - Body Fat Assessment',
+    metaDescription: 'Calculate your Fat Mass Index to assess body fat mass relative to height for more accurate body composition and health evaluation.'
+  },
+  { 
+    id: 3210, 
+    name: 'Ideal Waist Size Calculator', 
+    description: 'Calculate your ideal waist circumference based on height, gender, and ethnicity for optimal health and reduced disease risk.', 
+    slug: 'ideal-waist-size-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Ideal Waist Size Calculator - Optimal Waist Circumference',
+    metaDescription: 'Calculate your ideal waist size based on height, gender, and ethnicity to assess health risks and optimize body composition for better health outcomes.'
+  },
+  { 
+    id: 3211, 
+    name: 'Omega-3 Daily Requirement Calculator', 
+    description: 'Calculate your personalized daily omega-3 fatty acid requirements based on age, health conditions, and lifestyle factors.', 
+    slug: 'omega3-daily-requirement-calculator', 
+    category: 'health-fitness',
+    metaTitle: 'Omega-3 Daily Requirement Calculator - Personalized Fatty Acid Needs',
+    metaDescription: 'Calculate your personalized omega-3 daily requirements including EPA and DHA based on age, gender, health conditions, and lifestyle for optimal nutrition and health.'
+  },
   { id: 3028, name: 'Maximum Lactate Steady State (MLSS) Calculator', description: 'Calculate your MLSS for optimal endurance training intensity and lactate threshold determination.', slug: 'maximum-lactate-steady-state-calculator', category: 'health-fitness' },
   { id: 3029, name: 'Anaerobic Threshold Calculator', description: 'Calculate your anaerobic threshold for optimal training zone prescription and performance optimization.', slug: 'anaerobic-threshold-calculator', category: 'health-fitness' },
   { id: 3030, name: 'Blood Oxygen Saturation Estimator', description: 'Estimate your blood oxygen saturation based on altitude, activity level, and health conditions.', slug: 'blood-oxygen-saturation-estimator', category: 'health-fitness' },

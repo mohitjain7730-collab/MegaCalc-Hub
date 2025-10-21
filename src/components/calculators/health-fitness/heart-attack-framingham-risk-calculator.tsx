@@ -125,7 +125,7 @@ export default function HeartAttackFraminghamRiskCalculator() {
       recommendations.push('Immediate smoking cessation is critical for heart health');
     }
     if (v.diabetes === 'yes') {
-      recommendations.push('Optimize diabetes control with HbA1c target <7%');
+      recommendations.push('Optimize diabetes control with HbA1c target &lt;7%');
     }
     if (v.bmi >= 30) {
       recommendations.push('Weight loss of 5-10% can significantly reduce heart attack risk');
