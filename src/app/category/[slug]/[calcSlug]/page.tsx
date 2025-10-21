@@ -596,6 +596,13 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'glove-size-converter': dynamic(() => import('@/components/calculators/conversions/glove-size-converter')),
     'body-measurement-to-cloth-size-converter': dynamic(() => import('@/components/calculators/conversions/body-measurement-to-cloth-size-converter')),
     'height-converter': dynamic(() => import('@/components/calculators/conversions/height-converter')),
+    
+    // New Finance Calculators (Only include created ones)
+    'margin-leverage-calculator': dynamic(() => import('@/components/calculators/finance/margin-leverage-calculator')),
+    'maintenance-margin-calculator': dynamic(() => import('@/components/calculators/finance/maintenance-margin-calculator')),
+    'loan-amortization-extra-payments-calculator': dynamic(() => import('@/components/calculators/finance/loan-amortization-extra-payments-calculator')),
+    'balloon-payment-loan-calculator': dynamic(() => import('@/components/calculators/finance/balloon-payment-loan-calculator')),
+    'graduated-payment-mortgage-calculator': dynamic(() => import('@/components/calculators/finance/graduated-payment-mortgage-calculator')),
 };
 
 export default function CalculatorPage({ params }: { params: { slug: string; calcSlug: string } }) {

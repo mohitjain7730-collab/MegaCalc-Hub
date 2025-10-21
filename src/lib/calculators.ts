@@ -2801,6 +2801,52 @@ export const calculators: Calculator[] = [
     metaTitle: 'Carb Cycling Macro Calculator',
     metaDescription: 'Calculate low vs high day macros for carb cycling tailored to your training.'
   },
+  // New Finance Calculators
+  {
+    id: 3300,
+    name: 'Margin Leverage Calculator',
+    description: 'Calculate margin requirements, leverage ratios, and risk metrics for leveraged trading positions. Assess margin call risk and optimize capital utilization.',
+    slug: 'margin-leverage-calculator',
+    category: 'finance',
+    metaTitle: 'Margin Leverage Calculator - Trading Risk Assessment',
+    metaDescription: 'Calculate margin requirements, leverage ratios, and risk metrics for leveraged trading positions. Assess margin call risk and optimize capital utilization.'
+  },
+  {
+    id: 3301,
+    name: 'Maintenance Margin Calculator',
+    description: 'Calculate maintenance margin requirements, assess margin call risk, and optimize your leveraged trading positions for better risk management.',
+    slug: 'maintenance-margin-calculator',
+    category: 'finance',
+    metaTitle: 'Maintenance Margin Calculator - Margin Call Risk Assessment',
+    metaDescription: 'Calculate maintenance margin requirements, assess margin call risk, and optimize your leveraged trading positions for better risk management.'
+  },
+  {
+    id: 3302,
+    name: 'Loan Amortization with Extra Payments Calculator',
+    description: 'Calculate loan amortization schedules with extra payments to save interest and pay off loans faster. See the impact of additional payments on your loan.',
+    slug: 'loan-amortization-extra-payments-calculator',
+    category: 'finance',
+    metaTitle: 'Loan Amortization Calculator with Extra Payments',
+    metaDescription: 'Calculate loan amortization schedules with extra payments to save interest and pay off loans faster. See the impact of additional payments on your loan.'
+  },
+  {
+    id: 3303,
+    name: 'Balloon Payment Loan Calculator',
+    description: 'Calculate balloon payment loans with lower monthly payments and large final payments. Assess balloon payment risk and plan for loan payoff.',
+    slug: 'balloon-payment-loan-calculator',
+    category: 'finance',
+    metaTitle: 'Balloon Payment Loan Calculator - Loan Risk Assessment',
+    metaDescription: 'Calculate balloon payment loans with lower monthly payments and large final payments. Assess balloon payment risk and plan for loan payoff.'
+  },
+  {
+    id: 3304,
+    name: 'Graduated Payment Mortgage Calculator',
+    description: 'Calculate graduated payment mortgages with lower initial payments and increasing payments over time. Assess GPM risk and plan for payment increases.',
+    slug: 'graduated-payment-mortgage-calculator',
+    category: 'finance',
+    metaTitle: 'Graduated Payment Mortgage Calculator - GPM Analysis',
+    metaDescription: 'Calculate graduated payment mortgages with lower initial payments and increasing payments over time. Assess GPM risk and plan for payment increases.'
+  },
 ];
 
     
