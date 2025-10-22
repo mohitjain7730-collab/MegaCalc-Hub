@@ -602,6 +602,12 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'maintenance-margin-calculator': dynamic(() => import('@/components/calculators/finance/maintenance-margin-calculator')),
     'loan-amortization-extra-payments-calculator': dynamic(() => import('@/components/calculators/finance/loan-amortization-extra-payments-calculator')),
     'balloon-payment-loan-calculator': dynamic(() => import('@/components/calculators/finance/balloon-payment-loan-calculator')),
+    // New requested real estate/mortgage calculators
+    'arm-payment-projection-calculator': dynamic(() => import('@/components/calculators/finance/arm-payment-projection-calculator')),
+    'mortgage-refinance-savings-calculator': dynamic(() => import('@/components/calculators/finance/mortgage-refinance-savings-calculator')),
+    'mortgage-equity-heloc-calculator': dynamic(() => import('@/components/calculators/finance/mortgage-equity-heloc-calculator')),
+    'rental-property-cap-rate-calculator': dynamic(() => import('@/components/calculators/finance/rental-property-cap-rate-calculator')),
+    'real-estate-cash-on-cash-return-calculator': dynamic(() => import('@/components/calculators/finance/real-estate-cash-on-cash-return-calculator')),
     'graduated-payment-mortgage-calculator': dynamic(() => import('@/components/calculators/finance/graduated-payment-mortgage-calculator')),
 };
 

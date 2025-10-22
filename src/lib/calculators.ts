@@ -2847,6 +2847,52 @@ export const calculators: Calculator[] = [
     metaTitle: 'Graduated Payment Mortgage Calculator - GPM Analysis',
     metaDescription: 'Calculate graduated payment mortgages with lower initial payments and increasing payments over time. Assess GPM risk and plan for payment increases.'
   },
+  // Requested: New Real Estate & Mortgage Calculators
+  {
+    id: 3310,
+    name: 'Adjustable Rate Mortgage (ARM) Payment Projection Calculator',
+    description: 'Project how ARM interest rates and monthly payments may change after the fixed period given index, margin, caps, and adjustment intervals.',
+    slug: 'arm-payment-projection-calculator',
+    category: 'finance',
+    metaTitle: 'ARM Payment Projection Calculator',
+    metaDescription: 'Estimate future ARM rates and payments using index, margin, and rate caps to understand payment risk after the fixed period.'
+  },
+  {
+    id: 3311,
+    name: 'Mortgage Refinance Savings Calculator',
+    description: 'Compare your current mortgage vs a new refinance. See new payment, lifetime interest, breakeven point, and total savings after closing costs.',
+    slug: 'mortgage-refinance-savings-calculator',
+    category: 'finance',
+    metaTitle: 'Mortgage Refinance Savings Calculator',
+    metaDescription: 'Evaluate refinance benefits by comparing payments, total interest, and breakeven months including closing costs.'
+  },
+  {
+    id: 3312,
+    name: 'Mortgage Equity / Home Equity Loan / HELOC Calculator',
+    description: 'Estimate your home equity, combined loan-to-value (CLTV), and potential HELOC or home equity loan amount based on lender LTV limits.',
+    slug: 'mortgage-equity-heloc-calculator',
+    category: 'finance',
+    metaTitle: 'Home Equity & HELOC Calculator',
+    metaDescription: 'Calculate available home equity and estimated HELOC limit using property value, existing liens, and target LTV.'
+  },
+  {
+    id: 3313,
+    name: 'Rental Property Return / Cap Rate Calculator',
+    description: 'Compute cap rate from purchase price and net operating income (NOI). Optionally derive NOI from rent and expenses.',
+    slug: 'rental-property-cap-rate-calculator',
+    category: 'finance',
+    metaTitle: 'Rental Property Cap Rate Calculator',
+    metaDescription: 'Estimate rental property cap rate using NOI and purchase price with guidance on typical ranges and usage.'
+  },
+  {
+    id: 3314,
+    name: 'Real Estate ROI / Cash-on-Cash Return Calculator',
+    description: 'Estimate cash-on-cash return based on cash invested, financing terms, and annual cash flow from operations.',
+    slug: 'real-estate-cash-on-cash-return-calculator',
+    category: 'finance',
+    metaTitle: 'Cash-on-Cash Return Calculator',
+    metaDescription: 'Calculate real estate cash-on-cash ROI using down payment, closing costs, rehab, NOI, and debt service.'
+  },
 ];
 
     
