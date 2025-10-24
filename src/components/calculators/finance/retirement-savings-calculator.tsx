@@ -9,11 +9,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Landmark } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Landmark, DollarSign, TrendingUp, Calendar, Target, Info, AlertCircle, Building, Users } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   currentAge: z.number().int().positive(),
@@ -35,6 +36,12 @@ interface CalculationResult {
   totalInterest: number;
   requiredMonthlyContribution?: number;
   chartData: { age: number; totalInvested: number; futureValue: number }[];
+  yearsToRetirement: number;
+  monthlyIncome: number;
+  annualIncome: number;
+  interestPercentage: number;
+  isOnTrack: boolean;
+  shortfall: number;
 }
 
 export default function RetirementSavingsCalculator() {
@@ -96,67 +103,312 @@ export default function RetirementSavingsCalculator() {
     const totalInvested = currentSavings + ((contribution || 0) * n);
     const totalInterest = totalSavings - totalInvested;
 
+    const yearsToRetirement = retirementAge - currentAge;
+    const monthlyIncome = (totalSavings * 0.04) / 12; // 4% rule
+    const annualIncome = monthlyIncome * 12;
+    const interestPercentage = (totalInterest / totalSavings) * 100;
+    const isOnTrack = calculationMode === 'target' ? (contribution > 0 && contribution <= (monthlyContribution || 0)) : true;
+    const shortfall = calculationMode === 'target' && targetCorpus ? Math.max(0, targetCorpus - totalSavings) : 0;
+
     setResult({ 
         totalSavings, 
         totalInvested, 
         totalInterest, 
         chartData, 
-        requiredMonthlyContribution: calculationMode === 'target' ? contribution : undefined
+        requiredMonthlyContribution: calculationMode === 'target' ? contribution : undefined,
+        yearsToRetirement,
+        monthlyIncome,
+        annualIncome,
+        interestPercentage,
+        isOnTrack,
+        shortfall
     });
   };
 
 
   return (
     <div className="space-y-8">
-       <Tabs defaultValue="project" onValueChange={(value) => setCalculationMode(value as 'project' | 'target')}>
-        <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="project">Project My Savings</TabsTrigger>
-            <TabsTrigger value="target">Calculate for a Target</TabsTrigger>
-        </TabsList>
-      </Tabs>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(calculateRetirement)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="currentAge" render={({ field }) => ( <FormItem><FormLabel>Current Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="retirementAge" render={({ field }) => ( <FormItem><FormLabel>Retirement Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="currentSavings" render={({ field }) => ( <FormItem><FormLabel>Current Savings</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
-            <FormField control={form.control} name="annualReturn" render={({ field }) => ( <FormItem><FormLabel>Expected Annual Return (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="h-5 w-5" />
+            Retirement Planning Parameters
+          </CardTitle>
+          <CardDescription>
+            Plan your retirement with comprehensive projections and target calculations
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="project" onValueChange={(value) => setCalculationMode(value as 'project' | 'target')}>
+            <TabsList className="grid w-full grid-cols-2 mb-6">
+              <TabsTrigger value="project">Project My Savings</TabsTrigger>
+              <TabsTrigger value="target">Calculate for a Target</TabsTrigger>
+            </TabsList>
             
-            {calculationMode === 'project' ? (
-                <FormField control={form.control} name="monthlyContribution" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Monthly Contribution</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
-            ) : (
-                <FormField control={form.control} name="targetCorpus" render={({ field }) => ( <FormItem className="md:col-span-2"><FormLabel>Target Retirement Corpus</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem> )} />
-            )}
-          </div>
-          <Button type="submit">Calculate</Button>
-        </form>
-      </Form>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(calculateRetirement)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField 
+                    control={form.control} 
+                    name="currentAge" 
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <Calendar className="h-4 w-4" />
+                          Current Age (years)
+                        </FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="number" 
+                            placeholder="e.g., 30" 
+                            {...field} 
+                            value={field.value ?? ''} 
+                            onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )} 
+                  />
+                  <FormField 
+                    control={form.control} 
+                    name="retirementAge" 
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <Target className="h-4 w-4" />
+                          Retirement Age (years)
+                        </FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="number" 
+                            placeholder="e.g., 65" 
+                            {...field} 
+                            value={field.value ?? ''} 
+                            onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )} 
+                  />
+                  <FormField 
+                    control={form.control} 
+                    name="currentSavings" 
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <DollarSign className="h-4 w-4" />
+                          Current Savings
+                        </FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="number" 
+                            placeholder="e.g., 50000" 
+                            {...field} 
+                            value={field.value ?? ''} 
+                            onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )} 
+                  />
+                  <FormField 
+                    control={form.control} 
+                    name="annualReturn" 
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <TrendingUp className="h-4 w-4" />
+                          Expected Annual Return (%)
+                        </FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="number" 
+                            placeholder="e.g., 7" 
+                            {...field} 
+                            value={field.value ?? ''} 
+                            onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )} 
+                  />
+                  
+                  {calculationMode === 'project' ? (
+                    <FormField 
+                      control={form.control} 
+                      name="monthlyContribution" 
+                      render={({ field }) => (
+                        <FormItem className="md:col-span-2">
+                          <FormLabel className="flex items-center gap-2">
+                            <Building className="h-4 w-4" />
+                            Monthly Contribution
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="number" 
+                              placeholder="e.g., 1000" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )} 
+                    />
+                  ) : (
+                    <FormField 
+                      control={form.control} 
+                      name="targetCorpus" 
+                      render={({ field }) => (
+                        <FormItem className="md:col-span-2">
+                          <FormLabel className="flex items-center gap-2">
+                            <Landmark className="h-4 w-4" />
+                            Target Retirement Corpus
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="number" 
+                              placeholder="e.g., 1000000" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )} 
+                    />
+                  )}
+                </div>
+                <Button type="submit" className="w-full md:w-auto">
+                  Calculate Retirement Projection
+                </Button>
+              </form>
+            </Form>
+          </Tabs>
+        </CardContent>
+      </Card>
       {result && (
-        <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Landmark className="h-8 w-8 text-primary" /><CardTitle>Retirement Projection</CardTitle></div></CardHeader>
+        <div className="space-y-6">
+          {/* Main Results Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <Landmark className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Your Retirement Projection</CardTitle>
+                  <CardDescription>
+                    {result.yearsToRetirement} years to retirement • {calculationMode === 'project' ? 'Projection Mode' : 'Target Mode'}
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
             <CardContent>
-                {calculationMode === 'project' ? (
-                    <div className="text-center space-y-4">
-                        <div>
-                            <CardDescription>Estimated Savings at Retirement</CardDescription>
-                            <p className="text-3xl font-bold">${result.totalSavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                            <div><CardDescription>Total Invested</CardDescription><p className="text-xl font-semibold">${result.totalInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p></div>
-                            <div><CardDescription>Total Interest Earned</CardDescription><p className="text-xl font-semibold">${result.totalInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p></div>
-                        </div>
+              {calculationMode === 'project' ? (
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div className="text-center p-6 bg-primary/5 rounded-lg">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <DollarSign className="h-5 w-5 text-primary" />
+                        <span className="text-sm font-medium text-muted-foreground">Retirement Balance</span>
+                      </div>
+                      <p className="text-3xl font-bold text-primary">
+                        ${result.totalSavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        At age {form.getValues('retirementAge')}
+                      </p>
                     </div>
-                ) : (
-                    <div className="text-center space-y-2">
-                        <CardDescription>Required Monthly Contribution to reach your goal</CardDescription>
-                        {result.requiredMonthlyContribution !== undefined && result.requiredMonthlyContribution > 0 ? (
-                           <p className="text-3xl font-bold">${result.requiredMonthlyContribution.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
-                        ) : (
-                           <p className="text-lg text-destructive">Your current savings and returns already meet or exceed your goal. No additional monthly contribution is required.</p>
-                        )}
+                    
+                    <div className="text-center p-6 bg-muted/50 rounded-lg">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <Building className="h-5 w-5 text-muted-foreground" />
+                        <span className="text-sm font-medium text-muted-foreground">Total Invested</span>
+                      </div>
+                      <p className="text-2xl font-bold">
+                        ${result.totalInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Your contributions over time
+                      </p>
                     </div>
-                )}
-                 <div className="mt-8 h-80">
+                    
+                    <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <TrendingUp className="h-5 w-5 text-green-600" />
+                        <span className="text-sm font-medium text-muted-foreground">Interest Earned</span>
+                      </div>
+                      <p className="text-2xl font-bold text-green-600">
+                        ${result.totalInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {result.interestPercentage.toFixed(1)}% of total balance
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Key Insights */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div className="p-4 border rounded-lg">
+                      <h4 className="font-semibold mb-2 flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        Monthly Retirement Income
+                      </h4>
+                      <p className="text-2xl font-bold text-primary">
+                        ${result.monthlyIncome.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Based on 4% withdrawal rule
+                      </p>
+                    </div>
+                    
+                    <div className="p-4 border rounded-lg">
+                      <h4 className="font-semibold mb-2 flex items-center gap-2">
+                        <Target className="h-4 w-4" />
+                        Annual Retirement Income
+                      </h4>
+                      <p className="text-2xl font-bold text-primary">
+                        ${result.annualIncome.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Sustainable annual income
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  <div className="text-center p-6 bg-primary/5 rounded-lg">
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <Target className="h-5 w-5 text-primary" />
+                      <span className="text-sm font-medium text-muted-foreground">Required Monthly Contribution</span>
+                    </div>
+                    {result.requiredMonthlyContribution !== undefined && result.requiredMonthlyContribution > 0 ? (
+                      <p className="text-3xl font-bold text-primary">
+                        ${result.requiredMonthlyContribution.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      </p>
+                    ) : (
+                      <p className="text-lg text-green-600">
+                        Your current savings and returns already meet or exceed your goal!
+                      </p>
+                    )}
+                    <p className="text-sm text-muted-foreground mt-1">
+                      To reach your target of ${form.getValues('targetCorpus')?.toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Growth Chart */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Retirement Savings Growth Over Time</h3>
+                <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={result.chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
                       <defs>
@@ -165,169 +417,261 @@ export default function RetirementSavingsCalculator() {
                           <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
                         </linearGradient>
                         <linearGradient id="colorInv" x1="0" y1="0" x2="0" y2="1">
-                           <stop offset="5%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0.4}/>
+                          <stop offset="5%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0.4}/>
                           <stop offset="95%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="age" unit="yrs" />
-                      <YAxis tickFormatter={(value) => `$${(value/1000)}k`} />
-                      <Tooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
+                      <XAxis 
+                        dataKey="age" 
+                        unit="yrs" 
+                        tick={{ fontSize: 12 }}
+                        label={{ value: 'Age', position: 'insideBottom', offset: -5 }}
+                      />
+                      <YAxis 
+                        tickFormatter={(value) => `$${(value/1000)}k`} 
+                        tick={{ fontSize: 12 }}
+                        label={{ value: 'Value ($)', angle: -90, position: 'insideLeft' }}
+                      />
+                      <Tooltip 
+                        formatter={(value: number, name: string) => [
+                          `$${value.toLocaleString()}`, 
+                          name === "totalInvested" ? "Total Invested" : "Projected Value"
+                        ]}
+                        labelFormatter={(age) => `Age ${age}`}
+                      />
                       <Legend />
-                      <Area type="monotone" dataKey="totalInvested" name="Total Invested" stroke="hsl(var(--muted-foreground))" fillOpacity={1} fill="url(#colorInv)" />
-                      <Area type="monotone" dataKey="futureValue" name="Projected Value" stroke="hsl(var(--primary))" fillOpacity={1} fill="url(#colorFv)" />
+                      <Area 
+                        type="monotone" 
+                        dataKey="totalInvested" 
+                        name="Total Invested" 
+                        stroke="hsl(var(--muted-foreground))" 
+                        fillOpacity={1} 
+                        fill="url(#colorInv)" 
+                      />
+                      <Area 
+                        type="monotone" 
+                        dataKey="futureValue" 
+                        name="Projected Value" 
+                        stroke="hsl(var(--primary))" 
+                        fillOpacity={1} 
+                        fill="url(#colorFv)" 
+                      />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
+              </div>
             </CardContent>
-        </Card>
+          </Card>
+        </div>
       )}
-       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="what-is-retirement-planning">
-          <AccordionTrigger>What is Retirement Planning?</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>Retirement planning is the process of setting retirement income goals and the decisions and actions necessary to achieve those goals. It includes identifying sources of income, estimating expenses, implementing a savings program, and managing assets and risk. The power of compounding makes it crucial to start saving early.</p>
-          </AccordionContent>
-        </AccordionItem>
-         <AccordionItem value="understanding-inputs">
-            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4">
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Current Age & Retirement Age</h4>
-                  <p>Your current age and the age you plan to retire. The difference between these two determines your investment horizon.</p>
+      {/* Educational Content - Expanded Sections */}
+      <div className="space-y-6">
+        {/* Understanding the Inputs */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Understanding the Inputs
+            </CardTitle>
+            <CardDescription>
+              Detailed explanations for each input parameter
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    Current Age & Retirement Age
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Your current age and the age you plan to retire. The difference determines your investment horizon and the power of compound growth.
+                  </p>
+                </div>
+                
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <DollarSign className="h-4 w-4" />
+                    Current Savings
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The total amount you have already saved for retirement. This existing balance will continue to grow through compound interest.
+                  </p>
+                </div>
+                
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Building className="h-4 w-4" />
+                    Monthly Contribution
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The amount you plan to save and invest towards retirement each month. Consistency is key for long-term growth.
+                  </p>
+                </div>
               </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Current Savings</h4>
-                  <p>The total amount you have already saved for retirement.</p>
+              
+              <div className="space-y-4">
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4" />
+                    Expected Annual Return (%)
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The average annual growth rate you expect from your investments. Historical stock market returns average 7-10% annually.
+                  </p>
+                </div>
+                
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Target className="h-4 w-4" />
+                    Target Retirement Corpus
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The total amount of money you aim to have saved by retirement. Use the 4% rule: target = annual expenses × 25.
+                  </p>
+                </div>
+                
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Landmark className="h-4 w-4" />
+                    Calculation Modes
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Project Mode: See how your current plan will grow. Target Mode: Calculate what you need to save to reach a specific goal.
+                  </p>
+                </div>
               </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Monthly Contribution</h4>
-                  <p>The amount you plan to save and invest towards retirement each month.</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Related Calculators */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Landmark className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other financial planning tools
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/sip-calculator" className="text-primary hover:underline">
+                    SIP/DCA Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate systematic investment returns
+                </p>
               </div>
-               <div>
-                  <h4 className="font-semibold text-foreground mb-1">Expected Annual Return (%)</h4>
-                  <p>The average annual growth rate you expect from your investments. This varies based on risk (e.g., stocks vs. bonds).</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">
+                    Loan/EMI Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate loan payments and schedules
+                </p>
               </div>
-               <div>
-                  <h4 className="font-semibold text-foreground mb-1">Target Retirement Corpus</h4>
-                  <p>The total amount of money you aim to have saved by the time you retire.</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
+                    Compound Interest Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate compound interest growth over time
+                </p>
               </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-it-works">
-            <AccordionTrigger>How The Calculation Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator uses standard future value (FV) formulas to project growth. It calculates two main components:</p>
-                <ol className="list-decimal list-inside space-y-1">
-                    <li><strong>Future Value of Current Savings:</strong> It projects how your existing savings will grow over time, untouched, based on the annual return rate. The formula is `FV = S * (1 + r)^n`.</li>
-                    <li><strong>Future Value of Monthly Contributions:</strong> It calculates the future value of an ordinary annuity to determine how your series of monthly contributions will grow.</li>
-                </ol>
-                <p>The total retirement corpus is the sum of these two values. When calculating for a target, it rearranges the formula to solve for the required monthly contribution.</p>
-            </AccordionContent>
-        </AccordionItem>
-         <AccordionItem value="retirement-guide">
-            <AccordionTrigger>Complete guide on retirement savings</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
-                <h3>Retire on Your Terms: A Comprehensive Guide to Building Your Retirement Savings</h3>
-                <p>Imagine your ideal retirement. Is it seeing the national parks from an RV, living near the beach, spoiling your grandkids, or simply enjoying the peace of mind that comes from a life of financial security?</p>
-                <p>Whatever your version of the American dream looks like, it’s built on a foundation of smart financial planning done today. For many, the world of retirement savings feels like an overwhelming alphabet soup—401(k), 403(b), IRA, Roth, SEP. It’s easy to feel anxious and push it off for "next year."</p>
-                <p>But the secret to a secure retirement isn't winning the lottery. It's about taking small, consistent steps over a long period. This guide will demystify the U.S. retirement system and provide a clear, actionable roadmap to help you move from uncertainty to confidence.</p>
-                <h4>Your Greatest Financial Superpower: The Magic of Compounding</h4>
-                <p>If you learn only one thing about investing, let it be this: the single most important factor in your retirement success is not how much you earn, but how early you start.</p>
-                <p>This is because of a powerful force called compounding. It’s the process where your investment returns start to generate their own returns. Think of it as a snowball rolling downhill—it grows bigger and faster all on its own.</p>
-                <p>Let’s see this with two friends, Sarah and Michael:</p>
-                <p><strong>Sarah</strong> starts investing at age 25. She contributes $300 per month to her retirement account, which earns an average of 9% annually.</p>
-                <p><strong>Michael</strong> delays and starts at age 35. To try and catch up, he invests a larger amount, $500 per month, into the same type of account.</p>
-                <p>Who has more money when they both turn 65?</p>
-                <p>Sarah’s Total Investment: $144,000 ($300 x 12 x 40 years)</p>
-                <p>Michael’s Total Investment: $180,000 ($500 x 12 x 30 years)</p>
-                <p>Despite Michael investing $36,000 more of his own money, the results are staggering:</p>
-                <p><strong>Sarah’s Retirement Nest Egg: Approximately $1.4 million</strong></p>
-                <p><strong>Michael’s Retirement Nest Egg: Approximately $820,000</strong></p>
-                <p>Sarah’s 10-year head start allowed her money to work for her for an entire extra decade, making her a clear winner. That is the undeniable power of compounding.</p>
-                <h4>The Million-Dollar Question: How Much Do You Actually Need?</h4>
-                <p>This is the central question of retirement planning. A great starting point is a popular guideline called The 4% Rule.</p>
-                <p>The 4% Rule suggests that you can safely withdraw 4% of your total retirement savings in your first year of retirement, then adjust that amount for inflation each following year, with a high probability of your money lasting for at least 30 years.</p>
-                <p>To find your target, you can reverse the rule:</p>
-                <p className="font-mono p-2 bg-muted rounded-md text-center">Your Target Nest Egg = Your Estimated Annual Expenses × 25</p>
-                <p>For example, if you estimate you'll need $60,000 per year to live comfortably in retirement, your target would be:</p>
-                <p>$60,000 × 25 = $1.5 million</p>
-                <p>Remember to also consider these critical factors:</p>
-                <ul className="list-disc list-inside">
-                  <li><strong>Inflation:</strong> The cost of living will be much higher in 20 or 30 years.</li>
-                  <li><strong>Healthcare:</strong> Medical and long-term care costs are a significant and rising expense for retirees in the U.S.</li>
-                  <li><strong>Social Security:</strong> While you shouldn't rely on it entirely, Social Security will likely provide a foundational layer of income, reducing the amount you need to withdraw from your nest egg.</li>
-                </ul>
-                <h4>The Building Blocks: Your Guide to U.S. Retirement Accounts</h4>
-                <p>The U.S. government provides powerful, tax-advantaged accounts designed to help you save for retirement. Here are the main ones you need to know.</p>
-                <h5>1. Employer-Sponsored Plans: Your Starting Point</h5>
-                <p>These are the plans you get through your job.</p>
-                <p><strong>401(k) & 403(b):</strong> The 401(k) is the most common retirement plan offered by private companies, while the 403(b) is its equivalent for non-profits and public schools. You contribute a percentage of your pre-tax salary, which lowers your taxable income today. The most important feature of these plans is the employer match.</p>
-                <p><strong>The Employer Match is Free Money:</strong> Most companies will match your contributions up to a certain percentage (e.g., "100% of the first 3% of your salary"). This is a 100% return on your investment, guaranteed. Contributing enough to get the full employer match should be your #1 financial priority.</p>
-                <h5>2. Individual Retirement Accounts (IRAs): Your Personal Power Tool</h5>
-                <p>Anyone with earned income can open an IRA, giving you more control and investment options.</p>
-                <p><strong>Traditional IRA:</strong> You may be able to deduct your contributions from your taxes today (pre-tax), your money grows tax-deferred, and you pay income tax on withdrawals in retirement.</p>
-                <p><strong>Roth IRA:</strong> You contribute with money you’ve already paid taxes on (post-tax). The magic is that your money grows completely tax-free, and all qualified withdrawals in retirement are also 100% tax-free. For many people, especially young earners, the Roth IRA is one of the best wealth-building tools available.</p>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Feature</TableHead>
-                      <TableHead>Traditional IRA</TableHead>
-                      <TableHead>Roth IRA</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Contributions</TableCell>
-                      <TableCell>Pre-tax (potentially tax-deductible)</TableCell>
-                      <TableCell>Post-tax (not deductible)</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Growth</TableCell>
-                      <TableCell>Tax-deferred</TableCell>
-                      <TableCell>Tax-free</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Withdrawals</TableCell>
-                      <TableCell>Taxed as ordinary income</TableCell>
-                      <TableCell>Tax-free and penalty-free</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-                <h4>Common (and Costly) Retirement Planning Mistakes to Avoid</h4>
-                <ul className='list-disc list-inside'>
-                    <li><strong>Not Getting the Full 401(k) Match:</strong> This is like turning down a pay raise. It is the most important "free money" you will ever be offered.</li>
-                    <li><strong>Cashing Out Your 401(k) When Changing Jobs:</strong> When you leave a job, it can be tempting to cash out your 401(k). Don't do it! You'll pay income taxes and a 10% penalty. Instead, execute a "rollover" to move the money into an IRA or your new employer's 401(k) plan.</li>
-                    <li><strong>Being Too Conservative:</strong> While safety is important, avoiding stocks means your savings may not outpace inflation. A diversified portfolio with a healthy allocation to low-cost index funds is crucial for long-term growth.</li>
-                    <li><strong>Procrastination:</strong> As Sarah and Michael's story showed, every single day you wait to invest is a day you lose the power of compounding.</li>
-                </ul>
-                <h4>Creating Your Action Plan: A Simple Savings Hierarchy</h4>
-                <p>So, where should you put your next dollar? For most people, this is the recommended order of operations:</p>
-                <ol className="list-decimal list-inside">
-                  <li><strong>Step 1: The Match.</strong> Contribute to your workplace 401(k) or 403(b) just enough to get the full employer match.</li>
-                  <li><strong>Step 2: The IRA.</strong> After securing the match, fully fund a Roth or Traditional IRA. The annual contribution limit is set by the IRS ($7,000 in 2024 for those under 50).</li>
-                  <li><strong>Step 3: Max Out the 401(k).</strong> If you still have money to save, go back to your 401(k) and contribute more, up to the annual maximum ($23,000 in 2024 for those under 50).</li>
-                  <li><strong>Step 4: Other Accounts.</strong> Once you've maxed out your tax-advantaged accounts, you can save more in a Health Savings Account (HSA) if eligible, or a standard brokerage account.</li>
-                </ol>
-                <p>Calculating the exact amount you need to save each month to bridge the gap between what you have and what you’ll need can be complex. This is where a robust tool can bring your personal situation into focus.</p>
-                <p>[Plan your secure future with our Retirement Savings Calculator.]</p>
-                <h4>Conclusion: Take Control of Your American Dream</h4>
-                <p>Retirement isn’t an age; it’s a financial destination. It’s the point where your assets can generate enough income to let you live life on your own terms. The journey to that destination starts not with a windfall, but with a plan.</p>
-                <p>By starting early, taking full advantage of "free money" like an employer match, choosing the right accounts, and staying consistent, you can turn the dream of a comfortable, stress-free retirement into your reality.</p>
-                <p>Disclaimer: This article is for educational purposes only and not financial advice. Contribution limits and tax laws are subject to change. Consult a certified financial professional to create a personalized retirement plan.</p>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="further-reading">
-            <AccordionTrigger>Further Reading & Official Sources</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-              <p>For more comprehensive information on retirement planning, consult these authoritative sources. The formulas used in this calculator are based on principles widely accepted in finance.</p>
-               <ul className="list-disc list-inside space-y-1 pl-4">
-                  <li><a href="https://www.investopedia.com/articles/retirement/04/090204.asp" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investopedia: The 4% Rule and Other Retirement Planning Calculators</a></li>
-                  <li><a href="https://www.cfainstitute.org/en/membership/professional-development/refresher-readings/introduction-to-retirement-planning" target="_blank" rel="noopener noreferrer" className="text-primary underline">CFA Institute: Introduction to Retirement Planning</a></li>
-              </ul>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/401k-contribution-calculator" className="text-primary hover:underline">
+                    401(k) Contribution Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Estimate 401(k) growth and contributions
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Complete Guide to Retirement Planning
+            </CardTitle>
+            <CardDescription>
+              A comprehensive guide to building your retirement savings
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+          </CardContent>
+        </Card>
+
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about retirement planning and savings
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-4">
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">How much should I save for retirement?</h4>
+                <p className="text-muted-foreground">
+                  A common rule of thumb is to save 10-15% of your income, but the exact amount depends on your age, income, and retirement goals. Use the 4% rule: multiply your desired annual retirement income by 25 to find your target savings.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">What's the 4% withdrawal rule?</h4>
+                <p className="text-muted-foreground">
+                  The 4% rule suggests you can safely withdraw 4% of your retirement savings in the first year, then adjust for inflation each year. This should make your money last 30+ years in retirement.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">When should I start saving for retirement?</h4>
+                <p className="text-muted-foreground">
+                  Start as early as possible! Even small amounts saved in your 20s can grow significantly due to compound interest. Time is your greatest asset in retirement planning.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">Should I prioritize 401(k) or IRA?</h4>
+                <p className="text-muted-foreground">
+                  First, get your full 401(k) employer match (free money!). Then max out your IRA. After that, go back to your 401(k) to contribute more. This maximizes tax advantages and employer benefits.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">How do I choose between Traditional and Roth accounts?</h4>
+                <p className="text-muted-foreground">
+                  Traditional accounts give you a tax break now but tax withdrawals in retirement. Roth accounts are taxed now but offer tax-free withdrawals. Choose based on whether you expect to be in a higher or lower tax bracket in retirement.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

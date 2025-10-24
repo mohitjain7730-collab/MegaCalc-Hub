@@ -122,9 +122,6 @@ export default function SipDcaCalculator() {
                         />
                       </FormControl>
                       <FormMessage />
-                      <p className="text-sm text-muted-foreground">
-                        The fixed amount you plan to invest every month. Even small amounts like $50-100 can make a significant difference over time.
-                      </p>
                     </FormItem>
                   )} 
                 />
@@ -147,9 +144,6 @@ export default function SipDcaCalculator() {
                         />
                       </FormControl>
                       <FormMessage />
-                      <p className="text-sm text-muted-foreground">
-                        Historical average returns: S&P 500 (~10%), Bonds (~5%), Real Estate (~7%). Remember, past performance doesn't guarantee future results.
-                      </p>
                     </FormItem>
                   )} 
                 />
@@ -172,9 +166,6 @@ export default function SipDcaCalculator() {
                         />
                       </FormControl>
                       <FormMessage />
-                      <p className="text-sm text-muted-foreground">
-                        The longer you stay invested, the more powerful compounding becomes. Time is your greatest ally in building wealth.
-                      </p>
                     </FormItem>
                   )} 
                 />
@@ -387,183 +378,188 @@ export default function SipDcaCalculator() {
       )}
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
-        {/* What is SIP/DCA Section */}
+        {/* Understanding the Inputs */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Info className="h-5 w-5" />
-              What is a SIP/DCA?
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-muted-foreground space-y-2">
-            <p>A Systematic Investment Plan (SIP) or Dollar-Cost Averaging (DCA) is a method of investing a fixed amount of money in mutual funds or stocks at regular intervals. It helps in disciplined investing, rupee cost averaging, and harnessing the power of compounding. Instead of investing a large lump sum at once, you invest smaller amounts over time, which can reduce the risk of market volatility.</p>
-          </CardContent>
-        </Card>
-
-        {/* Understanding the Inputs Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Target className="h-5 w-5" />
               Understanding the Inputs
             </CardTitle>
+            <CardDescription>
+              Detailed explanations for each input parameter
+            </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground space-y-4">
-            <div>
-              <h4 className="font-semibold text-foreground mb-1">Monthly Investment</h4>
-              <p>The fixed amount of money you plan to invest every month.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-1">Expected Annual Return (%)</h4>
-              <p>The rate of return you expect from your investment annually. This is not a guaranteed figure. For example, historically, equity funds have offered higher returns (e.g., 10-15%) with higher risk, while debt funds offer lower, more stable returns (e.g., 5-7%).</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-1">Investment Period (Years)</h4>
-              <p>The total duration in years for which you plan to stay invested.</p>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <DollarSign className="h-4 w-4" />
+                    Monthly Investment Amount
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The fixed amount you plan to invest every month. Even small amounts like $50-100 can make a significant difference over time through compound growth.
+                  </p>
+                </div>
+                
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4" />
+                    Expected Annual Return (%)
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Historical average returns: S&P 500 (~10%), Bonds (~5%), Real Estate (~7%). Remember, past performance doesn't guarantee future results.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    Investment Period (Years)
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The longer you stay invested, the more powerful compounding becomes. Time is your greatest ally in building wealth.
+                  </p>
+                </div>
+                
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Target className="h-4 w-4" />
+                    Dollar-Cost Averaging
+                  </h4>
+                  <p className="text-muted-foreground">
+                    By investing fixed amounts regularly, you buy more shares when prices are low and fewer when prices are high, smoothing out market volatility.
+                  </p>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* How It Works Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5" />
-              How It Works
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-muted-foreground space-y-2">
-            <p>This calculator uses the future value of a series formula to project the growth of your systematic investments over time, factoring in the effect of compound interest on your monthly contributions.</p>
-          </CardContent>
-        </Card>
-        {/* Complete Guide on DCA Section */}
+        {/* Related Calculators */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Landmark className="h-5 w-5" />
-              Complete Guide on DCA
+              Related Calculators
             </CardTitle>
+            <CardDescription>
+              Explore other financial planning tools
+            </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
-                <h3>The Smartest Way to Invest? A Beginner's Guide to Dollar-Cost Averaging (DCA)</h3>
-                <p>You see the headlines every day. The S&P 500 is up, the NASDAQ is down, and market analysts are predicting a dozen different outcomes. For a new investor, it’s enough to cause paralysis. The biggest fear is simple: "What if I invest all my money right before a market crash?"</p>
-                <p>This fear of "timing the market" prevents millions of Americans from ever getting started. But what if there was a strategy that removed timing—and emotion—from the equation? A method that’s simple, automated, and one of the most effective ways for regular people to build long-term wealth?</p>
-                <p>Meet Dollar-Cost Averaging (DCA).</p>
-                <p>If you have a 401(k) at work, you're likely already using this powerful strategy without even knowing it. This guide will break down exactly what DCA is, how it works, and why it's the perfect approach for anyone looking to invest for their future, minus the stress.</p>
-
-                <h4>So, What Exactly is Dollar-Cost Averaging (DCA)?</h4>
-                <p>Think of dollar-cost averaging like an autopay subscription for your investment portfolio.</p>
-                <p>In simple terms, Dollar-Cost Averaging (DCA) is an investment strategy where you invest a fixed amount of money at regular, scheduled intervals, regardless of the share price. Instead of trying to find the "perfect" time to invest a large lump sum, you invest smaller, manageable amounts consistently over time—say, $200 every month.</p>
-                <p>With each automatic investment, you purchase shares of a mutual fund, ETF, or stock. This automated, disciplined approach takes the guesswork and emotion out of building your portfolio.</p>
-                <p>For most Americans, the most common example of DCA is their workplace 401(k) or 403(b) plan. Every payday, a fixed portion of your paycheck is automatically used to buy shares in the funds you’ve selected. It's the "set it and forget it" principle in action.</p>
-
-                <h4>How Does DCA Actually Work? The Mechanics Explained</h4>
-                <p>The magic of dollar-cost averaging lies in its simplicity and the way it handles market volatility. Because you invest a fixed dollar amount each time, you automatically buy more shares when the price is low and fewer shares when the price is high.</p>
-                <p>This smooths out your average purchase price over time. Let's see it in action.</p>
-                <p>Imagine you decide to invest $200 every month into an S&P 500 ETF.</p>
-                 <Table>
-                  <TableHeader>
-                      <TableRow>
-                          <TableHead>Month</TableHead>
-                          <TableHead>Investment Amount</TableHead>
-                          <TableHead>Share Price</TableHead>
-                          <TableHead>Shares Purchased</TableHead>
-                      </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                      <TableRow><TableCell>January</TableCell><TableCell>$200</TableCell><TableCell>$100</TableCell><TableCell>2.00</TableCell></TableRow>
-                      <TableRow><TableCell>February</TableCell><TableCell>$200</TableCell><TableCell>$90 (Market is down)</TableCell><TableCell>2.22</TableCell></TableRow>
-                      <TableRow><TableCell>March</TableCell><TableCell>$200</TableCell><TableCell>$95</TableCell><TableCell>2.11</TableCell></TableRow>
-                      <TableRow><TableCell>April</TableCell><TableCell>$200</TableCell><TableCell>$110 (Market is up)</TableCell><TableCell>1.82</TableCell></TableRow>
-                      <TableRow><TableCell className="font-bold">Total</TableCell><TableCell className="font-bold">$800</TableCell><TableCell></TableCell><TableCell className="font-bold">8.15</TableCell></TableRow>
-                  </TableBody>
-              </Table>
-              <p>Now, let's do the math:</p>
-              <p>Total Amount Invested: $800</p>
-              <p>Total Shares Purchased: 8.15</p>
-              <p>Average Cost Per Share: $800 / 8.15 = $98.16</p>
-              <p>Notice that your average cost per share ($98.16) is lower than the average market price during that period ($98.75). When the market dipped in February, your fixed $200 bought more shares, lowering your overall average cost. You benefited from the downturn without having to predict it.</p>
-
-              <h4>The Core Benefits of DCA: Why It’s a Go-To Strategy</h4>
-              <p>Dollar-cost averaging is popular for good reason. It offers advantages that make investing accessible and psychologically easier to handle.</p>
-              <h5>1. It Removes Emotion and Timing the Market</h5>
-              <p>The biggest enemy of the average investor isn't a market crash; it's emotional decision-making. We tend to get greedy when markets are high and panic-sell when they're low. DCA automates the process, forcing you to buy consistently, which is the key to long-term success. It’s a strategy built on discipline, not prediction.</p>
-              <h5>2. It Harnesses the Power of Compounding</h5>
-              <p>Compounding is the process where your investment returns start generating their own returns. By investing regularly, you are consistently adding fuel to this "snowball effect."</p>
-              <p>A Practical Example: Let's say a 25-year-old named Emily starts investing $400 per month in a Roth IRA. Assuming an average annual market return of 9%, let's see how her investment grows:</p>
-                <ul className="list-disc list-inside">
-                    <li>After 10 years: She invests $48,000. The value becomes ~$79,000.</li>
-                    <li>After 20 years: She invests $96,000. The value becomes ~$226,000.</li>
-                    <li>After 30 years: She invests $144,000. The value becomes a staggering ~$585,000.</li>
-                </ul>
-              <p>The longer you stay invested, the more powerful compounding becomes. Starting early is the key.</p>
-              <h5>3. It Makes Investing Accessible</h5>
-              <p>You don't need thousands of dollars to get started. With DCA, you can begin building a powerful portfolio with as little as $25 or $50 a month. Modern brokerage platforms like Fidelity, Vanguard, Charles Schwab, and others make it incredibly easy to set up automatic, recurring investments into a wide range of funds.</p>
-
-              <h4>DCA vs. Lump Sum Investing: Which Is Right for You?</h4>
-              <p>This is a classic debate. Lump sum investing is when you invest a large amount of cash all at once.</p>
-              <Table>
-                  <TableHeader>
-                      <TableRow>
-                          <TableHead>Feature</TableHead>
-                          <TableHead>Dollar-Cost Averaging (DCA)</TableHead>
-                          <TableHead>Lump Sum Investing</TableHead>
-                      </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                      <TableRow>
-                          <TableCell>Method</TableCell>
-                          <TableCell>Invest a fixed amount regularly over time.</TableCell>
-                          <TableCell>Invest a large amount all at once.</TableCell>
-                      </TableRow>
-                      <TableRow>
-                          <TableCell>Market Timing</TableCell>
-                          <TableCell>Not required. Averages out purchase price.</TableCell>
-                          <TableCell>Timing is a major factor. Risk of investing at a peak.</TableCell>
-                      </TableRow>
-                      <TableRow>
-                          <TableCell>Risk</TableCell>
-                          <TableCell>Lower psychological risk. Easier to handle volatility.</TableCell>
-                          <TableCell>Higher risk of "bad timing" and investor regret.</TableCell>
-                      </TableRow>
-                      <TableRow>
-                          <TableCell>Ideal For</TableCell>
-                          <TableCell>Regular investing from a paycheck, beginners, risk-averse investors.</TableCell>
-                          <TableCell>Those with a large windfall (inheritance, bonus) who have a long time horizon.</TableCell>
-                      </TableRow>
-                  </TableBody>
-              </Table>
-              <p>While some academic studies show that, historically, lump sum investing has produced slightly higher returns (because the U.S. market tends to go up over time), DCA is often the superior strategy from a behavioral standpoint. It prevents you from waiting on the sidelines for a "perfect" moment that may never come.</p>
-
-              <h4>How to Start Dollar-Cost Averaging in 4 Simple Steps</h4>
-              <ol className="list-decimal pl-5 space-y-2">
-                <li>Open an Investment Account: If you don't have a 401(k) at work, you can easily open a personal investment account. A Roth IRA or Traditional IRA are excellent options for retirement savings. A standard brokerage account offers more flexibility.</li>
-                <li>Choose Your Investments: You don’t need to be a stock-picking genius. For most people, a low-cost, diversified index fund or ETF (e.g., one that tracks the S&P 500 or the total stock market) is a fantastic choice.</li>
-                <li>Set Up Automatic Transfers: Link your checking or savings account to your new investment account.</li>
-                <li>Automate Your Purchases: Set up a recurring investment. Decide your amount ($100, $250, etc.) and your frequency (e.g., monthly on the 15th) to automatically buy shares of your chosen fund.</li>
-              </ol>
-
-              <h4>Conclusion: Time in the Market, Not Timing the Market</h4>
-              <p>Dollar-cost averaging is more than just an investment technique; it’s a philosophy. It’s built on the proven principle that the key to long-term success is not about perfectly timing the market’s highs and lows, but about consistently participating in its long-term growth.</p>
-              <p>It’s a strategy that turns market volatility from a source of fear into an opportunity. By embracing this disciplined, automated approach, you can build wealth steadily, systematically, and without the stress. Your future self will thank you for it.</p>
-              <p className="text-xs">Disclaimer: This article is for educational purposes only and should not be considered financial advice. All investments involve risk and can lose value. Consult a certified financial professional before making any investment decisions.</p>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">
+                    Loan/EMI Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate loan payments and schedules
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/retirement-savings-calculator" className="text-primary hover:underline">
+                    Retirement Savings Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Plan your retirement with comprehensive projections
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
+                    Compound Interest Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate compound interest growth over time
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/401k-contribution-calculator" className="text-primary hover:underline">
+                    401(k) Contribution Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Estimate 401(k) growth and contributions
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
-        {/* Further Reading Section */}
+        {/* Guide Section */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Info className="h-5 w-5" />
-              Further Reading
+              Complete Guide to SIP/DCA Investing
             </CardTitle>
+            <CardDescription>
+              A comprehensive guide to systematic investment planning
+            </CardDescription>
           </CardHeader>
-          <CardContent className="text-muted-foreground space-y-2">
-            <p>To learn more about Systematic Investment Plans and related concepts, you can visit these credible resources:</p>
-             <ul className="list-disc list-inside space-y-1 pl-4">
-                <li><a href="https://www.investopedia.com/terms/d/dollarcostaveraging.asp" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investopedia: What Is Dollar-Cost Averaging (DCA)?</a></li>
-                <li><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investor.gov (U.S. SEC): Mutual Funds</a></li>
-            </ul>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+          </CardContent>
+        </Card>
+
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about SIP/DCA investing
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-4">
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">What is Dollar-Cost Averaging (DCA)?</h4>
+                <p className="text-muted-foreground">
+                  DCA is an investment strategy where you invest a fixed amount of money at regular intervals, regardless of market conditions. This helps reduce the impact of market volatility on your investments.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">How much should I invest monthly?</h4>
+                <p className="text-muted-foreground">
+                  Start with an amount you can comfortably afford consistently. Even $50-100 per month can make a significant difference over time due to compound growth. The key is consistency, not the amount.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">What's a realistic expected return?</h4>
+                <p className="text-muted-foreground">
+                  Historical average returns: S&P 500 (~10% annually), Bonds (~5%), Real Estate (~7%). However, past performance doesn't guarantee future results, and returns can vary significantly year to year.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">Should I stop investing during market downturns?</h4>
+                <p className="text-muted-foreground">
+                  No! Market downturns are actually beneficial for DCA investors because you're buying more shares at lower prices. This is when your strategy works best - you're getting more value for your money.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">How long should I stay invested?</h4>
+                <p className="text-muted-foreground">
+                  The longer, the better. Compound interest works best over extended periods. Even 5-10 years can show significant growth, but 20+ years typically provides the most dramatic results.
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

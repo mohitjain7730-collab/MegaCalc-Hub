@@ -9,11 +9,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { PiggyBank } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { PiggyBank, DollarSign, TrendingUp, Calendar, Target, Info, AlertCircle, Landmark, Building } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   principal: z.number().positive(),
@@ -28,6 +29,11 @@ interface CalculationResult {
   totalAmount: number;
   totalInterest: number;
   chartData: { year: number; value: number, principal: number }[];
+  interestPercentage: number;
+  annualizedReturn: number;
+  effectiveRate: number;
+  yearsToDouble: number;
+  compoundingFrequency: number;
 }
 
 export default function CompoundInterestCalculator() {
@@ -63,27 +69,121 @@ export default function CompoundInterestCalculator() {
       });
     }
 
-    setResult({ totalAmount, totalInterest, chartData });
+    const interestPercentage = (totalInterest / principal) * 100;
+    const annualizedReturn = Math.pow(totalAmount / principal, 1 / years) - 1;
+    const effectiveRate = Math.pow(1 + annualRate / 100 / compoundingFrequency, compoundingFrequency) - 1;
+    const yearsToDouble = 72 / annualRate;
+
+    setResult({ 
+      totalAmount, 
+      totalInterest, 
+      chartData,
+      interestPercentage,
+      annualizedReturn: annualizedReturn * 100,
+      effectiveRate: effectiveRate * 100,
+      yearsToDouble,
+      compoundingFrequency
+    });
   };
 
   return (
     <div className="space-y-8">
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="h-5 w-5" />
+            Investment Parameters
+          </CardTitle>
+          <CardDescription>
+            Enter your investment details to see the power of compound interest
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="principal" render={({ field }) => (
-                <FormItem><FormLabel>Principal Amount</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="annualRate" render={({ field }) => (
-                <FormItem><FormLabel>Annual Interest Rate (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="years" render={({ field }) => (
-                <FormItem><FormLabel>Number of Years</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-             <FormField control={form.control} name="compoundingFrequency" render={({ field }) => (
-                <FormItem><FormLabel>Compounding Frequency</FormLabel>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField 
+                  control={form.control} 
+                  name="principal" 
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <DollarSign className="h-4 w-4" />
+                        Principal Amount
+                      </FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="number" 
+                          placeholder="e.g., 10000" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="annualRate" 
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <TrendingUp className="h-4 w-4" />
+                        Annual Interest Rate (%)
+                      </FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="number" 
+                          placeholder="e.g., 7" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="years" 
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        Number of Years
+                      </FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="number" 
+                          placeholder="e.g., 20" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="compoundingFrequency" 
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <PiggyBank className="h-4 w-4" />
+                        Compounding Frequency
+                      </FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={String(field.value)}>
-                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                        </FormControl>
                     <SelectContent>
                         <SelectItem value="1">Annually</SelectItem>
                         <SelectItem value="2">Semi-Annually</SelectItem>
@@ -92,33 +192,108 @@ export default function CompoundInterestCalculator() {
                         <SelectItem value="365">Daily</SelectItem>
                     </SelectContent>
                 </Select>
-                <FormMessage /></FormItem>
-            )} />
+                      <FormMessage />
+                    </FormItem>
+                  )} 
+                />
           </div>
-          <Button type="submit">Calculate</Button>
+              <Button type="submit" className="w-full md:w-auto">
+                Calculate Compound Interest
+              </Button>
         </form>
       </Form>
+        </CardContent>
+      </Card>
       {result && (
-        <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><PiggyBank className="h-8 w-8 text-primary" /><CardTitle>Investment Growth</CardTitle></div></CardHeader>
-            <CardContent>
-                <div className="text-center space-y-4">
-                    <div>
-                        <CardDescription>Future Value</CardDescription>
-                        <p className="text-3xl font-bold">${result.totalAmount.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                        <div>
-                            <CardDescription>Principal Amount</CardDescription>
-                            <p className="text-xl font-semibold">${form.getValues('principal').toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                        </div>
-                        <div>
-                            <CardDescription>Total Interest Earned</CardDescription>
-                            <p className="text-xl font-semibold">${result.totalInterest.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                        </div>
-                    </div>
+        <div className="space-y-6">
+          {/* Main Results Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <PiggyBank className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Your Investment Growth</CardTitle>
+                  <CardDescription>
+                    Compound interest over {form.getValues('years')} years • {result.compoundingFrequency} times per year compounding
+                  </CardDescription>
                 </div>
-                <div className="mt-8 h-80">
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-6 bg-primary/5 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <DollarSign className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium text-muted-foreground">Future Value</span>
+                  </div>
+                  <p className="text-3xl font-bold text-primary">
+                    ${result.totalAmount.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Total after {form.getValues('years')} years
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-muted/50 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Target className="h-5 w-5 text-muted-foreground" />
+                    <span className="text-sm font-medium text-muted-foreground">Principal Amount</span>
+                  </div>
+                  <p className="text-2xl font-bold">
+                    ${form.getValues('principal').toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Your initial investment
+                  </p>
+                    </div>
+                
+                <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Interest Earned</span>
+                        </div>
+                  <p className="text-2xl font-bold text-green-600">
+                    ${result.totalInterest.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.interestPercentage.toFixed(1)}% return on investment
+                  </p>
+                        </div>
+                    </div>
+
+              {/* Key Insights */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4" />
+                    Annualized Return
+                  </h4>
+                  <p className="text-2xl font-bold text-primary">
+                    {result.annualizedReturn.toFixed(2)}%
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Average annual growth rate
+                  </p>
+                </div>
+                
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    Years to Double
+                  </h4>
+                  <p className="text-2xl font-bold text-primary">
+                    {result.yearsToDouble.toFixed(1)} years
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Rule of 72 calculation
+                  </p>
+                </div>
+              </div>
+
+              {/* Growth Chart */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Investment Growth Over Time</h3>
+                <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={result.chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
                       <defs>
@@ -132,152 +307,236 @@ export default function CompoundInterestCalculator() {
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="year" unit="yr" />
-                      <YAxis tickFormatter={(value) => `$${(value/1000)}k`} />
-                      <Tooltip formatter={(value: number, name: string) => name === "principal" ? `$${value.toLocaleString()}`: `$${value.toLocaleString()}`} />
+                      <XAxis 
+                        dataKey="year" 
+                        unit="yr" 
+                        tick={{ fontSize: 12 }}
+                        label={{ value: 'Years', position: 'insideBottom', offset: -5 }}
+                      />
+                      <YAxis 
+                        tickFormatter={(value) => `$${(value/1000)}k`} 
+                        tick={{ fontSize: 12 }}
+                        label={{ value: 'Value ($)', angle: -90, position: 'insideLeft' }}
+                      />
+                      <Tooltip 
+                        formatter={(value: number, name: string) => [
+                          `$${value.toLocaleString()}`, 
+                          name === "principal" ? "Principal" : "Future Value"
+                        ]}
+                        labelFormatter={(year) => `Year ${year}`}
+                      />
                       <Legend />
-                      <Area type="monotone" dataKey="principal" name="Principal" stroke="hsl(var(--muted-foreground))" fillOpacity={1} fill="url(#colorPrincipal)" />
-                      <Area type="monotone" dataKey="value" name="Future Value" stroke="hsl(var(--primary))" fillOpacity={1} fill="url(#colorValue)" />
+                      <Area 
+                        type="monotone" 
+                        dataKey="principal" 
+                        name="Principal" 
+                        stroke="hsl(var(--muted-foreground))" 
+                        fillOpacity={1} 
+                        fill="url(#colorPrincipal)" 
+                      />
+                      <Area 
+                        type="monotone" 
+                        dataKey="value" 
+                        name="Future Value" 
+                        stroke="hsl(var(--primary))" 
+                        fillOpacity={1} 
+                        fill="url(#colorValue)" 
+                      />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
+                </div>
             </CardContent>
         </Card>
+        </div>
       )}
-       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="what-is-compound-interest">
-          <AccordionTrigger>What is Compound Interest?</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>Compound interest is the interest on an investment's principal plus the interest that has already been earned. This "interest on interest" effect is why investments can grow at an exponential rate over time. The more frequently interest is compounded, the faster the growth.</p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="understanding-inputs">
-            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4">
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Principal Amount</h4>
-                  <p>The initial amount of money you are investing.</p>
-              </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate (%)</h4>
-                  <p>The nominal annual interest rate for the investment.</p>
-              </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Number of Years</h4>
-                  <p>The total number of years the money will be invested.</p>
-              </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Compounding Frequency</h4>
-                  <p>How often the interest is calculated and added to the principal. More frequent compounding (e.g., daily) results in slightly higher returns than less frequent compounding (e.g., annually).</p>
-              </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-it-works">
-            <AccordionTrigger>How The Calculation Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator uses the standard formula for the future value of an investment with compound interest:</p>
-                <p className='font-mono p-4 bg-muted rounded-md'>A = P(1 + r/n)^(nt)</p>
-                 <ul className="list-disc list-inside space-y-1 pl-4">
-                    <li><strong>A</strong> is the future value of the investment/loan, including interest.</li>
-                    <li><strong>P</strong> is the principal investment amount (the initial deposit or loan amount).</li>
-                    <li><strong>r</strong> is the annual interest rate (in decimal form).</li>
-                    <li><strong>n</strong> is the number of times that interest is compounded per year.</li>
-                    <li><strong>t</strong> is the number of years the money is invested or borrowed for.</li>
-                </ul>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="compound-interest-guide">
-            <AccordionTrigger>Complete guide on Compound interest</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
-              <h3>The Eighth Wonder of the World: Your Ultimate Guide to Compound Interest</h3>
-                <p>Albert Einstein is famously said to have called compound interest "the eighth wonder of the world," adding, "He who understands it, earns it; he who doesn't, pays it."</p>
-                <p>This single idea is the quiet engine behind almost every story of long-term wealth creation. It's the financial principle that allows you to build a substantial nest egg for retirement, save for a child's college education, or achieve financial independence. It is, without exaggeration, the most powerful force in personal finance.</p>
-                <p>But what is it, really? This guide will break down the concept of compound interest into simple terms and show you how to harness its incredible power to build the financial future you want.</p>
+      {/* Educational Content - Expanded Sections */}
+      <div className="space-y-6">
+        {/* Understanding the Inputs */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Understanding the Inputs
+            </CardTitle>
+            <CardDescription>
+              Detailed explanations for each input parameter
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <DollarSign className="h-4 w-4" />
+                    Principal Amount
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The initial amount of money you are investing. This is the foundation that will grow through compound interest over time.
+                  </p>
+                </div>
                 
-                <h4>What is Compound Interest, Exactly?</h4>
-                <p>At its core, compound interest is interest earned on interest.</p>
-                <p>It’s a simple concept with profound effects. When you save or invest, your money earns a return.</p>
-                <p>With simple interest, you only earn returns on your initial investment (the "principal").</p>
-                <p>With compound interest, you earn returns on your principal and on the accumulated returns from all previous periods.</p>
-                <p>The best analogy is a snowball rolling downhill. It starts small, but as it rolls, it picks up more snow, growing bigger and faster. Your money works the same way. The returns your investments generate are reinvested and then start generating their own returns, creating a cycle of accelerating, exponential growth.</p>
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4" />
+                    Annual Interest Rate (%)
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The nominal annual interest rate for the investment. Higher rates lead to faster growth, but also higher risk.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    Number of Years
+                  </h4>
+                  <p className="text-muted-foreground">
+                    The total number of years the money will be invested. Time is the most powerful factor in compound interest growth.
+                  </p>
+                </div>
                 
-                <h4>Simple vs. Compound Interest: A Tale of Two Investments</h4>
-                <p>To see the dramatic difference, let’s imagine two people, Alex and Ben, who both invest $10,000 at a 10% annual rate of return.</p>
-                <p>Alex's investment earns simple interest.</p>
-                <p>Ben's investment earns compound interest.</p>
-                
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Year</TableHead>
-                            <TableHead>Alex's Investment (Simple)</TableHead>
-                            <TableHead>Ben's Investment (Compound)</TableHead>
-                            <TableHead>The Difference</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        <TableRow><TableCell>Start</TableCell><TableCell>$10,000</TableCell><TableCell>$10,000</TableCell><TableCell>$0</TableCell></TableRow>
-                        <TableRow><TableCell>Year 1</TableCell><TableCell>$11,000</TableCell><TableCell>$11,000</TableCell><TableCell>$0</TableCell></TableRow>
-                        <TableRow><TableCell>Year 5</TableCell><TableCell>$15,000</TableCell><TableCell>$16,105</TableCell><TableCell>$1,105</TableCell></TableRow>
-                        <TableRow><TableCell>Year 10</TableCell><TableCell>$20,000</TableCell><TableCell>$25,937</TableCell><TableCell>$5,937</TableCell></TableRow>
-                        <TableRow><TableCell>Year 20</TableCell><TableCell>$30,000</TableCell><TableCell>$67,275</TableCell><TableCell>$37,275</TableCell></TableRow>
-                        <TableRow><TableCell>Year 30</TableCell><TableCell>$40,000</TableCell><TableCell>$174,494</TableCell><TableCell>$134,494</TableCell></TableRow>
-                    </TableBody>
-                </Table>
-                <p>Alex earns a predictable $1,000 every year. After 30 years, he has a respectable $40,000.</p>
-                <p>Ben, however, experiences the magic. In the early years, the difference is small. But as time passes, his investment begins to surge. After 30 years, his investment is worth over four times Alex's. That massive difference is purely the result of earning interest on his interest.</p>
+                <div className="p-4 border rounded-lg">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <PiggyBank className="h-4 w-4" />
+                    Compounding Frequency
+                  </h4>
+                  <p className="text-muted-foreground">
+                    How often interest is calculated and added to the principal. More frequent compounding (daily) results in slightly higher returns than less frequent compounding (annually).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-                <h4>The Three Levers of Compounding: How to Maximize Your Growth</h4>
-                <p>The power of compounding isn't random; it's driven by three key factors you can control.</p>
-                <h5>1. Time (The Accelerator)</h5>
-                <p>This is your most valuable asset. The longer your money has to compound, the more dramatic the results. A small amount invested early will almost always outperform a larger amount invested later. Consider two investors:</p>
-                <p><strong>Emily (The Early Bird):</strong> Starts investing $250/month at age 25 and stops at age 35. Total invested: $30,000.</p>
-                <p><strong>Jacob (The Late Bloomer):</strong> Starts investing $250/month at age 35 and invests until age 65. Total invested: $90,000.</p>
-                <p>Assuming a 9% annual return, at age 65, Emily—who only invested for 10 years—will have nearly $700,000. Jacob, who invested three times as much money over 30 years, will only have about $455,000. Emily's 10-year head start gave her money an extra decade to do the heavy lifting for her.</p>
-                <h5>2. Rate of Return (The Engine)</h5>
-                <p>Where you put your money matters. A High-Yield Savings Account (HYSA) might offer a 4-5% return, which is great for an emergency fund. But to truly build long-term wealth, you need a higher rate of return to outpace inflation. This is why investing in the stock market through low-cost index funds or ETFs is so popular. While it comes with more risk, the historical average return of the S&P 500 has been around 10% annually.</p>
-                <h5>3. Consistency (The Fuel)</h5>
-                <p>Regular contributions are the fuel for the compounding engine. This is the principle behind your 401(k) contributions coming out of every paycheck. By consistently adding new money, you are constantly giving your investment "snowball" more to grow with, supercharging the entire process.</p>
-                
-                <h4>The Rule of 72: A Quick Mental Shortcut</h4>
-                <p>Want a simple way to estimate how long it will take for your investment to double in value? Use the Rule of 72.</p>
-                <p className='font-mono p-2 bg-muted rounded-md text-center'>Years to Double ≈ 72 / Interest Rate</p>
-                <p>At a 6% rate of return, your money will double in about 12 years (72 / 6).</p>
-                <p>At a 9% rate of return, your money will double in about 8 years (72 / 9).</p>
-                <p>At a 12% rate of return, your money will double in about 6 years (72 / 12).</p>
-                <p>This rule gives you a powerful sense of how a seemingly small difference in your rate of return can dramatically shorten your timeline to reach your financial goals.</p>
-                
-                <h4>Putting Compound Interest to Work for You (U.S. Edition)</h4>
-                <ul className='list-disc list-inside'>
-                    <li><strong>Retirement Accounts (401(k)s, IRAs):</strong> These accounts are designed to be long-term compounding machines. Their tax advantages (either tax-deferred or tax-free growth) allow your money to grow without being slowed down by annual taxes, maximizing the compounding effect.</li>
-                    <li><strong>Stock Market Investing:</strong> Buying low-cost index funds or ETFs allows your money to grow with the broader market, reinvesting dividends and capital gains to accelerate compounding.</li>
-                    <li><strong>High-Yield Savings Accounts (HYSAs) & CDs:</strong> For your safer money (like an emergency fund), HYSAs and Certificates of Deposit (CDs) allow your cash to compound daily or monthly, ensuring it doesn't lose purchasing power to inflation.</li>
-                </ul>
+        {/* Related Calculators */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Landmark className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other financial planning tools
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/sip-calculator" className="text-primary hover:underline">
+                    SIP/DCA Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate systematic investment returns
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">
+                    Loan/EMI Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate loan payments and schedules
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/retirement-savings-calculator" className="text-primary hover:underline">
+                    Retirement Savings Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Plan your retirement with comprehensive projections
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/401k-contribution-calculator" className="text-primary hover:underline">
+                    401(k) Contribution Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Estimate 401(k) growth and contributions
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-                <h4>The Dark Side of Compounding: High-Interest Debt</h4>
-                <p>Compound interest is impartial. It will make you rich, or it will keep you poor. It works just as powerfully against you with high-interest debt.</p>
-                <ul className='list-disc list-inside'>
-                    <li><strong>Credit Card Debt:</strong> With average APRs often exceeding 20%, a credit card balance is the most destructive example of compounding. If you only make minimum payments, your balance can grow shockingly fast as you pay interest on your interest every month.</li>
-                    <li><strong>Student Loans:</strong> Depending on the type, interest can accrue on student loans while you're in school and after, which is why it's critical to have a plan to pay them off.</li>
-                </ul>
-                <p>Understanding this dark side is vital. Paying off high-interest debt is one of the best financial moves you can make, as it frees you from the negative force of compounding and allows you to put that money to work for you instead.</p>
-                
-                <h4>Conclusion: Your Future Self Is Counting on You</h4>
-                <p>Compound interest is not a get-rich-quick scheme; it's the get-rich-for-sure principle. It is the quiet, mathematical certainty that rewards discipline, consistency, and, above all, patience.</p>
-                <p>The path is simple: start as early as you can, invest consistently, choose sound investments, and avoid high-interest debt. By understanding and applying this single principle, you are taking control of your financial destiny and giving yourself the gift of a secure and prosperous future.</p>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="further-reading">
-            <AccordionTrigger>Further Reading</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-              <p>For more detailed information on compound interest and financial planning, consult these authoritative sources:</p>
-               <ul className="list-disc list-inside space-y-1 pl-4">
-                  <li><a href="https://www.investopedia.com/terms/c/compoundinterest.asp" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investopedia: Compound Interest</a></li>
-                  <li><a href="https://www.finra.org/investors/learn-to-invest/advanced-investing/compound-interest" target="_blank" rel="noopener noreferrer" className="text-primary underline">FINRA: Compound Interest Basics</a></li>
-              </ul>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Complete Guide to Compound Interest
+            </CardTitle>
+            <CardDescription>
+              A comprehensive guide to understanding and harnessing compound interest
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+          </CardContent>
+        </Card>
+
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about compound interest and investing
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-4">
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">What is compound interest?</h4>
+                <p className="text-muted-foreground">
+                  Compound interest is interest earned on both the principal amount and the accumulated interest from previous periods. It's often called "interest on interest" and is the key to exponential growth in investments.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">How does compounding frequency affect returns?</h4>
+                <p className="text-muted-foreground">
+                  More frequent compounding (daily vs. annually) results in slightly higher returns. However, the difference is usually small for most practical purposes. The most important factors are the interest rate and time period.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">What's the Rule of 72?</h4>
+                <p className="text-muted-foreground">
+                  The Rule of 72 is a quick way to estimate how long it takes for an investment to double. Divide 72 by the annual interest rate. For example, at 8% interest, your money will double in about 9 years (72 ÷ 8 = 9).
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">Why is time so important in compound interest?</h4>
+                <p className="text-muted-foreground">
+                  Time is the most powerful factor because compound interest grows exponentially. The longer your money has to compound, the more dramatic the results. Starting early, even with small amounts, often outperforms starting later with larger amounts.
+                </p>
+              </div>
+              
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-semibold mb-2">What's the difference between simple and compound interest?</h4>
+                <p className="text-muted-foreground">
+                  Simple interest is calculated only on the principal amount, while compound interest is calculated on the principal plus any previously earned interest. Compound interest leads to exponential growth, while simple interest grows linearly.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
