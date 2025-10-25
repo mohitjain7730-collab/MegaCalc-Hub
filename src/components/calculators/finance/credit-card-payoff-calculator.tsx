@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -9,209 +8,635 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CreditCard } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { CreditCard, Calendar, DollarSign, TrendingDown, Info, AlertCircle, Target, Calculator, Clock, Zap } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
-  balance: z.number().positive(),
-  apr: z.number().positive(),
-  monthlyPayment: z.number().positive(),
-}).refine(data => {
-    if (!data.balance || !data.apr) return true;
-    const monthlyInterest = (data.apr / 100 / 12) * data.balance;
-    return data.monthlyPayment > monthlyInterest;
-}, {
-    message: "Monthly payment must be greater than the interest to pay off the balance.",
-    path: ["monthlyPayment"],
+  currentBalance: z.number().min(0).optional(),
+  annualInterestRate: z.number().min(0).max(100).optional(),
+  minimumPayment: z.number().min(0).optional(),
+  extraPayment: z.number().min(0).optional(),
+  payoffStrategy: z.enum(['minimum', 'fixed', 'snowball', 'avalanche']).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-interface CalculationResult {
-  monthsToPayOff: number;
-  totalInterest: number;
-  totalPaid: number;
-}
-
 export default function CreditCardPayoffCalculator() {
-  const [result, setResult] = useState<CalculationResult | null>(null);
+  const [result, setResult] = useState<{ 
+    payoffTime: number;
+    totalInterest: number;
+    totalPayments: number;
+    monthlyPayment: number;
+    strategy: string;
+    interpretation: string;
+    recommendations: string[];
+    warningSigns: string[];
+    paymentSchedule: { month: number; balance: number; payment: number; interest: number; principal: number }[];
+  } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      balance: undefined,
-      apr: undefined,
-      monthlyPayment: undefined,
-    },
+      currentBalance: undefined, 
+      annualInterestRate: undefined, 
+      minimumPayment: undefined, 
+      extraPayment: undefined,
+      payoffStrategy: undefined
+    } 
   });
 
-  const onSubmit = (values: FormValues) => {
-    const { balance, apr, monthlyPayment } = values;
-    const B = balance;
-    const r = apr / 100 / 12; // monthly interest rate
-    const M = monthlyPayment;
+  const calculatePayoff = (balance: number, rate: number, payment: number) => {
+    const monthlyRate = rate / 100 / 12;
+    let currentBalance = balance;
+    let totalInterest = 0;
+    let month = 0;
+    const schedule = [];
 
-    // Formula: n = -log(1 - (r * B) / M) / log(1 + r)
-    const n = -Math.log(1 - (r * B) / M) / Math.log(1 + r);
-    const months = Math.ceil(n);
-    const totalPaid = M * months;
-    const totalInterest = totalPaid - B;
-    
-    setResult({ monthsToPayOff: months, totalInterest, totalPaid });
+    while (currentBalance > 0.01 && month < 600) { // Max 50 years
+      const interestPayment = currentBalance * monthlyRate;
+      const principalPayment = Math.min(payment - interestPayment, currentBalance);
+      const actualPayment = principalPayment + interestPayment;
+      
+      totalInterest += interestPayment;
+      currentBalance -= principalPayment;
+      month++;
+
+      schedule.push({
+        month,
+        balance: Math.max(0, currentBalance),
+        payment: actualPayment,
+        interest: interestPayment,
+        principal: principalPayment
+      });
+    }
+
+    return { payoffTime: month, totalInterest, schedule };
   };
 
-  const formatMonths = (months: number) => {
-      const years = Math.floor(months / 12);
-      const remainingMonths = months % 12;
-      let result = '';
-      if (years > 0) {
-          result += `${years} year${years > 1 ? 's' : ''}`;
-      }
-      if (remainingMonths > 0) {
-          result += `${years > 0 ? ' and ' : ''}${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
-      }
-      return result || '0 months';
-  }
+  const calculate = (v: FormValues) => {
+    if (v.currentBalance == null || v.annualInterestRate == null || v.minimumPayment == null) return null;
+    
+    const extraPayment = v.extraPayment || 0;
+    const totalPayment = v.minimumPayment + extraPayment;
+    
+    return calculatePayoff(v.currentBalance, v.annualInterestRate, totalPayment);
+  };
+
+  const interpret = (payoffTime: number, totalInterest: number, originalBalance: number) => {
+    const interestPercentage = (totalInterest / originalBalance) * 100;
+    
+    if (payoffTime > 300) return 'Very long payoff time—consider debt consolidation or balance transfer.';
+    if (payoffTime > 120) return 'Long payoff time—focus on increasing payments and reducing expenses.';
+    if (payoffTime > 60) return 'Moderate payoff time—good progress, consider accelerating payments.';
+    return 'Short payoff time—excellent debt management strategy.';
+  };
+
+  const getStrategy = (strategy: string) => {
+    switch (strategy) {
+      case 'minimum': return 'Minimum Payment Strategy';
+      case 'fixed': return 'Fixed Payment Strategy';
+      case 'snowball': return 'Debt Snowball Strategy';
+      case 'avalanche': return 'Debt Avalanche Strategy';
+      default: return 'Custom Payment Strategy';
+    }
+  };
+
+  const getRecommendations = (payoffTime: number, totalInterest: number, originalBalance: number) => {
+    const recommendations = [];
+    
+    if (payoffTime > 300) {
+      recommendations.push('Consider debt consolidation loan with lower interest rate');
+      recommendations.push('Look into balance transfer cards with 0% intro APR');
+      recommendations.push('Cut all non-essential expenses immediately');
+      recommendations.push('Increase income through side hustles or job change');
+      recommendations.push('Seek professional debt counseling');
+    } else if (payoffTime > 120) {
+      recommendations.push('Increase monthly payments by any amount possible');
+      recommendations.push('Use windfalls (tax refunds, bonuses) for extra payments');
+      recommendations.push('Consider debt avalanche method (highest interest first)');
+      recommendations.push('Track spending to find money for extra payments');
+    } else if (payoffTime > 60) {
+      recommendations.push('Maintain current payment strategy');
+      recommendations.push('Consider debt snowball for psychological wins');
+      recommendations.push('Build emergency fund to prevent new debt');
+      recommendations.push('Start saving for future goals');
+    } else {
+      recommendations.push('Excellent debt management!');
+      recommendations.push('Focus on building emergency fund');
+      recommendations.push('Start investing for long-term goals');
+      recommendations.push('Consider debt-free lifestyle maintenance');
+    }
+
+    return recommendations;
+  };
+
+  const getWarningSigns = (payoffTime: number, totalInterest: number, originalBalance: number) => {
+    const signs = [];
+    
+    if (payoffTime > 300) {
+      signs.push('Payoff time exceeds 25 years - unsustainable');
+      signs.push('Total interest exceeds original balance');
+      signs.push('Minimum payments barely cover interest');
+      signs.push('Risk of default and credit damage');
+    } else {
+      signs.push('High credit utilization ratio');
+      signs.push('Missing payments or paying late');
+      signs.push('Using credit cards for daily expenses');
+      signs.push('No emergency fund to prevent new debt');
+    }
+
+    return signs;
+  };
+
+  const onSubmit = (values: FormValues) => {
+    const calculation = calculate(values);
+    if (!calculation) { setResult(null); return; }
+    
+    const { payoffTime, totalInterest, schedule } = calculation;
+    const totalPayments = values.currentBalance! + totalInterest;
+    const monthlyPayment = values.minimumPayment! + (values.extraPayment || 0);
+    
+    setResult({ 
+      payoffTime,
+      totalInterest,
+      totalPayments,
+      monthlyPayment,
+      strategy: getStrategy(values.payoffStrategy || 'minimum'),
+      interpretation: interpret(payoffTime, totalInterest, values.currentBalance!),
+      recommendations: getRecommendations(payoffTime, totalInterest, values.currentBalance!),
+      warningSigns: getWarningSigns(payoffTime, totalInterest, values.currentBalance!),
+      paymentSchedule: schedule.slice(0, 12) // Show first 12 months
+    });
+  };
 
   return (
     <div className="space-y-8">
+
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <CreditCard className="h-5 w-5" />
+            Credit Card Debt Information
+          </CardTitle>
+          <CardDescription>
+            Enter your credit card details to calculate payoff timeline and strategies
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="balance" render={({ field }) => (
-                <FormItem><FormLabel>Credit Card Balance</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="apr" render={({ field }) => (
-                <FormItem><FormLabel>Annual Interest Rate (APR) (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="monthlyPayment" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Monthly Payment</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField 
+                  control={form.control} 
+                  name="currentBalance" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <DollarSign className="h-4 w-4" />
+                        Current Balance
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.01" 
+                          placeholder="e.g., 5000" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="annualInterestRate" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <TrendingDown className="h-4 w-4" />
+                        Annual Interest Rate (%)
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.01" 
+                          placeholder="e.g., 18.99" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="minimumPayment" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Calculator className="h-4 w-4" />
+                        Minimum Payment
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.01" 
+                          placeholder="e.g., 150" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="extraPayment" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Zap className="h-4 w-4" />
+                        Extra Payment (Optional)
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.01" 
+                          placeholder="e.g., 100" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="payoffStrategy" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Target className="h-4 w-4" />
+                        Payoff Strategy
+                      </FormLabel>
+                <FormControl>
+                        <select 
+                          className="border rounded h-10 px-3 w-full bg-background" 
+                          value={field.value ?? ''} 
+                          onChange={(e) => field.onChange(e.target.value as any)}
+                        >
+                          <option value="">Select strategy</option>
+                          <option value="minimum">Minimum Payment</option>
+                          <option value="fixed">Fixed Payment</option>
+                          <option value="snowball">Debt Snowball</option>
+                          <option value="avalanche">Debt Avalanche</option>
+                  </select>
+                </FormControl>
+                      <FormMessage />
+              </FormItem>
+                  )} 
+                />
           </div>
-          <Button type="submit">Calculate Payoff</Button>
+              <Button type="submit" className="w-full md:w-auto">
+                Calculate Payoff Plan
+              </Button>
         </form>
       </Form>
+        </CardContent>
+      </Card>
+
       {result && (
-        <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><CreditCard className="h-8 w-8 text-primary" /><CardTitle>Debt Payoff Plan</CardTitle></div></CardHeader>
+        <div className="space-y-6">
+          {/* Main Results Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <CreditCard className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Your Credit Card Payoff Plan</CardTitle>
+                  <CardDescription>Timeline and strategy for becoming debt-free</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
             <CardContent>
-                <div className="text-center space-y-4">
-                    <div>
-                        <CardDescription>Time to Pay Off</CardDescription>
-                        <p className="text-3xl font-bold">{formatMonths(result.monthsToPayOff)}</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-6 bg-primary/5 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Calendar className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium text-muted-foreground">Payoff Time</span>
+                  </div>
+                  <p className="text-3xl font-bold text-primary">
+                    {Math.floor(result.payoffTime / 12)} years {result.payoffTime % 12} months
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.payoffTime} total months
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-red-50 dark:bg-red-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <TrendingDown className="h-5 w-5 text-red-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Total Interest</span>
+                  </div>
+                  <p className="text-3xl font-bold text-red-600">
+                    ${result.totalInterest.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Interest cost
+                  </p>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                        <div>
-                            <CardDescription>Total Interest Paid</CardDescription>
-                            <p className="text-xl font-semibold">${result.totalInterest.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                
+                <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <DollarSign className="h-5 w-5 text-green-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Monthly Payment</span>
                         </div>
-                        <div>
-                            <CardDescription>Total Amount Paid</CardDescription>
-                            <p className="text-xl font-semibold">${result.totalPaid.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
+                  <p className="text-3xl font-bold text-green-600">
+                    ${result.monthlyPayment.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.strategy}
+                  </p>
                         </div>
+              </div>
+
+              <Alert className="mb-6">
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  {result.interpretation}
+                </AlertDescription>
+              </Alert>
+
+              {/* Payment Schedule Preview */}
+              <Card className="mb-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Clock className="h-5 w-5" />
+                    Payment Schedule (First 12 Months)
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-2">Month</th>
+                          <th className="text-right p-2">Balance</th>
+                          <th className="text-right p-2">Payment</th>
+                          <th className="text-right p-2">Interest</th>
+                          <th className="text-right p-2">Principal</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {result.paymentSchedule.map((payment, index) => (
+                          <tr key={index} className="border-b">
+                            <td className="p-2">{payment.month}</td>
+                            <td className="text-right p-2">${payment.balance.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.payment.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.interest.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.principal.toFixed(2)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Detailed Recommendations */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <Target className="h-5 w-5" />
+                        Payoff Recommendations
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.recommendations.map((rec, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{rec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <AlertCircle className="h-5 w-5" />
+                        Warning Signs to Watch
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.warningSigns.map((sign, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{sign}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
                     </div>
                 </div>
             </CardContent>
         </Card>
+        </div>
       )}
-       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="understanding-inputs">
-            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4">
+
+      {/* Educational Content */}
+      <div className="space-y-6">
+        {/* Explain the Inputs Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Understanding Credit Card Payoff Strategies
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Minimum Payment Strategy</h4>
+              <p className="text-muted-foreground">
+                Paying only the minimum required payment. This results in the longest payoff time and highest total interest cost. Not recommended unless absolutely necessary.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Debt Snowball Method</h4>
+              <p className="text-muted-foreground">
+                Pay minimums on all debts, then put extra money toward the smallest balance first. Provides psychological wins and motivation to continue.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Debt Avalanche Method</h4>
+              <p className="text-muted-foreground">
+                Pay minimums on all debts, then put extra money toward the highest interest rate first. Mathematically optimal for saving money on interest.
+              </p>
+            </div>
               <div>
-                  <h4 className="font-semibold text-foreground mb-1">Credit Card Balance</h4>
-                  <p>The total amount of debt you currently have on the credit card.</p>
+              <h4 className="font-semibold text-foreground mb-2">Fixed Payment Strategy</h4>
+              <p className="text-muted-foreground">
+                Pay the same amount each month regardless of minimum payment changes. Provides predictable budgeting and faster payoff as balance decreases.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Related Calculators Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <CreditCard className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other debt management and financial planning tools
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">
+                    Loan/EMI Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate loan payments and schedules
+                </p>
               </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate (APR) (%)</h4>
-                  <p>The yearly interest rate charged on your balance. This can usually be found on your credit card statement.</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                    Mortgage Payment Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate mortgage payments and costs
+                </p>
               </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Monthly Payment</h4>
-                  <p>The fixed amount you plan to pay towards your balance each month. To pay off the debt, this must be higher than the monthly interest charged.</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/student-loan-repayment-calculator" className="text-primary hover:underline">
+                    Student Loan Repayment Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Plan your student loan repayment strategy
+                </p>
               </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-it-works">
-            <AccordionTrigger>How The Calculation Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator determines how many months it will take to pay off a credit card balance using a logarithmic formula derived from the standard loan amortization equation. It solves for the number of payment periods (`n`).</p>
-                <ul className="list-disc list-inside space-y-1">
-                    <li>It calculates the number of months required to bring the balance to zero based on your fixed monthly payment and APR.</li>
-                    <li>The result is rounded up to the next whole month.</li>
-                    <li>The total amount paid is your monthly payment multiplied by the number of months.</li>
-                    <li>The total interest is the total amount paid minus the original balance.</li>
-                </ul>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-to-escape">
-          <AccordionTrigger>How to Escape the Credit Card Trap</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
-            <h3>From Overwhelmed to In Control: Your Step-by-Step Guide to Paying Off Credit Card Debt</h3>
-            <p>It’s a familiar, sinking feeling. The credit card statement arrives, and you brace yourself as you open it. The number is higher than you hoped, and the "Minimum Payment Due" feels like a tiny bandage on a gaping wound. You make the payment, but next month, the balance seems to have barely budged.</p>
-            <p>If this sounds familiar, you are not alone. Millions of Americans are navigating the challenges of credit card debt. These cards are marketed as tools of convenience, rewards, and opportunity, and they can be. But they are also a meticulously designed trap, built on high interest rates and behavioral psychology that can keep you paying for years.</p>
-            <p>The good news? You can escape the trap. Getting out of credit card debt isn't about magic or winning the lottery; it's about understanding the enemy, creating a smart battle plan, and executing it with discipline. This guide will give you that plan.</p>
-            <h4>The Credit Card Trap: Why It’s So Hard to Get Ahead</h4>
-            <p>To defeat the beast, you have to understand how it works. Credit card debt feels so sticky because the system is engineered to work against you in three powerful ways.</p>
-            <ol className="list-decimal pl-5 space-y-2">
-                <li><strong>The Sky-High APR (Annual Percentage Rate)</strong><br/>Your card’s APR is the annual interest rate charged on any balance you carry over from one month to the next. While a mortgage rate might be 7% and an auto loan 8%, credit card APRs in the U.S. routinely sit between 19% and 29%. This punishingly high rate means a huge portion of your payment is eaten up by interest charges alone.</li>
-                <li><strong>The Minimum Payment Illusion</strong><br/>Your credit card company is required to offer you a minimum payment option. This seems helpful, but it's a financial illusion. The minimum payment is mathematically calculated to keep you in debt for the longest possible time, maximizing the interest the company earns from you.</li>
-                <li><strong>The Dark Side of Compounding</strong><br/>Compound interest is a beautiful thing when you're investing, but it is devastating when you're in debt. With credit cards, interest is typically compounded daily. This means that each day, interest is calculated on your balance, and the next day, interest is calculated on the new, slightly larger balance. It's a snowball of debt rolling downhill, gaining size and speed every single day.</li>
-            </ol>
-             <h4>Your Battle Plan: Choosing a Debt Payoff Strategy</h4>
-            <p>Now that you understand the enemy, it’s time to fight back. There are two primary, proven strategies for tackling credit card debt. The best one is the one you will actually stick with.</p>
-            <h5>The Debt Snowball Method (Best for Motivation)</h5>
-            <ol className="list-decimal pl-5 space-y-2">
-                <li><strong>List Your Debts:</strong> Write down all your credit card balances from the smallest to the largest, ignoring the interest rates.</li>
-                <li><strong>Focus Fire:</strong> Pay the minimum on all cards except the one with the smallest balance. Throw every extra dollar you can find at that smallest debt.</li>
-                <li><strong>Roll It Over:</strong> Once the smallest debt is paid off, celebrate! Then, take the full amount you were paying on it and "roll" it into the payment for the next-smallest debt.</li>
-                <li><strong>Repeat:</strong> Continue this process, gaining momentum as your "snowball" of payments grows larger and larger until all your cards are paid off.</li>
-            </ol>
-            <p>This method gives you quick, motivating victories that keep you in the fight.</p>
-            <h5>The Debt Avalanche Method (Best for Math)</h5>
-             <ol className="list-decimal pl-5 space-y-2">
-                <li><strong>List Your Debts:</strong> Write down all your credit cards in order of their APR, from the highest to the lowest.</li>
-                <li><strong>Focus Fire:</strong> Pay the minimum on all cards except the one with the highest APR. Attack that card with every extra dollar.</li>
-                <li><strong>Work Your Way Down:</strong> Once the highest-APR card is paid off, take that entire payment and apply it to the card with the next-highest APR.</li>
-                <li><strong>Repeat:</strong> Continue until you are debt-free.</li>
-            </ol>
-            <p>This method will save you the most money in interest over time, but it may take longer to get your first "win" if your highest-APR card also has a large balance.</p>
-            <h4>Supercharging Your Payoff: Financial Tools and Tactics</h4>
-            <p>Once you've chosen your strategy, you can use these tools to accelerate your progress.</p>
-            <ul className="list-disc pl-5 space-y-2">
-                <li><strong>Balance Transfer Cards:</strong> If you have a good credit score, you may qualify for a balance transfer credit card. These cards offer a 0% introductory APR for a period, typically 12 to 21 months. You transfer your high-interest balances onto this new card and attack the principal aggressively without it accruing interest. Warning: These cards often have a one-time balance transfer fee (usually 3-5%), and if you don't pay off the balance before the promotional period ends, the remaining balance will be subject to a high interest rate.</li>
-                <li><strong>Debt Consolidation Loans:</strong> This involves taking out a personal loan from a bank or credit union at a lower, fixed interest rate to pay off all your credit card balances at once. This simplifies your life with one predictable monthly payment. This can be a great option, but it requires discipline—you must stop using the now-empty credit cards.</li>
-            </ul>
-            <h4>Staying Out of Debt for Good: How to Use Credit Cards Responsibly</h4>
-             <ol className="list-decimal pl-5 space-y-2">
-                <li><strong>Pay Your Balance in Full, Every Single Month.</strong><br/>This is the golden rule. When you pay your statement balance in full by the due date, you operate within the card's grace period, and you are charged zero interest. This turns your credit card into a simple payment tool, like a debit card, but with better rewards and fraud protection.</li>
-                <li><strong>Automate Your Payments.</strong><br/>Set up automatic payments from your checking account. At a minimum, automate the minimum payment so you are never late. Ideally, automate the payment for the full statement balance. This enforces discipline.</li>
-                <li><strong>Keep Your Credit Utilization Low.</strong><br/>Your credit utilization ratio is your total credit card balance divided by your total credit limit. This ratio is a major factor in your FICO credit score. For a healthy score, you should aim to keep your utilization below 30%, and ideally below 10%. This means if you have a $10,000 credit limit, you should try to keep your reported balance under $3,000.</li>
-            </ol>
-            <h4>Conclusion: You Can Do This</h4>
-            <p>Climbing out of credit card debt can feel like an impossible task, but it is achievable. It starts with the decision to stop the cycle and commit to a plan.</p>
-            <p>The steps are simple, but they require focus:</p>
-            <ul className="list-disc pl-5 space-y-2">
-                <li>Stop adding to the debt. Put the cards away and switch to a cash or debit system while you're in payoff mode.</li>
-                <li>Create a budget so you know where your money is going and can find extra cash to put toward your debt.</li>
-                <li>Choose your strategy—snowball or avalanche—and attack the debt with intensity.</li>
-                <li>Once you're free, follow the rules of responsible credit card use to build wealth, not debt.</li>
-            </ul>
-            <p>You have the knowledge and the tools. Your journey to financial control starts now.</p>
-            <p className="text-xs">Disclaimer: This article is for informational purposes only and not intended as financial advice. Please consult with a qualified financial professional to discuss your individual situation.</p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="further-reading">
-            <AccordionTrigger>Further Reading</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-              <p>For more information on managing credit card debt, consult these reliable sources:</p>
-               <ul className="list-disc list-inside space-y-1 pl-4">
-                  <li><a href="https://www.experian.com/blogs/ask-experian/credit-education/paying-down-credit-card-debt/" target="_blank" rel="noopener noreferrer" className="text-primary underline">Experian: Credit Card Payoff Strategies</a></li>
-                  <li><a href="https://www.consumerfinance.gov/consumer-tools/credit-cards/credit-card-payoff-calculator/" target="_blank" rel="noopener noreferrer" className="text-primary underline">CFPB: Credit Card Payoff Calculator</a></li>
-              </ul>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/debt-to-equity-ratio-calculator" className="text-primary hover:underline">
+                    Debt-to-Equity Ratio Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Analyze your debt-to-equity ratio
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <CreditCard className="h-5 w-5" />
+              Complete Guide to Credit Card Debt Payoff
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h3>Understanding Credit Card Debt: The High-Interest Trap</h3>
+            <p>Credit card debt is one of the most expensive forms of debt, with interest rates typically ranging from 15-25% annually. Unlike mortgages or student loans, credit card debt is unsecured, meaning there's no collateral backing it, which is why rates are so high.</p>
+            
+            <h3>The Psychology of Debt Payoff</h3>
+            <p>Debt payoff is as much psychological as it is mathematical. The debt snowball method (paying smallest balances first) provides quick wins and motivation, while the debt avalanche method (paying highest interest first) saves the most money. Choose the method that will keep you motivated.</p>
+            
+            <h3>Creating Your Debt Payoff Strategy</h3>
+            <p>Start by listing all your debts with balances, minimum payments, and interest rates. Choose your payoff method, then create a budget that allocates extra money toward debt payoff. Even small extra payments can significantly reduce your payoff time.</p>
+            
+            <h3>Preventing Future Debt</h3>
+            <p>Once you're debt-free, focus on building an emergency fund to prevent future debt. Aim for 3-6 months of expenses in a high-yield savings account. This safety net will help you avoid credit cards for unexpected expenses.</p>
+            
+            <h3>Building Healthy Credit Habits</h3>
+            <p>Use credit cards as a tool, not a crutch. Pay off your balance in full each month to avoid interest charges. If you can't pay in full, you're spending more than you can afford. Focus on building wealth through assets, not accumulating debt.</p>
+          </CardContent>
+        </Card>
+
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about credit card debt payoff
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I pay off credit cards or invest?</h4>
+              <p className="text-muted-foreground">
+                Generally, pay off high-interest credit card debt first. Credit card interest rates (15-25%) are typically much higher than investment returns (7-10%). The guaranteed savings from paying off debt usually outweighs potential investment gains.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What's the difference between snowball and avalanche methods?</h4>
+              <p className="text-muted-foreground">
+                Snowball focuses on smallest balances first for psychological wins, while avalanche focuses on highest interest rates first for maximum money savings. Avalanche saves more money, but snowball provides more motivation.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I use a balance transfer card?</h4>
+              <p className="text-muted-foreground">
+                Balance transfer cards can be helpful if you have good credit and can get a 0% intro APR. However, you must pay off the balance before the intro period ends, and you need to avoid new charges on the old card.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How much extra should I pay each month?</h4>
+              <p className="text-muted-foreground">
+                Pay as much extra as possible while maintaining your emergency fund and other financial obligations. Even $25-50 extra per month can significantly reduce payoff time and interest costs.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What if I can't make the minimum payment?</h4>
+              <p className="text-muted-foreground">
+                Contact your credit card company immediately to discuss hardship programs, reduced payments, or payment plans. Many companies offer temporary relief options to help avoid default.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I close credit cards after paying them off?</h4>
+              <p className="text-muted-foreground">
+                Generally, keep the accounts open to maintain your credit utilization ratio and credit history length. However, if you can't control spending, closing them may be necessary for your financial health.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+    </div>
     </div>
   );
 }

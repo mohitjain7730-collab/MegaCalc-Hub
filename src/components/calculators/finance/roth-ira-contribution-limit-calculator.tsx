@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -9,246 +8,670 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Target } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { PiggyBank, Calculator, DollarSign, TrendingUp, Info, AlertCircle, Target, Calendar, Users, Building } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
-  filingStatus: z.enum(['single', 'mfj', 'mfs']),
-  magi: z.number().nonnegative(),
-  age: z.number().int().positive(),
+  age: z.number().min(0).max(120).optional(),
+  filingStatus: z.enum(['single', 'married-joint', 'married-separate', 'head-of-household']).optional(),
+  modifiedAGI: z.number().min(0).optional(),
+  currentYear: z.number().min(2020).max(2030).optional(),
+  existingContributions: z.number().min(0).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-// Using 2024 IRS data
-const year = 2024;
-const limits = {
-  standard: 7000,
-  catchUp: 1000,
-};
-const phaseOuts = {
-  single: { start: 146000, end: 161000, range: 15000 },
-  mfj: { start: 230000, end: 240000, range: 10000 },
-  mfs: { start: 0, end: 10000, range: 10000 },
-};
+export default function RothIRAContributionLimitCalculator() {
+  const [result, setResult] = useState<{ 
+    maxContribution: number;
+    reducedContribution: number;
+    phaseoutRange: string;
+    eligibilityStatus: string;
+    interpretation: string;
+    recommendations: string[];
+    warningSigns: string[];
+    contributionBreakdown: { category: string; amount: number; description: string }[];
+  } | null>(null);
 
-export default function RothIraContributionLimitCalculator() {
-  const [result, setResult] = useState<number | null>(null);
-
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      filingStatus: 'single',
-      magi: undefined,
-      age: undefined,
-    },
+  const form = useForm<FormValues>({ 
+    resolver: zodResolver(formSchema), 
+    defaultValues: { 
+      age: undefined, 
+      filingStatus: undefined, 
+      modifiedAGI: undefined, 
+      currentYear: undefined,
+      existingContributions: undefined
+    } 
   });
 
+  const getContributionLimits = (year: number) => {
+    // 2024 limits
+    const limits = {
+      2024: { standard: 7000, catchup: 1000 },
+      2023: { standard: 6500, catchup: 1000 },
+      2022: { standard: 6000, catchup: 1000 },
+      2021: { standard: 6000, catchup: 1000 },
+      2020: { standard: 6000, catchup: 1000 }
+    };
+    return limits[year as keyof typeof limits] || limits[2024];
+  };
+
+  const getPhaseoutLimits = (filingStatus: string, year: number) => {
+    // 2024 phaseout limits
+    const phaseouts = {
+      2024: {
+        single: { start: 138000, end: 153000 },
+        'married-joint': { start: 218000, end: 228000 },
+        'married-separate': { start: 0, end: 10000 },
+        'head-of-household': { start: 138000, end: 153000 }
+      },
+      2023: {
+        single: { start: 138000, end: 153000 },
+        'married-joint': { start: 218000, end: 228000 },
+        'married-separate': { start: 0, end: 10000 },
+        'head-of-household': { start: 138000, end: 153000 }
+      }
+    };
+    return phaseouts[year as keyof typeof phaseouts] || phaseouts[2024];
+  };
+
+  const calculateContribution = (v: FormValues) => {
+    if (v.age == null || v.filingStatus == null || v.modifiedAGI == null || v.currentYear == null) return null;
+    
+    const limits = getContributionLimits(v.currentYear);
+    const phaseouts = getPhaseoutLimits(v.filingStatus, v.currentYear);
+    const phaseout = phaseouts[v.filingStatus as keyof typeof phaseouts];
+    
+    let maxContribution = limits.standard;
+    if (v.age >= 50) {
+      maxContribution += limits.catchup;
+    }
+    
+    let reducedContribution = maxContribution;
+    let eligibilityStatus = 'Eligible for full contribution';
+    
+    if (v.modifiedAGI >= phaseout.start && v.modifiedAGI <= phaseout.end) {
+      // Calculate reduced contribution
+      const phaseoutRange = phaseout.end - phaseout.start;
+      const excessIncome = v.modifiedAGI - phaseout.start;
+      const reductionRatio = excessIncome / phaseoutRange;
+      reducedContribution = Math.max(0, maxContribution * (1 - reductionRatio));
+      eligibilityStatus = 'Eligible for reduced contribution';
+    } else if (v.modifiedAGI > phaseout.end) {
+      reducedContribution = 0;
+      eligibilityStatus = 'Not eligible for Roth IRA contributions';
+    }
+    
+    const remainingContribution = Math.max(0, reducedContribution - (v.existingContributions || 0));
+    
+    return {
+      maxContribution,
+      reducedContribution,
+      remainingContribution,
+      eligibilityStatus,
+      phaseoutRange: `$${phaseout.start.toLocaleString()} - $${phaseout.end.toLocaleString()}`
+    };
+  };
+
+  const interpret = (eligibilityStatus: string, remainingContribution: number, age: number) => {
+    if (eligibilityStatus === 'Not eligible for Roth IRA contributions') {
+      return 'Your income exceeds the Roth IRA phaseout limits. Consider traditional IRA or backdoor Roth IRA strategies.';
+    }
+    if (eligibilityStatus === 'Eligible for reduced contribution') {
+      return 'Your income is in the phaseout range. You can make a reduced contribution, or consider income reduction strategies.';
+    }
+    if (remainingContribution === 0) {
+      return 'You have already contributed the maximum allowed amount for this year.';
+    }
+    if (age < 50 && remainingContribution < 7000) {
+      return 'You can make additional contributions to reach the annual limit.';
+    }
+    return 'You are eligible for full Roth IRA contributions. Consider maximizing your contribution for tax-free growth.';
+  };
+
+  const getRecommendations = (eligibilityStatus: string, age: number, modifiedAGI: number) => {
+    const recommendations = [];
+    
+    if (eligibilityStatus === 'Not eligible for Roth IRA contributions') {
+      recommendations.push('Consider traditional IRA contributions for tax deduction');
+      recommendations.push('Explore backdoor Roth IRA conversion strategies');
+      recommendations.push('Maximize 401(k) and other employer-sponsored plans');
+      recommendations.push('Consider taxable investment accounts for additional savings');
+    } else if (eligibilityStatus === 'Eligible for reduced contribution') {
+      recommendations.push('Consider reducing MAGI through deductions or deferrals');
+      recommendations.push('Maximize pre-tax retirement contributions to lower MAGI');
+      recommendations.push('Consider traditional IRA contributions instead');
+      recommendations.push('Plan for future years when income might be lower');
+    } else {
+      recommendations.push('Maximize your Roth IRA contribution for the year');
+      recommendations.push('Set up automatic contributions to ensure consistency');
+      recommendations.push('Consider increasing contributions if you have extra income');
+      recommendations.push('Review your investment allocation within the Roth IRA');
+    }
+    
+    if (age >= 50) {
+      recommendations.push('Take advantage of catch-up contributions');
+      recommendations.push('Consider Roth IRA conversion strategies');
+    }
+    
+    recommendations.push('Review your overall retirement savings strategy');
+    recommendations.push('Consider tax diversification in retirement planning');
+    
+    return recommendations;
+  };
+
+  const getWarningSigns = (eligibilityStatus: string, existingContributions: number, maxContribution: number) => {
+    const signs = [];
+    
+    if (eligibilityStatus === 'Not eligible for Roth IRA contributions') {
+      signs.push('Income exceeds Roth IRA phaseout limits');
+      signs.push('Contributing when ineligible can result in penalties');
+      signs.push('Need alternative retirement savings strategies');
+    }
+    
+    if (existingContributions > maxContribution) {
+      signs.push('Excess contributions subject to 6% penalty annually');
+      signs.push('Need to withdraw excess contributions before tax deadline');
+    }
+    
+    signs.push('Missing contribution deadline (April 15th)');
+    signs.push('Not considering employer match in 401(k) first');
+    signs.push('Ignoring traditional IRA as alternative');
+    
+    return signs;
+  };
+
+  const getContributionBreakdown = (maxContribution: number, age: number, reducedContribution: number) => {
+    const breakdown = [];
+    const limits = getContributionLimits(2024);
+    
+    breakdown.push({
+      category: 'Standard Contribution',
+      amount: limits.standard,
+      description: 'Base annual contribution limit'
+    });
+    
+    if (age >= 50) {
+      breakdown.push({
+        category: 'Catch-up Contribution',
+        amount: limits.catchup,
+        description: 'Additional contribution for age 50+'
+      });
+    }
+    
+    if (reducedContribution < maxContribution) {
+      breakdown.push({
+        category: 'Reduced Contribution',
+        amount: reducedContribution,
+        description: 'Reduced due to income phaseout'
+      });
+    }
+    
+    return breakdown;
+  };
+
   const onSubmit = (values: FormValues) => {
-    const { filingStatus, magi, age } = values;
-    const baseLimit = age >= 50 ? limits.standard + limits.catchUp : limits.standard;
-    const phaseOut = phaseOuts[filingStatus];
-
-    if (magi >= phaseOut.end) {
-      setResult(0);
-      return;
-    }
-
-    if (magi > phaseOut.start) {
-      const reduction = (magi - phaseOut.start) / phaseOut.range;
-      const reducedLimit = baseLimit * (1 - reduction);
-      setResult(Math.max(200, Math.floor(reducedLimit / 10) * 10)); // Round down to nearest $10, min $200
-      return;
-    }
-
-    setResult(baseLimit);
+    const calculation = calculateContribution(values);
+    if (!calculation) { setResult(null); return; }
+    
+    setResult({ 
+      maxContribution: calculation.maxContribution,
+      reducedContribution: calculation.reducedContribution,
+      phaseoutRange: calculation.phaseoutRange,
+      eligibilityStatus: calculation.eligibilityStatus,
+      interpretation: interpret(calculation.eligibilityStatus, calculation.remainingContribution, values.age!),
+      recommendations: getRecommendations(calculation.eligibilityStatus, values.age!, values.modifiedAGI!),
+      warningSigns: getWarningSigns(calculation.eligibilityStatus, values.existingContributions || 0, calculation.maxContribution),
+      contributionBreakdown: getContributionBreakdown(calculation.maxContribution, values.age!, calculation.reducedContribution)
+    });
   };
 
   return (
     <div className="space-y-8">
+
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <PiggyBank className="h-5 w-5" />
+            Roth IRA Contribution Information
+          </CardTitle>
+          <CardDescription>
+            Calculate your Roth IRA contribution limits and eligibility
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="filingStatus" render={({ field }) => (
-                <FormItem>
-                    <FormLabel>Filing Status ({year})</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
-                        <SelectContent>
-                            <SelectItem value="single">Single, Head of Household, or Married Filing Separately (didn't live with spouse)</SelectItem>
-                            <SelectItem value="mfj">Married Filing Jointly or Qualifying Widow(er)</SelectItem>
-                            <SelectItem value="mfs">Married Filing Separately (lived with spouse)</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </FormItem>
-            )} />
-            <FormField control={form.control} name="age" render={({ field }) => (
-                <FormItem><FormLabel>Your Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-             <FormField control={form.control} name="magi" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Modified Adjusted Gross Income (MAGI)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField 
+                  control={form.control} 
+                  name="age" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        Your Age
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="1" 
+                          placeholder="e.g., 35" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="filingStatus" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Users className="h-4 w-4" />
+                        Filing Status
+                      </FormLabel>
+                <FormControl>
+                        <select 
+                          className="border rounded h-10 px-3 w-full bg-background" 
+                          value={field.value ?? ''} 
+                          onChange={(e) => field.onChange(e.target.value as any)}
+                        >
+                          <option value="">Select filing status</option>
+                          <option value="single">Single</option>
+                          <option value="married-joint">Married Filing Jointly</option>
+                          <option value="married-separate">Married Filing Separately</option>
+                          <option value="head-of-household">Head of Household</option>
+                  </select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="modifiedAGI" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <DollarSign className="h-4 w-4" />
+                        Modified Adjusted Gross Income (MAGI)
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.01" 
+                          placeholder="e.g., 120000" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="currentYear" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        Tax Year
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="1" 
+                          placeholder="e.g., 2024" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="existingContributions" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Building className="h-4 w-4" />
+                        Existing Contributions This Year
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.01" 
+                          placeholder="e.g., 2000" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
           </div>
-          <Button type="submit">Calculate Limit</Button>
+              <Button type="submit" className="w-full md:w-auto">
+                Calculate Contribution Limits
+              </Button>
         </form>
       </Form>
-      {result !== null && (
-        <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Target className="h-8 w-8 text-primary" /><CardTitle>Maximum Roth IRA Contribution</CardTitle></div></CardHeader>
-            <CardContent>
-                <div className="text-center space-y-2">
-                    <p className="text-4xl font-bold">${result.toLocaleString()}</p>
-                    <CardDescription>This is your maximum allowed contribution for tax year {year}.</CardDescription>
+        </CardContent>
+      </Card>
+
+      {result && (
+        <div className="space-y-6">
+          {/* Main Results Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <PiggyBank className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Your Roth IRA Contribution Analysis</CardTitle>
+                  <CardDescription>Contribution limits and eligibility assessment</CardDescription>
                 </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-6 bg-primary/5 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <DollarSign className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium text-muted-foreground">Maximum Contribution</span>
+                  </div>
+                  <p className="text-3xl font-bold text-primary">
+                    ${result.maxContribution.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Annual limit
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Your Contribution</span>
+                  </div>
+                  <p className="text-3xl font-bold text-green-600">
+                    ${result.reducedContribution.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Based on your income
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Target className="h-5 w-5 text-blue-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Eligibility Status</span>
+                  </div>
+                  <p className="text-lg font-bold text-blue-600">
+                    <Badge variant={result.eligibilityStatus === 'Not eligible for Roth IRA contributions' ? 'destructive' : result.eligibilityStatus === 'Eligible for reduced contribution' ? 'default' : 'secondary'}>
+                      {result.eligibilityStatus}
+                    </Badge>
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.phaseoutRange}
+                  </p>
+                </div>
+              </div>
+
+              <Alert className="mb-6">
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  {result.interpretation}
+                </AlertDescription>
+              </Alert>
+
+              {/* Contribution Breakdown */}
+              <Card className="mb-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Calculator className="h-5 w-5" />
+                    Contribution Breakdown
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {result.contributionBreakdown.map((item, index) => (
+                      <div key={index} className="flex justify-between items-center p-3 border rounded-lg">
+                        <div>
+                          <div className="font-semibold">{item.category}</div>
+                          <div className="text-sm text-muted-foreground">{item.description}</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="font-bold">${item.amount.toLocaleString()}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Detailed Recommendations */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <Target className="h-5 w-5" />
+                        Contribution Recommendations
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.recommendations.map((rec, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{rec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <AlertCircle className="h-5 w-5" />
+                        Warning Signs to Watch
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.warningSigns.map((sign, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{sign}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </CardContent>
-        </Card>
+          </Card>
+        </div>
       )}
-       <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="what-is-roth">
-          <AccordionTrigger>What is a Roth IRA?</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <p>A Roth IRA is an individual retirement account that offers tax-free growth and tax-free withdrawals in retirement. Unlike a traditional IRA, your contributions are not tax-deductible. The amount you can contribute each year is limited by the IRS and depends on your income and filing status.</p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="contribution-guide">
-          <AccordionTrigger>The Ultimate Retirement Power Tool: Your Guide to Roth IRA Contributions</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
-            <p>In the world of retirement planning, there are many valuable tools, but few are as powerful or as popular as the Roth IRA. Think of it as a superhero of savings accounts, equipped with a special power that can save you tens, or even hundreds, of thousands of dollars in the future: the power of tax-free growth.</p>
-            <p>The premise is simple and brilliant: you pay taxes on your money now, contribute it to the account, and in return, your investments can grow and be withdrawn in retirement completely, 100% tax-free.</p>
-            <p>But to harness this power, you need to understand the rules of the game—specifically, how to get your money into the account in the first place. This guide will break down everything you need to know about Roth IRA contributions, including the limits, income rules, and deadlines for 2025 and 2026.</p>
-            <h4>The Golden Rule: How Much Can You Contribute?</h4>
-            <p>This is the first question everyone asks. The IRS sets annual limits on the maximum amount you can contribute to an IRA.</p>
-            <p>For the tax year 2025, the maximum you can contribute to a Roth IRA is <strong>$7,000</strong>.</p>
-            <p>For the tax year 2026, this limit is projected to increase to <strong>$7,500</strong>. (Note: This is based on inflation projections; always confirm with the official IRS announcement, typically made in the fall).</p>
-            <h5>The Age 50+ Catch-Up Contribution</h5>
-            <p>The IRS allows those who are nearing retirement to save a little extra. If you are age 50 or older at any point during the year, you can contribute an additional <strong>$1,000</strong>.</p>
-            <p>This means for 2025, an individual age 50 or over can contribute a total of <strong>$8,000</strong>.</p>
-            <p>It's crucial to remember that this limit is per person, not per account. If you have both a Traditional IRA and a Roth IRA, your total combined contributions to both accounts cannot exceed the annual limit.</p>
-            <h4>The "Can I Contribute?" Test: Understanding the Income Limits</h4>
-            <p>The second golden rule is that the ability to contribute directly to a Roth IRA is not available to everyone. If your income is above a certain level, your ability to contribute is reduced or eliminated entirely.</p>
-            <p>This is based on your Modified Adjusted Gross Income (MAGI). Below are the income phase-out ranges for 2025 and the projected ranges for 2026.</p>
-            <h5>For Tax Year 2025:</h5>
-            <Table>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead>Filing Status</TableHead>
-                        <TableHead>MAGI Range</TableHead>
-                        <TableHead>Contribution Allowed</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    <TableRow>
-                        <TableCell rowSpan={3}>Single, Head of Household</TableCell>
-                        <TableCell>Less than $146,000</TableCell>
-                        <TableCell>Full Contribution</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>$146,000 - $161,000</TableCell>
-                        <TableCell>Reduced Contribution</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>More than $161,000</TableCell>
-                        <TableCell>No Contribution</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell rowSpan={3}>Married Filing Jointly</TableCell>
-                        <TableCell>Less than $230,000</TableCell>
-                        <TableCell>Full Contribution</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>$230,000 - $240,000</TableCell>
-                        <TableCell>Reduced Contribution</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>More than $240,000</TableCell>
-                        <TableCell>No Contribution</TableCell>
-                    </TableRow>
-                </TableBody>
-            </Table>
-            <p className="text-xs">(Projected ranges for 2026 will likely be slightly higher due to inflation adjustments.)</p>
-            <h4>What if Your Income is Too High? The Backdoor Roth IRA</h4>
-            <p>If you find your income is above the limits, don't despair. There is a well-known, legal strategy called the Backdoor Roth IRA. In simple terms, it involves:</p>
-            <ol className="list-decimal pl-5 space-y-2">
-                <li>Contributing money to a non-deductible Traditional IRA (which has no income limits).</li>
-                <li>Shortly after, converting those funds into a Roth IRA.</li>
-            </ol>
-            <p>This is a more advanced strategy with specific tax implications, so it's wise to consult with a financial professional if you plan to use it.</p>
-            <h4>The "What Can I Contribute?" Rule: Earned Income</h4>
-            <p>There's one more fundamental rule: to contribute to an IRA, you (or your spouse) must have earned income.</p>
-            <p>What counts as earned income? Wages, salaries, tips, bonuses, commissions, and self-employment income.</p>
-            <p>What doesn't count? Investment income, rental income, pension payments, Social Security benefits, or child support.</p>
-            <p>You can only contribute up to the annual limit or your total earned income for the year, whichever is less. For example, if you are 20 years old and earn $4,000 from a summer job, the maximum you can contribute to your Roth IRA for that year is $4,000.</p>
-            <h5>The Spousal IRA: An Important Exception</h5>
-            <p>What if one spouse doesn't work outside the home? The Spousal IRA rule allows a working spouse to contribute to an IRA on behalf of their non-working or low-earning spouse, as long as the couple files taxes jointly and the working spouse has enough earned income to cover both contributions.</p>
-            <h4>Deadlines and How to Contribute: The Nuts and Bolts</h4>
-            <h5>The Contribution Deadline</h5>
-            <p>This is one of the best and most misunderstood features of an IRA. You have until Tax Day of the following year to make your contributions for the current tax year.</p>
-            <p>For the <strong>2025 tax year</strong>, you have until <strong>April 15, 2026</strong>, to make your contributions.</p>
-            <p>For the <strong>2026 tax year</strong>, you will have until <strong>April 15, 2027</strong>, to contribute.</p>
-            <p>This gives you extra time to max out your contributions. When you make a contribution between January 1 and April 15, your brokerage will ask you to specify which tax year the contribution is for.</p>
-            <h5>How to Make a Contribution</h5>
-            <ol className="list-decimal pl-5 space-y-2">
-                <li><strong>Open a Roth IRA Account:</strong> You can do this in minutes online at any major brokerage firm like Vanguard, Fidelity, or Charles Schwab.</li>
-                <li><strong>Fund the Account:</strong> Link your checking or savings account.</li>
-                <li><strong>Contribute Your Money:</strong> You can make a lump-sum contribution all at once or set up automatic, recurring contributions (e.g., $583.33 per month to max out the $7,000 limit for 2025). Automation is a fantastic way to build the habit and benefit from dollar-cost averaging.</li>
-                <li><strong>Crucial Final Step: Invest the Money!</strong> A common beginner mistake is to contribute money and leave it sitting as cash in the account. The money must be invested in stocks, bonds, mutual funds, or ETFs within the account to grow.</li>
-            </ol>
-            <h4>Why Bother? The Three Superpowers of a Roth IRA</h4>
-            <p>Why go through all this trouble? Because the benefits are truly game-changing for your financial future.</p>
-            <ol className="list-decimal pl-5 space-y-2">
-                <li><strong>Tax-Free Growth and Withdrawals:</strong> This is the main event. Decades of investment growth—all the dividends, interest, and capital gains—are completely shielded from taxes. When you pull the money out in retirement (after age 59½), every single penny is yours to keep, tax-free.</li>
-                <li><strong>Incredible Flexibility:</strong> Unlike any other retirement account, a Roth IRA allows you to withdraw your direct contributions at any time, for any reason, without taxes or penalties. This is because you already paid taxes on that money. (Note: This only applies to your contributions, not your investment earnings). This makes a Roth IRA a surprisingly flexible account that can double as a backup emergency fund.</li>
-                <li><strong>No Required Minimum Distributions (RMDs):</strong> Traditional IRAs and 401(k)s force you to start taking money out at a certain age (currently 73). Roth IRAs have no RMDs for the original owner. This gives you complete control over your money in retirement and makes it an exceptional tool for estate planning, as you can pass the tax-free growth on to your heirs.</li>
-            </ol>
-            <h4>Conclusion: Your Future Self Will Thank You</h4>
-            <p>The Roth IRA is one of the most powerful wealth-building tools the U.S. tax code provides. It offers a unique combination of tax-free growth, flexibility, and control that is unmatched by other retirement accounts.</p>
-            <p>The steps are clear: check your income eligibility, know the contribution limit, open an account at a reputable brokerage, and make your contribution before the Tax Day deadline. By taking action today, you are giving your future self the incredible gift of financial security and a lifetime of tax-free income.</p>
-            <p className="text-xs">Disclaimer: This article is for informational purposes only and is not intended as financial or tax advice. Contribution limits and IRS rules are subject to change. Please consult with a qualified financial professional or tax advisor to discuss your individual situation.</p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="understanding-inputs">
-            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4">
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Filing Status</h4>
-                  <p>Your tax filing status as reported to the IRS. This determines the income limits for contributions.</p>
+
+      {/* Educational Content */}
+      <div className="space-y-6">
+        {/* Explain the Inputs Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Understanding Roth IRA Contributions
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What is a Roth IRA?</h4>
+              <p className="text-muted-foreground">
+                A Roth IRA is a retirement account where you contribute after-tax dollars, and qualified withdrawals in retirement are tax-free. Unlike traditional IRAs, you don't get a tax deduction for contributions, but you benefit from tax-free growth.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Income Phaseout Limits</h4>
+              <p className="text-muted-foreground">
+                Roth IRA contributions are subject to income limits. If your modified adjusted gross income (MAGI) exceeds certain thresholds, your contribution limit is reduced or eliminated entirely, depending on your filing status.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Catch-up Contributions</h4>
+              <p className="text-muted-foreground">
+                Individuals age 50 and older can make additional "catch-up" contributions beyond the standard limit. This allows older savers to accelerate their retirement savings as they approach retirement age.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Related Calculators Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <PiggyBank className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other retirement and investment planning tools
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/401k-contribution-calculator" className="text-primary hover:underline">
+                    401k Contribution Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Plan your 401k contributions and growth
+                </p>
               </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Your Age</h4>
-                  <p>Your age determines if you are eligible for "catch-up" contributions, which allow individuals aged 50 and over to contribute an additional amount.</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/retirement-savings-calculator" className="text-primary hover:underline">
+                    Retirement Savings Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Plan your retirement with comprehensive projections
+                </p>
               </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Modified Adjusted Gross Income (MAGI)</h4>
-                  <p>This is a specific calculation used by the IRS to determine eligibility for certain tax benefits. For most people, it's very close to their Adjusted Gross Income (AGI). Your eligibility to contribute to a Roth IRA is phased out and eventually eliminated as your MAGI increases.</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
+                    Compound Interest Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate compound interest growth over time
+                </p>
               </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-it-works">
-            <AccordionTrigger>How The Calculation Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator uses the official IRS rules for the specified tax year to determine your contribution limit.</p>
-                <ol className="list-decimal list-inside space-y-1">
-                    <li>It determines the base contribution limit, adding the "catch-up" amount if you are age 50 or over.</li>
-                    <li>It checks your Modified Adjusted Gross Income (MAGI) against the phase-out range for your filing status.</li>
-                    <li>If your MAGI is within the phase-out range, your contribution limit is reduced proportionally. If it's above the range, your limit is $0.</li>
-                </ol>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="further-reading">
-            <AccordionTrigger>Further Reading</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-              <p>For the most current and detailed rules, always consult the official IRS publications.</p>
-               <ul className="list-disc list-inside space-y-1 pl-4">
-                  <li><a href="https://www.irs.gov/retirement-plans/amount-of-roth-ira-contributions-that-you-can-make-for-2024" target="_blank" rel="noopener noreferrer" className="text-primary underline">IRS.gov: Roth IRA Contribution Limits</a></li>
-                  <li><a href="https://www.investopedia.com/roth-ira-contribution-and-income-limits-5071277" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investopedia: Roth IRA Contribution & Income Limits</a></li>
-              </ul>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/sip-calculator" className="text-primary hover:underline">
+                    SIP/DCA Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate systematic investment returns
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <PiggyBank className="h-5 w-5" />
+              Complete Guide to Roth IRA Contributions
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h3>Understanding Roth IRA Benefits: Tax-Free Growth</h3>
+            <p>Roth IRAs offer unique tax advantages that make them powerful retirement savings vehicles. Contributions are made with after-tax dollars, but qualified withdrawals in retirement are completely tax-free. This means all your investment gains grow tax-free, providing significant long-term benefits.</p>
+            
+            <h3>Income Limits and Phaseout Strategies</h3>
+            <p>Roth IRA contributions are subject to income limits that vary by filing status. If your income exceeds these limits, you may be ineligible for direct Roth IRA contributions. However, strategies like backdoor Roth IRA conversions can help high earners still benefit from Roth IRA advantages.</p>
+            
+            <h3>Maximizing Your Contributions</h3>
+            <p>To maximize your Roth IRA benefits, contribute the full amount allowed each year, especially if you're under the income limits. Consider setting up automatic contributions to ensure consistency. If you're 50 or older, take advantage of catch-up contributions to accelerate your savings.</p>
+            
+            <h3>Roth IRA vs. Traditional IRA: Choosing the Right Strategy</h3>
+            <p>The choice between Roth and traditional IRAs depends on your current tax bracket versus your expected retirement tax bracket. If you expect to be in a higher tax bracket in retirement, Roth IRAs are typically more beneficial. Consider your overall tax diversification strategy.</p>
+            
+            <h3>Long-Term Wealth Building with Roth IRAs</h3>
+            <p>Roth IRAs are particularly valuable for long-term wealth building because of their tax-free growth potential. The longer your money stays in a Roth IRA, the more valuable the tax-free growth becomes. Consider Roth IRAs as part of a diversified retirement savings strategy.</p>
+          </CardContent>
+        </Card>
+
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about Roth IRA contributions
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What happens if I contribute too much to my Roth IRA?</h4>
+              <p className="text-muted-foreground">
+                Excess contributions are subject to a 6% penalty for each year the excess remains in your account. You must withdraw the excess contributions and any earnings before the tax filing deadline to avoid penalties.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Can I contribute to both a Roth IRA and traditional IRA?</h4>
+              <p className="text-muted-foreground">
+                Yes, you can contribute to both, but your total contributions to all IRAs (Roth and traditional combined) cannot exceed the annual limit. The limit applies to the total, not per account.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What is a backdoor Roth IRA?</h4>
+              <p className="text-muted-foreground">
+                A backdoor Roth IRA is a strategy for high earners who exceed income limits. You contribute to a traditional IRA (which has no income limits for contributions) and then convert it to a Roth IRA. This allows you to effectively contribute to a Roth IRA regardless of income.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">When can I withdraw from my Roth IRA without penalties?</h4>
+              <p className="text-muted-foreground">
+                You can withdraw your contributions (not earnings) at any time without penalties or taxes. For earnings to be tax-free, you must be 59½ or older and the account must be at least 5 years old, or meet other qualifying conditions.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I prioritize Roth IRA or 401(k) contributions?</h4>
+              <p className="text-muted-foreground">
+                Generally, prioritize 401(k) contributions up to the employer match first, then Roth IRA contributions, then additional 401(k) contributions. This maximizes employer matching while building tax diversification.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+    </div>
     </div>
   );
 }
-
-    

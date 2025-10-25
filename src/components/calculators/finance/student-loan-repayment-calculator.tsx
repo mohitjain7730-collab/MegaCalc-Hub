@@ -8,244 +8,777 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { HandCoins } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { GraduationCap, Calculator, DollarSign, TrendingUp, Info, AlertCircle, Target, Calendar, BookOpen, Users } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
-  loanAmount: z.number().positive(),
-  annualInterestRate: z.number().positive(),
-  loanTenureYears: z.number().positive(),
+  loanBalance: z.number().min(0).optional(),
+  interestRate: z.number().min(0).max(20).optional(),
+  repaymentPlan: z.enum(['standard', 'extended', 'graduated', 'income-driven', 'paye', 'repaye', 'ibr', 'icr']).optional(),
+  monthlyIncome: z.number().min(0).optional(),
+  familySize: z.number().min(1).optional(),
+  extraPayment: z.number().min(0).optional(),
+  loanType: z.enum(['federal', 'private']).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-interface CalculationResult {
-  emi: number;
-  totalPayment: number;
-  totalInterest: number;
-  chartData: { year: number; remainingBalance: number; totalInterestPaid: number }[];
-}
-
 export default function StudentLoanRepaymentCalculator() {
-  const [result, setResult] = useState<CalculationResult | null>(null);
+  const [result, setResult] = useState<{ 
+    monthlyPayment: number;
+    totalInterest: number;
+    payoffTime: number;
+    totalCost: number;
+    planDescription: string;
+    interpretation: string;
+    recommendations: string[];
+    warningSigns: string[];
+    paymentSchedule: { month: number; payment: number; principal: number; interest: number; balance: number }[];
+  } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      loanAmount: undefined,
-      annualInterestRate: undefined,
-      loanTenureYears: undefined,
-    },
+      loanBalance: undefined, 
+      interestRate: undefined, 
+      repaymentPlan: undefined, 
+      monthlyIncome: undefined,
+      familySize: undefined,
+      extraPayment: undefined,
+      loanType: undefined
+    } 
   });
 
-  const onSubmit = (values: FormValues) => {
-    const { loanAmount, annualInterestRate, loanTenureYears } = values;
-    const P = loanAmount;
-    const r = annualInterestRate / 12 / 100;
-    const n = loanTenureYears * 12;
-
-    if (r === 0) {
-        const emi = P / n;
-        const totalPayment = P;
-        const totalInterest = 0;
-        const chartData = Array.from({ length: loanTenureYears }, (_, i) => {
-            const year = i + 1;
-            const balance = P - emi * year * 12;
-            return {
-                year,
-                remainingBalance: Math.max(0, balance),
-                totalInterestPaid: 0,
-            };
-        });
-        setResult({ emi, totalPayment, totalInterest, chartData });
-        return;
-    }
-
-    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    const totalPayment = emi * n;
-    const totalInterest = totalPayment - P;
-
-    const chartData = [];
-    let remainingBalance = P;
-    let cumulativeInterest = 0;
-
-    for (let year = 1; year <= loanTenureYears; year++) {
-      let yearlyInterest = 0;
-      for (let month = 1; month <= 12; month++) {
-        const interestPayment = remainingBalance * r;
-        const principalPayment = emi - interestPayment;
-        yearlyInterest += interestPayment;
-        remainingBalance -= principalPayment;
-      }
-      cumulativeInterest += yearlyInterest;
-      chartData.push({
-        year: year,
-        remainingBalance: Math.max(0, remainingBalance), // Ensure balance doesn't go negative
-        totalInterestPaid: Math.round(cumulativeInterest),
-      });
+  const calculateStandardPayment = (balance: number, rate: number, term: number) => {
+    const monthlyRate = rate / 100 / 12;
+    const numPayments = term * 12;
+    
+    if (monthlyRate === 0) {
+      return balance / numPayments;
     }
     
-    setResult({ emi, totalPayment, totalInterest, chartData });
+    const payment = balance * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                   (Math.pow(1 + monthlyRate, numPayments) - 1);
+    
+    return payment;
+  };
+
+  const calculateIncomeDrivenPayment = (balance: number, income: number, familySize: number, plan: string) => {
+    const discretionaryIncome = Math.max(0, income - (1.5 * 15060 + (familySize - 1) * 5250)); // 2023 poverty guidelines
+    
+    switch (plan) {
+      case 'paye':
+        return Math.min(discretionaryIncome * 0.10, calculateStandardPayment(balance, 6.5, 20));
+      case 'repaye':
+        return discretionaryIncome * 0.10;
+      case 'ibr':
+        return discretionaryIncome * 0.15;
+      case 'icr':
+        return Math.min(discretionaryIncome * 0.20, calculateStandardPayment(balance, 6.5, 12));
+      default:
+        return discretionaryIncome * 0.10;
+    }
+  };
+
+  const calculateAmortization = (balance: number, rate: number, payment: number) => {
+    const monthlyRate = rate / 100 / 12;
+    const schedule = [];
+    let currentBalance = balance;
+    let month = 0;
+
+    while (currentBalance > 0.01 && month < 600) { // Max 50 years
+      const interestPayment = currentBalance * monthlyRate;
+      const principalPayment = Math.min(payment - interestPayment, currentBalance);
+      const actualPayment = principalPayment + interestPayment;
+      
+      currentBalance -= principalPayment;
+      month++;
+
+      schedule.push({
+        month,
+        payment: actualPayment,
+        principal: principalPayment,
+        interest: interestPayment,
+        balance: Math.max(0, currentBalance)
+      });
+    }
+
+    return { schedule, totalMonths: month };
+  };
+
+  const calculate = (v: FormValues) => {
+    if (v.loanBalance == null || v.interestRate == null || v.repaymentPlan == null) return null;
+    
+    let monthlyPayment = 0;
+    let payoffTime = 0;
+    
+    if (v.repaymentPlan === 'standard') {
+      monthlyPayment = calculateStandardPayment(v.loanBalance, v.interestRate, 10);
+      const amortization = calculateAmortization(v.loanBalance, v.interestRate, monthlyPayment);
+      payoffTime = amortization.totalMonths;
+    } else if (v.repaymentPlan === 'extended') {
+      monthlyPayment = calculateStandardPayment(v.loanBalance, v.interestRate, 25);
+      const amortization = calculateAmortization(v.loanBalance, v.interestRate, monthlyPayment);
+      payoffTime = amortization.totalMonths;
+    } else if (v.repaymentPlan === 'graduated') {
+      monthlyPayment = calculateStandardPayment(v.loanBalance, v.interestRate, 10) * 0.5; // Starts at 50% of standard
+      const amortization = calculateAmortization(v.loanBalance, v.interestRate, monthlyPayment);
+      payoffTime = amortization.totalMonths;
+    } else if (v.repaymentPlan === 'income-driven' || ['paye', 'repaye', 'ibr', 'icr'].includes(v.repaymentPlan)) {
+      if (v.monthlyIncome == null) return null;
+      monthlyPayment = calculateIncomeDrivenPayment(v.loanBalance, v.monthlyIncome, v.familySize || 1, v.repaymentPlan);
+      const amortization = calculateAmortization(v.loanBalance, v.interestRate, monthlyPayment);
+      payoffTime = amortization.totalMonths;
+    }
+    
+    const extraPayment = v.extraPayment || 0;
+    const totalPayment = monthlyPayment + extraPayment;
+    
+    const amortization = calculateAmortization(v.loanBalance, v.interestRate, totalPayment);
+    const totalInterest = amortization.schedule.reduce((sum, payment) => sum + payment.interest, 0);
+    const totalCost = v.loanBalance + totalInterest;
+    
+    return { 
+      monthlyPayment: totalPayment, 
+      totalInterest, 
+      payoffTime: amortization.totalMonths,
+      totalCost,
+      paymentSchedule: amortization.schedule.slice(0, 12)
+    };
+  };
+
+  const getPlanDescription = (plan: string) => {
+    switch (plan) {
+      case 'standard': return 'Standard 10-year repayment plan with fixed monthly payments';
+      case 'extended': return 'Extended 25-year repayment plan with lower monthly payments';
+      case 'graduated': return 'Graduated plan with payments that start low and increase over time';
+      case 'paye': return 'Pay As You Earn (PAYE) - 10% of discretionary income, 20-year forgiveness';
+      case 'repaye': return 'Revised Pay As You Earn (REPAYE) - 10% of discretionary income, 20-25 year forgiveness';
+      case 'ibr': return 'Income-Based Repayment (IBR) - 15% of discretionary income, 20-25 year forgiveness';
+      case 'icr': return 'Income-Contingent Repayment (ICR) - 20% of discretionary income, 25-year forgiveness';
+      default: return 'Custom repayment plan';
+    }
+  };
+
+  const interpret = (monthlyPayment: number, loanBalance: number, payoffTime: number, plan: string) => {
+    const paymentToIncome = monthlyPayment / (loanBalance * 0.1); // Rough estimate
+    
+    if (paymentToIncome > 0.15) return 'High payment relative to income—consider income-driven plans.';
+    if (payoffTime > 300) return 'Very long payoff time—consider refinancing or extra payments.';
+    if (payoffTime > 120) return 'Long payoff time—review your repayment strategy.';
+    return 'Reasonable repayment terms—good plan for your situation.';
+  };
+
+  const getRecommendations = (plan: string, monthlyPayment: number, loanBalance: number, loanType: string) => {
+    const recommendations = [];
+    
+    if (plan === 'standard' && monthlyPayment > loanBalance * 0.01) {
+      recommendations.push('Consider income-driven repayment plans if payment is too high');
+      recommendations.push('Look into loan consolidation to simplify payments');
+      recommendations.push('Apply for Public Service Loan Forgiveness if eligible');
+    }
+    
+    if (plan.includes('income') || ['paye', 'repaye', 'ibr', 'icr'].includes(plan)) {
+      recommendations.push('Recertify your income annually to maintain plan eligibility');
+      recommendations.push('Consider tax implications of loan forgiveness');
+      recommendations.push('Track qualifying payments for forgiveness programs');
+    }
+    
+    if (loanType === 'federal') {
+      recommendations.push('Explore federal loan forgiveness programs');
+      recommendations.push('Consider Public Service Loan Forgiveness (PSLF)');
+      recommendations.push('Look into Teacher Loan Forgiveness programs');
+    }
+    
+    recommendations.push('Make extra payments when possible to reduce total interest');
+    recommendations.push('Consider refinancing if you have good credit and stable income');
+    recommendations.push('Build emergency fund to avoid payment disruptions');
+    
+    return recommendations;
+  };
+
+  const getWarningSigns = (plan: string, monthlyPayment: number, loanBalance: number) => {
+    const signs = [];
+    
+    if (monthlyPayment > loanBalance * 0.02) {
+      signs.push('Payment may be too high for your income');
+      signs.push('Risk of payment default');
+      signs.push('Consider income-driven repayment options');
+    }
+    
+    if (plan === 'extended' || plan === 'graduated') {
+      signs.push('Extended plans result in higher total interest costs');
+      signs.push('Consider if you can afford higher payments');
+    }
+    
+    signs.push('Missing payments can lead to default and wage garnishment');
+    signs.push('Interest continues to accrue during forbearance');
+    signs.push('Private loans have fewer repayment options');
+    
+    return signs;
+  };
+
+  const onSubmit = (values: FormValues) => {
+    const calculation = calculate(values);
+    if (!calculation) { setResult(null); return; }
+    
+    setResult({ 
+      ...calculation,
+      planDescription: getPlanDescription(values.repaymentPlan!),
+      interpretation: interpret(calculation.monthlyPayment, values.loanBalance!, calculation.payoffTime, values.repaymentPlan!),
+      recommendations: getRecommendations(values.repaymentPlan!, calculation.monthlyPayment, values.loanBalance!, values.loanType || 'federal'),
+      warningSigns: getWarningSigns(values.repaymentPlan!, calculation.monthlyPayment, values.loanBalance!)
+    });
   };
 
   return (
     <div className="space-y-8">
+
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <GraduationCap className="h-5 w-5" />
+            Student Loan Information
+          </CardTitle>
+          <CardDescription>
+            Enter your student loan details to calculate repayment options and strategies
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="loanAmount" render={({ field }) => (
-                <FormItem><FormLabel>Loan Amount</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="annualInterestRate" render={({ field }) => (
-                <FormItem><FormLabel>Annual Interest Rate (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="loanTenureYears" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Loan Term (Years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Calculator className="h-5 w-5 text-primary" />
+                    Loan Details
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField 
+                      control={form.control} 
+                      name="loanBalance" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <DollarSign className="h-4 w-4" />
+                            Loan Balance
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 50000" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="interestRate" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <TrendingUp className="h-4 w-4" />
+                            Interest Rate (%)
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 6.5" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="loanType" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <BookOpen className="h-4 w-4" />
+                            Loan Type
+                          </FormLabel>
+                    <FormControl>
+                            <select 
+                              className="border rounded h-10 px-3 w-full bg-background" 
+                              value={field.value ?? ''} 
+                              onChange={(e) => field.onChange(e.target.value as any)}
+                            >
+                              <option value="">Select loan type</option>
+                              <option value="federal">Federal Student Loan</option>
+                              <option value="private">Private Student Loan</option>
+                  </select>
+                </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="repaymentPlan" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <Calendar className="h-4 w-4" />
+                            Repayment Plan
+                          </FormLabel>
+                    <FormControl>
+                            <select 
+                              className="border rounded h-10 px-3 w-full bg-background" 
+                              value={field.value ?? ''} 
+                              onChange={(e) => field.onChange(e.target.value as any)}
+                            >
+                              <option value="">Select repayment plan</option>
+                              <option value="standard">Standard (10 years)</option>
+                              <option value="extended">Extended (25 years)</option>
+                              <option value="graduated">Graduated (10 years)</option>
+                              <option value="paye">PAYE (Income-driven)</option>
+                              <option value="repaye">REPAYE (Income-driven)</option>
+                              <option value="ibr">IBR (Income-driven)</option>
+                              <option value="icr">ICR (Income-driven)</option>
+                  </select>
+                </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Users className="h-5 w-5 text-blue-600" />
+                    Income Information (for Income-Driven Plans)
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField 
+                      control={form.control} 
+                      name="monthlyIncome" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <DollarSign className="h-4 w-4" />
+                            Monthly Income
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 4000" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="familySize" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <Users className="h-4 w-4" />
+                            Family Size
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="1" 
+                              placeholder="e.g., 2" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="extraPayment" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <DollarSign className="h-4 w-4" />
+                            Extra Payment (Optional)
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 100" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                  </div>
+                </div>
           </div>
-          <Button type="submit">Calculate Student Loan Payment</Button>
+              <Button type="submit" className="w-full md:w-auto">
+                Calculate Repayment Plan
+              </Button>
         </form>
       </Form>
+        </CardContent>
+      </Card>
+
       {result && (
-        <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><HandCoins className="h-8 w-8 text-primary" /><CardTitle>Student Loan Repayment Details</CardTitle></div></CardHeader>
-            <CardContent>
-                <div className="text-center space-y-4">
-                    <div>
-                        <CardDescription>Monthly Payment</CardDescription>
-                        <p className="text-3xl font-bold">${result.emi.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                        <div>
-                            <CardDescription>Total Payment</CardDescription>
-                            <p className="text-xl font-semibold">${result.totalPayment.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                        </div>
-                        <div>
-                            <CardDescription>Total Interest Paid</CardDescription>
-                            <p className="text-xl font-semibold">${result.totalInterest.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                        </div>
-                    </div>
+        <div className="space-y-6">
+          {/* Main Results Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <GraduationCap className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Your Student Loan Repayment Plan</CardTitle>
+                  <CardDescription>Complete repayment analysis and recommendations</CardDescription>
                 </div>
-                 <div className="mt-8 h-80">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={result.chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="year" unit="yr" />
-                      <YAxis tickFormatter={(value) => `$${(value/1000)}k`} />
-                      <Tooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
-                      <Legend />
-                      <Line type="monotone" dataKey="totalInterestPaid" name="Total Interest Paid" stroke="hsl(var(--muted-foreground))" activeDot={{ r: 8 }} />
-                      <Line type="monotone" dataKey="remainingBalance" name="Remaining Balance" stroke="hsl(var(--primary))" />
-                    </LineChart>
-                  </ResponsiveContainer>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-6 bg-primary/5 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <DollarSign className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium text-muted-foreground">Monthly Payment</span>
+                  </div>
+                  <p className="text-3xl font-bold text-primary">
+                    ${result.monthlyPayment.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.planDescription}
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-red-50 dark:bg-red-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-red-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Total Interest</span>
+                  </div>
+                  <p className="text-3xl font-bold text-red-600">
+                    ${result.totalInterest.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Interest over loan term
+                  </p>
+                    </div>
+                
+                <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Calendar className="h-5 w-5 text-green-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Payoff Time</span>
+                        </div>
+                  <p className="text-3xl font-bold text-green-600">
+                    {Math.floor(result.payoffTime / 12)} years {result.payoffTime % 12} months
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.payoffTime} total months
+                  </p>
+                        </div>
+                    </div>
+
+              <div className="text-center p-6 bg-purple-50 dark:bg-purple-950/20 rounded-lg mb-6">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Calculator className="h-5 w-5 text-purple-600" />
+                  <span className="text-sm font-medium text-muted-foreground">Total Cost</span>
+                </div>
+                <p className="text-2xl font-bold text-purple-600">
+                  ${result.totalCost.toLocaleString()}
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Including principal and interest
+                </p>
+              </div>
+
+              <Alert className="mb-6">
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  {result.interpretation}
+                </AlertDescription>
+              </Alert>
+
+              {/* Payment Schedule Preview */}
+              <Card className="mb-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Calendar className="h-5 w-5" />
+                    Payment Schedule (First 12 Months)
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-2">Month</th>
+                          <th className="text-right p-2">Payment</th>
+                          <th className="text-right p-2">Principal</th>
+                          <th className="text-right p-2">Interest</th>
+                          <th className="text-right p-2">Balance</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {result.paymentSchedule.map((payment, index) => (
+                          <tr key={index} className="border-b">
+                            <td className="p-2">{payment.month}</td>
+                            <td className="text-right p-2">${payment.payment.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.principal.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.interest.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.balance.toFixed(2)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Detailed Recommendations */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <Target className="h-5 w-5" />
+                        Repayment Recommendations
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.recommendations.map((rec, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{rec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <AlertCircle className="h-5 w-5" />
+                        Warning Signs to Watch
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.warningSigns.map((sign, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{sign}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
                 </div>
             </CardContent>
         </Card>
+        </div>
       )}
-       <Accordion type="single" collapsible className="w-full">
-         <AccordionItem value="understanding-inputs">
-            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4">
+
+      {/* Educational Content */}
+      <div className="space-y-6">
+        {/* Explain the Inputs Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Understanding Student Loan Repayment Plans
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Standard Repayment Plan</h4>
+              <p className="text-muted-foreground">
+                Fixed monthly payments over 10 years. Results in the lowest total interest paid but highest monthly payments. Best for borrowers who can afford higher payments.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Income-Driven Repayment Plans</h4>
+              <p className="text-muted-foreground">
+                Monthly payments based on your income and family size. Payments are typically 10-20% of discretionary income. Remaining balance may be forgiven after 20-25 years.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Extended Repayment Plan</h4>
+              <p className="text-muted-foreground">
+                Lower monthly payments over 25 years. Results in higher total interest paid but more manageable monthly payments. Available for loans over $30,000.
+              </p>
+            </div>
               <div>
-                  <h4 className="font-semibold text-foreground mb-1">Loan Amount</h4>
-                  <p>The total principal amount of your student loan debt.</p>
+              <h4 className="font-semibold text-foreground mb-2">Graduated Repayment Plan</h4>
+              <p className="text-muted-foreground">
+                Payments start low and increase every 2 years over 10 years. Good for borrowers who expect their income to increase over time.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Related Calculators Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <GraduationCap className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other loan and financial planning tools
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">
+                    Loan/EMI Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate loan payments and schedules
+                </p>
               </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate (%)</h4>
-                  <p>The yearly interest rate on your loan. If you have multiple loans with different rates, you can use a weighted average.</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/credit-card-payoff-calculator" className="text-primary hover:underline">
+                    Credit Card Payoff Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Plan your credit card debt payoff strategy
+                </p>
               </div>
-              <div>
-                  <h4 className="font-semibold text-foreground mb-1">Loan Term (Years)</h4>
-                  <p>The repayment period for your loan. A standard repayment plan is typically 10 years, but other options may be available.</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                    Mortgage Payment Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate mortgage payments and costs
+                </p>
               </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-it-works">
-            <AccordionTrigger>How The Calculation Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator uses the standard loan amortization formula to determine your fixed monthly payment for your student loan. The formula accounts for the loan principal, the monthly interest rate, and the total number of payments.</p>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="student-loan-guide">
-            <AccordionTrigger>The Ultimate Guide to Student Loans</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
-                <h3>Navigating the Maze: Your Ultimate Guide to Student Loans</h3>
-                <p>You did it. The acceptance letters have arrived, and the excitement of starting college is palpable. But alongside the campus tour brochures and school spirit merchandise comes a far more intimidating document: the financial aid award letter, complete with the estimated cost of attendance.</p>
-                <p>For the vast majority of American families, the sticker price of a college education is far beyond what they can cover out of pocket. This is where student loans enter the picture. A student loan is a form of financial aid that must be repaid with interest, and it's one of the most common tools used to fund higher education.</p>
-                <p>Navigating this world can feel overwhelming, but it doesn't have to be. Think of this guide as your compass. We will walk you through the entire landscape—from the different types of loans and how to apply for them to the strategies for responsible repayment after you toss your graduation cap in the air.</p>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/debt-to-equity-ratio-calculator" className="text-primary hover:underline">
+                    Debt-to-Equity Ratio Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Analyze your debt-to-equity ratio
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-                <h4>The Two Worlds of Student Loans: Federal vs. Private</h4>
-                <p>This is the single most important distinction to understand. Not all student loans are created equal.</p>
-                <h5>Federal Student Loans (Your First and Best Choice)</h5>
-                <p>Federal student loans are funded directly by the U.S. Department of Education. They are the foundation of student borrowing for a reason—they are designed with powerful, built-in protections for borrowers.</p>
-                <ul className="list-disc list-inside">
-                    <li><strong>Fixed Interest Rates:</strong> The interest rate is set by Congress and is fixed for the life of the loan. It will never change.</li>
-                    <li><strong>No Credit Check Required (for most loans):</strong> Undergraduates can get federal loans without a credit history or a cosigner.</li>
-                    <li><strong>Flexible Repayment Plans:</strong> Federal loans offer access to programs that can lower your monthly payment based on your income (more on this later).</li>
-                    <li><strong>Loan Forgiveness Potential:</strong> These are the only loans eligible for federal forgiveness programs, like Public Service Loan Forgiveness (PSLF).</li>
-                    <li><strong>Deferment and Forbearance:</strong> They offer options to temporarily pause payments if you face financial hardship, like unemployment.</li>
-                </ul>
-                <p><strong>The Golden Rule:</strong> Before you even think about any other type of loan, you should always borrow the maximum amount you are eligible for in federal student loans.</p>
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <GraduationCap className="h-5 w-5" />
+              Complete Guide to Student Loan Repayment
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h3>Understanding Student Loan Repayment: Your Path to Freedom</h3>
+            <p>Student loan repayment can feel overwhelming, but understanding your options is the first step to financial freedom. Federal loans offer multiple repayment plans, while private loans typically have fewer options. The key is finding the plan that fits your current financial situation and long-term goals.</p>
+            
+            <h3>Federal vs. Private Loans: Know Your Options</h3>
+            <p>Federal student loans offer income-driven repayment plans, loan forgiveness programs, and more flexible options. Private loans typically have fixed repayment terms with fewer options for modification. If you have both types, prioritize paying off private loans first, as they're less flexible.</p>
+            
+            <h3>Income-Driven Repayment Plans: When Payments Are Too High</h3>
+            <p>If your standard payment is unaffordable, income-driven plans cap your payment at 10-20% of your discretionary income. These plans can provide relief in the short term, but may result in higher total interest paid over the long term. Consider your career trajectory and income potential.</p>
+            
+            <h3>Loan Forgiveness Programs: The Long-Term Strategy</h3>
+            <p>Public Service Loan Forgiveness (PSLF) forgives remaining federal loan balance after 10 years of qualifying payments while working for qualifying employers. Teacher Loan Forgiveness offers forgiveness for teachers in low-income schools. These programs require careful planning and documentation.</p>
+            
+            <h3>Building Wealth While Paying Off Student Loans</h3>
+            <p>Don't let student loans prevent you from building wealth. If you have low-interest federal loans, consider investing extra money rather than paying off loans early. However, high-interest private loans should be prioritized. Balance debt payoff with other financial goals like retirement savings.</p>
+          </CardContent>
+        </Card>
 
-                <h5>Private Student Loans (Use Sparingly to Fill the Gap)</h5>
-                <p>Private student loans are offered by banks, credit unions, and online lenders. They are a consumer financial product, much like an auto loan or a personal loan.</p>
-                <ul className="list-disc list-inside">
-                    <li><strong>Credit-Based:</strong> Approval and the interest rate you get are based on your credit history. Since most students don't have a long credit history, this almost always requires a creditworthy cosigner (like a parent).</li>
-                    <li><strong>Variable or Fixed Rates:</strong> You may be offered a variable interest rate, which can change over time, potentially causing your payments to increase.</li>
-                    <li><strong>Fewer Borrower Protections:</strong> Private loans do not offer the flexible income-driven repayment plans or federal forgiveness programs that come with federal loans.</li>
-                </ul>
-                <p>Think of private loans as a last resort, to be used only after you have exhausted all scholarships, grants, and federal loan options.</p>
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about student loan repayment
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What's the difference between federal and private student loans?</h4>
+              <p className="text-muted-foreground">
+                Federal loans offer income-driven repayment plans, loan forgiveness programs, and more flexible repayment options. Private loans typically have fewer repayment options and no forgiveness programs.
+              </p>
+            </div>
 
-                <h4>How to Apply: The FAFSA is Your Golden Ticket</h4>
-                <p>To get access to any federal aid, you must complete one critical form: the FAFSA (Free Application for Federal Student Aid).</p>
-                <p>The FAFSA is the master key that unlocks all federal financial aid, including grants (which you don't have to pay back), work-study programs, and federal student loans. You (and your parents, if you are a dependent student) will use your financial information to complete the application.</p>
-                <p><strong>When to file:</strong> The FAFSA application opens in December for the following academic year. You should file it as early as possible, as some aid is first-come, first-served.</p>
-                <p><strong>What it does:</strong> The information on your FAFSA is used to calculate your Student Aid Index (SAI). This number is a measure of your family's financial strength and is used by colleges to determine how much federal aid you are eligible to receive.</p>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I choose an income-driven repayment plan?</h4>
+              <p className="text-muted-foreground">
+                Income-driven plans are good if your payments would be unaffordable under standard repayment, or if you're pursuing Public Service Loan Forgiveness. However, you may pay more interest over the long term.
+              </p>
+            </div>
 
-                <h4>Decoding Your Federal Loan Offer: Subsidized vs. Unsubsidized</h4>
-                <p>After you're accepted to a college and they've received your FAFSA information, you'll get a financial aid award letter. If you are offered federal loans, you will likely see these two terms:</p>
-                <h5>Direct Subsidized Loans</h5>
-                <p>These are the best type of student loan you can get. They are available to undergraduate students who demonstrate financial need.</p>
-                <p><strong>The Key Benefit:</strong> The U.S. Department of Education pays the interest on your loan for you while you're in school at least half-time, during your six-month grace period after you graduate, and during any periods of deferment. This saves you a significant amount of money.</p>
-                <h5>Direct Unsubsidized Loans</h5>
-                <p>These loans are available to both undergraduate and graduate students, and financial need is not a requirement.</p>
-                <p><strong>The Key Difference:</strong> You are responsible for paying all the interest that accrues on the loan, starting from the day it's disbursed. While you are in school, that interest adds up. You can choose to pay it while you're studying, or you can let it capitalize—meaning the accrued interest gets added to your principal loan balance when you start repayment.</p>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What is Public Service Loan Forgiveness (PSLF)?</h4>
+              <p className="text-muted-foreground">
+                PSLF forgives remaining federal student loan balance after 120 qualifying payments (10 years) while working full-time for a qualifying employer. You must be on an income-driven repayment plan.
+              </p>
+            </div>
 
-                <h4>The Reality of Repayment: Your Options After Graduation</h4>
-                <p>Your loan journey doesn't end when you get your diploma. Once your six-month grace period is over, you'll need to start making payments. Thankfully, the federal system offers several plans.</p>
-                <ul className="list-disc list-inside">
-                    <li><strong>Standard Repayment Plan:</strong> This puts you on a path to pay off your loans in 10 years with a fixed monthly payment.</li>
-                    <li><strong>Income-Driven Repayment (IDR) Plans:</strong> These are one of the most powerful benefits of federal loans. IDR plans cap your monthly payment at a percentage of your discretionary income. If your income is low, your payment could be as low as $0 per month. The newest and most generous plan is the SAVE (Saving on a Valuable Education) Plan. After making payments for 20-25 years on an IDR plan, any remaining loan balance is forgiven.</li>
-                    <li><strong>Public Service Loan Forgiveness (PSLF):</strong> This is a critical program for graduates who work for the government or a qualifying non-profit organization. Under PSLF, if you make 120 qualifying monthly payments (10 years' worth) on an eligible repayment plan, the remaining balance on your Direct Loans is forgiven, tax-free.</li>
-                </ul>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I refinance my student loans?</h4>
+              <p className="text-muted-foreground">
+                Refinancing can lower your interest rate and monthly payment, but you'll lose federal loan benefits like income-driven repayment and forgiveness programs. Consider your job security and career goals.
+              </p>
+            </div>
 
-                <h4>Golden Rules for Responsible Borrowing</h4>
-                <p>Student loans are a serious, multi-year financial commitment. Approaching them with care will save you stress and money down the road.</p>
-                <ul className="list-disc list-inside">
-                    <li><strong>Borrow Only What You Absolutely Need.</strong> Your school may offer you more in loans than the direct cost of tuition and fees. Resist the temptation to borrow extra for lifestyle expenses. Every dollar you borrow is a dollar you'll have to pay back with interest.</li>
-                    <li><strong>Exhaust "Free Money" First.</strong> Vigorously apply for scholarships and grants. This is money you don't have to pay back, and it reduces the amount you'll need to borrow.</li>
-                    <li><strong>Understand Your Future Payment.</strong> Before you accept a loan, use the federal Loan Simulator tool to estimate what your monthly payments will be after graduation. Compare that to the expected starting salary for your chosen career.</li>
-                    <li><strong>Keep Meticulous Records.</strong> Save all your loan documents. Know who your loan servicer is (the company that manages your loan and collects payments). You are your own best advocate.</li>
-                </ul>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What happens if I can't make my payments?</h4>
+              <p className="text-muted-foreground">
+                Contact your loan servicer immediately. You may qualify for deferment, forbearance, or income-driven repayment plans. Defaulting can result in wage garnishment, tax refund seizure, and credit damage.
+              </p>
+            </div>
 
-                <h4>Conclusion: A Tool, Not a Trap</h4>
-                <p>A college education remains one of the best long-term investments you can make in yourself. For most, student loans are a necessary part of that investment. When used thoughtfully and managed responsibly, they are a powerful tool for upward mobility.</p>
-                <p>Remember the hierarchy: start with scholarships and grants, then maximize your federal loan options (subsidized first), and only then, if there is still a funding gap, cautiously consider private loans. By approaching this process with knowledge and a plan, you are setting the stage for a bright and successful financial future.</p>
-                <p className="text-xs">Disclaimer: This article is for informational purposes only and not financial advice. Student loan terms, interest rates, and federal programs are subject to change. Please refer to official government websites like StudentAid.gov for the most current information.</p>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="further-reading">
-            <AccordionTrigger>Further Reading</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-              <p>To learn more about student loans, you can visit these credible resources:</p>
-               <ul className="list-disc list-inside space-y-1 pl-4">
-                  <li><a href="https://smartasset.com/student-loans/student-loan-calculator" target="_blank" rel="noopener noreferrer" className="text-primary underline">SmartAsset: Student Loan Repayment Calculator</a></li>
-              </ul>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How do I qualify for loan forgiveness?</h4>
+              <p className="text-muted-foreground">
+                Federal loans may be forgiven through PSLF (10 years of qualifying payments), Teacher Loan Forgiveness (5 years of teaching), or income-driven repayment (20-25 years of payments). Private loans typically don't offer forgiveness.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+    </div>
     </div>
   );
 }

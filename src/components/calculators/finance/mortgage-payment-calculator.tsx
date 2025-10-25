@@ -8,246 +8,784 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { HandCoins } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Home, Calculator, DollarSign, TrendingUp, Info, AlertCircle, Target, Calendar, Building, Shield } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
-  loanAmount: z.number().positive(),
-  annualInterestRate: z.number().positive(),
-  loanTenureYears: z.number().positive(),
+  loanAmount: z.number().min(0).optional(),
+  interestRate: z.number().min(0).max(50).optional(),
+  loanTerm: z.number().min(1).max(50).optional(),
+  propertyTax: z.number().min(0).optional(),
+  homeInsurance: z.number().min(0).optional(),
+  pmi: z.number().min(0).optional(),
+  hoa: z.number().min(0).optional(),
+  downPayment: z.number().min(0).optional(),
+  propertyValue: z.number().min(0).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-interface CalculationResult {
-  emi: number;
-  totalPayment: number;
-  totalInterest: number;
-  chartData: { year: number; remainingBalance: number; totalInterestPaid: number }[];
-}
-
 export default function MortgagePaymentCalculator() {
-  const [result, setResult] = useState<CalculationResult | null>(null);
+  const [result, setResult] = useState<{ 
+    principalAndInterest: number;
+    totalMonthlyPayment: number;
+    totalInterest: number;
+    totalCost: number;
+    loanToValue: number;
+    interpretation: string;
+    recommendations: string[];
+    warningSigns: string[];
+    amortizationSchedule: { month: number; payment: number; principal: number; interest: number; balance: number }[];
+  } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       loanAmount: undefined,
-      annualInterestRate: undefined,
-      loanTenureYears: undefined,
-    },
+      interestRate: undefined, 
+      loanTerm: undefined, 
+      propertyTax: undefined,
+      homeInsurance: undefined,
+      pmi: undefined,
+      hoa: undefined,
+      downPayment: undefined,
+      propertyValue: undefined
+    } 
   });
 
-  const onSubmit = (values: FormValues) => {
-    const { loanAmount, annualInterestRate, loanTenureYears } = values;
-    const P = loanAmount;
-    const r = annualInterestRate / 12 / 100;
-    const n = loanTenureYears * 12;
-
-    if (r === 0) {
-        const emi = P / n;
-        const totalPayment = P;
-        const totalInterest = 0;
-        const chartData = Array.from({ length: loanTenureYears }, (_, i) => {
-            const year = i + 1;
-            const balance = P - emi * year * 12;
-            return {
-                year,
-                remainingBalance: Math.max(0, balance),
-                totalInterestPaid: 0,
-            };
-        });
-        setResult({ emi, totalPayment, totalInterest, chartData });
-        return;
-    }
-
-    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    const totalPayment = emi * n;
-    const totalInterest = totalPayment - P;
-
-    const chartData = [];
-    let remainingBalance = P;
-    let cumulativeInterest = 0;
-
-    for (let year = 1; year <= loanTenureYears; year++) {
-      let yearlyInterest = 0;
-      for (let month = 1; month <= 12; month++) {
-        const interestPayment = remainingBalance * r;
-        const principalPayment = emi - interestPayment;
-        yearlyInterest += interestPayment;
-        remainingBalance -= principalPayment;
-      }
-      cumulativeInterest += yearlyInterest;
-      chartData.push({
-        year: year,
-        remainingBalance: Math.max(0, remainingBalance), // Ensure balance doesn't go negative
-        totalInterestPaid: Math.round(cumulativeInterest),
-      });
+  const calculateMortgagePayment = (principal: number, rate: number, term: number) => {
+    const monthlyRate = rate / 100 / 12;
+    const numPayments = term * 12;
+    
+    if (monthlyRate === 0) {
+      return principal / numPayments;
     }
     
-    setResult({ emi, totalPayment, totalInterest, chartData });
+    const payment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                   (Math.pow(1 + monthlyRate, numPayments) - 1);
+    
+    return payment;
+  };
+
+  const calculateAmortization = (principal: number, rate: number, term: number, payment: number) => {
+    const monthlyRate = rate / 100 / 12;
+    const numPayments = term * 12;
+    const schedule = [];
+    let balance = principal;
+
+    for (let month = 1; month <= Math.min(numPayments, 12); month++) {
+      const interestPayment = balance * monthlyRate;
+      const principalPayment = payment - interestPayment;
+      balance -= principalPayment;
+
+      schedule.push({
+        month,
+        payment,
+        principal: principalPayment,
+        interest: interestPayment,
+        balance: Math.max(0, balance)
+      });
+    }
+
+    return schedule;
+  };
+
+  const calculate = (v: FormValues) => {
+    if (v.loanAmount == null || v.interestRate == null || v.loanTerm == null) return null;
+    
+    const principalAndInterest = calculateMortgagePayment(v.loanAmount, v.interestRate, v.loanTerm);
+    const propertyTax = (v.propertyTax || 0) / 12;
+    const homeInsurance = (v.homeInsurance || 0) / 12;
+    const pmi = (v.pmi || 0) / 12;
+    const hoa = (v.hoa || 0) / 12;
+    
+    const totalMonthlyPayment = principalAndInterest + propertyTax + homeInsurance + pmi + hoa;
+    const totalInterest = (principalAndInterest * v.loanTerm * 12) - v.loanAmount;
+    const totalCost = v.loanAmount + totalInterest + (v.propertyTax || 0) * v.loanTerm + (v.homeInsurance || 0) * v.loanTerm + (v.pmi || 0) * v.loanTerm + (v.hoa || 0) * v.loanTerm;
+    
+    const loanToValue = v.propertyValue ? (v.loanAmount / v.propertyValue) * 100 : 0;
+    
+    return { 
+      principalAndInterest, 
+      totalMonthlyPayment, 
+      totalInterest, 
+      totalCost, 
+      loanToValue,
+      amortizationSchedule: calculateAmortization(v.loanAmount, v.interestRate, v.loanTerm, principalAndInterest)
+    };
+  };
+
+  const interpret = (totalPayment: number, loanAmount: number, loanToValue: number) => {
+    const paymentToIncome = (totalPayment * 12) / (loanAmount * 0.1); // Rough estimate
+    
+    if (loanToValue > 95) return 'High LTV—consider larger down payment to avoid PMI.';
+    if (paymentToIncome > 0.3) return 'High payment-to-income ratio—ensure you can afford this payment.';
+    if (totalPayment > loanAmount * 0.01) return 'Moderate payment—review your budget carefully.';
+    return 'Reasonable payment—good mortgage terms.';
+  };
+
+  const getRecommendations = (loanToValue: number, totalPayment: number, loanAmount: number) => {
+    const recommendations = [];
+    
+    if (loanToValue > 95) {
+      recommendations.push('Consider larger down payment to eliminate PMI');
+      recommendations.push('Look into first-time homebuyer programs');
+      recommendations.push('Save more before purchasing');
+    } else if (loanToValue > 80) {
+      recommendations.push('Make extra principal payments to reach 80% LTV');
+      recommendations.push('Consider PMI removal options');
+      recommendations.push('Build equity faster with additional payments');
+    }
+    
+    if (totalPayment > loanAmount * 0.01) {
+      recommendations.push('Ensure emergency fund covers 3-6 months of payments');
+      recommendations.push('Consider shorter loan term if budget allows');
+      recommendations.push('Shop around for better interest rates');
+    }
+    
+    recommendations.push('Get pre-approved before house hunting');
+    recommendations.push('Factor in maintenance costs (1-2% of home value annually)');
+    recommendations.push('Consider future income stability');
+    
+    return recommendations;
+  };
+
+  const getWarningSigns = (loanToValue: number, totalPayment: number, loanAmount: number) => {
+    const signs = [];
+    
+    if (loanToValue > 95) {
+      signs.push('Very high loan-to-value ratio');
+      signs.push('PMI will be required and expensive');
+      signs.push('Little equity cushion for market downturns');
+    }
+    
+    if (totalPayment > loanAmount * 0.015) {
+      signs.push('Payment may be too high for your income');
+      signs.push('Little room for unexpected expenses');
+      signs.push('Risk of becoming house poor');
+    }
+    
+    signs.push('No emergency fund for unexpected repairs');
+    signs.push('Interest rate may be too high');
+    signs.push('Loan term may be too long');
+    
+    return signs;
+  };
+
+  const onSubmit = (values: FormValues) => {
+    const calculation = calculate(values);
+    if (!calculation) { setResult(null); return; }
+    
+    setResult({ 
+      ...calculation,
+      interpretation: interpret(calculation.totalMonthlyPayment, values.loanAmount!, calculation.loanToValue),
+      recommendations: getRecommendations(calculation.loanToValue, calculation.totalMonthlyPayment, values.loanAmount!),
+      warningSigns: getWarningSigns(calculation.loanToValue, calculation.totalMonthlyPayment, values.loanAmount!)
+    });
   };
 
   return (
     <div className="space-y-8">
+
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Home className="h-5 w-5" />
+            Mortgage Information
+          </CardTitle>
+          <CardDescription>
+            Enter your mortgage details to calculate monthly payments and total costs
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="loanAmount" render={({ field }) => (
-                <FormItem><FormLabel>Loan Amount</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="annualInterestRate" render={({ field }) => (
-                <FormItem><FormLabel>Annual Interest Rate (%)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="loanTenureYears" render={({ field }) => (
-                <FormItem className="md:col-span-2"><FormLabel>Loan Term (Years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Calculator className="h-5 w-5 text-primary" />
+                    Loan Details
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField 
+                      control={form.control} 
+                      name="loanAmount" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <DollarSign className="h-4 w-4" />
+                            Loan Amount
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 300000" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="interestRate" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <TrendingUp className="h-4 w-4" />
+                            Interest Rate (%)
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 6.5" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="loanTerm" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <Calendar className="h-4 w-4" />
+                            Loan Term (Years)
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="1" 
+                              placeholder="e.g., 30" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="downPayment" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <DollarSign className="h-4 w-4" />
+                            Down Payment
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 60000" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="propertyValue" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <Home className="h-4 w-4" />
+                            Property Value
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 400000" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Building className="h-5 w-5 text-blue-600" />
+                    Additional Costs
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField 
+                      control={form.control} 
+                      name="propertyTax" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <Building className="h-4 w-4" />
+                            Annual Property Tax
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 4800" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="homeInsurance" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <Shield className="h-4 w-4" />
+                            Annual Home Insurance
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 1200" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="pmi" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <Shield className="h-4 w-4" />
+                            Annual PMI
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 2400" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                    <FormField 
+                      control={form.control} 
+                      name="hoa" 
+                      render={({ field }) => (
+                  <FormItem>
+                          <FormLabel className="flex items-center gap-2">
+                            <Building className="h-4 w-4" />
+                            Annual HOA Fees
+                          </FormLabel>
+                    <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01" 
+                              placeholder="e.g., 2400" 
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                      )} 
+                    />
+                  </div>
+                </div>
           </div>
-          <Button type="submit">Calculate Mortgage Payment</Button>
+              <Button type="submit" className="w-full md:w-auto">
+                Calculate Mortgage Payment
+              </Button>
         </form>
       </Form>
+        </CardContent>
+      </Card>
+
       {result && (
-        <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><HandCoins className="h-8 w-8 text-primary" /><CardTitle>Mortgage Repayment Details</CardTitle></div></CardHeader>
-            <CardContent>
-                <div className="text-center space-y-4">
-                    <div>
-                        <CardDescription>Monthly Payment</CardDescription>
-                        <p className="text-3xl font-bold">${result.emi.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                        <div>
-                            <CardDescription>Total Payment</CardDescription>
-                            <p className="text-xl font-semibold">${result.totalPayment.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                        </div>
-                        <div>
-                            <CardDescription>Total Interest Paid</CardDescription>
-                            <p className="text-xl font-semibold">${result.totalInterest.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                        </div>
-                    </div>
+        <div className="space-y-6">
+          {/* Main Results Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <Home className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Your Mortgage Payment Breakdown</CardTitle>
+                  <CardDescription>Complete monthly payment analysis and recommendations</CardDescription>
                 </div>
-                 <div className="mt-8 h-80">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={result.chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="year" unit="yr" />
-                      <YAxis tickFormatter={(value) => `$${(value/1000)}k`} />
-                      <Tooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
-                      <Legend />
-                      <Line type="monotone" dataKey="totalInterestPaid" name="Total Interest Paid" stroke="hsl(var(--muted-foreground))" activeDot={{ r: 8 }} />
-                      <Line type="monotone" dataKey="remainingBalance" name="Remaining Balance" stroke="hsl(var(--primary))" />
-                    </LineChart>
-                  </ResponsiveContainer>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-6 bg-primary/5 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <DollarSign className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium text-muted-foreground">Principal & Interest</span>
+                  </div>
+                  <p className="text-3xl font-bold text-primary">
+                    ${result.principalAndInterest.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Monthly P&I payment
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Calculator className="h-5 w-5 text-green-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Total Monthly Payment</span>
+                  </div>
+                  <p className="text-3xl font-bold text-green-600">
+                    ${result.totalMonthlyPayment.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Including taxes, insurance, PMI, HOA
+                  </p>
+                    </div>
+                
+                <div className="text-center p-6 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-blue-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Total Interest</span>
+                        </div>
+                  <p className="text-3xl font-bold text-blue-600">
+                    ${result.totalInterest.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Interest over loan term
+                  </p>
+                        </div>
+                    </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="text-center p-6 bg-purple-50 dark:bg-purple-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Calculator className="h-5 w-5 text-purple-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Total Cost</span>
+                  </div>
+                  <p className="text-2xl font-bold text-purple-600">
+                    ${result.totalCost.toLocaleString()}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Including all costs over loan term
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-orange-50 dark:bg-orange-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Home className="h-5 w-5 text-orange-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Loan-to-Value</span>
+                  </div>
+                  <p className="text-2xl font-bold text-orange-600">
+                    {result.loanToValue.toFixed(1)}%
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.loanToValue > 80 ? 'PMI Required' : 'No PMI Required'}
+                  </p>
+                </div>
+              </div>
+
+              <Alert className="mb-6">
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  {result.interpretation}
+                </AlertDescription>
+              </Alert>
+
+              {/* Amortization Schedule Preview */}
+              <Card className="mb-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Calendar className="h-5 w-5" />
+                    Payment Schedule (First 12 Months)
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-2">Month</th>
+                          <th className="text-right p-2">Payment</th>
+                          <th className="text-right p-2">Principal</th>
+                          <th className="text-right p-2">Interest</th>
+                          <th className="text-right p-2">Balance</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {result.amortizationSchedule.map((payment, index) => (
+                          <tr key={index} className="border-b">
+                            <td className="p-2">{payment.month}</td>
+                            <td className="text-right p-2">${payment.payment.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.principal.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.interest.toFixed(2)}</td>
+                            <td className="text-right p-2">${payment.balance.toFixed(2)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Detailed Recommendations */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <Target className="h-5 w-5" />
+                        Mortgage Recommendations
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.recommendations.map((rec, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{rec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <AlertCircle className="h-5 w-5" />
+                        Warning Signs to Watch
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.warningSigns.map((sign, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{sign}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
                 </div>
             </CardContent>
         </Card>
+        </div>
       )}
-       <Accordion type="single" collapsible className="w-full">
-         <AccordionItem value="understanding-inputs">
-            <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4">
+
+      {/* Educational Content */}
+      <div className="space-y-6">
+        {/* Explain the Inputs Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Understanding Mortgage Payments
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Principal and Interest (P&I)</h4>
+              <p className="text-muted-foreground">
+                The core mortgage payment that goes toward paying down the loan balance and interest. This is calculated using the loan amount, interest rate, and term.
+              </p>
+            </div>
               <div>
-                  <h4 className="font-semibold text-foreground mb-1">Loan Amount</h4>
-                  <p>The total amount borrowed for the mortgage, after your down payment.</p>
+              <h4 className="font-semibold text-foreground mb-2">Property Taxes</h4>
+              <p className="text-muted-foreground">
+                Annual taxes assessed by local government, typically paid monthly through escrow. Rates vary by location and property value.
+              </p>
               </div>
               <div>
-                  <h4 className="font-semibold text-foreground mb-1">Annual Interest Rate (%)</h4>
-                  <p>The yearly interest rate for the mortgage. This does not include taxes or insurance.</p>
+              <h4 className="font-semibold text-foreground mb-2">Home Insurance</h4>
+              <p className="text-muted-foreground">
+                Required insurance to protect against damage to the property. Lenders require this coverage and it's often paid through escrow.
+              </p>
               </div>
               <div>
-                  <h4 className="font-semibold text-foreground mb-1">Loan Term (Years)</h4>
-                  <p>The duration of the mortgage. Common terms are 15 or 30 years.</p>
+              <h4 className="font-semibold text-foreground mb-2">PMI (Private Mortgage Insurance)</h4>
+              <p className="text-muted-foreground">
+                Required when down payment is less than 20% of the home value. PMI protects the lender and adds to monthly costs until 80% LTV is reached.
+              </p>
               </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="how-it-works">
-            <AccordionTrigger>How The Calculation Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator uses the standard formula for a fixed-rate mortgage payment to determine your fixed monthly payment. The formula accounts for the loan principal, the monthly interest rate (annual rate divided by 12), and the total number of payments (loan term in years multiplied by 12).</p>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="mortgage-guide">
-            <AccordionTrigger>Understanding all about mortgage</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-4 prose prose-sm dark:prose-invert max-w-none">
-              <h3>Your Guide to the American Dream: Understanding Mortgages</h3>
-                <p>For generations, homeownership has been a cornerstone of the American dream. It’s a place to call your own, build a family, and create lasting memories. But standing between most aspiring homeowners and their dream home is the single largest financial product they will ever encounter: the mortgage.</p>
-                <p>The word itself can be intimidating, conjuring images of towering stacks of paperwork and a complex world of financial jargon. But it doesn't have to be. A mortgage is simply a tool, and like any tool, it’s incredibly effective when you understand how to use it.</p>
-                <p>This guide will serve as your roadmap. We will demystify the entire mortgage landscape, breaking down how home loans work, the different types available, the costs involved, and the step-by-step process to securing one.</p>
-                
-                <h4>How Does a Mortgage Work? The Core Components</h4>
-                <p>At its most basic, a mortgage is a loan used to purchase real estate. You, the borrower, receive money from a lender (like a bank or credit union) to buy a home. In return, you agree to pay back that money, plus interest, over a set period. The home itself serves as collateral, meaning if you fail to make your payments, the lender can take possession of the property through a process called foreclosure.</p>
-                <p>Every mortgage is built on a few key terms:</p>
-                <ul className="list-disc list-inside">
-                    <li><strong>Principal:</strong> This is the initial amount of money you borrow to buy the home. If you buy a $400,000 house with a $40,000 down payment, your principal is $360,000.</li>
-                    <li><strong>Interest Rate:</strong> This is the cost of borrowing the money, expressed as a percentage. This rate determines how much you’ll pay the lender for the privilege of using their money.</li>
-                    <li><strong>Loan Term:</strong> This is the length of time you have to repay the loan. In the U.S., the most common terms are 30 years and 15 years.</li>
-                    <li><strong>Amortization:</strong> This is the process of paying off your loan over time through regular, fixed payments. Each payment is split between principal and interest. In the beginning, more of your payment goes to interest; toward the end, more goes to principal.</li>
-                </ul>
-                
-                <h4>The Anatomy of Your Monthly Payment: Understanding PITI</h4>
-                <p>Your monthly mortgage payment is often more than just principal and interest. In most cases, it’s composed of four parts, known as PITI:</p>
-                <ul className="list-disc list-inside">
-                  <li><strong>P - Principal:</strong> The portion of your payment that reduces your loan balance.</li>
-                  <li><strong>I - Interest:</strong> The portion that pays the lender for the loan.</li>
-                  <li><strong>T - Taxes:</strong> Property taxes levied by your city or county. Your lender typically collects 1/12th of your annual property tax bill each month and holds it in an escrow account, paying the bill on your behalf when it’s due.</li>
-                  <li><strong>I - Insurance:</strong> This includes your homeowners insurance policy and, potentially, Private Mortgage Insurance (PMI).</li>
-                </ul>
-                <p>A special note on PMI: If you get a conventional loan and make a down payment of less than 20% of the home's purchase price, your lender will almost always require you to pay for Private Mortgage Insurance (PMI). This insurance protects the lender—not you—in case you default on the loan. It's typically rolled into your monthly payment and can be removed once you reach 20% equity in your home.</p>
+          </CardContent>
+        </Card>
 
-                <h4>The Big Decision: Types of Mortgages</h4>
-                <p>Not all mortgages are created equal. The right one for you depends on your financial situation and how long you plan to stay in the home.</p>
-                <h5>Fixed-Rate vs. Adjustable-Rate Mortgages (ARMs)</h5>
-                <p>This is the most fundamental choice you will make.</p>
-                <p><strong>Fixed-Rate Mortgage:</strong> The interest rate is locked in for the entire life of the loan. Your principal and interest payment will never change. This offers predictability and stability, making it the most popular choice in the U.S., especially for those who plan to stay in their home for a long time.</p>
-                <p><strong>Adjustable-Rate Mortgage (ARM):</strong> An ARM has an interest rate that can change over time. Typically, it starts with a lower, fixed "introductory" rate for a set number of years (e.g., a 5/1 ARM has a fixed rate for 5 years). After that period, the rate adjusts periodically (e.g., once per year) based on broader market rates. This could mean your monthly payment goes up or down. ARMs can be beneficial if you plan to sell the home before the introductory period ends.</p>
+        {/* Related Calculators Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Home className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other home buying and financial planning tools
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">
+                    Loan/EMI Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate loan payments and schedules
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
+                    Mortgage Refinance Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate refinancing savings and costs
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/real-estate-cash-on-cash-return-calculator" className="text-primary hover:underline">
+                    Real Estate Cash-on-Cash Return
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate real estate investment returns
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/rental-property-cap-rate-calculator" className="text-primary hover:underline">
+                    Rental Property Cap Rate Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate rental property capitalization rates
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-                <h5>Common Loan Programs in the U.S.</h5>
-                <ul className="list-disc list-inside">
-                    <li><strong>Conventional Loans:</strong> These are the most common type of mortgage and are not insured by the federal government. They typically require a higher credit score (usually 620 or above) and a down payment of at least 3-5%. To avoid PMI, you need a 20% down payment.</li>
-                    <li><strong>FHA Loans:</strong> Backed by the Federal Housing Administration, FHA loans are designed to help first-time homebuyers and those with less-than-perfect credit. They allow for down payments as low as 3.5% and have more flexible credit score requirements.</li>
-                    <li><strong>VA Loans:</strong> An incredible benefit for eligible veterans, active-duty service members, and surviving spouses. VA loans are backed by the Department of Veterans Affairs and often require no down payment and no PMI.</li>
-                    <li><strong>USDA Loans:</strong> For low- to moderate-income borrowers in eligible rural and suburban areas, these loans are backed by the U.S. Department of Agriculture. Like VA loans, they can offer a 0% down payment option.</li>
-                </ul>
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Home className="h-5 w-5" />
+              Complete Guide to Mortgage Payments and Home Buying
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h3>Understanding Mortgage Payments: More Than Just Principal and Interest</h3>
+            <p>Your monthly mortgage payment includes much more than just principal and interest. It typically includes property taxes, homeowners insurance, PMI (if applicable), and HOA fees. Understanding each component helps you budget accurately and plan for the true cost of homeownership.</p>
+            
+            <h3>The Home Buying Process: From Pre-Approval to Closing</h3>
+            <p>Start by getting pre-approved for a mortgage to understand your budget. Work with a real estate agent to find homes within your price range. Make an offer, get the home inspected, and secure financing. The closing process involves signing documents and paying closing costs, typically 2-5% of the loan amount.</p>
+            
+            <h3>Choosing the Right Mortgage: Fixed vs. Adjustable Rate</h3>
+            <p>Fixed-rate mortgages offer predictable payments for the entire loan term, making budgeting easier. Adjustable-rate mortgages (ARMs) start with lower rates but can change over time. Consider your financial stability, how long you plan to stay in the home, and your risk tolerance when choosing.</p>
+            
+            <h3>Down Payment Strategies: Building Your Home Equity</h3>
+            <p>A larger down payment reduces your loan amount, monthly payment, and eliminates PMI. However, don't deplete your emergency fund for a down payment. Aim for at least 20% down to avoid PMI, but consider your overall financial situation and other goals.</p>
+            
+            <h3>Long-Term Homeownership: Building Wealth Through Real Estate</h3>
+            <p>Real estate can be a great wealth-building tool, but it's not guaranteed. Home values can fluctuate, and you'll have ongoing costs like maintenance, repairs, and property taxes. Focus on buying a home you can afford and plan to stay in long enough to build equity.</p>
+          </CardContent>
+        </Card>
 
-                <h4>The Money Part: Down Payments and Closing Costs</h4>
-                <h5>The Down Payment</h5>
-                <p>The myth that you always need a 20% down payment is one of the biggest barriers to homeownership. While 20% is the magic number to avoid PMI on a conventional loan, many programs allow for much less. A larger down payment is always beneficial—it lowers your monthly payment and reduces the total interest you'll pay—but don't let the 20% myth stop you from exploring your options.</p>
-                <h5>Closing Costs</h5>
-                <p>These are the fees you pay to finalize the mortgage and the real estate transaction. They are separate from your down payment and typically range from 2% to 5% of the home's purchase price. Common closing costs include:</p>
-                <ul className="list-disc list-inside">
-                    <li>Loan origination fees</li>
-                    <li>Appraisal fees</li>
-                    <li>Title insurance</li>
-                    <li>Attorney fees</li>
-                    <li>Home inspection fees</li>
-                </ul>
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about mortgage payments and home buying
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What's the difference between fixed and adjustable rate mortgages?</h4>
+              <p className="text-muted-foreground">
+                Fixed-rate mortgages have the same interest rate for the entire loan term, providing predictable payments. Adjustable-rate mortgages (ARMs) have rates that can change after an initial fixed period, potentially offering lower initial rates but with payment uncertainty.
+              </p>
+            </div>
 
-                <h4>The Mortgage Process: A Simplified Timeline</h4>
-                <ol className="list-decimal list-inside space-y-2">
-                    <li><strong>Get Pre-Approved:</strong> This is your most important first step. A pre-approval is a letter from a lender stating that they have reviewed your financial documents (income, assets, debt) and are willing to lend you a specific amount of money. It shows real estate agents and sellers that you are a serious, qualified buyer.</li>
-                    <li><strong>Find a Home and Make an Offer:</strong> With your pre-approval letter in hand, you can confidently shop for a home in your price range.</li>
-                    <li><strong>Formal Loan Application and Underwriting:</strong> Once your offer is accepted, you'll submit a formal application. The loan then goes into underwriting, where the lender does a deep dive to verify all your financial details.</li>
-                    <li><strong>Appraisal and Home Inspection:</strong> The lender will order an appraisal to ensure the home is worth the price you're paying. You will hire an inspector to check for any structural or maintenance issues.</li>
-                    <li><strong>Clear to Close and Closing Day:</strong> Once the underwriter gives the final sign-off, you are "clear to close." On closing day, you will sign a mountain of final paperwork, pay your down payment and closing costs, and officially receive the keys to your new home.</li>
-                </ol>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How much house can I afford?</h4>
+              <p className="text-muted-foreground">
+                Generally, your total monthly housing payment (P&I, taxes, insurance, PMI, HOA) should not exceed 28% of your gross monthly income. Your total debt payments should not exceed 36% of your gross monthly income.
+              </p>
+            </div>
 
-                <h4>Conclusion: Your Journey to Homeownership</h4>
-                <p>A mortgage is undoubtedly the biggest financial commitment most people will ever make. But by breaking it down into understandable parts—PITI, loan types, costs, and the application process—it becomes a manageable journey rather than an intimidating obstacle.</p>
-                <p>The research you are doing right now is the foundation for a smart decision. Your next step is clear: talk to a lender and get pre-approved. It's the action that turns the dream of homeownership into a concrete plan.</p>
-                <p className="text-xs">Disclaimer: This article is for informational purposes only and is not intended as financial advice. Mortgage rates, programs, and requirements are subject to change. Please consult with a qualified mortgage lender or financial advisor to discuss your individual situation.</p>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="further-reading">
-            <AccordionTrigger>Further Reading</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-              <p>To learn more about mortgages and loan amortization, you can visit these credible resources:</p>
-               <ul className="list-disc list-inside space-y-1 pl-4">
-                  <li><a href="https://www.investopedia.com/mortgage-calculator-5076624" target="_blank" rel="noopener noreferrer" className="text-primary underline">Investopedia: Mortgage Calculator</a></li>
-              </ul>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I make extra principal payments?</h4>
+              <p className="text-muted-foreground">
+                Extra principal payments can significantly reduce total interest paid and loan term. However, consider if you could earn more by investing the extra money, especially if your mortgage rate is low.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What is PMI and when can I remove it?</h4>
+              <p className="text-muted-foreground">
+                PMI is required when your loan-to-value ratio exceeds 80%. You can typically remove it when you reach 80% LTV through payments or home value appreciation, or when you reach 78% LTV automatically.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I choose a 15-year or 30-year mortgage?</h4>
+              <p className="text-muted-foreground">
+                15-year mortgages have higher monthly payments but lower interest rates and total interest costs. 30-year mortgages have lower monthly payments but higher total interest. Choose based on your budget and financial goals.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What closing costs should I expect?</h4>
+              <p className="text-muted-foreground">
+                Closing costs typically range from 2-5% of the loan amount and include loan origination fees, appraisal, title insurance, attorney fees, and prepaid items like taxes and insurance.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+    </div>
     </div>
   );
 }
