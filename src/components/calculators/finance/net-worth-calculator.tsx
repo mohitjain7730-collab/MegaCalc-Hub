@@ -485,11 +485,11 @@ export default function NetWorthCalculator() {
                   <p className={`text-3xl font-bold ${result.netWorth >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                     ${result.netWorth.toLocaleString()}
                   </p>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <div className="text-sm text-muted-foreground mt-1">
                     <Badge variant={result.financialHealth === 'Excellent' ? 'default' : result.financialHealth === 'Good' ? 'secondary' : result.financialHealth === 'Fair' ? 'outline' : result.financialHealth === 'Poor' ? 'destructive' : 'destructive'}>
                       {result.financialHealth} Financial Health
                     </Badge>
-                  </p>
+                  </div>
                 </div>
               </div>
 

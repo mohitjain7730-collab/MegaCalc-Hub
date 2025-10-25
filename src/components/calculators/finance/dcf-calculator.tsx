@@ -9,8 +9,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Landmark, PlusCircle, XCircle } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, PlusCircle, XCircle } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const cashFlowSchema = z.object({ value: z.number().optional() });
 
@@ -23,7 +24,17 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function DcfCalculator() {
-  const [result, setResult] = useState<number | null>(null);
+  const [result, setResult] = useState<{ 
+    dcf: number; 
+    interpretation: string; 
+    recommendation: string;
+    valuation: string;
+    riskLevel: string;
+    terminalValuePV: number;
+    cashFlowPV: number;
+    insights: string[];
+    considerations: string[];
+  } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -39,212 +50,529 @@ export default function DcfCalculator() {
     name: "cashFlows"
   });
 
-  const onSubmit = (values: FormValues) => {
-    const { discountRate, cashFlows, terminalValue } = values;
-    const r = discountRate / 100;
+  const calculate = (v: FormValues) => {
+    if (v.discountRate == null || v.terminalValue == null || v.cashFlows.some(cf => cf.value == null)) return null;
+    const r = v.discountRate / 100;
     
-    let dcf = 0;
-    cashFlows.forEach((cf, t) => {
-      dcf += (cf.value || 0) / Math.pow(1 + r, t + 1);
+    let cashFlowPV = 0;
+    v.cashFlows.forEach((cf, t) => {
+      cashFlowPV += (cf.value || 0) / Math.pow(1 + r, t + 1);
     });
     
-    const terminalValuePV = terminalValue / Math.pow(1 + r, cashFlows.length);
-    dcf += terminalValuePV;
+    const terminalValuePV = v.terminalValue / Math.pow(1 + r, v.cashFlows.length);
+    const dcf = cashFlowPV + terminalValuePV;
 
-    setResult(dcf);
+    return { dcf, terminalValuePV, cashFlowPV };
+  };
+
+  const interpret = (dcf: number, terminalValuePV: number, cashFlowPV: number) => {
+    const terminalPercentage = (terminalValuePV / dcf) * 100;
+    
+    if (terminalPercentage > 80) {
+      return 'High reliance on terminal value suggests long-term growth assumptions are critical.';
+    } else if (terminalPercentage > 50) {
+      return 'Significant terminal value component indicates substantial long-term value.';
+    } else {
+      return 'Cash flow driven valuation with moderate terminal value contribution.';
+    }
+  };
+
+  const getValuation = (dcf: number) => {
+    if (dcf > 1000000) return 'High Value';
+    if (dcf > 100000) return 'Moderate Value';
+    if (dcf > 10000) return 'Low Value';
+    return 'Minimal Value';
+  };
+
+  const getRiskLevel = (dcf: number, terminalValuePV: number, cashFlowPV: number) => {
+    const terminalPercentage = (terminalValuePV / dcf) * 100;
+    
+    if (terminalPercentage > 80) return 'High';
+    if (terminalPercentage > 50) return 'Moderate';
+    return 'Low';
+  };
+
+  const getInsights = (dcf: number, terminalValuePV: number, cashFlowPV: number, discountRate: number) => {
+    const insights = [];
+    const terminalPercentage = (terminalValuePV / dcf) * 100;
+    
+    if (terminalPercentage > 70) {
+      insights.push('High terminal value dependency - verify long-term growth assumptions');
+    }
+    
+    if (cashFlowPV > terminalValuePV) {
+      insights.push('Cash flow driven valuation - near-term performance is critical');
+    }
+
+    if (discountRate > 15) {
+      insights.push('High discount rate reflects significant risk or opportunity cost');
+    } else if (discountRate < 8) {
+      insights.push('Conservative discount rate suggests lower risk assessment');
+    }
+
+    if (dcf > 1000000) {
+      insights.push('High intrinsic value indicates strong investment potential');
+    }
+
+    return insights;
+  };
+
+  const getConsiderations = (dcf: number, terminalValuePV: number, cashFlowPV: number) => {
+    const considerations = [];
+    const terminalPercentage = (terminalValuePV / dcf) * 100;
+    
+    considerations.push('Verify cash flow projections are realistic and achievable');
+    considerations.push('Review terminal value assumptions and growth rates');
+    considerations.push('Consider sensitivity analysis with different discount rates');
+    
+    if (terminalPercentage > 70) {
+      considerations.push('High terminal value dependency requires careful growth rate validation');
+    }
+    
+    considerations.push('Account for market conditions and industry trends');
+    considerations.push('Compare with market valuations and peer companies');
+
+    return considerations;
+  };
+
+  const recommendation = (dcf: number, terminalValuePV: number, cashFlowPV: number) => {
+    const terminalPercentage = (terminalValuePV / dcf) * 100;
+    
+    if (terminalPercentage > 80) {
+      return 'High terminal value dependency - verify long-term assumptions carefully.';
+    } else if (dcf > 1000000) {
+      return 'Strong intrinsic value suggests attractive investment opportunity.';
+    } else if (dcf > 100000) {
+      return 'Moderate value - consider alongside other valuation methods.';
+    } else {
+      return 'Lower intrinsic value - review assumptions and market conditions.';
+    }
+  };
+
+  const onSubmit = (values: FormValues) => {
+    const calc = calculate(values);
+    if (calc == null) { setResult(null); return; }
+    setResult({ 
+      dcf: calc.dcf, 
+      interpretation: interpret(calc.dcf, calc.terminalValuePV, calc.cashFlowPV), 
+      recommendation: recommendation(calc.dcf, calc.terminalValuePV, calc.cashFlowPV),
+      valuation: getValuation(calc.dcf),
+      riskLevel: getRiskLevel(calc.dcf, calc.terminalValuePV, calc.cashFlowPV),
+      terminalValuePV: calc.terminalValuePV,
+      cashFlowPV: calc.cashFlowPV,
+      insights: getInsights(calc.dcf, calc.terminalValuePV, calc.cashFlowPV, values.discountRate),
+      considerations: getConsiderations(calc.dcf, calc.terminalValuePV, calc.cashFlowPV)
+    });
   };
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField control={form.control} name="discountRate" render={({ field }) => (
-            <FormItem><FormLabel>Discount Rate (%)</FormLabel><FormControl><Input type="number" placeholder="e.g., 10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-          )} />
-          
-          <Card>
-            <CardHeader><CardTitle>Projected Free Cash Flows</CardTitle></CardHeader>
-            <CardContent>
-              {fields.map((field, index) => (
-                  <div key={field.id} className="flex items-center gap-2 mb-2">
+
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="h-5 w-5" />
+            DCF Parameters
+          </CardTitle>
+          <CardDescription>
+            Enter the parameters to calculate the Discounted Cash Flow value
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField control={form.control} name="discountRate" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4" />
+                    Discount Rate (%)
+                  </FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="number" 
+                      step="0.1"
+                      placeholder="e.g., 10" 
+                      {...field} 
+                      value={field.value ?? ''} 
+                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+              
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <DollarSign className="h-5 w-5" />
+                    Projected Free Cash Flows
+                  </CardTitle>
+                  <CardDescription>Enter the expected cash flows for each year</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {fields.map((field, index) => (
+                    <div key={field.id} className="flex items-center gap-2 mb-2">
                       <FormLabel className='w-24'>Year {index + 1}:</FormLabel>
                       <FormField control={form.control} name={`cashFlows.${index}.value`} render={({ field }) => (
-                          <FormItem className="flex-grow"><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                        <FormItem className="flex-grow">
+                          <FormControl>
+                            <Input 
+                              type="number" 
+                              step="0.01"
+                              {...field} 
+                              value={field.value ?? ''} 
+                              onChange={e => field.onChange(parseFloat(e.target.value))} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                       )} />
-                      {fields.length > 1 && <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>}
+                      {fields.length > 1 && (
+                        <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)}>
+                          <XCircle className="h-5 w-5 text-destructive" />
+                        </Button>
+                      )}
+                    </div>
+                  ))}
+                  <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ value: undefined })}>
+                    <PlusCircle className="mr-2 h-4 w-4" /> Add Year
+                  </Button>
+                </CardContent>
+              </Card>
+              
+              <FormField control={form.control} name="terminalValue" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="flex items-center gap-2">
+                    <BarChart3 className="h-4 w-4" />
+                    Terminal Value
+                  </FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="number" 
+                      step="0.01"
+                      placeholder="e.g., 500000" 
+                      {...field} 
+                      value={field.value ?? ''} 
+                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+
+              <Button type="submit" className="w-full md:w-auto">
+                Calculate DCF
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+
+      {result && (
+        <div className="space-y-6">
+          {/* Main Results Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <Calculator className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Discounted Cash Flow Analysis</CardTitle>
+                  <CardDescription>Intrinsic value assessment and valuation insights</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-6 bg-primary/5 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <DollarSign className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium text-muted-foreground">DCF Value</span>
                   </div>
-              ))}
-              <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ value: undefined })}><PlusCircle className="mr-2 h-4 w-4" /> Add Year</Button>
+                  <p className="text-3xl font-bold text-primary">
+                    ${result.dcf.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.valuation}
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-muted/50 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <BarChart3 className="h-5 w-5 text-muted-foreground" />
+                    <span className="text-sm font-medium text-muted-foreground">Risk Level</span>
+                  </div>
+                  <div className="text-2xl font-bold">
+                    <Badge variant={result.riskLevel === 'High' ? 'destructive' : result.riskLevel === 'Moderate' ? 'default' : 'secondary'}>
+                      {result.riskLevel}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.interpretation}
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Recommendation</span>
+                  </div>
+                  <p className="text-lg font-bold text-green-600">
+                    {result.dcf > 1000000 ? 'Strong Buy' : result.dcf > 100000 ? 'Consider' : 'Review'}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.recommendation}
+                  </p>
+                </div>
+              </div>
+
+              {/* Detailed Breakdown */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Cash Flow Breakdown</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-sm text-muted-foreground">Cash Flow PV:</span>
+                        <span className="font-medium">${result.cashFlowPV.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-muted-foreground">Terminal Value PV:</span>
+                        <span className="font-medium">${result.terminalValuePV.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                      </div>
+                      <div className="flex justify-between border-t pt-2">
+                        <span className="text-sm font-medium">Total DCF:</span>
+                        <span className="font-bold">${result.dcf.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Terminal Value Analysis</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-sm text-muted-foreground">Terminal Value %:</span>
+                        <span className="font-medium">{((result.terminalValuePV / result.dcf) * 100).toFixed(1)}%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-muted-foreground">Cash Flow %:</span>
+                        <span className="font-medium">{((result.cashFlowPV / result.dcf) * 100).toFixed(1)}%</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Detailed Analysis */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <Target className="h-5 w-5" />
+                        Key Insights
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.insights.map((insight, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{insight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <AlertCircle className="h-5 w-5" />
+                        Important Considerations
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.considerations.map((consideration, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{consideration}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </CardContent>
           </Card>
-           <FormField control={form.control} name="terminalValue" render={({ field }) => (
-            <FormItem><FormLabel>Terminal Value</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-          )} />
-
-          <Button type="submit">Calculate DCF</Button>
-        </form>
-      </Form>
-      {result !== null && (
-        <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Landmark className="h-8 w-8 text-primary" /><CardTitle>Discounted Cash Flow (DCF) Value</CardTitle></div></CardHeader>
-            <CardContent>
-                <p className="text-3xl font-bold text-center">${result.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                <CardDescription className='mt-4 text-center'>This is the estimated intrinsic value of the investment based on its future cash flows.</CardDescription>
-            </CardContent>
-        </Card>
+        </div>
       )}
-       <section
-  className="space-y-4 text-muted-foreground leading-relaxed"
-  itemScope
-  itemType="https://schema.org/Article"
->
-  <meta
-    itemProp="headline"
-    content="Discounted Cash Flow (DCF) Calculator – Estimate Intrinsic Value of Investments"
-  />
-  <meta itemProp="author" content="MegaCalc Hub Team" />
-  <meta
-    itemProp="about"
-    content="Calculate the discounted cash flow (DCF) of an investment using projected cash flows and a discount rate. Understand how DCF works, the formula behind it, and how to interpret results for better financial decisions."
-  />
 
-  <h2 itemProp="name" className="text-xl font-bold text-foreground">
-    Discounted Cash Flow (DCF) Calculator: Estimate True Investment Value
-  </h2>
-  <p itemProp="description">
-    The <strong>Discounted Cash Flow (DCF) Calculator</strong> helps you determine the present value of an investment
-    based on its expected future cash flows. By discounting future returns to today’s value, DCF reveals whether a stock,
-    business, or project is undervalued or overvalued.
-  </p>
+      {/* Educational Content - Expanded Sections */}
+      <div className="space-y-6">
+        {/* Related Calculators Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other financial calculators to enhance your investment analysis
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/npv-calculator" className="text-primary hover:underline">
+                    Net Present Value Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate NPV to evaluate investment profitability and decision-making.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/discount-rate-calculator" className="text-primary hover:underline">
+                    Discount Rate Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Determine the appropriate discount rate for your DCF analysis.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/enterprise-value-calculator" className="text-primary hover:underline">
+                    Enterprise Value Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate enterprise value to assess company worth comprehensively.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/finance/free-cash-flow-calculator" className="text-primary hover:underline">
+                    Free Cash Flow Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate free cash flow to understand company's cash generation ability.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-  <h3 className="font-semibold text-foreground mt-6">💡 What Is Discounted Cash Flow?</h3>
-  <p>
-    Discounted Cash Flow (DCF) is a valuation method that calculates how much an investment is worth today based on
-    projections of how much money it will generate in the future. The concept is grounded in the <strong>time value of money</strong>
-    — the idea that a dollar today is worth more than a dollar tomorrow.
-  </p>
-  <p>
-    Investors, analysts, and financial planners use DCF to evaluate businesses, stocks, and capital projects to assess
-    whether the expected returns justify the investment.
-  </p>
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Calculator className="h-5 w-5" />
+              Complete Guide to Discounted Cash Flow
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+          </CardContent>
+        </Card>
 
-  <h3 className="font-semibold text-foreground mt-6">⚙️ DCF Formula</h3>
-  <p>
-    The core DCF formula is:
-  </p>
-  <pre className="bg-muted p-3 rounded text-sm">
-PV = CF₁ / (1 + r)¹ + CF₂ / (1 + r)² + ... + CFₙ / (1 + r)ⁿ
-  </pre>
-  <p>
-    Where:
-  </p>
-  <ul className="list-disc ml-6 space-y-1">
-    <li><strong>PV:</strong> Present Value (the DCF result)</li>
-    <li><strong>CF₁, CF₂…CFₙ:</strong> Expected cash flows for each future period</li>
-    <li><strong>r:</strong> Discount rate (required rate of return)</li>
-    <li><strong>n:</strong> Number of periods (years, months, etc.)</li>
-  </ul>
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about Discounted Cash Flow analysis and valuation
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What is Discounted Cash Flow (DCF)?</h4>
+              <p className="text-muted-foreground">
+                DCF is a valuation method that estimates the intrinsic value of an investment by discounting its projected future cash flows to present value using a required rate of return.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">📊 Example of DCF Calculation</h3>
-  <p>
-    Suppose a project is expected to generate cash flows of $10,000, $12,000, and $14,000 over three years, and your
-    required rate of return is 10%.  
-    The DCF would be:
-  </p>
-  <pre className="bg-muted p-3 rounded text-sm">
-DCF = 10,000 / (1.10)¹ + 12,000 / (1.10)² + 14,000 / (1.10)³ = $30,200 (approx)
-  </pre>
-  <p>
-    If the investment costs less than $30,200 today, it’s considered a good opportunity — otherwise, it might be
-    overvalued.
-  </p>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How is DCF different from NPV?</h4>
+              <p className="text-muted-foreground">
+                DCF calculates the total present value of future cash flows, while NPV subtracts the initial investment from DCF. DCF gives you the intrinsic value, NPV tells you the net benefit.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">🧮 Components of a DCF Model</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li><strong>Forecasted Cash Flows:</strong> Estimate revenues, expenses, and taxes over several years.</li>
-    <li><strong>Discount Rate:</strong> Reflects opportunity cost, often based on WACC (Weighted Average Cost of Capital).</li>
-    <li><strong>Terminal Value:</strong> Accounts for value beyond the forecast period using the Gordon Growth Model.</li>
-  </ul>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What is terminal value and why is it important?</h4>
+              <p className="text-muted-foreground">
+                Terminal value represents the present value of all future cash flows beyond the projection period. It's often a significant portion of DCF and requires careful estimation of long-term growth rates.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">🧩 Terminal Value (TV) Formula</h3>
-  <pre className="bg-muted p-3 rounded text-sm">
-TV = CF_&#123;n+1&#125; / (r − g)
-  </pre>
-  <p>
-    Where:
-  </p>
-  <ul className="list-disc ml-6 space-y-1">
-    <li><strong>CFₙ₊₁:</strong> Cash flow in the first year after the projection period</li>
-    <li><strong>r:</strong> Discount rate</li>
-    <li><strong>g:</strong> Long-term growth rate</li>
-  </ul>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How do I choose the right discount rate for DCF?</h4>
+              <p className="text-muted-foreground">
+                Use the company's weighted average cost of capital (WACC), or for equity-focused analysis, use the cost of equity derived from CAPM. The rate should reflect the risk of the investment.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">💰 How to Interpret DCF Results</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>
-      If the <strong>DCF value is higher than the current investment cost</strong>, it’s considered <strong>undervalued</strong> — a potentially profitable investment.
-    </li>
-    <li>
-      If the <strong>DCF is lower</strong>, the investment might be <strong>overvalued</strong> or carry excessive risk.
-    </li>
-  </ul>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What are the main limitations of DCF analysis?</h4>
+              <p className="text-muted-foreground">
+                DCF relies heavily on assumptions about future cash flows, growth rates, and discount rates. Small changes in these assumptions can significantly impact the valuation. It also doesn't account for market sentiment or qualitative factors.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">📈 DCF vs. NPV: What’s the Difference?</h3>
-  <p>
-    The <strong>Discounted Cash Flow (DCF)</strong> method calculates the total present value of future cash flows, while
-    <strong>Net Present Value (NPV)</strong> subtracts the initial investment cost from that total.  
-    In short:
-  </p>
-  <pre className="bg-muted p-3 rounded text-sm">
-NPV = DCF − Initial Investment
-  </pre>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How many years should I project cash flows?</h4>
+              <p className="text-muted-foreground">
+                Typically 5-10 years for detailed projections, followed by a terminal value. The exact period depends on the business cycle, industry stability, and your confidence in long-term forecasts.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">🔬 Why DCF Matters in Financial Analysis</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>It helps identify intrinsic value beyond market price fluctuations.</li>
-    <li>It’s useful for evaluating long-term projects, startups, or corporate valuations.</li>
-    <li>It accounts for risk through discounting — offering a more realistic assessment.</li>
-  </ul>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">When should I use DCF vs. other valuation methods?</h4>
+              <p className="text-muted-foreground">
+                Use DCF for companies with predictable cash flows and when you want to understand intrinsic value. For companies with uncertain cash flows, consider using relative valuation methods like P/E ratios or comparable company analysis.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">⚠️ Common Mistakes to Avoid</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>Using unrealistic growth rates or discount rates.</li>
-    <li>Failing to adjust for inflation or currency fluctuations.</li>
-    <li>Overestimating terminal value or cash flow projections.</li>
-  </ul>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How do I handle high-growth companies in DCF?</h4>
+              <p className="text-muted-foreground">
+                For high-growth companies, use multi-stage DCF models with different growth phases. Start with high growth, transition to moderate growth, and end with stable growth for terminal value calculation.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">🧠 Pro Tips for Accurate DCF Analysis</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>Use at least 5–10 years of forecast data for stability.</li>
-    <li>Include sensitivity analysis — test how changes in discount rate affect valuation.</li>
-    <li>Pair DCF with other metrics like IRR, Payback Period, and ROI for better insight.</li>
-  </ul>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What's a reasonable terminal growth rate?</h4>
+              <p className="text-muted-foreground">
+                Terminal growth rates typically range from 2-4%, often matching long-term GDP growth or inflation. Avoid rates higher than the discount rate, as this creates unrealistic valuations.
+              </p>
+            </div>
 
-  <h3 className="font-semibold text-foreground mt-6">📚 FAQs About Discounted Cash Flow</h3>
-  <div className="space-y-3">
-    <p>
-      <strong>What is a good discount rate for DCF?</strong><br />
-      Typically between 8–12%, depending on risk level and cost of capital.
-    </p>
-    <p>
-      <strong>Can DCF be used for startups?</strong><br />
-      Yes, but cash flow projections are more uncertain — consider scenario-based modeling.
-    </p>
-    <p>
-      <strong>Why does DCF often differ from market value?</strong><br />
-      Because market prices reflect sentiment and volatility, while DCF measures intrinsic value.
-    </p>
-    <p>
-      <strong>What’s the main limitation of DCF?</strong><br />
-      Small changes in assumptions (growth rate or discount rate) can significantly alter results.
-    </p>
-  </div>
-
-  <p className="italic">
-    Disclaimer: The Discounted Cash Flow (DCF) Calculator provides general financial estimates. Always consult a
-    certified financial analyst before making investment or business decisions.
-  </p>
-</section>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How do I validate my DCF assumptions?</h4>
+              <p className="text-muted-foreground">
+                Perform sensitivity analysis by varying key assumptions, compare with market valuations and peer companies, and ensure your assumptions are consistent with industry trends and company fundamentals.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

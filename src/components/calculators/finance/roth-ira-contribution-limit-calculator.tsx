@@ -418,11 +418,11 @@ export default function RothIRAContributionLimitCalculator() {
                     <Target className="h-5 w-5 text-blue-600" />
                     <span className="text-sm font-medium text-muted-foreground">Eligibility Status</span>
                   </div>
-                  <p className="text-lg font-bold text-blue-600">
+                  <div className="text-lg font-bold text-blue-600">
                     <Badge variant={result.eligibilityStatus === 'Not eligible for Roth IRA contributions' ? 'destructive' : result.eligibilityStatus === 'Eligible for reduced contribution' ? 'default' : 'secondary'}>
                       {result.eligibilityStatus}
                     </Badge>
-                  </p>
+                  </div>
                   <p className="text-sm text-muted-foreground mt-1">
                     {result.phaseoutRange}
                   </p>
