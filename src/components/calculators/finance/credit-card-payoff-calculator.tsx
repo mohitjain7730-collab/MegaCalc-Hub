@@ -556,7 +556,7 @@ export default function CreditCardPayoffCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Credit Card Payoff, Amortization, and Interest Cost" />
     <meta itemProp="description" content="An expert guide to calculating credit card payoff time and total interest cost. Covers the compounding structure, minimum payment dynamics, acceleration strategies, and the mechanics of revolving debt amortization." />
@@ -566,11 +566,11 @@ export default function CreditCardPayoffCalculator() {
     <meta itemProp="url" content="/definitive-credit-card-payoff-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Credit Card Payoff: Understanding and Conquering High-Interest Revolving Debt</h1>
-    <p className="text-lg italic text-gray-700">Master the mathematics of credit card debt amortization to calculate your true payoff timeline and minimize exponential interest costs.</p>
+    <p className="text-lg italic text-muted-foreground">Master the mathematics of credit card debt amortization to calculate your true payoff timeline and minimize exponential interest costs.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#mechanics" className="hover:underline">Revolving Debt Mechanics and Daily Compounding</a></li>
         <li><a href="#payoff-formula" className="hover:underline">The Payoff Formula and Solving for Time (NPER)</a></li>
         <li><a href="#minimum-payment" className="hover:underline">The Trap of the Minimum Payment</a></li>
@@ -598,8 +598,8 @@ export default function CreditCardPayoffCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Loan Amortization Identity</h3>
     <p>The fundamental equation used to solve for the number of payments is derived from the Present Value of Annuity formula:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'N = -log(1 - (PV * r) / PMT) / log(1 + r)'}
         </p>
     </div>
@@ -647,8 +647,8 @@ export default function CreditCardPayoffCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Annual Percentage Yield (APY) or Effective Annual Rate (EAR)</h3>
     <p>The **APY** (often called **EAR** in debt) is the true annual rate of interest paid, taking the effects of compounding into account. Because credit card debt compounds daily, the APY is always slightly higher than the stated APR:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'APY = (1 + (APR / 365))^(365) - 1'}
         </p>
     </div>

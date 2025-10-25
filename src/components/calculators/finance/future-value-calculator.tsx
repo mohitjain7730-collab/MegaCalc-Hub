@@ -715,7 +715,7 @@ export default function FutureValueCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Future Value (FV) Calculation, Compounding, and Investment Growth" />
     <meta itemProp="description" content="An expert guide detailing the Future Value (FV) formula, its core role in the Time Value of Money (TVM), calculating the growth of a lump sum versus a series of payments (annuity), and its application in retirement and financial goal setting." />
@@ -725,11 +725,11 @@ export default function FutureValueCalculator() {
     <meta itemProp="url" content="/definitive-future-value-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Future Value (FV): Projecting Investment Growth Over Time</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental concept that quantifies the value of an investment at a specific point in the future, given a constant rate of return.</p>
+    <p className="text-lg italic text-muted-foreground">Master the fundamental concept that quantifies the value of an investment at a specific point in the future, given a constant rate of return.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#tvm-compounding" className="hover:underline">The Principle of Compounding and Time Value of Money (TVM)</a></li>
         <li><a href="#lump-sum-fv" className="hover:underline">FV Calculation for a Single Lump Sum</a></li>
         <li><a href="#annuity-fv" className="hover:underline">FV Calculation for an Annuity (Stream of Payments)</a></li>
@@ -761,8 +761,8 @@ export default function FutureValueCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Single Cash Flow Formula</h3>
     <p>The formula projects the Present Value (PV) forward using the periodic rate (r) and the number of periods (t):</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FV = PV * (1 + r)^t'}
         </p>
     </div>
@@ -781,16 +781,16 @@ export default function FutureValueCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Ordinary Annuity Formula (Payments at End of Period)</h3>
     <p>This formula calculates the future value assuming contributions are made at the end of each compounding period (common for mutual fund SIPs or retirement payroll deductions):</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FV_Ordinary = PMT * [ ((1 + r)^t - 1) / r ]'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Annuity Due Adjustment (Payments at Beginning of Period)</h3>
     <p>If contributions are made at the beginning of the period (Annuity Due), the payments compound for one extra period. This results in a higher FV. The adjustment is simple:</p>
-    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
-        <p className="font-mono text-lg text-red-700 font-bold">
+    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+        <p className="font-mono text-lg text-destructive font-bold">
             {'FV_Due = FV_Ordinary * (1 + r)'}
         </p>
     </div>
@@ -804,8 +804,8 @@ export default function FutureValueCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Frequency Adjustment</h3>
     <p>When compounding occurs $m$ times per year, the annual nominal rate and the number of years ($Y$) must be adjusted in the single lump sum formula:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FV = PV * (1 + R_nom/m)^(Y * m)'}
         </p>
     </div>

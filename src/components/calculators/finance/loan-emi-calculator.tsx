@@ -469,7 +469,7 @@ export default function LoanEmiCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Comprehensive Guide to Loan Amortization and EMI: Formulas and Debt Management" />
     <meta itemProp="description" content="An expert guide to understanding Equated Monthly Installments (EMI), the amortization formula, and how interest and principal are balanced over the lifecycle of a loan, crucial for mortgages, auto loans, and financial planning." />
@@ -479,11 +479,11 @@ export default function LoanEmiCalculator() {
     <meta itemProp="url" content="/definitive-loan-emi-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Loan Amortization and EMI: Understanding Your Debt Repayment Schedule</h1>
-    <p className="text-lg italic text-gray-700">Unlock the complex mechanics of Equated Monthly Installments (EMI) and discover how interest and principal are calculated over the life of your loan.</p>
+    <p className="text-lg italic text-muted-foreground">Unlock the complex mechanics of Equated Monthly Installments (EMI) and discover how interest and principal are calculated over the life of your loan.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#emi-basics" className="hover:underline">EMI and Amortization: Core Definitions</a></li>
         <li><a href="#formula" className="hover:underline">The Loan Amortization (EMI) Formula Mechanics</a></li>
         <li><a href="#schedule" className="hover://underline">The Amortization Schedule and Interest/Principal Split</a></li>
@@ -515,8 +515,8 @@ export default function LoanEmiCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Core EMI Formula</h3>
     <p>The formula calculates the EMI based on the loan principal, the monthly interest rate, and the total number of periods:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'EMI = P * r * [ (1 + r)^n / ((1 + r)^n - 1) ]'}
         </p>
     </div>
@@ -549,15 +549,15 @@ export default function LoanEmiCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Monthly Interest Calculation Step</h3>
     <p>For every EMI payment, the interest component is calculated using this simple formula:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Monthly Interest = Outstanding Principal * (Annual Rate / 12)'}
         </p>
     </div>
 
     <p>The remaining amount of the fixed EMI is then applied to the principal:</p>
-    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
-        <p className="font-mono text-lg text-red-700 font-bold">
+    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+        <p className="font-mono text-lg text-destructive font-bold">
             {'Principal Paid = EMI - Monthly Interest'}
         </p>
     </div>

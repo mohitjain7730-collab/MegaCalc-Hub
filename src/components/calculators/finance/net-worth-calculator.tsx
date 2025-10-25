@@ -692,7 +692,7 @@ export default function NetWorthCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Comprehensive Guide to Net Worth Calculation, Tracking, and Financial Health" />
     <meta itemProp="description" content="An expert guide detailing the fundamental equation of Net Worth (Assets - Liabilities), its role as a key metric of financial health for individuals and businesses (Balance Sheet), and strategies for consistent wealth growth." />
@@ -702,11 +702,11 @@ export default function NetWorthCalculator() {
     <meta itemProp="url" content="/definitive-net-worth-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Worth: The Single Metric of Financial Health</h1>
-    <p className="text-lg italic text-gray-700">Understand the foundational concept used by businesses and individuals alike to assess true economic standing at any given moment.</p>
+    <p className="text-lg italic text-muted-foreground">Understand the foundational concept used by businesses and individuals alike to assess true economic standing at any given moment.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">The Core Equation and Definition of Net Worth</a></li>
         <li><a href="#assets" className="hover:underline">Component 1: Categorizing and Valuing Total Assets</a></li>
         <li><a href="#liabilities" className="hover:underline">Component 2: Calculating Total Liabilities</a></li>
@@ -721,8 +721,8 @@ export default function NetWorthCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Fundamental Balance Sheet Equation</h3>
     <p>Whether for a household or a major corporation, Net Worth is derived from the balance sheet identity:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Net Worth = Total Assets - Total Liabilities'}
         </p>
     </div>

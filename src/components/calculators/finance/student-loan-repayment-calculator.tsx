@@ -698,7 +698,7 @@ export default function StudentLoanRepaymentCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Student Loan Repayment: Amortization, Interest, and Payoff Strategies" />
     <meta itemProp="description" content="An expert guide detailing the mechanics of student loan repayment, comparing standard vs. income-driven plans, calculating principal and interest components, and analyzing the impact of interest capitalization and loan consolidation." />
@@ -708,11 +708,11 @@ export default function StudentLoanRepaymentCalculator() {
     <meta itemProp="url" content="/definitive-student-loan-repayment-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Student Loan Repayment: Mastering Amortization and Payoff Strategies</h1>
-    <p className="text-lg italic text-gray-700">Understand how your payment reduces principal, the impact of interest capitalization, and the critical differences between standard and income-driven repayment plans.</p>
+    <p className="text-lg italic text-muted-foreground">Understand how your payment reduces principal, the impact of interest capitalization, and the critical differences between standard and income-driven repayment plans.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#amortization-basics" className="hover:underline">Loan Amortization: The Standard Repayment Model</a></li>
         <li><a href="#interest-capitalization" className="hover:underline">The Mechanics of Interest Capitalization</a></li>
         <li><a href="#payment-formula" className="hover:underline">The Student Loan Payment (PMT) Calculation</a></li>
@@ -757,8 +757,8 @@ export default function StudentLoanRepaymentCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Formula for Fixed Monthly Payment</h3>
     <p>The fixed payment for a fully amortizing loan is calculated as:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PMT = P * r * [ (1 + r)^n / ((1 + r)^n - 1) ]'}
         </p>
     </div>

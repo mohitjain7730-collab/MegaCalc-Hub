@@ -496,7 +496,7 @@ export default function SipDcaCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/InvestmentFund">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/InvestmentFund">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to SIP and DCA Returns: Understanding Dollar-Cost Averaging Investment Strategy" />
     <meta itemProp="description" content="A detailed, expert guide on Systematic Investment Plan (SIP) and Dollar-Cost Averaging (DCA). Learn the formulas, benefits, and mechanics of averaging investment costs over time to mitigate market volatility and maximize long-term returns." />
@@ -506,11 +506,11 @@ export default function SipDcaCalculator() {
     <meta itemProp="url" content="/definitive-sip-dca-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to SIP/DCA Returns: Mastering the Mechanics of Dollar-Cost Averaging</h1>
-    <p className="text-lg italic text-gray-700">Explore the powerful financial strategy that transforms market volatility from a risk into an advantage for long-term wealth creation.</p>
+    <p className="text-lg italic text-muted-foreground">Explore the powerful financial strategy that transforms market volatility from a risk into an advantage for long-term wealth creation.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">DCA and SIP: Core Concepts and Terminology</a></li>
         <li><a href="#mechanics" className="hover:underline">The Mechanics of Cost Averaging: Buying More Units</a></li>
         <li><a href="#metrics" className="hover:underline">Key Return Metrics: Absolute Return, CAGR, and XIRR</a></li>
@@ -537,16 +537,16 @@ export default function SipDcaCalculator() {
     <p>The primary financial advantage of DCA/SIP is the ability to acquire units at a lower <strong className="font-semibold">Weighted Average Cost</strong> than the average market price over the period. This is because the fixed cash flow purchases <strong className="font-semibold">more units</strong> when the price is low and fewer units when the price is high. This inverse relationship between unit price and unit purchase volume is the essence of the averaging benefit.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Unit Acquisition Example (SIP/DCA in Action)</h3>
-    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
-        <thead className="bg-gray-50">
+    <table className="min-w-full divide-y divide-border border border-border my-4">
+        <thead className="bg-muted">
             <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Month</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fixed Investment (PMT)</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unit Price (NAV)</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Units Purchased</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Month</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Fixed Investment (PMT)</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Unit Price (NAV)</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Units Purchased</th>
             </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-card divide-y divide-border">
             <tr>
                 <td className="px-6 py-4 whitespace-nowrap">Jan</td>
                 <td className="px-6 py-4 whitespace-nowrap">$1,000</td>
@@ -584,8 +584,8 @@ export default function SipDcaCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Absolute Return (Simple Return)</h3>
     <p>This is the simplest, non-annualized measure of profitability. It shows the total gain as a percentage of the total investment, ignoring the timing of the deposits. While easy to calculate, it should not be used for comparison against other annualized returns.</p>
-    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
-        <p className="font-mono text-lg text-red-700 font-bold">
+    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+        <p className="font-mono text-lg text-destructive font-bold">
             {'Absolute Return = [(Current Value - Total Investment) / Total Investment] * 100'}
         </p>
     </div>
@@ -603,8 +603,8 @@ export default function SipDcaCalculator() {
     <h2 id="return-calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Returns for Systematic Investments: The XIRR Mechanism</h2>
     <p>To calculate the XIRR for an SIP/DCA plan, you need a precise data set of all transactions. The fundamental equation that XIRR solves for is:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'0 = Sum [ CF_i / (1 + Rate)^(d_i / 365) ]'}
         </p>
     </div>

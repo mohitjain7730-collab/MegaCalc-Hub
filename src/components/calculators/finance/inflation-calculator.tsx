@@ -641,7 +641,7 @@ export default function InflationCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Inflation Calculation, Purchasing Power, and Future Value" />
     <meta itemProp="description" content="An expert guide detailing the inflation rate formula, the concept of purchasing power, how to calculate future value and required nominal return to preserve wealth, and the role of the Consumer Price Index (CPI)." />
@@ -651,11 +651,11 @@ export default function InflationCalculator() {
     <meta itemProp="url" content="/definitive-inflation-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Inflation: Calculating the Erosion of Purchasing Power</h1>
-    <p className="text-lg italic text-gray-700">Master the formulas that quantify the rate at which the value of currency decreases, and how to project the true cost of future expenses.</p>
+    <p className="text-lg italic text-muted-foreground">Master the formulas that quantify the rate at which the value of currency decreases, and how to project the true cost of future expenses.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Inflation: Core Definition and Key Measurement Tools</a></li>
         <li><a href="#future-value" className="hover:underline">Calculating Future Value (FV) with Inflation</a></li>
         <li><a href="#purchasing-power" className="hover:underline">The Erosion of Purchasing Power (PV)</a></li>
@@ -671,8 +671,8 @@ export default function InflationCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Measuring the Inflation Rate</h3>
     <p>Inflation is quantified using a price index, most commonly the <strong className="font-semibold">Consumer Price Index (CPI)</strong>. The CPI measures the average change in prices paid by urban consumers for a basket of consumer goods and services (e.g., food, housing, medical care, transportation). The inflation rate is calculated as the percentage change in the index over two specific time periods:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Inflation Rate = [(CPI_End - CPI_Start) / CPI_Start]'}
         </p>
     </div>
@@ -685,8 +685,8 @@ export default function InflationCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Future Cost Projection Formula</h3>
     <p>The calculation is similar to compound interest, but instead of using a rate of return, it uses the assumed inflation rate (i) to project the current price (Present Value, PV) over a period (t):</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Future Cost = PV_Today * (1 + i)^t'}
         </p>
     </div>
@@ -700,8 +700,8 @@ export default function InflationCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating the Discounted Value</h3>
     <p>This is mathematically the reverse of the Future Value calculation. It determines the equivalent purchasing power of a future sum in current dollars:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Purchasing Power = FV / (1 + i)^t'}
         </p>
     </div>
@@ -709,8 +709,8 @@ export default function InflationCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Rule of 70</h3>
     <p>The <strong className="font-semibold">Rule of 70</strong> provides a quick estimate for how long it takes for the purchasing power of money to be cut in half due to inflation:</p>
-    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
-        <p className="font-mono text-lg text-red-700 font-bold">
+    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+        <p className="font-mono text-lg text-destructive font-bold">
             {'Years to Halve Value = 70 / Inflation Rate (in percent)'}
         </p>
     </div>
@@ -724,8 +724,8 @@ export default function InflationCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Fisher Equation (Approximation)</h3>
     <p>The relationship between the nominal return, real return, and inflation is approximated by the Fisher Equation:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Real Rate ≈ Nominal Rate - Inflation Rate'}
         </p>
     </div>
@@ -733,8 +733,8 @@ export default function InflationCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Exact Fisher Equation</h3>
     <p>For precise financial modeling, the exact formula is used:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Real Rate = [(1 + Nominal Rate) / (1 + Inflation Rate)] - 1'}
         </p>
     </div>

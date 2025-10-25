@@ -605,7 +605,7 @@ export default function RetirementSavingsCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Retirement Savings: Formulas, Planning Models, and Wealth Accumulation" />
     <meta itemProp="description" content="An expert-level guide covering the fundamental concepts of retirement planning, including the Future Value of Annuity (FVA) for accumulation, the 4% Rule, inflation modeling, and determining required savings rates." />
@@ -615,11 +615,11 @@ export default function RetirementSavingsCalculator() {
     <meta itemProp="url" content="/definitive-retirement-savings-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Retirement Savings: Formulas, Corpus Goals, and Planning Strategies</h1>
-    <p className="text-lg italic text-gray-700">Master the financial concepts and equations necessary to calculate your target retirement corpus and achieve financial independence.</p>
+    <p className="text-lg italic text-muted-foreground">Master the financial concepts and equations necessary to calculate your target retirement corpus and achieve financial independence.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#corpus" className="hover:underline">Defining the Target Corpus: The Goal and The Multiplier</a></li>
         <li><a href="#accumulation" className="hover:underline">Accumulation Phase: The Future Value of Annuity (FVA)</a></li>
         <li><a href="#withdrawal" className="hover:underline">Distribution Phase: The Safe Withdrawal Rate and 4% Rule</a></li>
@@ -634,8 +634,8 @@ export default function RetirementSavingsCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Financial Independence (FI) Multiplier</h3>
     <p>The corpus is universally calculated as a multiple of your expected annual retirement expenses. A conservative and common approach is the <strong className="font-semibold">25x Rule</strong>, derived from the 4% Rule (detailed below). This rule suggests that the target corpus should be 25 times your first year of retirement expenses, adjusted for inflation.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Target Corpus = Annual Expenses in Year 1 of Retirement * 25'}
         </p>
     </div>
@@ -652,8 +652,8 @@ export default function RetirementSavingsCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The FVA Formula and Solving for Required PMT</h3>
     <p>The standard FVA formula helps determine the final value of your periodic contributions. For retirement planning, this formula is algebraically rearranged to solve for the required annual <strong className="font-semibold">Payment (PMT)</strong> needed to reach the Target Corpus (FV):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PMT = FV * [ r / ((1 + r)^n - 1) ]'}
         </p>
     </div>
@@ -670,8 +670,8 @@ export default function RetirementSavingsCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Trinity Study and the 4% Rule</h3>
     <p>The <strong className="font-semibold">4% Rule</strong>, popularized by the 1998 Trinity Study, is the cornerstone of withdrawal strategy. It suggests that a retiree can safely withdraw 4% of their initial corpus in the first year of retirement, and then adjust that dollar amount annually for inflation, with a high probability (historically over 95%) of the funds lasting 30 years.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'First Year Withdrawal = Target Corpus * 0.04'}
         </p>
     </div>
@@ -688,16 +688,16 @@ export default function RetirementSavingsCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Modeling Future Expenses</h3>
     <p>To find the real Target Corpus, today's annual expenses must be projected forward to the retirement date using an expected inflation rate (i):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Future Annual Expense = Current Expense * (1 + i)^(Years to Retirement)'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Using Real Rate of Return</h3>
     <p>To avoid compounding inflation into both the savings side and the expense side, the standard practice is to use the <strong className="font-semibold">real rate of return</strong> for the FVA calculation. The real rate is the nominal (market) return adjusted for inflation:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Real Rate (r) = [(1 + Nominal Rate) / (1 + Inflation Rate)] - 1'}
         </p>
     </div>

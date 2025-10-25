@@ -639,7 +639,7 @@ export default function FourOhOneKCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Comprehensive Guide to 401(k) Contributions, Limits, and Tax Advantages" />
     <meta itemProp="description" content="An expert guide detailing the mechanics of 401(k) plans, covering pretax vs. Roth contributions, employer matching, annual contribution limits (IRS), and the role of compound growth in maximizing long-term retirement savings." />
@@ -649,11 +649,11 @@ export default function FourOhOneKCalculator() {
     <meta itemProp="url" content="/definitive-401k-contribution-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to 401(k) Contributions: Maximizing Tax-Advantaged Retirement Savings</h1>
-    <p className="text-lg italic text-gray-700">Understand the foundational mechanism of tax-advantaged employer-sponsored retirement plans and how compounding turns small contributions into major wealth.</p>
+    <p className="text-lg italic text-muted-foreground">Understand the foundational mechanism of tax-advantaged employer-sponsored retirement plans and how compounding turns small contributions into major wealth.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#basics" className="hover:underline">401(k) Mechanics and Primary Tax Advantages</a></li>
         <li><a href="#matching" className="hover:underline">The Power of Employer Matching and Vesting</a></li>
         <li><a href="#limits" className="hover:underline">Annual IRS Contribution Limits and Catch-Up Rules</a></li>
@@ -682,8 +682,8 @@ export default function FourOhOneKCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating the Match</h3>
     <p>Matching formulas vary but commonly follow a pattern such as "50% of the first 6% contributed." This means if the employee contributes 6% of their salary, the employer contributes 3%.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Match Value = Employee Contribution (up to plan limit) * Match Percentage'}
         </p>
     </div>

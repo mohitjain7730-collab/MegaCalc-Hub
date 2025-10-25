@@ -470,7 +470,7 @@ export default function CompoundInterestCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Compound Interest: Formula, Mechanics, and Wealth Growth" />
     <meta itemProp="description" content="An expert guide detailing the compound interest formula, its mechanics (compounding frequency), the contrast with simple interest, and its critical role in retirement planning, debt, and long-term investment strategy." />
@@ -480,11 +480,11 @@ export default function CompoundInterestCalculator() {
     <meta itemProp="url" content="/definitive-compound-interest-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Compound Interest: The Engine of Exponential Wealth Growth</h1>
-    <p className="text-lg italic text-gray-700">Explore the eighth wonder of the world in finance: the power of earning returns on previously earned returns.</p>
+    <p className="text-lg italic text-muted-foreground">Explore the eighth wonder of the world in finance: the power of earning returns on previously earned returns.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#mechanics" className="hover:underline">Mechanics of Compounding: Interest on Interest</a></li>
         <li><a href="#formula" className="hover:underline">The Compound Interest Formula Explained</a></li>
         <li><a href="#frequency" className="hover:underline">The Critical Role of Compounding Frequency</a></li>
@@ -514,8 +514,8 @@ export default function CompoundInterestCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Core Lump-Sum Compounding Formula</h3>
     <p>The formula for calculating the total future value is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FV = P * (1 + r/n_c)^(n_c * t)'}
         </p>
     </div>
@@ -531,8 +531,8 @@ export default function CompoundInterestCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Only the Interest Earned</h3>
     <p>To find the value of only the compound interest (CI) earned, simply subtract the initial principal (P) from the Future Value (FV):</p>
-    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
-        <p className="font-mono text-lg text-red-700 font-bold">
+    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+        <p className="font-mono text-lg text-destructive font-bold">
             {'CI = FV - P'}
         </p>
     </div>
@@ -544,15 +544,15 @@ export default function CompoundInterestCalculator() {
     <p>The variable **$n_c$ (compounding frequency)** is crucial because the more frequently interest is added to the principal, the faster the balance grows. This effect is known as the effective annual rate (EAR) or annual percentage yield (APY).</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Impact of Compounding Periods (n_c)</h3>
-    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
-        <thead className="bg-gray-50">
+    <table className="min-w-full divide-y divide-border border border-border my-4">
+        <thead className="bg-muted">
             <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Compounding Frequency</th>
-                <th className-="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">n_c Value</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Real-World Example</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Compounding Frequency</th>
+                <th className-="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">n_c Value</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Real-World Example</th>
             </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-card divide-y divide-border">
             <tr>
                 <td className="px-6 py-4 whitespace-nowrap">Annually</td>
                 <td className="px-6 py-4 whitespace-nowrap">1</td>
@@ -590,8 +590,8 @@ export default function CompoundInterestCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Simple Interest Mechanics</h3>
     <p><strong className="font-semibold">Simple Interest</strong> is calculated solely on the original principal amount (P). The principal never changes, so the total amount of interest earned each period remains constant. The growth of the investment is linear.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Simple Interest = P * r * t'}
         </p>
     </div>

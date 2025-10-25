@@ -598,7 +598,7 @@ export default function RothIRAContributionLimitCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/InvestmentFund">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/InvestmentFund">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Roth IRA Contribution Limits, Income Phaseouts, and Tax Strategy" />
     <meta itemProp="description" content="An expert guide detailing the Roth IRA's unique tax structure, annual contribution limits (IRS), Modified Adjusted Gross Income (MAGI) phase-out ranges, and the benefits of tax-free growth in retirement planning." />
@@ -608,11 +608,11 @@ export default function RothIRAContributionLimitCalculator() {
     <meta itemProp="url" content="/definitive-roth-ira-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Roth IRA Contribution Limits: Mastering Tax-Free Retirement Growth</h1>
-    <p className="text-lg italic text-gray-700">Understand the critical income phase-outs, annual limits, and the unique benefits of saving for retirement entirely tax-free.</p>
+    <p className="text-lg italic text-muted-foreground">Understand the critical income phase-outs, annual limits, and the unique benefits of saving for retirement entirely tax-free.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#mechanics" className="hover:underline">Roth IRA Mechanics and Tax Structure</a></li>
         <li><a href="#limits" className="hover:underline">Annual IRS Contribution Limits and Catch-Up Rules</a></li>
         <li><a href="#magi" className="hover:underline">The Modified Adjusted Gross Income (MAGI) Phase-Out</a></li>

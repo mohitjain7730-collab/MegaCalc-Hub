@@ -603,7 +603,7 @@ export default function PerpetuityCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Ultimate Perpetuity Guide: PV, Gordon Growth Model, and DCF Terminal Value" />
     <meta itemProp="description" content="Master the concept of perpetuity in financial analysis. An EEAT-focused guide detailing Present Value (PV) calculations, the Growing Perpetuity formula, the Critical Role of Terminal Value (TV) in DCF, and advanced valuation principles." />
@@ -613,11 +613,11 @@ export default function PerpetuityCalculator() {
     <meta itemProp="url" content="/definitive-perpetuity-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Ultimate Guide to Perpetuity: Valuation, Formulas, and Its Cornerstone Role in Financial Modeling</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive, expert-level deep dive into the valuation concept that underpins all long-term financial analysis, from equity valuation to infrastructure investment.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive, expert-level deep dive into the valuation concept that underpins all long-term financial analysis, from equity valuation to infrastructure investment.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#foundations" className="hover:underline">Theoretical Foundations and Definition</a></li>
         <li><a href="#simple" className="hover:underline">The Simple Perpetuity (Ordinary and Due)</a></li>
         <li><a href="#growing" className="hover:underline">The Growing Perpetuity and the Gordon Growth Model (GGM)</a></li>
@@ -651,8 +651,8 @@ export default function PerpetuityCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Ordinary Perpetuity: Payment at the End of the Period</h3>
     <p>This is the standard model where the first cash flow is received at the end of Period 1 (t=1). The formula is the most elegant representation of present value in finance:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV_Ordinary = CashFlow / Rate'}
         </p>
     </div>
@@ -662,8 +662,8 @@ export default function PerpetuityCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Perpetuity Due: Payment at the Beginning of the Period</h3>
     <p>A <strong className="font-semibold">Perpetuity Due</strong> means the first payment occurs immediately at t=0. The remaining payments form an ordinary perpetuity starting at t=1. To calculate the Present Value Due, we simply take the ordinary PV and add the first, undiscounted payment (C_0):</p>
 
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV_Due = CashFlow + (CashFlow / Rate)'}
         </p>
     </div>
@@ -678,8 +678,8 @@ export default function PerpetuityCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Gordon Growth Model Formula (GGM)</h3>
     <p>When used to value dividends, the Growing Perpetuity is formally known as the <strong className="font-semibold">Gordon Growth Model</strong> (developed by Myron J. Gordon). This is a single-stage dividend discount model:</p>
 
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV = C_1 / (Rate - GrowthRate)'}
         </p>
     </div>
@@ -702,14 +702,14 @@ export default function PerpetuityCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Terminal Value Formula in DCF</h3>
     <p>When valuing the entire firm (Enterprise Value), the cash flows used are <strong className="font-semibold">Free Cash Flow to Firm (FCFF)</strong>, and the discount rate is the <strong className="font-semibold">Weighted Average Cost of Capital (WACC)</strong>.</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Terminal Value_n = FCFF_n+1 / (WACC - GrowthRate)'}
         </p>
     </div>
     <p>Note that this formula yields the value *at the end of Year n* (TV_n). It must be discounted back to the Present Value (Year 0) to be included in the total DCF valuation:</p>
-    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
-        <p className="font-mono text-lg text-red-700 font-bold">
+    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+        <p className="font-mono text-lg text-destructive font-bold">
             {'PV of TV = Terminal Value_n / (1 + WACC)^n'}
         </p>
     </div>
@@ -743,8 +743,8 @@ export default function PerpetuityCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Perpetuity with Non-Annual Compounding</h3>
     <p>If cash flows occur m times per year (e.g., monthly, m=12), the simple perpetuity formula can be modified. The periodic rate becomes Rate/m and the periodic cash flow becomes CashFlow/m.</p>
 
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV_Monthly = (CashFlow/m) / (Rate/m) = CashFlow / Rate'}
         </p>
     </div>
@@ -753,8 +753,8 @@ export default function PerpetuityCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Continuous Growing Perpetuity (Advanced)</h3>
     <p>In certain theoretical contexts, cash flows are assumed to arrive continuously. The formula for the PV of a growing perpetuity with continuous compounding is:</p>
     
-    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
-        <p className="font-mono text-lg text-red-700 font-bold">
+    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+        <p className="font-mono text-lg text-destructive font-bold">
             {'PV_Continuous = C / (Rate - GrowthRate)'}
             <span className="text-sm block">Where C is the annual rate of cash flow.</span>
         </p>

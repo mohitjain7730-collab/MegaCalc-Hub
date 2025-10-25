@@ -702,7 +702,7 @@ export default function AnnuityPaymentCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Comprehensive Guide to Annuities: Definition, Formulas, and Financial Applications" />
     <meta itemProp="description" content="An expert-level guide defining annuities, detailing the formulas for Present Value (PV) and Future Value (FV), and explaining the critical distinction between Ordinary Annuities and Annuity Dues in financial planning and debt amortization." />
@@ -712,11 +712,11 @@ export default function AnnuityPaymentCalculator() {
     <meta itemProp="url" content="/definitive-annuity-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Annuities: Mastering Fixed-Term Payments in Finance</h1>
-    <p className="text-lg italic text-gray-700">Explore the core Time Value of Money principle that governs loans, structured savings plans, mortgages, and retirement income streams.</p>
+    <p className="text-lg italic text-muted-foreground">Explore the core Time Value of Money principle that governs loans, structured savings plans, mortgages, and retirement income streams.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Theoretical Foundations and Key Terminology</a></li>
         <li><a href="#timing" className="hover:underline">The Critical Distinction: Ordinary Annuity vs. Annuity Due</a></li>
         <li><a href="#pv-fv" className="hover:underline">Valuation: Present Value (PV) and Future Value (FV) Formulas</a></li>
@@ -759,16 +759,16 @@ export default function AnnuityPaymentCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Future Value of an Ordinary Annuity (FV_Ordinary)</h3>
     <p>This calculates the total accumulated value of the annuity stream at the end of the term, including all compounding interest. It is used to forecast savings growth:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FV_Ordinary = PMT * [ ((1 + r)^n - 1) / r ]'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Present Value of an Ordinary Annuity (PV_Ordinary)</h3>
     <p>This calculates the current lump sum value that is financially equivalent to receiving the stream of future payments. It is the primary calculation for determining a loan principal or the value of a settlement:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV_Ordinary = PMT * [ (1 - (1 + r)^-n) / r ]'}
         </p>
     </div>
@@ -788,16 +788,16 @@ export default function AnnuityPaymentCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">PMT for Future Value (Sinking Fund)</h3>
     <p>The PMT calculation based on FV is often used for savings and fund management, requiring regular contributions to accumulate a target amount. The bracketed term below is the **Sinking Fund Factor**:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PMT_FV = FV * [ r / ((1 + r)^n - 1) ]'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">PMT for Present Value (Capital Recovery / Amortization)</h3>
     <p>The PMT calculation based on PV is primarily used for loan amortization (e.g., mortgages, auto loans). The payment must be large enough to cover the interest accrued and reduce the principal. The bracketed term here is the **Capital Recovery Factor**:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PMT_PV = PV * [ r / (1 - (1 + r)^-n) ]'}
         </p>
     </div>

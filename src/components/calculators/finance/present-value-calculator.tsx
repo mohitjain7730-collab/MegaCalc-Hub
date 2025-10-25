@@ -643,7 +643,7 @@ export default function PresentValueCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Present Value (PV) Calculation and the Time Value of Money" />
     <meta itemProp="description" content="An expert guide detailing the Present Value (PV) formula, its core role in the Time Value of Money (TVM) principle, PV of a lump sum vs. PV of an annuity, and its application in investment, bond valuation, and capital budgeting." />
@@ -653,11 +653,11 @@ export default function PresentValueCalculator() {
     <meta itemProp="url" content="/definitive-present-value-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Present Value (PV): The Core of Financial Valuation</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental concept that determines the current worth of money received in the future, forming the bedrock of investment decisions.</p>
+    <p className="text-lg italic text-muted-foreground">Master the fundamental concept that determines the current worth of money received in the future, forming the bedrock of investment decisions.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#tvm" className="hover:underline">The Principle of Time Value of Money (TVM)</a></li>
         <li><a href="#lump-sum" className="hover:underline">PV Calculation for a Single Lump Sum</a></li>
         <li><a href="#annuity-pv" className="hover:underline">PV Calculation for an Annuity (Stream of Payments)</a></li>
@@ -689,15 +689,15 @@ export default function PresentValueCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Single Cash Flow Formula</h3>
     <p>The formula discounts the Future Value (FV) using the discount rate (r) and the number of periods (n):</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV = FV / (1 + r)^n'}
         </p>
     </div>
 
     <p>If compounding occurs more frequently than annually (m times per year), the formula is adjusted by dividing the rate by the frequency and multiplying the exponent (n) by the frequency:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV = FV / (1 + r/m)^(n * m)'}
         </p>
     </div>
@@ -714,16 +714,16 @@ export default function PresentValueCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Ordinary Annuity Formula (Payments at End of Period)</h3>
     <p>This is the calculation used for loans and retirement payouts where payments are received at the end of the compounding period:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV_Ordinary = PMT * [ (1 - (1 + r)^-n) / r ]'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Annuity Due Adjustment (Payments at Beginning of Period)</h3>
     <p>For an Annuity Due (where payments occur at the beginning of the period, such as rent), the first payment is not discounted, and every subsequent payment earns one extra period of interest. The formula is adjusted simply by multiplying the ordinary PV result by $(1+r)$:</p>
-    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
-        <p className="font-mono text-lg text-red-700 font-bold">
+    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+        <p className="font-mono text-lg text-destructive font-bold">
             {'PV_Due = PV_Ordinary * (1 + r)'}
         </p>
     </div>
