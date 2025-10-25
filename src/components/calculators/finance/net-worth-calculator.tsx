@@ -692,30 +692,119 @@ export default function NetWorthCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <DollarSign className="h-5 w-5" />
-              Complete Guide to Building Net Worth
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h3>Understanding Net Worth: Your Financial Foundation</h3>
-            <p>Net worth is the cornerstone of financial health, representing the true measure of your wealth. It's calculated by subtracting your total liabilities from your total assets. This single number tells you whether you're building wealth or accumulating debt.</p>
-            
-            <h3>Building Assets: The Wealth Creation Engine</h3>
-            <p>Assets are anything you own that has value. They can be liquid (cash, savings accounts), invested (stocks, bonds, retirement accounts), or tangible (real estate, vehicles, collectibles). The key to building net worth is to grow your assets faster than your liabilities.</p>
-            
-            <h3>Managing Liabilities: The Debt Reduction Strategy</h3>
-            <p>Liabilities represent everything you owe. While some debt (like mortgages) can be considered "good debt" if it helps you build assets, high-interest debt like credit cards should be eliminated quickly. The goal is to minimize liabilities while maximizing assets.</p>
-            
-            <h3>Net Worth Growth Strategies</h3>
-            <p>To increase your net worth, focus on three key areas: increasing income, reducing expenses, and investing wisely. Start by building an emergency fund, then pay off high-interest debt, and finally invest in assets that appreciate over time.</p>
-            
-            <h3>Tracking Your Progress</h3>
-            <p>Calculate your net worth monthly to track your financial progress. This regular check-in helps you stay motivated and make necessary adjustments to your financial strategy. Remember, building net worth is a marathon, not a sprint.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Comprehensive Guide to Net Worth Calculation, Tracking, and Financial Health" />
+    <meta itemProp="description" content="An expert guide detailing the fundamental equation of Net Worth (Assets - Liabilities), its role as a key metric of financial health for individuals and businesses (Balance Sheet), and strategies for consistent wealth growth." />
+    <meta itemProp="keywords" content="net worth definition finance, how to calculate net worth, total assets vs total liabilities, personal balance sheet, tracking net worth growth, financial independence measurement, liquid net worth" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-net-worth-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Worth: The Single Metric of Financial Health</h1>
+    <p className="text-lg italic text-gray-700">Understand the foundational concept used by businesses and individuals alike to assess true economic standing at any given moment.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">The Core Equation and Definition of Net Worth</a></li>
+        <li><a href="#assets" className="hover:underline">Component 1: Categorizing and Valuing Total Assets</a></li>
+        <li><a href="#liabilities" className="hover:underline">Component 2: Calculating Total Liabilities</a></li>
+        <li><a href="#applications" className="hover:underline">Net Worth in Personal Finance and Corporate Accounting</a></li>
+        <li><a href="#tracking" className="hover:underline">Strategic Significance and Tracking Net Worth Growth</a></li>
+    </ul>
+<hr />
+
+    {/* THE CORE EQUATION AND DEFINITION OF NET WORTH */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Core Equation and Definition of Net Worth</h2>
+    <p><strong className="font-semibold">Net Worth (NW)</strong> is the value of all financial and non-financial assets owned, minus the total value of all outstanding liabilities (debts). It represents the true measure of an entity's wealth at a specific point in time—what the entity would own if it liquidated all assets and paid off all debts.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Fundamental Balance Sheet Equation</h3>
+    <p>Whether for a household or a major corporation, Net Worth is derived from the balance sheet identity:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Net Worth = Total Assets - Total Liabilities'}
+        </p>
+    </div>
+    <p>In corporate accounting, Net Worth is often referred to as **Shareholders’ Equity** or **Owners’ Equity**, reflecting the residual claim owners have on the company's assets after all debts are satisfied.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Positive, Negative, and Zero Net Worth</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Positive Net Worth:</strong> Assets exceed liabilities. This indicates solvency and financial health.</li>
+        <li><strong className="font-semibold">Negative Net Worth:</strong> Liabilities exceed assets. This is common early in life (due to student loans and mortgages) or for companies experiencing deep financial distress.</li>
+        <li><strong className="font-semibold">Zero Net Worth:</strong> Assets precisely equal liabilities. The entity is technically solvent but has no residual wealth.</li>
+    </ul>
+
+<hr />
+
+    {/* COMPONENT 1: CATEGORIZING AND VALUING TOTAL ASSETS */}
+    <h2 id="assets" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component 1: Categorizing and Valuing Total Assets</h2>
+    <p><strong className="font-semibold">Assets</strong> are anything of economic value owned by the entity. For accurate net worth calculation, assets must be valued at their current fair market value (FMV)—what they could realistically be sold for today—not their original purchase price (cost basis).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Asset Classification in Personal Finance</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Liquid Assets (Cash & Equivalents):</strong> Easily converted to cash. Includes checking accounts, savings accounts, money market funds, and highly liquid bonds/CDs.</li>
+        <li><strong className="font-semibold">Investment Assets:</strong> Held for appreciation or income generation. Includes stocks, bonds, mutual funds, 401(k) and IRA balances, and brokerage accounts.</li>
+        <li><strong className="font-semibold">Real Assets (Property):</strong> Less liquid. Includes the fair market value of primary residences, rental properties, and land. The value used should be the appraised value, not the original purchase price.</li>
+        <li><strong className="font-semibold">Personal Assets:</strong> Items like vehicles, jewelry, and expensive art. While part of net worth, these are often excluded from routine tracking due to high transaction costs and low resale value relative to purchase price.</li>
+    </ul>
+    <p>The valuation of non-liquid assets, particularly real estate, introduces the most subjectivity and potential error into the Net Worth calculation.</p>
+
+<hr />
+
+    {/* COMPONENT 2: CALCULATING TOTAL LIABILITIES */}
+    <h2 id="liabilities" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component 2: Calculating Total Liabilities</h2>
+    <p><strong className="font-semibold">Liabilities</strong> are all financial obligations or debts owed to external parties. They represent claims against the entity's assets and must be totaled at their current outstanding principal balance.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Liability Classification</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Secured Debt:</strong> Debt tied to a specific asset (collateral). Examples include mortgages (secured by the home), auto loans, and secured personal loans.</li>
+        <li><strong className="font-semibold">Unsecured Debt:</strong> Debt not backed by collateral. Examples include credit card balances, medical debt, and most personal loans.</li>
+        <li><strong className="font-semibold">Long-Term Liabilities:</strong> Obligations due more than one year away, such as the remaining balance on a 30-year mortgage or term life insurance premiums.</li>
+        <li><strong className="font-semibold">Short-Term Liabilities (Current):</strong> Obligations due within the current year, such as credit card balances and utility bills.</li>
+    </ul>
+    <p>Crucially, only the <strong className="font-semibold">principal balance</strong> of the loan (the amount you must pay to zero out the debt today) should be included. Future interest payments, while part of the total debt cost, are not included in the current liability balance.</p>
+
+<hr />
+
+    {/* NET WORTH IN PERSONAL FINANCE AND CORPORATE ACCOUNTING */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Net Worth in Personal Finance and Corporate Accounting</h2>
+    <p>While the formula remains the same, the application of Net Worth differs slightly between personal and corporate contexts.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Personal Finance: The Financial Health Snapshot</h3>
+    <p>For individuals, Net Worth is the definitive benchmark of financial progress. It directly measures the effectiveness of savings, investment, and debt reduction strategies. Financial Independence (FI) movements often use a target Net Worth (e.g., 25 times annual expenses) as the threshold for retirement, completely decoupling income from wealth.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Corporate Accounting: Shareholder Equity and Solvency</h3>
+    <p>In business, the Balance Sheet structure mandates: **Assets = Liabilities + Equity**. Equity (Net Worth) represents the portion of the company's value owned by the shareholders. Lenders and investors scrutinize a company’s equity:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Lending Decisions:</strong> Lenders assess net worth to determine solvency (ability to cover debts) and leverage ratios (how much debt the company uses relative to equity).</li>
+        <li><strong className="font-semibold">Valuation:</strong> A company's book value (Equity per share) is often used as a baseline for valuing stable, non-cyclical firms.</li>
+    </ul>
+
+<hr />
+
+    {/* STRATEGIC SIGNIFICANCE AND TRACKING NET WORTH GROWTH */}
+    <h2 id="tracking" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategic Significance and Tracking Net Worth Growth</h2>
+    <p>Tracking Net Worth consistently—ideally on a monthly or quarterly basis—is crucial for financial strategy. It shifts the focus from volatile monthly income to stable, long-term wealth accumulation.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Drivers of Net Worth Change</h3>
+    <p>Net Worth can increase in three primary ways:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Saving/Debt Reduction:</strong> Paying down liabilities (e.g., mortgage principal) or adding to liquid assets directly increases NW.</li>
+        <li><strong className="font-semibold">Investment Returns:</strong> Growth in the value of investment assets (e.g., stock market returns, real estate appreciation) increases NW.</li>
+        <li><strong className="font-semibold">Capital Injections:</strong> Receiving a large gift or inheritance directly increases NW.</li>
+    </ol>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Tracking</h3>
+    <p>A positive trend in Net Worth confirms the effectiveness of the entire financial plan. A negative trend, despite steady income, signals that consumption or asset depreciation is outpacing savings and investment returns, necessitating immediate corrective action.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Net Worth is the definitive, comprehensive metric of financial health, consolidating all assets and liabilities into a single, undeniable figure. Its calculation—Total Assets minus Total Liabilities—forms the bedrock of personal finance and corporate accounting.</p>
+    <p>For the individual, tracking Net Worth consistently transforms financial management from a focus on short-term cash flow into a strategic pursuit of long-term wealth accumulation, providing the clearest possible roadmap to financial independence.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

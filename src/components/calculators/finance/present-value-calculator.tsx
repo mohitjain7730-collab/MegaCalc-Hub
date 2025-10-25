@@ -643,30 +643,128 @@ export default function PresentValueCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
-              Complete Guide to Present Value Analysis
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h3>Understanding Present Value: The Foundation of Financial Analysis</h3>
-            <p>Present value is a fundamental concept in finance that allows you to compare the worth of money received at different times. It's based on the principle that money today is worth more than the same amount in the future due to its earning potential.</p>
-            
-            <h3>Choosing the Right Discount Rate</h3>
-            <p>The discount rate is crucial in present value calculations. It should reflect the risk of the investment, your opportunity cost of capital, and current market conditions. Use rates that match the risk level of your investment or the cost of capital for your business.</p>
-            
-            <h3>Single Amount vs. Annuity Calculations</h3>
-            <p>Single amount present value calculations are used for lump-sum payments, while annuity calculations are for regular payments. Growing annuities account for payments that increase over time, which is common in real-world scenarios like salary increases or inflation-adjusted payments.</p>
-            
-            <h3>Compounding Frequency Impact</h3>
-            <p>The frequency of compounding significantly affects present value calculations. More frequent compounding (monthly vs. annual) results in higher present values for the same future amount. Choose the compounding frequency that matches your investment or loan terms.</p>
-            
-            <h3>Practical Applications of Present Value</h3>
-            <p>Present value is used in investment analysis, loan evaluations, retirement planning, and business decision-making. It helps you make informed choices about investments, compare different financial options, and plan for future financial goals.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Present Value (PV) Calculation and the Time Value of Money" />
+    <meta itemProp="description" content="An expert guide detailing the Present Value (PV) formula, its core role in the Time Value of Money (TVM) principle, PV of a lump sum vs. PV of an annuity, and its application in investment, bond valuation, and capital budgeting." />
+    <meta itemProp="keywords" content="present value formula explained, time value of money, PV of a lump sum, PV of an annuity, discounting cash flows, required rate of return, capital budgeting PV, intrinsic value calculation" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-present-value-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Present Value (PV): The Core of Financial Valuation</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental concept that determines the current worth of money received in the future, forming the bedrock of investment decisions.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#tvm" className="hover:underline">The Principle of Time Value of Money (TVM)</a></li>
+        <li><a href="#lump-sum" className="hover:underline">PV Calculation for a Single Lump Sum</a></li>
+        <li><a href="#annuity-pv" className="hover:underline">PV Calculation for an Annuity (Stream of Payments)</a></li>
+        <li><a href="#discount-rate" className="hover:underline">The Critical Role of the Discount Rate (r)</a></li>
+        <li><a href="#applications" className="hover:underline">Real-World Applications of Present Value</a></li>
+    </ul>
+<hr />
+
+    {/* THE PRINCIPLE OF TIME VALUE OF MONEY (TVM) */}
+    <h2 id="tvm" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Principle of Time Value of Money (TVM)</h2>
+    <p>The concept of <strong className="font-semibold">Present Value (PV)</strong> is the inverse calculation of Future Value (FV) and forms the cornerstone of the <strong className="font-semibold">Time Value of Money (TVM)</strong> principle. TVM states that a dollar received today is always worth more than a dollar received tomorrow. This is due to two primary factors: the potential to earn returns through investment (opportunity cost) and the erosion of purchasing power due to inflation.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Discounting: The Reverse of Compounding</h3>
+    <p>Calculating PV involves <strong className="font-semibold">discounting</strong> future cash flows back to the present. Discounting uses a rate (the discount rate, r) to account for the interest that *could have been earned* had the money been available today. The PV calculation answers the question: "How much money must I invest today at a specified rate (r) to yield a specific amount (FV) in the future?"</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Key Components of PV Calculation</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Future Value (FV):</strong> The amount of money to be received in the future.</li>
+        <li><strong className="font-semibold">Discount Rate (r):</strong> The interest rate or required rate of return used to discount the cash flows.</li>
+        <li><strong className="font-semibold">Number of Periods (n):</strong> The time (in years or compounding periods) until the cash flow is received.</li>
+    </ul>
+
+<hr />
+
+    {/* PV CALCULATION FOR A SINGLE LUMP SUM */}
+    <h2 id="lump-sum" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">PV Calculation for a Single Lump Sum</h2>
+    <p>This is the most basic application of PV, used when a single payment is expected at a specific date in the future. It provides the current intrinsic value of that future payment.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Single Cash Flow Formula</h3>
+    <p>The formula discounts the Future Value (FV) using the discount rate (r) and the number of periods (n):</p>
+    
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'PV = FV / (1 + r)^n'}
+        </p>
+    </div>
+
+    <p>If compounding occurs more frequently than annually (m times per year), the formula is adjusted by dividing the rate by the frequency and multiplying the exponent (n) by the frequency:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'PV = FV / (1 + r/m)^(n * m)'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Example: Injury Settlement</h3>
+    <p>If you are offered a lump sum of 50,000 dollars to be paid exactly three years from now, and your investment opportunities suggest a 6 percent annual return is feasible, the present value is the true current worth of that payment. Calculating PV allows for an apples-to-apples comparison with an immediate cash offer.</p>
+
+<hr />
+
+    {/* PV CALCULATION FOR AN ANNUITY (STREAM OF PAYMENTS) */}
+    <h2 id="annuity-pv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">PV Calculation for an Annuity (Stream of Payments)</h2>
+    <p>An annuity is a series of equal, periodic payments (PMT) received over a fixed number of periods (n). The <strong className="font-semibold">Present Value of Annuity (PVA)</strong> calculation aggregates the discounted value of each of those individual payments into a single current lump sum.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Ordinary Annuity Formula (Payments at End of Period)</h3>
+    <p>This is the calculation used for loans and retirement payouts where payments are received at the end of the compounding period:</p>
+    
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'PV_Ordinary = PMT * [ (1 - (1 + r)^-n) / r ]'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Annuity Due Adjustment (Payments at Beginning of Period)</h3>
+    <p>For an Annuity Due (where payments occur at the beginning of the period, such as rent), the first payment is not discounted, and every subsequent payment earns one extra period of interest. The formula is adjusted simply by multiplying the ordinary PV result by $(1+r)$:</p>
+    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
+        <p className="font-mono text-lg text-red-700 font-bold">
+            {'PV_Due = PV_Ordinary * (1 + r)'}
+        </p>
+    </div>
+
+<hr />
+
+    {/* THE CRITICAL ROLE OF THE DISCOUNT RATE (r) */}
+    <h2 id="discount-rate" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of the Discount Rate (r)</h2>
+    <p>The discount rate (r) is the most critical and subjective input in the PV calculation. It determines the magnitude of the discounting effect and directly reflects the risk and opportunity cost associated with receiving the cash flow later.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Opportunity Cost and Risk</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Opportunity Cost:</strong> The rate should reflect the return the investor could earn elsewhere on the market for an investment of similar risk.</li>
+        <li><strong className="font-semibold">Risk Adjustment:</strong> Higher risk cash flows must be discounted at a higher rate. A higher discount rate results in a lower Present Value, correctly reflecting the increased uncertainty and requiring a higher potential return to make the investment worthwhile.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">PV Sensitivity to the Discount Rate</h3>
+    <p>The longer the time horizon (n), the more sensitive the PV is to small changes in the discount rate (r). For example, a cash flow due in 30 years discounted at 5 percent will have a much higher PV than the same cash flow discounted at 7 percent. This sensitivity underscores why selecting the appropriate rate is crucial for accurate valuation.</p>
+
+<hr />
+
+    {/* REAL-WORLD APPLICATIONS OF PRESENT VALUE */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Real-World Applications of Present Value</h2>
+    <p>PV is the fundamental metric used across corporate and personal finance to guide decision-making under uncertainty.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Capital Budgeting (Net Present Value - NPV)</h3>
+    <p>Firms use PV to calculate the <strong className="font-semibold">Net Present Value (NPV)</strong> of potential projects. NPV is the sum of the PV of all expected future cash inflows (discounted at the company's cost of capital) minus the initial cash outlay. Projects with a positive NPV are theoretically worth pursuing.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Bond Valuation</h3>
+    <p>The price of a bond is the sum of the PV of two components: the PV of the annuity (the stream of fixed coupon payments) plus the PV of the single lump sum (the face value received at maturity). The market interest rate acts as the discount rate.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">3. Financial Settlements and Lottery Winnings</h3>
+    <p>Courts and lottery agencies often use PV to determine the lump-sum equivalent of a stream of future payments. For instance, a 10,000 dollars annual payment for 20 years must be discounted to calculate the immediate, equivalent cash settlement offer.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Present Value is the indispensable financial measure that quantifies the reality of the Time Value of Money. It converts future promises into today's buying power, allowing for rational and comparable investment decisions.</p>
+    <p>By correctly applying the PV formulas for both single lump sums and streams of payments (annuities), and by judiciously selecting the appropriate discount rate that reflects risk and opportunity, investors can accurately determine the intrinsic value of any asset or cash flow stream.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

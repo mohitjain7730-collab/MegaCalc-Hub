@@ -598,30 +598,111 @@ export default function RothIRAContributionLimitCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <PiggyBank className="h-5 w-5" />
-              Complete Guide to Roth IRA Contributions
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h3>Understanding Roth IRA Benefits: Tax-Free Growth</h3>
-            <p>Roth IRAs offer unique tax advantages that make them powerful retirement savings vehicles. Contributions are made with after-tax dollars, but qualified withdrawals in retirement are completely tax-free. This means all your investment gains grow tax-free, providing significant long-term benefits.</p>
-            
-            <h3>Income Limits and Phaseout Strategies</h3>
-            <p>Roth IRA contributions are subject to income limits that vary by filing status. If your income exceeds these limits, you may be ineligible for direct Roth IRA contributions. However, strategies like backdoor Roth IRA conversions can help high earners still benefit from Roth IRA advantages.</p>
-            
-            <h3>Maximizing Your Contributions</h3>
-            <p>To maximize your Roth IRA benefits, contribute the full amount allowed each year, especially if you're under the income limits. Consider setting up automatic contributions to ensure consistency. If you're 50 or older, take advantage of catch-up contributions to accelerate your savings.</p>
-            
-            <h3>Roth IRA vs. Traditional IRA: Choosing the Right Strategy</h3>
-            <p>The choice between Roth and traditional IRAs depends on your current tax bracket versus your expected retirement tax bracket. If you expect to be in a higher tax bracket in retirement, Roth IRAs are typically more beneficial. Consider your overall tax diversification strategy.</p>
-            
-            <h3>Long-Term Wealth Building with Roth IRAs</h3>
-            <p>Roth IRAs are particularly valuable for long-term wealth building because of their tax-free growth potential. The longer your money stays in a Roth IRA, the more valuable the tax-free growth becomes. Consider Roth IRAs as part of a diversified retirement savings strategy.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/InvestmentFund">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Roth IRA Contribution Limits, Income Phaseouts, and Tax Strategy" />
+    <meta itemProp="description" content="An expert guide detailing the Roth IRA's unique tax structure, annual contribution limits (IRS), Modified Adjusted Gross Income (MAGI) phase-out ranges, and the benefits of tax-free growth in retirement planning." />
+    <meta itemProp="keywords" content="Roth IRA contribution limits, MAGI phase-out limits, Roth vs Traditional IRA, tax-free retirement growth, backdoor Roth strategy, catch-up contributions IRA, retirement tax planning" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-roth-ira-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Roth IRA Contribution Limits: Mastering Tax-Free Retirement Growth</h1>
+    <p className="text-lg italic text-gray-700">Understand the critical income phase-outs, annual limits, and the unique benefits of saving for retirement entirely tax-free.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#mechanics" className="hover:underline">Roth IRA Mechanics and Tax Structure</a></li>
+        <li><a href="#limits" className="hover:underline">Annual IRS Contribution Limits and Catch-Up Rules</a></li>
+        <li><a href="#magi" className="hover:underline">The Modified Adjusted Gross Income (MAGI) Phase-Out</a></li>
+        <li><a href="#roth-vs-trad" className="hover:underline">Roth vs. Traditional IRA: The Tax Trade-Off</a></li>
+        <li><a href="#backdoor" className="hover:underline">Advanced Strategy: The Backdoor Roth IRA</a></li>
+    </ul>
+<hr />
+
+    {/* ROTH IRA MECHANICS AND TAX STRUCTURE */}
+    <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Roth IRA Mechanics and Tax Structure</h2>
+    <p>A <strong className="font-semibold">Roth IRA</strong> is an individual retirement arrangement (IRA) created by the Taxpayer Relief Act of 1997. It is defined by its unique "pay taxes now, save taxes later" approach, making it one of the most powerful tools for long-term tax-free wealth accumulation.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The "Tax-Free Forever" Advantage</h3>
+    <p>The Roth IRA structure works as follows:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Contributions:</strong> Are made with after-tax dollars, meaning the contributor receives no upfront tax deduction.</li>
+        <li><strong className="font-semibold">Growth:</strong> All investment earnings and interest grow entirely tax-free within the account.</li>
+        <li><strong className="font-semibold">Withdrawals:</strong> Qualified withdrawals of contributions and earnings in retirement are <strong className="font-semibold">100% tax-free</strong>. This guarantees the tax rate on the entire retirement income stream is 0%.</li>
+    </ul>
+    <p>This tax structure is especially beneficial for young professionals who anticipate being in a significantly higher tax bracket when they retire than they are currently.</p>
+
+<hr />
+
+    {/* ANNUAL IRS CONTRIBUTION LIMITS AND CATCH-UP RULES */}
+    <h2 id="limits" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Annual IRS Contribution Limits and Catch-Up Rules</h2>
+    <p>The Internal Revenue Service (IRS) imposes an annual ceiling on the total amount an individual can contribute to all their Traditional and Roth IRA accounts combined. These limits are adjusted periodically for inflation.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Base Contribution Limit</h3>
+    <p>The standard annual limit applies to individuals under the age of 50. It dictates the maximum total amount that can be contributed for the tax year. This limit is subject to one major caveat: the contribution cannot exceed the individual's <strong className="font-semibold">taxable compensation</strong> for the year.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Catch-Up Contributions (Age 50+)</h3>
+    <p>Similar to 401(k) plans, the IRS allows individuals age 50 and older to make an additional <strong className="font-semibold">Catch-Up Contribution</strong>. This higher limit is designed to help those approaching retirement maximize their tax-advantaged savings and provides a powerful boost to compound growth in the final years before retirement.</p>
+    <p>It is vital to monitor these limits annually, as exceeding the cap results in an excess contribution penalty of 6% per year on the over-contributed amount until it is corrected.</p>
+
+<hr />
+
+    {/* THE MODIFIED ADJUSTED GROSS INCOME (MAGI) PHASE-OUT */}
+    <h2 id="magi" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Modified Adjusted Gross Income (MAGI) Phase-Out</h2>
+    <p>The Roth IRA is unique among retirement accounts because eligibility to contribute is strictly limited based on the individual's income. This restriction is controlled by the <strong className="font-semibold">Modified Adjusted Gross Income (MAGI)</strong>.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">MAGI and the Phase-Out Range</h3>
+    <p>Unlike standard gross income, MAGI is calculated by taking your Adjusted Gross Income (AGI) and adding back certain deductions (like foreign earned income exclusions, and, crucially, deductions for Traditional IRA contributions). The IRS sets specific MAGI thresholds based on filing status (Single, Married Filing Jointly):</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Full Contribution:</strong> If MAGI is below the bottom of the phase-out range, the full limit is allowed.</li>
+        <li><strong className="font-semibold">Partial Contribution:</strong> If MAGI falls within the phase-out range, the allowed contribution limit is gradually reduced on a proportional basis.</li>
+        <li><strong className="font-semibold">Zero Contribution:</strong> If MAGI is above the top of the phase-out range, the individual is ineligible to make any direct Roth IRA contribution.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating the Reduced Contribution Limit</h3>
+    <p>The maximum allowed contribution for those in the phase-out range is determined by a complex linear calculation based on where the individual's MAGI falls within the range defined by the IRS. The reduction ensures that high-income earners benefit from tax-free growth only up to the legislated threshold.</p>
+
+<hr />
+
+    {/* ROTH VS. TRADITIONAL IRA: THE TAX TRADE-OFF */}
+    <h2 id="roth-vs-trad" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Roth vs. Traditional IRA: The Tax Trade-Off</h2>
+    <p>The decision between funding a Roth IRA (after-tax contribution, tax-free growth) and a Traditional IRA (pretax contribution, tax-deferred growth) revolves entirely around the individual's current tax rate versus their expected future tax rate.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Traditional IRA Advantages</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Immediate Tax Savings:</strong> Contributions are often tax-deductible in the present year, reducing current taxable income.</li>
+        <li><strong className="font-semibold">Best for:</strong> High earners who expect their income (and marginal tax rate) to be lower in retirement than it is currently.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Roth IRA Advantages</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Tax-Free Income Stream:</strong> All qualified withdrawals are tax-free, protecting the retiree from unexpected future tax hikes.</li>
+        <li><strong className="font-semibold">No Required Minimum Distributions (RMDs):</strong> Roth IRA owners are not required to take RMDs during their lifetime, allowing wealth to compound tax-free for a longer period.</li>
+    </ul>
+    <p>For many investors, diversifying retirement holdings across both Traditional (pretax) and Roth (post-tax) accounts provides optimal tax flexibility in retirement.</p>
+
+<hr />
+
+    {/* ADVANCED STRATEGY: THE BACKDOOR ROTH IRA */}
+    <h2 id="backdoor" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Advanced Strategy: The Backdoor Roth IRA</h2>
+    <p>Because the direct contribution to a Roth IRA is phased out for high-income earners, the <strong className="font-semibold">Backdoor Roth IRA</strong> strategy is commonly employed by those whose MAGI exceeds the maximum IRS threshold. This legal maneuver allows high earners to bypass the income limit and still fund a Roth account.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Two-Step Process</h3>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Step 1 (Nondeductible Contribution):</strong> The individual contributes to a <strong className="font-semibold">Traditional IRA</strong> using after-tax dollars. Since their income is too high, the contribution is <strong className="font-semibold">nondeductible</strong> (no tax break).</li>
+        <li><strong className="font-semibold">Step 2 (Conversion):</strong> The individual immediately converts the balance of the Traditional IRA to a Roth IRA. Since the contribution was already taxed, only any minimal earnings accrued between the contribution and the conversion (the *de minimis* amount) are taxable.</li>
+    </ol>
+    <p>This strategy effectively "gets money into the Roth" tax-free, provided the investor does not hold significant existing pretax Traditional IRA balances, which would trigger the complex **pro-rata rule** and create a large taxable event upon conversion.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Roth IRA is an exceptional tool for retirement planning, offering the distinct advantage of tax-free growth and tax-free qualified withdrawals. Optimizing a Roth contribution requires careful annual calculation to ensure compliance with the strictly enforced <strong className="font-semibold">Modified Adjusted Gross Income (MAGI) phase-out limits</strong>.</p>
+    <p>Whether through direct contributions or the use of the advanced Backdoor strategy, maximizing Roth funding ensures that a portion of retirement income is forever shielded from future tax liabilities, providing invaluable tax certainty and flexibility for the retirement years.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

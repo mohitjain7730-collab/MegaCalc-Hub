@@ -698,30 +698,105 @@ export default function StudentLoanRepaymentCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <GraduationCap className="h-5 w-5" />
-              Complete Guide to Student Loan Repayment
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h3>Understanding Student Loan Repayment: Your Path to Freedom</h3>
-            <p>Student loan repayment can feel overwhelming, but understanding your options is the first step to financial freedom. Federal loans offer multiple repayment plans, while private loans typically have fewer options. The key is finding the plan that fits your current financial situation and long-term goals.</p>
-            
-            <h3>Federal vs. Private Loans: Know Your Options</h3>
-            <p>Federal student loans offer income-driven repayment plans, loan forgiveness programs, and more flexible options. Private loans typically have fixed repayment terms with fewer options for modification. If you have both types, prioritize paying off private loans first, as they're less flexible.</p>
-            
-            <h3>Income-Driven Repayment Plans: When Payments Are Too High</h3>
-            <p>If your standard payment is unaffordable, income-driven plans cap your payment at 10-20% of your discretionary income. These plans can provide relief in the short term, but may result in higher total interest paid over the long term. Consider your career trajectory and income potential.</p>
-            
-            <h3>Loan Forgiveness Programs: The Long-Term Strategy</h3>
-            <p>Public Service Loan Forgiveness (PSLF) forgives remaining federal loan balance after 10 years of qualifying payments while working for qualifying employers. Teacher Loan Forgiveness offers forgiveness for teachers in low-income schools. These programs require careful planning and documentation.</p>
-            
-            <h3>Building Wealth While Paying Off Student Loans</h3>
-            <p>Don't let student loans prevent you from building wealth. If you have low-interest federal loans, consider investing extra money rather than paying off loans early. However, high-interest private loans should be prioritized. Balance debt payoff with other financial goals like retirement savings.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Student Loan Repayment: Amortization, Interest, and Payoff Strategies" />
+    <meta itemProp="description" content="An expert guide detailing the mechanics of student loan repayment, comparing standard vs. income-driven plans, calculating principal and interest components, and analyzing the impact of interest capitalization and loan consolidation." />
+    <meta itemProp="keywords" content="student loan repayment formula, loan amortization interest calculation, income-driven repayment (IDR), principal vs interest student loans, interest capitalization mechanics, total cost of student loans" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-student-loan-repayment-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Student Loan Repayment: Mastering Amortization and Payoff Strategies</h1>
+    <p className="text-lg italic text-gray-700">Understand how your payment reduces principal, the impact of interest capitalization, and the critical differences between standard and income-driven repayment plans.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#amortization-basics" className="hover:underline">Loan Amortization: The Standard Repayment Model</a></li>
+        <li><a href="#interest-capitalization" className="hover:underline">The Mechanics of Interest Capitalization</a></li>
+        <li><a href="#payment-formula" className="hover:underline">The Student Loan Payment (PMT) Calculation</a></li>
+        <li><a href="#idr" className="hover:underline">Income-Driven Repayment (IDR) and Loan Forgiveness</a></li>
+        <li><a href="#strategies" className="hover:underline">Accelerating Payoff: Prepayment and Consolidation</a></li>
+    </ul>
+<hr />
+
+    {/* LOAN AMORTIZATION: THE STANDARD REPAYMENT MODEL */}
+    <h2 id="amortization-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loan Amortization: The Standard Repayment Model</h2>
+    <p>Student loans, whether federal or private, are typically repaid through an <strong className="font-semibold">amortization schedule</strong>—a fixed process where a series of equal, periodic payments gradually pays off the principal balance and all accrued interest over a set period. The most common plan is the **Standard 10-Year Repayment Plan** for federal loans.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Interest and Principal Components</h3>
+    <p>Similar to mortgages, every student loan payment is divided into two parts: interest and principal. The interest due for a given month is calculated solely on the outstanding principal balance. The remaining portion of the payment reduces the principal:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Interest Paid:</strong> Outstanding Principal $\times$ (Annual Rate $\div$ 12)</li>
+        <li><strong className="font-semibold">Principal Paid:</strong> Fixed Monthly Payment $-$ Interest Paid</li>
+    </ul>
+    <p>In the early years of the loan, the majority of the monthly payment is consumed by interest. As the principal balance shrinks, the interest component decreases, and a larger share of the payment goes toward the principal, accelerating debt reduction later in the term.</p>
+
+<hr />
+
+    {/* THE MECHANICS OF INTEREST CAPITALIZATION */}
+    <h2 id="interest-capitalization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mechanics of Interest Capitalization</h2>
+    <p><strong className="font-semibold">Interest Capitalization</strong> is a critical financial event unique to student loans that significantly increases the total cost of borrowing. It occurs when unpaid interest is added to the principal balance, meaning the borrower begins accruing interest on the original debt plus the newly capitalized interest.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">When Capitalization Occurs</h3>
+    <p>Capitalization is typically triggered by several events, primarily:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">End of Grace Period:</strong> For unsubsidized loans, interest accrues during school and is added to the principal when the grace period ends.</li>
+        <li><strong className="font-semibold">Default:</strong> Unpaid interest is capitalized when a loan defaults.</li>
+        <li><strong className="font-semibold">Income-Driven Repayment (IDR) Plan Shifts:</strong> If a borrower switches out of an IDR plan, or fails to recertify their income on time, accrued interest may capitalize, increasing the loan balance.</li>
+    </ol>
+    <p>Capitalization should be avoided whenever possible, as it directly increases the principal, thereby raising the interest cost for the remainder of the loan's life through negative compounding.</p>
+
+<hr />
+
+    {/* THE STUDENT LOAN PAYMENT (PMT) CALCULATION */}
+    <h2 id="payment-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Student Loan Payment (PMT) Calculation</h2>
+    <p>The fixed monthly payment for student loans under standard and extended plans is derived from the **Present Value of Annuity** formula. The total borrowed principal (P) is treated as the Present Value, and the formula solves for the fixed payment (PMT) required to pay off that value over the loan tenure (n) at the given interest rate (r).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Formula for Fixed Monthly Payment</h3>
+    <p>The fixed payment for a fully amortizing loan is calculated as:</p>
+    
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'PMT = P * r * [ (1 + r)^n / ((1 + r)^n - 1) ]'}
+        </p>
+    </div>
+
+    <p>The term in brackets is the **Capital Recovery Factor**. It ensures the calculated payment amount recovers the initial principal investment (P) while covering all accrued interest over the entire schedule.</p>
+
+<hr />
+
+    {/* INCOME-DRIVEN REPAYMENT (IDR) AND LOAN FORGIVENESS */}
+    <h2 id="idr" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Income-Driven Repayment (IDR) and Loan Forgiveness</h2>
+    <p><strong className="font-semibold">Income-Driven Repayment (IDR)</strong> plans are federal options (such as SAVE, PAYE, and IBR) designed for borrowers with low incomes relative to their debt. Unlike standard plans, the monthly payment under IDR is not based on the loan principal; it is based on the borrower’s discretionary income.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">IDR Payment Mechanics</h3>
+    <p>IDR payments are typically set at $10\%$ to $20\%$ of the borrower's **discretionary income** (defined as the amount of adjusted gross income (AGI) above $150\%$ or $225\%$ of the federal poverty line). Because the payment amount is often insufficient to cover the monthly accrued interest, the loan principal may increase over time.</p>
+    <p>The financial benefit of IDR is its promise of **loan forgiveness** for any remaining balance after a term of 20 or 25 years. However, the forgiven amount may be treated as taxable income (though temporary federal legislation sometimes exempts this tax).</p>
+
+<hr />
+
+    {/* ACCELERATING PAYOFF: PREPAYMENT AND CONSOLIDATION */}
+    <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Accelerating Payoff: Prepayment and Consolidation</h2>
+    <p>For most borrowers, the most effective strategy for minimizing total interest paid is to aggressively accelerate the repayment schedule beyond the minimum required payment.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Targeted Prepayment</h3>
+    <p>There are generally no penalties for prepaying federal or private student loans. Any payment exceeding the required fixed amount is applied directly to the principal balance. This practice is most effective when: 1) targeting the loan with the highest interest rate first, and 2) making the extra payments early in the loan term to maximize the benefit of reduced interest accrual over time.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Consolidation and Refinancing</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Federal Consolidation:</strong> Combines multiple federal loans into a single new federal loan. This simplifies payments and provides access to IDR plans, but the new interest rate is a weighted average of the old rates (it does not lower the rate).</li>
+        <li><strong className="font-semibold">Private Refinancing:</strong> Obtaining a new private loan to pay off existing federal and/or private loans. This is pursued to secure a lower interest rate, which dramatically reduces the total cost of borrowing. However, refinancing federal loans into a private loan forfeits access to critical federal benefits like IDR, forgiveness, and forbearance.</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Managing student loan debt is a long-term strategic decision rooted in the principles of loan amortization. The choice between the fixed payments of the Standard Plan and the flexibility of Income-Driven Repayment profoundly impacts both monthly cash flow and total lifetime cost.</p>
+    <p>Financial mastery of student debt requires two primary actions: diligently avoiding **interest capitalization** and strategically employing **prepayments** to leverage the reducing balance method. By understanding the core formulas and the trade-offs of consolidation, borrowers can accelerate debt freedom and significantly reduce the financial burden of their education.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

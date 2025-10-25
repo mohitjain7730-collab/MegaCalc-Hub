@@ -641,30 +641,132 @@ export default function InflationCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5" />
-              Complete Guide to Inflation and Financial Planning
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <h3>Understanding Inflation: The Silent Wealth Eroder</h3>
-            <p>Inflation is the gradual increase in prices over time, which reduces the purchasing power of your money. While moderate inflation (2-3%) is normal and even healthy for economic growth, it can significantly impact your long-term financial goals if not properly planned for.</p>
-            
-            <h3>The Time Value of Money: Why Inflation Matters</h3>
-            <p>Inflation affects every aspect of your financial life, from the cost of groceries to the value of your savings. A dollar today will buy less in the future due to inflation. This is why simply saving money in a low-yield account isn't enough to build long-term wealth.</p>
-            
-            <h3>Inflation-Protected Investing: Building Real Wealth</h3>
-            <p>To combat inflation, you need investments that historically outpace inflation rates. Stocks, real estate, and commodities have historically provided returns above inflation. Treasury Inflation-Protected Securities (TIPS) are specifically designed to protect against inflation.</p>
-            
-            <h3>Salary and Income Planning: Keeping Up with Rising Costs</h3>
-            <p>Your income needs to keep pace with inflation to maintain your standard of living. This means negotiating regular raises, developing skills that increase your earning potential, and potentially changing jobs or careers to stay ahead of inflation.</p>
-            
-            <h3>Retirement Planning: The Long-Term Inflation Challenge</h3>
-            <p>Inflation is particularly challenging for retirement planning because it compounds over decades. A retirement income that seems adequate today may be insufficient in 20-30 years. Plan for inflation by using growth investments and considering inflation-adjusted retirement income sources.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Inflation Calculation, Purchasing Power, and Future Value" />
+    <meta itemProp="description" content="An expert guide detailing the inflation rate formula, the concept of purchasing power, how to calculate future value and required nominal return to preserve wealth, and the role of the Consumer Price Index (CPI)." />
+    <meta itemProp="keywords" content="inflation rate formula explained, purchasing power calculation, future value of money with inflation, real vs nominal return, consumer price index (CPI), inflation adjustment methods, cost of living increase" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-inflation-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Inflation: Calculating the Erosion of Purchasing Power</h1>
+    <p className="text-lg italic text-gray-700">Master the formulas that quantify the rate at which the value of currency decreases, and how to project the true cost of future expenses.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Inflation: Core Definition and Key Measurement Tools</a></li>
+        <li><a href="#future-value" className="hover:underline">Calculating Future Value (FV) with Inflation</a></li>
+        <li><a href="#purchasing-power" className="hover:underline">The Erosion of Purchasing Power (PV)</a></li>
+        <li><a href="#real-return" className="hover:underline">Nominal vs. Real Rate of Return</a></li>
+        <li><a href="#economic-impact" className="hover:underline">Economic Types of Inflation and Financial Impact</a></li>
+    </ul>
+<hr />
+
+    {/* INFLATION: CORE DEFINITION AND KEY MEASUREMENT TOOLS */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Inflation: Core Definition and Key Measurement Tools</h2>
+    <p><strong className="font-semibold">Inflation</strong> is the sustained increase in the general price level of goods and services in an economy over a period of time. As the price level rises, each unit of currency buys fewer goods and services, meaning inflation directly causes a decrease in <strong className="font-semibold">purchasing power</strong>.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Measuring the Inflation Rate</h3>
+    <p>Inflation is quantified using a price index, most commonly the <strong className="font-semibold">Consumer Price Index (CPI)</strong>. The CPI measures the average change in prices paid by urban consumers for a basket of consumer goods and services (e.g., food, housing, medical care, transportation). The inflation rate is calculated as the percentage change in the index over two specific time periods:</p>
+    
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Inflation Rate = [(CPI_End - CPI_Start) / CPI_Start]'}
+        </p>
+    </div>
+<hr />
+
+    {/* CALCULATING FUTURE VALUE (FV) WITH INFLATION */}
+    <h2 id="future-value" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Future Value (FV) with Inflation</h2>
+    <p>A primary function of inflation analysis is to determine the future cost of an item or service. This calculation is essential for long-term planning, such as estimating future retirement expenses, college tuition, or the replacement cost of capital goods.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Future Cost Projection Formula</h3>
+    <p>The calculation is similar to compound interest, but instead of using a rate of return, it uses the assumed inflation rate (i) to project the current price (Present Value, PV) over a period (t):</p>
+    
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Future Cost = PV_Today * (1 + i)^t'}
+        </p>
+    </div>
+    <p>For example, a service costing $100 today will cost $100 \times (1.03)^{10} \approx \$134.39$ in ten years, assuming a consistent 3% annual inflation rate. This simple compound calculation reveals the magnitude of the rising cost of living.</p>
+
+<hr />
+
+    {/* THE EROSION OF PURCHASING POWER (PV) */}
+    <h2 id="purchasing-power" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Erosion of Purchasing Power (PV)</h2>
+    <p>While the Future Value calculation looks forward to a future cost, the <strong className="font-semibold">Purchasing Power</strong> calculation looks backward to see how much a fixed sum of money is worth in today's (discounted) terms, after being eroded by inflation.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating the Discounted Value</h3>
+    <p>This is mathematically the reverse of the Future Value calculation. It determines the equivalent purchasing power of a future sum in current dollars:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Purchasing Power = FV / (1 + i)^t'}
+        </p>
+    </div>
+    <p>A retirement corpus of 1,000,000 to be received in 30 years must be discounted by the inflation rate (i) to reveal its true value in today’s buying power. This exercise exposes the inadequacy of saving amounts based on today's dollar figures.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Rule of 70</h3>
+    <p>The <strong className="font-semibold">Rule of 70</strong> provides a quick estimate for how long it takes for the purchasing power of money to be cut in half due to inflation:</p>
+    <div className="overflow-x-auto my-4 p-2 bg-gray-50 border rounded-lg inline-block">
+        <p className="font-mono text-lg text-red-700 font-bold">
+            {'Years to Halve Value = 70 / Inflation Rate (in percent)'}
+        </p>
+    </div>
+    <p>At a 3.5% inflation rate, the purchasing power of your money is halved in just 70 / 3.5 = 20 years.</p>
+
+<hr />
+
+    {/* NOMINAL VS. REAL RATE OF RETURN */}
+    <h2 id="real-return" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Nominal vs. Real Rate of Return</h2>
+    <p>The primary goal of investment is to achieve a positive <strong className="font-semibold">real return</strong>, meaning the investment growth rate must exceed the inflation rate. Financial planning relies on converting nominal figures into real, inflation-adjusted figures.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Fisher Equation (Approximation)</h3>
+    <p>The relationship between the nominal return, real return, and inflation is approximated by the Fisher Equation:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Real Rate ≈ Nominal Rate - Inflation Rate'}
+        </p>
+    </div>
+    <p>If an investment yields a 7% nominal return, but inflation is 3%, the real rate of return is only 4%. If the nominal return is 2% and inflation is 3%, the investment has yielded a negative 1% real return, and the investor has lost purchasing power.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Exact Fisher Equation</h3>
+    <p>For precise financial modeling, the exact formula is used:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Real Rate = [(1 + Nominal Rate) / (1 + Inflation Rate)] - 1'}
+        </p>
+    </div>
+    <p>Using the real rate is crucial for retirement and financial independence models, as it allows all calculations (future expenses and required savings) to be performed in constant, present-day dollars, simplifying the planning process.</p>
+
+<hr />
+
+    {/* ECONOMIC TYPES OF INFLATION AND FINANCIAL IMPACT */}
+    <h2 id="economic-impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Economic Types of Inflation and Financial Impact</h2>
+    <p>Inflation is categorized by its underlying economic cause, which influences how policymakers (central banks) respond and how investors should position their assets.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Types of Inflation</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Demand-Pull Inflation:</strong> Occurs when aggregate demand in an economy outpaces aggregate supply (too much money chasing too few goods). This is a sign of a strong, growing economy, often prompting interest rate hikes.</li>
+        <li><strong className="font-semibold">Cost-Push Inflation:</strong> Occurs when overall prices increase (inflation) due to increases in the cost of wages and raw materials (e.g., oil price shocks). This can lead to stagflation (high inflation and low growth).</li>
+        <li><strong className="font-semibold">Hyperinflation:</strong> Extremely rapid, often accelerating, inflation, typically defined as monthly inflation exceeding 50%. This causes a complete collapse in public confidence in the currency.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Inflation's Impact on Financial Instruments</h3>
+    <p>Inflation is a transfer of wealth. It punishes holders of cash and fixed-income assets while benefiting debtors and owners of real assets:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Negative Impact:</strong> Bonds (fixed coupons lose value), cash (purchasing power erodes), and long-term debt (if the rate is fixed).</li>
+        <li><strong className="font-semibold">Positive Impact:</strong> Real estate (asset value appreciates), stocks (companies can raise prices), and debt (the principal owed is repaid with cheaper future dollars).</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Inflation is not merely a rising cost, but a quantifiable decrease in currency value. Understanding the compounding effect of inflation on future expenses is essential for any long-term financial strategy.</p>
+    <p>Financial mastery requires utilizing the Future Value formula to accurately forecast costs and, critically, ensuring investment returns consistently exceed the inflation rate. By calculating the <strong className="font-semibold">real rate of return</strong>, individuals can confirm that they are truly growing their purchasing power and not just their nominal account balances.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>
