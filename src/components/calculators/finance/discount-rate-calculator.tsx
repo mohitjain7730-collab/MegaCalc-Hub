@@ -384,18 +384,133 @@ export default function DiscountRateCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
-              Complete Guide to Discount Rates
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to the Discount Rate: Calculation, WACC, and Risk Assessment in Valuation" />
+    <meta itemProp="description" content="An expert guide detailing the concept of the Discount Rate, its fundamental role in Present Value (PV) and Net Present Value (NPV), methods for its calculation (WACC, CAPM), and its function as the required rate of return that accounts for risk." />
+    <meta itemProp="keywords" content="discount rate formula explained, required rate of return, cost of capital, WACC calculation, CAPM formula, risk adjustment finance, time value of money, hurdle rate finance" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-discount-rate-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Discount Rate: Quantifying Risk and Opportunity Cost in Valuation</h1>
+    <p className="text-lg italic text-gray-700">Master the single most critical variable in financial modeling that determines the current worth of future cash flows.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#concept" className="hover:underline">Discount Rate: Definition and Economic Function</a></li>
+        <li><a href="#lump-sum" className="hover:underline">Role in Present Value (PV) and Valuation</a></li>
+        <li><a href="#wacc" className="hover:underline">Corporate Finance: The Weighted Average Cost of Capital (WACC)</a></li>
+        <li><a href="#capm" className="hover:underline">Equity Investment: The Capital Asset Pricing Model (CAPM)</a></li>
+        <li><a href="#sensitivity" className="hover:underline">Discount Rate Sensitivity and Risk Adjustment</a></li>
+    </ul>
+<hr />
+
+    {/* DISCOUNT RATE: DEFINITION AND ECONOMIC FUNCTION */}
+    <h2 id="concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Discount Rate: Definition and Economic Function</h2>
+    <p>The <strong className="font-semibold">Discount Rate</strong> is the rate used to calculate the present value of a series of future cash flows. It is simultaneously a measure of the <strong className="font-semibold">Time Value of Money (TVM)</strong>, the <strong className="font-semibold">Opportunity Cost</strong> of capital, and the **Risk** inherent in receiving the payment in the future.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Discounting and the TVM</h3>
+    <p>In the context of the Time Value of Money, the discount rate is applied to future amounts to adjust for two economic realities:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Inflation:</strong> The erosion of purchasing power over time.</li>
+        <li><strong className="font-semibold">Risk/Uncertainty:</strong> The possibility that the promised cash flow may not be received (default risk).</li>
+    </ol>
+    <p>By using the discount rate, financial analysts convert uncertain future cash flows into a single, comparable figure called the **Present Value (PV)**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Required Rate of Return (The Hurdle)</h3>
+    <p>For an investor, the discount rate is synonymous with the <strong className="font-semibold">Required Rate of Return</strong> or **Hurdle Rate**. It is the minimum annual percentage return an investment must yield to justify its risk and cover the cost of financing. If a project's expected return is below the hurdle rate, it should be rejected.</p>
+
+<hr />
+
+    {/* ROLE IN PRESENT VALUE (PV) AND VALUATION */}
+    <h2 id="lump-sum" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Present Value (PV) and Valuation</h2>
+    <p>The discount rate ($r$) is the denominator in all Present Value calculations. A higher discount rate results in a lower Present Value, reflecting the fact that higher risk investments must offer a greater potential reward to be equally attractive.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">PV of a Single Cash Flow</h3>
+    <p>The core formula for discounting a single future lump sum demonstrates the inverse relationship between the discount rate and Present Value:</p>
+    
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'PV = FV / (1 + r)^n'}
+        </p>
+    </div>
+
+    <p>For example, if an investment promises 1,000 dollars in 10 years, discounting at a 5 percent rate gives a much higher PV than discounting at a 10 percent rate. The 10 percent rate correctly implies the investor can earn more elsewhere or perceives higher risk.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">PV of a Perpetuity</h3>
+    <p>In the valuation of assets that generate infinite cash flows (perpetuities), the discount rate is the sole determinant of value, highlighting its absolute power in modeling:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'PV = Cash Flow / r'}
+        </p>
+    </div>
+
+<hr />
+
+    {/* CORPORATE FINANCE: THE WEIGHTED AVERAGE COST OF CAPITAL (WACC) */}
+    <h2 id="wacc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Corporate Finance: The Weighted Average Cost of Capital (WACC)</h2>
+    <p>In corporate finance, the appropriate discount rate for valuing an entire firm or an average-risk project is the <strong className="font-semibold">Weighted Average Cost of Capital (WACC)</strong>.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">WACC Mechanics</h3>
+    <p>WACC is the weighted average of the costs of all sources of long-term funding—debt, preferred stock, and common equity. It reflects the average rate the company pays to finance its assets.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
+        </p>
+    </div>
+    <p>Where:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>$Re$ = Cost of Equity (often calculated using CAPM).</li>
+        <li>$Rd$ = Cost of Debt.</li>
+        <li>$E/V$ and $D/V$ = Market value weights of Equity and Debt.</li>
+        <li>$T$ = Corporate tax rate (Cost of Debt is tax-deductible).</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Hurdle for NPV</h3>
+    <p>WACC serves as the specific discount rate ($r$) used in Net Present Value (NPV) calculations. If a project's discounted cash flows (at the WACC rate) exceed the initial investment, the NPV is positive, confirming the project will add value above the cost of capital.</p>
+
+<hr />
+
+    {/* EQUITY INVESTMENT: THE CAPITAL ASSET PRICING MODEL (CAPM) */}
+    <h2 id="capm" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Equity Investment: The Capital Asset Pricing Model (CAPM)</h2>
+    <p>For valuing individual stocks or the equity portion of a firm, the discount rate used is the <strong className="font-semibold">Cost of Equity ($Re$)</strong>, which is typically calculated using the **Capital Asset Pricing Model (CAPM)**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The CAPM Formula</h3>
+    <p>CAPM links a project's systematic (non-diversifiable) risk to its required rate of return:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Re = Rf + Beta * (Rm - Rf)'}
+        </p>
+    </div>
+    <p>Where:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>$Rf$ = Risk-Free Rate (Return on long-term government bonds).</li>
+        <li>$Rm$ = Expected market return.</li>
+        <li>$Beta$ = Systematic Risk (Measures the asset's volatility relative to the overall market).</li>
+    </ul>
+    <p>This method ensures the discount rate correctly incorporates only the market risk that an investor cannot eliminate through diversification.</p>
+
+<hr />
+
+    {/* DISCOUNT RATE SENSITIVITY AND RISK ADJUSTMENT */}
+    <h2 id="sensitivity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Discount Rate Sensitivity and Risk Adjustment</h2>
+    <p>The discount rate is the primary mechanism for adjusting valuation models for risk. A small change in the discount rate can lead to a massive change in the Present Value, especially for projects with long time horizons.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The High Sensitivity Problem</h3>
+    <p>Because the discount rate is in the denominator of the PV formula and is raised to a high power (n), its impact is exponential. For instance, increasing the discount rate by just 1% on a 30-year cash flow can decrease its PV by 20% or more. This high sensitivity necessitates thorough **sensitivity analysis** on the chosen rate.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Project-Specific Discount Rates</h3>
+    <p>Best practice dictates that a company should not use a single, universal WACC for all projects. Instead, high-risk projects (e.g., launching a new technology or entering an unstable foreign market) should be discounted using a rate higher than the company's WACC, while low-risk projects (e.g., upgrading existing equipment) may use a lower rate.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The discount rate is the single most important determinant of value in finance. It is the quantification of opportunity cost and risk, serving as the required rate of return that links future cash flows to their present-day worth.</p>
+    <p>Whether calculated as the comprehensive WACC for corporate projects or the CAPM for equity investments, selecting the appropriate, risk-adjusted discount rate is the foundational step for any rational investment decision, ensuring that capital is allocated efficiently to projects that truly maximize wealth.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>
