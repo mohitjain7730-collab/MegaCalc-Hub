@@ -8,28 +8,30 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Square, Ruler, Calculator, Info, AlertCircle, TrendingUp, Users, Home, Building, Scissors } from 'lucide-react';
+import { Square, Ruler, Calculator, Info, AlertCircle, TrendingUp, Users, Home, Building } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
-  areaLength: z.number().min(0.1).optional(),
-  areaWidth: z.number().min(0.1).optional(),
-  tileLength: z.number().min(0.1).optional(),
-  tileWidth: z.number().min(0.1).optional(),
-  wastage: z.number().min(0).max(50).optional(),
-  unit: z.enum(['meters', 'feet']).optional(),
+  windowWidth: z.number().min(0.1).optional(),
+  windowHeight: z.number().min(0.1).optional(),
+  curtainWidth: z.number().min(0.1).optional(),
+  curtainLength: z.number().min(0.1).optional(),
+  fullnessRatio: z.number().min(1).optional(),
+  unit: z.enum(['feet', 'meters']).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function TileFlooringCalculator() {
+export default function WindowGlassCurtainCoverageCalculator() {
   const [result, setResult] = useState<{ 
-    tilesNeeded: number; 
+    windowArea: number; 
+    curtainArea: number; 
+    coverageRatio: number; 
     interpretation: string; 
     opinion: string;
-    projectComplexity: string;
-    efficiencyLevel: string;
+    coverageLevel: string;
+    fullnessLevel: string;
     recommendations: string[];
     considerations: string[];
   } | null>(null);
@@ -37,103 +39,105 @@ export default function TileFlooringCalculator() {
   const form = useForm<FormValues>({ 
     resolver: zodResolver(formSchema), 
     defaultValues: { 
-      areaLength: undefined, 
-      areaWidth: undefined, 
-      tileLength: undefined, 
-      tileWidth: undefined, 
-      wastage: undefined, 
+      windowWidth: undefined, 
+      windowHeight: undefined, 
+      curtainWidth: undefined, 
+      curtainLength: undefined, 
+      fullnessRatio: undefined, 
       unit: undefined 
     } 
   });
 
   const calculate = (v: FormValues) => {
-    if (v.areaLength == null || v.areaWidth == null || v.tileLength == null || v.tileWidth == null || v.wastage == null || v.unit == null) return null;
+    if (v.windowWidth == null || v.windowHeight == null || v.curtainWidth == null || v.curtainLength == null || v.fullnessRatio == null || v.unit == null) return null;
     
-    let tileUnitToAreaUnit;
-    if (v.unit === 'feet') {
-      tileUnitToAreaUnit = 144; // inches in sq ft
-    } else {
-      tileUnitToAreaUnit = 10000; // cm in sq m
-    }
-
-    const totalArea = v.areaLength * v.areaWidth;
-    const tileArea = (v.tileLength * v.tileWidth) / tileUnitToAreaUnit;
-    const tilesForArea = totalArea / tileArea;
-    const wastageTiles = tilesForArea * (v.wastage / 100);
-    const tilesNeeded = Math.ceil(tilesForArea + wastageTiles);
+    const windowArea = v.windowWidth * v.windowHeight;
+    const curtainArea = v.curtainWidth * v.curtainLength * v.fullnessRatio;
+    const coverageRatio = curtainArea / windowArea;
     
-    return tilesNeeded;
+    return { windowArea, curtainArea, coverageRatio };
   };
 
-  const interpret = (tilesNeeded: number, wastage: number) => {
-    if (tilesNeeded > 200) return `Large tiling project requiring ${tilesNeeded} tiles with ${wastage}% wastage allowance.`;
-    if (tilesNeeded >= 50) return `Medium tiling project requiring ${tilesNeeded} tiles with ${wastage}% wastage allowance.`;
-    return `Small tiling project requiring ${tilesNeeded} tiles with ${wastage}% wastage allowance.`;
+  const interpret = (coverageRatio: number, fullnessRatio: number) => {
+    if (coverageRatio > 2.5) return `Excellent coverage with ${coverageRatio.toFixed(2)}x fullness providing luxurious draping.`;
+    if (coverageRatio >= 2) return `Good coverage with ${coverageRatio.toFixed(2)}x fullness providing elegant draping.`;
+    if (coverageRatio >= 1.5) return `Adequate coverage with ${coverageRatio.toFixed(2)}x fullness providing basic draping.`;
+    return `Minimal coverage with ${coverageRatio.toFixed(2)}x fullness - consider increasing curtain width.`;
   };
 
-  const getProjectComplexity = (tilesNeeded: number, wastage: number) => {
-    if (tilesNeeded > 200) return 'Large Project';
-    if (tilesNeeded >= 50) return 'Medium Project';
-    return 'Small Project';
+  const getCoverageLevel = (coverageRatio: number) => {
+    if (coverageRatio > 2.5) return 'Excellent Coverage';
+    if (coverageRatio >= 2) return 'Good Coverage';
+    if (coverageRatio >= 1.5) return 'Adequate Coverage';
+    return 'Minimal Coverage';
   };
 
-  const getEfficiencyLevel = (wastage: number) => {
-    if (wastage <= 5) return 'Minimal Wastage';
-    if (wastage <= 15) return 'Standard Wastage';
-    return 'High Wastage';
+  const getFullnessLevel = (fullnessRatio: number) => {
+    if (fullnessRatio >= 2.5) return 'Luxury Fullness';
+    if (fullnessRatio >= 2) return 'Standard Fullness';
+    if (fullnessRatio >= 1.5) return 'Basic Fullness';
+    return 'Minimal Fullness';
   };
 
-  const getRecommendations = (tilesNeeded: number, wastage: number, unit: string) => {
+  const getRecommendations = (coverageRatio: number, fullnessRatio: number, windowWidth: number, windowHeight: number) => {
     const recommendations = [];
     
-    recommendations.push(`Purchase ${tilesNeeded} tiles from the same batch/lot`);
-    recommendations.push('Ensure subfloor is clean, level, and rigid');
-    recommendations.push('Use appropriate adhesive for your tile type');
-    recommendations.push('Plan tile layout before starting installation');
+    recommendations.push(`Use ${coverageRatio.toFixed(2)}x fullness ratio for optimal draping`);
+    recommendations.push('Consider curtain rod extending 6-12 inches beyond window frame');
+    recommendations.push('Plan for proper curtain length (floor-length or sill-length)');
+    recommendations.push('Choose appropriate curtain weight for fullness');
     
-    if (wastage < 10) {
-      recommendations.push('Consider increasing wastage to 10-15% for safety');
+    if (coverageRatio < 1.5) {
+      recommendations.push('Increase curtain width for better coverage');
+      recommendations.push('Consider double curtain panels for wider windows');
     }
     
-    if (tilesNeeded > 100) {
-      recommendations.push('Consider professional installation for large projects');
+    if (fullnessRatio < 2) {
+      recommendations.push('Increase fullness ratio for more elegant draping');
+      recommendations.push('Consider pleated or gathered curtain styles');
     }
     
     return recommendations;
   };
 
-  const getConsiderations = (tilesNeeded: number, wastage: number) => {
+  const getConsiderations = (coverageRatio: number, fullnessRatio: number, windowWidth: number) => {
     const considerations = [];
     
-    considerations.push('Tile color and size may vary between batches');
-    considerations.push('Complex patterns require higher wastage percentages');
-    considerations.push('Room shape affects actual tile requirements');
-    considerations.push('Grout lines reduce visible tile area');
+    considerations.push('Curtain fullness affects light control and privacy');
+    considerations.push('Heavy fabrics require more fullness for proper draping');
+    considerations.push('Window shape and size affect curtain requirements');
+    considerations.push('Curtain rod placement impacts overall appearance');
     
-    if (wastage > 20) {
-      considerations.push('High wastage suggests complex layout or difficult cuts');
+    if (windowWidth > 6) {
+      considerations.push('Wide windows may require multiple curtain panels');
+    }
+    
+    if (fullnessRatio > 3) {
+      considerations.push('Very high fullness ratios may require special hardware');
     }
     
     return considerations;
   };
 
-  const opinion = (tilesNeeded: number, wastage: number) => {
-    if (tilesNeeded > 200) return `This is a substantial project that may benefit from professional installation and careful planning.`;
-    if (tilesNeeded >= 50) return `This is a manageable DIY project with proper preparation and tools.`;
-    return `Perfect size for a DIY weekend project with minimal complexity.`;
+  const opinion = (coverageRatio: number, fullnessRatio: number) => {
+    if (coverageRatio > 2.5 && fullnessRatio >= 2.5) return `This curtain setup will provide excellent coverage and luxurious draping for a professional appearance.`;
+    if (coverageRatio >= 2 && fullnessRatio >= 2) return `This curtain setup will provide good coverage and elegant draping for most applications.`;
+    return `This curtain setup may need adjustments for optimal coverage and appearance. Consider increasing fullness or curtain width.`;
   };
 
   const onSubmit = (values: FormValues) => {
-    const tilesNeeded = calculate(values);
-    if (tilesNeeded == null) { setResult(null); return; }
+    const calculation = calculate(values);
+    if (calculation == null) { setResult(null); return; }
     setResult({ 
-      tilesNeeded, 
-      interpretation: interpret(tilesNeeded, values.wastage || 10), 
-      opinion: opinion(tilesNeeded, values.wastage || 10),
-      projectComplexity: getProjectComplexity(tilesNeeded, values.wastage || 10),
-      efficiencyLevel: getEfficiencyLevel(values.wastage || 10),
-      recommendations: getRecommendations(tilesNeeded, values.wastage || 10, values.unit || 'feet'),
-      considerations: getConsiderations(tilesNeeded, values.wastage || 10)
+      windowArea: calculation.windowArea, 
+      curtainArea: calculation.curtainArea, 
+      coverageRatio: calculation.coverageRatio, 
+      interpretation: interpret(calculation.coverageRatio, values.fullnessRatio || 0), 
+      opinion: opinion(calculation.coverageRatio, values.fullnessRatio || 0),
+      coverageLevel: getCoverageLevel(calculation.coverageRatio),
+      fullnessLevel: getFullnessLevel(values.fullnessRatio || 0),
+      recommendations: getRecommendations(calculation.coverageRatio, values.fullnessRatio || 0, values.windowWidth || 0, values.windowHeight || 0),
+      considerations: getConsiderations(calculation.coverageRatio, values.fullnessRatio || 0, values.windowWidth || 0)
     });
   };
 
@@ -147,10 +151,10 @@ export default function TileFlooringCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Square className="h-5 w-5" />
-            Area & Tile Specifications
+            Window & Curtain Specifications
           </CardTitle>
           <CardDescription>
-            Enter your area dimensions and tile specifications to calculate material needs
+            Enter your window dimensions and curtain requirements to calculate optimal coverage
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -170,11 +174,11 @@ export default function TileFlooringCalculator() {
                         <select 
                           className="border rounded h-10 px-3 w-full bg-background" 
                           value={field.value ?? ''} 
-                          onChange={(e) => field.onChange(e.target.value as 'meters' | 'feet')}
+                          onChange={(e) => field.onChange(e.target.value as 'feet' | 'meters')}
                         >
                           <option value="">Select units</option>
-                          <option value="feet">Feet / Inches</option>
-                          <option value="meters">Meters / Centimeters</option>
+                          <option value="feet">Feet</option>
+                          <option value="meters">Meters</option>
                   </select>
                 </FormControl>
                 <FormMessage />
@@ -183,18 +187,18 @@ export default function TileFlooringCalculator() {
                 />
                 <FormField 
                   control={form.control} 
-                  name="areaLength" 
+                  name="windowWidth" 
                   render={({ field }) => (
               <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <Ruler className="h-4 w-4" />
-                        Area Length ({unit})
+                        Window Width ({unit})
                       </FormLabel>
                 <FormControl>
                         <Input 
                           type="number" 
                           step="0.1" 
-                          placeholder="e.g., 12" 
+                          placeholder="e.g., 4" 
                           {...field} 
                           value={field.value ?? ''} 
                           onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
@@ -206,18 +210,18 @@ export default function TileFlooringCalculator() {
                 />
                 <FormField 
                   control={form.control} 
-                  name="areaWidth" 
+                  name="windowHeight" 
                   render={({ field }) => (
               <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <Ruler className="h-4 w-4" />
-                        Area Width ({unit})
+                        Window Height ({unit})
                       </FormLabel>
                 <FormControl>
                         <Input 
                           type="number" 
                           step="0.1" 
-                          placeholder="e.g., 10" 
+                          placeholder="e.g., 6" 
                           {...field} 
                           value={field.value ?? ''} 
                           onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
@@ -229,67 +233,67 @@ export default function TileFlooringCalculator() {
                 />
                 <FormField 
                   control={form.control} 
-                  name="tileLength" 
+                  name="curtainWidth" 
                   render={({ field }) => (
               <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <Square className="h-4 w-4" />
-                        Tile Length ({unit === 'feet' ? 'in' : 'cm'})
+                        Curtain Width ({unit})
                       </FormLabel>
                 <FormControl>
                         <Input 
                           type="number" 
                           step="0.1" 
-                          placeholder="e.g., 12" 
+                          placeholder="e.g., 8" 
                           {...field} 
                           value={field.value ?? ''} 
                           onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
                         />
                 </FormControl>
-                      <FormMessage />
+                <FormMessage />
               </FormItem>
                   )} 
                 />
                 <FormField 
                   control={form.control} 
-                  name="tileWidth" 
+                  name="curtainLength" 
                   render={({ field }) => (
               <FormItem>
                       <FormLabel className="flex items-center gap-2">
-                        <Square className="h-4 w-4" />
-                        Tile Width ({unit === 'feet' ? 'in' : 'cm'})
+                        <Ruler className="h-4 w-4" />
+                        Curtain Length ({unit})
                       </FormLabel>
                 <FormControl>
                         <Input 
                           type="number" 
                           step="0.1" 
-                          placeholder="e.g., 12" 
+                          placeholder="e.g., 7" 
                           {...field} 
                           value={field.value ?? ''} 
                           onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
                         />
                 </FormControl>
-                      <FormMessage />
+                <FormMessage />
               </FormItem>
                   )} 
                 />
                 <FormField 
                   control={form.control} 
-                  name="wastage" 
+                  name="fullnessRatio" 
                   render={({ field }) => (
               <FormItem>
                       <FormLabel className="flex items-center gap-2">
-                        <Scissors className="h-4 w-4" />
-                        Wastage Percentage (%)
+                        <TrendingUp className="h-4 w-4" />
+                        Fullness Ratio
                       </FormLabel>
                 <FormControl>
                         <Input 
                           type="number" 
-                          step="1" 
-                          placeholder="e.g., 10" 
+                          step="0.1" 
+                          placeholder="e.g., 2.5" 
                           {...field} 
                           value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseInt(e.target.value, 10) || undefined)} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
                         />
                 </FormControl>
                       <FormMessage />
@@ -298,7 +302,7 @@ export default function TileFlooringCalculator() {
                 />
           </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate Tiles Needed
+                Calculate Curtain Coverage
               </Button>
         </form>
       </Form>
@@ -313,8 +317,8 @@ export default function TileFlooringCalculator() {
               <div className="flex items-center gap-4">
                 <Square className="h-8 w-8 text-primary" />
                 <div>
-                  <CardTitle>Your Tile Requirements</CardTitle>
-                  <CardDescription>Detailed tile calculation and project analysis</CardDescription>
+                  <CardTitle>Your Curtain Coverage Analysis</CardTitle>
+                  <CardDescription>Detailed coverage calculation and curtain analysis</CardDescription>
                 </div>
               </div>
             </CardHeader>
@@ -323,24 +327,24 @@ export default function TileFlooringCalculator() {
                 <div className="text-center p-6 bg-primary/5 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <Square className="h-5 w-5 text-primary" />
-                    <span className="text-sm font-medium text-muted-foreground">Tiles Needed</span>
+                    <span className="text-sm font-medium text-muted-foreground">Coverage Ratio</span>
                   </div>
                   <p className="text-3xl font-bold text-primary">
-                    {result.tilesNeeded} tiles
+                    {result.coverageRatio.toFixed(2)}x
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    {result.projectComplexity}
+                    {result.coverageLevel}
                   </p>
                 </div>
                 
                 <div className="text-center p-6 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-muted-foreground" />
-                    <span className="text-sm font-medium text-muted-foreground">Wastage Level</span>
+                    <span className="text-sm font-medium text-muted-foreground">Fullness Level</span>
                   </div>
                   <div className="text-2xl font-bold">
-                    <Badge variant={result.efficiencyLevel === 'Minimal Wastage' ? 'default' : result.efficiencyLevel === 'Standard Wastage' ? 'secondary' : 'destructive'}>
-                      {result.efficiencyLevel}
+                    <Badge variant={result.fullnessLevel === 'Luxury Fullness' ? 'default' : result.fullnessLevel === 'Standard Fullness' ? 'secondary' : 'outline'}>
+                      {result.fullnessLevel}
                     </Badge>
                   </div>
                   <p className="text-sm text-muted-foreground mt-1">
@@ -351,15 +355,47 @@ export default function TileFlooringCalculator() {
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <Home className="h-5 w-5 text-green-600" />
-                    <span className="text-sm font-medium text-muted-foreground">Project Assessment</span>
+                    <span className="text-sm font-medium text-muted-foreground">Coverage Assessment</span>
                   </div>
                   <p className="text-lg font-bold text-green-600">
-                    {result.tilesNeeded > 200 ? 'Large Project' : 
-                     result.tilesNeeded >= 50 ? 'Medium Project' : 'Small Project'}
+                    {result.coverageRatio > 2.5 ? 'Excellent' : 
+                     result.coverageRatio >= 2 ? 'Good' : 
+                     result.coverageRatio >= 1.5 ? 'Adequate' : 'Needs Improvement'}
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     {result.opinion}
                   </p>
+                </div>
+              </div>
+
+              {/* Detailed Results */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-foreground">Coverage Details</h4>
+                  <ul className="space-y-2">
+                    <li className="flex justify-between">
+                      <span>Window Area:</span>
+                      <span className="font-medium">{result.windowArea.toFixed(2)} sq {unit}</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Curtain Area:</span>
+                      <span className="font-medium">{result.curtainArea.toFixed(2)} sq {unit}</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Coverage Ratio:</span>
+                      <span className="font-medium">{result.coverageRatio.toFixed(2)}x</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-foreground">Fullness Guidelines</h4>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• 1.5x - Minimal fullness for basic coverage</li>
+                    <li>• 2.0x - Standard fullness for elegant draping</li>
+                    <li>• 2.5x - Luxury fullness for rich appearance</li>
+                    <li>• 3.0x+ - Ultra-luxury fullness for formal settings</li>
+                  </ul>
                 </div>
               </div>
 
@@ -422,27 +458,27 @@ export default function TileFlooringCalculator() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Area Dimensions</h4>
+              <h4 className="font-semibold text-foreground mb-2">Window Dimensions</h4>
               <p className="text-muted-foreground">
-                Enter the length and width of the rectangular area you plan to tile. The calculator assumes a rectangular space and calculates the total square footage.
+                Enter the width and height of your window frame. This determines the area that needs to be covered by curtains.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Tile Dimensions</h4>
+              <h4 className="font-semibold text-foreground mb-2">Curtain Dimensions</h4>
               <p className="text-muted-foreground">
-                The length and width of a single tile. Make sure to use the correct units - inches for feet measurements, centimeters for meters measurements.
+                Enter the width and length of your curtain panels. Width should be wider than the window for proper fullness.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Wastage Percentage</h4>
+              <h4 className="font-semibold text-foreground mb-2">Fullness Ratio</h4>
               <p className="text-muted-foreground">
-                Extra tiles to account for cuts, breakage, and mistakes. 10% is standard for simple layouts, but complex patterns may require 15-20% wastage.
+                The ratio of curtain width to window width. Higher ratios create more fullness and elegant draping. Standard is 2x, luxury is 2.5x.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Measurement Units</h4>
+              <h4 className="font-semibold text-foreground mb-2">Coverage Calculation</h4>
               <p className="text-muted-foreground">
-                Choose between feet/inches or meters/centimeters. The calculator automatically handles unit conversions for accurate calculations.
+                The calculator determines how well your curtains will cover the window and provides recommendations for optimal appearance.
               </p>
             </div>
           </CardContent>
@@ -456,7 +492,7 @@ export default function TileFlooringCalculator() {
               Related Calculators
             </CardTitle>
             <CardDescription>
-              Explore other home improvement calculators to plan your renovation project
+              Explore other home improvement calculators to plan your window treatments and renovation project
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -478,17 +514,17 @@ export default function TileFlooringCalculator() {
                   </a>
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  Determine how many wallpaper rolls you need for your room makeover project.
+                  Calculate wallpaper rolls needed for your walls and rooms.
                 </p>
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/home-improvement/drywall-plasterboard-calculator" className="text-primary hover:underline">
-                    Drywall Calculator
+                  <a href="/category/home-improvement/lighting-layout-calculator" className="text-primary hover:underline">
+                    Lighting Layout Calculator
                   </a>
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  Calculate drywall sheets needed for walls and ceilings in your renovation.
+                  Calculate optimal lighting fixtures and placement for your room dimensions.
                 </p>
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
@@ -510,7 +546,7 @@ export default function TileFlooringCalculator() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Square className="h-5 w-5" />
-              Complete Guide to Tile Installation
+              Complete Guide to Window Curtain Coverage
             </CardTitle>
           </CardHeader>
           <CardContent className="prose prose-sm dark:prose-invert max-w-none">
@@ -527,77 +563,77 @@ export default function TileFlooringCalculator() {
               Frequently Asked Questions
             </CardTitle>
             <CardDescription>
-              Common questions about tile installation and material calculations
+              Common questions about window curtain coverage and installation
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div>
-              <h4 className="font-semibold text-foreground mb-2">How much wastage should I plan for?</h4>
+              <h4 className="font-semibold text-foreground mb-2">What is curtain fullness ratio?</h4>
               <p className="text-muted-foreground">
-                Standard wastage is 10% for simple layouts. Complex patterns like herringbone or diagonal layouts may require 15-20%. Rooms with many corners, obstacles, or irregular shapes need higher wastage percentages.
+                Fullness ratio is the curtain width divided by window width. A 2x ratio means curtains are twice as wide as the window, creating elegant folds and draping.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Should I buy all tiles from the same batch?</h4>
+              <h4 className="font-semibold text-foreground mb-2">How much fullness do I need for my curtains?</h4>
               <p className="text-muted-foreground">
-                Yes, absolutely. Tiles are produced in batches (lots) and colors, sizes, and even textures can vary slightly between batches. Always purchase all tiles, including extras, from the same batch number.
+                Standard fullness is 2x for elegant draping. Use 2.5x for luxury appearance, 1.5x for basic coverage, and 3x+ for ultra-luxury formal settings.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">How do I prepare my subfloor for tiling?</h4>
+              <h4 className="font-semibold text-foreground mb-2">Should curtain rods extend beyond the window?</h4>
               <p className="text-muted-foreground">
-                The subfloor must be clean, level, dry, and rigid. Remove old flooring, repair cracks, and ensure no flexing. For wood subfloors, use cement backer board. For concrete, ensure it's smooth and level.
+                Yes, extend rods 6-12 inches beyond the window frame to allow curtains to stack completely off the glass when open, maximizing natural light.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">What's the difference between ceramic and porcelain tiles?</h4>
+              <h4 className="font-semibold text-foreground mb-2">How do I measure for curtain length?</h4>
               <p className="text-muted-foreground">
-                Porcelain tiles are denser, more durable, and less porous than ceramic tiles. They're better for high-traffic areas and outdoor use. Ceramic tiles are more affordable and easier to cut, making them popular for walls and light-traffic floors.
+                Measure from the rod to desired length: floor-length (touching floor), puddle-length (6" on floor), or sill-length (just below sill).
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">How wide should grout lines be?</h4>
+              <h4 className="font-semibold text-foreground mb-2">What's the difference between single and double panels?</h4>
               <p className="text-muted-foreground">
-                Grout line width depends on tile size and type. Small tiles (4" or less) typically use 1/16" to 1/8" lines. Medium tiles (6-12") use 1/8" to 1/4" lines. Large tiles may use 1/4" to 3/8" lines. Check manufacturer recommendations.
+                Single panels cover half the window width, double panels cover the full width. Double panels provide better fullness and light control.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Can I tile over existing tiles?</h4>
+              <h4 className="font-semibold text-foreground mb-2">How do fabric weight affect fullness requirements?</h4>
               <p className="text-muted-foreground">
-                Yes, but only if the existing tiles are firmly attached, level, and clean. You'll need to rough up the surface with sandpaper and use a high-quality adhesive. Consider the added height and weight implications.
+                Heavy fabrics like velvet need more fullness (2.5x+) for proper draping. Light fabrics like sheers can use less fullness (1.5-2x).
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">How long does tile adhesive take to dry?</h4>
+              <h4 className="font-semibold text-foreground mb-2">What curtain styles work best with different fullness ratios?</h4>
               <p className="text-muted-foreground">
-                Most tile adhesives require 24-48 hours to fully cure before grouting. Thin-set mortar typically sets in 2-4 hours but needs 24 hours for full strength. Always follow manufacturer instructions for your specific product.
+                Pleated curtains work well with 2-2.5x fullness, gathered curtains need 2.5x+, and tab-top curtains can use 1.5-2x fullness.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">What tools do I need for tile installation?</h4>
+              <h4 className="font-semibold text-foreground mb-2">How do I calculate curtains for bay windows?</h4>
               <p className="text-muted-foreground">
-                Essential tools include a tile cutter or wet saw, notched trowel, tile spacers, level, measuring tape, and grout float. For large projects, consider renting professional tools like a tile saw and tile leveling system.
+                Measure each window section separately and calculate fullness for each. Consider using multiple rods or specialty bay window hardware.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">How do I calculate tiles for irregular-shaped rooms?</h4>
+              <h4 className="font-semibold text-foreground mb-2">What's the cost difference between fullness ratios?</h4>
               <p className="text-muted-foreground">
-                For irregular rooms, break the area into smaller rectangles, calculate each section separately, then add them together. Increase wastage percentage to 15-20% for complex shapes with many cuts and angles.
+                Higher fullness ratios require more fabric, increasing costs by 50-150%. However, the improved appearance often justifies the additional expense.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-foreground mb-2">Should I seal my tiles after installation?</h4>
+              <h4 className="font-semibold text-foreground mb-2">How do I ensure proper curtain installation?</h4>
               <p className="text-muted-foreground">
-                Natural stone tiles always need sealing. Porcelain tiles rarely need sealing. Ceramic tiles may benefit from sealing in wet areas. Grout should be sealed to prevent staining and make cleaning easier.
+                Use appropriate hardware for curtain weight, install rods level and secure, and ensure curtains can move freely without binding or dragging.
               </p>
             </div>
           </CardContent>

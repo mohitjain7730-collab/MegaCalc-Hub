@@ -1621,6 +1621,20 @@ export const calculators: Calculator[] = [
     slug: 'garden-landscape-soil-mulch-calculator',
     category: 'home-improvement',
   },
+  {
+    id: 3315,
+    name: 'Window Glass & Curtain Coverage Calculator',
+    description: 'Calculate optimal curtain coverage and fullness for your windows.',
+    slug: 'window-glass-curtain-coverage-calculator',
+    category: 'home-improvement',
+  },
+  {
+    id: 3316,
+    name: 'Paint Drying / Curing Time Calculator',
+    description: 'Calculate paint drying and curing times based on environmental conditions.',
+    slug: 'paint-drying-curing-time-calculator',
+    category: 'home-improvement',
+  },
   // Engineering
   {
     id: 16,

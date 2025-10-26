@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -8,95 +7,145 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import { Scroll, Ruler, Calculator, Info, AlertCircle, TrendingUp, Users, Home, Building, Layers } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
-  wallHeight: z.number().positive(),
-  wallWidth: z.number().positive(),
-  rollLength: z.number().positive(),
-  rollWidth: z.number().positive(),
-  patternRepeat: z.number().min(0).default(0),
-  unit: z.enum(['meters', 'feet']),
+  wallHeight: z.number().min(0.1).optional(),
+  wallWidth: z.number().min(0.1).optional(),
+  rollLength: z.number().min(0.1).optional(),
+  rollWidth: z.number().min(0.1).optional(),
+  patternRepeat: z.number().min(0).optional(),
+  unit: z.enum(['meters', 'feet']).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-interface CalculationResult {
-    rolls: number;
-    chartData: {
-        name: string;
-        needed: number;
-        purchased: number;
-    }[];
-    unit: string;
-}
-
 export default function WallpaperRollCalculator() {
-  const [result, setResult] = useState<CalculationResult | null>(null);
+  const [result, setResult] = useState<{ 
+    rollsNeeded: number; 
+    interpretation: string; 
+    opinion: string;
+    projectComplexity: string;
+    efficiencyLevel: string;
+    recommendations: string[];
+    considerations: string[];
+  } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-        unit: 'feet',
-        patternRepeat: 0,
-        wallHeight: undefined,
-        wallWidth: undefined,
-        rollLength: undefined,
-        rollWidth: undefined,
-    },
+    defaultValues: { 
+      wallHeight: undefined, 
+      wallWidth: undefined, 
+      rollLength: undefined, 
+      rollWidth: undefined, 
+      patternRepeat: undefined, 
+      unit: undefined 
+    }
   });
 
-  const onSubmit = (values: FormValues) => {
-    let { wallHeight, wallWidth, rollLength, rollWidth, patternRepeat, unit } = values;
-    let lengthUnit = unit;
+  const calculate = (v: FormValues) => {
+    if (v.wallHeight == null || v.wallWidth == null || v.rollLength == null || v.rollWidth == null || v.patternRepeat == null || v.unit == null) return null;
+    
+    let rollWidth = v.rollWidth;
+    let patternRepeat = v.patternRepeat;
 
-    if (unit === 'feet') {
-      // convert roll width and pattern repeat from inches to feet
-      rollWidth /= 12;
+    if (v.unit === 'feet') {
+      rollWidth /= 12; // convert inches to feet
       patternRepeat /= 12;
-    } else { // meters
-      // convert roll width and pattern repeat from cm to meters
-      rollWidth /= 100;
+    } else {
+      rollWidth /= 100; // convert cm to meters
       patternRepeat /= 100;
     }
 
     const wastageFactor = 1.1; // 10% wastage
-
-    // Calculate how many drops are needed for the wall
-    const dropsNeeded = Math.ceil(wallWidth / rollWidth);
-
-    // Calculate the length of each drop, accounting for pattern repeat
-    const dropLength = wallHeight + (patternRepeat > 0 ? patternRepeat : 0);
-    
-    // Calculate how many full drops can be cut from a single roll
-    const dropsPerRoll = Math.floor(rollLength / dropLength);
+    const dropsNeeded = Math.ceil(v.wallWidth / rollWidth);
+    const dropLength = v.wallHeight + (patternRepeat > 0 ? patternRepeat : 0);
+    const dropsPerRoll = Math.floor(v.rollLength / dropLength);
 
     let rollsNeeded;
     if (dropsPerRoll > 0) {
         rollsNeeded = Math.ceil(dropsNeeded / dropsPerRoll);
     } else {
-        // This case handles when a single drop is longer than a roll
         const totalLengthNeeded = dropsNeeded * dropLength;
-        rollsNeeded = Math.ceil(totalLengthNeeded / rollLength);
+      rollsNeeded = Math.ceil(totalLengthNeeded / v.rollLength);
     }
     
-    const finalRolls = Math.ceil(rollsNeeded * wastageFactor);
-    const totalLengthNeeded = dropsNeeded * dropLength;
-    const totalLengthPurchased = finalRolls * rollLength;
+    return Math.ceil(rollsNeeded * wastageFactor);
+  };
 
+  const interpret = (rollsNeeded: number, patternRepeat: number) => {
+    if (rollsNeeded > 20) return `Large wallpapering project requiring ${rollsNeeded} rolls with pattern matching considerations.`;
+    if (rollsNeeded >= 10) return `Medium wallpapering project requiring ${rollsNeeded} rolls with pattern matching considerations.`;
+    return `Small wallpapering project requiring ${rollsNeeded} rolls with pattern matching considerations.`;
+  };
+
+  const getProjectComplexity = (rollsNeeded: number, patternRepeat: number) => {
+    if (rollsNeeded > 20) return 'Large Project';
+    if (rollsNeeded >= 10) return 'Medium Project';
+    return 'Small Project';
+  };
+
+  const getEfficiencyLevel = (patternRepeat: number) => {
+    if (patternRepeat === 0) return 'No Pattern Repeat';
+    if (patternRepeat <= 6) return 'Small Pattern Repeat';
+    return 'Large Pattern Repeat';
+  };
+
+  const getRecommendations = (rollsNeeded: number, patternRepeat: number, unit: string) => {
+    const recommendations = [];
+    
+    recommendations.push(`Purchase ${rollsNeeded} rolls from the same batch/lot`);
+    recommendations.push('Prepare walls properly - clean, smooth, and primed');
+    recommendations.push('Plan your starting point for optimal pattern alignment');
+    recommendations.push('Use quality wallpaper adhesive and tools');
+    
+    if (patternRepeat > 0) {
+      recommendations.push('Account for pattern repeat when cutting strips');
+      recommendations.push('Start from the most visible wall for best pattern placement');
+    }
+    
+    if (rollsNeeded > 15) {
+      recommendations.push('Consider professional installation for large projects');
+    }
+    
+    return recommendations;
+  };
+
+  const getConsiderations = (rollsNeeded: number, patternRepeat: number) => {
+    const considerations = [];
+    
+    considerations.push('Pattern repeat significantly affects material waste');
+    considerations.push('Wallpaper color and pattern may vary between batches');
+    considerations.push('Room shape and obstacles affect installation complexity');
+    considerations.push('Wall preparation is crucial for proper adhesion');
+    
+    if (patternRepeat > 12) {
+      considerations.push('Large pattern repeats require careful planning and extra material');
+    }
+    
+    return considerations;
+  };
+
+  const opinion = (rollsNeeded: number, patternRepeat: number) => {
+    if (rollsNeeded > 20) return `This is a substantial wallpapering project that requires careful planning and may benefit from professional installation.`;
+    if (rollsNeeded >= 10) return `This is a manageable DIY project with proper preparation and attention to pattern matching.`;
+    return `Perfect size for a DIY weekend project with careful attention to detail.`;
+  };
+
+  const onSubmit = (values: FormValues) => {
+    const rollsNeeded = calculate(values);
+    if (rollsNeeded == null) { setResult(null); return; }
     setResult({ 
-        rolls: finalRolls,
-        chartData: [{
-            name: 'Wallpaper',
-            needed: parseFloat(totalLengthNeeded.toFixed(2)),
-            purchased: parseFloat(totalLengthPurchased.toFixed(2)),
-        }],
-        unit: lengthUnit
+      rollsNeeded, 
+      interpretation: interpret(rollsNeeded, values.patternRepeat || 0), 
+      opinion: opinion(rollsNeeded, values.patternRepeat || 0),
+      projectComplexity: getProjectComplexity(rollsNeeded, values.patternRepeat || 0),
+      efficiencyLevel: getEfficiencyLevel(values.patternRepeat || 0),
+      recommendations: getRecommendations(rollsNeeded, values.patternRepeat || 0, values.unit || 'feet'),
+      considerations: getConsiderations(rollsNeeded, values.patternRepeat || 0)
     });
   };
   
@@ -104,105 +153,468 @@ export default function WallpaperRollCalculator() {
 
   return (
     <div className="space-y-8">
+
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Scroll className="h-5 w-5" />
+            Wall & Wallpaper Specifications
+          </CardTitle>
+          <CardDescription>
+            Enter your wall dimensions and wallpaper specifications to calculate roll requirements
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField control={form.control} name="unit" render={({ field }) => (
-                        <FormItem className="md:col-span-2">
-                            <FormLabel>Units</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl><SelectTrigger><SelectValue placeholder="Select unit" /></SelectTrigger></FormControl>
-                                <SelectContent>
-                                    <SelectItem value="feet">Feet / Inches</SelectItem>
-                                    <SelectItem value="meters">Meters / Centimeters</SelectItem>
-                                </SelectContent>
-                            </Select>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField 
+                  control={form.control} 
+                  name="unit" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Ruler className="h-4 w-4" />
+                        Measurement Units
+                      </FormLabel>
+                <FormControl>
+                        <select 
+                          className="border rounded h-10 px-3 w-full bg-background" 
+                          value={field.value ?? ''} 
+                          onChange={(e) => field.onChange(e.target.value as 'meters' | 'feet')}
+                        >
+                          <option value="">Select units</option>
+                          <option value="feet">Feet / Inches</option>
+                          <option value="meters">Meters / Centimeters</option>
+                  </select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="wallHeight" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Ruler className="h-4 w-4" />
+                        Wall Height ({unit})
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.1" 
+                          placeholder="e.g., 8" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="wallWidth" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Ruler className="h-4 w-4" />
+                        Total Wall Width ({unit})
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.1" 
+                          placeholder="e.g., 20" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="rollLength" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Scroll className="h-4 w-4" />
+                        Roll Length ({unit})
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.1" 
+                          placeholder="e.g., 33" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                      <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="rollWidth" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Scroll className="h-4 w-4" />
+                        Roll Width ({unit === 'feet' ? 'in' : 'cm'})
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.1" 
+                          placeholder="e.g., 20.5" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                      <FormMessage />
+              </FormItem>
+                  )} 
+                />
+                <FormField 
+                  control={form.control} 
+                  name="patternRepeat" 
+                  render={({ field }) => (
+              <FormItem>
+                      <FormLabel className="flex items-center gap-2">
+                        <Layers className="h-4 w-4" />
+                        Pattern Repeat ({unit === 'feet' ? 'in' : 'cm'})
+                      </FormLabel>
+                <FormControl>
+                        <Input 
+                          type="number" 
+                          step="0.1" 
+                          placeholder="e.g., 0" 
+                          {...field} 
+                          value={field.value ?? ''} 
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        />
+                </FormControl>
+                      <FormMessage />
                         </FormItem>
-                    )} />
-                    <FormField control={form.control} name="wallHeight" render={({ field }) => (
-                        <FormItem><FormLabel>Wall Height ({unit})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                    <FormField control={form.control} name="wallWidth" render={({ field }) => (
-                        <FormItem><FormLabel>Total Wall Width ({unit})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                    <FormField control={form.control} name="rollLength" render={({ field }) => (
-                        <FormItem><FormLabel>Roll Length ({unit})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                    <FormField control={form.control} name="rollWidth" render={({ field }) => (
-                        <FormItem><FormLabel>Roll Width ({unit === 'feet' ? 'in' : 'cm'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-                    )} />
-                    <FormField control={form.control} name="patternRepeat" render={({ field }) => (
-                        <FormItem className="md:col-span-2"><FormLabel>Pattern Repeat ({unit === 'feet' ? 'in' : 'cm'}) (0 if none)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} /></FormControl><FormMessage /></FormItem>
-                    )} />
+                  )} 
+                />
+          </div>
+              <Button type="submit" className="w-full md:w-auto">
+                Calculate Wallpaper Rolls
+              </Button>
+        </form>
+      </Form>
+        </CardContent>
+      </Card>
+
+      {result && (
+        <div className="space-y-6">
+          {/* Main Results Card */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <Scroll className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Your Wallpaper Requirements</CardTitle>
+                  <CardDescription>Detailed wallpaper calculation and project analysis</CardDescription>
                 </div>
-                <Button type="submit">Calculate</Button>
-            </form>
-        </Form>
-        {result !== null && (
-            <Card className="mt-8">
-                <CardHeader><div className='flex items-center gap-4'><Calculator className="h-8 w-8 text-primary" /><CardTitle>Result</CardTitle></div></CardHeader>
+              </div>
+            </CardHeader>
                 <CardContent>
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <p className="text-lg">You will need approximately <strong>{result.rolls} rolls</strong> of wallpaper.</p>
-                            <CardDescription className='mt-2'>This includes a 10% wastage factor. It's always better to have a little extra.</CardDescription>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-6 bg-primary/5 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Scroll className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium text-muted-foreground">Rolls Needed</span>
+                  </div>
+                  <p className="text-3xl font-bold text-primary">
+                    {result.rollsNeeded} rolls
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.projectComplexity}
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-muted/50 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-muted-foreground" />
+                    <span className="text-sm font-medium text-muted-foreground">Pattern Complexity</span>
+                  </div>
+                  <div className="text-2xl font-bold">
+                    <Badge variant={result.efficiencyLevel === 'No Pattern Repeat' ? 'default' : result.efficiencyLevel === 'Small Pattern Repeat' ? 'secondary' : 'destructive'}>
+                      {result.efficiencyLevel}
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.interpretation}
+                  </p>
+                </div>
+                
+                <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Home className="h-5 w-5 text-green-600" />
+                    <span className="text-sm font-medium text-muted-foreground">Project Assessment</span>
+                  </div>
+                  <p className="text-lg font-bold text-green-600">
+                    {result.rollsNeeded > 20 ? 'Large Project' : 
+                     result.rollsNeeded >= 10 ? 'Medium Project' : 'Small Project'}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {result.opinion}
+                  </p>
+                </div>
                         </div>
-                        <div className='h-48'>
-                             <ResponsiveContainer width="100%" height="100%">
-                                <BarChart data={result.chartData} layout="vertical" margin={{ left: 10 }}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis type="number" unit={result.unit} />
-                                <YAxis type="category" dataKey="name" hide />
-                                <Tooltip formatter={(value: number, name) => `${value} ${result.unit}`} />
-                                <Legend />
-                                <Bar dataKey="needed" name="Wallpaper Needed" fill="hsl(var(--muted-foreground))" />
-                                <Bar dataKey="purchased" name="Wallpaper Purchased" fill="hsl(var(--primary))" />
-                                </BarChart>
-                            </ResponsiveContainer>
+
+              {/* Detailed Recommendations */}
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <Scroll className="h-5 w-5" />
+                        Installation Recommendations
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.recommendations.map((rec, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{rec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                        <AlertCircle className="h-5 w-5" />
+                        Important Considerations
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {result.considerations.map((consideration, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{consideration}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
                         </div>
                     </div>
                 </CardContent>
             </Card>
-        )}
-        <Accordion type="single" collapsible className="w-full">
-             <AccordionItem value="understanding-inputs">
-                <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground space-y-4">
+        </div>
+      )}
+
+      {/* Educational Content - Expanded Sections */}
+      <div className="space-y-6">
+        {/* Explain the Inputs Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Understanding the Inputs
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Wall Dimensions</h4>
+              <p className="text-muted-foreground">
+                Enter the height of the wall and the total width of all walls you plan to wallpaper. Include all walls in the room for accurate calculations.
+              </p>
+            </div>
                     <div>
-                        <h4 className="font-semibold text-foreground mb-1">Wall Dimensions</h4>
-                        <p>The height of the wall you are papering, and the total width (add the widths of all walls you plan to cover).</p>
+              <h4 className="font-semibold text-foreground mb-2">Roll Specifications</h4>
+              <p className="text-muted-foreground">
+                The length and width of a single wallpaper roll as specified by the manufacturer. These dimensions vary by brand and style.
+              </p>
                     </div>
                     <div>
-                        <h4 className="font-semibold text-foreground mb-1">Roll Dimensions</h4>
-                        <p>The length and width of a single roll of wallpaper, as specified by the manufacturer.</p>
+              <h4 className="font-semibold text-foreground mb-2">Pattern Repeat</h4>
+              <p className="text-muted-foreground">
+                The vertical distance before the wallpaper pattern repeats itself. Enter 0 for solid colors or non-repeating patterns. This is crucial for pattern alignment and affects material waste.
+              </p>
                     </div>
                     <div>
-                        <h4 className="font-semibold text-foreground mb-1">Pattern Repeat</h4>
-                        <p>The vertical distance before the wallpaper's pattern repeats itself. Enter 0 if your wallpaper has no pattern. This value is crucial for ensuring the pattern aligns correctly between strips and is a major source of waste.</p>
+              <h4 className="font-semibold text-foreground mb-2">Measurement Units</h4>
+              <p className="text-muted-foreground">
+                Choose between feet/inches or meters/centimeters. The calculator automatically handles unit conversions for accurate calculations.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Related Calculators Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Building className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other home improvement calculators to plan your renovation project
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/home-improvement/paint-coverage-calculator" className="text-primary hover:underline">
+                    Paint Coverage Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate the exact amount of paint needed for your walls and ceilings.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/home-improvement/tile-flooring-calculator" className="text-primary hover:underline">
+                    Tile & Flooring Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate the exact amount of tiles or flooring materials needed for your project.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/home-improvement/drywall-plasterboard-calculator" className="text-primary hover:underline">
+                    Drywall Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate drywall sheets needed for walls and ceilings in your renovation.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/home-improvement/cost-estimator-renovation-calculator" className="text-primary hover:underline">
+                    Renovation Cost Estimator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Get accurate cost estimates for your home renovation and improvement projects.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Scroll className="h-5 w-5" />
+              Complete Guide to Wallpaper Installation
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+          </CardContent>
+        </Card>
+
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about wallpaper installation and material calculations
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How much extra wallpaper should I buy?</h4>
+              <p className="text-muted-foreground">
+                The calculator includes a 10% wastage factor, which is standard for most projects. For complex patterns or irregular rooms, consider buying 15-20% extra to account for pattern matching and cuts.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What is pattern repeat and why is it important?</h4>
+              <p className="text-muted-foreground">
+                Pattern repeat is the vertical distance between identical points in the wallpaper pattern. It's crucial for ensuring patterns align correctly between strips and significantly affects material waste, especially with large repeats.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I buy all wallpaper from the same batch?</h4>
+              <p className="text-muted-foreground">
+                Yes, absolutely. Wallpaper colors and patterns can vary between batches (lots). Always purchase all rolls, including extras, from the same batch number to ensure consistency.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How do I prepare walls for wallpapering?</h4>
+              <p className="text-muted-foreground">
+                Walls must be clean, smooth, dry, and primed. Remove old wallpaper, fill holes and cracks, sand rough areas, and apply wallpaper primer. Proper preparation ensures good adhesion and a professional finish.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Can I wallpaper over existing wallpaper?</h4>
+              <p className="text-muted-foreground">
+                Generally not recommended. Existing wallpaper can cause adhesion problems and create an uneven surface. It's best to remove old wallpaper completely and prepare the wall properly before applying new wallpaper.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How do I calculate wallpaper for rooms with doors and windows?</h4>
+              <p className="text-muted-foreground">
+                The calculator doesn't subtract for doors and windows, which provides a safety buffer. This extra wallpaper accounts for cutting around openings, pattern matching, and future repairs.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What's the difference between prepasted and unpasted wallpaper?</h4>
+              <p className="text-muted-foreground">
+                Prepasted wallpaper has adhesive already applied and is activated with water. Unpasted wallpaper requires separate wallpaper paste. Both types work well, but prepasted is easier for DIY projects.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How long does wallpaper adhesive take to dry?</h4>
+              <p className="text-muted-foreground">
+                Most wallpaper adhesives are ready for trimming within 15-30 minutes and fully dry within 24-48 hours. Follow manufacturer instructions for your specific adhesive and wallpaper type.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Can I wallpaper over textured walls?</h4>
+              <p className="text-muted-foreground">
+                Light textures can be wallpapered over, but heavy textures like popcorn ceilings should be smoothed first. Use a wallpaper liner or skim coat for heavily textured walls to ensure proper adhesion.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How do I remove wallpaper if I make a mistake?</h4>
+              <p className="text-muted-foreground">
+                Use a scoring tool to perforate the wallpaper, then apply warm water or wallpaper remover solution. Let it soak for 10-15 minutes, then gently scrape with a putty knife. For stubborn adhesive, use a steamer.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
                     </div>
-                </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="how-it-works">
-                <AccordionTrigger>How This Calculator Works</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground space-y-2">
-                    <ol className="list-decimal list-inside space-y-1">
-                        <li><strong>Drops Needed:</strong> Divides the total wall width by the roll width to determine how many vertical strips (drops) of wallpaper you need.</li>
-                        <li><strong>Drop Length:</strong> Calculates the length needed for each drop by adding the wall height and the pattern repeat distance. This ensures you can align the pattern on each strip.</li>
-                        <li><strong>Drops per Roll:</strong> Divides the roll length by the required drop length to see how many full drops you can cut from a single roll.</li>
-                        <li><strong>Rolls Needed:</strong> Divides the total number of drops needed by the number of drops you can get from one roll.</li>
-                        <li><strong>Wastage:</strong> A 10% wastage factor is added to the final count to account for mistakes and offcuts. The final result is rounded up.</li>
-                    </ol>
-                </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="pro-tips">
-                <AccordionTrigger>Pro Tips for Wallpapering</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground space-y-4">
-                    <div><h4 className="font-semibold text-foreground mb-1">Measure Twice, Cut Once</h4><p>Carefully measure your walls, and don't forget to subtract large openings like doors and windows from your total wall width measurement.</p></div>
-                    <div><h4 className="font-semibold text-foreground mb-1">Understand Pattern Repeat</h4><p>The pattern repeat is the vertical distance between one point in the pattern to the identical point below or above it. You need to account for this to ensure the design matches up seamlessly between drops.</p></div>
-                    <div><h4 className="font-semibold text-foreground mb-1">Prep Your Walls</h4><p>A smooth, clean, and primed wall is essential for good adhesion and a professional finish. Fill any holes or cracks and sand them smooth before you begin.</p></div>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
     </div>
   );
 }
