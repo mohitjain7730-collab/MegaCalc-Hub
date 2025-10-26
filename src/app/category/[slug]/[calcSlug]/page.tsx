@@ -614,9 +614,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'graduated-payment-mortgage-calculator': dynamic(() => import('@/components/calculators/finance/graduated-payment-mortgage-calculator')),
 };
 
-export default function CalculatorPage({ params }: { params: { slug: string; calcSlug: string } }) {
-  const category = categories.find((c) => c.slug === params.slug);
-  const calculator = calculators.find((c) => c.slug === params.calcSlug && c.category === params.slug);
+export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {
+  const { slug, calcSlug } = await params;
+  const category = categories.find((c) => c.slug === slug);
+  const calculator = calculators.find((c) => c.slug === calcSlug && c.category === slug);
 
   if (!category || !calculator) {
     notFound();
