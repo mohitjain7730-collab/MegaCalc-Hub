@@ -17,6 +17,8 @@ export const calculators: Calculator[] = [
     description: 'Project the future value of your Systematic Investment Plan (SIP) or Dollar-Cost Averaging (DCA) strategy. See how regular, disciplined investing can help you reach your financial goals.',
     slug: 'sip-calculator',
     category: 'finance',
+    metaTitle: 'SIP/DCA Return Calculator - Investment Growth Estimator',
+    metaDescription: 'Calculate potential returns from SIPs or DCA investments and plan your long-term financial growth.',
   },
   {
     id: 96,
@@ -24,6 +26,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate your monthly payment (EMI) for any loan, including mortgages, auto loans, or personal loans. Understand your repayment schedule with a detailed amortization graph.',
     slug: 'loan-emi-calculator',
     category: 'finance',
+    metaTitle: 'Loan & EMI Calculator - Easy Monthly Payment Planner',
+    metaDescription: 'Determine your monthly EMI for loans with our Loan/EMI Calculator and plan your finances effectively.',
   },
   {
     id: 97,
@@ -31,13 +35,17 @@ export const calculators: Calculator[] = [
     description: 'Plan for your future by estimating your retirement corpus based on current savings, contributions, and expected returns. Find out if you are on track to meet your retirement goals.',
     slug: 'retirement-savings-calculator',
     category: 'finance',
+    metaTitle: 'Retirement Savings Calculator - Future Planning',
+    metaDescription: 'Estimate how much you need to save for retirement to achieve financial security in the future.',
   },
   {
     id: 98,
     name: 'Compound Interest Calculator',
     description: 'Calculate the future value of an investment using the power of compound interest. Visualize how your savings can grow over time with different compounding frequencies.',
     slug: 'compound-interest-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'Compound Interest Calculator - Investment Growth Tool',
+    metaDescription: 'Calculate how your investments grow over time with compound interest and plan your financial future.',
   },
   {
     id: 99,
@@ -45,6 +53,8 @@ export const calculators: Calculator[] = [
     description: 'Estimate your 401(k) growth by retirement, including your contributions, employer match, and investment returns. Visualize your path to a secure retirement.',
     slug: '401k-contribution-calculator',
     category: 'finance',
+    metaTitle: '401(k) Contribution Calculator - Retirement Planner',
+    metaDescription: 'Plan your 401(k) contributions and estimate your retirement savings growth with employer matching.',
   },
   {
     id: 100,
@@ -52,6 +62,8 @@ export const calculators: Calculator[] = [
     description: 'Get a clear picture of your financial health by calculating your net worth. Track your assets and liabilities to understand your overall wealth and financial progress.',
     slug: 'net-worth-calculator',
     category: 'finance',
+    metaTitle: 'Net Worth Calculator - Financial Health Tracker',
+    metaDescription: 'Calculate your net worth by tracking assets and liabilities to assess your financial health.',
   },
   {
     id: 101,
@@ -59,6 +71,8 @@ export const calculators: Calculator[] = [
     description: 'Find out how long it will take to pay off your credit card balance based on your monthly payment. See the total interest you\'ll pay and get a plan to become debt-free.',
     slug: 'credit-card-payoff-calculator',
     category: 'finance',
+    metaTitle: 'Credit Card Payoff Calculator - Debt Management Tool',
+    metaDescription: 'Calculate how long it will take to pay off your credit card debt and plan your debt-free strategy.',
   },
   {
     id: 102,
@@ -66,6 +80,8 @@ export const calculators: Calculator[] = [
     description: 'Estimate your monthly mortgage payment. See how principal, interest, and loan term affect your payment and view a detailed amortization schedule.',
     slug: 'mortgage-payment-calculator',
     category: 'finance',
+    metaTitle: 'Mortgage Payment Calculator - Home Loan Planner',
+    metaDescription: 'Calculate your monthly mortgage payment and plan your home loan with detailed amortization schedule.',
   },
   {
     id: 103,
@@ -73,6 +89,8 @@ export const calculators: Calculator[] = [
     description: 'Understand your student loan repayment options. Calculate your monthly payment and the total interest you\'ll pay over the life of the loan.',
     slug: 'student-loan-repayment-calculator',
     category: 'finance',
+    metaTitle: 'Student Loan Repayment Calculator - Debt Planner',
+    metaDescription: 'Plan your student loan repayment strategy and calculate total interest costs.',
   },
   {
     id: 104,
@@ -80,6 +98,8 @@ export const calculators: Calculator[] = [
     description: 'See how the value of your money may decrease over time due to inflation. Understand the future purchasing power of your savings.',
     slug: 'inflation-calculator',
     category: 'finance',
+    metaTitle: 'Inflation Calculator - Future Value Estimator',
+    metaDescription: 'Calculate how inflation affects the purchasing power of your money over time.',
   },
   {
     id: 105,
@@ -87,6 +107,8 @@ export const calculators: Calculator[] = [
     description: 'Determine your maximum allowed contribution for the current tax year based on your income, filing status, and age.',
     slug: 'roth-ira-contribution-limit-calculator',
     category: 'finance',
+    metaTitle: 'Roth IRA Contribution Calculator - Retirement Planner',
+    metaDescription: 'Calculate your maximum Roth IRA contribution limits based on income and filing status.',
   },
   {
     id: 159,
@@ -94,6 +116,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the current worth of a future sum of money. This is a fundamental concept in finance that allows you to evaluate whether an investment is worth making today by understanding what a future cash flow is worth in today\'s dollars.',
     slug: 'present-value-calculator',
     category: 'finance',
+    metaTitle: 'Present Value Calculator - Time Value of Money Tool',
+    metaDescription: 'Calculate the present value of future cash flows to make informed investment decisions.',
   },
   {
     id: 160,
@@ -101,6 +125,8 @@ export const calculators: Calculator[] = [
     description: 'Project the future worth of a current investment given a specific rate of return. This tool helps you visualize how your money can grow over time, demonstrating the power of compounding interest on your initial savings.',
     slug: 'future-value-calculator',
     category: 'finance',
+    metaTitle: 'Future Value Calculator - Investment Projection Tool',
+    metaDescription: 'Project the future value of your investments with compound interest calculations.',
   },
   {
     id: 161,
@@ -108,6 +134,8 @@ export const calculators: Calculator[] = [
     description: 'Determine the fixed periodic payment required for a loan or to reach a specified future savings goal. This is useful for understanding mortgage payments, car loans, or planning contributions for a retirement fund.',
     slug: 'annuity-payment-calculator',
     category: 'finance',
+    metaTitle: 'Annuity Payment Calculator - Income Planner',
+    metaDescription: 'Calculate annuity payments for loans and retirement planning with fixed periodic payments.',
   },
   {
     id: 162,
@@ -115,6 +143,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the present value of an infinite series of equal payments. While a theoretical concept, it is crucial in finance for valuing assets with indefinite cash flows, such as preferred stocks or certain types of real estate.',
     slug: 'perpetuity-calculator',
     category: 'finance',
+    metaTitle: 'Perpetuity Calculator - Infinite Cash Flow Estimator',
+    metaDescription: 'Calculate the present value of infinite cash flows for preferred stocks and real estate valuation.',
   },
   {
     id: 163,
@@ -122,6 +152,8 @@ export const calculators: Calculator[] = [
     description: 'Value a stream of cash flows that is expected to grow at a constant rate, either for a finite number of periods (annuity) or indefinitely (perpetuity). This is useful for valuing dividend-paying stocks or rental income that is projected to increase over time.',
     slug: 'growing-annuity-calculator',
     category: 'finance',
+    metaTitle: 'Growing Annuity Perpetuity Calculator - Cash Flow Valuation Tool',
+    metaDescription: 'Calculate the present value of growing annuity or perpetuity cash flows for dividend stocks and rental income valuation.',
   },
   {
     id: 165,
@@ -129,13 +161,17 @@ export const calculators: Calculator[] = [
     description: 'Determine the difference between the present value of cash inflows and the present value of cash outflows over a period of time. A positive NPV indicates a profitable investment, making it a critical tool for capital budgeting.',
     slug: 'npv-calculator',
     category: 'finance',
+    metaTitle: 'NPV Calculator - Investment Evaluation Tool',
+    metaDescription: 'Evaluate investment profitability with Net Present Value calculations for capital budgeting.',
   },
   {
     id: 166,
     name: 'Discount Rate Calculator',
     description: 'Estimate the required rate of return for an investment using the Capital Asset Pricing Model (CAPM). This helps in assessing the risk and potential return of an asset compared to the overall market.',
     slug: 'discount-rate-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'Discount Rate Calculator - Investment Analysis Tool',
+    metaDescription: 'Calculate the required rate of return for investments using CAPM and risk assessment.',
   },
   {
     id: 167,
@@ -143,6 +179,8 @@ export const calculators: Calculator[] = [
     description: 'Estimate the intrinsic value of an investment or a company based on its expected future cash flows. DCF analysis helps you determine if an asset is undervalued or overvalued in the current market.',
     slug: 'dcf-calculator',
     category: 'finance',
+    metaTitle: 'DCF Calculator - Investment Valuation Tool',
+    metaDescription: 'Estimate intrinsic value of investments using discounted cash flow analysis.',
   },
   {
     id: 168,
@@ -150,76 +188,98 @@ export const calculators: Calculator[] = [
     description: 'Determine the length of time required for an investment to generate cash flows sufficient to recover its initial cost. This is a simple way to assess the risk and liquidity of a project.',
     slug: 'payback-period-calculator',
     category: 'finance',
+    metaTitle: 'Payback Period Calculator - Investment Recovery Tool',
+    metaDescription: 'Calculate how long it takes to recover your initial investment with cash flow analysis.',
   },
   {
     id: 169,
     name: 'Price-to-Earnings (P/E) Ratio Calculator',
     description: 'Calculate the P/E ratio to gauge a company\'s valuation, indicating how much investors are willing to pay per dollar of earnings. A key metric for value investing.',
     slug: 'price-to-earnings-ratio-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'P/E Ratio Calculator - Stock Valuation Tool',
+    metaDescription: 'Calculate Price-to-Earnings ratio to evaluate stock valuation and investment potential.',
   },
   {
     id: 170,
     name: 'Earnings per Share (EPS) Calculator',
     description: 'Determine a company\'s profitability on a per-share basis. EPS is a fundamental metric used in calculating the P/E ratio and assessing a company\'s financial health.',
     slug: 'earnings-per-share-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'EPS Calculator - Stock Performance Indicator',
+    metaDescription: 'Calculate Earnings per Share to assess company profitability and stock performance.',
   },
   {
     id: 171,
     name: 'Return on Equity (ROE) Calculator',
     description: 'Measure how effectively a company is using its shareholders\' equity to generate profits. A high ROE can indicate strong management efficiency and profitability.',
     slug: 'return-on-equity-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'ROE Calculator - Measure Company Profitability',
+    metaDescription: 'Calculate Return on Equity to measure how efficiently a company uses shareholder equity.',
   },
   {
     id: 172,
     name: 'Return on Assets (ROA) Calculator',
     description: 'Evaluate how efficiently a company is using its total assets to generate earnings. ROA provides insight into a company\'s operational performance and asset management.',
     slug: 'return-on-assets-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'ROA Calculator - Asset Efficiency Measure',
+    metaDescription: 'Calculate Return on Assets to evaluate how efficiently a company uses its assets.',
   },
   {
     id: 173,
     name: 'Return on Investment (ROI) Calculator',
     description: 'Calculate the percentage return on an investment relative to its cost. ROI is a universal metric for evaluating the profitability of any investment.',
     slug: 'return-on-investment-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'ROI Calculator - Investment Performance Tracker',
+    metaDescription: 'Calculate Return on Investment to measure the profitability of your investments.',
   },
   {
     id: 174,
     name: 'Debt-to-Equity Ratio Calculator',
-    description: 'Measures a company’s financial leverage by comparing its total liabilities to its shareholders\' equity. A higher ratio indicates more debt financing, which can mean higher risk but also potentially higher returns.',
+    description: 'Measures a company's financial leverage by comparing its total liabilities to its shareholders\' equity. A higher ratio indicates more debt financing, which can mean higher risk but also potentially higher returns.',
     slug: 'debt-to-equity-ratio-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'Debt-to-Equity Ratio Calculator - Risk Analysis',
+    metaDescription: 'Assess financial leverage and risk using the debt-to-equity ratio calculator.',
   },
   {
     id: 175,
     name: 'Interest Coverage Ratio Calculator',
     description: 'Shows how easily a company can pay the interest on its outstanding debt. A higher ratio indicates a better ability to meet its interest obligations, signaling lower risk to creditors and investors.',
     slug: 'interest-coverage-ratio-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'Interest Coverage Calculator - Debt Payment Ability',
+    metaDescription: 'Measure a company's ability to pay interest on its debt with the interest coverage ratio calculator.',
   },
   {
     id: 176,
     name: 'Current Ratio Calculator',
-    description: 'Evaluates a company’s short-term liquidity by comparing all of its current assets to its current liabilities. It indicates a company\'s ability to pay back its short-term obligations.',
+    description: 'Evaluates a company's short-term liquidity by comparing all of its current assets to its current liabilities. It indicates a company\'s ability to pay back its short-term obligations.',
     slug: 'current-ratio-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'Current Ratio Calculator - Liquidity Measure',
+    metaDescription: 'Evaluate a company's short-term liquidity with the current ratio calculator.',
   },
   {
     id: 177,
     name: 'Quick Ratio (Acid-Test) Calculator',
-    description: 'Measures a company’s ability to meet its short-term obligations with its most liquid assets, excluding less liquid inventory. It provides a more conservative measure of liquidity than the current ratio.',
+    description: 'Measures a company's ability to meet its short-term obligations with its most liquid assets, excluding less liquid inventory. It provides a more conservative measure of liquidity than the current ratio.',
     slug: 'quick-ratio-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'Quick Ratio Calculator - Liquidity Test',
+    metaDescription: 'Analyze immediate liquidity using the quick ratio calculator for financial planning.',
   },
   {
     id: 178,
     name: 'Working Capital Calculator',
     description: 'Indicates the liquidity available to a business to meet its short-term obligations. Positive working capital means you have enough assets to cover liabilities, while negative working capital can be a sign of financial trouble.',
     slug: 'working-capital-calculator',
-    category: 'finance'
+    category: 'finance',
+    metaTitle: 'Working Capital Calculator - Business Health Metric',
+    metaDescription: 'Calculate working capital to assess your business liquidity and short-term financial health.',
   },
   {
     id: 179,
@@ -227,6 +287,8 @@ export const calculators: Calculator[] = [
     description: 'Measures the time it takes for a company to convert its investments in inventory and other resources into cash from sales, indicating working capital efficiency.',
     slug: 'cash-conversion-cycle-calculator',
     category: 'finance',
+    metaTitle: 'Cash Conversion Cycle Calculator - Efficiency Tool',
+    metaDescription: 'Measure how quickly your business converts inventory to cash with the cash conversion cycle calculator.',
   },
   {
     id: 180,
@@ -234,6 +296,8 @@ export const calculators: Calculator[] = [
     description: 'Calculates the cash a company generates after accounting for capital expenditures, showing the cash available for distribution to investors or to reinvest.',
     slug: 'free-cash-flow-calculator',
     category: 'finance',
+    metaTitle: 'Free Cash Flow Calculator - Investment Analysis Tool',
+    metaDescription: 'Calculate free cash flow to evaluate a company's ability to generate cash for investors.',
   },
   {
     id: 181,
@@ -241,6 +305,8 @@ export const calculators: Calculator[] = [
     description: 'Determines the profitability of a company\'s core business operations before deducting interest and taxes, expressed as a percentage of revenue.',
     slug: 'operating-margin-calculator',
     category: 'finance',
+    metaTitle: 'Operating Margin Calculator - Profitability Measure',
+    metaDescription: 'Calculate operating margin to measure core business profitability and efficiency.',
   },
   {
     id: 182,
@@ -248,6 +314,8 @@ export const calculators: Calculator[] = [
     description: 'Calculates the percentage of revenue that exceeds the cost of goods sold (COGS), providing insight into a company\'s production efficiency.',
     slug: 'gross-margin-calculator',
     category: 'finance',
+    metaTitle: 'Gross Margin Calculator - Profitability Analysis',
+    metaDescription: 'Calculate gross margin to assess production efficiency and pricing strategy.',
   },
   {
     id: 183,
@@ -255,13 +323,17 @@ export const calculators: Calculator[] = [
     description: 'Measures how much net income is generated as a percentage of revenue. It is the ratio of net profits to revenues for a company or business segment.',
     slug: 'net-profit-margin-calculator',
     category: 'finance',
+    metaTitle: 'Net Profit Margin Calculator - Performance Metric',
+    metaDescription: 'Calculate net profit margin to measure overall company profitability and performance.',
   },
   {
     id: 184,
     name: 'EBITDA / EBIT Calculator',
-    description: 'Measure a company’s earnings before interest, taxes, depreciation, and amortization (EBITDA) or before only interest and taxes (EBIT).',
+    description: 'Measure a company's earnings before interest, taxes, depreciation, and amortization (EBITDA) or before only interest and taxes (EBIT).',
     slug: 'ebitda-ebit-calculator',
     category: 'finance',
+    metaTitle: 'EBITDA & EBIT Calculator - Profitability Tool',
+    metaDescription: 'Calculate EBITDA and EBIT to measure core business profitability before interest and taxes.',
   },
   {
     id: 185,
@@ -269,6 +341,8 @@ export const calculators: Calculator[] = [
     description: 'Represents the total value of a company, including debt and cash, often used in valuation.',
     slug: 'enterprise-value-calculator',
     category: 'finance',
+    metaTitle: 'Enterprise Value Calculator - Company Valuation',
+    metaDescription: 'Calculate enterprise value to assess the total value of a company including debt and cash.',
   },
   {
     id: 186,
@@ -276,6 +350,8 @@ export const calculators: Calculator[] = [
     description: 'Key valuation multiples comparing Enterprise Value (EV) to EBIT or EBITDA.',
     slug: 'ev-ebit-ebitda-multiple-calculator',
     category: 'finance',
+    metaTitle: 'EV/EBIT & EV/EBITDA Multiple Calculator - Valuation Tool',
+    metaDescription: 'Calculate EV/EBIT and EV/EBITDA multiples for company valuation and investment analysis.',
   },
   {
     id: 188,
@@ -283,6 +359,8 @@ export const calculators: Calculator[] = [
     description: 'Evaluates risk-adjusted return of an investment.',
     slug: 'sharpe-ratio-calculator',
     category: 'finance',
+    metaTitle: 'Sharpe Ratio Calculator - Risk-Adjusted Return Tool',
+    metaDescription: 'Calculate the Sharpe ratio to evaluate risk-adjusted returns of your investments.',
   },
   {
     id: 189,
@@ -290,6 +368,8 @@ export const calculators: Calculator[] = [
     description: 'Similar to Sharpe ratio but penalizes only downside risk.',
     slug: 'sortino-ratio-calculator',
     category: 'finance',
+    metaTitle: 'Sortino Ratio Calculator - Downside Risk Measure',
+    metaDescription: 'Calculate the Sortino ratio to measure downside risk-adjusted returns of investments.',
   },
   {
     id: 190,
@@ -297,6 +377,8 @@ export const calculators: Calculator[] = [
     description: 'Measures risk-adjusted return based on systematic risk (beta).',
     slug: 'treynor-ratio-calculator',
     category: 'finance',
+    metaTitle: 'Treynor Ratio Calculator - Investment Performance',
+    metaDescription: 'Calculate the Treynor ratio to measure systematic risk-adjusted returns of investments.',
   },
   {
     id: 191,
@@ -304,6 +386,8 @@ export const calculators: Calculator[] = [
     description: 'Indicates the excess return of an investment relative to its expected performance based on market risk.',
     slug: 'alpha-investment-calculator',
     category: 'finance',
+    metaTitle: 'Alpha Calculator - Portfolio Performance Measure',
+    metaDescription: 'Calculate investment alpha to measure excess returns relative to market risk.',
   },
   {
     id: 192,
@@ -311,20 +395,26 @@ export const calculators: Calculator[] = [
     description: 'Measures the dispersion of returns around the mean.',
     slug: 'volatility-standard-deviation-calculator',
     category: 'finance',
+    metaTitle: 'Volatility Calculator - Investment Risk Measure',
+    metaDescription: 'Calculate volatility and standard deviation to measure investment risk and return dispersion.',
   },
   {
     id: 193,
     name: 'Correlation Coefficient Calculator',
-    description: 'Measures the strength and direction of relationship between two assets’ returns.',
+    description: 'Measures the strength and direction of relationship between two assets' returns.',
     slug: 'correlation-coefficient-calculator',
     category: 'finance',
+    metaTitle: 'Correlation Coefficient Calculator - Portfolio Analysis',
+    metaDescription: 'Calculate correlation coefficients to analyze relationships between asset returns in your portfolio.',
   },
   {
     id: 194,
     name: 'Beta (Asset) Calculator',
-    description: 'Measures an asset’s volatility relative to the market (systematic risk).',
+    description: 'Measures an asset's volatility relative to the market (systematic risk).',
     slug: 'beta-asset-calculator',
     category: 'finance',
+    metaTitle: 'Beta Calculator - Market Risk Measure',
+    metaDescription: 'Calculate beta to measure an asset's systematic risk relative to the market.',
   },
   {
     id: 195,
@@ -332,6 +422,8 @@ export const calculators: Calculator[] = [
     description: 'Measures the overall risk (variance) of a multi-asset portfolio.',
     slug: 'portfolio-variance-calculator',
     category: 'finance',
+    metaTitle: 'Portfolio Variance Calculator - Risk Assessment Tool',
+    metaDescription: 'Calculate portfolio variance to assess the overall risk of your multi-asset investment portfolio.',
   },
   {
     id: 196,
@@ -339,6 +431,8 @@ export const calculators: Calculator[] = [
     description: 'Estimates the weighted average expected return of a portfolio.',
     slug: 'portfolio-expected-return-calculator',
     category: 'finance',
+    metaTitle: 'Portfolio Expected Return Calculator - Investment Planner',
+    metaDescription: 'Calculate the expected return of your portfolio based on weighted asset allocations.',
   },
   {
     id: 197,
@@ -346,20 +440,26 @@ export const calculators: Calculator[] = [
     description: 'Calculates the expected return of an asset using market risk.',
     slug: 'capm-calculator',
     category: 'finance',
+    metaTitle: 'CAPM Calculator - Investment Risk & Return Tool',
+    metaDescription: 'Calculate expected returns using the Capital Asset Pricing Model for investment analysis.',
   },
   {
     id: 198,
     name: 'WACC Calculator',
-    description: 'Computes a firm’s average cost of capital from equity and debt.',
+    description: 'Computes a firm's average cost of capital from equity and debt.',
     slug: 'wacc-calculator',
     category: 'finance',
+    metaTitle: 'WACC Calculator - Company Cost of Capital',
+    metaDescription: 'Calculate Weighted Average Cost of Capital to assess a company's cost of financing.',
   },
   {
     id: 199,
     name: 'Leverage / Debt Ratio Impact Calculator',
-    description: 'Examines how changing debt levels affect a company’s return on equity or earnings per share.',
+    description: 'Examines how changing debt levels affect a company's return on equity or earnings per share.',
     slug: 'leverage-debt-ratio-calculator',
     category: 'finance',
+    metaTitle: 'Leverage Impact Calculator - Financial Risk Tool',
+    metaDescription: 'Analyze how debt levels impact company returns and financial risk with leverage calculations.',
   },
   {
     id: 200,
@@ -367,6 +467,8 @@ export const calculators: Calculator[] = [
     description: 'Determines the theoretical value of a European call or put option.',
     slug: 'black-scholes-calculator',
     category: 'finance',
+    metaTitle: 'Black-Scholes Option Pricing Calculator - Finance Tool',
+    metaDescription: 'Calculate fair option prices using the Black-Scholes model for financial decision-making.',
   },
   {
     id: 202,
@@ -374,6 +476,8 @@ export const calculators: Calculator[] = [
     description: 'Shows the profit or loss of a call or put at different underlying prices at expiration.',
     slug: 'option-payoff-calculator',
     category: 'finance',
+    metaTitle: 'Put & Call Option Payoff Calculator - Options Profit Planner',
+    metaDescription: 'Calculate potential profits and losses for put and call options with our payoff calculator.',
   },
   {
     id: 203,
@@ -381,6 +485,8 @@ export const calculators: Calculator[] = [
     description: 'Prices options using a multi-period binomial tree.',
     slug: 'binomial-option-pricing-calculator',
     category: 'finance',
+    metaTitle: 'Binomial Option Pricing Calculator - Options Valuation Tool',
+    metaDescription: 'Value American or European options using the Binomial Option Pricing Model for accurate valuation.',
   },
   {
     id: 204,
@@ -388,6 +494,8 @@ export const calculators: Calculator[] = [
     description: 'Uses random sampling to estimate the probability distribution of future portfolio values.',
     slug: 'monte-carlo-portfolio-calculator',
     category: 'finance',
+    metaTitle: 'Monte Carlo Portfolio Calculator - Risk Simulation Tool',
+    metaDescription: 'Simulate portfolio value distributions using Monte Carlo methods for risk assessment.',
   },
   {
     id: 205,
@@ -395,6 +503,8 @@ export const calculators: Calculator[] = [
     description: 'Estimate the maximum potential loss a portfolio could experience over a specific time period.',
     slug: 'value-at-risk-calculator',
     category: 'finance',
+    metaTitle: 'Value at Risk (VaR) Calculator - Portfolio Risk Tool',
+    metaDescription: 'Calculate potential portfolio losses at a given confidence level to manage investment risk.',
   },
   {
     id: 206,
@@ -402,6 +512,8 @@ export const calculators: Calculator[] = [
     description: 'Measure the average loss that can be expected if the VaR threshold is breached.',
     slug: 'conditional-value-at-risk-calculator',
     category: 'finance',
+    metaTitle: 'Conditional VaR Calculator - Expected Shortfall Tool',
+    metaDescription: 'Calculate Conditional Value at Risk to measure expected losses beyond VaR threshold.',
   },
   {
     id: 207,
@@ -409,6 +521,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the total annualized rate of return an investor will earn if they hold a bond to maturity.',
     slug: 'bond-yield-to-maturity-calculator',
     category: 'finance',
+    metaTitle: 'Bond Yield to Maturity Calculator - Fixed Income Tool',
+    metaDescription: 'Calculate bond yield to maturity to assess total return on fixed income investments.',
   },
   {
     id: 208,
@@ -416,6 +530,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the fair market price of a bond based on its characteristics and current market yield.',
     slug: 'bond-price-calculator',
     category: 'finance',
+    metaTitle: 'Bond Price Calculator - Fixed Income Valuation Tool',
+    metaDescription: 'Calculate fair market price of bonds based on yield and characteristics for investment analysis.',
   },
   {
     id: 209,
@@ -423,6 +539,8 @@ export const calculators: Calculator[] = [
     description: 'Measure a bond\'s price sensitivity to changes in interest rates.',
     slug: 'bond-duration-calculator',
     category: 'finance',
+    metaTitle: 'Bond Duration Calculator - Interest Rate Risk Tool',
+    metaDescription: 'Calculate bond duration to measure price sensitivity to interest rate changes.',
   },
   {
     id: 210,
@@ -430,6 +548,8 @@ export const calculators: Calculator[] = [
     description: 'Measure the curvature in the relationship between a bond\'s price and its yield for a more accurate risk estimate.',
     slug: 'bond-convexity-calculator',
     category: 'finance',
+    metaTitle: 'Bond Convexity Calculator - Interest Rate Risk Measure',
+    metaDescription: 'Calculate bond convexity to measure price sensitivity to interest rate changes beyond duration for accurate risk assessment.',
   },
   {
     id: 211,
@@ -437,6 +557,8 @@ export const calculators: Calculator[] = [
     description: 'Measure the difference in yield between two bonds, often to quantify credit risk.',
     slug: 'bond-yield-spread-calculator',
     category: 'finance',
+    metaTitle: 'Bond Yield Spread Calculator - Credit Risk Analysis',
+    metaDescription: 'Calculate bond yield spreads to quantify credit risk and compare bond performance for investment analysis.',
   },
   {
     id: 212,
@@ -444,6 +566,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the yield of a callable bond assuming it is redeemed early.',
     slug: 'yield-to-call-calculator',
     category: 'finance',
+    metaTitle: 'Yield to Call Calculator - Callable Bond Valuation',
+    metaDescription: 'Calculate yield to call and yield to worst for callable bonds to assess risk and potential returns.',
   },
   {
     id: 213,
@@ -451,6 +575,8 @@ export const calculators: Calculator[] = [
     description: 'Determine the fair price of a bond that does not pay periodic interest.',
     slug: 'zero-coupon-bond-valuation-calculator',
     category: 'finance',
+    metaTitle: 'Zero-Coupon Bond Valuation Calculator - Bond Pricing Tool',
+    metaDescription: 'Calculate the fair price of zero-coupon bonds with no periodic interest payments for investment valuation.',
   },
   {
     id: 214,
@@ -458,6 +584,8 @@ export const calculators: Calculator[] = [
     description: 'Quickly estimate an investment\'s return after accounting for inflation.',
     slug: 'simple-inflation-adjusted-return-calculator',
     category: 'finance',
+    metaTitle: 'Inflation-Adjusted Return Calculator - Real Return Estimator',
+    metaDescription: 'Calculate inflation-adjusted returns to assess real investment performance and purchasing power protection.',
   },
   {
     id: 215,
@@ -465,6 +593,8 @@ export const calculators: Calculator[] = [
     description: 'Precisely calculate an investment\'s return after accounting for inflation using the Fisher Equation.',
     slug: 'real-rate-of-return-calculator',
     category: 'finance',
+    metaTitle: 'Real Rate of Return Calculator - Fisher Equation Tool',
+    metaDescription: 'Calculate real rate of return using the Fisher equation to measure actual investment performance after inflation.',
   },
   {
     id: 220,
@@ -472,6 +602,8 @@ export const calculators: Calculator[] = [
     description: 'Determine the cushion between a company\'s current sales and its break-even point.',
     slug: 'margin-of-safety-calculator',
     category: 'finance',
+    metaTitle: 'Margin of Safety Calculator - Business Risk Assessment',
+    metaDescription: 'Calculate margin of safety to measure the cushion between current sales and break-even point for risk analysis.',
   },
   {
     id: 221,
@@ -479,6 +611,8 @@ export const calculators: Calculator[] = [
     description: 'Establish a rate to apply indirect manufacturing costs to products.',
     slug: 'overhead-rate-allocation-calculator',
     category: 'finance',
+    metaTitle: 'Overhead Rate Allocation Calculator - Cost Management Tool',
+    metaDescription: 'Calculate overhead rate allocation to apply indirect manufacturing costs to products for accurate pricing.',
   },
   {
     id: 222,
@@ -486,6 +620,8 @@ export const calculators: Calculator[] = [
     description: 'Allocate overhead costs more accurately based on specific activities.',
     slug: 'activity-based-costing-calculator',
     category: 'finance',
+    metaTitle: 'Activity-Based Costing Calculator - ABC Costing Tool',
+    metaDescription: 'Calculate activity-based costs to allocate overhead more accurately based on specific business activities.',
   },
   {
     id: 223,
@@ -493,6 +629,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate asset depreciation evenly over its useful life.',
     slug: 'depreciation-straight-line-calculator',
     category: 'finance',
+    metaTitle: 'Straight-Line Depreciation Calculator - Asset Accounting Tool',
+    metaDescription: 'Calculate straight-line depreciation for assets to track accounting and tax obligations.',
   },
   {
     id: 224,
@@ -500,6 +638,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate accelerated depreciation for an asset.',
     slug: 'depreciation-double-declining-calculator',
     category: 'finance',
+    metaTitle: 'Double Declining Balance Depreciation Calculator - Accelerated Depreciation',
+    metaDescription: 'Calculate double declining balance depreciation for accelerated asset depreciation and tax planning.',
   },
   {
     id: 225,
@@ -507,6 +647,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate accelerated depreciation using the Sum-of-the-Years-Digits method.',
     slug: 'depreciation-sum-of-years-digits-calculator',
     category: 'finance',
+    metaTitle: 'Sum-of-Years Digits Depreciation Calculator - Accelerated Depreciation Method',
+    metaDescription: 'Calculate sum-of-years digits depreciation for accelerated asset depreciation using SYD method.',
   },
   {
     id: 226,
@@ -514,6 +656,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate tax-deductible depreciation for US tax purposes.',
     slug: 'macrs-depreciation-calculator',
     category: 'finance',
+    metaTitle: 'MACRS Depreciation Calculator - US Tax Depreciation',
+    metaDescription: 'Calculate MACRS depreciation for US tax purposes and tax-deductible asset depreciation planning.',
   },
   {
     id: 227,
@@ -521,6 +665,8 @@ export const calculators: Calculator[] = [
     description: 'Create a detailed payment schedule for any loan.',
     slug: 'amortization-schedule-generator',
     category: 'finance',
+    metaTitle: 'Amortization Schedule Generator - Loan Planner',
+    metaDescription: 'Generate detailed amortization schedules for loans including principal and interest breakdowns.',
   },
   {
     id: 228,
@@ -528,6 +674,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the time required to recover the initial cost of a project.',
     slug: 'capex-payback-calculator',
     category: 'finance',
+    metaTitle: 'CapEx Payback Calculator - Investment Recovery Tool',
+    metaDescription: 'Calculate the payback period for capital expenditure projects to assess profitability.',
   },
   {
     id: 229,
@@ -535,6 +683,8 @@ export const calculators: Calculator[] = [
     description: 'Analyze how changing one variable impacts a financial model\'s outcome.',
     slug: 'sensitivity-analysis-what-if-calculator',
     category: 'finance',
+    metaTitle: 'Sensitivity Analysis Calculator - What-If Analysis Tool',
+    metaDescription: 'Analyze how changing variables impacts financial model outcomes with sensitivity analysis.',
   },
   {
     id: 230,
@@ -542,6 +692,8 @@ export const calculators: Calculator[] = [
     description: 'Evaluate a project\'s financial outcome under different scenarios (pessimistic, optimistic, and base case).',
     slug: 'scenario-analysis-calculator',
     category: 'finance',
+    metaTitle: 'Scenario Analysis Calculator - Financial Planning Tool',
+    metaDescription: 'Evaluate financial outcomes under different scenarios for better decision making.',
   },
   {
     id: 231,
@@ -549,6 +701,8 @@ export const calculators: Calculator[] = [
     description: 'Convert a monetary amount from one currency to another based on a given exchange rate.',
     slug: 'currency-exchange-calculator',
     category: 'finance',
+    metaTitle: 'Currency Exchange Calculator - Foreign Exchange Tool',
+    metaDescription: 'Convert currencies at current exchange rates for international transactions and investments.',
   },
   {
     id: 232,
@@ -556,6 +710,8 @@ export const calculators: Calculator[] = [
     description: 'Quantify the potential gain or loss on a foreign currency holding due to exchange rate fluctuations.',
     slug: 'currency-volatility-calculator',
     category: 'finance',
+    metaTitle: 'Currency Volatility Calculator - FX Risk Assessment',
+    metaDescription: 'Calculate potential gains or losses from currency volatility in foreign investments.',
   },
   {
     id: 233,
@@ -563,6 +719,8 @@ export const calculators: Calculator[] = [
     description: 'Compare the total interest cost of a loan under a fixed rate versus a projected floating rate.',
     slug: 'fixed-vs-floating-rate-calculator',
     category: 'finance',
+    metaTitle: 'Fixed vs Floating Rate Calculator - Loan Comparison Tool',
+    metaDescription: 'Compare total interest costs between fixed and floating rate loans for better decision making.',
   },
   {
     id: 235,
@@ -570,6 +728,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the difference between a swap rate and a benchmark government bond yield.',
     slug: 'swap-spread-calculator',
     category: 'finance',
+    metaTitle: 'Swap Spread Calculator - Interest Rate Analysis Tool',
+    metaDescription: 'Calculate swap spreads to analyze interest rate differentials and market conditions.',
   },
   {
     id: 236,
@@ -577,6 +737,8 @@ export const calculators: Calculator[] = [
     description: 'Calculate the settlement payment for a Forward Rate Agreement.',
     slug: 'forward-rate-agreement-calculator',
     category: 'finance',
+    metaTitle: 'Forward Rate Agreement Calculator - Interest Rate Hedging Tool',
+    metaDescription: 'Calculate FRA settlement payments for interest rate hedging and risk management.',
   },
   {
     id: 237,
@@ -584,6 +746,8 @@ export const calculators: Calculator[] = [
     description: 'Derive the market\'s inflation expectation from bond yields.',
     slug: 'breakeven-inflation-rate-calculator',
     category: 'finance',
+    metaTitle: 'Breakeven Inflation Rate Calculator - Market Expectations Tool',
+    metaDescription: 'Calculate market inflation expectations from bond yield differentials for economic analysis.',
   },
   {
     id: 238,
@@ -591,6 +755,8 @@ export const calculators: Calculator[] = [
     description: 'Conceptually illustrate how a CDS premium is determined.',
     slug: 'credit-default-swap-calculator',
     category: 'finance',
+    metaTitle: 'Credit Default Swap Calculator - Credit Risk Tool',
+    metaDescription: 'Calculate CDS premiums to assess credit risk and default probability in financial markets.',
   },
   {
     id: 239,
@@ -598,6 +764,8 @@ export const calculators: Calculator[] = [
     description: 'Check for arbitrage opportunities using Put-Call Parity.',
     slug: 'put-call-parity-calculator',
     category: 'finance',
+    metaTitle: 'Put-Call Parity Calculator - Options Arbitrage Tool',
+    metaDescription: 'Check for arbitrage opportunities using put-call parity relationships in options markets.',
   },
   // Business & Startup
   {
