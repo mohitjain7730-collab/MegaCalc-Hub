@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, CheckCircle, Info, DollarSign } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, DollarSign, Calculator, Globe, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { EmbedWidget } from '@/components/embed-widget';
 
@@ -236,11 +236,11 @@ export default function BalloonPaymentLoanCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      loanAmount: undefined,
-      interestRate: undefined,
-      loanTerm: undefined,
-      balloonPayment: undefined,
-      balloonTerm: undefined,
+      loanAmount: 0,
+      interestRate: 0,
+      loanTerm: 0,
+      balloonPayment: 0,
+      balloonTerm: 0,
       paymentFrequency: 'monthly',
     },
   });
@@ -252,128 +252,142 @@ export default function BalloonPaymentLoanCalculator() {
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="loanAmount" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Loan Amount ($)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="e.g., 300000"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Total amount of the loan</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="interestRate" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Interest Rate (%)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="e.g., 6.5"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Annual interest rate</p>
-              </FormItem>
-            )} />
-          </div>
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Balloon Payment Loan Calculation
+          </CardTitle>
+          <CardDescription>
+            Calculate balloon payment loans with lower monthly payments and large final payments
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="loanAmount" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Loan Amount ($)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="e.g., 300000"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Total amount of the loan</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="interestRate" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Interest Rate (%)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="e.g., 6.5"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Annual interest rate</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="loanTerm" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Total Loan Term (years)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="1" 
-                    placeholder="e.g., 30"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Total length of the loan</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="balloonTerm" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Balloon Term (years)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="1" 
-                    placeholder="e.g., 5"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">When balloon payment is due</p>
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="loanTerm" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Total Loan Term (years)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="1" 
+                        placeholder="e.g., 30"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Total length of the loan</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="balloonTerm" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Balloon Term (years)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="1" 
+                        placeholder="e.g., 5"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">When balloon payment is due</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="balloonPayment" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Balloon Payment ($)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="e.g., 250000"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Amount due at balloon term</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Payment Frequency</FormLabel>
-                <FormControl>
-                  <select 
-                    {...field} 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="monthly">Monthly</option>
-                    <option value="bi-weekly">Bi-weekly</option>
-                    <option value="weekly">Weekly</option>
-                  </select>
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">How often you make payments</p>
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="balloonPayment" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Balloon Payment ($)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="e.g., 250000"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Amount due at balloon term</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Payment Frequency</FormLabel>
+                    <FormControl>
+                      <select 
+                        {...field} 
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="monthly">Monthly</option>
+                        <option value="bi-weekly">Bi-weekly</option>
+                        <option value="weekly">Weekly</option>
+                      </select>
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">How often you make payments</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <Button type="submit" className="w-full">
-            <DollarSign className="mr-2 h-4 w-4" />
-            Calculate Balloon Loan
-          </Button>
-        </form>
-      </Form>
+              <Button type="submit" className="w-full">
+                <DollarSign className="mr-2 h-4 w-4" />
+                Calculate Balloon Loan
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
         <Card className="mt-8">
@@ -454,160 +468,148 @@ export default function BalloonPaymentLoanCalculator() {
         </Card>
       )}
 
-      <BalloonPaymentGuide />
+      {/* Related Calculators */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe className="h-5 w-5" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other loan and mortgage calculators
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/loan-amortization-extra-payments-calculator" className="text-primary hover:underline">
+                  Loan Amortization Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate loan amortization schedules with extra payments.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/graduated-payment-mortgage-calculator" className="text-primary hover:underline">
+                  Graduated Payment Mortgage Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate graduated payment mortgages with increasing payments.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/arm-payment-projection-calculator" className="text-primary hover:underline">
+                  ARM Payment Projection Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Project how ARM interest rates and payments may change.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                  Mortgage Payment Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate monthly mortgage payments for fixed-rate loans.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete Guide */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5" />
+            Complete Guide to Balloon Payment Loans
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      {/* FAQ */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>
+            Common questions about balloon payment loans
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What happens if I can't make the balloon payment?</h4>
+            <p className="text-muted-foreground">
+              If you can't make the balloon payment, you'll need to refinance, sell the asset, or default on the loan. Defaulting can result in foreclosure and damage to your credit score.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Can I refinance a balloon loan?</h4>
+            <p className="text-muted-foreground">
+              Yes, you can refinance a balloon loan, but you'll need to qualify for a new loan. This depends on your credit score, income, and the value of the asset at the time of refinancing.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Are balloon loans good for investment properties?</h4>
+            <p className="text-muted-foreground">
+              Balloon loans can be good for investment properties if you plan to sell or refinance before the balloon date. They offer lower monthly payments and better cash flow for investors.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How much should I save for a balloon payment?</h4>
+            <p className="text-muted-foreground">
+              You should save enough to cover the entire balloon payment, plus some extra for unexpected expenses. Consider your income, expenses, and other financial goals when determining how much to save.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is a balloon payment loan?</h4>
+            <p className="text-muted-foreground">
+              A balloon payment loan is a type of loan that has lower monthly payments for most of the loan term, but requires a large final payment (the "balloon") at the end of the loan period.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What are the risks of balloon loans?</h4>
+            <p className="text-muted-foreground">
+              Balloon payment loans carry significant risks including refinancing risk, interest rate risk, credit risk, and market risk. You may not be able to refinance when the balloon is due, and interest rates may be higher at that time.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Can I make extra payments on a balloon loan?</h4>
+            <p className="text-muted-foreground">
+              Yes, most balloon loans allow extra payments. Making extra payments can reduce the balloon amount and help you save on interest. Always check with your lender about prepayment policies.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How do I prepare for a balloon payment?</h4>
+            <p className="text-muted-foreground">
+              Start saving for the balloon payment immediately, set up a dedicated savings account, monitor interest rates and refinancing options, and plan for multiple payment scenarios including refinancing, selling the asset, or making the payment in full.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
       
-      <EmbedWidget calculatorSlug="balloon-payment-loan-calculator" calculatorName="Balloon Payment Loan Calculator" />
+      <EmbedWidget categorySlug="finance" calculatorSlug="balloon-payment-loan-calculator" />
     </div>
-  );
-}
-
-function BalloonPaymentGuide() {
-  return (
-    <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Calculator">
-      <meta itemProp="name" content="Balloon Payment Loan Calculator - Loan Risk Assessment" />
-      <meta itemProp="description" content="Calculate balloon payment loans with lower monthly payments and large final payments. Assess balloon payment risk and plan for loan payoff." />
-      <meta itemProp="keywords" content="balloon payment calculator, balloon loan, loan risk, mortgage calculator, loan payoff" />
-      
-      <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Balloon Payment Loan Calculator: Assess Your Loan Risk</h1>
-      
-      <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-      <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#what-is-balloon" className="hover:underline">What is a Balloon Payment Loan?</a></li>
-        <li><a href="#how-balloon-works" className="hover:underline">How Balloon Payments Work</a></li>
-        <li><a href="#balloon-risks" className="hover:underline">Balloon Payment Risks</a></li>
-        <li><a href="#balloon-benefits" className="hover:underline">Benefits of Balloon Loans</a></li>
-        <li><a href="#balloon-strategies" className="hover:underline">Balloon Payment Strategies</a></li>
-        <li><a href="#faq" className="hover:underline">Balloon Payment FAQs</a></li>
-      </ul>
-
-      <hr />
-
-      <h2 id="what-is-balloon" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is a Balloon Payment Loan?</h2>
-      <p>A <strong>balloon payment loan</strong> is a type of loan that has lower monthly payments for most of the loan term, but requires a large final payment (the "balloon") at the end of the loan period.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Key Characteristics</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Lower monthly payments during the loan term</li>
-        <li>Large final payment (balloon) due at the end</li>
-        <li>Shorter loan term than traditional loans</li>
-        <li>Higher risk due to the large final payment</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Common Uses</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Real estate investments</li>
-        <li>Business loans</li>
-        <li>Auto loans for high-value vehicles</li>
-        <li>Construction loans</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="how-balloon-works" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How Balloon Payments Work</h2>
-      <p>Balloon payment loans work by structuring payments so that only a portion of the principal is paid off during the loan term, with the remaining balance due as a large final payment.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Payment Structure</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Regular monthly payments cover interest and some principal</li>
-        <li>Balloon payment covers the remaining principal balance</li>
-        <li>Total interest is typically lower than traditional loans</li>
-        <li>Risk is concentrated in the final payment</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Balloon Payment Calculation</h3>
-      <pre className="bg-gray-200 p-3 rounded-md my-4"><code>Balloon Payment = Original Loan Amount - (Regular Payments × Number of Payments)</code></pre>
-      <p>The balloon payment represents the remaining principal balance after all regular payments have been made.</p>
-
-      <hr />
-
-      <h2 id="balloon-risks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Balloon Payment Risks</h2>
-      <p>Balloon payment loans carry significant risks that borrowers must understand and plan for:</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Primary Risks</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li><strong>Refinancing Risk:</strong> May not be able to refinance when balloon is due</li>
-        <li><strong>Interest Rate Risk:</strong> Rates may be higher when refinancing</li>
-        <li><strong>Credit Risk:</strong> Credit may be worse when balloon is due</li>
-        <li><strong>Market Risk:</strong> Asset value may be lower than expected</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Risk Mitigation</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Start planning for the balloon payment early</li>
-        <li>Build up savings to cover the balloon payment</li>
-        <li>Monitor interest rates and refinancing options</li>
-        <li>Consider selling the asset if needed</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="balloon-benefits" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benefits of Balloon Loans</h2>
-      <p>Despite the risks, balloon payment loans offer several benefits for certain borrowers:</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Financial Benefits</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Lower monthly payments during the loan term</li>
-        <li>Lower total interest paid over the life of the loan</li>
-        <li>Better cash flow management</li>
-        <li>Potential for higher returns on invested savings</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Strategic Benefits</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Allows for higher loan amounts</li>
-        <li>Useful for investment properties</li>
-        <li>Good for short-term ownership plans</li>
-        <li>Flexible payment structure</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="balloon-strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Balloon Payment Strategies</h2>
-      <p>Successful balloon loan management requires careful planning and strategy:</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Planning Strategies</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Start saving for the balloon payment immediately</li>
-        <li>Set up a dedicated savings account</li>
-        <li>Monitor interest rates and refinancing options</li>
-        <li>Plan for multiple payment scenarios</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Payment Strategies</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Make extra payments to reduce the balloon amount</li>
-        <li>Consider refinancing before the balloon date</li>
-        <li>Plan for selling the asset if needed</li>
-        <li>Have backup financing options ready</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Risk Management</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Monitor your financial situation regularly</li>
-        <li>Keep your credit score high</li>
-        <li>Diversify your investments</li>
-        <li>Have contingency plans ready</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="faq" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Balloon Payment FAQs</h2>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">What happens if I can't make the balloon payment?</h3>
-      <p>If you can't make the balloon payment, you'll need to refinance, sell the asset, or default on the loan. Defaulting can result in foreclosure and damage to your credit score.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Can I refinance a balloon loan?</h3>
-      <p>Yes, you can refinance a balloon loan, but you'll need to qualify for a new loan. This depends on your credit score, income, and the value of the asset at the time of refinancing.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Are balloon loans good for investment properties?</h3>
-      <p>Balloon loans can be good for investment properties if you plan to sell or refinance before the balloon date. They offer lower monthly payments and better cash flow for investors.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">How much should I save for a balloon payment?</h3>
-      <p>You should save enough to cover the entire balloon payment, plus some extra for unexpected expenses. Consider your income, expenses, and other financial goals when determining how much to save.</p>
-
-      <div className="text-sm italic text-center mt-8 pt-4 border-t border-gray-200">
-        <p>This tool is provided by mycalculating.com. Always consult with a financial advisor before making major financial decisions.</p>
-      </div>
-    </section>
   );
 }

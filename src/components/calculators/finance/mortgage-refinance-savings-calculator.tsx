@@ -8,8 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Landmark } from 'lucide-react';
+import { Landmark, Calculator, Globe, FileText, Info, Home } from 'lucide-react';
+import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   currentBalance: z.number().positive(),
@@ -45,12 +45,12 @@ export default function MortgageRefinanceSavingsCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      currentBalance: undefined,
-      currentRatePercent: undefined,
-      remainingTermYears: undefined,
-      newRatePercent: undefined,
-      newTermYears: undefined,
-      closingCosts: undefined,
+      currentBalance: 0,
+      currentRatePercent: 0,
+      remainingTermYears: 0,
+      newRatePercent: 0,
+      newTermYears: 0,
+      closingCosts: 0,
     },
   });
 
@@ -80,31 +80,84 @@ export default function MortgageRefinanceSavingsCalculator() {
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="currentBalance" render={({ field }) => (
-              <FormItem><FormLabel>Current Loan Balance ($)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value)||undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="currentRatePercent" render={({ field }) => (
-              <FormItem><FormLabel>Current Rate (%)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value)||undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="remainingTermYears" render={({ field }) => (
-              <FormItem><FormLabel>Remaining Term (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value)||undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="newRatePercent" render={({ field }) => (
-              <FormItem><FormLabel>New Rate (%)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value)||undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="newTermYears" render={({ field }) => (
-              <FormItem><FormLabel>New Term (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value)||undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="closingCosts" render={({ field }) => (
-              <FormItem className="md:col-span-2"><FormLabel>Closing Costs ($)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value)||undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-          </div>
-          <Button type="submit">Calculate Refinance Savings</Button>
-        </form>
-      </Form>
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Mortgage Refinance Savings Calculator
+          </CardTitle>
+          <CardDescription>
+            Calculate potential savings from refinancing your mortgage
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="currentBalance" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Current Loan Balance ($)</FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} value={field.value || ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="currentRatePercent" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Current Rate (%)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.01" {...field} value={field.value || ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="remainingTermYears" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Remaining Term (years)</FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} value={field.value || ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="newRatePercent" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>New Rate (%)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.01" {...field} value={field.value || ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="newTermYears" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>New Term (years)</FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} value={field.value || ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="closingCosts" render={({ field }) => (
+                  <FormItem className="md:col-span-2">
+                    <FormLabel>Closing Costs ($)</FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} value={field.value || ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full">
+                <Home className="mr-2 h-4 w-4" />
+                Calculate Refinance Savings
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {res && (
         <Card className="mt-8">
@@ -129,10 +182,162 @@ export default function MortgageRefinanceSavingsCalculator() {
         </Card>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="related"><AccordionTrigger>Related calculators</AccordionTrigger><AccordionContent className="text-muted-foreground space-y-2"><ul className="list-disc list-inside"><li>Mortgage Payment Calculator</li><li>ARM Payment Projection</li><li>Loan Amortization with Extra Payments</li></ul></AccordionContent></AccordionItem>
-        <AccordionItem value="guide"><AccordionTrigger>Refinance Guide: Rates, terms, and breakeven</AccordionTrigger><AccordionContent className="text-muted-foreground space-y-3 prose prose-sm dark:prose-invert max-w-none"><h3>When does refinancing make sense?</h3><p>Refinancing replaces your existing mortgage with a new one, ideally at a lower rate or shorter term. Weigh lower monthly payments against closing costs and the time you expect to keep the loan.</p><h4>Breakeven math</h4><p>Divide closing costs by monthly savings to estimate months to recoup costs. If you plan to keep the home longer than breakeven, refinancing can be attractive.</p><h4>Other considerations</h4><ul><li>Resetting to a longer term can increase lifetime interest.</li><li>Consider no-cost loans (higher rate) vs. paying points.</li><li>Confirm no prepayment penalty on your current loan.</li></ul><p className="text-xs">Disclaimer: Informational only, not financial advice.</p></AccordionContent></AccordionItem>
-      </Accordion>
+      {/* Related Calculators */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe className="h-5 w-5" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other mortgage and loan calculators
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                  Mortgage Payment Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate monthly mortgage payments for fixed-rate loans.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/arm-payment-projection-calculator" className="text-primary hover:underline">
+                  ARM Payment Projection Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Project how ARM interest rates and payments may change.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/loan-amortization-extra-payments-calculator" className="text-primary hover:underline">
+                  Loan Amortization with Extra Payments
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate loan amortization schedules with extra payments.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/balloon-payment-loan-calculator" className="text-primary hover:underline">
+                  Balloon Payment Loan Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate balloon payment loans with lower monthly payments.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete Guide */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5" />
+            Complete Guide to Mortgage Refinancing
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      {/* FAQ */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>
+            Common questions about mortgage refinancing
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">When does refinancing make sense?</h4>
+            <p className="text-muted-foreground">
+              Refinancing makes sense when you can get a lower interest rate, want to shorten your loan term, or need to lower monthly payments. It's important to consider closing costs and how long you plan to stay in the home.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is the breakeven point?</h4>
+            <p className="text-muted-foreground">
+              The breakeven point is the number of months it takes to recover the closing costs through monthly savings. Divide your closing costs by your monthly savings to calculate this number.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Should I refinance to a shorter or longer term?</h4>
+            <p className="text-muted-foreground">
+              A shorter term typically means higher monthly payments but less interest over the life of the loan. A longer term means lower monthly payments but more interest paid over time. Choose based on your financial goals and ability to make payments.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What are closing costs?</h4>
+            <p className="text-muted-foreground">
+              Closing costs typically range from 2% to 5% of the loan amount and include lender fees, title insurance, appraisal fees, and other charges. Always ask for a detailed breakdown of all costs.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Can I refinance with negative equity?</h4>
+            <p className="text-muted-foreground">
+              Refinancing with negative equity (underwater) is difficult but possible through government programs like HARP or with the same lender. You may need to bring money to closing or extend the loan term.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is cash-out refinancing?</h4>
+            <p className="text-muted-foreground">
+              Cash-out refinancing allows you to borrow more than you owe on your current mortgage and receive the difference in cash. This increases your loan balance and monthly payment, so use it carefully.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How does credit score affect refinancing?</h4>
+            <p className="text-muted-foreground">
+              Your credit score significantly impacts the interest rate you'll receive. A higher credit score typically means a lower interest rate. Check your credit report before applying and address any issues.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Should I lock my interest rate?</h4>
+            <p className="text-muted-foreground">
+              Rate locks protect you from interest rate increases during the loan process, typically for 30-60 days. If you expect rates to rise or want peace of mind, locking your rate is usually recommended.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is a no-cost refinance?</h4>
+            <p className="text-muted-foreground">
+              A no-cost refinance rolls closing costs into the loan balance or charges a higher interest rate instead of upfront fees. This means no out-of-pocket costs but may result in higher long-term costs.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Can I refinance multiple times?</h4>
+            <p className="text-muted-foreground">
+              Yes, you can refinance multiple times, but each refinancing comes with closing costs. Make sure the savings from a new refinance will outweigh the costs. Generally, refinancing more than once should be done carefully and only when rates drop significantly.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <EmbedWidget categorySlug="finance" calculatorSlug="mortgage-refinance-savings-calculator" />
     </div>
   );
 }

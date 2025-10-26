@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, TrendingUp, DollarSign, Calendar } from 'lucide-react';
+import { Calculator, TrendingUp, DollarSign, Calendar, Globe, FileText, Info } from 'lucide-react';
 import Link from 'next/link';
 import { EmbedWidget } from '@/components/embed-widget';
 
@@ -305,12 +305,12 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      loanAmount: undefined,
-      interestRate: undefined,
-      loanTerm: undefined,
-      extraPayment: undefined,
+      loanAmount: 0,
+      interestRate: 0,
+      loanTerm: 0,
+      extraPayment: 0,
       extraPaymentFrequency: 'monthly',
-      startDate: undefined,
+      startDate: '',
       paymentFrequency: 'monthly',
     },
   });
@@ -322,144 +322,158 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="loanAmount" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Loan Amount ($)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="e.g., 300000"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Total amount of the loan</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="interestRate" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Interest Rate (%)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="e.g., 6.5"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Annual interest rate</p>
-              </FormItem>
-            )} />
-          </div>
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Loan Amortization with Extra Payments Calculation
+          </CardTitle>
+          <CardDescription>
+            Calculate loan amortization schedules with extra payments to save interest and pay off loans faster
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="loanAmount" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Loan Amount ($)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="e.g., 300000"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Total amount of the loan</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="interestRate" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Interest Rate (%)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="e.g., 6.5"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Annual interest rate</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="loanTerm" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Loan Term (years)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="1" 
-                    placeholder="e.g., 30"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Length of the loan in years</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="extraPayment" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Extra Payment ($) - Optional</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="e.g., 200"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Additional payment amount</p>
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="loanTerm" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Loan Term (years)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="1" 
+                        placeholder="e.g., 30"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Length of the loan in years</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="extraPayment" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Extra Payment ($) - Optional</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="e.g., 200"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Additional payment amount</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="extraPaymentFrequency" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Extra Payment Frequency</FormLabel>
-                <FormControl>
-                  <select 
-                    {...field} 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                    <option value="one-time">One-time</option>
-                  </select>
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">How often to make extra payments</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Payment Frequency</FormLabel>
-                <FormControl>
-                  <select 
-                    {...field} 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="monthly">Monthly</option>
-                    <option value="bi-weekly">Bi-weekly</option>
-                    <option value="weekly">Weekly</option>
-                  </select>
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">How often you make regular payments</p>
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="extraPaymentFrequency" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Extra Payment Frequency</FormLabel>
+                    <FormControl>
+                      <select 
+                        {...field} 
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                        <option value="one-time">One-time</option>
+                      </select>
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">How often to make extra payments</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Payment Frequency</FormLabel>
+                    <FormControl>
+                      <select 
+                        {...field} 
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="monthly">Monthly</option>
+                        <option value="bi-weekly">Bi-weekly</option>
+                        <option value="weekly">Weekly</option>
+                      </select>
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">How often you make regular payments</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <FormField control={form.control} name="startDate" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Loan Start Date - Optional</FormLabel>
-              <FormControl>
-                <Input 
-                  type="date" 
-                  {...field} 
-                  value={field.value ?? ''} 
-                  onChange={e => field.onChange(e.target.value || undefined)} 
-                />
-              </FormControl>
-              <FormMessage />
-              <p className="text-sm text-muted-foreground">When the loan begins</p>
-            </FormItem>
-          )} />
+              <FormField control={form.control} name="startDate" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Loan Start Date - Optional</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="date" 
+                      {...field} 
+                      value={field.value || ''} 
+                      onChange={e => field.onChange(e.target.value || '')} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                  <p className="text-sm text-muted-foreground">When the loan begins</p>
+                </FormItem>
+              )} />
 
-          <Button type="submit" className="w-full">
-            <Calculator className="mr-2 h-4 w-4" />
-            Calculate Amortization
-          </Button>
-        </form>
-      </Form>
+              <Button type="submit" className="w-full">
+                <Calculator className="mr-2 h-4 w-4" />
+                Calculate Amortization
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
         <Card className="mt-8">
@@ -540,149 +554,148 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
         </Card>
       )}
 
-      <LoanAmortizationGuide />
-      
-      <EmbedWidget calculatorSlug="loan-amortization-extra-payments-calculator" calculatorName="Loan Amortization Extra Payments Calculator" />
+      {/* Related Calculators */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe className="h-5 w-5" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other loan and mortgage calculators
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                  Mortgage Payment Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate monthly mortgage payments for fixed-rate loans.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/balloon-payment-loan-calculator" className="text-primary hover:underline">
+                  Balloon Payment Loan Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate balloon payment loans with lower monthly payments.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/graduated-payment-mortgage-calculator" className="text-primary hover:underline">
+                  Graduated Payment Mortgage Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate graduated payment mortgages with increasing payments.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/arm-payment-projection-calculator" className="text-primary hover:underline">
+                  ARM Payment Projection Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Project how ARM interest rates and payments may change.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete Guide */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5" />
+            Complete Guide to Loan Amortization with Extra Payments
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      {/* FAQ */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>
+            Common questions about loan amortization and extra payments
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Should I make extra payments or invest the money?</h4>
+            <p className="text-muted-foreground">
+              This depends on your interest rate and investment returns. If your loan interest rate is higher than your expected investment returns, extra payments are usually better. If you can earn more investing, consider that option instead.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">When is the best time to make extra payments?</h4>
+            <p className="text-muted-foreground">
+              Earlier is always better. Extra payments made in the first few years of a loan have the most impact because they reduce the principal balance when interest charges are highest.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Can I make extra payments on any type of loan?</h4>
+            <p className="text-muted-foreground">
+              Most loans allow extra payments, but some may have prepayment penalties. Always check your loan terms before making extra payments. Mortgages, auto loans, and personal loans typically allow extra payments.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How much should I pay extra?</h4>
+            <p className="text-muted-foreground">
+              Start with what you can afford consistently. Even $50-100 extra per month can make a significant difference. Consider your overall financial situation and other financial goals before committing to large extra payments.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is loan amortization?</h4>
+            <p className="text-muted-foreground">
+              Loan amortization is the process of paying off a loan through regular payments over time. Each payment consists of both principal and interest, with the proportion changing over the life of the loan.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How do extra payments save me interest?</h4>
+            <p className="text-muted-foreground">
+              Extra payments are applied directly to the principal balance, which immediately reduces the amount of interest that will accrue on the remaining balance. This creates a compounding effect that accelerates loan payoff and reduces total interest paid.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Are there prepayment penalties on my loan?</h4>
+            <p className="text-muted-foreground">
+              Some loans have prepayment penalties that charge a fee for paying off the loan early or making large extra payments. Always check your loan terms before making extra payments. Most mortgages and loans don't have prepayment penalties, but it's important to verify.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Should I pay extra toward principal or interest?</h4>
+            <p className="text-muted-foreground">
+              Always pay extra toward the principal, not interest. Extra payments applied to principal immediately reduce your loan balance and decrease future interest charges. Payments toward interest don't reduce your principal balance and won't save you money over the life of the loan.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <EmbedWidget categorySlug="finance" calculatorSlug="loan-amortization-extra-payments-calculator" />
     </div>
-  );
-}
-
-function LoanAmortizationGuide() {
-  return (
-    <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Calculator">
-      <meta itemProp="name" content="Loan Amortization Calculator with Extra Payments" />
-      <meta itemProp="description" content="Calculate loan amortization schedules with extra payments to save interest and pay off loans faster. See the impact of additional payments on your loan." />
-      <meta itemProp="keywords" content="loan amortization calculator, extra payments, loan payoff, interest savings, mortgage calculator" />
-      
-      <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Loan Amortization Calculator with Extra Payments</h1>
-      
-      <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-      <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#what-is-amortization" className="hover:underline">What is Loan Amortization?</a></li>
-        <li><a href="#extra-payments" className="hover:underline">How Extra Payments Work</a></li>
-        <li><a href="#interest-savings" className="hover:underline">Calculating Interest Savings</a></li>
-        <li><a href="#payment-strategies" className="hover:underline">Extra Payment Strategies</a></li>
-        <li><a href="#bi-weekly-payments" className="hover:underline">Bi-weekly Payment Benefits</a></li>
-        <li><a href="#faq" className="hover:underline">Loan Amortization FAQs</a></li>
-      </ul>
-
-      <hr />
-
-      <h2 id="what-is-amortization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Loan Amortization?</h2>
-      <p><strong>Loan amortization</strong> is the process of paying off a loan through regular payments over time. Each payment consists of both principal and interest, with the proportion changing over the life of the loan.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">How Amortization Works</h3>
-      <p>In the early years of a loan, most of your payment goes toward interest, with only a small portion reducing the principal. As the loan matures, more of each payment goes toward principal, and less toward interest.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">The Amortization Formula</h3>
-      <pre className="bg-gray-200 p-3 rounded-md my-4"><code>Monthly Payment = P × [r(1+r)^n] / [(1+r)^n - 1]</code></pre>
-      <p>Where P = Principal, r = Monthly interest rate, n = Number of payments</p>
-
-      <hr />
-
-      <h2 id="extra-payments" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How Extra Payments Work</h2>
-      <p><strong>Extra payments</strong> are additional amounts paid toward your loan principal beyond the required monthly payment. These payments can significantly reduce the total interest paid and shorten the loan term.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Benefits of Extra Payments</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Reduce total interest paid over the life of the loan</li>
-        <li>Shorten the loan term and pay off the loan faster</li>
-        <li>Build equity faster, especially important for home loans</li>
-        <li>Provide financial flexibility and peace of mind</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">How Extra Payments Are Applied</h3>
-      <p>Extra payments are typically applied directly to the principal balance, which immediately reduces the amount of interest that will accrue on the remaining balance. This creates a compounding effect that accelerates loan payoff.</p>
-
-      <hr />
-
-      <h2 id="interest-savings" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Interest Savings</h2>
-      <p>The amount of interest you save with extra payments depends on several factors:</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Key Factors</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li><strong>Interest Rate:</strong> Higher rates mean more potential savings</li>
-        <li><strong>Loan Amount:</strong> Larger loans offer more savings opportunities</li>
-        <li><strong>Extra Payment Amount:</strong> Larger extra payments save more interest</li>
-        <li><strong>Timing:</strong> Earlier extra payments have more impact</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Savings Calculation</h3>
-      <p>Interest savings are calculated by comparing the total interest paid with and without extra payments. The difference represents your savings from making extra payments.</p>
-
-      <hr />
-
-      <h2 id="payment-strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Extra Payment Strategies</h2>
-      <p>There are several strategies for making extra payments, each with different benefits:</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Monthly Extra Payments</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Make a fixed extra payment each month</li>
-        <li>Provides consistent progress and predictable savings</li>
-        <li>Easier to budget and plan for</li>
-        <li>Good for long-term wealth building</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Annual Extra Payments</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Make one large extra payment per year</li>
-        <li>Use tax refunds, bonuses, or windfalls</li>
-        <li>Requires discipline to save for the payment</li>
-        <li>Good for irregular income situations</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">One-time Extra Payments</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Make a single large extra payment</li>
-        <li>Use inheritance, sale of assets, or large windfalls</li>
-        <li>Provides immediate impact on loan balance</li>
-        <li>Good for specific financial events</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="bi-weekly-payments" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Bi-weekly Payment Benefits</h2>
-      <p><strong>Bi-weekly payments</strong> can significantly reduce your loan term and interest paid without requiring large extra payments.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">How Bi-weekly Payments Work</h3>
-      <p>Instead of making 12 monthly payments per year, you make 26 bi-weekly payments. This results in 13 full payments per year (26 ÷ 2 = 13), effectively making one extra payment annually.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Benefits of Bi-weekly Payments</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Automatically makes one extra payment per year</li>
-        <li>Reduces loan term by several years</li>
-        <li>Saves significant interest over the life of the loan</li>
-        <li>Requires no additional budgeting or planning</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Bi-weekly Payment Example</h3>
-      <p>For a $300,000 loan at 6% interest for 30 years:</p>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Monthly payment: $1,799</li>
-        <li>Bi-weekly payment: $899.50</li>
-        <li>Time savings: 4 years, 8 months</li>
-        <li>Interest savings: $67,000+</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="faq" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loan Amortization FAQs</h2>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Should I make extra payments or invest the money?</h3>
-      <p>This depends on your interest rate and investment returns. If your loan interest rate is higher than your expected investment returns, extra payments are usually better. If you can earn more investing, consider that option instead.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">When is the best time to make extra payments?</h3>
-      <p>Earlier is always better. Extra payments made in the first few years of a loan have the most impact because they reduce the principal balance when interest charges are highest.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Can I make extra payments on any type of loan?</h3>
-      <p>Most loans allow extra payments, but some may have prepayment penalties. Always check your loan terms before making extra payments. Mortgages, auto loans, and personal loans typically allow extra payments.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">How much should I pay extra?</h3>
-      <p>Start with what you can afford consistently. Even $50-100 extra per month can make a significant difference. Consider your overall financial situation and other financial goals before committing to large extra payments.</p>
-
-      <div className="text-sm italic text-center mt-8 pt-4 border-t border-gray-200">
-        <p>This tool is provided by mycalculating.com. Always consult with a financial advisor before making major financial decisions.</p>
-      </div>
-    </section>
   );
 }

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, CheckCircle, Info, Home } from 'lucide-react';
+import { TrendingUp, CheckCircle, Info, Home, Calculator, Globe, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { EmbedWidget } from '@/components/embed-widget';
 
@@ -253,11 +253,11 @@ export default function GraduatedPaymentMortgageCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      loanAmount: undefined,
-      interestRate: undefined,
-      loanTerm: undefined,
-      graduationPeriod: undefined,
-      graduationRate: undefined,
+      loanAmount: 0,
+      interestRate: 0,
+      loanTerm: 0,
+      graduationPeriod: 0,
+      graduationRate: 0,
       paymentFrequency: 'monthly',
     },
   });
@@ -269,128 +269,142 @@ export default function GraduatedPaymentMortgageCalculator() {
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="loanAmount" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Loan Amount ($)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="e.g., 300000"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Total amount of the loan</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="interestRate" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Interest Rate (%)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="e.g., 6.5"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Annual interest rate</p>
-              </FormItem>
-            )} />
-          </div>
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Graduated Payment Mortgage Calculation
+          </CardTitle>
+          <CardDescription>
+            Calculate graduated payment mortgages with increasing payments over time
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="loanAmount" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Loan Amount ($)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="e.g., 300000"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Total amount of the loan</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="interestRate" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Interest Rate (%)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="e.g., 6.5"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Annual interest rate</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="loanTerm" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Loan Term (years)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="1" 
-                    placeholder="e.g., 30"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Total length of the loan</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="graduationPeriod" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Graduation Period (years)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="1" 
-                    placeholder="e.g., 5"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Years before payment increases</p>
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="loanTerm" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Loan Term (years)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="1" 
+                        placeholder="e.g., 30"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Total length of the loan</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="graduationPeriod" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Graduation Period (years)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="1" 
+                        placeholder="e.g., 5"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Years before payment increases</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="graduationRate" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Graduation Rate (%)</FormLabel>
-                <FormControl>
-                  <Input 
-                    type="number" 
-                    step="0.1" 
-                    placeholder="e.g., 7.5"
-                    {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                  />
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">Annual payment increase rate</p>
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Payment Frequency</FormLabel>
-                <FormControl>
-                  <select 
-                    {...field} 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="monthly">Monthly</option>
-                    <option value="bi-weekly">Bi-weekly</option>
-                    <option value="weekly">Weekly</option>
-                  </select>
-                </FormControl>
-                <FormMessage />
-                <p className="text-sm text-muted-foreground">How often you make payments</p>
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="graduationRate" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Graduation Rate (%)</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="number" 
+                        step="0.1" 
+                        placeholder="e.g., 7.5"
+                        {...field} 
+                        value={field.value || ''} 
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">Annual payment increase rate</p>
+                  </FormItem>
+                )} />
+                
+                <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Payment Frequency</FormLabel>
+                    <FormControl>
+                      <select 
+                        {...field} 
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="monthly">Monthly</option>
+                        <option value="bi-weekly">Bi-weekly</option>
+                        <option value="weekly">Weekly</option>
+                      </select>
+                    </FormControl>
+                    <FormMessage />
+                    <p className="text-sm text-muted-foreground">How often you make payments</p>
+                  </FormItem>
+                )} />
+              </div>
 
-          <Button type="submit" className="w-full">
-            <Home className="mr-2 h-4 w-4" />
-            Calculate GPM
-          </Button>
-        </form>
-      </Form>
+              <Button type="submit" className="w-full">
+                <Home className="mr-2 h-4 w-4" />
+                Calculate GPM
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
         <Card className="mt-8">
@@ -471,138 +485,158 @@ export default function GraduatedPaymentMortgageCalculator() {
         </Card>
       )}
 
-      <GPMGuide />
+      {/* Related Calculators */}
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe className="h-5 w-5 text-primary" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other financial calculators
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/loan-amortization-extra-payments-calculator" className="text-primary hover:underline">
+                  Loan Amortization Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate loan amortization schedules with extra payments.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/balloon-payment-loan-calculator" className="text-primary hover:underline">
+                  Balloon Payment Loan Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate balloon payment loans with lower monthly payments.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/arm-payment-projection-calculator" className="text-primary hover:underline">
+                  ARM Payment Projection Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Project how ARM interest rates and payments may change.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                  Mortgage Payment Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate monthly mortgage payments for fixed-rate loans.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete Guide */}
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5 text-primary" />
+            Complete Guide to Graduated Payment Mortgages
+          </CardTitle>
+          <CardDescription>
+            A comprehensive guide to understanding and managing graduated payment mortgages
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      {/* FAQ */}
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5 text-primary" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>
+            Answers to common questions about Graduated Payment Mortgages
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is a Graduated Payment Mortgage?</h4>
+            <p className="text-muted-foreground">
+              A Graduated Payment Mortgage (GPM) is a type of mortgage that starts with lower monthly payments that gradually increase over time, typically for the first 5-10 years of the loan. This structure allows borrowers to qualify for a larger loan amount or afford higher monthly payments later in the loan term.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How does GPM work?</h4>
+            <p className="text-muted-foreground">
+              GPM works by structuring payments so that initial payments are lower than what would be required to fully amortize the loan, with payments increasing over time to catch up. The graduation rate determines how much the payment increases each year.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What are the risks of a GPM?</h4>
+            <p className="text-muted-foreground">
+              GPM loans come with several risks including higher payments in later years, potential negative amortization initially, higher total interest paid over the loan term, and risk of payment shock when payments increase.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What happens if I can't afford the graduated payment?</h4>
+            <p className="text-muted-foreground">
+              If you can't afford the graduated payment, you'll need to refinance, sell the property, or default on the loan. Defaulting can result in foreclosure and damage to your credit score.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Can I refinance a GPM loan?</h4>
+            <p className="text-muted-foreground">
+              Yes, you can refinance a GPM loan, but you'll need to qualify for a new loan. This depends on your credit score, income, and the value of the property at the time of refinancing.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Are GPM loans good for first-time homebuyers?</h4>
+            <p className="text-muted-foreground">
+              GPM loans can be good for first-time homebuyers who expect their income to increase over time. However, they require careful planning and risk management.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How much should I plan for payment increases?</h4>
+            <p className="text-muted-foreground">
+              You should plan for payment increases based on the graduation rate and your expected income growth. Consider your ability to make higher payments and have backup plans ready.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is negative amortization?</h4>
+            <p className="text-muted-foreground">
+              Negative amortization occurs when your monthly payment is less than the interest charge on your loan, causing your loan balance to increase over time rather than decrease.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How do GPM payments compare to traditional mortgages?</h4>
+            <p className="text-muted-foreground">
+              GPM payments start lower than traditional mortgage payments but increase over time. After the graduation period, GPM payments are typically higher than traditional mortgage payments to compensate for the lower initial payments.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
       
-      <EmbedWidget calculatorSlug="graduated-payment-mortgage-calculator" calculatorName="Graduated Payment Mortgage Calculator" />
+      <EmbedWidget categorySlug="finance" calculatorSlug="graduated-payment-mortgage-calculator" />
     </div>
-  );
-}
-
-function GPMGuide() {
-  return (
-    <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Calculator">
-      <meta itemProp="name" content="Graduated Payment Mortgage Calculator - GPM Analysis" />
-      <meta itemProp="description" content="Calculate graduated payment mortgages with lower initial payments and increasing payments over time. Assess GPM risk and plan for payment increases." />
-      <meta itemProp="keywords" content="graduated payment mortgage calculator, GPM calculator, mortgage payment, payment increase, mortgage risk" />
-      
-      <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Graduated Payment Mortgage Calculator: Assess Your Payment Risk</h1>
-      
-      <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-      <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#what-is-gpm" className="hover:underline">What is a Graduated Payment Mortgage?</a></li>
-        <li><a href="#how-gpm-works" className="hover:underline">How GPM Works</a></li>
-        <li><a href="#gpm-risks" className="hover:underline">GPM Risks and Benefits</a></li>
-        <li><a href="#gpm-strategies" className="hover:underline">GPM Strategies</a></li>
-        <li><a href="#faq" className="hover:underline">GPM FAQs</a></li>
-      </ul>
-
-      <hr />
-
-      <h2 id="what-is-gpm" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is a Graduated Payment Mortgage?</h2>
-      <p>A <strong>Graduated Payment Mortgage (GPM)</strong> is a type of mortgage that starts with lower monthly payments that gradually increase over time, typically for the first 5-10 years of the loan.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Key Characteristics</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Lower initial monthly payments</li>
-        <li>Payments increase at a predetermined rate</li>
-        <li>Higher payments in later years</li>
-        <li>May result in negative amortization initially</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Common Uses</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>First-time homebuyers with expected income growth</li>
-        <li>Young professionals with career advancement potential</li>
-        <li>Borrowers who expect higher income in the future</li>
-        <li>Investment properties with expected appreciation</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="how-gpm-works" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How GPM Works</h2>
-      <p>GPM works by structuring payments so that initial payments are lower than what would be required to fully amortize the loan, with payments increasing over time to catch up.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Payment Structure</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Initial payments may be lower than interest-only</li>
-        <li>Payments increase at a predetermined rate</li>
-        <li>Final payments are higher than traditional mortgages</li>
-        <li>Total interest may be higher than traditional loans</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Payment Calculation</h3>
-      <pre className="bg-gray-200 p-3 rounded-md my-4"><code>Initial Payment = Loan Amount × (Monthly Rate × (1 + Monthly Rate)^Total Payments) / ((1 + Monthly Rate)^Total Payments - 1) × Graduation Factor</code></pre>
-      <p>The graduation factor determines how much lower the initial payment is compared to a traditional mortgage.</p>
-
-      <hr />
-
-      <h2 id="gpm-risks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM Risks and Benefits</h2>
-      <p>GPM loans offer both benefits and risks that borrowers must carefully consider:</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Benefits</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Lower initial payments for easier qualification</li>
-        <li>Better cash flow management in early years</li>
-        <li>Allows for higher loan amounts</li>
-        <li>Good for borrowers with expected income growth</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Risks</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Higher payments in later years</li>
-        <li>May result in negative amortization</li>
-        <li>Total interest may be higher</li>
-        <li>Risk of payment shock when payments increase</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="gpm-strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM Strategies</h2>
-      <p>Successful GPM management requires careful planning and strategy:</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Planning Strategies</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Plan for payment increases well in advance</li>
-        <li>Build up savings to cover higher payments</li>
-        <li>Consider refinancing before payments increase</li>
-        <li>Monitor your income growth and financial situation</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Payment Strategies</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Make extra payments during low-payment years</li>
-        <li>Consider refinancing to a traditional loan</li>
-        <li>Plan for selling the property if needed</li>
-        <li>Have backup financing options ready</li>
-      </ul>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Risk Management</h3>
-      <ul className="list-disc ml-6 space-y-2">
-        <li>Monitor your financial situation regularly</li>
-        <li>Plan for multiple payment scenarios</li>
-        <li>Consider your long-term financial goals</li>
-        <li>Have contingency plans ready</li>
-      </ul>
-
-      <hr />
-
-      <h2 id="faq" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM FAQs</h2>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">What happens if I can't afford the graduated payment?</h3>
-      <p>If you can't afford the graduated payment, you'll need to refinance, sell the property, or default on the loan. Defaulting can result in foreclosure and damage to your credit score.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Can I refinance a GPM loan?</h3>
-      <p>Yes, you can refinance a GPM loan, but you'll need to qualify for a new loan. This depends on your credit score, income, and the value of the property at the time of refinancing.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">Are GPM loans good for first-time homebuyers?</h3>
-      <p>GPM loans can be good for first-time homebuyers who expect their income to increase over time. However, they require careful planning and risk management.</p>
-      
-      <h3 className="text-xl font-semibold text-foreground mt-6">How much should I plan for payment increases?</h3>
-      <p>You should plan for payment increases based on the graduation rate and your expected income growth. Consider your ability to make higher payments and have backup plans ready.</p>
-
-      <div className="text-sm italic text-center mt-8 pt-4 border-t border-gray-200">
-        <p>This tool is provided by mycalculating.com. Always consult with a financial advisor before making major financial decisions.</p>
-      </div>
-    </section>
   );
 }

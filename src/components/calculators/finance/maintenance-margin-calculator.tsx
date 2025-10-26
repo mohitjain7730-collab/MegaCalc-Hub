@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, CheckCircle, Info, Shield } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, Shield, Calculator, Globe, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { EmbedWidget } from '@/components/embed-widget';
 
@@ -279,14 +279,14 @@ export default function MaintenanceMarginCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      accountValue: undefined,
-      marginUsed: undefined,
-      positionValue: undefined,
-      maintenanceMarginRate: undefined,
-      currentPrice: undefined,
-      entryPrice: undefined,
-      positionSize: undefined,
-      brokerMarginRate: undefined,
+      accountValue: 0,
+      marginUsed: 0,
+      positionValue: 0,
+      maintenanceMarginRate: 0,
+      currentPrice: 0,
+      entryPrice: 0,
+      positionSize: 0,
+      brokerMarginRate: 0,
     },
   });
 
@@ -297,8 +297,20 @@ export default function MaintenanceMarginCalculator() {
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Maintenance Margin Calculation
+          </CardTitle>
+          <CardDescription>
+            Calculate maintenance margin requirements and margin call risk
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="accountValue" render={({ field }) => (
               <FormItem>
@@ -309,8 +321,8 @@ export default function MaintenanceMarginCalculator() {
                     step="0.01" 
                     placeholder="e.g., 10000"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -327,8 +339,8 @@ export default function MaintenanceMarginCalculator() {
                     step="0.01" 
                     placeholder="e.g., 5000"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -347,8 +359,8 @@ export default function MaintenanceMarginCalculator() {
                     step="0.01" 
                     placeholder="e.g., 20000"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -365,8 +377,8 @@ export default function MaintenanceMarginCalculator() {
                     step="0.1" 
                     placeholder="e.g., 25"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -385,8 +397,8 @@ export default function MaintenanceMarginCalculator() {
                     step="0.01" 
                     placeholder="e.g., 50.00"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -403,8 +415,8 @@ export default function MaintenanceMarginCalculator() {
                     step="0.01" 
                     placeholder="e.g., 55.00"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -423,8 +435,8 @@ export default function MaintenanceMarginCalculator() {
                     step="0.01" 
                     placeholder="e.g., 400"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -441,8 +453,8 @@ export default function MaintenanceMarginCalculator() {
                     step="0.1" 
                     placeholder="e.g., 50"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -451,14 +463,16 @@ export default function MaintenanceMarginCalculator() {
             )} />
           </div>
 
-          <Button type="submit" className="w-full">
-            <Shield className="mr-2 h-4 w-4" />
-            Calculate Margin Risk
-          </Button>
-        </form>
-      </Form>
+            <Button type="submit" className="w-full">
+              <Shield className="mr-2 h-4 w-4" />
+              Calculate Margin Risk
+            </Button>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
 
-      {result && (
+    {result && (
         <Card className="mt-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -537,9 +551,160 @@ export default function MaintenanceMarginCalculator() {
         </Card>
       )}
 
-      <MaintenanceMarginGuide />
-      
-      <EmbedWidget calculatorSlug="maintenance-margin-calculator" calculatorName="Maintenance Margin Calculator" />
+      {/* Related Calculators */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe className="h-5 w-5" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other trading and risk management calculators
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/margin-leverage-calculator" className="text-primary hover:underline">
+                  Margin & Leverage Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate margin requirements and leverage ratios for your positions.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/leverage-debt-ratio-calculator" className="text-primary hover:underline">
+                  Leverage Ratio Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate financial leverage and debt-to-equity ratios.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/risk-return-calculator" className="text-primary hover:underline">
+                  Risk-Return Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Analyze risk-adjusted returns and portfolio performance.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/position-size-calculator" className="text-primary hover:underline">
+                  Position Size Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate optimal position sizes based on risk tolerance.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete Guide */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5" />
+            Complete Guide to Maintenance Margin
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      {/* FAQ */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>
+            Common questions about maintenance margin and margin calls
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is maintenance margin?</h4>
+            <p className="text-muted-foreground">
+              Maintenance margin is the minimum amount of equity you must maintain in your margin account to keep a position open. It's a safety mechanism that protects both you and your broker from excessive losses.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What happens if I get a margin call?</h4>
+            <p className="text-muted-foreground">
+              If you receive a margin call, you must either deposit more money into your account or close some positions to meet the maintenance margin requirement. If you don't act quickly, your broker may close positions for you.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How can I avoid margin calls?</h4>
+            <p className="text-muted-foreground">
+              To avoid margin calls, keep sufficient capital in reserve for market volatility, don't overextend your margin capacity, use stop-loss orders to limit downside risk, monitor your positions closely, and maintain a margin buffer above the minimum requirement.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What's the difference between initial margin and maintenance margin?</h4>
+            <p className="text-muted-foreground">
+              Initial margin is the amount required to open a position (typically 50% of the position value), while maintenance margin is the minimum amount you must maintain to keep the position open (typically 25-30% of the position value). Maintenance margin is typically lower than initial margin.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How is the margin call price calculated?</h4>
+            <p className="text-muted-foreground">
+              The margin call price is calculated using the formula: Margin Call Price = Entry Price × (1 - (1 - Maintenance Margin Rate) / Initial Margin Rate). This determines the price at which your account equity will fall below the maintenance margin requirement.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Can I lose more than my initial investment with margin?</h4>
+            <p className="text-muted-foreground">
+              Yes, with margin trading you can lose more than your initial investment. This is why risk management is so important. Always use stop-loss orders and never risk more than you can afford to lose completely.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is a good maintenance margin ratio?</h4>
+            <p className="text-muted-foreground">
+              A maintenance margin ratio above 150% is considered low risk, 120-150% is moderate risk, 100-120% is high risk, and below 100% indicates a margin call situation. Aim to maintain a ratio of at least 120% to provide a buffer against market volatility.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How often should I monitor my margin utilization?</h4>
+            <p className="text-muted-foreground">
+              You should monitor your margin utilization regularly, especially during volatile market conditions. Daily monitoring is recommended for active traders, while position holders should check at least weekly. Set up alerts with your broker for automatic notifications when your margin ratio approaches dangerous levels.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What should I do if my margin ratio falls below 120%?</h4>
+            <p className="text-muted-foreground">
+              If your margin ratio falls below 120%, consider reducing your position size, adding capital to your account, setting stop-loss orders to limit downside risk, or closing some positions to free up margin. Have a plan ready before this situation occurs.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How does the maintenance margin rate differ by asset type?</h4>
+            <p className="text-muted-foreground">
+              Maintenance margin rates vary by asset type and broker. Stocks typically require 25-30% maintenance margin, while futures contracts may require 5-15%, and forex positions often use much lower rates. Always check your broker's specific requirements for each asset class.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

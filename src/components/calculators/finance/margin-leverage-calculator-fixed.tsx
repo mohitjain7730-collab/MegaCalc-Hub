@@ -285,20 +285,8 @@ export default function MarginLeverageCalculator() {
 
   return (
     <div className="space-y-8">
-      {/* Input Form */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Calculator className="h-5 w-5" />
-            Margin & Leverage Calculation
-          </CardTitle>
-          <CardDescription>
-            Calculate margin requirements, leverage ratios, and risk metrics
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="accountValue" render={({ field }) => (
               <FormItem>
@@ -309,8 +297,8 @@ export default function MarginLeverageCalculator() {
                     step="0.01" 
                     placeholder="e.g., 10000"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -327,8 +315,8 @@ export default function MarginLeverageCalculator() {
                     step="0.01" 
                     placeholder="e.g., 5000"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -347,8 +335,8 @@ export default function MarginLeverageCalculator() {
                     step="0.1" 
                     placeholder="e.g., 3.0"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -365,8 +353,8 @@ export default function MarginLeverageCalculator() {
                     step="0.01" 
                     placeholder="e.g., 100"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -385,8 +373,8 @@ export default function MarginLeverageCalculator() {
                     step="0.01" 
                     placeholder="e.g., 50.00"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -403,8 +391,8 @@ export default function MarginLeverageCalculator() {
                     step="0.01" 
                     placeholder="e.g., 55.00"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -423,8 +411,8 @@ export default function MarginLeverageCalculator() {
                     step="0.01" 
                     placeholder="e.g., 5.5"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -441,8 +429,8 @@ export default function MarginLeverageCalculator() {
                     step="1" 
                     placeholder="e.g., 30"
                     {...field} 
-                    value={field.value ?? ''} 
-                    onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                    value={field.value || ''} 
+                    onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
                   />
                 </FormControl>
                 <FormMessage />
@@ -451,16 +439,14 @@ export default function MarginLeverageCalculator() {
             )} />
           </div>
 
-            <Button type="submit" className="w-full">
-              <TrendingUp className="mr-2 h-4 w-4" />
-              Calculate Margin & Leverage
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+          <Button type="submit" className="w-full">
+            <TrendingUp className="mr-2 h-4 w-4" />
+            Calculate Margin & Leverage
+          </Button>
+        </form>
+      </Form>
 
-    {result && (
+      {result && (
         <Card className="mt-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -539,160 +525,9 @@ export default function MarginLeverageCalculator() {
         </Card>
       )}
 
-      {/* Related Calculators */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Globe className="h-5 w-5" />
-            Related Calculators
-          </CardTitle>
-          <CardDescription>
-            Explore other trading and risk management calculators
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2">
-                <a href="/category/finance/maintenance-margin-calculator" className="text-primary hover:underline">
-                  Maintenance Margin Calculator
-                </a>
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                Calculate maintenance margin requirements and margin call risk.
-              </p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2">
-                <a href="/category/finance/leverage-debt-ratio-calculator" className="text-primary hover:underline">
-                  Leverage Ratio Calculator
-                </a>
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                Calculate financial leverage and debt-to-equity ratios.
-              </p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2">
-                <a href="/category/finance/risk-return-calculator" className="text-primary hover:underline">
-                  Risk-Return Calculator
-                </a>
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                Analyze risk-adjusted returns and portfolio performance.
-              </p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2">
-                <a href="/category/finance/position-size-calculator" className="text-primary hover:underline">
-                  Position Size Calculator
-                </a>
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                Calculate optimal position sizes based on risk tolerance.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Complete Guide */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            Complete Guide to Margin and Leverage Trading
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-        </CardContent>
-      </Card>
-
-      {/* FAQ */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Frequently Asked Questions
-          </CardTitle>
-          <CardDescription>
-            Common questions about margin trading and leverage
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">What is margin trading?</h4>
-            <p className="text-muted-foreground">
-              Margin trading allows you to borrow money from your broker to buy securities, using your existing investments as collateral. This amplifies both potential gains and losses through leverage.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">How does leverage work in trading?</h4>
-            <p className="text-muted-foreground">
-              Leverage allows you to control a larger position with a smaller amount of capital. For example, with 2:1 leverage, you can control $20,000 worth of securities with only $10,000 of your own money.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">What is a margin call?</h4>
-            <p className="text-muted-foreground">
-              A margin call occurs when your account equity falls below the maintenance margin requirement. This forces you to either add more capital or close positions to meet the requirement.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">How do I calculate margin requirements?</h4>
-            <p className="text-muted-foreground">
-              Margin requirements depend on the leverage ratio and the value of your position. The margin required equals the position value divided by the leverage ratio. For example, with 3:1 leverage on a $30,000 position, you need $10,000 margin.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">What is the safe leverage ratio for beginners?</h4>
-            <p className="text-muted-foreground">
-              Beginners should start with conservative leverage ratios of 2:1 to 3:1. These ratios provide reasonable amplification without excessive risk. Experienced traders may use higher ratios with proper risk management.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">Can I lose more than my initial investment?</h4>
-            <p className="text-muted-foreground">
-              Yes, with leverage you can lose more than your initial investment. This is why risk management is crucial. Always use stop-loss orders and never risk more than you can afford to lose.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">What is margin utilization?</h4>
-            <p className="text-muted-foreground">
-              Margin utilization shows how much of your available margin you're currently using. High utilization limits your ability to take new positions and increases your risk of margin calls. It's calculated as (Margin Used / Account Value) × 100%.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">How do I avoid margin calls?</h4>
-            <p className="text-muted-foreground">
-              To avoid margin calls, monitor your margin utilization regularly, keep some capital in reserve for market volatility, use stop-loss orders to limit downside risk, and don't overextend your margin capacity.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">What's the difference between margin and leverage?</h4>
-            <p className="text-muted-foreground">
-              Margin is the amount of money you borrow from your broker, while leverage is the ratio of your total position size to your own capital. Higher leverage means you're borrowing more money relative to your own capital.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-2">How do I calculate my margin call price?</h4>
-            <p className="text-muted-foreground">
-              The margin call price is the price at which your account equity will fall below the maintenance margin requirement. It's calculated based on your entry price, leverage ratio, and the maintenance margin rate set by your broker.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
+      <MarginLeverageGuide />
+      
+      <EmbedWidget calculatorSlug="margin-leverage-calculator" calculatorName="Margin Leverage Calculator" />
     </div>
   );
 }

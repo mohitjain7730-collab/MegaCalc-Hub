@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Landmark } from 'lucide-react';
+import { Landmark, Globe, FileText, Info } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const formSchema = z.object({
@@ -239,42 +239,160 @@ export default function ArmPaymentProjectionCalculator() {
         </Card>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="related">
-          <AccordionTrigger>Related calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <ul className="list-disc list-inside">
-              <li>Mortgage Payment Calculator</li>
-              <li>Loan Amortization with Extra Payments</li>
-              <li>Mortgage Refinance Savings Calculator</li>
-              <li>Rental Property Cap Rate Calculator</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="guide">
-          <AccordionTrigger>ARM Guide: How adjustable mortgages work</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3 prose prose-sm dark:prose-invert max-w-none">
-            <h3>What is an ARM?</h3>
-            <p>An Adjustable Rate Mortgage starts with a fixed teaser rate for a limited time, then adjusts periodically based on an index plus a margin, subject to caps.</p>
-            <h4>Key terms</h4>
-            <ul>
-              <li>Index: market-based reference like SOFR; it fluctuates over time.</li>
-              <li>Margin: fixed markup the lender adds to the index after the fixed period.</li>
-              <li>Caps: periodic and lifetime limits on how much the rate can rise.</li>
-              <li>Interval: how often the rate can adjust (e.g., annually).</li>
-            </ul>
-            <h4>When ARMs can make sense</h4>
-            <p>If you expect to move or refinance before adjustments begin, the lower initial rate can reduce costs. If you’ll hold long-term, stress test higher payments.</p>
-            <h4>Risk management tips</h4>
-            <ul>
-              <li>Budget for the highest plausible payment based on caps.</li>
-              <li>Maintain a 3–6 month emergency fund.</li>
-              <li>Consider a fixed-rate loan if volatility risk is uncomfortable.</li>
-            </ul>
-            <p className="text-xs">Disclaimer: Informational only, not financial advice.</p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      {/* Related Calculators */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe className="h-5 w-5" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other mortgage and loan calculators
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                  Mortgage Payment Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate monthly mortgage payments for fixed-rate loans.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/loan-amortization-extra-payments-calculator" className="text-primary hover:underline">
+                  Loan Amortization with Extra Payments
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate loan amortization with extra payments to save interest.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
+                  Mortgage Refinance Savings Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Compare your current mortgage vs a new refinance.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/finance/graduated-payment-mortgage-calculator" className="text-primary hover:underline">
+                  Graduated Payment Mortgage Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate graduated payment mortgages with increasing payments.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete Guide */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5" />
+            Complete Guide to Adjustable Rate Mortgages
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      {/* FAQ */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>
+            Common questions about adjustable rate mortgages
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is an Adjustable Rate Mortgage (ARM)?</h4>
+            <p className="text-muted-foreground">
+              An Adjustable Rate Mortgage starts with a fixed teaser rate for a limited time, then adjusts periodically based on an index plus a margin, subject to caps that limit how much the rate can change.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What is the index rate?</h4>
+            <p className="text-muted-foreground">
+              The index is a market-based reference rate (like SOFR, LIBOR, or the Prime Rate) that fluctuates over time. Lenders add a fixed margin to the index rate to determine your adjusted interest rate.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What are rate caps?</h4>
+            <p className="text-muted-foreground">
+              Rate caps limit how much your interest rate can change. A periodic cap limits the change per adjustment period, while a lifetime cap limits the total increase over the loan term. These caps protect borrowers from extreme payment increases.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">When do ARMs make sense?</h4>
+            <p className="text-muted-foreground">
+              ARMs can make sense if you expect to move or refinance before adjustments begin, as the lower initial rate can reduce costs. If you'll hold the loan long-term, stress test higher payments to ensure affordability.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How often do ARM rates adjust?</h4>
+            <p className="text-muted-foreground">
+              Adjustment intervals vary by loan but are commonly 1, 3, 5, or 7 years. After the fixed period, rates typically adjust annually based on the index plus margin, subject to caps.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What's the difference between initial rate and adjusted rate?</h4>
+            <p className="text-muted-foreground">
+              The initial rate is the fixed teaser rate you start with. After the fixed period, the rate adjusts based on the index plus margin. The new rate cannot exceed the periodic and lifetime caps.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How do I prepare for payment increases?</h4>
+            <p className="text-muted-foreground">
+              Budget for the highest plausible payment based on caps, maintain a 3–6 month emergency fund, stress test your budget with higher payments, and consider a fixed-rate loan if payment volatility makes you uncomfortable.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Can I refinance an ARM to a fixed-rate loan?</h4>
+            <p className="text-muted-foreground">
+              Yes, you can refinance an ARM to a fixed-rate mortgage at any time. This is often done when you expect to stay in the home long-term or when fixed rates become more attractive than your current adjusted rate.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What happens if the index rate goes down?</h4>
+            <p className="text-muted-foreground">
+              If the index rate decreases, your ARM rate typically decreases as well (subject to floor rates and adjustment caps). This can lower your monthly payment, providing savings during periods of declining interest rates.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Should I choose an ARM or fixed-rate mortgage?</h4>
+            <p className="text-muted-foreground">
+              Choose an ARM if you plan to move or refinance within the fixed period and want lower initial payments. Choose a fixed-rate mortgage if you plan to stay long-term and prefer payment stability and predictability.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
