@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -9,74 +8,412 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Gem } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Percent, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, BarChart3, Activity } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import Link from 'next/link';
 
 const formSchema = z.object({
-  nominalReturn: z.number(),
-  inflationRate: z.number(),
+  nominalRate: z.number(),
+  inflationRate: z.number().nonnegative(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function RealRateOfReturnCalculator() {
-  const [result, setResult] = useState<number | null>(null);
+  const [result, setResult] = useState<{ 
+    realRate: number;
+    interpretation: string; 
+    rateLevel: string;
+    recommendation: string;
+    strength: string;
+    insights: string[];
+    considerations: string[];
+  } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nominalReturn: undefined,
+      nominalRate: undefined,
       inflationRate: undefined,
     },
   });
 
+  const calculateRealRate = (values: FormValues): number => {
+    const { nominalRate, inflationRate } = values;
+    
+    // Fisher equation: (1 + real rate) = (1 + nominal rate) / (1 + inflation rate)
+    const realRate = ((1 + nominalRate / 100) / (1 + inflationRate / 100) - 1) * 100;
+    
+    return realRate;
+  };
+
+  const interpret = (realRate: number, nominalRate: number, inflationRate: number) => {
+    if (realRate >= 5) return `Strong real rate of ${realRate.toFixed(2)}% - significantly exceeds inflation (${inflationRate.toFixed(1)}%) and provides excellent purchasing power growth.`;
+    if (realRate >= 2) return `Moderate real rate of ${realRate.toFixed(2)}% - exceeds inflation (${inflationRate.toFixed(1)}%) and provides reasonable purchasing power growth.`;
+    if (realRate >= 0) return `Low real rate of ${realRate.toFixed(2)}% - barely exceeds inflation (${inflationRate.toFixed(1)}%) with minimal purchasing power growth.`;
+    if (realRate >= -2) return `Negative real rate of ${realRate.toFixed(2)}% - below inflation (${inflationRate.toFixed(1)}%) resulting in purchasing power loss.`;
+    return `Significant negative real rate of ${realRate.toFixed(2)}% - well below inflation (${inflationRate.toFixed(1)}%) with substantial purchasing power loss.`;
+  };
+
+  const getRateLevel = (realRate: number) => {
+    if (realRate >= 5) return 'Strong';
+    if (realRate >= 2) return 'Moderate';
+    if (realRate >= 0) return 'Low';
+    if (realRate >= -2) return 'Negative';
+    return 'Very Negative';
+  };
+
+  const getRecommendation = (realRate: number, nominalRate: number, inflationRate: number) => {
+    if (realRate >= 5) return 'Excellent real return - maintain current investment strategy with confidence.';
+    if (realRate >= 2) return 'Good real return - consider maintaining strategy with minor adjustments.';
+    if (realRate >= 0) return 'Marginal real return - review investment strategy and consider alternatives.';
+    if (realRate >= -2) return 'Poor real return - significant strategy review needed to improve real returns.';
+    return 'Very poor real return - urgent strategy overhaul required to address negative real returns.';
+  };
+
+  const getStrength = (realRate: number) => {
+    if (realRate >= 5) return 'Very Strong';
+    if (realRate >= 2) return 'Strong';
+    if (realRate >= 0) return 'Moderate';
+    if (realRate >= -2) return 'Weak';
+    return 'Very Weak';
+  };
+
+  const getInsights = (realRate: number, nominalRate: number, inflationRate: number) => {
+    const insights = [];
+    
+    if (realRate >= 5) {
+      insights.push('Strong purchasing power growth');
+      insights.push('Excellent inflation protection');
+      insights.push('Superior investment performance');
+    } else if (realRate >= 2) {
+      insights.push('Good purchasing power growth');
+      insights.push('Effective inflation protection');
+      insights.push('Solid investment performance');
+    } else if (realRate >= 0) {
+      insights.push('Limited purchasing power growth');
+      insights.push('Basic inflation protection');
+      insights.push('Marginal investment performance');
+    } else {
+      insights.push('Negative purchasing power growth');
+      insights.push('Inadequate inflation protection');
+      insights.push('Poor investment performance');
+    }
+    
+    if (nominalRate > inflationRate) {
+      insights.push('Nominal rate exceeds inflation');
+      insights.push('Positive real return achieved');
+    } else {
+      insights.push('Nominal rate below inflation');
+      insights.push('Negative real return experienced');
+    }
+    
+    insights.push(`Real rate: ${realRate.toFixed(2)}%`);
+    insights.push('Purchasing power analysis');
+    
+    return insights;
+  };
+
+  const getConsiderations = (realRate: number, inflationRate: number) => {
+    const considerations = [];
+    considerations.push('Real rate measures purchasing power changes');
+    considerations.push('Inflation erodes nominal returns');
+    considerations.push('Consider inflation in all investment decisions');
+    considerations.push('Historical inflation rates may not predict future');
+    considerations.push('Diversification helps manage inflation risk');
+    return considerations;
+  };
+
   const onSubmit = (values: FormValues) => {
-    const nominal = values.nominalReturn / 100;
-    const inflation = values.inflationRate / 100;
-    const realReturn = ((1 + nominal) / (1 + inflation)) - 1;
-    setResult(realReturn * 100);
+    const realRate = calculateRealRate(values);
+    setResult({
+      realRate,
+      interpretation: interpret(realRate, values.nominalRate, values.inflationRate),
+      rateLevel: getRateLevel(realRate),
+      recommendation: getRecommendation(realRate, values.nominalRate, values.inflationRate),
+      strength: getStrength(realRate),
+      insights: getInsights(realRate, values.nominalRate, values.inflationRate),
+      considerations: getConsiderations(realRate, values.inflationRate)
+    });
   };
 
   return (
     <div className="space-y-8">
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <Percent className="h-6 w-6 text-primary" />
+            <CardTitle>Real Rate of Return Calculator</CardTitle>
+          </div>
+          <CardDescription>
+            Calculate the real rate of return by adjusting nominal returns for inflation to measure true purchasing power changes
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="nominalReturn" render={({ field }) => (
+                <FormField control={form.control} name="nominalRate" render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nominal Return Rate (%)</FormLabel>
-                  <FormControl><Input type="number" placeholder="e.g., 7" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                    <FormLabel className="flex items-center gap-2">
+                      <BarChart3 className="h-4 w-4" />
+                      Nominal Rate (%)
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="Enter nominal rate" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                    </FormControl>
                   <FormMessage />
                 </FormItem>
             )} />
             <FormField control={form.control} name="inflationRate" render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Inflation Rate (%)</FormLabel>
-                  <FormControl><Input type="number" placeholder="e.g., 3" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                    <FormLabel className="flex items-center gap-2">
+                      <TrendingUp className="h-4 w-4" />
+                      Inflation Rate (%)
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="Enter inflation rate" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                    </FormControl>
                   <FormMessage />
                 </FormItem>
             )} />
           </div>
-          <Button type="submit">Calculate Return</Button>
+              <Button type="submit" className="w-full">
+                <Calculator className="h-4 w-4 mr-2" />
+                Calculate Real Rate of Return
+              </Button>
         </form>
       </Form>
-      {result !== null && (
-        <Card className="mt-8">
+        </CardContent>
+      </Card>
+
+      {result && (
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Landmark className="h-6 w-6 text-primary" />
+                  <CardTitle>Real Rate of Return Result</CardTitle>
+                </div>
+                <div className="flex gap-2">
+                  <Badge variant={result.rateLevel === 'Strong' ? 'default' : result.rateLevel === 'Moderate' ? 'secondary' : 'destructive'}>
+                    {result.rateLevel}
+                  </Badge>
+                  <Badge variant="outline">{result.strength}</Badge>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center space-y-4">
+                <div className="text-4xl font-bold text-primary">
+                  {result.realRate.toFixed(2)}%
+                </div>
+                <p className="text-lg text-muted-foreground">{result.interpretation}</p>
+                <Alert>
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>{result.recommendation}</AlertDescription>
+                </Alert>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
           <CardHeader>
-            <div className='flex items-center gap-4'><Gem className="h-8 w-8 text-primary" /><CardTitle>Real Rate of Return</CardTitle></div>
+              <div className="flex items-center gap-2">
+                <Info className="h-6 w-6 text-primary" />
+                <CardTitle>Insights & Analysis</CardTitle>
+              </div>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-center">{result.toFixed(2)}%</p>
-            <CardDescription className='mt-4 text-center'>This is the true gain or loss in your purchasing power after accounting for inflation.</CardDescription>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <TrendingUp className="h-5 w-5 text-green-600" />
+                    Strengths & Opportunities
+                  </h4>
+                  <ul className="space-y-2">
+                    {result.insights.map((insight, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">{insight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-blue-600" />
+                    Important Considerations
+                  </h4>
+                  <ul className="space-y-2">
+                    {result.considerations.map((consideration, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">{consideration}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
           </CardContent>
         </Card>
+        </div>
       )}
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works (Fisher Equation)</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">This calculator uses the Fisher Equation to provide a precise measure of your real rate of return. Unlike the simple subtraction method, this formula correctly accounts for the compounding effects of both your return and inflation, giving a true picture of your change in purchasing power.</AccordionContent>
-        </AccordionItem>
-      </Accordion>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="h-5 w-5" />
+            Related Financial Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other essential financial metrics for comprehensive return analysis
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Link href="/category/finance/simple-inflation-adjusted-return-calculator" className="group">
+              <Card className="group-hover:shadow-md transition-shadow">
+                <CardContent className="p-4 text-center">
+                  <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
+                  <p className="text-sm font-medium">Inflation-Adjusted Return</p>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link href="/category/finance/margin-of-safety-calculator" className="group">
+              <Card className="group-hover:shadow-md transition-shadow">
+                <CardContent className="p-4 text-center">
+                  <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />
+                  <p className="text-sm font-medium">Margin of Safety</p>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link href="/category/finance/sharpe-ratio-calculator" className="group">
+              <Card className="group-hover:shadow-md transition-shadow">
+                <CardContent className="p-4 text-center">
+                  <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
+                  <p className="text-sm font-medium">Sharpe Ratio</p>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link href="/category/finance/portfolio-expected-return-calculator" className="group">
+              <Card className="group-hover:shadow-md transition-shadow">
+                <CardContent className="p-4 text-center">
+                  <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
+                  <p className="text-sm font-medium">Portfolio Expected Return</p>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Complete Guide to Real Rate of Return
+          </CardTitle>
+          <CardDescription>
+            Everything you need to know about calculating and interpreting real rates of return
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p className="text-muted-foreground">
+            The real rate of return measures the actual purchasing power changes of an investment by adjusting nominal returns for inflation. It reveals whether an investment truly increased in value relative to the cost of living, providing a more accurate assessment of investment performance than nominal returns alone.
+          </p>
+          <p className="text-muted-foreground">
+            Understanding real rates of return is essential for accurate investment evaluation, retirement planning, and long-term financial decision-making. It helps investors distinguish between apparent wealth creation and actual purchasing power preservation, ensuring that investment strategies truly meet financial objectives and maintain living standards.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>
+            Common questions about Real Rate of Return
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What is the real rate of return?</h4>
+              <p className="text-muted-foreground">
+                The real rate of return measures the actual purchasing power changes of an investment by adjusting nominal returns for inflation. It shows whether an investment truly increased in value relative to the cost of living, providing a more accurate assessment of investment performance than nominal returns alone.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How do I calculate the real rate of return?</h4>
+              <p className="text-muted-foreground">
+                Use the Fisher equation: Real Rate = ((1 + Nominal Rate) / (1 + Inflation Rate)) - 1. This formula adjusts the nominal return for inflation to reveal the true change in purchasing power. The result shows the percentage change in real wealth over the investment period.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What's the difference between nominal and real rates?</h4>
+              <p className="text-muted-foreground">
+                Nominal rates show the raw percentage return without considering inflation, while real rates account for inflation and show the actual change in purchasing power. A 10% nominal return with 3% inflation results in a 6.8% real return, showing the true wealth creation.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Why is the real rate of return important?</h4>
+              <p className="text-muted-foreground">
+                The real rate of return is important because it reveals the true performance of investments. Nominal returns can be misleading - a 5% return with 6% inflation actually represents a loss in purchasing power. Real returns help investors make informed decisions and set realistic financial goals.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How does inflation affect real returns?</h4>
+              <p className="text-muted-foreground">
+                Inflation erodes the purchasing power of money over time, reducing the real value of investment returns. Even positive nominal returns can result in negative real returns if inflation exceeds the nominal return rate. This is why considering inflation is crucial for long-term investment planning.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What is a good real rate of return?</h4>
+              <p className="text-muted-foreground">
+                A good real rate of return depends on your investment objectives and risk tolerance. Generally, real returns above 2-3% are considered good, while returns above 5% are excellent. The key is to achieve returns that exceed inflation while meeting your specific financial goals.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How do I use real rates for investment planning?</h4>
+              <p className="text-muted-foreground">
+                Use real rates to set realistic financial goals, evaluate investment performance, and plan for retirement. Consider real returns when calculating how much you need to save, what returns to expect, and whether your investment strategy will meet your long-term objectives.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What investments protect against inflation?</h4>
+              <p className="text-muted-foreground">
+                Investments that typically protect against inflation include Treasury Inflation-Protected Securities (TIPS), real estate, commodities, and stocks of companies with pricing power. These investments tend to maintain or increase their value as inflation rises, preserving purchasing power.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How do I interpret negative real returns?</h4>
+              <p className="text-muted-foreground">
+                Negative real returns indicate that an investment lost purchasing power, even if it showed positive nominal returns. This means the investment underperformed inflation and failed to preserve wealth. Consider alternative investments or strategies that better protect against inflation.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Why is real rate analysis crucial for retirement planning?</h4>
+              <p className="text-muted-foreground">
+                Real rate analysis is crucial for retirement planning because it ensures that your savings will maintain their purchasing power throughout retirement. Without considering inflation, you may underestimate how much you need to save or overestimate the purchasing power of your retirement funds.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
