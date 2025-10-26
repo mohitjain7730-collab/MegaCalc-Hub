@@ -6,12 +6,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { CategoryIcon } from '@/components/category-icon';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { generateCalculatorsListingSchema } from '@/lib/schema-generator';
 
 export default function AllCalculatorsPage() {
   let calculatorCount = 0;
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateCalculatorsListingSchema())
+        }}
+      />
       <div className="w-full max-w-4xl">
         <div className="mb-8">
           <Button asChild variant="ghost" className="mb-4">

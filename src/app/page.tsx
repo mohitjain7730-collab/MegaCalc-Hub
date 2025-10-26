@@ -6,10 +6,17 @@ import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { search } from '@/app/actions';
 import { Input } from '@/components/ui/input';
+import { generateWebsiteSchema } from '@/lib/schema-generator';
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateWebsiteSchema())
+        }}
+      />
       <main className="flex-1">
         <section className="relative w-full py-16 md:py-24 lg:py-32 hero-pattern">
            <div className="container mx-auto text-center px-4">

@@ -11,6 +11,7 @@ import { calculators } from '@/lib/calculators';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { CategoryIcon } from '@/components/category-icon';
 import { EmbedWidget } from '@/components/embed-widget';
+import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from '@/lib/schema-generator';
 
 const calculatorComponents: { [key: string]: React.ComponentType } = {
     'sip-calculator': dynamic(() => import('@/components/calculators/finance/sip-calculator')),
@@ -623,6 +624,24 @@ export default function CalculatorPage({ params }: { params: { slug: string; cal
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-secondary/50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateCalculatorSchema(calculator, category))
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateFAQSchema(calculator))
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateHowToSchema(calculator))
+        }}
+      />
       <div className="w-full max-w-4xl bg-background p-4 sm:p-8 flex-1">
         <div className="mb-8">
           <Button asChild variant="ghost" className="mb-4">

@@ -8,6 +8,7 @@ import { categories } from '@/lib/categories';
 import { CategoryIcon } from '@/components/category-icon';
 import { calculators } from '@/lib/calculators';
 import { CategorySearch } from '@/components/category-search';
+import { generateCategorySchema } from '@/lib/schema-generator';
 
 export default function CategoryPage({ params }: { params: { slug: string } }) {
   const category = categories.find((c) => c.slug === params.slug);
@@ -22,6 +23,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateCategorySchema(category, categoryCalculators))
+        }}
+      />
       <div className="w-full max-w-4xl">
         <div className="mb-8">
           <Button asChild variant="ghost" className='mb-4'>
