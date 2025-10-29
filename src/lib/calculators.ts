@@ -1835,6 +1835,24 @@ export const calculators: Calculator[] = [
     metaTitle: 'Paint Drying Time Calculator - Curing Estimator',
     metaDescription: 'Estimate the drying and curing time for different paint types to plan your painting project effectively.',
   },
+  {
+    id: 3360,
+    name: 'Door & Cabinet Hardware Calculator',
+    description: 'Estimate total knobs/pulls and packs required for cabinet doors and drawers.',
+    slug: 'door-cabinet-hardware-calculator',
+    category: 'home-improvement',
+    metaTitle: 'Door & Cabinet Hardware Calculator - Knobs, Pulls, Packs',
+    metaDescription: 'Calculate how many cabinet hardware pieces and packs you need for kitchens, bathrooms, and built-ins.',
+  },
+  {
+    id: 3361,
+    name: 'Wall Framing Lumber Calculator',
+    description: 'Estimate studs, plates, and total 2x4s for a straight wall given length, spacing, and openings.',
+    slug: 'wall-framing-lumber-calculator',
+    category: 'home-improvement',
+    metaTitle: 'Wall Framing Lumber Calculator - Stud & Plate Estimator',
+    metaDescription: 'Estimate studs and plate materials for wall framing based on length, spacing, openings, and plate count.',
+  },
   // Engineering
   {
     id: 16,
