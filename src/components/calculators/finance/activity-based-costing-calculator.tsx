@@ -138,7 +138,7 @@ export default function ActivityBasedCostingCalculator() {
                     </CardContent>
                   </Card>
                 ))}
-                <Button type="button" variant="outline" onClick={() => append({ activity: '', totalCost: undefined, totalDriverVolume: undefined, productConsumption: undefined, driverUnit: '' })}>
+              <Button type="button" variant="outline" onClick={() => append({ activity: '', totalCost: 0, totalDriverVolume: 0, productConsumption: 0, driverUnit: '' })}>
                   <PlusCircle className="mr-2 h-4 w-4" /> Add Activity
                 </Button>
               </div>

@@ -9,10 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Utensils } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Utensils, Info, Target, Users, BarChart3, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
-import { EmbedWidget } from '@/components/embed-widget';
 
 const goals = {
   sedentary: { min: 0.8, max: 1.2, description: 'Sedentary / Maintenance' },
@@ -57,6 +55,18 @@ export default function ProteinIntakeCalculator() {
 
   return (
     <div className="space-y-8">
+      {/* Input Form */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="h-5 w-5" />
+            Calculate Your Protein Needs
+          </CardTitle>
+          <CardDescription>
+            Determine your optimal daily protein intake based on your body weight and fitness goals
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -73,9 +83,20 @@ export default function ProteinIntakeCalculator() {
           <Button type="submit">Calculate</Button>
         </form>
       </Form>
+        </CardContent>
+      </Card>
+
       {result && (
-        <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Utensils className="h-8 w-8 text-primary" /><CardTitle>Recommended Daily Protein Intake</CardTitle></div></CardHeader>
+        <Card>
+            <CardHeader>
+              <div className='flex items-center gap-4'>
+                <Utensils className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Recommended Daily Protein Intake</CardTitle>
+                  <CardDescription>Personalized range based on your goals</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
             <CardContent>
                 <div className="text-center space-y-2">
                     <p className="text-4xl font-bold">{result.min.toFixed(0)} - {result.max.toFixed(0)} g</p>
@@ -84,26 +105,108 @@ export default function ProteinIntakeCalculator() {
             </CardContent>
         </Card>
       )}
-       <Accordion type="single" collapsible className="w-full">
-         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-                <p>This calculator estimates your daily protein needs based on your body weight and primary fitness goal. It multiplies your weight (in kg) by a recommended protein ratio (in grams per kg) for different activity levels and goals. Higher protein intake is generally recommended for those looking to build muscle or preserve it during fat loss.</p>
-            </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-      <section
-        className="space-y-4 text-muted-foreground leading-relaxed"
-        itemScope
-        itemType="https://schema.org/Article"
-      >
-        <meta itemProp="headline" content="Protein Intake Calculator – Complete Guide to Daily Protein Requirements (Science‑Backed)" />
-        <meta itemProp="author" content="MegaCalc Hub Team" />
-        <meta itemProp="about" content="How much protein you need per day for muscle growth, fat loss, endurance, and general health. Evidence‑based ranges (g/kg and g/lb), protein quality, timing, distribution, vegetarian/vegan strategies, myths, FAQs, and practical meal planning examples." />
 
-        <h2 itemProp="name" className="text-xl font-bold text-foreground">How Much Protein Do You Need Per Day?</h2>
-        <p itemProp="description">
-          If you are asking “how much protein should I eat?”, you are not alone. This Protein Intake Calculator gives you a personalized
+      {/* Educational Content - Expanded Sections */}
+      <div className="space-y-6">
+        {/* Understanding the Inputs Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Understanding the Inputs
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Body Weight</h4>
+              <p className="text-muted-foreground">
+                Protein needs are primarily based on body weight (and lean body mass). Larger individuals generally need more protein than smaller individuals. You can enter your weight in either kilograms or pounds—the calculator will convert as needed.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Primary Goal</h4>
+              <p className="text-muted-foreground">
+                Your fitness goal determines your protein needs. Muscle building and fat loss require higher protein intakes (1.6–2.2 g/kg) to support muscle growth or preserve muscle mass during calorie restriction. Endurance athletes need moderate amounts (1.2–1.6 g/kg), while sedentary individuals need less (0.8–1.2 g/kg) for basic health.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Why There's a Range</h4>
+              <p className="text-muted-foreground">
+                The calculator provides a range rather than a single number because individual protein needs vary based on factors like training intensity, age, total calorie intake, and individual metabolism. Start at the lower end of your range and increase if needed, especially if you're very active or in a calorie deficit.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Related Calculators Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5" />
+              Related Calculators
+            </CardTitle>
+            <CardDescription>
+              Explore other nutrition calculators to optimize your diet
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
+                    Daily Calorie Needs Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate your total daily energy expenditure to ensure you're eating enough calories to support your protein goals.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">
+                    Macro Ratio Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  See how your protein intake fits into your overall macronutrient distribution.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                    Carbohydrate Intake Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Calculate your optimal daily carbohydrate intake to fuel your workouts alongside adequate protein.
+                </p>
+              </div>
+              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                <h4 className="font-semibold mb-2">
+                  <a href="/category/health-fitness/fat-intake-calculator" className="text-primary hover:underline">
+                    Fat Intake Calculator
+                  </a>
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Determine your daily fat requirements to complete your macronutrient planning.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Guide Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Utensils className="h-5 w-5" />
+              Complete Guide to Protein Intake
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+            <h2 className="text-xl font-bold text-foreground">How Much Protein Do You Need Per Day?</h2>
+            <p>
+              If you are asking "how much protein should I eat?", you are not alone. This Protein Intake Calculator gives you a personalized
           daily range in grams using peer‑reviewed position stands and sports nutrition guidelines. Below you will find a comprehensive,
           plain‑language guide that explains the <strong>why</strong> behind the numbers, how to <strong>apply them to real meals</strong>, and how
           to adjust for goals like <strong>muscle building</strong>, <strong>fat loss</strong>, and <strong>endurance performance</strong>.
@@ -195,7 +298,7 @@ export default function ProteinIntakeCalculator() {
         <p>
           Supplements are <em>convenience</em>—not requirements. <strong>Whey</strong> is rapidly digested and leucine‑rich; <strong>casein</strong> digests slower and
           suits pre‑sleep feedings; <strong>plant blends</strong> (pea + rice, soy isolate) help vegans meet per‑meal targets. Choose third‑party tested products and
-          remember that whole foods provide micronutrients and fiber you won’t get from powders.
+              remember that whole foods provide micronutrients and fiber you won't get from powders.
         </p>
 
         <h3 className="font-semibold text-foreground mt-6">9) Safety, Kidneys, and Common Myths</h3>
@@ -205,9 +308,9 @@ export default function ProteinIntakeCalculator() {
           healthcare professional for individualized guidance.
         </p>
         <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Myth:</strong> “Excess protein turns to fat.” Reality: calories beyond needs drive fat gain; protein is satiating and has a high thermic effect.</li>
-          <li><strong>Myth:</strong> “You can only absorb 30 g per meal.” Reality: muscle protein synthesis maxes out around 25–40 g for many, but the rest still supports whole‑body needs.</li>
-          <li><strong>Myth:</strong> “Plant proteins can’t build muscle.” Reality: total protein and leucine intake drive adaptation—well‑planned plant diets work.</li>
+              <li><strong>Myth:</strong> "Excess protein turns to fat." Reality: calories beyond needs drive fat gain; protein is satiating and has a high thermic effect.</li>
+              <li><strong>Myth:</strong> "You can only absorb 30 g per meal." Reality: muscle protein synthesis maxes out around 25–40 g for many, but the rest still supports whole‑body needs.</li>
+              <li><strong>Myth:</strong> "Plant proteins can't build muscle." Reality: total protein and leucine intake drive adaptation—well‑planned plant diets work.</li>
         </ul>
 
         <h3 className="font-semibold text-foreground mt-6">10) Food Labels, Raw vs Cooked Weights, and Tracking</h3>
@@ -217,7 +320,7 @@ export default function ProteinIntakeCalculator() {
           ~70–80 g cooked weight with roughly the same 31 g protein.
         </p>
         <ul className="list-disc ml-6 space-y-1">
-          <li>Create a personal “protein cheat sheet” with your usual foods and their protein per serving.</li>
+              <li>Create a personal "protein cheat sheet" with your usual foods and their protein per serving.</li>
           <li>Prioritize lean, high‑protein staples: eggs/whites, poultry breast, lean beef, tuna/salmon, cottage cheese/Greek yogurt, tofu/tempeh, lentils.</li>
           <li>Use mixed dishes (chili, burrito bowls, stir‑fries) to combine protein with fiber‑rich carbs and vegetables.</li>
         </ul>
@@ -246,29 +349,97 @@ export default function ProteinIntakeCalculator() {
           <li><strong>Sleep and stress:</strong> aim for 7–9 hours; chronic stress blunts adaptations and appetite regulation.</li>
         </ul>
 
-        <h3 className="font-semibold text-foreground mt-6">13) Frequently Asked Questions</h3>
-        <div className="space-y-3">
-          <p><strong>Q: Can I eat more than the upper range?</strong> A: You can, but after your daily target is met, benefits plateau. Extra protein often displaces carbs/fats you may also need.</p>
-          <p><strong>Q: Do I need protein immediately after training?</strong> A: A protein‑rich meal within a few hours on either side of training works for most people, provided total daily intake is met.</p>
-          <p><strong>Q: Is timing before bed necessary?</strong> A: Not required, but useful if it helps you hit daily protein or supports recovery between early/late sessions.</p>
-          <p><strong>Q: What if I am pregnant or nursing?</strong> A: Protein needs increase. Consult a registered dietitian or healthcare provider for individualized guidance.</p>
+            <p className="italic mt-6">
+              Educational use only. This guide is not a substitute for individualized medical advice. If you live with chronic conditions or have
+              specific dietary needs, work with a qualified healthcare professional or registered dietitian.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* FAQ Section */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <HelpCircle className="h-5 w-5" />
+              Frequently Asked Questions
+            </CardTitle>
+            <CardDescription>
+              Common questions about protein intake and daily requirements
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Can I eat more than the upper range of protein?</h4>
+              <p className="text-muted-foreground">
+                You can, but after your daily target is met (around 1.6–2.2 g/kg for most active people), additional benefits plateau. Extra protein often displaces carbohydrates and fats that you may also need for energy, performance, and overall health. Very high protein intakes (above 3 g/kg) are rarely necessary and can be difficult to sustain.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Do I need protein immediately after training?</h4>
+              <p className="text-muted-foreground">
+                A protein‑rich meal within a few hours on either side of training works for most people, provided total daily intake is met. The "anabolic window" is wider than previously thought—you have several hours after training to consume protein and still support muscle growth. However, if you train fasted, consuming protein soon after (within 1–2 hours) may be more beneficial.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Is eating protein before bed necessary?</h4>
+              <p className="text-muted-foreground">
+                Not required, but useful if it helps you hit daily protein targets or supports recovery between early/late training sessions. Slow-digesting proteins like casein (found in cottage cheese or casein powder) can provide a steady supply of amino acids overnight, which may be beneficial for muscle protein synthesis during sleep.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What if I'm pregnant or nursing?</h4>
+              <p className="text-muted-foreground">
+                Protein needs increase during pregnancy and lactation. The current calculator doesn't account for these special circumstances. Pregnant and breastfeeding women should consult a registered dietitian or healthcare provider for individualized guidance, as protein needs vary by trimester and breastfeeding status.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Can I get too much protein?</h4>
+              <p className="text-muted-foreground">
+                For healthy individuals, higher protein intakes (up to 2.5–3.0 g/kg) are generally safe and well-tolerated. However, if you have pre-existing kidney disease, diabetes with nephropathy, or certain metabolic disorders, you should consult a healthcare provider. In healthy people, there's little evidence that high protein intake harms kidneys when adequate hydration is maintained.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">What's the difference between animal and plant protein?</h4>
+              <p className="text-muted-foreground">
+                Animal proteins are "complete" proteins, meaning they contain all essential amino acids in adequate amounts and are highly bioavailable. Plant proteins are often "incomplete" or lower in certain amino acids, but you can achieve the same results by combining different plant sources (like beans and rice) throughout the day. Plant-based eaters may want to aim for the upper end of protein recommendations to account for lower digestibility.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">How do I know if I'm eating enough protein?</h4>
+              <p className="text-muted-foreground">
+                Signs you might not be eating enough protein include: slow recovery from workouts, frequent hunger despite eating enough calories, losing muscle mass during weight loss, weak nails/hair, and difficulty building or maintaining muscle. If you're meeting your calculated protein target and still experiencing these issues, consider increasing intake or consulting a nutrition professional.
+              </p>
         </div>
 
-        <h3 className="font-semibold text-foreground mt-6">14) Related Tools</h3>
-        <div className="space-y-2">
-          <p><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs (TDEE)</Link></p>
-          <p><Link href="/category/health-fitness/macro-ratio-calculator" className="text-primary underline">Macro Ratio Calculator</Link></p>
-          <p><Link href="/category/health-fitness/fat-intake-calculator" className="text-primary underline">Fat Intake Calculator</Link></p>
-          <p><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary underline">Carbohydrate Intake Calculator</Link></p>
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Should I eat protein at every meal?</h4>
+              <p className="text-muted-foreground">
+                Distributing protein across 3–5 meals per day (25–40 g per meal) is more effective than eating all your protein in one or two large meals. This helps maximize muscle protein synthesis throughout the day and improves satiety. However, if you prefer fewer meals, focus on hitting your total daily target—meeting the daily total is more important than perfect distribution.
+              </p>
         </div>
 
-        <p className="italic mt-2">
-          Educational use only. This guide is not a substitute for individualized medical advice. If you live with chronic conditions or have
-          specific dietary needs, work with a qualified healthcare professional or registered dietitian.
-        </p>
-      </section>
-      
-      <EmbedWidget calculatorSlug="protein-intake-calculator" calculatorName="Protein Intake Calculator" />
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Do older adults need more protein?</h4>
+              <p className="text-muted-foreground">
+                Yes. Older adults (65+) may benefit from higher protein intakes (1.2–1.8 g/kg) due to age-related anabolic resistance, where the body becomes less responsive to protein. This helps preserve muscle mass, which naturally decreases with age (sarcopenia). Higher per-meal doses (30–40 g) may also be more effective for older adults.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-foreground mb-2">Can I build muscle on a vegetarian or vegan diet?</h4>
+              <p className="text-muted-foreground">
+                Absolutely. Research shows that well-planned vegetarian and vegan diets can support muscle building just as well as omnivorous diets, provided protein intake is adequate. Focus on high-quality plant proteins like soy, legumes, quinoa, and seitan, and consider combining complementary proteins (like beans and rice) throughout the day. You may want to aim for the upper end of protein recommendations (1.8–2.2 g/kg) to account for lower bioavailability.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
