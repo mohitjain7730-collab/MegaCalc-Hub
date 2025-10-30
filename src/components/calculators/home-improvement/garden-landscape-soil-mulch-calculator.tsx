@@ -468,18 +468,133 @@ export default function GardenLandscapeSoilMulchCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Sprout className="h-5 w-5" />
-              Complete Guide to Garden Material Planning
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Soil and Mulch Volume Calculation: Cubic Yards, Coverage Area, and Material Needs" />
+    <meta itemProp="description" content="An expert guide detailing the calculation of soil and mulch volume in cubic yards or meters for garden beds and landscapes, covering area measurement, required depth, and necessary waste/compaction factors for bulk material ordering." />
+    <meta itemProp="keywords" content="soil volume calculator formula, how much mulch do I need, calculating cubic yards for garden, mulch depth standards, topsoil volume estimation, landscape material calculation" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-soil-mulch-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Soil & Mulch: Calculating Volume and Coverage for Landscaping</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental volume calculations required to accurately estimate bulk landscaping materials, minimizing waste and ensuring proper depth.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#volume-basics" className="hover:underline">Volume Calculation Basics and the Cubic Yard Unit</a></li>
+        <li><a href="#soil" className="hover:underline">Topsoil Calculation: Determining Required Depth</a></li>
+        <li><a href="#mulch" className="hover:underline">Mulch Calculation: Coverage and Depth Standards</a></li>
+        <li><a href="#conversion" className="hover:underline">Dimensional Conversion Mechanics (Feet to Yards)</a></li>
+        <li><a href="#compaction" className="hover:underline">The Critical Role of Compaction and Waste Factors</a></li>
+    </ul>
+<hr />
+
+    {/* VOLUME CALCULATION BASICS AND THE CUBIC YARD UNIT */}
+    <h2 id="volume-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Volume Calculation Basics and the Cubic Yard Unit</h2>
+    <p>Bulk landscaping materials (topsoil, mulch, gravel) are quantified and purchased by volume. Accurate estimation is essential because these materials are heavy and non-returnable.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Fundamental Volume Formula</h3>
+    <p>Volume is universally calculated using the product of three linear dimensions: Length (L), Width (W), and Depth (D).</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Volume = Length * Width * Depth'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Cubic Yard Standard</h3>
+    <p>In North America, bulk materials are sold by the <strong className="font-semibold">Cubic Yard</strong>, which is the equivalent of 27 cubic feet. All linear measurements must be converted to feet before the final volume calculation is made, and the resulting cubic feet must then be divided by 27 to find the ordering quantity.</p>
+
+<hr />
+
+    {/* TOPSOIL CALCULATION: DETERMINING REQUIRED DEPTH */}
+    <h2 id="soil" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Topsoil Calculation: Determining Required Depth</h2>
+    <p>Topsoil calculation is performed when creating a new planting bed or filling a raised garden box. The required depth (D) is the most variable factor, dictated by the intended use of the bed.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Recommended Soil Depths by Application</h3>
+    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
+        <thead className="bg-gray-50">
+            <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Application Type</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Minimum Required Depth (Inches)</th>
+            </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Lawn/Grass Seeding</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">4 to 6 inches</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Annual Flower Beds</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">8 to 12 inches</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Vegetable Gardens / Raised Beds</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">10 to 18 inches</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Shrubs / Perennials</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">18 to 24 inches</td>
+            </tr>
+        </tbody>
+    </table>
+
+<hr />
+
+    {/* MULCH CALCULATION: COVERAGE AND DEPTH STANDARDS */}
+    <h2 id="mulch" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Mulch Calculation: Coverage and Depth Standards</h2>
+    <p>Mulch (wood chips, straw, pine needles) is used to suppress weeds, retain soil moisture, and regulate temperature. Its depth must be balanced to achieve these benefits without smothering plant roots.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Optimal Mulch Depth</h3>
+    <p>The generally accepted standard depth for organic mulches is **3 inches**.</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Too Thin (1-2 inches):</strong> Ineffective at suppressing weed growth and moisture retention.</li>
+        <li><strong className="font-semibold">Too Thick (4+ inches):</strong> Can suffocate plant roots, attract pests, and lead to root collar rot (where the base of the plant stem stays too wet).</li>
+    </ul>
+
+<hr />
+
+    {/* DIMENSIONAL CONVERSION MECHANICS (FEET TO YARDS) */}
+    <h2 id="conversion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dimensional Conversion Mechanics (Feet to Yards)</h2>
+    <p>Since landscape measurements are typically taken in feet and inches, but bulk material is sold in cubic yards, accurate dimensional conversion is the most critical step in the calculation process.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Converting Area to Cubic Feet</h3>
+    <p>All dimensions must be in feet. The depth (D), usually measured in inches, must first be converted to a fraction of a foot (D/12):</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Volume in CF = Length (ft) * Width (ft) * (Depth in inches / 12)'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Converting Cubic Feet to Cubic Yards</h3>
+    <p>The final cubic feet value is divided by 27 to obtain the commercial ordering quantity:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Volume in CY = Volume in CF / 27'}
+        </p>
+    </div>
+    <p>Since vendors often require a minimum order, the final quantity is usually rounded up to the nearest half or quarter yard.</p>
+
+<hr />
+
+    {/* THE CRITICAL ROLE OF COMPACTION AND WASTE FACTORS */}
+    <h2 id="compaction" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of Compaction and Waste Factors</h2>
+    <p>Bulk materials require additional quantity to account for inevitable material loss and changes in density during transport and installation.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Compaction Factor (Soil)</h3>
+    <p>When loose topsoil is ordered and installed, it will naturally settle and compress over time, reducing its volume by 10% to 20%. The **Compaction Factor** is a contingency added to the initial order to ensure the final settled depth meets the requirement. A common practice is to order $10\%$ to $15\%$ more soil than the calculated theoretical volume.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Waste and Expansion (Mulch)</h3>
+    <p>Mulch, particularly shredded wood, is sold loosely packed. However, it can often be overspread, lost to wind, or absorbed into the existing soil structure. While soil requires a compaction factor, mulch often requires a small contingency (5%) for waste and to ensure sufficient coverage for edges and irregular areas.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Calculating the required volume of soil and mulch is a precise geometric exercise rooted in the Volume = Length $\times$ Width $\times$ Depth formula. Mastery requires rigorous dimensional conversion to the standard **Cubic Yard** unit.</p>
+    <p>For topsoil, accuracy hinges on determining the correct minimum planting depth and incorporating a **compaction factor** to compensate for settling. For mulch, the focus is on maintaining the standard 3-inch depth for optimal weed suppression and moisture retention.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

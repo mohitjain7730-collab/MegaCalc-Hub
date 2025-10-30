@@ -542,19 +542,127 @@ export default function WindowGlassCurtainCoverageCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Square className="h-5 w-5" />
-              Complete Guide to Window Curtain Coverage
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Window Glass, Film, and Curtain Coverage Calculation" />
+    <meta itemProp="description" content="An expert guide detailing how to calculate required glass area (sq ft/m²), curtain fabric volume for fullness and pleats (2x or 3x multiplier), and estimating window film or paint coverage for the frame and casing." />
+    <meta itemProp="keywords" content="window glass area calculator, curtain fabric fullness multiplier, calculating window frame area, blinds and shades sizing, thermal window film coverage, interior design window treatments" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-window-coverage-guide" />
 
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Window Coverage: Calculating Glass, Film, and Fabric Needs</h1>
+    <p className="text-lg italic text-gray-700">Master the specialized measurements for glass replacement, energy film installation, and fabric sizing for functional and aesthetic window treatments.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#glass-area" className="hover:underline">Calculating Glass and Film Surface Area</a></li>
+        <li><a href="#curtain-basics" className="hover:underline">Curtain and Drape Calculation Basics</a></li>
+        <li><a href="#fullness" className="hover:underline">The Critical Fabric Fullness Multiplier (2x and 3x)</a></li>
+        <li><a href="#frame-paint" className="hover:underline">Estimating Window Frame Paint and Casing</a></li>
+        <li><a href="#waste" className="hover:underline">Waste Factors for Film and Fabric</a></li>
+    </ul>
+<hr />
+
+    {/* CALCULATING GLASS AND FILM SURFACE AREA */}
+    <h2 id="glass-area" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Glass and Film Surface Area</h2>
+    <p>The calculation for glass replacement, window tinting, or protective film installation requires precise measurement of the visible glass area. This is a simple area calculation, usually performed on the individual pane level.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Single Pane Area Formula</h3>
+    <p>For a single rectangular pane of glass, the area is calculated by multiplying the height (H) and width (W). This result is the minimal purchase quantity for film or glass:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Pane Area = Height * Width'}
+        </p>
+    </div>
+    <p>For windows with multiple dividers (muntins/grilles), the area of each individual glass section must be calculated separately and then summed to find the total glass area.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Film and Tint Sizing</h3>
+    <p>Window film is typically purchased from a roll of specific width. The calculation must determine the minimum required linear footage of the roll. The number of vertical strips required is the total width of the glass divided by the width of the film roll.</p>
+
+<hr />
+
+    {/* CURTAIN AND DRAPE CALCULATION BASICS */}
+    <h2 id="curtain-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Curtain and Drape Calculation Basics</h2>
+    <p>Calculating fabric requirements for curtains and drapes is not based on the window's area, but rather its **width** and the desired final **length**, with adjustments made for the aesthetic style (fullness).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Three Key Measurements</h3>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Finished Width:</strong> The width of the curtain rod or track, which dictates the total area the fabric must cover when closed.</li>
+        <li><strong className="font-semibold">Finished Length (Drop):</strong> The vertical distance from the top of the rod to the desired bottom point (e.g., sill length, apron length, or floor length).</li>
+        <li><strong className="font-semibold">Fabric Usable Width:</strong> The width of the bolt of fabric (e.g., 54 inches), which determines how many panels (widths) must be sewn together horizontally to achieve the required fullness.</li>
+    </ol>
+
+<hr />
+
+    {/* THE CRITICAL FABRIC FULLNESS MULTIPLIER (2X AND 3X) */}
+    <h2 id="fullness" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Fabric Fullness Multiplier (2x and 3x)</h2>
+    <p><strong className="font-semibold">Fullness</strong> refers to the extra fabric added to create the necessary folds, pleats, and draping effect when the curtain is closed. This is the single largest factor differentiating the required fabric from the simple window width.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Fullness Multipliers by Style</h3>
+    <p>The multiplier is applied to the **Finished Width** to determine the total width of fabric needed before hemming and pleating:</p>
+    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
+        <thead className="bg-gray-50">
+            <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fullness Style</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Multiplier</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aesthetic Result</th>
+            </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Minimal/Flat</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">1.5x to 1.8x</td>
+                <td className="px-6 py-4 whitespace-nowrap">Modern, flat look; suitable for sheers</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Standard Fullness</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">2.0x (Double Fullness)</td>
+                <td className="px-6 py-4 whitespace-nowrap">Traditional, common pleating (Two yards of fabric per one yard of rod)</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Luxury/Heavy Fullness</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">2.5x to 3.0x (Triple Fullness)</td>
+                <td className="px-6 py-4 whitespace-nowrap">Heavy pleating; luxurious, dense draping</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Total Fabric Width</h3>
+    <p>The Total Fabric Width is calculated as: Finished Rod Width $\times$ Fullness Multiplier. This is then divided by the Fabric Usable Width to determine the **number of vertical panels** needed.</p>
+
+<hr />
+
+    {/* ESTIMATING WINDOW FRAME PAINT AND CASING */}
+    <h2 id="frame-paint" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Estimating Window Frame Paint and Casing</h2>
+    <p>For renovations, the paint coverage for the window frame and interior casing is a separate calculation based on linear and surface area estimates.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Frame and Casing Area</h3>
+    <p>The painted area consists of the flat surface area of the interior casing and the depth area of the jamb (the inner sides of the frame). This is often estimated based on the total perimeter of the window opening, multiplied by an average casing width (e.g., 4 inches) and the number of coats.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Paint Volume Estimation</h3>
+    <p>Due to the small, complex, and high-detail nature of window frames, paint volume is usually estimated based on total linear feet of the frame perimeter, rather than total surface area. A standard rule of thumb is approximately 1 gallon of trim paint for every 500-800 linear feet of trim, which includes two coats.</p>
+
+<hr />
+
+    {/* WASTE FACTORS FOR FILM AND FABRIC */}
+    <h2 id="waste" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Waste Factors for Film and Fabric</h2>
+    <p>Both film and fabric materials require specific waste factors to account for trimming and matching.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Film and Tint Waste</h3>
+    <p>For window film, a waste factor of **10% to 15%** is added to the total net glass area. This accounts for trimming the edges of the film precisely to the frame, ensuring clean cuts, and compensating for accidental scratches or installation errors.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Fabric and Hem Waste</h3>
+    <p>Fabric length must include several inches of allowance for **hems** (top and bottom finishing) and **side seams**. The most significant waste, however, comes from the **Pattern Repeat**. If the fabric has a large vertical pattern, extra material must be purchased to ensure the pattern aligns perfectly at every horizontal seam where panels are joined, similar to wallpaper matching.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Window coverage calculation is a multi-disciplinary task: glass requires simple area measurement, but drapes and curtains require highly specialized planning based on the **Fullness Multiplier** and **Finished Length**.</p>
+    <p>Accurate fabric estimation must account for the **Pattern Repeat** to minimize waste and ensure aesthetic success. By meticulously measuring the finished width and applying the correct fullness factor (2x for standard pleats), designers ensure the final window treatment is functional, safe, and visually luxurious.</p>
+</section>
         {/* FAQ Section */}
         <Card>
           <CardHeader>
