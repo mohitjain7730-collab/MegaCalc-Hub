@@ -128,7 +128,7 @@ export default function HvacSizingCalculator() {
   const onSubmit = (values: FormValues) => {
     const calculation = calculate(values);
     if (calculation == null) { setResult(null); return; }
-    setResult({ 
+    const resultData = { 
       btu: calculation.btu, 
       tons: calculation.tons, 
       interpretation: interpret(calculation.btu, calculation.tons), 
@@ -137,7 +137,8 @@ export default function HvacSizingCalculator() {
       efficiencyLevel: getEfficiencyLevel(values.climate || 0),
       recommendations: getRecommendations(calculation.btu, calculation.tons, values.climate || 0),
       considerations: getConsiderations(values.climate || 0, calculation.tons)
-    });
+    };
+    setResult(resultData);
   };
 
   const unit = form.watch('unit');
