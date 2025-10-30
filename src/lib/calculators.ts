@@ -2077,6 +2077,20 @@ export const calculators: Calculator[] = [
     slug: 'adventure-activity-risk-calculator',
     category: 'travel-adventure',
   },
+  {
+    id: 3029,
+    name: 'Travel Carbon Footprint Calculator',
+    description: 'Estimate CO₂e for flights, car, and train travel.',
+    slug: 'travel-carbon-footprint-calculator',
+    category: 'travel-adventure',
+  },
+  {
+    id: 3030,
+    name: 'Travel Time Zone & Jet Lag Planner',
+    description: 'Plan time zone shifts and a simple jet lag schedule.',
+    slug: 'travel-time-zone-jet-lag-planner',
+    category: 'travel-adventure',
+  },
   // Technology
   {
     id: 55,
