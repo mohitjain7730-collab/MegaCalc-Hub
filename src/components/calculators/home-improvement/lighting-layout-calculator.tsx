@@ -494,18 +494,147 @@ export default function LightingLayoutCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
-              Complete Guide to Lighting Layout Design
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Lighting Layout Calculation: Lumens, Lux, Footcandles, and Spacing" />
+    <meta itemProp="description" content="An expert guide detailing the formulas and concepts behind calculating proper lighting layouts, including required footcandles (lux), lumen estimation, fixture spacing, and addressing ceiling height and task area requirements." />
+    <meta itemProp="keywords" content="lighting layout calculator formula, how to calculate fixture spacing, required footcandles lux, lumens per square foot, zonal cavity method, lighting design principles, task area illumination" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-lighting-layout-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Lighting Layout: Calculating Illumination and Fixture Spacing</h1>
+    <p className="text-lg italic text-gray-700">Master the photometrics and geometric formulas necessary to ensure uniform and adequate light levels for any interior space.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#metrics" className="hover:underline">Photometric Metrics: Lumens, Lux, and Footcandles</a></li>
+        <li><a href="#required-illumination" className="hover:underline">Determining Required Illumination Levels</a></li>
+        <li><a href="#total-lumens" className="hover:underline">Calculating Total Required Lumens (Lumen Method)</a></li>
+        <li><a href="#fixture-spacing" className="hover:underline">Fixture Spacing and Ceiling Height Ratio</a></li>
+        <li><a href="#color-rendering" className="hover:underline">Advanced Considerations: CRI and Color Temperature</a></li>
+    </ul>
+<hr />
+
+    {/* PHOTOMETRIC METRICS: LUMENS, LUX, AND FOOTCANDLES */}
+    <h2 id="metrics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Photometric Metrics: Lumens, Lux, and Footcandles</h2>
+    <p>Designing an effective lighting system requires moving beyond simple wattage and understanding the key units of light measurement, or **photometric metrics**, which quantify the light source and its effect on a surface.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Lumens (Luminous Flux)</h3>
+    <p><strong className="font-semibold">Lumens</strong> measure the total quantity of visible light emitted by a source (a bulb or fixture) in all directions. Lumens are the starting point for any calculation, as they represent the raw output of the light source.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Illuminance (Lux / Footcandles)</h3>
+    <p><strong className="font-semibold">Illuminance</strong> measures the density of light hitting a surface (the actual brightness perceived on a desk or floor). This is the key metric for determining adequacy:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Lux (lx):</strong> The metric unit, defined as one lumen per square meter.</li>
+        <li><strong className="font-semibold">Footcandle (fc):</strong> The imperial unit, defined as one lumen per square foot. (1 fc $\approx$ 10.76 lux).</li>
+    </ul>
+    <p>The goal of the lighting layout calculation is to ensure the **average footcandle/lux level** across the work plane meets the standards for the room's function.</p>
+
+<hr />
+
+    {/* DETERMINING REQUIRED ILLUMINATION LEVELS */}
+    <h2 id="required-illumination" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Determining Required Illumination Levels</h2>
+    <p>The required brightness is not universal; it is highly dependent on the visual complexity and precision demanded by the task performed in the space. Standards are set by organizations like the Illuminating Engineering Society (IES).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Illuminance Standards by Task</h3>
+    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
+        <thead className="bg-gray-50">
+            <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Area/Task</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recommended Footcandles (fc)</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type of Lighting</th>
+            </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">General Circulation (Hallways)</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">5 - 10 fc</td>
+                <td className="px-6 py-4 whitespace-nowrap">Ambient / Safety</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">General Office / Living Room</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">30 - 50 fc</td>
+                <td className="px-6 py-4 whitespace-nowrap">Ambient / General</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Task Lighting (Kitchen Counter, Desk)</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">70 - 100 fc</td>
+                <td className="px-6 py-4 whitespace-nowrap">Accent / Direct Task</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Detailed Work (Drafting, Lab)</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">100+ fc</td>
+                <td className="px-6 py-4 whitespace-nowrap">High-Intensity Task</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>The total lighting load must meet the minimum standard for the primary use of the room.</p>
+
+<hr />
+
+    {/* CALCULATING TOTAL REQUIRED LUMENS (LUMEN METHOD) */}
+    <h2 id="total-lumens" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Total Required Lumens (Lumen Method)</h2>
+    <p>The **Lumen Method** (or Zonal Cavity Method) is the foundational engineering calculation used to determine the total lumen output required from all fixtures to achieve the target average footcandle level.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Lumen Method Formula</h3>
+    <p>The calculation starts with the total area and the target illuminance level (fc), then adjusts for efficiency and maintenance factors:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Required Lumens = (Footcandles * Area) / (Coefficient of Utilization * Light Loss Factor)'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Key Efficiency Factors</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Coefficient of Utilization (CU):</strong> Represents the percentage of light that actually reaches the work plane. It is dictated by the fixture type, ceiling height, and the reflectivity of the room's surfaces (ceiling, walls, floor). Darker rooms have a lower CU.</li>
+        <li><strong className="font-semibold">Light Loss Factor (LLF):</strong> Accounts for the depreciation of light output over the life of the bulb/LED and the accumulation of dirt on fixtures. Typical LLF ranges from 0.70 to 0.90.</li>
+    </ul>
+    <p>The required total lumen output is then divided by the lumen output of a single fixture to determine the total number of fixtures needed.</p>
+
+<hr />
+
+    {/* FIXTURE SPACING AND CEILING HEIGHT RATIO */}
+    <h2 id="fixture-spacing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Fixture Spacing and Ceiling Height Ratio</h2>
+    <p>Achieving uniform illumination—avoiding excessively bright or dark spots—is determined by the proper spacing of fixtures relative to the ceiling height. This is managed by the **Spacing-to-Mounting-Height Ratio**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Spacing-to-Mounting-Height (S/MH) Ratio</h3>
+    <p>The S/MH ratio is a geometric recommendation provided by the fixture manufacturer. It ensures that light from adjacent fixtures overlaps sufficiently to eliminate shadows. The mounting height is the vertical distance between the fixture and the work plane (usually 30 inches off the floor).</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Max Spacing = S/MH Ratio * Mounting Height'}
+        </p>
+    </div>
+    <p>A common S/MH ratio is 1.5, meaning the maximum distance between fixtures should be no more than 1.5 times the distance from the fixture to the work plane.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Layout Grid</h3>
+    <p>The final layout arranges the required number of fixtures onto a geometric grid (e.g., $3 \times 4$ or $4 \times 5$) that conforms to the calculated maximum spacing, ensuring that fixtures are placed symmetrically away from walls (typically half the maximum spacing).</p>
+
+<hr />
+
+    {/* ADVANCED CONSIDERATIONS: CRI AND COLOR TEMPERATURE */}
+    <h2 id="color-rendering" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Advanced Considerations: CRI and Color Temperature</h2>
+    <p>Beyond light quantity (lumens and footcandles), light quality significantly affects user comfort, mood, and visual accuracy. The two main qualitative metrics are CRI and CCT.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Color Rendering Index (CRI)</h3>
+    <p><strong className="font-semibold">CRI</strong> measures how accurately a light source reveals the true colors of objects compared to a natural reference source (like sunlight). CRI is rated on a scale of 0 to 100. For environments requiring high visual accuracy (e.g., kitchens, art studios, retail), a CRI of 90 or above is recommended.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Correlated Color Temperature (CCT)</h3>
+    <p><strong className="font-semibold">CCT</strong> measures the color appearance of the light source itself, measured in Kelvin (K). This metric affects mood and task performance:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Warm White (2700K – 3000K):</strong> Creates a relaxing, intimate atmosphere (living rooms, bedrooms).</li>
+        <li><strong className="font-semibold">Cool/Neutral White (3500K – 4100K):</strong> Creates an alert, focused atmosphere (offices, kitchens, garages).</li>
+        <li><strong className="font-semibold">Daylight (5000K – 6500K):</strong> Used for high-detail tasks or commercial applications where maximum clarity is needed.</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Effective lighting layout is a quantitative process that converts the room's function into a precise **Total Lumen Requirement** using the Lumen Method, adjusted for efficiency factors like the Coefficient of Utilization (CU).</p>
+    <p>The final design must then adhere to the **Spacing-to-Mounting-Height (S/MH) Ratio** to ensure uniform illumination and prevent glare and shadows. By balancing the quantity of light (footcandles) with quality metrics (CRI and CCT), designers create environments that are both energy-efficient and highly effective for the intended visual tasks.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

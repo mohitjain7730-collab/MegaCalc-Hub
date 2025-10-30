@@ -443,18 +443,117 @@ export default function HvacSizingCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Thermometer className="h-5 w-5" />
-              Complete Guide to HVAC System Sizing
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to HVAC Sizing: BTU, Tonnage, and Manual J Load Calculation" />
+    <meta itemProp="description" content="An expert guide detailing the fundamentals of HVAC sizing, including how to calculate BTU requirements, the concept of tonnage, the importance of ACCA Manual J, and variables affecting a building's heating and cooling load." />
+    <meta itemProp="keywords" content="HVAC sizing formula, calculating required BTUs, cooling load analysis, ACCA Manual J, tonnage conversion HVAC, sensible vs latent heat load, building envelope efficiency" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-hvac-sizing-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to HVAC Sizing: Mastering Load Calculation (Manual J) and Tonnage</h1>
+    <p className="text-lg italic text-gray-700">Master the engineering principles that ensure your heating and cooling system is precisely matched to your building’s unique energy demands.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#metrics" className="hover:underline">HVAC Sizing Metrics: BTU and Tonnage</a></li>
+        <li><a href="#load-concept" className="hover:underline">The Concept of Heating and Cooling Load</a></li>
+        <li><a href="#manual-j" className="hover:underline">ACCA Manual J: The Professional Standard</a></li>
+        <li><a href="#heat-gain" className="hover:underline">Key Variables for Heat Gain and Loss</a></li>
+        <li><a href="#risks" className="hover:underline">Risks of Improper HVAC Sizing (Oversizing/Undersizing)</a></li>
+    </ul>
+<hr />
+
+    {/* HVAC SIZING METRICS: BTU AND TONNAGE */}
+    <h2 id="metrics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">HVAC Sizing Metrics: BTU and Tonnage</h2>
+    <p>HVAC capacity is measured based on the rate at which heat is moved, quantified primarily by **British Thermal Units (BTUs)** and **Tonnage**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">British Thermal Unit (BTU)</h3>
+    <p>A <strong className="font-semibold">BTU</strong> is the most fundamental unit of thermal energy capacity. It is defined as the amount of heat required to raise the temperature of one pound of water by one degree Fahrenheit. HVAC systems are rated by **BTUs per hour (BTU/h)** for both heating and cooling.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Tonnage Conversion</h3>
+    <p><strong className="font-semibold">Tonnage</strong> is a common industry metric, particularly for cooling systems. It is a historical measure based on the amount of cooling achieved by melting one ton of ice over a 24-hour period. The conversion is fixed:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'1 Ton = 12,000 BTU/h'}
+        </p>
+    </div>
+    <p>Therefore, a 3-ton air conditioner has a cooling capacity of 36,000 BTU/h. Sizing a system means matching the required BTU/h capacity (the load) to the unit's rated BTU/h output.</p>
+
+<hr />
+
+    {/* THE CONCEPT OF HEATING AND COOLING LOAD */}
+    <h2 id="load-concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Concept of Heating and Cooling Load</h2>
+    <p>The **Load** is the rate at which a building gains heat in the summer (cooling load) or loses heat in the winter (heating load). Accurate HVAC sizing requires calculating this load, not just the square footage of the structure.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Sensible Heat vs. Latent Heat</h3>
+    <p>The total cooling load is composed of two types of heat:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Sensible Heat:</strong> The heat that causes a change in temperature (what the thermostat measures). Sources include sunlight, people, appliances, and conductive heat gain through walls.</li>
+        <li><strong className="font-semibold">Latent Heat:</strong> The heat required to change the state of water (humidity). This load dictates the system's dehumidification requirement. Latent heat accounts for a significant portion of the total load in humid climates.</li>
+    </ul>
+    <p>An HVAC system must be sized to handle both the sensible load (temperature reduction) and the latent load (humidity control) simultaneously.</p>
+
+<hr />
+
+    {/* ACCA MANUAL J: THE PROFESSIONAL STANDARD */}
+    <h2 id="manual-j" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ACCA Manual J: The Professional Standard</h2>
+    <p>The industry standard for accurate residential and light commercial load calculation is the **ACCA Manual J** (developed by the Air Conditioning Contractors of America). It is a detailed, room-by-room, physics-based methodology that accounts for all heat transfer mechanisms.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Manual J Calculation Process</h3>
+    <p>Manual J is far more accurate than simple rules of thumb (e.g., "500 square feet per ton") because it inputs dozens of variables that affect heat transfer:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Climate Data:</strong> Using local outdoor design temperatures and humidity levels.</li>
+        <li><strong className="font-semibold">Building Envelope:</strong> Inputting the U-factor or R-value of all walls, roofs, windows, and foundations.</li>
+        <li><strong className="font-semibold">Internal Gains:</strong> Accounting for the heat generated by occupants and fixed appliances (lights, stoves, refrigerators).</li>
+        <li><strong className="font-semibold">Air Infiltration:</strong> Modeling heat transfer through uncontrolled air leaks (cracks, vents).</li>
+    </ol>
+    <p>The calculation produces a precise cooling load and heating load for *each room*, ensuring proper zone-by-zone airflow and temperature balance.</p>
+
+<hr />
+
+    {/* KEY VARIABLES FOR HEAT GAIN AND LOSS */}
+    <h2 id="heat-gain" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Variables for Heat Gain and Loss</h2>
+    <p>Several variables, most often ignored by simple calculators, critically impact the load calculation and system size.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Window Orientation and Shading</h3>
+    <p>Windows are the largest source of heat gain. The load varies dramatically based on exposure:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">West-Facing Windows:</strong> Receive intense afternoon sunlight, leading to the highest heat gain and often dictating peak cooling load.</li>
+        <li><strong className="font-semibold">South-Facing Windows:</strong> Easier to shade, but also major contributors.</li>
+        <li><strong className="font-semibold">Shading:</strong> External shading (e.g., eaves, trees, awnings) drastically reduces solar heat gain and lowers the overall cooling load required.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Insulation and Air Sealing</h3>
+    <p>The R-value of the insulation in the walls, attic, and floor is the primary defense against conductive heat transfer. A high R-value reduces the load. Equally important is **air sealing**, which prevents convective air movement that bypasses insulation entirely.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">3. Ductwork Location</h3>
+    <p>If ductwork runs through an unconditioned space (e.g., an uninsulated attic), the system must work harder because the air is heated or cooled before it even reaches the living space. This heat transfer penalty is a significant factor in load calculation.</p>
+
+<hr />
+
+    {/* RISKS OF IMPROPER HVAC SIZING (OVERSIZING/UNDERSIZING) */}
+    <h2 id="risks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Risks of Improper HVAC Sizing (Oversizing/Undersizing)</h2>
+    <p>The goal is to match the system capacity precisely to the peak load. Both oversizing and undersizing lead to discomfort, inefficiency, and mechanical issues.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Oversizing (The More Common Problem)</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Poor Dehumidification:</strong> An oversized system cools the air too quickly ("short-cycling"). It shuts off before running long enough to remove the latent heat (moisture), leaving the air cold but clammy.</li>
+        <li><strong className="font-semibold">Reduced Efficiency:</strong> Short-cycling uses more energy per unit of cooling and increases mechanical wear.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Undersizing</h3>
+    <p>An undersized system runs constantly during peak load periods (e.g., the hottest part of the afternoon) but fails to maintain the desired set point temperature. This leads to high energy bills, excessive mechanical stress, and tenant complaints.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>HVAC sizing is a complex engineering task that requires converting a building's total thermal load into a precise BTU/h capacity. Relying on simple area-based rules is inadequate and leads to poor performance.</p>
+    <p>Accurate sizing demands a detailed load analysis (ACCA Manual J) that correctly models factors like **insulation R-value**, **window orientation**, and **air infiltration**. A system that is precisely matched to the load ensures optimal comfort by effectively managing both the sensible heat (temperature) and the latent heat (humidity).</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

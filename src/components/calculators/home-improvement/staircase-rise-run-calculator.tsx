@@ -498,18 +498,130 @@ export default function StaircaseRiseRunCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
-              Complete Guide to Staircase Design
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Staircase Rise and Run Calculation, Safety Standards, and Ergonomics" />
+    <meta itemProp="description" content="An expert guide detailing the formulas and building codes (IRC, IBC) for calculating staircase rise (riser height), run (tread depth), stringer layout, and ensuring the safest, most ergonomic slope for residential and commercial stairs." />
+    <meta itemProp="keywords" content="staircase rise and run formula, how to calculate stair stringer layout, riser height standards, tread depth calculation, stair code compliance IRC, safe stair slope, total rise and total run" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-staircase-rise-run-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Staircase Rise and Run: Mastering Safety and Ergonomics in Design</h1>
+    <p className="text-lg italic text-gray-700">Master the geometric formulas and strict building codes that govern the dimensions of every single step.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#basics" className="hover:underline">Rise and Run: Core Definitions and Total Dimensions</a></li>
+        <li><a href="#total-rise" className="hover:underline">Step 1: Calculating Total Rise and Number of Risers</a></li>
+        <li><a href="#individual" className="hover:underline">Step 2: Calculating Individual Riser and Tread Dimensions</a></li>
+        <li><a href="#code-compliance" className="hover:underline">Building Code Compliance and Safety Rules</a></li>
+        <li><a href="#stringer-layout" className="hover:underline">Stair Stringer Layout and Material Calculation</a></li>
+    </ul>
+<hr />
+
+    {/* RISE AND RUN: CORE DEFINITIONS AND TOTAL DIMENSIONS */}
+    <h2 id="basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Rise and Run: Core Definitions and Total Dimensions</h2>
+    <p>Staircase design is governed by the two primary dimensions of a single step: the **Rise** (vertical height) and the **Run** (horizontal depth). Accurate calculation ensures the staircase meets comfort, efficiency, and—most importantly—safety standards.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Riser, Tread, and Nosing</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Riser (Rise):</strong> The vertical distance from the top of one step to the top of the next step. Uniformity is absolutely required for safety.</li>
+        <li><strong className="font-semibold">Tread (Run):</strong> The horizontal depth of the step where the foot lands, measured from the leading edge of one riser to the next.</li>
+        <li><strong className="font-semibold">Nosing:</strong> The portion of the tread that projects horizontally beyond the face of the riser below.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Total Rise and Total Run</h3>
+    <p>Before designing individual steps, the overall dimensions of the entire stairway must be established:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Total Rise:</strong> The overall vertical distance from the finished floor of the lower level to the finished floor of the upper level.</li>
+        <li><strong className="font-semibold">Total Run:</strong> The total horizontal length the staircase covers, measured from the front of the first riser to the front of the last riser.</li>
+    </ul>
+
+<hr />
+
+    {/* STEP 1: CALCULATING TOTAL RISE AND NUMBER OF RISERS */}
+    <h2 id="total-rise" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 1: Calculating Total Rise and Number of Risers</h2>
+    <p>The first critical step is dividing the **Total Rise** (the full vertical height) by the desired individual riser height to determine the correct, whole number of steps needed. This step sets the foundation for the entire layout.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Determining the Ideal Riser Height</h3>
+    <p>A comfortable individual riser height typically falls between 6 and 7 inches. The approximate number of risers (N) is found by dividing the Total Rise by this ideal height:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Approximate Risers (N) = Total Rise / Ideal Riser Height'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Establishing the Final, Equal Riser Height</h3>
+    <p>Since the number of risers must be a whole number, the approximate result is rounded (up or down) to the nearest integer. The final, accurate individual riser height is then recalculated using this whole number, ensuring every step is perfectly uniform, which is non-negotiable for safety:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Final Riser Height = Total Rise / Final Number of Risers'}
+        </p>
+    </div>
+    <p>This final height must be checked against the maximum code allowance (usually 7.75 inches for residential stairs).</p>
+
+<hr />
+
+    {/* STEP 2: CALCULATING INDIVIDUAL RISER AND TREAD DIMENSIONS */}
+    <h2 id="individual" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 2: Calculating Individual Riser and Tread Dimensions</h2>
+    <p>Once the final riser height is fixed, the corresponding tread depth (run) is calculated to ensure the slope of the staircase is ergonomic and safe. This relationship is often called the **Stair Rule**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Stair Ergonomics Rule</h3>
+    <p>Most building codes and ergonomic standards suggest that the sum of one riser height and one tread depth should fall within a specific range (often 17 to 18 inches). A common industry rule for safe and comfortable stairs is:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'(2 * Riser Height) + Tread Depth = 24 to 26 inches'}
+        </p>
+    </div>
+    <p>This formula ensures a moderate slope. The final calculated tread depth must also meet the minimum code requirement (usually 10 inches).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Number of Treads vs. Risers</h3>
+    <p>A staircase always has <strong className="font-semibold">one less tread</strong> than the number of risers. The last riser meets the finished floor of the upper landing, eliminating the need for a final tread piece. The Total Run calculation is derived by multiplying the final tread depth by the number of treads (N minus 1).</p>
+
+<hr />
+
+    {/* BUILDING CODE COMPLIANCE AND SAFETY RULES */}
+    <h2 id="code-compliance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Building Code Compliance and Safety Rules</h2>
+    <p>Staircases are subject to strict building codes (e.g., International Residential Code - IRC) due to their high risk of accidents. Safety relies heavily on uniformity and specific dimensional thresholds.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Uniformity and Tolerance</h3>
+    <p>The code strictly mandates that the largest rise and largest run in a flight of stairs cannot differ from the smallest by more than a specified tolerance (often $3/8$ inch). This rule prevents the user from being unexpectedly tripped by an irregular step.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Key Dimensional Limits (IRC Example)</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Maximum Riser Height:</strong> Typically $7 \frac{3}{4}$ inches (residential) or 7 inches (commercial).</li>
+        <li><strong className="font-semibold">Minimum Tread Depth:</strong> Typically 10 inches (residential).</li>
+        <li><strong className="font-semibold">Minimum Stair Width:</strong> 36 inches (clear width).</li>
+        <li><strong className="font-semibold">Minimum Headroom:</strong> 80 inches (6 feet, 8 inches), measured vertically from the tread nosing to the ceiling above.</li>
+    </ul>
+
+<hr />
+
+    {/* STRINGER LAYOUT AND MATERIAL CALCULATION */}
+    <h2 id="stringer-layout" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Stair Stringer Layout and Material Calculation</h2>
+    <p>The **Stringer** is the diagonal structural support piece that holds the risers and treads. Accurate calculation of the riser and tread dimensions is necessary to layout and cut the stringers correctly.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Stringer Material and Number</h3>
+    <p>Stringers are typically cut from 2x12 lumber. For standard residential stairs, two stringers are used, but for wider stairs or high-traffic commercial applications, a third (center) stringer may be required to prevent tread deflection.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Determining Stringer Length</h3>
+    <p>The actual length of the stringer material needed is the hypotenuse of the right triangle formed by the Total Rise and the Total Run. This is calculated using the Pythagorean theorem (A squared + B squared = C squared):</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Stringer Length = Square Root ( (Total Rise)^2 + (Total Run)^2 )'}
+        </p>
+    </div>
+    <p>A cutting allowance (waste factor) of at least 12 inches should be added to the calculated length when purchasing the lumber.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Staircase design is an essential structural and ergonomic calculation rooted in the rigid relationship between the vertical **rise** and the horizontal **run**. The process involves determining the exact whole number of steps and then applying the **Stair Rule** to ensure optimal and safe dimensions.</p>
+    <p>Final execution requires strict adherence to building code tolerances, particularly the maximum riser height and minimum tread depth, ensuring the finished staircase provides a safe, uniform, and comfortable vertical path between levels.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

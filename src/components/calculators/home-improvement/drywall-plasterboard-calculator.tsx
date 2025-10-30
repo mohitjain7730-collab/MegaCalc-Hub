@@ -515,18 +515,113 @@ export default function DrywallPlasterboardCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Square className="h-5 w-5" />
-              Complete Guide to Drywall Installation
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Drywall (Plasterboard) Calculation, Area, and Waste Estimation" />
+    <meta itemProp="description" content="An expert guide detailing how to calculate the number of drywall sheets required for walls and ceilings, covering standard sheet sizes, accounting for openings (windows/doors), and calculating essential waste and contingency factors." />
+    <meta itemProp="keywords" content="drywall calculator formula, how many drywall sheets do I need, calculating wall area for drywall, plasterboard sheet count, drywall waste factor, area deduction for openings" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-drywall-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Drywall (Plasterboard): Calculating Sheets, Area, and Waste</h1>
+    <p className="text-lg italic text-gray-700">Master the geometric and efficiency calculations required to estimate the exact number of panels needed for wall and ceiling installation.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#area-measurement" className="hover:underline">Total Surface Area and Basic Measurement</a></li>
+        <li><a href="#standard-sheets" className="hover:underline">Standard Sheet Sizes and Panel Coverage</a></li>
+        <li><a href="#deductions" className="hover:underline">Accounting for Openings (Windows and Doors)</a></li>
+        <li><a href="#waste-factor" className="hover:underline">The Critical Role of the Waste Factor</a></li>
+        <li><a href="#supplemental" className="hover:underline">Supplemental Material Estimation (Tape and Mud)</a></li>
+    </ul>
+<hr />
+
+    {/* TOTAL SURFACE AREA AND BASIC MEASUREMENT */}
+    <h2 id="area-measurement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Total Surface Area and Basic Measurement</h2>
+    <p>Drywall calculation begins with determining the total gross area of all walls and ceilings that require coverage. This is a crucial step that sets the baseline for material ordering.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Gross Area</h3>
+    <p>For standard rectangular rooms, the total gross area is the sum of the area of all walls and the ceiling. The area of each surface is found by:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Area = Length * Height (or Width)'}
+        </p>
+    </div>
+    <p>In complex or multi-level rooms, the total surface is segmented into simple squares and rectangles, and their areas are summed. Measurements should always be taken in a consistent unit (feet or meters) to ensure the final quantity is correct.</p>
+
+<hr />
+
+    {/* STANDARD SHEET SIZES AND PANEL COVERAGE */}
+    <h2 id="standard-sheets" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Standard Sheet Sizes and Panel Coverage</h2>
+    <p>Drywall (or plasterboard) is manufactured in specific dimensions, and the installer must choose a size that minimizes waste and simplifies the installation process.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Common Drywall Dimensions</h3>
+    <p>The most common sheet sizes are designed around standard residential framing (8-foot ceilings, 16- or 24-inch stud spacing):</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">4' x 8' Sheet (32 sq ft):</strong> Most standard size, ideal for small areas and easy handling.</li>
+        <li><strong className="font-semibold">4' x 10' Sheet (40 sq ft):</strong> Used for 10-foot ceilings to reduce or eliminate the need for horizontal seams.</li>
+        <li><strong className="font-semibold">4' x 12' Sheet (48 sq ft):</strong> Ideal for long walls and large projects, reducing the number of butt joints that require extra finishing work.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Optimizing Sheet Size for Seams</h3>
+    <p>Professional estimates prioritize using the longest possible sheet length that fits the room dimensions, as every sheet requires finishing (taping and mudding). Fewer sheets mean fewer seams, leading to less labor and higher quality finishes. For instance, using 12-foot sheets on a 24-foot wall minimizes labor compared to using six 8-foot sheets.</p>
+
+<hr />
+
+    {/* ACCOUNTING FOR OPENINGS (WINDOWS AND DOORS) */}
+    <h2 id="deductions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Accounting for Openings (Windows and Doors)</h2>
+    <p>Openings such as windows, doors, and large HVAC returns must be accounted for in the final calculation, but not always by simple deduction of area.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Deduction Rule (Net Area)</h3>
+    <p>While the area of a large window is not covered by drywall, the effort required to cut and frame the drywall around the opening, along with the corner waste generated, often negates the material savings. As a standard practice:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Large Openings (over 30 sq ft):</strong> The area is typically deducted from the total sheet requirement, as the material savings outweigh the cutting waste.</li>
+        <li><strong className="font-semibold">Small Openings (under 30 sq ft):</strong> The area is often *ignored* (not deducted). The material that would have covered the opening is assumed to be lost as cutting waste and scraps generated during installation.</li>
+    </ul>
+
+<hr />
+
+    {/* THE CRITICAL ROLE OF THE WASTE FACTOR */}
+    <h2 id="waste-factor" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of the Waste Factor</h2>
+    <p>The <strong className="font-semibold">Waste Factor</strong> is the percentage added to the total calculated net area to account for material loss due to irregular cuts, mistakes, and transport damage. Unlike some materials, drywall waste is highly influenced by framing layout and room complexity.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Standard Waste Guidelines</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Simple Rooms (Square/Rectangle):</strong> 5% to 10% waste factor.</li>
+        <li><strong className="font-semibold">Complex Rooms (Angles, Many Openings):</strong> 12% to 15% waste factor.</li>
+        <li><strong className="font-semibold">Difficult Installation (High Ceilings, Skylights):</strong> Up to 20% waste factor.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Final Sheet Calculation</h3>
+    <p>The final formula incorporates the total net area, the waste factor, and the area of the chosen sheet size, always rounding up to ensure sufficient material is available:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Sheets = Ceiling [ (Net Area * (1 + Waste Factor)) / Area of One Sheet ]'}
+        </p>
+    </div>
+    <p>The **Ceiling function** ($\lceil \dots \rceil$) is mathematically essential here, as sheets must be purchased as whole units.</p>
+
+<hr />
+
+    {/* SUPPLEMENTAL MATERIAL ESTIMATION (TAPE AND MUD) */}
+    <h2 id="supplemental" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Supplemental Material Estimation (Tape and Mud)</h2>
+    <p>The sheet count directly determines the requirement for finishing materials—joint tape and joint compound ("mud"). These materials are estimated based on the total length of seams.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Joint Compound (Mud)</h3>
+    <p>The amount of joint compound needed is proportional to the total square footage of the drywall being installed, as it must cover all seams, fasteners (screws/nails), and corner beads. Estimators use a rule of thumb based on pounds of compound per square foot of drywall or per linear foot of seam.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Joint Tape</h3>
+    <p>Tape is required for every internal seam. The total linear footage of seams is calculated by multiplying the total number of sheets by the average number of seams per sheet (accounting for vertical and horizontal joints) and adding the linear footage required for all internal corners.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Drywall calculation is a specialized area measurement that focuses on minimizing seams while accurately forecasting material loss. The process moves beyond simple area by requiring the selection of an optimal sheet size, careful application of **deduction rules** for openings, and the necessary inclusion of a **waste factor** based on room complexity.</p>
+    <p>By using the final calculation (Net Area $\times$ Waste $\div$ Sheet Area, rounded up), constructors ensure efficient panel layout, reduce finishing labor, and minimize the risk of costly material shortages.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

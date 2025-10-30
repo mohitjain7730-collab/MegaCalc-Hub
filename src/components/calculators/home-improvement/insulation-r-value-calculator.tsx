@@ -411,18 +411,138 @@ export default function InsulationRValueCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Thermometer className="h-5 w-5" />
-              Complete Guide to Insulation R-Values
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Insulation R-Value: Calculation, Standards, and Thermal Resistance" />
+    <meta itemProp="description" content="An expert guide detailing the R-value calculation, its relationship to U-factor, standard insulation materials (fiberglass, foam), required R-values by climate zone (ASHRAE), and the physics of heat transfer in building envelopes." />
+    <meta itemProp="keywords" content="R-value definition explained, calculating total R-value, thermal resistance formula, U-factor vs R-value, insulation climate zones ASHRAE, required insulation levels, heat transfer building envelope" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-r-value-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Insulation R-Value: Measuring Thermal Resistance and Efficiency</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental metric that quantifies an insulation material’s ability to resist the flow of heat, crucial for energy efficiency.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">R-Value: Definition and Heat Transfer Basics</a></li>
+        <li><a href="#total-r" className="hover:underline">Calculating Total R-Value for a Building Assembly</a></li>
+        <li><a href="#u-factor" className="hover:underline">R-Value and U-Factor: The Inverse Relationship</a></li>
+        <li><a href="#climate" className="hover:underline">Climate Zones and Required R-Value Standards</a></li>
+        <li><a href="#materials" className="hover:underline">Material Science: R-Values by Insulation Type</a></li>
+    </ul>
+<hr />
+
+    {/* R-VALUE: DEFINITION AND HEAT TRANSFER BASICS */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">R-Value: Definition and Heat Transfer Basics</h2>
+    <p>The <strong className="font-semibold">R-Value</strong> is the primary measure of thermal resistance used in the building industry. It quantifies an insulation material’s capacity to impede the flow of heat (thermal conductivity) through a specific thickness. The "R" stands for resistance. A higher R-value indicates greater insulating effectiveness.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Physics of Heat Transfer</h3>
+    <p>Insulation works by mitigating three forms of heat transfer, typically measured in Imperial units (hours $\cdot$ square feet $\cdot$ degrees Fahrenheit per British thermal unit):</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Conduction:</strong> Heat transfer through solid materials (e.g., through a wall stud). R-value directly resists this.</li>
+        <li><strong className="font-semibold">Convection:</strong> Heat transfer through the movement of fluids (air leaks). R-value does not account for this; **air sealing** is required.</li>
+        <li><strong className="font-semibold">Radiation:</strong> Heat transfer through electromagnetic waves (e.g., sun hitting a roof). Resisted by radiant barriers, often used alongside R-value insulation.</li>
+    </ul>
+    <p>The R-value of a material is directly proportional to its thickness: doubling the thickness of the insulation theoretically doubles the R-value.</p>
+
+<hr />
+
+    {/* CALCULATING TOTAL R-VALUE FOR A BUILDING ASSEMBLY */}
+    <h2 id="total-r" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Total R-Value for a Building Assembly</h2>
+    <p>The total R-value of a roof, wall, or floor assembly is the sum of the thermal resistance of every component layer, from the exterior finish to the interior drywall. This is known as the **System R-Value**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Summation Rule</h3>
+    <p>The R-values of materials placed in sequence (layer by layer) are additive. This simple summation rule is used to find the resistance of the entire structure, as long as the heat flow is perpendicular to the layers.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total R-Value = R1 + R2 + R3 + ... + Rn'}
+        </p>
+    </div>
+    <p>Layers included in the summation are: exterior siding, exterior sheathing, air films (interior and exterior), the insulation product itself, and interior drywall/plaster.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Thermal Bridging (Framing Correction)</h3>
+    <p>The summation rule is complicated by **thermal bridging**—areas where highly conductive materials (like wood studs or metal frames) penetrate the insulation layer, creating a path for heat to bypass the resistance. Because wood has a much lower R-value than the cavity insulation (e.g., R-1.25 per inch vs. R-3.7 per inch for fiberglass), the actual system R-value is significantly lower than the stated R-value of the insulation alone. Building codes often require using the **Assembly R-Value**, which accounts for this framing factor.</p>
+
+<hr />
+
+    {/* R-VALUE AND U-FACTOR: THE INVERSE RELATIONSHIP */}
+    <h2 id="u-factor" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">R-Value and U-Factor: The Inverse Relationship</h2>
+    <p>While R-value measures resistance to heat flow, the <strong className="font-semibold">U-Factor</strong> (or U-value) measures the rate of heat transfer (thermal transmittance). These two metrics are inversely related and are used in different contexts (R-value for opaque assemblies like walls, U-factor for transparent assemblies like windows).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Conversion Formula</h3>
+    <p>U-Factor is defined as the reciprocal of the total R-value of a system:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'U-Factor = 1 / Total R-Value'}
+        </p>
+    </div>
+    <p>A lower U-factor indicates a better performing building assembly, meaning less heat is transferred per unit of time and area. This is the preferred metric for analyzing windows and doors, where heat loss is complex and dominated by glass properties.</p>
+
+<hr />
+
+    {/* CLIMATE ZONES AND REQUIRED R-VALUE STANDARDS */}
+    <h2 id="climate" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Climate Zones and Required R-Value Standards</h2>
+    <p>Building codes and energy efficiency standards mandate minimum R-values based on local climate conditions. The required thermal resistance in a cold climate is drastically different from that in a hot climate.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">ASHRAE and IECC Climate Zones</h3>
+    <p>The International Energy Conservation Code (IECC) and standards set by ASHRAE (American Society of Heating, Refrigerating and Air-Conditioning Engineers) divide the world into climate zones (typically 1 through 8, from hottest to coldest). The required R-value for ceilings, walls, and floors increases progressively from Zone 1 to Zone 8.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Minimum Code Requirements</h3>
+    <p>Typical residential minimums for cold climates (Zone 6) might require R-49 or R-60 in attics, while warmer climates (Zone 3) may require R-30 or R-38. These requirements are legally binding and are essential inputs for any accurate R-value calculation tool.</p>
+
+<hr />
+
+    {/* MATERIAL SCIENCE: R-VALUES BY INSULATION TYPE */}
+    <h2 id="materials" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Material Science: R-Values by Insulation Type</h2>
+    <p>The R-value of a product is primarily determined by its material composition and density. Different insulation types achieve different levels of thermal resistance per inch of thickness.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Common Insulation Types and R-Per-Inch Values</h3>
+    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
+        <thead className="bg-gray-50">
+            <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Material Type</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Typical R-Value Per Inch</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Primary Use</th>
+            </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Fiberglass Batts (Faced/Unfaced)</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">R-3.0 to R-3.7</td>
+                <td className="px-6 py-4 whitespace-nowrap">Wall/Ceiling Cavities (New Construction)</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Loose-Fill Cellulose</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">R-3.5 to R-3.8</td>
+                <td className="px-6 py-4 whitespace-nowrap">Attic Floors, Dense Pack in Existing Walls</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Extruded Polystyrene (XPS) Foam Board</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">R-5.0</td>
+                <td className="px-6 py-4 whitespace-nowrap">Exterior Walls, Foundations, Below Slab</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Polyisocyanurate (Polyiso) Foam</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">R-6.0 to R-6.5</td>
+                <td className="px-6 py-4 whitespace-nowrap">Roofing, Continuous Insulation</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Closed-Cell Spray Foam (Polyurethane)</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">R-6.5 to R-7.0</td>
+                <td className="px-6 py-4 whitespace-nowrap">Crawlspaces, Difficult-to-Access Areas</td>
+            </tr>
+        </tbody>
+    </table>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The R-value is the essential metric for calculating thermal resistance, forming the basis for all energy-efficient building standards. Accurate calculation requires summing the resistance of all components in a wall or roof assembly and applying necessary corrections for thermal bridging (the framing factor).</p>
+    <p>Ultimately, the goal is to meet or exceed the R-value required for the local climate zone, ensuring that the total system resistance minimizes heat flow, reduces energy consumption, and provides long-term cost savings for the building owner.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

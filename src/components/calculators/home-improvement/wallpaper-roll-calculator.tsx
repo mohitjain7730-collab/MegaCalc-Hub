@@ -518,18 +518,116 @@ export default function WallpaperRollCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Scroll className="h-5 w-5" />
-              Complete Guide to Wallpaper Installation
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Wallpaper Roll Calculation, Area, and Pattern Match Estimation" />
+    <meta itemProp="description" content="An expert guide detailing how to calculate the number of wallpaper rolls required based on wall perimeter, ceiling height, pattern repeat, and necessary waste allowance for trimming and matching." />
+    <meta itemProp="keywords" content="wallpaper roll calculator formula, how many rolls of wallpaper, wallpaper pattern repeat match, calculating wall area for wallpaper, wallpaper trimming waste factor, deduction windows doors" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-wallpaper-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Wallpaper Rolls: Calculating Quantity Based on Pattern and Height</h1>
+    <p className="text-lg italic text-gray-700">Master the specialized formulas that factor in pattern matching and wall height to accurately estimate rolls and avoid material shortages.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#area-method" className="hover:underline">Area Method vs. Strip Method Calculation</a></li>
+        <li><a href="#roll-coverage" className="hover:underline">Standard Roll Sizes and Theoretical Coverage</a></li>
+        <li><a href="#strips" className="hover:underline">The Strip Method: Calculating Required Vertical Strips</a></li>
+        <li><a href="#pattern-match" className="hover:underline">Critical Factor: Pattern Repeat and Match Waste</a></li>
+        <li><a href="#deductions" className="hover:underline">Deductions and Final Roll Count</a></li>
+    </ul>
+<hr />
+
+    {/* AREA METHOD VS. STRIP METHOD CALCULATION */}
+    <h2 id="area-method" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Area Method vs. Strip Method Calculation</h2>
+    <p>Unlike paint and flooring, wallpaper calculation is fundamentally complex because materials must be matched both horizontally (across the wall) and vertically (down the roll). While a simplified **Area Method** exists, the **Strip Method** is the only reliable way to account for pattern waste.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Area Method (Quick Estimate)</h3>
+    <p>This method calculates the total square footage of the walls and divides by the coverage area of one roll. It is fast but highly inaccurate, as it fails to account for the substantial material loss required to match patterns at seams. It is generally suitable only for solid, non-patterned papers.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Strip Method (Accurate Estimate)</h3>
+    <p>This method focuses on the number of usable vertical **strips** that can be cut from a single roll. Since wallpaper is always hung vertically, this approach directly addresses the constraints imposed by ceiling height and pattern repeat, yielding a much more accurate roll count.</p>
+
+<hr />
+
+    {/* STANDARD ROLL SIZES AND THEORETICAL COVERAGE */}
+    <h2 id="roll-coverage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Standard Roll Sizes and Theoretical Coverage</h2>
+    <p>Wallpaper is typically sold in **single rolls** or bundled as **double rolls**. Calculations rely on the standardized dimensions of the roll to determine theoretical coverage.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Dimensions of a Standard Roll</h3>
+    <p>The standard size varies, but a common "American" single roll is 27 inches wide (0.685 meters) by 13.5 feet long (4.1 meters). However, many manufacturers now adhere to a "Metric" single roll size. It is critical to know the exact square footage or square meters provided by the manufacturer for the product being purchased.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Double Roll Standard</h3>
+    <p>Wallpaper is usually priced and sold in double rolls, which contain the length of two single rolls. This bundling is standard practice to minimize the risk of color variation (dye lot issues) between rolls. All final estimates should be rounded up to the nearest full double roll.</p>
+
+<hr />
+
+    {/* THE STRIP METHOD: CALCULATING REQUIRED VERTICAL STRIPS */}
+    <h2 id="strips" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Strip Method: Calculating Required Vertical Strips</h2>
+    <p>The Strip Method calculates the total number of vertical strips needed for the room's perimeter, and then determines how many of those strips can be cut from a single roll.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Calculate Total Strips Needed</h3>
+    <p>The total width of the walls (the perimeter of the room minus deduction widths) is divided by the usable width of one roll:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Strips = Total Wall Width / Roll Width'}
+        </p>
+    </div>
+    <p>The result is always rounded up to the next whole number to account for partial strips at corners and ends.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Calculate Usable Strips Per Roll (Considering Waste)</h3>
+    <p>This is the most complex step and requires accounting for the **pattern match** and **ceiling height** to determine the maximum usable length per strip, and thus, how many strips fit on one roll:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Usable Strips = Total Roll Length / (Wall Height + Pattern Repeat + Trim Waste)'}
+        </p>
+    </div>
+    <p>The divisor (the denominator) represents the minimum required length for one matched strip.</p>
+
+<hr />
+
+    {/* CRITICAL FACTOR: PATTERN REPEAT AND MATCH WASTE */}
+    <h2 id="pattern-match" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Critical Factor: Pattern Repeat and Match Waste</h2>
+    <p>The **Pattern Repeat** dictates how much material must be discarded from the top and bottom of each strip to ensure the pattern aligns perfectly at the horizontal seam.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Pattern Match Types</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Random Match (Free Match):</strong> The pattern matches regardless of how the strips are placed (e.g., textures, solids). Waste is minimal (only top/bottom trim).</li>
+        <li><strong className="font-semibold">Straight Match (Butt Match):</strong> The pattern aligns across the wall at the same height on adjacent strips. Waste equals the pattern repeat length.</li>
+        <li><strong className="font-semibold">Drop Match (Half-Drop or Multiple Drop):</strong> The pattern on the second strip drops down by a specific distance (e.g., half the pattern length) to align. This is the most complex and results in the highest amount of waste.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Pattern Waste Calculation</h3>
+    <p>The usable length of a strip must be a multiple of the pattern repeat length that is also greater than the ceiling height. For example, if the ceiling is 96 inches and the pattern repeat is 24 inches, the minimum strip length needed is $96$ inches. If the ceiling is 100 inches, the next whole multiple of 24 is 120 inches, meaning 20 inches of material are automatically wasted per strip just for matching.</p>
+
+<hr />
+
+    {/* DEDUCTIONS AND FINAL ROLL COUNT */}
+    <h2 id="deductions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Deductions and Final Roll Count</h2>
+    <p>Unlike paint, where large windows are deducted from the total area, deductions for wallpaper must be done carefully, as pattern continuity is paramount.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Deduction Rule for Wallpaper</h3>
+    <p>Generally, areas dedicated to small openings (less than 20 square feet, e.g., a standard door) are **not deducted** from the strip count. The material required to work around the opening (cutting, alignment, waste) is usually equal to or greater than the material saved. Only large, continuous areas (e.g., wide picture windows, large built-in cabinets) should be considered for a deduction, and even then, the saved strips must be used for areas like above-door transoms or small niches.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Final Roll Calculation</h3>
+    <p>The final roll count is determined by dividing the total number of required strips by the number of usable strips that can be cut from a single roll, and then rounding up to the nearest whole double roll:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Rolls Needed = Ceiling (Total Strips / Usable Strips per Roll)'}
+        </p>
+    </div>
+    <p>The ceiling function ensures that any fraction of a roll needed (e.g., 0.1 of a roll) is rounded up to 1, as partial rolls cannot be purchased.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Wallpaper calculation is a specialized mathematical exercise dominated by the need for vertical alignment and pattern continuity. The most reliable method is the **Strip Method**, which factors in the critical variables of **ceiling height**, **pattern repeat**, and **trimming waste**.</p>
+    <p>Accurate estimation involves accepting that waste is inevitable and necessary. By precisely calculating the minimum usable length per strip, installers can avoid material shortages, minimize pattern misalignment, and ensure a professional, seamless final result.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

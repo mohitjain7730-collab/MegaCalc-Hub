@@ -435,18 +435,109 @@ export default function RoofingShingleCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <House className="h-5 w-5" />
-              Complete Guide to Roofing Installation
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Roofing Shingle Calculation, Squares, and Waste Estimation" />
+    <meta itemProp="description" content="An expert guide detailing how to calculate the required number of roofing shingle squares based on roof area, pitch/slope factor, pattern matching, and accounting for specialized materials like hip, ridge, and starter shingles." />
+    <meta itemProp="keywords" content="roofing shingle calculator formula, how many shingle squares do I need, calculating roof area, roof pitch factor, shingle waste percentage, hip and ridge shingle count, roofing estimation" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-roofing-shingle-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Roofing Shingle Calculation: Squares, Pitch, and Waste</h1>
+    <p className="text-lg italic text-gray-700">Master the specialized geometry and unit conversion required to accurately estimate all materials needed for a full roof installation.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#area-basics" className="hover:underline">Roof Area Measurement and Pitch Factor</a></li>
+        <li><a href="#squares" className="hover:underline">The Roofing Square Unit and Material Conversion</a></li>
+        <li><a href="#waste" className="hover:underline">The Critical Role of the Waste Factor and Roof Complexity</a></li>
+        <li><a href="#specialty" className="hover:underline">Calculating Specialty Shingles (Hip, Ridge, Starter)</a></li>
+        <li><a href="#supplemental" className="hover:underline">Supplemental Material Estimation (Underlayment and Fasteners)</a></li>
+    </ul>
+<hr />
+
+    {/* ROOF AREA MEASUREMENT AND PITCH FACTOR */}
+    <h2 id="area-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Roof Area Measurement and Pitch Factor</h2>
+    <p>Shingles are purchased based on the true surface area of the roof. For sloped roofs, this area is always greater than the area of the foundation footprint, necessitating a correction factor based on the roof's **pitch** or **slope**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Plan Area (Footprint)</h3>
+    <p>The calculation starts with the footprint (the rectangular area the roof covers) and the overhangs. The total footprint area is determined by the length and width of the building's perimeter.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Pitch Multiplier</h3>
+    <p>The <strong className="font-semibold">Roof Pitch</strong> (or slope) is the vertical rise for every 12 inches of horizontal run (e.g., 6/12 pitch). To find the actual roof surface area, the plan area must be multiplied by a correction factor derived from the pitch. This factor accounts for the true diagonal length of the roof surface.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Surface Area = Plan Area * Square Root [ 1 + (Rise/12)^2 ]'}
+        </p>
+    </div>
+    <p>This formula ensures that the roofing estimate reflects the actual, increased surface area that shingles must cover.</p>
+
+<hr />
+
+    {/* THE ROOFING SQUARE UNIT AND MATERIAL CONVERSION */}
+    <h2 id="squares" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Roofing Square Unit and Material Conversion</h2>
+    <p>In roofing, materials are purchased and estimated using a unit called the **Square**, which simplifies large-area calculations and is critical for accurate ordering.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Definition of a Roofing Square</h3>
+    <p>A **Square** is defined as $100$ square feet ($9.29$ square meters) of roof area. This is the standard unit used by manufacturers to package and sell bundles of shingles. Most dimensional (architectural) shingles are sold in bundles of three per square.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Converting Area to Squares</h3>
+    <p>The total number of squares required is found by dividing the calculated true roof surface area by 100, and always rounding the final purchase quantity up to the nearest whole bundle:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Squares = Surface Area / 100'}
+        </p>
+    </div>
+
+<hr />
+
+    {/* THE CRITICAL ROLE OF THE WASTE FACTOR AND ROOF COMPLEXITY */}
+    <h2 id="waste" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of the Waste Factor and Roof Complexity</h2>
+    <p>Like any construction material, a **Waste Factor** must be applied to the base shingle count to account for non-square cuts, trimming, and damage. This factor is highly dependent on the complexity of the roof design.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Standard Waste Guidelines by Roof Type</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Simple Gable Roof (Two planes):</strong> 5% to 7% waste factor. Minimal cutting is required.</li>
+        <li><strong className="font-semibold">Hip Roof (Four planes meeting at hips/ridges):</strong> 10% to 12% waste factor. This accounts for increased cuts and trimming along the hip and rake edges.</li>
+        <li><strong className="font-semibold">Complex Roof (Dormers, Valleys, Skylights):</strong> 15% to 20% waste factor. Valleys, in particular, generate significant waste due to the necessary diagonal cutting and overlapping.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Applying the Waste Factor</h3>
+    <p>The calculated Total Squares must be multiplied by the appropriate waste factor (e.g., $1.10$ for $10\%$) before being converted into the final number of bundles to be purchased.</p>
+
+<hr />
+
+    {/* CALCULATING SPECIALTY SHINGLES (HIP, RIDGE, STARTER) */}
+    <h2 id="specialty" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Specialty Shingles (Hip, Ridge, Starter)</h2>
+    <p>A standard shingle calculation only covers the field (the flat parts) of the roof. Specialized components are required for the perimeter and structural lines, and must be calculated separately based on linear footage.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Hip and Ridge Cap Shingles</h3>
+    <p>These are individual, pre-bent or cut shingles used to cover the peak of the roof (ridge) and the sloped intersections of planes (hips). They must be calculated based on the total linear feet of all hips and ridges on the roof.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Starter Strip Shingles</h3>
+    <p>A continuous row of shingle material is required along the eaves (bottom edge) and rakes (sloped side edges) of the roof before the first main shingle course is laid. This material is essential for weather-proofing the edge and ensuring the first layer is properly sealed. The quantity is determined by the total perimeter linear footage of the eave and rake edges.</p>
+
+<hr />
+
+    {/* SUPPLEMENTAL MATERIAL ESTIMATION (UNDERLAYMENT AND FASTENERS) */}
+    <h2 id="supplemental" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Supplemental Material Estimation (Underlayment and Fasteners)</h2>
+    <p>A complete roofing job requires careful estimation of non-shingle materials, especially those related to moisture protection and attachment.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Underlayment and Felt Paper</h3>
+    <p>Underlayment (typically felt paper or synthetic material) is installed directly onto the roof decking before the shingles. It acts as a secondary moisture barrier. This is calculated based on the total roof surface area, measured in **rolls** (e.g., a standard roll of felt paper covers 400 square feet). A $10\%$ overlap contingency is usually added.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Fasteners (Roofing Nails)</h3>
+    <p>Nails are estimated based on a code requirement of 4 to 6 nails per shingle. The total nail requirement is derived by multiplying the total number of individual shingles by the required nails per shingle. This quantity is purchased by weight (pounds or kilograms).</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Roofing shingle estimation is a critical process that converts the building’s footprint into the **Total Roofing Squares** required, factoring in the geometric complexity of the roof pitch.</p>
+    <p>Accuracy demands three key calculations: using the **pitch multiplier** to find the true surface area, applying a **waste factor** based on roof features (hips, valleys, dormers), and ensuring sufficient quantities of specialized **hip and ridge** and **starter** materials are included for weather-proofing the entire system.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

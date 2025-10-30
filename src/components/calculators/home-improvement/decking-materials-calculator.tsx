@@ -485,18 +485,115 @@ export default function DeckingMaterialsCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Square className="h-5 w-5" />
-              Complete Guide to Deck Construction
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Decking Materials Calculation: Lumber, Joists, Boards, and Concrete" />
+    <meta itemProp="description" content="An expert guide detailing how to calculate the total quantity of decking materials needed, covering linear footage for decking boards, volume of concrete for footings, joist spacing requirements, and necessary waste factors for framing and decking." />
+    <meta itemProp="keywords" content="decking material calculator formula, calculate lumber needed for deck, deck joist spacing, deck board linear footage, concrete volume deck footings, decking waste factor, framing calculation" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-decking-materials-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Decking Materials: Calculating Lumber, Footings, and Boards</h1>
+    <p className="text-lg italic text-gray-700">Master the engineering and geometry required to accurately estimate the structural components and surface materials for any deck build.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#framing" className="hover:underline">Framing Calculation: Beams, Joists, and Headers</a></li>
+        <li><a href="#decking-boards" className="hover:underline">Decking Boards: Linear Footage and Coverage</a></li>
+        <li><a href="#footings" className="hover:underline">Footings and Posts: Volume of Concrete</a></li>
+        <li><a href="#waste" className="hover:underline">The Critical Role of the Waste Factor</a></li>
+        <li><a href="#fasteners" className="hover:underline">Supplemental Material Estimation (Fasteners)</a></li>
+    </ul>
+<hr />
+
+    {/* FRAMING CALCULATION: BEAMS, JOISTS, AND HEADERS */}
+    <h2 id="framing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Framing Calculation: Beams, Joists, and Headers</h2>
+    <p>The structural integrity of a deck relies on accurate calculation of the framing lumber: beams, headers, and joists. These components must adhere to strict building code span tables based on the lumber species, grade, and size.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Beams and Headers</h3>
+    <p>Beams support the joists and transfer the load to the posts. Headers (or rim joists) frame the perimeter of the deck. Calculation involves determining the total linear feet of the deck perimeter and the internal beam structure. Beams are often constructed by bolting two or three boards together (e.g., two 2x8s or three 2x10s) to meet load requirements.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Joists and Spacing</h3>
+    <p>Joists run perpendicular to the beams and provide the structure that supports the decking boards. The number of joists needed depends on the deck width and the code-required spacing (typically 12, 16, or 24 inches on center). Tighter spacing is required for composite or diagonal decking layouts to prevent board deflection.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Joists = (Deck Width / Joist Spacing) + 1'}
+        </p>
+    </div>
+    <p>The total linear footage of joists is the number of required joists multiplied by the length of the deck.</p>
+
+<hr />
+
+    {/* DECKING BOARDS: LINEAR FOOTAGE AND COVERAGE */}
+    <h2 id="decking-boards" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Decking Boards: Linear Footage and Coverage</h2>
+    <p>Decking boards (the surface) are calculated based on the total area of the deck divided by the usable area of the board, adjusted for the necessary spacing gap.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Total Deck Area</h3>
+    <p>Deck area is the simple product of its length and width. This is the starting point for material estimation:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Area = Deck Length * Deck Width'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Linear Feet of Decking Required</h3>
+    <p>The total linear feet of decking needed must account for the board width and the required spacing gap (typically $1/8$ to $1/4$ inch). The calculation relies on dividing the total area by the **effective width** of a single deck board.</p>
+    <p>For example, a nominal $6$-inch board has an actual width of about $5.5$ inches. Factoring in a $1/4$-inch gap, the effective width is $5.75$ inches. This effective width is used to calculate the linear feet of material needed per square foot of deck surface.</p>
+
+<hr />
+
+    {/* FOOTINGS AND POSTS: VOLUME OF CONCRETE */}
+    <h2 id="footings" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Footings and Posts: Volume of Concrete</h2>
+    <p>Deck posts transfer the deck's load directly to the ground via concrete footings. Calculation involves determining the total number of footings and the necessary concrete volume.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Footing Placement and Load Bearing</h3>
+    <p>Building codes dictate the required size and depth of footings based on local frost lines and the projected load. The number of posts and footings depends on the span limitations of the beams (e.g., posts every 6 to 8 feet along the beam). The required footing size is the most critical safety factor in deck construction.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Concrete Volume</h3>
+    <p>The volume of concrete needed for one cylindrical footing is calculated as $\pi \cdot r^2 \cdot h$. The total volume is the number of footings multiplied by the volume per footing. This total is then converted from cubic feet to the standard unit of purchase, typically cubic yards (1 cubic yard $\approx 27$ cubic feet).</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Footing Volume (Cubic Feet) = Total Footings * 3.14159 * Radius^2 * Depth'}
+        </p>
+    </div>
+
+<hr />
+
+    {/* THE CRITICAL ROLE OF THE WASTE FACTOR */}
+    <h2 id="waste" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of the Waste Factor</h2>
+    <p>Due to the nature of lumber (non-perfect lengths, knots, and required cuts), a **Waste Factor** must be applied to all lumber components to avoid expensive shortages and delays.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Waste Percentages by Component</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Framing Lumber (Beams/Joists):</strong> 5% to 10% waste factor. This accounts for trimming ends to size, squaring boards, and defects.</li>
+        <li><strong className="font-semibold">Decking Boards (Parallel Lay):</strong> 10% to 15% waste factor. This higher percentage accounts for the need to stagger seams, cut around posts, and ensure clean ends.</li>
+        <li><strong className="font-semibold">Decking Boards (Diagonal Lay):</strong> 15% to 20% waste factor. Diagonal installation maximizes corner waste, requiring a substantial buffer.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Rounding to Usable Lengths</h3>
+    <p>Lumber is sold in discrete lengths (e.g., 8-foot, 10-foot, 12-foot, etc.). The final quantity must always be rounded up to the nearest available length that covers the required span, adding an implicit waste factor to minimize cuts and labor time.</p>
+
+<hr />
+
+    {/* SUPPLEMENTAL MATERIAL ESTIMATION (FASTENERS) */}
+    <h2 id="fasteners" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Supplemental Material Estimation (Fasteners)</h2>
+    <p>Deck construction requires precise estimation of fasteners (screws, nails, connectors) to ensure compliance with structural codes.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Decking Screws/Nails</h3>
+    <p>Fasteners for decking boards are estimated based on the total deck surface area and the joist spacing. A standard rule of thumb is approximately 350 screws per 100 square feet of deck surface when using 16-inch joist spacing.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Structural Connectors</h3>
+    <p>Structural components (post-to-beam, joist-to-header) require specialized metal connectors (joist hangers, post bases, hurricane ties). These are calculated by counting the number of connections required in the framing plan, and often represent a significant safety and budget component of the build.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Accurate decking material calculation is an exercise in structural engineering and meticulous geometric accounting. The process requires precise determination of the number of joists based on spacing and the conversion of total area into linear feet of decking boards.</p>
+    <p>Success relies on two key factors: adherence to code-mandated span and footing dimensions for safety, and the essential application of a **waste factor** to all lumber components, ensuring a successful build without compromising quality or facing costly shortages.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

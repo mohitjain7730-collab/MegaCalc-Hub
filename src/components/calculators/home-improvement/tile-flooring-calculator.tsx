@@ -506,18 +506,127 @@ export default function TileFlooringCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Square className="h-5 w-5" />
-              Complete Guide to Tile Installation
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Tile and Flooring Calculator: Area, Material, and Waste Estimation" />
+    <meta itemProp="description" content="An expert guide detailing how to calculate the total number of tiles or flooring boxes required for a project, covering area measurement, accounting for complex room shapes, standard waste factors, and material unit conversion." />
+    <meta itemProp="keywords" content="tile calculator formula, how much flooring do I need, calculating square footage for tile, flooring waste factor, area calculation complex rooms, estimating flooring materials" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-tile-flooring-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Tile & Flooring: Calculating Area, Units, and Waste</h1>
+    <p className="text-lg italic text-gray-700">Master the essential formulas and industry standards for accurately estimating materials for any flooring project, minimizing cost and ensuring project completion.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#area-measurement" className="hover:underline">Measuring and Calculating Total Surface Area</a></li>
+        <li><a href="#unit-conversion" className="hover:underline">Converting Total Area to Required Units (Tiles/Boxes)</a></li>
+        <li><a href="#waste-factor" className="hover:underline">The Critical Role of the Waste Factor</a></li>
+        <li><a href="#complex-shapes" className="hover:underline">Handling Complex Room Shapes and Patterns</a></li>
+        <li><a href="#material-type" className="hover:underline">Material Type and Sub-Floor Considerations</a></li>
+    </ul>
+<hr />
+
+    {/* MEASURING AND CALCULATING TOTAL SURFACE AREA */}
+    <h2 id="area-measurement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Measuring and Calculating Total Surface Area</h2>
+    <p>The foundation of any material estimate is determining the net area of the floor. This is measured in square units (e.g., square feet or square meters).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Simple Rectangular Area</h3>
+    <p>For a standard square or rectangular room, the area calculation is straightforward:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Area = Length * Width'}
+        </p>
+    </div>
+    <p>All measurements should be taken from the longest points of the walls and rounded up to the next highest unit (e.g., rounding $10.5$ feet up to $11$ feet for a conservative estimate).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Deductible Area</h3>
+    <p>The calculated area should account for any fixed elements that will not be covered by flooring or tile, such as built-in cabinetry, fireplaces, large vents, or structural columns. These areas are calculated and subtracted from the total area to find the net coverage requirement.</p>
+
+<hr />
+
+    {/* CONVERTING TOTAL AREA TO REQUIRED UNITS (TILES/BOXES) */}
+    <h2 id="unit-conversion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Converting Total Area to Required Units (Tiles/Boxes)</h2>
+    <p>Once the Net Coverage Area is determined, the next step is converting that area into the specific number of tiles or boxes of flooring material needed.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">For Individual Tiles</h3>
+    <p>For tiles, the required quantity is found by dividing the Net Coverage Area by the area of a single tile. The size of the tile must include the grout line (though most calculations simplify this by using the nominal tile size and adjusting the waste factor):</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Tiles = Net Area / Area of One Tile'}
+        </p>
+    </div>
+    <p>Since materials must be purchased in whole units (full tiles), the final count is always rounded up to the nearest whole number.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">For Boxed Materials (Laminate, Vinyl, Wood)</h3>
+    <p>Flooring materials like laminate, engineered wood, or vinyl are packaged in boxes, where the <strong className="font-semibold">Box Coverage Rate</strong> (area per box) is supplied by the manufacturer. The number of boxes needed is calculated as:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Boxes = Net Area / Box Coverage Rate'}
+        </p>
+    </div>
+    <p>Like tiles, the final result must be rounded up to the nearest whole box.</p>
+
+<hr />
+
+    {/* THE CRITICAL ROLE OF THE WASTE FACTOR */}
+    <h2 id="waste-factor" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of the Waste Factor</h2>
+    <p>The <strong className="font-semibold">Waste Factor</strong> (or contingency factor) is an essential percentage added to the net area calculation to account for cuts, breakages, installation errors, and attic stock (extra material needed for future repairs). Purchasing exactly the net required area is almost guaranteed to result in a material shortage.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Standard Waste Percentages</h3>
+    <p>The appropriate waste factor varies based on the geometry of the room, the material being used, and the pattern:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Simple Rectangular Room (Parallel Lay):</strong> 5% to 7% waste factor.</li>
+        <li><strong className="font-semibold">Complex Rooms (Angles, Curves):</strong> 10% to 15% waste factor.</li>
+        <li><strong className="font-semibold">Diagonal/Herringbone Patterns:</strong> 15% to 20% waste factor (due to excessive corner cuts).</li>
+        <li><strong className="font-semibold">Fragile Materials (Large Tiles, Stone):</strong> An additional 2% contingency is often added for potential breakage.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Waste Factor Formula Application</h3>
+    <p>The calculated net area is multiplied by the appropriate waste factor (e.g., $1.10$ for $10\%$ waste) before dividing by the unit area or box coverage rate. This ensures the correct, larger quantity is purchased upfront.</p>
+
+<hr />
+
+    {/* HANDLING COMPLEX ROOM SHAPES AND PATTERNS */}
+    <h2 id="complex-shapes" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Handling Complex Room Shapes and Patterns</h2>
+    <p>For irregularly shaped rooms (e.g., L-shaped, octagonal, or rooms with significant bump-outs), the overall area calculation must break the complex geometry down into simple, manageable rectangles.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Segmentation Method</h3>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Divide the Area:</strong> Break the irregular room into multiple standard squares or rectangles (e.g., splitting an L-shape into two rectangles).</li>
+        <li><strong className="font-semibold">Calculate Individual Areas:</strong> Calculate the area of each segment separately.</li>
+        <li><strong className="font-semibold">Sum Totals:</strong> Add the area of all segments together to find the total gross area.</li>
+    </ol>
+    <p>This segmentation method ensures no floor space is missed and is especially critical when dealing with angled walls, which dramatically increase cutting waste.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Pattern Impact on Material Needs</h3>
+    <p>Laying materials on a **diagonal** or in intricate patterns like **herringbone** or **basketweave** requires far more cutting and fitting along the room's perimeter than a parallel lay. This results in the final, usable material quantity being substantially lower, directly necessitating a higher waste factor (up to $20\%$ for complex patterns).</p>
+
+<hr />
+
+    {/* MATERIAL TYPE AND SUB-FLOOR CONSIDERATIONS */}
+    <h2 id="material-type" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Material Type and Sub-Floor Considerations</h2>
+    <p>The type of material being installed influences the estimation not only through its packaged size but also through the need for supplemental materials.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Tile (Ceramic, Porcelain, Stone)</h3>
+    <p>Tiled floors require accurate estimation of two supplemental materials that are purchased by volume or weight:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Mortar (Thin-set):</strong> Used to adhere the tile to the sub-floor. Quantity depends on the size of the trowel notch (dictated by tile size) and the floor levelness.</li>
+        <li><strong className="font-semibold">Grout:</strong> Used to fill the spaces between tiles. Quantity depends heavily on the **grout joint width** and the tile size. Smaller tiles with wider joints require substantially more grout.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Floating Floors (Laminate/LVP)</h3>
+    <p>Flooring that "floats" (is not glued or nailed down, such as luxury vinyl plank or laminate) primarily requires an <strong className="font-semibold">underlayment</strong>. The underlayment is purchased separately, often in rolls, and must match the total square footage of the room, plus a small overlap contingency (typically 5%).</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Accurate flooring and tile estimation is a multi-step process that converts measured area into purchase units. The calculation must rigorously account for the base area, subtract non-covered fixtures, and, most importantly, incorporate a realistic **waste factor** adjusted for both pattern complexity and room geometry.</p>
+    <p>By moving beyond simple square footage and systematically calculating the **net required units** plus a generous contingency, installers can ensure material availability, avoid costly delays, and significantly minimize overall project waste.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

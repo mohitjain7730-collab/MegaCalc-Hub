@@ -511,18 +511,124 @@ export default function PaintCoverageCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <PaintBucket className="h-5 w-5" />
-              Complete Guide to Paint Coverage Calculation
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/HowTo">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Paint Coverage Calculation and Estimating Paint Needs" />
+    <meta itemProp="description" content="An expert guide detailing how to calculate the required volume of paint (gallons/liters) based on surface area, paint type (primer, finish coat), number of coats, waste factor, and account for windows and doors." />
+    <meta itemProp="keywords" content="paint coverage calculator formula, how much paint do I need, calculating wall area for painting, estimating paint quantity, paint waste factor, area deduction windows doors" />
+    <meta itemProp="author" content="[Your Site's Home Improvement Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-paint-coverage-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Paint Coverage: Accurately Estimating Volume and Minimizing Waste</h1>
+    <p className="text-lg italic text-gray-700">Master the geometric formulas and material science variables required to calculate exactly how much paint you need for any project.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#area-basics" className="hover:underline">Surface Area Calculation Basics</a></li>
+        <li><a href="#deductions" className="hover:underline">Deductions: Accounting for Windows and Doors</a></li>
+        <li><a href="#volume-formula" className="hover:underline">The Core Paint Volume Formula</a></li>
+        <li><a href="#variables" className="hover:underline">Critical Variables Affecting Paint Coverage</a></li>
+        <li><a href="#waste" className="hover:underline">Accounting for Waste and Spillage</a></li>
+    </ul>
+<hr />
+
+    {/* SURFACE AREA CALCULATION BASICS */}
+    <h2 id="area-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Surface Area Calculation Basics</h2>
+    <p>The first step in any paint job estimate is accurately determining the total surface area to be covered. Paint is typically applied to rectangular surfaces (walls, ceilings), making the area calculation simple geometry.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Rectangular Area</h3>
+    <p>For a standard flat wall or ceiling, the area is calculated using the basic area formula:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Area = Length * Height'}
+        </p>
+    </div>
+    <p>To find the total area of a room, you must calculate the area of each wall individually and then sum them up, adding the ceiling area if it is also being painted.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Complex Surfaces</h3>
+    <p>For surfaces like triangular gables or pitched ceilings, the area calculation must use the formula for a triangle (Area = 0.5 $\times$ Base $\times$ Height). For the purposes of a general calculator, all areas are assumed to be summed rectangles, with any complex shapes approximated as rectangles for ease of use.</p>
+
+<hr />
+
+    {/* DEDUCTIONS: ACCOUNTING FOR WINDOWS AND DOORS */}
+    <h2 id="deductions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Deductions: Accounting for Windows and Doors</h2>
+    <p>To obtain the true net area that requires paint, you must deduct the area occupied by permanent fixtures that will not be painted (or will receive a specialized trim paint). This primarily includes windows and doors.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Deductible Area</h3>
+    <p>The area of each door or window is calculated (Length $\times$ Height) and subtracted from the total wall area. For most projects, the time saved by *not* deducting very small fixtures (like light switches or small wall vents) is negligible compared to the increased accuracy of deducting large features.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Deduction Threshold Rule</h3>
+    <p>Professional estimators often use a simplified **deduction rule**: if the combined area of windows and doors accounts for less than 10% of the total wall area, it is often ignored in quick estimates, as the excess paint calculated compensates for potential waste. For accurate calculations, however, all non-painted areas should be deducted:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Net Paintable Area = Total Wall Area - Total Deducted Area'}
+        </p>
+    </div>
+
+<hr />
+
+    {/* THE CORE PAINT VOLUME FORMULA */}
+    <h2 id="volume-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Core Paint Volume Formula</h2>
+    <p>The total volume of paint required is derived by dividing the total required coverage area (Net Paintable Area multiplied by the number of coats) by the product's standardized coverage rate (provided by the manufacturer).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Standard Volume Equation</h3>
+    <p>The formula to determine the necessary paint quantity (Volume) is:</p>
+    
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Total Volume = (Net Area * Number of Coats * Waste Factor) / Manufacturer Coverage Rate'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Manufacturer Coverage Rate</h3>
+    <p>This is the theoretical area (in square feet or square meters) that one unit of paint (e.g., one gallon or one liter) is expected to cover. This value is provided on the paint can label and is usually determined under ideal, laboratory conditions. Typical ranges are 350-400 square feet per gallon for high-quality latex paint.</p>
+
+<hr />
+
+    {/* CRITICAL VARIABLES AFFECTING PAINT COVERAGE */}
+    <h2 id="variables" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Critical Variables Affecting Paint Coverage</h2>
+    <p>The manufacturer's coverage rate is often unreliable in the field due to several variables that significantly impact how much paint a surface absorbs.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Surface Texture (Porosity)</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Porous Surfaces:</strong> Unpainted drywall, bare wood, stucco, or highly textured plaster are extremely porous and absorb paint heavily, often reducing the effective coverage rate by 20% to 40% on the first coat.</li>
+        <li><strong className="font-semibold">Non-Porous Surfaces:</strong> Glossy enamel, previously painted trim, or metal surfaces are non-porous and generally achieve the full manufacturer's coverage rate.</li>
+        <li><strong className="font-semibold">The Primer Solution:</strong> Applying a good quality primer to a porous surface seals the material, often allowing the subsequent finish coat to achieve its maximum theoretical coverage rate.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Color Change</h3>
+    <p>The required number of coats is the most subjective variable. Painting a light color over a dark base coat (or vice-versa) almost always requires a minimum of two full finish coats, and sometimes three, to achieve complete opacity and consistent color saturation.</p>
+
+<hr />
+
+    {/* ACCOUNTING FOR WASTE AND SPILLAGE */}
+    <h2 id="waste" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Accounting for Waste and Spillage</h2>
+    <p>Even the most careful professional must account for paint loss due to factors outside of surface area, which is handled by incorporating a **Waste Factor** into the total volume formula.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Sources of Paint Waste</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Absorption in Tools:</strong> Paint absorbed by roller covers, brushes, and spray equipment hoses.</li>
+        <li><strong className="font-semibold">Application Method:</strong> Spraying paint results in significant **overspray** (paint lost to the air), often increasing waste by 10% to 20% compared to brushing and rolling.</li>
+        <li><strong className="font-semibold">Spillage:</strong> Paint spilled during mixing, pouring, or application.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Standard Waste Factor</h3>
+    <p>The waste factor is applied as a percentage increase to the calculated net volume. Standard guidelines are:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Brushing/Rolling (Interior):</strong> 5% to 10% waste factor.</li>
+        <li><strong className="font-semibold">Spraying (Exterior/Large Walls):</strong> 10% to 20% waste factor.</li>
+    </ul>
+    <p>The waste factor provides the margin of safety necessary to ensure the project is completed without having to stop work and purchase more paint.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Accurate paint coverage calculation is a blend of precise geometry and material science. It moves beyond simple area measurement by incorporating key variables: **Net Paintable Area** (total area minus deductions), the **number of coats** (driven by color change), **surface porosity**, and the necessary **waste factor**.</p>
+    <p>By relying on the full formula and adjusting the manufacturer's theoretical coverage rate for real-world conditions, professionals and homeowners alike can confidently purchase the exact volume of paint required, minimizing costly trips to the store and avoiding excessive leftover material.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>
