@@ -297,18 +297,109 @@ export default function ArmPaymentProjectionCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            Complete Guide to Adjustable Rate Mortgages
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Adjustable Rate Mortgage (ARM) Payment Projection and Risk Analysis" />
+    <meta itemProp="description" content="An expert guide detailing the structure of ARMs (hybrid 5/1, 7/1), how payment changes are projected after the fixed period, the role of the index, margin, and payment/rate caps in determining the maximum possible payment." />
+    <meta itemProp="keywords" content="adjustable rate mortgage calculator, ARM payment projection formula, index and margin ARM explained, rate caps and payment shock, fully indexed rate calculation, hybrid ARM structure" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-arm-projection-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Adjustable Rate Mortgages (ARM): Payment Projection and Risk Analysis</h1>
+    <p className="text-lg italic text-gray-700">Master the mechanics of hybrid ARMs to forecast payment changes, analyze risk, and understand the impact of the index and margin.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#structure" className="hover:underline">ARM Structure: Fixed Period and Adjustment Period</a></li>
+        <li><a href="#rate-components" className="hover:underline">The Fully Indexed Rate: Index and Margin</a></li>
+        <li><a href="#payment-calc" className="hover:underline">Payment Projection Mechanics</a></li>
+        <li><a href="#caps" className="hover:underline">The Critical Role of Rate Caps (Lifetime, Periodic)</a></li>
+        <li><a href="#risk-assessment" className="hover:underline">Payment Shock and Financial Risk Assessment</a></li>
+    </ul>
+<hr />
+
+    {/* ARM STRUCTURE: FIXED PERIOD AND ADJUSTMENT PERIOD */}
+    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ARM Structure: Fixed Period and Adjustment Period</h2>
+    <p>An <strong className="font-semibold">Adjustable Rate Mortgage (ARM)</strong> is a home loan where the interest rate can fluctuate periodically based on market conditions. Modern ARMs are almost always **hybrid ARMs**, featuring an initial fixed-rate period followed by subsequent adjustment periods.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Hybrid ARM Notation (e.g., 5/1, 7/1)</h3>
+    <p>The notation defines the schedule:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">First Number (e.g., 5):</strong> The number of years the initial interest rate is fixed (the 'Fixed Period').</li>
+        <li><strong className="font-semibold">Second Number (e.g., 1):</strong> The frequency (in years) of subsequent rate adjustments (the 'Adjustment Period').</li>
+    </ul>
+    <p>A 5/1 ARM, for example, has a fixed rate for the first five years. Starting in year six, the rate adjusts annually for the remainder of the loan term (typically 30 years).</p>
+
+<hr />
+
+    {/* THE FULLY INDEXED RATE: INDEX AND MARGIN */}
+    <h2 id="rate-components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Fully Indexed Rate: Index and Margin</h2>
+    <p>After the initial fixed period expires, the interest rate for the ARM is determined by two critical components: the **Index** and the **Margin**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Index (The Variable Component)</h3>
+    <p>The <strong className="font-semibold">Index</strong> is the external, market-driven rate used to track the cost of money. It is the variable portion of the rate. Common indices include the Secured Overnight Financing Rate (SOFR) or the Treasury Yields. Lenders choose an index that is transparent and publicly available.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Margin (The Fixed Component)</h3>
+    <p>The <strong className="font-semibold">Margin</strong> is a fixed percentage point amount added to the Index. It represents the lender's profit and risk premium. The Margin is set when the loan originates and **never changes** throughout the life of the loan.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Fully Indexed Rate Formula</h3>
+    <p>The actual interest rate applied during any adjustment period (before caps) is the sum of these two components:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Fully Indexed Rate = Index Rate + Margin'}
+        </p>
+    </div>
+    <p>For projection purposes, future payments are modeled by estimating where the Index Rate will be at the time of adjustment.</p>
+
+<hr />
+
+    {/* PAYMENT PROJECTION MECHANICS */}
+    <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Payment Projection Mechanics</h2>
+    <p>Projecting the ARM payment requires tracking the loan's amortization and recalculating the payment based on the new interest rate and the remaining loan balance and term.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Amortization during the Fixed Period</h3>
+    <p>During the fixed period, the loan amortizes normally using the standard loan amortization formula (Present Value of Annuity). The outstanding balance at the end of the fixed period (e.g., after 60 months for a 5/1 ARM) becomes the new principal for the first adjustment period.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Recalculating the Payment (PMT)</h3>
+    <p>At the time of adjustment, the new payment is calculated using the new (adjusted) interest rate, the remaining principal balance, and the remaining loan term. For a 30-year ARM, if five years have passed, the new payment is calculated over the remaining 25 years (300 months).</p>
+    <p>The change in the monthly payment (the **Payment Shock**) is highly sensitive to the magnitude of the rate change and the loan's remaining term.</p>
+
+<hr />
+
+    {/* THE CRITICAL ROLE OF RATE CAPS (LIFETIME, PERIODIC) */}
+    <h2 id="caps" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of Rate Caps (Lifetime, Periodic)</h2>
+    <p>Rate caps are contractual limitations placed on how much the interest rate can change. They are the borrower's primary protection against excessive Payment Shock.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Initial Adjustment Cap (First Cap)</h3>
+    <p>This is the maximum the rate can increase during the very first adjustment (i.e., at the end of the fixed period). This cap is often the largest (e.g., $5\%$).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Periodic Adjustment Cap</h3>
+    <p>This is the maximum the rate can change during any subsequent adjustment period (e.g., $1\%$ or $2\%$ per year). The new rate cannot exceed the previous period's rate plus the periodic cap, regardless of how high the Fully Indexed Rate goes.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Lifetime Adjustment Cap (Ceiling)</h3>
+    <p>The <strong className="font-semibold">Lifetime Cap</strong> is the most important protection. It sets the absolute highest interest rate the loan can ever reach over its entire life (e.g., Initial Rate $+ 5\%$ or $6\%$). Loan projections must calculate the **worst-case scenario** payment based on this lifetime ceiling rate.</p>
+
+<hr />
+
+    {/* RISK ASSESSMENT AND PAYMENT SHOCK */}
+    <h2 id="risk-assessment" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Risk Assessment and Payment Shock</h2>
+    <p>The primary risk of an ARM is **Payment Shock**—the sudden, dramatic increase in the monthly payment that occurs when the fixed rate period ends and the rate adjusts upward, potentially hitting the cap.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Margin of Safety</h3>
+    <p>Responsible ARM usage requires projecting the payment under the **worst-case scenario** (i.e., assuming the Fully Indexed Rate jumps immediately to the Lifetime Cap). If the borrower can comfortably afford this maximum capped payment, the loan is considered relatively safe.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Interest-Only and Negative Amortization ARMs</h3>
+    <p>Less common but riskier ARMs include: **Interest-Only ARMs** (where principal is not paid down during the fixed period, leading to a higher balance when the payment adjusts) and **Negative Amortization ARMs** (where the monthly payment is so low that the loan balance actually increases, compounding the final Payment Shock).</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Adjustable Rate Mortgage payment projection is a multi-step financial exercise that determines the potential liability after the initial fixed period expires. The adjusted rate is controlled by the **Fully Indexed Rate** (Index + Margin) but is strictly constrained by the **Periodic** and **Lifetime Caps**.</p>
+    <p>Responsible use of an ARM mandates calculating the worst-case payment scenario based on the **Lifetime Cap** to quantify the maximum potential **Payment Shock** and ensure the debt remains sustainable under all future economic conditions.</p>
+</section>
 
       {/* FAQ */}
       <Card>

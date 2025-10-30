@@ -543,21 +543,103 @@ export default function GraduatedPaymentMortgageCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5 text-primary" />
-            Complete Guide to Graduated Payment Mortgages
-          </CardTitle>
-          <CardDescription>
-            A comprehensive guide to understanding and managing graduated payment mortgages
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Graduated Payment Mortgage (GPM): Structure, Negative Amortization, and Payment Calculation" />
+    <meta itemProp="description" content="An expert guide detailing the structure of a GPM, how initial payments are artificially lowered (the graduation rate), the mechanics of negative amortization, and the associated risks compared to a standard fixed-rate mortgage." />
+    <meta itemProp="keywords" content="graduated payment mortgage calculator, GPM payment structure, negative amortization explained, graduation rate mortgage, rising payment loan risk, mortgage payment schedule" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-gpm-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Graduated Payment Mortgages (GPM): Understanding Rising Payments and Risk</h1>
+    <p className="text-lg italic text-gray-700">Master the specialized loan structure designed for borrowers who expect their income to increase significantly over the initial years of the loan.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#structure" className="hover:underline">GPM Structure: The Graduation Period and Rate</a></li>
+        <li><a href="#negative" className="hover:underline">The Mechanics of Negative Amortization</a></li>
+        <li><a href="#payment-calc" className="hover:underline">Calculating the Payment and Loan Balance Over Time</a></li>
+        <li><a href="#comparison" className="hover:underline">GPM vs. Standard Fixed-Rate Mortgage</a></li>
+        <li><a href="#risk" className="hover:underline">Financial Risks and Borrower Suitability</a></li>
+    </ul>
+<hr />
+
+    {/* GPM STRUCTURE: THE GRADUATION PERIOD AND RATE */}
+    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM Structure: The Graduation Period and Rate</h2>
+    <p>A <strong className="font-semibold">Graduated Payment Mortgage (GPM)</strong> is a type of fixed-interest loan where the monthly payments start low and increase annually for a predetermined period (the graduation period) before leveling off and remaining constant for the remainder of the term.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Graduation Mechanism</h3>
+    <p>GPMs are structured to help borrowers who anticipate significant income growth—such as recent medical school graduates or early-career professionals. The two critical variables are:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Graduation Period:</strong> The duration over which payments increase (typically 5, 7, or 10 years).</li>
+        <li><strong className="font-semibold">Graduation Rate:</strong> The fixed percentage by which the monthly payment increases each year during the graduation period (commonly 7.5% per year).</li>
+    </ul>
+    <p>Once the graduation period ends, the payment stabilizes at a level higher than a standard fixed-rate mortgage payment and stays constant until the loan is fully amortized.</p>
+
+<hr />
+
+    {/* THE MECHANICS OF NEGATIVE AMORTIZATION */}
+    <h2 id="negative" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mechanics of Negative Amortization</h2>
+    <p>The hallmark and main risk of a GPM is **Negative Amortization**. This occurs in the early years when the artificially low monthly payment is not sufficient to cover the full amount of interest accrued that month.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">How Negative Amortization Works</h3>
+    <p>The interest shortfall is added to the principal balance of the loan. Instead of the principal decreasing with every payment (positive amortization), the principal balance temporarily increases. The borrower is effectively borrowing the difference between the interest due and the payment made.</p>
+    <p>Negative amortization continues until the monthly payment rises high enough to cover the interest and start paying down the loan balance. The outstanding loan balance must be tracked carefully, as it will temporarily exceed the original principal borrowed.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Impact of the Cap</h3>
+    <p>GPMs typically have a **negative amortization cap**—a maximum percentage (e.g., $125\%$) of the original loan balance that the new principal can reach. If the balance hits this cap, the monthly payments must be immediately and dramatically increased to a fully amortizing schedule to ensure the cap is not breached, potentially causing a severe and sudden **payment shock**.</p>
+
+<hr />
+
+    {/* CALCULATING THE PAYMENT AND LOAN BALANCE OVER TIME */}
+    <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Payment and Loan Balance Over Time</h2>
+    <p>The GPM calculation is a complex variation of the standard loan amortization formula, requiring multiple steps to track the rising principal and the changing payment amount.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Three-Phase Calculation</h3>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Initial Payment Phase:</strong> The payment is fixed and low, and interest accrues faster than the payment (Negative Amortization occurs). The principal balance increases.</li>
+        <li><strong className="font-semibold">Transition Phase:</strong> The payment increases annually by the fixed graduation rate. The monthly payment eventually crosses the line where it covers the interest and begins to pay down the principal.</li>
+        <li><strong className="font-semibold">Fully Amortizing Phase:</strong> After the graduation period ends, the payment levels off and remains fixed until the entire, final principal balance (which is higher than the original loan amount) is paid off.</li>
+    </ol>
+    <p>The final, highest payment must be calculated to ensure the total debt is extinguished by the maturity date (e.g., in year 30).</p>
+
+<hr />
+
+    {/* GPM VS. STANDARD FIXED-RATE MORTGAGE */}
+    <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM vs. Standard Fixed-Rate Mortgage</h2>
+    <p>A GPM offers lower immediate payments but results in a significantly higher total interest cost and a slower rate of equity accumulation compared to a standard loan.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Total Cost Comparison</h3>
+    <p>While the initial payment is attractive, a GPM always costs the borrower more in the long run because:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>The borrower pays interest on a temporarily rising principal balance (negative amortization).</li>
+        <li>The amortization schedule is stretched out, meaning the borrower pays interest for a longer duration on the maximum possible principal balance.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Equity Accumulation</h3>
+    <p>Under a GPM, the homeowner does not begin building positive equity through principal reduction until several years into the loan (when positive amortization begins). A standard mortgage begins building equity from the very first payment (though slowly due to front-loaded interest).</p>
+
+<hr />
+
+    {/* FINANCIAL RISKS AND BORROWER SUITABILITY */}
+    <h2 id="risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Risks and Borrower Suitability</h2>
+    <p>GPMs carry substantial risk and are only suitable for a niche group of borrowers who have high confidence in their future earning power.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Income Assumption Risk</h3>
+    <p>The primary risk is the failure of the borrower's income to rise as quickly as the GPM payment. If income stagnates, the borrower can quickly become unable to afford the escalating payment, potentially leading to default and foreclosure. The mortgage balance is also higher than the home's value for the first few years (negative equity).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Borrower Profile Suitability</h3>
+    <p>GPMs are typically appropriate only for young, first-time homeowners who anticipate rapid, certain income increases (e.g., through structured employment contracts or completing professional education) and who need the lowest possible payment in the present to qualify for the loan.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Graduated Payment Mortgage (GPM) is a specialized financing tool defined by its scheduled, increasing payments and the inherent risk of **negative amortization** in its early years. While it offers a low initial payment, this short-term gain comes at the expense of a significantly higher total interest cost and delayed equity accumulation.</p>
+    <p>The viability of a GPM hinges entirely on the borrower's ability to sustain the payment escalation and manage the risk of the principal balance temporarily increasing above the original loan amount.</p>
+</section>
 
       {/* FAQ */}
       <Card className="mt-8">
