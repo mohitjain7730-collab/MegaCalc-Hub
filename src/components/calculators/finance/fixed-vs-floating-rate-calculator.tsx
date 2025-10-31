@@ -438,18 +438,108 @@ export default function FixedVsFloatingRateCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            Complete Guide to Fixed vs. Floating Rates
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Fixed vs. Floating Interest Rates: Risk, Payment Structure, and Comparison Analysis" />
+    <meta itemProp="description" content="An expert guide detailing the key differences between fixed and floating interest rates, how payments are calculated under each, the allocation of interest rate risk, and the impact of market movements on total cost and monthly cash flow." />
+    <meta itemProp="keywords" content="fixed vs floating rate comparison, interest rate risk analysis, adjustable rate mortgage vs fixed, variable interest rate calculation, payment stability risk, loan cash flow analysis" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-fixed-vs-floating-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Fixed vs. Floating Interest Rates: Risk, Stability, and Cost Analysis</h1>
+    <p className="text-lg italic text-gray-700">Master the core difference between stable, predictable payments and flexible, market-driven financing, and how to choose the right structure for your risk profile.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#structure" className="hover:underline">Rate Structure: Fixed vs. Floating Defined</a></li>
+        <li><a href="#payment-calc" className="hover:underline">Payment Calculation and Stability</a></li>
+        <li><a href="#risk-transfer" className="hover:underline">Interest Rate Risk Allocation</a></li>
+        <li><a href="#pricing-mechanics" className="hover:underline">Pricing Mechanics: Index and Margin</a></li>
+        <li><a href="#comparison-criteria" className="hover:underline">Choosing the Optimal Rate Structure</a></li>
+    </ul>
+<hr />
+
+    {/* RATE STRUCTURE: FIXED VS. FLOATING DEFINED */}
+    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Rate Structure: Fixed vs. Floating Defined</h2>
+    <p>Interest rates are the cost of borrowing money. The fundamental choice in nearly all debt instruments—from mortgages to corporate bonds—is whether that rate should be fixed for the life of the loan or allowed to vary with the market.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Interest Rate</h3>
+    <p>A **Fixed Rate** remains constant for the entire duration of the loan. The initial interest rate is determined at the loan's origination and is not subject to any external market fluctuations. This provides the borrower with absolute certainty regarding their monthly principal and interest payment.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Floating (Variable) Interest Rate</h3>
+    <p>A **Floating Rate** (or Variable Rate) changes periodically (e.g., monthly, quarterly, or annually) based on movements in an external, publicly observable benchmark rate (the Index). The borrower's rate consists of the Index plus a fixed premium (the Margin).</p>
+    <p>Examples include Adjustable Rate Mortgages (ARMs), credit cards, and many corporate loans based on the Secured Overnight Financing Rate (SOFR).</p>
+
+<hr />
+
+    {/* PAYMENT CALCULATION AND STABILITY */}
+    <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Payment Calculation and Stability</h2>
+    <p>The choice of rate structure directly impacts the predictability and stability of the borrower's monthly cash flow, which is calculated using the standard loan amortization formula.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Stability of Fixed Rate Payments</h3>
+    <p>For a fixed-rate loan, the monthly Principal and Interest (P&I) payment remains constant for the life of the loan (e.g., 360 payments for a 30-year mortgage). While the split between principal and interest changes monthly due to amortization, the total payment amount does not, providing maximum budget stability.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Volatility of Floating Rate Payments</h3>
+    <p>For a floating-rate loan, the payment must be recalculated at every adjustment interval based on the current interest rate. A 1% increase in the benchmark rate will lead to an immediate and permanent increase in the borrower's monthly payment. This creates **Payment Volatility** and makes future budgeting uncertain.</p>
+
+<hr />
+
+    {/* INTEREST RATE RISK ALLOCATION */}
+    <h2 id="risk-transfer" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interest Rate Risk Allocation</h2>
+    <p>The key financial difference between the two structures is who bears the **Interest Rate Risk**—the risk that market rates will move against the borrower's best interests.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Rate: Lender Bears Risk</h3>
+    <p>The lender bears the risk that interest rates will rise. If market rates increase after the loan is issued, the lender is stuck receiving a lower rate until maturity. The borrower, having locked in the rate, is protected from rising costs.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Floating Rate: Borrower Bears Risk</h3>
+    <p>The borrower bears the risk that interest rates will rise. If market rates increase, the borrower's payment increases immediately. The lender is protected from market risk because they receive a higher return when their cost of capital rises. The borrower is often compensated for taking this risk with a lower initial interest rate.</p>
+
+<hr />
+
+    {/* PRICING MECHANICS: INDEX AND MARGIN */}
+    <h2 id="pricing-mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Pricing Mechanics: Index and Margin</h2>
+    <p>The rate for a floating loan is determined by two components, whereas a fixed rate is determined by the lender's forecast of future rates.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Floating Rate Components</h3>
+    <p>The actual rate is the sum of a variable **Index** (the publicly observed benchmark, e.g., SOFR) and the fixed **Margin** (the premium added by the lender).</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Floating Rate = Index Rate + Margin'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Rate Pricing</h3>
+    <p>To set a fixed rate, the lender must factor in their **cost of capital** plus a **premium** for the risk they are assuming (the risk that rates will rise). This premium often makes the initial fixed rate higher than the initial floating rate, acting as an insurance cost for the borrower's payment stability.</p>
+
+<hr />
+
+    {/* CHOOSING THE OPTIMAL RATE STRUCTURE */}
+    <h2 id="comparison-criteria" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Choosing the Optimal Rate Structure</h2>
+    <p>The decision to choose a fixed or floating rate depends heavily on the borrower's risk tolerance, financial forecast, and intended loan duration.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">When to Choose Fixed Rate</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**High Risk Aversion:** When budget predictability is the highest priority (e.g., first-time homebuyers with strict budgets).</li>
+        <li>**Long Duration:** For loans where the borrower intends to hold the debt for a long time (e.g., 30-year mortgage), locking in the rate provides long-term stability.</li>
+        <li>**Rising Rate Environment:** When the prevailing economic forecast suggests that market interest rates are likely to increase.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">When to Choose Floating Rate</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Short Duration:** When the borrower plans to pay off or refinance the debt quickly, minimizing the exposure to potential rate increases.</li>
+        <li>**Falling Rate Environment:** When the economic forecast suggests interest rates are likely to decline, benefiting from the lower rates without refinancing.</li>
+        <li>**High Risk Tolerance:** When the borrower can comfortably absorb a potentially significant increase in the monthly payment.</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The comparison between fixed and floating interest rates centers on the allocation of **interest rate risk**. The fixed rate provides payment stability by transferring the risk to the lender, while the floating rate offers a lower initial cost by transferring the risk to the borrower.</p>
+    <p>Optimal selection requires the borrower to compare the initial **fixed rate premium** (the insurance cost) against the risk of **payment volatility** inherent in the floating rate's reliance on the fluctuating market index.</p>
+</section>
 
       {/* FAQ */}
       <Card>

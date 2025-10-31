@@ -208,18 +208,103 @@ export default function SwapSpreadCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            Complete Guide to Swap Spreads
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Swap Spread Calculation, Interpretation, and Fixed Income Analysis" />
+    <meta itemProp="description" content="An expert guide detailing the Swap Spread formula, its calculation as the difference between the fixed leg of an interest rate swap and the government bond yield (Treasury), and its crucial role as a barometer for credit risk and market liquidity." />
+    <meta itemProp="keywords" content="swap spread formula explained, calculating swap spread, fixed leg of interest rate swap, treasury yield swap spread, credit risk indicator finance, market liquidity benchmark, Libor-OIS spread relation" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-swap-spread-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Swap Spread: Market Barometer for Risk and Liquidity</h1>
+    <p className="text-lg italic text-gray-700">Master the foundational metric in fixed income markets that measures the difference between derivative pricing and government benchmark yields.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Swap Spread Definition and Components</a></li>
+        <li><a href="#calculation" className="hover:underline">The Swap Spread Calculation Formula</a></li>
+        <li><a href="#risk-interpretation" className="hover:underline">Interpretation as Credit Risk and Liquidity Indicator</a></li>
+        <li><a href="#arbitrage" className="hover:underline">Synthetic Treasury vs. Arbitrage Mechanics</a></li>
+        <li><a href="#drivers" className="hover:underline">Key Drivers of Swap Spread Fluctuations</a></li>
+    </ul>
+<hr />
+
+    {/* SWAP SPREAD DEFINITION AND COMPONENTS */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Swap Spread Definition and Components</h2>
+    <p>The **Swap Spread** is the difference between the fixed annual rate paid on a plain vanilla **Interest Rate Swap (IRS)** and the yield on a government bond (typically a U.S. Treasury bond) of the same maturity. It is expressed in basis points (bps).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Interest Rate Swap (IRS) Fixed Leg</h3>
+    <p>In a standard IRS, one party agrees to pay a **Fixed Rate** in exchange for receiving a **Floating Rate** (usually based on SOFR or an equivalent interbank rate). The fixed rate is the rate that makes the present value of the fixed payments equal to the present value of the expected floating payments at the contract's inception.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Benchmark (Risk-Free Rate)</h3>
+    <p>The government bond yield (e.g., the U.S. Treasury yield) serves as the benchmark **Risk-Free Rate**. Government bonds are considered the purest measure of risk-free return because they are backed by the taxing authority of the government.</p>
+
+<hr />
+
+    {/* THE SWAP SPREAD CALCULATION FORMULA */}
+    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Swap Spread Calculation Formula</h2>
+    <p>The Swap Spread calculation is a simple subtraction that immediately reveals the premium the market is placing on the derivative contract over the government benchmark.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <p>The calculation is based on the comparison of two rates for the same maturity (e.g., 10 years):</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Swap Spread = Swap Fixed Rate - Treasury Yield'}
+        </p>
+    </div>
+    <p>The result is typically positive, meaning the fixed rate paid on the swap is usually higher than the government bond yield, reflecting the inherent differences in credit risk, liquidity, and supply between the two instruments.</p>
+
+<hr />
+
+    {/* INTERPRETATION AS CREDIT RISK AND LIQUIDITY INDICATOR */}
+    <h2 id="risk-interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation as Credit Risk and Liquidity Indicator</h2>
+    <p>The Swap Spread is a vital barometer of the health and stability of the global financial system. Its magnitude and movement provide deep insight into market conditions.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Credit Risk Component</h3>
+    <p>The largest driver of a positive swap spread is the **Credit Risk** embedded in the swap contract. The fixed-rate receiver in an IRS faces counterparty risk—the risk that the floating-rate payer will default. Since Treasury bonds have negligible credit risk, the positive spread compensates the swap participant for accepting this counterparty risk. A **widening swap spread** often signals increased counterparty risk in the banking system.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Liquidity Component</h3>
+    <p>The spread also reflects the difference in liquidity. Treasury bonds are the most liquid securities in the world. Swap contracts, though highly liquid, are typically less so. The premium may compensate for the lower tradability of the swap.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Negative Swap Spreads (Market Stress)</h3>
+    <p>Historically, Swap Spreads have always been positive. However, during periods of extreme financial distress (e.g., the 2008 crisis), spreads can turn **negative**. This anomaly occurs when intense demand for the safety of Treasury bonds drives their yields down faster than swap rates. A negative spread signals a severe **flight to quality**, where investors accept a lower return on Treasuries just for the guarantee of safety, overriding normal risk premiums.</p>
+
+<hr />
+
+    {/* ARBITRAGE MECHANICS AND SYNTHETIC TREASURY */}
+    <h2 id="arbitrage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Synthetic Treasury vs. Arbitrage Mechanics</h2>
+    <p>The Swap Spread concept relies on the theoretical link between creating a government bond synthetically using a derivative.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Creating a Synthetic Treasury</h3>
+    <p>A portfolio can be constructed to synthetically replicate the cash flows of a Treasury bond:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Buy:** A fixed-rate payment (the fixed leg of an IRS).</li>
+        <li>**Receive:** A floating-rate payment (the floating leg of an IRS).</li>
+        <li>**Use Floating Rate:** To pay off floating-rate debt (effectively converting floating liability into a fixed liability).</li>
+    </ul>
+    <p>In theory, the fixed payment required in the swap should equal the Treasury yield, but the spread difference prevents immediate, risk-free arbitrage due to the credit and liquidity differences.</p>
+
+<hr />
+
+    {/* KEY DRIVERS OF SWAP SPREAD FLUCTUATIONS */}
+    <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Drivers of Swap Spread Fluctuations</h2>
+    <p>Understanding what moves the swap spread provides predictive insight into market health and interest rate expectations.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Supply and Demand Dynamics</h3>
+    <p>The largest fluctuations occur due to the supply of Treasuries and the demand for fixed-rate debt. For example, large bond issuance by the government can temporarily depress Treasury prices, causing yields to rise and the swap spread to narrow.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Monetary Policy Expectations</h3>
+    <p>Swap rates reflect the market's expectation of future central bank interest rate movements. A sudden shift in the expected path of the base rate impacts the swap fixed rate more immediately than the long-term Treasury yield, causing temporary fluctuations in the spread.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Swap Spread is a fundamental gauge of the global debt market, calculated as the difference between the **fixed leg of an Interest Rate Swap** and the **yield of a benchmark Treasury bond** of equal maturity.</p>
+    <p>Its primary value lies in quantifying the market's assessment of **counterparty credit risk** and liquidity premium. Analyzing the Swap Spread is essential for macro investors seeking real-time signals regarding financial system stability and long-term interest rate trends.</p>
+</section>
 
       {/* FAQ */}
       <Card>
