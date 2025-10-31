@@ -610,27 +610,28 @@ export default function WindowGlassCurtainCoverageCalculator() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aesthetic Result</th>
             </tr>
         </thead>
+        {/* REMOVING WHITESPACE-NOWRAP FOR BETTER SCALABILITY */}
         <tbody className="bg-white divide-y divide-gray-200">
             <tr>
-                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Minimal/Flat</strong></td>
-                <td className="px-6 py-4 whitespace-nowrap">1.5x to 1.8x</td>
-                <td className="px-6 py-4 whitespace-nowrap">Modern, flat look; suitable for sheers</td>
+                <td className="px-6 py-4"><strong className="font-semibold">Minimal/Flat</strong></td>
+                <td className="px-6 py-4">1.5x to 1.8x</td>
+                <td className="px-6 py-4">Modern, flat look; suitable for sheers</td>
             </tr>
             <tr>
-                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Standard Fullness</strong></td>
-                <td className="px-6 py-4 whitespace-nowrap">2.0x (Double Fullness)</td>
-                <td className="px-6 py-4 whitespace-nowrap">Traditional, common pleating (Two yards of fabric per one yard of rod)</td>
+                <td className="px-6 py-4"><strong className="font-semibold">Standard Fullness</strong></td>
+                <td className="px-6 py-4">2.0x (Double Fullness)</td>
+                <td className="px-6 py-4">Traditional, common pleating (Two yards of fabric per one yard of rod)</td>
             </tr>
             <tr>
-                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Luxury/Heavy Fullness</strong></td>
-                <td className="px-6 py-4 whitespace-nowrap">2.5x to 3.0x (Triple Fullness)</td>
-                <td className="px-6 py-4 whitespace-nowrap">Heavy pleating; luxurious, dense draping</td>
+                <td className="px-6 py-4"><strong className="font-semibold">Luxury/Heavy Fullness</strong></td>
+                <td className="px-6 py-4">2.5x to 3.0x (Triple Fullness)</td>
+                <td className="px-6 py-4">Heavy pleating; luxurious, dense draping</td>
             </tr>
         </tbody>
     </table>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Total Fabric Width</h3>
-    <p>The Total Fabric Width is calculated as: Finished Rod Width $\times$ Fullness Multiplier. This is then divided by the Fabric Usable Width to determine the **number of vertical panels** needed.</p>
+    <p>The Total Fabric Width is calculated as: Finished Rod Width multiplied by Fullness Multiplier. This is then divided by the Fabric Usable Width to determine the **number of vertical panels** needed.</p>
 
 <hr />
 

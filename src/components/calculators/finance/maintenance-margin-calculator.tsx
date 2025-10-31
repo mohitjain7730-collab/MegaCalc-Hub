@@ -609,18 +609,114 @@ export default function MaintenanceMarginCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            Complete Guide to Maintenance Margin
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Maintenance Margin, Margin Call Risk, and Equity Calculation" />
+    <meta itemProp="description" content="An expert guide detailing the formulas for initial margin, maintenance margin, and the calculation of margin call price. Covers margin call risk mitigation and the use of leverage in brokerage accounts." />
+    <meta itemProp="keywords" content="maintenance margin calculation, margin call risk explained, initial margin requirement, equity calculation brokerage account, margin call price formula, leverage trading risk" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-10-25" /> 
+    <meta itemProp="url" content="/definitive-margin-call-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Maintenance Margin and Margin Call Risk</h1>
+    <p className="text-lg italic text-gray-700">Master the critical thresholds that govern leveraged trading and determine the price level at which your broker liquidates your position.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#basics" className="hover:underline">Margin Trading Basics: Initial Margin and Leverage</a></li>
+        <li><a href="#maintenance" className="hover:underline">Maintenance Margin: The Safety Threshold</a></li>
+        <li><a href="#equity-calc" className="hover:underline">Equity Calculation and Margin Status</a></li>
+        <li><a href="#call-price" className="hover:underline">Calculating the Margin Call Price</a></li>
+        <li><a href="#risk-mitigation" className="hover:underline">Margin Call Risk and Mitigation Strategies</a></li>
+    </ul>
+<hr />
+
+    {/* MARGIN TRADING BASICS: INITIAL MARGIN AND LEVERAGE */}
+    <h2 id="basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Margin Trading Basics: Initial Margin and Leverage</h2>
+    <p>Margin trading involves borrowing money from a broker to purchase securities. This practice, known as using leverage, allows a trader to control a larger position than their account capital would otherwise allow, magnifying both potential gains and losses.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Initial Margin Requirement</h3>
+    <p>The Initial Margin is the minimum percentage of the security's purchase price that a trader must fund with their own capital. Regulatory bodies, such as the Federal Reserve Board in the U.S. (Regulation T), set the minimum initial margin, but brokers can require higher percentages based on risk.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Borrowed Amount = Total Value of Position * (1 - Initial Margin %)'}
+        </p>
+    </div>
+    <p>The remaining portion is the trader's required equity.</p>
+
+<hr />
+
+    {/* MAINTENANCE MARGIN: THE SAFETY THRESHOLD */}
+    <h2 id="maintenance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Maintenance Margin: The Safety Threshold</h2>
+    <p>The Maintenance Margin is the minimum level of equity a trader must maintain in the margin account relative to the market value of the securities. It acts as a safety buffer for the broker against potential losses.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Purpose of the Maintenance Margin</h3>
+    <p>If the value of the securities declines, the trader's equity falls. The maintenance margin is the threshold that, if breached, triggers a <strong className="font-semibold">Margin Call</strong>. Brokerages often set their maintenance margin higher than the regulatory minimum (typically 25% of the position value) to protect their loan capital.</p>
+    <p>The broker allows the trader to manage the position freely as long as the equity remains above this maintenance margin percentage.</p>
+
+<hr />
+
+    {/* EQUITY CALCULATION AND MARGIN STATUS */}
+    <h2 id="equity-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Equity Calculation and Margin Status</h2>
+    <p>A trader's margin status is continuously monitored by comparing their actual equity to the maintenance margin requirement.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Account Equity</h3>
+    <p>Account equity represents the current value of the trader's cash claim in the position. It is the core metric used to determine if a margin call is imminent.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Account Equity = Market Value of Securities - Borrowed Amount'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Margin Call Trigger</h3>
+    <p>A margin call is triggered when the trader's account equity drops below the dollar amount required by the maintenance margin rule.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Margin Call Trigger = Maintenance Margin % * Market Value of Securities'}
+        </p>
+    </div>
+    <p>When the actual Account Equity falls below the Margin Call Trigger dollar amount, the broker issues the call.</p>
+
+<hr />
+
+    {/* CALCULATING THE MARGIN CALL PRICE */}
+    <h2 id="call-price" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Margin Call Price</h2>
+    <p>The Margin Call Price is the exact price point at which the security's value falls low enough to trigger the maintenance margin requirement, forcing the trader to take action.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Margin Call Price Formula</h3>
+    <p>For a long position (buying a security), the margin call price is calculated based on the initial borrowing and the maintenance margin percentage (MM):</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Margin Call Price = Borrowed Amount / (1 - Maintenance Margin %)'}
+        </p>
+    </div>
+    <p>This formula determines the market value where the equity equals the maintenance margin requirement, allowing the trader to know their downside risk threshold.</p>
+
+<hr />
+
+    {/* MARGIN CALL RISK AND MITIGATION STRATEGIES */}
+    <h2 id="risk-mitigation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Margin Call Risk and Mitigation Strategies</h2>
+    <p>A margin call requires the trader to deposit additional funds immediately or face mandatory liquidation of their assets by the broker. This liquidation is performed regardless of market price, locking in the loss.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Actions Following a Margin Call</h3>
+    <p>Upon receiving a margin call, the trader must do one of two things, typically within a few days:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Deposit Cash:</strong> Inject enough cash into the account to raise the equity back above the maintenance margin threshold.</li>
+        <li><strong className="font-semibold">Sell Securities:</strong> Liquidate enough securities in the account to reduce the borrowed amount and meet the margin requirement.</li>
+    </ol>
+    <p>If the trader fails to meet the call, the broker will unilaterally liquidate assets to protect their loan, potentially selling at the worst possible time.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Mitigation Strategy: Over-Collateralization</h3>
+    <p>The best way to mitigate margin call risk is to <strong className="font-semibold">over-collateralize</strong> the account—maintaining an equity percentage well above the maintenance margin. This creates a larger buffer against market fluctuations, reducing the likelihood of liquidation during routine market volatility.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Maintenance Margin is the financial line in the sand that separates leveraged trading from mandatory liquidation. It is the minimum percentage of equity required to secure the broker's loan.</p>
+    <p>The Margin Call Price calculation provides the essential knowledge of the market value at which the margin loan becomes structurally vulnerable. Traders must proactively track their equity against this threshold and maintain a sufficient capital buffer to avoid the costly, forced liquidation that follows an unmet margin call.</p>
+</section>
 
       {/* FAQ */}
       <Card>
