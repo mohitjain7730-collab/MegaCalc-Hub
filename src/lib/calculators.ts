@@ -12,6 +12,114 @@ export interface Calculator {
 export const calculators: Calculator[] = [
   // Finance
   {
+    id: 4000,
+    name: 'Dividend Reinvestment (DRIP) Calculator',
+    description: 'Simulate dividend reinvestment with recurring contributions to see compounding over time.',
+    slug: 'dividend-reinvestment-drip-calculator',
+    category: 'finance',
+    metaTitle: 'Dividend Reinvestment (DRIP) Calculator - Compounding Income',
+    metaDescription: 'Model dividend reinvestment, contributions, yield, and price growth to estimate future portfolio value.'
+  },
+  {
+    id: 4001,
+    name: 'Dividend Yield Calculator',
+    description: 'Compute current dividend yield and yield on cost for income investing analysis.',
+    slug: 'dividend-yield-calculator',
+    category: 'finance',
+    metaTitle: 'Dividend Yield Calculator - Current Yield & Yield on Cost',
+    metaDescription: 'Calculate dividend yield and yield on cost using dividend per share, current price, and cost basis.'
+  },
+  {
+    id: 4002,
+    name: 'Dividend Discount Model (DDM) Calculator',
+    description: 'Estimate intrinsic value using Gordon constant-growth dividend discount model.',
+    slug: 'dividend-discount-model-calculator',
+    category: 'finance',
+    metaTitle: 'Dividend Discount Model (DDM) - Gordon Growth Valuation',
+    metaDescription: 'Value dividend-paying stocks with constant-growth DDM using next dividend, required return, and growth.'
+  },
+  {
+    id: 4003,
+    name: 'Gordon Growth Model Calculator',
+    description: 'Shortcut to constant-growth DDM valuation using D1, required return, and growth.',
+    slug: 'gordon-growth-model-calculator',
+    category: 'finance',
+    metaTitle: 'Gordon Growth Model Calculator - Constant Growth DDM',
+    metaDescription: 'Compute intrinsic value with the Gordon Growth formula (a special case of DDM).'
+  },
+  {
+    id: 4004,
+    name: 'Stock Split / Reverse Split Impact Calculator',
+    description: 'See how share count and price change under split ratios while market value remains constant.',
+    slug: 'stock-split-impact-calculator',
+    category: 'finance',
+    metaTitle: 'Stock Split Impact Calculator - Shares and Price Adjustment',
+    metaDescription: 'Model the effect of stock splits and reverse splits on share count, price, and market value.'
+  },
+  {
+    id: 4005,
+    name: 'Stock Average Cost (Multiple Buys) Calculator',
+    description: 'Compute weighted average cost basis across multiple purchase lots including fees.',
+    slug: 'stock-average-cost-multiple-buys-calculator',
+    category: 'finance',
+    metaTitle: 'Stock Average Cost Calculator - Multiple Buys & Fees',
+    metaDescription: 'Calculate average cost per share across multiple buys with commissions and fees included.'
+  },
+  {
+    id: 4006,
+    name: 'Target Price Calculator',
+    description: 'Find the price needed to reach your desired return over a chosen holding period.',
+    slug: 'target-price-calculator',
+    category: 'finance',
+    metaTitle: 'Target Price Calculator - Goal-Based Returns',
+    metaDescription: 'Compute simple and annualized target prices to reach your return objective.'
+  },
+  {
+    id: 4007,
+    name: 'Break-even Stock Sale Price Calculator',
+    description: 'Determine the sale price per share to break even after commissions and taxes on gains.',
+    slug: 'break-even-stock-sale-price-calculator',
+    category: 'finance',
+    metaTitle: 'Break-even Stock Sale Price Calculator',
+    metaDescription: 'Calculate break-even sale price accounting for fees and taxes on capital gains.'
+  },
+  {
+    id: 4008,
+    name: 'Capital Gain / Loss Calculator',
+    description: 'Estimate gross gain/loss, tax owed on gains, and net proceeds from a sale.',
+    slug: 'capital-gain-loss-calculator',
+    category: 'finance',
+    metaTitle: 'Capital Gain/Loss & Net Proceeds Calculator',
+    metaDescription: 'Compute gain/loss, return %, tax owed on gains, and net proceeds after fees.'
+  },
+  {
+    id: 4009,
+    name: 'CAGR (Compound Annual Growth Rate) Calculator',
+    description: 'Calculate annualized growth between beginning and ending values over time.',
+    slug: 'cagr-calculator',
+    category: 'finance',
+    metaTitle: 'CAGR Calculator - Annualized Return',
+    metaDescription: 'Compute compound annual growth rate for investments or portfolios.'
+  },
+  {
+    id: 4010,
+    name: 'Holding Period Return (HPR) Calculator',
+    description: 'Compute total holding period return including income.',
+    slug: 'holding-period-return-hpr-calculator',
+    category: 'finance',
+    metaTitle: 'Holding Period Return (HPR) Calculator',
+    metaDescription: 'Calculate total return including price change and income over a holding period.'
+  },
+  {
+    id: 4011,
+    name: 'Weighted Average Return Calculator',
+    description: 'Combine multiple asset returns by portfolio weights.',
+    slug: 'weighted-average-return-calculator',
+    category: 'finance',
+    metaTitle: 'Weighted Average Return Calculator',
+    metaDescription: 'Compute portfolio weighted return from weights and component returns.'
+  },
+  {
     id: 95,
     name: 'SIP/DCA Return Calculator',
     description: 'Project the future value of your Systematic Investment Plan (SIP) or Dollar-Cost Averaging (DCA) strategy. See how regular, disciplined investing can help you reach your financial goals.',
