@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+ 
 import { Zap } from 'lucide-react';
 
 const formSchema = z.object({
@@ -103,27 +103,47 @@ export default function IceBathDurationTempCalculator() {
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: Ice Baths</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <ul className="list-disc list-inside space-y-1">
-              <li>Avoid immediately after strength if hypertrophy is a priority.</li>
-              <li>Keep extremities safe; stop if numbness or severe shivering.</li>
-              <li>Rewarm gradually; consider warm beverage after.</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <ul className="space-y-1">
-              <li><a href="/category/health-fitness/core-body-temperature-rise-calculator" className="text-primary underline">Core Temp Rise</a></li>
-              <li><a href="/category/health-fitness/recovery-heart-rate-calculator" className="text-primary underline">Recovery HR</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">Related Calculators</CardTitle>
+          <CardDescription>Plan recovery and temperature strategies</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/recovery-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</a></h4><p className="text-sm text-muted-foreground">Track autonomic recovery after training.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</a></h4><p className="text-sm text-muted-foreground">Aerobic fitness to inform recovery.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide to Ice Baths</CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>About cold exposure and timing</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['When to avoid ice baths?', 'Avoid immediately post‑strength if hypertrophy is a goal; prefer rest days.'],
+            ['What water temp is best?', 'Common range is 8–12°C; colder water requires shorter durations.'],
+            ['How many sessions per week?', '2–4 sessions depending on tolerance and goals.'],
+            ['How should I rewarm?', 'Towel dry, light movement, and warm beverage; avoid hot showers immediately.'],
+            ['Any contraindications?', 'Circulatory issues, Raynaud’s, or pregnancy—consult a clinician.'],
+            ['Can I combine with sauna?', 'Yes—contrast therapy can aid relaxation; listen to your body.'],
+            ['Does it blunt training gains?', 'Potentially if used immediately after strength; time it away from heavy lifting.'],
+            ['What about breathing?', 'Slow nasal breathing helps manage stress response during immersion.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+ 
 import { Zap } from 'lucide-react';
 
 const formSchema = z.object({
@@ -126,27 +126,47 @@ export default function PostInjuryMobilityProgressCalculator() {
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: Restoring Mobility Post-Injury</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <ul className="list-disc list-inside space-y-1">
-              <li>Respect pain thresholds and monitor next-day response.</li>
-              <li>Use frequent low-load mobility and isometrics early.</li>
-              <li>Progress to loaded end-range and functional patterns.</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <ul className="space-y-1">
-              <li><a href="/category/health-fitness/physical-therapy-session-intensity-calculator" className="text-primary underline">PT Session Intensity</a></li>
-              <li><a href="/category/health-fitness/range-of-motion-progress-calculator" className="text-primary underline">ROM Progress</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">Related Calculators</CardTitle>
+          <CardDescription>Plan mobility and tolerance</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/physical-therapy-exercise-load-calculator" className="text-primary hover:underline">PT Exercise Load</a></h4><p className="text-sm text-muted-foreground">Set safe therapeutic loads.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/ice-bath-duration-temp-calculator" className="text-primary hover:underline">Ice Bath Duration</a></h4><p className="text-sm text-muted-foreground">Recovery guidance after sessions.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide to Mobility Restoration</CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>About ROM progress tracking</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['How often to measure ROM?', 'Weekly measurements are usually sufficient; keep conditions consistent.'],
+            ['What if progress stalls?', 'Adjust frequency/volume, add end‑range loading, or deload for a week.'],
+            ['Is pain during ROM okay?', 'Low, tolerable pain (≤3/10) that settles within 24h is generally acceptable.'],
+            ['Do I need warm‑up before measuring?', 'Yes—perform a standard light warm‑up for reliable comparisons.'],
+            ['What’s a good weekly gain?', '2–5° for small joints; larger joints can gain slightly more early on.'],
+            ['When to change targets?', 'Re‑assess targets with your clinician as function returns and goals evolve.'],
+            ['How to improve adherence?', 'Use short, frequent bouts and stack exercises with daily habits.'],
+            ['Does swelling affect ROM?', 'Yes—manage swelling with elevation/compression and appropriate loading.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 import { Zap } from 'lucide-react';
 
 const formSchema = z.object({
@@ -119,30 +119,59 @@ export default function GlycogenStorageCapacityCalculator() {
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: Glycogen & Performance</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <h4 className="font-semibold text-foreground">Why Glycogen Matters</h4>
-            <p>Glycogen is the primary carbohydrate store in muscle and a key fuel for moderate to high-intensity training.</p>
-            <h4 className="font-semibold text-foreground">Ways to Increase Capacity</h4>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Progressive training volume</li>
-              <li>Carbohydrate periodization and post-workout fueling</li>
-              <li>Adequate sleep and recovery</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <ul className="space-y-1">
-              <li><a href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs</a></li>
-              <li><a href="/category/health-fitness/macro-ratio-calculator" className="text-primary underline">Macro Ratio Calculator</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Plan fueling around training</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4>
+              <p className="text-sm text-muted-foreground">Estimate total energy requirement.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4>
+              <p className="text-sm text-muted-foreground">Balance carbs, protein, and fat.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Carbohydrate Intake</Link></h4>
+              <p className="text-sm text-muted-foreground">Daily carb targets by activity.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/training-volume-calculator" className="text-primary hover:underline">Training Volume</Link></h4>
+              <p className="text-sm text-muted-foreground">Track sets × reps × weight.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader><CardTitle>Complete Guide: Glycogen & Performance</CardTitle></CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Detailed, SEO‑friendly answers</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['How much glycogen can muscles store?', 'Well-trained athletes may store several hundred grams depending on muscle mass and nutrition; this tool provides a personalized estimate.'],
+            ['What increases glycogen storage?', 'Higher carbohydrate intake, progressive training volume, and post‑workout refueling support glycogen supercompensation.'],
+            ['Does creatine affect glycogen?', 'Creatine can improve training quality and may indirectly support greater glycogen storage via increased workload.'],
+            ['How fast is glycogen replenished?', 'Most stores replenish within 24–48 hours with adequate carbohydrate and calories; faster with frequent carb-rich meals.'],
+            ['Should I carb load?', 'Before long races or blocks with high intensity, carb loading can raise stores; practice during training first.'],
+            ['What are signs of low glycogen?', 'Early fatigue, heavy legs, and performance drop at moderate intensities often indicate depleted stores.'],
+            ['Do low‑carb diets reduce glycogen?', 'Yes, habitual low‑carb intakes lower glycogen content, which may limit high‑intensity performance.'],
+            ['How accurate is this estimate?', 'It uses simplified assumptions about muscle mass and concentration; actual values vary by fiber type and training status.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
     </div>
   );
 }

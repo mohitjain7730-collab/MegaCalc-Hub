@@ -8,174 +8,132 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Zap } from 'lucide-react';
+import Link from 'next/link';
+import { Zap, Info } from 'lucide-react';
 
+// Simplified model: capillary-to-fiber ratio increases with endurance training volume and weeks
 const formSchema = z.object({
-  capillariesCounted: z.number().positive('Enter a positive number').optional(),
-  fieldAreaMm2: z.number().positive('Enter area in mm^2').optional(),
+  baselineCFR: z.number().min(1).max(3).optional(), // capillaries per fiber
+  weeklyAerobicHrs: z.number().min(0).max(20).optional(),
+  weeksOfTraining: z.number().min(0).max(52).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CapillaryDensityEstimator() {
-  const [result, setResult] = useState<{ densityPerMm2: number; interpretation: string; opinion: string } | null>(null);
+  const [result, setResult] = useState<{ cfr: number; percentGain: number; interpretation: string } | null>(null);
+  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { baselineCFR: undefined, weeklyAerobicHrs: undefined, weeksOfTraining: undefined } });
 
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      capillariesCounted: undefined,
-      fieldAreaMm2: undefined,
-    },
-  });
-
-  const calculate = (values: FormValues) => {
-    if (!values.capillariesCounted || !values.fieldAreaMm2) return null;
-    const density = values.capillariesCounted / values.fieldAreaMm2; // capillaries per mm^2
-    return Math.round(density * 100) / 100;
+  const calculate = (v: FormValues) => {
+    if (v.baselineCFR == null || v.weeklyAerobicHrs == null || v.weeksOfTraining == null) return null;
+    // Simple heuristic: ~0.5% gain per aerobic hour per week up to 8h, attenuated by weeks
+    const hrs = Math.min(8, v.weeklyAerobicHrs);
+    const weeklyGain = 0.005 * hrs;
+    const cap = 0.25; // max 25% over baseline in this heuristic horizon
+    const totalGain = Math.min(cap, weeklyGain * Math.sqrt(v.weeksOfTraining));
+    const cfr = v.baselineCFR * (1 + totalGain);
+    return { cfr, percentGain: totalGain * 100 };
   };
 
-  const interpret = (density: number) => {
-    // Generic reference ranges for skeletal muscle at rest
-    // Low < 200, Average 200-350, High > 350 capillaries/mm^2
-    if (density > 350) return 'High capillary density, indicative of strong aerobic conditioning.';
-    if (density >= 200) return 'Average capillary density, consistent with moderate aerobic fitness.';
-    return 'Low capillary density, may reflect limited aerobic conditioning.';
+  const interpret = (gain: number) => {
+    if (gain >= 15) return 'Meaningful microvascular remodeling expected; may improve oxygen delivery and endurance.';
+    if (gain >= 5) return 'Moderate capillarization; continue progressive volume and include tempo work.';
+    return 'Early adaptations; build frequency and consistency to drive structural changes.';
   };
 
-  const opinionForUser = (density: number) => {
-    if (density > 350) return 'Excellent aerobic base. Maintain with regular endurance work and occasional intervals.';
-    if (density >= 200) return 'Solid foundation. Gradually increase weekly aerobic volume and include tempo sessions.';
-    return 'Consider progressive aerobic training (Zone 2), consistency, and nutrition to improve perfusion.';
-  };
-
-  const onSubmit = (values: FormValues) => {
-    const density = calculate(values);
-    if (density == null) {
-      setResult(null);
-      return;
-    }
-    setResult({
-      densityPerMm2: density,
-      interpretation: interpret(density),
-      opinion: opinionForUser(density),
-    });
+  const onSubmit = (v: FormValues) => {
+    const r = calculate(v);
+    if (!r) { setResult(null); return; }
+    setResult({ cfr: Math.round(r.cfr * 100) / 100, percentGain: Math.round(r.percentGain * 10) / 10, interpretation: interpret(r.percentGain) });
   };
 
   return (
     <div className="space-y-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="capillariesCounted"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Capillaries Counted (n)</FormLabel>
-                  <FormControl>
-                    <Input type="number" step="1" placeholder="Enter count" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="fieldAreaMm2"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Microscope Field Area (mm²)</FormLabel>
-                  <FormControl>
-                    <Input type="number" step="0.01" placeholder="Enter area in mm²" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <FormField control={form.control} name="baselineCFR" render={({ field }) => (
+              <FormItem>
+                <FormLabel>Baseline Capillaries/Fiber</FormLabel>
+                <FormControl><Input type="number" step="0.01" placeholder="e.g., 1.8" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
+            )} />
+            <FormField control={form.control} name="weeklyAerobicHrs" render={({ field }) => (
+              <FormItem>
+                <FormLabel>Aerobic Hours/Week</FormLabel>
+                <FormControl><Input type="number" step="0.1" placeholder="e.g., 5" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
+            )} />
+            <FormField control={form.control} name="weeksOfTraining" render={({ field }) => (
+              <FormItem>
+                <FormLabel>Weeks of Training</FormLabel>
+                <FormControl><Input type="number" step="1" placeholder="e.g., 12" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseInt(e.target.value,10) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
+            )} />
           </div>
-          <Button type="submit">Estimate Capillary Density</Button>
+          <Button type="submit"><Zap className="h-4 w-4 mr-2" />Estimate Capillary Density</Button>
         </form>
       </Form>
 
       {result && (
-        <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Zap className="h-8 w-8 text-primary" />
-                <CardTitle>Capillary Density Result</CardTitle>
-              </div>
-              <CardDescription>Capillaries per square millimeter (mm²)</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <p className="text-3xl font-bold text-primary">{result.densityPerMm2} / mm²</p>
-              <p className="text-muted-foreground">{result.interpretation}</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Our Opinion</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">{result.opinion}</p>
-            </CardContent>
-          </Card>
-        </div>
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-4"><Zap className="h-8 w-8 text-primary" /><div><CardTitle>Estimated Capillary-to-Fiber Ratio</CardTitle><CardDescription>Training‑driven remodeling</CardDescription></div></div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center p-6 bg-primary/5 rounded-lg"><p className="text-sm text-muted-foreground mb-1">C/F Ratio</p><p className="text-3xl font-bold text-primary">{result.cfr}</p></div>
+              <div className="text-center p-6 bg-muted/50 rounded-lg"><p className="text-sm text-muted-foreground mb-1">Estimated Gain</p><p className="text-2xl font-bold">{result.percentGain}%</p></div>
+              <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg"><p className="text-sm text-muted-foreground mb-1">Summary</p><p className="text-sm">{result.interpretation}</p></div>
+            </div>
+          </CardContent>
+        </Card>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>Capillary density is computed as counted capillaries divided by the microscopic field area.</p>
-            <p>Higher density generally correlates with better oxygen delivery capacity and endurance performance.</p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: Capillary Density in Training</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <h4 className="font-semibold text-foreground">What Is Capillary Density?</h4>
-            <p>Capillary density reflects the number of capillaries supplying a given area of muscle. Endurance training stimulates angiogenesis, increasing density and improving oxygen extraction.</p>
-            <h4 className="font-semibold text-foreground">Why It Matters</h4>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Enhances oxygen delivery and metabolite clearance</li>
-              <li>Improves lactate shuttling and fatigue resistance</li>
-              <li>Supports higher sustainable workloads</li>
-            </ul>
-            <h4 className="font-semibold text-foreground">How to Improve</h4>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Consistent Zone 2 aerobic training</li>
-              <li>Tempo and long intervals near lactate threshold</li>
-              <li>Adequate calories, iron, and sleep for adaptation</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-calculators">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Aerobic Capacity</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/vo2-max-calculator" className="text-primary underline">VO2 Max Calculator</a></li>
-                  <li><a href="/category/health-fitness/running-economy-calculator" className="text-primary underline">Running Economy Calculator</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Recovery & Training</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/training-volume-calculator" className="text-primary underline">Training Volume Calculator</a></li>
-                  <li><a href="/category/health-fitness/muscle-soreness-recovery-estimator" className="text-primary underline">Muscle Soreness Recovery Estimator</a></li>
-                </ul>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Explore aerobic physiology tools</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess cardiorespiratory fitness.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/maximal-aerobic-speed-mas-calculator" className="text-primary hover:underline">Maximal Aerobic Speed</Link></h4><p className="text-sm text-muted-foreground">Set endurance training paces.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/red-blood-cell-count-effect-on-vo2-max-calculator" className="text-primary hover:underline">RBC Effect on VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">O₂ transport and performance.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/altitude-acclimatization-oxygen-need-calculator" className="text-primary hover:underline">Altitude O₂ Need</Link></h4><p className="text-sm text-muted-foreground">Plan training at elevation.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader><CardTitle>Complete Guide to Capillarization</CardTitle></CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>SEO‑focused answers about capillary density</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['What is capillary density?', 'It is the number of small blood vessels per muscle fiber or area, improving oxygen delivery and waste removal.'],
+            ['How fast does capillarization occur?', 'Structural changes emerge over weeks; consistent aerobic training accelerates remodeling.'],
+            ['What sessions stimulate capillaries?', 'Zone 2 volume, long runs/rides, and tempo efforts promote angiogenesis.'],
+            ['Does HIIT help?', 'Intervals complement volume but chronic aerobic load is the main driver of capillary growth.'],
+            ['How does density affect endurance?', 'More capillaries shorten diffusion distance, improving O₂ delivery and lactate clearance.'],
+            ['Is there a limit?', 'Gains plateau; this tool caps at ~25% in the given horizon to reflect diminishing returns.'],
+            ['How to support angiogenesis nutritionally?', 'Adequate iron, nitrates (beet), polyphenols, and overall energy availability help.'],
+            ['Does altitude change density?', 'Chronic hypoxia may aid vascular remodeling but requires careful load management.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
-
-

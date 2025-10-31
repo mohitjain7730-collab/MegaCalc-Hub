@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+ 
 import { Zap, AlertTriangle, CheckCircle, Info } from 'lucide-react';
 import Link from 'next/link';
 import { EmbedWidget } from '@/components/embed-widget';
@@ -547,27 +547,48 @@ export default function FoamRollingPressureEstimator() {
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: Foam Rolling Dos & Don'ts</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <ul className="list-disc list-inside space-y-1">
-              <li>Aim for mild discomfort, not sharp pain.</li>
-              <li>Breathe slowly; avoid tensing against the pressure.</li>
-              <li>Limit high-pressure points to 60 seconds.</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <ul className="space-y-1">
-              <li><Link href="/category/health-fitness/muscle-soreness-recovery-estimator" className="text-primary underline">Muscle Soreness Recovery</Link></li>
-              <li><Link href="/category/health-fitness/training-stress-score-calculator" className="text-primary underline">Training Stress Score</Link></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">Related Calculators</CardTitle>
+          <CardDescription>Complement your recovery routine</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/doms-recovery-time-calculator" className="text-primary hover:underline">DOMS Recovery Time</Link></h4><p className="text-sm text-muted-foreground">Estimate recovery hours after hard sessions.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/recovery-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</Link></h4><p className="text-sm text-muted-foreground">Monitor autonomic recovery trends.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide to Foam Rolling</CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>About pressure, safety, and technique</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['How much should it hurt?', 'Aim for tolerable discomfort (≤3/10). Sharp pain is a stop signal.'],
+            ['How long per area?', '30–120 seconds depending on pressure and tolerance.'],
+            ['Roll fast or slow?', 'Slow, controlled movements are more effective and safer.'],
+            ['Can I roll daily?', 'Light pressure can be daily; high pressure 2–3×/week.'],
+            ['Which areas to avoid?', 'Bones, joints, and the lumbar spine—focus on muscles around them.'],
+            ['Better before or after training?', 'Light rolling before, moderate after or on rest days.'],
+            ['Should I hold on tender spots?', 'Yes, brief holds (20–30 s) can help trigger points—avoid numbness.'],
+            ['What tool density?', 'Beginners: soft/medium. Advanced: high‑density or textured as needed.'],
+            ['Signs to stop?', 'Numbness, tingling, or sharp pain—stop immediately.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
 
       <EmbedWidget calculatorSlug="foam-rolling-pressure-estimator" calculatorName="Foam Rolling Pressure Estimator" />
     </div>

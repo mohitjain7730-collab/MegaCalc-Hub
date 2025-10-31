@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 import { Zap } from 'lucide-react';
 
 const formSchema = z.object({
@@ -107,28 +107,47 @@ export default function AltitudeAcclimatizationOxygenNeedCalculator() {
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: Training at Altitude</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <p>Lower barometric pressure reduces inspired oxygen, increasing physiological strain. Acclimatization improves ventilation, hematology, and efficiency.</p>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Ascend gradually and schedule easy days.</li>
-              <li>Monitor hydration, sleep, and training response.</li>
-              <li>Use HR and RPE rather than sea-level paces.</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <ul className="space-y-1">
-              <li><a href="/category/health-fitness/vo2-max-calculator" className="text-primary underline">VO2 Max Calculator</a></li>
-              <li><a href="/category/health-fitness/recovery-heart-rate-calculator" className="text-primary underline">Recovery Heart Rate</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Connect altitude to physiology</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Aerobic ceiling at sea level.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/red-blood-cell-count-effect-on-vo2-max-calculator" className="text-primary hover:underline">RBC → VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Hematology effects.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/capillary-density-estimator" className="text-primary hover:underline">Capillary Density</Link></h4><p className="text-sm text-muted-foreground">Diffusion capacity.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/myoglobin-oxygen-storage-calculator" className="text-primary hover:underline">Myoglobin O₂ Storage</Link></h4><p className="text-sm text-muted-foreground">Intramuscular reserve.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader><CardTitle>Complete Guide: Training at Altitude</CardTitle></CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Answers for athletes planning elevation training</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['How does altitude affect oxygen need?', 'Reduced barometric pressure lowers inspired O₂, increasing the relative oxygen requirement to sustain the same workload.'],
+            ['How quickly should I ascend?', 'Increase sleeping altitude gradually and schedule easy days to allow ventilatory and hematological adaptation.'],
+            ['Should I train by pace at altitude?', 'Use heart rate and RPE rather than sea‑level paces, which are often unattainable initially.'],
+            ['Does hydration matter more?', 'Yes, dry air and increased ventilation increase fluid loss; monitor body mass and urine color.'],
+            ['Will VO₂ Max change after acclimatization?', 'It may remain lower at altitude but economy and tolerance improve, reducing perceived effort.'],
+            ['What about iron status?', 'Adequate iron is critical for erythropoiesis; consider screening before extended altitude blocks.'],
+            ['Is this medical advice?', 'No—this calculator is educational and not a substitute for personalized medical guidance.'],
+            ['How accurate is the factor?', 'It is a simplified heuristic based on altitude bands; individual responses vary widely.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
     </div>
   );
 }

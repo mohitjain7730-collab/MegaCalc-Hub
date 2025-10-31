@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 import { Zap } from 'lucide-react';
 
 const formSchema = z.object({
@@ -121,28 +121,47 @@ export default function RedBloodCellCountEffectOnVO2MaxCalculator() {
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: RBC, Hemoglobin & VO2 Max</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <p>Hemoglobin concentration largely determines blood oxygen carrying capacity. RBC count correlates with hemoglobin and total red cell mass.</p>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Adequate iron and B12 are essential for erythropoiesis.</li>
-              <li>Altitude exposure and endurance training can increase total hemoglobin mass.</li>
-              <li>Hydration status acutely alters measured concentrations.</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <ul className="space-y-1">
-              <li><a href="/category/health-fitness/vo2-max-calculator" className="text-primary underline">VO2 Max Calculator</a></li>
-              <li><a href="/category/health-fitness/vitamin-d-sun-exposure-calculator" className="text-primary underline">Vitamin D Sun Exposure</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Explore connected physiology</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Aerobic capacity baseline.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/capillary-density-estimator" className="text-primary hover:underline">Capillary Density</Link></h4><p className="text-sm text-muted-foreground">Peripheral oxygen delivery.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/myoglobin-oxygen-storage-calculator" className="text-primary hover:underline">Myoglobin O₂ Storage</Link></h4><p className="text-sm text-muted-foreground">Intramuscular reserve.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/altitude-acclimatization-oxygen-need-calculator" className="text-primary hover:underline">Altitude O₂ Need</Link></h4><p className="text-sm text-muted-foreground">Training at elevation.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader><CardTitle>Complete Guide: RBC, Hemoglobin & VO₂ Max</CardTitle></CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>SEO‑oriented explanations</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['How do hemoglobin and RBC affect VO₂ Max?', 'They determine blood oxygen carrying capacity. Higher hemoglobin and total red cell mass can raise the ceiling for aerobic performance.'],
+            ['What is a typical hemoglobin level?', 'Around 15 g/dL for many adults; hydration, sex, altitude, and lab methods influence results.'],
+            ['Can training raise hemoglobin?', 'Endurance training, especially at altitude, can increase total hemoglobin mass over time.'],
+            ['Do supplements help?', 'Only if a deficiency exists. Iron and B12 should be targeted based on testing and clinical advice.'],
+            ['Why does hydration change readings?', 'Plasma volume shifts dilute or concentrate blood, altering measured g/dL without changing red cell mass.'],
+            ['Is this calculator medical advice?', 'No—estimates are educational and should not replace clinical assessment or treatment.'],
+            ['How accurate is the adjustment?', 'It uses a simplified model emphasizing hemoglobin with a minor RBC contribution; individual physiology varies.'],
+            ['What else limits VO₂ Max?', 'Cardiac output, muscle oxidative capacity, and biomechanics are major determinants alongside hematology.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
     </div>
   );
 }

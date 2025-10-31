@@ -8,60 +8,44 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 import { Zap } from 'lucide-react';
 
+// Myoglobin stores ~1 O2 per molecule. Use mg/g of muscle and muscle mass estimate.
 const formSchema = z.object({
-  bodyMassKg: z.number().positive('Enter body mass in kg').optional(),
-  skeletalMusclePercent: z.number().min(10).max(60).optional(),
-  myoglobinConcMgPerG: z.number().min(2).max(10).optional(),
+  bodyMassKg: z.number().min(20).max(200).optional(),
+  bodyFatPercent: z.number().min(3).max(60).optional(),
+  myoglobinMgPerG: z.number().min(0.5).max(10).optional(), // mg/g wet muscle
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function MyoglobinOxygenStorageCalculator() {
-  const [result, setResult] = useState<{ totalMyoglobinG: number; o2StorageMl: number; interpretation: string; opinion: string } | null>(null);
-
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      bodyMassKg: undefined,
-      skeletalMusclePercent: undefined,
-      myoglobinConcMgPerG: undefined,
-    },
-  });
+  const [result, setResult] = useState<{ muscleMassKg: number; o2StoreMl: number; interpretation: string } | null>(null);
+  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { bodyMassKg: undefined, bodyFatPercent: undefined, myoglobinMgPerG: 1.5 } });
 
   const calculate = (v: FormValues) => {
-    if (v.bodyMassKg == null || v.skeletalMusclePercent == null || v.myoglobinConcMgPerG == null) return null;
-    const muscleMassKg = v.bodyMassKg * (v.skeletalMusclePercent / 100);
-    const muscleMassG = muscleMassKg * 1000;
-    const totalMyoglobinG = (v.myoglobinConcMgPerG / 1000) * muscleMassG;
-    // Approx 1 g myoglobin binds ~1.34 ml O2 similar to hemoglobin (simplified assumption)
-    const o2StorageMl = totalMyoglobinG * 1.34;
-    return { totalMyoglobinG, o2StorageMl };
+    if (v.bodyMassKg == null || v.bodyFatPercent == null || v.myoglobinMgPerG == null) return null;
+    const fatKg = v.bodyMassKg * (v.bodyFatPercent / 100);
+    const muscleKg = Math.max(0, v.bodyMassKg - fatKg) * 0.5; // approx 50% of FFM as muscle
+    // mg myoglobin per g muscle => g per kg: mg/g * 1000 g/kg / 1000 mg/g = g/kg == value
+    const gMyoglobinPerKg = v.myoglobinMgPerG; // since mg/g -> g/kg
+    const totalG = gMyoglobinPerKg * muscleKg;
+    // 1 mol O2 per mol myoglobin; approx 1.34 ml O2 per g Hb; for myoglobin similar order.
+    const o2Ml = totalG * 1.2 * 1000 / 1000; // rough 1.2 ml O2 per g myoglobin
+    return { muscleKg, o2Ml };
   };
 
-  const interpret = (o2Ml: number) => {
-    if (o2Ml > 700) return 'Very high myoglobin oxygen reserve, typical of highly trained endurance athletes.';
-    if (o2Ml >= 350) return 'Moderate to high oxygen reserve, supportive of sustained aerobic work.';
-    return 'Lower reserve; aerobic capacity may rely more on cardiovascular delivery than muscle stores.';
+  const interpret = (o2ml: number) => {
+    if (o2ml >= 500) return 'High intramuscular O₂ reserve supportive of sustained efforts and hypoxia tolerance.';
+    if (o2ml >= 200) return 'Moderate O₂ reserve; aerobic training may increase myoglobin content.';
+    return 'Lower O₂ storage; prioritize endurance volume and iron status to support adaptations.';
   };
 
-  const opinion = (o2Ml: number) => {
-    if (o2Ml > 700) return 'Great foundation—maintain with consistent endurance volume and occasional high-intensity efforts.';
-    if (o2Ml >= 350) return 'Good level—build with steady-state mileage, hills, and iron-rich nutrition.';
-    return 'Focus on progressive aerobic training and ensure adequate iron, B12, and recovery.';
-  };
-
-  const onSubmit = (values: FormValues) => {
-    const res = calculate(values);
-    if (!res) { setResult(null); return; }
-    setResult({
-      totalMyoglobinG: Math.round(res.totalMyoglobinG * 100) / 100,
-      o2StorageMl: Math.round(res.o2StorageMl * 100) / 100,
-      interpretation: interpret(res.o2StorageMl),
-      opinion: opinion(res.o2StorageMl),
-    });
+  const onSubmit = (v: FormValues) => {
+    const r = calculate(v);
+    if (!r) { setResult(null); return; }
+    setResult({ muscleMassKg: Math.round(r.muscleKg * 10) / 10, o2StoreMl: Math.round(r.o2Ml), interpretation: interpret(r.o2Ml) });
   };
 
   return (
@@ -72,85 +56,77 @@ export default function MyoglobinOxygenStorageCalculator() {
             <FormField control={form.control} name="bodyMassKg" render={({ field }) => (
               <FormItem>
                 <FormLabel>Body Mass (kg)</FormLabel>
-                <FormControl>
-                  <Input type="number" step="0.1" placeholder="Enter mass in kg" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
+                <FormControl><Input type="number" step="0.1" placeholder="e.g., 70" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                 <FormMessage />
               </FormItem>
             )} />
-            <FormField control={form.control} name="skeletalMusclePercent" render={({ field }) => (
+            <FormField control={form.control} name="bodyFatPercent" render={({ field }) => (
               <FormItem>
-                <FormLabel>Skeletal Muscle (% body mass)</FormLabel>
-                <FormControl>
-                  <Input type="number" step="0.1" placeholder="e.g., 40" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
+                <FormLabel>Body Fat (%)</FormLabel>
+                <FormControl><Input type="number" step="0.1" placeholder="e.g., 15" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                 <FormMessage />
               </FormItem>
             )} />
-            <FormField control={form.control} name="myoglobinConcMgPerG" render={({ field }) => (
+            <FormField control={form.control} name="myoglobinMgPerG" render={({ field }) => (
               <FormItem>
-                <FormLabel>Myoglobin Conc. (mg/g muscle)</FormLabel>
-                <FormControl>
-                  <Input type="number" step="0.1" placeholder="e.g., 4" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
+                <FormLabel>Myoglobin (mg/g muscle)</FormLabel>
+                <FormControl><Input type="number" step="0.1" placeholder="e.g., 1.5" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                 <FormMessage />
               </FormItem>
             )} />
           </div>
-          <Button type="submit">Estimate O2 Storage</Button>
+          <Button type="submit"><Zap className="h-4 w-4 mr-2" />Estimate O₂ Storage</Button>
         </form>
       </Form>
 
       {result && (
-        <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Zap className="h-8 w-8 text-primary" />
-                <CardTitle>Myoglobin Oxygen Reserve</CardTitle>
-              </div>
-              <CardDescription>Estimated oxygen bound in muscle myoglobin</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <p className="text-3xl font-bold text-primary">{result.o2StorageMl} ml O2</p>
-              <p className="text-muted-foreground">Total myoglobin: {result.totalMyoglobinG} g</p>
-              <p className="text-muted-foreground">{result.interpretation}</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader><CardTitle>Our Opinion</CardTitle></CardHeader>
-            <CardContent><p className="text-muted-foreground">{result.opinion}</p></CardContent>
-          </Card>
-        </div>
+        <Card>
+          <CardHeader><CardTitle>Intramuscular Oxygen Storage</CardTitle><CardDescription>Estimated reserve from myoglobin</CardDescription></CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center p-6 bg-primary/5 rounded-lg"><p className="text-sm text-muted-foreground mb-1">Muscle Mass</p><p className="text-3xl font-bold text-primary">{result.muscleMassKg} kg</p></div>
+              <div className="text-center p-6 bg-muted/50 rounded-lg"><p className="text-sm text-muted-foreground mb-1">O₂ Storage</p><p className="text-2xl font-bold">{result.o2StoreMl} ml</p></div>
+              <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg"><p className="text-sm text-muted-foreground mb-1">Summary</p><p className="text-sm">{result.interpretation}</p></div>
+            </div>
+          </CardContent>
+        </Card>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: Myoglobin & Oxygen Storage</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <h4 className="font-semibold text-foreground">What This Estimates</h4>
-            <p>Myoglobin in skeletal muscle binds oxygen and facilitates intramuscular transport, supporting aerobic metabolism during exercise.</p>
-            <h4 className="font-semibold text-foreground">Factors That Increase Reserve</h4>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Higher muscle mass and slow-twitch fiber proportion</li>
-              <li>Endurance training adaptations and altitude exposure</li>
-              <li>Nutritional adequacy, especially iron status</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <ul className="space-y-1">
-              <li><a href="/category/health-fitness/vo2-max-calculator" className="text-primary underline">VO2 Max Calculator</a></li>
-              <li><a href="/category/health-fitness/hemoglobin-level-impact-calculator" className="text-primary underline">Hemoglobin Impact Calculator</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Link physiology to performance</CardDescription></CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Cardiorespiratory ceiling.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/oxygen-cost-per-watt-efficiency-calculator" className="text-primary hover:underline">O₂ Cost per Watt</Link></h4><p className="text-sm text-muted-foreground">Movement efficiency proxy.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/red-blood-cell-count-effect-on-vo2-max-calculator" className="text-primary hover:underline">RBC → VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">O₂ transport capacity.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/capillary-density-estimator" className="text-primary hover:underline">Capillary Density</Link></h4><p className="text-sm text-muted-foreground">Diffusion & delivery.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader><CardTitle>Complete Guide to Myoglobin & O₂ Storage</CardTitle></CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader><CardTitle>Frequently Asked Questions</CardTitle><CardDescription>SEO‑optimized answers about myoglobin</CardDescription></CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['What does myoglobin do?', 'Myoglobin binds oxygen inside muscle cells, acting as a local reserve and facilitating diffusion to mitochondria.'],
+            ['Can training increase myoglobin?', 'Endurance training can modestly increase myoglobin content along with mitochondrial density.'],
+            ['Typical myoglobin values?', 'Skeletal muscle ranges around 1–3 mg/g; values vary by fiber type and species.'],
+            ['How is O₂ storage useful?', 'Higher storage buffers transient drops in O₂, supporting sustained aerobic metabolism.'],
+            ['Nutrition considerations?', 'Adequate iron and overall energy availability support myoglobin synthesis.'],
+            ['Difference vs hemoglobin?', 'Hemoglobin transports O₂ in blood; myoglobin stores and shuttles O₂ within muscle.'],
+            ['Impact on performance?', 'Greater myoglobin may aid repeated efforts and hypoxic tolerance but does not replace high VO₂ Max.'],
+            ['Is this a medical diagnostic?', 'No—this estimator is for educational planning and should not guide medical decisions.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
-
-

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+ 
 import { Zap } from 'lucide-react';
 
 const formSchema = z.object({
@@ -115,27 +115,48 @@ export default function PhysicalTherapyExerciseLoadCalculator() {
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide: Loading in Physical Therapy</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-3">
-            <ul className="list-disc list-inside space-y-1">
-              <li>Keep pain under control and monitor next-day response.</li>
-              <li>Progress one variable at a time: load, volume, or complexity.</li>
-              <li>Emphasize tempo, control, and range of motion.</li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <ul className="space-y-1">
-              <li><a href="/category/health-fitness/range-of-motion-progress-calculator" className="text-primary underline">Range of Motion Progress</a></li>
-              <li><a href="/category/health-fitness/one-rep-max-strength-calculator" className="text-primary underline">One Rep Max</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">Related Calculators</CardTitle>
+          <CardDescription>Useful tools for rehab planning</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/post-injury-mobility-progress-calculator" className="text-primary hover:underline">Mobility Progress</a></h4><p className="text-sm text-muted-foreground">Track ROM improvements over time.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/physical-therapy-session-intensity-calculator" className="text-primary hover:underline">Session Intensity</a></h4><p className="text-sm text-muted-foreground">Balance effort and symptoms.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide to Rehab Loading</CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
+          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>About rehab loading and pain scaling</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            ['What pain is acceptable?', 'Generally ≤3/10 during and after, and no next‑day flare beyond baseline.'],
+            ['How often should I progress?', 'Increase one variable (load, reps, sets) every 1–2 weeks if symptoms are stable.'],
+            ['Tempo recommendations?', 'Use slow eccentric (2–3 s) early; normalize as tolerance improves.'],
+            ['When to deload?', 'If pain or fatigue accumulates, reduce volume by ~30% for 1 week.'],
+            ['Is failure training appropriate?', 'Avoid true failure in rehab; stop with 2–3 reps in reserve.'],
+            ['How to choose exercises?', 'Start with simple, pain‑free patterns and progress to functional tasks.'],
+            ['Warm‑up guidance?', '5–10 minutes of light aerobic and mobility primes tissue.'],
+            ['How to manage swelling?', 'Prioritize range of motion and compression/elevation; limit heavy loading.'],
+            ['What if pain spikes next day?', 'Return to last tolerable step and progress more slowly.'],
+          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
