@@ -299,25 +299,113 @@ export default function OperatingMarginCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Operating Margin
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting operating margin
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Operating Margin is a key profitability ratio that measures how much profit a company makes on each dollar of sales after paying for variable costs of production but before paying interest or tax. It's calculated by dividing operating income by revenue and expressing the result as a percentage.
-          </p>
-          <p className="text-muted-foreground">
-            This metric is crucial for assessing operational efficiency and comparing companies within the same industry. A higher operating margin indicates better operational efficiency and stronger competitive positioning in the market.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Operating Margin Calculation, Interpretation, and Core Profitability Analysis" />
+    <meta itemProp="description" content="An expert guide detailing the Operating Margin formula, its role in assessing a company's core operational profitability and efficiency, its comparison to Net Margin and Gross Margin, and its use in benchmarking and competitive analysis." />
+    <meta itemProp="keywords" content="operating margin formula explained, calculating operating profit margin, EBIT margin analysis, core profitability metric, sales efficiency ratio, gross margin vs operating margin" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-02" /> 
+    <meta itemProp="url" content="/definitive-operating-margin-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Operating Margin: Measuring Core Operational Profitability</h1>
+    <p className="text-lg italic text-gray-700">Master the essential metric that reveals how efficiently a company converts its revenue into pure profit before accounting for financing costs and taxes.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Operating Margin: Definition and Significance</a></li>
+        <li><a href="#calculation" className="hover:underline">The Operating Margin Formula and Components</a></li>
+        <li><a href="#comparison" className="hover:underline">Comparison to Gross Margin and Net Margin</a></li>
+        <li><a href="#interpretation" className="hover:underline">Interpreting the Margin and Industry Benchmarks</a></li>
+        <li><a href="#management" className="hover:underline">Operational Efficiency and Margin Management</a></li>
+    </ul>
+<hr />
+
+    {/* OPERATING MARGIN: DEFINITION AND SIGNIFICANCE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Operating Margin: Definition and Significance</h2>
+    <p>The **Operating Margin** is a key profitability ratio that measures the percentage of revenue remaining after deducting the Cost of Goods Sold (COGS) and all operating expenses (SG&A, R&D). It reflects a company's ability to generate income from its core business operations alone.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Core Operations</h3>
+    <p>The Operating Margin is considered a purer measure of management's efficiency than Net Margin because it excludes costs and revenues outside of the main business activities. Specifically, it ignores the impact of:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Financing:** Interest expense and interest income.</li>
+        <li>**Taxes:** Corporate income tax rates.</li>
+        <li>**Non-Operating Items:** Gains or losses from selling assets.</li>
+    </ul>
+    <p>By excluding these external factors, the Operating Margin provides a clean, apples-to-apples comparison of the efficiency of different business units or competitors.</p>
+
+<hr />
+
+    {/* THE OPERATING MARGIN FORMULA AND COMPONENTS */}
+    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Operating Margin Formula and Components</h2>
+    <p>The Operating Margin is calculated by dividing the Operating Income by Net Sales (Revenue).</p>
+    
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Operating Margin = (Operating Income / Net Sales) * 100'}
+        </p>
+    </div>
+    
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Operating Income (EBIT)</h3>
+    <p>**Operating Income** is synonymous with Earnings Before Interest and Taxes (**EBIT**). It is calculated by taking Gross Profit and subtracting all Operating Expenses:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Operating Income = Gross Profit - Operating Expenses (SG&A + R&D)'}
+        </p>
+    </div>
+    <p>Operating Expenses include Selling, General, and Administrative expenses (SG&A), such as salaries, rent, marketing, and Research and Development (R&D).</p>
+
+<hr />
+
+    {/* COMPARISON TO GROSS MARGIN AND NET MARGIN */}
+    <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Comparison to Gross Margin and Net Margin</h2>
+    <p>The Operating Margin sits between the Gross Margin and the Net Margin on the Income Statement, providing a focused view of efficiency at different stages of the value chain.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Gross Margin (Efficiency of Production)</h3>
+    <p>Gross Margin measures profitability *before* operating expenses. It reveals the core markup on goods sold and the efficiency of the production process (Cost of Goods Sold). A company can have a high Gross Margin but a poor Operating Margin if its overhead is too high.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Net Margin (Final Bottom Line)</h3>
+    <p>Net Margin measures the final profit percentage after **all** expenses are paid, including interest and taxes. While Net Margin is the final measure of overall profitability, Operating Margin is a better predictor of **future performance** because it focuses on core, repeatable efficiency, independent of non-operating costs like debt and tax strategy.</p>
+    <p>The sequential relationship is: **Gross Margin** $\to$ **Operating Margin** $\to$ **Net Margin**.</p>
+
+<hr />
+
+    {/* INTERPRETING THE MARGIN AND INDUSTRY BENCHMARKS */}
+    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the Margin and Industry Benchmarks</h2>
+    <p>A higher Operating Margin is almost always desirable, as it indicates better operational leverage and superior management efficiency. Interpretation must be done relative to industry norms.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation Guidelines</h3>
+    <ul className="list-disc ml-6 space-y-2">
+    <li><strong className="font-semibold">High Margin:</strong> Indicates strong pricing power (ability to charge high prices) or excellent cost control. Common in high-value industries like software (often &gt;25%).</li>
+    <li><strong className="font-semibold">Low Margin:</strong> Indicates high competitive pressure and low pricing power. Common in large-volume, low-markup industries like grocery retail (often &lt;5%).</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Benchmarking and Competitive Analysis</h3>
+    <p>The Operating Margin is the most effective metric for comparing competitors because it eliminates distortions caused by differences in capital structure (debt load) and geographic tax rates. If Company A has a 15% Operating Margin and Company B has 10%, Company A is generating more core profit per dollar of sales, regardless of their debt levels.</p>
+
+<hr />
+
+    {/* OPERATIONAL EFFICIENCY AND MARGIN MANAGEMENT */}
+    <h2 id="management" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Operational Efficiency and Margin Management</h2>
+    <p>Management actively seeks to improve the Operating Margin through strategic control of two levers: pricing and operational expenses.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Strategies for Margin Expansion</h3>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Price Optimization:</strong> Increasing sales prices without losing significant volume (requires product differentiation or market dominance).</li>
+        <li><strong className="font-semibold">Cost of Goods Sold (COGS) Reduction:</strong> Negotiating lower input costs, improving supply chain efficiency, or optimizing manufacturing processes.</li>
+        <li><strong className="font-semibold">Scaling SG&A:</strong> Achieving operational leverage by growing revenue faster than fixed operating costs (SG&A). For example, doubling sales without doubling the rent or administrative staff significantly boosts the operating margin.</li>
+    </ol>
+    <p>Continuous margin improvement is the clearest sign of a successful business model and effective management.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Operating Margin is the crucial profitability metric that isolates the efficiency of a company’s **core business model**, calculated by dividing Operating Income (EBIT) by Net Sales.</p>
+    <p>The resulting percentage reveals how effectively management controls costs and extracts profit from every dollar of revenue before external factors intervene. It is the preferred metric for **competitive benchmarking**, as it provides a clean, repeatable measure of operational prowess independent of debt and tax strategies.</p>
+</section>
 
       <Card>
         <CardHeader>

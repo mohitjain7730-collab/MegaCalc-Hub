@@ -299,25 +299,104 @@ export default function FreeCashFlowCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Free Cash Flow
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting free cash flow
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Free Cash Flow (FCF) is one of the most important financial metrics for evaluating a company's financial health and investment potential. It represents the cash that a company generates after accounting for cash outflows to support operations and maintain its capital assets.
-          </p>
-          <p className="text-muted-foreground">
-            Understanding FCF helps investors, creditors, and management assess the company's ability to generate cash, fund growth initiatives, pay dividends, and reduce debt. A positive FCF indicates strong operational efficiency and financial flexibility.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Free Cash Flow (FCF): Calculation, Types, and Valuation" />
+    <meta itemProp="description" content="An expert guide detailing the Free Cash Flow (FCF) formula, the difference between FCFE and FCFF, its role as the core input for DCF valuation, and its significance as a measure of corporate financial health and internal financing capacity." />
+    <meta itemProp="keywords" content="free cash flow formula explained, calculating FCF, FCFF vs FCFE, sustainable growth metric, DCF input FCF, cash flow analysis corporate finance, capital expenditure net income" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-02" /> 
+    <meta itemProp="url" content="/definitive-free-cash-flow-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Free Cash Flow (FCF): The True Measure of Corporate Value</h1>
+    <p className="text-lg italic text-gray-700">Master the critical metric that quantifies the cash available to a company's investors after all necessary operational and capital expenses are paid.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">FCF: Definition and Core Significance</a></li>
+        <li><a href="#fcff-fcfe" className="hover:underline">Two Primary Types: FCFF and FCFE</a></li>
+        <li><a href="#calculation-fcff" className="hover:underline">Calculating Free Cash Flow to Firm (FCFF)</a></li>
+        <li><a href="#calculation-fcfe" className="hover:underline">Calculating Free Cash Flow to Equity (FCFE)</a></li>
+        <li><a href="#applications" className="hover:underline">Role in Valuation and Growth Analysis</a></li>
+    </ul>
+
+<hr />
+
+    {/* FCF: DEFINITION AND CORE SIGNIFICANCE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FCF: Definition and Core Significance</h2>
+    <p>Free Cash Flow (FCF) is arguably the most important metric in financial analysis. It represents the actual cash a company generates that is available to be distributed to its debt and equity investors, either through dividends, debt repayment, or share buybacks, after funding all operations and necessary investments in fixed assets.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Why FCF is Superior to Net Income</h3>
+    <p>Net Income (profit) from the Income Statement can be misleading because it includes non-cash expenses (like depreciation and amortization) and excludes changes in working capital. FCF is a more accurate measure of a company’s financial health and solvency because it represents **real, spendable cash**.</p>
+    <p>If a company has high net income but low FCF, it usually means the profit is tied up in increasing inventory or accounts receivable, indicating poor quality earnings.</p>
+
+<hr />
+
+    {/* TWO PRIMARY TYPES: FCFF AND FCFE */}
+    <h2 id="fcff-fcfe" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Two Primary Types: FCFF and FCFE</h2>
+    <p>FCF is calculated in two primary forms, depending on whether the analyst is valuing the entire firm or just the equity portion of the firm.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Free Cash Flow to Firm (FCFF)</h3>
+    <p>FCFF is the cash flow available to **all investors** (both debt holders and equity holders). It is the standard input used when valuing the entire company (Enterprise Value) because it measures the total cash generated before any financing decisions (interest payments) are factored in.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Free Cash Flow to Equity (FCFE)</h3>
+    <p>FCFE is the cash flow available only to **equity holders** (shareholders), as it is calculated *after* all debt obligations (principal and interest payments) have been paid. FCFE is the correct input for determining Equity Value or for models that calculate dividends.</p>
+
+<hr />
+
+    {/* CALCULATING FREE CASH FLOW TO FIRM (FCFF) */}
+    <h2 id="calculation-fcff" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Free Cash Flow to Firm (FCFF)</h2>
+    <p>FCFF can be calculated from Net Income or, more commonly in corporate finance, from Earnings Before Interest and Taxes (EBIT), as this approach maintains the separation of operating and financing decisions.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The FCFF Formula (from EBIT)</h3>
+    <p>This method starts with operating profit and adjusts for non-cash items and required investments:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'FCFF = EBIT * (1 - T) + D&A - CapEx - Increase in NWC'}
+        </p>
+    </div>
+    <p>Where T is the tax rate, D&A is Depreciation and Amortization, CapEx is Capital Expenditures, and NWC is Net Working Capital. The term (EBIT $\times$ (1-T) is often called Net Operating Profit After Taxes (NOPAT).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Capital Expenditures (CapEx)</h3>
+    <p>CapEx represents the investment required to maintain or expand the company's long-term fixed assets (Property, Plant, and Equipment). It is a necessary cash outflow that is subtracted to arrive at FCF. Only cash flows remaining *after* this necessary investment are considered "free."</p>
+
+<hr />
+
+    {/* CALCULATING FREE CASH FLOW TO EQUITY (FCFE) */}
+    <h2 id="calculation-fcfe" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Free Cash Flow to Equity (FCFE)</h2>
+    <p>FCFE can be derived directly from FCFF or calculated independently from Net Income. It accounts for all obligations to lenders.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The FCFE Formula (from Net Income)</h3>
+    <p>This formula starts at the bottom line of the Income Statement and makes the necessary non-cash adjustments:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'FCFE = Net Income + D&A - CapEx - Increase in NWC + Net Borrowing'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Net Borrowing Factor</h3>
+    <p>The term "Net Borrowing" is the difference between new debt issued and old debt repaid (principal payments). This factor is crucial: increasing debt provides cash to equity holders (positive FCFE), while paying down debt consumes cash (negative FCFE). This step is what differentiates FCFE from FCFF.</p>
+
+<hr />
+
+    {/* ROLE IN VALUATION AND GROWTH ANALYSIS */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Valuation and Growth Analysis</h2>
+    <p>FCF is the core input for valuation and is a key indicator of a company's financial flexibility and growth potential.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Discounted Cash Flow (DCF) Valuation</h3>
+    <p>FCF is the fuel for the DCF model. Future FCF forecasts are discounted back to the present value (using the WACC for FCFF, or Cost of Equity for FCFE) to determine the company's **Intrinsic Value**. This is the most theoretically sound method of valuation, as it is based on the company's true cash-generating ability.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Sustainable Growth Rate (SGR)</h3>
+    <p>A positive, growing FCF is the true source of sustainable growth. Companies with high FCF can fund their expansion and innovation internally, reducing their reliance on expensive external financing (equity or debt issuance). This allows the company to reinvest and grow faster, providing a competitive advantage.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Free Cash Flow (FCF) is the definitive measure of a company's financial success, representing the true cash surplus available to investors after accounting for all operational and maintenance needs.</p>
+    <p>The distinction between **FCFF** (available to all capital providers) and **FCFE** (available only to equity holders) is critical for valuation. A consistent, positive FCF is the hallmark of a healthy, valuable enterprise, confirming the company generates high-quality earnings that fund internal growth and shareholder returns.</p>
+</section>
 
       <Card>
         <CardHeader>
