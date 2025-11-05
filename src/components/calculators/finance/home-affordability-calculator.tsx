@@ -224,6 +224,21 @@ export default function HomeAffordabilityCalculator() {
 
       <Card>
         <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Related Calculators</CardTitle>
+          <CardDescription>Home financing and affordability</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">Mortgage Payment</a></h4><p className="text-sm text-muted-foreground">Monthly principal and interest.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/loan-to-value-ltv-ratio-calculator" className="text-primary hover:underline">Loan‑to‑Value (LTV)</a></h4><p className="text-sm text-muted-foreground">Leverage vs property value.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/rent-vs-buy-home-calculator" className="text-primary hover:underline">Rent vs Buy</a></h4><p className="text-sm text-muted-foreground">Compare ownership to renting.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/house-down-payment-savings-calculator" className="text-primary hover:underline">Down Payment Savings</a></h4><p className="text-sm text-muted-foreground">Plan contributions to reach your goal.</p></div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
           <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Frequently Asked Questions</CardTitle>
           <CardDescription>SEO‑oriented answers about home affordability and mortgage budgeting</CardDescription>
         </CardHeader>

@@ -12,6 +12,96 @@ export interface Calculator {
 export const calculators: Calculator[] = [
   // Finance
   {
+    id: 4701,
+    name: 'Tangency Portfolio (Max Sharpe) Calculator',
+    description: 'Compute two-asset tangency portfolio weights that maximize Sharpe relative to a risk-free rate.',
+    slug: 'tangency-portfolio-calculator',
+    category: 'finance',
+    metaTitle: 'Tangency Portfolio (Max Sharpe) Calculator',
+    metaDescription: 'Find max Sharpe (tangency) portfolio weights from expected returns, volatilities, correlation, and risk-free rate.'
+  },
+  {
+    id: 4702,
+    name: 'Minimum Variance Portfolio Calculator',
+    description: 'Get the global minimum variance allocation for two assets from volatilities and correlation.',
+    slug: 'minimum-variance-portfolio-calculator',
+    category: 'finance',
+    metaTitle: 'Minimum Variance Portfolio Calculator',
+    metaDescription: 'Calculate the two-asset global minimum variance portfolio using volatilities and correlation.'
+  },
+  {
+    id: 4703,
+    name: 'Beta-weighted Portfolio Exposure Calculator',
+    description: 'Estimate overall portfolio beta to a benchmark from position weights and individual betas.',
+    slug: 'beta-weighted-portfolio-exposure-calculator',
+    category: 'finance',
+    metaTitle: 'Beta-weighted Portfolio Exposure Calculator',
+    metaDescription: 'Compute beta-weighted exposure to a benchmark using positions and their betas.'
+  },
+  {
+    id: 4704,
+    name: 'Portfolio Drawdown Calculator',
+    description: 'Measure maximum and current drawdown from a series of portfolio values or NAVs.',
+    slug: 'portfolio-drawdown-calculator',
+    category: 'finance',
+    metaTitle: 'Portfolio Drawdown Calculator',
+    metaDescription: 'Calculate maximum drawdown and current drawdown from a value series; review path interactively.'
+  },
+  {
+    id: 4705,
+    name: 'Risk Parity Portfolio Calculator',
+    description: 'Approximate inverse-volatility risk parity allocations across up to three assets.',
+    slug: 'risk-parity-portfolio-calculator',
+    category: 'finance',
+    metaTitle: 'Risk Parity Portfolio Calculator',
+    metaDescription: 'Compute inverse-volatility risk parity weights to balance risk contribution across assets.'
+  },
+  {
+    id: 10116,
+    name: 'Debt Service Coverage Ratio (DSCR) Calculator',
+    description: 'Assess property cash flow strength by comparing NOI to annual debt service.',
+    slug: 'dscr-calculator',
+    category: 'finance',
+    metaTitle: 'DSCR Calculator - Debt Service Coverage Ratio for Real Estate',
+    metaDescription: 'Calculate DSCR from NOI and debt service to evaluate loan coverage and lender readiness.',
+  },
+  {
+    id: 10117,
+    name: 'Gross Rent Multiplier (GRM) Calculator',
+    description: 'Benchmark property price against annual gross rent using GRM.',
+    slug: 'gross-rent-multiplier-grm-calculator',
+    category: 'finance',
+    metaTitle: 'GRM Calculator - Gross Rent Multiplier for Rental Property',
+    metaDescription: 'Compute GRM quickly to screen rental properties and compare to local market norms.',
+  },
+  {
+    id: 10118,
+    name: 'Real Estate Sensitivity (Cap Rate Change) Calculator',
+    description: 'Estimate value change given basis‑point moves in capitalization rates.',
+    slug: 'real-estate-cap-rate-sensitivity-calculator',
+    category: 'finance',
+    metaTitle: 'Cap Rate Sensitivity Calculator - Real Estate Valuation',
+    metaDescription: 'Model property value impact from cap rate changes using NOI and basis‑point scenarios.',
+  },
+  {
+    id: 10119,
+    name: 'Efficient Frontier Portfolio Calculator (Multi-Asset)',
+    description: 'Find the minimum‑variance mix of two assets and explore correlation effects.',
+    slug: 'efficient-frontier-portfolio-calculator',
+    category: 'finance',
+    metaTitle: 'Efficient Frontier Calculator - Minimum‑Variance Mix and Diversification',
+    metaDescription: 'Compute min‑variance weights and see how correlation affects portfolio risk.',
+  },
+  {
+    id: 10120,
+    name: 'Mean-Variance Optimization Calculator',
+    description: 'Solve two‑asset weights to reach a target expected return with minimal variance.',
+    slug: 'mean-variance-optimization-calculator',
+    category: 'finance',
+    metaTitle: 'Mean‑Variance Optimization Calculator - Target Return Weights',
+    metaDescription: 'Calculate portfolio weights for a desired expected return using mean‑variance theory.',
+  },
+  {
     id: 10111,
     name: 'Home Affordability Calculator',
     description: 'Estimate the maximum home price you can afford based on income, debts, down payment, and loan terms.',

@@ -159,6 +159,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'rental-yield-calculator': dynamic(() => import('@/components/calculators/finance/rental-yield-calculator')),
     'cash-flow-after-tax-cfat-calculator': dynamic(() => import('@/components/calculators/finance/cash-flow-after-tax-cfat-calculator')),
     'loan-to-value-ltv-ratio-calculator': dynamic(() => import('@/components/calculators/finance/loan-to-value-ltv-ratio-calculator')),
+    'dscr-calculator': dynamic(() => import('@/components/calculators/finance/dscr-calculator')),
+    'gross-rent-multiplier-grm-calculator': dynamic(() => import('@/components/calculators/finance/gross-rent-multiplier-grm-calculator')),
+    'real-estate-cap-rate-sensitivity-calculator': dynamic(() => import('@/components/calculators/finance/real-estate-cap-rate-sensitivity-calculator')),
+    'efficient-frontier-portfolio-calculator': dynamic(() => import('@/components/calculators/finance/efficient-frontier-portfolio-calculator')),
+    'mean-variance-optimization-calculator': dynamic(() => import('@/components/calculators/finance/mean-variance-optimization-calculator')),
     'beta-adjusted-portfolio-return-calculator': dynamic(() => import('@/components/calculators/finance/beta-adjusted-portfolio-return-calculator')),
     'optimal-portfolio-allocation-two-asset-calculator': dynamic(() => import('@/components/calculators/finance/optimal-portfolio-allocation-two-asset-calculator')),
     'efficient-frontier-visualizer': dynamic(() => import('@/components/calculators/finance/efficient-frontier-visualizer')),
@@ -717,6 +722,12 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'rental-property-cap-rate-calculator': dynamic(() => import('@/components/calculators/finance/rental-property-cap-rate-calculator')),
     'real-estate-cash-on-cash-return-calculator': dynamic(() => import('@/components/calculators/finance/real-estate-cash-on-cash-return-calculator')),
     'graduated-payment-mortgage-calculator': dynamic(() => import('@/components/calculators/finance/graduated-payment-mortgage-calculator')),
+    // New Finance: Portfolio analytics
+    'tangency-portfolio-calculator': dynamic(() => import('@/components/calculators/finance/tangency-portfolio-calculator')),
+    'minimum-variance-portfolio-calculator': dynamic(() => import('@/components/calculators/finance/minimum-variance-portfolio-calculator')),
+    'beta-weighted-portfolio-exposure-calculator': dynamic(() => import('@/components/calculators/finance/beta-weighted-portfolio-exposure-calculator')),
+    'portfolio-drawdown-calculator': dynamic(() => import('@/components/calculators/finance/portfolio-drawdown-calculator')),
+    'risk-parity-portfolio-calculator': dynamic(() => import('@/components/calculators/finance/risk-parity-portfolio-calculator')),
 };
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {
