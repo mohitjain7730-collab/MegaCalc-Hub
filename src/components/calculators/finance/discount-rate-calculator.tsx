@@ -384,7 +384,7 @@ export default function DiscountRateCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Discount Rate: Calculation, WACC, and Risk Assessment in Valuation" />
     <meta itemProp="description" content="An expert guide detailing the concept of the Discount Rate, its fundamental role in Present Value (PV) and Net Present Value (NPV), methods for its calculation (WACC, CAPM), and its function as the required rate of return that accounts for risk." />
@@ -394,11 +394,11 @@ export default function DiscountRateCalculator() {
     <meta itemProp="url" content="/definitive-discount-rate-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Discount Rate: Quantifying Risk and Opportunity Cost in Valuation</h1>
-    <p className="text-lg italic text-gray-700">Master the single most critical variable in financial modeling that determines the current worth of future cash flows.</p>
+    <p className="text-lg italic text-muted-foreground">Master the single most critical variable in financial modeling that determines the current worth of future cash flows.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#concept" className="hover:underline">Discount Rate: Definition and Economic Function</a></li>
         <li><a href="#lump-sum" className="hover:underline">Role in Present Value (PV) and Valuation</a></li>
         <li><a href="#wacc" className="hover:underline">Corporate Finance: The Weighted Average Cost of Capital (WACC)</a></li>
@@ -431,8 +431,8 @@ export default function DiscountRateCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">PV of a Single Cash Flow</h3>
     <p>The core formula for discounting a single future lump sum demonstrates the inverse relationship between the discount rate and Present Value:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV = FV / (1 + r)^n'}
         </p>
     </div>
@@ -441,8 +441,8 @@ export default function DiscountRateCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">PV of a Perpetuity</h3>
     <p>In the valuation of assets that generate infinite cash flows (perpetuities), the discount rate is the sole determinant of value, highlighting its absolute power in modeling:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV = Cash Flow / r'}
         </p>
     </div>
@@ -455,8 +455,8 @@ export default function DiscountRateCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">WACC Mechanics</h3>
     <p>WACC is the weighted average of the costs of all sources of long-term funding—debt, preferred stock, and common equity. It reflects the average rate the company pays to finance its assets.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
         </p>
     </div>
@@ -479,8 +479,8 @@ export default function DiscountRateCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The CAPM Formula</h3>
     <p>CAPM links a project's systematic (non-diversifiable) risk to its required rate of return:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Re = Rf + Beta * (Rm - Rf)'}
         </p>
     </div>

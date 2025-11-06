@@ -299,7 +299,7 @@ export default function OperatingMarginCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Operating Margin Calculation, Interpretation, and Core Profitability Analysis" />
     <meta itemProp="description" content="An expert guide detailing the Operating Margin formula, its role in assessing a company's core operational profitability and efficiency, its comparison to Net Margin and Gross Margin, and its use in benchmarking and competitive analysis." />
@@ -309,11 +309,11 @@ export default function OperatingMarginCalculator() {
     <meta itemProp="url" content="/definitive-operating-margin-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Operating Margin: Measuring Core Operational Profitability</h1>
-    <p className="text-lg italic text-gray-700">Master the essential metric that reveals how efficiently a company converts its revenue into pure profit before accounting for financing costs and taxes.</p>
+    <p className="text-lg italic text-muted-foreground">Master the essential metric that reveals how efficiently a company converts its revenue into pure profit before accounting for financing costs and taxes.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Operating Margin: Definition and Significance</a></li>
         <li><a href="#calculation" className="hover:underline">The Operating Margin Formula and Components</a></li>
         <li><a href="#comparison" className="hover:underline">Comparison to Gross Margin and Net Margin</a></li>
@@ -341,8 +341,8 @@ export default function OperatingMarginCalculator() {
     <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Operating Margin Formula and Components</h2>
     <p>The Operating Margin is calculated by dividing the Operating Income by Net Sales (Revenue).</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Operating Margin = (Operating Income / Net Sales) * 100'}
         </p>
     </div>
@@ -350,8 +350,8 @@ export default function OperatingMarginCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Operating Income (EBIT)</h3>
     <p>**Operating Income** is synonymous with Earnings Before Interest and Taxes (**EBIT**). It is calculated by taking Gross Profit and subtracting all Operating Expenses:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Operating Income = Gross Profit - Operating Expenses (SG&A + R&D)'}
         </p>
     </div>

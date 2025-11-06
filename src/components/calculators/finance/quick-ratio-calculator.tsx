@@ -439,21 +439,21 @@ export default function QuickRatioCalculator() {
       </Card>
 
       {/* Complete Guide Section */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Quick Ratio (Acid-Test): Calculation, Interpretation, and Liquidity Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the Quick Ratio formula, its role in assessing a company’s immediate (or 'acid-test') short-term liquidity, interpreting ideal and dangerous thresholds, and its comparison to the less stringent Current Ratio." />
+    <meta itemProp="description" content="An expert guide detailing the Quick Ratio formula, its role in assessing a company's immediate (or 'acid-test') short-term liquidity, interpreting ideal and dangerous thresholds, and its comparison to the less stringent Current Ratio." />
     <meta itemProp="keywords" content="quick ratio formula explained, calculating acid-test ratio, immediate liquidity analysis, most liquid assets finance, ideal quick ratio threshold, current ratio vs quick ratio, solvency analysis" />
     <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
     <meta itemProp="datePublished" content="2025-10-25" /> 
     <meta itemProp="url" content="/definitive-quick-ratio-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Quick Ratio (Acid-Test): Measuring Immediate Liquidity</h1>
-    <p className="text-lg italic text-gray-700">Master the critical solvency metric that assesses a company’s ability to cover its short-term debts without relying on the sale of inventory.</p>
+    <p className="text-lg italic text-muted-foreground">Master the critical solvency metric that assesses a company's ability to cover its short-term debts without relying on the sale of inventory.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Quick Ratio: Definition and Core Purpose</a></li>
         <li><a href="#calculation" className="hover:underline">The Quick Ratio Formula and Components</a></li>
         <li><a href="#interpretation" className="hover:underline">Interpreting the Ratio and Ideal Thresholds</a></li>
@@ -481,15 +481,15 @@ export default function QuickRatioCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The formula for the Quick Ratio is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Quick Ratio = Quick Assets / Total Current Liabilities'}
         </p>
     </div>
     
     <p>The calculation can also be expressed as:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Quick Ratio = (Current Assets - Inventory - Prepaid Expenses) / Total Current Liabilities'}
         </p>
     </div>

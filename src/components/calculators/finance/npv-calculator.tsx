@@ -394,7 +394,7 @@ export default function NpvCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Net Present Value (NPV): Calculation, Interpretation, and Capital Budgeting" />
     <meta itemProp="description" content="An expert guide to the Net Present Value (NPV) method, detailing the formula for discounting cash flows, selecting the appropriate discount rate, and its use as the superior decision rule in corporate capital budgeting." />
@@ -404,11 +404,11 @@ export default function NpvCalculator() {
     <meta itemProp="url" content="/definitive-net-present-value-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Present Value (NPV): The Superior Capital Budgeting Rule</h1>
-    <p className="text-lg italic text-gray-700">Master the foundation of corporate investment—the metric that quantifies the true economic profit or loss of a project in today's dollars.</p>
+    <p className="text-lg italic text-muted-foreground">Master the foundation of corporate investment—the metric that quantifies the true economic profit or loss of a project in today's dollars.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#concept" className="hover:underline">NPV Concept and the Time Value of Money</a></li>
         <li><a href="#calculation" className="hover:underline">The Net Present Value Formula and Mechanics</a></li>
         <li><a href="#discount-rate" className="hover:underline">Selecting the Discount Rate (WACC)</a></li>
@@ -436,8 +436,8 @@ export default function NpvCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Core Formula</h3>
     <p>For a project with a fixed initial cost and multiple subsequent cash flows, the formula is:</p>
     
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'NPV = Sum [ CF_t / (1 + r)^t ] - Initial Investment'}
         </p>
     </div>

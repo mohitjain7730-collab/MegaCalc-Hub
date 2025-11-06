@@ -21,6 +21,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Find max Sharpe (tangency) portfolio weights from expected returns, volatilities, correlation, and risk-free rate.'
   },
   {
+    id: 4710,
+    name: 'Portfolio Correlation Heatmap Tool',
+    description: 'Visualize pairwise correlations between assets and identify clusters driving portfolio risk.',
+    slug: 'portfolio-correlation-heatmap-tool',
+    category: 'finance',
+    metaTitle: 'Portfolio Correlation Heatmap Tool',
+    metaDescription: 'Generate a correlation heatmap for multiple assets to spot diversification opportunities and risk clusters.'
+  },
+  {
+    id: 4711,
+    name: 'Capital Market Line (CML) Calculator',
+    description: 'Compute CML slope and expected returns at target volatility given risk-free rate and market stats.',
+    slug: 'capital-market-line-calculator',
+    category: 'finance',
+    metaTitle: 'Capital Market Line (CML) Calculator',
+    metaDescription: 'Calculate expected return on the CML for a target risk, given market return, market volatility, and risk-free rate.'
+  },
+  {
+    id: 4712,
+    name: 'Security Market Line (SML) Calculator',
+    description: 'Estimate expected return using CAPM given beta, risk-free rate, and market return.',
+    slug: 'security-market-line-calculator',
+    category: 'finance',
+    metaTitle: 'Security Market Line (SML) Calculator',
+    metaDescription: 'Use CAPM to compute expected return for a given beta along the SML using market risk premium and risk-free rate.'
+  },
+  {
+    id: 4713,
+    name: 'Tracking Difference Calculator',
+    description: 'Measure average return difference between a fund and its benchmark over time.',
+    slug: 'tracking-difference-calculator',
+    category: 'finance',
+    metaTitle: 'Tracking Difference Calculator',
+    metaDescription: 'Calculate tracking difference between a portfolio or ETF and its benchmark with summary statistics and interpretation.'
+  },
+  {
+    id: 4714,
+    name: 'Style Drift Analyzer (Portfolio vs Benchmark)',
+    description: 'Compare portfolio factor exposures to a benchmark to identify potential style drift.',
+    slug: 'style-drift-analyzer',
+    category: 'finance',
+    metaTitle: 'Style Drift Analyzer (Portfolio vs Benchmark)',
+    metaDescription: 'Analyze portfolio vs benchmark factor exposures to detect style drift with intuitive interpretation.'
+  },
+  {
     id: 4702,
     name: 'Minimum Variance Portfolio Calculator',
     description: 'Get the global minimum variance allocation for two assets from volatilities and correlation.',

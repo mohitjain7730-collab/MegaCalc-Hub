@@ -728,6 +728,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'beta-weighted-portfolio-exposure-calculator': dynamic(() => import('@/components/calculators/finance/beta-weighted-portfolio-exposure-calculator')),
     'portfolio-drawdown-calculator': dynamic(() => import('@/components/calculators/finance/portfolio-drawdown-calculator')),
     'risk-parity-portfolio-calculator': dynamic(() => import('@/components/calculators/finance/risk-parity-portfolio-calculator')),
+    'portfolio-correlation-heatmap-tool': dynamic(() => import('@/components/calculators/finance/portfolio-correlation-heatmap-tool')),
+    'capital-market-line-calculator': dynamic(() => import('@/components/calculators/finance/capital-market-line-calculator')),
+    'security-market-line-calculator': dynamic(() => import('@/components/calculators/finance/security-market-line-calculator')),
+    'tracking-difference-calculator': dynamic(() => import('@/components/calculators/finance/tracking-difference-calculator')),
+    'style-drift-analyzer': dynamic(() => import('@/components/calculators/finance/style-drift-analyzer')),
 };
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {

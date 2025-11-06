@@ -476,7 +476,7 @@ export default function DcfCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Discounted Cash Flow (DCF) Valuation, Formulas, and Intrinsic Value" />
     <meta itemProp="description" content="An expert guide detailing the three core components of DCF: Free Cash Flow (FCF) forecasting, discounting using WACC, and Terminal Value calculation (Gordon Growth Model or Exit Multiple). The gold standard for business valuation." />
@@ -486,11 +486,11 @@ export default function DcfCalculator() {
     <meta itemProp="url" content="/definitive-dcf-valuation-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Discounted Cash Flow (DCF): Calculating Intrinsic Value</h1>
-    <p className="text-lg italic text-gray-700">Master the gold standard of business valuation, which converts a company's future potential into a single, concrete value today.</p>
+    <p className="text-lg italic text-muted-foreground">Master the gold standard of business valuation, which converts a company's future potential into a single, concrete value today.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#concept" className="hover:underline">DCF Core Concept and the Valuation Principle</a></li>
         <li><a href="#fcf" className="hover:underline">Step 1: Forecasting Free Cash Flow (FCF)</a></li>
         <li><a href="#dcf-formula" className="hover:underline">Step 2: The Core DCF Formula and Discounting</a></li>
@@ -523,8 +523,8 @@ export default function DcfCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">FCF to Firm (FCFF) vs. FCF to Equity (FCFE)</h3>
     <p>Most enterprise valuations use **FCF to Firm (FCFF)** because it represents the cash flow generated *before* any payments are made to providers of capital (both debt and equity). It is the standard input for an Enterprise Value calculation.</p>
     <p>The calculation for FCFF is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FCFF = EBIT * (1 - T) + D&A - CapEx - Increase in NWC'}
         </p>
     </div>
@@ -538,8 +538,8 @@ export default function DcfCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Discounting the Explicit Forecast Period</h3>
     <p>The Present Value (PV) of the explicit forecast period is the sum of the PV of each year's expected cash flow:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV_{Forecast} = Sum [ FCF_t / (1 + r)^t ]'}
         </p>
     </div>
@@ -553,8 +553,8 @@ export default function DcfCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Method 1: The Perpetuity (Gordon Growth) Model</h3>
     <p>The preferred method assumes the company will grow at a constant, sustainable rate (g) forever. This growth rate (g) must be less than the discount rate (r).</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'TV_n = FCF_{n+1} / (r - g)'}
         </p>
     </div>
@@ -562,16 +562,16 @@ export default function DcfCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Method 2: The Exit Multiple Method</h3>
     <p>This method estimates the TV based on the average valuation multiples (e.g., Enterprise Value/EBITDA) of comparable publicly traded companies. While simpler, it is less theoretically rigorous as it relies on current market sentiment:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'TV_n = EBITDA_n * Exit Multiple'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Final DCF Equation</h3>
     <p>The two parts are then summed and added to the Present Value of any non-operating assets (e.g., cash) to determine the total Enterprise Value (EV):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Enterprise Value = PV_{Forecast} + PV_{Terminal Value}'}
         </p>
     </div>
@@ -584,8 +584,8 @@ export default function DcfCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">WACC Formula</h3>
     <p>WACC serves as the minimum rate of return a project must achieve to satisfy both its creditors and shareholders:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
         </p>
     </div>
@@ -593,8 +593,8 @@ export default function DcfCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Equity Value</h3>
     <p>The final step in a DCF valuation is converting the calculated **Enterprise Value (EV)** to **Equity Value** (or Market Capitalization):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Equity Value = Enterprise Value + Cash - Debt'}
         </p>
     </div>

@@ -299,7 +299,7 @@ export default function FreeCashFlowCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Free Cash Flow (FCF): Calculation, Types, and Valuation" />
     <meta itemProp="description" content="An expert guide detailing the Free Cash Flow (FCF) formula, the difference between FCFE and FCFF, its role as the core input for DCF valuation, and its significance as a measure of corporate financial health and internal financing capacity." />
@@ -309,11 +309,11 @@ export default function FreeCashFlowCalculator() {
     <meta itemProp="url" content="/definitive-free-cash-flow-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Free Cash Flow (FCF): The True Measure of Corporate Value</h1>
-    <p className="text-lg italic text-gray-700">Master the critical metric that quantifies the cash available to a company's investors after all necessary operational and capital expenses are paid.</p>
+    <p className="text-lg italic text-muted-foreground">Master the critical metric that quantifies the cash available to a company's investors after all necessary operational and capital expenses are paid.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">FCF: Definition and Core Significance</a></li>
         <li><a href="#fcff-fcfe" className="hover:underline">Two Primary Types: FCFF and FCFE</a></li>
         <li><a href="#calculation-fcff" className="hover:underline">Calculating Free Cash Flow to Firm (FCFF)</a></li>
@@ -351,8 +351,8 @@ export default function FreeCashFlowCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The FCFF Formula (from EBIT)</h3>
     <p>This method starts with operating profit and adjusts for non-cash items and required investments:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FCFF = EBIT * (1 - T) + D&A - CapEx - Increase in NWC'}
         </p>
     </div>
@@ -369,8 +369,8 @@ export default function FreeCashFlowCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The FCFE Formula (from Net Income)</h3>
     <p>This formula starts at the bottom line of the Income Statement and makes the necessary non-cash adjustments:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FCFE = Net Income + D&A - CapEx - Increase in NWC + Net Borrowing'}
         </p>
     </div>

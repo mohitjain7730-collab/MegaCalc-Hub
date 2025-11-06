@@ -414,21 +414,21 @@ export default function CashConversionCycleCalculator() {
       </Card>
 
       {/* Complete Guide Section */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Cash Conversion Cycle (CCC): Formula, Interpretation, and Operational Efficiency" />
-    <meta itemProp="description" content="An expert guide detailing the Cash Conversion Cycle (CCC) formula, its components (DIO, DSO, DPO), interpretation of positive and negative cycles, and its role as the key metric for assessing a company’s operational liquidity and working capital management efficiency." />
+    <meta itemProp="description" content="An expert guide detailing the Cash Conversion Cycle (CCC) formula, its components (DIO, DSO, DPO), interpretation of positive and negative cycles, and its role as the key metric for assessing a company's operational liquidity and working capital management efficiency." />
     <meta itemProp="keywords" content="cash conversion cycle formula explained, calculating CCC, days inventory outstanding DIO, days sales outstanding DSO, days payables outstanding DPO, working capital efficiency, negative cash conversion cycle" />
     <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
     <meta itemProp="datePublished" content="2025-11-02" /> 
     <meta itemProp="url" content="/definitive-cash-conversion-cycle-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Cash Conversion Cycle (CCC): Measuring Operational Efficiency</h1>
-    <p className="text-lg italic text-gray-700">Master the crucial metric that quantifies the time it takes for a company to convert its investments in inventory and receivables back into cash flow.</p>
+    <p className="text-lg italic text-muted-foreground">Master the crucial metric that quantifies the time it takes for a company to convert its investments in inventory and receivables back into cash flow.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">CCC: Definition and Components of the Operating Cycle</a></li>
         <li><a href="#formula" className="hover:underline">The Cash Conversion Cycle Formula</a></li>
         <li><a href="#components" className="hover://underline">Calculating the Three Core Components (DIO, DSO, DPO)</a></li>
@@ -459,8 +459,8 @@ export default function CashConversionCycleCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The CCC is expressed in days and is calculated as:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'CCC = DIO + DSO - DPO'}
         </p>
     </div>
@@ -474,8 +474,8 @@ export default function CashConversionCycleCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Days Inventory Outstanding (DIO)</h3>
     <p>DIO measures the average number of days inventory sits in the company's possession before being sold. It measures the efficiency of inventory management.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'DIO = (Average Inventory / Cost of Goods Sold) * 365'}
         </p>
     </div>
@@ -483,8 +483,8 @@ export default function CashConversionCycleCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">2. Days Sales Outstanding (DSO)</h3>
     <p>DSO measures the average number of days it takes for a company to collect payment after a sale has been made (converting accounts receivable to cash). It measures the efficiency of credit and collection policies.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'DSO = (Average Accounts Receivable / Total Credit Sales) * 365'}
         </p>
     </div>
@@ -492,8 +492,8 @@ export default function CashConversionCycleCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">3. Days Payables Outstanding (DPO)</h3>
     <p>DPO measures the average number of days a company takes to pay its own suppliers (paying off accounts payable). This is the only component that reduces the CCC.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'DPO = (Average Accounts Payable / Cost of Goods Sold) * 365'}
         </p>
     </div>

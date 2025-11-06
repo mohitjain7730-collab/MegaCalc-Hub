@@ -392,21 +392,21 @@ export default function WorkingCapitalCalculator() {
       </Card>
 
       {/* Complete Guide Section */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Working Capital Calculation, Management, and Operational Liquidity" />
-    <meta itemProp="description" content="An expert guide detailing the Net Working Capital formula, its role in assessing a company’s operational liquidity, the difference between positive and negative working capital, and management strategies for cash flow efficiency." />
+    <meta itemProp="description" content="An expert guide detailing the Net Working Capital formula, its role in assessing a company's operational liquidity, the difference between positive and negative working capital, and management strategies for cash flow efficiency." />
     <meta itemProp="keywords" content="working capital formula explained, net working capital calculation, operational liquidity metric, current assets vs current liabilities, positive vs negative working capital, working capital management strategies" />
     <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
     <meta itemProp="datePublished" content="2025-11-02" /> 
     <meta itemProp="url" content="/definitive-working-capital-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Working Capital: Measuring Operational Liquidity and Efficiency</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental metric that assesses a company’s short-term financial health and its ability to fund day-to-day operations.</p>
+    <p className="text-lg italic text-muted-foreground">Master the fundamental metric that assesses a company's short-term financial health and its ability to fund day-to-day operations.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Working Capital: Definition and Core Function</a></li>
         <li><a href="#calculation" className="hover:underline">The Net Working Capital Formula and Components</a></li>
         <li><a href="#interpretation" className="hover:underline">Interpreting the Result: Positive vs. Negative W/C</a></li>
@@ -431,8 +431,8 @@ export default function WorkingCapitalCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The formula for Net Working Capital is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Working Capital = Total Current Assets - Total Current Liabilities'}
         </p>
     </div>
@@ -493,8 +493,8 @@ export default function WorkingCapitalCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The CCC Formula</h3>
     <p>The cycle aggregates the key working capital periods into a single duration (measured in days):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'CCC = Days Inventory Outstanding (DIO) + Days Sales Outstanding (DSO) - Days Payables Outstanding (DPO)'}
         </p>
     </div>

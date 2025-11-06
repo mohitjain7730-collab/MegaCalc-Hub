@@ -388,22 +388,22 @@ export default function InterestCoverageRatioCalculator() {
       </Card>
 
       {/* Complete Guide Section */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Interest Coverage Ratio (ICR): Calculation, Interpretation, and Solvency Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the Interest Coverage Ratio (ICR) formula, its role in assessing a company’s solvency and debt-servicing capacity, interpreting safe thresholds, and analyzing its impact on creditworthiness and lending decisions." />
+    <meta itemProp="description" content="An expert guide detailing the Interest Coverage Ratio (ICR) formula, its role in assessing a company's solvency and debt-servicing capacity, interpreting safe thresholds, and analyzing its impact on creditworthiness and lending decisions." />
     <meta itemProp="keywords" content="interest coverage ratio formula, calculating ICR, EBIT vs EBITDA in ICR, debt servicing capacity ratio, solvency ratio interpretation, credit risk analysis corporate finance, times interest earned ratio" />
     <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
     <meta itemProp="datePublished" content="2025-10-25" /> 
     <meta itemProp="url" content="/definitive-interest-coverage-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Interest Coverage Ratio (ICR): Measuring Debt-Servicing Capacity</h1>
-    <p className="text-lg italic text-gray-700">Master the critical solvency metric that quantifies a company’s ability to cover its debt payments using its operating profits.</p>
+    <p className="text-lg italic text-muted-foreground">Master the critical solvency metric that quantifies a company's ability to cover its debt payments using its operating profits.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">ICR: Definition and Core Purpose</a></li>
         <li><a href="#calculation" className="hover:underline">The Interest Coverage Ratio Formula</a></li>
         <li><a href="#interpretation" className="hover:underline">Interpreting the Ratio and Safe Thresholds</a></li>
@@ -430,8 +430,8 @@ export default function InterestCoverageRatioCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Standard Formula</h3>
     <p>The most common and most conservative version uses Earnings Before Interest and Taxes (EBIT) in the numerator:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'ICR = EBIT / Interest Expense'}
         </p>
     </div>
