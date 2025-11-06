@@ -406,25 +406,116 @@ export default function MonteCarloPortfolioCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Monte Carlo Simulation
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about Monte Carlo portfolio simulation
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Monte Carlo simulation is a computational technique that uses random sampling to model the probability distribution of portfolio outcomes. By running thousands of simulations with different random scenarios, it provides insights into potential portfolio performance, risk levels, and the range of possible outcomes.
-          </p>
-          <p className="text-muted-foreground">
-            This method is particularly valuable for portfolio planning, risk assessment, and scenario analysis. It helps investors understand not just expected returns, but the full distribution of possible outcomes, including worst-case and best-case scenarios. Monte Carlo simulation is essential for comprehensive portfolio risk management.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Monte Carlo Simulation: Portfolio Value, Risk, and Forecasting" />
+    <meta itemProp="description" content="An expert guide detailing the Monte Carlo Simulation methodology, its core role in forecasting portfolio terminal value, modeling random walk of asset prices, and quantifying investment risk under uncertainty." />
+    <meta itemProp="keywords" content="monte carlo simulation finance explained, portfolio value forecasting, modeling random walk, terminal portfolio value calculation, risk management statistical method, investment uncertainty modeling" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-06" /> 
+    <meta itemProp="url" content="/definitive-monte-carlo-portfolio-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Monte Carlo Simulation: Forecasting Portfolio Value and Risk</h1>
+    <p className="text-lg italic text-gray-700">Master the powerful statistical technique that uses random sampling and probability to model thousands of possible investment outcomes.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Monte Carlo Simulation: Core Concept and Applications</a></li>
+        <li><a href="#random-walk" className="hover:underline">The Random Walk Model and Geometric Brownian Motion</a></li>
+        <li><a href="#inputs" className="hover:underline">Critical Inputs: Mean, Volatility, and Correlation</a></li>
+        <li><a href="#methodology" className="hover:underline">Simulation Methodology and Iterative Steps</a></li>
+        <li><a href="#risk-metrics" className="hover:underline">Interpreting Simulation Results and Risk Metrics</a></li>
+    </ul>
+<hr />
+
+    {/* MONTE CARLO SIMULATION: CORE CONCEPT AND APPLICATIONS */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Monte Carlo Simulation: Core Concept and Applications</h2>
+    <p>A **Monte Carlo Simulation** is a quantitative method that relies on repeated random sampling and statistical analysis to obtain numerical results. In finance, it is primarily used for **forecasting portfolio terminal value** and quantifying risk when uncertainty is high.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Handling Uncertainty</h3>
+    <p>Unlike deterministic models (which use single, fixed variables), Monte Carlo Simulation uses inputs that are allowed to vary randomly within established statistical parameters (mean and standard deviation). By running thousands of simulations (or 'trials'), the method produces a **probability distribution** of outcomes rather than a single number, providing a comprehensive view of the potential best-case, worst-case, and most likely results.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Key Financial Applications</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Retirement Planning:** Forecasting the probability of a retirement fund lasting 30 years under various market conditions.</li>
+        <li>**Option Pricing:** Valuing complex derivatives that lack a closed-form solution (like exotic options).</li>
+        <li>**Capital Budgeting:** Assessing the likelihood of a project achieving a positive Net Present Value (NPV).</li>
+    </ul>
+
+<hr />
+
+    {/* THE RANDOM WALK MODEL AND GEOMETRIC BROWNIAN MOTION */}
+    <h2 id="random-walk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Random Walk Model and Geometric Brownian Motion</h2>
+    <p>For asset pricing, Monte Carlo Simulation assumes that asset prices move according to the **Random Walk** theory, specifically modeled using **Geometric Brownian Motion (GBM)**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Random Walk Theory</h3>
+    <p>This theory posits that stock price movements are random and cannot be predicted based on past movements. The change in the stock price follows a random path.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Geometric Brownian Motion (GBM)</h3>
+    <p>GBM is the mathematical framework used to simulate the Random Walk. It assumes that stock returns are normally distributed and that prices are non-negative, meaning the stock price can move up or down based on a volatility factor and a drift (expected return) factor over small time intervals.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Next Price = Current Price * e^[ (μ - σ^2/2)Δt + σ * Z * Square Root(Δt) ]'}
+        </p>
+    </div>
+    <p>Where $\mu$ is the expected return (drift), $\sigma$ is the volatility, $Z$ is a random variable sampled from a standard normal distribution, and $\Delta t$ is the time step.</p>
+
+<hr />
+
+    {/* CRITICAL INPUTS: MEAN, VOLATILITY, AND CORRELATION */}
+    <h2 id="inputs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Critical Inputs: Mean, Volatility, and Correlation</h2>
+    <p>The accuracy of the Monte Carlo Simulation is determined by the quality of the statistical inputs used to define the probability space.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Expected Return ($\mu$)</h3>
+    <p>The expected annual return (the drift) for each asset in the portfolio. This is usually estimated from historical averages, fundamental analysis, or models like the Capital Asset Pricing Model (CAPM).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Volatility ($\sigma$)</h3>
+    <p>The **Annualized Standard Deviation** of returns for each asset. Volatility defines the range and amplitude of the random price movements in the simulation. Higher volatility leads to a wider, more dispersed distribution of final outcomes.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">3. Correlation</h3>
+    <p>When modeling a portfolio of multiple assets, the **Correlation** between those assets is essential. The simulation must use a matrix of correlation coefficients to ensure that when Asset A moves up, Asset B moves according to their historical covariance. Incorrectly modeling correlation (e.g., assuming a correlation of zero) drastically understates portfolio risk.</p>
+
+<hr />
+
+    {/* SIMULATION METHODOLOGY AND ITERATIVE STEPS */}
+    <h2 id="methodology" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Simulation Methodology and Iterative Steps</h2>
+    <p>The simulation process involves executing thousands of random trials to build the final probability map.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Iterative Process (Trial Steps)</h3>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Step 1 (Initialization):</strong> Set the starting portfolio value and input the annual return, volatility, and correlation matrix.</li>
+        <li><strong className="font-semibold">Step 2 (Random Sampling):</strong> For a single time step (e.g., one day), the model draws a random number ($Z$) from a standard normal distribution (mean=0, variance=1) for each asset.</li>
+        <li><strong className="font-semibold">Step 3 (Price Path):</strong> The random number is used in the GBM formula to calculate the asset's price change for that step.</li>
+        <li><strong className="font-semibold">Step 4 (Iteration):</strong> Steps 2 and 3 are repeated daily or monthly until the forecast horizon (e.g., 20 years) is reached. The final value is recorded as one completed trial.</li>
+        <li><strong className="font-semibold">Step 5 (Repetition):</strong> The entire process (Steps 2-4) is repeated thousands of times (e.g., 10,000 trials) to generate a robust distribution of final values.</li>
+    </ol>
+
+<hr />
+
+    {/* INTERPRETING SIMULATION RESULTS AND RISK METRICS */}
+    <h2 id="risk-metrics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Simulation Results and Risk Metrics</h2>
+    <p>The output of a Monte Carlo Simulation is a histogram (distribution curve) showing the frequency of different final portfolio values. Interpretation relies on percentile analysis.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Percentile Analysis (Confidence Intervals)</h3>
+    <p>Key risk thresholds are identified using percentiles:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**50th Percentile (Median):** The most likely outcome, representing the central tendency of the forecast.</li>
+        <li>**90th Percentile (Best Case):** The value exceeded in 10% of the trials. Provides a measure of optimal performance.</li>
+        <li>**10th Percentile (Worst Case/Risk):** The value that was met or exceeded in 90% of the trials. This is a critical risk metric, defining the portfolio's expected value under adverse market conditions.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Probability of Success (Retirement)</h3>
+    <p>In retirement planning, the model calculates the **Probability of Success**—the percentage of trials in which the portfolio was not depleted before the end of the planned withdrawal period. A typical goal is to achieve an 85% to 90% probability of success.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Monte Carlo Simulation is the superior risk analysis tool for portfolio forecasting, utilizing **Geometric Brownian Motion** to model asset price paths based on observed returns, volatility, and correlation.</p>
+    <p>By running thousands of random trials, the method quantifies the full range of potential **portfolio terminal values**, allowing financial planners to determine the **Probability of Success** and define risk based on statistically relevant worst-case outcomes (e.g., the 10th percentile).</p>
+</section>
 
       <Card>
         <CardHeader>

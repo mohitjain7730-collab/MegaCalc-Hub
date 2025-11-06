@@ -393,22 +393,111 @@ export default function BondPriceCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Understanding bond pricing is essential for fixed-income investors. This guide covers the fundamental concepts and calculations.
-          </p>
-          <p className="text-muted-foreground">
-            Learn how to evaluate bond investments and make informed decisions based on theoretical pricing models.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Bond Price Calculation: Formula, Present Value, and Yield Relationship" />
+    <meta itemProp="description" content="An expert guide detailing the Bond Price formula, its calculation using present value of coupons and face value, the inverse relationship with yield, and the difference between pricing bonds at par, premium, and discount." />
+    <meta itemProp="keywords" content="bond price calculation formula, present value of bond coupons, discount factor bond pricing, inverse relationship price yield, bond pricing at par premium discount, fixed income valuation" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-06" /> 
+    <meta itemProp="url" content="/definitive-bond-price-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Bond Price: Calculating Value Using Present Value of Cash Flows</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental principle of fixed income valuation: a bond’s price is the sum of the present value of all its future payments.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Bond Price: Definition and Core Components</a></li>
+        <li><a href="#formula" className="hover:underline">The Bond Price Calculation Formula</a></li>
+        <li><a href="#pv-components" className="hover:underline">Present Value of Coupons and Face Value</a></li>
+        <li><a href="#inverse" className="hover:underline">The Inverse Relationship Between Price and Yield</a></li>
+        <li><a href="#pricing-scenarios" className="hover:underline">Pricing Scenarios: Par, Premium, and Discount</a></li>
+    </ul>
+<hr />
+
+    {/* BOND PRICE: DEFINITION AND CORE COMPONENTS */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Bond Price: Definition and Core Components</h2>
+    <p>The **Bond Price** is the current market value of a bond. This price represents the total amount an investor must pay today to purchase the right to receive the bond's scheduled future cash flows. A bond is essentially a fixed-rate loan that the investor makes to the issuer.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Two Cash Flow Streams</h3>
+    <p>A standard bond generates two distinct types of cash flows for the investor:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Coupon Payments:</strong> A series of fixed, periodic interest payments (an annuity) paid from the issue date until maturity.</li>
+        <li><strong className="font-semibold">Face Value Repayment:</strong> A single lump sum payment (the principal, or par value) paid on the maturity date.</li>
+    </ol>
+    <p>The bond price calculation involves finding the **Present Value (PV)** of each of these future cash flows and summing them up.</p>
+
+<hr />
+
+    {/* THE BOND PRICE CALCULATION FORMULA */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Bond Price Calculation Formula</h2>
+    <p>The bond price is equal to the Present Value of the annuity stream (coupons) plus the Present Value of the lump sum (face value).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <p>The total price is separated into its two component PVs:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Bond Price = PV (Coupons) + PV (Face Value)'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Detailed Formula</h3>
+    <p>This combined formula discounts all future cash flows using the **Yield to Maturity (YTM)** ($r$), which acts as the discount rate:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Bond Price = Sum [ C / (1+r)^t ] + F / (1+r)^T'}
+        </p>
+    </div>
+    <p>Where $C$ is the periodic coupon payment, $F$ is the face value, $r$ is the YTM, $t$ is the payment period, and $T$ is the total number of periods remaining.</p>
+
+<hr />
+
+    {/* PRESENT VALUE OF COUPONS AND FACE VALUE */}
+    <h2 id="pv-components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Present Value of Coupons and Face Value</h2>
+    <p>Each component of the formula requires careful application of the Present Value concept.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">PV of the Coupon Stream (Annuity)</h3>
+    <p>The coupon payments form an annuity. Their total PV is calculated by discounting each individual coupon payment back to the present. The periodic coupon payment ($C$) is calculated by dividing the annual coupon rate by the payment frequency (usually semiannually, or twice a year).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">PV of the Face Value (Lump Sum)</h3>
+    <p>The face value ($F$) is received only once, at maturity. Its PV is calculated by discounting the full lump sum back over the entire remaining time period ($T$). Since this value is received last, it is subject to the greatest discounting effect.</p>
+
+<hr />
+
+    {/* THE INVERSE RELATIONSHIP BETWEEN PRICE AND YIELD */}
+    <h2 id="inverse" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Inverse Relationship Between Price and Yield</h2>
+    <p>The discount rate used to price the bond is the **Yield to Maturity (YTM)**. The YTM is the single greatest driver of the bond price, and their relationship is always inverse.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Interest Rate Movement</h3>
+    <p>When market interest rates (and thus the required YTM) rise, the calculated present value of the bond's fixed cash flows falls, causing the **Bond Price to Decrease**. Conversely, when market rates fall, the present value of the cash flows increases, causing the **Bond Price to Rise**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Duration and Volatility</h3>
+    <p>The sensitivity of the bond price to changes in YTM is measured by the bond's **Duration**. Bonds with longer maturities and lower coupon rates have higher duration, meaning their prices will fluctuate more dramatically for a given change in interest rates.</p>
+
+<hr />
+
+    {/* PRICING SCENARIOS: PAR, PREMIUM, AND DISCOUNT */}
+    <h2 id="pricing-scenarios" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Pricing Scenarios: Par, Premium, and Discount</h2>
+    <p>The relationship between the bond's **Coupon Rate** and the market's **Yield to Maturity (YTM)** determines whether the bond will trade at par, a premium, or a discount.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Par Bond</h3>
+    <p>Occurs when the Coupon Rate **equals** the market YTM. The bond price equals its face value (e.g., 1,000 dollars).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Premium Bond</h3>
+    <p>Occurs when the Coupon Rate is **greater than** the market YTM. The bond price is higher than its face value. New investors are willing to pay a premium because the bond's fixed interest payments are higher than prevailing market rates.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">3. Discount Bond</h3>
+    <p>Occurs when the Coupon Rate is **less than** the market YTM. The bond price is lower than its face value. The price is discounted because the bond's fixed interest payments are lower than new bonds being issued at the higher prevailing market rate.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The **Bond Price** is the calculated sum of the Present Value of its two cash flow components: the coupon annuity stream and the face value lump sum, discounted at the Yield to Maturity (YTM).</p>
+    <p>The fundamental rule of fixed income is the **inverse relationship between price and yield**. Understanding this relationship is crucial for investors to determine if a bond should trade at par, a premium (when the Coupon Rate exceeds YTM), or a discount (when the Coupon Rate is less than YTM).</p>
+</section>
 
       <Card>
         <CardHeader>
@@ -435,7 +524,7 @@ export default function BondPriceCalculator() {
           <div>
             <h4 className="font-semibold mb-2">What is the difference between premium and discount bonds?</h4>
             <p className="text-muted-foreground">
-              Premium bonds trade above face value (coupon rate > YTM), while discount bonds trade below face value (YTM > coupon rate). Par bonds trade at face value when coupon rate equals YTM.
+              Premium bonds trade above face value (coupon rate {'>'} YTM), while discount bonds trade below face value (YTM {'>'} coupon rate). Par bonds trade at face value when coupon rate equals YTM.
             </p>
           </div>
           

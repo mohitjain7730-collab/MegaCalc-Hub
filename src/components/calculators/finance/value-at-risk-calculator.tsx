@@ -366,25 +366,111 @@ export default function ValueAtRiskCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Value at Risk
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting Value at Risk
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Value at Risk (VaR) is a statistical measure that quantifies the potential loss in value of a portfolio over a specific time period at a given confidence level. It answers the question: "What is the maximum loss I can expect with X% confidence over Y days?" VaR is widely used in risk management and regulatory reporting.
-          </p>
-          <p className="text-muted-foreground">
-            VaR helps investors and institutions understand their downside risk exposure, set appropriate risk limits, and make informed decisions about portfolio allocation. It's particularly valuable for comparing risk across different investments and ensuring compliance with risk management policies and regulatory requirements.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Value at Risk (VaR): Calculation Methods, Interpretation, and Risk Management" />
+    <meta itemProp="description" content="An expert guide detailing the Value at Risk (VaR) concept, its role as the primary regulatory risk measure, the three main calculation methods (Historical, Parametric, Monte Carlo), and its use in financial institutions for risk control and capital allocation." />
+    <meta itemProp="keywords" content="value at risk VaR formula, calculating VaR historical simulation, parametric VaR standard deviation, Monte Carlo VaR modeling, risk management metric finance, confidence level VaR, expected shortfall" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-06" /> 
+    <meta itemProp="url" content="/definitive-value-at-risk-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Value at Risk (VaR): Quantifying Maximum Expected Loss</h1>
+    <p className="text-lg italic text-gray-700">Master the critical risk metric used globally by financial institutions to estimate the largest probable loss over a specific time horizon.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">VaR: Core Definition and Parameters</a></li>
+        <li><a href="#parametric" className="hover:underline">Method 1: Parametric VaR (Variance-Covariance)</a></li>
+        <li><a href="#historical" className="hover:underline">Method 2: Historical Simulation VaR</a></li>
+        <li><a href="#monte-carlo" className="hover:underline">Method 3: Monte Carlo VaR</a></li>
+        <li><a href="#limitations" className="hover:underline">Limitations and Expected Shortfall (ES)</a></li>
+    </ul>
+<hr />
+
+    {/* VAR: CORE DEFINITION AND PARAMETERS */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">VaR: Core Definition and Parameters</h2>
+    <p>The **Value at Risk (VaR)** is a statistical measure that quantifies the maximum likely loss a portfolio could suffer over a specified time horizon at a given confidence level. It is the primary tool used by banks and regulators to measure market risk.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Three Core Parameters</h3>
+    <p>A VaR statement is meaningless without its three defining parameters:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Loss Amount:</strong> The maximum monetary loss estimated (e.g., $5 million).</li>
+        <li><strong className="font-semibold">Time Horizon:</strong> The period over which the loss is expected (e.g., 1 day, 10 days, or 1 year). Regulatory VaR (Basel Accords) typically uses a 10-day horizon.</li>
+        <li><strong className="font-semibold">Confidence Level:</strong> The probability that the actual loss will **not** exceed the VaR amount (e.g., 95% or 99%). A 99% VaR means that the loss will not exceed the VaR amount 99 times out of 100 days.</li>
+    </ol>
+    <p>Example VaR statement: "The one-day 99% VaR is $5 million." This means there is only a 1% chance (1 day out of 100) that the portfolio will lose more than $5 million in one day.</p>
+
+<hr />
+
+    {/* METHOD 1: PARAMETRIC VAR (VARIANCE-COVARIANCE) */}
+    <h2 id="parametric" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Method 1: Parametric VaR (Variance-Covariance)</h2>
+    <p>The Parametric VaR method (also known as the Variance-Covariance Method) is the fastest and simplest approach, relying on the assumption that asset returns are normally distributed.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity (Normal Distribution)</h3>
+    <p>This method calculates VaR by scaling the portfolio's expected loss by a factor related to the confidence level and the standard deviation (volatility) of the returns:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'VaR = Portfolio Value * Z-Score * Volatility'}
+        </p>
+    </div>
+
+    <p>Where Z-Score is the number of standard deviations corresponding to the confidence level (e.g., Z = 2.33 for 99% confidence). Volatility is the standard deviation of returns over the time horizon.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Limitations</h3>
+    <p>The main drawback is the **Normal Distribution Assumption**. Financial markets exhibit "fat tails" (more extreme positive and negative events than predicted by a normal distribution). Parametric VaR tends to underestimate risk during periods of high market stress (black swan events).</p>
+
+<hr />
+
+    {/* METHOD 2: HISTORICAL SIMULATION VAR */}
+    <h2 id="historical" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Method 2: Historical Simulation VaR</h2>
+    <p>The Historical Simulation method is non-parametric, meaning it does not rely on the assumption of a normal distribution. It is calculated entirely from the portfolio's past performance data.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Methodology</h3>
+    <p>The process involves:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Gather Data:</strong> Collect the portfolio's actual returns (or simulated returns based on historical price changes) over a long look-back period (e.g., 500 trading days).</li>
+        <li><strong className="font-semibold">Sort Returns:</strong> Rank all observed returns from the worst loss to the largest gain.</li>
+        <li><strong className="font-semibold">Identify Percentile:</strong> The VaR is simply the loss amount corresponding to the chosen confidence level percentile. For a 99% VaR using 500 days of data, the VaR is the 5th worst loss (500 $\times$ 1%).</li>
+    </ol>
+    <p>This method automatically incorporates the non-normal distributions and "fat tails" that existed in the historical data, making it more robust in volatile markets.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Limitations</h3>
+    <p>Historical VaR is highly dependent on the historical period chosen. It assumes the immediate future will resemble the recent past, failing to predict risks that have not yet occurred (i.e., a new type of crisis).</p>
+
+<hr />
+
+    {/* METHOD 3: MONTE CARLO VAR */}
+    <h2 id="monte-carlo" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Method 3: Monte Carlo VaR</h2>
+    <p>The **Monte Carlo Method** is the most complex and flexible approach. It calculates VaR by simulating thousands of possible future return scenarios based on user-defined parameters for asset volatility, mean returns, and correlation.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Simulation Process</h3>
+    <p>The simulation uses the Geometric Brownian Motion model to generate a vast distribution of potential future portfolio values. Once the simulation is complete, the loss distribution is sorted, and the VaR is identified by locating the loss corresponding to the required confidence level percentile (e.g., the 99th percentile loss).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Advantages</h3>
+    <p>Monte Carlo VaR is superior because it can incorporate complex risk factors (like options or derivatives) and allow the user to test hypothetical scenarios that have never occurred in history, providing a forward-looking risk assessment.</p>
+
+<hr />
+
+    {/* LIMITATIONS AND EXPECTED SHORTFALL (ES) */}
+    <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations and Expected Shortfall (ES)</h2>
+    <p>Despite its widespread use, VaR has critical flaws, leading financial regulators to adopt the **Expected Shortfall (ES)** as a superior risk metric.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The VaR Flaw: Ignoring the Tail</h3>
+    <p>The main criticism of VaR is that it only measures the loss *at* the confidence level percentile, but says nothing about the potential magnitude of the loss *beyond* that threshold (the "tail risk"). For example, a $99\%$ VaR of $10$ million dollars tells you nothing about whether the $1\%$ loss will be $11$ million dollars or $100$ million dollars.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Expected Shortfall (ES) / Conditional VaR (CVaR)</h3>
+    <p>**Expected Shortfall (ES)**, or Conditional VaR (CVaR), addresses this flaw. ES calculates the **expected loss amount** given that the loss *exceeds* the VaR threshold. It is the average loss in the tail of the distribution, providing a more conservative and complete picture of extreme risk. ES is the required regulatory market risk measure under the Basel III framework.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Value at Risk (VaR) is the standard statistical metric that quantifies maximum expected portfolio loss at a given probability level over a specific time horizon. It is calculated using three primary methods: **Parametric** (assuming normal distribution), **Historical** (using past data), and **Monte Carlo** (using simulations).</p>
+    <p>While VaR is essential for basic risk management, sophisticated risk control now favors the **Expected Shortfall (ES)** metric, which provides a more robust measure of "tail risk" by averaging the potential losses that exceed the VaR threshold.</p>
+</section>
 
       <Card>
         <CardHeader>
