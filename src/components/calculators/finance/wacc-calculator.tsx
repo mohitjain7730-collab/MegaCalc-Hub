@@ -349,25 +349,113 @@ export default function WACCCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to WACC
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting WACC
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Weighted Average Cost of Capital (WACC) is the average rate a company expects to pay to finance its assets. It's calculated by weighting the cost of equity and cost of debt by their respective proportions in the capital structure, adjusted for the tax benefits of debt.
-          </p>
-          <p className="text-muted-foreground">
-            WACC is crucial for investment decisions, project evaluation, and company valuation. It serves as the hurdle rate for investments and helps determine whether projects will create value for shareholders. Understanding WACC is essential for corporate finance and investment analysis.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to WACC Calculation: Weighted Average Cost of Capital, Discount Rate, and Valuation" />
+    <meta itemProp="description" content="An expert guide detailing the WACC formula, its role as the company's discount rate, how to calculate the cost of equity (Re) and cost of debt (Rd), and its critical application in Net Present Value (NPV) and Discounted Cash Flow (DCF) valuation." />
+    <meta itemProp="keywords" content="WACC formula explained, calculating cost of capital, weighted average cost of debt and equity, discount rate NPV, WACC components, cost of equity CAPM, tax shield debt" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-06" /> 
+    <meta itemProp="url" content="/definitive-wacc-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to WACC: Weighted Average Cost of Capital and Discounting</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental corporate finance metric that represents the blended, overall cost of financing a company's assets.</p>
+    
+
+[Image of the Weighted Average Cost of Capital concept]
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">WACC: Definition and Role as Discount Rate</a></li>
+        <li><a href="#formula" className="hover:underline">The WACC Formula and Components</a></li>
+        <li><a href="#equity" className="hover:underline">Calculating the Cost of Equity (Re)</a></li>
+        <li><a href="#debt" className="hover:underline">Calculating the Cost of Debt (Rd) and Tax Shield</a></li>
+        <li><a href="#applications" className="hover:underline">WACC in Valuation and Capital Budgeting</a></li>
+    </ul>
+<hr />
+
+    {/* WACC: DEFINITION AND ROLE AS DISCOUNT RATE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">WACC: Definition and Role as Discount Rate</h2>
+    <p>The **Weighted Average Cost of Capital (WACC)** is the average rate of return a company expects to pay its security holders (bondholders and shareholders) to finance its assets. It is the blended cost of all long-term funding sources, weighted by their proportion in the company’s capital structure.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Role as the Discount Rate</h3>
+    <p>WACC is the most critical component in investment analysis because it serves as the **Discount Rate** ($r$) for the entire firm. When valuing a company or project using the Net Present Value (NPV) or Discounted Cash Flow (DCF) methods, WACC is the rate used to bring future Free Cash Flows to Firm (FCFF) back to their Present Value.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Hurdle Rate</h3>
+    <p>WACC is also the **Hurdle Rate**—the minimum return a company must earn on a new investment to create value. If a project generates a return less than the WACC, it destroys shareholder value, even if the project is profitable.</p>
+
+<hr />
+
+    {/* THE WACC FORMULA AND COMPONENTS */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The WACC Formula and Components</h2>
+    <p>WACC is calculated by multiplying the cost of each capital component (equity and debt) by its proportional weight in the total capital structure and summing the results.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <p>The standard WACC formula incorporates the tax benefit of debt (the tax shield) but assumes the capital structure (the weights) remains constant:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
+        </p>
+    </div>
+
+    <p>Where:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>$Re$ = Cost of Equity.</li>
+        <li>$Rd$ = Cost of Debt.</li>
+        <li>$E/V$ = Proportion of equity financing (Equity Market Value / Total Market Value).</li>
+        <li>$D/V$ = Proportion of debt financing (Debt Market Value / Total Market Value).</li>
+        <li>$T$ = Corporate Tax Rate.</li>
+    </ul>
+
+<hr />
+
+    {/* CALCULATING THE COST OF EQUITY (RE) */}
+    <h2 id="equity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Cost of Equity ($Re$)</h2>
+    <p>The Cost of Equity ($Re$) is the return required by investors for holding the company's stock. Since dividends and capital gains are not contractual, $Re$ must be calculated using a model that incorporates the stock's risk.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The CAPM Method</h3>
+    <p>The most common method for determining $Re$ is the **Capital Asset Pricing Model (CAPM)**, which links risk (Beta) to return:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Re = Rf + β * (Rm - Rf)'}
+        </p>
+    </div>
+    <p>Where $R_f$ is the risk-free rate, $\beta$ is the stock's beta (systematic risk), and $R_m - R_f$ is the market risk premium. This compensates the investor for taking on the market risk associated with the specific stock.</p>
+
+<hr />
+
+    {/* CALCULATING THE COST OF DEBT (RD) AND TAX SHIELD */}
+    <h2 id="debt" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Cost of Debt ($Rd$) and Tax Shield</h2>
+    <p>The Cost of Debt ($Rd$) is the effective rate a company pays on its borrowed funds. Unlike equity, debt provides a crucial tax advantage known as the **Tax Shield**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Cost of Debt ($Rd$)</h3>
+    <p>The most accurate measure of $Rd$ is the **Yield to Maturity (YTM)** on the company's long-term bonds. For private companies or those without publicly traded debt, $Rd$ is often approximated using the interest rate on the company's newest long-term bank loans.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Tax Shield ($1 - T$)</h3>
+    <p>Interest payments on debt are generally tax-deductible expenses. This means the actual cost of debt to the company is lower than the stated interest rate. The after-tax cost of debt is $Rd \times (1 - T)$.</p>
+    <p>This tax shield is the reason debt financing is often **cheaper** than equity financing, leading companies to use a certain amount of leverage to lower the overall WACC.</p>
+
+<hr />
+
+    {/* WACC IN VALUATION AND CAPITAL BUDGETING */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">WACC in Valuation and Capital Budgeting</h2>
+    <p>WACC is the linchpin of valuation and capital allocation decisions within the firm.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Discounting in DCF</h3>
+    <p>WACC is the discount rate used to calculate the **Enterprise Value (EV)** of the firm. It is the rate applied to the Free Cash Flow to Firm (FCFF) forecasts because FCFF is the cash flow available to *all* capital providers (both debt and equity).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Project-Specific Hurdle Rates</h3>
+    <p>While WACC represents the cost of capital for the *entire firm*, best practice requires adjusting the WACC when evaluating a project with a risk profile significantly different from the firm's average. High-risk projects should use a discount rate **higher** than the WACC, and low-risk projects should use a rate **lower** than the WACC.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Weighted Average Cost of Capital (WACC) is the foundational financial metric that represents the firm's **blended cost of financing**, weighted by the market value proportions of debt and equity.</p>
+    <p>Calculated by combining the Cost of Equity ($Re$ via CAPM) and the after-tax Cost of Debt, WACC serves as the definitive **discount rate** and hurdle rate. This ensures that only projects expected to generate returns greater than the cost of capital are approved, thereby maximizing shareholder value.</p>
+</section>
 
       <Card>
         <CardHeader>

@@ -313,25 +313,108 @@ export default function CAPMCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to CAPM
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting CAPM
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            The Capital Asset Pricing Model (CAPM) is a fundamental financial model that calculates the expected return of an asset based on its systematic risk (beta), the risk-free rate, and the expected market return. The formula is: Expected Return = Risk-Free Rate + Beta × (Market Return - Risk-Free Rate).
-          </p>
-          <p className="text-muted-foreground">
-            CAPM is widely used in portfolio management, investment analysis, and corporate finance for determining appropriate discount rates, evaluating investment opportunities, and assessing risk-adjusted returns. It provides a systematic way to price risk and determine expected returns.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to the Capital Asset Pricing Model (CAPM): Calculation, Beta, and Expected Return" />
+    <meta itemProp="description" content="An expert guide detailing the CAPM formula, its role in calculating the required rate of return for an asset, the function of Beta as a measure of systematic risk, and the model's application in valuation and risk management." />
+    <meta itemProp="keywords" content="CAPM formula explained, calculating required return, systematic risk beta finance, risk-free rate, market risk premium, security market line SML, expected return asset" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-06" /> 
+    <meta itemProp="url" content="/definitive-capm-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Capital Asset Pricing Model (CAPM): Calculating Expected Return</h1>
+    <p className="text-lg italic text-gray-700">Master the foundational model that defines the relationship between an asset's systematic risk and its required rate of return.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">CAPM: Core Definition and Principle</a></li>
+        <li><a href="#formula" className="hover:underline">The CAPM Formula and Components</a></li>
+        <li><a href="#beta" className="hover:underline">The Role of Beta ($\beta$): Measuring Systematic Risk</a></li>
+        <li><a href="#premium" className="hover:underline">Market Risk Premium and Risk-Free Rate</a></li>
+        <li><a href="#applications" className="hover:underline">Applications in Valuation and Portfolio Management</a></li>
+    </ul>
+<hr />
+
+    {/* CAPM: CORE DEFINITION AND PRINCIPLE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">CAPM: Core Definition and Principle</h2>
+    <p>The **Capital Asset Pricing Model (CAPM)** is a foundational model in modern finance used to calculate the theoretically appropriate **required rate of return** for an asset, given its inherent risk. CAPM is based on the principle that investors must be compensated for two things: the time value of money and the systematic risk they assume.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Risk and Return Relationship</h3>
+    <p>The model explicitly assumes that investors are rational and that they only need to be compensated for **Systematic Risk** (market risk), which cannot be eliminated through diversification. Unsystematic risk (specific risk) is ignored because a well-diversified portfolio should eliminate it.</p>
+
+<hr />
+
+    {/* THE CAPM FORMULA AND COMPONENTS */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The CAPM Formula and Components</h2>
+    <p>The CAPM formula calculates the required return ($R_i$) by adding the risk-free rate ($R_f$) to the market risk premium, scaled by the asset's beta ($\beta$).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'R_i = R_f + β_i * (R_m - R_f)'}
+        </p>
+    </div>
+
+    <p>Where:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>$R_i$ = Required rate of return for the asset.</li>
+        <li>$R_f$ = Risk-free rate.</li>
+        <li>$\beta_i$ = Beta of the asset.</li>
+        <li>$R_m$ = Expected return of the overall market.</li>
+    </ul>
+
+<hr />
+
+    {/* THE ROLE OF BETA ($\beta$): MEASURING SYSTEMATIC RISK */}
+    <h2 id="beta" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Role of Beta ($\beta$): Measuring Systematic Risk</h2>
+    <p>**Beta ($\beta$)** is the measure of **systematic risk** within the CAPM model. It quantifies the expected volatility of the asset's return relative to the volatility of the overall market (the benchmark).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Interpreting Beta</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Beta ($\beta$) = 1.0:** The asset moves exactly in line with the market.</li>
+        <li><strong className="font-semibold">Beta is greater than 1.0:</strong> The asset is more volatile than the market (higher systematic risk). It is expected to rise faster than the market during bull cycles and fall faster during bear cycles.</li>
+        <li><strong className="font-semibold">Beta is less than 1.0:</strong> The asset is less volatile than the market (lower systematic risk). It is often considered defensive.</li>
+        <li>**Beta ($\beta$) = 0:** The asset is completely uncorrelated with the market (e.g., a short-term Treasury bill).</li>
+    </ul>
+    <p>Beta is the scalar that adjusts the market risk premium to reflect the specific risk of the asset being analyzed.</p>
+
+<hr />
+
+    {/* MARKET RISK PREMIUM AND RISK-FREE RATE */}
+    <h2 id="premium" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Market Risk Premium and Risk-Free Rate</h2>
+    <p>The CAPM separates the risk-free return component from the risk premium component, allowing for detailed compensation analysis.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Risk-Free Rate ($R_f$)</h3>
+    <p>The risk-free rate ($R_f$) compensates the investor for the **time value of money** and inflation. It is the minimum return an investor demands just to defer consumption. In practice, the $R_f$ is typically proxied by the yield on long-term U.S. government bonds (e.g., 10-year Treasury notes), as these are considered free of default risk.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Market Risk Premium ($R_m - R_f$)</h3>
+    <p>The **Market Risk Premium** is the extra return that investors, on average, expect to receive for holding a risky market portfolio ($R_m$) over a risk-free asset ($R_f$). This premium is the compensation for taking on average systematic risk. The entire second half of the CAPM formula scales this premium based on the asset's beta.</p>
+
+<hr />
+
+    {/* APPLICATIONS IN VALUATION AND PORTFOLIO MANAGEMENT */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Valuation and Portfolio Management</h2>
+    <p>The CAPM is central to determining the cost of equity and assessing investment performance.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Cost of Equity and WACC</h3>
+    <p>In corporate finance, the required rate of return calculated by CAPM is used as the **Cost of Equity** component of the **Weighted Average Cost of Capital (WACC)**. WACC is the key discount rate used in the Net Present Value (NPV) and Discounted Cash Flow (DCF) valuation models.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Security Market Line (SML)</h3>
+    <p>The Security Market Line (SML) is the graphical representation of the CAPM formula. It plots risk (Beta) on the x-axis and expected return (R i) on the y-axis. The SML is used to determine if an asset is undervalued or overvalued:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Above SML:** The asset is generating a return higher than required for its risk (undervalued).</li>
+        <li>**Below SML:** The asset is generating a return lower than required for its risk (overvalued).</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Capital Asset Pricing Model (CAPM) is the fundamental theoretical tool for calculating the **required rate of return** for any investment by linking return to systematic risk ($\beta$).</p>
+    <p>By scaling the **Market Risk Premium** by the asset's **Beta**, the CAPM provides the essential cost of equity used in corporate valuation, ensuring that projects and assets are only undertaken if their expected returns adequately compensate the investor for the market risk assumed.</p>
+</section>
 
       <Card>
         <CardHeader>

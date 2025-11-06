@@ -401,25 +401,127 @@ export default function BlackScholesCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Black-Scholes Model
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting Black-Scholes option prices
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            The Black-Scholes model is a mathematical model for pricing European-style options. It calculates theoretical option prices based on five key inputs: current stock price, strike price, time to expiration, risk-free rate, and volatility. The model assumes constant volatility, efficient markets, and no dividends.
-          </p>
-          <p className="text-muted-foreground">
-            Understanding Black-Scholes pricing is essential for options traders, risk managers, and financial analysts. While the model has limitations, it provides a foundation for option valuation and helps traders understand the factors that influence option prices, including time decay, volatility, and intrinsic value.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to the Black-Scholes-Merton (BSM) Option Pricing Model, Formula, and Variables" />
+    <meta itemProp="description" content="An expert guide detailing the Black-Scholes-Merton (BSM) formula, its core role in pricing European options (calls and puts), the function of each input variable (volatility, time, strike price), and its application in financial risk management." />
+    <meta itemProp="keywords" content="black scholes model formula explained, option pricing theory, calculating call option price, put option price black scholes, implied volatility options, risk-free rate options pricing" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-06" /> 
+    <meta itemProp="url" content="/definitive-black-scholes-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Black-Scholes-Merton Model: Option Pricing Theory</h1>
+    <p className="text-lg italic text-gray-700">Master the Nobel Prize-winning formula that calculates the theoretical fair value of a European option by relating price, risk, and time.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Black-Scholes: Core Purpose and Assumptions</a></li>
+        <li><a href="#formula" className="hover:underline">The Black-Scholes Formula Components</a></li>
+        <li><a href="#inputs" className="hover:underline">The Five Critical Input Variables</a></li>
+        <li><a href="#implied-vol" className="hover:underline">Implied Volatility and the Volatility Surface</a></li>
+        <li><a href="#applications" className="hover:underline">Model Applications and Limitations</a></li>
+    </ul>
+<hr />
+
+    {/* BLACK-SCHOLES: CORE PURPOSE AND ASSUMPTIONS */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Black-Scholes: Core Purpose and Assumptions</h2>
+    <p>The **Black-Scholes-Merton (BSM) Model** is a differential equation model used to price European-style call and put options. It establishes the relationship between an option's price and the factors that influence its potential payoff. The model assumes that the options are priced efficiently and that there are no arbitrage opportunities in the market.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Model Assumptions</h3>
+    <p>The BSM model relies on several core, simplified assumptions:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>The option is European-style (can only be exercised at expiration).</li>
+        <li>The risk-free rate ($R_f$) and volatility ($\sigma$) are constant over the option's life.</li>
+        <li>The stock price follows a lognormal distribution (it moves randomly).</li>
+        <li>There are no transaction costs or taxes.</li>
+    </ul>
+
+<hr />
+
+    {/* THE BLACK-SCHOLES FORMULA COMPONENTS */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Black-Scholes Formula Components</h2>
+    <p>The model calculates the value of an option by discounting the expected payoff at expiration. The two main components are the call price ($C$) and the put price ($P$).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Black-Scholes Call Price Formula</h3>
+    <p>The call price ($C$) is calculated as the present value of receiving the stock at expiration if the option is in the money, minus the present value of paying the strike price if the option is in the money:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'C = S * N(d1) - X * e^(-rT) * N(d2)'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Black-Scholes Put Price Formula (Put-Call Parity)</h3>
+    <p>The put price ($P$) is derived from the **Put-Call Parity** principle, which defines the relationship between the call and put options and the underlying stock price ($S$).</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'P = X * e^(-rT) * N(-d2) - S * N(-d1)'}
+        </p>
+    </div>
+    <p>Where $N(d1)$ and $N(d2)$ are cumulative standard normal distribution functions representing the probability that the option will expire in the money.</p>
+
+<hr />
+
+    {/* THE FIVE CRITICAL INPUT VARIABLES */}
+    <h2 id="inputs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Five Critical Input Variables</h2>
+    <p>The BSM model requires five inputs, each of which has a distinct effect on the final option price.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Current Stock Price ($S$)</h3>
+    <p>The price of the underlying asset. A higher stock price increases the value of the Call option (higher probability of expiring in the money) and decreases the value of the Put option.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Option Strike Price ($X$)</h3>
+    <p>The price at which the asset can be bought or sold. A higher strike price decreases the value of the Call option and increases the value of the Put option.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">3. Time to Expiration ($T$)</h3>
+    <p>The time remaining until the option expires (expressed as a fraction of a year). A longer time to expiration increases the value of both Calls and Puts because it increases the probability of extreme price movements (volatility) before the contract ends.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">4. Risk-Free Rate ($r$)</h3>
+    <p>The theoretical rate of return on an investment with no risk (typically the yield on a Treasury security). An increase in the risk-free rate increases the Call value (due to discounting) and decreases the Put value.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">5. Volatility ($\sigma$)</h3>
+    <p>**Volatility** is the annualized standard deviation of the stock's returns. This is the only input that is not directly observable. An increase in expected volatility increases the value of both Calls and Puts because the option owner benefits from extreme price moves in either direction.</p>
+
+<hr />
+
+    {/* IMPLIED VOLATILITY AND THE VOLATILITY SURFACE */}
+    <h2 id="implied-vol" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Implied Volatility and the Volatility Surface</h2>
+    <p>Since the volatility ($\sigma$) input is not directly observable, it is often derived backward from the current market price of the option. This derived measure is called **Implied Volatility (IV)**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Implied Volatility Concept</h3>
+    <p>Implied Volatility is the market's forecast of the stock's future volatility over the life of the option. It represents the uncertainty priced into the option. If an option is trading for more than its BSM price, the implied volatility is higher than the historical volatility, meaning the market expects riskier price action.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Volatility Smile and Skew</h3>
+    <p>The BSM model assumes volatility is constant across all strike prices and maturities. In reality, the market violates this assumption, giving rise to the **Volatility Surface**. The **Volatility Smile** refers to the observation that options far "out-of-the-money" (low strike Calls, high strike Puts) trade with higher implied volatility than "at-the-money" options, indicating that the market anticipates greater risk from extreme price moves.</p>
+
+<hr />
+
+    {/* MODEL APPLICATIONS AND LIMITATIONS */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Model Applications and Limitations</h2>
+    <p>The BSM model, despite its simplifying assumptions, remains the most important tool for option market pricing and risk management.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Applications</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Pricing:** Calculating the theoretical fair value of new options or complex derivatives.</li>
+        <li>**Hedging (Greeks):** The BSM model is used to calculate the **Option Greeks** (Delta, Gamma, Vega, Theta), which are measures of risk and sensitivity essential for portfolio hedging.</li>
+        <li>**Market Efficiency:** The difference between the BSM price and the actual market price can signal potential mispricings or opportunities.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Limitations</h3>
+    <p>The model's limitations stem from its assumptions:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>It cannot accurately price American options (which can be exercised before expiration).</li>
+        <li>It assumes rates and volatility are constant, which is untrue in reality.</li>
+        <li>It assumes continuous trading with no transaction costs.</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Black-Scholes-Merton Model is the foundational framework for option pricing, defining the theoretical value of a contract based on five inputs: the **Current Price**, **Strike Price**, **Time**, **Risk-Free Rate**, and **Volatility**.</p>
+    <p>While the model provides a precise fair value, its practical use involves reversing the formula to derive **Implied Volatility**—the market's consensus forecast of future risk, which is the most active and speculative component of option pricing.</p>
+</section>
 
       <Card>
         <CardHeader>

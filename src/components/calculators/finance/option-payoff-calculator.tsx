@@ -364,25 +364,150 @@ export default function OptionPayoffCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Option Payoffs
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting option payoffs
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Option payoffs represent the profit or loss from holding an option at expiration based on the underlying asset's price. Call options profit when the underlying price exceeds the strike price plus premium paid, while put options profit when the underlying price falls below the strike price minus premium paid.
-          </p>
-          <p className="text-muted-foreground">
-            Understanding option payoffs is crucial for options trading, risk management, and strategy development. It helps traders visualize potential outcomes, assess risk-reward ratios, and make informed decisions about option positions. Payoff analysis is fundamental to successful options trading.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Put and Call Option Payoff Calculation and Profit/Loss Analysis" />
+    <meta itemProp="description" content="An expert guide detailing the payoff formulas for long and short call/put options, the concept of intrinsic value, break-even points, and how to graphically analyze the profit and loss profiles of option contracts at expiration." />
+    <meta itemProp="keywords" content="call option payoff formula, put option payoff calculation, intrinsic value options explained, option break-even price, long call vs short put payoff, options expiration profit loss graph" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-06" /> 
+    <meta itemProp="url" content="/definitive-option-payoff-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Put and Call Option Payoff: Understanding Profit and Loss at Expiration</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental formulas that quantify the gain or loss of an option contract based on the underlying asset's price at expiration.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#basics" className="hover:underline">Option Basics: Definitions, Strike Price, and Premium</a></li>
+        <li><a href="#call-payoff" className="hover:underline">Call Option Payoff (Long and Short)</a></li>
+        <li><a href="#put-payoff" className="hover:underline">Put Option Payoff (Long and Short)</a></li>
+        <li><a href="#intrinsic" className="hover:underline">Intrinsic Value and Moneyness</a></li>
+        <li><a href="#breakeven" className="hover:underline">Calculating the Break-Even Price</a></li>
+    </ul>
+<hr />
+
+    {/* OPTION BASICS: DEFINITIONS, STRIKE PRICE, AND PREMIUM */}
+    <h2 id="basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Option Basics: Definitions, Strike Price, and Premium</h2>
+    <p>An **Option** is a contract that gives the holder the right, but not the obligation, to buy or sell an underlying asset (like a stock) at a specific price on or before a specific date.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Key Terminology</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Strike Price (X):</strong> The fixed price at which the asset can be bought or sold (the exercise price).</li>
+        <li><strong className="font-semibold">Expiration Date:</strong> The date the option contract expires, after which it is worthless.</li>
+        <li><strong className="font-semibold">Premium:</strong> The upfront price paid by the buyer to the seller (writer) for the option contract. This is the maximum loss for the buyer.</li>
+        <li><strong className="font-semibold">Underlying Price (S_T):</strong> The price of the asset at the expiration time (T).</li>
+    </ul>
+
+<hr />
+
+    {/* CALL OPTION PAYOFF (LONG AND SHORT) */}
+    <h2 id="call-payoff" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Call Option Payoff (Long and Short)</h2>
+    <p>A **Call Option** grants the holder the right to *buy* the underlying asset at the strike price (X). Buyers profit when the market price ($S_T$) is above the strike price.</p>
+    
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Long Call (Buying the Call)</h3>
+    <p>The buyer pays the premium and seeks upward movement in the stock price. The potential profit is theoretically unlimited, and the maximum loss is limited to the premium paid.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Long Call Payoff = Max(0, S_T - X) - Premium'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Short Call (Selling the Call)</h3>
+    <p>The seller receives the premium upfront but takes on the obligation to sell the asset at the strike price. The maximum gain is limited to the premium received, and the potential loss is theoretically unlimited.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Short Call Payoff = Premium - Max(0, S_T - X)'}
+        </p>
+    </div>
+
+<hr />
+
+    {/* PUT OPTION PAYOFF (LONG AND SHORT) */}
+    <h2 id="put-payoff" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Put Option Payoff (Long and Short)</h2>
+    <p>A **Put Option** grants the holder the right to *sell* the underlying asset at the strike price (X). Buyers profit when the market price ($S_T$) is below the strike price.</p>
+    
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Long Put (Buying the Put)</h3>
+    <p>The buyer pays the premium and seeks downward movement in the stock price. The potential profit is substantial (limited by $S_T$ hitting zero), and the maximum loss is limited to the premium paid.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Long Put Payoff = Max(0, X - S_T) - Premium'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Short Put (Selling the Put)</h3>
+    <p>The seller receives the premium upfront but takes on the obligation to buy the asset at the strike price. The maximum gain is limited to the premium received, and the potential loss is substantial (limited by $S_T$ hitting zero).</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Short Put Payoff = Premium - Max(0, X - S_T)'}
+        </p>
+    </div>
+
+<hr />
+
+    {/* INTRINSIC VALUE AND MONEYNESS */}
+    <h2 id="intrinsic" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Intrinsic Value and Moneyness</h2>
+    <p>The **Intrinsic Value** of an option is the immediate profit the option would yield if exercised today. It is always a non-negative value (zero or greater).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Intrinsic Value Calculation</h3>
+    <ul className="list-disc ml-6 space-y-2">
+    <li><strong className="font-semibold">Call Intrinsic Value:</strong> Max(0, S_T - X)</li>
+    <li><strong className="font-semibold">Put Intrinsic Value:</strong> Max(0, X - S_T)</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Moneyness Status at Expiration</h3>
+    <p>The profitability of the option (before accounting for premium) is determined by its moneyness status relative to the strike price (X):</p>
+    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
+        <thead className="bg-gray-50">
+            <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Moneyness</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Call Condition</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Put Condition</th>
+            </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+            <tr>
+                <td className="px-6 py-4"><strong className="font-semibold">In the Money (ITM)</strong></td>
+                <td className="px-6 py-4">S_T &gt; X</td>
+                <td className="px-6 py-4">S_T &lt; X</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4"><strong className="font-semibold">At the Money (ATM)</strong></td>
+                <td className="px-6 py-4">S_T = X</td>
+                <td className="px-6 py-4">S_T = X</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4"><strong className="font-semibold">Out of the Money (OTM)</strong></td>
+                <td className="px-6 py-4">S_T &lt; X</td>
+                <td className="px-6 py-4">S_T &gt; X</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Only ITM options have positive intrinsic value at expiration; ATM and OTM options expire worthless.</p>
+
+<hr />
+
+    {/* CALCULATING THE BREAK-EVEN PRICE */}
+    <h2 id="breakeven" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Break-Even Price</h2>
+    <p>The **Break-Even Price** is the underlying stock price ($S_T$) at which the option's profit is exactly zero, meaning the gain from the price movement equals the initial premium paid.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Break-Even Price Formulas</h3>
+    <p>The break-even price determines the minimal price movement required for the trade to be profitable for the option buyer.</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Long Call Break-Even:</strong> Strike Price + Premium</li>
+        <li><strong className="font-semibold">Long Put Break-Even:</strong> Strike Price - Premium</li>
+    </ul>
+    <p>For option sellers (Short Call/Short Put), the break-even is identical, representing the point where they begin to lose money.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Option payoff analysis quantifies the net profit or loss of a contract by determining the <strong className="font-semibold">Intrinsic Value</strong> (Max(0, ...)) at expiration and adjusting for the <strong className="font-semibold">Premium</strong> paid or received.</p>
+    <p>The payoff formulas reveal the core risk structure: option buyers face limited loss (the premium) and either unlimited (Call) or substantial (Put) profit potential. Option sellers face limited gain (the premium) and the corresponding large risk potential.</p>
+</section>
 
       <Card>
         <CardHeader>
