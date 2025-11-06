@@ -12,6 +12,7 @@ import { BarChart3, AlertCircle, Target, Info, Landmark, Calculator, DollarSign,
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
+import { average } from 'firebase/firestore';
 
 const formSchema = z.object({
   returns: z.string().min(1, 'At least one return value is required'),
@@ -296,25 +297,114 @@ export default function VolatilityStandardDeviationCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Volatility
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting volatility
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Volatility, measured as standard deviation, is a statistical measure of the dispersion of returns for a given security or market index. It indicates how much the price of an asset fluctuates around its average price over a specific period. Higher volatility means greater price swings and higher risk.
-          </p>
-          <p className="text-muted-foreground">
-            Understanding volatility is crucial for risk management, portfolio construction, and investment decision-making. It helps investors assess the potential for price movements and determine appropriate position sizes based on their risk tolerance and investment objectives.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Volatility and Standard Deviation: Calculation, Risk, and Investment Analysis" />
+    <meta itemProp="description" content="An expert guide detailing the Standard Deviation formula, its role as the primary metric for quantifying financial volatility (risk), its interpretation in portfolio analysis, and how to annualize daily volatility for comparison." />
+    <meta itemProp="keywords" content="volatility calculation standard deviation, investment risk metric, historical volatility formula, annualizing volatility finance, dispersion of returns, portfolio risk management, variance calculation" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-06" /> 
+    <meta itemProp="url" content="/definitive-volatility-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Volatility and Standard Deviation: Quantifying Financial Risk</h1>
+    <p className="text-lg italic text-gray-700">Master the foundational statistical metric that measures the expected magnitude of price movements in an asset or portfolio.</p>
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Volatility and Standard Deviation: Core Concepts</a></li>
+        <li><a href="#formula" className="hover:underline">The Standard Deviation Formula and Mechanics</a></li>
+        <li><a href="#variance" className="hover:underline">Variance: The Statistical Precursor</a></li>
+        <li><a href="#annualization" className="hover:underline">Annualizing Volatility for Comparison</a></li>
+        <li><a href="#interpretation" className="hover:underline">Interpretation and Risk Management</a></li>
+    </ul>
+<hr />
+
+    {/* VOLATILITY AND STANDARD DEVIATION: CORE CONCEPTS */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Volatility and Standard Deviation: Core Concepts</h2>
+    <p>In finance, **Volatility** is a measure of risk. It quantifies the degree of price fluctuation of a security (such as a stock, bond, or index) over a given time period. **Standard Deviation ($\sigma$)** is the primary statistical tool used to calculate this volatility.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Risk as Dispersion</h3>
+    <p>Standard Deviation measures the dispersion of a set of data points (in this case, periodic returns) around their average (mean). The higher the standard deviation, the greater the historical volatility and the greater the risk associated with the investment, as it implies a wider range of potential future returns.</p>
+    
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Historical vs. Implied Volatility</h3>
+    <p>The calculation performed using historical return data is called **Historical Volatility**. This is distinct from **Implied Volatility**, which is derived from the current market prices of options and represents the market's *forecast* of future price volatility.</p>
+
+<hr />
+
+    {/* THE STANDARD DEVIATION FORMULA AND MECHANICS */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Standard Deviation Formula and Mechanics</h2>
+    <p>Standard deviation is the square root of the variance. The full calculation requires several sequential steps to ensure accuracy.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <p>The standard deviation ($\sigma$) formula is:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'σ = Square Root of [ Sum((R_i - R_avg)^2) / (N - 1) ]'}
+        </p>
+    </div>
+    <p>Where:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>$R_i$ = The return in period i.</li>
+        <li>R avg = The arithmetic mean (average) of all returns.</li>
+        <li>$N$ = The total number of return periods observed.</li>
+    </ul>
+
+<hr />
+
+    {/* VARIANCE: THE STATISTICAL PRECURSOR */}
+    <h2 id="variance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Variance: The Statistical Precursor</h2>
+    <p>Before calculating standard deviation, the **Variance ($\sigma^2$)** must be determined. Variance is the average of the squared differences from the mean.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Steps in Calculating Variance</h3>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li><strong className="font-semibold">Find the Mean:</strong> Calculate the arithmetic average of all returns (R avg).</li>
+        <li><strong className="font-semibold">Calculate Deviations:</strong> Subtract the mean from each individual return: (R i minus R avg).</li>
+        <li><strong className="font-semibold">Square the Deviations:</strong> Square the result of Step 2. This removes negative values and exponentially penalizes larger deviations.</li>
+        <li><strong className="font-semibold">Calculate the Average (Variance):</strong> Sum the squared deviations and divide by $(N-1)$ for a sample, or $N$ for the total population.</li>
+    </ol>
+    <p>Standard deviation is simply the square root of this final variance value, bringing the risk metric back to the same unit of measure as the returns (e.g., percentage).</p>
+
+<hr />
+
+    {/* ANNUALIZING VOLATILITY FOR COMPARISON */}
+    <h2 id="annualization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Annualizing Volatility for Comparison</h2>
+    <p>Since standard deviation is calculated based on the measurement frequency (e.g., daily, monthly), it must be scaled to an annual rate (**annualized volatility**) for comparison against other assets and long-term benchmarks.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Square Root of Time Rule</h3>
+    <p>Volatility is proportional to the square root of time. To convert periodic standard deviation (sigma period) to an annual rate (sigma annual), the formula is:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'σ_{annual} = σ_{daily} * Square Root(Trading Days)'}
+        </p>
+    </div>
+    <p>In finance, the standard number of trading days used is 252 (or 365 for 24/7 markets like crypto). This conversion is essential for calculating annual metrics like the Sharpe Ratio.</p>
+
+<hr />
+
+    {/* INTERPRETATION AND RISK MANAGEMENT */}
+    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation and Risk Management</h2>
+    <p>Volatility is interpreted using statistical probability, assuming that returns follow a normal (bell-curve) distribution.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The 68-95-99.7 Rule (Normal Distribution)</h3>
+    <p>For an annual return distribution, the standard deviation allows investors to forecast the probable range of future returns:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>Approximately **68.3%** of all future returns are expected to fall within one standard deviation ($\pm 1\sigma$) of the mean return.</li>
+        <li>Approximately **95.5%** of all future returns are expected to fall within two standard deviations ($\pm 2\sigma$) of the mean return.</li>
+    </ul>
+    <p>For example, if the mean annual return is $10\%$ and the annual volatility is $20\%$, there is a $68.3\%$ chance the return will fall between $-10\%$ and $30\%$.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Risk Management Application</h3>
+    <p>Risk managers use volatility to determine **Value at Risk (VaR)**—the maximum amount a portfolio is expected to lose over a given time period at a specified confidence level (e.g., 95%).</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Volatility is the defining statistical measure of investment risk, quantified using the **Standard Deviation** of returns. It measures the dispersion of returns around the mean, providing a clear statistical measure of the expected magnitude of price swings.</p>
+    <p>Understanding standard deviation is essential for risk management, as it allows investors to forecast the probable range of returns and to calculate crucial risk-adjusted performance metrics like the Sharpe Ratio.</p>
+</section>
 
       <Card>
         <CardHeader>

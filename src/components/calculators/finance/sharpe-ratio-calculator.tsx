@@ -313,25 +313,103 @@ export default function SharpeRatioCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Sharpe Ratio
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting the Sharpe ratio
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            The Sharpe Ratio is a fundamental risk-adjusted performance metric that measures how much excess return you receive for the extra volatility you endure for holding a riskier asset. It's calculated as (Portfolio Return - Risk-Free Rate) ÷ Portfolio Standard Deviation.
-          </p>
-          <p className="text-muted-foreground">
-            This ratio helps investors understand whether the returns of an investment are due to smart investment decisions or excessive risk-taking. A higher Sharpe ratio indicates better risk-adjusted performance, making it a crucial tool for portfolio evaluation and comparison.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to the Sharpe Ratio: Calculation, Interpretation, and Risk-Adjusted Returns" />
+    <meta itemProp="description" content="An expert guide detailing the Sharpe Ratio formula, its role in measuring risk-adjusted performance, calculating excess return and standard deviation of returns, and its application in portfolio management and investment comparison." />
+    <meta itemProp="keywords" content="sharpe ratio formula explained, calculating risk-adjusted return, excess return investment, standard deviation of portfolio returns, risk-free rate finance, investment performance metric" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-02" /> 
+    <meta itemProp="url" content="/definitive-sharpe-ratio-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Sharpe Ratio: The Standard for Risk-Adjusted Performance</h1>
+    <p className="text-lg italic text-gray-700">Master the critical metric that assesses an investment’s return relative to the risk taken, quantifying the quality of the excess gain.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Sharpe Ratio: Definition and Core Purpose</a></li>
+        <li><a href="#formula" className="hover:underline">The Sharpe Ratio Formula and Components</a></li>
+        <li><a href="#excess-return" className="hover:underline">Calculating Excess Return (The Numerator)</a></li>
+        <li><a href="#risk" className="hover:underline">Measuring Portfolio Risk (The Denominator)</a></li>
+        <li><a href="#interpretation" className="hover:underline">Interpretation and Benchmarking Performance</a></li>
+    </ul>
+<hr />
+
+    {/* SHARPE RATIO: DEFINITION AND CORE PURPOSE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Sharpe Ratio: Definition and Core Purpose</h2>
+    <p>The **Sharpe Ratio** is a measure developed by Nobel laureate William F. Sharpe that calculates the **risk-adjusted return** of an investment portfolio. It is the most widely used metric in finance for comparing the performance of different assets or strategies.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Goal: Quality of Return</h3>
+    <p>The core philosophy of the Sharpe Ratio is that higher returns are only valuable if they are not accompanied by proportionally higher risk. The ratio quantifies the amount of additional return (premium) an investor receives for taking on one unit of total risk (volatility).</p>
+    <p>A higher Sharpe Ratio indicates better risk-adjusted performance. A ratio of $1.0$ is generally considered good, while a ratio of $2.0$ or higher is excellent.</p>
+
+<hr />
+
+    {/* THE SHARPE RATIO FORMULA AND COMPONENTS */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Sharpe Ratio Formula and Components</h2>
+    <p>The ratio is constructed by dividing the portfolio's excess return (the reward) by the portfolio's total volatility (the risk).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <p>The formula for the Sharpe Ratio (S) is:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'S = (R_p - R_f) / σ_p'}
+        </p>
+    </div>
+
+    <p>Where:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>$R_p$ = Return of the Portfolio (Average return over the period).</li>
+        <li>$R_f$ = Risk-Free Rate (Return of a risk-free asset, like a Treasury bill).</li>
+        <li>$\sigma_p$ = Standard Deviation of the Portfolio's Returns (Volatility/Risk).</li>
+    </ul>
+
+<hr />
+
+    {/* CALCULATING EXCESS RETURN (THE NUMERATOR) */}
+    <h2 id="excess-return" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Excess Return (The Numerator)</h2>
+    <p>The numerator of the Sharpe Ratio, $(R_p - R_f)$, is the **Excess Return**—the return earned above and beyond what could have been achieved risk-free.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Risk-Free Rate ($R_f$)</h3>
+    <p>The Risk-Free Rate ($R_f$) is theoretically the return of an investment with zero risk of default. In practice, this is usually defined as the yield on short-term U.S. Treasury bills (e.g., 3-month T-Bills), as they are considered free of credit risk.</p>
+    <p>This subtraction ensures that the ratio only credits the portfolio manager for the return generated by taking on *actual* investment risk.</p>
+
+<hr />
+
+    {/* MEASURING PORTFOLIO RISK (THE DENOMINATOR) */}
+    <h2 id="risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Measuring Portfolio Risk (The Denominator)</h2>
+    <p>The denominator, $\sigma_p$, is the **Standard Deviation** of the portfolio's returns. Standard deviation is the conventional measure of volatility in finance, quantifying the dispersion of returns around the portfolio's average return.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Standard Deviation as Total Risk</h3>
+    <p>In the context of the Sharpe Ratio, standard deviation measures **Total Risk**, which includes both systematic risk (market risk) and unsystematic risk (specific risk). The formula penalizes the portfolio for any volatility, regardless of whether that volatility could be diversified away.</p>
+    <p>The volatility must be calculated over the same time frame as the average return and the risk-free rate (e.g., all must be annualized).</p>
+
+<hr />
+
+    {/* INTERPRETATION AND BENCHMARKING PERFORMANCE */}
+    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation and Benchmarking Performance</h2>
+    <p>The Sharpe Ratio is used for making apples-to-apples comparisons of investment performance across different asset classes, strategies, and fund managers.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Comparison Rule</h3>
+    <p>When comparing two portfolios, the one with the **higher Sharpe Ratio** has delivered higher returns for the equivalent amount of volatility, or the same return with lower volatility. This is the definition of superior risk-adjusted performance.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation Benchmarks</h3>
+    <p>While there are no universally fixed ranges, performance is generally judged as:</p>
+    <ul className="list-disc ml-6 space-y-2">
+    <li><strong className="font-semibold">S &lt; 1.0 (Suboptimal):</strong> The portfolio's volatility is too high relative to its excess return.</li>
+        <li>**S = 1.0:** The portfolio is generating one unit of excess return for every unit of risk taken (Generally considered good).</li>
+        <li>**S {'>'} 2.0 (Excellent):** The portfolio is generating two units or more of excess return per unit of risk (High-quality performance).</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Sharpe Ratio is the indispensable metric for quantifying the **quality** of investment returns. It measures the excess return earned by a portfolio above the risk-free rate, divided by the portfolio's total volatility (standard deviation).</p>
+    <p>A higher Sharpe Ratio signifies superior risk-adjusted performance, confirming that the fund manager is efficiently generating returns without exposing investors to undue or excessive levels of risk.</p>
+</section>
 
       <Card>
         <CardHeader>
