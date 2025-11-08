@@ -744,6 +744,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'position-sizing-calculator': dynamic(() => import('@/components/calculators/finance/position-sizing-calculator')),
     'risk-reward-ratio-calculator': dynamic(() => import('@/components/calculators/finance/risk-reward-ratio-calculator')),
     'kelly-criterion-calculator': dynamic(() => import('@/components/calculators/finance/kelly-criterion-calculator')),
+    'stop-loss-take-profit-calculator': dynamic(() => import('@/components/calculators/finance/stop-loss-take-profit-calculator')),
+    'maximum-drawdown-calculator': dynamic(() => import('@/components/calculators/finance/maximum-drawdown-calculator')),
+    'win-rate-expectancy-calculator': dynamic(() => import('@/components/calculators/finance/win-rate-expectancy-calculator')),
+    'cagr-from-trade-history-calculator': dynamic(() => import('@/components/calculators/finance/cagr-from-trade-history-calculator')),
+    'volatility-target-position-size-calculator': dynamic(() => import('@/components/calculators/finance/volatility-target-position-size-calculator')),
 };
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {

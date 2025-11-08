@@ -165,6 +165,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Determine optimal position size using the Kelly Criterion formula for maximizing long-term portfolio growth.'
   },
   {
+    id: 4726,
+    name: 'Stop Loss / Take Profit Calculator',
+    description: 'Calculate stop loss and take profit levels from entry price, risk amount, and risk/reward ratio for trade management.',
+    slug: 'stop-loss-take-profit-calculator',
+    category: 'finance',
+    metaTitle: 'Stop Loss / Take Profit Calculator',
+    metaDescription: 'Calculate optimal stop loss and take profit levels based on entry price, risk tolerance, and risk/reward ratio.'
+  },
+  {
+    id: 4727,
+    name: 'Maximum Drawdown Calculator',
+    description: 'Calculate maximum drawdown from portfolio value series to measure peak-to-trough decline and downside risk.',
+    slug: 'maximum-drawdown-calculator',
+    category: 'finance',
+    metaTitle: 'Maximum Drawdown Calculator',
+    metaDescription: 'Calculate maximum drawdown from portfolio values to assess peak-to-trough decline and downside risk exposure.'
+  },
+  {
+    id: 4728,
+    name: 'Win Rate & Expectancy Calculator',
+    description: 'Calculate win rate, expectancy, and expected value from trade history to assess trading strategy performance.',
+    slug: 'win-rate-expectancy-calculator',
+    category: 'finance',
+    metaTitle: 'Win Rate & Expectancy Calculator',
+    metaDescription: 'Calculate win rate, trade expectancy, and expected value from trade history to evaluate trading strategy profitability.'
+  },
+  {
+    id: 4729,
+    name: 'CAGR from Trade History Calculator',
+    description: 'Calculate compound annual growth rate (CAGR) from trade history, including returns, dates, and contributions.',
+    slug: 'cagr-from-trade-history-calculator',
+    category: 'finance',
+    metaTitle: 'CAGR from Trade History Calculator',
+    metaDescription: 'Calculate compound annual growth rate (CAGR) from trade history and portfolio performance data.'
+  },
+  {
+    id: 4730,
+    name: 'Volatility Target Position Size Calculator',
+    description: 'Calculate position size based on target portfolio volatility, asset volatility, and correlation for risk targeting.',
+    slug: 'volatility-target-position-size-calculator',
+    category: 'finance',
+    metaTitle: 'Volatility Target Position Size Calculator',
+    metaDescription: 'Calculate optimal position size based on target portfolio volatility, asset volatility, and correlation for risk-based position sizing.'
+  },
+  {
     id: 4702,
     name: 'Minimum Variance Portfolio Calculator',
     description: 'Get the global minimum variance allocation for two assets from volatilities and correlation.',
