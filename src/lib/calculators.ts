@@ -120,6 +120,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Match asset cash flows to liability obligations for pension funds, insurance, and institutional portfolios.'
   },
   {
+    id: 4721,
+    name: 'Expected Shortfall (Tail Risk) Calculator',
+    description: 'Calculate expected shortfall (CVaR) to measure tail risk and potential losses beyond VaR at a given confidence level.',
+    slug: 'expected-shortfall-calculator',
+    category: 'finance',
+    metaTitle: 'Expected Shortfall (Tail Risk) Calculator',
+    metaDescription: 'Compute expected shortfall (Conditional Value at Risk) to assess tail risk and potential losses in extreme market scenarios.'
+  },
+  {
+    id: 4722,
+    name: 'Portfolio Rebalancing Planner',
+    description: 'Plan portfolio rebalancing by calculating target allocations, current drift, and required trades to restore target weights.',
+    slug: 'portfolio-rebalancing-planner',
+    category: 'finance',
+    metaTitle: 'Portfolio Rebalancing Planner',
+    metaDescription: 'Calculate rebalancing trades needed to restore target portfolio allocations and manage drift from market movements.'
+  },
+  {
+    id: 4723,
+    name: 'Position Sizing Calculator',
+    description: 'Calculate optimal position sizes based on portfolio value, risk tolerance, stop loss, and account risk percentage.',
+    slug: 'position-sizing-calculator',
+    category: 'finance',
+    metaTitle: 'Position Sizing Calculator',
+    metaDescription: 'Determine optimal position sizes for portfolio positions using risk-based position sizing methods and stop-loss levels.'
+  },
+  {
+    id: 4724,
+    name: 'Risk/Reward Ratio Calculator',
+    description: 'Calculate risk/reward ratio from entry price, stop loss, and target price to assess trade attractiveness.',
+    slug: 'risk-reward-ratio-calculator',
+    category: 'finance',
+    metaTitle: 'Risk/Reward Ratio Calculator',
+    metaDescription: 'Compute risk/reward ratio for trading positions to evaluate potential returns relative to risk and set profit targets.'
+  },
+  {
+    id: 4725,
+    name: 'Kelly Criterion Calculator',
+    description: 'Calculate optimal position size using the Kelly Criterion based on win probability and average win/loss ratio.',
+    slug: 'kelly-criterion-calculator',
+    category: 'finance',
+    metaTitle: 'Kelly Criterion Calculator',
+    metaDescription: 'Determine optimal position size using the Kelly Criterion formula for maximizing long-term portfolio growth.'
+  },
+  {
     id: 4702,
     name: 'Minimum Variance Portfolio Calculator',
     description: 'Get the global minimum variance allocation for two assets from volatilities and correlation.',

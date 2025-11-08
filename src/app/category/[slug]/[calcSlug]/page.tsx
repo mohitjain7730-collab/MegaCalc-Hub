@@ -739,6 +739,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'tax-equivalent-yield-calculator': dynamic(() => import('@/components/calculators/finance/tax-equivalent-yield-calculator')),
     'duration-matching-calculator': dynamic(() => import('@/components/calculators/finance/duration-matching-calculator')),
     'asset-liability-matching-calculator': dynamic(() => import('@/components/calculators/finance/asset-liability-matching-calculator')),
+    'expected-shortfall-calculator': dynamic(() => import('@/components/calculators/finance/expected-shortfall-calculator')),
+    'portfolio-rebalancing-planner': dynamic(() => import('@/components/calculators/finance/portfolio-rebalancing-planner')),
+    'position-sizing-calculator': dynamic(() => import('@/components/calculators/finance/position-sizing-calculator')),
+    'risk-reward-ratio-calculator': dynamic(() => import('@/components/calculators/finance/risk-reward-ratio-calculator')),
+    'kelly-criterion-calculator': dynamic(() => import('@/components/calculators/finance/kelly-criterion-calculator')),
 };
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {
