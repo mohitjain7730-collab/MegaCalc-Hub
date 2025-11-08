@@ -66,6 +66,60 @@ export const calculators: Calculator[] = [
     metaDescription: 'Analyze portfolio vs benchmark factor exposures to detect style drift with intuitive interpretation.'
   },
   {
+    id: 4715,
+    name: 'Rolling Return Calculator',
+    description: 'Calculate rolling period returns (1-year, 3-year, 5-year) from a time series to assess performance consistency.',
+    slug: 'rolling-return-calculator',
+    category: 'finance',
+    metaTitle: 'Rolling Return Calculator',
+    metaDescription: 'Compute rolling period returns from historical data to analyze performance consistency across different time horizons.'
+  },
+  {
+    id: 4716,
+    name: 'Sector Exposure Calculator',
+    description: 'Calculate portfolio sector allocation and concentration risk from position weights and sector classifications.',
+    slug: 'sector-exposure-calculator',
+    category: 'finance',
+    metaTitle: 'Sector Exposure Calculator',
+    metaDescription: 'Analyze portfolio sector exposure and concentration to identify diversification gaps and sector risk.'
+  },
+  {
+    id: 4717,
+    name: 'Portfolio Turnover Ratio Calculator',
+    description: 'Measure portfolio trading activity by calculating turnover ratio from purchases, sales, and average portfolio value.',
+    slug: 'portfolio-turnover-ratio-calculator',
+    category: 'finance',
+    metaTitle: 'Portfolio Turnover Ratio Calculator',
+    metaDescription: 'Calculate portfolio turnover ratio to assess trading frequency, transaction costs, and tax efficiency.'
+  },
+  {
+    id: 4718,
+    name: 'Tax-Equivalent Yield (Municipal Bonds) Calculator',
+    description: 'Compute tax-equivalent yield for municipal bonds given tax-free yield, marginal tax rate, and taxable equivalent.',
+    slug: 'tax-equivalent-yield-calculator',
+    category: 'finance',
+    metaTitle: 'Tax-Equivalent Yield (Municipal Bonds) Calculator',
+    metaDescription: 'Calculate tax-equivalent yield for municipal bonds to compare with taxable bond yields at your marginal tax rate.'
+  },
+  {
+    id: 4719,
+    name: 'Duration Matching (Immunization) Calculator',
+    description: 'Match portfolio duration to liability duration for immunization, minimizing interest rate risk.',
+    slug: 'duration-matching-calculator',
+    category: 'finance',
+    metaTitle: 'Duration Matching (Immunization) Calculator',
+    metaDescription: 'Calculate portfolio duration and match it to liability duration for immunization strategy to hedge interest rate risk.'
+  },
+  {
+    id: 4720,
+    name: 'Asset-Liability Matching Calculator',
+    description: 'Analyze asset-liability matching for portfolios with future liabilities, ensuring cash flows align with obligations.',
+    slug: 'asset-liability-matching-calculator',
+    category: 'finance',
+    metaTitle: 'Asset-Liability Matching Calculator',
+    metaDescription: 'Match asset cash flows to liability obligations for pension funds, insurance, and institutional portfolios.'
+  },
+  {
     id: 4702,
     name: 'Minimum Variance Portfolio Calculator',
     description: 'Get the global minimum variance allocation for two assets from volatilities and correlation.',

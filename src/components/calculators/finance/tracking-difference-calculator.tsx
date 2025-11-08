@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,7 +10,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Info } from 'lucide-react';
-import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   fund: z.string().min(1),
@@ -115,45 +113,57 @@ export default function TrackingDifferenceCalculator() {
       )}
 
       <Card>
-        <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Benchmarking tools</CardDescription></CardHeader>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Related Calculators</CardTitle>
+          <CardDescription>Benchmarking tools</CardDescription>
+        </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/portfolio-drawdown-calculator" className="text-primary hover:underline">Portfolio Drawdown</Link></h4><p className="text-sm text-muted-foreground">Path risk metrics.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/beta-weighted-portfolio-exposure-calculator" className="text-primary hover:underline">Beta‑weighted Exposure</Link></h4><p className="text-sm text-muted-foreground">Benchmark sensitivity.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/sharpe-ratio-calculator" className="text-primary hover:underline">Sharpe Ratio</Link></h4><p className="text-sm text-muted-foreground">Risk‑adjusted return.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/mean-variance-optimization-calculator" className="text-primary hover:underline">Mean‑Variance Optimization</Link></h4><p className="text-sm text-muted-foreground">Efficient frontier.</p></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/portfolio-drawdown-calculator" className="text-primary hover:underline">Portfolio Drawdown</a></h4><p className="text-sm text-muted-foreground">Path risk metrics.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/beta-weighted-portfolio-exposure-calculator" className="text-primary hover:underline">Beta‑weighted Portfolio Exposure</a></h4><p className="text-sm text-muted-foreground">Benchmark sensitivity.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/sharpe-ratio-calculator" className="text-primary hover:underline">Sharpe Ratio</a></h4><p className="text-sm text-muted-foreground">Risk‑adjusted return.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/mean-variance-optimization-calculator" className="text-primary hover:underline">Mean‑Variance Optimization</a></h4><p className="text-sm text-muted-foreground">Efficient frontier.</p></div>
           </div>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Sample Guide: Tracking Difference vs Tracking Error</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Tracking difference is the average return gap; tracking error is the standard deviation of that gap. Use both to assess replication quality.</p>
-          <p>Fee drag and sampling can create persistent negative tracking difference even when tracking error is small.</p>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Guide</CardTitle>
+          <CardDescription>Understanding tracking difference and tracking error for fund evaluation</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="list-disc pl-6 space-y-2 text-sm">
+            <li>Tracking difference is the average return gap between a fund and its benchmark; tracking error is the standard deviation of that gap.</li>
+            <li>Use both metrics to assess replication quality—low tracking difference and error indicate better benchmark tracking.</li>
+            <li>Fee drag and sampling can create persistent negative tracking difference even when tracking error is small.</li>
+            <li>Match frequency to your evaluation horizon: monthly for funds, daily for ETFs, annual for long-term assessments.</li>
+          </ul>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Frequently Asked Questions</CardTitle></CardHeader>
-        <CardContent className="space-y-3">
-          <details><summary>What is tracking difference?</summary><p>The average return difference between a fund and its benchmark over time.</p></details>
-          <details><summary>How is it different from tracking error?</summary><p>Tracking error measures volatility of the difference; both are informative.</p></details>
-          <details><summary>Which frequency should I use?</summary><p>Match your evaluation horizon; monthly is common for funds, daily for ETFs.</p></details>
-          <details><summary>Why is average difference negative?</summary><p>Fees, taxes, and sampling can create a persistent lag versus the benchmark.</p></details>
-          <details><summary>Can tracking difference be positive?</summary><p>Occasionally due to securities lending or sampling luck, but not guaranteed.</p></details>
-          <details><summary>How many periods should I include?</summary><p>Use enough observations (e.g., 36–60 monthly) for stable estimates.</p></details>
-          <details><summary>Do I need to annualize results?</summary><p>Yes for comparability; this tool reports annualized stats based on frequency.</p></details>
-          <details><summary>How do large outliers affect results?</summary><p>They inflate tracking error; consider robust metrics for stress periods.</p></details>
-          <details><summary>Is tracking error the same as active risk?</summary><p>Yes; it’s the standard deviation of active returns.</p></details>
-          <details><summary>How can I reduce tracking difference?</summary><p>Optimize replication, reduce fees, and manage cash drag and rebalancing slippage.</p></details>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Frequently Asked Questions</CardTitle>
+          <CardDescription>Tracking difference, tracking error, and fund benchmarking</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div><h4 className="font-semibold mb-2">What is tracking difference?</h4><p className="text-muted-foreground">The average return difference between a fund and its benchmark over time, indicating persistent outperformance or underperformance.</p></div>
+          <div><h4 className="font-semibold mb-2">How is it different from tracking error?</h4><p className="text-muted-foreground">Tracking error measures volatility of the difference; both are informative for understanding fund performance relative to benchmarks.</p></div>
+          <div><h4 className="font-semibold mb-2">Which frequency should I use?</h4><p className="text-muted-foreground">Match your evaluation horizon; monthly is common for funds, daily for ETFs, annual for long-term assessments.</p></div>
+          <div><h4 className="font-semibold mb-2">Why is average difference negative?</h4><p className="text-muted-foreground">Fees, taxes, and sampling can create a persistent lag versus the benchmark. Even low-cost index funds typically have small negative tracking differences.</p></div>
+          <div><h4 className="font-semibold mb-2">Can tracking difference be positive?</h4><p className="text-muted-foreground">Occasionally due to securities lending income or sampling luck, but not guaranteed. Positive differences are rare for passive funds.</p></div>
+          <div><h4 className="font-semibold mb-2">How many periods should I include?</h4><p className="text-muted-foreground">Use enough observations (e.g., 36–60 monthly) for stable estimates. More data provides better statistical significance.</p></div>
+          <div><h4 className="font-semibold mb-2">Do I need to annualize results?</h4><p className="text-muted-foreground">Yes for comparability; this tool reports annualized stats based on frequency to enable comparisons across different evaluation periods.</p></div>
+          <div><h4 className="font-semibold mb-2">How do large outliers affect results?</h4><p className="text-muted-foreground">They inflate tracking error; consider robust metrics for stress periods or use median-based measures for more stable estimates.</p></div>
+          <div><h4 className="font-semibold mb-2">Is tracking error the same as active risk?</h4><p className="text-muted-foreground">Yes; it's the standard deviation of active returns, measuring the variability of fund performance relative to the benchmark.</p></div>
+          <div><h4 className="font-semibold mb-2">How can I reduce tracking difference?</h4><p className="text-muted-foreground">Optimize replication, reduce fees, and manage cash drag and rebalancing slippage. Lower-cost funds typically have smaller tracking differences.</p></div>
         </CardContent>
       </Card>
-
-      <EmbedWidget calculatorSlug="tracking-difference-calculator" calculatorName="Tracking Difference Calculator" />
     </div>
   );
 }
+
 
 
 

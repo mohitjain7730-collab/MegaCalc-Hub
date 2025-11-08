@@ -733,6 +733,12 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'security-market-line-calculator': dynamic(() => import('@/components/calculators/finance/security-market-line-calculator')),
     'tracking-difference-calculator': dynamic(() => import('@/components/calculators/finance/tracking-difference-calculator')),
     'style-drift-analyzer': dynamic(() => import('@/components/calculators/finance/style-drift-analyzer')),
+    'rolling-return-calculator': dynamic(() => import('@/components/calculators/finance/rolling-return-calculator')),
+    'sector-exposure-calculator': dynamic(() => import('@/components/calculators/finance/sector-exposure-calculator')),
+    'portfolio-turnover-ratio-calculator': dynamic(() => import('@/components/calculators/finance/portfolio-turnover-ratio-calculator')),
+    'tax-equivalent-yield-calculator': dynamic(() => import('@/components/calculators/finance/tax-equivalent-yield-calculator')),
+    'duration-matching-calculator': dynamic(() => import('@/components/calculators/finance/duration-matching-calculator')),
+    'asset-liability-matching-calculator': dynamic(() => import('@/components/calculators/finance/asset-liability-matching-calculator')),
 };
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {

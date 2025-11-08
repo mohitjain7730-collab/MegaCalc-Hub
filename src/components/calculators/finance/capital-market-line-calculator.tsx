@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,27 +9,50 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Info } from 'lucide-react';
-import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
-  riskFree: z.number().min(-100).max(100),
-  marketReturn: z.number().min(-100).max(100),
-  marketStdev: z.number().min(0).max(200),
-  targetStdev: z.number().min(0).max(200),
+  riskFree: z.number().min(-100).max(100).optional(),
+  marketReturn: z.number().min(-100).max(100).optional(),
+  marketStdev: z.number().min(0).max(200).optional(),
+  targetStdev: z.number().min(0).max(200).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CapitalMarketLineCalculator() {
   const [result, setResult] = useState<{ slope: number; expectedReturn: number; interpretation: string } | null>(null);
-  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { riskFree: 2, marketReturn: 8, marketStdev: 15, targetStdev: 10 } });
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      riskFree: undefined as unknown as number,
+      marketReturn: undefined as unknown as number,
+      marketStdev: undefined as unknown as number,
+      targetStdev: undefined as unknown as number,
+    }
+  });
 
-  const numInput = (name: keyof FormValues, label: string, suffix = '%') => (
+  const numInput = (name: keyof FormValues, label: string, placeholder: string, suffix = '%') => (
     <FormField control={form.control} name={name} render={({ field }) => (
       <FormItem>
         <FormLabel>{label}</FormLabel>
         <FormControl>
-          <div className="flex items-center gap-2"><Input type="number" step="0.01" {...field} /><span className="text-sm text-muted-foreground">{suffix}</span></div>
+          <div className="flex items-center gap-2">
+            <Input
+              type="number"
+              step="0.01"
+              placeholder={placeholder}
+              value={Number.isFinite(field.value as any) ? (field.value as any) : ''}
+              onChange={e => {
+                const v = e.target.value;
+                const n = v === '' ? undefined : Number(v);
+                field.onChange(Number.isFinite(n as any) ? n : undefined);
+              }}
+              onBlur={field.onBlur}
+              name={field.name}
+              ref={field.ref}
+            />
+            <span className="text-sm text-muted-foreground">{suffix}</span>
+          </div>
         </FormControl>
         <FormMessage />
       </FormItem>
@@ -38,6 +60,10 @@ export default function CapitalMarketLineCalculator() {
   );
 
   const onSubmit = (v: FormValues) => {
+    if (v.riskFree == null || v.marketReturn == null || v.marketStdev == null || v.targetStdev == null) {
+      setResult(null);
+      return;
+    }
     const rf = v.riskFree / 100;
     const rm = v.marketReturn / 100;
     const sm = v.marketStdev / 100;
@@ -60,11 +86,11 @@ export default function CapitalMarketLineCalculator() {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {numInput('riskFree', 'Risk‑Free Rate')}
-              {numInput('marketReturn', 'Market Expected Return')}
-              {numInput('marketStdev', 'Market Volatility (σm)')}
-              {numInput('targetStdev', 'Target Portfolio Volatility')}
-              <div className="md:col-span-2"><Button type="submit">Calculate</Button></div>
+              {numInput('riskFree', 'Risk‑Free Rate', 'e.g., 2')}
+              {numInput('marketReturn', 'Market Expected Return', 'e.g., 8')}
+              {numInput('marketStdev', 'Market Volatility (σm)', 'e.g., 15')}
+              {numInput('targetStdev', 'Target Portfolio Volatility', 'e.g., 10')}
+              <div className="md:col-span-2"><Button type="submit" className="w-full md:w-auto">Calculate</Button></div>
             </form>
           </Form>
         </CardContent>
@@ -86,45 +112,57 @@ export default function CapitalMarketLineCalculator() {
       )}
 
       <Card>
-        <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Portfolio theory</CardDescription></CardHeader>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Related Calculators</CardTitle>
+          <CardDescription>Portfolio theory</CardDescription>
+        </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/tangency-portfolio-calculator" className="text-primary hover:underline">Tangency Portfolio</Link></h4><p className="text-sm text-muted-foreground">Max Sharpe mix.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/mean-variance-optimization-calculator" className="text-primary hover:underline">Mean‑Variance Optimization</Link></h4><p className="text-sm text-muted-foreground">Efficient allocations.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/minimum-variance-portfolio-calculator" className="text-primary hover:underline">Minimum Variance</Link></h4><p className="text-sm text-muted-foreground">Risk floor.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/sharpe-ratio-calculator" className="text-primary hover:underline">Sharpe Ratio</Link></h4><p className="text-sm text-muted-foreground">Risk‑adjusted return.</p></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/tangency-portfolio-calculator" className="text-primary hover:underline">Tangency Portfolio (Max Sharpe)</a></h4><p className="text-sm text-muted-foreground">Sharpe‑maximizing mix.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/mean-variance-optimization-calculator" className="text-primary hover:underline">Mean‑Variance Optimization</a></h4><p className="text-sm text-muted-foreground">Efficient allocations.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/minimum-variance-portfolio-calculator" className="text-primary hover:underline">Minimum Variance Portfolio</a></h4><p className="text-sm text-muted-foreground">Lowest risk allocation.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/sharpe-ratio-calculator" className="text-primary hover:underline">Sharpe Ratio</a></h4><p className="text-sm text-muted-foreground">Risk‑adjusted return.</p></div>
           </div>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Sample Guide: Understanding the CML</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>The CML links portfolio risk (σ) to expected return when combining the market portfolio with the risk‑free asset. The slope equals the market Sharpe ratio.</p>
-          <p>Levered positions extend above the market volatility; de‑levered positions lie between the risk‑free rate and market point.</p>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Guide</CardTitle>
+          <CardDescription>Understanding the Capital Market Line and risk-return relationships</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="list-disc pl-6 space-y-2 text-sm">
+            <li>The CML links portfolio risk (σ) to expected return when combining the market portfolio with the risk‑free asset. The slope equals the market Sharpe ratio.</li>
+            <li>Levered positions extend above the market volatility; de‑levered positions lie between the risk‑free rate and market point.</li>
+            <li>Inputs should be annualized and consistent—use the same time horizon for risk‑free rate, market return, and volatility.</li>
+            <li>Portfolios below the CML are inefficient; those on or above it represent optimal risk‑return trade‑offs.</li>
+          </ul>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Frequently Asked Questions</CardTitle></CardHeader>
-        <CardContent className="space-y-3">
-          <details><summary>What inputs define the CML?</summary><p>Risk‑free rate, market expected return, and market volatility set the slope and intercept.</p></details>
-          <details><summary>How is CML slope computed?</summary><p>(Rm − Rf) / σm, which equals the market Sharpe ratio.</p></details>
-          <details><summary>What does a higher slope imply?</summary><p>Greater expected return per unit of risk, improving attractiveness of levering the market portfolio.</p></details>
-          <details><summary>Can expected return be below the CML?</summary><p>Yes; inefficient portfolios lie below the CML, indicating suboptimal risk‑return trade‑off.</p></details>
-          <details><summary>How does leverage show on the CML?</summary><p>Target σ above market σ implies borrowing at Rf to invest more in the market portfolio.</p></details>
-          <details><summary>Does changing Rf move the CML?</summary><p>Yes; it shifts up/down and changes slope via the risk premium.</p></details>
-          <details><summary>Is the market point always efficient?</summary><p>Under CAPM assumptions yes; in practice consider frictions, constraints, and estimation error.</p></details>
-          <details><summary>What horizon are inputs?</summary><p>Annualized returns and volatility are typical; be consistent across inputs.</p></details>
-          <details><summary>Can I use this for target‑date planning?</summary><p>It provides a simple return‑risk mapping but does not replace full glidepath analysis.</p></details>
-          <details><summary>How often should I update inputs?</summary><p>At least annually or when risk‑free rates and market conditions change materially.</p></details>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Frequently Asked Questions</CardTitle>
+          <CardDescription>Capital Market Line, risk-return relationships, and portfolio efficiency</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div><h4 className="font-semibold mb-2">What inputs define the CML?</h4><p className="text-muted-foreground">Risk‑free rate, market expected return, and market volatility set the slope and intercept of the CML.</p></div>
+          <div><h4 className="font-semibold mb-2">How is CML slope computed?</h4><p className="text-muted-foreground">(Rm − Rf) / σm, which equals the market Sharpe ratio. Higher slopes indicate better risk‑adjusted returns.</p></div>
+          <div><h4 className="font-semibold mb-2">What does a higher slope imply?</h4><p className="text-muted-foreground">Greater expected return per unit of risk, improving attractiveness of levering the market portfolio.</p></div>
+          <div><h4 className="font-semibold mb-2">Can expected return be below the CML?</h4><p className="text-muted-foreground">Yes; inefficient portfolios lie below the CML, indicating suboptimal risk‑return trade‑off. Consider rebalancing to improve efficiency.</p></div>
+          <div><h4 className="font-semibold mb-2">How does leverage show on the CML?</h4><p className="text-muted-foreground">Target σ above market σ implies borrowing at Rf to invest more in the market portfolio, extending along the CML.</p></div>
+          <div><h4 className="font-semibold mb-2">Does changing Rf move the CML?</h4><p className="text-muted-foreground">Yes; it shifts up/down and changes slope via the risk premium. Higher risk‑free rates reduce the market premium and flatten the CML.</p></div>
+          <div><h4 className="font-semibold mb-2">Is the market point always efficient?</h4><p className="text-muted-foreground">Under CAPM assumptions yes; in practice consider frictions, constraints, and estimation error that may affect efficiency.</p></div>
+          <div><h4 className="font-semibold mb-2">What horizon are inputs?</h4><p className="text-muted-foreground">Annualized returns and volatility are typical; be consistent across inputs and match your investment horizon.</p></div>
+          <div><h4 className="font-semibold mb-2">Can I use this for target‑date planning?</h4><p className="text-muted-foreground">It provides a simple return‑risk mapping but does not replace full glidepath analysis with age‑based asset allocation.</p></div>
+          <div><h4 className="font-semibold mb-2">How often should I update inputs?</h4><p className="text-muted-foreground">At least annually or when risk‑free rates and market conditions change materially. Monitor quarterly for tactical adjustments.</p></div>
         </CardContent>
       </Card>
-
-      <EmbedWidget calculatorSlug="capital-market-line-calculator" calculatorName="Capital Market Line (CML) Calculator" />
     </div>
   );
 }
+
 
 
 

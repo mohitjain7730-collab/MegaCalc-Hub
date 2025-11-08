@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Link from 'next/link';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,8 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Info } from 'lucide-react';
-import { EmbedWidget } from '@/components/embed-widget';
+import { Info, BarChart3 } from 'lucide-react';
 
 const formSchema = z.object({
   csv: z.string().min(1, 'Paste CSV data with headers'),
@@ -94,18 +92,32 @@ export default function PortfolioCorrelationHeatmapTool() {
 
   const heatCells = useMemo(() => {
     if (!result) return null;
+    const n = result.headers.length;
     return result.corr.map((row, i) => (
-      <div key={i} className="grid grid-cols-[12rem_repeat(var(--n),minmax(2.5rem,1fr))]" style={{ ['--n' as any]: row.length }}>
-        <div className="sticky left-0 bg-background z-10 pr-2 py-1 text-sm font-medium">{result.headers[i]}</div>
-        {row.map((v, j) => {
-          const hue = ((v + 1) / 2) * 120; // -1 red -> 0; +1 green -> 120
-          const intensity = 0.85;
-          return (
-            <div key={j} className="flex items-center justify-center text-xs font-medium border" style={{ backgroundColor: `hsl(${hue} 75% ${Math.round(100 - intensity * 50)}%)` }}>
-              {v.toFixed(2)}
-            </div>
-          );
-        })}
+      <div key={i} className="flex border-b last:border-b-0">
+        <div className="sticky left-0 bg-background z-10 pr-4 py-2 text-sm font-medium border-r min-w-[8rem]">{result.headers[i]}</div>
+        <div className="flex-1 grid" style={{ gridTemplateColumns: `repeat(${n}, minmax(4rem, 1fr))` }}>
+          {row.map((v, j) => {
+            // Color mapping: -1 (red) to +1 (blue/green)
+            // Scale from 0 (red) to 240 (blue) for positive, 0 (red) for negative
+            const intensity = Math.abs(v);
+            let bgColor: string;
+            if (v >= 0) {
+              // Positive correlations: green to blue (120 to 240)
+              const hue = 120 + (v * 120); // 0->120 (green), 1->240 (blue)
+              bgColor = `hsl(${hue}, 70%, ${85 - intensity * 25}%)`;
+            } else {
+              // Negative correlations: red to orange (0 to 30)
+              const hue = 0;
+              bgColor = `hsl(${hue}, 70%, ${85 + intensity * 10}%)`;
+            }
+            return (
+              <div key={j} className="flex items-center justify-center text-xs font-medium border-r last:border-r-0 p-2" style={{ backgroundColor: bgColor }}>
+                {v.toFixed(2)}
+              </div>
+            );
+          })}
+        </div>
       </div>
     ));
   }, [result]);
@@ -114,8 +126,8 @@ export default function PortfolioCorrelationHeatmapTool() {
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle>Portfolio Correlation Heatmap</CardTitle>
-          <CardDescription>Paste returns with headers (columns = assets, rows = periods). Values can be decimal or %.</CardDescription>
+          <CardTitle className="flex items-center gap-2"><BarChart3 className="h-5 w-5"/> Portfolio Correlation Heatmap Tool</CardTitle>
+          <CardDescription>Paste returns with headers (columns = assets, rows = periods). Values can be decimal or percentage.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -129,7 +141,7 @@ export default function PortfolioCorrelationHeatmapTool() {
                   <FormMessage />
                 </FormItem>
               )} />
-              <Button type="submit">Generate Heatmap</Button>
+              <Button type="submit" className="w-full md:w-auto">Generate Heatmap</Button>
             </form>
           </Form>
         </CardContent>
@@ -138,67 +150,81 @@ export default function PortfolioCorrelationHeatmapTool() {
       {result && (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Results & Interpretation</CardTitle>
-            <CardDescription>Interactive correlation matrix</CardDescription>
+            <CardTitle>Results</CardTitle>
+            <CardDescription>Interactive correlation matrix with interpretation</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4 overflow-x-auto">
-            <div className="min-w-full">
-              <div className="grid grid-cols-[12rem_repeat(var(--n),minmax(2.5rem,1fr))]" style={{ ['--n' as any]: result.headers.length }}>
-                <div />
-                {result.headers.map((h, i) => (
-                  <div key={i} className="text-xs font-semibold px-2 py-1 border sticky top-0 bg-background">{h}</div>
-                ))}
+          <CardContent className="space-y-4">
+            <div className="overflow-x-auto border rounded-lg">
+              <div className="min-w-full">
+                <div className="flex border-b bg-muted/50 sticky top-0 z-20">
+                  <div className="sticky left-0 bg-muted/50 pr-4 py-2 text-xs font-semibold border-r min-w-[8rem]"></div>
+                  <div className="flex-1 grid" style={{ gridTemplateColumns: `repeat(${result.headers.length}, minmax(4rem, 1fr))` }}>
+                    {result.headers.map((h, i) => (
+                      <div key={i} className="text-xs font-semibold px-2 py-2 border-r last:border-r-0 text-center">{h}</div>
+                    ))}
+                  </div>
+                </div>
+                {heatCells}
               </div>
-              {heatCells}
             </div>
-            <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+            <p className="text-sm leading-6">{result.interpretation}</p>
           </CardContent>
         </Card>
       )}
 
       <Card>
         <CardHeader>
-          <CardTitle>Related Calculators</CardTitle>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Related Calculators</CardTitle>
           <CardDescription>Portfolio analytics</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/tangency-portfolio-calculator" className="text-primary hover:underline">Tangency Portfolio</Link></h4><p className="text-sm text-muted-foreground">Max Sharpe mix.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/minimum-variance-portfolio-calculator" className="text-primary hover:underline">Minimum Variance</Link></h4><p className="text-sm text-muted-foreground">Lowest risk allocation.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/portfolio-drawdown-calculator" className="text-primary hover:underline">Portfolio Drawdown</Link></h4><p className="text-sm text-muted-foreground">Path risk metrics.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/beta-weighted-portfolio-exposure-calculator" className="text-primary hover:underline">Beta-weighted Exposure</Link></h4><p className="text-sm text-muted-foreground">Benchmark sensitivity.</p></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/tangency-portfolio-calculator" className="text-primary hover:underline">Tangency Portfolio (Max Sharpe)</a></h4><p className="text-sm text-muted-foreground">Sharpe‑maximizing mix.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/minimum-variance-portfolio-calculator" className="text-primary hover:underline">Minimum Variance Portfolio</a></h4><p className="text-sm text-muted-foreground">Lowest risk allocation.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/portfolio-drawdown-calculator" className="text-primary hover:underline">Portfolio Drawdown</a></h4><p className="text-sm text-muted-foreground">Path risk metrics.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/beta-weighted-portfolio-exposure-calculator" className="text-primary hover:underline">Beta-weighted Portfolio Exposure</a></h4><p className="text-sm text-muted-foreground">Benchmark sensitivity.</p></div>
           </div>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Sample Guide: Building Diversified Portfolios with Correlations</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Use correlation heatmaps to identify highly linked assets and potential diversifiers. Aim for balanced clusters rather than concentrating risk in one cluster.</p>
-          <p>When correlations spike (e.g., in stress), rely on quality, cash, or uncorrelated factors for resilience.</p>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Guide</CardTitle>
+          <CardDescription>Use correlation heatmaps to identify diversification opportunities and risk clusters</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="list-disc pl-6 space-y-2 text-sm">
+            <li>Paste CSV data with asset names as headers and returns as rows. Values can be decimals (0.01) or percentages (1%).</li>
+            <li>Correlation heatmaps help identify highly linked assets (clusters) and potential diversifiers with weaker correlations.</li>
+            <li>Aim for balanced clusters rather than concentrating risk in one correlation cluster.</li>
+            <li>When correlations spike during market stress, rely on quality assets, cash, or uncorrelated factors for resilience.</li>
+            <li>Use at least 36–60 monthly observations or 250+ daily points for stable correlation estimates.</li>
+          </ul>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Frequently Asked Questions</CardTitle></CardHeader>
-        <CardContent className="space-y-3">
-          <details><summary>What is a correlation heatmap in portfolio analysis?</summary><p>It visualizes pairwise correlations among asset returns, helping spot clusters, diversification gaps, and potential redundancy.</p></details>
-          <details><summary>What data format should I paste?</summary><p>CSV with headers where each column is an asset and each row is a time period return. Values can be decimals (0.01) or percentages (1).</p></details>
-          <details><summary>How many observations do I need?</summary><p>More is better; 36–60 monthly points or 250+ daily points typically stabilize estimates.</p></details>
-          <details><summary>How do I interpret strong positive correlation?</summary><p>Assets tend to move together, reducing diversification benefits. Consider adding assets with lower or negative correlation.</p></details>
-          <details><summary>Can correlations change over time?</summary><p>Yes. Correlations are regime‑dependent and often rise during market stress; reassess periodically.</p></details>
-          <details><summary>Are negative correlations always good?</summary><p>They can hedge risk but may reduce returns. Balance correlation with expected returns and volatility.</p></details>
-          <details><summary>Does scaling of returns matter?</summary><p>Correlation is scale‑invariant; using decimals or percentages consistently yields the same correlations.</p></details>
-          <details><summary>How do missing values affect results?</summary><p>This tool expects complete rows. For production workflows, align dates and forward‑fill cautiously.</p></details>
-          <details><summary>What about non‑linear dependence?</summary><p>Correlation captures linear co‑movement. Consider rank correlations or copulas for non‑linear relationships.</p></details>
-          <details><summary>How do I use this for portfolio construction?</summary><p>Identify clusters and diversify across them while optimizing for risk‑adjusted return (e.g., Sharpe).</p></details>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Info className="h-5 w-5"/> Frequently Asked Questions</CardTitle>
+          <CardDescription>Correlation heatmaps, portfolio diversification, and data requirements</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div><h4 className="font-semibold mb-2">What is a correlation heatmap in portfolio analysis?</h4><p className="text-muted-foreground">It visualizes pairwise correlations among asset returns, helping spot clusters, diversification gaps, and potential redundancy in your portfolio.</p></div>
+          <div><h4 className="font-semibold mb-2">What data format should I paste?</h4><p className="text-muted-foreground">CSV with headers where each column is an asset and each row is a time period return. Values can be decimals (0.01) or percentages (1).</p></div>
+          <div><h4 className="font-semibold mb-2">How many observations do I need?</h4><p className="text-muted-foreground">More is better; 36–60 monthly points or 250+ daily points typically stabilize correlation estimates.</p></div>
+          <div><h4 className="font-semibold mb-2">How do I interpret strong positive correlation?</h4><p className="text-muted-foreground">Assets tend to move together, reducing diversification benefits. Consider adding assets with lower or negative correlation to improve portfolio resilience.</p></div>
+          <div><h4 className="font-semibold mb-2">Can correlations change over time?</h4><p className="text-muted-foreground">Yes. Correlations are regime‑dependent and often rise during market stress; reassess periodically to maintain effective diversification.</p></div>
+          <div><h4 className="font-semibold mb-2">Are negative correlations always good?</h4><p className="text-muted-foreground">They can hedge risk but may reduce returns. Balance correlation with expected returns and volatility when constructing portfolios.</p></div>
+          <div><h4 className="font-semibold mb-2">Does scaling of returns matter?</h4><p className="text-muted-foreground">Correlation is scale‑invariant; using decimals or percentages consistently yields the same correlations, so either format works.</p></div>
+          <div><h4 className="font-semibold mb-2">How do missing values affect results?</h4><p className="text-muted-foreground">This tool expects complete rows. For production workflows, align dates and forward‑fill cautiously, or use specialized correlation estimation methods.</p></div>
+          <div><h4 className="font-semibold mb-2">What about non‑linear dependence?</h4><p className="text-muted-foreground">Correlation captures linear co‑movement. Consider rank correlations or copulas for non‑linear relationships in advanced analysis.</p></div>
+          <div><h4 className="font-semibold mb-2">How do I use this for portfolio construction?</h4><p className="text-muted-foreground">Identify clusters and diversify across them while optimizing for risk‑adjusted return (e.g., Sharpe ratio). Use the heatmap to avoid over-concentration in highly correlated assets.</p></div>
         </CardContent>
       </Card>
-
-      <EmbedWidget calculatorSlug="portfolio-correlation-heatmap-tool" calculatorName="Portfolio Correlation Heatmap Tool" />
     </div>
   );
 }
+
 
 
 
