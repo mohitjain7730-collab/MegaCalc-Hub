@@ -612,7 +612,7 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Loan Amortization with Extra Payments: Payoff Acceleration and Interest Savings" />
     <meta itemProp="description" content="An expert guide detailing the mechanics of extra loan payments, how principal-only payments accelerate payoff, calculation of total interest saved, and the impact of early payments on the amortization schedule of mortgages and installment loans." />
@@ -622,11 +622,11 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
     <meta itemProp="url" content="/definitive-loan-extra-payment-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Loan Amortization with Extra Payments: Accelerating Payoff and Maximizing Savings</h1>
-    <p className="text-lg italic text-gray-700">Master the financial strategy of prepayment to reduce total interest cost and shorten the loan tenure on mortgages and other installment debt.</p>
+    <p className="text-lg italic text-muted-foreground">Master the financial strategy of prepayment to reduce total interest cost and shorten the loan tenure on mortgages and other installment debt.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#amortization" className="hover:underline">Amortization Basics: The Fixed Payment Structure</a></li>
         <li><a href="#mechanics" className="hover:underline">Extra Payment Mechanics: Principal-Only Reduction</a></li>
         <li><a href="#savings" className="hover:underline">Calculating Interest Savings and Reduced Term</a></li>
@@ -671,8 +671,8 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Interest Savings Calculation</h3>
     <p>The total interest saved is the difference between the total interest due under the original amortization schedule and the total interest due under the new, accelerated schedule:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Total Interest Saved = Interest_{Original} - Interest_{Accelerated}'}
         </p>
     </div>

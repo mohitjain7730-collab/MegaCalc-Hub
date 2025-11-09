@@ -240,7 +240,7 @@ export default function MortgageRefinanceSavingsCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Mortgage Refinance Savings Calculation: Breakeven Point and Net Benefit" />
     <meta itemProp="description" content="An expert guide detailing how to calculate the net savings from mortgage refinancing, covering the breakeven point, total interest saved, closing cost amortization, and the analysis of loan term changes." />
@@ -250,11 +250,11 @@ export default function MortgageRefinanceSavingsCalculator() {
     <meta itemProp="url" content="/definitive-mortgage-refinance-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Mortgage Refinance Savings: Calculating Breakeven and Net Benefit</h1>
-    <p className="text-lg italic text-gray-700">Master the financial analysis required to determine if lowering your interest rate justifies the upfront cost of refinancing.</p>
+    <p className="text-lg italic text-muted-foreground">Master the financial analysis required to determine if lowering your interest rate justifies the upfront cost of refinancing.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#drivers" className="hover:underline">Primary Drivers of Refinance Savings</a></li>
         <li><a href="#breakeven" className="hover:underline">The Breakeven Point Calculation</a></li>
         <li><a href="#total-benefit" className="hover:underline">Calculating Total Interest Savings and Net Benefit</a></li>
@@ -282,8 +282,8 @@ export default function MortgageRefinanceSavingsCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Breakeven Formula</h3>
     <p>The calculation is based on dividing the total cost of the refinance by the net monthly savings realized:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Breakeven Months = Total Closing Costs / (Old Monthly Payment - New Monthly Payment)'}
         </p>
     </div>
@@ -306,8 +306,8 @@ export default function MortgageRefinanceSavingsCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Net Savings Formula</h3>
     <p>The true financial gain is the difference between the interest saved and the cost incurred:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Net Savings = (Total Interest Old Loan - Total Interest New Loan) - Closing Costs'}
         </p>
     </div>
@@ -333,8 +333,8 @@ export default function MortgageRefinanceSavingsCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">NPV Methodology</h3>
     <p>The NPV calculation discounts all future cash flows (the difference between the old and new payments) back to the present using an appropriate discount rate (the required rate of return or opportunity cost). The formula is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'NPV = Sum [ (Old PMT - New PMT)_t / (1 + r)^t ] - Closing Costs'}
         </p>
     </div>

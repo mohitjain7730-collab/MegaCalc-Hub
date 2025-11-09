@@ -179,7 +179,7 @@ export default function RentalPropertyCapRateCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Rental Property Return, Cap Rate, and Cash-on-Cash Analysis" />
     <meta itemProp="description" content="An expert guide detailing the formulas and purpose of the Capitalization Rate (Cap Rate) and the impact of debt/leverage, Cash-on-Cash (CoC) return, and Net Operating Income (NOI) in real estate investment valuation." />
@@ -189,11 +189,11 @@ export default function RentalPropertyCapRateCalculator() {
     <meta itemProp="url" content="/definitive-rental-property-return-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Rental Property Returns: Cap Rate and Cash-on-Cash Analysis</h1>
-    <p className="text-lg italic text-gray-700">Master the primary metrics that determine property valuation, profitability, and the effectiveness of financial leverage in real estate investment.</p>
+    <p className="text-lg italic text-muted-foreground">Master the primary metrics that determine property valuation, profitability, and the effectiveness of financial leverage in real estate investment.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#noi" className="hover:underline">Net Operating Income (NOI): The Profit Engine</a></li>
         <li><a href="#cap-rate" className="hover:underline">Capitalization Rate (Cap Rate): Valuation and Benchmarking</a></li>
         <li><a href="#coc" className="hover:underline">Cash-on-Cash (CoC) Return: Measuring Liquidity</a></li>
@@ -208,8 +208,8 @@ export default function RentalPropertyCapRateCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating NOI</h3>
     <p>NOI focuses purely on the property's efficiency as an asset, separate from how it is financed. The calculation is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'NOI = Gross Rental Income - Operating Expenses'}
         </p>
     </div>
@@ -223,16 +223,16 @@ export default function RentalPropertyCapRateCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Cap Rate Formula</h3>
     <p>Cap Rate is defined as the property's annual NOI divided by the purchase price (or current market value). It tells the investor the yield they would receive if they purchased the property with all cash (no debt):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Cap Rate = NOI / Property Value'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Using Cap Rate for Valuation</h3>
     <p>The formula can be rearranged to estimate the appropriate market value of a property based on its income stream, provided the average Cap Rate for comparable properties in the area is known:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Property Value = NOI / Market Cap Rate'}
         </p>
     </div>
@@ -246,8 +246,8 @@ export default function RentalPropertyCapRateCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The CoC Formula (Leveraged Return)</h3>
     <p>CoC Return is calculated by dividing the annual pre-tax cash flow *after* debt service by the total cash invested (down payment + closing costs + initial CapEx):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'CoC Return = (NOI - Annual Debt Service) / Total Cash Invested'}
         </p>
     </div>

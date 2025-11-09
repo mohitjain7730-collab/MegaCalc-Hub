@@ -247,7 +247,7 @@ export default function CurrencyVolatilityCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Currency Volatility: Calculation, Impact, and Hedging Strategies" />
     <meta itemProp="description" content="An expert guide detailing how currency volatility is calculated (standard deviation), its impact on foreign exchange risk (FX risk), methods for hedging using forwards and options, and the role of implied volatility in market pricing." />
@@ -257,11 +257,11 @@ export default function CurrencyVolatilityCalculator() {
     <meta itemProp="url" content="/definitive-currency-volatility-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Currency Volatility: Measuring, Impact, and Hedging FX Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the metrics that quantify exchange rate fluctuations and the financial instruments used to manage resulting risk exposure.</p>
+    <p className="text-lg italic text-muted-foreground">Master the metrics that quantify exchange rate fluctuations and the financial instruments used to manage resulting risk exposure.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Volatility: Definition and Types of FX Risk</a></li>
         <li><a href="#calculation" className="hover:underline">Calculating Historical Volatility (Standard Deviation)</a></li>
         <li><a href="#impact" className="hover:underline">Impact of Volatility on Business and Investment</a></li>
@@ -293,8 +293,8 @@ export default function CurrencyVolatilityCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Annualizing Volatility</h3>
     <p>Daily volatility is often <strong className="font-semibold">annualized</strong> to make it comparable to other financial metrics. This is done by multiplying the daily standard deviation by the square root of the number of trading days in a year (typically 252 for FX markets):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Annual Volatility = Daily Standard Deviation * Square Root (252)'}
         </p>
     </div>

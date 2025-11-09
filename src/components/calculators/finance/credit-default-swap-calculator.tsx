@@ -198,7 +198,7 @@ export default function CreditDefaultSwapCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Credit Default Swap (CDS) Premium Calculation, Mechanics, and Risk Transfer" />
     <meta itemProp="description" content="An expert guide detailing the structure of a Credit Default Swap (CDS), how the annual premium (spread) is determined, the role of default probability and recovery rate, and its use in credit risk transfer and speculation." />
@@ -208,11 +208,11 @@ export default function CreditDefaultSwapCalculator() {
     <meta itemProp="url" content="/definitive-cds-premium-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Credit Default Swaps (CDS): Calculating the Default Premium</h1>
-    <p className="text-lg italic text-gray-700">Master the structure of the financial insurance contract used to transfer credit risk and how its annual premium is determined by market default expectations.</p>
+    <p className="text-lg italic text-muted-foreground">Master the structure of the financial insurance contract used to transfer credit risk and how its annual premium is determined by market default expectations.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#structure" className="hover:underline">CDS Structure: Protection Buyer, Seller, and Reference Entity</a></li>
         <li><a href="#premium-mechanics" className="hover:underline">Premium Calculation Mechanics (The CDS Spread)</a></li>
         <li><a href="#variables" className="hover:underline">Key Variables: Default Probability and Recovery Rate</a></li>
@@ -248,8 +248,8 @@ export default function CreditDefaultSwapCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Fair Value Spread</h3>
     <p>The fair value premium is the annual payment that equalizes the present value of the two transaction legs:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PV (Expected Premium Payments) = PV (Expected Payout in Event of Default)'}
         </p>
     </div>

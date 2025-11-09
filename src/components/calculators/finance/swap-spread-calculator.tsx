@@ -208,7 +208,7 @@ export default function SwapSpreadCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Swap Spread Calculation, Interpretation, and Fixed Income Analysis" />
     <meta itemProp="description" content="An expert guide detailing the Swap Spread formula, its calculation as the difference between the fixed leg of an interest rate swap and the government bond yield (Treasury), and its crucial role as a barometer for credit risk and market liquidity." />
@@ -218,11 +218,11 @@ export default function SwapSpreadCalculator() {
     <meta itemProp="url" content="/definitive-swap-spread-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Swap Spread: Market Barometer for Risk and Liquidity</h1>
-    <p className="text-lg italic text-gray-700">Master the foundational metric in fixed income markets that measures the difference between derivative pricing and government benchmark yields.</p>
+    <p className="text-lg italic text-muted-foreground">Master the foundational metric in fixed income markets that measures the difference between derivative pricing and government benchmark yields.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Swap Spread Definition and Components</a></li>
         <li><a href="#calculation" className="hover:underline">The Swap Spread Calculation Formula</a></li>
         <li><a href="#risk-interpretation" className="hover:underline">Interpretation as Credit Risk and Liquidity Indicator</a></li>
@@ -249,8 +249,8 @@ export default function SwapSpreadCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The calculation is based on the comparison of two rates for the same maturity (e.g., 10 years):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Swap Spread = Swap Fixed Rate - Treasury Yield'}
         </p>
     </div>

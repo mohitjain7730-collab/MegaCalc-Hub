@@ -188,7 +188,7 @@ export default function MortgageEquityHelocCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Home Equity, HELOC, and Home Equity Loan Calculations" />
     <meta itemProp="description" content="An expert guide detailing how to calculate home equity, the difference between a Home Equity Loan (fixed-rate installment) and a HELOC (revolving line of credit), key loan-to-value (LTV) ratios, and the repayment mechanics of equity-based debt." />
@@ -198,11 +198,11 @@ export default function MortgageEquityHelocCalculator() {
     <meta itemProp="url" content="/definitive-home-equity-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Home Equity and Equity-Based Loans (HELOC & Home Equity Loan)</h1>
-    <p className="text-lg italic text-gray-700">Master the metrics used to determine the usable value locked in your home and the financial differences between the primary debt products that leverage it.</p>
+    <p className="text-lg italic text-muted-foreground">Master the metrics used to determine the usable value locked in your home and the financial differences between the primary debt products that leverage it.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#equity-calc" className="hover:underline">Home Equity: Definition and Calculation</a></li>
         <li><a href="#ltv" className="hover:underline">The Critical Loan-to-Value (LTV) Ratio</a></li>
         <li><a href="#heloc" className="hover:underline">Home Equity Loan vs. HELOC: Debt Structures</a></li>
@@ -217,8 +217,8 @@ export default function MortgageEquityHelocCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Fundamental Equity Formula</h3>
     <p>Equity is the residual value claimed by the owner after all creditors are paid. The calculation is straightforward but highly dependent on an accurate appraisal of the home's current value:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Home Equity = Fair Market Value - Outstanding Mortgage Balance'}
         </p>
     </div>
@@ -238,8 +238,8 @@ export default function MortgageEquityHelocCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">LTV Formula</h3>
     <p>The LTV ratio is calculated by dividing the total mortgage debt by the home's appraised value:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'LTV = (Outstanding Mortgage Balance / Fair Market Value) * 100'}
         </p>
     </div>

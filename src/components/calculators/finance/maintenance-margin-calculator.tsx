@@ -609,7 +609,7 @@ export default function MaintenanceMarginCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Maintenance Margin, Margin Call Risk, and Equity Calculation" />
     <meta itemProp="description" content="An expert guide detailing the formulas for initial margin, maintenance margin, and the calculation of margin call price. Covers margin call risk mitigation and the use of leverage in brokerage accounts." />
@@ -619,11 +619,11 @@ export default function MaintenanceMarginCalculator() {
     <meta itemProp="url" content="/definitive-margin-call-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Maintenance Margin and Margin Call Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the critical thresholds that govern leveraged trading and determine the price level at which your broker liquidates your position.</p>
+    <p className="text-lg italic text-muted-foreground">Master the critical thresholds that govern leveraged trading and determine the price level at which your broker liquidates your position.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#basics" className="hover:underline">Margin Trading Basics: Initial Margin and Leverage</a></li>
         <li><a href="#maintenance" className="hover:underline">Maintenance Margin: The Safety Threshold</a></li>
         <li><a href="#equity-calc" className="hover:underline">Equity Calculation and Margin Status</a></li>
@@ -638,8 +638,8 @@ export default function MaintenanceMarginCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Initial Margin Requirement</h3>
     <p>The Initial Margin is the minimum percentage of the security's purchase price that a trader must fund with their own capital. Regulatory bodies, such as the Federal Reserve Board in the U.S. (Regulation T), set the minimum initial margin, but brokers can require higher percentages based on risk.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Borrowed Amount = Total Value of Position * (1 - Initial Margin %)'}
         </p>
     </div>
@@ -663,16 +663,16 @@ export default function MaintenanceMarginCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Account Equity</h3>
     <p>Account equity represents the current value of the trader's cash claim in the position. It is the core metric used to determine if a margin call is imminent.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Account Equity = Market Value of Securities - Borrowed Amount'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Margin Call Trigger</h3>
     <p>A margin call is triggered when the trader's account equity drops below the dollar amount required by the maintenance margin rule.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Margin Call Trigger = Maintenance Margin % * Market Value of Securities'}
         </p>
     </div>
@@ -686,8 +686,8 @@ export default function MaintenanceMarginCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Margin Call Price Formula</h3>
     <p>For a long position (buying a security), the margin call price is calculated based on the initial borrowing and the maintenance margin percentage (MM):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Margin Call Price = Borrowed Amount / (1 - Maintenance Margin %)'}
         </p>
     </div>
@@ -807,7 +807,7 @@ export default function MaintenanceMarginCalculator() {
 
 function MaintenanceMarginGuide() {
   return (
-    <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Calculator">
+    <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Calculator">
       <meta itemProp="name" content="Maintenance Margin Calculator - Margin Call Risk Assessment" />
       <meta itemProp="description" content="Calculate maintenance margin requirements, assess margin call risk, and optimize your leveraged trading positions for better risk management." />
       <meta itemProp="keywords" content="maintenance margin calculator, margin call risk, trading risk management, leveraged trading, margin requirements" />
@@ -815,7 +815,7 @@ function MaintenanceMarginGuide() {
       <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Maintenance Margin Calculator: Assess Your Margin Call Risk</h1>
       
       <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-      <ul className="list-disc ml-6 space-y-2 text-blue-600">
+      <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#what-is-maintenance-margin" className="hover:underline">What is Maintenance Margin?</a></li>
         <li><a href="#margin-call-process" className="hover:underline">Understanding Margin Calls</a></li>
         <li><a href="#risk-assessment" className="hover:underline">Risk Assessment and Management</a></li>
@@ -833,7 +833,7 @@ function MaintenanceMarginGuide() {
       <p>When you open a margin position, you must maintain a minimum equity level. If your account equity falls below this threshold, you'll receive a margin call requiring you to either add more capital or close positions.</p>
       
       <h3 className="text-xl font-semibold text-foreground mt-6">Maintenance Margin Formula</h3>
-      <pre className="bg-gray-200 p-3 rounded-md my-4"><code>Maintenance Margin = Position Value × Maintenance Margin Rate</code></pre>
+      <pre className="bg-muted p-3 rounded-md my-4"><code>Maintenance Margin = Position Value × Maintenance Margin Rate</code></pre>
       <p>Your account equity must always be greater than the required maintenance margin to avoid margin calls.</p>
 
       <hr />
@@ -850,7 +850,7 @@ function MaintenanceMarginGuide() {
       </ol>
       
       <h3 className="text-xl font-semibold text-foreground mt-6">Margin Call Price Calculation</h3>
-      <pre className="bg-gray-200 p-3 rounded-md my-4"><code>Margin Call Price = Entry Price × (1 - (1 - Maintenance Margin Rate) / Initial Margin Rate)</code></pre>
+      <pre className="bg-muted p-3 rounded-md my-4"><code>Margin Call Price = Entry Price × (1 - (1 - Maintenance Margin Rate) / Initial Margin Rate)</code></pre>
       <p>This formula calculates the price at which a margin call will occur based on your entry price and margin requirements.</p>
 
       <hr />
@@ -860,15 +860,15 @@ function MaintenanceMarginGuide() {
       
       <h3 className="text-xl font-semibold text-foreground mt-6">Risk Levels</h3>
       <div className="overflow-x-auto my-6">
-        <table className="min-w-full divide-y divide-gray-200 border border-gray-300">
-          <thead className="bg-gray-50">
+        <table className="min-w-full divide-y divide-border border border-border">
+          <thead className="bg-muted">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Level</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Margin Ratio</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action Required</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Risk Level</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Margin Ratio</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Action Required</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-card divide-y divide-border">
             <tr>
               <td className="px-6 py-4 whitespace-nowrap font-medium text-foreground">Low</td>
               <td className="px-6 py-4 whitespace-nowrap">150%+</td>
@@ -967,7 +967,7 @@ function MaintenanceMarginGuide() {
       <h3 className="text-xl font-semibold text-foreground mt-6">Can I lose more than my initial investment with margin?</h3>
       <p>Yes, with margin trading you can lose more than your initial investment. This is why risk management is so important. Always use stop-loss orders and never risk more than you can afford to lose.</p>
 
-      <div className="text-sm italic text-center mt-8 pt-4 border-t border-gray-200">
+      <div className="text-sm italic text-center mt-8 pt-4 border-t border-border">
         <p>This tool is provided by mycalculating.com. Always consult with a financial advisor before making investment decisions.</p>
       </div>
     </section>

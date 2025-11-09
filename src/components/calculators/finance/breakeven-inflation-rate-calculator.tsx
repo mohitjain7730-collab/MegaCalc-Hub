@@ -193,7 +193,7 @@ export default function BreakevenInflationRateCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Breakeven Inflation Rate: Calculation, Interpretation, and Market Expectations" />
     <meta itemProp="description" content="An expert guide detailing the Breakeven Inflation Rate (BEIR) formula, its calculation using nominal and inflation-protected bond yields (TIPS), and its crucial role as a forward-looking market indicator of expected future inflation." />
@@ -203,11 +203,11 @@ export default function BreakevenInflationRateCalculator() {
     <meta itemProp="url" content="/definitive-breakeven-inflation-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Breakeven Inflation Rate: Market Expectations and Bond Yields</h1>
-    <p className="text-lg italic text-gray-700">Master the critical financial metric that reveals the market's consensus forecast for the average inflation rate over a specific period.</p>
+    <p className="text-lg italic text-muted-foreground">Master the critical financial metric that reveals the market's consensus forecast for the average inflation rate over a specific period.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Breakeven Inflation Rate (BEIR) Concept</a></li>
         <li><a href="#calculation" className="hover:underline">Calculation Using Nominal and Real Yields</a></li>
         <li><a href="#interpretation" className="hover:underline">Interpreting the BEIR and Market Forecasts</a></li>
@@ -232,8 +232,8 @@ export default function BreakevenInflationRateCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Breakeven Inflation Rate Formula</h3>
     <p>The relationship is based on the difference in the required compensation demanded by the market for protection against inflation:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'BEIR ≈ Nominal Treasury Yield - TIPS Yield (Real Yield)'}
         </p>
     </div>

@@ -526,7 +526,7 @@ export default function BalloonPaymentLoanCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Balloon Payment Loans: Structure, Amortization, and Final Lump Sum Calculation" />
     <meta itemProp="description" content="An expert guide detailing the structure of a Balloon Payment Loan, how monthly payments are calculated (using a phantom amortization period), and the formula for determining the final large lump sum due at maturity." />
@@ -536,11 +536,11 @@ export default function BalloonPaymentLoanCalculator() {
     <meta itemProp="url" content="/definitive-balloon-payment-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Balloon Payment Loans: Understanding the Final Lump Sum Liability</h1>
-    <p className="text-lg italic text-gray-700">Master the unique loan structure that offers low initial payments in exchange for a single, large principal payment due at maturity.</p>
+    <p className="text-lg italic text-muted-foreground">Master the unique loan structure that offers low initial payments in exchange for a single, large principal payment due at maturity.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#structure" className="hover:underline">Loan Structure: Maturity vs. Amortization Period</a></li>
         <li><a href="#payment-calc" className="hover:underline">Calculating the Monthly Payment (Partial Amortization)</a></li>
         <li><a href="#balloon-calc" className="hover:underline">The Balloon Payment Formula and Final Principal Due</a></li>
@@ -568,8 +568,8 @@ export default function BalloonPaymentLoanCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Process</h3>
     <p>The payment is calculated using the standard Loan Amortization Formula, substituting the long amortization period (e.g., 360 months) for the short maturity period (e.g., 60 months). This artificially reduces the principal component of the payment:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'PMT = P * r * [ (1 + r)^N_amort / ((1 + r)^N_amort - 1) ]'}
         </p>
     </div>
@@ -586,8 +586,8 @@ export default function BalloonPaymentLoanCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating the Final Balance (The Balloon)</h3>
     <p>The balloon payment (B) is calculated by finding the Present Value of the remaining payments that would have been due under the original phantom amortization schedule. It is simpler to calculate the remaining balance after N maturity payments have been made:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Balloon Payment = Remaining Principal Balance after N_{maturity} Payments'}
         </p>
     </div>

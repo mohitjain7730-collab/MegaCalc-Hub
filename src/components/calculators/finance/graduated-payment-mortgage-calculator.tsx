@@ -543,7 +543,7 @@ export default function GraduatedPaymentMortgageCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Graduated Payment Mortgage (GPM): Structure, Negative Amortization, and Payment Calculation" />
     <meta itemProp="description" content="An expert guide detailing the structure of a GPM, how initial payments are artificially lowered (the graduation rate), the mechanics of negative amortization, and the associated risks compared to a standard fixed-rate mortgage." />
@@ -553,11 +553,11 @@ export default function GraduatedPaymentMortgageCalculator() {
     <meta itemProp="url" content="/definitive-gpm-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Graduated Payment Mortgages (GPM): Understanding Rising Payments and Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the specialized loan structure designed for borrowers who expect their income to increase significantly over the initial years of the loan.</p>
+    <p className="text-lg italic text-muted-foreground">Master the specialized loan structure designed for borrowers who expect their income to increase significantly over the initial years of the loan.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#structure" className="hover:underline">GPM Structure: The Graduation Period and Rate</a></li>
         <li><a href="#negative" className="hover:underline">The Mechanics of Negative Amortization</a></li>
         <li><a href="#payment-calc" className="hover:underline">Calculating the Payment and Loan Balance Over Time</a></li>

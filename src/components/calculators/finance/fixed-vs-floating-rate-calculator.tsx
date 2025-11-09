@@ -438,7 +438,7 @@ export default function FixedVsFloatingRateCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Fixed vs. Floating Interest Rates: Risk, Payment Structure, and Comparison Analysis" />
     <meta itemProp="description" content="An expert guide detailing the key differences between fixed and floating interest rates, how payments are calculated under each, the allocation of interest rate risk, and the impact of market movements on total cost and monthly cash flow." />
@@ -448,11 +448,11 @@ export default function FixedVsFloatingRateCalculator() {
     <meta itemProp="url" content="/definitive-fixed-vs-floating-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Fixed vs. Floating Interest Rates: Risk, Stability, and Cost Analysis</h1>
-    <p className="text-lg italic text-gray-700">Master the core difference between stable, predictable payments and flexible, market-driven financing, and how to choose the right structure for your risk profile.</p>
+    <p className="text-lg italic text-muted-foreground">Master the core difference between stable, predictable payments and flexible, market-driven financing, and how to choose the right structure for your risk profile.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#structure" className="hover:underline">Rate Structure: Fixed vs. Floating Defined</a></li>
         <li><a href="#payment-calc" className="hover:underline">Payment Calculation and Stability</a></li>
         <li><a href="#risk-transfer" className="hover:underline">Interest Rate Risk Allocation</a></li>
@@ -504,8 +504,8 @@ export default function FixedVsFloatingRateCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Floating Rate Components</h3>
     <p>The actual rate is the sum of a variable **Index** (the publicly observed benchmark, e.g., SOFR) and the fixed **Margin** (the premium added by the lender).</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Floating Rate = Index Rate + Margin'}
         </p>
     </div>

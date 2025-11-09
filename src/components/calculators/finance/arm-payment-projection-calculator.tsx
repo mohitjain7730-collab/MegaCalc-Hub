@@ -297,7 +297,7 @@ export default function ArmPaymentProjectionCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Adjustable Rate Mortgage (ARM) Payment Projection and Risk Analysis" />
     <meta itemProp="description" content="An expert guide detailing the structure of ARMs (hybrid 5/1, 7/1), how payment changes are projected after the fixed period, the role of the index, margin, and payment/rate caps in determining the maximum possible payment." />
@@ -307,11 +307,11 @@ export default function ArmPaymentProjectionCalculator() {
     <meta itemProp="url" content="/definitive-arm-projection-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Adjustable Rate Mortgages (ARM): Payment Projection and Risk Analysis</h1>
-    <p className="text-lg italic text-gray-700">Master the mechanics of hybrid ARMs to forecast payment changes, analyze risk, and understand the impact of the index and margin.</p>
+    <p className="text-lg italic text-muted-foreground">Master the mechanics of hybrid ARMs to forecast payment changes, analyze risk, and understand the impact of the index and margin.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#structure" className="hover:underline">ARM Structure: Fixed Period and Adjustment Period</a></li>
         <li><a href="#rate-components" className="hover:underline">The Fully Indexed Rate: Index and Margin</a></li>
         <li><a href="#payment-calc" className="hover:underline">Payment Projection Mechanics</a></li>
@@ -346,8 +346,8 @@ export default function ArmPaymentProjectionCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Fully Indexed Rate Formula</h3>
     <p>The actual interest rate applied during any adjustment period (before caps) is the sum of these two components:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Fully Indexed Rate = Index Rate + Margin'}
         </p>
     </div>

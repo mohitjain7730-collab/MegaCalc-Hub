@@ -287,7 +287,7 @@ export default function ForwardRateAgreementCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Forward Rate Agreement (FRA) Pricing, Mechanics, and Calculation" />
     <meta itemProp="description" content="An expert guide detailing the structure of a Forward Rate Agreement (FRA), the formula for its payoff, how the contract rate (FRA rate) is derived from the yield curve, and its use in hedging and speculating on future interest rates." />
@@ -297,11 +297,11 @@ export default function ForwardRateAgreementCalculator() {
     <meta itemProp="url" content="/definitive-forward-rate-agreement-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Forward Rate Agreements (FRA): Pricing and Interest Rate Hedging</h1>
-    <p className="text-lg italic text-gray-700">Master the structure of the over-the-counter derivative used to lock in a borrowing or lending rate for a future period.</p>
+    <p className="text-lg italic text-muted-foreground">Master the structure of the over-the-counter derivative used to lock in a borrowing or lending rate for a future period.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#structure" className="hover:underline">FRA Structure and Terminology (n x m)</a></li>
         <li><a href="#pricing" className="hover:underline">Pricing the FRA: Deriving the Contract Rate</a></li>
         <li><a href="#settlement" className="hover:underline">Settlement Mechanics and Payoff Formula</a></li>
@@ -336,8 +336,8 @@ export default function ForwardRateAgreementCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Forward Rate Formula (No Arbitrage)</h3>
     <p>The FRA rate is the implied forward rate between two zero-coupon bonds (or spot rates) on the yield curve. It ensures that an investor who invests for the short period ($n$ months) and then reinvests at the forward rate for the longer period ($m-n$ months) earns the same return as if they invested for the long period ($m$ months) today.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'FRA Rate = [(1 + R_long * T_long) / (1 + R_short * T_short) - 1] / (T_long - T_short)'}
         </p>
     </div>
@@ -354,8 +354,8 @@ export default function ForwardRateAgreementCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Settlement Payoff Formula</h3>
     <p>The settlement is calculated as the present value of the difference in interest payments, paid at time $n$:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Settlement Amount = Notional * [ (R_reference - R_FRA) * T_period ] / [ 1 + R_reference * T_period ]'}
         </p>
     </div>
