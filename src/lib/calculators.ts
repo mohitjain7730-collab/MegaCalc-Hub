@@ -210,6 +210,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate optimal position size based on target portfolio volatility, asset volatility, and correlation for risk-based position sizing.'
   },
   {
+    id: 4731,
+    name: 'ATR-based Position Size Calculator',
+    description: 'Calculate position size based on Average True Range (ATR) to set stop losses and manage risk relative to volatility.',
+    slug: 'atr-based-position-size-calculator',
+    category: 'finance',
+    metaTitle: 'ATR-based Position Size Calculator',
+    metaDescription: 'Calculate optimal position size using Average True Range (ATR) to manage risk and set volatility-based stop losses.'
+  },
+  {
+    id: 4732,
+    name: 'Options Delta Neutral Portfolio Calculator',
+    description: 'Calculate positions needed to create a delta-neutral portfolio using options and underlying assets to hedge directional risk.',
+    slug: 'options-delta-neutral-portfolio-calculator',
+    category: 'finance',
+    metaTitle: 'Options Delta Neutral Portfolio Calculator',
+    metaDescription: 'Calculate positions for delta-neutral portfolios using options and underlying assets to hedge directional market risk.'
+  },
+  {
+    id: 4733,
+    name: 'Futures Hedge Ratio Calculator',
+    description: 'Calculate optimal hedge ratio for futures contracts to minimize basis risk and hedge spot positions effectively.',
+    slug: 'futures-hedge-ratio-calculator',
+    category: 'finance',
+    metaTitle: 'Futures Hedge Ratio Calculator',
+    metaDescription: 'Calculate optimal hedge ratio for futures contracts to minimize basis risk and effectively hedge spot market positions.'
+  },
+  {
+    id: 4734,
+    name: 'Basis Risk Calculator',
+    description: 'Calculate basis risk between spot and futures prices to assess hedging effectiveness and price convergence.',
+    slug: 'basis-risk-calculator',
+    category: 'finance',
+    metaTitle: 'Basis Risk Calculator',
+    metaDescription: 'Calculate basis risk between spot and futures prices to evaluate hedging effectiveness and price convergence.'
+  },
+  {
+    id: 4735,
+    name: 'Arbitrage Profit Calculator',
+    description: 'Calculate arbitrage profit from price differences between markets, assets, or instruments to identify trading opportunities.',
+    slug: 'arbitrage-profit-calculator',
+    category: 'finance',
+    metaTitle: 'Arbitrage Profit Calculator',
+    metaDescription: 'Calculate arbitrage profit from price differences between markets or instruments to identify risk-free trading opportunities.'
+  },
+  {
     id: 4702,
     name: 'Minimum Variance Portfolio Calculator',
     description: 'Get the global minimum variance allocation for two assets from volatilities and correlation.',
