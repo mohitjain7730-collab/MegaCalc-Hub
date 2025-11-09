@@ -313,7 +313,7 @@ export default function CAPMCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Capital Asset Pricing Model (CAPM): Calculation, Beta, and Expected Return" />
     <meta itemProp="description" content="An expert guide detailing the CAPM formula, its role in calculating the required rate of return for an asset, the function of Beta as a measure of systematic risk, and the model's application in valuation and risk management." />
@@ -323,12 +323,12 @@ export default function CAPMCalculator() {
     <meta itemProp="url" content="/definitive-capm-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Capital Asset Pricing Model (CAPM): Calculating Expected Return</h1>
-    <p className="text-lg italic text-gray-700">Master the foundational model that defines the relationship between an asset's systematic risk and its required rate of return.</p>
+    <p className="text-lg italic text-muted-foreground">Master the foundational model that defines the relationship between an asset's systematic risk and its required rate of return.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">CAPM: Core Definition and Principle</a></li>
         <li><a href="#formula" className="hover:underline">The CAPM Formula and Components</a></li>
         <li><a href="#beta" className="hover:underline">The Role of Beta ($\beta$): Measuring Systematic Risk</a></li>
@@ -351,8 +351,8 @@ export default function CAPMCalculator() {
     <p>The CAPM formula calculates the required return ($R_i$) by adding the risk-free rate ($R_f$) to the market risk premium, scaled by the asset's beta ($\beta$).</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'R_i = R_f + β_i * (R_m - R_f)'}
         </p>
     </div>

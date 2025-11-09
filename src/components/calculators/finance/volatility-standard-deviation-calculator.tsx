@@ -297,7 +297,7 @@ export default function VolatilityStandardDeviationCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Volatility and Standard Deviation: Calculation, Risk, and Investment Analysis" />
     <meta itemProp="description" content="An expert guide detailing the Standard Deviation formula, its role as the primary metric for quantifying financial volatility (risk), its interpretation in portfolio analysis, and how to annualize daily volatility for comparison." />
@@ -307,11 +307,11 @@ export default function VolatilityStandardDeviationCalculator() {
     <meta itemProp="url" content="/definitive-volatility-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Volatility and Standard Deviation: Quantifying Financial Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the foundational statistical metric that measures the expected magnitude of price movements in an asset or portfolio.</p>
+    <p className="text-lg italic text-muted-foreground">Master the foundational statistical metric that measures the expected magnitude of price movements in an asset or portfolio.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Volatility and Standard Deviation: Core Concepts</a></li>
         <li><a href="#formula" className="hover:underline">The Standard Deviation Formula and Mechanics</a></li>
         <li><a href="#variance" className="hover:underline">Variance: The Statistical Precursor</a></li>
@@ -339,8 +339,8 @@ export default function VolatilityStandardDeviationCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The standard deviation ($\sigma$) formula is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'σ = Square Root of [ Sum((R_i - R_avg)^2) / (N - 1) ]'}
         </p>
     </div>
@@ -374,8 +374,8 @@ export default function VolatilityStandardDeviationCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Square Root of Time Rule</h3>
     <p>Volatility is proportional to the square root of time. To convert periodic standard deviation (sigma period) to an annual rate (sigma annual), the formula is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'σ_{annual} = σ_{daily} * Square Root(Trading Days)'}
         </p>
     </div>

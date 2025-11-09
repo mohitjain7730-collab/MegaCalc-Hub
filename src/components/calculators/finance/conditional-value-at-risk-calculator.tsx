@@ -380,7 +380,7 @@ export default function ConditionalValueAtRiskCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Conditional Value at Risk (CVaR) / Expected Shortfall (ES): Calculation and Tail Risk" />
     <meta itemProp="description" content="An expert guide detailing the Conditional VaR (CVaR) or Expected Shortfall (ES) formula, its role in quantifying extreme loss (tail risk), and why it is superior to traditional VaR as a measure of post-VaR loss magnitude." />
@@ -390,12 +390,12 @@ export default function ConditionalValueAtRiskCalculator() {
     <meta itemProp="url" content="/definitive-cvar-expected-shortfall-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Expected Shortfall (ES) / Conditional VaR (CVaR): Quantifying Tail Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the advanced risk metric that measures the expected magnitude of loss in the worst-case scenario, exceeding the standard VaR threshold.</p>
+    <p className="text-lg italic text-muted-foreground">Master the advanced risk metric that measures the expected magnitude of loss in the worst-case scenario, exceeding the standard VaR threshold.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">ES/CVaR: Definition and Superiority to VaR</a></li>
         <li><a href="#mechanics" className="hover:underline">Calculation Mechanics (The Averaging Principle)</a></li>
         <li><a href="#historical-calc" className="hover:underline">Historical Method for Calculating ES</a></li>
@@ -422,8 +422,8 @@ export default function ConditionalValueAtRiskCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Conceptual Formula</h3>
     <p>ES is the weighted average of the losses in the specified tail of the distribution. For a $99\%$ confidence level, the ES calculation focuses on the $1\%$ worst-case scenario losses:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'ES_α = E [ Loss | Loss > VaR_α ]'}
         </p>
     </div>

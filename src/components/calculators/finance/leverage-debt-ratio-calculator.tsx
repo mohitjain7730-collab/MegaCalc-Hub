@@ -37,10 +37,10 @@ export default function LeverageDebtRatioImpactCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      totalDebt: undefined,
-      totalEquity: undefined,
-      interestRate: undefined,
-      taxRate: undefined,
+      totalDebt: undefined as unknown as number,
+      totalEquity: undefined as unknown as number,
+      interestRate: undefined as unknown as number,
+      taxRate: undefined as unknown as number,
     },
   });
 
@@ -123,18 +123,22 @@ export default function LeverageDebtRatioImpactCalculator() {
   };
 
   const onSubmit = (values: FormValues) => {
-    const ratios = calculateLeverageRatios(values);
-    if (ratios !== null) {
-      setResult({
-        debtToEquityRatio: ratios.debtToEquityRatio,
-        debtToAssetsRatio: ratios.debtToAssetsRatio,
-        interpretation: interpret(ratios.debtToEquityRatio, ratios.debtToAssetsRatio),
-        leverageLevel: getLeverageLevel(ratios.debtToEquityRatio),
-        recommendation: getRecommendation(ratios.debtToEquityRatio),
-        strength: getStrength(ratios.debtToEquityRatio),
-        insights: getInsights(ratios.debtToEquityRatio, ratios.debtToAssetsRatio),
-        considerations: getConsiderations(ratios.debtToEquityRatio)
-      });
+    try {
+      const ratios = calculateLeverageRatios(values);
+      if (ratios !== null) {
+        setResult({
+          debtToEquityRatio: ratios.debtToEquityRatio,
+          debtToAssetsRatio: ratios.debtToAssetsRatio,
+          interpretation: interpret(ratios.debtToEquityRatio, ratios.debtToAssetsRatio),
+          leverageLevel: getLeverageLevel(ratios.debtToEquityRatio),
+          recommendation: getRecommendation(ratios.debtToEquityRatio),
+          strength: getStrength(ratios.debtToEquityRatio),
+          insights: getInsights(ratios.debtToEquityRatio, ratios.debtToAssetsRatio),
+          considerations: getConsiderations(ratios.debtToEquityRatio)
+        });
+      }
+    } catch (error) {
+      console.error('Error calculating leverage ratios:', error);
     }
   };
 
@@ -152,7 +156,9 @@ export default function LeverageDebtRatioImpactCalculator() {
         </CardHeader>
         <CardContent>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit, (errors) => {
+          console.error('Form validation errors:', errors);
+        })} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="totalDebt" render={({ field }) => (
               <FormItem>
@@ -161,7 +167,20 @@ export default function LeverageDebtRatioImpactCalculator() {
                       Total Debt ($)
                     </FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="Enter total debt" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                      <Input 
+                        type="number" 
+                        step="0.01"
+                        placeholder="Enter total debt" 
+                        value={Number.isFinite(field.value) ? field.value : ''} 
+                        onChange={e => {
+                          const v = e.target.value;
+                          const n = v === '' ? undefined : parseFloat(v);
+                          field.onChange(Number.isFinite(n) && n !== null && n >= 0 ? n : undefined);
+                        }}
+                        onBlur={field.onBlur}
+                        name={field.name}
+                        ref={field.ref}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -173,7 +192,20 @@ export default function LeverageDebtRatioImpactCalculator() {
                       Total Equity ($)
                     </FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="Enter total equity" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                      <Input 
+                        type="number" 
+                        step="0.01"
+                        placeholder="Enter total equity" 
+                        value={Number.isFinite(field.value) ? field.value : ''} 
+                        onChange={e => {
+                          const v = e.target.value;
+                          const n = v === '' ? undefined : parseFloat(v);
+                          field.onChange(Number.isFinite(n) && n !== null && n > 0 ? n : undefined);
+                        }}
+                        onBlur={field.onBlur}
+                        name={field.name}
+                        ref={field.ref}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -185,7 +217,20 @@ export default function LeverageDebtRatioImpactCalculator() {
                       Interest Rate (%)
                     </FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="Enter interest rate" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                      <Input 
+                        type="number" 
+                        step="0.01"
+                        placeholder="Enter interest rate" 
+                        value={Number.isFinite(field.value) ? field.value : ''} 
+                        onChange={e => {
+                          const v = e.target.value;
+                          const n = v === '' ? undefined : parseFloat(v);
+                          field.onChange(Number.isFinite(n) && n !== null && n >= 0 ? n : undefined);
+                        }}
+                        onBlur={field.onBlur}
+                        name={field.name}
+                        ref={field.ref}
+                      />
                     </FormControl>
                 <FormMessage />
               </FormItem>
@@ -197,7 +242,20 @@ export default function LeverageDebtRatioImpactCalculator() {
                       Tax Rate (%)
                     </FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="Enter tax rate" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                      <Input 
+                        type="number" 
+                        step="0.01"
+                        placeholder="Enter tax rate" 
+                        value={Number.isFinite(field.value) ? field.value : ''} 
+                        onChange={e => {
+                          const v = e.target.value;
+                          const n = v === '' ? undefined : parseFloat(v);
+                          field.onChange(Number.isFinite(n) && n !== null && n >= 0 && n <= 100 ? n : undefined);
+                        }}
+                        onBlur={field.onBlur}
+                        name={field.name}
+                        ref={field.ref}
+                      />
                     </FormControl>
                 <FormMessage />
               </FormItem>
@@ -345,7 +403,7 @@ export default function LeverageDebtRatioImpactCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Financial Leverage, Debt Ratios, and Solvency Analysis" />
     <meta itemProp="description" content="An expert guide detailing the calculation and impact of key debt ratios (Debt-to-Equity, Debt-to-Assets) on company risk, return on equity (ROE), the concept of positive and negative leverage, and its role in corporate capital structure decisions." />
@@ -355,12 +413,12 @@ export default function LeverageDebtRatioImpactCalculator() {
     <meta itemProp="url" content="/definitive-leverage-debt-ratio-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Financial Leverage and Debt Ratios: Risk, Reward, and Capital Structure</h1>
-    <p className="text-lg italic text-gray-700">Master the metrics that quantify a company's reliance on borrowed capital and its ability to magnify shareholder returns.</p>
+    <p className="text-lg italic text-muted-foreground">Master the metrics that quantify a company's reliance on borrowed capital and its ability to magnify shareholder returns.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Financial Leverage: Definition and Impact</a></li>
         <li><a href="#debt-equity" className="hover:underline">Debt-to-Equity (D/E) Ratio Calculation</a></li>
         <li><a href="#debt-assets" className="hover:underline">Debt-to-Assets Ratio Calculation</a></li>
@@ -384,8 +442,8 @@ export default function LeverageDebtRatioImpactCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">D/E Ratio Formula</h3>
     <p>The D/E ratio measures how much of the company's capital structure is financed by debt relative to equity:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'D/E Ratio = Total Liabilities / Total Shareholders\' Equity'}
         </p>
     </div>
@@ -401,8 +459,8 @@ export default function LeverageDebtRatioImpactCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Debt-to-Assets Formula</h3>
     <p>This ratio indicates the proportional claim creditors have on the firm's assets:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Debt-to-Assets Ratio = Total Liabilities / Total Assets'}
         </p>
     </div>
@@ -430,8 +488,8 @@ export default function LeverageDebtRatioImpactCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The DuPont Analysis Component</h3>
     <p>Leverage is explicitly incorporated into the <strong className="font-semibold">DuPont Analysis</strong> via the <strong className="font-semibold">Equity Multiplier</strong> (Total Assets divided by Total Equity), which is directly proportional to the D/E ratio. The full DuPont formula is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'ROE = Net Profit Margin * Asset Turnover * Equity Multiplier'}
         </p>
     </div>

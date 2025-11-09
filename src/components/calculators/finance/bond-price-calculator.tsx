@@ -393,7 +393,7 @@ export default function BondPriceCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Bond Price Calculation: Formula, Present Value, and Yield Relationship" />
     <meta itemProp="description" content="An expert guide detailing the Bond Price formula, its calculation using present value of coupons and face value, the inverse relationship with yield, and the difference between pricing bonds at par, premium, and discount." />
@@ -403,12 +403,12 @@ export default function BondPriceCalculator() {
     <meta itemProp="url" content="/definitive-bond-price-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Bond Price: Calculating Value Using Present Value of Cash Flows</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental principle of fixed income valuation: a bond’s price is the sum of the present value of all its future payments.</p>
+    <p className="text-lg italic text-muted-foreground">Master the fundamental principle of fixed income valuation: a bond's price is the sum of the present value of all its future payments.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Bond Price: Definition and Core Components</a></li>
         <li><a href="#formula" className="hover:underline">The Bond Price Calculation Formula</a></li>
         <li><a href="#pv-components" className="hover:underline">Present Value of Coupons and Face Value</a></li>
@@ -437,16 +437,16 @@ export default function BondPriceCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The total price is separated into its two component PVs:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Bond Price = PV (Coupons) + PV (Face Value)'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Detailed Formula</h3>
     <p>This combined formula discounts all future cash flows using the **Yield to Maturity (YTM)** ($r$), which acts as the discount rate:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Bond Price = Sum [ C / (1+r)^t ] + F / (1+r)^T'}
         </p>
     </div>

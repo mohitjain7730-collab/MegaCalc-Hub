@@ -313,7 +313,7 @@ export default function SharpeRatioCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Sharpe Ratio: Calculation, Interpretation, and Risk-Adjusted Returns" />
     <meta itemProp="description" content="An expert guide detailing the Sharpe Ratio formula, its role in measuring risk-adjusted performance, calculating excess return and standard deviation of returns, and its application in portfolio management and investment comparison." />
@@ -323,12 +323,12 @@ export default function SharpeRatioCalculator() {
     <meta itemProp="url" content="/definitive-sharpe-ratio-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Sharpe Ratio: The Standard for Risk-Adjusted Performance</h1>
-    <p className="text-lg italic text-gray-700">Master the critical metric that assesses an investment’s return relative to the risk taken, quantifying the quality of the excess gain.</p>
+    <p className="text-lg italic text-muted-foreground">Master the critical metric that assesses an investment's return relative to the risk taken, quantifying the quality of the excess gain.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Sharpe Ratio: Definition and Core Purpose</a></li>
         <li><a href="#formula" className="hover:underline">The Sharpe Ratio Formula and Components</a></li>
         <li><a href="#excess-return" className="hover:underline">Calculating Excess Return (The Numerator)</a></li>
@@ -353,8 +353,8 @@ export default function SharpeRatioCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The formula for the Sharpe Ratio (S) is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'S = (R_p - R_f) / σ_p'}
         </p>
     </div>

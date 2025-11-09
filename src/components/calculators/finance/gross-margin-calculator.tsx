@@ -299,7 +299,7 @@ export default function GrossMarginCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Gross Margin Calculation, Interpretation, and Core Profitability Analysis" />
     <meta itemProp="description" content="An expert guide detailing the Gross Margin formula, its role in assessing a company's production efficiency and pricing power, and its crucial distinction from Operating Margin and Net Margin." />
@@ -309,15 +309,15 @@ export default function GrossMarginCalculator() {
     <meta itemProp="url" content="/definitive-gross-margin-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Gross Margin: Measuring Core Production Profitability</h1>
-    <p className="text-lg italic text-gray-700">Master the essential metric that reveals how much profit a company retains from sales after paying the direct costs of manufacturing or acquiring goods.</p>
+    <p className="text-lg italic text-muted-foreground">Master the essential metric that reveals how much profit a company retains from sales after paying the direct costs of manufacturing or acquiring goods.</p>
     
 
-[Image of Gross Margin ratio diagram showing Gross Profit over Revenue]
+    [Image of Gross Margin ratio diagram showing Gross Profit over Revenue]
 
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Gross Margin: Definition and Core Purpose</a></li>
         <li><a href="#calculation" className="hover:underline">The Gross Margin Formula and Components</a></li>
         <li><a href="#cogs" className="hover:underline">Detailed Analysis of Cost of Goods Sold (COGS)</a></li>
@@ -349,8 +349,8 @@ export default function GrossMarginCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Calculating Gross Profit</h3>
     <p>Gross Profit is the dollar amount remaining after deducting COGS from revenue:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Gross Profit = Net Sales - Cost of Goods Sold (COGS)'}
         </p>
     </div>
@@ -358,8 +358,8 @@ export default function GrossMarginCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Calculating Gross Margin Percentage</h3>
     <p>The Gross Margin Percentage expresses the Gross Profit as a percentage of the revenue generated:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Gross Margin % = (Gross Profit / Net Sales) * 100'}
         </p>
     </div>

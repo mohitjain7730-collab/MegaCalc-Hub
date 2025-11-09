@@ -406,7 +406,7 @@ export default function BinomialOptionPricingCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Binomial Option Pricing Model (BOPM): Calculation and Lattice Tree" />
     <meta itemProp="description" content="An expert guide detailing the Binomial Option Pricing Model (BOPM), its calculation using a multi-step binomial tree, the risk-neutral probability method, and its crucial advantage in pricing American options by allowing for early exercise." />
@@ -416,11 +416,11 @@ export default function BinomialOptionPricingCalculator() {
     <meta itemProp="url" content="/definitive-binomial-option-pricing-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Binomial Option Pricing Model (BOPM): Tree Structure and Valuation</h1>
-    <p className="text-lg italic text-gray-700">Master the discrete-time model that determines the fair value of an option by mapping all possible future price paths of the underlying asset.</p>
+    <p className="text-lg italic text-muted-foreground">Master the discrete-time model that determines the fair value of an option by mapping all possible future price paths of the underlying asset.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">BOPM: Core Concept and Discrete Time</a></li>
         <li><a href="#tree-structure" className="hover:underline">The Binomial Tree Structure (Lattice)</a></li>
         <li><a href="#risk-neutral" className="hover:underline">Calculating Risk-Neutral Probability (q)</a></li>
@@ -459,8 +459,8 @@ export default function BinomialOptionPricingCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Risk-Neutral Probability Formula</h3>
     <p>The $q$ value is critical because once calculated, the final option price is found by simply taking the discounted expected payoff, weighted by $q$ and $(1-q)$.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'q = [ e^(r * Δt) - d ] / (u - d)'}
         </p>
     </div>
@@ -477,8 +477,8 @@ export default function BinomialOptionPricingCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Discounting and Backward Induction</h3>
     <p>Moving backward one step (from $t+1$ to $t$), the option's value at the earlier node is the present value of its expected future value, weighted by the risk-neutral probabilities:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'V_t = e^(-r * Δt) * [ q * V_{up} + (1 - q) * V_{down} ]'}
         </p>
     </div>

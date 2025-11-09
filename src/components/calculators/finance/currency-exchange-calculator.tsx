@@ -247,7 +247,7 @@ export default function CurrencyExchangeCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Currency Exchange Rates, Cross Rates, and FX Transaction Mechanics" />
     <meta itemProp="description" content="An expert guide detailing the fundamentals of foreign exchange (FX) rates, how to calculate conversions between base and quote currencies, understanding bid-ask spreads, and the mechanics of cross-rate calculation." />
@@ -257,11 +257,11 @@ export default function CurrencyExchangeCalculator() {
     <meta itemProp="url" content="/definitive-currency-exchange-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Currency Exchange: Rates, Cross Rates, and Transaction Mechanics</h1>
-    <p className="text-lg italic text-gray-700">Master the foundational concept of the foreign exchange market and how money is valued across international borders.</p>
+    <p className="text-lg italic text-muted-foreground">Master the foundational concept of the foreign exchange market and how money is valued across international borders.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#basics" className="hover:underline">Exchange Rate Basics: Base, Quote, and Direct Quotes</a></li>
         <li><a href="#conversion" className="hover:underline">The Currency Conversion Formula</a></li>
         <li><a href="#cross-rate" className="hover:underline">Cross Rate Calculation and Arbitrage</a></li>
@@ -293,8 +293,8 @@ export default function CurrencyExchangeCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Converting Base to Quote</h3>
     <p>If you are converting an amount of the Base Currency into the Quote Currency, you multiply the amount by the exchange rate:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Amount (Quote) = Amount (Base) * Exchange Rate'}
         </p>
     </div>
@@ -302,8 +302,8 @@ export default function CurrencyExchangeCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Converting Quote to Base</h3>
     <p>If you are converting an amount of the Quote Currency into the Base Currency, you divide the amount by the exchange rate:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Amount (Base) = Amount (Quote) / Exchange Rate'}
         </p>
     </div>
@@ -317,8 +317,8 @@ export default function CurrencyExchangeCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The cross rate between two non-USD currencies (A and B) is derived from the known rates between each of them and the USD:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Rate (A/B) = Rate (A/USD) / Rate (B/USD)'}
         </p>
     </div>

@@ -406,7 +406,7 @@ export default function MonteCarloPortfolioCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Monte Carlo Simulation: Portfolio Value, Risk, and Forecasting" />
     <meta itemProp="description" content="An expert guide detailing the Monte Carlo Simulation methodology, its core role in forecasting portfolio terminal value, modeling random walk of asset prices, and quantifying investment risk under uncertainty." />
@@ -416,12 +416,12 @@ export default function MonteCarloPortfolioCalculator() {
     <meta itemProp="url" content="/definitive-monte-carlo-portfolio-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Monte Carlo Simulation: Forecasting Portfolio Value and Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the powerful statistical technique that uses random sampling and probability to model thousands of possible investment outcomes.</p>
+    <p className="text-lg italic text-muted-foreground">Master the powerful statistical technique that uses random sampling and probability to model thousands of possible investment outcomes.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Monte Carlo Simulation: Core Concept and Applications</a></li>
         <li><a href="#random-walk" className="hover:underline">The Random Walk Model and Geometric Brownian Motion</a></li>
         <li><a href="#inputs" className="hover:underline">Critical Inputs: Mean, Volatility, and Correlation</a></li>
@@ -455,8 +455,8 @@ export default function MonteCarloPortfolioCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Geometric Brownian Motion (GBM)</h3>
     <p>GBM is the mathematical framework used to simulate the Random Walk. It assumes that stock returns are normally distributed and that prices are non-negative, meaning the stock price can move up or down based on a volatility factor and a drift (expected return) factor over small time intervals.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Next Price = Current Price * e^[ (μ - σ^2/2)Δt + σ * Z * Square Root(Δt) ]'}
         </p>
     </div>

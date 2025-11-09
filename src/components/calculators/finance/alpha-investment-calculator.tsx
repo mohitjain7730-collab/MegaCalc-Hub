@@ -335,7 +335,7 @@ export default function AlphaInvestmentCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Alpha: Calculation, Interpretation, and Investment Performance" />
     <meta itemProp="description" content="An expert guide detailing the Alpha (Jensen's Alpha) formula, its core role in measuring active portfolio management skill, comparison to Beta, and its use in assessing risk-adjusted returns against the expected market return (CAPM)." />
@@ -345,15 +345,15 @@ export default function AlphaInvestmentCalculator() {
     <meta itemProp="url" content="/definitive-alpha-calculator-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Alpha: Measuring Manager Skill and Excess Return</h1>
-    <p className="text-lg italic text-gray-700">Master the crucial metric that quantifies the performance of an active investment strategy against its expected return, adjusted for market risk.</p>
+    <p className="text-lg italic text-muted-foreground">Master the crucial metric that quantifies the performance of an active investment strategy against its expected return, adjusted for market risk.</p>
     
 
-[Image of Alpha and Beta relationship]
+    [Image of Alpha and Beta relationship]
 
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Alpha: Definition and Active Management</a></li>
         <li><a href="#capm" className="hover:underline">The Capital Asset Pricing Model (CAPM) Baseline</a></li>
         <li><a href="#calculation" className="hover:underline">The Alpha Formula (Jensen's Alpha)</a></li>
@@ -377,8 +377,8 @@ export default function AlphaInvestmentCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">CAPM Expected Return Formula</h3>
     <p>CAPM states that the expected return of a security or portfolio ($R_p$) should equal the risk-free rate plus a market risk premium, scaled by the portfolio's Beta ($\beta$):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'R_p = R_f + β * (R_m - R_f)'}
         </p>
     </div>
@@ -392,8 +392,8 @@ export default function AlphaInvestmentCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Alpha Calculation Identity</h3>
     <p>Alpha ($\alpha$) is simply the difference between the actual return and the expected return:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Alpha = Actual Return - Expected Return (via CAPM)'}
         </p>
     </div>

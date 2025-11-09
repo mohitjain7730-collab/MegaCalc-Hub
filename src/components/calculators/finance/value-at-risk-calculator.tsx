@@ -366,7 +366,7 @@ export default function ValueAtRiskCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Value at Risk (VaR): Calculation Methods, Interpretation, and Risk Management" />
     <meta itemProp="description" content="An expert guide detailing the Value at Risk (VaR) concept, its role as the primary regulatory risk measure, the three main calculation methods (Historical, Parametric, Monte Carlo), and its use in financial institutions for risk control and capital allocation." />
@@ -376,12 +376,12 @@ export default function ValueAtRiskCalculator() {
     <meta itemProp="url" content="/definitive-value-at-risk-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Value at Risk (VaR): Quantifying Maximum Expected Loss</h1>
-    <p className="text-lg italic text-gray-700">Master the critical risk metric used globally by financial institutions to estimate the largest probable loss over a specific time horizon.</p>
+    <p className="text-lg italic text-muted-foreground">Master the critical risk metric used globally by financial institutions to estimate the largest probable loss over a specific time horizon.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">VaR: Core Definition and Parameters</a></li>
         <li><a href="#parametric" className="hover:underline">Method 1: Parametric VaR (Variance-Covariance)</a></li>
         <li><a href="#historical" className="hover:underline">Method 2: Historical Simulation VaR</a></li>
@@ -411,8 +411,8 @@ export default function ValueAtRiskCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity (Normal Distribution)</h3>
     <p>This method calculates VaR by scaling the portfolio's expected loss by a factor related to the confidence level and the standard deviation (volatility) of the returns:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'VaR = Portfolio Value * Z-Score * Volatility'}
         </p>
     </div>

@@ -401,7 +401,7 @@ export default function BlackScholesCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Black-Scholes-Merton (BSM) Option Pricing Model, Formula, and Variables" />
     <meta itemProp="description" content="An expert guide detailing the Black-Scholes-Merton (BSM) formula, its core role in pricing European options (calls and puts), the function of each input variable (volatility, time, strike price), and its application in financial risk management." />
@@ -411,12 +411,12 @@ export default function BlackScholesCalculator() {
     <meta itemProp="url" content="/definitive-black-scholes-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Black-Scholes-Merton Model: Option Pricing Theory</h1>
-    <p className="text-lg italic text-gray-700">Master the Nobel Prize-winning formula that calculates the theoretical fair value of a European option by relating price, risk, and time.</p>
+    <p className="text-lg italic text-muted-foreground">Master the Nobel Prize-winning formula that calculates the theoretical fair value of a European option by relating price, risk, and time.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Black-Scholes: Core Purpose and Assumptions</a></li>
         <li><a href="#formula" className="hover:underline">The Black-Scholes Formula Components</a></li>
         <li><a href="#inputs" className="hover:underline">The Five Critical Input Variables</a></li>
@@ -446,16 +446,16 @@ export default function BlackScholesCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Black-Scholes Call Price Formula</h3>
     <p>The call price ($C$) is calculated as the present value of receiving the stock at expiration if the option is in the money, minus the present value of paying the strike price if the option is in the money:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'C = S * N(d1) - X * e^(-rT) * N(d2)'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Black-Scholes Put Price Formula (Put-Call Parity)</h3>
     <p>The put price ($P$) is derived from the **Put-Call Parity** principle, which defines the relationship between the call and put options and the underlying stock price ($S$).</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'P = X * e^(-rT) * N(-d2) - S * N(-d1)'}
         </p>
     </div>

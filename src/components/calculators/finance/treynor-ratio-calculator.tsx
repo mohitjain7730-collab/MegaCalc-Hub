@@ -313,7 +313,7 @@ export default function TreynorRatioCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Treynor Ratio: Calculation, Interpretation, and Systematic Risk Analysis" />
     <meta itemProp="description" content="An expert guide detailing the Treynor Ratio formula, its role in measuring risk-adjusted performance by focusing solely on market (systematic) risk, and its comparison to the Sharpe Ratio and Jensen's Alpha." />
@@ -323,12 +323,12 @@ export default function TreynorRatioCalculator() {
     <meta itemProp="url" content="/definitive-treynor-ratio-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Treynor Ratio: Measuring Performance Against Market Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the specialized metric that assesses investment returns based exclusively on the systematic risk exposure of the portfolio.</p>
+    <p className="text-lg italic text-muted-foreground">Master the specialized metric that assesses investment returns based exclusively on the systematic risk exposure of the portfolio.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Treynor Ratio: Definition and Core Focus</a></li>
         <li><a href="#formula" className="hover:underline">The Treynor Ratio Formula and Components</a></li>
         <li><a href="#beta" className="hover:underline">The Role of Beta ($\beta$): Measuring Systematic Risk</a></li>
@@ -353,8 +353,8 @@ export default function TreynorRatioCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The formula for the Treynor Ratio (T) is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'T = (R_p - R_f) / β_p'}
         </p>
     </div>

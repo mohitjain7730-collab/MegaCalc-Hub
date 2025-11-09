@@ -349,7 +349,7 @@ export default function WACCCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to WACC Calculation: Weighted Average Cost of Capital, Discount Rate, and Valuation" />
     <meta itemProp="description" content="An expert guide detailing the WACC formula, its role as the company's discount rate, how to calculate the cost of equity (Re) and cost of debt (Rd), and its critical application in Net Present Value (NPV) and Discounted Cash Flow (DCF) valuation." />
@@ -359,15 +359,15 @@ export default function WACCCalculator() {
     <meta itemProp="url" content="/definitive-wacc-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to WACC: Weighted Average Cost of Capital and Discounting</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental corporate finance metric that represents the blended, overall cost of financing a company's assets.</p>
+    <p className="text-lg italic text-muted-foreground">Master the fundamental corporate finance metric that represents the blended, overall cost of financing a company's assets.</p>
     
 
-[Image of the Weighted Average Cost of Capital concept]
+    [Image of the Weighted Average Cost of Capital concept]
 
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">WACC: Definition and Role as Discount Rate</a></li>
         <li><a href="#formula" className="hover:underline">The WACC Formula and Components</a></li>
         <li><a href="#equity" className="hover:underline">Calculating the Cost of Equity (Re)</a></li>
@@ -394,8 +394,8 @@ export default function WACCCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The standard WACC formula incorporates the tax benefit of debt (the tax shield) but assumes the capital structure (the weights) remains constant:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
         </p>
     </div>
@@ -417,8 +417,8 @@ export default function WACCCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The CAPM Method</h3>
     <p>The most common method for determining $Re$ is the **Capital Asset Pricing Model (CAPM)**, which links risk (Beta) to return:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Re = Rf + β * (Rm - Rf)'}
         </p>
     </div>

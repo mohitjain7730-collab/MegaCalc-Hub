@@ -299,22 +299,22 @@ export default function NetProfitMarginCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Net Profit Margin Calculation, Interpretation, and Final Profitability Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the Net Profit Margin formula, its role as the ultimate measure of a company’s overall profitability and efficiency after all expenses (including taxes and interest) are paid, and its use in competitive benchmarking." />
+    <meta itemProp="description" content="An expert guide detailing the Net Profit Margin formula, its role as the ultimate measure of a company's overall profitability and efficiency after all expenses (including taxes and interest) are paid, and its use in competitive benchmarking." />
     <meta itemProp="keywords" content="net profit margin formula explained, calculating net income margin, bottom line profitability metric, net income to revenue ratio, interpreting net margin, profit efficiency analysis" />
     <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
     <meta itemProp="datePublished" content="2025-11-02" /> 
     <meta itemProp="url" content="/definitive-net-profit-margin-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Profit Margin: The Ultimate Measure of Financial Success</h1>
-    <p className="text-lg italic text-gray-700">Master the bottom-line metric that reveals the percentage of revenue a company successfully converts into profit after paying every single expense.</p>
+    <p className="text-lg italic text-muted-foreground">Master the bottom-line metric that reveals the percentage of revenue a company successfully converts into profit after paying every single expense.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Net Margin: Definition and Bottom-Line Significance</a></li>
         <li><a href="#calculation" className="hover:underline">The Net Profit Margin Formula and Components</a></li>
         <li><a href="#comparison" className="hover:underline">Net Margin vs. Gross and Operating Margins</a></li>
@@ -341,8 +341,8 @@ export default function NetProfitMarginCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
     <p>The formula for the Net Profit Margin is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Net Profit Margin = (Net Income / Total Revenue) * 100'}
         </p>
     </div>

@@ -411,7 +411,7 @@ export default function BondYieldToMaturityCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Bond Yield to Maturity (YTM): Calculation, Interpretation, and Fixed Income Valuation" />
     <meta itemProp="description" content="An expert guide detailing the Yield to Maturity (YTM) formula, its core role as a measure of a bond's internal rate of return (IRR), the relationship between bond price and YTM, and its application in fixed income portfolio management." />
@@ -421,12 +421,12 @@ export default function BondYieldToMaturityCalculator() {
     <meta itemProp="url" content="/definitive-bond-yield-to-maturity-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Yield to Maturity (YTM): The True Return of a Bond</h1>
-    <p className="text-lg italic text-gray-700">Master the critical metric that quantifies the total expected rate of return on a bond, assuming it is held until its final maturity date.</p>
+    <p className="text-lg italic text-muted-foreground">Master the critical metric that quantifies the total expected rate of return on a bond, assuming it is held until its final maturity date.</p>
     
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">YTM: Definition and Internal Rate of Return (IRR)</a></li>
         <li><a href="#formula" className="hover:underline">The YTM Formula and Calculation Mechanics</a></li>
         <li><a href="#price-yield" className="hover:underline">The Inverse Relationship Between Price and Yield</a></li>
@@ -458,16 +458,16 @@ export default function BondYieldToMaturityCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity (The Valuation Equation)</h3>
     <p>YTM is the discount rate ($r$) that makes the bond's current price equal to the sum of the present values of all future cash flows (coupon annuity plus face value lump sum):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Bond Price = PV (Coupons) + PV (Face Value)'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Bond Price Formula</h3>
     <p>The detailed calculation discounts both parts of the cash flow stream:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Bond Price = Sum [ C / (1+r)^t ] + F / (1+r)^T'}
         </p>
     </div>

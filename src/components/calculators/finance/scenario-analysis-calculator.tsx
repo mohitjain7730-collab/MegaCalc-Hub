@@ -364,7 +364,7 @@ export default function ScenarioAnalysisCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Scenario Analysis: Financial Modeling, Stress Testing, and Risk Management" />
     <meta itemProp="description" content="An expert guide detailing the methodology of Scenario Analysis, including its comparison to sensitivity analysis, structuring base, best, and worst-case scenarios, and its application in capital budgeting and financial forecasting." />
@@ -374,11 +374,11 @@ export default function ScenarioAnalysisCalculator() {
     <meta itemProp="url" content="/definitive-scenario-analysis-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Scenario Analysis: Modeling Outcomes and Managing Financial Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the structured forecasting technique that quantifies the impact of major, interconnected changes on a project's profitability or a company's value.</p>
+    <p className="text-lg italic text-muted-foreground">Master the structured forecasting technique that quantifies the impact of major, interconnected changes on a project's profitability or a company's value.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#definition" className="hover:underline">Scenario Analysis: Definition and Core Purpose</a></li>
         <li><a href="#structure" className="hover:underline">Structuring Scenarios: Base, Best, and Worst Cases</a></li>
         <li><a href="#methodology" className="hover:underline">Modeling Methodology and Output Metrics</a></li>

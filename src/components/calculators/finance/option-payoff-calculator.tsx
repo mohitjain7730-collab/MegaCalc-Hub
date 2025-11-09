@@ -364,7 +364,7 @@ export default function OptionPayoffCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Put and Call Option Payoff Calculation and Profit/Loss Analysis" />
     <meta itemProp="description" content="An expert guide detailing the payoff formulas for long and short call/put options, the concept of intrinsic value, break-even points, and how to graphically analyze the profit and loss profiles of option contracts at expiration." />
@@ -374,11 +374,11 @@ export default function OptionPayoffCalculator() {
     <meta itemProp="url" content="/definitive-option-payoff-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Put and Call Option Payoff: Understanding Profit and Loss at Expiration</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental formulas that quantify the gain or loss of an option contract based on the underlying asset's price at expiration.</p>
+    <p className="text-lg italic text-muted-foreground">Master the fundamental formulas that quantify the gain or loss of an option contract based on the underlying asset's price at expiration.</p>
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#basics" className="hover:underline">Option Basics: Definitions, Strike Price, and Premium</a></li>
         <li><a href="#call-payoff" className="hover:underline">Call Option Payoff (Long and Short)</a></li>
         <li><a href="#put-payoff" className="hover:underline">Put Option Payoff (Long and Short)</a></li>
@@ -408,16 +408,16 @@ export default function OptionPayoffCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Long Call (Buying the Call)</h3>
     <p>The buyer pays the premium and seeks upward movement in the stock price. The potential profit is theoretically unlimited, and the maximum loss is limited to the premium paid.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Long Call Payoff = Max(0, S_T - X) - Premium'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">2. Short Call (Selling the Call)</h3>
     <p>The seller receives the premium upfront but takes on the obligation to sell the asset at the strike price. The maximum gain is limited to the premium received, and the potential loss is theoretically unlimited.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Short Call Payoff = Premium - Max(0, S_T - X)'}
         </p>
     </div>
@@ -431,16 +431,16 @@ export default function OptionPayoffCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Long Put (Buying the Put)</h3>
     <p>The buyer pays the premium and seeks downward movement in the stock price. The potential profit is substantial (limited by $S_T$ hitting zero), and the maximum loss is limited to the premium paid.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Long Put Payoff = Max(0, X - S_T) - Premium'}
         </p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">2. Short Put (Selling the Put)</h3>
     <p>The seller receives the premium upfront but takes on the obligation to buy the asset at the strike price. The maximum gain is limited to the premium received, and the potential loss is substantial (limited by $S_T$ hitting zero).</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+        <p className="font-mono text-xl text-destructive font-bold">
             {'Short Put Payoff = Premium - Max(0, X - S_T)'}
         </p>
     </div>
@@ -459,15 +459,15 @@ export default function OptionPayoffCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Moneyness Status at Expiration</h3>
     <p>The profitability of the option (before accounting for premium) is determined by its moneyness status relative to the strike price (X):</p>
-    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
-        <thead className="bg-gray-50">
+    <table className="min-w-full divide-y divide-border border border-border my-4">
+        <thead className="bg-muted">
             <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Moneyness</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Call Condition</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Put Condition</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Moneyness</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Call Condition</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Put Condition</th>
             </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-card divide-y divide-border">
             <tr>
                 <td className="px-6 py-4"><strong className="font-semibold">In the Money (ITM)</strong></td>
                 <td className="px-6 py-4">S_T &gt; X</td>
