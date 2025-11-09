@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
-import { Calculator, BookOpen } from 'lucide-react';
+import { Calculator, BookOpen, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import './globals.css';
@@ -49,6 +49,12 @@ export default function RootLayout({
                   <span className="hidden sm:inline-block text-lg">Mycalculating.com</span>
                 </Link>
                 <div className="ml-auto flex items-center gap-2 sm:gap-4">
+                  <Button asChild variant="ghost" className="px-2 sm:px-4">
+                    <Link href="/ai-tool">
+                      <Sparkles className="h-4 w-4 sm:mr-2" />
+                      <span className="hidden sm:inline-block">Try Our AI Tool</span>
+                    </Link>
+                  </Button>
                   <Button asChild variant="ghost" className="px-2 sm:px-4">
                     <Link href="/learning-hub">
                       <BookOpen className="h-4 w-4 sm:mr-2" />

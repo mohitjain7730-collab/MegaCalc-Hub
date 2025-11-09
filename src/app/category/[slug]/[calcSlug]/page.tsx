@@ -754,6 +754,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'futures-hedge-ratio-calculator': dynamic(() => import('@/components/calculators/finance/futures-hedge-ratio-calculator')),
     'basis-risk-calculator': dynamic(() => import('@/components/calculators/finance/basis-risk-calculator')),
     'arbitrage-profit-calculator': dynamic(() => import('@/components/calculators/finance/arbitrage-profit-calculator')),
+    'put-call-parity-checker': dynamic(() => import('@/components/calculators/finance/put-call-parity-checker')),
+    'futures-fair-value-calculator': dynamic(() => import('@/components/calculators/finance/futures-fair-value-calculator')),
+    'option-time-decay-simulator': dynamic(() => import('@/components/calculators/finance/option-time-decay-simulator')),
+    'option-breakeven-price-calculator': dynamic(() => import('@/components/calculators/finance/option-breakeven-price-calculator')),
+    'covered-call-return-analyzer': dynamic(() => import('@/components/calculators/finance/covered-call-return-analyzer')),
 };
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {

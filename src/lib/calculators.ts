@@ -255,6 +255,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate arbitrage profit from price differences between markets or instruments to identify risk-free trading opportunities.'
   },
   {
+    id: 4736,
+    name: 'Put-Call Parity Checker',
+    description: 'Check put-call parity relationship between put and call options to identify arbitrage opportunities and verify option pricing.',
+    slug: 'put-call-parity-checker',
+    category: 'finance',
+    metaTitle: 'Put-Call Parity Checker',
+    metaDescription: 'Verify put-call parity relationship between put and call options to identify arbitrage opportunities and validate option pricing.'
+  },
+  {
+    id: 4737,
+    name: 'Futures Fair Value Calculator',
+    description: 'Calculate fair value of futures contracts from spot price, interest rate, dividends, and time to expiration to identify pricing discrepancies.',
+    slug: 'futures-fair-value-calculator',
+    category: 'finance',
+    metaTitle: 'Futures Fair Value Calculator',
+    metaDescription: 'Calculate fair value of futures contracts from spot price, interest rates, dividends, and time to expiration for pricing analysis.'
+  },
+  {
+    id: 4738,
+    name: 'Option Time Decay (Theta Impact) Simulator',
+    description: 'Simulate option time decay (theta) over time to understand how option prices change as expiration approaches.',
+    slug: 'option-time-decay-simulator',
+    category: 'finance',
+    metaTitle: 'Option Time Decay (Theta Impact) Simulator',
+    metaDescription: 'Simulate option time decay (theta) to understand how option prices decline over time as expiration approaches.'
+  },
+  {
+    id: 4739,
+    name: 'Option Breakeven Price Calculator',
+    description: 'Calculate breakeven price for call and put options to determine the underlying price needed to profit at expiration.',
+    slug: 'option-breakeven-price-calculator',
+    category: 'finance',
+    metaTitle: 'Option Breakeven Price Calculator',
+    metaDescription: 'Calculate breakeven price for call and put options to determine the underlying price needed to profit at expiration.'
+  },
+  {
+    id: 4740,
+    name: 'Covered Call Return Analyzer',
+    description: 'Analyze returns from covered call strategies by calculating income, capital gains, and total return from selling calls against stock positions.',
+    slug: 'covered-call-return-analyzer',
+    category: 'finance',
+    metaTitle: 'Covered Call Return Analyzer',
+    metaDescription: 'Analyze covered call strategy returns by calculating premium income, capital gains, and total return from selling calls against stock.'
+  },
+  {
     id: 4702,
     name: 'Minimum Variance Portfolio Calculator',
     description: 'Get the global minimum variance allocation for two assets from volatilities and correlation.',
