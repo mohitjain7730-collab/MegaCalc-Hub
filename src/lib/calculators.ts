@@ -300,6 +300,42 @@ export const calculators: Calculator[] = [
     metaDescription: 'Analyze covered call strategy returns by calculating premium income, capital gains, and total return from selling calls against stock.'
   },
   {
+    id: 4741,
+    name: 'Iron Butterfly Payoff Calculator',
+    description: 'Calculate profit and loss for iron butterfly options strategies with multiple strike prices to analyze risk and reward.',
+    slug: 'iron-butterfly-payoff-calculator',
+    category: 'finance',
+    metaTitle: 'Iron Butterfly Payoff Calculator',
+    metaDescription: 'Calculate profit and loss for iron butterfly options strategies to analyze risk, reward, and breakeven points.'
+  },
+  {
+    id: 4742,
+    name: 'Straddle / Strangle Strategy Calculator',
+    description: 'Calculate profit and loss for straddle and strangle options strategies to analyze volatility trading opportunities.',
+    slug: 'straddle-strangle-strategy-calculator',
+    category: 'finance',
+    metaTitle: 'Straddle / Strangle Strategy Calculator',
+    metaDescription: 'Calculate profit and loss for straddle and strangle options strategies to analyze volatility trading and breakeven points.'
+  },
+  {
+    id: 4743,
+    name: 'Equity Value vs Enterprise Value Bridge Calculator',
+    description: 'Calculate the bridge between equity value and enterprise value by accounting for debt, cash, and other adjustments.',
+    slug: 'equity-enterprise-value-bridge-calculator',
+    category: 'finance',
+    metaTitle: 'Equity Value vs Enterprise Value Bridge Calculator',
+    metaDescription: 'Calculate the bridge between equity value and enterprise value by accounting for debt, cash, minority interests, and other adjustments.'
+  },
+  {
+    id: 4745,
+    name: 'Free Cash Flow to Equity (FCFE) Calculator',
+    description: 'Calculate free cash flow to equity from net income, capital expenditures, and changes in working capital for equity valuation.',
+    slug: 'free-cash-flow-to-equity-calculator',
+    category: 'finance',
+    metaTitle: 'Free Cash Flow to Equity (FCFE) Calculator',
+    metaDescription: 'Calculate free cash flow to equity from net income, capital expenditures, and working capital changes for equity valuation and DCF analysis.'
+  },
+  {
     id: 4702,
     name: 'Minimum Variance Portfolio Calculator',
     description: 'Get the global minimum variance allocation for two assets from volatilities and correlation.',

@@ -759,6 +759,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'option-time-decay-simulator': dynamic(() => import('@/components/calculators/finance/option-time-decay-simulator')),
     'option-breakeven-price-calculator': dynamic(() => import('@/components/calculators/finance/option-breakeven-price-calculator')),
     'covered-call-return-analyzer': dynamic(() => import('@/components/calculators/finance/covered-call-return-analyzer')),
+    'iron-butterfly-payoff-calculator': dynamic(() => import('@/components/calculators/finance/iron-butterfly-payoff-calculator')),
+    'straddle-strangle-strategy-calculator': dynamic(() => import('@/components/calculators/finance/straddle-strangle-strategy-calculator')),
+    'equity-enterprise-value-bridge-calculator': dynamic(() => import('@/components/calculators/finance/equity-enterprise-value-bridge-calculator')),
+    'free-cash-flow-to-equity-calculator': dynamic(() => import('@/components/calculators/finance/free-cash-flow-to-equity-calculator')),
 };
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {
