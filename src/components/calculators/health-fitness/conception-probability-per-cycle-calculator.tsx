@@ -211,7 +211,7 @@ export default function ConceptionProbabilityPerCycleCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/ivf-success-probability-calculator" className="text-primary hover:underline">IVF Success Probability</Link></h4><p className="text-sm text-muted-foreground">Estimate IVF success rates.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/ovulation-calculator" className="text-primary hover:underline">Ovulation Calculator</Link></h4><p className="text-sm text-muted-foreground">Track ovulation cycles.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/fertility-ovulation-calculator" className="text-primary hover:underline">Fertility Ovulation Calculator</Link></h4><p className="text-sm text-muted-foreground">Track ovulation cycles.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/pregnancy-weight-gain-calculator" className="text-primary hover:underline">Pregnancy Weight Gain</Link></h4><p className="text-sm text-muted-foreground">Track recommended weight gain.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/menstrual-cycle-phase-tracker-calculator" className="text-primary hover:underline">Menstrual Cycle Tracker</Link></h4><p className="text-sm text-muted-foreground">Monitor cycle phases.</p></div>
           </div>
