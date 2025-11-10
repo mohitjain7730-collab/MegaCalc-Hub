@@ -92,6 +92,11 @@ const buildSchedule = (maintenanceKcal: number, fastingDayKcal: number): DailySc
   });
 };
 
+const understandingInputs = [
+  { label: 'Maintenance Calories', description: 'Estimated calories needed per day to maintain weight without fasting days.' },
+  { label: 'Fasting Day Calories', description: 'Calories planned on the two low-intake fasting days (typically 20–30% of maintenance).' },
+];
+
 export default function IntermittentFastingFiveTwoScheduleCalculator() {
   const [result, setResult] = useState<ResultPayload | null>(null);
   const form = useForm<FormValues>({
@@ -274,6 +279,23 @@ export default function IntermittentFastingFiveTwoScheduleCalculator() {
           </Card>
         </div>
       )}
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Review these fields before planning your 5:2 schedule</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item) => (
+              <li key={item.label}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>

@@ -78,6 +78,12 @@ const warningSigns = () => [
   'Digestive discomfort from legumes may require soaking, sprouting, or digestive enzyme support',
 ];
 
+const understandingInputs = [
+  { label: 'Body Mass (kg)', description: 'Current body weight used to scale daily protein targets.' },
+  { label: 'Target Protein (g/kg)', description: 'Desired grams of protein per kilogram of bodyweight based on goals and activity.' },
+  { label: 'Current Protein (g/day)', description: 'Average daily protein intake from food logs or tracking apps.' },
+];
+
 export default function PlantBasedProteinGapCalculator() {
   const [result, setResult] = useState<ResultPayload | null>(null);
   const form = useForm<FormValues>({
@@ -264,6 +270,23 @@ export default function PlantBasedProteinGapCalculator() {
           </Card>
         </div>
       )}
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Clarify the data needed before evaluating your protein gap</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item) => (
+              <li key={item.label}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>

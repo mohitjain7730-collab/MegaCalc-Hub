@@ -77,6 +77,14 @@ const warningSigns = () => [
   'Reintroduce foods cautiously to avoid unnecessary long-term restriction and microbiome depletion',
 ];
 
+const understandingInputs = [
+  { label: 'Fructans (g)', description: 'Total grams of fructans from foods like wheat, onions, garlic, and inulin during the meal/day.' },
+  { label: 'Lactose (g)', description: 'Grams of lactose from dairy sources; lactose-free products can be logged as 0.' },
+  { label: 'Polyols (g)', description: 'Sugar alcohols such as sorbitol and mannitol found in stone fruits and certain sweeteners.' },
+  { label: 'Excess Fructose (g)', description: 'Fructose intake beyond glucose balance, often from apples, honey, or high-fructose sweeteners.' },
+  { label: 'Galactans (g)', description: 'Fermentable galacto-oligosaccharides from beans, lentils, and some cruciferous vegetables.' },
+];
+
 export default function FodmapLoadCalculator() {
   const [result, setResult] = useState<ResultPayload | null>(null);
   const form = useForm<FormValues>({
@@ -318,6 +326,23 @@ export default function FodmapLoadCalculator() {
           </Card>
         </div>
       )}
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Know what each FODMAP value represents before calculation</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item) => (
+              <li key={item.label}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
