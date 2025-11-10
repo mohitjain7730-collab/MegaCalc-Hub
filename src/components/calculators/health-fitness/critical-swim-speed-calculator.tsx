@@ -1,144 +1,246 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { Activity, Waves } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
+import { Zap, Activity, Timer, Ruler, Calendar } from 'lucide-react';
+
+const formSchema = z.object({
+  t200Min: z.number().min(0).max(30).optional(),
+  t200Sec: z.number().min(0).max(59).optional(),
+  t400Min: z.number().min(0).max(60).optional(),
+  t400Sec: z.number().min(0).max(59).optional(),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+type ResultPayload = {
+  status: string;
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+  cssPacePer100m: string;
+  cssSpeedMs: number;
+};
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Baseline CSS from 400m and 200m time trials (separate, same session with rest)' },
+  { week: 2, focus: 'Intervals at CSS (e.g., 10 × 100m with 10–15s rest) for aerobic endurance' },
+  { week: 3, focus: 'Technique emphasis: streamline, catch, and rotation drills' },
+  { week: 4, focus: 'Progress volume or reduce rest slightly on CSS sets' },
+  { week: 5, focus: 'Include threshold work (e.g., 5 × 200m near CSS)' },
+  { week: 6, focus: 'Deload week: reduce volume ~20% and refine technique' },
+  { week: 7, focus: 'Re-test CSS and adjust training paces accordingly' },
+  { week: 8, focus: 'Plan next cycle with new CSS-based sets' },
+];
+
+const faqs: [string, string][] = [
+  ['What is Critical Swim Speed (CSS)?', 'CSS is the theoretical speed you can sustain continuously without exhaustion. It is often used to set aerobic training paces in swimming.'],
+  ['How is CSS calculated?', 'CSS ≈ (T400 − T200) / 200, yielding a pace per meter. We present pace per 100m and an equivalent speed in m/s.'],
+  ['Why use both 200m and 400m?', 'Using two distances helps estimate a sustainable threshold pace rather than maximal sprint speed.'],
+  ['How accurate is CSS?', 'It is a field estimate; pool conditions, pacing, and technique affect results. Keep test conditions consistent.'],
+  ['What rest should I use between trials?', 'Allow full recovery (e.g., 10–15 minutes easy swimming) between the 400m and 200m efforts in the same session.'],
+  ['How often should I re-test?', 'Every 6–8 weeks or after a training block that targets threshold improvements.'],
+  ['Does stroke type matter?', 'CSS is typically assessed with freestyle, but you can adapt testing for other strokes with consistent protocol.'],
+  ['How do I convert CSS to training sets?', 'Use CSS for aerobic intervals (e.g., 100m repeats at CSS with short rest) and threshold work (e.g., 200m repeats near CSS).'],
+  ['Can I use yards instead of meters?', 'Yes, but the formula and outputs then apply to yards. This calculator assumes meters. Convert times accordingly.'],
+  ['What if my 200m is not faster than half my 400m?', 'Re-test with better pacing. The 200m time should be faster; otherwise the CSS estimate will be skewed.'],
+];
+
+const understandingInputs = [
+  { label: '200m time', description: 'Enter minutes and seconds for an all-out 200m swim.' },
+  { label: '400m time', description: 'Enter minutes and seconds for an all-out 400m swim (same session, paced well).' },
+];
+
+const toCss = (t200s: number, t400s: number) => {
+  const diff = t400s - t200s;
+  if (diff <= 0) return { pacePer100m: '—', speedMs: 0 };
+  const secPerM = diff / 200;
+  const secPer100 = secPerM * 100;
+  const m = Math.floor(secPer100 / 60);
+  const s = Math.round(secPer100 % 60);
+  const paceStr = `${m}:${s.toString().padStart(2, '0')} /100m`;
+  const speedMs = 1 / secPerM;
+  return { pacePer100m: paceStr, speedMs };
+};
+
+const interpret = (speedMs: number) => {
+  if (speedMs >= 1.4) return 'Strong CSS—solid aerobic threshold speed. Build volume and refine technique to sustain pace.';
+  if (speedMs >= 1.2) return 'Moderate CSS—consistent threshold sets will raise sustainable speed.';
+  return 'CSS indicates room for aerobic and technique development—focus on economy and regular threshold practice.';
+};
+
+const recommendations = (speedMs: number) => [
+  'Keep technique priority high: streamline, catch efficiency, and hip-driven rotation',
+  speedMs < 1.2 ? 'Emphasize easy aerobic volume and short intervals at CSS' : 'Progress to longer CSS sets with minimal rest to improve durability',
+  'Use fins or pull buoy sparingly to reinforce mechanics without masking inefficiencies',
+];
+
+const warningSigns = () => [
+  'Shoulder pain or elbow discomfort—reduce load and address technique before resuming intensity',
+  'Shortness of breath or dizziness—stop immediately and recover safely',
+  'Avoid maximal tests without adequate warm-up and supervision when needed',
+];
 
 export default function CriticalSwimSpeedCalculator() {
-	const [css, setCss] = useState<null | {
-		cssMetersPerSecond: number
-		cssPer100mSeconds: number
-		category: string
-		opinion: string
-	}>(null)
+  const [result, setResult] = useState<ResultPayload | null>(null);
+  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { t200Min: undefined, t200Sec: undefined, t400Min: undefined, t400Sec: undefined } });
 
-	function handleCalculate(formData: FormData) {
-		const d1 = Number(formData.get('distance1'))
-		const t1 = Number(formData.get('time1'))
-		const d2 = Number(formData.get('distance2'))
-		const t2 = Number(formData.get('time2'))
+  const onSubmit = (v: FormValues) => {
+    const { t200Min, t200Sec, t400Min, t400Sec } = v;
+    if (t200Min == null || t200Sec == null || t400Min == null || t400Sec == null) { setResult(null); return; }
+    const t200s = t200Min * 60 + t200Sec;
+    const t400s = t400Min * 60 + t400Sec;
+    const { pacePer100m, speedMs } = toCss(t200s, t400s);
+    if (speedMs <= 0) { setResult(null); return; }
 
-		if (!d1 || !t1 || !d2 || !t2 || t2 <= t1 || d2 <= d1) {
-			setCss(null)
-			return
-		}
+    setResult({
+      status: 'Calculated',
+      interpretation: interpret(speedMs),
+      recommendations: recommendations(speedMs),
+      warningSigns: warningSigns(),
+      plan: plan(),
+      cssPacePer100m: pacePer100m,
+      cssSpeedMs: Math.round(speedMs * 100) / 100,
+    });
+  };
 
-		const cssMps = (d2 - d1) / (t2 - t1)
-		const per100mSec = 100 / cssMps
+  return (
+    <div className="space-y-8">
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Activity className="h-5 w-5" /> Critical Swim Speed (CSS)</CardTitle>
+          <CardDescription>Estimate CSS from 200m and 400m time trials to set training pace.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <FormField control={form.control} name="t200Min" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Timer className="h-4 w-4" /> 200m Minutes</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" placeholder="e.g., 3" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="t200Sec" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Timer className="h-4 w-4" /> 200m Seconds</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" placeholder="e.g., 10" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="t400Min" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Timer className="h-4 w-4" /> 400m Minutes</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" placeholder="e.g., 6" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="t400Sec" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Timer className="h-4 w-4" /> 400m Seconds</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" placeholder="e.g., 30" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Calculate CSS</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
-		let category = 'Balanced endurance'
-		if (cssMps < 1.1) category = 'Develop aerobic base'
-		else if (cssMps > 1.4) category = 'High performance'
+      {result && (
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4"><Zap className="h-8 w-8 text-primary" /><CardTitle>CSS Summary</CardTitle></div>
+              <CardDescription>Threshold pace guidance for aerobic sets</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 border rounded"><h4 className="text-sm font-semibold text-muted-foreground">CSS Pace</h4><p className="text-2xl font-bold text-primary">{result.cssPacePer100m}</p></div>
+                <div className="p-4 border rounded"><h4 className="text-sm font-semibold text-muted-foreground">CSS Speed</h4><p className="text-2xl font-bold text-primary">{result.cssSpeedMs} m/s</p></div>
+              </div>
+              <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+            </CardContent>
+          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader><CardTitle>Recommendations</CardTitle></CardHeader>
+              <CardContent><ul className="space-y-2">{result.recommendations.map((r,i)=>(<li key={i} className="text-sm text-muted-foreground">{r}</li>))}</ul></CardContent>
+            </Card>
+            <Card>
+              <CardHeader><CardTitle>Warning Signs</CardTitle></CardHeader>
+              <CardContent><ul className="space-y-2">{result.warningSigns.map((w,i)=>(<li key={i} className="text-sm text-muted-foreground">{w}</li>))}</ul></CardContent>
+            </Card>
+          </div>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week CSS Plan</CardTitle></CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm"><thead><tr className="border-b"><th className="text-left p-2">Week</th><th className="text-left p-2">Focus</th></tr></thead><tbody>{plan().map(p=>(<tr key={p.week} className="border-b"><td className="p-2">{p.week}</td><td className="p-2">{p.focus}</td></tr>))}</tbody></table>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
 
-		const mm = Math.floor(per100mSec / 60)
-		const ss = Math.round(per100mSec % 60)
-		const paceStr = `${mm}:${ss.toString().padStart(2, '0')} /100m`
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Ensure consistent pacing and full recovery between trials</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">{understandingInputs.map((it)=>(<li key={it.label}><span className="font-semibold text-foreground">{it.label}:</span><span className="text-sm text-muted-foreground"> {it.description}</span></li>))}</ul>
+        </CardContent>
+      </Card>
 
-		const opinion = `Your CSS is ${cssMps.toFixed(2)} m/s (${paceStr}). Use this to set threshold sets around CSS, aerobic sets slightly slower (CSS + 2–4s/100m), and VO2 sets faster (CSS - 2–6s/100m).`
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Round out your swim training toolkit</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/running-economy-calculator" className="text-primary hover:underline">Running Economy</Link></h4><p className="text-sm text-muted-foreground">Endurance economy concepts transfer across sports.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/critical-power-calculator" className="text-primary hover:underline">Critical Power</Link></h4><p className="text-sm text-muted-foreground">Use power-duration methods in other disciplines.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Anchor aerobic capacity alongside CSS.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Pool sessions demand consistent hydration strategies.</p></div>
+          </div>
+        </CardContent>
+      </Card>
 
-		setCss({ cssMetersPerSecond: cssMps, cssPer100mSeconds: per100mSec, category, opinion })
-	}
+      <Card>
+        <CardHeader><CardTitle>Complete Guide: Training with CSS</CardTitle></CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>CSS sets provide sustainable threshold work that builds aerobic endurance and technique under moderate fatigue. Keep rest short, volume appropriate, and technique crisp. Retest regularly to keep paces aligned with your fitness.</p>
+        </CardContent>
+      </Card>
 
-	return (
-		<div className="space-y-8">
-			<Card>
-				<CardHeader>
-					<div className='flex items-center gap-4'><Waves className="h-8 w-8 text-primary" /><CardTitle>Critical Swim Speed (CSS) Calculator</CardTitle></div>
-					<CardDescription>Enter two swim time trials to estimate CSS. Keep inputs empty until you provide your values.</CardDescription>
-				</CardHeader>
-				<CardContent>
-					<form action={data => handleCalculate(data)} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-						<div>
-							<Label htmlFor="distance1">Shorter trial distance (m)</Label>
-							<Input id="distance1" name="distance1" type="number" step="1" placeholder="e.g., 200" />
-						</div>
-						<div>
-							<Label htmlFor="time1">Shorter trial time (s)</Label>
-							<Input id="time1" name="time1" type="number" step="0.1" placeholder="e.g., 150" />
-						</div>
-						<div>
-							<Label htmlFor="distance2">Longer trial distance (m)</Label>
-							<Input id="distance2" name="distance2" type="number" step="1" placeholder="e.g., 400" />
-						</div>
-						<div>
-							<Label htmlFor="time2">Longer trial time (s)</Label>
-							<Input id="time2" name="time2" type="number" step="0.1" placeholder="e.g., 320" />
-						</div>
-						<div className="md:col-span-2"><Button type="submit" className="w-full md:w-auto">Calculate CSS</Button></div>
-					</form>
-
-					{css && (
-						<Card className="mt-8">
-							<CardHeader>
-								<div className='flex items-center gap-4'><Activity className="h-8 w-8 text-primary" /><CardTitle>Your CSS Result</CardTitle></div>
-							</CardHeader>
-							<CardContent>
-								<div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center mb-4">
-									<div><p className="text-2xl font-bold">{css.cssMetersPerSecond.toFixed(2)}</p><p className="text-sm text-muted-foreground">m/s</p></div>
-									<div><p className="text-2xl font-bold">{Math.floor(css.cssPer100mSeconds/60)}:{Math.round(css.cssPer100mSeconds%60).toString().padStart(2,'0')}</p><p className="text-sm text-muted-foreground">per 100 m</p></div>
-									<div><p className="text-2xl font-bold">{css.category}</p><p className="text-sm text-muted-foreground">Training outlook</p></div>
-								</div>
-								<CardDescription className="text-center">{css.opinion}</CardDescription>
-							</CardContent>
-						</Card>
-					)}
-
-					<div className="space-y-6 mt-8">
-						<RelatedCalculators />
-						<CSSGuide />
-					</div>
-				</CardContent>
-			</Card>
-		</div>
-	)
-}
-
-function RelatedCalculators() {
-	return (
-		<Card>
-			<CardHeader>
-				<CardTitle>Related calculators</CardTitle>
-			</CardHeader>
-			<CardContent>
-				<ul className="list-disc ml-6 space-y-1 text-sm">
-					<li><a className="text-primary underline" href="/category/health-fitness/swim-stroke-rate-calculator">Swim Stroke Rate Calculator</a></li>
-					<li><a className="text-primary underline" href="/category/health-fitness/swimming-swolf-score-calculator">SWOLF Score Calculator</a></li>
-					<li><a className="text-primary underline" href="/category/health-fitness/hydration-needs-calculator">Hydration Needs Calculator</a></li>
-				</ul>
-			</CardContent>
-		</Card>
-	)
-}
-
-function CSSGuide() {
-	return (
-		<Card>
-			<CardHeader>
-				<CardTitle>Critical Swim Speed (CSS): Complete Guide</CardTitle>
-				<CardDescription>How to measure, interpret, and use CSS for faster swim training.</CardDescription>
-			</CardHeader>
-			<CardContent className="prose prose-sm max-w-none">
-				<h3>What is CSS?</h3>
-				<p>Critical Swim Speed is a proxy for your lactate threshold pace in the pool. It is typically derived from two time trials of different distances (e.g., 200 m and 400 m) and represents the fastest pace you can sustain aerobically for extended sets.</p>
-				<h3>How to test</h3>
-				<ul>
-					<li>Warm up thoroughly (10–15 minutes with drills).</li>
-					<li>Swim a maximal effort for a shorter distance (e.g., 200 m). Record time.</li>
-					<li>Recover 5–10 minutes easy.</li>
-					<li>Swim a maximal effort for a longer distance (e.g., 400 m). Record time.</li>
-				</ul>
-				<h3>Using CSS in training</h3>
-				<ul>
-					<li>Threshold sets: 6×200 m at CSS with short rests.</li>
-					<li>Aerobic endurance: CSS + 2–4 s/100 m.</li>
-					<li>VO₂ work: CSS − 2–6 s/100 m in short repeats.</li>
-				</ul>
-				<h3>SEO notes</h3>
-				<p>Keywords: critical swim speed calculator, CSS pace per 100m, swim threshold pace, triathlon swim training, 200/400 test.</p>
-			</CardContent>
-		</Card>
-	)
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Detailed, SEO-oriented answers</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">{faqs.map(([q,a],i)=>(<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}</CardContent>
+      </Card>
+    </div>
+  );
 }
