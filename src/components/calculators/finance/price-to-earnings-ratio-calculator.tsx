@@ -363,18 +363,113 @@ export default function PriceToEarningsRatioCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
-              Complete Guide to P/E Ratio
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to the Price-to-Earnings (P/E) Ratio: Calculation, Interpretation, and Stock Valuation" />
+    <meta itemProp="description" content="An expert guide detailing the P/E ratio formula, its role in equity valuation, interpreting high vs. low P/E multiples, its use in competitive benchmarking, and comparing trailing P/E against forward P/E." />
+    <meta itemProp="keywords" content="price to earnings ratio formula, calculating P/E multiple, stock valuation metric, trailing P/E vs forward P/E, interpreting high P/E, relative valuation analysis" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-11" /> 
+    <meta itemProp="url" content="/definitive-p-e-ratio-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Price-to-Earnings (P/E) Ratio: The Most Used Valuation Multiple</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental metric that assesses how much investors are willing to pay for one dollar of a company's current or expected earnings.</p>
+    
+
+[Image of Price-to-Earnings (P/E) Ratio concept]
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">P/E Ratio: Definition and Core Significance</a></li>
+        <li><a href="#formula" className="hover:underline">The P/E Ratio Formula and Calculation</a></li>
+        <li><a href="#trailing-forward" className="hover:underline">Trailing P/E vs. Forward P/E</a></li>
+        <li><a href="#interpretation" className="hover:underline">Interpreting High vs. Low P/E Multiples</a></li>
+        <li><a href="#limitations" className="hover:underline">Limitations and Comparison with PEG Ratio</a></li>
+    </ul>
+<hr />
+
+    {/* P/E RATIO: DEFINITION AND CORE SIGNIFICANCE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">P/E Ratio: Definition and Core Significance</h2>
+    <p>The **Price-to-Earnings (P/E) Ratio** is the most widely used metric in equity valuation. It measures the relationship between a company's current share price and its earnings per share (EPS). It is often called the **Earnings Multiple**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The P/E Question</h3>
+    <p>The P/E ratio answers a simple question: "How many dollars must an investor pay today to buy one dollar of the company's annual earnings?" The resulting number reflects market expectation—investors are willing to pay more for stocks they expect to have high future growth, resulting in a higher P/E.</p>
+
+<hr />
+
+    {/* THE P/E RATIO FORMULA AND CALCULATION */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The P/E Ratio Formula and Calculation</h2>
+    <p>The P/E ratio can be calculated using either the total market capitalization and total net income, or the price per share and the earnings per share (EPS). The result is identical.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Share-Based Formula</h3>
+    <p>This is the standard calculation used by most financial news sources:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'P/E Ratio = Market Price per Share / Earnings per Share (EPS)'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Enterprise-Based Formula</h3>
+    <p>This method compares total market value to total earnings:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'P/E Ratio = Market Capitalization / Net Income'}
+        </p>
+    </div>
+    <p>The resulting P/E ratio is a measure of the relative cost of the stock—a comparison of price to fundamental business profitability.</p>
+
+<hr />
+
+    {/* TRAILING P/E VS. FORWARD P/E */}
+    <h2 id="trailing-forward" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trailing P/E vs. Forward P/E</h2>
+    <p>Because the P/E ratio relies on earnings (the denominator), the results vary dramatically depending on whether historical or projected earnings are used.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Trailing P/E (Historical)</h3>
+    <p>The **Trailing P/E** uses the company's actual, verified Earnings Per Share (EPS) from the last 12 months (Last Twelve Months - LTM). It provides a concrete, factual basis for valuation, but it is backward-looking and may not reflect current business conditions.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Forward P/E (Projected)</h3>
+    <p>The **Forward P/E** uses an estimate of the company's future EPS, typically analysts' consensus forecasts for the next four quarters or next fiscal year. This metric is favored by growth investors because it reflects future expectations, but it is less reliable because it is based on subjective estimates that can be inaccurate or deliberately optimistic.</p>
+    <p>A Forward P/E that is significantly lower than the Trailing P/E suggests that the company's earnings are expected to grow rapidly, making the stock appear cheaper on a forward-looking basis.</p>
+
+<hr />
+
+    {/* INTERPRETING HIGH VS. LOW P/E MULTIPLES */}
+    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting High vs. Low P/E Multiples</h2>
+    <p>P/E interpretation is always relative—relative to the industry average, the market average, and the company's historical average. The P/E ratio is the market's price tag on future growth.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">High P/E Ratio (e.g., &gt; 25)</h3>
+<p>A high P/E ratio signals high <strong className="font-semibold">growth expectation</strong>. Investors are willing to pay a premium for each dollar of current earnings because they believe the company's earnings will grow exponentially in the future (e.g., technology, biotechnology). This stock is often considered <strong className="font-semibold">growth stock</strong>.</p>
+<p>However, a very high P/E can also indicate an overvalued stock or a speculative bubble, especially if the expected growth fails to materialize.</p>
+
+<h3 className="text-xl font-semibold text-foreground mt-6">Low P/E Ratio (e.g., &lt; 15)</h3>
+<p>A low P/E ratio suggests low <strong className="font-semibold">growth expectation</strong> or market pessimism. This stock may be undervalued (a <strong className="font-semibold">value stock</strong>) or it may be accurately priced due to a high degree of business risk, low profit margins, or systemic decline. Value investors seek low P/E stocks that are temporarily depressed but expected to recover.</p>
+
+<hr />
+
+    {/* LIMITATIONS AND COMPARISON WITH PEG RATIO */}
+    <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations and Comparison with PEG Ratio</h2>
+    <p>Despite its popularity, the P/E ratio has significant limitations, particularly when comparing companies with vastly different growth rates.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">P/E Limitations</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Ignores Growth:** P/E does not explicitly factor in the rate of expected earnings growth. A high P/E is acceptable for a fast-growing company, but P/E alone doesn't show *how fast*.</li>
+        <li>**Ignores Risk:** P/E does not account for the company's debt structure (leverage) or the volatility of its earnings.</li>
+        <li>**Inapplicable to Losses:** P/E is meaningless when earnings are negative, as a negative denominator yields a negative, uninterpretable P/E ratio.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The PEG Ratio (P/E to Growth)</h3>
+    <p>The <strong className="font-semibold">PEG Ratio</strong> corrects the P/E's primary flaw by incorporating the company's expected earnings growth rate (G). It is calculated as P/E divided by G.</p>
+    <p>The PEG ratio answers: "How much are you paying for one unit of earnings growth?" A **PEG ratio of 1.0** is generally considered fair value, indicating the P/E ratio equals the expected annual growth rate. This allows for a more accurate comparison of stocks with different growth trajectories.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Price-to-Earnings (P/E) Ratio is the foundational metric for **relative valuation**, expressing the market's faith in a company by quantifying the price paid for one dollar of earnings (EPS).</p>
+    <p>High P/E ratios signal strong market expectations for future growth, while low P/E ratios suggest caution. However, its effectiveness relies on context: the P/E should always be compared against industry peers and supplemented by the **PEG ratio** to correctly incorporate the critical dimension of earnings growth.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>
