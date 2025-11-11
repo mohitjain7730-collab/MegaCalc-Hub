@@ -337,25 +337,122 @@ export default function BetaAssetCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Beta Asset
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting beta
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Beta is a measure of systematic risk that indicates how much an asset's price moves relative to the overall market. It's calculated as the covariance between the asset's returns and market returns divided by the variance of market returns. Beta helps investors understand an asset's sensitivity to market movements.
-          </p>
-          <p className="text-muted-foreground">
-            Understanding beta is crucial for portfolio construction, risk management, and investment decision-making. It helps investors assess how much systematic risk they're taking and make informed decisions about asset allocation based on their risk tolerance and investment objectives.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Beta ($\beta$): Calculation, Interpretation, and Systematic Risk Analysis" />
+    <meta itemProp="description" content="An expert guide detailing the Beta ($\beta$) formula, its core role as a measure of systematic risk within the CAPM, how to interpret high, low, and negative Beta values, and its application in portfolio risk management and equity valuation." />
+    <meta itemProp="keywords" content="beta asset formula explained, calculating stock beta, systematic risk finance, non-diversifiable risk, risk premium and beta, capital asset pricing model CAPM" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-11" /> 
+    <meta itemProp="url" content="/definitive-beta-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Beta ($\beta$): Quantifying Systematic Risk and Market Volatility</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental risk metric that measures an asset’s sensitivity to the overall movements of the financial market.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Beta: Definition and Systematic Risk</a></li>
+        <li><a href="#formula" className="hover:underline">The Beta Calculation Formula</a></li>
+        <li><a href="#interpretation" className="hover:underline">Interpretation: High, Low, and Negative Beta</a></li>
+        <li><a href="#unlevered" className="hover:underline">Unlevered Beta vs. Levered Beta</a></li>
+        <li><a href="#applications" className="hover:underline">Role in Valuation (CAPM) and Portfolio Management</a></li>
+    </ul>
+<hr />
+
+    {/* BETA: DEFINITION AND SYSTEMATIC RISK */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Beta: Definition and Systematic Risk</h2>
+    <p>Beta ($\beta$) is a financial coefficient used to measure the expected movement of a specific asset's return relative to the movements of the overall market. It is the core input for quantifying risk in the **Capital Asset Pricing Model (CAPM)**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Systematic Risk vs. Unsystematic Risk</h3>
+    <p>Beta only captures **Systematic Risk** (or market risk)—the risk that affects the entire market and cannot be eliminated through diversification (e.g., recessions, inflation, interest rate hikes). It ignores unsystematic risk (specific risk), which relates to a single company and can be diversified away.</p>
+    <p>In short, Beta tells you how much risk an asset adds to an already well-diversified portfolio.</p>
+
+<hr />
+
+    {/* THE BETA CALCULATION FORMULA */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Beta Calculation Formula</h2>
+    <p>Beta is calculated as the ratio of the covariance between the asset's returns and the market's returns, divided by the variance of the market's returns.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'β = Cov(R_a, R_m) / Var(R_m)'}
+        </p>
+    </div>
+
+    <p>Where:</p>
+    <ul className="list-disc ml-6 space-y-2">
+    <li>Cov(R_a, R_m) = The covariance between the asset's return and the market's return.</li>
+    <li>Var(R_m) = The variance of the market's return (the market's total risk).</li>
+    </ul>
+    <p>This formula essentially measures the sensitivity of the asset's fluctuations to the market's fluctuations over a defined historical period (e.g., 5 years of monthly data).</p>
+
+<hr />
+
+    {/* INTERPRETATION: HIGH, LOW, AND NEGATIVE BETA */}
+    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation: High, Low, and Negative Beta</h2>
+    <p>The magnitude and sign of Beta define an asset's risk profile relative to the benchmark market (which always has a Beta of 1.0).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Beta = 1.0 (Neutral Risk)</h3>
+    <p>The asset's price and volatility move precisely in line with the market. If the S\&P 500 rises by $10\%$, the asset is expected to rise by $10\%$.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Beta &gt; 1.0 (Aggressive Risk)</h3>
+    <p>The asset is more volatile and sensitive than the market (e.g., a high-growth tech stock). If the market rises by 10%, a stock with a Beta of 1.5 is expected to rise by 15%. Conversely, it is expected to fall 50% more during a downturn.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">3. Beta &lt; 1.0 (Defensive Risk)</h3>
+    <p>The asset is less volatile than the market (e.g., a utility company or consumer staples). If the market rises by 10%, a stock with a Beta of 0.5 is expected to rise by only 5%. It provides stability and less exposure during market selloffs.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">4. Negative Beta (Counter-Cyclical)</h3>
+    <p>The asset moves inversely to the market (e.g., gold or certain VIX-related instruments). If the market falls, a negative beta asset is expected to rise, making it a valuable hedging tool for portfolio protection.</p>
+
+<hr />
+
+    {/* UNLEVERED BETA VS. LEVERED BETA */}
+    <h2 id="unlevered" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Unlevered Beta vs. Levered Beta</h2>
+    <p>When analyzing companies, it is often necessary to separate the risk due to operations from the risk due to financing (debt). This is done by comparing unlevered and levered Beta.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Levered Beta (Beta L - Equity Risk)</h3>
+    <p>This is the published Beta calculated from stock price movements. It measures the risk borne by <strong className="font-semibold">equity shareholders</strong>, incorporating both the business risk of the company and the financial risk arising from its debt load (leverage).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Unlevered Beta (Beta U - Asset Risk)</h3>
+    <p>The <strong className="font-semibold">Unlevered Beta</strong> (or Asset Beta) is the theoretical beta the company would have if it carried no debt. It represents the risk inherent only to the company's core operations and industry, without the magnifying effect of financial leverage.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Deleveraging Formula</h3>
+    <p>Unlevered Beta is calculated by removing the effect of debt (D), equity (E), and the corporate tax rate (T) from the levered Beta:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'β_U = β_L / [ 1 + (1 - T) * (D/E) ]'}
+        </p>
+    </div>
+    <p>Unlevered Beta is essential for valuing private companies or business units because it removes the distortion of unique financing decisions, allowing for true industry comparison.</p>
+
+<hr />
+
+    {/* ROLE IN VALUATION (CAPM) AND PORTFOLIO MANAGEMENT */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Valuation (CAPM) and Portfolio Management</h2>
+    <p>Beta is the quantitative link between risk and return, providing the foundation for modern financial theory.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Cost of Equity Calculation</h3>
+    <p>Beta is the central input for the **Capital Asset Pricing Model (CAPM)**, which uses Beta to determine the required rate of return ($R_i$) for a stock:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'R_i = R_f + β_i * (R_m - R_f)'}
+        </p>
+    </div>
+    <p>This required return is used as the Cost of Equity in WACC and as the discount rate in DCF models.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Portfolio Risk Management</h3>
+    <p>Fund managers use the **Portfolio Beta** (the weighted average of the Betas of all assets in the portfolio) to manage their overall exposure to market risk. A manager might deliberately increase their portfolio Beta when anticipating a bull market or reduce it when anticipating a recession.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Beta ($\beta$) is the essential risk metric that measures an asset's sensitivity to market movements, quantifying its **systematic risk**. A Beta of $1.0$ signifies market equivalence, while a higher Beta indicates higher volatility and risk.</p>
+    <p>In valuation, Beta is the primary input in the **CAPM** used to calculate the required rate of return. Analyzing both **Levered Beta** (equity risk) and **Unlevered Beta** (asset risk) is crucial for comparing companies fairly and setting appropriate project hurdle rates.</p>
+</section>
 
       <Card>
         <CardHeader>

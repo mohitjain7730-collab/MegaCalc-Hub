@@ -370,25 +370,115 @@ export default function PortfolioExpectedReturnCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Complete Guide to Portfolio Expected Return
-          </CardTitle>
-          <CardDescription>
-            Everything you need to know about calculating and interpreting portfolio expected returns
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-muted-foreground">
-            Portfolio Expected Return is calculated as the weighted average of individual asset returns, where each asset's expected return is multiplied by its portfolio weight. This provides an estimate of the portfolio's overall expected performance based on current asset allocation.
-          </p>
-          <p className="text-muted-foreground">
-            Understanding expected returns is crucial for portfolio planning, risk assessment, and investment decision-making. It helps investors set realistic expectations and make informed decisions about asset allocation, rebalancing, and risk management strategies.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Portfolio Expected Return: Calculation, MPT, and Weighted Average" />
+    <meta itemProp="description" content="An expert guide detailing the Portfolio Expected Return formula, its role in Modern Portfolio Theory (MPT), how to calculate the weighted average return for multiple assets, and its comparison to the required rate of return." />
+    <meta itemProp="keywords" content="portfolio expected return formula, calculating weighted average return, modern portfolio theory MPT, capital allocation line CAL, efficient frontier, investment forecasting" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-11" /> 
+    <meta itemProp="url" content="/definitive-portfolio-expected-return-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Portfolio Expected Return: Forecasting Your Investment Strategy</h1>
+    <p className="text-lg italic text-gray-700">Master the foundational metric that estimates the total rate of return you anticipate generating from a diversified mix of assets.</p>
+    
+
+[Image of Expected Return vs Risk chart]
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Expected Return: Definition and Core Concept</a></li>
+        <li><a href="#weighted-average" className="hover:underline">The Calculation: Weighted Average Return</a></li>
+        <li><a href="#inputs" className="hover:underline">Determining Asset Expected Returns</a></li>
+        <li><a href="#mpt" className="hover:underline">Role in Modern Portfolio Theory (MPT)</a></li>
+        <li><a href="#vs-required" className="hover:underline">Expected vs. Required Rate of Return</a></li>
+    </ul>
+<hr />
+
+    {/* EXPECTED RETURN: DEFINITION AND CORE CONCEPT */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Expected Return: Definition and Core Concept</h2>
+    <p>The **Portfolio Expected Return** ($E(R_p)$) is the statistically projected rate of return an investment portfolio is anticipated to yield over a specified time horizon. It is a crucial forecasting tool used in all investment strategies, particularly those based on diversification.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">A Probability-Weighted Average</h3>
+    <p>The expected return is always a probability-weighted average—it is the sum of all potential returns multiplied by their respective probabilities of occurring. For a portfolio of multiple assets, the portfolio's expected return is the weighted average of the individual expected returns of the component assets.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Forecasting</h3>
+    <p>Forecasting the expected return is essential for setting financial goals (e.g., retirement planning) and making capital allocation decisions. It provides the numerator for risk-adjusted metrics like the Sharpe Ratio and is plotted against risk (standard deviation) to create the Efficient Frontier.</p>
+
+<hr />
+
+    {/* THE CALCULATION: WEIGHTED AVERAGE RETURN */}
+    <h2 id="weighted-average" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Calculation: Weighted Average Return</h2>
+    <p>For a portfolio containing multiple assets, the portfolio's expected return is the sum of the expected return of each asset multiplied by its respective portfolio weight.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <p>The formula for the portfolio's expected return is:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'E(R_p) = Sum [ w_i * E(R_i) ]'}
+        </p>
+    </div>
+
+    <p>Where:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>$w_i$ = The weight (percentage) of asset i in the total portfolio.</li>
+        <li>$E(R_i)$ = The expected return of the individual asset i.</li>
+    </ul>
+    <p>The sum of all weights ($w_i$) must equal 1.0 (or 100%).</p>
+
+<hr />
+
+    {/* DETERMINING ASSET EXPECTED RETURNS */}
+    <h2 id="inputs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Determining Asset Expected Returns</h2>
+    <p>The accuracy of the portfolio forecast hinges entirely on the methodology used to forecast the expected return for each individual asset ($E(R_i)$).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Historical Average Return</h3>
+    <p>The simplest method assumes that the future will resemble the past. The expected return is estimated using the arithmetic average of the asset's historical returns over a long period (e.g., 30 years). While simple, this method fails to account for current market conditions or structural changes in the company/economy.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Forward-Looking Models (CAPM)</h3>
+    <p>The most rigorous method uses the **Capital Asset Pricing Model (CAPM)** to link the asset's expected return to its systematic risk (Beta):</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'E(R_i) = R_f + β_i * (R_m - R_f)'}
+        </p>
+    </div>
+    <p>This model establishes the expected return based on risk principles, making it theoretically sound for equity markets.</p>
+
+<hr />
+
+    {/* ROLE IN MODERN PORTFOLIO THEORY (MPT) */}
+    <h2 id="mpt" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Modern Portfolio Theory (MPT)</h2>
+    <p>Expected return is one of the two core inputs (the other being variance/risk) necessary for **Modern Portfolio Theory (MPT)**, which focuses on constructing the most efficient portfolio mix.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Efficient Frontier</h3>
+    <p>MPT models plot portfolios based on their risk (standard deviation) and expected return. The **Efficient Frontier** is the curved line connecting all portfolios that offer the highest possible expected return for a given level of risk, or the lowest possible risk for a given expected return.</p>
+    <p>By calculating the expected return of various portfolio weightings, an investor can identify which mix of assets sits on the Efficient Frontier, maximizing the return potential of their risk budget.</p>
+
+<hr />
+
+    {/* EXPECTED VS. REQUIRED RATE OF RETURN */}
+    <h2 id="vs-required" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Expected vs. Required Rate of Return</h2>
+    <p>It is vital to distinguish between the **Expected Rate of Return** (what the market projects) and the **Required Rate of Return** (what the investor demands).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Required Rate of Return (R req - The Hurdle)</h3>
+    <p>This is the minimum return an investor demands to take on the risk associated with a security or project. It is often calculated using CAPM and is used as the discount rate in valuation. The Required Return is used to value the asset.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Investment Decision Rule</h3>
+    <p>The comparison between the two rates drives investment decisions:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>If Expected Return $\gt$ Required Return, the asset is considered **undervalued** and is a Buy.</li>
+        <li>If Expected Return $\lt$ Required Return, the asset is considered **overvalued** and is a Sell.</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The Portfolio Expected Return ($E(R_p)$) is the cornerstone of investment strategy, calculated as the **weighted average** of the anticipated returns of all assets within the portfolio.</p>
+    <p>Accurate forecasting, typically achieved through models like **CAPM**, is necessary for effective capital allocation. By comparing the Expected Return against the Required Rate of Return, investors can identify undervalued assets and construct portfolios that maximize returns along the **Efficient Frontier**.</p>
+</section>
 
       <Card>
         <CardHeader>
