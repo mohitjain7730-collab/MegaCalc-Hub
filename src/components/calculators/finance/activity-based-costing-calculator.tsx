@@ -284,18 +284,107 @@ export default function ActivityBasedCostingCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              Complete Guide to Activity-Based Costing
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinancialCalculator">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Activity-Based Costing (ABC): Calculation, Allocation, and Product Profitability Analysis" />
+    <meta itemProp="description" content="An expert guide detailing the methodology of Activity-Based Costing (ABC), its calculation steps, the use of cost pools and cost drivers, and its superiority over traditional costing for accurate product pricing and profitability decisions." />
+    <meta itemProp="keywords" content="activity based costing formula explained, calculating ABC, cost pools and cost drivers, traditional vs ABC costing, accurate product costing, overhead allocation advanced methods" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-12" /> 
+    <meta itemProp="url" content="/definitive-activity-based-costing-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Activity-Based Costing (ABC): Accurate Overhead Allocation</h1>
+    <p className="text-lg italic text-gray-700">Master the advanced cost accounting method that precisely assigns indirect costs to products based on the actual activities they consume.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">ABC: Core Concept and Flaw of Traditional Costing</a></li>
+        <li><a href="#step1" className="hover:underline">Step 1: Identifying Cost Pools and Activities</a></li>
+        <li><a href="#step2" className="hover:underline">Step 2: Calculating Activity Rates (Cost Driver Rates)</a></li>
+        <li><a href="#step3" className="hover:underline">Step 3: Allocating Overhead to Products</a></li>
+        <li><a href="#comparison" className="hover:underline">ABC vs. Traditional Costing: The Key Difference</a></li>
+    </ul>
+<hr />
+
+    {/* ABC: CORE CONCEPT AND FLAW OF TRADITIONAL COSTING */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ABC: Core Concept and Flaw of Traditional Costing</h2>
+    <p>The **Activity-Based Costing (ABC)** system is an advanced cost accounting methodology that identifies activities in an organization and assigns the cost of resources to all products and services based on the actual consumption of those activities. It provides a highly accurate view of a product’s true profitability.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Flaw of Traditional Costing</h3>
+    <p>Traditional (Volume-Based) Costing typically uses a single, plant-wide overhead rate based on a simple driver like direct labor hours. This system incorrectly assumes that all products consume high-cost indirect resources (like machine setups, inspections, or engineering support) in direct proportion to their production volume or direct labor hours.</p>
+    <p>This flaw leads to **cost distortion**: high-volume, simple products are often **overcosted**, while low-volume, complex products are **undercosted**, leading to poor pricing and production decisions.</p>
+
+<hr />
+
+    {/* STEP 1: IDENTIFYING COST POOLS AND ACTIVITIES */}
+    <h2 id="step1" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 1: Identifying Cost Pools and Activities</h2>
+    <p>ABC begins by classifying overhead costs into specific **Cost Pools**, which are collections of costs related to a single, measurable activity.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Activities and Cost Pools</h3>
+    <p>An **Activity** is any event or task that consumes resources. Examples include:</p>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Machine Setup:** Cost pool includes labor wages for technicians, materials for recalibration, and idle machine time.</li>
+        <li>**Quality Inspection:** Cost pool includes the inspector's salary and specialized testing equipment depreciation.</li>
+        <li>**Purchasing/Ordering:** Cost pool includes salaries of purchasing agents and supply chain software fees.</li>
+    </ul>
+    <p>Each cost pool aggregates the total overhead cost associated with performing that specific function.</p>
+
+<hr />
+
+    {/* STEP 2: CALCULATING ACTIVITY RATES (COST DRIVER RATES) */}
+    <h2 id="step2" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 2: Calculating Activity Rates (Cost Driver Rates)</h2>
+    <p>Next, the ABC system determines a specific allocation rate for each activity by dividing the total cost in the pool by a suitable **Cost Driver** (the factor that causes the cost to be incurred).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Activity Rate Formula</h3>
+    <p>A separate rate must be calculated for each cost pool:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Activity Rate = Total Cost in Activity Pool / Total Volume of Cost Driver'}
+        </p>
+    </div>
+    <p>Examples of Cost Drivers used in the denominator are: number of machine setups, number of inspections, or number of purchase orders processed.</p>
+
+<hr />
+
+    {/* STEP 3: ALLOCATING OVERHEAD TO PRODUCTS */}
+    <h2 id="step3" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 3: Allocating Overhead to Products</h2>
+    <p>Finally, the calculated Activity Rate is used to assign the overhead cost to individual product units based on the actual quantity of the activity consumed by that product.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Overhead Cost per Product Unit</h3>
+    <p>The total overhead cost assigned to a single product is the sum of the overhead absorbed from all activities it uses:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Overhead Allocated = Sum [ Activity Rate * Actual Driver Usage ]'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Improved Accuracy</h3>
+    <p>Under ABC, a low-volume, custom product that requires many machine setups and quality checks will correctly absorb a much higher share of the total overhead costs than a high-volume product that requires a single, simple setup.</p>
+
+<hr />
+
+    {/* ABC VS. TRADITIONAL COSTING: THE KEY DIFFERENCE */}
+    <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ABC vs. Traditional Costing: The Key Difference</h2>
+    <p>The primary result of implementing ABC is the shift in product costs, leading to more informed strategic decisions.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Strategic Impact of Cost Shift</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li>**Complex Products:** Costs often increase under ABC, revealing they were previously underpriced (a strategic necessity).</li>
+        <li>**Simple, High-Volume Products:** Costs often decrease under ABC, freeing up management to lower prices and increase market share.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Decision Making Advantage</h3>
+    <p>ABC allows management to understand true product profitability, identify activities that add cost but not value (for elimination), and make accurate decisions regarding outsourcing, pricing, and product mix.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Activity-Based Costing (ABC) is the superior cost accounting methodology because it uses multiple, activity-specific **Cost Drivers** to allocate overhead. This ensures indirect costs are assigned precisely based on the actual resources consumed by each product.</p>
+    <p>By preventing the **cost distortion** inherent in traditional, volume-based systems, ABC provides management with the accurate product cost data essential for optimizing pricing, improving profitability, and making sound strategic investment decisions.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

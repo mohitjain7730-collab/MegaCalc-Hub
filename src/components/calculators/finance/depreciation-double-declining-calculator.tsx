@@ -244,18 +244,111 @@ export default function DepreciationDoubleDecliningCalculator() {
         </Card>
 
         {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              Complete Guide to Double Declining Balance Depreciation
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-            <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-            <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-          </CardContent>
-        </Card>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Double-Declining Balance (DDB) Depreciation: Calculation, Formula, and Accounting Method" />
+    <meta itemProp="description" content="An expert guide detailing the Double-Declining Balance (DDB) formula, its core role as an accelerated method for allocating asset cost, how to calculate annual expense, and its impact on financial statements and tax reporting." />
+    <meta itemProp="keywords" content="double declining balance depreciation formula explained, calculating DDB annual expense, accelerated depreciation method, depreciation rate DDB, salvage value accounting, financial reporting tax strategy" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-11" /> 
+    <meta itemProp="url" content="/definitive-double-declining-depreciation-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Double-Declining Balance Depreciation: The Accelerated Cost Method</h1>
+    <p className="text-lg italic text-gray-700">Master the accounting method that allocates a larger portion of an asset's cost to its early years of service.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">DDB: Core Concept and Accelerated Principle</a></li>
+        <li><a href="#formula" className="hover:underline">The Double-Declining Balance (DDB) Formula</a></li>
+        <li><a href="#book-value" className="hover:underline">Calculating Annual Expense and Book Value</a></li>
+        <li><a href="#vs-straight" className="hover:underline">DDB vs. Straight-Line Comparison</a></li>
+        <li><a href="#applications" className="hover:underline">Application in Financial and Tax Reporting</a></li>
+    </ul>
+<hr />
+
+    {/* DDB: CORE CONCEPT AND ACCELERATED PRINCIPLE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DDB: Core Concept and Accelerated Principle</h2>
+    <p>The **Double-Declining Balance (DDB)** method is an **accelerated depreciation** technique. It recognizes that many assets (like high-tech machinery or vehicles) lose most of their economic value and provide the most service in their early years. Therefore, DDB allocates a significantly larger depreciation expense to the initial years of the asset's useful life and a smaller expense to the later years.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Matching Principle</h3>
+    <p>DDB adheres to the **matching principle** by reflecting the higher expense when the asset is most productive (early years) and a lower expense when it is less productive (later years). This provides a more accurate representation of the asset's true economic consumption over time.</p>
+
+<hr />
+
+    {/* THE DOUBLE-DECLINING BALANCE (DDB) FORMULA */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Double-Declining Balance (DDB) Formula</h2>
+    <p>The DDB method achieves acceleration by first calculating the straight-line rate, doubling it, and then applying that double rate to the asset's declining book value each year.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+    <p>The annual depreciation expense is calculated as:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Annual Depreciation = Beginning Book Value * DDB Rate'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating the DDB Rate</h3>
+    <p>The **DDB Rate** is the fixed rate used in the formula, calculated as twice the straight-line rate:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'DDB Rate = (1 / Useful Life in Years) * 2'}
+        </p>
+    </div>
+    <p>For example, an asset with a 5-year life has a straight-line rate of $1/5 = 20\%$. The DDB rate is $40\%$.</p>
+
+<hr />
+
+    {/* CALCULATING ANNUAL EXPENSE AND BOOK VALUE */}
+    <h2 id="book-value" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Annual Expense and Book Value</h2>
+    <p>Unlike the straight-line method, the depreciation expense under DDB changes every year because the rate is applied to a decreasing base.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Declining Book Value</h3>
+    <p>The **Beginning Book Value** for any year is the original Asset Cost minus the **Accumulated Depreciation** recorded up to the end of the prior year. This book value serves as the base to which the fixed DDB rate is applied.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Ending Book Value = Beginning Book Value - Annual Depreciation'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Handling Salvage Value (The Stop Point)</h3>
+    <p>A crucial rule of DDB is that the asset **cannot be depreciated below its salvage value**. The DDB formula does *not* subtract the salvage value from the cost base at the beginning. However, the depreciation expense must stop accruing when the asset's Net Book Value reaches the Salvage Value. The final year's expense is often a "plug" figure to achieve this endpoint.</p>
+
+<hr />
+
+    {/* DDB VS. STRAIGHT-LINE COMPARISON */}
+    <h2 id="vs-straight" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DDB vs. Straight-Line Comparison</h2>
+    <p>While both methods expense the same total amount over the asset's life, the timing of the expense differs dramatically, impacting net income and taxes.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Timeline of Expense</h3>
+    <ul className="list-disc ml-6 space-y-2">
+        <li><strong className="font-semibold">Straight-Line:</strong> Constant, uniform expense every year.</li>
+        <li><strong className="font-semibold">DDB:</strong> High expense in the early years; low expense in the later years.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Switchover Point</h3>
+    <p>It is common practice for companies to switch from the DDB method to the Straight-Line method when the straight-line expense (calculated on the remaining depreciable base) becomes greater than the DDB expense. This switch is made to maximize the annual depreciation deduction for tax purposes.</p>
+
+<hr />
+
+    {/* APPLICATION IN FINANCIAL AND TAX REPORTING */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Application in Financial and Tax Reporting</h2>
+    <p>The choice of depreciation method is a strategic decision that affects both the company's reported profitability and its tax liability.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Financial Reporting (GAAP/IFRS)</h3>
+    <p>Companies choose the method that best reflects the asset's pattern of economic use. DDB is appropriate for assets that become obsolete quickly (e.g., computers) or require more maintenance later in their life.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Tax Reporting (Tax Shield)</h3>
+    <p>Accelerated methods like DDB are typically favored for **tax reporting** because a higher depreciation expense in the early years reduces taxable income immediately. This creates a **tax shield**, effectively deferring tax payments to later years and improving the company's present value of cash flow.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The **Double-Declining Balance (DDB)** method is the primary form of **accelerated depreciation**, calculated by applying a doubled straight-line rate to the asset's declining book value each year.</p>
+    <p>DDB is a strategic accounting choice designed to front-load expenses, matching higher costs to the asset's higher productivity in its early life. It is commonly used for tax advantages, as it provides a higher **tax shield** in the present by lowering current taxable income.</p>
+</section>
 
         {/* FAQ Section */}
         <Card>

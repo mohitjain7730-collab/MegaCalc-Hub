@@ -380,18 +380,101 @@ export default function SensitivityAnalysisCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            Complete Guide to Sensitivity Analysis
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Sensitivity Analysis: 'What-If' Modeling and Risk Assessment" />
+    <meta itemProp="description" content="An expert guide detailing the methodology of Sensitivity Analysis, including its comparison to scenario analysis, the calculation of break-even points, and its critical role in identifying the most influential variables in financial models." />
+    <meta itemProp="keywords" content="sensitivity analysis financial modeling, how to perform what-if analysis, calculating break-even point sensitivity, key driver identification, risk tolerance metric, discount rate impact analysis" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-11" /> 
+    <meta itemProp="url" content="/definitive-sensitivity-analysis-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Sensitivity Analysis: Identifying Key Drivers and Risk</h1>
+    <p className="text-lg italic text-gray-700">Master the fundamental 'What-If' technique used to measure how changes in a single variable impact the outcome of a complex financial model.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Sensitivity Analysis: Core Concept and Purpose</a></li>
+        <li><a href="#mechanics" className="hover:underline">Modeling Mechanics: Isolating a Single Variable</a></li>
+        <li><a href="#metrics" className="hover:underline">Key Output Metrics: Break-Even Point Calculation</a></li>
+        <li><a href="#vs-scenario" className="hover:underline">Sensitivity vs. Scenario Analysis (Risk Spectrum)</a></li>
+        <li><a href="#applications" className="hover:underline">Applications in Capital Budgeting and Valuation</a></li>
+    </ul>
+<hr />
+
+    {/* SENSITIVITY ANALYSIS: CORE CONCEPT AND PURPOSE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Sensitivity Analysis: Core Concept and Purpose</h2>
+    <p>Sensitivity Analysis is a risk assessment technique that systematically measures how changes in an individual input variable affect a key output metric (e.g., Net Present Value, profit margin, or required sales volume) in a financial model.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The 'What-If' Principle</h3>
+    <p>The analysis operates on the **'What-If'** principle: holding all other variables constant, what happens if the sales price drops by 5%? Or, what happens if the cost of capital increases by 100 basis points? By isolating one variable at a time, the model identifies the **key drivers**—the variables that exert the greatest influence on the final result.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Risk Tolerance Metric</h3>
+    <p>The output of sensitivity analysis quantifies the model's susceptibility to changes in assumptions. A model that shows a large change in the output metric resulting from a small change in an input variable is considered **highly sensitive** and, therefore, riskier.</p>
+
+<hr />
+
+    {/* MODELING MECHANICS: ISOLATING A SINGLE VARIABLE */}
+    <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Modeling Mechanics: Isolating a Single Variable</h2>
+    <p>Performing sensitivity analysis involves running the model multiple times while systematically varying one input variable across a defined range (e.g., $\pm 10\%$).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Defining the Range</h3>
+    <p>The input range must be plausible. For variables with high uncertainty (e.g., market share, commodity prices), a wider range (e.g., $\pm 20\%$) is often appropriate. For variables with low uncertainty (e.g., cost of debt, equipment lifespan), a narrow range (e.g., $\pm 5\%$) is used. This process generates a spectrum of possible outcomes.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Tornado Diagram</h3>
+    <p>The results of sensitivity analysis are often summarized visually in a **Tornado Diagram**. This chart lists the input variables in descending order of their impact on the output metric. The variable at the top of the "tornado" is the most critical driver of the project's success or failure, allowing management to focus risk mitigation efforts there.</p>
+
+<hr />
+
+    {/* KEY OUTPUT METRICS: BREAK-EVEN POINT CALCULATION */}
+    <h2 id="metrics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Output Metrics: Break-Even Point Calculation</h2>
+    <p>One of the most valuable outputs of sensitivity analysis is the **Break-Even Point (BEP)**—the threshold at which the project generates neither profit nor loss (NPV equals zero).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Calculation for Capital Budgeting</h3>
+    <p>For investment analysis (like Net Present Value - NPV), the break-even point is the value of an input variable that causes the NPV to drop from positive to zero. For example, if the initial NPV is $1$ million dollars, the analyst can determine the required decrease in the sales price that would make the NPV zero.</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-red-700 font-bold">
+            {'Break-Even Point = Input Value that sets NPV = 0'}
+        </p>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation as Margin of Safety</h3>
+    <p>The difference between the expected value of an input variable and its break-even value is the **Margin of Safety**. A large margin of safety indicates that the project can absorb significant adverse changes in that variable and remain viable, signaling lower risk.</p>
+
+<hr />
+
+    {/* SENSITIVITY VS. SCENARIO ANALYSIS (RISK SPECTRUM) */}
+    <h2 id="vs-scenario" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Sensitivity vs. Scenario Analysis (Risk Spectrum)</h2>
+    <p>Sensitivity analysis and Scenario Analysis are both tools for risk modeling but address different parts of the risk spectrum.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Sensitivity Analysis (Local View)</h3>
+    <p>Sensitivity analysis provides a **local view** of risk. It tests one variable's elasticity at a time, providing mathematical precision. It is excellent for answering focused questions like, "How much does the required rate of return have to change before the project becomes unprofitable?"</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Scenario Analysis (Global View)</h3>
+    <p>Scenario analysis provides a **global view** of risk. It changes multiple, correlated variables simultaneously to simulate a plausible future state (e.g., a recession, a trade war). It is better suited for holistic risk assessment, showing the total impact of systemic risk.</p>
+    <p>Ideally, firms use sensitivity analysis first to identify the three to five most critical variables, and then use scenario analysis to model the impact of those variables moving together.</p>
+
+<hr />
+
+    {/* APPLICATIONS IN CAPITAL BUDGETING AND VALUATION */}
+    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Capital Budgeting and Valuation</h2>
+    <p>Sensitivity analysis is indispensable across all areas of finance where future uncertainty exists.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Capital Budgeting Decisions</h3>
+    <p>When evaluating large capital expenditure (CapEx) projects, sensitivity analysis helps firms decide which projects to fund. If two projects have similar expected NPVs, the firm will choose the one with the lowest sensitivity to key variables like sales volume or input cost, as this represents lower financial risk.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Valuation and Due Diligence</h3>
+    <p>In mergers, acquisitions, and equity valuation (using Discounted Cash Flow - DCF), sensitivity analysis is performed on the discount rate (WACC) and the Terminal Value growth rate. This reveals the range of fair value for the target company based on minor adjustments to the most uncertain and high-impact modeling assumptions.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Sensitivity analysis is the foundational risk tool in financial modeling, isolating the impact of changes in a single input variable on a key output metric. Its value lies in identifying the **key drivers** of a model through the use of the **Tornado Diagram**.</p>
+    <p>By determining the **Break-Even Point** and the resulting **Margin of Safety**, decision-makers can quantify the risk tolerance of an investment, ensuring that high-value projects are selected based not only on potential returns but also on their inherent stability under varying economic assumptions.</p>
+</section>
 
       {/* FAQ */}
       <Card>

@@ -235,18 +235,132 @@ export default function MacrsDepreciationCalculator() {
       </Card>
 
       {/* Complete Guide */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
-            Complete Guide to MACRS Depreciation
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to MACRS Depreciation: Calculation, Methods, and Tax Reporting (Modified Accelerated Cost Recovery System)" />
+    <meta itemProp="description" content="An expert guide detailing the MACRS depreciation system, covering its two methods (GDS and ADS), asset class recovery periods (3-year to 39-year), mid-year and mid-quarter conventions, and its mandatory use for U.S. federal income tax purposes." />
+    <meta itemProp="keywords" content="macrs depreciation formula explained, calculating GDS and ADS, modified accelerated cost recovery system, mid-year convention tax, asset class recovery periods macrs, tax depreciation accounting" />
+    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+    <meta itemProp="datePublished" content="2025-11-12" /> 
+    <meta itemProp="url" content="/definitive-macrs-depreciation-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to MACRS Depreciation: The Mandatory U.S. Tax Method</h1>
+    <p className="text-lg italic text-gray-700">Master the specialized system used for calculating tax-deductible depreciation, driving corporate tax shields and present value of cash flow.</p>
+    
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">MACRS: Core Concept and Tax Purpose</a></li>
+        <li><a href="#gds-ads" className="hover:underline">The Two Systems: GDS vs. ADS</a></li>
+        <li><a href="#conventions" className="hover:underline">Time Conventions: Mid-Year, Mid-Quarter, and Mid-Month</a></li>
+        <li><a href="#property" className="hover:underline">Asset Classes and Recovery Periods</a></li>
+        <li><a href="#tax-impact" className="hover:underline">Tax Impact and Comparison with Book Depreciation</a></li>
+    </ul>
+<hr />
+
+    {/* MACRS: CORE CONCEPT AND TAX PURPOSE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">MACRS: Core Concept and Tax Purpose</h2>
+    <p>The **Modified Accelerated Cost Recovery System (MACRS)** is the depreciation system mandated by the U.S. Internal Revenue Service (IRS) for nearly all tangible property placed in service after 1986. Unlike financial accounting (GAAP/IFRS), which aims for accurate income reporting, MACRS's primary goal is to provide a standardized method for calculating **tax deductions**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Mandatory for Tax Reporting</h3>
+    <p>A business must use MACRS to calculate the depreciation expense it claims on its federal income tax returns. It is characterized by three key differences from financial accounting:</p>
+    <ol className="list-decimal ml-6 space-y-2">
+        <li>It uses **fixed recovery periods** (useful lives), often shorter than the asset's actual economic life.</li>
+        <li>It ignores **salvage value**, assuming it is zero.</li>
+        <li>It uses **accelerated methods** by default (e.g., Double-Declining Balance).</li>
+    </ol>
+
+<hr />
+
+    {/* THE TWO SYSTEMS: GDS VS. ADS */}
+    <h2 id="gds-ads" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Two Systems: GDS vs. ADS</h2>
+    <p>MACRS has two distinct systems: the **General Depreciation System (GDS)** and the **Alternative Depreciation System (ADS)**. GDS is generally used to maximize tax savings.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">General Depreciation System (GDS)</h3>
+    <p>GDS is the standard, primary system. It uses **accelerated methods** (usually $200\%$ or $150\%$ declining balance) and **shorter recovery periods** (e.g., 5-year and 7-year life classes). GDS maximizes the depreciation deduction in the early years of the asset's life, creating a valuable **tax shield** by deferring tax payments to later periods.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Alternative Depreciation System (ADS)</h3>
+    <p>ADS is the mandatory system for specific assets (e.g., property used outside the U.S.) and is optional for others. ADS uses the **straight-line method** and generally **longer recovery periods** than GDS. Because it is slower, ADS results in lower early-year deductions and less present value benefit, making it less favorable for tax reduction.</p>
+
+<hr />
+
+    {/* TIME CONVENTIONS: MID-YEAR, MID-QUARTER, AND MID-MONTH */}
+    <h2 id="conventions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Time Conventions: Mid-Year, Mid-Quarter, and Mid-Month</h2>
+    <p>MACRS requires the use of time conventions to determine how much depreciation can be claimed in the year the asset is placed in service and the year it is retired. These conventions simplify the calculation by assuming a single date of use.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Mid-Year Convention</h3>
+    <p>This is the most common convention. It assumes all property is placed in service or retired exactly at the **midpoint of the tax year** (July 1st). This means only half of the first and last year's full depreciation expense is claimed, regardless of the actual date of purchase.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Mid-Quarter Convention</h3>
+    <p>This convention must be used if **more than 40%** of the total depreciable basis of all property acquired during the year is placed in service during the **last three months (the fourth quarter)**. This prevents companies from buying assets late in the year and claiming a full half-year deduction under the Mid-Year Convention.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Mid-Month Convention</h3>
+    <p>This convention is mandatory for **non-residential and residential rental real property**. It assumes that property is placed in service or retired at the midpoint of the month it was acquired, requiring a more precise calculation for the first and last year's depreciation.</p>
+
+<hr />
+
+    {/* ASSET CLASSES AND RECOVERY PERIODS */}
+    <h2 id="property" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Asset Classes and Recovery Periods</h2>
+    <p>MACRS defines specific asset classes, which determine the useful life (recovery period) that must be used for tax reporting. These periods are often much shorter than the asset's actual physical life to encourage capital investment.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Common GDS Recovery Periods</h3>
+    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
+        <thead className="bg-gray-50">
+            <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recovery Period</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MACRS Method</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Typical Assets</th>
+            </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">3-Year</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">200% DB</td>
+                <td className="px-6 py-4 whitespace-nowrap">Tools, Manufacturing Dies, Tractor Units</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">5-Year</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">200% DB</td>
+                <td className="px-6 py-4 whitespace-nowrap">Computers, Office Equipment, Cars, Trucks</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">7-Year</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">200% DB</td>
+                <td className="px-6 py-4 whitespace-nowrap">Office Furniture, Fixtures, Manufacturing Machinery</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">27.5-Year</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">Straight-Line</td>
+                <td className="px-6 py-4 whitespace-nowrap">Residential Rental Real Estate</td>
+            </tr>
+            <tr>
+                <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">39-Year</strong></td>
+                <td className="px-6 py-4 whitespace-nowrap">Straight-Line</td>
+                <td className="px-6 py-4 whitespace-nowrap">Non-Residential Real Estate (Commercial Buildings)</td>
+            </tr>
+        </tbody>
+    </table>
+
+<hr />
+
+    {/* TAX IMPACT AND COMPARISON WITH BOOK DEPRECIATION */}
+    <h2 id="tax-impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Tax Impact and Comparison with Book Depreciation</h2>
+    <p>Because MACRS uses accelerated methods and shorter lives than GAAP, a company's depreciation expense for tax purposes is usually higher than its depreciation expense for financial reporting (book) purposes.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Tax Shield</h3>
+    <p>The higher tax depreciation expense calculated under GDS results in a lower taxable income, providing an immediate **tax shield**—a reduction in current cash taxes paid. This improved cash flow is the primary financial incentive for using accelerated MACRS methods.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Deferred Tax Liability (Book-Tax Difference)</h3>
+    <p>This difference between high tax depreciation and lower book depreciation is reconciled on the balance sheet as a **Deferred Tax Liability**. This liability represents the future taxes that the company will eventually have to pay once the tax depreciation expense falls below the book depreciation expense in the later years of the asset's life.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>MACRS is the mandatory U.S. tax depreciation system, characterized by **accelerated methods** (GDS) and **fixed recovery periods**. Its calculations must rigorously adhere to specific time conventions (Mid-Year or Mid-Quarter).</p>
+    <p>The primary financial benefit of MACRS is the creation of a **tax shield** by front-loading deductions, which improves the present value of the firm's cash flows. This system highlights the crucial distinction between book accounting (reflecting economic reality) and tax accounting (optimizing liability).</p>
+</section>
 
       {/* FAQ */}
       <Card>
