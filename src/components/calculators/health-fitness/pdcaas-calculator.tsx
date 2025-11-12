@@ -7,196 +7,437 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
-import { Utensils } from 'lucide-react';
+import { Utensils, Activity, Calendar, AlertTriangle } from 'lucide-react';
 
-const formSchema = z.object({ aminoAcidScore: z.number().min(0).max(1), trueDigestibility: z.number().min(0).max(1) });
+const formSchema = z.object({
+  proteinName: z.string().trim().max(80).optional(),
+  aminoAcidScore: z
+    .number({ invalid_type_error: 'Enter a value between 0 and 1' })
+    .min(0, 'Score cannot be negative')
+    .max(2, 'Score should reflect the ratio to reference protein'),
+  trueDigestibility: z
+    .number({ invalid_type_error: 'Enter a value between 0 and 1' })
+    .min(0, 'Digestibility cannot be negative')
+    .max(1.2, 'Digestibility rarely exceeds 1.0'),
+  servingProteinGrams: z
+    .number({ invalid_type_error: 'Enter protein grams per serving' })
+    .min(0, 'Protein grams cannot be negative')
+    .max(120, 'Enter a realistic serving size')
+    .optional(),
+});
+
 type FormValues = z.infer<typeof formSchema>;
 
+type ResultPayload = {
+  proteinName: string;
+  pdcaas: number;
+  truncatedPdcaas: number;
+  digestibleProtein: number | null;
+  classification: 'excellent' | 'high' | 'moderate' | 'low';
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+};
+
+const understandingInputs = [
+  {
+    label: 'Amino Acid Score',
+    description: 'Ratio of the limiting essential amino acid (mg) in 1 g of test protein to the reference amino acid requirement pattern.',
+  },
+  {
+    label: 'True Digestibility',
+    description: 'Fraction of protein absorbed and utilized. Values typically range 0.6–1.0 depending on food and processing.',
+  },
+  {
+    label: 'Protein Name (optional)',
+    description: 'Identify the protein source (e.g., whey isolate, lentils, pea protein) for contextual recommendations.',
+  },
+  {
+    label: 'Protein per Serving (optional)',
+    description: 'Enter grams of protein per portion to estimate digestible protein delivered after PDCAAS adjustment.',
+  },
+];
+
+const faqs: [string, string][] = [
+  ['What does PDCAAS measure?', 'PDCAAS evaluates protein quality by combining the amino acid profile with digestibility, indicating how well a protein supplies essential amino acids for human needs.'],
+  ['How do I calculate amino acid score?', 'Identify the limiting amino acid (lowest ratio relative to human requirements) by comparing mg of each essential amino acid to the FAO/WHO reference pattern.'],
+  ['What is a good PDCAAS value?', 'Scores ≥ 0.90 indicate high-quality proteins; 1.00 means the protein meets or exceeds all essential amino acid requirements when digestibility is considered.'],
+  ['Why are scores truncated at 1.0?', 'The PDCAAS methodology caps values at 1.0 for labeling purposes, even if a protein exceeds requirements. This prevents inflated claims.'],
+  ['How does PDCAAS differ from DIAAS?', 'DIAAS measures digestibility for each amino acid at the ileal level and does not truncate values above 1.0, providing a more precise view of protein quality.'],
+  ['Can plant proteins reach a PDCAAS of 1.0?', 'Yes. Soy isolate and certain blends (e.g., pea + rice) can reach 1.0 by complementing limiting amino acids and high digestibility.'],
+  ['How can I improve PDCAAS in plant-based diets?', 'Combine grains and legumes, add small amounts of animal protein, or use fortified plant protein blends to cover amino acid gaps.'],
+  ['Does cooking affect PDCAAS?', 'Heat can reduce digestibility or alter amino acids. Gentle cooking preserves quality, while excessive heat or processing may lower PDCAAS.'],
+  ['Should athletes rely on PDCAAS?', 'PDCAAS helps ensure each serving of protein delivers essential amino acids. Combine with total protein intake and timing strategies for recovery.'],
+  ['How often should I evaluate protein sources?', 'Reassess when changing diets, introducing new protein powders, or planning formulations for clinical or sports nutrition.'],
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Audit current protein sources and note their PDCAAS or amino acid profiles.' },
+  { week: 2, focus: 'Combine complementary plant proteins (grains + legumes) in at least three meals.' },
+  { week: 3, focus: 'Improve digestibility via soaking, sprouting, fermenting, or selecting high-quality isolates.' },
+  { week: 4, focus: 'Adjust portion sizes to deliver 20–40 g of high-PDCAAS protein post-workout or in main meals.' },
+  { week: 5, focus: 'Track energy, recovery, and muscle soreness to gauge protein effectiveness.' },
+  { week: 6, focus: 'Refine recipes or formulations to raise limiting amino acids using fortified ingredients if necessary.' },
+  { week: 7, focus: 'Evaluate micronutrients that support amino acid utilization (vitamin B6, zinc, magnesium).'},
+  { week: 8, focus: 'Recalculate PDCAAS for updated blends and plan long-term sourcing strategies.' },
+];
+
+const warningSigns = () => [
+  'Chronic low-quality protein intake can impair muscle repair, immunity, and growth—monitor total protein quality, not just grams.',
+  'Individuals with kidney or liver disease should adjust protein under medical supervision.',
+  'Relying solely on a single low-PDCAAS protein may increase risk of essential amino acid deficiencies.',
+];
+
+const classifyPdcaas = (score: number): ResultPayload['classification'] => {
+  if (score >= 0.9) return 'excellent';
+  if (score >= 0.75) return 'high';
+  if (score >= 0.55) return 'moderate';
+  return 'low';
+};
+
+const interpretPdcaas = (score: number, truncated: number, proteinName: string) => {
+  const name = proteinName || 'This protein';
+  if (truncated >= 1) {
+    return `${name} achieves a PDCAAS of 1.0, meaning it supplies all essential amino acids in adequate amounts when digestibility is considered.`;
+  }
+  if (score >= 0.9) {
+    return `${name} ranks as a high-quality source. Pair with diverse foods to maintain amino acid balance.`;
+  }
+  if (score >= 0.75) {
+    return `${name} provides most essential amino acids but may benefit from complementary sources to fill minor gaps.`;
+  }
+  if (score >= 0.55) {
+    return `${name} has moderate protein quality. Combine with higher-lysine or higher-methionine foods depending on the limiting amino acid.`;
+  }
+  return `${name} presents a low PDCAAS; integrate complementary proteins or fortified products to enhance amino acid coverage.`;
+};
+
+const recommendations = (classification: ResultPayload['classification'], proteinName: string) => {
+  const base = [
+    'Verify serving sizes deliver sufficient protein (20–30 g) once PDCAAS is applied.',
+    'Monitor total daily protein distribution—aim for evenly spaced servings across meals.',
+    'If using protein supplements, select third-party tested products to ensure label accuracy.',
+  ];
+  if (classification === 'excellent') {
+    return [
+      ...base,
+      'Continue using this protein as a primary source—pair with carbohydrate and healthy fats for balanced meals.',
+      'Rotate with other high-quality proteins to diversify micronutrients and flavor.',
+    ];
+  }
+  if (classification === 'high') {
+    return [
+      ...base,
+      'Mix with small amounts of complete proteins (e.g., dairy, eggs) or targeted amino supplements during intense training.',
+      'Evaluate processing methods—fermentation or enzymatic treatment can lift digestibility further.',
+    ];
+  }
+  if (classification === 'moderate') {
+    return [
+      ...base,
+      'Combine with complementary proteins; for example, pair legumes with grains or nuts with seeds.',
+      'Consider fortifying recipes with limiting amino acids (lysine, methionine) or using blended protein powders.',
+    ];
+  }
+  return [
+    ...base,
+    'Use this protein as part of a blend rather than the sole source to avoid amino acid deficiencies.',
+    'Work with a dietitian or formulation expert to enhance quality through processing or ingredient pairing.',
+  ];
+};
+
+const calculatePdcaas = (values: FormValues): ResultPayload => {
+  const proteinName = values.proteinName && values.proteinName.trim() !== '' ? values.proteinName.trim() : 'This protein';
+  const pdcaasRaw = values.aminoAcidScore * values.trueDigestibility;
+  const truncated = Math.min(1, pdcaasRaw);
+  const digestibleProtein = values.servingProteinGrams !== undefined ? Number((values.servingProteinGrams * truncated).toFixed(2)) : null;
+  const classification = classifyPdcaas(truncated);
+  return {
+    proteinName,
+    pdcaas: Number(pdcaasRaw.toFixed(3)),
+    truncatedPdcaas: Number(truncated.toFixed(3)),
+    digestibleProtein,
+    classification,
+    interpretation: interpretPdcaas(pdcaasRaw, truncated, proteinName),
+    recommendations: recommendations(classification, proteinName),
+    warningSigns: warningSigns(),
+    plan: plan(),
+  };
+};
+
 export default function PdcaasCalculator() {
-  const [pdcaas, setPdcaas] = useState<number | null>(null);
-  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { aminoAcidScore: undefined as unknown as number, trueDigestibility: undefined as unknown as number } });
-  const onSubmit = (v: FormValues) => setPdcaas(Math.min(1, v.aminoAcidScore * v.trueDigestibility));
+  const [result, setResult] = useState<ResultPayload | null>(null);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      proteinName: '',
+      aminoAcidScore: undefined,
+      trueDigestibility: undefined,
+      servingProteinGrams: undefined,
+    },
+  });
+
+  const onSubmit = (values: FormValues) => {
+    setResult(calculatePdcaas(values));
+  };
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="aminoAcidScore" render={({ field }) => (<FormItem><FormLabel>Amino Acid Score (0–1)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
-            <FormField control={form.control} name="trueDigestibility" render={({ field }) => (<FormItem><FormLabel>True Digestibility (0–1)</FormLabel><FormControl><Input type="number" step="0.01" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>)} />
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Utensils className="h-5 w-5" /> PDCAAS Calculator</CardTitle>
+          <CardDescription>Evaluate protein quality by combining amino acid adequacy with true digestibility.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="proteinName" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Protein Source (optional)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="e.g., Pea protein isolate" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="servingProteinGrams" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Protein per Serving (g)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.5"
+                        placeholder="Optional, e.g., 25"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="aminoAcidScore" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Amino Acid Score (0–2)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.01"
+                        placeholder="e.g., 0.95"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="trueDigestibility" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>True Digestibility (0–1.0)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.01"
+                        placeholder="e.g., 0.92"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Calculate PDCAAS</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+
+      {result && (
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4"><Activity className="h-8 w-8 text-primary" /><CardTitle>Protein Quality Summary</CardTitle></div>
+              <CardDescription>{result.proteinName}</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">PDCAAS (raw)</h4>
+                  <p className="text-2xl font-bold text-primary">{result.pdcaas.toFixed(2)}</p>
+                </div>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">PDCAAS (truncated)</h4>
+                  <p className="text-2xl font-bold text-primary">{result.truncatedPdcaas.toFixed(2)}</p>
+                </div>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Classification</h4>
+                  <p className="text-lg font-bold text-primary">
+                    {result.classification === 'excellent' && 'Excellent'}
+                    {result.classification === 'high' && 'High'}
+                    {result.classification === 'moderate' && 'Moderate'}
+                    {result.classification === 'low' && 'Low'}
+                  </p>
+                </div>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Digestible Protein</h4>
+                  <p className="text-lg font-bold text-primary">
+                    {result.digestibleProtein !== null ? `${result.digestibleProtein} g` : '—'}
+                  </p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Warning Signs & Precautions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </div>
-          <Button type="submit">Calculate PDCAAS</Button>
-        </form>
-      </Form>
-      {pdcaas !== null && (
-        <Card className="mt-8">
-          <CardHeader><div className='flex items-center gap-4'><Utensils className="h-8 w-8 text-primary" /><CardTitle>PDCAAS Result</CardTitle></div></CardHeader>
-          <CardContent>
-            <div className="text-center space-y-2">
-              <p className="text-4xl font-bold">{pdcaas.toFixed(2)}</p>
-              <CardDescription>Scores are truncated at 1.0; higher means better protein quality.</CardDescription>
-            </div>
-          </CardContent>
-        </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Protein Optimization Plan</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       )}
-      <PdcaasGuide />
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate data for meaningful PDCAAS results</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Design a comprehensive performance nutrition stack</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                  Protein Intake Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Align total daily protein grams with high-quality sources.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/amino-acid-blend-optimizer-calculator" className="text-primary hover:underline">
+                  Amino Acid Blend Optimizer
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Fine-tune limiting amino acids for plant-based formulations.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">
+                  Power-to-HR Efficiency Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Track performance alongside protein quality improvements.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/daily-antioxidant-orac-goal-calculator" className="text-primary hover:underline">
+                  Antioxidant (ORAC) Goal Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Pair high-quality proteins with antioxidant support for recovery.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Leveraging PDCAAS in Meal Planning</CardTitle>
+          <CardDescription>Practical insights for clinicians, athletes, and formulators</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>
+            PDCAAS helps ensure protein sources deliver the essential amino acids your body needs. Use it to evaluate supplements, plan vegan or vegetarian diets, and design clinical or sports nutrition protocols. Combine PDCAAS insights with total protein targets, spacing across meals, and supportive nutrients like vitamin B6, zinc, and magnesium to optimize amino acid utilization.
+          </p>
+          <p>
+            When formulating plant-based blends, pair complementary proteins or enrich with targeted amino acids. Monitor digestibility through preparation methods—soaking, sprouting, and fermentation can raise overall scores. Reassess regularly as ingredient quality and processing changes.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Protein quality fundamentals and troubleshooting tips</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
-  );
-}
-
-export function PdcaasGuide() {
-  return (
-    <section
-  className="space-y-4 text-muted-foreground leading-relaxed"
-  itemScope
-  itemType="https://schema.org/Article"
->
-  <meta
-    itemProp="headline"
-    content="Food Protein Digestibility Corrected Amino Acid Score (PDCAAS) Calculator – Measure Protein Quality & Amino Acid Value"
-  />
-  <meta itemProp="author" content="MegaCalc Hub Team" />
-  <meta
-    itemProp="about"
-    content="Use the PDCAAS Calculator to determine protein quality based on amino acid composition and digestibility. Learn how different foods rank and optimize your protein intake for muscle growth and health."
-  />
-
-  <h2 itemProp="name" className="text-xl font-bold text-foreground">
-    PDCAAS Calculator – Measure True Protein Quality of Your Foods
-  </h2>
-  <p itemProp="description">
-    Not all proteins are created equal. Some provide every essential amino acid your body needs, while others lack one or more.  
-    The <strong>Food Protein Digestibility Corrected Amino Acid Score (PDCAAS)</strong> is the gold-standard method for evaluating the <strong>quality of a protein source</strong> based on its amino acid composition and digestibility.  
-    This calculator helps you estimate the PDCAAS of your meals or protein powders and compare plant and animal proteins scientifically.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">What Is PDCAAS?</h3>
-  <p>
-    The <strong>PDCAAS (Protein Digestibility Corrected Amino Acid Score)</strong> is a standardized measure developed by the FAO/WHO.  
-    It rates protein quality by comparing the amino acid profile of a food with human requirements and adjusting it for digestibility.  
-    A score of <strong>1.0 (or 100%)</strong> means the protein provides all essential amino acids in sufficient amounts and is fully digestible — typical of high-quality animal proteins like whey or eggs.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">PDCAAS Formula</h3>
-  <p>
-    The calculation follows this formula:
-  </p>
-  <p className="font-mono bg-muted p-2 rounded">
-    PDCAAS = (mg of limiting amino acid in 1g of test protein ÷ mg of same amino acid in 1g of reference protein) × True Digestibility
-  </p>
-  <p>
-    The <strong>limiting amino acid</strong> is the essential amino acid present in the lowest proportion relative to human needs.  
-    Once this amino acid is identified, its ratio to the ideal pattern is multiplied by the food’s digestibility to get the PDCAAS.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">PDCAAS Rating Scale</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li><strong>1.0 (Excellent):</strong> Whey, casein, egg white, soy protein isolate</li>
-    <li><strong>0.9–0.99 (High):</strong> Beef, chicken, milk, pea protein blends</li>
-    <li><strong>0.7–0.89 (Moderate):</strong> Lentils, quinoa, chickpeas, oats</li>
-    <li><strong>0.5–0.69 (Low):</strong> Wheat, rice, nuts, beans (without combination)</li>
-    <li><strong>&lt; 0.5 (Poor):</strong> Gelatin, cornmeal, processed cereal grains</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">
-    Common PDCAAS Scores of Popular Protein Sources
-  </h3>
-  <table className="w-full border border-border text-sm">
-    <thead className="bg-muted text-foreground font-semibold">
-      <tr>
-        <th className="p-2 text-left">Protein Source</th>
-        <th className="p-2 text-right">PDCAAS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td className="p-2">Whey Protein Isolate</td><td className="p-2 text-right">1.00</td></tr>
-      <tr><td className="p-2">Casein</td><td className="p-2 text-right">1.00</td></tr>
-      <tr><td className="p-2">Egg White</td><td className="p-2 text-right">1.00</td></tr>
-      <tr><td className="p-2">Soy Protein Isolate</td><td className="p-2 text-right">1.00</td></tr>
-      <tr><td className="p-2">Beef</td><td className="p-2 text-right">0.92</td></tr>
-      <tr><td className="p-2">Pea Protein</td><td className="p-2 text-right">0.82</td></tr>
-      <tr><td className="p-2">Oats</td><td className="p-2 text-right">0.57</td></tr>
-      <tr><td className="p-2">Wheat Gluten</td><td className="p-2 text-right">0.25</td></tr>
-      <tr><td className="p-2">Rice Protein</td><td className="p-2 text-right">0.59</td></tr>
-      <tr><td className="p-2">Peanut Protein</td><td className="p-2 text-right">0.52</td></tr>
-    </tbody>
-  </table>
-
-  <h3 className="font-semibold text-foreground mt-6">
-    How to Use the PDCAAS Calculator
-  </h3>
-  <ol className="list-decimal ml-6 space-y-1">
-    <li>Select your protein source or combination (e.g., Whey, Soy, Pea, Lentil).</li>
-    <li>Enter the amount of protein per serving.</li>
-    <li>Enter digestibility percentage (most proteins range 80–100%).</li>
-    <li>The calculator estimates the PDCAAS and shows whether your protein intake meets ideal amino acid requirements.</li>
-  </ol>
-  <p>
-    You can also use the tool to combine multiple foods — for example, rice and beans — to see how their complementary amino acids improve the total PDCAAS.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">Why PDCAAS Matters</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li><strong>Measures true protein quality</strong> — not just quantity.</li>
-    <li><strong>Helps plan vegetarian and vegan diets</strong> by identifying amino acid gaps.</li>
-    <li><strong>Assists athletes and bodybuilders</strong> in selecting the most efficient protein sources for muscle recovery.</li>
-    <li><strong>Useful for food manufacturers</strong> in labeling “complete” protein blends.</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">Limitations of PDCAAS</h3>
-  <p>
-    While PDCAAS is widely used, it has some limitations:
-  </p>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>It truncates all scores above 1.0, so very high-quality proteins (like whey) appear the same as others with lower actual amino acid surpluses.</li>
-    <li>It’s based on rat models, not direct human digestion studies.</li>
-    <li>It doesn’t account for the bioavailability of specific amino acids after cooking or processing.</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">Alternative Metrics: DIAAS</h3>
-  <p>
-    The <strong>Digestible Indispensable Amino Acid Score (DIAAS)</strong> is a newer, more precise method proposed by the FAO.  
-    Unlike PDCAAS, it does not truncate values above 1.0 and measures digestibility for each amino acid at the ileal (small intestine) level.  
-    However, PDCAAS remains the global standard for food labeling and practical nutrition.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">Tips to Improve Protein Quality in Meals</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>Combine plant proteins — e.g., rice + beans or hummus + whole wheat bread.</li>
-    <li>Add small portions of animal protein (egg or dairy) to plant-based meals.</li>
-    <li>Use protein isolates with PDCAAS ≥ 0.9 when possible.</li>
-    <li>Include vitamin B6 and zinc sources for optimal amino acid metabolism.</li>
-    <li>Cook with gentle methods (steaming, boiling) to preserve amino acids.</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">PDCAAS vs. Protein Quantity</h3>
-  <p>
-    Many people focus only on total grams of protein — but 20g of a low-quality protein may provide fewer usable amino acids than 10g of a complete one.  
-    The PDCAAS Calculator helps you shift from <strong>quantity-based to quality-based nutrition planning</strong>.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">FAQ</h3>
-  <div className="space-y-3">
-    <p><strong>What is a good PDCAAS score?</strong> A score of 1.0 is excellent, meaning the protein is complete and fully digestible. Anything above 0.8 is considered high-quality.</p>
-    <p><strong>Why does soy have a PDCAAS of 1.0?</strong> Because it contains all essential amino acids in sufficient amounts and is easily digestible, making it the best plant protein match to animal sources.</p>
-    <p><strong>How can vegans improve PDCAAS?</strong> Combine different plant sources — grains + legumes — to cover amino acid gaps.</p>
-    <p><strong>Is PDCAAS the same as protein digestibility?</strong> No. Digestibility is one factor; PDCAAS also includes amino acid balance.</p>
-    <p><strong>Which is better: PDCAAS or DIAAS?</strong> DIAAS is more precise scientifically, but PDCAAS is the official labeling standard in most countries.</p>
-  </div>
-  <h3 className="font-semibold text-foreground mt-6">Quick Takeaways</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>PDCAAS measures protein quality based on amino acid profile and digestibility.</li>
-    <li>1.0 = complete protein (ideal amino acid pattern).</li>
-    <li>Use calculator to find the most efficient protein sources for your goals.</li>
-    <li>Combine plant proteins to raise overall PDCAAS in vegetarian diets.</li>
-    <li>DIAAS is the modern alternative metric but PDCAAS remains widely accepted.</li>
-  </ul>
-
-  <p className="italic mt-4">
-    Disclaimer: This calculator is for educational and dietary guidance purposes only. It should not replace professional nutrition advice. Always consult your dietitian or healthcare provider before major dietary changes or supplement use.
-  </p>
-</section>
   );
 }
