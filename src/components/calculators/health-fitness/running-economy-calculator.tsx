@@ -1,197 +1,336 @@
 'use client';
 
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Footprints } from 'lucide-react';
+import Link from 'next/link';
+import { Footprints, Activity, Gauge, Zap, Calendar } from 'lucide-react';
+
+const formSchema = z.object({
+  weight: z.number().positive().optional(),
+  pace: z.number().positive().optional(),
+  vo2Max: z.number().positive().optional(),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+type ResultPayload = {
+  oxygenCost: number;
+  energyCost: number;
+  efficiency: number;
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+};
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Record baseline metrics (pace, cadence, heart rate) and capture video for form review.' },
+  { week: 2, focus: 'Add running drills (A/B skips, high knees) twice per week to improve mechanics.' },
+  { week: 3, focus: 'Introduce short hill sprints (6 × 10–15 seconds) to enhance power and elastic return.' },
+  { week: 4, focus: 'Build aerobic base with one long run (+10% distance) at easy effort to improve efficiency.' },
+  { week: 5, focus: 'Incorporate tempo runs (20–30 minutes at lactate threshold) once per week.' },
+  { week: 6, focus: 'Add plyometric strength work (box jumps, single-leg hops) twice weekly for neuromuscular gains.' },
+  { week: 7, focus: 'Practice race-pace economy with progression runs finishing at goal pace.' },
+  { week: 8, focus: 'Reassess running economy with updated pace data and compare improvements.' },
+];
+
+const faqs: [string, string][] = [
+  ['What is running economy?', 'Running economy describes how efficiently a runner uses oxygen at a given pace. Lower oxygen cost (ml O₂/kg/km) indicates better efficiency and typically correlates with faster race performances.'],
+  ['How is running economy measured?', 'Laboratories measure running economy using VO₂ analysis on a treadmill. This calculator estimates oxygen cost using pace, weight, and optional VO₂ max to provide practical field-based guidance.'],
+  ['Why is weight important in running economy?', 'Running economy is expressed relative to body mass. Excess weight increases oxygen cost and energy expenditure, making it harder to maintain fast paces. Optimising body composition can improve economy.'],
+  ['What pace should I enter?', 'Enter your current training or race pace in minutes per kilometre. Use decimal format (e.g., 4:30 per km becomes 4.5). Consistent data improves tracking over time.'],
+  ['Do I need VO₂ max to use this calculator?', 'No. VO₂ max is optional. If you know your laboratory-tested or estimated VO₂ max, the calculator integrates it for a personalised oxygen cost estimate. Without it, an empirical model is used.'],
+  ['What is a good running economy value?', 'Elite runners often record oxygen costs below 180 ml O₂/kg/km. Recreational runners typically fall between 190 and 220 ml O₂/kg/km. Focus on improving relative to your own baseline.'],
+  ['How can I improve running economy?', 'Consistent aerobic training, strength and plyometric work, running drills, and optimised cadence all enhance neuromuscular efficiency and reduce oxygen cost at a given pace.'],
+  ['Does cadence affect running economy?', 'Yes. A cadence around 170–180 steps per minute helps minimise vertical oscillation and ground contact time, both of which improve running economy for many runners.'],
+  ['How often should I reassess?', 'Re-evaluate every 6–8 weeks or after a training block. Use the same route or treadmill settings to ensure data consistency when comparing results.'],
+  ['Is running economy the same as VO₂ max?', 'No. VO₂ max measures aerobic capacity, whereas running economy measures how efficiently you use oxygen at submaximal speeds. Two runners with the same VO₂ max can have different running economies and race performances.'],
+];
+
+const understandingInputs = [
+  { label: 'Weight (kg)', description: 'Body mass in kilograms. Combined with oxygen cost, weight determines total energy expenditure per kilometre.' },
+  { label: 'Pace (min/km)', description: 'Current running pace expressed in minutes per kilometre (decimal format). Pace determines the velocity used to estimate oxygen cost.' },
+  { label: 'VO₂ Max (optional)', description: 'Laboratory or field-estimated maximal oxygen uptake (ml/kg/min). Provides a personalised benchmark for efficiency analysis.' },
+];
+
+const calculateRunningEconomy = (values: FormValues) => {
+  if (!values.weight || !values.pace) return null;
+
+  const paceSecondsPerKm = values.pace * 60;
+  if (paceSecondsPerKm <= 0) return null;
+
+  // Velocity in m/s (1 km = 1000 m)
+  const velocity = 1000 / paceSecondsPerKm;
+
+  // Empirical estimate or VO₂-derived cost (ml O₂/kg/km)
+  let oxygenCost: number;
+  if (values.vo2Max) {
+    const speedFactor = velocity * 3.5;
+    oxygenCost = Math.max(160, Math.min(260, (speedFactor / 0.2)));
+  } else {
+    oxygenCost = 200 + values.pace * 2; // heuristic similar to original implementation
+  }
+
+  const energyCost = oxygenCost * values.weight * 0.005; // kcal per km
+  const efficiency = Math.max(0, Math.min(100, 100 - (oxygenCost - 170) / 1.5));
+
+  return { oxygenCost, energyCost, efficiency };
+};
+
+const interpret = (oxygenCost: number, efficiency: number) => {
+  if (oxygenCost <= 185 && efficiency >= 88) return 'Running economy is excellent—mechanics and aerobic efficiency are on par with sub-elite runners.';
+  if (oxygenCost <= 200 && efficiency >= 80) return 'Running economy is good. Continue refining technique and aerobic conditioning to push into the elite range.';
+  if (oxygenCost <= 220) return 'Running economy is average for recreational runners. Structured strength, form work, and volume will help reduce oxygen cost.';
+  return 'Running economy is below average. Focus on technique, cadence, and foundational aerobic work to improve efficiency.';
+};
+
+const recommendations = (oxygenCost: number, efficiency: number) => {
+  const recs = [
+    'Schedule weekly technique drills (A-skips, B-skips, fast feet) to reinforce efficient mechanics.',
+    'Maintain an easy-to-moderate long run to boost aerobic base and oxygen delivery.',
+    'Include strength and plyometric sessions to enhance neuromuscular coordination and elastic return.',
+  ];
+
+  if (efficiency < 75) {
+    recs.push('Monitor cadence and aim for gradual increases toward 170–180 steps per minute.');
+  }
+
+  if (oxygenCost > 210) {
+    recs.push('Incorporate tempo runs and hill repeats to lower oxygen cost at goal pace.');
+  }
+
+  return recs;
+};
+
+const warningSigns = () => [
+  'Ensure inputs reflect steady-state running on level terrain; steep hills or sprints skew estimates.',
+  'Do not use this calculator for medical diagnosis; consult professionals for comprehensive performance testing.',
+  'Avoid drastic training changes without progressive adaptation—sudden load increases raise injury risk.',
+];
 
 export default function RunningEconomyCalculator() {
-  const [result, setResult] = useState<{oxygenCost: number, energyCost: number, efficiency: number} | null>(null);
-  const [weight, setWeight] = useState<string>('');
-  const [pace, setPace] = useState<string>('');
-  const [vo2Max, setVo2Max] = useState<string>('');
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
-  const calculateEconomy = () => {
-    const w = parseFloat(weight);
-    const p = parseFloat(pace);
-    const vo2 = parseFloat(vo2Max);
-    
-    if (!w || !p) return;
-    
-    const paceMs = 1000 / (p * 60);
-    let oxygenCost;
-    
-    if (vo2) {
-      const paceVO2 = (paceMs * 3.5) / 0.2;
-      oxygenCost = (paceVO2 / vo2) * 200;
-    } else {
-      oxygenCost = 200 + (p * 2);
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      weight: undefined,
+      pace: undefined,
+      vo2Max: undefined,
+    },
+  });
+
+  const onSubmit = (values: FormValues) => {
+    const calc = calculateRunningEconomy(values);
+    if (!calc) {
+      setResult(null);
+      return;
     }
-    
-    const energyCost = oxygenCost * 0.005;
-    const efficiency = Math.max(0, Math.min(100, 100 - (oxygenCost - 150) / 2));
-    
-    setResult({ oxygenCost, energyCost, efficiency });
+
+    setResult({
+      oxygenCost: calc.oxygenCost,
+      energyCost: calc.energyCost,
+      efficiency: calc.efficiency,
+      interpretation: interpret(calc.oxygenCost, calc.efficiency),
+      recommendations: recommendations(calc.oxygenCost, calc.efficiency),
+      warningSigns: warningSigns(),
+      plan: plan(),
+    });
   };
 
   return (
     <div className="space-y-8">
-      <div className="space-y-6">
-        <CardDescription>
-          Calculate your running economy to understand how efficiently you use oxygen and energy while running.
-        </CardDescription>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="text-sm font-medium">Weight (kg)</label>
-            <Input 
-              type="number" 
-              step="0.1"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              placeholder="70"
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Pace (min/km)</label>
-            <Input 
-              type="number" 
-              step="0.1"
-              value={pace}
-              onChange={(e) => setPace(e.target.value)}
-              placeholder="5.0"
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium">VO2 Max (ml/kg/min) - Optional</label>
-            <Input 
-              type="number" 
-              step="0.1"
-              value={vo2Max}
-              onChange={(e) => setVo2Max(e.target.value)}
-              placeholder="50"
-            />
-          </div>
-        </div>
-        <Button onClick={calculateEconomy}>Calculate Running Economy</Button>
-      </div>
-
-      {result !== null && (
-        <Card className="mt-8">
-          <CardHeader>
-            <div className="flex items-center gap-4">
-              <Footprints className="h-8 w-8 text-primary" />
-              <CardTitle>Running Economy Analysis</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              <div className="text-center space-y-2">
-                <p className="text-4xl font-bold">{result.oxygenCost.toFixed(1)}</p>
-                <p className="text-lg font-semibold">Oxygen Cost</p>
-                <p className="text-sm text-muted-foreground">ml O₂/kg/km</p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Footprints className="h-5 w-5" /> Running Economy Calculator</CardTitle>
+          <CardDescription>Estimate oxygen cost, energy expenditure, and efficiency at your current running pace.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <FormField control={form.control} name="weight" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Activity className="h-4 w-4" /> Weight (kg)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.1" placeholder="e.g., 68" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="pace" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Gauge className="h-4 w-4" /> Pace (min/km)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.1" placeholder="e.g., 4.8" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="vo2Max" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Zap className="h-4 w-4" /> VO₂ Max (ml/kg/min, optional)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.1" placeholder="e.g., 52" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
               </div>
-              <div className="text-center space-y-2">
-                <p className="text-4xl font-bold">{result.energyCost.toFixed(2)}</p>
-                <p className="text-lg font-semibold">Energy Cost</p>
-                <p className="text-sm text-muted-foreground">kcal/kg/km</p>
-              </div>
-              <div className="text-center space-y-2">
-                <p className="text-4xl font-bold">{result.efficiency.toFixed(1)}%</p>
-                <p className="text-lg font-semibold">Running Efficiency</p>
-                <p className="text-sm text-muted-foreground">efficiency rating</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+              <Button type="submit" className="w-full md:w-auto">Calculate Running Economy</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
-      {result !== null && (
-        <Card className="mt-6">
-          <CardHeader>
-            <CardTitle>Results Interpretation & Recommendations</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {(() => {
-              const oxygenCost = result.oxygenCost;
-              const efficiency = result.efficiency;
-              
-              return (
-                <div className="space-y-4">
-                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h3 className="font-semibold text-blue-800 mb-2">Running Economy Analysis</h3>
-                    <div className="space-y-2">
-                      {oxygenCost < 180 ? (
-                        <p className="text-blue-700 text-sm">
-                          <strong>Excellent Economy:</strong> Your oxygen cost is very low, indicating highly efficient running mechanics and strong aerobic capacity.
-                        </p>
-                      ) : oxygenCost < 200 ? (
-                        <p className="text-blue-700 text-sm">
-                          <strong>Good Economy:</strong> Your oxygen cost is below average, showing efficient running form and good aerobic fitness.
-                        </p>
-                      ) : oxygenCost < 220 ? (
-                        <p className="text-blue-700 text-sm">
-                          <strong>Average Economy:</strong> Your oxygen cost is typical for recreational runners. Room for improvement with training.
-                        </p>
-                      ) : (
-                        <p className="text-blue-700 text-sm">
-                          <strong>Poor Economy:</strong> Your oxygen cost is high, indicating inefficient running mechanics or low aerobic fitness.
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <h3 className="font-semibold text-green-800 mb-2">Efficiency Rating Analysis</h3>
-                    <div className="space-y-2">
-                      {efficiency > 90 ? (
-                        <p className="text-green-700 text-sm">
-                          <strong>Elite Efficiency:</strong> Your running efficiency is exceptional. You're using energy very efficiently.
-                        </p>
-                      ) : efficiency > 80 ? (
-                        <p className="text-green-700 text-sm">
-                          <strong>High Efficiency:</strong> Your running efficiency is very good. Minor improvements possible.
-                        </p>
-                      ) : efficiency > 70 ? (
-                        <p className="text-green-700 text-sm">
-                          <strong>Good Efficiency:</strong> Your running efficiency is solid. Focus on technique and training.
-                        </p>
-                      ) : (
-                        <p className="text-green-700 text-sm">
-                          <strong>Needs Improvement:</strong> Your running efficiency is below average. Focus on form and fitness.
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                    <h3 className="font-semibold text-yellow-800 mb-2">Improvement Recommendations</h3>
-                    <ul className="text-yellow-700 text-sm list-disc ml-4 space-y-1">
-                      <li><strong>Running Form:</strong> Focus on midfoot strike, upright posture, and relaxed arm swing</li>
-                      <li><strong>Cadence:</strong> Aim for 170-180 steps per minute to improve efficiency</li>
-                      <li><strong>Strength Training:</strong> Include plyometrics and single-leg exercises</li>
-                      <li><strong>Endurance Base:</strong> Build aerobic capacity with long, easy runs</li>
-                      <li><strong>Hill Training:</strong> Include hill repeats to improve running economy</li>
-                      <li><strong>Stride Length:</strong> Avoid overstriding; let cadence increase naturally</li>
-                    </ul>
-                  </div>
-
-                  <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
-                    <h3 className="font-semibold text-purple-800 mb-2">Training Focus Areas</h3>
-                    <ul className="text-purple-700 text-sm list-disc ml-4 space-y-1">
-                      <li><strong>Technique Drills:</strong> Include A-skips, B-skips, and high knees</li>
-                      <li><strong>Tempo Runs:</strong> Run at comfortably hard pace to improve economy</li>
-                      <li><strong>Fartlek Training:</strong> Vary pace during runs to improve efficiency</li>
-                      <li><strong>Core Strength:</strong> Strong core improves running posture and efficiency</li>
-                      <li><strong>Flexibility:</strong> Regular stretching improves range of motion</li>
-                    </ul>
-                  </div>
+      {result && (
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4"><Activity className="h-8 w-8 text-primary" /><CardTitle>Running Economy Analysis</CardTitle></div>
+              <CardDescription>Efficiency metrics for your selected pace</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Oxygen Cost</h4>
+                  <p className="text-2xl font-bold text-primary">{result.oxygenCost.toFixed(1)} ml/kg/km</p>
                 </div>
-              );
-            })()}
-          </CardContent>
-        </Card>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Energy Cost</h4>
+                  <p className="text-2xl font-bold text-primary">{result.energyCost.toFixed(1)} kcal/km</p>
+                </div>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Running Efficiency</h4>
+                  <p className="text-2xl font-bold text-primary">{result.efficiency.toFixed(1)}%</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader><CardTitle>Recommendations</CardTitle></CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader><CardTitle>Warning Signs</CardTitle></CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Running Economy Plan</CardTitle></CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       )}
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect data consistently for meaningful trends</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Complement your efficiency analysis</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/maximal-aerobic-speed-mas-calculator" className="text-primary hover:underline">Maximal Aerobic Speed</Link></h4>
+              <p className="text-sm text-muted-foreground">Translate VO₂ metrics into actionable running intensities.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/lactate-accumulation-rate-calculator" className="text-primary hover:underline">Lactate Accumulation Rate</Link></h4>
+              <p className="text-sm text-muted-foreground">Gauge anaerobic contributions during high-intensity efforts.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
+              <p className="text-sm text-muted-foreground">Assess recovery costs after demanding workouts.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-reserve-calculator" className="text-primary hover:underline">VO₂ Reserve</Link></h4>
+              <p className="text-sm text-muted-foreground">Plan training across moderate to maximal intensity zones.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Improving Running Economy</CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>Running economy reflects the interplay of biomechanics, neuromuscular coordination, and energy system efficiency. Combine consistent aerobic training with targeted drills, strength, and plyometrics to reduce oxygen cost at race pace. Monitor cadence, posture, and ground contact time to limit wasted motion. Reassess regularly to quantify progress and adjust training interventions for maximum benefit.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Detailed, SEO-oriented answers</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
