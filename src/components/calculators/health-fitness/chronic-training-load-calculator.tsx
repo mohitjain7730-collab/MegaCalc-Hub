@@ -1,232 +1,339 @@
 'use client';
 
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp } from 'lucide-react';
+import Link from 'next/link';
+import { TrendingUp, Activity, Calendar } from 'lucide-react';
+
+const formSchema = z.object({
+  currentCtl: z.number().min(0).optional(),
+  dailyTss: z.number().min(0).optional(),
+  timeConstant: z.number().min(7).max(60).optional(),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+type ResultPayload = {
+  newCtl: number;
+  delta: number;
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+};
+
+const understandingInputs = [
+  { label: 'Current CTL (optional)', description: 'Existing chronic training load value. Leave blank if starting from zero or calculating from scratch.' },
+  { label: 'Daily TSS', description: 'Average Training Stress Score for the day. Use the value from your workout or daily training log.' },
+  { label: 'Time Constant (days)', description: 'The decay constant that governs fitness response. Common defaults: 42 days for cycling/running, 30 for swimming.' },
+];
+
+const faqs: [string, string][] = [
+  ['What is Chronic Training Load (CTL)?', 'CTL is the exponentially weighted average of daily TSS over several weeks. It reflects long-term fitness or training capacity rather than acute fatigue.'],
+  ['How is the CTL formula derived?', 'CTL = CTL_previous × e^(−1/TC) + TSS_today × (1 − e^(−1/TC)), where TC is the time constant (usually 42 days). This gives more weight to recent workouts while preserving historical contributions.'],
+  ['What CTL range is appropriate?', 'Recreational athletes might maintain CTL between 40–60, while competitive endurance athletes may accumulate 80–120 or more, depending on discipline and experience.'],
+  ['How quickly can CTL increase?', 'A safe ramp rate is typically 5–8 CTL points per week. Aggressive jumps beyond 10 points can elevate injury or burnout risk.'],
+  ['Why does CTL drop during rest weeks?', 'Because older workouts decay exponentially, reduced TSS during recovery weeks lowers CTL slightly—this is normal and necessary for supercompensation.'],
+  ['How does CTL relate to ATL and TSB?', 'ATL (Acute Training Load) tracks short-term fatigue, while TSB (Training Stress Balance) = CTL − ATL. Positive TSB indicates freshness, negative values signal accumulated fatigue.'],
+  ['Can CTL be sport-specific?', 'Yes. Many athletes track separate CTL values for swim, bike, and run disciplines to tailor training stress per sport.'],
+  ['What happens if I miss days of training?', 'Daily TSS of zero causes CTL to decay toward zero over time. Longer breaks will reduce CTL but allow for recovery; ramp back up gradually.'],
+  ['Is a higher CTL always better?', 'Not necessarily. CTL should align with performance goals, recovery capacity, and life stressors. Sustainably maintaining a moderate CTL often yields better outcomes than chasing extremes.'],
+  ['How often should I monitor CTL?', 'Daily monitoring helps spot trends, but weekly reviews are sufficient for most athletes. Pay attention to how CTL interacts with subjective fatigue and performance.'],
+];
+
+const warningSigns = () => [
+  'Rapid CTL increases (>10 points per week) raise injury risk and may indicate insufficient recovery.',
+  'Persistently high CTL with low motivation, poor sleep, or mood changes can signal overreaching.',
+  'Ignoring illness or musculoskeletal pain to keep CTL elevated undermines long-term progress.',
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Assess FTP/threshold and establish baseline CTL and weekly TSS averages.' },
+  { week: 2, focus: 'Add consistent endurance sessions to build volume without drastic intensity spikes.' },
+  { week: 3, focus: 'Layer in threshold or tempo work to raise daily TSS strategically.' },
+  { week: 4, focus: 'Insert a recovery week (reduce TSS by ~40%) to consolidate fitness and adjust CTL expectations.' },
+  { week: 5, focus: 'Resume progressive overload: increase weekly TSS by 5–10% while tracking CTL ramp rate.' },
+  { week: 6, focus: 'Include race-specific intensity and fueling practice to support higher CTL.' },
+  { week: 7, focus: 'Monitor ATL/CTL balance and adjust sessions if Training Stress Balance stays deeply negative.' },
+  { week: 8, focus: 'Plan upcoming taper or peak period by lowering ATL while stabilizing CTL.' },
+];
+
+const recommendations = (newCtl: number, delta: number) => {
+  const base = [
+    'Track weekly CTL ramp rates; aim for steady progress rather than sudden spikes.',
+    'Align sleep, nutrition, and stress management with increases in training load.',
+    'Review discipline-specific CTL (swim/bike/run) if training for multisport events.',
+  ];
+
+  if (newCtl < 40) {
+    return [
+      ...base,
+      'Focus on consistency—prioritize completing planned sessions over pushing intensity.',
+      'Incorporate strength and mobility to support higher future training loads.',
+    ];
+  }
+
+  if (newCtl < 70) {
+    return [
+      ...base,
+      'Introduce structured tempo or sweet-spot workouts to lift average TSS.',
+      'Schedule periodic lab or field testing to validate threshold improvements.',
+    ];
+  }
+
+  if (delta > 6) {
+    return [
+      ...base,
+      'Ensure future weeks alternate between build and recovery to avoid chronic fatigue.',
+      'Use monitoring tools (HRV, mood logs) to confirm you are adapting positively.',
+    ];
+  }
+
+  return [
+    ...base,
+    'Plan a recovery block if negative Training Stress Balance persists for more than a week.',
+    'Coordinate with a coach or medical professional when sustaining very high CTL levels.',
+  ];
+};
+
+const interpretCtl = (newCtl: number, delta: number) => {
+  if (newCtl < 30) return 'Foundational Load – Ideal for beginners, recovery phases, or offseason maintenance.';
+  if (newCtl < 60) return 'Developing Load – Consistent training with growing aerobic fitness; sustainable for most athletes.';
+  if (newCtl < 90) return 'High Load – Demands disciplined recovery and monitoring; often used during build phases.';
+  return delta >= 0 ? 'Peak Load – Elite-level stress requiring meticulous recovery and periodization.' : 'Peak Load Declining – CTL trending down; potentially tapering toward key events.';
+};
+
+const calculateCtl = (values: FormValues) => {
+  if (!values.dailyTss || !values.timeConstant) return null;
+  const previous = values.currentCtl ?? 0;
+  const decayFactor = Math.exp(-1 / values.timeConstant);
+  const newCtl = previous * decayFactor + values.dailyTss * (1 - decayFactor);
+  return { newCtl, delta: newCtl - previous };
+};
 
 export default function ChronicTrainingLoadCalculator() {
-  const [result, setResult] = useState<number | null>(null);
-  const [currentCTL, setCurrentCTL] = useState<string>('');
-  const [dailyTSS, setDailyTSS] = useState<string>('');
-  const [timeConstant, setTimeConstant] = useState<string>('42');
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
-  const calculateCTL = () => {
-    const ctl = parseFloat(currentCTL) || 0;
-    const tss = parseFloat(dailyTSS);
-    const tc = parseFloat(timeConstant);
-    
-    if (!tss || !tc) return;
-    
-    const decayFactor = Math.exp(-1 / tc);
-    const newCTL = ctl * decayFactor + tss * (1 - decayFactor);
-    setResult(newCTL);
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      currentCtl: undefined,
+      dailyTss: undefined,
+      timeConstant: 42,
+    },
+  });
+
+  const onSubmit = (values: FormValues) => {
+    const calc = calculateCtl(values);
+    if (!calc) {
+      setResult(null);
+      return;
+    }
+    setResult({
+      newCtl: calc.newCtl,
+      delta: calc.delta,
+      interpretation: interpretCtl(calc.newCtl, calc.delta),
+      recommendations: recommendations(calc.newCtl, calc.delta),
+      warningSigns: warningSigns(),
+      plan: plan(),
+    });
   };
 
   return (
     <div className="space-y-8">
-      <div className="space-y-6">
-        <CardDescription>
-          Calculate your Chronic Training Load (CTL) to track long-term fitness and training stress. 
-          CTL represents your average training load over the past several weeks.
-        </CardDescription>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="text-sm font-medium">Current CTL (optional)</label>
-            <Input 
-              type="number" 
-              step="0.1"
-              value={currentCTL}
-              onChange={(e) => setCurrentCTL(e.target.value)}
-              placeholder="0"
-            />
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><TrendingUp className="h-5 w-5" /> Chronic Training Load (CTL) Calculator</CardTitle>
+          <CardDescription>Estimate long-term fitness by updating CTL using daily Training Stress Scores and time constants.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <FormField control={form.control} name="currentCtl" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Current CTL (optional)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.1" placeholder="e.g., 55" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="dailyTss" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Daily TSS</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.1" placeholder="e.g., 75" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="timeConstant" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Time Constant (days)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" placeholder="e.g., 42" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Update CTL</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+
+      {result && (
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4"><Activity className="h-8 w-8 text-primary" /><CardTitle>CTL Summary</CardTitle></div>
+              <CardDescription>Evaluate fitness trends based on the latest training data</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Updated CTL</h4>
+                  <p className="text-2xl font-bold text-primary">{result.newCtl.toFixed(1)} TSS</p>
+                </div>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Change vs. Previous</h4>
+                  <p className="text-2xl font-bold text-primary">{result.delta >= 0 ? '+' : ''}{result.delta.toFixed(1)}</p>
+                </div>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Time Constant Used</h4>
+                  <p className="text-lg font-bold text-primary">{form.getValues('timeConstant') ?? 0} days</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader><CardTitle>Recommendations</CardTitle></CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader><CardTitle>Warning Signs</CardTitle></CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </div>
-          <div>
-            <label className="text-sm font-medium">Daily TSS</label>
-            <Input 
-              type="number" 
-              step="0.1"
-              value={dailyTSS}
-              onChange={(e) => setDailyTSS(e.target.value)}
-              placeholder="50"
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Time Constant (days)</label>
-            <Input 
-              type="number" 
-              value={timeConstant}
-              onChange={(e) => setTimeConstant(e.target.value)}
-              placeholder="42"
-            />
-          </div>
+
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Fitness Progression Plan</CardTitle></CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-        <Button onClick={calculateCTL}>Calculate CTL</Button>
-      </div>
-
-      {result !== null && (
-        <Card className="mt-8">
-          <CardHeader>
-            <div className="flex items-center gap-4">
-              <TrendingUp className="h-8 w-8 text-primary" />
-              <CardTitle>Chronic Training Load (CTL)</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="text-center space-y-4">
-              <p className="text-4xl font-bold">{result.toFixed(1)}</p>
-              <CardDescription>Training Stress Score (TSS)</CardDescription>
-            </div>
-          </CardContent>
-        </Card>
       )}
 
-      {result !== null && (
-        <Card className="mt-6">
-          <CardHeader>
-            <CardTitle>Results Interpretation & Recommendations</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {(() => {
-              if (result < 30) {
-                return (
-                  <div className="space-y-3">
-                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                      <h3 className="font-semibold text-blue-800 mb-2">Low Training Load (0-30 TSS)</h3>
-                      <p className="text-blue-700 text-sm mb-2">
-                        Your CTL indicates a base building or recovery phase. This is ideal for:
-                      </p>
-                      <ul className="text-blue-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Building aerobic foundation</li>
-                        <li>Recovery from intense training</li>
-                        <li>Injury prevention and rehabilitation</li>
-                        <li>Maintaining fitness during off-season</li>
-                      </ul>
-                    </div>
-                    <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <h3 className="font-semibold text-green-800 mb-2">Recommendations for Improvement:</h3>
-                      <ul className="text-green-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Gradually increase training volume by 5-10% weekly</li>
-                        <li>Focus on consistent, moderate-intensity sessions</li>
-                        <li>Include 2-3 longer endurance sessions per week</li>
-                        <li>Monitor recovery and adjust based on how you feel</li>
-                      </ul>
-                    </div>
-                  </div>
-                );
-              } else if (result < 50) {
-                return (
-                  <div className="space-y-3">
-                    <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <h3 className="font-semibold text-green-800 mb-2">Moderate Training Load (30-50 TSS)</h3>
-                      <p className="text-green-700 text-sm mb-2">
-                        Your CTL shows steady endurance development. This level is perfect for:
-                      </p>
-                      <ul className="text-green-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Sustainable training progression</li>
-                        <li>Building aerobic capacity</li>
-                        <li>Maintaining work-life balance</li>
-                        <li>Long-term fitness development</li>
-                      </ul>
-                    </div>
-                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                      <h3 className="font-semibold text-blue-800 mb-2">Recommendations for Improvement:</h3>
-                      <ul className="text-blue-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Add 1-2 higher intensity sessions per week</li>
-                        <li>Include tempo and threshold training</li>
-                        <li>Gradually increase weekly training volume</li>
-                        <li>Focus on technique and efficiency</li>
-                      </ul>
-                    </div>
-                  </div>
-                );
-              } else if (result < 70) {
-                return (
-                  <div className="space-y-3">
-                    <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                      <h3 className="font-semibold text-yellow-800 mb-2">High Training Load (50-70 TSS)</h3>
-                      <p className="text-yellow-700 text-sm mb-2">
-                        Your CTL indicates intense training phase. Monitor recovery closely:
-                      </p>
-                      <ul className="text-yellow-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Significant fitness gains possible</li>
-                        <li>Higher injury risk if not managed properly</li>
-                        <li>Requires excellent recovery practices</li>
-                        <li>Good for race preparation phases</li>
-                      </ul>
-                    </div>
-                    <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
-                      <h3 className="font-semibold text-orange-800 mb-2">Recommendations for Improvement:</h3>
-                      <ul className="text-orange-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Prioritize sleep (8+ hours nightly)</li>
-                        <li>Include active recovery sessions</li>
-                        <li>Monitor heart rate variability</li>
-                        <li>Plan recovery weeks every 3-4 weeks</li>
-                        <li>Consider nutrition and hydration optimization</li>
-                      </ul>
-                    </div>
-                  </div>
-                );
-              } else if (result < 90) {
-                return (
-                  <div className="space-y-3">
-                    <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
-                      <h3 className="font-semibold text-orange-800 mb-2">Very High Training Load (70-90 TSS)</h3>
-                      <p className="text-orange-700 text-sm mb-2">
-                        Your CTL shows peak training load. Ensure adequate recovery:
-                      </p>
-                      <ul className="text-orange-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Maximum training stress for elite athletes</li>
-                        <li>High risk of overtraining if sustained</li>
-                        <li>Requires professional monitoring</li>
-                        <li>Short-term peak performance phase</li>
-                      </ul>
-                    </div>
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <h3 className="font-semibold text-red-800 mb-2">Critical Recommendations:</h3>
-                      <ul className="text-red-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Schedule immediate recovery period</li>
-                        <li>Reduce training intensity by 20-30%</li>
-                        <li>Increase sleep to 9+ hours</li>
-                        <li>Consider professional coaching guidance</li>
-                        <li>Monitor for signs of overtraining syndrome</li>
-                      </ul>
-                    </div>
-                  </div>
-                );
-              } else {
-                return (
-                  <div className="space-y-3">
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <h3 className="font-semibold text-red-800 mb-2">Extreme Training Load (90+ TSS)</h3>
-                      <p className="text-red-700 text-sm mb-2">
-                        Your CTL indicates maximum training stress with high injury risk:
-                      </p>
-                      <ul className="text-red-700 text-sm list-disc ml-4 space-y-1">
-                        <li>Dangerous levels of training stress</li>
-                        <li>Very high risk of overtraining</li>
-                        <li>Increased injury and illness risk</li>
-                        <li>Performance decline likely</li>
-                      </ul>
-                    </div>
-                    <div className="p-4 bg-red-100 border border-red-300 rounded-lg">
-                      <h3 className="font-semibold text-red-900 mb-2">Immediate Action Required:</h3>
-                      <ul className="text-red-800 text-sm list-disc ml-4 space-y-1">
-                        <li>Stop intense training immediately</li>
-                        <li>Take 1-2 weeks complete rest</li>
-                        <li>Consult with sports medicine professional</li>
-                        <li>Focus on sleep, nutrition, and stress management</li>
-                        <li>Gradually return to training after recovery</li>
-                      </ul>
-                    </div>
-                  </div>
-                );
-              }
-            })()}
-          </CardContent>
-        </Card>
-      )}
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Ensure reliable CTL projections with accurate data</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Monitor complementary training load metrics</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/acute-training-load-calculator" className="text-primary hover:underline">Acute Training Load (ATL)</Link></h4>
+              <p className="text-sm text-muted-foreground">Understand short-term fatigue alongside long-term fitness.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/training-stress-score-calculator" className="text-primary hover:underline">Training Stress Score (TSS)</Link></h4>
+              <p className="text-sm text-muted-foreground">Daily TSS values feed CTL calculations—plan each workout accordingly.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/training-impulse-trimp-calculator" className="text-primary hover:underline">Training Impulse (TRIMP)</Link></h4>
+              <p className="text-sm text-muted-foreground">Heart-rate-based load metric to correlate with CTL trends.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4>
+              <p className="text-sm text-muted-foreground">Diagnose aerobic efficiency changes as CTL evolves.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Managing Long-Term Training Load</CardTitle>
+          <CardDescription>Use CTL to balance fitness and recovery</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>Chronic Training Load reflects the cumulative effect of your workouts. Tracking CTL helps athletes periodize training, minimize surprise fatigue, and align workload with competition schedules. Combine CTL with qualitative feedback—sleep quality, mood, appetite—and objective markers like heart rate variability for a comprehensive view of readiness.</p>
+          <p>Remember that CTL is a tool, not a goal. Deliberate rises followed by strategic recovery maintain performance momentum while protecting long-term health. Adjust CTL targets according to personal history, available training time, and life demands.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>CTL essentials for endurance planning</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -8,227 +8,367 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
-import { Sun } from 'lucide-react';
+import { Sun, Activity, Calendar, ShieldAlert } from 'lucide-react';
 
 const formSchema = z.object({
-  skinType: z.enum(['I','II','III','IV','V','VI']),
-  uvIndex: z.number().min(1).max(11),
-  exposedArea: z.number().min(5).max(100), // % of body
-  minutes: z.number().min(1).max(180),
+  skinType: z.enum(['I', 'II', 'III', 'IV', 'V', 'VI']).optional(),
+  uvIndex: z.number().min(1).max(12).optional(),
+  exposedArea: z.number().min(5).max(100).optional(),
+  minutes: z.number().min(1).max(180).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-function estimateVitaminDiu(values: FormValues): number {
-  // Highly approximate heuristic for educational purposes only
-  const skinFactor = { I: 1.0, II: 0.85, III: 0.7, IV: 0.55, V: 0.4, VI: 0.3 }[values.skinType];
-  const uvFactor = values.uvIndex / 10; // scale 0.1–1.1
-  const areaFactor = values.exposedArea / 25; // 25% ≈ baseline
-  const timeFactor = values.minutes / 15; // 15 min blocks
-  const baseIU = 1000; // baseline per block
-  return Math.round(baseIU * skinFactor * uvFactor * areaFactor * timeFactor);
-}
+type ResultPayload = {
+  estimatedIU: number;
+  exposureCategory: string;
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+};
+
+const skinFactorMap: Record<NonNullable<FormValues['skinType']>, number> = {
+  I: 1,
+  II: 0.85,
+  III: 0.7,
+  IV: 0.55,
+  V: 0.4,
+  VI: 0.3,
+};
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Track current sun exposure habits and note skin response (pinkness, burning).' },
+  { week: 2, focus: 'Add two controlled midday sessions per week based on calculator guidance.' },
+  { week: 3, focus: 'Introduce light exposure to additional skin areas while applying sunscreen after target time.' },
+  { week: 4, focus: 'Record Vitamin D-rich foods and evaluate supplementation with a professional if needed.' },
+  { week: 5, focus: 'Balance sun exposure with shade breaks and hydration on warmer days.' },
+  { week: 6, focus: 'Schedule dermatologist-approved skin check; review for new moles or changes.' },
+  { week: 7, focus: 'Adjust exposure for seasonal UV shifts using updated UV index forecasts.' },
+  { week: 8, focus: 'Review overall energy, mood, and lab values (if available) to fine-tune routine.' },
+];
+
+const faqs: [string, string][] = [
+  ['How accurate is this Vitamin D estimate?', 'The calculator provides an educational approximation based on UV index, skin type, and exposed area. Actual Vitamin D synthesis varies with factors like latitude, altitude, season, ozone, and individual biology.'],
+  ['What is the Fitzpatrick skin type scale?', 'It classifies skin tones (I–VI) based on how easily skin burns or tans. Type I burns very easily, while Type VI rarely burns. Selecting the correct type informs how quickly you may synthesize Vitamin D.'],
+  ['Does sunscreen block Vitamin D?', 'Broad-spectrum sunscreen (SPF 15+) can reduce UVB penetration by 90% or more. Apply sunscreen after you have met your target exposure to balance Vitamin D production and skin protection.'],
+  ['Can I get Vitamin D through windows?', 'No. Window glass blocks nearly all UVB rays needed for Vitamin D synthesis. You must receive direct outdoor sunlight, ideally when your shadow is shorter than your height.'],
+  ['Is midday sun really the best time?', 'Midday (10 a.m. – 2 p.m.) delivers the strongest UVB rays, meaning shorter exposure times generate more Vitamin D. Limit sessions to avoid burning and follow sun-safe practices.'],
+  ['How do clouds or pollution affect results?', 'Cloud cover, smog, and high humidity scatter or absorb UVB rays, reducing Vitamin D production. On overcast days you may need longer exposure or supplementation.'],
+  ['Do darker skin tones need more sun?', 'Yes. Higher melanin levels reduce UVB penetration, so darker skin types typically require longer exposure to produce the same Vitamin D as lighter skin.'],
+  ['Should I rely solely on sunlight for Vitamin D?', 'Not necessarily. Diet (fatty fish, fortified dairy) and supplements can help, especially in winter or in regions with low UV. Consult healthcare providers for lab testing and guidance.'],
+  ['Can I overdose on Vitamin D from sunlight?', 'Your skin’s production self-regulates; it stops synthesizing Vitamin D once enough previtamin D3 accumulates. However, excessive sun increases burn and skin cancer risk, so practice moderation.'],
+  ['How often should I recalculate exposure?', 'Update inputs whenever the season, latitude, UV index, or skin coverage changes. Reassessing every few weeks keeps your plan aligned with real-world conditions.'],
+];
+
+const understandingInputs = [
+  { label: 'Skin Type (Fitzpatrick)', description: 'Select the option that best matches how easily your skin burns or tans. This influences how rapidly you synthesize Vitamin D.' },
+  { label: 'UV Index', description: 'Use the local UV index forecast (1–12). Higher values signify stronger UVB rays and faster Vitamin D production.' },
+  { label: 'Exposed Skin (%)', description: 'Estimate the percentage of skin uncovered (e.g., face & arms ≈ 20–25%). Larger exposed areas generate more Vitamin D.' },
+  { label: 'Minutes Outdoors', description: 'Enter the uninterrupted outdoor exposure duration without high-SPF sunscreen. Remain vigilant for any early signs of burning.' },
+];
+
+const warningSigns = () => [
+  'Never exceed the point where skin begins to redden or feel hot—sunburn dramatically increases skin cancer risk.',
+  'Individuals with a history of skin cancer, photosensitivity disorders, or on photosensitizing medications must consult healthcare providers before adjusting sun exposure.',
+  'Infants under six months should avoid direct sunlight; use protective clothing and shade instead.',
+];
+
+const recommendations = (exposureCategory: string) => {
+  const base = [
+    'Apply broad-spectrum sunscreen immediately after reaching your planned sun dose.',
+    'Hydrate adequately, especially in warm climates or during longer outdoor sessions.',
+    'Complement sun exposure with dietary Vitamin D sources such as fatty fish, eggs, or fortified foods.',
+  ];
+
+  if (exposureCategory === 'Minimal') {
+    return [
+      ...base,
+      'Consider increasing exposure time gradually by 2–3 minutes while monitoring skin response.',
+      'If UV index is consistently low, discuss supplementation with a healthcare provider.',
+    ];
+  }
+
+  if (exposureCategory === 'Balanced') {
+    return [
+      ...base,
+      'Maintain current routine and track seasonal UV index changes.',
+      'Rotate body position to distribute UV exposure evenly and reduce localized burns.',
+    ];
+  }
+
+  return [
+    ...base,
+    'Limit sessions to avoid overexposure; split time into shorter intervals if necessary.',
+    'Use protective clothing, hats, and shade breaks once target Vitamin D exposure is achieved.',
+  ];
+};
+
+const interpretExposure = (estimatedIU: number) => {
+  if (estimatedIU < 600) {
+    return { category: 'Minimal', message: 'Sun exposure likely produced a modest Vitamin D dose. Increase exposure carefully or supplement as advised.' };
+  }
+  if (estimatedIU < 1500) {
+    return { category: 'Balanced', message: 'Exposure falls within a commonly recommended range for supporting Vitamin D status while minimizing burn risk.' };
+  }
+  return { category: 'High', message: 'Sunlight dose appears substantial. Ensure you are not approaching burn thresholds and plan ample recovery days.' };
+};
+
+const calculateVitaminD = (values: FormValues) => {
+  if (!values.skinType || !values.uvIndex || !values.exposedArea || !values.minutes) return null;
+
+  const skinFactor = skinFactorMap[values.skinType];
+  const uvFactor = values.uvIndex / 10;
+  const areaFactor = values.exposedArea / 25;
+  const timeFactor = values.minutes / 15;
+  const estimatedIU = Math.round(1000 * skinFactor * uvFactor * areaFactor * timeFactor);
+
+  const exposure = interpretExposure(estimatedIU);
+
+  return {
+    estimatedIU,
+    exposureCategory: exposure.category,
+    interpretation: exposure.message,
+    recommendations: recommendations(exposure.category),
+    warningSigns: warningSigns(),
+    plan: plan(),
+  } satisfies ResultPayload;
+};
 
 export default function VitaminDSunExposureCalculator() {
-  const [result, setResult] = useState<number | null>(null);
-  const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { skinType: undefined as unknown as 'I', uvIndex: undefined, exposedArea: undefined, minutes: undefined } });
-  const onSubmit = (v: FormValues) => setResult(estimateVitaminDiu(v));
+  const [result, setResult] = useState<ResultPayload | null>(null);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      skinType: undefined,
+      uvIndex: undefined,
+      exposedArea: undefined,
+      minutes: undefined,
+    },
+  });
+
+  const onSubmit = (values: FormValues) => {
+    const calc = calculateVitaminD(values);
+    if (!calc) {
+      setResult(null);
+      return;
+    }
+    setResult(calc);
+  };
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="skinType" render={({ field }) => (
-              <FormItem><FormLabel>Skin Type (Fitzpatrick)</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent>{['I','II','III','IV','V','VI'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent></Select></FormItem>
-            )} />
-            <FormField control={form.control} name="uvIndex" render={({ field }) => (
-              <FormItem><FormLabel>UV Index (1–11)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="exposedArea" render={({ field }) => (
-              <FormItem><FormLabel>Exposed Skin (% body)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="minutes" render={({ field }) => (
-              <FormItem><FormLabel>Exposure Time (minutes)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Sun className="h-5 w-5" /> Vitamin D Sun Exposure Calculator</CardTitle>
+          <CardDescription>Estimate Vitamin D production from sunlight based on skin type, UV index, exposed area, and time outdoors.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="skinType" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Skin Type (Fitzpatrick)</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select skin type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="I">Type I – Very fair, always burns</SelectItem>
+                        <SelectItem value="II">Type II – Fair, usually burns</SelectItem>
+                        <SelectItem value="III">Type III – Medium, sometimes burns</SelectItem>
+                        <SelectItem value="IV">Type IV – Olive, rarely burns</SelectItem>
+                        <SelectItem value="V">Type V – Brown, very rarely burns</SelectItem>
+                        <SelectItem value="VI">Type VI – Dark brown/black, almost never burns</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="uvIndex" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>UV Index (1–12)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.1" placeholder="e.g., 7" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="exposedArea" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Exposed Skin (% of body)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" placeholder="e.g., 30" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="minutes" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Exposure Time (minutes)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" placeholder="e.g., 12" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Estimate Vitamin D Production</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+
+      {result && (
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4"><Activity className="h-8 w-8 text-primary" /><CardTitle>Vitamin D Exposure Summary</CardTitle></div>
+              <CardDescription>Approximate synthesis for the provided session</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Estimated Vitamin D</h4>
+                  <p className="text-2xl font-bold text-primary">{result.estimatedIU.toLocaleString()} IU</p>
+                </div>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Exposure Category</h4>
+                  <p className="text-lg font-bold text-primary">{result.exposureCategory}</p>
+                </div>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Session Length</h4>
+                  <p className="text-lg font-bold text-primary">{form.getValues('minutes') ?? 0} minutes</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader><CardTitle>Recommendations</CardTitle></CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader><CardTitle>Warning Signs & Precautions</CardTitle></CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </div>
-          <Button type="submit">Estimate Vitamin D (IU)</Button>
-        </form>
-      </Form>
-      {result !== null && (
-        <Card className="mt-8">
-          <CardHeader><div className='flex items-center gap-4'><Sun className="h-8 w-8 text-primary" /><CardTitle>Estimated Vitamin D</CardTitle></div></CardHeader>
-          <CardContent>
-            <div className="text-center space-y-2">
-              <p className="text-4xl font-bold">{result.toLocaleString()} IU</p>
-              <CardDescription>Very rough estimate for educational purposes. Use sun protection and follow medical guidance.</CardDescription>
-            </div>
-          </CardContent>
-        </Card>
+
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Sunlight Strategy</CardTitle></CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       )}
-      <VitaminDGuide />
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate data for safe and effective sun exposure</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Build a comprehensive nutrient and wellness strategy</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/calcium-intake-calculator" className="text-primary hover:underline">Calcium Intake Calculator</Link></h4>
+              <p className="text-sm text-muted-foreground">Ensure strong bones by pairing Vitamin D with adequate calcium.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/magnesium-intake-calculator" className="text-primary hover:underline">Magnesium Intake Calculator</Link></h4>
+              <p className="text-sm text-muted-foreground">Support Vitamin D metabolism with optimal magnesium levels.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/neat-calculator" className="text-primary hover:underline">NEAT (Daily Movement) Calculator</Link></h4>
+              <p className="text-sm text-muted-foreground">Track non-exercise activity that complements outdoor time.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/liver-fat-nafld-risk-calculator" className="text-primary hover:underline">Liver Fat (NAFLD) Risk Calculator</Link></h4>
+              <p className="text-sm text-muted-foreground">Monitor metabolic health factors that interact with Vitamin D status.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Safe Sun Exposure for Vitamin D</CardTitle>
+          <CardDescription>Key concepts for balancing Vitamin D benefits and sun safety</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>Vitamin D is essential for bone health, immune function, and mood regulation. Sun exposure remains the most efficient natural source, yet it must be balanced with diligent skin protection. Focus on short, controlled midday sessions, cover or protect skin after reaching your target dose, and combine lifestyle strategies like diet and supplementation as recommended by healthcare professionals.</p>
+          <p>Keep detailed notes on how your skin responds to different UV index values, adjust for seasonal changes, and schedule routine skin checks. Remember that Vitamin D requirements vary with age, medical history, and geographic location, so personalize your plan with professional guidance whenever possible.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Sunlight, Vitamin D, and safety basics</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
-  );
-}
-
-export function VitaminDGuide() {
-  return (
-    <section
-  className="space-y-4 text-muted-foreground leading-relaxed"
-  itemScope
-  itemType="https://schema.org/Article"
->
-  <meta
-    itemProp="headline"
-    content="Vitamin D Sun Exposure Calculator – Optimal Sunlight Duration by Skin Type, Location & Time of Day"
-  />
-  <meta itemProp="author" content="MegaCalc Hub Team" />
-  <meta
-    itemProp="about"
-    content="Use this Vitamin D Sun Exposure Calculator to find how much sunlight you need daily based on your skin tone, latitude, season, and time of day. Learn how UV index, sunscreen, and clothing affect Vitamin D synthesis and tips for safe sun exposure."
-  />
-
-  <h2 itemProp="name" className="text-xl font-bold text-foreground">
-    Vitamin D Sun Exposure Calculator – Find Your Optimal Sunlight Time
-  </h2>
-  <p itemProp="description">
-    Vitamin D, often called the “sunshine vitamin,” is crucial for <strong>bone strength, immunity, and hormone regulation</strong>.  
-    Your skin naturally makes Vitamin D when exposed to UVB rays from sunlight — but how much exposure you need depends on multiple factors like <strong>skin type, latitude, season, time of day, and clothing coverage</strong>.  
-    The <strong>Vitamin D Sun Exposure Calculator</strong> estimates your ideal daily sunlight duration for healthy Vitamin D levels while minimizing the risk of sunburn.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">What Is Vitamin D and Why It Matters</h3>
-  <p>
-    Vitamin D isn’t just a vitamin — it acts as a <strong>hormone that regulates calcium absorption</strong> and supports your immune system, muscles, and brain.  
-    Deficiency has been linked to <strong>osteoporosis, fatigue, mood issues, and weakened immunity</strong>.  
-    While food and supplements can provide Vitamin D, <strong>sunlight exposure is the body’s most natural source</strong>.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">How the Calculator Works</h3>
-  <ol className="list-decimal ml-6 space-y-1">
-    <li>Select your <strong>skin tone (Fitzpatrick scale type I–VI)</strong> — lighter skin needs less time; darker skin needs more.</li>
-    <li>Choose your <strong>location or latitude</strong>.</li>
-    <li>Pick the <strong>time of day</strong> and <strong>month/season</strong>.</li>
-    <li>Indicate clothing coverage (e.g., face and arms exposed, or full body).</li>
-    <li>The calculator estimates your <strong>ideal sun exposure duration</strong> to produce 1000–2000 IU of Vitamin D naturally.</li>
-  </ol>
-
-  <h3 className="font-semibold text-foreground mt-6">The Science Behind Sunlight and Vitamin D</h3>
-  <p>
-    When UVB photons hit your skin, they convert <strong>7-dehydrocholesterol</strong> into <strong>cholecalciferol (Vitamin D₃)</strong>.  
-    Your liver and kidneys then convert it into the active form, <strong>calcitriol</strong>, which regulates calcium metabolism and immune responses.  
-    Factors like latitude, season, pollution, and sunscreen can reduce UVB exposure and hence Vitamin D synthesis.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">Factors Affecting Vitamin D Synthesis</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li><strong>Skin tone:</strong> Darker skin (more melanin) blocks more UVB and requires longer exposure.</li>
-    <li><strong>Latitude:</strong> The farther from the equator, the weaker the UVB intensity — especially in winter.</li>
-    <li><strong>Season and time of day:</strong> Midday (10 AM – 2 PM) provides the strongest UVB rays for Vitamin D production.</li>
-    <li><strong>Clothing and sunscreen:</strong> Covering skin or using SPF {'>'} 15 blocks most UVB rays, reducing synthesis.</li>
-    <li><strong>Altitude and pollution:</strong> Higher altitudes yield stronger UVB; pollution scatters and absorbs it.</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">Approximate Sun Exposure Guidelines</h3>
-  <table className="w-full border border-border text-sm">
-    <thead className="bg-muted text-foreground font-semibold">
-      <tr>
-        <th className="p-2 text-left">Skin Type</th>
-        <th className="p-2 text-right">UV Index 6–8 (Summer Midday)</th>
-        <th className="p-2 text-right">UV Index 3–5 (Spring/Fall)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td className="p-2">Type I (Very Fair)</td><td className="p-2 text-right">5–10 min</td><td className="p-2 text-right">10–15 min</td></tr>
-      <tr><td className="p-2">Type II (Fair)</td><td className="p-2 text-right">10–15 min</td><td className="p-2 text-right">15–20 min</td></tr>
-      <tr><td className="p-2">Type III (Light-Medium)</td><td className="p-2 text-right">15–20 min</td><td className="p-2 text-right">20–25 min</td></tr>
-      <tr><td className="p-2">Type IV (Medium-Tan)</td><td className="p-2 text-right">20–25 min</td><td className="p-2 text-right">25–30 min</td></tr>
-      <tr><td className="p-2">Type V (Brown)</td><td className="p-2 text-right">30–40 min</td><td className="p-2 text-right">40–50 min</td></tr>
-      <tr><td className="p-2">Type VI (Dark Brown/Black)</td><td className="p-2 text-right">40–60 min</td><td className="p-2 text-right">60–75 min</td></tr>
-    </tbody>
-  </table>
-  <p className="text-sm italic mt-2">
-    *Assumes 25–30% body exposure (face, arms, legs). Overexposure increases risk of burns — always follow safe sun practices.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">Best Time for Vitamin D</h3>
-  <p>
-    The optimal time for Vitamin D synthesis is when your shadow is shorter than your height — typically between <strong>10 AM and 2 PM</strong>.  
-    Morning or late-afternoon sunlight provides minimal UVB.  
-    2–3 short sessions per week are often sufficient for maintaining adequate Vitamin D, but individual needs vary by location and season.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">Signs of Vitamin D Deficiency</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>Frequent illness or low immunity</li>
-    <li>Fatigue, muscle weakness, or bone pain</li>
-    <li>Low mood or seasonal depression</li>
-    <li>Poor wound healing</li>
-    <li>Hair loss or brittle bones</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">Food and Supplement Sources of Vitamin D</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li><strong>Fatty fish:</strong> salmon, mackerel, sardines</li>
-    <li><strong>Egg yolks</strong> and <strong>fortified milk or plant milks</strong></li>
-    <li><strong>Cod liver oil</strong> (richest natural source)</li>
-    <li><strong>Vitamin D3 supplements</strong> (cholecalciferol) — better absorbed than D2</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">How the Calculator Estimates Exposure</h3>
-  <p>
-    The calculator combines your <strong>latitude, date, and skin phototype</strong> with <strong>NOAA solar radiation data</strong> and <strong>UV index forecasts</strong> to estimate how much sun exposure is needed to produce 1000–2000 IU of Vitamin D.  
-    It assumes midday UV intensity and accounts for clothing coverage and SPF use.
-  </p>
-
-  <h3 className="font-semibold text-foreground mt-6">Safe Sun Practices</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>Never allow skin to burn; stop exposure when skin turns slightly pink (for fair tones).</li>
-    <li>Balance sun exposure with protection — use shade, hats, and SPF after reaching Vitamin D target time.</li>
-    <li>For long outdoor periods, use <strong>SPF 30+</strong> and reapply every 2 hours.</li>
-    <li>Infants under 6 months should avoid direct sunlight.</li>
-    <li>In low-UV regions or winter, consider <strong>supplementation under medical advice</strong>.</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">Vitamin D and Health Benefits</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li><strong>Bone and teeth health:</strong> Improves calcium and phosphorus absorption.</li>
-    <li><strong>Immunity:</strong> Supports white blood cell activity and anti-inflammatory functions.</li>
-    <li><strong>Mood regulation:</strong> Low Vitamin D is linked to seasonal depression (SAD).</li>
-    <li><strong>Hormone balance:</strong> Plays roles in testosterone, estrogen, and thyroid regulation.</li>
-    <li><strong>Metabolic health:</strong> May improve insulin sensitivity and muscle strength.</li>
-  </ul>
-
-  <h3 className="font-semibold text-foreground mt-6">FAQ</h3>
-  <div className="space-y-3">
-    <p><strong>Can I get Vitamin D through a window?</strong> No, glass blocks nearly all UVB rays, so Vitamin D synthesis doesn’t occur indoors.</p>
-    <p><strong>Does sunscreen stop Vitamin D production?</strong> High SPF can reduce UVB absorption by 90%+, but brief unprotected exposure is usually enough.</p>
-    <p><strong>Can I overdose on sunlight Vitamin D?</strong> No — your body self-regulates production, but overexposure increases skin damage risk.</p>
-    <p><strong>Is sun exposure enough in winter?</strong> In northern regions, UVB is too weak; supplements or fortified foods are needed.</p>
-    <p><strong>Do darker skin tones need supplements?</strong> Possibly — especially at high latitudes or with limited outdoor time.</p>
-  </div>
-
-  <h3 className="font-semibold text-foreground mt-6">Related Calculators</h3>
-  <div className="space-y-2">
-    <p><Link href="/category/health-fitness/calcium-intake-calculator" className="text-primary underline">Calcium Intake Calculator</Link></p>
-    <p><Link href="/category/health-fitness/magnesium-intake-calculator" className="text-primary underline">Magnesium Intake Calculator</Link></p>
-    <p><Link href="/category/health-fitness/zinc-requirement-calculator" className="text-primary underline">Zinc Requirement Calculator</Link></p>
-  </div>
-
-  <h3 className="font-semibold text-foreground mt-6">Quick Takeaways</h3>
-  <ul className="list-disc ml-6 space-y-1">
-    <li>Midday sun is the most efficient for Vitamin D production.</li>
-    <li>Skin tone, latitude, and season strongly influence required exposure.</li>
-    <li>Sunlight through windows doesn’t count.</li>
-    <li>Balance Vitamin D goals with sun safety.</li>
-    <li>In winter, fortified foods or D3 supplements can help maintain levels.</li>
-  </ul>
-
-  <p className="italic mt-4">
-    Disclaimer: This tool is for educational and wellness purposes only. Sun exposure should be practiced safely and balanced with skin protection. Consult your healthcare provider before taking Vitamin D supplements or making major sun exposure changes.
-  </p>
-</section>
   );
 }
