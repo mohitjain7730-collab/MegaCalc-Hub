@@ -9,10 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Ruler, Target, AlertTriangle, CheckCircle } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Ruler, Activity, Calendar, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
-import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
   gender: z.enum(['male', 'female']),
@@ -27,76 +25,184 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const calculateIdealWaist = (values: FormValues) => {
-  // Convert to metric if needed
+type ResultPayload = {
+  idealWaist: number;
+  maxWaist: number;
+  currentWaist: number;
+  difference: number;
+  differencePercent: number;
+  status: 'optimal' | 'elevated' | 'high_risk';
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+};
+
+const understandingInputs = [
+  {
+    label: 'Gender',
+    description: 'Men and women have different ideal waist-to-height ratios due to body composition differences.',
+  },
+  {
+    label: 'Height',
+    description: 'Ideal waist size is calculated as a percentage of your height, making it proportional to your body frame.',
+  },
+  {
+    label: 'Current Waist Circumference',
+    description: 'Measure at the narrowest point between your ribs and hips, or at the navel if no narrow point exists. Stand straight and measure after exhaling.',
+  },
+  {
+    label: 'Ethnicity',
+    description: 'Different ethnic groups have varying body compositions and metabolic risk factors, which influence ideal waist-to-height ratios.',
+  },
+  {
+    label: 'Activity Level',
+    description: 'Physical activity level helps contextualize recommendations for maintaining or improving waist circumference.',
+  },
+];
+
+const faqs: [string, string][] = [
+  [
+    'What is the ideal waist size for my height?',
+    'Ideal waist circumference is typically 40–45% of height for women and 42–45% for men, with slight variations by ethnicity. Asian populations may have lower thresholds (40–42% for women, 42% for men).',
+  ],
+  [
+    'Why is waist size more important than BMI?',
+    'Waist circumference directly measures abdominal fat (visceral fat), which is more strongly linked to metabolic disease, insulin resistance, and cardiovascular risk than overall body weight.',
+  ],
+  [
+    'How do I measure my waist accurately?',
+    'Use a flexible measuring tape at the narrowest point between your ribs and hips. If no narrow point exists, measure at the navel level. Stand straight, breathe normally, and measure after exhaling.',
+  ],
+  [
+    'What waist size indicates health risk?',
+    'Waist circumferences exceeding 50–53% of height for men and 48–51% for women indicate elevated cardiovascular and metabolic disease risk, especially when combined with other risk factors.',
+  ],
+  [
+    'Can I reduce my waist size through exercise alone?',
+    'Exercise helps, but reducing waist size requires a combination of calorie deficit, strength training (especially core work), cardiovascular exercise, and dietary changes to reduce abdominal fat.',
+  ],
+  [
+    'How quickly can I reduce my waist circumference?',
+    'Healthy waist reduction typically occurs at 0.5–1 inch (1–2.5 cm) per month with consistent diet and exercise. Rapid loss may reflect water weight rather than fat loss.',
+  ],
+  [
+    'Does age affect ideal waist size?',
+    'While the waist-to-height ratio remains consistent, older adults may have slightly different body composition. Focus on maintaining waist circumference within healthy ranges regardless of age.',
+  ],
+  [
+    'Are there gender differences in waist size recommendations?',
+    'Yes. Women typically have slightly lower ideal waist-to-height ratios (40–43%) compared to men (42–45%) due to differences in body fat distribution and metabolic risk thresholds.',
+  ],
+  [
+    'What if my waist size is below the ideal range?',
+    'Very low waist circumference may indicate underweight or muscle loss. Consult a healthcare provider if your waist is significantly below ideal ranges, especially if accompanied by other health concerns.',
+  ],
+  [
+    'How often should I measure my waist?',
+    'Measure monthly under consistent conditions (same time of day, same location). Daily fluctuations are normal; focus on trends over weeks and months rather than day-to-day changes.',
+  ],
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Establish baseline: measure waist circumference accurately and track current diet and activity patterns.' },
+  { week: 2, focus: 'Introduce 150 minutes of moderate-intensity cardio per week and reduce processed foods and added sugars.' },
+  { week: 3, focus: 'Add strength training 2–3 times per week, focusing on core exercises and full-body movements.' },
+  { week: 4, focus: 'Increase fiber intake to 25–30 g daily and prioritize whole foods over processed options.' },
+  { week: 5, focus: 'Implement portion control strategies and practice mindful eating to reduce overall calorie intake.' },
+  { week: 6, focus: 'Reassess waist measurement and adjust exercise intensity or dietary approach based on progress.' },
+  { week: 7, focus: 'Focus on stress management and sleep quality, as both influence abdominal fat accumulation.' },
+  { week: 8, focus: 'Establish long-term maintenance habits: continue regular measurements and sustainable lifestyle changes.' },
+];
+
+const warningSigns = () => [
+  'Waist circumference exceeding 50–53% of height significantly increases risk of type 2 diabetes, cardiovascular disease, and metabolic syndrome.',
+  'Rapid waist size increases may indicate fluid retention, hormonal changes, or underlying health conditions—consult a healthcare provider.',
+  'Combining large waist size with high blood pressure, elevated blood sugar, or abnormal cholesterol requires medical evaluation.',
+];
+
+const calculateIdealWaist = (values: FormValues): ResultPayload => {
   let heightCm = values.height;
   let weightKg = values.weight;
-  
+
   if (values.unit === 'imperial') {
     heightCm = values.height * 2.54;
     weightKg = values.weight * 0.453592;
   }
 
-  // Calculate BMI
   const bmi = weightKg / ((heightCm / 100) ** 2);
-  
-  // Ideal waist circumference based on gender and ethnicity
-  let idealWaistCm;
-  let maxWaistCm;
-  
+
+  let idealWaistCm: number;
+  let maxWaistCm: number;
+
   if (values.gender === 'male') {
     if (values.ethnicity === 'asian') {
-      idealWaistCm = heightCm * 0.42; // 42% of height for Asian men
-      maxWaistCm = heightCm * 0.50; // 50% of height for Asian men
+      idealWaistCm = heightCm * 0.42;
+      maxWaistCm = heightCm * 0.50;
     } else {
-      idealWaistCm = heightCm * 0.45; // 45% of height for other men
-      maxWaistCm = heightCm * 0.53; // 53% of height for other men
+      idealWaistCm = heightCm * 0.45;
+      maxWaistCm = heightCm * 0.53;
     }
   } else {
     if (values.ethnicity === 'asian') {
-      idealWaistCm = heightCm * 0.40; // 40% of height for Asian women
-      maxWaistCm = heightCm * 0.48; // 48% of height for Asian women
+      idealWaistCm = heightCm * 0.40;
+      maxWaistCm = heightCm * 0.48;
     } else {
-      idealWaistCm = heightCm * 0.43; // 43% of height for other women
-      maxWaistCm = heightCm * 0.51; // 51% of height for other women
+      idealWaistCm = heightCm * 0.43;
+      maxWaistCm = heightCm * 0.51;
     }
   }
 
-  // Convert back to user's preferred unit
   let idealWaist = idealWaistCm;
   let maxWaist = maxWaistCm;
   let currentWaistCm = values.currentWaist;
-  
+
   if (values.unit === 'imperial') {
     idealWaist = idealWaistCm / 2.54;
     maxWaist = maxWaistCm / 2.54;
     currentWaistCm = values.currentWaist * 2.54;
   }
 
-  // Determine status
-  let status = 'optimal';
-  let statusColor = 'text-green-600';
-  let bgColor = 'bg-green-50';
-  let borderColor = 'border-green-200';
-  let icon = CheckCircle;
-  
+  let status: 'optimal' | 'elevated' | 'high_risk' = 'optimal';
+  let interpretation = 'Your waist circumference is within the healthy range for your height and gender. Maintain your current lifestyle to preserve this status.';
+
   if (currentWaistCm > maxWaistCm) {
     status = 'high_risk';
-    statusColor = 'text-red-600';
-    bgColor = 'bg-red-50';
-    borderColor = 'border-red-200';
-    icon = AlertTriangle;
+    interpretation =
+      'Your waist circumference indicates high risk for metabolic and cardiovascular diseases. Immediate lifestyle changes and consultation with a healthcare provider are recommended.';
   } else if (currentWaistCm > idealWaistCm * 1.1) {
     status = 'elevated';
-    statusColor = 'text-orange-600';
-    bgColor = 'bg-orange-50';
-    borderColor = 'border-orange-200';
-    icon = AlertTriangle;
+    interpretation =
+      'Your waist circumference is above the ideal range and may increase health risks. Moderate lifestyle modifications are suggested to reduce abdominal fat.';
   }
 
-  // Calculate difference
   const difference = values.currentWaist - idealWaist;
   const differencePercent = ((values.currentWaist - idealWaist) / idealWaist) * 100;
+
+  const recommendations: string[] = [];
+  if (status === 'high_risk') {
+    recommendations.push('Immediate lifestyle changes recommended—consult with a healthcare provider for a personalized plan.');
+    recommendations.push('Focus on reducing abdominal fat through a combination of diet modification and regular exercise.');
+    recommendations.push('Prioritize whole foods, reduce processed foods, and aim for a moderate calorie deficit.');
+  } else if (status === 'elevated') {
+    recommendations.push('Moderate lifestyle modifications suggested to bring waist size into the ideal range.');
+    recommendations.push('Increase physical activity, especially core-strengthening and cardiovascular exercises.');
+    recommendations.push('Monitor waist circumference monthly and track progress toward your ideal size.');
+  } else {
+    recommendations.push('Maintain your current healthy lifestyle and continue regular exercise and balanced diet.');
+    recommendations.push('Monitor waist size periodically to prevent future increases.');
+    recommendations.push('Continue strength training and cardiovascular exercise to preserve muscle mass and metabolic health.');
+  }
+
+  if (difference > 0) {
+    recommendations.push(
+      `Aim to reduce waist circumference by approximately ${Math.abs(difference).toFixed(1)} ${values.unit === 'imperial' ? 'inches' : 'cm'} to reach the ideal range.`,
+    );
+  }
+
+  if (values.activityLevel === 'sedentary') {
+    recommendations.push('Increase daily physical activity—aim for at least 150 minutes of moderate-intensity exercise per week.');
+  }
 
   return {
     idealWaist,
@@ -105,46 +211,15 @@ const calculateIdealWaist = (values: FormValues) => {
     difference,
     differencePercent,
     status,
-    statusColor,
-    bgColor,
-    borderColor,
-    icon,
-    bmi,
-    heightCm,
-    weightKg
+    interpretation,
+    recommendations,
+    warningSigns: warningSigns(),
+    plan: plan(),
   };
 };
 
-const getRecommendations = (result: ReturnType<typeof calculateIdealWaist>, values: FormValues) => {
-  const recommendations = [];
-  
-  if (result.status === 'high_risk') {
-    recommendations.push('Immediate lifestyle changes recommended');
-    recommendations.push('Consult with healthcare provider for personalized plan');
-    recommendations.push('Focus on reducing abdominal fat through diet and exercise');
-  } else if (result.status === 'elevated') {
-    recommendations.push('Moderate lifestyle modifications suggested');
-    recommendations.push('Increase physical activity, especially core exercises');
-    recommendations.push('Monitor waist circumference monthly');
-  } else {
-    recommendations.push('Maintain current healthy lifestyle');
-    recommendations.push('Continue regular exercise and balanced diet');
-    recommendations.push('Monitor waist size to prevent future increases');
-  }
-
-  if (result.difference > 0) {
-    recommendations.push(`Aim to reduce waist circumference by ${Math.abs(result.difference).toFixed(1)} ${values.unit === 'imperial' ? 'inches' : 'cm'}`);
-  }
-
-  if (values.activityLevel === 'sedentary') {
-    recommendations.push('Increase daily physical activity');
-  }
-
-  return recommendations;
-};
-
 export default function IdealWaistSizeCalculator() {
-  const [result, setResult] = useState<ReturnType<typeof calculateIdealWaist> | null>(null);
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -161,306 +236,344 @@ export default function IdealWaistSizeCalculator() {
   });
 
   const onSubmit = (values: FormValues) => {
-    const calculation = calculateIdealWaist(values);
-    setResult(calculation);
+    setResult(calculateIdealWaist(values));
   };
 
   const unit = form.watch('unit');
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="gender" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Gender</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select gender" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="age" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Age (years)</FormLabel>
-                <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
-
-          <FormField control={form.control} name="unit" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Unit System</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select unit system" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="metric">Metric (cm, kg)</SelectItem>
-                  <SelectItem value="imperial">Imperial (inches, lbs)</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )} />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="height" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Height ({unit === 'metric' ? 'cm' : 'inches'})</FormLabel>
-                <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="weight" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Weight ({unit === 'metric' ? 'kg' : 'lbs'})</FormLabel>
-                <FormControl>
-                  <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
-
-          <FormField control={form.control} name="currentWaist" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Current Waist Circumference ({unit === 'metric' ? 'cm' : 'inches'})</FormLabel>
-              <FormControl>
-                <Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )} />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="ethnicity" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Ethnicity</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select ethnicity" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="caucasian">Caucasian</SelectItem>
-                    <SelectItem value="asian">Asian</SelectItem>
-                    <SelectItem value="african">African</SelectItem>
-                    <SelectItem value="hispanic">Hispanic</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )} />
-            
-            <FormField control={form.control} name="activityLevel" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Activity Level</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select activity level" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="sedentary">Sedentary</SelectItem>
-                    <SelectItem value="light">Light Activity</SelectItem>
-                    <SelectItem value="moderate">Moderate Activity</SelectItem>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="very_active">Very Active</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
-
-          <Button type="submit" className="w-full">
-            <Ruler className="mr-2 h-4 w-4" />
-            Calculate Ideal Waist Size
-          </Button>
-        </form>
-      </Form>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Ruler className="h-5 w-5" /> Ideal Waist Size Calculator</CardTitle>
+          <CardDescription>Calculate your ideal waist circumference based on height, gender, and ethnicity to assess metabolic health risk.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="gender" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Gender</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select gender" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="male">Male</SelectItem>
+                        <SelectItem value="female">Female</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="age" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Age (years)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="unit" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Unit System</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select unit system" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="metric">Metric (cm, kg)</SelectItem>
+                        <SelectItem value="imperial">Imperial (inches, lbs)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="height" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Height ({unit === 'metric' ? 'cm' : 'inches'})</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="weight" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Weight ({unit === 'metric' ? 'kg' : 'lbs'})</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="currentWaist" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Current Waist Circumference ({unit === 'metric' ? 'cm' : 'inches'})</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="ethnicity" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Ethnicity</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select ethnicity" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="caucasian">Caucasian</SelectItem>
+                        <SelectItem value="asian">Asian</SelectItem>
+                        <SelectItem value="african">African</SelectItem>
+                        <SelectItem value="hispanic">Hispanic</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="activityLevel" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Activity Level</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select activity level" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="sedentary">Sedentary</SelectItem>
+                        <SelectItem value="light">Light Activity</SelectItem>
+                        <SelectItem value="moderate">Moderate Activity</SelectItem>
+                        <SelectItem value="active">Active</SelectItem>
+                        <SelectItem value="very_active">Very Active</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Calculate Ideal Waist Size</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <result.icon className={`h-5 w-5 ${result.statusColor}`} />
-              Waist Size Analysis
-            </CardTitle>
-            <CardDescription>
-              Your waist circumference analysis and recommendations
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className={`p-4 rounded-lg border ${result.bgColor} ${result.borderColor}`}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div>
-                  <p className="text-sm text-muted-foreground">Current Waist</p>
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4"><Activity className="h-8 w-8 text-primary" /><CardTitle>Waist Size Analysis</CardTitle></div>
+              <CardDescription>Your waist circumference assessment and health risk evaluation</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Current Waist</h4>
                   <p className="text-2xl font-bold">{result.currentWaist.toFixed(1)} {unit === 'metric' ? 'cm' : 'in'}</p>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Ideal Waist</p>
-                  <p className="text-2xl font-bold text-green-600">{result.idealWaist.toFixed(1)} {unit === 'metric' ? 'cm' : 'in'}</p>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Ideal Waist</h4>
+                  <p className="text-2xl font-bold text-primary">{result.idealWaist.toFixed(1)} {unit === 'metric' ? 'cm' : 'in'}</p>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Maximum Safe</p>
+                <div className="p-4 border rounded">
+                  <h4 className="text-sm font-semibold text-muted-foreground">Maximum Safe</h4>
                   <p className="text-2xl font-bold text-orange-600">{result.maxWaist.toFixed(1)} {unit === 'metric' ? 'cm' : 'in'}</p>
                 </div>
               </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-semibold text-foreground">Status Assessment</h3>
-              <div className={`p-4 rounded-lg border ${result.bgColor} ${result.borderColor}`}>
-                <p className={`font-semibold ${result.statusColor}`}>
+              <div className={`p-4 rounded-lg border ${
+                result.status === 'optimal' ? 'bg-green-50 border-green-200' :
+                result.status === 'elevated' ? 'bg-orange-50 border-orange-200' :
+                'bg-red-50 border-red-200'
+              }`}>
+                <p className={`font-semibold ${
+                  result.status === 'optimal' ? 'text-green-600' :
+                  result.status === 'elevated' ? 'text-orange-600' :
+                  'text-red-600'
+                }`}>
                   {result.status === 'optimal' && 'Optimal Waist Size'}
                   {result.status === 'elevated' && 'Elevated Risk'}
                   {result.status === 'high_risk' && 'High Risk'}
                 </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {result.status === 'optimal' && 'Your waist circumference is within the healthy range for your height and gender.'}
-                  {result.status === 'elevated' && 'Your waist circumference is above the ideal range and may increase health risks.'}
-                  {result.status === 'high_risk' && 'Your waist circumference indicates high risk for metabolic and cardiovascular diseases.'}
-                </p>
+                <p className="text-sm text-muted-foreground mt-1">{result.interpretation}</p>
               </div>
-            </div>
+            </CardContent>
+          </Card>
 
-            <div className="space-y-4">
-              <h3 className="font-semibold text-foreground">Recommendations</h3>
-              <ul className="space-y-2">
-                {getRecommendations(result, form.getValues()).map((rec, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <Target className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{rec}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </CardContent>
-        </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Warning Signs & Precautions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Waist Reduction Plan</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="understanding-inputs">
-          <AccordionTrigger>Understanding the Inputs</AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">Gender</h4>
-                <p>Men and women have different ideal waist-to-height ratios due to body composition differences.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">Height</h4>
-                <p>Ideal waist size is calculated as a percentage of your height, making it proportional to your body frame.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">Current Waist</h4>
-                <p>Measure at the narrowest point between your ribs and hips, or at the navel if no narrow point exists.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">Ethnicity</h4>
-                <p>Different ethnic groups have varying body compositions and metabolic risk factors.</p>
-              </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate measurements for meaningful results</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Build a comprehensive body composition assessment</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/waist-to-hip-ratio-calculator" className="text-primary hover:underline">
+                  Waist-to-Hip Ratio Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Assess body fat distribution patterns and cardiovascular risk.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-
-        <AccordionItem value="how-it-works">
-          <AccordionTrigger>How the Calculation Works</AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-4">
-              <p>The ideal waist size is calculated as a percentage of your height:</p>
-              <ul className="list-disc ml-6 space-y-1">
-                <li><strong>Men (Non-Asian):</strong> 45% of height (ideal), 53% (maximum)</li>
-                <li><strong>Men (Asian):</strong> 42% of height (ideal), 50% (maximum)</li>
-                <li><strong>Women (Non-Asian):</strong> 43% of height (ideal), 51% (maximum)</li>
-                <li><strong>Women (Asian):</strong> 40% of height (ideal), 48% (maximum)</li>
-              </ul>
-              <p>These ratios are based on research showing optimal health outcomes and reduced disease risk.</p>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/waist-to-height-ratio-calculator" className="text-primary hover:underline">
+                  Waist-to-Height Ratio Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Compare waist circumference relative to height for metabolic health.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-
-        <AccordionItem value="health-risks">
-          <AccordionTrigger>Health Risks of Large Waist Size</AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-4">
-              <p>Excess abdominal fat is associated with increased risk of:</p>
-              <ul className="list-disc ml-6 space-y-1">
-                <li><strong>Type 2 Diabetes:</strong> Abdominal fat affects insulin sensitivity</li>
-                <li><strong>Heart Disease:</strong> Increased cardiovascular risk factors</li>
-                <li><strong>High Blood Pressure:</strong> Metabolic syndrome components</li>
-                <li><strong>Stroke:</strong> Vascular complications</li>
-                <li><strong>Certain Cancers:</strong> Hormonal and inflammatory factors</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/bmi-calculator" className="text-primary hover:underline">
+                  BMI Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Evaluate overall body weight status alongside waist measurements.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-
-        <AccordionItem value="further-reading">
-          <AccordionTrigger>Further Reading</AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-2">
-              <p><a href="https://www.heart.org/en/healthy-living/healthy-eating/lose-weight/waist-to-height-ratio" className="text-primary underline" target="_blank" rel="noopener noreferrer">American Heart Association - Waist-to-Height Ratio</a></p>
-              <p><a href="https://www.nhs.uk/live-well/healthy-weight/why-waist-size-matters/" className="text-primary underline" target="_blank" rel="noopener noreferrer">NHS - Why Waist Size Matters</a></p>
-              <p><a href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html" className="text-primary underline" target="_blank" rel="noopener noreferrer">CDC - Adult BMI Calculator</a></p>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                  Body Fat Percentage Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Assess total body composition and fat distribution.</p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </div>
+        </CardContent>
+      </Card>
 
-      <section itemScope itemType="https://schema.org/Article">
-        <h2 itemProp="name" className="text-xl font-bold text-foreground">Understanding Ideal Waist Size</h2>
-        <p itemProp="description">Your waist circumference is a crucial indicator of health, often more important than BMI alone. It directly measures abdominal fat, which is linked to metabolic and cardiovascular risks.</p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Understanding Ideal Waist Size</CardTitle>
+          <CardDescription>Evidence-based strategies for metabolic health</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>
+            Waist circumference is a powerful indicator of metabolic health, often more predictive than BMI alone. It directly measures abdominal fat (visceral fat), which is strongly linked to insulin resistance, type 2 diabetes, cardiovascular disease, and metabolic syndrome. The ideal waist-to-height ratio varies by gender and ethnicity, with Asian populations typically having lower thresholds.
+          </p>
+          <p>
+            To reduce waist size, combine a moderate calorie deficit with regular strength training (especially core work), cardiovascular exercise, and stress management. Focus on whole foods, adequate protein, and sufficient sleep. Measure monthly under consistent conditions and track trends over time rather than daily fluctuations.
+          </p>
+        </CardContent>
+      </Card>
 
-        <h3 className="font-semibold text-foreground mt-6">Why Waist Size Matters</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Metabolic Health:</strong> Abdominal fat affects insulin sensitivity and glucose metabolism</li>
-          <li><strong>Cardiovascular Risk:</strong> Central obesity increases heart disease and stroke risk</li>
-          <li><strong>Inflammation:</strong> Visceral fat produces inflammatory markers</li>
-          <li><strong>Hormonal Impact:</strong> Affects hormone production and regulation</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Measurement Guidelines</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li>Measure at the narrowest point between ribs and hips</li>
-          <li>If no narrow point, measure at the navel level</li>
-          <li>Stand straight, breathe normally, and measure after exhaling</li>
-          <li>Use a flexible, non-stretchy measuring tape</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
-        <div className="space-y-2">
-          <p><Link href="/category/health-fitness/waist-to-hip-ratio-calculator" className="text-primary underline">Waist-to-Hip Ratio Calculator</Link></p>
-          <p><Link href="/category/health-fitness/waist-to-height-ratio-calculator" className="text-primary underline">Waist-to-Height Ratio Calculator</Link></p>
-          <p><Link href="/category/health-fitness/bmi-calculator" className="text-primary underline">BMI Calculator</Link></p>
-          <p><Link href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary underline">Body Fat Percentage Calculator</Link></p>
-        </div>
-      </section>
-      
-      <EmbedWidget calculatorSlug="ideal-waist-size-calculator" calculatorName="Ideal Waist Size Calculator" />
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Common questions about waist size and health</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
