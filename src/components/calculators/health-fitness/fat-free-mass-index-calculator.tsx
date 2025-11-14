@@ -9,8 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Dumbbell } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Dumbbell, Activity, Calendar, AlertTriangle } from 'lucide-react';
+import Link from 'next/link';
 
 const formSchema = z.object({
   height: z.number().positive('Height must be positive'),
@@ -24,22 +24,109 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+type ResultPayload = {
+  ffmi: number;
+  ffmiCategory: string;
+  fatFreeMass: number;
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+  naturalLimits: {
+    natural: number;
+    enhanced: number;
+  };
+  comparison: {
+    average: number;
+    percentile: string;
+  };
+};
+
+const understandingInputs = [
+  {
+    label: 'Height & Weight',
+    description: 'Body measurements used to calculate FFMI. Height and weight are essential for determining body size and fat-free mass index.',
+  },
+  {
+    label: 'Body Fat Percentage',
+    description: 'Measured via DEXA, BIA, skinfold calipers, or other methods. Essential for calculating fat-free mass, which is used in FFMI calculation.',
+  },
+  {
+    label: 'Gender',
+    description: 'Men typically have higher FFMI than women due to hormonal and structural differences. Natural limits are ~25 for men and ~20 for women.',
+  },
+  {
+    label: 'Age',
+    description: 'FFMI may decline with age due to muscle loss (sarcopenia). Older adults may have lower FFMI even with regular training.',
+  },
+  {
+    label: 'Training Experience',
+    description: 'More experienced lifters typically have higher FFMI due to accumulated muscle development over years of training.',
+  },
+];
+
+const faqs: [string, string][] = [
+  [
+    'What is Fat-Free Mass Index (FFMI)?',
+    'FFMI is calculated by dividing fat-free mass (in kg) by height squared (in meters). It provides a standardized way to assess muscle mass relative to body size, similar to how BMI assesses overall body mass.',
+  ],
+  [
+    'How is FFMI different from BMI?',
+    'FFMI focuses specifically on muscle mass (fat-free mass), while BMI includes all body mass (muscle, fat, bone, organs). FFMI is more useful for athletes and bodybuilders to assess muscle development.',
+  ],
+  [
+    'What is a good FFMI score?',
+    'For men, average FFMI is ~19, with 23-25 being very good and 25+ approaching natural limits. For women, average FFMI is ~16, with 18-20 being very good and 20+ approaching natural limits.',
+  ],
+  [
+    'What are natural FFMI limits?',
+    'Research suggests natural FFMI limits are approximately 25 for men and 20 for women. Values significantly above these limits may indicate enhanced performance or exceptional genetics.',
+  ],
+  [
+    'Can I increase my FFMI?',
+    'Yes, through progressive resistance training, adequate protein intake (1.6-2.2g per kg), sufficient calories for growth, proper recovery, and consistency. FFMI increases as you build muscle mass.',
+  ],
+  [
+    'How accurate is FFMI?',
+    'FFMI requires accurate body fat percentage measurement. It provides a useful estimate but may not account for bone density and organ mass variations. Use alongside other body composition measures.',
+  ],
+  [
+    'Does FFMI change with age?',
+    'Yes. FFMI peaks in the 20s-30s and may decline with age due to muscle loss (sarcopenia). Regular strength training can slow or partially reverse this decline.',
+  ],
+  [
+    'What is the difference between FFMI and muscle mass percentage?',
+    'FFMI accounts for height (normalized to body size), while muscle mass percentage is the proportion of total body weight. FFMI is better for comparing individuals of different sizes.',
+  ],
+  [
+    'Can women achieve high FFMI?',
+    'Yes, though women typically have lower absolute FFMI than men due to hormonal differences. With proper training and nutrition, women can build substantial muscle and achieve high FFMI relative to their natural limits.',
+  ],
+  [
+    'How often should I measure FFMI?',
+    'Monthly measurements are sufficient. FFMI changes slowly as muscle mass develops. Focus on trends over weeks and months rather than day-to-day fluctuations.',
+  ],
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Establish baseline: measure body fat percentage accurately (DEXA, BIA, or calipers) and calculate current FFMI.' },
+  { week: 2, focus: 'Begin progressive resistance training 3-4 times per week, focusing on compound movements (squats, deadlifts, presses).' },
+  { week: 3, focus: 'Optimize protein intake: aim for 1.6-2.2g per kg body weight daily, distributed across meals.' },
+  { week: 4, focus: 'Ensure adequate caloric intake for muscle growth—slight surplus (200-500 calories) if not overweight.' },
+  { week: 5, focus: 'Track training volume and intensity—aim for progressive overload each week (more weight, reps, or sets).' },
+  { week: 6, focus: 'Prioritize recovery: 7-9 hours of sleep, stress management, and rest days between training sessions.' },
+  { week: 7, focus: 'Reassess FFMI and adjust training/nutrition based on progress toward muscle development goals.' },
+  { week: 8, focus: 'Establish long-term habits: maintain consistent training, nutrition, and recovery for sustained FFMI improvement.' },
+];
+
+const warningSigns = () => [
+  'FFMI values significantly above natural limits (>25 for men, >20 for women) are rare and may indicate measurement errors, enhanced performance, or exceptional genetics.',
+  'Very low FFMI (<17 for men, <14 for women) may indicate insufficient muscle mass or sarcopenia—consult a healthcare provider if concerned.',
+  'Rapid changes in FFMI may indicate measurement errors or inconsistent body fat percentage measurements—ensure consistent measurement methods.',
+];
+
 export default function FatFreeMassIndexCalculator() {
-  const [result, setResult] = useState<{
-    ffmi: number;
-    ffmiCategory: string;
-    fatFreeMass: number;
-    interpretation: string;
-    recommendations: string[];
-    naturalLimits: {
-      natural: number;
-      enhanced: number;
-    };
-    comparison: {
-      average: number;
-      percentile: string;
-    };
-  } | null>(null);
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -217,6 +304,8 @@ export default function FatFreeMassIndexCalculator() {
       fatFreeMass,
       interpretation,
       recommendations,
+      warningSigns: warningSigns(),
+      plan: plan(),
       naturalLimits,
       comparison: {
         average: averageFFMI,
@@ -225,159 +314,134 @@ export default function FatFreeMassIndexCalculator() {
     });
   };
 
+  const unit = form.watch('unitSystem');
+
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField 
-              control={form.control} 
-              name="unitSystem" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Unit System</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Dumbbell className="h-5 w-5" /> Fat-Free Mass Index (FFMI) Calculator</CardTitle>
+          <CardDescription>Assess muscle mass relative to height to evaluate muscle development and natural potential more accurately than BMI alone.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="unitSystem" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Unit System</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select unit system" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="metric">Metric (cm, kg)</SelectItem>
+                        <SelectItem value="imperial">Imperial (inches, lbs)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="gender" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Gender</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select gender" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="male">Male</SelectItem>
+                        <SelectItem value="female">Female</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="height" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Height ({unit === 'metric' ? 'cm' : 'inches'})</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select unit system" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="metric">Metric (cm, kg)</SelectItem>
-                      <SelectItem value="imperial">Imperial (inches, lbs)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="gender" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Gender</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="weight" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Weight ({unit === 'metric' ? 'kg' : 'lbs'})</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select gender" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="height" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Height ({form.watch('unitSystem') === 'metric' ? 'cm' : 'inches'})</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      step="0.1"
-                      placeholder={`Enter height in ${form.watch('unitSystem') === 'metric' ? 'cm' : 'inches'}`}
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="weight" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Weight ({form.watch('unitSystem') === 'metric' ? 'kg' : 'lbs'})</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      step="0.1"
-                      placeholder={`Enter weight in ${form.watch('unitSystem') === 'metric' ? 'kg' : 'lbs'}`}
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="bodyFatPercentage" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Body Fat Percentage (%)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      step="0.1"
-                      placeholder="Enter body fat percentage"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="age" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Age (years)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your age"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="trainingExperience" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Training Experience</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="bodyFatPercentage" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Body Fat Percentage (%)</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select training experience" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="beginner">Beginner (0-1 year)</SelectItem>
-                      <SelectItem value="intermediate">Intermediate (1-3 years)</SelectItem>
-                      <SelectItem value="advanced">Advanced (3-5 years)</SelectItem>
-                      <SelectItem value="elite">Elite (5+ years)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-          </div>
-          <Button type="submit">Calculate FFMI</Button>
-        </form>
-      </Form>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="age" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Age (years)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="trainingExperience" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Training Experience</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select training experience" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="beginner">Beginner (0-1 year)</SelectItem>
+                        <SelectItem value="intermediate">Intermediate (1-3 years)</SelectItem>
+                        <SelectItem value="advanced">Advanced (3-5 years)</SelectItem>
+                        <SelectItem value="elite">Elite (5+ years)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Calculate FFMI</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
         <div className="space-y-6">
@@ -428,139 +492,154 @@ export default function FatFreeMassIndexCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Analysis & Recommendations</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">{result.interpretation}</p>
-              <div>
-                <h4 className="font-semibold mb-2">Recommendations:</h4>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                  {result.recommendations.map((rec, index) => (
-                    <li key={index}>{rec}</li>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">{result.interpretation}</p>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
                   ))}
                 </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Warning Signs & Precautions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week FFMI Improvement Plan</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </CardContent>
           </Card>
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>
-              The Fat-Free Mass Index (FFMI) is calculated by dividing your fat-free mass (in kg) by your height 
-              squared (in meters). It provides a standardized way to assess muscle mass relative to body size, 
-              similar to how BMI assesses overall body mass.
-            </p>
-            <p>
-              FFMI is particularly useful for athletes and bodybuilders as it helps assess muscle development 
-              while accounting for body size, making it more accurate than absolute muscle mass measurements.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide to Fat-Free Mass Index (FFMI)</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">What is FFMI?</h4>
-              <p>
-                The Fat-Free Mass Index (FFMI) is a measure of muscle mass relative to height, similar to BMI but 
-                specifically for lean body mass. It's calculated as fat-free mass (kg) divided by height squared (m²). 
-                FFMI is particularly valuable for athletes, bodybuilders, and fitness enthusiasts to assess muscle 
-                development and potential.
-              </p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate information for meaningful results</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Build a comprehensive body composition assessment</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                  Body Fat Percentage Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Measure body fat percentage needed for FFMI calculation.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">FFMI Categories</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Below Average:</strong> FFMI below 17 (males) / 14 (females)</li>
-                <li><strong>Average:</strong> FFMI 17-19 (males) / 14-16 (females)</li>
-                <li><strong>Good:</strong> FFMI 19-21 (males) / 16-18 (females)</li>
-                <li><strong>Very Good:</strong> FFMI 21-23 (males) / 18-20 (females)</li>
-                <li><strong>Excellent:</strong> FFMI 23-25 (males) / 20-22 (females)</li>
-                <li><strong>Exceptional:</strong> FFMI above 25 (males) / 22 (females)</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
+                  Lean Body Mass Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Calculate lean body mass to complement FFMI analysis.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Natural Limits</h4>
-              <p>
-                Research suggests that natural FFMI limits are approximately 25 for men and 20 for women. 
-                Values significantly above these limits may indicate enhanced performance or exceptional genetics. 
-                These limits are based on studies of natural bodybuilders and athletes.
-              </p>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/muscle-mass-percentage-calculator" className="text-primary hover:underline">
+                  Muscle Mass Percentage Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Assess muscle mass percentage alongside FFMI measurements.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Factors Affecting FFMI</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Training Experience:</strong> More experienced lifters typically have higher FFMI</li>
-                <li><strong>Genetics:</strong> Natural muscle-building potential varies significantly</li>
-                <li><strong>Age:</strong> FFMI peaks in the 20s-30s and may decline with age</li>
-                <li><strong>Training Program:</strong> Proper programming maximizes muscle development</li>
-                <li><strong>Nutrition:</strong> Adequate protein and calories support muscle growth</li>
-                <li><strong>Recovery:</strong> Sleep and stress management affect muscle development</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                  Protein Intake Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Determine optimal protein intake to support FFMI improvement.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Improving Your FFMI</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Progressive Overload:</strong> Gradually increase training intensity and volume</li>
-                <li><strong>Protein Intake:</strong> Consume 1.6-2.2g protein per kg body weight daily</li>
-                <li><strong>Caloric Surplus:</strong> Eat slightly more calories than you burn for growth</li>
-                <li><strong>Compound Movements:</strong> Focus on multi-joint exercises for maximum muscle activation</li>
-                <li><strong>Recovery:</strong> Ensure adequate sleep (7-9 hours) and manage stress</li>
-                <li><strong>Consistency:</strong> Maintain regular training and nutrition habits</li>
-              </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Understanding Fat-Free Mass Index (FFMI)</CardTitle>
+          <CardDescription>Evidence-based information about FFMI and muscle development</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>
+            The Fat-Free Mass Index (FFMI) is a measure of muscle mass relative to height, similar to BMI but specifically for lean body mass. It's calculated as fat-free mass (kg) divided by height squared (m²). FFMI is particularly valuable for athletes, bodybuilders, and fitness enthusiasts to assess muscle development and potential.
+          </p>
+          <p>
+            Research suggests that natural FFMI limits are approximately 25 for men and 20 for women. Values significantly above these limits may indicate enhanced performance or exceptional genetics. FFMI peaks in the 20s-30s and may decline with age due to muscle loss (sarcopenia). Regular strength training can slow or partially reverse this decline.
+          </p>
+          <p>
+            To improve FFMI, focus on progressive resistance training, adequate protein intake (1.6-2.2g per kg), sufficient calories for growth, proper recovery, and consistency. FFMI requires accurate body fat percentage measurement and should be used alongside other body composition measures.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Common questions about Fat-Free Mass Index and muscle development</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Limitations of FFMI</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Requires accurate body fat percentage measurement</li>
-                <li>May not account for bone density and organ mass variations</li>
-                <li>Natural limits are estimates based on limited research</li>
-                <li>Doesn't distinguish between muscle quality and quantity</li>
-                <li>May not be accurate for very tall or very short individuals</li>
-                <li>Should be used alongside other body composition measures</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">FFMI vs Other Measures</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>vs BMI:</strong> FFMI focuses on muscle mass, BMI includes all body mass</li>
-                <li><strong>vs Body Fat %:</strong> FFMI shows muscle development, body fat % shows leanness</li>
-                <li><strong>vs Absolute Muscle Mass:</strong> FFMI accounts for body size differences</li>
-                <li><strong>vs Strength:</strong> FFMI measures muscle size, not necessarily strength</li>
-              </ul>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-calculators">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Body Composition</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary underline">Body Fat Percentage Calculator</a></li>
-                  <li><a href="/category/health-fitness/lean-body-mass-calculator" className="text-primary underline">Lean Body Mass Calculator</a></li>
-                  <li><a href="/category/health-fitness/muscle-mass-percentage-calculator" className="text-primary underline">Muscle Mass Percentage Calculator</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Fitness & Training</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/one-rep-max-strength-calculator" className="text-primary underline">One Rep Max Calculator</a></li>
-                  <li><a href="/category/health-fitness/training-volume-calculator" className="text-primary underline">Training Volume Calculator</a></li>
-                  <li><a href="/category/health-fitness/protein-intake-calculator" className="text-primary underline">Protein Intake Calculator</a></li>
-                </ul>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
