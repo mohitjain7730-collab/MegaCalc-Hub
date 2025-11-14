@@ -9,8 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Footprints } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Footprints, Activity, Calendar, AlertTriangle } from 'lucide-react';
+import Link from 'next/link';
 
 const formSchema = z.object({
   steps: z.number().positive('Steps must be positive'),
@@ -24,20 +24,112 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function StepToCalorieConverter() {
-  const [result, setResult] = useState<{
-    caloriesBurned: number;
+type ResultPayload = {
+  caloriesBurned: number;
+  distance: number;
+  duration: number;
+  pace: string;
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+  dailyGoals: {
+    steps: number;
+    calories: number;
     distance: number;
-    duration: number;
-    pace: string;
-    interpretation: string;
-    recommendations: string[];
-    dailyGoals: {
-      steps: number;
-      calories: number;
-      distance: number;
-    };
-  } | null>(null);
+  };
+};
+
+const understandingInputs = [
+  {
+    label: 'Number of Steps',
+    description: 'Total steps taken during your activity. Use a pedometer, fitness tracker, or smartphone app for accurate counting.',
+  },
+  {
+    label: 'Weight',
+    description: 'Body weight affects calorie burn—heavier individuals burn more calories per step due to greater energy expenditure.',
+  },
+  {
+    label: 'Height',
+    description: 'Height determines step length, which affects distance calculations and overall calorie burn estimates.',
+  },
+  {
+    label: 'Walking Speed',
+    description: 'Faster walking increases calorie burn per step. Brisk walking (6 km/h) burns significantly more than slow walking (3 km/h).',
+  },
+  {
+    label: 'Terrain Type',
+    description: 'Hilly terrain and stairs require more energy than flat surfaces, increasing calorie burn per step.',
+  },
+  {
+    label: 'Age & Gender',
+    description: 'Metabolic rate varies with age and gender, affecting baseline calorie burn calculations.',
+  },
+];
+
+const faqs: [string, string][] = [
+  [
+    'How many calories do I burn per step?',
+    'Calories per step vary based on body weight, walking speed, and terrain. On average, a 70kg person burns approximately 0.04-0.05 calories per step at moderate pace on flat terrain.',
+  ],
+  [
+    'How accurate are step-to-calorie conversions?',
+    'Step-to-calorie conversions provide estimates based on average metabolic rates. Accuracy depends on accurate step counting, body weight, and activity intensity. Individual variations may occur.',
+  ],
+  [
+    'Does walking speed affect calorie burn?',
+    'Yes. Faster walking significantly increases calorie burn. Brisk walking (6 km/h) burns about 50% more calories per step than slow walking (3 km/h) due to higher intensity.',
+  ],
+  [
+    'How does terrain affect calorie burn?',
+    'Hilly terrain and stairs require more energy than flat surfaces, increasing calorie burn by 30-60% per step. Mixed terrain provides moderate calorie burn benefits.',
+  ],
+  [
+    'What is the recommended daily step count?',
+    'The popular 10,000 steps per day goal is a good target for general health. However, any increase from your current level provides benefits. Aim for at least 5,000-7,500 steps daily.',
+  ],
+  [
+    'Can I lose weight by increasing my steps?',
+    'Yes. Increasing daily steps can contribute to weight loss when combined with a balanced diet. Walking 10,000 steps daily can burn 300-500 calories, supporting a calorie deficit.',
+  ],
+  [
+    'How do I accurately count my steps?',
+    'Use a pedometer, fitness tracker, or smartphone app. Wear devices consistently and calibrate them for your stride length for best accuracy.',
+  ],
+  [
+    'Does body weight affect calories burned per step?',
+    'Yes. Heavier individuals burn more calories per step because they require more energy to move their body mass. A 90kg person burns more per step than a 60kg person.',
+  ],
+  [
+    'What is the difference between steps and distance?',
+    'Steps count individual footfalls, while distance measures total travel. Distance is calculated from step count using average step length, which varies by height and walking speed.',
+  ],
+  [
+    'How can I increase my daily step count?',
+    'Take the stairs, park farther away, take walking breaks, walk during phone calls, get off transit one stop early, take post-meal walks, and use a pedometer for motivation.',
+  ],
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Establish baseline: track your current daily step count and calculate current calorie burn.' },
+  { week: 2, focus: 'Increase gradually: add 500-1,000 steps per day to your baseline to build consistency.' },
+  { week: 3, focus: 'Optimize walking speed: work toward brisk walking pace (6 km/h) to maximize calorie burn per step.' },
+  { week: 4, focus: 'Add variety: incorporate different terrains (hills, stairs) to increase calorie burn and challenge.' },
+  { week: 5, focus: 'Set goals: aim for 10,000 steps daily and track progress with a pedometer or fitness tracker.' },
+  { week: 6, focus: 'Build habits: incorporate walking into daily routines (commuting, breaks, errands).' },
+  { week: 7, focus: 'Maintain consistency: focus on daily step goals and celebrate milestones to stay motivated.' },
+  { week: 8, focus: 'Establish long-term habits: maintain increased step counts as part of your regular lifestyle.' },
+];
+
+const warningSigns = () => [
+  'Step-to-calorie conversions are estimates and may not account for individual metabolic variations or health conditions.',
+  'Very high step counts (15,000+) may indicate overtraining—ensure adequate rest and recovery.',
+  'If experiencing pain or discomfort while walking, consult a healthcare provider before increasing activity.',
+  'Rapid increases in step count may lead to overuse injuries—gradually increase activity over weeks.',
+];
+
+export default function StepToCalorieConverter() {
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -177,187 +269,163 @@ export default function StepToCalorieConverter() {
       pace,
       interpretation,
       recommendations,
+      warningSigns: warningSigns(),
+      plan: plan(),
       dailyGoals,
     });
   };
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField 
-              control={form.control} 
-              name="steps" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Number of Steps</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter number of steps"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="weight" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Weight (kg)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your weight"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="height" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Height (cm)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your height"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="age" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Age (years)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your age"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="gender" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Gender</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Footprints className="h-5 w-5" /> Step-to-Calorie Converter</CardTitle>
+          <CardDescription>Convert your steps into calories burned based on body composition, walking speed, and terrain to track your daily activity.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="steps" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Number of Steps</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select gender" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="walkingSpeed" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Walking Speed</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="weight" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Weight (kg)</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select walking speed" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="slow">Slow (3 km/h)</SelectItem>
-                      <SelectItem value="moderate">Moderate (4.5 km/h)</SelectItem>
-                      <SelectItem value="brisk">Brisk (6 km/h)</SelectItem>
-                      <SelectItem value="fast">Fast (7.5 km/h)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="terrain" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Terrain Type</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="height" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Height (cm)</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select terrain type" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="flat">Flat (sidewalk, track)</SelectItem>
-                      <SelectItem value="hilly">Hilly (rolling hills)</SelectItem>
-                      <SelectItem value="stairs">Stairs (climbing)</SelectItem>
-                      <SelectItem value="mixed">Mixed (various terrain)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-          </div>
-          <Button type="submit">Convert Steps to Calories</Button>
-        </form>
-      </Form>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="age" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Age (years)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="gender" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Gender</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select gender" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="male">Male</SelectItem>
+                        <SelectItem value="female">Female</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="walkingSpeed" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Walking Speed</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select walking speed" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="slow">Slow (3 km/h)</SelectItem>
+                        <SelectItem value="moderate">Moderate (4.5 km/h)</SelectItem>
+                        <SelectItem value="brisk">Brisk (6 km/h)</SelectItem>
+                        <SelectItem value="fast">Fast (7.5 km/h)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="terrain" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Terrain Type</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select terrain type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="flat">Flat (sidewalk, track)</SelectItem>
+                        <SelectItem value="hilly">Hilly (rolling hills)</SelectItem>
+                        <SelectItem value="stairs">Stairs (climbing)</SelectItem>
+                        <SelectItem value="mixed">Mixed (various terrain)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Convert Steps to Calories</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-4">
-                <Footprints className="h-8 w-8 text-primary" />
-                <CardTitle>Step-to-Calorie Conversion</CardTitle>
-              </div>
+              <div className="flex items-center gap-4"><Activity className="h-8 w-8 text-primary" /><CardTitle>Step-to-Calorie Conversion</CardTitle></div>
+              <CardDescription>Your activity analysis and calorie burn estimate</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-primary">{result.caloriesBurned}</p>
                   <p className="text-sm text-muted-foreground">Calories Burned</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-primary">{result.distance} km</p>
                   <p className="text-sm text-muted-foreground">Distance Walked</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-primary">{result.duration} min</p>
                   <p className="text-sm text-muted-foreground">Duration</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-primary">{result.pace}</p>
                   <p className="text-sm text-muted-foreground">Pace</p>
                 </div>
@@ -371,15 +439,15 @@ export default function StepToCalorieConverter() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-primary">{result.dailyGoals.steps.toLocaleString()}</p>
                   <p className="text-sm text-muted-foreground">Steps (10K goal)</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-primary">{result.dailyGoals.calories}</p>
                   <p className="text-sm text-muted-foreground">Calories at 10K steps</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-primary">{result.dailyGoals.distance} km</p>
                   <p className="text-sm text-muted-foreground">Distance at 10K steps</p>
                 </div>
@@ -387,129 +455,154 @@ export default function StepToCalorieConverter() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Activity Analysis</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">{result.interpretation}</p>
-              <div>
-                <h4 className="font-semibold mb-2">Recommendations:</h4>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                  {result.recommendations.map((rec, index) => (
-                    <li key={index}>{rec}</li>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">{result.interpretation}</p>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
                   ))}
                 </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Warning Signs & Precautions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Step Count Improvement Plan</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </CardContent>
           </Card>
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>
-              This calculator converts your steps into calories burned by considering your body composition, 
-              walking speed, and terrain type. It uses your basal metabolic rate (BMR) as a foundation and 
-              applies activity multipliers based on the intensity and type of walking you're doing.
-            </p>
-            <p>
-              The calculation accounts for the fact that heavier individuals burn more calories per step, 
-              and different walking speeds and terrains require varying amounts of energy expenditure.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide to Step Counting and Calorie Burn</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Understanding Step Counting</h4>
-              <p>
-                Step counting is one of the most accessible ways to track physical activity. The popular 
-                10,000 steps per day goal originated from a Japanese pedometer marketing campaign in the 1960s, 
-                but research has shown it's a reasonable target for general health benefits.
-              </p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate information for meaningful results</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Build a comprehensive activity tracking assessment</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">
+                  Daily Activity Points Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Track comprehensive daily activity including steps, exercise, sleep, and hydration.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Factors Affecting Calorie Burn</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Body Weight:</strong> Heavier individuals burn more calories per step</li>
-                <li><strong>Walking Speed:</strong> Faster walking increases calorie burn significantly</li>
-                <li><strong>Terrain:</strong> Hills and stairs require more energy than flat surfaces</li>
-                <li><strong>Age & Gender:</strong> Metabolic rate varies with age and biological sex</li>
-                <li><strong>Fitness Level:</strong> More fit individuals may burn fewer calories for the same activity</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary hover:underline">
+                  Standing vs Sitting Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Compare calorie burn between sitting and standing to optimize daily activity.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Step Count Guidelines</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Sedentary:</strong> Less than 5,000 steps per day</li>
-                <li><strong>Low Active:</strong> 5,000-7,499 steps per day</li>
-                <li><strong>Somewhat Active:</strong> 7,500-9,999 steps per day</li>
-                <li><strong>Active:</strong> 10,000-12,499 steps per day</li>
-                <li><strong>Highly Active:</strong> 12,500+ steps per day</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/calorie-burn-calculator" className="text-primary hover:underline">
+                  Calorie Burn Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Calculate calories burned for various activities to complement step tracking.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Health Benefits of Walking</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Improved cardiovascular health and reduced heart disease risk</li>
-                <li>Better blood sugar control and reduced diabetes risk</li>
-                <li>Enhanced mental health and reduced stress levels</li>
-                <li>Stronger bones and reduced osteoporosis risk</li>
-                <li>Better sleep quality and immune function</li>
-                <li>Weight management and body composition improvement</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/bmr-calculator" className="text-primary hover:underline">
+                  BMR Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Calculate basal metabolic rate to understand baseline calorie needs.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Tips for Increasing Daily Steps</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Take the stairs instead of elevators</li>
-                <li>Park farther away from your destination</li>
-                <li>Take walking breaks during work</li>
-                <li>Walk while talking on the phone</li>
-                <li>Get off public transportation one stop early</li>
-                <li>Take a walk after meals</li>
-                <li>Use a pedometer or fitness tracker for motivation</li>
-                <li>Set daily and weekly step goals</li>
-              </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Understanding Step Counting and Calorie Burn</CardTitle>
+          <CardDescription>Evidence-based information about step counting and walking for health</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>
+            Step counting is one of the most accessible ways to track physical activity. The popular 10,000 steps per day goal originated from a Japanese pedometer marketing campaign in the 1960s, but research has shown it's a reasonable target for general health benefits.
+          </p>
+          <p>
+            Calories burned per step vary based on body weight, walking speed, and terrain. Heavier individuals burn more calories per step, and faster walking significantly increases calorie burn. Hilly terrain and stairs require more energy than flat surfaces.
+          </p>
+          <p>
+            Health benefits of walking include improved cardiovascular health, better blood sugar control, enhanced mental health, stronger bones, better sleep quality, and weight management. Aim for at least 5,000-7,500 steps daily, with 10,000 steps as an excellent goal for most adults.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Common questions about step counting and calorie burn</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Accuracy Considerations</h4>
-              <p>
-                While step counters and calorie estimates provide useful guidance, they're not 100% accurate. 
-                Factors like stride length variations, device placement, and individual metabolic differences 
-                can affect measurements. Use these numbers as general guidelines rather than precise measurements.
-              </p>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-calculators">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Activity Tracking</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/calorie-burn-calculator" className="text-primary underline">Calorie Burn Calculator</a></li>
-                  <li><a href="/category/health-fitness/daily-activity-points-calculator" className="text-primary underline">Daily Activity Points Calculator</a></li>
-                  <li><a href="/category/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary underline">Standing vs Sitting Calculator</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Fitness & Health</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/bmr-calculator" className="text-primary underline">BMR Calculator</a></li>
-                  <li><a href="/category/health-fitness/ideal-weight-calculator" className="text-primary underline">Ideal Weight Calculator</a></li>
-                  <li><a href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary underline">Body Fat Percentage Calculator</a></li>
-                </ul>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }

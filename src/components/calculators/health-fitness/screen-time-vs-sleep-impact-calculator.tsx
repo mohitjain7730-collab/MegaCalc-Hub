@@ -9,8 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Monitor } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Monitor, Activity, Calendar, AlertTriangle } from 'lucide-react';
+import Link from 'next/link';
 
 const formSchema = z.object({
   age: z.number().positive('Age must be positive'),
@@ -26,19 +26,123 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+type ResultPayload = {
+  sleepImpactScore: number;
+  screenTimeRisk: string;
+  sleepQualityScore: number;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+  healthRisks: string[];
+  weeklyProjection: {
+    sleepDebt: number;
+    screenTimeHours: number;
+    recommendedScreenTime: number;
+  };
+};
+
+const understandingInputs = [
+  {
+    label: 'Age',
+    description: 'Younger individuals, especially children and teens, are more sensitive to screen time effects on sleep due to developing circadian rhythms.',
+  },
+  {
+    label: 'Daily Screen Time',
+    description: 'Total hours spent using screens (phones, tablets, computers, TV) throughout the day. Excessive screen time (>6-8 hours) significantly impacts sleep.',
+  },
+  {
+    label: 'Sleep Hours per Night',
+    description: 'Total hours of sleep per night. Optimal sleep is 7-9 hours for adults. Too little or too much sleep can indicate screen time-related issues.',
+  },
+  {
+    label: 'Screen Time Before Bed',
+    description: 'Hours of screen use in the 1-2 hours before bedtime. This is particularly harmful as blue light suppresses melatonin production needed for sleep.',
+  },
+  {
+    label: 'Device Type',
+    description: 'Different devices emit varying amounts of blue light. Phones and tablets held close to the face have greater impact than TVs viewed from distance.',
+  },
+  {
+    label: 'Blue Light Filter Usage',
+    description: 'Blue light filters reduce melatonin suppression. Advanced filters are more effective than basic built-in filters at protecting sleep.',
+  },
+  {
+    label: 'Sleep Quality',
+    description: 'Subjective assessment of sleep quality. Poor sleep quality often correlates with excessive screen time, especially before bed.',
+  },
+  {
+    label: 'Eye Strain Level',
+    description: 'Digital eye strain indicates excessive screen use and may correlate with sleep disruption. Severe strain suggests need for screen time reduction.',
+  },
+  {
+    label: 'Physical Activity',
+    description: 'Regular physical activity can partially offset screen time effects on sleep by improving sleep quality and reducing screen time dependency.',
+  },
+];
+
+const faqs: [string, string][] = [
+  [
+    'How does screen time affect sleep?',
+    'Screen time, especially before bed, suppresses melatonin production through blue light exposure, delays sleep onset by 30-60 minutes, reduces REM sleep, and disrupts circadian rhythms.',
+  ],
+  [
+    'What is the recommended screen time before bed?',
+    'Experts recommend avoiding screens for 1-2 hours before bedtime. If you must use screens, use advanced blue light filters and keep devices at least 20 inches away.',
+  ],
+  [
+    'How much screen time is too much?',
+    'For adults, 6-8 hours daily is considered high. More than 8 hours daily significantly impacts sleep and health. Children and teens should have even less screen time.',
+  ],
+  [
+    'Do blue light filters really help?',
+    'Yes. Blue light filters reduce melatonin suppression, but they don\'t eliminate all negative effects. Advanced filters are more effective than basic ones, but avoiding screens before bed is best.',
+  ],
+  [
+    'Can screen time cause insomnia?',
+    'Yes. Excessive screen time, especially before bed, is a major contributor to insomnia and sleep disorders. Blue light exposure and stimulating content both disrupt sleep.',
+  ],
+  [
+    'How does age affect screen time impact on sleep?',
+    'Younger individuals, especially children and teens, are more sensitive to screen time effects due to developing circadian rhythms and higher sensitivity to blue light.',
+  ],
+  [
+    'What are the health risks of excessive screen time?',
+    'Risks include sleep disorders, eye strain, increased anxiety and depression, reduced physical activity, poor posture, metabolic issues, and reduced cognitive performance.',
+  ],
+  [
+    'Can physical activity offset screen time effects?',
+    'Regular physical activity can partially offset screen time effects by improving sleep quality and reducing dependency on screens. However, it doesn\'t eliminate the need for screen time limits.',
+  ],
+  [
+    'How do I reduce screen time before bed?',
+    'Set a digital curfew 1-2 hours before bed, use screen time tracking apps, charge devices outside the bedroom, replace screen time with reading or relaxation, and establish a consistent bedtime routine.',
+  ],
+  [
+    'What are signs I need to reduce screen time?',
+    'Signs include difficulty falling or staying asleep, frequent eye strain or headaches, increased anxiety or mood changes, reduced physical activity, poor posture, and difficulty concentrating.',
+  ],
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Assess current habits: track daily screen time and screen time before bed to establish baseline.' },
+  { week: 2, focus: 'Set digital curfew: implement a 2-hour screen-free period before bedtime to improve sleep onset.' },
+  { week: 3, focus: 'Enable blue light filters: activate advanced blue light filters on all devices, especially in evening hours.' },
+  { week: 4, focus: 'Reduce daily screen time: aim to reduce total daily screen time by 1-2 hours through alternative activities.' },
+  { week: 5, focus: 'Create screen-free zones: keep bedrooms, dining areas, and bathrooms completely screen-free.' },
+  { week: 6, focus: 'Increase physical activity: add 30-60 minutes of daily physical activity to improve sleep quality and reduce screen dependency.' },
+  { week: 7, focus: 'Establish routines: create consistent bedtime routines without screens, such as reading or meditation.' },
+  { week: 8, focus: 'Maintain balance: establish long-term habits that balance screen use with sleep, activity, and offline activities.' },
+];
+
+const warningSigns = () => [
+  'Excessive screen time (>8 hours daily) significantly increases risk of sleep disorders, eye strain, and mental health issues.',
+  'Screen time within 1 hour of bedtime can delay sleep onset by 30-60 minutes and reduce sleep quality—avoid screens before bed.',
+  'Severe eye strain or persistent sleep problems may indicate underlying health issues—consult a healthcare provider if concerned.',
+  'If screen time is interfering with daily activities, relationships, or causing withdrawal symptoms, consider professional support.',
+];
+
 export default function ScreenTimeVsSleepImpactCalculator() {
-  const [result, setResult] = useState<{
-    sleepImpactScore: number;
-    screenTimeRisk: string;
-    sleepQualityScore: number;
-    recommendations: string[];
-    healthRisks: string[];
-    weeklyProjection: {
-      sleepDebt: number;
-      screenTimeHours: number;
-      recommendedScreenTime: number;
-    };
-  } | null>(null);
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -223,6 +327,8 @@ export default function ScreenTimeVsSleepImpactCalculator() {
       screenTimeRisk,
       sleepQualityScore,
       recommendations,
+      warningSigns: warningSigns(),
+      plan: plan(),
       healthRisks,
       weeklyProjection,
     });
@@ -230,225 +336,186 @@ export default function ScreenTimeVsSleepImpactCalculator() {
 
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField 
-              control={form.control} 
-              name="age" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Age (years)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your age"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="dailyScreenTime" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Daily Screen Time (hours)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      step="0.5"
-                      placeholder="Enter daily screen time"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="sleepHours" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Sleep Hours per Night</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      step="0.5"
-                      placeholder="Enter sleep hours"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="screenTimeBeforeBed" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Screen Time Before Bed (hours)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      step="0.5"
-                      placeholder="Enter screen time before bed"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="deviceType" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Primary Device Type</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Monitor className="h-5 w-5" /> Screen Time vs Sleep Impact Calculator</CardTitle>
+          <CardDescription>Analyze how your screen time habits affect sleep quality and overall health to optimize your digital wellness.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="age" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Age (years)</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select device type" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="phone">Phone</SelectItem>
-                      <SelectItem value="tablet">Tablet</SelectItem>
-                      <SelectItem value="computer">Computer</SelectItem>
-                      <SelectItem value="tv">TV</SelectItem>
-                      <SelectItem value="mixed">Mixed Devices</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="blueLightFilter" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Blue Light Filter Usage</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="dailyScreenTime" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Daily Screen Time (hours)</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select filter usage" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="0.5"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="none">None</SelectItem>
-                      <SelectItem value="basic">Basic (built-in)</SelectItem>
-                      <SelectItem value="advanced">Advanced (third-party)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="sleepQuality" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Sleep Quality</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="sleepHours" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Sleep Hours per Night</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select sleep quality" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="0.5"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="poor">Poor (fragmented, restless)</SelectItem>
-                      <SelectItem value="fair">Fair (some interruptions)</SelectItem>
-                      <SelectItem value="good">Good (mostly uninterrupted)</SelectItem>
-                      <SelectItem value="excellent">Excellent (deep, restorative)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="eyeStrain" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Eye Strain Level</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="screenTimeBeforeBed" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Screen Time Before Bed (hours)</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select eye strain level" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="0.5"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="none">None</SelectItem>
-                      <SelectItem value="mild">Mild (occasional discomfort)</SelectItem>
-                      <SelectItem value="moderate">Moderate (frequent discomfort)</SelectItem>
-                      <SelectItem value="severe">Severe (constant discomfort)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="physicalActivity" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Daily Physical Activity (hours)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      step="0.5"
-                      placeholder="Enter physical activity hours"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-          </div>
-          <Button type="submit">Calculate Screen Time Impact</Button>
-        </form>
-      </Form>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="deviceType" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Primary Device Type</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select device type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="phone">Phone</SelectItem>
+                        <SelectItem value="tablet">Tablet</SelectItem>
+                        <SelectItem value="computer">Computer</SelectItem>
+                        <SelectItem value="tv">TV</SelectItem>
+                        <SelectItem value="mixed">Mixed Devices</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="blueLightFilter" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Blue Light Filter Usage</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select filter usage" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="none">None</SelectItem>
+                        <SelectItem value="basic">Basic (built-in)</SelectItem>
+                        <SelectItem value="advanced">Advanced (third-party)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="sleepQuality" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Sleep Quality</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select sleep quality" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="poor">Poor (fragmented, restless)</SelectItem>
+                        <SelectItem value="fair">Fair (some interruptions)</SelectItem>
+                        <SelectItem value="good">Good (mostly uninterrupted)</SelectItem>
+                        <SelectItem value="excellent">Excellent (deep, restorative)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="eyeStrain" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Eye Strain Level</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select eye strain level" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="none">None</SelectItem>
+                        <SelectItem value="mild">Mild (occasional discomfort)</SelectItem>
+                        <SelectItem value="moderate">Moderate (frequent discomfort)</SelectItem>
+                        <SelectItem value="severe">Severe (constant discomfort)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="physicalActivity" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Daily Physical Activity (hours)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.5"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Calculate Screen Time Impact</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-4">
-                <Monitor className="h-8 w-8 text-primary" />
-                <CardTitle>Screen Time vs Sleep Impact Analysis</CardTitle>
-              </div>
+              <div className="flex items-center gap-4"><Activity className="h-8 w-8 text-primary" /><CardTitle>Screen Time vs Sleep Impact Analysis</CardTitle></div>
+              <CardDescription>Your digital wellness assessment and sleep impact evaluation</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-3xl font-bold text-primary">{result.sleepImpactScore}/100</p>
                   <p className="text-sm text-muted-foreground">Sleep Impact Score</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-primary">{result.screenTimeRisk}</p>
                   <p className="text-sm text-muted-foreground">Screen Time Risk Level</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-3xl font-bold text-primary">{result.sleepQualityScore}/100</p>
                   <p className="text-sm text-muted-foreground">Sleep Quality Score</p>
                 </div>
@@ -462,15 +529,15 @@ export default function ScreenTimeVsSleepImpactCalculator() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-red-500">{result.weeklyProjection.sleepDebt}h</p>
                   <p className="text-sm text-muted-foreground">Weekly Sleep Debt</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-blue-500">{result.weeklyProjection.screenTimeHours}h</p>
                   <p className="text-sm text-muted-foreground">Weekly Screen Time</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-green-500">{result.weeklyProjection.recommendedScreenTime}h</p>
                   <p className="text-sm text-muted-foreground">Recommended Daily Screen Time</p>
                 </div>
@@ -478,148 +545,166 @@ export default function ScreenTimeVsSleepImpactCalculator() {
             </CardContent>
           </Card>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Warning Signs & Precautions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
           <Card>
             <CardHeader>
-              <CardTitle>Analysis & Recommendations</CardTitle>
+              <CardTitle>Health Risks</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold mb-2">Recommendations:</h4>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    {result.recommendations.map((rec, index) => (
-                      <li key={index}>{rec}</li>
+              <ul className="space-y-2">
+                {result.healthRisks.map((item, index) => (
+                  <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Digital Wellness Improvement Plan</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
                     ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Health Risks:</h4>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    {result.healthRisks.map((risk, index) => (
-                      <li key={index}>{risk}</li>
-                    ))}
-                  </ul>
-                </div>
+                  </tbody>
+                </table>
               </div>
             </CardContent>
           </Card>
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>
-              This calculator analyzes the relationship between your screen time habits and sleep quality by considering 
-              multiple factors including device usage patterns, blue light exposure, sleep duration, and physical activity levels.
-            </p>
-            <p>
-              The algorithm weighs various risk factors to provide a comprehensive assessment of how your digital habits 
-              may be impacting your sleep and overall health.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide to Screen Time and Sleep Health</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Understanding Screen Time Impact on Sleep</h4>
-              <p>
-                Excessive screen time, especially before bedtime, can significantly disrupt your sleep patterns. 
-                Blue light from screens suppresses melatonin production, making it harder to fall asleep and stay asleep. 
-                The content we consume can also increase mental stimulation and stress levels.
-              </p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate information for meaningful results</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Build a comprehensive sleep and wellness assessment</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/sleep-quality-calculator" className="text-primary hover:underline">
+                  Sleep Quality Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Assess sleep quality to complement screen time impact analysis.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Blue Light and Circadian Rhythm</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Melatonin Suppression:</strong> Blue light blocks melatonin production for up to 2 hours</li>
-                <li><strong>Circadian Disruption:</strong> Irregular screen exposure can shift your internal clock</li>
-                <li><strong>Sleep Onset Delay:</strong> Screen use before bed can delay sleep by 30-60 minutes</li>
-                <li><strong>REM Sleep Reduction:</strong> Late-night screen use reduces restorative REM sleep</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/sleep-debt-calculator" className="text-primary hover:underline">
+                  Sleep Debt Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Calculate sleep debt to understand cumulative sleep impact.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Health Risks of Excessive Screen Time</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Sleep Disorders:</strong> Insomnia, sleep apnea, and circadian rhythm disorders</li>
-                <li><strong>Eye Health:</strong> Digital eye strain, dry eyes, and potential long-term vision issues</li>
-                <li><strong>Mental Health:</strong> Increased anxiety, depression, and stress levels</li>
-                <li><strong>Physical Health:</strong> Sedentary behavior, poor posture, and metabolic issues</li>
-                <li><strong>Cognitive Function:</strong> Reduced attention span, memory problems, and decision-making</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">
+                  Daily Activity Points Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Track comprehensive daily activity including screen time management.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Optimal Screen Time Guidelines</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Adults:</strong> 6-8 hours maximum daily, with 2-hour breaks every 2 hours</li>
-                <li><strong>Teens:</strong> 4-6 hours daily, with emphasis on educational content</li>
-                <li><strong>Children (6-12):</strong> 2-4 hours daily, with parental supervision</li>
-                <li><strong>Before Bed:</strong> 1-2 hours screen-free period for optimal sleep</li>
-                <li><strong>Morning:</strong> Avoid screens for first 30-60 minutes after waking</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/stress-level-calculator" className="text-primary hover:underline">
+                  Stress Level Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Assess stress levels that may be affected by screen time and sleep quality.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Blue Light Protection Strategies</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Blue Light Filters:</strong> Use built-in or third-party apps like f.lux or Night Shift</li>
-                <li><strong>Blue Light Glasses:</strong> Wear computer glasses with blue light blocking lenses</li>
-                <li><strong>Screen Settings:</strong> Reduce brightness and use warm color temperatures</li>
-                <li><strong>Distance:</strong> Maintain 20-26 inches distance from screens</li>
-                <li><strong>20-20-20 Rule:</strong> Every 20 minutes, look at something 20 feet away for 20 seconds</li>
-              </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Understanding Screen Time and Sleep Health</CardTitle>
+          <CardDescription>Evidence-based information about digital wellness and sleep</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>
+            Excessive screen time, especially before bedtime, can significantly disrupt sleep patterns. Blue light from screens suppresses melatonin production, making it harder to fall asleep and stay asleep. The content we consume can also increase mental stimulation and stress levels.
+          </p>
+          <p>
+            Blue light blocks melatonin production for up to 2 hours, disrupts circadian rhythms, delays sleep onset by 30-60 minutes, and reduces restorative REM sleep. Health risks include sleep disorders, eye strain, increased anxiety and depression, reduced physical activity, poor posture, metabolic issues, and reduced cognitive performance.
+          </p>
+          <p>
+            Optimal screen time guidelines: Adults should limit to 6-8 hours maximum daily with 2-hour breaks every 2 hours, and maintain a 1-2 hour screen-free period before bedtime. Use blue light filters, maintain 20-26 inches distance from screens, follow the 20-20-20 rule (every 20 minutes, look at something 20 feet away for 20 seconds), and create screen-free zones in bedrooms and dining areas.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Common questions about screen time and sleep impact</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Digital Wellness Tips</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Screen-Free Zones:</strong> Keep bedrooms, dining areas, and bathrooms screen-free</li>
-                <li><strong>Digital Curfews:</strong> Set specific times to stop using devices</li>
-                <li><strong>Mindful Usage:</strong> Be intentional about why you're using screens</li>
-                <li><strong>Alternative Activities:</strong> Replace screen time with reading, exercise, or hobbies</li>
-                <li><strong>Family Time:</strong> Create screen-free family activities and conversations</li>
-                <li><strong>Sleep Routine:</strong> Establish a consistent bedtime routine without screens</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Signs You Need to Reduce Screen Time</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Difficulty falling asleep or staying asleep</li>
-                <li>Frequent eye strain, headaches, or dry eyes</li>
-                <li>Increased anxiety or mood changes</li>
-                <li>Reduced physical activity and social interaction</li>
-                <li>Poor posture and neck/back pain</li>
-                <li>Difficulty concentrating or remembering things</li>
-                <li>Feeling restless or irritable when not using devices</li>
-              </ul>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-calculators">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Sleep & Wellness</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/sleep-quality-calculator" className="text-primary underline">Sleep Quality Calculator</a></li>
-                  <li><a href="/category/health-fitness/sleep-debt-calculator" className="text-primary underline">Sleep Debt Calculator</a></li>
-                  <li><a href="/category/health-fitness/circadian-rhythm-calculator" className="text-primary underline">Circadian Rhythm Calculator</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Health & Fitness</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/eye-strain-calculator" className="text-primary underline">Eye Strain Calculator</a></li>
-                  <li><a href="/category/health-fitness/stress-level-calculator" className="text-primary underline">Stress Level Calculator</a></li>
-                  <li><a href="/category/health-fitness/daily-activity-points-calculator" className="text-primary underline">Daily Activity Points Calculator</a></li>
-                </ul>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
-

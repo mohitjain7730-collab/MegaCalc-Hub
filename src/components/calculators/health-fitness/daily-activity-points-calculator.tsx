@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
@@ -9,15 +9,15 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Trophy } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Trophy, Activity, Calendar, AlertTriangle } from 'lucide-react';
+import Link from 'next/link';
 
 const formSchema = z.object({
   age: z.number().positive('Age must be positive'),
   weight: z.number().positive('Weight must be positive'),
   gender: z.enum(['male', 'female']),
   activities: z.array(z.object({
-    activity: z.string(),
+    activity: z.string().min(1, 'Activity is required'),
     duration: z.number().positive('Duration must be positive'),
     intensity: z.enum(['low', 'moderate', 'high', 'very_high']),
   })).min(1, 'At least one activity is required'),
@@ -28,19 +28,107 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+type ResultPayload = {
+  totalPoints: number;
+  activityPoints: number;
+  stepsPoints: number;
+  sleepPoints: number;
+  hydrationPoints: number;
+  level: string;
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+  weeklyGoal: number;
+  achievements: string[];
+};
+
+const understandingInputs = [
+  {
+    label: 'Age, Weight & Gender',
+    description: 'Demographics affect baseline metabolic rate and activity point calculations. Older adults and different body compositions have varying calorie needs.',
+  },
+  {
+    label: 'Daily Activities',
+    description: 'Track all structured exercise and physical activities. Include type, duration, and intensity level. Higher intensity and longer duration earn more points.',
+  },
+  {
+    label: 'Daily Steps',
+    description: 'Total steps taken throughout the day from all activities. Steps contribute points based on daily totals, with 10,000+ steps earning maximum points.',
+  },
+  {
+    label: 'Sleep Hours',
+    description: 'Total hours of sleep per night. Optimal sleep (7-9 hours) earns maximum points, while too little or too much sleep reduces points.',
+  },
+  {
+    label: 'Water Intake',
+    description: 'Daily water consumption in milliliters. Points are based on meeting recommended intake (35ml per kg body weight).',
+  },
+];
+
+const faqs: [string, string][] = [
+  [
+    'What are daily activity points?',
+    'Daily activity points provide a comprehensive scoring system that tracks exercise, steps, sleep, and hydration. Higher scores indicate better overall health and activity levels.',
+  ],
+  [
+    'How are activity points calculated?',
+    'Activity points are based on exercise type, duration, and intensity. Points are awarded per 15-minute blocks, with higher intensity activities earning more points per minute.',
+  ],
+  [
+    'What is a good daily activity points score?',
+    'Scores of 40-59 points indicate good activity levels, 60-79 points are excellent, and 80+ points represent elite performance. Scores below 25 indicate need for improvement.',
+  ],
+  [
+    'How do steps contribute to points?',
+    'Steps earn points based on daily totals: 15,000+ steps = 20 points, 12,000-14,999 = 15 points, 10,000-11,999 = 10 points, with decreasing points for lower step counts.',
+  ],
+  [
+    'Why is sleep included in activity points?',
+    'Sleep is crucial for recovery, performance, and overall health. Optimal sleep (7-9 hours) earns maximum points because it supports all other activities and health goals.',
+  ],
+  [
+    'How does hydration affect points?',
+    'Hydration points are based on meeting recommended daily intake (35ml per kg body weight). Meeting 100% of recommended intake earns maximum hydration points.',
+  ],
+  [
+    'Can I improve my activity points score?',
+    'Yes. Increase exercise duration and intensity, aim for 10,000+ steps daily, prioritize 7-9 hours of sleep, and meet daily hydration goals to improve your score.',
+  ],
+  [
+    'What if my score is very low?',
+    'Start with small, achievable goals. Add 15-30 minutes of daily activity, aim for 5,000 steps, prioritize sleep, and drink water with meals. Gradually increase over weeks.',
+  ],
+  [
+    'Should I track points every day?',
+    'Daily tracking helps build consistency and awareness. However, focus on weekly averages and trends rather than day-to-day fluctuations for better perspective.',
+  ],
+  [
+    'How do achievements work?',
+    'Achievements are unlocked when you reach specific milestones in different categories (activity, steps, sleep, hydration) or achieve high total point scores.',
+  ],
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Establish baseline: track all activities, steps, sleep, and hydration to calculate your current activity points score.' },
+  { week: 2, focus: 'Set goals: aim to increase your score by 5-10 points through small improvements in each category.' },
+  { week: 3, focus: 'Optimize sleep: prioritize 7-9 hours of quality sleep per night to maximize sleep points and support recovery.' },
+  { week: 4, focus: 'Increase steps: aim for 10,000 steps daily by taking walking breaks, using stairs, and parking farther away.' },
+  { week: 5, focus: 'Enhance activities: add 30 minutes of moderate exercise or increase intensity of existing activities.' },
+  { week: 6, focus: 'Improve hydration: meet daily water intake goals (35ml per kg) by drinking water consistently throughout the day.' },
+  { week: 7, focus: 'Build consistency: maintain improvements across all categories and track progress toward your goals.' },
+  { week: 8, focus: 'Establish long-term habits: integrate activity points tracking into your regular lifestyle for sustained health benefits.' },
+];
+
+const warningSigns = () => [
+  'Activity points are estimates and should not replace professional health advice or medical assessment.',
+  'Very high activity levels (80+ points) may indicate overtraining—ensure adequate rest and recovery.',
+  'If experiencing pain, fatigue, or health concerns, consult a healthcare provider before increasing activity.',
+  'Rapid increases in activity may lead to injury—gradually increase exercise duration and intensity over weeks.',
+];
+
 export default function DailyActivityPointsCalculator() {
-  const [result, setResult] = useState<{
-    totalPoints: number;
-    activityPoints: number;
-    stepsPoints: number;
-    sleepPoints: number;
-    hydrationPoints: number;
-    level: string;
-    interpretation: string;
-    recommendations: string[];
-    weeklyGoal: number;
-    achievements: string[];
-  } | null>(null);
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -53,6 +141,11 @@ export default function DailyActivityPointsCalculator() {
       sleepHours: undefined,
       waterIntake: undefined,
     },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: 'activities',
   });
 
   const activityPointValues = {
@@ -204,258 +297,224 @@ export default function DailyActivityPointsCalculator() {
       level,
       interpretation,
       recommendations,
+      warningSigns: warningSigns(),
+      plan: plan(),
       weeklyGoal: Math.round(weeklyGoal),
       achievements,
     });
   };
 
-  const addActivity = () => {
-    const currentActivities = form.getValues('activities');
-    form.setValue('activities', [...currentActivities, { activity: '', duration: undefined, intensity: undefined }]);
-  };
-
-  const removeActivity = (index: number) => {
-    const currentActivities = form.getValues('activities');
-    if (currentActivities.length > 1) {
-      form.setValue('activities', currentActivities.filter((_, i) => i !== index));
-    }
-  };
-
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <FormField 
-              control={form.control} 
-              name="age" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Age (years)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your age"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="weight" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Weight (kg)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your weight"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="gender" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Gender</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Trophy className="h-5 w-5" /> Daily Activity Points Calculator</CardTitle>
+          <CardDescription>Track comprehensive daily activity including exercise, steps, sleep, and hydration with a unified points system.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <FormField control={form.control} name="age" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Age (years)</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select gender" />
-                      </SelectTrigger>
+                      <Input
+                        type="number"
+                        step="1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-          </div>
-
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold">Daily Activities</h3>
-              <Button type="button" variant="outline" onClick={addActivity}>
-                Add Activity
-              </Button>
-            </div>
-            {form.watch('activities').map((_, index) => (
-              <div key={index} className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 border rounded-lg">
-                <FormField 
-                  control={form.control} 
-                  name={`activities.${index}.activity`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Activity</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select activity" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="walking">Walking</SelectItem>
-                          <SelectItem value="running">Running</SelectItem>
-                          <SelectItem value="cycling">Cycling</SelectItem>
-                          <SelectItem value="swimming">Swimming</SelectItem>
-                          <SelectItem value="strength_training">Strength Training</SelectItem>
-                          <SelectItem value="yoga">Yoga</SelectItem>
-                          <SelectItem value="dancing">Dancing</SelectItem>
-                          <SelectItem value="sports">Sports</SelectItem>
-                          <SelectItem value="hiking">Hiking</SelectItem>
-                          <SelectItem value="housework">Housework</SelectItem>
-                          <SelectItem value="gardening">Gardening</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )} 
-                />
-                <FormField 
-                  control={form.control} 
-                  name={`activities.${index}.duration`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Duration (minutes)</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="weight" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Weight (kg)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="gender" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Gender</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          placeholder="Enter duration"
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                        />
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select gender" />
+                        </SelectTrigger>
                       </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )} 
-                />
-                <FormField 
-                  control={form.control} 
-                  name={`activities.${index}.intensity`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Intensity</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select intensity" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="low">Low</SelectItem>
-                          <SelectItem value="moderate">Moderate</SelectItem>
-                          <SelectItem value="high">High</SelectItem>
-                          <SelectItem value="very_high">Very High</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )} 
-                />
-                {form.watch('activities').length > 1 && (
-                  <div className="flex items-end">
-                    <Button 
-                      type="button" 
-                      variant="destructive" 
-                      size="sm"
-                      onClick={() => removeActivity(index)}
-                    >
-                      Remove
-                    </Button>
-                  </div>
-                )}
+                      <SelectContent>
+                        <SelectItem value="male">Male</SelectItem>
+                        <SelectItem value="female">Female</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
               </div>
-            ))}
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <FormField 
-              control={form.control} 
-              name="steps" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Daily Steps</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter daily steps"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold">Daily Activities</h3>
+                  <Button type="button" variant="outline" onClick={() => append({ activity: '', duration: undefined, intensity: undefined })}>
+                    Add Activity
+                  </Button>
+                </div>
+                {fields.map((field, index) => (
+                  <div key={field.id} className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 border rounded-lg">
+                    <FormField 
+                      control={form.control} 
+                      name={`activities.${index}.activity`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Activity</FormLabel>
+                          <Select onValueChange={field.onChange} value={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select activity" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="walking">Walking</SelectItem>
+                              <SelectItem value="running">Running</SelectItem>
+                              <SelectItem value="cycling">Cycling</SelectItem>
+                              <SelectItem value="swimming">Swimming</SelectItem>
+                              <SelectItem value="strength_training">Strength Training</SelectItem>
+                              <SelectItem value="yoga">Yoga</SelectItem>
+                              <SelectItem value="dancing">Dancing</SelectItem>
+                              <SelectItem value="sports">Sports</SelectItem>
+                              <SelectItem value="hiking">Hiking</SelectItem>
+                              <SelectItem value="housework">Housework</SelectItem>
+                              <SelectItem value="gardening">Gardening</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )} 
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="sleepHours" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Sleep Hours</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter sleep hours"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    <FormField 
+                      control={form.control} 
+                      name={`activities.${index}.duration`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Duration (minutes)</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="1"
+                              value={field.value ?? ''}
+                              onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )} 
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="waterIntake" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Water Intake (ml)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter water intake"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                    <FormField 
+                      control={form.control} 
+                      name={`activities.${index}.intensity`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Intensity</FormLabel>
+                          <Select onValueChange={field.onChange} value={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select intensity" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="low">Low</SelectItem>
+                              <SelectItem value="moderate">Moderate</SelectItem>
+                              <SelectItem value="high">High</SelectItem>
+                              <SelectItem value="very_high">Very High</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )} 
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-          </div>
-          <Button type="submit">Calculate Activity Points</Button>
-        </form>
-      </Form>
+                    {fields.length > 1 && (
+                      <div className="flex items-end">
+                        <Button 
+                          type="button" 
+                          variant="destructive" 
+                          size="sm"
+                          onClick={() => remove(index)}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <FormField control={form.control} name="steps" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Daily Steps</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="1"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="sleepHours" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Sleep Hours</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="0.5"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="waterIntake" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Water Intake (ml)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        step="50"
+                        value={field.value ?? ''}
+                        onChange={(event) => field.onChange(event.target.value === '' ? undefined : Number(event.target.value))}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Calculate Activity Points</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-4">
-                <Trophy className="h-8 w-8 text-primary" />
-                <CardTitle>Daily Activity Score</CardTitle>
-              </div>
+              <div className="flex items-center gap-4"><Activity className="h-8 w-8 text-primary" /><CardTitle>Daily Activity Score</CardTitle></div>
+              <CardDescription>Your comprehensive activity assessment and points breakdown</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="text-center">
@@ -464,19 +523,19 @@ export default function DailyActivityPointsCalculator() {
                 <p className="text-xl font-semibold text-primary">{result.level}</p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-blue-500">{result.activityPoints}</p>
                   <p className="text-sm text-muted-foreground">Activity Points</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-green-500">{result.stepsPoints}</p>
                   <p className="text-sm text-muted-foreground">Steps Points</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-purple-500">{result.sleepPoints}</p>
                   <p className="text-sm text-muted-foreground">Sleep Points</p>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 border rounded">
                   <p className="text-2xl font-bold text-cyan-500">{result.hydrationPoints}</p>
                   <p className="text-sm text-muted-foreground">Hydration Points</p>
                 </div>
@@ -501,150 +560,160 @@ export default function DailyActivityPointsCalculator() {
             </Card>
           )}
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Analysis & Recommendations</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">{result.interpretation}</p>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold mb-2">Recommendations:</h4>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    {result.recommendations.map((rec, index) => (
-                      <li key={index}>{rec}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">{result.interpretation}</p>
+                <ul className="space-y-2">
+                  {result.recommendations.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+                <div className="mt-4">
                   <h4 className="font-semibold mb-2">Weekly Goal:</h4>
-                  <p className="text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     Aim for at least {result.weeklyGoal} points per day to maintain your current level of health and activity.
                   </p>
                 </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Warning Signs & Precautions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Activity Points Improvement Plan</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-2">Week</th>
+                      <th className="text-left p-2">Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.plan.map(({ week, focus }) => (
+                      <tr key={week} className="border-b">
+                        <td className="p-2">{week}</td>
+                        <td className="p-2">{focus}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </CardContent>
           </Card>
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>
-              This calculator assigns points based on your daily activities, steps, sleep quality, and hydration. 
-              Each component is scored independently and contributes to your total daily activity score.
-            </p>
-            <p>
-              The scoring system considers the intensity and duration of activities, with higher-intensity activities 
-              earning more points per minute. Sleep and hydration are scored based on optimal health recommendations.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide to Daily Activity Points</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Understanding the Point System</h4>
-              <p>
-                The daily activity points system provides a comprehensive way to track your overall health and 
-                wellness. It goes beyond just exercise to include all aspects of a healthy lifestyle.
-              </p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate information for meaningful results</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {understandingInputs.map((item, index) => (
+              <li key={index}>
+                <span className="font-semibold text-foreground">{item.label}:</span>
+                <span className="text-sm text-muted-foreground"> {item.description}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Build a comprehensive health and fitness assessment</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/step-to-calorie-converter" className="text-primary hover:underline">
+                  Step-to-Calorie Converter
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Convert steps to calories to complement activity points tracking.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Activity Points Breakdown</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Low Intensity:</strong> 2-4 points per 15 minutes (walking, light yoga)</li>
-                <li><strong>Moderate Intensity:</strong> 3-6 points per 15 minutes (brisk walking, cycling)</li>
-                <li><strong>High Intensity:</strong> 4-8 points per 15 minutes (running, swimming)</li>
-                <li><strong>Very High Intensity:</strong> 5-10 points per 15 minutes (HIIT, competitive sports)</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary hover:underline">
+                  Standing vs Sitting Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Compare calorie burn between positions to optimize daily activity.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Steps Points</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>15,000+ steps:</strong> 20 points (Elite level)</li>
-                <li><strong>12,000-14,999 steps:</strong> 15 points (Excellent)</li>
-                <li><strong>10,000-11,999 steps:</strong> 10 points (Good)</li>
-                <li><strong>7,500-9,999 steps:</strong> 7 points (Fair)</li>
-                <li><strong>5,000-7,499 steps:</strong> 5 points (Poor)</li>
-                <li><strong>Below 5,000 steps:</strong> 1 point per 1,000 steps</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/sleep-quality-calculator" className="text-primary hover:underline">
+                  Sleep Quality Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Assess sleep quality to optimize sleep points and overall health.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Sleep Points</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>8-9 hours:</strong> 10 points (Optimal)</li>
-                <li><strong>7-10 hours:</strong> 7 points (Good)</li>
-                <li><strong>6-11 hours:</strong> 4 points (Fair)</li>
-                <li><strong>5-12 hours:</strong> 2 points (Poor)</li>
-                <li><strong>Outside 5-12 hours:</strong> 0 points (Very poor)</li>
-              </ul>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/hydration-calculator" className="text-primary hover:underline">
+                  Hydration Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Calculate optimal hydration needs to maximize hydration points.</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Hydration Points</h4>
-              <p>
-                Based on 35ml of water per kg of body weight (recommended daily intake):
-              </p>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>100%+ of recommended:</strong> 10 points</li>
-                <li><strong>80-99%:</strong> 8 points</li>
-                <li><strong>60-79%:</strong> 6 points</li>
-                <li><strong>40-59%:</strong> 4 points</li>
-                <li><strong>20-39%:</strong> 2 points</li>
-                <li><strong>Below 20%:</strong> 0 points</li>
-              </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Understanding Daily Activity Points</CardTitle>
+          <CardDescription>Evidence-based information about comprehensive activity tracking</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>
+            The daily activity points system provides a comprehensive way to track overall health and wellness by scoring exercise, steps, sleep, and hydration. It goes beyond just exercise to include all aspects of a healthy lifestyle.
+          </p>
+          <p>
+            Activity points are based on exercise type, duration, and intensity, with higher-intensity activities earning more points per minute. Steps contribute points based on daily totals (10,000+ steps earn maximum points), sleep is scored based on optimal health recommendations (7-9 hours), and hydration points are based on meeting recommended intake (35ml per kg body weight).
+          </p>
+          <p>
+            Activity levels range from Very Poor (below 15 points) to Elite (80+ points). Focus on consistency across all categories rather than excelling in just one area. Small improvements in each category can significantly increase your total score.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>Common questions about daily activity points and tracking</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map(([question, answer], index) => (
+            <div key={index}>
+              <h4 className="font-semibold mb-1">{question}</h4>
+              <p className="text-sm text-muted-foreground">{answer}</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Activity Levels</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Elite (80+ points):</strong> Exceptional daily activity and health habits</li>
-                <li><strong>Excellent (60-79 points):</strong> Very good activity level and health habits</li>
-                <li><strong>Good (40-59 points):</strong> Solid activity level with room for improvement</li>
-                <li><strong>Fair (25-39 points):</strong> Moderate activity, needs more consistency</li>
-                <li><strong>Poor (15-24 points):</strong> Low activity level, significant improvement needed</li>
-                <li><strong>Very Poor (Below 15 points):</strong> Minimal activity, major lifestyle changes needed</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Tips for Improving Your Score</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Start Small:</strong> Begin with 15-30 minutes of daily activity</li>
-                <li><strong>Mix It Up:</strong> Combine different types of activities</li>
-                <li><strong>Track Everything:</strong> Use apps or journals to monitor progress</li>
-                <li><strong>Set Goals:</strong> Aim for specific point targets each week</li>
-                <li><strong>Focus on Consistency:</strong> Better to do a little daily than a lot occasionally</li>
-                <li><strong>Get Support:</strong> Find workout partners or join fitness groups</li>
-                <li><strong>Celebrate Achievements:</strong> Acknowledge your progress and milestones</li>
-              </ul>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-calculators">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Activity Tracking</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/step-to-calorie-converter" className="text-primary underline">Step-to-Calorie Converter</a></li>
-                  <li><a href="/category/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary underline">Standing vs Sitting Calculator</a></li>
-                  <li><a href="/category/health-fitness/calorie-burn-calculator" className="text-primary underline">Calorie Burn Calculator</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Health & Wellness</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/bmr-calculator" className="text-primary underline">BMR Calculator</a></li>
-                  <li><a href="/category/health-fitness/sleep-quality-calculator" className="text-primary underline">Sleep Quality Calculator</a></li>
-                  <li><a href="/category/health-fitness/hydration-calculator" className="text-primary underline">Hydration Calculator</a></li>
-                </ul>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
