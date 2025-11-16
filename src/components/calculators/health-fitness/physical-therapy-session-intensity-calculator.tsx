@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -9,8 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, TrendingUp, CheckCircle, Info, AlertTriangle } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Activity, TrendingUp, CheckCircle, AlertTriangle, Calendar } from 'lucide-react';
 import Link from 'next/link';
 
 const formSchema = z.object({
@@ -26,182 +25,215 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const getIntensityInterpretation = (intensity: number, recoveryStage: string, painLevel: number) => {
+type ResultPayload = {
+  intensity: number;
+  interpretation: ReturnType<typeof getIntensityInterpretation>;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+  sessionComponents: {
+    warmup: { duration: number; intensity: number };
+    main: { duration: number; intensity: number };
+    cooldown: { duration: number; intensity: number };
+  };
+};
+
+const understandingInputs = [
+  { label: 'Injury or Condition Type', description: 'Different tissues tolerate loading differently. Select the diagnosis guiding your rehab plan.' },
+  { label: 'Recovery Stage', description: 'Acute, subacute, chronic, or return-to-sport phases dictate safe intensity ranges.' },
+  { label: 'Pain Level', description: 'Higher pain requires gentler sessions and longer rest between exercises.' },
+  { label: 'Age', description: 'Older adults generally need lower session intensity and more recovery time.' },
+  { label: 'Fitness Level', description: 'Baseline conditioning influences how quickly you can progress loads.' },
+  { label: 'Session Frequency', description: 'Daily visits require lower intensity than once-weekly therapy.' },
+  { label: 'Primary Goal', description: 'Pain relief, ROM, strength, function, or sport return each demand different workloads.' },
+  { label: 'Previous PT Experience', description: 'Experience improves motor control and exercise familiarity, supporting higher intensity.' },
+];
+
+const faqs: [string, string][] = [
+  ['What intensity is best during the acute stage?', 'Most acute sessions stay below 4/10 intensity. Focus on pain control, swelling reduction, and gentle isometrics.'],
+  ['Can physical therapy hurt?', 'Mild discomfort is acceptable, but sharp or lasting pain suggests the session was too intense and needs adjustment.'],
+  ['How often should I change intensity?', 'Reassess weekly or whenever symptoms, recovery stage, or goals change.'],
+  ['Do athletes always train harder in PT?', 'No. Intensity must match tissue healing status, not competitive drive.'],
+  ['Why does frequency matter?', 'Frequent sessions accumulate fatigue; lowering per-session intensity prevents setbacks.'],
+  ['How do different goals affect loading?', 'Strength and sport-return plans need higher intensity than pain-relief or ROM programs.'],
+  ['Can I combine PT with other workouts?', 'Yes, but coordinate with your therapist to avoid overloading the injured area.'],
+  ['Does age reduce intensity?', 'Often. Aging tissues regenerate slower, so intensity typically scales back slightly for safety.'],
+  ['What if I skip my home program?', 'Inconsistent adherence slows progress, meaning clinic sessions may need to stay conservative.'],
+  ['When should I see my therapist again?', 'If pain spikes above 6/10, swelling increases, or function regresses, schedule a review before progressing.'],
+];
+
+const relatedCalculators = [
+  { title: 'Injury Recovery Timeline Calculator', href: '/category/health-fitness/injury-recovery-timeline-calculator', description: 'Estimate overall healing windows before advancing intensity.' },
+  { title: 'Range of Motion Progress Calculator', href: '/category/health-fitness/range-of-motion-progress-calculator', description: 'Track mobility improvements to justify greater loading.' },
+  { title: 'Strength to Weight Ratio Calculator', href: '/category/health-fitness/strength-to-weight-ratio-calculator', description: 'Measure readiness for higher-level functional drills.' },
+  { title: 'Training Volume Calculator', href: '/category/health-fitness/training-volume-calculator', description: 'Balance workload across therapy, sport practice, and strength training.' },
+];
+
+const completeGuideSections = [
+  {
+    title: 'Session Components',
+    bullets: [
+      'Warm-up: tissue prep, breath work, and mobility at ~30% target intensity.',
+      'Main block: neuromuscular or strength work at calculated intensity.',
+      'Cool-down: mobility, stretching, and nervous-system downregulation.',
+      'Recovery: sleep, hydration, and protein support adaptations.',
+    ],
+  },
+  {
+    title: 'Factors That Raise Intensity',
+    bullets: ['Later recovery stages', 'Low daily pain (<3/10)', 'Higher baseline fitness', 'Less frequent therapy sessions'],
+  },
+  {
+    title: 'Factors That Lower Intensity',
+    bullets: ['Acute inflammation or swelling', 'High pain days', 'Age > 60', 'Daily therapy visits or poor sleep/nutrition'],
+  },
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Set goals, baseline pain scores, and gentle neuromuscular activation.' },
+  { week: 2, focus: 'Introduce breath work, light mobility circuits, and supported isometrics.' },
+  { week: 3, focus: 'Add core stability, unilateral balance drills, and tempo control.' },
+  { week: 4, focus: 'Layer moderate resistance, proprioceptive drills, and walking intervals.' },
+  { week: 5, focus: 'Integrate strength supersets, sled pushes, or aquatic therapy if cleared.' },
+  { week: 6, focus: 'Begin functional patterns, deceleration, or light plyometrics as tolerated.' },
+  { week: 7, focus: 'Advance to sport-specific drills and objective readiness testing.' },
+  { week: 8, focus: 'Complete return-to-activity assessment and create a maintenance plan.' },
+];
+
+const warningSigns = () => [
+  'Pain that rises above 6/10 during or after the session.',
+  'Swelling, warmth, or instability within 24 hours of therapy.',
+  'New numbness, tingling, or weakness.',
+  'Fatigue that lingers longer than 48 hours despite good sleep.',
+];
+
+const getIntensityInterpretation = (intensity: number) => {
   if (intensity > 8) {
     return {
       category: 'High Intensity',
       color: 'text-red-600',
       bgColor: 'bg-red-50',
-      borderColor: 'border-red-200',
+      border: 'border-red-200',
       icon: AlertTriangle,
-      description: 'High intensity session. Monitor closely for pain and fatigue. Consider reducing intensity.',
+      description: 'Advanced loading suitable for late-stage rehab or athletic return—monitor symptoms closely.',
       recommendations: [
-        'Monitor pain levels closely during and after session',
-        'Ensure adequate rest between exercises',
-        'Consider reducing intensity if pain increases',
-        'Focus on proper form over intensity'
-      ]
+        'Confirm tissues are cleared for high load and velocity.',
+        'Schedule at least one lighter day between intense sessions.',
+        'Track soreness and joint reaction 24 hours post-session.',
+        'Use objective tests to justify the workload.',
+      ],
     };
-  } else if (intensity > 6) {
+  }
+
+  if (intensity > 6) {
     return {
       category: 'Moderate-High Intensity',
       color: 'text-orange-600',
       bgColor: 'bg-orange-50',
-      borderColor: 'border-orange-200',
+      border: 'border-orange-200',
       icon: TrendingUp,
-      description: 'Moderate-high intensity session. Good for advancing rehabilitation goals.',
+      description: 'Challenging workload that advances strength and function when symptoms are stable.',
       recommendations: [
-        'Maintain current intensity if well-tolerated',
-        'Monitor for delayed onset muscle soreness',
-        'Ensure proper warm-up and cool-down',
-        'Adjust based on next-day response'
-      ]
+        'Pair sessions with adequate protein and hydration.',
+        'Log RPE (perceived exertion) to ensure consistency.',
+        'Schedule active recovery to limit inflammation.',
+        'Adjust sets/reps if soreness lingers beyond 24 hours.',
+      ],
     };
-  } else if (intensity > 4) {
+  }
+
+  if (intensity > 4) {
     return {
       category: 'Moderate Intensity',
       color: 'text-blue-600',
       bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
+      border: 'border-blue-200',
       icon: Activity,
-      description: 'Moderate intensity session. Appropriate for most rehabilitation stages.',
+      description: 'Balanced sessions that build motor control, endurance, and progressive load tolerance.',
       recommendations: [
-        'Continue with current progression',
-        'Focus on quality of movement',
-        'Gradually increase intensity over time',
-        'Monitor for any adverse reactions'
-      ]
-    };
-  } else {
-    return {
-      category: 'Low Intensity',
-      color: 'text-green-600',
-      bgColor: 'bg-green-50',
-      borderColor: 'border-green-200',
-      icon: CheckCircle,
-      description: 'Low intensity session. Appropriate for early recovery stages or high pain levels.',
-      recommendations: [
-        'Focus on pain-free movement',
-        'Emphasize proper technique',
-        'Gradually progress intensity',
-        'Prioritize consistency over intensity'
-      ]
+        'Emphasize impeccable technique and tempo control.',
+        'Progress resistance every 1–2 weeks if pain stays low.',
+        'Blend bilateral and unilateral patterns.',
+        'Track fatigue, sleep, and stress to guide adjustments.',
+      ],
     };
   }
+
+  return {
+    category: 'Low Intensity',
+    color: 'text-green-600',
+    bgColor: 'bg-green-50',
+    border: 'border-green-200',
+    icon: CheckCircle,
+    description: 'Protective loading ideal for early rehab, high-pain days, or reintroduction after layoffs.',
+    recommendations: [
+      'Focus on breath work, mobility, and gentle activation.',
+      'Use short bouts (10–15 minutes) spread throughout the day.',
+      'Increase difficulty once symptoms remain calm for 48 hours.',
+      'Coordinate with your therapist before adding external load.',
+    ],
+  };
 };
 
 const calculateSessionIntensity = (data: FormValues) => {
-  let baseIntensity = 5; // Start with moderate intensity
-  
-  // Recovery stage adjustments
-  const stageMultipliers = {
-    acute: 0.4,
-    subacute: 0.7,
-    chronic: 1.0,
-    return_to_sport: 1.3,
-  };
-  baseIntensity *= stageMultipliers[data.recoveryStage as keyof typeof stageMultipliers];
-  
-  // Pain level adjustments (inverse relationship)
-  const painAdjustment = (10 - data.painLevel) / 10;
-  baseIntensity *= painAdjustment;
-  
-  // Age adjustments
-  if (data.age > 65) baseIntensity *= 0.8;
-  else if (data.age > 50) baseIntensity *= 0.9;
-  else if (data.age < 18) baseIntensity *= 1.1;
-  
-  // Fitness level adjustments
-  const fitnessMultipliers = {
-    poor: 0.7,
-    average: 1.0,
-    good: 1.2,
-    excellent: 1.4,
-  };
-  baseIntensity *= fitnessMultipliers[data.fitnessLevel as keyof typeof fitnessMultipliers];
-  
-  // Session frequency adjustments
-  const frequencyMultipliers = {
-    daily: 0.6,
-    every_other_day: 0.8,
-    '3x_week': 1.0,
-    '2x_week': 1.2,
-    weekly: 1.4,
-  };
-  baseIntensity *= frequencyMultipliers[data.sessionFrequency as keyof typeof frequencyMultipliers];
-  
-  // Treatment goal adjustments
-  const goalMultipliers = {
-    pain_relief: 0.6,
-    range_of_motion: 0.8,
-    strength: 1.2,
-    function: 1.0,
-    sport_return: 1.3,
-  };
-  baseIntensity *= goalMultipliers[data.treatmentGoals as keyof typeof goalMultipliers];
-  
-  // Previous PT experience adjustments
-  const experienceMultipliers = {
-    none: 0.8,
-    same_condition: 1.0,
-    different_condition: 0.9,
-    multiple: 1.1,
-  };
-  baseIntensity *= experienceMultipliers[data.previousPT as keyof typeof experienceMultipliers];
-  
-  return Math.max(1, Math.min(10, baseIntensity));
+  let score = 5;
+
+  const stageMultipliers = { acute: 0.4, subacute: 0.7, chronic: 1, return_to_sport: 1.3 };
+  score *= stageMultipliers[data.recoveryStage];
+
+  score *= (10 - data.painLevel) / 10;
+
+  if (data.age > 65) score *= 0.8;
+  else if (data.age > 50) score *= 0.9;
+  else if (data.age < 18) score *= 1.1;
+
+  const fitnessMultipliers = { poor: 0.7, average: 1, good: 1.2, excellent: 1.35 };
+  score *= fitnessMultipliers[data.fitnessLevel];
+
+  const frequencyMultipliers = { daily: 0.6, every_other_day: 0.8, '3x_week': 1, '2x_week': 1.15, weekly: 1.3 };
+  score *= frequencyMultipliers[data.sessionFrequency];
+
+  const goalMultipliers = { pain_relief: 0.6, range_of_motion: 0.8, strength: 1.2, function: 1, sport_return: 1.3 };
+  score *= goalMultipliers[data.treatmentGoals];
+
+  const experienceMultipliers = { none: 0.85, same_condition: 1, different_condition: 0.95, multiple: 1.1 };
+  score *= experienceMultipliers[data.previousPT];
+
+  return Math.max(1, Math.min(10, score));
 };
 
 export default function PhysicalTherapySessionIntensityCalculator() {
-  const [result, setResult] = useState<{
-    intensity: number;
-    interpretation: ReturnType<typeof getIntensityInterpretation>;
-    recommendations: string[];
-    sessionComponents: {
-      warmup: { duration: number; intensity: number };
-      main: { duration: number; intensity: number };
-      cooldown: { duration: number; intensity: number };
-    };
-  } | null>(null);
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      injuryType: 'sprain',
-      recoveryStage: 'subacute',
-      painLevel: 3,
-      age: 0,
-      fitnessLevel: 'average',
-      sessionFrequency: '3x_week',
-      treatmentGoals: 'function',
-      previousPT: 'none',
+      injuryType: undefined,
+      recoveryStage: undefined,
+      painLevel: undefined,
+      age: undefined,
+      fitnessLevel: undefined,
+      sessionFrequency: undefined,
+      treatmentGoals: undefined,
+      previousPT: undefined,
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    const intensity = calculateSessionIntensity(data);
-    const interpretation = getIntensityInterpretation(intensity, data.recoveryStage, data.painLevel);
-    
-    // Calculate session components based on intensity
+  const onSubmit = (values: FormValues) => {
+    const intensity = calculateSessionIntensity(values);
+    const interpretation = getIntensityInterpretation(intensity);
     const sessionComponents = {
-      warmup: {
-        duration: Math.round(10 + (intensity * 2)),
-        intensity: Math.max(1, intensity * 0.3)
-      },
-      main: {
-        duration: Math.round(30 + (intensity * 5)),
-        intensity: intensity
-      },
-      cooldown: {
-        duration: Math.round(10 + (intensity * 1)),
-        intensity: Math.max(1, intensity * 0.2)
-      }
+      warmup: { duration: Math.round(10 + intensity * 1.5), intensity: Math.max(1, intensity * 0.35) },
+      main: { duration: Math.round(25 + intensity * 4), intensity },
+      cooldown: { duration: Math.round(8 + intensity * 0.8), intensity: Math.max(1, intensity * 0.25) },
     };
-    
+
     setResult({
       intensity,
       interpretation,
       recommendations: interpretation.recommendations,
+      warningSigns: warningSigns(),
+      plan: plan(),
       sessionComponents,
     });
   };
@@ -211,106 +243,144 @@ export default function PhysicalTherapySessionIntensityCalculator() {
     setResult(null);
   };
 
-  return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8">
-      <div className="text-center space-y-4">
-        <div className="flex items-center justify-center gap-2">
-          <Activity className="h-8 w-8 text-primary" />
-          <h1 className="text-3xl font-bold">Physical Therapy Session Intensity Calculator</h1>
-        </div>
-        <p className="text-muted-foreground text-lg">
-          Calculate optimal intensity for your physical therapy sessions based on recovery stage and condition
-        </p>
-      </div>
+  const numberInputProps = (handler: (value: number | undefined) => void, value: number | undefined, options?: { min?: number; max?: number }) => ({
+    value: value ?? '',
+    min: options?.min,
+    max: options?.max,
+    onChange: (event: ChangeEvent<HTMLInputElement>) => {
+      const parsed = event.target.value === '' ? undefined : Number(event.target.value);
+      handler(Number.isNaN(parsed as number) ? undefined : parsed);
+    },
+  });
 
+  const selectFields: {
+    name: keyof Pick<FormValues, 'injuryType' | 'recoveryStage' | 'fitnessLevel' | 'sessionFrequency' | 'treatmentGoals' | 'previousPT'>;
+    label: string;
+    options: { value: string; label: string }[];
+  }[] = [
+    {
+      name: 'injuryType',
+      label: 'Injury or Condition Type',
+      options: [
+        { value: 'sprain', label: 'Sprain' },
+        { value: 'strain', label: 'Strain' },
+        { value: 'fracture', label: 'Fracture' },
+        { value: 'tendonitis', label: 'Tendonitis' },
+        { value: 'bursitis', label: 'Bursitis' },
+        { value: 'muscle_tear', label: 'Muscle Tear' },
+        { value: 'ligament_tear', label: 'Ligament Tear' },
+        { value: 'post_surgical', label: 'Post-surgical' },
+        { value: 'chronic_pain', label: 'Chronic Pain' },
+      ],
+    },
+    {
+      name: 'recoveryStage',
+      label: 'Recovery Stage',
+      options: [
+        { value: 'acute', label: 'Acute (0–2 weeks)' },
+        { value: 'subacute', label: 'Subacute (2–6 weeks)' },
+        { value: 'chronic', label: 'Chronic (6+ weeks)' },
+        { value: 'return_to_sport', label: 'Return to Sport' },
+      ],
+    },
+    {
+      name: 'fitnessLevel',
+      label: 'Fitness Level',
+      options: [
+        { value: 'poor', label: 'Poor' },
+        { value: 'average', label: 'Average' },
+        { value: 'good', label: 'Good' },
+        { value: 'excellent', label: 'Excellent' },
+      ],
+    },
+    {
+      name: 'sessionFrequency',
+      label: 'Session Frequency',
+      options: [
+        { value: 'daily', label: 'Daily' },
+        { value: 'every_other_day', label: 'Every Other Day' },
+        { value: '3x_week', label: '3× per Week' },
+        { value: '2x_week', label: '2× per Week' },
+        { value: 'weekly', label: 'Weekly' },
+      ],
+    },
+    {
+      name: 'treatmentGoals',
+      label: 'Primary Treatment Goal',
+      options: [
+        { value: 'pain_relief', label: 'Pain Relief' },
+        { value: 'range_of_motion', label: 'Range of Motion' },
+        { value: 'strength', label: 'Strength' },
+        { value: 'function', label: 'Function' },
+        { value: 'sport_return', label: 'Return to Sport' },
+      ],
+    },
+    {
+      name: 'previousPT',
+      label: 'Previous Physical Therapy Experience',
+      options: [
+        { value: 'none', label: 'None' },
+        { value: 'same_condition', label: 'Same Condition' },
+        { value: 'different_condition', label: 'Different Condition' },
+        { value: 'multiple', label: 'Multiple Courses' },
+      ],
+    },
+  ];
+
+  return (
+    <div className="space-y-8">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5" />
-            Session Intensity Calculation
+            <Activity className="h-5 w-5 text-primary" />
+            Physical Therapy Session Intensity Calculator
           </CardTitle>
-          <CardDescription>
-            Enter your condition and recovery details to determine optimal session intensity
-          </CardDescription>
+          <CardDescription>Align therapy loads with recovery stage, pain tolerance, and rehab goals.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="injuryType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Injury/Condition Type</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select injury type" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="sprain">Sprain</SelectItem>
-                          <SelectItem value="strain">Strain</SelectItem>
-                          <SelectItem value="fracture">Fracture</SelectItem>
-                          <SelectItem value="tendonitis">Tendonitis</SelectItem>
-                          <SelectItem value="bursitis">Bursitis</SelectItem>
-                          <SelectItem value="muscle_tear">Muscle Tear</SelectItem>
-                          <SelectItem value="ligament_tear">Ligament Tear</SelectItem>
-                          <SelectItem value="post_surgical">Post-Surgical</SelectItem>
-                          <SelectItem value="chronic_pain">Chronic Pain</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="recoveryStage"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Recovery Stage</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select recovery stage" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="acute">Acute (0-2 weeks)</SelectItem>
-                          <SelectItem value="subacute">Subacute (2-6 weeks)</SelectItem>
-                          <SelectItem value="chronic">Chronic (6+ weeks)</SelectItem>
-                          <SelectItem value="return_to_sport">Return to Sport</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                {selectFields.map(({ name, label, options }) => (
+                  <FormField
+                    key={name}
+                    control={form.control}
+                    name={name}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{label}</FormLabel>
+                        <Select value={field.value} onValueChange={field.onChange}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select option" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {options.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                ))}
                 <FormField
                   control={form.control}
                   name="painLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Current Pain Level (0-10)</FormLabel>
+                      <FormLabel>Pain Level (0–10)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          min="0"
-                          max="10"
-                          placeholder="Enter pain level"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, { min: 0, max: 10 })} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="age"
@@ -318,122 +388,18 @@ export default function PhysicalTherapySessionIntensityCalculator() {
                     <FormItem>
                       <FormLabel>Age (years)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter your age"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, { min: 1 })} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
-                <FormField
-                  control={form.control}
-                  name="fitnessLevel"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Fitness Level</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select fitness level" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="poor">Poor</SelectItem>
-                          <SelectItem value="average">Average</SelectItem>
-                          <SelectItem value="good">Good</SelectItem>
-                          <SelectItem value="excellent">Excellent</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="sessionFrequency"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Session Frequency</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select session frequency" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="daily">Daily</SelectItem>
-                          <SelectItem value="every_other_day">Every Other Day</SelectItem>
-                          <SelectItem value="3x_week">3x per Week</SelectItem>
-                          <SelectItem value="2x_week">2x per Week</SelectItem>
-                          <SelectItem value="weekly">Weekly</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="treatmentGoals"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Primary Treatment Goal</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select treatment goal" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="pain_relief">Pain Relief</SelectItem>
-                          <SelectItem value="range_of_motion">Range of Motion</SelectItem>
-                          <SelectItem value="strength">Strength</SelectItem>
-                          <SelectItem value="function">Function</SelectItem>
-                          <SelectItem value="sport_return">Return to Sport</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="previousPT"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Previous PT Experience</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select previous PT experience" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="none">None</SelectItem>
-                          <SelectItem value="same_condition">Same Condition</SelectItem>
-                          <SelectItem value="different_condition">Different Condition</SelectItem>
-                          <SelectItem value="multiple">Multiple Conditions</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
               </div>
-
-              <div className="flex gap-4">
-                <Button type="submit" className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700">
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button type="submit" className="w-full sm:flex-1 bg-gradient-to-r from-indigo-600 to-purple-600">
                   Calculate Intensity
                 </Button>
-                <Button type="button" variant="outline" onClick={resetCalculator}>
+                <Button type="button" variant="outline" className="w-full sm:w-auto" onClick={resetCalculator}>
                   Reset
                 </Button>
               </div>
@@ -444,145 +410,179 @@ export default function PhysicalTherapySessionIntensityCalculator() {
 
       {result && (
         <div className="space-y-6">
-          <Card className={`${result.interpretation.bgColor} ${result.interpretation.borderColor} border-2`}>
+          <Card className={`${result.interpretation.bgColor} border ${result.interpretation.border}`}>
             <CardHeader>
-              <CardTitle className={`${result.interpretation.color} flex items-center gap-2`}>
+              <CardTitle className={`flex items-center gap-2 ${result.interpretation.color}`}>
                 <result.interpretation.icon className="h-5 w-5" />
                 {result.interpretation.category}
               </CardTitle>
-              <CardDescription className="text-gray-700">
-                {result.interpretation.description}
-              </CardDescription>
+              <CardDescription>{result.interpretation.description}</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="text-center p-4 bg-white rounded-lg">
-                <div className="text-4xl font-bold text-primary">{result.intensity.toFixed(1)}/10</div>
-                <div className="text-sm text-muted-foreground">Recommended Session Intensity</div>
+            <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="rounded border bg-white p-4 text-center">
+                <p className="text-3xl font-bold text-primary">{result.intensity.toFixed(1)}/10</p>
+                <p className="text-sm text-muted-foreground">Recommended Session Intensity</p>
               </div>
-
-              <div className="space-y-3">
-                <h4 className="font-semibold text-foreground">Recommendations:</h4>
-                <ul className="space-y-2">
-                  {result.recommendations.map((rec, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{rec}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="rounded border bg-white p-4 text-center">
+                <p className="text-3xl font-bold text-primary">{result.sessionComponents.main.duration} min</p>
+                <p className="text-sm text-muted-foreground">Main Block Duration</p>
               </div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Session Structure</CardTitle>
+              <CardTitle>Session Structure Blueprint</CardTitle>
+              <CardDescription>Distribute intensity across warm-up, work sets, and cool-down.</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span>Warm-up ({result.sessionComponents.warmup.duration} minutes)</span>
-                    <span>Intensity: {result.sessionComponents.warmup.intensity.toFixed(1)}/10</span>
+            <CardContent className="space-y-4">
+              {Object.entries(result.sessionComponents).map(([section, info]) => (
+                <div key={section}>
+                  <div className="mb-1 flex justify-between text-sm">
+                    <span className="capitalize">
+                      {section} · {info.duration} minutes
+                    </span>
+                    <span>Intensity {info.intensity.toFixed(1)}/10</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-green-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${(result.sessionComponents.warmup.intensity / 10) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span>Main Exercises ({result.sessionComponents.main.duration} minutes)</span>
-                    <span>Intensity: {result.sessionComponents.main.intensity.toFixed(1)}/10</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-blue-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${(result.sessionComponents.main.intensity / 10) * 100}%` }}
-                    ></div>
+                  <div className="h-2 w-full rounded-full bg-muted">
+                    <div className="h-2 rounded-full bg-primary" style={{ width: `${Math.min(100, (info.intensity / 10) * 100)}%` }} />
                   </div>
                 </div>
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span>Cool-down ({result.sessionComponents.cooldown.duration} minutes)</span>
-                    <span>Intensity: {result.sessionComponents.cooldown.intensity.toFixed(1)}/10</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-purple-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${(result.sessionComponents.cooldown.intensity / 10) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
+              ))}
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Actionable Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {result.recommendations.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <AlertTriangle className="h-4 w-4" />
+                  Warning Signs
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {result.warningSigns.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                8‑Week Intensity Progression Plan
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="px-2 py-2 text-left">Week</th>
+                    <th className="px-2 py-2 text-left">Focus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {result.plan.map(({ week, focus }) => (
+                    <tr key={week} className="border-b">
+                      <td className="px-2 py-2 font-semibold">Week {week}</td>
+                      <td className="px-2 py-2 text-muted-foreground">{focus}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </CardContent>
           </Card>
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="understanding">
-          <AccordionTrigger className="text-left">
-            <div className="flex items-center gap-2">
-              <Info className="h-4 w-4" />
-              Understanding Physical Therapy Session Intensity
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Why each data point changes your training prescription.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            {understandingInputs.map((item) => (
+              <li key={item.label}>
+                <span className="font-semibold text-foreground">{item.label}:</span> {item.description}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Layer multiple tools for a complete rehab dashboard.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {relatedCalculators.map((item) => (
+            <div key={item.title} className="rounded border p-4">
+              <h4 className="font-semibold">
+                <Link href={item.href} className="text-primary hover:underline">
+                  {item.title}
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">{item.description}</p>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>For more detailed information on physical therapy session planning and intensity management, consult these authoritative sources:</p>
-            <ul className="list-disc list-inside space-y-1 pl-4">
-              <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3133579/" target="_blank" rel="noopener noreferrer" className="text-primary underline">National Center for Biotechnology Information – Physical Therapy</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          ))}
+        </CardContent>
+      </Card>
 
-      <section
-        className="space-y-4 text-muted-foreground leading-relaxed"
-        itemScope
-        itemType="https://schema.org/Article"
-      >
-        <meta itemProp="headline" content="Physical Therapy Session Intensity Calculator – Optimize Rehabilitation Sessions" />
-        <meta itemProp="author" content="MegaCalc Hub Team" />
-        <meta itemProp="about" content="How to calculate optimal PT session intensity, understand recovery stages, and maximize rehabilitation outcomes." />
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Structuring PT Sessions</CardTitle>
+          <CardDescription>Use these pillars to interpret your intensity score.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          {completeGuideSections.map((section) => (
+            <div key={section.title}>
+              <h3 className="text-base font-semibold text-foreground">{section.title}</h3>
+              <ul className="list-disc space-y-1 pl-5">
+                {section.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
 
-        <h2 itemProp="name" className="text-xl font-bold text-foreground">Understanding Physical Therapy Session Intensity</h2>
-        <p itemProp="description">Optimal physical therapy session intensity varies based on injury type, recovery stage, pain levels, and individual factors. Proper intensity ensures effective rehabilitation without causing setbacks.</p>
-
-        <h3 className="font-semibold text-foreground mt-6">Recovery Stages and Intensity</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Acute Stage:</strong> Low intensity focused on pain management and protection</li>
-          <li><strong>Subacute Stage:</strong> Moderate intensity with gradual progression</li>
-          <li><strong>Chronic Stage:</strong> Higher intensity focused on function and strength</li>
-          <li><strong>Return to Sport:</strong> High intensity sport-specific training</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Factors Affecting Session Intensity</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Pain Level:</strong> Higher pain typically requires lower intensity</li>
-          <li><strong>Recovery Stage:</strong> Earlier stages require more conservative approaches</li>
-          <li><strong>Fitness Level:</strong> Better fitness allows for higher intensity</li>
-          <li><strong>Session Frequency:</strong> More frequent sessions may require lower intensity</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Session Components</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Warm-up:</strong> 10-20 minutes at 30% of session intensity</li>
-          <li><strong>Main Exercises:</strong> 30-60 minutes at calculated intensity</li>
-          <li><strong>Cool-down:</strong> 10-15 minutes at 20% of session intensity</li>
-          <li><strong>Recovery:</strong> Adequate rest between sessions</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
-        <div className="space-y-2">
-          <p><Link href="/category/health-fitness/injury-recovery-timeline-calculator" className="text-primary underline">Injury Recovery Timeline Calculator</Link></p>
-          <p><Link href="/category/health-fitness/range-of-motion-progress-calculator" className="text-primary underline">Range of Motion Progress Calculator</Link></p>
-          <p><Link href="/category/health-fitness/strength-to-weight-ratio-calculator" className="text-primary underline">Strength to Weight Ratio Calculator</Link></p>
-          <p><Link href="/category/health-fitness/training-volume-calculator" className="text-primary underline">Training Volume Calculator</Link></p>
-        </div>
-      </section>
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>SEO-ready answers for clinicians and patients.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          {faqs.map(([question, answer]) => (
+            <div key={question}>
+              <h4 className="font-semibold text-foreground">{question}</h4>
+              <p>{answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
+

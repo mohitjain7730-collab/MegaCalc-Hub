@@ -1,16 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Heart } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Heart, AlertTriangle, Calendar, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 
 const formSchema = z.object({
   weight: z.number().positive('Weight must be positive'),
@@ -24,14 +24,134 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+type ResultPayload = {
+  bmr: number;
+  adjustedCalories: number;
+  proteinNeeds: number;
+  interpretation: string;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+};
+
+const understandingInputs = [
+  { label: 'Weight', description: 'Enter body weight in kilograms. If you only know pounds, divide by 2.205.' },
+  { label: 'Height', description: 'Height in centimeters is required for the Mifflin-St Jeor BMR equation.' },
+  { label: 'Age & Gender', description: 'Metabolic rate declines with age and differs between males and females.' },
+  { label: 'Activity Level', description: 'Select the lifestyle closest to your current movement, not pre-surgery habits.' },
+  { label: 'Surgery Type', description: 'More invasive procedures require higher calorie multipliers to fuel healing.' },
+  { label: 'Days Since Surgery', description: 'Inflammation and metabolic demand decline over time, so calories taper down.' },
+];
+
+const faqs: [string, string][] = [
+  ['How soon after surgery should I track calories?', 'Begin as soon as you can tolerate normal foods. Early tracking helps prevent energy deficits that slow healing.'],
+  ['Why are protein needs so high?', 'Protein repairs incisions, supports immunity, and rebuilds muscle mass lost during hospital stays.'],
+  ['Do I need supplements?', 'Only if your medical team recommends them. Prioritize whole foods first, then use shakes or oral nutrition supplements if appetite is low.'],
+  ['Can I lose weight while recovering?', 'Fat loss should wait until you are cleared for regular activity. Focus on healing first, then consider gradual deficits.'],
+  ['How much water do I need?', 'Aim for at least 30–35 ml/kg. Hydration supports circulation, digestion, and nutrient transport.'],
+  ['What if I feel nauseous?', 'Choose bland, easy-to-digest options like broths, smoothies, and mashed potatoes while keeping protein intake up.'],
+  ['Does sleep affect calorie needs?', 'Poor sleep elevates stress hormones and slows tissue repair. Prioritize 7–9 hours nightly for best recovery.'],
+  ['Should I track micronutrients?', 'Vitamin C, zinc, vitamin D, and omega-3 fats are especially important. Include colorful produce and healthy fats daily.'],
+  ['How often should I reassess?', 'Recalculate every 1–2 weeks or after follow-up appointments as your activity increases.'],
+  ['Can I use this for caregivers?', 'Yes—caregivers can input patient data to plan meals and grocery lists that meet recovery targets.'],
+];
+
+const relatedCalculators = [
+  { title: 'Basal Metabolic Rate (BMR) Calculator', href: '/category/health-fitness/bmr-calculator', description: 'Understand your baseline before surgery adjustments.' },
+  { title: 'Protein Intake Calculator', href: '/category/health-fitness/protein-intake-calculator', description: 'Dial in daily grams to support wound healing.' },
+  { title: 'Hydration Needs Calculator', href: '/category/health-fitness/hydration-needs-calculator', description: 'Set fluid targets that aid recovery and medication absorption.' },
+  { title: 'Body Composition Tracker', href: '/category/health-fitness/body-fat-percentage-calculator', description: 'Monitor long-term shifts after returning to activity.' },
+];
+
+const completeGuideSections = [
+  {
+    title: 'Immediate Post-Op (Days 1–3)',
+    bullets: ['Prioritize hydration, broths, and small protein-rich snacks', 'Limit added sugars that displace nutrient-dense foods', 'Follow hospital dietary instructions exactly'],
+  },
+  {
+    title: 'Early Recovery (Days 4–14)',
+    bullets: ['Increase calories by 10–25% above baseline', 'Introduce vitamin C, zinc, and omega-3 rich foods', 'Split protein into 4–5 feedings of 20–30g each'],
+  },
+  {
+    title: 'Rebuilding Phase (Weeks 3–8)',
+    bullets: ['Gradually increase activity level and adjust calories upward', 'Add fiber for gut health and medication regularity', 'Schedule follow-ups to reassess needs and restrictions'],
+  },
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Hydrate aggressively, focus on soft proteins (yogurt, smoothies), and monitor bowel habits.' },
+  { week: 2, focus: 'Add colorful produce, omega-3 fats, and begin gentle walking if cleared.' },
+  { week: 3, focus: 'Increase calorie intake by 100–200 kcal if energy lags; emphasize high-protein breakfasts.' },
+  { week: 4, focus: 'Introduce light resistance or physical therapy exercises; adjust macros to support activity.' },
+  { week: 5, focus: 'Reassess body weight and appetite, add complex carbohydrates for consistent energy.' },
+  { week: 6, focus: 'Focus on gut health (fermented foods, fiber) and maintain protein at 1.2 g/kg.' },
+  { week: 7, focus: 'Add meal prepping or batch cooking to simplify consistent eating.' },
+  { week: 8, focus: 'Transition toward long-term nutrition goals with your clinician’s input.' },
+];
+
+const warningSigns = () => [
+  'Unintentional weight loss greater than 2% per week post-surgery.',
+  'Persistent nausea, vomiting, or inability to eat for more than 24 hours.',
+  'Signs of infection (fever, redness, drainage) paired with low appetite.',
+  'Dizziness or extreme fatigue despite hitting calorie targets—contact your care team.',
+];
+
+const activityLabels: Record<FormValues['activityLevel'], string> = {
+  sedentary: 'Sedentary (little or no exercise)',
+  light: 'Light (1–3 light workouts/week)',
+  moderate: 'Moderate (3–5 moderate workouts/week)',
+  active: 'Active (hard exercise 6–7 days/week)',
+  very_active: 'Very Active (physical job or double workouts)',
+};
+
+const formSelects = [
+  {
+    name: 'gender',
+    label: 'Gender',
+    options: [
+      { value: 'male', label: 'Male' },
+      { value: 'female', label: 'Female' },
+    ],
+  },
+  {
+    name: 'activityLevel',
+    label: 'Current Activity Level',
+    options: Object.entries(activityLabels).map(([value, label]) => ({ value, label })),
+  },
+  {
+    name: 'surgeryType',
+    label: 'Type of Surgery',
+    options: [
+      { value: 'minor', label: 'Minor (outpatient procedures)' },
+      { value: 'moderate', label: 'Moderate (appendectomy, hernia repair)' },
+      { value: 'major', label: 'Major (joint replacement, organ surgery)' },
+      { value: 'trauma', label: 'Trauma or emergency surgery' },
+    ],
+  },
+] as const;
+
+const calculateBMR = (weight: number, height: number, age: number, gender: string) =>
+  gender === 'male'
+    ? 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age
+    : 447.593 + 9.247 * weight + 3.098 * height - 4.33 * age;
+
+const activityMultipliers = {
+  sedentary: 1.2,
+  light: 1.375,
+  moderate: 1.55,
+  active: 1.725,
+  very_active: 1.9,
+};
+
+const getSurgeryMultiplier = (surgeryType: string, daysSinceSurgery: number) => {
+  const baseMultipliers = { minor: 1.1, moderate: 1.2, major: 1.3, trauma: 1.4 };
+  const baseMultiplier = baseMultipliers[surgeryType as keyof typeof baseMultipliers];
+  const recoveryFactor = Math.max(0.1, 1 - daysSinceSurgery / 30);
+  return baseMultiplier + recoveryFactor * 0.2;
+};
+
 export default function PostSurgeryCalorieNeedsCalculator() {
-  const [result, setResult] = useState<{
-    bmr: number;
-    adjustedCalories: number;
-    proteinNeeds: number;
-    interpretation: string;
-    recommendations: string[];
-  } | null>(null);
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -46,74 +166,37 @@ export default function PostSurgeryCalorieNeedsCalculator() {
     },
   });
 
-  const calculateBMR = (weight: number, height: number, age: number, gender: string) => {
-    if (gender === 'male') {
-      return 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
-    } else {
-      return 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
-    }
-  };
-
-  const getActivityMultiplier = (activityLevel: string) => {
-    const multipliers = {
-      sedentary: 1.2,
-      light: 1.375,
-      moderate: 1.55,
-      active: 1.725,
-      very_active: 1.9,
-    };
-    return multipliers[activityLevel as keyof typeof multipliers];
-  };
-
-  const getSurgeryMultiplier = (surgeryType: string, daysSinceSurgery: number) => {
-    const baseMultipliers = {
-      minor: 1.1,
-      moderate: 1.2,
-      major: 1.3,
-      trauma: 1.4,
-    };
-    
-    const baseMultiplier = baseMultipliers[surgeryType as keyof typeof baseMultipliers];
-    
-    // Recovery factor decreases over time
-    const recoveryFactor = Math.max(0.1, 1 - (daysSinceSurgery / 30));
-    return baseMultiplier + (recoveryFactor * 0.2);
-  };
-
   const onSubmit = (values: FormValues) => {
     const bmr = calculateBMR(values.weight, values.height, values.age, values.gender);
-    const activityMultiplier = getActivityMultiplier(values.activityLevel);
-    const surgeryMultiplier = getSurgeryMultiplier(values.surgeryType, values.daysSinceSurgery);
-    
-    const adjustedCalories = Math.round(bmr * activityMultiplier * surgeryMultiplier);
-    const proteinNeeds = Math.round(values.weight * 1.2); // 1.2g per kg for recovery
+    const adjustedCalories = Math.round(bmr * activityMultipliers[values.activityLevel] * getSurgeryMultiplier(values.surgeryType, values.daysSinceSurgery));
+    const proteinNeeds = Math.round(values.weight * 1.2);
 
     let interpretation = '';
     let recommendations: string[] = [];
 
     if (adjustedCalories < bmr * 1.2) {
-      interpretation = 'Your calorie needs are relatively low, which is normal in early recovery. Focus on nutrient-dense foods to support healing.';
+      interpretation = 'Calorie needs are relatively low—common within the first week. Focus on nutrient density to maximize healing.';
       recommendations = [
-        'Prioritize protein-rich foods for tissue repair',
-        'Include anti-inflammatory foods like berries and leafy greens',
-        'Stay hydrated with water and herbal teas',
-        'Consider smaller, more frequent meals'
+        'Aim for 25–30 g of protein per meal even if appetite is low.',
+        'Use smoothies, soups, or Greek yogurt for easy calories.',
+        'Add vitamin C (citrus, berries) and zinc (seafood, seeds) daily.',
+        'Stay hydrated; dehydration slows nutrient delivery.',
       ];
     } else if (adjustedCalories < bmr * 1.5) {
-      interpretation = 'Your calorie needs are moderately increased due to surgery and recovery. This supports healing while maintaining energy levels.';
+      interpretation = 'Calorie needs are moderately elevated to fuel tissue repair, immune function, and gradual activity increases.';
       recommendations = [
-        'Balance protein, carbohydrates, and healthy fats',
-        'Include vitamin C-rich foods for collagen synthesis',
-        'Add zinc-rich foods to support immune function',
-        'Monitor your energy levels and adjust as needed'
+        'Balance meals with protein, complex carbs, and healthy fats.',
+        'Add anti-inflammatory foods such as fatty fish, turmeric, and leafy greens.',
+        'Snack on nuts, hummus, or cottage cheese to prevent energy dips.',
+        'Monitor weight weekly to ensure you are not losing muscle mass.',
       ];
     } else {
-      interpretation = 'Your calorie needs are significantly increased due to major surgery or trauma. Adequate nutrition is crucial for optimal recovery.';
+      interpretation = 'Calorie needs are significantly elevated due to major surgery or trauma—work closely with your care team.';
       recommendations = [
-        'Work with a registered dietitian for personalized nutrition',
-        'Focus on high-quality protein sources',
-        'Include omega-3 fatty acids for anti-inflammatory benefits',
-        'Consider nutritional supplements if recommended by your healthcare provider'
+        'Consider medical nutrition shakes or oral supplements.',
+        'Distribute protein evenly across the day (4–5 feedings).',
+        'Track micronutrient intake and ask about vitamin D, C, and zinc labs.',
+        'Schedule a registered dietitian consult for personalized targets.',
       ];
     }
 
@@ -123,298 +206,285 @@ export default function PostSurgeryCalorieNeedsCalculator() {
       proteinNeeds,
       interpretation,
       recommendations,
+      warningSigns: warningSigns(),
+      plan: plan(),
     });
   };
 
+  const resetCalculator = () => {
+    form.reset();
+    setResult(null);
+  };
+
+  const numberInputProps = (handler: (value: number | undefined) => void, value: number | undefined, step = '0.1') => ({
+    value: value ?? '',
+    step,
+    onChange: (event: ChangeEvent<HTMLInputElement>) => {
+      const parsed = event.target.value === '' ? undefined : Number(event.target.value);
+      handler(Number.isNaN(parsed as number) ? undefined : parsed);
+    },
+  });
+
   return (
     <div className="space-y-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField 
-              control={form.control} 
-              name="weight" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Weight (kg)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your weight"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="height" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Height (cm)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your height"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="age" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Age (years)</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your age"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="gender" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Gender</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select gender" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="activityLevel" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Activity Level</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select activity level" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="sedentary">Sedentary (little/no exercise)</SelectItem>
-                      <SelectItem value="light">Light (light exercise 1-3 days/week)</SelectItem>
-                      <SelectItem value="moderate">Moderate (moderate exercise 3-5 days/week)</SelectItem>
-                      <SelectItem value="active">Active (hard exercise 6-7 days/week)</SelectItem>
-                      <SelectItem value="very_active">Very Active (very hard exercise, physical job)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="surgeryType" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Type of Surgery</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select surgery type" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="minor">Minor (e.g., mole removal, small biopsy)</SelectItem>
-                      <SelectItem value="moderate">Moderate (e.g., appendectomy, hernia repair)</SelectItem>
-                      <SelectItem value="major">Major (e.g., heart surgery, joint replacement)</SelectItem>
-                      <SelectItem value="trauma">Trauma (e.g., accident-related surgery)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-            <FormField 
-              control={form.control} 
-              name="daysSinceSurgery" 
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Days Since Surgery</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter days since surgery"
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} 
-            />
-          </div>
-          <Button type="submit">Calculate Calorie Needs</Button>
-        </form>
-      </Form>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Heart className="h-5 w-5 text-primary" />
+            Post-Surgery Calorie Needs Calculator
+          </CardTitle>
+          <CardDescription>Estimate daily calories, protein, and recovery milestones based on surgery type and healing stage.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <FormField
+                  control={form.control}
+                  name="weight"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Weight (kg)</FormLabel>
+                      <FormControl>
+                        <Input type="number" {...numberInputProps(field.onChange, field.value)} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="height"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Height (cm)</FormLabel>
+                      <FormControl>
+                        <Input type="number" {...numberInputProps(field.onChange, field.value)} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="age"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Age (years)</FormLabel>
+                      <FormControl>
+                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, '1')} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {formSelects.map(({ name, label, options }) => (
+                  <FormField
+                    key={name}
+                    control={form.control}
+                    name={name as keyof FormValues}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{label}</FormLabel>
+                        <Select value={field.value} onValueChange={field.onChange}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select option" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {options.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                ))}
+                <FormField
+                  control={form.control}
+                  name="daysSinceSurgery"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Days Since Surgery</FormLabel>
+                      <FormControl>
+                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, '1')} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button type="submit" className="w-full sm:flex-1 bg-gradient-to-r from-rose-600 to-orange-500">
+                  Calculate Calorie Needs
+                </Button>
+                <Button type="button" variant="outline" className="w-full sm:w-auto" onClick={resetCalculator}>
+                  Reset
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
       {result && (
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-4">
-                <Heart className="h-8 w-8 text-primary" />
-                <CardTitle>Post-Surgery Calorie Needs</CardTitle>
-              </div>
+              <CardTitle>Your Personalized Recovery Targets</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-primary">{result.bmr}</p>
-                  <p className="text-sm text-muted-foreground">Base Metabolic Rate (BMR)</p>
+            <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {[
+                { label: 'Basal Metabolic Rate', value: `${result.bmr} kcal` },
+                { label: 'Daily Calorie Needs', value: `${result.adjustedCalories} kcal` },
+                { label: 'Protein Goal', value: `${result.proteinNeeds} g/day` },
+              ].map((metric) => (
+                <div key={metric.label} className="rounded border p-4 text-center">
+                  <p className="text-2xl font-bold text-primary">{metric.value}</p>
+                  <p className="text-sm text-muted-foreground">{metric.label}</p>
                 </div>
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-primary">{result.adjustedCalories}</p>
-                  <p className="text-sm text-muted-foreground">Daily Calorie Needs</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-primary">{result.proteinNeeds}g</p>
-                  <p className="text-sm text-muted-foreground">Daily Protein Needs</p>
-                </div>
-              </div>
+              ))}
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Results Interpretation</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">{result.interpretation}</p>
-              <div>
-                <h4 className="font-semibold mb-2">Recommendations:</h4>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                  {result.recommendations.map((rec, index) => (
-                    <li key={index}>{rec}</li>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Nutrition Playbook</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="mb-4 text-sm text-muted-foreground">{result.interpretation}</p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {result.recommendations.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
-              </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <AlertTriangle className="h-4 w-4" />
+                  Warning Signs
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {result.warningSigns.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                8‑Week Recovery Nutrition Plan
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="px-2 py-2 text-left">Week</th>
+                    <th className="px-2 py-2 text-left">Focus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {result.plan.map(({ week, focus }) => (
+                    <tr key={week} className="border-b">
+                      <td className="px-2 py-2 font-semibold">Week {week}</td>
+                      <td className="px-2 py-2 text-muted-foreground">{focus}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </CardContent>
           </Card>
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="how-it-works">
-          <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>
-              This calculator estimates your daily calorie needs after surgery by considering your basal metabolic rate (BMR), 
-              activity level, and the metabolic demands of healing. The calculation uses the Mifflin-St Jeor equation for BMR 
-              and applies surgery-specific multipliers based on the type and recency of your procedure.
-            </p>
-            <p>
-              Surgery increases your body's energy needs due to tissue repair, immune response, and stress response. 
-              The calculator accounts for these factors to provide personalized nutrition guidance for optimal recovery.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="guide">
-          <AccordionTrigger>Complete Guide to Post-Surgery Nutrition</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-4">
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Understanding Post-Surgery Calorie Needs</h4>
-              <p>
-                After surgery, your body requires additional energy to support healing, fight infection, and repair damaged tissues. 
-                The metabolic response to surgery can increase your calorie needs by 10-40% depending on the procedure's complexity.
-              </p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate data to get reliable calorie targets.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            {understandingInputs.map((item) => (
+              <li key={item.label}>
+                <span className="font-semibold text-foreground">{item.label}:</span> {item.description}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Build a complete recovery dashboard.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {relatedCalculators.map((item) => (
+            <div key={item.title} className="rounded border p-4">
+              <h4 className="font-semibold">
+                <Link href={item.href} className="text-primary hover:underline">
+                  {item.title}
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">{item.description}</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Key Nutritional Priorities</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Protein:</strong> Essential for tissue repair and immune function (1.2-1.5g per kg body weight)</li>
-                <li><strong>Vitamin C:</strong> Critical for collagen synthesis and wound healing</li>
-                <li><strong>Zinc:</strong> Supports immune function and protein synthesis</li>
-                <li><strong>Omega-3 fatty acids:</strong> Reduce inflammation and support healing</li>
-                <li><strong>Antioxidants:</strong> Protect against oxidative stress during recovery</li>
+          ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Post-Surgery Nutrition</CardTitle>
+          <CardDescription>Evidence-backed advice for every recovery stage.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          {completeGuideSections.map((section) => (
+            <div key={section.title}>
+              <h3 className="text-base font-semibold text-foreground">{section.title}</h3>
+              <ul className="list-disc space-y-1 pl-5">
+                {section.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
               </ul>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Recovery Timeline</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Days 1-3:</strong> Focus on hydration and easily digestible foods</li>
-                <li><strong>Days 4-7:</strong> Gradually increase protein and nutrient density</li>
-                <li><strong>Weeks 2-4:</strong> Return to balanced nutrition with healing focus</li>
-                <li><strong>Month 2+:</strong> Normal nutrition with continued protein emphasis</li>
-              </ul>
+          ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>SEO-friendly answers for patients and caregivers.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          {faqs.map(([question, answer]) => (
+            <div key={question}>
+              <h4 className="font-semibold text-foreground">{question}</h4>
+              <p>{answer}</p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Foods to Include</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Lean proteins: chicken, fish, eggs, Greek yogurt</li>
-                <li>Colorful vegetables: bell peppers, spinach, broccoli</li>
-                <li>Healthy fats: avocado, nuts, olive oil</li>
-                <li>Complex carbohydrates: quinoa, sweet potatoes, oats</li>
-                <li>Hydrating foods: watermelon, cucumber, herbal teas</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Foods to Avoid</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Processed foods high in sugar and sodium</li>
-                <li>Excessive caffeine and alcohol</li>
-                <li>Raw or undercooked foods (infection risk)</li>
-                <li>Foods that cause digestive discomfort</li>
-              </ul>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="related-calculators">
-          <AccordionTrigger>Related Calculators</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Nutrition & Recovery</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/bmr-calculator" className="text-primary underline">BMR Calculator</a></li>
-                  <li><a href="/category/health-fitness/protein-needs-calculator" className="text-primary underline">Protein Needs Calculator</a></li>
-                  <li><a href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary underline">Body Fat Percentage Calculator</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Health Monitoring</h4>
-                <ul className="space-y-1">
-                  <li><a href="/category/health-fitness/ideal-weight-calculator" className="text-primary underline">Ideal Weight Calculator</a></li>
-                  <li><a href="/category/health-fitness/calorie-burn-calculator" className="text-primary underline">Calorie Burn Calculator</a></li>
-                  <li><a href="/category/health-fitness/water-intake-calculator" className="text-primary underline">Water Intake Calculator</a></li>
-                </ul>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
+
+

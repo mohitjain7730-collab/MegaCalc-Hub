@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -9,8 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { RotateCcw, Activity, TrendingUp, CheckCircle, Info, AlertTriangle } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { RotateCcw, TrendingUp, CheckCircle, AlertTriangle, Calendar } from 'lucide-react';
 import Link from 'next/link';
 
 const formSchema = z.object({
@@ -24,6 +23,74 @@ const formSchema = z.object({
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+const understandingInputs = [
+  { label: 'Joint', description: 'Select the joint being measured so the calculator can compare against typical ROM standards.' },
+  { label: 'Initial ROM', description: 'Starting measurement after injury or before rehab; use a goniometer or trusted tool.' },
+  { label: 'Current ROM', description: 'Latest measurement taken with the same method for accuracy.' },
+  { label: 'Target ROM', description: 'Desired end range, often the normal range for the selected joint.' },
+  { label: 'Time Period', description: 'Days between initial and current measurements to gauge weekly progress.' },
+  { label: 'Injury Type', description: 'Healing expectations vary based on acute, chronic, surgical, or overuse origins.' },
+  { label: 'Therapy Sessions', description: 'Number of supervised sessions completed within the time period.' },
+];
+
+const faqs: [string, string][] = [
+  ['How often should I measure ROM?', 'Weekly measurements provide enough data to spot trends without daily fluctuations confusing progress.'],
+  ['What tool should I use?', 'A goniometer or digital inclinometer offers the best accuracy. Track with the same tool each session.'],
+  ['How much progress is normal per week?', '0.5–5° per week is typical depending on injury severity, adherence, and tissue involved.'],
+  ['Can ROM improve without pain?', 'Yes. Gentle stretching and mobility work should stay below 4/10 discomfort to avoid setbacks.'],
+  ['Does swelling affect ROM?', 'Inflammation limits range. Use compression, elevation, and prescribed modalities to manage swelling.'],
+  ['How do I know if I\'m plateauing?', 'If progress is less than 1° per week for two consecutive weeks, revisit your program with a therapist.'],
+  ['Why track therapy sessions?', 'More supervised visits usually correlate with faster skill acquisition and homework adherence.'],
+  ['Can I compare joints?', 'Yes, but remember dominant limbs may naturally have slightly different ranges.'],
+  ['When should I stop increasing ROM?', 'Once you reach functional goals (e.g., overhead reach pain-free) and match normal ranges, maintain instead of chasing more.'],
+  ['Do I need to warm up before measuring?', 'Always measure after light warm-up to avoid underestimating true capability.'],
+];
+
+const relatedCalculators = [
+  { title: 'Injury Recovery Timeline Calculator', href: '/category/health-fitness/injury-recovery-timeline-calculator', description: 'Align ROM gains with expected tissue healing windows.' },
+  { title: 'Physical Therapy Session Intensity Calculator', href: '/category/health-fitness/physical-therapy-session-intensity-calculator', description: 'Match session load with your current recovery stage.' },
+  { title: 'Strength to Weight Ratio Calculator', href: '/category/health-fitness/strength-to-weight-ratio-calculator', description: 'Track strength improvements that support functional ROM.' },
+  { title: 'Training Volume Calculator', href: '/category/health-fitness/training-volume-calculator', description: 'Balance total workload to avoid overtraining stiff joints.' },
+];
+
+const completeGuideSections = [
+  {
+    title: 'Normal ROM Benchmarks',
+    bullets: [
+      'Shoulder flexion: 180° · extension: 60°',
+      'Elbow flexion: 150° · extension: 0°',
+      'Hip flexion: 120° · extension: 30°',
+      'Knee flexion: 135° · extension: 0°',
+    ],
+  },
+  {
+    title: 'Variables That Influence ROM',
+    bullets: ['Scar tissue and adhesions', 'Joint capsule tightness', 'Neuromuscular control', 'Pain and muscle guarding'],
+  },
+  {
+    title: 'Improvement Methods',
+    bullets: ['Low-load long-duration stretching', 'Joint mobilizations', 'PNF (contract-relax) stretching', 'Consistent daily home exercise programs'],
+  },
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Baseline measurements, pain management, and protected motion within tolerance.' },
+  { week: 2, focus: 'Introduce active-assisted ROM and low-load, long-duration stretching.' },
+  { week: 3, focus: 'Add light resistance bands to reinforce new range.' },
+  { week: 4, focus: 'Incorporate closed-chain mobility and proprioception drills.' },
+  { week: 5, focus: 'Increase stretching frequency, layer eccentric control exercises.' },
+  { week: 6, focus: 'Begin functional patterns that mimic daily tasks or sport positions.' },
+  { week: 7, focus: 'Progress to end-range isometrics and faster tempo movements.' },
+  { week: 8, focus: 'Reassess goals, maintain gains, and transition to a prevention routine.' },
+];
+
+const warningSigns = () => [
+  'ROM regresses for two consecutive measurements despite adherence.',
+  'Swelling, redness, or warmth increases after stretching sessions.',
+  'Sharp pain, catching, or locking occurs near end range.',
+  'Night pain or neurological symptoms (numbness/tingling) develop.',
+];
 
 const getJointInfo = (joint: string) => {
   const jointData = {
@@ -39,120 +106,129 @@ const getJointInfo = (joint: string) => {
   return jointData[joint as keyof typeof jointData];
 };
 
-const getProgressInterpretation = (progressPercentage: number, timePeriod: number, injuryType: string) => {
+const getProgressInterpretation = (progressPercentage: number, timePeriod: number) => {
   const weeklyProgress = progressPercentage / (timePeriod / 7);
-  
+
   if (weeklyProgress > 5) {
     return {
       category: 'Excellent Progress',
       color: 'text-green-600',
       bgColor: 'bg-green-50',
-      borderColor: 'border-green-200',
+      border: 'border-green-200',
       icon: CheckCircle,
-      description: 'Outstanding progress! You are recovering faster than expected. Keep up the excellent work.',
+      description: 'You are recovering faster than expected. Maintain your current routines with caution.',
       recommendations: [
-        'Continue current rehabilitation program',
-        'Gradually increase exercise intensity',
-        'Monitor for any signs of overexertion',
-        'Consider advancing to more challenging exercises'
-      ]
+        'Keep the same stretching frequency and monitor for irritation.',
+        'Add light strengthening at new end ranges.',
+        'Include active recovery days to protect gains.',
+        'Schedule reassessment with your therapist to update goals.',
+      ],
     };
-  } else if (weeklyProgress > 2) {
+  }
+
+  if (weeklyProgress > 2) {
     return {
-      category: 'Good Progress',
+      category: 'On Track',
       color: 'text-blue-600',
       bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
+      border: 'border-blue-200',
       icon: TrendingUp,
-      description: 'Good progress! You are on track with your rehabilitation goals.',
+      description: 'Your ROM is improving at a sustainable rate. Stay consistent.',
       recommendations: [
-        'Maintain consistent therapy sessions',
-        'Follow prescribed home exercise program',
-        'Track progress weekly',
-        'Communicate any concerns with your therapist'
-      ]
+        'Maintain therapy frequency and home exercise.',
+        'Document pain, stiffness, and fatigue each week.',
+        'Introduce light functional drills as tolerated.',
+        'Re-test at the same time of day for accuracy.',
+      ],
     };
-  } else if (weeklyProgress > 0) {
+  }
+
+  if (weeklyProgress > 0) {
     return {
       category: 'Slow Progress',
       color: 'text-yellow-600',
       bgColor: 'bg-yellow-50',
-      borderColor: 'border-yellow-200',
-      icon: Activity,
-      description: 'Progress is slower than expected. Consider adjusting your rehabilitation approach.',
+      border: 'border-yellow-200',
+      icon: TrendingUp,
+      description: 'ROM is improving slowly. Review mobility dosage and recovery habits.',
       recommendations: [
-        'Review and modify exercise program',
-        'Increase therapy session frequency',
-        'Address any pain or discomfort',
-        'Consider additional treatment modalities'
-      ]
-    };
-  } else {
-    return {
-      category: 'No Progress',
-      color: 'text-red-600',
-      bgColor: 'bg-red-50',
-      borderColor: 'border-red-200',
-      icon: AlertTriangle,
-      description: 'No progress detected. Immediate attention and program modification needed.',
-      recommendations: [
-        'Consult with healthcare provider immediately',
-        'Reassess treatment plan',
-        'Consider imaging or additional diagnostics',
-        'Modify therapy approach significantly'
-      ]
+        'Increase stretching duration or frequency slightly.',
+        'Address swelling and pain before attempting end range.',
+        'Ensure you are measuring accurately and consistently.',
+        'Discuss adjunct therapies (manual therapy, heat) with your provider.',
+      ],
     };
   }
+
+  return {
+    category: 'No Progress',
+    color: 'text-red-600',
+    bgColor: 'bg-red-50',
+    border: 'border-red-200',
+    icon: AlertTriangle,
+    description: 'No measurable gains yet. Adjust your plan and consult your therapist promptly.',
+    recommendations: [
+      'Pause aggressive stretching and focus on pain modulation.',
+      'Seek imaging or further evaluation if stiffness persists.',
+      'Check for compensations or poor measurement technique.',
+      'Emphasize consistent daily movement rather than intensity.',
+    ],
+  };
 };
 
 const calculateRecoveryTimeline = (currentROM: number, targetROM: number, weeklyProgress: number) => {
   if (weeklyProgress <= 0) return null;
-  
+
   const remainingROM = targetROM - currentROM;
   const weeksToTarget = remainingROM / weeklyProgress;
-  
+
   return {
     weeksToTarget: Math.ceil(weeksToTarget),
     monthsToTarget: Math.ceil(weeksToTarget / 4),
-    progressRate: weeklyProgress
+    progressRate: weeklyProgress,
   };
 };
 
+type ResultPayload = {
+  progressPercentage: number;
+  weeklyProgress: number;
+  interpretation: ReturnType<typeof getProgressInterpretation>;
+  recoveryTimeline: ReturnType<typeof calculateRecoveryTimeline>;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+};
+
 export default function RangeOfMotionProgressCalculator() {
-  const [result, setResult] = useState<{
-    progressPercentage: number;
-    weeklyProgress: number;
-    interpretation: ReturnType<typeof getProgressInterpretation>;
-    recoveryTimeline: ReturnType<typeof calculateRecoveryTimeline> | null;
-    recommendations: string[];
-  } | null>(null);
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      joint: 'shoulder',
-      initialROM: 0,
-      currentROM: 0,
-      targetROM: 0,
-      timePeriod: 0,
-      injuryType: 'none',
-      therapySessions: 0,
+      joint: undefined,
+      initialROM: undefined,
+      currentROM: undefined,
+      targetROM: undefined,
+      timePeriod: undefined,
+      injuryType: undefined,
+      therapySessions: undefined,
     },
   });
 
   const onSubmit = (data: FormValues) => {
     const progressPercentage = ((data.currentROM - data.initialROM) / (data.targetROM - data.initialROM)) * 100;
     const weeklyProgress = (data.currentROM - data.initialROM) / (data.timePeriod / 7);
-    
-    const interpretation = getProgressInterpretation(progressPercentage, data.timePeriod, data.injuryType);
+    const interpretation = getProgressInterpretation(progressPercentage, data.timePeriod);
     const recoveryTimeline = calculateRecoveryTimeline(data.currentROM, data.targetROM, weeklyProgress);
-    
+
     setResult({
       progressPercentage,
       weeklyProgress,
       interpretation,
       recoveryTimeline,
       recommendations: interpretation.recommendations,
+      warningSigns: warningSigns(),
+      plan: plan(),
     });
   };
 
@@ -161,70 +237,63 @@ export default function RangeOfMotionProgressCalculator() {
     setResult(null);
   };
 
-  const selectedJoint = form.watch('joint');
+  const numberInputProps = (handler: (value: number | undefined) => void, value: number | undefined, step = '0.1') => ({
+    value: value ?? '',
+    step,
+    onChange: (event: ChangeEvent<HTMLInputElement>) => {
+      const parsed = event.target.value === '' ? undefined : Number(event.target.value);
+      handler(Number.isNaN(parsed as number) ? undefined : parsed);
+    },
+  });
+
+  const selectedJoint = form.watch('joint') ?? 'shoulder';
   const jointInfo = getJointInfo(selectedJoint);
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8">
-      <div className="text-center space-y-4">
-        <div className="flex items-center justify-center gap-2">
-          <RotateCcw className="h-8 w-8 text-primary" />
-          <h1 className="text-3xl font-bold">Range of Motion Progress Calculator</h1>
-        </div>
-        <p className="text-muted-foreground text-lg">
-          Track and calculate your range of motion improvement over time for rehabilitation monitoring
-        </p>
-      </div>
-
+    <div className="space-y-8">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Activity className="h-5 w-5" />
-            ROM Progress Calculation
+            <RotateCcw className="h-5 w-5 text-primary" />
+            Range of Motion Progress Calculator
           </CardTitle>
-          <CardDescription>
-            Enter your range of motion measurements to track your rehabilitation progress
-          </CardDescription>
+          <CardDescription>Track mobility gains, forecast time to target range, and customize your rehab action plan.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <FormField
                   control={form.control}
                   name="joint"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Joint</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select value={field.value} onValueChange={field.onChange}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select joint" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="shoulder">Shoulder</SelectItem>
-                          <SelectItem value="elbow">Elbow</SelectItem>
-                          <SelectItem value="wrist">Wrist</SelectItem>
-                          <SelectItem value="hip">Hip</SelectItem>
-                          <SelectItem value="knee">Knee</SelectItem>
-                          <SelectItem value="ankle">Ankle</SelectItem>
-                          <SelectItem value="spine">Spine</SelectItem>
-                          <SelectItem value="neck">Neck</SelectItem>
+                          {['shoulder', 'elbow', 'wrist', 'hip', 'knee', 'ankle', 'spine', 'neck'].map((joint) => (
+                            <SelectItem key={joint} value={joint}>
+                              {joint.charAt(0).toUpperCase() + joint.slice(1)}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="injuryType"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Injury Type</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select value={field.value} onValueChange={field.onChange}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select injury type" />
@@ -234,7 +303,7 @@ export default function RangeOfMotionProgressCalculator() {
                           <SelectItem value="none">No Injury</SelectItem>
                           <SelectItem value="acute">Acute Injury</SelectItem>
                           <SelectItem value="chronic">Chronic Condition</SelectItem>
-                          <SelectItem value="post_surgical">Post-Surgical</SelectItem>
+                          <SelectItem value="post_surgical">Post-surgical</SelectItem>
                           <SelectItem value="overuse">Overuse Injury</SelectItem>
                         </SelectContent>
                       </Select>
@@ -242,7 +311,6 @@ export default function RangeOfMotionProgressCalculator() {
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="initialROM"
@@ -250,19 +318,12 @@ export default function RangeOfMotionProgressCalculator() {
                     <FormItem>
                       <FormLabel>Initial ROM ({jointInfo.unit})</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.1"
-                          placeholder="Enter initial ROM"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" {...numberInputProps(field.onChange, field.value)} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="currentROM"
@@ -270,19 +331,12 @@ export default function RangeOfMotionProgressCalculator() {
                     <FormItem>
                       <FormLabel>Current ROM ({jointInfo.unit})</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.1"
-                          placeholder="Enter current ROM"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" {...numberInputProps(field.onChange, field.value)} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="targetROM"
@@ -290,19 +344,12 @@ export default function RangeOfMotionProgressCalculator() {
                     <FormItem>
                       <FormLabel>Target ROM ({jointInfo.unit})</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.1"
-                          placeholder={`Enter target ROM (normal: ${jointInfo.normalROM}${jointInfo.unit})`}
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" {...numberInputProps(field.onChange, field.value)} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="timePeriod"
@@ -310,43 +357,31 @@ export default function RangeOfMotionProgressCalculator() {
                     <FormItem>
                       <FormLabel>Time Period (days)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter time period in days"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, '1')} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="therapySessions"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Therapy Sessions</FormLabel>
+                      <FormLabel>Therapy Sessions Completed</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter number of therapy sessions"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, '1')} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
-
-              <div className="flex gap-4">
-                <Button type="submit" className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button type="submit" className="w-full sm:flex-1 bg-gradient-to-r from-purple-600 to-pink-600">
                   Calculate Progress
                 </Button>
-                <Button type="button" variant="outline" onClick={resetCalculator}>
+                <Button type="button" variant="outline" className="w-full sm:w-auto" onClick={resetCalculator}>
                   Reset
                 </Button>
               </div>
@@ -357,44 +392,28 @@ export default function RangeOfMotionProgressCalculator() {
 
       {result && (
         <div className="space-y-6">
-          <Card className={`${result.interpretation.bgColor} ${result.interpretation.borderColor} border-2`}>
+          <Card className={`${result.interpretation.bgColor} border ${result.interpretation.border}`}>
             <CardHeader>
-              <CardTitle className={`${result.interpretation.color} flex items-center gap-2`}>
+              <CardTitle className={`flex items-center gap-2 ${result.interpretation.color}`}>
                 <result.interpretation.icon className="h-5 w-5" />
                 {result.interpretation.category}
               </CardTitle>
-              <CardDescription className="text-gray-700">
-                {result.interpretation.description}
-              </CardDescription>
+              <CardDescription>{result.interpretation.description}</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-white rounded-lg">
-                  <div className="text-2xl font-bold text-primary">{result.progressPercentage.toFixed(1)}%</div>
-                  <div className="text-sm text-muted-foreground">Progress to Target</div>
-                </div>
-                <div className="text-center p-4 bg-white rounded-lg">
-                  <div className="text-2xl font-bold text-blue-600">{result.weeklyProgress.toFixed(1)}</div>
-                  <div className="text-sm text-muted-foreground">Weekly Progress</div>
-                </div>
-                <div className="text-center p-4 bg-white rounded-lg">
-                  <div className="text-2xl font-bold text-green-600">
-                    {result.recoveryTimeline ? `${result.recoveryTimeline.weeksToTarget}` : 'N/A'}
-                  </div>
-                  <div className="text-sm text-muted-foreground">Weeks to Target</div>
-                </div>
+            <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div className="rounded border bg-white p-4 text-center">
+                <p className="text-2xl font-bold text-primary">{result.progressPercentage.toFixed(1)}%</p>
+                <p className="text-sm text-muted-foreground">Progress to Target</p>
               </div>
-
-              <div className="space-y-3">
-                <h4 className="font-semibold text-foreground">Recommendations:</h4>
-                <ul className="space-y-2">
-                  {result.recommendations.map((rec, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{rec}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="rounded border bg-white p-4 text-center">
+                <p className="text-2xl font-bold text-blue-600">{result.weeklyProgress.toFixed(1)}°</p>
+                <p className="text-sm text-muted-foreground">Weekly Progress</p>
+              </div>
+              <div className="rounded border bg-white p-4 text-center">
+                <p className="text-2xl font-bold text-green-600">
+                  {result.recoveryTimeline ? `${result.recoveryTimeline.weeksToTarget}` : 'N/A'}
+                </p>
+                <p className="text-sm text-muted-foreground">Weeks to Target</p>
               </div>
             </CardContent>
           </Card>
@@ -403,93 +422,156 @@ export default function RangeOfMotionProgressCalculator() {
             <Card>
               <CardHeader>
                 <CardTitle>Recovery Timeline</CardTitle>
+                <CardDescription>Estimated time to reach your target ROM based on current progress rate.</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="text-center p-4 bg-blue-50 rounded-lg">
-                      <div className="text-xl font-bold text-blue-600">{result.recoveryTimeline.weeksToTarget}</div>
-                      <div className="text-sm text-muted-foreground">Weeks to Target ROM</div>
-                    </div>
-                    <div className="text-center p-4 bg-green-50 rounded-lg">
-                      <div className="text-xl font-bold text-green-600">{result.recoveryTimeline.monthsToTarget}</div>
-                      <div className="text-sm text-muted-foreground">Months to Target ROM</div>
-                    </div>
-                  </div>
-                  <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <div className="text-lg font-semibold text-purple-600">{result.recoveryTimeline.progressRate.toFixed(1)} degrees/week</div>
-                    <div className="text-sm text-muted-foreground">Current Progress Rate</div>
-                  </div>
+              <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="rounded border bg-blue-50 p-4 text-center">
+                  <p className="text-xl font-bold text-blue-600">{result.recoveryTimeline.weeksToTarget}</p>
+                  <p className="text-sm text-muted-foreground">Weeks to Target ROM</p>
+                </div>
+                <div className="rounded border bg-green-50 p-4 text-center">
+                  <p className="text-xl font-bold text-green-600">{result.recoveryTimeline.monthsToTarget}</p>
+                  <p className="text-sm text-muted-foreground">Months to Target ROM</p>
+                </div>
+                <div className="col-span-2 rounded border bg-purple-50 p-4 text-center">
+                  <p className="text-lg font-semibold text-purple-600">{result.recoveryTimeline.progressRate.toFixed(1)}° per week</p>
+                  <p className="text-sm text-muted-foreground">Current Progress Rate</p>
                 </div>
               </CardContent>
             </Card>
           )}
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Actionable Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {result.recommendations.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <AlertTriangle className="h-4 w-4" />
+                  Warning Signs
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {result.warningSigns.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                8‑Week ROM Improvement Plan
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="px-2 py-2 text-left">Week</th>
+                    <th className="px-2 py-2 text-left">Focus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {result.plan.map(({ week, focus }) => (
+                    <tr key={week} className="border-b">
+                      <td className="px-2 py-2 font-semibold">Week {week}</td>
+                      <td className="px-2 py-2 text-muted-foreground">{focus}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </CardContent>
+          </Card>
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="understanding">
-          <AccordionTrigger className="text-left">
-            <div className="flex items-center gap-2">
-              <Info className="h-4 w-4" />
-              Understanding Range of Motion Progress
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Why each measurement matters for accurate progress tracking.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            {understandingInputs.map((item) => (
+              <li key={item.label}>
+                <span className="font-semibold text-foreground">{item.label}:</span> {item.description}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Layer multiple tools for a complete rehab dashboard.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {relatedCalculators.map((item) => (
+            <div key={item.title} className="rounded border p-4">
+              <h4 className="font-semibold">
+                <Link href={item.href} className="text-primary hover:underline">
+                  {item.title}
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">{item.description}</p>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>For more detailed information on range of motion assessment and rehabilitation progress, consult these authoritative sources:</p>
-            <ul className="list-disc list-inside space-y-1 pl-4">
-              <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3133579/" target="_blank" rel="noopener noreferrer" className="text-primary underline">National Center for Biotechnology Information – ROM Assessment</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          ))}
+        </CardContent>
+      </Card>
 
-      <section
-        className="space-y-4 text-muted-foreground leading-relaxed"
-        itemScope
-        itemType="https://schema.org/Article"
-      >
-        <meta itemProp="headline" content="Range of Motion Progress Calculator – Track Rehabilitation Recovery" />
-        <meta itemProp="author" content="MegaCalc Hub Team" />
-        <meta itemProp="about" content="How to track range of motion progress, interpret recovery rates, and optimize rehabilitation programs." />
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Understanding Range of Motion Progress</CardTitle>
+          <CardDescription>Evidence-based insights to interpret your results and optimize recovery.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          {completeGuideSections.map((section) => (
+            <div key={section.title}>
+              <h3 className="text-base font-semibold text-foreground">{section.title}</h3>
+              <ul className="list-disc space-y-1 pl-5">
+                {section.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
 
-        <h2 itemProp="name" className="text-xl font-bold text-foreground">Understanding Range of Motion Progress</h2>
-        <p itemProp="description">Range of Motion (ROM) progress tracking is essential for monitoring rehabilitation success and adjusting treatment plans based on recovery rates.</p>
-
-        <h3 className="font-semibold text-foreground mt-6">Normal ROM Ranges</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Shoulder:</strong> 180° (flexion), 60° (extension)</li>
-          <li><strong>Elbow:</strong> 150° (flexion), 0° (extension)</li>
-          <li><strong>Wrist:</strong> 80° (flexion), 70° (extension)</li>
-          <li><strong>Hip:</strong> 120° (flexion), 30° (extension)</li>
-          <li><strong>Knee:</strong> 135° (flexion), 0° (extension)</li>
-          <li><strong>Ankle:</strong> 20° (dorsiflexion), 50° (plantarflexion)</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Factors Affecting ROM Recovery</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Injury Type:</strong> Acute injuries often recover faster than chronic conditions</li>
-          <li><strong>Age:</strong> Younger individuals typically recover ROM faster</li>
-          <li><strong>Therapy Compliance:</strong> Consistent therapy sessions improve outcomes</li>
-          <li><strong>Home Exercise:</strong> Regular home exercises accelerate recovery</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Progress Tracking Tips</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Measure Consistently:</strong> Use the same measurement technique each time</li>
-          <li><strong>Track Weekly:</strong> Measure ROM at the same time each week</li>
-          <li><strong>Document Pain:</strong> Note any pain or discomfort during movement</li>
-          <li><strong>Adjust Goals:</strong> Modify targets based on progress and limitations</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
-        <div className="space-y-2">
-          <p><Link href="/category/health-fitness/injury-recovery-timeline-calculator" className="text-primary underline">Injury Recovery Timeline Calculator</Link></p>
-          <p><Link href="/category/health-fitness/physical-therapy-session-intensity-calculator" className="text-primary underline">Physical Therapy Session Intensity Calculator</Link></p>
-          <p><Link href="/category/health-fitness/strength-to-weight-ratio-calculator" className="text-primary underline">Strength to Weight Ratio Calculator</Link></p>
-          <p><Link href="/category/health-fitness/training-volume-calculator" className="text-primary underline">Training Volume Calculator</Link></p>
-        </div>
-      </section>
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>SEO-ready answers to common ROM tracking concerns.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          {faqs.map(([question, answer]) => (
+            <div key={question}>
+              <h4 className="font-semibold text-foreground">{question}</h4>
+              <p>{answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
+

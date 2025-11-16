@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -9,8 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Thermometer, Activity, TrendingUp, CheckCircle, Info, AlertTriangle } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Thermometer, Activity, TrendingUp, CheckCircle, AlertTriangle, Calendar, Waves, Shield } from 'lucide-react';
 import Link from 'next/link';
 
 const formSchema = z.object({
@@ -26,6 +25,77 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const understandingInputs = [
+  { label: 'Resting Core Temperature', description: 'Enter your baseline temperature before exercise. Most people sit between 36.1°C and 37.2°C.' },
+  { label: 'Exercise Duration', description: 'Total time (in minutes) you expect to exercise. Longer sessions accumulate more heat.' },
+  { label: 'Exercise Intensity', description: 'Self-rated intensity. Higher intensity increases metabolic heat production.' },
+  { label: 'Environmental Temperature', description: 'Ambient temperature in °C during your session. Hotter conditions limit cooling.' },
+  { label: 'Humidity', description: 'Relative humidity (%) influences sweat evaporation efficiency.' },
+  { label: 'Clothing Type', description: 'Layering and fabric affect heat dissipation. Heavy gear traps more heat.' },
+  { label: 'Hydration Status', description: 'Hydration supports sweating and temperature regulation.' },
+  { label: 'Fitness Level', description: 'Well-trained athletes dissipate heat more efficiently.' },
+];
+
+const faqs: [string, string][] = [
+  ['What is a safe core temperature during exercise?', 'Most people can tolerate increases up to 38.5°C safely. Temperatures between 38.5°C and 39.5°C require caution; above 39.5°C increases heat illness risk.'],
+  ['How quickly can core temperature rise?', 'Core temperature can climb 1-2°C within 30-60 minutes of high-intensity exercise, especially in hot or humid environments.'],
+  ['Does hydration really lower body temperature?', 'Yes. Adequate hydration supports sweat production and plasma volume, improving heat dissipation during workouts.'],
+  ['Why does humidity matter?', 'High humidity slows sweat evaporation, reducing cooling efficiency and causing higher core temperature rises.'],
+  ['What clothing is best in the heat?', 'Lightweight, moisture-wicking fabrics in light colors allow airflow and sweat evaporation to keep you cooler.'],
+  ['How does fitness level affect heat tolerance?', 'Trained athletes develop better cardiovascular efficiency and sweat response, which helps regulate temperature under stress.'],
+  ['Can acclimatization help?', 'Training in hot conditions for 7-14 days improves sweat rate, plasma volume, and temperature control, lowering heat-stress risk.'],
+  ['What are early signs of heat stress?', 'Early symptoms include excessive sweating, dizziness, headache, cramps, and unusually high heart rate for the workload.'],
+  ['Should I stop exercising if I feel overheated?', 'Yes. Move to shade, hydrate, and cool down with fans or cold towels. Resume training only when symptoms resolve.'],
+  ['How often should I monitor temperature?', 'Check temperature trends before and after intense sessions in challenging conditions to establish your personal response.'],
+];
+
+const relatedCalculators = [
+  { title: 'Hydration Sweat Rate Calculator', href: '/category/health-fitness/hydration-sweat-rate-calculator', description: 'Estimate sweat losses during workouts to plan fluid replacement.' },
+  { title: 'Hydration Needs Calculator', href: '/category/health-fitness/hydration-needs-calculator', description: 'Determine daily water intake targets for optimal thermoregulation.' },
+  { title: 'Exercise Calorie Burn Calculator', href: '/category/health-fitness/exercise-calorie-burn-calculator', description: 'Understand caloric cost of sessions as intensity changes.' },
+  { title: 'Ice Bath Duration & Temperature Calculator', href: '/category/health-fitness/ice-bath-duration-temp-calculator', description: 'Calculate optimal cold exposure protocols for recovery and temperature regulation.' },
+];
+
+type GuideSection = { title: string; description: string; bullets?: string[] };
+
+const completeGuideSections: GuideSection[] = [
+  {
+    title: 'Normal Temperature Ranges',
+    description: 'Recognize the thresholds that distinguish normal thermoregulation from heat risk.',
+    bullets: ['Resting: 36.1–37.2°C (97–99°F)', 'Exercise: 37.5–39.5°C (99.5–103.1°F)', 'Heat stress risk: >39.5°C (103.1°F)', 'Heat stroke danger: >40.5°C (104.9°F)'],
+  },
+  {
+    title: 'Major Drivers of Temperature Rise',
+    description: 'Exercise intensity, duration, environmental heat, humidity, hydration, clothing, and aerobic fitness directly influence heat load.',
+  },
+  {
+    title: 'Practical Cooling Strategies',
+    description: 'Prioritize prehydration, shade, evaporative cooling (fans, misting, cold towels), and scheduling hard sessions during cooler hours.',
+  },
+  {
+    title: 'Safety Checklist',
+    description: 'Stop exercise if you experience confusion, dizziness, nausea, chills, or cessation of sweating. These are urgent warning signs that require cooling and medical attention.',
+  },
+];
+
+const plan = (): { week: number; focus: string }[] => [
+  { week: 1, focus: 'Log baseline resting temperature, hydration habits, and environmental conditions for typical workouts.' },
+  { week: 2, focus: 'Introduce structured hydration (500 ml pre-workout, 150-250 ml every 15-20 minutes during exercise).' },
+  { week: 3, focus: 'Add cooling strategies—lighter clothing, shade breaks, and chilled towels between intervals.' },
+  { week: 4, focus: 'Begin heat acclimatization with short exposures (10-15 minutes) in warmer settings while monitoring symptoms.' },
+  { week: 5, focus: 'Refine pacing: alternate high- and moderate-intensity segments to control peak core temperature.' },
+  { week: 6, focus: 'Incorporate electrolyte beverages during sessions exceeding 60 minutes or occurring in high humidity.' },
+  { week: 7, focus: 'Practice recovery cooling: cold showers, ice packs on pulse points, and post-session hydration targets.' },
+  { week: 8, focus: 'Review data trends, adjust training schedule for upcoming climate conditions, and set personalized heat alerts.' },
+];
+
+const warningSigns = () => [
+  'Core temperature above 39.5°C paired with dizziness or chills requires immediate cooling and medical evaluation.',
+  'A sudden stop in sweating, clammy skin, or confusion signals heat stroke risk—call emergency services.',
+  'Persistent nausea, rapid heartbeat, or headache after exercise suggests inadequate cooling or hydration.',
+  'Individuals with heart disease, sickle cell trait, or certain medications should consult a clinician before hot-weather training.',
+];
+
 const getTemperatureInterpretation = (tempRise: number, finalTemp: number, exerciseIntensity: string) => {
   if (finalTemp < 38.5) {
     return {
@@ -34,113 +104,98 @@ const getTemperatureInterpretation = (tempRise: number, finalTemp: number, exerc
       bgColor: 'bg-green-50',
       borderColor: 'border-green-200',
       icon: CheckCircle,
-      description: 'Normal temperature response to exercise. Your body is effectively managing heat production.',
+      description: 'Your body is managing heat production effectively for the current workload and environment.',
       recommendations: [
-        'Continue current exercise routine',
-        'Maintain adequate hydration',
-        'Monitor during longer sessions',
-        'Consider environmental conditions'
-      ]
+        'Maintain current hydration habits and rest intervals',
+        'Track temperature during longer or hotter workouts',
+        'Continue gradual warm-ups and cool-downs',
+        'Log sessions to understand personal heat thresholds',
+      ],
     };
-  } else if (finalTemp < 39.5) {
+  }
+
+  if (finalTemp < 39.5) {
     return {
       category: 'Elevated Temperature',
       color: 'text-yellow-600',
       bgColor: 'bg-yellow-50',
       borderColor: 'border-yellow-200',
       icon: TrendingUp,
-      description: 'Elevated temperature response. Monitor for signs of heat stress and adjust exercise accordingly.',
+      description: 'Temperature is elevated. Increase monitoring and consider modifying pace or environment.',
       recommendations: [
-        'Increase fluid intake',
-        'Take more frequent breaks',
-        'Reduce exercise intensity if needed',
-        'Monitor for heat stress symptoms'
-      ]
+        'Add shade or fan breaks every 15-20 minutes',
+        'Increase fluid intake with electrolytes',
+        'Lower intensity or shorten intervals temporarily',
+        'Watch for dizziness, cramps, or heavy sweating',
+      ],
     };
-  } else if (finalTemp < 40.5) {
+  }
+
+  if (finalTemp < 40.5) {
     return {
       category: 'High Temperature Risk',
       color: 'text-orange-600',
       bgColor: 'bg-orange-50',
       borderColor: 'border-orange-200',
       icon: Activity,
-      description: 'High temperature risk. Exercise should be modified or stopped to prevent heat illness.',
+      description: 'Heat stress risk is significant. Adjust your plan immediately to prevent heat illness.',
       recommendations: [
-        'Reduce exercise intensity immediately',
-        'Increase rest periods',
-        'Improve hydration status',
-        'Consider cooler exercise conditions'
-      ]
-    };
-  } else {
-    return {
-      category: 'Dangerous Temperature',
-      color: 'text-red-600',
-      bgColor: 'bg-red-50',
-      borderColor: 'border-red-200',
-      icon: AlertTriangle,
-      description: 'Dangerous temperature level. Stop exercise immediately and seek medical attention.',
-      recommendations: [
-        'Stop exercise immediately',
-        'Move to cooler environment',
-        'Begin cooling measures',
-        'Seek medical attention if symptoms persist'
-      ]
+        'Stop or reduce exercise until temperature declines',
+        'Move to a cooler environment and apply cooling measures',
+        'Prioritize hydration with electrolytes and cold fluids',
+        'Resume training only after symptoms resolve',
+      ],
     };
   }
+
+  return {
+    category: 'Dangerous Temperature',
+    color: 'text-red-600',
+    bgColor: 'bg-red-50',
+    borderColor: 'border-red-200',
+    icon: AlertTriangle,
+    description: 'Core temperature is dangerously high. Stop exercise and seek medical attention.',
+    recommendations: [
+      'Cease activity immediately and begin rapid cooling',
+      'Call emergency services if confusion or collapse occurs',
+      'Use ice packs, cold water immersion, or fans for cooling',
+      'Do not resume exercise until cleared by a clinician',
+    ],
+  };
 };
 
 const calculateTemperatureRise = (data: FormValues) => {
-  // Base temperature rise from exercise intensity
   const intensityMultipliers = {
     low: 0.5,
     moderate: 1.0,
     high: 1.8,
     very_high: 2.5,
   };
-  
-  let baseRise = intensityMultipliers[data.exerciseIntensity as keyof typeof intensityMultipliers];
-  
-  // Adjust for exercise duration (longer exercise = more heat accumulation)
-  const durationFactor = Math.min(data.exerciseDuration / 60, 2); // Cap at 2x for 2+ hours
+
+  let baseRise = intensityMultipliers[data.exerciseIntensity];
+
+  const durationFactor = Math.min(data.exerciseDuration / 60, 2);
   baseRise *= durationFactor;
-  
-  // Environmental adjustments
+
   if (data.environmentalTemp > 30) {
-    baseRise += (data.environmentalTemp - 30) * 0.1; // 0.1°C per degree above 30°C
+    baseRise += (data.environmentalTemp - 30) * 0.1;
   }
-  
+
   if (data.humidity > 70) {
-    baseRise += (data.humidity - 70) * 0.01; // Additional rise with high humidity
+    baseRise += (data.humidity - 70) * 0.01;
   }
-  
-  // Clothing adjustments
-  const clothingMultipliers = {
-    light: 1.0,
-    moderate: 1.2,
-    heavy: 1.5,
-  };
-  baseRise *= clothingMultipliers[data.clothing as keyof typeof clothingMultipliers];
-  
-  // Hydration adjustments
-  const hydrationMultipliers = {
-    poor: 1.3,
-    adequate: 1.0,
-    excellent: 0.8,
-  };
-  baseRise *= hydrationMultipliers[data.hydration as keyof typeof hydrationMultipliers];
-  
-  // Fitness level adjustments (better fitness = better heat management)
-  const fitnessMultipliers = {
-    poor: 1.2,
-    average: 1.0,
-    good: 0.9,
-    excellent: 0.8,
-  };
-  baseRise *= fitnessMultipliers[data.fitnessLevel as keyof typeof fitnessMultipliers];
-  
+
+  const clothingMultipliers = { light: 1, moderate: 1.2, heavy: 1.5 };
+  baseRise *= clothingMultipliers[data.clothing];
+
+  const hydrationMultipliers = { poor: 1.3, adequate: 1, excellent: 0.8 };
+  baseRise *= hydrationMultipliers[data.hydration];
+
+  const fitnessMultipliers = { poor: 1.2, average: 1, good: 0.9, excellent: 0.8 };
+  baseRise *= fitnessMultipliers[data.fitnessLevel];
+
   const finalTemp = data.restingTemp + baseRise;
-  
+
   return {
     temperatureRise: baseRise,
     finalTemperature: finalTemp,
@@ -148,37 +203,43 @@ const calculateTemperatureRise = (data: FormValues) => {
   };
 };
 
+type ResultPayload = {
+  temperatureRise: number;
+  finalTemperature: number;
+  heatStressRisk: string;
+  interpretation: ReturnType<typeof getTemperatureInterpretation>;
+  recommendations: string[];
+  warningSigns: string[];
+  plan: { week: number; focus: string }[];
+};
+
 export default function CoreBodyTemperatureRiseCalculator() {
-  const [result, setResult] = useState<{
-    temperatureRise: number;
-    finalTemperature: number;
-    heatStressRisk: string;
-    interpretation: ReturnType<typeof getTemperatureInterpretation>;
-    recommendations: string[];
-  } | null>(null);
+  const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      restingTemp: 37.0,
-      exerciseDuration: 0,
-      exerciseIntensity: 'moderate',
-      environmentalTemp: 20,
-      humidity: 50,
-      clothing: 'moderate',
-      hydration: 'adequate',
-      fitnessLevel: 'average',
+      restingTemp: undefined,
+      exerciseDuration: undefined,
+      exerciseIntensity: undefined,
+      environmentalTemp: undefined,
+      humidity: undefined,
+      clothing: undefined,
+      hydration: undefined,
+      fitnessLevel: undefined,
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    const tempData = calculateTemperatureRise(data);
-    const interpretation = getTemperatureInterpretation(tempData.temperatureRise, tempData.finalTemperature, data.exerciseIntensity);
-    
+  const onSubmit = (values: FormValues) => {
+    const tempData = calculateTemperatureRise(values);
+    const interpretation = getTemperatureInterpretation(tempData.temperatureRise, tempData.finalTemperature, values.exerciseIntensity);
+
     setResult({
       ...tempData,
       interpretation,
       recommendations: interpretation.recommendations,
+      warningSigns: warningSigns(),
+      plan: plan(),
     });
   };
 
@@ -187,32 +248,28 @@ export default function CoreBodyTemperatureRiseCalculator() {
     setResult(null);
   };
 
-  return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8">
-      <div className="text-center space-y-4">
-        <div className="flex items-center justify-center gap-2">
-          <Thermometer className="h-8 w-8 text-primary" />
-          <h1 className="text-3xl font-bold">Core Body Temperature Rise Calculator</h1>
-        </div>
-        <p className="text-muted-foreground text-lg">
-          Calculate your core body temperature rise during exercise to assess heat stress and safety
-        </p>
-      </div>
+  const numberInput = (handler: (value: number | undefined) => void, value: number | undefined) => ({
+    value: value ?? '',
+    onChange: (event: ChangeEvent<HTMLInputElement>) => {
+      const next = event.target.value === '' ? undefined : Number(event.target.value);
+      handler(Number.isNaN(next as number) ? undefined : next);
+    },
+  });
 
+  return (
+    <div className="space-y-8">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Activity className="h-5 w-5" />
-            Temperature Rise Calculation
+            <Thermometer className="h-5 w-5 text-primary" />
+            Core Body Temperature Rise Calculator
           </CardTitle>
-          <CardDescription>
-            Enter your exercise and environmental conditions to calculate core body temperature rise
-          </CardDescription>
+          <CardDescription>Estimate how environmental conditions, exercise intensity, and hydration habits influence heat stress risk.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
                   name="restingTemp"
@@ -220,19 +277,12 @@ export default function CoreBodyTemperatureRiseCalculator() {
                     <FormItem>
                       <FormLabel>Resting Core Temperature (°C)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.1"
-                          placeholder="Enter resting temperature"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" step="0.1" {...numberInput(field.onChange, field.value)} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="exerciseDuration"
@@ -240,28 +290,22 @@ export default function CoreBodyTemperatureRiseCalculator() {
                     <FormItem>
                       <FormLabel>Exercise Duration (minutes)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter exercise duration"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" step="1" {...numberInput(field.onChange, field.value)} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="exerciseIntensity"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Exercise Intensity</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select value={field.value} onValueChange={field.onChange}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select exercise intensity" />
+                            <SelectValue placeholder="Select intensity" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -275,7 +319,6 @@ export default function CoreBodyTemperatureRiseCalculator() {
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="environmentalTemp"
@@ -283,19 +326,12 @@ export default function CoreBodyTemperatureRiseCalculator() {
                     <FormItem>
                       <FormLabel>Environmental Temperature (°C)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.1"
-                          placeholder="Enter environmental temperature"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" step="0.1" {...numberInput(field.onChange, field.value)} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="humidity"
@@ -303,83 +339,73 @@ export default function CoreBodyTemperatureRiseCalculator() {
                     <FormItem>
                       <FormLabel>Humidity (%)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          min="0"
-                          max="100"
-                          placeholder="Enter humidity percentage"
-                          {...field}
-                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                        />
+                        <Input type="number" step="1" {...numberInput(field.onChange, field.value)} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="clothing"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Clothing Type</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select value={field.value} onValueChange={field.onChange}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select clothing type" />
+                            <SelectValue placeholder="Select clothing" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="light">Light</SelectItem>
-                          <SelectItem value="moderate">Moderate</SelectItem>
-                          <SelectItem value="heavy">Heavy</SelectItem>
+                          <SelectItem value="light">Light, breathable layers</SelectItem>
+                          <SelectItem value="moderate">Moderate (shorts + tee)</SelectItem>
+                          <SelectItem value="heavy">Heavy gear / protective clothing</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="hydration"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Hydration Status</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select value={field.value} onValueChange={field.onChange}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select hydration status" />
+                            <SelectValue placeholder="Select status" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="poor">Poor</SelectItem>
-                          <SelectItem value="adequate">Adequate</SelectItem>
-                          <SelectItem value="excellent">Excellent</SelectItem>
+                          <SelectItem value="poor">Poor (dark urine, dry mouth)</SelectItem>
+                          <SelectItem value="adequate">Adequate (clear urine, regular intake)</SelectItem>
+                          <SelectItem value="excellent">Excellent (prehydrated + during exercise)</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="fitnessLevel"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Fitness Level</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select value={field.value} onValueChange={field.onChange}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select fitness level" />
+                            <SelectValue placeholder="Select level" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="poor">Poor</SelectItem>
-                          <SelectItem value="average">Average</SelectItem>
-                          <SelectItem value="good">Good</SelectItem>
-                          <SelectItem value="excellent">Excellent</SelectItem>
+                          <SelectItem value="poor">Poor / sedentary</SelectItem>
+                          <SelectItem value="average">Average recreational</SelectItem>
+                          <SelectItem value="good">Good endurance base</SelectItem>
+                          <SelectItem value="excellent">Excellent / competitive</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -387,12 +413,11 @@ export default function CoreBodyTemperatureRiseCalculator() {
                   )}
                 />
               </div>
-
-              <div className="flex gap-4">
-                <Button type="submit" className="flex-1 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button type="submit" className="w-full sm:flex-1 bg-gradient-to-r from-red-600 to-orange-600">
                   Calculate Temperature Rise
                 </Button>
-                <Button type="button" variant="outline" onClick={resetCalculator}>
+                <Button type="button" variant="outline" className="w-full sm:w-auto" onClick={resetCalculator}>
                   Reset
                 </Button>
               </div>
@@ -403,155 +428,192 @@ export default function CoreBodyTemperatureRiseCalculator() {
 
       {result && (
         <div className="space-y-6">
-          <Card className={`${result.interpretation.bgColor} ${result.interpretation.borderColor} border-2`}>
+          <Card className={`${result.interpretation.bgColor} ${result.interpretation.borderColor} border`}>
             <CardHeader>
-              <CardTitle className={`${result.interpretation.color} flex items-center gap-2`}>
+              <CardTitle className={`flex items-center gap-2 ${result.interpretation.color}`}>
                 <result.interpretation.icon className="h-5 w-5" />
                 {result.interpretation.category}
               </CardTitle>
-              <CardDescription className="text-gray-700">
-                {result.interpretation.description}
-              </CardDescription>
+              <CardDescription>{result.interpretation.description}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-white rounded-lg">
-                  <div className="text-2xl font-bold text-primary">{result.temperatureRise.toFixed(1)}°C</div>
-                  <div className="text-sm text-muted-foreground">Temperature Rise</div>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <div className="rounded border bg-white p-4 text-center">
+                  <p className="text-2xl font-bold text-primary">{result.temperatureRise.toFixed(1)}°C</p>
+                  <p className="text-sm text-muted-foreground">Temperature Rise</p>
                 </div>
-                <div className="text-center p-4 bg-white rounded-lg">
-                  <div className="text-2xl font-bold text-blue-600">{result.finalTemperature.toFixed(1)}°C</div>
-                  <div className="text-sm text-muted-foreground">Final Temperature</div>
+                <div className="rounded border bg-white p-4 text-center">
+                  <p className="text-2xl font-bold text-primary">{result.finalTemperature.toFixed(1)}°C</p>
+                  <p className="text-sm text-muted-foreground">Projected Final Temperature</p>
                 </div>
-                <div className="text-center p-4 bg-white rounded-lg">
-                  <div className="text-2xl font-bold text-orange-600">{result.heatStressRisk}</div>
-                  <div className="text-sm text-muted-foreground">Heat Stress Risk</div>
+                <div className="rounded border bg-white p-4 text-center">
+                  <p className="text-2xl font-bold text-primary">{result.heatStressRisk}</p>
+                  <p className="text-sm text-muted-foreground">Heat Stress Risk</p>
                 </div>
               </div>
+            </CardContent>
+          </Card>
 
-              <div className="space-y-3">
-                <h4 className="font-semibold text-foreground">Recommendations:</h4>
-                <ul className="space-y-2">
-                  {result.recommendations.map((rec, index) => (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Actionable Recommendations</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {result.recommendations.map((item, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{rec}</span>
+                      <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Shield className="h-4 w-4" />
+                  Warning Signs & Precautions
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {result.warningSigns.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                8‑Week Heat Management Plan
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="px-2 py-2 text-left">Week</th>
+                    <th className="px-2 py-2 text-left">Focus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {result.plan.map(({ week, focus }) => (
+                    <tr key={week} className="border-b">
+                      <td className="px-2 py-2 font-semibold">Week {week}</td>
+                      <td className="px-2 py-2 text-muted-foreground">{focus}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle>Heat Stress Prevention</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <Waves className="h-4 w-4" />
+                Cooling & Hydration Dashboard
+              </CardTitle>
+              <CardDescription>Keep these control levers maxed out during challenging sessions.</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span>Hydration</span>
-                    <span>Drink 150-250ml every 15-20 minutes</span>
+            <CardContent className="space-y-4">
+              {[
+                { label: 'Hydration Strategy', detail: '150–250 ml every 15–20 minutes', percent: 100 },
+                { label: 'Rest & Shade Breaks', detail: '2-3 minutes every 15 minutes of work', percent: 85 },
+                { label: 'Cooling Measures', detail: 'Cold towels, fans, misting between sets', percent: 70 },
+              ].map((item, index) => (
+                <div key={item.label}>
+                  <div className="mb-1 flex justify-between text-sm">
+                    <span>{item.label}</span>
+                    <span>{item.detail}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-blue-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: '100%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span>Rest Periods</span>
-                    <span>Take breaks every 15-30 minutes</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-green-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: '80%' }}
-                    ></div>
+                  <div className="h-2 w-full rounded-full bg-muted">
+                    <div className="h-2 rounded-full bg-primary transition-all duration-500" style={{ width: `${item.percent - index * 15}%` }} />
                   </div>
                 </div>
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span>Cooling Measures</span>
-                    <span>Use fans, shade, or cooling vests</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-orange-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: '60%' }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </CardContent>
           </Card>
         </div>
       )}
 
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="understanding">
-          <AccordionTrigger className="text-left">
-            <div className="flex items-center gap-2">
-              <Info className="h-4 w-4" />
-              Understanding Core Body Temperature Rise
+      <Card>
+        <CardHeader>
+          <CardTitle>Understanding the Inputs</CardTitle>
+          <CardDescription>Collect accurate data to produce reliable core temperature forecasts.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            {understandingInputs.map((item) => (
+              <li key={item.label}>
+                <span className="font-semibold text-foreground">{item.label}:</span> {item.description}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related Calculators</CardTitle>
+          <CardDescription>Plan safer workouts by combining hydration, metabolism, and heat tools.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {relatedCalculators.map((item) => (
+            <div key={item.title} className="rounded border p-4">
+              <h4 className="font-semibold">
+                <Link href={item.href} className="text-primary hover:underline">
+                  {item.title}
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">{item.description}</p>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground space-y-2">
-            <p>For more detailed information on core body temperature and heat stress management, consult these authoritative sources:</p>
-            <ul className="list-disc list-inside space-y-1 pl-4">
-              <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3133579/" target="_blank" rel="noopener noreferrer" className="text-primary underline">National Center for Biotechnology Information – Heat Stress</a></li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          ))}
+        </CardContent>
+      </Card>
 
-      <section
-        className="space-y-4 text-muted-foreground leading-relaxed"
-        itemScope
-        itemType="https://schema.org/Article"
-      >
-        <meta itemProp="headline" content="Core Body Temperature Rise Calculator – Assess Heat Stress During Exercise" />
-        <meta itemProp="author" content="MegaCalc Hub Team" />
-        <meta itemProp="about" content="How to calculate core body temperature rise, understand heat stress risks, and maintain safe exercise conditions." />
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete Guide: Managing Core Body Temperature</CardTitle>
+          <CardDescription>Trusted insights to interpret your results and adjust training.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          {completeGuideSections.map((section) => (
+            <div key={section.title} className="space-y-2">
+              <h3 className="text-base font-semibold text-foreground">{section.title}</h3>
+              <p>{section.description}</p>
+              {section.bullets && (
+                <ul className="list-disc space-y-1 pl-5">
+                  {section.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </CardContent>
+      </Card>
 
-        <h2 itemProp="name" className="text-xl font-bold text-foreground">Understanding Core Body Temperature Rise</h2>
-        <p itemProp="description">During exercise, your core body temperature rises due to increased metabolic heat production. Understanding this rise helps prevent heat-related illnesses.</p>
-
-        <h3 className="font-semibold text-foreground mt-6">Normal Temperature Ranges</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Resting:</strong> 36.1-37.2°C (97-99°F)</li>
-          <li><strong>During Exercise:</strong> 37.5-39.5°C (99.5-103.1°F)</li>
-          <li><strong>Heat Stress Risk:</strong> Above 39.5°C (103.1°F)</li>
-          <li><strong>Heat Stroke Risk:</strong> Above 40.5°C (104.9°F)</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Factors Affecting Temperature Rise</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Exercise Intensity:</strong> Higher intensity produces more metabolic heat</li>
-          <li><strong>Duration:</strong> Longer exercise allows more heat accumulation</li>
-          <li><strong>Environmental Conditions:</strong> Heat and humidity impair cooling</li>
-          <li><strong>Hydration Status:</strong> Dehydration reduces sweating efficiency</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Heat Stress Prevention</h3>
-        <ul className="list-disc ml-6 space-y-1">
-          <li><strong>Hydration:</strong> Maintain adequate fluid intake before, during, and after exercise</li>
-          <li><strong>Acclimatization:</strong> Gradually adapt to hot conditions over 7-14 days</li>
-          <li><strong>Clothing:</strong> Wear light, breathable clothing in hot conditions</li>
-          <li><strong>Timing:</strong> Exercise during cooler parts of the day when possible</li>
-        </ul>
-
-        <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
-        <div className="space-y-2">
-          <p><Link href="/category/health-fitness/hydration-sweat-rate-calculator" className="text-primary underline">Hydration Sweat Rate Calculator</Link></p>
-          <p><Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary underline">Hydration Needs Calculator</Link></p>
-          <p><Link href="/category/health-fitness/exercise-calorie-burn-calculator" className="text-primary underline">Exercise Calorie Burn Calculator</Link></p>
-          <p><Link href="/category/health-fitness/heat-index-calculator" className="text-primary underline">Heat Index Calculator</Link></p>
-        </div>
-      </section>
+      <Card>
+        <CardHeader>
+          <CardTitle>Frequently Asked Questions</CardTitle>
+          <CardDescription>SEO-friendly answers to common heat training concerns.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          {faqs.map(([question, answer]) => (
+            <div key={question}>
+              <h4 className="font-semibold text-foreground">{question}</h4>
+              <p>{answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </div>
   );
 }
