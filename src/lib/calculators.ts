@@ -4559,6 +4559,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Vitamin Deficiency Risk Estimator',
     metaDescription: 'Estimate risk for common vitamin deficiencies and get targeted nutrition and supplementation recommendations.'
   },
+  {
+    id: 4520,
+    name: 'Sleep Quality vs Productivity Correlation Calculator',
+    description: 'Estimate correlation between sleep quality and productivity metrics to optimize performance.',
+    slug: 'sleep-quality-vs-productivity-correlation-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Quality vs Productivity Correlation Calculator',
+    metaDescription: 'Calculate correlation between sleep quality/duration and productivity metrics to identify performance patterns.'
+  },
+  {
+    id: 4521,
+    name: 'Exercise Recovery Score (HRV + Sleep Integration)',
+    description: 'Estimate recovery score and readiness level from HRV, sleep, training load, and stress.',
+    slug: 'exercise-recovery-score-hrv-sleep-integration',
+    category: 'health-fitness',
+    metaTitle: 'Exercise Recovery Score (HRV + Sleep Integration)',
+    metaDescription: 'Calculate recovery score and readiness level from HRV, sleep metrics, training load, and stress to optimize training.'
+  },
+  {
+    id: 4522,
+    name: 'Fitness Age Estimator (VO2max + BMI-based)',
+    description: 'Estimate fitness age from VO2max, BMI, and activity level compared to chronological age.',
+    slug: 'fitness-age-estimator-vo2max-bmi',
+    category: 'health-fitness',
+    metaTitle: 'Fitness Age Estimator (VO2max + BMI-based)',
+    metaDescription: 'Estimate biological fitness age from VO2max, BMI, and activity level to assess cardiovascular health.'
+  },
+  {
+    id: 4523,
+    name: 'Estrogen Dominance Risk Calculator',
+    description: 'Estimate estrogen dominance risk from lifestyle factors, BMI, stress, and diet patterns.',
+    slug: 'estrogen-dominance-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Estrogen Dominance Risk Calculator',
+    metaDescription: 'Assess estrogen dominance risk from lifestyle factors, BMI, stress, alcohol, and diet to support hormonal balance.'
+  },
+  {
+    id: 4524,
+    name: 'Progesterone-to-Estrogen Ratio Calculator',
+    description: 'Calculate progesterone-to-estrogen ratio from hormone levels to assess hormonal balance.',
+    slug: 'progesterone-to-estrogen-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Progesterone-to-Estrogen Ratio Calculator',
+    metaDescription: 'Calculate progesterone-to-estrogen ratio from blood test results to assess hormonal balance and guide treatment.'
+  },
   // New Finance Calculators
   {
     id: 3300,
