@@ -4379,6 +4379,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Carb Cycling Macro Calculator',
     metaDescription: 'Calculate low vs high day macros for carb cycling tailored to your training.'
   },
+  {
+    id: 4500,
+    name: 'Reaction Time Improvement Tracker',
+    description: 'Log baseline vs latest reaction times, sleep, caffeine, and practice sessions to see improvement percentage and consistency status.',
+    slug: 'reaction-time-improvement-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Reaction Time Improvement Tracker',
+    metaDescription: 'Track reaction time gains, consistency scores, and tailored recommendations based on sleep, caffeine, and training inputs.'
+  },
+  {
+    id: 4501,
+    name: 'Memory Retention Percentage Calculator',
+    description: 'Estimate current retention %, forgetting penalty, and review urgency using recall attempts, spaced sessions, and sleep quality.',
+    slug: 'memory-retention-percentage-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Memory Retention Percentage Calculator',
+    metaDescription: 'Calculate adjusted memory retention, see reinforcement status, and plan spaced reviews to lock in learning.'
+  },
+  {
+    id: 4502,
+    name: 'Meditation Streak Mindfulness Progress Tracker',
+    description: 'Blend streak length, session minutes, mindful check-ins, and stress level into one momentum and balance snapshot.',
+    slug: 'meditation-streak-mindfulness-progress-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Meditation Streak Mindfulness Progress Tracker',
+    metaDescription: 'Score meditation streak momentum, balance index, and get recommendations to strengthen mindfulness habits.'
+  },
+  {
+    id: 4503,
+    name: 'Stress Hormone Balance Calculator (Cortisol vs Melatonin)',
+    description: 'Compare wake cortisol energy vs evening melatonin cues, sleep timing, and stress rating to spot circadian misalignment.',
+    slug: 'stress-hormone-balance-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Stress Hormone Balance Calculator (Cortisol vs Melatonin)',
+    metaDescription: 'Estimate hormone balance index, circadian score, and get actionable steps to realign cortisol and melatonin rhythms.'
+  },
+  {
+    id: 4504,
+    name: 'Emotional Wellbeing Index Calculator',
+    description: 'Blend mood, energy, connection, purpose, and stress inputs into one wellbeing and resilience score.',
+    slug: 'emotional-wellbeing-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Emotional Wellbeing Index Calculator',
+    metaDescription: 'Measure emotional wellbeing and resilience, then follow personalized recommendations and action plans.'
+  },
   // New Finance Calculators
   {
     id: 3300,
