@@ -74,6 +74,26 @@ import { savingInvestingArticles72 } from './saving-investing-72';
 import { savingInvestingArticles73 } from './saving-investing-73';
 import { savingInvestingArticles74 } from './saving-investing-74';
 import { savingInvestingArticles75 } from './saving-investing-75';
+import { savingInvestingArticles76 } from './saving-investing-76';
+import { savingInvestingArticles77 } from './saving-investing-77';
+import { savingInvestingArticles78 } from './saving-investing-78';
+import { savingInvestingArticles79 } from './saving-investing-79';
+import { savingInvestingArticles80 } from './saving-investing-80';
+import { savingInvestingArticles81 } from './saving-investing-81';
+import { savingInvestingArticles82 } from './saving-investing-82';
+import { savingInvestingArticles83 } from './saving-investing-83';
+import { savingInvestingArticles84 } from './saving-investing-84';
+import { savingInvestingArticles85 } from './saving-investing-85';
+import { savingInvestingArticles86 } from './saving-investing-86';
+import { savingInvestingArticles87 } from './saving-investing-87';
+import { savingInvestingArticles88 } from './saving-investing-88';
+import { savingInvestingArticles89 } from './saving-investing-89';
+import { savingInvestingArticles90 } from './saving-investing-90';
+import { savingInvestingArticles91 } from './saving-investing-91';
+import { savingInvestingArticles92 } from './saving-investing-92';
+import { savingInvestingArticles93 } from './saving-investing-93';
+import { savingInvestingArticles94 } from './saving-investing-94';
+import { savingInvestingArticles95 } from './saving-investing-95';
 
 // Export all finance articles for the listing page
 export const FINANCE_ARTICLES: Article[] = [
@@ -152,6 +172,26 @@ export const FINANCE_ARTICLES: Article[] = [
   ...savingInvestingArticles73,
   ...savingInvestingArticles74,
   ...savingInvestingArticles75,
+  ...savingInvestingArticles76,
+  ...savingInvestingArticles77,
+  ...savingInvestingArticles78,
+  ...savingInvestingArticles79,
+  ...savingInvestingArticles80,
+  ...savingInvestingArticles81,
+  ...savingInvestingArticles82,
+  ...savingInvestingArticles83,
+  ...savingInvestingArticles84,
+  ...savingInvestingArticles85,
+  ...savingInvestingArticles86,
+  ...savingInvestingArticles87,
+  ...savingInvestingArticles88,
+  ...savingInvestingArticles89,
+  ...savingInvestingArticles90,
+  ...savingInvestingArticles91,
+  ...savingInvestingArticles92,
+  ...savingInvestingArticles93,
+  ...savingInvestingArticles94,
+  ...savingInvestingArticles95,
 ];
 
 // Export as a key-value map for easy lookup by slug
