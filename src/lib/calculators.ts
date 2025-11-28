@@ -4424,6 +4424,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Emotional Wellbeing Index Calculator',
     metaDescription: 'Measure emotional wellbeing and resilience, then follow personalized recommendations and action plans.'
   },
+  {
+    id: 4505,
+    name: 'Anxiety Level Estimator (GAD-7 Simplified)',
+    description: 'Estimate anxiety severity and a 0–100 index using a simplified GAD-7 score plus sleep and impairment inputs.',
+    slug: 'anxiety-level-estimator-gad7-simplified',
+    category: 'health-fitness',
+    metaTitle: 'Anxiety Level Estimator (GAD-7 Simplified)',
+    metaDescription: 'Convert your GAD-7 score into an anxiety index, see severity bands, and get next-step recommendations.'
+  },
+  {
+    id: 4506,
+    name: 'Depression Severity Index (PHQ-9 Simplified)',
+    description: 'Blend PHQ-9 totals, impairment days, and energy into a simple depression severity index.',
+    slug: 'depression-severity-index-phq9-simplified',
+    category: 'health-fitness',
+    metaTitle: 'Depression Severity Index (PHQ-9 Simplified)',
+    metaDescription: 'Estimate depression severity based on PHQ-9 cutoffs with contextual recommendations and action steps.'
+  },
+  {
+    id: 4507,
+    name: 'Work Burnout Recovery Time Calculator',
+    description: 'Estimate decompression time from work burnout using workload, stress, sleep debt, time off, and support level.',
+    slug: 'work-burnout-recovery-time-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Work Burnout Recovery Time Calculator',
+    metaDescription: 'Turn your workload snapshot into a burnout level and estimated recovery window with practical planning tips.'
+  },
+  {
+    id: 4508,
+    name: 'Workplace Posture Risk Calculator',
+    description: 'Screen for posture-related risk by combining sitting time, breaks, lifting load, workstation fit, and pain frequency.',
+    slug: 'workplace-posture-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Workplace Posture Risk Calculator',
+    metaDescription: 'Estimate posture-related musculoskeletal risk and get ergonomic recommendations for safer work setups.'
+  },
+  {
+    id: 4509,
+    name: 'Spine Load (L4-L5) Pressure Calculator',
+    description: 'Estimate L4–L5 spinal compression and cumulative load from bodyweight, external load, trunk angle, and repetition.',
+    slug: 'spine-load-l4-l5-pressure-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Spine Load (L4-L5) Pressure Calculator',
+    metaDescription: 'Model spinal load for common lifting or leaning tasks and explore risk-informed ergonomic adjustments.'
+  },
   // New Finance Calculators
   {
     id: 3300,
