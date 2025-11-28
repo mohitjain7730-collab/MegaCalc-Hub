@@ -4469,6 +4469,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Spine Load (L4-L5) Pressure Calculator',
     metaDescription: 'Model spinal load for common lifting or leaning tasks and explore risk-informed ergonomic adjustments.'
   },
+  {
+    id: 4510,
+    name: 'Ergonomic Desk Setup Calculator',
+    description: 'Measure how closely your desk, chair, and monitor align with ergonomic guidelines and identify simple tweaks.',
+    slug: 'ergonomic-desk-setup-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Ergonomic Desk Setup Calculator',
+    metaDescription: 'Estimate ergonomic alignment score for your desk setup and get clear recommendations for posture-friendly adjustments.'
+  },
+  {
+    id: 4511,
+    name: 'Blue Zone Lifestyle Score Calculator',
+    description: 'Score how closely your food, movement, sleep, social, and purpose habits mirror Blue Zone lifestyle patterns.',
+    slug: 'blue-zone-lifestyle-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Blue Zone Lifestyle Score Calculator',
+    metaDescription: 'Calculate a Blue Zone–inspired lifestyle score and see which long-longevity pillars you can strengthen next.'
+  },
+  {
+    id: 4512,
+    name: 'Longevity Predictor (Lifestyle-based) Calculator',
+    description: 'Provide a rough healthy-life expectancy estimate using age, heart rate, activity, diet, and smoking status.',
+    slug: 'longevity-predictor-lifestyle-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Longevity Predictor (Lifestyle-based) Calculator',
+    metaDescription: 'Estimate healthy-life expectancy based on simple lifestyle inputs and see where small changes may add years.'
+  },
+  {
+    id: 4513,
+    name: 'Anti-Aging Nutrition Score Calculator',
+    description: 'Turn weekly food patterns into a protective vs. depleting nutrition score focused on healthy aging.',
+    slug: 'anti-aging-nutrition-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Anti-Aging Nutrition Score Calculator',
+    metaDescription: 'Score your anti-aging nutrition pattern across plants, whole grains, omega-rich foods, processed meals, and sugar.'
+  },
+  {
+    id: 4514,
+    name: 'Intermittent Cold Exposure Calorie Burn Estimator',
+    description: 'Estimate extra calorie burn from cold-induced thermogenesis based on protocol, temperature, and frequency.',
+    slug: 'intermittent-cold-exposure-calorie-burn-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Intermittent Cold Exposure Calorie Burn Estimator',
+    metaDescription: 'Estimate additional calories burned from intermittent cold exposure sessions using a simple thermogenesis model.'
+  },
   // New Finance Calculators
   {
     id: 3300,
