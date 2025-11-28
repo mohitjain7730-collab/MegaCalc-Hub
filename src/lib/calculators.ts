@@ -2760,6 +2760,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Blue Light Exposure Calculator - Manage Screen Strain & Sleep',
     metaDescription: 'Calculate blue-light exposure, see circadian impact, and get practical steps to reduce digital eye strain and protect melatonin production.'
   },
+  {
+    id: 3213,
+    name: 'Caffeine Cutoff Sleep Impact Calculator',
+    description: 'Plan the optimal time for your last caffeine dose to protect deep sleep and recovery.',
+    slug: 'caffeine-cutoff-sleep-impact-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Caffeine Cutoff Sleep Impact Calculator',
+    metaDescription: 'Estimate ideal caffeine cutoff time, predicted sleep latency, and wind-down window based on bedtime, total mg, and sensitivity.'
+  },
+  {
+    id: 3214,
+    name: 'Daily Screen Exposure Stress Index Calculator',
+    description: 'Blend screen hours, notifications, meetings, and breaks into a single stress score.',
+    slug: 'daily-screen-exposure-stress-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Daily Screen Exposure Stress Index Calculator',
+    metaDescription: 'Measure digital overload from work and personal screen time, notifications, and micro-breaks with actionable guidance.'
+  },
+  {
+    id: 3215,
+    name: 'Occupational Sedentary Risk Score Calculator',
+    description: 'Quantify sedentary risk using sitting hours, breaks, steps, workouts, and ergonomics.',
+    slug: 'occupational-sedentary-risk-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Occupational Sedentary Risk Score Calculator',
+    metaDescription: 'Calculate sedentary risk at work and get personalized movement, step, and ergonomic recommendations.'
+  },
+  {
+    id: 3216,
+    name: 'Mental Fatigue Index Calculator',
+    description: 'Score daily cognitive fatigue using deep work, context switches, sleep, hydration, and breaks.',
+    slug: 'mental-fatigue-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Mental Fatigue Index Calculator - Daily Cognitive Load',
+    metaDescription: 'Estimate mental fatigue, focus stability, and recovery gaps with actionable rest strategies based on workload inputs.'
+  },
+  {
+    id: 3217,
+    name: 'Cognitive Focus Efficiency Calculator',
+    description: 'Compare planned vs completed tasks with flow time and distractions to gauge focus quality.',
+    slug: 'cognitive-focus-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Cognitive Focus Efficiency Calculator',
+    metaDescription: 'Measure how efficiently you convert planned tasks and flow minutes into output, with recommendations to reduce fragmentation.'
+  },
   { id: 3028, name: 'Maximum Lactate Steady State (MLSS) Calculator', description: 'Calculate your MLSS for optimal endurance training intensity and lactate threshold determination.', slug: 'maximum-lactate-steady-state-calculator', category: 'health-fitness' },
   { id: 3029, name: 'Anaerobic Threshold Calculator', description: 'Calculate your anaerobic threshold for optimal training zone prescription and performance optimization.', slug: 'anaerobic-threshold-calculator', category: 'health-fitness' },
   { id: 3030, name: 'Blood Oxygen Saturation Estimator', description: 'Estimate your blood oxygen saturation based on altitude, activity level, and health conditions.', slug: 'blood-oxygen-saturation-estimator', category: 'health-fitness' },

@@ -180,17 +180,6 @@ const schemaMarkup = {
       url: baseUrl,
       description: 'Interactive calculator that models blue-light exposure using brightness, duration, filters, and ambient lighting.',
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.answer,
-        },
-      })),
-    },
   ],
 };
 

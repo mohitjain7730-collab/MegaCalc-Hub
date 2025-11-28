@@ -231,6 +231,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'calcium-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/calcium-intake-calculator')),
     'zinc-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/zinc-requirement-calculator')),
     'magnesium-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/magnesium-intake-calculator')),
+    'caffeine-cutoff-sleep-impact-calculator': dynamic(() => import('@/components/calculators/health-fitness/caffeine-cutoff-sleep-impact-calculator')),
+    'daily-screen-exposure-stress-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/daily-screen-exposure-stress-index-calculator')),
+    'occupational-sedentary-risk-score-calculator': dynamic(() => import('@/components/calculators/health-fitness/occupational-sedentary-risk-score-calculator')),
+    'health-fitness/mental-fatigue-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/mental-fatigue-index-calculator')),
+    'cognitive-focus-efficiency-calculator': dynamic(() => import('@/components/calculators/health-fitness/cognitive-focus-efficiency-calculator')),
     'blue-light-exposure-calculator': dynamic(() => import('@/components/calculators/health-fitness/blue-light-exposure-calculator')),
     'fiber-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/fiber-intake-calculator')),
     'sodium-potassium-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/sodium-potassium-ratio-calculator')),
@@ -775,7 +780,8 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
     notFound();
   }
 
-  const CalculatorComponent = calculatorComponents[calculator.slug] || null;
+  const componentKey = `${category.slug}/${calculator.slug}`;
+  const CalculatorComponent = calculatorComponents[componentKey] || calculatorComponents[calculator.slug] || null;
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-secondary/50">
