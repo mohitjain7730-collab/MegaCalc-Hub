@@ -4514,6 +4514,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Intermittent Cold Exposure Calorie Burn Estimator',
     metaDescription: 'Estimate additional calories burned from intermittent cold exposure sessions using a simple thermogenesis model.'
   },
+  {
+    id: 4515,
+    name: 'Sauna Session Detox Score Calculator',
+    description: 'Estimate detox score, sweat efficiency, and optimize sauna routine for heat therapy benefits.',
+    slug: 'sauna-session-detox-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sauna Session Detox Score Calculator',
+    metaDescription: 'Calculate detox score, sweat efficiency, and get recommendations to optimize your sauna routine.'
+  },
+  {
+    id: 4516,
+    name: 'Immune Recovery Time Post-Illness Calculator',
+    description: 'Estimate recovery timeline, immune strength, and get support recommendations after illness.',
+    slug: 'immune-recovery-time-post-illness-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Immune Recovery Time Post-Illness Calculator',
+    metaDescription: 'Estimate recovery timeline, immune strength, and get personalized recommendations to support healing.'
+  },
+  {
+    id: 4517,
+    name: 'Hydration Recovery After Workout Calculator',
+    description: 'Estimate fluid loss, hydration gap, and recovery time after exercise to optimize rehydration.',
+    slug: 'hydration-recovery-after-workout-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Hydration Recovery After Workout Calculator',
+    metaDescription: 'Calculate fluid loss, hydration gap, and recovery time to optimize rehydration after exercise.'
+  },
+  {
+    id: 4518,
+    name: 'Electrolyte Balance Restoration Calculator',
+    description: 'Estimate electrolyte gaps, balance score, and get restoration recommendations after sweat loss.',
+    slug: 'electrolyte-balance-restoration-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Electrolyte Balance Restoration Calculator',
+    metaDescription: 'Calculate electrolyte gaps (sodium, potassium, magnesium) and get restoration recommendations.'
+  },
+  {
+    id: 4519,
+    name: 'Vitamin Deficiency Risk Estimator',
+    description: 'Estimate deficiency risk, vitamin score, and get targeted nutrition recommendations.',
+    slug: 'vitamin-deficiency-risk-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Vitamin Deficiency Risk Estimator',
+    metaDescription: 'Estimate risk for common vitamin deficiencies and get targeted nutrition and supplementation recommendations.'
+  },
   // New Finance Calculators
   {
     id: 3300,
