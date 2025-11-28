@@ -4694,6 +4694,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Testosterone Deficiency Risk Calculator',
     metaDescription: 'Assess testosterone deficiency risk from age, BMI, exercise, sleep, stress, alcohol, and energy levels to guide lifestyle changes and testing.'
   },
+  {
+    id: 4535,
+    name: 'Male Fertility Sperm Health Index Calculator',
+    description: 'Calculate sperm health index and fertility score from sperm count, motility, morphology, volume, and age.',
+    slug: 'male-fertility-sperm-health-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Male Fertility Sperm Health Index Calculator',
+    metaDescription: 'Calculate sperm health index and fertility score from semen analysis results (count, motility, morphology, volume) and age to assess fertility.'
+  },
+  {
+    id: 4536,
+    name: 'Andropause Onset Risk Estimator',
+    description: 'Estimate andropause onset risk, probability, and age from age, testosterone level, energy, libido, muscle mass, mood, and sleep.',
+    slug: 'andropause-onset-risk-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Andropause Onset Risk Estimator',
+    metaDescription: 'Estimate andropause onset risk, probability, and age from symptoms and testosterone levels to guide prevention and treatment planning.'
+  },
+  {
+    id: 4537,
+    name: 'Prostate Health Score (PSA-based) Calculator',
+    description: 'Calculate prostate health score and risk level from PSA level, age, free PSA, family history, and symptoms.',
+    slug: 'prostate-health-score-psa-based-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Prostate Health Score (PSA-based) Calculator',
+    metaDescription: 'Calculate prostate health score and risk level from PSA level, age, free PSA, family history, and symptoms to guide monitoring and follow-up care.'
+  },
+  {
+    id: 4538,
+    name: 'Muscle Recovery Time by Age Calculator',
+    description: 'Estimate muscle recovery time based on age, training intensity, muscle group size, experience, sleep, and nutrition.',
+    slug: 'muscle-recovery-time-by-age-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Muscle Recovery Time by Age Calculator',
+    metaDescription: 'Estimate muscle recovery time from age, training intensity, muscle group size, experience, sleep, and nutrition to plan training frequency.'
+  },
+  {
+    id: 4539,
+    name: 'Creatine Loading & Maintenance Dose Calculator',
+    description: 'Calculate creatine loading and maintenance doses based on body weight, goal, form, and training frequency.',
+    slug: 'creatine-loading-maintenance-dose-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Creatine Loading & Maintenance Dose Calculator',
+    metaDescription: 'Calculate appropriate creatine loading and maintenance doses based on body weight, goal, form, and training frequency for optimal supplementation.'
+  },
   // New Finance Calculators
   {
     id: 3300,
