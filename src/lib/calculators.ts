@@ -4604,6 +4604,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Progesterone-to-Estrogen Ratio Calculator',
     metaDescription: 'Calculate progesterone-to-estrogen ratio from blood test results to assess hormonal balance and guide treatment.'
   },
+  {
+    id: 4525,
+    name: 'Follicular vs Luteal Phase Nutrition Planner Calculator',
+    description: 'Plan phase-specific nutrition targets for follicular and luteal phases to optimize energy and hormonal health.',
+    slug: 'follicular-vs-luteal-phase-nutrition-planner-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Follicular vs Luteal Phase Nutrition Planner Calculator',
+    metaDescription: 'Calculate phase-specific nutrition targets (calories, macros, iron) for follicular and luteal phases to optimize energy and hormonal health.'
+  },
+  {
+    id: 4526,
+    name: 'Ovulation Window Probability (Advanced) Calculator',
+    description: 'Estimate ovulation day, fertile window, and probability score using cycle length, LH surge, BBT, and cervical mucus.',
+    slug: 'ovulation-window-probability-advanced-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Ovulation Window Probability (Advanced) Calculator',
+    metaDescription: 'Estimate ovulation day and fertile window using cycle length, LH surge, BBT, and cervical mucus for accurate conception planning.'
+  },
+  {
+    id: 4527,
+    name: 'Fertile Cervical Mucus Tracking Calculator',
+    description: 'Track cervical mucus quality to assess fertility score and ovulation proximity for conception planning.',
+    slug: 'fertile-cervical-mucus-tracking-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Fertile Cervical Mucus Tracking Calculator',
+    metaDescription: 'Track cervical mucus quality (consistency, amount, stretchiness) to assess fertility score and identify optimal conception timing.'
+  },
+  {
+    id: 4528,
+    name: 'Perimenopause Transition Stage Estimator',
+    description: 'Estimate perimenopause transition stage, years to menopause, and get symptom management recommendations.',
+    slug: 'perimenopause-transition-stage-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Perimenopause Transition Stage Estimator',
+    metaDescription: 'Estimate perimenopause transition stage, years to menopause, and get personalized symptom management recommendations.'
+  },
+  {
+    id: 4529,
+    name: 'Menstrual Phase Workout Intensity Planner',
+    description: 'Plan workout intensity and type based on menstrual cycle phase, energy level, and pain to optimize performance.',
+    slug: 'menstrual-phase-workout-intensity-planner',
+    category: 'health-fitness',
+    metaTitle: 'Menstrual Phase Workout Intensity Planner',
+    metaDescription: 'Plan workout intensity and type based on menstrual cycle phase, energy level, and pain to optimize performance and recovery.'
+  },
   // New Finance Calculators
   {
     id: 3300,
