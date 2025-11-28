@@ -4649,6 +4649,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Menstrual Phase Workout Intensity Planner',
     metaDescription: 'Plan workout intensity and type based on menstrual cycle phase, energy level, and pain to optimize performance and recovery.'
   },
+  {
+    id: 4530,
+    name: 'Postpartum Hormonal Recovery Calculator',
+    description: 'Estimate postpartum hormonal recovery score, balance, and timeline based on weeks postpartum, breastfeeding, sleep, and symptoms.',
+    slug: 'postpartum-hormonal-recovery-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Postpartum Hormonal Recovery Calculator',
+    metaDescription: 'Calculate postpartum hormonal recovery score and timeline from weeks postpartum, breastfeeding status, sleep, energy, and mood to assess recovery progress.'
+  },
+  {
+    id: 4531,
+    name: 'PCOS Symptom Severity Score Calculator',
+    description: 'Assess PCOS symptom severity score and risk level from cycle irregularity, hirsutism, acne, weight, insulin resistance, and mood.',
+    slug: 'pcos-symptom-severity-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'PCOS Symptom Severity Score Calculator',
+    metaDescription: 'Assess PCOS symptom severity score and risk level from cycle irregularity, hirsutism, acne, weight, insulin resistance, and mood to guide management.'
+  },
+  {
+    id: 4532,
+    name: 'Endometriosis Pain & Cycle Impact Tracker',
+    description: 'Track endometriosis pain severity, cycle impact, and daily life disruption to assess condition severity and guide management.',
+    slug: 'endometriosis-pain-cycle-impact-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Endometriosis Pain & Cycle Impact Tracker',
+    metaDescription: 'Track endometriosis pain severity, cycle impact, and daily life disruption to assess condition severity and guide treatment planning.'
+  },
+  {
+    id: 4533,
+    name: 'Testosterone-to-Cortisol Ratio Calculator',
+    description: 'Calculate testosterone-to-cortisol ratio from hormone levels to assess anabolic-catabolic balance and recovery capacity.',
+    slug: 'testosterone-to-cortisol-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Testosterone-to-Cortisol Ratio Calculator',
+    metaDescription: 'Calculate testosterone-to-cortisol ratio from blood test results to assess anabolic-catabolic balance and recovery capacity.'
+  },
+  {
+    id: 4534,
+    name: 'Testosterone Deficiency Risk Calculator',
+    description: 'Estimate testosterone deficiency risk from age, BMI, exercise, sleep, stress, alcohol, and energy levels.',
+    slug: 'testosterone-deficiency-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Testosterone Deficiency Risk Calculator',
+    metaDescription: 'Assess testosterone deficiency risk from age, BMI, exercise, sleep, stress, alcohol, and energy levels to guide lifestyle changes and testing.'
+  },
   // New Finance Calculators
   {
     id: 3300,
