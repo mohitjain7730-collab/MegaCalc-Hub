@@ -1,11 +1,28 @@
+'use client';
+
 import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Search } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FINANCE_ARTICLES } from '../articles';
 import { CategoryIcon } from '@/components/category-icon';
+import { Input } from '@/components/ui/input';
 
 export default function SavingsAndInvestmentPage() {
+  const [query, setQuery] = useState('');
+
+  const filteredArticles = useMemo(() => {
+    if (!query.trim()) {
+      return FINANCE_ARTICLES;
+    }
+
+    const lowerQuery = query.toLowerCase();
+    return FINANCE_ARTICLES.filter((article) =>
+      `${article.title} ${article.description}`.toLowerCase().includes(lowerQuery)
+    );
+  }, [query]);
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
       <div className="w-full max-w-7xl mx-auto">
@@ -27,9 +44,28 @@ export default function SavingsAndInvestmentPage() {
           </p>
         </div>
 
-        {FINANCE_ARTICLES.length > 0 ? (
+        <div className="mb-8 space-y-2">
+          <label className="text-sm font-medium text-foreground">
+            Search articles
+          </label>
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Try “Roth IRA limits”, “ETFs”, “emergency fund”..."
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              className="pl-10"
+            />
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Showing {filteredArticles.length} of {FINANCE_ARTICLES.length} articles
+          </p>
+        </div>
+
+        {filteredArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {FINANCE_ARTICLES.map((article) => (
+            {filteredArticles.map((article) => (
               <Link
                 key={article.slug}
                 href={`/learning-hub/finance/${article.slug}`}
@@ -55,8 +91,11 @@ export default function SavingsAndInvestmentPage() {
           <Card className="w-full text-center shadow-md">
             <CardHeader>
               <CardTitle className="text-2xl md:text-3xl font-bold">
-                Articles coming soon
+                No articles matched “{query}”
               </CardTitle>
+              <CardDescription className="text-base">
+                Try different keywords or explore the full list above.
+              </CardDescription>
             </CardHeader>
           </Card>
         )}

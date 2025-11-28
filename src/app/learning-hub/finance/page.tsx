@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CategoryIcon } from '@/components/category-icon';
+import { FINANCE_ARTICLES } from './articles';
 
 const financeSections = [
   {
@@ -10,6 +11,7 @@ const financeSections = [
     slug: 'savings-and-investment',
     description: 'In-depth guides covering saving habits, automation, and investing fundamentals.',
     icon: 'PiggyBank',
+    count: FINANCE_ARTICLES.length,
   },
 ];
 
@@ -51,6 +53,9 @@ export default function FinancePage() {
                     <CardDescription className="pt-1">
                       {section.description}
                     </CardDescription>
+                    <p className="text-sm text-muted-foreground mt-3">
+                      {section.count ?? 0} {section.count === 1 ? 'article' : 'articles'}
+                    </p>
                   </CardHeader>
                 </Card>
               </Link>
