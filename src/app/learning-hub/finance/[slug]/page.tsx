@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import { ARTICLE_CONTENT } from '../articles';
 import { ArticleSchemaInjector } from '@/components/article-schema-injector';
 
@@ -103,6 +104,39 @@ function markdownToHtml(markdown: string): string {
 function isHtmlContent(content: string): boolean {
   const sample = content.trim();
   return /<\/?[a-z][\s\S]*>/i.test(sample);
+}
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = ARTICLE_CONTENT[slug as keyof typeof ARTICLE_CONTENT];
+  
+  if (!article) {
+    return {
+      title: 'Article Not Found',
+    };
+  }
+
+  return {
+    title: article.title,
+    description: article.description,
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      type: 'article',
+      publishedTime: article.publishedDate || undefined,
+      authors: article.author ? [article.author] : undefined,
+      url: `https://mycalculating.com/learning-hub/finance/${article.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.description,
+    },
+  };
 }
 
 export default async function FinanceArticlePage({ 

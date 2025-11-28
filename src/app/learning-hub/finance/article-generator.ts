@@ -112,14 +112,14 @@ export const generateArticleSchema = (detail: ArticleDetail, slug: string) => {
     "dateModified": isoDate, // Assuming static
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://example.com/finance/${slug}` // Placeholder domain
+      "@id": `https://mycalculating.com/learning-hub/finance/${slug}`
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Knowledge Hub",
+      "name": "Mycalculating.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://example.com/logo.png"
+        "url": "https://mycalculating.com/logo.png"
       }
     }
   };

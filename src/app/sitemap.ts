@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
+import { FINANCE_ARTICLES } from './learning-hub/finance/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mycalculating.com';
@@ -40,5 +41,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticPages, ...categoryPages, ...calculatorPages];
+  // Learning Hub pages
+  const learningHubPages = [
+    {
+      url: `${baseUrl}/learning-hub`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/learning-hub/finance`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/learning-hub/finance/savings-and-investment`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+  ];
+
+  // Finance article pages
+  const financeArticlePages = FINANCE_ARTICLES.map((article) => ({
+    url: `${baseUrl}/learning-hub/finance/${article.slug}`,
+    lastModified: article.publishedDate ? new Date(article.publishedDate) : new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [
+    ...staticPages,
+    ...categoryPages,
+    ...calculatorPages,
+    ...learningHubPages,
+    ...financeArticlePages,
+  ];
 }
