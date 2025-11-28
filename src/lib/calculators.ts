@@ -2751,6 +2751,15 @@ export const calculators: Calculator[] = [
     metaTitle: 'Omega-3 Daily Requirement Calculator - Personalized Fatty Acid Needs',
     metaDescription: 'Calculate your personalized omega-3 daily requirements including EPA and DHA based on age, gender, health conditions, and lifestyle for optimal nutrition and health.'
   },
+  {
+    id: 3212,
+    name: 'Blue Light Exposure Calculator',
+    description: 'Estimate daily blue-light dose from screens, filters, and lighting to protect circadian health.',
+    slug: 'blue-light-exposure-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Blue Light Exposure Calculator - Manage Screen Strain & Sleep',
+    metaDescription: 'Calculate blue-light exposure, see circadian impact, and get practical steps to reduce digital eye strain and protect melatonin production.'
+  },
   { id: 3028, name: 'Maximum Lactate Steady State (MLSS) Calculator', description: 'Calculate your MLSS for optimal endurance training intensity and lactate threshold determination.', slug: 'maximum-lactate-steady-state-calculator', category: 'health-fitness' },
   { id: 3029, name: 'Anaerobic Threshold Calculator', description: 'Calculate your anaerobic threshold for optimal training zone prescription and performance optimization.', slug: 'anaerobic-threshold-calculator', category: 'health-fitness' },
   { id: 3030, name: 'Blood Oxygen Saturation Estimator', description: 'Estimate your blood oxygen saturation based on altitude, activity level, and health conditions.', slug: 'blood-oxygen-saturation-estimator', category: 'health-fitness' },

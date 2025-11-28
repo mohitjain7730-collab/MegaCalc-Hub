@@ -231,6 +231,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'calcium-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/calcium-intake-calculator')),
     'zinc-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/zinc-requirement-calculator')),
     'magnesium-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/magnesium-intake-calculator')),
+    'blue-light-exposure-calculator': dynamic(() => import('@/components/calculators/health-fitness/blue-light-exposure-calculator')),
     'fiber-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/fiber-intake-calculator')),
     'sodium-potassium-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/sodium-potassium-ratio-calculator')),
     'daily-antioxidant-orac-goal-calculator': dynamic(() => import('@/components/calculators/health-fitness/daily-antioxidant-orac-goal-calculator')),
