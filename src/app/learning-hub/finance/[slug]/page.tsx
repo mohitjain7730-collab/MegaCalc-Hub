@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { ARTICLE_CONTENT } from '../articles';
+import { ArticleSchemaInjector } from '@/components/article-schema-injector';
 
 // Helper function to convert slug to readable title
 function slugToTitle(slug: string): string {
@@ -123,28 +124,31 @@ export default async function FinanceArticlePage({
     : markdownToHtml(article.content);
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
-      <div className="w-full max-w-4xl mx-auto">
-        <div className="mb-8">
-          <Button asChild variant="ghost" className="mb-4">
-          <Link href="/learning-hub/finance/savings-and-investment">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Savings & Investment
-            </Link>
-          </Button>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-            {title}
-          </h1>
-        </div>
+    <>
+      <ArticleSchemaInjector schema={article.schema} />
+      <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
+        <div className="w-full max-w-4xl mx-auto">
+          <div className="mb-8">
+            <Button asChild variant="ghost" className="mb-4">
+            <Link href="/learning-hub/finance/savings-and-investment">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Savings & Investment
+              </Link>
+            </Button>
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+              {title}
+            </h1>
+          </div>
 
-        <article className="prose prose-slate dark:prose-invert max-w-none">
-          <div 
-            className="article-content space-y-4"
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-          />
-        </article>
+          <article className="prose prose-slate dark:prose-invert max-w-none">
+            <div 
+              className="article-content space-y-4"
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
+            />
+          </article>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

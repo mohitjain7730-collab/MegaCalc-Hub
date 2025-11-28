@@ -4,6 +4,9 @@ export interface Article {
   slug: string;
   description: string;
   content: string;
+  schema?: any; // JSON-LD schema for SEO
+  author?: string;
+  publishedDate?: string;
 }
 
 
