@@ -4973,6 +4973,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'HRV Recovery Optimization Score Calculator',
     metaDescription: 'Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness and guide training decisions.'
   },
+  {
+    id: 4566,
+    name: 'Injury Prevention Warmup Time Calculator',
+    description: 'Calculate optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history to prevent injuries and prepare for exercise.',
+    slug: 'injury-prevention-warmup-time-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Injury Prevention Warmup Time Calculator',
+    metaDescription: 'Calculate optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history to prevent injuries and prepare for exercise.'
+  },
+  {
+    id: 4567,
+    name: 'Core Strength Balance Calculator',
+    description: 'Calculate core strength balance across anterior, posterior, lateral, and rotational components to identify imbalances and optimize core training.',
+    slug: 'core-strength-balance-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Core Strength Balance Calculator',
+    metaDescription: 'Calculate core strength balance across anterior, posterior, lateral, and rotational components to identify imbalances and optimize core training for better performance and injury prevention.'
+  },
+  {
+    id: 4568,
+    name: 'Posture Correction Progress Calculator',
+    description: 'Calculate posture correction progress based on initial and current posture scores, weeks of training, pain level, and flexibility to track improvement and guide training.',
+    slug: 'posture-correction-progress-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Posture Correction Progress Calculator',
+    metaDescription: 'Calculate posture correction progress based on initial and current posture scores, weeks of training, pain level, and flexibility to track improvement and guide training.'
+  },
+  {
+    id: 4569,
+    name: 'VO2 Recovery Half-Time Calculator',
+    description: 'Calculate VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age to assess cardiovascular recovery capacity.',
+    slug: 'vo2-recovery-half-time-calculator',
+    category: 'health-fitness',
+    metaTitle: 'VO2 Recovery Half-Time Calculator',
+    metaDescription: 'Calculate VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age to assess cardiovascular recovery capacity and fitness improvements.'
+  },
+  {
+    id: 4570,
+    name: 'Power-to-Weight Performance Index Calculator',
+    description: 'Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.',
+    slug: 'power-to-weight-performance-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Power-to-Weight Performance Index Calculator',
+    metaDescription: 'Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.'
+  },
   // New Finance Calculators
   {
     id: 3300,
