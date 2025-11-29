@@ -4830,6 +4830,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Analyze platelet count risk from platelet count, bleeding symptoms, age, and recent surgery to assess bleeding and clotting risks.'
   },
   {
+    id: 5006,
+    name: 'Liver Enzyme (ALT/AST Ratio) Calculator',
+    description: 'Calculate liver enzyme ALT/AST ratio from ALT level, AST level, ALT/AST ratio, and age.',
+    slug: 'liver-enzyme-alt-ast-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Liver Enzyme (ALT/AST Ratio) Calculator',
+    metaDescription: 'Calculate liver enzyme ALT/AST ratio from ALT level, AST level, ALT/AST ratio, and age to assess liver health.'
+  },
+  {
+    id: 5007,
+    name: 'Kidney Function Creatinine Clearance (CrCl) Calculator',
+    description: 'Calculate kidney function creatinine clearance from creatinine level, age, gender, and weight.',
+    slug: 'kidney-function-creatinine-clearance-crcl-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Kidney Function Creatinine Clearance (CrCl) Calculator',
+    metaDescription: 'Calculate kidney function creatinine clearance from creatinine level, age, gender, and weight to assess kidney function.'
+  },
+  {
+    id: 5008,
+    name: 'Blood Urea Nitrogen (BUN) Ratio Calculator',
+    description: 'Calculate blood urea nitrogen BUN ratio from BUN level, creatinine level, BUN/creatinine ratio, and age.',
+    slug: 'blood-urea-nitrogen-bun-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Blood Urea Nitrogen (BUN) Ratio Calculator',
+    metaDescription: 'Calculate blood urea nitrogen BUN ratio from BUN level, creatinine level, BUN/creatinine ratio, and age to assess kidney function.'
+  },
+  {
+    id: 5009,
+    name: 'Thyroid Function TSH/T3/T4 Balance Calculator',
+    description: 'Calculate thyroid function TSH/T3/T4 balance from TSH level, T3 level, T4 level, and age.',
+    slug: 'thyroid-function-tsh-t3-t4-balance-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Thyroid Function TSH/T3/T4 Balance Calculator',
+    metaDescription: 'Calculate thyroid function TSH/T3/T4 balance from TSH level, T3 level, T4 level, and age to assess thyroid function.'
+  },
+  {
+    id: 5010,
+    name: 'Iron Deficiency Anemia Risk Calculator',
+    description: 'Calculate iron deficiency anemia risk from hemoglobin level, iron intake, age, and gender.',
+    slug: 'iron-deficiency-anemia-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Iron Deficiency Anemia Risk Calculator',
+    metaDescription: 'Calculate iron deficiency anemia risk from hemoglobin level, iron intake, age, and gender to assess anemia risk.'
+  },
+  {
     id: 4544,
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
