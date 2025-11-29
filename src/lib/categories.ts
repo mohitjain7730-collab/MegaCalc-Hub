@@ -44,6 +44,14 @@ import {
   Hexagon,
   Octagon,
   Trophy,
+  FileText,
+  CreditCard,
+  Shield,
+  Handshake,
+  TrendingUp,
+  PieChart,
+  BarChart,
+  Wallet,
 } from 'lucide-react';
 
 export interface Category {
@@ -97,6 +105,14 @@ export const icons: {[key: string]: LucideIcon} = {
   Hexagon,
   Octagon,
   Trophy,
+  FileText,
+  CreditCard,
+  Shield,
+  Handshake,
+  TrendingUp,
+  PieChart,
+  BarChart,
+  Wallet,
 };
 
 export const categories: Category[] = [
