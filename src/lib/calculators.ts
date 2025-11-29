@@ -4883,6 +4883,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Omega-6 to Omega-3 Balance Calculator',
     metaDescription: 'Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health and reduced chronic disease risk.'
   },
+  {
+    id: 4556,
+    name: 'Antioxidant Diversity Index Calculator',
+    description: 'Calculate antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and health benefits.',
+    slug: 'antioxidant-diversity-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Antioxidant Diversity Index Calculator',
+    metaDescription: 'Calculate antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and optimize intake for better health.'
+  },
+  {
+    id: 4557,
+    name: 'Gut Microbiome Diversity Score Calculator',
+    description: 'Calculate gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health.',
+    slug: 'gut-microbiome-diversity-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Gut Microbiome Diversity Score Calculator',
+    metaDescription: 'Calculate gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health and optimize gut microbiome support.'
+  },
+  {
+    id: 4558,
+    name: 'Probiotic Daily Dose Estimator',
+    description: 'Estimate daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health.',
+    slug: 'probiotic-daily-dose-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Probiotic Daily Dose Estimator',
+    metaDescription: 'Estimate daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health and digestive function.'
+  },
+  {
+    id: 4559,
+    name: 'Prebiotic Fiber Target Calculator',
+    description: 'Calculate prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support.',
+    slug: 'prebiotic-fiber-target-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Prebiotic Fiber Target Calculator',
+    metaDescription: 'Calculate prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support and digestive health.'
+  },
+  {
+    id: 4560,
+    name: 'Glycemic Index Meal Optimizer Calculator',
+    description: 'Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels.',
+    slug: 'glycemic-index-meal-optimizer-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Glycemic Index Meal Optimizer Calculator',
+    metaDescription: 'Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels for better health.'
+  },
   // New Finance Calculators
   {
     id: 3300,
