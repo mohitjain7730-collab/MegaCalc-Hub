@@ -1,4 +1,4 @@
-import { Article } from './article';
+import { Article } from '../article';
 
 export const nutritionArticlesPart3: Article[] = [
   {
