@@ -4838,6 +4838,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Jet Lag Recovery Duration Calculator',
     metaDescription: 'Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.'
   },
+  {
+    id: 4551,
+    name: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator',
+    description: 'Assess risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators.',
+    slug: 'sleep-phase-delay-syndrome-dspd-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator',
+    metaDescription: 'Assess risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators to identify potential sleep disorders.'
+  },
+  {
+    id: 4552,
+    name: 'Optimal Bedtime by Chronotype Calculator',
+    description: 'Calculate optimal bedtime based on your chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality.',
+    slug: 'optimal-bedtime-by-chronotype-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Optimal Bedtime by Chronotype Calculator',
+    metaDescription: 'Calculate optimal bedtime based on your chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality and alignment with natural rhythms.'
+  },
+  {
+    id: 4553,
+    name: 'Vitamin B12 Daily Requirement Calculator',
+    description: 'Calculate daily vitamin B12 requirements based on age, diet type, health conditions, and lifestyle factors to prevent deficiency.',
+    slug: 'vitamin-b12-daily-requirement-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Vitamin B12 Daily Requirement Calculator',
+    metaDescription: 'Calculate daily vitamin B12 requirements based on age, diet type, health conditions, and lifestyle factors to prevent deficiency and maintain optimal health.'
+  },
+  {
+    id: 4554,
+    name: 'Vitamin C Immunity Boost Score Calculator',
+    description: 'Calculate vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support.',
+    slug: 'vitamin-c-immunity-boost-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Vitamin C Immunity Boost Score Calculator',
+    metaDescription: 'Calculate vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support and optimize intake.'
+  },
+  {
+    id: 4555,
+    name: 'Omega-6 to Omega-3 Balance Calculator',
+    description: 'Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health.',
+    slug: 'omega-6-to-omega-3-balance-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Omega-6 to Omega-3 Balance Calculator',
+    metaDescription: 'Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health and reduced chronic disease risk.'
+  },
   // New Finance Calculators
   {
     id: 3300,

@@ -379,10 +379,16 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                 </>
             ) : null}
 
-            {otherCalculators.length > 0 && (
+            {otherCalculators.length > 0 && (categorySlug === 'conversions' || categorySlug === 'sports-training') && (
                  <div>
-                    {(categorySlug === 'conversions' || categorySlug === 'sports-training') && <div className="my-8"/>}
+                    <div className="my-8"/>
                     {renderCalculatorGrid(otherCalculators, categorySlug, "")}
+                </div>
+            )}
+
+            {(categorySlug !== 'conversions' && categorySlug !== 'sports-training' && filteredCalculators.length > 0) && (
+                <div>
+                    {renderCalculatorGrid(filteredCalculators, categorySlug, "")}
                 </div>
             )}
         </div>
