@@ -4,8 +4,66 @@ import { nutritionArticlesPart2 } from './nutrition2';
 import { nutritionArticlesPart3 } from './nutrition3';
 import { nutritionArticlesPart4 } from './nutrition4';
 import { nutritionArticlesPart5 } from './nutrition5';
+import { NUTRITION_ARTICLES as nutritionArticlesBatch1 } from './nutrition-6';
+import { NUTRITION_ARTICLES_BATCH_2 } from './nutrition-8';
+import { NUTRITION_ARTICLES_BATCH_3 } from './nutrition-9';
+import { NUTRITION_ARTICLES_BATCH_4 } from './nutrition-10';
+import { NUTRITION_ARTICLES_BATCH_5 } from './nutrition-11';
 import type { Article as HealthArticle } from '../article';
 import { getAuthorForArticle } from '../article';
+
+// Helper function to convert new article format to HealthArticle format
+function convertNewArticleToHealthArticle(newArticle: any): HealthArticle {
+  // Convert string id to number (hash the string to get a consistent number)
+  let numericId = 200; // Start from 200 to avoid conflicts
+  if (typeof newArticle.id === 'string') {
+    let hash = 0;
+    for (let i = 0; i < newArticle.id.length; i++) {
+      hash = ((hash << 5) - hash) + newArticle.id.charCodeAt(i);
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    numericId = Math.abs(hash) % 10000 + 200;
+  } else {
+    numericId = newArticle.id;
+  }
+
+  // Convert categoryId string to number (1 for nutrition-diet)
+  const categoryId = typeof newArticle.categoryId === 'string' ? 1 : newArticle.categoryId;
+
+  // Convert sections from heading to title
+  const sections = (newArticle.content.sections || []).map((section: any) => ({
+    title: section.heading || section.title,
+    body: section.body
+  }));
+
+  // Convert workflow to add step numbers
+  const workflow = (newArticle.content.workflow || []).map((step: any, index: number) => ({
+    step: index + 1,
+    title: step.title,
+    desc: step.description || step.desc
+  }));
+
+  // Convert faqs to faq format
+  const faq = (newArticle.content.faqs || newArticle.content.faq || []).map((item: any) => ({
+    q: item.question || item.q,
+    a: item.answer || item.a
+  }));
+
+  return {
+    id: numericId,
+    categoryId: categoryId,
+    title: newArticle.title,
+    readTime: newArticle.readTime,
+    content: {
+      intro: newArticle.content.intro,
+      keyTakeaways: newArticle.content.keyTakeaways || [],
+      whyItMatters: newArticle.content.whyItMatters,
+      sections: sections,
+      workflow: workflow,
+      faq: faq
+    }
+  };
+}
 
 // Helper function to convert health Article to standard Article format
 function convertHealthArticleToStandard(healthArticle: HealthArticle): Article {
@@ -197,6 +255,12 @@ const allNutritionArticles = [
   ...nutritionArticlesPart3,
   ...nutritionArticlesPart4,
   ...nutritionArticlesPart5,
+  // Convert new format articles to HealthArticle format
+  ...nutritionArticlesBatch1.map(convertNewArticleToHealthArticle),
+  ...NUTRITION_ARTICLES_BATCH_2.map(convertNewArticleToHealthArticle),
+  ...NUTRITION_ARTICLES_BATCH_3.map(convertNewArticleToHealthArticle),
+  ...NUTRITION_ARTICLES_BATCH_4.map(convertNewArticleToHealthArticle),
+  ...NUTRITION_ARTICLES_BATCH_5.map(convertNewArticleToHealthArticle),
 ];
 
 // Convert all articles to standard format
