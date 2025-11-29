@@ -5063,6 +5063,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Working Memory Capacity Estimator',
     metaDescription: 'Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function and guide improvement strategies.'
   },
+  {
+    id: 4576,
+    name: 'Mental Processing Speed Test Calculator',
+    description: 'Assess mental processing speed through reaction time, accuracy, and cognitive task performance to understand cognitive efficiency.',
+    slug: 'mental-processing-speed-test-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Mental Processing Speed Test Calculator',
+    metaDescription: 'Assess mental processing speed through reaction time, accuracy, and cognitive task performance to understand cognitive efficiency and optimize brain function.'
+  },
+  {
+    id: 4577,
+    name: 'Decision Fatigue Index Calculator',
+    description: 'Measure decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion to optimize decision-making quality.',
+    slug: 'decision-fatigue-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Decision Fatigue Index Calculator',
+    metaDescription: 'Measure decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion to optimize decision-making quality and reduce cognitive load.'
+  },
+  {
+    id: 4578,
+    name: 'Brain Fog Severity Score Calculator',
+    description: 'Assess brain fog severity based on mental clarity, memory, concentration, word-finding, sleep quality, and stress to identify causes and improvement strategies.',
+    slug: 'brain-fog-severity-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Brain Fog Severity Score Calculator',
+    metaDescription: 'Assess brain fog severity based on mental clarity, memory, concentration, word-finding, sleep quality, and stress to identify causes and improvement strategies.'
+  },
+  {
+    id: 4579,
+    name: 'Cognitive Load Balance Calculator',
+    description: 'Assess cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity to optimize learning and performance.',
+    slug: 'cognitive-load-balance-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Cognitive Load Balance Calculator',
+    metaDescription: 'Assess cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity to optimize learning and performance.'
+  },
+  {
+    id: 4580,
+    name: 'Multitasking Efficiency Calculator',
+    description: 'Evaluate multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates to optimize productivity.',
+    slug: 'multitasking-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Multitasking Efficiency Calculator',
+    metaDescription: 'Evaluate multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates to optimize productivity.'
+  },
+  {
+    id: 4581,
+    name: 'Reaction Time Benchmark Calculator',
+    description: 'Benchmark your reaction times against age and gender-adjusted population norms to understand your cognitive performance relative to peers.',
+    slug: 'reaction-time-benchmark-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Reaction Time Benchmark Calculator',
+    metaDescription: 'Benchmark your reaction times against age and gender-adjusted population norms to understand your cognitive performance relative to peers.'
+  },
+  {
+    id: 4582,
+    name: 'Cognitive Age Estimator',
+    description: 'Estimate your cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise to understand brain health relative to chronological age.',
+    slug: 'cognitive-age-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Cognitive Age Estimator',
+    metaDescription: 'Estimate your cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise to understand brain health relative to chronological age.'
+  },
+  {
+    id: 4583,
+    name: 'Happiness Index Calculator',
+    description: 'Calculate your happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement to assess overall wellbeing.',
+    slug: 'happiness-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Happiness Index Calculator',
+    metaDescription: 'Calculate your happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement to assess overall wellbeing.'
+  },
+  {
+    id: 4584,
+    name: 'Gratitude Frequency Tracker',
+    description: 'Track gratitude practice frequency including journaling, expressions, and consistency to assess gratitude habits and enhance wellbeing.',
+    slug: 'gratitude-frequency-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Gratitude Frequency Tracker',
+    metaDescription: 'Track gratitude practice frequency including journaling, expressions, and consistency to assess gratitude habits and enhance wellbeing.'
+  },
+  {
+    id: 4585,
+    name: 'Mindfulness Consistency Score Calculator',
+    description: 'Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.',
+    slug: 'mindfulness-consistency-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Mindfulness Consistency Score Calculator',
+    metaDescription: 'Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.'
+  },
   // New Finance Calculators
   {
     id: 3300,
