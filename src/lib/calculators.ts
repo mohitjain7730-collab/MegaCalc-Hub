@@ -4776,6 +4776,60 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality to assess sleep health.'
   },
   {
+    id: 5000,
+    name: 'Resilience Score Calculator',
+    description: 'Calculate resilience score and percentage from stress level, resilience score, age, and coping ability.',
+    slug: 'resilience-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Resilience Score Calculator',
+    metaDescription: 'Calculate resilience score and percentage from stress level, resilience score, age, and coping ability to assess mental resilience.'
+  },
+  {
+    id: 5001,
+    name: 'Positive vs Negative Thought Ratio Calculator',
+    description: 'Calculate positive vs negative thought ratio from thought counts, ratio, and mood level.',
+    slug: 'positive-vs-negative-thought-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Positive vs Negative Thought Ratio Calculator',
+    metaDescription: 'Calculate positive vs negative thought ratio from thought counts, ratio, and mood level to assess mental health and cognitive patterns.'
+  },
+  {
+    id: 5002,
+    name: 'Hemoglobin (Hb) Level Estimator',
+    description: 'Estimate hemoglobin level from hemoglobin level, age, gender, and iron intake.',
+    slug: 'hemoglobin-hb-level-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Hemoglobin (Hb) Level Estimator',
+    metaDescription: 'Estimate hemoglobin level from hemoglobin level, age, gender, and iron intake to assess blood health and oxygen transport capacity.'
+  },
+  {
+    id: 5003,
+    name: 'Red Blood Cell Count to Oxygen Capacity Calculator',
+    description: 'Calculate red blood cell count to oxygen capacity from red blood cell count, hemoglobin level, oxygen capacity, and age.',
+    slug: 'red-blood-cell-count-to-oxygen-capacity-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Red Blood Cell Count to Oxygen Capacity Calculator',
+    metaDescription: 'Calculate red blood cell count to oxygen capacity from red blood cell count, hemoglobin level, oxygen capacity, and age to assess oxygen transport.'
+  },
+  {
+    id: 5004,
+    name: 'White Blood Cell (WBC) Count Balance Calculator',
+    description: 'Calculate white blood cell count balance from white blood cell count, neutrophil count, lymphocyte count, and age.',
+    slug: 'white-blood-cell-wbc-count-balance-calculator',
+    category: 'health-fitness',
+    metaTitle: 'White Blood Cell (WBC) Count Balance Calculator',
+    metaDescription: 'Calculate white blood cell count balance from white blood cell count, neutrophil count, lymphocyte count, and age to assess immune function.'
+  },
+  {
+    id: 5005,
+    name: 'Platelet Count Risk Analyzer',
+    description: 'Analyze platelet count risk from platelet count, bleeding symptoms, age, and recent surgery.',
+    slug: 'platelet-count-risk-analyzer',
+    category: 'health-fitness',
+    metaTitle: 'Platelet Count Risk Analyzer',
+    metaDescription: 'Analyze platelet count risk from platelet count, bleeding symptoms, age, and recent surgery to assess bleeding and clotting risks.'
+  },
+  {
     id: 4544,
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
