@@ -5153,6 +5153,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Mindfulness Consistency Score Calculator',
     metaDescription: 'Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.'
   },
+  {
+    id: 4586,
+    name: 'Meditation Stress Reduction Impact Calculator',
+    description: 'Measure the impact of meditation practice on stress reduction by comparing baseline and current stress levels, meditation frequency, duration, and practice length.',
+    slug: 'meditation-stress-reduction-impact-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Meditation Stress Reduction Impact Calculator',
+    metaDescription: 'Measure the impact of meditation practice on stress reduction by comparing baseline and current stress levels, meditation frequency, duration, and practice length.'
+  },
+  {
+    id: 4587,
+    name: 'Breathing Pattern Efficiency Calculator',
+    description: 'Assess breathing pattern efficiency by evaluating respiratory rate, inhalation-to-exhalation ratio, diaphragmatic breathing, breath hold capacity, and breathing regularity.',
+    slug: 'breathing-pattern-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Breathing Pattern Efficiency Calculator',
+    metaDescription: 'Assess breathing pattern efficiency by evaluating respiratory rate, inhalation-to-exhalation ratio, diaphragmatic breathing, breath hold capacity, and breathing regularity.'
+  },
+  {
+    id: 4588,
+    name: 'Emotional Stability Index Calculator',
+    description: 'Calculate emotional stability index based on mood fluctuations, emotional reactivity, stress resilience, emotional regulation, recovery speed, and emotional balance.',
+    slug: 'emotional-stability-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Emotional Stability Index Calculator',
+    metaDescription: 'Calculate emotional stability index based on mood fluctuations, emotional reactivity, stress resilience, emotional regulation, recovery speed, and emotional balance.'
+  },
+  {
+    id: 4589,
+    name: 'Social Connection Score Calculator',
+    description: 'Assess social connection score based on relationship quantity, quality, interaction frequency, social support, and community engagement to understand social wellbeing.',
+    slug: 'social-connection-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Social Connection Score Calculator',
+    metaDescription: 'Assess social connection score based on relationship quantity, quality, interaction frequency, social support, and community engagement to understand social wellbeing.'
+  },
+  {
+    id: 4590,
+    name: 'Loneliness Risk Estimator',
+    description: 'Estimate loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support to identify areas for improvement.',
+    slug: 'loneliness-risk-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Loneliness Risk Estimator',
+    metaDescription: 'Estimate loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support to identify areas for improvement.'
+  },
   // New Finance Calculators
   {
     id: 3300,
