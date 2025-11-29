@@ -4920,6 +4920,96 @@ export const calculators: Calculator[] = [
     metaDescription: 'Analyze pulse pressure from systolic pressure, diastolic pressure, pulse pressure, and age to assess cardiovascular health.'
   },
   {
+    id: 5016,
+    name: 'Arterial Elasticity Index Calculator',
+    description: 'Calculate arterial elasticity index from systolic pressure, diastolic pressure, pulse pressure, and age.',
+    slug: 'arterial-elasticity-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Arterial Elasticity Index Calculator',
+    metaDescription: 'Calculate arterial elasticity index from systolic pressure, diastolic pressure, pulse pressure, and age to assess arterial health.'
+  },
+  {
+    id: 5017,
+    name: 'Heart Workload (Rate Pressure Product) Calculator',
+    description: 'Calculate heart workload rate pressure product from heart rate, systolic pressure, rate pressure product, and age.',
+    slug: 'heart-workload-rate-pressure-product-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Heart Workload (Rate Pressure Product) Calculator',
+    metaDescription: 'Calculate heart workload rate pressure product from heart rate, systolic pressure, rate pressure product, and age to assess cardiac workload.'
+  },
+  {
+    id: 5018,
+    name: 'Oxygen Pulse Efficiency Calculator',
+    description: 'Calculate oxygen pulse efficiency from oxygen uptake, heart rate, oxygen pulse, and age.',
+    slug: 'oxygen-pulse-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Oxygen Pulse Efficiency Calculator',
+    metaDescription: 'Calculate oxygen pulse efficiency from oxygen uptake, heart rate, oxygen pulse, and age to assess cardiovascular efficiency.'
+  },
+  {
+    id: 5019,
+    name: 'VO2 Kinetics Calculator',
+    description: 'Calculate VO2 kinetics from initial VO2, final VO2, time to steady state, and age.',
+    slug: 'vo2-kinetics-calculator',
+    category: 'health-fitness',
+    metaTitle: 'VO2 Kinetics Calculator',
+    metaDescription: 'Calculate VO2 kinetics from initial VO2, final VO2, time to steady state, and age to assess cardiovascular fitness.'
+  },
+  {
+    id: 5020,
+    name: 'Stroke Index (Cardiac Function) Calculator',
+    description: 'Calculate stroke index cardiac function from stroke volume, body surface area, weight, and height.',
+    slug: 'stroke-index-cardiac-function-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Stroke Index (Cardiac Function) Calculator',
+    metaDescription: 'Calculate stroke index cardiac function from stroke volume, body surface area, weight, and height to assess cardiac function.'
+  },
+  {
+    id: 5021,
+    name: 'Blood Flow Velocity Estimator',
+    description: 'Estimate blood flow velocity from cardiac output, vessel diameter, flow velocity, and age.',
+    slug: 'blood-flow-velocity-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Blood Flow Velocity Estimator',
+    metaDescription: 'Estimate blood flow velocity from cardiac output, vessel diameter, flow velocity, and age to assess vascular function.'
+  },
+  {
+    id: 5022,
+    name: 'Biological Stress Load (Allostatic Load) Calculator',
+    description: 'Calculate biological stress load allostatic load from stress level, sleep quality, cortisol level, and chronic disease burden.',
+    slug: 'biological-stress-load-allostatic-load-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Biological Stress Load (Allostatic Load) Calculator',
+    metaDescription: 'Calculate biological stress load allostatic load from stress level, sleep quality, cortisol level, and chronic disease burden to assess stress burden.'
+  },
+  {
+    id: 5023,
+    name: 'Oxidative Stress Index Calculator',
+    description: 'Calculate oxidative stress index from antioxidant intake, exercise level, stress level, and age.',
+    slug: 'oxidative-stress-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Oxidative Stress Index Calculator',
+    metaDescription: 'Calculate oxidative stress index from antioxidant intake, exercise level, stress level, and age to assess cellular stress.'
+  },
+  {
+    id: 5024,
+    name: 'Cellular Hydration Score Calculator',
+    description: 'Calculate cellular hydration score from water intake, electrolyte intake, hydration level, and age.',
+    slug: 'cellular-hydration-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Cellular Hydration Score Calculator',
+    metaDescription: 'Calculate cellular hydration score from water intake, electrolyte intake, hydration level, and age to assess cellular hydration.'
+  },
+  {
+    id: 5025,
+    name: 'Mitochondrial Health Estimator',
+    description: 'Estimate mitochondrial health from exercise level, energy level, antioxidant intake, and age.',
+    slug: 'mitochondrial-health-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Mitochondrial Health Estimator',
+    metaDescription: 'Estimate mitochondrial health from exercise level, energy level, antioxidant intake, and age to assess cellular energy production.'
+  },
+  {
     id: 4544,
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
