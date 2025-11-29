@@ -4928,6 +4928,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Glycemic Index Meal Optimizer Calculator',
     metaDescription: 'Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels for better health.'
   },
+  {
+    id: 4561,
+    name: 'Blood Sugar Spike Estimator (by meal type)',
+    description: 'Estimate blood sugar spike magnitude based on meal type, carbohydrate content, and macronutrient composition to manage blood sugar levels.',
+    slug: 'blood-sugar-spike-estimator-by-meal-type',
+    category: 'health-fitness',
+    metaTitle: 'Blood Sugar Spike Estimator (by meal type)',
+    metaDescription: 'Estimate blood sugar spike magnitude based on meal type, carbohydrate content, and macronutrient composition to manage blood sugar levels and optimize energy stability.'
+  },
+  {
+    id: 4562,
+    name: 'Nutrient Absorption Efficiency Calculator',
+    description: 'Calculate nutrient absorption efficiency based on nutrient type, food source, meal timing, and cofactors to optimize nutrient uptake.',
+    slug: 'nutrient-absorption-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Nutrient Absorption Efficiency Calculator',
+    metaDescription: 'Calculate nutrient absorption efficiency based on nutrient type, food source, meal timing, and cofactors to optimize nutrient uptake and meet nutritional needs.'
+  },
+  {
+    id: 4563,
+    name: 'Training Fatigue Index Calculator',
+    description: 'Calculate training fatigue index based on training volume, frequency, intensity, recovery days, and sleep to assess training load and recovery needs.',
+    slug: 'training-fatigue-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Training Fatigue Index Calculator',
+    metaDescription: 'Calculate training fatigue index based on training volume, frequency, intensity, recovery days, and sleep to assess training load and recovery needs and prevent overtraining.'
+  },
+  {
+    id: 4564,
+    name: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
+    description: 'Calculate CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days to optimize training and recovery.',
+    slug: 'central-nervous-system-cns-fatigue-recovery-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
+    metaDescription: 'Calculate CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days to optimize training and recovery and prevent overtraining.'
+  },
+  {
+    id: 4565,
+    name: 'HRV Recovery Optimization Score Calculator',
+    description: 'Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness.',
+    slug: 'hrv-recovery-optimization-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'HRV Recovery Optimization Score Calculator',
+    metaDescription: 'Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness and guide training decisions.'
+  },
   // New Finance Calculators
   {
     id: 3300,
