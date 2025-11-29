@@ -5018,6 +5018,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Power-to-Weight Performance Index Calculator',
     metaDescription: 'Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.'
   },
+  {
+    id: 4571,
+    name: 'Functional Movement Score Calculator',
+    description: 'Calculate functional movement score based on seven fundamental movement patterns to assess movement quality and injury risk.',
+    slug: 'functional-movement-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Functional Movement Score Calculator',
+    metaDescription: 'Calculate functional movement score based on seven fundamental movement patterns to assess movement quality and injury risk and guide corrective exercise.'
+  },
+  {
+    id: 4572,
+    name: 'Muscular Imbalance Ratio Calculator',
+    description: 'Calculate muscular imbalance ratio between left and right sides or agonist and antagonist muscles to identify imbalances and guide corrective training.',
+    slug: 'muscular-imbalance-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Muscular Imbalance Ratio Calculator',
+    metaDescription: 'Calculate muscular imbalance ratio between left and right sides or agonist and antagonist muscles to identify imbalances and guide corrective training to reduce injury risk.'
+  },
+  {
+    id: 4573,
+    name: 'Focus Retention Time Calculator',
+    description: 'Calculate focus retention time and efficiency based on focused work duration, distractions, task complexity, sleep, and stress to assess cognitive focus capacity.',
+    slug: 'focus-retention-time-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Focus Retention Time Calculator',
+    metaDescription: 'Calculate focus retention time and efficiency based on focused work duration, distractions, task complexity, sleep, and stress to assess cognitive focus capacity and optimize productivity.'
+  },
+  {
+    id: 4574,
+    name: 'Attention Span Index Calculator',
+    description: 'Calculate attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality to assess cognitive attention capacity.',
+    slug: 'attention-span-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Attention Span Index Calculator',
+    metaDescription: 'Calculate attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality to assess cognitive attention capacity and optimize focus.'
+  },
+  {
+    id: 4575,
+    name: 'Working Memory Capacity Estimator',
+    description: 'Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function.',
+    slug: 'working-memory-capacity-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Working Memory Capacity Estimator',
+    metaDescription: 'Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function and guide improvement strategies.'
+  },
   // New Finance Calculators
   {
     id: 3300,
