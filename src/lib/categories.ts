@@ -52,6 +52,9 @@ import {
   PieChart,
   BarChart,
   Wallet,
+  Apple,
+  Activity,
+  Moon,
 } from 'lucide-react';
 
 export interface Category {
@@ -113,6 +116,9 @@ export const icons: {[key: string]: LucideIcon} = {
   PieChart,
   BarChart,
   Wallet,
+  Apple,
+  Activity,
+  Moon,
 };
 
 export const categories: Category[] = [

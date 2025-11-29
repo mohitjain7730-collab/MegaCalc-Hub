@@ -1,12 +1,73 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CategoryIcon } from '@/components/category-icon';
+import { NUTRITION_ARTICLES } from './nutrition-diet/articles';
+
+const healthSections = [
+  {
+    name: 'Nutrition & Diet',
+    slug: 'nutrition-diet',
+    description: 'Learn about healthy eating, meal planning, and nutritional science.',
+    icon: 'Apple',
+    count: NUTRITION_ARTICLES.length,
+  },
+  {
+    name: 'Weight & Metabolism',
+    slug: 'weight-metabolism',
+    description: 'Understand weight management, metabolic health, and body composition.',
+    icon: 'Scale',
+    count: 0,
+  },
+  {
+    name: 'Fitness & Sports',
+    slug: 'fitness-sports',
+    description: 'Explore exercise science, training programs, and athletic performance.',
+    icon: 'Activity',
+    count: 0,
+  },
+  {
+    name: 'Body Composition',
+    slug: 'body-composition',
+    description: 'Learn about muscle mass, body fat, and physical measurements.',
+    icon: 'Target',
+    count: 0,
+  },
+  {
+    name: "Women's Health",
+    slug: 'womens-health',
+    description: 'Comprehensive guides on women\'s health, hormones, and wellness.',
+    icon: 'HeartPulse',
+    count: 0,
+  },
+  {
+    name: 'Medical Risk Scores',
+    slug: 'medical-risk-scores',
+    description: 'Understand health risk assessments, screening tools, and preventive care.',
+    icon: 'Shield',
+    count: 0,
+  },
+  {
+    name: 'Mental Health & Sleep',
+    slug: 'mental-health-sleep',
+    description: 'Explore mental wellness, stress management, and sleep optimization.',
+    icon: 'Moon',
+    count: 0,
+  },
+  {
+    name: 'Longevity & Wellness',
+    slug: 'longevity-wellness',
+    description: 'Discover strategies for healthy aging and long-term wellness.',
+    icon: 'Leaf',
+    count: 0,
+  },
+];
 
 export default function HealthPage() {
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
-      <div className="w-full max-w-4xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <div className="mb-8">
           <Button asChild variant="ghost" className="mb-4">
             <Link href="/learning-hub">
@@ -17,20 +78,50 @@ export default function HealthPage() {
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
             Health
           </h1>
+          <p className="mt-2 text-lg text-muted-foreground">
+            Explore health articles and guides.
+          </p>
         </div>
 
-        <Card className="w-full text-center shadow-md">
-          <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl font-bold">
-              Coming soon
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-lg text-muted-foreground">
+        {healthSections.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {healthSections.map((section) => (
+              <Link
+                key={section.slug}
+                href={`/learning-hub/health/${section.slug}`}
+                className="group block h-full"
+              >
+                <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
+                  <CardHeader>
+                    <CategoryIcon
+                      name={section.icon}
+                      className="h-8 w-8 mb-4 text-primary"
+                      strokeWidth={1.5}
+                    />
+                    <CardTitle className="text-lg">{section.name}</CardTitle>
+                    <CardDescription className="pt-1">
+                      {section.description}
+                    </CardDescription>
+                    <p className="text-sm text-muted-foreground mt-3">
+                      {section.count ?? 0} {section.count === 1 ? 'article' : 'articles'}
+                    </p>
+                  </CardHeader>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <Card className="w-full text-center shadow-md">
+            <CardHeader>
+              <CardTitle className="text-2xl md:text-3xl font-bold">
+                Coming soon
+              </CardTitle>
+            </CardHeader>
+            <CardDescription className="text-base">
               Health content is coming soon. Check back later!
-            </p>
-          </CardContent>
-        </Card>
+            </CardDescription>
+          </Card>
+        )}
       </div>
     </div>
   );

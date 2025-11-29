@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
 import { FINANCE_ARTICLES } from './learning-hub/finance/articles';
+import { NUTRITION_ARTICLES } from './learning-hub/health/nutrition-diet/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mycalculating.com';
@@ -61,11 +62,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/learning-hub/health`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/learning-hub/health/nutrition-diet`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
   ];
 
   // Finance article pages
   const financeArticlePages = FINANCE_ARTICLES.map((article) => ({
     url: `${baseUrl}/learning-hub/finance/${article.slug}`,
+    lastModified: article.publishedDate ? new Date(article.publishedDate) : new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Health article pages
+  const healthArticlePages = NUTRITION_ARTICLES.map((article) => ({
+    url: `${baseUrl}/learning-hub/health/nutrition-diet/${article.slug}`,
     lastModified: article.publishedDate ? new Date(article.publishedDate) : new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
@@ -77,5 +98,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...calculatorPages,
     ...learningHubPages,
     ...financeArticlePages,
+    ...healthArticlePages,
   ];
 }
