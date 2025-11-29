@@ -4739,6 +4739,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Creatine Loading & Maintenance Dose Calculator',
     metaDescription: 'Calculate appropriate creatine loading and maintenance doses based on body weight, goal, form, and training frequency for optimal supplementation.'
   },
+  {
+    id: 4540,
+    name: 'Daily Testosterone-Boosting Habits Score Calculator',
+    description: 'Calculate testosterone-boosting habits score from sleep, exercise, stress, alcohol, sunlight, protein, and supplements.',
+    slug: 'daily-testosterone-boosting-habits-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Daily Testosterone-Boosting Habits Score Calculator',
+    metaDescription: 'Calculate testosterone-boosting habits score from sleep, exercise, stress, alcohol, sunlight, protein, and supplements to optimize hormone support.'
+  },
+  {
+    id: 4541,
+    name: 'BMR Adjustment for Age & Muscle Loss Calculator',
+    description: 'Calculate BMR adjusted for age and muscle loss to account for metabolic decline over time.',
+    slug: 'bmr-adjustment-for-age-muscle-loss-calculator',
+    category: 'health-fitness',
+    metaTitle: 'BMR Adjustment for Age & Muscle Loss Calculator',
+    metaDescription: 'Calculate BMR adjusted for age and muscle loss to get accurate metabolic rate estimates and calorie needs as you age.'
+  },
+  {
+    id: 4542,
+    name: 'Fat-to-Muscle Recomposition Tracker',
+    description: 'Track fat-to-muscle recomposition goals: calculate fat to lose, muscle to gain, and recomposition score.',
+    slug: 'fat-to-muscle-recomposition-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Fat-to-Muscle Recomposition Tracker',
+    metaDescription: 'Track fat-to-muscle recomposition goals: calculate fat to lose, muscle to gain, and assess feasibility of recomposition goals.'
+  },
+  {
+    id: 4543,
+    name: 'REM Sleep Percentage Calculator',
+    description: 'Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality.',
+    slug: 'rem-sleep-percentage-calculator',
+    category: 'health-fitness',
+    metaTitle: 'REM Sleep Percentage Calculator',
+    metaDescription: 'Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality to assess sleep health.'
+  },
+  {
+    id: 4544,
+    name: 'Deep Sleep Requirement Estimator',
+    description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
+    slug: 'deep-sleep-requirement-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Deep Sleep Requirement Estimator',
+    metaDescription: 'Estimate deep sleep requirements based on age, activity level, and recovery needs, and assess current deep sleep to identify gaps.'
+  },
   // New Finance Calculators
   {
     id: 3300,
