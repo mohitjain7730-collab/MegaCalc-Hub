@@ -4875,6 +4875,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate iron deficiency anemia risk from hemoglobin level, iron intake, age, and gender to assess anemia risk.'
   },
   {
+    id: 5011,
+    name: 'Vitamin D Deficiency Risk Score Calculator',
+    description: 'Calculate vitamin D deficiency risk score from vitamin D level, sun exposure, dietary intake, and age.',
+    slug: 'vitamin-d-deficiency-risk-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Vitamin D Deficiency Risk Score Calculator',
+    metaDescription: 'Calculate vitamin D deficiency risk score from vitamin D level, sun exposure, dietary intake, and age to assess deficiency risk.'
+  },
+  {
+    id: 5012,
+    name: 'Cardiac Output (Q) Calculator',
+    description: 'Calculate cardiac output from stroke volume, heart rate, cardiac output, and age.',
+    slug: 'cardiac-output-q-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Cardiac Output (Q) Calculator',
+    metaDescription: 'Calculate cardiac output from stroke volume, heart rate, cardiac output, and age to assess cardiovascular function.'
+  },
+  {
+    id: 5013,
+    name: 'Blood Volume Estimator',
+    description: 'Estimate blood volume from weight, height, gender, and blood volume.',
+    slug: 'blood-volume-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Blood Volume Estimator',
+    metaDescription: 'Estimate blood volume from weight, height, gender, and blood volume to assess blood volume status.'
+  },
+  {
+    id: 5014,
+    name: 'Peripheral Resistance Index Calculator',
+    description: 'Calculate peripheral resistance index from mean arterial pressure, cardiac output, peripheral resistance, and age.',
+    slug: 'peripheral-resistance-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Peripheral Resistance Index Calculator',
+    metaDescription: 'Calculate peripheral resistance index from mean arterial pressure, cardiac output, peripheral resistance, and age to assess cardiovascular function.'
+  },
+  {
+    id: 5015,
+    name: 'Pulse Pressure Analyzer',
+    description: 'Analyze pulse pressure from systolic pressure, diastolic pressure, pulse pressure, and age.',
+    slug: 'pulse-pressure-analyzer',
+    category: 'health-fitness',
+    metaTitle: 'Pulse Pressure Analyzer',
+    metaDescription: 'Analyze pulse pressure from systolic pressure, diastolic pressure, pulse pressure, and age to assess cardiovascular health.'
+  },
+  {
     id: 4544,
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
