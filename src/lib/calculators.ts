@@ -4784,6 +4784,60 @@ export const calculators: Calculator[] = [
     metaTitle: 'Deep Sleep Requirement Estimator',
     metaDescription: 'Estimate deep sleep requirements based on age, activity level, and recovery needs, and assess current deep sleep to identify gaps.'
   },
+  {
+    id: 4545,
+    name: 'Sleep Cycle Alarm Time Optimizer',
+    description: 'Calculate optimal alarm time based on sleep cycles, bedtime, and desired wake time to wake up feeling refreshed.',
+    slug: 'sleep-cycle-alarm-time-optimizer',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Cycle Alarm Time Optimizer',
+    metaDescription: 'Calculate optimal alarm time based on sleep cycles, bedtime, and desired wake time to wake up feeling refreshed and alert.'
+  },
+  {
+    id: 4546,
+    name: 'Nap Duration Efficiency Calculator',
+    description: 'Calculate optimal nap duration based on time of day, sleep needs, and desired alertness level to maximize rest efficiency.',
+    slug: 'nap-duration-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Nap Duration Efficiency Calculator',
+    metaDescription: 'Calculate optimal nap duration based on time of day, sleep needs, and desired alertness level to maximize rest efficiency and avoid grogginess.'
+  },
+  {
+    id: 4547,
+    name: 'Sleep Quality vs Screen Exposure Analyzer',
+    description: 'Analyze the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines.',
+    slug: 'sleep-quality-vs-screen-exposure-analyzer',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Quality vs Screen Exposure Analyzer',
+    metaDescription: 'Analyze the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines and improve rest.'
+  },
+  {
+    id: 4548,
+    name: 'Sleep Restriction Adaptation Calculator',
+    description: 'Calculate sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.',
+    slug: 'sleep-restriction-adaptation-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Restriction Adaptation Calculator',
+    metaDescription: 'Calculate sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.'
+  },
+  {
+    id: 4549,
+    name: 'Recovery Sleep Requirement After Sleep Debt Calculator',
+    description: 'Calculate recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.',
+    slug: 'recovery-sleep-requirement-after-sleep-debt-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Recovery Sleep Requirement After Sleep Debt Calculator',
+    metaDescription: 'Calculate recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.'
+  },
+  {
+    id: 4550,
+    name: 'Jet Lag Recovery Duration Calculator',
+    description: 'Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.',
+    slug: 'jet-lag-recovery-duration-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Jet Lag Recovery Duration Calculator',
+    metaDescription: 'Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.'
+  },
   // New Finance Calculators
   {
     id: 3300,
