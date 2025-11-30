@@ -5244,6 +5244,105 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate phosphorus intake from phosphorus amount, age, and gender to assess phosphorus status.'
   },
   {
+    id: 5051.5,
+    name: 'Satiety vs Energy Density Graph Calculator',
+    description: 'Calculate satiety vs energy density from protein, fiber, volume, calories, and weight.',
+    slug: 'satiety-vs-energy-density-graph-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Satiety vs Energy Density Graph Calculator',
+    metaDescription: 'Calculate satiety vs energy density from protein, fiber, volume, calories, and weight to assess satiety and energy density relationship.'
+  },
+  {
+    id: 5052.5,
+    name: 'Mediterranean Diet Score Calculator',
+    description: 'Calculate Mediterranean diet score from olive oil, vegetables, fruits, legumes, fish, red meat, and wine servings.',
+    slug: 'mediterranean-diet-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Mediterranean Diet Score Calculator',
+    metaDescription: 'Calculate Mediterranean diet score from olive oil, vegetables, fruits, legumes, fish, red meat, and wine servings to assess Mediterranean diet adherence.'
+  },
+  {
+    id: 5053.5,
+    name: 'DASH Diet Compliance Tracker',
+    description: 'Calculate DASH diet compliance from sodium intake, food group servings, and calories.',
+    slug: 'dash-diet-compliance-tracker',
+    category: 'health-fitness',
+    metaTitle: 'DASH Diet Compliance Tracker',
+    metaDescription: 'Calculate DASH diet compliance from sodium intake, food group servings, and calories to assess DASH diet adherence.'
+  },
+  {
+    id: 5054.5,
+    name: 'Paleo Diet Nutrient Coverage Calculator',
+    description: 'Calculate Paleo diet nutrient coverage from protein, vegetables, fruits, nuts, seeds, healthy fats servings, and vitamin/mineral diversity.',
+    slug: 'paleo-diet-nutrient-coverage-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Paleo Diet Nutrient Coverage Calculator',
+    metaDescription: 'Calculate Paleo diet nutrient coverage from protein, vegetables, fruits, nuts, seeds, healthy fats servings, and vitamin/mineral diversity to assess Paleo diet nutritional adequacy.'
+  },
+  {
+    id: 5055.5,
+    name: 'Vegan Nutrient Completeness Calculator',
+    description: 'Calculate vegan nutrient completeness from protein, iron, calcium, vitamin B12, vitamin D, omega-3, and zinc intake.',
+    slug: 'vegan-nutrient-completeness-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Vegan Nutrient Completeness Calculator',
+    metaDescription: 'Calculate vegan nutrient completeness from protein, iron, calcium, vitamin B12, vitamin D, omega-3, and zinc intake to assess vegan diet nutritional adequacy.'
+  },
+  {
+    id: 5056.5,
+    name: 'Low-FODMAP Tolerance Planner Calculator',
+    description: 'Calculate low-FODMAP tolerance from FODMAP category servings and symptoms level.',
+    slug: 'low-fodmap-tolerance-planner-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Low-FODMAP Tolerance Planner Calculator',
+    metaDescription: 'Calculate low-FODMAP tolerance from FODMAP category servings and symptoms level to assess low-FODMAP diet compliance and symptom management.'
+  },
+  {
+    id: 5057.5,
+    name: 'Plant-Based Omega-3 Conversion Calculator',
+    description: 'Calculate plant-based omega-3 conversion from ALA intake, EPA intake, DHA intake, and conversion rate.',
+    slug: 'plant-based-omega-3-conversion-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Plant-Based Omega-3 Conversion Calculator',
+    metaDescription: 'Calculate plant-based omega-3 conversion from ALA intake, EPA intake, DHA intake, and conversion rate to assess plant-based omega-3 status.'
+  },
+  {
+    id: 5058.5,
+    name: 'Gluten-Free Fiber Replacement Planner',
+    description: 'Calculate gluten-free fiber replacement from current fiber, target fiber, and fiber-rich gluten-free food servings.',
+    slug: 'gluten-free-fiber-replacement-planner',
+    category: 'health-fitness',
+    metaTitle: 'Gluten-Free Fiber Replacement Planner',
+    metaDescription: 'Calculate gluten-free fiber replacement from current fiber, target fiber, and fiber-rich gluten-free food servings to plan fiber intake on a gluten-free diet.'
+  },
+  {
+    id: 5059.5,
+    name: 'Ketogenic Net Carb Limit Calculator',
+    description: 'Calculate ketogenic net carb limit from total carbs, fiber, sugar alcohols, and target net carbs.',
+    slug: 'ketogenic-net-carb-limit-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Ketogenic Net Carb Limit Calculator',
+    metaDescription: 'Calculate ketogenic net carb limit from total carbs, fiber, sugar alcohols, and target net carbs to assess ketogenic diet compliance.'
+  },
+  {
+    id: 5060.5,
+    name: 'Carnivore Micronutrient Gap Calculator',
+    description: 'Calculate carnivore micronutrient gaps from vitamin C, vitamin E, folate, vitamin K, magnesium, potassium, and fiber intake.',
+    slug: 'carnivore-micronutrient-gap-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Carnivore Micronutrient Gap Calculator',
+    metaDescription: 'Calculate carnivore micronutrient gaps from vitamin C, vitamin E, folate, vitamin K, magnesium, potassium, and fiber intake to assess carnivore diet nutritional adequacy.'
+  },
+  {
+    id: 5061.5,
+    name: 'Flexitarian Score Calculator',
+    description: 'Calculate flexitarian score from plant-based meals, animal-based meals, vegetables, fruits, legumes, whole grains, and red meat servings.',
+    slug: 'flexitarian-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Flexitarian Score Calculator',
+    metaDescription: 'Calculate flexitarian score from plant-based meals, animal-based meals, vegetables, fruits, legumes, whole grains, and red meat servings to assess flexitarian diet adherence.'
+  },
+  {
     id: 5052,
     name: 'Balanced Meal Score Calculator',
     description: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories.',

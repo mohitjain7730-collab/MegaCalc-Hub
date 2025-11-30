@@ -451,7 +451,7 @@ export default function CaloricDensityVsVolumeCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemType="https://schema.org/MedicalWebPage">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Caloric Density vs. Volume: Energy Density and Satiety for Weight Management" />
     <meta itemProp="description" content="An in-depth guide on the concept of Caloric Density (kcal/gram) and its critical relationship with food volume, explaining how choosing low energy-density foods (high in water and fiber) supports satiety and effective weight loss." />
