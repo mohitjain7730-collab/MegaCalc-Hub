@@ -5145,6 +5145,96 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate complete amino acid profile from essential amino acid amounts to assess protein completeness.'
   },
   {
+    id: 5041,
+    name: 'Net Carbs vs Total Carbs Calculator',
+    description: 'Calculate net carbs vs total carbs from total carbohydrates, dietary fiber, and sugar alcohols.',
+    slug: 'net-carbs-vs-total-carbs-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Net Carbs vs Total Carbs Calculator',
+    metaDescription: 'Calculate net carbs vs total carbs from total carbohydrates, dietary fiber, and sugar alcohols to assess blood sugar impact.'
+  },
+  {
+    id: 5042,
+    name: 'Vitamin A Retinol Equivalent Calculator',
+    description: 'Calculate vitamin A retinol activity equivalent from retinol, beta-carotene, alpha-carotene, and other carotenoids.',
+    slug: 'vitamin-a-retinol-equivalent-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Vitamin A Retinol Equivalent Calculator',
+    metaDescription: 'Calculate vitamin A retinol activity equivalent from retinol, beta-carotene, alpha-carotene, and other carotenoids to assess vitamin A intake.'
+  },
+  {
+    id: 5043,
+    name: 'Vitamin E Alpha-Tocopherol Calculator',
+    description: 'Calculate vitamin E alpha-tocopherol equivalent from alpha-tocopherol, gamma-tocopherol, and other tocopherols.',
+    slug: 'vitamin-e-alpha-tocopherol-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Vitamin E Alpha-Tocopherol Calculator',
+    metaDescription: 'Calculate vitamin E alpha-tocopherol equivalent from alpha-tocopherol, gamma-tocopherol, and other tocopherols to assess vitamin E intake.'
+  },
+  {
+    id: 5044,
+    name: 'Vitamin K Daily Needs Estimator',
+    description: 'Estimate vitamin K daily needs from age, gender, vitamin K intake, and pregnancy status.',
+    slug: 'vitamin-k-daily-needs-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Vitamin K Daily Needs Estimator',
+    metaDescription: 'Estimate vitamin K daily needs from age, gender, vitamin K intake, and pregnancy status to assess vitamin K status.'
+  },
+  {
+    id: 5045,
+    name: 'Selenium Intake Calculator',
+    description: 'Calculate selenium intake from selenium amount, age, and gender.',
+    slug: 'selenium-intake-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Selenium Intake Calculator',
+    metaDescription: 'Calculate selenium intake from selenium amount, age, and gender to assess selenium status.'
+  },
+  {
+    id: 5046,
+    name: 'Manganese Requirement Calculator',
+    description: 'Calculate manganese requirements from age, gender, and manganese intake.',
+    slug: 'manganese-requirement-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Manganese Requirement Calculator',
+    metaDescription: 'Calculate manganese requirements from age, gender, and manganese intake to assess manganese status.'
+  },
+  {
+    id: 5047,
+    name: 'Copper Intake Calculator',
+    description: 'Calculate copper intake from copper amount, age, and gender.',
+    slug: 'copper-intake-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Copper Intake Calculator',
+    metaDescription: 'Calculate copper intake from copper amount, age, and gender to assess copper status.'
+  },
+  {
+    id: 5048,
+    name: 'Chromium Daily Need Estimator',
+    description: 'Estimate chromium daily needs from age, gender, and chromium intake.',
+    slug: 'chromium-daily-need-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Chromium Daily Need Estimator',
+    metaDescription: 'Estimate chromium daily needs from age, gender, and chromium intake to assess chromium status.'
+  },
+  {
+    id: 5049,
+    name: 'Fluoride Exposure Calculator',
+    description: 'Calculate fluoride exposure from water fluoride level, water intake, age, and other sources.',
+    slug: 'fluoride-exposure-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Fluoride Exposure Calculator',
+    metaDescription: 'Calculate fluoride exposure from water fluoride level, water intake, age, and other sources to assess fluoride status.'
+  },
+  {
+    id: 5050,
+    name: 'Iodine Deficiency Risk Calculator',
+    description: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status.',
+    slug: 'iodine-deficiency-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Iodine Deficiency Risk Calculator',
+    metaDescription: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status to assess iodine status.'
+  },
+  {
     id: 4544,
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
