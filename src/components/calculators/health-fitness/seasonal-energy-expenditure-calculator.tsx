@@ -322,7 +322,6 @@ export default function SeasonalEnergyExpenditureCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/caloric-cost-of-cold-exposure-calculator" className="text-primary hover:underline">Cold Exposure Cost</Link></h4><p className="text-sm text-muted-foreground">Estimate individual sessions in colder months.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/adaptive-thermogenesis-calculator" className="text-primary hover:underline">Adaptive Thermogenesis</Link></h4><p className="text-sm text-muted-foreground">Track metabolic shifts during weight changes.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Set baseline targets before seasonal adjustments.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Heat and cold both influence fluid requirements.</p></div>
           </div>

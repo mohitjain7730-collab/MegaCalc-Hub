@@ -306,7 +306,6 @@ export default function BrownFatActivationEstimator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/caloric-cost-of-cold-exposure-calculator" className="text-primary hover:underline">Caloric Cost of Cold Exposure</Link></h4><p className="text-sm text-muted-foreground">Estimate thermogenesis across various temperatures and clothing.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/seasonal-energy-expenditure-calculator" className="text-primary hover:underline">Seasonal Energy Expenditure</Link></h4><p className="text-sm text-muted-foreground">Adjust calorie targets across temperature swings.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/adaptive-thermogenesis-calculator" className="text-primary hover:underline">Adaptive Thermogenesis</Link></h4><p className="text-sm text-muted-foreground">Manage metabolic changes during weight loss phases.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Anchor cold exposure routines to overall energy planning.</p></div>
           </div>
         </CardContent>

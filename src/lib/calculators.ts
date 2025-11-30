@@ -4317,15 +4317,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate seasonal differences in outdoor thermogenic demand to adjust calorie plans.'
   },
   {
-    id: 209,
-    name: 'Adaptive Thermogenesis Calculator',
-    description: 'Estimate maintenance reduction from adaptive thermogenesis during weight loss.',
-    slug: 'adaptive-thermogenesis-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Adaptive Thermogenesis Calculator',
-    metaDescription: 'Estimate metabolic adaptation based on recent weight loss rate to refine calorie targets.'
-  },
-  {
     id: 210,
     name: 'Mitochondrial Efficiency Estimator',
     description: 'Estimate oxygen cost per watt at submax as a proxy for efficiency.',
@@ -5341,6 +5332,51 @@ export const calculators: Calculator[] = [
     category: 'health-fitness',
     metaTitle: 'Flexitarian Score Calculator',
     metaDescription: 'Calculate flexitarian score from plant-based meals, animal-based meals, vegetables, fruits, legumes, whole grains, and red meat servings to assess flexitarian diet adherence.'
+  },
+  {
+    id: 5062,
+    name: 'Metabolic Adaptation Rate Calculator',
+    description: 'Calculate metabolic adaptation rate from initial TDEE, current TDEE, weeks in deficit, and deficit size.',
+    slug: 'metabolic-adaptation-rate-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Metabolic Adaptation Rate Calculator',
+    metaDescription: 'Calculate metabolic adaptation rate from initial TDEE, current TDEE, weeks in deficit, and deficit size to assess metabolic slowdown and plan diet breaks.'
+  },
+  {
+    id: 5063,
+    name: 'Reverse Dieting Calorie Increase Planner',
+    description: 'Plan reverse dieting calorie increases from current calories, target calories, weekly increase, and current weight.',
+    slug: 'reverse-dieting-calorie-increase-planner',
+    category: 'health-fitness',
+    metaTitle: 'Reverse Dieting Calorie Increase Planner',
+    metaDescription: 'Plan reverse dieting calorie increases from current calories, target calories, weekly increase, and current weight to restore metabolic rate.'
+  },
+  {
+    id: 5064,
+    name: 'Carb Refeed Timing Calculator',
+    description: 'Calculate optimal carb refeed timing from weeks in deficit, current carbs, training frequency, and body fat percent.',
+    slug: 'carb-refeed-timing-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Carb Refeed Timing Calculator',
+    metaDescription: 'Calculate optimal carb refeed timing from weeks in deficit, current carbs, training frequency, and body fat percent to plan refeed days.'
+  },
+  {
+    id: 5065,
+    name: 'Fat Oxidation Percentage Calculator',
+    description: 'Calculate fat oxidation percentage from heart rate, max heart rate, exercise intensity, carb intake, training duration, and body fat percent.',
+    slug: 'fat-oxidation-percentage-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Fat Oxidation Percentage Calculator',
+    metaDescription: 'Calculate fat oxidation percentage from heart rate, max heart rate, exercise intensity, carb intake, training duration, and body fat percent to assess fuel utilization.'
+  },
+  {
+    id: 5066,
+    name: 'Glycogen Replenishment Estimator (post-workout)',
+    description: 'Estimate glycogen replenishment needs from workout duration, intensity, type, body weight, current glycogen, post-workout carbs, and time since workout.',
+    slug: 'glycogen-replenishment-estimator-post-workout',
+    category: 'health-fitness',
+    metaTitle: 'Glycogen Replenishment Estimator (post-workout)',
+    metaDescription: 'Estimate glycogen replenishment needs from workout duration, intensity, type, body weight, current glycogen, post-workout carbs, and time since workout to optimize recovery.'
   },
   {
     id: 5052,

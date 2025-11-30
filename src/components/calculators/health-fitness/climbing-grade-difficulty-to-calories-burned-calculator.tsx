@@ -324,10 +324,6 @@ export default function ClimbingGradeDifficultyToCaloriesBurnedCalculator() {
               <p className="text-sm text-muted-foreground">Understand daily activity calories alongside training.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/adaptive-thermogenesis-calculator" className="text-primary hover:underline">Adaptive Thermogenesis</Link></h4>
-              <p className="text-sm text-muted-foreground">Monitor metabolic shifts during rigorous training cycles.</p>
-            </div>
-            <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/seasonal-energy-expenditure-calculator" className="text-primary hover:underline">Seasonal Energy Expenditure</Link></h4>
               <p className="text-sm text-muted-foreground">Plan energy needs across different climbing seasons.</p>
             </div>
