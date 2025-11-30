@@ -5235,6 +5235,96 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status to assess iodine status.'
   },
   {
+    id: 5051,
+    name: 'Phosphorus Intake Calculator',
+    description: 'Calculate phosphorus intake from phosphorus amount, age, and gender.',
+    slug: 'phosphorus-intake-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Phosphorus Intake Calculator',
+    metaDescription: 'Calculate phosphorus intake from phosphorus amount, age, and gender to assess phosphorus status.'
+  },
+  {
+    id: 5052,
+    name: 'Balanced Meal Score Calculator',
+    description: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories.',
+    slug: 'balanced-meal-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Balanced Meal Score Calculator',
+    metaDescription: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories to assess meal balance.'
+  },
+  {
+    id: 5053,
+    name: 'Daily Micronutrient Coverage Calculator',
+    description: 'Calculate daily micronutrient coverage from number of vitamins, minerals, and trace elements consumed.',
+    slug: 'daily-micronutrient-coverage-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Daily Micronutrient Coverage Calculator',
+    metaDescription: 'Calculate daily micronutrient coverage from number of vitamins, minerals, and trace elements consumed to assess nutritional adequacy.'
+  },
+  {
+    id: 5054,
+    name: 'Food Diversity Index Calculator',
+    description: 'Calculate food diversity index from number of different food groups and food items consumed.',
+    slug: 'food-diversity-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Food Diversity Index Calculator',
+    metaDescription: 'Calculate food diversity index from number of different food groups and food items consumed to assess dietary variety.'
+  },
+  {
+    id: 5055,
+    name: 'Whole Food vs Processed Calorie Ratio Calculator',
+    description: 'Calculate whole food vs processed calorie ratio from whole food calories and processed food calories.',
+    slug: 'whole-food-vs-processed-calorie-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Whole Food vs Processed Calorie Ratio Calculator',
+    metaDescription: 'Calculate whole food vs processed calorie ratio from whole food calories and processed food calories to assess food quality.'
+  },
+  {
+    id: 5056,
+    name: 'Meal Timing and Insulin Response Calculator',
+    description: 'Calculate meal timing and insulin response from meal time, carbohydrate amount, and meal composition.',
+    slug: 'meal-timing-and-insulin-response-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Meal Timing and Insulin Response Calculator',
+    metaDescription: 'Calculate meal timing and insulin response from meal time, carbohydrate amount, and meal composition to assess glycemic impact.'
+  },
+  {
+    id: 5057,
+    name: 'Late-Night Eating Impact Score Calculator',
+    description: 'Calculate late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM.',
+    slug: 'late-night-eating-impact-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Late-Night Eating Impact Score Calculator',
+    metaDescription: 'Calculate late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM to assess metabolic impact.'
+  },
+  {
+    id: 5058,
+    name: 'Breakfast Skipping Effect on Metabolism Calculator',
+    description: 'Calculate breakfast skipping effect from breakfast frequency, meal timing, and daily calorie distribution.',
+    slug: 'breakfast-skipping-effect-on-metabolism-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Breakfast Skipping Effect on Metabolism Calculator',
+    metaDescription: 'Calculate breakfast skipping effect from breakfast frequency, meal timing, and daily calorie distribution to assess metabolic impact.'
+  },
+  {
+    id: 5059,
+    name: 'Inter-Meal Spacing Impact Calculator',
+    description: 'Calculate inter-meal spacing impact from meal times and hours between meals.',
+    slug: 'inter-meal-spacing-impact-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Inter-Meal Spacing Impact Calculator',
+    metaDescription: 'Calculate inter-meal spacing impact from meal times and hours between meals to assess meal timing effects.'
+  },
+  {
+    id: 5060,
+    name: 'Eating Window Duration (Fasting vs Feeding) Calculator',
+    description: 'Calculate eating window duration from first meal time and last meal time.',
+    slug: 'eating-window-duration-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Eating Window Duration (Fasting vs Feeding) Calculator',
+    metaDescription: 'Calculate eating window duration from first meal time and last meal time to assess intermittent fasting patterns.'
+  },
+  {
     id: 4544,
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
