@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
-import { FINANCE_ARTICLES } from './learning-hub/finance/articles';
+import { FINANCE_ARTICLES, RETIREMENT_ARTICLES } from './learning-hub/finance/articles';
 import { NUTRITION_ARTICLES } from './learning-hub/health/nutrition-diet/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -63,6 +63,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/learning-hub/finance/retirement-planning`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/learning-hub/health`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
@@ -84,6 +90,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Retirement planning article pages
+  const retirementArticlePages = RETIREMENT_ARTICLES.map((article) => ({
+    url: `${baseUrl}/learning-hub/finance/${article.slug}`,
+    lastModified: article.publishedDate ? new Date(article.publishedDate) : new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   // Health article pages
   const healthArticlePages = NUTRITION_ARTICLES.map((article) => ({
     url: `${baseUrl}/learning-hub/health/nutrition-diet/${article.slug}`,
@@ -98,6 +112,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...calculatorPages,
     ...learningHubPages,
     ...financeArticlePages,
+    ...retirementArticlePages,
     ...healthArticlePages,
   ];
 }

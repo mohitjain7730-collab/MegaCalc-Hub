@@ -152,9 +152,17 @@ export const generateArticleSchema = (detail: ArticleDetail, slug: string) => {
 export const generateFullArticleHTML = (detail: ArticleDetail): string => {
   
   // Determine Author & Date (Use manual if provided, otherwise auto-assign)
-  const authorData = detail.author 
-    ? { name: detail.author, bio: detail.authorBio } 
-    : getDeterministicAuthor(detail.title);
+  let authorData;
+  if (detail.author) {
+    // If author is provided, try to find their bio in AUTHORS array (case-insensitive)
+    const foundAuthor = AUTHORS.find(a => a.name.toLowerCase() === detail.author.toLowerCase());
+    authorData = {
+      name: detail.author,
+      bio: detail.authorBio || foundAuthor?.bio || getDeterministicAuthor(detail.title).bio
+    };
+  } else {
+    authorData = getDeterministicAuthor(detail.title);
+  }
     
   const dateStr = detail.publishedDate || getDeterministicDate(detail.title);
 
@@ -171,7 +179,6 @@ export const generateFullArticleHTML = (detail: ArticleDetail): string => {
       </div>
       <div>
         <span class="block font-bold text-slate-900">${authorData.name}</span>
-        <span class="block text-xs uppercase tracking-wide text-gray-400">Published ${dateStr}</span>
       </div>
     </div>
   `;

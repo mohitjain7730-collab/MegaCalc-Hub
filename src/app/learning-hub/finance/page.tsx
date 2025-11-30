@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CategoryIcon } from '@/components/category-icon';
-import { FINANCE_ARTICLES } from './articles';
+import { FINANCE_ARTICLES, RETIREMENT_ARTICLES } from './articles';
 
 const financeSections = [
   {
@@ -18,7 +18,7 @@ const financeSections = [
     slug: 'retirement-planning',
     description: 'Comprehensive guides on retirement planning, 401(k), IRAs, and long-term financial security.',
     icon: 'Target',
-    count: 0,
+    count: RETIREMENT_ARTICLES.length,
   },
   {
     name: 'Budgeting & Personal Finance',

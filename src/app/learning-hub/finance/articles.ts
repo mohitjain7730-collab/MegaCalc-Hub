@@ -94,6 +94,61 @@ import { savingInvestingArticles92 } from './savings-and-investment/saving-inves
 import { savingInvestingArticles93 } from './savings-and-investment/saving-investing-93';
 import { savingInvestingArticles94 } from './savings-and-investment/saving-investing-94';
 import { savingInvestingArticles95 } from './savings-and-investment/saving-investing-95';
+import { savingInvestingArticles96 } from './savings-and-investment/saving-investing-96';
+import { savingInvestingArticles97 } from './savings-and-investment/saving-investing-97';
+import { savingInvestingArticles98 } from './savings-and-investment/saving-investing-98';
+import { savingInvestingArticles99 } from './savings-and-investment/saving-investing-99';
+import { savingInvestingArticles100 } from './savings-and-investment/saving-investing-100';
+import { savingInvestingArticles101 } from './savings-and-investment/saving-investing-101';
+import { savingInvestingArticles102 } from './savings-and-investment/saving-investing-102';
+import { savingInvestingArticles103 } from './savings-and-investment/saving-investing-103';
+import { savingInvestingArticles104 } from './savings-and-investment/saving-investing-104';
+import { savingInvestingArticles105 } from './savings-and-investment/saving-investing-105';
+import { savingInvestingArticles106 } from './savings-and-investment/saving-investing-106';
+import { savingInvestingArticles107 } from './savings-and-investment/saving-investing-107';
+import { savingInvestingArticles108 } from './savings-and-investment/saving-investing-108';
+import { savingInvestingArticles109 } from './savings-and-investment/saving-investing-109';
+import { savingInvestingArticles110 } from './savings-and-investment/saving-investing-110';
+import { savingInvestingArticles111 } from './savings-and-investment/saving-investing-111';
+import { savingInvestingArticles112 } from './savings-and-investment/saving-investing-112';
+import { savingInvestingArticles113 } from './savings-and-investment/saving-investing-113';
+import { savingInvestingArticles114 } from './savings-and-investment/saving-investing-114';
+import { savingInvestingArticles115 } from './savings-and-investment/saving-investing-115';
+import { savingInvestingArticles116 } from './savings-and-investment/saving-investing-116';
+import { savingInvestingArticles117 } from './savings-and-investment/saving-investing-117';
+import { savingInvestingArticles118 } from './savings-and-investment/saving-investing-118';
+import { savingInvestingArticles119 } from './savings-and-investment/saving-investing-119';
+import { savingInvestingArticles120 } from './savings-and-investment/saving-investing-120';
+import { savingInvestingArticles121 } from './savings-and-investment/saving-investing-121';
+import { savingInvestingArticles122 } from './savings-and-investment/saving-investing-122';
+import { savingInvestingArticles123 } from './savings-and-investment/saving-investing-123';
+import { savingInvestingArticles124 } from './savings-and-investment/saving-investing-124';
+import { savingInvestingArticles125 } from './savings-and-investment/saving-investing-125';
+import { retirementPlanningArticles1 } from './retirement-planning/retirement-planning-1';
+import { retirementPlanningArticles2 } from './retirement-planning/retirement-planning-2';
+import { retirementPlanningArticles3 } from './retirement-planning/retirement-planning-3';
+import { retirementPlanningArticles4 } from './retirement-planning/retirement-planning-4';
+import { retirementPlanningArticles5 } from './retirement-planning/retirement-planning-5';
+import { retirementPlanningArticles6 } from './retirement-planning/retirement-planning-6';
+import { retirementPlanningArticles7 } from './retirement-planning/retirement-planning-7';
+import { retirementPlanningArticles8 } from './retirement-planning/retirement-planning-8';
+import { retirementPlanningArticles9 } from './retirement-planning/retirement-planning-9';
+import { retirementPlanningArticles10 } from './retirement-planning/retirement-planning-10';
+import { retirementPlanningArticles11 } from './retirement-planning/retirement-planning-11';
+import { retirementPlanningArticles12 } from './retirement-planning/retirement-planning-12';
+import { retirementPlanningArticles13 } from './retirement-planning/retirement-planning-13';
+import { retirementPlanningArticles14 } from './retirement-planning/retirement-planning-14';
+import { retirementPlanningArticles15 } from './retirement-planning/retirement-planning-15';
+import { retirementPlanningArticles16 } from './retirement-planning/retirement-planning-16';
+import { retirementPlanningArticles17 } from './retirement-planning/retirement-planning-17';
+import { retirementPlanningArticles18 } from './retirement-planning/retirement-planning-18';
+import { retirementPlanningArticles19 } from './retirement-planning/retirement-planning-19';
+import { retirementPlanningArticles20 } from './retirement-planning/retirement-planning-20';
+import { retirementPlanningArticles21 } from './retirement-planning/retirement-planning-21';
+import { retirementPlanningArticles22 } from './retirement-planning/retirement-planning-22';
+import { retirementPlanningArticles23 } from './retirement-planning/retirement-planning-23';
+import { retirementPlanningArticles24 } from './retirement-planning/retirement-planning-24';
+import { retirementPlanningArticles25 } from './retirement-planning/retirement-planning-25';
 
 // Export all finance articles for the listing page
 export const FINANCE_ARTICLES: Article[] = [
@@ -192,10 +247,72 @@ export const FINANCE_ARTICLES: Article[] = [
   ...savingInvestingArticles93,
   ...savingInvestingArticles94,
   ...savingInvestingArticles95,
+  ...savingInvestingArticles96,
+  ...savingInvestingArticles97,
+  ...savingInvestingArticles98,
+  ...savingInvestingArticles99,
+  ...savingInvestingArticles100,
+  ...savingInvestingArticles101,
+  ...savingInvestingArticles102,
+  ...savingInvestingArticles103,
+  ...savingInvestingArticles104,
+  ...savingInvestingArticles105,
+  ...savingInvestingArticles106,
+  ...savingInvestingArticles107,
+  ...savingInvestingArticles108,
+  ...savingInvestingArticles109,
+  ...savingInvestingArticles110,
+  ...savingInvestingArticles111,
+  ...savingInvestingArticles112,
+  ...savingInvestingArticles113,
+  ...savingInvestingArticles114,
+  ...savingInvestingArticles115,
+  ...savingInvestingArticles116,
+  ...savingInvestingArticles117,
+  ...savingInvestingArticles118,
+  ...savingInvestingArticles119,
+  ...savingInvestingArticles120,
+  ...savingInvestingArticles121,
+  ...savingInvestingArticles122,
+  ...savingInvestingArticles123,
+  ...savingInvestingArticles124,
+  ...savingInvestingArticles125,
+];
+
+// Export retirement planning articles separately
+export const RETIREMENT_ARTICLES: Article[] = [
+  ...retirementPlanningArticles1,
+  ...retirementPlanningArticles2,
+  ...retirementPlanningArticles3,
+  ...retirementPlanningArticles4,
+  ...retirementPlanningArticles5,
+  ...retirementPlanningArticles6,
+  ...retirementPlanningArticles7,
+  ...retirementPlanningArticles8,
+  ...retirementPlanningArticles9,
+  ...retirementPlanningArticles10,
+  ...retirementPlanningArticles11,
+  ...retirementPlanningArticles12,
+  ...retirementPlanningArticles13,
+  ...retirementPlanningArticles14,
+  ...retirementPlanningArticles15,
+  ...retirementPlanningArticles16,
+  ...retirementPlanningArticles17,
+  ...retirementPlanningArticles18,
+  ...retirementPlanningArticles19,
+  ...retirementPlanningArticles20,
+  ...retirementPlanningArticles21,
+  ...retirementPlanningArticles22,
+  ...retirementPlanningArticles23,
+  ...retirementPlanningArticles24,
+  ...retirementPlanningArticles25,
 ];
 
 // Export as a key-value map for easy lookup by slug
-export const ARTICLE_CONTENT: Record<string, Article> = FINANCE_ARTICLES.reduce(
+export const ARTICLE_CONTENT: Record<string, Article> = [
+  ...FINANCE_ARTICLES,
+  ...RETIREMENT_ARTICLES,
+].reduce(
   (acc, article) => {
     acc[article.slug] = article;
     return acc;
