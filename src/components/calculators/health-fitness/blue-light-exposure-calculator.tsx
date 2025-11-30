@@ -1,147 +1,121 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Sun, Moon, Eye, ShieldCheck, Lightbulb } from 'lucide-react';
+import { Activity, Zap, Target, AlertTriangle, Shield } from 'lucide-react';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { EmbedWidget } from '@/components/embed-widget';
 
-const formSchema = z
-  .object({
-    screenHours: z
-      .number({ invalid_type_error: 'Enter total daily screen hours' })
-      .min(0, 'Screen time cannot be negative')
-      .max(18, 'Cap entries at 18 hours'),
-    nightHours: z
-      .number({ invalid_type_error: 'Enter evening/night usage' })
-      .min(0)
-      .max(12, 'Keep within realistic night usage'),
-    screenBrightness: z
-      .number({ invalid_type_error: 'Enter average brightness' })
-      .min(10)
-      .max(100),
-    filterReduction: z
-      .number({ invalid_type_error: 'Enter blue-light filter %' })
-      .min(0)
-      .max(100),
-    ambientLux: z
-      .number({ invalid_type_error: 'Enter ambient lux' })
-      .min(0)
-      .max(2000),
-    distance: z
-      .number({ invalid_type_error: 'Enter viewing distance' })
-      .min(20)
-      .max(120),
-  })
-  .refine(
-    ({ screenHours, nightHours }) => nightHours <= screenHours,
-    { path: ['nightHours'], message: 'Night usage cannot exceed total screen hours' },
-  );
+const formSchema = z.object({
+  screenHours: z.number({ invalid_type_error: 'Enter screen hours' }).min(0).max(18),
+  nightHours: z.number({ invalid_type_error: 'Enter night hours' }).min(0).max(12),
+  screenBrightness: z.number({ invalid_type_error: 'Enter screen brightness' }).min(10).max(100),
+  filterReduction: z.number({ invalid_type_error: 'Enter filter reduction' }).min(0).max(100).optional(),
+});
 
 type FormValues = z.infer<typeof formSchema>;
 
 type ResultPayload = {
-  totalDose: number;
-  safeRange: [number, number];
-  riskLevel: 'managed' | 'elevated' | 'high';
+  screenHours: number;
+  nightHours: number;
+  screenBrightness: number;
+  filterReduction: number | undefined;
+  exposureScore: number;
+  exposurePercent: number;
+  status: 'optimal' | 'good' | 'moderate' | 'low';
   interpretation: string;
-  circadianImpact: number;
-  melatoninDelay: number;
-  filterBenefit: number;
   recommendations: string[];
-  actionPlan: { label: string; detail: string }[];
+  plan: { label: string; detail: string }[];
 };
 
 const steps = [
-  'Gather your average daily screen hours and note how many happen after sunset.',
-  'Estimate average screen brightness (most phones list the exact percentage).',
-  'Enter the strength of any blue-light filter or night shift mode you use.',
-  'Add approximate ambient light (lux) from lamps or room lighting.',
-  'Record how far your eyes typically are from the display.',
-  'Run the calculation and adjust one variable at a time to test mitigation ideas.',
+  'Enter total daily screen time (hours) from all devices.',
+  'Enter evening/night screen time (hours after 6pm).',
+  'Enter average screen brightness percentage (10-100%).',
+  'Enter blue light filter reduction percentage if using filters (optional).',
+  'Review exposure score, exposure percentage, and recommendations.',
 ];
 
 const faqs = [
   {
-    question: 'What does the Blue Light Exposure Calculator measure?',
+    question: 'What is blue light?',
     answer:
-      'It estimates your cumulative daily blue-light dose (in lux-hours) based on screen brightness, duration, filters, ambient lighting, and viewing distance.',
+      'Blue light is a high-energy visible (HEV) light with wavelengths between 400-500 nanometers. It\'s emitted by digital screens, LED lights, and sunlight. While natural blue light during daytime is beneficial, excessive artificial blue light, especially at night, can disrupt sleep and eye health.',
   },
   {
-    question: 'Is blue light always harmful?',
+    question: 'How does blue light affect sleep?',
     answer:
-      'Moderate exposure during daytime aids alertness, but excessive nighttime exposure can delay melatonin release, interfere with circadian rhythm, and contribute to digital eye strain.',
+      'Blue light suppresses melatonin production, the hormone that regulates sleep. Exposure to blue light in the evening delays sleep onset, reduces sleep quality, and disrupts circadian rhythms. This is why screens before bed can make it harder to fall asleep.',
   },
   {
-    question: 'How accurate is the exposure score?',
+    question: 'What are the health effects of excessive blue light?',
     answer:
-      'It uses evidence-based heuristics and relative intensity factors. Results are intended for awareness, not as a medical device or diagnostic metric.',
+      'Excessive blue light exposure can cause digital eye strain, headaches, dry eyes, blurred vision, sleep disruption, and potentially contribute to long-term eye damage. Nighttime exposure is particularly problematic for circadian rhythm disruption.',
   },
   {
-    question: 'What lux level should I aim for?',
+    question: 'How do blue light filters work?',
     answer:
-      'Keeping total daily blue-light dose below ~1,000 lux-hours and limiting nighttime share to under 30% supports circadian balance for most adults.',
+      'Blue light filters (software or physical) reduce the amount of blue light emitted by screens. Software filters reduce blue light by 20-50%, while physical screen protectors can block 30-60%. They work by filtering out blue wavelengths or shifting screen color temperature toward warmer tones.',
   },
   {
-    question: 'Do blue-light glasses count as filter reduction?',
+    question: 'What is a safe amount of screen time?',
     answer:
-      'Yes. Input the manufacturer’s advertised blue-light blocking percentage as the filter value to estimate benefit.',
+      'There\'s no definitive "safe" amount, but recommendations suggest limiting evening screen time (after 6pm) to 1-2 hours, using blue light filters, and avoiding screens 1-2 hours before bedtime. Total daily screen time should be balanced with breaks and outdoor time.',
   },
   {
-    question: 'How far should my screen be from my eyes?',
+    question: 'Do blue light glasses work?',
     answer:
-      'A neutral baseline of ~40 cm (16 inches) keeps intensity manageable. Increasing distance lowers direct eye exposure appreciably.',
+      'Blue light blocking glasses can reduce blue light exposure by 20-90% depending on the lens. They may help reduce eye strain and improve sleep when used in the evening. However, evidence for long-term eye health benefits is still emerging.',
   },
   {
-    question: 'Can ambient light offset blue light exposure?',
+    question: 'How does screen brightness affect blue light?',
     answer:
-      'Brighter ambient light reduces contrast between screen and environment, which can mitigate strain, but it still adds to total light dose, so balance is important.',
+      'Higher screen brightness increases blue light emission. Reducing brightness can decrease blue light exposure by 20-40%. Using lower brightness settings, especially in the evening, can help reduce eye strain and sleep disruption.',
   },
   {
-    question: 'How many breaks should I take?',
+    question: 'What about natural blue light from sunlight?',
     answer:
-      'Follow the 20-20-20 rule: every 20 minutes, look 20 feet away for 20 seconds. Entering slightly shorter screen sessions in the calculator helps model break patterns.',
+      'Natural blue light from sunlight during daytime is beneficial—it helps regulate circadian rhythms, boost alertness, and improve mood. The concern is artificial blue light from screens, especially in the evening when it conflicts with natural sleep-wake cycles.',
   },
   {
-    question: 'Does dark mode reduce blue light?',
+    question: 'Can I reduce blue light exposure?',
     answer:
-      'It lowers total luminance, especially on OLED displays, indirectly reducing blue-light dose. Combine dark mode with filters for the greatest effect.',
+      'Yes. Use blue light filters on devices, reduce screen brightness, limit evening screen time, use night mode settings, wear blue light blocking glasses, take regular screen breaks, and avoid screens 1-2 hours before bedtime.',
   },
   {
-    question: 'Should kids use a different threshold?',
+    question: 'When should I consult a healthcare provider?',
     answer:
-      'Pediatric sleep specialists often recommend tighter limits. Use lower safe range values (<700 lux-hours) and prioritize daylight exposure over evening screen time.',
+      'Consult an eye care professional if you experience persistent eye strain, headaches, dry eyes, vision changes, or sleep problems related to screen use. They can assess your eye health and recommend appropriate interventions.',
   },
 ];
 
 const relatedCalculators = [
   {
-    name: 'Screen Time vs Sleep Impact Calculator',
-    slug: 'screen-time-vs-sleep-impact-calculator',
-    description: 'Model how evening scrolling shifts your sleep onset and quality.',
+    name: 'UV Exposure Risk Calculator',
+    slug: 'uv-exposure-risk-calculator',
+    description: 'Assess sun exposure alongside blue light.',
+  },
+  {
+    name: 'Daily Screen Time Impact Calculator',
+    slug: 'daily-screen-time-impact-calculator',
+    description: 'Evaluate comprehensive screen time effects.',
   },
   {
     name: 'Sleep Debt Calculator',
     slug: 'sleep-debt-calculator-hf',
-    description: 'Quantify short sleep patterns so you can build restorative habits.',
+    description: 'Assess sleep quality and circadian health.',
   },
   {
-    name: 'Habit Streak Tracker Calculator',
-    slug: 'habit-streak-tracker-calculator',
-    description: 'Create streaks for reducing late-night scrolling and other routines.',
-  },
-  {
-    name: 'Hydration Needs Calculator',
-    slug: 'hydration-needs-calculator',
-    description: 'Support eye comfort and metabolic health with personalized hydration goals.',
+    name: 'Circadian Rhythm Disruption Risk Calculator',
+    slug: 'circadian-rhythm-disruption-risk-calculator',
+    description: 'Evaluate sleep-wake cycle health.',
   },
 ];
 
@@ -152,104 +126,89 @@ const schemaMarkup = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
-      'itemListElement': [
+      itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Blue Light Exposure Calculator', item: baseUrl },
       ],
     },
     {
-      '@type': 'Article',
-      headline: 'Blue Light Exposure Calculator',
-      description: 'Estimate your daily blue-light dose, interpret risk levels, and get action steps to protect eye comfort and circadian health.',
-      author: { '@type': 'Organization', name: 'Mycalculating.com' },
-      publisher: { '@type': 'Organization', name: 'Mycalculating.com' },
-      url: baseUrl,
-      mainEntityOfPage: baseUrl,
-      datePublished: '2024-01-01',
-      dateModified: new Date().toISOString().split('T')[0],
-    },
-    {
       '@type': 'SoftwareApplication',
-      '@id': `${baseUrl}#calculator`,
       name: 'Blue Light Exposure Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      featureList: ['Blue-light dose score', 'Circadian impact scoring', 'Melatonin delay estimate'],
+      description: 'Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction.',
       url: baseUrl,
-      description: 'Interactive calculator that models blue-light exposure using brightness, duration, filters, and ambient lighting.',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
 };
 
-const calculateExposure = (values: FormValues): ResultPayload => {
-  const brightnessFactor = values.screenBrightness / 100;
-  const filterFactor = 1 - values.filterReduction / 100;
-  const distanceFactor = Math.max(0.25, 40 / values.distance);
-  const baselineLux = 500 * brightnessFactor;
-  const directExposure = baselineLux * values.screenHours * filterFactor * distanceFactor;
-  const ambientExposure = values.ambientLux * values.screenHours * 0.05;
-  const totalDose = directExposure + ambientExposure;
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
-  const safeRange: [number, number] = [500, 1000];
-  const circadianImpact = values.screenHours === 0 ? 0 : (values.nightHours / values.screenHours) * 100;
-  const melatoninDelay = values.nightHours * 12 * filterFactor;
-  const filterBenefit = baselineLux * values.screenHours * (1 - filterFactor) * distanceFactor;
+const calculateResult = (values: FormValues): ResultPayload => {
+  const screenHours = values.screenHours;
+  const nightHours = values.nightHours;
+  const screenBrightness = values.screenBrightness;
+  const filterReduction = values.filterReduction;
+  
+  // Calculate base exposure: Screen Hours × Brightness Factor × Night Penalty
+  const brightnessFactor = screenBrightness / 100; // 0.1 to 1.0
+  const nightPenalty = 1 + (nightHours / screenHours) * 0.5; // Night exposure is worse
+  const baseExposure = screenHours * brightnessFactor * nightPenalty;
+  
+  // Apply filter reduction if provided
+  const filterFactor = filterReduction ? (1 - filterReduction / 100) : 1.0;
+  const effectiveExposure = baseExposure * filterFactor;
+  
+  // Exposure score (normalized to 0-100 scale)
+  // Reference: 8 hours, 80% brightness, 3 night hours, no filter = moderate-high exposure
+  const referenceExposure = 8 * 0.8 * (1 + (3/8) * 0.5);
+  const exposureScore = clamp((effectiveExposure / referenceExposure) * 100, 0, 100);
+  const exposurePercent = exposureScore;
+  
+  let status: ResultPayload['status'] = 'optimal';
+  let interpretation = 'Your blue light exposure appears manageable. Continue using protective measures and maintaining good screen habits.';
 
-  let riskLevel: ResultPayload['riskLevel'] = 'managed';
-  let interpretation =
-    'Your blue-light dose sits within commonly recommended limits. Maintain daytime usage and short evening sessions.';
-
-  if (totalDose > safeRange[1] || circadianImpact > 40) {
-    riskLevel = 'elevated';
-    interpretation =
-      'Your exposure is trending high. Tighten evening limits, increase distance, or strengthen filters to protect sleep and comfort.';
+  if (exposureScore >= 70 || nightHours >= 4) {
+    status = 'low';
+    interpretation = 'Your blue light exposure is very high, especially at night. This significantly increases risk of sleep disruption, eye strain, and circadian rhythm problems. Reduce evening screen time and use protective measures immediately.';
+  } else if (exposureScore >= 50 || nightHours >= 2) {
+    status = 'moderate';
+    interpretation = 'Your blue light exposure is elevated, particularly evening exposure. Take steps to reduce nighttime screen use, use blue light filters, and limit evening brightness to protect sleep and eye health.';
+  } else if (exposureScore >= 30) {
+    status = 'good';
+    interpretation = 'Your blue light exposure is moderate. Continue using protective measures like filters and reduced evening screen time to maintain optimal sleep and eye health.';
+  } else {
+    status = 'optimal';
+    interpretation = 'Your blue light exposure is well-managed. Your screen habits and protective measures appear appropriate for maintaining good sleep and eye health.';
   }
-  if (totalDose > 1500 || circadianImpact > 60) {
-    riskLevel = 'high';
-    interpretation =
-      'Exposure is well above ergonomic guidance. Prioritize proactive controls—warmer color temperature, darker rooms, and longer screen breaks.';
+
+  const recommendations = [
+    'Use blue light filters: enable night mode or blue light filter settings on all devices, especially in the evening. Software filters can reduce blue light by 20-50%.',
+    'Limit evening screen time: reduce screen use after 6pm, and avoid screens 1-2 hours before bedtime to protect melatonin production and sleep quality.',
+    'Reduce screen brightness: lower brightness settings, especially in the evening, can decrease blue light emission by 20-40% and reduce eye strain.',
+  ];
+  
+  if (nightHours >= 2) {
+    recommendations.push('Minimize nighttime exposure: evening and night screen time is particularly harmful for sleep. Set a screen curfew and use alternative activities like reading or relaxation before bed.');
+  }
+  
+  if (!filterReduction || filterReduction < 30) {
+    recommendations.push('Increase blue light protection: use stronger blue light filters (30-50% reduction), enable night mode on all devices, and consider blue light blocking glasses for evening use.');
+  }
+  
+  if (screenHours >= 10) {
+    recommendations.push('Take regular screen breaks: follow the 20-20-20 rule (every 20 minutes, look at something 20 feet away for 20 seconds) to reduce eye strain and give your eyes rest from blue light.');
   }
 
-  const baseRecommendations = [
-    'Enable night-shift modes two hours before bedtime and keep brightness under 50% after sunset.',
-    'Blink consciously and follow the 20-20-20 break rule to ease eye strain.',
-    'Layer solutions: filters, dark mode, warmer color temperature, and ambient bias lighting.',
+  const plan = [
+    { label: 'This Week', detail: `Assess your current blue light exposure and implement basic protections: enable night mode, reduce evening screen time, and lower brightness settings.` },
+    { label: 'This Month', detail: 'Establish healthy screen habits: set screen curfews, use blue light filters consistently, take regular breaks, and create evening routines that don\'t involve screens.' },
+    { label: 'Ongoing', detail: 'Maintain blue light protection: continue using filters, limiting evening exposure, and protecting sleep. Monitor eye health and sleep quality, adjusting habits as needed.' },
   ];
 
-  const riskSpecific: Record<ResultPayload['riskLevel'], string[]> = {
-    managed: [
-      'Sustain periodic digital detox blocks so exposure never creeps upward.',
-      'Log screen hours for a week to confirm the calculator aligns with your habits.',
-    ],
-    elevated: [
-      'Move devices 10–15 cm farther away or prop them on a stand to drop dose instantly.',
-      'Shift deep work or binge sessions earlier in the day to reduce circadian conflict.',
-    ],
-    high: [
-      'Adopt amber filters or glasses blocking 60%+ blue light in the evening.',
-      'Cap night sessions at 30 minutes and replace late scrolling with audio content.',
-    ],
-  };
-
-  const actionPlan = [
-    { label: 'Today', detail: 'Enable night shift / warm color profiles across every device.' },
-    { label: 'This Week', detail: 'Batch late tasks earlier and insert two non-screen wind-down anchors.' },
-    { label: 'Next 30 Days', detail: 'Audit workspace lighting and upgrade to indirect, dimmable lamps.' },
-  ];
-
-  return {
-    totalDose,
-    safeRange,
-    riskLevel,
-    interpretation,
-    circadianImpact,
-    melatoninDelay,
-    filterBenefit,
-    recommendations: [...baseRecommendations, ...riskSpecific[riskLevel]],
-    actionPlan,
-  };
+  return { screenHours, nightHours, screenBrightness, filterReduction, exposureScore, exposurePercent, status, interpretation, recommendations, plan };
 };
 
 export default function BlueLightExposureCalculator() {
@@ -262,67 +221,39 @@ export default function BlueLightExposureCalculator() {
       nightHours: undefined,
       screenBrightness: undefined,
       filterReduction: undefined,
-      ambientLux: undefined,
-      distance: undefined,
     },
   });
 
-  const nightUsageHelper = useMemo(
-    () => 'Aim to keep evening usage below 30% of total screen time to preserve melatonin production.',
-    [],
-  );
-
-  const handleSubmit = (values: FormValues) => {
-    setResult(calculateExposure(values));
-  };
-
   return (
     <div className="space-y-8">
-      <Script
-        id="blue-light-exposure-schema"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-      />
+      <Script id="blue-light-exposure-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
 
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Eye className="h-5 w-5" />
+            <Activity className="h-5 w-5" />
             Blue Light Exposure Calculator
           </CardTitle>
-          <CardDescription>
-            Estimate daily blue-light dose from screens and lighting, then see how simple tweaks can lower eye strain and keep
-            circadian rhythms on track.
-          </CardDescription>
+          <CardDescription>Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction.</CardDescription>
         </CardHeader>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Input your routine</CardTitle>
-          <CardDescription>Leave fields blank until you are ready—everything is customized once you submit.</CardDescription>
+          <CardTitle>Input your blue light exposure data</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+            <form onSubmit={form.handleSubmit((values) => setResult(calculateResult(values)))} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
                   name="screenHours"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Total screen time (hours)</FormLabel>
+                      <FormLabel>Screen hours (per day)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.25"
-                          placeholder="e.g., 7.5"
-                          value={field.value ?? ''}
-                          onChange={(event) =>
-                            field.onChange(event.target.value === '' ? undefined : Number(event.target.value))
-                          }
-                        />
+                        <Input type="number" step="0.5" placeholder="e.g., 8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -333,19 +264,10 @@ export default function BlueLightExposureCalculator() {
                   name="nightHours"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Evening / night usage (hours)</FormLabel>
+                      <FormLabel>Night hours (after 6pm)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.25"
-                          placeholder="e.g., 2"
-                          value={field.value ?? ''}
-                          onChange={(event) =>
-                            field.onChange(event.target.value === '' ? undefined : Number(event.target.value))
-                          }
-                        />
+                        <Input type="number" step="0.5" placeholder="e.g., 3" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
-                      <p className="text-xs text-muted-foreground">{nightUsageHelper}</p>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -355,17 +277,9 @@ export default function BlueLightExposureCalculator() {
                   name="screenBrightness"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Average brightness (%)</FormLabel>
+                      <FormLabel>Screen brightness (%)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="1"
-                          placeholder="e.g., 65"
-                          value={field.value ?? ''}
-                          onChange={(event) =>
-                            field.onChange(event.target.value === '' ? undefined : Number(event.target.value))
-                          }
-                        />
+                        <Input type="number" step="1" placeholder="e.g., 80" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -376,59 +290,9 @@ export default function BlueLightExposureCalculator() {
                   name="filterReduction"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Blue-light filter strength (%)</FormLabel>
+                      <FormLabel>Filter reduction (%) (optional)</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="1"
-                          placeholder="e.g., 30"
-                          value={field.value ?? ''}
-                          onChange={(event) =>
-                            field.onChange(event.target.value === '' ? undefined : Number(event.target.value))
-                          }
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="ambientLux"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Room / ambient light (lux)</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          step="10"
-                          placeholder="e.g., 300"
-                          value={field.value ?? ''}
-                          onChange={(event) =>
-                            field.onChange(event.target.value === '' ? undefined : Number(event.target.value))
-                          }
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="distance"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Viewing distance (cm)</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          step="1"
-                          placeholder="e.g., 40"
-                          value={field.value ?? ''}
-                          onChange={(event) =>
-                            field.onChange(event.target.value === '' ? undefined : Number(event.target.value))
-                          }
-                        />
+                        <Input type="number" step="1" placeholder="e.g., 40 (0 if none)" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -436,7 +300,7 @@ export default function BlueLightExposureCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate exposure
+                Calculate blue light exposure
               </Button>
             </form>
           </Form>
@@ -447,55 +311,67 @@ export default function BlueLightExposureCalculator() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Sun className="h-5 w-5 text-primary" />
-              Interactive result & interpretation
+              <Zap className="h-5 w-5 text-primary" />
+              Interactive results
             </CardTitle>
-            <CardDescription>Compare your dose with ergonomic guidance and get immediate context.</CardDescription>
+            <CardDescription>See exposure score, exposure percentage, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Total dose (lux-hours)</p>
-                <p className="text-2xl font-semibold text-primary">{Math.round(result.totalDose)}</p>
-                <p className="text-xs text-muted-foreground">
-                  Target range: {result.safeRange[0]}–{result.safeRange[1]} lux-hours
-                </p>
+                <p className="text-sm text-muted-foreground">Exposure score</p>
+                <p className="text-2xl font-semibold text-primary">{result.exposureScore.toFixed(1)}</p>
+                <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Nighttime share</p>
-                <p className="text-2xl font-semibold text-primary">{result.circadianImpact.toFixed(0)}%</p>
-                <p className="text-xs text-muted-foreground">Keep below 30% to minimize melatonin disruption.</p>
+                <p className="text-sm text-muted-foreground">Screen hours</p>
+                <p className="text-2xl font-semibold text-primary">{result.screenHours.toFixed(1)}</p>
+                <p className="text-xs text-muted-foreground">Per day</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Melatonin delay estimate</p>
-                <p className="text-2xl font-semibold text-primary">{Math.round(result.melatoninDelay)} min</p>
-                <p className="text-xs text-muted-foreground">Filter + shorter nights reduce this delay.</p>
+                <p className="text-sm text-muted-foreground">Exposure %</p>
+                <p className="text-2xl font-semibold text-primary">{result.exposurePercent.toFixed(0)}%</p>
+                <p className="text-xs text-muted-foreground">Of reference</p>
               </div>
-            </div>
-            <div className="rounded border p-4 bg-muted/50">
-              <p className="text-sm uppercase tracking-wide text-muted-foreground mb-1">Status</p>
-              <p className="text-lg font-semibold capitalize">{result.riskLevel} exposure</p>
-              <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Status</p>
+                <p className="text-2xl font-semibold text-primary capitalize">{result.status}</p>
+                <p className="text-xs text-muted-foreground">{result.interpretation}</p>
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border rounded">
-                <h4 className="font-semibold mb-2">Recommendations</h4>
-                <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
-                  {result.recommendations.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-4 border rounded">
-                <h4 className="font-semibold mb-2">Action plan</h4>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  {result.actionPlan.map((plan) => (
-                    <li key={plan.label}>
-                      <span className="font-semibold">{plan.label}:</span> {plan.detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Target className="h-4 w-4" />
+                    Recommendations
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
+                    {result.recommendations.map((rec) => (
+                      <li key={rec}>{rec}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <AlertTriangle className="h-4 w-4" />
+                    Action plan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    {result.plan.map((step) => (
+                      <li key={step.label}>
+                        <span className="font-semibold">{step.label}:</span> {step.detail}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </CardContent>
         </Card>
@@ -504,25 +380,27 @@ export default function BlueLightExposureCalculator() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Lightbulb className="h-5 w-5" />
-            Formula breakdown
+            <Shield className="h-5 w-5" />
+            Formula
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
+        <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Total Blue-Light Dose</strong> = (Screen Brightness × 500 lux) × Daily Screen Hours × (1 − Filter %) × Distance
-            Factor + (Ambient Lux × Screen Hours × 0.05)
+            <strong>Base exposure</strong> = Screen Hours × (Brightness / 100) × Night Penalty Factor. Night penalty = 1 + (Night Hours / Screen Hours) × 0.5, as evening exposure is more harmful.
           </p>
           <p>
-            Distance factor assumes 40 cm as neutral. Moving farther away lowers direct intensity. Filter percentage accounts for
-            night shift software or glasses. Ambient light adds to overall light load even if it eases contrast.
+            <strong>Effective exposure</strong> = Base Exposure × (1 - Filter Reduction / 100). Blue light filters reduce exposure by their percentage (e.g., 40% filter = 60% of base exposure).
           </p>
+          <p>
+            <strong>Exposure score</strong> = (Effective Exposure / Reference Exposure) × 100, normalized to 0-100 scale where reference is 8 hours, 80% brightness, 3 night hours, no filter.
+          </p>
+          <p>Blue light exposure increases with longer screen time, higher brightness, more evening/night use, and lack of protective filters. Reducing evening exposure and using filters significantly decreases risk.</p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Steps to use the calculator</CardTitle>
+          <CardTitle>Steps</CardTitle>
         </CardHeader>
         <CardContent>
           <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
@@ -535,36 +413,35 @@ export default function BlueLightExposureCalculator() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Additional calculation insights</CardTitle>
-          <CardDescription>See how mitigation tactics influence specific metrics.</CardDescription>
+          <CardTitle>Additional calculations</CardTitle>
         </CardHeader>
         <CardContent>
           {result ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Filter benefit</p>
-                <p className="text-xl font-semibold text-primary">{Math.round(result.filterBenefit)} lux-hours avoided</p>
-                <p className="text-xs text-muted-foreground">Upgrade filters to raise this savings number.</p>
+                <p className="text-sm text-muted-foreground">Filter protection</p>
+                <p className="text-xl font-semibold text-primary">
+                  {result.filterReduction ? result.filterReduction.toFixed(0) : '0'}%
+                </p>
+                <p className="text-xs text-muted-foreground">Blue light blocked</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Dose vs safe max</p>
+                <p className="text-sm text-muted-foreground">Night exposure</p>
                 <p className="text-xl font-semibold text-primary">
-                  {(result.totalDose / result.safeRange[1] * 100).toFixed(0)}%
+                  {result.nightHours.toFixed(1)} hrs
                 </p>
-                <p className="text-xs text-muted-foreground">Strive for ≤100% to stay inside ergonomic advice.</p>
+                <p className="text-xs text-muted-foreground">After 6pm</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Circadian recovery gap</p>
+                <p className="text-sm text-muted-foreground">Exposure level</p>
                 <p className="text-xl font-semibold text-primary">
-                  {Math.max(0, result.circadianImpact - 30).toFixed(0)}% above target
+                  {result.exposureScore >= 70 ? 'Very High' : result.exposureScore >= 50 ? 'High' : result.exposureScore >= 30 ? 'Moderate' : 'Low'}
                 </p>
-                <p className="text-xs text-muted-foreground">Move late sessions earlier until this hits zero.</p>
+                <p className="text-xs text-muted-foreground">Based on calculation</p>
               </div>
             </div>
           ) : (
-            <p className="text-sm text-muted-foreground">
-              Run the calculator to unlock filter savings, safe-range comparisons, and circadian gap metrics.
-            </p>
+            <p className="text-sm text-muted-foreground">Enter your blue light exposure data to see additional insights.</p>
           )}
         </CardContent>
       </Card>
@@ -572,7 +449,6 @@ export default function BlueLightExposureCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Related calculators</CardTitle>
-          <CardDescription>Round out your healthy screen-time toolkit.</CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {relatedCalculators.map((calc) => (
@@ -588,27 +464,192 @@ export default function BlueLightExposureCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-          <CardDescription>Use these placeholder lines until you add the full deep dive.</CardDescription>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>
-            Blue light is not inherently bad, but timing, intensity, and proximity matter. Consistent midday exposure combined with
-            low evening exposure keeps circadian rhythms entrained while reducing eye strain.
-          </p>
-          <p>
-            Layer technology fixes (filters, night shift, dark mode) with behavior shifts (breaks, distance, wind-down routines) for
-            the most reliable relief. Mix in daylight walks to anchor your internal clock.
-          </p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Blue Light Exposure: Protecting Sleep and Eye Health" />
+    <meta itemProp="description" content="An expert, evidence-based guide on blue light exposure from digital screens, detailing its effects on sleep, eye health, and circadian rhythms, with comprehensive strategies to reduce exposure and protect health." />
+    <meta itemProp="keywords" content="blue light exposure calculator, blue light sleep disruption, digital eye strain, blue light filter, circadian rhythm health, screen time impact, melatonin suppression" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-01" />
+    <meta itemProp="url" content="/definitive-blue-light-exposure-guide" />
 
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Blue Light Exposure: Protecting Sleep and Eye Health in the Digital Age</h1>
+    <p className="text-lg italic text-gray-700">Explore the science of blue light, its effects on sleep and eye health, and comprehensive strategies to reduce exposure from digital screens for better circadian health and visual comfort.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#what-is-blue-light" className="hover:underline">What is Blue Light and Where Does It Come From</a></li>
+        <li><a href="#sleep-effects" className="hover:underline">Blue Light's Impact on Sleep and Circadian Rhythms</a></li>
+        <li><a href="#eye-health" className="hover:underline">Effects on Eye Health and Digital Eye Strain</a></li>
+        <li><a href="#reduction" className="hover:underline">Strategies to Reduce Blue Light Exposure</a></li>
+        <li><a href="#protection" className="hover:underline">Protective Measures and Tools</a></li>
+    </ul>
+<hr />
+
+    {/* WHAT IS BLUE LIGHT */}
+    <h2 id="what-is-blue-light" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Blue Light and Where Does It Come From</h2>
+    <p>**Blue light** is a high-energy visible (HEV) light with wavelengths between 400-500 nanometers, making it one of the shortest, highest-energy wavelengths in the visible light spectrum. While blue light is naturally present in sunlight and beneficial during daytime, artificial sources—especially digital screens—have raised concerns about excessive exposure, particularly in the evening.</p>
+
+<h3 className="text-xl font-semibold text-foreground mt-6">Natural vs. Artificial Blue Light</h3>
+<p>Blue light exists in nature and serves important functions:</p>
+<ul>
+    <li><b>Sunlight:</b> Contains blue light that helps regulate circadian rhythms, boost alertness, and improve mood during daytime</li>
+    <li><b>Daytime benefits:</b> Natural blue light exposure during the day supports healthy sleep-wake cycles and cognitive function</li>
+</ul>
+<p>However, artificial blue light sources have increased dramatically:</p>
+<ul>
+    <li><b>Digital screens:</b> Smartphones, tablets, computers, TVs emit significant blue light</li>
+    <li><b>LED lighting:</b> Energy-efficient LED bulbs emit more blue light than traditional incandescent bulbs</li>
+    <li><b>24/7 exposure:</b> Unlike sunlight, artificial blue light is available at all hours, including evening and night</li>
+</ul>
+
+<h3 className="text-xl font-semibold text-foreground mt-6">Why Blue Light Matters</h3>
+<p>Blue light's high energy allows it to penetrate deeper into the eye and has stronger effects on biological processes than other wavelengths. This makes it both beneficial (during day) and potentially harmful (at night) depending on timing and amount of exposure.</p>
+
+<hr />
+
+    {/* SLEEP EFFECTS */}
+    <h2 id="sleep-effects" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Blue Light's Impact on Sleep and Circadian Rhythms</h2>
+    <p>The most well-documented effect of blue light is its impact on sleep through suppression of **melatonin**, the hormone that regulates sleep-wake cycles.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Melatonin Suppression</h3>
+    <p>Blue light exposure, especially in the evening, suppresses melatonin production:</p>
+    <ul>
+        <li><b>Mechanism:</b> Blue light is detected by specialized cells in the retina that signal the brain's suprachiasmatic nucleus (SCN), the body's master clock</li>
+        <li><b>Effect:</b> SCN signals the pineal gland to stop producing melatonin, keeping you alert</li>
+        <li><b>Timing matters:</b> Evening/night exposure is most problematic because it conflicts with natural melatonin rise</li>
+        <li><b>Dose-response:</b> Longer exposure and higher brightness increase suppression</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Sleep Disruption Effects</h3>
+    <p>Blue light exposure before bed can cause:</p>
+    <ul>
+        <li><b>Delayed sleep onset:</b> Taking longer to fall asleep</li>
+        <li><b>Reduced sleep quality:</b> Less deep sleep and REM sleep</li>
+        <li><b>Circadian misalignment:</b> Shifting sleep-wake cycles later</li>
+        <li><b>Morning alertness issues:</b> Difficulty waking up and feeling alert</li>
+    </ul>
+    <p>Studies show that even 2 hours of evening screen use can delay melatonin onset by 1-2 hours, significantly impacting sleep.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Circadian Rhythm Disruption</h3>
+    <p>Chronic evening blue light exposure can disrupt circadian rhythms, leading to:</p>
+    <ul>
+        <li>Irregular sleep patterns</li>
+        <li>Difficulty maintaining consistent sleep schedules</li>
+        <li>Increased risk of sleep disorders</li>
+        <li>Potential long-term health consequences (metabolic issues, mood disorders)</li>
+    </ul>
+
+<hr />
+
+    {/* EYE HEALTH */}
+    <h2 id="eye-health" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Effects on Eye Health and Digital Eye Strain</h2>
+    <p>Beyond sleep, blue light exposure can affect eye health and cause digital eye strain, though research is still evolving on long-term effects.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Digital Eye Strain</h3>
+    <p>Prolonged screen use can cause digital eye strain (computer vision syndrome) with symptoms including:</p>
+    <ul>
+        <li><b>Eye fatigue:</b> Tired, sore eyes</li>
+        <li><b>Dry eyes:</b> Reduced blinking during screen use</li>
+        <li><b>Blurred vision:</b> Difficulty focusing</li>
+        <li><b>Headaches:</b> Eye strain-related headaches</li>
+        <li><b>Neck and shoulder pain:</b> From poor posture during screen use</li>
+    </ul>
+    <p>While not solely caused by blue light, blue light's high energy may contribute to eye strain and discomfort.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Potential Long-Term Eye Damage</h3>
+    <p>Research on long-term blue light damage is ongoing, but concerns include:</p>
+    <ul>
+        <li><b>Retinal damage:</b> High-energy blue light may contribute to age-related macular degeneration (AMD) risk</li>
+        <li><b>Cumulative exposure:</b> Years of screen use may have cumulative effects</li>
+        <li><b>Prevention:</b> Using protective measures may reduce long-term risk</li>
+    </ul>
+    <p>However, evidence for significant long-term damage from typical screen use is still limited. More research is needed.</p>
+
+<hr />
+
+    {/* REDUCTION STRATEGIES */}
+    <h2 id="reduction" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategies to Reduce Blue Light Exposure</h2>
+    <p>Reducing blue light exposure, especially in the evening, is key to protecting sleep and eye health. Here are evidence-based strategies:</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Limit Evening Screen Time</h3>
+    <ul>
+        <li><b>Screen curfew:</b> Stop using screens 1-2 hours before bedtime</li>
+        <li><b>Evening alternatives:</b> Read physical books, listen to podcasts, practice relaxation, or engage in hobbies</li>
+        <li><b>Gradual reduction:</b> Start by reducing evening screen time by 30 minutes and gradually increase</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Use Blue Light Filters</h3>
+    <ul>
+        <li><b>Night mode:</b> Enable night mode or blue light filter settings on all devices</li>
+        <li><b>Automatic scheduling:</b> Set filters to activate automatically in the evening (e.g., after 6pm)</li>
+        <li><b>Filter strength:</b> Use stronger filters (30-50% reduction) in the evening</li>
+        <li><b>All devices:</b> Apply filters to phones, tablets, computers, and TVs</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">3. Reduce Screen Brightness</h3>
+    <ul>
+        <li><b>Lower settings:</b> Reduce brightness, especially in the evening</li>
+        <li><b>Auto-brightness:</b> Use automatic brightness that adapts to ambient light</li>
+        <li><b>Dark mode:</b> Use dark mode interfaces when available</li>
+        <li><b>Impact:</b> Lower brightness can reduce blue light emission by 20-40%</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">4. Take Regular Breaks</h3>
+    <ul>
+        <li><b>20-20-20 rule:</b> Every 20 minutes, look at something 20 feet away for 20 seconds</li>
+        <li><b>Blink frequently:</b> Remind yourself to blink to prevent dry eyes</li>
+        <li><b>Screen breaks:</b> Take 5-10 minute breaks every hour</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">5. Optimize Environment</h3>
+    <ul>
+        <li><b>Ambient lighting:</b> Ensure adequate room lighting to reduce screen contrast</li>
+        <li><b>Screen distance:</b> Maintain proper viewing distance (20-26 inches for computers)</li>
+        <li><b>Screen position:</b> Position screens slightly below eye level</li>
+        <li><b>Reduce glare:</b> Minimize reflections and glare on screens</li>
+    </ul>
+
+<hr />
+
+    {/* PROTECTIVE MEASURES */}
+    <h2 id="protection" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Protective Measures and Tools</h2>
+    <p>Various tools and technologies can help reduce blue light exposure:</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Software Solutions</h3>
+    <ul>
+        <li><b>Night mode:</b> Built-in device settings that reduce blue light (iOS Night Shift, Android Night Light, Windows Night Light)</li>
+        <li><b>Third-party apps:</b> Apps like f.lux, Twilight, or Iris that provide customizable blue light filtering</li>
+        <li><b>Browser extensions:</b> Extensions that filter blue light on web browsers</li>
+        <li><b>Effectiveness:</b> Software filters typically reduce blue light by 20-50%</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Physical Protection</h3>
+    <ul>
+        <li><b>Blue light blocking glasses:</b> Glasses with special lenses that filter blue light (20-90% reduction depending on lens)</li>
+        <li><b>Screen protectors:</b> Physical filters that attach to screens (30-60% reduction)</li>
+        <li><b>When to use:</b> Particularly useful for evening/night use or if you can't reduce screen time</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Lifestyle Adjustments</h3>
+    <ul>
+        <li><b>Morning light exposure:</b> Get natural sunlight in the morning to support circadian rhythms</li>
+        <li><b>Consistent sleep schedule:</b> Maintain regular sleep-wake times</li>
+        <li><b>Bedroom environment:</b> Keep bedroom dark and screen-free</li>
+        <li><b>Alternative evening activities:</b> Replace evening screen time with reading, conversation, or relaxation</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Blue light exposure from digital screens is a modern health concern, particularly regarding sleep and eye health. While natural blue light during daytime is beneficial, excessive artificial blue light, especially in the evening, can disrupt sleep, suppress melatonin, and contribute to eye strain. By understanding your exposure levels, using protective measures like filters and reduced evening screen time, and implementing healthy screen habits, you can protect your sleep and eye health while still enjoying the benefits of digital technology. Remember: moderation, timing, and protection are key. Limit evening exposure, use filters consistently, and prioritize sleep hygiene for optimal health.</p>
+</section>
       <Card>
         <CardHeader>
-          <CardTitle>Frequently asked questions</CardTitle>
-          <CardDescription>SEO-ready answers users search for most often.</CardDescription>
+          <CardTitle>FAQs</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {faqs.map((faq) => (
@@ -623,27 +664,16 @@ export default function BlueLightExposureCalculator() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5" />
+            <Shield className="h-5 w-5" />
             Summary
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>
-            This Blue Light Exposure Calculator uses the heuristic formula: total dose = screen luminance × hours × (1 − filter %) ×
-            distance factor + ambient contribution.
-          </p>
-          <p>
-            Outputs include total blue-light dose in lux-hours, circadian impact percentage, melatonin delay estimate, filter savings,
-            and status-based recommendations.
-          </p>
-          <p>
-            The page also delivers a formula explainer, step-by-step usage, related tools, and real-world mitigation examples so AI
-            agents or accessibility bots can summarize the workflow instantly.
-          </p>
+          <p>This tool calculates blue light exposure from screen hours, night hours, brightness, and filter reduction.</p>
+          <p>Outputs include screen hours, night hours, screen brightness, filter reduction, exposure score, exposure percentage, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
         </CardContent>
       </Card>
     </div>
   );
 }
-
-

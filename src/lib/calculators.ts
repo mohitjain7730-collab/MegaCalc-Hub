@@ -5208,6 +5208,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
   },
   {
+    id: 5067,
+    name: 'NEAT Impact Calculator',
+    description: 'Calculate NEAT impact from body weight, daily steps, standing time, and light activity.',
+    slug: 'neat-impact-calculator',
+    category: 'health-fitness',
+    metaTitle: 'NEAT Impact Calculator',
+    metaDescription: 'Calculate NEAT impact from body weight, daily steps, standing time, and light activity to assess non-exercise activity thermogenesis.'
+  },
+  {
+    id: 5068,
+    name: 'Diet Sustainability Score Calculator',
+    description: 'Calculate diet sustainability score from restrictiveness, variety, social fit, cost, flexibility, and adherence duration.',
+    slug: 'diet-sustainability-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Diet Sustainability Score Calculator',
+    metaDescription: 'Calculate diet sustainability score from restrictiveness, variety, social fit, cost, flexibility, and adherence duration to assess long-term maintainability.'
+  },
+  {
+    id: 5069,
+    name: 'Blue Light Exposure Calculator',
+    description: 'Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction.',
+    slug: 'blue-light-exposure-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Blue Light Exposure Calculator',
+    metaDescription: 'Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction to assess sleep and eye health impact.'
+  },
+  {
+    id: 5070,
+    name: 'Daily Screen Time Impact Calculator',
+    description: 'Calculate daily screen time impact from total hours, work hours, leisure hours, and age.',
+    slug: 'daily-screen-time-impact-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Daily Screen Time Impact Calculator',
+    metaDescription: 'Calculate daily screen time impact from total hours, work hours, leisure hours, and age to assess digital device health effects.'
+  },
+  {
+    id: 5071,
+    name: 'Hydration Tracker by Climate & Weight',
+    description: 'Calculate hydration needs from body weight, temperature, activity level, and humidity.',
+    slug: 'hydration-tracker-by-climate-weight-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Hydration Tracker by Climate & Weight',
+    metaDescription: 'Calculate hydration needs from body weight, temperature, activity level, and humidity to assess daily water requirements.'
+  },
+  {
     id: 5049,
     name: 'Chromium Daily Need Estimator',
     description: 'Estimate chromium daily needs from age, gender, and chromium intake.',
