@@ -5010,6 +5010,96 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate mitochondrial health from exercise level, energy level, antioxidant intake, and age to assess cellular energy production.'
   },
   {
+    id: 5026,
+    name: 'Detox Pathway Efficiency Calculator',
+    description: 'Calculate detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake.',
+    slug: 'detox-pathway-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Detox Pathway Efficiency Calculator',
+    metaDescription: 'Calculate detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake to assess organ function.'
+  },
+  {
+    id: 5027,
+    name: 'Circadian Rhythm Disruption Risk Calculator',
+    description: 'Calculate circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time.',
+    slug: 'circadian-rhythm-disruption-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Circadian Rhythm Disruption Risk Calculator',
+    metaDescription: 'Calculate circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time to assess circadian health.'
+  },
+  {
+    id: 5028,
+    name: 'Sleep Quality vs Longevity Correlation Calculator',
+    description: 'Calculate sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age.',
+    slug: 'sleep-quality-vs-longevity-correlation-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Quality vs Longevity Correlation Calculator',
+    metaDescription: 'Calculate sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age to assess longevity prospects.'
+  },
+  {
+    id: 5029,
+    name: 'Nutrient Density to Calorie Ratio Calculator',
+    description: 'Calculate nutrient density to calorie ratio from nutrient score, calories, serving size, and nutrient density.',
+    slug: 'nutrient-density-to-calorie-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Nutrient Density to Calorie Ratio Calculator',
+    metaDescription: 'Calculate nutrient density to calorie ratio from nutrient score, calories, serving size, and nutrient density to assess nutritional quality.'
+  },
+  {
+    id: 5030,
+    name: 'Immune Function Recovery Rate Calculator',
+    description: 'Calculate immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level.',
+    slug: 'immune-function-recovery-rate-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Immune Function Recovery Rate Calculator',
+    metaDescription: 'Calculate immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level to assess immune resilience.'
+  },
+  {
+    id: 5031,
+    name: 'Lifespan Extension Strategy Score Calculator',
+    description: 'Calculate lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management.',
+    slug: 'lifespan-extension-strategy-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Lifespan Extension Strategy Score Calculator',
+    metaDescription: 'Calculate lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management to assess longevity strategies.'
+  },
+  {
+    id: 5032,
+    name: 'Meal Calorie Breakdown Calculator',
+    description: 'Calculate meal calorie breakdown by protein, carbohydrate, and fat percentages.',
+    slug: 'meal-calorie-breakdown-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Meal Calorie Breakdown Calculator',
+    metaDescription: 'Calculate meal calorie breakdown by protein, carbohydrate, and fat percentages to track macronutrient distribution.'
+  },
+  {
+    id: 5033,
+    name: 'Glycemic Index Meal Blender Calculator',
+    description: 'Calculate blended glycemic index from food GI values and carbohydrate content.',
+    slug: 'glycemic-index-meal-blender-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Glycemic Index Meal Blender Calculator',
+    metaDescription: 'Calculate blended glycemic index from food GI values and carbohydrate content to assess meal glycemic impact.'
+  },
+  {
+    id: 5034,
+    name: 'Insulin Response Estimator',
+    description: 'Estimate insulin response per meal from glycemic index, total carbs, protein grams, and fat grams.',
+    slug: 'insulin-response-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Insulin Response Estimator',
+    metaDescription: 'Estimate insulin response per meal from glycemic index, total carbs, protein grams, and fat grams to assess blood sugar impact.'
+  },
+  {
+    id: 5035,
+    name: 'Satiety Index Calculator',
+    description: 'Calculate satiety index for meal planning from protein grams, fiber grams, calories, and volume score.',
+    slug: 'satiety-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Satiety Index Calculator',
+    metaDescription: 'Calculate satiety index for meal planning from protein grams, fiber grams, calories, and volume score to assess meal fullness potential.'
+  },
+  {
     id: 4544,
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
