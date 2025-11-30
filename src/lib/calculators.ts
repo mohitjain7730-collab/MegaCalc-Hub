@@ -5100,6 +5100,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate satiety index for meal planning from protein grams, fiber grams, calories, and volume score to assess meal fullness potential.'
   },
   {
+    id: 5036,
+    name: 'Caloric Density vs Volume Calculator',
+    description: 'Calculate caloric density vs volume from calories, weight, and volume.',
+    slug: 'caloric-density-vs-volume-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Caloric Density vs Volume Calculator',
+    metaDescription: 'Calculate caloric density vs volume from calories, weight, and volume to assess food volume relative to calories.'
+  },
+  {
+    id: 5037,
+    name: 'Carb-to-Fiber Ratio Calculator',
+    description: 'Calculate carb-to-fiber ratio from total carbohydrates and dietary fiber.',
+    slug: 'carb-to-fiber-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Carb-to-Fiber Ratio Calculator',
+    metaDescription: 'Calculate carb-to-fiber ratio from total carbohydrates and dietary fiber to assess fiber content relative to carbs.'
+  },
+  {
+    id: 5038,
+    name: 'Fat Quality Score (SFA/MUFA/PUFA ratio) Calculator',
+    description: 'Calculate fat quality score from saturated fat, monounsaturated fat, and polyunsaturated fat.',
+    slug: 'fat-quality-score-sfa-mufa-pufa-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Fat Quality Score (SFA/MUFA/PUFA ratio) Calculator',
+    metaDescription: 'Calculate fat quality score from saturated fat, monounsaturated fat, and polyunsaturated fat to assess fat quality.'
+  },
+  {
+    id: 5039,
+    name: 'Protein Digestibility Score (DIAAS) Calculator',
+    description: 'Calculate protein digestibility score DIAAS from protein grams, protein source, and cooking method.',
+    slug: 'protein-digestibility-score-diaas-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Protein Digestibility Score (DIAAS) Calculator',
+    metaDescription: 'Calculate protein digestibility score DIAAS from protein grams, protein source, and cooking method to assess protein quality.'
+  },
+  {
+    id: 5040,
+    name: 'Complete Amino Acid Profile Calculator',
+    description: 'Calculate complete amino acid profile from essential amino acid amounts.',
+    slug: 'complete-amino-acid-profile-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Complete Amino Acid Profile Calculator',
+    metaDescription: 'Calculate complete amino acid profile from essential amino acid amounts to assess protein completeness.'
+  },
+  {
     id: 4544,
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',

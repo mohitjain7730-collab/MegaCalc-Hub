@@ -1,0 +1,519 @@
+'use client';
+
+import { useState } from 'react';
+import Script from 'next/script';
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Droplet, Zap, Target, Activity, Shield } from 'lucide-react';
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+
+const formSchema = z.object({
+  saturatedFat: z.number({ invalid_type_error: 'Enter saturated fat' }).min(0).max(100),
+  monounsaturatedFat: z.number({ invalid_type_error: 'Enter monounsaturated fat' }).min(0).max(100),
+  polyunsaturatedFat: z.number({ invalid_type_error: 'Enter polyunsaturated fat' }).min(0).max(100),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+type ResultPayload = {
+  saturatedFat: number;
+  monounsaturatedFat: number;
+  polyunsaturatedFat: number;
+  totalFat: number;
+  sfaPercent: number;
+  mufaPercent: number;
+  pufaPercent: number;
+  qualityScore: number;
+  status: 'optimal' | 'good' | 'moderate' | 'low';
+  interpretation: string;
+  recommendations: string[];
+  plan: { label: string; detail: string }[];
+};
+
+const steps = [
+  'Enter saturated fat (grams) from food label or tracking.',
+  'Enter monounsaturated fat (grams) from food label or tracking.',
+  'Enter polyunsaturated fat (grams) from food label or tracking.',
+  'Review fat quality score, SFA/MUFA/PUFA ratios, and recommendations.',
+];
+
+const faqs = [
+  {
+    question: 'What are the different types of fat?',
+    answer:
+      'Fats are classified as saturated (SFA), monounsaturated (MUFA), and polyunsaturated (PUFA). Each type has different health effects. A balanced intake of MUFA and PUFA with limited SFA is generally recommended.',
+  },
+  {
+    question: 'What is saturated fat?',
+    answer:
+      'Saturated fat (SFA) is found in animal products, tropical oils, and some processed foods. High intake is associated with increased cardiovascular risk. Recommendations suggest limiting SFA to &lt;10% of total calories.',
+  },
+  {
+    question: 'What is monounsaturated fat?',
+    answer:
+      'Monounsaturated fat (MUFA) is found in olive oil, avocados, nuts, and seeds. MUFA is associated with cardiovascular benefits and is considered a healthy fat. It should be a primary fat source.',
+  },
+  {
+    question: 'What is polyunsaturated fat?',
+    answer:
+      'Polyunsaturated fat (PUFA) includes omega-3 and omega-6 fatty acids found in fish, nuts, seeds, and vegetable oils. PUFA is essential and associated with cardiovascular and brain health benefits.',
+  },
+  {
+    question: 'What is a good fat quality score?',
+    answer:
+      'A good fat quality score reflects higher proportions of MUFA and PUFA relative to SFA. Optimal distribution: SFA &lt;30%, MUFA 40-50%, PUFA 20-30% of total fat. Higher scores indicate better fat quality.',
+  },
+  {
+    question: 'How does fat quality affect health?',
+    answer:
+      'Fat quality significantly affects cardiovascular health, inflammation, and overall well-being. Higher MUFA and PUFA intake with limited SFA supports better cardiovascular outcomes and metabolic health.',
+  },
+  {
+    question: 'What are sources of healthy fats?',
+    answer:
+      'Healthy fat sources (high MUFA/PUFA) include olive oil, avocados, nuts, seeds, fatty fish, and vegetable oils. Limit sources high in SFA like red meat, butter, and processed foods.',
+  },
+  {
+    question: 'How can I improve fat quality?',
+    answer:
+      'Improve fat quality by choosing MUFA and PUFA sources (olive oil, nuts, fish) over high-SFA sources (butter, red meat, processed foods). Aim for a balanced fat profile with limited SFA.',
+  },
+  {
+    question: 'What about trans fats?',
+    answer:
+      'Trans fats should be avoided entirely. They are associated with increased cardiovascular risk. Check labels and avoid partially hydrogenated oils, which contain trans fats.',
+  },
+  {
+    question: 'When should I consult a healthcare provider?',
+    answer:
+      'Consult a healthcare provider or registered dietitian if you have cardiovascular concerns, need personalized fat intake guidance, or want to optimize your fat quality for specific health goals.',
+  },
+];
+
+const relatedCalculators = [
+  {
+    name: 'Meal Calorie Breakdown Calculator',
+    slug: 'meal-calorie-breakdown-calculator',
+    description: 'Break down meal fats alongside quality assessment.',
+  },
+  {
+    name: 'Nutrient Density to Calorie Ratio Calculator',
+    slug: 'nutrient-density-to-calorie-ratio-calculator',
+    description: 'Assess nutritional quality comprehensively.',
+  },
+  {
+    name: 'Satiety Index Calculator',
+    slug: 'satiety-index-calculator',
+    description: 'Evaluate satiety alongside fat quality.',
+  },
+  {
+    name: 'Caloric Density vs Volume Calculator',
+    slug: 'caloric-density-vs-volume-calculator',
+    description: 'Assess caloric density of fat sources.',
+  },
+];
+
+const baseUrl = 'https://mycalculating.com/category/health-fitness/fat-quality-score-sfa-mufa-pufa-ratio-calculator';
+
+const schemaMarkup = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 3, name: 'Fat Quality Score (SFA/MUFA/PUFA ratio) Calculator', item: baseUrl },
+      ],
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Fat Quality Score (SFA/MUFA/PUFA ratio) Calculator',
+      applicationCategory: 'Calculator',
+      operatingSystem: 'Web Browser',
+      description: 'Calculate fat quality score from saturated fat, monounsaturated fat, and polyunsaturated fat.',
+      url: baseUrl,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+  ],
+};
+
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+
+const calculateResult = (values: FormValues): ResultPayload => {
+  const saturatedFat = values.saturatedFat;
+  const monounsaturatedFat = values.monounsaturatedFat;
+  const polyunsaturatedFat = values.polyunsaturatedFat;
+  
+  const totalFat = saturatedFat + monounsaturatedFat + polyunsaturatedFat;
+  
+  // Calculate percentages
+  const sfaPercent = totalFat > 0 ? (saturatedFat / totalFat) * 100 : 0;
+  const mufaPercent = totalFat > 0 ? (monounsaturatedFat / totalFat) * 100 : 0;
+  const pufaPercent = totalFat > 0 ? (polyunsaturatedFat / totalFat) * 100 : 0;
+  
+  // Calculate quality score (0-100, higher = better)
+  // Optimal: SFA <30%, MUFA 40-50%, PUFA 20-30%
+  let qualityScore = 50;
+  
+  // SFA component (0-30 points, inverted)
+  if (sfaPercent < 20) {
+    qualityScore += 25; // Very low SFA (excellent)
+  } else if (sfaPercent < 30) {
+    qualityScore += 15; // Low SFA (good)
+  } else if (sfaPercent < 40) {
+    qualityScore -= 5; // Moderate SFA
+  } else if (sfaPercent < 50) {
+    qualityScore -= 20; // High SFA
+  } else {
+    qualityScore -= 35; // Very high SFA
+  }
+  
+  // MUFA component (0-35 points)
+  if (mufaPercent >= 40 && mufaPercent <= 55) {
+    qualityScore += 30; // Optimal range
+  } else if (mufaPercent >= 30 && mufaPercent < 40) {
+    qualityScore += 20; // Good range
+  } else if (mufaPercent >= 55 && mufaPercent <= 65) {
+    qualityScore += 25; // High but acceptable
+  } else if (mufaPercent < 20) {
+    qualityScore -= 20; // Too low
+  } else {
+    qualityScore += 10; // Moderate
+  }
+  
+  // PUFA component (0-35 points)
+  if (pufaPercent >= 20 && pufaPercent <= 35) {
+    qualityScore += 30; // Optimal range
+  } else if (pufaPercent >= 15 && pufaPercent < 20) {
+    qualityScore += 20; // Good range
+  } else if (pufaPercent >= 35 && pufaPercent <= 45) {
+    qualityScore += 25; // High but acceptable
+  } else if (pufaPercent < 10) {
+    qualityScore -= 15; // Too low
+  } else {
+    qualityScore += 10; // Moderate
+  }
+  
+  qualityScore = clamp(qualityScore, 0, 100);
+
+  let status: ResultPayload['status'] = 'optimal';
+  let interpretation = 'Your fat quality score is optimal. This fat profile has good balance of MUFA and PUFA with limited SFA, supporting cardiovascular health.';
+
+  if (qualityScore < 40 || sfaPercent > 50 || mufaPercent < 15 || pufaPercent < 10) {
+    status = 'low';
+    interpretation = 'Your fat quality score is low. This fat profile has high SFA or low MUFA/PUFA, which may negatively impact cardiovascular health. Consider choosing healthier fat sources.';
+  } else if (qualityScore < 60 || sfaPercent > 40 || mufaPercent < 25 || pufaPercent < 15) {
+    status = 'moderate';
+    interpretation = 'Your fat quality score is moderate. Consider increasing MUFA and PUFA while reducing SFA to improve fat quality and support cardiovascular health.';
+  } else if (qualityScore < 80) {
+    status = 'good';
+    interpretation = 'Your fat quality score is good. Continue choosing fat sources with good MUFA and PUFA content to maintain optimal fat quality.';
+  }
+
+  const recommendations = [
+    'Choose MUFA-rich sources: include olive oil, avocados, nuts, and seeds as primary fat sources. These provide monounsaturated fats associated with cardiovascular benefits.',
+    'Include PUFA sources: consume fatty fish, nuts, seeds, and vegetable oils to provide essential polyunsaturated fats (omega-3 and omega-6) for cardiovascular and brain health.',
+    'Limit SFA intake: reduce saturated fat from red meat, butter, and processed foods. Aim for SFA to be less than 30% of total fat intake.',
+  ];
+  if (status === 'low' || status === 'moderate') {
+    recommendations.push('Significantly improve fat quality by replacing high-SFA sources with MUFA and PUFA sources. This supports better cardiovascular health and metabolic outcomes.');
+  }
+  if (sfaPercent > 40) {
+    recommendations.push('Reduce saturated fat intake. High SFA is associated with increased cardiovascular risk. Replace with MUFA and PUFA sources like olive oil, nuts, and fish.');
+  }
+  if (mufaPercent < 25 || pufaPercent < 15) {
+    recommendations.push('Increase MUFA and PUFA intake. These healthy fats support cardiovascular health. Include olive oil, avocados, nuts, seeds, and fatty fish in your diet.');
+  }
+
+  const plan = [
+    { label: 'This Week', detail: 'Calculate fat quality scores for your foods and meals. Assess SFA/MUFA/PUFA ratios and identify opportunities to improve fat quality.' },
+    { label: 'This Month', detail: 'Optimize fat sources: increase MUFA and PUFA intake (olive oil, nuts, fish), reduce SFA sources (red meat, butter), and improve overall fat quality.' },
+    { label: 'Ongoing', detail: 'Monitor fat quality through regular food assessment. Maintain a diet with balanced MUFA and PUFA and limited SFA to support optimal cardiovascular health.' },
+  ];
+
+  return { saturatedFat, monounsaturatedFat, polyunsaturatedFat, totalFat, sfaPercent, mufaPercent, pufaPercent, qualityScore, status, interpretation, recommendations, plan };
+};
+
+export default function FatQualityScoreSfaMufaPufaRatioCalculator() {
+  const [result, setResult] = useState<ResultPayload | null>(null);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      saturatedFat: undefined,
+      monounsaturatedFat: undefined,
+      polyunsaturatedFat: undefined,
+    },
+  });
+
+  return (
+    <div className="space-y-8">
+      <Script id="fat-quality-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Droplet className="h-5 w-5" />
+            Fat Quality Score (SFA/MUFA/PUFA ratio) Calculator
+          </CardTitle>
+          <CardDescription>Calculate fat quality score from saturated fat, monounsaturated fat, and polyunsaturated fat.</CardDescription>
+        </CardHeader>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Input your fat data</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit((values) => setResult(calculateResult(values)))} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="saturatedFat"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Saturated fat (grams)</FormLabel>
+                      <FormControl>
+                        <Input type="number" step="0.1" placeholder="e.g., 5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="monounsaturatedFat"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Monounsaturated fat (grams)</FormLabel>
+                      <FormControl>
+                        <Input type="number" step="0.1" placeholder="e.g., 8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="polyunsaturatedFat"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Polyunsaturated fat (grams)</FormLabel>
+                      <FormControl>
+                        <Input type="number" step="0.1" placeholder="e.g., 4" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">
+                Calculate fat quality score
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+
+      {result && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Zap className="h-5 w-5 text-primary" />
+              Interactive results
+            </CardTitle>
+            <CardDescription>See fat quality score, SFA/MUFA/PUFA ratios, and recommendations.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Total fat</p>
+                <p className="text-2xl font-semibold text-primary">{result.totalFat.toFixed(1)}g</p>
+                <p className="text-xs text-muted-foreground">All types</p>
+              </div>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">SFA</p>
+                <p className="text-2xl font-semibold text-primary">{result.sfaPercent.toFixed(1)}%</p>
+                <p className="text-xs text-muted-foreground">Saturated</p>
+              </div>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">MUFA</p>
+                <p className="text-2xl font-semibold text-primary">{result.mufaPercent.toFixed(1)}%</p>
+                <p className="text-xs text-muted-foreground">Monounsaturated</p>
+              </div>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Status</p>
+                <p className="text-2xl font-semibold text-primary capitalize">{result.status}</p>
+                <p className="text-xs text-muted-foreground">{result.interpretation}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Target className="h-4 w-4" />
+                    Recommendations
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
+                    {result.recommendations.map((rec) => (
+                      <li key={rec}>{rec}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Activity className="h-4 w-4" />
+                    Action plan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    {result.plan.map((step) => (
+                      <li key={step.label}>
+                        <span className="font-semibold">{step.label}:</span> {step.detail}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Formula
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground space-y-2">
+          <p>
+            <strong>Total fat</strong> = saturated fat + monounsaturated fat + polyunsaturated fat (grams).
+          </p>
+          <p>
+            <strong>Fat percentages</strong> = (each fat type / total fat) × 100. Optimal: SFA &lt;30%, MUFA 40-50%, PUFA 20-30%.
+          </p>
+          <p>
+            <strong>Quality score</strong> = calculated from SFA (0-30 points, inverted), MUFA (0-35 points), and PUFA (0-35 points). Higher scores indicate better fat quality.
+          </p>
+          <p>Fat quality score reflects the balance of fat types. Higher MUFA and PUFA with limited SFA supports better cardiovascular health and metabolic outcomes.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Steps</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+            {steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Additional calculations</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {result ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Quality score</p>
+                <p className="text-xl font-semibold text-primary">{result.qualityScore.toFixed(0)}</p>
+                <p className="text-xs text-muted-foreground">Out of 100</p>
+              </div>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">PUFA</p>
+                <p className="text-xl font-semibold text-primary">{result.pufaPercent.toFixed(1)}%</p>
+                <p className="text-xs text-muted-foreground">Polyunsaturated</p>
+              </div>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">MUFA:PUFA ratio</p>
+                <p className="text-xl font-semibold text-primary">
+                  {result.pufaPercent > 0 ? (result.mufaPercent / result.pufaPercent).toFixed(2) : 'N/A'}:1
+                </p>
+                <p className="text-xs text-muted-foreground">Ratio</p>
+              </div>
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">Enter your fat data to see additional insights.</p>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Related calculators</CardTitle>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {relatedCalculators.map((calc) => (
+            <div key={calc.slug} className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href={`/category/health-fitness/${calc.slug}`} className="text-primary hover:underline">
+                  {calc.name}
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">{calc.description}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Complete guide snapshot</CardTitle>
+        </CardHeader>
+        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
+          <p>Fat quality score assesses the balance of saturated (SFA), monounsaturated (MUFA), and polyunsaturated (PUFA) fats. Optimal distribution: SFA &lt;30%, MUFA 40-50%, PUFA 20-30%. Higher MUFA and PUFA with limited SFA supports cardiovascular health.</p>
+          <p>Use this calculator to calculate fat quality score from saturated fat, monounsaturated fat, and polyunsaturated fat.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>FAQs</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {faqs.map((faq) => (
+            <div key={faq.question}>
+              <h4 className="font-semibold">{faq.question}</h4>
+              <p className="text-sm text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>This tool calculates fat quality score from saturated fat, monounsaturated fat, and polyunsaturated fat.</p>
+          <p>Outputs include saturated fat, monounsaturated fat, polyunsaturated fat, total fat, percentages, quality score, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
