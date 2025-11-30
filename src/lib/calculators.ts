@@ -5253,6 +5253,60 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate hydration needs from body weight, temperature, activity level, and humidity to assess daily water requirements.'
   },
   {
+    id: 5072,
+    name: 'Diet Break Refeed Day Planner Calculator',
+    description: 'Plan strategic refeed days and diet breaks to optimize fat loss while preventing metabolic adaptation.',
+    slug: 'diet-break-refeed-day-planner-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Diet Break Refeed Day Planner Calculator',
+    metaDescription: 'Plan strategic refeed days and diet breaks to optimize fat loss while preventing metabolic adaptation and restoring hormones.'
+  },
+  {
+    id: 5073,
+    name: 'Cheat Day Impact on Weekly Deficit Calculator',
+    description: 'Calculate how cheat days impact your weekly calorie deficit and fat loss progress.',
+    slug: 'cheat-day-impact-on-weekly-deficit-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Cheat Day Impact on Weekly Deficit Calculator',
+    metaDescription: 'Calculate how cheat days impact your weekly calorie deficit and fat loss progress to optimize diet adherence.'
+  },
+  {
+    id: 5074,
+    name: 'Adaptive Thermogenesis Offset Calculator',
+    description: 'Calculate metabolic adaptation and determine refeed calorie offsets to restore metabolic rate.',
+    slug: 'adaptive-thermogenesis-offset-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Adaptive Thermogenesis Offset Calculator',
+    metaDescription: 'Calculate metabolic adaptation and determine refeed calorie offsets to restore metabolic rate during extended dieting.'
+  },
+  {
+    id: 5075,
+    name: 'Sweat Rate Calculator (Athletic Use)',
+    description: 'Calculate sweat rate during athletic exercise to optimize hydration strategies and prevent dehydration.',
+    slug: 'sweat-rate-calculator-athletic-use',
+    category: 'health-fitness',
+    metaTitle: 'Sweat Rate Calculator (Athletic Use)',
+    metaDescription: 'Calculate sweat rate during athletic exercise to optimize hydration strategies and prevent dehydration for better performance.'
+  },
+  {
+    id: 5076,
+    name: 'Step-to-Heart Rate Efficiency Calculator',
+    description: 'Calculate cardiovascular efficiency by comparing steps to heart rate response during walking activities.',
+    slug: 'step-to-heart-rate-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Step-to-Heart Rate Efficiency Calculator',
+    metaDescription: 'Calculate cardiovascular efficiency by comparing steps to heart rate response during walking activities to assess fitness.'
+  },
+  {
+    id: 5077,
+    name: 'Microbreak Frequency Calculator for Desk Jobs',
+    description: 'Calculate optimal microbreak frequency for desk workers to prevent musculoskeletal disorders and maintain health.',
+    slug: 'microbreak-frequency-calculator-for-desk-jobs',
+    category: 'health-fitness',
+    metaTitle: 'Microbreak Frequency Calculator for Desk Jobs',
+    metaDescription: 'Calculate optimal microbreak frequency for desk workers to prevent musculoskeletal disorders and maintain health and productivity.'
+  },
+  {
     id: 5049,
     name: 'Chromium Daily Need Estimator',
     description: 'Estimate chromium daily needs from age, gender, and chromium intake.',
