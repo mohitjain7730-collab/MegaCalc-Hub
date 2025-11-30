@@ -467,15 +467,159 @@ export default function ManganeseRequirementCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Manganese is an essential trace mineral that functions as a cofactor for enzymes involved in metabolism, bone formation, and antioxidant function. Recommended intake: Men 19+: 2.3 mg/day, Women 19+: 1.8 mg/day. Upper limit: 11 mg/day.</p>
-          <p>Use this calculator to calculate manganese requirements from age, gender, and manganese intake.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Manganese: Daily Requirements, Role in Metabolism, and Toxicity" />
+    <meta itemProp="description" content="An in-depth, authoritative guide on the essential trace mineral Manganese (Mn), detailing its function as an enzyme cofactor, official Adequate Intake (AI) levels, and the risks of deficiency and neurological toxicity (Manganism)." />
+    <meta itemProp="keywords" content="manganese requirement calculator, manganese Adequate Intake AI, manganese role in metabolism, manganese superoxide dismutase, manganese deficiency symptoms, Manganism toxicity, manganese sources tea" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-01" />
+    <meta itemProp="url" content="/definitive-manganese-requirement-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Manganese: Daily Requirements, Function, and Toxicity Risk</h1>
+    <p className="text-lg italic text-gray-700">A detailed look at the essential trace mineral manganese (Mn), its critical role as an enzyme cofactor, and the necessary intake to avoid deficiency or neurological harm.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#function" className="hover:underline">The Essential Role of Manganese as an Enzyme Cofactor</a></li>
+        <li><a href="#ai" className="hover:underline">Official Adequate Intake (AI) Levels</a></li>
+        <li><a href="#sources" className="hover:underline">Dietary Sources and Bioavailability</a></li>
+        <li><a href="#deficiency" className="hover:underline">Manganese Deficiency: Symptoms and Risk</a></li>
+        <li><a href="#toxicity" className="hover:underline">Manganese Toxicity: Neurological Risk (Manganism)</a></li>
+    </ul>
+<hr />
+
+    {/* THE ESSENTIAL ROLE OF MANGANESE AS AN ENZYME COFACTOR */}
+    <h2 id="function" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Essential Role of Manganese as an Enzyme Cofactor</h2>
+    <p>Manganese (Mn) is a vital trace element that is not synthesized by the body and must be obtained through diet. Its primary function is to serve as an <b>essential cofactor</b>, meaning it is required by various enzymes to catalyze crucial metabolic reactions.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Antioxidant Defense (Mn-SOD)</h3>
+    <p>One of the most important roles of manganese is its function as a central component of the enzyme **Manganese Superoxide Dismutase (Mn-SOD)**. This enzyme is primarily found in the mitochondria (the cell's powerhouses) and is the most powerful antioxidant defense mechanism against highly reactive oxygen species (free radicals) generated during energy production (oxidative phosphorylation). Mn-SOD converts the superoxide radical into less damaging compounds, thereby protecting cellular integrity.</p>
+    
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Metabolism and Bone Formation</h3>
+    <p>Manganese-dependent enzymes are also central to the metabolism of all three macronutrients and the development of connective tissue:</p>
+    <ul>
+        <li><b>Carbohydrate Metabolism:</b> Manganese is required for <b>pyruvate carboxylase</b>, an enzyme critical in gluconeogenesis (the creation of glucose from non-carbohydrate sources), which is essential for maintaining stable blood sugar.</li>
+        <li><b>Amino Acid Metabolism:</b> It is a cofactor for <b>arginase</b>, which is necessary for the proper functioning of the urea cycle, removing toxic ammonia from the body.</li>
+        <li><b>Bone and Cartilage:</b> Manganese is essential for enzymes involved in the formation of **cartilage and bone matrix**. A deficiency can lead to improper bone growth and density.</li>
+    </ul>
+
+<hr />
+
+    {/* OFFICIAL ADEQUATE INTAKE (AI) LEVELS */}
+    <h2 id="ai" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Official Adequate Intake (AI) Levels</h2>
+    <p>The <b>Food and Nutrition Board (FNB)</b> of the <b>National Academies of Sciences, Engineering, and Medicine (NASEM)</b> established **Adequate Intake (AI)** levels for manganese, rather than a Recommended Dietary Allowance (RDA). This is due to insufficient data to establish an Estimated Average Requirement (EAR).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Manganese AI and Upper Limit (UL) in Milligrams (mg) per Day</h3>
+    <p>The AI is set based on observed average manganese intake in healthy populations. The Upper Limit (UL) is based on the prevention of neurological effects (Manganism) observed from chronic high intake:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
+        <table className="w-full text-left border-collapse">
+            <thead>
+                <tr>
+                    <th className="border-b p-2 font-bold">Life Stage Group</th>
+                    <th className="border-b p-2 font-bold">AI (mg/day)</th>
+                    <th className="border-b p-2 font-bold">UL (mg/day)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td className="border-b p-2">Adult Men (19+ years)</td>
+                    <td className="border-b p-2">2.3 mg</td>
+                    <td className="border-b p-2">11 mg</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Adult Women (19+ years)</td>
+                    <td className="border-b p-2">1.8 mg</td>
+                    <td className="border-b p-2">11 mg</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Pregnancy (all ages)</td>
+                    <td className="border-b p-2">2.0 mg</td>
+                    <td className="border-b p-2">11 mg</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Lactation (all ages)</td>
+                    <td className="border-b p-2">2.6 mg</td>
+                    <td className="border-b p-2">11 mg</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<hr />
+
+    {/* DIETARY SOURCES AND BIOAVAILABILITY */}
+    <h2 id="sources" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dietary Sources and Bioavailability</h2>
+    <p>Manganese intake varies widely based on dietary habits, as the mineral is concentrated in plant-based foods, particularly those with high fiber content. The absorption rate is relatively low and tightly regulated.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Key Food Sources of Manganese</h3>
+    <p>The highest dietary concentrations of manganese are found in:</p>
+    <ul>
+        <li><b>Whole Grains:</b> Brown rice, oatmeal, and whole-wheat bread.</li>
+        <li><b>Nuts and Seeds:</b> Pecans, almonds, hazelnuts, and macadamia nuts.</li>
+        <li><b>Legumes:</b> Lentils and chickpeas.</li>
+        <li><b>Beverages:</b> **Tea** (black and green) is a surprisingly rich source, as manganese is readily absorbed from tea leaves into the hot water.</li>
+        <li><b>Spices:</b> Ground cloves, turmeric, and cardamom.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Absorption and Interactions</h3>
+    <p>Manganese absorption in the gut is generally poor, typically ranging from 3% to 10% of intake, and decreases as intake increases. Absorption is competitively inhibited by other divalent cations:</p>
+    <ul>
+        <li><b>Iron:</b> High-dose iron supplementation can decrease manganese absorption, and vice versa.</li>
+        <li><b>Calcium and Phosphorus:</b> High intake of these minerals may also slightly reduce manganese absorption.</li>
+    </ul>
+    <p>Infants often have higher absorption rates, which, combined with underdeveloped excretion mechanisms, puts them at a greater risk of toxicity from highly concentrated formula.</p>
+
+<hr />
+
+    {/* MANGANESE DEFICIENCY: SYMPTOMS AND RISK */}
+    <h2 id="deficiency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Manganese Deficiency: Symptoms and Risk</h2>
+    <p>Clinical manganese deficiency is extremely rare in humans, as the body maintains tightly controlled homeostatic mechanisms and the mineral is widely distributed in plant foods. Most cases of deficiency have been experimentally induced or occurred in highly restrictive clinical settings.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Observed Clinical Symptoms</h3>
+    <p>Symptoms observed in controlled or clinical deficiency cases include:</p>
+    <ul>
+        <li><b>Impaired Growth:</b> Seen in experimental deficiency in young children.</li>
+        <li><b>Dermatological Issues:</b> A transient skin rash and discoloration.</li>
+        <li><b>Biochemical Changes:</b> Low levels of serum cholesterol and altered carbohydrate metabolism.</li>
+        <li><b>Impaired Fertility:</b> Due to disrupted hormone production.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">High-Risk Groups</h3>
+    <p>While general risk is low, individuals who rely on **Total Parenteral Nutrition (TPN)** that lacks manganese, or those consuming diets severely limited in whole grains, nuts, and vegetables, may be at risk for marginal deficiency.</p>
+
+<hr />
+
+    {/* MANGANESE TOXICITY: NEUROLOGICAL RISK (MANGANISM) */}
+    <h2 id="toxicity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Manganese Toxicity: Neurological Risk (Manganism)</h2>
+    <p>Manganese toxicity is a much greater concern than deficiency. The body is highly efficient at regulating manganese through excretion in the bile, but exposure to excessive amounts—especially inhalation—can overwhelm these mechanisms, leading to severe, irreversible neurological damage.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Manganism: Occupational Exposure</h3>
+    <p>The most common and dangerous form of toxicity is **Manganism**, which is typically seen in occupational settings, such as welders, miners, and smelters who inhale high concentrations of manganese dust over long periods. Inhaled manganese bypasses the tight regulatory control of the digestive system and is transported directly to the brain.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Symptoms of Manganism</h3>
+    <p>Manganism leads to a syndrome with symptoms closely mimicking **Parkinson's disease** and other neurodegenerative disorders:</p>
+    <ul>
+        <li><b>Psychiatric Symptoms:</b> Irritability, aggression, and psychotic behavior (sometimes termed "manganese madness").</li>
+        <li><b>Movement Disorders:</b> Tremors, muscle rigidity, slow movements (bradykinesia), and difficulty walking (ataxia).</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Non-Occupational Toxicity Risk</h3>
+    <p>Toxicity from dietary or water sources is rare but can occur in two primary situations:</p>
+    <ul>
+        <li><b>Contaminated Well Water:</b> Chronic consumption of well water with very high, unregulated manganese concentrations.</li>
+        <li><b>Liver Dysfunction:</b> Since manganese is excreted primarily via bile, individuals with chronic liver disease (cirrhosis) have impaired excretion and are at a significantly higher risk of accumulating manganese in the brain.</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Manganese is an essential trace element crucial for **antioxidant defense (Mn-SOD)**, bone health, and metabolic function, with an **Adequate Intake (AI)** for adults set at 1.8 to 2.3 mg/day. While deficiency is uncommon, toxicity poses a significant neurological risk, particularly from occupational inhalation exposure, leading to **Manganism**. Consumption of a diverse diet rich in whole grains and nuts generally ensures adequate intake, while adherence to the **11 mg/day Upper Limit** is critical for preventing adverse health effects.</p>
+</section>
 
       <Card>
         <CardHeader>

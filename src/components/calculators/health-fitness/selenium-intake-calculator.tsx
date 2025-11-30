@@ -456,15 +456,154 @@ export default function SeleniumIntakeCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Selenium is an essential trace mineral that functions as an antioxidant and supports thyroid function. Recommended daily intake: 55 mcg/day for adults. Upper limit: 400 mcg/day. Sources include seafood, meat, eggs, and Brazil nuts (very high, consume in moderation).</p>
-          <p>Use this calculator to calculate selenium intake from selenium amount, age, and gender.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Selenium Intake: RDAs, Antioxidant Role, and Deficiency Risks" />
+    <meta itemProp="description" content="An in-depth, authoritative guide on the essential trace element Selenium (Se), detailing its critical function in selenoproteins like Glutathione Peroxidase, official RDAs, and the dangers of deficiency (Keshan disease) and toxicity (Selenosis)." />
+    <meta itemProp="keywords" content="selenium intake calculator, selenium RDA NIH, selenium antioxidant role, selenoproteins function, Keshan disease risk, selenium toxicity symptoms, selenium sources Brazil nuts" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-02" />
+    <meta itemProp="url" content="/definitive-selenium-intake-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Selenium Intake: Essential Role, RDAs, and Deficiency Risks</h1>
+    <p className="text-lg italic text-gray-700">A detailed exploration of the essential trace element selenium (Se), its antioxidant and immune functions, and the required intake levels established by health authorities.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#function" className="hover:underline">The Core Role of Selenium: Selenoproteins and Antioxidants</a></li>
+        <li><a href="#rda" className="hover:underline">Official Recommended Dietary Allowance (RDA)</a></li>
+        <li><a href="#sources" className="hover:underline">Dietary Sources and Geographic Variability</a></li>
+        <li><a href="#deficiency" className="hover:underline">Selenium Deficiency: Diseases and Risk Factors</a></li>
+        <li><a href="#toxicity" className="hover:underline">Selenium Toxicity (Selenosis) and Upper Limit (UL)</a></li>
+    </ul>
+<hr />
+
+    {/* THE CORE ROLE OF SELENIUM: SELENOPROTEINS AND ANTIOXIDANTS */}
+    <h2 id="function" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Core Role of Selenium: Selenoproteins and Antioxidants</h2>
+    <p>Selenium (Se) is an essential trace element that is incorporated into the body's proteins in the form of **selenocysteine**, often called the "21st amino acid." The proteins that contain selenocysteine are known as **selenoproteins**, and they are responsible for mediating all of selenium's major biological functions.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Glutathione Peroxidase (GPX) and Antioxidant Defense</h3>
+    <p>The most well-known function of selenium is its role as a cofactor in the enzyme **Glutathione Peroxidase (GPX)**. GPX is a critical component of the body’s primary antioxidant defense system. It works to neutralize harmful reactive oxygen species (free radicals), particularly by converting toxic hydrogen peroxide into water. By protecting cells from oxidative stress, selenium supports the health of all tissues, including the heart and immune system.</p>
+    
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Thyroid Hormone Metabolism</h3>
+    <p>Selenium is vital for regulating thyroid hormone levels. The enzyme <b>iodothyronine deiodinase</b>, a type of selenoprotein, catalyzes the conversion of the inactive thyroid hormone T4 (thyroxine) into the active hormone T3 (triiodothyronine). Therefore, selenium deficiency can impair the activation of thyroid hormones, exacerbating the effects of iodine deficiency.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Immune and Reproductive Functions</h3>
+    <p>Selenium also plays key roles in:</p>
+    <ul>
+        <li><b>Immune Response:</b> It enhances the proliferation of immune cells (T-cells) and the production of antibodies, contributing to a robust antiviral and antibacterial defense.</li>
+        <li><b>DNA Repair:</b> Certain selenoproteins are involved in DNA repair, potentially offering protection against certain types of cancer and cellular aging.</li>
+        <li><b>Reproduction:</b> Selenium is required for sperm motility and is essential for the healthy development of the fetus.</li>
+    </ul>
+
+<hr />
+
+    {/* OFFICIAL RECOMMENDED DIETARY ALLOWANCE (RDA) */}
+    <h2 id="rda" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Official Recommended Dietary Allowance (RDA)</h2>
+    <p>The <b>National Institutes of Health (NIH)</b> and the <b>Food and Nutrition Board (FNB)</b> set the RDA for selenium based on the amount needed to maximize the activity of the major selenoprotein, Glutathione Peroxidase, in the plasma.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Selenium RDA and Upper Limit (UL) in Micrograms (mcg) per Day</h3>
+    <p>Unlike some minerals, selenium's RDA is relatively low, and the difference between the RDA and the Tolerable Upper Intake Level (UL) is narrow, highlighting the potential for toxicity at higher doses:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
+        <table className="w-full text-left border-collapse">
+            <thead>
+                <tr>
+                    <th className="border-b p-2 font-bold">Life Stage Group</th>
+                    <th className="border-b p-2 font-bold">RDA (mcg/day)</th>
+                    <th className="border-b p-2 font-bold">UL (mcg/day)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td className="border-b p-2">Adults (19+ years)</td>
+                    <td className="border-b p-2">55 mcg</td>
+                    <td className="border-b p-2">400 mcg</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Pregnancy (all ages)</td>
+                    <td className="border-b p-2">60 mcg</td>
+                    <td className="border-b p-2">400 mcg</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Lactation (all ages)</td>
+                    <td className="border-b p-2">70 mcg</td>
+                    <td className="border-b p-2">400 mcg</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Children (4-8 years)</td>
+                    <td className="border-b p-2">30 mcg</td>
+                    <td className="border-b p-2">150 mcg</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>The UL of 400 mcg/day for adults is set primarily to prevent the signs of chronic selenium toxicity, known as selenosis.</p>
+
+<hr />
+
+    {/* DIETARY SOURCES AND GEOGRAPHIC VARIABILITY */}
+    <h2 id="sources" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dietary Sources and Geographic Variability</h2>
+    <p>Unlike minerals sourced primarily from the body (e.g., calcium), the selenium content of plant foods is highly dependent on the **selenium concentration in the soil** where they were grown. This leads to vast geographic variability in dietary intake.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Key Food Sources of Selenium</h3>
+    <p>Foods sourced from selenium-rich soils provide high concentrations. Reliable sources include:</p>
+    <ul>
+        <li><b>Brazil Nuts:</b> Widely considered the single richest dietary source; a single Brazil nut can contain well over the adult RDA (50 to 100 mcg or more).</li>
+        <li><b>Seafood:</b> Fish (tuna, cod, halibut) and shellfish are excellent and consistent sources.</li>
+        <li><b>Organ Meats:</b> Kidney and liver are highly concentrated sources.</li>
+        <li><b>Meat and Poultry:</b> Beef, turkey, and chicken provide significant amounts.</li>
+        <li><b>Grains:</b> Cereals and bread are important sources in high-selenium regions.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Risk Factors for Low Intake</h3>
+    <p>Populations living in regions with **selenium-poor soils** (e.g., parts of China, Finland, and some areas of the U.S. Pacific Northwest) may have lower-than-optimal dietary intake. Furthermore, relying heavily on locally grown produce in these areas increases the risk of marginal deficiency, even in developed countries.</p>
+
+<hr />
+
+    {/* SELENIUM DEFICIENCY: DISEASES AND RISK FACTORS */}
+    <h2 id="deficiency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Selenium Deficiency: Diseases and Risk Factors</h2>
+    <p>While marginal deficiency is common in certain geographic areas, severe, clinical deficiency is rare and often linked to profound health crises, primarily affecting the heart and joints.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Endemic Deficiency Diseases</h3>
+    <p>Severe deficiency is the primary cause of two distinct, endemic diseases historically found in low-selenium regions of China:</p>
+    <ul>
+        <li><b>Keshan Disease:</b> A cardiomyopathy (disease of the heart muscle) that causes heart enlargement, poor heart function, and ultimately, heart failure. The severity of the disease is often linked to the presence of a co-occurring viral infection, suggesting a compromised immune system due to low selenium status.</li>
+        <li><b>Kashin-Beck Disease:</b> A chronic, debilitating joint and bone disease that primarily affects children and adolescents, leading to joint deformation and stunted growth.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Other Deficiency Risk Groups</h3>
+    <ul>
+        <li><b>Patients on TPN:</b> Individuals receiving long-term intravenous feeding (TPN) without selenium supplementation are at risk.</li>
+        <li><b>HIV/AIDS Patients:</b> Chronic illnesses that cause persistent oxidative stress and malabsorption often lead to lower selenium levels.</li>
+        <li><b>Severe Malabsorption:</b> Conditions like Crohn's disease or chronic diarrhea can inhibit absorption.</li>
+    </ul>
+
+<hr />
+
+    {/* SELENIUM TOXICITY (SELENOSIS) AND UPPER LIMIT (UL) */}
+    <h2 id="toxicity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Selenium Toxicity (Selenosis) and Upper Limit (UL)</h2>
+    <p>Due to the narrow window between the RDA (55 mcg) and the UL (400 mcg), chronic excessive intake—known as **selenosis**—is a real risk, typically caused by overuse of supplements or, less commonly, consumption of extremely high-selenium foods.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Symptoms of Selenosis</h3>
+    <p>Chronic consumption of selenium above the UL can lead to:</p>
+    <ul>
+        <li><b>Garlic Odor (Breath/Sweat):</b> Caused by the excretion of volatile selenium compounds like dimethyl selenide. This is often the earliest sign of toxicity.</li>
+        <li><b>Hair and Nail Changes:</b> Brittleness, loss of hair (alopecia), and discoloration or loss of fingernails.</li>
+        <li><b>Systemic Effects:</b> Fatigue, nausea, diarrhea, and in severe cases, neurological symptoms and liver damage.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Supplement Risk Management</h3>
+    <p>The greatest risk for exceeding the UL comes from concentrated sources like **Brazil nuts** (which vary widely but can contain 50-100 mcg per nut) and **dietary supplements**. Consumers must be aware that taking high-dose selenium supplements (often 200 mcg or more) in combination with a selenium-rich diet can easily push daily intake into the toxic range.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Selenium is a vital trace element whose primary role is performed by **selenoproteins**, essential for powerful **antioxidant defense** (GPX) and **thyroid hormone activation**. The adult **RDA is 55 mcg/day**, an amount easily achieved through a balanced diet including seafood, meat, and nuts. While severe deficiency leads to devastating diseases like **Keshan disease**, the narrow therapeutic window means chronic intake above the **400 mcg UL** can cause toxicity (selenosis), emphasizing the need for caution with supplementation and high-dose foods like Brazil nuts.</p>
+</section>
 
       <Card>
         <CardHeader>
