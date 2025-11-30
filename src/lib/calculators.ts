@@ -5307,6 +5307,60 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate optimal microbreak frequency for desk workers to prevent musculoskeletal disorders and maintain health and productivity.'
   },
   {
+    id: 5078,
+    name: 'Vitamin D Synthesis from Sunlight Estimator',
+    description: 'Estimate vitamin D synthesis from UV index, exposure time, skin type, and geographic factors.',
+    slug: 'vitamin-d-synthesis-from-sunlight-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Vitamin D Synthesis from Sunlight Estimator',
+    metaDescription: 'Estimate vitamin D synthesis from UV index, exposure time, skin type, and geographic factors to optimize sun exposure for vitamin D production.'
+  },
+  {
+    id: 5079,
+    name: 'Sleep Position Pressure Calculator',
+    description: 'Calculate pressure points and sleep position impact on sleep quality and musculoskeletal health.',
+    slug: 'sleep-position-pressure-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Position Pressure Calculator',
+    metaDescription: 'Calculate pressure points and sleep position impact on sleep quality and musculoskeletal health for better sleep and recovery.'
+  },
+  {
+    id: 5080,
+    name: 'Resting Recovery Day Estimator',
+    description: 'Estimate optimal resting recovery days based on training load, fatigue, and recovery factors.',
+    slug: 'resting-recovery-day-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Resting Recovery Day Estimator',
+    metaDescription: 'Estimate optimal resting recovery days based on training load, fatigue, and recovery factors to optimize performance and prevent overtraining.'
+  },
+  {
+    id: 5081,
+    name: 'Caffeine Half-Life Calculator (time-based)',
+    description: 'Calculate caffeine half-life and clearance time based on consumption time, amount, and individual factors.',
+    slug: 'caffeine-half-life-calculator-time-based',
+    category: 'health-fitness',
+    metaTitle: 'Caffeine Half-Life Calculator (time-based)',
+    metaDescription: 'Calculate caffeine half-life and clearance time based on consumption time, amount, and individual factors to optimize sleep and energy management.'
+  },
+  {
+    id: 5082,
+    name: 'Work Stress Fatigue Index',
+    description: 'Calculate work stress fatigue index from work hours, stress level, sleep quality, and recovery factors.',
+    slug: 'work-stress-fatigue-index',
+    category: 'health-fitness',
+    metaTitle: 'Work Stress Fatigue Index',
+    metaDescription: 'Calculate work stress fatigue index from work hours, stress level, sleep quality, and recovery factors to assess and manage work-related fatigue.'
+  },
+  {
+    id: 5083,
+    name: 'Posture Score Calculator',
+    description: 'Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality.',
+    slug: 'posture-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Posture Score Calculator',
+    metaDescription: 'Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality to assess and improve postural health.'
+  },
+  {
     id: 5049,
     name: 'Chromium Daily Need Estimator',
     description: 'Estimate chromium daily needs from age, gender, and chromium intake.',
