@@ -436,15 +436,113 @@ export default function NetCarbsVsTotalCarbsCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Net carbs = total carbohydrates - dietary fiber - sugar alcohols. Net carbs better reflect blood sugar impact than total carbs, as fiber and sugar alcohols have minimal effects on blood sugar. This is useful for diabetes management and low-carb diets.</p>
-          <p>Use this calculator to calculate net carbs vs total carbs from total carbohydrates, dietary fiber, and optional sugar alcohols.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Net Carbs vs. Total Carbs: Formula, Fiber, and Glycemic Impact" />
+    <meta itemProp="description" content="An in-depth guide clarifying the difference between Total Carbs (FDA standard) and Net Carbs (used in keto/low-carb diets), explaining the formula, the role of dietary fiber and sugar alcohols, and their impact on blood sugar." />
+    <meta itemProp="keywords" content="net carbs vs total carbs calculator, how to calculate net carbs, what are net carbs, total carbohydrates definition, dietary fiber impact on blood sugar, sugar alcohols net carb count, low carb diet calculation" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-02" />
+    <meta itemProp="url" content="/definitive-net-carbs-total-carbs-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Carbs vs. Total Carbs: Formula, Fiber, and Glycemic Impact</h1>
+    <p className="text-lg italic text-gray-700">Understanding the key difference between digestible and indigestible carbohydrates and how the "Net Carbs" concept is used for managing blood sugar and metabolic health.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#total" className="hover:underline">Total Carbohydrates: The Official Definition (FDA)</a></li>
+        <li><a href="#net" className="hover:underline">Net Carbs Defined: The Indigestible Exclusion</a></li>
+        <li><a href="#formula" className="hover:underline">The Net Carb Calculation Formula</a></li>
+        <li><a href="#fiber" className="hover:underline">Component 1: Dietary Fiber and Indigestibility</a></li>
+        <li><a href="#alcohols" className="hover:underline">Component 2: Sugar Alcohols and Partial Absorption</a></li>
+        <li><a href="#diet" className="hover:underline">Importance in Low-Carb and Ketogenic Diets</a></li>
+    </ul>
+<hr />
+
+    {/* TOTAL CARBOHYDRATES: THE OFFICIAL DEFINITION (FDA) */}
+    <h2 id="total" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Total Carbohydrates: The Official Definition (FDA)</h2>
+    <p><b>Total Carbohydrates</b> is the official metric provided on the Nutrition Facts panel of all packaged foods, as mandated by the <b>U.S. Food and Drug Administration (FDA)</b> and equivalent international bodies. This number represents the sum of all carbohydrate sources found in a food item, regardless of whether the body can digest or absorb them.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Components of Total Carbs</h3>
+    <p>The total carbohydrate count includes all of the following:</p>
+    <ul>
+        <li><b>Starches:</b> Complex carbohydrates (e.g., from grains and potatoes) that are fully digestible and convert rapidly to glucose.</li>
+        <li><b>Sugars:</b> Simple carbohydrates (e.g., glucose, fructose, sucrose) that are quickly absorbed and have a high glycemic impact.</li>
+        <li><b>Dietary Fiber:</b> Indigestible plant material (e.g., cellulose, pectin) that passes through the digestive tract largely intact.</li>
+        <li><b>Sugar Alcohols:</b> Compounds used as sugar substitutes (e.g., erythritol, xylitol) which are partially or wholly indigestible.</li>
+    </ul>
+    <p>For most of the population, tracking Total Carbs is sufficient for general dietary assessment and calorie counting.</p>
+
+<hr />
+
+    {/* NET CARBS DEFINED: THE INDIGESTIBLE EXCLUSION */}
+    <h2 id="net" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Net Carbs Defined: The Indigestible Exclusion</h2>
+    <p>The term <b>Net Carbs</b> (also known as "digestible carbs" or "impact carbs") is a non-regulated, informal metric commonly used by individuals managing blood glucose levels, particularly those following **low-carbohydrate** or **ketogenic** diets. It represents the carbohydrates that are fully digested, absorbed, and thus have a significant impact on blood sugar and insulin levels.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Goal of the Net Carb Calculation</h3>
+    <p>The core philosophy behind Net Carbs is that components which do not break down into glucose or fructose during digestion should not be counted toward a person's daily carbohydrate limit. The calculation effectively isolates the components that provide energy and affect metabolism, allowing followers of restrictive diets to consume more volume of high-fiber foods.</p>
+    
+
+<hr />
+
+    {/* THE NET CARB CALCULATION FORMULA */}
+    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Net Carb Calculation Formula</h2>
+    <p>The calculation is straightforward, but the subtraction of sugar alcohols requires knowledge of their individual absorption rates. The basic formula is:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-xl text-blue-700 font-bold">
+            Net Carbs = Total Carbs – Fiber – (Absorbed Sugar Alcohols)
+        </p>
+    </div>
+    <p>The two primary components subtracted from the Total Carb count are Dietary Fiber and Sugar Alcohols, each for a different physiological reason.</p>
+
+<hr />
+
+    {/* COMPONENT 1: DIETARY FIBER AND INDIGESTIBILITY */}
+    <h2 id="fiber" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component 1: Dietary Fiber and Indigestibility</h2>
+    <p>Dietary fiber is almost always subtracted in full from the Total Carb count because it is largely indigestible by human enzymes. Therefore, it contributes minimal calories and does not cause a rise in blood glucose.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Types of Fiber and Their Caloric Impact</h3>
+    <p>Fiber is classified into two main types, both of which are subtracted from the Net Carb calculation:</p>
+    <ul>
+        <li><b>Soluble Fiber:</b> Dissolves in water, forming a gel (e.g., oats, beans). This slows digestion and nutrient absorption, helping to regulate blood sugar.</li>
+        <li><b>Insoluble Fiber:</b> Does not dissolve in water (e.g., whole grains, vegetable peels). This provides bulk, aiding bowel regularity.</li>
+    </ul>
+    <p>The FDA officially assigns 0 calories per gram of fiber, recognizing its negligible caloric impact on the body, which justifies its exclusion from Net Carbs.</p>
+
+<hr />
+
+    {/* COMPONENT 2: SUGAR ALCOHOLS AND PARTIAL ABSORPTION */}
+    <h2 id="alcohols" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component 2: Sugar Alcohols and Partial Absorption</h2>
+    <p>Sugar alcohols (polyols) are used as low-calorie sweeteners. They are carbohydrates, but they are generally less sweet and less digestible than sucrose. Their treatment in the Net Carb formula is the most complex step.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Complexity of Sugar Alcohol Subtraction</h3>
+    <p>The key is recognizing that different sugar alcohols are absorbed at different rates, meaning they have a highly variable glycemic impact:</p>
+    <ul>
+        <li><b>Zero or Near-Zero Impact (Fully Subtracted):</b> **Erythritol** is the best example. It is almost completely unabsorbed in the small intestine, providing near-zero calories (0.2 kcal/g) and zero glycemic impact. It is fully subtracted from the Net Carb count.</li>
+        <li><b>Partial Impact (Partially Subtracted):</b> **Maltitol, Sorbitol, and Xylitol** are partially absorbed, typically contributing 1.5 to 3.0 calories per gram (compared to 4 kcal/g for sugar). For accurate low-carb tracking, many users only subtract **half** the amount of these sugar alcohols.</li>
+    </ul>
+    <p>Because there is no universal standard for sugar alcohol absorption, Net Carb calculators must apply these varying fractional subtraction methods, leading to variation in final results.</p>
+
+<hr />
+
+    {/* IMPORTANCE IN LOW-CARB AND KETOGENIC DIETS */}
+    <h2 id="diet" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Importance in Low-Carb and Ketogenic Diets</h2>
+    <p>For individuals following dietary plans that strictly limit carbohydrate intake (typically 20 to 50 grams per day for ketosis), the Net Carb calculation is essential for staying within their metabolic goals.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Maintaining Ketosis</h3>
+    <p>The primary goal of the ketogenic diet is to force the body into a metabolic state called **ketosis**, where it burns fat for fuel instead of glucose. This requires limiting glucose intake severely. By subtracting indigestible carbs, dieters can consume high-fiber vegetables (like broccoli, spinach, and avocados) without accidentally kicking their bodies out of ketosis, thereby ensuring they meet their micronutrient and satiety needs.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Official Guidance Disclaimer</h3>
+    <p>It is important to remember that neither the **FDA** nor the **American Diabetes Association (ADA)** endorses "Net Carbs" as a replacement for Total Carbs. The FDA mandates the Total Carb metric because it allows regulators to standardize nutrition facts. Individuals using the Net Carb formula should consult with a healthcare provider or registered dietitian, especially if managing a condition like diabetes, to ensure their specific absorption factors are accounted for.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The distinction between Net Carbs and Total Carbs rests on the **digestibility** of the carbohydrate components. While <b>Total Carbs</b> is the official regulatory metric, <b>Net Carbs</b> isolates the fraction of carbohydrates that actually impacts blood glucose and provides energy. The calculation involves subtracting **Dietary Fiber** (due to indigestibility) and partially subtracting certain **Sugar Alcohols** (due to incomplete absorption). This calculation is a vital tool for those adhering to ketogenic and low-carb diets, allowing them to maximize nutrient-dense, high-fiber food intake while successfully managing their carbohydrate threshold.</p>
+</section>
 
       <Card>
         <CardHeader>

@@ -476,15 +476,117 @@ export default function FatQualityScoreSfaMufaPufaRatioCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Fat quality score assesses the balance of saturated (SFA), monounsaturated (MUFA), and polyunsaturated (PUFA) fats. Optimal distribution: SFA &lt;30%, MUFA 40-50%, PUFA 20-30%. Higher MUFA and PUFA with limited SFA supports cardiovascular health.</p>
-          <p>Use this calculator to calculate fat quality score from saturated fat, monounsaturated fat, and polyunsaturated fat.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Fat Quality: Understanding SFA, MUFA, and PUFA Ratios for Cardiovascular Health" />
+    <meta itemProp="description" content="An in-depth guide detailing the three main types of dietary fats (Saturated, Monounsaturated, Polyunsaturated), their chemical structures, food sources, and the evidence-based recommendation to shift the intake ratio for improved cardiovascular health." />
+    <meta itemProp="keywords" content="fat quality SFA MUFA PUFA ratio, saturated fatty acids health effects, monounsaturated fat sources, polyunsaturated fatty acids omega 3, ideal fat intake ratio, dietary guidelines for saturated fat, healthy eating fat types" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-03" />
+    <meta itemProp="url" content="/definitive-fat-quality-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Dietary Fat Quality: Saturated, Mono- and Polyunsaturated Fatty Acids</h1>
+    <p className="text-lg italic text-gray-700">Understanding the core differences between the major types of dietary fats, their impact on cholesterol, and the authoritative guidelines for optimizing intake ratios.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#structure" className="hover:underline">The Chemical Basis of Fat Quality</a></li>
+        <li><a href="#sfa" className="hover:underline">Saturated Fatty Acids (SFA): Structure and Sources</a></li>
+        <li><a href="#mufa" className="hover:underline">Monounsaturated Fatty Acids (MUFA): Health Benefits and Sources</a></li>
+        <li><a href="#pufa" className="hover:underline">Polyunsaturated Fatty Acids (PUFA): Essential Omegas</a></li>
+        <li><a href="#ratio" className="hover:underline">Optimizing the Ratio: Replacing SFA with MUFA/PUFA</a></li>
+        <li><a href="#guidelines" className="hover:underline">Official Intake Guidelines (AHA, USDA)</a></li>
+    </ul>
+<hr />
+
+    {/* THE CHEMICAL BASIS OF FAT QUALITY */}
+    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Chemical Basis of Fat Quality</h2>
+    <p>Dietary fats are composed of triglycerides—three fatty acid chains attached to a glycerol backbone. The health effect of the fat is determined almost entirely by the <b>saturation</b> of these fatty acid chains—specifically, the number of double bonds present along the carbon chain.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Saturation and Physical State</h3>
+    <p>The degree of saturation dictates the fat's physical state at room temperature:</p>
+    <ul>
+        <li><b>Saturated Fats (SFA):</b> No double bonds, resulting in straight, tightly packed chains. They are typically <b>solid</b> at room temperature (e.g., butter, lard).</li>
+        <li><b>Unsaturated Fats (MUFA/PUFA):</b> Contain one or more double bonds, which creates "kinks" in the chain, preventing tight packing. They are typically <b>liquid</b> at room temperature (e.g., olive oil, soybean oil).</li>
+    </ul>
+    
+
+<hr />
+
+    {/* SATURATED FATTY ACIDS (SFA): STRUCTURE AND SOURCES */}
+    <h2 id="sfa" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Saturated Fatty Acids (SFA): Structure and Sources</h2>
+    <p>Saturated fatty acids contain zero carbon-carbon double bonds, meaning they are "saturated" with hydrogen atoms. While individual SFAs vary in their metabolic impact (e.g., stearic acid vs. palmitic acid), the authoritative consensus focuses on limiting SFA intake due to the overall effect on cholesterol.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Primary Sources and Health Impact</h3>
+    <p>SFA is primarily found in animal products and tropical oils:</p>
+    <ul>
+        <li><b>Animal Sources:</b> Fatty cuts of meat, poultry skin, high-fat dairy (butter, cream, cheese).</li>
+        <li><b>Tropical Oils:</b> Coconut oil, palm oil, and palm kernel oil.</li>
+    </ul>
+    <p>The primary concern with high SFA intake is its established effect of raising <b>LDL cholesterol</b> (the "bad" cholesterol) in the bloodstream, which is a major risk factor for atherosclerosis and heart disease.</p>
+
+<hr />
+
+    {/* MONOUNSATURATED FATTY ACIDS (MUFA): HEALTH BENEFITS AND SOURCES */}
+    <h2 id="mufa" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Monounsaturated Fatty Acids (MUFA): Health Benefits and Sources</h2>
+    <p>Monounsaturated fatty acids contain exactly <b>one</b> carbon-carbon double bond. They are considered highly beneficial for cardiovascular health and are the cornerstone of the Mediterranean diet.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Primary Sources and Health Impact</h3>
+    <p>The most common and abundant MUFA is <b>oleic acid</b>, found in:</p>
+    <ul>
+        <li><b>Olive Oil:</b> Especially extra virgin olive oil.</li>
+        <li><b>Avocados and Avocado Oil.</b></li>
+        <li><b>Nuts:</b> Almonds, cashews, and pecans.</li>
+    </ul>
+    <p>Substituting SFA with MUFA can help <b>lower LDL cholesterol levels</b> while potentially maintaining or increasing <b>HDL cholesterol</b> (the "good" cholesterol), contributing to better overall lipid profiles and reduced cardiovascular risk.</p>
+
+<hr />
+
+    {/* POLYUNSATURATED FATTY ACIDS (PUFA): ESSENTIAL OMEGAS */}
+    <h2 id="pufa" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Polyunsaturated Fatty Acids (PUFA): Essential Omegas</h2>
+    <p>Polyunsaturated fatty acids contain <b>two or more</b> carbon-carbon double bonds. This group includes the essential fatty acids that the human body cannot synthesize and must obtain from the diet.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Omega-3 (Alpha-Linolenic Acid)</h3>
+    <p>Omega-3 fatty acids are known for their powerful anti-inflammatory effects. The essential Omega-3 is <b>alpha-linolenic acid (ALA)</b>, found in flaxseed, walnuts, and chia seeds. ALA can be converted (inefficiently) in the body to the long-chain Omega-3s: <b>EPA</b> (eicosapentaenoic acid) and <b>DHA</b> (docosahexaenoic acid), which are critical for brain function, eye health, and reducing inflammation. EPA and DHA are sourced directly from fatty fish and fish oil.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Omega-6 (Linoleic Acid)</h3>
+    <p>Omega-6 fatty acids are also essential. The essential Omega-6 is <b>linoleic acid (LA)</b>, which is abundant in most common vegetable oils (soybean, corn, sunflower) and is readily available in the typical Western diet. Omega-6s are necessary for cell structure and energy, but excessive intake relative to Omega-3s can promote inflammation.</p>
+
+<hr />
+
+    {/* OPTIMIZING THE RATIO: REPLACING SFA WITH MUFA/PUFA */}
+    <h2 id="ratio" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Optimizing the Ratio: Replacing SFA with MUFA/PUFA</h2>
+    <p>Current authoritative nutritional advice has shifted from focusing on total fat restriction to emphasizing <b>fat substitution</b>—that is, replacing SFA and trans fats with MUFA and PUFA. This substitution is the foundation of fat quality assessment.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Substitution</h3>
+    <p>A high-quality fat ratio is achieved not by eliminating SFA entirely, but by ensuring that when SFA is consumed, it is balanced by unsaturated fats, and when SFA is reduced, it is replaced by an unsaturated fat source. Strong evidence from the **NIH** and **AHA** shows that replacing SFA with PUFA significantly lowers the risk of coronary heart disease.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Omega-6 to Omega-3 Balance</h3>
+    <p>While there is no single official recommendation for the Omega-6 to Omega-3 ratio, the goal is often to reduce the typically high Western ratio (often 10:1 to 20:1) to a ratio closer to <b>4:1 or lower</b>. This shift helps to leverage the anti-inflammatory benefits of Omega-3s and restore a healthier physiological balance.</p>
+
+<hr />
+
+    {/* OFFICIAL INTAKE GUIDELINES (AHA, USDA) */}
+    <h2 id="guidelines" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Official Intake Guidelines (AHA, USDA)</h2>
+    <p>Major health organizations provide clear, quantifiable limits for saturated fat intake to guide consumers toward healthier ratios as part of an overall heart-healthy dietary pattern.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">USDA and AHA Saturated Fat Limits</h3>
+    <ul>
+        <li><b>Dietary Guidelines for Americans (USDA):</b> Limit Saturated Fat intake to <b>less than 10%</b> of total daily calories.</li>
+        <li><b>American Heart Association (AHA):</b> Recommends limiting Saturated Fat intake further, ideally to <b>5% to 6%</b> of total daily calories, especially for individuals with cardiovascular risk factors.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Trans Fat Policy</h3>
+    <p>Both the USDA and the AHA recommend that intake of **trans fats** (partially hydrogenated oils) be kept as <b>low as possible</b> (ideally 0%). This is based on conclusive evidence that trans fats raise LDL and lower HDL, posing a dual and significant threat to heart health.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Optimizing dietary fat quality is achieved by understanding the distinct metabolic effects of <b>Saturated Fatty Acids (SFA)</b>, <b>Monounsaturated Fatty Acids (MUFA)</b>, and <b>Polyunsaturated Fatty Acids (PUFA)</b>. The goal is to adhere to the official recommendation of keeping SFA below 10% of total calories while actively <b>substituting</b> those calories with MUFA (from olive oil and avocados) and PUFA (essential Omega-3s from fish and seeds). This substitution is the most effective dietary strategy for improving lipid profiles and supporting long-term cardiovascular health.</p>
+</section>
 
       <Card>
         <CardHeader>

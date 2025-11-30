@@ -527,15 +527,143 @@ export default function BalancedMealScoreCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>A balanced meal includes adequate protein (20-30% of calories), carbohydrates (40-50% of calories), and healthy fats (20-35% of calories), along with fiber (5-10g per meal). Balanced meals support optimal nutrition, blood sugar control, and metabolic health.</p>
-          <p>Use this calculator to calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to a Balanced Meal Score: Principles of Proportion and Quality" />
+    <meta itemProp="description" content="An expert guide defining a balanced meal based on authoritative models (Harvard Healthy Eating Plate), detailing optimal macronutrient ratios, the importance of food quality (whole grains, healthy fats), and guidelines for portion control." />
+    <meta itemProp="keywords" content="balanced meal score calculator, components of a balanced meal, Harvard healthy eating plate, healthy macronutrient ratios, whole grains vs refined grains, daily fiber requirement, portion control guide" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-02" />
+    <meta itemProp="url" content="/definitive-balanced-meal-score-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to a Balanced Meal Score: Proportions, Quality, and Nutritional Principles</h1>
+    <p className="text-lg italic text-gray-700">Moving beyond calorie counting to evaluate meals based on authoritative guidelines for optimal macronutrient ratios and high-quality food choices.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Defining Balance: The Essential Components of Diet</a></li>
+        <li><a href="#score" className="hover:underline">The Meal Scoring Framework: Proportion and Quality</a></li>
+        <li><a href="#macros" className="hover:underline">Macronutrient Ratios and Acceptable Ranges</a></li>
+        <li><a href="#quality" className="hover:underline">Micronutrient and Fiber Criteria for a High Score</a></li>
+        <li><a href="#hydration" className="hover:underline">The Importance of Beverages and Oils</a></li>
+    </ul>
+<hr />
+
+    {/* DEFINING BALANCE: THE ESSENTIAL COMPONENTS OF DIET */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Defining Balance: The Essential Components of Diet</h2>
+    <p>A truly **balanced meal** is defined not merely by counting calories, but by its ability to provide all six essential nutrient groups in appropriate proportions, ensuring the body has the fuel (energy) and the building blocks (vitamins and minerals) it needs for optimal function. The six essential components are: **Carbohydrates, Proteins, Fats, Vitamins, Minerals,** and **Water**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Goal of a Balanced Diet</h3>
+    <p>According to the **World Health Organization (WHO)**, a balanced diet reduces the risk of chronic diseases such as type 2 diabetes, cardiovascular disease, and certain cancers. Balance ensures two key outcomes:</p>
+    <ul>
+        <li><b>Nutrient Adequacy:</b> Meeting the minimum daily requirements (RDAs) for all micronutrients and fiber.</li>
+        <li><b>Energy Balance:</b> Consuming the right number of calories to maintain a healthy weight.</li>
+    </ul>
+
+<hr />
+
+    {/* THE MEAL SCORING FRAMEWORK: PROPORTION AND QUALITY */}
+    <h2 id="score" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Meal Scoring Framework: Proportion and Quality</h2>
+    <p>The most widely accepted authoritative model for visually scoring a balanced meal is the **Harvard T.H. Chan School of Public Health's Healthy Eating Plate**. This framework provides simple, actionable proportions that prioritize food quality over quantity.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Three Scoring Proportions (The Plate Method)</h3>
+    <p>To score a meal highly, it should visually adhere to these ratios:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
+        <p className="font-mono text-lg text-green-700 font-bold">
+            Harvard Healthy Eating Plate Proportions
+        </p>
+        <ul className="list-disc ml-6 mt-2">
+            <li><b>Vegetables and Fruits:</b> $\mathbf{1/2}$ of the plate. (Aim for variety and color; potatoes do not count).</li>
+            <li><b>Whole Grains:</b> $\mathbf{1/4}$ of the plate. (Prioritize whole wheat, brown rice, quinoa, and oats over refined grains).</li>
+            <li><b>Healthy Protein:</b> $\mathbf{1/4}$ of the plate. (Choose fish, poultry, beans, and nuts; limit red meat and avoid processed meats).</li>
+        </ul>
+    </div>
+    
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Quality as a Score Multiplier</h3>
+    <p>A meal achieves a higher score by focusing on the **type** of food. For example, a meal with white rice (refined grain) and processed bacon (unhealthy protein) may meet the 1/4 proportion rule, but it will score significantly lower than a meal with brown rice (whole grain) and lentils (healthy protein).</p>
+
+<hr />
+
+    {/* MACRONUTRIENT RATIOS AND ACCEPTABLE RANGES */}
+    <h2 id="macros" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Macronutrient Ratios and Acceptable Ranges</h2>
+    <p>While the plate method is useful for visual guidance, professional dietary balance is often assessed using the **Acceptable Macronutrient Distribution Ranges (AMDRs)**, set by the NIH and USDA Dietary Guidelines.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">General AMDR Targets for Adults</h3>
+    <p>The AMDRs define the healthy boundaries (expressed as a percentage of total daily caloric intake) that reduce the risk of chronic disease while providing adequate intake of essential nutrients:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
+        <table className="w-full text-left border-collapse">
+            <thead>
+                <tr>
+                    <th className="border-b p-2 font-bold">Macronutrient</th>
+                    <th className="border-b p-2 font-bold">AMDR (% of Calories)</th>
+                    <th className="border-b p-2 font-bold">Core Function</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td className="border-b p-2">Carbohydrates</td>
+                    <td className="border-b p-2">45% – 65%</td>
+                    <td className="border-b p-2">Primary energy source; Brain function</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Fat (Lipids)</td>
+                    <td className="border-b p-2">20% – 35%</td>
+                    <td className="border-b p-2">Hormone production; Vitamin absorption</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Protein</td>
+                    <td className="border-b p-2">10% – 35%</td>
+                    <td className="border-b p-2">Tissue building and repair; Enzyme creation</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Scoring Based on Macronutrient Quality</h3>
+    <p>A meal scores higher if the source of the macronutrient aligns with health goals:</p>
+    <ul>
+        <li><b>Carbohydrates:</b> Focus on **complex carbohydrates** (whole grains, vegetables, legumes) over simple, refined sugars.</li>
+        <li><b>Fats:</b> Focus on **unsaturated fats** (olive oil, nuts, seeds, fish) and limit saturated fats (processed meat, butter).</li>
+    </ul>
+
+<hr />
+
+    {/* MICRONUTRIENT AND FIBER CRITERIA FOR A HIGH SCORE */}
+    <h2 id="quality" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Micronutrient and Fiber Criteria for a High Score</h2>
+    <p>A balanced meal must provide adequate micronutrients and fiber, components often guaranteed by following the plate proportions but penalized if processed or refined foods are chosen.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Fiber: The Non-Digestible Necessity</h3>
+    <p>Fiber is essential for digestive health, blood sugar control, and satiety. A high-scoring meal contains significant **fiber** (found only in whole plant foods). The average adult needs 25 to 35 grams of fiber per day. Relying on refined grains or low-vegetable diets results in an automatically low score for this metric.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Limiting Unhealthy Additives</h3>
+    <p>A high-scoring meal must minimize components detrimental to health:</p>
+    <ul>
+        <li><b>Added Sugars:</b> The **Dietary Guidelines for Americans** recommend limiting added sugars to less than 10% of total daily calories. Meals containing high sugar content (e.g., sweetened sauces, dressings) lose significant score points.</li>
+        <li><b>Sodium:</b> Excessive salt intake is linked to hypertension. Meals should be prepared with minimal added salt, opting for flavor from herbs and spices.</li>
+        <li><b>Trans Fats:</b> All processed trans fats should be avoided, as they carry the highest risk for cardiovascular disease.</li>
+    </ul>
+
+<hr />
+
+    {/* THE IMPORTANCE OF BEVERAGES AND OILS */}
+    <h2 id="hydration" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Importance of Beverages and Oils</h2>
+    <p>The Harvard Plate and other models recognize that the liquids consumed with the meal and the fats used in preparation are integral to achieving overall nutritional balance.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Beverage Choice: Prioritizing Water</h3>
+    <p>A balanced meal is always paired with the healthiest beverage choices: **water, unsweetened coffee, or unsweetened tea**. Sugary drinks (soda, sweetened juices, caloric specialty coffees) add "empty calories" with little nutritional value and severely detract from the overall meal score.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Healthy Oils in Moderation</h3>
+    <p>The score includes moderate use of **healthy plant-based oils** (like olive, canola, and sunflower oil) that provide essential fatty acids. The use of solid, saturated fats like butter and coconut oil should be limited, and trans fats should be strictly avoided.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>A balanced meal achieves a high score by meeting authoritative proportionality standards (1/2 non-starchy vegetables/fruit, 1/4 whole grains, 1/4 healthy protein) while emphasizing **food quality**. The highest scores are reserved for meals that successfully balance the AMDRs with **complex carbohydrates** and **unsaturated fats**, contain sufficient **fiber**, and strictly limit **added sugar and sodium**. Ultimately, the "score" reflects the consistency with which a meal supports long-term health and chronic disease prevention.</p>
+</section>
 
       <Card>
         <CardHeader>

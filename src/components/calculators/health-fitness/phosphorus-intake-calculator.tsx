@@ -460,15 +460,160 @@ export default function PhosphorusIntakeCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Phosphorus is an essential mineral that is a major component of bones and teeth, and is involved in energy production and DNA/RNA synthesis. Recommended intake: 700 mg/day for adults. Upper limit: 4000 mg/day for adults 19-70, 3000 mg/day for adults 71+.</p>
-          <p>Use this calculator to calculate phosphorus intake from phosphorus amount, age, and gender.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to Phosphorus Intake: RDA, Bone Health, and Kidney Disease Risk" />
+    <meta itemProp="description" content="An in-depth, authoritative guide on the essential macro-mineral Phosphorus (P), detailing its critical roles in DNA structure, ATP energy production, bone mineralization, official RDAs, and the specific risks of hyperphosphatemia in kidney disease." />
+    <meta itemProp="keywords" content="phosphorus intake calculator, phosphorus RDA NIH, phosphorus function ATP DNA, hypophosphatemia symptoms, hyperphosphatemia kidney disease, phosphorus food sources, calcium-phosphorus balance" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-02" />
+    <meta itemProp="url" content="/definitive-phosphorus-intake-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Phosphorus Intake: Roles in Energy, DNA, and Bone Health</h1>
+    <p className="text-lg italic text-gray-700">Explore the foundational macro-mineral phosphorus (P), its indispensable roles in human biochemistry, and the dietary management required to maintain health, especially kidney function.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#function" className="hover:underline">Phosphorus's Foundational Biochemical Roles</a></li>
+        <li><a href="#rda" className="hover:underline">Official Recommended Dietary Allowance (RDA)</a></li>
+        <li><a href="#sources" className="hover:underline">Dietary Sources and Absorption (Organic vs. Inorganic)</a></li>
+        <li><a href="#deficiency" className="hover:underline">Phosphorus Deficiency (Hypophosphatemia)</a></li>
+        <li><a href="#toxicity" className="hover:underline">Phosphorus Toxicity (Hyperphosphatemia) and Kidney Risk</a></li>
+    </ul>
+<hr />
+
+    {/* PHOSPHORUS'S FOUNDATIONAL BIOCHEMICAL ROLES */}
+    <h2 id="function" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Phosphorus's Foundational Biochemical Roles</h2>
+    <p>Phosphorus (P) is the second most abundant mineral in the human body, second only to calcium. Approximately 85% of the body's phosphorus is found combined with calcium in the **bones and teeth**. The remaining 15% is indispensable for cellular function, participating in almost every major metabolic process.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Energy, Genetic Material, and Structure</h3>
+    <p>In its active form, phosphate (PO4 3-), the mineral serves critical non-structural roles:</p>
+    <ul>
+        <li><b>Energy (ATP):</b> Phosphate groups are the "currency" of cellular energy. **Adenosine Triphosphate (ATP)** is the primary molecule used to store and transfer energy, and it requires three phosphate groups.</li>
+        <li><b>Genetic Material:</b> Phosphate groups form the **sugar-phosphate backbone** of DNA and RNA, giving genetic material its structure.</li>
+        <li><b>Cell Membranes:</b> Phosphate is a key component of **phospholipids**, which make up the structural bilayer of all cell membranes.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Bone Mineralization and Acid-Base Balance</h3>
+    <p>The vast majority of phosphorus forms **calcium phosphate**, or hydroxyapatite, which provides the rigidity and structural integrity of the skeletal system. Furthermore, phosphate ions act as an important buffer system, helping the body maintain a normal pH balance in the blood, which is crucial for enzyme function and overall homeostasis.</p>
+
+<hr />
+
+    {/* OFFICIAL RECOMMENDED DIETARY ALLOWANCE (RDA) */}
+    <h2 id="rda" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Official Recommended Dietary Allowance (RDA)</h2>
+    <p>The <b>National Institutes of Health (NIH)</b> and the <b>Food and Nutrition Board (FNB)</b> set the RDA for phosphorus. Requirements are highest during adolescence when bone growth is most rapid.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Phosphorus RDA and Upper Limit (UL) in Milligrams (mg) per Day</h3>
+    <p>Phosphorus intake is tightly regulated by the kidneys and hormones (parathyroid hormone and Vitamin D). The UL is set primarily to prevent metastatic soft tissue calcification associated with high phosphate levels, especially in those with impaired renal function:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
+        <table className="w-full text-left border-collapse">
+            <thead>
+                <tr>
+                    <th className="border-b p-2 font-bold">Life Stage Group</th>
+                    <th className="border-b p-2 font-bold">RDA (mg/day)</th>
+                    <th className="border-b p-2 font-bold">UL (mg/day)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td className="border-b p-2">Adults (19+ years)</td>
+                    <td className="border-b p-2">700 mg</td>
+                    <td className="border-b p-2">4,000 mg</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Adolescents (9–18 years)</td>
+                    <td className="border-b p-2">1,250 mg</td>
+                    <td className="border-b p-2">4,000 mg</td>
+                </tr>
+                <tr>
+                    <td className="border-b p-2">Pregnancy and Lactation</td>
+                    <td className="border-b p-2">700 mg</td>
+                    <td className="border-b p-2">3,500 mg</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<hr />
+
+    {/* DIETARY SOURCES AND ABSORPTION (ORGANIC VS. INORGANIC) */}
+    <h2 id="sources" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dietary Sources and Absorption (Organic vs. Inorganic)</h2>
+    <p>Phosphorus is abundant in the diet, making deficiency rare. However, the source of the phosphorus significantly impacts how much the body absorbs.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Key Food Sources</h3>
+    <p>Phosphorus is found in nearly all foods because it is essential to every living cell. The best sources include:</p>
+    <ul>
+        <li><b>Dairy Products:</b> Milk, cheese, and yogurt are rich sources.</li>
+        <li><b>Protein Foods:</b> Meat, poultry, fish, eggs, and nuts.</li>
+        <li><b>Grains:</b> Whole grains contain phosphorus in the form of **phytate** (phytic acid).</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Inorganic Phosphate Additives</h3>
+    <p>A critical modern source of phosphorus comes from **inorganic phosphate food additives** (e.g., phosphoric acid in sodas, phosphate salts used as leavening agents or preservatives). Absorption rates vary by source:</p>
+    <ul>
+        <li><b>Organic Phosphorus (Meat, Dairy):</b> Approximately 40%–60% absorbed.</li>
+        <li><b>Plant Phosphorus (Phytate):</b> Only 10%–50% absorbed by humans due to the lack of the enzyme phytase.</li>
+        <li><b>Inorganic Phosphorus (Additives):</b> **90%–100% absorbed**, as it requires no digestion. This highly absorbed form is a major concern for individuals with kidney disease.</li>
+    </ul>
+    
+
+[Image of the chemical structure of Adenosine Triphosphate (ATP) highlighting the three phosphate groups]
+
+
+<hr />
+
+    {/* PHOSPHORUS DEFICIENCY (HYPOPHOSPHATEMIA) */}
+    <h2 id="deficiency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Phosphorus Deficiency (Hypophosphatemia)</h2>
+    <p>Deficiency, known as **hypophosphatemia**, is uncommon from diet alone. It is usually secondary to underlying diseases or conditions that severely impair absorption or increase renal excretion.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Causes and Risk Factors</h3>
+    <p>The most common clinical causes are:</p>
+    <ul>
+        <li><b>Refeeding Syndrome:</b> When severely malnourished patients are rapidly re-fed, the sudden rush of glucose causes a massive shift of phosphate into the cells, dropping serum levels dangerously low.</li>
+        <li><b>Alcoholism:</b> Chronic heavy alcohol use severely impairs nutrient absorption and increases urinary phosphate excretion.</li>
+        <li><b>Vitamin D Deficiency:</b> Impairs intestinal absorption of phosphate.</li>
+        <li><b>Certain Medications:</b> Long-term use of aluminum-containing antacids can bind phosphate in the gut, preventing its absorption.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Clinical Manifestations</h3>
+    <p>Severe hypophosphatemia affects systems reliant on ATP and membrane integrity:</p>
+    <ul>
+        <li><b>Neurological:</b> Confusion, seizures, and coma.</li>
+        <li><b>Muscular:</b> Muscle weakness, pain, and rhabdomyolysis (breakdown of muscle tissue).</li>
+        <li><b>Hematological:</b> Breakdown of red blood cells (hemolysis) and impaired immune function.</li>
+    </ul>
+
+<hr />
+
+    {/* PHOSPHORUS TOXICITY (HYPERPHOSPHATEMIA) AND KIDNEY RISK */}
+    <h2 id="toxicity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Phosphorus Toxicity (Hyperphosphatemia) and Kidney Risk</h2>
+    <p>High blood phosphorus levels, known as **hyperphosphatemia**, pose a significant public health risk, especially given the widespread use of highly absorbable inorganic phosphate additives in processed foods.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Primary Cause: Chronic Kidney Disease (CKD)</h3>
+    <p>For most healthy people, consuming excess phosphorus is not a major issue because the kidneys are highly efficient at excreting the surplus. However, in patients with **Chronic Kidney Disease (CKD)**, the kidneys lose the ability to excrete phosphate, leading to accumulation (hyperphosphatemia).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Consequences of Chronic Hyperphosphatemia</h3>
+    <p>High blood phosphate levels disrupt the delicate **calcium-phosphorus balance**. The body attempts to correct this imbalance by drawing calcium out of the bones, leading to bone fragility and fracture risk. Furthermore, high calcium and phosphorus levels combine to form crystals that deposit in soft tissues:</p>
+    <ul>
+        <li><b>Soft Tissue Calcification:</b> Calcification in joints, skin, and, most dangerously, the walls of blood vessels.</li>
+        <li><b>Cardiovascular Disease:</b> Arterial calcification is a major contributor to the high rate of cardiovascular disease and death among CKD patients.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Dietary Management for CKD Patients</h3>
+    <p>For patients with CKD, strict phosphorus management is mandatory. This involves:</p>
+    <ul>
+        <li>Restricting high-phosphate foods (especially processed foods containing inorganic phosphate additives).</li>
+        <li>Taking **phosphate binders** (medications that attach to phosphate in the gut to prevent its absorption) with every meal.</li>
+    </ul>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>Phosphorus is a fundamental macro-mineral essential for **ATP energy transfer**, **DNA structure**, and **bone mineralization**. The adult **RDA is 700 mg/day**, easily met through a diet rich in protein and dairy. While dietary deficiency is rare, the most critical risk is **hyperphosphatemia**, caused by the inability of diseased kidneys to excrete phosphate. Given the near-100% absorption rate of inorganic phosphate additives in processed foods, managing these sources is vital for protecting the skeletal and cardiovascular health of patients with **Chronic Kidney Disease**.</p>
+</section>
 
       <Card>
         <CardHeader>

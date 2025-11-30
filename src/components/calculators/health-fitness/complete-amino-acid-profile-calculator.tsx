@@ -571,15 +571,127 @@ export default function CompleteAminoAcidProfileCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Complete amino acid profiles contain all 9 essential amino acids (histidine, isoleucine, leucine, lysine, methionine, phenylalanine, threonine, tryptophan, valine) in adequate amounts. The limiting amino acid (lowest relative to requirement) determines overall profile completeness and protein synthesis capacity.</p>
-          <p>Use this calculator to calculate complete amino acid profile from essential amino acid amounts.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to a Complete Amino Acid Profile: Essentiality, Quality, and Protein Scoring" />
+    <meta itemProp="description" content="An in-depth, authoritative guide on amino acid profiles, detailing the nine essential amino acids, the concept of a 'complete' protein, the limiting amino acid principle, and modern protein quality scoring methods (DIAAS)." />
+    <meta itemProp="keywords" content="complete amino acid profile calculator, essential amino acids list, limiting amino acid concept, protein quality scoring DIAAS, biological value protein, complementary proteins vegetarian, BCAA function" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-03" />
+    <meta itemProp="url" content="/definitive-amino-acid-profile-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to a Complete Amino Acid Profile: Essentiality and Protein Quality</h1>
+    <p className="text-lg italic text-gray-700">A detailed look at the building blocks of protein, the critical difference between essential and non-essential amino acids, and the official standards for measuring protein quality.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">Amino Acids: The Building Blocks of Life</a></li>
+        <li><a href="#essentiality" className="hover:underline">The Three Categories of Amino Acids (Essential, Non-Essential)</a></li>
+        <li><a href="#complete" className="hover:underline">The Concept of a 'Complete' Protein</a></li>
+        <li><a href="#scoring" className="hover:underline">Measuring Protein Quality: DIAAS and Limiting Amino Acids</a></li>
+        <li><a href="#needs" className="hover:underline">Protein Requirements and Complementary Sources</a></li>
+    </ul>
+<hr />
+
+    {/* AMINO ACIDS: THE BUILDING BLOCKS OF LIFE */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Amino Acids: The Building Blocks of Life</h2>
+    <p>Amino acids (AAs) are organic compounds that link together in long chains, known as polypeptides, to form proteins. Proteins are vast and complex molecules, serving structural (collagen, keratin), functional (enzymes, antibodies), and hormonal (insulin) roles. The specific sequence and type of amino acids determine the final protein’s three-dimensional shape and function.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Structural Diversity</h3>
+    <p>While thousands of amino acids exist in nature, only **20 standard amino acids** are encoded by the human genetic code to build the body’s proteins. The unique side chain (R-group) of each amino acid dictates its chemical properties—such as polarity, charge, and size—which are crucial for protein folding and biological activity.</p>
+    
+
+[Image of the basic chemical structure of an amino acid showing the amino group, carboxyl group, and R-group]
+
+
+<hr />
+
+    {/* THE THREE CATEGORIES OF AMINO ACIDS (ESSENTIAL, NON-ESSENTIAL) */}
+    <h2 id="essentiality" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Three Categories of Amino Acids: Essential, Non-Essential, and Conditionally Essential</h2>
+    <p>Amino acids are categorized based on whether the human body can synthesize them internally or if they must be obtained through the diet.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">1. Essential Amino Acids (Indispensable)</h3>
+    <p>There are **nine essential amino acids** that the human body cannot synthesize from other compounds, or cannot synthesize in sufficient quantities to meet physiological needs. These must be consumed daily through the diet to support growth, tissue repair, and metabolism. The nine essential amino acids are:</p>
+    <ul>
+        <li>Histidine</li>
+        <li>Isoleucine</li>
+        <li>Leucine</li>
+        <li>Lysine</li>
+        <li>Methionine</li>
+        <li>Phenylalanine</li>
+        <li>Threonine</li>
+        <li>Tryptophan</li>
+        <li>Valine</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Branch Chain Amino Acids (BCAAs)</h3>
+    <p>Three essential amino acids—**Leucine, Isoleucine, and Valine**—are collectively known as the Branch Chain Amino Acids (BCAAs). They are metabolized primarily in the muscle rather than the liver, making them particularly important for muscle protein synthesis, energy during exercise, and muscle recovery. Leucine is often cited as the key initiator of muscle synthesis pathways.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">2. Non-Essential and 3. Conditionally Essential Amino Acids</h3>
+    <ul>
+        <li><b>Non-Essential (4):</b> These can be synthesized by the body from other amino acids or precursors (e.g., Alanine, Asparagine, Aspartic Acid, Glutamic Acid).</li>
+        <li><b>Conditionally Essential (7):</b> These are typically synthesized by the body, but production may become insufficient during periods of high stress, rapid growth, disease, or severe illness (e.g., Arginine, Cysteine, Glutamine, Glycine, Proline, Serine, Tyrosine). In these states, dietary intake becomes critical.</li>
+    </ul>
+
+<hr />
+
+    {/* THE CONCEPT OF A 'COMPLETE' PROTEIN */}
+    <h2 id="complete" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Concept of a 'Complete' Protein</h2>
+    <p>The term <b>complete protein</b> is used to describe a food source that contains all nine essential amino acids in roughly the proportions needed by the human body. This concept is fundamental to evaluating the nutritional quality of dietary protein.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Complete Sources (High Quality)</h3>
+    <p>Most **animal proteins** (meat, poultry, fish, eggs, dairy) are considered complete because their amino acid profiles closely match human requirements. However, some plant foods also qualify as complete proteins:</p>
+    <ul>
+        <li>Soy and Soy Products (Tofu, Edamame)</li>
+        <li>Quinoa</li>
+        <li>Buckwheat</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Incomplete Sources and Complementary Proteins</h3>
+    <p>Most **plant proteins** (grains, legumes, nuts) are considered incomplete because they lack sufficient quantities of one or two essential amino acids. However, a complete profile can be achieved through **complementary proteins**—combining two or more incomplete sources within the same day that mutually supply the missing essential AAs. Classic examples include:</p>
+    <ul>
+        <li>Grains (low in Lysine) + Legumes (low in Methionine) = Rice and Beans</li>
+        <li>Nuts/Seeds (low in Lysine/Threonine) + Legumes</li>
+    </ul>
+
+<hr />
+
+    {/* MEASURING PROTEIN QUALITY: DIAAS AND LIMITING AMINO ACIDS */}
+    <h2 id="scoring" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Measuring Protein Quality: DIAAS and Limiting Amino Acids</h2>
+    <p>To move beyond the simple "complete vs. incomplete" classification, scientific bodies use sophisticated scoring systems to quantify protein quality based on digestibility and the presence of the most critical nutrients.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Limiting Amino Acid Principle</h3>
+    <p>A protein's value is determined by its **limiting amino acid**—the essential amino acid present in the food in the lowest quantity relative to human need. Just as a chain is only as strong as its weakest link, the body can only utilize protein for synthesis until it runs out of the least abundant essential amino acid. </p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Official Scoring: DIAAS (Digestible Indispensable Amino Acid Score)</h3>
+    <p>The standard for measuring protein quality has evolved over time, shifting from PDCAAS (Protein Digestibility Corrected Amino Acid Score) to the more accurate **DIAAS** (Digestible Indispensable Amino Acid Score), which is endorsed by the **Food and Agriculture Organization (FAO) of the United Nations**. DIAAS measures the digestibility of individual essential amino acids in the **ileum** (the final part of the small intestine), giving a much more accurate score of the true amount the body can use.</p>
+    <p>Protein quality scores are crucial for public health, as they inform recommendations for vulnerable populations like children and the elderly, who have higher requirements for muscle protein synthesis.</p>
+
+<hr />
+
+    {/* PROTEIN REQUIREMENTS AND COMPLEMENTARY SOURCES */}
+    <h2 id="needs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Protein Requirements and Complementary Sources</h2>
+    <p>The requirement for amino acids is generally expressed through the overall Recommended Dietary Allowance (RDA) for protein, though individual needs vary greatly based on activity level, age, and health status.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">General Protein RDA</h3>
+    <p>The baseline RDA for protein for a sedentary adult is generally **0.8 grams per kilogram (g/kg)** of body weight per day. This amount is sufficient to prevent deficiency, but it is often considered the minimum, not the optimum.</p>
+    <p>Requirements increase substantially for:</p>
+    <ul>
+        <li><b>Athletes/Active Adults:</b> Often recommended 1.2 to 2.0 g/kg body weight to support muscle repair and hypertrophy.</li>
+        <li><b>Older Adults (Sarcopenia Risk):</b> May require 1.0 to 1.2 g/kg body weight to counteract age-related muscle loss (sarcopenia).</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Nutritional Strategy for Plant-Based Diets</h3>
+    <p>Individuals relying on plant-based protein should employ the complementary protein strategy across the day. While traditional pairing (like rice and beans) is helpful, a more effective strategy is simply to consume a wide variety of plant foods (legumes, grains, nuts, and vegetables) over the course of the day to ensure all essential amino acids are eventually received.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>A complete amino acid profile is one that supplies all **nine essential amino acids** in sufficient quantity, a criteria most easily met by animal proteins and select plant sources like soy and quinoa. The quality of any protein is limited by the scarcest essential amino acid (the **limiting amino acid**). For precise nutritional assessment, the **DIAAS** method (Digestible Indispensable Amino Acid Score) is the authoritative standard. Whether through complete sources or by combining complementary plant proteins, ensuring adequate intake of all essential amino acids is fundamental to maintaining tissue structure, metabolic function, and muscle health.</p>
+</section>
 
       <Card>
         <CardHeader>

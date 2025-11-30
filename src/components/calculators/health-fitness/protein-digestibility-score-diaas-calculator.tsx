@@ -479,15 +479,114 @@ export default function ProteinDigestibilityScoreDiaasCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>DIAAS (Digestible Indispensable Amino Acid Score) evaluates protein quality based on digestibility of essential amino acids. Scores range 0-100+, with 100+ indicating complete amino acid profiles and high digestibility. Animal proteins typically score 100+.</p>
-          <p>Use this calculator to calculate protein digestibility score DIAAS from protein grams, protein source, and cooking method.</p>
-        </CardContent>
-      </Card>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+    <meta itemProp="name" content="The Definitive Guide to DIAAS: Protein Digestibility Score Methodology and Quality Assessment" />
+    <meta itemProp="description" content="An expert guide detailing the Digestible Indispensable Amino Acid Score (DIAAS), the FAO's gold standard for protein quality, explaining ileal digestibility, the reference amino acid pattern, and why it replaced PDCAAS." />
+    <meta itemProp="keywords" content="protein digestibility score DIAAS calculator, DIAAS methodology FAO, digestible indispensable amino acid score, ileal digestibility protein, PDCAAS vs DIAAS, limiting amino acid principle, protein quality measurement" />
+    <meta itemProp="author" content="[Your Site's Health Team]" />
+    <meta itemProp="datePublished" content="2025-12-03" />
+    <meta itemProp="url" content="/definitive-diaas-protein-score-guide" />
+
+    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to DIAAS: Protein Quality Measurement and Digestibility Scoring</h1>
+    <p className="text-lg italic text-gray-700">Mastering the Digestible Indispensable Amino Acid Score (DIAAS), the global gold standard for assessing how effectively dietary protein meets human amino acid needs.</p>
+
+
+    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+        <li><a href="#definition" className="hover:underline">DIAAS: The Modern Standard for Protein Quality</a></li>
+        <li><a href="#pdcaas" className="hover:underline">Why DIAAS Replaced PDCAAS (The Digestibility Issue)</a></li>
+        <li><a href="#methodology" className="hover:underline">The DIAAS Calculation Methodology and Reference Pattern</a></li>
+        <li><a href="#score" className="hover:underline">Interpreting DIAAS Scores and Quality Categories</a></li>
+        <li><a href="#application" className="hover:underline">Applications: Scoring Plant-Based and Single-Source Proteins</a></li>
+    </ul>
+<hr />
+
+    {/* DIAAS: THE MODERN STANDARD FOR PROTEIN QUALITY */}
+    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DIAAS: The Modern Standard for Protein Quality</h2>
+    <p>The **Digestible Indispensable Amino Acid Score (DIAAS)** is the authoritative method for determining protein quality, endorsed by the **Food and Agriculture Organization (FAO) of the United Nations**. DIAAS provides a clear, actionable score that quantifies the extent to which a food’s indispensable (essential) amino acids are digested, absorbed, and available to the body for protein synthesis.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Defining Protein Quality</h3>
+    <p>Protein quality is determined by two main factors:</p>
+    <ul>
+        <li><b>Amino Acid Profile:</b> The relative content of the nine **indispensable (essential) amino acids** (IAAs).</li>
+        <li><b>Digestibility:</b> The percentage of those IAAs that are actually absorbed by the body.</li>
+    </ul>
+    <p>A higher DIAAS score indicates a higher quality protein that can more efficiently support muscle maintenance, growth, and metabolic function.</p>
+
+<hr />
+
+    {/* WHY DIAAS REPLACED PDCAAS (THE DIGESTIBILITY ISSUE) */}
+    <h2 id="pdcaas" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why DIAAS Replaced PDCAAS (The Digestibility Issue)</h2>
+    <p>DIAAS was developed to overcome the significant limitations of the previous standard, the **Protein Digestibility Corrected Amino Acid Score (PDCAAS)**, which had been the standard for over 20 years.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Flaw of Fecal Digestibility</h3>
+    <p>The primary issue with PDCAAS was that it measured protein digestibility based on **fecal analysis** (the difference between intake and output in the feces). This method overestimates the protein available to the body because it fails to distinguish between amino acids absorbed in the small intestine and those metabolized by bacteria in the large intestine. DIAAS solves this by using **ileal digestibility**.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Truncation and Underestimation</h3>
+    <p>PDCAAS scores were artificially capped, or **truncated**, at 1.0 (or 100%). This meant that proteins that were highly digestible and contained amino acids far in excess of the requirement (like whey protein or egg) were scored identically to proteins that just barely met the requirement. DIAAS scores are **not truncated**, allowing scores to exceed 100 and providing accurate differentiation between high-quality sources.</p>
+
+<hr />
+
+    {/* THE DIAAS CALCULATION METHODOLOGY AND REFERENCE PATTERN */}
+    <h2 id="methodology" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The DIAAS Calculation Methodology and Reference Pattern</h2>
+    <p>The calculation is based on determining the concentration of each indispensable amino acid after digestion in the small intestine (ileum) and comparing it to a scientifically established reference pattern (human requirement).</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Measuring Ileal Digestibility</h3>
+    <p>DIAAS uses amino acid digestibility values measured at the end of the small intestine (**ileum**) to determine the true amount of protein absorbed. This process provides a more precise and physiologically relevant measure of availability than fecal analysis.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Limiting Amino Acid and the Final Score</h3>
+    <p>For each of the nine IAAs, a score is calculated. The final DIAAS score is determined by the **limiting amino acid**—the indispensable amino acid that has the lowest individual DIAAS value. This aligns with the principle that protein synthesis is limited by the least abundant required component.</p>
+    
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The High-Level Formula</h3>
+    <p>The calculation for a single indispensable amino acid component is:</p>
+    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+        <p className="font-mono text-lg text-blue-700 font-bold">
+            DIAAS Component Score = (mg of digestible IAA in 1g of food protein / mg of IAA in reference pattern) x 100
+        </p>
+    </div>
+    <p>The overall DIAAS for the food is the lowest value calculated among all nine indispensable amino acids.</p>
+
+<hr />
+
+    {/* INTERPRETING DIAAS SCORES AND QUALITY CATEGORIES */}
+    <h2 id="score" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting DIAAS Scores and Quality Categories</h2>
+    <p>The DIAAS system classifies protein sources into three categories based on their score, making it easy for consumers and manufacturers to understand the quality of the protein.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">DIAAS Quality Categories (FAO Standard)</h3>
+    <p>A score of 100 or above means the protein meets or exceeds the indispensable amino acid requirements per unit of protein intake, after correcting for digestibility. The categories are:</p>
+    <ul>
+        <li><b>Score $\ge$ 100:</b> **Excellent or High Quality Protein** (e.g., milk, whey, eggs, beef). These sources provide all IAAs in abundance.</li>
+        <li><b>Score $\ge$ 75:</b> **Good Quality Protein** (e.g., soy protein, some legumes). These proteins provide all IAAs but may be slightly limited in one or two.</li>
+        <li><b>Score &lt; 75:</b> Lower Quality Protein.</li>
+    </ul>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">The Score of ${'>'}100$</h3>
+    <p>A score over 100 is possible and desirable. For example, a protein with a DIAAS of 110 means that only $100/110 \approx 91\%$ of that protein is required to meet the individual's amino acid needs, assuming that the energy requirements are also met. This is a significant advantage over the truncated PDCAAS system.</p>
+
+<hr />
+
+    {/* APPLICATIONS: SCORING PLANT-BASED AND SINGLE-SOURCE PROTEINS */}
+    <h2 id="application" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications: Scoring Plant-Based and Single-Source Proteins</h2>
+    <p>The DIAAS methodology has had a profound impact on the nutritional classification of many plant-based proteins and composite meals.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Scoring Plant Proteins</h3>
+    <p>DIAAS provides much clearer evidence that most plant proteins are limited in key IAAs. For example, most cereals and grains are limited by **lysine**, and many legumes are limited by **sulfur-containing amino acids** (methionine and cysteine). While soy protein isolate often scores highly (above 100), whole grains and many plant-based products typically fall below 100.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">DIAAS and Complementary Proteins</h3>
+    <p>A unique benefit of DIAAS is its ability to accurately score **blends** of proteins. This scientifically validates the practice of combining complementary proteins (e.g., legumes and rice) to create a higher-quality composite profile. The DIAAS of the blend is usually higher than the DIAAS of the individual ingredients.</p>
+
+    <h3 className="text-xl font-semibold text-foreground mt-6">Importance for Vulnerable Populations</h3>
+    <p>DIAAS uses three separate reference patterns: one for infants, one for children, and one for adolescents/adults. Because children and the elderly have higher amino acid requirements for growth and maintenance, DIAAS helps ensure that supplemental and clinical nutrition products are formulated with the highest quality proteins to support their unique needs.</p>
+
+<hr />
+
+    {/* CONCLUSION */}
+    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+    <p>The **DIAAS (Digestible Indispensable Amino Acid Score)** is the gold standard for protein quality, relying on **ileal digestibility** to accurately determine the bioavailable supply of the nine indispensable amino acids. The score is ultimately determined by the **limiting amino acid**, representing the component that restricts the body's ability to use the entire protein. Scores above 100 signify **Excellent Quality Protein** capable of supporting high demands like growth and muscle synthesis, making DIAAS essential for nutritional research, product development, and optimal dietary planning.</p>
+</section>
 
       <Card>
         <CardHeader>
