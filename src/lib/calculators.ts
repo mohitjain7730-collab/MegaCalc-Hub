@@ -5200,6 +5200,15 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5048,
+    name: 'UV Exposure Risk Calculator',
+    description: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection.',
+    slug: 'uv-exposure-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'UV Exposure Risk Calculator',
+    metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
+  },
+  {
+    id: 5049,
     name: 'Chromium Daily Need Estimator',
     description: 'Estimate chromium daily needs from age, gender, and chromium intake.',
     slug: 'chromium-daily-need-estimator',
@@ -5208,7 +5217,7 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate chromium daily needs from age, gender, and chromium intake to assess chromium status.'
   },
   {
-    id: 5049,
+    id: 5050,
     name: 'Fluoride Exposure Calculator',
     description: 'Calculate fluoride exposure from water fluoride level, water intake, age, and other sources.',
     slug: 'fluoride-exposure-calculator',
@@ -5217,7 +5226,7 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate fluoride exposure from water fluoride level, water intake, age, and other sources to assess fluoride status.'
   },
   {
-    id: 5050,
+    id: 5051,
     name: 'Iodine Deficiency Risk Calculator',
     description: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status.',
     slug: 'iodine-deficiency-risk-calculator',
@@ -5226,7 +5235,7 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status to assess iodine status.'
   },
   {
-    id: 5051,
+    id: 5052,
     name: 'Phosphorus Intake Calculator',
     description: 'Calculate phosphorus intake from phosphorus amount, age, and gender.',
     slug: 'phosphorus-intake-calculator',
@@ -5379,7 +5388,7 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate glycogen replenishment needs from workout duration, intensity, type, body weight, current glycogen, post-workout carbs, and time since workout to optimize recovery.'
   },
   {
-    id: 5052,
+    id: 5053,
     name: 'Balanced Meal Score Calculator',
     description: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories.',
     slug: 'balanced-meal-score-calculator',
@@ -5388,7 +5397,7 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories to assess meal balance.'
   },
   {
-    id: 5053,
+    id: 5054,
     name: 'Daily Micronutrient Coverage Calculator',
     description: 'Calculate daily micronutrient coverage from number of vitamins, minerals, and trace elements consumed.',
     slug: 'daily-micronutrient-coverage-calculator',
@@ -5397,7 +5406,7 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate daily micronutrient coverage from number of vitamins, minerals, and trace elements consumed to assess nutritional adequacy.'
   },
   {
-    id: 5054,
+    id: 5055,
     name: 'Food Diversity Index Calculator',
     description: 'Calculate food diversity index from number of different food groups and food items consumed.',
     slug: 'food-diversity-index-calculator',
@@ -5406,7 +5415,7 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate food diversity index from number of different food groups and food items consumed to assess dietary variety.'
   },
   {
-    id: 5055,
+    id: 5061,
     name: 'Whole Food vs Processed Calorie Ratio Calculator',
     description: 'Calculate whole food vs processed calorie ratio from whole food calories and processed food calories.',
     slug: 'whole-food-vs-processed-calorie-ratio-calculator',

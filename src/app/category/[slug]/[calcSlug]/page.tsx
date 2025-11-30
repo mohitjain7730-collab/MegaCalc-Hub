@@ -329,6 +329,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'selenium-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/selenium-intake-calculator')),
     'manganese-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/manganese-requirement-calculator')),
     'copper-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/copper-intake-calculator')),
+    'uv-exposure-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/uv-exposure-risk-calculator')),
     'chromium-daily-need-estimator': dynamic(() => import('@/components/calculators/health-fitness/chromium-daily-need-estimator')),
     'fluoride-exposure-calculator': dynamic(() => import('@/components/calculators/health-fitness/fluoride-exposure-calculator')),
     'iodine-deficiency-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/iodine-deficiency-risk-calculator')),
