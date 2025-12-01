@@ -229,11 +229,6 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
-  // Sports & Training subcategories
-  const cricketCalculators = filteredCalculators.filter(calc => 
-    ['batting-average-calculator'].includes(calc.slug)
-  );
-
   const footballSoccerCalculators = filteredCalculators.filter(calc => 
     [].includes(calc.slug) // Add football/soccer calculators here when available
   );
@@ -265,7 +260,6 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     !energyConverters.find(c => c.id === calc.id) &&
     !powerConverters.find(c => c.id === calc.id) &&
     !otherUsefulConverters.find(c => c.id === calc.id) &&
-    !cricketCalculators.find(c => c.id === calc.id) &&
     !footballSoccerCalculators.find(c => c.id === calc.id) &&
     !basketballCalculators.find(c => c.id === calc.id) &&
     !tennisCalculators.find(c => c.id === calc.id) &&
@@ -352,10 +346,6 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
 
             {categorySlug === 'sports-training' ? (
                 <>
-                    <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Cricket</h2>
-                        {renderCalculatorGrid(cricketCalculators, categorySlug, "No cricket calculators found.")}
-                    </div>
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Football / Soccer</h2>
                         {renderCalculatorGrid(footballSoccerCalculators, categorySlug, "No football/soccer calculators found.")}

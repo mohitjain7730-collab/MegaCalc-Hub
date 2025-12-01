@@ -236,16 +236,4 @@ export const categories: Category[] = [
     description: 'Calculate durations, time zones, and important dates.',
     Icon: 'Calendar',
   },
-  {
-    name: 'Fun & Games',
-    slug: 'fun-games',
-    description: 'Calculators for gaming, hobbies, and entertainment.',
-    Icon: 'Gamepad2',
-  },
-  {
-    name: 'Cricket',
-    slug: 'cricket',
-    description: 'Cricket performance calculators for batting, bowling, and team statistics.',
-    Icon: 'Trophy',
-  },
 ];
