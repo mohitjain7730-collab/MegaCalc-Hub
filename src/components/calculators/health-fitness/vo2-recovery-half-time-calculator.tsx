@@ -96,19 +96,19 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'HRV Recovery Optimization Score Calculator',
+    name: 'HRV Recovery Optimization Wellness Score',
     slug: 'hrv-recovery-optimization-score-calculator',
-    description: 'Assess recovery readiness including VO2 recovery factors.',
+    description: 'Get wellness insights about recovery readiness including VO2 recovery factors.',
   },
   {
-    name: 'Training Fatigue Index Calculator',
+    name: 'Training Fatigue Wellness Index',
     slug: 'training-fatigue-index-calculator',
-    description: 'Manage training load that affects VO2 recovery.',
+    description: 'Get wellness insights about training load that affects VO2 recovery.',
   },
   {
-    name: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
+    name: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide',
     slug: 'central-nervous-system-cns-fatigue-recovery-calculator',
-    description: 'Plan recovery time including VO2 recovery needs.',
+    description: 'Get wellness insights about recovery time including VO2 recovery needs.',
   },
   {
     name: 'Training Stress Score Calculator',
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'VO2 Recovery Half-Time Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'VO2 Recovery Half-Time Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'VO2 Recovery Half-Time Calculator',
+      name: 'VO2 Recovery Half-Time Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age to assess cardiovascular recovery capacity.',
+      description: 'Get general wellness insights about VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -189,44 +189,44 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'good';
   let recoveryLevel = 'Good';
-  let interpretation = 'Your VO2 recovery half-time is good. You have decent cardiovascular recovery capacity.';
+  let interpretation = 'This suggests a general lifestyle tendency where your VO2 recovery half-time may be good. You may have decent cardiovascular recovery capacity.';
   
   if (halfTime < 1) {
     status = 'excellent';
     recoveryLevel = 'Excellent';
-    interpretation = 'Your VO2 recovery half-time is excellent. You have superior cardiovascular recovery capacity, indicating high fitness.';
+    interpretation = 'This suggests a general lifestyle tendency where your VO2 recovery half-time is excellent. You may have superior cardiovascular recovery capacity, indicating high fitness.';
   } else if (halfTime < 1.5) {
     status = 'good';
     recoveryLevel = 'Good';
   } else if (halfTime < 2.5) {
     status = 'moderate';
     recoveryLevel = 'Moderate';
-    interpretation = 'Your VO2 recovery half-time is moderate. There is room for improvement through consistent aerobic training.';
+    interpretation = 'This suggests a general lifestyle tendency where your VO2 recovery half-time is moderate. You may consider improving through consistent aerobic training.';
   } else {
     status = 'poor';
     recoveryLevel = 'Poor';
-    interpretation = 'Your VO2 recovery half-time is slower than optimal. Focus on improving cardiovascular fitness through consistent aerobic training.';
+    interpretation = 'This suggests a general lifestyle tendency where your VO2 recovery half-time may be slower than optimal. You may consider focusing on improving cardiovascular fitness through consistent aerobic training.';
   }
   
   const recommendations = [
-    'Improve cardiovascular fitness through consistent aerobic training (running, cycling, swimming) 3-5 times per week.',
-    'Include interval training: high-intensity intervals improve VO2 recovery speed and overall cardiovascular capacity.',
-    'Implement proper cool-down: active recovery (light movement) can improve recovery rate compared to complete rest.',
+    'You may consider improving cardiovascular fitness through consistent aerobic training (running, cycling, swimming) 3-5 times per week. This is a personal insight, not a medical evaluation.',
+    'You may consider including interval training: high-intensity intervals may improve VO2 recovery speed and overall cardiovascular capacity.',
+    'You may consider implementing proper cool-down: active recovery (light movement) may improve recovery rate compared to complete rest.',
   ];
   if (halfTime > 2) {
-    recommendations.push('Focus on building aerobic base: longer, moderate-intensity sessions improve cardiovascular efficiency and recovery capacity.');
+    recommendations.push('You may consider focusing on building aerobic base: longer, moderate-intensity sessions may improve cardiovascular efficiency and recovery capacity.');
   }
   if (values.age && values.age > 40) {
-    recommendations.push('Age-related recovery changes are normal. Consistent training can maintain or improve recovery capacity at any age.');
+    recommendations.push('Age-related recovery changes are normal. Consistent training may maintain or improve recovery capacity at any age.');
   }
   if (recoveryRate < 5) {
-    recommendations.push('Recovery rate is slower than optimal. Increase training frequency and include more aerobic exercise to improve recovery speed.');
+    recommendations.push('Recovery rate may be slower than optimal. You may consider increasing training frequency and including more aerobic exercise to support recovery speed.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Measure VO2 recovery during training. Note peak VO2, recovery VO2 at specific time points, and calculate recovery half-time.' },
-    { label: 'This Month', detail: 'Implement consistent aerobic training and interval work. Track improvements in VO2 recovery half-time over time.' },
-    { label: 'Ongoing', detail: 'Maintain cardiovascular fitness through regular training. Monitor VO2 recovery as an indicator of fitness improvements and recovery capacity.' },
+    { label: 'This Week', detail: 'You may consider measuring VO2 recovery during training. Note peak VO2, recovery VO2 at specific time points, and calculate recovery half-time.' },
+    { label: 'This Month', detail: 'You may consider implementing consistent aerobic training and interval work. Track improvements in VO2 recovery half-time over time.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining cardiovascular fitness through regular training. Monitor VO2 recovery as an indicator of fitness improvements and recovery capacity.' },
   ];
   
   return { halfTime, recoveryRate, recoveryLevel, status, interpretation, recommendations, plan };
@@ -254,9 +254,9 @@ export default function VO2RecoveryHalfTimeCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            VO2 Recovery Half-Time Calculator
+            VO2 Recovery Half-Time Wellness Estimator
           </CardTitle>
-          <CardDescription>Calculate VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age to assess cardiovascular recovery capacity.</CardDescription>
+          <CardDescription>Get general wellness insights about VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -511,9 +511,21 @@ export default function VO2RecoveryHalfTimeCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age.</p>
+          <p>This tool provides general wellness insights about VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include recovery half-time (minutes), recovery rate (ml/kg/min per minute), recovery level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

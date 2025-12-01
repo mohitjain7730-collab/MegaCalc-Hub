@@ -96,24 +96,24 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Attention Span Index Calculator',
+    name: 'Attention Span Wellness Index',
     slug: 'attention-span-index-calculator',
-    description: 'Assess attention span related to working memory function.',
+    description: 'Get wellness insights about attention span related to working memory function.',
   },
   {
-    name: 'Focus Retention Time Calculator',
+    name: 'Focus Retention Wellness Score',
     slug: 'focus-retention-time-calculator',
-    description: 'Evaluate focus retention supported by working memory.',
+    description: 'Get wellness insights about focus retention supported by working memory.',
   },
   {
-    name: 'HRV Recovery Optimization Score Calculator',
+    name: 'HRV Recovery Optimization Wellness Score',
     slug: 'hrv-recovery-optimization-score-calculator',
-    description: 'Assess recovery status affecting cognitive function including working memory.',
+    description: 'Get wellness insights about recovery status affecting cognitive function including working memory.',
   },
   {
-    name: 'Training Fatigue Index Calculator',
+    name: 'Training Fatigue Wellness Index',
     slug: 'training-fatigue-index-calculator',
-    description: 'Manage physical fatigue that impacts cognitive capacity.',
+    description: 'Get wellness insights about physical fatigue that impacts cognitive capacity.',
   },
 ];
 
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Working Memory Capacity Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Working Memory Capacity Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Working Memory Capacity Estimator',
+      name: 'Working Memory Capacity Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function.',
+      description: 'Get general wellness insights about working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -178,44 +178,44 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'good';
   let capacityLevel = 'Good';
-  let interpretation = 'Your working memory capacity is good. You can hold and manipulate information effectively for cognitive tasks.';
+  let interpretation = 'This suggests a general lifestyle tendency where your working memory capacity may be good. You may be able to hold and manipulate information effectively for cognitive tasks.';
   
   if (workingMemoryScore >= 85) {
     status = 'excellent';
     capacityLevel = 'Excellent';
-    interpretation = 'Your working memory capacity is excellent. You have strong cognitive capacity for complex thinking, learning, and problem-solving tasks.';
+    interpretation = 'This suggests a general lifestyle tendency where your working memory capacity is excellent. You may have strong cognitive capacity for complex thinking, learning, and problem-solving tasks.';
   } else if (workingMemoryScore >= 70) {
     status = 'good';
     capacityLevel = 'Good';
   } else if (workingMemoryScore >= 50) {
     status = 'moderate';
     capacityLevel = 'Moderate';
-    interpretation = 'Your working memory capacity is moderate. There is room for improvement through brain training, exercise, sleep optimization, and stress management.';
+    interpretation = 'This suggests a general lifestyle tendency where your working memory capacity is moderate. You may consider improving through brain training, exercise, sleep optimization, and stress management.';
   } else {
     status = 'limited';
     capacityLevel = 'Limited';
-    interpretation = 'Your working memory capacity is limited. Focus on brain training exercises, improving sleep, managing stress, and cognitive enhancement strategies to improve capacity.';
+    interpretation = 'This suggests a general lifestyle tendency where your working memory capacity may be limited. You may consider focusing on brain training exercises, improving sleep, managing stress, and cognitive enhancement strategies to support capacity.';
   }
   
   const recommendations = [
-    'Engage in brain training: dual n-back tasks, working memory exercises, memory games, and cognitive training apps can improve working memory capacity.',
-    'Improve sleep quality and duration: aim for 7-9 hours of quality sleep. Sleep is critical for working memory function and cognitive capacity.',
-    'Manage stress levels: high stress significantly reduces working memory capacity. Practice stress management techniques (meditation, exercise, relaxation) to optimize cognitive function.',
+    'You may consider engaging in brain training: dual n-back tasks, working memory exercises, memory games, and cognitive training apps may improve working memory capacity. This is a personal insight, not a medical evaluation.',
+    'You may consider improving sleep quality and duration: aim for 7-9 hours of quality sleep. Sleep may be important for working memory function and cognitive capacity.',
+    'You may consider managing stress levels: high stress may reduce working memory capacity. Practice stress management techniques (meditation, exercise, relaxation) to support cognitive function.',
   ];
   if (values.digitSpanBackward < 4) {
-    recommendations.push('Backward digit span below 4 indicates limited working memory manipulation. Focus on working memory training exercises, especially tasks requiring mental manipulation.');
+    recommendations.push('Backward digit span below 4 may indicate limited working memory manipulation. You may consider focusing on working memory training exercises, especially tasks requiring mental manipulation.');
   }
   if (values.cognitiveLoad && values.cognitiveLoad > 7) {
-    recommendations.push(`High cognitive load (${values.cognitiveLoad}) is reducing working memory capacity. Reduce multitasking and break complex tasks into smaller chunks to optimize working memory use.`);
+    recommendations.push(`High cognitive load (${values.cognitiveLoad}) may be reducing working memory capacity. You may consider reducing multitasking and breaking complex tasks into smaller chunks to optimize working memory use.`);
   }
   if (values.age && values.age >= 60) {
-    recommendations.push('Age-related working memory decline is normal. Regular mental exercise, physical activity, and cognitive training can help maintain and even improve capacity at any age.');
+    recommendations.push('Age-related working memory changes are normal. Regular mental exercise, physical activity, and cognitive training may help maintain and even improve capacity at any age.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Assess working memory capacity using digit span tests (forward and backward). Note baseline capacity and factors affecting performance.' },
-    { label: 'This Month', detail: 'Implement working memory training: dual n-back tasks, memory exercises, brain training apps. Improve sleep, manage stress, and engage in regular physical exercise.' },
-    { label: 'Ongoing', detail: 'Continue cognitive training and optimization. Monitor working memory capacity improvements. Maintain healthy habits (sleep, exercise, stress management) for optimal cognitive function.' },
+    { label: 'This Week', detail: 'You may consider assessing working memory capacity using digit span tests (forward and backward). Note baseline capacity and factors affecting performance.' },
+    { label: 'This Month', detail: 'You may consider implementing working memory training: dual n-back tasks, memory exercises, brain training apps. Improve sleep, manage stress, and engage in regular physical exercise.' },
+    { label: 'Ongoing', detail: 'You may consider continuing cognitive training and optimization. Monitor working memory capacity improvements. Maintain healthy habits (sleep, exercise, stress management) for optimal cognitive function.' },
   ];
   
   return { memoryCapacity, capacityLevel, workingMemoryScore, status, interpretation, recommendations, plan };
@@ -243,9 +243,9 @@ export default function WorkingMemoryCapacityEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Brain className="h-5 w-5" />
-            Working Memory Capacity Estimator
+            Working Memory Capacity Wellness Estimator
           </CardTitle>
-          <CardDescription>Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function.</CardDescription>
+          <CardDescription>Get general wellness insights about working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -494,9 +494,21 @@ export default function WorkingMemoryCapacityEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates working memory capacity based on digit span forward, digit span backward, processing speed, age, and cognitive load.</p>
+          <p>This tool provides general wellness insights about working memory capacity based on digit span forward, digit span backward, processing speed, age, and cognitive load. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include memory capacity (digit span average), capacity level, working memory score (0-100), status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

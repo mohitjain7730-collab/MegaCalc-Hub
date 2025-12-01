@@ -5830,93 +5830,93 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4568,
-    name: 'Posture Correction Progress Calculator',
-    description: 'Calculate posture correction progress based on initial and current posture scores, weeks of training, pain level, and flexibility to track improvement and guide training.',
+    name: 'Posture Correction Wellness Progress Tracker',
+    description: 'Get general wellness insights about posture correction progress based on initial and current posture scores, weeks of training, comfort level, and flexibility. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'posture-correction-progress-calculator',
     category: 'wellness',
-    metaTitle: 'Posture Correction Progress Calculator',
-    metaDescription: 'Calculate posture correction progress based on initial and current posture scores, weeks of training, pain level, and flexibility to track improvement and guide training.'
+    metaTitle: 'Posture Correction Wellness Progress Tracker',
+    metaDescription: 'Get general wellness insights about posture correction progress based on initial and current posture scores, weeks of training, comfort level, and flexibility. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4569,
-    name: 'VO2 Recovery Half-Time Calculator',
-    description: 'Calculate VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age to assess cardiovascular recovery capacity.',
+    name: 'VO2 Recovery Wellness Estimator',
+    description: 'Get general wellness insights about VO2 recovery based on peak VO2, recovery VO2, recovery time, fitness level, and age. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'vo2-recovery-half-time-calculator',
     category: 'wellness',
-    metaTitle: 'VO2 Recovery Half-Time Calculator',
-    metaDescription: 'Calculate VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age to assess cardiovascular recovery capacity and fitness improvements.'
+    metaTitle: 'VO2 Recovery Wellness Estimator',
+    metaDescription: 'Get general wellness insights about VO2 recovery based on peak VO2, recovery VO2, recovery time, fitness level, and age. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4570,
-    name: 'Power-to-Weight Performance Index Calculator',
-    description: 'Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.',
+    name: 'Power-to-Weight Wellness Index',
+    description: 'Get general wellness insights about power-to-weight ratio and wellness index based on power output, body weight, units, and activity type. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'power-to-weight-performance-index-calculator',
     category: 'wellness',
-    metaTitle: 'Power-to-Weight Performance Index Calculator',
-    metaDescription: 'Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.'
+    metaTitle: 'Power-to-Weight Wellness Index',
+    metaDescription: 'Get general wellness insights about power-to-weight ratio and wellness index based on power output, body weight, units, and activity type. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4571,
-    name: 'Functional Movement Score Calculator',
-    description: 'Calculate functional movement score based on seven fundamental movement patterns to assess movement quality and injury risk.',
+    name: 'Functional Movement Wellness Score',
+    description: 'Get general wellness insights about functional movement score based on seven fundamental movement patterns. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'functional-movement-score-calculator',
     category: 'wellness',
-    metaTitle: 'Functional Movement Score Calculator',
-    metaDescription: 'Calculate functional movement score based on seven fundamental movement patterns to assess movement quality and injury risk and guide corrective exercise.'
+    metaTitle: 'Functional Movement Wellness Score',
+    metaDescription: 'Get general wellness insights about functional movement score based on seven fundamental movement patterns. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4572,
-    name: 'Muscular Imbalance Ratio Calculator',
-    description: 'Calculate muscular imbalance ratio between left and right sides or agonist and antagonist muscles to identify imbalances and guide corrective training.',
+    name: 'Muscular Balance Wellness Ratio',
+    description: 'Get general wellness insights about muscular balance ratio between left and right sides or agonist and antagonist muscles. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'muscular-imbalance-ratio-calculator',
     category: 'wellness',
-    metaTitle: 'Muscular Imbalance Ratio Calculator',
-    metaDescription: 'Calculate muscular imbalance ratio between left and right sides or agonist and antagonist muscles to identify imbalances and guide corrective training to reduce injury risk.'
+    metaTitle: 'Muscular Balance Wellness Ratio',
+    metaDescription: 'Get general wellness insights about muscular balance ratio between left and right sides or agonist and antagonist muscles. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4573,
-    name: 'Focus Retention Time Calculator',
-    description: 'Calculate focus retention time and efficiency based on focused work duration, distractions, task complexity, sleep, and stress to assess cognitive focus capacity.',
+    name: 'Focus Retention Wellness Estimator',
+    description: 'Get general wellness insights about focus retention time and efficiency based on focused work duration, distractions, task complexity, sleep, and stress. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'focus-retention-time-calculator',
     category: 'wellness',
-    metaTitle: 'Focus Retention Time Calculator',
-    metaDescription: 'Calculate focus retention time and efficiency based on focused work duration, distractions, task complexity, sleep, and stress to assess cognitive focus capacity and optimize productivity.'
+    metaTitle: 'Focus Retention Wellness Estimator',
+    metaDescription: 'Get general wellness insights about focus retention time and efficiency based on focused work duration, distractions, task complexity, sleep, and stress. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4574,
-    name: 'Attention Span Index Calculator',
-    description: 'Calculate attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality to assess cognitive attention capacity.',
+    name: 'Attention Span Wellness Index',
+    description: 'Get general wellness insights about attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'attention-span-index-calculator',
     category: 'wellness',
-    metaTitle: 'Attention Span Index Calculator',
-    metaDescription: 'Calculate attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality to assess cognitive attention capacity and optimize focus.'
+    metaTitle: 'Attention Span Wellness Index',
+    metaDescription: 'Get general wellness insights about attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4575,
-    name: 'Working Memory Capacity Estimator',
-    description: 'Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function.',
+    name: 'Working Memory Wellness Estimator',
+    description: 'Get general wellness insights about working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'working-memory-capacity-estimator',
     category: 'wellness',
-    metaTitle: 'Working Memory Capacity Estimator',
-    metaDescription: 'Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function and guide improvement strategies.'
+    metaTitle: 'Working Memory Wellness Estimator',
+    metaDescription: 'Get general wellness insights about working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4576,
-    name: 'Mental Processing Speed Test Calculator',
-    description: 'Assess mental processing speed through reaction time, accuracy, and cognitive task performance to understand cognitive efficiency.',
+    name: 'Mental Processing Speed Wellness Estimator',
+    description: 'Get general wellness insights about mental processing speed through reaction time, accuracy, and cognitive task performance. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'mental-processing-speed-test-calculator',
     category: 'wellness',
-    metaTitle: 'Mental Processing Speed Test Calculator',
-    metaDescription: 'Assess mental processing speed through reaction time, accuracy, and cognitive task performance to understand cognitive efficiency and optimize brain function.'
+    metaTitle: 'Mental Processing Speed Wellness Estimator',
+    metaDescription: 'Get general wellness insights about mental processing speed through reaction time, accuracy, and cognitive task performance. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4577,
-    name: 'Decision Fatigue Index Calculator',
-    description: 'Measure decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion to optimize decision-making quality.',
+    name: 'Decision Fatigue Wellness Index',
+    description: 'Get general wellness insights about decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'decision-fatigue-index-calculator',
     category: 'wellness',
-    metaTitle: 'Decision Fatigue Index Calculator',
-    metaDescription: 'Measure decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion to optimize decision-making quality and reduce cognitive load.'
+    metaTitle: 'Decision Fatigue Wellness Index',
+    metaDescription: 'Get general wellness insights about decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4578,

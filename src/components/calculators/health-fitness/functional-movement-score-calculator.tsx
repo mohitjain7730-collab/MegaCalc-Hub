@@ -103,24 +103,24 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Core Strength Balance Calculator',
+    name: 'Core Strength Balance Wellness Calculator',
     slug: 'core-strength-balance-calculator',
-    description: 'Assess core strength that supports functional movement.',
+    description: 'Get wellness insights about core strength that supports functional movement.',
   },
   {
-    name: 'Muscular Imbalance Ratio Calculator',
+    name: 'Muscular Imbalance Ratio Wellness Calculator',
     slug: 'muscular-imbalance-ratio-calculator',
-    description: 'Identify muscular imbalances affecting movement patterns.',
+    description: 'Get wellness insights about muscular imbalances affecting movement patterns.',
   },
   {
-    name: 'Posture Correction Progress Calculator',
+    name: 'Posture Progress Wellness Tracker',
     slug: 'posture-correction-progress-calculator',
-    description: 'Track posture improvements related to functional movement.',
+    description: 'Get wellness insights about posture improvements related to functional movement.',
   },
   {
-    name: 'Injury Prevention Warmup Time Calculator',
+    name: 'Warmup Time Wellness Planner',
     slug: 'injury-prevention-warmup-time-calculator',
-    description: 'Include movement preparation in warmup routine.',
+    description: 'Get wellness insights about including movement preparation in warmup routine.',
   },
 ];
 
@@ -134,15 +134,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Functional Movement Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Functional Movement Wellness Score', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Functional Movement Score Calculator',
+      name: 'Functional Movement Wellness Score',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate functional movement score based on seven fundamental movement patterns to assess movement quality and injury risk.',
+      description: 'Get general wellness insights about functional movement score based on seven fundamental movement patterns. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -169,52 +169,52 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'good';
   let movementLevel = 'Good';
-  let riskCategory = 'Moderate Risk';
-  let interpretation = 'Your functional movement score indicates good movement quality with moderate injury risk.';
+  let riskCategory = 'Moderate Tendency';
+  let interpretation = 'This suggests a general lifestyle tendency where your functional movement score indicates good movement quality with moderate movement considerations.';
   
   if (hasPain) {
     status = 'poor';
     movementLevel = 'Poor (Pain Present)';
-    riskCategory = 'High Risk - Medical Evaluation Needed';
-    interpretation = 'Pain was present during testing. This requires immediate medical evaluation before continuing training. Do not train through pain.';
+    riskCategory = 'High Tendency - Professional Discussion Recommended';
+    interpretation = 'Pain was present during testing. You may consider discussing with a qualified professional before continuing training. This is a personal insight, not a medical evaluation.';
   } else if (movementScore >= 18) {
     status = 'excellent';
     movementLevel = 'Excellent';
-    riskCategory = 'Low Risk';
-    interpretation = 'Your functional movement score is excellent. You demonstrate high-quality movement patterns and low injury risk.';
+    riskCategory = 'Low Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where your functional movement score is excellent. You may demonstrate high-quality movement patterns and low movement considerations.';
   } else if (movementScore >= 15) {
     status = 'good';
     movementLevel = 'Good';
-    riskCategory = 'Moderate Risk';
-    interpretation = 'Your functional movement score is good. Minor limitations may exist that could benefit from corrective exercise.';
+    riskCategory = 'Moderate Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where your functional movement score is good. Minor limitations may exist that could benefit from corrective exercise.';
   } else if (movementScore >= 13) {
     status = 'moderate';
     movementLevel = 'Moderate';
-    riskCategory = 'Higher Risk';
-    interpretation = 'Your functional movement score indicates moderate limitations. Corrective exercise is recommended to address movement quality issues and reduce injury risk.';
+    riskCategory = 'Higher Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where your functional movement score indicates moderate limitations. You may consider corrective exercise to address movement quality issues and support wellness.';
   } else {
     status = 'poor';
     movementLevel = 'Poor';
-    riskCategory = 'High Risk';
-    interpretation = 'Your functional movement score indicates significant limitations. Corrective exercise is strongly recommended to improve movement quality and reduce injury risk.';
+    riskCategory = 'High Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where your functional movement score indicates significant limitations. You may consider corrective exercise to improve movement quality and support wellness.';
   }
   
   const recommendations = [
-    'Address movement limitations through corrective exercise targeting identified weak patterns. Work with qualified professional for personalized program.',
-    'Focus on mobility work for restricted joints and stability training for weak areas identified in screening.',
-    'Retest every 4-8 weeks to track improvements. Significant progress typically occurs within 8-12 weeks of consistent corrective work.',
+    'You may consider addressing movement limitations through corrective exercise targeting identified weak patterns. Work with qualified professional for personalized program. This is a personal insight, not a medical evaluation.',
+    'You may consider focusing on mobility work for restricted joints and stability training for weak areas identified in screening.',
+    'You may consider retesting every 4-8 weeks to track improvements. Significant progress typically occurs within 8-12 weeks of consistent corrective work.',
   ];
   if (hasPain) {
-    recommendations.push('CRITICAL: Pain during movement requires medical evaluation. Do not continue training until pain is addressed and cleared by healthcare provider.');
+    recommendations.push('Pain during movement may require discussion with a qualified professional. You may consider not continuing training until pain is addressed and discussed with a healthcare provider.');
   }
   if (movementScore < 14) {
-    recommendations.push('Score below 14 indicates higher injury risk. Prioritize corrective exercise before increasing training intensity or volume.');
+    recommendations.push('Score below 14 may indicate higher movement considerations. You may consider prioritizing corrective exercise before increasing training intensity or volume.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Complete functional movement screening if not done. Identify specific movement limitations and asymmetries.' },
-    { label: 'This Month', detail: 'Implement corrective exercise program targeting identified limitations. Focus on improving lowest-scoring movements first.' },
-    { label: 'Ongoing', detail: 'Continue corrective work and retest every 4-8 weeks. Maintain movement quality through consistent mobility and stability training.' },
+    { label: 'This Week', detail: 'You may consider completing functional movement screening if not done. Identify specific movement limitations and asymmetries.' },
+    { label: 'This Month', detail: 'You may consider implementing corrective exercise program targeting identified limitations. Focus on improving lowest-scoring movements first.' },
+    { label: 'Ongoing', detail: 'You may consider continuing corrective work and retesting every 4-8 weeks. Maintain movement quality through consistent mobility and stability training.' },
   ];
   
   return { movementScore, movementLevel, riskCategory, status, interpretation, recommendations, plan };
@@ -245,9 +245,9 @@ export default function FunctionalMovementScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Functional Movement Score Calculator
+            Functional Movement Wellness Score
           </CardTitle>
-          <CardDescription>Calculate functional movement score based on seven fundamental movement patterns to assess movement quality and injury risk.</CardDescription>
+          <CardDescription>Get general wellness insights about functional movement score based on seven fundamental movement patterns. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -398,9 +398,9 @@ export default function FunctionalMovementScoreCalculator() {
                 <p className="text-xs text-muted-foreground">{result.status}</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Risk category</p>
+                <p className="text-sm text-muted-foreground">Movement tendency</p>
                 <p className="text-lg font-semibold text-primary">{result.riskCategory}</p>
-                <p className="text-xs text-muted-foreground">Injury risk</p>
+                <p className="text-xs text-muted-foreground">Movement considerations</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -533,9 +533,21 @@ export default function FunctionalMovementScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates functional movement score based on seven movement pattern scores (0-3 each) and optional pain presence indicator.</p>
-          <p>Outputs include movement score (0-21), movement level, risk category, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about functional movement score based on seven movement pattern scores (0-3 each) and optional pain presence indicator. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include movement score (0-21), movement level, movement tendency category, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

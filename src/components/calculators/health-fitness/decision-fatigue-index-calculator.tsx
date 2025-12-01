@@ -26,7 +26,7 @@ type FormValues = z.infer<typeof formSchema>;
 type ResultPayload = {
   fatigueIndex: number;
   fatigueLevel: string;
-  riskCategory: string;
+  wellnessTendency: string;
   status: 'low' | 'moderate' | 'high' | 'critical';
   interpretation: string;
   recommendations: string[];
@@ -46,75 +46,75 @@ const faqs = [
   {
     question: 'What is decision fatigue?',
     answer:
-      'Decision fatigue is the deteriorating quality of decisions made after a long session of decision-making. It occurs when mental energy is depleted from making too many choices, leading to poor judgment and impulsivity.',
+      'Decision fatigue may refer to changes in the quality of decisions made after a long session of decision-making. It may occur when mental energy is depleted from making too many choices, which may lead to changes in judgment. This tool provides general wellness insights, not a medical evaluation.',
   },
   {
     question: 'Why does decision fatigue happen?',
     answer:
-      'Every decision uses mental energy from a finite pool. As you make more decisions throughout the day, your willpower and cognitive resources deplete, making subsequent decisions harder and often lower quality.',
+      'Every decision may use mental energy. As you make more decisions throughout the day, your willpower and cognitive resources may deplete, making subsequent decisions harder. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'What is a good decision fatigue index?',
     answer:
-      'Scores below 30 indicate low fatigue (manageable decision load). 30-50 is moderate, 51-70 is high, and above 70 indicates critical levels requiring immediate attention.',
+      'Scores below 30 suggest a general lifestyle tendency where fatigue may be low (manageable decision load). 30-50 is moderate, 51-70 is high, and above 70 suggests areas for improvement. This is a personal insight, not a medical evaluation.',
   },
   {
     question: 'How can I reduce decision fatigue?',
     answer:
-      'Strategies include: automating routine decisions, reducing daily choices, batching similar decisions, eating regular meals to maintain glucose, and scheduling important decisions for morning when willpower is highest.',
+      'You may consider: automating routine decisions, reducing daily choices, batching similar decisions, eating regular meals to maintain glucose, and scheduling important decisions for morning when willpower may be highest. This is a personal insight, not a medical evaluation.',
   },
   {
     question: 'Does decision fatigue affect everyone equally?',
     answer:
-      'No, some people have higher baseline willpower reserves, and lifestyle factors (sleep, stress, nutrition) significantly impact how quickly decision fatigue sets in.',
+      'Lifestyle factors (sleep, stress, nutrition) may impact how quickly decision fatigue sets in. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'What are signs of decision fatigue?',
     answer:
-      'Signs include: avoiding decisions, making impulsive choices, increased procrastination, feeling mentally drained, irritability, and poor judgment on complex matters.',
+      'Signs may include: avoiding decisions, making impulsive choices, increased procrastination, feeling mentally drained, irritability, and changes in judgment on complex matters. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'Can decision fatigue be prevented?',
     answer:
-      'Yes, through decision automation, habit formation, reducing trivial choices, maintaining steady glucose levels, adequate sleep, and reserving high-stakes decisions for peak mental times.',
+      'You may consider decision automation, habit formation, reducing trivial choices, maintaining steady glucose levels, adequate sleep, and reserving high-stakes decisions for peak mental times. This is a personal insight, not a medical evaluation.',
   },
   {
     question: 'How does decision fatigue affect productivity?',
     answer:
-      'High decision fatigue reduces productivity by causing procrastination, poor prioritization, decreased motivation, and increased time spent on simple choices that should be automatic.',
+      'High decision fatigue may reduce productivity by causing procrastination, poor prioritization, decreased motivation, and increased time spent on simple choices. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'Does multitasking increase decision fatigue?',
     answer:
-      'Yes, multitasking requires constant decision-making about task switching, which rapidly depletes mental energy and accelerates decision fatigue.',
+      'Multitasking may require constant decision-making about task switching, which may deplete mental energy and accelerate decision fatigue. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'What is the best time to make important decisions?',
     answer:
-      'Morning is typically best when willpower and cognitive resources are at peak levels. Avoid making important decisions late in the day when decision fatigue is highest.',
+      'Morning may be best when willpower and cognitive resources may be at peak levels. You may consider avoiding making important decisions late in the day when decision fatigue may be highest. This is a personal insight, not a medical evaluation.',
   },
 ];
 
 const relatedCalculators = [
   {
-    name: 'Mental Fatigue Index Calculator',
+    name: 'Mental Fatigue Wellness Index',
     slug: 'mental-fatigue-index-calculator',
-    description: 'Assess overall mental fatigue that contributes to decision fatigue.',
+    description: 'Get wellness insights about overall mental fatigue that may contribute to decision fatigue.',
   },
   {
-    name: 'Cognitive Focus Efficiency Calculator',
+    name: 'Cognitive Focus Efficiency Wellness Calculator',
     slug: 'cognitive-focus-efficiency-calculator',
-    description: 'Evaluate focus efficiency that affects decision quality.',
+    description: 'Get wellness insights about focus efficiency that may affect decision quality.',
   },
   {
-    name: 'Multitasking Efficiency Calculator',
+    name: 'Multitasking Efficiency Wellness Calculator',
     slug: 'multitasking-efficiency-calculator',
-    description: 'Measure multitasking impact on cognitive resources.',
+    description: 'Get wellness insights about multitasking impact on cognitive resources.',
   },
   {
-    name: 'Brain Fog Severity Score Calculator',
+    name: 'Brain Fog Wellness Score',
     slug: 'brain-fog-severity-score-calculator',
-    description: 'Assess brain fog that worsens decision fatigue.',
+    description: 'Get wellness insights about brain fog that may affect decision fatigue.',
   },
 ];
 
@@ -128,15 +128,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Decision Fatigue Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Decision Fatigue Wellness Index', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Decision Fatigue Index Calculator',
+      name: 'Decision Fatigue Wellness Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Measure decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion to optimize decision-making quality.',
+      description: 'Get general wellness insights about decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -161,53 +161,53 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const clampedIndex = Math.max(0, Math.min(100, fatigueIndex));
   
   let fatigueLevel: string;
-  let riskCategory: string;
+  let wellnessTendency: string;
   let interpretation: string;
   let status: ResultPayload['status'] = 'low';
   
   if (clampedIndex < 30) {
     fatigueLevel = 'Low';
-    riskCategory = 'Minimal Risk';
-    interpretation = 'Your decision load is manageable. You have sufficient mental energy reserves for quality decision-making.';
+    wellnessTendency = 'Minimal Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where your decision load is manageable. You may have sufficient mental energy reserves for quality decision-making.';
     status = 'low';
   } else if (clampedIndex < 50) {
     fatigueLevel = 'Moderate';
-    riskCategory = 'Elevated Risk';
-    interpretation = 'You are experiencing moderate decision fatigue. Consider reducing decision load or implementing decision automation strategies.';
+    wellnessTendency = 'Elevated Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where you may be experiencing moderate decision fatigue. You may consider reducing decision load or implementing decision automation strategies.';
     status = 'moderate';
   } else if (clampedIndex < 70) {
     fatigueLevel = 'High';
-    riskCategory = 'High Risk';
-    interpretation = 'You have high decision fatigue. Decision quality may be compromised. Immediate action needed to reduce cognitive load.';
+    wellnessTendency = 'High Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where you may have high decision fatigue. Decision quality may be affected. You may consider taking action to reduce cognitive load.';
     status = 'high';
   } else {
     fatigueLevel = 'Critical';
-    riskCategory = 'Critical Risk';
-    interpretation = 'Critical decision fatigue detected. Your decision-making capacity is severely compromised. Prioritize rest and reduce decisions immediately.';
+    wellnessTendency = 'Critical Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where decision fatigue may be high. You may consider prioritizing rest and reducing decisions. This is a personal insight, not a medical evaluation.';
     status = 'critical';
   }
   
   const recommendations = [
-    'Automate routine decisions: establish routines, use defaults, and reduce trivial choices (e.g., meal prep, wardrobe decisions).',
-    'Batch similar decisions together rather than spreading them throughout the day.',
-    'Schedule important decisions for morning hours when willpower and cognitive resources are highest.',
-    'Maintain steady glucose levels with regular meals and healthy snacks to preserve decision-making capacity.',
-    'Eliminate unnecessary decisions by creating habits, using checklists, and establishing clear processes.',
-    'Practice decision-making frameworks to streamline complex choices and reduce mental effort.',
-    'Take breaks between decision-heavy periods to restore mental energy.',
-    'Delegate decisions when possible to reduce your personal decision load.',
+    'You may consider automating routine decisions: establish routines, use defaults, and reduce trivial choices (e.g., meal prep, wardrobe decisions). This is a personal insight, not a medical evaluation.',
+    'You may consider batching similar decisions together rather than spreading them throughout the day.',
+    'You may consider scheduling important decisions for morning hours when willpower and cognitive resources may be highest.',
+    'You may consider maintaining steady glucose levels with regular meals and healthy snacks to preserve decision-making capacity.',
+    'You may consider eliminating unnecessary decisions by creating habits, using checklists, and establishing clear processes.',
+    'You may consider practicing decision-making frameworks to streamline complex choices and reduce mental effort.',
+    'You may consider taking breaks between decision-heavy periods to restore mental energy.',
+    'You may consider delegating decisions when possible to reduce your personal decision load.',
   ];
   
   const plan = [
-    { label: 'Immediate', detail: 'Identify top 3 decision drains and automate or eliminate them. Schedule important decisions for morning.' },
-    { label: 'This Week', detail: 'Create routines for routine decisions (meals, clothing, routines). Batch similar decisions together.' },
-    { label: 'This Month', detail: 'Establish decision-making frameworks. Monitor fatigue index weekly to track improvements.' },
+    { label: 'Immediate', detail: 'You may consider identifying top 3 decision drains and automating or eliminating them. Schedule important decisions for morning.' },
+    { label: 'This Week', detail: 'You may consider creating routines for routine decisions (meals, clothing, routines). Batch similar decisions together.' },
+    { label: 'This Month', detail: 'You may consider establishing decision-making frameworks. Monitor fatigue index weekly to track improvements.' },
   ];
   
   return {
     fatigueIndex: clampedIndex,
     fatigueLevel,
-    riskCategory,
+    wellnessTendency,
     status,
     interpretation,
     recommendations,
@@ -237,9 +237,9 @@ export default function DecisionFatigueIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <AlertTriangle className="h-5 w-5" />
-            Decision Fatigue Index Calculator
+            Decision Fatigue Wellness Index
           </CardTitle>
-          <CardDescription>Measure decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion to optimize decision-making quality.</CardDescription>
+          <CardDescription>Get general wellness insights about decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -318,7 +318,7 @@ export default function DecisionFatigueIndexCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate Decision Fatigue Index
+                Calculate Decision Fatigue Wellness Index
               </Button>
             </form>
           </Form>
@@ -332,7 +332,7 @@ export default function DecisionFatigueIndexCalculator() {
               <Brain className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See your decision fatigue index, risk level, and optimization strategies.</CardDescription>
+            <CardDescription>See your decision fatigue wellness index, wellness tendency, and optimization strategies.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -347,9 +347,9 @@ export default function DecisionFatigueIndexCalculator() {
                 <p className="text-xs text-muted-foreground">Current status</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Risk Category</p>
-                <p className="text-2xl font-semibold text-primary">{result.riskCategory}</p>
-                <p className="text-xs text-muted-foreground">Decision quality risk</p>
+                <p className="text-sm text-muted-foreground">Wellness Tendency</p>
+                <p className="text-2xl font-semibold text-primary">{result.wellnessTendency}</p>
+                <p className="text-xs text-muted-foreground">Decision quality tendency</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -421,7 +421,7 @@ export default function DecisionFatigueIndexCalculator() {
           <p>
             <strong>Willpower Load</strong> = (Willpower Depletion / 10) × 20
           </p>
-          <p>Index ranges from 0-100, with higher scores indicating greater decision fatigue and compromised decision-making capacity.</p>
+          <p>Index ranges from 0-100, with higher scores suggesting a general lifestyle tendency where decision fatigue may be greater. This is a personal insight, not a medical evaluation.</p>
         </CardContent>
       </Card>
       
@@ -462,10 +462,10 @@ export default function DecisionFatigueIndexCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Decision fatigue occurs when the quality of your decisions deteriorates after making many choices throughout the day. Every decision consumes mental energy from a finite reservoir, and as this energy depletes, your ability to make thoughtful, high-quality decisions decreases. This calculator assesses your decision fatigue by analyzing decision volume, complexity, time investment, and mental exhaustion.
+            Decision fatigue may occur when the quality of your decisions changes after making many choices throughout the day. Every decision may consume mental energy, and as this energy depletes, your ability to make thoughtful, high-quality decisions may decrease. This tool provides general wellness insights about decision fatigue by analyzing decision volume, complexity, time investment, and mental exhaustion. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
-            Understanding your decision fatigue index helps you optimize when and how you make important decisions, automate routine choices, and preserve mental energy for critical matters. By reducing unnecessary decisions and managing your cognitive load, you can maintain better decision quality throughout the day.
+            Understanding your decision fatigue wellness index may help you optimize when and how you make important decisions, automate routine choices, and preserve mental energy for critical matters. By reducing unnecessary decisions and managing your cognitive load, you may maintain better decision quality throughout the day.
           </p>
         </CardContent>
       </Card>
@@ -492,9 +492,21 @@ export default function DecisionFatigueIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool measures decision fatigue based on daily decision volume, complexity, time spent, mental exhaustion, and willpower depletion to assess decision-making capacity.</p>
-          <p>Outputs include a decision fatigue index, fatigue level, risk category, interpretation, recommendations, and an action plan.</p>
+          <p>This tool provides general wellness insights about decision fatigue based on daily decision volume, complexity, time spent, mental exhaustion, and willpower depletion. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include a decision fatigue wellness index, fatigue level, wellness tendency, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

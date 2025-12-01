@@ -96,24 +96,24 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Functional Movement Score Calculator',
+    name: 'Functional Movement Wellness Score',
     slug: 'functional-movement-score-calculator',
-    description: 'Assess movement patterns affected by muscular imbalances.',
+    description: 'Get wellness insights about movement patterns affected by muscular imbalances.',
   },
   {
-    name: 'Core Strength Balance Calculator',
+    name: 'Core Strength Balance Wellness Calculator',
     slug: 'core-strength-balance-calculator',
-    description: 'Evaluate core strength balance related to muscular imbalances.',
+    description: 'Get wellness insights about core strength balance related to muscular imbalances.',
   },
   {
-    name: 'Posture Correction Progress Calculator',
+    name: 'Posture Progress Wellness Tracker',
     slug: 'posture-correction-progress-calculator',
-    description: 'Track posture improvements from addressing imbalances.',
+    description: 'Get wellness insights about posture improvements from addressing imbalances.',
   },
   {
-    name: 'Injury Prevention Warmup Time Calculator',
+    name: 'Warmup Time Wellness Planner',
     slug: 'injury-prevention-warmup-time-calculator',
-    description: 'Include corrective exercises in warmup routine.',
+    description: 'Get wellness insights about including corrective exercises in warmup routine.',
   },
 ];
 
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Muscular Imbalance Ratio Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Muscular Imbalance Ratio Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Muscular Imbalance Ratio Calculator',
+      name: 'Muscular Imbalance Ratio Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate muscular imbalance ratio between left and right sides or agonist and antagonist muscles to identify imbalances and guide corrective training.',
+      description: 'Get general wellness insights about muscular imbalance ratio between left and right sides or agonist and antagonist muscles. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -163,7 +163,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'balanced';
   let imbalanceLevel = 'Balanced';
-  let interpretation = 'Your muscular balance is good. Left and right sides are well-balanced.';
+  let interpretation = 'This suggests a general lifestyle tendency where your muscular balance may be good. Left and right sides may be well-balanced.';
   
   if (finalRatio >= 90) {
     status = 'balanced';
@@ -171,36 +171,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (finalRatio >= 80) {
     status = 'minimal';
     imbalanceLevel = 'Minimal';
-    interpretation = 'Your muscular imbalance is minimal. Minor differences exist but are within acceptable range.';
+    interpretation = 'This suggests a general lifestyle tendency where your muscular imbalance is minimal. Minor differences may exist but are within acceptable range.';
   } else if (finalRatio >= 70) {
     status = 'moderate';
     imbalanceLevel = 'Moderate';
-    interpretation = 'Your muscular imbalance is moderate. Corrective training is recommended to improve balance and reduce injury risk.';
+    interpretation = 'This suggests a general lifestyle tendency where your muscular imbalance is moderate. You may consider corrective training to improve balance and support wellness.';
   } else {
     status = 'significant';
     imbalanceLevel = 'Significant';
-    interpretation = 'Your muscular imbalance is significant. Prioritize corrective training focusing on the weaker side or muscle group to reduce injury risk.';
+    interpretation = 'This suggests a general lifestyle tendency where your muscular imbalance is significant. You may consider prioritizing corrective training focusing on the weaker side or muscle group to support wellness.';
   }
   
   const recommendations = [
-    'Include unilateral training (single-limb exercises) in your routine: lunges, single-leg deadlifts, single-arm rows, single-leg squats.',
-    'Prioritize the weaker side: start workouts with weaker side exercises, match volume and intensity, continue training weaker side even if stronger side fatigues first.',
-    'Focus on weak muscle group: if agonist-antagonist imbalance exists, prioritize strengthening the weaker muscle group while maintaining the stronger one.',
+    'You may consider including unilateral training (single-limb exercises) in your routine: lunges, single-leg deadlifts, single-arm rows, single-leg squats. This is a personal insight, not a medical evaluation.',
+    'You may consider prioritizing the weaker side: start workouts with weaker side exercises, match volume and intensity, continue training weaker side even if stronger side fatigues first.',
+    'You may consider focusing on weak muscle group: if agonist-antagonist imbalance exists, prioritize strengthening the weaker muscle group while maintaining the stronger one.',
   ];
   if (finalRatio < 80) {
-    recommendations.push(`Imbalance ratio of ${finalRatio.toFixed(0)}% indicates significant difference. Dedicate 2-3 sessions per week specifically to correcting this imbalance through targeted unilateral work.`);
+    recommendations.push(`Imbalance ratio of ${finalRatio.toFixed(0)}% may indicate significant difference. You may consider dedicating 2-3 sessions per week specifically to correcting this imbalance through targeted unilateral work.`);
   }
   if (values.antagonistStrength && values.agonistStrength) {
     const ratio = values.antagonistStrength / values.agonistStrength;
     if (ratio < 0.6) {
-      recommendations.push('Antagonist strength is below optimal ratio (should be 60-80% of agonist). Focus on strengthening antagonist muscles to improve balance and reduce injury risk.');
+      recommendations.push('Antagonist strength may be below optimal ratio (should be 60-80% of agonist). You may consider focusing on strengthening antagonist muscles to improve balance and support wellness.');
     }
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Assess strength on both sides using unilateral exercises. Identify which side or muscle group is weaker and quantify the imbalance.' },
-    { label: 'This Month', detail: 'Implement unilateral training program. Start sessions with weaker side exercises. Match sets and reps on both sides, prioritizing weaker side if needed.' },
-    { label: 'Ongoing', detail: 'Continue balanced training with emphasis on weaker areas. Reassess monthly to track progress toward balance. Prevent future imbalances through consistent balanced training.' },
+    { label: 'This Week', detail: 'You may consider assessing strength on both sides using unilateral exercises. Identify which side or muscle group is weaker and quantify the imbalance.' },
+    { label: 'This Month', detail: 'You may consider implementing unilateral training program. Start sessions with weaker side exercises. Match sets and reps on both sides, prioritizing weaker side if needed.' },
+    { label: 'Ongoing', detail: 'You may consider continuing balanced training with emphasis on weaker areas. Reassess monthly to track progress toward balance. Prevent future imbalances through consistent balanced training.' },
   ];
   
   return { imbalanceRatio: finalRatio, imbalancePercentage: 100 - finalRatio, imbalanceLevel, status, interpretation, recommendations, plan };
@@ -228,9 +228,9 @@ export default function MuscularImbalanceRatioCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Target className="h-5 w-5" />
-            Muscular Imbalance Ratio Calculator
+            Muscular Imbalance Ratio Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate muscular imbalance ratio between left and right sides or agonist and antagonist muscles to identify imbalances and guide corrective training.</CardDescription>
+          <CardDescription>Get general wellness insights about muscular imbalance ratio between left and right sides or agonist and antagonist muscles. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -486,9 +486,21 @@ export default function MuscularImbalanceRatioCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates muscular imbalance ratio based on left and right side strength, and optionally agonist and antagonist muscle strength.</p>
+          <p>This tool provides general wellness insights about muscular imbalance ratio based on left and right side strength, and optionally agonist and antagonist muscle strength. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include imbalance ratio (%), imbalance percentage, imbalance level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

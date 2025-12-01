@@ -102,14 +102,14 @@ const relatedCalculators = [
     description: 'Assess strength relative to body weight.',
   },
   {
-    name: 'Training Fatigue Index Calculator',
+    name: 'Training Fatigue Wellness Index',
     slug: 'training-fatigue-index-calculator',
-    description: 'Manage training load to optimize power development.',
+    description: 'Get wellness insights about training load to optimize power development.',
   },
   {
-    name: 'VO2 Recovery Half-Time Calculator',
+    name: 'VO2 Recovery Half-Time Wellness Estimator',
     slug: 'vo2-recovery-half-time-calculator',
-    description: 'Assess cardiovascular fitness affecting power output.',
+    description: 'Get wellness insights about cardiovascular fitness affecting power output.',
   },
   {
     name: 'Training Stress Score Calculator',
@@ -128,15 +128,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Power-to-Weight Performance Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Power-to-Weight Performance Wellness Index', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Power-to-Weight Performance Index Calculator',
+      name: 'Power-to-Weight Performance Wellness Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.',
+      description: 'Get general wellness insights about power-to-weight ratio and performance index based on power output, body weight, units, and activity type. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -182,45 +182,45 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'good';
   let performanceLevel = 'Good';
-  let interpretation = 'Your power-to-weight performance index is good. You have decent relative power output.';
+  let interpretation = 'This suggests a general lifestyle tendency where your power-to-weight performance index may be good. You may have decent relative power output.';
   
   if (performanceIndex >= 90) {
     status = 'elite';
     performanceLevel = 'Elite';
-    interpretation = 'Your power-to-weight performance index is elite. You have exceptional relative power output, comparable to highly trained athletes.';
+    interpretation = 'This suggests a general lifestyle tendency where your power-to-weight performance index is elite. You may have exceptional relative power output, comparable to highly trained athletes.';
   } else if (performanceIndex >= 75) {
     status = 'excellent';
     performanceLevel = 'Excellent';
-    interpretation = 'Your power-to-weight performance index is excellent. You have strong relative power output.';
+    interpretation = 'This suggests a general lifestyle tendency where your power-to-weight performance index is excellent. You may have strong relative power output.';
   } else if (performanceIndex >= 60) {
     status = 'good';
     performanceLevel = 'Good';
   } else if (performanceIndex >= 40) {
     status = 'moderate';
     performanceLevel = 'Moderate';
-    interpretation = 'Your power-to-weight performance index is moderate. There is significant room for improvement through training and body composition optimization.';
+    interpretation = 'This suggests a general lifestyle tendency where your power-to-weight performance index is moderate. You may consider improving through training and body composition optimization.';
   } else {
     status = 'improving';
     performanceLevel = 'Improving';
-    interpretation = 'Your power-to-weight performance index indicates room for improvement. Focus on increasing power output and optimizing body composition.';
+    interpretation = 'This suggests a general lifestyle tendency where your power-to-weight performance index indicates room for improvement. You may consider focusing on increasing power output and optimizing body composition.';
   }
   
   const recommendations = [
-    'Increase power output through: strength training, interval training, power-specific exercises, and progressive overload in training.',
-    'Optimize body composition: reduce excess body fat while maintaining or increasing muscle mass that contributes to power output.',
-    'Train specifically for your activity: cycling (sustained power), running (peak power), sprinting (explosive power) require different training approaches.',
+    'You may consider increasing power output through: strength training, interval training, power-specific exercises, and progressive overload in training. This is a personal insight, not a medical evaluation.',
+    'You may consider optimizing body composition: reduce excess body fat while maintaining or increasing muscle mass that contributes to power output.',
+    'You may consider training specifically for your activity: cycling (sustained power), running (peak power), sprinting (explosive power) may require different training approaches.',
   ];
   if (powerToWeightRatio < 3) {
-    recommendations.push('Focus on building power base: include consistent strength training and power development work in your routine. Power-to-weight ratio under 3 W/kg has significant improvement potential.');
+    recommendations.push('You may consider focusing on building power base: include consistent strength training and power development work in your routine. Power-to-weight ratio under 3 W/kg may have significant improvement potential.');
   }
   if (powerToWeightRatio >= 5) {
-    recommendations.push('Maintain elite level: continue high-intensity training and optimal nutrition to maintain exceptional power-to-weight ratio. Monitor for overtraining.');
+    recommendations.push('You may consider maintaining elite level: continue high-intensity training and optimal nutrition to maintain exceptional power-to-weight ratio. Monitor for overtraining patterns.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Measure current power output and body weight. Calculate baseline power-to-weight ratio and performance index.' },
-    { label: 'This Month', detail: 'Implement training program to increase power output (strength training, intervals) while optimizing body composition. Track improvements in power-to-weight ratio.' },
-    { label: 'Ongoing', detail: 'Continue power development training. Monitor power-to-weight ratio as indicator of performance improvements. Balance power gains with weight management for optimal ratio.' },
+    { label: 'This Week', detail: 'You may consider measuring current power output and body weight. Calculate baseline power-to-weight ratio and performance index.' },
+    { label: 'This Month', detail: 'You may consider implementing training program to increase power output (strength training, intervals) while optimizing body composition. Track improvements in power-to-weight ratio.' },
+    { label: 'Ongoing', detail: 'You may consider continuing power development training. Monitor power-to-weight ratio as indicator of performance improvements. Balance power gains with weight management for optimal ratio.' },
   ];
   
   return { powerToWeightRatio, performanceIndex, performanceLevel, status, interpretation, recommendations, plan };
@@ -248,9 +248,9 @@ export default function PowerToWeightPerformanceIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Zap className="h-5 w-5" />
-            Power-to-Weight Performance Index Calculator
+            Power-to-Weight Performance Wellness Index
           </CardTitle>
-          <CardDescription>Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.</CardDescription>
+          <CardDescription>Get general wellness insights about power-to-weight ratio and performance index based on power output, body weight, units, and activity type. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -511,9 +511,21 @@ export default function PowerToWeightPerformanceIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates power-to-weight ratio and performance index based on power output, body weight, power unit, weight unit, and optional activity type.</p>
+          <p>This tool provides general wellness insights about power-to-weight ratio and performance index based on power output, body weight, power unit, weight unit, and optional activity type. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include power-to-weight ratio (W/kg), performance index (0-100), performance level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

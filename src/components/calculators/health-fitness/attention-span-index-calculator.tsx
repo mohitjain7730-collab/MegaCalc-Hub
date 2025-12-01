@@ -96,24 +96,24 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Focus Retention Time Calculator',
+    name: 'Focus Retention Wellness Score',
     slug: 'focus-retention-time-calculator',
-    description: 'Assess focus retention related to attention span.',
+    description: 'Get wellness insights about focus retention related to attention span.',
   },
   {
-    name: 'Working Memory Capacity Estimator',
+    name: 'Working Memory Capacity Wellness Estimator',
     slug: 'working-memory-capacity-estimator',
-    description: 'Evaluate working memory supporting attention span.',
+    description: 'Get wellness insights about working memory supporting attention span.',
   },
   {
-    name: 'HRV Recovery Optimization Score Calculator',
+    name: 'HRV Recovery Optimization Wellness Score',
     slug: 'hrv-recovery-optimization-score-calculator',
-    description: 'Assess recovery status affecting attention and cognition.',
+    description: 'Get wellness insights about recovery status affecting attention and cognition.',
   },
   {
-    name: 'Training Fatigue Index Calculator',
+    name: 'Training Fatigue Wellness Index',
     slug: 'training-fatigue-index-calculator',
-    description: 'Manage physical fatigue impacting mental attention.',
+    description: 'Get wellness insights about physical fatigue impacting mental attention.',
   },
 ];
 
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Attention Span Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Attention Span Wellness Index', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Attention Span Index Calculator',
+      name: 'Attention Span Wellness Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality to assess cognitive attention capacity.',
+      description: 'Get general wellness insights about attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -189,44 +189,44 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'good';
   let attentionLevel = 'Good';
-  let interpretation = 'Your attention span index is good. You can maintain attention for reasonable periods.';
+  let interpretation = 'This suggests a general lifestyle tendency where your attention span index may be good. You may be able to maintain attention for reasonable periods.';
   
   if (attentionIndex >= 80) {
     status = 'excellent';
     attentionLevel = 'Excellent';
-    interpretation = 'Your attention span index is excellent. You have strong cognitive control and can maintain attention for extended periods.';
+    interpretation = 'This suggests a general lifestyle tendency where your attention span index is excellent. You may have strong cognitive control and can maintain attention for extended periods.';
   } else if (attentionIndex >= 60) {
     status = 'good';
     attentionLevel = 'Good';
   } else if (attentionIndex >= 40) {
     status = 'moderate';
     attentionLevel = 'Moderate';
-    interpretation = 'Your attention span index is moderate. There is room for improvement through reducing distractions, improving sleep, and attention training.';
+    interpretation = 'This suggests a general lifestyle tendency where your attention span index is moderate. You may consider improving through reducing distractions, improving sleep, and attention training.';
   } else {
     status = 'poor';
     attentionLevel = 'Poor';
-    interpretation = 'Your attention span index is poor. Significant improvements needed in sleep, stress management, distraction reduction, and attention training techniques.';
+    interpretation = 'This suggests a general lifestyle tendency where your attention span index may be lower. You may consider improvements in sleep, stress management, distraction reduction, and attention training techniques.';
   }
   
   const recommendations = [
-    'Reduce distractions: eliminate interruptions, create quiet environment, turn off notifications, limit screen time, and use focus techniques (Pomodoro, time-blocking).',
-    'Improve sleep quality: aim for 7-9 hours of quality sleep. Poor sleep significantly reduces attention span and cognitive function.',
-    'Practice attention training: meditation, mindfulness exercises, reading longer texts, concentration games, and gradually extending focus periods.',
+    'You may consider reducing distractions: eliminate interruptions, create quiet environment, turn off notifications, limit screen time, and use focus techniques (Pomodoro, time-blocking). This is a personal insight, not a medical evaluation.',
+    'You may consider improving sleep quality: aim for 7-9 hours of quality sleep. Poor sleep may reduce attention span and cognitive function.',
+    'You may consider practicing attention training: meditation, mindfulness exercises, reading longer texts, concentration games, and gradually extending focus periods.',
   ];
   if (values.distractionFrequency && values.distractionFrequency > 10) {
-    recommendations.push(`High distraction frequency (${values.distractionFrequency}/hour) is reducing attention span. Create a more controlled environment and proactively eliminate distractions.`);
+    recommendations.push(`High distraction frequency (${values.distractionFrequency}/hour) may be reducing attention span. You may consider creating a more controlled environment and proactively eliminating distractions.`);
   }
   if (values.taskSwitchCount && values.taskSwitchCount > 5) {
-    recommendations.push(`Excessive task switching (${values.taskSwitchCount}) fragments attention. Practice single-tasking and batch similar activities to improve attention span.`);
+    recommendations.push(`Excessive task switching (${values.taskSwitchCount}) may fragment attention. You may consider practicing single-tasking and batching similar activities to improve attention span.`);
   }
   if (values.sleepQuality && values.sleepQuality < 6) {
-    recommendations.push('Poor sleep quality is significantly impairing attention span. Prioritize sleep hygiene and aim for 7-9 hours of quality sleep for optimal cognitive function.');
+    recommendations.push('Poor sleep quality may be impairing attention span. You may consider prioritizing sleep hygiene and aiming for 7-9 hours of quality sleep for optimal cognitive function.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Track attention span during different activities. Note distraction frequency, task switches, and factors affecting attention (sleep, stress, environment).' },
-    { label: 'This Month', detail: 'Implement attention improvement strategies: reduce distractions, improve sleep, practice mindfulness, limit screen time, and gradually extend focus periods.' },
-    { label: 'Ongoing', detail: 'Maintain attention optimization habits. Continue attention training, monitor attention span, and adjust strategies based on what works best for you.' },
+    { label: 'This Week', detail: 'You may consider tracking attention span during different activities. Note distraction frequency, task switches, and factors affecting attention (sleep, stress, environment).' },
+    { label: 'This Month', detail: 'You may consider implementing attention improvement strategies: reduce distractions, improve sleep, practice mindfulness, limit screen time, and gradually extend focus periods.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining attention optimization habits. Continue attention training, monitor attention span, and adjust strategies based on what works best for you.' },
   ];
   
   return { attentionIndex, attentionLevel, attentionSpan, status, interpretation, recommendations, plan };
@@ -254,9 +254,9 @@ export default function AttentionSpanIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Brain className="h-5 w-5" />
-            Attention Span Index Calculator
+            Attention Span Wellness Index
           </CardTitle>
-          <CardDescription>Calculate attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality to assess cognitive attention capacity.</CardDescription>
+          <CardDescription>Get general wellness insights about attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -505,9 +505,21 @@ export default function AttentionSpanIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates attention span index based on sustained attention time, distraction frequency, task switch count, age, and sleep quality.</p>
+          <p>This tool provides general wellness insights about attention span index based on sustained attention time, distraction frequency, task switch count, age, and sleep quality. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include attention index (0-100), attention level, attention span (minutes), status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>
