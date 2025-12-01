@@ -96,11 +96,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Testosterone Deficiency Risk Calculator',
-    slug: 'testosterone-deficiency-risk-calculator',
-    description: 'Assess testosterone levels that affect sperm production.',
-  },
-  {
     name: 'Testosterone-to-Cortisol Ratio Calculator',
     slug: 'testosterone-to-cortisol-ratio-calculator',
     description: 'Check hormonal balance that impacts fertility.',

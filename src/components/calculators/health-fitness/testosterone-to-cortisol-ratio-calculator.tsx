@@ -95,11 +95,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Testosterone Deficiency Risk Calculator',
-    slug: 'testosterone-deficiency-risk-calculator',
-    description: 'Assess risk factors for low testosterone.',
-  },
-  {
     name: 'Stress Hormone Balance Calculator',
     slug: 'stress-hormone-balance-calculator',
     description: 'Monitor cortisol and stress impact on hormones.',

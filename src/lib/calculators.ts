@@ -2635,78 +2635,6 @@ export const calculators: Calculator[] = [
   { id: 3026, name: 'Total Energy Expenditure (TEE) Calculator', description: 'Calculate your daily total energy expenditure including BMR, activity, and exercise for comprehensive calorie needs.', slug: 'total-energy-expenditure-calculator', category: 'health-fitness' },
   { id: 3027, name: 'Respiratory Quotient (RQ) Calculator', description: 'Calculate your respiratory quotient to understand fuel utilization during exercise and metabolic efficiency.', slug: 'respiratory-quotient-calculator', category: 'health-fitness' },
   { 
-    id: 3200, 
-    name: 'COPD Risk Score Calculator', 
-    description: 'Assess your risk of Chronic Obstructive Pulmonary Disease based on smoking history, symptoms, and environmental factors.', 
-    slug: 'copd-risk-score-calculator', 
-    category: 'health-fitness',
-    metaTitle: 'COPD Risk Score Calculator - Assess Your Lung Health Risk',
-    metaDescription: 'Calculate your COPD risk score based on smoking history, symptoms, environmental exposure, and medical history for comprehensive lung health assessment.'
-  },
-  { 
-    id: 3201, 
-    name: 'Fracture Risk (FRAX) Calculator', 
-    description: 'Calculate your 10-year probability of hip fracture and major osteoporotic fracture using the WHO FRAX algorithm.', 
-    slug: 'fracture-risk-frax-calculator', 
-    category: 'health-fitness',
-    metaTitle: 'Fracture Risk (FRAX) Calculator - Osteoporosis Risk Assessment',
-    metaDescription: 'Assess your 10-year fracture risk using the validated FRAX algorithm to evaluate osteoporosis and bone health risk factors.'
-  },
-  { 
-    id: 3202, 
-    name: 'Metabolic Syndrome Risk Calculator', 
-    description: 'Evaluate your risk of metabolic syndrome using ATP III criteria including waist circumference, blood pressure, and laboratory values.', 
-    slug: 'metabolic-syndrome-risk-calculator', 
-    category: 'health-fitness',
-    metaTitle: 'Metabolic Syndrome Risk Calculator - Cardiovascular Risk Assessment',
-    metaDescription: 'Calculate your metabolic syndrome risk using ATP III criteria to assess cardiovascular and diabetes risk factors comprehensively.'
-  },
-  { 
-    id: 3203, 
-    name: 'Liver Fat (NAFLD) Risk Calculator', 
-    description: 'Assess your risk of Non-Alcoholic Fatty Liver Disease based on metabolic factors, lifestyle, and medical history.', 
-    slug: 'liver-fat-nafld-risk-calculator', 
-    category: 'health-fitness',
-    metaTitle: 'Liver Fat (NAFLD) Risk Calculator - Liver Health Assessment',
-    metaDescription: 'Evaluate your NAFLD risk based on metabolic factors, lifestyle choices, and medical history for comprehensive liver health assessment.'
-  },
-  { 
-    id: 3204, 
-    name: 'Kidney Function (eGFR) Calculator', 
-    description: 'Calculate your estimated Glomerular Filtration Rate using the CKD-EPI equation to assess kidney function and health.', 
-    slug: 'kidney-function-egfr-calculator', 
-    category: 'health-fitness',
-    metaTitle: 'Kidney Function (eGFR) Calculator - Renal Health Assessment',
-    metaDescription: 'Calculate your estimated glomerular filtration rate using the CKD-EPI equation to evaluate kidney function and assess renal health.'
-  },
-  { 
-    id: 3205, 
-    name: 'Waist-to-BMI Ratio Risk Calculator', 
-    description: 'Assess your central obesity and metabolic risk using the waist-to-BMI ratio for more accurate body composition evaluation.', 
-    slug: 'waist-to-bmi-ratio-risk-calculator', 
-    category: 'health-fitness',
-    metaTitle: 'Waist-to-BMI Ratio Risk Calculator - Central Obesity Assessment',
-    metaDescription: 'Calculate your waist-to-BMI ratio to assess central obesity and metabolic risk for more accurate body composition evaluation.'
-  },
-  { 
-    id: 3206, 
-    name: 'Hypertension Stage Calculator', 
-    description: 'Determine your blood pressure stage and cardiovascular risk using AHA guidelines with comprehensive risk factor assessment.', 
-    slug: 'hypertension-stage-calculator', 
-    category: 'health-fitness',
-    metaTitle: 'Hypertension Stage Calculator - Blood Pressure Assessment',
-    metaDescription: 'Calculate your hypertension stage and cardiovascular risk using AHA guidelines with comprehensive blood pressure evaluation.'
-  },
-  { 
-    id: 3207, 
-    name: 'Coronary Calcium Score Estimator', 
-    description: 'Estimate your coronary artery calcium burden and cardiovascular risk based on demographic and risk factors.', 
-    slug: 'coronary-calcium-score-estimator', 
-    category: 'health-fitness',
-    metaTitle: 'Coronary Calcium Score Estimator - Heart Disease Risk Assessment',
-    metaDescription: 'Estimate your coronary calcium score and cardiovascular risk based on demographic factors and medical history for heart health evaluation.'
-  },
-  { 
     id: 3208, 
     name: 'Cardiometabolic Age Calculator', 
     description: 'Calculate your metabolic age compared to chronological age based on cardiovascular and metabolic risk factors.', 
@@ -4110,24 +4038,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate the probability of conceiving in a cycle considering age, regularity, and fertile window timing.'
   },
   {
-    id: 188,
-    name: 'IVF Success Probability Calculator',
-    description: 'Estimate IVF success probability per cycle based on age, embryo quality, and history.',
-    slug: 'ivf-success-probability-calculator',
-    category: 'health-fitness',
-    metaTitle: 'IVF Success Probability Calculator',
-    metaDescription: 'Estimate IVF success likelihood using age, embryo quality, and prior cycles to inform expectations.'
-  },
-  {
-    id: 189,
-    name: 'Gestational Diabetes Risk Calculator',
-    description: 'Screening-oriented risk estimate based on age, BMI, and family history.',
-    slug: 'gestational-diabetes-risk-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Gestational Diabetes Risk Calculator',
-    metaDescription: 'Estimate risk for gestational diabetes to guide screening and prenatal lifestyle planning.'
-  },
-  {
     id: 190,
     name: 'Prenatal Vitamin Dosage Calculator',
     description: 'Evaluate key prenatal vitamin doses against common guideline ranges.',
@@ -4398,22 +4308,13 @@ export const calculators: Calculator[] = [
     metaDescription: 'Measure emotional wellbeing and resilience, then follow personalized recommendations and action plans.'
   },
   {
-    id: 4505,
-    name: 'Anxiety Level Estimator (GAD-7 Simplified)',
-    description: 'Estimate anxiety severity and a 0–100 index using a simplified GAD-7 score plus sleep and impairment inputs.',
-    slug: 'anxiety-level-estimator-gad7-simplified',
+    id: 4507,
+    name: 'Resilience Capacity Score Calculator',
+    description: 'Estimate resilience, coping capacity, and recovery time from stress with a multi-domain self-assessment.',
+    slug: 'resilience-capacity-score-calculator',
     category: 'health-fitness',
-    metaTitle: 'Anxiety Level Estimator (GAD-7 Simplified)',
-    metaDescription: 'Convert your GAD-7 score into an anxiety index, see severity bands, and get next-step recommendations.'
-  },
-  {
-    id: 4506,
-    name: 'Depression Severity Index (PHQ-9 Simplified)',
-    description: 'Blend PHQ-9 totals, impairment days, and energy into a simple depression severity index.',
-    slug: 'depression-severity-index-phq9-simplified',
-    category: 'health-fitness',
-    metaTitle: 'Depression Severity Index (PHQ-9 Simplified)',
-    metaDescription: 'Estimate depression severity based on PHQ-9 cutoffs with contextual recommendations and action steps.'
+    metaTitle: 'Resilience Capacity Score Calculator',
+    metaDescription: 'Estimate resilience and recovery capacity from stress using a multi-domain self-assessment scale to guide mental fitness practices.'
   },
   {
     id: 4507,
@@ -4560,22 +4461,13 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate biological fitness age from VO2max, BMI, and activity level to assess cardiovascular health.'
   },
   {
-    id: 4523,
-    name: 'Estrogen Dominance Risk Calculator',
-    description: 'Estimate estrogen dominance risk from lifestyle factors, BMI, stress, and diet patterns.',
-    slug: 'estrogen-dominance-risk-calculator',
+    id: 4525,
+    name: 'Cycle Length Variability Tracker',
+    description: 'Track menstrual cycle length variability and identify patterns that may signal hormonal imbalance.',
+    slug: 'cycle-length-variability-tracker',
     category: 'health-fitness',
-    metaTitle: 'Estrogen Dominance Risk Calculator',
-    metaDescription: 'Assess estrogen dominance risk from lifestyle factors, BMI, stress, alcohol, and diet to support hormonal balance.'
-  },
-  {
-    id: 4524,
-    name: 'Progesterone-to-Estrogen Ratio Calculator',
-    description: 'Calculate progesterone-to-estrogen ratio from hormone levels to assess hormonal balance.',
-    slug: 'progesterone-to-estrogen-ratio-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Progesterone-to-Estrogen Ratio Calculator',
-    metaDescription: 'Calculate progesterone-to-estrogen ratio from blood test results to assess hormonal balance and guide treatment.'
+    metaTitle: 'Cycle Length Variability Tracker',
+    metaDescription: 'Track menstrual cycle length variability over time to identify patterns that may reflect hormonal imbalance or stress.'
   },
   {
     id: 4525,
@@ -4632,22 +4524,13 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate postpartum hormonal recovery score and timeline from weeks postpartum, breastfeeding status, sleep, energy, and mood to assess recovery progress.'
   },
   {
-    id: 4531,
-    name: 'PCOS Symptom Severity Score Calculator',
-    description: 'Assess PCOS symptom severity score and risk level from cycle irregularity, hirsutism, acne, weight, insulin resistance, and mood.',
-    slug: 'pcos-symptom-severity-score-calculator',
+    id: 4533,
+    name: 'Pelvic Pain Symptom Diary Calculator',
+    description: 'Track pelvic pain intensity and triggers over time to support discussions with a healthcare provider.',
+    slug: 'pelvic-pain-symptom-diary-calculator',
     category: 'health-fitness',
-    metaTitle: 'PCOS Symptom Severity Score Calculator',
-    metaDescription: 'Assess PCOS symptom severity score and risk level from cycle irregularity, hirsutism, acne, weight, insulin resistance, and mood to guide management.'
-  },
-  {
-    id: 4532,
-    name: 'Endometriosis Pain & Cycle Impact Tracker',
-    description: 'Track endometriosis pain severity, cycle impact, and daily life disruption to assess condition severity and guide management.',
-    slug: 'endometriosis-pain-cycle-impact-tracker',
-    category: 'health-fitness',
-    metaTitle: 'Endometriosis Pain & Cycle Impact Tracker',
-    metaDescription: 'Track endometriosis pain severity, cycle impact, and daily life disruption to assess condition severity and guide treatment planning.'
+    metaTitle: 'Pelvic Pain Symptom Diary Calculator',
+    metaDescription: 'Log pelvic pain severity and triggers over time to support pattern recognition and discussions with a healthcare provider.'
   },
   {
     id: 4533,
@@ -4658,15 +4541,7 @@ export const calculators: Calculator[] = [
     metaTitle: 'Testosterone-to-Cortisol Ratio Calculator',
     metaDescription: 'Calculate testosterone-to-cortisol ratio from blood test results to assess anabolic-catabolic balance and recovery capacity.'
   },
-  {
-    id: 4534,
-    name: 'Testosterone Deficiency Risk Calculator',
-    description: 'Estimate testosterone deficiency risk from age, BMI, exercise, sleep, stress, alcohol, and energy levels.',
-    slug: 'testosterone-deficiency-risk-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Testosterone Deficiency Risk Calculator',
-    metaDescription: 'Assess testosterone deficiency risk from age, BMI, exercise, sleep, stress, alcohol, and energy levels to guide lifestyle changes and testing.'
-  },
+ 
   {
     id: 4535,
     name: 'Male Fertility Sperm Health Index Calculator',
@@ -4676,24 +4551,7 @@ export const calculators: Calculator[] = [
     metaTitle: 'Male Fertility Sperm Health Index Calculator',
     metaDescription: 'Calculate sperm health index and fertility score from semen analysis results (count, motility, morphology, volume) and age to assess fertility.'
   },
-  {
-    id: 4536,
-    name: 'Andropause Onset Risk Estimator',
-    description: 'Estimate andropause onset risk, probability, and age from age, testosterone level, energy, libido, muscle mass, mood, and sleep.',
-    slug: 'andropause-onset-risk-estimator',
-    category: 'health-fitness',
-    metaTitle: 'Andropause Onset Risk Estimator',
-    metaDescription: 'Estimate andropause onset risk, probability, and age from symptoms and testosterone levels to guide prevention and treatment planning.'
-  },
-  {
-    id: 4537,
-    name: 'Prostate Health Score (PSA-based) Calculator',
-    description: 'Calculate prostate health score and risk level from PSA level, age, free PSA, family history, and symptoms.',
-    slug: 'prostate-health-score-psa-based-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Prostate Health Score (PSA-based) Calculator',
-    metaDescription: 'Calculate prostate health score and risk level from PSA level, age, free PSA, family history, and symptoms to guide monitoring and follow-up care.'
-  },
+ 
   {
     id: 4538,
     name: 'Muscle Recovery Time by Age Calculator',
@@ -4783,15 +4641,6 @@ export const calculators: Calculator[] = [
     category: 'health-fitness',
     metaTitle: 'Red Blood Cell Count to Oxygen Capacity Calculator',
     metaDescription: 'Calculate red blood cell count to oxygen capacity from red blood cell count, hemoglobin level, oxygen capacity, and age to assess oxygen transport.'
-  },
-  {
-    id: 5004,
-    name: 'White Blood Cell (WBC) Count Balance Calculator',
-    description: 'Calculate white blood cell count balance from white blood cell count, neutrophil count, lymphocyte count, and age.',
-    slug: 'white-blood-cell-wbc-count-balance-calculator',
-    category: 'health-fitness',
-    metaTitle: 'White Blood Cell (WBC) Count Balance Calculator',
-    metaDescription: 'Calculate white blood cell count balance from white blood cell count, neutrophil count, lymphocyte count, and age to assess immune function.'
   },
   {
     id: 5005,

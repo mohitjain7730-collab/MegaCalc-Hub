@@ -336,10 +336,6 @@ export default function VitaminDSunExposureCalculator() {
               <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/neat-calculator" className="text-primary hover:underline">NEAT (Daily Movement) Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Track non-exercise activity that complements outdoor time.</p>
             </div>
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/liver-fat-nafld-risk-calculator" className="text-primary hover:underline">Liver Fat (NAFLD) Risk Calculator</Link></h4>
-              <p className="text-sm text-muted-foreground">Monitor metabolic health factors that interact with Vitamin D status.</p>
-            </div>
           </div>
         </CardContent>
       </Card>

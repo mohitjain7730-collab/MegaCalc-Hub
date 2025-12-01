@@ -105,11 +105,6 @@ const relatedCalculators = [
     description: 'Track iron intake that affects hemoglobin.',
   },
   {
-    name: 'White Blood Cell (WBC) Count Balance Calculator',
-    slug: 'white-blood-cell-wbc-count-balance-calculator',
-    description: 'Monitor complete blood count components.',
-  },
-  {
     name: 'Platelet Count Risk Analyzer',
     slug: 'platelet-count-risk-analyzer',
     description: 'Assess blood health comprehensively.',

@@ -106,11 +106,6 @@ const relatedCalculators = [
     description: 'Basic ovulation calculator to coordinate with mucus tracking.',
   },
   {
-    name: 'Progesterone-to-Estrogen Ratio Calculator',
-    slug: 'progesterone-to-estrogen-ratio-calculator',
-    description: 'Check hormone balance that affects cervical mucus quality.',
-  },
-  {
     name: 'Follicular vs Luteal Phase Nutrition Planner Calculator',
     slug: 'follicular-vs-luteal-phase-nutrition-planner-calculator',
     description: 'Plan nutrition to support healthy cervical mucus production.',

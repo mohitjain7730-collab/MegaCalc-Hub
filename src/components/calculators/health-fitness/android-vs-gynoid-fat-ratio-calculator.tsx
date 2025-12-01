@@ -480,14 +480,6 @@ export default function AndroidVsGynoidFatRatioCalculator() {
               </h4>
               <p className="text-sm text-muted-foreground">Measure total body fat to complement fat distribution analysis.</p>
             </div>
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/metabolic-syndrome-risk-calculator" className="text-primary hover:underline">
-                  Metabolic Syndrome Risk Calculator
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">Assess metabolic syndrome risk, which is strongly linked to android fat distribution.</p>
-            </div>
           </div>
         </CardContent>
       </Card>

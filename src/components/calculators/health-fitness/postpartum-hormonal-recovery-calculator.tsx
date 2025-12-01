@@ -98,11 +98,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Progesterone-to-Estrogen Ratio Calculator',
-    slug: 'progesterone-to-estrogen-ratio-calculator',
-    description: 'Track hormone ratios during postpartum recovery.',
-  },
-  {
     name: 'Sleep Quality vs Productivity Correlation Calculator',
     slug: 'sleep-quality-vs-productivity-correlation-calculator',
     description: 'Manage sleep to support postpartum hormonal recovery.',

@@ -100,11 +100,6 @@ const relatedCalculators = [
     description: 'Monitor complete blood count components.',
   },
   {
-    name: 'White Blood Cell (WBC) Count Balance Calculator',
-    slug: 'white-blood-cell-wbc-count-balance-calculator',
-    description: 'Assess blood health comprehensively.',
-  },
-  {
     name: 'Red Blood Cell Count to Oxygen Capacity Calculator',
     slug: 'red-blood-cell-count-to-oxygen-capacity-calculator',
     description: 'Evaluate complete blood count together.',

@@ -335,14 +335,6 @@ export default function SodiumToPotassiumRatioCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/hypertension-stage-calculator" className="text-primary hover:underline">
-                  Hypertension Stage Calculator
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">Understand blood-pressure risk alongside sodium/potassium balance.</p>
-            </div>
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
                 <Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Electrolyte Replacement Calculator
                 </Link>

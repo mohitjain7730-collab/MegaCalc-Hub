@@ -99,16 +99,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Estrogen Dominance Risk Calculator',
-    slug: 'estrogen-dominance-risk-calculator',
-    description: 'Assess hormonal balance during perimenopause transition.',
-  },
-  {
-    name: 'Progesterone-to-Estrogen Ratio Calculator',
-    slug: 'progesterone-to-estrogen-ratio-calculator',
-    description: 'Track hormone ratios that change during perimenopause.',
-  },
-  {
     name: 'Sleep Quality vs Productivity Correlation Calculator',
     slug: 'sleep-quality-vs-productivity-correlation-calculator',
     description: 'Manage sleep issues common during perimenopause.',

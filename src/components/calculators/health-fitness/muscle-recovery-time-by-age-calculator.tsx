@@ -104,16 +104,6 @@ const relatedCalculators = [
     description: 'Track overall recovery metrics including HRV and sleep.',
   },
   {
-    name: 'Testosterone Deficiency Risk Calculator',
-    slug: 'testosterone-deficiency-risk-calculator',
-    description: 'Assess testosterone levels that affect muscle recovery.',
-  },
-  {
-    name: 'Andropause Onset Risk Estimator',
-    slug: 'andropause-onset-risk-estimator',
-    description: 'Track age-related hormonal changes that affect recovery.',
-  },
-  {
     name: 'Sleep Quality vs Productivity Correlation Calculator',
     slug: 'sleep-quality-vs-productivity-correlation-calculator',
     description: 'Improve sleep to support muscle recovery.',

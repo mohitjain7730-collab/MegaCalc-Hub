@@ -110,11 +110,6 @@ const relatedCalculators = [
     slug: 'iron-intake-calculator',
     description: 'Track iron intake that affects anemia risk.',
   },
-  {
-    name: 'White Blood Cell (WBC) Count Balance Calculator',
-    slug: 'white-blood-cell-wbc-count-balance-calculator',
-    description: 'Monitor complete blood count components.',
-  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/health-fitness/iron-deficiency-anemia-risk-calculator';
