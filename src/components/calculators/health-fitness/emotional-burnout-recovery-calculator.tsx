@@ -98,11 +98,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Social Anxiety Score Estimator',
-    slug: 'social-anxiety-score-estimator',
-    description: 'Assess social stress markers alongside burnout indicators.',
-  },
-  {
     name: 'Cognitive Load Estimator',
     slug: 'cognitive-load-estimator',
     description: 'Quantify mental task saturation that contributes to burnout.',

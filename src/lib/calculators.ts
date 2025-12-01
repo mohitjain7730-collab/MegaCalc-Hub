@@ -5084,15 +5084,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate daily mental fatigue accumulation from number and length of focus blocks, recovery time, sleep hours, and baseline stress.'
   },
   {
-    id: 7300,
-    name: 'Social Anxiety Score Estimator',
-    description: 'Estimate social anxiety severity from worry frequency, avoidance levels, physical symptoms, and safety behaviors.',
-    slug: 'social-anxiety-score-estimator',
-    category: 'health-fitness',
-    metaTitle: 'Social Anxiety Score Estimator',
-    metaDescription: 'Estimate social anxiety severity by combining thought frequency, avoidance, physical symptoms, and safety behaviors into a single score.'
-  },
-  {
     id: 7301,
     name: 'Emotional Burnout Recovery Calculator',
     description: 'Estimate burnout severity and recovery timeline from weekly workload, sleep, exhaustion, and recovery practices.',
@@ -5359,106 +5350,6 @@ export const calculators: Calculator[] = [
        'Calculate a circadian rhythm alignment score and daytime function index based on social jetlag, morning light exposure, evening screen use, and schedule stability.'
    },
   {
-    id: 7000,
-    name: 'Wells Score for DVT Probability Calculator',
-    description: 'Estimate pre-test probability of deep vein thrombosis (DVT) using the Wells clinical prediction rule.',
-    slug: 'wells-score-for-dvt-probability-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Wells Score for DVT Probability Calculator',
-    metaDescription:
-      'Estimate pre-test probability of deep vein thrombosis (DVT) from bedside Wells score criteria to support D-dimer and imaging decisions.'
-  },
-  {
-    id: 7001,
-    name: 'CURB-65 Pneumonia Severity Score Calculator',
-    description: 'Calculate the CURB-65 score to assess pneumonia severity and short-term mortality risk.',
-    slug: 'curb-65-pneumonia-severity-score-calculator',
-    category: 'health-fitness',
-    metaTitle: 'CURB-65 Pneumonia Severity Score Calculator',
-    metaDescription:
-      'Calculate the CURB-65 pneumonia severity score from five bedside criteria to stratify short-term mortality risk and guide disposition.'
-  },
-  {
-    id: 7002,
-    name: 'CHA2DS2-VASc Stroke Risk Score Calculator',
-    description: 'Estimate annual stroke risk in atrial fibrillation using the CHA2DS2-VASc clinical risk score.',
-    slug: 'cha2ds2-vasc-stroke-risk-score-calculator',
-    category: 'health-fitness',
-    metaTitle: 'CHA2DS2-VASc Stroke Risk Score Calculator',
-    metaDescription:
-      'Estimate annual stroke risk in non-valvular atrial fibrillation using the CHA2DS2-VASc score to support anticoagulation decisions.'
-  },
-  {
-    id: 7003,
-    name: 'HAS-BLED Bleeding Risk Calculator',
-    description: 'Estimate major bleeding risk in anticoagulated patients using the HAS-BLED score.',
-    slug: 'has-bled-bleeding-risk-calculator',
-    category: 'health-fitness',
-    metaTitle: 'HAS-BLED Bleeding Risk Calculator',
-    metaDescription:
-      'Estimate annual major bleeding risk on oral anticoagulation with the HAS-BLED score and highlight modifiable bleeding risk factors.'
-  },
-  {
-    id: 7004,
-    name: 'Ranson’s Criteria Pancreatitis Severity Calculator',
-    description: 'Estimate acute pancreatitis severity and mortality risk using Ranson’s criteria.',
-    slug: 'ransons-criteria-pancreatitis-severity-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Ranson’s Criteria Pancreatitis Severity Calculator',
-    metaDescription:
-      'Estimate acute pancreatitis severity and approximate mortality risk from admission and 48-hour Ranson’s criteria to guide monitoring intensity.'
-  },
-  {
-    id: 6000,
-    name: 'PaO2/FiO2 Ratio Calculator',
-    description: 'Calculate the PaO2/FiO2 (P/F) ratio from PaO2 and FiO2 to assess oxygenation and ARDS severity.',
-    slug: 'pao2-fio2-ratio-calculator',
-    category: 'health-fitness',
-    metaTitle: 'PaO2/FiO2 Ratio Calculator',
-    metaDescription:
-      'Calculate the PaO2/FiO2 (P/F) ratio from arterial oxygen tension and inspired oxygen fraction to assess oxygenation efficiency and ARDS severity.'
-  },
-  {
-    id: 6001,
-    name: 'Tidal Volume by Ideal Body Weight Calculator',
-    description: 'Calculate ventilator tidal volume from ideal body weight using lung-protective ventilation targets.',
-    slug: 'tidal-volume-by-ideal-body-weight-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Tidal Volume by Ideal Body Weight Calculator',
-    metaDescription:
-      'Calculate ventilator tidal volume from ideal body weight (IBW) using lung-protective 4–8 mL/kg targets for respiratory support planning.'
-  },
-  {
-    id: 6002,
-    name: 'Alveolar Oxygen Gradient Calculator',
-    description: 'Calculate alveolar oxygen (PAO2) and the alveolar–arterial (A–a) oxygen gradient using the alveolar gas equation.',
-    slug: 'alveolar-oxygen-gradient-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Alveolar Oxygen Gradient Calculator',
-    metaDescription:
-      'Calculate alveolar oxygen (PAO2) and the alveolar–arterial (A–a) oxygen gradient from FiO2, PaO2, PaCO2, barometric pressure, and respiratory quotient.'
-  },
-  {
-    id: 6003,
-    name: 'MELD Score (Liver Disease Severity)',
-    description: 'Estimate liver disease severity using an educational MELD-Na score approximation.',
-    slug: 'meld-score-liver-disease-severity-calculator',
-    category: 'health-fitness',
-    metaTitle: 'MELD Score (Liver Disease Severity) Calculator',
-    metaDescription:
-      'Estimate liver disease severity with an educational MELD-Na score approximation based on bilirubin, INR, creatinine, and sodium.'
-  },
-  {
-    id: 6004,
-    name: 'Child-Pugh Score Calculator',
-    description: 'Calculate the Child-Pugh score and class for chronic liver disease.',
-    slug: 'child-pugh-score-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Child-Pugh Score Calculator',
-    metaDescription:
-      'Calculate the Child-Pugh score and class using bilirubin, albumin, INR, ascites, and encephalopathy to stage chronic liver disease severity.'
-  },
-  {
     id: 5100,
     name: 'Hydration Balance with Alcohol Intake Calculator',
     description: 'Calculate hydration balance considering daily water intake, alcohol consumption, body weight, and activity level.',
@@ -5495,24 +5386,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate mean corpuscular volume (MCV) from hematocrit and red blood cell count to assess red blood cell size and classify anemia types.'
   },
   {
-    id: 5104,
-    name: 'Serum Osmolar Gap Calculator',
-    description: 'Calculate serum osmolar gap from measured osmolality, sodium, glucose, and BUN to detect unmeasured osmoles and assess metabolic status.',
-    slug: 'serum-osmolar-gap-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Serum Osmolar Gap Calculator',
-    metaDescription: 'Calculate serum osmolar gap from measured osmolality, sodium, glucose, and BUN to detect unmeasured osmoles and assess metabolic status.'
-  },
-  {
-    id: 5105,
-    name: 'Corrected QT Interval by Bazett & Fridericia Calculator',
-    description: 'Calculate corrected QT interval (QTc) using Bazett and Fridericia formulas from QT and RR intervals to assess cardiac repolarization and arrhythmia risk.',
-    slug: 'corrected-qt-interval-bazett-fridericia-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Corrected QT Interval by Bazett & Fridericia Calculator',
-    metaDescription: 'Calculate corrected QT interval (QTc) using Bazett and Fridericia formulas from QT and RR intervals to assess cardiac repolarization and arrhythmia risk.'
-  },
-  {
     id: 5106,
     name: 'Body Surface Area by Du Bois Formula',
     description: 'Estimate body surface area (BSA) using the Du Bois & Du Bois equation for medication dosing and hemodynamic indexing.',
@@ -5520,42 +5393,6 @@ export const calculators: Calculator[] = [
     category: 'health-fitness',
     metaTitle: 'Body Surface Area by Du Bois Formula Calculator',
     metaDescription: 'Calculate body surface area (BSA) with the Du Bois equation to support drug dosing, cardiac index calculations, and fluid planning.'
-  },
-  {
-    id: 5107,
-    name: 'Fractional Excretion of Sodium (FeNa) Calculator',
-    description: 'Compute FeNa from paired urine and plasma sodium/creatinine values to differentiate prerenal versus intrinsic renal injury.',
-    slug: 'fractional-excretion-of-sodium-fena-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Fractional Excretion of Sodium (FeNa) Calculator',
-    metaDescription: 'Calculate FeNa using urine and plasma sodium/creatinine values to help distinguish prerenal azotemia from intrinsic acute kidney injury.'
-  },
-  {
-    id: 5108,
-    name: 'Fractional Excretion of Urea (FeUrea) Calculator',
-    description: 'Calculate FeUrea to evaluate acute kidney injury, particularly when diuretics limit the accuracy of FeNa.',
-    slug: 'fractional-excretion-of-urea-feurea-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Fractional Excretion of Urea (FeUrea) Calculator',
-    metaDescription: 'Compute FeUrea from urine and plasma urea/creatinine values to assess prerenal versus intrinsic causes of acute kidney injury.'
-  },
-  {
-    id: 5109,
-    name: 'Cardiac Index Calculator',
-    description: 'Normalize cardiac output by body surface area to assess circulatory performance (CI = CO / BSA).',
-    slug: 'cardiac-index-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Cardiac Index Calculator (CI = CO / BSA)',
-    metaDescription: 'Calculate cardiac index (CI) from cardiac output and body surface area to evaluate perfusion goals in shock and heart failure.'
-  },
-  {
-    id: 5110,
-    name: 'Shock Index Calculator',
-    description: 'Compute the shock index (heart rate divided by systolic blood pressure) to screen for hemodynamic instability.',
-    slug: 'shock-index-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Shock Index Calculator (HR/SBP)',
-    metaDescription: 'Quickly calculate the shock index (HR/SBP) to assess risk of hemodynamic compromise in trauma, sepsis, and acute care settings.'
   },
   {
     id: 5067,

@@ -72,19 +72,9 @@ const relatedCalculators = [
     description: 'Calculate cardiac output for hemodynamic assessments.',
   },
   {
-    name: 'Cardiac Index Calculator',
-    slug: 'cardiac-index-calculator',
-    description: 'Normalize cardiac output by body surface area.',
-  },
-  {
     name: 'Caloric Needs Calculator',
     slug: 'daily-calorie-needs-calculator',
     description: 'Estimate energy expenditure based on weight and activity.',
-  },
-  {
-    name: 'Shock Index Calculator',
-    slug: 'shock-index-calculator',
-    description: 'Screen for hemodynamic instability using HR and BP.',
   },
 ];
 

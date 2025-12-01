@@ -280,18 +280,14 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'platelet-count-risk-analyzer': dynamic(() => import('@/components/calculators/health-fitness/platelet-count-risk-analyzer')),
     'liver-enzyme-alt-ast-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/liver-enzyme-alt-ast-ratio-calculator')),
     'kidney-function-creatinine-clearance-crcl-calculator': dynamic(() => import('@/components/calculators/health-fitness/kidney-function-creatinine-clearance-crcl-calculator')),
-    'fractional-excretion-of-sodium-fena-calculator': dynamic(() => import('@/components/calculators/health-fitness/fractional-excretion-of-sodium-fena-calculator')),
-    'fractional-excretion-of-urea-feurea-calculator': dynamic(() => import('@/components/calculators/health-fitness/fractional-excretion-of-urea-feurea-calculator')),
     'blood-urea-nitrogen-bun-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/blood-urea-nitrogen-bun-ratio-calculator')),
     'thyroid-function-tsh-t3-t4-balance-calculator': dynamic(() => import('@/components/calculators/health-fitness/thyroid-function-tsh-t3-t4-balance-calculator')),
     'iron-deficiency-anemia-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/iron-deficiency-anemia-risk-calculator')),
     'vitamin-d-deficiency-risk-score-calculator': dynamic(() => import('@/components/calculators/health-fitness/vitamin-d-deficiency-risk-score-calculator')),
-    'cardiac-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/cardiac-index-calculator')),
     'cardiac-output-q-calculator': dynamic(() => import('@/components/calculators/health-fitness/cardiac-output-q-calculator')),
     'blood-volume-estimator': dynamic(() => import('@/components/calculators/health-fitness/blood-volume-estimator')),
     'peripheral-resistance-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/peripheral-resistance-index-calculator')),
     'pulse-pressure-analyzer': dynamic(() => import('@/components/calculators/health-fitness/pulse-pressure-analyzer')),
-    'shock-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/shock-index-calculator')),
     'arterial-elasticity-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/arterial-elasticity-index-calculator')),
     'heart-workload-rate-pressure-product-calculator': dynamic(() => import('@/components/calculators/health-fitness/heart-workload-rate-pressure-product-calculator')),
     'oxygen-pulse-efficiency-calculator': dynamic(() => import('@/components/calculators/health-fitness/oxygen-pulse-efficiency-calculator')),
@@ -325,7 +321,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'manganese-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/manganese-requirement-calculator')),
     'copper-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/copper-intake-calculator')),
     'uv-exposure-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/uv-exposure-risk-calculator')),
-    'social-anxiety-score-estimator': dynamic(() => import('@/components/calculators/health-fitness/social-anxiety-score-estimator')),
     'emotional-burnout-recovery-calculator': dynamic(() => import('@/components/calculators/health-fitness/emotional-burnout-recovery-calculator')),
     'cognitive-load-estimator': dynamic(() => import('@/components/calculators/health-fitness/cognitive-load-estimator')),
     'gratitude-mood-correlation-tracker': dynamic(() => import('@/components/calculators/health-fitness/gratitude-mood-correlation-tracker')),
@@ -418,40 +413,10 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'mental-fatigue-accumulation-tracker': dynamic(
       () => import('@/components/calculators/health-fitness/mental-fatigue-accumulation-tracker'),
     ),
-    'wells-score-for-dvt-probability-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/wells-score-for-dvt-probability-calculator'),
-    ),
-    'curb-65-pneumonia-severity-score-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/curb-65-pneumonia-severity-score-calculator'),
-    ),
-    'cha2ds2-vasc-stroke-risk-score-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/cha2ds2-vasc-stroke-risk-score-calculator'),
-    ),
-    'has-bled-bleeding-risk-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/has-bled-bleeding-risk-calculator'),
-    ),
-    'ransons-criteria-pancreatitis-severity-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/ransons-criteria-pancreatitis-severity-calculator'),
-    ),
-    'pao2-fio2-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/pao2-fio2-ratio-calculator')),
-    'tidal-volume-by-ideal-body-weight-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/tidal-volume-ideal-body-weight-calculator'),
-    ),
-    'alveolar-oxygen-gradient-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/alveolar-oxygen-gradient-calculator'),
-    ),
-    'meld-score-liver-disease-severity-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/meld-score-liver-disease-severity-calculator'),
-    ),
-    'child-pugh-score-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/child-pugh-score-calculator'),
-    ),
     'hydration-balance-with-alcohol-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/hydration-balance-with-alcohol-intake-calculator')),
     'albumin-to-creatinine-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/albumin-to-creatinine-ratio-calculator')),
     'calcium-correction-for-albumin-calculator': dynamic(() => import('@/components/calculators/health-fitness/calcium-correction-for-albumin-calculator')),
     'mean-corpuscular-volume-mcv-calculator': dynamic(() => import('@/components/calculators/health-fitness/mean-corpuscular-volume-mcv-calculator')),
-    'serum-osmolar-gap-calculator': dynamic(() => import('@/components/calculators/health-fitness/serum-osmolar-gap-calculator')),
-    'corrected-qt-interval-bazett-fridericia-calculator': dynamic(() => import('@/components/calculators/health-fitness/corrected-qt-interval-bazett-fridericia-calculator')),
     'neat-impact-calculator': dynamic(() => import('@/components/calculators/health-fitness/neat-impact-calculator')),
     'diet-sustainability-score-calculator': dynamic(() => import('@/components/calculators/health-fitness/diet-sustainability-score-calculator')),
     'blue-light-exposure-calculator': dynamic(() => import('@/components/calculators/health-fitness/blue-light-exposure-calculator')),

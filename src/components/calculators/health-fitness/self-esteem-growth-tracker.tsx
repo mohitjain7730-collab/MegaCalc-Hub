@@ -98,11 +98,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Social Anxiety Score Estimator',
-    slug: 'social-anxiety-score-estimator',
-    description: 'Explore how social fears interact with self-esteem.',
-  },
-  {
     name: 'Positive Emotion Ratio Calculator',
     slug: 'positive-emotion-ratio-calculator',
     description: 'See how emotional balance supports confidence.',

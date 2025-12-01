@@ -98,11 +98,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Social Anxiety Score Estimator',
-    slug: 'social-anxiety-score-estimator',
-    description: 'Track how gratitude practices influence social confidence.',
-  },
-  {
     name: 'Emotional Burnout Recovery Calculator',
     slug: 'emotional-burnout-recovery-calculator',
     description: 'Ensure gratitude rituals support burnout recovery.',

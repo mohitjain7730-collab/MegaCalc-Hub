@@ -108,11 +108,6 @@ const relatedCalculators = [
     description: 'See how momentum interacts with confidence growth.',
   },
   {
-    name: 'Social Anxiety Score Estimator',
-    slug: 'social-anxiety-score-estimator',
-    description: 'Evaluate social fear factors that can suppress confidence.',
-  },
-  {
     name: 'Resilience Score Calculator',
     slug: 'resilience-score-calculator',
     description: 'Assess resilience traits that buffer dips in confidence.',

@@ -103,11 +103,6 @@ const relatedCalculators = [
     description: 'Estimate recovery needs when cognitive load remains high.',
   },
   {
-    name: 'Social Anxiety Score Estimator',
-    slug: 'social-anxiety-score-estimator',
-    description: 'Check interpersonal stressors that boost cognitive drag.',
-  },
-  {
     name: 'Phone Dependency Index',
     slug: 'phone-dependency-index',
     description: 'Assess smartphone behaviors fueling distractions.',
