@@ -5361,6 +5361,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality to assess and improve postural health.'
   },
   {
+    id: 5084,
+    name: 'Digital Eye Strain Severity Index',
+    description: 'Calculate digital eye strain severity index from screen time, eye strain level, blink rate, lighting conditions, and screen distance.',
+    slug: 'digital-eye-strain-severity-index',
+    category: 'health-fitness',
+    metaTitle: 'Digital Eye Strain Severity Index',
+    metaDescription: 'Calculate digital eye strain severity index from screen time, eye strain level, blink rate, lighting conditions, and screen distance to assess and reduce eye strain.'
+  },
+  {
+    id: 5085,
+    name: 'Body Temperature Regulation Estimator',
+    description: 'Estimate body temperature regulation capacity from age, body fat, activity level, ambient temperature, and hydration level.',
+    slug: 'body-temperature-regulation-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Body Temperature Regulation Estimator',
+    metaDescription: 'Estimate body temperature regulation capacity from age, body fat, activity level, ambient temperature, and hydration level to assess and improve thermoregulation.'
+  },
+  {
+    id: 5086,
+    name: 'Daily Mental Energy Budget Calculator',
+    description: 'Calculate daily mental energy budget from sleep quality, stress level, work hours, decision count, and rest breaks.',
+    slug: 'daily-mental-energy-budget-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Daily Mental Energy Budget Calculator',
+    metaDescription: 'Calculate daily mental energy budget from sleep quality, stress level, work hours, decision count, and rest breaks to optimize cognitive capacity and performance.'
+  },
+  {
+    id: 5087,
+    name: 'Breathing Rate Efficiency Calculator',
+    description: 'Calculate breathing rate efficiency from resting rate, activity rate, recovery time, breath depth, and nasal breathing percentage.',
+    slug: 'breathing-rate-efficiency-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Breathing Rate Efficiency Calculator',
+    metaDescription: 'Calculate breathing rate efficiency from resting rate, activity rate, recovery time, breath depth, and nasal breathing percentage to assess and improve respiratory function.'
+  },
+  {
+    id: 5088,
+    name: 'Screen-to-Sleep Time Impact Estimator',
+    description: 'Estimate screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting.',
+    slug: 'screen-to-sleep-time-impact-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Screen-to-Sleep Time Impact Estimator',
+    metaDescription: 'Estimate screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting to optimize sleep.'
+  },
+  {
     id: 5049,
     name: 'Chromium Daily Need Estimator',
     description: 'Estimate chromium daily needs from age, gender, and chromium intake.',
