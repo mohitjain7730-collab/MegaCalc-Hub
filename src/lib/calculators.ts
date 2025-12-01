@@ -5253,6 +5253,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate daily mental fatigue accumulation from number and length of focus blocks, recovery time, sleep hours, and baseline stress.'
   },
   {
+    id: 7300,
+    name: 'Social Anxiety Score Estimator',
+    description: 'Estimate social anxiety severity from worry frequency, avoidance levels, physical symptoms, and safety behaviors.',
+    slug: 'social-anxiety-score-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Social Anxiety Score Estimator',
+    metaDescription: 'Estimate social anxiety severity by combining thought frequency, avoidance, physical symptoms, and safety behaviors into a single score.'
+  },
+  {
+    id: 7301,
+    name: 'Emotional Burnout Recovery Calculator',
+    description: 'Estimate burnout severity and recovery timeline from weekly workload, sleep, exhaustion, and recovery practices.',
+    slug: 'emotional-burnout-recovery-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Emotional Burnout Recovery Calculator',
+    metaDescription: 'Calculate a burnout index and projected recovery timeline using workload hours, sleep, emotional exhaustion, and recovery habits.'
+  },
+  {
+    id: 7302,
+    name: 'Cognitive Load Estimator',
+    description: 'Quantify mental workload from concurrent projects, task complexity, context switching, and distraction minutes.',
+    slug: 'cognitive-load-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Cognitive Load Estimator',
+    metaDescription: 'Estimate cognitive load and remaining focus capacity using project count, complexity, context switches, and distractions.'
+  },
+  {
+    id: 7303,
+    name: 'Gratitude & Mood Correlation Tracker',
+    description: 'Track how gratitude journaling frequency and reflection depth correlate with mood under varying stress levels.',
+    slug: 'gratitude-mood-correlation-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Gratitude & Mood Correlation Tracker',
+    metaDescription: 'Measure the correlation between gratitude entries, reflection depth, mood ratings, and stress to optimize positive psychology habits.'
+  },
+  {
+    id: 7304,
+    name: 'Phone Dependency Index',
+    description: 'Measure smartphone dependency from screen time, pickups, separation anxiety, and purposeful usage percentage.',
+    slug: 'phone-dependency-index',
+    category: 'health-fitness',
+    metaTitle: 'Phone Dependency Index',
+    metaDescription: 'Calculate your phone dependency score using daily screen time, pickups, anxiety without the device, and purposeful usage share.'
+  },
+  {
     id: 7000,
     name: 'Wells Score for DVT Probability Calculator',
     description: 'Estimate pre-test probability of deep vein thrombosis (DVT) using the Wells clinical prediction rule.',

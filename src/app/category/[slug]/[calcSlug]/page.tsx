@@ -335,6 +335,11 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'manganese-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/manganese-requirement-calculator')),
     'copper-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/copper-intake-calculator')),
     'uv-exposure-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/uv-exposure-risk-calculator')),
+    'social-anxiety-score-estimator': dynamic(() => import('@/components/calculators/health-fitness/social-anxiety-score-estimator')),
+    'emotional-burnout-recovery-calculator': dynamic(() => import('@/components/calculators/health-fitness/emotional-burnout-recovery-calculator')),
+    'cognitive-load-estimator': dynamic(() => import('@/components/calculators/health-fitness/cognitive-load-estimator')),
+    'gratitude-mood-correlation-tracker': dynamic(() => import('@/components/calculators/health-fitness/gratitude-mood-correlation-tracker')),
+    'phone-dependency-index': dynamic(() => import('@/components/calculators/health-fitness/phone-dependency-index')),
     'sleep-consistency-score-calculator': dynamic(
       () => import('@/components/calculators/health-fitness/sleep-consistency-score-calculator'),
     ),
