@@ -370,6 +370,21 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'mental-energy-drain-predictor': dynamic(
       () => import('@/components/calculators/health-fitness/mental-energy-drain-predictor'),
     ),
+    'biological-age-calculator-epigenetic-proxy': dynamic(
+      () => import('@/components/calculators/health-fitness/biological-age-calculator-epigenetic-proxy'),
+    ),
+    'longevity-score-estimator': dynamic(
+      () => import('@/components/calculators/health-fitness/longevity-score-estimator'),
+    ),
+    'nad-plus-optimization-estimator': dynamic(
+      () => import('@/components/calculators/health-fitness/nad-plus-optimization-estimator'),
+    ),
+    'red-light-therapy-dose-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/red-light-therapy-dose-calculator'),
+    ),
+    'cold-exposure-duration-estimator': dynamic(
+      () => import('@/components/calculators/health-fitness/cold-exposure-duration-estimator'),
+    ),
     'sleep-consistency-score-calculator': dynamic(
       () => import('@/components/calculators/health-fitness/sleep-consistency-score-calculator'),
     ),

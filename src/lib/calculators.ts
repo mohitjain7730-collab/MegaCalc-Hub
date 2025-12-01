@@ -5388,6 +5388,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Predict mental energy drain using meeting hours, deep work hours, context switches per day, and sleep duration.'
   },
   {
+    id: 7315,
+    name: 'Biological Age Calculator (epigenetic-based proxy)',
+    description: 'Estimate a proxy for biological age using simple cardiovascular and lifestyle markers.',
+    slug: 'biological-age-calculator-epigenetic-proxy',
+    category: 'health-fitness',
+    metaTitle: 'Biological Age Calculator (Epigenetic-Based Proxy)',
+    metaDescription: 'Estimate a proxy for biological age from resting heart rate, waist-to-height ratio, lifestyle score, and chronological age.'
+  },
+  {
+    id: 7316,
+    name: 'Longevity Score Estimator',
+    description: 'Estimate a longevity-focused lifestyle score from movement, diet, sleep, and harmful habit inputs.',
+    slug: 'longevity-score-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Longevity Score Estimator',
+    metaDescription: 'Combine movement, plant-rich meals, sleep duration, and harmful habits into a practical longevity score.'
+  },
+  {
+    id: 7317,
+    name: 'NAD+ Optimization Estimator',
+    description: 'Estimate NAD+-supportive patterns from age, exercise, fasting, and supplement strategy.',
+    slug: 'nad-plus-optimization-estimator',
+    category: 'health-fitness',
+    metaTitle: 'NAD+ Optimization Estimator',
+    metaDescription: 'Estimate how supportive your routine may be for NAD+ biology using exercise, fasting, and supplement inputs.'
+  },
+  {
+    id: 7318,
+    name: 'Red Light Therapy Dose Calculator',
+    description: 'Plan approximate red light therapy session times and weekly doses from device irradiance, distance, and target dose.',
+    slug: 'red-light-therapy-dose-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Red Light Therapy Dose Calculator',
+    metaDescription: 'Estimate red light therapy treatment times and cumulative weekly doses using device specs and protocol settings.'
+  },
+  {
+    id: 7319,
+    name: 'Cold Exposure Duration Estimator',
+    description: 'Estimate conservative cold exposure durations and weekly totals based on temperature, tolerance, and risk.',
+    slug: 'cold-exposure-duration-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Cold Exposure Duration Estimator',
+    metaDescription: 'Estimate ice bath or cold plunge durations and weekly minutes from water temperature, frequency, tolerance, and cardiovascular risk flags.'
+  },
+  {
     id: 7000,
     name: 'Wells Score for DVT Probability Calculator',
     description: 'Estimate pre-test probability of deep vein thrombosis (DVT) using the Wells clinical prediction rule.',
