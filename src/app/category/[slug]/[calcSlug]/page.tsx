@@ -330,6 +330,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'manganese-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/manganese-requirement-calculator')),
     'copper-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/copper-intake-calculator')),
     'uv-exposure-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/uv-exposure-risk-calculator')),
+    'hydration-balance-with-alcohol-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/hydration-balance-with-alcohol-intake-calculator')),
     'neat-impact-calculator': dynamic(() => import('@/components/calculators/health-fitness/neat-impact-calculator')),
     'diet-sustainability-score-calculator': dynamic(() => import('@/components/calculators/health-fitness/diet-sustainability-score-calculator')),
     'blue-light-exposure-calculator': dynamic(() => import('@/components/calculators/health-fitness/blue-light-exposure-calculator')),

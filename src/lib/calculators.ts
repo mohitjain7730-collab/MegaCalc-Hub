@@ -5208,6 +5208,15 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
   },
   {
+    id: 5049,
+    name: 'Hydration Balance with Alcohol Intake Calculator',
+    description: 'Calculate hydration balance considering daily water intake, alcohol consumption, body weight, and activity level.',
+    slug: 'hydration-balance-with-alcohol-intake-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Hydration Balance with Alcohol Intake Calculator',
+    metaDescription: 'Calculate hydration balance considering daily water intake, alcohol consumption, body weight, and activity level to maintain proper fluid balance.'
+  },
+  {
     id: 5067,
     name: 'NEAT Impact Calculator',
     description: 'Calculate NEAT impact from body weight, daily steps, standing time, and light activity.',
