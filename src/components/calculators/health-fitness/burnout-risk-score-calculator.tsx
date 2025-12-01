@@ -64,46 +64,58 @@ const understandingInputs = [
 ];
 
 const interpret = (score: number): { level: string; message: string } => {
-  if (score >= 70) return { level: 'High Risk', message: 'High burnout risk—prioritize immediate interventions: reduce workload, increase support, improve sleep, and consider professional help.' };
-  if (score >= 50) return { level: 'Moderate Risk', message: 'Moderate risk—focus on boundary setting, stress management, and maintaining work-life balance.' };
-  return { level: 'Lower Risk', message: 'Lower risk—maintain current practices and continue monitoring to prevent escalation.' };
+  if (score >= 70) {
+    return {
+      level: 'Heavier strain pattern',
+      message:
+        'Your answers suggest your current routines may feel quite demanding right now. It could be a good time to explore gentler boundaries, more rest, and extra support where possible.',
+    };
+  }
+  if (score >= 50) {
+    return {
+      level: 'Moderate strain pattern',
+      message:
+        'There are meaningful pressures in your week, and some simple tweaks to work, rest, and support may help things feel more sustainable.',
+    };
+  }
+  return {
+    level: 'Lighter strain pattern',
+    message:
+      'Your current pattern may feel more manageable, though it can still be helpful to keep checking in with your stress and energy over time.',
+  };
 };
 
 const recommendations = (score: number) => {
   const base = [
-    'Set clear work boundaries: define work hours and stick to them',
-    'Prioritize 7–9 hours of quality sleep per night',
-    'Build and maintain a strong support network of friends, family, or colleagues',
+    'Notice one or two times during the week when you can step away briefly to reset—such as a short walk or quiet break.',
+    'Gently protect a basic sleep window that feels realistic most nights, even if it is not perfect.',
+    'Stay connected with at least one person you feel comfortable sharing your experience with.',
   ];
   if (score >= 70) {
     return [
       ...base,
-      'Consider professional support (therapy, counseling) to address high stress',
-      'Discuss workload reduction with supervisors or HR',
-      'Take regular breaks and use vacation time to recharge',
+      'If it feels accessible, consider talking with a trusted professional or support person about how your days have been feeling.',
+      'Look for small ways to soften your workload or say “not now” to lower‑priority tasks when possible.',
+      'Experiment with short, regular pauses during work to breathe, stretch, or simply look away from screens.',
     ];
   }
   if (score >= 50) {
     return [
       ...base,
-      'Practice stress management techniques (meditation, deep breathing)',
-      'Schedule regular breaks during work hours',
-      'Engage in hobbies and activities outside of work',
+      'Try adding a few minutes of winding‑down time at the end of your workday before switching to personal time.',
+      'Schedule one or two low‑pressure activities that feel nourishing (hobbies, time outdoors, or creative play).',
     ];
   }
   return [
     ...base,
-    'Continue monitoring stress levels and workload',
-    'Maintain healthy routines and boundaries',
+    'Keep an eye on how your stress and energy change when your workload shifts, and adjust when you can.',
   ];
 };
 
 const warningSigns = () => [
-  'Chronic exhaustion that doesn\'t improve with rest',
-  'Cynicism or detachment from work and colleagues',
-  'Reduced professional efficacy and difficulty concentrating',
-  'Physical symptoms: headaches, gastrointestinal issues, frequent illness',
-  'Emotional symptoms: irritability, anxiety, depression, or mood swings',
+  'If you feel persistently exhausted or overwhelmed, it can be a signal to pause and gently reassess your routines.',
+  'Notice if work thoughts are crowding out most of your downtime or if you frequently feel detached from things you usually enjoy.',
+  'If you experience ongoing changes in mood, sleep, or focus that worry you, consider talking with a qualified health professional.',
 ];
 
 export default function BurnoutRiskScoreCalculator() {
@@ -158,8 +170,13 @@ export default function BurnoutRiskScoreCalculator() {
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-5 w-5" /> Burnout Risk Score</CardTitle>
-          <CardDescription>Assess your risk of workplace burnout based on work hours, stress, sleep, and support factors.</CardDescription>
+          <CardTitle className="flex items-center gap-2">
+            <AlertTriangle className="h-5 w-5" /> Burnout Tendency & Strain Check‑In
+          </CardTitle>
+          <CardDescription>
+            Reflect on how your work, rest, and support patterns feel right now. This is a general wellness insight, not a
+            diagnosis or clinical risk score.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -221,17 +238,20 @@ export default function BurnoutRiskScoreCalculator() {
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-4"><Zap className="h-8 w-8 text-primary" /><CardTitle>Burnout Risk Assessment</CardTitle></div>
-              <CardDescription>Your personalized risk evaluation</CardDescription>
+              <div className="flex items-center gap-4">
+                <Zap className="h-8 w-8 text-primary" />
+                <CardTitle>Burnout Strain Pattern Insight</CardTitle>
+              </div>
+              <CardDescription>A wellness‑focused look at how demanding your current week feels.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 border rounded">
-                  <h4 className="text-sm font-semibold text-muted-foreground">Risk Score</h4>
+                  <h4 className="text-sm font-semibold text-muted-foreground">Strain score</h4>
                   <p className="text-2xl font-bold text-primary">{result.burnoutRiskScore}/100</p>
                 </div>
                 <div className="p-4 border rounded">
-                  <h4 className="text-sm font-semibold text-muted-foreground">Risk Level</h4>
+                  <h4 className="text-sm font-semibold text-muted-foreground">Pattern label</h4>
                   <p className="text-2xl font-bold text-primary">{result.riskLevel}</p>
                 </div>
               </div>
@@ -265,7 +285,7 @@ export default function BurnoutRiskScoreCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Understanding the Inputs</CardTitle>
-          <CardDescription>Provide honest self-assessment for accurate risk evaluation</CardDescription>
+          <CardDescription>Use these questions as a self‑check, not as a formal assessment.</CardDescription>
         </CardHeader>
         <CardContent>
           <ul className="space-y-2">{understandingInputs.map((it)=>(<li key={it.label}><span className="font-semibold text-foreground">{it.label}:</span><span className="text-sm text-muted-foreground"> {it.description}</span></li>))}</ul>
@@ -290,17 +310,35 @@ export default function BurnoutRiskScoreCalculator() {
       <Card>
         <CardHeader><CardTitle>Complete Guide: Preventing Burnout</CardTitle></CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Burnout prevention requires proactive management of workload, stress, sleep, and social support. Regular self-assessment helps identify early warning signs. Establish boundaries, prioritize recovery, and seek professional support when needed. Remember that prevention is more effective than recovery.</p>
+          <p>
+            Caring for your energy over the long term often involves a mix of boundaries, rest, meaningful connection, and small
+            recovery rituals. This tool can highlight patterns, but only you—and, if you wish, a trusted professional—can fully
+            understand your situation.
+          </p>
+          <p>
+            You might start with small, realistic shifts such as pausing between tasks, setting a simple “end of work” ritual, or
+            scheduling time for things that feel restorative. Over time, these gentle adjustments can help your days feel more
+            sustainable.
+          </p>
+          <p>
+            If you ever feel that work strain is seriously affecting your health, mood, or safety, consider speaking with a
+            qualified health or mental‑health professional as soon as you can. This tool is only for wellness reflection.
+          </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Detailed, SEO-oriented answers</CardDescription>
+          <CardDescription>Putting this burnout tendency snapshot in perspective</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">{faqs.map(([q,a],i)=>(<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}</CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

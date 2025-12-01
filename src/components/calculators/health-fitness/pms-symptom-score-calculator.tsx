@@ -43,24 +43,35 @@ export default function PmsSymptomScoreCalculator() {
     const averageScore = scores.length > 0 ? totalScore / scores.length : 0;
     const msgs: string[] = [];
     
-    if (averageScore < 3) msgs.push('Mild PMS symptoms; typically manageable with lifestyle modifications.');
-    else if (averageScore < 6) msgs.push('Moderate PMS symptoms; may benefit from lifestyle changes and possibly medical intervention.');
-    else if (averageScore < 8) msgs.push('Severe PMS symptoms; consider consulting a healthcare provider for management strategies.');
-    else msgs.push('Very severe PMS symptoms; medical evaluation and treatment recommended.');
+    if (averageScore < 3)
+      msgs.push(
+        'Your ratings suggest that these pre‑period days feel relatively light overall. Small lifestyle supports may already be enough for you.'
+      );
+    else if (averageScore < 6)
+      msgs.push(
+        'Your scores point to a noticeable set of pre‑period changes. Gentle routines around rest, movement, and nutrition may help these days feel a bit easier.'
+      );
+    else if (averageScore < 8)
+      msgs.push(
+        'Your responses suggest these days may feel quite intense at times. It might be helpful to plan extra support and lighter expectations around this part of your cycle.'
+      );
+    else
+      msgs.push(
+        'Your scores reflect very strong pre‑period experiences. If you ever feel worried or overwhelmed, you may wish to speak with a qualified health professional who can look at your full picture.'
+      );
     
     return msgs.join(' ');
   };
 
   const recommendations = (v: FormValues) => [
-    'Track symptoms throughout your cycle to identify patterns and triggers',
-    'Consider lifestyle modifications including regular exercise, stress management, and balanced nutrition',
-    'Consult with a healthcare provider if symptoms significantly impact daily life or quality of life',
+    'Track how you feel across a few cycles to notice patterns in energy, mood, and physical sensations.',
+    'When possible, give yourself a bit more room for rest, kind self‑talk, and lighter plans on tougher days.',
+    'Experiment with gentle supports like movement you enjoy, calming wind‑down time, or simple comfort routines.',
   ];
 
   const warnings = (v: FormValues) => [
-    'Severe PMS symptoms that significantly impact daily functioning may indicate PMDD (premenstrual dysphoric disorder)',
-    'If symptoms persist throughout the cycle or are severe, consult a healthcare provider for evaluation',
-    'Sudden changes in PMS symptoms or new severe symptoms warrant medical attention',
+    'If you ever feel distressed, unsafe, or overwhelmed by your symptoms or mood, consider reaching out to a trusted professional promptly.',
+    'If changes you notice around your cycle worry you, a qualified health professional can help you explore them in more detail.',
   ];
 
   const plan = () => ([
@@ -82,8 +93,13 @@ export default function PmsSymptomScoreCalculator() {
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Heart className="h-5 w-5" /> PMS Symptom Score</CardTitle>
-          <CardDescription>Assess PMS symptom severity to inform management strategies</CardDescription>
+          <CardTitle className="flex items-center gap-2">
+            <Heart className="h-5 w-5" /> PMS Pattern Reflection
+          </CardTitle>
+          <CardDescription>
+            Check in on how pre‑period days feel for you using simple 0–10 ratings. This creates a personal wellness snapshot,
+            not a diagnosis.
+          </CardDescription>
         </CardHeader>
         <CardContent>
       <Form {...form}>
@@ -91,7 +107,7 @@ export default function PmsSymptomScoreCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="moodSwings" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><Heart className="h-4 w-4" /> Mood Swings (0-10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><Heart className="h-4 w-4" /> Mood changes (0–10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -100,7 +116,7 @@ export default function PmsSymptomScoreCalculator() {
             )} />
             <FormField control={form.control} name="irritability" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Irritability (0-10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Irritability or tension (0–10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -109,7 +125,7 @@ export default function PmsSymptomScoreCalculator() {
             )} />
             <FormField control={form.control} name="fatigue" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><Activity className="h-4 w-4" /> Fatigue (0-10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><Activity className="h-4 w-4" /> Tiredness or low energy (0–10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -118,7 +134,7 @@ export default function PmsSymptomScoreCalculator() {
             )} />
             <FormField control={form.control} name="bloating" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><HeartPulse className="h-4 w-4" /> Bloating (0-10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><HeartPulse className="h-4 w-4" /> Bloating or body heaviness (0–10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -127,7 +143,7 @@ export default function PmsSymptomScoreCalculator() {
             )} />
             <FormField control={form.control} name="breastTenderness" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Breast Tenderness (0-10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Chest or breast sensitivity (0–10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -136,7 +152,7 @@ export default function PmsSymptomScoreCalculator() {
             )} />
             <FormField control={form.control} name="headaches" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Headaches (0-10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Head or body aches (0–10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -145,7 +161,7 @@ export default function PmsSymptomScoreCalculator() {
             )} />
             <FormField control={form.control} name="foodCravings" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><HeartPulse className="h-4 w-4" /> Food Cravings (0-10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><HeartPulse className="h-4 w-4" /> Shifts in appetite or cravings (0–10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -154,7 +170,7 @@ export default function PmsSymptomScoreCalculator() {
             )} />
             <FormField control={form.control} name="sleepDisturbance" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><Calendar className="h-4 w-4" /> Sleep Disturbance (0-10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><Calendar className="h-4 w-4" /> Sleep changes (0–10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -162,7 +178,7 @@ export default function PmsSymptomScoreCalculator() {
               </FormItem>
             )} />
           </div>
-          <Button type="submit" className="w-full md:w-auto">Calculate PMS Score</Button>
+          <Button type="submit" className="w-full md:w-auto">See PMS pattern insight</Button>
         </form>
       </Form>
         </CardContent>
@@ -174,15 +190,23 @@ export default function PmsSymptomScoreCalculator() {
             <CardHeader>
               <div className="flex items-center gap-4">
                 <Zap className="h-8 w-8 text-primary" />
-                <CardTitle>PMS Symptom Score Evaluation</CardTitle>
+                <CardTitle>PMS Pattern Insight</CardTitle>
               </div>
-              <CardDescription>Assessment of PMS symptom severity</CardDescription>
+              <CardDescription>A gentle summary of how your recent pre‑period days have been feeling.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm">{result.interpretation}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 border rounded"><p className="text-sm text-muted-foreground mb-1">Status</p><p className="text-xl font-semibold">{result.status}</p></div>
-                <div className="p-4 border rounded"><p className="text-sm text-muted-foreground mb-1">Note</p><p className="text-sm">Always follow clinician guidance</p></div>
+                <div className="p-4 border rounded">
+                  <p className="text-sm text-muted-foreground mb-1">Status</p>
+                  <p className="text-xl font-semibold">{result.status}</p>
+                </div>
+                <div className="p-4 border rounded">
+                  <p className="text-sm text-muted-foreground mb-1">Note</p>
+                  <p className="text-sm">
+                    This is a personal wellness reflection only and does not diagnose PMS, PMDD, or any medical condition.
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -214,7 +238,7 @@ export default function PmsSymptomScoreCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Related Calculators</CardTitle>
-          <CardDescription>Women's health tools</CardDescription>
+          <CardDescription>Cycle‑related wellness tools</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -229,15 +253,21 @@ export default function PmsSymptomScoreCalculator() {
       <Card>
         <CardHeader><CardTitle>Complete Guide: PMS Symptom Scoring</CardTitle></CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Premenstrual syndrome (PMS) affects many women in the days leading up to menstruation. Symptoms can range from mild to severe and may include mood changes, physical discomfort, and behavioral changes. Understanding symptom severity helps inform management strategies and identify when medical intervention may be beneficial.</p>
-          <p>PMS symptoms typically occur during the luteal phase of the menstrual cycle (after ovulation) and resolve with the onset of menstruation. Common symptoms include mood swings, irritability, fatigue, bloating, breast tenderness, headaches, food cravings, and sleep disturbances. Symptom severity varies significantly among individuals and may change over time.</p>
+          <p>
+            Many people notice shifts in mood, energy, and physical comfort in the days before a period. Tracking these changes can
+            highlight patterns and help you plan extra care or lighter days when you need them.
+          </p>
+          <p>
+            This tool is designed to help you notice your own experience, not to label it. If you ever feel worried about your
+            symptoms or how they affect your life, a qualified health professional can help you explore options and support.
+          </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Detailed, SEO‑oriented answers</CardDescription>
+          <CardDescription>Using this PMS pattern snapshot in a gentle, non‑diagnostic way</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {[
@@ -254,6 +284,11 @@ export default function PmsSymptomScoreCalculator() {
           ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

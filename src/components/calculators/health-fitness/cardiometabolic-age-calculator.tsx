@@ -12,25 +12,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import Link from 'next/link';
 import { Zap, Heart, Calendar, Scale, Ruler, Gauge, Droplet } from 'lucide-react';
 
+// Wellness‑style input: no lab values or diagnoses, just routines and feelings
 const formSchema = z.object({
   age: z.number().min(18).max(120).optional(),
   gender: z.enum(['male', 'female']).optional(),
   weight: z.number().positive().optional(),
   height: z.number().positive().optional(),
   unit: z.enum(['metric', 'imperial']).optional(),
-  waistCircumference: z.number().positive().optional(),
-  systolicBP: z.number().positive().optional(),
-  diastolicBP: z.number().positive().optional(),
-  totalCholesterol: z.number().positive().optional(),
-  hdlCholesterol: z.number().positive().optional(),
-  triglycerides: z.number().positive().optional(),
-  fastingGlucose: z.number().positive().optional(),
-  cholesterolUnit: z.enum(['mg/dL', 'mmol/L']).optional(),
-  glucoseUnit: z.enum(['mg/dL', 'mmol/L']).optional(),
-  smoking: z.boolean().optional(),
-  diabetes: z.boolean().optional(),
-  familyHistory: z.boolean().optional(),
-  physicalActivity: z.enum(['sedentary', 'light', 'moderate', 'vigorous']).optional(),
+  weeklyMovementDays: z.number().min(0).max(7).optional(),
+  vigorousMinutesPerWeek: z.number().min(0).max(600).optional(),
+  sittingHoursPerDay: z.number().min(0).max(16).optional(),
+  fruitVegServingsPerDay: z.number().min(0).max(12).optional(),
+  sugaryDrinksPerWeek: z.number().min(0).max(40).optional(),
+  sleepHoursPerNight: z.number().min(0).max(16).optional(),
+  perceivedEnergy: z.number().min(1).max(10).optional(),
+  stressBalance: z.number().min(1).max(10).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -39,154 +35,161 @@ type ResultPayload = {
   status: string;
   interpretation: string;
   recommendations: string[];
-  warningSigns: string[];
+  reflectionPrompts: string[];
   plan: { week: number; focus: string }[];
-  metabolicAge: number;
+  wellnessIndex: number;
   chronologicalAge: number;
-  bmi: number;
-  ageDifference: number;
-  riskStatus: string;
+  movementIndex: number;
+  ageFeelingDifference: number;
+  patternLabel: string;
 };
 
 const plan = (): { week: number; focus: string }[] => [
-  { week: 1, focus: 'Assess current health metrics: blood pressure, cholesterol, glucose, and body composition' },
-  { week: 2, focus: 'Begin regular aerobic exercise (150+ minutes/week) to improve cardiovascular health' },
-  { week: 3, focus: 'Adopt heart-healthy diet: reduce processed foods, increase fruits, vegetables, and whole grains' },
-  { week: 4, focus: 'Focus on stress management: meditation, adequate sleep (7–9 hours), and relaxation techniques' },
-  { week: 5, focus: 'Add strength training 2–3 times per week to improve body composition' },
-  { week: 6, focus: 'Monitor blood pressure and glucose levels; adjust lifestyle as needed' },
-  { week: 7, focus: 'Reassess metabolic age and compare improvements' },
-  { week: 8, focus: 'Maintain healthy habits and schedule follow-up health screenings' },
+  { week: 1, focus: 'Notice your current routines: movement, meals, sitting time, sleep, and daily energy.' },
+  { week: 2, focus: 'Add one extra movement block (walk, stretch, light exercise) on 1–2 days.' },
+  { week: 3, focus: 'Include one more fruit or vegetable serving on most days.' },
+  { week: 4, focus: 'Experiment with a steadier sleep and wake time that feels realistic.' },
+  { week: 5, focus: 'Add a short strength or body‑weight routine 1–2 times per week if it feels comfortable.' },
+  { week: 6, focus: 'Create small breaks in longer sitting periods with standing or walking.' },
+  { week: 7, focus: 'Add one brief stress‑relief ritual (breathing, journaling, or similar) most days.' },
+  { week: 8, focus: 'Reflect on which new habits felt most supportive and keep the ones that fit your life.' },
 ];
 
 const faqs: [string, string][] = [
-  ['What is cardiometabolic age?', 'Cardiometabolic age reflects how well your cardiovascular and metabolic systems function compared to your chronological age. A younger metabolic age indicates better health.'],
-  ['How is cardiometabolic age calculated?', 'The calculator considers BMI, waist circumference, blood pressure, cholesterol, glucose, lifestyle factors (smoking, exercise), and family history to estimate metabolic age.'],
-  ['What is a good cardiometabolic age?', 'A metabolic age younger than your chronological age is ideal. Being 5+ years younger indicates excellent cardiovascular health.'],
-  ['Can I improve my cardiometabolic age?', 'Yes, through regular exercise, healthy diet, stress management, adequate sleep, and controlling risk factors like blood pressure and cholesterol.'],
-  ['How often should I check my metabolic age?', 'Reassess every 3–6 months or after significant lifestyle changes. Regular monitoring helps track improvements.'],
-  ['Does age affect the calculation?', 'Yes, the calculation uses your chronological age as a baseline and adjusts based on health factors. Older individuals may see larger age differences.'],
-  ['What if my metabolic age is much older?', 'Focus on lifestyle modifications: increase physical activity, improve diet, manage stress, and consult healthcare providers for medical risk factors.'],
-  ['Is this calculator a medical diagnosis?', 'No, this is an educational tool. Consult healthcare professionals for medical evaluation and treatment of cardiovascular risk factors.'],
-  ['Can medications affect metabolic age?', 'Medications that control blood pressure, cholesterol, or diabetes may improve metabolic age, but the calculator focuses on lifestyle factors.'],
-  ['What lifestyle changes have the biggest impact?', 'Regular exercise, healthy diet, smoking cessation, stress management, and adequate sleep have the most significant effects on metabolic age.'],
+  [
+    'What is the goal of this cardiometabolic wellness check‑in?',
+    'This tool invites you to reflect on how your current movement, eating, sitting, sleep, and stress‑balance habits line up with how you would like to feel over time. It is a personal wellness snapshot, not a medical age or diagnosis.',
+  ],
+  [
+    'What does the wellness index actually represent?',
+    'The index is a simple score that combines your answers about activity, sitting time, food patterns, sleep, and how your body feels. Higher scores usually mean your routines align more closely with commonly suggested heart‑supportive habits.',
+  ],
+  [
+    'Can this calculator tell me my disease risk or “true” metabolic age?',
+    'No. It cannot predict, diagnose, or rule out any condition. Only a qualified health professional, using appropriate tests and your full medical history, can evaluate health risks.',
+  ],
+  [
+    'How can I use these results in a helpful way?',
+    'You might pick one or two gentle ideas from the suggestions section and try them for a few weeks. Notice how your energy, mood, and everyday life feel, and keep what actually supports you.',
+  ],
+  [
+    'How often should I revisit this tool?',
+    'Some people like to check in monthly or after a routine change. Others use it once to brainstorm ideas. You can return whenever you want a structured reflection on your habits.',
+  ],
+  [
+    'What if I feel worried about my heart or metabolic health?',
+    'If you ever feel concerned about chest discomfort, breathlessness, unusual fatigue, or any health issue, please consult a qualified professional promptly. This tool cannot assess or treat medical problems.',
+  ],
 ];
 
 const understandingInputs = [
-  { label: 'Age (years)', description: 'Your chronological age in years (18–120).' },
-  { label: 'Gender', description: 'Biological sex, as metabolic thresholds differ between males and females.' },
-  { label: 'Weight & Height', description: 'Body measurements used to calculate BMI, a key metabolic health indicator.' },
-  { label: 'Waist Circumference', description: 'Abdominal fat measurement; higher values indicate increased metabolic risk.' },
-  { label: 'Blood Pressure', description: 'Systolic and diastolic readings; hypertension accelerates cardiovascular aging.' },
-  { label: 'Cholesterol Levels', description: 'Total, HDL, and triglycerides; lipid profile affects cardiovascular health.' },
-  { label: 'Fasting Glucose', description: 'Blood sugar level; elevated values indicate diabetes or prediabetes risk.' },
-  { label: 'Lifestyle Factors', description: 'Smoking, physical activity, family history, and diabetes status impact metabolic age.' },
+  { label: 'Age (years)', description: 'Your current age in years, which the tool uses only as a reference point.' },
+  {
+    label: 'Movement & activity',
+    description: 'How often you are on your feet or moving in ways that feel good to you during the week.',
+  },
+  {
+    label: 'Sitting time',
+    description: 'Roughly how many hours you spend mostly sitting each day, which the calculator uses to suggest breaks.',
+  },
+  {
+    label: 'Food pattern',
+    description: 'How often your days include fruits, vegetables, and other foods that tend to be part of heart‑supportive eating patterns.',
+  },
+  {
+    label: 'Sleep and energy',
+    description: 'Your sense of how much you are sleeping and how your energy feels on a typical day.',
+  },
+  {
+    label: 'Stress balance',
+    description: 'How balanced or overwhelmed your days feel right now, which can influence how sustainable habits feel.',
+  },
 ];
 
-const calculateCardiometabolicAge = (values: FormValues) => {
+const calculateCardiometabolicWellness = (values: FormValues) => {
   if (!values.age || !values.weight || !values.height || !values.unit) return null;
-  
-  let metabolicAge = values.age;
-  
-  // Calculate BMI
+
+  // BMI as a neutral context number only
   let bmi;
   if (values.unit === 'metric') {
-    bmi = values.weight / ((values.height / 100) ** 2);
+    bmi = values.weight / (values.height / 100) ** 2;
   } else {
-    bmi = (values.weight / (values.height ** 2)) * 703;
+    bmi = (values.weight / values.height ** 2) * 703;
   }
-  
-  // BMI adjustments
-  if (bmi >= 35) metabolicAge += 8;
-  else if (bmi >= 30) metabolicAge += 5;
-  else if (bmi >= 25) metabolicAge += 2;
-  else if (bmi < 18.5) metabolicAge += 1;
-  
-  // Waist circumference
-  if (values.waistCircumference) {
-    const waistThreshold = values.gender === 'male' ? 
-      (values.unit === 'metric' ? 102 : 40) : 
-      (values.unit === 'metric' ? 88 : 35);
-    if (values.waistCircumference >= waistThreshold) metabolicAge += 3;
-  }
-  
-  // Blood pressure
-  if (values.systolicBP && values.diastolicBP) {
-    if (values.systolicBP >= 160 || values.diastolicBP >= 100) metabolicAge += 6;
-    else if (values.systolicBP >= 140 || values.diastolicBP >= 90) metabolicAge += 4;
-    else if (values.systolicBP >= 130 || values.diastolicBP >= 80) metabolicAge += 2;
-  }
-  
-  // Cholesterol
-  if (values.totalCholesterol && values.cholesterolUnit) {
-    const cholThreshold = values.cholesterolUnit === 'mg/dL' ? 240 : 6.2;
-    if (values.totalCholesterol > cholThreshold) metabolicAge += 2;
-  }
-  if (values.hdlCholesterol && values.cholesterolUnit) {
-    const hdlThreshold = values.cholesterolUnit === 'mg/dL' ? 40 : 1.0;
-    if (values.hdlCholesterol < hdlThreshold) metabolicAge += 2;
-  }
-  if (values.triglycerides && values.cholesterolUnit) {
-    const trigThreshold = values.cholesterolUnit === 'mg/dL' ? 200 : 2.3;
-    if (values.triglycerides > trigThreshold) metabolicAge += 1;
-  }
-  
-  // Glucose
-  if (values.fastingGlucose && values.glucoseUnit) {
-    const glucoseThreshold = values.glucoseUnit === 'mg/dL' ? 126 : 7.0;
-    if (values.fastingGlucose >= glucoseThreshold) metabolicAge += 5;
-    else if (values.fastingGlucose >= (values.glucoseUnit === 'mg/dL' ? 100 : 5.6)) metabolicAge += 2;
-  }
-  
-  // Lifestyle
-  if (values.smoking) metabolicAge += 4;
-  if (values.familyHistory) metabolicAge += 2;
-  if (values.physicalActivity === 'sedentary') metabolicAge += 3;
-  else if (values.physicalActivity === 'light') metabolicAge += 1;
-  else if (values.physicalActivity === 'vigorous') metabolicAge -= 2;
-  
-  return { metabolicAge: Math.max(18, Math.round(metabolicAge)), bmi: Math.round(bmi * 10) / 10 };
+
+  let index = 50;
+
+  const movementDays = values.weeklyMovementDays ?? 0;
+  const vigorousMinutes = values.vigorousMinutesPerWeek ?? 0;
+  const sitting = values.sittingHoursPerDay ?? 0;
+  const fruitVeg = values.fruitVegServingsPerDay ?? 0;
+  const sugaryDrinks = values.sugaryDrinksPerWeek ?? 0;
+  const sleep = values.sleepHoursPerNight ?? 0;
+  const energy = values.perceivedEnergy ?? 5;
+  const stress = values.stressBalance ?? 5;
+
+  index += Math.min(movementDays * 3, 15);
+  index += Math.min(vigorousMinutes / 30, 10);
+  index -= Math.max(0, sitting - 4) * 2;
+  index += Math.min(fruitVeg * 2, 12);
+  index -= Math.min(sugaryDrinks, 10);
+
+  if (sleep >= 7 && sleep <= 9) index += 8;
+  else if (sleep >= 6 && sleep < 7) index += 4;
+  else if (sleep < 6) index -= 6;
+
+  index += (energy - 5) * 2;
+  index += (stress - 5) * -1.5;
+
+  const wellnessIndex = Math.max(0, Math.min(100, Math.round(index)));
+
+  let patternLabel = 'Mixed cardiometabolic‑supportive habits';
+  if (wellnessIndex >= 75) patternLabel = 'Strong cardiometabolic‑supportive routine';
+  else if (wellnessIndex < 50) patternLabel = 'Plenty of room to gently support heart‑health habits';
+
+  const ageFeelingDifference = wellnessIndex >= 75 ? -3 : wellnessIndex <= 40 ? 3 : 0;
+
+  return {
+    wellnessIndex,
+    movementIndex: Math.max(0, Math.min(100, Math.round((movementDays / 7) * 100))),
+    patternLabel,
+    ageFeelingDifference,
+    bmi: Math.round(bmi * 10) / 10,
+  };
 };
 
-const interpret = (difference: number) => {
-  if (difference <= -5) return 'Excellent—your metabolic age is significantly younger than your chronological age, indicating excellent cardiovascular health.';
-  if (difference <= -2) return 'Good—your metabolic age is younger than your chronological age, showing good cardiovascular health.';
-  if (difference <= 2) return 'Average—your metabolic age is similar to your chronological age. There\'s room for improvement through lifestyle changes.';
-  if (difference <= 5) return 'Concerning—your metabolic age is older than your chronological age. Focus on lifestyle modifications and consider medical evaluation.';
-  return 'High Risk—your metabolic age is significantly older than your chronological age. Immediate lifestyle intervention and medical consultation are recommended.';
+const interpret = (patternLabel: string) => {
+  if (patternLabel === 'Strong cardiometabolic‑supportive routine') {
+    return 'Your answers suggest many of your routines are already aligned with heart‑supportive habits like regular movement, nourishing meals, and steady sleep.';
+  }
+  if (patternLabel === 'Plenty of room to gently support heart‑health habits') {
+    return 'This snapshot simply shows that there is space to experiment with small, realistic changes that might support your long‑term energy and heart health.';
+  }
+  return 'You appear to have a mix of supportive habits and areas you may want to focus on. Even one or two gentle changes can be meaningful over time.';
 };
 
-const recommendations = (difference: number) => {
-  const base = [
-    'Engage in regular aerobic exercise (150+ minutes/week) and strength training (2–3 times/week)',
-    'Adopt a heart-healthy diet: Mediterranean-style eating with fruits, vegetables, whole grains, and lean proteins',
-    'Prioritize 7–9 hours of quality sleep per night and manage stress through meditation or relaxation',
+const recommendations = (wellnessIndex: number) => {
+  const ideas: string[] = [
+    'Look for one or two short movement windows you can realistically add or keep most days.',
+    'Include colourful fruits or vegetables with at least one main meal whenever it feels feasible.',
+    'Experiment with a regular wind‑down routine and sleep window that feels sustainable for your life.',
   ];
-  if (difference > 5) {
-    return [
-      ...base,
-      'Consult healthcare providers for medical evaluation and treatment of risk factors',
-      'Consider smoking cessation programs if applicable',
-      'Monitor blood pressure, cholesterol, and glucose regularly',
-    ];
+
+  if (wellnessIndex < 50) {
+    ideas.push(
+      'If your days feel very full, start with the tiniest change that feels achievable—for example, a 5‑minute walk or one extra glass of water.'
+    );
+  } else if (wellnessIndex >= 75) {
+    ideas.push('Notice which habits feel most supportive so you can prioritise them when life gets busy.');
   }
-  if (difference > 2) {
-    return [
-      ...base,
-      'Focus on reducing processed foods, added sugars, and saturated fats',
-      'Increase physical activity gradually if currently sedentary',
-    ];
-  }
-  return [
-    ...base,
-    'Maintain current healthy habits and continue regular health monitoring',
-  ];
+
+  return ideas;
 };
 
-const warningSigns = () => [
-  'This calculator is educational and not a medical diagnosis. Consult healthcare professionals for medical evaluation.',
-  'If you have symptoms like chest pain, shortness of breath, or dizziness, seek immediate medical attention.',
-  'Uncontrolled blood pressure, cholesterol, or diabetes require medical management alongside lifestyle changes.',
+const reflectionPrompts = () => [
+  'Which small change from the suggestions feels the most realistic and kind to try first?',
+  'What times of day do you feel most energised, and how might you gently protect that time?',
+  'Are there any routines you already enjoy that you could do slightly more often rather than adding something brand‑new?',
 ];
 
 export default function CardiometabolicAgeCalculator() {
@@ -199,49 +202,39 @@ export default function CardiometabolicAgeCalculator() {
       weight: undefined,
       height: undefined,
       unit: 'metric',
-      waistCircumference: undefined,
-      systolicBP: undefined,
-      diastolicBP: undefined,
-      totalCholesterol: undefined,
-      hdlCholesterol: undefined,
-      triglycerides: undefined,
-      fastingGlucose: undefined,
-      cholesterolUnit: 'mg/dL',
-      glucoseUnit: 'mg/dL',
-      smoking: false,
-      diabetes: false,
-      familyHistory: false,
-      physicalActivity: 'sedentary',
+      weeklyMovementDays: undefined,
+      vigorousMinutesPerWeek: undefined,
+      sittingHoursPerDay: undefined,
+      fruitVegServingsPerDay: undefined,
+      sugaryDrinksPerWeek: undefined,
+      sleepHoursPerNight: undefined,
+      perceivedEnergy: undefined,
+      stressBalance: undefined,
     },
   });
 
   const unit = form.watch('unit');
 
   const onSubmit = (values: FormValues) => {
-    const calc = calculateCardiometabolicAge(values);
+    const calc = calculateCardiometabolicWellness(values);
     if (!calc || !values.age) {
       setResult(null);
       return;
     }
 
-    const difference = calc.metabolicAge - values.age;
-    let riskStatus = 'Excellent';
-    if (difference > 5) riskStatus = 'High Risk';
-    else if (difference > 2) riskStatus = 'Concerning';
-    else if (difference > -2) riskStatus = 'Average';
-    else if (difference > -5) riskStatus = 'Good';
+    const interpretationText = interpret(calc.patternLabel);
 
     setResult({
       status: 'Calculated',
-      interpretation: interpret(difference),
-      recommendations: recommendations(difference),
-      warningSigns: warningSigns(),
+      interpretation: interpretationText,
+      recommendations: recommendations(calc.wellnessIndex),
+      reflectionPrompts: reflectionPrompts(),
       plan: plan(),
-      metabolicAge: calc.metabolicAge,
       chronologicalAge: values.age,
-      bmi: calc.bmi,
-      ageDifference: difference,
-      riskStatus,
+      wellnessIndex: calc.wellnessIndex,
+      movementIndex: calc.movementIndex,
+      ageFeelingDifference: calc.ageFeelingDifference,
+      patternLabel: calc.patternLabel,
     });
   };
 
@@ -249,8 +242,13 @@ export default function CardiometabolicAgeCalculator() {
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Heart className="h-5 w-5" /> Cardiometabolic Age Calculator</CardTitle>
-          <CardDescription>Estimate your metabolic age based on cardiovascular and metabolic risk factors.</CardDescription>
+          <CardTitle className="flex items-center gap-2">
+            <Heart className="h-5 w-5" /> Cardiometabolic Wellness Age Check‑In
+          </CardTitle>
+          <CardDescription>
+            Reflect on everyday habits that can gently support your heart, movement, and long‑term energy. This is a personal
+            wellness insight, not a medical age or diagnosis.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -283,7 +281,7 @@ export default function CardiometabolicAgeCalculator() {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Body Measurements</h3>
+                <h3 className="text-lg font-semibold">Body context</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <FormField control={form.control} name="unit" render={({ field }) => (
                     <FormItem>
@@ -319,163 +317,198 @@ export default function CardiometabolicAgeCalculator() {
                     </FormItem>
                   )} />
                 </div>
-                <FormField control={form.control} name="waistCircumference" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Waist Circumference ({unit === 'metric' ? 'cm' : 'inches'})</FormLabel>
-                    <FormControl>
-                      <Input type="number" step="0.1" placeholder="e.g., 85" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
+                <p className="text-xs text-muted-foreground">
+                  These numbers are only used to provide context (like BMI); they are not interpreted as a diagnosis.
+                </p>
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Blood Pressure</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField control={form.control} name="systolicBP" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Systolic BP (mmHg)</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 120" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="diastolicBP" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Diastolic BP (mmHg)</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 80" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Laboratory Values</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField control={form.control} name="totalCholesterol" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-2"><Droplet className="h-4 w-4" /> Total Cholesterol</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="0.1" placeholder="e.g., 200" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="hdlCholesterol" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>HDL Cholesterol</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="0.1" placeholder="e.g., 50" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="triglycerides" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Triglycerides</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="0.1" placeholder="e.g., 150" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="fastingGlucose" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Fasting Glucose</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="0.1" placeholder="e.g., 95" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField control={form.control} name="cholesterolUnit" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Cholesterol Units</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
+                <h3 className="text-lg font-semibold">Movement & sitting</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="weeklyMovementDays"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Days per week you do intentional movement</FormLabel>
                         <FormControl>
-                          <SelectTrigger><SelectValue /></SelectTrigger>
+                          <Input
+                            type="number"
+                            step="1"
+                            placeholder="e.g., 3"
+                            value={field.value ?? ''}
+                            onChange={(e) =>
+                              field.onChange(e.target.value === '' ? undefined : Number(e.target.value))
+                            }
+                          />
                         </FormControl>
-                        <SelectContent>
-                          <SelectItem value="mg/dL">mg/dL</SelectItem>
-                          <SelectItem value="mmol/L">mmol/L</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="glucoseUnit" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Glucose Units</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="vigorousMinutesPerWeek"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Minutes per week of more lively activity (optional)</FormLabel>
                         <FormControl>
-                          <SelectTrigger><SelectValue /></SelectTrigger>
+                          <Input
+                            type="number"
+                            step="10"
+                            placeholder="e.g., 60"
+                            value={field.value ?? ''}
+                            onChange={(e) =>
+                              field.onChange(e.target.value === '' ? undefined : Number(e.target.value))
+                            }
+                          />
                         </FormControl>
-                        <SelectContent>
-                          <SelectItem value="mg/dL">mg/dL</SelectItem>
-                          <SelectItem value="mmol/L">mmol/L</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="sittingHoursPerDay"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Approximate hours per day mostly sitting</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            step="0.5"
+                            placeholder="e.g., 8"
+                            value={field.value ?? ''}
+                            onChange={(e) =>
+                              field.onChange(e.target.value === '' ? undefined : Number(e.target.value))
+                            }
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Lifestyle Factors</h3>
+                <h3 className="text-lg font-semibold">Food, sleep, and how you feel</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField control={form.control} name="smoking" render={({ field }) => (
-                    <FormItem className="flex items-center space-x-2">
-                      <FormControl>
-                        <input type="checkbox" checked={field.value || false} onChange={(e)=>field.onChange(e.target.checked)} className="rounded" />
-                      </FormControl>
-                      <FormLabel>Current Smoking</FormLabel>
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="diabetes" render={({ field }) => (
-                    <FormItem className="flex items-center space-x-2">
-                      <FormControl>
-                        <input type="checkbox" checked={field.value || false} onChange={(e)=>field.onChange(e.target.checked)} className="rounded" />
-                      </FormControl>
-                      <FormLabel>Diabetes</FormLabel>
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="familyHistory" render={({ field }) => (
-                    <FormItem className="flex items-center space-x-2">
-                      <FormControl>
-                        <input type="checkbox" checked={field.value || false} onChange={(e)=>field.onChange(e.target.checked)} className="rounded" />
-                      </FormControl>
-                      <FormLabel>Family History of Heart Disease</FormLabel>
-                    </FormItem>
-                  )} />
-                  <FormField control={form.control} name="physicalActivity" render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Physical Activity Level</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
+                  <FormField
+                    control={form.control}
+                    name="fruitVegServingsPerDay"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Fruit/vegetable servings on most days</FormLabel>
                         <FormControl>
-                          <SelectTrigger><SelectValue placeholder="Select activity level" /></SelectTrigger>
+                          <Input
+                            type="number"
+                            step="1"
+                            placeholder="e.g., 3"
+                            value={field.value ?? ''}
+                            onChange={(e) =>
+                              field.onChange(e.target.value === '' ? undefined : Number(e.target.value))
+                            }
+                          />
                         </FormControl>
-                        <SelectContent>
-                          <SelectItem value="sedentary">Sedentary</SelectItem>
-                          <SelectItem value="light">Light Activity</SelectItem>
-                          <SelectItem value="moderate">Moderate Activity</SelectItem>
-                          <SelectItem value="vigorous">Vigorous Activity</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )} />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="sugaryDrinksPerWeek"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Sweetened drinks per week (if any)</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            step="1"
+                            placeholder="e.g., 4"
+                            value={field.value ?? ''}
+                            onChange={(e) =>
+                              field.onChange(e.target.value === '' ? undefined : Number(e.target.value))
+                            }
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="sleepHoursPerNight"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Average hours of sleep per night</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            step="0.5"
+                            placeholder="e.g., 7.5"
+                            value={field.value ?? ''}
+                            onChange={(e) =>
+                              field.onChange(e.target.value === '' ? undefined : Number(e.target.value))
+                            }
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="perceivedEnergy"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>How is your energy on a typical day? (1–10)</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            min={1}
+                            max={10}
+                            step="1"
+                            placeholder="e.g., 6"
+                            value={field.value ?? ''}
+                            onChange={(e) =>
+                              field.onChange(e.target.value === '' ? undefined : Number(e.target.value))
+                            }
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="stressBalance"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>How balanced or stressed do your days feel? (1–10)</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            min={1}
+                            max={10}
+                            step="1"
+                            placeholder="e.g., 5"
+                            value={field.value ?? ''}
+                            onChange={(e) =>
+                              field.onChange(e.target.value === '' ? undefined : Number(e.target.value))
+                            }
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
               </div>
 
-              <Button type="submit" className="w-full md:w-auto">Calculate Cardiometabolic Age</Button>
+              <Button type="submit" className="w-full md:w-auto">
+                See my cardiometabolic wellness insight
+              </Button>
             </form>
           </Form>
         </CardContent>
@@ -528,8 +561,8 @@ export default function CardiometabolicAgeCalculator() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Understanding the Inputs</CardTitle>
-          <CardDescription>Accurate inputs ensure reliable metabolic age estimation</CardDescription>
+          <CardTitle>Understanding the inputs</CardTitle>
+          <CardDescription>These questions are for reflection only and are not a medical screening.</CardDescription>
         </CardHeader>
         <CardContent>
           <ul className="space-y-2">{understandingInputs.map((it,i)=>(<li key={i}><span className="font-semibold text-foreground">{it.label}:</span><span className="text-sm text-muted-foreground"> {it.description}</span></li>))}</ul>
@@ -538,59 +571,35 @@ export default function CardiometabolicAgeCalculator() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Related Calculators</CardTitle>
-          <CardDescription>Complementary tools for cardiovascular and metabolic health</CardDescription>
+          <CardTitle>Complete guide: Thinking about cardiometabolic wellness</CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/metabolic-syndrome-risk-calculator" className="text-primary hover:underline">
-                  Metabolic Syndrome Risk
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                Evaluate metabolic syndrome indicators.
-              </p>
-            </div>
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/waist-to-bmi-ratio-risk-calculator" className="text-primary hover:underline">
-                  Waist-to-BMI Ratio
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                Assess body composition and metabolic risk.
-              </p>
-            </div>
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/heart-rate-variability-hrv-score-calculator" className="text-primary hover:underline">
-                  HRV Score
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                Monitor autonomic nervous system health.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader><CardTitle>Complete Guide: Understanding Cardiometabolic Age</CardTitle></CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Cardiometabolic age reflects how well your cardiovascular and metabolic systems function compared to your chronological age. A younger metabolic age indicates better health and lower cardiovascular risk. Improve metabolic age through regular exercise, healthy diet, stress management, adequate sleep, and controlling risk factors like blood pressure, cholesterol, and glucose. Regular monitoring helps track improvements over time.</p>
+          <p>
+            Many everyday habits—like how often you move, what you tend to eat, how long you sit, and how you rest—can, over
+            time, influence how your heart and metabolism feel. This tool does not measure or predict disease; instead, it
+            offers a gentle snapshot of how your current routines line up with broadly supportive patterns.
+          </p>
+          <p>
+            You can treat your results as an invitation to choose one or two changes that feel kind and realistic, rather
+            than a verdict. Small and sustainable shifts often matter more than drastic overhauls. If you ever feel concerned
+            about your health, a qualified professional can help you interpret any medical tests and design a plan that fits
+            your life.
+          </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Detailed, SEO-oriented answers</CardDescription>
+          <CardTitle>Frequently asked questions</CardTitle>
+          <CardDescription>How to use this tool in a balanced, wellness‑oriented way</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">{faqs.map(([q,a],i)=>(<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}</CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

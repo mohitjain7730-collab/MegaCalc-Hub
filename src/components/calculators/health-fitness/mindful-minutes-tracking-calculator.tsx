@@ -64,23 +64,36 @@ const understandingInputs = [
 ];
 
 const interpret = (avg: number, streak: number) => {
-  if (avg >= 30) return `Excellent commitment—${avg.toFixed(1)} minutes/day average with a ${streak}-day streak. You\'re building a strong mindfulness practice.`;
-  if (avg >= 15) return `Developing practice—${avg.toFixed(1)} minutes/day average with a ${streak}-day streak. Continue building consistency.`;
-  if (avg >= 5) return `Building habit—${avg.toFixed(1)} minutes/day average with a ${streak}-day streak. Focus on increasing frequency and duration.`;
-  return `Getting started—${avg.toFixed(1)} minutes/day average. Every minute counts. Focus on consistency over duration.`;
+  if (avg >= 30)
+    return `You’re spending about ${avg.toFixed(
+      1
+    )} minutes per day with mindfulness and have a ${streak}-day streak—this is a very steady routine for many people.`;
+  if (avg >= 15)
+    return `You’re averaging ${avg.toFixed(
+      1
+    )} minutes per day with a ${streak}-day streak, which suggests a growing, supportive habit.`;
+  if (avg >= 5)
+    return `You’re spending around ${avg.toFixed(
+      1
+    )} minutes per day on mindfulness with a ${streak}-day streak—this is a solid start you can gently build on.`;
+  return `You’re getting started with about ${avg.toFixed(
+    1
+  )} minutes per day. Every few minutes of mindful time counts; you can focus on simple consistency over duration.`;
 };
 
 const recommendations = (avg: number, streak: number) => [
-  'Prioritize consistency over duration—even 5 minutes daily is better than longer but infrequent sessions',
-  avg < 10 ? 'Start with 5–10 minutes daily and gradually increase as you build the habit' : 'Maintain your current practice and consider adding variety (different types of meditation)',
-  'Choose a consistent time and place for practice to build routine',
-  'Track your practice to maintain motivation and celebrate consistency milestones',
+  'Let consistency matter more than duration—even 3–5 minutes most days can be meaningful.',
+  avg < 10
+    ? 'You might aim for 5–10 minutes on more days of the week and only increase when it feels natural.'
+    : 'You can maintain your current practice and, if you like, gently add variety (different kinds of mindfulness).',
+  'Choose a time and place that realistically fits your day so the habit feels kind and sustainable.',
+  'Track your practice to notice patterns and celebrate what you are already doing, rather than to judge yourself.',
 ];
 
 const warningSigns = () => [
-  'Don\'t force practice if you\'re feeling unwell or overly stressed—gentle, self-compassionate practice is more sustainable',
-  'Avoid perfectionism—missing days is normal. Focus on returning to practice rather than maintaining perfect streaks',
-  'If mindfulness practice increases anxiety or distress, consider adjusting your approach or consulting a mental health professional',
+  "Try not to force practice when you feel unwell or overwhelmed—gentle, self‑compassionate pauses are part of a sustainable habit.",
+  "Perfection isn’t required—missed days are normal. Simply returning to practice when you can is enough.",
+  'If mindfulness ever feels distressing or increases anxiety, consider adjusting your approach and, if helpful, speaking with a mental health professional.',
 ];
 
 export default function MindfulMinutesTrackingCalculator() {
@@ -142,8 +155,13 @@ export default function MindfulMinutesTrackingCalculator() {
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Clock className="h-5 w-5" /> Mindful Minutes Tracking Calculator</CardTitle>
-          <CardDescription>Track your weekly mindfulness practice to build consistency and measure progress.</CardDescription>
+          <CardTitle className="flex items-center gap-2">
+            <Clock className="h-5 w-5" /> Mindful Minutes Tracking Calculator
+          </CardTitle>
+          <CardDescription>
+            Gently reflect on how much time you’re setting aside for mindfulness each week. This is a personal wellness check‑in,
+            not a performance score.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -288,17 +306,34 @@ export default function MindfulMinutesTrackingCalculator() {
       <Card>
         <CardHeader><CardTitle>Complete Guide: Building a Mindfulness Practice</CardTitle></CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Building a sustainable mindfulness practice requires consistency over duration. Start with 5–10 minutes daily, choose a consistent time and place, and track your practice to maintain motivation. Include various types: formal meditation, breathing exercises, body scans, and mindful activities. Celebrate consistency milestones and don\'t let missed days derail your practice. Focus on the journey rather than perfection.</p>
+          <p>
+            Building a sustainable mindfulness practice often starts with small, repeatable moments. You might begin with a few
+            minutes a day, choose a realistic time and place, and allow the habit to grow at a pace that feels kind to you.
+          </p>
+          <p>
+            Many people find it helpful to include a mix of practices—such as brief breathing exercises, body scans, or mindful
+            walking—and to celebrate showing up at all, rather than aiming for a perfect streak. Missed days are part of the
+            process; returning when you can still counts.
+          </p>
+          <p>
+            If you are ever unsure about how mindfulness fits with your mental health or well‑being, consider checking in with a
+            qualified professional who can offer tailored guidance.
+          </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Detailed, SEO-oriented answers</CardDescription>
+          <CardDescription>Using mindfulness minutes as a gentle guide, not a strict target</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">{faqs.map(([q,a],i)=>(<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}</CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

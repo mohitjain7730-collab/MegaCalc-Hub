@@ -62,23 +62,31 @@ const understandingInputs = [
 ];
 
 const interpret = (rate: number, goal: string) => {
-  if (rate <= 6) return `Very slow breathing (${rate} breaths/min) promotes deep relaxation and parasympathetic activation. Ideal for ${goal} goals.`;
-  if (rate <= 8) return `Slow breathing (${rate} breaths/min) creates a calm, relaxed state. Good for ${goal} meditation.`;
-  if (rate <= 12) return `Moderate breathing (${rate} breaths/min) provides balanced awareness. Suitable for ${goal} practice.`;
-  return `Faster breathing (${rate} breaths/min) can be energizing. Useful for ${goal} goals requiring alertness.`;
+  if (rate <= 6) {
+    return `Very gentle breathing (${rate} breaths/min) is often experienced as deeply calming and grounding for many people, especially for ${goal}‑oriented sessions.`;
+  }
+  if (rate <= 8) {
+    return `Slow breathing (${rate} breaths/min) can support a calm, relaxed state and may feel soothing for ${goal} practice.`;
+  }
+  if (rate <= 12) {
+    return `Moderate breathing (${rate} breaths/min) tends to feel steady and balanced for many people and can work well for ${goal}‑focused sessions.`;
+  }
+  return `Slightly quicker breathing (${rate} breaths/min) can feel more enlivening and may support ${goal} sessions when you want to stay alert.`;
 };
 
 const recommendations = (rate: number, experience: string) => [
-  'Start with 5–10 minutes daily practice and gradually increase duration as comfort improves',
-  experience === 'beginner' ? 'Begin with moderate rates (8–12 breaths/min) before attempting very slow breathing' : 'Experiment with different rates to find what works best for your practice',
-  'Use a timer or counting app to maintain consistent breathing intervals',
-  'Focus on smooth, natural breathing without forcing or straining',
+  'Start with 5–10 minutes daily practice and gradually increase duration as comfort improves.',
+  experience === 'beginner'
+    ? 'If you are newer to this, you might begin with moderate rates (around 8–12 breaths/min) before exploring very slow breathing.'
+    : 'Experiment with different rates on different days and notice which ones feel most natural for you.',
+  'Use a timer or counting app to help keep a relaxed, steady rhythm.',
+  'Keep your breathing smooth and natural; if anything feels strained, gently return toward your usual rhythm.',
 ];
 
 const warningSigns = () => [
-  'If you experience dizziness, lightheadedness, or discomfort, slow down or stop and return to normal breathing',
-  'Don\'t force very slow breathing rates if you feel uncomfortable—gradually work toward slower rates',
-  'Consult healthcare providers if you have respiratory conditions before practicing breathing exercises',
+  'If you notice dizziness, lightheadedness, or discomfort, pause the exercise and return to your usual, comfortable breathing.',
+  'There is no need to force very slow breathing; you can ease toward it gradually over time if it feels good to you.',
+  'If you have any concerns about your breathing or health, consider checking in with a qualified professional before making big changes to your practice.',
 ];
 
 export default function MeditationBreathingRateCalculator() {
@@ -134,8 +142,13 @@ export default function MeditationBreathingRateCalculator() {
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Wind className="h-5 w-5" /> Meditation Breathing Rate Calculator</CardTitle>
-          <CardDescription>Find your optimal breathing rate for meditation based on age, experience, and goals.</CardDescription>
+          <CardTitle className="flex items-center gap-2">
+            <Wind className="h-5 w-5" /> Meditation Breathing Rate Explorer
+          </CardTitle>
+          <CardDescription>
+            Explore a gentle breathing rhythm for your meditation based on age, experience, and goals. This is a personal wellness
+            insight, not a medical recommendation.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -194,8 +207,11 @@ export default function MeditationBreathingRateCalculator() {
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-4"><Zap className="h-8 w-8 text-primary" /><CardTitle>Breathing Rate Summary</CardTitle></div>
-              <CardDescription>Personalized breathing rate for your meditation practice</CardDescription>
+              <div className="flex items-center gap-4">
+                <Zap className="h-8 w-8 text-primary" />
+                <CardTitle>Breathing Rhythm Insight</CardTitle>
+              </div>
+              <CardDescription>A suggested starting rhythm you can gently adjust based on how your body feels.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -258,17 +274,33 @@ export default function MeditationBreathingRateCalculator() {
       <Card>
         <CardHeader><CardTitle>Complete Guide: Meditation Breathing Techniques</CardTitle></CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Optimal breathing rates for meditation vary by individual, age, experience, and goals. Slower rates (4–8 breaths/min) promote deep relaxation, while moderate rates (8–12 breaths/min) support balanced awareness. Start with 5–10 minutes daily, use timers or counting apps, and focus on smooth, natural breathing. Experiment with different patterns (box breathing, 4-7-8) to find what works best for you.</p>
+          <p>
+            Breathing rhythms for meditation are highly individual and can change from day to day. Some people enjoy very slow breathing
+            for deep calm; others prefer a slightly quicker rhythm that feels more natural or alert.
+          </p>
+          <p>
+            Rather than trying to hit a “perfect” number, you can treat the suggested rate as a starting point. Try it for a few minutes,
+            notice how your body and mind respond, and then gently speed up or slow down until it feels comfortable and sustainable.
+          </p>
+          <p>
+            If you ever feel uneasy about your breathing or health, or if symptoms worry you, it can be helpful to speak with a qualified
+            professional. This tool is only meant to support a mindful, lifestyle‑based practice.
+          </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Detailed, SEO-oriented answers</CardDescription>
+          <CardDescription>How to use this breathing rhythm idea in a gentle way</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">{faqs.map(([q,a],i)=>(<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}</CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

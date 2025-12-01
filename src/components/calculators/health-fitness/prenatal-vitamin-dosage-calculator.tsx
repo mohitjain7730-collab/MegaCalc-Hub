@@ -23,37 +23,34 @@ export default function PrenatalVitaminDosageCalculator() {
   const [result, setResult] = useState<{ status: string; interpretation: string; recommendations: string[]; warningSigns: string[]; plan: { week: number; focus: string }[] } | null>(null);
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { folateMcg: undefined, ironMg: undefined, vitaminDiu: undefined } });
 
-  const interpret = (v: FormValues) => {
-    const msgs: string[] = [];
-    if (v.folateMcg != null) {
-      if (v.folateMcg < 400) msgs.push('Folate below common prenatal target (~400–800 mcg).');
-      else if (v.folateMcg > 1000) msgs.push('Folate above typical upper range; consult provider.');
-      else msgs.push('Folate within typical prenatal range.');
-    }
-    if (v.ironMg != null) {
-      if (v.ironMg < 27) msgs.push('Iron below typical prenatal target (~27 mg).');
-      else if (v.ironMg > 45) msgs.push('Iron above upper limit; consult provider.');
-      else msgs.push('Iron within common prenatal range.');
-    }
-    if (v.vitaminDiu != null) {
-      if (v.vitaminDiu < 600) msgs.push('Vitamin D below common target (~600–2000 IU).');
-      else if (v.vitaminDiu > 4000) msgs.push('Vitamin D high; confirm with labs and provider.');
-      else msgs.push('Vitamin D within commonly recommended range.');
-    }
-    return msgs.join(' ');
-  };
+const interpret = (v: FormValues) => {
+  const msgs: string[] = [];
+  if (v.folateMcg != null) {
+    msgs.push(`You entered ${v.folateMcg} mcg for folate. You can compare this with what is printed on your prenatal label and any guidance your care team has shared with you.`);
+  }
+  if (v.ironMg != null) {
+    msgs.push(`You entered ${v.ironMg} mg for iron. This snapshot can help you have a more specific conversation with your clinician about iron, if needed.`);
+  }
+  if (v.vitaminDiu != null) {
+    msgs.push(`You entered ${v.vitaminDiu} IU for Vitamin D. Your care team can let you know whether this amount fits your individual situation.`);
+  }
+  if (msgs.length === 0) {
+    msgs.push('Add one or more values from your prenatal label to create a simple snapshot you can review with your care team.');
+  }
+  return msgs.join(' ');
+};
 
-  const recommendations = (v: FormValues) => [
-    'Choose third‑party tested prenatal formulas; verify folate is L‑methylfolate or folic acid per provider advice',
-    'Split doses with meals if nausea occurs; separate iron from calcium for absorption',
-    'Request labs for ferritin and 25‑OH Vitamin D to individualize dosing',
-  ];
+const recommendations = (v: FormValues) => [
+  'Keep a note or photo of your prenatal label so you can quickly share details with your care team.',
+  'If you try a new prenatal, pay attention to how you feel (energy, digestion, nausea) and share those observations at check‑ups.',
+  'Use this snapshot as a starting point for questions; your care team can help tailor any supplement plan to your needs.',
+];
 
-  const warnings = (v: FormValues) => [
-    'Avoid megadoses without medical supervision',
-    'Report symptoms such as dizziness, constipation, or GI distress to your provider',
-    'Keep supplements out of reach of children; iron overdose is dangerous',
-  ];
+const warnings = (v: FormValues) => [
+  'Always follow the instructions on your supplement packaging unless your clinician specifically recommends something different.',
+  'Store all supplements safely out of reach of children; accidental ingestion can be dangerous.',
+  'Before making big changes to doses or combining multiple products, consider checking in with a qualified health professional.',
+];
 
   const plan = () => ([
     { week: 1, focus: 'Begin prenatal daily; take with food and hydrate' },
@@ -74,8 +71,13 @@ export default function PrenatalVitaminDosageCalculator() {
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Baby className="h-5 w-5" /> Prenatal Vitamin Analysis</CardTitle>
-          <CardDescription>Screen typical folate, iron, and Vitamin D ranges</CardDescription>
+          <CardTitle className="flex items-center gap-2">
+            <Baby className="h-5 w-5" /> Prenatal Vitamin Label Snapshot
+          </CardTitle>
+          <CardDescription>
+            Organize a few key numbers from your prenatal label so they’re easier to discuss with your care team. This tool does
+            not recommend or adjust any doses.
+          </CardDescription>
         </CardHeader>
         <CardContent>
       <Form {...form}>
@@ -161,7 +163,7 @@ export default function PrenatalVitaminDosageCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Related Calculators</CardTitle>
-          <CardDescription>Pregnancy & nutrition tools</CardDescription>
+          <CardDescription>Pregnancy & nutrition wellness tools</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -176,15 +178,21 @@ export default function PrenatalVitaminDosageCalculator() {
       <Card>
         <CardHeader><CardTitle>Complete Guide: Prenatal Vitamins</CardTitle></CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a sample line for the complete guide section. You can add your detailed content here.</p>
-          <p>This is another sample line for the guide section. Replace these with your comprehensive guide content.</p>
+          <p>
+            Prenatal supplements are often used alongside food to help support nutrient needs during pregnancy, but the exact
+            approach is personal. This tool is intended only to help you see what is on your current label in one place.
+          </p>
+          <p>
+            For questions about what is right for you, including whether a product or dose is appropriate, it’s important to
+            talk with a qualified health professional who knows your history, lab results, and overall care plan.
+          </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Detailed, SEO‑oriented answers</CardDescription>
+          <CardDescription>Using this label snapshot in conversation with your care team</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {[
@@ -199,6 +207,11 @@ export default function PrenatalVitaminDosageCalculator() {
           ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }
