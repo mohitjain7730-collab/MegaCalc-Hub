@@ -5298,6 +5298,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate your phone dependency score using daily screen time, pickups, anxiety without the device, and purposeful usage share.'
   },
   {
+    id: 7305,
+    name: 'Positive Emotion Ratio Calculator',
+    description: 'Estimate your positive versus negative emotion balance from event counts and minutes.',
+    slug: 'positive-emotion-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Positive Emotion Ratio Calculator',
+    metaDescription: 'Calculate a positive emotion ratio using counts and minutes of positive and negative emotional experiences.'
+  },
+  {
+    id: 7306,
+    name: 'Daily Energy & Mood Synchronization Tracker',
+    description: 'Track how well your daily mood matches your energy curve across morning, afternoon, and evening.',
+    slug: 'daily-energy-mood-synchronization-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Daily Energy & Mood Synchronization Tracker',
+    metaDescription: 'Evaluate alignment between your daily mood and energy levels to optimize scheduling and reduce burnout risk.'
+  },
+  {
+    id: 7307,
+    name: 'Motivation Momentum Calculator',
+    description: 'Estimate goal momentum using days of action, time since last action, progress, and meaning.',
+    slug: 'motivation-momentum-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Motivation Momentum Calculator',
+    metaDescription: 'Calculate a motivation momentum score from consistency, gaps, perceived progress, and goal meaning to guide behavior change.'
+  },
+  {
+    id: 7308,
+    name: 'Mental Recovery from Stress Estimator',
+    description: 'Estimate mental recovery progress after a stressful period based on intensity, time, sleep, and recovery habits.',
+    slug: 'mental-recovery-from-stress-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Mental Recovery from Stress Estimator',
+    metaDescription: 'Approximate recovery from stress using event intensity, days since event, sleep hours, and daily recovery minutes.'
+  },
+  {
+    id: 7309,
+    name: 'Self-Esteem Growth Tracker',
+    description: 'Track self-esteem change over time and the support from self-compassion and wins logging.',
+    slug: 'self-esteem-growth-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Self-Esteem Growth Tracker',
+    metaDescription: 'Measure self-esteem growth using baseline vs current ratings plus self-compassion and wins-tracking habits.'
+  },
+  {
     id: 7000,
     name: 'Wells Score for DVT Probability Calculator',
     description: 'Estimate pre-test probability of deep vein thrombosis (DVT) using the Wells clinical prediction rule.',

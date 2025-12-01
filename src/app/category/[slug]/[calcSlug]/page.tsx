@@ -340,6 +340,21 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'cognitive-load-estimator': dynamic(() => import('@/components/calculators/health-fitness/cognitive-load-estimator')),
     'gratitude-mood-correlation-tracker': dynamic(() => import('@/components/calculators/health-fitness/gratitude-mood-correlation-tracker')),
     'phone-dependency-index': dynamic(() => import('@/components/calculators/health-fitness/phone-dependency-index')),
+    'positive-emotion-ratio-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/positive-emotion-ratio-calculator'),
+    ),
+    'daily-energy-mood-synchronization-tracker': dynamic(
+      () => import('@/components/calculators/health-fitness/daily-energy-mood-synchronization-tracker'),
+    ),
+    'motivation-momentum-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/motivation-momentum-calculator'),
+    ),
+    'mental-recovery-from-stress-estimator': dynamic(
+      () => import('@/components/calculators/health-fitness/mental-recovery-from-stress-estimator'),
+    ),
+    'self-esteem-growth-tracker': dynamic(
+      () => import('@/components/calculators/health-fitness/self-esteem-growth-tracker'),
+    ),
     'sleep-consistency-score-calculator': dynamic(
       () => import('@/components/calculators/health-fitness/sleep-consistency-score-calculator'),
     ),
