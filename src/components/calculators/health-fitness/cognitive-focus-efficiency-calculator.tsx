@@ -140,33 +140,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const flowConsistency = clamp(Math.round((values.flowMinutes / (values.plannedTasks * 30)) * 100), 0, 120);
 
   let state: ResultPayload['state'] = 'focused';
-  let interpretation = 'Excellent control. Keep batching tasks and defending deep-work blocks.';
+  let interpretation =
+    'Your entries suggest today’s focus and follow-through felt relatively smooth overall. You can keep leaning on the habits that supported that.';
 
   if (efficiencyScore < 70) {
     state = 'fragile';
-    interpretation = 'You’re doing meaningful work but losing time to interruptions. Tighten notification boundaries.';
+    interpretation =
+      'You’re getting meaningful things done, and there also seems to be room to soften interruptions or multitasking a bit.';
   }
   if (efficiencyScore < 50) {
     state = 'fragmented';
-    interpretation = 'Fragmentation is stealing output. Reduce commitments, reset priorities, and rebuild one solid routine.';
+    interpretation =
+      'The pattern you entered looks quite scattered today. It may help to experiment with fewer priorities or gentler boundaries around focus time.';
   }
 
   const recommendations = [
-    'Plan no more than 3 “must-win” tasks per day.',
-    'Mute non-critical notifications during focus blocks.',
-    'Record distractions in real time to identify top offenders.',
+    'Try choosing a small number of “nice-to-finish” tasks so your day feels more realistic and spacious.',
+    'When possible, soften non‑essential notifications during focus moments so you can stay with one thing at a time.',
+    'Noting distractions as they happen can gently highlight patterns you might want to adjust later.',
   ];
   if (state === 'fragile') {
-    recommendations.push('Convert recurring meetings into async updates where possible.');
+    recommendations.push('You might experiment with turning one recurring meeting or check‑in into a written update instead.');
   }
   if (state === 'fragmented') {
-    recommendations.push('Schedule a weekly review to trim commitments and set one North Star goal.');
+    recommendations.push('A short weekly review to look at commitments and pick one simple guiding priority can make future days feel lighter.');
   }
 
   const plan = [
-    { label: 'Pre-focus ritual', detail: '5-minute prep: outline outcome, close tabs, set timer.' },
-    { label: 'Midday audit', detail: 'Score distractions at lunch and plan adjustments for the afternoon.' },
-    { label: 'Shutdown sequence', detail: 'Log wins, capture loose ends, and define tomorrow’s top tasks.' },
+    { label: 'Pre-focus moment', detail: 'Take a few minutes to outline what would feel good to complete and gently tidy your workspace or tabs.' },
+    { label: 'Midday check‑in', detail: 'Pause around the middle of the day to notice what helped or pulled your attention away.' },
+    { label: 'End-of-day wind‑down', detail: 'Note a few wins, park loose ideas for tomorrow, and pick one or two priorities for next time.' },
   ];
 
   return { efficiencyScore, completionRate, flowConsistency, state, interpretation, recommendations, plan };
@@ -325,7 +328,7 @@ export default function CognitiveFocusEfficiencyCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Efficiency score</p>
                 <p className="text-2xl font-semibold text-primary">{result.efficiencyScore}</p>
-                <p className="text-xs text-muted-foreground">≥70 focused · 50–69 fragile · {'<'}50 fragmented</p>
+                <p className="text-xs text-muted-foreground">Rough pattern: ≥70 more focused · 50–69 somewhat pulled · {'<'}50 very scattered</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Completion rate</p>
@@ -493,11 +496,15 @@ export default function CognitiveFocusEfficiencyCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator scores your focus by looking at planned vs completed tasks, flow time, distractions, and multitasking.</p>
-          <p>It returns an efficiency score, completion rate, flow consistency, recommendations, and a ready-to-use plan.</p>
-          <p>Formula text, steps, supporting metrics, related tools, and FAQs are included so humans and AI can summarize the method quickly.</p>
+          <p>This tool looks at planned and completed tasks, flow time, distractions, and multitasking to offer a simple snapshot of how your day felt for focus.</p>
+          <p>You can treat the numbers and suggestions as gentle prompts for experimenting with boundaries, planning, and routines that feel kinder to your attention.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

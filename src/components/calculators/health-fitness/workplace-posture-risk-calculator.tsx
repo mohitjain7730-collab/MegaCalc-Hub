@@ -153,36 +153,39 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const postureRiskScore = Math.round(clamp(rawScore, 0, 100));
 
   let status: ResultPayload['status'] = 'low';
-  let interpretation = 'Current posture and workload pattern suggest relatively low musculoskeletal risk.';
+  let interpretation =
+    'Your entries suggest that, based on this snapshot, your current sitting, lifting, and setup patterns may feel relatively manageable for your body.';
 
   if (postureRiskScore >= 35 && postureRiskScore < 70) {
     status = 'moderate';
-    interpretation = 'Moderate risk. Target focused ergonomic tweaks and more frequent movement breaks.';
+    interpretation =
+      'This pattern points to a fair bit of load on your body across the day. Gentle ergonomic tweaks and a few more movement breaks might help things feel more comfortable.';
   }
   if (postureRiskScore >= 70) {
     status = 'high';
-    interpretation = 'High risk. An ergonomic assessment and medical review are advisable, especially if pain is frequent.';
+    interpretation =
+      'These numbers suggest your body may be handling quite a lot in terms of sitting, lifting, or discomfort. If you’re able, you might explore more supportive setups, varied positions, and professional input.';
   }
 
   const recommendations = [
-    'Set a timer to stand, stretch, or walk for 1–3 minutes every 30–60 minutes of sitting.',
-    'Adjust chair height so hips are slightly above knees and feet are flat or supported.',
-    'Raise your monitor so the top of the screen is at or slightly below eye level.',
+    'When it feels doable, add short pauses to stand, stretch gently, or walk for a minute between longer sitting blocks.',
+    'You might experiment with chair and desk height so your hips feel supported and your feet rest comfortably.',
+    'Adjusting your screen so it feels natural to look at—without craning your neck—can help many people feel more at ease.',
   ];
 
   if (status !== 'low') {
-    recommendations.push('Consider a formal ergonomic assessment or physiotherapy consult for personalized advice.');
+    recommendations.push('If you have access and it feels right, you could explore an ergonomic review or movement support for more tailored ideas.');
   }
   if (values.painFrequency >= 5) {
-    recommendations.push('Document when and where pain appears to share better detail with healthcare providers.');
+    recommendations.push('Noticing and gently jotting down when and where discomfort shows up can help you and any supporters spot patterns.');
   }
 
   const plan = [
-    { label: 'Today', detail: 'Change one workstation element—chair height, monitor position, or keyboard distance.' },
-    { label: 'This Week', detail: 'Track sitting hours and break intervals to see how often you truly move.' },
+    { label: 'Today', detail: 'If you’d like, choose one small workstation change—such as chair height or monitor position—and see how it feels.' },
+    { label: 'This Week', detail: 'Simply notice roughly how long you sit between short breaks and how your body feels by the end of the day.' },
     {
       label: 'This Month',
-      detail: 'Recheck your score after tweaks, and escalate to ergonomic or medical review if pain persists.',
+      detail: 'After you’ve tried a few small changes, you can revisit this snapshot and decide whether you want more support or adjustments.',
     },
   ];
 
@@ -343,12 +346,12 @@ export default function WorkplacePostureRiskCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Posture risk score</p>
                 <p className="text-2xl font-semibold text-primary">{result.postureRiskScore}</p>
-                <p className="text-xs text-muted-foreground">Scaled 0–100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 view of how your current sitting, lifting, and comfort patterns add up.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
                 <p className="text-2xl font-semibold text-primary capitalize">{result.status}</p>
-                <p className="text-xs text-muted-foreground">Higher scores indicate greater musculoskeletal load.</p>
+                <p className="text-xs text-muted-foreground">A simple label for how full your body’s load may feel in this season of work.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Summary</p>
@@ -436,21 +439,21 @@ export default function WorkplacePostureRiskCalculator() {
                     ? (Math.round((form.getValues().sittingHours ?? 0) * 60 / (form.getValues().breakIntervalMinutes ?? 1)))
                     : 0}
                 </p>
-                <p className="text-xs text-muted-foreground">Approximate opportunities to reset posture.</p>
+                <p className="text-xs text-muted-foreground">Roughly how many chances you might have to change position during the day.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Daily load index</p>
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().sittingHours ?? 0) * (form.getValues().liftingWeightKg ?? 0)).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Very rough composite of sitting × load.</p>
+                <p className="text-xs text-muted-foreground">A very rough way to think about how much sitting and lifting combine for you most days.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fit buffer</p>
                 <p className="text-xl font-semibold text-primary">
                   {(form.getValues().workstationFitScore ?? 0) >= 7 ? 'Helpful' : 'Needs tuning'}
                 </p>
-                <p className="text-xs text-muted-foreground">Better fit can offset some load, but not all.</p>
+                <p className="text-xs text-muted-foreground">Gives a feel for whether your current setup tends to support you or might want a bit of tuning.</p>
               </div>
             </div>
           ) : (
@@ -512,11 +515,15 @@ export default function WorkplacePostureRiskCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Workplace Posture Risk Calculator blends sitting time, breaks, lifting, workstation fit, and pain into one risk score.</p>
-          <p>It highlights low, moderate, or high posture-related risk and suggests practical ergonomic next steps.</p>
-          <p>Pair it with professional ergonomic or clinical support when discomfort is frequent, severe, or worsening.</p>
+          <p>This tool combines your sitting time, breaks, lifting, workstation fit, and comfort into one simple posture pattern snapshot.</p>
+          <p>You can use the score and suggestions as gentle prompts for experimenting with setup and movement, alongside any professional support you choose.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

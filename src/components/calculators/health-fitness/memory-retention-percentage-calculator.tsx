@@ -93,33 +93,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const adjustedRetention = clamp(retentionPercent - forgettingPenalty, 0, 100);
 
   let reinforcementLevel: ResultPayload['reinforcementLevel'] = 'excellent';
-  let interpretation = 'Your retention looks strong. Schedule a light spaced review to lock it in.';
+  let interpretation =
+    'Your entries suggest that you are remembering a good amount of what you studied. A light review can help you keep that feeling of familiarity.';
 
   if (adjustedRetention < 80) {
     reinforcementLevel = 'reinforce soon';
-    interpretation = 'Some decay is setting in. Layer a focused review within 24 hours.';
+    interpretation =
+      'It looks like some of the material is starting to fade a bit. A gentle review session sometime soon could help refresh it.';
   }
   if (adjustedRetention < 60) {
     reinforcementLevel = 'review ASAP';
-    interpretation = 'Recall is slipping fast. Plan a deliberate practice block today with active recall and teaching.';
+    interpretation =
+      'This snapshot shows that quite a bit of the material may not feel as fresh right now. You might find it helpful to spend some focused time revisiting the key pieces you want to remember.';
   }
 
   const recommendations = [
-    'Use active recall (closed-book questions) rather than re-reading.',
-    'Convert tricky items into spaced-repetition cards to automate reviews.',
-    'Wind down screens 60 minutes before bed to protect consolidation.',
+    'When it feels helpful, try simple recall (like jotting ideas from memory) instead of only re‑reading your notes.',
+    'You can turn trickier ideas into small review prompts or cards so they come up again over time.',
+    'Easing away from bright screens before bed can make your evenings feel calmer and may support how your studying settles in.',
   ];
   if (reinforcementLevel !== 'excellent') {
-    recommendations.push('Chunk material into 15–20 minute blocks with 5-minute breaks to avoid overload.');
+    recommendations.push('Some people enjoy short review blocks of around 15–20 minutes with small breaks so studying feels more manageable.');
   }
   if (reinforcementLevel === 'review ASAP') {
-    recommendations.push('Teach the concept to someone else or record yourself explaining it to solidify pathways.');
+    recommendations.push('Explaining ideas out loud—to yourself or someone else—can gently strengthen what you want to remember.');
   }
 
   const plan = [
-    { label: 'Today', detail: 'Run a targeted recall session on the weakest 20% of items.' },
-    { label: 'This Week', detail: 'Add at least two spaced reviews (day 2 and day 5) for the same dataset.' },
-    { label: 'Next Block', detail: 'Pair study with sleep tracking to see how rest impacts retention.' },
+    { label: 'Today', detail: 'Spend a little time with the items that felt most wobbly and see which ones you’d like to feel clearer about.' },
+    { label: 'This Week', detail: 'If it fits your schedule, add one or two gentle review sessions for this material on different days.' },
+    { label: 'Next Block', detail: 'Notice how your studying and sleep routines relate to how confident you feel with new material.' },
   ];
 
   return { retentionPercent: adjustedRetention, forgettingPenalty, reinforcementLevel, interpretation, recommendations, plan };
@@ -249,12 +252,12 @@ export default function MemoryRetentionPercentageCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Adjusted retention</p>
                 <p className="text-2xl font-semibold text-primary">{result.retentionPercent.toFixed(1)}%</p>
-                <p className="text-xs text-muted-foreground">Penalty-adjusted based on decay factors.</p>
+                <p className="text-xs text-muted-foreground">A simple percentage view after considering time since study, reviews, and recent sleep.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Forgetting penalty</p>
                 <p className="text-2xl font-semibold text-primary">{result.forgettingPenalty.toFixed(1)} pts</p>
-                <p className="text-xs text-muted-foreground">Higher numbers mean reviews are overdue.</p>
+                <p className="text-xs text-muted-foreground">A rough indicator of how much your pattern might be nudging things to fade.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Review urgency</p>
@@ -371,11 +374,15 @@ export default function MemoryRetentionPercentageCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator converts recall attempts into an adjusted retention percentage while factoring in decay.</p>
-          <p>Outputs include retention %, forgetting penalty, review urgency, recommendations, and a simple action plan.</p>
-          <p>Supporting sections—formula, steps, extra metrics, related tools, and FAQs—make it easy to share insights with classmates or AI assistants.</p>
+          <p>This tool turns your recall attempts, timing, and a few simple study habits into one snapshot of how familiar the material feels right now.</p>
+          <p>You can use the results as a gentle guide for planning reviews in a way that feels realistic and kind to your learning pace.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

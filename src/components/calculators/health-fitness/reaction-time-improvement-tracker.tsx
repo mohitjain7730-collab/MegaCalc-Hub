@@ -95,33 +95,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const consistencyScore = clamp(60 + sleepScore + practiceScore - caffeinePenalty, 0, 100);
 
   let status: ResultPayload['status'] = 'on-track';
-  let interpretation = 'Strong upward trend—keep stacking consistent drills and recovery.';
+  let interpretation =
+    'Your entries point to a generally positive pattern in your reaction practice and everyday habits. You can keep building on what already feels supportive.';
 
   if (improvementPct < 1) {
     status = 'stalled';
-    interpretation = 'Progress plateaued. Swap drill types or tighten sleep/caffeine habits.';
+    interpretation =
+      'Your numbers look fairly steady right now. You might experiment with small tweaks to drills, sleep, or caffeine timing and see how that feels over time.';
   }
   if (improvementPct < 0) {
     status = 'regressing';
-    interpretation = 'Reaction time slipped. Review fatigue, stress, or inconsistent testing setup.';
+    interpretation =
+      'This result suggests your recent test came out a bit slower. It can help to look at things like tiredness, stress, or test setup and gently adjust if you wish.';
   }
 
   const recommendations = [
-    'Warm up with light mobility plus a short reaction primer before testing.',
-    'Log testing context (device, time of day) for more accurate comparisons.',
-    'Schedule reaction drills when you’re freshest rather than at the end of the day.',
+    'A brief warm‑up with light movement before you test can make sessions feel smoother and more comfortable.',
+    'Noting the testing context (device, time of day, environment) makes it easier to compare sessions in a like‑for‑like way.',
+    'Many people find reaction drills feel better when done at a time of day they naturally feel more alert.',
   ];
   if (status === 'stalled') {
-    recommendations.push('Introduce auditory cues or power-based primers to freshen adaptations.');
+    recommendations.push('You could gently vary your drills—for example, mixing in different visual or sound cues—to keep practice interesting.');
   }
   if (status === 'regressing') {
-    recommendations.push('Reduce late caffeine, add a deload week, and prioritize sleep before retesting.');
+    recommendations.push('If life allows, you might try an easier week, slightly earlier caffeine cut‑offs, or a bit more sleep before your next test.');
   }
 
   const plan = [
-    { label: 'AM primer', detail: '5 minutes of breath work + quick cue-response drills before deep work.' },
-    { label: 'Midweek audit', detail: 'Review sleep and caffeine logs; adjust before scores drop.' },
-    { label: 'Weekly retrospective', detail: 'Compare baseline vs latest and set one improvement experiment.' },
+    { label: 'Gentle start', detail: 'A few minutes of breathing, stretching, or easy drills can help you ease into practice days.' },
+    { label: 'Midweek check‑in', detail: 'Glance at how your sleep, stress, and practice times have felt and make small adjustments if you’d like.' },
+    { label: 'Weekly reflection', detail: 'Compare your recent tests with your baseline and choose one simple experiment for the next week.' },
   ];
 
   return { improvementPct, consistencyScore, status, interpretation, recommendations, plan };
@@ -251,12 +254,12 @@ export default function ReactionTimeImprovementTracker() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Improvement</p>
                 <p className="text-2xl font-semibold text-primary">{result.improvementPct.toFixed(1)}%</p>
-                <p className="text-xs text-muted-foreground">Negative values indicate slower reactions.</p>
+                <p className="text-xs text-muted-foreground">This compares your latest entry with your starting point for a simple progress snapshot.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Consistency score</p>
                 <p className="text-2xl font-semibold text-primary">{result.consistencyScore}</p>
-                <p className="text-xs text-muted-foreground">Sleep, practice, and caffeine blended into one metric.</p>
+                <p className="text-xs text-muted-foreground">A blend of sleep, practice frequency, and caffeine habits, viewed as a general pattern.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -414,11 +417,15 @@ export default function ReactionTimeImprovementTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tracker blends reaction-time improvements with sleep, practice, and caffeine habits.</p>
-          <p>It outputs improvement %, consistency score, status, recommendations, and a weekly plan.</p>
-          <p>Formula, steps, extras, related tools, and FAQs make the methodology easy for humans or AI to understand.</p>
+          <p>This tracker blends your reaction‑time entries with sleep, practice, and caffeine habits to give a simple view of how your routine feels over time.</p>
+          <p>You can treat the results as gentle guidance for experimenting with practice structure and daily rhythms that feel sustainable and supportive.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

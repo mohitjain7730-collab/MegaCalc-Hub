@@ -93,33 +93,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const resilienceScore = clamp(positiveAverage * 8 - values.stressScore * 3 + 20, 0, 100);
 
   let status: ResultPayload['status'] = 'flourishing';
-  let interpretation = 'You are thriving—keep reinforcing the routines that work.';
+  let interpretation =
+    'Your snapshot suggests that, overall, things are feeling relatively supportive for you right now. You can keep leaning into the routines and connections that already help.';
 
   if (wellbeingIndex < 70) {
     status = 'steady';
-    interpretation = 'You are holding steady but could slide. Strengthen one supportive habit this week.';
+    interpretation =
+      'This pattern looks fairly steady, with a bit of room for extra care. You might gently strengthen one small habit or check‑in that supports you this week.';
   }
   if (wellbeingIndex < 55) {
     status = 'support needed';
-    interpretation = 'Stress outweighs supports. Reach out and lighten your load where possible.';
+    interpretation =
+      'These numbers suggest that, today, stress may be weighing more heavily than some of your supports. It could be a good moment to be extra kind to yourself and consider leaning on people or practices you trust.';
   }
 
   const recommendations = [
-    'Celebrate one daily win or gratitude to reinforce mood momentum.',
-    'Protect energy with hydration, nourishing meals, and sunlight walks.',
-    'Schedule intentional connection (calls, walks, shared meals) twice this week.',
+    'Notice and gently celebrate one small thing that went okay or felt meaningful today.',
+    'Simple supports like drinking water, eating regularly, and getting a bit of daylight can be kind to your energy.',
+    'If it feels right, you might plan a couple of intentional touchpoints with people who feel grounding or kind to be around.',
   ];
   if (status === 'steady') {
-    recommendations.push('Reconnect with purpose—journal for 5 minutes on what matters this month.');
+    recommendations.push('A few minutes of light reflection or journaling on what matters to you this month can help reconnect you with a sense of direction.');
   }
   if (status === 'support needed') {
-    recommendations.push('Ask a trusted friend or professional for help processing stressors.');
+    recommendations.push('You might consider reaching out to a trusted person or a professional space where you can talk about what’s on your mind.');
   }
 
   const plan = [
-    { label: 'Morning check', detail: 'Name one feeling plus one action that supports you today.' },
-    { label: 'Midday reset', detail: 'Rate energy + stress; if either <5, pause for breathwork or a walk.' },
-    { label: 'Evening close', detail: 'List three gratitudes or lessons before bed to prime calmer sleep.' },
+    { label: 'Morning check‑in', detail: 'Gently name one feeling you notice and one small action that could support you today.' },
+    { label: 'Midday pause', detail: 'If you remember, take a short moment mid‑day to notice your energy and stress, and see whether a brief breath or stretch might feel good.' },
+    { label: 'Evening reflection', detail: 'Before bed, you might jot down a few gratitudes, moments, or lessons from the day—only if it feels helpful, not forced.' },
   ];
 
   return { wellbeingIndex, resilienceScore, status, interpretation, recommendations, plan };
@@ -206,12 +209,12 @@ export default function EmotionalWellbeingIndexCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Wellbeing index</p>
                 <p className="text-2xl font-semibold text-primary">{result.wellbeingIndex.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A simple 0–100 snapshot based on how today’s inputs feel to you.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Resilience score</p>
                 <p className="text-2xl font-semibold text-primary">{result.resilienceScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Higher = stronger coping</p>
+                <p className="text-xs text-muted-foreground">An approximate sense of how your current supports and stress balance out today.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -296,21 +299,21 @@ export default function EmotionalWellbeingIndexCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {(8 - (form.getValues().connectionScore ?? 0)).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Aim for ≥8 with intentional touchpoints.</p>
+                <p className="text-xs text-muted-foreground">Shows how today’s sense of connection compares with a fuller, more supported day for you.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Purpose gap</p>
                 <p className="text-xl font-semibold text-primary">
                   {(8 - (form.getValues().purposeScore ?? 0)).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Use journaling or coaching to close the gap.</p>
+                <p className="text-xs text-muted-foreground">A rough sense of how close today feels to a more purposeful or aligned day for you.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stress buffer</p>
                 <p className="text-xl font-semibold text-primary">
                   {(10 - (form.getValues().stressScore ?? 0)) * 10}%
                 </p>
-                <p className="text-xs text-muted-foreground">Keep ≥50% buffer most weeks.</p>
+                <p className="text-xs text-muted-foreground">Gives a sense of how much space you feel you have today before things feel overwhelming.</p>
               </div>
             </div>
           ) : (
@@ -369,11 +372,15 @@ export default function EmotionalWellbeingIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool blends mood, energy, connection, purpose, and stress to reveal an indexed wellbeing snapshot.</p>
-          <p>Outputs include wellbeing & resilience scores, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool turns your mood, energy, connection, purpose, and stress check‑ins into a single snapshot of how things feel right now.</p>
+          <p>The scores and ideas are there to gently support reflection and small experiments—you can always adjust or ignore anything that doesn’t fit your situation.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

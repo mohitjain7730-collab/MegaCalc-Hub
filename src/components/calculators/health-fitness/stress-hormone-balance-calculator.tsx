@@ -101,27 +101,30 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const balanceIndex = clamp(((values.wakeCortisolScore * 10 + values.eveningMelatoninScore * 12) / 2 - values.perceivedStress * 3) + circadianScore * 0.3, 0, 100);
 
   let status: ResultPayload['status'] = 'balanced';
-  let interpretation = 'Nice work—your cues suggest cortisol and melatonin are cooperating.';
+  let interpretation =
+    'Your entries suggest that, overall, your morning and evening cues are working reasonably well together for you right now.';
 
   if (balanceIndex < 80) {
     status = 'monitor';
-    interpretation = 'Slight misalignment. Tighten light hygiene, meal timing, or stress rituals.';
+    interpretation =
+      'This pattern hints that there may be a bit of drift between your energy, light, and wind‑down habits. Gentle tweaks to light, meals, or unwind time might feel supportive.';
   }
   if (balanceIndex < 60) {
     status = 'misaligned';
-    interpretation = 'Your rhythm needs support. Prioritize consistent sleep windows and calming evenings.';
+    interpretation =
+      'These entries suggest your days and evenings may currently feel a little out of sync. Small experiments with steadier sleep windows and calmer evenings could be worth trying if you’d like.';
   }
 
   const recommendations = [
-    'Expose your eyes to natural light within 30 minutes of waking.',
-    'Finish caffeine by early afternoon to protect melatonin release.',
-    'Dim lights and screens 90 minutes before bedtime; use warm bulbs.',
+    'When possible, let some natural light reach your eyes not too long after you wake up.',
+    'Some people find it helpful to keep stimulating drinks earlier in the day so evenings feel more restful.',
+    'Softening lights and screens before bed—with warmer light or lower brightness—can make nighttime feel gentler.',
   ];
   if (status !== 'balanced') {
-    recommendations.push('Add restorative practices (yoga nidra, breathwork, journaling) to drop evening cortisol.');
+    recommendations.push('You might explore calming evening rituals such as gentle stretching, relaxed breathing, or low‑key journaling.');
   }
   if (status === 'misaligned') {
-    recommendations.push('Stick to the same bedtime/wake time for 7 days and consult a clinician if symptoms persist.');
+    recommendations.push('If life allows, you could try keeping a similar sleep and wake window for a little while and see how that feels.');
   }
 
   const plan = [
@@ -257,12 +260,12 @@ export default function StressHormoneBalanceCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Balance index</p>
                 <p className="text-2xl font-semibold text-primary">{result.balanceIndex.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Aim for 80+</p>
+                <p className="text-xs text-muted-foreground">A simple combined view of your wake/bed cues, stress rating, and timing pattern.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Circadian score</p>
                 <p className="text-2xl font-semibold text-primary">{result.circadianScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Reflects sleep timing & light cues.</p>
+                <p className="text-xs text-muted-foreground">Reflects how your usual sleep window and light cues line up with each other.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -346,17 +349,17 @@ export default function StressHormoneBalanceCalculator() {
                     return duration.toFixed(1);
                   })()} hrs
                 </p>
-                <p className="text-xs text-muted-foreground">Aim for 7–9 hours.</p>
+                <p className="text-xs text-muted-foreground">Many people feel better with roughly 7–9 hours, but your experience matters most.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Wake energy gap</p>
                 <p className="text-xl font-semibold text-primary">{(8 - (form.getValues().wakeCortisolScore ?? 0)).toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">Positive = opportunity to boost morning cues.</p>
+                <p className="text-xs text-muted-foreground">A rough sense of how your current wake feeling compares with a more energized morning for you.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stress buffer</p>
                 <p className="text-xl font-semibold text-primary">{(10 - (form.getValues().perceivedStress ?? 0)) * 10}%</p>
-                <p className="text-xs text-muted-foreground">Keep this ≥50% for resilient evenings.</p>
+                <p className="text-xs text-muted-foreground">Shows how your stress rating today compares with a calmer day on your own scale.</p>
               </div>
             </div>
           ) : (
@@ -415,11 +418,15 @@ export default function StressHormoneBalanceCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator blends cortisol/melatonin cues, sleep timing, and perceived stress to flag hormone alignment.</p>
-          <p>Outputs include balance index, circadian score, recommendations, plan, and supporting metrics.</p>
-          <p>Formula, steps, related tools, and FAQs make sharing insights with coaches or clinicians simple.</p>
+          <p>This tool blends your own ratings of wake energy, evening sleepiness, sleep timing, and stress into a simple rhythm snapshot.</p>
+          <p>You can use the outputs as gentle prompts for experimenting with light, sleep, and unwind habits that feel realistic and kind to you.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

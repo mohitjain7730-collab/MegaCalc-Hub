@@ -153,40 +153,42 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recoveryDays = Math.max(3, Math.round(clamp(rawRecoveryDays, 3, 60)));
 
   let burnoutLevel: ResultPayload['burnoutLevel'] = 'low';
-  let interpretation = 'Current pattern suggests low burnout risk with relatively short recovery needs.';
+  let interpretation =
+    'This snapshot suggests your current workload and rest pattern may be more manageable right now, based on the numbers you entered.';
 
   if (recoveryDays >= 14 && recoveryDays < 30) {
     burnoutLevel = 'moderate';
-    interpretation = 'Signs point to moderate burnout—planned decompression and boundary resets will be important.';
+    interpretation =
+      'These entries point to a pretty full stretch of work and not a lot of extra recovery time. Gentle boundary resets and planned breaks may help things feel more sustainable.';
   }
   if (recoveryDays >= 30) {
     burnoutLevel = 'high';
     interpretation =
-      'High burnout risk. Extended recovery time, workload redesign, and professional support may be necessary.';
+      'This pattern suggests your load has likely been very heavy for a while. It may be worth exploring ways to ease demands, add support, and create more space to rest where possible.';
   }
 
   const recommendations = [
-    'Block at least one uninterrupted recovery evening per week with no work communication.',
-    'Add brief movement, hydration, and sunlight breaks during long stretches of focus.',
-    'Clarify “must-do” vs “nice-to-do” tasks with your manager or stakeholders.',
+    'Consider protecting at least one small off‑duty block a week where work messages can wait, if that feels realistic.',
+    'Short breaks for a drink of water, light movement, or a bit of daylight can make long stretches of focus feel gentler.',
+    'You might gently sort tasks into “essential for now” and “can wait” to give yourself a clearer sense of what truly matters today.',
   ];
 
   if (burnoutLevel !== 'low') {
-    recommendations.push('Explore options for redistributing workload, extending timelines, or rotating responsibilities.');
+    recommendations.push('Where it feels safe, you could explore options like shifting timelines, sharing tasks, or simplifying commitments.');
   }
   if (values.sleepDebtHours > 10) {
-    recommendations.push('Prioritize sleep debt repayment with earlier bedtimes and tech-free wind-down routines.');
+    recommendations.push('If you notice you are often short on sleep, small tweaks to wind‑down time or bedtime might help your body and mind reset.');
   }
 
   const plan = [
-    { label: 'Next 72 hours', detail: 'Schedule at least one full off-duty block and one honest workload conversation.' },
+    { label: 'Next 72 hours', detail: 'If possible, choose one small off‑duty window and one gentle check‑in about workload with someone you trust.' },
     {
       label: 'Next 2 weeks',
-      detail: 'Implement small boundary changes (no late emails, clearer stop times) and track how you feel.',
+      detail: 'Experiment with one or two small boundary changes (like a simple stop time) and notice how they feel over a couple of weeks.',
     },
     {
       label: 'Next 1–3 months',
-      detail: 'Monitor burnout score after major deadlines and adjust work design with leadership where possible.',
+      detail: 'Over the next few months, you can watch how busy periods affect you and adjust your pacing and workload where you have influence.',
     },
   ];
 
@@ -347,12 +349,12 @@ export default function WorkBurnoutRecoveryTimeCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Estimated recovery time</p>
                 <p className="text-2xl font-semibold text-primary">{result.recoveryDays} days</p>
-                <p className="text-xs text-muted-foreground">Assuming meaningful changes and protected rest.</p>
+                <p className="text-xs text-muted-foreground">A rough planning window based on your entries, assuming some room for rest and small changes.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Burnout level</p>
                 <p className="text-2xl font-semibold text-primary capitalize">{result.burnoutLevel}</p>
-                <p className="text-xs text-muted-foreground">Based on workload, stress, sleep, and support.</p>
+                <p className="text-xs text-muted-foreground">A simple label for how full your current season of work and recovery may feel.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Summary</p>
@@ -515,11 +517,15 @@ export default function WorkBurnoutRecoveryTimeCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This Work Burnout Recovery Time Calculator turns your workload snapshot into an estimated decompression window.</p>
-          <p>It blends hours, stress, sleep debt, time off, and support into a single burnout level and recovery estimate.</p>
-          <p>Use it to advocate for sustainable pacing and to spark honest conversations about workload, not as a medical verdict.</p>
+          <p>This tool turns your current work hours, stress, sleep, time off, and support into a simple view of how much space you might want for recovery.</p>
+          <p>You can use the estimates as gentle guidance for pacing and conversations about workload, rather than as fixed predictions or medical advice.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

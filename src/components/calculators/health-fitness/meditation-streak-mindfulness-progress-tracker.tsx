@@ -98,33 +98,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const balanceIndex = Math.round((momentumScore / 100) * 70 + stressRelief * 30);
 
   let status: ResultPayload['status'] = 'thriving';
-  let interpretation = 'Your mindfulness practice is compounding nicely. Keep honoring streaks and mindful pauses.';
+  let interpretation =
+    'Your entries suggest that your current mindfulness rhythm is feeling supportive overall. You can keep honoring the small practices that already help you.';
 
   if (momentumScore < 65) {
     status = 'steady';
-    interpretation = 'Solid consistency. Add micro sessions or breathwork on busy days to push momentum higher.';
+    interpretation =
+      'You have a solid base of practice showing up here. On fuller days, a few short, gentle pauses might feel easier to maintain than longer sits.';
   }
   if (momentumScore < 40) {
     status = 'restart gently';
-    interpretation = 'Momentum dipped. Focus on 5-minute sits and mindful check-ins to rebuild the streak without pressure.';
+    interpretation =
+      'It looks like practice has been lighter or more on‑and‑off lately. You might choose very small, kind moments of mindfulness as a way back in, if and when you feel ready.';
   }
 
   const recommendations = [
-    'Anchor sessions to an existing habit (morning coffee, bedtime reading) to keep streaks easy.',
-    'Track mindful check-ins with phone reminders or analog tally marks.',
-    'Use shorter practices on hectic days instead of skipping entirely.',
+    'If it feels helpful, you can anchor a short pause or sit to something you already do, like morning coffee or winding down at night.',
+    'Gentle reminders—digital or on paper—can support you in noticing a few mindful check‑ins across the day.',
+    'On busier days, it is completely okay to lean on very short practices instead of trying to fit in a long session.',
   ];
   if (status === 'steady') {
-    recommendations.push('Experiment with guided loving-kindness or body scans to deepen quality scores.');
+    recommendations.push('You might enjoy occasionally exploring different styles such as a brief body scan or a loving‑kindness practice.');
   }
   if (status === 'restart gently') {
-    recommendations.push('Pair meditation with journaling to release expectations and rediscover enjoyment.');
+    recommendations.push('Some people like to pair a few mindful breaths with a short, non‑judgmental journaling note to reconnect with the practice.');
   }
 
   const plan = [
-    { label: 'Daily cue', detail: 'Take three breaths before opening email or messaging apps.' },
-    { label: 'Midweek reset', detail: 'Schedule one longer session (20+ min) midweek to anchor the streak.' },
-    { label: 'Weekly reflection', detail: 'Note one win and one learning each Sunday to keep motivation intrinsic.' },
+    { label: 'Daily cue', detail: 'Pause for a few slow breaths before opening email or messaging apps, if that feels supportive.' },
+    { label: 'Midweek pause', detail: 'On one day midweek, you might explore a slightly longer sit or a quiet walk, depending on your energy.' },
+    { label: 'Weekly reflection', detail: 'Once a week, gently notice one small way your practice showed up and one thing you are curious to try next.' },
   ];
 
   return { momentumScore, balanceIndex, status, interpretation, recommendations, plan };
@@ -254,12 +257,12 @@ export default function MeditationStreakMindfulnessProgressTracker() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Momentum score</p>
                 <p className="text-2xl font-semibold text-primary">{result.momentumScore}</p>
-                <p className="text-xs text-muted-foreground">Goal: 70+</p>
+                <p className="text-xs text-muted-foreground">A simple sense of how your current streak, minutes, and quality fit together.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Balance index</p>
                 <p className="text-2xl font-semibold text-primary">{result.balanceIndex}</p>
-                <p className="text-xs text-muted-foreground">Higher numbers mean better stress offset.</p>
+                <p className="text-xs text-muted-foreground">Shows how your practice pattern and stress rating are lining up right now.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -336,21 +339,21 @@ export default function MeditationStreakMindfulnessProgressTracker() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Streak to 30 days</p>
                 <p className="text-xl font-semibold text-primary">{Math.max(0, 30 - (form.getValues().streakDays ?? 0))} days</p>
-                <p className="text-xs text-muted-foreground">Aim for 30-day blocks to solidify habits.</p>
+                <p className="text-xs text-muted-foreground">You can treat 30‑day stretches as gentle milestones if that feels motivating.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Daily mindful coverage</p>
                 <p className="text-xl font-semibold text-primary">
                   {Math.min(100, ((form.getValues().mindfulMoments ?? 0) / 6) * 100).toFixed(0)}%
                 </p>
-                <p className="text-xs text-muted-foreground">Target at least 6 micro check-ins.</p>
+                <p className="text-xs text-muted-foreground">You can play with how many tiny check‑ins feel natural for you on a typical day.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stress relief gap</p>
                 <p className="text-xl font-semibold text-primary">
                   {(form.getValues().stressScale ?? 0) - 3} pts above calm target
                 </p>
-                <p className="text-xs text-muted-foreground">Work toward ≤3 on average.</p>
+                <p className="text-xs text-muted-foreground">A rough sense of how your current stress rating compares with a calmer day for you.</p>
               </div>
             </div>
           ) : (
@@ -409,11 +412,15 @@ export default function MeditationStreakMindfulnessProgressTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tracker blends streak length, session depth, mindful check-ins, and stress relief into one snapshot.</p>
-          <p>Outputs include momentum score, balance index, personalized recommendations, and a simple plan.</p>
-          <p>Steps, extra metrics, related tools, and FAQs make the approach shareable with teams or digital wellness apps.</p>
+          <p>This tracker brings together streak length, session time, check‑ins, and your own stress rating into a single view of how your mindfulness habit feels right now.</p>
+          <p>You can use the numbers and suggestions as gentle prompts, adjusting or ignoring anything that doesn’t fit your life or intentions for practice.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
 
     </div>
   );

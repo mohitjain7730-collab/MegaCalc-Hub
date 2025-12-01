@@ -152,40 +152,42 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const lifestyleScore = Math.round(plantScore + movementScore + socialScore + sleepScore + purposeScoreScaled);
 
   let category: ResultPayload['category'] = 'emerging';
-  let interpretation = 'You have seeds of Blue Zone habits; small consistent tweaks can compound over time.';
+  let interpretation =
+    'Your entries suggest you already have some Blue Zone–inspired habits in place, and small, kind tweaks over time can build on that.';
 
   if (lifestyleScore >= 50 && lifestyleScore < 75) {
     category = 'on-the-way';
-    interpretation = 'You are building solid Blue Zone–inspired habits; refining weak spots can amplify benefits.';
+    interpretation =
+      'This pattern shows a growing mix of supportive habits. You might gently explore one or two areas that you are curious about strengthening next.';
   }
   if (lifestyleScore >= 75) {
     category = 'blue-zone-inspired';
     interpretation =
-      'Your lifestyle strongly echoes common Blue Zone themes. Staying consistent and flexible is your main task now.';
+      'Your current routine echoes many Blue Zone themes. Continuing in a flexible, self‑kind way is often more helpful than chasing perfection.';
   }
 
   const recommendations = [
-    'Center most meals on beans, whole grains, vegetables, and healthy fats while keeping ultra-processed foods occasional.',
-    'Sprinkle movement through your day—walks, stairs, chores, light stretching—rather than relying only on gym sessions.',
-    'Schedule recurring time with a few supportive people each week to protect social connection.',
+    'When it feels realistic, you can lean a bit more on meals built around beans, whole grains, vegetables, and other plant foods you enjoy.',
+    'Gentle, everyday movement—like walks, stairs, chores, or stretching—can be sprinkled through the day in ways that suit your life.',
+    'Spending some intentional time with people who feel supportive or uplifting can be a meaningful pillar of your routine.',
   ];
 
   if (lifestyleScore < 60) {
-    recommendations.push('Pick one pillar (food, movement, connection, sleep, or purpose) and focus on tiny, consistent wins there.');
+    recommendations.push('You might pick just one area (food, movement, connection, sleep, or purpose) and try tiny, repeatable changes there.');
   }
   if (values.sleepHoursPerNight < 7) {
-    recommendations.push('Experiment with a wind-down routine and consistent bedtime to nudge sleep closer to 7–9 hours.');
+    recommendations.push('If sleep feels short, gentle wind‑down rituals and more regular bedtimes can be small experiments to try.');
   }
 
   const plan = [
-    { label: 'Today', detail: 'Swap one meal for a mostly plant-based option and take a 10–15 minute walk if possible.' },
+    { label: 'Today', detail: 'If it appeals to you, try one more plant‑forward meal or a short walk/stretch sometime in your day.' },
     {
       label: 'This Week',
-      detail: 'Schedule at least one long catch-up or shared meal with people who leave you feeling supported.',
+      detail: 'See whether you can weave in at least one longer chat or shared meal with someone who feels supportive.',
     },
     {
       label: 'This Month',
-      detail: 'Retest your lifestyle score after a few small habit upgrades and note which pillar shifted most.',
+      detail: 'After a few weeks of small experiments, you can revisit this score and notice which pillar felt most meaningful to adjust.',
     },
   ];
 
@@ -346,12 +348,12 @@ export default function BlueZoneLifestyleScoreCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Lifestyle score</p>
                 <p className="text-2xl font-semibold text-primary">{result.lifestyleScore}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A simple 0–100 snapshot based on the habits you entered.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Category</p>
                 <p className="text-2xl font-semibold text-primary capitalize">{result.category.replace('-', ' ')}</p>
-                <p className="text-xs text-muted-foreground">Higher categories reflect more Blue Zone–aligned habits.</p>
+                <p className="text-xs text-muted-foreground">Just a label describing how closely this snapshot echoes common Blue Zone themes.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Summary</p>
@@ -438,21 +440,21 @@ export default function BlueZoneLifestyleScoreCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().plantMealsPerWeek ?? 0) / 21 * 100).toFixed(1)}%
                 </p>
-                <p className="text-xs text-muted-foreground">Percentage of 21 main weekly meals that are plant-based.</p>
+                <p className="text-xs text-muted-foreground">Rough share of your main weekly meals that are mostly plant‑based.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Movement vs. 90-min target</p>
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().movementMinutesPerDay ?? 0) / 90 * 100).toFixed(1)}%
                 </p>
-                <p className="text-xs text-muted-foreground">How close you are to a 90-minute natural movement reference.</p>
+                <p className="text-xs text-muted-foreground">Shows how today’s movement compares with a 90‑minute daily reference.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Social time vs. 14h/week</p>
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().socialHoursPerWeek ?? 0) / 14 * 100).toFixed(1)}%
                 </p>
-                <p className="text-xs text-muted-foreground">Connection time compared to a supportive-community benchmark.</p>
+                <p className="text-xs text-muted-foreground">A simple comparison to one example of a supportive community rhythm.</p>
               </div>
             </div>
           ) : (
@@ -515,13 +517,17 @@ export default function BlueZoneLifestyleScoreCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            The Blue Zone Lifestyle Score Calculator blends your food, movement, sleep, social, and purpose patterns into a single
-            long-term health snapshot.
+            This tool blends your food, movement, sleep, social, and purpose patterns into one simple snapshot of how closely they echo
+            common Blue Zone themes.
           </p>
-          <p>It highlights which pillars already resemble long-lived communities and which might deserve more focus.</p>
-          <p>Treat it as a compass for gentle habit experiments rather than a precise longevity prediction.</p>
+          <p>You can treat the score and ideas as a friendly compass for small lifestyle experiments, not as a guarantee or prediction.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }
