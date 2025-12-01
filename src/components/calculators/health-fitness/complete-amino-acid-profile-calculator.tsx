@@ -571,7 +571,11 @@ export default function CompleteAminoAcidProfileCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemScope
+        itemType="https://schema.org/MedicalWebPage"
+      >
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to a Complete Amino Acid Profile: Essentiality, Quality, and Protein Scoring" />
     <meta itemProp="description" content="An in-depth, authoritative guide on amino acid profiles, detailing the nine essential amino acids, the concept of a 'complete' protein, the limiting amino acid principle, and modern protein quality scoring methods (DIAAS)." />

@@ -5433,6 +5433,101 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate ice bath or cold plunge durations and weekly minutes from water temperature, frequency, tolerance, and cardiovascular risk flags.'
   },
   {
+    id: 7320,
+    name: 'Sauna Detox Effectiveness Score',
+    description: 'Estimate how sauna frequency, duration, temperature, and hydration may support natural detox processes.',
+    slug: 'sauna-detox-effectiveness-score',
+    category: 'health-fitness',
+    metaTitle: 'Sauna Detox Effectiveness Score',
+    metaDescription: 'Calculate a sauna detox effectiveness score and thermal load index from sessions per week, minutes per session, temperature, and hydration quality.'
+  },
+  {
+    id: 7321,
+    name: 'HRV (Heart Rate Variability) Resilience Index',
+    description: 'Estimate nervous-system resilience and recovery readiness from HRV metrics.',
+    slug: 'hrv-resilience-index',
+    category: 'health-fitness',
+    metaTitle: 'HRV Resilience Index',
+    metaDescription: 'Calculate an HRV resilience index and recovery readiness score from RMSSD, HRV trends, resting heart rate, and sleep quality.'
+  },
+  {
+    id: 7322,
+    name: 'Breath-Hold CO₂ Tolerance Calculator',
+    description: 'Estimate CO₂ tolerance and breathing efficiency from breath-hold tests and resting breathing rate.',
+    slug: 'breath-hold-co2-tolerance-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Breath-Hold CO₂ Tolerance Calculator',
+    metaDescription: 'Calculate a CO₂ tolerance and breathing efficiency score from comfortable and strong breath holds, resting breathing rate, and breath-related anxiety.'
+  },
+  {
+    id: 7323,
+    name: 'Oxygen Advantage Efficiency Score',
+    description: 'Estimate how closely your breathing aligns with Oxygen Advantage-style efficiency markers.',
+    slug: 'oxygen-advantage-efficiency-score',
+    category: 'health-fitness',
+    metaTitle: 'Oxygen Advantage Efficiency Score',
+    metaDescription: 'Calculate an Oxygen Advantage Efficiency Score and training readiness from BOLT, walking breath holds, nasal breathing share, and breathlessness.'
+  },
+  {
+    id: 7324,
+    name: 'Fasting Benefits Progress Tracker',
+    description: 'Track how far along you may be in realizing fasting-related benefits.',
+    slug: 'fasting-benefits-progress-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Fasting Benefits Progress Tracker',
+    metaDescription: 'Estimate fasting benefits progress and adaptation stage using fasting window length, days per week, time on protocol, and metabolic response.'
+  },
+  {
+    id: 7325,
+    name: 'Supplement Stack ROI Calculator',
+    description: 'Estimate the financial and experiential return on investment of your supplement stack from cost, perceived benefit, and evidence quality.',
+    slug: 'supplement-stack-roi-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Supplement Stack ROI Calculator',
+    metaDescription:
+      'Estimate the ROI of your supplement stack by combining monthly cost, number of products, perceived benefit, and evidence quality into a single, interpretable score.'
+  },
+  {
+    id: 7326,
+    name: 'Mitochondrial Health Index',
+    description: 'Estimate a mitochondrial health and recovery capacity index from fatigue, sleep, exercise tolerance, and metabolic balance ratings.',
+    slug: 'mitochondrial-health-index',
+    category: 'health-fitness',
+    metaTitle: 'Mitochondrial Health Index Calculator',
+    metaDescription:
+      'Estimate a mitochondrial health and recovery capacity index using self-ratings of fatigue, exercise tolerance, sleep quality, and metabolic balance trends.'
+  },
+  {
+    id: 7327,
+    name: 'Sleep Optimization Routine Score',
+    description: 'Estimate how supportive your current sleep timing, environment, and wind-down habits are for restorative sleep.',
+    slug: 'sleep-optimization-routine-score',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Optimization Routine Score Calculator',
+    metaDescription:
+      'Calculate a sleep optimization routine score and circadian support index based on bedtime consistency, wake-time stability, bedroom environment, and pre-sleep wind-down practices.'
+  },
+   {
+     id: 7328,
+     name: 'HRV to Stress Correlation Estimator',
+     description: 'Estimate how changes in your HRV may correlate with perceived stress and sleep quality.',
+     slug: 'hrv-to-stress-correlation-estimator',
+     category: 'health-fitness',
+     metaTitle: 'HRV to Stress Correlation Estimator',
+     metaDescription:
+       'Estimate how closely your HRV changes appear to track with perceived stress and sleep quality using a simple correlation index.'
+   },
+   {
+     id: 7329,
+     name: 'Circadian Rhythm Alignment Score',
+     description: 'Estimate how well your daily schedule, light exposure, and evening habits align with your circadian rhythm.',
+     slug: 'circadian-rhythm-alignment-score',
+     category: 'health-fitness',
+     metaTitle: 'Circadian Rhythm Alignment Score Calculator',
+     metaDescription:
+       'Calculate a circadian rhythm alignment score and daytime function index based on social jetlag, morning light exposure, evening screen use, and schedule stability.'
+   },
+  {
     id: 7000,
     name: 'Wells Score for DVT Probability Calculator',
     description: 'Estimate pre-test probability of deep vein thrombosis (DVT) using the Wells clinical prediction rule.',

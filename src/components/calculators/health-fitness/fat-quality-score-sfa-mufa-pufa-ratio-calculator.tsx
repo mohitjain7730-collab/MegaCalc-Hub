@@ -476,7 +476,11 @@ export default function FatQualityScoreSfaMufaPufaRatioCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemScope
+        itemType="https://schema.org/MedicalWebPage"
+      >
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Fat Quality: Understanding SFA, MUFA, and PUFA Ratios for Cardiovascular Health" />
     <meta itemProp="description" content="An in-depth guide detailing the three main types of dietary fats (Saturated, Monounsaturated, Polyunsaturated), their chemical structures, food sources, and the evidence-based recommendation to shift the intake ratio for improved cardiovascular health." />

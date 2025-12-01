@@ -479,7 +479,11 @@ export default function ProteinDigestibilityScoreDiaasCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemScope
+        itemType="https://schema.org/MedicalWebPage"
+      >
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to DIAAS: Protein Digestibility Score Methodology and Quality Assessment" />
     <meta itemProp="description" content="An expert guide detailing the Digestible Indispensable Amino Acid Score (DIAAS), the FAO's gold standard for protein quality, explaining ileal digestibility, the reference amino acid pattern, and why it replaced PDCAAS." />

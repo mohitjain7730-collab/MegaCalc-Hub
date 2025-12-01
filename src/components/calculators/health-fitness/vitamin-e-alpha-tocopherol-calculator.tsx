@@ -439,7 +439,11 @@ export default function VitaminEAlphaTocopherolCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemScope
+        itemType="https://schema.org/MedicalWebPage"
+      >
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Vitamin E Alpha-Tocopherol: RDA, Antioxidant Role, and Deficiency" />
     <meta itemProp="description" content="An expert guide on Vitamin E, focusing on the highly bioavailable form alpha-tocopherol, detailing its role as the primary fat-soluble antioxidant, official RDAs from the NIH, and risks of deficiency and excessive intake (bleeding)." />

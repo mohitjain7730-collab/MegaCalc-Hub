@@ -385,6 +385,36 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'cold-exposure-duration-estimator': dynamic(
       () => import('@/components/calculators/health-fitness/cold-exposure-duration-estimator'),
     ),
+    'sauna-detox-effectiveness-score': dynamic(
+      () => import('@/components/calculators/health-fitness/sauna-detox-effectiveness-score'),
+    ),
+    'hrv-resilience-index': dynamic(
+      () => import('@/components/calculators/health-fitness/hrv-resilience-index'),
+    ),
+    'breath-hold-co2-tolerance-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/breath-hold-co2-tolerance-calculator'),
+    ),
+    'oxygen-advantage-efficiency-score': dynamic(
+      () => import('@/components/calculators/health-fitness/oxygen-advantage-efficiency-score'),
+    ),
+    'fasting-benefits-progress-tracker': dynamic(
+      () => import('@/components/calculators/health-fitness/fasting-benefits-progress-tracker'),
+    ),
+    'supplement-stack-roi-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/supplement-stack-roi-calculator'),
+    ),
+    'mitochondrial-health-index': dynamic(
+      () => import('@/components/calculators/health-fitness/mitochondrial-health-index'),
+    ),
+    'sleep-optimization-routine-score': dynamic(
+      () => import('@/components/calculators/health-fitness/sleep-optimization-routine-score'),
+    ),
+     'hrv-to-stress-correlation-estimator': dynamic(
+       () => import('@/components/calculators/health-fitness/hrv-to-stress-correlation-estimator'),
+     ),
+     'circadian-rhythm-alignment-score': dynamic(
+       () => import('@/components/calculators/health-fitness/circadian-rhythm-alignment-score'),
+     ),
     'sleep-consistency-score-calculator': dynamic(
       () => import('@/components/calculators/health-fitness/sleep-consistency-score-calculator'),
     ),

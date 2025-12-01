@@ -495,7 +495,11 @@ export default function SatietyIndexCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemScope
+        itemType="https://schema.org/MedicalWebPage"
+      >
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Satiety Index: Principles of Fullness and Meal Planning for Weight Loss" />
     <meta itemProp="description" content="An in-depth, authoritative guide on the physiological and nutritional factors that govern satiety (fullness), detailing the critical roles of protein, fiber, and low caloric density foods in effective weight management and hunger control." />

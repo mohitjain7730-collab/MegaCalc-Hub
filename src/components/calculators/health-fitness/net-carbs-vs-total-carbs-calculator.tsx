@@ -436,7 +436,11 @@ export default function NetCarbsVsTotalCarbsCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemScope
+        itemType="https://schema.org/MedicalWebPage"
+      >
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Net Carbs vs. Total Carbs: Formula, Fiber, and Glycemic Impact" />
     <meta itemProp="description" content="An in-depth guide clarifying the difference between Total Carbs (FDA standard) and Net Carbs (used in keto/low-carb diets), explaining the formula, the role of dietary fiber and sugar alcohols, and their impact on blood sugar." />

@@ -460,7 +460,11 @@ export default function PhosphorusIntakeCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemScope
+        itemType="https://schema.org/MedicalWebPage"
+      >
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Phosphorus Intake: RDA, Bone Health, and Kidney Disease Risk" />
     <meta itemProp="description" content="An in-depth, authoritative guide on the essential macro-mineral Phosphorus (P), detailing its critical roles in DNA structure, ATP energy production, bone mineralization, official RDAs, and the specific risks of hyperphosphatemia in kidney disease." />

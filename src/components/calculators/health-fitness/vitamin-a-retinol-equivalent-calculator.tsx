@@ -456,7 +456,11 @@ export default function VitaminARetinolEquivalentCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemScope
+        itemType="https://schema.org/MedicalWebPage"
+      >
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Vitamin A Retinol Equivalents: RDA, Vision, and Immune Function" />
     <meta itemProp="description" content="An in-depth guide on Vitamin A, explaining the critical difference between preformed retinol and provitamin A carotenoids, official RDAs expressed in Retinol Activity Equivalents (RAE), and the serious risks of deficiency (night blindness)." />
