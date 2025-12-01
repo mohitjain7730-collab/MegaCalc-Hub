@@ -355,6 +355,21 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'self-esteem-growth-tracker': dynamic(
       () => import('@/components/calculators/health-fitness/self-esteem-growth-tracker'),
     ),
+    'confidence-curve-estimator': dynamic(
+      () => import('@/components/calculators/health-fitness/confidence-curve-estimator'),
+    ),
+    'relationship-satisfaction-score': dynamic(
+      () => import('@/components/calculators/health-fitness/relationship-satisfaction-score'),
+    ),
+    'loneliness-risk-index': dynamic(
+      () => import('@/components/calculators/health-fitness/loneliness-risk-index'),
+    ),
+    'empathy-quotient-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/empathy-quotient-calculator'),
+    ),
+    'mental-energy-drain-predictor': dynamic(
+      () => import('@/components/calculators/health-fitness/mental-energy-drain-predictor'),
+    ),
     'sleep-consistency-score-calculator': dynamic(
       () => import('@/components/calculators/health-fitness/sleep-consistency-score-calculator'),
     ),

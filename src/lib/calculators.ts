@@ -5343,6 +5343,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Measure self-esteem growth using baseline vs current ratings plus self-compassion and wins-tracking habits.'
   },
   {
+    id: 7310,
+    name: 'Confidence Curve Estimator',
+    description: 'Estimate your position on a confidence growth curve using baseline vs current ratings, challenge, and support.',
+    slug: 'confidence-curve-estimator',
+    category: 'health-fitness',
+    metaTitle: 'Confidence Curve Estimator',
+    metaDescription: 'Estimate where you are on a confidence curve using baseline and current confidence plus challenge and support levels.'
+  },
+  {
+    id: 7311,
+    name: 'Relationship Satisfaction Score',
+    description: 'Estimate relationship satisfaction based on communication, trust, shared time, and conflict frequency.',
+    slug: 'relationship-satisfaction-score',
+    category: 'health-fitness',
+    metaTitle: 'Relationship Satisfaction Score',
+    metaDescription: 'Estimate a relationship satisfaction score from communication quality, trust level, shared activities, and conflicts per month.'
+  },
+  {
+    id: 7312,
+    name: 'Loneliness Risk Index',
+    description: 'Estimate loneliness risk using meaningful interactions, belonging, time alone, and digital connection skew.',
+    slug: 'loneliness-risk-index',
+    category: 'health-fitness',
+    metaTitle: 'Loneliness Risk Index',
+    metaDescription: 'Estimate loneliness risk from meaningful interactions per week, sense of belonging, time alone, and digital-only connections.'
+  },
+  {
+    id: 7313,
+    name: 'Empathy Quotient Calculator',
+    description: 'Estimate empathy tendencies from cognitive and emotional empathy, perspective taking, and boundary clarity.',
+    slug: 'empathy-quotient-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Empathy Quotient Calculator',
+    metaDescription: 'Estimate an empathy quotient and balance index using cognitive empathy, emotional empathy, perspective taking, and boundary clarity ratings.'
+  },
+  {
+    id: 7314,
+    name: 'Mental Energy Drain Predictor',
+    description: 'Predict mental energy drain from weekly meetings, deep work, context switching, and sleep.',
+    slug: 'mental-energy-drain-predictor',
+    category: 'health-fitness',
+    metaTitle: 'Mental Energy Drain Predictor',
+    metaDescription: 'Predict mental energy drain using meeting hours, deep work hours, context switches per day, and sleep duration.'
+  },
+  {
     id: 7000,
     name: 'Wells Score for DVT Probability Calculator',
     description: 'Estimate pre-test probability of deep vein thrombosis (DVT) using the Wells clinical prediction rule.',
