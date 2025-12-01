@@ -5262,6 +5262,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate corrected QT interval (QTc) using Bazett and Fridericia formulas from QT and RR intervals to assess cardiac repolarization and arrhythmia risk.'
   },
   {
+    id: 5106,
+    name: 'Body Surface Area by Du Bois Formula',
+    description: 'Estimate body surface area (BSA) using the Du Bois & Du Bois equation for medication dosing and hemodynamic indexing.',
+    slug: 'body-surface-area-du-bois-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Body Surface Area by Du Bois Formula Calculator',
+    metaDescription: 'Calculate body surface area (BSA) with the Du Bois equation to support drug dosing, cardiac index calculations, and fluid planning.'
+  },
+  {
+    id: 5107,
+    name: 'Fractional Excretion of Sodium (FeNa) Calculator',
+    description: 'Compute FeNa from paired urine and plasma sodium/creatinine values to differentiate prerenal versus intrinsic renal injury.',
+    slug: 'fractional-excretion-of-sodium-fena-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Fractional Excretion of Sodium (FeNa) Calculator',
+    metaDescription: 'Calculate FeNa using urine and plasma sodium/creatinine values to help distinguish prerenal azotemia from intrinsic acute kidney injury.'
+  },
+  {
+    id: 5108,
+    name: 'Fractional Excretion of Urea (FeUrea) Calculator',
+    description: 'Calculate FeUrea to evaluate acute kidney injury, particularly when diuretics limit the accuracy of FeNa.',
+    slug: 'fractional-excretion-of-urea-feurea-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Fractional Excretion of Urea (FeUrea) Calculator',
+    metaDescription: 'Compute FeUrea from urine and plasma urea/creatinine values to assess prerenal versus intrinsic causes of acute kidney injury.'
+  },
+  {
+    id: 5109,
+    name: 'Cardiac Index Calculator',
+    description: 'Normalize cardiac output by body surface area to assess circulatory performance (CI = CO / BSA).',
+    slug: 'cardiac-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Cardiac Index Calculator (CI = CO / BSA)',
+    metaDescription: 'Calculate cardiac index (CI) from cardiac output and body surface area to evaluate perfusion goals in shock and heart failure.'
+  },
+  {
+    id: 5110,
+    name: 'Shock Index Calculator',
+    description: 'Compute the shock index (heart rate divided by systolic blood pressure) to screen for hemodynamic instability.',
+    slug: 'shock-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Shock Index Calculator (HR/SBP)',
+    metaDescription: 'Quickly calculate the shock index (HR/SBP) to assess risk of hemodynamic compromise in trauma, sepsis, and acute care settings.'
+  },
+  {
     id: 5067,
     name: 'NEAT Impact Calculator',
     description: 'Calculate NEAT impact from body weight, daily steps, standing time, and light activity.',
