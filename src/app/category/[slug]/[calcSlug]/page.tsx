@@ -335,6 +335,21 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'manganese-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/manganese-requirement-calculator')),
     'copper-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/copper-intake-calculator')),
     'uv-exposure-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/uv-exposure-risk-calculator')),
+    'wells-score-for-dvt-probability-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/wells-score-for-dvt-probability-calculator'),
+    ),
+    'curb-65-pneumonia-severity-score-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/curb-65-pneumonia-severity-score-calculator'),
+    ),
+    'cha2ds2-vasc-stroke-risk-score-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/cha2ds2-vasc-stroke-risk-score-calculator'),
+    ),
+    'has-bled-bleeding-risk-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/has-bled-bleeding-risk-calculator'),
+    ),
+    'ransons-criteria-pancreatitis-severity-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/ransons-criteria-pancreatitis-severity-calculator'),
+    ),
     'pao2-fio2-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/pao2-fio2-ratio-calculator')),
     'tidal-volume-by-ideal-body-weight-calculator': dynamic(
       () => import('@/components/calculators/health-fitness/tidal-volume-ideal-body-weight-calculator'),

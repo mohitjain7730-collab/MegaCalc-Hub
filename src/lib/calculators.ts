@@ -5208,6 +5208,56 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
   },
   {
+    id: 7000,
+    name: 'Wells Score for DVT Probability Calculator',
+    description: 'Estimate pre-test probability of deep vein thrombosis (DVT) using the Wells clinical prediction rule.',
+    slug: 'wells-score-for-dvt-probability-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Wells Score for DVT Probability Calculator',
+    metaDescription:
+      'Estimate pre-test probability of deep vein thrombosis (DVT) from bedside Wells score criteria to support D-dimer and imaging decisions.'
+  },
+  {
+    id: 7001,
+    name: 'CURB-65 Pneumonia Severity Score Calculator',
+    description: 'Calculate the CURB-65 score to assess pneumonia severity and short-term mortality risk.',
+    slug: 'curb-65-pneumonia-severity-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'CURB-65 Pneumonia Severity Score Calculator',
+    metaDescription:
+      'Calculate the CURB-65 pneumonia severity score from five bedside criteria to stratify short-term mortality risk and guide disposition.'
+  },
+  {
+    id: 7002,
+    name: 'CHA2DS2-VASc Stroke Risk Score Calculator',
+    description: 'Estimate annual stroke risk in atrial fibrillation using the CHA2DS2-VASc clinical risk score.',
+    slug: 'cha2ds2-vasc-stroke-risk-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'CHA2DS2-VASc Stroke Risk Score Calculator',
+    metaDescription:
+      'Estimate annual stroke risk in non-valvular atrial fibrillation using the CHA2DS2-VASc score to support anticoagulation decisions.'
+  },
+  {
+    id: 7003,
+    name: 'HAS-BLED Bleeding Risk Calculator',
+    description: 'Estimate major bleeding risk in anticoagulated patients using the HAS-BLED score.',
+    slug: 'has-bled-bleeding-risk-calculator',
+    category: 'health-fitness',
+    metaTitle: 'HAS-BLED Bleeding Risk Calculator',
+    metaDescription:
+      'Estimate annual major bleeding risk on oral anticoagulation with the HAS-BLED score and highlight modifiable bleeding risk factors.'
+  },
+  {
+    id: 7004,
+    name: 'Ranson’s Criteria Pancreatitis Severity Calculator',
+    description: 'Estimate acute pancreatitis severity and mortality risk using Ranson’s criteria.',
+    slug: 'ransons-criteria-pancreatitis-severity-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Ranson’s Criteria Pancreatitis Severity Calculator',
+    metaDescription:
+      'Estimate acute pancreatitis severity and approximate mortality risk from admission and 48-hour Ranson’s criteria to guide monitoring intensity.'
+  },
+  {
     id: 6000,
     name: 'PaO2/FiO2 Ratio Calculator',
     description: 'Calculate the PaO2/FiO2 (P/F) ratio from PaO2 and FiO2 to assess oxygenation and ARDS severity.',
