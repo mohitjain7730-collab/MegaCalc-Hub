@@ -153,12 +153,6 @@ export const categories: Category[] = [
     Icon: 'Construction',
   },
   {
-    name: 'Biology',
-    slug: 'biology',
-    description: 'Calculators for common molecular biology lab tasks.',
-    Icon: 'FlaskConical',
-  },
-  {
     name: 'Education',
     slug: 'education',
     description: 'Tools for students and teachers, from grades to study time.',
