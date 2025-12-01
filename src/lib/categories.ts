@@ -135,6 +135,12 @@ export const categories: Category[] = [
     Icon: 'HeartPulse',
   },
   {
+    name: 'Wellness',
+    slug: 'wellness',
+    description: 'Tools for mental health, sleep, mindfulness, and overall wellbeing.',
+    Icon: 'Activity',
+  },
+  {
     name: 'Conversions',
     slug: 'conversions',
     description: 'Tools for converting between different units of measurement.',

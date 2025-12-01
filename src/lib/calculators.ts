@@ -2437,35 +2437,35 @@ export const calculators: Calculator[] = [
     name: 'Heart Rate Variability (HRV) Score Calculator',
     description: 'Calculate your HRV score from RMSSD and age to assess recovery and stress resilience.',
     slug: 'heart-rate-variability-hrv-score-calculator',
-    category: 'health-fitness'
+    category: 'wellness'
   },
   {
     id: 3111,
     name: 'Cortisol Stress Response Estimator',
     description: 'Estimate your stress hormone response based on lifestyle factors like sleep, stress, and exercise.',
     slug: 'cortisol-stress-response-estimator',
-    category: 'health-fitness'
+    category: 'wellness'
   },
   {
     id: 3112,
     name: 'Meditation Breathing Rate Calculator',
     description: 'Find your optimal breathing rate for meditation based on age, experience, and goals.',
     slug: 'meditation-breathing-rate-calculator',
-    category: 'health-fitness'
+    category: 'wellness'
   },
   {
     id: 3113,
     name: 'Mindful Minutes Tracking Calculator',
     description: 'Track your weekly mindfulness practice and calculate consistency metrics.',
     slug: 'mindful-minutes-tracking-calculator',
-    category: 'health-fitness'
+    category: 'wellness'
   },
   {
     id: 3114,
     name: 'Burnout Risk Score Calculator',
     description: 'Assess your risk of workplace burnout based on work hours, stress, sleep, and support factors.',
     slug: 'burnout-risk-score-calculator',
-    category: 'health-fitness'
+    category: 'wellness'
   },
   {
     id: 3115,
@@ -2607,13 +2607,13 @@ export const calculators: Calculator[] = [
   { id: 297, name: 'Heart Rate Zone Training Calculator', description: 'Derive 5 HR zones from max/resting HR or field test.', slug: 'heart-rate-zone-training-calculator', category: 'health-fitness' },
   { id: 298, name: 'Recovery Heart Rate Calculator', description: 'Assess 1–2 minute HR recovery after exercise.', slug: 'recovery-heart-rate-calculator', category: 'health-fitness' },
   { id: 2991, name: 'Exercise Calorie Burn Calculator', description: 'Estimate calories burned by activity, weight, and duration.', slug: 'exercise-calorie-burn-calculator', category: 'health-fitness' },
-  { id: 2992, name: 'Sleep Debt Calculator', description: 'Quantify weekly sleep debt vs target hours.', slug: 'sleep-debt-calculator-hf', category: 'health-fitness' },
-  { id: 2993, name: 'Sleep Efficiency Calculator', description: 'Bed time vs actual sleep time to compute efficiency.', slug: 'sleep-efficiency-calculator', category: 'health-fitness' },
-  { id: 2994, name: 'Stress Level Self-Assessment Score Calculator', description: 'Self-score perceived stress and get guidance.', slug: 'stress-level-self-assessment-calculator', category: 'health-fitness' },
-  { id: 2995, name: 'Meditation Time Progress Tracker Calculator', description: 'Track daily meditation minutes and weekly progress trends.', slug: 'meditation-time-progress-tracker-calculator', category: 'health-fitness' },
+  { id: 2992, name: 'Sleep Debt Calculator', description: 'Quantify weekly sleep debt vs target hours.', slug: 'sleep-debt-calculator-hf', category: 'wellness' },
+  { id: 2993, name: 'Sleep Efficiency Calculator', description: 'Bed time vs actual sleep time to compute efficiency.', slug: 'sleep-efficiency-calculator', category: 'wellness' },
+  { id: 2994, name: 'Stress Level Self-Assessment Score Calculator', description: 'Self-score perceived stress and get guidance.', slug: 'stress-level-self-assessment-calculator', category: 'wellness' },
+  { id: 2995, name: 'Meditation Time Progress Tracker Calculator', description: 'Track daily meditation minutes and weekly progress trends.', slug: 'meditation-time-progress-tracker-calculator', category: 'wellness' },
   { id: 2996, name: 'Work-Life Balance Time Allocation Calculator', description: 'Calculate ideal time distribution between work, personal, and rest activities.', slug: 'work-life-balance-time-allocation-calculator', category: 'health-fitness' },
   { id: 2999, name: 'Blood Sugar to HbA1c Converter', description: 'Convert between glucose levels and estimated HbA1c percentage.', slug: 'blood-sugar-to-hba1c-converter', category: 'health-fitness' },
-  { id: 3004, name: 'Bone Density T-Score Calculator', description: 'Calculate T-score from bone mineral density measurements.', slug: 'bone-density-t-score-calculator', category: 'health-fitness' },
+  { id: 3004, name: 'Bone Density T-Score Calculator', description: 'Calculate T-score from bone mineral density measurements.', slug: 'bone-density-t-score-calculator', category: 'wellness' },
   { id: 3008, name: 'Lifespan Expectancy Calculator', description: 'Rough longevity estimate adjusted for smoking, activity, sleep, and BP.', slug: 'lifespan-expectancy-calculator', category: 'health-fitness' },
   { id: 3009, name: 'Marathon Finish Time Predictor', description: 'Predict marathon time from a recent race using the Riegel endurance model.', slug: 'marathon-finish-time-predictor', category: 'health-fitness' },
   { id: 3010, name: 'Half‑Marathon Pace Calculator', description: 'Compute average pace needed to hit your half‑marathon goal time.', slug: 'half-marathon-pace-calculator', category: 'health-fitness' },
@@ -2631,7 +2631,7 @@ export const calculators: Calculator[] = [
   { id: 3022, name: 'Mediterranean Diet Compliance Calculator', description: 'Assess adherence to Mediterranean diet principles with personalized recommendations.', slug: 'mediterranean-diet-compliance-calculator', category: 'health-fitness' },
   { id: 3023, name: 'Vegan Protein Requirement Calculator', description: 'Calculate optimal protein intake for vegans based on activity level and fitness goals.', slug: 'vegan-protein-requirement-calculator', category: 'health-fitness' },
   { id: 3024, name: 'Lactose Tolerance Estimator', description: 'Estimate lactose tolerance based on age, ethnicity, and symptoms with dietary recommendations.', slug: 'lactose-tolerance-estimator', category: 'health-fitness' },
-  { id: 3025, name: 'Food Allergy Risk Score Calculator', description: 'Calculate food allergy risk based on family history, existing conditions, and environmental factors.', slug: 'food-allergy-risk-score-calculator', category: 'health-fitness' },
+  { id: 3025, name: 'Food Allergy Risk Score Calculator', description: 'Calculate food allergy risk based on family history, existing conditions, and environmental factors.', slug: 'food-allergy-risk-score-calculator', category: 'wellness' },
   { id: 3026, name: 'Total Energy Expenditure (TEE) Calculator', description: 'Calculate your daily total energy expenditure including BMR, activity, and exercise for comprehensive calorie needs.', slug: 'total-energy-expenditure-calculator', category: 'health-fitness' },
   { id: 3027, name: 'Respiratory Quotient (RQ) Calculator', description: 'Calculate your respiratory quotient to understand fuel utilization during exercise and metabolic efficiency.', slug: 'respiratory-quotient-calculator', category: 'health-fitness' },
   { 
@@ -2675,7 +2675,7 @@ export const calculators: Calculator[] = [
     name: 'Blue Light Exposure Calculator',
     description: 'Estimate daily blue-light dose from screens, filters, and lighting to protect circadian health.',
     slug: 'blue-light-exposure-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Blue Light Exposure Calculator - Manage Screen Strain & Sleep',
     metaDescription: 'Calculate blue-light exposure, see circadian impact, and get practical steps to reduce digital eye strain and protect melatonin production.'
   },
@@ -2684,7 +2684,7 @@ export const calculators: Calculator[] = [
     name: 'Caffeine Cutoff Sleep Impact Calculator',
     description: 'Plan the optimal time for your last caffeine dose to protect deep sleep and recovery.',
     slug: 'caffeine-cutoff-sleep-impact-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Caffeine Cutoff Sleep Impact Calculator',
     metaDescription: 'Estimate ideal caffeine cutoff time, predicted sleep latency, and wind-down window based on bedtime, total mg, and sensitivity.'
   },
@@ -2693,7 +2693,7 @@ export const calculators: Calculator[] = [
     name: 'Daily Screen Exposure Stress Index Calculator',
     description: 'Blend screen hours, notifications, meetings, and breaks into a single stress score.',
     slug: 'daily-screen-exposure-stress-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Daily Screen Exposure Stress Index Calculator',
     metaDescription: 'Measure digital overload from work and personal screen time, notifications, and micro-breaks with actionable guidance.'
   },
@@ -2702,7 +2702,7 @@ export const calculators: Calculator[] = [
     name: 'Occupational Sedentary Risk Score Calculator',
     description: 'Quantify sedentary risk using sitting hours, breaks, steps, workouts, and ergonomics.',
     slug: 'occupational-sedentary-risk-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Occupational Sedentary Risk Score Calculator',
     metaDescription: 'Calculate sedentary risk at work and get personalized movement, step, and ergonomic recommendations.'
   },
@@ -2711,7 +2711,7 @@ export const calculators: Calculator[] = [
     name: 'Mental Fatigue Index Calculator',
     description: 'Score daily cognitive fatigue using deep work, context switches, sleep, hydration, and breaks.',
     slug: 'mental-fatigue-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Mental Fatigue Index Calculator - Daily Cognitive Load',
     metaDescription: 'Estimate mental fatigue, focus stability, and recovery gaps with actionable rest strategies based on workload inputs.'
   },
@@ -2720,7 +2720,7 @@ export const calculators: Calculator[] = [
     name: 'Cognitive Focus Efficiency Calculator',
     description: 'Compare planned vs completed tasks with flow time and distractions to gauge focus quality.',
     slug: 'cognitive-focus-efficiency-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Cognitive Focus Efficiency Calculator',
     metaDescription: 'Measure how efficiently you convert planned tasks and flow minutes into output, with recommendations to reduce fragmentation.'
   },
@@ -2738,7 +2738,7 @@ export const calculators: Calculator[] = [
   { id: 3039, name: 'Breastfeeding Calorie Needs Calculator', description: 'Calculate daily calorie needs for breastfeeding mothers based on activity level and feeding frequency.', slug: 'breastfeeding-calorie-needs-calculator', category: 'health-fitness' },
   { id: 3040, name: 'Infant Growth Percentile Calculator', description: 'Calculate infant growth percentiles for weight, height, and head circumference using WHO standards.', slug: 'infant-growth-percentile-calculator', category: 'health-fitness' },
   { id: 3041, name: 'Child BMI Percentile Calculator', description: 'Calculate child BMI percentiles using CDC growth charts with age and gender-specific assessments.', slug: 'child-bmi-percentile-calculator', category: 'health-fitness' },
-  { id: 3042, name: 'Baby Sleep Needs Calculator', description: 'Calculate age-appropriate sleep requirements and nap patterns for babies and toddlers.', slug: 'baby-sleep-needs-calculator', category: 'health-fitness' },
+  { id: 3042, name: 'Baby Sleep Needs Calculator', description: 'Calculate age-appropriate sleep requirements and nap patterns for babies and toddlers.', slug: 'baby-sleep-needs-calculator', category: 'wellness' },
   { id: 3043, name: 'Toddler Calorie Requirement Calculator', description: 'Calculate daily calorie needs for toddlers based on age, weight, and activity level.', slug: 'toddler-calorie-requirement-calculator', category: 'health-fitness' },
   { id: 3044, name: 'Resting Metabolic Rate (RMR) Calculator', description: 'Calculate resting metabolic rate, total daily energy expenditure, and macronutrient requirements.', slug: 'resting-metabolic-rate-calculator', category: 'health-fitness' },
   // Conversions
@@ -3522,7 +3522,7 @@ export const calculators: Calculator[] = [
     name: 'Screen Time vs Sleep Impact Calculator',
     description: 'Analyze the relationship between your screen time habits and sleep quality to optimize your digital wellness.',
     slug: 'screen-time-vs-sleep-impact-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Screen Time vs Sleep Impact Calculator - Digital Wellness',
     metaDescription: 'Analyze the relationship between your screen time habits and sleep quality to optimize your digital wellness and improve sleep.'
   },
@@ -3801,7 +3801,7 @@ export const calculators: Calculator[] = [
     name: 'Prenatal Vitamin Dosage Calculator',
     description: 'Evaluate key prenatal vitamin doses against common guideline ranges.',
     slug: 'prenatal-vitamin-dosage-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Prenatal Vitamin Dosage Calculator',
     metaDescription: 'Evaluate folate, iron, and vitamin D amounts relative to common prenatal guidance.'
   },
@@ -3909,7 +3909,7 @@ export const calculators: Calculator[] = [
     name: 'PMS Symptom Score Calculator',
     description: 'Score PMS symptom severity to inform management strategies and care.',
     slug: 'pms-symptom-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'PMS Symptom Score Calculator',
     metaDescription: 'Assess PMS severity via a simple symptom index and get tailored tips.'
   },
@@ -3918,7 +3918,7 @@ export const calculators: Calculator[] = [
     name: 'Menopause Symptom Index Calculator',
     description: 'Composite symptom index to assess menopause-related symptom burden.',
     slug: 'menopause-symptom-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Menopause Symptom Index Calculator',
     metaDescription: 'Evaluate menopausal symptom severity and explore relief strategies.'
   },
@@ -4026,7 +4026,7 @@ export const calculators: Calculator[] = [
     name: 'Reaction Time Improvement Tracker',
     description: 'Log baseline vs latest reaction times, sleep, caffeine, and practice sessions to see improvement percentage and consistency status.',
     slug: 'reaction-time-improvement-tracker',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Reaction Time Improvement Tracker',
     metaDescription: 'Track reaction time gains, consistency scores, and tailored recommendations based on sleep, caffeine, and training inputs.'
   },
@@ -4035,7 +4035,7 @@ export const calculators: Calculator[] = [
     name: 'Memory Retention Percentage Calculator',
     description: 'Estimate current retention %, forgetting penalty, and review urgency using recall attempts, spaced sessions, and sleep quality.',
     slug: 'memory-retention-percentage-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Memory Retention Percentage Calculator',
     metaDescription: 'Calculate adjusted memory retention, see reinforcement status, and plan spaced reviews to lock in learning.'
   },
@@ -4044,7 +4044,7 @@ export const calculators: Calculator[] = [
     name: 'Meditation Streak Mindfulness Progress Tracker',
     description: 'Blend streak length, session minutes, mindful check-ins, and stress level into one momentum and balance snapshot.',
     slug: 'meditation-streak-mindfulness-progress-tracker',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Meditation Streak Mindfulness Progress Tracker',
     metaDescription: 'Score meditation streak momentum, balance index, and get recommendations to strengthen mindfulness habits.'
   },
@@ -4053,7 +4053,7 @@ export const calculators: Calculator[] = [
     name: 'Stress Hormone Balance Calculator (Cortisol vs Melatonin)',
     description: 'Compare wake cortisol energy vs evening melatonin cues, sleep timing, and stress rating to spot circadian misalignment.',
     slug: 'stress-hormone-balance-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Stress Hormone Balance Calculator (Cortisol vs Melatonin)',
     metaDescription: 'Estimate hormone balance index, circadian score, and get actionable steps to realign cortisol and melatonin rhythms.'
   },
@@ -4062,7 +4062,7 @@ export const calculators: Calculator[] = [
     name: 'Emotional Wellbeing Index Calculator',
     description: 'Blend mood, energy, connection, purpose, and stress inputs into one wellbeing and resilience score.',
     slug: 'emotional-wellbeing-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Emotional Wellbeing Index Calculator',
     metaDescription: 'Measure emotional wellbeing and resilience, then follow personalized recommendations and action plans.'
   },
@@ -4080,7 +4080,7 @@ export const calculators: Calculator[] = [
     name: 'Work Burnout Recovery Time Calculator',
     description: 'Estimate decompression time from work burnout using workload, stress, sleep debt, time off, and support level.',
     slug: 'work-burnout-recovery-time-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Work Burnout Recovery Time Calculator',
     metaDescription: 'Turn your workload snapshot into a burnout level and estimated recovery window with practical planning tips.'
   },
@@ -4089,7 +4089,7 @@ export const calculators: Calculator[] = [
     name: 'Workplace Posture Risk Calculator',
     description: 'Screen for posture-related risk by combining sitting time, breaks, lifting load, workstation fit, and pain frequency.',
     slug: 'workplace-posture-risk-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Workplace Posture Risk Calculator',
     metaDescription: 'Estimate posture-related musculoskeletal risk and get ergonomic recommendations for safer work setups.'
   },
@@ -4116,7 +4116,7 @@ export const calculators: Calculator[] = [
     name: 'Blue Zone Lifestyle Score Calculator',
     description: 'Score how closely your food, movement, sleep, social, and purpose habits mirror Blue Zone lifestyle patterns.',
     slug: 'blue-zone-lifestyle-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Blue Zone Lifestyle Score Calculator',
     metaDescription: 'Calculate a Blue Zone–inspired lifestyle score and see which long-longevity pillars you can strengthen next.'
   },
@@ -4125,7 +4125,7 @@ export const calculators: Calculator[] = [
     name: 'Longevity Predictor (Lifestyle-based) Calculator',
     description: 'Provide a rough healthy-life expectancy estimate using age, heart rate, activity, diet, and smoking status.',
     slug: 'longevity-predictor-lifestyle-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Longevity Predictor (Lifestyle-based) Calculator',
     metaDescription: 'Estimate healthy-life expectancy based on simple lifestyle inputs and see where small changes may add years.'
   },
@@ -4134,7 +4134,7 @@ export const calculators: Calculator[] = [
     name: 'Anti-Aging Nutrition Score Calculator',
     description: 'Turn weekly food patterns into a protective vs. depleting nutrition score focused on healthy aging.',
     slug: 'anti-aging-nutrition-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Anti-Aging Nutrition Score Calculator',
     metaDescription: 'Score your anti-aging nutrition pattern across plants, whole grains, omega-rich foods, processed meals, and sugar.'
   },
@@ -4143,7 +4143,7 @@ export const calculators: Calculator[] = [
     name: 'Intermittent Cold Exposure Calorie Burn Estimator',
     description: 'Estimate extra calorie burn from cold-induced thermogenesis based on protocol, temperature, and frequency.',
     slug: 'intermittent-cold-exposure-calorie-burn-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Intermittent Cold Exposure Calorie Burn Estimator',
     metaDescription: 'Estimate additional calories burned from intermittent cold exposure sessions using a simple thermogenesis model.'
   },
@@ -4152,7 +4152,7 @@ export const calculators: Calculator[] = [
     name: 'Sauna Session Detox Score Calculator',
     description: 'Estimate detox score, sweat efficiency, and optimize sauna routine for heat therapy benefits.',
     slug: 'sauna-session-detox-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Sauna Session Detox Score Calculator',
     metaDescription: 'Calculate detox score, sweat efficiency, and get recommendations to optimize your sauna routine.'
   },
@@ -4161,7 +4161,7 @@ export const calculators: Calculator[] = [
     name: 'Immune Recovery Time Post-Illness Calculator',
     description: 'Estimate recovery timeline, immune strength, and get support recommendations after illness.',
     slug: 'immune-recovery-time-post-illness-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Immune Recovery Time Post-Illness Calculator',
     metaDescription: 'Estimate recovery timeline, immune strength, and get personalized recommendations to support healing.'
   },
@@ -4170,7 +4170,7 @@ export const calculators: Calculator[] = [
     name: 'Hydration Recovery After Workout Calculator',
     description: 'Estimate fluid loss, hydration gap, and recovery time after exercise to optimize rehydration.',
     slug: 'hydration-recovery-after-workout-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Hydration Recovery After Workout Calculator',
     metaDescription: 'Calculate fluid loss, hydration gap, and recovery time to optimize rehydration after exercise.'
   },
@@ -4179,7 +4179,7 @@ export const calculators: Calculator[] = [
     name: 'Electrolyte Balance Restoration Calculator',
     description: 'Estimate electrolyte gaps, balance score, and get restoration recommendations after sweat loss.',
     slug: 'electrolyte-balance-restoration-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Electrolyte Balance Restoration Calculator',
     metaDescription: 'Calculate electrolyte gaps (sodium, potassium, magnesium) and get restoration recommendations.'
   },
@@ -4188,7 +4188,7 @@ export const calculators: Calculator[] = [
     name: 'Vitamin Deficiency Risk Estimator',
     description: 'Estimate deficiency risk, vitamin score, and get targeted nutrition recommendations.',
     slug: 'vitamin-deficiency-risk-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Vitamin Deficiency Risk Estimator',
     metaDescription: 'Estimate risk for common vitamin deficiencies and get targeted nutrition and supplementation recommendations.'
   },
@@ -4197,7 +4197,7 @@ export const calculators: Calculator[] = [
     name: 'Sleep Quality vs Productivity Correlation Calculator',
     description: 'Estimate correlation between sleep quality and productivity metrics to optimize performance.',
     slug: 'sleep-quality-vs-productivity-correlation-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Sleep Quality vs Productivity Correlation Calculator',
     metaDescription: 'Calculate correlation between sleep quality/duration and productivity metrics to identify performance patterns.'
   },
@@ -4206,7 +4206,7 @@ export const calculators: Calculator[] = [
     name: 'Exercise Recovery Score (HRV + Sleep Integration)',
     description: 'Estimate recovery score and readiness level from HRV, sleep, training load, and stress.',
     slug: 'exercise-recovery-score-hrv-sleep-integration',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Exercise Recovery Score (HRV + Sleep Integration)',
     metaDescription: 'Calculate recovery score and readiness level from HRV, sleep metrics, training load, and stress to optimize training.'
   },
@@ -4215,7 +4215,7 @@ export const calculators: Calculator[] = [
     name: 'Fitness Age Estimator (VO2max + BMI-based)',
     description: 'Estimate fitness age from VO2max, BMI, and activity level compared to chronological age.',
     slug: 'fitness-age-estimator-vo2max-bmi',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Fitness Age Estimator (VO2max + BMI-based)',
     metaDescription: 'Estimate biological fitness age from VO2max, BMI, and activity level to assess cardiovascular health.'
   },
@@ -4233,7 +4233,7 @@ export const calculators: Calculator[] = [
     name: 'Follicular vs Luteal Phase Nutrition Planner Calculator',
     description: 'Plan phase-specific nutrition targets for follicular and luteal phases to optimize energy and hormonal health.',
     slug: 'follicular-vs-luteal-phase-nutrition-planner-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Follicular vs Luteal Phase Nutrition Planner Calculator',
     metaDescription: 'Calculate phase-specific nutrition targets (calories, macros, iron) for follicular and luteal phases to optimize energy and hormonal health.'
   },
@@ -4242,7 +4242,7 @@ export const calculators: Calculator[] = [
     name: 'Ovulation Window Probability (Advanced) Calculator',
     description: 'Estimate ovulation day, fertile window, and probability score using cycle length, LH surge, BBT, and cervical mucus.',
     slug: 'ovulation-window-probability-advanced-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Ovulation Window Probability (Advanced) Calculator',
     metaDescription: 'Estimate ovulation day and fertile window using cycle length, LH surge, BBT, and cervical mucus for accurate conception planning.'
   },
@@ -4251,7 +4251,7 @@ export const calculators: Calculator[] = [
     name: 'Fertile Cervical Mucus Tracking Calculator',
     description: 'Track cervical mucus quality to assess fertility score and ovulation proximity for conception planning.',
     slug: 'fertile-cervical-mucus-tracking-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Fertile Cervical Mucus Tracking Calculator',
     metaDescription: 'Track cervical mucus quality (consistency, amount, stretchiness) to assess fertility score and identify optimal conception timing.'
   },
@@ -4260,7 +4260,7 @@ export const calculators: Calculator[] = [
     name: 'Perimenopause Transition Stage Estimator',
     description: 'Estimate perimenopause transition stage, years to menopause, and get symptom management recommendations.',
     slug: 'perimenopause-transition-stage-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Perimenopause Transition Stage Estimator',
     metaDescription: 'Estimate perimenopause transition stage, years to menopause, and get personalized symptom management recommendations.'
   },
@@ -4269,7 +4269,7 @@ export const calculators: Calculator[] = [
     name: 'Menstrual Phase Workout Intensity Planner',
     description: 'Plan workout intensity and type based on menstrual cycle phase, energy level, and pain to optimize performance.',
     slug: 'menstrual-phase-workout-intensity-planner',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Menstrual Phase Workout Intensity Planner',
     metaDescription: 'Plan workout intensity and type based on menstrual cycle phase, energy level, and pain to optimize performance and recovery.'
   },
@@ -4278,7 +4278,7 @@ export const calculators: Calculator[] = [
     name: 'Postpartum Hormonal Recovery Calculator',
     description: 'Estimate postpartum hormonal recovery score, balance, and timeline based on weeks postpartum, breastfeeding, sleep, and symptoms.',
     slug: 'postpartum-hormonal-recovery-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Postpartum Hormonal Recovery Calculator',
     metaDescription: 'Calculate postpartum hormonal recovery score and timeline from weeks postpartum, breastfeeding status, sleep, energy, and mood to assess recovery progress.'
   },
@@ -4296,7 +4296,7 @@ export const calculators: Calculator[] = [
     name: 'Testosterone-to-Cortisol Ratio Calculator',
     description: 'Calculate testosterone-to-cortisol ratio from hormone levels to assess anabolic-catabolic balance and recovery capacity.',
     slug: 'testosterone-to-cortisol-ratio-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Testosterone-to-Cortisol Ratio Calculator',
     metaDescription: 'Calculate testosterone-to-cortisol ratio from blood test results to assess anabolic-catabolic balance and recovery capacity.'
   },
@@ -4306,7 +4306,7 @@ export const calculators: Calculator[] = [
     name: 'Male Fertility Sperm Health Index Calculator',
     description: 'Calculate sperm health index and fertility score from sperm count, motility, morphology, volume, and age.',
     slug: 'male-fertility-sperm-health-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Male Fertility Sperm Health Index Calculator',
     metaDescription: 'Calculate sperm health index and fertility score from semen analysis results (count, motility, morphology, volume) and age to assess fertility.'
   },
@@ -4316,7 +4316,7 @@ export const calculators: Calculator[] = [
     name: 'Muscle Recovery Time by Age Calculator',
     description: 'Estimate muscle recovery time based on age, training intensity, muscle group size, experience, sleep, and nutrition.',
     slug: 'muscle-recovery-time-by-age-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Muscle Recovery Time by Age Calculator',
     metaDescription: 'Estimate muscle recovery time from age, training intensity, muscle group size, experience, sleep, and nutrition to plan training frequency.'
   },
@@ -4325,7 +4325,7 @@ export const calculators: Calculator[] = [
     name: 'Creatine Loading & Maintenance Dose Calculator',
     description: 'Calculate creatine loading and maintenance doses based on body weight, goal, form, and training frequency.',
     slug: 'creatine-loading-maintenance-dose-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Creatine Loading & Maintenance Dose Calculator',
     metaDescription: 'Calculate appropriate creatine loading and maintenance doses based on body weight, goal, form, and training frequency for optimal supplementation.'
   },
@@ -4334,7 +4334,7 @@ export const calculators: Calculator[] = [
     name: 'Daily Testosterone-Boosting Habits Score Calculator',
     description: 'Calculate testosterone-boosting habits score from sleep, exercise, stress, alcohol, sunlight, protein, and supplements.',
     slug: 'daily-testosterone-boosting-habits-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Daily Testosterone-Boosting Habits Score Calculator',
     metaDescription: 'Calculate testosterone-boosting habits score from sleep, exercise, stress, alcohol, sunlight, protein, and supplements to optimize hormone support.'
   },
@@ -4343,7 +4343,7 @@ export const calculators: Calculator[] = [
     name: 'BMR Adjustment for Age & Muscle Loss Calculator',
     description: 'Calculate BMR adjusted for age and muscle loss to account for metabolic decline over time.',
     slug: 'bmr-adjustment-for-age-muscle-loss-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'BMR Adjustment for Age & Muscle Loss Calculator',
     metaDescription: 'Calculate BMR adjusted for age and muscle loss to get accurate metabolic rate estimates and calorie needs as you age.'
   },
@@ -4352,7 +4352,7 @@ export const calculators: Calculator[] = [
     name: 'Fat-to-Muscle Recomposition Tracker',
     description: 'Track fat-to-muscle recomposition goals: calculate fat to lose, muscle to gain, and recomposition score.',
     slug: 'fat-to-muscle-recomposition-tracker',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Fat-to-Muscle Recomposition Tracker',
     metaDescription: 'Track fat-to-muscle recomposition goals: calculate fat to lose, muscle to gain, and assess feasibility of recomposition goals.'
   },
@@ -4361,7 +4361,7 @@ export const calculators: Calculator[] = [
     name: 'REM Sleep Percentage Calculator',
     description: 'Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality.',
     slug: 'rem-sleep-percentage-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'REM Sleep Percentage Calculator',
     metaDescription: 'Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality to assess sleep health.'
   },
@@ -4370,7 +4370,7 @@ export const calculators: Calculator[] = [
     name: 'Resilience Score Calculator',
     description: 'Calculate resilience score and percentage from stress level, resilience score, age, and coping ability.',
     slug: 'resilience-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Resilience Score Calculator',
     metaDescription: 'Calculate resilience score and percentage from stress level, resilience score, age, and coping ability to assess mental resilience.'
   },
@@ -4379,7 +4379,7 @@ export const calculators: Calculator[] = [
     name: 'Positive vs Negative Thought Ratio Calculator',
     description: 'Calculate positive vs negative thought ratio from thought counts, ratio, and mood level.',
     slug: 'positive-vs-negative-thought-ratio-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Positive vs Negative Thought Ratio Calculator',
     metaDescription: 'Calculate positive vs negative thought ratio from thought counts, ratio, and mood level to assess mental health and cognitive patterns.'
   },
@@ -4388,7 +4388,7 @@ export const calculators: Calculator[] = [
     name: 'Hemoglobin (Hb) Level Estimator',
     description: 'Estimate hemoglobin level from hemoglobin level, age, gender, and iron intake.',
     slug: 'hemoglobin-hb-level-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Hemoglobin (Hb) Level Estimator',
     metaDescription: 'Estimate hemoglobin level from hemoglobin level, age, gender, and iron intake to assess blood health and oxygen transport capacity.'
   },
@@ -4559,7 +4559,7 @@ export const calculators: Calculator[] = [
     name: 'Biological Stress Load (Allostatic Load) Calculator',
     description: 'Calculate biological stress load allostatic load from stress level, sleep quality, cortisol level, and chronic disease burden.',
     slug: 'biological-stress-load-allostatic-load-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Biological Stress Load (Allostatic Load) Calculator',
     metaDescription: 'Calculate biological stress load allostatic load from stress level, sleep quality, cortisol level, and chronic disease burden to assess stress burden.'
   },
@@ -4568,7 +4568,7 @@ export const calculators: Calculator[] = [
     name: 'Oxidative Stress Index Calculator',
     description: 'Calculate oxidative stress index from antioxidant intake, exercise level, stress level, and age.',
     slug: 'oxidative-stress-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Oxidative Stress Index Calculator',
     metaDescription: 'Calculate oxidative stress index from antioxidant intake, exercise level, stress level, and age to assess cellular stress.'
   },
@@ -4595,7 +4595,7 @@ export const calculators: Calculator[] = [
     name: 'Detox Pathway Efficiency Calculator',
     description: 'Calculate detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake.',
     slug: 'detox-pathway-efficiency-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Detox Pathway Efficiency Calculator',
     metaDescription: 'Calculate detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake to assess organ function.'
   },
@@ -4604,7 +4604,7 @@ export const calculators: Calculator[] = [
     name: 'Circadian Rhythm Disruption Risk Calculator',
     description: 'Calculate circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time.',
     slug: 'circadian-rhythm-disruption-risk-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Circadian Rhythm Disruption Risk Calculator',
     metaDescription: 'Calculate circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time to assess circadian health.'
   },
@@ -4613,7 +4613,7 @@ export const calculators: Calculator[] = [
     name: 'Sleep Quality vs Longevity Correlation Calculator',
     description: 'Calculate sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age.',
     slug: 'sleep-quality-vs-longevity-correlation-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Sleep Quality vs Longevity Correlation Calculator',
     metaDescription: 'Calculate sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age to assess longevity prospects.'
   },
@@ -4631,7 +4631,7 @@ export const calculators: Calculator[] = [
     name: 'Immune Function Recovery Rate Calculator',
     description: 'Calculate immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level.',
     slug: 'immune-function-recovery-rate-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Immune Function Recovery Rate Calculator',
     metaDescription: 'Calculate immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level to assess immune resilience.'
   },
@@ -4640,7 +4640,7 @@ export const calculators: Calculator[] = [
     name: 'Lifespan Extension Strategy Score Calculator',
     description: 'Calculate lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management.',
     slug: 'lifespan-extension-strategy-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Lifespan Extension Strategy Score Calculator',
     metaDescription: 'Calculate lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management to assess longevity strategies.'
   },
@@ -4793,7 +4793,7 @@ export const calculators: Calculator[] = [
     name: 'UV Exposure Risk Calculator',
     description: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection.',
     slug: 'uv-exposure-risk-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'UV Exposure Risk Calculator',
     metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
   },
@@ -4802,7 +4802,7 @@ export const calculators: Calculator[] = [
     name: 'Sleep Consistency Score Calculator',
     description: 'Score the regularity of your sleep schedule from bedtime, wake time, and duration variability plus consistent nights per week.',
     slug: 'sleep-consistency-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Sleep Consistency Score Calculator',
     metaDescription: 'Score the consistency of your sleep and wake times based on timing variability, duration swings, and number of regular nights per week.'
   },
@@ -4811,7 +4811,7 @@ export const calculators: Calculator[] = [
     name: 'Dopamine Reward Sensitivity Index',
     description: 'Estimate your dopamine reward sensitivity profile from novelty seeking, reward responsiveness, impulsivity, and baseline motivation.',
     slug: 'dopamine-reward-sensitivity-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Dopamine Reward Sensitivity Index Calculator',
     metaDescription: 'Estimate dopamine-related reward sensitivity from self-rated novelty seeking, reward responsiveness, impulsivity, and long-term motivation.'
   },
@@ -4820,7 +4820,7 @@ export const calculators: Calculator[] = [
     name: 'Digital Burnout Detector',
     description: 'Estimate digital burnout risk from total and evening screen time, notifications, break frequency, and perceived work stress.',
     slug: 'digital-burnout-detector',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Digital Burnout Detector',
     metaDescription: 'Detect digital burnout risk based on screen load, interruptions, breaks, and perceived digital work stress to support healthier tech habits.'
   },
@@ -4829,7 +4829,7 @@ export const calculators: Calculator[] = [
     name: 'Flow State Readiness Calculator',
     description: 'Estimate readiness for a flow state from challenge-skill balance, distractions, energy level, and goal clarity.',
     slug: 'flow-state-readiness-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Flow State Readiness Calculator',
     metaDescription: 'Evaluate how ready you are to enter a flow state based on skill-challenge match, distractions, energy, and clarity of goals.'
   },
@@ -4838,7 +4838,7 @@ export const calculators: Calculator[] = [
     name: 'Mental Fatigue Accumulation Tracker',
     description: 'Track how workload, breaks, sleep, and stress interact to build mental fatigue across a typical day.',
     slug: 'mental-fatigue-accumulation-tracker',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Mental Fatigue Accumulation Tracker',
     metaDescription: 'Estimate daily mental fatigue accumulation from number and length of focus blocks, recovery time, sleep hours, and baseline stress.'
   },
@@ -4847,7 +4847,7 @@ export const calculators: Calculator[] = [
     name: 'Emotional Burnout Recovery Calculator',
     description: 'Estimate burnout severity and recovery timeline from weekly workload, sleep, exhaustion, and recovery practices.',
     slug: 'emotional-burnout-recovery-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Emotional Burnout Recovery Calculator',
     metaDescription: 'Calculate a burnout index and projected recovery timeline using workload hours, sleep, emotional exhaustion, and recovery habits.'
   },
@@ -4856,7 +4856,7 @@ export const calculators: Calculator[] = [
     name: 'Cognitive Load Estimator',
     description: 'Quantify mental workload from concurrent projects, task complexity, context switching, and distraction minutes.',
     slug: 'cognitive-load-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Cognitive Load Estimator',
     metaDescription: 'Estimate cognitive load and remaining focus capacity using project count, complexity, context switches, and distractions.'
   },
@@ -5185,7 +5185,7 @@ export const calculators: Calculator[] = [
     name: 'Daily Screen Time Impact Calculator',
     description: 'Calculate daily screen time impact from total hours, work hours, leisure hours, and age.',
     slug: 'daily-screen-time-impact-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Daily Screen Time Impact Calculator',
     metaDescription: 'Calculate daily screen time impact from total hours, work hours, leisure hours, and age to assess digital device health effects.'
   },
@@ -5293,7 +5293,7 @@ export const calculators: Calculator[] = [
     name: 'Work Stress Fatigue Index',
     description: 'Calculate work stress fatigue index from work hours, stress level, sleep quality, and recovery factors.',
     slug: 'work-stress-fatigue-index',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Work Stress Fatigue Index',
     metaDescription: 'Calculate work stress fatigue index from work hours, stress level, sleep quality, and recovery factors to assess and manage work-related fatigue.'
   },
@@ -5302,7 +5302,7 @@ export const calculators: Calculator[] = [
     name: 'Posture Score Calculator',
     description: 'Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality.',
     slug: 'posture-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Posture Score Calculator',
     metaDescription: 'Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality to assess and improve postural health.'
   },
@@ -5311,7 +5311,7 @@ export const calculators: Calculator[] = [
     name: 'Digital Eye Strain Severity Index',
     description: 'Calculate digital eye strain severity index from screen time, eye strain level, blink rate, lighting conditions, and screen distance.',
     slug: 'digital-eye-strain-severity-index',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Digital Eye Strain Severity Index',
     metaDescription: 'Calculate digital eye strain severity index from screen time, eye strain level, blink rate, lighting conditions, and screen distance to assess and reduce eye strain.'
   },
@@ -5347,7 +5347,7 @@ export const calculators: Calculator[] = [
     name: 'Screen-to-Sleep Time Impact Estimator',
     description: 'Estimate screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting.',
     slug: 'screen-to-sleep-time-impact-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Screen-to-Sleep Time Impact Estimator',
     metaDescription: 'Estimate screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting to optimize sleep.'
   },
@@ -5374,7 +5374,7 @@ export const calculators: Calculator[] = [
     name: 'Iodine Deficiency Risk Calculator',
     description: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status.',
     slug: 'iodine-deficiency-risk-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Iodine Deficiency Risk Calculator',
     metaDescription: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status to assess iodine status.'
   },
@@ -5536,7 +5536,7 @@ export const calculators: Calculator[] = [
     name: 'Balanced Meal Score Calculator',
     description: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories.',
     slug: 'balanced-meal-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Balanced Meal Score Calculator',
     metaDescription: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories to assess meal balance.'
   },
@@ -5581,7 +5581,7 @@ export const calculators: Calculator[] = [
     name: 'Late-Night Eating Impact Score Calculator',
     description: 'Calculate late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM.',
     slug: 'late-night-eating-impact-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Late-Night Eating Impact Score Calculator',
     metaDescription: 'Calculate late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM to assess metabolic impact.'
   },
@@ -5617,7 +5617,7 @@ export const calculators: Calculator[] = [
     name: 'Deep Sleep Requirement Estimator',
     description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
     slug: 'deep-sleep-requirement-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Deep Sleep Requirement Estimator',
     metaDescription: 'Estimate deep sleep requirements based on age, activity level, and recovery needs, and assess current deep sleep to identify gaps.'
   },
@@ -5626,7 +5626,7 @@ export const calculators: Calculator[] = [
     name: 'Sleep Cycle Alarm Time Optimizer',
     description: 'Calculate optimal alarm time based on sleep cycles, bedtime, and desired wake time to wake up feeling refreshed.',
     slug: 'sleep-cycle-alarm-time-optimizer',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Sleep Cycle Alarm Time Optimizer',
     metaDescription: 'Calculate optimal alarm time based on sleep cycles, bedtime, and desired wake time to wake up feeling refreshed and alert.'
   },
@@ -5635,7 +5635,7 @@ export const calculators: Calculator[] = [
     name: 'Nap Duration Efficiency Calculator',
     description: 'Calculate optimal nap duration based on time of day, sleep needs, and desired alertness level to maximize rest efficiency.',
     slug: 'nap-duration-efficiency-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Nap Duration Efficiency Calculator',
     metaDescription: 'Calculate optimal nap duration based on time of day, sleep needs, and desired alertness level to maximize rest efficiency and avoid grogginess.'
   },
@@ -5644,7 +5644,7 @@ export const calculators: Calculator[] = [
     name: 'Sleep Quality vs Screen Exposure Analyzer',
     description: 'Analyze the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines.',
     slug: 'sleep-quality-vs-screen-exposure-analyzer',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Sleep Quality vs Screen Exposure Analyzer',
     metaDescription: 'Analyze the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines and improve rest.'
   },
@@ -5653,7 +5653,7 @@ export const calculators: Calculator[] = [
     name: 'Sleep Restriction Adaptation Calculator',
     description: 'Calculate sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.',
     slug: 'sleep-restriction-adaptation-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Sleep Restriction Adaptation Calculator',
     metaDescription: 'Calculate sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.'
   },
@@ -5662,7 +5662,7 @@ export const calculators: Calculator[] = [
     name: 'Recovery Sleep Requirement After Sleep Debt Calculator',
     description: 'Calculate recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.',
     slug: 'recovery-sleep-requirement-after-sleep-debt-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Recovery Sleep Requirement After Sleep Debt Calculator',
     metaDescription: 'Calculate recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.'
   },
@@ -5671,7 +5671,7 @@ export const calculators: Calculator[] = [
     name: 'Jet Lag Recovery Duration Calculator',
     description: 'Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.',
     slug: 'jet-lag-recovery-duration-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Jet Lag Recovery Duration Calculator',
     metaDescription: 'Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.'
   },
@@ -5680,7 +5680,7 @@ export const calculators: Calculator[] = [
     name: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator',
     description: 'Assess risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators.',
     slug: 'sleep-phase-delay-syndrome-dspd-risk-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator',
     metaDescription: 'Assess risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators to identify potential sleep disorders.'
   },
@@ -5689,7 +5689,7 @@ export const calculators: Calculator[] = [
     name: 'Optimal Bedtime by Chronotype Calculator',
     description: 'Calculate optimal bedtime based on your chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality.',
     slug: 'optimal-bedtime-by-chronotype-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Optimal Bedtime by Chronotype Calculator',
     metaDescription: 'Calculate optimal bedtime based on your chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality and alignment with natural rhythms.'
   },
@@ -5707,7 +5707,7 @@ export const calculators: Calculator[] = [
     name: 'Vitamin C Immunity Boost Score Calculator',
     description: 'Calculate vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support.',
     slug: 'vitamin-c-immunity-boost-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Vitamin C Immunity Boost Score Calculator',
     metaDescription: 'Calculate vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support and optimize intake.'
   },
@@ -5716,7 +5716,7 @@ export const calculators: Calculator[] = [
     name: 'Omega-6 to Omega-3 Balance Calculator',
     description: 'Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health.',
     slug: 'omega-6-to-omega-3-balance-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Omega-6 to Omega-3 Balance Calculator',
     metaDescription: 'Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health and reduced chronic disease risk.'
   },
@@ -5725,7 +5725,7 @@ export const calculators: Calculator[] = [
     name: 'Antioxidant Diversity Index Calculator',
     description: 'Calculate antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and health benefits.',
     slug: 'antioxidant-diversity-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Antioxidant Diversity Index Calculator',
     metaDescription: 'Calculate antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and optimize intake for better health.'
   },
@@ -5734,7 +5734,7 @@ export const calculators: Calculator[] = [
     name: 'Gut Microbiome Diversity Score Calculator',
     description: 'Calculate gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health.',
     slug: 'gut-microbiome-diversity-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Gut Microbiome Diversity Score Calculator',
     metaDescription: 'Calculate gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health and optimize gut microbiome support.'
   },
@@ -5743,7 +5743,7 @@ export const calculators: Calculator[] = [
     name: 'Probiotic Daily Dose Estimator',
     description: 'Estimate daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health.',
     slug: 'probiotic-daily-dose-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Probiotic Daily Dose Estimator',
     metaDescription: 'Estimate daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health and digestive function.'
   },
@@ -5752,7 +5752,7 @@ export const calculators: Calculator[] = [
     name: 'Prebiotic Fiber Target Calculator',
     description: 'Calculate prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support.',
     slug: 'prebiotic-fiber-target-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Prebiotic Fiber Target Calculator',
     metaDescription: 'Calculate prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support and digestive health.'
   },
@@ -5761,7 +5761,7 @@ export const calculators: Calculator[] = [
     name: 'Glycemic Index Meal Optimizer Calculator',
     description: 'Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels.',
     slug: 'glycemic-index-meal-optimizer-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Glycemic Index Meal Optimizer Calculator',
     metaDescription: 'Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels for better health.'
   },
@@ -5770,7 +5770,7 @@ export const calculators: Calculator[] = [
     name: 'Blood Sugar Spike Estimator (by meal type)',
     description: 'Estimate blood sugar spike magnitude based on meal type, carbohydrate content, and macronutrient composition to manage blood sugar levels.',
     slug: 'blood-sugar-spike-estimator-by-meal-type',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Blood Sugar Spike Estimator (by meal type)',
     metaDescription: 'Estimate blood sugar spike magnitude based on meal type, carbohydrate content, and macronutrient composition to manage blood sugar levels and optimize energy stability.'
   },
@@ -5779,7 +5779,7 @@ export const calculators: Calculator[] = [
     name: 'Nutrient Absorption Efficiency Calculator',
     description: 'Calculate nutrient absorption efficiency based on nutrient type, food source, meal timing, and cofactors to optimize nutrient uptake.',
     slug: 'nutrient-absorption-efficiency-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Nutrient Absorption Efficiency Calculator',
     metaDescription: 'Calculate nutrient absorption efficiency based on nutrient type, food source, meal timing, and cofactors to optimize nutrient uptake and meet nutritional needs.'
   },
@@ -5788,7 +5788,7 @@ export const calculators: Calculator[] = [
     name: 'Training Fatigue Index Calculator',
     description: 'Calculate training fatigue index based on training volume, frequency, intensity, recovery days, and sleep to assess training load and recovery needs.',
     slug: 'training-fatigue-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Training Fatigue Index Calculator',
     metaDescription: 'Calculate training fatigue index based on training volume, frequency, intensity, recovery days, and sleep to assess training load and recovery needs and prevent overtraining.'
   },
@@ -5797,7 +5797,7 @@ export const calculators: Calculator[] = [
     name: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
     description: 'Calculate CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days to optimize training and recovery.',
     slug: 'central-nervous-system-cns-fatigue-recovery-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
     metaDescription: 'Calculate CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days to optimize training and recovery and prevent overtraining.'
   },
@@ -5806,7 +5806,7 @@ export const calculators: Calculator[] = [
     name: 'HRV Recovery Optimization Score Calculator',
     description: 'Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness.',
     slug: 'hrv-recovery-optimization-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'HRV Recovery Optimization Score Calculator',
     metaDescription: 'Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness and guide training decisions.'
   },
@@ -5815,7 +5815,7 @@ export const calculators: Calculator[] = [
     name: 'Injury Prevention Warmup Time Calculator',
     description: 'Calculate optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history to prevent injuries and prepare for exercise.',
     slug: 'injury-prevention-warmup-time-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Injury Prevention Warmup Time Calculator',
     metaDescription: 'Calculate optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history to prevent injuries and prepare for exercise.'
   },
@@ -5824,7 +5824,7 @@ export const calculators: Calculator[] = [
     name: 'Core Strength Balance Calculator',
     description: 'Calculate core strength balance across anterior, posterior, lateral, and rotational components to identify imbalances and optimize core training.',
     slug: 'core-strength-balance-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Core Strength Balance Calculator',
     metaDescription: 'Calculate core strength balance across anterior, posterior, lateral, and rotational components to identify imbalances and optimize core training for better performance and injury prevention.'
   },
@@ -5833,7 +5833,7 @@ export const calculators: Calculator[] = [
     name: 'Posture Correction Progress Calculator',
     description: 'Calculate posture correction progress based on initial and current posture scores, weeks of training, pain level, and flexibility to track improvement and guide training.',
     slug: 'posture-correction-progress-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Posture Correction Progress Calculator',
     metaDescription: 'Calculate posture correction progress based on initial and current posture scores, weeks of training, pain level, and flexibility to track improvement and guide training.'
   },
@@ -5842,7 +5842,7 @@ export const calculators: Calculator[] = [
     name: 'VO2 Recovery Half-Time Calculator',
     description: 'Calculate VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age to assess cardiovascular recovery capacity.',
     slug: 'vo2-recovery-half-time-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'VO2 Recovery Half-Time Calculator',
     metaDescription: 'Calculate VO2 recovery half-time based on peak VO2, recovery VO2, recovery time, fitness level, and age to assess cardiovascular recovery capacity and fitness improvements.'
   },
@@ -5851,7 +5851,7 @@ export const calculators: Calculator[] = [
     name: 'Power-to-Weight Performance Index Calculator',
     description: 'Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.',
     slug: 'power-to-weight-performance-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Power-to-Weight Performance Index Calculator',
     metaDescription: 'Calculate power-to-weight ratio and performance index based on power output, body weight, units, and activity type to assess relative performance and efficiency.'
   },
@@ -5860,7 +5860,7 @@ export const calculators: Calculator[] = [
     name: 'Functional Movement Score Calculator',
     description: 'Calculate functional movement score based on seven fundamental movement patterns to assess movement quality and injury risk.',
     slug: 'functional-movement-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Functional Movement Score Calculator',
     metaDescription: 'Calculate functional movement score based on seven fundamental movement patterns to assess movement quality and injury risk and guide corrective exercise.'
   },
@@ -5869,7 +5869,7 @@ export const calculators: Calculator[] = [
     name: 'Muscular Imbalance Ratio Calculator',
     description: 'Calculate muscular imbalance ratio between left and right sides or agonist and antagonist muscles to identify imbalances and guide corrective training.',
     slug: 'muscular-imbalance-ratio-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Muscular Imbalance Ratio Calculator',
     metaDescription: 'Calculate muscular imbalance ratio between left and right sides or agonist and antagonist muscles to identify imbalances and guide corrective training to reduce injury risk.'
   },
@@ -5878,7 +5878,7 @@ export const calculators: Calculator[] = [
     name: 'Focus Retention Time Calculator',
     description: 'Calculate focus retention time and efficiency based on focused work duration, distractions, task complexity, sleep, and stress to assess cognitive focus capacity.',
     slug: 'focus-retention-time-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Focus Retention Time Calculator',
     metaDescription: 'Calculate focus retention time and efficiency based on focused work duration, distractions, task complexity, sleep, and stress to assess cognitive focus capacity and optimize productivity.'
   },
@@ -5887,7 +5887,7 @@ export const calculators: Calculator[] = [
     name: 'Attention Span Index Calculator',
     description: 'Calculate attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality to assess cognitive attention capacity.',
     slug: 'attention-span-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Attention Span Index Calculator',
     metaDescription: 'Calculate attention span index based on sustained attention time, distraction frequency, task switches, age, and sleep quality to assess cognitive attention capacity and optimize focus.'
   },
@@ -5896,7 +5896,7 @@ export const calculators: Calculator[] = [
     name: 'Working Memory Capacity Estimator',
     description: 'Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function.',
     slug: 'working-memory-capacity-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Working Memory Capacity Estimator',
     metaDescription: 'Estimate working memory capacity based on digit span forward, backward, processing speed, age, and cognitive load to assess cognitive working memory function and guide improvement strategies.'
   },
@@ -5905,7 +5905,7 @@ export const calculators: Calculator[] = [
     name: 'Mental Processing Speed Test Calculator',
     description: 'Assess mental processing speed through reaction time, accuracy, and cognitive task performance to understand cognitive efficiency.',
     slug: 'mental-processing-speed-test-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Mental Processing Speed Test Calculator',
     metaDescription: 'Assess mental processing speed through reaction time, accuracy, and cognitive task performance to understand cognitive efficiency and optimize brain function.'
   },
@@ -5914,7 +5914,7 @@ export const calculators: Calculator[] = [
     name: 'Decision Fatigue Index Calculator',
     description: 'Measure decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion to optimize decision-making quality.',
     slug: 'decision-fatigue-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Decision Fatigue Index Calculator',
     metaDescription: 'Measure decision fatigue based on daily decision volume, complexity, time spent, and mental exhaustion to optimize decision-making quality and reduce cognitive load.'
   },
@@ -5923,7 +5923,7 @@ export const calculators: Calculator[] = [
     name: 'Brain Fog Severity Score Calculator',
     description: 'Assess brain fog severity based on mental clarity, memory, concentration, word-finding, sleep quality, and stress to identify causes and improvement strategies.',
     slug: 'brain-fog-severity-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Brain Fog Severity Score Calculator',
     metaDescription: 'Assess brain fog severity based on mental clarity, memory, concentration, word-finding, sleep quality, and stress to identify causes and improvement strategies.'
   },
@@ -5932,7 +5932,7 @@ export const calculators: Calculator[] = [
     name: 'Cognitive Load Balance Calculator',
     description: 'Assess cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity to optimize learning and performance.',
     slug: 'cognitive-load-balance-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Cognitive Load Balance Calculator',
     metaDescription: 'Assess cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity to optimize learning and performance.'
   },
@@ -5941,7 +5941,7 @@ export const calculators: Calculator[] = [
     name: 'Multitasking Efficiency Calculator',
     description: 'Evaluate multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates to optimize productivity.',
     slug: 'multitasking-efficiency-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Multitasking Efficiency Calculator',
     metaDescription: 'Evaluate multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates to optimize productivity.'
   },
@@ -5950,7 +5950,7 @@ export const calculators: Calculator[] = [
     name: 'Reaction Time Benchmark Calculator',
     description: 'Benchmark your reaction times against age and gender-adjusted population norms to understand your cognitive performance relative to peers.',
     slug: 'reaction-time-benchmark-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Reaction Time Benchmark Calculator',
     metaDescription: 'Benchmark your reaction times against age and gender-adjusted population norms to understand your cognitive performance relative to peers.'
   },
@@ -5959,7 +5959,7 @@ export const calculators: Calculator[] = [
     name: 'Cognitive Age Estimator',
     description: 'Estimate your cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise to understand brain health relative to chronological age.',
     slug: 'cognitive-age-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Cognitive Age Estimator',
     metaDescription: 'Estimate your cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise to understand brain health relative to chronological age.'
   },
@@ -5968,7 +5968,7 @@ export const calculators: Calculator[] = [
     name: 'Happiness Index Calculator',
     description: 'Calculate your happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement to assess overall wellbeing.',
     slug: 'happiness-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Happiness Index Calculator',
     metaDescription: 'Calculate your happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement to assess overall wellbeing.'
   },
@@ -5977,7 +5977,7 @@ export const calculators: Calculator[] = [
     name: 'Gratitude Frequency Tracker',
     description: 'Track gratitude practice frequency including journaling, expressions, and consistency to assess gratitude habits and enhance wellbeing.',
     slug: 'gratitude-frequency-tracker',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Gratitude Frequency Tracker',
     metaDescription: 'Track gratitude practice frequency including journaling, expressions, and consistency to assess gratitude habits and enhance wellbeing.'
   },
@@ -5986,7 +5986,7 @@ export const calculators: Calculator[] = [
     name: 'Mindfulness Consistency Score Calculator',
     description: 'Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.',
     slug: 'mindfulness-consistency-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Mindfulness Consistency Score Calculator',
     metaDescription: 'Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.'
   },
@@ -5995,7 +5995,7 @@ export const calculators: Calculator[] = [
     name: 'Meditation Stress Reduction Impact Calculator',
     description: 'Measure the impact of meditation practice on stress reduction by comparing baseline and current stress levels, meditation frequency, duration, and practice length.',
     slug: 'meditation-stress-reduction-impact-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Meditation Stress Reduction Impact Calculator',
     metaDescription: 'Measure the impact of meditation practice on stress reduction by comparing baseline and current stress levels, meditation frequency, duration, and practice length.'
   },
@@ -6004,7 +6004,7 @@ export const calculators: Calculator[] = [
     name: 'Breathing Pattern Efficiency Calculator',
     description: 'Assess breathing pattern efficiency by evaluating respiratory rate, inhalation-to-exhalation ratio, diaphragmatic breathing, breath hold capacity, and breathing regularity.',
     slug: 'breathing-pattern-efficiency-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Breathing Pattern Efficiency Calculator',
     metaDescription: 'Assess breathing pattern efficiency by evaluating respiratory rate, inhalation-to-exhalation ratio, diaphragmatic breathing, breath hold capacity, and breathing regularity.'
   },
@@ -6013,7 +6013,7 @@ export const calculators: Calculator[] = [
     name: 'Emotional Stability Index Calculator',
     description: 'Calculate emotional stability index based on mood fluctuations, emotional reactivity, stress resilience, emotional regulation, recovery speed, and emotional balance.',
     slug: 'emotional-stability-index-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Emotional Stability Index Calculator',
     metaDescription: 'Calculate emotional stability index based on mood fluctuations, emotional reactivity, stress resilience, emotional regulation, recovery speed, and emotional balance.'
   },
@@ -6022,7 +6022,7 @@ export const calculators: Calculator[] = [
     name: 'Social Connection Score Calculator',
     description: 'Assess social connection score based on relationship quantity, quality, interaction frequency, social support, and community engagement to understand social wellbeing.',
     slug: 'social-connection-score-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Social Connection Score Calculator',
     metaDescription: 'Assess social connection score based on relationship quantity, quality, interaction frequency, social support, and community engagement to understand social wellbeing.'
   },
@@ -6031,7 +6031,7 @@ export const calculators: Calculator[] = [
     name: 'Loneliness Risk Estimator',
     description: 'Estimate loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support to identify areas for improvement.',
     slug: 'loneliness-risk-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Loneliness Risk Estimator',
     metaDescription: 'Estimate loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support to identify areas for improvement.'
   },
