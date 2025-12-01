@@ -4865,7 +4865,7 @@ export const calculators: Calculator[] = [
     name: 'Gratitude & Mood Correlation Tracker',
     description: 'Track how gratitude journaling frequency and reflection depth correlate with mood under varying stress levels.',
     slug: 'gratitude-mood-correlation-tracker',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Gratitude & Mood Correlation Tracker',
     metaDescription: 'Measure the correlation between gratitude entries, reflection depth, mood ratings, and stress to optimize positive psychology habits.'
   },
@@ -4874,7 +4874,7 @@ export const calculators: Calculator[] = [
     name: 'Phone Dependency Index',
     description: 'Measure smartphone dependency from screen time, pickups, separation anxiety, and purposeful usage percentage.',
     slug: 'phone-dependency-index',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Phone Dependency Index',
     metaDescription: 'Calculate your phone dependency score using daily screen time, pickups, anxiety without the device, and purposeful usage share.'
   },
@@ -4883,7 +4883,7 @@ export const calculators: Calculator[] = [
     name: 'Positive Emotion Ratio Calculator',
     description: 'Estimate your positive versus negative emotion balance from event counts and minutes.',
     slug: 'positive-emotion-ratio-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Positive Emotion Ratio Calculator',
     metaDescription: 'Calculate a positive emotion ratio using counts and minutes of positive and negative emotional experiences.'
   },
@@ -4892,7 +4892,7 @@ export const calculators: Calculator[] = [
     name: 'Daily Energy & Mood Synchronization Tracker',
     description: 'Track how well your daily mood matches your energy curve across morning, afternoon, and evening.',
     slug: 'daily-energy-mood-synchronization-tracker',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Daily Energy & Mood Synchronization Tracker',
     metaDescription: 'Evaluate alignment between your daily mood and energy levels to optimize scheduling and reduce burnout risk.'
   },
@@ -4901,7 +4901,7 @@ export const calculators: Calculator[] = [
     name: 'Motivation Momentum Calculator',
     description: 'Estimate goal momentum using days of action, time since last action, progress, and meaning.',
     slug: 'motivation-momentum-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Motivation Momentum Calculator',
     metaDescription: 'Calculate a motivation momentum score from consistency, gaps, perceived progress, and goal meaning to guide behavior change.'
   },
@@ -4910,7 +4910,7 @@ export const calculators: Calculator[] = [
     name: 'Mental Recovery from Stress Estimator',
     description: 'Estimate mental recovery progress after a stressful period based on intensity, time, sleep, and recovery habits.',
     slug: 'mental-recovery-from-stress-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Mental Recovery from Stress Estimator',
     metaDescription: 'Approximate recovery from stress using event intensity, days since event, sleep hours, and daily recovery minutes.'
   },
@@ -4919,7 +4919,7 @@ export const calculators: Calculator[] = [
     name: 'Self-Esteem Growth Tracker',
     description: 'Track self-esteem change over time and the support from self-compassion and wins logging.',
     slug: 'self-esteem-growth-tracker',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Self-Esteem Growth Tracker',
     metaDescription: 'Measure self-esteem growth using baseline vs current ratings plus self-compassion and wins-tracking habits.'
   },
@@ -4928,7 +4928,7 @@ export const calculators: Calculator[] = [
     name: 'Confidence Curve Estimator',
     description: 'Estimate your position on a confidence growth curve using baseline vs current ratings, challenge, and support.',
     slug: 'confidence-curve-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Confidence Curve Estimator',
     metaDescription: 'Estimate where you are on a confidence curve using baseline and current confidence plus challenge and support levels.'
   },
@@ -4937,7 +4937,7 @@ export const calculators: Calculator[] = [
     name: 'Relationship Satisfaction Score',
     description: 'Estimate relationship satisfaction based on communication, trust, shared time, and conflict frequency.',
     slug: 'relationship-satisfaction-score',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Relationship Satisfaction Score',
     metaDescription: 'Estimate a relationship satisfaction score from communication quality, trust level, shared activities, and conflicts per month.'
   },
@@ -4946,7 +4946,7 @@ export const calculators: Calculator[] = [
     name: 'Loneliness Risk Index',
     description: 'Estimate loneliness risk using meaningful interactions, belonging, time alone, and digital connection skew.',
     slug: 'loneliness-risk-index',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Loneliness Risk Index',
     metaDescription: 'Estimate loneliness risk from meaningful interactions per week, sense of belonging, time alone, and digital-only connections.'
   },
@@ -4955,7 +4955,7 @@ export const calculators: Calculator[] = [
     name: 'Empathy Quotient Calculator',
     description: 'Estimate empathy tendencies from cognitive and emotional empathy, perspective taking, and boundary clarity.',
     slug: 'empathy-quotient-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Empathy Quotient Calculator',
     metaDescription: 'Estimate an empathy quotient and balance index using cognitive empathy, emotional empathy, perspective taking, and boundary clarity ratings.'
   },
@@ -4964,7 +4964,7 @@ export const calculators: Calculator[] = [
     name: 'Mental Energy Drain Predictor',
     description: 'Predict mental energy drain from weekly meetings, deep work, context switching, and sleep.',
     slug: 'mental-energy-drain-predictor',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Mental Energy Drain Predictor',
     metaDescription: 'Predict mental energy drain using meeting hours, deep work hours, context switches per day, and sleep duration.'
   },
@@ -4973,7 +4973,7 @@ export const calculators: Calculator[] = [
     name: 'Biological Age Calculator (epigenetic-based proxy)',
     description: 'Estimate a proxy for biological age using simple cardiovascular and lifestyle markers.',
     slug: 'biological-age-calculator-epigenetic-proxy',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Biological Age Calculator (Epigenetic-Based Proxy)',
     metaDescription: 'Estimate a proxy for biological age from resting heart rate, waist-to-height ratio, lifestyle score, and chronological age.'
   },
@@ -4982,7 +4982,7 @@ export const calculators: Calculator[] = [
     name: 'Longevity Score Estimator',
     description: 'Estimate a longevity-focused lifestyle score from movement, diet, sleep, and harmful habit inputs.',
     slug: 'longevity-score-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Longevity Score Estimator',
     metaDescription: 'Combine movement, plant-rich meals, sleep duration, and harmful habits into a practical longevity score.'
   },
@@ -4991,7 +4991,7 @@ export const calculators: Calculator[] = [
     name: 'NAD+ Optimization Estimator',
     description: 'Estimate NAD+-supportive patterns from age, exercise, fasting, and supplement strategy.',
     slug: 'nad-plus-optimization-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'NAD+ Optimization Estimator',
     metaDescription: 'Estimate how supportive your routine may be for NAD+ biology using exercise, fasting, and supplement inputs.'
   },
@@ -5000,7 +5000,7 @@ export const calculators: Calculator[] = [
     name: 'Red Light Therapy Dose Calculator',
     description: 'Plan approximate red light therapy session times and weekly doses from device irradiance, distance, and target dose.',
     slug: 'red-light-therapy-dose-calculator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Red Light Therapy Dose Calculator',
     metaDescription: 'Estimate red light therapy treatment times and cumulative weekly doses using device specs and protocol settings.'
   },
@@ -5009,7 +5009,7 @@ export const calculators: Calculator[] = [
     name: 'Cold Exposure Duration Estimator',
     description: 'Estimate conservative cold exposure durations and weekly totals based on temperature, tolerance, and risk.',
     slug: 'cold-exposure-duration-estimator',
-    category: 'health-fitness',
+    category: 'wellness',
     metaTitle: 'Cold Exposure Duration Estimator',
     metaDescription: 'Estimate ice bath or cold plunge durations and weekly minutes from water temperature, frequency, tolerance, and cardiovascular risk flags.'
   },
