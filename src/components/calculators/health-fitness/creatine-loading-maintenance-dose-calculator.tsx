@@ -90,7 +90,7 @@ const faqs = [
   {
     question: 'Who should not take creatine?',
     answer:
-      'People with kidney disease should avoid creatine. Consult a healthcare provider if you have medical conditions or take medications.',
+      'If you have medical conditions or take medications, consult a qualified professional before starting creatine supplementation. This is not medical advice.',
   },
 ];
 
@@ -127,12 +127,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Creatine Loading & Maintenance Dose Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Creatine Supplementation Guide', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Creatine Loading & Maintenance Dose Calculator',
+      name: 'Creatine Supplementation Guide',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate creatine loading and maintenance doses based on body weight, goal, form, and training frequency.',
@@ -219,9 +219,9 @@ export default function CreatineLoadingMaintenanceDoseCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Pill className="h-5 w-5" />
-            Creatine Loading & Maintenance Dose Calculator
+            Creatine Supplementation Guide
           </CardTitle>
-          <CardDescription>Calculate creatine loading and maintenance doses based on body weight, goal, form, and training frequency.</CardDescription>
+          <CardDescription>Estimate creatine loading and maintenance doses based on body weight, goal, form, and training frequency. This is for informational purposes only, not medical advice.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -496,6 +496,18 @@ export default function CreatineLoadingMaintenanceDoseCalculator() {
           <p>This tool calculates creatine loading and maintenance doses from body weight, goal (loading/maintenance), creatine form (monohydrate/HCL/other), and training frequency.</p>
           <p>Outputs include loading dose, maintenance dose, loading days, current daily dose, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

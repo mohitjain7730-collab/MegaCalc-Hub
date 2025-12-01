@@ -96,7 +96,7 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Sleep Cycle Alarm Time Optimizer',
+    name: 'Sleep Cycle Wake-Up Comfort Planner',
     slug: 'sleep-cycle-alarm-time-optimizer',
     description: 'Calculate optimal sleep timing for better rest.',
   },
@@ -127,12 +127,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Nap Duration Efficiency Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Nap Refresh Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Nap Duration Efficiency Calculator',
+      name: 'Nap Refresh Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate optimal nap duration based on time of day, sleep needs, and desired alertness level to maximize rest efficiency.',
@@ -197,33 +197,33 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const wakeTime = formatTime(wakeTimeMinutes);
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your nap duration is optimally calculated to maximize alertness without causing grogginess.';
+  let interpretation = 'Your estimated nap refresh score suggests a general lifestyle tendency where your current nap pattern may support daytime refreshment. This is a personal insight, not a medical evaluation.';
   
   if (optimalNapMinutes <= 20) {
     status = 'optimal';
-    interpretation = 'A short power nap (10-20 minutes) is optimal for quick energy boost without sleep inertia.';
+    interpretation = 'Your estimated nap refresh score suggests a short nap pattern may support feeling refreshed. This is a general wellness insight, not a medical evaluation.';
   } else if (optimalNapMinutes === 90) {
     status = 'good';
-    interpretation = 'A full 90-minute sleep cycle nap allows complete rest and recovery, waking at the end of a cycle.';
+    interpretation = 'Your estimated nap refresh score suggests a full sleep cycle nap pattern may support rest. This is a lifestyle assessment, not a medical evaluation.';
   } else {
     status = 'moderate';
-    interpretation = 'This nap duration may cause sleep inertia. Consider adjusting to either 15-20 minutes or 90 minutes for optimal results.';
+    interpretation = 'Your estimated nap refresh score suggests your current nap pattern might be less efficient. You may consider adjusting nap length or timing for general wellness support. This is a personal insight, not a medical diagnosis.';
   }
   
   const recommendations = [
-    `Take a ${optimalNapMinutes}-minute ${napType.toLowerCase()} at ${values.napTime} and set alarm for ${wakeTime}.`,
-    'Avoid napping for 30-60 minutes as this can cause sleep inertia by waking during deep sleep.',
-    'Create a quiet, dark environment for your nap to maximize restorative benefits.',
+    `You may consider taking a ${optimalNapMinutes}-minute ${napType.toLowerCase()} at ${values.napTime} and setting alarm for ${wakeTime} for general wellness support.`,
+    'You may consider avoiding napping for 30-60 minutes as this may cause sleep inertia. This is a lifestyle suggestion, not medical advice.',
+    'You may consider creating a quiet, dark environment for your nap for overall wellness.',
   ];
   
   if (parseTime(values.napTime) >= parseTime('15:00')) {
-    recommendations.push('Late afternoon naps may interfere with nighttime sleep. Consider napping earlier if possible.');
+    recommendations.push('You may consider napping earlier if possible, as late afternoon naps may interfere with nighttime sleep. This is a general wellness insight.');
   }
   
   if (optimalNapMinutes === 90) {
-    recommendations.push('Allow yourself time to fully wake up after a 90-minute nap. Avoid scheduling important tasks immediately after.');
+    recommendations.push('You may consider allowing yourself time to fully wake up after a 90-minute nap. This is a lifestyle suggestion, not medical advice.');
   } else {
-    recommendations.push('After a short nap, get up and move around to help shake off any residual grogginess.');
+    recommendations.push('You may consider getting up and moving around after a short nap for general wellness support.');
   }
   
   const plan = [
@@ -256,9 +256,9 @@ export default function NapDurationEfficiencyCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Nap Duration Efficiency Calculator
+            Nap Refresh Score Calculator
           </CardTitle>
-          <CardDescription>Calculate optimal nap duration based on time of day, sleep needs, and desired alertness level to maximize rest efficiency.</CardDescription>
+          <CardDescription>Estimate your nap refresh score based on nap timing, sleep patterns, and energy levels. This is a general wellness insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -529,9 +529,21 @@ export default function NapDurationEfficiencyCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates optimal nap duration based on nap time, last sleep end time, desired alertness level, and current fatigue level.</p>
+          <p>This tool estimates nap refresh score based on nap time, last sleep end time, desired alertness level, and current fatigue level.</p>
           <p>Outputs include optimal nap duration, nap type, wake time, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

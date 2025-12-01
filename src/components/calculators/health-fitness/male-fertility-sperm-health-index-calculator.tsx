@@ -14,83 +14,87 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 
 const formSchema = z.object({
-  spermCount: z.number({ invalid_type_error: 'Enter sperm count' }).min(0).max(500),
-  motility: z.number({ invalid_type_error: 'Enter motility' }).min(0).max(100),
-  morphology: z.number({ invalid_type_error: 'Enter morphology' }).min(0).max(100),
-  volume: z.number({ invalid_type_error: 'Enter volume' }).min(0).max(10),
+  sleepHours: z.number({ invalid_type_error: 'Enter sleep hours' }).min(3).max(12),
+  stressLevel: z.number({ invalid_type_error: 'Enter stress level' }).min(1).max(10),
+  exerciseFrequency: z.number({ invalid_type_error: 'Enter exercise frequency' }).min(0).max(7),
+  dietQuality: z.number({ invalid_type_error: 'Enter diet quality' }).min(1).max(10),
+  hydrationLevel: z.number({ invalid_type_error: 'Enter hydration level' }).min(1).max(10),
+  alcoholUnits: z.number({ invalid_type_error: 'Enter alcohol units' }).min(0).max(20),
   age: z.number({ invalid_type_error: 'Enter age' }).min(18).max(100),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 type ResultPayload = {
-  healthIndex: number;
-  fertilityScore: number;
-  status: 'excellent' | 'good' | 'moderate' | 'poor';
+  wellnessIndex: number;
+  lifestyleScore: number;
+  status: 'excellent' | 'good' | 'moderate' | 'needs-improvement';
   interpretation: string;
   recommendations: string[];
   plan: { label: string; detail: string }[];
 };
 
 const steps = [
-  'Enter sperm count (million/mL) from semen analysis.',
-  'Enter motility percentage (% of sperm that move).',
-  'Enter morphology percentage (% of normally shaped sperm).',
-  'Enter semen volume (mL) from the test.',
-  'Enter your age (fertility declines with age).',
-  'Review sperm health index, fertility score, and recommendations.',
+  'Enter average nightly sleep hours (7-9 hours optimal).',
+  'Rate your stress level (1 = low, 10 = very high).',
+  'Enter exercise frequency (days per week).',
+  'Rate your diet quality (1 = poor, 10 = excellent).',
+  'Rate your hydration level (1 = poor, 10 = excellent).',
+  'Enter weekly alcohol units (0-2 optimal).',
+  'Enter your age.',
+  'Review your wellness index, lifestyle score, and general wellness insights.',
 ];
 
 const faqs = [
   {
-    question: 'What is a normal sperm count?',
+    question: 'How does sleep affect wellness?',
     answer:
-      'Normal sperm count is typically ≥15 million/mL, with ≥39 million total per ejaculate. Lower counts may reduce fertility but do not eliminate it.',
+      'Adequate sleep (7-9 hours) supports overall wellness. Quality sleep helps with recovery, mood, and general health. This is a general wellness insight, not a medical evaluation.',
   },
   {
-    question: 'What is good motility?',
+    question: 'How does stress affect wellness?',
     answer:
-      'Good motility is typically ≥40% progressive motility (sperm moving forward). Higher motility increases chances of reaching and fertilizing the egg.',
+      'Chronic stress can impact general wellness. Managing stress through relaxation, exercise, or mindfulness may support overall wellness. This is a lifestyle assessment, not a medical diagnosis.',
   },
   {
-    question: 'What is normal morphology?',
+    question: 'How does exercise support wellness?',
     answer:
-      'Normal morphology is typically ≥4% normally shaped sperm (WHO criteria) or ≥14% (strict criteria). Higher percentages indicate better sperm quality.',
+      'Regular exercise (3-5 days per week) supports general wellness. Moderate exercise can help with energy, mood, and overall health. This is a general wellness insight.',
   },
   {
-    question: 'How does age affect male fertility?',
+    question: 'How does diet quality affect wellness?',
     answer:
-      'Male fertility declines gradually with age. Sperm quality, DNA integrity, and pregnancy rates decrease, especially after age 40-45.',
+      'A balanced diet supports overall wellness. Eating a variety of nutritious foods can contribute to general health. This is a lifestyle assessment, not a medical evaluation.',
   },
   {
-    question: 'Can I improve sperm health?',
+    question: 'How does hydration affect wellness?',
     answer:
-      'Yes. Lifestyle changes (healthy diet, exercise, avoiding smoking/alcohol, reducing stress, adequate sleep) can improve sperm parameters over 2-3 months.',
+      'Adequate hydration supports general wellness. Staying well-hydrated helps with energy, mood, and overall health. This is a lifestyle insight.',
   },
   {
-    question: 'How long does it take to see improvements?',
+    question: 'How does alcohol consumption affect wellness?',
     answer:
-      'Sperm production takes ~74 days. Lifestyle changes typically show results in 2-3 months. Be patient and consistent.',
+      'Moderate or low alcohol consumption may support general wellness. Excessive alcohol can impact overall health. This is a general wellness insight, not a medical evaluation.',
   },
   {
-    question: 'Does heat affect sperm?',
+    question: 'How long does it take to see lifestyle improvements?',
     answer:
-      'Yes. Excessive heat (hot tubs, saunas, tight clothing, laptops on lap) can temporarily reduce sperm count and quality.',
+      'Lifestyle changes typically show general wellness benefits over 2-3 months. Consistency is key. This is a personal insight, not a medical evaluation.',
   },
   {
     question: 'What about supplements?',
     answer:
-      'Some supplements (zinc, folic acid, CoQ10, vitamin D) may support sperm health, but consult a healthcare provider before starting.',
+      'Some people consider supplements for general wellness support, but consult a qualified professional before starting any supplement regimen. This is not medical advice.',
   },
   {
-    question: 'When should I see a doctor?',
+    question: 'When should I see a healthcare provider?',
     answer:
-      'See a healthcare provider if you have been trying to conceive for 12+ months without success, or if semen analysis shows abnormalities.',
+      'For any health concerns, please consult a qualified professional. This calculator provides general wellness insights only, not medical diagnosis.',
   },
   {
-    question: 'Can low sperm count be treated?',
+    question: 'Is this a medical evaluation?',
     answer:
-      'Yes. Treatment options include lifestyle changes, medications, surgery (for varicoceles), or assisted reproductive technologies (IUI, IVF).',
+      'No. This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.',
   },
 ];
 
@@ -122,15 +126,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Male Fertility Sperm Health Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Male Wellness Lifestyle Index Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Male Fertility Sperm Health Index Calculator',
+      name: 'Male Wellness Lifestyle Index Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate sperm health index and fertility score from sperm count, motility, morphology, volume, and age.',
+      description: 'Estimate your wellness index and lifestyle score based on sleep, stress, exercise, diet, hydration, and alcohol consumption.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -140,57 +144,92 @@ const schemaMarkup = {
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
 const calculateResult = (values: FormValues): ResultPayload => {
-  // Sperm count score (0-30 points, optimal ≥15 million/mL)
-  const countScore = clamp((values.spermCount / 50) * 30, 0, 30);
+  let score = 0;
   
-  // Motility score (0-30 points, optimal ≥40%)
-  const motilityScore = clamp((values.motility / 100) * 30, 0, 30);
+  // Sleep (0-25 points, optimal 7-9 hours)
+  if (values.sleepHours >= 7 && values.sleepHours <= 9) {
+    score += 25;
+  } else if (values.sleepHours >= 6 && values.sleepHours < 7) {
+    score += 20;
+  } else if (values.sleepHours > 9 && values.sleepHours <= 10) {
+    score += 20;
+  } else if (values.sleepHours >= 5 && values.sleepHours < 6) {
+    score += 12;
+  } else {
+    score += 6;
+  }
   
-  // Morphology score (0-25 points, optimal ≥4%)
-  const morphologyScore = clamp((values.morphology / 100) * 25, 0, 25);
+  // Stress (0-20 points, lower is better)
+  if (values.stressLevel <= 3) {
+    score += 20;
+  } else if (values.stressLevel <= 5) {
+    score += 15;
+  } else if (values.stressLevel <= 7) {
+    score += 8;
+  } else {
+    score += 3;
+  }
   
-  // Volume score (0-10 points, optimal ≥1.5 mL)
-  const volumeScore = clamp((values.volume / 2) * 10, 0, 10);
+  // Exercise (0-20 points, 3-5 days/week optimal)
+  if (values.exerciseFrequency >= 3 && values.exerciseFrequency <= 5) {
+    score += 20;
+  } else if (values.exerciseFrequency === 2 || values.exerciseFrequency === 6) {
+    score += 15;
+  } else if (values.exerciseFrequency === 1 || values.exerciseFrequency === 7) {
+    score += 10;
+  } else {
+    score += 5;
+  }
   
-  // Age factor (declines after 40)
-  const agePenalty = values.age > 40 ? clamp((values.age - 40) / 30 * 5, 0, 5) : 0;
+  // Diet quality (0-15 points)
+  score += (values.dietQuality / 10) * 15;
   
-  const healthIndex = clamp(countScore + motilityScore + morphologyScore + volumeScore - agePenalty, 0, 100);
-  const fertilityScore = healthIndex;
+  // Hydration (0-10 points)
+  score += (values.hydrationLevel / 10) * 10;
+  
+  // Alcohol (0-10 points, less is better)
+  if (values.alcoholUnits === 0) {
+    score += 10;
+  } else if (values.alcoholUnits <= 2) {
+    score += 8;
+  } else if (values.alcoholUnits <= 5) {
+    score += 5;
+  } else if (values.alcoholUnits <= 10) {
+    score += 2;
+  } else {
+    score += 0;
+  }
+  
+  const wellnessIndex = clamp(score, 0, 100);
+  const lifestyleScore = wellnessIndex;
 
   let status: ResultPayload['status'] = 'excellent';
-  let interpretation = 'Your sperm health parameters appear excellent. Maintain current lifestyle habits.';
+  let interpretation = 'Your estimated wellness score suggests a lifestyle tendency that supports general wellness. This is a personal insight, not a medical evaluation.';
 
-  if (healthIndex < 40) {
-    status = 'poor';
-    interpretation = 'Sperm health parameters are below optimal. Consider lifestyle changes and consult a healthcare provider for evaluation.';
-  } else if (healthIndex < 60) {
+  if (wellnessIndex < 50) {
+    status = 'needs-improvement';
+    interpretation = 'Your estimated wellness score suggests areas where lifestyle improvements may be beneficial. This is a general wellness insight, not a medical evaluation.';
+  } else if (wellnessIndex < 70) {
     status = 'moderate';
-    interpretation = 'Sperm health parameters are moderate. Lifestyle improvements may help optimize fertility.';
-  } else if (healthIndex < 80) {
+    interpretation = 'Your estimated wellness score suggests a moderate lifestyle tendency. This is a personal insight, not a medical evaluation.';
+  } else if (wellnessIndex < 85) {
     status = 'good';
-    interpretation = 'Sperm health parameters are good. Minor improvements may further optimize fertility.';
+    interpretation = 'Your estimated wellness score suggests a good lifestyle tendency. This is a personal insight, not a medical evaluation.';
   }
 
   const recommendations = [
-    'Maintain healthy lifestyle: balanced diet, regular exercise, adequate sleep, and stress management.',
-    'Avoid excessive heat (hot tubs, saunas, tight clothing) and limit alcohol/tobacco use.',
-    'Consider supplements (zinc, folic acid, CoQ10) after consulting with a healthcare provider.',
+    'You may consider lifestyle improvements such as sleep, hydration, or stress management for general wellness support.',
+    'Maintain a balanced diet, regular exercise, adequate sleep, and stress management for overall wellness.',
+    'Limit alcohol consumption and stay well-hydrated to support general wellness.',
   ];
-  if (status === 'moderate' || status === 'poor') {
-    recommendations.push('Consult a healthcare provider or fertility specialist for comprehensive evaluation and treatment options if trying to conceive.');
-  }
-  if (status === 'poor') {
-    recommendations.push('Sperm production takes ~74 days. Be patient with lifestyle changes and retest after 2-3 months to track improvements.');
-  }
 
   const plan = [
-    { label: 'This Week', detail: 'Review semen analysis results with a healthcare provider. Identify areas for improvement.' },
-    { label: 'Next 2-3 Months', detail: 'Implement lifestyle changes (diet, exercise, sleep, stress reduction) to support sperm health.' },
-    { label: 'Ongoing', detail: 'Retest after 2-3 months to track improvements. Continue healthy habits for long-term fertility support.' },
+    { label: 'This Week', detail: 'Focus on improving one lifestyle area, such as sleep quality or stress management.' },
+    { label: 'Next 2-3 Months', detail: 'Implement gradual lifestyle changes. Consistency is key for long-term wellness support.' },
+    { label: 'Ongoing', detail: 'Continue healthy habits for long-term wellness. This is a general lifestyle assessment, not a medical evaluation.' },
   ];
 
-  return { healthIndex, fertilityScore, status, interpretation, recommendations, plan };
+  return { wellnessIndex, lifestyleScore, status, interpretation, recommendations, plan };
 };
 
 export default function MaleFertilitySpermHealthIndexCalculator() {
@@ -199,10 +238,12 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      spermCount: undefined,
-      motility: undefined,
-      morphology: undefined,
-      volume: undefined,
+      sleepHours: undefined,
+      stressLevel: undefined,
+      exerciseFrequency: undefined,
+      dietQuality: undefined,
+      hydrationLevel: undefined,
+      alcoholUnits: undefined,
       age: undefined,
     },
   });
@@ -215,15 +256,15 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Heart className="h-5 w-5" />
-            Male Fertility Sperm Health Index Calculator
+            Male Wellness Lifestyle Index Calculator
           </CardTitle>
-          <CardDescription>Calculate sperm health index and fertility score from sperm count, motility, morphology, volume, and age.</CardDescription>
+          <CardDescription>Estimate your wellness index and lifestyle score based on sleep, stress, exercise, diet, hydration, and alcohol consumption.</CardDescription>
         </CardHeader>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Input your semen analysis results</CardTitle>
+          <CardTitle>Input your lifestyle factors</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -231,12 +272,12 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="spermCount"
+                  name="sleepHours"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Sperm count (million/mL)</FormLabel>
+                      <FormLabel>Sleep hours per night</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 45" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <Input type="number" step="0.5" placeholder="e.g., 7.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -244,12 +285,12 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
                 />
                 <FormField
                   control={form.control}
-                  name="motility"
+                  name="stressLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Motility (%)</FormLabel>
+                      <FormLabel>Stress level (1-10)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 55" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <Input type="number" step="1" placeholder="e.g., 4" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -257,12 +298,12 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
                 />
                 <FormField
                   control={form.control}
-                  name="morphology"
+                  name="exerciseFrequency"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Morphology (%)</FormLabel>
+                      <FormLabel>Exercise frequency (days/week)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 6" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <Input type="number" step="1" placeholder="e.g., 4" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -270,12 +311,38 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
                 />
                 <FormField
                   control={form.control}
-                  name="volume"
+                  name="dietQuality"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Volume (mL)</FormLabel>
+                      <FormLabel>Diet quality (1-10)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="0.1" placeholder="e.g., 2.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <Input type="number" step="1" placeholder="e.g., 7" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="hydrationLevel"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Hydration level (1-10)</FormLabel>
+                      <FormControl>
+                        <Input type="number" step="1" placeholder="e.g., 8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="alcoholUnits"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Alcohol units per week</FormLabel>
+                      <FormControl>
+                        <Input type="number" step="1" placeholder="e.g., 3" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -296,7 +363,7 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate health index
+                Calculate wellness index
               </Button>
             </form>
           </Form>
@@ -310,18 +377,18 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See sperm health index, fertility score, and recommendations.</CardDescription>
+            <CardDescription>See your wellness index, lifestyle score, and general wellness insights.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Health index</p>
-                <p className="text-2xl font-semibold text-primary">{result.healthIndex.toFixed(0)}</p>
+                <p className="text-sm text-muted-foreground">Wellness index</p>
+                <p className="text-2xl font-semibold text-primary">{result.wellnessIndex.toFixed(0)}</p>
                 <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Fertility score</p>
-                <p className="text-2xl font-semibold text-primary">{result.fertilityScore.toFixed(0)}</p>
+                <p className="text-sm text-muted-foreground">Lifestyle score</p>
+                <p className="text-2xl font-semibold text-primary">{result.lifestyleScore.toFixed(0)}</p>
                 <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
               <div className="p-4 border rounded">
@@ -376,10 +443,10 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Health index</strong> = count score (0-30) + motility score (0-30) + morphology score (0-25) + volume score (0-10) − age penalty (0-5), max 100.</p>
-          <p><strong>Fertility score</strong> = health index (same calculation).</p>
-          <p><strong>Optimal values</strong>: Count ≥15 million/mL, Motility ≥40%, Morphology ≥4%, Volume ≥1.5 mL.</p>
-          <p>Higher sperm count, motility, morphology, and volume increase health index. Age over 40 adds a small penalty.</p>
+          <p><strong>Wellness index</strong> = sleep (0-25) + stress (0-20) + exercise (0-20) + diet (0-15) + hydration (0-10) + alcohol (0-10), max 100.</p>
+          <p><strong>Lifestyle score</strong> = wellness index (same calculation).</p>
+          <p><strong>General ranges</strong>: Sleep 7-9h, Stress ≤3, Exercise 3-5 days/week, Diet 7-10, Hydration 7-10, Alcohol 0-2 units/week.</p>
+          <p>This is a general wellness assessment based on lifestyle factors. It is not a medical evaluation.</p>
         </CardContent>
       </Card>
 
@@ -404,29 +471,29 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
           {result ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Count adequacy</p>
+                <p className="text-sm text-muted-foreground">Sleep quality</p>
                 <p className="text-xl font-semibold text-primary">
-                  {((form.getValues().spermCount ?? 0) >= 15 ? 'Normal' : 'Low')}
+                  {((form.getValues().sleepHours ?? 0) >= 7 && (form.getValues().sleepHours ?? 0) <= 9 ? 'Good' : 'Could improve')}
                 </p>
-                <p className="text-xs text-muted-foreground">Target: ≥15 million/mL</p>
+                <p className="text-xs text-muted-foreground">Target: 7-9 hours</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Motility adequacy</p>
+                <p className="text-sm text-muted-foreground">Stress management</p>
                 <p className="text-xl font-semibold text-primary">
-                  {((form.getValues().motility ?? 0) >= 40 ? 'Good' : 'Needs improvement')}
+                  {((form.getValues().stressLevel ?? 0) <= 3 ? 'Good' : 'Could improve')}
                 </p>
-                <p className="text-xs text-muted-foreground">Target: ≥40%</p>
+                <p className="text-xs text-muted-foreground">Target: ≤3</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Total sperm</p>
+                <p className="text-sm text-muted-foreground">Exercise consistency</p>
                 <p className="text-xl font-semibold text-primary">
-                  {((form.getValues().spermCount ?? 0) * (form.getValues().volume ?? 0)).toFixed(0)} million
+                  {((form.getValues().exerciseFrequency ?? 0) >= 3 && (form.getValues().exerciseFrequency ?? 0) <= 5 ? 'Good' : 'Could improve')}
                 </p>
-                <p className="text-xs text-muted-foreground">Count × Volume</p>
+                <p className="text-xs text-muted-foreground">Target: 3-5 days/week</p>
               </div>
             </div>
           ) : (
-            <p className="text-sm text-muted-foreground">Enter your semen analysis results to see additional insights.</p>
+            <p className="text-sm text-muted-foreground">Enter your lifestyle factors to see additional insights.</p>
           )}
         </CardContent>
       </Card>
@@ -454,8 +521,8 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Male fertility depends on sperm count, motility (movement), morphology (shape), and volume. Optimal values: count ≥15 million/mL, motility ≥40%, morphology ≥4%, volume ≥1.5 mL.</p>
-          <p>Use this calculator to assess sperm health index from semen analysis results and get recommendations for improving fertility.</p>
+          <p>General wellness is influenced by lifestyle factors such as sleep, stress management, exercise, diet quality, hydration, and alcohol consumption.</p>
+          <p>Use this calculator to assess your wellness index based on lifestyle factors and get general wellness insights. This is not a medical evaluation.</p>
         </CardContent>
       </Card>
 
@@ -481,9 +548,21 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates sperm health index and fertility score from sperm count, motility, morphology, volume, and age.</p>
-          <p>Outputs include health index, fertility score, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool estimates wellness index and lifestyle score from sleep hours, stress level, exercise frequency, diet quality, hydration level, alcohol units, and age.</p>
+          <p>Outputs include wellness index, lifestyle score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

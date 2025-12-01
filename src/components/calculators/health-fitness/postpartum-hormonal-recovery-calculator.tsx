@@ -181,35 +181,39 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   let status: ResultPayload['status'] = 'early-recovery';
-  let interpretation = 'You are in early recovery. Hormones are still stabilizing. Focus on rest, nutrition, and self-care.';
+  let interpretation =
+    'These answers suggest you may be in an earlier part of the postpartum adjustment period; it’s very normal for hormones, sleep, and energy to still be finding a new rhythm.';
 
   if (recoveryScore >= 80) {
     status = 'recovered';
-    interpretation = 'Your hormonal recovery appears complete. Continue maintaining healthy habits for long-term wellness.';
+    interpretation =
+      'Your entries look similar to people who feel more settled hormonally after birth, though only your care team can confirm how your body is doing medically.';
   } else if (recoveryScore >= 60) {
     status = 'late-recovery';
-    interpretation = 'You are in late recovery. Most hormones have stabilized, with minor adjustments remaining.';
+    interpretation =
+      'This pattern lines up with a later stage of adjustment for many people, with things feeling more stable in some areas and still shifting in others.';
   } else if (recoveryScore >= 40) {
     status = 'mid-recovery';
-    interpretation = 'You are in mid-recovery. Hormones are stabilizing, but full recovery may take several more months.';
+    interpretation =
+      'Your responses are similar to what many people notice somewhere in the middle of the postpartum adjustment period; it’s common for hormones, sleep, and energy to still feel uneven.';
   }
 
   const recommendations = [
-    'Prioritize sleep whenever possible. Sleep is critical for hormonal recovery and overall postpartum healing.',
-    'Eat nutrient-dense foods to support hormone production and energy levels. Include protein, healthy fats, and complex carbs.',
-    'Manage stress through gentle movement, meditation, or support groups. High stress can delay hormonal recovery.',
+    'When you’re able, giving yourself more opportunities for rest and sleep can be one of the kindest supports for your body in this season.',
+    'Simple, nutrient‑dense meals and snacks—like proteins, healthy fats, and fiber‑rich carbs—can help support your overall energy and well‑being.',
+    'Light movement, quiet moments, or connecting with supportive people can sometimes ease stress in ways that also support hormonal adjustment.',
   ];
   if (values.breastfeeding) {
-    recommendations.push('Breastfeeding delays period return and hormonal recovery—this is normal. Recovery will progress after weaning.');
+    recommendations.push('If you are breastfeeding, it is very common for your period and hormone pattern to look different or return later; this variation is usually normal, but you can always ask your clinician if you’re unsure.');
   }
   if (status === 'early-recovery' || status === 'mid-recovery') {
-    recommendations.push('Be patient with recovery. Hormonal shifts take time. Focus on self-care and gradual return to activities.');
+    recommendations.push('Being gentle with yourself and easing back into activities at a pace that feels manageable can be more supportive than pushing to “bounce back.”');
   }
 
   const plan = [
-    { label: 'This Month', detail: 'Track symptoms, sleep, and energy. Focus on rest and nutrition to support recovery.' },
-    { label: 'Next 3 Months', detail: 'Continue monitoring recovery progress. Gradually increase activity as energy allows.' },
-    { label: 'Ongoing', detail: 'Maintain healthy habits. Consult healthcare provider if recovery seems delayed or symptoms are severe.' },
+    { label: 'This Month', detail: 'If it feels helpful, briefly note how you’re sleeping, feeling, and functioning, without judging yourself for any of it.' },
+    { label: 'Next 3 Months', detail: 'As and when your energy allows, gently add or adjust one or two habits—like short walks or simple meals—that genuinely feel supportive.' },
+    { label: 'Ongoing', detail: 'Reach out to a trusted healthcare professional whenever something worries you or your symptoms feel heavy to carry alone.' },
   ];
 
   return { recoveryScore, hormonalBalance, monthsToFullRecovery, status, interpretation, recommendations, plan };
@@ -369,17 +373,17 @@ export default function PostpartumHormonalRecoveryCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recovery score</p>
                 <p className="text-2xl font-semibold text-primary">{result.recoveryScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 snapshot from this model of how your current answers look overall.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Hormonal balance</p>
                 <p className="text-2xl font-semibold text-primary">{result.hormonalBalance.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">The same score, framed as a general “how settled things feel” index.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Months to recovery</p>
                 <p className="text-2xl font-semibold text-primary">{result.monthsToFullRecovery}</p>
-                <p className="text-xs text-muted-foreground">Estimated</p>
+                <p className="text-xs text-muted-foreground">A very rough range from this model, not a medical timeline.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -538,11 +542,16 @@ export default function PostpartumHormonalRecoveryCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates postpartum hormonal recovery score, balance, and timeline from weeks postpartum, breastfeeding status, sleep, energy, mood stability, and period return.</p>
-          <p>Outputs include recovery score, hormonal balance, months to full recovery, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool blends weeks postpartum, feeding, sleep, energy, mood, and period changes into a simple view of how your recovery journey might feel right now.</p>
+          <p>The numbers and labels are meant for gentle reflection and conversations with your care team, not as a diagnosis or guarantee about how or when you will recover.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and educational insights only. It is not a medical diagnosis,
+        hormone test, or treatment plan. For postpartum concerns, mental health support, or questions about your recovery,
+        please consult a qualified healthcare professional promptly.
+      </p>
     </div>
   );
 }

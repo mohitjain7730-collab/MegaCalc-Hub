@@ -99,7 +99,7 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'REM Sleep Percentage Calculator',
+    name: 'REM Sleep Balance Wellness Estimator',
     slug: 'rem-sleep-percentage-calculator',
     description: 'Track REM sleep alongside deep sleep.',
   },
@@ -130,12 +130,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Deep Sleep Requirement Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Deep Sleep Comfort Range Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Deep Sleep Requirement Estimator',
+      name: 'Deep Sleep Comfort Range Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
@@ -190,29 +190,29 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const deepSleepGap = requiredDeepSleep - currentDeepSleep;
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your deep sleep appears optimal for your age and activity level. Continue maintaining good sleep habits.';
+  let interpretation = 'Your estimated deep sleep comfort range suggests a general lifestyle tendency that may support restorative sleep. This is a personal insight, not a medical evaluation.';
 
   if (deepSleepGap > 30) {
     status = 'deficient';
-    interpretation = 'Your deep sleep is significantly below requirements. Prioritize sleep hygiene, reduce stress, and consider consulting a sleep specialist if issues persist.';
+    interpretation = 'Your estimated deep sleep comfort range suggests you may benefit from a calmer wind-down routine or more consistent bedtimes for deeper rest. This is a general wellness insight, not a medical diagnosis.';
   } else if (deepSleepGap > 15) {
     status = 'insufficient';
-    interpretation = 'Your deep sleep is below requirements. Focus on improving sleep quality, reducing alcohol/caffeine, and ensuring adequate total sleep time.';
+    interpretation = 'Your estimated deep sleep comfort range suggests areas where lifestyle improvements may support deeper rest. This is a lifestyle assessment, not a medical evaluation.';
   } else if (deepSleepGap > 5) {
     status = 'adequate';
-    interpretation = 'Your deep sleep is adequate but could be optimized. Minor improvements in sleep hygiene may help reach optimal levels.';
+    interpretation = 'Your estimated deep sleep comfort range suggests a moderate lifestyle tendency. This is a personal insight, not a medical evaluation.';
   }
 
   const recommendations = [
-    'Maintain consistent sleep schedule (same bedtime and wake time) to optimize deep sleep cycles.',
-    'Avoid alcohol and caffeine before bed, as both can suppress deep sleep, especially in the first half of the night.',
-    'Engage in regular exercise, especially resistance training, which can increase deep sleep. Avoid intense exercise too close to bedtime.',
+    'You may consider maintaining a consistent sleep schedule (same bedtime and wake time) for general wellness support.',
+    'You may consider avoiding alcohol and caffeine before bed for overall wellness.',
+    'You may consider engaging in regular exercise, especially resistance training, for general wellness. Avoid intense exercise too close to bedtime.',
   ];
   if (status === 'insufficient' || status === 'deficient') {
-    recommendations.push('Ensure adequate total sleep time (7-9 hours for adults). Deep sleep occurs more in earlier sleep cycles.');
+    recommendations.push('You may consider ensuring adequate total sleep time (7-9 hours for adults) for general wellness support.');
   }
   if (values.recoveryNeeds >= 7) {
-    recommendations.push('High recovery needs require optimal deep sleep. Prioritize sleep quality and consider stress management techniques.');
+    recommendations.push('You may consider prioritizing sleep quality and stress management techniques for general wellness support. This is not medical advice.');
   }
 
   const plan = [
@@ -246,9 +246,9 @@ export default function DeepSleepRequirementEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Deep Sleep Requirement Estimator
+            Deep Sleep Comfort Range Estimator
           </CardTitle>
-          <CardDescription>Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.</CardDescription>
+          <CardDescription>Estimate your deep sleep comfort range and wellness score based on age, sleep patterns, activity level, and recovery needs. This is a general wellness insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -541,9 +541,21 @@ export default function DeepSleepRequirementEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates deep sleep requirements and assesses current deep sleep from age, total sleep hours, deep sleep minutes (optional), activity level, and recovery needs.</p>
+          <p>This tool estimates deep sleep comfort range and wellness score from age, total sleep hours, deep sleep minutes (optional), activity level, and recovery needs.</p>
           <p>Outputs include required deep sleep, current deep sleep, deep sleep gap, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

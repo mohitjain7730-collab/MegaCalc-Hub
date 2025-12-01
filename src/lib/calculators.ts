@@ -4303,67 +4303,67 @@ export const calculators: Calculator[] = [
  
   {
     id: 4535,
-    name: 'Male Fertility Sperm Health Index Calculator',
-    description: 'Calculate sperm health index and fertility score from sperm count, motility, morphology, volume, and age.',
+    name: 'Male Wellness Lifestyle Index Calculator',
+    description: 'Estimate your wellness index and lifestyle score based on sleep, stress, exercise, diet, hydration, and alcohol consumption.',
     slug: 'male-fertility-sperm-health-index-calculator',
     category: 'wellness',
-    metaTitle: 'Male Fertility Sperm Health Index Calculator',
-    metaDescription: 'Calculate sperm health index and fertility score from semen analysis results (count, motility, morphology, volume) and age to assess fertility.'
+    metaTitle: 'Male Wellness Lifestyle Index Calculator',
+    metaDescription: 'Estimate your wellness index and lifestyle score based on sleep, stress, exercise, diet, hydration, and alcohol consumption. General wellness insights only, not medical evaluation.'
   },
  
   {
     id: 4538,
-    name: 'Muscle Recovery Time by Age Calculator',
-    description: 'Estimate muscle recovery time based on age, training intensity, muscle group size, experience, sleep, and nutrition.',
+    name: 'Muscle Recovery Time Estimator',
+    description: 'Estimate muscle recovery time based on age, training intensity, muscle group size, experience, sleep, and nutrition. General wellness insight, not medical evaluation.',
     slug: 'muscle-recovery-time-by-age-calculator',
     category: 'wellness',
-    metaTitle: 'Muscle Recovery Time by Age Calculator',
-    metaDescription: 'Estimate muscle recovery time from age, training intensity, muscle group size, experience, sleep, and nutrition to plan training frequency.'
+    metaTitle: 'Muscle Recovery Time Estimator',
+    metaDescription: 'Estimate muscle recovery time from age, training intensity, muscle group size, experience, sleep, and nutrition. General wellness insights only, not medical evaluation.'
   },
   {
     id: 4539,
-    name: 'Creatine Loading & Maintenance Dose Calculator',
-    description: 'Calculate creatine loading and maintenance doses based on body weight, goal, form, and training frequency.',
+    name: 'Creatine Supplementation Guide',
+    description: 'Estimate creatine loading and maintenance doses based on body weight, goal, form, and training frequency. For informational purposes only, not medical advice.',
     slug: 'creatine-loading-maintenance-dose-calculator',
     category: 'wellness',
-    metaTitle: 'Creatine Loading & Maintenance Dose Calculator',
-    metaDescription: 'Calculate appropriate creatine loading and maintenance doses based on body weight, goal, form, and training frequency for optimal supplementation.'
+    metaTitle: 'Creatine Supplementation Guide',
+    metaDescription: 'Estimate appropriate creatine loading and maintenance doses based on body weight, goal, form, and training frequency. For informational purposes only, not medical advice.'
   },
   {
     id: 4540,
-    name: 'Daily Testosterone-Boosting Habits Score Calculator',
-    description: 'Calculate testosterone-boosting habits score from sleep, exercise, stress, alcohol, sunlight, protein, and supplements.',
+    name: 'Hormone Support Lifestyle Score Calculator',
+    description: 'Estimate your lifestyle score based on sleep, exercise, stress, alcohol, sunlight, protein, and supplements. General wellness insight, not medical evaluation.',
     slug: 'daily-testosterone-boosting-habits-score-calculator',
     category: 'wellness',
-    metaTitle: 'Daily Testosterone-Boosting Habits Score Calculator',
-    metaDescription: 'Calculate testosterone-boosting habits score from sleep, exercise, stress, alcohol, sunlight, protein, and supplements to optimize hormone support.'
+    metaTitle: 'Hormone Support Lifestyle Score Calculator',
+    metaDescription: 'Estimate your lifestyle score based on sleep, exercise, stress, alcohol, sunlight, protein, and supplements. General wellness insights only, not medical evaluation.'
   },
   {
     id: 4541,
-    name: 'BMR Adjustment for Age & Muscle Loss Calculator',
-    description: 'Calculate BMR adjusted for age and muscle loss to account for metabolic decline over time.',
+    name: 'Metabolic Wellness Estimator',
+    description: 'Estimate BMR adjusted for age and lifestyle factors. General wellness insight, not medical evaluation.',
     slug: 'bmr-adjustment-for-age-muscle-loss-calculator',
     category: 'wellness',
-    metaTitle: 'BMR Adjustment for Age & Muscle Loss Calculator',
-    metaDescription: 'Calculate BMR adjusted for age and muscle loss to get accurate metabolic rate estimates and calorie needs as you age.'
+    metaTitle: 'Metabolic Wellness Estimator',
+    metaDescription: 'Estimate BMR adjusted for age and lifestyle factors. General wellness insights only, not medical evaluation.'
   },
   {
     id: 4542,
-    name: 'Fat-to-Muscle Recomposition Tracker',
-    description: 'Track fat-to-muscle recomposition goals: calculate fat to lose, muscle to gain, and recomposition score.',
+    name: 'Body Composition Lifestyle Progress Tracker',
+    description: 'Estimate your body composition lifestyle score based on current and target body composition goals. General wellness insight, not medical evaluation.',
     slug: 'fat-to-muscle-recomposition-tracker',
     category: 'wellness',
-    metaTitle: 'Fat-to-Muscle Recomposition Tracker',
-    metaDescription: 'Track fat-to-muscle recomposition goals: calculate fat to lose, muscle to gain, and assess feasibility of recomposition goals.'
+    metaTitle: 'Body Composition Lifestyle Progress Tracker',
+    metaDescription: 'Estimate your body composition lifestyle score based on current and target body composition goals. General wellness insights only, not medical evaluation.'
   },
   {
     id: 4543,
-    name: 'REM Sleep Percentage Calculator',
-    description: 'Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality.',
+    name: 'REM Sleep Balance Wellness Estimator',
+    description: 'Estimate your REM sleep balance wellness score based on sleep patterns, age, and sleep quality. General wellness insight, not medical evaluation.',
     slug: 'rem-sleep-percentage-calculator',
     category: 'wellness',
-    metaTitle: 'REM Sleep Percentage Calculator',
-    metaDescription: 'Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality to assess sleep health.'
+    metaTitle: 'REM Sleep Balance Wellness Estimator',
+    metaDescription: 'Estimate your REM sleep balance wellness score based on sleep patterns, age, and sleep quality. General wellness insights only, not medical evaluation.'
   },
   {
     id: 5000,
@@ -5614,30 +5614,30 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4544,
-    name: 'Deep Sleep Requirement Estimator',
-    description: 'Estimate deep sleep requirements and assess current deep sleep from age, total sleep, activity level, and recovery needs.',
+    name: 'Deep Sleep Comfort Range Estimator',
+    description: 'Estimate your deep sleep comfort range and wellness score based on age, sleep patterns, activity level, and recovery needs. General wellness insight, not medical evaluation.',
     slug: 'deep-sleep-requirement-estimator',
     category: 'wellness',
-    metaTitle: 'Deep Sleep Requirement Estimator',
-    metaDescription: 'Estimate deep sleep requirements based on age, activity level, and recovery needs, and assess current deep sleep to identify gaps.'
+    metaTitle: 'Deep Sleep Comfort Range Estimator',
+    metaDescription: 'Estimate your deep sleep comfort range and wellness score based on age, sleep patterns, activity level, and recovery needs. General wellness insights only, not medical evaluation.'
   },
   {
     id: 4545,
-    name: 'Sleep Cycle Alarm Time Optimizer',
-    description: 'Calculate optimal alarm time based on sleep cycles, bedtime, and desired wake time to wake up feeling refreshed.',
+    name: 'Sleep Cycle Wake-Up Comfort Planner',
+    description: 'Estimate suggested wake-up windows for more comfortable sleep cycles based on your bedtime and preferences. General wellness planning tool, not medical evaluation.',
     slug: 'sleep-cycle-alarm-time-optimizer',
     category: 'wellness',
-    metaTitle: 'Sleep Cycle Alarm Time Optimizer',
-    metaDescription: 'Calculate optimal alarm time based on sleep cycles, bedtime, and desired wake time to wake up feeling refreshed and alert.'
+    metaTitle: 'Sleep Cycle Wake-Up Comfort Planner',
+    metaDescription: 'Estimate suggested wake-up windows for more comfortable sleep cycles based on your bedtime and preferences. General wellness insights only, not medical evaluation.'
   },
   {
     id: 4546,
-    name: 'Nap Duration Efficiency Calculator',
-    description: 'Calculate optimal nap duration based on time of day, sleep needs, and desired alertness level to maximize rest efficiency.',
+    name: 'Nap Refresh Score Calculator',
+    description: 'Estimate your nap refresh score based on nap timing, sleep patterns, and energy levels. General wellness insight, not medical evaluation.',
     slug: 'nap-duration-efficiency-calculator',
     category: 'wellness',
-    metaTitle: 'Nap Duration Efficiency Calculator',
-    metaDescription: 'Calculate optimal nap duration based on time of day, sleep needs, and desired alertness level to maximize rest efficiency and avoid grogginess.'
+    metaTitle: 'Nap Refresh Score Calculator',
+    metaDescription: 'Estimate your nap refresh score based on nap timing, sleep patterns, and energy levels. General wellness insights only, not medical evaluation.'
   },
   {
     id: 4547,

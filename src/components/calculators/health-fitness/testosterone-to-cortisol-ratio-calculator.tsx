@@ -14,82 +14,77 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 
 const formSchema = z.object({
-  testosteroneLevel: z.number({ invalid_type_error: 'Enter testosterone level' }).min(100).max(1500),
-  cortisolLevel: z.number({ invalid_type_error: 'Enter cortisol level' }).min(1).max(50),
-  age: z.number({ invalid_type_error: 'Enter age' }).min(18).max(100),
-  gender: z.enum(['male', 'female']),
-  timeOfDay: z.enum(['morning', 'afternoon', 'evening']),
+  trainingLoad: z.number({ invalid_type_error: 'Enter recent training load' }).min(0).max(20),
+  perceivedStress: z.number({ invalid_type_error: 'Enter how stressed you feel' }).min(0).max(10),
+  sleepHours: z.number({ invalid_type_error: 'Enter average sleep hours' }).min(3).max(12),
+  recoveryTime: z.number({ invalid_type_error: 'Enter daily wind‑down time' }).min(0).max(6),
+  muscleTiredness: z.number({ invalid_type_error: 'Enter muscle tiredness level' }).min(0).max(10),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 type ResultPayload = {
-  ratio: number;
-  ratioStatus: number;
-  status: 'optimal' | 'moderate' | 'low-testosterone' | 'high-cortisol';
+  ratioScore: number;
+  balanceIndex: number;
+  status: 'ease-leaning' | 'balanced-load' | 'strain-leaning';
   interpretation: string;
   recommendations: string[];
   plan: { label: string; detail: string }[];
 };
 
 const steps = [
-  'Enter your testosterone level (ng/dL) from a blood test.',
-  'Enter your cortisol level (μg/dL) from the same test.',
-  'Enter your age and gender (normal ranges differ by gender and age).',
-  'Note the time of day the test was taken (cortisol varies throughout the day).',
-  'Review the testosterone-to-cortisol ratio and balance status.',
+  'Think about your typical week of movement, work, and general life load.',
+  'Rate how intense your recent training or physical load has felt.',
+  'Add a simple self-rating for stress, sleep, daily wind-down time, and how tired your muscles feel.',
+  'Review a gentle balance index that blends “push” and “recovery” habits into one simple snapshot.',
+  'Use the insights as a starting point for adjusting training, rest, and stress-support habits if you wish.',
 ];
 
 const faqs = [
   {
-    question: 'What is the testosterone-to-cortisol ratio?',
+    question: 'What does this training strain vs recovery index represent?',
     answer:
-      'It measures the balance between anabolic (testosterone) and catabolic (cortisol) hormones. Higher ratios generally indicate better recovery, muscle building capacity, and lower stress impact.',
+      'It blends simple self-ratings of training load, stress, sleep, wind-down time, and muscle tiredness into one number so you can reflect on how balanced your current season feels.',
   },
   {
-    question: 'What is a healthy ratio?',
+    question: 'Is this checking my testosterone-to-cortisol ratio or hormone levels?',
     answer:
-      'Ideal ratios vary by gender, age, and time of day. Generally: men 20:1 to 30:1 (morning), women 5:1 to 15:1. Lower ratios may indicate high stress or low testosterone.',
+      'No. This tool does not measure or estimate actual hormone levels. It simply uses your answers about training, stress, and rest to create a lifestyle-pattern index inspired by the idea of balancing “push” and “recovery.”',
   },
   {
-    question: 'How do I get hormone levels tested?',
+    question: 'Can this tell me if my hormones are normal or medically balanced?',
     answer:
-      'Consult a healthcare provider. Blood tests measure testosterone and cortisol. Timing matters—cortisol is highest in the morning, testosterone varies less.',
+      'No. Only lab testing and a qualified clinician can comment on hormone levels or balance. This tool is purely for personal reflection on habits, not for diagnosis or medical assessment.',
   },
   {
-    question: 'Does time of day matter?',
+    question: 'Who might find this index helpful?',
     answer:
-      'Yes. Cortisol peaks in the morning and declines throughout the day. Testosterone is relatively stable but may be slightly higher in the morning. Morning tests are standard.',
+      'People who train, work, or parent a lot and want a quick, gentle snapshot of how their current mix of effort, rest, and stress-support habits feels right now.',
   },
   {
-    question: 'What if my ratio is low?',
+    question: 'What if my score looks more strain-leaning?',
     answer:
-      'Low ratios may indicate high cortisol (stress), low testosterone, or both. Lifestyle changes (sleep, stress management, exercise) or medical treatment may help.',
+      'That can be a nudge to experiment with small changes, like extra rest, lighter sessions, or a bit more wind-down time. If you feel unwell or worried, it’s important to speak with a healthcare professional.',
   },
   {
-    question: 'Can men and women use this?',
+    question: 'Do I need lab tests to use this tool?',
     answer:
-      'Yes, but normal ranges differ significantly. Men typically have 10-20x higher testosterone than women. The calculator accounts for gender differences.',
+      'No. This tool is intentionally based only on simple self-ratings so you can reflect on patterns without needing any laboratory measurements.',
   },
   {
-    question: 'What affects the ratio?',
+    question: 'Will this tool change how I should train?',
     answer:
-      'Stress, sleep, exercise, diet, age, medications, and health conditions can affect both testosterone and cortisol levels and their ratio.',
+      'It doesn’t prescribe a program. It simply offers ideas you can try, alongside listening to your body, your schedule, and any guidance from a coach or clinician.',
   },
   {
-    question: 'Can I improve the ratio naturally?',
+    question: 'Can I use this instead of medical advice?',
     answer:
-      'Possibly. Reducing stress, improving sleep, regular exercise, balanced nutrition, and avoiding overtraining may help improve the ratio.',
+      'No. This is an educational wellness tool only. Always rely on qualified healthcare professionals for any concerns about hormones, fatigue, or health conditions.',
   },
   {
-    question: 'When should I retest?',
+    question: 'How often can I check in with this index?',
     answer:
-      'Retest after 2-3 months of lifestyle changes or as recommended by your healthcare provider. Hormone levels can fluctuate.',
-  },
-  {
-    question: 'Is this a medical diagnosis?',
-    answer:
-      'No. This is an educational tool. Always consult healthcare providers for hormone testing, diagnosis, and treatment recommendations.',
+      'You can use it weekly, monthly, or whenever your routine changes to see how your answers shift over time and what feels most sustainable for you.',
   },
 ];
 
@@ -111,7 +106,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/testosterone-to-cortisol-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/category/health-fitness/training-strain-vs-recovery-pattern-index';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,15 +116,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Testosterone-to-Cortisol Ratio Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Training Strain vs Recovery Pattern Index', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Testosterone-to-Cortisol Ratio Calculator',
+      name: 'Training Strain vs Recovery Pattern Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate testosterone-to-cortisol ratio from hormone levels to assess anabolic-catabolic balance and recovery capacity.',
+      description:
+        'Blend simple self-ratings of training load, stress, sleep, and recovery into a gentle index of how your current push-vs-rest pattern feels.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -139,72 +135,84 @@ const schemaMarkup = {
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
 const calculateResult = (values: FormValues): ResultPayload => {
-  // Calculate ratio (testosterone in ng/dL, cortisol in μg/dL)
-  // Convert cortisol to ng/dL for ratio: 1 μg/dL = 10 ng/dL
-  const cortisolNgDl = values.cortisolLevel * 10;
-  const ratio = values.testosteroneLevel / cortisolNgDl;
-  
-  // Ideal ratios by gender and time of day
-  let idealRatio = 25; // Default for men, morning
-  if (values.gender === 'female') {
-    idealRatio = 10; // Women have lower testosterone
-  }
-  if (values.timeOfDay === 'afternoon') {
-    idealRatio *= 0.7; // Cortisol lower in afternoon
-  } else if (values.timeOfDay === 'evening') {
-    idealRatio *= 0.5; // Cortisol much lower in evening
-  }
-  
-  const ratioStatus = clamp((ratio / idealRatio) * 100, 0, 200);
+  // Simple push vs rest style index from lifestyle inputs only
+  const loadScore = clamp((values.trainingLoad / 20) * 100, 0, 100);
+  const stressScore = clamp((values.perceivedStress / 10) * 100, 0, 100);
+  const sleepSupport = clamp(((values.sleepHours - 3) / 9) * 100, 0, 100);
+  const recoverySupport = clamp((values.recoveryTime / 6) * 100, 0, 100);
+  const muscleTired = clamp((values.muscleTiredness / 10) * 100, 0, 100);
 
-  let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your testosterone-to-cortisol ratio appears optimal. Maintain current habits.';
+  // Higher load + stress + tiredness increase "push"; sleep + recovery time increase "rest"
+  const pushSide = (loadScore + stressScore + muscleTired) / 3;
+  const restSide = (sleepSupport + recoverySupport) / 2;
 
-  if (ratio < idealRatio * 0.5) {
-    if (values.testosteroneLevel < (values.gender === 'male' ? 300 : 15)) {
-      status = 'low-testosterone';
-      interpretation = 'Ratio suggests low testosterone relative to cortisol. Consider lifestyle changes or consult a healthcare provider.';
-    } else {
-      status = 'high-cortisol';
-      interpretation = 'Ratio indicates high cortisol (stress) relative to testosterone. Focus on stress reduction and recovery.';
-    }
-  } else if (ratio < idealRatio * 0.7) {
-    status = 'moderate';
-    interpretation = 'Ratio is moderate. Consider lifestyle adjustments to optimize balance and support recovery.';
+  const rawIndex = clamp(50 + (pushSide - restSide) / 4, 0, 100);
+  const ratioScore = rawIndex;
+  const balanceIndex = rawIndex;
+
+  let status: ResultPayload['status'] = 'balanced-load';
+  let interpretation =
+    'Your answers suggest a fairly balanced mix of effort and recovery right now, though only you can feel how sustainable it truly is.';
+
+  if (rawIndex >= 70) {
+    status = 'strain-leaning';
+    interpretation =
+      'This looks like a more “full” season with relatively more push than recovery; it may be worth exploring where small extra pockets of rest or support could fit.';
+  } else if (rawIndex <= 40) {
+    status = 'ease-leaning';
+    interpretation =
+      'Things currently lean more toward ease or lighter load; that can be a valuable season for rebuilding, recharging, or simply maintaining what feels good.';
   }
 
-  const recommendations = [
-    'Ensure hormone testing is done at the right time (morning for cortisol, consistent timing for testosterone).',
-    'Reduce stress through meditation, sleep, and stress management to lower cortisol and support testosterone.',
-    'Prioritize sleep (7-9 hours) and recovery to support healthy hormone balance.',
+  const recommendations: string[] = [
+    'Notice how your current mix of training, work, and life responsibilities actually feels in your body across a typical week.',
+    'If you can, gently protect a few anchor habits—like a consistent bedtime or short wind-down—rather than trying to change everything at once.',
+    'Consider chatting with a coach or professional if you are unsure how to balance training intensity with enough recovery time.',
   ];
-  if (status === 'low-testosterone') {
-    recommendations.push('Consider lifestyle changes (exercise, nutrition, sleep) or discuss testosterone replacement with a healthcare provider if levels are clinically low.');
+
+  if (status === 'strain-leaning') {
+    recommendations.push(
+      'You might experiment with slightly lighter days, deload weeks, or extra rest blocks and see how your mood, sleep, and energy respond.'
+    );
   }
-  if (status === 'high-cortisol') {
-    recommendations.push('Focus on stress reduction, adequate rest, and avoiding overtraining to lower cortisol levels.');
+  if (status === 'ease-leaning') {
+    recommendations.push(
+      'If it feels right, you could gently add small, enjoyable bits of movement or structure, noticing whether they support your overall energy.'
+    );
   }
 
   const plan = [
-    { label: 'This Week', detail: 'Review hormone test results with a healthcare provider to confirm ratio and discuss options.' },
-    { label: 'Next Month', detail: 'Implement lifestyle changes (stress reduction, sleep, exercise) to support hormonal balance.' },
-    { label: 'Ongoing', detail: 'Retest hormones after 2-3 months to track ratio improvements and adjust treatment if needed.' },
+    {
+      label: 'This Week',
+      detail:
+        'Take a quick note each day on your stress, sleep, and muscle tiredness to see how they line up with your training or workload.',
+    },
+    {
+      label: 'Next Month',
+      detail:
+        'Experiment with one or two small tweaks—like one extra early night, a lighter session, or a short walk break—and see which changes feel most supportive.',
+    },
+    {
+      label: 'Ongoing',
+      detail:
+        'Revisit this index when your schedule, workload, or training block changes so you can keep adjusting toward a pattern that feels sustainable.',
+    },
   ];
 
-  return { ratio, ratioStatus, status, interpretation, recommendations, plan };
+  return { ratioScore, balanceIndex, status, interpretation, recommendations, plan };
 };
 
-export default function TestosteroneToCortisolRatioCalculator() {
+export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
   const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      testosteroneLevel: undefined,
-      cortisolLevel: undefined,
-      age: undefined,
-      gender: 'male',
-      timeOfDay: 'morning',
+      trainingLoad: undefined,
+      perceivedStress: undefined,
+      sleepHours: undefined,
+      recoveryTime: undefined,
+      muscleTiredness: undefined,
     },
   });
 
@@ -216,15 +224,17 @@ export default function TestosteroneToCortisolRatioCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Scale className="h-5 w-5" />
-            Testosterone-to-Cortisol Ratio Calculator
+            Training Strain vs Recovery Pattern Index
           </CardTitle>
-          <CardDescription>Calculate testosterone-to-cortisol ratio from hormone levels to assess anabolic-catabolic balance and recovery capacity.</CardDescription>
+          <CardDescription>
+            Explore a gentle wellness-style snapshot of how your current mix of training strain, stress, sleep, and recovery time feels right now.
+          </CardDescription>
         </CardHeader>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Input your hormone levels</CardTitle>
+          <CardTitle>Check in with your training and recovery habits</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -232,12 +242,18 @@ export default function TestosteroneToCortisolRatioCalculator() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="testosteroneLevel"
+                  name="trainingLoad"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Testosterone (ng/dL)</FormLabel>
+                      <FormLabel>Training or activity load this week (0–20)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 650" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <Input
+                          type="number"
+                          step="1"
+                          placeholder="e.g., 10 for a pretty full week"
+                          value={field.value ?? ''}
+                          onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -245,12 +261,18 @@ export default function TestosteroneToCortisolRatioCalculator() {
                 />
                 <FormField
                   control={form.control}
-                  name="cortisolLevel"
+                  name="perceivedStress"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Cortisol (μg/dL)</FormLabel>
+                      <FormLabel>How stressed have you felt lately? (0–10)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="0.1" placeholder="e.g., 15.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <Input
+                          type="number"
+                          step="1"
+                          placeholder="0 = very calm, 10 = maxed out"
+                          value={field.value ?? ''}
+                          onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -258,12 +280,18 @@ export default function TestosteroneToCortisolRatioCalculator() {
                 />
                 <FormField
                   control={form.control}
-                  name="age"
+                  name="sleepHours"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Age (years)</FormLabel>
+                      <FormLabel>Average sleep hours per night (3–12)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 35" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <Input
+                          type="number"
+                          step="0.5"
+                          placeholder="e.g., 7.5"
+                          value={field.value ?? ''}
+                          onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -271,19 +299,18 @@ export default function TestosteroneToCortisolRatioCalculator() {
                 />
                 <FormField
                   control={form.control}
-                  name="gender"
+                  name="recoveryTime"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Gender</FormLabel>
+                      <FormLabel>Wind-down or recovery time most days (hours, 0–6)</FormLabel>
                       <FormControl>
-                        <select
-                          value={field.value}
-                          onChange={(e) => field.onChange(e.target.value as 'male' | 'female')}
-                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
-                        >
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
-                        </select>
+                        <Input
+                          type="number"
+                          step="0.5"
+                          placeholder="e.g., 1.5 hours of stretching, walks, or quiet time"
+                          value={field.value ?? ''}
+                          onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -291,20 +318,18 @@ export default function TestosteroneToCortisolRatioCalculator() {
                 />
                 <FormField
                   control={form.control}
-                  name="timeOfDay"
+                  name="muscleTiredness"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Time of day tested</FormLabel>
+                      <FormLabel>How tired or heavy do your muscles feel? (0–10)</FormLabel>
                       <FormControl>
-                        <select
-                          value={field.value}
-                          onChange={(e) => field.onChange(e.target.value as 'morning' | 'afternoon' | 'evening')}
-                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
-                        >
-                          <option value="morning">Morning</option>
-                          <option value="afternoon">Afternoon</option>
-                          <option value="evening">Evening</option>
-                        </select>
+                        <Input
+                          type="number"
+                          step="1"
+                          placeholder="0 = totally fresh, 10 = very wiped out"
+                          value={field.value ?? ''}
+                          onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -312,7 +337,7 @@ export default function TestosteroneToCortisolRatioCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate ratio
+                View pattern insight
               </Button>
             </form>
           </Form>
@@ -324,21 +349,21 @@ export default function TestosteroneToCortisolRatioCalculator() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-primary" />
-              Interactive results
+            Pattern insight
             </CardTitle>
-            <CardDescription>See testosterone-to-cortisol ratio and balance status.</CardDescription>
+          <CardDescription>See a simple snapshot of how your current training, stress, and recovery mix might feel overall.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Ratio</p>
-                <p className="text-2xl font-semibold text-primary">{result.ratio.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">Testosterone:Cortisol</p>
+                <p className="text-sm text-muted-foreground">Pattern index</p>
+                <p className="text-2xl font-semibold text-primary">{result.ratioScore.toFixed(0)}</p>
+                <p className="text-xs text-muted-foreground">0–100 snapshot from this simple model.</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Ratio status</p>
-                <p className="text-2xl font-semibold text-primary">{result.ratioStatus.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">% of ideal (100% = optimal)</p>
+                <p className="text-sm text-muted-foreground">Balance feel</p>
+                <p className="text-2xl font-semibold text-primary">{result.balanceIndex.toFixed(0)}</p>
+                <p className="text-xs text-muted-foreground">Higher values lean toward a “fuller” push side.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -388,14 +413,24 @@ export default function TestosteroneToCortisolRatioCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5" />
-            Formula
+            How this index is put together
           </CardTitle>
         </CardHeader>
-        <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Ratio</strong> = testosterone (ng/dL) / (cortisol (μg/dL) × 10).</p>
-          <p><strong>Ideal ratios</strong>: Men (morning) ≈ 20-30:1, Women (morning) ≈ 5-15:1. Afternoon/evening ratios adjust for lower cortisol.</p>
-          <p><strong>Ratio status</strong> = (actual ratio / ideal ratio) × 100, clamped to 0-200%.</p>
-          <p>Higher ratios indicate better anabolic-catabolic balance, supporting recovery and muscle building capacity.</p>
+          <CardContent className="text-sm text-muted-foreground space-y-2">
+            <p>
+              <strong>Load side</strong> mixes your training/activity load, how stressed you feel, and how tired your muscles feel into a simple “push”
+              number.
+            </p>
+            <p>
+              <strong>Recovery side</strong> blends your average sleep hours and daily wind-down or recovery time into a basic “rest and reset” number.
+            </p>
+            <p>
+              <strong>Pattern index</strong> then gently compares these two sides and scales the result on a 0–100 line, where higher values lean more
+              strain-leaning and lower values lean more ease-leaning.
+            </p>
+            <p>
+              This is a rough wellness-style framework only—it is not measuring hormones, injury risk, or any medical condition.
+            </p>
         </CardContent>
       </Card>
 
@@ -414,29 +449,33 @@ export default function TestosteroneToCortisolRatioCalculator() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Additional calculations</CardTitle>
+          <CardTitle>Additional pattern details</CardTitle>
         </CardHeader>
         <CardContent>
           {result ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Testosterone level</p>
+                <p className="text-sm text-muted-foreground">Training or activity load</p>
                 <p className="text-xl font-semibold text-primary">
-                  {(form.getValues().testosteroneLevel ?? 0).toFixed(0)} ng/dL
+                  {(form.getValues().trainingLoad ?? 0).toFixed(0)} / 20
                 </p>
-                <p className="text-xs text-muted-foreground">From blood test</p>
+                <p className="text-xs text-muted-foreground">Self-rated for this recent period</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Cortisol level</p>
+                <p className="text-sm text-muted-foreground">Average sleep</p>
                 <p className="text-xl font-semibold text-primary">
-                  {(form.getValues().cortisolLevel ?? 0).toFixed(1)} μg/dL
+                  {(form.getValues().sleepHours ?? 0).toFixed(1)} hours
                 </p>
-                <p className="text-xs text-muted-foreground">From blood test</p>
+                <p className="text-xs text-muted-foreground">Rough nightly average</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Balance assessment</p>
+                <p className="text-sm text-muted-foreground">Overall feel</p>
                 <p className="text-xl font-semibold text-primary">
-                  {result.ratioStatus >= 80 ? 'Good' : result.ratioStatus >= 50 ? 'Moderate' : 'Needs improvement'}
+                  {result.status === 'strain-leaning'
+                    ? 'More strain-leaning'
+                    : result.status === 'ease-leaning'
+                    ? 'More ease-leaning'
+                    : 'Somewhere in the middle'}
                 </p>
                 <p className="text-xs text-muted-foreground">Based on ratio status</p>
               </div>
@@ -470,8 +509,18 @@ export default function TestosteroneToCortisolRatioCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>The testosterone-to-cortisol ratio measures anabolic-catabolic balance. Higher ratios support recovery, muscle building, and lower stress impact.</p>
-          <p>Use this calculator to assess your ratio from blood test results and plan lifestyle or medical interventions to optimize balance.</p>
+          <p>
+            This tool offers a gentle snapshot of how your current mix of training, life load, stress, sleep, and recovery time might feel overall, using only
+            your own simple self-ratings.
+          </p>
+          <p>
+            The index is not a hormone measure or performance test; it is simply a way to notice patterns over time and spark small, sustainable adjustments to
+            your habits if you choose.
+          </p>
+          <p>
+            If you are ever concerned about fatigue, pain, mood, or possible hormonal issues, it is important to talk with a qualified healthcare professional
+            rather than relying on any online tool.
+          </p>
         </CardContent>
       </Card>
 
@@ -497,11 +546,21 @@ export default function TestosteroneToCortisolRatioCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates testosterone-to-cortisol ratio from hormone levels (ng/dL and μg/dL) and assesses balance status based on gender, age, and time of day.</p>
-          <p>Outputs include ratio, ratio status, balance status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>
+            This tool combines self-rated training load, stress, sleep, recovery time, and muscle tiredness into a simple pattern index of how “full” your
+            current season feels.
+          </p>
+          <p>
+            The numbers and labels are meant to support reflection and gentle habit experiments, not to diagnose any condition or judge how you are doing.
+          </p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It does not measure hormones, diagnose any
+        condition, or replace personalized training or medical advice. For concerns about your health, hormones, or training load, please consult a qualified
+        professional.
+      </p>
     </div>
   );
 }

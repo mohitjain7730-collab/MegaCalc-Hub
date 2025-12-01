@@ -120,12 +120,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Muscle Recovery Time by Age Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Muscle Recovery Time Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Muscle Recovery Time by Age Calculator',
+      name: 'Muscle Recovery Time Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Estimate muscle recovery time based on age, training intensity, muscle group size, experience, sleep, and nutrition.',
@@ -175,14 +175,14 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const ageFactor = ((values.age - 25) / 100) * 100; // Percentage increase from baseline
 
   let status: ResultPayload['status'] = 'normal-recovery';
-  let interpretation = 'Your estimated recovery time is within normal range. Plan training accordingly.';
+  let interpretation = 'Your estimated recovery time suggests a general tendency within typical ranges. This is a personal insight, not a medical evaluation. Plan training accordingly.';
 
   if (recoveryHours <= 36) {
     status = 'fast-recovery';
-    interpretation = 'Your estimated recovery time is relatively fast. You may be able to train more frequently.';
+    interpretation = 'Your estimated recovery time suggests a relatively fast recovery tendency. This is a general wellness insight, not a medical evaluation.';
   } else if (recoveryHours >= 72) {
     status = 'slow-recovery';
-    interpretation = 'Your estimated recovery time is longer. Prioritize rest, sleep, and nutrition to support recovery.';
+    interpretation = 'Your estimated recovery time suggests a longer recovery tendency. You may consider prioritizing rest, sleep, and nutrition for general wellness support. This is a lifestyle insight, not a medical diagnosis.';
   }
 
   const recommendations = [
@@ -229,9 +229,9 @@ export default function MuscleRecoveryTimeByAgeCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Clock className="h-5 w-5" />
-            Muscle Recovery Time by Age Calculator
+            Muscle Recovery Time Estimator
           </CardTitle>
-          <CardDescription>Estimate muscle recovery time based on age, training intensity, muscle group size, experience, sleep, and nutrition.</CardDescription>
+          <CardDescription>Estimate muscle recovery time based on age, training intensity, muscle group size, experience, sleep, and nutrition. This is a general wellness insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -532,6 +532,18 @@ export default function MuscleRecoveryTimeByAgeCalculator() {
           <p>This tool estimates muscle recovery time from age, training intensity, muscle group size, training experience, sleep hours, and nutrition quality.</p>
           <p>Outputs include recovery hours, recovery days, age factor, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

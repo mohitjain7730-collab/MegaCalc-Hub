@@ -101,7 +101,7 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'BMR Adjustment for Age & Muscle Loss Calculator',
+    name: 'Metabolic Wellness Estimator',
     slug: 'bmr-adjustment-for-age-muscle-loss-calculator',
     description: 'Calculate adjusted BMR to support recomposition.',
   },
@@ -111,7 +111,7 @@ const relatedCalculators = [
     description: 'Plan recovery to optimize muscle gain during recomposition.',
   },
   {
-    name: 'Daily Testosterone-Boosting Habits Score Calculator',
+    name: 'Hormone Support Lifestyle Score Calculator',
     slug: 'daily-testosterone-boosting-habits-score-calculator',
     description: 'Support hormones that affect muscle gain and fat loss.',
   },
@@ -132,12 +132,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Fat-to-Muscle Recomposition Tracker', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Body Composition Lifestyle Progress Tracker', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Fat-to-Muscle Recomposition Tracker',
+      name: 'Body Composition Lifestyle Progress Tracker',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Track fat-to-muscle recomposition goals: calculate fat to lose, muscle to gain, and recomposition score.',
@@ -197,29 +197,29 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   let status: ResultPayload['status'] = 'excellent';
-  let interpretation = 'Your recomposition goal is realistic and achievable. Follow the recommendations to optimize progress.';
+  let interpretation = 'Your estimated body composition lifestyle score suggests a general tendency toward realistic goals. This is a personal insight, not a medical evaluation.';
 
   if (recompositionScore < 60) {
     status = 'challenging';
-    interpretation = 'Your recomposition goal is challenging. Consider extending the timeframe or adjusting targets. Focus on consistency and patience.';
+    interpretation = 'Your estimated body composition lifestyle score suggests this goal may be more challenging. You may consider extending the timeframe or adjusting targets. This is a general wellness insight, not a medical diagnosis.';
   } else if (recompositionScore < 75) {
     status = 'moderate';
-    interpretation = 'Your recomposition goal is moderately challenging. With proper training and nutrition, it is achievable. Stay consistent.';
+    interpretation = 'Your estimated body composition lifestyle score suggests a moderate tendency. This is a personal insight, not a medical evaluation.';
   } else if (recompositionScore < 85) {
     status = 'good';
-    interpretation = 'Your recomposition goal is good and achievable. Follow the recommendations for optimal progress.';
+    interpretation = 'Your estimated body composition lifestyle score suggests good goal feasibility. This is a lifestyle assessment, not a medical evaluation.';
   }
 
   const recommendations = [
-    'Maintain a slight calorie deficit (200-500 kcal/day) or eat at maintenance. Too large a deficit prevents muscle gain.',
-    'Prioritize protein intake (1.6-2.2 g/kg body weight daily) to support muscle building while losing fat.',
-    'Engage in resistance training 3-5 days/week with progressive overload. This is essential for muscle gain during recomposition.',
+    'You may consider maintaining a slight calorie deficit (200-500 kcal/day) or eating at maintenance for general wellness support.',
+    'You may consider prioritizing protein intake (1.6-2.2 g/kg body weight daily) for overall wellness.',
+    'You may consider engaging in resistance training 3-5 days/week for general wellness support.',
   ];
   if (status === 'challenging') {
-    recommendations.push('Consider extending your timeframe or breaking the goal into smaller milestones. Recomposition takes time and patience.');
+    recommendations.push('You may consider extending your timeframe or breaking the goal into smaller milestones. This is a lifestyle insight, not medical advice.');
   }
   if (fatToLose > 10) {
-    recommendations.push('Large fat loss goals may require a phased approach. Focus on fat loss first, then muscle gain, or vice versa.');
+    recommendations.push('You may consider a phased approach for larger goals. This is a general wellness suggestion, not a medical evaluation.');
   }
 
   const plan = [
@@ -253,9 +253,9 @@ export default function FatToMuscleRecompositionTracker() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TrendingDown className="h-5 w-5" />
-            Fat-to-Muscle Recomposition Tracker
+            Body Composition Lifestyle Progress Tracker
           </CardTitle>
-          <CardDescription>Track fat-to-muscle recomposition goals: calculate fat to lose, muscle to gain, and recomposition score.</CardDescription>
+          <CardDescription>Estimate your body composition lifestyle score based on current and target body composition goals. This is a general wellness insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -539,9 +539,21 @@ export default function FatToMuscleRecompositionTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool tracks fat-to-muscle recomposition goals from current weight, body fat percentage, target body fat percentage, muscle mass percentage (optional), and timeframe.</p>
+          <p>This tool estimates body composition lifestyle score from current weight, body fat percentage, target body fat percentage, muscle mass percentage (optional), and timeframe.</p>
           <p>Outputs include fat to lose, muscle to gain, recomposition score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

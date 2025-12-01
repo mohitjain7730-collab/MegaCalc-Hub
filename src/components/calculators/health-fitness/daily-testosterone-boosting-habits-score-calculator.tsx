@@ -86,19 +86,19 @@ const faqs = [
       'Zinc and vitamin D are important micronutrients for testosterone production. Many people are deficient. Consider supplements if dietary intake is insufficient.',
   },
   {
-    question: 'Can I boost testosterone naturally?',
+    question: 'Can lifestyle changes support wellness?',
     answer:
-      'Yes. Lifestyle changes (sleep, exercise, stress management, nutrition) can support testosterone production. However, significant increases may require medical intervention if levels are clinically low.',
+      'Yes. Lifestyle changes (sleep, exercise, stress management, nutrition) may support general wellness. This is a general wellness insight, not a medical evaluation.',
   },
   {
-    question: 'How long does it take to see improvements?',
+    question: 'How long does it take to see lifestyle improvements?',
     answer:
-      'Lifestyle changes can show effects in 2-3 months. Consistency is key. Testosterone production responds to sustained healthy habits.',
+      'Lifestyle changes may show general wellness benefits in 2-3 months. Consistency is key. This is a personal insight, not a medical evaluation.',
   },
   {
-    question: 'When should I see a doctor?',
+    question: 'When should I see a healthcare provider?',
     answer:
-      'See a healthcare provider if you have symptoms of low testosterone (low energy, reduced libido, mood changes) or if lifestyle changes don\'t help after 3-6 months.',
+      'For any health concerns, please consult a qualified professional. This calculator provides general wellness insights only, not medical diagnosis.',
   },
 ];
 
@@ -130,12 +130,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Daily Testosterone-Boosting Habits Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Hormone Support Lifestyle Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Daily Testosterone-Boosting Habits Score Calculator',
+      name: 'Hormone Support Lifestyle Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate testosterone-boosting habits score from sleep, exercise, stress, alcohol, sunlight, protein, and supplements.',
@@ -244,35 +244,35 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const testosteroneBoost = clamp((habitsScore / 100) * 30, 0, 30); // Estimate 0-30% boost potential
 
   let status: ResultPayload['status'] = 'excellent';
-  let interpretation = 'Your habits are excellent for supporting testosterone production. Maintain these practices.';
+  let interpretation = 'Your estimated lifestyle score suggests habits that may support general wellness. This is a personal insight, not a medical evaluation.';
 
   if (habitsScore < 50) {
     status = 'needs-improvement';
-    interpretation = 'Several habits need improvement to support testosterone production. Focus on sleep, exercise, and stress management first.';
+    interpretation = 'Your estimated lifestyle score suggests areas where improvements may support general wellness. This is a general wellness insight, not a medical diagnosis.';
   } else if (habitsScore < 70) {
     status = 'moderate';
-    interpretation = 'Your habits are moderate. Improving sleep, exercise, or stress management could boost testosterone support.';
+    interpretation = 'Your estimated lifestyle score suggests a moderate tendency. This is a personal insight, not a medical evaluation.';
   } else if (habitsScore < 85) {
     status = 'good';
-    interpretation = 'Your habits are good for testosterone support. Minor improvements could further optimize hormone production.';
+    interpretation = 'Your estimated lifestyle score suggests good habits for general wellness support. This is a lifestyle assessment, not a medical evaluation.';
   }
 
   const recommendations = [
-    'Prioritize 7-9 hours of quality sleep nightly. Most testosterone is released during deep sleep.',
-    'Engage in resistance training 3-5 days per week. This is the most effective exercise for boosting testosterone.',
-    'Manage stress through meditation, relaxation, or stress-reduction techniques. Chronic stress suppresses testosterone.',
+    'You may consider prioritizing 7-9 hours of quality sleep nightly for general wellness support.',
+    'You may consider engaging in resistance training 3-5 days per week for overall wellness.',
+    'You may consider managing stress through meditation, relaxation, or stress-reduction techniques for general wellness.',
   ];
   if (values.alcoholUnits > 5) {
-    recommendations.push('Reduce alcohol consumption. Excessive alcohol can significantly lower testosterone production.');
+    recommendations.push('You may consider reducing alcohol consumption for general wellness support.');
   }
   if (values.sunlightExposure < 15 || !values.vitaminDSupplement) {
-    recommendations.push('Get 15-30 minutes of daily sunlight or take a vitamin D supplement to support testosterone production.');
+    recommendations.push('You may consider getting 15-30 minutes of daily sunlight or consulting a professional about vitamin D for general wellness.');
   }
   if (values.proteinIntake < 100) {
-    recommendations.push('Ensure adequate protein intake (1.6-2.2 g/kg body weight) to support muscle building and hormone production.');
+    recommendations.push('You may consider ensuring adequate protein intake (1.6-2.2 g/kg body weight) for general wellness support.');
   }
   if (!values.zincIntake) {
-    recommendations.push('Consider zinc supplementation if dietary intake is insufficient. Zinc is important for testosterone production.');
+    recommendations.push('You may consider consulting a professional about zinc supplementation if dietary intake may be insufficient. This is not medical advice.');
   }
 
   const plan = [
@@ -310,9 +310,9 @@ export default function DailyTestosteroneBoostingHabitsScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5" />
-            Daily Testosterone-Boosting Habits Score Calculator
+            Hormone Support Lifestyle Score Calculator
           </CardTitle>
-          <CardDescription>Calculate testosterone-boosting habits score from sleep, exercise, stress, alcohol, sunlight, protein, and supplements.</CardDescription>
+          <CardDescription>Estimate your lifestyle score based on sleep, exercise, stress, alcohol, sunlight, protein, and supplements. This is a general wellness insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -473,7 +473,7 @@ export default function DailyTestosteroneBoostingHabitsScoreCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See habits score, testosterone boost estimate, and recommendations.</CardDescription>
+            <CardDescription>See habits score, wellness boost estimate, and general wellness insights.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -483,9 +483,9 @@ export default function DailyTestosteroneBoostingHabitsScoreCalculator() {
                 <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Testosterone boost</p>
+                <p className="text-sm text-muted-foreground">Wellness boost estimate</p>
                 <p className="text-2xl font-semibold text-primary">+{result.testosteroneBoost.toFixed(0)}%</p>
-                <p className="text-xs text-muted-foreground">Potential increase</p>
+                <p className="text-xs text-muted-foreground">General estimate</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -540,7 +540,7 @@ export default function DailyTestosteroneBoostingHabitsScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Habits score</strong> = sleep (0-20) + resistance training (0-20) + cardio (0-10) + stress (0-15) + alcohol (0-10) + sunlight (0-10) + protein (0-10) + zinc (0-5) + vitamin D (0-5), max 100.</p>
-          <p><strong>Testosterone boost</strong> = (habits score / 100) × 30% (estimated potential increase from optimal habits).</p>
+          <p><strong>Wellness boost estimate</strong> = (habits score / 100) × 30% (general estimate from lifestyle factors).</p>
           <p><strong>Optimal ranges</strong>: Sleep 7-9h, Resistance training 3-5 days/week, Cardio 60-150 min/week, Stress ≤3, Alcohol 0-2 units/week, Sunlight 15-30 min/day, Protein 1.6-2.2 g/kg.</p>
           <p>Higher scores indicate better habits for testosterone support. Consistency is key for long-term benefits.</p>
         </CardContent>
@@ -623,8 +623,8 @@ export default function DailyTestosteroneBoostingHabitsScoreCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Testosterone production is influenced by lifestyle habits: sleep, exercise, stress, alcohol, nutrition, and supplements. Optimal habits can support natural testosterone production.</p>
-          <p>Use this calculator to assess your testosterone-boosting habits score and get recommendations for improving hormone support through lifestyle changes.</p>
+          <p>General wellness is influenced by lifestyle habits: sleep, exercise, stress, alcohol, nutrition, and supplements. Healthy habits may support overall wellness.</p>
+          <p>Use this calculator to assess your lifestyle score and get general wellness insights. This is not a medical evaluation.</p>
         </CardContent>
       </Card>
 
@@ -650,9 +650,21 @@ export default function DailyTestosteroneBoostingHabitsScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates testosterone-boosting habits score from sleep hours, resistance training, cardio, stress level, alcohol, sunlight exposure, protein intake, and supplements (zinc, vitamin D).</p>
-          <p>Outputs include habits score, testosterone boost estimate, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool estimates lifestyle score from sleep hours, resistance training, cardio, stress level, alcohol, sunlight exposure, protein intake, and supplements (zinc, vitamin D).</p>
+          <p>Outputs include habits score, wellness boost estimate, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

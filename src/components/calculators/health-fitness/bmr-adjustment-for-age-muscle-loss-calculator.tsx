@@ -40,7 +40,7 @@ const steps = [
   'Enter weight in kilograms (or convert from pounds: lbs ÷ 2.2).',
   'Enter height in centimeters (or convert from inches: inches × 2.54).',
   'Select gender (metabolic rates differ by gender).',
-  'Optionally enter muscle mass percentage if known (muscle loss reduces BMR).',
+  'Optionally enter muscle mass percentage if known (for general wellness estimation only).',
   'Select activity level to estimate total daily energy expenditure (TDEE).',
   'Review base BMR, age-adjusted BMR, muscle loss adjustment, and recommendations.',
 ];
@@ -110,12 +110,12 @@ const relatedCalculators = [
     description: 'Plan recovery to maintain muscle mass and BMR.',
   },
   {
-    name: 'Fat-to-Muscle Recomposition Tracker',
+    name: 'Body Composition Lifestyle Progress Tracker',
     slug: 'fat-to-muscle-recomposition-tracker',
     description: 'Track body recomposition to maintain or increase BMR.',
   },
   {
-    name: 'Daily Testosterone-Boosting Habits Score Calculator',
+    name: 'Hormone Support Lifestyle Score Calculator',
     slug: 'daily-testosterone-boosting-habits-score-calculator',
     description: 'Support hormones that affect muscle mass and BMR.',
   },
@@ -131,12 +131,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'BMR Adjustment for Age & Muscle Loss Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Metabolic Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'BMR Adjustment for Age & Muscle Loss Calculator',
+      name: 'Metabolic Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate BMR adjusted for age and muscle loss to account for metabolic decline over time.',
@@ -189,27 +189,27 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const tdee = adjustedBMR * (activityMultipliers[values.activityLevel] || 1.2);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your BMR adjustment is within normal range for your age. Continue maintaining muscle mass through resistance training.';
+  let interpretation = 'Your estimated BMR adjustment suggests a general tendency within typical ranges for your age. This is a personal insight, not a medical evaluation.';
 
   const totalReduction = ((baseBMR - adjustedBMR) / baseBMR) * 100;
   if (totalReduction >= 15) {
     status = 'significant-decline';
-    interpretation = 'Significant BMR decline detected. Prioritize resistance training and adequate protein to maintain muscle mass and slow further decline.';
+    interpretation = 'Your estimated BMR adjustment suggests a larger change. You may consider resistance training and adequate protein for general wellness support. This is a lifestyle insight, not a medical diagnosis.';
   } else if (totalReduction >= 8) {
     status = 'moderate-decline';
-    interpretation = 'Moderate BMR decline detected. Focus on maintaining muscle mass through resistance training and proper nutrition.';
+    interpretation = 'Your estimated BMR adjustment suggests a moderate change. You may consider maintaining muscle mass through resistance training and proper nutrition. This is a general wellness insight.';
   }
 
   const recommendations = [
-    'Engage in resistance training 2-3 times per week to maintain or build muscle mass, which supports BMR.',
-    'Ensure adequate protein intake (1.6-2.2 g/kg body weight) to support muscle maintenance and prevent muscle loss.',
-    'Stay active throughout the day. Even light activity helps maintain metabolism and prevents further decline.',
+    'You may consider engaging in resistance training 2-3 times per week for general wellness support.',
+    'You may consider ensuring adequate protein intake (1.6-2.2 g/kg body weight) for overall wellness.',
+    'You may consider staying active throughout the day. Even light activity may support general wellness.',
   ];
   if (status === 'significant-decline') {
-    recommendations.push('Consider consulting a healthcare provider or nutritionist to develop a comprehensive plan to maintain muscle mass and metabolic health.');
+    recommendations.push('For any health concerns, please consult a qualified professional. This is a general wellness insight, not medical advice.');
   }
   if (values.muscleMassPercentage && values.muscleMassPercentage < (values.gender === 'male' ? 35 : 25)) {
-    recommendations.push('Your muscle mass percentage is below optimal. Prioritize resistance training and protein intake to rebuild muscle.');
+    recommendations.push('You may consider prioritizing resistance training and protein intake for general wellness support. This is not medical advice.');
   }
 
   const plan = [
@@ -244,9 +244,9 @@ export default function BMRAdjustmentForAgeMuscleLossCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Calculator className="h-5 w-5" />
-            BMR Adjustment for Age & Muscle Loss Calculator
+            Metabolic Wellness Estimator
           </CardTitle>
-          <CardDescription>Calculate BMR adjusted for age and muscle loss to account for metabolic decline over time.</CardDescription>
+          <CardDescription>Estimate BMR adjusted for age and lifestyle factors. This is a general wellness insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -524,8 +524,8 @@ export default function BMRAdjustmentForAgeMuscleLossCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>BMR (Basal Metabolic Rate) decreases with age due to muscle loss, hormonal changes, and reduced organ function. After age 30, BMR decreases approximately 2-3% per decade.</p>
-          <p>Use this calculator to adjust BMR for age and muscle loss to get a more accurate estimate of your metabolic rate and calorie needs.</p>
+          <p>BMR (Basal Metabolic Rate) may change with age due to various lifestyle factors. This is a general wellness estimation, not a medical evaluation.</p>
+          <p>Use this calculator to estimate BMR adjusted for age and lifestyle factors. This provides general wellness insights only.</p>
         </CardContent>
       </Card>
 
@@ -551,9 +551,21 @@ export default function BMRAdjustmentForAgeMuscleLossCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates BMR adjusted for age and muscle loss from age, weight, height, gender, muscle mass percentage (optional), and activity level.</p>
+          <p>This tool estimates BMR adjusted for age and lifestyle factors from age, weight, height, gender, muscle mass percentage (optional), and activity level.</p>
           <p>Outputs include base BMR, adjusted BMR, age adjustment, muscle loss adjustment, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

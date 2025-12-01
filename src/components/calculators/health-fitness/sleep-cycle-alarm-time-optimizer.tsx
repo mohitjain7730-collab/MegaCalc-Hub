@@ -96,12 +96,12 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'REM Sleep Percentage Calculator',
+    name: 'REM Sleep Balance Wellness Estimator',
     slug: 'rem-sleep-percentage-calculator',
-    description: 'Calculate REM sleep needs alongside sleep cycle optimization.',
+    description: 'Estimate REM sleep balance alongside sleep cycle optimization.',
   },
   {
-    name: 'Deep Sleep Requirement Estimator',
+    name: 'Deep Sleep Comfort Range Estimator',
     slug: 'deep-sleep-requirement-estimator',
     description: 'Track deep sleep requirements for better sleep cycles.',
   },
@@ -127,12 +127,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Sleep Cycle Alarm Time Optimizer', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Sleep Cycle Wake-Up Comfort Planner', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Sleep Cycle Alarm Time Optimizer',
+      name: 'Sleep Cycle Wake-Up Comfort Planner',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate optimal alarm time based on sleep cycles, bedtime, and desired wake time to wake up feeling refreshed.',
@@ -210,40 +210,40 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const totalSleepHours = totalSleepMinutes / 60;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your alarm time is optimally set at the end of a complete sleep cycle. You should wake up feeling refreshed.';
+  let interpretation = 'Your estimated sleep cycle comfort score suggests a general lifestyle tendency toward smoother wake-ups when you aim for these times. This is a personal insight, not a medical evaluation.';
   
   if (numberOfCycles < 4) {
     status = 'low';
-    interpretation = 'You\'re getting fewer than 4 complete cycles. Consider going to bed earlier or allowing more sleep time to avoid sleep deprivation.';
+    interpretation = 'Your estimated sleep cycle comfort score suggests you may feel better with more cycles. This is a general wellness insight, not a medical diagnosis.';
   } else if (numberOfCycles < 5) {
     status = 'moderate';
-    interpretation = 'You\'re getting 4 complete cycles, which may be adequate for some. Consider allowing 5-6 cycles for optimal rest and recovery.';
+    interpretation = 'Your estimated sleep cycle comfort score suggests a moderate tendency. This is a personal insight, not a medical evaluation.';
   } else if (numberOfCycles === 5) {
     status = 'good';
-    interpretation = 'You\'re getting 5 complete cycles (about 7.5 hours), which is optimal for most adults.';
+    interpretation = 'Your estimated sleep cycle comfort score suggests a good lifestyle tendency. This is a lifestyle assessment, not a medical evaluation.';
   } else if (numberOfCycles === 6) {
     status = 'optimal';
-    interpretation = 'You\'re getting 6 complete cycles (about 9 hours), which is excellent for optimal recovery and alertness.';
+    interpretation = 'Your estimated sleep cycle comfort score suggests a general lifestyle tendency that may support comfortable wake-ups. This is a personal insight, not a medical evaluation.';
   } else {
     status = 'moderate';
-    interpretation = 'You\'re getting more than 6 cycles. While adequate, be aware that excessive sleep may not always improve wakefulness.';
+    interpretation = 'Your estimated sleep cycle comfort score suggests a moderate tendency. This is a general wellness insight, not a medical evaluation.';
   }
   
   const recommendations = [
-    'Set your alarm for the calculated optimal wake time to wake at the end of a complete sleep cycle.',
-    'Allow yourself 15 minutes to fall asleep after getting into bed when calculating sleep times.',
-    'Maintain a consistent sleep schedule (same bedtime and wake time) to align your body\'s natural sleep cycles.',
+    'You may consider setting your alarm for the calculated suggested wake time for general wellness support.',
+    'You may consider allowing yourself 15 minutes to fall asleep after getting into bed when planning sleep times.',
+    'You may consider maintaining a consistent sleep schedule (same bedtime and wake time) for overall wellness.',
   ];
   
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Consider going to bed earlier to allow for more complete sleep cycles and better recovery.');
+    recommendations.push('You may consider going to bed earlier to allow for more complete sleep cycles. This is a general wellness suggestion, not medical advice.');
   }
   
   if (values.desiredWakeTime) {
     const desiredWakeMinutes = parseTime(values.desiredWakeTime);
     const diff = Math.abs((optimalWakeMinutes - desiredWakeMinutes + 24 * 60) % (24 * 60));
     if (diff > 30) {
-      recommendations.push('Your desired wake time doesn\'t align well with sleep cycles. Adjusting by even 15-30 minutes can significantly improve wakefulness.');
+      recommendations.push('You may consider adjusting your wake time by 15-30 minutes to align better with sleep cycles. This is a lifestyle suggestion, not a medical evaluation.');
     }
   }
   
@@ -277,9 +277,9 @@ export default function SleepCycleAlarmTimeOptimizer() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Sleep Cycle Alarm Time Optimizer
+            Sleep Cycle Wake-Up Comfort Planner
           </CardTitle>
-          <CardDescription>Calculate optimal alarm time based on sleep cycles, bedtime, and desired wake time to wake up feeling refreshed.</CardDescription>
+          <CardDescription>Estimate suggested wake-up windows for more comfortable sleep cycles based on your bedtime and preferences. This is a general wellness planning tool, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -537,9 +537,21 @@ export default function SleepCycleAlarmTimeOptimizer() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates optimal alarm time based on sleep cycles, bedtime, desired wake time (optional), sleep cycle length (optional), and number of cycles (optional).</p>
+          <p>This tool estimates suggested wake-up windows for more comfortable sleep cycles based on bedtime, desired wake time (optional), sleep cycle length (optional), and number of cycles (optional).</p>
           <p>Outputs include optimal wake time, total sleep duration, number of cycles, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

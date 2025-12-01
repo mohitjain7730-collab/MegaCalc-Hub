@@ -95,7 +95,7 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Deep Sleep Requirement Estimator',
+    name: 'Deep Sleep Comfort Range Estimator',
     slug: 'deep-sleep-requirement-estimator',
     description: 'Calculate deep sleep needs alongside REM sleep.',
   },
@@ -110,7 +110,7 @@ const relatedCalculators = [
     description: 'Monitor recovery including sleep stages.',
   },
   {
-    name: 'Daily Testosterone-Boosting Habits Score Calculator',
+    name: 'Hormone Support Lifestyle Score Calculator',
     slug: 'daily-testosterone-boosting-habits-score-calculator',
     description: 'Improve sleep habits that affect REM sleep.',
   },
@@ -126,12 +126,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'REM Sleep Percentage Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'REM Sleep Balance Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'REM Sleep Percentage Calculator',
+      name: 'REM Sleep Balance Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality.',
@@ -172,7 +172,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const remHours = remMinutes / 60;
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your REM sleep appears optimal. Continue maintaining good sleep habits.';
+  let interpretation = 'Your estimated REM sleep balance wellness score suggests a general lifestyle tendency that may support balanced sleep cycles. This is a personal insight, not a medical evaluation.';
 
   // Age-appropriate targets
   let targetREM: number;
@@ -186,25 +186,25 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   if (remPercentage < targetREM - 5) {
     status = 'low';
-    interpretation = 'Your REM sleep appears low for your age. Focus on improving sleep quality, reducing stress, and ensuring adequate total sleep time.';
+    interpretation = 'Your estimated REM sleep balance wellness score suggests a mixed pattern of habits. You may consider lifestyle improvements such as regular bedtimes, reduced screen time, or stress management. This is a general wellness insight, not a medical diagnosis.';
   } else if (remPercentage < targetREM - 2) {
     status = 'moderate';
-    interpretation = 'Your REM sleep is moderate. Minor improvements in sleep hygiene could optimize REM sleep duration.';
+    interpretation = 'Your estimated REM sleep balance wellness score suggests a moderate lifestyle tendency. This is a personal insight, not a medical evaluation.';
   } else if (remPercentage < targetREM + 3) {
     status = 'good';
-    interpretation = 'Your REM sleep is good. Continue maintaining current sleep habits.';
+    interpretation = 'Your estimated REM sleep balance wellness score suggests a good lifestyle tendency. This is a lifestyle assessment, not a medical evaluation.';
   }
 
   const recommendations = [
-    'Maintain consistent sleep schedule (same bedtime and wake time) to support REM sleep cycles.',
-    'Avoid alcohol before bed, as it suppresses REM sleep, especially in the first half of the night.',
-    'Ensure adequate total sleep time (7-9 hours for adults). REM sleep increases in later sleep cycles.',
+    'You may consider maintaining a consistent sleep schedule (same bedtime and wake time) for general wellness support.',
+    'You may consider avoiding alcohol before bed for overall wellness.',
+    'You may consider ensuring adequate total sleep time (7-9 hours for adults) for general wellness.',
   ];
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Reduce stress and create a sleep-conducive environment (dark, cool, quiet) to improve REM sleep quality.');
+    recommendations.push('You may consider reducing stress and creating a sleep-conducive environment (dark, cool, quiet) for general wellness support.');
   }
   if (values.sleepQuality < 6) {
-    recommendations.push('Address sleep quality issues. Poor sleep quality can reduce REM sleep duration and quality.');
+    recommendations.push('You may consider addressing sleep quality through lifestyle changes. This is a general wellness suggestion, not medical advice.');
   }
 
   const plan = [
@@ -237,9 +237,9 @@ export default function REMSleepPercentageCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            REM Sleep Percentage Calculator
+            REM Sleep Balance Wellness Estimator
           </CardTitle>
-          <CardDescription>Calculate REM sleep percentage and duration from total sleep hours, REM minutes, age, and sleep quality.</CardDescription>
+          <CardDescription>Estimate your REM sleep balance wellness score based on sleep patterns, age, and sleep quality. This is a general wellness insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -511,9 +511,21 @@ export default function REMSleepPercentageCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates REM sleep percentage and duration from total sleep hours, REM sleep minutes (optional), age, and sleep quality.</p>
+          <p>This tool estimates REM sleep balance wellness score from total sleep hours, REM sleep minutes (optional), age, and sleep quality.</p>
           <p>Outputs include REM percentage, REM minutes, REM hours, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>
