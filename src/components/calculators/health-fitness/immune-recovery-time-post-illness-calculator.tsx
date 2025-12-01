@@ -159,33 +159,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   );
 
   let status: ResultPayload['status'] = 'recovering-well';
-  let interpretation = 'Your recovery factors look supportive. Continue prioritizing rest, nutrition, and sleep.';
+  let interpretation =
+    'In this simple check-in, your current rest, food, and stress patterns look fairly supportive of your recovery so far.';
 
   if (immuneStrength < 60 || recoveryDays > 10) {
     status = 'needs-support';
-    interpretation = 'Focus on improving sleep, nutrition, and stress management to support faster recovery.';
+    interpretation =
+      'This snapshot suggests your body might appreciate some extra care—like a bit more sleep, easier days, or simple, nourishing meals.';
   }
   if (immuneStrength < 40 || recoveryDays > 20) {
     status = 'seek-guidance';
-    interpretation = 'Consider consulting a healthcare provider for personalized recovery support and monitoring.';
+    interpretation =
+      'These numbers hint that your recovery may be feeling slower or heavier right now. It could be a good moment to check in with a healthcare professional you trust.';
   }
 
   const recommendations = [
-    'Prioritize 7–9 hours of quality sleep nightly to support immune function.',
-    'Eat whole foods rich in protein, vitamins, and minerals; stay well-hydrated.',
-    'Minimize stress through rest, light movement, meditation, or gentle activities.',
+    'When you can, give yourself permission for more and better-quality sleep, as it often supports how your body recovers.',
+    'Simple, easy-to-digest whole foods and regular fluids can feel kinder on your system than heavy or highly processed options.',
+    'Gentle activities—like light stretching, calm music, or a quiet walk if tolerated—can sometimes help with stress while you recover.',
   ];
   if (status === 'needs-support') {
-    recommendations.push('Consider adding immune-supportive foods (broth, ginger, citrus) and reducing processed foods.');
+    recommendations.push('You might add small things that feel soothing to you—such as broths, warm drinks, or a bit more colorful produce—while easing back on ultra‑processed foods if possible.');
   }
   if (status === 'seek-guidance') {
-    recommendations.push('Consult a healthcare provider if symptoms persist or worsen beyond expected timelines.');
+    recommendations.push('If your symptoms are lingering or worrying you, consider reaching out to a healthcare provider for specific advice for your situation.');
   }
 
   const plan = [
-    { label: 'Today', detail: 'Rest, hydrate, and eat nutrient-dense meals. Avoid intense activity.' },
-    { label: 'This Week', detail: 'Maintain sleep hygiene, light nutrition, and stress reduction practices.' },
-    { label: 'Ongoing', detail: 'Gradually resume normal activities as symptoms clear and energy returns.' },
+    { label: 'Today', detail: 'Prioritize rest, gentle hydration, and simple meals, and let yourself step back from intense activities where you can.' },
+    { label: 'This Week', detail: 'Keep an eye on your sleep, food, and stress, making small, compassionate adjustments instead of big changes.' },
+    { label: 'Ongoing', detail: 'As you start to feel better, you can slowly reintroduce usual activities at a pace that feels safe and sustainable.' },
   ];
 
   return { recoveryDays, immuneStrength, status, interpretation, recommendations, plan };
@@ -315,12 +318,12 @@ export default function ImmuneRecoveryTimePostIllnessCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Estimated recovery</p>
                 <p className="text-2xl font-semibold text-primary">{result.recoveryDays.toFixed(0)} days</p>
-                <p className="text-xs text-muted-foreground">Rough estimate only</p>
+                <p className="text-xs text-muted-foreground">A very rough time window from this model, not a medical prediction.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Immune strength</p>
                 <p className="text-2xl font-semibold text-primary">{result.immuneStrength.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 pattern score based on the inputs you shared.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -478,11 +481,15 @@ export default function ImmuneRecoveryTimePostIllnessCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates recovery timeline and immune strength from illness severity, time elapsed, sleep, nutrition, and stress factors.</p>
-          <p>Outputs include estimated recovery days, immune strength, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool combines illness severity, time since onset, sleep, nutrition, and stress into a single snapshot of how your recovery pattern looks in this model.</p>
+          <p>The estimates and suggestions are there to support gentle reflection and small lifestyle adjustments, alongside care from qualified professionals.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

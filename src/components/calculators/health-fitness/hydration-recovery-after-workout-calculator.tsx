@@ -152,33 +152,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recoveryTime = hydrationGap > 0 ? clamp(hydrationGap / 200, 0, 8) : 0; // hours to recover
 
   let status: ResultPayload['status'] = 'well-hydrated';
-  let interpretation = 'Your hydration looks adequate. Maintain this pattern for optimal recovery.';
+  let interpretation =
+    'From this snapshot, your before-and-after fluids look fairly aligned with what this simple model suggests for your session.';
 
   if (hydrationGap > 200) {
     status = 'needs-more';
-    interpretation = 'You need additional fluid to replace losses. Aim for 150% of fluid loss over the next few hours.';
+    interpretation =
+      'It looks like you may have a bit of a fluid gap after this workout. Gently topping up fluids over the next little while could feel supportive.';
   }
   if (hydrationGap > 500) {
     status = 'dehydrated';
-    interpretation = 'Significant fluid deficit detected. Prioritize rehydration with electrolytes over the next 2–4 hours.';
+    interpretation =
+      'This pattern suggests your body might be carrying a larger fluid gap after this session. It may help to prioritize rehydration, and to check in with how you feel overall.';
   }
 
   const recommendations = [
-    'Drink 150% of fluid loss over 2–4 hours post-workout to account for ongoing losses.',
-    'Include electrolytes (sodium 500–700 mg/L) for sessions over 60 minutes or in heat.',
-    'Monitor urine color: pale yellow indicates good hydration status.',
+    'You can use this estimate to gently guide how much you sip over the next few hours, adjusting for what feels comfortable to you.',
+    'For longer or hotter sessions, adding some electrolytes to fluids can help many people feel better supported.',
+    'Checking in on thirst and urine color (aiming for a light straw shade) can give you an everyday sense of your hydration pattern.',
   ];
   if (status === 'needs-more') {
-    recommendations.push('Sip fluids consistently rather than chugging large volumes at once.');
+    recommendations.push('If you have a gap to close, sipping fluids gradually instead of drinking a lot at once often feels easier on the body.');
   }
   if (status === 'dehydrated') {
-    recommendations.push('Consider oral rehydration solutions or sports drinks with balanced electrolytes.');
+    recommendations.push('When the gap is larger or you feel off, options like oral rehydration drinks or balanced sports drinks may be worth considering.');
   }
 
   const plan = [
-    { label: 'Immediate (0-30 min)', detail: 'Drink 200–400 ml of fluid with electrolytes if session was long or intense.' },
-    { label: 'Next 2-4 hours', detail: 'Replace remaining fluid loss gradually, aiming for 150% of total loss.' },
-    { label: 'Ongoing', detail: 'Monitor urine color and body weight to confirm full rehydration.' },
+    { label: 'Immediate (0–30 min)', detail: 'Have a modest drink of water or a simple electrolyte beverage after finishing, especially if the session felt demanding.' },
+    { label: 'Next 2–4 hours', detail: 'Keep sipping fluids at a relaxed pace, paying attention to how your body feels rather than chasing an exact number.' },
+    { label: 'Ongoing', detail: 'Use everyday cues like thirst and urine color to tune your usual hydration pattern around workouts.' },
   ];
 
   return { fluidLoss, hydrationGap, recoveryTime, status, interpretation, recommendations, plan };
@@ -308,17 +311,17 @@ export default function HydrationRecoveryAfterWorkoutCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fluid loss</p>
                 <p className="text-2xl font-semibold text-primary">{result.fluidLoss.toFixed(0)} ml</p>
-                <p className="text-xs text-muted-foreground">Estimated from sweat rate</p>
+                <p className="text-xs text-muted-foreground">A rough estimate based on your sweat rate and workout length.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Hydration gap</p>
                 <p className="text-2xl font-semibold text-primary">{result.hydrationGap.toFixed(0)} ml</p>
-                <p className="text-xs text-muted-foreground">Positive = needs more fluid</p>
+                <p className="text-xs text-muted-foreground">Positive values suggest extra fluid could be helpful; negative means you may have slightly overshot.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recovery time</p>
                 <p className="text-2xl font-semibold text-primary">{result.recoveryTime.toFixed(1)} hrs</p>
-                <p className="text-xs text-muted-foreground">Estimated to full rehydration</p>
+                <p className="text-xs text-muted-foreground">A very rough time window this model uses for rehydration.</p>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -472,11 +475,15 @@ export default function HydrationRecoveryAfterWorkoutCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates fluid loss, hydration gap, and recovery time from workout parameters, sweat rate, and hydration intake.</p>
-          <p>Outputs include fluid loss, hydration gap, recovery time, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool offers a simple snapshot of possible fluid loss, hydration gaps, and a rough recovery window based on your workout and entries.</p>
+          <p>You can use the numbers and suggestions as gentle guidance for adjusting how and when you drink around exercise, alongside your own cues and any professional advice.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

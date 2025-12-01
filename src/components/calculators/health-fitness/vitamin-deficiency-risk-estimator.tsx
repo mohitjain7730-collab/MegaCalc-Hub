@@ -158,33 +158,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const deficiencyRisk = clamp(100 - vitaminScore, 0, 100);
 
   let status: ResultPayload['status'] = 'low-risk';
-  let interpretation = 'Your nutrition patterns suggest low risk for common vitamin deficiencies. Maintain this approach.';
+  let interpretation =
+    'In this simple pattern lens, your current food, sun, and supplement habits look broadly supportive for common vitamins.';
 
   if (deficiencyRisk > 30) {
     status = 'moderate-risk';
-    interpretation = 'Some gaps detected. Consider increasing fruit/vegetable intake, whole grains, or targeted supplementation.';
+    interpretation =
+      'This snapshot suggests there may be some gentle room to increase variety or frequency of nutrient‑rich foods, or to explore supportive habits with a professional.';
   }
   if (deficiencyRisk > 50) {
     status = 'high-risk';
-    interpretation = 'Significant gaps identified. Prioritize dietary improvements and consider blood tests to confirm status.';
+    interpretation =
+      'Here, your entries point to a pattern that may be lighter on certain nutrient sources. It could be a good moment to focus on more nutrient‑dense foods and to consider talking with a clinician about testing if you have concerns.';
   }
 
   const recommendations = [
-    'Aim for 5–9 servings of fruits and vegetables daily for vitamins A, C, K, and folate.',
-    'Include whole grains (3–4 servings) for B vitamins and minerals.',
-    'Get 10–30 minutes of midday sun exposure 2–3 times per week for vitamin D (or supplement).',
+    'When possible, you can lean toward more fruits and vegetables you enjoy to support a wider mix of vitamins.',
+    'Including some whole‑grain choices and varied protein sources can gently boost many B vitamins and minerals.',
+    'If it fits your life and is safe for you, a bit of regular daylight on skin can complement food and/or supplements for vitamin D.',
   ];
   if (status === 'moderate-risk') {
-    recommendations.push('Consider a multivitamin or targeted supplements (B12 for vegans, D for limited sun).');
+    recommendations.push('You might explore, with a professional, whether a simple multivitamin or specific nutrients (like B12 for vegans or D with low sun) feel appropriate.');
   }
   if (status === 'high-risk') {
-    recommendations.push('Consult a healthcare provider for blood tests to identify specific deficiencies and personalized supplementation.');
+    recommendations.push('If you have symptoms or worries, consider asking a healthcare provider about testing and tailored nutrition or supplement options.');
   }
 
   const plan = [
-    { label: 'This Week', detail: 'Log all food intake and sun exposure to identify specific gaps.' },
-    { label: 'Next 2 Weeks', detail: 'Gradually increase fruit/vegetable servings and whole grain intake.' },
-    { label: 'Ongoing', detail: 'Consider blood tests if symptoms persist or risk factors are present.' },
+    { label: 'This Week', detail: 'Gently notice what you are already eating and how much daylight you tend to get, without judgment.' },
+    { label: 'Next 2 Weeks', detail: 'If it feels realistic, add small, enjoyable boosts—like an extra serving of produce or a slightly more varied protein or grain choice.' },
+    { label: 'Ongoing', detail: 'If certain concerns or symptoms stay on your mind, you can bring this snapshot to a clinician for a more specific conversation.' },
   ];
 
   return { deficiencyRisk, vitaminScore, status, interpretation, recommendations, plan };
@@ -328,12 +331,12 @@ export default function VitaminDeficiencyRiskEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Deficiency risk</p>
                 <p className="text-2xl font-semibold text-primary">{result.deficiencyRisk.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100 (lower is better)</p>
+                <p className="text-xs text-muted-foreground">A 0–100 pattern score in this model (lower means more nutrient‑dense entries).</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Vitamin score</p>
                 <p className="text-2xl font-semibold text-primary">{result.vitaminScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">Combined view of your food, sun, and supplement pattern in this simple framework.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -491,11 +494,15 @@ export default function VitaminDeficiencyRiskEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates vitamin deficiency risk and vitamin score from dietary patterns, sun exposure, and supplement use.</p>
-          <p>Outputs include deficiency risk, vitamin score, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool offers a simple snapshot of how your current eating pattern, sun exposure, and supplement use may relate to common vitamin needs.</p>
+          <p>You can use the scores and ideas as gentle prompts for exploring food and lifestyle shifts, alongside any advice from qualified professionals.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

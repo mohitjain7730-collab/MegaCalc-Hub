@@ -161,30 +161,30 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let band: ResultPayload['band'] = 'average';
   let interpretation =
-    'Your lifestyle profile looks broadly similar to population averages with room for further upside through small changes.';
+    'In this simple lifestyle lens, your current pattern looks broadly similar to a generic reference, with room for small experiments if you wish.';
 
   if (healthyLifeExpectancy < baselineLifeExpectancy - 3) {
     band = 'below-average';
     interpretation =
-      'The pattern suggests below-average healthy-life expectancy relative to this simple model. Incremental habit shifts could be impactful.';
+      'Within this rough model, your snapshot sits a bit below the generic reference. Gentle changes in movement, food, or smoking status could be interesting to explore, if and how it feels right for you.';
   }
   if (healthyLifeExpectancy > baselineLifeExpectancy + 3) {
     band = 'above-average';
     interpretation =
-      'Your current habits point toward above-average healthy-life expectancy in this heuristic model. Consistency matters most now.';
+      'Here, your current habits lean in a direction that this model associates with a more supported long‑term pattern. Staying flexible and kind with your routines often matters more than hitting any exact number.';
   }
 
   const recommendations = [
-    'Aim for at least 150–300 minutes of moderate activity per week, or its vigorous equivalent, if cleared by your clinician.',
-    'Target 5+ servings of colorful fruits and vegetables per day where possible.',
-    'Work with healthcare professionals on smoking cessation if you currently smoke.',
+    'If it feels realistic, you can gently move toward more weekly activity that suits your body and life rhythm.',
+    'Adding a bit more color from fruits and vegetables to your meals can be a simple, supportive experiment.',
+    'If you currently smoke and ever consider a change, collaborating with healthcare or support resources can make that journey kinder.',
   ];
 
   if (values.restingHeartRate > 80) {
-    recommendations.push('Discuss your resting heart rate with a clinician, especially if it is consistently elevated.');
+    recommendations.push('You might note your resting heart rate over time and discuss any concerns with a clinician you trust.');
   }
   if (values.weeklyModerateMinutes < 90) {
-    recommendations.push('Start with short, frequent walks or light activity blocks and build up gradually.');
+    recommendations.push('Short, frequent walks or light activity blocks can be a gentle starting point, building up only as it feels comfortable.');
   }
 
   const plan = [
@@ -194,11 +194,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
     },
     {
       label: 'Next 30 days',
-      detail: 'Add at least one sustainable habit upgrade (more steps, extra vegetable serving, or a quit plan) and retest.',
+      detail: 'Play with one sustainable habit experiment (more steps, an extra vegetable serving, or a small shift in smoking patterns) and then see how it feels to you.',
     },
     {
       label: '3–6 months',
-      detail: 'Review your pattern with a clinician to align lifestyle efforts with your broader health picture.',
+      detail: 'Over time, you can review your overall pattern with a clinician to weave lifestyle ideas into your broader health picture.',
     },
   ];
 
@@ -361,7 +361,7 @@ export default function LongevityPredictorLifestyleCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Estimated healthy-life expectancy</p>
                 <p className="text-2xl font-semibold text-primary">{result.healthyLifeExpectancy.toFixed(1)} years</p>
-                <p className="text-xs text-muted-foreground">Heuristic, not a medical forecast.</p>
+                <p className="text-xs text-muted-foreground">A rough lifestyle-pattern estimate from this model, not a forecast.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Difference vs. 82-year baseline</p>
@@ -369,7 +369,7 @@ export default function LongevityPredictorLifestyleCalculator() {
                   {result.addedYearsVsBaseline >= 0 ? '+' : ''}
                   {result.addedYearsVsBaseline.toFixed(1)} years
                 </p>
-                <p className="text-xs text-muted-foreground">Positive numbers suggest higher projected healthy-life expectancy.</p>
+                <p className="text-xs text-muted-foreground">Shows how this estimate compares with a generic 82‑year reference in the model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Band</p>
@@ -539,13 +539,18 @@ export default function LongevityPredictorLifestyleCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            The Longevity Predictor (Lifestyle-based) Calculator offers a rough healthy-life expectancy estimate built from simple,
-            modifiable habits.
+            The Longevity Predictor (Lifestyle-based) Calculator offers a rough, lifestyle-focused estimate that reflects how a few everyday
+            habits can relate to long-term patterns in this model.
           </p>
-          <p>It surfaces where movement, diet, and smoking status may be nudging your long-term trajectory.</p>
-          <p>Use it for reflection and planning—not as a crystal ball or substitute for medical judgment.</p>
+          <p>It surfaces where movement, food choices, and smoking status may be nudging your long-term trajectory within this framework.</p>
+          <p>Use it for gentle reflection and planning only—not as a prediction or substitute for medical judgment.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

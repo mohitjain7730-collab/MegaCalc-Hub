@@ -166,33 +166,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const balanceScore = (sodiumScore * 0.5 + potassiumScore * 0.3 + magnesiumScore * 0.2);
 
   let status: ResultPayload['status'] = 'balanced';
-  let interpretation = 'Your electrolyte balance looks good. Maintain this pattern for optimal recovery.';
+  let interpretation =
+    'Based on these entries, your recent electrolyte pattern looks reasonably balanced within this simple model.';
 
   if (sodiumGap > 500 || potassiumGap > 200 || magnesiumGap > 50) {
     status = 'needs-sodium';
-    interpretation = 'Focus on replacing sodium first, then potassium and magnesium as needed.';
+    interpretation =
+      'This snapshot suggests you may have some room to gently top up sodium and perhaps other minerals after this sweat loss.';
   }
   if ((sodiumGap > 500 && potassiumGap > 200) || balanceScore < 60) {
     status = 'needs-multiple';
-    interpretation = 'Multiple electrolyte gaps detected. Prioritize balanced replacement with food or electrolyte drinks.';
+    interpretation =
+      'Here, multiple electrolytes appear on the lower side in this model. It may help to explore more balanced sources of sodium, potassium, and magnesium in food or drinks.';
   }
 
   const recommendations = [
-    'Replace 500–700 mg sodium per liter of sweat lost, ideally within 2–4 hours post-exercise.',
-    'Include potassium (100–200 mg/L) and magnesium (10–20 mg/L) for complete restoration.',
-    'Use electrolyte drinks, salted foods, bananas, nuts, or supplements to fill gaps.',
+    'You can use this estimate as a loose guide for bringing in some sodium, potassium, and magnesium after heavier sweat days.',
+    'Everyday foods and drinks—like lightly salted meals, fruits, and nuts/seeds—can often help nudge things back toward balance.',
+    'If you use electrolyte drinks or mixes, you can choose options and amounts that feel comfortable for your body and context.',
   ];
   if (status === 'needs-sodium') {
-    recommendations.push('Prioritize sodium replacement first, as it is lost in the highest amounts.');
+    recommendations.push('Sodium is often lost in the largest amounts in sweat, so gently adding some through food or drinks may feel helpful.');
   }
   if (status === 'needs-multiple') {
-    recommendations.push('Consider balanced electrolyte solutions or whole foods that provide multiple minerals together.');
+    recommendations.push('You might choose more balanced electrolyte options or meals that include several minerals together, especially after longer or hotter sessions.');
   }
 
   const plan = [
-    { label: 'Immediate (0-2 hours)', detail: 'Consume 500–700 mg sodium with fluids. Add potassium and magnesium if losses were high.' },
-    { label: 'Next 2-4 hours', detail: 'Continue balanced electrolyte intake through meals or drinks to complete restoration.' },
-    { label: 'Ongoing', detail: 'Monitor for signs of imbalance (cramps, fatigue) and adjust intake based on activity level.' },
+    { label: 'Immediate (0–2 hours)', detail: 'After heavier sweating, consider pairing fluids with a bit of sodium and some naturally mineral‑rich foods.' },
+    { label: 'Next 2–4 hours', detail: 'Spread any extra electrolyte intake over time so it feels easy on your stomach and overall energy.' },
+    { label: 'Ongoing', detail: 'Notice how your body feels (cramps, fatigue, general comfort) and gently adjust food and drink patterns around demanding days.' },
   ];
 
   return { balanceScore, sodiumGap, potassiumGap, magnesiumGap, status, interpretation, recommendations, plan };
@@ -322,22 +325,22 @@ export default function ElectrolyteBalanceRestorationCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Balance score</p>
                 <p className="text-2xl font-semibold text-primary">{result.balanceScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 snapshot of how your current inputs fit this simple model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Sodium gap</p>
                 <p className="text-2xl font-semibold text-primary">{result.sodiumGap.toFixed(0)} mg</p>
-                <p className="text-xs text-muted-foreground">Positive = needs more</p>
+                <p className="text-xs text-muted-foreground">Positive values suggest you may want a bit more sodium after this sweat loss.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Potassium gap</p>
                 <p className="text-2xl font-semibold text-primary">{result.potassiumGap.toFixed(0)} mg</p>
-                <p className="text-xs text-muted-foreground">Positive = needs more</p>
+                <p className="text-xs text-muted-foreground">Positive values suggest extra potassium could be helpful.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Magnesium gap</p>
                 <p className="text-2xl font-semibold text-primary">{result.magnesiumGap.toFixed(0)} mg</p>
-                <p className="text-xs text-muted-foreground">Positive = needs more</p>
+                <p className="text-xs text-muted-foreground">Positive values suggest some additional magnesium might support you.</p>
               </div>
             </div>
             <div className="p-4 border rounded">
@@ -497,11 +500,15 @@ export default function ElectrolyteBalanceRestorationCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates electrolyte gaps (sodium, potassium, magnesium) and balance score from sweat loss and current intake.</p>
-          <p>Outputs include balance score, individual gaps, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool offers a simple view of possible electrolyte gaps and an overall balance score based on your sweat loss and the intake you enter.</p>
+          <p>You can treat the outputs as gentle prompts for adjusting food and drink around demanding days, alongside your own signals and professional guidance.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

@@ -154,44 +154,44 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let band: ResultPayload['band'] = 'tune-up';
   let interpretation =
-    'Your nutrition pattern shows several strengths with room for refinement around processing and added sugar.';
+    'Your snapshot suggests a number of helpful food habits already in place, with some gentle room to play with processing and added sugar if you’d like.';
 
   if (nutritionScore < 60) {
     band = 'rebuild';
     interpretation =
-      'The pattern may be more aging-accelerating than protective. Strategic swaps could significantly improve quality.';
+      'This pattern leans more toward convenience and added sugar right now. Small, realistic swaps toward more whole foods could gradually shift how your meals feel.';
   }
   if (nutritionScore >= 80) {
     band = 'protective';
     interpretation =
-      'Your week-to-week nutrition choices look broadly supportive of healthy aging, assuming they are sustainable for you.';
+      'Across this week, your choices look broadly aligned with many healthy-aging nutrition themes, especially if they feel sustainable and enjoyable to you.';
   }
 
   const recommendations = [
-    'Fill at least half your plate with colorful vegetables and fruits at most main meals.',
-    'Base starch choices on whole grains more often than refined options.',
-    'Shrink ultra-processed “convenience” meals to occasional use instead of daily defaults.',
+    'When it feels realistic, you can fill more of your plate with vegetables and fruits you genuinely enjoy.',
+    'Choosing whole grains a bit more often than refined ones can be a simple way to nudge your pattern toward more fiber.',
+    'You might experiment with keeping ultra‑processed “convenience” meals for some days and balancing them with easier whole‑food options on others.',
   ];
 
   if (values.ultraProcessedMealsPerWeek > 7) {
-    recommendations.push('Identify one ultra-processed meal you can replace with a simple home-prepped option this week.');
+    recommendations.push('You could choose just one ultra‑processed meal this week to swap for a simple, low‑effort home or fresh option.');
   }
   if (values.addedSugarTeaspoons > 12) {
-    recommendations.push('Prioritize reducing sugar from drinks first, then desserts.');
+    recommendations.push('If you ever want to lower added sugar, many people find it easiest to start with sweet drinks and then gently adjust desserts.');
   }
 
   const plan = [
     {
       label: 'Today',
-      detail: 'Add one extra serving of vegetables or fruit to a meal you already plan to eat.',
+      detail: 'If it appeals to you, add one extra serving of vegetables or fruit to a meal you already planned to have.',
     },
     {
       label: 'This Week',
-      detail: 'Batch-cook a simple whole-grain and legume base to make protective meals easier to assemble.',
+      detail: 'You might batch‑cook a simple whole‑grain or legume base so throwing together a more nourishing meal feels easier.',
     },
     {
       label: 'Next 30 days',
-      detail: 'Track your score weekly and celebrate small, consistent improvements rather than perfection.',
+      detail: 'Over the next few weeks, you can retake this snapshot and gently celebrate any small, consistent shifts you notice.',
     },
   ];
 
@@ -352,12 +352,12 @@ export default function AntiAgingNutritionScoreCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Nutrition score</p>
                 <p className="text-2xl font-semibold text-primary">{result.nutritionScore}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 view of how your current weekly pattern fits this simple framework.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Band</p>
                 <p className="text-2xl font-semibold text-primary capitalize">{result.band.replace('-', ' ')}</p>
-                <p className="text-xs text-muted-foreground">Higher bands reflect more protective patterns.</p>
+                <p className="text-xs text-muted-foreground">Just a label describing how protective or comfort‑focused this week’s pattern may feel.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Summary</p>
@@ -520,12 +520,18 @@ export default function AntiAgingNutritionScoreCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            The Anti-Aging Nutrition Score Calculator summarizes your weekly eating pattern into a simple protective vs. depleting index.
+            The Anti-Aging Nutrition Score Calculator summarizes your weekly eating pattern into one simple snapshot of how it aligns with
+            healthy‑aging nutrition ideas.
           </p>
-          <p>It highlights small swaps and priorities that tend to support healthier aging over the long term.</p>
-          <p>Bring its insights into conversations with nutrition professionals and use it to track gradual progress.</p>
+          <p>It highlights small, optional swaps and areas of curiosity that may support you over time, alongside your own preferences and needs.</p>
+          <p>You can bring these reflections into conversations with nutrition professionals or simply use them to notice gradual shifts.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

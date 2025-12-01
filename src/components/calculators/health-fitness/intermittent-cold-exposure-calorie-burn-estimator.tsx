@@ -153,32 +153,32 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const weeklyCalorieBurn = caloriesPerSession * values.sessionsPerWeek;
 
   const recommendations = [
-    'Start with conservative exposure times and temperatures, especially if you are new to cold practices.',
-    'Warm up gradually afterward with movement and clothing rather than extremely hot showers immediately.',
-    'Avoid cold exposure when feeling unwell, over-tired, or under-fueled.',
+    'If you are exploring cold exposure, you can start conservatively with shorter times and milder temperatures.',
+    'Afterward, warming up gently with clothing and light movement tends to feel kinder than jumping straight into very hot water.',
+    'It may be helpful to skip cold exposure on days you feel unwell, extremely tired, or under-fueled.',
   ];
 
   if (values.shiverLevel === 3) {
-    recommendations.push('Strong shivering is stressful; consider slightly warmer temperatures or shorter durations.');
+    recommendations.push('If shivering feels strong, you might experiment with slightly warmer temperatures or shorter durations.');
   }
   if (values.sessionsPerWeek > 5) {
-    recommendations.push('Monitor how you feel across the week and be ready to reduce frequency if recovery feels compromised.');
+    recommendations.push('Notice how your body and sleep feel across the week, and feel free to reduce frequency if recovery feels off.');
   }
 
   const plan = [
-    { label: 'Today', detail: 'Decide whether cold exposure fits your goals after checking with your clinician if needed.' },
+    { label: 'Today', detail: 'Consider whether cold exposure genuinely fits your preferences and circumstances, and check with a clinician if you are unsure.' },
     {
       label: 'This Week',
-      detail: 'If cleared, log a few sessions and pay close attention to energy, mood, and sleep afterward.',
+      detail: 'If you choose to try it, gently track how sessions relate to your energy, mood, and sleep afterward.',
     },
     {
       label: 'Next Month',
-      detail: 'Revisit whether the practice still feels beneficial; adjust frequency or stop if it does not.',
+      detail: 'Over time, revisit whether the practice still feels supportive; you can adjust frequency or stop altogether if it does not.',
     },
   ];
 
   const interpretation =
-    'These numbers reflect rough extra calorie use from cold-induced thermogenesis and should be viewed as experimental, not exact.';
+    'These numbers reflect rough extra calorie use from cold-induced thermogenesis in this model and are best viewed as experimental, not exact.';
 
   return { caloriesPerSession, weeklyCalorieBurn, thermogenesisFactor, interpretation, recommendations, plan };
 };
@@ -337,17 +337,17 @@ export default function IntermittentColdExposureCalorieBurnEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Extra calories per session</p>
                 <p className="text-2xl font-semibold text-primary">{result.caloriesPerSession.toFixed(0)} kcal</p>
-                <p className="text-xs text-muted-foreground">Above resting baseline.</p>
+                <p className="text-xs text-muted-foreground">Approximate extra calories above resting baseline in this model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Weekly extra burn</p>
                 <p className="text-2xl font-semibold text-primary">{result.weeklyCalorieBurn.toFixed(0)} kcal</p>
-                <p className="text-xs text-muted-foreground">If you maintain the same protocol.</p>
+                <p className="text-xs text-muted-foreground">A rough weekly total if you kept roughly the same protocol.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Thermogenesis multiplier</p>
                 <p className="text-2xl font-semibold text-primary">{result.thermogenesisFactor.toFixed(2)}×</p>
-                <p className="text-xs text-muted-foreground">Approximate metabolic increase during exposure.</p>
+                <p className="text-xs text-muted-foreground">Approximate metabolic increase during exposure within this rough framework.</p>
               </div>
             </div>
             <div className="p-4 border rounded">
@@ -512,12 +512,17 @@ export default function IntermittentColdExposureCalorieBurnEstimator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
             The Intermittent Cold Exposure Calorie Burn Estimator turns your protocol into a rough projection of additional thermogenic
-            calories.
+            calories within a simple model.
           </p>
-          <p>It helps keep expectations grounded while surfacing key safety and recovery considerations.</p>
-          <p>Always treat cold exposure as optional and secondary to core health habits and medical guidance.</p>
+          <p>It is meant to keep expectations grounded and highlight safety and recovery considerations, not to drive aggressive protocols.</p>
+          <p>Always treat cold exposure as optional and secondary to core health habits and any medical guidance you receive.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

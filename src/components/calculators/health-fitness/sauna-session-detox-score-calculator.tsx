@@ -153,33 +153,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const sweatEfficiency = clamp((heatLoad + durationScore) * 0.8 + hydrationScore * 0.2, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your sauna routine looks well-structured for heat therapy benefits.';
+  let interpretation =
+    'Your entries suggest that, for you, this sauna routine may feel fairly balanced in terms of heat, time, and basic hydration.';
 
   if (detoxScore < 60) {
     status = 'moderate';
-    interpretation = 'Some adjustments could enhance detox and recovery benefits.';
+    interpretation =
+      'This pattern looks workable, with some room to gently adjust things like timing, temperature, or hydration to better support how you feel.';
   }
   if (detoxScore < 40) {
     status = 'needs-improvement';
-    interpretation = 'Consider increasing session length, frequency, or improving hydration patterns.';
+    interpretation =
+      'Here, your current setup may feel a bit less supportive. You might explore smaller, kinder sessions and more consistent hydration, or pause and reassess if needed.';
   }
 
   const recommendations = [
-    'Start with 10–15 minute sessions and gradually increase as tolerance builds.',
-    'Hydrate 300–500 ml before entering and sip water during breaks if needed.',
-    'Allow 5–10 minutes of cooldown between rounds to let your body regulate.',
+    'If you are newer to sauna time, starting with shorter sessions and increasing only as it feels comfortable can be gentler on your body.',
+    'Having some water before or between rounds, in amounts that feel good for you, can help you stay hydrated.',
+    'Leaving space for a few minutes of cool‑down between rounds can give your body a chance to settle and check in.',
   ];
   if (status === 'moderate') {
-    recommendations.push('Aim for 2–4 sessions per week to build heat adaptation.');
+    recommendations.push('You might experiment with 2–4 sessions per week if that fits your life and feels supportive, without forcing it.');
   }
   if (status === 'needs-improvement') {
-    recommendations.push('Consider consulting a heat therapy guide or practitioner for personalized protocols.');
+    recommendations.push('If you have questions or health considerations, you could explore guidance from a professional familiar with heat practices.');
   }
 
   const plan = [
-    { label: 'This Week', detail: 'Log all sauna sessions with duration, temp, and pre-hydration.' },
-    { label: 'Next 2 Weeks', detail: 'Gradually increase session length by 2–3 minutes if comfortable.' },
-    { label: 'Ongoing', detail: 'Track detox score monthly and adjust frequency or temperature as needed.' },
+    { label: 'This Week', detail: 'Notice how you currently approach sauna sessions, including time, temperature, and hydration, without judgment.' },
+    { label: 'Next 2 Weeks', detail: 'If it feels right, gently adjust one variable—like a slightly different duration or extra water—and see how your body responds.' },
+    { label: 'Ongoing', detail: 'Every so often, reflect on whether your sauna habit still feels supportive and adjust or pause as needed.' },
   ];
 
   return { detoxScore, sweatEfficiency, status, interpretation, recommendations, plan };
@@ -309,12 +312,12 @@ export default function SaunaSessionDetoxScoreCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Detox score</p>
                 <p className="text-2xl font-semibold text-primary">{result.detoxScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 snapshot of how this sauna routine fits this simple model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Sweat efficiency</p>
                 <p className="text-2xl font-semibold text-primary">{result.sweatEfficiency.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Heat + hydration blend</p>
+                <p className="text-xs text-muted-foreground">A rough blend of heat exposure and pre‑session hydration.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -472,11 +475,15 @@ export default function SaunaSessionDetoxScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates detox score and sweat efficiency from sauna session parameters, frequency, hydration, and cooldown patterns.</p>
-          <p>Outputs include detox score, sweat efficiency, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool turns your sauna time, temperature, hydration, and cooldown habits into a single snapshot of how your routine looks in this model.</p>
+          <p>The scores and ideas are there to gently support reflection and small adjustments, alongside your own comfort and any professional guidance.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }
