@@ -69,23 +69,57 @@ export default function MeditationTimeProgressTrackerCalculator() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-8 gap-4">
-            <FormField control={form.control} name="targetMinutes" render={({ field }) => (
-              <FormItem><FormLabel>Daily Target (min)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            {(['mon','tue','wed','thu','fri','sat','sun'] as const).map((day) => (
-              <FormField key={day} control={form.control} name={day} render={({ field }) => (
-                <FormItem><FormLabel className="capitalize">{day}</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e=>field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-              )} />
+            <FormField
+              control={form.control}
+              name="targetMinutes"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Preferred quiet‑time target (minutes per day)</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      {...field}
+                      value={field.value ?? ''}
+                      onChange={(e) => field.onChange(parseFloat(e.target.value) || undefined)}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const).map((day) => (
+              <FormField
+                key={day}
+                control={form.control}
+                name={day}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="capitalize">{day} minutes of meditation or quiet time</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={(e) => field.onChange(parseFloat(e.target.value) || undefined)}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             ))}
           </div>
-          <Button type="submit">Track Progress</Button>
+          <Button type="submit">View my meditation routine insight</Button>
         </form>
       </Form>
 
       {progress && (
         <Card className="mt-8">
           <CardHeader>
-            <div className='flex items-center gap-4'><Brain className="h-8 w-8 text-primary" /><CardTitle>Meditation Progress</CardTitle></div>
+            <div className="flex items-center gap-4">
+              <Brain className="h-8 w-8 text-primary" />
+              <CardTitle>Meditation Routine Progress Insight</CardTitle>
+            </div>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -94,7 +128,12 @@ export default function MeditationTimeProgressTrackerCalculator() {
               <div><p className="text-2xl font-bold">{progress.percentage.toFixed(0)}%</p><p className="text-sm text-muted-foreground">Target Met</p></div>
               <div><p className="text-2xl font-bold">{progress.streak}</p><p className="text-sm text-muted-foreground">Day Streak</p></div>
             </div>
-            <CardDescription className="mt-4 text-center">{progress.opinion}</CardDescription>
+            <CardDescription className="mt-4 text-center">
+              {progress.opinion}{' '}
+              <span className="block mt-1">
+                This is a gentle reflection on your routine, not a medical or mental health evaluation.
+              </span>
+            </CardDescription>
           </CardContent>
         </Card>
       )}
@@ -104,6 +143,11 @@ export default function MeditationTimeProgressTrackerCalculator() {
         <MeditationGuide />
         <EmbedWidget calculatorSlug="meditation-time-progress-tracker-calculator" calculatorName="Meditation Time Progress Tracker Calculator" />
       </div>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }
@@ -137,35 +181,38 @@ function RelatedCalculators() {
 function MeditationGuide() {
   return (
     <section className="space-y-4 text-muted-foreground leading-relaxed" itemScope itemType="https://schema.org/Article">
-      <meta itemProp="headline" content="Meditation Progress Tracking – Building Consistent Practice" />
+      <meta itemProp="headline" content="Meditation Progress Tracking – Building a Gentle, Consistent Practice" />
       <meta itemProp="author" content="MegaCalc Hub Team" />
       <meta itemProp="about" content="How to track meditation progress, set realistic goals, build consistency, and measure the benefits of regular practice." />
 
       <h2 itemProp="name" className="text-xl font-bold text-foreground">Building a Meditation Practice</h2>
-      <p itemProp="description">Consistent meditation practice offers numerous benefits including reduced stress, improved focus, better sleep, and enhanced emotional regulation. Tracking your progress helps build momentum and maintain motivation.</p>
+      <p itemProp="description">
+        Regular meditation or quiet‑time practice can support many people in feeling a bit calmer, clearer, or more grounded.
+        Tracking your progress is simply a way to notice your routine over time, not to judge yourself.
+      </p>
 
       <h3 className="font-semibold text-foreground mt-6">Setting Realistic Goals</h3>
       <ul className="list-disc ml-6 space-y-1">
         <li>Start with 5-10 minutes daily and gradually increase</li>
         <li>Aim for consistency over duration - daily practice beats sporadic long sessions</li>
-        <li>Track both time and quality of practice</li>
+        <li>Notice how you feel before and after practice without needing to grade the session</li>
         <li>Celebrate small wins and progress milestones</li>
       </ul>
 
       <h3 className="font-semibold text-foreground mt-6">Benefits of Regular Practice</h3>
       <ul className="list-disc ml-6 space-y-1">
-        <li>Reduced cortisol levels and stress response</li>
-        <li>Improved attention span and focus</li>
-        <li>Better emotional regulation and mood stability</li>
-        <li>Enhanced sleep quality and recovery</li>
-        <li>Increased self-awareness and mindfulness</li>
+        <li>Many people notice a greater sense of calm and spaciousness in their day</li>
+        <li>Some find it easier to return their attention to what matters after being distracted</li>
+        <li>Short, regular practices can support a steadier mood for some people</li>
+        <li>Quiet time can become a small daily anchor in a busy schedule</li>
+        <li>Over time, you may become more aware of what you need to feel more at ease</li>
       </ul>
 
       <h3 className="font-semibold text-foreground mt-6">Tips for Success</h3>
       <ul className="list-disc ml-6 space-y-1">
         <li>Choose a consistent time and quiet space</li>
         <li>Use guided meditations or apps when starting</li>
-        <li>Don't judge "good" or "bad" sessions - consistency matters most</li>
+        <li>Let go of judging "good" or "bad" sessions - simply showing up matters most</li>
         <li>Track progress weekly to identify patterns and improvements</li>
         <li>Adjust goals based on your schedule and lifestyle</li>
       </ul>
