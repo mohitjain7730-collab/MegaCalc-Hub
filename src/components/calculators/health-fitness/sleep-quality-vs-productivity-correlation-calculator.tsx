@@ -152,33 +152,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const productivityGap = clamp(70 - productivityScore, 0, 70);
 
   let status: ResultPayload['status'] = 'strong-link';
-  let interpretation = 'Your sleep and productivity show a strong positive correlation. Maintain this pattern.';
+  let interpretation =
+    'In this simple snapshot, your current sleep and productivity ratings tend to move together in a supportive way.';
 
   if (correlationScore < 60) {
     status = 'moderate-link';
-    interpretation = 'Moderate correlation detected. Improving sleep may boost productivity further.';
+    interpretation =
+      'Here, sleep and productivity are somewhat related in your entries, and there may be room to gently explore how small sleep tweaks feel for your day.';
   }
   if (correlationScore < 40) {
     status = 'weak-link';
-    interpretation = 'Weak correlation suggests other factors may be limiting productivity, or sleep needs significant improvement.';
+    interpretation =
+      'This pattern suggests that, for now, other factors may be influencing how your days feel as much as, or more than, sleep itself.';
   }
 
   const recommendations = [
-    'Aim for 7–9 hours of quality sleep nightly for optimal productivity and focus.',
-    'Maintain consistent sleep and wake times to support circadian rhythm and sleep quality.',
-    'Create a wind-down routine (dim lights, no screens) 60 minutes before bed to improve sleep quality.',
+    'If it fits your life, you can gently experiment with getting closer to 7–9 hours of sleep and see how that affects your days.',
+    'Keeping a fairly regular sleep and wake window often helps many people feel more settled and clear during the day.',
+    'A simple, calming wind‑down routine—such as dimmer lights, fewer screens, or quiet activities—can make it easier to ease into sleep.',
   ];
   if (status === 'moderate-link') {
-    recommendations.push('Track sleep and productivity for 2 weeks to identify specific patterns and improvement opportunities.');
+    recommendations.push('You might track your sleep and daytime experience for a couple of weeks to notice small patterns that feel worth exploring.');
   }
   if (status === 'weak-link') {
-    recommendations.push('Consider other factors (stress, nutrition, exercise) that may be affecting productivity alongside sleep.');
+    recommendations.push('It may also be helpful to reflect on other pieces—like stress, food, movement, or workload—that could be shaping how your days feel.');
   }
 
   const plan = [
-    { label: 'This Week', detail: 'Log sleep hours, quality, and daily productivity scores to establish baseline.' },
-    { label: 'Next 2 Weeks', detail: 'Prioritize 7–9 hours of sleep and consistent bedtime. Track productivity changes.' },
-    { label: 'Ongoing', detail: 'Monitor correlation trends and adjust sleep habits based on productivity outcomes.' },
+    { label: 'This Week', detail: 'Notice your sleep and daily focus/energy scores without trying to change much yet.' },
+    { label: 'Next 2 Weeks', detail: 'If you’d like, try one gentle change—like a slightly earlier wind‑down—and observe how your days feel.' },
+    { label: 'Ongoing', detail: 'Over time, keep only the sleep habits that genuinely help you feel better, and let go of what feels forced.' },
   ];
 
   return { correlationScore, sleepImpact, productivityGap, status, interpretation, recommendations, plan };
@@ -308,17 +311,17 @@ export default function SleepQualityVsProductivityCorrelationCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Correlation score</p>
                 <p className="text-2xl font-semibold text-primary">{result.correlationScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 view of how closely these particular sleep and day ratings move together.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Sleep impact</p>
                 <p className="text-2xl font-semibold text-primary">{result.sleepImpact.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">On productivity</p>
+                <p className="text-xs text-muted-foreground">A rough sense of how strong a role your sleep pattern might be playing in this snapshot.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Productivity gap</p>
                 <p className="text-2xl font-semibold text-primary">{result.productivityGap.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Potential improvement</p>
+                <p className="text-xs text-muted-foreground">A simple indication of how much “headroom” you feel there might be in your current days.</p>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -472,11 +475,15 @@ export default function SleepQualityVsProductivityCorrelationCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates correlation between sleep quality/duration and productivity metrics (productivity, focus, energy).</p>
-          <p>Outputs include correlation score, sleep impact, productivity gap, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool offers a simple snapshot of how your own sleep ratings and daily productivity, focus, and energy scores relate in this model.</p>
+          <p>You can use the outputs as gentle prompts for experimenting with sleep habits that feel realistic for you, alongside other life factors and any professional advice.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

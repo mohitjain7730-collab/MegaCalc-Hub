@@ -180,31 +180,33 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const ironFocus = values.phase === 'follicular' ? 18 : 15; // Higher iron focus in follicular (post-period)
   
   let status: ResultPayload['status'] = 'follicular-optimized';
-  let interpretation = 'Nutrition plan optimized for follicular phase: focus on iron-rich foods and moderate carbs.';
+  let interpretation =
+    'This pattern is tuned toward the early part of your cycle, with a gentle emphasis on iron‑supportive foods and steady energy.';
   
   if (values.phase === 'luteal') {
     status = 'luteal-optimized';
-    interpretation = 'Nutrition plan optimized for luteal phase: higher calories, more complex carbs, and adequate protein for progesterone support.';
+    interpretation =
+      'This pattern is tuned toward the later part of your cycle, with slightly more overall energy and complex carbs for comfort and steadier mood.';
   }
 
   const recommendations = [
-    values.phase === 'follicular' 
-      ? 'Focus on iron-rich foods (lean meat, legumes, leafy greens) to replenish after menstruation.'
-      : 'Increase complex carbs (whole grains, sweet potatoes) to support serotonin and energy during luteal phase.',
     values.phase === 'follicular'
-      ? 'Moderate carb intake; prioritize protein and healthy fats for stable energy.'
-      : 'Include magnesium-rich foods (nuts, seeds, dark chocolate) to support mood and reduce PMS symptoms.',
-    'Stay hydrated throughout both phases. Luteal phase may benefit from slightly more fluids.',
+      ? 'You might lean a bit more on iron‑supportive foods you enjoy (like legumes, leafy greens, or fortified options) after your period.'
+      : 'You might find that including more gentle, complex carbs (such as whole grains or root vegetables) feels supportive later in your cycle.',
+    values.phase === 'follicular'
+      ? 'Balancing carbs with protein and fats that sit well with you can help keep energy steadier through the day.'
+      : 'Many people like to add magnesium‑rich foods (nuts, seeds, cocoa, leafy greens) if they notice mood or tension shifts pre‑period.',
+    'Staying hydrated across the month can be helpful; some notice they appreciate a bit more fluid in the days before a period.',
   ];
   
   if (values.goals === 'lose') {
-    recommendations.push('Maintain a modest calorie deficit. Avoid severe restriction, especially during luteal phase.');
+    recommendations.push('If your goal involves weight change, a modest, sustainable shift in intake is usually kinder than large or strict changes—especially in the days before your period.');
   }
 
   const plan = [
-    { label: 'This Week', detail: `Follow ${values.phase} phase nutrition targets. Track macros and energy levels.` },
-    { label: 'Next Phase', detail: 'Adjust calories and macros when transitioning to the next phase.' },
-    { label: 'Ongoing', detail: 'Track cycle phases and adjust nutrition accordingly for optimal hormonal support.' },
+    { label: 'This Week', detail: `Notice how eating in this way during your current phase feels in terms of comfort, energy, and mood.` },
+    { label: 'Next Phase', detail: 'When your phase shifts, you can gently adjust portions and foods and see what feels most supportive.' },
+    { label: 'Ongoing', detail: 'Over time, keep only the phase‑based nutrition habits that genuinely help you feel better in your own body.' },
   ];
 
   return { calorieTarget, proteinGrams, carbGrams, fatGrams, ironFocus, status, interpretation, recommendations, plan };
@@ -370,7 +372,7 @@ export default function FollicularVsLutealPhaseNutritionPlannerCalculator() {
             <div className="p-4 border rounded">
               <p className="text-sm text-muted-foreground">Iron focus</p>
               <p className="text-lg font-semibold text-primary">{result.ironFocus} mg/day</p>
-              <p className="text-xs text-muted-foreground">{result.interpretation}</p>
+                <p className="text-xs text-muted-foreground">{result.interpretation}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card>
@@ -523,11 +525,15 @@ export default function FollicularVsLutealPhaseNutritionPlannerCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates phase-specific nutrition targets (calories, macros, iron) for follicular and luteal phases based on cycle day, BMR, activity, and goals.</p>
-          <p>Outputs include calorie target, macro breakdown, iron focus, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool suggests phase‑aware calorie and macro ranges based on your inputs, offering one way to reflect on how food and your cycle interact.</p>
+          <p>You can use the outputs as gentle ideas to try—always adjusting for your own comfort, preferences, cultural context, and any guidance from your care team.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

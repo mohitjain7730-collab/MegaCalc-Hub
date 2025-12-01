@@ -184,34 +184,39 @@ const calculateResult = (values: FormValues): ResultPayload => {
     yearsToMenopause = 0;
   }
   
-  let interpretation = 'You appear to be in early perimenopause. Symptoms are mild and cycles may be slightly irregular.';
+  let interpretation =
+    'These answers suggest a pattern that could be consistent with early changes around perimenopause for some people, but only a clinician can tell you where you are in that transition.';
   
   if (status === 'pre-perimenopause') {
-    interpretation = 'You may be approaching perimenopause. Continue monitoring symptoms and cycle changes.';
+    interpretation =
+      'This snapshot looks more like an earlier phase where noticeable cycle or symptom changes are still limited. Continuing to notice patterns and talking with a clinician if you’re curious can be helpful.';
   } else if (status === 'mid-perimenopause') {
-    interpretation = 'You appear to be in mid-perimenopause. Symptoms are more noticeable and cycles are irregular.';
+    interpretation =
+      'Your responses line up with patterns that often show up midway through the perimenopause transition, but the exact stage is something to explore with a healthcare professional.';
   } else if (status === 'late-perimenopause') {
-    interpretation = 'You appear to be in late perimenopause. Periods are very irregular or missed, and symptoms may be stronger.';
+    interpretation =
+      'This pattern resembles what some people experience later in the transition, with more marked changes, yet it is still just an educational estimate—not a diagnosis or exact staging.';
   } else if (status === 'post-menopause') {
-    interpretation = 'You appear to be post-menopause (12+ months without a period). Symptoms may persist but typically stabilize.';
+    interpretation =
+      'Your answers look similar to those of many people who are beyond the main transition, though only a clinician can confirm whether you’re post‑menopause.';
   }
 
   const recommendations = [
-    'Track your cycles and symptoms to identify patterns and discuss with your healthcare provider.',
-    'Manage hot flashes with lifestyle changes (cool environment, layered clothing, stress reduction).',
-    'Prioritize sleep hygiene: consistent schedule, cool room, avoid caffeine/alcohol before bed.',
+    'If you find it helpful, you can jot down cycle changes and how you feel to make patterns easier to talk about with a clinician.',
+    'Gentle lifestyle shifts—like dressing in light layers, keeping your sleep space cool, and having simple wind‑down routines—can sometimes ease hot moments and restlessness.',
+    'Giving extra care to sleep, movement you enjoy, and stress‑soothing activities can support you throughout this transition, whatever stage you are in.',
   ];
   if (status === 'mid-perimenopause' || status === 'late-perimenopause') {
-    recommendations.push('Consider discussing hormone therapy (HRT) or other treatments with your healthcare provider if symptoms are severe.');
+    recommendations.push('If symptoms feel intense or disruptive, consider checking in with a qualified healthcare professional to discuss options that fit your health history and preferences.');
   }
   if (status === 'post-menopause') {
-    recommendations.push('Focus on long-term health: bone density, heart health, and maintaining healthy lifestyle habits.');
+    recommendations.push('You might want to ask your care team about long‑term supports such as bone, heart, and emotional health check‑ins that feel right for you.');
   }
 
   const plan = [
-    { label: 'This Month', detail: 'Track all symptoms and cycle changes. Document patterns to share with healthcare provider.' },
-    { label: 'Next 3 Months', detail: 'Continue tracking. Implement lifestyle changes (exercise, diet, stress management) to manage symptoms.' },
-    { label: 'Ongoing', detail: 'Regular check-ups with healthcare provider. Discuss treatment options if symptoms interfere with daily life.' },
+    { label: 'This Month', detail: 'Notice and, if you wish, gently write down any shifts in cycles, sleep, mood, or temperature changes.' },
+    { label: 'Next 3 Months', detail: 'Experiment with small, sustainable routines (movement, food, rest, stress care) and see which ones genuinely help you feel more at ease.' },
+    { label: 'Ongoing', detail: 'Bring your questions or observations to a trusted healthcare professional whenever you feel unsure or symptoms impact your daily life.' },
   ];
 
   return { transitionScore, stage, yearsToMenopause, status, interpretation, recommendations, plan };
@@ -364,17 +369,17 @@ export default function PerimenopauseTransitionStageEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Transition score</p>
                 <p className="text-2xl font-semibold text-primary">{result.transitionScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 pattern score from this model, based on your entries.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stage</p>
                 <p className="text-2xl font-semibold text-primary capitalize">{result.stage}</p>
-                <p className="text-xs text-muted-foreground">Perimenopause stage</p>
+                <p className="text-xs text-muted-foreground">An educational label only—true stage needs clinical input.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Years to menopause</p>
                 <p className="text-2xl font-semibold text-primary">{result.yearsToMenopause.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Estimated</p>
+                <p className="text-xs text-muted-foreground">Very rough estimate within this model, not a forecast.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -474,7 +479,7 @@ export default function PerimenopauseTransitionStageEstimator() {
                 <p className="text-xl font-semibold text-primary">
                   {result.transitionScore >= 65 ? 'High' : result.transitionScore >= 40 ? 'Moderate' : 'Low'}
                 </p>
-                <p className="text-xs text-muted-foreground">Consider treatment if high</p>
+                <p className="text-xs text-muted-foreground">How strongly you might want to explore extra support with your care team.</p>
               </div>
             </div>
           ) : (
@@ -533,11 +538,16 @@ export default function PerimenopauseTransitionStageEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates perimenopause transition stage, years to menopause, and status from age, cycle irregularity, hot flashes, sleep quality, mood changes, and period changes.</p>
-          <p>Outputs include transition score, stage, years to menopause, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool combines age, cycle shifts, and how you feel into one simple view of where you might be in the perimenopause transition.</p>
+          <p>The scores and labels are only for reflection and conversation—they are not a diagnosis or timeline, and are best used alongside professional care.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and educational insights only. It is not a medical diagnosis,
+        staging tool, or treatment recommendation. For any concerns about your cycle, symptoms, or menopause transition,
+        please consult a qualified healthcare professional.
+      </p>
     </div>
   );
 }

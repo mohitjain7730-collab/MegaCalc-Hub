@@ -153,33 +153,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const hrvStatus = clamp((values.hrvMs / 100) * 100, 0, 100);
 
   let readinessLevel: ResultPayload['readinessLevel'] = 'ready';
-  let interpretation = 'Your recovery metrics suggest readiness for training. Proceed with planned intensity.';
+  let interpretation =
+    'In this snapshot, your HRV, sleep, training, and stress entries together suggest your body may feel reasonably supported for your usual movement.';
 
   if (recoveryScore < 60) {
     readinessLevel = 'moderate';
-    interpretation = 'Recovery is moderate. Consider lighter training or active recovery today.';
+    interpretation =
+      'Recovery looks somewhat in-between right now. You might find it helpful to lean toward gentler training, active recovery, or a flexible plan today.';
   }
   if (recoveryScore < 40) {
     readinessLevel = 'rest-needed';
-    interpretation = 'Recovery is low. Prioritize rest, sleep, and stress management. Avoid intense training.';
+    interpretation =
+      'This pattern hints that extra rest and lighter movement could feel kinder to your body today. You can always adjust training to match how you actually feel.';
   }
 
   const recommendations = [
-    'Measure HRV daily in the morning before activity for consistent tracking.',
-    'Aim for 7–9 hours of quality sleep to support recovery and HRV.',
-    'Adjust training intensity based on recovery score: low score = lighter work or rest.',
+    'If you use HRV, taking readings at similar times (for example, in the morning) can make trends easier to notice.',
+    'Gently moving toward 7–9 hours of sleep, when realistic, can support how recovered you feel from training.',
+    'You can let the score nudge you toward lighter or heavier days, while still prioritizing how your body actually feels over any single number.',
   ];
   if (readinessLevel === 'moderate') {
-    recommendations.push('Focus on active recovery: light movement, stretching, or low-intensity activities.');
+    recommendations.push('On “in‑between” days, many people find that light activity, stretching, or easy movement feels better than pushing hard.');
   }
   if (readinessLevel === 'rest-needed') {
-    recommendations.push('Take a complete rest day or engage in very light activities only. Prioritize sleep and stress reduction.');
+    recommendations.push('When you feel run down, a softer day—rest, gentle walks, or calm routines—can be a helpful experiment if it fits your life.');
   }
 
   const plan = [
-    { label: 'Today', detail: 'Check HRV and recovery score. Adjust training plan based on readiness level.' },
-    { label: 'This Week', detail: 'Track HRV, sleep, and recovery trends. Identify patterns that affect recovery.' },
-    { label: 'Ongoing', detail: 'Use recovery data to optimize training schedule and prevent overtraining.' },
+    { label: 'Today', detail: 'Notice your HRV, sleep, and how your body actually feels, and shape your movement plan around that combination.' },
+    { label: 'This Week', detail: 'Keep an eye on how different types of days (busy vs. calm, hard vs. easy sessions) seem to show up in your scores and your body.' },
+    { label: 'Ongoing', detail: 'Over time, keep only the training and recovery rhythms that help you feel more steady and energized overall.' },
   ];
 
   return { recoveryScore, hrvStatus, readinessLevel, interpretation, recommendations, plan };
@@ -309,12 +312,12 @@ export default function ExerciseRecoveryScoreHRVSleepIntegration() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recovery score</p>
                 <p className="text-2xl font-semibold text-primary">{result.recoveryScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 snapshot of how this model views your current recovery inputs.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">HRV status</p>
                 <p className="text-2xl font-semibold text-primary">{result.hrvStatus.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Normalized score</p>
+                <p className="text-xs text-muted-foreground">A simple, normalized view of the HRV value you entered.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Readiness</p>
@@ -473,11 +476,15 @@ export default function ExerciseRecoveryScoreHRVSleepIntegration() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates recovery score and readiness level from HRV, sleep metrics, training load, and stress level.</p>
-          <p>Outputs include recovery score, HRV status, readiness level, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool brings together HRV, sleep, training load, and stress into one simple recovery snapshot within this model.</p>
+          <p>You can treat the scores and labels as gentle prompts for adjusting training and rest in ways that feel kind to your body, alongside professional guidance if needed.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

@@ -174,27 +174,30 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const finalProbability = clamp(probabilityScore, 0, 100);
 
   let status: ResultPayload['status'] = 'moderate-probability';
-  let interpretation = 'Calendar-based estimate suggests moderate probability. Add LH surge, BBT, or mucus tracking for higher accuracy.';
+  let interpretation =
+    'Based on your entries, this model suggests a moderate level of confidence in the estimated ovulation window—adding more tracking signals can clarify the picture.';
 
   if (finalProbability >= 80) {
     status = 'high-probability';
-    interpretation = 'Multiple indicators align, suggesting high probability of accurate ovulation window prediction.';
+    interpretation =
+      'Multiple signs you entered line up, so this estimate may be a relatively stronger candidate for your likely ovulation window—still as an approximation, not a guarantee.';
   }
   if (finalProbability < 50) {
     status = 'low-probability';
-    interpretation = 'Limited data available. Add more tracking methods (LH surge, BBT, mucus) to improve accuracy.';
+    interpretation =
+      'There is limited or mixed input data here, so this estimate should be treated as very rough—more tracking over several cycles can make patterns clearer.';
   }
 
   const recommendations = [
-    'Use ovulation predictor kits (OPKs) to detect LH surge 24-36 hours before ovulation.',
-    'Track basal body temperature (BBT) daily to confirm ovulation after it occurs.',
-    'Monitor cervical mucus quality: fertile mucus (clear, stretchy) indicates approaching ovulation.',
+    'If you enjoy tracking, you can use ovulation predictor kits (OPKs) to notice LH changes around your expected mid‑cycle days.',
+    'Daily basal body temperature and cervical mucus notes, if you choose to track them, can help you understand your own patterns over time.',
+    'Remember that cycles can shift from month to month; treat any single estimate as one reference point rather than a precise prediction.',
   ];
   if (status === 'moderate-probability') {
-    recommendations.push('Combine calendar method with at least one physical sign (OPK, BBT, or mucus) for better accuracy.');
+    recommendations.push('Combining calendar estimates with at least one body sign you’re comfortable tracking can make your personal pattern feel more visible.');
   }
   if (status === 'low-probability') {
-    recommendations.push('Start tracking multiple signs (OPKs, BBT, mucus) over 2-3 cycles to establish patterns and improve predictions.');
+    recommendations.push('If it feels helpful, you could log a few different signs (OPKs, BBT, mucus) across several cycles to gently learn how your body tends to behave.');
   }
 
   const plan = [
@@ -325,17 +328,17 @@ export default function OvulationWindowProbabilityAdvancedCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Ovulation day</p>
                 <p className="text-2xl font-semibold text-primary">Day {result.ovulationDay}</p>
-                <p className="text-xs text-muted-foreground">Estimated</p>
+                <p className="text-xs text-muted-foreground">A model-based estimate, not a confirmed date.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fertile window</p>
                 <p className="text-2xl font-semibold text-primary">Days {result.fertileWindowStart}-{result.fertileWindowEnd}</p>
-                <p className="text-xs text-muted-foreground">5-6 day window</p>
+                <p className="text-xs text-muted-foreground">A typical 5–6 day span often considered more likely to be fertile.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Probability score</p>
                 <p className="text-2xl font-semibold text-primary">{result.probabilityScore}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 confidence-style score from this model only.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -494,11 +497,16 @@ export default function OvulationWindowProbabilityAdvancedCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates ovulation day, fertile window, and probability score from cycle length, LH surge detection, BBT, and cervical mucus quality.</p>
-          <p>Outputs include ovulation day, fertile window, probability score, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool offers an estimated ovulation window and confidence score based on cycle length and any body signs you choose to log.</p>
+          <p>You can use it as one informational lens alongside your own tracking, preferences, and any guidance from reproductive health professionals.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis, fertility prediction, or contraceptive method. For any health or family planning
+        concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

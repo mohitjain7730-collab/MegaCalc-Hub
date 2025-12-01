@@ -158,33 +158,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const ageDifference = values.chronologicalAge - fitnessAge;
 
   let status: ResultPayload['status'] = 'similar';
-  let interpretation = 'Your fitness age is similar to your chronological age. Maintain current habits.';
+  let interpretation =
+    'In this simple model, your fitness age estimate lands close to your chronological age, which can reflect a generally aligned routine right now.';
 
   if (ageDifference > 5) {
     status = 'younger';
-    interpretation = 'Your fitness age is younger than your chronological age. Excellent cardiovascular fitness and body composition.';
+    interpretation =
+      'Here, your entries point toward a fitness age lower than your calendar age. Keeping your habits flexible and sustainable can help you continue feeling supported.';
   }
   if (ageDifference < -5) {
     status = 'older';
-    interpretation = 'Your fitness age is older than your chronological age. Focus on improving VO2max and body composition.';
+    interpretation =
+      'This snapshot suggests some gentle room to explore changes in movement, pacing, or other habits that might help your body feel more supported over time.';
   }
 
   const recommendations = [
-    'Improve VO2max through regular aerobic exercise (running, cycling, swimming) 3–5 times per week.',
-    'Maintain healthy BMI (18.5–25) through balanced nutrition and regular activity.',
-    'Include strength training 2–3 times per week to support body composition and metabolism.',
+    'If it feels realistic, you can explore regular cardio or movement you enjoy to support your cardiovascular fitness.',
+    'Balanced, steady nutrition and day‑to‑day activity patterns often help your body feel more comfortable over time than quick, intense changes.',
+    'Gentle strength training a couple of times per week can support how strong and stable you feel in everyday life.',
   ];
   if (status === 'older') {
-    recommendations.push('Prioritize cardiovascular training and consider working with a fitness professional to design a safe program.');
+    recommendations.push('If you’re curious about changes, you might consider chatting with a fitness or health professional about a pace and approach that feel safe and kind to you.');
   }
   if (status === 'younger') {
-    recommendations.push('Maintain your current activity level and fitness habits to preserve your fitness age advantage.');
+    recommendations.push('You can keep leaning into the routines that already help you feel well, adjusting as needed when life shifts.');
   }
 
   const plan = [
-    { label: 'This Month', detail: 'Establish baseline VO2max and BMI. Set fitness goals based on age difference.' },
-    { label: 'Next 3 Months', detail: 'Follow a structured training plan to improve VO2max and body composition.' },
-    { label: 'Ongoing', detail: 'Retest every 3–6 months to track fitness age improvements and adjust training.' },
+    { label: 'This Month', detail: 'Notice how your current activity, comfort, and energy feel, without pressure to change everything at once.' },
+    { label: 'Next 3 Months', detail: 'If you’d like, add small, repeatable changes—like extra walks or simple strength sessions—and see how your body responds.' },
+    { label: 'Ongoing', detail: 'Revisit this snapshot occasionally to reflect on trends and adjust in ways that support your everyday life.' },
   ];
 
   return { fitnessAge, ageDifference, status, interpretation, recommendations, plan };
@@ -300,14 +303,14 @@ export default function FitnessAgeEstimatorVO2MaxBMI() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fitness age</p>
                 <p className="text-2xl font-semibold text-primary">{result.fitnessAge.toFixed(0)} years</p>
-                <p className="text-xs text-muted-foreground">Estimated biological age</p>
+                <p className="text-xs text-muted-foreground">A rough fitness‑focused age estimate from this model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Age difference</p>
                 <p className="text-2xl font-semibold text-primary">
                   {result.ageDifference > 0 ? '+' : ''}{result.ageDifference.toFixed(0)} years
                 </p>
-                <p className="text-xs text-muted-foreground">Positive = younger fitness age</p>
+                <p className="text-xs text-muted-foreground">Shows how this estimate compares with your calendar age (positive = “younger” in the model).</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -393,7 +396,7 @@ export default function FitnessAgeEstimatorVO2MaxBMI() {
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().vo2max ?? 0) > (50 - ((form.getValues().chronologicalAge ?? 0) - 25) * 0.5) ? 'Above' : 'Below')} expected
                 </p>
-                <p className="text-xs text-muted-foreground">For your age</p>
+                <p className="text-xs text-muted-foreground">Compared to a simple age‑based reference curve.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">BMI category</p>
@@ -466,11 +469,15 @@ export default function FitnessAgeEstimatorVO2MaxBMI() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates fitness age from chronological age, VO2max, BMI, and activity level.</p>
-          <p>Outputs include fitness age, age difference, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool offers a fitness‑focused age estimate based on your VO2max, BMI, activity level, and chronological age within a simple model.</p>
+          <p>You can use the result as a lighthearted reflection on current habits, not as a medical measure of “biological age,” and adjust routines in ways that feel kind and sustainable.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

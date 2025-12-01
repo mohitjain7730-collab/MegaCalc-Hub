@@ -183,42 +183,47 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const durationMinutes = recommendedIntensity >= 7 ? 60 : recommendedIntensity >= 5 ? 45 : recommendedIntensity >= 3 ? 30 : 20;
   
   let status: ResultPayload['status'] = 'moderate-intensity';
-  let interpretation = 'Moderate intensity workout recommended. Adjust based on how you feel during the session.';
+  let interpretation =
+    'This combination of inputs points toward a moderate workout option today, but your own comfort and cues always come first.';
   
   if (recommendedIntensity >= 7) {
     status = 'high-intensity';
-    interpretation = 'High intensity workout recommended. This phase typically supports higher performance.';
+    interpretation =
+      'Your entries suggest today might suit a higher‑energy session, if that feels good in your body. It is also okay to scale back if it does not.';
   } else if (recommendedIntensity >= 4) {
     status = 'moderate-intensity';
-    interpretation = 'Moderate intensity workout recommended. Good balance of challenge and recovery.';
+    interpretation =
+      'A moderate session could be a reasonable middle ground today, offering some challenge while leaving space for recovery.';
   } else if (recommendedIntensity >= 2) {
     status = 'low-intensity';
-    interpretation = 'Low intensity workout recommended. Focus on movement and recovery rather than intensity.';
+    interpretation =
+      'A lighter‑intensity day may feel more supportive right now, focusing on gentle movement and recovery rather than pushing hard.';
   } else {
     status = 'rest';
-    interpretation = 'Rest day recommended. Prioritize recovery, gentle movement, or light stretching if desired.';
+    interpretation =
+      'Today could be a good candidate for rest or very gentle movement, if that aligns with how you actually feel and what your life allows.';
   }
 
   const recommendations = [
     values.phase === 'menstrual'
-      ? 'During menstrual phase, prioritize light movement (walking, yoga, stretching) to help with cramps and mood.'
+      ? 'During menstrual days, many people find that light movement (walking, yoga, stretching) feels kinder on the body and can sometimes ease cramps and mood.'
       : values.phase === 'follicular' || values.phase === 'ovulation'
-      ? 'Follicular and ovulation phases are ideal for higher intensity workouts. Take advantage of increased energy and strength.'
-      : 'Luteal phase may require lighter intensity. Listen to your body and adjust as needed.',
+      ? 'Follicular and ovulation phases often come with more natural energy; if that fits your experience, you can explore somewhat higher‑intensity sessions here.'
+      : 'In the luteal phase, some people prefer to soften intensity or build in more recovery—listening to your own signals is more important than following a fixed plan.',
     values.painLevel >= 6
-      ? 'High pain levels suggest rest or very light activity. Avoid intense workouts until pain subsides.'
-      : 'Pain levels are manageable. Proceed with recommended intensity but stop if pain worsens.',
-    'Track your workouts and how you feel in each phase to identify personal patterns and optimize your routine.',
+      ? 'If pain feels high, it may be kinder to favor rest or only very light movement until things ease.'
+      : 'If pain feels low and manageable, you can try today’s suggestion but always pause or stop if discomfort grows.',
+    'Noticing how different kinds of movement feel in each phase over time can help you design a routine that truly fits you.',
   ];
   
   if (status === 'rest') {
-    recommendations.push('Use rest days for recovery, gentle stretching, or light activities like walking.');
+    recommendations.push('On days that lean toward rest, you might lean into non-exercise supports like extra sleep, nourishing food, or calming time if possible.');
   }
 
   const plan = [
-    { label: 'Today', detail: `Follow ${status.replace('-', ' ')} workout plan: ${workoutType} for ${durationMinutes} minutes.` },
-    { label: 'This Week', detail: `Adjust workouts based on phase transitions. Track energy and performance in each phase.` },
-    { label: 'Ongoing', detail: 'Build a phase-specific workout routine that aligns with your cycle and fitness goals.' },
+    { label: 'Today', detail: `Use this suggestion as a starting idea: ${workoutType} for around ${durationMinutes} minutes, then freely shorten, lengthen, or swap based on how you feel.` },
+    { label: 'This Week', detail: 'Gently notice how your energy, pain, and mood shift across the week and let that inform when you go harder or softer.' },
+    { label: 'Ongoing', detail: 'Over time, shape a cycle-aware movement routine that feels sustainable, kind, and genuinely helpful for you.' },
   ];
 
   return { recommendedIntensity, workoutType, durationMinutes, status, interpretation, recommendations, plan };
@@ -366,7 +371,7 @@ export default function MenstrualPhaseWorkoutIntensityPlanner() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recommended intensity</p>
                 <p className="text-2xl font-semibold text-primary">{result.recommendedIntensity.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">Out of 10</p>
+                <p className="text-xs text-muted-foreground">A 1–10 suggestion from this model—your own comfort is more important.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Workout type</p>
@@ -535,11 +540,16 @@ export default function MenstrualPhaseWorkoutIntensityPlanner() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates recommended workout intensity, type, and duration from cycle day, phase, energy level, pain level, and fitness goal.</p>
-          <p>Outputs include recommended intensity, workout type, duration, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool suggests a workout intensity, type, and rough duration based on your cycle phase, energy, pain level, and goals in this simple model.</p>
+          <p>Treat the outputs as flexible ideas—not rules—and adapt them to what feels safe and supportive for your body, ideally alongside any guidance from your care team.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights only. It is not a medical or training
+        prescription. For pain, injury, or specific health conditions, please consult a qualified professional before
+        changing your exercise routine.
+      </p>
     </div>
   );
 }

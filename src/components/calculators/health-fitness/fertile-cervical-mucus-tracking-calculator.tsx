@@ -173,26 +173,29 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const ovulationProximity = clamp((fertilityScore * 0.7) + (dayProximity * 0.3), 0, 100);
 
   let status: ResultPayload['status'] = 'not-fertile';
-  let interpretation = 'Cervical mucus indicates low fertility. Continue tracking daily to identify fertile window.';
+  let interpretation =
+    'These observations point to mucus that is less typical of the higher‑fertility part of the cycle. Continuing to track can help you learn your own patterns over time.';
 
   if (fertilityScore >= 60 && (values.consistency === 'watery' || values.consistency === 'egg-white')) {
     status = 'fertile';
-    interpretation = 'Fertile cervical mucus detected! This is the optimal time for conception. Ovulation is likely within 1-2 days.';
+    interpretation =
+      'Your entries look similar to what many people notice near their more fertile days. This is still just one sign, and every body is different.';
   } else if (fertilityScore >= 40 || values.consistency === 'creamy') {
     status = 'approaching-fertile';
-    interpretation = 'Mucus indicates approaching fertile window. Continue daily tracking—fertile mucus may appear soon.';
+    interpretation =
+      'Your mucus pattern may be moving toward a more fertile phase. Gently watching how it shifts over the next days can offer more insight.';
   }
 
   const recommendations = [
-    'Check cervical mucus daily, especially around days 10-16 of your cycle when ovulation typically occurs.',
-    'Look for egg-white consistency (clear, stretchy, abundant) as the strongest sign of peak fertility.',
-    'Combine mucus tracking with OPKs (ovulation predictor kits) or BBT for highest accuracy.',
+    'If you choose to track, observing cervical mucus at about the same times each day can help you notice your own rhythm.',
+    'Changes toward clearer, stretchier, or more abundant mucus often line up with more fertile days for many people, but not always for everyone.',
+    'You can combine mucus notes with other signs (like OPKs or temperature) if you want a broader view of your cycle pattern.',
   ];
   if (status === 'fertile') {
-    recommendations.push('This is the optimal time for conception. Fertile mucus helps sperm survive and travel to the egg.');
+    recommendations.push('If you are exploring conception, you might choose to pay extra attention to this part of your cycle while remembering timing is never guaranteed.');
   }
   if (status === 'approaching-fertile') {
-    recommendations.push('Start using OPKs if available. Fertile mucus should appear within 1-3 days if ovulation is approaching.');
+    recommendations.push('If you like, this may be a time to begin or continue using OPKs or other methods you’re comfortable with, alongside mucus tracking.');
   }
 
   const plan = [
@@ -347,12 +350,12 @@ export default function FertileCervicalMucusTrackingCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fertility score</p>
                 <p className="text-2xl font-semibold text-primary">{result.fertilityScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A 0–100 pattern score from this model, based on the mucus details you entered.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Ovulation proximity</p>
                 <p className="text-2xl font-semibold text-primary">{result.ovulationProximity.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Out of 100</p>
+                <p className="text-xs text-muted-foreground">A rough indication of how “ovulation‑like” this snapshot appears in the model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -437,14 +440,14 @@ export default function FertileCervicalMucusTrackingCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {form.getValues().consistency === 'egg-white' ? 'Peak fertile' : form.getValues().consistency === 'watery' ? 'Fertile' : form.getValues().consistency === 'creamy' ? 'Approaching' : 'Not fertile'}
                 </p>
-                <p className="text-xs text-muted-foreground">Based on consistency</p>
+                <p className="text-xs text-muted-foreground">A simple label based on the consistency description you selected.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Optimal timing</p>
                 <p className="text-xl font-semibold text-primary">
                   {result.status === 'fertile' ? 'Now' : result.status === 'approaching-fertile' ? '1-3 days' : 'Continue tracking'}
                 </p>
-                <p className="text-xs text-muted-foreground">For conception</p>
+                <p className="text-xs text-muted-foreground">An approximate window only—your body’s actual timing may differ.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Tracking accuracy</p>
@@ -510,11 +513,15 @@ export default function FertileCervicalMucusTrackingCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates fertility score and ovulation proximity from cervical mucus observations (score, consistency, amount, stretchiness) and cycle day.</p>
-          <p>Outputs include fertility score, ovulation proximity, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>This tool summarizes your cervical mucus observations and cycle day into a simple pattern score and an estimated proximity to more fertile days.</p>
+          <p>You can use these outputs as one lens on your cycle alongside your own tracking and any advice from reproductive health professionals.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and educational insights only. It is not a diagnostic, fertility, or
+        contraceptive tool. For contraception, conception planning, or cycle concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }
