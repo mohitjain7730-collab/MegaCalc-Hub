@@ -159,18 +159,6 @@ export const categories: Category[] = [
     Icon: 'FlaskConical',
   },
   {
-    name: 'Cognitive & Psychology',
-    slug: 'cognitive-psychology',
-    description: 'Explore aspects of cognition and personality.',
-    Icon: 'BrainCircuit',
-  },
-  {
-    name: 'Genetic & Ancestry',
-    slug: 'genetic-ancestry',
-    description: 'Explore your heritage and genetic traits with these tools.',
-    Icon: 'GitBranch',
-  },
-  {
     name: 'Education',
     slug: 'education',
     description: 'Tools for students and teachers, from grades to study time.',
@@ -211,24 +199,6 @@ export const categories: Category[] = [
     slug: 'business-startup',
     description: 'Calculators for profit margin, breakeven, and more.',
     Icon: 'Briefcase',
-  },
-  {
-    name: 'Crypto & Web3',
-    slug: 'crypto-web3',
-    description: 'Track your crypto assets and blockchain metrics.',
-    Icon: 'Bitcoin',
-  },
-  {
-    name: 'Parenting',
-    slug: 'parenting',
-    description: 'Calculators for pregnancy, child growth, and costs.',
-    Icon: 'Baby',
-  },
-  {
-    name: 'Sports & Training',
-    slug: 'sports-training',
-    description: 'Optimize your training with pace and performance calculators.',
-    Icon: 'Dumbbell',
   },
   {
     name: 'Time & Date',

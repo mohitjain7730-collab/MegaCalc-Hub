@@ -344,39 +344,14 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
                 </>
             ) : null}
 
-            {categorySlug === 'sports-training' ? (
-                <>
-                    <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Football / Soccer</h2>
-                        {renderCalculatorGrid(footballSoccerCalculators, categorySlug, "No football/soccer calculators found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Basketball</h2>
-                        {renderCalculatorGrid(basketballCalculators, categorySlug, "No basketball calculators found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Tennis</h2>
-                        {renderCalculatorGrid(tennisCalculators, categorySlug, "No tennis calculators found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Baseball</h2>
-                        {renderCalculatorGrid(baseballCalculators, categorySlug, "No baseball calculators found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Volleyball</h2>
-                        {renderCalculatorGrid(volleyballCalculators, categorySlug, "No volleyball calculators found.")}
-                    </div>
-                </>
-            ) : null}
-
-            {otherCalculators.length > 0 && (categorySlug === 'conversions' || categorySlug === 'sports-training') && (
+            {otherCalculators.length > 0 && categorySlug === 'conversions' && (
                  <div>
                     <div className="my-8"/>
                     {renderCalculatorGrid(otherCalculators, categorySlug, "")}
                 </div>
             )}
 
-            {(categorySlug !== 'conversions' && categorySlug !== 'sports-training' && filteredCalculators.length > 0) && (
+            {(categorySlug !== 'conversions' && filteredCalculators.length > 0) && (
                 <div>
                     {renderCalculatorGrid(filteredCalculators, categorySlug, "")}
                 </div>
