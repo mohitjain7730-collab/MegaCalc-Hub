@@ -41,16 +41,16 @@ const plan = (): { week: number; focus: string }[] => [
 ];
 
 const faqs: [string, string][] = [
-  ['What is Heart Rate Variability (HRV)?', 'HRV measures the variation in time between heartbeats. Higher HRV generally indicates better autonomic nervous system balance, recovery, and stress resilience.'],
-  ['What is RMSSD?', 'RMSSD (Root Mean Square of Successive Differences) is a time-domain HRV metric that reflects parasympathetic (rest-and-digest) nervous system activity.'],
-  ['How is HRV score calculated?', 'The score compares your RMSSD to age-expected values. Higher RMSSD relative to age expectations results in a higher HRV score (0–100 scale).'],
-  ['What is a good HRV score?', 'Scores above 50 are generally good, above 80 excellent. However, track your own trends over time rather than comparing to others, as individual baselines vary.'],
-  ['How do I measure HRV?', 'Use a chest strap heart rate monitor or smartwatch with HRV capability. Measure consistently at the same time (e.g., upon waking) under similar conditions.'],
-  ['Why does HRV vary day to day?', 'HRV fluctuates based on stress, sleep, exercise, recovery, illness, and lifestyle factors. Track trends over weeks rather than focusing on single readings.'],
-  ['Can I improve my HRV?', 'Yes, through quality sleep (7–9 hours), stress management (meditation, breathing), regular exercise, limiting alcohol/caffeine, and maintaining consistent routines.'],
-  ['Does age affect HRV?', 'Yes, HRV typically decreases with age. The calculator adjusts for age to provide meaningful comparisons across different age groups.'],
-  ['When should I measure HRV?', 'Measure at consistent times, ideally upon waking or during rest periods. Avoid measuring immediately after exercise or during high stress.'],
-  ['Is low HRV dangerous?', 'Low HRV may indicate poor recovery or high stress, but it\'s not inherently dangerous. Focus on improving lifestyle factors and consult healthcare providers if concerned.'],
+      ['What is heart rhythm variability?', 'Heart rhythm variability simply describes how the time between beats naturally changes from moment to moment. Many people use it as a gentle wellness signal for how rested or stressed their body feels.'],
+      ['What is RMSSD?', 'RMSSD (Root Mean Square of Successive Differences) is one way devices summarize heartbeat changes over time. You can think of it as a raw “variation” number your watch or strap can show you.'],
+      ['How is this wellness score calculated?', 'The score compares your RMSSD to a simple age‑based reference and scales it to 0–100 so it is easier to read as a personal wellness index.'],
+      ['Is there a “good” score?', 'Rather than chasing a perfect number, it’s more helpful to notice your own trends over time—what makes your score drift up or down when you change sleep, stress, or movement.'],
+      ['How do I measure RMSSD?', 'Most people use a chest strap heart monitor, smartwatch, or wellness app. Try to measure in similar conditions (for example, seated and relaxed at roughly the same time of day).'],
+      ['Why does the score vary day to day?', 'Changes in stress, sleep, movement, hydration, and even heavy meals can shift the score. Looking at weekly patterns is usually more helpful than focusing on a single day.'],
+      ['Can lifestyle habits influence this score?', 'Many people see a more stable score when they sleep consistently, manage stress gently (breathing, walks, hobbies), move their body regularly, and limit very late caffeine or screen time.'],
+      ['Does age matter here?', 'This tool lightly adjusts the score based on age so that it acts as a relative wellness guide rather than a performance test.'],
+      ['When is a good time to check?', 'Checking in calm conditions—often in the morning or during a quiet break—helps you compare like with like over time.'],
+      ['Is this a medical test?', 'No. It is a personal wellness insight based on heartbeat variation, not a medical test or diagnosis.'],
 ];
 
 const understandingInputs = [
@@ -59,23 +59,25 @@ const understandingInputs = [
 ];
 
 const interpret = (score: number) => {
-  if (score >= 80) return 'Excellent HRV—well recovered and strong autonomic balance. Maintain current healthy habits.';
-  if (score >= 50) return 'Good HRV—solid recovery status. Continue stress management and recovery practices.';
-  if (score >= 30) return 'Fair HRV—monitor stress and recovery. Focus on sleep, stress management, and adequate rest.';
-  return 'Poor HRV—prioritize recovery. Focus on sleep, stress reduction, and reducing training load if applicable.';
+  if (score >= 80) return 'Your heart rhythm variability looks very strong for this snapshot. Keep leaning on the routines that help you feel rested and grounded.';
+  if (score >= 50) return 'Your wellness score suggests a generally supportive balance between demand and recovery. Small tweaks to sleep and stress habits can still make it even smoother.';
+  if (score >= 30) return 'Your wellness score is in a middle range. This can be a gentle nudge to protect sleep, add small movement breaks, and create simple wind‑down time.';
+  return 'Your current wellness score is on the lower side for this moment. It may be a sign to ease up a little, protect rest, and add small calming habits into your day.';
 };
 
 const recommendations = (score: number) => [
-  'Prioritize 7–9 hours of quality sleep per night with consistent sleep schedule',
-  score < 50 ? 'Increase stress management: daily meditation (10–20 min), breathing exercises, or relaxation techniques' : 'Maintain current stress management practices',
-  'Engage in regular aerobic exercise (3–4 sessions/week) but allow adequate recovery between intense sessions',
-  'Limit alcohol and caffeine, especially in the evening, as they can negatively impact HRV',
+  'Protect a fairly regular sleep window where you feel you can wind down, sleep, and wake at similar times most days.',
+  score < 50
+    ? 'Experiment with one simple relaxation habit most days (for example 5–10 minutes of calm breathing, a short walk, or quiet reading without screens).'
+    : 'Keep the small relaxation habits that already seem to work for you and revisit them during busier weeks.',
+  'Include light to moderate movement on most days—such as walking, stretching, or gentle exercise—paired with at least one easier day each week.',
+  'Notice how late‑day caffeine, heavy meals, or intense screen time affect your wind‑down and adjust them if they seem to make rest harder.',
 ];
 
 const warningSigns = () => [
-  'HRV is an indicator, not a diagnosis. Consult healthcare providers if you have cardiovascular concerns or symptoms.',
-  'Persistent low HRV despite lifestyle improvements may warrant medical evaluation.',
-  'Avoid overtraining—excessive exercise without recovery can lower HRV.',
+  'This heart rhythm wellness score is a general lifestyle insight, not a diagnosis or medical evaluation.',
+  'If you feel unwell, dizzy, short of breath, or notice unexpected changes in your health, it is important to talk with a qualified professional.',
+  'Treat this tool as one reflection point among many—your own sense of energy, mood, and comfort matters most.',
 ];
 
 export default function HeartRateVariabilityHrvScoreCalculator() {
@@ -192,10 +194,10 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
         </div>
       )}
 
-      <Card>
+          <Card>
         <CardHeader>
           <CardTitle>Understanding the Inputs</CardTitle>
-          <CardDescription>Measure consistently for reliable HRV tracking</CardDescription>
+          <CardDescription>Use the same conditions each time for a fair comparison</CardDescription>
         </CardHeader>
         <CardContent>
           <ul className="space-y-2">{understandingInputs.map((it,i)=>(<li key={i}><span className="font-semibold text-foreground">{it.label}:</span><span className="text-sm text-muted-foreground"> {it.description}</span></li>))}</ul>
@@ -205,32 +207,44 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Related Calculators</CardTitle>
-          <CardDescription>Complementary tools for recovery and stress management</CardDescription>
+          <CardDescription>Optional tools that look at nearby lifestyle patterns</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/recovery-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</Link></h4><p className="text-sm text-muted-foreground">Assess cardiovascular recovery after exercise.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/stress-level-self-assessment-calculator" className="text-primary hover:underline">Stress Level Assessment</Link></h4><p className="text-sm text-muted-foreground">Evaluate stress levels and coping strategies.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/meditation-breathing-rate-calculator" className="text-primary hover:underline">Meditation Breathing Rate</Link></h4><p className="text-sm text-muted-foreground">Practice breathing techniques to improve HRV.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cortisol-stress-response-estimator" className="text-primary hover:underline">Cortisol Stress Response</Link></h4><p className="text-sm text-muted-foreground">Understand stress hormone response patterns.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/recovery-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rhythm Check-In</Link></h4><p className="text-sm text-muted-foreground">Reflect on how quickly your pulse settles after effort.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/stress-level-self-assessment-calculator" className="text-primary hover:underline">Daily Stress Tendency Check-In</Link></h4><p className="text-sm text-muted-foreground">Gently score how overloaded or steady your day feels.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/meditation-breathing-rate-calculator" className="text-primary hover:underline">Meditation Breathing Rhythm Helper</Link></h4><p className="text-sm text-muted-foreground">Explore a comfortable breathing pace for calmer sessions.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cortisol-stress-response-estimator" className="text-primary hover:underline">Daily Stress & Recovery Balance Score</Link></h4><p className="text-sm text-muted-foreground">Look at how your sleep, movement, and downtime stack together.</p></div>
           </div>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Complete Guide: Understanding HRV</CardTitle></CardHeader>
+        <CardHeader><CardTitle>Complete Guide: Heart Rhythm Wellness as a Gentle Check-In</CardTitle></CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>HRV measures variation in time between heartbeats, reflecting autonomic nervous system balance. Higher HRV indicates better recovery, stress resilience, and overall health. Improve HRV through quality sleep, stress management, regular exercise, and healthy lifestyle habits. Track trends over weeks rather than focusing on daily fluctuations.</p>
+          <p>
+            Heart rhythm variability can be a friendly, numbers-based way to notice how your body is responding to everyday life. Instead of treating it as a
+            test you must “pass,” you can use it as a soft nudge toward habits that leave you feeling more rested, clear, and steady.
+          </p>
+          <p>
+            Over time, many people see more stable patterns when they combine enough sleep, small movement breaks, nourishing food, and regular moments of
+            calm. This tool is just one lens on that bigger picture—how you feel in your own body is always the most important signal.
+          </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Detailed, SEO-oriented answers</CardDescription>
+          <CardDescription>Supportive, wellness‑oriented answers</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">{faqs.map(([q,a],i)=>(<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}</CardContent>
       </Card>
+
+      <p className="text-xs text-muted-foreground mt-6">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological
+        diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

@@ -31,54 +31,52 @@ type ResultPayload = {
 };
 
 const plan = (): { week: number; focus: string }[] => [
-  { week: 1, focus: 'Assess current sleep, stress, exercise, and meditation habits to establish baseline' },
-  { week: 2, focus: 'Prioritize 7–9 hours of quality sleep per night with consistent bedtime routine' },
-  { week: 3, focus: 'Add daily stress management: 10–20 minutes meditation or breathing exercises' },
-  { week: 4, focus: 'Include regular exercise (3–5 days/week) but avoid excessive training' },
-  { week: 5, focus: 'Limit caffeine and alcohol, especially in the evening' },
-  { week: 6, focus: 'Practice relaxation techniques: progressive muscle relaxation or yoga' },
-  { week: 7, focus: 'Reassess stress response score and compare improvements' },
-  { week: 8, focus: 'Maintain healthy habits and continue monitoring stress levels' },
+  { week: 1, focus: 'Gently notice your current sleep, stress, movement, and unwind habits without judging them.' },
+  { week: 2, focus: 'Protect a more consistent sleep window and add one small wind‑down cue before bed.' },
+  { week: 3, focus: 'Try a brief daily reset (5–15 minutes) such as breathing, stretching, or a quiet walk.' },
+  { week: 4, focus: 'Include light to moderate movement on most days while still leaving space for rest.' },
+  { week: 5, focus: 'Experiment with earlier caffeine and lighter evening screens to see how you feel.' },
+  { week: 6, focus: 'Keep one simple “pause ritual” for busy days (for example three slow breaths before big tasks).' },
+  { week: 7, focus: 'Check in with this score again and reflect on any changes in how your days feel overall.' },
+  { week: 8, focus: 'Keep the habits that feel sustainable and adjust anything that feels rigid or stressful.' },
 ];
 
 const faqs: [string, string][] = [
-  ['What is cortisol?', 'Cortisol is a stress hormone produced by the adrenal glands. It helps regulate metabolism, immune function, and stress response. Chronic elevation can lead to health issues.'],
-  ['How is cortisol stress response estimated?', 'This calculator estimates stress response based on lifestyle factors: sleep hours, self-reported stress level, exercise frequency, and meditation practice.'],
-  ['What is a good stress response score?', 'Higher scores (70+) indicate better stress management. Lower scores suggest higher stress hormone activity and may benefit from lifestyle interventions.'],
-  ['What causes high cortisol?', 'Chronic stress, poor sleep, excessive exercise, caffeine, alcohol, and lack of recovery can elevate cortisol levels.'],
-  ['How can I lower my cortisol?', 'Improve sleep (7–9 hours), practice stress management (meditation, breathing), engage in moderate exercise, limit caffeine/alcohol, and maintain consistent routines.'],
-  ['Does exercise affect cortisol?', 'Yes. Moderate exercise can help manage cortisol, but excessive or intense training without recovery can elevate it. Balance is key.'],
-  ['Can meditation reduce cortisol?', 'Yes, regular meditation and breathing exercises have been shown to reduce cortisol levels and improve stress response.'],
-  ['How much sleep do I need?', 'Most adults need 7–9 hours of quality sleep per night. Inadequate sleep can significantly elevate cortisol levels.'],
-  ['Is high cortisol dangerous?', 'Chronic high cortisol can contribute to weight gain, sleep issues, mood problems, and increased disease risk. Managing stress is important.'],
-  ['Should I get my cortisol tested?', 'If you have persistent symptoms of high cortisol (fatigue, weight gain, sleep issues), consult healthcare providers for evaluation and testing.'],
+  ['What does this Daily Stress & Recovery Balance tool show?', 'It offers a simple score that reflects how your recent sleep, stress, movement, and unwind time might be working together on a typical day.'],
+  ['Why does it only use lifestyle inputs?', 'This tool is intentionally non‑clinical. It focuses on everyday habits you can observe and adjust yourself rather than medical tests or diagnoses.'],
+  ['Can this score tell me if something is wrong with my health?', 'No. It is not a medical test and cannot detect illnesses. It is only a gentle reflection of self‑reported routines and how restoring they may feel.'],
+  ['How often should I use this?', 'Many people like to check once every week or two, especially when they are changing their schedule, workload, or bedtime routine.'],
+  ['What if my score feels low even when I am trying?', 'That can simply mean your current season is demanding. You might experiment with one small change at a time—such as slightly more sleep or one extra unwind pause—and see how you feel over a few days.'],
+  ['Is this tool a substitute for talking to a professional?', 'No. It is only an educational wellness helper. If you are worried about your physical or emotional health, a qualified professional is the best person to guide you.'],
 ];
 
 const understandingInputs = [
-  { label: 'Sleep Hours (per night)', description: 'Average hours of sleep per night. Most adults need 7–9 hours for optimal cortisol regulation.' },
-  { label: 'Stress Level (1–10)', description: 'Self-reported stress level where 1 is minimal stress and 10 is extreme stress.' },
-  { label: 'Exercise Days (per week)', description: 'Number of days per week you engage in physical exercise (0–7).' },
-  { label: 'Meditation (minutes/day)', description: 'Daily minutes spent in meditation, breathing exercises, or relaxation practices.' },
+  { label: 'Sleep Hours (per night)', description: 'Your average nightly sleep over the last week. Many adults feel best around 7–9 hours, but needs are individual.' },
+  { label: 'Stress Level (1–10)', description: 'How intense your days have felt recently, on a simple 1–10 self‑rating from very light to very heavy.' },
+  { label: 'Exercise Days (per week)', description: 'Roughly how many days you move your body in a way that feels at least a little active (walking, stretching, workouts, etc.).' },
+  { label: 'Meditation / unwind minutes (per day)', description: 'Minutes you usually spend in calming activities like breathing, reading, gentle stretching, or quiet hobbies.' },
 ];
 
 const interpret = (score: number) => {
-  if (score >= 80) return 'Low stress response—well managed. Your lifestyle supports healthy cortisol regulation.';
-  if (score >= 50) return 'Moderate stress response—room for improvement. Focus on sleep, stress management, and recovery.';
-  if (score >= 30) return 'Elevated stress response—prioritize recovery. Increase sleep, stress management, and reduce stressors.';
-  return 'High stress response—focus on recovery. Immediate attention to sleep, stress reduction, and lifestyle modifications needed.';
+  if (score >= 80) return 'Your daily habits currently look very supportive of unwinding and recharging after stress.';
+  if (score >= 50) return 'Your balance between demands and recovery looks mixed, with room for gentle upgrades to sleep and reset time.';
+  if (score >= 30) return 'Your day‑to‑day pattern may feel a bit heavy right now. This can be a good moment to add small pockets of rest and movement.';
+  return 'Your current pattern may feel especially draining. Treat this as a kind reminder to go slower where you can and to stack in extra care where life allows.';
 };
 
 const recommendations = (score: number) => [
-  'Prioritize 7–9 hours of quality sleep per night with consistent sleep schedule',
-  score < 50 ? 'Increase stress management: daily meditation (10–20 min), breathing exercises, or relaxation techniques' : 'Maintain current stress management practices',
-  'Engage in regular moderate exercise (3–5 days/week) but avoid excessive training without recovery',
-  'Limit caffeine and alcohol, especially in the evening, as they can disrupt cortisol regulation',
+  'Give yourself permission to wind down before bed with a simple routine (dim lights, slower breathing, less scrolling).',
+  score < 50
+    ? 'Experiment with one extra calming pause in your day—such as a short outside walk, quiet tea break, or brief guided relaxation.'
+    : 'Keep up the calming habits that already help you feel more steady, and revisit them during busier weeks.',
+  'Add gentle movement on most days, even if it is just a few minutes of stretching or walking between tasks.',
+  'Notice which habits (late caffeine, back‑to‑back meetings, constant notifications) make you feel more wired and see where tiny adjustments feel realistic.',
 ];
 
 const warningSigns = () => [
-  'This calculator is an educational estimate, not a medical diagnosis. Consult healthcare providers for cortisol testing if needed.',
-  'Persistent symptoms like chronic fatigue, weight gain, sleep issues, or mood problems may warrant medical evaluation.',
-  'Avoid excessive exercise or training without adequate recovery, as this can elevate cortisol.',
+  'This tool is a general wellness reflection only and does not measure hormones or diagnose any condition.',
+  'If you notice ongoing exhaustion, sleep problems, or mood changes that worry you, it is important to talk with a qualified professional.',
+  'Always treat this score as a gentle check‑in rather than a verdict—your own experience of your days matters most.',
 ];
 
 export default function CortisolStressResponseEstimator() {
@@ -235,7 +233,7 @@ export default function CortisolStressResponseEstimator() {
       <Card>
         <CardHeader>
           <CardTitle>Understanding the Inputs</CardTitle>
-          <CardDescription>Honest self-assessment provides more accurate stress response estimation</CardDescription>
+          <CardDescription>Simple self‑check questions about how your days feel</CardDescription>
         </CardHeader>
         <CardContent>
           <ul className="space-y-2">{understandingInputs.map((it,i)=>(<li key={i}><span className="font-semibold text-foreground">{it.label}:</span><span className="text-sm text-muted-foreground"> {it.description}</span></li>))}</ul>
@@ -245,32 +243,44 @@ export default function CortisolStressResponseEstimator() {
       <Card>
         <CardHeader>
           <CardTitle>Related Calculators</CardTitle>
-          <CardDescription>Complementary tools for stress and recovery management</CardDescription>
+          <CardDescription>Companion tools for everyday balance and rest</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/heart-rate-variability-hrv-score-calculator" className="text-primary hover:underline">HRV Score</Link></h4><p className="text-sm text-muted-foreground">Monitor autonomic nervous system balance and recovery.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/sleep-debt-calculator-hf" className="text-primary hover:underline">Sleep Debt</Link></h4><p className="text-sm text-muted-foreground">Track sleep patterns and recovery needs.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/meditation-breathing-rate-calculator" className="text-primary hover:underline">Meditation Breathing Rate</Link></h4><p className="text-sm text-muted-foreground">Practice breathing techniques for stress reduction.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/stress-level-self-assessment-calculator" className="text-primary hover:underline">Stress Level Assessment</Link></h4><p className="text-sm text-muted-foreground">Evaluate overall stress levels and coping strategies.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/heart-rate-variability-hrv-score-calculator" className="text-primary hover:underline">Heart Rhythm Wellness Score</Link></h4><p className="text-sm text-muted-foreground">See how your heartbeat variation trends alongside your routines.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/sleep-debt-calculator-hf" className="text-primary hover:underline">Sleep Balance Check-In</Link></h4><p className="text-sm text-muted-foreground">Compare recent sleep time to your chosen target.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/meditation-breathing-rate-calculator" className="text-primary hover:underline">Meditation Breathing Rhythm Helper</Link></h4><p className="text-sm text-muted-foreground">Try a breathing pace that feels comfortable and calming.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/stress-level-self-assessment-calculator" className="text-primary hover:underline">Daily Stress Tendency Check-In</Link></h4><p className="text-sm text-muted-foreground">Gently rate how overloaded or steady recent days feel.</p></div>
           </div>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader><CardTitle>Complete Guide: Understanding Cortisol and Stress</CardTitle></CardHeader>
+        <CardHeader><CardTitle>Complete Guide: Balancing Daily Demands and Recovery</CardTitle></CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Cortisol is a stress hormone that helps regulate metabolism, immune function, and stress response. Chronic elevation can contribute to health issues. Manage cortisol through quality sleep (7–9 hours), stress management (meditation, breathing), regular moderate exercise, limiting caffeine/alcohol, and maintaining consistent routines. If you have persistent symptoms, consult healthcare providers for evaluation.</p>
+          <p>
+            Many people find that how they sleep, move, pause, and connect during the day shapes how “wired” or “settled” they feel. Instead of trying to
+            remove all stress, it can be more helpful to build small, reliable pockets of recovery into your routine.
+          </p>
+          <p>
+            This page is meant as a gentle companion as you experiment: going to bed a bit more consistently, sprinkling in short walks or stretches, taking
+            fuller breaths before big tasks, and keeping some time each week that is just for you. Small, steady shifts often add up more than big overhauls.
+          </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Detailed, SEO-oriented answers</CardDescription>
+          <CardDescription>Supportive answers about using this as a wellness tool</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">{faqs.map(([q,a],i)=>(<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}</CardContent>
       </Card>
+
+      <p className="text-xs text-muted-foreground mt-6">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological
+        diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }
