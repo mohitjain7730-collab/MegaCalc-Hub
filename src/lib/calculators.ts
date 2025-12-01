@@ -5208,6 +5208,51 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
   },
   {
+    id: 7100,
+    name: 'Sleep Consistency Score Calculator',
+    description: 'Score the regularity of your sleep schedule from bedtime, wake time, and duration variability plus consistent nights per week.',
+    slug: 'sleep-consistency-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Sleep Consistency Score Calculator',
+    metaDescription: 'Score the consistency of your sleep and wake times based on timing variability, duration swings, and number of regular nights per week.'
+  },
+  {
+    id: 7101,
+    name: 'Dopamine Reward Sensitivity Index',
+    description: 'Estimate your dopamine reward sensitivity profile from novelty seeking, reward responsiveness, impulsivity, and baseline motivation.',
+    slug: 'dopamine-reward-sensitivity-index-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Dopamine Reward Sensitivity Index Calculator',
+    metaDescription: 'Estimate dopamine-related reward sensitivity from self-rated novelty seeking, reward responsiveness, impulsivity, and long-term motivation.'
+  },
+  {
+    id: 7102,
+    name: 'Digital Burnout Detector',
+    description: 'Estimate digital burnout risk from total and evening screen time, notifications, break frequency, and perceived work stress.',
+    slug: 'digital-burnout-detector',
+    category: 'health-fitness',
+    metaTitle: 'Digital Burnout Detector',
+    metaDescription: 'Detect digital burnout risk based on screen load, interruptions, breaks, and perceived digital work stress to support healthier tech habits.'
+  },
+  {
+    id: 7103,
+    name: 'Flow State Readiness Calculator',
+    description: 'Estimate readiness for a flow state from challenge-skill balance, distractions, energy level, and goal clarity.',
+    slug: 'flow-state-readiness-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Flow State Readiness Calculator',
+    metaDescription: 'Evaluate how ready you are to enter a flow state based on skill-challenge match, distractions, energy, and clarity of goals.'
+  },
+  {
+    id: 7104,
+    name: 'Mental Fatigue Accumulation Tracker',
+    description: 'Track how workload, breaks, sleep, and stress interact to build mental fatigue across a typical day.',
+    slug: 'mental-fatigue-accumulation-tracker',
+    category: 'health-fitness',
+    metaTitle: 'Mental Fatigue Accumulation Tracker',
+    metaDescription: 'Estimate daily mental fatigue accumulation from number and length of focus blocks, recovery time, sleep hours, and baseline stress.'
+  },
+  {
     id: 7000,
     name: 'Wells Score for DVT Probability Calculator',
     description: 'Estimate pre-test probability of deep vein thrombosis (DVT) using the Wells clinical prediction rule.',

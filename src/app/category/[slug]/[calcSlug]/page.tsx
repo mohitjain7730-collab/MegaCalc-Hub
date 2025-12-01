@@ -335,6 +335,19 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'manganese-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/manganese-requirement-calculator')),
     'copper-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/copper-intake-calculator')),
     'uv-exposure-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/uv-exposure-risk-calculator')),
+    'sleep-consistency-score-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/sleep-consistency-score-calculator'),
+    ),
+    'dopamine-reward-sensitivity-index-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/dopamine-reward-sensitivity-index-calculator'),
+    ),
+    'digital-burnout-detector': dynamic(() => import('@/components/calculators/health-fitness/digital-burnout-detector')),
+    'flow-state-readiness-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/flow-state-readiness-calculator'),
+    ),
+    'mental-fatigue-accumulation-tracker': dynamic(
+      () => import('@/components/calculators/health-fitness/mental-fatigue-accumulation-tracker'),
+    ),
     'wells-score-for-dvt-probability-calculator': dynamic(
       () => import('@/components/calculators/health-fitness/wells-score-for-dvt-probability-calculator'),
     ),
