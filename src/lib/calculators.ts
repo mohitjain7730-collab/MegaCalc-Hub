@@ -5208,13 +5208,58 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
   },
   {
-    id: 5049,
+    id: 5100,
     name: 'Hydration Balance with Alcohol Intake Calculator',
     description: 'Calculate hydration balance considering daily water intake, alcohol consumption, body weight, and activity level.',
     slug: 'hydration-balance-with-alcohol-intake-calculator',
     category: 'health-fitness',
     metaTitle: 'Hydration Balance with Alcohol Intake Calculator',
     metaDescription: 'Calculate hydration balance considering daily water intake, alcohol consumption, body weight, and activity level to maintain proper fluid balance.'
+  },
+  {
+    id: 5101,
+    name: 'Albumin-to-Creatinine Ratio Calculator',
+    description: 'Calculate albumin-to-creatinine ratio (ACR) from urine albumin and creatinine levels to assess kidney function.',
+    slug: 'albumin-to-creatinine-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Albumin-to-Creatinine Ratio Calculator',
+    metaDescription: 'Calculate albumin-to-creatinine ratio (ACR) from urine albumin and creatinine levels to assess kidney function and detect early kidney disease.'
+  },
+  {
+    id: 5102,
+    name: 'Calcium Correction for Albumin Calculator',
+    description: 'Calculate corrected calcium level adjusting for serum albumin concentration to assess true calcium status.',
+    slug: 'calcium-correction-for-albumin-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Calcium Correction for Albumin Calculator',
+    metaDescription: 'Calculate corrected calcium level adjusting for serum albumin concentration to assess true calcium status and detect hypocalcemia or hypercalcemia.'
+  },
+  {
+    id: 5103,
+    name: 'Mean Corpuscular Volume (MCV) Calculator',
+    description: 'Calculate mean corpuscular volume (MCV) from hematocrit and red blood cell count to assess red blood cell size and classify anemia.',
+    slug: 'mean-corpuscular-volume-mcv-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Mean Corpuscular Volume (MCV) Calculator',
+    metaDescription: 'Calculate mean corpuscular volume (MCV) from hematocrit and red blood cell count to assess red blood cell size and classify anemia types.'
+  },
+  {
+    id: 5104,
+    name: 'Serum Osmolar Gap Calculator',
+    description: 'Calculate serum osmolar gap from measured osmolality, sodium, glucose, and BUN to detect unmeasured osmoles and assess metabolic status.',
+    slug: 'serum-osmolar-gap-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Serum Osmolar Gap Calculator',
+    metaDescription: 'Calculate serum osmolar gap from measured osmolality, sodium, glucose, and BUN to detect unmeasured osmoles and assess metabolic status.'
+  },
+  {
+    id: 5105,
+    name: 'Corrected QT Interval by Bazett & Fridericia Calculator',
+    description: 'Calculate corrected QT interval (QTc) using Bazett and Fridericia formulas from QT and RR intervals to assess cardiac repolarization and arrhythmia risk.',
+    slug: 'corrected-qt-interval-bazett-fridericia-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Corrected QT Interval by Bazett & Fridericia Calculator',
+    metaDescription: 'Calculate corrected QT interval (QTc) using Bazett and Fridericia formulas from QT and RR intervals to assess cardiac repolarization and arrhythmia risk.'
   },
   {
     id: 5067,
