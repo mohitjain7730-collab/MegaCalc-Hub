@@ -5208,6 +5208,56 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
   },
   {
+    id: 6000,
+    name: 'PaO2/FiO2 Ratio Calculator',
+    description: 'Calculate the PaO2/FiO2 (P/F) ratio from PaO2 and FiO2 to assess oxygenation and ARDS severity.',
+    slug: 'pao2-fio2-ratio-calculator',
+    category: 'health-fitness',
+    metaTitle: 'PaO2/FiO2 Ratio Calculator',
+    metaDescription:
+      'Calculate the PaO2/FiO2 (P/F) ratio from arterial oxygen tension and inspired oxygen fraction to assess oxygenation efficiency and ARDS severity.'
+  },
+  {
+    id: 6001,
+    name: 'Tidal Volume by Ideal Body Weight Calculator',
+    description: 'Calculate ventilator tidal volume from ideal body weight using lung-protective ventilation targets.',
+    slug: 'tidal-volume-by-ideal-body-weight-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Tidal Volume by Ideal Body Weight Calculator',
+    metaDescription:
+      'Calculate ventilator tidal volume from ideal body weight (IBW) using lung-protective 4–8 mL/kg targets for respiratory support planning.'
+  },
+  {
+    id: 6002,
+    name: 'Alveolar Oxygen Gradient Calculator',
+    description: 'Calculate alveolar oxygen (PAO2) and the alveolar–arterial (A–a) oxygen gradient using the alveolar gas equation.',
+    slug: 'alveolar-oxygen-gradient-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Alveolar Oxygen Gradient Calculator',
+    metaDescription:
+      'Calculate alveolar oxygen (PAO2) and the alveolar–arterial (A–a) oxygen gradient from FiO2, PaO2, PaCO2, barometric pressure, and respiratory quotient.'
+  },
+  {
+    id: 6003,
+    name: 'MELD Score (Liver Disease Severity)',
+    description: 'Estimate liver disease severity using an educational MELD-Na score approximation.',
+    slug: 'meld-score-liver-disease-severity-calculator',
+    category: 'health-fitness',
+    metaTitle: 'MELD Score (Liver Disease Severity) Calculator',
+    metaDescription:
+      'Estimate liver disease severity with an educational MELD-Na score approximation based on bilirubin, INR, creatinine, and sodium.'
+  },
+  {
+    id: 6004,
+    name: 'Child-Pugh Score Calculator',
+    description: 'Calculate the Child-Pugh score and class for chronic liver disease.',
+    slug: 'child-pugh-score-calculator',
+    category: 'health-fitness',
+    metaTitle: 'Child-Pugh Score Calculator',
+    metaDescription:
+      'Calculate the Child-Pugh score and class using bilirubin, albumin, INR, ascites, and encephalopathy to stage chronic liver disease severity.'
+  },
+  {
     id: 5100,
     name: 'Hydration Balance with Alcohol Intake Calculator',
     description: 'Calculate hydration balance considering daily water intake, alcohol consumption, body weight, and activity level.',

@@ -335,6 +335,19 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'manganese-requirement-calculator': dynamic(() => import('@/components/calculators/health-fitness/manganese-requirement-calculator')),
     'copper-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/copper-intake-calculator')),
     'uv-exposure-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/uv-exposure-risk-calculator')),
+    'pao2-fio2-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/pao2-fio2-ratio-calculator')),
+    'tidal-volume-by-ideal-body-weight-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/tidal-volume-ideal-body-weight-calculator'),
+    ),
+    'alveolar-oxygen-gradient-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/alveolar-oxygen-gradient-calculator'),
+    ),
+    'meld-score-liver-disease-severity-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/meld-score-liver-disease-severity-calculator'),
+    ),
+    'child-pugh-score-calculator': dynamic(
+      () => import('@/components/calculators/health-fitness/child-pugh-score-calculator'),
+    ),
     'hydration-balance-with-alcohol-intake-calculator': dynamic(() => import('@/components/calculators/health-fitness/hydration-balance-with-alcohol-intake-calculator')),
     'albumin-to-creatinine-ratio-calculator': dynamic(() => import('@/components/calculators/health-fitness/albumin-to-creatinine-ratio-calculator')),
     'calcium-correction-for-albumin-calculator': dynamic(() => import('@/components/calculators/health-fitness/calcium-correction-for-albumin-calculator')),
