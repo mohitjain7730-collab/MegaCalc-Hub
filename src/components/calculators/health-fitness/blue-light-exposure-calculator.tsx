@@ -168,38 +168,49 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const exposurePercent = exposureScore;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your blue light exposure appears manageable. Continue using protective measures and maintaining good screen habits.';
+  let interpretation =
+    'Your current blue‑light pattern looks relatively gentle based on the numbers you entered. You can keep noticing which screen habits feel most supportive for your eyes and sleep.';
 
   if (exposureScore >= 70 || nightHours >= 4) {
     status = 'low';
-    interpretation = 'Your blue light exposure is very high, especially at night. This significantly increases risk of sleep disruption, eye strain, and circadian rhythm problems. Reduce evening screen time and use protective measures immediately.';
+    interpretation =
+      'Your numbers suggest a relatively heavy screen pattern, especially later in the day. You might like to experiment with gentler evening habits—such as shorter sessions, dimmer screens, or more off‑screen winding‑down time—and see how your eyes and sleep feel.';
   } else if (exposureScore >= 50 || nightHours >= 2) {
     status = 'moderate';
-    interpretation = 'Your blue light exposure is elevated, particularly evening exposure. Take steps to reduce nighttime screen use, use blue light filters, and limit evening brightness to protect sleep and eye health.';
+    interpretation =
+      'Your entries point to a fair amount of screen time, particularly in the evening. Small shifts—like softer brightness, enabling night modes, or bringing screens to an earlier time—may help evenings feel calmer.';
   } else if (exposureScore >= 30) {
     status = 'good';
-    interpretation = 'Your blue light exposure is moderate. Continue using protective measures like filters and reduced evening screen time to maintain optimal sleep and eye health.';
+    interpretation =
+      'Your blue‑light pattern looks moderate. With a few simple supports (breaks, lower evening brightness, or wind‑down time away from devices), many people find this feels workable.';
   } else {
     status = 'optimal';
-    interpretation = 'Your blue light exposure is well-managed. Your screen habits and protective measures appear appropriate for maintaining good sleep and eye health.';
+    interpretation =
+      'Your blue‑light pattern looks quite light based on these inputs. You can keep leaning on the habits that already feel good for your eyes and rest.';
   }
 
   const recommendations = [
-    'Use blue light filters: enable night mode or blue light filter settings on all devices, especially in the evening. Software filters can reduce blue light by 20-50%.',
-    'Limit evening screen time: reduce screen use after 6pm, and avoid screens 1-2 hours before bedtime to protect melatonin production and sleep quality.',
-    'Reduce screen brightness: lower brightness settings, especially in the evening, can decrease blue light emission by 20-40% and reduce eye strain.',
+    'Try night‑mode or blue‑shifted display settings on your devices in the evening if they feel easier on your eyes.',
+    'Notice how it feels to gently shorten late‑evening screen time and add a little more off‑screen wind‑down before bed.',
+    'Lowering brightness, especially at night, can make screens feel softer and may ease eye tiredness for some people.',
   ];
   
   if (nightHours >= 2) {
-    recommendations.push('Minimize nighttime exposure: evening and night screen time is particularly harmful for sleep. Set a screen curfew and use alternative activities like reading or relaxation before bed.');
+    recommendations.push(
+      'If a lot of your screen time happens later in the evening, you might experiment with a simple “screen pause” before bed and swap in calm activities like reading or stretching.'
+    );
   }
   
   if (!filterReduction || filterReduction < 30) {
-    recommendations.push('Increase blue light protection: use stronger blue light filters (30-50% reduction), enable night mode on all devices, and consider blue light blocking glasses for evening use.');
+    recommendations.push(
+      'If you rarely use filters, you could try enabling built‑in night modes or a light blue‑shift and see whether your eyes feel more comfortable.'
+    );
   }
   
   if (screenHours >= 10) {
-    recommendations.push('Take regular screen breaks: follow the 20-20-20 rule (every 20 minutes, look at something 20 feet away for 20 seconds) to reduce eye strain and give your eyes rest from blue light.');
+    recommendations.push(
+      'On long screen days, brief movement or “look‑away” breaks can help your eyes and body feel less locked to the screen.'
+    );
   }
 
   const plan = [
@@ -669,11 +680,21 @@ export default function BlueLightExposureCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates blue light exposure from screen hours, night hours, brightness, and filter reduction.</p>
-          <p>Outputs include screen hours, night hours, screen brightness, filter reduction, exposure score, exposure percentage, status, recommendations, an action plan, and supporting metrics.</p>
-          <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+          <p>
+            This tool gives a simple numerical snapshot of the blue‑tinted screen time you entered so you can reflect on your
+            own habits.
+          </p>
+          <p>
+            You can use the score, suggestions, and guide as starting points for small experiments with brightness, timing, and
+            breaks, and then keep what genuinely helps you feel better.
+          </p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

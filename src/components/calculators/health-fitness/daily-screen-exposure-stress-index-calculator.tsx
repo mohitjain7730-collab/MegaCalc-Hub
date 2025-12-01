@@ -157,33 +157,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const attentionBudget = clamp(480 - totalScreen * 18 - values.notificationsPerDay * 0.4 + values.microBreaksPerHour * 10, 60, 480);
 
   let status: ResultPayload['status'] = 'steady';
-  let interpretation = 'Digital demands are manageable. Maintain breaks and app hygiene to stay steady.';
+  let interpretation =
+    'Your current digital load looks relatively manageable based on these entries. You can keep leaning on the breaks and boundaries that already work for you.';
 
   if (stressIndex >= 45) {
     status = 'strained';
-    interpretation = 'Your nervous system is working overtime. Buffer notifications, batch meetings, and reserve morning focus blocks.';
+    interpretation =
+      'Your responses point to a fairly full digital day. It may help to gently buffer notifications, batch some tasks, or add a few more small off‑screen pauses.';
   }
   if (stressIndex >= 70) {
     status = 'overloaded';
-    interpretation = 'Expect tension, headaches, or poor sleep. Mandate off-screen windows and reset app defaults ASAP.';
+    interpretation =
+      'These numbers suggest your day may feel quite packed with screens and pings. You might experiment with protected off‑screen windows, trimming notifications, or lightening meetings where possible.';
   }
 
   const recommendations = [
-    'Silence non-essential alerts after your final meeting.',
-    'Batch similar tasks to avoid constant context switching.',
-    'Schedule two 15-minute screen-free breaks mid-day.',
+    'Try silencing non‑essential alerts for parts of the day so you can focus or rest more easily.',
+    'Group similar tasks together when you can, instead of switching apps and contexts constantly.',
+    'Add one or two short, screen‑free breaks in the middle of your day to reset your body and attention.',
   ];
   if (status === 'strained') {
-    recommendations.push('Adopt “status updates” instead of live meetings for at least one project.');
+    recommendations.push('Where possible, swap some live meetings for written updates to create more breathing room.');
   }
   if (status === 'overloaded') {
-    recommendations.push('Go notification-dark for 24 hours on weekends to decompress your nervous system.');
+    recommendations.push('On a day that feels safe to do so, try longer stretches with most notifications off and notice how that feels.');
   }
 
   const plan = [
-    { label: 'Morning block', detail: 'Start with 60 screen-free minutes for journaling, sunlight, or analog planning.' },
-    { label: 'Midday reset', detail: 'Insert a walking meeting or stretch timer every 90 minutes.' },
-    { label: 'Evening boundary', detail: 'Create a digital sunset two hours before bed with airplane mode or app limits.' },
+    { label: 'Morning block', detail: 'If it fits your life, begin the day with a short screen‑lighter period for sunlight, stretching, or planning on paper.' },
+    { label: 'Midday reset', detail: 'Aim for at least one walking, stretching, or off‑screen break around the middle of your day.' },
+    { label: 'Evening boundary', detail: 'Experiment with a simple “digital sunset” before bed that feels realistic for your schedule.' },
   ];
 
   return { stressIndex, status, interpretation, totalScreen, attentionBudget, recommendations, plan };
@@ -271,19 +274,19 @@ export default function DailyScreenExposureStressIndexCalculator() {
               <ActivitySquare className="h-5 w-5 text-primary" />
               Interactive result & interpretation
             </CardTitle>
-            <CardDescription>Review your stress index and attention budget instantly.</CardDescription>
+            <CardDescription>Review your screen‑time pattern and remaining attention space for the day.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stress index</p>
                 <p className="text-2xl font-semibold text-primary">{result.stressIndex}</p>
-                <p className="text-xs text-muted-foreground">0–34 steady · 35–69 strained · 70+ overloaded</p>
+                <p className="text-xs text-muted-foreground">Rough pattern: 0–34 steady · 35–69 strained · 70+ very full</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Total screen time</p>
                 <p className="text-2xl font-semibold text-primary">{result.totalScreen.toFixed(1)} hrs</p>
-                <p className="text-xs text-muted-foreground">Aim for ≤9 hours total most days.</p>
+                <p className="text-xs text-muted-foreground">Use this number as a reflection point, not a strict target.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Attention budget left</p>
@@ -443,11 +446,15 @@ export default function DailyScreenExposureStressIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator blends screen exposure, notifications, meetings, and breaks into a 0–100 stress index.</p>
-          <p>It outputs the stress index, total screen time, remaining attention budget, personalized recommendations, and an action plan.</p>
-          <p>Formula, steps, additional calculations, related tools, and FAQs are included for quick reference and AI summarization.</p>
+          <p>This calculator blends screen time, notifications, meetings, and breaks into a single index so you can reflect on your digital load.</p>
+          <p>Use the score and ideas as prompts for gentle experiments, keeping only the changes that truly support your day‑to‑day well‑being.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

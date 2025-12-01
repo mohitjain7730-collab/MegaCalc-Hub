@@ -149,33 +149,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recoveryGap = clamp(420 - values.sleepHours * 60 - values.hydrationLiters * 15, -120, 240);
 
   let state: ResultPayload['state'] = 'resilient';
-  let interpretation = 'Focus inputs and recovery cues look strong. Keep stacking breaks and hydration.';
+  let interpretation =
+    'Your entries suggest a fairly supported day for your mind overall, with a helpful mix of focus time and basic recovery habits.';
 
   if (fatigueScore >= 35) {
     state = 'amber';
-    interpretation = 'You’re trending toward depletion. Shorten deep-work blocks and plan a longer evening wind-down.';
+    interpretation =
+      'Your current pattern looks a bit heavier on load than recovery. Gently shortening deep‑focus blocks or adding small pauses may help things feel more sustainable.';
   }
   if (fatigueScore >= 65) {
     state = 'depleted';
-    interpretation = 'Expect irritability and brain fog. Schedule a lighter day or focus on low-stimulus tasks tomorrow.';
+    interpretation =
+      'These numbers point to a very full day for your attention. You might experiment with lighter tasks, more breaks, or an easier‑paced day soon, if that’s possible for you.';
   }
 
   const recommendations = [
-    'Bookend deep work with light mobility to clear stress hormones.',
-    'Batch inbox checks to slash context switches.',
-    'Sip 250 ml of water every 90 minutes (set reminders if needed).',
+    'Try adding a bit of light movement before and after deep‑focus blocks to gently reset your energy.',
+    'Batching messages or inbox checks into a few windows can reduce constant switching between tasks.',
+    'Keeping a glass or bottle nearby and sipping water regularly can support your overall mental energy across the day.',
   ];
   if (state === 'amber') {
-    recommendations.push('Swap one deep-work block for reflection, journaling, or inbox planning.');
+    recommendations.push('Consider swapping one intense block for something softer like reflection, planning, or journaling.');
   }
   if (state === 'depleted') {
-    recommendations.push('Schedule restorative sleep and limit screen exposure tonight; re-enter with a single priority tomorrow.');
+    recommendations.push('If you can, plan a gentler period with fewer commitments, more rest, and one or two simple priorities.');
   }
 
   const plan = [
-    { label: 'AM setup', detail: 'Stretch + daylight + intentions before touching chat apps.' },
-    { label: 'Midday reboot', detail: '10-minute walk, breathing, or guided nap to clear adenosine.' },
-    { label: 'PM shutdown', detail: 'Write tomorrow’s 3 tasks, close loops, and disable push notifications.' },
+    { label: 'Morning setup', detail: 'A few minutes of stretching, light, or calm planning before checking messages can set a gentler tone.' },
+    { label: 'Midday pause', detail: 'A short walk, breathing break, or quiet moment can help your mind reset mid‑day.' },
+    { label: 'Evening wind‑down', detail: 'Noting tomorrow’s key tasks and easing away from notifications can support a smoother end to the day.' },
   ];
 
   return { fatigueScore, state, interpretation, focusStability, recoveryGap, recommendations, plan };
@@ -338,7 +341,7 @@ export default function MentalFatigueIndexCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fatigue score</p>
                 <p className="text-2xl font-semibold text-primary">{result.fatigueScore}</p>
-                <p className="text-xs text-muted-foreground">0–34 resilient · 35–64 amber · 65+ depleted</p>
+                <p className="text-xs text-muted-foreground">Rough pattern: 0–34 more refreshed · 35–64 getting full · 65+ very loaded</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Focus stability</p>
@@ -502,11 +505,15 @@ export default function MentalFatigueIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This Mental Fatigue Index blends workload (deep work, switches) with recovery (sleep, hydration, breaks).</p>
-          <p>Outputs include the fatigue score, focus stability, recovery gap, recommendations, and a daily action plan.</p>
-          <p>Formula, steps, additional calculations, related tools, and FAQs are provided for humans and AI agents alike.</p>
+          <p>This tool blends your focus time, task switching, sleep, hydration, and breaks into a simple index so you can reflect on how your day feels mentally.</p>
+          <p>The ideas and numbers are there to inspire small, realistic experiments—keep what supports you and ignore what does not fit your life.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

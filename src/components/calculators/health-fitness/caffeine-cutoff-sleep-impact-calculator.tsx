@@ -186,28 +186,33 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const windDownStart = values.usualBedtime - 1.5 - Math.min(1, values.sleepDebtHours * 0.05);
 
   let riskLevel: ResultPayload['riskLevel'] = 'low';
-  let interpretation = 'Your caffeine timing already supports restorative sleep. Maintain a 7–8 hour buffer before bedtime.';
+  let interpretation =
+    'Your current caffeine timing may already be fairly friendly to your evenings. You can keep an eye on how your body feels and gently adjust if your routine changes.';
 
   if (predictedLatency > 35) {
     riskLevel = 'elevated';
-    interpretation = 'Caffeine is likely extending sleep latency. Shift the final cup earlier and re-evaluate after three nights.';
+    interpretation =
+      'Your entries suggest caffeine might be making it a bit harder to fall asleep. You could experiment with having your last caffeinated drink earlier and see how the next few nights feel.';
   }
   if (predictedLatency > 60) {
     riskLevel = 'high';
-    interpretation = 'Expect notable sleep disruption. Pair an earlier cutoff with a lighter evening dose or switch to caffeine-free options.';
+    interpretation =
+      'Based on these inputs, caffeine may be strongly overlapping with your wind‑down time. Gentle options include moving your last dose earlier, choosing smaller amounts, or swapping to non‑caffeinated drinks in the evening.';
   }
 
   const recommendations = [
-    'Front-load caffeine before lunch to align with cortisol rhythms.',
-    'Drink 8–12 oz of water per caffeinated beverage to aid metabolism.',
-    'Log sleep latency for a week to see how timing tweaks play out.',
+    'Try placing most of your caffeinated drinks earlier in the day so evenings feel calmer.',
+    'Pair caffeine with regular hydration and balanced meals to support steadier energy.',
+    'If you make a change, notice sleep timing and how rested you feel over a few days rather than just one night.',
   ];
 
   if (riskLevel === 'elevated') {
-    recommendations.push('Switch to half-caf or tea after the cutoff window to satisfy ritual without overstimulation.');
+    recommendations.push('You might try half‑caf or lower‑caffeine options after your chosen cutoff to keep the ritual while softening the effect.');
   }
   if (riskLevel === 'high') {
-    recommendations.push('Try a 10–14 day caffeine reset to resensitize adenosine receptors and improve baseline energy.');
+    recommendations.push(
+      'If evenings feel consistently wired, you could take a short break or reduce your daily total and see how your baseline energy responds.'
+    );
   }
 
   const plan = [
@@ -407,7 +412,7 @@ export default function CaffeineCutoffSleepImpactCalculator() {
             </div>
             <div className="rounded border p-4 bg-muted/50">
               <p className="text-sm uppercase tracking-wide text-muted-foreground mb-1">Status</p>
-              <p className="text-lg font-semibold capitalize">{result.riskLevel} risk</p>
+              <p className="text-lg font-semibold capitalize">{result.riskLevel} strain pattern</p>
               <p className="text-sm text-muted-foreground">{result.interpretation}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -564,11 +569,15 @@ export default function CaffeineCutoffSleepImpactCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This Caffeine Cutoff Sleep Impact Calculator models how bedtime, total dose, sensitivity, and sleep debt interact.</p>
-          <p>Outputs include a recommended cutoff clock time, predicted sleep latency, wind-down start, risk level, and action plan.</p>
-          <p>The page also includes the underlying formula, step-by-step instructions, related tools, and FAQs for AI or accessibility bots.</p>
+          <p>This tool offers a simple estimate of how your caffeine timing and amount might overlap with your usual sleep time.</p>
+          <p>You can use the suggested cutoff and ideas as gentle experiments and then keep the changes that genuinely help you feel more rested.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }

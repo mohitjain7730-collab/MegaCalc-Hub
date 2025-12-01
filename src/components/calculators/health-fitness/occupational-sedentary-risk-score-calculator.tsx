@@ -166,27 +166,30 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const stepGap = clamp(10000 - values.dailySteps, -5000, 15000);
 
   let classification: ResultPayload['classification'] = 'balanced';
-  let interpretation = 'Great job—your routine offsets sedentary time. Maintain current steps and mobility work.';
+  let interpretation =
+    'Your entries suggest that, overall, your movement and work setup are doing a reasonable job of balancing sitting time.';
 
   if (riskScore >= 45) {
     classification = 'caution';
-    interpretation = 'Add structured breaks, glute activation, and walking meetings to keep risk in check.';
+    interpretation =
+      'Your day includes quite a bit of sitting. Small changes—like more frequent short breaks or a few extra steps—may help your body feel better across the week.';
   }
   if (riskScore >= 70) {
     classification = 'high-risk';
-    interpretation = 'You are sitting far more than you move. Prioritize hourly standing cues and upgrade ergonomics soon.';
+    interpretation =
+      'These numbers point to a very sit‑heavy routine. You might find it helpful to experiment with more standing or walking breaks and, when possible, a more supportive work setup.';
   }
 
   const recommendations = [
-    'Set a repeating 45-minute timer to stand, stretch, or walk to refill water.',
-    'Stack movement during calls: walk, peddle under your desk, or use a balance board.',
-    'Anchor strength sessions on high-sitting days to protect joints and posture.',
+    'Consider using gentle reminders to stand up, change posture, or walk for a couple of minutes throughout the day.',
+    'When it makes sense, add light movement to calls or breaks (for example, walking while you talk or stretching between tasks).',
+    'On days that involve more sitting, a short strength or mobility session can help your body feel more supported.',
   ];
   if (classification !== 'balanced') {
-    recommendations.push('Upgrade ergonomics (lumbar support, monitor riser, or sit-stand desk) within the next 30 days.');
+    recommendations.push('Explore simple ergonomic tweaks—like lumbar support or monitor height—that your space and budget allow.');
   }
   if (classification === 'high-risk') {
-    recommendations.push('Aim for 1,500 extra steps before noon to prevent energy crashes.');
+    recommendations.push('You might aim for a few extra short walks spread across the day, especially earlier, to see how your energy responds.');
   }
 
   const plan = [
@@ -355,7 +358,7 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Risk score</p>
                 <p className="text-2xl font-semibold text-primary">{result.riskScore}</p>
-                <p className="text-xs text-muted-foreground">0–44 balanced · 45–69 caution · 70+ high-risk</p>
+                <p className="text-xs text-muted-foreground">Rough pattern: 0–44 more balanced · 45–69 needs attention · 70+ very sit‑heavy</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Movement minutes / day</p>
@@ -521,11 +524,15 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator quantifies sedentary risk using sitting hours, breaks, steps, workouts, and ergonomics.</p>
-          <p>Outputs include a risk score, movement minutes, step gap, recommendations, action plan, and supporting metrics.</p>
-          <p>Structured schema markup, steps, guide text, and FAQs help humans and AI agents digest the methodology quickly.</p>
+          <p>This calculator combines sitting time, movement, and ergonomics into a simple index so you can reflect on your workday pattern.</p>
+          <p>You can use the output as a prompt for gentle experiments with breaks, steps, or setup—and keep only what genuinely helps you feel better.</p>
         </CardContent>
       </Card>
+
+      <p className="mt-6 text-xs text-muted-foreground text-center">
+        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+      </p>
     </div>
   );
 }
