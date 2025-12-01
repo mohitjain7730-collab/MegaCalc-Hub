@@ -436,10 +436,22 @@ export default function MetabolicSyndromeRiskCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cardiovascular-disease-risk-calculator" className="text-primary hover:underline">Cardiovascular Disease Risk</Link></h4><p className="text-sm text-muted-foreground">Assess overall cardiovascular risk factors.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/diabetes-risk-type2-calculator" className="text-primary hover:underline">Type 2 Diabetes Risk</Link></h4><p className="text-sm text-muted-foreground">Evaluate diabetes risk factors.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/waist-to-hip-ratio-calculator" className="text-primary hover:underline">Waist-to-Hip Ratio</Link></h4><p className="text-sm text-muted-foreground">Assess body fat distribution and metabolic risk.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/hypertension-stage-calculator" className="text-primary hover:underline">Hypertension Stage</Link></h4><p className="text-sm text-muted-foreground">Evaluate blood pressure status and cardiovascular risk.</p></div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/waist-to-hip-ratio-calculator" className="text-primary hover:underline">
+                  Waist-to-Hip Ratio
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Assess body fat distribution and metabolic risk.</p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/hypertension-stage-calculator" className="text-primary hover:underline">
+                  Hypertension Stage
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Evaluate blood pressure status and cardiovascular risk.</p>
+            </div>
           </div>
         </CardContent>
       </Card>

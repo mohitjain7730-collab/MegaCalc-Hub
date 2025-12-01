@@ -270,10 +270,14 @@ export default function ArterialStiffnessIndexCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/blood-pressure-risk-calculator" className="text-primary hover:underline">Blood Pressure Risk</Link></h4><p className="text-sm text-muted-foreground">Assess systolic/diastolic trends and relative risk.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cholesterol-risk-calculator" className="text-primary hover:underline">Cholesterol Risk</Link></h4><p className="text-sm text-muted-foreground">Track lipid panel indicators.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cardiovascular-disease-risk-calculator" className="text-primary hover:underline">Cardiovascular Disease Risk</Link></h4><p className="text-sm text-muted-foreground">Combine lifestyle and biometric markers.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Support vascular health with adequate fluids.</p></div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">
+                  Hydration Needs
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">Support vascular health with adequate fluids.</p>
+            </div>
           </div>
         </CardContent>
       </Card>

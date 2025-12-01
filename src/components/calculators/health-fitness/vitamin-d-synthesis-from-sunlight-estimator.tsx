@@ -117,11 +117,6 @@ const relatedCalculators = [
     slug: 'daily-calorie-needs-calculator',
     description: 'Calculate nutritional needs including vitamin D.',
   },
-  {
-    name: 'Cancer Risk Lifestyle Calculator',
-    slug: 'cancer-risk-lifestyle-calculator',
-    description: 'Assess comprehensive lifestyle factors and health risks.',
-  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/health-fitness/vitamin-d-synthesis-from-sunlight-estimator';

@@ -2612,17 +2612,8 @@ export const calculators: Calculator[] = [
   { id: 2994, name: 'Stress Level Self-Assessment Score Calculator', description: 'Self-score perceived stress and get guidance.', slug: 'stress-level-self-assessment-calculator', category: 'health-fitness' },
   { id: 2995, name: 'Meditation Time Progress Tracker Calculator', description: 'Track daily meditation minutes and weekly progress trends.', slug: 'meditation-time-progress-tracker-calculator', category: 'health-fitness' },
   { id: 2996, name: 'Work-Life Balance Time Allocation Calculator', description: 'Calculate ideal time distribution between work, personal, and rest activities.', slug: 'work-life-balance-time-allocation-calculator', category: 'health-fitness' },
-  { id: 2997, name: 'Blood Pressure Risk Calculator', description: 'Assess cardiovascular risk based on systolic and diastolic readings.', slug: 'blood-pressure-risk-calculator', category: 'health-fitness' },
-  { id: 2998, name: 'Cholesterol Risk Calculator', description: 'Evaluate heart disease risk using HDL/LDL ratio and total cholesterol.', slug: 'cholesterol-risk-calculator', category: 'health-fitness' },
   { id: 2999, name: 'Blood Sugar to HbA1c Converter', description: 'Convert between glucose levels and estimated HbA1c percentage.', slug: 'blood-sugar-to-hba1c-converter', category: 'health-fitness' },
-  { id: 3000, name: 'Diabetes Risk (Type 2) Calculator', description: 'Assess type 2 diabetes risk based on age, BMI, family history, and lifestyle factors.', slug: 'diabetes-risk-type2-calculator', category: 'health-fitness' },
-  { id: 3001, name: 'Cardiovascular Disease Risk Calculator', description: 'Calculate 10-year CVD risk using age, gender, blood pressure, cholesterol, and smoking status.', slug: 'cardiovascular-disease-risk-calculator', category: 'health-fitness' },
-  { id: 3002, name: 'Heart Attack (Framingham) Risk Calculator', description: 'Estimate 10-year coronary heart disease risk using Framingham scoring.', slug: 'heart-attack-framingham-risk-calculator', category: 'health-fitness' },
-  { id: 3003, name: 'Stroke Risk Calculator', description: 'Assess stroke risk based on age, blood pressure, diabetes, and other factors.', slug: 'stroke-risk-calculator', category: 'health-fitness' },
   { id: 3004, name: 'Bone Density T-Score Calculator', description: 'Calculate T-score from bone mineral density measurements.', slug: 'bone-density-t-score-calculator', category: 'health-fitness' },
-  { id: 3005, name: 'Osteoporosis Risk Calculator', description: 'Estimate osteoporosis risk from common clinical and lifestyle factors. Not a diagnosis.', slug: 'osteoporosis-risk-calculator', category: 'health-fitness' },
-  { id: 3006, name: 'Arthritis Risk Score Calculator', description: 'Screen for arthritis risk based on age, BMI, history, and joint stressors.', slug: 'arthritis-risk-score-calculator', category: 'health-fitness' },
-  { id: 3007, name: 'Cancer Risk Lifestyle Calculator', description: 'Self‑assessment of lifestyle factors linked with cancer risk. Not medical advice.', slug: 'cancer-risk-lifestyle-calculator', category: 'health-fitness' },
   { id: 3008, name: 'Lifespan Expectancy Calculator', description: 'Rough longevity estimate adjusted for smoking, activity, sleep, and BP.', slug: 'lifespan-expectancy-calculator', category: 'health-fitness' },
   { id: 3009, name: 'Marathon Finish Time Predictor', description: 'Predict marathon time from a recent race using the Riegel endurance model.', slug: 'marathon-finish-time-predictor', category: 'health-fitness' },
   { id: 3010, name: 'Half‑Marathon Pace Calculator', description: 'Compute average pace needed to hit your half‑marathon goal time.', slug: 'half-marathon-pace-calculator', category: 'health-fitness' },
@@ -4009,15 +4000,6 @@ export const calculators: Calculator[] = [
     category: 'health-fitness',
     metaTitle: 'Rowing Drag Factor Calculator - Optimize Rowing Machine Settings',
     metaDescription: 'Calculate and optimize rowing machine drag factor to improve performance, prevent injury, and maximize training effectiveness.'
-  },
-  {
-    id: 175,
-    name: 'Sleep Apnea Risk Calculator',
-    description: 'Assess your risk for sleep apnea using validated screening criteria and get recommendations for evaluation.',
-    slug: 'sleep-apnea-risk-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Sleep Apnea Risk Calculator - Assess Your Risk',
-    metaDescription: 'Calculate your risk for sleep apnea using validated screening criteria and get recommendations for evaluation and treatment.'
   },
   {
     id: 176,

@@ -441,10 +441,36 @@ export default function COPDRiskScoreCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/lung-function-calculator" className="text-primary hover:underline">Lung Function Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess lung capacity and respiratory function.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/smoking-cessation-calculator" className="text-primary hover:underline">Smoking Cessation Calculator</Link></h4><p className="text-sm text-muted-foreground">Track benefits of quitting smoking.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/air-quality-impact-calculator" className="text-primary hover:underline">Air Quality Impact</Link></h4><p className="text-sm text-muted-foreground">Evaluate effects of air pollution on health.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/sleep-apnea-risk-calculator" className="text-primary hover:underline">Sleep Apnea Risk</Link></h4><p className="text-sm text-muted-foreground">Assess risk for sleep-related breathing disorders.</p></div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/lung-function-calculator" className="text-primary hover:underline">
+                  Lung Function Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Assess lung capacity and respiratory function.
+              </p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/smoking-cessation-calculator" className="text-primary hover:underline">
+                  Smoking Cessation Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Track benefits of quitting smoking.
+              </p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/air-quality-impact-calculator" className="text-primary hover:underline">
+                  Air Quality Impact
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Evaluate effects of air pollution on health.
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>

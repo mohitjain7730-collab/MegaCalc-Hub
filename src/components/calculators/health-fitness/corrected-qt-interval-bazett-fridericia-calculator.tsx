@@ -106,11 +106,6 @@ const relatedCalculators = [
     slug: 'pulse-pressure-analyzer',
     description: 'Evaluate cardiovascular health with pulse pressure.',
   },
-  {
-    name: 'Blood Pressure Risk Calculator',
-    slug: 'blood-pressure-risk-calculator',
-    description: 'Assess your blood pressure related cardiovascular risk.',
-  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/health-fitness/corrected-qt-interval-bazett-fridericia-calculator';

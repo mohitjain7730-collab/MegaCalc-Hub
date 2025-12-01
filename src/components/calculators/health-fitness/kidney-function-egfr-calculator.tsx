@@ -401,10 +401,26 @@ export default function KidneyFunctionEGFRCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/hypertension-stage-calculator" className="text-primary hover:underline">Hypertension Stage</Link></h4><p className="text-sm text-muted-foreground">Assess blood pressure, a major kidney disease risk factor.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/diabetes-risk-type2-calculator" className="text-primary hover:underline">Type 2 Diabetes Risk</Link></h4><p className="text-sm text-muted-foreground">Evaluate diabetes risk, the leading cause of kidney disease.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cardiovascular-disease-risk-calculator" className="text-primary hover:underline">Cardiovascular Disease Risk</Link></h4><p className="text-sm text-muted-foreground">Heart and kidney health are closely linked.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cardiometabolic-age-calculator" className="text-primary hover:underline">Cardiometabolic Age</Link></h4><p className="text-sm text-muted-foreground">Assess overall metabolic health status.</p></div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/hypertension-stage-calculator" className="text-primary hover:underline">
+                  Hypertension Stage
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Assess blood pressure, a major kidney disease risk factor.
+              </p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/cardiometabolic-age-calculator" className="text-primary hover:underline">
+                  Cardiometabolic Age
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Assess overall metabolic health status.
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>

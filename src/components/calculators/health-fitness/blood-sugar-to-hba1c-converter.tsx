@@ -123,9 +123,6 @@ function RelatedCalculators() {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/category/health-fitness/diabetes-risk-type2-calculator" className="text-primary underline hover:text-primary/80">
-            Diabetes Risk (Type 2) Calculator
-          </Link>
           <Link href="/category/health-fitness/glycemic-load-calculator" className="text-primary underline hover:text-primary/80">
             Glycemic Load Calculator
           </Link>

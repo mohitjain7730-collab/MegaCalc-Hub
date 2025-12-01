@@ -110,11 +110,6 @@ const relatedCalculators = [
     description: 'Evaluate safe sun exposure for vitamin D synthesis.',
   },
   {
-    name: 'Cancer Risk Lifestyle Calculator',
-    slug: 'cancer-risk-lifestyle-calculator',
-    description: 'Assess comprehensive lifestyle factors and cancer risk.',
-  },
-  {
     name: 'Daily Antioxidant (ORAC) Goal Calculator',
     slug: 'daily-antioxidant-orac-goal-calculator',
     description: 'Support skin health with antioxidant protection.',

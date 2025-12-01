@@ -543,10 +543,36 @@ export default function CardiometabolicAgeCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cardiovascular-disease-risk-calculator" className="text-primary hover:underline">Cardiovascular Disease Risk</Link></h4><p className="text-sm text-muted-foreground">Assess overall cardiovascular risk factors.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/metabolic-syndrome-risk-calculator" className="text-primary hover:underline">Metabolic Syndrome Risk</Link></h4><p className="text-sm text-muted-foreground">Evaluate metabolic syndrome indicators.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/waist-to-bmi-ratio-risk-calculator" className="text-primary hover:underline">Waist-to-BMI Ratio</Link></h4><p className="text-sm text-muted-foreground">Assess body composition and metabolic risk.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/heart-rate-variability-hrv-score-calculator" className="text-primary hover:underline">HRV Score</Link></h4><p className="text-sm text-muted-foreground">Monitor autonomic nervous system health.</p></div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/metabolic-syndrome-risk-calculator" className="text-primary hover:underline">
+                  Metabolic Syndrome Risk
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Evaluate metabolic syndrome indicators.
+              </p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/waist-to-bmi-ratio-risk-calculator" className="text-primary hover:underline">
+                  Waist-to-BMI Ratio
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Assess body composition and metabolic risk.
+              </p>
+            </div>
+            <div className="p-4 border rounded">
+              <h4 className="font-semibold mb-1">
+                <Link href="/category/health-fitness/heart-rate-variability-hrv-score-calculator" className="text-primary hover:underline">
+                  HRV Score
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Monitor autonomic nervous system health.
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>

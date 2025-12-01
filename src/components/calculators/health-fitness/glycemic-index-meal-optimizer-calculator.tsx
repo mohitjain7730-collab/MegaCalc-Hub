@@ -112,11 +112,6 @@ const relatedCalculators = [
     slug: 'blood-sugar-to-hba1c-converter',
     description: 'Convert blood sugar levels to HbA1c.',
   },
-  {
-    name: 'Diabetes Risk Type 2 Calculator',
-    slug: 'diabetes-risk-type2-calculator',
-    description: 'Assess diabetes risk and blood sugar management.',
-  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/health-fitness/glycemic-index-meal-optimizer-calculator';
