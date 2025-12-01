@@ -97,9 +97,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
+    name: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide',
     slug: 'central-nervous-system-cns-fatigue-recovery-calculator',
-    description: 'Calculate CNS fatigue recovery time.',
+    description: 'Get wellness insights about CNS fatigue recovery time.',
   },
   {
     name: 'Training Stress Score Calculator',
@@ -107,9 +107,9 @@ const relatedCalculators = [
     description: 'Assess training load and stress accumulation.',
   },
   {
-    name: 'HRV Recovery Optimization Score Calculator',
+    name: 'HRV Recovery Optimization Wellness Score',
     slug: 'hrv-recovery-optimization-score-calculator',
-    description: 'Monitor recovery readiness using HRV metrics.',
+    description: 'Get wellness insights about recovery readiness using HRV metrics.',
   },
   {
     name: 'Rest Time Between Sets Calculator',
@@ -128,15 +128,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Training Fatigue Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Training Fatigue Wellness Index', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Training Fatigue Index Calculator',
+      name: 'Training Fatigue Wellness Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate training fatigue index based on training volume, frequency, intensity, recovery days, and sleep to assess training load and recovery needs.',
+      description: 'Get general wellness insights about training fatigue based on training volume, frequency, intensity, recovery days, and sleep. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -177,7 +177,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'low';
   let fatigueLevel = 'Low';
-  let interpretation = 'Your training fatigue index is low. You appear well-recovered and ready for training.';
+  let interpretation = 'This suggests a general lifestyle tendency where your training fatigue index may be low. You may appear well-recovered and ready for training.';
   
   if (fatigueIndex < 30) {
     status = 'low';
@@ -185,39 +185,39 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (fatigueIndex < 50) {
     status = 'moderate';
     fatigueLevel = 'Moderate';
-    interpretation = 'Your training fatigue index is moderate. Monitor recovery and consider lighter sessions or additional rest if fatigue increases.';
+    interpretation = 'This suggests a general lifestyle tendency where your training fatigue index is moderate. You may consider monitoring recovery and considering lighter sessions or additional rest if fatigue increases.';
   } else if (fatigueIndex < 70) {
     status = 'high';
     fatigueLevel = 'High';
-    interpretation = 'Your training fatigue index is high. Reduce training load, increase recovery, and prioritize rest to prevent overtraining.';
+    interpretation = 'This suggests a general lifestyle tendency where your training fatigue index is high. You may consider reducing training load, increasing recovery, and prioritizing rest to support wellness.';
   } else {
     status = 'very-high';
     fatigueLevel = 'Very High';
-    interpretation = 'Your training fatigue index is very high. Take extended rest, reduce or pause training, and focus on recovery to prevent overtraining syndrome.';
+    interpretation = 'This suggests a general lifestyle tendency where your training fatigue index is very high. You may consider taking extended rest, reducing or pausing training, and focusing on recovery to support wellness.';
   }
   
   const recommendations = [
-    'Ensure adequate recovery days: aim for at least 1-2 full rest days per week, more if fatigue is high.',
-    'Prioritize sleep: get 7-9 hours of quality sleep per night. Poor sleep significantly increases fatigue accumulation.',
-    'Periodize training: vary volume and intensity week to week. Include deload weeks every 4-8 weeks.',
+    'You may consider ensuring adequate recovery days: aim for at least 1-2 full rest days per week, more if fatigue is high. This is a personal insight, not a medical evaluation.',
+    'You may consider prioritizing sleep: get 7-9 hours of quality sleep per night. Poor sleep may increase fatigue accumulation.',
+    'You may consider periodizing training: vary volume and intensity week to week. Include deload weeks every 4-8 weeks.',
   ];
   if (values.recoveryDays < 2) {
-    recommendations.push('Increase recovery days. Insufficient rest days can lead to excessive fatigue accumulation and overtraining.');
+    recommendations.push('You may consider increasing recovery days. Insufficient rest days may lead to excessive fatigue accumulation.');
   }
   if (values.intensityLevel > 8) {
-    recommendations.push('Reduce training intensity or frequency. Very high intensity training requires more recovery time.');
+    recommendations.push('You may consider reducing training intensity or frequency. Very high intensity training may require more recovery time.');
   }
   if (values.sleepHours && values.sleepHours < 7) {
-    recommendations.push('Improve sleep duration and quality. Inadequate sleep significantly impairs recovery and increases fatigue.');
+    recommendations.push('You may consider improving sleep duration and quality. Inadequate sleep may impair recovery and increase fatigue.');
   }
   if (fatigueIndex > 50) {
-    recommendations.push('Consider a deload week: reduce volume by 50-70% and intensity by 10-20% to allow recovery.');
+    recommendations.push('You may consider a deload week: reduce volume by 50-70% and intensity by 10-20% to allow recovery.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Monitor fatigue levels and recovery. Note any persistent soreness, performance decline, or mood changes.' },
-    { label: 'This Month', detail: 'Adjust training load based on fatigue index. Add rest days, reduce volume/intensity if needed, and optimize sleep and nutrition.' },
-    { label: 'Ongoing', detail: 'Maintain balanced training with adequate recovery. Use fatigue index to guide training decisions and prevent overtraining.' },
+    { label: 'This Week', detail: 'You may consider monitoring fatigue levels and recovery. Note any persistent soreness, performance changes, or mood patterns.' },
+    { label: 'This Month', detail: 'You may consider adjusting training load based on fatigue index. Add rest days, reduce volume/intensity if needed, and optimize sleep and nutrition.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining balanced training with adequate recovery. Use fatigue index to guide training decisions and support wellness.' },
   ];
   
   return { fatigueIndex, fatigueLevel, status, interpretation, recommendations, plan };
@@ -246,9 +246,9 @@ export default function TrainingFatigueIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Training Fatigue Index Calculator
+            Training Fatigue Wellness Index
           </CardTitle>
-          <CardDescription>Calculate training fatigue index based on training volume, frequency, intensity, recovery days, and sleep to assess training load and recovery needs.</CardDescription>
+          <CardDescription>Get general wellness insights about training fatigue based on training volume, frequency, intensity, recovery days, and sleep. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -508,9 +508,21 @@ export default function TrainingFatigueIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates training fatigue index based on training volume, frequency, intensity level, recovery days, sleep hours, and perceived exertion.</p>
+          <p>This tool provides general wellness insights about training fatigue based on training volume, frequency, intensity level, recovery days, sleep hours, and perceived exertion. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include fatigue index (0-100), fatigue level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

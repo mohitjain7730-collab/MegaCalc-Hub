@@ -97,9 +97,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Glycemic Index Meal Optimizer Calculator',
+    name: 'Glycemic Index Meal Wellness Optimizer',
     slug: 'glycemic-index-meal-optimizer-calculator',
-    description: 'Optimize meals to reduce blood sugar spikes.',
+    description: 'Get wellness insights about optimizing meals to reduce energy fluctuations.',
   },
   {
     name: 'Glycemic Load Calculator',
@@ -123,15 +123,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Blood Sugar Spike Estimator (by meal type)', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Energy Fluctuation Estimator (by meal type)', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Blood Sugar Spike Estimator (by meal type)',
+      name: 'Energy Fluctuation Estimator (by meal type)',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate blood sugar spike magnitude based on meal type, carbohydrate content, and macronutrient composition to manage blood sugar levels.',
+      description: 'Get general wellness insights about energy fluctuation magnitude based on meal type, carbohydrate content, and macronutrient composition. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -174,7 +174,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'minimal';
   let spikeMagnitude = 'Minimal';
-  let interpretation = 'Your estimated blood sugar spike is minimal. This meal should provide steady energy.';
+  let interpretation = 'This suggests a general lifestyle tendency where your estimated energy fluctuation is minimal. This meal may provide steady energy.';
   
   if (estimatedSpike < 30) {
     status = 'minimal';
@@ -182,36 +182,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (estimatedSpike < 50) {
     status = 'moderate';
     spikeMagnitude = 'Moderate';
-    interpretation = 'Your estimated blood sugar spike is moderate. Consider adding protein, fat, or fiber to reduce the spike.';
+    interpretation = 'This suggests a general lifestyle tendency where your estimated energy fluctuation is moderate. You may consider adding protein, fat, or fiber to reduce the fluctuation.';
   } else if (estimatedSpike < 75) {
     status = 'high';
     spikeMagnitude = 'High';
-    interpretation = 'Your estimated blood sugar spike is high. This may cause energy crashes. Modify meal composition to reduce spike.';
+    interpretation = 'This suggests a general lifestyle tendency where your estimated energy fluctuation is high. This may cause energy changes. You may consider modifying meal composition to reduce fluctuation.';
   } else {
     status = 'very-high';
     spikeMagnitude = 'Very High';
-    interpretation = 'Your estimated blood sugar spike is very high. This meal may cause significant blood sugar fluctuations and energy crashes.';
+    interpretation = 'This suggests a general lifestyle tendency where your estimated energy fluctuation is very high. This meal may cause significant energy fluctuations.';
   }
   
   const recommendations = [
-    'Include protein (20-30g) with meals to slow carbohydrate absorption and reduce spike magnitude.',
-    'Add healthy fats (10-15g) to meals to further slow gastric emptying and reduce spikes.',
-    'Increase fiber intake (10-15g per meal) from vegetables, whole grains, and legumes to slow carbohydrate absorption.',
+    'You may consider including protein (20-30g) with meals to slow carbohydrate absorption and reduce energy fluctuation magnitude. This is a personal insight, not a medical evaluation.',
+    'You may consider adding healthy fats (10-15g) to meals to further slow gastric emptying and reduce energy fluctuations.',
+    'You may consider increasing fiber intake (10-15g per meal) from vegetables, whole grains, and legumes to slow carbohydrate absorption.',
   ];
   if (values.mealType === 'high-gi') {
-    recommendations.push('Replace high-GI foods with lower-GI alternatives (e.g., white rice → brown rice, white bread → whole grain).');
+    recommendations.push('You may consider replacing high-GI foods with lower-GI alternatives (e.g., white rice → brown rice, white bread → whole grain).');
   }
   if (values.carbohydrateGrams > 60) {
-    recommendations.push('Consider reducing carbohydrate portion size or splitting into smaller meals throughout the day.');
+    recommendations.push('You may consider reducing carbohydrate portion size or splitting into smaller meals throughout the day.');
   }
   if (!values.proteinGrams || values.proteinGrams < 20) {
-    recommendations.push('Aim for at least 20g of protein per meal to help stabilize blood sugar.');
+    recommendations.push('You may consider aiming for at least 20g of protein per meal to help support energy stability.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Track meal composition and note energy levels after meals. Identify meals that cause energy crashes.' },
-    { label: 'This Month', detail: 'Modify high-spike meals by adding protein, healthy fats, and fiber. Test impact on energy and blood sugar if possible.' },
-    { label: 'Ongoing', detail: 'Maintain balanced meals with protein, healthy fats, and fiber to minimize blood sugar spikes and optimize energy levels.' },
+    { label: 'This Week', detail: 'You may consider tracking meal composition and noting energy levels after meals. Identify meals that cause energy changes.' },
+    { label: 'This Month', detail: 'You may consider modifying high-fluctuation meals by adding protein, healthy fats, and fiber. Test impact on energy if possible.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining balanced meals with protein, healthy fats, and fiber to minimize energy fluctuations and support energy levels.' },
   ];
   
   return { estimatedSpike, peakBloodSugar, spikeMagnitude, status, interpretation, recommendations, plan };
@@ -240,9 +240,9 @@ export default function BloodSugarSpikeEstimatorByMealType() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Droplet className="h-5 w-5" />
-            Blood Sugar Spike Estimator (by meal type)
+            Energy Fluctuation Estimator (by meal type)
           </CardTitle>
-          <CardDescription>Estimate blood sugar spike magnitude based on meal type, carbohydrate content, and macronutrient composition to manage blood sugar levels.</CardDescription>
+          <CardDescription>Get general wellness insights about energy fluctuation magnitude based on meal type, carbohydrate content, and macronutrient composition. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -354,17 +354,17 @@ export default function BloodSugarSpikeEstimatorByMealType() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See estimated blood sugar spike, peak level, and recommendations.</CardDescription>
+            <CardDescription>See estimated energy fluctuation, peak level, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Estimated spike</p>
+                <p className="text-sm text-muted-foreground">Estimated fluctuation</p>
                 <p className="text-2xl font-semibold text-primary">{result.estimatedSpike.toFixed(0)} mg/dL</p>
                 <p className="text-xs text-muted-foreground">Above baseline</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Peak blood sugar</p>
+                <p className="text-sm text-muted-foreground">Peak level</p>
                 <p className="text-2xl font-semibold text-primary">{result.peakBloodSugar.toFixed(0)} mg/dL</p>
                 <p className="text-xs text-muted-foreground">Estimated peak</p>
               </div>
@@ -510,9 +510,21 @@ export default function BloodSugarSpikeEstimatorByMealType() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates blood sugar spike magnitude based on meal type, carbohydrate grams, protein grams, fat grams, fiber grams, and optional fasting blood sugar level.</p>
-          <p>Outputs include estimated spike (mg/dL), peak blood sugar (mg/dL), spike magnitude category, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about energy fluctuation magnitude based on meal type, carbohydrate grams, protein grams, fat grams, fiber grams, and optional fasting blood sugar level. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include estimated fluctuation (mg/dL), peak level (mg/dL), fluctuation magnitude category, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

@@ -97,9 +97,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Training Fatigue Index Calculator',
+    name: 'Training Fatigue Wellness Index',
     slug: 'training-fatigue-index-calculator',
-    description: 'Assess training load that affects warmup needs.',
+    description: 'Get wellness insights about training load that affects warmup needs.',
   },
   {
     name: 'Rest Time Between Sets Calculator',
@@ -107,14 +107,14 @@ const relatedCalculators = [
     description: 'Optimize rest periods for training sessions.',
   },
   {
-    name: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
+    name: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide',
     slug: 'central-nervous-system-cns-fatigue-recovery-calculator',
-    description: 'Plan recovery including warmup considerations.',
+    description: 'Get wellness insights about recovery including warmup considerations.',
   },
   {
-    name: 'HRV Recovery Optimization Score Calculator',
+    name: 'HRV Recovery Optimization Wellness Score',
     slug: 'hrv-recovery-optimization-score-calculator',
-    description: 'Assess recovery status for warmup intensity.',
+    description: 'Get wellness insights about recovery status for warmup intensity.',
   },
 ];
 
@@ -128,15 +128,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Injury Prevention Warmup Time Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Warmup Time Wellness Planner', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Injury Prevention Warmup Time Calculator',
+      name: 'Warmup Time Wellness Planner',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history to prevent injuries and prepare for exercise.',
+      description: 'Get general wellness insights about optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -199,47 +199,47 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'moderate';
   let warmupLevel = 'Moderate';
-  let interpretation = 'Your recommended warmup time is moderate. This provides adequate preparation for your activity level.';
+  let interpretation = 'This suggests a general lifestyle tendency where your recommended warmup time is moderate. This may provide adequate preparation for your activity level.';
   
   if (warmupMinutes < 10) {
     status = 'minimal';
     warmupLevel = 'Minimal';
-    interpretation = 'Your recommended warmup time is minimal. Ensure you include at least basic cardiovascular and dynamic movements.';
+    interpretation = 'This suggests a general lifestyle tendency where your recommended warmup time is minimal. You may consider ensuring you include at least basic cardiovascular and dynamic movements.';
   } else if (warmupMinutes < 15) {
     status = 'moderate';
     warmupLevel = 'Moderate';
   } else if (warmupMinutes < 20) {
     status = 'extensive';
     warmupLevel = 'Extensive';
-    interpretation = 'Your recommended warmup time is extensive. This thorough preparation is important for your activity and conditions.';
+    interpretation = 'This suggests a general lifestyle tendency where your recommended warmup time is extensive. This thorough preparation may be important for your activity and conditions.';
   } else {
     status = 'comprehensive';
     warmupLevel = 'Comprehensive';
-    interpretation = 'Your recommended warmup time is comprehensive. This extensive preparation is essential for injury prevention given your activity and conditions.';
+    interpretation = 'This suggests a general lifestyle tendency where your recommended warmup time is comprehensive. This extensive preparation may be essential for wellness given your activity and conditions.';
   }
   
   const recommendations = [
-    'Always include light cardiovascular activity (walking, jogging, cycling) to increase heart rate and blood flow.',
-    'Perform dynamic stretching rather than static stretching during warmup. Dynamic movements activate muscles and prepare joints.',
-    'Gradually increase intensity during warmup. Start at 40-50% effort and build to 70-80% before main activity.',
+    'You may consider always including light cardiovascular activity (walking, jogging, cycling) to increase heart rate and blood flow. This is a personal insight, not a medical evaluation.',
+    'You may consider performing dynamic stretching rather than static stretching during warmup. Dynamic movements may activate muscles and prepare joints.',
+    'You may consider gradually increasing intensity during warmup. Start at 40-50% effort and build to 70-80% before main activity.',
   ];
   if (warmupMinutes < 10) {
-    recommendations.push('Consider extending warmup time. Inadequate warmup increases injury risk, especially for intense activities.');
+    recommendations.push('You may consider extending warmup time. Inadequate warmup may increase injury tendency, especially for intense activities.');
   }
   if (values.age >= 50) {
-    recommendations.push('Older individuals need longer, more gradual warmups. Allow extra time for joints and muscles to prepare.');
+    recommendations.push('Older individuals may need longer, more gradual warmups. You may consider allowing extra time for joints and muscles to prepare.');
   }
   if (values.environmentalTemp && values.environmentalTemp < 50) {
-    recommendations.push('Cold conditions require extended warmup. Consider indoor warmup if possible, or add extra layers initially.');
+    recommendations.push('Cold conditions may require extended warmup. You may consider indoor warmup if possible, or add extra layers initially.');
   }
   if (values.injuryHistory && values.injuryHistory !== 'none') {
-    recommendations.push('Include targeted warmup for previously injured areas. Focus on gentle mobility and activation exercises for those areas.');
+    recommendations.push('You may consider including targeted warmup for previously injured areas. Focus on gentle mobility and activation exercises for those areas.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Implement recommended warmup time before all training sessions. Note how you feel during and after warmup.' },
-    { label: 'This Month', detail: 'Establish consistent warmup routine. Adjust duration based on activity type, intensity, and how your body responds.' },
-    { label: 'Ongoing', detail: 'Maintain proper warmup habits. Proper warmup is essential for long-term injury prevention and performance optimization.' },
+    { label: 'This Week', detail: 'You may consider implementing recommended warmup time before all training sessions. Note how you feel during and after warmup.' },
+    { label: 'This Month', detail: 'You may consider establishing consistent warmup routine. Adjust duration based on activity type, intensity, and how your body responds.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining proper warmup habits. Proper warmup may be essential for long-term wellness and performance optimization.' },
   ];
   
   return { warmupMinutes, warmupComponents, warmupLevel, status, interpretation, recommendations, plan };
@@ -267,9 +267,9 @@ export default function InjuryPreventionWarmupTimeCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5" />
-            Injury Prevention Warmup Time Calculator
+            Warmup Time Wellness Planner
           </CardTitle>
-          <CardDescription>Calculate optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history to prevent injuries and prepare for exercise.</CardDescription>
+          <CardDescription>Get general wellness insights about optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -534,9 +534,21 @@ export default function InjuryPreventionWarmupTimeCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates optimal warmup time based on activity type, intensity level, age, environmental temperature, and injury history.</p>
-          <p>Outputs include recommended warmup time (minutes), warmup components, warmup level, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about optimal warmup time based on activity type, intensity level, age, environmental temperature, and injury history. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include suggested warmup time (minutes), warmup components, warmup level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

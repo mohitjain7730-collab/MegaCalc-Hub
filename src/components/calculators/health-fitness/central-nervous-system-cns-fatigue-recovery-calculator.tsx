@@ -98,14 +98,14 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Training Fatigue Index Calculator',
+    name: 'Training Fatigue Wellness Index',
     slug: 'training-fatigue-index-calculator',
-    description: 'Assess overall training fatigue including CNS fatigue.',
+    description: 'Get wellness insights about overall training fatigue including CNS fatigue.',
   },
   {
-    name: 'HRV Recovery Optimization Score Calculator',
+    name: 'HRV Recovery Optimization Wellness Score',
     slug: 'hrv-recovery-optimization-score-calculator',
-    description: 'Monitor recovery readiness including CNS recovery.',
+    description: 'Get wellness insights about recovery readiness including CNS recovery.',
   },
   {
     name: 'Training Stress Score Calculator',
@@ -129,15 +129,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Central Nervous System (CNS) Fatigue Recovery Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
+      name: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days to optimize training and recovery.',
+      description: 'Get general wellness insights about CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -181,7 +181,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'low';
   let cnsFatigueLevel = 'Low';
-  let interpretation = 'Your CNS fatigue level is low. Recovery time is relatively short.';
+  let interpretation = 'This suggests a general lifestyle tendency where your CNS fatigue level may be low. Recovery time may be relatively short.';
   
   if (recoveryHours < 24) {
     status = 'low';
@@ -189,39 +189,39 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (recoveryHours < 48) {
     status = 'moderate';
     cnsFatigueLevel = 'Moderate';
-    interpretation = 'Your CNS fatigue level is moderate. Allow adequate recovery before next high-intensity session.';
+    interpretation = 'This suggests a general lifestyle tendency where your CNS fatigue level is moderate. You may consider allowing adequate recovery before next high-intensity session.';
   } else if (recoveryHours < 72) {
     status = 'high';
     cnsFatigueLevel = 'High';
-    interpretation = 'Your CNS fatigue level is high. Take extended rest and reduce intensity in next session.';
+    interpretation = 'This suggests a general lifestyle tendency where your CNS fatigue level is high. You may consider taking extended rest and reducing intensity in next session.';
   } else {
     status = 'very-high';
     cnsFatigueLevel = 'Very High';
-    interpretation = 'Your CNS fatigue level is very high. Take multiple rest days and consider a deload week before returning to high-intensity training.';
+    interpretation = 'This suggests a general lifestyle tendency where your CNS fatigue level is very high. You may consider taking multiple rest days and considering a deload week before returning to high-intensity training.';
   }
   
   const recommendations = [
-    'Allow full recovery time before next high-intensity session. CNS fatigue requires longer recovery than muscle fatigue.',
-    'Prioritize sleep: get 7-9 hours of quality sleep. Poor sleep significantly delays CNS recovery.',
-    'Avoid consecutive high-intensity days. Space intense sessions with at least 48-72 hours between them.',
+    'You may consider allowing full recovery time before next high-intensity session. CNS fatigue may require longer recovery than muscle fatigue. This is a personal insight, not a medical evaluation.',
+    'You may consider prioritizing sleep: get 7-9 hours of quality sleep. Poor sleep may delay CNS recovery.',
+    'You may consider avoiding consecutive high-intensity days. Space intense sessions with at least 48-72 hours between them.',
   ];
   if (values.cnsLoadDays > 3) {
-    recommendations.push('Reduce consecutive days of high CNS load. Too many consecutive intense days leads to excessive CNS fatigue.');
+    recommendations.push('You may consider reducing consecutive days of high CNS load. Too many consecutive intense days may lead to excessive CNS fatigue.');
   }
   if (values.sleepQuality && values.sleepQuality < 7) {
-    recommendations.push('Improve sleep quality. Poor sleep is one of the biggest factors delaying CNS recovery.');
+    recommendations.push('You may consider improving sleep quality. Poor sleep may be one of the factors delaying CNS recovery.');
   }
   if (values.stressLevel && values.stressLevel > 7) {
-    recommendations.push('Manage stress levels. High stress increases CNS fatigue and delays recovery. Consider relaxation techniques, meditation, or stress-reduction strategies.');
+    recommendations.push('You may consider managing stress levels. High stress may increase CNS fatigue and delay recovery. Consider relaxation techniques, meditation, or stress-reduction strategies.');
   }
   if (recoveryHours > 72) {
-    recommendations.push('Take extended rest and consider a deload week: reduce intensity by 50-70% and volume by 30-50% to allow CNS recovery.');
+    recommendations.push('You may consider taking extended rest and considering a deload week: reduce intensity by 50-70% and volume by 30-50% to allow CNS recovery.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Allow full recovery time calculated. Avoid high-intensity training during recovery period. Focus on light movement or complete rest.' },
-    { label: 'This Month', detail: 'Plan training to avoid excessive consecutive high-intensity days. Include rest days between intense sessions and prioritize sleep.' },
-    { label: 'Ongoing', detail: 'Monitor CNS fatigue signals (strength, power, coordination). Adjust training intensity and recovery based on CNS recovery needs.' },
+    { label: 'This Week', detail: 'You may consider allowing full recovery time calculated. Avoid high-intensity training during recovery period. Focus on light movement or complete rest.' },
+    { label: 'This Month', detail: 'You may consider planning training to avoid excessive consecutive high-intensity days. Include rest days between intense sessions and prioritize sleep.' },
+    { label: 'Ongoing', detail: 'You may consider monitoring CNS fatigue signals (strength, power, coordination). Adjust training intensity and recovery based on CNS recovery needs.' },
   ];
   
   return { recoveryHours, recoveryDays, cnsFatigueLevel, status, interpretation, recommendations, plan };
@@ -250,9 +250,9 @@ export default function CentralNervousSystemCNSFatigueRecoveryCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Brain className="h-5 w-5" />
-            Central Nervous System (CNS) Fatigue Recovery Calculator
+            Central Nervous System (CNS) Fatigue Recovery Wellness Guide
           </CardTitle>
-          <CardDescription>Calculate CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days to optimize training and recovery.</CardDescription>
+          <CardDescription>Get general wellness insights about CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -523,9 +523,21 @@ export default function CentralNervousSystemCNSFatigueRecoveryCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates CNS fatigue recovery time based on training intensity, volume, type, consecutive CNS load days, sleep quality, and stress level.</p>
+          <p>This tool provides general wellness insights about CNS fatigue recovery time based on training intensity, volume, type, consecutive CNS load days, sleep quality, and stress level. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include recovery hours, recovery days, CNS fatigue level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

@@ -96,14 +96,14 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Probiotic Daily Dose Estimator',
+    name: 'Probiotic Daily Dose Wellness Guide',
     slug: 'probiotic-daily-dose-estimator',
-    description: 'Combine with prebiotics for synbiotic effect.',
+    description: 'Get wellness insights about combining with prebiotics for synbiotic effect.',
   },
   {
-    name: 'Gut Microbiome Diversity Score Calculator',
+    name: 'Gut Microbiome Diversity Wellness Score',
     slug: 'gut-microbiome-diversity-score-calculator',
-    description: 'Track overall gut microbiome health.',
+    description: 'Get wellness insights about gut microbiome diversity.',
   },
   {
     name: 'Fiber Intake Calculator',
@@ -111,9 +111,9 @@ const relatedCalculators = [
     description: 'Calculate total fiber intake including prebiotics.',
   },
   {
-    name: 'Antioxidant Diversity Index Calculator',
+    name: 'Antioxidant Diversity Wellness Index',
     slug: 'antioxidant-diversity-index-calculator',
-    description: 'Support overall health with antioxidant diversity.',
+    description: 'Get wellness insights about antioxidant diversity.',
   },
 ];
 
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Prebiotic Fiber Target Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Prebiotic Fiber Wellness Target Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Prebiotic Fiber Target Calculator',
+      name: 'Prebiotic Fiber Wellness Target Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support.',
+      description: 'Get general wellness insights about prebiotic fiber target based on dietary fiber intake, gut wellness goals, and current consumption. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -186,48 +186,48 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your prebiotic fiber intake meets or exceeds recommendations for your gut health goals.';
+  let interpretation = 'This suggests a general lifestyle tendency where your prebiotic fiber intake may meet or exceed suggestions for your gut wellness goals.';
   
   if (currentPrebiotic > 0) {
     if (currentPrebiotic >= prebioticTarget * 0.9) {
       status = 'optimal';
-      interpretation = 'Your prebiotic fiber intake is excellent and meets recommendations for supporting beneficial gut bacteria.';
+      interpretation = 'This suggests a general lifestyle tendency where your prebiotic fiber intake is excellent and may meet suggestions for supporting beneficial gut bacteria.';
     } else if (currentPrebiotic >= prebioticTarget * 0.7) {
       status = 'good';
-      interpretation = 'Your prebiotic intake is good but could be slightly increased to fully meet recommendations.';
+      interpretation = 'This suggests a general lifestyle tendency where your prebiotic intake is good but could be slightly increased to fully meet suggestions.';
     } else if (currentPrebiotic >= prebioticTarget * 0.5) {
       status = 'moderate';
-      interpretation = 'Your prebiotic intake is moderate. Increasing prebiotic foods would better support your beneficial gut bacteria.';
+      interpretation = 'This suggests a general lifestyle tendency where your prebiotic intake is moderate. You may consider increasing prebiotic foods to support your beneficial gut bacteria.';
     } else {
       status = 'low';
-      interpretation = 'Your prebiotic intake is below recommendations. Focus on adding prebiotic-rich foods to feed beneficial gut bacteria.';
+      interpretation = 'This suggests a general lifestyle tendency where your prebiotic intake may be below suggestions. You may consider adding prebiotic-rich foods to feed beneficial gut bacteria.';
     }
   } else {
     status = 'low';
-    interpretation = 'Start incorporating prebiotic foods to support beneficial gut bacteria. Prebiotics feed the probiotics in your gut.';
+    interpretation = 'You may consider starting to incorporate prebiotic foods to support beneficial gut bacteria. Prebiotics feed the probiotics in your gut.';
   }
   
   const recommendations = [
-    `Prebiotic fiber target: ${prebioticTarget.toFixed(1)}g daily (${((prebioticTarget / totalFiber) * 100).toFixed(0)}% of total fiber intake).`,
+    `Prebiotic fiber target: ${prebioticTarget.toFixed(1)}g daily (${((prebioticTarget / totalFiber) * 100).toFixed(0)}% of total fiber intake). This is a personal insight, not a medical evaluation.`,
     prebioticGap > 0
-      ? `You need ${prebioticGap.toFixed(1)}g more prebiotic fiber daily. Add prebiotic-rich foods: ${recommendedFoods.slice(0, 3).join(', ')}.`
-      : 'Your prebiotic intake meets or exceeds recommendations. Continue including prebiotic foods regularly.',
-    'Include prebiotic foods daily: garlic, onions, bananas, oats, asparagus, leeks, barley, and chicory root. These feed beneficial gut bacteria.',
-    'If taking probiotics, ensure adequate prebiotic intake to feed and support the probiotic bacteria in your gut (synbiotic effect).',
+      ? `You may consider adding ${prebioticGap.toFixed(1)}g more prebiotic fiber daily. Add prebiotic-rich foods: ${recommendedFoods.slice(0, 3).join(', ')}.`
+      : 'Your prebiotic intake meets or exceeds suggestions. You may consider continuing to include prebiotic foods regularly.',
+    'You may consider including prebiotic foods daily: garlic, onions, bananas, oats, asparagus, leeks, barley, and chicory root. These may feed beneficial gut bacteria.',
+    'If taking probiotics, you may consider ensuring adequate prebiotic intake to feed and support the probiotic bacteria in your gut (synbiotic effect).',
   ];
   
   if (totalFiber < 25) {
-    recommendations.push(`Your total fiber intake (${totalFiber}g) is below the recommended 25-35g daily. Increasing overall fiber intake will also help increase prebiotic fiber naturally.`);
+    recommendations.push(`Your total fiber intake (${totalFiber}g) may be below the suggested 25-35g daily. Increasing overall fiber intake may also help increase prebiotic fiber naturally.`);
   }
   
   if (gutHealthGoal === 'digestive_issues' && prebioticGap > 0) {
-    recommendations.push('For digestive issues, increase prebiotic fiber gradually over 2-3 weeks to allow your gut to adjust. Start with smaller amounts and monitor tolerance.');
+    recommendations.push('For digestive wellness, you may consider increasing prebiotic fiber gradually over 2-3 weeks to allow your gut to adjust. Start with smaller amounts and monitor tolerance.');
   }
   
   const plan = [
-    { label: 'This Week', detail: `Add ${Math.min(prebioticGap, 3).toFixed(1)}g prebiotic fiber daily. Include 1-2 prebiotic foods (e.g., 1 banana, 1/2 cup oats). Start gradually if new to prebiotics.` },
-    { label: 'This Month', detail: `Build to ${prebioticTarget.toFixed(1)}g daily. Include diverse prebiotic sources (garlic, onions, bananas, oats, asparagus). Monitor digestive tolerance and adjust as needed.` },
-    { label: 'Ongoing', detail: `Maintain ${prebioticTarget.toFixed(1)}g prebiotic fiber daily. Combine with probiotics for synbiotic effect. Rotate prebiotic foods for variety and to support different beneficial bacteria.` },
+    { label: 'This Week', detail: `You may consider adding ${Math.min(prebioticGap, 3).toFixed(1)}g prebiotic fiber daily. Include 1-2 prebiotic foods (e.g., 1 banana, 1/2 cup oats). Start gradually if new to prebiotics.` },
+    { label: 'This Month', detail: `You may consider building to ${prebioticTarget.toFixed(1)}g daily. Include diverse prebiotic sources (garlic, onions, bananas, oats, asparagus). Monitor digestive tolerance and adjust as needed.` },
+    { label: 'Ongoing', detail: `You may consider maintaining ${prebioticTarget.toFixed(1)}g prebiotic fiber daily. Combine with probiotics for synbiotic effect. Rotate prebiotic foods for variety and to support different beneficial bacteria.` },
   ];
   
   return { prebioticTarget, prebioticGap, prebioticPercentage, recommendedFoods, status, interpretation, recommendations, plan };
@@ -254,9 +254,9 @@ export default function PrebioticFiberTargetCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Prebiotic Fiber Target Calculator
+            Prebiotic Fiber Wellness Target Calculator
           </CardTitle>
-          <CardDescription>Calculate prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support.</CardDescription>
+          <CardDescription>Get general wellness insights about prebiotic fiber target based on dietary fiber intake, gut wellness goals, and current consumption. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -539,9 +539,21 @@ export default function PrebioticFiberTargetCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support.</p>
-          <p>Outputs include prebiotic fiber target, gap analysis, prebiotic percentage of total fiber, recommended foods, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about prebiotic fiber target based on dietary fiber intake, gut wellness goals, and current consumption. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include prebiotic fiber target, gap analysis, prebiotic percentage of total fiber, suggested foods, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

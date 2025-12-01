@@ -97,14 +97,14 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Training Fatigue Index Calculator',
+    name: 'Training Fatigue Wellness Index',
     slug: 'training-fatigue-index-calculator',
-    description: 'Assess overall training fatigue alongside HRV metrics.',
+    description: 'Get wellness insights about overall training fatigue alongside HRV metrics.',
   },
   {
-    name: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
+    name: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide',
     slug: 'central-nervous-system-cns-fatigue-recovery-calculator',
-    description: 'Calculate CNS recovery time related to HRV recovery.',
+    description: 'Get wellness insights about CNS recovery time related to HRV recovery.',
   },
   {
     name: 'Training Stress Score Calculator',
@@ -128,15 +128,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'HRV Recovery Optimization Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'HRV Recovery Optimization Wellness Score', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'HRV Recovery Optimization Score Calculator',
+      name: 'HRV Recovery Optimization Wellness Score',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness.',
+      description: 'Get general wellness insights about HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -191,7 +191,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'optimal';
   let recoveryStatus = 'Optimal';
-  let interpretation = 'Your HRV recovery optimization score is optimal. You appear well-recovered and ready for training.';
+  let interpretation = 'This suggests a general lifestyle tendency where your HRV recovery optimization score may be optimal. You may appear well-recovered and ready for training.';
   
   if (recoveryScore >= 80) {
     status = 'optimal';
@@ -199,39 +199,39 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (recoveryScore >= 60) {
     status = 'good';
     recoveryStatus = 'Good';
-    interpretation = 'Your HRV recovery optimization score is good. You\'re likely recovered and ready for normal training.';
+    interpretation = 'This suggests a general lifestyle tendency where your HRV recovery optimization score is good. You may be recovered and ready for normal training.';
   } else if (recoveryScore >= 40) {
     status = 'moderate';
     recoveryStatus = 'Moderate';
-    interpretation = 'Your HRV recovery optimization score is moderate. Consider lighter training or additional recovery.';
+    interpretation = 'This suggests a general lifestyle tendency where your HRV recovery optimization score is moderate. You may consider lighter training or additional recovery.';
   } else {
     status = 'poor';
     recoveryStatus = 'Poor';
-    interpretation = 'Your HRV recovery optimization score is poor. Focus on recovery: rest, sleep, stress management. Avoid high-intensity training.';
+    interpretation = 'This suggests a general lifestyle tendency where your HRV recovery optimization score is lower. You may consider focusing on recovery: rest, sleep, stress management. You may consider avoiding high-intensity training.';
   }
   
   const recommendations = [
-    'Monitor HRV trends over time rather than individual readings. Patterns are more meaningful than single values.',
-    'Prioritize sleep: aim for 7-9 hours of quality sleep. Sleep is the primary driver of HRV recovery.',
-    'Manage stress: high stress (physical, mental, emotional) significantly reduces HRV. Include stress-reduction practices.',
+    'You may consider monitoring HRV trends over time rather than individual readings. Patterns may be more meaningful than single values. This is a personal insight, not a medical evaluation.',
+    'You may consider prioritizing sleep: aim for 7-9 hours of quality sleep. Sleep may be a primary driver of HRV recovery.',
+    'You may consider managing stress: high stress (physical, mental, emotional) may reduce HRV. Include stress-reduction practices.',
   ];
   if (hrvChange < -10) {
-    recommendations.push('HRV is below baseline. Reduce training load, increase recovery, and focus on sleep and stress management.');
+    recommendations.push('HRV may be below baseline. You may consider reducing training load, increasing recovery, and focusing on sleep and stress management.');
   }
   if (values.sleepHours && values.sleepHours < 7) {
-    recommendations.push('Improve sleep duration. Inadequate sleep is a major factor reducing HRV and recovery.');
+    recommendations.push('You may consider improving sleep duration. Inadequate sleep may be a factor reducing HRV and recovery.');
   }
   if (values.stressLevel && values.stressLevel > 7) {
-    recommendations.push('Address high stress levels. Consider meditation, relaxation, or stress-reduction techniques to improve HRV recovery.');
+    recommendations.push('You may consider addressing high stress levels. Consider meditation, relaxation, or stress-reduction techniques to support HRV recovery.');
   }
   if (recoveryScore < 40) {
-    recommendations.push('Recovery score is poor. Take rest days, reduce or pause training, prioritize sleep, and address stressors. Consider medical evaluation if persistent.');
+    recommendations.push('Recovery score is lower. You may consider taking rest days, reducing or pausing training, prioritizing sleep, and addressing stressors. Consider discussing with a qualified professional if persistent.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Measure HRV consistently (daily or 3-4x/week) at the same time each day (ideally upon waking). Track trends relative to baseline.' },
-    { label: 'This Month', detail: 'Use HRV scores to guide training decisions. High scores = high-intensity training, low scores = recovery. Optimize sleep and stress management.' },
-    { label: 'Ongoing', detail: 'Continue monitoring HRV as a recovery metric. Build patterns of what affects your HRV and adjust lifestyle and training accordingly.' },
+    { label: 'This Week', detail: 'You may consider measuring HRV consistently (daily or 3-4x/week) at the same time each day (ideally upon waking). Track trends relative to baseline.' },
+    { label: 'This Month', detail: 'You may consider using HRV scores to guide training decisions. High scores may indicate readiness for high-intensity training, low scores may indicate recovery needs. Optimize sleep and stress management.' },
+    { label: 'Ongoing', detail: 'You may consider continuing to monitor HRV as a recovery metric. Build patterns of what affects your HRV and adjust lifestyle and training accordingly.' },
   ];
   
   return { recoveryScore, recoveryStatus, hrvChange, status, interpretation, recommendations, plan };
@@ -260,9 +260,9 @@ export default function HRVRecoveryOptimizationScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Heart className="h-5 w-5" />
-            HRV Recovery Optimization Score Calculator
+            HRV Recovery Optimization Wellness Score
           </CardTitle>
-          <CardDescription>Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness.</CardDescription>
+          <CardDescription>Get general wellness insights about HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -530,9 +530,21 @@ export default function HRVRecoveryOptimizationScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep hours, stress level, and training load.</p>
+          <p>This tool provides general wellness insights about HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep hours, stress level, and training load. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include recovery score (0-100), recovery status, HRV change percentage, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

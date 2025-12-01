@@ -124,15 +124,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Glycemic Index Meal Optimizer Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Glycemic Index Meal Wellness Optimizer', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Glycemic Index Meal Optimizer Calculator',
+      name: 'Glycemic Index Meal Wellness Optimizer',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels.',
+      description: 'Get general wellness insights about glycemic index for meals based on foods, portion sizes, and timing to support energy levels. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -187,29 +187,29 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your meal has an optimal glycemic impact, providing stable blood sugar and sustained energy.';
+  let interpretation = 'This suggests a general lifestyle tendency where your meal may have an optimal glycemic impact, providing stable energy.';
   
   if (optimizedGL <= 10) {
     status = 'optimal';
-    interpretation = 'Your meal has a low glycemic load, providing stable blood sugar and sustained energy. This is ideal for blood sugar management.';
+    interpretation = 'This suggests a general lifestyle tendency where your meal has a low glycemic load, which may support stable energy. This may be ideal for wellness.';
   } else if (optimizedGL <= 19) {
     status = 'good';
-    interpretation = 'Your meal has a moderate glycemic load. This is acceptable for most people, though lower would be better for blood sugar control.';
+    interpretation = 'This suggests a general lifestyle tendency where your meal has a moderate glycemic load. This may be acceptable for most people, though lower may support wellness better.';
   } else if (optimizedGL <= 30) {
     status = 'moderate';
-    interpretation = 'Your meal has a high glycemic load, which may cause significant blood sugar spikes. Consider optimizing with protein, fat, or fiber.';
+    interpretation = 'This suggests a general lifestyle tendency where your meal has a high glycemic load, which may cause significant energy fluctuations. You may consider optimizing with protein, fat, or fiber.';
   } else {
     status = 'low';
-    interpretation = 'Your meal has a very high glycemic load, causing rapid blood sugar spikes. Significant optimization is needed to improve blood sugar response.';
+    interpretation = 'This suggests a general lifestyle tendency where your meal has a very high glycemic load, which may cause rapid energy fluctuations. You may consider significant optimization to support energy response.';
   }
   
   const recommendations = [
-    `Your meal glycemic load is ${optimizedGL.toFixed(1)} (optimized from ${mealGL.toFixed(1)}). Blood sugar impact: ${bloodSugarImpact}.`,
+    `Your meal glycemic load is ${optimizedGL.toFixed(1)} (optimized from ${mealGL.toFixed(1)}). Energy impact: ${bloodSugarImpact}. This is a personal insight, not a medical evaluation.`,
     optimizedGL > 10
-      ? 'To lower glycemic impact: Add protein (10-20g), healthy fats (5-10g), or fiber (5-10g) to slow carbohydrate absorption and reduce blood sugar spikes.'
-      : 'Your meal is well-balanced. The combination of carbohydrates with protein, fat, and fiber helps moderate blood sugar response.',
-    `Optimal meal timing: ${mealTiming}. Lower-GI meals are better for general eating, while higher-GI meals may be appropriate post-workout.`,
-    'Aim for meals with glycemic load ≤10 for optimal blood sugar control. If your meal exceeds this, reduce portion size or add protein/fat/fiber.',
+      ? 'To lower glycemic impact: You may consider adding protein (10-20g), healthy fats (5-10g), or fiber (5-10g) to slow carbohydrate absorption and reduce energy fluctuations.'
+      : 'Your meal is well-balanced. The combination of carbohydrates with protein, fat, and fiber may help moderate energy response.',
+    `Suggested meal timing: ${mealTiming}. Lower-GI meals may be better for general eating, while higher-GI meals may be appropriate post-workout.`,
+    'You may consider aiming for meals with glycemic load ≤10 for optimal energy stability. If your meal exceeds this, you may consider reducing portion size or adding protein/fat/fiber.',
   ];
   
   if (mealGL > optimizedGL && (fiberContent > 0 || proteinContent > 0 || fatContent > 0)) {
@@ -217,13 +217,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   if (optimizedGL > 19) {
-    recommendations.push('Consider reducing carbohydrate portion size or choosing lower-GI carbohydrate sources to bring glycemic load below 19 for better blood sugar control.');
+    recommendations.push('You may consider reducing carbohydrate portion size or choosing lower-GI carbohydrate sources to bring glycemic load below 19 for better energy stability.');
   }
   
   const plan = [
-    { label: 'This Week', detail: `Aim for meals with glycemic load ≤10. Include protein (10-20g), healthy fats (5-10g), or fiber (5-10g) with carbohydrate-rich meals to optimize blood sugar response.` },
-    { label: 'This Month', detail: 'Track meal glycemic loads and blood sugar responses. Build a repertoire of low-GI meals. Monitor energy levels and hunger patterns to see improvements from lower-GI eating.' },
-    { label: 'Ongoing', detail: 'Maintain meals with glycemic load ≤10 for stable blood sugar. Use high-GI foods strategically (post-workout recovery) rather than as regular meal components. Continue combining carbs with protein, fat, and fiber.' },
+    { label: 'This Week', detail: `You may consider aiming for meals with glycemic load ≤10. Include protein (10-20g), healthy fats (5-10g), or fiber (5-10g) with carbohydrate-rich meals to support energy response.` },
+    { label: 'This Month', detail: 'You may consider tracking meal glycemic loads and energy responses. Build a repertoire of low-GI meals. Monitor energy levels and hunger patterns to see improvements from lower-GI eating.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining meals with glycemic load ≤10 for stable energy. Use high-GI foods strategically (post-workout recovery) rather than as regular meal components. Continue combining carbs with protein, fat, and fiber.' },
   ];
   
   return { mealGL: optimizedGL, optimizedGI, bloodSugarImpact, mealTiming, status, interpretation, recommendations, plan };
@@ -251,9 +251,9 @@ export default function GlycemicIndexMealOptimizerCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Glycemic Index Meal Optimizer Calculator
+            Glycemic Index Meal Wellness Optimizer
           </CardTitle>
-          <CardDescription>Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels.</CardDescription>
+          <CardDescription>Get general wellness insights about glycemic index for meals based on foods, portion sizes, and timing to support energy levels. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -346,7 +346,7 @@ export default function GlycemicIndexMealOptimizerCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See optimized glycemic load, blood sugar impact, meal timing, and recommendations.</CardDescription>
+            <CardDescription>See optimized glycemic load, energy impact, meal timing, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -361,7 +361,7 @@ export default function GlycemicIndexMealOptimizerCalculator() {
                 <p className="text-xs text-muted-foreground">With modifiers</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Blood sugar impact</p>
+                <p className="text-sm text-muted-foreground">Energy impact</p>
                 <p className="text-2xl font-semibold text-primary">{result.bloodSugarImpact.split(' - ')[0]}</p>
                 <p className="text-xs text-muted-foreground">{result.bloodSugarImpact.split(' - ')[1]}</p>
               </div>
@@ -537,9 +537,21 @@ export default function GlycemicIndexMealOptimizerCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels.</p>
-          <p>Outputs include meal glycemic load, optimized GI, blood sugar impact, meal timing recommendations, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about glycemic index for meals based on foods, portion sizes, and timing to support energy levels. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include meal glycemic load, optimized GI, energy impact, meal timing suggestions, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

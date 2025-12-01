@@ -5740,93 +5740,93 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4558,
-    name: 'Probiotic Daily Dose Estimator',
-    description: 'Estimate daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health.',
+    name: 'Probiotic Daily Dose Wellness Guide',
+    description: 'Get general wellness insights about daily probiotic dose based on wellness goals, current intake, and specific probiotic strains. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'probiotic-daily-dose-estimator',
     category: 'wellness',
-    metaTitle: 'Probiotic Daily Dose Estimator',
-    metaDescription: 'Estimate daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health and digestive function.'
+    metaTitle: 'Probiotic Daily Dose Wellness Guide',
+    metaDescription: 'Get general wellness insights about daily probiotic dose based on wellness goals, current intake, and specific probiotic strains. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4559,
-    name: 'Prebiotic Fiber Target Calculator',
-    description: 'Calculate prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support.',
+    name: 'Prebiotic Fiber Wellness Target Calculator',
+    description: 'Get general wellness insights about prebiotic fiber target based on dietary fiber intake, gut wellness goals, and current consumption. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'prebiotic-fiber-target-calculator',
     category: 'wellness',
-    metaTitle: 'Prebiotic Fiber Target Calculator',
-    metaDescription: 'Calculate prebiotic fiber target based on dietary fiber intake, gut health goals, and current consumption to optimize beneficial bacteria support and digestive health.'
+    metaTitle: 'Prebiotic Fiber Wellness Target Calculator',
+    metaDescription: 'Get general wellness insights about prebiotic fiber target based on dietary fiber intake, gut wellness goals, and current consumption. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4560,
-    name: 'Glycemic Index Meal Optimizer Calculator',
-    description: 'Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels.',
+    name: 'Glycemic Index Meal Wellness Optimizer',
+    description: 'Get general wellness insights about glycemic index for meals based on foods, portion sizes, and timing to support energy levels. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'glycemic-index-meal-optimizer-calculator',
     category: 'wellness',
-    metaTitle: 'Glycemic Index Meal Optimizer Calculator',
-    metaDescription: 'Calculate optimal glycemic index for meals based on foods, portion sizes, and timing to manage blood sugar and optimize energy levels for better health.'
+    metaTitle: 'Glycemic Index Meal Wellness Optimizer',
+    metaDescription: 'Get general wellness insights about glycemic index for meals based on foods, portion sizes, and timing to support energy levels. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4561,
-    name: 'Blood Sugar Spike Estimator (by meal type)',
-    description: 'Estimate blood sugar spike magnitude based on meal type, carbohydrate content, and macronutrient composition to manage blood sugar levels.',
+    name: 'Energy Fluctuation Estimator (by meal type)',
+    description: 'Get general wellness insights about energy fluctuation magnitude based on meal type, carbohydrate content, and macronutrient composition. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'blood-sugar-spike-estimator-by-meal-type',
     category: 'wellness',
-    metaTitle: 'Blood Sugar Spike Estimator (by meal type)',
-    metaDescription: 'Estimate blood sugar spike magnitude based on meal type, carbohydrate content, and macronutrient composition to manage blood sugar levels and optimize energy stability.'
+    metaTitle: 'Energy Fluctuation Estimator (by meal type)',
+    metaDescription: 'Get general wellness insights about energy fluctuation magnitude based on meal type, carbohydrate content, and macronutrient composition. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4562,
-    name: 'Nutrient Absorption Efficiency Calculator',
-    description: 'Calculate nutrient absorption efficiency based on nutrient type, food source, meal timing, and cofactors to optimize nutrient uptake.',
+    name: 'Nutrient Absorption Wellness Efficiency Calculator',
+    description: 'Get general wellness insights about nutrient absorption efficiency based on nutrient type, food source, meal timing, and cofactors. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'nutrient-absorption-efficiency-calculator',
     category: 'wellness',
-    metaTitle: 'Nutrient Absorption Efficiency Calculator',
-    metaDescription: 'Calculate nutrient absorption efficiency based on nutrient type, food source, meal timing, and cofactors to optimize nutrient uptake and meet nutritional needs.'
+    metaTitle: 'Nutrient Absorption Wellness Efficiency Calculator',
+    metaDescription: 'Get general wellness insights about nutrient absorption efficiency based on nutrient type, food source, meal timing, and cofactors. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4563,
-    name: 'Training Fatigue Index Calculator',
-    description: 'Calculate training fatigue index based on training volume, frequency, intensity, recovery days, and sleep to assess training load and recovery needs.',
+    name: 'Training Fatigue Wellness Index',
+    description: 'Get general wellness insights about training fatigue based on training volume, frequency, intensity, recovery days, and sleep. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'training-fatigue-index-calculator',
     category: 'wellness',
-    metaTitle: 'Training Fatigue Index Calculator',
-    metaDescription: 'Calculate training fatigue index based on training volume, frequency, intensity, recovery days, and sleep to assess training load and recovery needs and prevent overtraining.'
+    metaTitle: 'Training Fatigue Wellness Index',
+    metaDescription: 'Get general wellness insights about training fatigue based on training volume, frequency, intensity, recovery days, and sleep. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4564,
-    name: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
-    description: 'Calculate CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days to optimize training and recovery.',
+    name: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide',
+    description: 'Get general wellness insights about CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'central-nervous-system-cns-fatigue-recovery-calculator',
     category: 'wellness',
-    metaTitle: 'Central Nervous System (CNS) Fatigue Recovery Calculator',
-    metaDescription: 'Calculate CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days to optimize training and recovery and prevent overtraining.'
+    metaTitle: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide',
+    metaDescription: 'Get general wellness insights about CNS fatigue recovery time based on training intensity, volume, type, and consecutive high-load days. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4565,
-    name: 'HRV Recovery Optimization Score Calculator',
-    description: 'Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness.',
+    name: 'HRV Recovery Optimization Wellness Score',
+    description: 'Get general wellness insights about HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'hrv-recovery-optimization-score-calculator',
     category: 'wellness',
-    metaTitle: 'HRV Recovery Optimization Score Calculator',
-    metaDescription: 'Calculate HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load to assess recovery readiness and guide training decisions.'
+    metaTitle: 'HRV Recovery Optimization Wellness Score',
+    metaDescription: 'Get general wellness insights about HRV recovery optimization score based on current HRV, baseline HRV, rMSSD, sleep, stress, and training load. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4566,
-    name: 'Injury Prevention Warmup Time Calculator',
-    description: 'Calculate optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history to prevent injuries and prepare for exercise.',
+    name: 'Warmup Time Wellness Planner',
+    description: 'Get general wellness insights about optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'injury-prevention-warmup-time-calculator',
     category: 'wellness',
-    metaTitle: 'Injury Prevention Warmup Time Calculator',
-    metaDescription: 'Calculate optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history to prevent injuries and prepare for exercise.'
+    metaTitle: 'Warmup Time Wellness Planner',
+    metaDescription: 'Get general wellness insights about optimal warmup time based on activity type, intensity, age, environmental temperature, and injury history. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4567,
-    name: 'Core Strength Balance Calculator',
-    description: 'Calculate core strength balance across anterior, posterior, lateral, and rotational components to identify imbalances and optimize core training.',
+    name: 'Core Strength Balance Wellness Calculator',
+    description: 'Get general wellness insights about core strength balance across anterior, posterior, lateral, and rotational components. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'core-strength-balance-calculator',
     category: 'wellness',
-    metaTitle: 'Core Strength Balance Calculator',
-    metaDescription: 'Calculate core strength balance across anterior, posterior, lateral, and rotational components to identify imbalances and optimize core training for better performance and injury prevention.'
+    metaTitle: 'Core Strength Balance Wellness Calculator',
+    metaDescription: 'Get general wellness insights about core strength balance across anterior, posterior, lateral, and rotational components. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4568,

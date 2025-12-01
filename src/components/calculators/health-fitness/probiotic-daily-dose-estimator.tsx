@@ -96,9 +96,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Gut Microbiome Diversity Score Calculator',
+    name: 'Gut Microbiome Diversity Wellness Score',
     slug: 'gut-microbiome-diversity-score-calculator',
-    description: 'Assess overall gut microbiome diversity.',
+    description: 'Get wellness insights about gut microbiome diversity.',
   },
   {
     name: 'Prebiotic Fiber Target Calculator',
@@ -106,9 +106,9 @@ const relatedCalculators = [
     description: 'Feed probiotics with prebiotic fiber.',
   },
   {
-    name: 'Antioxidant Diversity Index Calculator',
+    name: 'Antioxidant Diversity Wellness Index',
     slug: 'antioxidant-diversity-index-calculator',
-    description: 'Support overall health with antioxidant diversity.',
+    description: 'Get wellness insights about antioxidant diversity.',
   },
   {
     name: 'Fiber Intake Calculator',
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Probiotic Daily Dose Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Probiotic Daily Dose Wellness Guide', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Probiotic Daily Dose Estimator',
+      name: 'Probiotic Daily Dose Wellness Guide',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health.',
+      description: 'Get general wellness insights about daily probiotic dose based on wellness goals, current intake, and specific probiotic strains. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -209,47 +209,47 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your probiotic dose recommendation is calculated based on your health goals and needs.';
+  let interpretation = 'This suggests a general lifestyle tendency where your probiotic dose recommendation may be calculated based on your wellness goals and needs.';
   
   const doseGap = recommendedDose - currentIntake;
   
   if (currentIntake > 0) {
     if (currentIntake >= recommendedDose * 0.8) {
       status = 'optimal';
-      interpretation = 'Your current probiotic intake aligns well with recommendations for your health goals.';
+      interpretation = 'This suggests a general lifestyle tendency where your current probiotic intake may align well with suggestions for your wellness goals.';
     } else if (currentIntake >= recommendedDose * 0.5) {
       status = 'good';
-      interpretation = 'Your current intake is good but could be increased to meet optimal recommendations.';
+      interpretation = 'This suggests a general lifestyle tendency where your current intake is good but could be increased to meet suggestions.';
     } else if (doseGap > 10) {
       status = 'moderate';
-      interpretation = 'Your current intake is below recommended levels. Increasing dose would better support your health goals.';
+      interpretation = 'This suggests a general lifestyle tendency where your current intake may be below suggested levels. You may consider increasing dose to support your wellness goals.';
     } else {
       status = 'low';
-      interpretation = 'Your current probiotic intake is significantly below recommendations. Consider increasing to meet your health goals.';
+      interpretation = 'This suggests a general lifestyle tendency where your current probiotic intake may be below suggestions. You may consider increasing to support your wellness goals.';
     }
   }
   
   const recommendations = [
-    `Recommended daily probiotic dose: ${recommendedDose} billion CFU for ${healthGoal.replace('_', ' ')} support.`,
-    `Aim for a supplement with ${recommendedStrains}+ different probiotic strains for comprehensive gut health support.`,
-    'Take probiotics with meals or 30 minutes before meals to help protect bacteria from stomach acid and improve survival rates.',
+    `Suggested daily probiotic dose: ${recommendedDose} billion CFU for ${healthGoal.replace('_', ' ')} support. This is a personal insight, not a medical evaluation.`,
+    `You may consider aiming for a supplement with ${recommendedStrains}+ different probiotic strains for comprehensive gut wellness support.`,
+    'You may consider taking probiotics with meals or 30 minutes before meals to help protect bacteria from stomach acid and improve survival rates.',
     currentIntake > 0 && doseGap > 0
-      ? `Your current intake is ${currentIntake} billion CFU. Increase by ${doseGap.toFixed(0)} billion CFU to meet recommendations.`
-      : 'If starting probiotics, begin with a lower dose and gradually increase to allow your gut to adjust and minimize potential side effects.',
+      ? `Your current intake is ${currentIntake} billion CFU. You may consider increasing by ${doseGap.toFixed(0)} billion CFU to meet suggestions.`
+      : 'If starting probiotics, you may consider beginning with a lower dose and gradually increasing to allow your gut to adjust and minimize potential side effects.',
   ];
   
   if (healthGoal === 'antibiotic_recovery') {
-    recommendations.push('During antibiotic recovery, take probiotics 2-3 hours after antibiotics. Continue probiotics for 2-4 weeks after finishing antibiotics to fully restore gut health.');
+    recommendations.push('During antibiotic recovery, you may consider taking probiotics 2-3 hours after antibiotics. Continue probiotics for 2-4 weeks after finishing antibiotics to support gut wellness.');
   }
   
   if (strainDiversity < 5 && recommendedStrains >= 5) {
-    recommendations.push(`Your current supplement has ${strainDiversity} strain(s). Consider switching to a multi-strain probiotic (${recommendedStrains}+ strains) for broader benefits.`);
+    recommendations.push(`Your current supplement has ${strainDiversity} strain(s). You may consider switching to a multi-strain probiotic (${recommendedStrains}+ strains) for broader benefits.`);
   }
   
   const plan = [
-    { label: 'This Week', detail: `Start with ${Math.min(recommendedDose, 10)} billion CFU daily to allow your gut to adjust. Take with meals and monitor for any digestive changes.` },
-    { label: 'This Month', detail: `Gradually increase to ${recommendedDose} billion CFU daily if starting lower. Continue consistently. Look for improvements in digestion, energy, and overall well-being.` },
-    { label: 'Ongoing', detail: `Maintain ${recommendedDose} billion CFU daily for your health goals. Combine probiotics with prebiotic foods (fiber) to nourish the beneficial bacteria. Consider rotating probiotic supplements periodically to introduce different strains.` },
+    { label: 'This Week', detail: `You may consider starting with ${Math.min(recommendedDose, 10)} billion CFU daily to allow your gut to adjust. Take with meals and monitor for any digestive changes.` },
+    { label: 'This Month', detail: `You may consider gradually increasing to ${recommendedDose} billion CFU daily if starting lower. Continue consistently. Look for improvements in digestion, energy, and overall well-being.` },
+    { label: 'Ongoing', detail: `You may consider maintaining ${recommendedDose} billion CFU daily for your wellness goals. Combine probiotics with prebiotic foods (fiber) to nourish the beneficial bacteria. Consider rotating probiotic supplements periodically to introduce different strains.` },
   ];
   
   return { recommendedDose, cfuBillion, recommendedStrains, doseFrequency, status, interpretation, recommendations, plan };
@@ -276,9 +276,9 @@ export default function ProbioticDailyDoseEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Probiotic Daily Dose Estimator
+            Probiotic Daily Dose Wellness Guide
           </CardTitle>
-          <CardDescription>Estimate daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health.</CardDescription>
+          <CardDescription>Get general wellness insights about daily probiotic dose based on wellness goals, current intake, and specific probiotic strains. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -553,9 +553,21 @@ export default function ProbioticDailyDoseEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates daily probiotic dose requirements based on health goals, current intake, and specific probiotic strains to optimize gut health.</p>
-          <p>Outputs include recommended dose in billion CFU, recommended number of strains, dosing frequency, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about daily probiotic dose based on wellness goals, current intake, and specific probiotic strains. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include suggested dose in billion CFU, suggested number of strains, dosing frequency, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

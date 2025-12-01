@@ -97,9 +97,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Training Fatigue Index Calculator',
+    name: 'Training Fatigue Wellness Index',
     slug: 'training-fatigue-index-calculator',
-    description: 'Assess training load including core work.',
+    description: 'Get wellness insights about training load including core work.',
   },
   {
     name: 'Posture Correction Progress Calculator',
@@ -107,9 +107,9 @@ const relatedCalculators = [
     description: 'Track posture improvements related to core balance.',
   },
   {
-    name: 'Injury Prevention Warmup Time Calculator',
+    name: 'Warmup Time Wellness Planner',
     slug: 'injury-prevention-warmup-time-calculator',
-    description: 'Include core activation in warmup routine.',
+    description: 'Get wellness insights about including core activation in warmup routine.',
   },
   {
     name: 'Rest Time Between Sets Calculator',
@@ -128,15 +128,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Core Strength Balance Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Core Strength Balance Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Core Strength Balance Calculator',
+      name: 'Core Strength Balance Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate core strength balance across anterior, posterior, lateral, and rotational components to identify imbalances and optimize core training.',
+      description: 'Get general wellness insights about core strength balance across anterior, posterior, lateral, and rotational components. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -170,7 +170,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'balanced';
   let balanceLevel = 'Balanced';
-  let interpretation = 'Your core strength is well-balanced across all directions. Continue maintaining balanced training.';
+  let interpretation = 'This suggests a general lifestyle tendency where your core strength may be well-balanced across all directions. You may consider continuing to maintain balanced training.';
   
   if (balanceScore >= 85) {
     status = 'balanced';
@@ -178,15 +178,15 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (balanceScore >= 70) {
     status = 'good';
     balanceLevel = 'Good';
-    interpretation = 'Your core strength balance is good with minor imbalances. Continue training all core components.';
+    interpretation = 'This suggests a general lifestyle tendency where your core strength balance is good with minor imbalances. You may consider continuing to train all core components.';
   } else if (balanceScore >= 50) {
     status = 'moderate';
     balanceLevel = 'Moderate';
-    interpretation = 'Your core strength has moderate imbalances. Focus on strengthening weaker areas to improve balance.';
+    interpretation = 'This suggests a general lifestyle tendency where your core strength has moderate imbalances. You may consider focusing on strengthening weaker areas to improve balance.';
   } else {
     status = 'imbalanced';
     balanceLevel = 'Imbalanced';
-    interpretation = 'Your core strength has significant imbalances. Prioritize training weaker areas to reduce injury risk and improve performance.';
+    interpretation = 'This suggests a general lifestyle tendency where your core strength has significant imbalances. You may consider prioritizing training weaker areas to support wellness and improve performance.';
   }
   
   // Identify weakest area
@@ -195,24 +195,24 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const weakestArea = areas[weakestIdx];
   
   const recommendations = [
-    'Train all four core components regularly: anterior (crunches, planks), posterior (supermans, back extensions), lateral (side planks), and rotational (Russian twists).',
-    `Focus on strengthening the ${weakestArea.toLowerCase()} core, which is currently your weakest area. Include 2-3 dedicated exercises per week.`,
-    'Use compound movements (squats, deadlifts, rows) that engage multiple core muscles to build integrated core strength.',
+    'You may consider training all four core components regularly: anterior (crunches, planks), posterior (supermans, back extensions), lateral (side planks), and rotational (Russian twists). This is a personal insight, not a medical evaluation.',
+    `You may consider focusing on strengthening the ${weakestArea.toLowerCase()} core, which is currently your weakest area. Include 2-3 dedicated exercises per week.`,
+    'You may consider using compound movements (squats, deadlifts, rows) that engage multiple core muscles to build integrated core strength.',
   ];
   if (balanceRatio < 70) {
-    recommendations.push(`Your core strength imbalance is significant (${balanceRatio.toFixed(0)}% ratio). Prioritize training weaker areas while maintaining stronger areas.`);
+    recommendations.push(`Your core strength imbalance may be significant (${balanceRatio.toFixed(0)}% ratio). You may consider prioritizing training weaker areas while maintaining stronger areas.`);
   }
   if (values.stabilityDuration && values.stabilityDuration < 60) {
-    recommendations.push('Improve core stability through isometric holds (planks, side planks). Aim to hold positions for 60+ seconds with good form.');
+    recommendations.push('You may consider improving core stability through isometric holds (planks, side planks). Aim to hold positions for 60+ seconds with good form.');
   }
   if (values.posteriorCore < values.anteriorCore - 2) {
-    recommendations.push('Your posterior core is weaker than anterior. This is common and can cause lower back issues. Prioritize posterior core training (superman, back extensions, reverse hyperextensions).');
+    recommendations.push('Your posterior core may be weaker than anterior. This is common and may contribute to lower back considerations. You may consider prioritizing posterior core training (superman, back extensions, reverse hyperextensions).');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Assess core strength in all four directions. Identify weakest areas and current balance score.' },
-    { label: 'This Month', detail: 'Include exercises for all core components in routine. Focus 2-3 sessions per week on strengthening weakest area while maintaining others.' },
-    { label: 'Ongoing', detail: 'Maintain balanced core training. Reassess monthly to ensure all core components progress together and imbalances don\'t develop.' },
+    { label: 'This Week', detail: 'You may consider assessing core strength in all four directions. Identify weakest areas and current balance score.' },
+    { label: 'This Month', detail: 'You may consider including exercises for all core components in routine. Focus 2-3 sessions per week on strengthening weakest area while maintaining others.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining balanced core training. Reassess monthly to ensure all core components progress together and imbalances don\'t develop.' },
   ];
   
   return { balanceScore, balanceRatio, balanceLevel, status, interpretation, recommendations, plan };
@@ -240,9 +240,9 @@ export default function CoreStrengthBalanceCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Target className="h-5 w-5" />
-            Core Strength Balance Calculator
+            Core Strength Balance Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate core strength balance across anterior, posterior, lateral, and rotational components to identify imbalances and optimize core training.</CardDescription>
+          <CardDescription>Get general wellness insights about core strength balance across anterior, posterior, lateral, and rotational components. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -485,9 +485,21 @@ export default function CoreStrengthBalanceCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates core strength balance across anterior, posterior, lateral, and rotational components based on strength ratings (0-10 scale).</p>
+          <p>This tool provides general wellness insights about core strength balance across anterior, posterior, lateral, and rotational components based on strength ratings (0-10 scale). This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include balance score (0-100), balance ratio (weakest to strongest %), balance level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>
