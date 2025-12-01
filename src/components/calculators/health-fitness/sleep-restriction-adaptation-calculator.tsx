@@ -103,9 +103,9 @@ const relatedCalculators = [
     description: 'Calculate current sleep efficiency to track improvement.',
   },
   {
-    name: 'Sleep Cycle Alarm Time Optimizer',
+    name: 'Sleep Cycle Wake-Up Comfort Planner',
     slug: 'sleep-cycle-alarm-time-optimizer',
-    description: 'Optimize wake times for better sleep cycles.',
+    description: 'Plan comfortable wake times for better sleep cycles.',
   },
   {
     name: 'Sleep Quality vs Productivity Correlation Calculator',
@@ -129,15 +129,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Sleep Restriction Adaptation Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Sleep Schedule Adaptation Planner', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Sleep Restriction Adaptation Calculator',
+      name: 'Sleep Schedule Adaptation Planner',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.',
+      description: 'Get general wellness insights about sleep schedule planning to support improved sleep patterns. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -195,38 +195,38 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your sleep restriction schedule is calculated to improve sleep efficiency and consolidate sleep.';
+  let interpretation = 'This suggests a general lifestyle tendency where your sleep schedule plan may support improved sleep patterns.';
   
   if (restrictedSleepTime < 6) {
     status = 'low';
-    interpretation = 'Your restricted sleep time is quite limited. Monitor daytime alertness closely and consider consulting a sleep specialist before starting.';
+    interpretation = 'This suggests a general lifestyle tendency where your planned sleep time is quite limited. You may consider monitoring how rested you feel and consulting a qualified professional if needed.';
   } else if (restrictedSleepTime < 6.5) {
     status = 'moderate';
-    interpretation = 'This is a moderately restrictive schedule. Expect some initial fatigue, but sleep efficiency should improve within 2-4 weeks.';
+    interpretation = 'This suggests a general lifestyle tendency where this schedule may be moderately restrictive. You may experience some initial adjustment, but sleep patterns may improve over time.';
   } else if (restrictedSleepTime < 7.5) {
     status = 'good';
-    interpretation = 'This restriction level should be manageable while still improving sleep efficiency. Most people adapt within 4-6 weeks.';
+    interpretation = 'This suggests a general lifestyle tendency where this schedule level may be manageable while supporting improved sleep patterns.';
   }
   
   const recommendations = [
-    `Sleep only ${restrictedSleepTime.toFixed(1)} hours per night. Go to bed at ${recommendedBedtime} and wake at ${recommendedWakeTime} consistently.`,
-    'Maintain this schedule even on weekends. Consistency is crucial for sleep restriction therapy to work.',
-    'Avoid napping during the day. If absolutely necessary, limit to 15-20 minutes before 2 PM.',
-    'Track your sleep efficiency daily. When it reaches 85%+ consistently for a week, you can increase time in bed by 15-30 minutes.',
+    `You may consider sleeping ${restrictedSleepTime.toFixed(1)} hours per night. Going to bed at ${recommendedBedtime} and waking at ${recommendedWakeTime} consistently may support better sleep patterns.`,
+    'You may consider maintaining this schedule even on weekends. Consistency may support improved sleep patterns.',
+    'You may consider avoiding napping during the day. If needed, limiting naps to 15-20 minutes before 2 PM may help.',
+    'You may consider tracking how rested you feel daily. When you consistently feel more rested for a week, you may gradually increase time in bed by 15-30 minutes.',
   ];
   
   if (efficiency < 75) {
-    recommendations.push('Your current sleep efficiency is low, indicating significant time spent awake in bed. Sleep restriction should help consolidate your sleep.');
+    recommendations.push('This suggests a general lifestyle tendency where you may spend more time awake in bed. Adjusting your sleep schedule may help consolidate your sleep.');
   }
   
   if (restrictedSleepTime < 6.5) {
-    recommendations.push('This is a restrictive schedule. Consider working with a sleep specialist, especially if you drive or operate machinery during the day.');
+    recommendations.push('This is a more restrictive schedule. You may consider working with a qualified professional, especially if you drive or operate machinery during the day.');
   }
   
   const plan = [
-    { label: 'Weeks 1-2', detail: `Follow the restricted schedule strictly: ${recommendedBedtime} to ${recommendedWakeTime}. Track sleep efficiency daily. Expect some daytime fatigue initially.` },
-    { label: 'Weeks 3-4', detail: 'Continue the schedule. Sleep efficiency should start improving. Monitor for consistent 85%+ efficiency before increasing time in bed.' },
-    { label: 'Weeks 5-8', detail: 'Once efficiency is consistently 85%+, gradually increase time in bed by 15-30 minutes every week as long as efficiency remains high.' },
+    { label: 'Weeks 1-2', detail: `You may consider following the schedule: ${recommendedBedtime} to ${recommendedWakeTime}. Track how rested you feel daily. You may experience some adjustment initially.` },
+    { label: 'Weeks 3-4', detail: 'You may consider continuing the schedule. Sleep patterns may start improving. Monitor how consistently rested you feel before increasing time in bed.' },
+    { label: 'Weeks 5-8', detail: 'Once you consistently feel more rested, you may gradually increase time in bed by 15-30 minutes every week as long as you continue feeling rested.' },
   ];
   
   return { restrictedSleepTime, restrictedSleepHours: restrictedSleepTime, timeInBed, recommendedBedtime, recommendedWakeTime, adaptationWeeks, status, interpretation, recommendations, plan };
@@ -253,9 +253,9 @@ export default function SleepRestrictionAdaptationCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Sleep Restriction Adaptation Calculator
+            Sleep Schedule Adaptation Planner
           </CardTitle>
-          <CardDescription>Calculate sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.</CardDescription>
+          <CardDescription>Get general wellness insights about sleep schedule planning to support improved sleep patterns. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -430,7 +430,7 @@ export default function SleepRestrictionAdaptationCalculator() {
           <p>
             <strong>Adaptation weeks</strong> = Based on efficiency gap: &lt;10% = 2 weeks, 10-20% = 4 weeks, 20-30% = 6 weeks, &gt;30% = 8 weeks.
           </p>
-          <p>Sleep restriction therapy limits time in bed to match actual sleep time, improving sleep efficiency by consolidating sleep and reducing wakefulness in bed.</p>
+          <p>This tool provides general wellness insights about sleep schedule planning. Adjusting time in bed to match actual sleep time may support improved sleep patterns by consolidating sleep and reducing wakefulness in bed.</p>
         </CardContent>
       </Card>
 
@@ -501,8 +501,8 @@ export default function SleepRestrictionAdaptationCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Sleep restriction therapy is a proven CBT-I technique that improves sleep efficiency by limiting time in bed to match actual sleep duration. This consolidates sleep, reduces time spent awake in bed, and helps establish healthier sleep patterns.</p>
-          <p>Use this calculator to determine an appropriate sleep restriction schedule based on your current sleep patterns and efficiency, with gradual adjustment recommendations as sleep improves.</p>
+          <p>This tool provides general wellness insights about sleep schedule planning. Adjusting time in bed to match actual sleep duration may support improved sleep patterns by consolidating sleep, reducing time spent awake in bed, and helping establish more consistent sleep habits.</p>
+          <p>Use this calculator to get general wellness insights about sleep schedule planning based on your current sleep patterns, with gradual adjustment suggestions as sleep patterns may improve.</p>
         </CardContent>
       </Card>
 
@@ -528,9 +528,21 @@ export default function SleepRestrictionAdaptationCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.</p>
-          <p>Outputs include restricted sleep time, time in bed, recommended bedtime and wake time, adaptation timeline, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about sleep schedule planning to support improved sleep patterns. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include suggested sleep time, time in bed, suggested bedtime and wake time, adaptation timeline, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

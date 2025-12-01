@@ -103,9 +103,9 @@ const relatedCalculators = [
     description: 'Calculate B12 requirements for overall health.',
   },
   {
-    name: 'Omega-6 to Omega-3 Balance Calculator',
+    name: 'Omega-6 to Omega-3 Balance Wellness Calculator',
     slug: 'omega-6-to-omega-3-balance-calculator',
-    description: 'Balance fatty acids for immune health.',
+    description: 'Get wellness insights about fatty acid balance.',
   },
   {
     name: 'Vitamin Deficiency Risk Estimator',
@@ -129,15 +129,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Vitamin C Immunity Boost Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Vitamin C Wellness Support Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Vitamin C Immunity Boost Score Calculator',
+      name: 'Vitamin C Wellness Support Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support.',
+      description: 'Get general wellness insights about vitamin C intake based on daily intake, supplementation, stress levels, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -226,53 +226,53 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let immuneSupportLevel: string;
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your vitamin C intake and lifestyle factors provide excellent immune support.';
+  let interpretation = 'This suggests a general lifestyle tendency where your vitamin C intake and lifestyle factors may support wellness.';
   
   if (immunityScore >= 80) {
     immuneSupportLevel = 'Excellent';
     status = 'optimal';
-    interpretation = 'Your vitamin C intake and lifestyle factors provide excellent immune support. Continue maintaining this level.';
+    interpretation = 'This suggests a general lifestyle tendency where your vitamin C intake and lifestyle factors may support wellness. You may consider continuing to maintain this level.';
   } else if (immunityScore >= 65) {
     immuneSupportLevel = 'Good';
     status = 'good';
-    interpretation = 'Your immune support is good. Minor improvements in intake or lifestyle factors could further optimize immunity.';
+    interpretation = 'This suggests a general lifestyle tendency where your wellness support is good. Minor improvements in intake or lifestyle factors may further support wellness.';
   } else if (immunityScore >= 50) {
     immuneSupportLevel = 'Moderate';
     status = 'moderate';
-    interpretation = 'Your immune support is moderate. Consider increasing vitamin C intake or addressing lifestyle factors (stress, exercise) to improve immunity.';
+    interpretation = 'This suggests a general lifestyle tendency where your wellness support is moderate. You may consider increasing vitamin C intake or addressing lifestyle factors (stress, exercise) to support wellness.';
   } else {
-    immuneSupportLevel = 'Low';
+    immuneSupportLevel = 'Lower';
     status = 'low';
-    interpretation = 'Your immune support needs improvement. Increase vitamin C intake and address lifestyle factors to better support immune function.';
+    interpretation = 'This suggests a general lifestyle tendency where you may consider increasing vitamin C intake and addressing lifestyle factors to support wellness.';
   }
   
   const recommendations = [
-    `Recommended daily vitamin C intake: ${recommendedIntake.toFixed(0)} mg. Your current total: ${totalVitaminC.toFixed(0)} mg.`,
+    `Suggested daily vitamin C intake: ${recommendedIntake.toFixed(0)} mg. Your current total: ${totalVitaminC.toFixed(0)} mg. This is a personal insight, not a medical evaluation.`,
     totalVitaminC < recommendedIntake
-      ? `Increase vitamin C intake by ${(recommendedIntake - totalVitaminC).toFixed(0)} mg daily. Focus on vitamin C-rich foods (citrus, bell peppers, kiwi, broccoli) or consider a supplement.`
-      : 'Your vitamin C intake meets or exceeds recommendations. Continue maintaining this level through diet and supplements.',
+      ? `You may consider increasing vitamin C intake by ${(recommendedIntake - totalVitaminC).toFixed(0)} mg daily. Focus on vitamin C-rich foods (citrus, bell peppers, kiwi, broccoli) or consider discussing supplements with a qualified professional.`
+      : 'Your vitamin C intake meets or exceeds suggestions. You may consider continuing to maintain this level through diet and supplements.',
   ];
   
   if (values.stressLevel >= 6) {
-    recommendations.push('High stress levels increase vitamin C needs. Consider stress management techniques (meditation, exercise, adequate sleep) in addition to increased vitamin C intake.');
+    recommendations.push('High stress levels may increase vitamin C needs. You may consider stress management techniques (meditation, exercise, adequate sleep) in addition to increased vitamin C intake.');
   }
   
   if (values.exerciseFrequency >= 5) {
-    recommendations.push('Regular intense exercise increases oxidative stress. Ensure adequate vitamin C intake (100-200 mg extra) to support recovery and immune function.');
+    recommendations.push('Regular intense exercise may increase oxidative stress. You may consider ensuring adequate vitamin C intake (100-200 mg extra) to support recovery and wellness.');
   }
   
   if (values.smokingStatus === 'regular' || values.smokingStatus === 'occasional') {
-    recommendations.push('Smoking significantly increases vitamin C needs due to oxidative stress. Consider increasing intake by 35-50 mg daily and explore smoking cessation support.');
+    recommendations.push('Smoking may increase vitamin C needs due to oxidative stress. You may consider increasing intake by 35-50 mg daily and exploring smoking cessation support if needed.');
   }
   
   if (totalVitaminC > 2000) {
-    recommendations.push('Your intake exceeds the recommended upper limit (2000 mg). While generally safe, monitor for digestive symptoms. Consider reducing dose if you experience side effects.');
+    recommendations.push('Your intake exceeds the suggested upper limit (2000 mg). While generally safe, you may consider monitoring for digestive symptoms. Consider reducing dose if you experience side effects.');
   }
   
   const plan = [
-    { label: 'This Week', detail: `Aim for ${recommendedIntake.toFixed(0)} mg vitamin C daily. Include citrus fruits, bell peppers, kiwi, and leafy greens. Consider a supplement if dietary intake is insufficient.` },
-    { label: 'This Month', detail: 'Track vitamin C intake from food and supplements. Monitor immune function and adjust intake based on stress levels, exercise, and illness frequency.' },
-    { label: 'Ongoing', detail: 'Maintain adequate vitamin C intake for immune support. During high stress, illness, or intense training, temporarily increase intake. Continue stress management and regular exercise.' },
+    { label: 'This Week', detail: `You may consider aiming for ${recommendedIntake.toFixed(0)} mg vitamin C daily. Include citrus fruits, bell peppers, kiwi, and leafy greens. You may consider discussing supplements with a qualified professional if dietary intake is insufficient.` },
+    { label: 'This Month', detail: 'You may consider tracking vitamin C intake from food and supplements. Monitor how you feel and adjust intake based on stress levels, exercise, and wellness needs.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining adequate vitamin C intake for wellness support. During high stress, illness, or intense training, you may temporarily increase intake. Continue stress management and regular exercise.' },
   ];
   
   return { immunityScore, totalVitaminC, recommendedIntake, immuneSupportLevel, status, interpretation, recommendations, plan };
@@ -300,9 +300,9 @@ export default function VitaminCImmunityBoostScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Vitamin C Immunity Boost Score Calculator
+            Vitamin C Wellness Support Score Calculator
           </CardTitle>
-          <CardDescription>Calculate vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support.</CardDescription>
+          <CardDescription>Get general wellness insights about vitamin C intake based on daily intake, supplementation, stress levels, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -389,7 +389,7 @@ export default function VitaminCImmunityBoostScoreCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate immunity boost score
+                Calculate wellness support score
               </Button>
             </form>
           </Form>
@@ -403,12 +403,12 @@ export default function VitaminCImmunityBoostScoreCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See immunity boost score, vitamin C intake, and recommendations.</CardDescription>
+            <CardDescription>See wellness support score, vitamin C intake, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Immunity boost score</p>
+                <p className="text-sm text-muted-foreground">Wellness support score</p>
                 <p className="text-2xl font-semibold text-primary">{result.immunityScore.toFixed(0)}/100</p>
                 <p className="text-xs text-muted-foreground">{result.immuneSupportLevel}</p>
               </div>
@@ -590,9 +590,21 @@ export default function VitaminCImmunityBoostScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support.</p>
-          <p>Outputs include immunity boost score (0-100), total vitamin C intake, recommended intake, immune support level, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about vitamin C intake based on daily intake, supplementation, stress levels, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include wellness support score (0-100), total vitamin C intake, suggested intake, wellness support level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

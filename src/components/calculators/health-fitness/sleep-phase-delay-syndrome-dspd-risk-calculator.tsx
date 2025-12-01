@@ -40,7 +40,7 @@ const steps = [
   'Enter your social bedtime (when you need to go to bed for work/school).',
   'Rate difficulty waking up in the morning (1 = easy, 10 = extremely difficult).',
   'Enter time it takes to fall asleep (minutes) after going to bed at natural time.',
-  'Review DSPD risk score, phase delay, misalignment, and recommendations.',
+  'Review delayed sleep phase tendency score, phase delay, misalignment, and recommendations.',
 ];
 
 const faqs = [
@@ -103,19 +103,19 @@ const relatedCalculators = [
     description: 'Calculate optimal bedtime based on chronotype.',
   },
   {
-    name: 'Sleep Cycle Alarm Time Optimizer',
+    name: 'Sleep Cycle Wake-Up Comfort Planner',
     slug: 'sleep-cycle-alarm-time-optimizer',
-    description: 'Optimize sleep timing for better alignment.',
+    description: 'Plan comfortable sleep timing for better alignment.',
   },
   {
-    name: 'Sleep Restriction Adaptation Calculator',
+    name: 'Sleep Schedule Adaptation Planner',
     slug: 'sleep-restriction-adaptation-calculator',
-    description: 'Improve sleep patterns with CBT-I techniques.',
+    description: 'Get wellness insights about sleep pattern improvements.',
   },
   {
-    name: 'Jet Lag Recovery Duration Calculator',
+    name: 'Jet Lag Recovery Wellness Estimator',
     slug: 'jet-lag-recovery-duration-calculator',
-    description: 'Manage circadian rhythm adjustments.',
+    description: 'Get wellness insights about circadian rhythm adjustments.',
   },
 ];
 
@@ -129,15 +129,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Delayed Sleep Phase Tendency Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator',
+      name: 'Delayed Sleep Phase Tendency Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Assess risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators.',
+      description: 'Get general wellness insights about delayed sleep phase tendencies based on sleep patterns, bedtime preferences, and circadian rhythm indicators. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -210,45 +210,45 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let riskLevel: string;
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your sleep patterns appear to be well-aligned with conventional schedules.';
+  let interpretation = 'This suggests a general lifestyle tendency where your sleep patterns appear to be well-aligned with conventional schedules.';
   
   if (riskScore >= 70) {
-    riskLevel = 'High';
+    riskLevel = 'Higher';
     status = 'low';
-    interpretation = 'You show strong indicators of DSPD. Your natural sleep time is significantly delayed, causing substantial misalignment with social schedules. Consultation with a sleep specialist is recommended.';
+    interpretation = 'This suggests a general lifestyle tendency where your natural sleep time is significantly delayed, causing substantial misalignment with social schedules. This is a personal insight, not a medical evaluation. If this pattern makes daily life difficult, you may wish to discuss it with a qualified professional.';
   } else if (riskScore >= 50) {
-    riskLevel = 'Moderate-High';
+    riskLevel = 'Moderate-Higher';
     status = 'moderate';
-    interpretation = 'You show moderate indicators of DSPD. Your sleep phase is delayed, and you may experience significant difficulty with conventional schedules. Consider consulting a healthcare provider.';
+    interpretation = 'This suggests a general lifestyle tendency where your sleep phase is delayed, and you may experience significant difficulty with conventional schedules. This is a personal insight, not a medical evaluation. You may consider consulting a qualified professional if needed.';
   } else if (riskScore >= 30) {
     riskLevel = 'Moderate';
     status = 'good';
-    interpretation = 'You show some indicators of delayed sleep phase. Your natural bedtime may be later than ideal, but this may be manageable with lifestyle adjustments.';
+    interpretation = 'This suggests a general lifestyle tendency where your natural bedtime may be later than ideal, but this may be manageable with lifestyle adjustments.';
   } else {
-    riskLevel = 'Low';
+    riskLevel = 'Lower';
     status = 'optimal';
-    interpretation = 'Your sleep patterns are within normal ranges. You may have a slight evening preference, but it doesn\'t indicate DSPD.';
+    interpretation = 'This suggests a general lifestyle tendency where your sleep patterns are within typical ranges. You may have a slight evening preference, but this is a personal insight, not a medical evaluation.';
   }
   
   const recommendations = [
-    `Your DSPD risk score is ${riskScore.toFixed(0)}/100 (${riskLevel} risk). Phase delay: ${phaseDelayHours.toFixed(1)} hours.`,
-    'If you have DSPD symptoms, consider morning light therapy: expose yourself to bright light (natural or light box) within 1 hour of waking to help advance your circadian rhythm.',
-    'Avoid evening light exposure, especially blue light from screens, 2-3 hours before your desired bedtime to prevent further phase delay.',
-    'Consider melatonin supplementation: 0.5-3 mg taken 2-4 hours before desired bedtime may help shift your rhythm earlier (consult healthcare provider first).',
+    `Your estimated delayed sleep phase tendency score is ${riskScore.toFixed(0)}/100 (${riskLevel} tendency). Phase delay: ${phaseDelayHours.toFixed(1)} hours. This is a personal insight, not a medical evaluation.`,
+    'You may consider morning light exposure: exposing yourself to bright light (natural or light box) within 1 hour of waking may help support your circadian rhythm.',
+    'You may consider avoiding evening light exposure, especially blue light from screens, 2-3 hours before your desired bedtime to support your sleep patterns.',
+    'You may consider discussing melatonin supplementation with a qualified professional if appropriate. This is a personal insight, not a medical evaluation.',
   ];
   
   if (riskScore >= 50) {
-    recommendations.push('Consult a sleep specialist for proper diagnosis. DSPD requires specific treatment approaches that should be medically supervised.');
+    recommendations.push('This is a personal insight, not a medical evaluation. If this pattern makes daily life difficult, you may wish to discuss it with a qualified professional.');
   }
   
   if (misalignmentHours >= 2) {
-    recommendations.push('The gap between your natural and social bedtime is significant. Consider lifestyle accommodations (flexible hours, remote work) or gradual chronotherapy under medical supervision.');
+    recommendations.push('The gap between your natural and social bedtime is significant. You may consider lifestyle accommodations (flexible hours, remote work) or discussing gradual schedule adjustments with a qualified professional if needed.');
   }
   
   const plan = [
-    { label: 'This Week', detail: 'Keep a detailed sleep log tracking natural sleep times, social requirements, and difficulty waking. Note sleep quality and daytime functioning.' },
-    { label: 'This Month', detail: 'If risk is moderate-high, consult a sleep specialist for evaluation. Begin light therapy and melatonin (if appropriate) under medical guidance.' },
-    { label: 'Ongoing', detail: 'Work with healthcare providers to manage DSPD through appropriate treatments and lifestyle accommodations. Monitor improvements and adjust strategies as needed.' },
+    { label: 'This Week', detail: 'You may consider keeping a detailed sleep log tracking natural sleep times, social requirements, and difficulty waking. Note how rested you feel and daytime functioning.' },
+    { label: 'This Month', detail: 'If your tendency score is moderate-higher, you may consider discussing this with a qualified professional if needed. You may consider beginning light therapy and discussing melatonin with a qualified professional if appropriate.' },
+    { label: 'Ongoing', detail: 'You may consider working with qualified professionals if needed to support your sleep patterns through appropriate lifestyle adjustments and accommodations. Monitor how you feel and adjust strategies as needed.' },
   ];
   
   return { dspdRiskScore: riskScore, riskLevel, phaseDelay: phaseDelayHours, sleepMisalignment: misalignmentHours, status, interpretation, recommendations, plan };
@@ -276,9 +276,9 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Sleep Phase Delay Syndrome (DSPD) Risk Calculator
+            Delayed Sleep Phase Tendency Estimator
           </CardTitle>
-          <CardDescription>Assess risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators.</CardDescription>
+          <CardDescription>Get general wellness insights about delayed sleep phase tendencies based on sleep patterns, bedtime preferences, and circadian rhythm indicators. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -357,7 +357,7 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate DSPD risk
+                Estimate sleep phase tendency
               </Button>
             </form>
           </Form>
@@ -371,14 +371,14 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See DSPD risk score, phase delay, misalignment, and recommendations.</CardDescription>
+            <CardDescription>See delayed sleep phase tendency score, phase delay, misalignment, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">DSPD risk score</p>
+                <p className="text-sm text-muted-foreground">Sleep phase tendency score</p>
                 <p className="text-2xl font-semibold text-primary">{result.dspdRiskScore.toFixed(0)}/100</p>
-                <p className="text-xs text-muted-foreground">{result.riskLevel} risk</p>
+                <p className="text-xs text-muted-foreground">{result.riskLevel} tendency</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Phase delay</p>
@@ -443,7 +443,7 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>DSPD Risk Score</strong> = Phase delay (0-40 points) + Sleep misalignment (0-30 points) + Difficulty waking (0-20 points) + Sleep onset time (0-10 points).
+            <strong>Delayed Sleep Phase Tendency Score</strong> = Phase delay (0-40 points) + Sleep misalignment (0-30 points) + Difficulty waking (0-20 points) + Sleep onset time (0-10 points).
           </p>
           <p>
             <strong>Phase delay</strong> = Hours after 10 PM for natural bedtime (≥4 hours = 40 points, 2-4 hours = 30 points, 1-2 hours = 20 points).
@@ -454,7 +454,7 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
           <p>
             <strong>Difficulty waking</strong> = Scaled 1-10 to 0-20 points. <strong>Sleep onset time</strong> = &gt;60 min = 10 points, &gt;30 min = 5 points.
           </p>
-          <p>Risk levels: 0-30 = Low, 30-50 = Moderate, 50-70 = Moderate-High, 70-100 = High. High scores indicate significant DSPD indicators requiring professional evaluation.</p>
+          <p>Tendency levels: 0-30 = Lower, 30-50 = Moderate, 50-70 = Moderate-Higher, 70-100 = Higher. This is a personal lifestyle insight, not a medical evaluation. Higher scores suggest a pattern that may benefit from discussion with a qualified professional if daily life is difficult.</p>
         </CardContent>
       </Card>
 
@@ -492,16 +492,16 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
                 <p className="text-xs text-muted-foreground">When sleeping naturally</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Diagnostic threshold</p>
+                <p className="text-sm text-muted-foreground">Typical threshold</p>
                 <p className="text-xl font-semibold text-primary">≥2 hours</p>
-                <p className="text-xs text-muted-foreground">Phase delay for DSPD</p>
+                <p className="text-xs text-muted-foreground">Phase delay pattern</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Treatment recommendation</p>
+                <p className="text-sm text-muted-foreground">Suggestion</p>
                 <p className="text-xl font-semibold text-primary">
-                  {result.dspdRiskScore >= 50 ? 'Medical evaluation needed' : 'Lifestyle adjustments'}
+                  {result.dspdRiskScore >= 50 ? 'Consider professional discussion' : 'Lifestyle adjustments'}
                 </p>
-                <p className="text-xs text-muted-foreground">Based on risk score</p>
+                <p className="text-xs text-muted-foreground">Based on tendency score</p>
               </div>
             </div>
           ) : (
@@ -533,8 +533,8 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Delayed Sleep Phase Syndrome (DSPD) is a circadian rhythm disorder where natural sleep time is delayed by 2+ hours compared to conventional schedules. People with DSPD naturally fall asleep very late (often after 2 AM) and have extreme difficulty adjusting to earlier bedtimes.</p>
-          <p>Use this calculator to assess your risk of DSPD based on sleep patterns, bedtime preferences, and circadian rhythm indicators. High risk scores warrant consultation with a sleep specialist.</p>
+          <p>This tool provides general wellness insights about delayed sleep phase tendencies. When natural sleep time is delayed by 2+ hours compared to conventional schedules, people may naturally fall asleep very late (often after 2 AM) and may have difficulty adjusting to earlier bedtimes.</p>
+          <p>Use this calculator to get general wellness insights about delayed sleep phase tendencies based on sleep patterns, bedtime preferences, and circadian rhythm indicators. This is a personal lifestyle insight, not a medical evaluation. If this pattern makes daily life difficult, you may wish to discuss it with a qualified professional.</p>
         </CardContent>
       </Card>
 
@@ -560,9 +560,21 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool assesses risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators.</p>
-          <p>Outputs include DSPD risk score, risk level, phase delay hours, sleep misalignment, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about delayed sleep phase tendencies based on sleep patterns, bedtime preferences, and circadian rhythm indicators. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include delayed sleep phase tendency score, tendency level, phase delay hours, sleep misalignment, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

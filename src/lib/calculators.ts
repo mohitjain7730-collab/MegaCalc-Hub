@@ -5641,57 +5641,57 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4547,
-    name: 'Sleep Quality vs Screen Exposure Analyzer',
-    description: 'Analyze the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines.',
+    name: 'Sleep & Screen Time Wellness Analyzer',
+    description: 'Get general wellness insights about the relationship between screen exposure time and sleep quality. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'sleep-quality-vs-screen-exposure-analyzer',
     category: 'wellness',
-    metaTitle: 'Sleep Quality vs Screen Exposure Analyzer',
-    metaDescription: 'Analyze the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines and improve rest.'
+    metaTitle: 'Sleep & Screen Time Wellness Analyzer',
+    metaDescription: 'Get general wellness insights about the relationship between screen exposure time and sleep quality. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4548,
-    name: 'Sleep Restriction Adaptation Calculator',
-    description: 'Calculate sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.',
+    name: 'Sleep Schedule Adaptation Planner',
+    description: 'Get general wellness insights about sleep schedule planning to support improved sleep patterns. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'sleep-restriction-adaptation-calculator',
     category: 'wellness',
-    metaTitle: 'Sleep Restriction Adaptation Calculator',
-    metaDescription: 'Calculate sleep restriction schedules to adapt sleep patterns, improve sleep efficiency, and treat insomnia using CBT-I principles.'
+    metaTitle: 'Sleep Schedule Adaptation Planner',
+    metaDescription: 'Get general wellness insights about sleep schedule planning to support improved sleep patterns. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4549,
-    name: 'Recovery Sleep Requirement After Sleep Debt Calculator',
-    description: 'Calculate recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.',
+    name: 'Sleep Debt Recovery Planner',
+    description: 'Get general wellness insights about recovery sleep planning after sleep debt. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'recovery-sleep-requirement-after-sleep-debt-calculator',
     category: 'wellness',
-    metaTitle: 'Recovery Sleep Requirement After Sleep Debt Calculator',
-    metaDescription: 'Calculate recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.'
+    metaTitle: 'Sleep Debt Recovery Planner',
+    metaDescription: 'Get general wellness insights about recovery sleep planning after sleep debt. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4550,
-    name: 'Jet Lag Recovery Duration Calculator',
-    description: 'Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.',
+    name: 'Jet Lag Recovery Wellness Estimator',
+    description: 'Get general wellness insights about jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'jet-lag-recovery-duration-calculator',
     category: 'wellness',
-    metaTitle: 'Jet Lag Recovery Duration Calculator',
-    metaDescription: 'Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.'
+    metaTitle: 'Jet Lag Recovery Wellness Estimator',
+    metaDescription: 'Get general wellness insights about jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4551,
-    name: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator',
-    description: 'Assess risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators.',
+    name: 'Delayed Sleep Phase Tendency Estimator',
+    description: 'Get general wellness insights about delayed sleep phase tendencies based on sleep patterns, bedtime preferences, and circadian rhythm indicators. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'sleep-phase-delay-syndrome-dspd-risk-calculator',
     category: 'wellness',
-    metaTitle: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator',
-    metaDescription: 'Assess risk of Delayed Sleep Phase Syndrome (DSPD) based on sleep patterns, bedtime preferences, and circadian rhythm indicators to identify potential sleep disorders.'
+    metaTitle: 'Delayed Sleep Phase Tendency Estimator',
+    metaDescription: 'Get general wellness insights about delayed sleep phase tendencies based on sleep patterns, bedtime preferences, and circadian rhythm indicators. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4552,
-    name: 'Optimal Bedtime by Chronotype Calculator',
-    description: 'Calculate optimal bedtime based on your chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality.',
+    name: 'Bedtime by Chronotype Wellness Planner',
+    description: 'Get general wellness insights about bedtime planning based on your chronotype (early bird, night owl, intermediate) and desired wake time. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'optimal-bedtime-by-chronotype-calculator',
     category: 'wellness',
-    metaTitle: 'Optimal Bedtime by Chronotype Calculator',
-    metaDescription: 'Calculate optimal bedtime based on your chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality and alignment with natural rhythms.'
+    metaTitle: 'Bedtime by Chronotype Wellness Planner',
+    metaDescription: 'Get general wellness insights about bedtime planning based on your chronotype (early bird, night owl, intermediate) and desired wake time. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4553,
@@ -5704,39 +5704,39 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4554,
-    name: 'Vitamin C Immunity Boost Score Calculator',
-    description: 'Calculate vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support.',
+    name: 'Vitamin C Wellness Support Score Calculator',
+    description: 'Get general wellness insights about vitamin C intake based on daily intake, supplementation, stress levels, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'vitamin-c-immunity-boost-score-calculator',
     category: 'wellness',
-    metaTitle: 'Vitamin C Immunity Boost Score Calculator',
-    metaDescription: 'Calculate vitamin C immunity boost score based on daily intake, supplementation, stress levels, and lifestyle factors to assess immune support and optimize intake.'
+    metaTitle: 'Vitamin C Wellness Support Score Calculator',
+    metaDescription: 'Get general wellness insights about vitamin C intake based on daily intake, supplementation, stress levels, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4555,
-    name: 'Omega-6 to Omega-3 Balance Calculator',
-    description: 'Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health.',
+    name: 'Omega-6 to Omega-3 Balance Wellness Calculator',
+    description: 'Get general wellness insights about omega-6 to omega-3 ratio in your diet to assess fatty acid balance. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'omega-6-to-omega-3-balance-calculator',
     category: 'wellness',
-    metaTitle: 'Omega-6 to Omega-3 Balance Calculator',
-    metaDescription: 'Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health and reduced chronic disease risk.'
+    metaTitle: 'Omega-6 to Omega-3 Balance Wellness Calculator',
+    metaDescription: 'Get general wellness insights about omega-6 to omega-3 ratio in your diet to assess fatty acid balance. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4556,
-    name: 'Antioxidant Diversity Index Calculator',
-    description: 'Calculate antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and health benefits.',
+    name: 'Antioxidant Diversity Wellness Index',
+    description: 'Get general wellness insights about antioxidant diversity based on intake of various antioxidant-rich foods. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'antioxidant-diversity-index-calculator',
     category: 'wellness',
-    metaTitle: 'Antioxidant Diversity Index Calculator',
-    metaDescription: 'Calculate antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and optimize intake for better health.'
+    metaTitle: 'Antioxidant Diversity Wellness Index',
+    metaDescription: 'Get general wellness insights about antioxidant diversity based on intake of various antioxidant-rich foods. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4557,
-    name: 'Gut Microbiome Diversity Score Calculator',
-    description: 'Calculate gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health.',
+    name: 'Gut Microbiome Diversity Wellness Score',
+    description: 'Get general wellness insights about gut microbiome diversity based on dietary fiber intake, fermented foods, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'gut-microbiome-diversity-score-calculator',
     category: 'wellness',
-    metaTitle: 'Gut Microbiome Diversity Score Calculator',
-    metaDescription: 'Calculate gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health and optimize gut microbiome support.'
+    metaTitle: 'Gut Microbiome Diversity Wellness Score',
+    metaDescription: 'Get general wellness insights about gut microbiome diversity based on dietary fiber intake, fermented foods, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4558,

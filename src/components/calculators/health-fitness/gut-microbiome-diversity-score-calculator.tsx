@@ -113,9 +113,9 @@ const relatedCalculators = [
     description: 'Track total fiber intake for gut health.',
   },
   {
-    name: 'Antioxidant Diversity Index Calculator',
+    name: 'Antioxidant Diversity Wellness Index',
     slug: 'antioxidant-diversity-index-calculator',
-    description: 'Support gut health with diverse antioxidants.',
+    description: 'Get wellness insights about antioxidant diversity for gut health.',
   },
 ];
 
@@ -129,15 +129,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Gut Microbiome Diversity Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Gut Microbiome Diversity Wellness Score', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Gut Microbiome Diversity Score Calculator',
+      name: 'Gut Microbiome Diversity Wellness Score',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health.',
+      description: 'Get general wellness insights about gut microbiome diversity based on dietary fiber intake, fermented foods, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -196,51 +196,51 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let gutHealthLevel: string;
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your gut microbiome diversity appears excellent based on dietary and lifestyle factors.';
+  let interpretation = 'This suggests a general lifestyle tendency where your gut microbiome diversity may be excellent based on dietary and lifestyle factors.';
   
   if (diversityScore >= 80) {
     gutHealthLevel = 'Excellent';
     status = 'optimal';
-    interpretation = 'Your gut microbiome diversity is excellent. You\'re supporting a healthy, diverse microbiome through diet and lifestyle.';
+    interpretation = 'This suggests a general lifestyle tendency where your gut microbiome diversity is excellent. You\'re supporting a diverse microbiome through diet and lifestyle.';
   } else if (diversityScore >= 65) {
     gutHealthLevel = 'Good';
     status = 'good';
-    interpretation = 'Your gut microbiome diversity is good. Minor improvements in fiber intake or fermented/prebiotic foods could further enhance diversity.';
+    interpretation = 'This suggests a general lifestyle tendency where your gut microbiome diversity is good. Minor improvements in fiber intake or fermented/prebiotic foods may further enhance diversity.';
   } else if (diversityScore >= 50) {
     gutHealthLevel = 'Moderate';
     status = 'moderate';
-    interpretation = 'Your gut microbiome diversity is moderate. Increasing fiber intake and adding fermented/prebiotic foods would significantly improve diversity.';
+    interpretation = 'This suggests a general lifestyle tendency where your gut microbiome diversity is moderate. Increasing fiber intake and adding fermented/prebiotic foods may support diversity.';
   } else {
-    gutHealthLevel = 'Low';
+    gutHealthLevel = 'Lower';
     status = 'low';
-    interpretation = 'Your gut microbiome diversity appears low. Focus on increasing fiber intake, adding fermented and prebiotic foods, and addressing lifestyle factors that may be reducing diversity.';
+    interpretation = 'This suggests a general lifestyle tendency where your gut microbiome diversity may be lower. You may consider increasing fiber intake, adding fermented and prebiotic foods, and addressing lifestyle factors that may be reducing diversity.';
   }
   
   const recommendations = [
-    `Your gut microbiome diversity score is ${diversityScore.toFixed(0)}/100 (${gutHealthLevel} level).`,
+    `Your gut microbiome diversity score is ${diversityScore.toFixed(0)}/100 (${gutHealthLevel} level). This is a personal insight, not a medical evaluation.`,
     fiberIntake < 25
-      ? `Increase fiber intake to at least 25-35g daily. Current: ${fiberIntake}g. Add more whole grains, fruits, vegetables, legumes, and nuts to reach target.`
-      : 'Your fiber intake is good. Continue maintaining adequate fiber to support diverse gut bacteria.',
+      ? `You may consider increasing fiber intake to at least 25-35g daily. Current: ${fiberIntake}g. Add more whole grains, fruits, vegetables, legumes, and nuts to reach target.`
+      : 'Your fiber intake is good. You may consider continuing to maintain adequate fiber to support diverse gut bacteria.',
     fermentedFoods < 3
-      ? 'Add fermented foods 2-3 times per week (yogurt, kefir, sauerkraut, kimchi, kombucha) to introduce beneficial bacteria to your gut.'
-      : 'Good fermented food intake. Continue including fermented foods regularly to maintain microbiome diversity.',
+      ? 'You may consider adding fermented foods 2-3 times per week (yogurt, kefir, sauerkraut, kimchi, kombucha) to introduce beneficial bacteria to your gut.'
+      : 'Good fermented food intake. You may consider continuing to include fermented foods regularly to maintain microbiome diversity.',
     prebioticFoods < 3
-      ? 'Include prebiotic foods daily (garlic, onions, bananas, oats, asparagus, leeks) to feed beneficial gut bacteria and support their growth.'
-      : 'Excellent prebiotic food intake. Continue including prebiotic-rich foods to nourish your gut microbiome.',
+      ? 'You may consider including prebiotic foods daily (garlic, onions, bananas, oats, asparagus, leeks) to feed beneficial gut bacteria and support their growth.'
+      : 'Excellent prebiotic food intake. You may consider continuing to include prebiotic-rich foods to nourish your gut microbiome.',
   ];
   
   if (antibioticUse >= 4) {
-    recommendations.push('Frequent antibiotic use significantly reduces gut diversity. After antibiotics, focus on probiotics and prebiotics to restore diversity. Discuss antibiotic alternatives with your healthcare provider when appropriate.');
+    recommendations.push('Frequent antibiotic use may reduce gut diversity. After antibiotics, you may consider focusing on probiotics and prebiotics to support diversity. Discuss antibiotic alternatives with a qualified professional when appropriate.');
   }
   
   if (stressLevel >= 7) {
-    recommendations.push('High stress levels can reduce gut diversity. Stress management techniques (meditation, exercise, adequate sleep) can help support a healthy microbiome.');
+    recommendations.push('High stress levels may reduce gut diversity. Stress management techniques (meditation, exercise, adequate sleep) may help support a healthy microbiome.');
   }
   
   const plan = [
-    { label: 'This Week', detail: `Aim for ${Math.max(25, fiberIntake + 5)}g fiber daily. Add 1-2 servings of fermented foods and include prebiotic foods in meals.` },
-    { label: 'This Month', detail: 'Build to 25-35g fiber daily consistently. Include fermented foods 2-3 times per week. Incorporate prebiotic foods into daily meals. Monitor digestive health improvements.' },
-    { label: 'Ongoing', detail: 'Maintain high fiber intake (25-35g daily). Continue regular fermented food consumption. Include diverse prebiotic foods. Minimize antibiotic use when possible and manage stress for optimal gut health.' },
+    { label: 'This Week', detail: `You may consider aiming for ${Math.max(25, fiberIntake + 5)}g fiber daily. Add 1-2 servings of fermented foods and include prebiotic foods in meals.` },
+    { label: 'This Month', detail: 'You may consider building to 25-35g fiber daily consistently. Include fermented foods 2-3 times per week. Incorporate prebiotic foods into daily meals. Monitor how you feel and digestive wellness improvements.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining high fiber intake (25-35g daily). Continue regular fermented food consumption. Include diverse prebiotic foods. Minimize antibiotic use when possible and manage stress for optimal gut wellness.' },
   ];
   
   return { diversityScore, gutHealthLevel, fiberScore, lifestyleScore, status, interpretation, recommendations, plan };
@@ -268,9 +268,9 @@ export default function GutMicrobiomeDiversityScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Gut Microbiome Diversity Score Calculator
+            Gut Microbiome Diversity Wellness Score
           </CardTitle>
-          <CardDescription>Calculate gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health.</CardDescription>
+          <CardDescription>Get general wellness insights about gut microbiome diversity based on dietary fiber intake, fermented foods, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -363,7 +363,7 @@ export default function GutMicrobiomeDiversityScoreCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See gut microbiome diversity score, gut health level, and recommendations.</CardDescription>
+            <CardDescription>See gut microbiome diversity score, gut wellness level, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -542,9 +542,21 @@ export default function GutMicrobiomeDiversityScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates gut microbiome diversity score based on dietary fiber intake, fermented foods, and lifestyle factors to assess digestive health.</p>
-          <p>Outputs include diversity score, gut health level, fiber score, lifestyle score, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about gut microbiome diversity based on dietary fiber intake, fermented foods, and lifestyle factors. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include diversity score, gut wellness level, fiber score, lifestyle score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

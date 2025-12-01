@@ -96,19 +96,19 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Sleep Cycle Alarm Time Optimizer',
+    name: 'Sleep Cycle Wake-Up Comfort Planner',
     slug: 'sleep-cycle-alarm-time-optimizer',
-    description: 'Optimize sleep timing during jet lag recovery.',
+    description: 'Plan comfortable sleep timing during jet lag recovery.',
   },
   {
-    name: 'Recovery Sleep Requirement After Sleep Debt Calculator',
+    name: 'Sleep Debt Recovery Planner',
     slug: 'recovery-sleep-requirement-after-sleep-debt-calculator',
-    description: 'Calculate recovery sleep after travel-related sleep debt.',
+    description: 'Plan recovery sleep after travel-related sleep debt.',
   },
   {
-    name: 'Sleep Quality vs Screen Exposure Analyzer',
+    name: 'Sleep & Screen Time Wellness Analyzer',
     slug: 'sleep-quality-vs-screen-exposure-analyzer',
-    description: 'Optimize light exposure for jet lag adjustment.',
+    description: 'Get wellness insights about light exposure for jet lag adjustment.',
   },
   {
     name: 'Sleep Efficiency Calculator',
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Jet Lag Recovery Duration Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Jet Lag Recovery Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Jet Lag Recovery Duration Calculator',
+      name: 'Jet Lag Recovery Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.',
+      description: 'Get general wellness insights about jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -191,44 +191,44 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your jet lag recovery timeline is well-estimated based on your travel details.';
+  let interpretation = 'This suggests a general lifestyle tendency where your estimated recovery timeline may support feeling more adjusted after travel.';
   
   if (recoveryDays > 10) {
     status = 'low';
-    interpretation = 'Recovery will take significant time. Use comprehensive adjustment strategies and plan for gradual adaptation.';
+    interpretation = 'This suggests a general lifestyle tendency where recovery may take significant time. You may consider using comprehensive adjustment strategies and planning for gradual adaptation.';
   } else if (recoveryDays > 7) {
     status = 'moderate';
-    interpretation = 'Recovery will take about a week. Follow adjustment strategies consistently to minimize symptoms and speed recovery.';
+    interpretation = 'This suggests a general lifestyle tendency where recovery may take about a week. You may consider following adjustment strategies consistently to support feeling more adjusted.';
   } else if (recoveryDays > 4) {
     status = 'good';
-    interpretation = 'Recovery should be manageable within a few days. Consistent use of adjustment strategies will help.';
+    interpretation = 'This suggests a general lifestyle tendency where recovery may be manageable within a few days. Consistent use of adjustment strategies may help.';
   }
   
   const recommendations = [
-    `Expected recovery time: ${recoveryDays.toFixed(1)} days (${recoveryHours.toFixed(0)} hours). Difficulty level: ${difficultyLevel}.`,
+    `Estimated recovery time: ${recoveryDays.toFixed(1)} days (${recoveryHours.toFixed(0)} hours). Adjustment level: ${difficultyLevel}.`,
     direction === 'east'
-      ? 'For eastward travel: Get morning light exposure, go to bed earlier, and avoid evening light. Consider melatonin 30-60 minutes before desired sleep time.'
-      : 'For westward travel: Get evening light exposure, stay up later, and avoid morning light initially. Gradually shift your schedule later.',
-    'Adjust to local time immediately upon arrival. Resist the urge to nap excessively or stay on home time.',
-    'Stay hydrated, avoid alcohol and caffeine initially, and maintain regular meal times aligned with local schedule.',
+      ? 'For eastward travel: You may consider getting morning light exposure, going to bed earlier, and avoiding evening light. You may consider discussing melatonin with a qualified professional if appropriate.'
+      : 'For westward travel: You may consider getting evening light exposure, staying up later, and avoiding morning light initially. Gradually shifting your schedule later may help.',
+    'You may consider adjusting to local time immediately upon arrival. Resisting the urge to nap excessively or stay on home time may support adjustment.',
+    'You may consider staying hydrated, avoiding alcohol and caffeine initially, and maintaining regular meal times aligned with local schedule.',
   ];
   
   if (strategies < 5) {
-    recommendations.push('Increase use of adjustment strategies (light exposure, sleep schedule shifts, melatonin if appropriate) to reduce recovery time by up to 40%.');
+    recommendations.push('You may consider increasing use of adjustment strategies (light exposure, sleep schedule shifts) to support recovery. This is a personal insight, not a medical evaluation.');
   }
   
   if (age >= 50) {
-    recommendations.push('Older adults may experience more severe jet lag. Allow extra time for adjustment and be more diligent with light exposure and sleep schedule management.');
+    recommendations.push('Older adults may experience more adjustment time. You may consider allowing extra time for adjustment and being more diligent with light exposure and sleep schedule management.');
   }
   
   if (timeZones >= 6) {
-    recommendations.push('For significant time zone differences, consider adjusting your sleep schedule 2-3 days before travel to reduce jet lag severity.');
+    recommendations.push('For significant time zone differences, you may consider adjusting your sleep schedule 2-3 days before travel to support feeling more adjusted.');
   }
   
   const plan = [
-    { label: 'Days 1-2', detail: 'Adjust to local time immediately. Get appropriate light exposure (morning for eastward, evening for westward). Maintain local meal times. Avoid heavy meals and alcohol.' },
-    { label: 'Days 3-5', detail: 'Continue light exposure strategies. Maintain consistent sleep schedule. Most symptoms should start improving. Adjust activity levels as energy returns.' },
-    { label: 'Days 6+', detail: 'Full adjustment typically achieved. Monitor sleep quality and energy levels. Maintain regular schedule to prevent relapse into poor sleep patterns.' },
+    { label: 'Days 1-2', detail: 'You may consider adjusting to local time immediately. Getting appropriate light exposure (morning for eastward, evening for westward) may help. Maintaining local meal times and avoiding heavy meals and alcohol may support adjustment.' },
+    { label: 'Days 3-5', detail: 'You may consider continuing light exposure strategies. Maintaining a consistent sleep schedule may help. You may start feeling more adjusted. Adjusting activity levels as energy returns may be beneficial.' },
+    { label: 'Days 6+', detail: 'Full adjustment may be achieved. You may consider monitoring how rested you feel and energy levels. Maintaining a regular schedule may support ongoing wellness.' },
   ];
   
   return { recoveryDays, recoveryHours, difficultyLevel, adjustmentRate, status, interpretation, recommendations, plan };
@@ -255,9 +255,9 @@ export default function JetLagRecoveryDurationCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Jet Lag Recovery Duration Calculator
+            Jet Lag Recovery Wellness Estimator
           </CardTitle>
-          <CardDescription>Calculate jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.</CardDescription>
+          <CardDescription>Get general wellness insights about jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -513,8 +513,8 @@ export default function JetLagRecoveryDurationCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Jet lag occurs when your internal circadian rhythm is out of sync with a new time zone. Recovery time depends on the number of time zones crossed, travel direction (eastward is typically harder), age, and use of adjustment strategies.</p>
-          <p>Use this calculator to estimate recovery duration and receive personalized recommendations for minimizing jet lag symptoms and speeding adjustment to the new time zone.</p>
+          <p>This tool provides general wellness insights about jet lag recovery. When your internal circadian rhythm is out of sync with a new time zone, you may experience adjustment time. Recovery time may depend on the number of time zones crossed, travel direction (eastward is typically more challenging), age, and use of adjustment strategies.</p>
+          <p>Use this calculator to get general wellness insights about estimated recovery duration and receive lifestyle suggestions for supporting adjustment to the new time zone.</p>
         </CardContent>
       </Card>
 
@@ -540,9 +540,21 @@ export default function JetLagRecoveryDurationCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies to minimize adjustment time.</p>
-          <p>Outputs include recovery duration in days and hours, difficulty level, adjustment rate, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about jet lag recovery duration based on time zones crossed, direction of travel, age, and strategies. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include estimated recovery duration in days and hours, adjustment level, adjustment rate, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

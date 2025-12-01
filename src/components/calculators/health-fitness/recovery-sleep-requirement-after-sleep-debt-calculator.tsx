@@ -101,9 +101,9 @@ const relatedCalculators = [
     description: 'Calculate current sleep debt accumulation.',
   },
   {
-    name: 'Sleep Cycle Alarm Time Optimizer',
+    name: 'Sleep Cycle Wake-Up Comfort Planner',
     slug: 'sleep-cycle-alarm-time-optimizer',
-    description: 'Optimize sleep timing for better recovery.',
+    description: 'Plan comfortable sleep timing for better recovery.',
   },
   {
     name: 'Sleep Restriction Adaptation Calculator',
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Recovery Sleep Requirement After Sleep Debt Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Sleep Debt Recovery Planner', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Recovery Sleep Requirement After Sleep Debt Calculator',
+      name: 'Sleep Debt Recovery Planner',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.',
+      description: 'Get general wellness insights about recovery sleep planning after sleep debt. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -193,41 +193,41 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recoveryTimeline = recoveryDays;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your recovery plan is well-structured for effective sleep debt recovery.';
+  let interpretation = 'This suggests a general lifestyle tendency where your recovery plan may support feeling more rested.';
   
   if (sleepDebt > 30) {
     status = 'low';
-    interpretation = 'You have significant sleep debt. Recovery will require consistent effort over 1-2 weeks. Prioritize sleep and consider gradual recovery.';
+    interpretation = 'This suggests a general lifestyle tendency where you may benefit from consistent sleep over 1-2 weeks. You may consider prioritizing sleep and gradual recovery.';
   } else if (sleepDebt > 15) {
     status = 'moderate';
-    interpretation = 'You have moderate sleep debt. With consistent adequate sleep over the next week, you should see significant recovery.';
+    interpretation = 'This suggests a general lifestyle tendency where consistent adequate sleep over the next week may support feeling more rested.';
   } else if (sleepDebt > 5) {
     status = 'good';
-    interpretation = 'You have manageable sleep debt. A few nights of good sleep should help you recover effectively.';
+    interpretation = 'This suggests a general lifestyle tendency where a few nights of good sleep may help you feel more rested.';
   }
   
   const recommendations = [
-    `Aim for ${dailyRecoveryHours.toFixed(1)} hours of sleep per night for the next ${recoveryDays} days to recover from ${sleepDebt.toFixed(1)} hours of sleep debt.`,
-    'Gradual recovery is more effective than trying to "sleep it off" in one night. Consistent adequate sleep allows your body to fully recover.',
-    'Prioritize sleep quality during recovery. Maintain a consistent schedule, create a sleep-conducive environment, and avoid factors that disrupt sleep.',
+    `You may consider aiming for ${dailyRecoveryHours.toFixed(1)} hours of sleep per night for the next ${recoveryDays} days to support feeling more rested.`,
+    'This is a personal insight, not a medical evaluation. Gradual recovery may be more supportive than trying to "sleep it off" in one night. Consistent adequate sleep may help you feel more rested.',
+    'You may consider prioritizing sleep quality during recovery. Maintaining a consistent schedule, creating a sleep-conducive environment, and avoiding factors that disrupt sleep may help.',
   ];
   
   if (dailyDeficit > 1) {
-    recommendations.push(`Your current sleep (${currentSleep.toFixed(1)} hours) is below your target (${targetSleep.toFixed(1)} hours). Focus on reaching your target consistently to prevent accumulating more debt.`);
+    recommendations.push(`This suggests a general lifestyle tendency where your current sleep (${currentSleep.toFixed(1)} hours) is below your target (${targetSleep.toFixed(1)} hours). You may consider reaching your target consistently to support feeling more rested.`);
   }
   
   if (sleepDebt > 20) {
-    recommendations.push('Consider adjusting your schedule to prioritize sleep. Significant debt may require lifestyle changes to allow adequate recovery time.');
+    recommendations.push('You may consider adjusting your schedule to prioritize sleep. This may require lifestyle changes to allow adequate recovery time.');
   }
   
   if (dailyRecoveryHours > targetSleep + 1.5) {
-    recommendations.push('This recovery schedule requires extra sleep. Plan your schedule to allow for adequate rest, and avoid overscheduling during recovery period.');
+    recommendations.push('This recovery schedule suggests extra sleep may be helpful. You may consider planning your schedule to allow for adequate rest, and avoiding overscheduling during recovery period.');
   }
   
   const plan = [
-    { label: 'Week 1', detail: `Sleep ${dailyRecoveryHours.toFixed(1)} hours per night consistently. Maintain regular bedtime and wake time. Track your energy levels and alertness improvements.` },
-    { label: 'Week 2+', detail: 'As sleep debt decreases, continue getting adequate sleep. Once debt is recovered, maintain target sleep duration to prevent re-accumulating debt.' },
-    { label: 'Ongoing', detail: 'Monitor your sleep patterns. Aim to stay within 1 hour of your target sleep duration to avoid accumulating new sleep debt.' },
+    { label: 'Week 1', detail: `You may consider sleeping ${dailyRecoveryHours.toFixed(1)} hours per night consistently. Maintaining regular bedtime and wake time may help. Track how rested and energized you feel.` },
+    { label: 'Week 2+', detail: 'As you feel more rested, you may consider continuing to get adequate sleep. Once you feel recovered, maintaining target sleep duration may support ongoing wellness.' },
+    { label: 'Ongoing', detail: 'You may consider monitoring your sleep patterns. Staying within 1 hour of your target sleep duration may support feeling consistently rested.' },
   ];
   
   return { totalRecoverySleep, dailyRecoveryHours, recoveryTimeline, recoveryDays, status, interpretation, recommendations, plan };
@@ -254,9 +254,9 @@ export default function RecoverySleepRequirementAfterSleepDebtCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Recovery Sleep Requirement After Sleep Debt Calculator
+            Sleep Debt Recovery Planner
           </CardTitle>
-          <CardDescription>Calculate recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.</CardDescription>
+          <CardDescription>Get general wellness insights about recovery sleep planning after sleep debt. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -507,8 +507,8 @@ export default function RecoverySleepRequirementAfterSleepDebtCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Sleep debt accumulates when you consistently get less sleep than you need. Recovery requires repaying the debt through adequate sleep over time. Gradual recovery (1-2 extra hours per night) is more effective than trying to "sleep it off" in one session.</p>
-          <p>Use this calculator to determine how much sleep you need per night and how long it will take to recover from accumulated sleep debt.</p>
+          <p>This tool provides general wellness insights about sleep debt recovery planning. When you consistently get less sleep than you need, you may benefit from adequate sleep over time. Gradual recovery (1-2 extra hours per night) may be more supportive than trying to "sleep it off" in one session.</p>
+          <p>Use this calculator to get general wellness insights about how much sleep you may consider per night and how long it may take to feel more rested after sleep debt.</p>
         </CardContent>
       </Card>
 
@@ -534,9 +534,21 @@ export default function RecoverySleepRequirementAfterSleepDebtCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates recovery sleep requirements after accumulating sleep debt to determine optimal sleep duration and timeline for recovery.</p>
-          <p>Outputs include daily recovery sleep hours, total recovery sleep, recovery timeline, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about recovery sleep planning after sleep debt. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include suggested daily recovery sleep hours, total recovery sleep estimate, recovery timeline, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

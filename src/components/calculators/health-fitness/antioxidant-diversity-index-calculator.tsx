@@ -102,9 +102,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Vitamin C Immunity Boost Score Calculator',
+    name: 'Vitamin C Wellness Support Score Calculator',
     slug: 'vitamin-c-immunity-boost-score-calculator',
-    description: 'Calculate vitamin C intake for antioxidant support.',
+    description: 'Get wellness insights about vitamin C intake for antioxidant support.',
   },
   {
     name: 'Daily Antioxidant ORAC Goal Calculator',
@@ -133,15 +133,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Antioxidant Diversity Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Antioxidant Diversity Wellness Index', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Antioxidant Diversity Index Calculator',
+      name: 'Antioxidant Diversity Wellness Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and health benefits.',
+      description: 'Get general wellness insights about antioxidant diversity based on intake of various antioxidant-rich foods. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -175,43 +175,43 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let protectionLevel: string;
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your antioxidant diversity is excellent, providing comprehensive protection against oxidative stress.';
+  let interpretation = 'This suggests a general lifestyle tendency where your antioxidant diversity may be excellent, supporting wellness.';
   
   if (diversityIndex >= 75 && categoriesCovered >= 5) {
     protectionLevel = 'Excellent';
     status = 'optimal';
-    interpretation = 'Your antioxidant diversity is excellent. You\'re consuming antioxidants from multiple food categories, providing comprehensive protection.';
+    interpretation = 'This suggests a general lifestyle tendency where your antioxidant diversity is excellent. You\'re consuming antioxidants from multiple food categories, which may support wellness.';
   } else if (diversityIndex >= 60 || categoriesCovered >= 4) {
     protectionLevel = 'Good';
     status = 'good';
-    interpretation = 'Your antioxidant diversity is good. Adding 1-2 more categories would further enhance protection.';
+    interpretation = 'This suggests a general lifestyle tendency where your antioxidant diversity is good. Adding 1-2 more categories may further support wellness.';
   } else if (diversityIndex >= 40 || categoriesCovered >= 3) {
     protectionLevel = 'Moderate';
     status = 'moderate';
-    interpretation = 'Your antioxidant diversity is moderate. Expanding to more antioxidant categories would improve overall protection.';
+    interpretation = 'This suggests a general lifestyle tendency where your antioxidant diversity is moderate. Expanding to more antioxidant categories may support wellness.';
   } else {
-    protectionLevel = 'Low';
+    protectionLevel = 'Lower';
     status = 'low';
-    interpretation = 'Your antioxidant diversity is low. Focus on incorporating more diverse antioxidant-rich foods from different categories.';
+    interpretation = 'This suggests a general lifestyle tendency where your antioxidant diversity is lower. You may consider incorporating more diverse antioxidant-rich foods from different categories.';
   }
   
   const recommendations = [
-    `Your antioxidant diversity index is ${diversityIndex.toFixed(0)}/100. You're consuming from ${categoriesCovered} out of 7 categories.`,
+    `Your antioxidant diversity index is ${diversityIndex.toFixed(0)}/100. You're consuming from ${categoriesCovered} out of 7 categories. This is a personal insight, not a medical evaluation.`,
     categoriesCovered < 5 
-      ? 'Aim for at least 5 different antioxidant categories weekly for comprehensive protection. Add berries, leafy greens, nuts, or colorful vegetables if missing.'
-      : 'Excellent diversity! Continue maintaining variety across antioxidant categories to support long-term health.',
-    'Include a mix of raw and lightly cooked antioxidant-rich foods. Different preparation methods can preserve different antioxidant compounds.',
-    'Aim for 2-3 servings daily from antioxidant-rich foods. Spread intake throughout the day for consistent protection.',
+      ? 'You may consider aiming for at least 5 different antioxidant categories weekly for comprehensive wellness support. Add berries, leafy greens, nuts, or colorful vegetables if missing.'
+      : 'Excellent diversity! You may consider continuing to maintain variety across antioxidant categories to support long-term wellness.',
+    'You may consider including a mix of raw and lightly cooked antioxidant-rich foods. Different preparation methods can preserve different antioxidant compounds.',
+    'You may consider aiming for 2-3 servings daily from antioxidant-rich foods. Spreading intake throughout the day may support consistent wellness.',
   ];
   
   if (categoriesCovered < 3) {
-    recommendations.push('Your diet lacks antioxidant diversity. Start by adding one new category per week (e.g., berries, dark leafy greens, nuts) to build variety gradually.');
+    recommendations.push('Your diet may lack antioxidant diversity. You may consider starting by adding one new category per week (e.g., berries, dark leafy greens, nuts) to build variety gradually.');
   }
   
   const plan = [
-    { label: 'This Week', detail: `Add 1-2 new antioxidant categories if you have fewer than 5. Aim for ${Math.max(5, categoriesCovered + 1)} categories total. Include at least one serving daily from antioxidant-rich foods.` },
-    { label: 'This Month', detail: 'Build consistency across 5-6 antioxidant categories. Track intake and ensure variety. Experiment with different preparation methods to maximize antioxidant preservation.' },
-    { label: 'Ongoing', detail: 'Maintain diversity across antioxidant categories. Rotate foods within each category to maximize variety. Remember that food synergy (combining different antioxidants) provides superior protection compared to isolated sources.' },
+    { label: 'This Week', detail: `You may consider adding 1-2 new antioxidant categories if you have fewer than 5. Aim for ${Math.max(5, categoriesCovered + 1)} categories total. Include at least one serving daily from antioxidant-rich foods.` },
+    { label: 'This Month', detail: 'You may consider building consistency across 5-6 antioxidant categories. Track intake and ensure variety. Experiment with different preparation methods to maximize antioxidant preservation.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining diversity across antioxidant categories. Rotate foods within each category to maximize variety. Remember that food synergy (combining different antioxidants) may support wellness compared to isolated sources.' },
   ];
   
   return { diversityIndex, antioxidantScore, categoriesCovered, protectionLevel, status, interpretation, recommendations, plan };
@@ -241,9 +241,9 @@ export default function AntioxidantDiversityIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Antioxidant Diversity Index Calculator
+            Antioxidant Diversity Wellness Index
           </CardTitle>
-          <CardDescription>Calculate antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and health benefits.</CardDescription>
+          <CardDescription>Get general wellness insights about antioxidant diversity based on intake of various antioxidant-rich foods. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -543,9 +543,21 @@ export default function AntioxidantDiversityIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates antioxidant diversity index based on intake of various antioxidant-rich foods to assess overall antioxidant protection and health benefits.</p>
+          <p>This tool provides general wellness insights about antioxidant diversity based on intake of various antioxidant-rich foods. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include diversity index, antioxidant score, categories covered, protection level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

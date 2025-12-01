@@ -102,9 +102,9 @@ const relatedCalculators = [
     description: 'Calculate omega-3 requirements.',
   },
   {
-    name: 'Vitamin C Immunity Boost Score Calculator',
+    name: 'Vitamin C Wellness Support Score Calculator',
     slug: 'vitamin-c-immunity-boost-score-calculator',
-    description: 'Support immune health with vitamin C.',
+    description: 'Get wellness insights about vitamin C intake.',
   },
   {
     name: 'Inflammation Risk Calculator',
@@ -128,15 +128,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Omega-6 to Omega-3 Balance Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Omega-6 to Omega-3 Balance Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Omega-6 to Omega-3 Balance Calculator',
+      name: 'Omega-6 to Omega-3 Balance Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health.',
+      description: 'Get general wellness insights about omega-6 to omega-3 ratio in your diet to assess fatty acid balance. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -185,31 +185,31 @@ const calculateResult = (values: FormValues): ResultPayload => {
     balanceScore = 20; // Very poor
   }
   
-  // Determine inflammation risk
+  // Determine inflammation tendency
   let inflammationRisk: string;
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your omega-6 to omega-3 ratio is well-balanced, supporting anti-inflammatory processes.';
+  let interpretation = 'This suggests a general lifestyle tendency where your omega-6 to omega-3 ratio may be well-balanced, supporting wellness.';
   
   if (adjustedRatio <= 4) {
     inflammationRisk = 'Very Low';
     status = 'optimal';
-    interpretation = 'Your omega-6 to omega-3 ratio is excellent (≤4:1), indicating low inflammation risk and good fatty acid balance.';
+    interpretation = 'This suggests a general lifestyle tendency where your omega-6 to omega-3 ratio is excellent (≤4:1), indicating a lower tendency and good fatty acid balance.';
   } else if (adjustedRatio <= 8) {
     inflammationRisk = 'Low';
     status = 'good';
-    interpretation = 'Your ratio is good (≤8:1) with relatively low inflammation risk. Minor improvements could optimize further.';
+    interpretation = 'This suggests a general lifestyle tendency where your ratio is good (≤8:1) with relatively lower tendency. Minor improvements may support wellness further.';
   } else if (adjustedRatio <= 12) {
     inflammationRisk = 'Moderate';
     status = 'moderate';
-    interpretation = 'Your ratio is moderate (≤12:1), indicating some inflammation risk. Reducing omega-6 and increasing omega-3 is recommended.';
+    interpretation = 'This suggests a general lifestyle tendency where your ratio is moderate (≤12:1), indicating a moderate tendency. You may consider reducing omega-6 and increasing omega-3.';
   } else if (adjustedRatio <= 20) {
-    inflammationRisk = 'High';
+    inflammationRisk = 'Higher';
     status = 'low';
-    interpretation = 'Your ratio is high (≤20:1), indicating significant inflammation risk. Reducing omega-6 intake and increasing omega-3 is strongly recommended.';
+    interpretation = 'This suggests a general lifestyle tendency where your ratio is high (≤20:1), indicating a higher tendency. You may consider reducing omega-6 intake and increasing omega-3.';
   } else {
     inflammationRisk = 'Very High';
     status = 'low';
-    interpretation = 'Your ratio is very high (>20:1), indicating very high inflammation risk typical of Western diets. Significant dietary changes are needed to improve balance.';
+    interpretation = 'This suggests a general lifestyle tendency where your ratio is very high (>20:1), indicating a very high tendency typical of Western diets. You may consider significant dietary changes to improve balance.';
   }
   
   // Recommended intakes (aim for 4:1 or better)
@@ -217,24 +217,24 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendedOmega6 = recommendedOmega3 * 4; // Target 4:1 ratio
   
   const recommendations = [
-    `Your omega-6 to omega-3 ratio is approximately ${adjustedRatio.toFixed(1)}:1. Inflammation risk: ${inflammationRisk}.`,
+    `Your omega-6 to omega-3 ratio is approximately ${adjustedRatio.toFixed(1)}:1. Inflammation tendency: ${inflammationRisk}. This is a personal insight, not a medical evaluation.`,
     adjustedRatio > 8
-      ? 'Reduce omega-6 intake by avoiding processed foods and vegetable oils (soybean, corn, sunflower, safflower). Use olive oil, avocado oil, or coconut oil instead.'
-      : 'Your omega-6 intake is relatively balanced. Continue to limit processed foods and choose healthier cooking oils.',
+      ? 'You may consider reducing omega-6 intake by avoiding processed foods and vegetable oils (soybean, corn, sunflower, safflower). Use olive oil, avocado oil, or coconut oil instead.'
+      : 'Your omega-6 intake is relatively balanced. You may consider continuing to limit processed foods and choose healthier cooking oils.',
     adjustedRatio > 8
-      ? `Increase omega-3 intake to at least ${recommendedOmega3.toFixed(1)} grams daily. Eat fatty fish (salmon, mackerel, sardines) 2-3 times per week or take omega-3 supplements (1-2g EPA+DHA).`
-      : 'Maintain omega-3 intake. Consider including fatty fish regularly or omega-3 supplements to support optimal balance.',
-    'Choose grass-fed meat over grain-fed when possible, as it has better omega-6 to omega-3 ratios.',
+      ? `You may consider increasing omega-3 intake to at least ${recommendedOmega3.toFixed(1)} grams daily. Eat fatty fish (salmon, mackerel, sardines) 2-3 times per week or discuss omega-3 supplements (1-2g EPA+DHA) with a qualified professional.`
+      : 'You may consider maintaining omega-3 intake. Consider including fatty fish regularly or discussing omega-3 supplements with a qualified professional to support balance.',
+    'You may consider choosing grass-fed meat over grain-fed when possible, as it has better omega-6 to omega-3 ratios.',
   ];
   
   if (processedFoods >= 7 || vegetableOil >= 7) {
-    recommendations.push('Your processed food or vegetable oil usage is high, which significantly increases omega-6 intake. Reducing these will have a major impact on improving your ratio.');
+    recommendations.push('Your processed food or vegetable oil usage is high, which may significantly increase omega-6 intake. Reducing these may have a major impact on improving your ratio.');
   }
   
   const plan = [
-    { label: 'This Week', detail: `Reduce processed foods and switch from vegetable oils to olive oil, avocado oil, or coconut oil for cooking. Increase omega-3 intake through fatty fish or supplements.` },
-    { label: 'This Month', detail: 'Track omega-6 sources in your diet and gradually reduce them. Aim for 2-3 servings of fatty fish per week or daily omega-3 supplements. Monitor your ratio improvements.' },
-    { label: 'Ongoing', detail: 'Maintain a balanced omega-6 to omega-3 ratio (target 4:1 or lower). Continue choosing whole foods over processed foods, healthy cooking oils, and regular omega-3 intake from food or supplements.' },
+    { label: 'This Week', detail: `You may consider reducing processed foods and switching from vegetable oils to olive oil, avocado oil, or coconut oil for cooking. Increase omega-3 intake through fatty fish or discuss supplements with a qualified professional.` },
+    { label: 'This Month', detail: 'You may consider tracking omega-6 sources in your diet and gradually reducing them. Aim for 2-3 servings of fatty fish per week or discuss daily omega-3 supplements with a qualified professional. Monitor your ratio improvements.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining a balanced omega-6 to omega-3 ratio (target 4:1 or lower). Continue choosing whole foods over processed foods, healthy cooking oils, and regular omega-3 intake from food or supplements.' },
   ];
   
   return { 
@@ -271,9 +271,9 @@ export default function Omega6ToOmega3BalanceCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Omega-6 to Omega-3 Balance Calculator
+            Omega-6 to Omega-3 Balance Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health.</CardDescription>
+          <CardDescription>Get general wellness insights about omega-6 to omega-3 ratio in your diet to assess fatty acid balance. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -353,7 +353,7 @@ export default function Omega6ToOmega3BalanceCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See omega-6 to omega-3 ratio, balance score, inflammation risk, and recommendations.</CardDescription>
+            <CardDescription>See omega-6 to omega-3 ratio, balance score, inflammation tendency, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -368,9 +368,9 @@ export default function Omega6ToOmega3BalanceCalculator() {
                 <p className="text-xs text-muted-foreground">Higher = better</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Inflammation risk</p>
+                <p className="text-sm text-muted-foreground">Inflammation tendency</p>
                 <p className="text-2xl font-semibold text-primary">{result.inflammationRisk}</p>
-                <p className="text-xs text-muted-foreground">Risk level</p>
+                <p className="text-xs text-muted-foreground">Tendency level</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -552,9 +552,21 @@ export default function Omega6ToOmega3BalanceCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates omega-6 to omega-3 ratio in your diet to assess inflammation risk and optimize fatty acid balance for better health.</p>
-          <p>Outputs include omega-6 to omega-3 ratio, balance score, inflammation risk level, recommended intakes, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about omega-6 to omega-3 ratio in your diet to assess fatty acid balance. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include omega-6 to omega-3 ratio, balance score, inflammation tendency level, suggested intakes, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

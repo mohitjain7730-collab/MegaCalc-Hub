@@ -96,9 +96,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Sleep Cycle Alarm Time Optimizer',
+    name: 'Sleep Cycle Wake-Up Comfort Planner',
     slug: 'sleep-cycle-alarm-time-optimizer',
-    description: 'Calculate optimal sleep timing for better rest.',
+    description: 'Plan comfortable wake-up times for better rest.',
   },
   {
     name: 'Sleep Quality vs Productivity Correlation Calculator',
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Sleep Quality vs Screen Exposure Analyzer', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Sleep & Screen Time Wellness Analyzer', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Sleep Quality vs Screen Exposure Analyzer',
+      name: 'Sleep & Screen Time Wellness Analyzer',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Analyze the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines.',
+      description: 'Get general wellness insights about the relationship between screen exposure time and sleep quality. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -163,13 +163,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let sleepQualityImpact: string;
   if (qualityDifference > 2) {
-    sleepQualityImpact = 'Better than expected - you may have good sleep resilience or effective countermeasures.';
+    sleepQualityImpact = 'Your sleep quality rating is better than expected given your screen exposure patterns. This suggests you may have effective habits that support restful sleep.';
   } else if (qualityDifference > 0) {
-    sleepQualityImpact = 'Slightly better than expected given screen exposure.';
+    sleepQualityImpact = 'Your sleep quality rating is slightly better than expected given your screen exposure level.';
   } else if (qualityDifference > -2) {
-    sleepQualityImpact = 'As expected given screen exposure level.';
+    sleepQualityImpact = 'Your sleep quality rating aligns with what might be expected given your screen exposure patterns.';
   } else {
-    sleepQualityImpact = 'Worse than expected - screen exposure is significantly impacting sleep quality.';
+    sleepQualityImpact = 'This suggests your current screen habits may influence how rested you feel. Consider lifestyle adjustments such as reducing evening screen time.';
   }
   
   // Calculate recommended screen cutoff time
@@ -179,17 +179,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendedScreenCutoff = `${String(recommendedCutoff).padStart(2, '0')}:00`;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your screen exposure patterns appear optimal for sleep quality.';
+  let interpretation = 'Your estimated screen-sleep wellness score suggests your current screen habits may support restful sleep.';
   
   if (screenImpactScore >= 70 || values.bedtimeScreenTime >= 2) {
     status = 'low';
-    interpretation = 'Your screen exposure, especially before bedtime, is significantly impacting sleep quality. Reducing screen time before bed is strongly recommended.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen exposure, especially before bedtime, may influence how rested you feel. You may consider lifestyle improvements such as reducing evening screen time.';
   } else if (screenImpactScore >= 50 || values.bedtimeScreenTime >= 1) {
     status = 'moderate';
-    interpretation = 'Your screen exposure before bedtime may be affecting sleep quality. Consider reducing screen time in the hours before sleep.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen exposure before bedtime may affect sleep quality. You may consider reducing screen time in the hours before sleep.';
   } else if (screenImpactScore >= 30) {
     status = 'good';
-    interpretation = 'Your screen exposure is manageable, but there\'s room for improvement. Consider setting a screen cutoff time before bed.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen exposure is manageable, but there may be room for improvement. You may consider setting a screen cutoff time before bed.';
   }
   
   const recommendations = [
@@ -240,9 +240,9 @@ export default function SleepQualityVsScreenExposureAnalyzer() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Sleep Quality vs Screen Exposure Analyzer
+            Sleep & Screen Time Wellness Analyzer
           </CardTitle>
-          <CardDescription>Analyze the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines.</CardDescription>
+          <CardDescription>Get general wellness insights about the relationship between screen exposure time and sleep quality. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -431,11 +431,11 @@ export default function SleepQualityVsScreenExposureAnalyzer() {
           {result ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Melatonin suppression risk</p>
+                <p className="text-sm text-muted-foreground">Blue light exposure level</p>
                 <p className="text-xl font-semibold text-primary">
-                  {result.blueLightExposure > 50 ? 'High' : result.blueLightExposure > 25 ? 'Moderate' : 'Low'}
+                  {result.blueLightExposure > 50 ? 'Higher' : result.blueLightExposure > 25 ? 'Moderate' : 'Lower'}
                 </p>
-                <p className="text-xs text-muted-foreground">Based on blue light</p>
+                <p className="text-xs text-muted-foreground">Estimated exposure</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Sleep delay estimate</p>
@@ -508,9 +508,21 @@ export default function SleepQualityVsScreenExposureAnalyzer() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool analyzes the relationship between screen exposure time, blue light exposure, and sleep quality to optimize bedtime routines.</p>
-          <p>Outputs include screen impact score, blue light exposure percentage, sleep quality impact assessment, recommended screen cutoff time, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about the relationship between screen exposure time and sleep quality. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include screen-sleep wellness score, blue light exposure estimate, sleep quality insight, suggested screen cutoff time, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

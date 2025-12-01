@@ -96,14 +96,14 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Sleep Phase Delay Syndrome (DSPD) Risk Calculator',
+    name: 'Delayed Sleep Phase Tendency Estimator',
     slug: 'sleep-phase-delay-syndrome-dspd-risk-calculator',
-    description: 'Assess risk of delayed sleep phase disorder.',
+    description: 'Get wellness insights about delayed sleep phase tendencies.',
   },
   {
-    name: 'Sleep Cycle Alarm Time Optimizer',
+    name: 'Sleep Cycle Wake-Up Comfort Planner',
     slug: 'sleep-cycle-alarm-time-optimizer',
-    description: 'Optimize sleep timing for better cycles.',
+    description: 'Plan comfortable sleep timing for better cycles.',
   },
   {
     name: 'Sleep Quality vs Productivity Correlation Calculator',
@@ -111,9 +111,9 @@ const relatedCalculators = [
     description: 'Track sleep quality and productivity.',
   },
   {
-    name: 'Jet Lag Recovery Duration Calculator',
+    name: 'Jet Lag Recovery Wellness Estimator',
     slug: 'jet-lag-recovery-duration-calculator',
-    description: 'Manage circadian rhythm adjustments.',
+    description: 'Get wellness insights about circadian rhythm adjustments.',
   },
 ];
 
@@ -127,15 +127,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Optimal Bedtime by Chronotype Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Bedtime by Chronotype Wellness Planner', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Optimal Bedtime by Chronotype Calculator',
+      name: 'Bedtime by Chronotype Wellness Planner',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Calculate optimal bedtime based on your chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality.',
+      description: 'Get general wellness insights about bedtime planning based on your chronotype (early bird, night owl, intermediate) and desired wake time. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -198,36 +198,36 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const actualSleepDuration = (desiredWakeTime - optimalBedtime + (24 * 60)) % (24 * 60) / 60;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your bedtime is optimally calculated to align with your chronotype and desired wake time.';
+  let interpretation = 'This suggests a general lifestyle tendency where your bedtime may align well with your chronotype and desired wake time.';
   
   // Check if bedtime is reasonable for chronotype
   const bedtimeHour = Math.floor(optimalBedtime / 60);
   if (values.chronotype === 'early' && bedtimeHour > 23) {
     status = 'moderate';
-    interpretation = 'Your bedtime is later than ideal for an early bird chronotype. Consider adjusting your schedule to sleep earlier when possible.';
+    interpretation = 'This suggests a general lifestyle tendency where your bedtime may be later than typical for an early bird chronotype. You may consider adjusting your schedule to sleep earlier when possible.';
   } else if (values.chronotype === 'late' && bedtimeHour < 22) {
     status = 'good';
-    interpretation = 'Your bedtime may be earlier than ideal for a night owl. If possible, allow for a later bedtime to align with your natural rhythm.';
+    interpretation = 'This suggests a general lifestyle tendency where your bedtime may be earlier than typical for a night owl. If possible, you may consider allowing for a later bedtime to align with your natural rhythm.';
   }
   
   const recommendations = [
-    `As a ${chronotypeName}, your optimal bedtime is ${optimalBedtimeStr} to wake at ${optimalWakeTime} for ${adjustedSleep.toFixed(1)} hours of sleep.`,
-    'Maintain consistent bedtimes and wake times, even on weekends, to help regulate your circadian rhythm and improve sleep quality.',
+    `As a ${chronotypeName}, you may consider a bedtime around ${optimalBedtimeStr} to wake at ${optimalWakeTime} for ${adjustedSleep.toFixed(1)} hours of sleep.`,
+    'You may consider maintaining consistent bedtimes and wake times, even on weekends, to help support your circadian rhythm and sleep patterns.',
     values.chronotype === 'late' 
-      ? 'Night owls benefit from evening light exposure and avoiding morning light initially. Consider a later schedule if work allows.'
+      ? 'Night owls may benefit from evening light exposure and avoiding morning light initially. You may consider a later schedule if work allows.'
       : values.chronotype === 'early'
-      ? 'Early birds should maximize morning light exposure and maintain an early evening routine. Avoid late evening activities that delay sleep.'
-      : 'Intermediates have flexibility but should maintain consistent schedules. Align sleep with your natural preferences.',
+      ? 'Early birds may benefit from maximizing morning light exposure and maintaining an early evening routine. You may consider avoiding late evening activities that delay sleep.'
+      : 'Intermediates have flexibility but may consider maintaining consistent schedules. Align sleep with your natural preferences.',
   ];
   
   if (Math.abs(actualSleepDuration - adjustedSleep) > 0.5) {
-    recommendations.push('Consider adjusting your wake time slightly to better match your target sleep duration while maintaining your chronotype alignment.');
+    recommendations.push('You may consider adjusting your wake time slightly to better match your target sleep duration while maintaining your chronotype alignment.');
   }
   
   const plan = [
-    { label: 'This Week', detail: `Gradually adjust to bedtime ${optimalBedtimeStr}. Start 15 minutes earlier/later than current and shift toward target over 3-4 days.` },
-    { label: 'This Month', detail: 'Maintain consistent schedule. Track sleep quality and daytime alertness. Your chronotype-aligned schedule should improve both.' },
-    { label: 'Ongoing', detail: 'Work with your chronotype rather than against it. If schedule conflicts exist, consider lifestyle accommodations (flexible hours) to optimize alignment.' },
+    { label: 'This Week', detail: `You may consider gradually adjusting to bedtime ${optimalBedtimeStr}. Start 15 minutes earlier/later than current and shift toward target over 3-4 days.` },
+    { label: 'This Month', detail: 'You may consider maintaining a consistent schedule. Track how rested you feel and daytime alertness. Your chronotype-aligned schedule may support both.' },
+    { label: 'Ongoing', detail: 'You may consider working with your chronotype rather than against it. If schedule conflicts exist, you may consider lifestyle accommodations (flexible hours) to support alignment.' },
   ];
   
   return { optimalBedtime: optimalBedtimeStr, optimalWakeTime, sleepDuration: actualSleepDuration, chronotypeName, status, interpretation, recommendations, plan };
@@ -254,9 +254,9 @@ export default function OptimalBedtimeByChronotypeCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Optimal Bedtime by Chronotype Calculator
+            Bedtime by Chronotype Wellness Planner
           </CardTitle>
-          <CardDescription>Calculate optimal bedtime based on your chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality.</CardDescription>
+          <CardDescription>Get general wellness insights about bedtime planning based on your chronotype (early bird, night owl, intermediate) and desired wake time. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -524,9 +524,21 @@ export default function OptimalBedtimeByChronotypeCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates optimal bedtime based on chronotype (early bird, night owl, intermediate) and desired wake time for better sleep quality.</p>
-          <p>Outputs include optimal bedtime, wake time, sleep duration, chronotype name, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about bedtime planning based on chronotype (early bird, night owl, intermediate) and desired wake time. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include suggested bedtime, wake time, sleep duration, chronotype name, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>
