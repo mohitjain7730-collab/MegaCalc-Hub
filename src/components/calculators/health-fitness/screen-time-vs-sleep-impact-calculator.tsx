@@ -1,16 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import Script from 'next/script';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Activity, Zap, Target, AlertTriangle, Shield, Monitor } from 'lucide-react';
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Monitor, Activity, Calendar, AlertTriangle } from 'lucide-react';
-import Link from 'next/link';
 
 const formSchema = z.object({
   age: z.number().positive('Age must be positive'),
@@ -89,6 +91,19 @@ const understandingInputs = [
   },
 ];
 
+const steps = [
+  'Enter your age in years.',
+  'Enter total daily screen time (hours) spent on all devices.',
+  'Enter average sleep hours per night.',
+  'Enter screen time in the 1-2 hours before bedtime.',
+  'Select primary device type used most frequently.',
+  'Select blue light filter usage level.',
+  'Select your perceived sleep quality.',
+  'Select eye strain level experienced.',
+  'Enter daily physical activity hours.',
+  'Review the impact score, recommendations, and action plan.',
+];
+
 const faqs: [string, string][] = [
   [
     'How does screen time affect sleep?',
@@ -131,6 +146,49 @@ const faqs: [string, string][] = [
     'You might consider small changes if you often feel wired at night, have tired eyes, or notice that screens are taking time away from things you care about.',
   ],
 ];
+
+const relatedCalculators = [
+  {
+    name: 'Sleep Quality Calculator',
+    slug: 'sleep-quality-calculator',
+    description: 'Assess sleep quality to complement screen time impact analysis.',
+  },
+  {
+    name: 'Sleep Balance Check-In',
+    slug: 'sleep-debt-calculator-hf',
+    description: 'Calculate sleep balance to understand cumulative sleep patterns.',
+  },
+  {
+    name: 'Blue Light Exposure Wellness Calculator',
+    slug: 'blue-light-exposure-calculator',
+    description: 'Estimate blue light exposure and melatonin disruption from screens.',
+  },
+];
+
+const baseUrl = 'https://mycalculating.com/category/health-fitness/screen-time-vs-sleep-impact-calculator';
+
+const schemaMarkup = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 3, name: 'Screen Time vs Sleep Impact Wellness Tracker', item: baseUrl },
+      ],
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Screen Time vs Sleep Impact Wellness Tracker',
+      applicationCategory: 'HealthApplication',
+      operatingSystem: 'Web Browser',
+      description: 'Calculate screen time impact on sleep quality, sleep onset, and overall rest patterns.',
+      url: baseUrl,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+  ],
+};
 
 const plan = (): { week: number; focus: string }[] => [
   { week: 1, focus: 'Assess current habits: track daily screen time and screen time before bed to establish baseline.' },
@@ -337,14 +395,24 @@ export default function ScreenTimeVsSleepImpactCalculator() {
 
   return (
     <div className="space-y-8">
+      <Script id="screen-sleep-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Monitor className="h-5 w-5" /> Screen Time vs Sleep Impact Calculator
+            <Monitor className="h-5 w-5" />
+            Screen Time vs Sleep Impact Wellness Tracker
           </CardTitle>
           <CardDescription>
             Reflect on how your screen habits relate to your wind‑down time and overall sense of rest, in a non‑diagnostic way.
           </CardDescription>
+        </CardHeader>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Input your screen and sleep information</CardTitle>
+          <CardDescription>Enter details about your screen time habits and sleep patterns to see personalized insights.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -504,137 +572,108 @@ export default function ScreenTimeVsSleepImpactCalculator() {
       </Card>
 
       {result && (
-        <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Activity className="h-8 w-8 text-primary" />
-                <CardTitle>Screen–Sleep Balance Insight</CardTitle>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Zap className="h-5 w-5 text-primary" />
+              Interactive results
+            </CardTitle>
+            <CardDescription>See screen-sleep balance score, sleep quality score, recommendations, and action plan.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Impact Score</p>
+                <p className="text-2xl font-semibold text-primary">{result.sleepImpactScore}</p>
+                <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
-              <CardDescription>A gentle, wellness‑focused look at your current routines.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-4 border rounded">
-                  <p className="text-3xl font-bold text-primary">{result.sleepImpactScore}/100</p>
-                  <p className="text-sm text-muted-foreground">Screen–sleep balance score</p>
-                </div>
-                <div className="text-center p-4 border rounded">
-                  <p className="text-2xl font-bold text-primary">{result.screenTimeRisk}</p>
-                  <p className="text-sm text-muted-foreground">Screen time pattern</p>
-                </div>
-                <div className="text-center p-4 border rounded">
-                  <p className="text-3xl font-bold text-primary">{result.sleepQualityScore}/100</p>
-                  <p className="text-sm text-muted-foreground">Sleep support score</p>
-                </div>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Sleep Quality</p>
+                <p className="text-2xl font-semibold text-primary">{result.sleepQualityScore}</p>
+                <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Weekly Projection</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-4 border rounded">
-                  <p className="text-2xl font-bold text-red-500">{result.weeklyProjection.sleepDebt}h</p>
-                  <p className="text-sm text-muted-foreground">Weekly gap from 7‑hour reference</p>
-                </div>
-                <div className="text-center p-4 border rounded">
-                  <p className="text-2xl font-bold text-blue-500">{result.weeklyProjection.screenTimeHours}h</p>
-                  <p className="text-sm text-muted-foreground">Weekly Screen Time</p>
-                </div>
-                <div className="text-center p-4 border rounded">
-                  <p className="text-2xl font-bold text-green-500">{result.weeklyProjection.recommendedScreenTime}h</p>
-                  <p className="text-sm text-muted-foreground">Example daily screen target</p>
-                </div>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Screen Pattern</p>
+                <p className="text-2xl font-semibold text-primary text-sm">{result.screenTimeRisk}</p>
+                <p className="text-xs text-muted-foreground">Risk level</p>
               </div>
-            </CardContent>
-          </Card>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Gentle ideas to experiment with</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {result.recommendations.map((item, index) => (
-                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4" /> Things to pay attention to
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {result.warningSigns.map((item, index) => (
-                    <li key={index} className="text-sm text-muted-foreground">{item}</li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Reflections about long screen days</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {result.healthRisks.map((item, index) => (
-                  <li key={index} className="text-sm text-muted-foreground">{item}</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Digital Wellness Improvement Plan</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b">
-                      <th className="text-left p-2">Week</th>
-                      <th className="text-left p-2">Focus</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {result.plan.map(({ week, focus }) => (
-                      <tr key={week} className="border-b">
-                        <td className="p-2">{week}</td>
-                        <td className="p-2">{focus}</td>
-                      </tr>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Weekly Screen</p>
+                <p className="text-2xl font-semibold text-primary">{result.weeklyProjection.screenTimeHours}h</p>
+                <p className="text-xs text-muted-foreground">Total per week</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Target className="h-4 w-4" />
+                    Recommendations
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
+                    {result.recommendations.map((rec, index) => (
+                      <li key={index}>{rec}</li>
                     ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <AlertTriangle className="h-4 w-4" />
+                    Action plan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    {result.plan.map((step) => (
+                      <li key={step.week}>
+                        <span className="font-semibold">Week {step.week}:</span> {step.focus}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </CardContent>
+        </Card>
       )}
 
       <Card>
         <CardHeader>
-          <CardTitle>Understanding the Inputs</CardTitle>
-          <CardDescription>Collect accurate information for meaningful results</CardDescription>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Formula
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground space-y-2">
+          <p>
+            <strong>Sleep Impact Score</strong> = Age Factor + Daily Screen Time Factor + Screen Time Before Bed Factor + Device
+            Type Factor − Blue Light Filter Benefit + Sleep Quality Factor + Eye Strain Factor − Physical Activity Benefit. The
+            score ranges from 0-100, with higher scores indicating greater potential impact on sleep.
+          </p>
+          <p>
+            <strong>Sleep Quality Score</strong> = 100 − Sleep Hours Deficit − (Screen Time Before Bed × 8) + Blue Light Filter
+            Benefit. This estimates sleep support based on sleep duration, evening screen exposure, and protective measures.
+          </p>
+          <p>
+            Age factors: Younger individuals (&lt;18 years) receive higher impact scores due to increased sensitivity to screen
+            exposure. Device types vary in impact (phones/tablets typically higher than TV). Blue light filters and physical
+            activity reduce impact scores.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Steps</CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="space-y-2">
-            {understandingInputs.map((item, index) => (
-              <li key={index}>
-                <span className="font-semibold text-foreground">{item.label}:</span>
-                <span className="text-sm text-muted-foreground"> {item.description}</span>
-              </li>
+          <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+            {steps.map((step) => (
+              <li key={step}>{step}</li>
             ))}
           </ul>
         </CardContent>
@@ -642,91 +681,307 @@ export default function ScreenTimeVsSleepImpactCalculator() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Related Calculators</CardTitle>
-          <CardDescription>Build a comprehensive sleep and wellness assessment</CardDescription>
+          <CardTitle>Related calculators</CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded">
+        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {relatedCalculators.map((calc) => (
+            <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/sleep-quality-calculator" className="text-primary hover:underline">
-                  Sleep Quality Calculator
+                <Link href={`/category/health-fitness/${calc.slug}`} className="text-primary hover:underline">
+                  {calc.name}
                 </Link>
               </h4>
-              <p className="text-sm text-muted-foreground">Assess sleep quality to complement screen time impact analysis.</p>
+              <p className="text-sm text-muted-foreground">{calc.description}</p>
             </div>
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/sleep-debt-calculator" className="text-primary hover:underline">
-                  Sleep Debt Calculator
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">Calculate sleep debt to understand cumulative sleep impact.</p>
-            </div>
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">
-                  Daily Activity Points Calculator
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">Track comprehensive daily activity including screen time management.</p>
-            </div>
-            <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/stress-level-calculator" className="text-primary hover:underline">
-                  Stress Level Calculator
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">Assess stress levels that may be affected by screen time and sleep quality.</p>
-            </div>
-          </div>
+          ))}
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Complete Guide: Screen Time, Wind‑Down, and Rest</CardTitle>
-          <CardDescription>Context for thinking about digital habits in a gentle, wellness‑focused way</CardDescription>
+          <CardTitle>Detailed Guide</CardTitle>
+          <CardDescription>
+            Comprehensive guide to screen time, sleep impact, blue light exposure, and strategies for digital wellness
+          </CardDescription>
         </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>
-            Many people find that long or late‑night screen sessions make it harder to feel calm and sleepy, especially if the
-            content is fast‑moving or emotional. Others notice that a bit of structure—like setting a time to put devices down
-            and choosing a quieter activity—helps the transition to sleep feel smoother.
+        <CardContent className="space-y-6 text-muted-foreground leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
+            The Definitive Guide to Screen Time and Sleep Impact: Understanding Digital Habits and Sleep Quality
+          </h2>
+          <p className="text-lg italic text-gray-700">
+            Explore the science of screen time and sleep, learn how digital devices affect rest, understand blue light exposure,
+            and discover comprehensive strategies to balance screen use with quality sleep.
           </p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-blue-600">
+            <li>
+              <a href="#understanding-screen-sleep" className="hover:underline">
+                Understanding Screen Time and Sleep Relationship
+              </a>
+            </li>
+            <li>
+              <a href="#blue-light-effects" className="hover:underline">
+                Blue Light Effects on Sleep and Circadian Rhythms
+              </a>
+            </li>
+            <li>
+              <a href="#evening-exposure" className="hover:underline">
+                Evening Screen Exposure and Sleep Onset
+              </a>
+            </li>
+            <li>
+              <a href="#reduction-strategies" className="hover:underline">
+                Comprehensive Strategies to Reduce Screen Time Impact on Sleep
+              </a>
+            </li>
+          </ul>
+          <hr />
+
+          <h2 id="understanding-screen-sleep" className="text-2xl font-bold text-foreground pt-8">
+            Understanding Screen Time and Sleep Relationship
+          </h2>
           <p>
-            Rather than focusing on strict rules, you can use this tool as a starting point to notice how your own energy,
-            focus, and mood respond to different patterns of screen use. Short experiment periods—such as one or two weeks with
-            a slightly earlier digital “curfew” or a few more movement breaks—often give useful feedback about what genuinely
-            feels better for you.
+            Screen time, especially in the evening, can significantly impact sleep quality, sleep onset latency, and overall
+            rest patterns. Understanding this relationship helps create healthier digital habits.
           </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">How Screens Affect Sleep</h3>
           <p>
-            If you ever feel worried about your sleep, mental health, or overall well‑being, consider talking with a qualified
-            health professional. They can look at your full situation, including but not limited to screen use, and offer
-            personalised guidance.
+            Screens can disrupt sleep through multiple mechanisms:
+          </p>
+          <ul>
+            <li>
+              <b>Blue light exposure:</b> Suppresses melatonin production, delaying sleep onset
+            </li>
+            <li>
+              <b>Mental stimulation:</b> Engaging content increases alertness and makes relaxation difficult
+            </li>
+            <li>
+              <b>Delayed bedtime:</b> Screen use can extend wake time, reducing total sleep duration
+            </li>
+            <li>
+              <b>Sleep fragmentation:</b> Notifications and alerts can interrupt sleep throughout the night
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Age-Related Sensitivity</h3>
+          <p>
+            Research suggests that children and adolescents may be more sensitive to evening screen exposure than adults. Their
+            developing circadian systems and higher screen use make them particularly vulnerable to sleep disruption from digital
+            devices.
+          </p>
+
+          <hr />
+
+          <h2 id="blue-light-effects" className="text-2xl font-bold text-foreground pt-8">
+            Blue Light Effects on Sleep and Circadian Rhythms
+          </h2>
+          <p>
+            Blue light, particularly from LED screens, plays a significant role in sleep disruption by affecting melatonin
+            production and circadian rhythms.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">How Blue Light Works</h3>
+          <p>
+            Blue light wavelengths (especially 460-480nm) are most effective at suppressing melatonin, the hormone that
+            regulates sleep-wake cycles. Exposure to blue light in the evening signals the brain that it's still daytime,
+            delaying sleep onset.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Blue Light Filters</h3>
+          <p>
+            Blue light filters (night mode, blue light filters) reduce blue light emission:
+          </p>
+          <ul>
+            <li>
+              <b>Basic filters:</b> Built-in device settings that warm screen colors
+            </li>
+            <li>
+              <b>Advanced filters:</b> Third-party apps with more sophisticated filtering
+            </li>
+            <li>
+              <b>Effectiveness:</b> Can help but work best when combined with reduced evening screen time
+            </li>
+          </ul>
+
+          <hr />
+
+          <h2 id="evening-exposure" className="text-2xl font-bold text-foreground pt-8">
+            Evening Screen Exposure and Sleep Onset
+          </h2>
+          <p>
+            Screen time in the 1-2 hours before bedtime has the strongest impact on sleep quality and onset latency.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Impact of Evening Screens</h3>
+          <ul>
+            <li>
+              <b>Delayed sleep onset:</b> Can increase time to fall asleep by 30-60 minutes or more
+            </li>
+            <li>
+              <b>Reduced sleep quality:</b> Less deep sleep and REM sleep
+            </li>
+            <li>
+              <b>Increased awakenings:</b> More frequent nighttime wake-ups
+            </li>
+            <li>
+              <b>Morning alertness:</b> Reduced alertness and cognitive performance the next day
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Device Type Differences</h3>
+          <p>
+            Different devices have varying impacts:
+          </p>
+          <ul>
+            <li>
+              <b>Phones/tablets:</b> Higher impact due to close proximity and interactive content
+            </li>
+            <li>
+              <b>Computers:</b> Moderate impact, often used for work which adds stress
+            </li>
+            <li>
+              <b>TV:</b> Lower impact due to distance, but still affects sleep if used close to bedtime
+            </li>
+          </ul>
+
+          <hr />
+
+          <h2 id="reduction-strategies" className="text-2xl font-bold text-foreground pt-8">
+            Comprehensive Strategies to Reduce Screen Time Impact on Sleep
+          </h2>
+          <p>
+            Reducing screen time impact on sleep requires intentional boundaries, environmental adjustments, and alternative
+            evening activities.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">1. Establish Screen-Free Wind-Down</h3>
+          <ul>
+            <li>
+              <b>Set digital curfew:</b> Stop using screens 1-2 hours before bedtime
+            </li>
+            <li>
+              <b>Create buffer zone:</b> Use this time for calming activities (reading, stretching, conversation)
+            </li>
+            <li>
+              <b>Charge devices elsewhere:</b> Keep phones and devices out of the bedroom
+            </li>
+            <li>
+              <b>Use alarm clock:</b> Replace phone alarm with traditional alarm clock
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">2. Optimize Screen Settings</h3>
+          <ul>
+            <li>
+              <b>Enable blue light filters:</b> Use night mode or blue light filter apps in the evening
+            </li>
+            <li>
+              <b>Reduce brightness:</b> Lower screen brightness in the evening
+            </li>
+            <li>
+              <b>Use dark mode:</b> Switch to dark mode themes to reduce overall light emission
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">3. Manage Daily Screen Time</h3>
+          <ul>
+            <li>
+              <b>Set limits:</b> Establish daily screen time goals
+            </li>
+            <li>
+              <b>Take breaks:</b> Regular breaks from screens throughout the day
+            </li>
+            <li>
+              <b>Screen-free zones:</b> Designate areas (bedroom, dining table) as screen-free
+            </li>
+            <li>
+              <b>Alternative activities:</b> Replace some screen time with movement, hobbies, or social connection
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">4. Support Sleep with Lifestyle</h3>
+          <ul>
+            <li>
+              <b>Regular exercise:</b> Physical activity supports better sleep quality
+            </li>
+            <li>
+              <b>Consistent schedule:</b> Maintain regular sleep and wake times
+            </li>
+            <li>
+              <b>Sleep environment:</b> Keep bedroom dark, cool, and quiet
+            </li>
+            <li>
+              <b>Relaxation techniques:</b> Practice breathing exercises, meditation, or gentle stretching before bed
+            </li>
+          </ul>
+
+          <hr />
+
+          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+          <p>
+            Understanding how screen time affects sleep is essential for maintaining quality rest and overall well-being. By
+            recognizing the impact of evening screen exposure, implementing screen-free wind-down periods, optimizing device
+            settings, and creating healthy digital boundaries, you can improve sleep quality while still enjoying technology.
+            Remember that small, consistent changes often have the biggest impact—start with one strategy, track your progress,
+            and gradually build healthier habits. If sleep difficulties persist despite lifestyle changes, consider consulting a
+            healthcare provider or sleep specialist who can provide personalized guidance. This tool is designed for wellness
+            reflection and is not a substitute for professional medical evaluation or treatment.
           </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Common questions about screen time and sleep impact</CardDescription>
+          <CardTitle>FAQs</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {faqs.map(([question, answer], index) => (
             <div key={index}>
-              <h4 className="font-semibold mb-1">{question}</h4>
+              <h4 className="font-semibold">{question}</h4>
               <p className="text-sm text-muted-foreground">{answer}</p>
             </div>
           ))}
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-xs text-muted-foreground text-center">
-        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
-        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>
+            This tool offers a screen-sleep impact score from age, daily screen time, sleep hours, evening screen exposure,
+            device type, blue light filter usage, sleep quality, eye strain, and physical activity as a gentle,
+            lifestyle-oriented snapshot. It is intended for personal reflection, not for diagnosis or treatment decisions.
+          </p>
+          <p>
+            Outputs include impact score (0-100), sleep quality score, screen time risk pattern, weekly projections,
+            interpretation text, supportive recommendations, warning signs, an action plan, and contextual information about
+            the inputs and calculation approach.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+            medical or psychological diagnosis, evaluation, or treatment plan. For any health concerns, please consult a qualified
+            professional who can review your full situation.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

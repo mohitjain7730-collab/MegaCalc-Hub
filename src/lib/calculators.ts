@@ -2729,7 +2729,7 @@ export const calculators: Calculator[] = [
   { id: 3039, name: 'Breastfeeding Calorie Needs Calculator', description: 'Calculate daily calorie needs for breastfeeding mothers based on activity level and feeding frequency.', slug: 'breastfeeding-calorie-needs-calculator', category: 'health-fitness' },
   { id: 3040, name: 'Infant Growth Percentile Calculator', description: 'Calculate infant growth percentiles for weight, height, and head circumference using WHO standards.', slug: 'infant-growth-percentile-calculator', category: 'health-fitness' },
   { id: 3041, name: 'Child BMI Percentile Calculator', description: 'Calculate child BMI percentiles using CDC growth charts with age and gender-specific assessments.', slug: 'child-bmi-percentile-calculator', category: 'health-fitness' },
-  { id: 3042, name: 'Baby Sleep Needs Calculator', description: 'Calculate age-appropriate sleep requirements and nap patterns for babies and toddlers.', slug: 'baby-sleep-needs-calculator', category: 'wellness' },
+  { id: 3042, name: 'Baby Sleep Needs Wellness Tracker', description: 'Calculate age-appropriate sleep requirements and nap patterns for babies and toddlers.', slug: 'baby-sleep-needs-calculator', category: 'wellness' },
   { id: 3043, name: 'Toddler Calorie Requirement Calculator', description: 'Calculate daily calorie needs for toddlers based on age, weight, and activity level.', slug: 'toddler-calorie-requirement-calculator', category: 'health-fitness' },
   { id: 3044, name: 'Resting Metabolic Rate (RMR) Calculator', description: 'Calculate resting metabolic rate, total daily energy expenditure, and macronutrient requirements.', slug: 'resting-metabolic-rate-calculator', category: 'health-fitness' },
   // Conversions
@@ -3510,11 +3510,11 @@ export const calculators: Calculator[] = [
   },
   {
     id: 156,
-    name: 'Screen Time vs Sleep Impact Calculator',
+    name: 'Screen Time vs Sleep Impact Wellness Tracker',
     description: 'Analyze the relationship between your screen time habits and sleep quality to optimize your digital wellness.',
     slug: 'screen-time-vs-sleep-impact-calculator',
     category: 'wellness',
-    metaTitle: 'Screen Time vs Sleep Impact Calculator - Digital Wellness',
+    metaTitle: 'Screen Time vs Sleep Impact Wellness Tracker - Digital Wellness',
     metaDescription: 'Analyze the relationship between your screen time habits and sleep quality to optimize your digital wellness and improve sleep.'
   },
   {
@@ -3789,11 +3789,11 @@ export const calculators: Calculator[] = [
   },
   {
     id: 190,
-    name: 'Prenatal Vitamin Dosage Calculator',
+    name: 'Prenatal Vitamin Dosage Wellness Tracker',
     description: 'Evaluate key prenatal vitamin doses against common guideline ranges.',
     slug: 'prenatal-vitamin-dosage-calculator',
     category: 'wellness',
-    metaTitle: 'Prenatal Vitamin Dosage Calculator',
+    metaTitle: 'Prenatal Vitamin Dosage Wellness Tracker',
     metaDescription: 'Evaluate folate, iron, and vitamin D amounts relative to common prenatal guidance.'
   },
   {
@@ -3897,20 +3897,20 @@ export const calculators: Calculator[] = [
   },
   {
     id: 202,
-    name: 'PMS Symptom Score Calculator',
+    name: 'PMS Symptom Score Wellness Tracker',
     description: 'Score PMS symptom severity to inform management strategies and care.',
     slug: 'pms-symptom-score-calculator',
     category: 'wellness',
-    metaTitle: 'PMS Symptom Score Calculator',
+    metaTitle: 'PMS Symptom Score Wellness Tracker',
     metaDescription: 'Assess PMS severity via a simple symptom index and get tailored tips.'
   },
   {
     id: 203,
-    name: 'Menopause Symptom Index Calculator',
+    name: 'Menopause Symptom Index Wellness Tracker',
     description: 'Composite symptom index to assess menopause-related symptom burden.',
     slug: 'menopause-symptom-index-calculator',
     category: 'wellness',
-    metaTitle: 'Menopause Symptom Index Calculator',
+    metaTitle: 'Menopause Symptom Index Wellness Tracker',
     metaDescription: 'Evaluate menopausal symptom severity and explore relief strategies.'
   },
   {
