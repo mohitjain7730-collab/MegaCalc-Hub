@@ -17,6 +17,18 @@ export function Footer() {
           >
             Privacy Policy
           </Link>
+          <Link 
+            href="/terms-conditions" 
+            className="transition-colors hover:text-foreground touch-target"
+          >
+            Terms & Conditions
+          </Link>
+          <Link 
+            href="/contact" 
+            className="transition-colors hover:text-foreground touch-target"
+          >
+            Contact
+          </Link>
         </nav>
       </div>
     </footer>
