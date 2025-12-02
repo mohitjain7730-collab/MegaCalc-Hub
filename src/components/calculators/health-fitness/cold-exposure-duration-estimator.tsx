@@ -129,15 +129,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Cold Exposure Duration Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Cold Exposure Wellness Duration Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Cold Exposure Duration Estimator',
+      name: 'Cold Exposure Wellness Duration Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate cold exposure session duration and weekly totals based on water temperature, tolerance, and risk flags.',
+      description:
+        'Get general wellness insights about cold exposure session duration and weekly totals based on water temperature, tolerance, and risk flags. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -158,20 +159,25 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const totalWeeklyMinutes = recommendedMinutesPerSession * sessionsPerWeek;
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Suggested durations appear within conservative ranges for many healthy adults.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where suggested durations may fall within conservative ranges for many healthy adults in this simple model.';
 
   if (cardiovascularRiskFlag) {
     status = 'low';
-    interpretation = 'Cold exposure may be risky with cardiovascular factors present; medical clearance is strongly recommended.';
+    interpretation =
+      'This suggests a general lifestyle tendency where added care is important because of cardiovascular factors. You may wish to talk with a health professional before using cold exposure as part of your routine. This is a personal insight, not a medical evaluation.';
   } else if (totalWeeklyMinutes > 30) {
     status = 'moderate';
-    interpretation = 'Total weekly exposure is on the higher side; monitor carefully and consider reducing frequency or minutes.';
+    interpretation =
+      'This suggests a general lifestyle tendency where total weekly exposure may feel on the higher side. You may consider monitoring how you feel and gently adjusting frequency or minutes if needed.';
   } else if (waterTemperatureC <= 5 && recommendedMinutesPerSession > 5) {
     status = 'moderate';
-    interpretation = 'Very cold water calls for extra caution; consider shorter sessions or warmer temperatures.';
+    interpretation =
+      'This suggests a general lifestyle tendency where very cold water calls for extra caution. Shorter sessions or slightly warmer temperatures may feel more comfortable and sustainable.';
   } else if (totalWeeklyMinutes >= 8 && totalWeeklyMinutes <= 15 && !cardiovascularRiskFlag) {
     status = 'optimal';
-    interpretation = 'Your estimated protocol is broadly consistent with many commonly cited guidelines (e.g., ~11 minutes/week).';
+    interpretation =
+      'This suggests a general lifestyle tendency where your estimated protocol may be broadly similar to commonly discussed guidelines (for example, around 11 minutes per week).';
   }
 
   const recommendations: string[] = [
@@ -229,9 +235,12 @@ export default function ColdExposureDurationEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Cold Exposure Duration Estimator
+            Cold Exposure Wellness Duration Estimator
           </CardTitle>
-          <CardDescription>Estimate safe, conservative cold exposure durations and weekly totals.</CardDescription>
+          <CardDescription>
+            Get general wellness insights about conservative cold exposure durations and weekly totals. This is a
+            personal lifestyle insight, not a medical evaluation.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -552,9 +561,28 @@ export default function ColdExposureDurationEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates cold exposure session durations and weekly totals from temperature, frequency, tolerance, and risk flags.</p>
-          <p>It outputs per-session minutes, weekly minutes, qualitative status, recommendations, an action plan, and extra metrics.</p>
+          <p>
+            This tool provides general wellness insights by estimating cold exposure session durations and weekly totals
+            from temperature, frequency, tolerance, and risk flags. This is a personal lifestyle insight, not a medical
+            evaluation.
+          </p>
+          <p>It outputs per‑session minutes, weekly minutes, qualitative status, recommendations, an action plan, and extra metrics.</p>
           <p>An enhanced guide and FAQs emphasize harm reduction and collaboration with healthcare professionals.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

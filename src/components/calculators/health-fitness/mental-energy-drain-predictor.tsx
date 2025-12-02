@@ -129,15 +129,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Mental Energy Drain Predictor', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Mental Energy Drain Wellness Predictor', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Mental Energy Drain Predictor',
+      name: 'Mental Energy Drain Wellness Predictor',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Predict mental energy drain from meetings, deep work, context switches, and sleep buffer.',
+      description:
+        'Get general wellness insights about mental energy patterns from meetings, deep work, context switches, and sleep buffer. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -161,17 +162,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const bufferCapacityScore = clamp(sleepBuffer + (20 - deepWorkDrain * 0.5), 0, 100);
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Your predicted mental energy drain is within a manageable range for many people.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your predicted mental energy drain may feel broadly manageable for many people with similar patterns.';
 
   if (predictedDrainScore >= 75) {
     status = 'low';
-    interpretation = 'High predicted drain. Your week may feel cognitively exhausting without changes to meetings, context switching, or sleep.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your upcoming week may feel quite mentally full or tiring without some adjustments. You may consider gentle changes to meetings, context switching, or sleep to see what feels better. This is a personal insight, not a medical evaluation.';
   } else if (predictedDrainScore >= 55) {
     status = 'moderate';
-    interpretation = 'Elevated predicted drain. Small adjustments to schedule, focus time, or recovery could make a big difference.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your schedule may feel somewhat draining at times. Small shifts in focus time, breaks, or bedtime may noticeably change how the week feels.';
   } else if (predictedDrainScore < 30 && bufferCapacityScore >= 60) {
     status = 'optimal';
-    interpretation = 'Your workload and recovery appear reasonably balanced for mental energy.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your workload and recovery may feel reasonably balanced for your mental energy right now.';
   }
 
   const recommendations: string[] = [
@@ -233,9 +238,12 @@ export default function MentalEnergyDrainPredictor() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Mental Energy Drain Predictor
+            Mental Energy Drain Wellness Predictor
           </CardTitle>
-          <CardDescription>Predict mental energy drain from your weekly schedule and sleep.</CardDescription>
+          <CardDescription>
+            Get general wellness insights about mental energy drain from your weekly schedule and sleep. This is a
+            personal lifestyle insight, not a medical evaluation.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -555,9 +563,27 @@ export default function MentalEnergyDrainPredictor() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool predicts mental energy drain based on meeting load, deep work hours, context switching, and sleep.</p>
+          <p>
+            This tool provides general wellness insights about mental energy drain based on meeting load, deep work
+            hours, context switching, and sleep. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>It outputs a drain score, buffer capacity score, qualitative status, recommendations, an action plan, and supporting calculations.</p>
           <p>Guide content, formulas, and FAQs make the approach clear for humans and AI assistants working with the data.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

@@ -129,15 +129,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Red Light Therapy Dose Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Red Light Therapy Wellness Dose Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Red Light Therapy Dose Calculator',
+      name: 'Red Light Therapy Wellness Dose Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Plan approximate red light therapy doses (J/cm²) per session based on irradiance, distance, and time.',
+      description:
+        'Get general wellness insights to plan approximate red light therapy doses (J/cm²) per session based on irradiance, distance, and time. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -161,17 +162,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const weeklyDose = targetDose * sessionsPerWeek;
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'The planned dose per session appears within common photobiomodulation ranges for many goals.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your planned dose per session may sit within commonly discussed photobiomodulation ranges for many personal goals.';
 
   if (targetDose < 3) {
     status = 'moderate';
-    interpretation = 'Dose may be on the low side for many applications; effects might be subtle.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your planned dose may be on the gentler side for many applications, so effects might feel subtle. You may treat this as an experiment and adjust slowly if it feels appropriate.';
   } else if (targetDose > 60 || weeklyDose > 300) {
     status = 'low';
-    interpretation = 'Dose appears high relative to many research protocols; consult with a clinician or adjust parameters.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your planned dose may be relatively high compared with many reference protocols. You may consider softening intensity, duration, or frequency and, if you wish, discussing your approach with a professional familiar with light‑based therapies. This is a personal insight, not a medical evaluation.';
   } else if (targetDose >= 5 && targetDose <= 20 && weeklyDose <= 150) {
     status = 'optimal';
-    interpretation = 'Your planned dose and weekly exposure are broadly consistent with many published light therapy ranges.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your planned dose and weekly exposure may be broadly similar to many published light‑therapy ranges in educational examples.';
   }
 
   const recommendations: string[] = [
@@ -229,9 +234,12 @@ export default function RedLightTherapyDoseCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Red Light Therapy Dose Calculator
+            Red Light Therapy Wellness Dose Estimator
           </CardTitle>
-          <CardDescription>Plan approximate session durations and weekly doses for red/near-infrared light therapy.</CardDescription>
+          <CardDescription>
+            Get general wellness insights to plan approximate session durations and weekly doses for red/near‑infrared
+            light therapy. This is a personal lifestyle insight, not a medical evaluation.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -555,9 +563,27 @@ export default function RedLightTherapyDoseCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator estimates red light therapy session times and weekly doses from device specs and user settings.</p>
+          <p>
+            This calculator provides general wellness insights by estimating red light therapy session times and weekly
+            doses from device specs and user settings. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>It outputs recommended minutes, weekly dose, qualitative status, recommendations, an action plan, and extra technical metrics.</p>
-          <p>An extended guide and FAQs clarify how to interpret dose estimates in real-world use.</p>
+          <p>An extended guide and FAQs clarify how to interpret dose estimates in real‑world use.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

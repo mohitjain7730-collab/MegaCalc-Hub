@@ -129,15 +129,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Biological Age Calculator (Epigenetic-Based Proxy)', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Biological Age (Lifestyle Proxy) Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Biological Age Calculator (Epigenetic-Based Proxy)',
+      name: 'Biological Age (Lifestyle Proxy) Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate a proxy for biological age using resting heart rate, waist-to-height ratio, lifestyle score, and chronological age.',
+      description:
+        'Get general wellness insights from a proxy for biological age using resting heart rate, waist-to-height ratio, lifestyle score, and chronological age. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -160,17 +161,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const deltaAge = Number((biologicalAge - chronologicalAge).toFixed(1));
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Your proxy biological age is close to your chronological age, suggesting an average aging pattern.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your proxy biological age may be close to your chronological age, suggesting an average aging pattern in this simple model.';
 
   if (deltaAge <= -5) {
     status = 'optimal';
-    interpretation = 'Your indicators suggest a younger biological profile relative to your chronological age.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your indicators may point to a younger biological profile relative to your chronological age.';
   } else if (deltaAge >= 5 && deltaAge < 10) {
     status = 'moderate';
-    interpretation = 'Your proxy biological age trends older than your chronological age; targeted lifestyle changes may help.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your proxy biological age may trend a bit older than your chronological age; gentle lifestyle shifts may help nudge the pattern over time if that feels meaningful to you.';
   } else if (deltaAge >= 10) {
     status = 'low';
-    interpretation = 'Your markers point to substantially accelerated biological aging. Medical evaluation and lifestyle optimization are strongly recommended.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your markers in this simple proxy may lean toward an older biological profile. You may consider talking with a health professional and exploring supportive lifestyle adjustments at a comfortable pace. This is a personal insight, not a medical evaluation.';
   }
 
   const recommendations: string[] = [
@@ -232,9 +237,12 @@ export default function BiologicalAgeCalculatorEpigeneticProxy() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Biological Age Calculator (Epigenetic-Based Proxy)
+            Biological Age (Lifestyle Proxy) Wellness Estimator
           </CardTitle>
-          <CardDescription>Estimate a proxy for biological age using simple cardiovascular and lifestyle markers.</CardDescription>
+          <CardDescription>
+            Get general wellness insights from a proxy for biological age using simple cardiovascular and lifestyle
+            markers. This is a personal lifestyle insight, not a medical evaluation.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -561,9 +569,28 @@ export default function BiologicalAgeCalculatorEpigeneticProxy() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator estimates a proxy for biological age using resting heart rate, waist-to-height ratio, lifestyle score, and chronological age.</p>
+          <p>
+            This calculator provides general wellness insights from a proxy for biological age using resting heart rate,
+            waist‑to‑height ratio, lifestyle score, and chronological age. This is a personal lifestyle insight, not a
+            medical evaluation.
+          </p>
           <p>It outputs estimated biological age, delta age, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Expanded guide content, formulas, related calculators, and FAQs make the method easy to interpret for humans and AI assistants.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

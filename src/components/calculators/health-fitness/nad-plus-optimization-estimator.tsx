@@ -129,15 +129,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'NAD+ Optimization Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'NAD+ Support Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'NAD+ Optimization Estimator',
+      name: 'NAD+ Support Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate how supportive your habits and supplementation may be for NAD+ biology.',
+      description:
+        'Get general wellness insights about how supportive your habits and supplementation may be for NAD+ biology. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -159,17 +160,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const nadSupportScore = clamp((lifestyleContribution * (1 - agePenalty * 0.3) + supplementFactor * 20), 0, 100);
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Your current routine offers a reasonable level of NAD+-supportive behavior in this heuristic model.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your current routine may offer a reasonable level of NAD+‑supportive behavior in this heuristic model.';
 
   if (nadSupportScore >= 80) {
     status = 'optimal';
-    interpretation = 'You report strong NAD+-supportive patterns. Focus on safety, monitoring, and sustainability.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may have many NAD+‑supportive patterns in place. You may consider focusing on safety, monitoring, and sustainability with any strategies you choose. This is a personal insight, not a medical evaluation.';
   } else if (nadSupportScore < 50) {
     status = 'moderate';
-    interpretation = 'There is room to strengthen basic NAD+-related lifestyle pillars before considering aggressive supplementation.';
+    interpretation =
+      'This suggests a general lifestyle tendency where there may be room to gently strengthen NAD+‑related lifestyle pillars—such as movement, recovery, or nutrition—before adding more intensive approaches.';
   } else if (nadSupportScore < 35) {
     status = 'low';
-    interpretation = 'NAD+-supportive signals appear weak. Improving fundamentals like movement and metabolic health may have high payoff.';
+    interpretation =
+      'This suggests a general lifestyle tendency where NAD+‑supportive signals in this simple model may appear softer. Improving fundamentals like movement, rest, and metabolic health may feel like meaningful next steps over time.';
   }
 
   const recommendations: string[] = [
@@ -231,9 +236,12 @@ export default function NadPlusOptimizationEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            NAD+ Optimization Estimator
+            NAD+ Support Wellness Estimator
           </CardTitle>
-          <CardDescription>Estimate how NAD+-supportive your current lifestyle and supplement strategy may be.</CardDescription>
+          <CardDescription>
+            Get general wellness insights about how NAD+‑supportive your current lifestyle and supplement strategy may
+            be. This is a personal lifestyle insight, not a medical evaluation.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -544,9 +552,27 @@ export default function NadPlusOptimizationEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This estimator scores how NAD+-supportive your current lifestyle and supplement patterns may be.</p>
+          <p>
+            This estimator provides general wellness insights about how NAD+‑supportive your current lifestyle and
+            supplement patterns may be. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include a NAD+ support score, lifestyle contribution index, qualitative status, recommendations, an action plan, and supporting metrics.</p>
           <p>An expanded guide and FAQs clarify scope and limitations so results are used responsibly by humans and AI assistants.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

@@ -129,15 +129,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Longevity Score Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Longevity Wellness Score Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Longevity Score Estimator',
+      name: 'Longevity Wellness Score Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate a longevity-oriented lifestyle score from movement, diet, sleep, and harmful habit inputs.',
+      description:
+        'Get general wellness insights from a longevity‑oriented lifestyle score based on movement, diet, sleep, and habit patterns. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -158,17 +159,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const longevityScore = clamp(protectiveFactorScore - harmPenalty + 15, 0, 100); // base offset to avoid very low values for modest lifestyles
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Your longevity score suggests a reasonably supportive lifestyle with room for refinement.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your longevity‑oriented score may reflect a reasonably supportive pattern with room for gentle refinement.';
 
   if (longevityScore >= 80) {
     status = 'optimal';
-    interpretation = 'You report strong longevity-supportive habits across several domains.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may already lean into many longevity‑supportive habits across several domains.';
   } else if (longevityScore < 50) {
     status = 'moderate';
-    interpretation = 'Lifestyle patterns may be increasing long-term risk; focusing on one or two levers could meaningfully improve outlook.';
+    interpretation =
+      'This suggests a general lifestyle tendency where some patterns may feel less aligned with long‑term wellness. Focusing on one or two simple levers could gradually support how you feel over time.';
   } else if (longevityScore < 35) {
     status = 'low';
-    interpretation = 'Several longevity pillars appear weak or offset by harmful habits. Changes here may have high payoff for healthspan.';
+    interpretation =
+      'This suggests a general lifestyle tendency where several longevity pillars may feel softer or offset by certain habits. Gentle, realistic changes here may have meaningful payoff for how your healthspan feels. This is a personal insight, not a medical evaluation.';
   }
 
   const recommendations: string[] = [
@@ -230,9 +235,12 @@ export default function LongevityScoreEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Longevity Score Estimator
+            Longevity Wellness Score Estimator
           </CardTitle>
-          <CardDescription>Estimate how longevity-supportive your current lifestyle appears.</CardDescription>
+          <CardDescription>
+            Get general wellness insights about how longevity‑supportive your current lifestyle may appear. This is a
+            personal lifestyle insight, not a medical evaluation.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -553,9 +561,27 @@ export default function LongevityScoreEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool converts movement, diet, sleep, and harmful habit patterns into a simple longevity-oriented lifestyle score.</p>
+          <p>
+            This tool provides general wellness insights by converting movement, diet, sleep, and habit patterns into a
+            simple longevity‑oriented lifestyle score. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>It provides a longevity score, protective factor score, qualitative status, recommendations, an action plan, and extra metrics.</p>
           <p>An expanded guide explains concepts so humans and AI assistants can interpret and act on the results responsibly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

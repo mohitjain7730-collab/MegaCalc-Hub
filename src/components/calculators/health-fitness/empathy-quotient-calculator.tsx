@@ -129,15 +129,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Empathy Quotient Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Empathy Wellness Quotient Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Empathy Quotient Calculator',
+      name: 'Empathy Wellness Quotient Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate empathy tendencies from cognitive empathy, emotional empathy, perspective taking, and boundary clarity.',
+      description:
+        'Get general wellness insights about empathy tendencies from cognitive empathy, emotional empathy, perspective taking, and boundary clarity. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -156,17 +157,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const balanceIndex = clamp(100 - imbalance * 7, 0, 100);
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'You show a generally healthy empathy profile with reasonable balance.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where you may show a broadly balanced empathy profile with a mix of understanding, feeling, and boundaries.';
 
   if (empathyQuotient < 30) {
     status = 'low';
-    interpretation = 'Self-reported empathy is on the lower side. You may rely more on structure or logic than emotional attunement.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your self‑reported empathy may feel more structured or logic‑based than emotionally attuned. You may consider gentle perspective‑taking or listening practices if you wish to explore this area. This is a personal insight, not a medical evaluation.';
   } else if (empathyQuotient >= 70 && balanceIndex < 50) {
     status = 'moderate';
-    interpretation = 'Empathy appears high but boundaries may be weaker, which can increase risk of emotional fatigue.';
+    interpretation =
+      'This suggests a general lifestyle tendency where empathy may feel strong while boundaries sometimes feel softer. You may notice feeling more emotionally tired at times, and gentle boundary skills could help your empathy feel more sustainable.';
   } else if (empathyQuotient >= 70 && balanceIndex >= 70) {
     status = 'optimal';
-    interpretation = 'You report high empathy with relatively strong boundaries—a combination that tends to support sustainable care.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may experience high empathy with relatively clear boundaries—a mix that can support caring in a way that also protects your energy.';
   }
 
   const recommendations: string[] = [
@@ -224,9 +229,12 @@ export default function EmpathyQuotientCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Empathy Quotient Calculator
+            Empathy Wellness Quotient Calculator
           </CardTitle>
-          <CardDescription>Estimate your empathy style and boundary balance.</CardDescription>
+          <CardDescription>
+            Get general wellness insights about your empathy style and boundary balance. This is a personal lifestyle
+            insight, not a medical evaluation.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -546,9 +554,27 @@ export default function EmpathyQuotientCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates empathy style and boundary balance using four simple self-ratings.</p>
+          <p>
+            This tool provides general wellness insights about empathy style and boundary balance using four simple
+            self‑ratings. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include an empathy quotient, balance index, qualitative status, recommendations, an action plan, and supporting metrics.</p>
           <p>Guide content and FAQs explain the concepts so humans and AI assistants can interpret the scores safely.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

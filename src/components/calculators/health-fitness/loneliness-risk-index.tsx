@@ -129,15 +129,16 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Loneliness Risk Index', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Loneliness Tendency Wellness Index', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Loneliness Risk Index',
+      name: 'Loneliness Tendency Wellness Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate loneliness risk from meaningful interactions, belonging, time alone, and digital vs in-person connection.',
+      description:
+        'Get general wellness insights about loneliness tendency from meaningful interactions, belonging, time alone, and digital vs in-person connection. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -167,17 +168,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   );
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Your responses suggest a manageable level of loneliness risk with several protective factors present.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your current connection patterns and sense of belonging may feel reasonably supportive, with several protective factors present.';
 
   if (lonelinessRiskScore >= 70) {
     status = 'low';
-    interpretation = 'High loneliness risk detected. You may feel disconnected or unsupported day to day.';
+    interpretation =
+      'This suggests a general lifestyle tendency where feelings of disconnection or limited support may show up more often in daily life. You may consider small, gentle steps toward more regular or deeper connection. This is a personal insight, not a medical evaluation.';
   } else if (lonelinessRiskScore >= 50) {
     status = 'moderate';
-    interpretation = 'There are signs of elevated loneliness risk, though you may also have meaningful connections to build on.';
+    interpretation =
+      'This suggests a general lifestyle tendency where there may be some signs of loneliness, while also having meaningful connections to build on. You may consider nurturing a few existing relationships or adding small connection rituals.';
   } else if (lonelinessRiskScore < 30) {
     status = 'optimal';
-    interpretation = 'Your connection patterns and sense of belonging appear strongly protective against loneliness.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your connection patterns and sense of belonging may feel quite supportive against feelings of loneliness.';
   }
 
   const recommendations: string[] = [
@@ -237,11 +242,14 @@ export default function LonelinessRiskIndex() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Activity className="h-5 w-5" />
-            Loneliness Risk Index
-          </CardTitle>
-          <CardDescription>Estimate your current loneliness risk from connection patterns and belonging.</CardDescription>
+            <CardTitle className="flex items-center gap-2">
+              <Activity className="h-5 w-5" />
+              Loneliness Tendency Wellness Index
+            </CardTitle>
+          <CardDescription>
+            Get general wellness insights about loneliness tendency from connection patterns and belonging. This is a
+            personal lifestyle insight, not a medical evaluation.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -561,9 +569,27 @@ export default function LonelinessRiskIndex() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator estimates loneliness risk and protective factors using a few simple social health inputs.</p>
-          <p>It outputs a loneliness risk score, protection score, qualitative status, recommendations, an action plan, and supporting metrics.</p>
+          <p>
+            This calculator provides general wellness insights about loneliness tendency and protective factors using a
+            few simple social health inputs. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
+          <p>It outputs a loneliness tendency score, protection score, qualitative status, recommendations, an action plan, and supporting metrics.</p>
           <p>Guide content, formulas, and FAQs make its reasoning transparent to both humans and AI assistants.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>
