@@ -8,6 +8,7 @@ import { categories } from '@/lib/categories';
 import { CategoryIcon } from '@/components/category-icon';
 import { calculators } from '@/lib/calculators';
 import { CategorySearch } from '@/components/category-search';
+import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { generateCategorySchema } from '@/lib/schema-generator';
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -23,14 +24,16 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   );
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateCategorySchema(category, categoryCalculators))
-        }}
-      />
-      <div className="w-full max-w-4xl">
+    <>
+      <CalculatorSidebar currentCategorySlug={category.slug} />
+      <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8 lg:pl-64">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateCategorySchema(category, categoryCalculators))
+          }}
+        />
+        <div className="w-full max-w-4xl">
         <div className="mb-8">
           <Button asChild variant="ghost" className='mb-4'>
             <Link href="/">
@@ -55,7 +58,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           categorySlug={category.slug}
         />
 
+        </div>
       </div>
-    </div>
+    </>
   );
 }

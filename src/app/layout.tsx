@@ -10,6 +10,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { AnalyticsProvider } from '@/components/analytics-provider';
+import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: 'Mycalculating.com',
@@ -65,11 +66,16 @@ export default function RootLayout({
                 </div>
               </div>
             </header>
-            <Suspense>
-              <AnalyticsProvider>
-                {children}
-              </AnalyticsProvider>
-            </Suspense>
+            <div className="flex flex-col min-h-screen">
+              <div className="flex-1">
+                <Suspense>
+                  <AnalyticsProvider>
+                    {children}
+                  </AnalyticsProvider>
+                </Suspense>
+              </div>
+              <Footer />
+            </div>
             <Toaster />
           </ThemeProvider>
         </FirebaseClientProvider>
