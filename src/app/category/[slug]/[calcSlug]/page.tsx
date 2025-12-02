@@ -15,9 +15,15 @@ import { EmbedWidget } from '@/components/embed-widget';
 import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { CalculatorLoading } from '@/components/calculator-loading';
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from '@/lib/schema-generator';
+import { DeferredSchema } from '@/components/deferred-schema';
+import { CalculatorWrapper } from '@/components/calculator-wrapper';
 
+// Optimize dynamic imports with ssr: false and loading strategy
 const calculatorComponents: { [key: string]: React.ComponentType } = {
-    'sip-calculator': dynamic(() => import('@/components/calculators/finance/sip-calculator')),
+    'sip-calculator': dynamic(() => import('@/components/calculators/finance/sip-calculator'), { 
+      ssr: false,
+      loading: () => <CalculatorLoading />
+    }),
     'loan-emi-calculator': dynamic(() => import('@/components/calculators/finance/loan-emi-calculator')),
     'retirement-savings-calculator': dynamic(() => import('@/components/calculators/finance/retirement-savings-calculator')),
     'compound-interest-calculator': dynamic(() => import('@/components/calculators/finance/compound-interest-calculator')),
@@ -1015,6 +1021,17 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'free-cash-flow-to-equity-calculator': dynamic(() => import('@/components/calculators/finance/free-cash-flow-to-equity-calculator')),
 };
 
+// Enable static generation for calculator pages to improve LCP
+export async function generateStaticParams() {
+  return calculators.map((calc) => ({
+    slug: calc.category,
+    calcSlug: calc.slug,
+  }));
+}
+
+// Revalidate every hour for fresh content
+export const revalidate = 3600;
+
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {
   const { slug, calcSlug } = await params;
   const category = categories.find((c) => c.slug === slug);
@@ -1025,31 +1042,21 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
   }
 
   const componentKey = `${category.slug}/${calculator.slug}`;
-  const CalculatorComponent = calculatorComponents[componentKey] || calculatorComponents[calculator.slug] || null;
+  const finalComponentKey = calculatorComponents[componentKey] ? componentKey : calculator.slug;
+
+  // Generate schemas once
+  const calculatorSchema = generateCalculatorSchema(calculator, category);
+  const faqSchema = generateFAQSchema(calculator);
+  const howToSchema = generateHowToSchema(calculator);
 
   return (
     <>
+      <DeferredSchema schema={calculatorSchema} id="calculator-schema" />
+      <DeferredSchema schema={faqSchema} id="faq-schema" />
+      <DeferredSchema schema={howToSchema} id="howto-schema" />
       <CalculatorSidebar currentCategorySlug={category.slug} />
       <div className="flex flex-col items-center min-h-screen bg-secondary/50 p-4 sm:p-6 lg:pl-64">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateCalculatorSchema(calculator, category))
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateFAQSchema(calculator))
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateHowToSchema(calculator))
-          }}
-        />
-        <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1">
+        <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate>
         <div className="mb-8">
           <Button asChild variant="ghost" className="mb-4">
             <Link href={`/category/${category.slug}`}>
@@ -1068,11 +1075,8 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
           </div>
         </div>
 
-        {CalculatorComponent ? (
-          <>
-            <Suspense fallback={<CalculatorLoading />}>
-              <CalculatorComponent />
-            </Suspense>
+        {calculatorComponents[finalComponentKey] ? (
+          <CalculatorWrapper componentKey={finalComponentKey} calculatorComponents={calculatorComponents} />
             
             {/* Embed Widget Section */}
             <EmbedWidget categorySlug={category.slug} calculatorSlug={calculator.slug} />

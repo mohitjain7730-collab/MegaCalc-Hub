@@ -1,5 +1,9 @@
 import type {NextConfig} from 'next';
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
@@ -12,10 +16,36 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
+  // swcMinify is default in Next.js 15, removed deprecated option
   // Optimize bundle size
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: [
+      'lucide-react',
+      '@radix-ui/react-icons',
+      '@radix-ui/react-accordion',
+      '@radix-ui/react-alert-dialog',
+      '@radix-ui/react-avatar',
+      '@radix-ui/react-checkbox',
+      '@radix-ui/react-collapsible',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-label',
+      '@radix-ui/react-menubar',
+      '@radix-ui/react-popover',
+      '@radix-ui/react-progress',
+      '@radix-ui/react-radio-group',
+      '@radix-ui/react-scroll-area',
+      '@radix-ui/react-select',
+      '@radix-ui/react-separator',
+      '@radix-ui/react-slider',
+      '@radix-ui/react-slot',
+      '@radix-ui/react-switch',
+      '@radix-ui/react-tabs',
+      '@radix-ui/react-toast',
+      '@radix-ui/react-tooltip',
+      'recharts',
+      'date-fns',
+    ],
   },
   // Compiler optimizations
   compiler: {
@@ -45,17 +75,34 @@ const nextConfig: NextConfig = {
     if (!isServer) {
       config.optimization = {
         ...config.optimization,
+        usedExports: true, // Enable tree shaking
+        sideEffects: false, // Assume no side effects for better tree shaking
+        moduleIds: 'deterministic', // Better caching
+        chunkIds: 'deterministic', // Better caching
         splitChunks: {
           chunks: 'all',
+          minSize: 20000,
+          maxSize: 150000, // Further reduced for better parallel loading and TBT
+          maxAsyncRequests: 30, // Limit concurrent async chunks
+          maxInitialRequests: 25, // Limit initial chunks
           cacheGroups: {
             default: false,
             vendors: false,
-            // Vendor chunk for large libraries
-            vendor: {
-              name: 'vendor',
+            // Firebase chunk (large library)
+            firebase: {
+              name: 'firebase',
+              test: /[\\/]node_modules[\\/]firebase[\\/]/,
               chunks: 'all',
-              test: /node_modules/,
-              priority: 20,
+              priority: 40,
+              enforce: true,
+            },
+            // Recharts chunk (large charting library)
+            recharts: {
+              name: 'recharts',
+              test: /[\\/]node_modules[\\/]recharts[\\/]/,
+              chunks: 'all',
+              priority: 35,
+              enforce: true,
             },
             // Separate chunk for lucide-react
             lucide: {
@@ -70,6 +117,14 @@ const nextConfig: NextConfig = {
               test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
               chunks: 'all',
               priority: 30,
+            },
+            // Vendor chunk for other large libraries
+            vendor: {
+              name: 'vendor',
+              chunks: 'all',
+              test: /[\\/]node_modules[\\/]/,
+              priority: 20,
+              minChunks: 2,
             },
             // Common chunk
             common: {
@@ -107,10 +162,56 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60,
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    minimumCacheTTL: 31536000, // 1 year cache
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    unoptimized: false,
   },
+  // Add cache headers and compression for static assets
+  async headers() {
+    return [
+      {
+        // Static assets (JS, CSS)
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+        ],
+      },
+      {
+        // Fonts
+        source: '/_next/static/media/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Images
+        source: '/_next/image',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+  // Output optimization
+  output: 'standalone',
+  // Production source maps disabled for smaller bundle
+  productionBrowserSourceMaps: false,
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

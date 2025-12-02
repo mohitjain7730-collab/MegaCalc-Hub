@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font family now handled by Next.js font optimization */
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  /* Font family set via className in layout.tsx */
 }
 
 @layer base {

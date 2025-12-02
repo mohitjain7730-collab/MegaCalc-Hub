@@ -20,16 +20,25 @@ export function AnalyticsProvider({children}: {children: React.ReactNode}) {
       if (url !== lastPathRef.current) {
         lastPathRef.current = url;
         
-        // Use requestIdleCallback for non-critical analytics
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(() => {
-            logEvent(analytics, 'page_view', { page_path: url });
-          }, { timeout: 2000 });
+        // Defer analytics even more aggressively to reduce TBT
+        // Wait for page to be fully interactive
+        const logAnalytics = () => {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+              logEvent(analytics, 'page_view', { page_path: url });
+            }, { timeout: 5000 });
+          } else {
+            setTimeout(() => {
+              logEvent(analytics, 'page_view', { page_path: url });
+            }, 2000);
+          }
+        };
+
+        // Wait for page load and then defer
+        if (document.readyState === 'complete') {
+          logAnalytics();
         } else {
-          // Fallback for browsers without requestIdleCallback
-          setTimeout(() => {
-            logEvent(analytics, 'page_view', { page_path: url });
-          }, 100);
+          window.addEventListener('load', logAnalytics, { once: true });
         }
       }
     }

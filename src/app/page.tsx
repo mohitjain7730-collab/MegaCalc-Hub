@@ -7,16 +7,14 @@ import { Search } from 'lucide-react';
 import { search } from '@/app/actions';
 import { Input } from '@/components/ui/input';
 import { generateWebsiteSchema } from '@/lib/schema-generator';
+import { DeferredSchema } from '@/components/deferred-schema';
 
 export default function Home() {
+  const schema = generateWebsiteSchema();
+  
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateWebsiteSchema())
-        }}
-      />
+      <DeferredSchema schema={schema} id="website-schema" />
       <main className="flex-1">
         <section className="relative w-full py-12 sm:py-16 md:py-24 lg:py-32 hero-pattern">
            <div className="container mx-auto text-center px-4 sm:px-6">
