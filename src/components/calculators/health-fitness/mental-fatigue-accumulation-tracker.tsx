@@ -186,7 +186,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (fatigueScore >= 75) {
     status = 'low';
     interpretation =
-      'This suggests a general lifestyle tendency where your mental fatigue accumulation may appear high. Sustained heavy load with limited recovery and/or sleep debt may be leaving you mentally exhausted by day's end. You may consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
+      'This suggests a general lifestyle tendency where your mental fatigue accumulation may appear high. Sustained heavy load with limited recovery and/or sleep debt may be leaving you mentally exhausted by the end of the day. You may consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (fatigueScore >= 55) {
     status = 'moderate';
     interpretation =
