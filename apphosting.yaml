@@ -19,4 +19,4 @@ build:
     - name: build
       inputArtifactId: app-source
       commands:
-        - npm run build
+        - NODE_OPTIONS=--max-old-space-size=6144 npm run build
