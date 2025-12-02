@@ -2707,15 +2707,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate sedentary risk at work and get personalized movement, step, and ergonomic recommendations.'
   },
   {
-    id: 3216,
-    name: 'Mental Fatigue Index Calculator',
-    description: 'Score daily cognitive fatigue using deep work, context switches, sleep, hydration, and breaks.',
-    slug: 'mental-fatigue-index-calculator',
-    category: 'wellness',
-    metaTitle: 'Mental Fatigue Index Calculator - Daily Cognitive Load',
-    metaDescription: 'Estimate mental fatigue, focus stability, and recovery gaps with actionable rest strategies based on workload inputs.'
-  },
-  {
     id: 3217,
     name: 'Cognitive Focus Efficiency Calculator',
     description: 'Compare planned vs completed tasks with flow time and distractions to gauge focus quality.',

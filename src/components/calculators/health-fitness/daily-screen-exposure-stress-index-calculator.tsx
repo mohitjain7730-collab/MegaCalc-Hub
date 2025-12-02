@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Smartphone, ActivitySquare, BellRing, Brain, ShieldCheck } from 'lucide-react';
+import { Activity, Zap, Target, AlertTriangle, Shield, Smartphone } from 'lucide-react';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -271,53 +271,67 @@ export default function DailyScreenExposureStressIndexCalculator() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <ActivitySquare className="h-5 w-5 text-primary" />
-              Interactive result & interpretation
+              <Zap className="h-5 w-5 text-primary" />
+              Interactive results
             </CardTitle>
-            <CardDescription>Review your screen‑time pattern and remaining attention space for the day.</CardDescription>
+            <CardDescription>See stress index, total screen time, attention budget, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Stress index</p>
+                <p className="text-sm text-muted-foreground">Stress Index</p>
                 <p className="text-2xl font-semibold text-primary">{result.stressIndex}</p>
-                <p className="text-xs text-muted-foreground">Rough pattern: 0–34 steady · 35–69 strained · 70+ very full</p>
+                <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Total screen time</p>
-                <p className="text-2xl font-semibold text-primary">{result.totalScreen.toFixed(1)} hrs</p>
-                <p className="text-xs text-muted-foreground">Use this number as a reflection point, not a strict target.</p>
+                <p className="text-sm text-muted-foreground">Total Screen</p>
+                <p className="text-2xl font-semibold text-primary">{result.totalScreen.toFixed(1)}</p>
+                <p className="text-xs text-muted-foreground">Hours</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Attention budget left</p>
-                <p className="text-2xl font-semibold text-primary">{result.attentionBudget} min</p>
-                <p className="text-xs text-muted-foreground">Reinvest this into recovery rituals.</p>
+                <p className="text-sm text-muted-foreground">Attention Budget</p>
+                <p className="text-2xl font-semibold text-primary">{result.attentionBudget}</p>
+                <p className="text-xs text-muted-foreground">Minutes remaining</p>
               </div>
-            </div>
-            <div className="rounded border p-4 bg-muted/50">
-              <p className="text-sm uppercase tracking-wide text-muted-foreground mb-1">Status</p>
-              <p className="text-lg font-semibold capitalize">{result.status}</p>
-              <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Status</p>
+                <p className="text-2xl font-semibold text-primary capitalize">{result.status}</p>
+                <p className="text-xs text-muted-foreground">{result.interpretation}</p>
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border rounded">
-                <h4 className="font-semibold mb-2">Recommendations</h4>
-                <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
-                  {result.recommendations.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-4 border rounded">
-                <h4 className="font-semibold mb-2">Action plan</h4>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  {result.plan.map((item) => (
-                    <li key={item.label}>
-                      <span className="font-semibold">{item.label}:</span> {item.detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Target className="h-4 w-4" />
+                    Recommendations
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
+                    {result.recommendations.map((rec) => (
+                      <li key={rec}>{rec}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <AlertTriangle className="h-4 w-4" />
+                    Action plan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    {result.plan.map((step) => (
+                      <li key={step.label}>
+                        <span className="font-semibold">{step.label}:</span> {step.detail}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </CardContent>
         </Card>
@@ -326,18 +340,23 @@ export default function DailyScreenExposureStressIndexCalculator() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BellRing className="h-5 w-5" />
+            <Shield className="h-5 w-5" />
             Formula
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
+        <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Stress Index</strong> = clamp( workHours + personalHours ) × 7 + notifications × 0.15 + meetings × 6 − micro-breaks × 12
+            <strong>Stress Index</strong> = clamp((Work Hours + Personal Hours) × 7 + Notifications × 0.15 + Meeting Hours × 6 −
+            Micro-breaks × 12, 0, 100). Higher screen time, notifications, and meetings increase stress; micro-breaks reduce it.
           </p>
           <p>
-            <strong>Attention Budget</strong> = 480 − totalScreen × 18 − notifications × 0.4 + micro-breaks × 10
+            <strong>Attention Budget</strong> = clamp(480 − Total Screen Hours × 18 − Notifications × 0.4 + Micro-breaks × 10, 0,
+            480). This represents remaining mental capacity for focused work or recovery.
           </p>
-          <p>Both metrics are clamped to realistic ranges so you can observe progress as habits evolve.</p>
+          <p>
+            Both metrics are normalized to realistic ranges (0-100 for stress index, 0-480 minutes for attention budget) to
+            provide meaningful comparisons and track progress as habits evolve.
+          </p>
         </CardContent>
       </Card>
 
@@ -410,16 +429,305 @@ export default function DailyScreenExposureStressIndexCalculator() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
+          <CardTitle>Detailed Guide</CardTitle>
+          <CardDescription>
+            Comprehensive guide to screen exposure stress, digital overload, and strategies for digital wellness
+          </CardDescription>
         </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>
-            Chronic screen overload compounds stress, muscular tension, and sleep disruption. Tracking it with a simple index helps
-            you set boundaries proactively instead of reacting to burnout.
+        <CardContent className="space-y-6 text-muted-foreground leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
+            The Definitive Guide to Screen Exposure and Digital Stress: Managing Screen Time, Notifications, and Digital Overload
+          </h2>
+          <p className="text-lg italic text-gray-700">
+            Explore the science of screen exposure stress, learn how digital overload affects well-being, understand factors
+            contributing to digital stress, and discover comprehensive strategies to manage screen time, notifications, and support
+            mental health in the digital age.
           </p>
+
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-blue-600">
+            <li>
+              <a href="#understanding-digital-stress" className="hover:underline">
+                Understanding Digital Stress and Screen Exposure
+              </a>
+            </li>
+            <li>
+              <a href="#screen-time-effects" className="hover:underline">
+                Effects of Excessive Screen Time on Well-Being
+              </a>
+            </li>
+            <li>
+              <a href="#notification-overload" className="hover:underline">
+                Notification Overload and Attention Fragmentation
+              </a>
+            </li>
+            <li>
+              <a href="#meeting-fatigue" className="hover:underline">
+                Meeting Fatigue and Video Call Exhaustion
+              </a>
+            </li>
+            <li>
+              <a href="#reduction-strategies" className="hover:underline">
+                Comprehensive Strategies to Reduce Screen Exposure Stress
+              </a>
+            </li>
+          </ul>
+          <hr />
+
+          {/* UNDERSTANDING DIGITAL STRESS */}
+          <h2 id="understanding-digital-stress" className="text-2xl font-bold text-foreground pt-8">
+            Understanding Digital Stress and Screen Exposure
+          </h2>
           <p>
-            Start with the easiest lever—notifications, meetings, or break cadence—and iterate each week. Pair the calculator with
-            bedtime audits to see how digital hygiene improves recovery.
+            Digital stress refers to the psychological and physiological strain caused by excessive screen time, constant
+            notifications, information overload, and the always-on nature of digital technology. As screen time has increased
+            dramatically in recent years, understanding and managing digital stress has become essential for mental and physical
+            well-being.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Components of Digital Stress</h3>
+          <p>
+            Digital stress encompasses multiple factors:
+          </p>
+          <ul>
+            <li>
+              <b>Screen time duration:</b> Total hours spent looking at screens (work, personal, entertainment)
+            </li>
+            <li>
+              <b>Notification load:</b> Frequency and volume of alerts, messages, and interruptions
+            </li>
+            <li>
+              <b>Meeting density:</b> Time spent in video calls or synchronous digital interactions
+            </li>
+            <li>
+              <b>Attention fragmentation:</b> Constant switching between tasks, apps, and information streams
+            </li>
+            <li>
+              <b>Lack of breaks:</b> Insufficient recovery time away from screens
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Why Digital Stress Matters</h3>
+          <p>
+            Chronic digital stress can lead to:
+          </p>
+          <ul>
+            <li>Mental fatigue and cognitive overload</li>
+            <li>Increased anxiety and stress levels</li>
+            <li>Sleep disruption and circadian rhythm issues</li>
+            <li>Eye strain and physical discomfort</li>
+            <li>Reduced productivity and focus</li>
+            <li>Social isolation despite constant connectivity</li>
+          </ul>
+
+          <hr />
+
+          {/* SCREEN TIME EFFECTS */}
+          <h2 id="screen-time-effects" className="text-2xl font-bold text-foreground pt-8">
+            Effects of Excessive Screen Time on Well-Being
+          </h2>
+          <p>
+            Excessive screen time affects multiple aspects of physical and mental health, creating cumulative stress over time.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Physical Effects</h3>
+          <ul>
+            <li>
+              <b>Eye strain:</b> Digital eye strain (computer vision syndrome) causes dry eyes, blurred vision, headaches
+            </li>
+            <li>
+              <b>Posture problems:</b> Prolonged screen use leads to neck, shoulder, and back pain
+            </li>
+            <li>
+              <b>Sleep disruption:</b> Blue light exposure suppresses melatonin and delays sleep
+            </li>
+            <li>
+              <b>Sedentary behavior:</b> Extended screen time reduces physical activity
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Mental and Emotional Effects</h3>
+          <ul>
+            <li>
+              <b>Cognitive overload:</b> Information overload overwhelms working memory and decision-making
+            </li>
+            <li>
+              <b>Attention deficits:</b> Constant switching reduces sustained attention and deep focus
+            </li>
+            <li>
+              <b>Anxiety and stress:</b> Always-on culture creates pressure to respond immediately
+            </li>
+            <li>
+              <b>Social comparison:</b> Social media exposure can increase anxiety and reduce self-esteem
+            </li>
+          </ul>
+
+          <hr />
+
+          {/* NOTIFICATION OVERLOAD */}
+          <h2 id="notification-overload" className="text-2xl font-bold text-foreground pt-8">
+            Notification Overload and Attention Fragmentation
+          </h2>
+          <p>
+            Notifications are designed to capture attention, but excessive notifications fragment focus and create constant
+            interruption stress.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">How Notifications Affect Focus</h3>
+          <p>
+            Each notification:
+          </p>
+          <ul>
+            <li>Interrupts current task and breaks flow state</li>
+            <li>Requires mental effort to refocus after interruption</li>
+            <li>Creates decision fatigue (should I respond now or later?)</li>
+            <li>Triggers stress response (fight-or-flight activation)</li>
+            <li>Reduces productivity and increases errors</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Cost of Multitasking</h3>
+          <p>
+            Constant notifications encourage multitasking, which research shows:
+          </p>
+          <ul>
+            <li>Reduces efficiency by up to 40%</li>
+            <li>Increases errors and mistakes</li>
+            <li>Impairs memory formation and learning</li>
+            <li>Increases stress hormones (cortisol)</li>
+          </ul>
+
+          <hr />
+
+          {/* MEETING FATIGUE */}
+          <h2 id="meeting-fatigue" className="text-2xl font-bold text-foreground pt-8">
+            Meeting Fatigue and Video Call Exhaustion
+          </h2>
+          <p>
+            Video calls require more cognitive effort than in-person meetings, leading to "Zoom fatigue" and increased digital
+            stress.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Why Video Calls Are Exhausting</h3>
+          <ul>
+            <li>
+              <b>Increased cognitive load:</b> Processing visual cues, managing technology, and maintaining eye contact simultaneously
+            </li>
+            <li>
+              <b>Self-consciousness:</b> Constant view of yourself increases self-monitoring
+            </li>
+            <li>
+              <b>Reduced non-verbal cues:</b> Missing body language requires more mental effort to interpret
+            </li>
+            <li>
+              <b>Technical stress:</b> Worrying about connection, audio, or video quality
+            </li>
+          </ul>
+
+          <hr />
+
+          {/* REDUCTION STRATEGIES */}
+          <h2 id="reduction-strategies" className="text-2xl font-bold text-foreground pt-8">
+            Comprehensive Strategies to Reduce Screen Exposure Stress
+          </h2>
+          <p>
+            Reducing digital stress requires intentional boundaries, notification management, and regular breaks. Here are
+            evidence-based strategies.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">1. Manage Notifications</h3>
+          <ul>
+            <li>
+              <b>Batch notifications:</b> Turn off non-essential notifications and check messages at scheduled times
+            </li>
+            <li>
+              <b>Use Do Not Disturb:</b> Enable focus modes during deep work periods
+            </li>
+            <li>
+              <b>Prioritize channels:</b> Only allow urgent notifications from essential contacts
+            </li>
+            <li>
+              <b>Silence non-essential apps:</b> Disable notifications from social media, games, or entertainment apps
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">2. Set Screen Time Boundaries</h3>
+          <ul>
+            <li>
+              <b>Work hours:</b> Define clear work hours and avoid screens outside these times
+            </li>
+            <li>
+              <b>Screen-free zones:</b> Designate areas (bedroom, dining table) as screen-free
+            </li>
+            <li>
+              <b>Evening cutoff:</b> Stop using screens 1-2 hours before bedtime
+            </li>
+            <li>
+              <b>Weekend limits:</b> Reduce personal screen time on weekends for recovery
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">3. Optimize Meeting Practices</h3>
+          <ul>
+            <li>
+              <b>Shorter meetings:</b> Default to 25-30 minute meetings instead of hour-long sessions
+            </li>
+            <li>
+              <b>Camera breaks:</b> Allow audio-only periods or camera-off options
+            </li>
+            <li>
+              <b>Meeting-free blocks:</b> Schedule 2-3 hour blocks without meetings for deep work
+            </li>
+            <li>
+              <b>Async alternatives:</b> Replace meetings with written updates or async communication when possible
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">4. Take Regular Micro-Breaks</h3>
+          <ul>
+            <li>
+              <b>20-20-20 rule:</b> Every 20 minutes, look at something 20 feet away for 20 seconds
+            </li>
+            <li>
+              <b>Hourly breaks:</b> Take 5-10 minute breaks every hour away from screens
+            </li>
+            <li>
+              <b>Movement breaks:</b> Stand, stretch, or walk during breaks
+            </li>
+            <li>
+              <b>Breathing exercises:</b> Use breaks for brief breathing or mindfulness practices
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">5. Create Digital Wellness Habits</h3>
+          <ul>
+            <li>
+              <b>Morning routine:</b> Avoid screens for the first hour after waking
+            </li>
+            <li>
+              <b>Evening wind-down:</b> Replace screen time with reading, conversation, or relaxation
+            </li>
+            <li>
+              <b>Tech-free meals:</b> Eat without screens to support digestion and connection
+            </li>
+            <li>
+              <b>Regular audits:</b> Weekly review of screen time and notification patterns
+            </li>
+          </ul>
+
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+          <p>
+            Managing screen exposure stress is essential for maintaining mental well-being, productivity, and overall health in our
+            digital age. By understanding how screen time, notifications, and meetings contribute to digital stress, and implementing
+            comprehensive strategies to reduce exposure and create boundaries, you can enjoy technology's benefits while protecting
+            your well-being. Remember that digital wellness is an ongoing practice—regular monitoring, boundary setting, and
+            intentional breaks help maintain balance. Start with small changes, track your progress, and adjust strategies based on
+            what works for your lifestyle. If digital stress significantly impacts your mental health or daily functioning, consider
+            consulting a mental health professional who can provide personalized support. This tool is designed for wellness
+            reflection and is not a substitute for professional mental health evaluation or treatment.
           </p>
         </CardContent>
       </Card>
@@ -441,20 +749,38 @@ export default function DailyScreenExposureStressIndexCalculator() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5" />
+            <Shield className="h-5 w-5" />
             Summary
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator blends screen time, notifications, meetings, and breaks into a single index so you can reflect on your digital load.</p>
-          <p>Use the score and ideas as prompts for gentle experiments, keeping only the changes that truly support your day‑to‑day well‑being.</p>
+          <p>
+            This tool offers a screen exposure stress index from work hours, personal screen time, notifications, meetings, and
+            micro-breaks as a gentle, lifestyle-oriented snapshot. It is intended for personal reflection, not for diagnosis or
+            treatment decisions.
+          </p>
+          <p>
+            Outputs include stress index (0-100), total screen time, attention budget, wellness status, interpretation text,
+            supportive recommendations, an action plan, and contextual information about the inputs and calculation approach.
+          </p>
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-xs text-muted-foreground text-center">
-        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
-        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+            medical or psychological diagnosis, evaluation, or treatment plan. For any health concerns, please consult a qualified
+            professional who can review your full situation.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

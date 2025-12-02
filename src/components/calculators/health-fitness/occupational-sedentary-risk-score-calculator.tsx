@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Armchair, MoveUp, Footprints, Shield } from 'lucide-react';
+import { Activity, Zap, Target, AlertTriangle, Shield, Armchair } from 'lucide-react';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -348,53 +348,67 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <MoveUp className="h-5 w-5 text-primary" />
-              Interactive result & interpretation
+              <Zap className="h-5 w-5 text-primary" />
+              Interactive results
             </CardTitle>
-            <CardDescription>Risk classification, movement targets, and ergonomic prompts.</CardDescription>
+            <CardDescription>See risk score, movement minutes, step gap, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Risk score</p>
+                <p className="text-sm text-muted-foreground">Risk Score</p>
                 <p className="text-2xl font-semibold text-primary">{result.riskScore}</p>
-                <p className="text-xs text-muted-foreground">Rough pattern: 0–44 more balanced · 45–69 needs attention · 70+ very sit‑heavy</p>
+                <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Movement minutes / day</p>
+                <p className="text-sm text-muted-foreground">Movement Minutes</p>
                 <p className="text-2xl font-semibold text-primary">{result.movementMinutes}</p>
-                <p className="text-xs text-muted-foreground">Includes purposeful breaks + workouts.</p>
+                <p className="text-xs text-muted-foreground">Per day</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Step gap</p>
-                <p className="text-2xl font-semibold text-primary">{result.stepGap} steps</p>
-                <p className="text-xs text-muted-foreground">Negative = you’re exceeding the 10k target.</p>
+                <p className="text-sm text-muted-foreground">Step Gap</p>
+                <p className="text-2xl font-semibold text-primary">{result.stepGap}</p>
+                <p className="text-xs text-muted-foreground">Steps</p>
               </div>
-            </div>
-            <div className="rounded border p-4 bg-muted/50">
-              <p className="text-sm uppercase tracking-wide text-muted-foreground mb-1">Status</p>
-              <p className="text-lg font-semibold capitalize">{result.classification}</p>
-              <p className="text-sm text-muted-foreground">{result.interpretation}</p>
+              <div className="p-4 border rounded">
+                <p className="text-sm text-muted-foreground">Status</p>
+                <p className="text-2xl font-semibold text-primary capitalize">{result.classification}</p>
+                <p className="text-xs text-muted-foreground">{result.interpretation}</p>
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border rounded">
-                <h4 className="font-semibold mb-2">Recommendations</h4>
-                <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
-                  {result.recommendations.map((rec) => (
-                    <li key={rec}>{rec}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-4 border rounded">
-                <h4 className="font-semibold mb-2">Action plan</h4>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  {result.plan.map((step) => (
-                    <li key={step.label}>
-                      <span className="font-semibold">{step.label}:</span> {step.detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Target className="h-4 w-4" />
+                    Recommendations
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
+                    {result.recommendations.map((rec) => (
+                      <li key={rec}>{rec}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <AlertTriangle className="h-4 w-4" />
+                    Action plan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    {result.plan.map((step) => (
+                      <li key={step.label}>
+                        <span className="font-semibold">{step.label}:</span> {step.detail}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </CardContent>
         </Card>
@@ -403,19 +417,27 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Footprints className="h-5 w-5" />
+            <Shield className="h-5 w-5" />
             Formula
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
+        <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Risk Score</strong> = clamp( Sitting hours × 6 − Breaks × 1.5 − Steps ÷ 800 − Workouts × 3 − Ergonomic factor + 30 )
+            <strong>Risk Score</strong> = clamp(Sitting Hours × 6 − Standing Breaks × 1.5 − Daily Steps ÷ 800 − Workouts Per Week ×
+            3 − Ergonomic Factor + 30, 0, 100). Higher sitting hours increase risk; breaks, steps, workouts, and ergonomic
+            improvements reduce it.
           </p>
           <p>
-            <strong>Movement Minutes</strong> = Workouts × 30 + Breaks × 2
+            <strong>Movement Minutes</strong> = Workouts Per Week × 30 + Standing Breaks × 2. This estimates total daily movement
+            time from structured exercise and breaks.
           </p>
           <p>
-            <strong>Step Gap</strong> = 10,000 − actual steps (capped between −5,000 and 15,000).
+            <strong>Step Gap</strong> = clamp(10,000 − Actual Steps, −5,000, 15,000). Negative values indicate exceeding the 10,000
+            step target; positive values show steps needed to reach the target.
+          </p>
+          <p>
+            Ergonomic factors: Poor = 0, Average = 2, Optimized = 5. The calculator accounts for how workstation setup affects
+            physical stress and risk.
           </p>
         </CardContent>
       </Card>
@@ -486,21 +508,292 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>
-            Sedentary risk is cumulative—hours add up even if you hit the gym a few times a week. Pair movement snacks, ergonomic
-            upgrades, and strategic workouts to keep joints, fascia, and metabolic health resilient.
-          </p>
-          <p>
-            Use this calculator monthly to make sure lifestyle changes stick. Track step counts, break frequency, and chair/desk
-            upgrades like any other KPI.
-          </p>
-        </CardContent>
-      </Card>
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemType="https://schema.org/MedicalWebPage"
+      >
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Occupational Sedentary Risk: Reducing Sitting Time and Promoting Movement" />
+        <meta
+          itemProp="description"
+          content="An expert, evidence-based guide on sedentary behavior risks, occupational health, movement breaks, ergonomics, and comprehensive strategies to reduce sitting time and support physical well-being."
+        />
+        <meta
+          itemProp="keywords"
+          content="sedentary risk score, occupational health, sitting time, movement breaks, ergonomics, desk job health, physical activity"
+        />
+        <meta itemProp="author" content="[Your Site's Health Team]" />
+        <meta itemProp="datePublished" content="2025-12-01" />
+        <meta itemProp="url" content="/definitive-sedentary-risk-guide" />
+
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">
+          The Definitive Guide to Occupational Sedentary Risk: Reducing Sitting Time, Promoting Movement, and Supporting Physical
+          Well-Being
+        </h1>
+        <p className="text-lg italic text-gray-700">
+          Explore the science of sedentary behavior, learn how prolonged sitting affects health, understand occupational risk
+          factors, and discover comprehensive strategies to reduce sitting time, increase movement, and support physical well-being in
+          desk-based work environments.
+        </p>
+
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li>
+            <a href="#understanding-sedentary-risk" className="hover:underline">
+              Understanding Sedentary Behavior and Occupational Risk
+            </a>
+          </li>
+          <li>
+            <a href="#health-effects" className="hover:underline">
+              Health Effects of Prolonged Sitting
+            </a>
+          </li>
+          <li>
+            <a href="#movement-breaks" className="hover:underline">
+              Movement Breaks and Activity Snacks
+            </a>
+          </li>
+          <li>
+            <a href="#ergonomics" className="hover:underline">
+              Ergonomic Workstation Setup
+            </a>
+          </li>
+          <li>
+            <a href="#reduction-strategies" className="hover:underline">
+              Comprehensive Strategies to Reduce Sedentary Risk
+            </a>
+          </li>
+        </ul>
+        <hr />
+
+        {/* UNDERSTANDING SEDENTARY RISK */}
+        <h2 id="understanding-sedentary-risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
+          Understanding Sedentary Behavior and Occupational Risk
+        </h2>
+        <p>
+          Sedentary behavior refers to activities with low energy expenditure performed while sitting, reclining, or lying down.
+          Occupational sedentary risk is particularly relevant for desk-based workers who spend extended periods sitting.
+        </p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">What Constitutes Sedentary Behavior</h3>
+        <p>
+          Sedentary activities include:
+        </p>
+        <ul>
+          <li>Sitting at a desk or computer</li>
+          <li>Driving or commuting</li>
+          <li>Watching television or using screens</li>
+          <li>Reading or studying while seated</li>
+          <li>Any activity with minimal movement while seated</li>
+        </ul>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Risk Thresholds</h3>
+        <p>
+          Research suggests:
+        </p>
+        <ul>
+          <li>
+            <b>Moderate risk:</b> 6-8 hours of daily sitting
+          </li>
+          <li>
+            <b>High risk:</b> More than 8 hours of daily sitting without regular breaks
+          </li>
+          <li>
+            <b>Very high risk:</b> More than 10 hours of daily sitting with minimal movement
+          </li>
+        </ul>
+
+        <hr />
+
+        {/* HEALTH EFFECTS */}
+        <h2 id="health-effects" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
+          Health Effects of Prolonged Sitting
+        </h2>
+        <p>
+          Prolonged sitting affects multiple body systems, creating cumulative health risks over time.
+        </p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Cardiometabolic Effects</h3>
+        <ul>
+          <li>
+            <b>Reduced metabolic rate:</b> Sitting decreases calorie burning and metabolic activity
+          </li>
+          <li>
+            <b>Impaired glucose regulation:</b> Extended sitting reduces insulin sensitivity
+          </li>
+          <li>
+            <b>Increased cardiovascular risk:</b> Prolonged sitting is associated with higher heart disease risk
+          </li>
+          <li>
+            <b>Elevated blood pressure:</b> Reduced circulation can increase blood pressure
+          </li>
+        </ul>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Musculoskeletal Effects</h3>
+        <ul>
+          <li>
+            <b>Postural problems:</b> Forward head posture, rounded shoulders, and spinal misalignment
+          </li>
+          <li>
+            <b>Muscle imbalances:</b> Tight hip flexors, weak glutes, and weakened core muscles
+          </li>
+          <li>
+            <b>Back and neck pain:</b> Poor posture and prolonged static positions cause discomfort
+          </li>
+          <li>
+            <b>Joint stiffness:</b> Reduced movement leads to decreased joint mobility
+          </li>
+        </ul>
+
+        <hr />
+
+        {/* MOVEMENT BREAKS */}
+        <h2 id="movement-breaks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
+          Movement Breaks and Activity Snacks
+        </h2>
+        <p>
+          Regular movement breaks interrupt prolonged sitting and mitigate health risks, even if brief.
+        </p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Benefits of Movement Breaks</h3>
+        <ul>
+          <li>Improves circulation and blood flow</li>
+          <li>Reduces muscle tension and stiffness</li>
+          <li>Enhances glucose regulation</li>
+          <li>Boosts energy and alertness</li>
+          <li>Supports mental well-being</li>
+        </ul>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Recommended Break Frequency</h3>
+        <p>
+          Guidelines suggest:
+        </p>
+        <ul>
+          <li>
+            <b>Every 30 minutes:</b> Stand or move for 2-3 minutes
+          </li>
+          <li>
+            <b>Every hour:</b> Take a 5-minute walking or stretching break
+          </li>
+          <li>
+            <b>Daily target:</b> Accumulate at least 2 hours of standing or light movement during work hours
+          </li>
+        </ul>
+
+        <hr />
+
+        {/* ERGONOMICS */}
+        <h2 id="ergonomics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
+          Ergonomic Workstation Setup
+        </h2>
+        <p>
+          Proper ergonomics reduce physical stress and support healthy movement patterns, even while seated.
+        </p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Key Ergonomic Principles</h3>
+        <ul>
+          <li>
+            <b>Monitor height:</b> Top of screen at or slightly below eye level
+          </li>
+          <li>
+            <b>Chair support:</b> Lumbar support, adjustable height, and proper seat depth
+          </li>
+          <li>
+            <b>Keyboard and mouse:</b> At elbow height with wrists in neutral position
+          </li>
+          <li>
+            <b>Foot support:</b> Feet flat on floor or footrest
+          </li>
+          <li>
+            <b>Desk height:</b> Allows comfortable arm positioning
+          </li>
+        </ul>
+
+        <hr />
+
+        {/* REDUCTION STRATEGIES */}
+        <h2 id="reduction-strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
+          Comprehensive Strategies to Reduce Sedentary Risk
+        </h2>
+        <p>
+          Reducing sedentary risk requires a multi-faceted approach combining movement breaks, ergonomic improvements, and lifestyle
+          changes.
+        </p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Increase Movement Breaks</h3>
+        <ul>
+          <li>
+            <b>Set reminders:</b> Use timers or apps to prompt regular breaks
+          </li>
+          <li>
+            <b>Standing meetings:</b> Conduct meetings while standing or walking
+          </li>
+          <li>
+            <b>Active commuting:</b> Walk or cycle part of your commute
+          </li>
+          <li>
+            <b>Desk exercises:</b> Perform simple stretches or movements at your desk
+          </li>
+        </ul>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Optimize Workstation</h3>
+        <ul>
+          <li>
+            <b>Standing desk:</b> Use sit-stand desk to alternate positions
+          </li>
+          <li>
+            <b>Ergonomic accessories:</b> Lumbar support, monitor riser, keyboard tray
+          </li>
+          <li>
+            <b>Proper setup:</b> Adjust chair, monitor, and desk to optimal positions
+          </li>
+        </ul>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">3. Increase Daily Steps</h3>
+        <ul>
+          <li>
+            <b>Set step goals:</b> Aim for 10,000 steps per day or gradually increase from current baseline
+          </li>
+          <li>
+            <b>Take stairs:</b> Use stairs instead of elevators
+          </li>
+          <li>
+            <b>Park farther:</b> Park further from entrances to add walking
+          </li>
+          <li>
+            <b>Walking meetings:</b> Conduct one-on-one meetings while walking
+          </li>
+        </ul>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">4. Incorporate Structured Exercise</h3>
+        <ul>
+          <li>
+            <b>Regular workouts:</b> Aim for 150 minutes of moderate-intensity exercise per week
+          </li>
+          <li>
+            <b>Strength training:</b> Include resistance training 2-3 times per week
+          </li>
+          <li>
+            <b>Flexibility work:</b> Add stretching or yoga to improve mobility
+          </li>
+        </ul>
+
+        <hr />
+
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>
+          Reducing occupational sedentary risk is essential for maintaining physical health, preventing musculoskeletal problems,
+          and supporting overall well-being in desk-based work environments. By understanding how prolonged sitting affects health,
+          implementing movement breaks, optimizing ergonomic setups, and incorporating regular exercise, you can mitigate sedentary
+          risks while maintaining productivity. Remember that small, consistent changes accumulate over time—regular breaks, proper
+          ergonomics, and increased daily movement create significant health benefits. Start with one strategy, track your progress,
+          and gradually add more movement opportunities. If you experience persistent pain or health concerns related to sedentary
+          behavior, consider consulting a healthcare provider or ergonomic specialist who can provide personalized guidance. This
+          tool is designed for wellness reflection and is not a substitute for professional medical evaluation or treatment.
+        </p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -524,15 +817,33 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator combines sitting time, movement, and ergonomics into a simple index so you can reflect on your workday pattern.</p>
-          <p>You can use the output as a prompt for gentle experiments with breaks, steps, or setup—and keep only what genuinely helps you feel better.</p>
+          <p>
+            This tool offers a sedentary risk score from sitting hours, standing breaks, daily steps, workouts, and ergonomic
+            quality as a gentle, lifestyle-oriented snapshot. It is intended for personal reflection, not for diagnosis or
+            treatment decisions.
+          </p>
+          <p>
+            Outputs include risk score (0-100), movement minutes, step gap, wellness classification, interpretation text,
+            supportive recommendations, an action plan, and contextual information about the inputs and calculation approach.
+          </p>
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-xs text-muted-foreground text-center">
-        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
-        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+            medical or psychological diagnosis, evaluation, or treatment plan. For any health concerns, please consult a qualified
+            professional who can review your full situation.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
