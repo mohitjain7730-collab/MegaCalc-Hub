@@ -133,12 +133,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Work Stress Fatigue Index', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Work Stress Fatigue Wellness Index', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Work Stress Fatigue Index',
+      name: 'Work Stress Fatigue Wellness Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate work stress fatigue index based on work hours, stress level, sleep, and break frequency.',
@@ -202,20 +202,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const stressScore = clamp((stressMultiplier - 0.5) * 33.3, 0, 100);
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your work stress and fatigue levels appear manageable. Continue maintaining good work-life balance and recovery practices.';
+  let interpretation = 'This suggests a general lifestyle tendency where your work stress and fatigue levels may appear manageable. You may consider continuing to maintain good work-life balance and recovery practices.';
 
   if (fatigueIndex >= 70 || workHours >= 60) {
     status = 'low';
-    interpretation = 'Your work stress fatigue is very high. This level of fatigue significantly impacts health, performance, and well-being. Immediate action needed: reduce work hours if possible, improve sleep, take more breaks, and consider professional support.';
+    interpretation = 'This suggests a general lifestyle tendency where your work stress fatigue may be very high. This level of fatigue may significantly impact health, performance, and well-being. You may consider reducing work hours if possible, improving sleep, taking more breaks, and seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (fatigueIndex >= 50 || workHours >= 50) {
     status = 'moderate';
-    interpretation = 'Your work stress fatigue is elevated. This level of fatigue can impact health and performance over time. Take steps to reduce work stress, improve sleep, increase breaks, and establish better work-life balance.';
+    interpretation = 'This suggests a general lifestyle tendency where your work stress fatigue may be elevated. This level of fatigue may impact health and performance over time. You may consider taking steps to reduce work stress, improve sleep, increase breaks, and establish better work-life balance.';
   } else if (fatigueIndex >= 30) {
     status = 'good';
-    interpretation = 'Your work stress fatigue is moderate. Continue monitoring and implementing strategies to reduce stress, improve recovery, and maintain work-life balance to prevent fatigue from increasing.';
+    interpretation = 'This suggests a general lifestyle tendency where your work stress fatigue may be moderate. You may consider continuing to monitor and implement strategies to reduce stress, improve recovery, and maintain work-life balance to prevent fatigue from increasing.';
   } else {
     status = 'optimal';
-    interpretation = 'Your work stress fatigue is well-managed. Continue maintaining good work-life balance, adequate sleep, regular breaks, and stress management practices.';
+    interpretation = 'This suggests a general lifestyle tendency where your work stress fatigue may be well-managed. You may consider continuing to maintain good work-life balance, adequate sleep, regular breaks, and stress management practices.';
   }
 
   const recommendations = [
@@ -228,7 +228,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   if (stressLevel === 'high' || stressLevel === 'very-high') {
-    recommendations.push('Manage work stress: implement stress management strategies (meditation, exercise, time management, boundaries). High work stress requires active management to prevent fatigue and burnout. Consider professional support if needed.');
+    recommendations.push('You may consider managing work stress: implement stress management strategies (meditation, exercise, time management, boundaries). High work stress may require active management to prevent fatigue and burnout. You may consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.');
   }
   
   if (breakFrequency === 'rare' || breakFrequency === 'none') {
@@ -265,9 +265,9 @@ export default function WorkStressFatigueIndex() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Work Stress Fatigue Index
+            Work Stress Fatigue Wellness Index
           </CardTitle>
-          <CardDescription>Calculate work stress fatigue index based on work hours, stress level, sleep, and break frequency.</CardDescription>
+          <CardDescription>Get general wellness insights about work stress fatigue index based on work hours, stress level, sleep, and break frequency. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -728,9 +728,21 @@ export default function WorkStressFatigueIndex() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates work stress fatigue index based on work hours, stress level, sleep hours, and break frequency.</p>
+          <p>This tool provides general wellness insights about work stress fatigue index based on work hours, stress level, sleep hours, and break frequency. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include fatigue index, stress score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

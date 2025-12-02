@@ -129,12 +129,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Daily Screen Time Impact Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Daily Screen Time Impact Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Daily Screen Time Impact Calculator',
+      name: 'Daily Screen Time Impact Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate daily screen time impact from total hours, work hours, leisure hours, and age.',
@@ -174,20 +174,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const impactPercent = impactScore;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your screen time impact appears manageable. Continue maintaining balanced screen use with regular breaks and offline activities.';
+  let interpretation = 'This suggests a general lifestyle tendency where your screen time impact may appear manageable. You may consider continuing to maintain balanced screen use with regular breaks and offline activities.';
 
   if (impactScore >= 70 || totalScreenHours >= 12) {
     status = 'low';
-    interpretation = 'Your screen time impact is very high. Excessive screen use significantly increases risk of eye strain, sleep problems, physical discomfort, and mental health issues. Reduce screen time and take frequent breaks immediately.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen time impact may be very high. Excessive screen use may significantly increase tendency of eye strain, sleep problems, physical discomfort, and mental health concerns. You may consider reducing screen time and taking frequent breaks immediately. This is a personal insight, not a medical evaluation.';
   } else if (impactScore >= 50 || totalScreenHours >= 8) {
     status = 'moderate';
-    interpretation = 'Your screen time impact is elevated. Consider reducing leisure screen time, taking more frequent breaks, and ensuring adequate sleep and physical activity to mitigate negative effects.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen time impact may be elevated. You may consider reducing leisure screen time, taking more frequent breaks, and ensuring adequate sleep and physical activity to mitigate negative effects.';
   } else if (impactScore >= 30 || totalScreenHours >= 6) {
     status = 'good';
-    interpretation = 'Your screen time impact is moderate. Continue taking regular breaks, using protective measures, and balancing screen time with offline activities to maintain optimal health.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen time impact may be moderate. You may consider continuing to take regular breaks, using protective measures, and balancing screen time with offline activities to maintain optimal health.';
   } else {
     status = 'optimal';
-    interpretation = 'Your screen time impact is well-managed. Your screen use appears balanced with adequate breaks and offline activities, supporting good health and wellbeing.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen time impact may be well-managed. Your screen use may appear balanced with adequate breaks and offline activities, which may support good health and wellbeing.';
   }
 
   const recommendations = [
@@ -238,9 +238,9 @@ export default function DailyScreenTimeImpactCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Daily Screen Time Impact Calculator
+            Daily Screen Time Impact Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate daily screen time impact from total hours, work hours, leisure hours, and age.</CardDescription>
+          <CardDescription>Get general wellness insights about daily screen time impact from total hours, work hours, leisure hours, and age. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -704,9 +704,21 @@ export default function DailyScreenTimeImpactCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates daily screen time impact from total hours, work hours, leisure hours, and age.</p>
+          <p>This tool provides general wellness insights about daily screen time impact from total hours, work hours, leisure hours, and age. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include total screen hours, work screen hours, leisure screen hours, age, impact score, impact percentage, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

@@ -134,7 +134,7 @@ const schemaMarkup = {
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Immune Function Recovery Rate Calculator',
+      name: 'Immune Function Recovery Rate Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level.',
@@ -205,17 +205,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const rateIndex = recoveryRate; // Same value
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your immune function recovery rate appears optimal. Continue maintaining healthy lifestyle habits that support immune health.';
+  let interpretation = 'This suggests a general lifestyle tendency where your immune function recovery rate may appear optimal. You may consider continuing to maintain healthy lifestyle habits that may support immune health.';
 
   if (recoveryRate < 40 || sleepQuality < 4 || stressLevel > 7) {
     status = 'low';
-    interpretation = 'Your immune function recovery rate is low. Poor sleep, high stress, or inadequate nutrition may be impairing immune recovery. Focus on improving these factors significantly.';
+    interpretation = 'This suggests a general lifestyle tendency where your immune function recovery rate may be low. Poor sleep, high stress, or inadequate nutrition may be impairing immune recovery. You may consider focusing on improving these factors significantly. This is a personal insight, not a medical evaluation.';
   } else if (recoveryRate < 60 || sleepQuality < 6 || stressLevel > 6) {
     status = 'moderate';
-    interpretation = 'Your immune function recovery rate is moderate. Improving sleep, reducing stress, and optimizing nutrition can enhance immune recovery and resilience.';
+    interpretation = 'This suggests a general lifestyle tendency where your immune function recovery rate may be moderate. You may consider improving sleep, reducing stress, and optimizing nutrition, which may enhance immune recovery and resilience.';
   } else if (recoveryRate < 75) {
     status = 'good';
-    interpretation = 'Your immune function recovery rate is good. Continue maintaining healthy habits to support optimal immune function and recovery.';
+    interpretation = 'This suggests a general lifestyle tendency where your immune function recovery rate may be good. You may consider continuing to maintain healthy habits to support optimal immune function and recovery.';
   }
 
   const recommendations = [
@@ -263,9 +263,9 @@ export default function ImmuneFunctionRecoveryRateCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5" />
-            Immune Function Recovery Rate Calculator
+            Immune Function Recovery Rate Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level.</CardDescription>
+          <CardDescription>Get general wellness insights about immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -523,9 +523,21 @@ export default function ImmuneFunctionRecoveryRateCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level.</p>
+          <p>This tool provides general wellness insights about immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include sleep quality, stress level, nutrition score, exercise level, recovery rate, rate index, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

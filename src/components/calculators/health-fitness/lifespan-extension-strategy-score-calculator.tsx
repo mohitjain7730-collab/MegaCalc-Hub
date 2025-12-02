@@ -129,12 +129,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Lifespan Extension Strategy Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Lifespan Extension Strategy Wellness Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Lifespan Extension Strategy Score Calculator',
+      name: 'Lifespan Extension Strategy Wellness Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management.',
@@ -206,17 +206,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const extensionIndex = strategyScore; // Same value
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your lifespan extension strategy score is optimal. Continue maintaining comprehensive health-promoting behaviors to support longevity.';
+  let interpretation = 'This suggests a general lifestyle tendency where your lifespan extension strategy score may be optimal. You may consider continuing to maintain comprehensive health-promoting behaviors that may support longevity.';
 
   if (strategyScore < 50 || dietQuality < 5 || exerciseLevel < 3 || sleepQuality < 4) {
     status = 'low';
-    interpretation = 'Your lifespan extension strategy score is low. Significant improvements in diet, exercise, sleep, and stress management are needed to support longevity. Focus on comprehensive lifestyle changes.';
+    interpretation = 'This suggests a general lifestyle tendency where your lifespan extension strategy score may be low. You may consider significant improvements in diet, exercise, sleep, and stress management, which may support longevity. You may consider focusing on comprehensive lifestyle changes. This is a personal insight, not a medical evaluation.';
   } else if (strategyScore < 70 || dietQuality < 10 || exerciseLevel < 5 || sleepQuality < 6) {
     status = 'moderate';
-    interpretation = 'Your lifespan extension strategy score is moderate. Improving diet quality, exercise, sleep, and stress management can enhance longevity prospects and healthy aging.';
+    interpretation = 'This suggests a general lifestyle tendency where your lifespan extension strategy score may be moderate. You may consider improving diet quality, exercise, sleep, and stress management, which may enhance longevity prospects and healthy aging.';
   } else if (strategyScore < 85) {
     status = 'good';
-    interpretation = 'Your lifespan extension strategy score is good. Continue maintaining and optimizing health-promoting behaviors to support optimal longevity outcomes.';
+    interpretation = 'This suggests a general lifestyle tendency where your lifespan extension strategy score may be good. You may consider continuing to maintain and optimize health-promoting behaviors that may support optimal longevity outcomes.';
   }
 
   const recommendations = [
@@ -264,9 +264,9 @@ export default function LifespanExtensionStrategyScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Heart className="h-5 w-5" />
-            Lifespan Extension Strategy Score Calculator
+            Lifespan Extension Strategy Wellness Score Calculator
           </CardTitle>
-          <CardDescription>Calculate lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management.</CardDescription>
+          <CardDescription>Get general wellness insights about lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -524,9 +524,21 @@ export default function LifespanExtensionStrategyScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management.</p>
+          <p>This tool provides general wellness insights about lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include diet quality, exercise level, sleep quality, stress management, strategy score, extension index, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

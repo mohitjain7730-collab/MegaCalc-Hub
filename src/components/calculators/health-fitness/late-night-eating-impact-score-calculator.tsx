@@ -126,12 +126,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Late-Night Eating Impact Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Late-Night Eating Impact Wellness Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Late-Night Eating Impact Score Calculator',
+      name: 'Late-Night Eating Impact Wellness Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM.',
@@ -189,17 +189,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   impactScore = clamp(impactScore, 0, 100);
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your late-night eating impact is minimal. You are avoiding eating after 8 PM, which supports optimal metabolic health, sleep quality, and circadian rhythm.';
+  let interpretation = 'This suggests a general lifestyle tendency where your late-night eating impact may be minimal. You are avoiding eating after 8 PM, which may support optimal metabolic health, sleep quality, and circadian rhythm.';
 
   if (impactScore > 70 || (caloriesAfter8PM > 500 && lastMealHour >= 21)) {
     status = 'low';
-    interpretation = 'Your late-night eating impact is high. Consuming significant calories late at night can disrupt metabolism, reduce insulin sensitivity, and affect sleep quality. Consider finishing meals earlier and avoiding late-night eating.';
+    interpretation = 'This suggests a general lifestyle tendency where your late-night eating impact may be high. Consuming significant calories late at night may disrupt metabolism, reduce insulin sensitivity, and affect sleep quality. You may consider finishing meals earlier and avoiding late-night eating.';
   } else if (impactScore > 50 || caloriesAfter8PM > 300) {
     status = 'moderate';
-    interpretation = 'Your late-night eating impact is moderate. Consider reducing calories after 8 PM and finishing meals earlier to support better metabolic health and sleep quality.';
+    interpretation = 'This suggests a general lifestyle tendency where your late-night eating impact may be moderate. You may consider reducing calories after 8 PM and finishing meals earlier to support better metabolic health and sleep quality.';
   } else if (impactScore > 30) {
     status = 'good';
-    interpretation = 'Your late-night eating impact is relatively low. Continue limiting late-night eating to support optimal metabolic health and circadian rhythm.';
+    interpretation = 'This suggests a general lifestyle tendency where your late-night eating impact may be relatively low. You may consider continuing to limit late-night eating to support optimal metabolic health and circadian rhythm.';
   }
 
   const recommendations = [
@@ -246,9 +246,9 @@ export default function LateNightEatingImpactScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Late-Night Eating Impact Score Calculator
+            Late-Night Eating Impact Wellness Score Calculator
           </CardTitle>
-          <CardDescription>Calculate late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM.</CardDescription>
+          <CardDescription>Get general wellness insights about late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -496,9 +496,21 @@ export default function LateNightEatingImpactScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM.</p>
+          <p>This tool provides general wellness insights about late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include dinner time, last meal time, calories after 8 PM, hours after 8 PM, impact score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

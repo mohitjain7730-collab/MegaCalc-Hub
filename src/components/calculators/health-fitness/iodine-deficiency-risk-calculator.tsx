@@ -140,7 +140,7 @@ const schemaMarkup = {
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Iodine Deficiency Risk Calculator',
+      name: 'Iodine Intake Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status.',
@@ -195,23 +195,23 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your iodine intake appears adequate. This supports thyroid function and prevents deficiency.';
+  let interpretation = 'This suggests a general lifestyle tendency where your iodine intake may appear adequate. This may support thyroid function and prevent deficiency.';
 
   if (iodineIntake < dailyNeed * 0.7 || intakePercent < 70) {
     status = 'low';
-    interpretation = 'Your iodine intake is below recommended levels. This increases deficiency risk, which can cause goiter, hypothyroidism, and in pregnancy, developmental problems. Consider increasing intake from iodized salt, seafood, and dairy products.';
+    interpretation = 'This suggests a general lifestyle tendency where your iodine intake may be below recommended levels. This may increase deficiency tendency. You may consider increasing intake from iodized salt, seafood, and dairy products. You may also consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (iodineIntake < dailyNeed * 0.9 || intakePercent < 90) {
     status = 'moderate';
-    interpretation = 'Your iodine intake is slightly below recommended levels. This may increase deficiency risk. Aim for recommended daily intake to ensure adequate iodine status and prevent deficiency.';
+    interpretation = 'This suggests a general lifestyle tendency where your iodine intake may be slightly below recommended levels. This may increase deficiency tendency. You may consider aiming for recommended daily intake to ensure adequate iodine status.';
   } else if (iodineIntake > 1100) {
     status = 'low';
-    interpretation = 'Your iodine intake exceeds the upper limit (1100 mcg/day). Excessive intake can cause thyroid dysfunction. Reduce intake, especially if from supplements or excessive seaweed consumption.';
+    interpretation = 'This suggests a general lifestyle tendency where your iodine intake may exceed the upper limit (1100 mcg/day). Excessive intake may cause thyroid dysfunction. You may consider reducing intake, especially if from supplements or excessive seaweed consumption. You may also consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (intakePercent >= 100 && intakePercent <= 200) {
     status = 'optimal';
-    interpretation = 'Your iodine intake is within recommended range. This supports optimal thyroid function and prevents deficiency without excessive intake.';
+    interpretation = 'This suggests a general lifestyle tendency where your iodine intake may be within recommended range. This may support optimal thyroid function and prevent deficiency without excessive intake.';
   } else {
     status = 'good';
-    interpretation = 'Your iodine intake is good. Continue including iodine-rich foods in your diet to maintain adequate intake and support thyroid health.';
+    interpretation = 'This suggests a general lifestyle tendency where your iodine intake may be good. You may consider continuing to include iodine-rich foods in your diet to maintain adequate intake and support thyroid health.';
   }
 
   const recommendations = [
@@ -263,7 +263,7 @@ export default function IodineDeficiencyRiskCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <AlertTriangle className="h-5 w-5" />
-            Iodine Deficiency Risk Calculator
+            Iodine Intake Wellness Estimator
           </CardTitle>
           <CardDescription>Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status.</CardDescription>
         </CardHeader>
@@ -687,9 +687,21 @@ export default function IodineDeficiencyRiskCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates iodine deficiency risk from iodine intake, age, gender, and pregnancy status.</p>
-          <p>Outputs include iodine intake, age, gender, pregnancy/lactation status, daily need, intake percentage, deficiency risk, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about iodine intake from iodine intake, age, gender, and pregnancy status. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include iodine intake, age, gender, pregnancy/lactation status, daily need, intake percentage, intake tendency, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

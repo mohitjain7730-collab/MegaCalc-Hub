@@ -129,12 +129,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Blue Light Exposure Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Blue Light Exposure Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Blue Light Exposure Calculator',
+      name: 'Blue Light Exposure Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction.',
@@ -169,24 +169,24 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'optimal';
   let interpretation =
-    'Your current blue‑light pattern looks relatively gentle based on the numbers you entered. You can keep noticing which screen habits feel most supportive for your eyes and sleep.';
+    'This suggests a general lifestyle tendency where your current blue‑light pattern may look relatively gentle based on the numbers you entered. You may consider continuing to notice which screen habits feel most supportive for your eyes and sleep.';
 
   if (exposureScore >= 70 || nightHours >= 4) {
     status = 'low';
     interpretation =
-      'Your numbers suggest a relatively heavy screen pattern, especially later in the day. You might like to experiment with gentler evening habits—such as shorter sessions, dimmer screens, or more off‑screen winding‑down time—and see how your eyes and sleep feel.';
+      'This suggests a general lifestyle tendency where your numbers may suggest a relatively heavy screen pattern, especially later in the day. You might like to experiment with gentler evening habits—such as shorter sessions, dimmer screens, or more off‑screen winding‑down time—and see how your eyes and sleep feel. This is a personal insight, not a medical evaluation.';
   } else if (exposureScore >= 50 || nightHours >= 2) {
     status = 'moderate';
     interpretation =
-      'Your entries point to a fair amount of screen time, particularly in the evening. Small shifts—like softer brightness, enabling night modes, or bringing screens to an earlier time—may help evenings feel calmer.';
+      'This suggests a general lifestyle tendency where your entries may point to a fair amount of screen time, particularly in the evening. Small shifts—like softer brightness, enabling night modes, or bringing screens to an earlier time—may help evenings feel calmer.';
   } else if (exposureScore >= 30) {
     status = 'good';
     interpretation =
-      'Your blue‑light pattern looks moderate. With a few simple supports (breaks, lower evening brightness, or wind‑down time away from devices), many people find this feels workable.';
+      'This suggests a general lifestyle tendency where your blue‑light pattern may look moderate. With a few simple supports (breaks, lower evening brightness, or wind‑down time away from devices), many people find this feels workable.';
   } else {
     status = 'optimal';
     interpretation =
-      'Your blue‑light pattern looks quite light based on these inputs. You can keep leaning on the habits that already feel good for your eyes and rest.';
+      'This suggests a general lifestyle tendency where your blue‑light pattern may look quite light based on these inputs. You may consider continuing to lean on the habits that already feel good for your eyes and rest.';
   }
 
   const recommendations = [
@@ -243,9 +243,9 @@ export default function BlueLightExposureCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Blue Light Exposure Calculator
+            Blue Light Exposure Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction.</CardDescription>
+          <CardDescription>Get general wellness insights about blue light exposure from screen hours, night hours, brightness, and filter reduction. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 

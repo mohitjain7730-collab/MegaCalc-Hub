@@ -2672,12 +2672,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 3212,
-    name: 'Blue Light Exposure Calculator',
-    description: 'Estimate daily blue-light dose from screens, filters, and lighting to protect circadian health.',
+    name: 'Blue Light Exposure Wellness Calculator',
+    description: 'Get general wellness insights about daily blue-light exposure from screens, filters, and lighting. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'blue-light-exposure-calculator',
     category: 'wellness',
-    metaTitle: 'Blue Light Exposure Calculator - Manage Screen Strain & Sleep',
-    metaDescription: 'Calculate blue-light exposure, see circadian impact, and get practical steps to reduce digital eye strain and protect melatonin production.'
+    metaTitle: 'Blue Light Exposure Wellness Calculator - Manage Screen Strain & Sleep',
+    metaDescription: 'Get general wellness insights about blue-light exposure, see circadian impact, and get practical steps to reduce digital eye strain. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 3213,
@@ -4610,12 +4610,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5028,
-    name: 'Sleep Quality vs Longevity Correlation Calculator',
-    description: 'Calculate sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age.',
+    name: 'Sleep Quality vs Longevity Wellness Correlation Calculator',
+    description: 'Get general wellness insights about sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'sleep-quality-vs-longevity-correlation-calculator',
     category: 'wellness',
-    metaTitle: 'Sleep Quality vs Longevity Correlation Calculator',
-    metaDescription: 'Calculate sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age to assess longevity prospects.'
+    metaTitle: 'Sleep Quality vs Longevity Wellness Correlation Calculator',
+    metaDescription: 'Get general wellness insights about sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5029,
@@ -4628,21 +4628,21 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5030,
-    name: 'Immune Function Recovery Rate Calculator',
-    description: 'Calculate immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level.',
+    name: 'Immune Function Recovery Rate Wellness Calculator',
+    description: 'Get general wellness insights about immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'immune-function-recovery-rate-calculator',
     category: 'wellness',
-    metaTitle: 'Immune Function Recovery Rate Calculator',
-    metaDescription: 'Calculate immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level to assess immune resilience.'
+    metaTitle: 'Immune Function Recovery Rate Wellness Calculator',
+    metaDescription: 'Get general wellness insights about immune function recovery rate from sleep quality, stress level, nutrition score, and exercise level. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5031,
-    name: 'Lifespan Extension Strategy Score Calculator',
-    description: 'Calculate lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management.',
+    name: 'Lifespan Extension Strategy Wellness Score Calculator',
+    description: 'Get general wellness insights about lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'lifespan-extension-strategy-score-calculator',
     category: 'wellness',
-    metaTitle: 'Lifespan Extension Strategy Score Calculator',
-    metaDescription: 'Calculate lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management to assess longevity strategies.'
+    metaTitle: 'Lifespan Extension Strategy Wellness Score Calculator',
+    metaDescription: 'Get general wellness insights about lifespan extension strategy score from diet quality, exercise level, sleep quality, and stress management. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5032,
@@ -4790,12 +4790,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5048,
-    name: 'UV Exposure Risk Calculator',
-    description: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection.',
+    name: 'UV Exposure Tendency Wellness Calculator',
+    description: 'Get general wellness insights about UV exposure tendency from UV index, exposure time, skin type, and SPF protection. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'uv-exposure-risk-calculator',
     category: 'wellness',
-    metaTitle: 'UV Exposure Risk Calculator',
-    metaDescription: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection to assess sun safety.'
+    metaTitle: 'UV Exposure Tendency Wellness Calculator',
+    metaDescription: 'Get general wellness insights about UV exposure tendency from UV index, exposure time, skin type, and SPF protection. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 7100,
@@ -5173,21 +5173,21 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5069,
-    name: 'Blue Light Exposure Calculator',
-    description: 'Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction.',
+    name: 'Blue Light Exposure Wellness Calculator',
+    description: 'Get general wellness insights about blue light exposure from screen hours, night hours, brightness, and filter reduction. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'blue-light-exposure-calculator',
     category: 'health-fitness',
-    metaTitle: 'Blue Light Exposure Calculator',
-    metaDescription: 'Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction to assess sleep and eye health impact.'
+    metaTitle: 'Blue Light Exposure Wellness Calculator',
+    metaDescription: 'Get general wellness insights about blue light exposure from screen hours, night hours, brightness, and filter reduction. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5070,
-    name: 'Daily Screen Time Impact Calculator',
-    description: 'Calculate daily screen time impact from total hours, work hours, leisure hours, and age.',
+    name: 'Daily Screen Time Impact Wellness Calculator',
+    description: 'Get general wellness insights about daily screen time impact from total hours, work hours, leisure hours, and age. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'daily-screen-time-impact-calculator',
     category: 'wellness',
-    metaTitle: 'Daily Screen Time Impact Calculator',
-    metaDescription: 'Calculate daily screen time impact from total hours, work hours, leisure hours, and age to assess digital device health effects.'
+    metaTitle: 'Daily Screen Time Impact Wellness Calculator',
+    metaDescription: 'Get general wellness insights about daily screen time impact from total hours, work hours, leisure hours, and age. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5071,
@@ -5290,12 +5290,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5082,
-    name: 'Work Stress Fatigue Index',
-    description: 'Calculate work stress fatigue index from work hours, stress level, sleep quality, and recovery factors.',
+    name: 'Work Stress Fatigue Wellness Index',
+    description: 'Get general wellness insights about work stress fatigue index from work hours, stress level, sleep quality, and recovery factors. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'work-stress-fatigue-index',
     category: 'wellness',
-    metaTitle: 'Work Stress Fatigue Index',
-    metaDescription: 'Calculate work stress fatigue index from work hours, stress level, sleep quality, and recovery factors to assess and manage work-related fatigue.'
+    metaTitle: 'Work Stress Fatigue Wellness Index',
+    metaDescription: 'Get general wellness insights about work stress fatigue index from work hours, stress level, sleep quality, and recovery factors. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5083,
@@ -5371,12 +5371,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5051,
-    name: 'Iodine Deficiency Risk Calculator',
-    description: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status.',
+    name: 'Iodine Intake Wellness Estimator',
+    description: 'Get general wellness insights about iodine intake from iodine intake, age, gender, and pregnancy status. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'iodine-deficiency-risk-calculator',
     category: 'wellness',
-    metaTitle: 'Iodine Deficiency Risk Calculator',
-    metaDescription: 'Calculate iodine deficiency risk from iodine intake, age, gender, and pregnancy status to assess iodine status.'
+    metaTitle: 'Iodine Intake Wellness Estimator',
+    metaDescription: 'Get general wellness insights about iodine intake from iodine intake, age, gender, and pregnancy status. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5052,
@@ -5533,12 +5533,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5053,
-    name: 'Balanced Meal Score Calculator',
-    description: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories.',
+    name: 'Balanced Meal Wellness Score Calculator',
+    description: 'Get general wellness insights about balanced meal score from protein, carbohydrates, fat, fiber, and calories. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'balanced-meal-score-calculator',
     category: 'wellness',
-    metaTitle: 'Balanced Meal Score Calculator',
-    metaDescription: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories to assess meal balance.'
+    metaTitle: 'Balanced Meal Wellness Score Calculator',
+    metaDescription: 'Get general wellness insights about balanced meal score from protein, carbohydrates, fat, fiber, and calories. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5054,
@@ -5578,12 +5578,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5057,
-    name: 'Late-Night Eating Impact Score Calculator',
-    description: 'Calculate late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM.',
+    name: 'Late-Night Eating Impact Wellness Score Calculator',
+    description: 'Get general wellness insights about late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'late-night-eating-impact-score-calculator',
     category: 'wellness',
-    metaTitle: 'Late-Night Eating Impact Score Calculator',
-    metaDescription: 'Calculate late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM to assess metabolic impact.'
+    metaTitle: 'Late-Night Eating Impact Wellness Score Calculator',
+    metaDescription: 'Get general wellness insights about late-night eating impact from dinner time, last meal time, and calories consumed after 8 PM. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5058,

@@ -128,12 +128,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Sleep Quality vs Longevity Correlation Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Sleep Quality vs Longevity Wellness Correlation Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Sleep Quality vs Longevity Correlation Calculator',
+      name: 'Sleep Quality vs Longevity Wellness Correlation Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age.',
@@ -193,17 +193,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const correlationIndex = longevityScore; // Same value
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your sleep patterns show strong positive correlation with longevity. Continue maintaining high-quality, consistent sleep.';
+  let interpretation = 'This suggests a general lifestyle tendency where your sleep patterns may show strong positive correlation with longevity. You may consider continuing to maintain high-quality, consistent sleep.';
 
   if (longevityScore < 40 || sleepQuality < 4 || sleepDuration < 5) {
     status = 'low';
-    interpretation = 'Your sleep patterns show weak correlation with longevity. Poor sleep quality, insufficient duration, or irregular patterns may negatively impact longevity. Focus on improving sleep significantly.';
+    interpretation = 'This suggests a general lifestyle tendency where your sleep patterns may show areas for improvement. Poor sleep quality, insufficient duration, or irregular patterns may negatively impact longevity. You may consider focusing on improving sleep significantly. This is a personal insight, not a medical evaluation.';
   } else if (longevityScore < 60 || sleepQuality < 6 || sleepDuration < 6) {
     status = 'moderate';
-    interpretation = 'Your sleep patterns show moderate correlation with longevity. Improving sleep quality, duration, and consistency can enhance longevity prospects.';
+    interpretation = 'This suggests a general lifestyle tendency where your sleep patterns may show moderate correlation with longevity. You may consider improving sleep quality, duration, and consistency, which may enhance longevity prospects.';
   } else if (longevityScore < 75) {
     status = 'good';
-    interpretation = 'Your sleep patterns show good correlation with longevity. Continue maintaining quality sleep to support optimal longevity outcomes.';
+    interpretation = 'This suggests a general lifestyle tendency where your sleep patterns may show good correlation with longevity. You may consider continuing to maintain quality sleep to support optimal longevity outcomes.';
   }
 
   const recommendations = [
@@ -212,7 +212,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'Maintain consistent sleep-wake schedule: go to bed and wake up at the same times daily to support circadian rhythm and metabolic health associated with longevity.',
   ];
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Address sleep problems promptly. Chronic poor sleep significantly impacts health and longevity. Consider sleep evaluation and treatment if needed.');
+    recommendations.push('You may consider addressing sleep patterns promptly. Chronic poor sleep may significantly impact health and longevity. You may consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.');
   }
   if (sleepDuration < 6 || sleepDuration > 10) {
     recommendations.push('Optimize sleep duration. Aim for 7-9 hours per night, as both insufficient and excessive sleep are associated with increased mortality risk.');
@@ -251,9 +251,9 @@ export default function SleepQualityVsLongevityCorrelationCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Moon className="h-5 w-5" />
-            Sleep Quality vs Longevity Correlation Calculator
+            Sleep Quality vs Longevity Wellness Correlation Calculator
           </CardTitle>
-          <CardDescription>Calculate sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age.</CardDescription>
+          <CardDescription>Get general wellness insights about sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -511,9 +511,21 @@ export default function SleepQualityVsLongevityCorrelationCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age.</p>
+          <p>This tool provides general wellness insights about sleep quality vs longevity correlation from sleep quality, sleep duration, sleep consistency, and age. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include sleep quality, sleep duration, sleep consistency, longevity score, correlation index, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

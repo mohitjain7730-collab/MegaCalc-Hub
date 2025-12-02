@@ -134,12 +134,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Balanced Meal Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Balanced Meal Wellness Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Balanced Meal Score Calculator',
+      name: 'Balanced Meal Wellness Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories.',
@@ -227,17 +227,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   balanceScore = clamp(balanceScore, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your meal is well-balanced with appropriate macronutrient distribution and fiber content. This supports optimal nutrition and metabolic health.';
+  let interpretation = 'This suggests a general lifestyle tendency where your meal may be well-balanced with appropriate macronutrient distribution and fiber content. This may support optimal nutrition and metabolic health.';
 
   if (balanceScore < 40) {
     status = 'low';
-    interpretation = 'Your meal balance is poor. The macronutrient distribution or fiber content needs improvement. Consider adjusting proportions to include adequate protein, carbs, fat, and fiber.';
+    interpretation = 'This suggests a general lifestyle tendency where your meal balance may need improvement. The macronutrient distribution or fiber content may need improvement. You may consider adjusting proportions to include adequate protein, carbs, fat, and fiber.';
   } else if (balanceScore < 60) {
     status = 'moderate';
-    interpretation = 'Your meal balance is moderate. Consider adjusting macronutrient proportions or increasing fiber content to improve meal balance and nutritional quality.';
+    interpretation = 'This suggests a general lifestyle tendency where your meal balance may be moderate. You may consider adjusting macronutrient proportions or increasing fiber content to improve meal balance and nutritional quality.';
   } else if (balanceScore < 80) {
     status = 'good';
-    interpretation = 'Your meal balance is good. Continue including balanced macronutrients and fiber to maintain optimal meal composition.';
+    interpretation = 'This suggests a general lifestyle tendency where your meal balance may be good. You may consider continuing to include balanced macronutrients and fiber to maintain optimal meal composition.';
   }
 
   const recommendations = [
@@ -286,9 +286,9 @@ export default function BalancedMealScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <UtensilsCrossed className="h-5 w-5" />
-            Balanced Meal Score Calculator
+            Balanced Meal Wellness Score Calculator
           </CardTitle>
-          <CardDescription>Calculate balanced meal score from protein, carbohydrates, fat, fiber, and calories.</CardDescription>
+          <CardDescription>Get general wellness insights about balanced meal score from protein, carbohydrates, fat, fiber, and calories. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -687,9 +687,21 @@ export default function BalancedMealScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates balanced meal score from protein, carbohydrates, fat, fiber, and calories.</p>
+          <p>This tool provides general wellness insights about balanced meal score from protein, carbohydrates, fat, fiber, and calories. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include protein, carbs, fat, fiber, calories, macronutrient percentages, balance score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

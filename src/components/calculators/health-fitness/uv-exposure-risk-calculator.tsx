@@ -131,7 +131,7 @@ const schemaMarkup = {
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'UV Exposure Risk Calculator',
+      name: 'UV Exposure Tendency Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection.',
@@ -184,20 +184,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const riskPercent = exposureTime > 0 ? (exposureTime / safeExposureMinutes) * 100 : 0;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your UV exposure appears safe. Continue using appropriate sun protection measures.';
+  let interpretation = 'This suggests a general lifestyle tendency where your UV exposure may appear safe. You may consider continuing to use appropriate sun protection measures.';
 
   if (riskScore >= 70 || riskPercent >= 150) {
     status = 'low';
-    interpretation = 'Your UV exposure risk is very high. This level of exposure significantly increases risk of sunburn, skin damage, and skin cancer. Seek shade immediately, use high SPF sunscreen, and limit exposure time.';
+    interpretation = 'This suggests a general lifestyle tendency where your UV exposure tendency may be very high. This level of exposure may significantly increase tendency of sunburn, skin damage, and skin concerns. You may consider seeking shade immediately, using high SPF sunscreen, and limiting exposure time. This is a personal insight, not a medical evaluation.';
   } else if (riskScore >= 50 || riskPercent >= 120) {
     status = 'moderate';
-    interpretation = 'Your UV exposure risk is elevated. Take extra precautions: seek shade frequently, reapply sunscreen every 2 hours, wear protective clothing, and limit time in direct sun.';
+    interpretation = 'This suggests a general lifestyle tendency where your UV exposure tendency may be elevated. You may consider taking extra precautions: seek shade frequently, reapply sunscreen every 2 hours, wear protective clothing, and limit time in direct sun.';
   } else if (riskScore >= 30 || riskPercent >= 90) {
     status = 'good';
-    interpretation = 'Your UV exposure risk is moderate. Continue using sun protection and monitor your skin for any signs of redness or burning.';
+    interpretation = 'This suggests a general lifestyle tendency where your UV exposure tendency may be moderate. You may consider continuing to use sun protection and monitoring your skin for any signs of redness or burning.';
   } else {
     status = 'optimal';
-    interpretation = 'Your UV exposure risk is low. Your protection measures and exposure time are appropriate. Continue maintaining good sun protection habits.';
+    interpretation = 'This suggests a general lifestyle tendency where your UV exposure tendency may be low. Your protection measures and exposure time may be appropriate. You may consider continuing to maintain good sun protection habits.';
   }
 
   const recommendations = [
@@ -248,9 +248,9 @@ export default function UVExposureRiskCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            UV Exposure Risk Calculator
+            UV Exposure Tendency Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate UV exposure risk from UV index, exposure time, skin type, and SPF protection.</CardDescription>
+          <CardDescription>Get general wellness insights about UV exposure tendency from UV index, exposure time, skin type, and SPF protection. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -772,9 +772,21 @@ export default function UVExposureRiskCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates UV exposure risk from UV index, exposure time, skin type, and SPF protection.</p>
-          <p>Outputs include UV index, exposure time, skin type, SPF, risk score, risk percentage, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about UV exposure tendency from UV index, exposure time, skin type, and SPF protection. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include UV index, exposure time, skin type, SPF, tendency score, tendency percentage, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>
