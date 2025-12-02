@@ -161,17 +161,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const restartEffort = clamp((daysSinceLastAction / 30) * 70 + (1 - meaningFactor) * 30, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your momentum toward this goal is strong. Light structure and regular check-ins should keep it going.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your momentum toward this goal may feel strong. Light structure and gentle check-ins may help you keep it moving in a way that feels sustainable.';
 
   if (momentumScore < 35) {
     status = 'low';
-    interpretation = 'Momentum is very low. The goal may feel distant, heavy, or mismatched with your current season.';
+    interpretation =
+      'This suggests a general lifestyle tendency where momentum around this goal may currently feel quite low or distant. The goal might feel heavy or not fully matched to this season. You may consider softening expectations, shrinking the next step, or gently revisiting why the goal matters to you. This is a personal insight, not a medical evaluation.';
   } else if (momentumScore < 55) {
     status = 'moderate';
-    interpretation = 'There is some movement, but inconsistency or long gaps are eroding your sense of progress.';
+    interpretation =
+      'This suggests a general lifestyle tendency where there is some movement, but gaps or inconsistency may make progress feel slower. You may consider choosing very small next steps and pairing them with existing routines to gently rebuild rhythm.';
   } else if (momentumScore < 75) {
     status = 'good';
-    interpretation = 'You have meaningful momentum with room to tighten routines and clarify next steps.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may already feel meaningful movement toward your goal, with room to refine routines and clarity. Gentle structure and celebrating small wins may support continued momentum.';
   }
 
   const recommendations: string[] = [
@@ -553,9 +557,27 @@ export default function MotivationMomentumCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator estimates motivation momentum for a chosen goal using simple behavioral and psychological inputs.</p>
+          <p>
+            This calculator provides general wellness insights about motivation momentum for a chosen goal using simple
+            behavioral and psychological inputs. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>It outputs a momentum score, restart effort, qualitative status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs make the approach transparent for both humans and AI co-pilots.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

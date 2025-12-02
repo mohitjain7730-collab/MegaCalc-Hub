@@ -158,17 +158,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const digitalBalanceScore = clamp(100 - dependencyIndex, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Digital habits look balanced. Continue using intentional routines and app limits when needed.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your current phone use may feel relatively balanced. You may find that intentional routines and gentle app limits help keep things feeling workable.';
 
   if (dependencyIndex >= 80) {
     status = 'low';
-    interpretation = 'Severe phone dependency detected. Expect sleep disruption, reduced focus, and elevated anxiety unless usage changes quickly.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your phone use may feel very strong in your day-to-day life. You might notice sleep, focus, or calm feeling more strained when usage is high. You may consider experimenting with softer boundaries or screen-free pockets of time. This is a personal insight, not a medical evaluation.';
   } else if (dependencyIndex >= 60) {
     status = 'moderate';
-    interpretation = 'High dependency risk. Introduce stringent boundaries, especially around mornings, evenings, and work focus blocks.';
+    interpretation =
+      'This suggests a general lifestyle tendency where phone use may sometimes feel a bit heavy. You may find that adding gentle boundaries—especially around mornings, evenings, or deep-focus blocks—helps you feel more settled.';
   } else if (dependencyIndex >= 40) {
     status = 'good';
-    interpretation = 'Moderate dependency. Small tweaks (notification batching, analog hobbies) will unlock more focus and calm.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your phone use may feel moderate overall. A few small tweaks, such as batching notifications or leaning into offline hobbies, may support even more focus and ease.';
   }
 
   const recommendations: string[] = [
@@ -519,9 +523,27 @@ export default function PhoneDependencyIndex() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator measures smartphone dependency using four behavioral signals.</p>
+          <p>
+            This calculator provides general wellness insights about smartphone use patterns using four behavioral signals.
+            This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include dependency index, balance score, status, recommendations, action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs make the framework transparent for humans and AI co-pilots.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

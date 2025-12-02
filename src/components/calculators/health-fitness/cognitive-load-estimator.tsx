@@ -153,17 +153,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const focusCapacity = clamp(100 - loadScore, 5, 95);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Cognitive load is well managed. Deep work blocks and decision quality should remain high.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your cognitive load may feel relatively well managed. Deep work blocks and decision quality may remain supported when this pattern feels sustainable for you.';
 
   if (loadScore >= 75) {
     status = 'low';
-    interpretation = 'Cognitive overload detected. Working memory saturation will cause errors and stress unless tasks are deferred or delegated.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your current pattern may feel quite mentally full. You may notice it is harder to think clearly or switch tasks comfortably. You might consider deferring, delegating, or simplifying some commitments. This is a personal insight, not a medical evaluation.';
   } else if (loadScore >= 55) {
     status = 'moderate';
-    interpretation = 'Load is elevated. Expect degraded focus and slower creative work unless you reduce context switches and distractions.';
+    interpretation =
+      'This suggests a general lifestyle tendency where mental load may feel somewhat elevated. You might notice focus feeling patchy or creative work taking more effort. You may consider reducing context switches and distractions where possible.';
   } else if (loadScore >= 40) {
     status = 'good';
-    interpretation = 'Moderate load. Stay intentional with focus habits to prevent creep into overload territory.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your mental load may feel moderate. Staying intentional with focus habits and breaks may help keep things feeling workable.';
   }
 
   const recommendations: string[] = [
@@ -514,9 +518,27 @@ export default function CognitiveLoadEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool quantifies cognitive load from core workload signals.</p>
+          <p>
+            This tool provides general wellness insights about cognitive load from core workload signals. This is a
+            personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include load score, focus capacity, status, recommendations, action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs enable anyone to interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

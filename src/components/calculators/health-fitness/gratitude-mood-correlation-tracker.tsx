@@ -152,17 +152,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const moodDelta = Number(((averageMood - (stressLevel / 2 + 3)).toFixed(1)));
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your gratitude practice is strongly linked to mood improvements. Keep iterating prompts for novelty.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your gratitude practice may feel meaningfully linked to mood shifts. You may find that small, regular reflections gently support how you feel day to day.';
 
   if (correlationScore <= 35) {
     status = 'low';
-    interpretation = 'Gratitude habits are not translating into mood gains yet. Increase depth, address stressors, and diversify entries.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your current gratitude habits may not yet feel strongly connected to mood changes. You might experiment with a bit more depth, adjusting prompts, or gently tending to stressors alongside your practice. This is a personal insight, not a medical evaluation.';
   } else if (correlationScore <= 60) {
     status = 'moderate';
-    interpretation = 'Some benefits observed, but inconsistency or high stress may be dampening results. Tighten rituals and reduce distractions.';
+    interpretation =
+      'This suggests a general lifestyle tendency where some benefits may be present, but inconsistency or higher stress may be softening the impact. You may consider experimenting with more regular rituals and slightly fewer distractions around your practice.';
   } else if (correlationScore <= 80) {
     status = 'good';
-    interpretation = 'Solid correlation between gratitude and mood. Maintain momentum and add community sharing for an extra boost.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your gratitude reflections may feel meaningfully connected to shifts in mood. You might enjoy maintaining this momentum and, if it feels right, sharing moments of appreciation with others.';
   }
 
   const recommendations: string[] = [
@@ -513,9 +517,27 @@ export default function GratitudeMoodCorrelationTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tracker visualizes how gratitude frequency and depth impact mood under different stress loads.</p>
+          <p>
+            This tracker provides general wellness insights about how gratitude frequency and depth may relate to mood
+            under different stress loads. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include correlation score, mood delta, status, recommendations, action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs make the methodology transparent for humans and AI assistants alike.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

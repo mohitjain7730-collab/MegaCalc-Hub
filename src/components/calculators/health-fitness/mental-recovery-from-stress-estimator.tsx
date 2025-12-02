@@ -160,17 +160,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const remainingDays = Math.max(0, adjustedRecoveryDays - daysSinceEvent);
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'You are progressing through recovery at a reasonable pace given your current sleep and recovery habits.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where you may feel like you are progressing through recovery at a reasonable pace given your current sleep and recovery habits.';
 
   if (recoveryPercent < 30) {
     status = 'low';
-    interpretation = 'Recovery has only just begun, or stress is still very high. Extra care and rest are especially important now.';
+    interpretation =
+      'This suggests a general lifestyle tendency where recovery around this stressor may feel like it is just beginning, or the situation may still feel quite intense. You may consider extra rest and gentle care while things feel heavier. This is a personal insight, not a medical evaluation.';
   } else if (recoveryPercent < 60) {
     status = 'moderate';
-    interpretation = 'You are partway through recovery. Sustaining healthy routines will help prevent setbacks.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may feel partway through your recovery process. Continuing supportive routines—such as sleep, movement, and calming activities—may help you feel steadier over time.';
   } else if (recoveryPercent >= 100) {
     status = 'optimal';
-    interpretation = 'You may be near or past baseline for this stressor, though residual effects can still surface. Maintain gentle habits as you ramp up demands.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may feel closer to your usual baseline around this stressor, even though some residual feelings can still appear. You may consider maintaining gentle habits as you slowly increase demands.';
   }
 
   const recommendations: string[] = [
@@ -554,9 +558,27 @@ export default function MentalRecoveryFromStressEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This estimator models mental recovery from a significant stressor using intensity, time, sleep, and recovery habit inputs.</p>
+          <p>
+            This estimator provides general wellness insights about mental recovery from a significant stressor using
+            intensity, time, sleep, and recovery habit inputs. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include recovery percent, estimated days to baseline, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs help humans and AI assistants interpret the results responsibly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

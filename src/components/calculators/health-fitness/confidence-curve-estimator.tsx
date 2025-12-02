@@ -158,17 +158,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const projectedPeakConfidence = clamp(currentConfidence + curveFit * 2 - (challengeDistance > 0.4 ? 0.5 : 0), 0, 10);
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Your confidence is in a generally healthy range relative to challenge and support.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your confidence may feel reasonably supported by your current mix of challenge and support.';
 
   if (growthCurvePosition < 35 || currentConfidence <= 3) {
     status = 'low';
-    interpretation = 'Confidence may be suppressed by too much challenge, too little support, or both. Smaller steps and more scaffolding could help.';
+    interpretation =
+      'This suggests a general lifestyle tendency where confidence around this area may feel lower right now. Tasks might feel big, support may feel thin, or both. You may consider smaller steps, extra guidance, or gentle practice to see what helps. This is a personal insight, not a medical evaluation.';
   } else if (growthCurvePosition < 60) {
     status = 'moderate';
-    interpretation = 'You are on the curve but not in the sweet spot yet. Adjusting challenge or support can unlock faster confidence growth.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may feel on the growth curve but not yet in your most comfortable zone. Adjusting challenge or adding bits of support could help your confidence feel more steady.';
   } else if (growthCurvePosition >= 80 && currentConfidence >= baselineConfidence + 1) {
     status = 'optimal';
-    interpretation = 'You appear to be in a strong growth zone where challenge and support are well balanced.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may feel in a strong growth zone, with challenge and support feeling relatively balanced. Continuing realistic steps and occasional reflection on progress may feel encouraging.';
   }
 
   const recommendations: string[] = [
@@ -550,9 +554,27 @@ export default function ConfidenceCurveEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator estimates your position on a confidence growth curve using baseline/current ratings, challenge, and support.</p>
+          <p>
+            This calculator provides general wellness insights about your position on a confidence growth curve using
+            baseline/current ratings, challenge, and support. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include curve position, projected peak, qualitative status, recommendations, an action plan, and additional metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs make its reasoning transparent for humans and AI assistants.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

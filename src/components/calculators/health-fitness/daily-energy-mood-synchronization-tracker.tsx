@@ -166,17 +166,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const bestWindow = energyArray.sort((a, b) => b.value - a.value)[0].label;
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your mood is well synchronized with your daily energy pattern. Keep scheduling key activities around your natural peaks.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your mood may feel nicely synchronized with your daily energy pattern. You may find it helpful to keep placing key activities near your natural peaks when that feels supportive.';
 
   if (alignmentScore < 40) {
     status = 'low';
-    interpretation = 'Your mood and energy appear out of sync. You may be pushing hard during low-energy windows or unable to enjoy your high-energy times.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your mood and energy may sometimes feel a bit out of sync. You might notice pushing during lower-energy windows or finding it harder to enjoy higher-energy times. Gentle schedule experiments may help you notice what feels better. This is a personal insight, not a medical evaluation.';
   } else if (alignmentScore < 60) {
     status = 'moderate';
-    interpretation = 'There is partial alignment, but certain windows may feel flat or strained. Small schedule experiments could improve both mood and output.';
+    interpretation =
+      'This suggests a general lifestyle tendency where some parts of your day may feel aligned while others feel flatter or more strained. You may consider trying small shifts—like moving creative tasks to naturally brighter windows or adding brief breaks—to see what feels best.';
   } else if (alignmentScore < 80) {
     status = 'good';
-    interpretation = 'You are mostly aligned. Fine-tuning task placement and recovery breaks may unlock even better days.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your day may already feel mostly aligned with your energy. Fine-tuning task placement and short recovery breaks may gently support even smoother days.';
   }
 
   const recommendations: string[] = [
@@ -560,9 +564,27 @@ export default function DailyEnergyMoodSynchronizationTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates how well your daily mood aligns with your energy curve.</p>
+          <p>
+            This tool provides general wellness insights about how your daily mood may align with your energy curve. This
+            is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include an alignment score, best energy window, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs make it easy for humans or AI assistants to interpret and act on the results.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

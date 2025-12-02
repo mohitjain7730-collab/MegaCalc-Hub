@@ -158,17 +158,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const combinedScore = clamp(((normalizedEvents + normalizedTime) / 2) * 100, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your positive emotion ratio appears strong and supportive of long-term wellbeing.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your positive emotion ratio may feel supportive for your overall day-to-day wellbeing.';
 
   if (combinedScore < 40) {
     status = 'low';
-    interpretation = 'Positive experiences are relatively scarce compared to negative ones. Consider intentionally stacking small positive moments into your days.';
+    interpretation =
+      'This suggests a general lifestyle tendency where positive experiences may currently feel less frequent than more neutral or difficult moments. You might gently experiment with adding small, pleasant or meaningful moments into your days. This is a personal insight, not a medical evaluation.';
   } else if (combinedScore < 60) {
     status = 'moderate';
-    interpretation = 'Your ratio is mixed. There are meaningful positives, but negative or neutral stretches may dominate certain days.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your days may contain a mix of uplifting and more challenging stretches. You may consider noticing and savoring the positive moments that do show up, even when days feel busy.';
   } else if (combinedScore < 80) {
     status = 'good';
-    interpretation = 'You experience more positive than negative emotion overall. A few micro-habit tweaks could push this into a flourishing range.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may experience more positive than challenging emotion overall. Gentle micro-habits—like brief walks, music, or gratitude notes—may support this pattern further if you choose.';
   }
 
   const recommendations: string[] = [
@@ -556,9 +560,27 @@ export default function PositiveEmotionRatioCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates your positive emotion ratio using event counts and minutes in positive versus negative states.</p>
+          <p>
+            This tool provides general wellness insights about your positive emotion ratio using event counts and minutes
+            in positive versus negative states. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include event ratio, time ratio, combined score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs make the methodology easy to interpret for humans and AI assistants.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

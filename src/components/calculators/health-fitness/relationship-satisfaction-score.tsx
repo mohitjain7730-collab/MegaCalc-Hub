@@ -159,17 +159,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const connectionIndex = clamp((trustLevel / 10) * 60 + clamp(sharedActivities / 20, 0, 1) * 40, 0, 100);
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Overall satisfaction appears reasonably healthy, with room for continued growth.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where your overall sense of satisfaction in this relationship may feel reasonably steady, with room for gentle growth.';
 
   if (satisfactionScore < 40) {
     status = 'low';
-    interpretation = 'This relationship may feel strained or unbalanced. Communication, trust repair, or support could be valuable.';
+    interpretation =
+      'This suggests a general lifestyle tendency where this relationship may sometimes feel strained or less balanced. You may consider gentle conversations, small changes in shared time, or seeking supportive perspectives if that feels helpful. This is a personal insight, not a medical evaluation.';
   } else if (satisfactionScore < 60) {
     status = 'moderate';
-    interpretation = 'There are strengths here, but also pain points worth addressing before resentment builds.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may notice both meaningful strengths and areas that feel tender. Exploring small, caring adjustments together may help you both feel more supported.';
   } else if (satisfactionScore > 80 && conflictFrequency <= 3) {
     status = 'optimal';
-    interpretation = 'You report strong satisfaction and connection markers. Continuing to invest intentionally can help maintain this.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may feel strong satisfaction and connection overall. Continuing to invest intentionally—through appreciation, time together, and honest check-ins—may help maintain this pattern.';
   }
 
   const recommendations: string[] = [
@@ -549,9 +553,27 @@ export default function RelationshipSatisfactionScore() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This calculator offers a structured snapshot of relationship satisfaction using four simple inputs.</p>
+          <p>
+            This calculator offers a structured, general wellness snapshot of relationship satisfaction using four simple
+            inputs. This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>Outputs include a satisfaction score, connection index, qualitative status, recommendations, an action plan, and supporting calculations.</p>
           <p>Guide content, formulas, and FAQs ensure the context is clear for humans and AI assistants reviewing the results.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>

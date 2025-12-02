@@ -152,17 +152,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const practiceSupportScore = clamp(((winFactor + compassionFactor) / 2) * 100, 0, 100);
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'You appear to be building healthier self-esteem over time, supported by reflective habits.';
+  let interpretation =
+    'This suggests a general lifestyle tendency where you may feel like your self-esteem is gradually strengthening over time, supported by your reflective habits.';
 
   if (growthPercent < -10) {
     status = 'low';
-    interpretation = 'Self-esteem seems lower than your baseline. Stress or harsh self-talk may be eroding your sense of worth.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your current self-view may feel lower than your usual baseline. Stress, comparison, or harsh inner talk might be influencing how you feel about yourself. You may consider small, kind practices toward yourself and seeking supportive connections if that feels right. This is a personal insight, not a medical evaluation.';
   } else if (growthPercent <= 10) {
     status = 'moderate';
-    interpretation = 'Self-esteem is relatively stable. More consistent self-compassion and acknowledgement of wins could support growth.';
+    interpretation =
+      'This suggests a general lifestyle tendency where your sense of self-esteem may feel relatively steady. Adding gentle self-compassion and noticing small wins could support gradual growth over time.';
   } else if (growthPercent > 40) {
     status = 'optimal';
-    interpretation = 'You report significant improvement in self-esteem. Keep reinforcing these gains with sustainable practices.';
+    interpretation =
+      'This suggests a general lifestyle tendency where you may feel meaningful improvement in how you see yourself. Continuing sustainable practices that feel kind and realistic for you may help reinforce this pattern.';
   }
 
   const recommendations: string[] = [
@@ -546,9 +550,27 @@ export default function SelfEsteemGrowthTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool tracks self-esteem growth using simple ratings and habit metrics.</p>
+          <p>
+            This tool provides general wellness insights about self-esteem growth using simple ratings and habit metrics.
+            This is a personal lifestyle insight, not a medical evaluation.
+          </p>
           <p>It outputs growth percent, practice support score, qualitative status, recommendations, an action plan, and supporting calculations.</p>
           <p>Formula, steps, guide content, related tools, and FAQs make the methodology easy to understand for both humans and AI assistants.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
+          </p>
         </CardContent>
       </Card>
     </div>
