@@ -1,66 +1,11 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 
 import { Button } from '@/components/ui/button';
 import { ArticleSchemaInjector } from '@/components/article-schema-injector';
+import { ChartWrapper } from '@/components/learning-hub/chart-wrapper';
 import { articles } from '@/lib/learning-hub-articles';
-
-// Map chartComponent strings to actual React components
-const chartComponents = {
-  CompoundInterestChart: dynamic(
-    () =>
-      import('@/components/learning-hub/charts/compound-interest-chart').then(
-        (m) => m.CompoundInterestChart,
-      ),
-    { ssr: false },
-  ),
-  AprVsApyChart: dynamic(
-    () =>
-      import('@/components/learning-hub/charts/apr-vs-apy-chart').then(
-        (m) => m.AprVsApyChart,
-      ),
-    { ssr: false },
-  ),
-  BmiChart: dynamic(
-    () =>
-      import('@/components/learning-hub/charts/bmi-chart').then(
-        (m) => m.BmiChart,
-      ),
-    { ssr: false },
-  ),
-  NewtonsSecondLawChart: dynamic(
-    () =>
-      import(
-        '@/components/learning-hub/charts/newtons-second-law-chart'
-      ).then((m) => m.NewtonsSecondLawChart),
-    { ssr: false },
-  ),
-  PressureUnitsChart: dynamic(
-    () =>
-      import('@/components/learning-hub/charts/pressure-units-chart').then(
-        (m) => m.PressureUnitsChart,
-      ),
-    { ssr: false },
-  ),
-  BfpChart: dynamic(
-    () =>
-      import('@/components/learning-hub/charts/bfp-chart').then(
-        (m) => m.BfpChart,
-      ),
-    { ssr: false },
-  ),
-  BmrTdeeChart: dynamic(
-    () =>
-      import('@/components/learning-hub/charts/bmr-tdee-chart').then(
-        (m) => m.BmrTdeeChart,
-      ),
-    { ssr: false },
-  ),
-} as const;
-
-type ChartKey = keyof typeof chartComponents;
 
 function getArticle(slug: string) {
   return articles.find((article) => article.slug === slug);
@@ -147,10 +92,6 @@ export default async function LearningHubArticlePage({
   const description = getDescription(article.content);
   const schema = generateArticleSchema(slug, article.title, description);
 
-  const ChartComponent =
-    article.chartComponent &&
-    (chartComponents[article.chartComponent as ChartKey] as React.ComponentType | undefined);
-
   return (
     <>
       <ArticleSchemaInjector schema={schema} />
@@ -169,11 +110,7 @@ export default async function LearningHubArticlePage({
             </h1>
           </div>
 
-          {ChartComponent && (
-            <div className="mb-10">
-              <ChartComponent />
-            </div>
-          )}
+          <ChartWrapper chartComponent={article.chartComponent} />
 
           <article className="prose prose-slate dark:prose-invert max-w-none">
             <div
