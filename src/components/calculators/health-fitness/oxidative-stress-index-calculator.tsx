@@ -102,11 +102,6 @@ const relatedCalculators = [
     description: 'Assess stress burden comprehensively.',
   },
   {
-    name: 'Mitochondrial Health Estimator',
-    slug: 'mitochondrial-health-estimator',
-    description: 'Evaluate cellular health together.',
-  },
-  {
     name: 'Cellular Hydration Score Calculator',
     slug: 'cellular-hydration-score-calculator',
     description: 'Monitor complete cellular health.',

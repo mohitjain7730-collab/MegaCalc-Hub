@@ -297,7 +297,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'biological-stress-load-allostatic-load-calculator': dynamic(() => import('@/components/calculators/health-fitness/biological-stress-load-allostatic-load-calculator')),
     'oxidative-stress-index-calculator': dynamic(() => import('@/components/calculators/health-fitness/oxidative-stress-index-calculator')),
     'cellular-hydration-score-calculator': dynamic(() => import('@/components/calculators/health-fitness/cellular-hydration-score-calculator')),
-    'mitochondrial-health-estimator': dynamic(() => import('@/components/calculators/health-fitness/mitochondrial-health-estimator')),
     'detox-pathway-efficiency-calculator': dynamic(() => import('@/components/calculators/health-fitness/detox-pathway-efficiency-calculator')),
     'circadian-rhythm-disruption-risk-calculator': dynamic(() => import('@/components/calculators/health-fitness/circadian-rhythm-disruption-risk-calculator')),
     'sleep-quality-vs-longevity-correlation-calculator': dynamic(() => import('@/components/calculators/health-fitness/sleep-quality-vs-longevity-correlation-calculator')),
@@ -354,9 +353,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     ),
     'mental-energy-drain-predictor': dynamic(
       () => import('@/components/calculators/health-fitness/mental-energy-drain-predictor'),
-    ),
-    'biological-age-calculator-epigenetic-proxy': dynamic(
-      () => import('@/components/calculators/health-fitness/biological-age-calculator-epigenetic-proxy'),
     ),
     'longevity-score-estimator': dynamic(
       () => import('@/components/calculators/health-fitness/longevity-score-estimator'),
@@ -424,7 +420,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'hydration-tracker-by-climate-weight-calculator': dynamic(() => import('@/components/calculators/health-fitness/hydration-tracker-by-climate-weight-calculator')),
     'diet-break-refeed-day-planner-calculator': dynamic(() => import('@/components/calculators/health-fitness/diet-break-refeed-day-planner-calculator')),
     'cheat-day-impact-on-weekly-deficit-calculator': dynamic(() => import('@/components/calculators/health-fitness/cheat-day-impact-on-weekly-deficit-calculator')),
-    'adaptive-thermogenesis-offset-calculator': dynamic(() => import('@/components/calculators/health-fitness/adaptive-thermogenesis-offset-calculator')),
     'sweat-rate-calculator-athletic-use': dynamic(() => import('@/components/calculators/health-fitness/sweat-rate-calculator-athletic-use')),
     'step-to-heart-rate-efficiency-calculator': dynamic(() => import('@/components/calculators/health-fitness/step-to-heart-rate-efficiency-calculator')),
     'microbreak-frequency-calculator-for-desk-jobs': dynamic(() => import('@/components/calculators/health-fitness/microbreak-frequency-calculator-for-desk-jobs')),
@@ -639,7 +634,6 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'thyroid-function-basal-energy-calculator': dynamic(() => import('@/components/calculators/health-fitness/thyroid-function-basal-energy-calculator')),
     'caloric-cost-of-cold-exposure-calculator': dynamic(() => import('@/components/calculators/health-fitness/caloric-cost-of-cold-exposure-calculator')),
     'seasonal-energy-expenditure-calculator': dynamic(() => import('@/components/calculators/health-fitness/seasonal-energy-expenditure-calculator')),
-    'mitochondrial-efficiency-estimator': dynamic(() => import('@/components/calculators/health-fitness/mitochondrial-efficiency-estimator')),
     'paleo-compliance-score-calculator': dynamic(() => import('@/components/calculators/health-fitness/paleo-compliance-score-calculator')),
     'fodmap-load-calculator': dynamic(() => import('@/components/calculators/health-fitness/fodmap-load-calculator')),
     'plant-based-protein-gap-calculator': dynamic(() => import('@/components/calculators/health-fitness/plant-based-protein-gap-calculator')),

@@ -108,11 +108,6 @@ const relatedCalculators = [
     description: 'Combine heat and light strategies thoughtfully.',
   },
   {
-    name: 'Mitochondrial Health Estimator',
-    slug: 'mitochondrial-health-estimator',
-    description: 'Track cellular energy factors targeted by light.',
-  },
-  {
     name: 'Daily Screen Exposure Stress Index Calculator',
     slug: 'daily-screen-exposure-stress-index-calculator',
     description: 'Contrast therapeutic vs. stress-inducing light exposure.',

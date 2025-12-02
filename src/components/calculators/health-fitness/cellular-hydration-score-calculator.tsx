@@ -107,11 +107,6 @@ const relatedCalculators = [
     description: 'Assess cellular health comprehensively.',
   },
   {
-    name: 'Mitochondrial Health Estimator',
-    slug: 'mitochondrial-health-estimator',
-    description: 'Evaluate complete cellular health.',
-  },
-  {
     name: 'Hydration Needs Calculator',
     slug: 'hydration-needs-calculator',
     description: 'Track hydration requirements together.',

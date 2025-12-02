@@ -108,11 +108,6 @@ const relatedCalculators = [
     description: 'Plan fluid and electrolyte intake after heat stress.',
   },
   {
-    name: 'Mitochondrial Health Estimator',
-    slug: 'mitochondrial-health-estimator',
-    description: 'Explore cellular resilience alongside sauna practice.',
-  },
-  {
     name: 'Stress Hormone Balance Calculator',
     slug: 'stress-hormone-balance-calculator',
     description: 'Track stress load when adding thermal stressors.',

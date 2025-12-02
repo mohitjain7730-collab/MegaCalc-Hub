@@ -107,11 +107,6 @@ const relatedCalculators = [
     description: 'Assess sleep quality and recovery needs.',
   },
   {
-    name: 'Adaptive Thermogenesis Offset Calculator',
-    slug: 'adaptive-thermogenesis-offset-calculator',
-    description: 'Evaluate metabolic adaptation and recovery.',
-  },
-  {
     name: 'Muscle Soreness Recovery Estimator',
     slug: 'muscle-soreness-recovery-estimator',
     description: 'Estimate recovery time from muscle soreness.',

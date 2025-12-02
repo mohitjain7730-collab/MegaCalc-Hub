@@ -98,16 +98,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Mitochondrial Health Estimator',
-    slug: 'mitochondrial-health-estimator',
-    description: 'Assess lifestyle factors tied to cellular energy.',
-  },
-  {
-    name: 'Biological Age Calculator (epigenetic-based proxy)',
-    slug: 'biological-age-calculator-epigenetic-proxy',
-    description: 'See how NAD+-supportive habits might relate to aging proxies.',
-  },
-  {
     name: 'Lifespan Extension Strategy Score Calculator',
     slug: 'lifespan-extension-strategy-score-calculator',
     description: 'Evaluate your overall longevity game plan.',

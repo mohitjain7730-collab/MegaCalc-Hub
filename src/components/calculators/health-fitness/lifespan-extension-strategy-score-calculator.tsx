@@ -112,11 +112,6 @@ const relatedCalculators = [
     slug: 'biological-stress-load-allostatic-load-calculator',
     description: 'Monitor stress affecting longevity.',
   },
-  {
-    name: 'Mitochondrial Health Estimator',
-    slug: 'mitochondrial-health-estimator',
-    description: 'Assess cellular health supporting longevity.',
-  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/health-fitness/lifespan-extension-strategy-score-calculator';

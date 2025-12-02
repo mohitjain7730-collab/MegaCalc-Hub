@@ -2416,7 +2416,7 @@ export const calculators: Calculator[] = [
     name: 'Brown Fat Activation Estimator',
     description: 'Estimate additional calories burned from cold exposure and brown fat activation.',
     slug: 'brown-fat-activation-estimator',
-    category: 'health-fitness'
+    category: 'wellness'
   },
   {
     id: 3108,
@@ -3968,15 +3968,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Estimate seasonal differences in outdoor thermogenic demand to adjust calorie plans.'
   },
   {
-    id: 210,
-    name: 'Mitochondrial Efficiency Estimator',
-    description: 'Estimate oxygen cost per watt at submax as a proxy for efficiency.',
-    slug: 'mitochondrial-efficiency-estimator',
-    category: 'health-fitness',
-    metaTitle: 'Mitochondrial Efficiency Estimator',
-    metaDescription: 'Estimate oxygen cost per watt at submax to gauge mitochondrial efficiency and economy.'
-  },
-  {
     id: 211,
     name: 'Paleo Compliance Score Calculator',
     description: 'Heuristic diet adherence score to paleo-style eating patterns.',
@@ -4582,15 +4573,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate cellular hydration score from water intake, electrolyte intake, hydration level, and age to assess cellular hydration.'
   },
   {
-    id: 5025,
-    name: 'Mitochondrial Health Estimator',
-    description: 'Estimate mitochondrial health from exercise level, energy level, antioxidant intake, and age.',
-    slug: 'mitochondrial-health-estimator',
-    category: 'health-fitness',
-    metaTitle: 'Mitochondrial Health Estimator',
-    metaDescription: 'Estimate mitochondrial health from exercise level, energy level, antioxidant intake, and age to assess cellular energy production.'
-  },
-  {
     id: 5026,
     name: 'Detox Pathway Efficiency Wellness Calculator',
     description: 'Get general wellness insights about detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake. This is a personal lifestyle insight, not a medical evaluation.',
@@ -4969,15 +4951,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Predict mental energy drain using meeting hours, deep work hours, context switches per day, and sleep duration.'
   },
   {
-    id: 7315,
-    name: 'Biological Age Calculator (epigenetic-based proxy)',
-    description: 'Estimate a proxy for biological age using simple cardiovascular and lifestyle markers.',
-    slug: 'biological-age-calculator-epigenetic-proxy',
-    category: 'wellness',
-    metaTitle: 'Biological Age Calculator (Epigenetic-Based Proxy)',
-    metaDescription: 'Estimate a proxy for biological age from resting heart rate, waist-to-height ratio, lifestyle score, and chronological age.'
-  },
-  {
     id: 7316,
     name: 'Longevity Score Estimator',
     description: 'Estimate a longevity-focused lifestyle score from movement, diet, sleep, and harmful habit inputs.',
@@ -5215,15 +5188,6 @@ export const calculators: Calculator[] = [
     category: 'health-fitness',
     metaTitle: 'Cheat Day Impact on Weekly Deficit Calculator',
     metaDescription: 'Calculate how cheat days impact your weekly calorie deficit and fat loss progress to optimize diet adherence.'
-  },
-  {
-    id: 5074,
-    name: 'Adaptive Thermogenesis Offset Calculator',
-    description: 'Calculate metabolic adaptation and determine refeed calorie offsets to restore metabolic rate.',
-    slug: 'adaptive-thermogenesis-offset-calculator',
-    category: 'health-fitness',
-    metaTitle: 'Adaptive Thermogenesis Offset Calculator',
-    metaDescription: 'Calculate metabolic adaptation and determine refeed calorie offsets to restore metabolic rate during extended dieting.'
   },
   {
     id: 5075,

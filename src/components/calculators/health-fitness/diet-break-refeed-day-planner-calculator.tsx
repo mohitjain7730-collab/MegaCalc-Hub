@@ -109,11 +109,6 @@ const relatedCalculators = [
     description: 'Assess the impact of cheat days on your weekly progress.',
   },
   {
-    name: 'Adaptive Thermogenesis Offset Calculator',
-    slug: 'adaptive-thermogenesis-offset-calculator',
-    description: 'Evaluate metabolic adaptation and refeed needs.',
-  },
-  {
     name: 'Reverse Dieting Calorie Increase Planner',
     slug: 'reverse-dieting-calorie-increase-planner',
     description: 'Plan gradual calorie increases after dieting.',

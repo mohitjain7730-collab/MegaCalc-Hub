@@ -98,11 +98,6 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Biological Age Calculator (epigenetic-based proxy)',
-    slug: 'biological-age-calculator-epigenetic-proxy',
-    description: 'See how lifestyle levers might shift biological age proxies.',
-  },
-  {
     name: 'Lifespan Extension Strategy Score Calculator',
     slug: 'lifespan-extension-strategy-score-calculator',
     description: 'Evaluate how broad your longevity interventions are.',

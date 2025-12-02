@@ -110,11 +110,6 @@ const relatedCalculators = [
     description: 'Calculate your maintenance calories accurately.',
   },
   {
-    name: 'Adaptive Thermogenesis Offset Calculator',
-    slug: 'adaptive-thermogenesis-offset-calculator',
-    description: 'Evaluate metabolic adaptation and refeed needs.',
-  },
-  {
     name: 'Calorie Deficit Calculator',
     slug: 'calorie-deficit-calculator',
     description: 'Calculate optimal calorie deficits for fat loss.',
