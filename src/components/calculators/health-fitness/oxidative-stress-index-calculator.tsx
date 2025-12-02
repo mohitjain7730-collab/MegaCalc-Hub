@@ -128,12 +128,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Oxidative Stress Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Oxidative Stress Wellness Index Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Oxidative Stress Index Calculator',
+      name: 'Oxidative Stress Wellness Index Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate oxidative stress index from antioxidant intake, exercise level, stress level, and age.',
@@ -191,17 +191,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const stressScore = oxidativeStressIndex; // Same value
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your oxidative stress index appears optimal. Continue maintaining healthy antioxidant intake and lifestyle habits.';
+  let interpretation = 'This suggests a general lifestyle tendency where your oxidative stress index may appear optimal. You may consider continuing to maintain healthy antioxidant intake and lifestyle habits.';
 
   if (oxidativeStressIndex > 70 || stressScore > 70) {
     status = 'low';
-    interpretation = 'Your oxidative stress index is high. This may indicate increased cellular damage risk. Focus on increasing antioxidant intake, stress management, and healthy lifestyle.';
+    interpretation = 'This suggests a general lifestyle tendency where your oxidative stress index may be high. This may indicate increased cellular damage tendency. You may consider focusing on increasing antioxidant intake, stress management, and healthy lifestyle. This is a personal insight, not a medical evaluation.';
   } else if (oxidativeStressIndex > 60 || stressScore > 60) {
     status = 'moderate';
-    interpretation = 'Your oxidative stress index is elevated. Increase antioxidant intake, improve stress management, and maintain regular moderate exercise to reduce oxidative stress.';
+    interpretation = 'This suggests a general lifestyle tendency where your oxidative stress index may be elevated. You may consider increasing antioxidant intake, improving stress management, and maintaining regular moderate exercise to reduce oxidative stress.';
   } else if (oxidativeStressIndex > 50 || stressScore > 50) {
     status = 'good';
-    interpretation = 'Your oxidative stress index is manageable. Continue maintaining healthy lifestyle and antioxidant intake.';
+    interpretation = 'This suggests a general lifestyle tendency where your oxidative stress index may be manageable. You may consider continuing to maintain healthy lifestyle and antioxidant intake.';
   }
 
   const recommendations = [
@@ -210,7 +210,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'Manage stress through mindfulness, relaxation techniques, and stress reduction strategies, as chronic stress increases oxidative stress burden.',
   ];
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Consider consulting a healthcare provider for guidance on antioxidant supplementation and oxidative stress management strategies.');
+    recommendations.push('You may consider seeking professional guidance for guidance on antioxidant supplementation and oxidative stress management strategies. This is a personal insight, not a medical evaluation.');
   }
   if (antioxidantIntake < 10) {
     recommendations.push('Increase antioxidant intake. Aim for a diverse diet rich in colorful fruits and vegetables to provide various antioxidants and reduce oxidative stress.');
@@ -246,9 +246,9 @@ export default function OxidativeStressIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Oxidative Stress Index Calculator
+            Oxidative Stress Wellness Index Calculator
           </CardTitle>
-          <CardDescription>Calculate oxidative stress index from antioxidant intake, exercise level, stress level, and age.</CardDescription>
+          <CardDescription>Get general wellness insights about oxidative stress index from antioxidant intake, exercise level, stress level, and age. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -506,9 +506,21 @@ export default function OxidativeStressIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates oxidative stress index from antioxidant intake, exercise level, stress level, and age.</p>
+          <p>This tool provides general wellness insights about oxidative stress index from antioxidant intake, exercise level, stress level, and age. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include antioxidant intake, exercise level, stress level, oxidative stress index, stress score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

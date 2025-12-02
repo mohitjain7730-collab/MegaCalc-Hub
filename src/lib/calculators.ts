@@ -4367,30 +4367,30 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5000,
-    name: 'Resilience Score Calculator',
-    description: 'Calculate resilience score and percentage from stress level, resilience score, age, and coping ability.',
+    name: 'Resilience Wellness Score Calculator',
+    description: 'Get general wellness insights about resilience score and percentage from stress level, resilience score, age, and coping ability. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'resilience-score-calculator',
     category: 'wellness',
-    metaTitle: 'Resilience Score Calculator',
-    metaDescription: 'Calculate resilience score and percentage from stress level, resilience score, age, and coping ability to assess mental resilience.'
+    metaTitle: 'Resilience Wellness Score Calculator',
+    metaDescription: 'Get general wellness insights about resilience score and percentage from stress level, resilience score, age, and coping ability. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5001,
-    name: 'Positive vs Negative Thought Ratio Calculator',
-    description: 'Calculate positive vs negative thought ratio from thought counts, ratio, and mood level.',
+    name: 'Positive vs Negative Thought Ratio Wellness Calculator',
+    description: 'Get general wellness insights about positive vs negative thought ratio from thought counts, ratio, and mood level. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'positive-vs-negative-thought-ratio-calculator',
     category: 'wellness',
-    metaTitle: 'Positive vs Negative Thought Ratio Calculator',
-    metaDescription: 'Calculate positive vs negative thought ratio from thought counts, ratio, and mood level to assess mental health and cognitive patterns.'
+    metaTitle: 'Positive vs Negative Thought Ratio Wellness Calculator',
+    metaDescription: 'Get general wellness insights about positive vs negative thought ratio from thought counts, ratio, and mood level. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5002,
-    name: 'Hemoglobin (Hb) Level Estimator',
-    description: 'Estimate hemoglobin level from hemoglobin level, age, gender, and iron intake.',
+    name: 'Hemoglobin (Hb) Level Wellness Estimator',
+    description: 'Get general wellness insights about hemoglobin level from hemoglobin level, age, gender, and iron intake. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'hemoglobin-hb-level-estimator',
     category: 'wellness',
-    metaTitle: 'Hemoglobin (Hb) Level Estimator',
-    metaDescription: 'Estimate hemoglobin level from hemoglobin level, age, gender, and iron intake to assess blood health and oxygen transport capacity.'
+    metaTitle: 'Hemoglobin (Hb) Level Wellness Estimator',
+    metaDescription: 'Get general wellness insights about hemoglobin level from hemoglobin level, age, gender, and iron intake. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5003,
@@ -4556,21 +4556,21 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5022,
-    name: 'Biological Stress Load (Allostatic Load) Calculator',
-    description: 'Calculate biological stress load allostatic load from stress level, sleep quality, cortisol level, and chronic disease burden.',
+    name: 'Biological Stress Load (Allostatic Load) Wellness Calculator',
+    description: 'Get general wellness insights about biological stress load (allostatic load) from stress level, sleep quality, cortisol level, and chronic disease burden. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'biological-stress-load-allostatic-load-calculator',
     category: 'wellness',
-    metaTitle: 'Biological Stress Load (Allostatic Load) Calculator',
-    metaDescription: 'Calculate biological stress load allostatic load from stress level, sleep quality, cortisol level, and chronic disease burden to assess stress burden.'
+    metaTitle: 'Biological Stress Load (Allostatic Load) Wellness Calculator',
+    metaDescription: 'Get general wellness insights about biological stress load (allostatic load) from stress level, sleep quality, cortisol level, and chronic disease burden. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5023,
-    name: 'Oxidative Stress Index Calculator',
-    description: 'Calculate oxidative stress index from antioxidant intake, exercise level, stress level, and age.',
+    name: 'Oxidative Stress Wellness Index Calculator',
+    description: 'Get general wellness insights about oxidative stress index from antioxidant intake, exercise level, stress level, and age. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'oxidative-stress-index-calculator',
     category: 'wellness',
-    metaTitle: 'Oxidative Stress Index Calculator',
-    metaDescription: 'Calculate oxidative stress index from antioxidant intake, exercise level, stress level, and age to assess cellular stress.'
+    metaTitle: 'Oxidative Stress Wellness Index Calculator',
+    metaDescription: 'Get general wellness insights about oxidative stress index from antioxidant intake, exercise level, stress level, and age. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5024,
@@ -4592,21 +4592,21 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5026,
-    name: 'Detox Pathway Efficiency Calculator',
-    description: 'Calculate detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake.',
+    name: 'Detox Pathway Efficiency Wellness Calculator',
+    description: 'Get general wellness insights about detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'detox-pathway-efficiency-calculator',
     category: 'wellness',
-    metaTitle: 'Detox Pathway Efficiency Calculator',
-    metaDescription: 'Calculate detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake to assess organ function.'
+    metaTitle: 'Detox Pathway Efficiency Wellness Calculator',
+    metaDescription: 'Get general wellness insights about detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5027,
-    name: 'Circadian Rhythm Disruption Risk Calculator',
-    description: 'Calculate circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time.',
+    name: 'Circadian Rhythm Disruption Tendency Wellness Calculator',
+    description: 'Get general wellness insights about circadian rhythm disruption tendency from sleep schedule, light exposure, meal timing, and screen time. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'circadian-rhythm-disruption-risk-calculator',
     category: 'wellness',
-    metaTitle: 'Circadian Rhythm Disruption Risk Calculator',
-    metaDescription: 'Calculate circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time to assess circadian health.'
+    metaTitle: 'Circadian Rhythm Disruption Tendency Wellness Calculator',
+    metaDescription: 'Get general wellness insights about circadian rhythm disruption tendency from sleep schedule, light exposure, meal timing, and screen time. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5028,
@@ -6010,30 +6010,30 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4588,
-    name: 'Emotional Stability Index Calculator',
-    description: 'Calculate emotional stability index based on mood fluctuations, emotional reactivity, stress resilience, emotional regulation, recovery speed, and emotional balance.',
+    name: 'Emotional Stability Wellness Index Calculator',
+    description: 'Get general wellness insights about emotional stability by evaluating mood fluctuation, emotional reactivity, stress resilience, regulation ability, recovery speed, and emotional balance. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'emotional-stability-index-calculator',
     category: 'wellness',
-    metaTitle: 'Emotional Stability Index Calculator',
-    metaDescription: 'Calculate emotional stability index based on mood fluctuations, emotional reactivity, stress resilience, emotional regulation, recovery speed, and emotional balance.'
+    metaTitle: 'Emotional Stability Wellness Index Calculator',
+    metaDescription: 'Get general wellness insights about emotional stability by evaluating mood fluctuation, emotional reactivity, stress resilience, regulation ability, recovery speed, and emotional balance. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4589,
-    name: 'Social Connection Score Calculator',
-    description: 'Assess social connection score based on relationship quantity, quality, interaction frequency, social support, and community engagement to understand social wellbeing.',
+    name: 'Social Connection Wellness Score Calculator',
+    description: 'Get general wellness insights about social connection by evaluating close relationships, social interactions, relationship quality, social support, community involvement, and sense of belonging. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'social-connection-score-calculator',
     category: 'wellness',
-    metaTitle: 'Social Connection Score Calculator',
-    metaDescription: 'Assess social connection score based on relationship quantity, quality, interaction frequency, social support, and community engagement to understand social wellbeing.'
+    metaTitle: 'Social Connection Wellness Score Calculator',
+    metaDescription: 'Get general wellness insights about social connection by evaluating close relationships, social interactions, relationship quality, social support, community involvement, and sense of belonging. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4590,
-    name: 'Loneliness Risk Estimator',
-    description: 'Estimate loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support to identify areas for improvement.',
+    name: 'Loneliness Tendency Wellness Estimator',
+    description: 'Get general wellness insights about loneliness tendency based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'loneliness-risk-estimator',
     category: 'wellness',
-    metaTitle: 'Loneliness Risk Estimator',
-    metaDescription: 'Estimate loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support to identify areas for improvement.'
+    metaTitle: 'Loneliness Tendency Wellness Estimator',
+    metaDescription: 'Get general wellness insights about loneliness tendency based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support. This is a personal lifestyle insight, not a medical evaluation.'
   },
   // New Finance Calculators
   {

@@ -128,12 +128,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Detox Pathway Efficiency Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Detox Pathway Efficiency Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Detox Pathway Efficiency Calculator',
+      name: 'Detox Pathway Efficiency Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake.',
@@ -199,17 +199,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   efficiencyIndex = clamp(efficiencyIndex, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your detox pathway efficiency appears optimal. Continue maintaining healthy organ function and lifestyle habits.';
+  let interpretation = 'This suggests a general lifestyle tendency where your detox pathway efficiency may appear optimal. You may consider continuing to maintain healthy organ function and lifestyle habits.';
 
   if (efficiencyIndex < 40 || liverFunction < 4 || kidneyFunction < 4) {
     status = 'low';
-    interpretation = 'Your detox pathway efficiency is low. This may indicate impaired organ function. Consult a healthcare provider for evaluation and focus on supporting liver and kidney health.';
+    interpretation = 'This suggests a general lifestyle tendency where your detox pathway efficiency may be low. This may indicate areas for improvement in organ function. You may consider focusing on supporting liver and kidney health and seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (efficiencyIndex < 60 || liverFunction < 6 || kidneyFunction < 6) {
     status = 'moderate';
-    interpretation = 'Your detox pathway efficiency is moderate. Focus on improving organ function, hydration, and antioxidant intake to optimize detox pathways.';
+    interpretation = 'This suggests a general lifestyle tendency where your detox pathway efficiency may be moderate. You may consider focusing on improving organ function, hydration, and antioxidant intake to optimize detox pathways.';
   } else if (efficiencyIndex < 75) {
     status = 'good';
-    interpretation = 'Your detox pathway efficiency is good. Continue maintaining healthy lifestyle to support optimal organ function and detox pathways.';
+    interpretation = 'This suggests a general lifestyle tendency where your detox pathway efficiency may be good. You may consider continuing to maintain healthy lifestyle to support optimal organ function and detox pathways.';
   }
 
   const recommendations = [
@@ -218,7 +218,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'Maintain adequate hydration to support kidney function and toxin elimination. Drink water regularly throughout the day to optimize detox pathways.',
   ];
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Consult a healthcare provider for evaluation of liver and kidney function if scores are low. Organ dysfunction requires medical attention and appropriate management.');
+    recommendations.push('You may consider seeking professional guidance for evaluation of liver and kidney function if scores are low. This is a personal insight, not a medical evaluation.');
   }
   if (antioxidantIntake < 10) {
     recommendations.push('Increase antioxidant intake through diet: consume fruits, vegetables, nuts, and whole grains to support detox pathways and protect organs from oxidative damage.');
@@ -257,9 +257,9 @@ export default function DetoxPathwayEfficiencyCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Detox Pathway Efficiency Calculator
+            Detox Pathway Efficiency Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake.</CardDescription>
+          <CardDescription>Get general wellness insights about detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -519,9 +519,21 @@ export default function DetoxPathwayEfficiencyCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake.</p>
+          <p>This tool provides general wellness insights about detox pathway efficiency from liver function, kidney function, hydration level, and antioxidant intake. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include liver function, kidney function, hydration level, antioxidant intake, efficiency index, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

@@ -121,12 +121,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Hemoglobin (Hb) Level Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Hemoglobin (Hb) Level Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Hemoglobin (Hb) Level Estimator',
+      name: 'Hemoglobin (Hb) Level Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Estimate hemoglobin level from hemoglobin level, age, gender, and iron intake.',
@@ -188,20 +188,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const hemoglobinStatus = clamp(hemoglobinPercentage, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your hemoglobin level appears optimal. Continue maintaining adequate iron intake and healthy lifestyle.';
+  let interpretation = 'This suggests a general lifestyle tendency where your hemoglobin level may appear optimal. You may consider continuing to maintain adequate iron intake and healthy lifestyle.';
 
   if (hemoglobinLevel < minNormal - 2) {
     status = 'low';
-    interpretation = 'Your hemoglobin level appears low (anemia). Focus on increasing iron intake and consult a healthcare provider for evaluation.';
+    interpretation = 'This suggests a general lifestyle tendency where your hemoglobin level may appear low. You may consider focusing on increasing iron intake and seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (hemoglobinLevel < minNormal) {
     status = 'moderate';
-    interpretation = 'Your hemoglobin level is slightly below normal. Increase iron intake and monitor for improvement.';
+    interpretation = 'This suggests a general lifestyle tendency where your hemoglobin level may be slightly below typical ranges. You may consider increasing iron intake and monitoring for improvement.';
   } else if (hemoglobinLevel < minNormal + 1) {
     status = 'good';
-    interpretation = 'Your hemoglobin level is good. Continue maintaining adequate iron intake.';
+    interpretation = 'This suggests a general lifestyle tendency where your hemoglobin level may be good. You may consider continuing to maintain adequate iron intake.';
   } else if (hemoglobinLevel > maxNormal + 1) {
     status = 'moderate';
-    interpretation = 'Your hemoglobin level is elevated. Consult a healthcare provider to rule out underlying conditions.';
+    interpretation = 'This suggests a general lifestyle tendency where your hemoglobin level may be elevated. You may consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   }
 
   const recommendations = [
@@ -210,7 +210,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'Avoid consuming calcium-rich foods or tea/coffee with iron-rich meals, as they can inhibit iron absorption.',
   ];
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Consult a healthcare provider for proper diagnosis and treatment if hemoglobin remains low despite dietary changes.');
+    recommendations.push('You may consider seeking professional guidance if hemoglobin patterns remain low despite dietary changes. This is a personal insight, not a medical evaluation.');
   }
   if (values.ironIntake < 8) {
     recommendations.push('Increase daily iron intake. Recommended: 8-18 mg for adults, higher for menstruating women (18 mg) and pregnant women (27 mg).');
@@ -246,7 +246,7 @@ export default function HemoglobinHbLevelEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Droplet className="h-5 w-5" />
-            Hemoglobin (Hb) Level Estimator
+            Hemoglobin (Hb) Level Wellness Estimator
           </CardTitle>
           <CardDescription>Estimate hemoglobin level from hemoglobin level, age, gender, and iron intake.</CardDescription>
         </CardHeader>
@@ -547,9 +547,21 @@ export default function HemoglobinHbLevelEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates hemoglobin level from hemoglobin level (optional), age, gender, and iron intake.</p>
+          <p>This tool provides general wellness insights about hemoglobin level from hemoglobin level (optional), age, gender, and iron intake. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include hemoglobin level, hemoglobin percentage, hemoglobin status, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

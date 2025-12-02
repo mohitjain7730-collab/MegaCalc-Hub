@@ -128,12 +128,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Biological Stress Load (Allostatic Load) Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Biological Stress Load (Allostatic Load) Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Biological Stress Load (Allostatic Load) Calculator',
+      name: 'Biological Stress Load (Allostatic Load) Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate biological stress load allostatic load from stress level, sleep quality, cortisol level, and chronic disease burden.',
@@ -187,17 +187,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const loadIndex = (10 - allostaticLoad) * 10; // Invert for index (0-100, higher = better)
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your allostatic load appears low. Continue maintaining healthy stress management and lifestyle habits.';
+  let interpretation = 'This suggests a general lifestyle tendency where your allostatic load may appear low. You may consider continuing to maintain healthy stress management and lifestyle habits.';
 
   if (allostaticLoad > 7 || loadIndex < 30) {
     status = 'low';
-    interpretation = 'Your allostatic load is high. This indicates significant biological stress burden. Focus on stress reduction, sleep improvement, and consult a healthcare provider for support.';
+    interpretation = 'This suggests a general lifestyle tendency where your allostatic load may be high. This may indicate significant biological stress burden. You may consider focusing on stress reduction, sleep improvement, and seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (allostaticLoad > 5 || loadIndex < 50) {
     status = 'moderate';
-    interpretation = 'Your allostatic load is moderate. Focus on improving stress management, sleep quality, and addressing contributing factors to reduce biological stress burden.';
+    interpretation = 'This suggests a general lifestyle tendency where your allostatic load may be moderate. You may consider focusing on improving stress management, sleep quality, and addressing contributing factors to reduce biological stress burden.';
   } else if (loadIndex < 70) {
     status = 'good';
-    interpretation = 'Your allostatic load is manageable. Continue maintaining healthy lifestyle and stress management practices.';
+    interpretation = 'This suggests a general lifestyle tendency where your allostatic load may be manageable. You may consider continuing to maintain healthy lifestyle and stress management practices.';
   }
 
   const recommendations = [
@@ -206,7 +206,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'Engage in regular physical activity, which can help buffer stress responses and improve resilience to biological stress.',
   ];
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Consider professional support for stress management, including therapy, counseling, or stress reduction programs to address high allostatic load.');
+    recommendations.push('You may consider seeking professional guidance for stress management, including therapy, counseling, or stress reduction programs to address high allostatic load. This is a personal insight, not a medical evaluation.');
   }
   if (chronicDisease > 5) {
     recommendations.push('Work with healthcare providers to effectively manage chronic diseases, as uncontrolled conditions contribute significantly to allostatic load.');
@@ -245,9 +245,9 @@ export default function BiologicalStressLoadAllostaticLoadCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <AlertTriangle className="h-5 w-5" />
-            Biological Stress Load (Allostatic Load) Calculator
+            Biological Stress Load (Allostatic Load) Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate biological stress load allostatic load from stress level, sleep quality, cortisol level, and chronic disease burden.</CardDescription>
+          <CardDescription>Get general wellness insights about biological stress load (allostatic load) from stress level, sleep quality, cortisol level, and chronic disease burden. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -503,9 +503,21 @@ export default function BiologicalStressLoadAllostaticLoadCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates biological stress load allostatic load from stress level, sleep quality, cortisol level (optional), and chronic disease burden.</p>
+          <p>This tool provides general wellness insights about biological stress load (allostatic load) from stress level, sleep quality, cortisol level (optional), and chronic disease burden. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include stress level, sleep quality, cortisol level, allostatic load, load index, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

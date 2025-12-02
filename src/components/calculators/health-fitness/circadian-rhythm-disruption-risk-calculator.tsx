@@ -129,12 +129,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Circadian Rhythm Disruption Risk Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Circadian Rhythm Disruption Tendency Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Circadian Rhythm Disruption Risk Calculator',
+      name: 'Circadian Rhythm Disruption Tendency Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time.',
@@ -206,17 +206,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const riskIndex = disruptionRisk; // Same value
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your circadian rhythm disruption risk appears low. Continue maintaining consistent sleep schedule and healthy light exposure habits.';
+  let interpretation = 'This suggests a general lifestyle tendency where your circadian rhythm disruption tendency may appear low. You may consider continuing to maintain consistent sleep schedule and healthy light exposure habits.';
 
   if (disruptionRisk > 70 || sleepSchedule < 4 || screenTime > 7) {
     status = 'low';
-    interpretation = 'Your circadian rhythm disruption risk is high. This may significantly affect sleep, health, and well-being. Focus on improving sleep schedule, reducing screen time, and optimizing light exposure.';
+    interpretation = 'This suggests a general lifestyle tendency where your circadian rhythm disruption tendency may be high. This may significantly affect sleep, health, and well-being. You may consider focusing on improving sleep schedule, reducing screen time, and optimizing light exposure. This is a personal insight, not a medical evaluation.';
   } else if (disruptionRisk > 60 || sleepSchedule < 6 || screenTime > 5) {
     status = 'moderate';
-    interpretation = 'Your circadian rhythm disruption risk is moderate. Improve sleep schedule consistency, reduce screen time before bed, and optimize light exposure to lower risk.';
+    interpretation = 'This suggests a general lifestyle tendency where your circadian rhythm disruption tendency may be moderate. You may consider improving sleep schedule consistency, reducing screen time before bed, and optimizing light exposure to lower tendency.';
   } else if (disruptionRisk > 50) {
     status = 'good';
-    interpretation = 'Your circadian rhythm disruption risk is manageable. Continue maintaining consistent routines and healthy habits to support optimal circadian alignment.';
+    interpretation = 'This suggests a general lifestyle tendency where your circadian rhythm disruption tendency may be manageable. You may consider continuing to maintain consistent routines and healthy habits to support optimal circadian alignment.';
   }
 
   const recommendations = [
@@ -264,9 +264,9 @@ export default function CircadianRhythmDisruptionRiskCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Clock className="h-5 w-5" />
-            Circadian Rhythm Disruption Risk Calculator
+            Circadian Rhythm Disruption Tendency Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time.</CardDescription>
+          <CardDescription>Get general wellness insights about circadian rhythm disruption tendency from sleep schedule, light exposure, meal timing, and screen time. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -346,7 +346,7 @@ export default function CircadianRhythmDisruptionRiskCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See circadian rhythm disruption risk, sleep-wake cycle status, and recommendations.</CardDescription>
+            <CardDescription>See circadian rhythm disruption tendency, sleep-wake cycle status, and recommendations.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -524,9 +524,21 @@ export default function CircadianRhythmDisruptionRiskCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates circadian rhythm disruption risk from sleep schedule, light exposure, meal timing, and screen time.</p>
-          <p>Outputs include sleep schedule, light exposure, meal timing, screen time, disruption risk, risk index, status, recommendations, an action plan, and supporting metrics.</p>
+          <p>This tool provides general wellness insights about circadian rhythm disruption tendency from sleep schedule, light exposure, meal timing, and screen time. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include sleep schedule, light exposure, meal timing, screen time, disruption tendency, tendency index, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

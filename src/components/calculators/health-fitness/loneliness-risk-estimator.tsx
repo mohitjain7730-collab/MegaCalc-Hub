@@ -130,12 +130,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Loneliness Risk Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Loneliness Tendency Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Loneliness Risk Estimator',
+      name: 'Loneliness Tendency Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Estimate loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support to identify areas for improvement.',
@@ -170,20 +170,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   let status: ResultPayload['status'] = 'low-risk';
   
   if (clampedRisk < 30) {
-    riskLevel = 'Low Risk';
-    interpretation = 'Your loneliness risk is low. You have good social connections, meaningful relationships, and adequate social support. Maintain these connections.';
+    riskLevel = 'Low Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where your loneliness tendency may be low. You may have good social connections, meaningful relationships, and adequate social support. You may consider maintaining these connections.';
     status = 'low-risk';
   } else if (clampedRisk < 50) {
-    riskLevel = 'Moderate Risk';
-    interpretation = 'You have moderate loneliness risk. Consider strengthening existing relationships or building new meaningful connections to reduce risk.';
+    riskLevel = 'Moderate Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where you may have moderate loneliness tendency. You may consider strengthening existing relationships or building new meaningful connections.';
     status = 'moderate-risk';
   } else if (clampedRisk < 70) {
-    riskLevel = 'High Risk';
-    interpretation = 'Your loneliness risk is high. Prioritize building meaningful relationships, increasing social interactions, and developing stronger social support networks.';
+    riskLevel = 'High Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where your loneliness tendency may be high. You may consider prioritizing building meaningful relationships, increasing social interactions, and developing stronger social support networks.';
     status = 'high-risk';
   } else {
-    riskLevel = 'Critical Risk';
-    interpretation = 'You are at critical risk for chronic loneliness. Immediate attention to social connection is important. Consider seeking professional support and actively building meaningful relationships.';
+    riskLevel = 'Critical Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where loneliness tendency may be high. You may consider focusing on social connection and actively building meaningful relationships. You may also consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
     status = 'critical-risk';
   }
   
@@ -239,9 +239,9 @@ export default function LonelinessRiskEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Users className="h-5 w-5" />
-            Loneliness Risk Estimator
+            Loneliness Tendency Wellness Estimator
           </CardTitle>
-          <CardDescription>Estimate loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support to identify areas for improvement.</CardDescription>
+          <CardDescription>Get general wellness insights about loneliness tendency based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -513,9 +513,21 @@ export default function LonelinessRiskEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates loneliness risk based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support.</p>
-          <p>Outputs include a loneliness risk score, risk level, social connection score, interpretation, recommendations, and an action plan.</p>
+          <p>This tool provides general wellness insights about loneliness tendency based on social connections, relationship quality, interaction frequency, loneliness feelings, and perceived social support. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include a loneliness tendency wellness score, tendency level, social connection score, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

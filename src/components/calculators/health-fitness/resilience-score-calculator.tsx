@@ -126,12 +126,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Resilience Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Resilience Wellness Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Resilience Score Calculator',
+      name: 'Resilience Wellness Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate resilience score and percentage from stress level, resilience score, age, and coping ability.',
@@ -174,7 +174,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const resilienceLevel = resiliencePercentage / 10;
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your resilience appears optimal. Continue maintaining good coping strategies and stress management.';
+  let interpretation = 'This suggests a general lifestyle tendency where your resilience may appear optimal. You may consider continuing to maintain good coping strategies and stress management.';
 
   // Age-appropriate targets
   let targetResilience: number;
@@ -188,13 +188,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   if (resiliencePercentage < targetResilience - 15) {
     status = 'low';
-    interpretation = 'Your resilience appears low for your age. Focus on improving coping strategies, reducing stress, and building support networks.';
+    interpretation = 'This suggests a general lifestyle tendency where your resilience may appear low for your age. You may consider focusing on improving coping strategies, reducing stress, and building support networks.';
   } else if (resiliencePercentage < targetResilience - 5) {
     status = 'moderate';
-    interpretation = 'Your resilience is moderate. Minor improvements in stress management and coping skills could optimize resilience.';
+    interpretation = 'This suggests a general lifestyle tendency where your resilience may be moderate. You may consider minor improvements in stress management and coping skills, which may optimize resilience.';
   } else if (resiliencePercentage < targetResilience + 10) {
     status = 'good';
-    interpretation = 'Your resilience is good. Continue maintaining current coping strategies and stress management practices.';
+    interpretation = 'This suggests a general lifestyle tendency where your resilience may be good. You may consider continuing to maintain current coping strategies and stress management practices.';
   }
 
   const recommendations = [
@@ -203,7 +203,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'Develop problem-solving skills and adaptive thinking to better handle adversity and setbacks.',
   ];
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Consider seeking professional support or counseling to develop resilience-building strategies and coping mechanisms.');
+    recommendations.push('You may consider seeking professional guidance to develop resilience-building strategies and coping mechanisms. This is a personal insight, not a medical evaluation.');
   }
   if (values.copingAbility < 6) {
     recommendations.push('Focus on improving coping skills. Poor coping ability can reduce resilience and make stress management more difficult.');
@@ -241,7 +241,7 @@ export default function ResilienceScoreCalculator() {
             <Shield className="h-5 w-5" />
             Resilience Score Calculator
           </CardTitle>
-          <CardDescription>Calculate resilience score and percentage from stress level, resilience score, age, and coping ability.</CardDescription>
+          <CardDescription>Get general wellness insights about resilience score and percentage from stress level, resilience score, age, and coping ability. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -513,9 +513,21 @@ export default function ResilienceScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates resilience score and percentage from stress level, resilience score (optional), age, and coping ability.</p>
+          <p>This tool provides general wellness insights about resilience score and percentage from stress level, resilience score (optional), age, and coping ability. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include resilience percentage, resilience score, resilience level, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

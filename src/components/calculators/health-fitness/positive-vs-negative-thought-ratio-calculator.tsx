@@ -127,12 +127,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Positive vs Negative Thought Ratio Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Positive vs Negative Thought Ratio Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Positive vs Negative Thought Ratio Calculator',
+      name: 'Positive vs Negative Thought Ratio Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate positive vs negative thought ratio from thought counts, ratio, and mood level.',
@@ -165,17 +165,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const ratioScore = clamp(thoughtRatio * 10, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your thought ratio appears optimal. Continue maintaining positive thinking patterns.';
+  let interpretation = 'This suggests a general lifestyle tendency where your thought ratio may appear optimal. You may consider continuing to maintain positive thinking patterns.';
 
   if (thoughtRatio < 1) {
     status = 'low';
-    interpretation = 'Your thought ratio is low (more negative than positive thoughts). Focus on cognitive reframing and positive thinking techniques.';
+    interpretation = 'This suggests a general lifestyle tendency where your thought ratio may be low (more negative than positive thoughts). You may consider focusing on cognitive reframing and positive thinking techniques.';
   } else if (thoughtRatio < 2) {
     status = 'moderate';
-    interpretation = 'Your thought ratio is moderate. Increasing positive thoughts can improve mental wellbeing and mood.';
+    interpretation = 'This suggests a general lifestyle tendency where your thought ratio may be moderate. You may consider increasing positive thoughts, which may improve mental wellbeing and mood.';
   } else if (thoughtRatio < 3) {
     status = 'good';
-    interpretation = 'Your thought ratio is good. Minor improvements can optimize mental health and resilience.';
+    interpretation = 'This suggests a general lifestyle tendency where your thought ratio may be good. Minor improvements may optimize mental health and resilience.';
   }
 
   const recommendations = [
@@ -184,10 +184,10 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'Engage in activities that bring joy and positive emotions to naturally increase positive thought frequency.',
   ];
   if (status === 'low' || status === 'moderate') {
-    recommendations.push('Consider cognitive behavioral therapy (CBT) techniques or professional support to address negative thinking patterns.');
+    recommendations.push('You may consider cognitive behavioral therapy (CBT) techniques or professional guidance to address negative thinking patterns. This is a personal insight, not a medical evaluation.');
   }
   if (values.moodLevel < 6) {
-    recommendations.push('Address mood concerns. Low mood can perpetuate negative thoughts, while improving mood can enhance positive thinking.');
+    recommendations.push('You may consider addressing mood patterns. Low mood may perpetuate negative thoughts, while improving mood may enhance positive thinking.');
   }
 
   const plan = [
@@ -220,7 +220,7 @@ export default function PositiveVsNegativeThoughtRatioCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Brain className="h-5 w-5" />
-            Positive vs Negative Thought Ratio Calculator
+            Positive vs Negative Thought Ratio Wellness Calculator
           </CardTitle>
           <CardDescription>Calculate positive vs negative thought ratio from thought counts, ratio, and mood level.</CardDescription>
         </CardHeader>
@@ -484,9 +484,21 @@ export default function PositiveVsNegativeThoughtRatioCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates positive vs negative thought ratio from positive thought count, negative thought count, thought ratio (optional), and mood level.</p>
+          <p>This tool provides general wellness insights about positive vs negative thought ratio from positive thought count, negative thought count, thought ratio (optional), and mood level. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include thought ratio, positive percentage, negative percentage, ratio score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

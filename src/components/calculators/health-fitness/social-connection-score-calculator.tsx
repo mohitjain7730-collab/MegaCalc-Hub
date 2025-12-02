@@ -130,12 +130,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Social Connection Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Social Connection Wellness Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Social Connection Score Calculator',
+      name: 'Social Connection Wellness Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Assess social connection by evaluating close relationships, social interactions, relationship quality, social support, community involvement, and sense of belonging.',
@@ -170,24 +170,24 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   if (connectionScore >= 75) {
     connectionLevel = 'Highly Connected';
-    interpretation = 'You have strong social connections with quality relationships, good support, and sense of belonging. Excellent social health!';
+    interpretation = 'This suggests a general lifestyle tendency where you may have strong social connections with quality relationships, good support, and sense of belonging.';
     status = 'highly-connected';
   } else if (connectionScore >= 60) {
     connectionLevel = 'Well Connected';
-    interpretation = 'You have good social connections with meaningful relationships and support. Continue nurturing these connections.';
+    interpretation = 'This suggests a general lifestyle tendency where you may have good social connections with meaningful relationships and support. You may consider continuing to nurture these connections.';
     status = 'well-connected';
   } else if (connectionScore >= 45) {
     connectionLevel = 'Moderately Connected';
-    interpretation = 'Your social connections are moderate. There are opportunities to strengthen relationships, increase interactions, or deepen community involvement.';
+    interpretation = 'This suggests a general lifestyle tendency where your social connections may be moderate. There may be opportunities to strengthen relationships, increase interactions, or deepen community involvement.';
     status = 'moderately-connected';
   } else {
-    connectionLevel = 'Isolated';
-    interpretation = 'Your social connection score suggests isolation. Focus on building meaningful relationships, increasing social interactions, and developing a sense of belonging.';
+    connectionLevel = 'Areas for Improvement';
+    interpretation = 'This suggests a general lifestyle tendency where your social connection score may suggest areas for improvement. You may consider focusing on building meaningful relationships, increasing social interactions, and developing a sense of belonging. This is a personal insight, not a medical evaluation.';
     status = 'isolated';
   }
   
   const recommendations = [
-    `Your connection score is ${connectionScore}/100. ${connectionScore >= 75 ? 'Excellent social connection!' : connectionScore >= 60 ? 'Good connection with room for growth.' : 'Focus on strengthening social connections.'}`,
+    `Your connection score is ${connectionScore}/100. ${connectionScore >= 75 ? 'Excellent social connection!' : connectionScore >= 60 ? 'Good connection with room for growth.' : 'You may consider focusing on strengthening social connections.'}`,
     `You have ${values.closeRelationships} close relationships. ${values.closeRelationships >= 3 ? 'Good number of close relationships!' : 'Consider investing in existing relationships or building new meaningful connections.'}`,
     `Your relationship quality is ${values.relationshipQuality}/10. ${values.relationshipQuality >= 7 ? 'Excellent quality!' : 'Focus on deepening relationships through quality time, communication, and mutual support.'}`,
     `Your social support level is ${values.socialSupport}/10. ${values.socialSupport >= 7 ? 'Good support!' : 'Build a stronger support network through mutual relationships and community involvement.'}`,
@@ -239,9 +239,9 @@ export default function SocialConnectionScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Users className="h-5 w-5" />
-            Social Connection Score Calculator
+            Social Connection Wellness Score Calculator
           </CardTitle>
-          <CardDescription>Assess social connection by evaluating close relationships, social interactions, relationship quality, social support, community involvement, and sense of belonging.</CardDescription>
+          <CardDescription>Get general wellness insights about social connection by evaluating close relationships, social interactions, relationship quality, social support, community involvement, and sense of belonging. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -513,9 +513,21 @@ export default function SocialConnectionScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool assesses social connection by evaluating close relationships, social interactions, relationship quality, social support, community involvement, and sense of belonging.</p>
-          <p>Outputs include a social connection score, connection level, support index, interpretation, recommendations, and an action plan.</p>
+          <p>This tool provides general wellness insights about social connection by evaluating close relationships, social interactions, relationship quality, social support, community involvement, and sense of belonging. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include a social connection wellness score, connection level, support index, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>
