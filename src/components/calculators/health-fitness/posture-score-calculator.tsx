@@ -95,7 +95,7 @@ const faqs = [
   {
     question: 'When should I consult a healthcare provider?',
     answer:
-      'Consult a healthcare provider if you experience persistent pain, severe postural deviations, numbness or tingling, limited mobility, postural issues affecting daily activities, or need professional assessment and treatment plan. Physical therapists and chiropractors can help with postural correction.',
+      'You may consider seeking professional guidance if you experience persistent discomfort, postural patterns, or postural issues affecting daily activities. Physical therapists and chiropractors may help with postural guidance. This is a personal insight, not a medical evaluation.',
   },
 ];
 
@@ -132,12 +132,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Posture Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Posture Wellness Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Posture Score Calculator',
+      name: 'Posture Wellness Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality.',
@@ -170,20 +170,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const posturePercent = postureScore;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your posture score appears excellent. Continue maintaining good postural habits and ergonomic practices.';
+  let interpretation = 'This suggests a general lifestyle tendency where your posture score may appear excellent. You may consider continuing to maintain good postural habits and ergonomic practices.';
 
   if (postureScore < 40 || posturalAverage < 2 || sittingDuration >= 10) {
     status = 'low';
-    interpretation = 'Your posture score is low, indicating significant postural issues. Forward head, rounded shoulders, slouched back, or excessive sitting are likely causing pain and dysfunction. Immediate intervention with ergonomic improvements, exercises, and professional assessment is recommended.';
+    interpretation = 'This suggests a general lifestyle tendency where your posture score may be low, indicating areas for improvement. Forward head, rounded shoulders, slouched back, or excessive sitting may be contributing to discomfort. You may consider focusing on ergonomic improvements, exercises, and seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (postureScore < 60 || posturalAverage < 3 || sittingDuration >= 8) {
     status = 'moderate';
-    interpretation = 'Your posture score is moderate. Some postural deviations (forward head, rounded shoulders, or slouching) combined with prolonged sitting are likely contributing to discomfort. Focus on ergonomic improvements, regular breaks, and postural exercises.';
+    interpretation = 'This suggests a general lifestyle tendency where your posture score may be moderate. Some postural deviations (forward head, rounded shoulders, or slouching) combined with prolonged sitting may be contributing to discomfort. You may consider focusing on ergonomic improvements, regular breaks, and postural exercises.';
   } else if (postureScore < 75) {
     status = 'good';
-    interpretation = 'Your posture score is good but has room for improvement. Minor postural issues or extended sitting may be contributing to occasional discomfort. Continue ergonomic practices and postural awareness exercises to optimize posture.';
+    interpretation = 'This suggests a general lifestyle tendency where your posture score may be good but has room for improvement. Minor postural issues or extended sitting may be contributing to occasional discomfort. You may consider continuing ergonomic practices and postural awareness exercises to optimize posture.';
   } else {
     status = 'optimal';
-    interpretation = 'Your posture score is excellent. You\'re maintaining good postural alignment, reasonable sitting duration, and proper ergonomic setup. Continue these practices to maintain long-term postural health.';
+    interpretation = 'This suggests a general lifestyle tendency where your posture score may be excellent. You may be maintaining good postural alignment, reasonable sitting duration, and proper ergonomic setup. You may consider continuing these practices to maintain long-term postural health.';
   }
 
   const recommendations = [
@@ -206,7 +206,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const plan = [
     { label: 'This Week', detail: `Assess your current posture and identify specific issues (forward head, rounded shoulders, slouching). Make basic ergonomic adjustments to your workstation. Start awareness exercises to notice and correct posture throughout the day.` },
     { label: 'This Month', detail: 'Implement comprehensive ergonomic improvements. Establish regular break schedule (every 20-30 minutes). Begin strengthening exercises (core, back) and stretching (chest, hip flexors). Practice postural awareness and correction daily.' },
-    { label: 'Ongoing', detail: 'Maintain ergonomic setup and regular breaks. Continue postural exercises and stretching routine. Monitor posture regularly and adjust as needed. Consider professional assessment (physical therapist, chiropractor) if issues persist or worsen.' },
+    { label: 'Ongoing', detail: 'You may consider maintaining ergonomic setup and regular breaks. Continue postural exercises and stretching routine. Monitor posture regularly and adjust as needed. You may consider seeking professional guidance (physical therapist, chiropractor) if patterns persist or worsen. This is a personal insight, not a medical evaluation.' },
   ];
 
   return { headPosition, shoulderAlignment, backPosture, sittingDuration, deskSetup, postureScore, posturePercent, status, interpretation, recommendations, plan };
@@ -236,7 +236,7 @@ export default function PostureScoreCalculator() {
             <Activity className="h-5 w-5" />
             Posture Score Calculator
           </CardTitle>
-          <CardDescription>Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality.</CardDescription>
+          <CardDescription>Get general wellness insights about posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -680,9 +680,21 @@ export default function PostureScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality.</p>
+          <p>This tool provides general wellness insights about posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include posture score, postural average, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

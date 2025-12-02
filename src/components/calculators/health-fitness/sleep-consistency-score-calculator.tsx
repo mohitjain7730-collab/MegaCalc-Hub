@@ -130,12 +130,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Sleep Consistency Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Sleep Consistency Wellness Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Sleep Consistency Score Calculator',
+      name: 'Sleep Consistency Wellness Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Score the regularity of your sleep and wake schedule based on timing and duration variability.',
@@ -161,20 +161,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'optimal';
   let interpretation =
-    'Your sleep schedule is highly consistent. This level of regularity strongly supports deep, restorative sleep and stable energy.';
+    'This suggests a general lifestyle tendency where your sleep schedule may be highly consistent. This level of regularity may strongly support deep, restorative sleep and stable energy.';
 
   if (rawScore < 40) {
     status = 'low';
     interpretation =
-      'Your sleep schedule appears quite irregular. Large swings in timing and duration can impair recovery, mood, and focus. Gradual changes toward a stable schedule can significantly improve how you feel.';
+      'This suggests a general lifestyle tendency where your sleep schedule may appear quite irregular. Large swings in timing and duration may impair recovery, mood, and focus. You may consider gradual changes toward a stable schedule, which may significantly improve how you feel. This is a personal insight, not a medical evaluation.';
   } else if (rawScore < 60) {
     status = 'moderate';
     interpretation =
-      'Your sleep consistency is mixed. Some nights are regular, but there are enough variations to impact how rested you feel. Tightening your sleep window on most days will help.';
+      'This suggests a general lifestyle tendency where your sleep consistency may be mixed. Some nights may be regular, but there may be enough variations to impact how rested you feel. You may consider tightening your sleep window on most days, which may help.';
   } else if (rawScore < 80) {
     status = 'good';
     interpretation =
-      'Your sleep is fairly consistent, with room for refinement. Small improvements in bedtime and wake time regularity can push you into an optimal range.';
+      'This suggests a general lifestyle tendency where your sleep may be fairly consistent, with room for refinement. You may consider small improvements in bedtime and wake time regularity, which may push you into an optimal range.';
   }
 
   const recommendations: string[] = [
@@ -258,10 +258,10 @@ export default function SleepConsistencyScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <MoonStar className="h-5 w-5" />
-            Sleep Consistency Score Calculator
+            Sleep Consistency Wellness Score Calculator
           </CardTitle>
           <CardDescription>
-            Score the regularity of your sleep schedule based on timing and duration variability across the week.
+            Get general wellness insights about sleep schedule regularity based on timing and duration variability across the week. This is a personal lifestyle insight, not a medical evaluation.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -712,8 +712,8 @@ export default function SleepConsistencyScoreCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool calculates a sleep consistency score from timing and duration variability plus the number of regular
-            nights you maintain each week.
+            This tool provides general wellness insights about sleep consistency score from timing and duration variability plus the number of regular
+            nights you maintain each week. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
             Outputs include a 0–100 score, qualitative status, interpretation, recommendations, and an action plan to help
@@ -723,6 +723,18 @@ export default function SleepConsistencyScoreCalculator() {
             Formula, steps, guide content, related tools, and FAQs make it easy for humans or AI assistants to interpret and
             explain the results.
           </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

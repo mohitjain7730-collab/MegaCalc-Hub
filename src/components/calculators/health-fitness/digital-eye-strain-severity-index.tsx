@@ -137,7 +137,7 @@ const schemaMarkup = {
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Digital Eye Strain Severity Index',
+      name: 'Digital Eye Strain Wellness Index',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate digital eye strain severity index from screen time, eye strain level, blink rate, lighting conditions, and screen distance.',
@@ -168,20 +168,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const strainPercent = strainIndex;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your digital eye strain index is low. You have good screen habits and ergonomics.';
+  let interpretation = 'This suggests a general lifestyle tendency where your digital eye strain index may be low. You may have good screen habits and ergonomics.';
 
   if (strainIndex >= 70 || screenTime >= 12 || eyeStrainLevel >= 4) {
     status = 'low';
-    interpretation = 'Your digital eye strain index is high, indicating significant eye strain risk. Prolonged screen use, reduced blinking, poor lighting, or improper distance are causing eye fatigue and discomfort. Immediate improvements in ergonomics, breaks, and screen habits are recommended.';
+    interpretation = 'This suggests a general lifestyle tendency where your digital eye strain index may be high, indicating areas for improvement. Prolonged screen use, reduced blinking, poor lighting, or improper distance may be causing eye fatigue and discomfort. You may consider focusing on improvements in ergonomics, breaks, and screen habits. You may also consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (strainIndex >= 50 || screenTime >= 8 || eyeStrainLevel >= 3) {
     status = 'moderate';
-    interpretation = 'Your digital eye strain index is moderate. Extended screen use, suboptimal ergonomics, or reduced blinking may be contributing to eye discomfort. Focus on breaks, proper distance, lighting, and increasing blink rate.';
+    interpretation = 'This suggests a general lifestyle tendency where your digital eye strain index may be moderate. Extended screen use, suboptimal ergonomics, or reduced blinking may be contributing to eye discomfort. You may consider focusing on breaks, proper distance, lighting, and increasing blink rate.';
   } else if (strainIndex >= 30) {
     status = 'good';
-    interpretation = 'Your digital eye strain index is acceptable but could be improved. Some screen use habits or ergonomic factors may contribute to occasional eye fatigue. Optimize lighting, distance, and break frequency.';
+    interpretation = 'This suggests a general lifestyle tendency where your digital eye strain index may be acceptable but could be improved. Some screen use habits or ergonomic factors may contribute to occasional eye fatigue. You may consider optimizing lighting, distance, and break frequency.';
   } else {
     status = 'optimal';
-    interpretation = 'Your digital eye strain index is low. You have good screen habits, proper distance, adequate lighting, and regular breaks. Continue these practices to maintain eye health.';
+    interpretation = 'This suggests a general lifestyle tendency where your digital eye strain index may be low. You may have good screen habits, proper distance, adequate lighting, and regular breaks. You may consider continuing these practices to maintain eye health.';
   }
 
   const recommendations = [
@@ -238,7 +238,7 @@ export default function DigitalEyeStrainSeverityIndex() {
             <Activity className="h-5 w-5" />
             Digital Eye Strain Severity Index
           </CardTitle>
-          <CardDescription>Calculate digital eye strain severity index from screen time, eye strain level, blink rate, lighting conditions, and screen distance.</CardDescription>
+          <CardDescription>Get general wellness insights about digital eye strain index from screen time, eye strain level, blink rate, lighting conditions, and screen distance. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -664,9 +664,21 @@ export default function DigitalEyeStrainSeverityIndex() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates digital eye strain severity index from screen time, eye strain level, blink rate, lighting conditions, and screen distance.</p>
+          <p>This tool provides general wellness insights about digital eye strain index from screen time, eye strain level, blink rate, lighting conditions, and screen distance. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include strain index, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

@@ -127,14 +127,14 @@ const schemaMarkup = {
         {
           '@type': 'ListItem',
           position: 3,
-          name: 'Dopamine Reward Sensitivity Index',
+          name: 'Dopamine Reward Sensitivity Wellness Index',
           item: baseUrl,
         },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Dopamine Reward Sensitivity Index Calculator',
+      name: 'Dopamine Reward Sensitivity Wellness Index Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description:
@@ -161,22 +161,22 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'optimal';
   let interpretation =
-    'Your reward sensitivity appears balanced. You likely respond to positive feedback and novelty while still being able to pursue long‑term goals.';
+    'This suggests a general lifestyle tendency where your reward sensitivity may appear balanced. You may likely respond to positive feedback and novelty while still being able to pursue long‑term goals.';
 
   if (sensitivityScore >= 75) {
     status = 'high';
-    // Map “high” into our allowed types as “moderate” for labeling but keep language descriptive
+    // Map "high" into our allowed types as "moderate" for labeling but keep language descriptive
     status = 'moderate';
     interpretation =
-      'Your profile suggests high reward sensitivity. This can bring strong motivation and enthusiasm, but it may also increase susceptibility to distraction or chasing quick rewards.';
+      'This suggests a general lifestyle tendency where your profile may suggest high reward sensitivity. This may bring strong motivation and enthusiasm, but it may also increase susceptibility to distraction or chasing quick rewards.';
   } else if (sensitivityScore <= 35) {
     status = 'low';
     interpretation =
-      'Your self‑ratings suggest relatively lower reward sensitivity. You may be steady and less impulsive but might need stronger cues or structures to feel motivated.';
+      'This suggests a general lifestyle tendency where your self‑ratings may suggest relatively lower reward sensitivity. You may be steady and less impulsive but might need stronger cues or structures to feel motivated.';
   } else if (sensitivityScore <= 55) {
     status = 'good';
     interpretation =
-      'Your reward sensitivity is in a moderate range. You likely experience some pull toward rewards and novelty while still maintaining control over long‑term priorities.';
+      'This suggests a general lifestyle tendency where your reward sensitivity may be in a moderate range. You may likely experience some pull toward rewards and novelty while still maintaining control over long‑term priorities.';
   }
 
   const recommendations: string[] = [
@@ -254,11 +254,11 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Brain className="h-5 w-5" />
-            Dopamine Reward Sensitivity Index
+            Dopamine Reward Sensitivity Wellness Index
           </CardTitle>
           <CardDescription>
-            Estimate how strongly you respond to rewards, novelty, and impulses to better understand your motivation
-            style.
+            Get general wellness insights about how strongly you may respond to rewards, novelty, and impulses to better understand your motivation
+            style. This is a personal lifestyle insight, not a medical evaluation.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -717,8 +717,8 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool estimates a dopamine reward sensitivity index from four self‑rated traits and summarizes your
-            motivation and reward‑response profile on a 0–100 scale.
+            This tool provides general wellness insights about dopamine reward sensitivity index from four self‑rated traits and summarizes your
+            motivation and reward‑response profile on a 0–100 scale. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
             It provides qualitative interpretation, recommendations, an action plan, supporting calculations, and a
@@ -727,6 +727,18 @@ export default function DopamineRewardSensitivityIndexCalculator() {
           <p>
             The calculator is educational only and is not intended for diagnosis, medication decisions, or emergency use.
           </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

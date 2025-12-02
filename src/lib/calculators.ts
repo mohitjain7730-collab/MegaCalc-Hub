@@ -4799,57 +4799,57 @@ export const calculators: Calculator[] = [
   },
   {
     id: 7100,
-    name: 'Sleep Consistency Score Calculator',
-    description: 'Score the regularity of your sleep schedule from bedtime, wake time, and duration variability plus consistent nights per week.',
+    name: 'Sleep Consistency Wellness Score Calculator',
+    description: 'Get general wellness insights about sleep schedule regularity from bedtime, wake time, and duration variability plus consistent nights per week. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'sleep-consistency-score-calculator',
     category: 'wellness',
-    metaTitle: 'Sleep Consistency Score Calculator',
-    metaDescription: 'Score the consistency of your sleep and wake times based on timing variability, duration swings, and number of regular nights per week.'
+    metaTitle: 'Sleep Consistency Wellness Score Calculator',
+    metaDescription: 'Get general wellness insights about sleep schedule consistency based on timing variability, duration swings, and number of regular nights per week. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 7101,
-    name: 'Dopamine Reward Sensitivity Index',
-    description: 'Estimate your dopamine reward sensitivity profile from novelty seeking, reward responsiveness, impulsivity, and baseline motivation.',
+    name: 'Dopamine Reward Sensitivity Wellness Index',
+    description: 'Get general wellness insights about dopamine reward sensitivity profile from novelty seeking, reward responsiveness, impulsivity, and baseline motivation. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'dopamine-reward-sensitivity-index-calculator',
     category: 'wellness',
-    metaTitle: 'Dopamine Reward Sensitivity Index Calculator',
-    metaDescription: 'Estimate dopamine-related reward sensitivity from self-rated novelty seeking, reward responsiveness, impulsivity, and long-term motivation.'
+    metaTitle: 'Dopamine Reward Sensitivity Wellness Index Calculator',
+    metaDescription: 'Get general wellness insights about dopamine reward sensitivity from self-rated novelty seeking, reward responsiveness, impulsivity, and long-term motivation. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 7102,
-    name: 'Digital Burnout Detector',
-    description: 'Estimate digital burnout risk from total and evening screen time, notifications, break frequency, and perceived work stress.',
+    name: 'Digital Burnout Wellness Detector',
+    description: 'Get general wellness insights about digital burnout tendency from total and evening screen time, notifications, break frequency, and perceived work stress. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'digital-burnout-detector',
     category: 'wellness',
-    metaTitle: 'Digital Burnout Detector',
-    metaDescription: 'Detect digital burnout risk based on screen load, interruptions, breaks, and perceived digital work stress to support healthier tech habits.'
+    metaTitle: 'Digital Burnout Wellness Detector',
+    metaDescription: 'Get general wellness insights about digital burnout tendency based on screen load, interruptions, breaks, and perceived digital work stress. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 7103,
-    name: 'Flow State Readiness Calculator',
-    description: 'Estimate readiness for a flow state from challenge-skill balance, distractions, energy level, and goal clarity.',
+    name: 'Flow State Readiness Wellness Calculator',
+    description: 'Get general wellness insights about readiness for a flow state from challenge-skill balance, distractions, energy level, and goal clarity. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'flow-state-readiness-calculator',
     category: 'wellness',
-    metaTitle: 'Flow State Readiness Calculator',
-    metaDescription: 'Evaluate how ready you are to enter a flow state based on skill-challenge match, distractions, energy, and clarity of goals.'
+    metaTitle: 'Flow State Readiness Wellness Calculator',
+    metaDescription: 'Get general wellness insights about flow state readiness based on skill-challenge match, distractions, energy, and clarity of goals. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 7104,
-    name: 'Mental Fatigue Accumulation Tracker',
-    description: 'Track how workload, breaks, sleep, and stress interact to build mental fatigue across a typical day.',
+    name: 'Mental Fatigue Accumulation Wellness Tracker',
+    description: 'Get general wellness insights about how workload, breaks, sleep, and stress may interact to build mental fatigue across a typical day. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'mental-fatigue-accumulation-tracker',
     category: 'wellness',
-    metaTitle: 'Mental Fatigue Accumulation Tracker',
+    metaTitle: 'Mental Fatigue Accumulation Wellness Tracker',
     metaDescription: 'Estimate daily mental fatigue accumulation from number and length of focus blocks, recovery time, sleep hours, and baseline stress.'
   },
   {
     id: 7301,
-    name: 'Emotional Burnout Recovery Calculator',
-    description: 'Estimate burnout severity and recovery timeline from weekly workload, sleep, exhaustion, and recovery practices.',
+    name: 'Emotional Burnout Recovery Wellness Calculator',
+    description: 'Get general wellness insights about burnout tendency and recovery timeline from weekly workload, sleep, exhaustion, and recovery practices. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'emotional-burnout-recovery-calculator',
     category: 'wellness',
-    metaTitle: 'Emotional Burnout Recovery Calculator',
-    metaDescription: 'Calculate a burnout index and projected recovery timeline using workload hours, sleep, emotional exhaustion, and recovery habits.'
+    metaTitle: 'Emotional Burnout Recovery Wellness Calculator',
+    metaDescription: 'Get general wellness insights about burnout tendency and recovery timeline using workload hours, sleep, emotional exhaustion, and recovery habits. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 7302,
@@ -5299,16 +5299,16 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5083,
-    name: 'Posture Score Calculator',
-    description: 'Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality.',
+    name: 'Posture Wellness Score Calculator',
+    description: 'Get general wellness insights about posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'posture-score-calculator',
     category: 'wellness',
-    metaTitle: 'Posture Score Calculator',
-    metaDescription: 'Calculate posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality to assess and improve postural health.'
+    metaTitle: 'Posture Wellness Score Calculator',
+    metaDescription: 'Get general wellness insights about posture score from head position, shoulder alignment, back posture, sitting duration, and desk setup quality. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 5084,
-    name: 'Digital Eye Strain Severity Index',
+    name: 'Digital Eye Strain Wellness Index',
     description: 'Calculate digital eye strain severity index from screen time, eye strain level, blink rate, lighting conditions, and screen distance.',
     slug: 'digital-eye-strain-severity-index',
     category: 'wellness',
@@ -5344,7 +5344,7 @@ export const calculators: Calculator[] = [
   },
   {
     id: 5088,
-    name: 'Screen-to-Sleep Time Impact Estimator',
+    name: 'Screen-to-Sleep Time Impact Wellness Estimator',
     description: 'Estimate screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting.',
     slug: 'screen-to-sleep-time-impact-estimator',
     category: 'wellness',

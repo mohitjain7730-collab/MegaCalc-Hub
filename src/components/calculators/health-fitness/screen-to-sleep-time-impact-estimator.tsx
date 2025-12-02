@@ -132,12 +132,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Screen-to-Sleep Time Impact Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Screen-to-Sleep Time Impact Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Screen-to-Sleep Time Impact Estimator',
+      name: 'Screen-to-Sleep Time Impact Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Estimate screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting.',
@@ -168,20 +168,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const impactPercent = impactScore;
   
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Your screen-to-sleep time impact appears minimal. Good time gap, sleep quality, blue light protection, and sleep-friendly environment support healthy sleep patterns.';
+  let interpretation = 'This suggests a general lifestyle tendency where your screen-to-sleep time impact may appear minimal. Good time gap, sleep quality, blue light protection, and sleep-friendly environment may support healthy sleep patterns.';
 
   if (impactScore < 40 || lastScreenTime < 0.5 || sleepQuality <= 2 || screenBrightness >= 4) {
     status = 'low';
-    interpretation = 'Your screen-to-sleep time impact is high, indicating significant sleep disruption. Screens used very close to bedtime, poor sleep quality, bright screens, or inadequate blue light protection are likely affecting sleep. Prioritize 1-2 hour screen-free period before bed.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen-to-sleep time impact may be high, indicating areas for improvement. Screens used very close to bedtime, poor sleep quality, bright screens, or inadequate blue light protection may be affecting sleep. You may consider prioritizing a 1-2 hour screen-free period before bed. This is a personal insight, not a medical evaluation.';
   } else if (impactScore < 60 || lastScreenTime < 1 || sleepQuality <= 3 || screenBrightness >= 3) {
     status = 'moderate';
-    interpretation = 'Your screen-to-sleep time impact is moderate. Screens used close to bedtime, suboptimal sleep quality, or screen settings may be affecting sleep. Increase time gap to 1-2 hours, use blue light filters, dim screens, and optimize bedroom lighting.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen-to-sleep time impact may be moderate. Screens used close to bedtime, suboptimal sleep quality, or screen settings may be affecting sleep. You may consider increasing time gap to 1-2 hours, using blue light filters, dimming screens, and optimizing bedroom lighting.';
   } else if (impactScore < 75) {
     status = 'good';
-    interpretation = 'Your screen-to-sleep time impact is acceptable but could be optimized. Some factors (time gap, blue light protection, or screen settings) may be affecting sleep quality. Extend screen-free period and optimize screen and bedroom settings.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen-to-sleep time impact may be acceptable but could be optimized. Some factors (time gap, blue light protection, or screen settings) may be affecting sleep quality. You may consider extending screen-free period and optimizing screen and bedroom settings.';
   } else {
     status = 'optimal';
-    interpretation = 'Your screen-to-sleep time impact is minimal. Good time gap between screen use and sleep, adequate blue light protection, appropriate screen settings, and sleep-friendly bedroom support healthy sleep patterns.';
+    interpretation = 'This suggests a general lifestyle tendency where your screen-to-sleep time impact may be minimal. Good time gap between screen use and sleep, adequate blue light protection, appropriate screen settings, and sleep-friendly bedroom may support healthy sleep patterns.';
   }
 
   const recommendations = [
@@ -236,9 +236,9 @@ export default function ScreenToSleepTimeImpactEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Screen-to-Sleep Time Impact Estimator
+            Screen-to-Sleep Time Impact Wellness Estimator
           </CardTitle>
-          <CardDescription>Estimate screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting.</CardDescription>
+          <CardDescription>Get general wellness insights about screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -661,9 +661,21 @@ export default function ScreenToSleepTimeImpactEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting.</p>
+          <p>This tool provides general wellness insights about screen-to-sleep time impact on sleep quality from last screen time, sleep quality, blue light filter usage, screen brightness, and bedroom lighting. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include impact score, status, recommendations, an action plan, and supporting metrics.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

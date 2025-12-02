@@ -128,14 +128,14 @@ const schemaMarkup = {
         {
           '@type': 'ListItem',
           position: 3,
-          name: 'Flow State Readiness Calculator',
+          name: 'Flow State Readiness Wellness Calculator',
           item: baseUrl,
         },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Flow State Readiness Calculator',
+      name: 'Flow State Readiness Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description:
@@ -162,24 +162,24 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'optimal';
   let interpretation =
-    'Conditions look very favorable for focused, high-quality work. You have a solid challenge-skill match, good energy, and reasonable clarity.';
+    'This suggests a general lifestyle tendency where conditions may look very favorable for focused, high-quality work. You may have a solid challenge-skill match, good energy, and reasonable clarity.';
 
   if (readinessScore >= 80) {
     status = 'optimal';
     interpretation =
-      'You appear highly ready for a flow-friendly deep work session. Protect this window from interruptions and dive into a single, meaningful task.';
+      'This suggests a general lifestyle tendency where you may appear highly ready for a flow-friendly deep work session. You may consider protecting this window from interruptions and diving into a single, meaningful task.';
   } else if (readinessScore >= 60) {
     status = 'good';
     interpretation =
-      'You have many ingredients for flow, with a few areas to tune (often distractions or clarity). Small adjustments could significantly improve your chances.';
+      'This suggests a general lifestyle tendency where you may have many ingredients for flow, with a few areas to tune (often distractions or clarity). Small adjustments may significantly improve your chances.';
   } else if (readinessScore >= 40) {
     status = 'moderate';
     interpretation =
-      'Your readiness is mixed. You may benefit from adjusting the challenge level, improving clarity, or reducing distractions before expecting deep focus.';
+      'This suggests a general lifestyle tendency where your readiness may be mixed. You may benefit from adjusting the challenge level, improving clarity, or reducing distractions before expecting deep focus.';
   } else {
     status = 'low';
     interpretation =
-      'Conditions are currently unfavorable for flow. Consider addressing basic needs (rest, food), simplifying tasks, or scheduling deep work for another time.';
+      'This suggests a general lifestyle tendency where conditions may be currently unfavorable for flow. You may consider addressing basic needs (rest, food), simplifying tasks, or scheduling deep work for another time.';
   }
 
   const recommendations: string[] = [
@@ -265,10 +265,10 @@ export default function FlowStateReadinessCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Gauge className="h-5 w-5" />
-            Flow State Readiness Calculator
+            Flow State Readiness Wellness Calculator
           </CardTitle>
           <CardDescription>
-            Estimate how ready you are to enter a deep focus flow state for your next work or study session.
+            Get general wellness insights about how ready you may be to enter a deep focus flow state for your next work or study session. This is a personal lifestyle insight, not a medical evaluation.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -677,13 +677,25 @@ export default function FlowStateReadinessCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This calculator summarizes your flow state readiness on a 0–100 scale based on challenge-skill balance,
-            distractions, energy, and goal clarity.
+            This calculator provides general wellness insights about flow state readiness on a 0–100 scale based on challenge-skill balance,
+            distractions, energy, and goal clarity. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
             It outputs a readiness score, qualitative status, recommendations, an action plan, related calculators, an
             explanatory guide, and FAQs so humans or AI assistants can interpret the results quickly.
           </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

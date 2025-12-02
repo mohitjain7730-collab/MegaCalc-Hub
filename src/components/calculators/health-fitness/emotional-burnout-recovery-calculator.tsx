@@ -124,15 +124,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Emotional Burnout Recovery Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Emotional Burnout Recovery Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Emotional Burnout Recovery Calculator',
+      name: 'Emotional Burnout Recovery Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate burnout severity and recovery timelines from workload, sleep, exhaustion, and recovery habits.',
+      description: 'Get general wellness insights about burnout tendency and recovery timelines from workload, sleep, exhaustion, and recovery habits. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -153,17 +153,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recoveryWeeks = Math.ceil(clamp(burnoutIndex / 8, 2, 20));
 
   let status: ResultPayload['status'] = 'optimal';
-  let interpretation = 'Burnout risk is low. Continue current recovery routines and workload boundaries.';
+  let interpretation = 'This suggests a general lifestyle tendency where burnout tendency may be low. You may consider continuing current recovery routines and workload boundaries.';
 
   if (burnoutIndex >= 75) {
     status = 'low';
-    interpretation = 'Severe burnout risk detected. Immediate rest, workload reduction, and professional support are recommended.';
+    interpretation = 'This suggests a general lifestyle tendency where burnout tendency may be high. You may consider immediate rest, workload reduction, and seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (burnoutIndex >= 55) {
     status = 'moderate';
-    interpretation = 'Elevated burnout indicators observed. Plan recovery rituals, schedule time off, and renegotiate workload where possible.';
+    interpretation = 'This suggests a general lifestyle tendency where elevated burnout indicators may be observed. You may consider planning recovery rituals, scheduling time off, and renegotiating workload where possible.';
   } else if (burnoutIndex >= 35) {
     status = 'good';
-    interpretation = 'Mild burnout signals present. Increase recovery practices before stress compounds further.';
+    interpretation = 'This suggests a general lifestyle tendency where mild burnout signals may be present. You may consider increasing recovery practices before stress compounds further.';
   }
 
   const recommendations: string[] = [

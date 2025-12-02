@@ -128,18 +128,18 @@ const schemaMarkup = {
         {
           '@type': 'ListItem',
           position: 3,
-          name: 'Digital Burnout Detector',
+          name: 'Digital Burnout Wellness Detector',
           item: baseUrl,
         },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Digital Burnout Detector',
+      name: 'Digital Burnout Wellness Detector',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description:
-        'Estimate your risk of digital burnout from screen time, interruptions, break frequency, and perceived digital work stress.',
+        'Get general wellness insights about digital burnout tendency from screen time, interruptions, break frequency, and perceived digital work stress. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -163,20 +163,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'optimal';
   let interpretation =
-    'Your current pattern suggests relatively low digital burnout risk, especially if you maintain healthy breaks and boundaries.';
+    'This suggests a general lifestyle tendency where your current pattern may suggest relatively low digital burnout tendency, especially if you maintain healthy breaks and boundaries.';
 
   if (burnoutScore >= 75) {
     status = 'low';
     interpretation =
-      'Your digital burnout risk appears high. Heavy screen use, frequent interruptions, and limited recovery may be significantly straining your energy and focus.';
+      'This suggests a general lifestyle tendency where your digital burnout tendency may appear high. Heavy screen use, frequent interruptions, and limited recovery may be significantly straining your energy and focus. You may consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (burnoutScore >= 55) {
     status = 'moderate';
     interpretation =
-      'You show signs of elevated digital burnout risk. Adjusting breaks, notifications, and evening screen habits could noticeably improve your well-being.';
+      'This suggests a general lifestyle tendency where you may show signs of elevated digital burnout tendency. You may consider adjusting breaks, notifications, and evening screen habits, which could noticeably improve your well-being.';
   } else if (burnoutScore >= 35) {
     status = 'good';
     interpretation =
-      'Your risk is moderate but manageable. With a few targeted changes, you can keep burnout risk low even during busy periods.';
+      'This suggests a general lifestyle tendency where your tendency may be moderate but manageable. With a few targeted changes, you may keep burnout tendency low even during busy periods.';
   }
 
   const recommendations: string[] = [
@@ -262,10 +262,10 @@ export default function DigitalBurnoutDetector() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Smartphone className="h-5 w-5" />
-            Digital Burnout Detector
+            Digital Burnout Wellness Detector
           </CardTitle>
           <CardDescription>
-            Estimate your risk of digital burnout from screen load, interruptions, breaks, and perceived stress.
+            Get general wellness insights about digital burnout tendency from screen load, interruptions, breaks, and perceived stress. This is a personal lifestyle insight, not a medical evaluation.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -684,8 +684,8 @@ export default function DigitalBurnoutDetector() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool estimates digital burnout risk from screen time, interruptions, break patterns, and perceived stress
-            on a 0–100 scale.
+            This tool provides general wellness insights about digital burnout tendency from screen time, interruptions, break patterns, and perceived stress
+            on a 0–100 scale. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
             It provides interpretation, recommendations, an action plan, a supporting guide, related calculators, and FAQs
@@ -694,6 +694,18 @@ export default function DigitalBurnoutDetector() {
           <p>
             The calculator is for education and self-reflection only and is not a substitute for professional care.
           </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

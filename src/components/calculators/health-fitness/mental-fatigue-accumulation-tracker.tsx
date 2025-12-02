@@ -132,14 +132,14 @@ const schemaMarkup = {
         {
           '@type': 'ListItem',
           position: 3,
-          name: 'Mental Fatigue Accumulation Tracker',
+          name: 'Mental Fatigue Accumulation Wellness Tracker',
           item: baseUrl,
         },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Mental Fatigue Accumulation Tracker',
+          name: 'Mental Fatigue Accumulation Wellness Tracker',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description:
@@ -181,20 +181,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'optimal';
   let interpretation =
-    'Your schedule and recovery patterns suggest relatively low daily mental fatigue accumulation, assuming you maintain similar habits over time.';
+    'This suggests a general lifestyle tendency where your schedule and recovery patterns may suggest relatively low daily mental fatigue accumulation, assuming you maintain similar habits over time.';
 
   if (fatigueScore >= 75) {
     status = 'low';
     interpretation =
-      'Your mental fatigue accumulation appears high. Sustained heavy load with limited recovery and/or sleep debt may be leaving you mentally exhausted by day’s end.';
+      'This suggests a general lifestyle tendency where your mental fatigue accumulation may appear high. Sustained heavy load with limited recovery and/or sleep debt may be leaving you mentally exhausted by day's end. You may consider seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
   } else if (fatigueScore >= 55) {
     status = 'moderate';
     interpretation =
-      'You show signs of elevated fatigue accumulation. Adjusting block length, breaks, or sleep could meaningfully improve how you feel and perform.';
+      'This suggests a general lifestyle tendency where you may show signs of elevated fatigue accumulation. You may consider adjusting block length, breaks, or sleep, which could meaningfully improve how you feel and perform.';
   } else if (fatigueScore >= 35) {
     status = 'good';
     interpretation =
-      'Your fatigue accumulation is moderate and likely manageable. A few targeted improvements can keep it in check during busier periods.';
+      'This suggests a general lifestyle tendency where your fatigue accumulation may be moderate and likely manageable. A few targeted improvements may keep it in check during busier periods.';
   }
 
   const recommendations: string[] = [
@@ -280,7 +280,7 @@ export default function MentalFatigueAccumulationTracker() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <BatteryWarning className="h-5 w-5" />
-            Mental Fatigue Accumulation Tracker
+            Mental Fatigue Accumulation Wellness Tracker
           </CardTitle>
           <CardDescription>
             Estimate how your current workload, breaks, sleep, and stress interact to build mental fatigue across the day.
@@ -704,6 +704,18 @@ export default function MentalFatigueAccumulationTracker() {
           <p>
             The tool is intended for education and planning, not for diagnosis or treatment decisions.
           </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>
