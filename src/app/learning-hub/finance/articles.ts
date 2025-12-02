@@ -149,6 +149,41 @@ import { retirementPlanningArticles22 } from './retirement-planning/retirement-p
 import { retirementPlanningArticles23 } from './retirement-planning/retirement-planning-23';
 import { retirementPlanningArticles24 } from './retirement-planning/retirement-planning-24';
 import { retirementPlanningArticles25 } from './retirement-planning/retirement-planning-25';
+import { retirementPlanningArticles26 } from './retirement-planning/retirement-planning-26';
+import { retirementPlanningArticles27 } from './retirement-planning/retirement-planning-27';
+import { retirementPlanningArticles28 } from './retirement-planning/retirement-planning-28';
+import { retirementPlanningArticles29 } from './retirement-planning/retirement-planning-29';
+import { retirementPlanningArticles30 } from './retirement-planning/retirement-planning-30';
+import { retirementPlanningArticles31 } from './retirement-planning/retirement-planning-31';
+import { retirementPlanningArticles32 } from './retirement-planning/retirement-planning-32';
+import { retirementPlanningArticles33 } from './retirement-planning/retirement-planning-33';
+import { retirementPlanningArticles34 } from './retirement-planning/retirement-planning-34';
+import { retirementPlanningArticles35 } from './retirement-planning/retirement-planning-35';
+import { retirementPlanningArticles36 } from './retirement-planning/retirement-planning-36';
+import { retirementPlanningArticles37 } from './retirement-planning/retirement-planning-37';
+import { retirementPlanningArticles38 } from './retirement-planning/retirement-planning-38';
+import { retirementPlanningArticles39 } from './retirement-planning/retirement-planning-39';
+import { retirementPlanningArticles40 } from './retirement-planning/retirement-planning-40';
+import { retirementPlanningArticles41 } from './retirement-planning/retirement-planning-41';
+import { retirementPlanningArticles42 } from './retirement-planning/retirement-planning-42';
+import { retirementPlanningArticles43 } from './retirement-planning/retirement-planning-43';
+import { retirementPlanningArticles44 } from './retirement-planning/retirement-planning-44';
+import { retirementPlanningArticles45 } from './retirement-planning/retirement-planning-45';
+import { retirementPlanningArticles46 } from './retirement-planning/retirement-planning-46';
+import { retirementPlanningArticles47 } from './retirement-planning/retirement-planning-47';
+import { retirementPlanningArticles48 } from './retirement-planning/retirement-planning-48';
+import { retirementPlanningArticles49 } from './retirement-planning/retirement-planning-49';
+import { retirementPlanningArticles50 } from './retirement-planning/retirement-planning-50';
+import { retirementPlanningArticles51 } from './retirement-planning/retirement-planning-51';
+import { retirementPlanningArticles52 } from './retirement-planning/retirement-planning-52';
+import { retirementPlanningArticles53 } from './retirement-planning/retirement-planning-53';
+import { retirementPlanningArticles54 } from './retirement-planning/retirement-planning-54';
+import { retirementPlanningArticles55 } from './retirement-planning/retirement-planning-55';
+import { retirementPlanningArticles56 } from './retirement-planning/retirement-planning-56';
+import { retirementPlanningArticles57 } from './retirement-planning/retirement-planning-57';
+import { retirementPlanningArticles58 } from './retirement-planning/retirement-planning-58';
+import { retirementPlanningArticles59 } from './retirement-planning/retirement-planning-59';
+import { retirementPlanningArticles60 } from './retirement-planning/retirement-planning-60';
 
 // Export all finance articles for the listing page
 export const FINANCE_ARTICLES: Article[] = [
@@ -306,6 +341,41 @@ export const RETIREMENT_ARTICLES: Article[] = [
   ...retirementPlanningArticles23,
   ...retirementPlanningArticles24,
   ...retirementPlanningArticles25,
+  ...retirementPlanningArticles26,
+  ...retirementPlanningArticles27,
+  ...retirementPlanningArticles28,
+  ...retirementPlanningArticles29,
+  ...retirementPlanningArticles30,
+  ...retirementPlanningArticles31,
+  ...retirementPlanningArticles32,
+  ...retirementPlanningArticles33,
+  ...retirementPlanningArticles34,
+  ...retirementPlanningArticles35,
+  ...retirementPlanningArticles36,
+  ...retirementPlanningArticles37,
+  ...retirementPlanningArticles38,
+  ...retirementPlanningArticles39,
+  ...retirementPlanningArticles40,
+  ...retirementPlanningArticles41,
+  ...retirementPlanningArticles42,
+  ...retirementPlanningArticles43,
+  ...retirementPlanningArticles44,
+  ...retirementPlanningArticles45,
+  ...retirementPlanningArticles46,
+  ...retirementPlanningArticles47,
+  ...retirementPlanningArticles48,
+  ...retirementPlanningArticles49,
+  ...retirementPlanningArticles50,
+  ...retirementPlanningArticles51,
+  ...retirementPlanningArticles52,
+  ...retirementPlanningArticles53,
+  ...retirementPlanningArticles54,
+  ...retirementPlanningArticles55,
+  ...retirementPlanningArticles56,
+  ...retirementPlanningArticles57,
+  ...retirementPlanningArticles58,
+  ...retirementPlanningArticles59,
+  ...retirementPlanningArticles60,
 ];
 
 // Export as a key-value map for easy lookup by slug

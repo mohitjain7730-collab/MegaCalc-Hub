@@ -3,6 +3,7 @@ import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
 import { FINANCE_ARTICLES, RETIREMENT_ARTICLES } from './learning-hub/finance/articles';
 import { NUTRITION_ARTICLES } from './learning-hub/health/nutrition-diet/articles';
+import { articles as LEARNING_HUB_BASE_ARTICLES } from '@/lib/learning-hub-articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mycalculating.com';
@@ -106,6 +107,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Base Learning Hub (explainer) article pages
+  const learningHubArticlePages = LEARNING_HUB_BASE_ARTICLES.map((article) => ({
+    url: `${baseUrl}/learning-hub/${article.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   return [
     ...staticPages,
     ...categoryPages,
@@ -114,5 +123,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...financeArticlePages,
     ...retirementArticlePages,
     ...healthArticlePages,
+    ...learningHubArticlePages,
   ];
 }

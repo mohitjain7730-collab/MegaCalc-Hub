@@ -1,0 +1,190 @@
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+
+import { Button } from '@/components/ui/button';
+import { ArticleSchemaInjector } from '@/components/article-schema-injector';
+import { articles } from '@/lib/learning-hub-articles';
+
+// Map chartComponent strings to actual React components
+const chartComponents = {
+  CompoundInterestChart: dynamic(
+    () =>
+      import('@/components/learning-hub/charts/compound-interest-chart').then(
+        (m) => m.CompoundInterestChart,
+      ),
+    { ssr: false },
+  ),
+  AprVsApyChart: dynamic(
+    () =>
+      import('@/components/learning-hub/charts/apr-vs-apy-chart').then(
+        (m) => m.AprVsApyChart,
+      ),
+    { ssr: false },
+  ),
+  BmiChart: dynamic(
+    () =>
+      import('@/components/learning-hub/charts/bmi-chart').then(
+        (m) => m.BmiChart,
+      ),
+    { ssr: false },
+  ),
+  NewtonsSecondLawChart: dynamic(
+    () =>
+      import(
+        '@/components/learning-hub/charts/newtons-second-law-chart'
+      ).then((m) => m.NewtonsSecondLawChart),
+    { ssr: false },
+  ),
+  PressureUnitsChart: dynamic(
+    () =>
+      import('@/components/learning-hub/charts/pressure-units-chart').then(
+        (m) => m.PressureUnitsChart,
+      ),
+    { ssr: false },
+  ),
+  BfpChart: dynamic(
+    () =>
+      import('@/components/learning-hub/charts/bfp-chart').then(
+        (m) => m.BfpChart,
+      ),
+    { ssr: false },
+  ),
+  BmrTdeeChart: dynamic(
+    () =>
+      import('@/components/learning-hub/charts/bmr-tdee-chart').then(
+        (m) => m.BmrTdeeChart,
+      ),
+    { ssr: false },
+  ),
+} as const;
+
+type ChartKey = keyof typeof chartComponents;
+
+function getArticle(slug: string) {
+  return articles.find((article) => article.slug === slug);
+}
+
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function getDescription(html: string): string {
+  const text = stripHtml(html);
+  if (text.length <= 160) return text;
+  return `${text.slice(0, 157).trimEnd()}...`;
+}
+
+function generateArticleSchema(slug: string, title: string, description: string) {
+  const baseUrl = 'https://mycalculating.com';
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${baseUrl}/learning-hub/${slug}`,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Mycalculating.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://mycalculating.com/logo.png',
+      },
+    },
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getArticle(slug);
+
+  if (!article) {
+    return {
+      title: 'Article Not Found',
+    };
+  }
+
+  const description = getDescription(article.content);
+
+  return {
+    title: article.title,
+    description,
+    openGraph: {
+      title: article.title,
+      description,
+      type: 'article',
+      url: `https://mycalculating.com/learning-hub/${article.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description,
+    },
+  };
+}
+
+export default async function LearningHubArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const article = getArticle(slug);
+
+  if (!article) {
+    notFound();
+  }
+
+  const description = getDescription(article.content);
+  const schema = generateArticleSchema(slug, article.title, description);
+
+  const ChartComponent =
+    article.chartComponent &&
+    (chartComponents[article.chartComponent as ChartKey] as React.ComponentType | undefined);
+
+  return (
+    <>
+      <ArticleSchemaInjector schema={schema} />
+      <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
+        <div className="w-full max-w-4xl mx-auto">
+          <div className="mb-8">
+            <Button asChild variant="ghost" className="mb-4">
+              <Link href="/learning-hub">
+                {/* Reuse lucide icon from existing pages to keep bundle small */}
+                <span className="mr-2 inline-block align-middle">←</span>
+                <span>Back to Learning Hub</span>
+              </Link>
+            </Button>
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-2">
+              {article.title}
+            </h1>
+          </div>
+
+          {ChartComponent && (
+            <div className="mb-10">
+              <ChartComponent />
+            </div>
+          )}
+
+          <article className="prose prose-slate dark:prose-invert max-w-none">
+            <div
+              className="article-content space-y-4"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+          </article>
+        </div>
+      </div>
+    </>
+  );
+}
+
+
