@@ -1076,8 +1076,8 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
         </div>
 
         {calculatorComponents[finalComponentKey] ? (
-          <CalculatorWrapper componentKey={finalComponentKey} calculatorComponents={calculatorComponents} />
-            
+          <>
+            <CalculatorWrapper componentKey={finalComponentKey} calculatorComponents={calculatorComponents} />
             {/* Embed Widget Section */}
             <EmbedWidget categorySlug={category.slug} calculatorSlug={calculator.slug} />
           </>
