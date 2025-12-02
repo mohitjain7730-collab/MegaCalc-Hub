@@ -128,12 +128,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Gratitude Frequency Tracker', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Gratitude Frequency Wellness Tracker', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Gratitude Frequency Tracker',
+      name: 'Gratitude Frequency Wellness Tracker',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Track gratitude practice frequency including journaling, expressions, and consistency to assess gratitude habits and enhance wellbeing.',
@@ -171,19 +171,19 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   if (gratitudeScore >= 75) {
     practiceLevel = 'Excellent';
-    interpretation = 'You have excellent gratitude practices with high frequency, consistency, and depth. This is supporting your wellbeing effectively.';
+    interpretation = 'This suggests a general lifestyle tendency where you may have excellent gratitude practices with high frequency, consistency, and depth. This may be supporting your wellbeing effectively.';
     status = 'excellent';
   } else if (gratitudeScore >= 60) {
     practiceLevel = 'Good';
-    interpretation = 'You have good gratitude practices. Continue maintaining consistency and consider increasing frequency or depth for additional benefits.';
+    interpretation = 'This suggests a general lifestyle tendency where you may have good gratitude practices. You may consider continuing to maintain consistency and consider increasing frequency or depth for additional benefits.';
     status = 'good';
   } else if (gratitudeScore >= 45) {
     practiceLevel = 'Moderate';
-    interpretation = 'Your gratitude practices are moderate. Increasing frequency, consistency, or depth could enhance wellbeing benefits.';
+    interpretation = 'This suggests a general lifestyle tendency where your gratitude practices may be moderate. You may consider increasing frequency, consistency, or depth to enhance wellbeing benefits.';
     status = 'moderate';
   } else {
-    practiceLevel = 'Needs Improvement';
-    interpretation = 'Your gratitude practice frequency is low. Increasing gratitude practices can significantly improve wellbeing, happiness, and mental health.';
+    practiceLevel = 'Areas for Improvement';
+    interpretation = 'This suggests a general lifestyle tendency where your gratitude practice frequency may be low. You may consider increasing gratitude practices, which may improve wellbeing, happiness, and mental health. This is a personal insight, not a medical evaluation.';
     status = 'needs-improvement';
   }
   
@@ -238,9 +238,9 @@ export default function GratitudeFrequencyTracker() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Heart className="h-5 w-5" />
-            Gratitude Frequency Tracker
+            Gratitude Frequency Wellness Tracker
           </CardTitle>
-          <CardDescription>Track gratitude practice frequency including journaling, expressions, and consistency to assess gratitude habits and enhance wellbeing.</CardDescription>
+          <CardDescription>Get general wellness insights about gratitude practice frequency including journaling, expressions, and consistency. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -496,9 +496,21 @@ export default function GratitudeFrequencyTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool tracks gratitude practice frequency including journaling, expressions, consistency, and depth to assess gratitude habits.</p>
+          <p>This tool provides general wellness insights about gratitude practice frequency including journaling, expressions, consistency, and depth. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include a gratitude score, practice level, consistency index, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

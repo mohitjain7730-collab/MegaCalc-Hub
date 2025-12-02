@@ -132,12 +132,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Happiness Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Happiness Index Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Happiness Index Calculator',
+      name: 'Happiness Index Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate your happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement to assess overall wellbeing.',
@@ -179,25 +179,25 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   if (happinessIndex >= 75) {
     happinessLevel = 'Flourishing';
-    interpretation = 'You are experiencing high levels of happiness and wellbeing. You have strong life satisfaction, positive emotions, and a sense of purpose. Continue nurturing these areas.';
+    interpretation = 'This suggests a general lifestyle tendency where you may be experiencing high levels of happiness and wellbeing. You may have strong life satisfaction, positive emotions, and a sense of purpose. You may consider continuing to nurture these areas.';
     status = 'flourishing';
   } else if (happinessIndex >= 65) {
     happinessLevel = 'Satisfied';
-    interpretation = 'You have good levels of happiness and wellbeing. Life satisfaction and positive emotions are present. Continue building on your strengths.';
+    interpretation = 'This suggests a general lifestyle tendency where you may have good levels of happiness and wellbeing. Life satisfaction and positive emotions may be present. You may consider continuing to build on your strengths.';
     status = 'satisfied';
   } else if (happinessIndex >= 50) {
     happinessLevel = 'Moderate';
-    interpretation = 'Your happiness levels are moderate. There are opportunities to enhance wellbeing through stronger relationships, purpose, and positive practices.';
+    interpretation = 'This suggests a general lifestyle tendency where your happiness levels may be moderate. There may be opportunities to enhance wellbeing through stronger relationships, purpose, and positive practices.';
     status = 'moderate';
   } else {
-    happinessLevel = 'Needs Improvement';
-    interpretation = 'Your happiness index suggests areas for improvement. Focus on building relationships, finding purpose, practicing gratitude, and engaging in activities that promote personal growth.';
+    happinessLevel = 'Areas for Improvement';
+    interpretation = 'This suggests a general lifestyle tendency where your happiness index may suggest areas for improvement. You may consider focusing on building relationships, finding purpose, practicing gratitude, and engaging in activities that promote personal growth. This is a personal insight, not a medical evaluation.';
     status = 'needs-improvement';
   }
   
   const recommendations = [
-    `Your happiness index is ${happinessIndex}/100. ${happinessIndex >= 75 ? 'Excellent wellbeing!' : happinessIndex >= 65 ? 'Good wellbeing with room for growth.' : 'Consider focusing on happiness-building practices.'}`,
-    'Practice gratitude daily: Keep a gratitude journal, write thank-you notes, or reflect on positive aspects of life.',
+    `Your happiness index is ${happinessIndex}/100. ${happinessIndex >= 75 ? 'Excellent wellbeing!' : happinessIndex >= 65 ? 'Good wellbeing with room for growth.' : 'You may consider focusing on happiness-building practices.'}`,
+    'You may consider practicing gratitude daily: Keep a gratitude journal, write thank-you notes, or reflect on positive aspects of life. This is a personal insight, not a medical evaluation.',
     'Strengthen relationships: Invest time in meaningful connections, practice active listening, and nurture close relationships.',
     'Find purpose and meaning: Engage in activities aligned with your values, contribute to causes you care about, and set meaningful goals.',
     'Cultivate positive emotions: Engage in activities that bring joy, practice mindfulness, savor positive experiences, and focus on positive aspects of life.',
@@ -248,9 +248,9 @@ export default function HappinessIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Smile className="h-5 w-5" />
-            Happiness Index Calculator
+            Happiness Index Wellness Calculator
           </CardTitle>
-          <CardDescription>Calculate your happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement to assess overall wellbeing.</CardDescription>
+          <CardDescription>Get general wellness insights about happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -518,9 +518,21 @@ export default function HappinessIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement.</p>
+          <p>This tool provides general wellness insights about happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include happiness index, happiness level, wellbeing score, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

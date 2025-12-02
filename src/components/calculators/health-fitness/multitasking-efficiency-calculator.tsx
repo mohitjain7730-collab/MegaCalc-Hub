@@ -58,7 +58,7 @@ const faqs = [
   {
     question: 'What is a good multitasking efficiency score?',
     answer:
-      'Scores above 70 indicate relatively efficient task-switching (though still less efficient than single-tasking). 50-70 is moderate efficiency. Below 50 indicates significant productivity loss. Below 30 suggests multitasking is counterproductive.',
+      'Scores above 70 suggest a general lifestyle tendency where task-switching may be relatively efficient (though still less efficient than single-tasking). 50-70 is moderate efficiency. Below 50 suggests significant productivity loss. Below 30 suggests multitasking may be counterproductive. This is a personal insight, not a medical evaluation.',
   },
   {
     question: 'When is multitasking acceptable?',
@@ -99,24 +99,24 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Cognitive Load Balance Calculator',
+    name: 'Cognitive Load Balance Wellness Calculator',
     slug: 'cognitive-load-balance-calculator',
-    description: 'Assess cognitive load affected by multitasking.',
+    description: 'Get wellness insights about cognitive load that may be affected by multitasking.',
   },
   {
-    name: 'Decision Fatigue Index Calculator',
+    name: 'Decision Fatigue Wellness Index',
     slug: 'decision-fatigue-index-calculator',
-    description: 'Measure decision fatigue worsened by multitasking.',
+    description: 'Get wellness insights about decision fatigue that may be worsened by multitasking.',
   },
   {
-    name: 'Cognitive Focus Efficiency Calculator',
+    name: 'Cognitive Focus Efficiency Wellness Calculator',
     slug: 'cognitive-focus-efficiency-calculator',
-    description: 'Evaluate focus efficiency improved by single-tasking.',
+    description: 'Get wellness insights about focus efficiency that may be improved by single-tasking.',
   },
   {
-    name: 'Mental Fatigue Index Calculator',
+    name: 'Mental Fatigue Wellness Index',
     slug: 'mental-fatigue-index-calculator',
-    description: 'Track mental fatigue increased by multitasking.',
+    description: 'Get wellness insights about mental fatigue that may be increased by multitasking.',
   },
 ];
 
@@ -130,15 +130,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Multitasking Efficiency Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Multitasking Efficiency Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Multitasking Efficiency Calculator',
+      name: 'Multitasking Efficiency Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Evaluate multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates to optimize productivity.',
+      description: 'Get general wellness insights about multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -171,37 +171,37 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   if (efficiencyScore >= 70) {
     efficiencyLevel = 'Relatively Efficient';
-    interpretation = 'Your multitasking shows relatively efficient task-switching, though single-tasking would likely still be more productive.';
+    interpretation = 'This suggests a general lifestyle tendency where your multitasking shows relatively efficient task-switching, though single-tasking may still be more productive.';
     status = 'efficient';
   } else if (efficiencyScore >= 50) {
     efficiencyLevel = 'Moderate Efficiency';
-    interpretation = 'Multitasking is moderately efficient but causes productivity loss. Consider reducing concurrent tasks and focusing more on single-tasking.';
+    interpretation = 'This suggests a general lifestyle tendency where multitasking is moderately efficient but may cause productivity loss. You may consider reducing concurrent tasks and focusing more on single-tasking.';
     status = 'moderate';
   } else if (efficiencyScore >= 30) {
     efficiencyLevel = 'Inefficient';
-    interpretation = 'Multitasking is significantly reducing your productivity. Errors, time delays, and accuracy loss indicate you should prioritize single-tasking.';
+    interpretation = 'This suggests a general lifestyle tendency where multitasking may be significantly reducing your productivity. You may consider prioritizing single-tasking.';
     status = 'inefficient';
   } else {
     efficiencyLevel = 'Counterproductive';
-    interpretation = 'Multitasking is counterproductive. Significant productivity loss, high error rates, and time delays indicate you should eliminate multitasking and focus on one task at a time.';
+    interpretation = 'This suggests a general lifestyle tendency where multitasking may be counterproductive. You may consider eliminating multitasking and focusing on one task at a time. This is a personal insight, not a medical evaluation.';
     status = 'counterproductive';
   }
   
   const recommendations = [
-    'Eliminate or minimize multitasking: Focus on one task at a time for optimal productivity and quality.',
-    'Use time-blocking: Schedule dedicated blocks for single tasks rather than attempting multiple tasks simultaneously.',
-    'Batch similar tasks: Group similar activities together (e.g., all emails at once) to reduce task-switching costs.',
-    'Minimize distractions: Turn off notifications, close unnecessary tabs/apps, and create focus environments.',
-    `Your accuracy drops ${accuracyLoss.toFixed(1)}% when multitasking. Prioritize accuracy by single-tasking important work.`,
-    `Tasks take ${((values.completionTimeMultiplier - 1) * 100).toFixed(0)}% longer when multitasking. Single-tasking saves time overall.`,
-    'Implement "deep work" periods: Extended single-tasking sessions (90+ minutes) for important, complex tasks.',
-    'Practice attention training: Meditation and mindfulness improve focus and reduce the urge to multitask.',
+    'You may consider eliminating or minimizing multitasking: Focus on one task at a time for optimal productivity and quality. This is a personal insight, not a medical evaluation.',
+    'You may consider using time-blocking: Schedule dedicated blocks for single tasks rather than attempting multiple tasks simultaneously.',
+    'You may consider batching similar tasks: Group similar activities together (e.g., all emails at once) to reduce task-switching costs.',
+    'You may consider minimizing distractions: Turn off notifications, close unnecessary tabs/apps, and create focus environments.',
+    `Your accuracy may drop ${accuracyLoss.toFixed(1)}% when multitasking. You may consider prioritizing accuracy by single-tasking important work.`,
+    `Tasks may take ${((values.completionTimeMultiplier - 1) * 100).toFixed(0)}% longer when multitasking. Single-tasking may save time overall.`,
+    'You may consider implementing "deep work" periods: Extended single-tasking sessions (90+ minutes) for important, complex tasks.',
+    'You may consider practicing attention training: Meditation and mindfulness may improve focus and reduce the urge to multitask.',
   ];
   
   const plan = [
-    { label: 'Immediate', detail: 'Stop multitasking during important tasks. Close distractions and focus on one task at a time.' },
-    { label: 'This Week', detail: 'Implement time-blocking for key tasks. Track single-task vs multitask productivity to see improvements.' },
-    { label: 'This Month', detail: 'Develop single-tasking habits. Use techniques like Pomodoro method and create distraction-free work environments.' },
+    { label: 'Immediate', detail: 'You may consider stopping multitasking during important tasks. Close distractions and focus on one task at a time.' },
+    { label: 'This Week', detail: 'You may consider implementing time-blocking for key tasks. Track single-task vs multitask productivity to see improvements.' },
+    { label: 'This Month', detail: 'You may consider developing single-tasking habits. Use techniques like Pomodoro method and create distraction-free work environments.' },
   ];
   
   return {
@@ -238,9 +238,9 @@ export default function MultitaskingEfficiencyCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Layers className="h-5 w-5" />
-            Multitasking Efficiency Calculator
+            Multitasking Efficiency Wellness Calculator
           </CardTitle>
-          <CardDescription>Evaluate multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates to optimize productivity.</CardDescription>
+          <CardDescription>Get general wellness insights about multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -476,10 +476,10 @@ export default function MultitaskingEfficiencyCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Multitasking, or more accurately "task-switching," involves rapidly alternating attention between multiple tasks. Research consistently shows that multitasking reduces productivity, increases errors, slows completion time, and impairs learning. The brain cannot truly focus on multiple complex tasks simultaneously—it switches between them, creating "switching costs" that reduce efficiency.
+            Multitasking, or more accurately "task-switching," may involve rapidly alternating attention between multiple tasks. Research may suggest that multitasking may reduce productivity, increase errors, slow completion time, and impair learning. The brain may not truly focus on multiple complex tasks simultaneously—it may switch between them, creating "switching costs" that may reduce efficiency. This tool provides general wellness insights, not a medical evaluation.
           </p>
           <p>
-            This calculator evaluates your multitasking efficiency by comparing single-task performance (accuracy, completion time) with multitask performance. Understanding your multitasking efficiency helps you make informed decisions about when to focus on one task versus attempting multiple tasks, ultimately improving productivity and work quality.
+            This tool provides general wellness insights about multitasking efficiency by comparing single-task performance (accuracy, completion time) with multitask performance. Understanding your multitasking efficiency may help you make informed decisions about when to focus on one task versus attempting multiple tasks, potentially improving productivity and work quality.
           </p>
         </CardContent>
       </Card>
@@ -506,9 +506,21 @@ export default function MultitaskingEfficiencyCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool evaluates multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates.</p>
+          <p>This tool provides general wellness insights about multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include an efficiency score, efficiency level, productivity loss percentage, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

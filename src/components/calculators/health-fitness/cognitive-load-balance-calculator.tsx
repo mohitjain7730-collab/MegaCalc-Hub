@@ -66,7 +66,7 @@ const faqs = [
   {
     question: 'What is a good cognitive load balance?',
     answer:
-      'Balance index of 60-80 indicates optimal load. Below 60 suggests underloaded (wasted capacity). Above 80 indicates overloaded (reduced learning). Above 90 is critical (cognitive overload).',
+      'Balance index of 60-80 suggests a general lifestyle tendency where load may be optimal. Below 60 suggests underloaded (wasted capacity). Above 80 suggests elevated load tendency (reduced learning). Above 90 suggests high load tendency. This is a personal insight, not a medical evaluation.',
   },
   {
     question: 'How can I reduce extraneous load?',
@@ -97,24 +97,24 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Decision Fatigue Index Calculator',
+    name: 'Decision Fatigue Wellness Index',
     slug: 'decision-fatigue-index-calculator',
-    description: 'Assess decision fatigue that affects cognitive capacity.',
+    description: 'Get wellness insights about decision fatigue that may affect cognitive capacity.',
   },
   {
-    name: 'Mental Fatigue Index Calculator',
+    name: 'Mental Fatigue Wellness Index',
     slug: 'mental-fatigue-index-calculator',
-    description: 'Measure mental fatigue impacting cognitive load balance.',
+    description: 'Get wellness insights about mental fatigue that may impact cognitive load balance.',
   },
   {
-    name: 'Multitasking Efficiency Calculator',
+    name: 'Multitasking Efficiency Wellness Calculator',
     slug: 'multitasking-efficiency-calculator',
-    description: 'Evaluate multitasking impact on cognitive load.',
+    description: 'Get wellness insights about multitasking impact on cognitive load.',
   },
   {
-    name: 'Brain Fog Severity Score Calculator',
+    name: 'Brain Fog Wellness Score',
     slug: 'brain-fog-severity-score-calculator',
-    description: 'Assess brain fog affecting cognitive capacity.',
+    description: 'Get wellness insights about brain fog that may affect cognitive capacity.',
   },
 ];
 
@@ -128,15 +128,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Cognitive Load Balance Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Cognitive Load Balance Wellness Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Cognitive Load Balance Calculator',
+      name: 'Cognitive Load Balance Wellness Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Assess cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity to optimize learning and performance.',
+      description: 'Get general wellness insights about cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -158,37 +158,37 @@ const calculateResult = (values: FormValues): ResultPayload => {
   let status: ResultPayload['status'] = 'balanced';
   
   if (balanceIndex >= 90) {
-    loadStatus = 'Critical Overload';
-    interpretation = 'Cognitive overload detected. Learning and performance are severely compromised. Reduce extraneous load and break tasks into smaller chunks immediately.';
+    loadStatus = 'High Load Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where cognitive load may be high. You may consider reducing extraneous load and breaking tasks into smaller chunks. This is a personal insight, not a medical evaluation.';
     status = 'critical';
   } else if (balanceIndex >= 80) {
-    loadStatus = 'Overloaded';
-    interpretation = 'Cognitive load exceeds optimal capacity. Performance and learning are impaired. Reduce extraneous load and simplify tasks.';
+    loadStatus = 'Elevated Load Tendency';
+    interpretation = 'This suggests a general lifestyle tendency where cognitive load may exceed optimal capacity. You may consider reducing extraneous load and simplifying tasks.';
     status = 'overloaded';
   } else if (balanceIndex >= 60) {
     loadStatus = 'Balanced';
-    interpretation = 'Cognitive load is well-balanced within your capacity. Optimal conditions for learning and performance.';
+    interpretation = 'This suggests a general lifestyle tendency where cognitive load is well-balanced within your capacity. Optimal conditions for learning and performance.';
     status = 'balanced';
   } else {
     loadStatus = 'Underloaded';
-    interpretation = 'Cognitive load is below optimal. You have unused cognitive capacity. Consider increasing task complexity or germane load.';
+    interpretation = 'This suggests a general lifestyle tendency where cognitive load is below optimal. You may have unused cognitive capacity. You may consider increasing task complexity or germane load.';
     status = 'underloaded';
   }
   
   const recommendations = [
-    'Reduce extraneous load: eliminate distractions, simplify instructions, improve organization, remove redundant information.',
-    'Optimize intrinsic load: break complex tasks into chunks, sequence material logically, use worked examples for complex topics.',
-    'Maximize germane load: engage in active learning, problem-solving, reflection, and connecting new to existing knowledge.',
-    'Manage cognitive capacity: ensure adequate rest, minimize stress, optimize sleep, schedule cognitively demanding tasks during peak hours.',
-    'Monitor load throughout tasks: take breaks when overloaded, adjust difficulty based on capacity, avoid multitasking during complex tasks.',
-    `Current extraneous load is ${values.extraneousLoad}/10. Aim to reduce this to 3-4/10 to free cognitive resources.`,
-    `Current germane load is ${values.germaneLoad}/10. If below 7/10, increase productive learning activities.`,
+    'You may consider reducing extraneous load: eliminate distractions, simplify instructions, improve organization, remove redundant information. This is a personal insight, not a medical evaluation.',
+    'You may consider optimizing intrinsic load: break complex tasks into chunks, sequence material logically, use worked examples for complex topics.',
+    'You may consider maximizing germane load: engage in active learning, problem-solving, reflection, and connecting new to existing knowledge.',
+    'You may consider managing cognitive capacity: ensure adequate rest, minimize stress, optimize sleep, schedule cognitively demanding tasks during peak hours.',
+    'You may consider monitoring load throughout tasks: take breaks when needed, adjust difficulty based on capacity, avoid multitasking during complex tasks.',
+    `Current extraneous load is ${values.extraneousLoad}/10. You may consider aiming to reduce this to 3-4/10 to free cognitive resources.`,
+    `Current germane load is ${values.germaneLoad}/10. If below 7/10, you may consider increasing productive learning activities.`,
   ];
   
   const plan = [
-    { label: 'Immediate', detail: 'Reduce extraneous load by eliminating distractions and simplifying the current task environment.' },
-    { label: 'This Week', detail: 'Optimize task structure to balance intrinsic, extraneous, and germane load. Schedule demanding tasks during peak cognitive capacity hours.' },
-    { label: 'This Month', detail: 'Develop strategies to maintain optimal cognitive load balance. Monitor capacity and adjust tasks accordingly.' },
+    { label: 'Immediate', detail: 'You may consider reducing extraneous load by eliminating distractions and simplifying the current task environment.' },
+    { label: 'This Week', detail: 'You may consider optimizing task structure to balance intrinsic, extraneous, and germane load. Schedule demanding tasks during peak cognitive capacity hours.' },
+    { label: 'This Month', detail: 'You may consider developing strategies to maintain optimal cognitive load balance. Monitor capacity and adjust tasks accordingly.' },
   ];
   
   return {
@@ -224,9 +224,9 @@ export default function CognitiveLoadBalanceCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Scale className="h-5 w-5" />
-            Cognitive Load Balance Calculator
+            Cognitive Load Balance Wellness Calculator
           </CardTitle>
-          <CardDescription>Assess cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity to optimize learning and performance.</CardDescription>
+          <CardDescription>Get general wellness insights about cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -408,7 +408,7 @@ export default function CognitiveLoadBalanceCalculator() {
           <p>
             <strong>Cognitive Capacity</strong> = Available mental resources (1-10 scale)
           </p>
-          <p>Balance index: 60-80 = Optimal, 80-90 = Overloaded, 90+ = Critical, below 60 = Underloaded.</p>
+          <p>Balance index: 60-80 = Optimal, 80-90 = Elevated Load Tendency, 90+ = High Load Tendency, below 60 = Underloaded. This is a personal insight, not a medical evaluation.</p>
         </CardContent>
       </Card>
       
@@ -449,10 +449,10 @@ export default function CognitiveLoadBalanceCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Cognitive load theory explains how the human brain processes information during learning and task performance. It identifies three types of cognitive load: intrinsic (inherent task difficulty), extraneous (unnecessary load from poor design), and germane (productive learning effort). Optimal performance occurs when total cognitive load matches available cognitive capacity.
+            Cognitive load theory may explain how the human brain processes information during learning and task performance. It identifies three types of cognitive load: intrinsic (inherent task difficulty), extraneous (unnecessary load from poor design), and germane (productive learning effort). Optimal performance may occur when total cognitive load matches available cognitive capacity. This tool provides general wellness insights, not a medical evaluation.
           </p>
           <p>
-            This calculator helps you assess the balance between these load types relative to your cognitive capacity. By understanding your cognitive load balance, you can optimize learning environments, reduce extraneous load, maximize germane load, and schedule tasks to match your cognitive capacity.
+            This tool helps you get general wellness insights about the balance between these load types relative to your cognitive capacity. By understanding your cognitive load balance, you may optimize learning environments, reduce extraneous load, maximize germane load, and schedule tasks to match your cognitive capacity.
           </p>
         </CardContent>
       </Card>
@@ -479,9 +479,21 @@ export default function CognitiveLoadBalanceCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool assesses cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity.</p>
+          <p>This tool provides general wellness insights about cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include total cognitive load, balance index, load status, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

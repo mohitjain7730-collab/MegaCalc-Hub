@@ -5920,93 +5920,93 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4578,
-    name: 'Brain Fog Severity Score Calculator',
-    description: 'Assess brain fog severity based on mental clarity, memory, concentration, word-finding, sleep quality, and stress to identify causes and improvement strategies.',
+    name: 'Brain Fog Wellness Score',
+    description: 'Get general wellness insights about brain fog based on mental clarity, memory, concentration, word-finding, sleep quality, and stress. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'brain-fog-severity-score-calculator',
     category: 'wellness',
-    metaTitle: 'Brain Fog Severity Score Calculator',
-    metaDescription: 'Assess brain fog severity based on mental clarity, memory, concentration, word-finding, sleep quality, and stress to identify causes and improvement strategies.'
+    metaTitle: 'Brain Fog Wellness Score',
+    metaDescription: 'Get general wellness insights about brain fog based on mental clarity, memory, concentration, word-finding, sleep quality, and stress. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4579,
-    name: 'Cognitive Load Balance Calculator',
-    description: 'Assess cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity to optimize learning and performance.',
+    name: 'Cognitive Load Balance Wellness Calculator',
+    description: 'Get general wellness insights about cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'cognitive-load-balance-calculator',
     category: 'wellness',
-    metaTitle: 'Cognitive Load Balance Calculator',
-    metaDescription: 'Assess cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity to optimize learning and performance.'
+    metaTitle: 'Cognitive Load Balance Wellness Calculator',
+    metaDescription: 'Get general wellness insights about cognitive load balance by evaluating intrinsic, extraneous, and germane load relative to cognitive capacity. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4580,
-    name: 'Multitasking Efficiency Calculator',
-    description: 'Evaluate multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates to optimize productivity.',
+    name: 'Multitasking Efficiency Wellness Calculator',
+    description: 'Get general wellness insights about multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'multitasking-efficiency-calculator',
     category: 'wellness',
-    metaTitle: 'Multitasking Efficiency Calculator',
-    metaDescription: 'Evaluate multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates to optimize productivity.'
+    metaTitle: 'Multitasking Efficiency Wellness Calculator',
+    metaDescription: 'Get general wellness insights about multitasking efficiency by comparing single-task vs multitask performance, accuracy, completion time, and error rates. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4581,
-    name: 'Reaction Time Benchmark Calculator',
-    description: 'Benchmark your reaction times against age and gender-adjusted population norms to understand your cognitive performance relative to peers.',
+    name: 'Reaction Time Benchmark Wellness Calculator',
+    description: 'Get general wellness insights about reaction times by comparing against age and gender-adjusted population norms. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'reaction-time-benchmark-calculator',
     category: 'wellness',
-    metaTitle: 'Reaction Time Benchmark Calculator',
-    metaDescription: 'Benchmark your reaction times against age and gender-adjusted population norms to understand your cognitive performance relative to peers.'
+    metaTitle: 'Reaction Time Benchmark Wellness Calculator',
+    metaDescription: 'Get general wellness insights about reaction times by comparing against age and gender-adjusted population norms. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4582,
-    name: 'Cognitive Age Estimator',
-    description: 'Estimate your cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise to understand brain health relative to chronological age.',
+    name: 'Cognitive Age Wellness Estimator',
+    description: 'Get general wellness insights about cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'cognitive-age-estimator',
     category: 'wellness',
-    metaTitle: 'Cognitive Age Estimator',
-    metaDescription: 'Estimate your cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise to understand brain health relative to chronological age.'
+    metaTitle: 'Cognitive Age Wellness Estimator',
+    metaDescription: 'Get general wellness insights about cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4583,
-    name: 'Happiness Index Calculator',
-    description: 'Calculate your happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement to assess overall wellbeing.',
+    name: 'Happiness Index Wellness Calculator',
+    description: 'Get general wellness insights about happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'happiness-index-calculator',
     category: 'wellness',
-    metaTitle: 'Happiness Index Calculator',
-    metaDescription: 'Calculate your happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement to assess overall wellbeing.'
+    metaTitle: 'Happiness Index Wellness Calculator',
+    metaDescription: 'Get general wellness insights about happiness index based on life satisfaction, positive emotions, purpose, relationships, autonomy, personal growth, and achievement. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4584,
-    name: 'Gratitude Frequency Tracker',
-    description: 'Track gratitude practice frequency including journaling, expressions, and consistency to assess gratitude habits and enhance wellbeing.',
+    name: 'Gratitude Frequency Wellness Tracker',
+    description: 'Get general wellness insights about gratitude practice frequency including journaling, expressions, and consistency. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'gratitude-frequency-tracker',
     category: 'wellness',
-    metaTitle: 'Gratitude Frequency Tracker',
-    metaDescription: 'Track gratitude practice frequency including journaling, expressions, and consistency to assess gratitude habits and enhance wellbeing.'
+    metaTitle: 'Gratitude Frequency Wellness Tracker',
+    metaDescription: 'Get general wellness insights about gratitude practice frequency including journaling, expressions, and consistency. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4585,
-    name: 'Mindfulness Consistency Score Calculator',
-    description: 'Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.',
+    name: 'Mindfulness Consistency Wellness Score Calculator',
+    description: 'Get general wellness insights about mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'mindfulness-consistency-score-calculator',
     category: 'wellness',
-    metaTitle: 'Mindfulness Consistency Score Calculator',
-    metaDescription: 'Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.'
+    metaTitle: 'Mindfulness Consistency Wellness Score Calculator',
+    metaDescription: 'Get general wellness insights about mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4586,
-    name: 'Meditation Stress Reduction Impact Calculator',
-    description: 'Measure the impact of meditation practice on stress reduction by comparing baseline and current stress levels, meditation frequency, duration, and practice length.',
+    name: 'Meditation Stress Reduction Wellness Impact Calculator',
+    description: 'Get general wellness insights about the impact of meditation practice on stress reduction by comparing baseline and current stress levels, meditation frequency, duration, and practice length. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'meditation-stress-reduction-impact-calculator',
     category: 'wellness',
-    metaTitle: 'Meditation Stress Reduction Impact Calculator',
-    metaDescription: 'Measure the impact of meditation practice on stress reduction by comparing baseline and current stress levels, meditation frequency, duration, and practice length.'
+    metaTitle: 'Meditation Stress Reduction Wellness Impact Calculator',
+    metaDescription: 'Get general wellness insights about the impact of meditation practice on stress reduction by comparing baseline and current stress levels, meditation frequency, duration, and practice length. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4587,
-    name: 'Breathing Pattern Efficiency Calculator',
-    description: 'Assess breathing pattern efficiency by evaluating respiratory rate, inhalation-to-exhalation ratio, diaphragmatic breathing, breath hold capacity, and breathing regularity.',
+    name: 'Breathing Pattern Efficiency Wellness Calculator',
+    description: 'Get general wellness insights about breathing pattern efficiency by evaluating respiratory rate, inhalation-to-exhalation ratio, diaphragmatic breathing, breath hold capacity, and breathing regularity. This is a personal lifestyle insight, not a medical evaluation.',
     slug: 'breathing-pattern-efficiency-calculator',
     category: 'wellness',
-    metaTitle: 'Breathing Pattern Efficiency Calculator',
-    metaDescription: 'Assess breathing pattern efficiency by evaluating respiratory rate, inhalation-to-exhalation ratio, diaphragmatic breathing, breath hold capacity, and breathing regularity.'
+    metaTitle: 'Breathing Pattern Efficiency Wellness Calculator',
+    metaDescription: 'Get general wellness insights about breathing pattern efficiency by evaluating respiratory rate, inhalation-to-exhalation ratio, diaphragmatic breathing, breath hold capacity, and breathing regularity. This is a personal lifestyle insight, not a medical evaluation.'
   },
   {
     id: 4588,

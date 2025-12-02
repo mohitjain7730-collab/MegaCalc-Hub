@@ -130,12 +130,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Mindfulness Consistency Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Mindfulness Consistency Wellness Score Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Mindfulness Consistency Score Calculator',
+      name: 'Mindfulness Consistency Wellness Score Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.',
@@ -176,19 +176,19 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   if (consistencyScore >= 75) {
     practiceLevel = 'Highly Consistent';
-    interpretation = 'You have highly consistent mindfulness practice with good frequency, duration, and quality. This is supporting your wellbeing effectively.';
+    interpretation = 'This suggests a general lifestyle tendency where you may have highly consistent mindfulness practice with good frequency, duration, and quality. This may be supporting your wellbeing effectively.';
     status = 'highly-consistent';
   } else if (consistencyScore >= 60) {
     practiceLevel = 'Consistent';
-    interpretation = 'You have consistent mindfulness practice. Continue maintaining your routine and consider building on your current practice.';
+    interpretation = 'This suggests a general lifestyle tendency where you may have consistent mindfulness practice. You may consider continuing to maintain your routine and consider building on your current practice.';
     status = 'consistent';
   } else if (consistencyScore >= 45) {
     practiceLevel = 'Moderate';
-    interpretation = 'Your mindfulness practice consistency is moderate. Increasing frequency, duration, or both could enhance the benefits you experience.';
+    interpretation = 'This suggests a general lifestyle tendency where your mindfulness practice consistency may be moderate. You may consider increasing frequency, duration, or both to enhance the benefits you experience.';
     status = 'moderate';
   } else {
     practiceLevel = 'Inconsistent';
-    interpretation = 'Your mindfulness practice consistency is low. Increasing practice frequency and establishing a regular routine can significantly improve mindfulness benefits.';
+    interpretation = 'This suggests a general lifestyle tendency where your mindfulness practice consistency may be low. You may consider increasing practice frequency and establishing a regular routine, which may improve mindfulness benefits. This is a personal insight, not a medical evaluation.';
     status = 'inconsistent';
   }
   
@@ -244,9 +244,9 @@ export default function MindfulnessConsistencyScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Flower2 className="h-5 w-5" />
-            Mindfulness Consistency Score Calculator
+            Mindfulness Consistency Wellness Score Calculator
           </CardTitle>
-          <CardDescription>Calculate mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality to assess mindfulness habits.</CardDescription>
+          <CardDescription>Get general wellness insights about mindfulness practice consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -518,9 +518,21 @@ export default function MindfulnessConsistencyScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates mindfulness consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality.</p>
+          <p>This tool provides general wellness insights about mindfulness consistency score based on practice frequency, duration, formal sessions, informal moments, streak, and quality. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include a consistency score, practice level, quality index, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

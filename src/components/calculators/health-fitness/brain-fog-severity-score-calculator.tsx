@@ -26,7 +26,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 type ResultPayload = {
   fogScore: number;
-  severityLevel: string;
+  wellnessLevel: string;
   status: 'minimal' | 'mild' | 'moderate' | 'severe';
   interpretation: string;
   recommendations: string[];
@@ -47,75 +47,75 @@ const faqs = [
   {
     question: 'What is brain fog?',
     answer:
-      'Brain fog is a term describing cognitive dysfunction characterized by confusion, forgetfulness, lack of focus, and mental clarity issues. It feels like your brain is wrapped in fog, making thinking difficult.',
+      'Brain fog may be a term describing changes in cognitive function characterized by confusion, forgetfulness, lack of focus, and mental clarity issues. It may feel like your brain is wrapped in fog, making thinking difficult. This tool provides general wellness insights, not a medical evaluation.',
   },
   {
     question: 'What causes brain fog?',
     answer:
-      'Common causes include: poor sleep, high stress, hormonal changes, medications, dehydration, nutritional deficiencies, chronic fatigue, inflammation, and underlying health conditions.',
+      'Lifestyle factors that may contribute include: poor sleep, high stress, dehydration, nutritional patterns, and other lifestyle factors. This is general wellness information, not a medical diagnosis.',
   },
   {
-    question: 'What is a good brain fog severity score?',
+    question: 'What is a good brain fog wellness score?',
     answer:
-      'Scores below 25 indicate minimal brain fog (excellent cognitive clarity). 25-40 is mild, 41-60 is moderate, and above 60 indicates severe brain fog requiring attention.',
+      'Scores below 25 suggest a general lifestyle tendency where brain fog may be minimal (excellent cognitive clarity). 25-40 is mild, 41-60 is moderate, and above 60 suggests areas for improvement. This is a personal insight, not a medical evaluation.',
   },
   {
-    question: 'Can brain fog be cured?',
+    question: 'Can brain fog be improved?',
     answer:
-      'Often yes, depending on the cause. Improving sleep, managing stress, addressing nutritional deficiencies, staying hydrated, and treating underlying conditions can significantly reduce or eliminate brain fog.',
+      'You may consider improving sleep, managing stress, addressing nutritional patterns, staying hydrated, and addressing lifestyle factors. This is a personal insight, not a medical evaluation.',
   },
   {
     question: 'How long does it take to improve brain fog?',
     answer:
-      'Improvement timeline varies. Simple causes (dehydration, poor sleep) may resolve in days. Chronic causes may require weeks to months of lifestyle changes and treatment.',
+      'Improvement timeline may vary. Simple lifestyle factors (dehydration, poor sleep) may resolve in days. Other lifestyle factors may require weeks to months of lifestyle changes.',
   },
   {
     question: 'Does diet affect brain fog?',
     answer:
-      'Yes, significantly. Diets high in processed foods, sugar, and inflammatory foods worsen brain fog. Brain-healthy diets rich in omega-3s, antioxidants, and whole foods can improve clarity.',
+      'Diet may affect brain fog. Diets high in processed foods, sugar, and inflammatory foods may worsen brain fog. Brain-healthy diets rich in omega-3s, antioxidants, and whole foods may improve clarity. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'Can exercise help with brain fog?',
     answer:
-      'Yes, regular exercise improves blood flow to the brain, reduces inflammation, enhances sleep quality, and reduces stress—all of which help clear brain fog.',
+      'Regular exercise may improve blood flow to the brain, reduce inflammation, enhance sleep quality, and reduce stress—all of which may help clear brain fog. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'When should I see a doctor about brain fog?',
     answer:
-      'See a doctor if brain fog is severe, persistent, worsening, or accompanied by other concerning symptoms like headaches, memory loss, or neurological changes.',
+      'You may consider seeking professional guidance if brain fog is persistent, worsening, or accompanied by other concerning symptoms. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'Does screen time worsen brain fog?',
     answer:
-      'Yes, excessive screen time, especially before bed, can worsen brain fog by disrupting sleep, causing eye strain, and increasing cognitive load.',
+      'Excessive screen time, especially before bed, may worsen brain fog by disrupting sleep, causing eye strain, and increasing cognitive load. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'Can supplements help with brain fog?',
     answer:
-      'Some supplements may help, including omega-3s, B vitamins, vitamin D, magnesium, and adaptogens. However, address root causes first and consult a healthcare provider.',
+      'Some supplements may help, including omega-3s, B vitamins, vitamin D, magnesium, and adaptogens. However, you may consider addressing lifestyle factors first and consulting a healthcare provider. This is a personal insight, not a medical evaluation.',
   },
 ];
 
 const relatedCalculators = [
   {
-    name: 'Mental Fatigue Index Calculator',
+    name: 'Mental Fatigue Wellness Index',
     slug: 'mental-fatigue-index-calculator',
-    description: 'Assess overall mental fatigue contributing to brain fog.',
+    description: 'Get wellness insights about overall mental fatigue that may contribute to brain fog.',
   },
   {
-    name: 'Cognitive Focus Efficiency Calculator',
+    name: 'Cognitive Focus Efficiency Wellness Calculator',
     slug: 'cognitive-focus-efficiency-calculator',
-    description: 'Measure focus efficiency affected by brain fog.',
+    description: 'Get wellness insights about focus efficiency that may be affected by brain fog.',
   },
   {
-    name: 'Sleep Quality vs Screen Exposure Analyzer',
+    name: 'Sleep & Screen Time Wellness Analyzer',
     slug: 'sleep-quality-vs-screen-exposure-analyzer',
-    description: 'Evaluate sleep quality that affects brain fog.',
+    description: 'Get wellness insights about sleep quality that may affect brain fog.',
   },
   {
-    name: 'Stress Hormone Balance Calculator',
+    name: 'Stress Hormone Balance Wellness Calculator',
     slug: 'stress-hormone-balance-calculator',
-    description: 'Assess stress levels contributing to brain fog.',
+    description: 'Get wellness insights about stress levels that may contribute to brain fog.',
   },
 ];
 
@@ -129,15 +129,15 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Brain Fog Severity Score Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Brain Fog Wellness Score', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Brain Fog Severity Score Calculator',
+      name: 'Brain Fog Wellness Score',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Assess brain fog severity based on mental clarity, memory, concentration, word-finding, sleep quality, and stress to identify causes and improvement strategies.',
+      description: 'Get general wellness insights about brain fog based on mental clarity, memory, concentration, word-finding, sleep quality, and stress. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -156,48 +156,48 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const fogScore = Math.round(clarityContribution + memoryContribution + concentrationContribution + wordFindingContribution + sleepContribution + stressContribution);
   const clampedScore = Math.max(0, Math.min(100, fogScore));
   
-  let severityLevel: string;
+  let wellnessLevel: string;
   let interpretation: string;
   let status: ResultPayload['status'] = 'minimal';
   
   if (clampedScore < 25) {
-    severityLevel = 'Minimal';
-    interpretation = 'You have minimal brain fog with good cognitive clarity. Maintain healthy habits to keep your mind sharp.';
+    wellnessLevel = 'Minimal';
+    interpretation = 'This suggests a general lifestyle tendency where you may have minimal brain fog with good cognitive clarity. You may consider maintaining healthy habits to keep your mind sharp.';
     status = 'minimal';
   } else if (clampedScore < 41) {
-    severityLevel = 'Mild';
-    interpretation = 'You are experiencing mild brain fog. Focus on improving sleep, managing stress, and maintaining hydration.';
+    wellnessLevel = 'Mild';
+    interpretation = 'This suggests a general lifestyle tendency where you may be experiencing mild brain fog. You may consider focusing on improving sleep, managing stress, and maintaining hydration.';
     status = 'mild';
   } else if (clampedScore < 61) {
-    severityLevel = 'Moderate';
-    interpretation = 'You have moderate brain fog affecting your cognitive function. Address sleep, stress, nutrition, and consider medical evaluation.';
+    wellnessLevel = 'Moderate';
+    interpretation = 'This suggests a general lifestyle tendency where you may have moderate brain fog affecting your cognitive function. You may consider addressing sleep, stress, nutrition, and seeking professional guidance if needed.';
     status = 'moderate';
   } else {
-    severityLevel = 'Severe';
-    interpretation = 'You are experiencing severe brain fog. This significantly impacts daily function. Consult a healthcare provider and prioritize rest and recovery.';
+    wellnessLevel = 'Severe';
+    interpretation = 'This suggests a general lifestyle tendency where you may be experiencing significant brain fog. You may consider prioritizing rest and recovery, and seeking professional guidance if needed. This is a personal insight, not a medical evaluation.';
     status = 'severe';
   }
   
   const recommendations = [
-    'Prioritize 7-9 hours of quality sleep per night. Maintain consistent sleep schedule and create optimal sleep environment.',
-    'Manage stress through meditation, deep breathing, yoga, or other relaxation techniques. Consider therapy if stress is chronic.',
-    'Stay well-hydrated (aim for 8-10 glasses of water daily). Dehydration significantly contributes to brain fog.',
-    'Adopt a brain-healthy diet: reduce processed foods and sugar, increase omega-3s, antioxidants, and whole foods.',
-    'Engage in regular physical exercise to improve blood flow to the brain and reduce inflammation.',
-    'Limit screen time, especially before bed. Take regular breaks from screens throughout the day.',
-    'Consider underlying health conditions: thyroid issues, hormonal imbalances, chronic fatigue, or nutrient deficiencies.',
-    'Address potential triggers: medications, allergies, food sensitivities, or environmental factors.',
+    'You may consider prioritizing 7-9 hours of quality sleep per night. Maintain consistent sleep schedule and create optimal sleep environment. This is a personal insight, not a medical evaluation.',
+    'You may consider managing stress through meditation, deep breathing, yoga, or other relaxation techniques.',
+    'You may consider staying well-hydrated (aim for 8-10 glasses of water daily). Dehydration may contribute to brain fog.',
+    'You may consider adopting a brain-healthy diet: reduce processed foods and sugar, increase omega-3s, antioxidants, and whole foods.',
+    'You may consider engaging in regular physical exercise to improve blood flow to the brain and reduce inflammation.',
+    'You may consider limiting screen time, especially before bed. Take regular breaks from screens throughout the day.',
+    'You may consider addressing potential lifestyle triggers: sleep patterns, stress levels, nutrition, or environmental factors.',
+    'You may consider seeking professional guidance if symptoms persist or concern you.',
   ];
   
   const plan = [
-    { label: 'Immediate', detail: 'Improve sleep hygiene tonight. Reduce screen time 2 hours before bed. Increase water intake.' },
-    { label: 'This Week', detail: 'Establish consistent sleep schedule. Start stress management practices. Evaluate diet and reduce processed foods.' },
-    { label: 'This Month', detail: 'Maintain lifestyle changes. Track brain fog symptoms. Consider medical evaluation if symptoms persist.' },
+    { label: 'Immediate', detail: 'You may consider improving sleep hygiene tonight. Reduce screen time 2 hours before bed. Increase water intake.' },
+    { label: 'This Week', detail: 'You may consider establishing consistent sleep schedule. Start stress management practices. Evaluate diet and reduce processed foods.' },
+    { label: 'This Month', detail: 'You may consider maintaining lifestyle changes. Track brain fog wellness patterns. Consider professional guidance if patterns persist.' },
   ];
   
   return {
     fogScore: clampedScore,
-    severityLevel,
+    wellnessLevel,
     status,
     interpretation,
     recommendations,
@@ -228,15 +228,15 @@ export default function BrainFogSeverityScoreCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Cloud className="h-5 w-5" />
-            Brain Fog Severity Score Calculator
+            Brain Fog Wellness Score
           </CardTitle>
-          <CardDescription>Assess brain fog severity based on mental clarity, memory, concentration, word-finding, sleep quality, and stress to identify causes and improvement strategies.</CardDescription>
+          <CardDescription>Get general wellness insights about brain fog based on mental clarity, memory, concentration, word-finding, sleep quality, and stress. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
       <Card>
         <CardHeader>
-          <CardTitle>Input your symptoms and factors</CardTitle>
+          <CardTitle>Input your lifestyle factors</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -322,7 +322,7 @@ export default function BrainFogSeverityScoreCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate Brain Fog Severity
+                Calculate Brain Fog Wellness Score
               </Button>
             </form>
           </Form>
@@ -336,7 +336,7 @@ export default function BrainFogSeverityScoreCalculator() {
               <AlertTriangle className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See your brain fog severity score and improvement strategies.</CardDescription>
+            <CardDescription>See your brain fog wellness score and improvement strategies.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -346,8 +346,8 @@ export default function BrainFogSeverityScoreCalculator() {
                 <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Severity Level</p>
-                <p className="text-2xl font-semibold text-primary">{result.severityLevel}</p>
+                <p className="text-sm text-muted-foreground">Wellness Level</p>
+                <p className="text-2xl font-semibold text-primary">{result.wellnessLevel}</p>
                 <p className="text-xs text-muted-foreground">Current status</p>
               </div>
               <div className="p-4 border rounded">
@@ -403,7 +403,7 @@ export default function BrainFogSeverityScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Brain Fog Severity Score</strong> = (Clarity Contribution + Memory Contribution + Concentration Contribution + Word-Finding Contribution + Sleep Contribution + Stress Contribution)
+            <strong>Brain Fog Wellness Score</strong> = (Clarity Contribution + Memory Contribution + Concentration Contribution + Word-Finding Contribution + Sleep Contribution + Stress Contribution)
           </p>
           <p>
             <strong>Clarity Contribution</strong> = (10 - Mental Clarity Level) × 3
@@ -423,7 +423,7 @@ export default function BrainFogSeverityScoreCalculator() {
           <p>
             <strong>Stress Contribution</strong> = Stress Level × 2
           </p>
-          <p>Score ranges from 0-100, with higher scores indicating more severe brain fog.</p>
+          <p>Score ranges from 0-100, with higher scores suggesting a general lifestyle tendency where brain fog may be more significant. This is a personal insight, not a medical evaluation.</p>
         </CardContent>
       </Card>
       
@@ -464,10 +464,10 @@ export default function BrainFogSeverityScoreCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Brain fog is a common experience characterized by cognitive dysfunction, including confusion, forgetfulness, lack of mental clarity, and difficulty concentrating. It feels like your brain is wrapped in a fog, making clear thinking challenging. This calculator assesses the severity of your brain fog by evaluating mental clarity, memory difficulties, concentration problems, word-finding issues, sleep quality, and stress levels.
+            Brain fog may be a common experience characterized by changes in cognitive function, including confusion, forgetfulness, lack of mental clarity, and difficulty concentrating. It may feel like your brain is wrapped in a fog, making clear thinking challenging. This tool provides general wellness insights about brain fog by evaluating mental clarity, memory difficulties, concentration problems, word-finding issues, sleep quality, and stress levels. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
-            Understanding your brain fog severity helps identify contributing factors and develop targeted strategies for improvement. Common causes include poor sleep, high stress, nutritional deficiencies, dehydration, hormonal imbalances, and underlying health conditions. By addressing root causes systematically, you can significantly improve cognitive clarity.
+            Understanding your brain fog wellness score may help identify contributing lifestyle factors and develop targeted strategies for improvement. Lifestyle factors that may contribute include poor sleep, high stress, nutritional patterns, hydration, and other lifestyle factors. By addressing lifestyle factors systematically, you may improve cognitive clarity.
           </p>
         </CardContent>
       </Card>
@@ -494,9 +494,21 @@ export default function BrainFogSeverityScoreCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool assesses brain fog severity based on mental clarity, memory difficulties, concentration problems, word-finding issues, sleep quality, and stress levels.</p>
-          <p>Outputs include a brain fog severity score, severity level, interpretation, recommendations, and an action plan.</p>
+          <p>This tool provides general wellness insights about brain fog based on mental clarity, memory difficulties, concentration problems, word-finding issues, sleep quality, and stress levels. This is a personal lifestyle insight, not a medical evaluation.</p>
+          <p>Outputs include a brain fog wellness score, wellness level, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>

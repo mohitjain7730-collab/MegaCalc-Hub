@@ -132,12 +132,12 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Cognitive Age Estimator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Cognitive Age Wellness Estimator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Cognitive Age Estimator',
+      name: 'Cognitive Age Wellness Estimator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description: 'Estimate your cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise to understand brain health relative to chronological age.',
@@ -174,32 +174,32 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   if (ageDiff <= -5) {
     cognitiveStatus = 'Significantly Younger';
-    interpretation = `Your cognitive age (${cognitiveAge}) is significantly younger than your chronological age (${values.chronologicalAge}). Excellent brain health and cognitive preservation!`;
+    interpretation = `This suggests a general lifestyle tendency where your cognitive age (${cognitiveAge}) may be significantly younger than your chronological age (${values.chronologicalAge}).`;
     status = 'younger';
   } else if (ageDiff < 0) {
     cognitiveStatus = 'Younger';
-    interpretation = `Your cognitive age (${cognitiveAge}) is younger than your chronological age (${values.chronologicalAge}). Your brain is functioning better than average for your age.`;
+    interpretation = `This suggests a general lifestyle tendency where your cognitive age (${cognitiveAge}) may be younger than your chronological age (${values.chronologicalAge}).`;
     status = 'younger';
   } else if (ageDiff <= 2) {
     cognitiveStatus = 'Matched';
-    interpretation = `Your cognitive age (${cognitiveAge}) closely matches your chronological age (${values.chronologicalAge}). This is within normal range.`;
+    interpretation = `This suggests a general lifestyle tendency where your cognitive age (${cognitiveAge}) closely matches your chronological age (${values.chronologicalAge}).`;
     status = 'matched';
   } else {
     cognitiveStatus = 'Older';
-    interpretation = `Your cognitive age (${cognitiveAge}) is older than your chronological age (${values.chronologicalAge}). Consider lifestyle improvements to support brain health.`;
+    interpretation = `This suggests a general lifestyle tendency where your cognitive age (${cognitiveAge}) may be older than your chronological age (${values.chronologicalAge}). You may consider lifestyle improvements to support brain health. This is a personal insight, not a medical evaluation.`;
     status = 'older';
   }
   
   const recommendations = [
-    `Your average cognitive score is ${avgCognitiveScore.toFixed(1)}/100. ${avgCognitiveScore >= 80 ? 'Excellent cognitive function!' : avgCognitiveScore >= 70 ? 'Good cognitive function with room for improvement.' : 'Consider focusing on cognitive health improvements.'}`,
+    `Your average cognitive score is ${avgCognitiveScore.toFixed(1)}/100. ${avgCognitiveScore >= 80 ? 'Excellent cognitive function!' : avgCognitiveScore >= 70 ? 'Good cognitive function with room for improvement.' : 'You may consider focusing on cognitive health improvements.'}`,
     `Cognitive age difference: ${Math.abs(ageDiff)} years ${ageDiff < 0 ? 'younger' : 'older'} than chronological age.`,
-    'Engage in regular physical exercise: Aim for 150+ minutes per week. Exercise promotes neuroplasticity and cognitive health.',
-    'Optimize sleep quality: Aim for 7-9 hours of quality sleep. Poor sleep accelerates cognitive aging.',
-    'Challenge your brain regularly: Puzzles, learning new skills, reading, and brain training exercises maintain cognitive function.',
-    'Maintain social connections: Social engagement supports cognitive health and reduces cognitive decline risk.',
-    'Manage stress effectively: Chronic stress accelerates cognitive aging. Practice meditation, mindfulness, or relaxation techniques.',
-    'Eat a brain-healthy diet: Rich in omega-3s, antioxidants, and whole foods. Avoid processed foods and excessive sugar.',
-    'Stay mentally active: Continuous learning, creative activities, and intellectual engagement help maintain cognitive age.',
+    'You may consider engaging in regular physical exercise: Aim for 150+ minutes per week. Exercise may promote neuroplasticity and cognitive health. This is a personal insight, not a medical evaluation.',
+    'You may consider optimizing sleep quality: Aim for 7-9 hours of quality sleep. Poor sleep may affect cognitive aging.',
+    'You may consider challenging your brain regularly: Puzzles, learning new skills, reading, and brain training exercises may maintain cognitive function.',
+    'You may consider maintaining social connections: Social engagement may support cognitive health.',
+    'You may consider managing stress effectively: Chronic stress may affect cognitive aging. Practice meditation, mindfulness, or relaxation techniques.',
+    'You may consider eating a brain-healthy diet: Rich in omega-3s, antioxidants, and whole foods. Avoid processed foods and excessive sugar.',
+    'You may consider staying mentally active: Continuous learning, creative activities, and intellectual engagement may help maintain cognitive age.',
   ];
   
   const plan = [
@@ -243,9 +243,9 @@ export default function CognitiveAgeEstimator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Brain className="h-5 w-5" />
-            Cognitive Age Estimator
+            Cognitive Age Wellness Estimator
           </CardTitle>
-          <CardDescription>Estimate your cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise to understand brain health relative to chronological age.</CardDescription>
+          <CardDescription>Get general wellness insights about cognitive age based on processing speed, memory, attention, executive function, sleep quality, and exercise. This is a personal lifestyle insight, not a medical evaluation.</CardDescription>
         </CardHeader>
       </Card>
       
@@ -524,9 +524,21 @@ export default function CognitiveAgeEstimator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates cognitive age based on processing speed, memory, attention, executive function scores, sleep quality, and exercise frequency.</p>
+          <p>This tool provides general wellness insights about cognitive age based on processing speed, memory, attention, executive function scores, sleep quality, and exercise frequency. This is a personal lifestyle insight, not a medical evaluation.</p>
           <p>Outputs include estimated cognitive age, age difference from chronological age, cognitive status, interpretation, recommendations, and an action plan.</p>
           <p>Formula, steps, guide content, related tools, and FAQs ensure humans or AI assistants can interpret the methodology instantly.</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a medical or psychological diagnosis. For any health concerns, please consult a qualified professional.</p>
         </CardContent>
       </Card>
     </div>
