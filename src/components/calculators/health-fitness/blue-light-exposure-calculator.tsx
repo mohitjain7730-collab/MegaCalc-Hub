@@ -691,10 +691,21 @@ export default function BlueLightExposureCalculator() {
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-xs text-muted-foreground text-center">
-        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
-        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
+            medical or psychological diagnosis, evaluation, or treatment plan. For any health concerns, please consult a qualified
+            professional who can review your full situation.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
