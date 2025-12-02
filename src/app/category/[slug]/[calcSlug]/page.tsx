@@ -18,10 +18,9 @@ import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from
 import { DeferredSchema } from '@/components/deferred-schema';
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
 
-// Optimize dynamic imports with ssr: false and loading strategy
+// Optimize dynamic imports with loading strategy
 const calculatorComponents: { [key: string]: React.ComponentType } = {
     'sip-calculator': dynamic(() => import('@/components/calculators/finance/sip-calculator'), { 
-      ssr: false,
       loading: () => <CalculatorLoading />
     }),
     'loan-emi-calculator': dynamic(() => import('@/components/calculators/finance/loan-emi-calculator')),
