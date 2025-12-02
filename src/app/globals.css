@@ -68,9 +68,22 @@ body {
   }
   html {
     scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   body {
     @apply bg-background text-foreground;
+    /* Improve touch scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Ensure minimum touch target size for accessibility */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  /* Optimize text rendering */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    text-rendering: optimizeLegibility;
   }
 }
 

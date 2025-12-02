@@ -5,6 +5,7 @@ import { ArrowLeft, Calculator, BookOpen, FileText } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CategoryIcon } from '@/components/category-icon';
+import { SitemapLink } from '@/components/sitemap-link';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
 import { FINANCE_ARTICLES, RETIREMENT_ARTICLES } from '@/app/learning-hub/finance/articles';
@@ -294,13 +295,12 @@ export default function SitemapPage() {
                         <div className="flex-1 text-left">
                           <div className="flex items-center gap-2">
                             <CardTitle className="text-base sm:text-lg md:text-xl">{topic.topic}</CardTitle>
-                            <Link
+                            <SitemapLink
                               href={topic.topicUrl}
-                              onClick={(e) => e.stopPropagation()}
                               className="text-xs text-primary hover:underline"
                             >
                               View Topic →
-                            </Link>
+                            </SitemapLink>
                           </div>
                           <CardDescription className="text-xs sm:text-sm mt-0.5 sm:mt-1">
                             {totalSections} {totalSections === 1 ? 'section' : 'sections'} • {totalArticles} {totalArticles === 1 ? 'article' : 'articles'}
@@ -326,13 +326,12 @@ export default function SitemapPage() {
                                         {section.name}
                                       </h3>
                                       {sectionUrl && (
-                                        <Link
+                                        <SitemapLink
                                           href={sectionUrl}
-                                          onClick={(e) => e.stopPropagation()}
                                           className="text-xs text-primary hover:underline"
                                         >
                                           View Section →
-                                        </Link>
+                                        </SitemapLink>
                                       )}
                                     </div>
                                     <span className="text-xs sm:text-sm font-normal text-muted-foreground">

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Construction } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { categories } from '@/lib/categories';
@@ -12,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { CategoryIcon } from '@/components/category-icon';
 import { EmbedWidget } from '@/components/embed-widget';
 import { CalculatorSidebar } from '@/components/calculator-sidebar';
+import { CalculatorLoading } from '@/components/calculator-loading';
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from '@/lib/schema-generator';
 
 const calculatorComponents: { [key: string]: React.ComponentType } = {
@@ -1028,7 +1030,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
   return (
     <>
       <CalculatorSidebar currentCategorySlug={category.slug} />
-      <div className="flex flex-col items-center min-h-screen bg-secondary/50 lg:pl-64">
+      <div className="flex flex-col items-center min-h-screen bg-secondary/50 p-4 sm:p-6 lg:pl-64">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -1047,7 +1049,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
             __html: JSON.stringify(generateHowToSchema(calculator))
           }}
         />
-        <div className="w-full max-w-4xl bg-background p-4 sm:p-8 flex-1">
+        <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1">
         <div className="mb-8">
           <Button asChild variant="ghost" className="mb-4">
             <Link href={`/category/${category.slug}`}>
@@ -1055,20 +1057,22 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
               Back to {category.name}
             </Link>
           </Button>
-          <div className="flex items-center gap-4">
-             <CategoryIcon name={category.Icon} className="h-10 w-10 text-primary flex-shrink-0" strokeWidth={1.5} />
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+             <CategoryIcon name={category.Icon} className="h-8 w-8 sm:h-10 sm:w-10 text-primary flex-shrink-0" strokeWidth={1.5} />
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground break-words">
                 {calculator.name}
               </h1>
-              <p className="text-muted-foreground mt-1">{calculator.description}</p>
+              <p className="text-sm sm:text-base text-muted-foreground mt-1 break-words">{calculator.description}</p>
             </div>
           </div>
         </div>
 
         {CalculatorComponent ? (
           <>
-            <CalculatorComponent />
+            <Suspense fallback={<CalculatorLoading />}>
+              <CalculatorComponent />
+            </Suspense>
             
             {/* Embed Widget Section */}
             <EmbedWidget categorySlug={category.slug} calculatorSlug={calculator.slug} />

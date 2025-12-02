@@ -269,76 +269,76 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
 
   const renderCalculatorGrid = (calcs: Calculator[], categorySlug: string, noResultsMessage: string) => (
     calcs.length > 0 ? (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {calcs.map((calc) => (
           <Link href={`/category/${categorySlug}/${calc.slug}`} key={calc.id} className="group block h-full">
             <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
               <CardHeader>
-                <CardTitle className="text-lg">{calc.name}</CardTitle>
-                <CardDescription className="pt-1">{calc.description}</CardDescription>
+                <CardTitle className="text-base sm:text-lg break-words">{calc.name}</CardTitle>
+                <CardDescription className="pt-1 text-sm sm:text-base break-words">{calc.description}</CardDescription>
               </CardHeader>
             </Card>
           </Link>
         ))}
       </div>
-    ) : <p className="text-muted-foreground">{noResultsMessage}</p>
+    ) : <p className="text-sm sm:text-base text-muted-foreground">{noResultsMessage}</p>
   );
 
   return (
     <>
-      <div className="relative mb-8">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+      <div className="relative mb-6 sm:mb-8">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
         <Input
           type="text"
           placeholder={`Search in ${categoryName}...`}
-          className="w-full pl-10"
+          className="w-full pl-9 sm:pl-10 text-sm sm:text-base"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
       {filteredCalculators.length > 0 ? (
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
             {categorySlug === 'conversions' ? (
                 <>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Length Conversions</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Length Conversions</h2>
                         {renderCalculatorGrid(lengthConverters, categorySlug, "No length converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Area Conversions</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Area Conversions</h2>
                         {renderCalculatorGrid(areaConverters, categorySlug, "No area converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Volume Conversions</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Volume Conversions</h2>
                         {renderCalculatorGrid(volumeConverters, categorySlug, "No volume converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Weight/Mass Conversions</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Weight/Mass Conversions</h2>
                         {renderCalculatorGrid(weightMassConverters, categorySlug, "No weight/mass converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Speed Conversions</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Speed Conversions</h2>
                         {renderCalculatorGrid(speedConverters, categorySlug, "No speed converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Time conversion</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Time conversion</h2>
                         {renderCalculatorGrid(timeConverters, categorySlug, "No time converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Pressure conversion</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Pressure conversion</h2>
                         {renderCalculatorGrid(pressureConverters, categorySlug, "No pressure converters found.")}
                     </div>
                      <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Energy Conversions</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Energy Conversions</h2>
                         {renderCalculatorGrid(energyConverters, categorySlug, "No energy converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Power Conversions</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Power Conversions</h2>
                         {renderCalculatorGrid(powerConverters, categorySlug, "No power converters found.")}
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight text-foreground mb-6">Other useful conversions</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Other useful conversions</h2>
                         {renderCalculatorGrid(otherUsefulConverters, categorySlug, "No other useful converters found.")}
                     </div>
                 </>
