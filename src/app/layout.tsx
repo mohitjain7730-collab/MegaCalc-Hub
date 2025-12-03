@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
-import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import { Calculator, BookOpen, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,6 +11,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Footer } from '@/components/footer';
+import { AnalyticsProvider } from '@/components/analytics-provider';
 
 // Optimize font loading with Next.js font optimization (eliminates render-blocking CSS)
 const inter = Inter({
@@ -21,18 +21,6 @@ const inter = Inter({
   preload: true,
   variable: '--font-inter',
 });
-
-// Defer AnalyticsProvider into its own client-side chunk to keep the main bundle lighter
-const AnalyticsProvider = dynamic(
-  () =>
-    import('@/components/analytics-provider').then(
-      (m) => m.AnalyticsProvider,
-    ),
-  {
-    ssr: false,
-    loading: () => null,
-  },
-);
 
 export const metadata: Metadata = {
   title: 'Mycalculating.com',
