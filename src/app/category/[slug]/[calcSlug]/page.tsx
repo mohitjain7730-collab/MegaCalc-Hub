@@ -17,7 +17,6 @@ import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { CalculatorLoading } from '@/components/calculator-loading';
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from '@/lib/schema-generator';
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
-import { createSafeDynamicImport } from '@/lib/safe-dynamic-import';
 
 // Helper function to create safe dynamic imports with error handling
 function safeDynamicImport(path: string) {
