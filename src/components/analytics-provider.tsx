@@ -3,16 +3,21 @@
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { logEvent } from 'firebase/analytics';
-import { useFirebase } from '@/firebase';
+import { useContext } from 'react';
+import { FirebaseContext } from '@/firebase/provider';
 
 export function AnalyticsProvider({children}: {children: React.ReactNode}) {
-  const { analytics } = useFirebase();
+  // Use context directly instead of useFirebase hook to handle cases where Firebase isn't initialized
+  const firebaseContext = useContext(FirebaseContext);
+  const analytics = firebaseContext?.analytics || null;
+  
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const lastPathRef = useRef<string>('');
 
   useEffect(() => {
     // Only log if pathname actually changed and analytics is available
+    // Skip during SSR/SSG (when window is undefined or Firebase not initialized)
     if (analytics && typeof window !== 'undefined') {
       const url = pathname + (searchParams?.toString() || '');
       
