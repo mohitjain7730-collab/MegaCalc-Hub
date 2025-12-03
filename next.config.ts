@@ -1,16 +1,20 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
-    ignoreBuildErrors: true,
+    // Allow TypeScript build errors only during development
+    ignoreBuildErrors: isDev,
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    // Skip ESLint during builds only in development
+    ignoreDuringBuilds: isDev,
   },
   // Performance optimizations
   compress: true,

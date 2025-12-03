@@ -1,0 +1,9 @@
+{
+  "title": "Sample Learning Hub Article",
+  "slug": "sample-learning-hub-article",
+  "description": "A short description of this sample article used to demonstrate the new JSON-based content system.",
+  "content": "<h2>Sample Article</h2><p>This is example HTML content rendered from a JSON file.</p>",
+  "category": "general"
+}
+
+

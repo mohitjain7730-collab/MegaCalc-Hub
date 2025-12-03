@@ -18,7 +18,7 @@ import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
 
 // Optimize dynamic imports with loading strategy
-const calculatorComponents: { [key: string]: React.ComponentType } = {
+export const calculatorComponents: { [key: string]: React.ComponentType } = {
     'sip-calculator': dynamic(() => import('@/components/calculators/finance/sip-calculator'), { 
       loading: () => <CalculatorLoading />
     }),
@@ -1020,7 +1020,7 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
 };
 
 // Create a Set of component keys for existence checks (serializable)
-const calculatorComponentKeys = new Set(Object.keys(calculatorComponents));
+export const calculatorComponentKeys = new Set(Object.keys(calculatorComponents));
 
 // Enable static generation for calculator pages to improve LCP
 export async function generateStaticParams() {
@@ -1030,8 +1030,8 @@ export async function generateStaticParams() {
   }));
 }
 
-// Revalidate every hour for fresh content
-export const revalidate = 3600;
+// ISR: revalidate every 24 hours for calculator pages
+export const revalidate = 86400;
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {
   const { slug, calcSlug } = await params;
