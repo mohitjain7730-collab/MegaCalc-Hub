@@ -4016,7 +4016,7 @@ export const calculators: Calculator[] = [
     id: 4501,
     name: 'Memory Retention Percentage Wellness Tracker',
     description: 'Track current retention %, forgetting penalty, and review timing using recall attempts, spaced sessions, and sleep quality.',
-    slug: 'memory-retention-percentage-tracker',
+    slug: 'memory-retention-percentage-calculator',
     category: 'wellness',
     metaTitle: 'Memory Retention Percentage Wellness Tracker',
     metaDescription: 'Track adjusted memory retention, see reinforcement status, and plan spaced reviews to keep learning feeling manageable.'
@@ -4043,7 +4043,7 @@ export const calculators: Calculator[] = [
     id: 4504,
     name: 'Emotional Wellbeing Index Wellness Tracker',
     description: 'Blend mood, energy, connection, purpose, and stress inputs into one wellbeing and resilience score.',
-    slug: 'emotional-wellbeing-index-tracker',
+    slug: 'emotional-wellbeing-index-calculator',
     category: 'wellness',
     metaTitle: 'Emotional Wellbeing Index Wellness Tracker',
     metaDescription: 'Track emotional wellbeing and resilience using simple self-ratings, then explore supportive suggestions and action ideas.'
@@ -4061,7 +4061,7 @@ export const calculators: Calculator[] = [
     id: 4507,
     name: 'Work Burnout Recovery Time Wellness Estimator',
     description: 'Estimate a gentle recovery-time window from work using workload, stress, sleep debt, time off, and support level.',
-    slug: 'work-burnout-recovery-time-estimator',
+    slug: 'work-burnout-recovery-time-calculator',
     category: 'wellness',
     metaTitle: 'Work Burnout Recovery Time Wellness Estimator',
     metaDescription: 'Turn your workload snapshot into an illustrative recovery window with planning tips for pacing, boundaries, and support.'
