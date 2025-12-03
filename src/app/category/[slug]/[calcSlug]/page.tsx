@@ -15,8 +15,8 @@ import { EmbedWidget } from '@/components/embed-widget';
 import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { CalculatorLoading } from '@/components/calculator-loading';
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from '@/lib/schema-generator';
-import { DeferredSchema } from '@/components/deferred-schema';
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
+import Script from 'next/script';
 
 // Optimize dynamic imports with loading strategy
 const calculatorComponents: { [key: string]: React.ComponentType } = {
@@ -1046,16 +1046,58 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
   const componentKey = `${category.slug}/${calculator.slug}`;
   const finalComponentKey = calculatorComponentKeys.has(componentKey) ? componentKey : calculator.slug;
 
-  // Generate schemas once
+  // Generate schemas once - server-side rendered for Google crawlers
   const calculatorSchema = generateCalculatorSchema(calculator, category);
   const faqSchema = generateFAQSchema(calculator);
   const howToSchema = generateHowToSchema(calculator);
+  
+  const baseUrl = `https://mycalculating.com/category/${category.slug}/${calculator.slug}`;
+  
+  // Create comprehensive schema with BreadcrumbList, Article, SoftwareApplication, FAQPage, and HowTo
+  const comprehensiveSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
+          { '@type': 'ListItem', position: 2, name: category.name, item: `https://mycalculating.com/category/${category.slug}` },
+          { '@type': 'ListItem', position: 3, name: calculator.name, item: baseUrl },
+        ],
+      },
+      {
+        '@type': 'Article',
+        headline: calculator.name,
+        description: calculator.description,
+        author: { '@type': 'Organization', name: 'Mycalculating.com' },
+        publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+        url: baseUrl,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+        datePublished: '2024-01-01',
+        dateModified: new Date().toISOString().split('T')[0],
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: calculator.name,
+        applicationCategory: 'Calculator',
+        operatingSystem: 'Web Browser',
+        description: calculator.description,
+        url: baseUrl,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@type': 'Organization', name: 'Mycalculating.com' },
+      },
+      faqSchema,
+      howToSchema,
+    ],
+  };
 
   return (
     <>
-      <DeferredSchema schema={calculatorSchema} id="calculator-schema" />
-      <DeferredSchema schema={faqSchema} id="faq-schema" />
-      <DeferredSchema schema={howToSchema} id="howto-schema" />
+      <Script
+        id="comprehensive-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(comprehensiveSchema) }}
+      />
       <CalculatorSidebar currentCategorySlug={category.slug} />
       <div className="flex flex-col items-center min-h-screen bg-secondary/50 p-4 sm:p-6 lg:pl-64">
         <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate>
