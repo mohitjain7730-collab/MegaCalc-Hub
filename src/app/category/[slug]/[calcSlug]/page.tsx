@@ -16,7 +16,6 @@ import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { CalculatorLoading } from '@/components/calculator-loading';
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from '@/lib/schema-generator';
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
-import Script from 'next/script';
 
 // Optimize dynamic imports with loading strategy
 const calculatorComponents: { [key: string]: React.ComponentType } = {
@@ -1093,8 +1092,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
 
   return (
     <>
-      <Script
-        id="comprehensive-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(comprehensiveSchema) }}
       />
