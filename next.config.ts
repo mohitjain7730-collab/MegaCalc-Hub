@@ -68,6 +68,9 @@ const nextConfig: NextConfig = {
       ...(config.resolve.fallback || {}),
     };
 
+    // Note: Chunk error handling is done via ChunkErrorHandler component in layout.tsx
+    // and safe-dynamic-import wrapper for all dynamic imports
+
     if (dev) {
       // Use in-memory cache in dev to avoid PackFileCacheStrategy big string serialization
       // @ts-ignore

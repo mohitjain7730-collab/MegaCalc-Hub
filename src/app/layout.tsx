@@ -12,6 +12,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Footer } from '@/components/footer';
 import { AnalyticsProvider } from '@/components/analytics-provider';
+import { ChunkErrorHandler } from '@/components/chunk-error-handler';
 
 // Optimize font loading with Next.js font optimization (eliminates render-blocking CSS)
 const inter = Inter({
@@ -130,6 +131,7 @@ export default function RootLayout({
               </div>
             </div>
           </header>
+          <ChunkErrorHandler />
           <div className="flex flex-col min-h-screen">
             <div className="flex-1">
               <Suspense>
