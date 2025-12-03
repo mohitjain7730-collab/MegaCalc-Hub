@@ -6,7 +6,7 @@ import { readFileSync } from 'fs';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path?: string[] } }
+  { params }: { params: { path: string[] } }
 ) {
   try {
     const pathSegments = params.path || [];
