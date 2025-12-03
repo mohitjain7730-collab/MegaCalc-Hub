@@ -12,9 +12,24 @@ interface CalculatorWrapperProps {
 // Using template literals here works in Client Components at runtime
 // Next.js will bundle all calculator components together for code splitting
 function getCalculatorImport(categorySlug: string, calculatorSlug: string): Promise<{ default: ComponentType }> {
-  // Construct the import path dynamically using template literal
-  // This works at runtime in Client Components
-  return import(`@/components/calculators/${categorySlug}/${calculatorSlug}`);
+  // Wellness calculators are stored in the health-fitness folder
+  // Some wellness calculators have a -wellness-calculator suffix in their filename
+  const actualCategory = categorySlug === 'wellness' ? 'health-fitness' : categorySlug;
+  
+  // For wellness calculators, try the wellness-suffixed version first, then the regular slug
+  if (categorySlug === 'wellness') {
+    // Pattern: replace -calculator with -wellness-calculator, or append -wellness-calculator
+    const wellnessSuffixPath = calculatorSlug.endsWith('-calculator')
+      ? calculatorSlug.replace('-calculator', '-wellness-calculator')
+      : `${calculatorSlug}-wellness-calculator`;
+    
+    // Try wellness-suffixed version first, fall back to regular slug
+    return import(`@/components/calculators/${actualCategory}/${wellnessSuffixPath}`).catch(() => {
+      return import(`@/components/calculators/${actualCategory}/${calculatorSlug}`);
+    });
+  }
+  
+  return import(`@/components/calculators/${actualCategory}/${calculatorSlug}`);
 }
 
 export function CalculatorWrapper({ categorySlug, calculatorSlug }: CalculatorWrapperProps) {
