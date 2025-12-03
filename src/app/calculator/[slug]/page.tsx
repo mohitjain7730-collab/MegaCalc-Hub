@@ -8,10 +8,20 @@ import { calculatorComponents, calculatorComponentKeys } from '@/app/category/[s
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
 import { CalculatorLoading } from '@/components/calculator-loading';
 
+export const dynamic = 'force-static';
+
+// Only generate params for calculators that have corresponding component files
 export async function generateStaticParams() {
-  return calculators.map((calc) => ({
-    slug: calc.slug,
-  }));
+  return calculators
+    .filter((calc) => {
+      const category = categories.find((c) => c.slug === calc.category);
+      if (!category) return false;
+      const componentKey = `${category.slug}/${calc.slug}`;
+      return calculatorComponentKeys.has(componentKey) || calculatorComponentKeys.has(calc.slug);
+    })
+    .map((calc) => ({
+      slug: calc.slug,
+    }));
 }
 
 export const revalidate = 86400; // ISR: revalidate every 24 hours

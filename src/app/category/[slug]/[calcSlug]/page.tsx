@@ -1022,12 +1022,21 @@ export const calculatorComponents: { [key: string]: React.ComponentType } = {
 // Create a Set of component keys for existence checks (serializable)
 export const calculatorComponentKeys = new Set(Object.keys(calculatorComponents));
 
+// Force static generation to avoid dev-time chunk mismatch issues
+export const dynamic = 'force-static';
+
 // Enable static generation for calculator pages to improve LCP
+// Only generate params for calculators that have corresponding component files
 export async function generateStaticParams() {
-  return calculators.map((calc) => ({
-    slug: calc.category,
-    calcSlug: calc.slug,
-  }));
+  return calculators
+    .filter((calc) => {
+      const componentKey = `${calc.category}/${calc.slug}`;
+      return calculatorComponentKeys.has(componentKey) || calculatorComponentKeys.has(calc.slug);
+    })
+    .map((calc) => ({
+      slug: calc.category,
+      calcSlug: calc.slug,
+    }));
 }
 
 // ISR: revalidate every 24 hours for calculator pages

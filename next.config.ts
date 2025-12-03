@@ -58,6 +58,16 @@ const nextConfig: NextConfig = {
     } : false,
   },
   webpack: (config, { dev, isServer }) => {
+    // Ensure resolve and fallback objects exist to keep dynamic imports robust
+    // This is a safe no-op in most cases but helps avoid undefined fallback errors
+    // when webpack processes dynamic import paths.
+    // eslint-disable-next-line no-param-reassign
+    config.resolve = config.resolve || {};
+    // eslint-disable-next-line no-param-reassign
+    config.resolve.fallback = {
+      ...(config.resolve.fallback || {}),
+    };
+
     if (dev) {
       // Use in-memory cache in dev to avoid PackFileCacheStrategy big string serialization
       // @ts-ignore

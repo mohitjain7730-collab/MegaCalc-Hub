@@ -7,6 +7,9 @@ import { ArticleSchemaInjector } from '@/components/article-schema-injector';
 import { ChartWrapper } from '@/components/learning-hub/chart-wrapper';
 import { articles } from '@/lib/learning-hub-articles';
 
+// Force static generation to avoid dev-time chunk mismatch issues
+export const dynamic = 'force-static';
+
 function getArticle(slug: string) {
   return articles.find((article) => article.slug === slug);
 }
