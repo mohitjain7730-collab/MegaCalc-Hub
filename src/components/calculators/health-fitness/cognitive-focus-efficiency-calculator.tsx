@@ -109,9 +109,9 @@ const schemaMarkup = {
       headline: 'Cognitive Focus Efficiency Calculator',
       description: 'Measure how well you convert planned tasks and flow minutes into meaningful output.',
       author: { '@type': 'Organization', name: 'Mycalculating.com' },
-      publisher: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
       url: baseUrl,
-      mainEntityOfPage: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
       datePublished: '2024-01-01',
       dateModified: new Date().toISOString().split('T')[0],
     },
@@ -124,6 +124,27 @@ const schemaMarkup = {
       featureList: ['Efficiency score', 'Flow consistency', 'Action plan'],
       url: baseUrl,
       description: 'Blend tasks, distractions, flow, and multitasking into a single focus efficiency metric.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Cognitive Focus Efficiency Calculator',
+      description: 'Step-by-step guide to calculate cognitive focus efficiency',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

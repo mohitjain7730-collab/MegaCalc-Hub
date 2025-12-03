@@ -127,9 +127,9 @@ const schemaMarkup = {
       headline: 'Occupational Sedentary Risk Score Calculator',
       description: 'Quantify sitting-related risk and get ergonomic plus movement recommendations.',
       author: { '@type': 'Organization', name: 'Mycalculating.com' },
-      publisher: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
       url: baseUrl,
-      mainEntityOfPage: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
       datePublished: '2024-01-01',
       dateModified: new Date().toISOString().split('T')[0],
     },
@@ -142,6 +142,27 @@ const schemaMarkup = {
       featureList: ['Sedentary risk score', 'Movement minute target', 'Step gap analysis'],
       url: baseUrl,
       description: 'Blend sitting hours, breaks, steps, workouts, and ergonomics to assess workplace risk.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Occupational Sedentary Risk Score Calculator',
+      description: 'Step-by-step guide to calculate sedentary risk score',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

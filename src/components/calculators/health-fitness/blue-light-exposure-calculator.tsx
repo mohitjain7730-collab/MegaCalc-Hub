@@ -141,6 +141,38 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'Blue Light Exposure Wellness Calculator',
+      description: 'Calculate blue light exposure from screen hours, night hours, brightness, and filter reduction.',
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Blue Light Exposure Wellness Calculator',
+      description: 'Step-by-step guide to calculate blue light exposure',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 

@@ -152,6 +152,17 @@ const schemaMarkup = {
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'PMS Symptom Score Calculator',
+      description: 'Assess premenstrual symptom patterns using 0-10 ratings for personal wellness reflection.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'PMS Symptom Score Wellness Tracker',
       applicationCategory: 'HealthApplication',
@@ -159,6 +170,27 @@ const schemaMarkup = {
       description: 'Assess premenstrual symptom patterns using 0-10 ratings for personal wellness reflection.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use PMS Symptom Score Calculator',
+      description: 'Step-by-step guide to assess PMS symptoms',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

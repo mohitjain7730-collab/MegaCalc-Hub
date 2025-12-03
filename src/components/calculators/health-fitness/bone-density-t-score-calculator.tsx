@@ -133,6 +133,17 @@ const schemaMarkup = {
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Bone Strength Lifestyle Insight Tool',
+      description: 'Assess bone strength lifestyle factors from weight-bearing exercise, strength training, nutrition, sunlight, and sedentary time.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'Bone Strength Lifestyle Insight Tool',
       applicationCategory: 'Calculator',
@@ -140,6 +151,27 @@ const schemaMarkup = {
       description: 'Assess bone strength lifestyle factors from weight-bearing exercise, strength training, nutrition, sunlight, and sedentary time.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Bone Strength Lifestyle Insight Tool',
+      description: 'Step-by-step guide to assess bone strength lifestyle factors',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

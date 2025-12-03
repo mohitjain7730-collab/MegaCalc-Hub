@@ -66,6 +66,17 @@ const schemaMarkup = {
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Meditation Breathing Rhythm Helper',
+      description: 'Explore a comfortable breathing pace for meditation based on your age, experience, and goals.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'Meditation Breathing Rhythm Helper',
       applicationCategory: 'Calculator',
@@ -74,6 +85,27 @@ const schemaMarkup = {
         'Explore a comfortable breathing pace for meditation based on your age, experience, and goals.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq[0],
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq[1],
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Meditation Breathing Rhythm Helper',
+      description: 'Step-by-step guide to find optimal breathing rhythm for meditation',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

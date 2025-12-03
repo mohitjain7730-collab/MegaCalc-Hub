@@ -186,6 +186,17 @@ const schemaMarkup = {
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Baby Sleep Needs Calculator',
+      description: 'Calculate baby sleep needs based on age, current sleep patterns, and nap frequency.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'Baby Sleep Needs Wellness Tracker',
       applicationCategory: 'HealthApplication',
@@ -193,6 +204,27 @@ const schemaMarkup = {
       description: 'Calculate baby sleep needs based on age, current sleep patterns, and nap frequency.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Baby Sleep Needs Calculator',
+      description: 'Step-by-step guide to calculate baby sleep needs',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

@@ -142,9 +142,9 @@ const schemaMarkup = {
       headline: 'Caffeine Cutoff Sleep Impact Calculator',
       description: 'Plan caffeine timing to protect deep sleep, reduce latency, and synchronize wind-down routines.',
       author: { '@type': 'Organization', name: 'Mycalculating.com' },
-      publisher: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
       url: baseUrl,
-      mainEntityOfPage: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
       datePublished: '2024-01-01',
       dateModified: new Date().toISOString().split('T')[0],
     },
@@ -157,6 +157,27 @@ const schemaMarkup = {
       featureList: ['Caffeine cutoff planner', 'Sleep latency forecast', 'Wind-down guidance'],
       url: baseUrl,
       description: 'Estimate the optimal time to stop caffeine intake based on bedtime, dose, and sensitivity.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Caffeine Cutoff Sleep Impact Calculator',
+      description: 'Step-by-step guide to calculate optimal caffeine cutoff time',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

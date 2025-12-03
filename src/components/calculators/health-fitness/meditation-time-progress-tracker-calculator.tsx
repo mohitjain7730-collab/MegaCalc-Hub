@@ -133,6 +133,17 @@ const schemaMarkup = {
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Meditation Time Progress Tracker',
+      description: 'Track meditation time progress from daily practice minutes and weekly targets.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'Meditation Time Progress Tracker',
       applicationCategory: 'Calculator',
@@ -140,6 +151,27 @@ const schemaMarkup = {
       description: 'Track meditation time progress from daily practice minutes and weekly targets.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Meditation Time Progress Tracker',
+      description: 'Step-by-step guide to track meditation time progress',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

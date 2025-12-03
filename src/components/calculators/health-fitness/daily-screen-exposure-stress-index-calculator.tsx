@@ -126,9 +126,9 @@ const schemaMarkup = {
       headline: 'Daily Screen Exposure Stress Index',
       description: 'Quantify digital overload from hours, notifications, and breaks. Get instant recommendations.',
       author: { '@type': 'Organization', name: 'Mycalculating.com' },
-      publisher: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
       url: baseUrl,
-      mainEntityOfPage: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
       datePublished: '2024-01-01',
       dateModified: new Date().toISOString().split('T')[0],
     },
@@ -141,6 +141,27 @@ const schemaMarkup = {
       featureList: ['Stress index score', 'Attention budget estimate', 'Actionable routines'],
       url: baseUrl,
       description: 'Calculate your stress index by blending screen time, notifications, meetings, and break cadence.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Daily Screen Exposure Stress Index Calculator',
+      description: 'Step-by-step guide to calculate screen exposure stress index',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

@@ -70,6 +70,17 @@ const schemaMarkup = {
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Mindful Minutes Consistency Tracker',
+      description: 'Track how often you make time for mindfulness or quiet moments across the week with a gentle consistency snapshot.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'Mindful Minutes Consistency Tracker',
       applicationCategory: 'Calculator',
@@ -78,6 +89,27 @@ const schemaMarkup = {
         'Track how often you make time for mindfulness or quiet moments across the week with a gentle consistency snapshot.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq[0],
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq[1],
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Mindful Minutes Consistency Tracker',
+      description: 'Step-by-step guide to track mindful minutes consistency',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };

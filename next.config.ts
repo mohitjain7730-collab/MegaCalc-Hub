@@ -75,7 +75,8 @@ const nextConfig: NextConfig = {
     if (!isServer) {
       config.optimization = {
         ...config.optimization,
-        usedExports: true, // Enable tree shaking
+        // usedExports is enabled by default in Next.js production builds
+        // Explicitly setting it conflicts with cacheUnaffected in Next.js 15
         sideEffects: false, // Assume no side effects for better tree shaking
         moduleIds: 'deterministic', // Better caching
         chunkIds: 'deterministic', // Better caching

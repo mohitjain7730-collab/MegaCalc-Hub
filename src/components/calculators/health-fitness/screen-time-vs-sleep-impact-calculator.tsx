@@ -179,6 +179,17 @@ const schemaMarkup = {
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Screen Time vs Sleep Impact Calculator',
+      description: 'Calculate screen time impact on sleep quality, sleep onset, and overall rest patterns.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'Screen Time vs Sleep Impact Wellness Tracker',
       applicationCategory: 'HealthApplication',
@@ -186,6 +197,27 @@ const schemaMarkup = {
       description: 'Calculate screen time impact on sleep quality, sleep onset, and overall rest patterns.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq[0],
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq[1],
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use Screen Time vs Sleep Impact Calculator',
+      description: 'Step-by-step guide to calculate screen time impact on sleep',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };
