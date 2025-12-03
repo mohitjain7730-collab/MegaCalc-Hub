@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import { Calculator, BookOpen, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,7 +11,6 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
-import { AnalyticsProvider } from '@/components/analytics-provider';
 import { Footer } from '@/components/footer';
 
 // Optimize font loading with Next.js font optimization (eliminates render-blocking CSS)
@@ -21,6 +21,18 @@ const inter = Inter({
   preload: true,
   variable: '--font-inter',
 });
+
+// Defer AnalyticsProvider into its own client-side chunk to keep the main bundle lighter
+const AnalyticsProvider = dynamic(
+  () =>
+    import('@/components/analytics-provider').then(
+      (m) => m.AnalyticsProvider,
+    ),
+  {
+    ssr: false,
+    loading: () => null,
+  },
+);
 
 export const metadata: Metadata = {
   title: 'Mycalculating.com',
@@ -52,14 +64,54 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
-        {/* Preconnect to Firebase domains for performance (300ms LCP savings) */}
+        {/* Preconnect to Firebase domains for performance (LCP savings) */}
         <link rel="preconnect" href="https://firebase.googleapis.com" />
         <link rel="preconnect" href="https://firebaseapp.com" />
-        <link rel="preconnect" href="https://studio-1785634166-53e0b.firebaseapp.com" />
-        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        {/* Preload critical CSS */}
-        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
+        <link
+          rel="preconnect"
+          href="https://studio-1785634166-53e0b.firebaseapp.com"
+        />
+
+        {/* Preconnect and DNS-prefetch for Google Ads / Tag Manager */}
+        <link
+          rel="preconnect"
+          href="https://pagead2.googlesyndication.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://www.googletagmanager.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://pagead2.googlesyndication.com"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://www.googletagmanager.com"
+        />
+
+        {/* Preload core app CSS used for above-the-fold content */}
+        <link
+          rel="preload"
+          href="/_next/static/css/app/layout.css"
+          as="style"
+        />
+
+        {/* Inline a tiny bit of critical CSS for the hero section to avoid flashes before Tailwind loads */}
+        <style
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              body { margin: 0; }
+              .hero-pattern {
+                background-image: radial-gradient(hsl(var(--muted)) 1px, transparent 1px);
+                background-size: 16px 16px;
+              }
+            `,
+          }}
+        />
       </head>
       <body className={`font-body antialiased ${inter.className}`}>
         <ThemeProvider

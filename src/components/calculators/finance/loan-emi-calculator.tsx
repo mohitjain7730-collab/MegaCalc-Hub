@@ -49,57 +49,171 @@ export default function LoanEmiCalculator() {
 
   const onSubmit = (values: FormValues) => {
     const { loanAmount, annualInterestRate, loanTenureYears } = values;
+    const supportsWorker =
+      typeof window !== 'undefined' &&
+      typeof Worker !== 'undefined' &&
+      typeof Blob !== 'undefined' &&
+      typeof URL !== 'undefined';
+
+    if (supportsWorker) {
+      const workerCode = `
+        self.onmessage = function(e) {
+          const { loanAmount, annualInterestRate, loanTenureYears } = e.data;
+          const P = loanAmount;
+          const r = annualInterestRate / 12 / 100;
+          const n = loanTenureYears * 12;
+
+          let emi, totalPayment, totalInterest, chartData;
+
+          if (r === 0) {
+            emi = P / n;
+            totalPayment = P;
+            totalInterest = 0;
+            chartData = Array.from({ length: loanTenureYears }, (_, i) => {
+              const year = i + 1;
+              const balance = P - emi * year * 12;
+              return {
+                year,
+                remainingBalance: Math.max(0, balance),
+                totalInterestPaid: 0,
+              };
+            });
+          } else {
+            emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            totalPayment = emi * n;
+            totalInterest = totalPayment - P;
+
+            chartData = [];
+            let remainingBalance = P;
+            let cumulativeInterest = 0;
+
+            for (let year = 1; year <= loanTenureYears; year++) {
+              let yearlyInterest = 0;
+              for (let month = 1; month <= 12; month++) {
+                const interestPayment = remainingBalance * r;
+                const principalPayment = emi - interestPayment;
+                yearlyInterest += interestPayment;
+                remainingBalance -= principalPayment;
+              }
+              cumulativeInterest += yearlyInterest;
+              chartData.push({
+                year: year,
+                remainingBalance: Math.max(0, remainingBalance),
+                totalInterestPaid: Math.round(cumulativeInterest),
+              });
+            }
+          }
+
+          if (!totalPayment) {
+            totalPayment = emi * n;
+          }
+          if (typeof totalInterest === 'undefined') {
+            totalInterest = totalPayment - P;
+          }
+
+          const interestPercentage = (totalInterest / totalPayment) * 100;
+          const principalPercentage = (loanAmount / totalPayment) * 100;
+          const monthlyInterestRate = annualInterestRate / 12;
+          const totalMonths = loanTenureYears * 12;
+
+          let loanType = 'Personal Loan';
+          if (loanAmount > 200000 && loanTenureYears >= 15) {
+            loanType = 'Mortgage';
+          } else if (loanAmount >= 10000 && loanAmount <= 100000 && loanTenureYears <= 7) {
+            loanType = 'Auto Loan';
+          } else if (loanAmount <= 50000 && loanTenureYears <= 5) {
+            loanType = 'Personal Loan';
+          }
+
+          self.postMessage({
+            emi,
+            totalPayment,
+            totalInterest,
+            chartData,
+            interestPercentage,
+            principalPercentage,
+            monthlyInterestRate,
+            totalMonths,
+            loanType,
+          });
+        };
+      `;
+
+      const blob = new Blob([workerCode], { type: 'application/javascript' });
+      const workerUrl = URL.createObjectURL(blob);
+      const worker = new Worker(workerUrl);
+
+      worker.onmessage = (event: MessageEvent<CalculationResult>) => {
+        setResult(event.data);
+        worker.terminate();
+        URL.revokeObjectURL(workerUrl);
+      };
+
+      worker.postMessage({ loanAmount, annualInterestRate, loanTenureYears });
+      return;
+    }
+
+    // Fallback on main thread if Web Workers are not available
     const P = loanAmount;
     const r = annualInterestRate / 12 / 100;
     const n = loanTenureYears * 12;
 
+    let emi: number;
+    let totalPayment: number;
+    let totalInterest: number;
+    let chartData: CalculationResult['chartData'];
+
     if (r === 0) {
-        const emi = P / n;
-        const totalPayment = P;
-        const totalInterest = 0;
-        const chartData = Array.from({ length: loanTenureYears }, (_, i) => {
-            const year = i + 1;
-            const balance = P - emi * year * 12;
-            return {
-                year,
-                remainingBalance: Math.max(0, balance),
-                totalInterestPaid: 0,
-            };
-        });
-        setResult({ emi, totalPayment, totalInterest, chartData });
-        return;
-    }
-
-    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    const totalPayment = emi * n;
-    const totalInterest = totalPayment - P;
-
-    const chartData = [];
-    let remainingBalance = P;
-    let cumulativeInterest = 0;
-
-    for (let year = 1; year <= loanTenureYears; year++) {
-      let yearlyInterest = 0;
-      for (let month = 1; month <= 12; month++) {
-        const interestPayment = remainingBalance * r;
-        const principalPayment = emi - interestPayment;
-        yearlyInterest += interestPayment;
-        remainingBalance -= principalPayment;
-      }
-      cumulativeInterest += yearlyInterest;
-      chartData.push({
-        year: year,
-        remainingBalance: Math.max(0, remainingBalance), // Ensure balance doesn't go negative
-        totalInterestPaid: Math.round(cumulativeInterest),
+      emi = P / n;
+      totalPayment = P;
+      totalInterest = 0;
+      chartData = Array.from({ length: loanTenureYears }, (_, i) => {
+        const year = i + 1;
+        const balance = P - emi * year * 12;
+        return {
+          year,
+          remainingBalance: Math.max(0, balance),
+          totalInterestPaid: 0,
+        };
       });
+    } else {
+      emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      totalPayment = emi * n;
+      totalInterest = totalPayment - P;
+
+      chartData = [];
+      let remainingBalance = P;
+      let cumulativeInterest = 0;
+
+      for (let year = 1; year <= loanTenureYears; year++) {
+        let yearlyInterest = 0;
+        for (let month = 1; month <= 12; month++) {
+          const interestPayment = remainingBalance * r;
+          const principalPayment = emi - interestPayment;
+          yearlyInterest += interestPayment;
+          remainingBalance -= principalPayment;
+        }
+        cumulativeInterest += yearlyInterest;
+        chartData.push({
+          year: year,
+          remainingBalance: Math.max(0, remainingBalance),
+          totalInterestPaid: Math.round(cumulativeInterest),
+        });
+      }
     }
-    
+
+    if (typeof totalPayment === 'undefined') {
+      totalPayment = emi * n;
+    }
+    if (typeof totalInterest === 'undefined') {
+      totalInterest = totalPayment - P;
+    }
+
     const interestPercentage = (totalInterest / totalPayment) * 100;
     const principalPercentage = (loanAmount / totalPayment) * 100;
     const monthlyInterestRate = annualInterestRate / 12;
     const totalMonths = loanTenureYears * 12;
-    
-    // Determine loan type based on amount and tenure
+
     let loanType = 'Personal Loan';
     if (loanAmount > 200000 && loanTenureYears >= 15) {
       loanType = 'Mortgage';
@@ -109,16 +223,16 @@ export default function LoanEmiCalculator() {
       loanType = 'Personal Loan';
     }
 
-    setResult({ 
-      emi, 
-      totalPayment, 
-      totalInterest, 
+    setResult({
+      emi,
+      totalPayment,
+      totalInterest,
       chartData,
       interestPercentage,
       principalPercentage,
       monthlyInterestRate,
       totalMonths,
-      loanType
+      loanType,
     });
   };
 

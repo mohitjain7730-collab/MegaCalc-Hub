@@ -174,6 +174,48 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // Global security headers for all routes
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
+          {
+            key: 'Content-Security-Policy',
+            // Allow required Firebase, Google Ads/tag, and image/font domains while keeping a reasonably strict baseline
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://securepubads.g.doubleclick.net https://www.gstatic.com https://firebase.googleapis.com https://www.googleapis.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' data: https://fonts.gstatic.com",
+              "img-src 'self' data: blob: https://*",
+              "connect-src 'self' https://firebase.googleapis.com https://firebaseinstallations.googleapis.com https://firestore.googleapis.com https://www.google-analytics.com https://stats.g.doubleclick.net",
+              "frame-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join('; '),
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin-allow-popups',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
+      {
         // Static assets (JS, CSS)
         source: '/_next/static/:path*',
         headers: [
