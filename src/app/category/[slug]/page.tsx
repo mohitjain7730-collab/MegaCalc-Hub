@@ -11,6 +11,10 @@ import { CategorySearch } from '@/components/category-search';
 import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { generateCategorySchema } from '@/lib/schema-generator';
 
+// Force dynamic rendering to prevent dev-only chunk mismatch issues
+export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
+
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const category = categories.find((c) => c.slug === slug);

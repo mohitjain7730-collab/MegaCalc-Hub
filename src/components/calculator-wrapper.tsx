@@ -11,7 +11,13 @@ interface CalculatorWrapperProps {
 // Function to dynamically import calculator component
 // Using template literals here works in Client Components at runtime
 // Next.js will bundle all calculator components together for code splitting
+// Added error handling to prevent chunk load errors for missing calculators
 function getCalculatorImport(categorySlug: string, calculatorSlug: string): Promise<{ default: ComponentType }> {
+  // Validate inputs to prevent undefined variable errors
+  if (!categorySlug || !calculatorSlug) {
+    return Promise.reject(new Error('Invalid category or calculator slug'));
+  }
+
   // Wellness calculators are stored in the health-fitness folder
   // Some wellness calculators have a -wellness-calculator suffix in their filename
   const actualCategory = categorySlug === 'wellness' ? 'health-fitness' : categorySlug;
@@ -25,11 +31,18 @@ function getCalculatorImport(categorySlug: string, calculatorSlug: string): Prom
     
     // Try wellness-suffixed version first, fall back to regular slug
     return import(`@/components/calculators/${actualCategory}/${wellnessSuffixPath}`).catch(() => {
-      return import(`@/components/calculators/${actualCategory}/${calculatorSlug}`);
+      return import(`@/components/calculators/${actualCategory}/${calculatorSlug}`).catch(() => {
+        // Final fallback: return a loading component if calculator doesn't exist
+        return import('@/components/calculator-loading');
+      });
     });
   }
   
-  return import(`@/components/calculators/${actualCategory}/${calculatorSlug}`);
+  // For non-wellness calculators, try import with error handling
+  return import(`@/components/calculators/${actualCategory}/${calculatorSlug}`).catch(() => {
+    // Fallback to loading component if calculator doesn't exist
+    return import('@/components/calculator-loading');
+  });
 }
 
 export function CalculatorWrapper({ categorySlug, calculatorSlug }: CalculatorWrapperProps) {

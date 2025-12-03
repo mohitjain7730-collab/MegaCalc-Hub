@@ -19,6 +19,10 @@ function isHtmlContent(content: string): boolean {
   return /<\/?[a-z][\s\S]*>/i.test(sample);
 }
 
+// Force dynamic rendering to prevent dev-only chunk mismatch issues
+export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ 
   params 
 }: { 

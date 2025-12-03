@@ -8,7 +8,9 @@ import { calculatorComponents, calculatorComponentKeys } from '@/app/category/[s
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
 import { CalculatorLoading } from '@/components/calculator-loading';
 
-export const dynamic = 'force-static';
+// Force dynamic rendering to prevent dev-only chunk mismatch issues
+export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 
 // Only generate params for calculators that have corresponding component files
 export async function generateStaticParams() {
@@ -48,8 +50,10 @@ export default async function SingleCalculatorPage({
     ? componentKey
     : calculator.slug;
 
+  // Ensure finalComponentKey exists and is valid before accessing calculatorComponents
+  // Use nullish coalescing to handle undefined cases safely
   const CalculatorComponent =
-    calculatorComponents[finalComponentKey] ??
+    (finalComponentKey && calculatorComponents[finalComponentKey]) ??
     dynamic(() => import('@/components/calculator-loading'));
 
   return (

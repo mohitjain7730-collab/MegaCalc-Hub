@@ -1022,8 +1022,9 @@ export const calculatorComponents: { [key: string]: React.ComponentType } = {
 // Create a Set of component keys for existence checks (serializable)
 export const calculatorComponentKeys = new Set(Object.keys(calculatorComponents));
 
-// Force static generation to avoid dev-time chunk mismatch issues
-export const dynamic = 'force-static';
+// Force dynamic rendering to prevent dev-only chunk mismatch issues
+export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 
 // Enable static generation for calculator pages to improve LCP
 // Only generate params for calculators that have corresponding component files
@@ -1051,6 +1052,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
     notFound();
   }
 
+  // category and calculator are guaranteed to exist due to notFound() check above
   const componentKey = `${category.slug}/${calculator.slug}`;
   const finalComponentKey = calculatorComponentKeys.has(componentKey) ? componentKey : calculator.slug;
 
