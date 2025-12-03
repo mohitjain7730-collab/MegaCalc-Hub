@@ -10,7 +10,6 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
-import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { AnalyticsProvider } from '@/components/analytics-provider';
 import { Footer } from '@/components/footer';
 
@@ -50,7 +49,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
@@ -64,48 +62,46 @@ export default function RootLayout({
         <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
       </head>
       <body className={`font-body antialiased ${inter.className}`}>
-        <FirebaseClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            disableTransitionOnChange
-          >
-            <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
-              <div className="container flex h-14 items-center">
-                <Link href="/" className="flex items-center gap-2 font-bold mr-4">
-                  <Calculator className="h-6 w-6 text-primary" />
-                  <span className="hidden sm:inline-block text-lg">Mycalculating.com</span>
-                </Link>
-                <div className="ml-auto flex items-center gap-2 sm:gap-4">
-                  <Button asChild variant="ghost" className="px-2 sm:px-4">
-                    <Link href="/ai-tool">
-                      <Sparkles className="h-4 w-4 sm:mr-2" />
-                      <span className="hidden sm:inline-block">Try Our AI Tool</span>
-                    </Link>
-                  </Button>
-                  <Button asChild variant="ghost" className="px-2 sm:px-4">
-                    <Link href="/learning-hub">
-                      <BookOpen className="h-4 w-4 sm:mr-2" />
-                      <span className="hidden sm:inline-block">Learning Hub</span>
-                    </Link>
-                  </Button>
-                  <ThemeToggle />
-                </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          disableTransitionOnChange
+        >
+          <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
+            <div className="container flex h-14 items-center">
+              <Link href="/" className="flex items-center gap-2 font-bold mr-4">
+                <Calculator className="h-6 w-6 text-primary" />
+                <span className="hidden sm:inline-block text-lg">Mycalculating.com</span>
+              </Link>
+              <div className="ml-auto flex items-center gap-2 sm:gap-4">
+                <Button asChild variant="ghost" className="px-2 sm:px-4">
+                  <Link href="/ai-tool">
+                    <Sparkles className="h-4 w-4 sm:mr-2" />
+                    <span className="hidden sm:inline-block">Try Our AI Tool</span>
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" className="px-2 sm:px-4">
+                  <Link href="/learning-hub">
+                    <BookOpen className="h-4 w-4 sm:mr-2" />
+                    <span className="hidden sm:inline-block">Learning Hub</span>
+                  </Link>
+                </Button>
+                <ThemeToggle />
               </div>
-            </header>
-            <div className="flex flex-col min-h-screen">
-              <div className="flex-1">
-                <Suspense>
-                  <AnalyticsProvider>
-                    {children}
-                  </AnalyticsProvider>
-                </Suspense>
-              </div>
-              <Footer />
             </div>
-            <Toaster />
-          </ThemeProvider>
-        </FirebaseClientProvider>
+          </header>
+          <div className="flex flex-col min-h-screen">
+            <div className="flex-1">
+              <Suspense>
+                <AnalyticsProvider>
+                  {children}
+                </AnalyticsProvider>
+              </Suspense>
+            </div>
+            <Footer />
+          </div>
+          <Toaster />
+        </ThemeProvider>
         {/* AdSense script - loaded with Next.js Script for better performance */}
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5405909046385135"

@@ -74,13 +74,51 @@ const schemaMarkup = {
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Meditation Streak Mindfulness Progress Tracker',
+      description:
+        'Track meditation streaks, mindful check-ins, and stress ratings to see how your mindfulness habit feels over time in a non-diagnostic way.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Mycalculating.com',
+        logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' },
+      },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
       name: 'Meditation Streak Mindfulness Progress Tracker',
-      applicationCategory: 'Calculator',
+      applicationCategory: 'LifestyleApplication',
       operatingSystem: 'Web Browser',
-      description: 'Score mindfulness streak momentum, balance index, and stress offset.',
+      description:
+        'A mindfulness wellness tracker that blends streak length, session minutes, quality, and stress into an approachable progress snapshot.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use the Meditation Streak Mindfulness Progress Tracker',
+      description: 'Step-by-step guide to logging your meditation streak, daily check-ins, and stress level.',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };
@@ -380,15 +418,148 @@ export default function MeditationStreakMindfulnessProgressTracker() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Mindfulness sticks when streaks are forgiving, sessions are flexible, and micro check-ins support you all day.</p>
-          <p>Use this tracker to mix long sits with short pauses, celebrate every streak milestone, and nudge stress down gradually.</p>
-        </CardContent>
-      </Card>
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemType="https://schema.org/Article"
+      >
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta
+          itemProp="name"
+          content="Meditation Streak Mindfulness Progress Tracker: Build a Gentle, Sustainable Practice"
+        />
+        <meta
+          itemProp="description"
+          content="Learn how to track meditation streaks, micro check-ins, and stress patterns so mindfulness can support your day without becoming another rigid task."
+        />
+        <meta
+          itemProp="keywords"
+          content="meditation streak tracker, mindfulness progress tracker, daily mindfulness habit, stress relief meditation, mindfulness streak app alternative, mindful check-in ideas, compassionate meditation practice"
+        />
+        <meta itemProp="author" content="Mycalculating.com" />
+        <meta itemProp="datePublished" content="2024-01-01" />
+        <meta itemProp="url" content="/category/health-fitness/meditation-streak-mindfulness-progress-tracker" />
+
+        <h1
+          className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
+          itemProp="headline"
+        >
+          Meditation Streak Mindfulness Progress Tracker: A Kind Companion for Your Practice
+        </h1>
+        <p className="text-lg italic text-gray-700">
+          This guide shows you how to use streaks, session minutes, and tiny mindful pauses as a gentle reflection of
+          how your practice feels—rather than a strict performance scoreboard.
+        </p>
+
+        {/* TABLE OF CONTENTS */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li>
+            <a href="#why-meditation-tracking" className="hover:underline">
+              Why Track Meditation and Mindfulness at All?
+            </a>
+          </li>
+          <li>
+            <a href="#key-signals" className="hover:underline">
+              Key Signals in the Tracker: Streaks, Minutes, Quality, and Stress
+            </a>
+          </li>
+          <li>
+            <a href="#micro-checkins" className="hover:underline">
+              The Power of Micro Check-ins Throughout the Day
+            </a>
+          </li>
+          <li>
+            <a href="#interpreting-status" className="hover:underline">
+              Interpreting “Thriving,” “Steady,” and “Restart Gently”
+            </a>
+          </li>
+          <li>
+            <a href="#keeping-compassionate" className="hover:underline">
+              Keeping Your Practice Compassionate and Flexible
+            </a>
+          </li>
+        </ul>
+
+        <hr />
+
+        <h2 id="why-meditation-tracking" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Why Track Meditation and Mindfulness at All?
+        </h2>
+        <p>
+          Many people notice that mindfulness supports mood, sleep, and decision-making—but it can be hard to remember
+          that on hectic days. A simple tracker makes your efforts and small wins more visible, especially when life
+          gets busier.
+        </p>
+        <p>
+          Here, the goal is not to “hit perfect streaks” forever. Instead, it is to notice trends, celebrate any amount
+          of practice, and gently reconnect when things go quiet for a while.
+        </p>
+
+        <h2 id="key-signals" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Key Signals in the Tracker: Streaks, Minutes, Quality, and Stress
+        </h2>
+        <p>
+          The momentum and balance scores combine a few simple ingredients—how many days in a row you have practiced,
+          how long sessions last on average, how present they feel, how many micro check-ins you remember, and your own
+          sense of stress.
+        </p>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>
+            <strong>Streak days</strong> – show how often you have been returning to the cushion or practice.
+          </li>
+          <li>
+            <strong>Average minutes</strong> – reflect overall time invested, whether sessions are short or long.
+          </li>
+          <li>
+            <strong>Quality score</strong> – captures your personal sense of presence, not any objective “grade.”
+          </li>
+          <li>
+            <strong>Mindful moments</strong> – tiny check-ins scattered across your day.
+          </li>
+          <li>
+            <strong>Stress rating</strong> – offers context for how full your current season feels.
+          </li>
+        </ul>
+
+        <h2 id="micro-checkins" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          The Power of Micro Check-ins Throughout the Day
+        </h2>
+        <p>
+          Short pauses—like a few breaths before opening messages or noticing your feet on the ground during a commute—can
+          support you just as meaningfully as longer sits. Logging them encourages you to see your day as full of small
+          practice opportunities.
+        </p>
+        <p>
+          When streaks dip or sessions shrink, these micro check-ins can keep mindfulness present in your life without
+          demanding extra time you do not have.
+        </p>
+
+        <h2 id="interpreting-status" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Interpreting “Thriving,” “Steady,” and “Restart Gently”
+        </h2>
+        <p>
+          Status labels in this tracker are meant to feel like friendly signposts, not scores. “Thriving” often means
+          your inputs suggest a supportive rhythm. “Steady” reflects a base you can build on. “Restart gently” is an
+          invitation to re-enter practice in very small, kind steps when life has been heavy or busy.
+        </p>
+        <p>
+          You always decide what, if anything, to change. Sometimes the wisest response is simply acknowledging how much
+          you already carry and choosing the smallest possible next step.
+        </p>
+
+        <h2 id="keeping-compassionate" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Keeping Your Practice Compassionate and Flexible
+        </h2>
+        <p>
+          Mindfulness tends to be most sustainable when it matches your energy, personality, and season of life. That
+          might mean walking meditations, body scans in bed, or single-breath pauses between meetings rather than strict
+          daily sits.
+        </p>
+        <p>
+          You can use this tracker as a soft accountability partner: a place to notice stories you are telling yourself
+          about “success,” and an anchor for practicing more self-kindness over time.
+        </p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -412,15 +583,32 @@ export default function MeditationStreakMindfulnessProgressTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tracker brings together streak length, session time, check‑ins, and your own stress rating into a single view of how your mindfulness habit feels right now.</p>
-          <p>You can use the numbers and suggestions as gentle prompts, adjusting or ignoring anything that doesn’t fit your life or intentions for practice.</p>
+          <p>
+            This mindfulness tracker brings together streak length, session time, check-ins, and your own stress rating
+            into a single, non-diagnostic view of how your practice feels right now.
+          </p>
+          <p>
+            You can use the reflections as supportive prompts, reshaping or discarding anything that does not align with
+            your needs, boundaries, or energy.
+          </p>
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-xs text-muted-foreground text-center">
-        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
-        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis or treatment program. For personal mental health support, please
+            reach out to a qualified professional or trusted local resource.
+          </p>
+        </CardContent>
+      </Card>
 
     </div>
   );

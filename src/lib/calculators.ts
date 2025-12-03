@@ -4009,17 +4009,17 @@ export const calculators: Calculator[] = [
     description: 'Log baseline vs latest reaction times, sleep, caffeine, and practice sessions to see improvement percentage and consistency status.',
     slug: 'reaction-time-improvement-tracker',
     category: 'wellness',
-    metaTitle: 'Reaction Time Improvement Tracker',
-    metaDescription: 'Track reaction time gains, consistency scores, and tailored recommendations based on sleep, caffeine, and training inputs.'
+    metaTitle: 'Reaction Time Improvement Wellness Tracker',
+    metaDescription: 'Track reaction time changes, consistency scores, and wellness-oriented recommendations based on sleep, caffeine, and training inputs.'
   },
   {
     id: 4501,
-    name: 'Memory Retention Percentage Calculator',
-    description: 'Estimate current retention %, forgetting penalty, and review urgency using recall attempts, spaced sessions, and sleep quality.',
-    slug: 'memory-retention-percentage-calculator',
+    name: 'Memory Retention Percentage Wellness Tracker',
+    description: 'Track current retention %, forgetting penalty, and review timing using recall attempts, spaced sessions, and sleep quality.',
+    slug: 'memory-retention-percentage-tracker',
     category: 'wellness',
-    metaTitle: 'Memory Retention Percentage Calculator',
-    metaDescription: 'Calculate adjusted memory retention, see reinforcement status, and plan spaced reviews to lock in learning.'
+    metaTitle: 'Memory Retention Percentage Wellness Tracker',
+    metaDescription: 'Track adjusted memory retention, see reinforcement status, and plan spaced reviews to keep learning feeling manageable.'
   },
   {
     id: 4502,
@@ -4041,12 +4041,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4504,
-    name: 'Emotional Wellbeing Index Calculator',
+    name: 'Emotional Wellbeing Index Wellness Tracker',
     description: 'Blend mood, energy, connection, purpose, and stress inputs into one wellbeing and resilience score.',
-    slug: 'emotional-wellbeing-index-calculator',
+    slug: 'emotional-wellbeing-index-tracker',
     category: 'wellness',
-    metaTitle: 'Emotional Wellbeing Index Calculator',
-    metaDescription: 'Measure emotional wellbeing and resilience, then follow personalized recommendations and action plans.'
+    metaTitle: 'Emotional Wellbeing Index Wellness Tracker',
+    metaDescription: 'Track emotional wellbeing and resilience using simple self-ratings, then explore supportive suggestions and action ideas.'
   },
   {
     id: 4507,
@@ -4059,12 +4059,12 @@ export const calculators: Calculator[] = [
   },
   {
     id: 4507,
-    name: 'Work Burnout Recovery Time Calculator',
-    description: 'Estimate decompression time from work burnout using workload, stress, sleep debt, time off, and support level.',
-    slug: 'work-burnout-recovery-time-calculator',
+    name: 'Work Burnout Recovery Time Wellness Estimator',
+    description: 'Estimate a gentle recovery-time window from work using workload, stress, sleep debt, time off, and support level.',
+    slug: 'work-burnout-recovery-time-estimator',
     category: 'wellness',
-    metaTitle: 'Work Burnout Recovery Time Calculator',
-    metaDescription: 'Turn your workload snapshot into a burnout level and estimated recovery window with practical planning tips.'
+    metaTitle: 'Work Burnout Recovery Time Wellness Estimator',
+    metaDescription: 'Turn your workload snapshot into an illustrative recovery window with planning tips for pacing, boundaries, and support.'
   },
   {
     id: 4508,

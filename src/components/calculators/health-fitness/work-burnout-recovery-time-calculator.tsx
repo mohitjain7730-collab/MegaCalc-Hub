@@ -94,9 +94,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Stress Level Self-Assessment Calculator',
+    name: 'Stress Level Self-Assessment Tool',
     slug: 'stress-level-self-assessment-calculator',
-    description: 'Gauge your general stress load alongside burnout.',
+    description: 'Gauge your general stress load alongside recovery planning.',
   },
   {
     name: 'Work-Life Balance Time Allocation Calculator',
@@ -109,13 +109,13 @@ const relatedCalculators = [
     description: 'Quantify lost sleep contributing to burnout.',
   },
   {
-    name: 'Emotional Wellbeing Index Calculator',
-    slug: 'emotional-wellbeing-index-calculator',
+    name: 'Emotional Wellbeing Index Wellness Tracker',
+    slug: 'emotional-wellbeing-index-tracker',
     description: 'Check the wider emotional impact of your workload.',
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/work-burnout-recovery-time-calculator';
+const baseUrl = 'https://mycalculating.com/category/health-fitness/work-burnout-recovery-time-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,17 +125,55 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Work Burnout Recovery Time Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Work Burnout Recovery Time Wellness Estimator', item: baseUrl },
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Work Burnout Recovery Time Wellness Estimator',
+      description:
+        'Use workload, stress, sleep debt, days off, and support level as inputs to estimate a gentle, non-diagnostic recovery window from work intensity.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Mycalculating.com',
+        logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' },
+      },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
-      name: 'Work Burnout Recovery Time Calculator',
-      applicationCategory: 'Calculator',
+      name: 'Work Burnout Recovery Time Wellness Estimator',
+      applicationCategory: 'LifestyleApplication',
       operatingSystem: 'Web Browser',
-      description: 'Estimate decompression time from work burnout using workload, stress, sleep debt, time off, and support.',
+      description:
+        'A planning-oriented estimator that turns your current work and rest pattern into an illustrative recovery-time window.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use the Work Burnout Recovery Time Wellness Estimator',
+      description: 'Step-by-step guide to logging work hours, stress, sleep debt, time off, and support for recovery planning.',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };
@@ -159,12 +197,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (recoveryDays >= 14 && recoveryDays < 30) {
     burnoutLevel = 'moderate';
     interpretation =
-      'These entries point to a pretty full stretch of work and not a lot of extra recovery time. Gentle boundary resets and planned breaks may help things feel more sustainable.';
+      'These entries point to a pretty full stretch of work and not a lot of extra recovery time. Gentle boundary resets and planned breaks may help things feel more manageable for you.';
   }
   if (recoveryDays >= 30) {
     burnoutLevel = 'high';
     interpretation =
-      'This pattern suggests your load has likely been very heavy for a while. It may be worth exploring ways to ease demands, add support, and create more space to rest where possible.';
+      'This pattern suggests your load has likely been very heavy for a while. It may be worth exploring ways to ease demands, add support, and create more space to rest where possible with trusted people or professionals.';
   }
 
   const recommendations = [
@@ -195,7 +233,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   return { recoveryDays, burnoutLevel, interpretation, recommendations, plan };
 };
 
-export default function WorkBurnoutRecoveryTimeCalculator() {
+export default function WorkBurnoutRecoveryTimeEstimator() {
   const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
@@ -217,9 +255,11 @@ export default function WorkBurnoutRecoveryTimeCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <HeartPulse className="h-5 w-5" />
-            Work Burnout Recovery Time Calculator
+            Work Burnout Recovery Time Wellness Estimator
           </CardTitle>
-          <CardDescription>Estimate how long your body and mind may need to decompress from current workload.</CardDescription>
+          <CardDescription>
+            Estimate a gentle recovery-time window from your current workload and rest pattern in a non-diagnostic way.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -328,7 +368,7 @@ export default function WorkBurnoutRecoveryTimeCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Estimate recovery time
+                Estimate recovery window
               </Button>
             </form>
           </Form>
@@ -411,8 +451,8 @@ export default function WorkBurnoutRecoveryTimeCalculator() {
             <strong>Recovery time</strong> ≈ clamp\((weeklyHours − 35) × 0.8 + stress × 2.5 + sleepDebt × 0.8 − daysOff × 1.2 − (support −
             5) × 1.5 + 7\) into a 3–60 day window.
           </p>
-          <p>Higher workload, stress, and sleep debt extend recovery, while more days off and stronger support shorten it.</p>
-          <p>This is an estimation framework, not a promise—use it for planning and negotiation, not as medical advice.</p>
+          <p>Higher workload, stress, and sleep debt extend the estimated window, while more days off and stronger support shorten it.</p>
+          <p>This is an illustrative estimation framework, not a promise—use it for planning and negotiation, not as medical or psychological advice.</p>
         </CardContent>
       </Card>
 
@@ -482,18 +522,151 @@ export default function WorkBurnoutRecoveryTimeCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Burnout builds slowly when recovery never quite catches up with demand.</p>
-          <p>
-            Use this calculator to make invisible load more visible, advocate for humane pacing, and protect your long-term capacity—not
-            just short-term output.
-          </p>
-        </CardContent>
-      </Card>
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemType="https://schema.org/Article"
+      >
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta
+          itemProp="name"
+          content="Work Burnout Recovery Time Wellness Estimator: Planning Space to Decompress from Intense Work"
+        />
+        <meta
+          itemProp="description"
+          content="Explore how to use workload, stress, sleep debt, days off, and support level to sketch a non-diagnostic recovery-time window and plan kinder work rhythms."
+        />
+        <meta
+          itemProp="keywords"
+          content="work burnout recovery estimator, burnout wellness tracker, recovery time after overwork, decompression planning tool, work life balance recovery, non diagnostic burnout support"
+        />
+        <meta itemProp="author" content="Mycalculating.com" />
+        <meta itemProp="datePublished" content="2024-01-01" />
+        <meta itemProp="url" content="/category/health-fitness/work-burnout-recovery-time-estimator" />
+
+        <h1
+          className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
+          itemProp="headline"
+        >
+          Work Burnout Recovery Time Wellness Estimator: Making Space Visible So You Can Plan
+        </h1>
+        <p className="text-lg italic text-gray-700">
+          This guide explains how to use a simple estimator to turn your current work, sleep, and support picture into a
+          rough recovery window—so you can advocate for kinder pacing without treating the numbers as a diagnosis.
+        </p>
+
+        {/* TABLE OF CONTENTS */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li>
+            <a href="#burnout-vs-overwork" className="hover:underline">
+              Burnout, Overwork, and Why Language Matters
+            </a>
+          </li>
+          <li>
+            <a href="#inputs-explained" className="hover:underline">
+              Inputs Explained: Hours, Stress, Sleep Debt, Days Off, and Support
+            </a>
+          </li>
+          <li>
+            <a href="#reading-window" className="hover:underline">
+              Reading the Recovery Window Without Self-Blame
+            </a>
+          </li>
+          <li>
+            <a href="#using-estimates" className="hover:underline">
+              Using Estimates in Conversations with Managers and Loved Ones
+            </a>
+          </li>
+          <li>
+            <a href="#when-to-seek-help" className="hover:underline">
+              When to Seek Professional Support
+            </a>
+          </li>
+        </ul>
+
+        <hr />
+
+        <h2 id="burnout-vs-overwork" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Burnout, Overwork, and Why Language Matters
+        </h2>
+        <p>
+          People often use “burnout” to describe a range of experiences—from feeling very tired at the end of a busy
+          sprint to deep, long-lasting exhaustion and detachment. This estimator does not try to label where you fall on
+          that spectrum. Instead, it focuses on workload and recovery space as levers you may be able to influence.
+        </p>
+        <p>
+          Choosing language that feels accurate and kind to you is more important than matching any particular
+          definition here. The tool’s role is to support reflection and planning, not to assign a diagnosis.
+        </p>
+
+        <h2 id="inputs-explained" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Inputs Explained: Hours, Stress, Sleep Debt, Days Off, and Support
+        </h2>
+        <p>
+          The model combines five everyday signals: how many hours you typically work, how intense that work feels, how
+          much sleep you have been missing, how many full days off you have coming up, and how supported you feel.
+        </p>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>
+            <strong>Weekly hours</strong> – a rough sense of how much time work occupies.
+          </li>
+          <li>
+            <strong>Stress rating</strong> – your own 1–10 impression of how pressured things feel.
+          </li>
+          <li>
+            <strong>Sleep debt</strong> – the gap between how much rest you aim for and what you actually got.
+          </li>
+          <li>
+            <strong>Days off planned</strong> – genuine off-duty days you expect in the next month.
+          </li>
+          <li>
+            <strong>Support score</strong> – how emotionally and practically backed you feel at work and outside of it.
+          </li>
+        </ul>
+        <p>
+          None of these are moral judgments; they are simply ingredients the estimator uses to sketch how much time your
+          body and mind might appreciate for deeper exhale.
+        </p>
+
+        <h2 id="reading-window" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Reading the Recovery Window Without Self-Blame
+        </h2>
+        <p>
+          When the tool suggests a longer recovery window, it is reflecting how stretched the inputs appear—not how
+          strong or resilient you are as a person. In many cases, systems, expectations, and constraints shape those
+          inputs just as much as personal choices do.
+        </p>
+        <p>
+          You can use the results to ask: “Given this estimate, what is realistically possible in the next few weeks?
+          Are there tiny changes that could move things in a kinder direction?”
+        </p>
+
+        <h2 id="using-estimates" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Using Estimates in Conversations with Managers and Loved Ones
+        </h2>
+        <p>
+          A concrete recovery-time estimate can sometimes make invisible strain easier to discuss. You might share a
+          summary—without details you prefer to keep private—as part of conversations about timelines, staffing, or
+          boundaries with managers and colleagues.
+        </p>
+        <p>
+          With loved ones, the same numbers can help you communicate why you feel the way you do and what kind of rest
+          or support might feel most nourishing right now.
+        </p>
+
+        <h2 id="when-to-seek-help" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          When to Seek Professional Support
+        </h2>
+        <p>
+          If you notice persistent exhaustion, feelings of hopelessness, or thoughts of self-harm, this tool is not the
+          right resource on its own. Those experiences deserve care from qualified professionals and, if needed, urgent
+          support services in your area.
+        </p>
+        <p>
+          You are welcome to bring a screenshot or notes from the estimator into those spaces as one piece of context,
+          but your wellbeing is always more important than any number here.
+        </p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -517,15 +690,32 @@ export default function WorkBurnoutRecoveryTimeCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool turns your current work hours, stress, sleep, time off, and support into a simple view of how much space you might want for recovery.</p>
-          <p>You can use the estimates as gentle guidance for pacing and conversations about workload, rather than as fixed predictions or medical advice.</p>
+          <p>
+            This wellness estimator turns your current work hours, stress, sleep, time off, and support into a simple
+            view of how much recovery space you might appreciate.
+          </p>
+          <p>
+            The estimates are starting points for pacing and negotiation—not fixed predictions—so you can combine them
+            with your own judgment, context, and professional advice where needed.
+          </p>
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-xs text-muted-foreground text-center">
-        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
-        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical, psychological, or occupational health diagnosis. For personalized guidance or if you are in
+            crisis, please contact a qualified professional or local support service.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

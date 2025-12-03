@@ -56,11 +56,11 @@ const faqs = [
 const relatedCalculators = [
   { name: 'Meditation Streak Mindfulness Progress Tracker', slug: 'meditation-streak-mindfulness-progress-tracker', description: 'See how consistency in mindfulness shifts mood and stress.' },
   { name: 'Stress Hormone Balance Calculator', slug: 'stress-hormone-balance-calculator', description: 'Align cortisol vs melatonin to protect calm evenings.' },
-  { name: 'Memory Retention Percentage Calculator', slug: 'memory-retention-percentage-calculator', description: 'Track learning retention alongside emotional energy.' },
-  { name: 'Reaction Time Improvement Tracker', slug: 'reaction-time-improvement-tracker', description: 'Watch cognitive sharpness improve as wellbeing rises.' },
+  { name: 'Memory Retention Percentage Wellness Tracker', slug: 'memory-retention-percentage-tracker', description: 'Track learning retention alongside emotional energy.' },
+  { name: 'Reaction Time Improvement Wellness Tracker', slug: 'reaction-time-improvement-tracker', description: 'Watch cognitive sharpness trends evolve as wellbeing shifts.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/emotional-wellbeing-index-calculator';
+const baseUrl = 'https://mycalculating.com/category/health-fitness/emotional-wellbeing-index-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -70,17 +70,55 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Emotional Wellbeing Index Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Emotional Wellbeing Index Wellness Tracker', item: baseUrl },
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Emotional Wellbeing Index Wellness Tracker',
+      description:
+        'A gentle wellness tracker that blends mood, energy, connection, purpose, and stress check-ins into a simple emotional wellbeing snapshot.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Mycalculating.com',
+        logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' },
+      },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
-      name: 'Emotional Wellbeing Index Calculator',
-      applicationCategory: 'Calculator',
+      name: 'Emotional Wellbeing Index Wellness Tracker',
+      applicationCategory: 'LifestyleApplication',
       operatingSystem: 'Web Browser',
-      description: 'Blend mood, energy, connection, purpose, and stress inputs into a wellbeing score.',
+      description:
+        'A non-diagnostic wellness tracker that turns five simple self-ratings into a wellbeing and resilience snapshot for personal reflection.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use the Emotional Wellbeing Index Wellness Tracker',
+      description: 'Step-by-step guide to logging mood, energy, connection, purpose, and stress check-ins.',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };
@@ -128,7 +166,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   return { wellbeingIndex, resilienceScore, status, interpretation, recommendations, plan };
 };
 
-export default function EmotionalWellbeingIndexCalculator() {
+export default function EmotionalWellbeingIndexTracker() {
   const [result, setResult] = useState<ResultPayload | null>(null);
 
   const form = useForm<FormValues>({
@@ -150,9 +188,11 @@ export default function EmotionalWellbeingIndexCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <HeartPulse className="h-5 w-5" />
-            Emotional Wellbeing Index Calculator
+            Emotional Wellbeing Index Wellness Tracker
           </CardTitle>
-          <CardDescription>Quick snapshot of mood, energy, relationships, meaning, and stress.</CardDescription>
+          <CardDescription>
+            A quick, non-diagnostic snapshot of mood, energy, relationships, meaning, and stress for your own reflection.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -188,7 +228,7 @@ export default function EmotionalWellbeingIndexCalculator() {
                 ))}
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate wellbeing
+                Track wellbeing
               </Button>
             </form>
           </Form>
@@ -324,7 +364,7 @@ export default function EmotionalWellbeingIndexCalculator() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Related calculators</CardTitle>
+          <CardTitle>Related tools</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {relatedCalculators.map((calc) => (
@@ -340,15 +380,151 @@ export default function EmotionalWellbeingIndexCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Emotional wellbeing thrives on predictable rhythms: mindful check-ins, nourishing fuel, honest conversations, and purpose-filled work.</p>
-          <p>Use this calculator weekly as the hub for journaling, therapy prep, or digital wellness dashboards.</p>
-        </CardContent>
-      </Card>
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemType="https://schema.org/Article"
+      >
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta
+          itemProp="name"
+          content="Emotional Wellbeing Index Wellness Tracker: A Non-Diagnostic Snapshot of How You Feel"
+        />
+        <meta
+          itemProp="description"
+          content="Learn how to track mood, energy, connection, purpose, and stress in a compassionate, non-diagnostic way using an emotional wellbeing wellness tracker."
+        />
+        <meta
+          itemProp="keywords"
+          content="emotional wellbeing tracker, mood and energy check in, resilience wellness index, non diagnostic mental health tool, stress and connection tracker, purpose and meaning reflection"
+        />
+        <meta itemProp="author" content="Mycalculating.com" />
+        <meta itemProp="datePublished" content="2024-01-01" />
+        <meta itemProp="url" content="/category/health-fitness/emotional-wellbeing-index-tracker" />
+
+        <h1
+          className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
+          itemProp="headline"
+        >
+          Emotional Wellbeing Index Wellness Tracker: A Gentle Way to Notice How You Are Doing
+        </h1>
+        <p className="text-lg italic text-gray-700">
+          This guide walks through using a simple five-part check-in—mood, energy, connection, purpose, and stress—to
+          create a non-diagnostic snapshot of your emotional landscape.
+        </p>
+
+        {/* TABLE OF CONTENTS */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li>
+            <a href="#why-track-emotions" className="hover:underline">
+              Why Track Emotional Wellbeing as a Lifestyle Signal?
+            </a>
+          </li>
+          <li>
+            <a href="#five-pillars" className="hover:underline">
+              The Five Pillars: Mood, Energy, Connection, Purpose, and Stress
+            </a>
+          </li>
+          <li>
+            <a href="#status-labels" className="hover:underline">
+              Understanding “Flourishing,” “Steady,” and “Support Needed”
+            </a>
+          </li>
+          <li>
+            <a href="#using-results" className="hover:underline">
+              How to Use Results for Reflection, Not Self-Judgment
+            </a>
+          </li>
+          <li>
+            <a href="#bringing-to-support" className="hover:underline">
+              Bringing This Tracker Into Therapy or Support Conversations
+            </a>
+          </li>
+        </ul>
+
+        <hr />
+
+        <h2 id="why-track-emotions" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Why Track Emotional Wellbeing as a Lifestyle Signal?
+        </h2>
+        <p>
+          Emotional states naturally ebb and flow. Rather than labeling those shifts as “good” or “bad,” a tracker like
+          this simply helps you see patterns more clearly—such as when long days, disrupted sleep, or isolation start to
+          stack up.
+        </p>
+        <p>
+          Used kindly, this information can support decisions about rest, boundaries, connection, and professional
+          support, without turning your inner life into a scorecard.
+        </p>
+
+        <h2 id="five-pillars" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          The Five Pillars: Mood, Energy, Connection, Purpose, and Stress
+        </h2>
+        <p>
+          The tracker invites you to rate five areas on a simple 1–10 scale. None of these numbers are right or wrong;
+          they are just one day’s impression.
+        </p>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>
+            <strong>Mood</strong> – how your emotional tone feels overall today.
+          </li>
+          <li>
+            <strong>Energy</strong> – how resourced or depleted your body and mind feel.
+          </li>
+          <li>
+            <strong>Connection</strong> – your sense of being supported, seen, or accompanied.
+          </li>
+          <li>
+            <strong>Purpose</strong> – how connected you feel to things that matter to you.
+          </li>
+          <li>
+            <strong>Stress</strong> – how full or overwhelmed this moment in time feels.
+          </li>
+        </ul>
+        <p>
+          Looking at these side by side often reveals which small lever might be easiest to support next—maybe checking
+          in with a friend, lightening a commitment, or revisiting something meaningful to you.
+        </p>
+
+        <h2 id="status-labels" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Understanding “Flourishing,” “Steady,” and “Support Needed”
+        </h2>
+        <p>
+          Status labels in this tracker summarize your entries but are not diagnoses. “Flourishing” usually means your
+          ratings suggest a relatively supportive moment. “Steady” reflects a mixed or middle space. “Support needed”
+          can be a gentle cue to invite extra care, support, or rest into your week.
+        </p>
+        <p>
+          If you consistently see “support needed,” or if you feel worried about your wellbeing, those patterns can be a
+          helpful starting point for conversations with a trusted person or a licensed professional.
+        </p>
+
+        <h2 id="using-results" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          How to Use Results for Reflection, Not Self-Judgment
+        </h2>
+        <p>
+          It can be tempting to treat every number as an evaluation of how well you are “coping.” The intention here is
+          different: to give you language and structure so you can care for yourself with more information and less
+          guesswork.
+        </p>
+        <p>
+          You might use results to choose one tiny experiment—like a wind-down ritual, a walk with a friend, or an
+          honest boundaries conversation—rather than trying to overhaul everything at once.
+        </p>
+
+        <h2 id="bringing-to-support" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Bringing This Tracker Into Therapy or Support Conversations
+        </h2>
+        <p>
+          If you already work with a therapist, coach, or other support, you can share patterns from this tracker to
+          ground your conversations in concrete observations. Trends in stress, connection, or purpose scores can help
+          you both see where life has been especially heavy or where something positive is emerging.
+        </p>
+        <p>
+          Remember that this tool cannot replace professional care. It simply offers one more way to check in with
+          yourself and bring your lived experience into spaces designed to support you.
+        </p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -372,15 +548,32 @@ export default function EmotionalWellbeingIndexCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool turns your mood, energy, connection, purpose, and stress check‑ins into a single snapshot of how things feel right now.</p>
-          <p>The scores and ideas are there to gently support reflection and small experiments—you can always adjust or ignore anything that doesn’t fit your situation.</p>
+          <p>
+            This wellness tracker turns your mood, energy, connection, purpose, and stress check-ins into one simple
+            view of how things feel for you right now.
+          </p>
+          <p>
+            You are always in charge of how you use the insights: they are meant to support small, compassionate
+            experiments, not to label or diagnose you.
+          </p>
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-xs text-muted-foreground text-center">
-        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
-        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <ShieldCheck className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical, psychological, or crisis assessment. If you are struggling or in distress, please reach out
+            to a qualified professional or local support service right away.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -70,17 +70,55 @@ const schemaMarkup = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
         { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Reaction Time Improvement Tracker', item: baseUrl },
+        { '@type': 'ListItem', position: 3, name: 'Reaction Time Improvement Wellness Tracker', item: baseUrl },
       ],
     },
     {
+      '@type': 'Article',
+      headline: 'Reaction Time Improvement Wellness Tracker',
+      description:
+        'Track reaction time changes, training consistency, and lifestyle patterns to get a general wellness snapshot of your responsiveness over time.',
+      author: { '@type': 'Organization', name: 'Mycalculating.com' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Mycalculating.com',
+        logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' },
+      },
+      url: baseUrl,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+      datePublished: '2024-01-01',
+      dateModified: new Date().toISOString().split('T')[0],
+    },
+    {
       '@type': 'SoftwareApplication',
-      name: 'Reaction Time Improvement Tracker',
-      applicationCategory: 'Calculator',
+      name: 'Reaction Time Improvement Wellness Tracker',
+      applicationCategory: 'LifestyleApplication',
       operatingSystem: 'Web Browser',
-      description: 'Estimate reaction-time improvements, training consistency, and action steps.',
+      description:
+        'A wellness-focused tracker that turns reaction-time entries and daily habits into an easy-to-read improvement and consistency snapshot.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Use the Reaction Time Improvement Wellness Tracker',
+      description: 'Step-by-step guide to logging reaction time tests and interpreting wellness-focused trends.',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
     },
   ],
 };
@@ -152,9 +190,11 @@ export default function ReactionTimeImprovementTracker() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TimerReset className="h-5 w-5" />
-            Reaction Time Improvement Tracker
+            Reaction Time Improvement Wellness Tracker
           </CardTitle>
-          <CardDescription>Measure improvement percentage, consistency score, and habit gaps instantly.</CardDescription>
+          <CardDescription>
+            Track reaction-time changes alongside sleep, practice, and caffeine patterns for a gentle, non-diagnostic wellness snapshot.
+          </CardDescription>
         </CardHeader>
       </Card>
 
@@ -233,7 +273,7 @@ export default function ReactionTimeImprovementTracker() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate improvement
+                Track improvement
               </Button>
             </form>
           </Form>
@@ -385,15 +425,153 @@ export default function ReactionTimeImprovementTracker() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete guide snapshot</CardTitle>
-        </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Reaction time gains require consistent testing, plenty of sleep, and mindful caffeine habits. This tool provides the feedback loop.</p>
-          <p>Pair it with mindfulness, strength, and hydration strategies for long-term neural speed.</p>
-        </CardContent>
-      </Card>
+      <section
+        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        itemType="https://schema.org/Article"
+      >
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta
+          itemProp="name"
+          content="Reaction Time Improvement Wellness Tracker: How to Monitor Neural Speed and Everyday Readiness"
+        />
+        <meta
+          itemProp="description"
+          content="Learn how to track reaction-time trends, structure simple drills, and align sleep, caffeine, and mindfulness habits to support everyday responsiveness in a non-diagnostic, wellness-focused way."
+        />
+        <meta
+          itemProp="keywords"
+          content="reaction time tracker, reaction time improvement, neural speed wellness, esports training tracker, sports performance reaction drills, sleep and reaction time, caffeine and alertness, mindfulness for faster reactions"
+        />
+        <meta itemProp="author" content="Mycalculating.com" />
+        <meta itemProp="datePublished" content="2024-01-01" />
+        <meta itemProp="url" content="/category/health-fitness/reaction-time-improvement-tracker" />
+
+        <h1
+          className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
+          itemProp="headline"
+        >
+          Reaction Time Improvement Wellness Tracker: Gentle Ways to Monitor Speed and Readiness
+        </h1>
+        <p className="text-lg italic text-gray-700">
+          This guide explains how to use reaction-time logging as a simple wellness check-in—connecting test results with
+          sleep, practice rhythms, and stimulants in a non-diagnostic, supportive way.
+        </p>
+
+        {/* TABLE OF CONTENTS */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li>
+            <a href="#what-is-reaction-time" className="hover:underline">
+              What Reaction Time Actually Measures
+            </a>
+          </li>
+          <li>
+            <a href="#factors" className="hover:underline">
+              Everyday Factors That Influence Reaction Time
+            </a>
+          </li>
+          <li>
+            <a href="#how-to-track" className="hover:underline">
+              How to Track Reaction Time in a Consistent Way
+            </a>
+          </li>
+          <li>
+            <a href="#interpreting-trends" className="hover:underline">
+              Interpreting Trends Without Self-Diagnosing
+            </a>
+          </li>
+          <li>
+            <a href="#building-routines" className="hover:underline">
+              Building Supportive Routines Around the Tracker
+            </a>
+          </li>
+        </ul>
+
+        <hr />
+
+        <h2 id="what-is-reaction-time" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          What Reaction Time Actually Measures
+        </h2>
+        <p>
+          Reaction time is the short delay between a stimulus (like a light or sound) and your response (such as a key
+          press, click, or movement). In this tracker, reaction-time tests are treated as one lens on how rested,
+          focused, and coordinated you may feel on a given day—not as a medical assessment of nervous system health.
+        </p>
+        <p>
+          Because individual baselines vary widely, the most useful signal comes from comparing you with yourself over
+          weeks and months. Small, gradual shifts paired with notes about sleep, training, or stress can highlight
+          patterns you may want to explore further.
+        </p>
+
+        <h2 id="factors" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Everyday Factors That Influence Reaction Time
+        </h2>
+        <p>
+          Many everyday variables can nudge reaction speed up or down. The goal of this tool is simply to make those
+          influences more visible, so you can experiment with supportive habits:
+        </p>
+        <ul className="list-disc ml-6 space-y-1">
+          <li>
+            <strong>Sleep quality and timing</strong> – Short sleep or irregular bedtimes can leave you feeling slower
+            or foggier.
+          </li>
+          <li>
+            <strong>Practice frequency</strong> – Short, focused drills often lead to smoother responses over time.
+          </li>
+          <li>
+            <strong>Caffeine and other stimulants</strong> – Helpful for some people in moderation, but too much or
+            very late intake can disrupt rest.
+          </li>
+          <li>
+            <strong>Stress load</strong> – Busy or emotionally heavy days may make it harder to settle and react
+            cleanly.
+          </li>
+          <li>
+            <strong>Testing setup</strong> – Device, screen, sound, and even posture all introduce natural variation.
+          </li>
+        </ul>
+
+        <h2 id="how-to-track" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          How to Track Reaction Time in a Consistent Way
+        </h2>
+        <p>
+          For clearer trends, try to keep your testing conditions as similar as life allows. That might mean using the
+          same device, picking a familiar drill, and testing around the same time of day. Logging sleep hours, practice
+          sessions, and caffeinated drinks gives extra context for what you see.
+        </p>
+        <p>
+          You do not need perfect data for this to help. Even rough notes such as “busy week,” “late-night gaming,” or
+          “extra rest days” can explain shifts and keep the tracker feeling like a gentle reflection tool instead of a
+          rigid performance report.
+        </p>
+
+        <h2 id="interpreting-trends" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Interpreting Trends Without Self-Diagnosing
+        </h2>
+        <p>
+          The improvement percentages and consistency scores here are meant to be descriptive, not diagnostic. Slower
+          days or flatter progress do not automatically mean something is wrong; they can simply be a cue to look at
+          rest, stress, or schedule shifts with a bit more curiosity.
+        </p>
+        <p>
+          If you ever have health concerns about coordination, balance, or cognition, it is always best to talk with a
+          qualified professional. You can share exported notes or screenshots from this tracker as one small piece of
+          context in that conversation.
+        </p>
+
+        <h2 id="building-routines" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
+          Building Supportive Routines Around the Tracker
+        </h2>
+        <p>
+          Over time, many people find that pairing this tracker with simple routines—like a consistent bedtime, light
+          movement, hydration, or mindfulness streaks—feels more helpful than chasing any single number. The goal is a
+          smoother, more sustainable rhythm, not constant maximization.
+        </p>
+        <p>
+          You can revisit the tracker weekly or every few weeks, treat the results as a check-in, and adjust any
+          experiments that no longer fit your life, sport, or gaming season.
+        </p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -417,15 +595,32 @@ export default function ReactionTimeImprovementTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tracker blends your reaction‑time entries with sleep, practice, and caffeine habits to give a simple view of how your routine feels over time.</p>
-          <p>You can treat the results as gentle guidance for experimenting with practice structure and daily rhythms that feel sustainable and supportive.</p>
+          <p>
+            This wellness tracker blends your reaction-time entries with sleep, practice, and caffeine patterns to offer a
+            simple, non-diagnostic view of how your current routine feels over time.
+          </p>
+          <p>
+            You can treat the numbers and suggestions as gentle prompts for experimentation, keeping only what fits your
+            life, sport, or creative work.
+          </p>
         </CardContent>
       </Card>
 
-      <p className="mt-6 text-xs text-muted-foreground text-center">
-        Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is not a
-        medical or psychological diagnosis. For any health concerns, please consult a qualified professional.
-      </p>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <ShieldCheck className="h-5 w-5" />
+            Disclaimer
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>
+            Disclaimer: This tool provides general wellness and lifestyle insights for educational purposes only. It is
+            not a medical or psychological diagnosis, screening, or treatment plan. For any health concerns, please
+            consult a qualified professional who can get to know your specific situation.
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
