@@ -1020,6 +1020,9 @@ const calculatorComponents: { [key: string]: React.ComponentType } = {
     'free-cash-flow-to-equity-calculator': dynamic(() => import('@/components/calculators/finance/free-cash-flow-to-equity-calculator')),
 };
 
+// Create a Set of component keys for existence checks (serializable)
+const calculatorComponentKeys = new Set(Object.keys(calculatorComponents));
+
 // Enable static generation for calculator pages to improve LCP
 export async function generateStaticParams() {
   return calculators.map((calc) => ({
@@ -1041,7 +1044,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
   }
 
   const componentKey = `${category.slug}/${calculator.slug}`;
-  const finalComponentKey = calculatorComponents[componentKey] ? componentKey : calculator.slug;
+  const finalComponentKey = calculatorComponentKeys.has(componentKey) ? componentKey : calculator.slug;
 
   // Generate schemas once
   const calculatorSchema = generateCalculatorSchema(calculator, category);
@@ -1074,9 +1077,9 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
           </div>
         </div>
 
-        {calculatorComponents[finalComponentKey] ? (
+        {calculatorComponentKeys.has(finalComponentKey) ? (
           <>
-            <CalculatorWrapper componentKey={finalComponentKey} calculatorComponents={calculatorComponents} />
+            <CalculatorWrapper categorySlug={category.slug} calculatorSlug={calculator.slug} />
             {/* Embed Widget Section */}
             <EmbedWidget categorySlug={category.slug} calculatorSlug={calculator.slug} />
           </>

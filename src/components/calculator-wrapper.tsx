@@ -4,32 +4,22 @@ import { Suspense, lazy, ComponentType } from 'react';
 import { CalculatorLoading } from './calculator-loading';
 
 interface CalculatorWrapperProps {
-  componentKey: string;
-  calculatorComponents: { [key: string]: ComponentType };
+  categorySlug: string;
+  calculatorSlug: string;
 }
 
-export function CalculatorWrapper({ componentKey, calculatorComponents }: CalculatorWrapperProps) {
-  const CalculatorComponent = calculatorComponents[componentKey];
-  
-  if (!CalculatorComponent) {
-    return null;
-  }
+// Function to dynamically import calculator component
+// Using template literals here works in Client Components at runtime
+// Next.js will bundle all calculator components together for code splitting
+function getCalculatorImport(categorySlug: string, calculatorSlug: string): Promise<{ default: ComponentType }> {
+  // Construct the import path dynamically using template literal
+  // This works at runtime in Client Components
+  return import(`@/components/calculators/${categorySlug}/${calculatorSlug}`);
+}
 
-  // Use lazy loading with intersection observer for viewport-based loading
-  const LazyComponent = lazy(() => {
-    return new Promise<{ default: ComponentType }>((resolve) => {
-      // Load immediately but with lower priority
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          resolve({ default: CalculatorComponent });
-        }, { timeout: 100 });
-      } else {
-        setTimeout(() => {
-          resolve({ default: CalculatorComponent });
-        }, 0);
-      }
-    });
-  });
+export function CalculatorWrapper({ categorySlug, calculatorSlug }: CalculatorWrapperProps) {
+  // Dynamically import the calculator component on the client side
+  const LazyComponent = lazy(() => getCalculatorImport(categorySlug, calculatorSlug));
 
   return (
     <Suspense fallback={<CalculatorLoading />}>
