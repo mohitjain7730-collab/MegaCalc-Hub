@@ -26,21 +26,20 @@ function safeDynamicImport(path: string) {
       // Use a try-catch wrapper to handle chunk load errors gracefully
       return import(/* webpackMode: "lazy", webpackChunkName: "[request]" */ path)
         .catch((error) => {
-          // Check if it's a chunk load error
+          // Check if it's a chunk load error (including timeout errors)
           const isChunkError = 
             error?.message?.includes('Loading chunk') ||
             error?.message?.includes('Failed to fetch dynamically imported module') ||
             error?.message?.includes('ChunkLoadError') ||
-            error?.name === 'ChunkLoadError';
+            error?.message?.includes('timeout') ||
+            error?.name === 'ChunkLoadError' ||
+            (error?.message && /chunk.*failed/i.test(error.message)) ||
+            (error?.message && /loading.*chunk/i.test(error.message));
           
           if (isChunkError) {
-            console.warn('Chunk load error detected for', path, '- attempting recovery');
-            // Try to reload the page to get fresh chunks (only once per session)
-            const reloadKey = `chunk-reload-${path}`;
-            if (!sessionStorage.getItem(reloadKey)) {
-              sessionStorage.setItem(reloadKey, 'true');
-              setTimeout(() => window.location.reload(), 1000);
-            }
+            console.warn('Chunk load error detected for', path, '- using fallback');
+            // Don't reload here - let the global ChunkErrorHandler manage reloads
+            // This prevents multiple reload attempts from different imports
           } else {
             console.warn('Import error for', path, error);
           }

@@ -101,6 +101,95 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Global chunk error handler - runs before React loads */}
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var CHUNK_RELOAD_KEY = 'chunk-reload-attempt';
+                var CHUNK_RELOAD_MAX = 2;
+                var CHUNK_RELOAD_DELAY = 1500;
+                
+                function getAttempts() {
+                  try {
+                    var attempts = sessionStorage.getItem(CHUNK_RELOAD_KEY);
+                    return attempts ? parseInt(attempts, 10) : 0;
+                  } catch {
+                    return 0;
+                  }
+                }
+                
+                function incrementAttempts() {
+                  try {
+                    var attempts = getAttempts() + 1;
+                    sessionStorage.setItem(CHUNK_RELOAD_KEY, attempts.toString());
+                    return attempts;
+                  } catch {
+                    return 1;
+                  }
+                }
+                
+                function isChunkError(error) {
+                  if (!error) return false;
+                  var msg = error.message || '';
+                  var name = error.name || '';
+                  return msg.includes('Loading chunk') ||
+                         msg.includes('ChunkLoadError') ||
+                         msg.includes('Failed to fetch dynamically imported module') ||
+                         msg.includes('timeout') ||
+                         name === 'ChunkLoadError' ||
+                         /chunk.*failed/i.test(msg) ||
+                         /loading.*chunk/i.test(msg);
+                }
+                
+                function handleChunkError(error) {
+                  if (!isChunkError(error)) return false;
+                  
+                  console.warn('Chunk error detected (pre-React):', error);
+                  
+                  var attempts = getAttempts();
+                  if (attempts < CHUNK_RELOAD_MAX) {
+                    incrementAttempts();
+                    setTimeout(function() {
+                      window.location.reload();
+                    }, CHUNK_RELOAD_DELAY);
+                  } else {
+                    try {
+                      sessionStorage.clear();
+                      window.location.href = window.location.href.split('#')[0] + '?t=' + Date.now();
+                    } catch {
+                      window.location.reload();
+                    }
+                  }
+                  return true;
+                }
+                
+                // Clear attempts after successful load
+                setTimeout(function() {
+                  try {
+                    sessionStorage.removeItem(CHUNK_RELOAD_KEY);
+                  } catch {}
+                }, 2000);
+                
+                // Handle errors
+                window.addEventListener('error', function(e) {
+                  if (handleChunkError(e.error)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }
+                }, true);
+                
+                // Handle promise rejections
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (handleChunkError(e.reason)) {
+                    e.preventDefault();
+                  }
+                });
+              })();
+            `,
+          }}
+        />
       </head>
       <body className={`font-body antialiased ${inter.className}`}>
         <ThemeProvider

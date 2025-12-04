@@ -68,6 +68,28 @@ const nextConfig: NextConfig = {
       ...(config.resolve.fallback || {}),
     };
 
+    // Improve chunk loading reliability
+    if (!isServer) {
+      // @ts-ignore
+      config.output = config.output || {};
+      
+      // Better chunk filename for cache busting and reliability
+      // @ts-ignore
+      if (!config.output.chunkFilename) {
+        // @ts-ignore
+        config.output.chunkFilename = dev 
+          ? 'static/chunks/[name].js' 
+          : 'static/chunks/[name].[contenthash:8].js';
+      }
+      
+      // Improve chunk loading with better error handling
+      // @ts-ignore
+      if (config.optimization && config.optimization.splitChunks) {
+        // @ts-ignore
+        config.optimization.splitChunks.automaticNameDelimiter = '~';
+      }
+    }
+
     // Note: Chunk error handling is done via ChunkErrorHandler component in layout.tsx
     // and safe-dynamic-import wrapper for all dynamic imports
 
