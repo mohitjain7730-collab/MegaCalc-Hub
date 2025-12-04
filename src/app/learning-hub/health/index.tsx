@@ -102,7 +102,12 @@ const Card: React.FC<CardProps> = ({ title, icon: Icon, onClick, colorClass, cla
   );
 };
 
-const Header = ({ onBack, title }) => (
+interface HeaderProps {
+  onBack?: () => void;
+  title: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ onBack, title }) => (
   <header className="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-100 mb-8">
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
       {onBack && (
@@ -119,7 +124,13 @@ const Header = ({ onBack, title }) => (
   </header>
 );
 
-const CategoryView = ({ category, onArticleClick, onBack }) => {
+interface CategoryViewProps {
+  category: (typeof subCategories)[number];
+  onArticleClick: (article: Article) => void;
+  onBack: () => void;
+}
+
+const CategoryView: React.FC<CategoryViewProps> = ({ category, onArticleClick, onBack }) => {
   // Filter articles for this category
   const categoryArticles = articles.filter(a => a.categoryId === category.id);
   const Icon = category.icon;
