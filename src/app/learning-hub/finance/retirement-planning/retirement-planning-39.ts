@@ -1,5 +1,5 @@
 
-import { Article } from '../../../types';
+import { Article } from '../../../../types';
 import { ArticleDetail, generateFullArticleHTML, generateArticleSchema, slugify } from '../article-generator';
 
 const details: ArticleDetail[] = [
