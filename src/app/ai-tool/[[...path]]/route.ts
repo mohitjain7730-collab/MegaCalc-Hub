@@ -6,10 +6,10 @@ import { readFileSync } from 'fs';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  context: any,
 ) {
   try {
-    const pathSegments = params.path || [];
+    const pathSegments = context?.params?.path || [];
     const requestedPath = pathSegments.join('/');
     
     // If no path or just empty, serve index.html from dist folder
