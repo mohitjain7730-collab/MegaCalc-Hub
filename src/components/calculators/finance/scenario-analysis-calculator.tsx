@@ -422,7 +422,7 @@ export default function ScenarioAnalysisCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Output Metrics</h3>
     <p>For each scenario, the model calculates a primary decision metric, typically:</p>
     <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Net Present Value (NPV):</strong> For capital budgeting projects, used to see if the project remains viable (NPV > 0) under adverse conditions.</li>
+        <li><strong className="font-semibold">Net Present Value (NPV):</strong> For capital budgeting projects, used to see if the project remains viable (NPV {'>'} 0) under adverse conditions.</li>
         <li><strong className="font-semibold">Internal Rate of Return (IRR):</strong> Used to see if the project's return falls below the minimum required hurdle rate in the worst case.</li>
         <li><strong className="font-semibold">Probability-Weighted Expected Value (PWEV):</strong> Advanced models assign a probability weight to each scenario and sum the weighted results to find a single expected value.</li>
     </ul>

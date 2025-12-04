@@ -44,6 +44,17 @@ const steps = [
 const baseUrl =
   'https://mycalculating.com/category/health-fitness/meditation-breathing-rate-calculator';
 
+const faqs: [string, string][] = [
+  ['What is the optimal breathing rate for meditation?', 'Optimal rate varies by individual, age, experience, and goal. Generally, 4–8 breaths per minute promotes relaxation, while 8–12 breaths per minute is balanced for daily practice.'],
+  ['How is breathing rate calculated?', 'The calculator considers your age, meditation experience level, and goal (relaxation, focus, energy, balance) to recommend a personalized breathing rate.'],
+  ['What is box breathing?', 'Box breathing involves inhaling for 4 seconds, holding for 4 seconds, exhaling for 4 seconds, and holding for 4 seconds. It promotes calm and focus.'],
+  ['What is 4-7-8 breathing?', '4-7-8 breathing involves inhaling for 4 seconds, holding for 7 seconds, and exhaling for 8 seconds. It\'s effective for relaxation and sleep.'],
+  ['Does age affect breathing rate?', 'Yes, younger individuals typically have slightly higher resting breathing rates. The calculator adjusts recommendations based on age.'],
+  ['Can I use this for stress relief?', 'Yes, slower breathing rates (4–6 breaths per minute) are particularly effective for stress reduction and relaxation.'],
+  ['What if the suggested rate feels uncomfortable?', 'Adjust to a rate that feels natural. The calculator provides a starting point, but comfort and ease are most important.'],
+  ['How long should I practice?', 'Start with 5–10 minutes daily. Gradually increase to 10–20 minutes as you become more comfortable with the practice.'],
+];
+
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@graph': [

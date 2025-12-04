@@ -131,7 +131,7 @@ export default function WorkLifeBalanceTimeAllocationCalculator() {
       <div className="space-y-6">
         <RelatedCalculators />
         <WorkLifeBalanceGuide />
-        <EmbedWidget calculatorSlug="work-life-balance-time-allocation-calculator" calculatorName="Work-Life Balance Time Allocation Calculator" />
+        <EmbedWidget categorySlug="health-fitness" calculatorSlug="work-life-balance-time-allocation-calculator" />
       </div>
     </div>
   );

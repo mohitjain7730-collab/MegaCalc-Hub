@@ -456,7 +456,7 @@ export default function FiberIntakeCalculator() {
         </CardContent>
       </Card>
 
-      <EmbedWidget calculatorSlug="fiber-intake-calculator" calculatorName="Fiber Intake Calculator" />
+      <EmbedWidget categorySlug="health-fitness" calculatorSlug="fiber-intake-calculator" />
     </div>
   );
 }

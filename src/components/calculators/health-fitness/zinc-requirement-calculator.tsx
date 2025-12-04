@@ -479,7 +479,7 @@ export default function ZincRequirementCalculator() {
             Zinc is essential for immune function, wound healing, growth, and over 300 enzyme reactions. Men need 11 mg/day and women 8 mg/day, with increases during pregnancy (11 mg) and lactation (12–13 mg). Prioritize animal sources (oysters, meat, poultry) for better bioavailability, or pair plant sources with protein and reduce phytates through soaking/sprouting.
           </p>
           <p>
-            Avoid excessive supplementation (>40 mg/day) which can cause copper deficiency and suppressed immunity. Time zinc supplements away from iron and calcium supplements. Monitor immune function, wound healing, and taste/smell as indicators of zinc status.
+            Avoid excessive supplementation ({'>'}40 mg/day) which can cause copper deficiency and suppressed immunity. Time zinc supplements away from iron and calcium supplements. Monitor immune function, wound healing, and taste/smell as indicators of zinc status.
           </p>
         </CardContent>
       </Card>

@@ -109,7 +109,7 @@ export default function BloodSugarToHbA1cConverter() {
       <div className="space-y-6">
         <RelatedCalculators />
         <BloodSugarGuide />
-        <EmbedWidget calculatorSlug="blood-sugar-to-hba1c-converter" calculatorName="Blood Sugar to HbA1c Converter" />
+        <EmbedWidget categorySlug="health-fitness" calculatorSlug="blood-sugar-to-hba1c-converter" />
       </div>
     </div>
   );

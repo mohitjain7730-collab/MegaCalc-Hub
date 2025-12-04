@@ -361,7 +361,7 @@ export default function OverheadRateAllocationCalculator() {
             <div>
               <h4 className="font-semibold text-foreground mb-2">What happens if actual overhead differs from applied overhead?</h4>
               <p className="text-muted-foreground">
-                At the end of the period, the difference between actual and applied overhead is called underapplied (if actual > applied) or overapplied (if applied > actual) overhead. This variance can be allocated to cost of goods sold and inventory accounts, or closed directly to cost of goods sold, depending on the materiality of the amount.
+                At the end of the period, the difference between actual and applied overhead is called underapplied (if actual {'>'} applied) or overapplied (if applied {'>'} actual) overhead. This variance can be allocated to cost of goods sold and inventory accounts, or closed directly to cost of goods sold, depending on the materiality of the amount.
               </p>
             </div>
 

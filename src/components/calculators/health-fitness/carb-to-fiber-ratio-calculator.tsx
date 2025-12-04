@@ -424,7 +424,7 @@ export default function CarbToFiberRatioCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemType="https://schema.org/MedicalWebPage">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to the Carb-to-Fiber Ratio: Significance for Blood Sugar and Food Quality" />
     <meta itemProp="description" content="An in-depth, authoritative guide on the Carb-to-Fiber ratio, explaining its role as a key indicator of food quality (whole vs. refined), its impact on blood sugar control, satiety, and the commonly recommended target ratios for metabolic health." />

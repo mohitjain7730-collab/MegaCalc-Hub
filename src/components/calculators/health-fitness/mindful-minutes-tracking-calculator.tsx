@@ -48,6 +48,17 @@ const steps = [
 const baseUrl =
   'https://mycalculating.com/category/health-fitness/mindful-minutes-tracking-calculator';
 
+const faqs: [string, string][] = [
+  ['How much mindfulness practice do I need?', 'Start with 5–10 minutes daily. Consistency matters more than duration. Many people find 10–20 minutes daily beneficial.'],
+  ['What counts as mindful minutes?', 'Any time spent in focused awareness counts: meditation, mindful walking, body scan, breathing exercises, or mindful eating.'],
+  ['What is a good consistency score?', 'Aim for practicing most days of the week. Perfect consistency is not necessary—regular practice is more important than perfection.'],
+  ['How do I improve my consistency?', 'Set a specific time each day, start small (5 minutes), use reminders, and track your progress. Celebrate small wins.'],
+  ['What if I miss a day?', 'Missing a day is normal. Simply resume your practice the next day. Consistency is about long-term patterns, not perfect streaks.'],
+  ['Can I combine different mindfulness practices?', 'Yes, you can mix meditation, mindful movement, breathing exercises, and other practices. Variety can help maintain interest.'],
+  ['What is the difference between mindfulness and meditation?', 'Mindfulness is the quality of awareness, while meditation is a formal practice. Both contribute to mindful minutes.'],
+  ['How long until I see benefits?', 'Many people notice benefits within a few weeks of consistent practice, but long-term benefits develop over months and years.'],
+];
+
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@graph': [

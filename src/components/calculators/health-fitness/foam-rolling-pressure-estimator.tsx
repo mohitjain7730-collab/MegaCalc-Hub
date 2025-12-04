@@ -590,7 +590,7 @@ export default function FoamRollingPressureEstimator() {
         </CardContent>
       </Card>
 
-      <EmbedWidget calculatorSlug="foam-rolling-pressure-estimator" calculatorName="Foam Rolling Pressure Estimator" />
+      <EmbedWidget categorySlug="health-fitness" calculatorSlug="foam-rolling-pressure-estimator" />
     </div>
   );
 }

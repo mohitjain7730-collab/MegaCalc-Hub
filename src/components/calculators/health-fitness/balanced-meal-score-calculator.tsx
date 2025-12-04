@@ -527,7 +527,7 @@ export default function BalancedMealScoreCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemType="https://schema.org/MedicalWebPage">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to a Balanced Meal Score: Principles of Proportion and Quality" />
     <meta itemProp="description" content="An expert guide defining a balanced meal based on authoritative models (Harvard Healthy Eating Plate), detailing optimal macronutrient ratios, the importance of food quality (whole grains, healthy fats), and guidelines for portion control." />

@@ -465,7 +465,7 @@ export default function ChromiumDailyNeedEstimator() {
         </CardContent>
       </Card>
 
-      <section ClassName="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemType="https://schema.org/MedicalWebPage">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Chromium: Daily Needs, Glucose Metabolism, and Essentiality Debate" />
     <meta itemProp="description" content="An in-depth guide covering the role of chromium (Cr(III)) as a trace element, its Adequate Intake (AI) levels set by the NIH, its link to insulin function, and the ongoing scientific debate over its essentiality." />

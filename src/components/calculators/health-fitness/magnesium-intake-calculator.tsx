@@ -512,7 +512,7 @@ export default function MagnesiumIntakeCalculator() {
         </CardContent>
       </Card>
 
-      <EmbedWidget calculatorSlug="magnesium-intake-calculator" calculatorName="Magnesium Intake Calculator" />
+      <EmbedWidget categorySlug="health-fitness" calculatorSlug="magnesium-intake-calculator" />
     </div>
   );
 }

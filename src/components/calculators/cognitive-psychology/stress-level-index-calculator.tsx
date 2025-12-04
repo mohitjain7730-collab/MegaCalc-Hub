@@ -12,7 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Activity } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-const pssQuestions = [
+const pssQuestions: Array<{ id: string; text: string; positive?: boolean }> = [
   { id: 'q1', text: '...been upset because of something that happened unexpectedly?' },
   { id: 'q2', text: '...felt that you were unable to control the important things in your life?' },
   { id: 'q3', text: '...felt nervous and stressed?' },
@@ -70,7 +70,7 @@ export default function StressLevelIndexCalculator() {
             <FormField
               key={q.id}
               control={form.control}
-              name={q.id as keyof FormValues}
+              name={q.id as string as keyof FormValues}
               render={({ field }) => (
                 <FormItem className="space-y-3">
                   <FormLabel>{index + 1}. {q.text}</FormLabel>

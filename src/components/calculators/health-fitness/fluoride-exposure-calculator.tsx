@@ -513,7 +513,7 @@ export default function FluorideExposureCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemType="https://schema.org/MedicalWebPage">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Fluoride Exposure: Sources, Risk Assessment, and Safe Levels" />
     <meta itemProp="description" content="An expert guide detailing fluoride exposure sources, the critical risks of excessive intake (dental and skeletal fluorosis), and official safe concentration standards from the CDC, EPA, and ADA." />

@@ -42,6 +42,16 @@ const steps = [
 const baseUrl =
   'https://mycalculating.com/category/health-fitness/heart-rate-variability-hrv-score-calculator';
 
+const faqs: [string, string][] = [
+      ['What is heart rhythm variability?', 'Heart rhythm variability simply describes how the time between beats naturally changes from moment to moment. Many people use it as a gentle wellness signal for how rested or stressed their body feels.'],
+      ['What is RMSSD?', 'RMSSD (Root Mean Square of Successive Differences) is one way devices summarize heartbeat changes over time. You can think of it as a raw "variation" number your watch or strap can show you.'],
+      ['What is a good HRV score?', 'HRV scores vary widely by individual. Higher RMSSD values generally indicate better recovery, but what is "good" depends on your baseline and age.'],
+      ['How can I improve my HRV?', 'Prioritize quality sleep, manage stress, exercise regularly, limit alcohol and caffeine, and maintain consistent routines.'],
+      ['Do I need a device to measure HRV?', 'Yes, you need a device that measures RMSSD, such as a heart rate monitor strap, smartwatch, or dedicated HRV tracker.'],
+      ['How often should I check my HRV?', 'Many people check daily at the same time (often morning) to track trends. Consistency matters more than frequency.'],
+      ['Can HRV predict illness?', 'HRV can reflect overall stress and recovery patterns, but it is not a diagnostic tool. Low HRV may indicate increased stress or fatigue.'],
+];
+
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@graph': [

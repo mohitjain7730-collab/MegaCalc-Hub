@@ -375,7 +375,7 @@ export default function SodiumToPotassiumRatioCalculator() {
         </CardContent>
       </Card>
 
-      <EmbedWidget calculatorSlug="sodium-to-potassium-ratio-calculator" calculatorName="Sodium-to-Potassium Ratio Calculator" />
+      <EmbedWidget categorySlug="health-fitness" calculatorSlug="sodium-to-potassium-ratio-calculator" />
     </div>
   );
 }

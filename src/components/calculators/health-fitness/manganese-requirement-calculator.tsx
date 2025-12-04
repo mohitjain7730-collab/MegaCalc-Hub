@@ -467,7 +467,7 @@ export default function ManganeseRequirementCalculator() {
         </CardContent>
       </Card>
 
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemType="https://schema.org/MedicalWebPage">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Manganese: Daily Requirements, Role in Metabolism, and Toxicity" />
     <meta itemProp="description" content="An in-depth, authoritative guide on the essential trace mineral Manganese (Mn), detailing its function as an enzyme cofactor, official Adequate Intake (AI) levels, and the risks of deficiency and neurological toxicity (Manganism)." />

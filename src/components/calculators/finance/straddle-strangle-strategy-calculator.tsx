@@ -201,7 +201,7 @@ export default function StraddleStrangleStrategyCalculator() {
         <CardContent>
           <ul className="list-disc pl-6 space-y-2 text-sm">
             <li>Straddle: Buy call and put with the same strike price and expiration. Profits when stock moves significantly in either direction (high volatility).</li>
-            <li>Strangle: Buy call and put with different strike prices (call strike > put strike) and same expiration. Similar to straddle but cheaper (lower premium).</li>
+            <li>Strangle: Buy call and put with different strike prices (call strike {'>'} put strike) and same expiration. Similar to straddle but cheaper (lower premium).</li>
             <li>Total Premium = Call Premium + Put Premium. This is the maximum loss if both options expire worthless.</li>
             <li>Lower Breakeven = Put Strike - Total Premium per share. Upper Breakeven = Call Strike + Total Premium per share. Strategy profits outside this range.</li>
             <li>Both strategies profit from volatility. Straddle requires larger move to profit (higher breakeven), while strangle is cheaper but also requires larger move.</li>

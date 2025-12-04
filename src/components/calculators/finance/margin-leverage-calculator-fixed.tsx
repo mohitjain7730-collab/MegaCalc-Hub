@@ -527,7 +527,7 @@ export default function MarginLeverageCalculator() {
 
       <MarginLeverageGuide />
       
-      <EmbedWidget calculatorSlug="margin-leverage-calculator" calculatorName="Margin Leverage Calculator" />
+      <EmbedWidget categorySlug="finance" calculatorSlug="margin-leverage-calculator" />
     </div>
   );
 }

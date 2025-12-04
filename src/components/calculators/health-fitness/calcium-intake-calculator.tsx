@@ -475,7 +475,7 @@ export default function CalciumIntakeCalculator() {
             Calcium is essential for bone and tooth health, muscle function, and nerve transmission. Needs peak during adolescence (1,300 mg/day) and increase after age 50 for women (1,200 mg/day). Include dairy, fortified plant milks, low-oxalate leafy greens, and canned fish with bones. Pair with vitamin D for optimal absorption.
     </p>
     <p>
-            Split supplemental doses (≤500 mg) and time them away from iron-rich meals. Excessive supplementation (>2,500 mg/day) may increase kidney stone risk. Include weight-bearing exercise to maximize bone-building benefits.
+            Split supplemental doses (≤500 mg) and time them away from iron-rich meals. Excessive supplementation ({'>'}2,500 mg/day) may increase kidney stone risk. Include weight-bearing exercise to maximize bone-building benefits.
           </p>
         </CardContent>
       </Card>

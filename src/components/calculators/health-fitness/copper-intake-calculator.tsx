@@ -456,7 +456,7 @@ export default function CopperIntakeCalculator() {
         </CardContent>
       </Card>
 
-      <section ClassName="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemProp itemType="https://schema.org/MedicalWebPage">
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemType="https://schema.org/MedicalWebPage">
     {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
     <meta itemProp="name" content="The Definitive Guide to Copper Intake: Role, RDAs, Deficiency, and Toxicity" />
     <meta itemProp="description" content="An expert, evidence-based guide on the essential trace mineral copper (Cu), detailing its critical roles in energy production and iron metabolism, official RDAs from the NIH, and risks associated with deficiency and excessive intake." />
