@@ -1,5 +1,3 @@
-import { Article } from '../article';
-
 const AUTHORS = [
   { name: "Coach David O'Conner", role: "Body Composition Specialist", bio: "Helps clients achieve aesthetic goals through precision nutrition and portion control strategies." },
   { name: "Dr. James Wu", role: "Preventive Cardiologist", bio: "Interventional cardiologist dedicated to reversing heart disease through lifestyle, lipidology, and nutritional modifications." },
@@ -7,7 +5,7 @@ const AUTHORS = [
   { name: "Chef Marco Pierre", role: "Culinary Nutritionist", bio: "Former Michelin-star chef turned health advocate, focusing on making nutritious food accessible and delicious for beginners." }
 ];
 
-export const NUTRITION_ARTICLES_BATCH_5: Article[] = [
+export const NUTRITION_ARTICLES_BATCH_5: any[] = [
   {
     id: 'vegetarian-protein-muscle',
     categoryId: 'nutrition-diet',

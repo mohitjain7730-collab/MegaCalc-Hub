@@ -1,5 +1,3 @@
-import { Article } from '../article';
-
 const AUTHORS = [
   { name: "Dr. Aris Vogan", role: "Neuroscientist", bio: "Leading researcher in sleep architecture and cognitive performance optimization." },
   { name: "Elena Rodriguez, RD", role: "Sports Dietitian", bio: "Consultant for endurance athletes, focusing on micronutrient optimization for peak energy levels and recovery." },
@@ -7,7 +5,7 @@ const AUTHORS = [
   { name: "Dr. James Wu", role: "Preventive Cardiologist", bio: "Interventional cardiologist dedicated to reversing heart disease through lifestyle, lipidology, and nutritional modifications." }
 ];
 
-export const NUTRITION_ARTICLES_BATCH_3: Article[] = [
+export const NUTRITION_ARTICLES_BATCH_3: any[] = [
   {
     id: 'foods-for-focus-brain',
     categoryId: 'nutrition-diet',

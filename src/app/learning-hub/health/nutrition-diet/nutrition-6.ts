@@ -1,5 +1,3 @@
-import { Article } from '../article';
-
 const AUTHORS = [
   { name: "Chef Marco Pierre", role: "Culinary Nutritionist", bio: "Former Michelin-star chef turned health advocate, focusing on making nutritious food accessible and delicious for beginners." },
   { name: "Dr. Sarah Blum", role: "Endocrinologist", bio: "Specializes in glycemic control and metabolic disorders, helping patients manage insulin resistance through dietary timing." },
@@ -11,7 +9,7 @@ const AUTHORS = [
   { name: "Maria Rossi", role: "Food Scientist", bio: "Studies the bioavailability of nutrients and how food processing affects absorption." }
 ];
 
-export const NUTRITION_ARTICLES: Article[] = [
+export const NUTRITION_ARTICLES: any[] = [
   {
     id: 'meal-prep-beginners',
     categoryId: 'nutrition-diet',

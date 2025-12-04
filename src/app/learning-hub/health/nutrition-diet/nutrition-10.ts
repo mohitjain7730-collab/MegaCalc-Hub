@@ -1,5 +1,3 @@
-import { Article } from '../article';
-
 const AUTHORS = [
   { name: "Dr. James Wu", role: "Preventive Cardiologist", bio: "Interventional cardiologist dedicated to reversing heart disease through lifestyle, lipidology, and nutritional modifications." },
   { name: "Jessica Chen, MS", role: "Holistic Health Coach", bio: "Integrates functional medicine principles with practical meal planning strategies for busy professionals." },
@@ -7,7 +5,7 @@ const AUTHORS = [
   { name: "Dr. Aris Vogan", role: "Neuroscientist", bio: "Leading researcher in sleep architecture and cognitive performance optimization." }
 ];
 
-export const NUTRITION_ARTICLES_BATCH_4: Article[] = [
+export const NUTRITION_ARTICLES_BATCH_4: any[] = [
   {
     id: 'anti-inflammatory-meal-plan',
     categoryId: 'nutrition-diet',

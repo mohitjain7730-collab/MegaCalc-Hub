@@ -1,5 +1,3 @@
-import { Article } from '../article';
-
 const AUTHORS = [
   { name: "Dr. Sarah Blum", role: "Endocrinologist", bio: "Specializes in glycemic control and metabolic disorders, helping patients manage insulin resistance through dietary timing." },
   { name: "Maria Rossi", role: "Food Scientist", bio: "Studies the bioavailability of nutrients and how food processing affects absorption." },
@@ -8,7 +6,7 @@ const AUTHORS = [
   { name: "Dr. Alan Grant", role: "Behavioral Scientist", bio: "Researches the psychology of eating habits and sustainable lifestyle modification techniques." }
 ];
 
-export const NUTRITION_ARTICLES_BATCH_2: Article[] = [
+export const NUTRITION_ARTICLES_BATCH_2: any[] = [
   {
     id: 'metabolism-boosting-foods',
     categoryId: 'nutrition-diet',
