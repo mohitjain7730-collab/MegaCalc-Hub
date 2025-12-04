@@ -1,22 +1,14 @@
+import type { Calculator as CoreCalculator } from './calculators';
+import type { Category as CoreCategory } from './categories';
 import { calculators } from './calculators';
 import { categories } from './categories';
 
-// Types for schema generation
-export interface Calculator {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  category: string;
+// Types for schema generation - extend core app types where needed
+export interface Calculator extends CoreCalculator {
   keywords?: string[];
 }
 
-export interface Category {
-  name: string;
-  slug: string;
-  description: string;
-  Icon: string;
-}
+export type Category = CoreCategory;
 
 // Global Website Schema
 export function generateWebsiteSchema() {
