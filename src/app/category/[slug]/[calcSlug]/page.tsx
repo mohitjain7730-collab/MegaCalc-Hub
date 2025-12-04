@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Construction } from 'lucide-react';
 import { Suspense } from 'react';
 import React from 'react';
+import type { Metadata } from 'next';
 
 import { Button } from '@/components/ui/button';
 import { categories } from '@/lib/categories';
@@ -33,6 +34,44 @@ export async function generateStaticParams() {
 
 // ISR: revalidate every 24 hours for calculator pages
 export const revalidate = 86400;
+
+// Generate metadata with canonical URL for SEO
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ slug: string; calcSlug: string }> 
+}): Promise<Metadata> {
+  const { slug, calcSlug } = await params;
+  const category = categories.find((c) => c.slug === slug);
+  const calculator = calculators.find((c) => c.slug === calcSlug && c.category === slug);
+  
+  if (!category || !calculator) {
+    return {
+      title: 'Calculator Not Found',
+    };
+  }
+
+  const canonicalUrl = `https://mycalculating.com/category/${category.slug}/${calculator.slug}`;
+  
+  return {
+    title: calculator.metaTitle || calculator.name,
+    description: calculator.metaDescription || calculator.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: calculator.metaTitle || calculator.name,
+      description: calculator.metaDescription || calculator.description,
+      url: canonicalUrl,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: calculator.metaTitle || calculator.name,
+      description: calculator.metaDescription || calculator.description,
+    },
+  };
+}
 
 export default async function CalculatorPage({ params }: { params: Promise<{ slug: string; calcSlug: string }> }) {
   const { slug, calcSlug } = await params;

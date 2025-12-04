@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import { calculators } from './src/lib/calculators';
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -294,6 +295,17 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   // Production source maps disabled for smaller bundle
   productionBrowserSourceMaps: false,
+  // Redirects: Redirect old /calculator/{slug} routes to canonical /category/{category}/{slug} routes
+  async redirects() {
+    // Create redirects for all calculators from /calculator/{slug} to /category/{category}/{slug}
+    const calculatorRedirects = calculators.map((calc) => ({
+      source: `/calculator/${calc.slug}`,
+      destination: `/category/${calc.category}/${calc.slug}`,
+      permanent: true, // 308 permanent redirect for SEO
+    }));
+
+    return calculatorRedirects;
+  },
 };
 
 export default withBundleAnalyzer(nextConfig);

@@ -8,8 +8,8 @@ import { CategoryIcon } from '@/components/category-icon';
 import { SitemapLink } from '@/components/sitemap-link';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
-import { FINANCE_ARTICLES, RETIREMENT_ARTICLES } from '@/app/learning-hub/finance/articles';
-import { NUTRITION_ARTICLES } from '@/app/learning-hub/health/nutrition-diet/articles';
+import { getFinanceArticles, getRetirementArticlesList } from '@/app/learning-hub/finance/articles';
+import { getNutritionArticles } from '@/app/learning-hub/health/nutrition-diet/articles';
 import { articles as LEARNING_HUB_BASE_ARTICLES } from '@/lib/learning-hub-articles';
 
 export const metadata: Metadata = {
@@ -18,6 +18,9 @@ export const metadata: Metadata = {
 };
 
 export default function SitemapPage() {
+  const FINANCE_ARTICLES = getFinanceArticles();
+  const RETIREMENT_ARTICLES = getRetirementArticlesList();
+  const NUTRITION_ARTICLES = getNutritionArticles();
   // Group calculators by category
   const calculatorsByCategory = categories.map((category) => ({
     category,

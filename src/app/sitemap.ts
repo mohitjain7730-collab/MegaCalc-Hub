@@ -1,11 +1,14 @@
 import { MetadataRoute } from 'next';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
-import { FINANCE_ARTICLES, RETIREMENT_ARTICLES } from './learning-hub/finance/articles';
-import { NUTRITION_ARTICLES } from './learning-hub/health/nutrition-diet/articles';
+import { getFinanceArticles, getRetirementArticlesList } from './learning-hub/finance/articles';
+import { getNutritionArticles } from './learning-hub/health/nutrition-diet/articles';
 import { articles as LEARNING_HUB_BASE_ARTICLES } from '@/lib/learning-hub-articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const FINANCE_ARTICLES = getFinanceArticles();
+  const RETIREMENT_ARTICLES = getRetirementArticlesList();
+  const NUTRITION_ARTICLES = getNutritionArticles();
   const baseUrl = 'https://mycalculating.com';
 
   const staticPages = [
