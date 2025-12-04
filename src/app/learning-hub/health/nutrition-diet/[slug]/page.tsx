@@ -101,8 +101,11 @@ export default async function NutritionDietArticlePage({
     { label: title, href: '' }
   ];
 
+  // Build base URL for the article
+  const baseUrl = `https://mycalculating.com/learning-hub/health/nutrition-diet/${article.slug}`;
+
   // Update schema with author role
-  const updatedSchema = {
+  const baseSchema = {
     ...article.schema,
     author: {
       "@type": "Person",
@@ -111,7 +114,19 @@ export default async function NutritionDietArticlePage({
     }
   };
 
-  // Add FAQPage schema if FAQs exist
+  // Create BreadcrumbList schema
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.label,
+      "item": item.href ? `https://mycalculating.com${item.href}` : baseUrl
+    }))
+  };
+
+  // Extract FAQs if they exist
+  let faqSchema: any = null;
   if (formatted.hasFaq) {
     const faqMatches = rawContent.matchAll(/<h3[^>]*>(.*?)<\/h3>\s*<p[^>]*>(.*?)<\/p>/gis);
     const faqs: { q: string; a: string }[] = [];
@@ -123,26 +138,39 @@ export default async function NutritionDietArticlePage({
     }
     
     if (faqs.length > 0) {
-      updatedSchema['@graph'] = [
-        updatedSchema,
-        {
-          "@type": "FAQPage",
-          "mainEntity": faqs.map(f => ({
-            "@type": "Question",
-            "name": f.q,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": f.a
-            }
-          }))
-        }
-      ];
+      faqSchema = {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": f.a
+          }
+        }))
+      };
     }
   }
 
+  // Build final schema with @graph structure
+  // Always include Article and BreadcrumbList, conditionally include FAQPage
+  const graphItems: any[] = [
+    breadcrumbSchema,
+    baseSchema
+  ];
+
+  if (faqSchema) {
+    graphItems.push(faqSchema);
+  }
+
+  const finalSchema = {
+    "@context": "https://schema.org",
+    "@graph": graphItems
+  };
+
   return (
     <>
-      <ArticleSchemaInjector schema={updatedSchema} />
+      <ArticleSchemaInjector schema={finalSchema} />
       <div className="min-h-screen bg-white">
         {/* Header with back button */}
         <header className="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-100 mb-8">
