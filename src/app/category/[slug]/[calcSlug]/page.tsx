@@ -3,9 +3,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Construction } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import { createSafeDynamicImport } from '@/lib/safe-dynamic-import';
 import { Suspense } from 'react';
+import React from 'react';
 
 import { Button } from '@/components/ui/button';
 import { categories } from '@/lib/categories';
@@ -17,13 +16,43 @@ import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { CalculatorLoading } from '@/components/calculator-loading';
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema } from '@/lib/schema-generator';
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
+import dynamic from 'next/dynamic';
 
 // Helper function to create safe dynamic imports with error handling
+// Uses webpack magic comments to ensure proper chunk loading
 function safeDynamicImport(path: string) {
-  return createSafeDynamicImport(
-    () => import(path),
+  return dynamic(
+    () => {
+      // Use a try-catch wrapper to handle chunk load errors gracefully
+      return import(/* webpackMode: "lazy", webpackChunkName: "[request]" */ path)
+        .catch((error) => {
+          // Check if it's a chunk load error
+          const isChunkError = 
+            error?.message?.includes('Loading chunk') ||
+            error?.message?.includes('Failed to fetch dynamically imported module') ||
+            error?.message?.includes('ChunkLoadError') ||
+            error?.name === 'ChunkLoadError';
+          
+          if (isChunkError) {
+            console.warn('Chunk load error detected for', path, '- attempting recovery');
+            // Try to reload the page to get fresh chunks (only once per session)
+            const reloadKey = `chunk-reload-${path}`;
+            if (!sessionStorage.getItem(reloadKey)) {
+              sessionStorage.setItem(reloadKey, 'true');
+              setTimeout(() => window.location.reload(), 1000);
+            }
+          } else {
+            console.warn('Import error for', path, error);
+          }
+          
+          // Return a fallback component that prevents page crash
+          return {
+            default: () => React.createElement(CalculatorLoading),
+          };
+        });
+    },
     {
-      loading: () => <CalculatorLoading />,
+      loading: () => React.createElement(CalculatorLoading),
       ssr: false,
     }
   );
@@ -340,91 +369,35 @@ export const calculatorComponents: { [key: string]: React.ComponentType } = {
     'cognitive-load-estimator': safeDynamicImport('@/components/calculators/health-fitness/cognitive-load-estimator'),
     'gratitude-mood-correlation-tracker': safeDynamicImport('@/components/calculators/health-fitness/gratitude-mood-correlation-tracker'),
     'phone-dependency-index': safeDynamicImport('@/components/calculators/health-fitness/phone-dependency-index'),
-    'positive-emotion-ratio-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/positive-emotion-ratio-calculator'),
-    ),
-    'daily-energy-mood-synchronization-tracker': dynamic(
-      () => import('@/components/calculators/health-fitness/daily-energy-mood-synchronization-tracker'),
-    ),
-    'motivation-momentum-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/motivation-momentum-calculator'),
-    ),
-    'mental-recovery-from-stress-estimator': dynamic(
-      () => import('@/components/calculators/health-fitness/mental-recovery-from-stress-estimator'),
-    ),
-    'self-esteem-growth-tracker': dynamic(
-      () => import('@/components/calculators/health-fitness/self-esteem-growth-tracker'),
-    ),
-    'confidence-curve-estimator': dynamic(
-      () => import('@/components/calculators/health-fitness/confidence-curve-estimator'),
-    ),
-    'relationship-satisfaction-score': dynamic(
-      () => import('@/components/calculators/health-fitness/relationship-satisfaction-score'),
-    ),
-    'loneliness-risk-index': dynamic(
-      () => import('@/components/calculators/health-fitness/loneliness-risk-index'),
-    ),
-    'empathy-quotient-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/empathy-quotient-calculator'),
-    ),
-    'mental-energy-drain-predictor': dynamic(
-      () => import('@/components/calculators/health-fitness/mental-energy-drain-predictor'),
-    ),
-    'longevity-score-estimator': dynamic(
-      () => import('@/components/calculators/health-fitness/longevity-score-estimator'),
-    ),
-    'nad-plus-optimization-estimator': dynamic(
-      () => import('@/components/calculators/health-fitness/nad-plus-optimization-estimator'),
-    ),
-    'red-light-therapy-dose-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/red-light-therapy-dose-calculator'),
-    ),
-    'cold-exposure-duration-estimator': dynamic(
-      () => import('@/components/calculators/health-fitness/cold-exposure-duration-estimator'),
-    ),
-    'sauna-detox-effectiveness-score': dynamic(
-      () => import('@/components/calculators/health-fitness/sauna-detox-effectiveness-score'),
-    ),
-    'hrv-resilience-index': dynamic(
-      () => import('@/components/calculators/health-fitness/hrv-resilience-index'),
-    ),
-    'breath-hold-co2-tolerance-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/breath-hold-co2-tolerance-calculator'),
-    ),
-    'oxygen-advantage-efficiency-score': dynamic(
-      () => import('@/components/calculators/health-fitness/oxygen-advantage-efficiency-score'),
-    ),
-    'fasting-benefits-progress-tracker': dynamic(
-      () => import('@/components/calculators/health-fitness/fasting-benefits-progress-tracker'),
-    ),
-    'supplement-stack-roi-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/supplement-stack-roi-calculator'),
-    ),
-    'mitochondrial-health-index': dynamic(
-      () => import('@/components/calculators/health-fitness/mitochondrial-health-index'),
-    ),
-    'sleep-optimization-routine-score': dynamic(
-      () => import('@/components/calculators/health-fitness/sleep-optimization-routine-score'),
-    ),
-     'hrv-to-stress-correlation-estimator': dynamic(
-       () => import('@/components/calculators/health-fitness/hrv-to-stress-correlation-estimator'),
-     ),
-     'circadian-rhythm-alignment-score': dynamic(
-       () => import('@/components/calculators/health-fitness/circadian-rhythm-alignment-score'),
-     ),
-    'sleep-consistency-score-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/sleep-consistency-score-calculator'),
-    ),
-    'dopamine-reward-sensitivity-index-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/dopamine-reward-sensitivity-index-calculator'),
-    ),
+    'positive-emotion-ratio-calculator': safeDynamicImport('@/components/calculators/health-fitness/positive-emotion-ratio-calculator'),
+    'daily-energy-mood-synchronization-tracker': safeDynamicImport('@/components/calculators/health-fitness/daily-energy-mood-synchronization-tracker'),
+    'motivation-momentum-calculator':    safeDynamicImport('@/components/calculators/health-fitness/motivation-momentum-calculator'),
+    'mental-recovery-from-stress-estimator':    safeDynamicImport('@/components/calculators/health-fitness/mental-recovery-from-stress-estimator'),
+    'self-esteem-growth-tracker':    safeDynamicImport('@/components/calculators/health-fitness/self-esteem-growth-tracker'),
+    'confidence-curve-estimator':    safeDynamicImport('@/components/calculators/health-fitness/confidence-curve-estimator'),
+    'relationship-satisfaction-score':    safeDynamicImport('@/components/calculators/health-fitness/relationship-satisfaction-score'),
+    'loneliness-risk-index':    safeDynamicImport('@/components/calculators/health-fitness/loneliness-risk-index'),
+    'empathy-quotient-calculator':    safeDynamicImport('@/components/calculators/health-fitness/empathy-quotient-calculator'),
+    'mental-energy-drain-predictor':    safeDynamicImport('@/components/calculators/health-fitness/mental-energy-drain-predictor'),
+    'longevity-score-estimator':    safeDynamicImport('@/components/calculators/health-fitness/longevity-score-estimator'),
+    'nad-plus-optimization-estimator':    safeDynamicImport('@/components/calculators/health-fitness/nad-plus-optimization-estimator'),
+    'red-light-therapy-dose-calculator':    safeDynamicImport('@/components/calculators/health-fitness/red-light-therapy-dose-calculator'),
+    'cold-exposure-duration-estimator':    safeDynamicImport('@/components/calculators/health-fitness/cold-exposure-duration-estimator'),
+    'sauna-detox-effectiveness-score':    safeDynamicImport('@/components/calculators/health-fitness/sauna-detox-effectiveness-score'),
+    'hrv-resilience-index':    safeDynamicImport('@/components/calculators/health-fitness/hrv-resilience-index'),
+    'breath-hold-co2-tolerance-calculator':    safeDynamicImport('@/components/calculators/health-fitness/breath-hold-co2-tolerance-calculator'),
+    'oxygen-advantage-efficiency-score':    safeDynamicImport('@/components/calculators/health-fitness/oxygen-advantage-efficiency-score'),
+    'fasting-benefits-progress-tracker':    safeDynamicImport('@/components/calculators/health-fitness/fasting-benefits-progress-tracker'),
+    'supplement-stack-roi-calculator':    safeDynamicImport('@/components/calculators/health-fitness/supplement-stack-roi-calculator'),
+    'mitochondrial-health-index':    safeDynamicImport('@/components/calculators/health-fitness/mitochondrial-health-index'),
+    'sleep-optimization-routine-score':    safeDynamicImport('@/components/calculators/health-fitness/sleep-optimization-routine-score'),
+     'hrv-to-stress-correlation-estimator':    safeDynamicImport('@/components/calculators/health-fitness/hrv-to-stress-correlation-estimator'),
+     'circadian-rhythm-alignment-score':    safeDynamicImport('@/components/calculators/health-fitness/circadian-rhythm-alignment-score'),
+    'sleep-consistency-score-calculator':    safeDynamicImport('@/components/calculators/health-fitness/sleep-consistency-score-calculator'),
+    'dopamine-reward-sensitivity-index-calculator':    safeDynamicImport('@/components/calculators/health-fitness/dopamine-reward-sensitivity-index-calculator'),
     'digital-burnout-detector': safeDynamicImport('@/components/calculators/health-fitness/digital-burnout-detector'),
-    'flow-state-readiness-calculator': dynamic(
-      () => import('@/components/calculators/health-fitness/flow-state-readiness-calculator'),
-    ),
-    'mental-fatigue-accumulation-tracker': dynamic(
-      () => import('@/components/calculators/health-fitness/mental-fatigue-accumulation-tracker'),
-    ),
+    'flow-state-readiness-calculator':    safeDynamicImport('@/components/calculators/health-fitness/flow-state-readiness-calculator'),
+    'mental-fatigue-accumulation-tracker':    safeDynamicImport('@/components/calculators/health-fitness/mental-fatigue-accumulation-tracker'),
     'hydration-balance-with-alcohol-intake-calculator': safeDynamicImport('@/components/calculators/health-fitness/hydration-balance-with-alcohol-intake-calculator'),
     'albumin-to-creatinine-ratio-calculator': safeDynamicImport('@/components/calculators/health-fitness/albumin-to-creatinine-ratio-calculator'),
     'calcium-correction-for-albumin-calculator': safeDynamicImport('@/components/calculators/health-fitness/calcium-correction-for-albumin-calculator'),

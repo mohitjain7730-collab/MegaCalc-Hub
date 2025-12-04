@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import React from 'react';
 import { CalculatorLoading } from '@/components/calculator-loading';
 
 /**
@@ -21,11 +22,11 @@ export function createSafeDynamicImport<T = any>(
         // Return a fallback component that shows loading state
         // This prevents chunk load errors from breaking the page
         return {
-          default: () => options?.loading?.() || <CalculatorLoading />,
+          default: () => options?.loading?.() || React.createElement(CalculatorLoading),
         };
       }),
     {
-      loading: options?.loading || (() => <CalculatorLoading />),
+      loading: options?.loading || (() => React.createElement(CalculatorLoading)),
       ssr: options?.ssr ?? false,
     }
   );
@@ -39,7 +40,7 @@ export function safeImportCalculator(path: string) {
   return createSafeDynamicImport(
     () => import(path),
     {
-      loading: () => <CalculatorLoading />,
+      loading: () => React.createElement(CalculatorLoading),
       ssr: false,
     }
   );
