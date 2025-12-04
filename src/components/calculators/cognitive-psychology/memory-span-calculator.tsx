@@ -13,7 +13,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 const formSchema = z.object({
   trials: z.array(z.object({
-    digits: z.number().min(0, 'Cannot be negative'),
+    digits: z.number().min(0, 'Cannot be negative').optional(),
   })).min(1, "Please add at least one trial."),
 });
 
@@ -25,7 +25,7 @@ export default function MemorySpanCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      trials: [{ digits: undefined }],
+      trials: [{ digits: undefined as number | undefined }],
     },
   });
 
@@ -73,7 +73,7 @@ export default function MemorySpanCalculator() {
                 variant="outline"
                 size="sm"
                 className="mt-4"
-                onClick={() => append({ digits: undefined })}
+                onClick={() => append({ digits: undefined as number | undefined })}
             >
                 <PlusCircle className="mr-2 h-4 w-4" />
                 Add Trial
