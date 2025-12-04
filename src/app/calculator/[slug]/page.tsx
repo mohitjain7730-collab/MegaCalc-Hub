@@ -20,9 +20,9 @@ export const revalidate = 86400; // ISR: revalidate every 24 hours
 export default async function SingleCalculatorPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const calculator = calculators.find((c) => c.slug === slug);
   if (!calculator) {
