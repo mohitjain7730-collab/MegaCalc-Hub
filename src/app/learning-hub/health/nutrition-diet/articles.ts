@@ -83,7 +83,7 @@ function convertHealthArticleToStandard(healthArticle: HealthArticle): Article {
   const author = getAuthorForArticle(healthArticle.id);
   const publishedDate = new Date().toISOString().split('T')[0]; // Use current date or generate deterministically
 
-  const schema = {
+  const schema: any = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": healthArticle.title,
@@ -109,7 +109,7 @@ function convertHealthArticleToStandard(healthArticle: HealthArticle): Article {
   };
 
   // Add FAQ schema if FAQs exist
-  let finalSchema = schema;
+  let finalSchema: any = schema;
   if (healthArticle.content.faq && healthArticle.content.faq.length > 0) {
     finalSchema = {
       "@context": "https://schema.org",
