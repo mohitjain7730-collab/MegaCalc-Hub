@@ -7,6 +7,7 @@ export interface Article {
   schema?: any; // JSON-LD schema for SEO
   author?: string;
   publishedDate?: string;
+  category?: string; // Category for author determination
 }
 
 

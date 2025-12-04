@@ -1,5 +1,6 @@
 
 import type { ComponentType } from 'react';
+import { getAllLearningArticles } from './learning-hub-content';
 
 export interface LearningHubArticle {
   slug: string;
@@ -10,7 +11,8 @@ export interface LearningHubArticle {
 }
 
 // Chart components are dynamically imported in the page, so we just reference their names here for mapping.
-export const articles: LearningHubArticle[] = [
+// NOTE: Static articles removed - all articles now load from JSON files in /content/learning/
+const staticArticles: LearningHubArticle[] = [
   {
     slug: "what-is-compound-interest",
     title: "What is Compound Interest?",
@@ -1237,5 +1239,17 @@ export const articles: LearningHubArticle[] = [
     `
   }
 ]; //
+
+// Merge static articles with JSON articles from content/learning
+const jsonArticles: LearningHubArticle[] = getAllLearningArticles().map((jsonArticle) => ({
+  slug: jsonArticle.slug,
+  title: jsonArticle.title,
+  Icon: 'BookOpen', // Default icon for JSON articles
+  content: jsonArticle.content,
+  chartComponent: undefined, // JSON articles don't have chart components
+}));
+
+// Export only JSON articles - all articles now come from /content/learning/ JSON files
+export const articles: LearningHubArticle[] = jsonArticles;
 
     

@@ -3,16 +3,20 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CategoryIcon } from '@/components/category-icon';
-import { NUTRITION_ARTICLES } from './nutrition-diet/articles';
+import { getNutritionArticles } from './nutrition-diet/articles';
 
-const healthSections = [
-  {
-    name: 'Nutrition & Diet',
-    slug: 'nutrition-diet',
-    description: 'Learn about healthy eating, meal planning, and nutritional science.',
-    icon: 'Apple',
-    count: NUTRITION_ARTICLES.length,
-  },
+export default function HealthPage() {
+  // Load articles on the server
+  const nutritionArticles = getNutritionArticles();
+
+  const healthSections = [
+    {
+      name: 'Nutrition & Diet',
+      slug: 'nutrition-diet',
+      description: 'Learn about healthy eating, meal planning, and nutritional science.',
+      icon: 'Apple',
+      count: nutritionArticles.length,
+    },
   {
     name: 'Weight & Metabolism',
     slug: 'weight-metabolism',
@@ -62,9 +66,8 @@ const healthSections = [
     icon: 'Leaf',
     count: 0,
   },
-];
-
-export default function HealthPage() {
+  ];
+  
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
       <div className="w-full max-w-7xl mx-auto">

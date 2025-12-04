@@ -3,8 +3,11 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { ARTICLE_CONTENT } from '../articles';
+import { getArticleContent } from '../articles';
 import { ArticleSchemaInjector } from '@/components/article-schema-injector';
+import { getAuthorForArticle, getDeterministicDate } from '@/lib/article-authors';
+import { formatArticleContent } from '@/lib/article-formatter';
+import { ArticleBreadcrumbs } from '@/components/learning-hub/article-breadcrumbs';
 
 // Helper function to convert slug to readable title
 function slugToTitle(slug: string): string {
@@ -116,7 +119,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }> 
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = ARTICLE_CONTENT[slug as keyof typeof ARTICLE_CONTENT];
+  const articleContent = getArticleContent();
+  const article = articleContent[slug];
   
   if (!article) {
     return {
@@ -150,38 +154,116 @@ export default async function FinanceArticlePage({
 }) {
   const { slug } = await params;
   
-  const article = ARTICLE_CONTENT[slug as keyof typeof ARTICLE_CONTENT];
+  const articleContent = getArticleContent();
+  const article = articleContent[slug];
   
   if (!article) {
     notFound();
   }
 
   const title = article.title || slugToTitle(slug);
-  const htmlContent = isHtmlContent(article.content)
+  
+  // Get author information
+  const author = getAuthorForArticle(
+    article.title,
+    article.category || 'Learning hub> Finance',
+    article.author
+  );
+  const publishedDate = article.publishedDate 
+    ? new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    : getDeterministicDate(article.title);
+
+  // Format article content according to article-generator.ts structure
+  const rawContent = isHtmlContent(article.content)
     ? article.content
     : markdownToHtml(article.content);
+  
+  const formatted = formatArticleContent(rawContent, author, publishedDate);
+
+  // Determine breadcrumbs based on category
+  const categoryParts = (article.category || 'Learning hub> Finance').split('>').map(p => p.trim());
+  const breadcrumbItems = [
+    { label: 'Learning Hub', href: '/learning-hub' },
+    { label: 'Finance', href: '/learning-hub/finance' },
+  ];
+  
+  // Add subcategory if exists
+  if (categoryParts.length > 2) {
+    const subcategory = categoryParts[2];
+    if (subcategory === 'savings & investment') {
+      breadcrumbItems.push({ label: 'Savings & Investment', href: '/learning-hub/finance/savings-and-investment' });
+    } else if (subcategory === 'retirement planning') {
+      breadcrumbItems.push({ label: 'Retirement Planning', href: '/learning-hub/finance/retirement-planning' });
+    }
+  }
+  
+  breadcrumbItems.push({ label: title, href: '' });
+
+  // Update schema with author role
+  const updatedSchema = {
+    ...article.schema,
+    author: {
+      "@type": "Person",
+      "name": author.name,
+      "jobTitle": author.role || author.credentials || "Financial Analyst"
+    }
+  };
+
+  // Add FAQPage schema if FAQs exist
+  if (formatted.hasFaq) {
+    // Extract FAQs from formatted content for schema
+    const faqMatches = rawContent.matchAll(/<h3[^>]*>(.*?)<\/h3>\s*<p[^>]*>(.*?)<\/p>/gis);
+    const faqs: { q: string; a: string }[] = [];
+    for (const match of faqMatches) {
+      faqs.push({
+        q: match[1].replace(/<[^>]+>/g, '').trim(),
+        a: match[2].replace(/<[^>]+>/g, '').trim()
+      });
+    }
+    
+    if (faqs.length > 0) {
+      updatedSchema['@graph'] = [
+        updatedSchema,
+        {
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(f => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": f.a
+            }
+          }))
+        }
+      ];
+    }
+  }
 
   return (
     <>
-      <ArticleSchemaInjector schema={article.schema} />
+      <ArticleSchemaInjector schema={updatedSchema} />
       <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
         <div className="w-full max-w-4xl mx-auto">
           <div className="mb-8">
             <Button asChild variant="ghost" className="mb-4">
-            <Link href="/learning-hub/finance/savings-and-investment">
+              <Link href="/learning-hub/finance/savings-and-investment">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Savings & Investment
               </Link>
             </Button>
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+            
+            {/* Breadcrumbs */}
+            <ArticleBreadcrumbs items={breadcrumbItems} />
+            
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-6">
               {title}
             </h1>
           </div>
 
           <article className="prose prose-slate dark:prose-invert max-w-none">
             <div 
-              className="article-content space-y-4"
-              dangerouslySetInnerHTML={{ __html: htmlContent }}
+              className="article-content"
+              dangerouslySetInnerHTML={{ __html: formatted.html }}
             />
           </article>
         </div>

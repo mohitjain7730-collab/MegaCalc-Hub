@@ -3,8 +3,11 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { ARTICLE_CONTENT } from '../articles';
+import { getNutritionArticleContent } from '../articles';
 import { ArticleSchemaInjector } from '@/components/article-schema-injector';
+import { getAuthorForArticle, getDeterministicDate } from '@/lib/article-authors';
+import { formatArticleContent } from '@/lib/article-formatter';
+import { ArticleBreadcrumbs } from '@/components/learning-hub/article-breadcrumbs';
 
 // Helper function to convert slug to readable title
 function slugToTitle(slug: string): string {
@@ -29,7 +32,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }> 
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = ARTICLE_CONTENT[slug as keyof typeof ARTICLE_CONTENT];
+  const articleContent = getNutritionArticleContent();
+  const article = articleContent[slug];
   
   if (!article) {
     return {
@@ -63,20 +67,82 @@ export default async function NutritionDietArticlePage({
 }) {
   const { slug } = await params;
   
-  const article = ARTICLE_CONTENT[slug as keyof typeof ARTICLE_CONTENT];
+  const articleContent = getNutritionArticleContent();
+  const article = articleContent[slug];
   
   if (!article) {
     notFound();
   }
 
   const title = article.title || slugToTitle(slug);
-  const htmlContent = isHtmlContent(article.content)
+  
+  // Get author information
+  const author = getAuthorForArticle(
+    article.title,
+    article.category || 'Learning hub> Health> nutrition & diet',
+    article.author
+  );
+  const publishedDate = article.publishedDate 
+    ? new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    : getDeterministicDate(article.title);
+
+  // Format article content according to article-generator.ts structure
+  const rawContent = isHtmlContent(article.content)
     ? article.content
     : article.content;
+  
+  const formatted = formatArticleContent(rawContent, author, publishedDate);
+
+  // Breadcrumbs
+  const breadcrumbItems = [
+    { label: 'Learning Hub', href: '/learning-hub' },
+    { label: 'Health', href: '/learning-hub/health' },
+    { label: 'Nutrition & Diet', href: '/learning-hub/health/nutrition-diet' },
+    { label: title, href: '' }
+  ];
+
+  // Update schema with author role
+  const updatedSchema = {
+    ...article.schema,
+    author: {
+      "@type": "Person",
+      "name": author.name,
+      "jobTitle": author.role || author.credentials || "Health & Nutrition Expert"
+    }
+  };
+
+  // Add FAQPage schema if FAQs exist
+  if (formatted.hasFaq) {
+    const faqMatches = rawContent.matchAll(/<h3[^>]*>(.*?)<\/h3>\s*<p[^>]*>(.*?)<\/p>/gis);
+    const faqs: { q: string; a: string }[] = [];
+    for (const match of faqMatches) {
+      faqs.push({
+        q: match[1].replace(/<[^>]+>/g, '').trim(),
+        a: match[2].replace(/<[^>]+>/g, '').trim()
+      });
+    }
+    
+    if (faqs.length > 0) {
+      updatedSchema['@graph'] = [
+        updatedSchema,
+        {
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(f => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": f.a
+            }
+          }))
+        }
+      ];
+    }
+  }
 
   return (
     <>
-      <ArticleSchemaInjector schema={article.schema} />
+      <ArticleSchemaInjector schema={updatedSchema} />
       <div className="min-h-screen bg-white">
         {/* Header with back button */}
         <header className="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-100 mb-8">
@@ -91,12 +157,16 @@ export default async function NutritionDietArticlePage({
         </header>
 
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          {/* Breadcrumbs */}
+          <ArticleBreadcrumbs items={breadcrumbItems} />
+          
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-6">
             {title}
           </h1>
+          
           <div 
             className="article-content"
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
+            dangerouslySetInnerHTML={{ __html: formatted.html }}
           />
         </article>
       </div>

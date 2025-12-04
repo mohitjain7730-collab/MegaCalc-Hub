@@ -3,23 +3,28 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CategoryIcon } from '@/components/category-icon';
-import { FINANCE_ARTICLES, RETIREMENT_ARTICLES } from './articles';
+import { getFinanceArticles, getRetirementArticlesList } from './articles';
 
-const financeSections = [
-  {
-    name: 'Savings & Investment',
-    slug: 'savings-and-investment',
-    description: 'In-depth guides covering saving habits, automation, and investing fundamentals.',
-    icon: 'PiggyBank',
-    count: FINANCE_ARTICLES.length,
-  },
-  {
-    name: 'Retirement Planning',
-    slug: 'retirement-planning',
-    description: 'Comprehensive guides on retirement planning, 401(k), IRAs, and long-term financial security.',
-    icon: 'Target',
-    count: RETIREMENT_ARTICLES.length,
-  },
+export default function FinancePage() {
+  // Load articles on the server
+  const financeArticles = getFinanceArticles();
+  const retirementArticles = getRetirementArticlesList();
+
+  const financeSections = [
+    {
+      name: 'Savings & Investment',
+      slug: 'savings-and-investment',
+      description: 'In-depth guides covering saving habits, automation, and investing fundamentals.',
+      icon: 'PiggyBank',
+      count: financeArticles.length,
+    },
+    {
+      name: 'Retirement Planning',
+      slug: 'retirement-planning',
+      description: 'Comprehensive guides on retirement planning, 401(k), IRAs, and long-term financial security.',
+      icon: 'Target',
+      count: retirementArticles.length,
+    },
   {
     name: 'Budgeting & Personal Finance',
     slug: 'budgeting-personal-finance',
@@ -97,9 +102,8 @@ const financeSections = [
     icon: 'BarChart',
     count: 0,
   },
-];
-
-export default function FinancePage() {
+  ];
+  
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
       <div className="w-full max-w-7xl mx-auto">
