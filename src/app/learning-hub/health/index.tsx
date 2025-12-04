@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 import { getAuthorForArticle, Article } from './article';
-import { nutritionArticles } from './nutrition1';
-import { nutritionArticlesPart2 } from './nutrition2';
-import { nutritionArticlesPart3 } from './nutrition3';
-import { nutritionArticlesPart4 } from './nutrition4';
-import { nutritionArticlesPart5 } from './nutrition5';
+import { nutritionArticles } from './nutrition-diet/nutrition1';
+import { nutritionArticlesPart2 } from './nutrition-diet/nutrition2';
+import { nutritionArticlesPart3 } from './nutrition-diet/nutrition3';
+import { nutritionArticlesPart4 } from './nutrition-diet/nutrition4';
+import { nutritionArticlesPart5 } from './nutrition-diet/nutrition5';
 
 // --- Icons ---
 const Icons = {
