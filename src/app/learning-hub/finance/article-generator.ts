@@ -154,10 +154,11 @@ export const generateFullArticleHTML = (detail: ArticleDetail): string => {
   // Determine Author & Date (Use manual if provided, otherwise auto-assign)
   let authorData;
   if (detail.author) {
+    const authorName = detail.author;
     // If author is provided, try to find their bio in AUTHORS array (case-insensitive)
-    const foundAuthor = AUTHORS.find(a => a.name.toLowerCase() === detail.author.toLowerCase());
+    const foundAuthor = AUTHORS.find(a => a.name.toLowerCase() === authorName.toLowerCase());
     authorData = {
-      name: detail.author,
+      name: authorName,
       bio: detail.authorBio || foundAuthor?.bio || getDeterministicAuthor(detail.title).bio
     };
   } else {
