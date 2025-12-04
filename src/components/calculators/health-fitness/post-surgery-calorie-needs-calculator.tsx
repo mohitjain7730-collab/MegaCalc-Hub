@@ -272,7 +272,7 @@ export default function PostSurgeryCalorieNeedsCalculator() {
                     <FormItem>
                       <FormLabel>Age (years)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, '1')} />
+                        <Input type="number" {...numberInputProps(field.onChange, field.value, '1')} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -286,7 +286,7 @@ export default function PostSurgeryCalorieNeedsCalculator() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>{label}</FormLabel>
-                        <Select value={field.value} onValueChange={field.onChange}>
+                        <Select value={String(field.value || '')} onValueChange={field.onChange}>
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Select option" />
@@ -312,7 +312,7 @@ export default function PostSurgeryCalorieNeedsCalculator() {
                     <FormItem>
                       <FormLabel>Days Since Surgery</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, '1')} />
+                        <Input type="number" {...numberInputProps(field.onChange, field.value, '1')} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

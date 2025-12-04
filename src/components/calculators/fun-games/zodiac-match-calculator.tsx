@@ -230,7 +230,8 @@ const ZodiacMatchCalculator: React.FC = () => {
       'Pisces': { 'Cancer': 28, 'Scorpio': 25, 'Capricorn': 18, 'Taurus': 16, 'Virgo': 12, 'Aquarius': 8, 'Sagittarius': 6, 'Gemini': 4, 'Aries': 3, 'Leo': 2, 'Libra': 4 }
     };
     
-    const compatibility = compatibilityMatrix[sign1 as keyof typeof compatibilityMatrix]?.[sign2 as keyof typeof compatibilityMatrix] || 2;
+    const compatibilityRow = compatibilityMatrix[sign1 as keyof typeof compatibilityMatrix];
+    const compatibility = (compatibilityRow && typeof compatibilityRow === 'object' ? (compatibilityRow as any)[sign2] : undefined) || 2;
     score += compatibility;
     
     // Modality compatibility

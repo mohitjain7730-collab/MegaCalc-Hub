@@ -26,13 +26,14 @@ const pssQuestions: Array<{ id: string; text: string; positive?: boolean }> = [
 ];
 
 const questionSchema = z.string().nonempty("Please select an answer.");
-const formSchemaObject: {[key: string]: z.ZodString} = {};
+const formSchemaObject: Record<string, z.ZodString> = {};
 pssQuestions.forEach(q => {
     formSchemaObject[q.id] = questionSchema;
 });
 
 const formSchema = z.object(formSchemaObject);
 type FormValues = z.infer<typeof formSchema>;
+type FormFieldName = 'q1' | 'q2' | 'q3' | 'q4' | 'q5' | 'q6' | 'q7' | 'q8' | 'q9' | 'q10';
 
 export default function StressLevelIndexCalculator() {
   const [result, setResult] = useState<{ score: number, level: string } | null>(null);
@@ -70,7 +71,7 @@ export default function StressLevelIndexCalculator() {
             <FormField
               key={q.id}
               control={form.control}
-              name={q.id as string as keyof FormValues}
+              name={q.id as FormFieldName}
               render={({ field }) => (
                 <FormItem className="space-y-3">
                   <FormLabel>{index + 1}. {q.text}</FormLabel>

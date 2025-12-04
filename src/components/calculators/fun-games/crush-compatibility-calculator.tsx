@@ -267,7 +267,8 @@ const CrushCompatibilityCalculator: React.FC = () => {
           }
         };
         
-        const compatibility = compatibilityMatrix[yourPersonality as keyof typeof compatibilityMatrix]?.[crushPersonality as keyof typeof compatibilityMatrix] || 3;
+        const compatibilityRow = compatibilityMatrix[yourPersonality as keyof typeof compatibilityMatrix];
+        const compatibility = (compatibilityRow && typeof compatibilityRow === 'object' ? (compatibilityRow as any)[crushPersonality] : undefined) || 3;
         score += compatibility;
       }
     }

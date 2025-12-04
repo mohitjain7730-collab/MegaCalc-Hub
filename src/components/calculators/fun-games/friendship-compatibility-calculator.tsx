@@ -283,7 +283,8 @@ const FriendshipCompatibilityCalculator: React.FC = () => {
           }
         };
         
-        const compatibility = friendshipMatrix[friend1Personality as keyof typeof friendshipMatrix]?.[friend2Personality as keyof typeof friendshipMatrix] || 4;
+        const compatibilityRow = friendshipMatrix[friend1Personality as keyof typeof friendshipMatrix];
+        const compatibility = (compatibilityRow && typeof compatibilityRow === 'object' ? (compatibilityRow as any)[friend2Personality] : undefined) || 4;
         score += compatibility;
       }
     }

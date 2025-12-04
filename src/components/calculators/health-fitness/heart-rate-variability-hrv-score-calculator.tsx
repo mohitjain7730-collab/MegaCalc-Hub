@@ -129,19 +129,6 @@ const plan = (): { week: number; focus: string }[] => [
   { week: 8, focus: 'Continue healthy habits and track HRV trends over time' },
 ];
 
-const faqs: [string, string][] = [
-      ['What is heart rhythm variability?', 'Heart rhythm variability simply describes how the time between beats naturally changes from moment to moment. Many people use it as a gentle wellness signal for how rested or stressed their body feels.'],
-      ['What is RMSSD?', 'RMSSD (Root Mean Square of Successive Differences) is one way devices summarize heartbeat changes over time. You can think of it as a raw “variation” number your watch or strap can show you.'],
-      ['How is this wellness score calculated?', 'The score compares your RMSSD to a simple age‑based reference and scales it to 0–100 so it is easier to read as a personal wellness index.'],
-      ['Is there a “good” score?', 'Rather than chasing a perfect number, it’s more helpful to notice your own trends over time—what makes your score drift up or down when you change sleep, stress, or movement.'],
-      ['How do I measure RMSSD?', 'Most people use a chest strap heart monitor, smartwatch, or wellness app. Try to measure in similar conditions (for example, seated and relaxed at roughly the same time of day).'],
-      ['Why does the score vary day to day?', 'Changes in stress, sleep, movement, hydration, and even heavy meals can shift the score. Looking at weekly patterns is usually more helpful than focusing on a single day.'],
-      ['Can lifestyle habits influence this score?', 'Many people see a more stable score when they sleep consistently, manage stress gently (breathing, walks, hobbies), move their body regularly, and limit very late caffeine or screen time.'],
-      ['Does age matter here?', 'This tool lightly adjusts the score based on age so that it acts as a relative wellness guide rather than a performance test.'],
-      ['When is a good time to check?', 'Checking in calm conditions—often in the morning or during a quiet break—helps you compare like with like over time.'],
-      ['Is this a medical test?', 'No. It is a personal wellness insight based on heartbeat variation, not a medical test or diagnosis.'],
-];
-
 const understandingInputs = [
   { label: 'Age (years)', description: 'Your age in years (18–100). HRV typically decreases with age, so age adjustment is important for accurate scoring.' },
   { label: 'RMSSD (ms)', description: 'Root Mean Square of Successive Differences, a time-domain HRV metric measured in milliseconds. Typically ranges from 10–100+ ms.' },

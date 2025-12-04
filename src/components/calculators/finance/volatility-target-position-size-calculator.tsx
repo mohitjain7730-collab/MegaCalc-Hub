@@ -56,7 +56,7 @@ export default function VolatilityTargetPositionSizeCalculator() {
                   max = 1;
                   min = -1;
                 }
-                field.onChange(Number.isFinite(n as any) && n !== null && n >= (min ?? 0) && (max === undefined || n <= max) ? n : undefined);
+                field.onChange(Number.isFinite(n as any) && n !== null && n !== undefined && n >= (min ?? 0) && (max === undefined || n <= max) ? n : undefined);
               }}
               onBlur={field.onBlur}
               name={field.name}

@@ -131,7 +131,7 @@ const getInjuryRecoveryInterpretation = (recoveryTime: number, injuryType: strin
     contusion: { mild: 7, moderate: 14, severe: 28 },
   };
 
-  const expected = baseRecoveryTimes[injuryType][severity];
+  const expected = baseRecoveryTimes[injuryType as keyof typeof baseRecoveryTimes]?.[severity as keyof typeof baseRecoveryTimes['sprain']];
   const delta = recoveryTime - expected;
 
   if (delta < -7) {

@@ -229,24 +229,24 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
-  const footballSoccerCalculators = filteredCalculators.filter(calc => 
-    [].includes(calc.slug) // Add football/soccer calculators here when available
+  const footballSoccerCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug as never) // Add football/soccer calculators here when available
   );
 
-  const basketballCalculators = filteredCalculators.filter(calc => 
-    [].includes(calc.slug) // Add basketball calculators here when available
+  const basketballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug as never) // Add basketball calculators here when available
   );
 
-  const tennisCalculators = filteredCalculators.filter(calc => 
-    [].includes(calc.slug) // Add tennis calculators here when available
+  const tennisCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug as never) // Add tennis calculators here when available
   );
 
-  const baseballCalculators = filteredCalculators.filter(calc => 
-    [].includes(calc.slug) // Add baseball calculators here when available
+  const baseballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug as never) // Add baseball calculators here when available
   );
 
-  const volleyballCalculators = filteredCalculators.filter(calc => 
-    [].includes(calc.slug) // Add volleyball calculators here when available
+  const volleyballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+    [].includes(calc.slug as never) // Add volleyball calculators here when available
   );
 
   const otherCalculators = filteredCalculators.filter(calc => 

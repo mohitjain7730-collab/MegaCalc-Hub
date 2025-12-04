@@ -84,7 +84,7 @@ export default function RecipeIngredientConverter() {
                   <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
                 </div>
               ))}
-              <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ name: '', quantity: undefined, unit: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Ingredient</Button>
+              <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ name: '', quantity: 0, unit: '' })}><PlusCircle className="mr-2 h-4 w-4" /> Add Ingredient</Button>
             </CardContent>
           </Card>
           <Button type="submit">Convert Recipe</Button>

@@ -28,9 +28,9 @@ export default function ROIByBusinessSegmentCalculator() {
   const onSubmit=(v:FormValues)=>{
     const invests=[v.invest1,v.invest2,v.invest3];
     const returns=[v.return1,v.return2,v.return3];
-    const segRois=invests.map((inv,idx)=> (inv===undefined||inv===0||returns[idx]===undefined)? null : ((returns[idx]! - inv)/inv)*100);
-    const totalInvestment=invests.reduce((s,x)=>s+(x??0),0);
-    const totalReturn=returns.reduce((s,x)=>s+(x??0),0);
+    const segRois=invests.map((inv,idx)=> (inv===undefined||inv===0||returns[idx]===undefined)? null : (((returns[idx] ?? 0) - inv)/inv)*100);
+    const totalInvestment=invests.reduce((s: number,x)=>s+(x??0),0);
+    const totalReturn=returns.reduce((s: number,x)=>s+(x??0),0);
     const weightedRoi= totalInvestment>0? ((totalReturn - totalInvestment)/totalInvestment)*100 : null;
     const interpretation=`Weighted ROI: ${weightedRoi===null?'-':weightedRoi.toFixed(1)}%.`;
     setResult({segmentRois:segRois,totalInvestment,totalReturn,weightedRoi,interpretation,suggestions:[

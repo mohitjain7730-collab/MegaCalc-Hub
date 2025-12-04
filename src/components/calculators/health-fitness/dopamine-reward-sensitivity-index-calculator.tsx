@@ -164,7 +164,6 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'This suggests a general lifestyle tendency where your reward sensitivity may appear balanced. You may likely respond to positive feedback and novelty while still being able to pursue long‑term goals.';
 
   if (sensitivityScore >= 75) {
-    status = 'high';
     // Map "high" into our allowed types as "moderate" for labeling but keep language descriptive
     status = 'moderate';
     interpretation =

@@ -155,7 +155,7 @@ export default function ScenarioAnalysisCalculator() {
                     <CardContent className="space-y-4">
                       <FormField 
                         control={form.control} 
-                        name={`${scenario as keyof FormValues}.unitsSold`} 
+                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.unitsSold` as any} 
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Units Sold/Year</FormLabel>
@@ -164,7 +164,7 @@ export default function ScenarioAnalysisCalculator() {
                                 type="number" 
                                 placeholder="e.g., 1000"
                                 {...field} 
-                                value={field.value ?? ''} 
+                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')} 
                                 onChange={e => field.onChange(parseInt(e.target.value) || undefined)}
                               />
                             </FormControl>
@@ -174,7 +174,7 @@ export default function ScenarioAnalysisCalculator() {
                       />
                       <FormField 
                         control={form.control} 
-                        name={`${scenario as keyof FormValues}.pricePerUnit`} 
+                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.pricePerUnit` as any} 
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Price/Unit ($)</FormLabel>
@@ -183,7 +183,7 @@ export default function ScenarioAnalysisCalculator() {
                                 type="number" 
                                 placeholder="e.g., 50"
                                 {...field} 
-                                value={field.value ?? ''} 
+                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')} 
                                 onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                               />
                             </FormControl>
@@ -193,7 +193,7 @@ export default function ScenarioAnalysisCalculator() {
                       />
                       <FormField 
                         control={form.control} 
-                        name={`${scenario as keyof FormValues}.variableCost`} 
+                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.variableCost` as any} 
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Variable Cost/Unit ($)</FormLabel>
@@ -202,7 +202,7 @@ export default function ScenarioAnalysisCalculator() {
                                 type="number" 
                                 placeholder="e.g., 25"
                                 {...field} 
-                                value={field.value ?? ''} 
+                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')} 
                                 onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                               />
                             </FormControl>
@@ -212,7 +212,7 @@ export default function ScenarioAnalysisCalculator() {
                       />
                       <FormField 
                         control={form.control} 
-                        name={`${scenario as keyof FormValues}.fixedCosts`} 
+                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.fixedCosts` as any} 
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Fixed Costs/Year ($)</FormLabel>
@@ -221,7 +221,7 @@ export default function ScenarioAnalysisCalculator() {
                                 type="number" 
                                 placeholder="e.g., 10000"
                                 {...field} 
-                                value={field.value ?? ''} 
+                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')} 
                                 onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                               />
                             </FormControl>

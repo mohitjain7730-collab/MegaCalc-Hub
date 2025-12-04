@@ -161,7 +161,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     return hours + minutes / 60;
   };
   
-  const times = [parseTime(meal1Time), parseTime(meal2Time), parseTime(meal3Time), parseTime(meal4Time)].filter((t): t is number => t !== null);
+  const times = [parseTime(meal1Time || ''), parseTime(meal2Time || ''), parseTime(meal3Time || ''), parseTime(meal4Time || '')].filter((t): t is number => t !== null);
   
   // Calculate spacing between consecutive meals
   const spacings: number[] = [];

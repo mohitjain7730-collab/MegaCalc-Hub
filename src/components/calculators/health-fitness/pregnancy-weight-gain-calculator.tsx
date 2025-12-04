@@ -82,6 +82,7 @@ function calculatePregnancyWeightGain(values: FormValues) {
     recommendedGain,
     currentGain: Math.round(currentGain * 10) / 10,
     expectedGainAtWeek: Math.round(expectedGainAtWeek * 10) / 10,
+    gestationalWeeks,
     status,
     message,
   };

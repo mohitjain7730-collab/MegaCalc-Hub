@@ -63,7 +63,7 @@ export default function StraddleStrangleStrategyCalculator() {
                 if (name === 'contracts') {
                   min = 1;
                 }
-                field.onChange(Number.isFinite(n as any) && n !== null && (min === undefined || n >= min) && n >= 0 ? n : undefined);
+                field.onChange(Number.isFinite(n as any) && n !== null && n !== undefined && (min === undefined || n >= min) && n >= 0 ? n : undefined);
               }}
               onBlur={field.onBlur}
               name={field.name}

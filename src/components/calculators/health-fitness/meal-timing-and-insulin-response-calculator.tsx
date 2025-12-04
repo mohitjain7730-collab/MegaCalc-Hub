@@ -148,7 +148,7 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 
 const calculateResult = (values: FormValues): ResultPayload => {
   const mealTime = values.mealTime;
-  const carbGrams = values.carbsGrams;
+  const carbGrams = values.carbGrams;
   const proteinGrams = values.proteinGrams || 0;
   const fiberGrams = values.fiberGrams || 0;
   

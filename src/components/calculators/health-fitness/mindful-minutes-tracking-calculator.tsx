@@ -136,19 +136,6 @@ const plan = (): { week: number; focus: string }[] => [
   { week: 8, focus: 'Maintain regular practice and adjust duration based on your schedule' },
 ];
 
-const faqs: [string, string][] = [
-  ['How much mindfulness practice do I need?', 'Start with 5–10 minutes daily. Consistency matters more than duration. Many people find 10–20 minutes daily beneficial.'],
-  ['What counts as mindful minutes?', 'Formal meditation (sitting, walking), breathing exercises, body scans, and mindful activities (eating, walking) all count toward mindful minutes.'],
-  ['Is it better to practice daily or longer sessions?', 'Daily practice, even if shorter, is generally more beneficial than longer but infrequent sessions. Consistency builds habit and benefits.'],
-  ['What if I miss a day?', 'Missing a day is normal. Don\'t let it derail your practice. Resume the next day and focus on building consistency over time.'],
-  ['How do I track my mindful minutes?', 'Use a journal, app, or this calculator to track daily practice. Many meditation apps include built-in tracking features.'],
-  ['What is a good weekly average?', 'Aim for 10–20 minutes daily (70–140 minutes/week) for meaningful benefits. Start lower and build gradually.'],
-  ['Can I practice multiple times per day?', 'Yes, multiple shorter sessions (e.g., 5 minutes morning and evening) can be as effective as one longer session.'],
-  ['What types of mindfulness practice count?', 'Formal meditation, breathing exercises, body scans, mindful movement (yoga, walking), and mindful activities all contribute to mindful minutes.'],
-  ['How long until I see benefits?', 'Some benefits (reduced stress, improved focus) can appear within weeks. Deeper changes may take months of consistent practice.'],
-  ['Should I track every minute?', 'Track honestly but don\'t obsess. Approximate times are fine. Focus on the practice itself rather than perfect tracking.'],
-];
-
 const understandingInputs = [
   { label: 'Monday–Sunday (minutes)', description: 'Enter the number of minutes spent in mindfulness practice each day (0–480 minutes). Include formal meditation, breathing exercises, body scans, or mindful activities.' },
 ];

@@ -156,7 +156,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
     const returns = calculateInflationAdjustedReturn(values);
     setResult({
       nominalReturn: returns.nominalReturn,
-      annualizedNominalReturn: returns.annualizedNominalReturn,
+      annualizedNominalReturn: returns.annualizedNominalReturn ?? 0,
       realReturn: returns.realReturn,
       inflationAdjustedValue: returns.inflationAdjustedValue,
       interpretation: interpret(returns.nominalReturn, returns.realReturn, values.inflationRate),

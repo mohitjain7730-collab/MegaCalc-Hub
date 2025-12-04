@@ -42,6 +42,11 @@ type ResultPayload = {
   movementIndex: number;
   ageFeelingDifference: number;
   patternLabel: string;
+  metabolicAge: number;
+  ageDifference: number;
+  bmi: number;
+  riskStatus: string;
+  warningSigns: string[];
 };
 
 const plan = (): { week: number; focus: string }[] => [
@@ -224,6 +229,15 @@ export default function CardiometabolicAgeCalculator() {
 
     const interpretationText = interpret(calc.patternLabel);
 
+    const metabolicAge = values.age + calc.ageFeelingDifference;
+    const ageDifference = calc.ageFeelingDifference;
+    const riskStatus = calc.wellnessIndex >= 75 ? 'Low Risk' : calc.wellnessIndex >= 50 ? 'Moderate Risk' : 'Higher Risk';
+    const warningSignsList = calc.wellnessIndex < 50 ? [
+      'Consider increasing physical activity gradually',
+      'Focus on improving sleep quality',
+      'Reduce sedentary time when possible',
+    ] : [];
+    
     setResult({
       status: 'Calculated',
       interpretation: interpretationText,
@@ -235,6 +249,11 @@ export default function CardiometabolicAgeCalculator() {
       movementIndex: calc.movementIndex,
       ageFeelingDifference: calc.ageFeelingDifference,
       patternLabel: calc.patternLabel,
+      metabolicAge,
+      ageDifference,
+      bmi: calc.bmi,
+      riskStatus,
+      warningSigns: warningSignsList,
     });
   };
 

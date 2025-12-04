@@ -175,7 +175,7 @@ export default function LeverageDebtRatioImpactCalculator() {
                         onChange={e => {
                           const v = e.target.value;
                           const n = v === '' ? undefined : parseFloat(v);
-                          field.onChange(Number.isFinite(n) && n !== null && n >= 0 ? n : undefined);
+                          field.onChange(Number.isFinite(n) && n !== null && n !== undefined && n >= 0 ? n : undefined);
                         }}
                         onBlur={field.onBlur}
                         name={field.name}
@@ -200,7 +200,7 @@ export default function LeverageDebtRatioImpactCalculator() {
                         onChange={e => {
                           const v = e.target.value;
                           const n = v === '' ? undefined : parseFloat(v);
-                          field.onChange(Number.isFinite(n) && n !== null && n > 0 ? n : undefined);
+                          field.onChange(Number.isFinite(n) && n !== null && n !== undefined && n > 0 ? n : undefined);
                         }}
                         onBlur={field.onBlur}
                         name={field.name}
@@ -225,7 +225,7 @@ export default function LeverageDebtRatioImpactCalculator() {
                         onChange={e => {
                           const v = e.target.value;
                           const n = v === '' ? undefined : parseFloat(v);
-                          field.onChange(Number.isFinite(n) && n !== null && n >= 0 ? n : undefined);
+                          field.onChange(Number.isFinite(n) && n !== null && n !== undefined && n >= 0 ? n : undefined);
                         }}
                         onBlur={field.onBlur}
                         name={field.name}
@@ -250,7 +250,7 @@ export default function LeverageDebtRatioImpactCalculator() {
                         onChange={e => {
                           const v = e.target.value;
                           const n = v === '' ? undefined : parseFloat(v);
-                          field.onChange(Number.isFinite(n) && n !== null && n >= 0 && n <= 100 ? n : undefined);
+                          field.onChange(Number.isFinite(n) && n !== null && n !== undefined && n >= 0 && n <= 100 ? n : undefined);
                         }}
                         onBlur={field.onBlur}
                         name={field.name}

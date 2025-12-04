@@ -42,7 +42,7 @@ export default function PortfolioDrawdownCalculator(){
     setResult(computeDrawdowns(series));
   };
 
-  const demoSeries = useMemo(()=>['100, 102, 98, 105, 103, 96, 94, 97, 101, 99, 104'].join(''),'');
+  const demoSeries = useMemo(()=>['100, 102, 98, 105, 103, 96, 94, 97, 101, 99, 104'].join(''),[]);
 
   return (
     <div className="space-y-8">

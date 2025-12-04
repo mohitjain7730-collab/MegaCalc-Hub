@@ -80,7 +80,7 @@ export default function GenealogyTimelineGenerator() {
                   </Button>
                 </div>
               ))}
-              <Button type="button" variant="outline" size="sm" onClick={() => append({ name: '', birthYear: undefined, deathYear: undefined })}>
+              <Button type="button" variant="outline" size="sm" onClick={() => append({ name: '', birthYear: new Date().getFullYear() - 50, deathYear: undefined })}>
                 <PlusCircle className="mr-2 h-4 w-4" /> Add Ancestor
               </Button>
               <Button type="submit" className="w-full">Generate Timeline</Button>

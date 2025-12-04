@@ -52,7 +52,7 @@ export default function PositionSizingCalculator() {
                 const v = e.target.value;
                 const n = v === '' ? undefined : Number(v);
                 const max = name === 'accountRiskPercent' ? 100 : undefined;
-                field.onChange(Number.isFinite(n as any) && n !== null && n >= 0 && (max === undefined || n <= max) ? n : undefined);
+                field.onChange(Number.isFinite(n as any) && n !== null && n !== undefined && n >= 0 && (max === undefined || n <= max) ? n : undefined);
               }}
               onBlur={field.onBlur}
               name={field.name}

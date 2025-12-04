@@ -6,7 +6,7 @@ type CategoryIconProps = {
     name: string;
 } & LucideProps;
 
-const SvgIcon = ({ svg, ...props }: { svg: React.ReactNode } & LucideProps) => {
+const SvgIcon = ({ svg, ...props }: { svg: React.ReactNode } & React.HTMLAttributes<HTMLSpanElement>) => {
     return <span {...props}>{svg}</span>;
 }
 

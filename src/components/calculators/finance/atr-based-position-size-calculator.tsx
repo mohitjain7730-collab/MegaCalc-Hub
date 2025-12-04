@@ -56,7 +56,7 @@ export default function ATRBasedPositionSizeCalculator() {
                 const n = v === '' ? undefined : Number(v);
                 let max: number | undefined = undefined;
                 if (name === 'riskPercent') max = 100;
-                field.onChange(Number.isFinite(n as any) && n !== null && n >= 0 && (max === undefined || n <= max) ? n : undefined);
+                field.onChange(Number.isFinite(n as any) && n !== null && n !== undefined && n >= 0 && (max === undefined || n <= max) ? n : undefined);
               }}
               onBlur={field.onBlur}
               name={field.name}

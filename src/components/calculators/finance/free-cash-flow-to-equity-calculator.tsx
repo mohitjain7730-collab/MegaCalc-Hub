@@ -56,7 +56,7 @@ export default function FreeCashFlowToEquityCalculator() {
                 if (name === 'depreciation' || name === 'capitalExpenditures') {
                   min = 0;
                 }
-                field.onChange(Number.isFinite(n as any) && n !== null && (min === undefined || n >= min) ? n : undefined);
+                field.onChange(Number.isFinite(n as any) && n !== null && n !== undefined && (min === undefined || n >= min) ? n : undefined);
               }}
               onBlur={field.onBlur}
               name={field.name}

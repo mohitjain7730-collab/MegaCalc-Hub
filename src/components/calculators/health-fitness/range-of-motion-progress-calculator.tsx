@@ -357,7 +357,7 @@ export default function RangeOfMotionProgressCalculator() {
                     <FormItem>
                       <FormLabel>Time Period (days)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, '1')} />
+                        <Input type="number" {...numberInputProps(field.onChange, field.value, '1')} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -370,7 +370,7 @@ export default function RangeOfMotionProgressCalculator() {
                     <FormItem>
                       <FormLabel>Therapy Sessions Completed</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" {...numberInputProps(field.onChange, field.value, '1')} />
+                        <Input type="number" {...numberInputProps(field.onChange, field.value, '1')} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

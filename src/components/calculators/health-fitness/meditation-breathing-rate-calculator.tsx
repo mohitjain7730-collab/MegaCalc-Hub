@@ -132,19 +132,6 @@ const plan = (): { week: number; focus: string }[] => [
   { week: 8, focus: 'Maintain consistent practice and adjust rate based on your experience' },
 ];
 
-const faqs: [string, string][] = [
-  ['What is the optimal breathing rate for meditation?', 'Optimal rate varies by individual, age, experience, and goal. Generally, 4–8 breaths per minute promotes relaxation, while 8–12 breaths per minute is balanced for daily practice.'],
-  ['How is breathing rate calculated?', 'The calculator considers your age, meditation experience level, and goal (relaxation, focus, energy, balance) to recommend a personalized breathing rate.'],
-  ['What is box breathing?', 'Box breathing involves inhaling for 4 seconds, holding for 4 seconds, exhaling for 4 seconds, and holding for 4 seconds. It promotes calm and focus.'],
-  ['What is 4-7-8 breathing?', '4-7-8 breathing involves inhaling for 4 seconds, holding for 7 seconds, and exhaling for 8 seconds. It\'s effective for relaxation and sleep.'],
-  ['Does age affect breathing rate?', 'Yes, younger individuals typically have slightly higher resting breathing rates. The calculator adjusts recommendations based on age.'],
-  ['Can beginners use slow breathing rates?', 'Beginners may find very slow rates (4–6 breaths/min) challenging. Start with 8–12 breaths/min and gradually slow down as you gain experience.'],
-  ['What breathing rate is best for relaxation?', 'Slower rates (4–8 breaths/min) activate the parasympathetic nervous system and promote deep relaxation.'],
-  ['What breathing rate is best for focus?', 'Moderate rates (6–10 breaths/min) can help maintain alert focus during meditation or work.'],
-  ['How long should I practice breathing exercises?', 'Start with 5–10 minutes daily and gradually increase to 15–20 minutes as you become more comfortable. Consistency matters more than duration.'],
-  ['Can breathing exercises reduce stress?', 'Yes, controlled breathing exercises can activate the parasympathetic nervous system, reduce cortisol, lower heart rate, and promote relaxation.'],
-];
-
 const understandingInputs = [
   { label: 'Age (years)', description: 'Your age in years (18–100). Younger individuals may naturally have slightly higher breathing rates.' },
   { label: 'Experience Level', description: 'Your meditation experience: Beginner (new to meditation), Intermediate (some practice), or Advanced (regular practitioner).' },

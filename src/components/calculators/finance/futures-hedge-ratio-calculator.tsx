@@ -64,7 +64,7 @@ export default function FuturesHedgeRatioCalculator() {
                 } else if (name === 'futuresContractSize') {
                   min = 1;
                 }
-                field.onChange(Number.isFinite(n as any) && n !== null && (min === undefined || n >= min) && (max === undefined || n <= max) ? n : undefined);
+                field.onChange(Number.isFinite(n as any) && n !== null && n !== undefined && (min === undefined || n >= min) && (max === undefined || n <= max) ? n : undefined);
               }}
               onBlur={field.onBlur}
               name={field.name}

@@ -169,7 +169,7 @@ export default function DailyActivityPointsCalculator() {
     activities.forEach(activity => {
       if (activity.activity && activity.duration && activity.intensity) {
         const activityData = activityPointValues[activity.activity as keyof typeof activityPointValues] || activityPointValues.other;
-        const pointsPerMinute = activityData[activity.intensity];
+        const pointsPerMinute = activityData[activity.intensity as keyof typeof activityData];
         const activityPoints = Math.round((activity.duration / 15) * pointsPerMinute); // Points per 15-minute block
         totalPoints += activityPoints;
       }
@@ -365,7 +365,7 @@ export default function DailyActivityPointsCalculator() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold">Daily Activities</h3>
-                  <Button type="button" variant="outline" onClick={() => append({ activity: '', duration: undefined, intensity: undefined })}>
+                  <Button type="button" variant="outline" onClick={() => append({ activity: '', duration: 0, intensity: 'moderate' as const })}>
                     Add Activity
                   </Button>
                 </div>

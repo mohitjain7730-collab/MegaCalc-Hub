@@ -56,7 +56,7 @@ export default function PutCallParityChecker() {
               onChange={e => {
                 const v = e.target.value;
                 const n = v === '' ? undefined : Number(v);
-                field.onChange(Number.isFinite(n as any) && n !== null && n >= 0 ? n : undefined);
+                field.onChange(Number.isFinite(n as any) && n !== null && n !== undefined && n >= 0 ? n : undefined);
               }}
               onBlur={field.onBlur}
               name={field.name}

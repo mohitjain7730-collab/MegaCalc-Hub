@@ -80,7 +80,7 @@ export default function CaffeineIntakeCalculator() {
                   <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)}><XCircle className="h-5 w-5 text-destructive" /></Button>
                 </div>
               ))}
-               <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ type: 'brewedCoffee', servings: undefined })}><PlusCircle className="mr-2 h-4 w-4" /> Add Drink</Button>
+               <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ type: 'brewedCoffee', servings: 0 })}><PlusCircle className="mr-2 h-4 w-4" /> Add Drink</Button>
             </CardContent>
           </Card>
           <Button type="submit">Calculate Caffeine</Button>

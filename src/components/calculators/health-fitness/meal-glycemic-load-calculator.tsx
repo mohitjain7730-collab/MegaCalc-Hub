@@ -83,7 +83,7 @@ export default function MealGlycemicLoadCalculator() {
                     <Button type="button" variant="ghost" size="icon" onClick={() => remove(index)} disabled={fields.length === 1}><XCircle className="h-5 w-5 text-destructive" /></Button>
                   </div>
                 ))}
-                <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => append({ name: '', gi: undefined, carbs: undefined })}><PlusCircle className="mr-2 h-4 w-4" /> Add Item</Button>
+                <Button type="button" variant="outline" size="sm" className="mt-2" onClick={() => append({ name: '', gi: 0, carbs: 0 })}><PlusCircle className="mr-2 h-4 w-4" /> Add Item</Button>
               </div>
               <Button type="submit">Calculate Total GL</Button>
             </form>

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, Calculator, DollarSign, Info, AlertCircle, Target, Calendar, BarChart, Infinity } from 'lucide-react';
+import { TrendingUp, Calculator, DollarSign, Info, AlertCircle, Target, Calendar, BarChart, Infinity as InfinityIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -91,7 +91,7 @@ export default function GrowingAnnuityPerpetuityCalculator() {
     const periodicDiscount = discountRate / 100 / frequency;
     
     if (periodicDiscount <= periodicGrowth) {
-      return Infinity; // Perpetuity value is infinite if growth rate >= discount rate
+      return Number.POSITIVE_INFINITY; // Perpetuity value is infinite if growth rate >= discount rate
     }
     
     return initialPayment / (periodicDiscount - periodicGrowth);
@@ -108,9 +108,9 @@ export default function GrowingAnnuityPerpetuityCalculator() {
     
     if (v.calculationType === 'perpetuity') {
       presentValue = calculateGrowingPerpetuityPV(v.initialPayment, v.growthRate, v.discountRate, frequency);
-      futureValue = Infinity;
-      totalPayments = Infinity;
-      totalInterest = Infinity;
+      futureValue = Number.POSITIVE_INFINITY;
+      totalPayments = Number.POSITIVE_INFINITY;
+      totalInterest = Number.POSITIVE_INFINITY;
     } else {
       if (v.timePeriod == null) return null;
       presentValue = calculateGrowingAnnuityPV(v.initialPayment, v.growthRate, v.discountRate, v.timePeriod, frequency);
@@ -460,7 +460,7 @@ export default function GrowingAnnuityPerpetuityCalculator() {
                     <span className="text-sm font-medium text-muted-foreground">Present Value</span>
                   </div>
                   <p className="text-3xl font-bold text-primary">
-                    {result.presentValue === Infinity ? '∞' : `$${result.presentValue.toLocaleString()}`}
+                    {result.presentValue === Number.POSITIVE_INFINITY ? '∞' : `$${result.presentValue.toLocaleString()}`}
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     Current value of growing payments
@@ -473,7 +473,7 @@ export default function GrowingAnnuityPerpetuityCalculator() {
                     <span className="text-sm font-medium text-muted-foreground">Future Value</span>
                   </div>
                   <p className="text-3xl font-bold text-green-600">
-                    {result.futureValue === Infinity ? '∞' : `$${result.futureValue.toLocaleString()}`}
+                    {result.futureValue === Number.POSITIVE_INFINITY ? '∞' : `$${result.futureValue.toLocaleString()}`}
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     Value at end of period
@@ -481,7 +481,7 @@ export default function GrowingAnnuityPerpetuityCalculator() {
                 </div>
               </div>
 
-              {result.totalPayments !== Infinity && (
+              {result.totalPayments !== Number.POSITIVE_INFINITY && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                   <div className="text-center p-6 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
                     <div className="flex items-center justify-center gap-2 mb-2">

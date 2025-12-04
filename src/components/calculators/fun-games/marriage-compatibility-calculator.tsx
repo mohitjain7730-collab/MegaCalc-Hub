@@ -315,8 +315,15 @@ const MarriageCompatibilityCalculator: React.FC = () => {
         }
       };
       
-      const compatibility = communicationMatrix[communicationStyle as keyof typeof communicationMatrix] || 5;
-      score += compatibility;
+      const compatibilityRow = communicationMatrix[communicationStyle as keyof typeof communicationMatrix];
+      if (compatibilityRow && typeof compatibilityRow === 'object') {
+        // Use average compatibility score as default when partner style is not specified
+        const scores = Object.values(compatibilityRow);
+        const avgScore = scores.reduce((sum: number, val: number) => sum + val, 0) / scores.length;
+        score += avgScore;
+      } else {
+        score += 5;
+      }
     }
     
     // Enhanced special letter bonuses for marriage

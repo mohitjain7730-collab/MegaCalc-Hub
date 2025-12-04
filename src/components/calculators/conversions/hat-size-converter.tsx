@@ -77,7 +77,8 @@ export default function HatSizeConverter() {
   const onSubmit = (values: FormValues) => {
     const { unit, value } = values;
     
-    const parsedValue = typeof value === 'string' ? parseFloat(value.replace(',', '.')) : value;
+    const valueStr = typeof value === 'string' ? value : String(value || '');
+    const parsedValue = parseFloat(valueStr.replace(',', '.'));
     if (isNaN(parsedValue)) {
       form.setError('value', { message: 'Please enter a valid number.' });
       return;

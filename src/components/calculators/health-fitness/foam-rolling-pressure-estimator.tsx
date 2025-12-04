@@ -89,7 +89,8 @@ const getPressureStatus = (pressureKpa: number, values: FormValues) => {
 };
 
 const getDetailedInterpretation = (result: ReturnType<typeof calculatePressure>, values: FormValues) => {
-  const interpretations = [];
+  const interpretations: string[] = [];
+  if (!result) return interpretations;
   
   // Pressure level interpretation
   if (result.pressureKpa > 60) {
@@ -129,15 +130,17 @@ const getDetailedInterpretation = (result: ReturnType<typeof calculatePressure>,
     shoulders: 'Shoulders require light pressure due to joint complexity'
   };
 
-  if (values.targetArea && areaAdvice[values.targetArea]) {
-    interpretations.push(areaAdvice[values.targetArea]);
+  if (values.targetArea && values.targetArea !== 'other') {
+    const advice = areaAdvice[values.targetArea as keyof typeof areaAdvice];
+    if (advice) interpretations.push(advice);
   }
 
   return interpretations;
 };
 
 const getPersonalizedRecommendations = (result: ReturnType<typeof calculatePressure>, values: FormValues) => {
-  const recommendations = [];
+  const recommendations: string[] = [];
+  if (!result) return recommendations;
   
   // Pressure-specific recommendations
   if (result.pressureKpa > 60) {
@@ -196,7 +199,8 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculatePress
 };
 
 const getSafetyGuidelines = (result: ReturnType<typeof calculatePressure>, values: FormValues) => {
-  const guidelines = [];
+  const guidelines: string[] = [];
+  if (!result) return guidelines;
   
   guidelines.push('Never roll directly over bones, joints, or the spine');
   guidelines.push('Avoid rolling over areas with bruises, cuts, or inflammation');
@@ -226,7 +230,8 @@ const getSafetyGuidelines = (result: ReturnType<typeof calculatePressure>, value
 };
 
 const getRollerRecommendations = (result: ReturnType<typeof calculatePressure>, values: FormValues) => {
-  const recommendations = [];
+  const recommendations: string[] = [];
+  if (!result) return recommendations;
   
   if (result.pressureKpa > 40) {
     recommendations.push('High-density foam roller for maximum pressure');
@@ -440,14 +445,14 @@ export default function FoamRollingPressureEstimator() {
               <CardDescription>Approximate applied pressure</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className={`p-6 rounded-lg border ${getPressureStatus(result.pressureKpa, form.getValues()).bgColor} ${getPressureStatus(result.pressureKpa, form.getValues()).borderColor}`}>
+              <div className={`p-6 rounded-lg border ${getPressureStatus(result!.pressureKpa, form.getValues()).bgColor} ${getPressureStatus(result!.pressureKpa, form.getValues()).borderColor}`}>
                 <div className="text-center space-y-2">
-                  <p className="text-4xl font-bold">{result.pressureKpa} kPa</p>
-                  <p className={`text-lg font-semibold ${getPressureStatus(result.pressureKpa, form.getValues()).statusColor}`}>
-                    {getPressureStatus(result.pressureKpa, form.getValues()).statusText}
+                  <p className="text-4xl font-bold">{result!.pressureKpa} kPa</p>
+                  <p className={`text-lg font-semibold ${getPressureStatus(result!.pressureKpa, form.getValues()).statusColor}`}>
+                    {getPressureStatus(result!.pressureKpa, form.getValues()).statusText}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {getPressureStatus(result.pressureKpa, form.getValues()).description}
+                    {getPressureStatus(result!.pressureKpa, form.getValues()).description}
                   </p>
                 </div>
               </div>
@@ -455,15 +460,15 @@ export default function FoamRollingPressureEstimator() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div>
                   <p className="text-muted-foreground">Applied Force</p>
-                  <p className="font-semibold">{result.forceN} N</p>
+                  <p className="font-semibold">{result!.forceN} N</p>
                 </div>
                 <div>
                   <p className="text-muted-foreground">Contact Area</p>
-                  <p className="font-semibold">{result.contactArea} cm²</p>
+                  <p className="font-semibold">{result!.contactArea} cm²</p>
                 </div>
                 <div>
                   <p className="text-muted-foreground">Weight Distribution</p>
-                  <p className="font-semibold">{result.weightDistribution}%</p>
+                  <p className="font-semibold">{result!.weightDistribution}%</p>
                 </div>
               </div>
             </CardContent>
@@ -478,7 +483,7 @@ export default function FoamRollingPressureEstimator() {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {getDetailedInterpretation(result, form.getValues()).map((interpretation, index) => (
+                {getDetailedInterpretation(result!, form.getValues()).map((interpretation, index) => (
                   <li key={index} className="flex items-start gap-2">
                     <Info className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{interpretation}</span>
@@ -497,7 +502,7 @@ export default function FoamRollingPressureEstimator() {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {getPersonalizedRecommendations(result, form.getValues()).map((recommendation, index) => (
+                {getPersonalizedRecommendations(result!, form.getValues()).map((recommendation, index) => (
                   <li key={index} className="flex items-start gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{recommendation}</span>
@@ -516,7 +521,7 @@ export default function FoamRollingPressureEstimator() {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {getSafetyGuidelines(result, form.getValues()).map((guideline, index) => (
+                {getSafetyGuidelines(result!, form.getValues()).map((guideline, index) => (
                   <li key={index} className="flex items-start gap-2">
                     <AlertTriangle className="h-4 w-4 text-orange-600 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{guideline}</span>

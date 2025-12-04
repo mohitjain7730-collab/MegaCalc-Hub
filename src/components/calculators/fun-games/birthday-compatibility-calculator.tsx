@@ -249,7 +249,8 @@ const BirthdayCompatibilityCalculator: React.FC = () => {
       'Pisces': { 'Cancer': 18, 'Scorpio': 16, 'Capricorn': 12, 'Taurus': 10, 'Virgo': 8, 'Aquarius': 6, 'Sagittarius': 4, 'Gemini': 3, 'Aries': 2, 'Leo': 1, 'Libra': 3 }
     };
     
-    const zodiacScore = zodiacCompatibility[zodiac1 as keyof typeof zodiacCompatibility]?.[zodiac2 as keyof typeof zodiacCompatibility] || 2;
+    const zodiacRow = zodiacCompatibility[zodiac1 as keyof typeof zodiacCompatibility];
+    const zodiacScore = (zodiacRow && typeof zodiacRow === 'object' ? (zodiacRow as any)[zodiac2] : undefined) || 2;
     score += zodiacScore;
     
     // Enhanced numerology analysis
@@ -260,7 +261,7 @@ const BirthdayCompatibilityCalculator: React.FC = () => {
       
       let sum = day + month + year;
       while (sum > 9) {
-        sum = sum.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+        sum = sum.toString().split('').reduce((a, b) => parseInt(String(a)) + parseInt(b), 0);
       }
       return sum;
     };

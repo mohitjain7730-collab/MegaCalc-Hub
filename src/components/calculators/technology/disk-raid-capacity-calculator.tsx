@@ -36,7 +36,7 @@ const formSchema = z.object({
     path: ["diskCount"],
 }).refine(data => {
     const level = raidLevels[data.raidLevel as RaidLevel];
-    return !level.even || data.diskCount % 2 === 0;
+    return !('even' in level && level.even) || data.diskCount % 2 === 0;
 }, {
     message: "RAID 10 requires an even number of disks.",
     path: ["diskCount"],
