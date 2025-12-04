@@ -1,4 +1,4 @@
-import type { Article } from '../../../../types';
+import type { Article } from '../../../types';
 import { savingInvestingArticles1 } from './savings-and-investment/saving-investing-1';
 import { savingInvestingArticles2 } from './savings-and-investment/saving-investing-2';
 import { savingInvestingArticles3 } from './savings-and-investment/saving-investing-3';
