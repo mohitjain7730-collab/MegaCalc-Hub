@@ -91,7 +91,16 @@ export default async function NutritionDietArticlePage({
     ? article.content
     : article.content;
   
-  const formatted = formatArticleContent(rawContent, author, publishedDate);
+  // Extract category for enhancements
+  const categorySlug = 'health-fitness'; // Health articles use health-fitness category
+  
+  const formatted = formatArticleContent(
+    rawContent, 
+    author, 
+    publishedDate,
+    slug, // topic/slug for deterministic enhancements
+    categorySlug // category for content selection
+  );
 
   // Breadcrumbs
   const breadcrumbItems = [

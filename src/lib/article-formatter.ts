@@ -1,6 +1,15 @@
 'server-only';
 
 import type { Author } from './article-authors';
+import {
+  generateExample,
+  getRandomStatistic,
+  getOptionalSections,
+  generateExpertCommentary,
+  getHeadingVariation,
+  getRandomizedFAQs,
+  getSectionOrder,
+} from './article-enhancements';
 
 export interface FormattedArticleContent {
   html: string;
@@ -11,11 +20,14 @@ export interface FormattedArticleContent {
 /**
  * Formats article content according to article-generator.ts structure
  * Extracts and formats Key Takeaways, FAQs, and other sections
+ * Now includes dynamic enhancements for uniqueness
  */
 export function formatArticleContent(
   rawContent: string,
   author: Author,
-  publishedDate: string
+  publishedDate: string,
+  topic?: string,
+  category?: string
 ): FormattedArticleContent {
   let html = rawContent.trim();
   
@@ -59,6 +71,46 @@ export function formatArticleContent(
     // Remove the original FAQ section
     html = html.replace(/<h2[^>]*>Frequently Asked Questions<\/h2>.*?(?=<h2|$)/is, '');
   }
+
+  // ============================================================================
+  // ENHANCEMENT SYSTEM: Dynamic content generation for uniqueness
+  // ============================================================================
+  // Get topic for deterministic enhancements (use provided topic or derive from content)
+  const articleTopic = topic || (rawContent.match(/<h1[^>]*>(.*?)<\/h1>/i)?.[1] || 'article').toLowerCase();
+  const articleCategory = category || 'general';
+
+  // Generate enhancement content with error handling
+  let example = 'This example demonstrates how the topic applies in real-world scenarios.';
+  let statistic: string | null = null;
+  let optionalSection = { type: null as 'common-mistake' | 'expert-insight' | null, content: '' };
+  let expertCommentary = 'This topic is important for understanding key concepts.';
+  let randomizedFAQs = faqs;
+  let takeawaysHeading = 'Key Takeaways';
+  let faqHeading = 'Frequently Asked Questions';
+  let exampleHeading = 'Example Scenario';
+  let statHeading = 'Quick Stat';
+  let sectionOrder = { examplePosition: 'middle' as const, statPosition: 'middle' as const, faqPosition: 'after-main' as const, expertCommentaryIndex: 0 };
+
+  try {
+    example = generateExample(articleTopic, articleCategory);
+    statistic = getRandomStatistic(articleTopic, articleCategory);
+    optionalSection = getOptionalSections(articleTopic, articleCategory);
+    expertCommentary = generateExpertCommentary(articleTopic, articleCategory);
+    randomizedFAQs = getRandomizedFAQs(articleTopic, faqs);
+    takeawaysHeading = getHeadingVariation(articleTopic, 'Key Takeaways');
+    faqHeading = getHeadingVariation(articleTopic, 'Frequently Asked Questions');
+    exampleHeading = getHeadingVariation(articleTopic, 'Example Scenario');
+    statHeading = getHeadingVariation(articleTopic, 'Quick Stat');
+    
+    // Determine section order
+    const mainSections = [];
+    if (hasTakeaways) mainSections.push('takeaways');
+    if (html.trim()) mainSections.push('content');
+    sectionOrder = getSectionOrder(articleTopic, Math.max(mainSections.length, 1));
+  } catch (error) {
+    console.error('Error generating article enhancements:', error);
+    // Use fallback values defined above
+  }
   
   // Construct Author Byline (Top)
   const roleText = author.role || author.credentials || '';
@@ -75,24 +127,63 @@ export function formatArticleContent(
     </div>
   `;
   
-  // Format Key Takeaways section if found
+  // Format Key Takeaways section if found (with heading variation)
   const takeawaysSection = hasTakeaways ? `
     <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm my-8">
       <h3 class="text-blue-900 font-bold text-lg mb-3 flex items-center">
-        <span class="text-2xl mr-2">💡</span> Key Takeaways
+        <span class="text-2xl mr-2">💡</span> ${takeawaysHeading}
       </h3>
       <ul class="space-y-2">
         ${takeaways.map(t => `<li class="flex items-start"><span class="text-blue-500 mr-2">•</span><span>${t}</span></li>`).join('')}
       </ul>
     </div>
   ` : '';
+
+  // Generate dynamic sections
+  const exampleSection = `
+    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm my-8">
+      <h3 class="text-blue-900 font-bold text-lg mb-3">${exampleHeading}</h3>
+      <p class="text-slate-700 leading-7">${example}</p>
+    </div>
+  `;
+
+  const statSection = statistic ? `
+    <div class="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-lg shadow-sm my-8">
+      <h3 class="text-purple-900 font-bold text-lg mb-3">${statHeading}</h3>
+      <p class="text-slate-700 leading-7 font-medium">${statistic}</p>
+    </div>
+  ` : '';
+
+  const expertCommentarySection = `
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg shadow-sm my-8 italic">
+      <p class="text-slate-700 leading-7">${expertCommentary}</p>
+    </div>
+  `;
+
+  // Optional section (Common Mistake or Expert Insight)
+  let optionalSectionHtml = '';
+  if (optionalSection.type && optionalSection.content) {
+    const optionalHeading = optionalSection.type === 'common-mistake' 
+      ? getHeadingVariation(articleTopic, 'Common Mistake')
+      : getHeadingVariation(articleTopic, 'Expert Insight');
+    
+    const bgColor = optionalSection.type === 'common-mistake' ? 'bg-red-50 border-red-500' : 'bg-green-50 border-green-500';
+    const textColor = optionalSection.type === 'common-mistake' ? 'text-red-900' : 'text-green-900';
+    
+    optionalSectionHtml = `
+      <div class="${bgColor} border-l-4 p-6 rounded-r-lg shadow-sm my-8">
+        <h3 class="${textColor} font-bold text-lg mb-3">${optionalHeading}</h3>
+        <p class="text-slate-700 leading-7">${optionalSection.content}</p>
+      </div>
+    `;
+  }
   
-  // Format FAQ section if found
-  const faqSection = hasFaq ? `
+  // Format FAQ section if found (with randomized FAQs and heading variation)
+  const faqSection = randomizedFAQs.length > 0 ? `
     <div class="prose prose-slate max-w-none pt-4">
-      <h3 class="text-2xl font-bold text-slate-900">Frequently Asked Questions</h3>
+      <h3 class="text-2xl font-bold text-slate-900">${faqHeading}</h3>
       <dl class="space-y-6 mt-4">
-        ${faqs.map(item => `
+        ${randomizedFAQs.map(item => `
           <div>
             <dt class="font-bold text-slate-900 text-lg">? ${item.q}</dt>
             <dd class="mt-2 text-slate-600 pl-4 border-l-2 border-gray-200">${item.a}</dd>
@@ -131,20 +222,89 @@ export function formatArticleContent(
     .replace(/<strong(?![^>]*class)/g, '<strong class="font-semibold text-slate-900"')
     .replace(/<em(?![^>]*class)/g, '<em class="italic"');
   
+  // Build sections array for flexible ordering
+  const sections: string[] = [];
+  let exampleInserted = false;
+  let statInserted = false;
+  
+  sections.push(byline);
+  
+  // Insert example early if that's the position
+  if (sectionOrder.examplePosition === 'early' && !exampleInserted) {
+    sections.push(exampleSection);
+    exampleInserted = true;
+  }
+  
+  sections.push(takeawaysSection);
+  
+  // Insert stat early if that's the position
+  if (sectionOrder.statPosition === 'early' && !statInserted && statistic) {
+    sections.push(statSection);
+    statInserted = true;
+  }
+  
+  // Main content
+  sections.push(`
+    <div class="prose prose-slate max-w-none">
+      ${html}
+    </div>
+  `);
+  
+  // Insert expert commentary after main content (middle position)
+  sections.push(expertCommentarySection);
+  
+  // Insert example middle if that's the position
+  if (sectionOrder.examplePosition === 'middle' && !exampleInserted) {
+    sections.push(exampleSection);
+    exampleInserted = true;
+  }
+  
+  // Insert stat middle if that's the position
+  if (sectionOrder.statPosition === 'middle' && !statInserted && statistic) {
+    sections.push(statSection);
+    statInserted = true;
+  }
+  
+  // Optional section
+  if (optionalSectionHtml) {
+    sections.push(optionalSectionHtml);
+  }
+  
+  // Insert example late if that's the position (or if not yet inserted)
+  if ((sectionOrder.examplePosition === 'late' || !exampleInserted) && !exampleInserted) {
+    sections.push(exampleSection);
+    exampleInserted = true;
+  }
+  
+  // Insert stat late if that's the position (or if not yet inserted)
+  if ((sectionOrder.statPosition === 'late' || !statInserted) && !statInserted && statistic) {
+    sections.push(statSection);
+    statInserted = true;
+  }
+  
+  // FAQs - position based on sectionOrder
+  if (sectionOrder.faqPosition === 'after-main' && faqSection) {
+    sections.push(faqSection);
+  }
+  
+  sections.push(authorSection);
+  
+  // FAQs near bottom if that's the preference
+  if (sectionOrder.faqPosition === 'near-bottom' && faqSection) {
+    sections.push(faqSection);
+  }
+  
+  // Disclaimer (always last)
+  sections.push(`
+    <div class="text-xs text-gray-400 border-t pt-6 mt-12 italic">
+      This content is for educational purposes only and does not constitute financial or medical advice. Market data, tax laws, and medical information are subject to change. Consult a certified professional before making investment or health decisions.
+    </div>
+  `);
+
   // Wrap everything in the proper structure
   const formattedHtml = `
     <div class="space-y-8 text-slate-800 leading-relaxed">
-      ${byline}
-      ${takeawaysSection}
-      <div class="prose prose-slate max-w-none">
-        ${html}
-      </div>
-      ${faqSection}
-      ${authorSection}
-      <!-- Disclaimer -->
-      <div class="text-xs text-gray-400 border-t pt-6 mt-12 italic">
-        This content is for educational purposes only and does not constitute financial or medical advice. Market data, tax laws, and medical information are subject to change. Consult a certified professional before making investment or health decisions.
-      </div>
+      ${sections.filter(Boolean).join('\n')}
     </div>
   `;
   

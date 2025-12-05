@@ -178,10 +178,21 @@ export default async function FinanceArticlePage({
     ? article.content
     : markdownToHtml(article.content);
   
-  const formatted = formatArticleContent(rawContent, author, publishedDate);
-
   // Determine breadcrumbs based on category
   const categoryParts = (article.category || 'Learning hub> Finance').split('>').map(p => p.trim());
+  
+  // Extract category for enhancements (e.g., "finance" from "Learning hub> Finance")
+  const categorySlug = categoryParts.length > 1 
+    ? categoryParts[1].toLowerCase().replace(/\s+/g, '-')
+    : 'finance';
+  
+  const formatted = formatArticleContent(
+    rawContent, 
+    author, 
+    publishedDate,
+    slug, // topic/slug for deterministic enhancements
+    categorySlug // category for content selection
+  );
   const breadcrumbItems = [
     { label: 'Learning Hub', href: '/learning-hub' },
     { label: 'Finance', href: '/learning-hub/finance' },
