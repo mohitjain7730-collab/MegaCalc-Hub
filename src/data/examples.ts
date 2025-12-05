@@ -328,3 +328,4 @@ export function generateExampleForTopic(topic: string, category?: string): strin
   return examples[index].fullText;
 }
 
+
