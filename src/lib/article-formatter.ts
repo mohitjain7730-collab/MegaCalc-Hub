@@ -84,7 +84,7 @@ export function formatArticleContent(
   // Generate enhancement content with error handling
   let example = 'This example demonstrates how the topic applies in real-world scenarios.';
   let statistic: string | null = null;
-  let optionalSection = { type: null as 'common-mistake' | 'expert-insight' | null, content: '' };
+  let optionalSection = { type: null as 'common-mistake' | 'expert-insight' | 'pro-tip' | null, content: '' };
   let expertCommentary = 'This topic is important for understanding key concepts.';
   let randomizedFAQs = faqs;
   let takeawaysHeading = 'Key Takeaways';
