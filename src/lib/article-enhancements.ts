@@ -35,6 +35,9 @@ import {
 } from './content-variability-engine';
 import { generateExampleForTopic } from '@/data/examples';
 
+// Re-export types for use by other modules
+export type { SectionOrder, OptionalSectionType };
+
 interface OptionalSection {
   type: 'common-mistake' | 'expert-insight' | 'pro-tip' | null;
   content: string;
