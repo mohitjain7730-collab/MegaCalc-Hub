@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { RelatedCalculators } from '@/components/related-calculators';
 
 const formSchema = z.object({
   trainingLoad: z.number({ invalid_type_error: 'Enter recent training load' }).min(0).max(20),
@@ -88,6 +89,7 @@ const faqs = [
   },
 ];
 
+// Related calculators - validated automatically by RelatedCalculators component
 const relatedCalculators = [
   {
     name: 'Stress Hormone Balance Calculator',
@@ -486,23 +488,12 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Related calculators</CardTitle>
-        </CardHeader>
-        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {relatedCalculators.map((calc) => (
-            <div key={calc.slug} className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href={`/category/health-fitness/${calc.slug}`} className="text-primary hover:underline">
-                  {calc.name}
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">{calc.description}</p>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
+      <RelatedCalculators
+        links={relatedCalculators}
+        currentSlug="testosterone-to-cortisol-ratio-calculator"
+        currentCategory="health-fitness"
+        title="Related Calculators"
+      />
 
       <Card>
         <CardHeader>
