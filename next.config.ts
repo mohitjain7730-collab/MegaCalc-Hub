@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
 import { calculators } from './src/lib/calculators';
 
+// @next/bundle-analyzer uses CommonJS exports, so we use require
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
