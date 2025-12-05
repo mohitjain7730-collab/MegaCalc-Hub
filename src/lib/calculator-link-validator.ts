@@ -5,16 +5,14 @@
  * ensuring all links point to existing calculators and routes.
  * 
  * Features:
- * - Validates calculator slugs against filesystem
- * - Checks route existence
+ * - Validates calculator slugs against registry
+ * - Checks route existence via registry
  * - Provides fallback suggestions
- * - Build-time validation reporting
+ * - Client-safe validation (no filesystem access)
  */
 
 import { calculators } from './calculators';
 import { categories } from './categories';
-import { existsSync } from 'fs';
-import { join } from 'path';
 
 /**
  * Represents a calculator link that can be validated
@@ -69,37 +67,22 @@ export function getAllCalculatorSlugs(): Map<string, { category: string; name: s
 }
 
 /**
- * Check if a calculator component file exists in the filesystem
- * Handles special cases like wellness calculators being in health-fitness folder
+ * Check if a calculator exists in the registry
+ * This is a client-safe version that doesn't use filesystem checks
+ * Filesystem validation should be done in build-time scripts only
  */
-export function calculatorFileExists(categorySlug: string, calculatorSlug: string): boolean {
-  // Wellness calculators are stored in health-fitness folder
-  const actualCategory = categorySlug === 'wellness' ? 'health-fitness' : categorySlug;
+export function calculatorExists(categorySlug: string, calculatorSlug: string): boolean {
+  const slugMap = getAllCalculatorSlugs();
+  const entry = slugMap.get(calculatorSlug);
   
-  // Check if the category folder exists
-  const categoryPath = join(process.cwd(), 'src', 'components', 'calculators', actualCategory);
-  if (!existsSync(categoryPath)) {
+  if (!entry) {
     return false;
   }
   
-  // Check for the calculator file
-  const calculatorPath = join(categoryPath, `${calculatorSlug}.tsx`);
-  if (existsSync(calculatorPath)) {
-    return true;
-  }
+  // Wellness calculators are stored in health-fitness folder
+  const actualCategory = categorySlug === 'wellness' ? 'health-fitness' : categorySlug;
   
-  // For wellness calculators, also check for wellness-suffixed version
-  if (categorySlug === 'wellness') {
-    const wellnessSuffixPath = calculatorSlug.endsWith('-calculator')
-      ? calculatorSlug.replace('-calculator', '-wellness-calculator')
-      : `${calculatorSlug}-wellness-calculator`;
-    const wellnessPath = join(categoryPath, `${wellnessSuffixPath}.tsx`);
-    if (existsSync(wellnessPath)) {
-      return true;
-    }
-  }
-  
-  return false;
+  return entry.category === actualCategory;
 }
 
 /**
@@ -129,21 +112,8 @@ export function validateCalculatorLink(link: CalculatorLink): ValidationResult {
     };
   }
   
-  // Check if file exists
-  const fileExists = calculatorFileExists(registryEntry.category, slug);
-  
-  if (!fileExists) {
-    return {
-      isValid: false,
-      link,
-      error: `Calculator file not found for slug "${slug}"`,
-      suggestedFix: {
-        slug,
-        category: registryEntry.category,
-        reason: 'File missing but slug exists in registry',
-      },
-    };
-  }
+  // Note: Filesystem validation removed for client-side compatibility
+  // Registry validation is sufficient for runtime checks
   
   // Check category match if provided
   if (link.category && link.category !== registryEntry.category) {

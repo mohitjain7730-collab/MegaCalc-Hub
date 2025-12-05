@@ -1,3 +1,4 @@
+import 'server-only';
 
 import type { ComponentType } from 'react';
 import { getAllLearningArticles } from './learning-hub-content';
