@@ -4,6 +4,11 @@
  * This module provides utilities to enhance article templates with dynamic,
  * human-like content variations to avoid AI-pattern detection and increase uniqueness.
  * All randomization is deterministic based on article slug/topic to ensure consistency.
+ * 
+ * INTEGRATED WITH:
+ * - Content Variability Engine (deterministic variations)
+ * - Topic-Based Example Generator (examples.ts)
+ * - Natural Imperfections System (1-2% human-like variance)
  */
 
 // Type definitions
@@ -17,8 +22,21 @@ import statisticsDataRaw from '@/data/statistics.json';
 // Type assertion for the imported JSON
 const statisticsData = statisticsDataRaw as StatisticsData;
 
+// Import new systems
+import {
+  generateDeterministicSeed,
+  chooseVariation,
+  generateSectionOrder,
+  getHeadingVariation as getVariabilityHeading,
+  chooseOptionalSection as chooseOptionalSectionType,
+  generateNaturalImperfections,
+  type SectionOrder,
+  type OptionalSectionType
+} from './content-variability-engine';
+import { generateExampleForTopic } from '@/data/examples';
+
 interface OptionalSection {
-  type: 'common-mistake' | 'expert-insight' | null;
+  type: 'common-mistake' | 'expert-insight' | 'pro-tip' | null;
   content: string;
 }
 
@@ -169,8 +187,18 @@ function mapTopicToCategory(topic: string, category?: string): string {
 
 /**
  * Generate a unique example or case study based on topic
+ * NOW USES: Topic-Based Example Generator from examples.ts
  */
 export function generateExample(topic: string, category?: string): string {
+  // Use the new topic-based example generator
+  return generateExampleForTopic(topic, category);
+}
+
+/**
+ * Legacy example generator (kept for backward compatibility)
+ * @deprecated Use generateExample which now uses examples.ts
+ */
+function generateExampleLegacy(topic: string, category?: string): string {
   const cat = mapTopicToCategory(topic, category);
   const examples: Record<string, string[]> = {
     finance: [
@@ -221,6 +249,7 @@ export function generateExample(topic: string, category?: string): string {
 
 /**
  * Get a random statistic based on topic/category
+ * NOW USES: Variability Engine for deterministic selection
  */
 export function getRandomStatistic(topic: string, category?: string): string | null {
   const cat = mapTopicToCategory(topic, category);
@@ -232,29 +261,51 @@ export function getRandomStatistic(topic: string, category?: string): string | n
     if (!generalStats || generalStats.length === 0) {
       return null;
     }
-    return selectDeterministicItem(topic, generalStats);
+    const seed = generateDeterministicSeed(topic);
+    return chooseVariation(seed, generalStats, 0);
   }
   
-  return selectDeterministicItem(topic, stats);
+  const seed = generateDeterministicSeed(topic);
+  return chooseVariation(seed, stats, 0);
 }
 
 /**
- * Get optional micro-sections (Common Mistake or Expert Insight)
- * Returns null 30% of the time, otherwise returns one of the two types
+ * Get topic statistic (alias for getRandomStatistic with seed parameter)
+ * Provides consistent interface for variability engine
+ */
+export function getTopicStatistic(topic: string, seed: number, category?: string): string | null {
+  const cat = mapTopicToCategory(topic, category);
+  const stats = (statisticsData as StatisticsData)[cat];
+  
+  if (!stats || stats.length === 0) {
+    const generalStats = (statisticsData as StatisticsData)['general'];
+    if (!generalStats || generalStats.length === 0) {
+      return null;
+    }
+    return chooseVariation(seed, generalStats, 0);
+  }
+  
+  return chooseVariation(seed, stats, 0);
+}
+
+/**
+ * Get optional micro-sections (Common Mistake, Expert Insight, or Pro Tip)
+ * NOW USES: Content Variability Engine
+ * Returns null 30% of the time, otherwise returns one of the three types
  */
 export function getOptionalSections(topic: string, category?: string): OptionalSection {
-  const hash = hashString(topic);
-  const random = hash % 10; // 0-9
+  // Use variability engine to choose section type
+  const sectionType = chooseOptionalSectionType(topic);
   
-  // 30% chance of nothing (0-2)
-  if (random < 3) {
+  if (!sectionType) {
     return { type: null, content: '' };
   }
   
   const cat = mapTopicToCategory(topic, category);
+  const seed = generateDeterministicSeed(topic);
   
-  // 35% chance of Common Mistake (3-5)
-  if (random < 6) {
+  // Generate content based on section type
+  if (sectionType === 'common-mistake') {
     const mistakes: Record<string, string[]> = {
       finance: [
         `Many people overlook the impact of compound interest when making financial decisions. Waiting just 5 years to start investing can cost hundreds of thousands in retirement savings.`,
@@ -290,12 +341,12 @@ export function getOptionalSections(topic: string, category?: string): OptionalS
     const categoryMistakes = mistakes[cat] || mistakes.general;
     return {
       type: 'common-mistake',
-      content: selectDeterministicItem(topic, categoryMistakes)
+      content: chooseVariation(seed, categoryMistakes, 0)
     };
   }
   
-  // 35% chance of Expert Insight (6-9)
-  const insights: Record<string, string[]> = {
+  if (sectionType === 'expert-insight') {
+    const insights: Record<string, string[]> = {
     finance: [
       `In my experience working with clients, the biggest financial breakthrough comes from automating savings and investments. Set it and forget it—your future self will thank you.`,
       `After analyzing thousands of financial plans, I've found that the most successful savers don't rely on willpower alone. They create systems that make saving automatic and effortless.`,
@@ -327,18 +378,66 @@ export function getOptionalSections(topic: string, category?: string): OptionalS
     ]
   };
   
-  const categoryInsights = insights[cat] || insights.general;
-  return {
-    type: 'expert-insight',
-    content: selectDeterministicItem(topic, categoryInsights)
-  };
+    const categoryInsights = insights[cat] || insights.general;
+    return {
+      type: 'expert-insight',
+      content: chooseVariation(seed, categoryInsights, 1)
+    };
+  }
+  
+  // Pro Tip section
+  if (sectionType === 'pro-tip') {
+    const proTips: Record<string, string[]> = {
+      finance: [
+        `Pro tip: Automate your savings and investments. When money moves automatically, you're less likely to spend it. Set up automatic transfers the day after payday.`,
+        `Here's a pro tip: Review your subscriptions quarterly. Most people have $200+ in unused subscriptions. Cancel what you don't use and redirect that money to savings.`,
+        `Pro tip: Use the 24-hour rule for non-essential purchases. Wait a day before buying anything over $50. You'll be surprised how often you decide you don't need it.`
+      ],
+      'health-fitness': [
+        `Pro tip: Start with just 10 minutes of exercise daily. Consistency beats intensity. Once the habit sticks, gradually increase duration.`,
+        `Here's a pro tip: Prep healthy snacks on Sunday. Having cut vegetables, fruits, and nuts ready makes healthy choices effortless during the week.`,
+        `Pro tip: Track your progress with photos, not just the scale. Visual changes often appear before weight changes, keeping you motivated.`
+      ],
+      business: [
+        `Pro tip: Focus on one key metric that drives your business. Too many metrics create confusion. Master one, then add others.`,
+        `Here's a pro tip: Talk to your customers weekly. Direct feedback is worth more than any market research. They'll tell you exactly what to improve.`,
+        `Pro tip: Price based on value, not cost. Customers pay for outcomes, not inputs. If you solve a $10,000 problem, charge accordingly.`
+      ],
+      investing: [
+        `Pro tip: Invest in low-cost index funds and ignore the noise. The best investment strategy is boring: consistent contributions, low fees, and time.`,
+        `Here's a pro tip: Rebalance your portfolio once a year, not more. Over-trading reduces returns. Set it and check it annually.`,
+        `Pro tip: Don't check your portfolio daily. Market volatility is normal. Checking too often leads to emotional decisions that hurt returns.`
+      ],
+      budgeting: [
+        `Pro tip: Use separate accounts for different goals. Having a "vacation fund" and "emergency fund" in separate accounts makes it easier to stick to your plan.`,
+        `Here's a pro tip: Round up your expenses when budgeting. If something costs $47, budget $50. The buffer prevents overspending.`,
+        `Pro tip: Pay yourself first. Transfer savings immediately when you get paid, before you see the money in your checking account.`
+      ],
+      general: [
+        `Pro tip: Focus on systems, not goals. A good system will get you to your goal even if you forget why you started.`,
+        `Here's a pro tip: Track what matters. You can't improve what you don't measure. Pick one metric and track it consistently.`
+      ]
+    };
+    
+    const categoryProTips = proTips[cat] || proTips.general;
+    return {
+      type: 'pro-tip',
+      content: chooseVariation(seed, categoryProTips, 2)
+    };
+  }
+  
+  // Fallback (shouldn't reach here)
+  return { type: null, content: '' };
 }
 
 /**
  * Generate expert commentary to insert in the middle of articles
+ * NOW USES: Variability Engine and Natural Imperfections
  */
 export function generateExpertCommentary(topic: string, category?: string): string {
   const cat = mapTopicToCategory(topic, category);
+  const seed = generateDeterministicSeed(topic);
+  const imperfections = generateNaturalImperfections(topic);
   
   const commentaries: Record<string, string[]> = {
     finance: [
@@ -373,7 +472,48 @@ export function generateExpertCommentary(topic: string, category?: string): stri
   };
   
   const categoryCommentaries = commentaries[cat] || commentaries.general;
-  return selectDeterministicItem(topic, categoryCommentaries);
+  let commentary = chooseVariation(seed, categoryCommentaries, 3);
+  
+  // Apply natural imperfections (1-2% variance)
+  if (imperfections.useRhetoricalQuestion && !commentary.includes('?')) {
+    // Add rhetorical question at the end occasionally
+    if (seed % 20 === 0) {
+      commentary += ' Sound familiar?';
+    }
+  }
+  
+  if (imperfections.addEmphasis) {
+    // Add emphasis words occasionally
+    const emphasisWords = ['really', 'truly', 'genuinely', 'absolutely'];
+    if (seed % 15 === 0 && !commentary.includes('really') && !commentary.includes('truly')) {
+      const emphasis = chooseVariation(seed, emphasisWords, 4);
+      commentary = commentary.replace(/the biggest/, `the ${emphasis} biggest`);
+    }
+  }
+  
+  return commentary;
+}
+
+/**
+ * Apply natural imperfections to text content
+ * Adds 1-2% human-like variance without changing meaning
+ */
+export function applyNaturalImperfectionsToText(text: string, topic: string): string {
+  const imperfections = generateNaturalImperfections(topic);
+  const seed = generateDeterministicSeed(topic);
+  let result = text;
+  
+  // Add conversational transitions occasionally
+  if (imperfections.useConversationalTransition && seed % 25 === 0) {
+    const transitions = ['Now, ', 'Here\'s the thing: ', 'The reality is, ', 'Here\'s what matters: '];
+    const transition = chooseVariation(seed, transitions, 5);
+    // Only add if text doesn't already start with a transition
+    if (!result.match(/^(Now|Here|The|This)/i)) {
+      result = transition + result;
+    }
+  }
+  
+  return result;
 }
 
 /**
@@ -414,41 +554,11 @@ export function getRandomizedFAQs(topic: string, faqs: { q: string; a: string }[
 
 /**
  * Determine section order based on topic hash
+ * NOW USES: Content Variability Engine
  * Returns an object with section positions
  */
-export interface SectionOrder {
-  examplePosition: 'early' | 'middle' | 'late';
-  statPosition: 'early' | 'middle' | 'late';
-  faqPosition: 'after-main' | 'near-bottom';
-  expertCommentaryIndex: number; // Position in main content sections (0-based)
-}
-
 export function getSectionOrder(topic: string, totalSections: number): SectionOrder {
-  const hash = hashString(topic);
-  
-  // Determine example position (early, middle, or late)
-  const exampleHash = hashString(topic + 'example');
-  const examplePos = exampleHash % 3;
-  const examplePosition = examplePos === 0 ? 'early' : examplePos === 1 ? 'middle' : 'late';
-  
-  // Determine stat position (early, middle, or late)
-  const statHash = hashString(topic + 'stat');
-  const statPos = statHash % 3;
-  const statPosition = statPos === 0 ? 'early' : statPos === 1 ? 'middle' : 'late';
-  
-  // Determine FAQ position
-  const faqHash = hashString(topic + 'faq');
-  const faqPosition = faqHash % 2 === 0 ? 'after-main' : 'near-bottom';
-  
-  // Determine expert commentary position (somewhere in middle sections)
-  const expertHash = hashString(topic + 'expert');
-  const expertCommentaryIndex = Math.floor((expertHash % (totalSections - 2)) + 1); // Avoid first and last
-  
-  return {
-    examplePosition,
-    statPosition,
-    faqPosition,
-    expertCommentaryIndex
-  };
+  // Use the variability engine for section ordering
+  return generateSectionOrder(topic);
 }
 

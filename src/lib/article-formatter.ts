@@ -9,7 +9,9 @@ import {
   getHeadingVariation,
   getRandomizedFAQs,
   getSectionOrder,
+  applyNaturalImperfectionsToText,
 } from './article-enhancements';
+import { generateSectionOrder as getVariabilitySectionOrder } from './content-variability-engine';
 
 export interface FormattedArticleContent {
   html: string;
@@ -102,11 +104,8 @@ export function formatArticleContent(
     exampleHeading = getHeadingVariation(articleTopic, 'Example Scenario');
     statHeading = getHeadingVariation(articleTopic, 'Quick Stat');
     
-    // Determine section order
-    const mainSections = [];
-    if (hasTakeaways) mainSections.push('takeaways');
-    if (html.trim()) mainSections.push('content');
-    sectionOrder = getSectionOrder(articleTopic, Math.max(mainSections.length, 1));
+    // Determine section order using Variability Engine
+    sectionOrder = getVariabilitySectionOrder(articleTopic);
   } catch (error) {
     console.error('Error generating article enhancements:', error);
     // Use fallback values defined above
@@ -139,41 +138,58 @@ export function formatArticleContent(
     </div>
   ` : '';
 
-  // Generate dynamic sections
+  // Generate dynamic sections with natural imperfections applied
+  const imperfectExample = applyNaturalImperfectionsToText(example, articleTopic);
   const exampleSection = `
     <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-sm my-8">
       <h3 class="text-blue-900 font-bold text-lg mb-3">${exampleHeading}</h3>
-      <p class="text-slate-700 leading-7">${example}</p>
+      <p class="text-slate-700 leading-7">${imperfectExample}</p>
     </div>
   `;
 
-  const statSection = statistic ? `
+  const imperfectStatistic = statistic ? applyNaturalImperfectionsToText(statistic, articleTopic) : null;
+  const statSection = imperfectStatistic ? `
     <div class="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-lg shadow-sm my-8">
       <h3 class="text-purple-900 font-bold text-lg mb-3">${statHeading}</h3>
-      <p class="text-slate-700 leading-7 font-medium">${statistic}</p>
+      <p class="text-slate-700 leading-7 font-medium">${imperfectStatistic}</p>
     </div>
   ` : '';
 
+  const imperfectCommentary = applyNaturalImperfectionsToText(expertCommentary, articleTopic);
   const expertCommentarySection = `
     <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg shadow-sm my-8 italic">
-      <p class="text-slate-700 leading-7">${expertCommentary}</p>
+      <p class="text-slate-700 leading-7">${imperfectCommentary}</p>
     </div>
   `;
 
-  // Optional section (Common Mistake or Expert Insight)
+  // Optional section (Common Mistake, Expert Insight, or Pro Tip)
   let optionalSectionHtml = '';
   if (optionalSection.type && optionalSection.content) {
-    const optionalHeading = optionalSection.type === 'common-mistake' 
-      ? getHeadingVariation(articleTopic, 'Common Mistake')
-      : getHeadingVariation(articleTopic, 'Expert Insight');
+    let optionalHeading = '';
+    let bgColor = '';
+    let textColor = '';
     
-    const bgColor = optionalSection.type === 'common-mistake' ? 'bg-red-50 border-red-500' : 'bg-green-50 border-green-500';
-    const textColor = optionalSection.type === 'common-mistake' ? 'text-red-900' : 'text-green-900';
+    if (optionalSection.type === 'common-mistake') {
+      optionalHeading = getHeadingVariation(articleTopic, 'Common Mistake');
+      bgColor = 'bg-red-50 border-red-500';
+      textColor = 'text-red-900';
+    } else if (optionalSection.type === 'expert-insight') {
+      optionalHeading = getHeadingVariation(articleTopic, 'Expert Insight');
+      bgColor = 'bg-green-50 border-green-500';
+      textColor = 'text-green-900';
+    } else if (optionalSection.type === 'pro-tip') {
+      optionalHeading = getHeadingVariation(articleTopic, 'Pro Tip');
+      bgColor = 'bg-blue-50 border-blue-500';
+      textColor = 'text-blue-900';
+    }
+    
+    // Apply natural imperfections to optional section content
+    const imperfectContent = applyNaturalImperfectionsToText(optionalSection.content, articleTopic);
     
     optionalSectionHtml = `
       <div class="${bgColor} border-l-4 p-6 rounded-r-lg shadow-sm my-8">
         <h3 class="${textColor} font-bold text-lg mb-3">${optionalHeading}</h3>
-        <p class="text-slate-700 leading-7">${optionalSection.content}</p>
+        <p class="text-slate-700 leading-7">${imperfectContent}</p>
       </div>
     `;
   }
@@ -250,8 +266,10 @@ export function formatArticleContent(
     </div>
   `);
   
-  // Insert expert commentary after main content (middle position)
-  sections.push(expertCommentarySection);
+  // Insert expert commentary after main content if that's the position
+  if (sectionOrder.expertCommentaryPosition === 'after-main') {
+    sections.push(expertCommentarySection);
+  }
   
   // Insert example middle if that's the position
   if (sectionOrder.examplePosition === 'middle' && !exampleInserted) {
@@ -265,8 +283,8 @@ export function formatArticleContent(
     statInserted = true;
   }
   
-  // Optional section
-  if (optionalSectionHtml) {
+  // Optional section - position based on variability engine
+  if (optionalSectionHtml && sectionOrder.optionalSectionPosition === 'after-main') {
     sections.push(optionalSectionHtml);
   }
   
@@ -282,12 +300,27 @@ export function formatArticleContent(
     statInserted = true;
   }
   
+  // Expert commentary before FAQ if that's the position
+  if (sectionOrder.expertCommentaryPosition === 'before-faq') {
+    sections.push(expertCommentarySection);
+  }
+  
+  // Optional section before FAQ if that's the position
+  if (optionalSectionHtml && sectionOrder.optionalSectionPosition === 'before-faq') {
+    sections.push(optionalSectionHtml);
+  }
+  
   // FAQs - position based on sectionOrder
   if (sectionOrder.faqPosition === 'after-main' && faqSection) {
     sections.push(faqSection);
   }
   
   sections.push(authorSection);
+  
+  // Optional section near bottom if that's the position
+  if (optionalSectionHtml && sectionOrder.optionalSectionPosition === 'near-bottom') {
+    sections.push(optionalSectionHtml);
+  }
   
   // FAQs near bottom if that's the preference
   if (sectionOrder.faqPosition === 'near-bottom' && faqSection) {
