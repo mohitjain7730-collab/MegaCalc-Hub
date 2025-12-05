@@ -24,6 +24,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   validateCalculatorLinks,
   getFallbackCalculator,
+  getAllCalculatorSlugs,
   type CalculatorLink,
   type ValidationResult,
 } from '@/lib/calculator-link-validator';
@@ -189,23 +190,24 @@ export function createCalculatorLinks(
   slugs: string[],
   category?: string
 ): CalculatorLink[] {
-  const { calculators } = require('@/lib/calculators');
+  // Use getAllCalculatorSlugs which is client-safe and doesn't require fs
+  const slugMap = getAllCalculatorSlugs();
   
   return slugs
     .map((slug) => {
-      const calc = calculators.find((c: any) => c.slug === slug);
-      if (calc) {
+      const calcInfo = slugMap.get(slug);
+      if (calcInfo) {
         return {
-          name: calc.name,
-          slug: calc.slug,
-          category: calc.category,
-          description: calc.description,
+          name: calcInfo.name,
+          slug,
+          category: calcInfo.category,
         };
       }
+      // Fallback: generate name from slug if not found in registry
       return {
         name: slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
         slug,
-        category,
+        category: category,
       };
     })
     .filter((link) => link !== null) as CalculatorLink[];

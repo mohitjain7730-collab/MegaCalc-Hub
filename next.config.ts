@@ -71,6 +71,26 @@ const nextConfig: NextConfig = {
       ...(config.resolve.fallback || {}),
     };
 
+    // Exclude Node.js built-in modules from client bundle
+    // This prevents webpack from trying to bundle fs, path, etc. in client-side code
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+        os: false,
+        crypto: false,
+        stream: false,
+        util: false,
+        buffer: false,
+        process: false,
+        net: false,
+        tls: false,
+        child_process: false,
+        'fs/promises': false,
+      };
+    }
+
     // Improve chunk loading reliability
     if (!isServer) {
       // @ts-ignore
