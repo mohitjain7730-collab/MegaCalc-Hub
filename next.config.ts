@@ -16,8 +16,8 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: isDev,
   },
   eslint: {
-    // Skip ESLint during builds only in development
-    ignoreDuringBuilds: isDev,
+    // Skip ESLint during builds to avoid circular structure errors with ESLint 9.x
+    ignoreDuringBuilds: true,
   },
   // Performance optimizations
   compress: true,
