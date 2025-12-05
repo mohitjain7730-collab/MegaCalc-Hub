@@ -1,0 +1,62 @@
+name: Ensure package-lock.json exists
+
+on:
+  push:
+    branches: [ main, master ]
+    paths-ignore:
+      - 'package-lock.json'
+  pull_request:
+    branches: [ main, master ]
+    paths-ignore:
+      - 'package-lock.json'
+  workflow_dispatch:
+
+jobs:
+  check-lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Check for package-lock.json
+        id: check_lockfile
+        run: |
+          if [ ! -f package-lock.json ]; then
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "❌ package-lock.json is missing!"
+          else
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "✅ package-lock.json exists"
+          fi
+
+      - name: Generate package-lock.json if missing
+        if: steps.check_lockfile.outputs.exists == 'false'
+        run: |
+          echo "Generating package-lock.json..."
+          npm install --package-lock-only
+          
+      - name: Verify package-lock.json was created
+        if: steps.check_lockfile.outputs.exists == 'false'
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "✅ package-lock.json successfully created"
+            ls -lh package-lock.json
+          else
+            echo "❌ Failed to create package-lock.json"
+            exit 1
+          fi
+
+      - name: Commit package-lock.json
+        if: steps.check_lockfile.outputs.exists == 'false'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add package-lock.json
+          git commit -m "chore: add package-lock.json for Firebase deployment" || exit 0
+          git push

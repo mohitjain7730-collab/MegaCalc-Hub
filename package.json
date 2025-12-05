@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf .next && rm -rf node_modules",
     "validate-related-calculators": "node scripts/validate-fix.js",
-    "validate-related-calculators:fix": "node scripts/validate-fix.js --fix"
+    "validate-related-calculators:fix": "node scripts/validate-fix.js --fix",
+    "generate-lockfile": "node scripts/generate-lockfile.mjs",
+    "fix-dependencies": "npm run generate-lockfile"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
