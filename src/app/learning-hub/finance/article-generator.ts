@@ -227,7 +227,17 @@ export const generateFullArticleHTML = (detail: ArticleDetail): string => {
   if (detail.strategyTitle && detail.strategySteps?.length) mainContentSections.push('strategy');
   
   const sectionOrder = getSectionOrder(topic, mainContentSections.length);
-  const expertCommentaryPosition = Math.min(sectionOrder.expertCommentaryIndex, mainContentSections.length - 1);
+  
+  // Convert expertCommentaryPosition string to numeric index
+  let expertCommentaryPosition: number;
+  if (sectionOrder.expertCommentaryPosition === 'after-intro') {
+    expertCommentaryPosition = 0; // After first main section
+  } else if (sectionOrder.expertCommentaryPosition === 'after-main') {
+    // Place in the middle of main sections
+    expertCommentaryPosition = Math.floor((mainContentSections.length - 1) / 2);
+  } else { // 'before-faq'
+    expertCommentaryPosition = Math.max(0, mainContentSections.length - 1); // After last main section
+  }
 
   // Construct Author Byline (Top)
   const byline = `

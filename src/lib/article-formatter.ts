@@ -91,7 +91,14 @@ export function formatArticleContent(
   let faqHeading = 'Frequently Asked Questions';
   let exampleHeading = 'Example Scenario';
   let statHeading = 'Quick Stat';
-  let sectionOrder = { examplePosition: 'middle' as const, statPosition: 'middle' as const, faqPosition: 'after-main' as const, expertCommentaryIndex: 0 };
+  let sectionOrder: ReturnType<typeof getVariabilitySectionOrder> = { 
+    takeawaysPosition: 'middle' as const, 
+    examplePosition: 'middle' as const, 
+    statPosition: 'middle' as const, 
+    faqPosition: 'after-main' as const, 
+    expertCommentaryPosition: 'after-main' as const,
+    optionalSectionPosition: 'after-main' as const
+  };
 
   try {
     example = generateExample(articleTopic, articleCategory);
