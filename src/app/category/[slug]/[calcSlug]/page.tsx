@@ -20,11 +20,10 @@ import { CalculatorWrapper } from '@/components/calculator-wrapper';
 // Note: Dynamic imports are handled by CalculatorWrapper (Client Component)
 // This Server Component only needs to render the wrapper
 
-// Force dynamic rendering to prevent dev-only chunk mismatch issues
-export const dynamicParams = true;
-export const dynamic = 'force-dynamic';
-
 // Enable static generation for calculator pages to improve LCP
+// dynamicParams allows Next.js to generate pages for params not returned by generateStaticParams
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   return calculators.map((calc) => ({
       slug: calc.category,
