@@ -759,15 +759,6 @@ export const calculators: Calculator[] = [
     metaDescription: 'Calculate adjusted present value to value projects by separating operating value from financing benefits.',
   },
   {
-    id: 10028,
-    name: 'Residual Income Valuation Calculator',
-    description: 'Estimate equity value using residual income model: book value plus present value of residual income.',
-    slug: 'residual-income-valuation-calculator',
-    category: 'finance',
-    metaTitle: 'Residual Income Valuation Calculator - RI Model',
-    metaDescription: 'Value equity using residual income model based on book value and expected residual income.',
-  },
-  {
     id: 10029,
     name: 'Emergency Fund Requirement Calculator',
     description: 'Calculate how much emergency fund you need based on monthly expenses and desired coverage period.',
@@ -6081,6 +6072,24 @@ export const calculators: Calculator[] = [
     category: 'finance',
     metaTitle: 'Cash-on-Cash Return Calculator',
     metaDescription: 'Calculate real estate cash-on-cash ROI using down payment, closing costs, rehab, NOI, and debt service.'
+  },
+  {
+    id: 3315,
+    name: 'Residual Income Model Calculator',
+    description: 'Estimate equity value using residual income model: book value plus present value of residual income.',
+    slug: 'residual-income-model-calculator',
+    category: 'finance',
+    metaTitle: 'Residual Income Model Calculator - RIM Valuation',
+    metaDescription: 'Value equity using residual income model based on book value, expected net income, and required return with growth assumptions.'
+  },
+  {
+    id: 3316,
+    name: 'Adjusted Book Value Calculator',
+    description: 'Calculate adjusted book value of equity by modifying reported book value to reflect economic reality through goodwill, intangible, and other adjustments.',
+    slug: 'adjusted-book-value-calculator',
+    category: 'finance',
+    metaTitle: 'Adjusted Book Value Calculator - Economic Book Value',
+    metaDescription: 'Calculate adjusted book value by removing goodwill and intangibles, adding off-balance sheet items, and applying market value adjustments.'
   },
 ];
 

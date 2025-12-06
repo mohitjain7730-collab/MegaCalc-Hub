@@ -75,6 +75,7 @@ function getCalculatorImport(categorySlug: string, calculatorSlug: string): Prom
   // For non-wellness calculators, try import with error handling
   return import(`@/components/calculators/${actualCategory}/${calculatorSlug}`)
     .catch((error) => {
+      console.error(`Failed to import calculator: ${actualCategory}/${calculatorSlug}`, error);
       if (isChunkError(error)) {
         return handleImportError(error);
       }
