@@ -9,3 +9,6 @@ const testLinks = [
 console.log('Testing validation...');
 const report = validateCalculatorLinks(testLinks);
 console.log('Report:', JSON.stringify(report, null, 2));
+
+
+

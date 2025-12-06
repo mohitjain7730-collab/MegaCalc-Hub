@@ -40,3 +40,6 @@ export function getValidationSummary(report: ValidationReport): string {
   
   return `⚠️  ${report.invalidLinks.length} of ${report.totalScanned} related calculator links are invalid. ${report.fixedLinks.length} can be auto-fixed.`;
 }
+
+
+

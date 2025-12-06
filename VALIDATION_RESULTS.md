@@ -83,3 +83,6 @@ The following files still use the old pattern and should be migrated to use `<Re
 - Wellness calculators are stored in `health-fitness` folder but have category `wellness`
 - Routes must use `/category/wellness/{slug}` for wellness calculators
 - The `RelatedCalculators` component handles this automatically
+
+
+

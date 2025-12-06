@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=8192 next dev -p 9002",
+    "kill-port": "powershell -Command \"Get-NetTCPConnection -LocalPort 9002 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }\"",
+    "next-dev": "cross-env NODE_OPTIONS=--max_old_space_size=8192 next dev -p 9002",
+    "dev": "node scripts/dev-with-kill-port.js",
     "build": "NODE_OPTIONS=--max-old-space-size=6144 next build",
     "start": "next start",
     "lint": "next lint",

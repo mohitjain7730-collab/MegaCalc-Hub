@@ -396,3 +396,6 @@ For issues or questions:
 2. Run validation script with `--fix` flag
 3. Review console warnings in development mode
 4. Check `src/lib/calculator-link-validator.ts` for implementation details
+
+
+
