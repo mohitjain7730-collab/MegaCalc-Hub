@@ -86,12 +86,17 @@ function getCalculatorImport(categorySlug: string, calculatorSlug: string): Prom
 
 export function CalculatorWrapper({ categorySlug, calculatorSlug }: CalculatorWrapperProps) {
   // Dynamically import the calculator component on the client side
+  // Using React.lazy for code splitting - Next.js will automatically optimize chunk loading
   const LazyComponent = lazy(() => getCalculatorImport(categorySlug, calculatorSlug));
 
+  // The loading skeleton is rendered immediately in the HTML (SSR)
+  // This ensures the LCP element (calculator container) has content immediately
   return (
-    <Suspense fallback={<CalculatorLoading />}>
-      <LazyComponent />
-    </Suspense>
+    <div style={{ minHeight: '500px', width: '100%' }}>
+      <Suspense fallback={<CalculatorLoading />}>
+        <LazyComponent />
+      </Suspense>
+    </div>
   );
 }
 

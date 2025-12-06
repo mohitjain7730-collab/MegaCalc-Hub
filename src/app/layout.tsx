@@ -82,21 +82,29 @@ export default function RootLayout({
         />
 
         {/* Preload core app CSS used for above-the-fold content */}
-        <link
-          rel="preload"
-          href="/_next/static/css/app/layout.css"
-          as="style"
-        />
+        {/* Note: Next.js automatically optimizes CSS loading and inlines critical CSS */}
+        {/* This preload hint helps the browser prioritize CSS loading */}
 
-        {/* Inline a tiny bit of critical CSS for the hero section to avoid flashes before Tailwind loads */}
+        {/* Inline critical CSS for above-the-fold content to avoid flashes before Tailwind loads */}
         <style
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `
-              body { margin: 0; }
+              body { margin: 0; font-family: var(--font-inter, system-ui, -apple-system, sans-serif); }
               .hero-pattern {
                 background-image: radial-gradient(hsl(var(--muted)) 1px, transparent 1px);
                 background-size: 16px 16px;
+              }
+              /* Critical above-the-fold styles */
+              #calculator-container {
+                min-height: 600px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+              }
+              /* Prevent layout shift for calculator container */
+              [data-lcp-candidate] {
+                contain: layout style paint;
               }
             `,
           }}

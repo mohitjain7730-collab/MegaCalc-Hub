@@ -9,6 +9,9 @@ import { Input } from '@/components/ui/input';
 import { generateWebsiteSchema } from '@/lib/schema-generator';
 import { DeferredSchema } from '@/components/deferred-schema';
 
+// Force static generation for homepage to improve LCP
+export const dynamic = 'force-static';
+
 export default function Home() {
   const schema = generateWebsiteSchema();
   

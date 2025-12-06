@@ -20,9 +20,10 @@ import { CalculatorWrapper } from '@/components/calculator-wrapper';
 // Note: Dynamic imports are handled by CalculatorWrapper (Client Component)
 // This Server Component only needs to render the wrapper
 
-// Enable static generation for calculator pages to improve LCP
-// dynamicParams allows Next.js to generate pages for params not returned by generateStaticParams
-export const dynamicParams = true;
+// Force static generation for calculator pages to improve LCP
+// This ensures pages are pre-rendered at build time for fastest LCP
+export const dynamic = 'force-static';
+export const dynamicParams = false; // Only generate pages from generateStaticParams
 
 export async function generateStaticParams() {
   return calculators.map((calc) => ({
@@ -31,8 +32,8 @@ export async function generateStaticParams() {
     }));
 }
 
-// ISR: revalidate every 24 hours for calculator pages
-export const revalidate = 86400;
+// Static pages don't need revalidation, but we can set it for ISR fallback if needed
+// export const revalidate = 86400; // Removed - using force-static instead
 
 // Generate metadata with canonical URL for SEO
 export async function generateMetadata({ 
@@ -136,7 +137,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
       />
       <CalculatorSidebar currentCategorySlug={category.slug} />
       <div className="flex flex-col items-center min-h-screen bg-secondary/50 p-4 sm:p-6 lg:pl-64">
-        <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate>
+        <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate style={{ minHeight: '600px', width: '100%' }}>
         <div className="mb-8">
           <Button asChild variant="ghost" className="mb-4">
             <Link href={`/category/${category.slug}`}>
