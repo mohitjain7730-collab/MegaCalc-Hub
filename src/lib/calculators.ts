@@ -6129,6 +6129,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Life Insurance Coverage Needs Calculator - Insurance Planning',
     metaDescription: 'Calculate life insurance coverage needs based on income replacement, debts, final expenses, education funds, and emergency fund requirements.'
   },
+  {
+    id: 3322,
+    name: 'Term vs Whole Life Comparison Calculator',
+    description: 'Compare term life and whole life insurance costs, cash value, and break-even analysis to make informed insurance decisions.',
+    slug: 'term-vs-whole-life-comparison-calculator',
+    category: 'finance',
+    metaTitle: 'Term vs Whole Life Comparison Calculator - Insurance Comparison',
+    metaDescription: 'Compare term life and whole life insurance costs, cash value accumulation, and break-even analysis to make informed insurance decisions.'
+  },
+  {
+    id: 3323,
+    name: 'Life Insurance Premium Estimator',
+    description: 'Estimate life insurance premiums based on age, gender, coverage amount, term length, health status, and smoking status.',
+    slug: 'life-insurance-premium-estimator',
+    category: 'finance',
+    metaTitle: 'Life Insurance Premium Estimator - Premium Calculation',
+    metaDescription: 'Estimate life insurance premiums based on age, gender, coverage amount, term length, health status, and smoking status.'
+  },
+  {
+    id: 3324,
+    name: 'Insurance Break-even Analysis (Term vs ULIP) Calculator',
+    description: 'Compare term insurance and ULIP (Unit Linked Insurance Plan) to find break-even point and analyze investment value vs cost.',
+    slug: 'insurance-break-even-analysis-term-vs-ulip-calculator',
+    category: 'finance',
+    metaTitle: 'Insurance Break-even Analysis (Term vs ULIP) Calculator - ULIP Comparison',
+    metaDescription: 'Compare term insurance and ULIP to find break-even point and analyze investment value vs cost for informed insurance decisions.'
+  },
+  {
+    id: 3325,
+    name: 'Human Life Value (HLV) Calculator',
+    description: 'Calculate human life value - the economic value of a person\'s life based on present value of future earnings minus expenses.',
+    slug: 'human-life-value-hlv-calculator',
+    category: 'finance',
+    metaTitle: 'Human Life Value (HLV) Calculator - Economic Value Calculation',
+    metaDescription: 'Calculate human life value - the economic value of a person\'s life based on present value of future earnings minus expenses.'
+  },
+  {
+    id: 3326,
+    name: 'Disability Insurance Coverage Calculator',
+    description: 'Calculate disability insurance coverage needs based on income, expenses, spouse income, and existing coverage.',
+    slug: 'disability-insurance-coverage-calculator',
+    category: 'finance',
+    metaTitle: 'Disability Insurance Coverage Calculator - Disability Insurance Planning',
+    metaDescription: 'Calculate disability insurance coverage needs based on income, expenses, spouse income, and existing coverage.'
+  },
 ];
 
     
