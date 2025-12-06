@@ -6174,6 +6174,60 @@ export const calculators: Calculator[] = [
     metaTitle: 'Disability Insurance Coverage Calculator - Disability Insurance Planning',
     metaDescription: 'Calculate disability insurance coverage needs based on income, expenses, spouse income, and existing coverage.'
   },
+  {
+    id: 3327,
+    name: 'Critical Illness Insurance Benefit Calculator',
+    description: 'Calculate critical illness insurance benefit needs based on income, expenses, treatment costs, and recovery period.',
+    slug: 'critical-illness-insurance-benefit-calculator',
+    category: 'finance',
+    metaTitle: 'Critical Illness Insurance Benefit Calculator - Critical Illness Coverage',
+    metaDescription: 'Calculate critical illness insurance benefit needs based on income, expenses, treatment costs, and recovery period.'
+  },
+  {
+    id: 3328,
+    name: 'Health Insurance Premium Affordability Calculator',
+    description: 'Calculate health insurance premium affordability based on income, expenses, premiums, deductibles, and out-of-pocket maximums.',
+    slug: 'health-insurance-premium-affordability-calculator',
+    category: 'finance',
+    metaTitle: 'Health Insurance Premium Affordability Calculator - Healthcare Affordability',
+    metaDescription: 'Calculate health insurance premium affordability based on income, expenses, premiums, deductibles, and out-of-pocket maximums.'
+  },
+  {
+    id: 3329,
+    name: 'Out-of-Pocket Maximum Estimator',
+    description: 'Estimate out-of-pocket maximum costs and assess affordability based on deductible, coinsurance, copays, and expected medical costs.',
+    slug: 'out-of-pocket-maximum-estimator',
+    category: 'finance',
+    metaTitle: 'Out-of-Pocket Maximum Estimator - Healthcare Cost Estimation',
+    metaDescription: 'Estimate out-of-pocket maximum costs and assess affordability based on deductible, coinsurance, copays, and expected medical costs.'
+  },
+  {
+    id: 3330,
+    name: 'Long-Term Care Cost Calculator',
+    description: 'Calculate long-term care costs and insurance needs based on care duration, monthly costs, inflation, and existing coverage.',
+    slug: 'long-term-care-cost-calculator',
+    category: 'finance',
+    metaTitle: 'Long-Term Care Cost Calculator - Long-Term Care Planning',
+    metaDescription: 'Calculate long-term care costs and insurance needs based on care duration, monthly costs, inflation, and existing coverage.'
+  },
+  {
+    id: 3331,
+    name: 'Homeowners Insurance Coverage Estimator',
+    description: 'Calculate homeowners insurance coverage needs including dwelling, personal property, and liability coverage based on home value and replacement cost.',
+    slug: 'homeowners-insurance-coverage-estimator',
+    category: 'finance',
+    metaTitle: 'Homeowners Insurance Coverage Estimator - Home Insurance Planning',
+    metaDescription: 'Calculate homeowners insurance coverage needs including dwelling, personal property, and liability coverage based on home value and replacement cost.'
+  },
+  {
+    id: 3332,
+    name: 'Renters Insurance Coverage Calculator',
+    description: 'Calculate renters insurance coverage needs including personal property, liability, and additional living expenses coverage.',
+    slug: 'renters-insurance-coverage-calculator',
+    category: 'finance',
+    metaTitle: 'Renters Insurance Coverage Calculator - Renters Insurance Planning',
+    metaDescription: 'Calculate renters insurance coverage needs including personal property, liability, and additional living expenses coverage.'
+  },
 ];
 
     
