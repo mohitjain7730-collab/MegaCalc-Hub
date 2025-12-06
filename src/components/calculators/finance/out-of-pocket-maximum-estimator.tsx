@@ -431,7 +431,7 @@ export default function OutOfPocketMaximumEstimator() {
             <strong>If Costs ≤ Deductible:</strong> Out-of-Pocket = Costs + Copays. You pay full costs until deductible is met.
           </p>
           <p>
-            <strong>If Costs > Deductible:</strong> Out-of-Pocket = Deductible + (Costs - Deductible) × Coinsurance Rate + Copays. After deductible, you pay coinsurance percentage.
+            <strong>If Costs &gt; Deductible:</strong> Out-of-Pocket = Deductible + (Costs - Deductible) × Coinsurance Rate + Copays. After deductible, you pay coinsurance percentage.
           </p>
           <p>
             <strong>Out-of-Pocket Maximum:</strong> Typically 2-3× deductible, capped by ACA limits ($9,450 individual, $18,900 family for 2024). This is the most you pay in a year.
@@ -559,7 +559,7 @@ export default function OutOfPocketMaximumEstimator() {
         <p className="text-lg font-mono"><b>If Costs ≤ Deductible: Out-of-Pocket = Costs + Copays</b></p>
     </div>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>If Costs > Deductible: Out-of-Pocket = Deductible + (Costs - Deductible) × Coinsurance + Copays</b></p>
+        <p className="text-lg font-mono"><b>If Costs &gt; Deductible: Out-of-Pocket = Deductible + (Costs - Deductible) × Coinsurance + Copays</b></p>
     </div>
     <p>Out-of-pocket costs are capped at the out-of-pocket maximum. Once reached, insurance pays 100% of covered costs.</p>
 
