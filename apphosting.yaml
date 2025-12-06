@@ -14,8 +14,19 @@ build:
       artifactId: app-source
     - name: install
       inputArtifactId: app-source
+      env:
+        - variable: NPM_CONFIG_FETCH_RETRY_MINTIMEOUT
+          value: "20000"
+        - variable: NPM_CONFIG_FETCH_RETRY_MAXTIMEOUT
+          value: "120000"
+        - variable: NPM_CONFIG_FETCH_RETRIES
+          value: "5"
+        - variable: NPM_CONFIG_FETCH_RETRY_FACTOR
+          value: "10"
+        - variable: NPM_CONFIG_MAXSOCKETS
+          value: "15"
       commands:
-        - npm ci --no-audit --no-fund
+        - npm ci --no-audit --no-fund || (sleep 5 && npm ci --no-audit --no-fund) || (sleep 10 && npm ci --no-audit --no-fund)
     - name: build
       inputArtifactId: app-source
       commands:
