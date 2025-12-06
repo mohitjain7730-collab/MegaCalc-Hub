@@ -555,7 +555,7 @@ export default function HealthInsurancePremiumAffordabilityCalculator() {
         <li><b>Optimal:</b> Premiums ≤ 5% of income</li>
         <li><b>Good:</b> Premiums 5-10% of income</li>
         <li><b>Moderate:</b> Premiums 10-15% of income (may be challenging)</li>
-        <li><b>Low:</b> Premiums > 15% of income (may be unaffordable)</li>
+        <li><b>Low:</b> Premiums {'>'} 15% of income (may be unaffordable)</li>
     </ul>
 
 <hr />

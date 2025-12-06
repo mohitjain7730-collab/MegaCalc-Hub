@@ -585,7 +585,7 @@ export default function OutOfPocketMaximumEstimator() {
         <li><b>Optimal:</b> Out-of-pocket maximum ≤ 5% of income</li>
         <li><b>Good:</b> Out-of-pocket maximum 5-10% of income</li>
         <li><b>Moderate:</b> Out-of-pocket maximum 10-20% of income (may be challenging)</li>
-        <li><b>Low:</b> Out-of-pocket maximum > 20% of income (may be unaffordable)</li>
+        <li><b>Low:</b> Out-of-pocket maximum {'>'} 20% of income (may be unaffordable)</li>
     </ul>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Planning for Costs</h3>

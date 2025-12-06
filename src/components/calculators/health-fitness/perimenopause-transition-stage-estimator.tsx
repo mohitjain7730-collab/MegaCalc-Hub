@@ -83,7 +83,7 @@ const faqs = [
   {
     question: 'What about irregular periods?',
     answer:
-      'Irregular periods are common. Cycles may shorten, lengthen, or skip. Very heavy bleeding or periods lasting >7 days should be evaluated by a doctor.',
+      'Irregular periods are common. Cycles may shorten, lengthen, or skip. Very heavy bleeding or periods lasting {'>'}7 days should be evaluated by a doctor.',
   },
   {
     question: 'Can symptoms be managed naturally?',
