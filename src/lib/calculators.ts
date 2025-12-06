@@ -2087,13 +2087,6 @@ export const calculators: Calculator[] = [
     category: 'business-startup',
   },
   {
-    id: 129,
-    name: 'Burn Rate Calculator',
-    description: 'Track how quickly a startup is using its available cash.',
-    slug: 'burn-rate-calculator',
-    category: 'business-startup',
-  },
-  {
     id: 130,
     name: 'ROI Calculator',
     description: 'Measure profitability of a business investment.',
@@ -6090,6 +6083,51 @@ export const calculators: Calculator[] = [
     category: 'finance',
     metaTitle: 'Adjusted Book Value Calculator - Economic Book Value',
     metaDescription: 'Calculate adjusted book value by removing goodwill and intangibles, adding off-balance sheet items, and applying market value adjustments.'
+  },
+  {
+    id: 3317,
+    name: 'Comparable Company Valuation (Multiples) Calculator',
+    description: 'Estimate company value using comparable company valuation multiples including EV/Revenue, EV/EBITDA, and P/E ratios.',
+    slug: 'comparable-company-valuation-multiples-calculator',
+    category: 'finance',
+    metaTitle: 'Comparable Company Valuation (Multiples) Calculator - Comps Analysis',
+    metaDescription: 'Estimate company value using comparable company valuation multiples including EV/Revenue, EV/EBITDA, and P/E ratios from similar public companies.'
+  },
+  {
+    id: 3318,
+    name: 'Pre-Money vs Post-Money Valuation Calculator',
+    description: 'Calculate pre-money and post-money valuations, ownership percentages, and dilution for startup funding rounds.',
+    slug: 'pre-money-vs-post-money-valuation-calculator',
+    category: 'finance',
+    metaTitle: 'Pre-Money vs Post-Money Valuation Calculator - Startup Funding',
+    metaDescription: 'Calculate pre-money and post-money valuations, ownership percentages, and dilution for startup funding rounds and investment terms.'
+  },
+  {
+    id: 3319,
+    name: 'Startup Runway Calculator',
+    description: 'Calculate startup runway - how long your cash will last based on current cash balance and monthly burn rate.',
+    slug: 'startup-runway-calculator',
+    category: 'finance',
+    metaTitle: 'Startup Runway Calculator - Cash Runway Analysis',
+    metaDescription: 'Calculate startup runway - how long your cash will last based on current cash balance, monthly burn rate, and revenue.'
+  },
+  {
+    id: 3320,
+    name: 'Burn Rate Calculator',
+    description: 'Calculate startup burn rate - monthly cash consumption rate based on cash balance changes over time.',
+    slug: 'burn-rate-calculator',
+    category: 'finance',
+    metaTitle: 'Burn Rate Calculator - Startup Cash Consumption',
+    metaDescription: 'Calculate startup burn rate - monthly cash consumption rate based on cash balance changes, including gross and net burn rates.'
+  },
+  {
+    id: 3321,
+    name: 'Life Insurance Coverage Needs Calculator',
+    description: 'Calculate life insurance coverage needs based on income replacement, debts, final expenses, education funds, and emergency fund requirements.',
+    slug: 'life-insurance-coverage-needs-calculator',
+    category: 'finance',
+    metaTitle: 'Life Insurance Coverage Needs Calculator - Insurance Planning',
+    metaDescription: 'Calculate life insurance coverage needs based on income replacement, debts, final expenses, education funds, and emergency fund requirements.'
   },
 ];
 
