@@ -6282,6 +6282,60 @@ export const calculators: Calculator[] = [
     metaTitle: 'Expected Loss (Insurance Risk) Calculator - Risk Assessment',
     metaDescription: 'Calculate expected loss from insurance risk based on probability of loss event and loss severity.'
   },
+  {
+    id: 3339,
+    name: 'Loss Ratio Calculator',
+    description: 'Calculate insurance loss ratio based on incurred losses and earned premiums to evaluate underwriting performance and profitability.',
+    slug: 'loss-ratio-calculator',
+    category: 'finance',
+    metaTitle: 'Loss Ratio Calculator - Insurance Underwriting Performance',
+    metaDescription: 'Calculate insurance loss ratio based on incurred losses and earned premiums to evaluate underwriting performance and profitability.'
+  },
+  {
+    id: 3340,
+    name: 'Combined Ratio (Insurance Profitability) Calculator',
+    description: 'Calculate combined ratio for insurance profitability by combining loss ratio and expense ratio to assess underwriting performance.',
+    slug: 'combined-ratio-insurance-profitability-calculator',
+    category: 'finance',
+    metaTitle: 'Combined Ratio (Insurance Profitability) Calculator - Underwriting Performance',
+    metaDescription: 'Calculate combined ratio for insurance profitability by combining loss ratio and expense ratio to assess underwriting performance.'
+  },
+  {
+    id: 3341,
+    name: 'Value-at-Risk (Historical Simulation) Calculator',
+    description: 'Calculate Value-at-Risk (VaR) using historical simulation method based on portfolio value, historical returns, and confidence level.',
+    slug: 'value-at-risk-historical-simulation-calculator',
+    category: 'finance',
+    metaTitle: 'Value-at-Risk (Historical Simulation) Calculator - Portfolio Risk Measurement',
+    metaDescription: 'Calculate Value-at-Risk (VaR) using historical simulation method based on portfolio value, historical returns, and confidence level.'
+  },
+  {
+    id: 3342,
+    name: 'Conditional VaR (CVaR) Backtest Calculator',
+    description: 'Backtest Conditional Value-at-Risk (CVaR) models by comparing predicted CVaR against actual losses to assess model accuracy and tail risk capture.',
+    slug: 'conditional-var-cvar-backtest-calculator',
+    category: 'finance',
+    metaTitle: 'Conditional VaR (CVaR) Backtest Calculator - Risk Model Validation',
+    metaDescription: 'Backtest Conditional Value-at-Risk (CVaR) models by comparing predicted CVaR against actual losses to assess model accuracy and tail risk capture.'
+  },
+  {
+    id: 3343,
+    name: 'Stress Testing (Portfolio Shock) Simulator',
+    description: 'Simulate portfolio stress testing by evaluating portfolio performance under extreme but plausible market shock scenarios.',
+    slug: 'stress-testing-portfolio-shock-simulator',
+    category: 'finance',
+    metaTitle: 'Stress Testing (Portfolio Shock) Simulator - Portfolio Resilience Assessment',
+    metaDescription: 'Simulate portfolio stress testing by evaluating portfolio performance under extreme but plausible market shock scenarios.'
+  },
+  {
+    id: 3344,
+    name: 'Scenario Analysis Tool (Monte Carlo for Losses)',
+    description: 'Perform Monte Carlo simulation for scenario analysis to estimate potential losses and assess risk using random sampling and probability distributions.',
+    slug: 'scenario-analysis-tool-monte-carlo-for-losses',
+    category: 'finance',
+    metaTitle: 'Scenario Analysis Tool (Monte Carlo for Losses) - Risk Assessment',
+    metaDescription: 'Perform Monte Carlo simulation for scenario analysis to estimate potential losses and assess risk using random sampling and probability distributions.'
+  },
 ];
 
     

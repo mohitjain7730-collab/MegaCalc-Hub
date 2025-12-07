@@ -151,7 +151,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   // Calculate depreciation percentage (straight-line depreciation)
   // Depreciation % = (Age / Useful Life) × 100, capped at 100%
-  const depreciationPercent = Math.min(100, (age / usefulLife) * 100);
+  const depreciationPercent = usefulLife > 0 ? Math.min(100, (age / usefulLife) * 100) : 0;
 
   // Calculate depreciation amount
   const depreciationAmount = replacementCost * (depreciationPercent / 100);
@@ -250,7 +250,16 @@ export default function InsuranceReplacementValueCalculator() {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit((values) => setResult(calculateResult(values)))} className="space-y-6">
+            <form onSubmit={form.handleSubmit((values) => {
+              try {
+                setResult(calculateResult(values));
+              } catch (error) {
+                console.error('Error calculating result:', error);
+                alert('An error occurred while calculating. Please check the console for details.');
+              }
+            }, (errors) => {
+              console.log('Form validation errors:', errors);
+            })} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
@@ -462,7 +471,7 @@ export default function InsuranceReplacementValueCalculator() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >
@@ -474,10 +483,10 @@ export default function InsuranceReplacementValueCalculator() {
     <meta itemProp="url" content="/definitive-insurance-replacement-value-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Insurance Replacement Value: Replacement Cost vs Actual Cash Value</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding replacement cost and actual cash value in insurance coverage.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding replacement cost and actual cash value in insurance coverage.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Replacement Cost vs Actual Cash Value</a></li>
         <li><a href="#depreciation" className="hover:underline">Depreciation Calculation</a></li>
         <li><a href="#coverage" className="hover:underline">Coverage Types</a></li>

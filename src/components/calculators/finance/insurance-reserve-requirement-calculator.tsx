@@ -257,7 +257,16 @@ export default function InsuranceReserveRequirementCalculator() {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit((values) => setResult(calculateResult(values)))} className="space-y-6">
+            <form onSubmit={form.handleSubmit((values) => {
+              try {
+                setResult(calculateResult(values));
+              } catch (error) {
+                console.error('Error calculating result:', error);
+                alert('An error occurred while calculating. Please check the console for details.');
+              }
+            }, (errors) => {
+              console.log('Form validation errors:', errors);
+            })} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
@@ -482,7 +491,7 @@ export default function InsuranceReserveRequirementCalculator() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >

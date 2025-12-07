@@ -178,7 +178,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Comprehensive and collision: required if financed, recommended if vehicle value > $10,000
   const recommendedComprehensiveCollision = isFinanced || vehicleValue > 10000 ? vehicleValue : 0;
 
-  const totalRecommendedCoverage = recommendedBodilyInjuryPerPerson + recommendedBodilyInjuryPerAccident + recommendedPropertyDamage + recommendedComprehensiveCollision;
+  const totalRecommendedCoverage = (recommendedBodilyInjuryPerPerson || 0) + (recommendedBodilyInjuryPerAccident || 0) + (recommendedPropertyDamage || 0) + (recommendedComprehensiveCollision || 0);
 
   let status: ResultPayload['status'] = 'optimal';
   let interpretation = 'Recommended coverage levels calculated based on your vehicle value, net worth, and state requirements. These levels provide adequate asset protection and meet financing requirements if applicable.';
@@ -267,7 +267,16 @@ export default function CarInsuranceCoverageNeedsCalculator() {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit((values) => setResult(calculateResult(values)))} className="space-y-6">
+            <form onSubmit={form.handleSubmit((values) => {
+              try {
+                setResult(calculateResult(values));
+              } catch (error) {
+                console.error('Error calculating result:', error);
+                alert('An error occurred while calculating. Please check the console for details.');
+              }
+            }, (errors) => {
+              console.log('Form validation errors:', errors);
+            })} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
@@ -510,7 +519,7 @@ export default function CarInsuranceCoverageNeedsCalculator() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >
@@ -522,10 +531,10 @@ export default function CarInsuranceCoverageNeedsCalculator() {
     <meta itemProp="url" content="/definitive-car-insurance-coverage-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Car Insurance Coverage Needs: Protecting Your Assets and Vehicle</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding and calculating car insurance coverage needs based on risk factors and asset protection requirements.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding and calculating car insurance coverage needs based on risk factors and asset protection requirements.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Car Insurance Coverage Types</a></li>
         <li><a href="#liability" className="hover:underline">Liability Coverage: Protecting Your Assets</a></li>
         <li><a href="#comprehensive" className="hover:underline">Comprehensive and Collision Coverage</a></li>

@@ -252,7 +252,16 @@ export default function DeductibleVsPremiumComparisonCalculator() {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit((values) => setResult(calculateResult(values)))} className="space-y-6">
+            <form onSubmit={form.handleSubmit((values) => {
+              try {
+                setResult(calculateResult(values));
+              } catch (error) {
+                console.error('Error calculating result:', error);
+                alert('An error occurred while calculating. Please check the console for details.');
+              }
+            }, (errors) => {
+              console.log('Form validation errors:', errors);
+            })} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
@@ -477,7 +486,7 @@ export default function DeductibleVsPremiumComparisonCalculator() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >
@@ -489,10 +498,10 @@ export default function DeductibleVsPremiumComparisonCalculator() {
     <meta itemProp="url" content="/definitive-deductible-premium-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Deductible vs Premium Comparison: Finding the Optimal Balance</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding the trade-off between deductibles and premiums and making informed insurance decisions.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding the trade-off between deductibles and premiums and making informed insurance decisions.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Deductible vs Premium Trade-Off</a></li>
         <li><a href="#break-even" className="hover:underline">Break-Even Analysis</a></li>
         <li><a href="#decision" className="hover:underline">Making the Decision</a></li>
