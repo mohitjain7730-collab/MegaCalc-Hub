@@ -471,7 +471,7 @@ export default function RiskProfileAssessmentCalculator() {
             <strong>Overall Risk Profile</strong> = Base Risk Profile adjusted for Risk Need and Time Horizon
           </p>
           <p>If Risk Need ≤ Base Profile: Use Risk Need</p>
-          <p>If Risk Need > Base Profile × 1.2: Use Base Profile (don't exceed capacity/tolerance)</p>
+          <p>If Risk Need &gt; Base Profile × 1.2: Use Base Profile (don't exceed capacity/tolerance)</p>
           <p>Otherwise: Weighted average of Base and Need</p>
           <p>Time Horizon Adjustment:</p>
           <p>≥ 20 years: +10%</p>
@@ -666,7 +666,7 @@ export default function RiskProfileAssessmentCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Moderate Misalignment (Difference 3-5)</h3>
     <p>Significant differences require adjustments to goals or risk strategy to improve alignment. Consider extending time horizon, adjusting goal amount, or changing contribution rate.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Significant Misalignment (Difference > 5)</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6">Significant Misalignment (Difference &gt; 5)</h3>
     <p>Major differences require significant adjustments. Never exceed risk capacity or tolerance even if need is high. Instead, adjust goals substantially - extend time horizon, reduce goal amount, or significantly increase contributions.</p>
 
 <hr className="my-6" />
