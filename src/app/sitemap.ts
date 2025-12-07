@@ -11,6 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const RETIREMENT_ARTICLES = getRetirementArticlesList();
   const NUTRITION_ARTICLES = getNutritionArticles();
   const baseUrl = 'https://mycalculating.com';
+  
+  // Cache last modified date to avoid creating new Date() for every entry
+  const now = new Date();
 
   // Get all categorized article slugs to exclude from base route
   const categorizedArticleSlugs = new Set([
@@ -49,31 +52,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'yearly' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/calculators`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/terms-conditions`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
@@ -81,14 +84,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const categoryPages = categories.map((category) => ({
     url: `${baseUrl}/category/${category.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
 
+  // Optimize calculator pages generation - reuse date object
   const calculatorPages = calculators.map((calculator) => ({
     url: `${baseUrl}/category/${calculator.category}/${calculator.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.9,
   }));
@@ -97,46 +101,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const learningHubPages = [
     {
       url: `${baseUrl}/learning-hub`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/learning-hub/finance`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/learning-hub/finance/savings-and-investment`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/learning-hub/finance/retirement-planning`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/learning-hub/health`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/learning-hub/health/nutrition-diet`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
   ];
 
-  // Finance article pages
+  // Finance article pages - only create new Date if publishedDate exists
   const financeArticlePages = FINANCE_ARTICLES.map((article) => ({
     url: `${baseUrl}/learning-hub/finance/${article.slug}`,
-    lastModified: article.publishedDate ? new Date(article.publishedDate) : new Date(),
+    lastModified: article.publishedDate ? new Date(article.publishedDate) : now,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
@@ -144,7 +148,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Retirement planning article pages
   const retirementArticlePages = RETIREMENT_ARTICLES.map((article) => ({
     url: `${baseUrl}/learning-hub/finance/${article.slug}`,
-    lastModified: article.publishedDate ? new Date(article.publishedDate) : new Date(),
+    lastModified: article.publishedDate ? new Date(article.publishedDate) : now,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
@@ -152,7 +156,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Health article pages
   const healthArticlePages = NUTRITION_ARTICLES.map((article) => ({
     url: `${baseUrl}/learning-hub/health/nutrition-diet/${article.slug}`,
-    lastModified: article.publishedDate ? new Date(article.publishedDate) : new Date(),
+    lastModified: article.publishedDate ? new Date(article.publishedDate) : now,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
@@ -161,7 +165,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Only include articles that don't belong to any specific category
   const learningHubArticlePages = uncategorizedBaseArticles.map((article) => ({
     url: `${baseUrl}/learning-hub/${article.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));

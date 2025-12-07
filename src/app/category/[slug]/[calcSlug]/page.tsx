@@ -20,20 +20,31 @@ import { CalculatorWrapper } from '@/components/calculator-wrapper';
 // Note: Dynamic imports are handled by CalculatorWrapper (Client Component)
 // This Server Component only needs to render the wrapper
 
-// Force static generation for calculator pages to improve LCP
-// This ensures pages are pre-rendered at build time for fastest LCP
-export const dynamic = 'force-static';
-export const dynamicParams = false; // Only generate pages from generateStaticParams
+// Use ISR (Incremental Static Regeneration) for optimal build speed and LCP performance
+// Pages are pre-rendered at build time, but only regenerated when needed
+// This allows incremental builds while maintaining fast LCP
+export const revalidate = 3600; // Revalidate every hour (pages stay cached until then)
+export const dynamicParams = true; // Allow dynamic params for on-demand generation
 
 export async function generateStaticParams() {
+  // In production, generate all pages at build time for optimal LCP
+  // In development, generate fewer pages for faster builds
+  const isDev = process.env.NODE_ENV === 'development';
+  
+  if (isDev) {
+    // In dev, only generate first 50 calculators for faster builds
+    return calculators.slice(0, 50).map((calc) => ({
+      slug: calc.category,
+      calcSlug: calc.slug,
+    }));
+  }
+  
+  // Production: generate all pages
   return calculators.map((calc) => ({
       slug: calc.category,
       calcSlug: calc.slug,
     }));
 }
-
-// Static pages don't need revalidation, but we can set it for ISR fallback if needed
-// export const revalidate = 86400; // Removed - using force-static instead
 
 // Generate metadata with canonical URL for SEO
 export async function generateMetadata({ 
@@ -85,11 +96,14 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
   // category and calculator are guaranteed to exist due to notFound() check above
 
   // Generate schemas once - server-side rendered for Google crawlers
+  // Cache date string to avoid creating multiple Date objects
+  const today = new Date().toISOString().split('T')[0];
+  const baseUrl = `https://mycalculating.com/category/${category.slug}/${calculator.slug}`;
+  
+  // Generate schemas efficiently
   const calculatorSchema = generateCalculatorSchema(calculator, category);
   const faqSchema = generateFAQSchema(calculator);
   const howToSchema = generateHowToSchema(calculator);
-  
-  const baseUrl = `https://mycalculating.com/category/${category.slug}/${calculator.slug}`;
   
   // Create comprehensive schema with BreadcrumbList, Article, SoftwareApplication, FAQPage, and HowTo
   const comprehensiveSchema = {
@@ -112,7 +126,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ slu
         url: baseUrl,
         mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
         datePublished: '2024-01-01',
-        dateModified: new Date().toISOString().split('T')[0],
+        dateModified: today,
       },
       {
         '@type': 'SoftwareApplication',

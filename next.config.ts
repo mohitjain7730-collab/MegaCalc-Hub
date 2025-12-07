@@ -318,8 +318,16 @@ const nextConfig: NextConfig = {
   // Production source maps disabled for smaller bundle
   productionBrowserSourceMaps: false,
   // Redirects: Redirect old /calculator/{slug} routes to canonical /category/{category}/{slug} routes
+  // Optimized: Only process redirects in production builds, cache in development
   async redirects() {
+    // In development, return empty array to speed up builds
+    // Redirects are only needed in production
+    if (process.env.NODE_ENV === 'development') {
+      return [];
+    }
+
     // Create redirects for all calculators from /calculator/{slug} to /category/{category}/{slug}
+    // This runs only in production builds
     const calculatorRedirects = calculators.map((calc) => ({
       source: `/calculator/${calc.slug}`,
       destination: `/category/${calc.category}/${calc.slug}`,

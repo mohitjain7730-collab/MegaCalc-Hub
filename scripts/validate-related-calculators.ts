@@ -142,7 +142,34 @@ function extractRelatedCalculators(filePath: string): RelatedCalcDefinition | nu
 }
 
 /**
+ * Get changed calculator files from git (if available)
+ * Returns empty array if git is not available or in CI
+ */
+function getChangedCalculatorFiles(): string[] {
+  try {
+    const { execSync } = require('child_process');
+    const isCI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
+    
+    // Skip git diff in CI or if SKIP_GIT_DIFF is set
+    if (isCI || process.env.SKIP_GIT_DIFF === 'true') {
+      return [];
+    }
+    
+    // Get changed files from git
+    const changedFiles = execSync('git diff --name-only HEAD', { encoding: 'utf-8' })
+      .split('\n')
+      .filter((file: string) => file.includes('src/components/calculators') && file.endsWith('.tsx'));
+    
+    return changedFiles.map((file: string) => join(projectRoot, file));
+  } catch (error) {
+    // Git not available or not a git repo - validate all files
+    return [];
+  }
+}
+
+/**
  * Scan all calculator files for related calculator definitions
+ * In development, only scans changed files if git is available
  */
 function scanAllCalculators(): RelatedCalcDefinition[] {
   const calculatorsDir = join(projectRoot, 'src', 'components', 'calculators');
@@ -153,6 +180,13 @@ function scanAllCalculators(): RelatedCalcDefinition[] {
   }
   
   const definitions: RelatedCalcDefinition[] = [];
+  const isDev = process.env.NODE_ENV === 'development';
+  const changedFiles = isDev ? getChangedCalculatorFiles() : [];
+  const shouldValidateAll = changedFiles.length === 0 || process.env.VALIDATE_ALL === 'true';
+  
+  if (isDev && !shouldValidateAll) {
+    console.log(`📝 Development mode: Only validating ${changedFiles.length} changed file(s)`);
+  }
   
   function scanDirectory(dir: string, category: string) {
     if (!existsSync(dir)) {
@@ -169,6 +203,11 @@ function scanAllCalculators(): RelatedCalcDefinition[] {
         if (entry.isDirectory()) {
           scanDirectory(fullPath, entry.name);
         } else if (entry.isFile() && entry.name.endsWith('.tsx')) {
+          // In dev mode, only validate changed files unless VALIDATE_ALL is set
+          if (!shouldValidateAll && !changedFiles.some((cf: string) => fullPath.includes(cf.replace(projectRoot + '/', '')))) {
+            continue;
+          }
+          
           try {
             const definition = extractRelatedCalculators(fullPath);
             if (definition && definition.links.length > 0) {

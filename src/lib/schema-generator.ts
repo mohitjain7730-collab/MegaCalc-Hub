@@ -10,6 +10,12 @@ export interface Calculator extends CoreCalculator {
 
 export type Category = CoreCategory;
 
+// Type declaration for global cache
+declare global {
+  // eslint-disable-next-line no-var
+  var __schemaDateCache: string | undefined;
+}
+
 // Global Website Schema
 export function generateWebsiteSchema() {
   return {
@@ -86,6 +92,19 @@ export function generateOrganizationSchema() {
   };
 }
 
+// Cache date string to avoid creating new Date() for every schema generation
+const getTodayDateString = () => {
+  if (typeof window === 'undefined') {
+    // Server-side: cache for the duration of the build/request
+    if (!global.__schemaDateCache) {
+      global.__schemaDateCache = new Date().toISOString().split('T')[0];
+    }
+    return global.__schemaDateCache;
+  }
+  // Client-side: create new date
+  return new Date().toISOString().split('T')[0];
+};
+
 // Calculator Schema
 export function generateCalculatorSchema(calculator: Calculator, category: Category) {
   const baseUrl = "https://mycalculating.com";
@@ -101,7 +120,7 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
     "softwareVersion": "1.0",
     "datePublished": "2024-01-01",
-    "dateModified": new Date().toISOString().split('T')[0],
+    "dateModified": getTodayDateString(),
     "author": {
       "@type": "Organization",
       "name": "Mycalculating.com"

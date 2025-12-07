@@ -13,6 +13,7 @@
     "clean": "rm -rf .next && rm -rf node_modules",
     "validate-related-calculators": "node scripts/validate-fix.js",
     "validate-related-calculators:fix": "node scripts/validate-fix.js --fix",
+    "validate-related-calculators:all": "VALIDATE_ALL=true node scripts/validate-fix.js",
     "generate-lockfile": "node scripts/generate-lockfile.mjs",
     "fix-dependencies": "npm run generate-lockfile"
   },
