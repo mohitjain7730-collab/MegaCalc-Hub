@@ -615,7 +615,7 @@ export default function ExpectedUtilityOfWealthCalculator() {
         <li>U($100,000) = √100,000 = 316.23</li>
     </ul>
     <p>Expected Utility = 0.5 × 447.21 + 0.5 × 223.61 = 335.41</p>
-    <p>Since expected utility (335.41) > current utility (316.23), the gamble is preferred for a risk-averse individual with square-root utility.</p>
+    <p>Since expected utility (335.41) &gt; current utility (316.23), the gamble is preferred for a risk-averse individual with square-root utility.</p>
 
 <hr className="my-6" />
 
