@@ -6453,6 +6453,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Risk Aversion Coefficient Calculator - Arrow-Pratt Measures',
     metaDescription: 'Calculate absolute and relative risk aversion coefficients using Arrow-Pratt measures for different utility functions.'
   },
+  {
+    id: 6376,
+    name: 'Optimal Insurance Deductible Calculator',
+    description: 'Calculate optimal insurance deductible using break-even analysis to balance premium savings and out-of-pocket risk.',
+    slug: 'optimal-insurance-deductible-calculator',
+    category: 'finance',
+    metaTitle: 'Optimal Insurance Deductible Calculator - Break-Even Analysis',
+    metaDescription: 'Calculate optimal insurance deductible using break-even analysis to balance premium savings and out-of-pocket risk.'
+  },
+  {
+    id: 6377,
+    name: 'Risk Tolerance Score Calculator',
+    description: 'Calculate risk tolerance score based on financial goals, time horizon, personal attitude, and other risk factors.',
+    slug: 'risk-tolerance-score-calculator',
+    category: 'finance',
+    metaTitle: 'Risk Tolerance Score Calculator - Investment Risk Assessment',
+    metaDescription: 'Calculate risk tolerance score based on financial goals, time horizon, personal attitude, and other risk factors.'
+  },
+  {
+    id: 6378,
+    name: 'Investment Bias Analyzer (Anchoring/Overconfidence Estimator)',
+    description: 'Analyze investment biases including anchoring and overconfidence to improve investment decision-making.',
+    slug: 'investment-bias-analyzer-anchoring-overconfidence-estimator',
+    category: 'finance',
+    metaTitle: 'Investment Bias Analyzer (Anchoring/Overconfidence Estimator) - Behavioral Finance',
+    metaDescription: 'Analyze investment biases including anchoring and overconfidence to improve investment decision-making.'
+  },
+  {
+    id: 6379,
+    name: 'Goal-Based Investing Allocation Calculator',
+    description: 'Calculate optimal asset allocation for goal-based investing based on goal amount, time horizon, required return, and risk tolerance.',
+    slug: 'goal-based-investing-allocation-calculator',
+    category: 'finance',
+    metaTitle: 'Goal-Based Investing Allocation Calculator - Portfolio Strategy',
+    metaDescription: 'Calculate optimal asset allocation for goal-based investing based on goal amount, time horizon, required return, and risk tolerance.'
+  },
+  {
+    id: 6380,
+    name: 'Mental Accounting (Budget Segmentation) Tool',
+    description: 'Segment budget into mental accounts for better spending control and financial management using mental accounting principles.',
+    slug: 'mental-accounting-budget-segmentation-tool',
+    category: 'finance',
+    metaTitle: 'Mental Accounting (Budget Segmentation) Tool - Behavioral Finance',
+    metaDescription: 'Segment budget into mental accounts for better spending control and financial management using mental accounting principles.'
+  },
 ];
 
     
