@@ -6498,6 +6498,51 @@ export const calculators: Calculator[] = [
     metaTitle: 'Mental Accounting (Budget Segmentation) Tool - Behavioral Finance',
     metaDescription: 'Segment budget into mental accounts for better spending control and financial management using mental accounting principles.'
   },
+  {
+    id: 6381,
+    name: 'Loss Aversion Impact Simulator',
+    description: 'Simulate loss aversion impact on financial decisions using prospect theory to understand how losses are perceived relative to gains.',
+    slug: 'loss-aversion-impact-simulator',
+    category: 'finance',
+    metaTitle: 'Loss Aversion Impact Simulator - Prospect Theory and Behavioral Finance',
+    metaDescription: 'Simulate loss aversion impact on financial decisions using prospect theory to understand how losses are perceived relative to gains.'
+  },
+  {
+    id: 6382,
+    name: 'Risk Profile Assessment Calculator',
+    description: 'Assess comprehensive risk profile by evaluating risk capacity, risk tolerance, and risk need to determine appropriate investment strategy.',
+    slug: 'risk-profile-assessment-calculator',
+    category: 'finance',
+    metaTitle: 'Risk Profile Assessment Calculator - Capacity, Tolerance, and Need',
+    metaDescription: 'Assess comprehensive risk profile by evaluating risk capacity, risk tolerance, and risk need to determine appropriate investment strategy.'
+  },
+  {
+    id: 6383,
+    name: 'Financial Stress Index (Self-Assessment)',
+    description: 'Assess your financial stress level through self-assessment of bill paying ability, emergency funds, debt burden, income stability, and financial control.',
+    slug: 'financial-stress-index-self-assessment',
+    category: 'finance',
+    metaTitle: 'Financial Stress Index (Self-Assessment) - Financial Well-Being',
+    metaDescription: 'Assess your financial stress level through self-assessment of bill paying ability, emergency funds, debt burden, income stability, and financial control.'
+  },
+  {
+    id: 6384,
+    name: 'Lifestyle Inflation Impact Calculator',
+    description: 'Calculate the long-term opportunity cost of lifestyle inflation by determining the future value of increased spending if invested instead.',
+    slug: 'lifestyle-inflation-impact-calculator',
+    category: 'finance',
+    metaTitle: 'Lifestyle Inflation Impact Calculator - Opportunity Cost Analysis',
+    metaDescription: 'Calculate the long-term opportunity cost of lifestyle inflation by determining the future value of increased spending if invested instead.'
+  },
+  {
+    id: 6385,
+    name: 'Financial Decision Delay Cost Calculator',
+    description: 'Calculate the opportunity cost of delaying financial decisions, showing how postponement impacts wealth accumulation through lost compound growth.',
+    slug: 'financial-decision-delay-cost-calculator',
+    category: 'finance',
+    metaTitle: 'Financial Decision Delay Cost Calculator - Opportunity Cost of Postponement',
+    metaDescription: 'Calculate the opportunity cost of delaying financial decisions, showing how postponement impacts wealth accumulation through lost compound growth.'
+  },
 ];
 
     

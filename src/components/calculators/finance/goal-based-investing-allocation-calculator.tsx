@@ -201,7 +201,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   let status: ResultPayload['status'] = 'optimal';
   let interpretation = `Recommended allocation: ${stockAllocation.toFixed(0)}% stocks, ${bondAllocation.toFixed(0)}% bonds based on ${timeHorizonYears.toFixed(1)}-year time horizon and required return of ${requiredReturn.toFixed(2)}% annually.`;
   
-  if (requiredReturn > expectedReturn * 1.2) {
+  if (requiredReturn > values.expectedReturn * 1.2) {
     status = 'low';
     interpretation += ' Required return significantly exceeds expected return. Consider adjusting goal, time horizon, or contribution amount.';
   } else if (stockAllocation > 80) {
