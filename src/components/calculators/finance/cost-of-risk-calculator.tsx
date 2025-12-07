@@ -251,7 +251,6 @@ export default function CostOfRiskCalculator() {
             <form onSubmit={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              e.stopImmediatePropagation();
               try {
                 form.handleSubmit((values) => {
                   try {

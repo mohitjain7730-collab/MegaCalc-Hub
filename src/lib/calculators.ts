@@ -6363,6 +6363,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Insurance Portfolio Loss Distribution Calculator - Portfolio Risk Assessment',
     metaDescription: 'Calculate insurance portfolio loss distribution based on expected claim frequency, average claim severity, and claim severity standard deviation.'
   },
+  {
+    id: 6366,
+    name: 'Expected Loss Frequency/Severity Calculator',
+    description: 'Calculate expected loss from loss frequency and average severity for insurance and risk management.',
+    slug: 'expected-loss-frequency-severity-calculator',
+    category: 'finance',
+    metaTitle: 'Expected Loss Frequency/Severity Calculator - Insurance Risk Analysis',
+    metaDescription: 'Calculate expected loss from loss frequency and average severity for insurance and risk management.'
+  },
+  {
+    id: 6367,
+    name: 'Risk Exposure by Confidence Level Calculator',
+    description: 'Calculate risk exposure (VaR) at different confidence levels based on portfolio value, volatility, time horizon, and confidence level.',
+    slug: 'risk-exposure-by-confidence-level-calculator',
+    category: 'finance',
+    metaTitle: 'Risk Exposure by Confidence Level Calculator - Value-at-Risk Analysis',
+    metaDescription: 'Calculate risk exposure (VaR) at different confidence levels based on portfolio value, volatility, time horizon, and confidence level.'
+  },
+  {
+    id: 6368,
+    name: 'Catastrophe Loss Modeling Tool (Simple)',
+    description: 'Calculate catastrophe ratio and average annual loss for catastrophic event risk assessment.',
+    slug: 'catastrophe-loss-modeling-tool-simple',
+    category: 'finance',
+    metaTitle: 'Catastrophe Loss Modeling Tool (Simple) - Natural Disaster Risk',
+    metaDescription: 'Calculate catastrophe ratio and average annual loss for catastrophic event risk assessment.'
+  },
+  {
+    id: 6369,
+    name: 'Solvency Margin Calculator',
+    description: 'Calculate solvency margin, available solvency margin, and solvency ratio for insurance companies.',
+    slug: 'solvency-margin-calculator',
+    category: 'finance',
+    metaTitle: 'Solvency Margin Calculator - Insurance Capital Requirements',
+    metaDescription: 'Calculate solvency margin, available solvency margin, and solvency ratio for insurance companies.'
+  },
+  {
+    id: 6370,
+    name: 'Risk Capital Requirement (RBC) Calculator',
+    description: 'Calculate Risk-Based Capital (RBC) requirement for insurance companies based on asset risk, insurance risk, interest rate risk, and business risk.',
+    slug: 'risk-capital-requirement-rbc-calculator',
+    category: 'finance',
+    metaTitle: 'Risk Capital Requirement (RBC) Calculator - Insurance Capital Adequacy',
+    metaDescription: 'Calculate Risk-Based Capital (RBC) requirement for insurance companies based on asset risk, insurance risk, interest rate risk, and business risk.'
+  },
+  {
+    id: 6371,
+    name: 'Reinsurance Retention & Cession Calculator',
+    description: 'Calculate reinsurance retention and cession amounts for quota share and surplus share treaties.',
+    slug: 'reinsurance-retention-cession-calculator',
+    category: 'finance',
+    metaTitle: 'Reinsurance Retention & Cession Calculator - Risk Transfer Analysis',
+    metaDescription: 'Calculate reinsurance retention and cession amounts for quota share and surplus share treaties.'
+  },
+  {
+    id: 6372,
+    name: 'Premium Loading Factor Calculator',
+    description: 'Calculate insurance premium including expected losses, expenses, profit margin, and risk loading factor.',
+    slug: 'premium-loading-factor-calculator',
+    category: 'finance',
+    metaTitle: 'Premium Loading Factor Calculator - Insurance Pricing',
+    metaDescription: 'Calculate insurance premium including expected losses, expenses, profit margin, and risk loading factor.'
+  },
+  {
+    id: 6373,
+    name: 'Expected Utility of Wealth Calculator',
+    description: 'Calculate expected utility of wealth for decision-making under uncertainty using different utility functions.',
+    slug: 'expected-utility-of-wealth-calculator',
+    category: 'finance',
+    metaTitle: 'Expected Utility of Wealth Calculator - Decision Making Under Uncertainty',
+    metaDescription: 'Calculate expected utility of wealth for decision-making under uncertainty using different utility functions.'
+  },
+  {
+    id: 6374,
+    name: 'Certainty Equivalent Calculator',
+    description: 'Calculate certainty equivalent and risk premium for evaluating risky investments and prospects.',
+    slug: 'certainty-equivalent-calculator',
+    category: 'finance',
+    metaTitle: 'Certainty Equivalent Calculator - Risk Premium Analysis',
+    metaDescription: 'Calculate certainty equivalent and risk premium for evaluating risky investments and prospects.'
+  },
+  {
+    id: 6375,
+    name: 'Risk Aversion Coefficient Calculator',
+    description: 'Calculate absolute and relative risk aversion coefficients using Arrow-Pratt measures for different utility functions.',
+    slug: 'risk-aversion-coefficient-calculator',
+    category: 'finance',
+    metaTitle: 'Risk Aversion Coefficient Calculator - Arrow-Pratt Measures',
+    metaDescription: 'Calculate absolute and relative risk aversion coefficients using Arrow-Pratt measures for different utility functions.'
+  },
 ];
 
     
