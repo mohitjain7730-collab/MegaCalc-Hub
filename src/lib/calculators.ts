@@ -6336,6 +6336,78 @@ export const calculators: Calculator[] = [
     metaTitle: 'Scenario Analysis Tool (Monte Carlo for Losses) - Risk Assessment',
     metaDescription: 'Perform Monte Carlo simulation for scenario analysis to estimate potential losses and assess risk using random sampling and probability distributions.'
   },
+  {
+    id: 3345,
+    name: 'Probability of Ruin Calculator',
+    description: 'Calculate probability of ruin for insurance companies based on initial surplus, premium rate, claim arrival rate, and average claim size.',
+    slug: 'probability-of-ruin-calculator',
+    category: 'finance',
+    metaTitle: 'Probability of Ruin Calculator - Insurance Financial Stability',
+    metaDescription: 'Calculate probability of ruin for insurance companies based on initial surplus, premium rate, claim arrival rate, and average claim size.'
+  },
+  {
+    id: 3346,
+    name: 'Expected Loss Frequency/Severity Calculator',
+    description: 'Calculate loss frequency, loss severity, and expected loss based on number of claims, exposures, and total losses.',
+    slug: 'expected-loss-frequency-severity-calculator',
+    category: 'finance',
+    metaTitle: 'Expected Loss Frequency/Severity Calculator - Insurance Risk Metrics',
+    metaDescription: 'Calculate loss frequency, loss severity, and expected loss based on number of claims, exposures, and total losses.'
+  },
+  {
+    id: 3347,
+    name: 'Risk Exposure by Confidence Level Calculator',
+    description: 'Calculate Value-at-Risk (VaR) and risk exposure by confidence level based on portfolio value, volatility, confidence level, and time horizon.',
+    slug: 'risk-exposure-by-confidence-level-calculator',
+    category: 'finance',
+    metaTitle: 'Risk Exposure by Confidence Level Calculator - Portfolio Risk Management',
+    metaDescription: 'Calculate Value-at-Risk (VaR) and risk exposure by confidence level based on portfolio value, volatility, confidence level, and time horizon.'
+  },
+  {
+    id: 3348,
+    name: 'Sensitivity to Correlation (Diversification) Calculator',
+    description: 'Calculate portfolio variance, volatility, and diversification benefit based on asset weights, volatilities, and correlation.',
+    slug: 'sensitivity-to-correlation-diversification-calculator',
+    category: 'finance',
+    metaTitle: 'Sensitivity to Correlation (Diversification) Calculator - Portfolio Risk Analysis',
+    metaDescription: 'Calculate portfolio variance, volatility, and diversification benefit based on asset weights, volatilities, and correlation.'
+  },
+  {
+    id: 3349,
+    name: 'Cost of Risk Calculator',
+    description: 'Calculate Total Cost of Risk (TCOR) including insurance premiums, retained losses, risk control costs, administrative costs, and indirect costs.',
+    slug: 'cost-of-risk-calculator',
+    category: 'finance',
+    metaTitle: 'Cost of Risk Calculator - Total Cost of Risk Analysis',
+    metaDescription: 'Calculate Total Cost of Risk (TCOR) including insurance premiums, retained losses, risk control costs, administrative costs, and indirect costs.'
+  },
+  {
+    id: 3350,
+    name: 'Insurance Portfolio Loss Distribution Calculator',
+    description: 'Calculate insurance portfolio loss distribution based on expected claim frequency, average claim severity, and claim severity standard deviation.',
+    slug: 'insurance-portfolio-loss-distribution-calculator',
+    category: 'finance',
+    metaTitle: 'Insurance Portfolio Loss Distribution Calculator - Portfolio Risk Assessment',
+    metaDescription: 'Calculate insurance portfolio loss distribution based on expected claim frequency, average claim severity, and claim severity standard deviation.'
+  },
+  {
+    id: 3351,
+    name: 'Catastrophe Loss Modeling Tool (Simple)',
+    description: 'Calculate catastrophe ratio and assess catastrophic loss exposure based on catastrophic losses and net premiums earned.',
+    slug: 'catastrophe-loss-modeling-tool-simple',
+    category: 'finance',
+    metaTitle: 'Catastrophe Loss Modeling Tool (Simple) - Catastrophic Risk Assessment',
+    metaDescription: 'Calculate catastrophe ratio and assess catastrophic loss exposure based on catastrophic losses and net premiums earned.'
+  },
+  {
+    id: 3352,
+    name: 'Solvency Margin Calculator',
+    description: 'Calculate solvency margin and solvency ratio based on total assets, total liabilities, and required solvency margin.',
+    slug: 'solvency-margin-calculator',
+    category: 'finance',
+    metaTitle: 'Solvency Margin Calculator - Financial Stability Assessment',
+    metaDescription: 'Calculate solvency margin and solvency ratio based on total assets, total liabilities, and required solvency margin.'
+  },
 ];
 
     
