@@ -477,10 +477,10 @@ export default function ProbabilityOfClaimImpactCalculator() {
     <meta itemProp="url" content="/definitive-probability-claim-impact-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Probability of Claim Impact: Risk Assessment Using SLE and ALE</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding and calculating probability of claim impact for insurance risk assessment.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding and calculating probability of claim impact for insurance risk assessment.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Risk Assessment Metrics</a></li>
         <li><a href="#sle" className="hover:underline">Single Loss Expectancy (SLE)</a></li>
         <li><a href="#ale" className="hover:underline">Annual Loss Expectancy (ALE)</a></li>

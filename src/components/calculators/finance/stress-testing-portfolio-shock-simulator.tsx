@@ -477,7 +477,7 @@ export default function StressTestingPortfolioShockSimulator() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >
@@ -489,10 +489,10 @@ export default function StressTestingPortfolioShockSimulator() {
     <meta itemProp="url" content="/definitive-stress-testing-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Stress Testing: Evaluating Portfolio Resilience Under Extreme Market Conditions</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding and performing portfolio stress testing, a critical risk management tool that evaluates portfolio performance under extreme but plausible market conditions to identify vulnerabilities and ensure financial resilience.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding and performing portfolio stress testing, a critical risk management tool that evaluates portfolio performance under extreme but plausible market conditions to identify vulnerabilities and ensure financial resilience.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Stress Testing in Risk Management</a></li>
         <li><a href="#purpose" className="hover:underline">Purpose and Benefits</a></li>
         <li><a href="#scenarios" className="hover:underline">Stress Scenarios</a></li>

@@ -503,10 +503,10 @@ export default function InsuranceReserveRequirementCalculator() {
     <meta itemProp="url" content="/definitive-insurance-reserve-requirement-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Insurance Reserve Requirements: Calculating Loss Reserves</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding and calculating insurance reserve requirements for financial stability.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding and calculating insurance reserve requirements for financial stability.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Insurance Reserves</a></li>
         <li><a href="#methods" className="hover:underline">Reserve Calculation Methods</a></li>
         <li><a href="#elr" className="hover:underline">Expected Loss Ratio (ELR) Method</a></li>

@@ -572,7 +572,7 @@ export default function ScenarioAnalysisToolMonteCarloForLosses() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >
@@ -584,10 +584,10 @@ export default function ScenarioAnalysisToolMonteCarloForLosses() {
     <meta itemProp="url" content="/definitive-monte-carlo-scenario-analysis-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Monte Carlo Simulation for Scenario Analysis: Estimating Potential Losses Through Random Sampling</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding and performing Monte Carlo simulation for scenario analysis, a powerful technique for assessing potential losses by using random sampling to model uncertainty and estimate the range and likelihood of potential outcomes.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding and performing Monte Carlo simulation for scenario analysis, a powerful technique for assessing potential losses by using random sampling to model uncertainty and estimate the range and likelihood of potential outcomes.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Monte Carlo Simulation</a></li>
         <li><a href="#process" className="hover:underline">Monte Carlo Process</a></li>
         <li><a href="#parameters" className="hover:underline">Input Parameters</a></li>

@@ -448,7 +448,7 @@ export default function ExpectedLossInsuranceRiskCalculator() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >
@@ -460,10 +460,10 @@ export default function ExpectedLossInsuranceRiskCalculator() {
     <meta itemProp="url" content="/definitive-expected-loss-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Expected Loss: Insurance Risk Assessment</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding and calculating expected loss for insurance risk assessment.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding and calculating expected loss for insurance risk assessment.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Expected Loss in Insurance</a></li>
         <li><a href="#formula" className="hover:underline">Expected Loss Formula</a></li>
         <li><a href="#probability" className="hover:underline">Probability of Loss</a></li>

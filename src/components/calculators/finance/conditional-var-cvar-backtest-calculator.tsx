@@ -487,7 +487,7 @@ export default function ConditionalVarCvarBacktestCalculator() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >
@@ -499,10 +499,10 @@ export default function ConditionalVarCvarBacktestCalculator() {
     <meta itemProp="url" content="/definitive-cvar-backtest-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Conditional VaR (CVaR) Backtesting: Validating Tail Risk Models</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding and performing CVaR backtesting, a critical process for validating Conditional Value-at-Risk models and ensuring accurate tail risk capture in portfolio risk management.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding and performing CVaR backtesting, a critical process for validating Conditional Value-at-Risk models and ensuring accurate tail risk capture in portfolio risk management.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: CVaR Backtesting</a></li>
         <li><a href="#cvar" className="hover:underline">Understanding Conditional VaR (CVaR)</a></li>
         <li><a href="#backtest" className="hover:underline">Backtesting Process</a></li>

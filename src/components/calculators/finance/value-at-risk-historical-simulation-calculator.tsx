@@ -483,7 +483,7 @@ export default function ValueAtRiskHistoricalSimulationCalculator() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/FinancialProduct"
       >
@@ -495,10 +495,10 @@ export default function ValueAtRiskHistoricalSimulationCalculator() {
     <meta itemProp="url" content="/definitive-var-historical-simulation-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Value-at-Risk (VaR) Using Historical Simulation: Measuring Portfolio Risk</h1>
-    <p className="text-lg italic text-gray-700">A comprehensive guide to understanding and calculating Value-at-Risk (VaR) using historical simulation, a powerful non-parametric method for estimating maximum potential portfolio losses based on actual historical market behavior.</p>
+    <p className="text-lg italic text-muted-foreground">A comprehensive guide to understanding and calculating Value-at-Risk (VaR) using historical simulation, a powerful non-parametric method for estimating maximum potential portfolio losses based on actual historical market behavior.</p>
 
     <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
+    <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Value-at-Risk (VaR)</a></li>
         <li><a href="#historical" className="hover:underline">Historical Simulation Method</a></li>
         <li><a href="#calculation" className="hover:underline">VaR Calculation Steps</a></li>
