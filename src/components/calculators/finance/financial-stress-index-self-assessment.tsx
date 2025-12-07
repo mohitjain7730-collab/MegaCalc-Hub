@@ -288,7 +288,7 @@ export default function FinancialStressIndexSelfAssessment() {
                     <FormItem>
                       <FormLabel>Debt Burden Level (1=No Burden, 5=Very Burdensome)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="1" min="1" max="5" placeholder="e.g., 4" value={field.value === '' ? undefined : Number(field.value)} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <Input type="number" step="1" min="1" max="5" placeholder="e.g., 4" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
