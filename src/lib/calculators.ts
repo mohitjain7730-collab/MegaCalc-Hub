@@ -6228,6 +6228,60 @@ export const calculators: Calculator[] = [
     metaTitle: 'Renters Insurance Coverage Calculator - Renters Insurance Planning',
     metaDescription: 'Calculate renters insurance coverage needs including personal property, liability, and additional living expenses coverage.'
   },
+  {
+    id: 3333,
+    name: 'Car Insurance Coverage Needs Calculator',
+    description: 'Calculate car insurance coverage needs based on vehicle value, net worth, state requirements, and financing status.',
+    slug: 'car-insurance-coverage-needs-calculator',
+    category: 'finance',
+    metaTitle: 'Car Insurance Coverage Needs Calculator - Auto Insurance Planning',
+    metaDescription: 'Calculate car insurance coverage needs based on vehicle value, net worth, state requirements, and financing status.'
+  },
+  {
+    id: 3334,
+    name: 'Deductible vs Premium Comparison Calculator',
+    description: 'Compare deductible and premium options to find the optimal balance between cost savings and risk tolerance.',
+    slug: 'deductible-vs-premium-comparison-calculator',
+    category: 'finance',
+    metaTitle: 'Deductible vs Premium Comparison Calculator - Insurance Cost Analysis',
+    metaDescription: 'Compare deductible and premium options to find the optimal balance between cost savings and risk tolerance.'
+  },
+  {
+    id: 3335,
+    name: 'Insurance Replacement Value Calculator',
+    description: 'Calculate insurance replacement value and actual cash value based on replacement cost, age, and useful life.',
+    slug: 'insurance-replacement-value-calculator',
+    category: 'finance',
+    metaTitle: 'Insurance Replacement Value Calculator - Replacement Cost vs ACV',
+    metaDescription: 'Calculate insurance replacement value and actual cash value based on replacement cost, age, and useful life.'
+  },
+  {
+    id: 3336,
+    name: 'Probability of Claim Impact Calculator',
+    description: 'Calculate probability of claim impact using single loss expectancy (SLE) and annual loss expectancy (ALE) based on asset value, exposure factor, and annual rate of occurrence.',
+    slug: 'probability-of-claim-impact-calculator',
+    category: 'finance',
+    metaTitle: 'Probability of Claim Impact Calculator - Risk Assessment',
+    metaDescription: 'Calculate probability of claim impact using single loss expectancy (SLE) and annual loss expectancy (ALE) for risk assessment.'
+  },
+  {
+    id: 3337,
+    name: 'Insurance Reserve Requirement Calculator',
+    description: 'Calculate insurance reserve requirements including ultimate losses, total reserves, and IBNR reserves using expected loss ratio method.',
+    slug: 'insurance-reserve-requirement-calculator',
+    category: 'finance',
+    metaTitle: 'Insurance Reserve Requirement Calculator - Loss Reserve Calculation',
+    metaDescription: 'Calculate insurance reserve requirements including ultimate losses, total reserves, and IBNR reserves using expected loss ratio method.'
+  },
+  {
+    id: 3338,
+    name: 'Expected Loss (Insurance Risk) Calculator',
+    description: 'Calculate expected loss from insurance risk based on probability of loss event and loss severity.',
+    slug: 'expected-loss-insurance-risk-calculator',
+    category: 'finance',
+    metaTitle: 'Expected Loss (Insurance Risk) Calculator - Risk Assessment',
+    metaDescription: 'Calculate expected loss from insurance risk based on probability of loss event and loss severity.'
+  },
 ];
 
     
