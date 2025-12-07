@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
@@ -469,7 +469,7 @@ export default function SolvencyMarginCalculator() {
     <ul className="list-disc ml-6 space-y-2 text-primary">
         <li><a href="#overview" className="hover:underline">Overview: Solvency Margin</a></li>
         <li><a href="#calculation" className="hover:underline">Solvency Margin Calculation</a></li>
-        <li><a href="#regulatory" className="hover:underline">Regulatory Requirements</h3>
+        <li><a href="#regulatory" className="hover:underline">Regulatory Requirements</a></li>
         <li><a href="#interpretation" className="hover:underline">Interpretation and Risk Levels</a></li>
     </ul>
 <hr />

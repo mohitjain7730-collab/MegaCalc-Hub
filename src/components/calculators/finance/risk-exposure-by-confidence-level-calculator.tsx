@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
