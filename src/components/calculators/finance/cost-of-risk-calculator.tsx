@@ -248,16 +248,28 @@ export default function CostOfRiskCalculator() {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit((values) => {
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
               try {
-                setResult(calculateResult(values));
+                form.handleSubmit((values) => {
+                  try {
+                    setResult(calculateResult(values));
+                  } catch (error) {
+                    console.error('Error calculating result:', error);
+                    alert('An error occurred while calculating. Please check the console for details.');
+                  }
+                }, (errors) => {
+                  console.log('Form validation errors:', errors);
+                })(e);
               } catch (error) {
-                console.error('Error calculating result:', error);
-                alert('An error occurred while calculating. Please check the console for details.');
+                console.error('Error in form submission:', error);
+                e.preventDefault();
+                e.stopPropagation();
               }
-            }, (errors) => {
-              console.log('Form validation errors:', errors);
-            })} className="space-y-6">
+              return false;
+            }} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
@@ -325,7 +337,24 @@ export default function CostOfRiskCalculator() {
                   )}
                 />
               </div>
-              <Button type="submit" className="w-full md:w-auto">
+              <Button 
+                type="button" 
+                className="w-full md:w-auto"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  form.handleSubmit((values) => {
+                    try {
+                      setResult(calculateResult(values));
+                    } catch (error) {
+                      console.error('Error calculating result:', error);
+                      alert('An error occurred while calculating. Please check the console for details.');
+                    }
+                  }, (errors) => {
+                    console.log('Form validation errors:', errors);
+                  })();
+                }}
+              >
                 Calculate cost of risk
               </Button>
             </form>

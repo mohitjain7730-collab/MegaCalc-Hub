@@ -154,6 +154,13 @@ export default function RootLayout({
                 function handleChunkError(error) {
                   if (!isChunkError(error)) return false;
                   
+                  // In development, don't auto-reload to prevent interference with form submissions
+                  var isDev = typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development';
+                  if (isDev || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.warn('Chunk error in development (not reloading):', error);
+                    return false;
+                  }
+                  
                   console.warn('Chunk error detected (pre-React):', error);
                   
                   var attempts = getAttempts();

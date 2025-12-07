@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 const CHUNK_RELOAD_KEY = 'chunk-reload-attempt';
 const CHUNK_RELOAD_MAX_ATTEMPTS = 2;
 const CHUNK_RELOAD_DELAY = 1500;
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 /**
  * Global chunk load error handler
@@ -49,6 +50,15 @@ export function ChunkErrorHandler() {
     // Handle chunk load errors globally
     const handleChunkError = (event: ErrorEvent) => {
       const error = event.error;
+      
+      // In development, completely disable auto-reload to prevent interference with form submissions
+      if (isDevelopment) {
+        // Just log errors in development, don't interfere
+        if (error) {
+          console.warn('Error in development (not reloading):', error);
+        }
+        return false;
+      }
       
       // Check if it's a chunk load error (including timeout errors)
       const isChunkError = 
@@ -98,6 +108,15 @@ export function ChunkErrorHandler() {
     // Handle unhandled promise rejections (common for dynamic imports)
     const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
       const reason = event.reason;
+      
+      // In development, completely disable auto-reload to prevent interference with form submissions
+      if (isDevelopment) {
+        // Just log errors in development, don't interfere
+        if (reason) {
+          console.warn('Promise rejection in development (not reloading):', reason);
+        }
+        return false;
+      }
       
       const isChunkError = 
         reason?.message?.includes('Loading chunk') ||
