@@ -334,35 +334,58 @@ export default function StartupValuationPostMoneyPreMoneyCalculator() {
         <meta itemProp="url" content="/category/finance/startup-valuation-post-money-pre-money-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Startup Valuation: Pre-Money, Post-Money, and Ownership</h1>
-        <p className="text-lg italic text-gray-700 dark:text-gray-300">A concise walkthrough of pre-money vs. post-money valuation and how investment amounts translate to ownership and dilution.</p>
+        <p className="text-lg italic text-gray-700 dark:text-gray-300">How to turn round size and valuation into clear ownership outcomes, dilution expectations, and negotiation guardrails.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-blue-600 dark:text-blue-400">
-          <li><a href="#basics" className="hover:underline">Pre-Money vs. Post-Money Basics</a></li>
-          <li><a href="#ownership" className="hover:underline">Ownership and Dilution</a></li>
-          <li><a href="#benchmarks" className="hover:underline">Typical Dilution Benchmarks</a></li>
-          <li><a href="#pool" className="hover:underline">Option Pool Considerations</a></li>
-          <li><a href="#validation" className="hover:underline">Validation and Best Practices</a></li>
+          <li><a href="#definitions" className="hover:underline">Definitions: Pre, Post, and Ownership</a></li>
+          <li><a href="#math" className="hover:underline">Core Math and Quick Sense Checks</a></li>
+          <li><a href="#dilution" className="hover:underline">Dilution Ranges by Round</a></li>
+          <li><a href="#pool" className="hover:underline">Option Pool Placement</a></li>
+          <li><a href="#convertibles" className="hover:underline">SAFE/Note and Convertible Impact</a></li>
+          <li><a href="#validation" className="hover:underline">Validation and Negotiation Tips</a></li>
+          <li><a href="#playbook" className="hover:underline">Execution Playbook</a></li>
         </ul>
         <hr className="my-6" />
 
-        <h2 id="basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Pre-Money vs. Post-Money Basics</h2>
-        <p>Pre-money valuation is the company value before new investment. Post-money valuation adds the investment amount. Ownership percentages derive from the post-money valuation.</p>
+        <h2 id="definitions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Definitions: Pre, Post, and Ownership</h2>
+        <p><strong>Pre-money</strong> is value before new cash; <strong>Post-money</strong> = Pre + Raise. <strong>Investor %</strong> = Raise / Post. <strong>Founder %</strong> = 1 - Investor % (before pool/convertibles).</p>
 
-        <h2 id="ownership" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Ownership and Dilution</h2>
-        <p>Investor ownership = Investment / Post-money. Founder ownership = 1 - Investor ownership (before option pool changes). Each round dilutes existing shareholders.</p>
+        <h2 id="math" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Core Math and Quick Sense Checks</h2>
+        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
+          <p className="font-mono text-lg"><strong>Post = Pre + Investment</strong></p>
+          <p className="font-mono text-lg"><strong>Investor % = Investment / Post</strong></p>
+        </div>
+        <p>Check: If investment is 20% of pre, post = 1.2× pre and investor ownership ~16.7%.</p>
 
-        <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Typical Dilution Benchmarks</h2>
-        <p>Seed: 10-25%. Series A: 15-25%. Series B: 10-20%. Actual dilution depends on traction, market, and raise size.</p>
+        <h2 id="dilution" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dilution Ranges by Round</h2>
+        <p>Typical ranges: Seed 10–25%, Series A 15–25%, Series B 10–20%. Outliers can be justified by large raises or strategic capital—ensure milestones warrant the dilution.</p>
 
-        <h2 id="pool" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Option Pool Considerations</h2>
-        <p>Pre-money pools dilute founders further. Adjust the model to include pool expansions and convertible instruments for full dilution analysis.</p>
+        <h2 id="pool" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Option Pool Placement</h2>
+        <p>Pre-money pools dilute founders and effectively reduce pre-money valuation. Negotiate whether the refresh is pre- or post-money, and model the true ownership impact.</p>
 
-        <h2 id="validation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation and Best Practices</h2>
-        <p>Compare valuations to market comps, revenue multiples, and growth. Align raise size with runway and milestones. Model SAFEs/notes and option pools in a full cap table.</p>
+        <h2 id="convertibles" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">SAFE/Note and Convertible Impact</h2>
+        <p>SAFEs/notes convert at the priced round using caps/discounts, adding shares before calculating ownership. Include them—and any accrued interest—in a full cap table to avoid surprise dilution.</p>
+
+        <h2 id="validation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation and Negotiation Tips</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Benchmark valuation to comps and stage-appropriate revenue multiples.</li>
+          <li>Size the round for 18–24 months runway and milestone delivery.</li>
+          <li>Check cumulative dilution across planned rounds; avoid over-diluting early.</li>
+          <li>Clarify who bears pool dilution and how convertibles slot in.</li>
+        </ul>
+
+        <h2 id="playbook" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Execution Playbook</h2>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>Input pre and raise; compute post and investor %.</li>
+          <li>Overlay pool (pre/post) and convertibles in a cap table.</li>
+          <li>Run alternative raise sizes vs. dilution and runway.</li>
+          <li>Benchmark to stage norms; adjust valuation/ask.</li>
+          <li>Negotiate pool placement and convertible treatment explicitly.</li>
+        </ol>
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Understanding pre-money, post-money, and ownership math helps founders negotiate fair terms, plan dilution, and align capital raises with milestones.</p>
+        <p>Pre/post math is the backbone of fundraising. Model pools and convertibles, test dilution vs. runway, and negotiate with clarity on who bears which dilution.</p>
       </section>
 
       <Card>

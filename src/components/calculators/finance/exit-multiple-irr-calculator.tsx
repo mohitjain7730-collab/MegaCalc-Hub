@@ -423,67 +423,62 @@ export default function ExitMultipleIrrCalculator() {
         <meta itemProp="url" content="/category/finance/exit-multiple-irr-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Exit Multiple IRR: Private Equity Return Calculation</h1>
-        <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at calculating IRR based on exit multiples and holding periods for private equity and venture capital investments.</p>
+        <p className="text-lg italic text-gray-700 dark:text-gray-300">Use exit multiples to approximate IRR quickly, understand timing sensitivity, and know when to switch to full cash flow modeling.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-blue-600 dark:text-blue-400">
-          <li><a href="#basics" className="hover:underline">Understanding Exit Multiple IRR</a></li>
-          <li><a href="#calculation" className="hover:underline">IRR Calculation</a></li>
-          <li><a href="#benchmarks" className="hover:underline">Exit Multiple Benchmarks</a></li>
-          <li><a href="#drivers" className="hover:underline">Exit Multiple Drivers</a></li>
-          <li><a href="#validation" className="hover:underline">Validation and Best Practices</a></li>
+          <li><a href="#concept" className="hover:underline">Concept: Multiples to IRR</a></li>
+          <li><a href="#math" className="hover:underline">Approximate Math</a></li>
+          <li><a href="#timing" className="hover:underline">Timing Sensitivity</a></li>
+          <li><a href="#bench" className="hover:underline">Benchmarks by Strategy</a></li>
+          <li><a href="#drivers" className="hover:underline">Drivers of Higher Multiples</a></li>
+          <li><a href="#limits" className="hover:underline">Limits of the Shortcut</a></li>
+          <li><a href="#playbook" className="hover:underline">Quick Playbook</a></li>
         </ul>
         <hr className="my-6" />
 
-        <h2 id="basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Exit Multiple IRR</h2>
-        <p>Exit multiple IRR calculates the annualized return (IRR) based on the exit multiple and holding period. Exit multiple measures how many times the initial investment has been returned.</p>
+        <h2 id="concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Concept: Multiples to IRR</h2>
+        <p>Exit multiple IRR is a shortcut: if you know your exit as a multiple of invested capital and the hold length, you can approximate IRR without full cash flows.</p>
+
+        <h2 id="math" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Approximate Math</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
           <p className="font-mono text-lg"><strong>IRR ≈ (Exit Multiple)^(1/Holding Period) - 1</strong></p>
         </div>
-        <p>This approximation assumes no intermediate cash flows. For precise IRR with annual distributions, use detailed cash flow analysis.</p>
+        <p>Assumes a single exit cash flow. If you have interim dividends or partial exits, move to full IRR/XIRR with dated cash flows.</p>
 
-        <hr className="my-6" />
+        <h2 id="timing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Timing Sensitivity</h2>
+        <p>Same multiple, longer hold → lower IRR. E.g., 2.0x over 3 years ≈ 26% IRR; over 7 years ≈ 10% IRR. Timing is as important as the multiple.</p>
 
-        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">IRR Calculation</h2>
-        <p>The calculation requires:</p>
+        <h2 id="bench" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks by Strategy</h2>
         <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Initial Investment:</strong> Equity invested at acquisition</li>
-          <li><strong>Exit Multiple:</strong> Multiple of initial investment returned at exit</li>
-          <li><strong>Holding Period:</strong> Number of years the investment is held</li>
+          <li><strong>VC:</strong> 3–10x+ with wide dispersion.</li>
+          <li><strong>Growth:</strong> 2–5x common.</li>
+          <li><strong>Buyout:</strong> 2–3x typical.</li>
         </ul>
-        <p>Longer holding periods require higher exit multiples to achieve the same IRR.</p>
+        <p>Top quartile often starts at 3x+ for growth/VC; buyout top quartile near 2.5–3x with shorter holds.</p>
 
-        <hr className="my-6" />
-
-        <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Exit Multiple Benchmarks</h2>
-        <p>Target exit multiples vary by strategy:</p>
+        <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Drivers of Higher Multiples</h2>
         <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Venture Capital:</strong> 3-10x+ (high risk, high return)</li>
-          <li><strong>Growth Equity:</strong> 2-5x</li>
-          <li><strong>Buyout:</strong> 2-3x</li>
-        </ul>
-        <p>Top quartile funds often achieve 3x+ exit multiples.</p>
-
-        <hr className="my-6" />
-
-        <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Exit Multiple Drivers</h2>
-        <p>Exit multiples are driven by:</p>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>EBITDA Growth:</strong> Increasing operating income</li>
-          <li><strong>Multiple Expansion:</strong> Exit multiple exceeding entry multiple</li>
-          <li><strong>Operational Improvements:</strong> Cost reductions and efficiency gains</li>
-          <li><strong>Market Conditions:</strong> Industry trends and market multiples</li>
+          <li>EBITDA growth and margin expansion.</li>
+          <li>Multiple expansion (exit multiple &gt; entry multiple).</li>
+          <li>Efficient capital structure and deleveraging.</li>
+          <li>Operational uplift and strategic positioning.</li>
         </ul>
 
-        <hr className="my-6" />
+        <h2 id="limits" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limits of the Shortcut</h2>
+        <p>This shortcut ignores interim cash flows, fees, and timing nuance. Use it for quick screening; move to detailed IRR/XIRR when cash flows are uneven or when dividends/recaps occur.</p>
 
-        <h2 id="validation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation and Best Practices</h2>
-        <p>Validate exit multiple IRR by comparing to similar transactions, reviewing exit assumptions, and performing sensitivity analysis.</p>
-
-        <hr className="my-6" />
+        <h2 id="playbook" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Quick Playbook</h2>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>Estimate exit multiple from base case.</li>
+          <li>Apply IRR ≈ (multiple)^(1/years) - 1 for fast read.</li>
+          <li>Run sensitivities: ±0.5–1.0x multiple, ±1–2 years hold.</li>
+          <li>If interim dividends/recaps exist, switch to full cash flow IRR.</li>
+          <li>Benchmark to strategy quartiles before go/no-go.</li>
+        </ol>
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Exit multiple IRR provides a quick approximation of investment returns based on exit multiple and holding period. While useful for initial analysis, detailed cash flow IRR provides more accuracy for final decisions.</p>
+        <p>Exit multiple IRR is a fast lens on returns: great for screening, insufficient for final underwriting. Always reconcile with full cash flow modeling when timing or interim cash flows matter.</p>
       </section>
 
       <Card>

@@ -537,62 +537,69 @@ export default function LboDebtScheduleBuilder() {
         <meta itemProp="url" content="/category/finance/lbo-debt-schedule-builder" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to LBO Debt Schedules: Amortization and Interest Calculation</h1>
-        <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at building LBO debt schedules with mandatory amortization, optional prepayments, and interest expense calculations.</p>
+        <p className="text-lg italic text-gray-700 dark:text-gray-300">How to design, model, and stress-test LBO debt schedules across tranches, amortization rules, and prepayment strategies.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-blue-600 dark:text-blue-400">
-          <li><a href="#basics" className="hover:underline">Understanding Debt Schedules</a></li>
-          <li><a href="#amortization" className="hover:underline">Mandatory Amortization</a></li>
-          <li><a href="#prepayment" className="hover:underline">Optional Prepayments</a></li>
-          <li><a href="#interest" className="hover:underline">Interest Expense Calculation</a></li>
-          <li><a href="#structure" className="hover:underline">LBO Debt Structure</a></li>
+          <li><a href="#overview" className="hover:underline">Debt Schedule Overview and Why It Matters</a></li>
+          <li><a href="#structure" className="hover:underline">Common LBO Capital Structures</a></li>
+          <li><a href="#amort" className="hover:underline">Mandatory Amortization Mechanics</a></li>
+          <li><a href="#prepay" className="hover:underline">Optional Prepayments and Cash Sweeps</a></li>
+          <li><a href="#interest" className="hover:underline">Interest Calculation on Average Balance</a></li>
+          <li><a href="#waterfall" className="hover:underline">Allocation Waterfall Across Tranches</a></li>
+          <li><a href="#stress" className="hover:underline">Stress Tests and Sensitivities</a></li>
+          <li><a href="#playbook" className="hover:underline">Execution Playbook</a></li>
         </ul>
         <hr className="my-6" />
 
-        <h2 id="basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Debt Schedules</h2>
-        <p>A debt schedule tracks the repayment of debt over time, including mandatory amortization, optional prepayments, interest expense, and remaining balance. It is essential for LBO modeling and cash flow analysis.</p>
+        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Debt Schedule Overview and Why It Matters</h2>
+        <p>The debt schedule governs required and voluntary payments, shapes cash availability, and drives equity value via deleveraging. A precise schedule prevents covenant breaches and quantifies interest drag.</p>
 
-        <hr className="my-6" />
-
-        <h2 id="amortization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Mandatory Amortization</h2>
-        <p>Mandatory amortization is the required principal repayment, often expressed as a percentage of the initial loan amount or a fixed amount per period. It ensures debt is repaid over the loan term.</p>
-        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>Mandatory Amortization = min(Initial Debt Balance × Amortization Rate, Beginning Balance)</strong></p>
-        </div>
-
-        <hr className="my-6" />
-
-        <h2 id="prepayment" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Optional Prepayments</h2>
-        <p>Optional prepayment is additional principal repayment beyond mandatory amortization, typically funded from excess cash flow. Prepayments reduce interest expense and accelerate debt paydown.</p>
-        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>Optional Prepayment = min(Cash Available, Beginning Balance - Mandatory Amortization)</strong></p>
-        </div>
-
-        <hr className="my-6" />
-
-        <h2 id="interest" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interest Expense Calculation</h2>
-        <p>Interest is calculated on the average debt balance during the period to account for principal reductions:</p>
-        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>Interest Expense = Interest Rate × Average Balance</strong></p>
-          <p className="font-mono text-sm mt-2"><strong>Average Balance = (Beginning Balance + Ending Balance) / 2</strong></p>
-        </div>
-
-        <hr className="my-6" />
-
-        <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">LBO Debt Structure</h2>
-        <p>LBO debt typically includes multiple tranches:</p>
+        <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Common LBO Capital Structures</h2>
         <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Term Loan A:</strong> Amortizing, 5-7 years, lower cost</li>
-          <li><strong>Term Loan B:</strong> Bullet/minimal amortization, 7-10 years, higher cost</li>
-          <li><strong>Revolver:</strong> Revolving credit facility, drawn as needed</li>
-          <li><strong>Mezzanine/High-Yield:</strong> Subordinated debt, higher cost</li>
+          <li><strong>Term Loan A:</strong> Amortizing, shorter tenor, lower spread.</li>
+          <li><strong>Term Loan B:</strong> Minimal amortization/bullet, longer tenor, higher spread.</li>
+          <li><strong>Revolver:</strong> Seasonal liquidity, commitment fees, first-out in cash sweeps.</li>
+          <li><strong>Mezzanine/High-Yield:</strong> Subordinated, higher cost, often bullet.</li>
         </ul>
-        <p>Model each tranche separately and prioritize prepayments based on cost and terms.</p>
 
-        <hr className="my-6" />
+        <h2 id="amort" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Mandatory Amortization Mechanics</h2>
+        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
+          <p className="font-mono text-lg"><strong>Mandatory Amort = min(Initial Balance × Amort Rate, Beginning Balance)</strong></p>
+        </div>
+        <p>Set per tranche. In down cycles, test if mandatory paydowns are supportable by cash flow.</p>
+
+        <h2 id="prepay" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Optional Prepayments and Cash Sweeps</h2>
+        <p>Cash sweeps accelerate deleveraging, reducing interest and risk. Prioritize higher-cost tranches first unless prepayment penalties dictate otherwise.</p>
+
+        <h2 id="interest" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interest Calculation on Average Balance</h2>
+        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
+          <p className="font-mono text-lg"><strong>Interest = Rate × ((Beg Balance + End Balance) / 2)</strong></p>
+        </div>
+        <p>Average balance captures intra-period principal reduction; using beginning balance overstates interest.</p>
+
+        <h2 id="waterfall" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Allocation Waterfall Across Tranches</h2>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>Pay revolver (if swept) before term loans.</li>
+          <li>Meet all mandatory amortization by tranche priority.</li>
+          <li>Apply optional prepay to highest-cost or shortest-tenor tranche, subject to call protection.</li>
+          <li>Recompute interest on new balances each period.</li>
+        </ol>
+
+        <h2 id="stress" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Stress Tests and Sensitivities</h2>
+        <p>Run cases on: lower EBITDA, higher rates, delayed prepayments, covenant headroom, and bullet refinancing risk. Small rate moves can meaningfully change cash interest and deleveraging speed.</p>
+
+        <h2 id="playbook" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Execution Playbook</h2>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>Map tranches, rates, amort rules, and call protection.</li>
+          <li>Build period schedule with mandatory amort and average-balance interest.</li>
+          <li>Layer cash sweep logic; prioritize by cost/tenor.</li>
+          <li>Stress rate, EBITDA, and timing; check covenants.</li>
+          <li>Iterate to maximize deleveraging without liquidity strain.</li>
+        </ol>
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Debt schedules are fundamental to LBO modeling, tracking repayment, interest expense, and remaining balance over time. Proper calculation requires understanding amortization schedules, optional prepayment rules, and interest calculation methods. Debt paydown is a key LBO return driver, increasing equity value dollar-for-dollar.</p>
+        <p>Well-modeled debt schedules quantify interest drag, guide prepayment choices, and protect covenant headroom. Use average-balance interest, clear waterfalls, and rigorous stress tests to keep leverage on track.</p>
       </section>
 
       <Card>

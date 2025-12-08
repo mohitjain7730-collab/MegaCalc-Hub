@@ -499,49 +499,68 @@ export default function CapitalStructureDebtEquityMixOptimizationCalculator() {
         <meta itemProp="url" content="/category/finance/capital-structure-debt-equity-mix-optimization-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Capital Structure Optimization: WACC and Debt/Equity Mix</h1>
-        <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at optimizing capital structure by calculating WACC at different debt/equity ratios to minimize cost of capital and maximize firm value.</p>
+        <p className="text-lg italic text-gray-700 dark:text-gray-300">Balance tax shields and financial risk to minimize WACC and protect equity value.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-blue-600 dark:text-blue-400">
-          <li><a href="#wacc" className="hover:underline">Understanding WACC</a></li>
-          <li><a href="#optimization" className="hover:underline">Capital Structure Optimization</a></li>
+          <li><a href="#wacc" className="hover:underline">WACC Refresher</a></li>
+          <li><a href="#components" className="hover:underline">Cost Components and Tax Shield</a></li>
           <li><a href="#tradeoffs" className="hover:underline">Debt vs Equity Trade-offs</a></li>
           <li><a href="#benchmarks" className="hover:underline">Industry Benchmarks</a></li>
-          <li><a href="#validation" className="hover:underline">Validation and Best Practices</a></li>
+          <li><a href="#optimize" className="hover:underline">Optimization Steps</a></li>
+          <li><a href="#stress" className="hover:underline">Stress Tests and Covenants</a></li>
+          <li><a href="#playbook" className="hover:underline">Execution Playbook</a></li>
         </ul>
         <hr className="my-6" />
 
-        <h2 id="wacc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding WACC</h2>
-        <p>WACC (Weighted Average Cost of Capital) is the average cost of financing from both debt and equity sources, weighted by their proportions in the capital structure.</p>
+        <h2 id="wacc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">WACC Refresher</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
           <p className="font-mono text-lg"><strong>WACC = (E/V × Re) + (D/V × Rd × (1 - T))</strong></p>
         </div>
-        <p>Lower WACC increases firm value. Optimal capital structure minimizes WACC.</p>
+        <p>WACC is the blended cost of capital. Minimizing it increases DCF valuation and expands investment headroom.</p>
 
-        <hr className="my-6" />
-
-        <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Capital Structure Optimization</h2>
-        <p>Optimize capital structure by calculating WACC at different debt/equity ratios to find the mix that minimizes cost of capital. The optimal structure balances tax benefits of debt against financial risk.</p>
-
-        <hr className="my-6" />
+        <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cost Components and Tax Shield</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Re (Cost of Equity):</strong> Higher in volatile/growth sectors.</li>
+          <li><strong>Rd (Cost of Debt):</strong> Lower but rises with leverage and credit risk.</li>
+          <li><strong>Tax Shield:</strong> After-tax cost of debt = Rd × (1 - T); shield shrinks as taxes fall.</li>
+        </ul>
 
         <h2 id="tradeoffs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Debt vs Equity Trade-offs</h2>
-        <p>Debt benefits: Tax shield, lower cost, no dilution. Debt costs: Interest payments, financial risk, bankruptcy risk. Equity benefits: No fixed payments, financial flexibility. Equity costs: Higher cost, dilution.</p>
-
-        <hr className="my-6" />
+        <p>Debt lowers WACC until risk and spread creep up. Equity preserves flexibility but costs more and dilutes. The optimum sits where marginal tax benefit ≈ marginal distress cost.</p>
 
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Industry Benchmarks</h2>
-        <p>Typical debt-to-equity ratios vary by industry: Technology 0.1-0.3x, Manufacturing 0.5-1.0x, Utilities 1.0-2.0x, Financial Services 2.0-5.0x+.</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Tech: 0.1–0.3x D/E (low leverage).</li>
+          <li>Manufacturing/Industrials: 0.5–1.0x.</li>
+          <li>Utilities/Infra: 1.0–2.0x (stable cash flows).</li>
+          <li>Financials: 2.0–5.0x+ (regulatory capital driven).</li>
+        </ul>
+        <p>Use peers as guardrails, not absolutes.</p>
 
-        <hr className="my-6" />
+        <h2 id="optimize" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Optimization Steps</h2>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>Estimate Re and Rd; compute current WACC.</li>
+          <li>Model WACC across leverage points (e.g., 0.2x steps).</li>
+          <li>Identify minimum WACC region; check covenant and rating impact.</li>
+          <li>Consider refinancing costs and call protection.</li>
+          <li>Align with liquidity needs and cyclicality.</li>
+        </ol>
 
-        <h2 id="validation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation and Best Practices</h2>
-        <p>Validate by comparing to industry peers, assessing credit ratings, reviewing debt capacity, and performing sensitivity analysis.</p>
+        <h2 id="stress" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Stress Tests and Covenants</h2>
+        <p>Test WACC and solvency under higher rates, lower EBITDA, and delayed cash flow. Check interest coverage, leverage covenants, and refinancing cliffs; optimal on paper must survive shocks.</p>
 
-        <hr className="my-6" />
+        <h2 id="playbook" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Execution Playbook</h2>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>Compute current WACC and peer D/E ranges.</li>
+          <li>Run WACC by leverage grid; find minimum.</li>
+          <li>Overlay covenants/ratings to filter unrealistic points.</li>
+          <li>Plan refinancing/sequencing to move toward target mix.</li>
+          <li>Monitor quarterly; adjust for rate moves and business volatility.</li>
+        </ol>
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Capital structure optimization minimizes WACC, maximizing firm value. Proper calculation requires understanding debt/equity trade-offs, tax benefits, and financial risk. Optimal structure varies by industry, company size, and market conditions.</p>
+        <p>Optimal capital structure is a moving target. Use WACC as the compass, but steer with covenants, ratings, liquidity, and business cyclicality in mind.</p>
       </section>
 
       <Card>

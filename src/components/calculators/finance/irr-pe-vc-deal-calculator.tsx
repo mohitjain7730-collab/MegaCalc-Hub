@@ -543,74 +543,63 @@ export default function IrrPeVcDealCalculator() {
         <meta itemProp="url" content="/category/finance/irr-pe-vc-deal-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to IRR for PE/VC Deals: Cash Flow Analysis</h1>
-        <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at calculating IRR for PE/VC deals with detailed cash flows, understanding return metrics, and validating IRR calculations.</p>
+        <p className="text-lg italic text-gray-700 dark:text-gray-300">From check-in to exit: how to structure cash flows, solve for IRR, and benchmark returns across PE/VC strategies.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-blue-600 dark:text-blue-400">
-          <li><a href="#basics" className="hover:underline">Understanding IRR</a></li>
-          <li><a href="#calculation" className="hover:underline">IRR Calculation</a></li>
-          <li><a href="#cashflows" className="hover:underline">Cash Flow Components</a></li>
-          <li><a href="#benchmarks" className="hover:underline">IRR Benchmarks</a></li>
-          <li><a href="#validation" className="hover:underline">Validation and Best Practices</a></li>
+          <li><a href="#what" className="hover:underline">What IRR Measures (and Doesn’t)</a></li>
+          <li><a href="#cashflows" className="hover:underline">Building the Cash Flow Timeline</a></li>
+          <li><a href="#solve" className="hover:underline">How IRR is Solved (Iteration/XIRR)</a></li>
+          <li><a href="#bench" className="hover:underline">Strategy Benchmarks and Quartiles</a></li>
+          <li><a href="#timing" className="hover:underline">Timing Sensitivity and MOIC Link</a></li>
+          <li><a href="#net" className="hover:underline">Gross vs. Net IRR (Fees and Carry)</a></li>
+          <li><a href="#playbook" className="hover:underline">Validation Playbook</a></li>
         </ul>
         <hr className="my-6" />
 
-        <h2 id="basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding IRR</h2>
-        <p>IRR (Internal Rate of Return) is the annualized rate of return that makes the NPV of all cash flows equal to zero. It accounts for the timing of cash flows and is the primary return metric for PE/VC investments.</p>
+        <h2 id="what" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What IRR Measures (and Doesn’t)</h2>
+        <p>IRR annualizes your return, capturing timing. It does not capture scale (that’s MOIC) or risk. A high IRR on a tiny check may be less meaningful than a solid IRR on meaningful dollars.</p>
+
+        <h2 id="cashflows" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Building the Cash Flow Timeline</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Year 0:</strong> Initial investment (negative).</li>
+          <li><strong>Years 1–N:</strong> Dividends/distributions/partial exits (positive). Fees (negative if modeled).</li>
+          <li><strong>Exit year:</strong> Final proceeds (positive), sometimes plus last distribution.</li>
+        </ul>
+        <p>Use after-tax numbers for comparability. Irregular timing → use XIRR with specific dates.</p>
+
+        <h2 id="solve" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How IRR is Solved (Iteration/XIRR)</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>NPV = Σ(Cash Flow_t / (1 + IRR)^t) = 0</strong></p>
+          <p className="font-mono text-lg"><strong>IRR solves for r where Σ(CF_t / (1 + r)^t) = 0</strong></p>
         </div>
+        <p>Solvers iterate (Newton-Raphson). Multiple sign changes can create multiple IRRs; check for sensible results and compare to NPV at hurdle rates.</p>
 
-        <hr className="my-6" />
-
-        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">IRR Calculation</h2>
-        <p>IRR is solved iteratively using Newton-Raphson method or Excel IRR/XIRR functions. The calculation requires:</p>
+        <h2 id="bench" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategy Benchmarks and Quartiles</h2>
         <ul className="list-disc ml-6 space-y-2">
-          <li>Initial investment (negative cash flow, Year 0)</li>
-          <li>Annual cash flows (distributions, dividends, Years 1-N)</li>
-          <li>Exit proceeds (positive cash flow, final year)</li>
+          <li><strong>VC:</strong> 25–40%+ (high dispersion).</li>
+          <li><strong>Growth Equity:</strong> 20–30%.</li>
+          <li><strong>Buyout:</strong> 20–25%.</li>
+          <li><strong>Distressed:</strong> 15–25%.</li>
         </ul>
+        <p>Top quartile often starts near 30%+ IRR; always calibrate to sector and cycle.</p>
 
-        <hr className="my-6" />
+        <h2 id="timing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Timing Sensitivity and MOIC Link</h2>
+        <p>IRR ≈ (MOIC)^(1/years) - 1. Same MOIC over a longer hold → lower IRR. Early distributions punch up IRR; back-loaded exits drag it down.</p>
 
-        <h2 id="cashflows" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cash Flow Components</h2>
-        <p>Cash flows should include:</p>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Initial Investment:</strong> Equity invested at acquisition (negative)</li>
-          <li><strong>Annual Distributions:</strong> Dividends, distributions, or partial exits (positive)</li>
-          <li><strong>Management Fees:</strong> Annual fees paid to fund manager (negative, if applicable)</li>
-          <li><strong>Exit Proceeds:</strong> Sale proceeds, IPO proceeds, or final distribution (positive)</li>
-        </ul>
-        <p>All cash flows should be on an after-tax basis.</p>
+        <h2 id="net" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Gross vs. Net IRR (Fees and Carry)</h2>
+        <p>Gross IRR ignores fees/carry. Net IRR subtracts management fees and carried interest—often 3–5 percentage points lower. LPs benchmark net; GPs often cite gross.</p>
 
-        <hr className="my-6" />
-
-        <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">IRR Benchmarks</h2>
-        <p>Target IRRs vary by strategy:</p>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Venture Capital:</strong> 25-40%+ (high risk, high return)</li>
-          <li><strong>Growth Equity:</strong> 20-30%</li>
-          <li><strong>Buyout:</strong> 20-25%</li>
-          <li><strong>Distressed:</strong> 15-25%</li>
-        </ul>
-        <p>Top quartile funds often achieve 30%+ IRR.</p>
-
-        <hr className="my-6" />
-
-        <h2 id="validation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation and Best Practices</h2>
-        <p>Validate IRR by:</p>
-        <ul className="list-disc ml-6 space-y-2">
-          <li>Comparing to fund benchmarks and similar transactions</li>
-          <li>Reviewing exit assumptions and cash flow projections</li>
-          <li>Assessing reasonableness of timing assumptions</li>
-          <li>Performing sensitivity analysis</li>
-          <li>Considering gross vs. net IRR (deducting fees and carry)</li>
-        </ul>
-
-        <hr className="my-6" />
+        <h2 id="playbook" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation Playbook</h2>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>Build cash flow timeline (negative invest, positive flows, exit).</li>
+          <li>Solve IRR/XIRR; sanity-check against MOIC and holding period.</li>
+          <li>Run sensitivities: earlier/later exit, lower exit value, fee drag.</li>
+          <li>Benchmark to strategy quartiles and fund hurdles.</li>
+          <li>Flag multiple-IRR cases; confirm NPV at hurdle as a cross-check.</li>
+        </ol>
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>IRR is the primary return metric for PE/VC investments, accounting for timing of cash flows. Proper calculation requires accurate cash flow projections, appropriate discounting, and validation against benchmarks. IRR varies significantly by strategy, fund, and market conditions.</p>
+        <p>IRR is the timing-aware scorecard for PE/VC. Build clean cash flows, use XIRR for irregular dates, benchmark to strategy norms, and stress timing—small shifts in exit date or value can swing returns dramatically.</p>
       </section>
 
       <Card>
