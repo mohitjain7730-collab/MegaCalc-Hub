@@ -6543,6 +6543,60 @@ export const calculators: Calculator[] = [
     metaTitle: 'Financial Decision Delay Cost Calculator - Opportunity Cost of Postponement',
     metaDescription: 'Calculate the opportunity cost of delaying financial decisions, showing how postponement impacts wealth accumulation through lost compound growth.'
   },
+  {
+    id: 6386,
+    name: 'Spending Habit Analyzer (Needs vs Wants Split)',
+    description: 'Analyze spending habits by splitting expenses into needs vs wants and comparing against the 50/30/20 budgeting rule.',
+    slug: 'spending-habit-analyzer-needs-vs-wants-split',
+    category: 'finance',
+    metaTitle: 'Spending Habit Analyzer (Needs vs Wants Split) - Budget Analysis',
+    metaDescription: 'Analyze spending habits by splitting expenses into needs vs wants and comparing against the 50/30/20 budgeting rule.'
+  },
+  {
+    id: 6387,
+    name: 'Wealth Projection with Behavior Adjustment Calculator',
+    description: 'Project future wealth with behavioral adjustments such as increased savings rates to show the impact of behavior changes on wealth accumulation.',
+    slug: 'wealth-projection-with-behavior-adjustment-calculator',
+    category: 'finance',
+    metaTitle: 'Wealth Projection with Behavior Adjustment Calculator - Behavioral Finance',
+    metaDescription: 'Project future wealth with behavioral adjustments such as increased savings rates to show the impact of behavior changes on wealth accumulation.'
+  },
+  {
+    id: 6388,
+    name: 'Enterprise Value Bridge Calculator',
+    description: 'Calculate equity value from enterprise value using the EV bridge by adjusting for debt, cash, preferred equity, minority interest, and investments.',
+    slug: 'enterprise-value-bridge-calculator',
+    category: 'finance',
+    metaTitle: 'Enterprise Value Bridge Calculator - EV to Equity Conversion',
+    metaDescription: 'Calculate equity value from enterprise value using the EV bridge by adjusting for debt, cash, preferred equity, minority interest, and investments.'
+  },
+  {
+    id: 6389,
+    name: 'Comparable Company (Trading Multiples) Valuation Calculator',
+    description: 'Value a company using comparable company analysis by applying trading multiples (EV/Revenue, EV/EBITDA, EV/EBIT) from similar companies.',
+    slug: 'comparable-company-trading-multiples-valuation-calculator',
+    category: 'finance',
+    metaTitle: 'Comparable Company (Trading Multiples) Valuation Calculator - CCA Analysis',
+    metaDescription: 'Value a company using comparable company analysis by applying trading multiples (EV/Revenue, EV/EBITDA, EV/EBIT) from similar companies.'
+  },
+  {
+    id: 6390,
+    name: 'Precedent Transaction Valuation Calculator',
+    description: 'Value a company using precedent transaction analysis by applying transaction multiples from past M&A deals, which include control premiums and synergies.',
+    slug: 'precedent-transaction-valuation-calculator',
+    category: 'finance',
+    metaTitle: 'Precedent Transaction Valuation Calculator - M&A Transaction Analysis',
+    metaDescription: 'Value a company using precedent transaction analysis by applying transaction multiples from past M&A deals, which include control premiums and synergies.'
+  },
+  {
+    id: 6391,
+    name: 'Discounted Cash Flow (DCF) Sensitivity Grid Calculator',
+    description: 'Create a sensitivity grid for DCF valuation showing how enterprise value changes across different discount rate and terminal growth rate assumptions.',
+    slug: 'discounted-cash-flow-dcf-sensitivity-grid-calculator',
+    category: 'finance',
+    metaTitle: 'Discounted Cash Flow (DCF) Sensitivity Grid Calculator - Scenario Analysis',
+    metaDescription: 'Create a sensitivity grid for DCF valuation showing how enterprise value changes across different discount rate and terminal growth rate assumptions.'
+  },
 ];
 
     
