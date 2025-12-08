@@ -373,7 +373,7 @@ export default function GoodwillImpairmentCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Goodwill Impairment Loss</strong> = Carrying Value - Fair Value (if Carrying Value > Fair Value)
+            <strong>Goodwill Impairment Loss</strong> = Carrying Value - Fair Value (if Carrying Value &gt; Fair Value)
           </p>
           <p>If Fair Value ≥ Carrying Value: No Impairment (Impairment Loss = 0)</p>
           <p>
