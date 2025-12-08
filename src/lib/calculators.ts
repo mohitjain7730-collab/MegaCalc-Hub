@@ -6597,6 +6597,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Discounted Cash Flow (DCF) Sensitivity Grid Calculator - Scenario Analysis',
     metaDescription: 'Create a sensitivity grid for DCF valuation showing how enterprise value changes across different discount rate and terminal growth rate assumptions.'
   },
+  {
+    id: 6392,
+    name: 'Terminal Value (Gordon Growth) Calculator',
+    description: 'Calculate terminal value using the Gordon Growth Model (perpetuity growth model) for DCF valuation.',
+    slug: 'terminal-value-gordon-growth-calculator',
+    category: 'finance',
+    metaTitle: 'Terminal Value (Gordon Growth) Calculator - Perpetuity Growth Model',
+    metaDescription: 'Calculate terminal value using the Gordon Growth Model (perpetuity growth model) for DCF valuation.'
+  },
+  {
+    id: 6393,
+    name: 'Terminal Value (Exit Multiple) Calculator',
+    description: 'Calculate terminal value using exit multiple method (EV/EBITDA or EV/Revenue) for DCF valuation.',
+    slug: 'terminal-value-exit-multiple-calculator',
+    category: 'finance',
+    metaTitle: 'Terminal Value (Exit Multiple) Calculator - Exit Multiple Method',
+    metaDescription: 'Calculate terminal value using exit multiple method (EV/EBITDA or EV/Revenue) for DCF valuation.'
+  },
+  {
+    id: 6394,
+    name: 'Weighted Average Exit Multiple Calculator',
+    description: 'Calculate weighted average exit multiple by weighting multiple exit multiples based on their relative importance or relevance.',
+    slug: 'weighted-average-exit-multiple-calculator',
+    category: 'finance',
+    metaTitle: 'Weighted Average Exit Multiple Calculator - Multi-Perspective Terminal Value',
+    metaDescription: 'Calculate weighted average exit multiple by weighting multiple exit multiples based on their relative importance or relevance.'
+  },
+  {
+    id: 6395,
+    name: 'Sum-of-the-Parts (SOTP) Valuation Calculator',
+    description: 'Value a company using Sum-of-the-Parts (SOTP) method by valuing each business segment separately and summing those values.',
+    slug: 'sum-of-the-parts-sotp-valuation-calculator',
+    category: 'finance',
+    metaTitle: 'Sum-of-the-Parts (SOTP) Valuation Calculator - Segment-Based Valuation',
+    metaDescription: 'Value a company using Sum-of-the-Parts (SOTP) method by valuing each business segment separately and summing those values.'
+  },
+  {
+    id: 6396,
+    name: 'Synergy Value Calculator (M&A Synergy Estimator)',
+    description: 'Estimate synergy value in M&A transactions by calculating NPV of cost and revenue synergies minus integration costs.',
+    slug: 'synergy-value-calculator-ma-synergy-estimator',
+    category: 'finance',
+    metaTitle: 'Synergy Value Calculator (M&A Synergy Estimator) - Cost and Revenue Synergies',
+    metaDescription: 'Estimate synergy value in M&A transactions by calculating NPV of cost and revenue synergies minus integration costs.'
+  },
+  {
+    id: 6397,
+    name: 'Accretion/Dilution (EPS Impact) Calculator',
+    description: 'Calculate accretion/dilution analysis for M&A transactions, assessing how deals affect acquiring company EPS.',
+    slug: 'accretion-dilution-eps-impact-calculator',
+    category: 'finance',
+    metaTitle: 'Accretion/Dilution (EPS Impact) Calculator - M&A EPS Analysis',
+    metaDescription: 'Calculate accretion/dilution analysis for M&A transactions, assessing how deals affect acquiring company EPS.'
+  },
+  {
+    id: 6398,
+    name: 'Deal Value vs Enterprise Value Bridge Calculator',
+    description: 'Calculate deal value from enterprise value using the deal value bridge, adjusting for cash, debt, working capital, and debt-like items.',
+    slug: 'deal-value-vs-enterprise-value-bridge-calculator',
+    category: 'finance',
+    metaTitle: 'Deal Value vs Enterprise Value Bridge Calculator - M&A Transaction Value',
+    metaDescription: 'Calculate deal value from enterprise value using the deal value bridge, adjusting for cash, debt, working capital, and debt-like items.'
+  },
+  {
+    id: 6399,
+    name: 'Purchase Price Allocation (PPA) Calculator',
+    description: 'Allocate purchase price among assets and liabilities based on fair values, calculating goodwill and net identifiable assets in business combinations.',
+    slug: 'purchase-price-allocation-ppa-calculator',
+    category: 'finance',
+    metaTitle: 'Purchase Price Allocation (PPA) Calculator - Business Combination Accounting',
+    metaDescription: 'Allocate purchase price among assets and liabilities based on fair values, calculating goodwill and net identifiable assets in business combinations.'
+  },
+  {
+    id: 6400,
+    name: 'Goodwill Impairment Calculator',
+    description: 'Calculate goodwill impairment loss when carrying value exceeds fair value, testing for impairment under accounting standards.',
+    slug: 'goodwill-impairment-calculator',
+    category: 'finance',
+    metaTitle: 'Goodwill Impairment Calculator - Impairment Testing',
+    metaDescription: 'Calculate goodwill impairment loss when carrying value exceeds fair value, testing for impairment under accounting standards.'
+  },
+  {
+    id: 6401,
+    name: 'Intangible Asset Amortization Calculator',
+    description: 'Calculate intangible asset amortization using straight-line method, allocating asset cost over useful life.',
+    slug: 'intangible-asset-amortization-calculator',
+    category: 'finance',
+    metaTitle: 'Intangible Asset Amortization Calculator - Straight-Line Amortization',
+    metaDescription: 'Calculate intangible asset amortization using straight-line method, allocating asset cost over useful life.'
+  },
 ];
 
     
