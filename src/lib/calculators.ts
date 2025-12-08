@@ -6687,6 +6687,96 @@ export const calculators: Calculator[] = [
     metaTitle: 'Intangible Asset Amortization Calculator - Straight-Line Amortization',
     metaDescription: 'Calculate intangible asset amortization using straight-line method, allocating asset cost over useful life.'
   },
+  {
+    id: 6402,
+    name: 'Merger Exchange Ratio Calculator',
+    description: 'Calculate stock-for-stock M&A exchange ratio from offer price and acquirer share price.',
+    slug: 'merger-exchange-ratio-calculator',
+    category: 'finance',
+    metaTitle: 'Merger Exchange Ratio Calculator - Stock-for-Stock M&A',
+    metaDescription: 'Calculate exchange ratio in stock-for-stock M&A transactions by dividing offer price per target share by acquirer share price.'
+  },
+  {
+    id: 6403,
+    name: 'LBO (Leveraged Buyout) Return Calculator',
+    description: 'Calculate MOIC and IRR for leveraged buyout investments based on exit value and holding period.',
+    slug: 'lbo-leveraged-buyout-return-calculator',
+    category: 'finance',
+    metaTitle: 'LBO Return Calculator - MOIC and IRR',
+    metaDescription: 'Compute MOIC and IRR for leveraged buyout investments from initial investment, exit value, and holding period.'
+  },
+  {
+    id: 6404,
+    name: 'LBO Debt Schedule Builder',
+    description: 'Build LBO debt repayment schedules with amortization, optional prepayments, and interest expense.',
+    slug: 'lbo-debt-schedule-builder',
+    category: 'finance',
+    metaTitle: 'LBO Debt Schedule Builder - Amortization & Prepayments',
+    metaDescription: 'Construct LBO debt schedules including mandatory amortization, optional prepayments, and interest expense calculations.'
+  },
+  {
+    id: 6405,
+    name: 'Internal Rate of Return (IRR) for PE/VC Deal Calculator',
+    description: 'Calculate IRR for PE/VC deals using detailed cash flows, exit value, and holding period.',
+    slug: 'irr-pe-vc-deal-calculator',
+    category: 'finance',
+    metaTitle: 'IRR Calculator for PE/VC Deals - Cash Flow IRR',
+    metaDescription: 'Calculate IRR for private equity and venture capital deals with detailed cash flows, exit value, and timing.'
+  },
+  {
+    id: 6406,
+    name: 'Exit Multiple IRR Calculator',
+    description: 'Estimate IRR from exit multiple and holding period for PE/VC investments.',
+    slug: 'exit-multiple-irr-calculator',
+    category: 'finance',
+    metaTitle: 'Exit Multiple IRR Calculator - PE/VC Returns',
+    metaDescription: 'Calculate IRR based on exit multiple and holding period for private equity and venture investments.'
+  },
+  {
+    id: 6407,
+    name: 'Capital Structure (Debt/Equity Mix Optimization) Calculator',
+    description: 'Optimize debt/equity mix by calculating WACC and leverage metrics.',
+    slug: 'capital-structure-debt-equity-mix-optimization-calculator',
+    category: 'finance',
+    metaTitle: 'Capital Structure Optimization Calculator - WACC',
+    metaDescription: 'Calculate WACC and evaluate optimal debt/equity mix to minimize cost of capital.'
+  },
+  {
+    id: 6408,
+    name: 'Startup Valuation (Post-Money / Pre-Money) Calculator',
+    description: 'Calculate post-money valuation and ownership percentages from pre-money valuation and investment.',
+    slug: 'startup-valuation-post-money-pre-money-calculator',
+    category: 'finance',
+    metaTitle: 'Startup Valuation Calculator - Pre-Money & Post-Money',
+    metaDescription: 'Compute post-money valuation, investor ownership, and founder ownership from pre-money valuation and investment amount.'
+  },
+  {
+    id: 6409,
+    name: 'Founder Dilution Calculator (by Funding Round)',
+    description: 'Estimate founder dilution from a funding round based on pre-money valuation and raise size.',
+    slug: 'founder-dilution-calculator',
+    category: 'finance',
+    metaTitle: 'Founder Dilution Calculator - Funding Round Impact',
+    metaDescription: 'Calculate founder dilution, investor ownership, and post-round ownership using pre-money valuation and investment amount.'
+  },
+  {
+    id: 6410,
+    name: 'SAFE / Convertible Note Conversion Calculator',
+    description: 'Calculate SAFE/note conversion price, shares issued, and ownership using cap/discount terms.',
+    slug: 'safe-convertible-note-conversion-calculator',
+    category: 'finance',
+    metaTitle: 'SAFE / Convertible Note Conversion Calculator',
+    metaDescription: 'Model SAFE or convertible note conversion using valuation cap and discount to determine conversion price and ownership.'
+  },
+  {
+    id: 6411,
+    name: 'Equity Cap Table Generator',
+    description: 'Generate a simplified cap table showing ownership percentages for founders, option pool, and investors.',
+    slug: 'equity-cap-table-generator',
+    category: 'finance',
+    metaTitle: 'Equity Cap Table Generator - Ownership Breakdown',
+    metaDescription: 'Create a simplified equity cap table with ownership percentages across founders, option pool, and investors.'
+  },
 ];
 
     
