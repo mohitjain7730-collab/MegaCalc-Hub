@@ -353,7 +353,7 @@ export default function PaybackPeriodCustomerAcquisitionCalculator() {
         <p>Payback (months) = CAC ÷ monthly gross profit per customer. Use margin-adjusted profit, not revenue.</p>
 
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks</h2>
-        <p>Sub-12 months: efficient. 12–18: typical growth. >18: risky unless churn is very low and LTV:CAC is strong.</p>
+        <p>Sub-12 months: efficient. 12–18: typical growth. &gt;18: risky unless churn is very low and LTV:CAC is strong.</p>
 
         <h2 id="improve" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Improving Payback</h2>
         <ul className="list-disc ml-6 space-y-2">
