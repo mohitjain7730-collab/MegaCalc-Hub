@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Landmark, TrendingUp, DollarSign, Calendar, Target, Info } from 'lucide-react';
+import { Landmark, TrendingUp, DollarSign, Calendar, Target, Info, Activity, Shield } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -35,6 +35,8 @@ interface CalculationResult {
   years: number;
 }
 
+const formatNumberUS = (value: number, options: Intl.NumberFormatOptions = {}) =>
+  value.toLocaleString('en-US', options);
 
 export default function SipDcaCalculator() {
   const [result, setResult] = useState<CalculationResult | null>(null);
@@ -84,6 +86,54 @@ export default function SipDcaCalculator() {
       years: investmentPeriodYears
     });
   };
+
+  const recommendationItems = result
+    ? [
+        `Maintain your ${formatNumberUS(result.monthlyContribution)} monthly SIP for at least ${result.years}+ years to harness compounding.`,
+        result.annualizedReturn >= 12
+          ? 'Consider gradually increasing equity allocation while monitoring risk since returns are strong.'
+          : 'Review equity allocation; modest returns suggest balancing with growth-oriented funds if risk permits.',
+        result.profitPercentage >= 150
+          ? 'Lock in portions of gains by rebalancing annually to keep risk in check.'
+          : 'Stay disciplined through volatility—larger gains typically materialize in later years.',
+        result.monthlyContribution < 500
+          ? 'If affordable, raise contributions by 5-10% yearly to accelerate target corpus.'
+          : 'Continue annual step-ups to offset inflation and shorten time-to-goal.',
+      ]
+    : [
+        'Stay consistent with monthly contributions to maximize compounding.',
+        'Increase SIP amounts annually to keep pace with income and inflation.',
+        'Diversify across equity, debt, and hybrid funds to balance risk.',
+        'Hold through volatility—DCA works best when you avoid timing the market.',
+      ];
+
+  const actionPlanItems = result
+    ? [
+        {
+          label: 'Automate',
+          detail: `Keep auto-debits active for the ${formatNumberUS(result.monthlyContribution)} monthly SIP to avoid skipped installments.`,
+        },
+        {
+          label: 'Top-up',
+          detail: 'Add extra during market dips to lower average cost per unit and boost future value.',
+        },
+        {
+          label: 'Rebalance',
+          detail: result.profitPercentage > 100
+            ? 'Since gains are sizable, rebalance yearly to protect profits while staying invested.'
+            : 'Review allocation yearly; adjust only if your risk profile or goals changed.',
+        },
+        {
+          label: 'Goal check',
+          detail: `Validate that projected future value of $${formatNumberUS(result.futureValue, { maximumFractionDigits: 0 })} matches your target; adjust SIP if needed.`,
+        },
+      ]
+    : [
+        { label: 'Automate', detail: 'Set up auto-debits for SIP dates to remove friction.' },
+        { label: 'Rebalance', detail: 'Review allocations yearly to maintain target risk levels.' },
+        { label: 'Top-up', detail: 'Add extra during market dips to lower average cost.' },
+        { label: 'Review goals', detail: 'Align SIP duration and amount with specific targets.' },
+      ];
 
   return (
     <div className="space-y-8">
@@ -187,7 +237,7 @@ export default function SipDcaCalculator() {
                 <div>
                   <CardTitle>Your Investment Projection</CardTitle>
                   <CardDescription>
-                    Based on ${result.monthlyContribution.toLocaleString()} monthly investments for {result.years} years
+                    Based on ${formatNumberUS(result.monthlyContribution)} monthly investments for {result.years} years
                   </CardDescription>
                 </div>
               </div>
@@ -200,7 +250,7 @@ export default function SipDcaCalculator() {
                     <span className="text-sm font-medium text-muted-foreground">Future Value</span>
                   </div>
                   <p className="text-3xl font-bold text-primary">
-                    ${result.futureValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                    ${formatNumberUS(result.futureValue, { maximumFractionDigits: 0 })}
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     Total value after {result.years} years
@@ -213,7 +263,7 @@ export default function SipDcaCalculator() {
                     <span className="text-sm font-medium text-muted-foreground">Total Invested</span>
                   </div>
                   <p className="text-2xl font-bold">
-                    ${result.totalInvestment.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                    ${formatNumberUS(result.totalInvestment, { maximumFractionDigits: 0 })}
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     Your contributions over time
@@ -226,7 +276,7 @@ export default function SipDcaCalculator() {
                     <span className="text-sm font-medium text-muted-foreground">Total Profit</span>
                   </div>
                   <p className="text-2xl font-bold text-green-600">
-                    ${result.totalProfit.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                    ${formatNumberUS(result.totalProfit, { maximumFractionDigits: 0 })}
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     {result.profitPercentage.toFixed(1)}% return on investment
@@ -283,7 +333,7 @@ export default function SipDcaCalculator() {
                       />
                       <Tooltip 
                         formatter={(value: number, name: string) => [
-                          `$${value.toLocaleString()}`, 
+                          `$${formatNumberUS(value)}`, 
                           name === 'totalInvestment' ? 'Total Invested' : 
                           name === 'futureValue' ? 'Portfolio Value' : 'Profit'
                         ]}
@@ -337,7 +387,7 @@ export default function SipDcaCalculator() {
                     💡 The Power of Compounding
                   </h4>
                   <p className="text-sm text-blue-800 dark:text-blue-200">
-                    Your profit of ${result.totalProfit.toLocaleString()} represents the magic of compound interest. 
+                    Your profit of ${formatNumberUS(result.totalProfit)} represents the magic of compound interest. 
                     Your money is working for you, generating returns on both your contributions and previous gains.
                   </p>
                 </div>
@@ -347,7 +397,7 @@ export default function SipDcaCalculator() {
                     📈 Dollar-Cost Averaging Benefits
                   </h4>
                   <p className="text-sm text-green-800 dark:text-green-200">
-                    By investing ${result.monthlyContribution.toLocaleString()} monthly, you're buying more shares when prices are low 
+                    By investing ${formatNumberUS(result.monthlyContribution)} monthly, you're buying more shares when prices are low 
                     and fewer when prices are high, smoothing out market volatility.
                   </p>
                 </div>
@@ -378,6 +428,44 @@ export default function SipDcaCalculator() {
       )}
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
+        {/* Recommendations and Action Plan */}
+        {result && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Target className="h-4 w-4" />
+                  Recommendations
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
+                  {recommendationItems.map((rec) => (
+                    <li key={rec}>{rec}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Activity className="h-4 w-4" />
+                  Action plan
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-1 text-sm text-muted-foreground">
+                  {actionPlanItems.map((step) => (
+                    <li key={step.label}>
+                      <span className="font-semibold">{step.label}:</span> {step.detail}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
         {/* Understanding the Inputs */}
         <Card>
           <CardHeader>
@@ -435,6 +523,27 @@ export default function SipDcaCalculator() {
                 </div>
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Formula */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              Formula
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="text-sm text-muted-foreground space-y-2">
+            <p>
+              <strong>Future Value of SIP</strong> = PMT × [((1 + r)^n - 1) / r] × (1 + r), where PMT is the monthly investment, r is monthly return (annual rate / 12), and n is the total number of months.
+            </p>
+            <p>
+              <strong>Total Investment</strong> = PMT × n. The difference between future value and total investment is the total profit generated by compounding.
+            </p>
+            <p>
+              <strong>Annualized Return (CAGR)</strong> ≈ (Future Value / Total Investment)^(1 / years) - 1. This provides a comparable annual growth rate for the SIP schedule.
+            </p>
           </CardContent>
         </Card>
 
@@ -693,6 +802,21 @@ export default function SipDcaCalculator() {
                 </p>
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Summary */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              Summary
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm text-muted-foreground">
+            <p>This tool models SIP/DCA growth using monthly contributions and expected returns to show future value, total investment, profit, and annualized return.</p>
+            <p>Recommendations, action steps, formulas, guide content, related tools, and FAQs provide quick interpretation for planners and assistants.</p>
+            <p>Use consistent contributions, periodic reviews, and disciplined holding to leverage dollar-cost averaging effectively.</p>
           </CardContent>
         </Card>
       </div>
