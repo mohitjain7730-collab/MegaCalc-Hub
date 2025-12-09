@@ -6894,6 +6894,42 @@ export const calculators: Calculator[] = [
     metaTitle: 'Employer Health Plan Tax Savings Calculator',
     metaDescription: 'Estimate how much you save in taxes by paying for health insurance through your employer\'s pre-tax payroll deduction.',
   },
+  {
+    id: 10039,
+    name: 'Medical Equipment Depreciation Estimator',
+    description: 'Calculate the depreciation of medical equipment over time using Straight Line or Double Declining methods.',
+    slug: 'medical-equipment-depreciation-estimator',
+    category: 'finance',
+    metaTitle: 'Medical Equipment Depreciation Estimator',
+    metaDescription: 'Estimate the book value and depreciation schedule of medical equipment for tax and financial planning.',
+  },
+  {
+    id: 10040,
+    name: 'Doctor Visit ROI (Preventive vs Reactive)',
+    description: 'Compare the cost of regular preventive checkups vs the potential cost of treating undetected conditions.',
+    slug: 'doctor-visit-roi-calculator',
+    category: 'finance',
+    metaTitle: 'Doctor Visit ROI Calculator: Preventive vs Reactive Care',
+    metaDescription: 'Analyze the financial return on investment of preventive healthcare compared to the cost of treating chronic conditions.',
+  },
+  {
+    id: 10041,
+    name: 'Chronic Condition Lifetime Cost Calculator',
+    description: 'Estimate the lifetime financial impact of a chronic condition including medications, visits, and inflation.',
+    slug: 'chronic-condition-lifetime-cost-calculator',
+    category: 'finance',
+    metaTitle: 'Chronic Condition Lifetime Cost Calculator',
+    metaDescription: 'Calculate the long-term financial cost of managing a chronic condition over your lifetime, adjusted for medical inflation.',
+  },
+  {
+    id: 10042,
+    name: 'Surgery Cost Comparison by Country',
+    description: 'Compare the total cost of surgery across different countries including travel and accommodation expenses.',
+    slug: 'surgery-cost-comparison-by-country',
+    category: 'finance',
+    metaTitle: 'Surgery Cost Comparison by Country - Medical Tourism',
+    metaDescription: 'Compare surgery costs between your home country and international destinations to find the best medical value.',
+  },
 ];
 
 
