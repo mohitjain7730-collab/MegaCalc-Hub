@@ -6867,6 +6867,33 @@ export const calculators: Calculator[] = [
     metaTitle: 'Medical Tourism Savings Estimator - Surgery Cost Comparison',
     metaDescription: 'Compare the cost of medical procedures at home versus abroad, factoring in total travel and accommodation expenses.',
   },
+  {
+    id: 10036,
+    name: 'Dental Implant Cost Recovery Calculator',
+    description: 'Compare the long-term costs of dental implants versus bridges or dentures to find the break-even point.',
+    slug: 'dental-implant-cost-recovery-calculator',
+    category: 'finance',
+    metaTitle: 'Dental Implant Cost Recovery Calculator - Implants vs Dentures',
+    metaDescription: 'Calculate the long-term cost effectiveness of dental implants compared to dentures or bridges, including maintenance and replacement costs.',
+  },
+  {
+    id: 10037,
+    name: 'Insurance Claim Delay Impact Calculator',
+    description: 'Calculate the financial impact of delayed insurance claim payouts, including inflation loss and opportunity cost.',
+    slug: 'insurance-claim-delay-impact-calculator',
+    category: 'finance',
+    metaTitle: 'Insurance Claim Delay Impact Calculator',
+    metaDescription: 'Quantify the financial loss from delayed insurance payouts, factoring in inflation and missed investment opportunities.',
+  },
+  {
+    id: 10038,
+    name: 'Employer Health Plan Tax Savings Calculator',
+    description: 'Calculate your tax savings by paying health insurance premiums with pre-tax dollars through an employer plan.',
+    slug: 'employer-health-plan-tax-savings-calculator',
+    category: 'finance',
+    metaTitle: 'Employer Health Plan Tax Savings Calculator',
+    metaDescription: 'Estimate how much you save in taxes by paying for health insurance through your employer\'s pre-tax payroll deduction.',
+  },
 ];
 
 
