@@ -413,7 +413,7 @@ export default function MrrCalculator() {
         <p>NDR above 110% signals strong product-market fit and upsell motion. Below 100% means contraction or churn is eroding the base.</p>
 
         <h2 id="growth" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Growth Benchmarks</h2>
-        <p>Early-stage: double-digit monthly growth with volatile NDR. Growth-stage: 5–10% monthly with NDR >110%. Late-stage: steady mid-single digits with durable NDR.</p>
+        <p>Early-stage: double-digit monthly growth with volatile NDR. Growth-stage: 5-10% monthly with NDR &gt;110%. Late-stage: steady mid-single digits with durable NDR.</p>
 
         <h2 id="quality" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Quality of Revenue</h2>
         <p>High-quality MRR has low churn, strong expansion, and diversified customer mix. Pair MRR with CAC payback and burn multiple for capital efficiency.</p>
