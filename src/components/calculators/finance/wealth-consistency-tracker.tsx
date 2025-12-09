@@ -151,7 +151,7 @@ export default function WealthConsistencyTracker() {
               ))}
 
               <div className="flex gap-4">
-                <Button type="button" variant="outline" onClick={() => append({ income: undefined, savings: undefined })}>
+                <Button type="button" variant="outline" onClick={() => append({ income: undefined as unknown as number, savings: undefined as unknown as number })}>
                   <PlusCircle className="mr-2 h-4 w-4" /> Add Month
                 </Button>
                 <Button type="submit">

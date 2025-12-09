@@ -178,7 +178,7 @@ export default function HabitBasedWealthGrowthEstimator() {
                     </div>
                   ))}
                 </div>
-                <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ name: '', amount: undefined, frequency: 'weekly' })}>
+                <Button type="button" variant="outline" size="sm" className="mt-4" onClick={() => append({ name: '', amount: undefined as unknown as number, frequency: 'weekly' })}>
                   <PlusCircle className="mr-2 h-4 w-4" /> Add Habit
                 </Button>
               </div>
