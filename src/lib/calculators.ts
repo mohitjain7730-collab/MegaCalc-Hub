@@ -2486,74 +2486,74 @@ export const calculators: Calculator[] = [
     slug: 'maximal-aerobic-speed-mas-calculator',
     category: 'health-fitness'
   },
-  { 
-    id: 275, 
-    name: 'VO₂ Max Calculator', 
-    description: 'Estimate VO₂ max from age and resting heart rate.', 
-    slug: 'vo2-max-calculator', 
+  {
+    id: 275,
+    name: 'VO₂ Max Calculator',
+    description: 'Estimate VO₂ max from age and resting heart rate.',
+    slug: 'vo2-max-calculator',
     category: 'health-fitness',
     metaTitle: 'VO₂ Max Calculator - Cardiovascular Fitness Test',
     metaDescription: 'Estimate your VO₂ Max to assess aerobic fitness and improve endurance performance.'
   },
-  { 
-    id: 276, 
-    name: 'Running Pace Calculator', 
-    description: 'Convert between distance, time, and pace.', 
-    slug: 'running-pace-calculator', 
+  {
+    id: 276,
+    name: 'Running Pace Calculator',
+    description: 'Convert between distance, time, and pace.',
+    slug: 'running-pace-calculator',
     category: 'health-fitness',
     metaTitle: 'Running Pace Calculator - Track Your Speed',
     metaDescription: 'Calculate your running pace per kilometer or mile to optimize training and improve performance.'
   },
-  { 
-    id: 277, 
-    name: 'Running Speed to Calories Burned Calculator', 
-    description: 'Estimate calories burned from running speed, weight, and duration.', 
-    slug: 'running-speed-to-calories-burned-calculator', 
+  {
+    id: 277,
+    name: 'Running Speed to Calories Burned Calculator',
+    description: 'Estimate calories burned from running speed, weight, and duration.',
+    slug: 'running-speed-to-calories-burned-calculator',
     category: 'health-fitness',
     metaTitle: 'Running Speed to Calories Calculator - Burn Tracker',
     metaDescription: 'Determine how many calories you burn while running based on your speed, distance, and weight.'
   },
-  { 
-    id: 278, 
-    name: 'Cycling Power Output (Watts) Calculator', 
-    description: 'Estimate cycling power output based on speed and parameters.', 
-    slug: 'cycling-power-output-calculator', 
+  {
+    id: 278,
+    name: 'Cycling Power Output (Watts) Calculator',
+    description: 'Estimate cycling power output based on speed and parameters.',
+    slug: 'cycling-power-output-calculator',
     category: 'health-fitness',
     metaTitle: 'Cycling Power Output Calculator - Measure Watts',
     metaDescription: 'Calculate your cycling power output in watts to track performance and optimize training sessions.'
   },
-  { 
-    id: 279, 
-    name: 'Swimming Lap Time Calculator', 
-    description: 'Calculate lap time based on distance and pace.', 
-    slug: 'swimming-lap-time-calculator', 
+  {
+    id: 279,
+    name: 'Swimming Lap Time Calculator',
+    description: 'Calculate lap time based on distance and pace.',
+    slug: 'swimming-lap-time-calculator',
     category: 'health-fitness',
     metaTitle: 'Swimming Lap Time Calculator - Track Pool Speed',
     metaDescription: 'Determine your lap time for any swimming distance to monitor performance and improve speed.'
   },
-  { 
-    id: 280, 
-    name: 'Rowing Split Calculator', 
-    description: 'Convert between 500m split, time, and distance.', 
-    slug: 'rowing-split-calculator', 
+  {
+    id: 280,
+    name: 'Rowing Split Calculator',
+    description: 'Convert between 500m split, time, and distance.',
+    slug: 'rowing-split-calculator',
     category: 'health-fitness',
     metaTitle: 'Rowing Split Calculator - Pace Per 500m',
     metaDescription: 'Calculate your rowing split time per 500 meters to track performance and set fitness goals.'
   },
-  { 
-    id: 281, 
-    name: 'METs (Metabolic Equivalent) Calories Burned Calculator', 
-    description: 'Calculate calories burned using METs, weight, and duration.', 
-    slug: 'mets-calories-burned-calculator', 
+  {
+    id: 281,
+    name: 'METs (Metabolic Equivalent) Calories Burned Calculator',
+    description: 'Calculate calories burned using METs, weight, and duration.',
+    slug: 'mets-calories-burned-calculator',
     category: 'health-fitness',
     metaTitle: 'METS Calories Burned Calculator - Activity Tracker',
     metaDescription: 'Estimate calories burned for any activity using METs values and your body weight.'
   },
-  { 
-    id: 282, 
-    name: '1-Rep Max Strength Calculator', 
-    description: 'Estimate one-repetition maximum (1RM) from weight and reps.', 
-    slug: 'one-rep-max-strength-calculator', 
+  {
+    id: 282,
+    name: '1-Rep Max Strength Calculator',
+    description: 'Estimate one-repetition maximum (1RM) from weight and reps.',
+    slug: 'one-rep-max-strength-calculator',
     category: 'health-fitness',
     metaTitle: '1-Rep Max Calculator - Maximum Strength Test',
     metaDescription: 'Calculate your one-repetition maximum to track strength levels and plan your workouts.'
@@ -2568,20 +2568,20 @@ export const calculators: Calculator[] = [
   { id: 290, name: 'PDCAAS Protein Quality Calculator', description: 'Estimate protein quality with PDCAAS from amino acid score and digestibility.', slug: 'pdcaas-calculator', category: 'health-fitness' },
   { id: 291, name: 'Vitamin D Sun Exposure Calculator', description: 'Roughly estimate vitamin D from sun exposure parameters.', slug: 'vitamin-d-sun-exposure-calculator', category: 'health-fitness' },
   { id: 292, name: 'Training Stress Score (TSS) Calculator', description: 'Estimate cycling/running TSS from workout intensity and duration.', slug: 'training-stress-score-calculator', category: 'health-fitness' },
-  { 
-    id: 293, 
-    name: 'Strength-to-Weight Ratio Calculator', 
-    description: 'Compare your 1RM to body weight for key lifts.', 
-    slug: 'strength-to-weight-ratio-calculator', 
+  {
+    id: 293,
+    name: 'Strength-to-Weight Ratio Calculator',
+    description: 'Compare your 1RM to body weight for key lifts.',
+    slug: 'strength-to-weight-ratio-calculator',
     category: 'health-fitness',
     metaTitle: 'Strength-to-Weight Ratio Calculator - Fitness Metric',
     metaDescription: 'Measure your strength-to-weight ratio to evaluate relative strength and athletic performance.'
   },
-  { 
-    id: 294, 
-    name: 'Training Volume Calculator', 
-    description: 'Total sets × reps × weight across exercises and sessions.', 
-    slug: 'training-volume-calculator', 
+  {
+    id: 294,
+    name: 'Training Volume Calculator',
+    description: 'Total sets × reps × weight across exercises and sessions.',
+    slug: 'training-volume-calculator',
     category: 'health-fitness',
     metaTitle: 'Training Volume Calculator - Workout Planner',
     metaDescription: 'Calculate total training volume for exercises to optimize workouts and track progress effectively.'
@@ -2618,38 +2618,38 @@ export const calculators: Calculator[] = [
   { id: 3025, name: 'Food Sensitivity Tendency Insight', description: 'Explore general food sensitivity tendencies using family background and everyday patterns as context only.', slug: 'food-allergy-risk-score-calculator', category: 'wellness' },
   { id: 3026, name: 'Total Energy Expenditure (TEE) Calculator', description: 'Calculate your daily total energy expenditure including BMR, activity, and exercise for comprehensive calorie needs.', slug: 'total-energy-expenditure-calculator', category: 'health-fitness' },
   { id: 3027, name: 'Respiratory Quotient (RQ) Calculator', description: 'Calculate your respiratory quotient to understand fuel utilization during exercise and metabolic efficiency.', slug: 'respiratory-quotient-calculator', category: 'health-fitness' },
-  { 
-    id: 3208, 
-    name: 'Cardiometabolic Age Calculator', 
-    description: 'Calculate your metabolic age compared to chronological age based on cardiovascular and metabolic risk factors.', 
-    slug: 'cardiometabolic-age-calculator', 
+  {
+    id: 3208,
+    name: 'Cardiometabolic Age Calculator',
+    description: 'Calculate your metabolic age compared to chronological age based on cardiovascular and metabolic risk factors.',
+    slug: 'cardiometabolic-age-calculator',
     category: 'health-fitness',
     metaTitle: 'Cardiometabolic Age Calculator - Metabolic Health Assessment',
     metaDescription: 'Calculate your cardiometabolic age to assess how your cardiovascular and metabolic health compares to your chronological age.'
   },
-  { 
-    id: 3209, 
-    name: 'Fat Mass Index Calculator', 
-    description: 'Calculate your Fat Mass Index (FMI) to assess body fat mass relative to height for better body composition evaluation.', 
-    slug: 'fat-mass-index-calculator', 
+  {
+    id: 3209,
+    name: 'Fat Mass Index Calculator',
+    description: 'Calculate your Fat Mass Index (FMI) to assess body fat mass relative to height for better body composition evaluation.',
+    slug: 'fat-mass-index-calculator',
     category: 'health-fitness',
     metaTitle: 'Fat Mass Index Calculator - Body Fat Assessment',
     metaDescription: 'Calculate your Fat Mass Index to assess body fat mass relative to height for more accurate body composition and health evaluation.'
   },
-  { 
-    id: 3210, 
-    name: 'Ideal Waist Size Calculator', 
-    description: 'Calculate your ideal waist circumference based on height, gender, and ethnicity for optimal health and reduced disease risk.', 
-    slug: 'ideal-waist-size-calculator', 
+  {
+    id: 3210,
+    name: 'Ideal Waist Size Calculator',
+    description: 'Calculate your ideal waist circumference based on height, gender, and ethnicity for optimal health and reduced disease risk.',
+    slug: 'ideal-waist-size-calculator',
     category: 'health-fitness',
     metaTitle: 'Ideal Waist Size Calculator - Optimal Waist Circumference',
     metaDescription: 'Calculate your ideal waist size based on height, gender, and ethnicity to assess health risks and optimize body composition for better health outcomes.'
   },
-  { 
-    id: 3211, 
-    name: 'Omega-3 Daily Requirement Calculator', 
-    description: 'Calculate your personalized daily omega-3 fatty acid requirements based on age, health conditions, and lifestyle factors.', 
-    slug: 'omega3-daily-requirement-calculator', 
+  {
+    id: 3211,
+    name: 'Omega-3 Daily Requirement Calculator',
+    description: 'Calculate your personalized daily omega-3 fatty acid requirements based on age, health conditions, and lifestyle factors.',
+    slug: 'omega3-daily-requirement-calculator',
     category: 'health-fitness',
     metaTitle: 'Omega-3 Daily Requirement Calculator - Personalized Fatty Acid Needs',
     metaDescription: 'Calculate your personalized omega-3 daily requirements including EPA and DHA based on age, gender, health conditions, and lifestyle for optimal nutrition and health.'
@@ -4266,7 +4266,7 @@ export const calculators: Calculator[] = [
     metaTitle: 'Testosterone-to-Cortisol Ratio Calculator',
     metaDescription: 'Calculate testosterone-to-cortisol ratio from blood test results to assess anabolic-catabolic balance and recovery capacity.'
   },
- 
+
   {
     id: 4535,
     name: 'Male Wellness Lifestyle Index Calculator',
@@ -4276,7 +4276,7 @@ export const calculators: Calculator[] = [
     metaTitle: 'Male Wellness Lifestyle Index Calculator',
     metaDescription: 'Estimate your wellness index and lifestyle score based on sleep, stress, exercise, diet, hydration, and alcohol consumption. General wellness insights only, not medical evaluation.'
   },
- 
+
   {
     id: 4538,
     name: 'Muscle Recovery Time Estimator',
@@ -5036,26 +5036,26 @@ export const calculators: Calculator[] = [
     metaDescription:
       'Calculate a sleep optimization routine score and circadian support index based on bedtime consistency, wake-time stability, bedroom environment, and pre-sleep wind-down practices.'
   },
-   {
-     id: 7328,
-     name: 'HRV to Stress Correlation Estimator',
-     description: 'Estimate how changes in your HRV may correlate with perceived stress and sleep quality.',
-     slug: 'hrv-to-stress-correlation-estimator',
-     category: 'health-fitness',
-     metaTitle: 'HRV to Stress Correlation Estimator',
-     metaDescription:
-       'Estimate how closely your HRV changes appear to track with perceived stress and sleep quality using a simple correlation index.'
-   },
-   {
-     id: 7329,
-     name: 'Circadian Rhythm Alignment Score',
-     description: 'Estimate how well your daily schedule, light exposure, and evening habits align with your circadian rhythm.',
-     slug: 'circadian-rhythm-alignment-score',
-     category: 'health-fitness',
-     metaTitle: 'Circadian Rhythm Alignment Score Calculator',
-     metaDescription:
-       'Calculate a circadian rhythm alignment score and daytime function index based on social jetlag, morning light exposure, evening screen use, and schedule stability.'
-   },
+  {
+    id: 7328,
+    name: 'HRV to Stress Correlation Estimator',
+    description: 'Estimate how changes in your HRV may correlate with perceived stress and sleep quality.',
+    slug: 'hrv-to-stress-correlation-estimator',
+    category: 'health-fitness',
+    metaTitle: 'HRV to Stress Correlation Estimator',
+    metaDescription:
+      'Estimate how closely your HRV changes appear to track with perceived stress and sleep quality using a simple correlation index.'
+  },
+  {
+    id: 7329,
+    name: 'Circadian Rhythm Alignment Score',
+    description: 'Estimate how well your daily schedule, light exposure, and evening habits align with your circadian rhythm.',
+    slug: 'circadian-rhythm-alignment-score',
+    category: 'health-fitness',
+    metaTitle: 'Circadian Rhythm Alignment Score Calculator',
+    metaDescription:
+      'Calculate a circadian rhythm alignment score and daytime function index based on social jetlag, morning light exposure, evening screen use, and schedule stability.'
+  },
   {
     id: 5100,
     name: 'Hydration Balance with Alcohol Intake Calculator',
@@ -6849,11 +6849,29 @@ export const calculators: Calculator[] = [
     metaTitle: 'Payback Period (Customer Acquisition) Calculator',
     metaDescription: 'Estimate months to recover CAC using monthly gross profit per customer to assess efficiency.'
   },
+  {
+    id: 10034,
+    name: 'Prescription Generic Savings Calculator',
+    description: 'Calculate potential savings by switching from brand-name prescription drugs to generic equivalents over time.',
+    slug: 'prescription-generic-savings-calculator',
+    category: 'finance',
+    metaTitle: 'Prescription Generic Savings Calculator - Brand vs Generic Cost',
+    metaDescription: 'Estimate your long-term savings by switching from brand-name medications to generic alternatives using this calculator.',
+  },
+  {
+    id: 10035,
+    name: 'Medical Tourism Savings Estimator',
+    description: 'Estimate cost savings for medical procedures abroad including travel, accommodation, and improved purchasing power.',
+    slug: 'medical-tourism-savings-estimator',
+    category: 'finance',
+    metaTitle: 'Medical Tourism Savings Estimator - Surgery Cost Comparison',
+    metaDescription: 'Compare the cost of medical procedures at home versus abroad, factoring in total travel and accommodation expenses.',
+  },
 ];
 
-    
 
-    
+
+
 
 
 
