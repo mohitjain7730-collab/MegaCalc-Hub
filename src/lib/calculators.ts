@@ -6777,6 +6777,78 @@ export const calculators: Calculator[] = [
     metaTitle: 'Equity Cap Table Generator - Ownership Breakdown',
     metaDescription: 'Create a simplified equity cap table with ownership percentages across founders, option pool, and investors.'
   },
+  {
+    id: 6500,
+    name: 'Option Pool Allocation Calculator',
+    description: 'Size an option pool pre- or post-money and see dilution across founders, investors, and employees.',
+    slug: 'option-pool-allocation-calculator',
+    category: 'finance',
+    metaTitle: 'Option Pool Allocation Calculator',
+    metaDescription: 'Calculate option pool size, founder dilution, investor ownership, and incremental top-up needed for a funding round.'
+  },
+  {
+    id: 6501,
+    name: 'Runway Extension Calculator',
+    description: 'Estimate runway, burn after savings, and runway extension from new capital.',
+    slug: 'runway-extension-calculator',
+    category: 'finance',
+    metaTitle: 'Runway Extension Calculator',
+    metaDescription: 'Calculate startup runway, savings impact, and how new funding extends cash runway.'
+  },
+  {
+    id: 6502,
+    name: 'Burn Multiple (Efficiency) Calculator',
+    description: 'Calculate burn multiple, period burn, and cash-to-ARR efficiency.',
+    slug: 'burn-multiple-efficiency-calculator',
+    category: 'finance',
+    metaTitle: 'Burn Multiple (Efficiency) Calculator',
+    metaDescription: 'Measure capital efficiency by comparing burn to net new ARR over a period.'
+  },
+  {
+    id: 6503,
+    name: 'ARR (Annual Recurring Revenue) Growth Calculator',
+    description: 'Compute net new ARR, growth percentage, and annualized CAGR over any period.',
+    slug: 'arr-growth-calculator',
+    category: 'finance',
+    metaTitle: 'ARR Growth Calculator',
+    metaDescription: 'Calculate ARR growth, net new ARR, and CAGR to track recurring revenue momentum.'
+  },
+  {
+    id: 6504,
+    name: 'MRR (Monthly Recurring Revenue) Calculator',
+    description: 'Calculate ending MRR, net new MRR, growth rate, and net dollar retention.',
+    slug: 'mrr-calculator',
+    category: 'finance',
+    metaTitle: 'MRR (Monthly Recurring Revenue) Calculator',
+    metaDescription: 'Compute MRR movements, net new MRR, growth %, and NDR from subscription changes.'
+  },
+  {
+    id: 6505,
+    name: 'SaaS CAC (Customer Acquisition Cost) Calculator',
+    description: 'Calculate CAC and adjusted CAC including onboarding costs to measure acquisition efficiency.',
+    slug: 'saas-cac-calculator',
+    category: 'finance',
+    metaTitle: 'SaaS CAC (Customer Acquisition Cost) Calculator',
+    metaDescription: 'Measure CAC and adjusted CAC from sales/marketing spend, customers acquired, and onboarding costs.'
+  },
+  {
+    id: 6506,
+    name: 'LTV (Customer Lifetime Value) Calculator',
+    description: 'Calculate LTV using ARPA, gross margin, churn rate, and discount rate.',
+    slug: 'ltv-calculator',
+    category: 'finance',
+    metaTitle: 'LTV (Customer Lifetime Value) Calculator',
+    metaDescription: 'Estimate customer lifetime value from ARPA, gross margin, churn, and discounting.'
+  },
+  {
+    id: 6509,
+    name: 'Payback Period (Customer Acquisition) Calculator',
+    description: 'Calculate CAC payback period from CAC and monthly gross profit per customer.',
+    slug: 'payback-period-customer-acquisition-calculator',
+    category: 'finance',
+    metaTitle: 'Payback Period (Customer Acquisition) Calculator',
+    metaDescription: 'Estimate months to recover CAC using monthly gross profit per customer to assess efficiency.'
+  },
 ];
 
     
