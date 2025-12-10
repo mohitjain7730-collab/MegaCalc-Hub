@@ -1,0 +1,7 @@
+﻿
+> nextn@0.1.0 build
+> cross-env NODE_OPTIONS=--max-old-space-size=6144 next build
+
+   Γû▓ Next.js 15.3.6
+
+   Creating an optimized production build ...

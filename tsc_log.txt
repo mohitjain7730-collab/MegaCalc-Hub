@@ -1,0 +1,26 @@
+﻿src/components/calculators/finance/career-roi-calculator.tsx(68,6): error TS2554: Expected 0-1 arguments, but got 2.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(5,25): error TS2323: Cannot redeclare exported variable 'default'.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(5,25): error TS2393: Duplicate function implementation.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(6,31): error TS2304: Cannot find name 'useState'.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(98,16): error TS2304: Cannot find name 'Target'.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(104,44): error TS7006: Parameter 'rec' implicitly has an 'any' type.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(104,49): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(113,16): error TS2304: Cannot find name 'Activity'.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(119,33): error TS7006: Parameter 'step' implicitly has an 'any' type.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(182,25): error TS2323: Cannot redeclare exported variable 'default'.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(182,25): error TS2393: Duplicate function implementation.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(183,31): error TS2304: Cannot find name 'useState'.
+src/components/calculators/finance/copay-vs-deductible-breakeven-calculator.tsx(201,3): error TS2304: Cannot find name 'useState'.
+src/components/calculators/finance/dental-cost-comparison-calculator.tsx(161,6): error TS2554: Expected 0-1 arguments, but got 2.
+src/components/calculators/finance/health-insurance-subsidy-eligibility-calculator.tsx(104,6): error TS2554: Expected 0-1 arguments, but got 2.
+src/components/calculators/finance/health-plan-coverage-gap-estimator.tsx(76,6): error TS2554: Expected 0-1 arguments, but got 2.
+src/components/calculators/finance/health-plan-coverage-gap-estimator.tsx(236,118): error TS2322: Type 'undefined' is not assignable to type 'number'.
+src/components/calculators/finance/hospital-stay-cost-by-specialty-calculator.tsx(77,6): error TS2554: Expected 0-1 arguments, but got 2.
+src/components/calculators/finance/hospital-stay-cost-by-specialty-calculator.tsx(82,42): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ cardiology: number; orthopedics: number; neurology: number; oncology: number; 'general-surgery': number; }'.
+  No index signature with a parameter of type 'string' was found on type '{ cardiology: number; orthopedics: number; neurology: number; oncology: number; 'general-surgery': number; }'.
+src/components/calculators/finance/hospital-stay-cost-by-specialty-calculator.tsx(199,92): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ cardiology: number; orthopedics: number; neurology: number; oncology: number; 'general-surgery': number; }'.
+  No index signature with a parameter of type 'string' was found on type '{ cardiology: number; orthopedics: number; neurology: number; oncology: number; 'general-surgery': number; }'.
+src/components/calculators/finance/prescription-refill-cost-estimator.tsx(213,118): error TS2322: Type 'undefined' is not assignable to type 'number'.
+src/components/calculators/finance/savings-rate-vs-goal-timeline-visualizer.tsx(72,6): error TS2554: Expected 0-1 arguments, but got 2.
+src/components/calculators/finance/savings-rate-vs-goal-timeline-visualizer.tsx(221,108): error TS2322: Type 'undefined' is not assignable to type 'number'.
+src/components/calculators/finance/spending-pattern-analyzer.tsx(153,118): error TS2322: Type 'undefined' is not assignable to type 'number'.
