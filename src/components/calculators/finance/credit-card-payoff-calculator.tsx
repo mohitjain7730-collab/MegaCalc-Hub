@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CreditCard, Calendar, DollarSign, TrendingDown, Info, AlertCircle, Target, Calculator, Clock, Zap } from 'lucide-react';
+import { CreditCard, Calendar, DollarSign, TrendingDown, Info, AlertCircle, Target, Calculator, Clock, Zap, FunctionSquare, Shield, Check, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -23,14 +23,14 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CreditCardPayoffCalculator() {
-  const [result, setResult] = useState<{ 
+  const [result, setResult] = useState<{
     payoffTime: number;
     totalInterest: number;
     totalPayments: number;
     monthlyPayment: number;
     strategy: string;
     interpretation: string;
-    recommendations: string[];
+    recommendations: { title: string; description: string; action?: string }[];
     warningSigns: string[];
     paymentSchedule: { month: number; balance: number; payment: number; interest: number; principal: number }[];
   } | null>(null);
@@ -38,12 +38,12 @@ export default function CreditCardPayoffCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      currentBalance: undefined, 
-      annualInterestRate: undefined, 
-      minimumPayment: undefined, 
+      currentBalance: undefined,
+      annualInterestRate: undefined,
+      minimumPayment: undefined,
       extraPayment: undefined,
       payoffStrategy: undefined
-    } 
+    }
   });
 
   const calculatePayoff = (balance: number, rate: number, payment: number) => {
@@ -51,13 +51,13 @@ export default function CreditCardPayoffCalculator() {
     let currentBalance = balance;
     let totalInterest = 0;
     let month = 0;
-    const schedule = [];
+    const schedule: { month: number; balance: number; payment: number; interest: number; principal: number }[] = [];
 
     while (currentBalance > 0.01 && month < 600) { // Max 50 years
       const interestPayment = currentBalance * monthlyRate;
       const principalPayment = Math.min(payment - interestPayment, currentBalance);
       const actualPayment = principalPayment + interestPayment;
-      
+
       totalInterest += interestPayment;
       currentBalance -= principalPayment;
       month++;
@@ -76,16 +76,16 @@ export default function CreditCardPayoffCalculator() {
 
   const calculate = (v: FormValues) => {
     if (v.currentBalance == null || v.annualInterestRate == null || v.minimumPayment == null) return null;
-    
+
     const extraPayment = v.extraPayment || 0;
     const totalPayment = v.minimumPayment + extraPayment;
-    
+
     return calculatePayoff(v.currentBalance, v.annualInterestRate, totalPayment);
   };
 
   const interpret = (payoffTime: number, totalInterest: number, originalBalance: number) => {
     const interestPercentage = (totalInterest / originalBalance) * 100;
-    
+
     if (payoffTime > 300) return 'Very long payoff time—consider debt consolidation or balance transfer.';
     if (payoffTime > 120) return 'Long payoff time—focus on increasing payments and reducing expenses.';
     if (payoffTime > 60) return 'Moderate payoff time—good progress, consider accelerating payments.';
@@ -103,37 +103,58 @@ export default function CreditCardPayoffCalculator() {
   };
 
   const getRecommendations = (payoffTime: number, totalInterest: number, originalBalance: number) => {
-    const recommendations = [];
-    
+    const recs: { title: string; description: string; action?: string }[] = [];
+
     if (payoffTime > 300) {
-      recommendations.push('Consider debt consolidation loan with lower interest rate');
-      recommendations.push('Look into balance transfer cards with 0% intro APR');
-      recommendations.push('Cut all non-essential expenses immediately');
-      recommendations.push('Increase income through side hustles or job change');
-      recommendations.push('Seek professional debt counseling');
-    } else if (payoffTime > 120) {
-      recommendations.push('Increase monthly payments by any amount possible');
-      recommendations.push('Use windfalls (tax refunds, bonuses) for extra payments');
-      recommendations.push('Consider debt avalanche method (highest interest first)');
-      recommendations.push('Track spending to find money for extra payments');
-    } else if (payoffTime > 60) {
-      recommendations.push('Maintain current payment strategy');
-      recommendations.push('Consider debt snowball for psychological wins');
-      recommendations.push('Build emergency fund to prevent new debt');
-      recommendations.push('Start saving for future goals');
+      recs.push({
+        title: "Debt Consolidation",
+        description: "Payoff time exceeds 25 years with current payments.",
+        action: "Seek a consolidation loan with a lower rate."
+      });
+      recs.push({
+        title: "Balance Transfer",
+        description: "High interest is the main enemy here.",
+        action: "Look for 0% intro APR balance transfer cards."
+      });
+    } else if (payoffTime > 120) { // 10 years
+      recs.push({
+        title: "Accelerate Payments",
+        description: "You are on a long road to debt freedom (£10+ years).",
+        action: "Try to double your minimum payment if possible."
+      });
+      recs.push({
+        title: "Snowball Method",
+        description: "You need momentum.",
+        action: "Focus on smaller debts first to free up cash flow."
+      });
+    } else if (payoffTime > 60) { // 5 years
+      recs.push({
+        title: "Moderate Timeline",
+        description: "You are making steady progress but paying significant interest.",
+        action: "Round up your monthly payments to the nearest $50."
+      });
     } else {
-      recommendations.push('Excellent debt management!');
-      recommendations.push('Focus on building emergency fund');
-      recommendations.push('Start investing for long-term goals');
-      recommendations.push('Consider debt-free lifestyle maintenance');
+      recs.push({
+        title: "Excellent Progress",
+        description: "You are on track to be debt-free quickly.",
+        action: "Prepare to redirect these payments to savings once done."
+      });
     }
 
-    return recommendations;
+    if (totalInterest > originalBalance * 0.5) {
+      recs.push({
+        title: "Interest Trap",
+        description: "You are paying more than 50% of your principal in interest.",
+        action: "Call your issuer to request a lower rate."
+      });
+    }
+
+    return recs;
   };
 
   const getWarningSigns = (payoffTime: number, totalInterest: number, originalBalance: number) => {
-    const signs = [];
-    
+    const signs: string[] = [];
+
     if (payoffTime > 300) {
       signs.push('Payoff time exceeds 25 years - unsustainable');
       signs.push('Total interest exceeds original balance');
@@ -152,12 +173,12 @@ export default function CreditCardPayoffCalculator() {
   const onSubmit = (values: FormValues) => {
     const calculation = calculate(values);
     if (!calculation) { setResult(null); return; }
-    
+
     const { payoffTime, totalInterest, schedule } = calculation;
     const totalPayments = values.currentBalance! + totalInterest;
     const monthlyPayment = values.minimumPayment! + (values.extraPayment || 0);
-    
-    setResult({ 
+
+    setResult({
       payoffTime,
       totalInterest,
       totalPayments,
@@ -185,114 +206,114 @@ export default function CreditCardPayoffCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField 
-                  control={form.control} 
-                  name="currentBalance" 
+                <FormField
+                  control={form.control}
+                  name="currentBalance"
                   render={({ field }) => (
-              <FormItem>
+                    <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <DollarSign className="h-4 w-4" />
                         Current Balance
                       </FormLabel>
-                <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 5000" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                      <FormControl>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 5000"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                         />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-                  )} 
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="annualInterestRate" 
+                <FormField
+                  control={form.control}
+                  name="annualInterestRate"
                   render={({ field }) => (
-              <FormItem>
+                    <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <TrendingDown className="h-4 w-4" />
                         Annual Interest Rate (%)
                       </FormLabel>
-                <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 18.99" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                      <FormControl>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 18.99"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                         />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-                  )} 
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="minimumPayment" 
+                <FormField
+                  control={form.control}
+                  name="minimumPayment"
                   render={({ field }) => (
-              <FormItem>
+                    <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <Calculator className="h-4 w-4" />
                         Minimum Payment
                       </FormLabel>
-                <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 150" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                      <FormControl>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 150"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                         />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-                  )} 
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="extraPayment" 
+                <FormField
+                  control={form.control}
+                  name="extraPayment"
                   render={({ field }) => (
-              <FormItem>
+                    <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <Zap className="h-4 w-4" />
                         Extra Payment (Optional)
                       </FormLabel>
-                <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 100" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                      <FormControl>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 100"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                         />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-                  )} 
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="payoffStrategy" 
+                <FormField
+                  control={form.control}
+                  name="payoffStrategy"
                   render={({ field }) => (
-              <FormItem>
+                    <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <Target className="h-4 w-4" />
                         Payoff Strategy
                       </FormLabel>
-                <FormControl>
-                        <select 
-                          className="border rounded h-10 px-3 w-full bg-background" 
-                          value={field.value ?? ''} 
+                      <FormControl>
+                        <select
+                          className="border rounded h-10 px-3 w-full bg-background"
+                          value={field.value ?? ''}
                           onChange={(e) => field.onChange(e.target.value as any)}
                         >
                           <option value="">Select strategy</option>
@@ -300,18 +321,18 @@ export default function CreditCardPayoffCalculator() {
                           <option value="fixed">Fixed Payment</option>
                           <option value="snowball">Debt Snowball</option>
                           <option value="avalanche">Debt Avalanche</option>
-                  </select>
-                </FormControl>
+                        </select>
+                      </FormControl>
                       <FormMessage />
-              </FormItem>
-                  )} 
+                    </FormItem>
+                  )}
                 />
-          </div>
+              </div>
               <Button type="submit" className="w-full md:w-auto">
                 Calculate Payoff Plan
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -342,7 +363,7 @@ export default function CreditCardPayoffCalculator() {
                     {result.payoffTime} total months
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-red-50 dark:bg-red-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingDown className="h-5 w-5 text-red-600" />
@@ -354,20 +375,20 @@ export default function CreditCardPayoffCalculator() {
                   <p className="text-sm text-muted-foreground mt-1">
                     Interest cost
                   </p>
-                    </div>
-                
+                </div>
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <DollarSign className="h-5 w-5 text-green-600" />
                     <span className="text-sm font-medium text-muted-foreground">Monthly Payment</span>
-                        </div>
+                  </div>
                   <p className="text-3xl font-bold text-green-600">
                     ${result.monthlyPayment.toLocaleString()}
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     {result.strategy}
                   </p>
-                        </div>
+                </div>
               </div>
 
               <Alert className="mb-6">
@@ -416,22 +437,30 @@ export default function CreditCardPayoffCalculator() {
               {/* Detailed Recommendations */}
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Smart Actions */}
                   <Card>
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
+                      <CardTitle className="flex items-center gap-2">
                         <Target className="h-5 w-5" />
-                        Payoff Recommendations
+                        Smart Actions & Recommendations
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.recommendations.map((rec, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{rec}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <CardContent className="space-y-4">
+                      {result.recommendations.map((rec, index) => (
+                        <div key={index} className="p-4 bg-muted/50 rounded-lg space-y-2">
+                          <div className="flex items-start gap-2">
+                            <Check className="h-4 w-4 text-green-600 mt-1 shrink-0" />
+                            <h4 className="font-semibold">{rec.title}</h4>
+                          </div>
+                          <p className="text-sm text-muted-foreground pl-6 mb-2">{rec.description}</p>
+                          {rec.action && (
+                            <div className="flex items-center gap-2 pl-6 text-sm text-primary font-medium">
+                              <ArrowRight className="h-3 w-3" />
+                              {rec.action}
+                            </div>
+                          )}
+                        </div>
+                      ))}
                     </CardContent>
                   </Card>
 
@@ -453,12 +482,46 @@ export default function CreditCardPayoffCalculator() {
                       </ul>
                     </CardContent>
                   </Card>
-                    </div>
                 </div>
+
+                {/* Formula Used */}
+
+
+              </div>
             </CardContent>
-        </Card>
+          </Card>
         </div>
       )}
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              N = -ln(1 - (r*P)/A) / ln(1+r)
+            </p>
+          </div>
+          <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ul className="space-y-1">
+              <li><span className="font-semibold">N</span> = Number of Months</li>
+              <li><span className="font-semibold">P</span> = Principal Balance</li>
+              <li><span className="font-semibold">r</span> = Monthly Interest Rate</li>
+            </ul>
+            <ul className="space-y-1">
+              <li><span className="font-semibold">A</span> = Monthly Payment</li>
+              <li><span className="font-semibold">ln</span> = Natural Logarithm</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+
 
       {/* Educational Content */}
       <div className="space-y-6">
@@ -489,7 +552,7 @@ export default function CreditCardPayoffCalculator() {
                 Pay minimums on all debts, then put extra money toward the highest interest rate first. Mathematically optimal for saving money on interest.
               </p>
             </div>
-              <div>
+            <div>
               <h4 className="font-semibold text-foreground mb-2">Fixed Payment Strategy</h4>
               <p className="text-muted-foreground">
                 Pay the same amount each month regardless of minimum payment changes. Provides predictable budgeting and faster payoff as balance decreases.
@@ -557,110 +620,110 @@ export default function CreditCardPayoffCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Credit Card Payoff, Amortization, and Interest Cost" />
-    <meta itemProp="description" content="An expert guide to calculating credit card payoff time and total interest cost. Covers the compounding structure, minimum payment dynamics, acceleration strategies, and the mechanics of revolving debt amortization." />
-    <meta itemProp="keywords" content="credit card payoff calculation, revolving debt amortization, how credit card interest is calculated, minimum payment analysis, reducing credit card debt, compounding interest debt trap, time value of money credit cards" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-credit-card-payoff-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Credit Card Payoff, Amortization, and Interest Cost" />
+          <meta itemProp="description" content="An expert guide to calculating credit card payoff time and total interest cost. Covers the compounding structure, minimum payment dynamics, acceleration strategies, and the mechanics of revolving debt amortization." />
+          <meta itemProp="keywords" content="credit card payoff calculation, revolving debt amortization, how credit card interest is calculated, minimum payment analysis, reducing credit card debt, compounding interest debt trap, time value of money credit cards" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-credit-card-payoff-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Credit Card Payoff: Understanding and Conquering High-Interest Revolving Debt</h1>
-    <p className="text-lg italic text-muted-foreground">Master the mathematics of credit card debt amortization to calculate your true payoff timeline and minimize exponential interest costs.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Credit Card Payoff: Understanding and Conquering High-Interest Revolving Debt</h1>
+          <p className="text-lg italic text-muted-foreground">Master the mathematics of credit card debt amortization to calculate your true payoff timeline and minimize exponential interest costs.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#mechanics" className="hover:underline">Revolving Debt Mechanics and Daily Compounding</a></li>
-        <li><a href="#payoff-formula" className="hover:underline">The Payoff Formula and Solving for Time (NPER)</a></li>
-        <li><a href="#minimum-payment" className="hover:underline">The Trap of the Minimum Payment</a></li>
-        <li><a href="#cost-reduction" className="hover:underline">Accelerated Payoff Strategies and Interest Cost Reduction</a></li>
-        <li><a href="#apr-apy" className="hover:underline">Nominal Rate vs. Effective Annual Rate: The True Cost of Debt</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#mechanics" className="hover:underline">Revolving Debt Mechanics and Daily Compounding</a></li>
+            <li><a href="#payoff-formula" className="hover:underline">The Payoff Formula and Solving for Time (NPER)</a></li>
+            <li><a href="#minimum-payment" className="hover:underline">The Trap of the Minimum Payment</a></li>
+            <li><a href="#cost-reduction" className="hover:underline">Accelerated Payoff Strategies and Interest Cost Reduction</a></li>
+            <li><a href="#apr-apy" className="hover:underline">Nominal Rate vs. Effective Annual Rate: The True Cost of Debt</a></li>
+          </ul>
+          <hr />
 
-    {/* REVOLVING DEBT MECHANICS AND DAILY COMPOUNDING */}
-    <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Revolving Debt Mechanics and Daily Compounding</h2>
-    <p>Credit card debt is categorized as <strong className="font-semibold">revolving debt</strong>—a line of credit that renews as it is paid off. Unlike installment loans (like mortgages) which have a fixed end date and payment schedule, credit card balances are subject to variable usage and, crucially, <strong className="font-semibold">daily compounding interest</strong>.</p>
+          {/* REVOLVING DEBT MECHANICS AND DAILY COMPOUNDING */}
+          <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Revolving Debt Mechanics and Daily Compounding</h2>
+          <p>Credit card debt is categorized as <strong className="font-semibold">revolving debt</strong>—a line of credit that renews as it is paid off. Unlike installment loans (like mortgages) which have a fixed end date and payment schedule, credit card balances are subject to variable usage and, crucially, <strong className="font-semibold">daily compounding interest</strong>.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Daily Compounding Structure</h3>
-    <p>Most credit card companies compound interest daily. This means the **Annual Percentage Rate (APR)** is divided by 365, and that rate is applied to the <strong className="font-semibold">Average Daily Balance (ADB)</strong>. The interest accrued each day is added to the principal, and the next day's interest is charged on that slightly higher balance. This aggressive frequency accelerates the effect of negative compounding.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Daily Compounding Structure</h3>
+          <p>Most credit card companies compound interest daily. This means the **Annual Percentage Rate (APR)** is divided by 365, and that rate is applied to the <strong className="font-semibold">Average Daily Balance (ADB)</strong>. The interest accrued each day is added to the principal, and the next day's interest is charged on that slightly higher balance. This aggressive frequency accelerates the effect of negative compounding.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Average Daily Balance (ADB)</h3>
-    <p>The ADB is calculated by summing the principal balance for each day in the billing cycle and dividing by the number of days in the cycle. Any payments or new purchases made during the month impact the daily balance, but the high-frequency compounding ensures debt growth is continuous.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Average Daily Balance (ADB)</h3>
+          <p>The ADB is calculated by summing the principal balance for each day in the billing cycle and dividing by the number of days in the cycle. Any payments or new purchases made during the month impact the daily balance, but the high-frequency compounding ensures debt growth is continuous.</p>
 
-<hr />
+          <hr />
 
-    {/* THE PAYOFF FORMULA AND SOLVING FOR TIME (NPER) */}
-    <h2 id="payoff-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Payoff Formula and Solving for Time (NPER)</h2>
-    <p>Calculating the exact payoff timeline for credit card debt requires solving for the **number of periods** (N) in the Present Value of Annuity formula. In this context, the debt balance is the <strong className="font-semibold">Present Value (PV)</strong>, and the planned fixed monthly payment is the <strong className="font-semibold">Payment (PMT)</strong>. The goal is to find the required number of periods (N) that drives the PV to zero.</p>
+          {/* THE PAYOFF FORMULA AND SOLVING FOR TIME (NPER) */}
+          <h2 id="payoff-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Payoff Formula and Solving for Time (NPER)</h2>
+          <p>Calculating the exact payoff timeline for credit card debt requires solving for the **number of periods** (N) in the Present Value of Annuity formula. In this context, the debt balance is the <strong className="font-semibold">Present Value (PV)</strong>, and the planned fixed monthly payment is the <strong className="font-semibold">Payment (PMT)</strong>. The goal is to find the required number of periods (N) that drives the PV to zero.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Loan Amortization Identity</h3>
-    <p>The fundamental equation used to solve for the number of payments is derived from the Present Value of Annuity formula:</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'N = -log(1 - (PV * r) / PMT) / log(1 + r)'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Loan Amortization Identity</h3>
+          <p>The fundamental equation used to solve for the number of payments is derived from the Present Value of Annuity formula:</p>
 
-    <p>Where N is the number of months, PV is the current balance, PMT is the constant monthly payment, and r is the monthly interest rate (the Annual Percentage Rate divided by 12). This logarithm-based formula reveals the highly non-linear relationship between the payment amount and the time required to eliminate the debt.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'N = -log(1 - (PV * r) / PMT) / log(1 + r)'}
+            </p>
+          </div>
 
-<hr />
+          <p>Where N is the number of months, PV is the current balance, PMT is the constant monthly payment, and r is the monthly interest rate (the Annual Percentage Rate divided by 12). This logarithm-based formula reveals the highly non-linear relationship between the payment amount and the time required to eliminate the debt.</p>
 
-    {/* THE TRAP OF THE MINIMUM PAYMENT */}
-    <h2 id="minimum-payment" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Trap of the Minimum Payment</h2>
-    <p>The <strong className="font-semibold">minimum payment</strong> calculation is designed to maximize the lender's interest income over the longest possible time, not to facilitate rapid debt payoff. Relying solely on the minimum payment can turn short-term debt into a decades-long financial burden.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Minimum Payment Calculation Dynamics</h3>
-    <p>The minimum payment is typically calculated as the greater of two options:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li>A small percentage (e.g., 1% to 3%) of the outstanding balance, <strong className="font-semibold">plus</strong> the current month's interest, or</li>
-        <li>A fixed dollar amount (e.g., $25).</li>
-    </ol>
-    <p>Since the minimum payment shrinks as the balance decreases, a smaller portion of the payment goes toward the principal reduction over time. This makes the debt payoff period disproportionately long, often extending what should be a three-year debt into a 15- to 20-year commitment with interest costs exceeding the original principal several times over.</p>
+          {/* THE TRAP OF THE MINIMUM PAYMENT */}
+          <h2 id="minimum-payment" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Trap of the Minimum Payment</h2>
+          <p>The <strong className="font-semibold">minimum payment</strong> calculation is designed to maximize the lender's interest income over the longest possible time, not to facilitate rapid debt payoff. Relying solely on the minimum payment can turn short-term debt into a decades-long financial burden.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Minimum Payment Calculation Dynamics</h3>
+          <p>The minimum payment is typically calculated as the greater of two options:</p>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li>A small percentage (e.g., 1% to 3%) of the outstanding balance, <strong className="font-semibold">plus</strong> the current month's interest, or</li>
+            <li>A fixed dollar amount (e.g., $25).</li>
+          </ol>
+          <p>Since the minimum payment shrinks as the balance decreases, a smaller portion of the payment goes toward the principal reduction over time. This makes the debt payoff period disproportionately long, often extending what should be a three-year debt into a 15- to 20-year commitment with interest costs exceeding the original principal several times over.</p>
 
-    {/* ACCELERATED PAYOFF STRATEGIES AND INTEREST COST REDUCTION */}
-    <h2 id="cost-reduction" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Accelerated Payoff Strategies and Interest Cost Reduction</h2>
-    <p>To break the compounding debt cycle, the payment must be significantly higher than the accrued monthly interest. The goal is to maximize the principal component of the payment.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Power of the Extra Principal Payment</h3>
-    <p>The fastest way to reduce the payoff timeline and total interest cost is to pay a fixed amount well above the minimum. Every dollar paid beyond the interest due goes immediately toward reducing the principal balance. Because interest is calculated on the <strong className="font-semibold">reducing principal</strong>, an extra payment made early in the payoff process yields the greatest financial benefit by preventing future interest from accruing.</p>
+          {/* ACCELERATED PAYOFF STRATEGIES AND INTEREST COST REDUCTION */}
+          <h2 id="cost-reduction" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Accelerated Payoff Strategies and Interest Cost Reduction</h2>
+          <p>To break the compounding debt cycle, the payment must be significantly higher than the accrued monthly interest. The goal is to maximize the principal component of the payment.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Debt Consolidation and Snowball/Avalanche</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Debt Avalanche:</strong> The financially optimal strategy. Focus all extra payments on the card with the <strong className="font-semibold">highest nominal rate</strong> first, mathematically minimizing total interest paid.</li>
-        <li><strong className="font-semibold">Debt Snowball:</strong> The psychologically preferred strategy. Focus on paying off the card with the <strong className="font-semibold">smallest balance</strong> first. The quick wins build momentum, making the user more likely to stick to the plan.</li>
-        <li><strong className="font-semibold">Consolidation:</strong> Transferring high-interest balances to a lower-interest loan or a 0% **Annual Percentage Rate** balance transfer card. This strategy provides a temporary reprieve from high interest, accelerating the principal reduction.</li>
-    </ul>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Power of the Extra Principal Payment</h3>
+          <p>The fastest way to reduce the payoff timeline and total interest cost is to pay a fixed amount well above the minimum. Every dollar paid beyond the interest due goes immediately toward reducing the principal balance. Because interest is calculated on the <strong className="font-semibold">reducing principal</strong>, an extra payment made early in the payoff process yields the greatest financial benefit by preventing future interest from accruing.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Debt Consolidation and Snowball/Avalanche</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Debt Avalanche:</strong> The financially optimal strategy. Focus all extra payments on the card with the <strong className="font-semibold">highest nominal rate</strong> first, mathematically minimizing total interest paid.</li>
+            <li><strong className="font-semibold">Debt Snowball:</strong> The psychologically preferred strategy. Focus on paying off the card with the <strong className="font-semibold">smallest balance</strong> first. The quick wins build momentum, making the user more likely to stick to the plan.</li>
+            <li><strong className="font-semibold">Consolidation:</strong> Transferring high-interest balances to a lower-interest loan or a 0% **Annual Percentage Rate** balance transfer card. This strategy provides a temporary reprieve from high interest, accelerating the principal reduction.</li>
+          </ul>
 
-    {/* APR VS. APY: THE TRUE ANNUAL COST OF DEBT */}
-    <h2 id="apr-apy" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Nominal Rate vs. Effective Annual Rate: The True Cost of Debt</h2>
-    <p>When dealing with compounding interest, the distinction between the nominal <strong className="font-semibold">Annual Percentage Rate (APR)</strong> and the effective <strong className="font-semibold">Annual Percentage Yield (APY)</strong> is critical for understanding the true cost of credit card debt.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Annual Percentage Rate (APR)</h3>
-    <p>The **APR** is the nominal, stated annual interest rate, calculated without regard to compounding frequency. For credit cards, this is the rate divided by 365 to calculate the daily interest charged.</p>
+          {/* APR VS. APY: THE TRUE ANNUAL COST OF DEBT */}
+          <h2 id="apr-apy" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Nominal Rate vs. Effective Annual Rate: The True Cost of Debt</h2>
+          <p>When dealing with compounding interest, the distinction between the nominal <strong className="font-semibold">Annual Percentage Rate (APR)</strong> and the effective <strong className="font-semibold">Annual Percentage Yield (APY)</strong> is critical for understanding the true cost of credit card debt.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Annual Percentage Yield (APY) or Effective Annual Rate (EAR)</h3>
-    <p>The **APY** (often called **EAR** in debt) is the true annual rate of interest paid, taking the effects of compounding into account. Because credit card debt compounds daily, the APY is always slightly higher than the stated APR:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'APY = (1 + (APR / 365))^(365) - 1'}
-        </p>
-    </div>
-    <p>This difference, though small on a daily basis, compounds over months and years, making the **APY** the most accurate measure of the total annual cost of maintaining a debt balance.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Annual Percentage Rate (APR)</h3>
+          <p>The **APR** is the nominal, stated annual interest rate, calculated without regard to compounding frequency. For credit cards, this is the rate divided by 365 to calculate the daily interest charged.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Annual Percentage Yield (APY) or Effective Annual Rate (EAR)</h3>
+          <p>The **APY** (often called **EAR** in debt) is the true annual rate of interest paid, taking the effects of compounding into account. Because credit card debt compounds daily, the APY is always slightly higher than the stated APR:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'APY = (1 + (APR / 365))^(365) - 1'}
+            </p>
+          </div>
+          <p>This difference, though small on a daily basis, compounds over months and years, making the **APY** the most accurate measure of the total annual cost of maintaining a debt balance.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Credit card payoff is fundamentally an exercise in neutralizing negative compounding. The mechanics of revolving debt—particularly daily compounding and the shrinking nature of minimum payments—are designed to extend the debt cycle.</p>
-    <p>Achieving rapid debt freedom requires solving the time equation (NPER) by deliberately exceeding the monthly interest accrual. By strategically increasing the fixed monthly payment, borrowers can dramatically reduce the total interest paid and accelerate their timeline, converting what appears to be decades of obligation into a manageable short-term debt payoff goal.</p>
-</section>
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>Credit card payoff is fundamentally an exercise in neutralizing negative compounding. The mechanics of revolving debt—particularly daily compounding and the shrinking nature of minimum payments—are designed to extend the debt cycle.</p>
+          <p>Achieving rapid debt freedom requires solving the time equation (NPER) by deliberately exceeding the monthly interest accrual. By strategically increasing the fixed monthly payment, borrowers can dramatically reduce the total interest paid and accelerate their timeline, converting what appears to be decades of obligation into a manageable short-term debt payoff goal.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -717,7 +780,22 @@ export default function CreditCardPayoffCalculator() {
             </div>
           </CardContent>
         </Card>
-    </div>
+      </div>
+
+      {/* Summary */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>This tool calculates the repayment timeline and interest costs for credit card debt.</p>
+          <p>Recommendations, custom schedules, formulas, guide content, and related tools provide comprehensive insights for debt freedom.</p>
+          <p>Use accelerated payment strategies (Snowball or Avalanche) to minimize total interest paid.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Home, Calculator, DollarSign, TrendingUp, Info, AlertCircle, Target, Calendar, Building, Shield } from 'lucide-react';
+import { Home, Calculator, DollarSign, TrendingUp, Info, AlertCircle, Target, Calendar, Building, Shield, FunctionSquare, Check, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -27,14 +27,14 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function MortgagePaymentCalculator() {
-  const [result, setResult] = useState<{ 
+  const [result, setResult] = useState<{
     principalAndInterest: number;
     totalMonthlyPayment: number;
     totalInterest: number;
     totalCost: number;
     loanToValue: number;
     interpretation: string;
-    recommendations: string[];
+    recommendations: { title: string; description: string; action?: string }[];
     warningSigns: string[];
     amortizationSchedule: { month: number; payment: number; principal: number; interest: number; balance: number }[];
   } | null>(null);
@@ -43,35 +43,35 @@ export default function MortgagePaymentCalculator() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       loanAmount: undefined,
-      interestRate: undefined, 
-      loanTerm: undefined, 
+      interestRate: undefined,
+      loanTerm: undefined,
       propertyTax: undefined,
       homeInsurance: undefined,
       pmi: undefined,
       hoa: undefined,
       downPayment: undefined,
       propertyValue: undefined
-    } 
+    }
   });
 
   const calculateMortgagePayment = (principal: number, rate: number, term: number) => {
     const monthlyRate = rate / 100 / 12;
     const numPayments = term * 12;
-    
+
     if (monthlyRate === 0) {
       return principal / numPayments;
     }
-    
-    const payment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
-                   (Math.pow(1 + monthlyRate, numPayments) - 1);
-    
+
+    const payment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) /
+      (Math.pow(1 + monthlyRate, numPayments) - 1);
+
     return payment;
   };
 
   const calculateAmortization = (principal: number, rate: number, term: number, payment: number) => {
     const monthlyRate = rate / 100 / 12;
     const numPayments = term * 12;
-    const schedule = [];
+    const schedule: { month: number; payment: number; principal: number; interest: number; balance: number }[] = [];
     let balance = principal;
 
     for (let month = 1; month <= Math.min(numPayments, 12); month++) {
@@ -93,24 +93,24 @@ export default function MortgagePaymentCalculator() {
 
   const calculate = (v: FormValues) => {
     if (v.loanAmount == null || v.interestRate == null || v.loanTerm == null) return null;
-    
+
     const principalAndInterest = calculateMortgagePayment(v.loanAmount, v.interestRate, v.loanTerm);
     const propertyTax = (v.propertyTax || 0) / 12;
     const homeInsurance = (v.homeInsurance || 0) / 12;
     const pmi = (v.pmi || 0) / 12;
     const hoa = (v.hoa || 0) / 12;
-    
+
     const totalMonthlyPayment = principalAndInterest + propertyTax + homeInsurance + pmi + hoa;
     const totalInterest = (principalAndInterest * v.loanTerm * 12) - v.loanAmount;
     const totalCost = v.loanAmount + totalInterest + (v.propertyTax || 0) * v.loanTerm + (v.homeInsurance || 0) * v.loanTerm + (v.pmi || 0) * v.loanTerm + (v.hoa || 0) * v.loanTerm;
-    
+
     const loanToValue = v.propertyValue ? (v.loanAmount / v.propertyValue) * 100 : 0;
-    
-    return { 
-      principalAndInterest, 
-      totalMonthlyPayment, 
-      totalInterest, 
-      totalCost, 
+
+    return {
+      principalAndInterest,
+      totalMonthlyPayment,
+      totalInterest,
+      totalCost,
       loanToValue,
       amortizationSchedule: calculateAmortization(v.loanAmount, v.interestRate, v.loanTerm, principalAndInterest)
     };
@@ -118,7 +118,7 @@ export default function MortgagePaymentCalculator() {
 
   const interpret = (totalPayment: number, loanAmount: number, loanToValue: number) => {
     const paymentToIncome = (totalPayment * 12) / (loanAmount * 0.1); // Rough estimate
-    
+
     if (loanToValue > 95) return 'High LTV—consider larger down payment to avoid PMI.';
     if (paymentToIncome > 0.3) return 'High payment-to-income ratio—ensure you can afford this payment.';
     if (totalPayment > loanAmount * 0.01) return 'Moderate payment—review your budget carefully.';
@@ -126,58 +126,77 @@ export default function MortgagePaymentCalculator() {
   };
 
   const getRecommendations = (loanToValue: number, totalPayment: number, loanAmount: number) => {
-    const recommendations = [];
-    
+    const recs: { title: string; description: string; action?: string }[] = [];
+
     if (loanToValue > 95) {
-      recommendations.push('Consider larger down payment to eliminate PMI');
-      recommendations.push('Look into first-time homebuyer programs');
-      recommendations.push('Save more before purchasing');
+      recs.push({
+        title: "High LTV Warning",
+        description: "Your Loan-to-Value ratio is very high (>95%).",
+        action: "Consider a larger down payment to avoid PMI."
+      });
+      recs.push({
+        title: "Grant Programs",
+        description: "You might qualify for assistance.",
+        action: "Look into first-time homebuyer programs."
+      });
     } else if (loanToValue > 80) {
-      recommendations.push('Make extra principal payments to reach 80% LTV');
-      recommendations.push('Consider PMI removal options');
-      recommendations.push('Build equity faster with additional payments');
+      recs.push({
+        title: "PMI Territory",
+        description: "You are likely paying for Private Mortgage Insurance.",
+        action: "Aim for 20% equity to remove PMI."
+      });
     }
-    
-    if (totalPayment > loanAmount * 0.01) {
-      recommendations.push('Ensure emergency fund covers 3-6 months of payments');
-      recommendations.push('Consider shorter loan term if budget allows');
-      recommendations.push('Shop around for better interest rates');
+
+    if (totalPayment > loanAmount * 0.01) { // >1% of loan amount is a rough high payment check
+      recs.push({
+        title: "Budget STretch",
+        description: "The monthly payment is significant relative to the loan size.",
+        action: "Ensure your emergency fund covers 6 months of payments."
+      });
+    } else {
+      recs.push({
+        title: "Healthy Ratio",
+        description: "Your payment appears proportional to the loan amount.",
+        action: "Shop around for the best interest rates."
+      });
     }
-    
-    recommendations.push('Get pre-approved before house hunting');
-    recommendations.push('Factor in maintenance costs (1-2% of home value annually)');
-    recommendations.push('Consider future income stability');
-    
-    return recommendations;
+
+    recs.push({
+      title: "Preparation",
+      description: "Being prepared is key in a competitive market.",
+      action: "Get pre-approved before house hunting."
+    });
+
+    return recs;
   };
 
   const getWarningSigns = (loanToValue: number, totalPayment: number, loanAmount: number) => {
-    const signs = [];
-    
+    const signs: string[] = [];
+
     if (loanToValue > 95) {
       signs.push('Very high loan-to-value ratio');
       signs.push('PMI will be required and expensive');
       signs.push('Little equity cushion for market downturns');
     }
-    
+
     if (totalPayment > loanAmount * 0.015) {
       signs.push('Payment may be too high for your income');
       signs.push('Little room for unexpected expenses');
       signs.push('Risk of becoming house poor');
     }
-    
+
     signs.push('No emergency fund for unexpected repairs');
     signs.push('Interest rate may be too high');
     signs.push('Loan term may be too long');
-    
+
     return signs;
   };
 
   const onSubmit = (values: FormValues) => {
     const calculation = calculate(values);
     if (!calculation) { setResult(null); return; }
-    
-    setResult({ 
+
+    setResult({
       ...calculation,
       interpretation: interpret(calculation.totalMonthlyPayment, values.loanAmount!, calculation.loanToValue),
       recommendations: getRecommendations(calculation.loanToValue, calculation.totalMonthlyPayment, values.loanAmount!),
@@ -200,8 +219,8 @@ export default function MortgagePaymentCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -209,120 +228,120 @@ export default function MortgagePaymentCalculator() {
                     Loan Details
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField 
-                      control={form.control} 
-                      name="loanAmount" 
+                    <FormField
+                      control={form.control}
+                      name="loanAmount"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <DollarSign className="h-4 w-4" />
                             Loan Amount
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 300000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 300000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="interestRate" 
+                    <FormField
+                      control={form.control}
+                      name="interestRate"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <TrendingUp className="h-4 w-4" />
                             Interest Rate (%)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 6.5" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 6.5"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="loanTerm" 
+                    <FormField
+                      control={form.control}
+                      name="loanTerm"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Calendar className="h-4 w-4" />
                             Loan Term (Years)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="1" 
-                              placeholder="e.g., 30" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="1"
+                              placeholder="e.g., 30"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="downPayment" 
+                    <FormField
+                      control={form.control}
+                      name="downPayment"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <DollarSign className="h-4 w-4" />
                             Down Payment
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 60000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 60000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="propertyValue" 
+                    <FormField
+                      control={form.control}
+                      name="propertyValue"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Home className="h-4 w-4" />
                             Property Value
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 400000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 400000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
                 </div>
@@ -333,106 +352,106 @@ export default function MortgagePaymentCalculator() {
                     Additional Costs
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField 
-                      control={form.control} 
-                      name="propertyTax" 
+                    <FormField
+                      control={form.control}
+                      name="propertyTax"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Building className="h-4 w-4" />
                             Annual Property Tax
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 4800" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 4800"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="homeInsurance" 
+                    <FormField
+                      control={form.control}
+                      name="homeInsurance"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Shield className="h-4 w-4" />
                             Annual Home Insurance
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 1200" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 1200"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="pmi" 
+                    <FormField
+                      control={form.control}
+                      name="pmi"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Shield className="h-4 w-4" />
                             Annual PMI
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 2400" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 2400"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="hoa" 
+                    <FormField
+                      control={form.control}
+                      name="hoa"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Building className="h-4 w-4" />
                             Annual HOA Fees
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 2400" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 2400"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
                 </div>
-          </div>
+              </div>
               <Button type="submit" className="w-full md:w-auto">
                 Calculate Mortgage Payment
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -463,7 +482,7 @@ export default function MortgagePaymentCalculator() {
                     Monthly P&I payment
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <Calculator className="h-5 w-5 text-green-600" />
@@ -475,21 +494,21 @@ export default function MortgagePaymentCalculator() {
                   <p className="text-sm text-muted-foreground mt-1">
                     Including taxes, insurance, PMI, HOA
                   </p>
-                    </div>
-                
+                </div>
+
                 <div className="text-center p-6 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-blue-600" />
                     <span className="text-sm font-medium text-muted-foreground">Total Interest</span>
-                        </div>
+                  </div>
                   <p className="text-3xl font-bold text-blue-600">
                     ${result.totalInterest.toLocaleString()}
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     Interest over loan term
                   </p>
-                        </div>
-                    </div>
+                </div>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="text-center p-6 bg-purple-50 dark:bg-purple-950/20 rounded-lg">
@@ -504,7 +523,7 @@ export default function MortgagePaymentCalculator() {
                     Including all costs over loan term
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-orange-50 dark:bg-orange-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <Home className="h-5 w-5 text-orange-600" />
@@ -565,22 +584,30 @@ export default function MortgagePaymentCalculator() {
               {/* Detailed Recommendations */}
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Smart Actions */}
                   <Card>
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
+                      <CardTitle className="flex items-center gap-2">
                         <Target className="h-5 w-5" />
-                        Mortgage Recommendations
+                        Smart Actions & Recommendations
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.recommendations.map((rec, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{rec}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <CardContent className="space-y-4">
+                      {result.recommendations.map((rec, index) => (
+                        <div key={index} className="p-4 bg-muted/50 rounded-lg space-y-2">
+                          <div className="flex items-start gap-2">
+                            <Check className="h-4 w-4 text-green-600 mt-1 shrink-0" />
+                            <h4 className="font-semibold">{rec.title}</h4>
+                          </div>
+                          <p className="text-sm text-muted-foreground pl-6 mb-2">{rec.description}</p>
+                          {rec.action && (
+                            <div className="flex items-center gap-2 pl-6 text-sm text-primary font-medium">
+                              <ArrowRight className="h-3 w-3" />
+                              {rec.action}
+                            </div>
+                          )}
+                        </div>
+                      ))}
                     </CardContent>
                   </Card>
 
@@ -603,11 +630,43 @@ export default function MortgagePaymentCalculator() {
                     </CardContent>
                   </Card>
                 </div>
-                </div>
+
+
+
+              </div>
             </CardContent>
-        </Card>
+          </Card>
         </div>
       )}
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1]
+            </p>
+          </div>
+          <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ul className="space-y-1">
+              <li><span className="font-semibold">M</span> = Total Monthly Payment</li>
+              <li><span className="font-semibold">P</span> = Principal Loan Amount</li>
+              <li><span className="font-semibold">i</span> = Monthly Interest Rate</li>
+            </ul>
+            <ul className="space-y-1">
+              <li><span className="font-semibold">n</span> = Number of Payments (Months)</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+
 
       {/* Educational Content */}
       <div className="space-y-6">
@@ -626,24 +685,24 @@ export default function MortgagePaymentCalculator() {
                 The core mortgage payment that goes toward paying down the loan balance and interest. This is calculated using the loan amount, interest rate, and term.
               </p>
             </div>
-              <div>
+            <div>
               <h4 className="font-semibold text-foreground mb-2">Property Taxes</h4>
               <p className="text-muted-foreground">
                 Annual taxes assessed by local government, typically paid monthly through escrow. Rates vary by location and property value.
               </p>
-              </div>
-              <div>
+            </div>
+            <div>
               <h4 className="font-semibold text-foreground mb-2">Home Insurance</h4>
               <p className="text-muted-foreground">
                 Required insurance to protect against damage to the property. Lenders require this coverage and it's often paid through escrow.
               </p>
-              </div>
-              <div>
+            </div>
+            <div>
               <h4 className="font-semibold text-foreground mb-2">PMI (Private Mortgage Insurance)</h4>
               <p className="text-muted-foreground">
                 Required when down payment is less than 20% of the home value. PMI protects the lender and adds to monthly costs until 80% LTV is reached.
               </p>
-              </div>
+            </div>
           </CardContent>
         </Card>
 
@@ -706,115 +765,115 @@ export default function MortgagePaymentCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Mortgage Payments, Amortization, and Total Interest Cost" />
-    <meta itemProp="description" content="An expert guide detailing the mortgage payment (PMT) formula, the mechanics of fixed-rate amortization, how to calculate the principal-interest split, and strategies for accelerating mortgage payoff." />
-    <meta itemProp="keywords" content="mortgage payment formula explained, loan amortization schedule, principal and interest split, fixed-rate mortgage mechanics, private mortgage insurance (PMI), escrow and taxes in mortgage payment, debt service ratio" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-mortgage-payment-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Mortgage Payments, Amortization, and Total Interest Cost" />
+          <meta itemProp="description" content="An expert guide detailing the mortgage payment (PMT) formula, the mechanics of fixed-rate amortization, how to calculate the principal-interest split, and strategies for accelerating mortgage payoff." />
+          <meta itemProp="keywords" content="mortgage payment formula explained, loan amortization schedule, principal and interest split, fixed-rate mortgage mechanics, private mortgage insurance (PMI), escrow and taxes in mortgage payment, debt service ratio" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-mortgage-payment-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Mortgage Payments: Mastering Amortization and Homeownership Costs</h1>
-    <p className="text-lg italic text-muted-foreground">Unlock the exact calculation that determines your monthly housing cost and understand the process of building home equity over decades.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Mortgage Payments: Mastering Amortization and Homeownership Costs</h1>
+          <p className="text-lg italic text-muted-foreground">Unlock the exact calculation that determines your monthly housing cost and understand the process of building home equity over decades.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#payment-components" className="hover:underline">The Four Components of a Total Mortgage Payment</a></li>
-        <li><a href="#amortization-pmt" className="hover:underline">The Amortization Formula and Monthly Payment Calculation</a></li>
-        <li><a href="#principal-interest" className="hover:underline">Principal vs. Interest: The Amortization Split</a></li>
-        <li><a href="#equity-building" className="hover:underline">Building Equity and the Role of Prepayments</a></li>
-        <li><a href="#cost-analysis" className="hover:underline">Loan Structure Variables and Total Cost Analysis</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#payment-components" className="hover:underline">The Four Components of a Total Mortgage Payment</a></li>
+            <li><a href="#amortization-pmt" className="hover:underline">The Amortization Formula and Monthly Payment Calculation</a></li>
+            <li><a href="#principal-interest" className="hover:underline">Principal vs. Interest: The Amortization Split</a></li>
+            <li><a href="#equity-building" className="hover:underline">Building Equity and the Role of Prepayments</a></li>
+            <li><a href="#cost-analysis" className="hover:underline">Loan Structure Variables and Total Cost Analysis</a></li>
+          </ul>
+          <hr />
 
-    {/* THE FOUR COMPONENTS OF A TOTAL MORTGAGE PAYMENT */}
-    <h2 id="payment-components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Four Components of a Total Mortgage Payment</h2>
-    <p>While the core mortgage payment is calculated using a strict financial formula, the total monthly amount paid by a homeowner often includes three other components, frequently bundled together into what is known as the <strong className="font-semibold">PITI</strong> payment.</p>
+          {/* THE FOUR COMPONENTS OF A TOTAL MORTGAGE PAYMENT */}
+          <h2 id="payment-components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Four Components of a Total Mortgage Payment</h2>
+          <p>While the core mortgage payment is calculated using a strict financial formula, the total monthly amount paid by a homeowner often includes three other components, frequently bundled together into what is known as the <strong className="font-semibold">PITI</strong> payment.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">PITI Breakdown</h3>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Principal:</strong> The portion of the payment that reduces the outstanding loan balance.</li>
-        <li><strong className="font-semibold">Interest:</strong> The charge levied by the lender, calculated on the remaining principal balance. This is the cost of borrowing.</li>
-        <li><strong className="font-semibold">Taxes (Property):</strong> An estimated portion of the annual property taxes, collected monthly by the lender and held in escrow.</li>
-        <li><strong className="font-semibold">Insurance (Homeowner’s and Mortgage):</strong> Includes the monthly portion of the annual homeowner’s insurance premium, plus, potentially, Private Mortgage Insurance (PMI).</li>
-    </ol>
-    <p>Only the <strong className="font-semibold">Principal</strong> and <strong className="font-semibold">Interest</strong> components are calculated using the amortization formula, which is the focus of financial analysis. The Taxes and Insurance components vary based on the property and local rates, not the loan amount itself.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">PITI Breakdown</h3>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li><strong className="font-semibold">Principal:</strong> The portion of the payment that reduces the outstanding loan balance.</li>
+            <li><strong className="font-semibold">Interest:</strong> The charge levied by the lender, calculated on the remaining principal balance. This is the cost of borrowing.</li>
+            <li><strong className="font-semibold">Taxes (Property):</strong> An estimated portion of the annual property taxes, collected monthly by the lender and held in escrow.</li>
+            <li><strong className="font-semibold">Insurance (Homeowner’s and Mortgage):</strong> Includes the monthly portion of the annual homeowner’s insurance premium, plus, potentially, Private Mortgage Insurance (PMI).</li>
+          </ol>
+          <p>Only the <strong className="font-semibold">Principal</strong> and <strong className="font-semibold">Interest</strong> components are calculated using the amortization formula, which is the focus of financial analysis. The Taxes and Insurance components vary based on the property and local rates, not the loan amount itself.</p>
 
-<hr />
+          <hr />
 
-    {/* THE AMORTIZATION FORMULA AND MONTHLY PAYMENT (PMT) */}
-    <h2 id="amortization-pmt" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Amortization Formula and Monthly Payment Calculation</h2>
-    <p>The mortgage payment is the most complex and long-lasting application of the <strong className="font-semibold">Present Value of Annuity</strong> formula. The loan principal is the <strong className="font-semibold">Present Value</strong> (PV), and the mortgage payment is the fixed monthly payment required to fully pay off that Present Value over a set tenure (n).</p>
+          {/* THE AMORTIZATION FORMULA AND MONTHLY PAYMENT (PMT) */}
+          <h2 id="amortization-pmt" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Amortization Formula and Monthly Payment Calculation</h2>
+          <p>The mortgage payment is the most complex and long-lasting application of the <strong className="font-semibold">Present Value of Annuity</strong> formula. The loan principal is the <strong className="font-semibold">Present Value</strong> (PV), and the mortgage payment is the fixed monthly payment required to fully pay off that Present Value over a set tenure (n).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Fixed-Rate Mortgage Payment (PMT) Formula</h3>
-    <p>This is the standard formula for a conventional fixed-rate loan, solving for the monthly Principal and Interest payment</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'PMT = P * r * [ (1 + r)^n / ((1 + r)^n - 1) ]'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Fixed-Rate Mortgage Payment (PMT) Formula</h3>
+          <p>This is the standard formula for a conventional fixed-rate loan, solving for the monthly Principal and Interest payment</p>
 
-    <p>Where:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>P = Principal (Initial Loan Amount)</li>
-        <li>r = Monthly Interest Rate (Annual Rate $\div$ 12)</li>
-        <li>n = Total Number of Payments (Loan Term in Years $\times$ 12)</li>
-    </ul>
-    <p>The <strong className="font-semibold">Capital Recovery Factor</strong> (the bracketed term) ensures that the fixed monthly payment exactly covers the interest charged on the reducing principal and fully repays the loan by the end of the term (e.g., 360 months for a 30-year loan).</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'PMT = P * r * [ (1 + r)^n / ((1 + r)^n - 1) ]'}
+            </p>
+          </div>
 
-<hr />
+          <p>Where:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>P = Principal (Initial Loan Amount)</li>
+            <li>r = Monthly Interest Rate (Annual Rate $\div$ 12)</li>
+            <li>n = Total Number of Payments (Loan Term in Years $\times$ 12)</li>
+          </ul>
+          <p>The <strong className="font-semibold">Capital Recovery Factor</strong> (the bracketed term) ensures that the fixed monthly payment exactly covers the interest charged on the reducing principal and fully repays the loan by the end of the term (e.g., 360 months for a 30-year loan).</p>
 
-    {/* PRINCIPAL VS. INTEREST: THE AMORTIZATION SPLIT */}
-    <h2 id="principal-interest" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Principal vs. Interest: The Amortization Split</h2>
-    <p>While the Principal and Interest payment is fixed, the way that payment is split between interest and principal changes monthly, following a strict <strong className="font-semibold">amortization schedule</strong>. This schedule is based on the <strong className="font-semibold">reducing balance method</strong>.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Front-Loaded Cost Structure</h3>
-    <p>The mortgage amortization schedule is heavily <strong className="font-semibold">front-loaded with interest</strong>:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Interest First:</strong> For any given month, the interest due is calculated on the <strong className="font-semibold">entire remaining Principal balance</strong> from the prior month.</li>
-        <li><strong className="font-semibold">Early Years:</strong> In the first few years of a 30-year mortgage, typically 70% to 90% of the fixed monthly payment is dedicated to interest, with only 10% to 30% reducing the Principal.</li>
-        <li><strong className="font-semibold">Later Years:</strong> This ratio gradually flips. By the final years, nearly 100% of the payment goes toward the Principal, as the remaining balance is very small.</li>
-    </ol>
-    <p>This front-loaded structure means that if a loan is terminated early, the borrower will have paid a disproportionately high amount of interest relative to the principal reduction achieved.</p>
+          {/* PRINCIPAL VS. INTEREST: THE AMORTIZATION SPLIT */}
+          <h2 id="principal-interest" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Principal vs. Interest: The Amortization Split</h2>
+          <p>While the Principal and Interest payment is fixed, the way that payment is split between interest and principal changes monthly, following a strict <strong className="font-semibold">amortization schedule</strong>. This schedule is based on the <strong className="font-semibold">reducing balance method</strong>.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Front-Loaded Cost Structure</h3>
+          <p>The mortgage amortization schedule is heavily <strong className="font-semibold">front-loaded with interest</strong>:</p>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li><strong className="font-semibold">Interest First:</strong> For any given month, the interest due is calculated on the <strong className="font-semibold">entire remaining Principal balance</strong> from the prior month.</li>
+            <li><strong className="font-semibold">Early Years:</strong> In the first few years of a 30-year mortgage, typically 70% to 90% of the fixed monthly payment is dedicated to interest, with only 10% to 30% reducing the Principal.</li>
+            <li><strong className="font-semibold">Later Years:</strong> This ratio gradually flips. By the final years, nearly 100% of the payment goes toward the Principal, as the remaining balance is very small.</li>
+          </ol>
+          <p>This front-loaded structure means that if a loan is terminated early, the borrower will have paid a disproportionately high amount of interest relative to the principal reduction achieved.</p>
 
-    {/* BUILDING EQUITY AND THE ROLE OF PREPAYMENTS */}
-    <h2 id="equity-building" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Building Equity and the Role of Prepayments</h2>
-    <p><strong className="font-semibold">Home Equity</strong> is the difference between the current market value of the home and the outstanding mortgage balance. Mortgage payments build equity through the principal repayment component, while property appreciation contributes to the overall value.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Power of Extra Principal Payments</h3>
-    <p>Because interest is calculated only on the remaining Principal, prepayments made early in the loan lifecycle yield the greatest financial return. Any payment exceeding the required Principal and Interest amount is immediately applied to the Principal, effectively reducing the interest base for all subsequent months.</p>
-    <p>For example, adding one extra Principal payment per year to a 30-year mortgage typically reduces the loan term by four to seven years and saves tens of thousands in interest, without changing the calculated monthly payment.</p>
+          {/* BUILDING EQUITY AND THE ROLE OF PREPAYMENTS */}
+          <h2 id="equity-building" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Building Equity and the Role of Prepayments</h2>
+          <p><strong className="font-semibold">Home Equity</strong> is the difference between the current market value of the home and the outstanding mortgage balance. Mortgage payments build equity through the principal repayment component, while property appreciation contributes to the overall value.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Private Mortgage Insurance (PMI)</h3>
-    <p>If the borrower makes a down payment of less than 20% of the home's value, the lender typically requires the purchase of **Private Mortgage Insurance (PMI)**, which protects the lender against default. PMI is usually included in the PITI payment. Homeowners can request to have PMI removed once their Loan-to-Value (LTV) ratio reaches 80% (i.e., when they have 20% equity), further reducing their total monthly cost.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Power of Extra Principal Payments</h3>
+          <p>Because interest is calculated only on the remaining Principal, prepayments made early in the loan lifecycle yield the greatest financial return. Any payment exceeding the required Principal and Interest amount is immediately applied to the Principal, effectively reducing the interest base for all subsequent months.</p>
+          <p>For example, adding one extra Principal payment per year to a 30-year mortgage typically reduces the loan term by four to seven years and saves tens of thousands in interest, without changing the calculated monthly payment.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Private Mortgage Insurance (PMI)</h3>
+          <p>If the borrower makes a down payment of less than 20% of the home's value, the lender typically requires the purchase of **Private Mortgage Insurance (PMI)**, which protects the lender against default. PMI is usually included in the PITI payment. Homeowners can request to have PMI removed once their Loan-to-Value (LTV) ratio reaches 80% (i.e., when they have 20% equity), further reducing their total monthly cost.</p>
 
-    {/* LOAN STRUCTURE VARIABLES AND TOTAL COST ANALYSIS */}
-    <h2 id="cost-analysis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loan Structure Variables and Total Cost Analysis</h2>
-    <p>The structure of the loan—rate, term, and frequency—dramatically affects the monthly payment and the total interest paid over the life of the mortgage.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Impact of Loan Term</h3>
-    <p>The choice between a 30-year and a 15-year mortgage involves a critical trade-off:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">30-Year Term:</strong> Offers a lower monthly payment, improving cash flow and debt-to-income ratio, but results in a significantly higher total interest cost.</li>
-        <li><strong className="font-semibold">15-Year Term:</strong> Requires a much higher monthly payment but drastically reduces the total interest paid (often saving the borrower hundreds of thousands of dollars) and accelerates equity growth.</li>
-    </ul>
+          {/* LOAN STRUCTURE VARIABLES AND TOTAL COST ANALYSIS */}
+          <h2 id="cost-analysis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loan Structure Variables and Total Cost Analysis</h2>
+          <p>The structure of the loan—rate, term, and frequency—dramatically affects the monthly payment and the total interest paid over the life of the mortgage.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interest Rate Sensitivity</h3>
-    <p>Because the mortgage term is so long (360 payments for 30 years), the monthly payment is highly sensitive to the interest rate. A 1% increase in the rate can increase the monthly payment by 10% to 15% and increase the total interest paid by over 20%.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Impact of Loan Term</h3>
+          <p>The choice between a 30-year and a 15-year mortgage involves a critical trade-off:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">30-Year Term:</strong> Offers a lower monthly payment, improving cash flow and debt-to-income ratio, but results in a significantly higher total interest cost.</li>
+            <li><strong className="font-semibold">15-Year Term:</strong> Requires a much higher monthly payment but drastically reduces the total interest paid (often saving the borrower hundreds of thousands of dollars) and accelerates equity growth.</li>
+          </ul>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Interest Rate Sensitivity</h3>
+          <p>Because the mortgage term is so long (360 payments for 30 years), the monthly payment is highly sensitive to the interest rate. A 1% increase in the rate can increase the monthly payment by 10% to 15% and increase the total interest paid by over 20%.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The mortgage payment is the primary financial mechanism of homeownership, defined by the rigorous mathematics of the amortization formula. It serves as an annuity calculation that determines the fixed monthly Principal and Interest payment necessary to repay the loan Principal and accrued interest over the loan term.</p>
-    <p>True financial literacy in homeownership lies in understanding the <strong className="font-semibold">front-loaded interest structure</strong> and recognizing the financial power of targeted Principal prepayments. By optimizing the loan term and consistently accelerating Principal reduction, homeowners can minimize total cost and rapidly transform debt into valuable home equity.</p>
-</section>
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>The mortgage payment is the primary financial mechanism of homeownership, defined by the rigorous mathematics of the amortization formula. It serves as an annuity calculation that determines the fixed monthly Principal and Interest payment necessary to repay the loan Principal and accrued interest over the loan term.</p>
+          <p>True financial literacy in homeownership lies in understanding the <strong className="font-semibold">front-loaded interest structure</strong> and recognizing the financial power of targeted Principal prepayments. By optimizing the loan term and consistently accelerating Principal reduction, homeowners can minimize total cost and rapidly transform debt into valuable home equity.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -871,7 +930,22 @@ export default function MortgagePaymentCalculator() {
             </div>
           </CardContent>
         </Card>
-    </div>
+      </div>
+
+      {/* Summary */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>This tool calculates monthly mortgage payments including principal, interest, taxes, and insurance.</p>
+          <p>Recommendations, breakdown charts, formulas, guide content, and related tools provide comprehensive insights for home financing.</p>
+          <p>Consider making extra principal payments to reduce total interest costs over the life of the loan.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

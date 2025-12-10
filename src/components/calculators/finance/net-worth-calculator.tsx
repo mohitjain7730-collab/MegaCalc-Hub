@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { DollarSign, TrendingUp, TrendingDown, Calculator, Info, AlertCircle, Target, Building, Car, PiggyBank, CreditCard, Home } from 'lucide-react';
+import { DollarSign, TrendingUp, TrendingDown, Calculator, Info, AlertCircle, Target, Building, Car, PiggyBank, CreditCard, Home, FunctionSquare, Shield, Check, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -28,13 +28,13 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function NetWorthCalculator() {
-  const [result, setResult] = useState<{ 
-    totalAssets: number; 
+  const [result, setResult] = useState<{
+    totalAssets: number;
     totalLiabilities: number;
     netWorth: number;
     interpretation: string;
     financialHealth: string;
-    recommendations: string[];
+    recommendations: { title: string; description: string; action?: string }[];
     warningSigns: string[];
     assetBreakdown: { category: string; amount: number; percentage: number }[];
     liabilityBreakdown: { category: string; amount: number; percentage: number }[];
@@ -43,17 +43,17 @@ export default function NetWorthCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      liquidAssets: undefined, 
-      investmentAssets: undefined, 
-      realEstateValue: undefined, 
-      vehicleValue: undefined, 
+      liquidAssets: undefined,
+      investmentAssets: undefined,
+      realEstateValue: undefined,
+      vehicleValue: undefined,
       otherAssets: undefined,
       mortgageDebt: undefined,
       creditCardDebt: undefined,
       studentLoanDebt: undefined,
       autoLoanDebt: undefined,
       otherDebt: undefined
-    } 
+    }
   });
 
   const calculate = (v: FormValues) => {
@@ -79,37 +79,56 @@ export default function NetWorthCalculator() {
   };
 
   const getRecommendations = (netWorth: number, totalAssets: number, totalLiabilities: number) => {
-    const recommendations = [];
-    
+    const recs: { title: string; description: string; action?: string }[] = [];
+
     if (netWorth < 0) {
-      recommendations.push('Create emergency fund of $1,000 immediately');
-      recommendations.push('Stop all non-essential spending');
-      recommendations.push('Focus on highest interest debt first');
-      recommendations.push('Consider debt consolidation if rates are favorable');
-      recommendations.push('Increase income through side hustles or job change');
+      recs.push({
+        title: "Immediate Action Required",
+        description: "Your liabilities exceed your assets, placing you in a precarious financial position.",
+        action: "Create an austerity budget immediately."
+      });
+      recs.push({
+        title: "Debt Crisis Management",
+        description: "High debt load is the primary issue. Interest is likely compounding against you.",
+        action: "Target highest interest debt first (Avalanche Method)."
+      });
     } else if (netWorth < totalAssets * 0.1) {
-      recommendations.push('Build 3-6 months emergency fund');
-      recommendations.push('Pay off high-interest debt aggressively');
-      recommendations.push('Start investing in low-cost index funds');
-      recommendations.push('Track spending and create budget');
+      recs.push({
+        title: "Build Foundation",
+        description: "Your net worth is low relative to your total assets.",
+        action: "Prioritize building an emergency fund of 3-6 months expenses."
+      });
     } else if (netWorth < totalAssets * 0.3) {
-      recommendations.push('Maximize retirement contributions');
-      recommendations.push('Diversify investment portfolio');
-      recommendations.push('Consider real estate investment');
-      recommendations.push('Review and optimize insurance coverage');
+      recs.push({
+        title: "Grow Wealth",
+        description: "You have a stable foundation. Now shift focus to accumulation.",
+        action: "Maximize retirement accounts (401k/IRA)."
+      });
     } else {
-      recommendations.push('Focus on tax-efficient investing strategies');
-      recommendations.push('Consider estate planning');
-      recommendations.push('Explore alternative investments');
-      recommendations.push('Maintain asset allocation balance');
+      recs.push({
+        title: "Wealth Preservation",
+        description: "You have a strong net worth position.",
+        action: "Focus on tax efficiency, estate planning, and asset protection."
+      });
     }
 
-    return recommendations;
+    if (totalLiabilities > 0 && totalAssets > 0) {
+      const debtRatio = totalLiabilities / totalAssets;
+      if (debtRatio > 0.5) {
+        recs.push({
+          title: "High Leverage",
+          description: `Your debt-to-asset ratio is ${(debtRatio * 100).toFixed(0)}%, which is considered high risk.`,
+          action: "Aggressively pay down bad debt to de-leverage."
+        });
+      }
+    }
+
+    return recs;
   };
 
   const getWarningSigns = (netWorth: number, totalLiabilities: number) => {
-    const signs = [];
-    
+    const signs: string[] = [];
+
     if (netWorth < 0) {
       signs.push('Negative net worth indicates financial distress');
       signs.push('High debt-to-asset ratio is unsustainable');
@@ -126,7 +145,7 @@ export default function NetWorthCalculator() {
   };
 
   const getAssetBreakdown = (v: FormValues, totalAssets: number) => {
-    const breakdown = [];
+    const breakdown: { category: string; amount: number; percentage: number }[] = [];
     if (v.liquidAssets && v.liquidAssets > 0) breakdown.push({ category: 'Liquid Assets', amount: v.liquidAssets, percentage: (v.liquidAssets / totalAssets) * 100 });
     if (v.investmentAssets && v.investmentAssets > 0) breakdown.push({ category: 'Investments', amount: v.investmentAssets, percentage: (v.investmentAssets / totalAssets) * 100 });
     if (v.realEstateValue && v.realEstateValue > 0) breakdown.push({ category: 'Real Estate', amount: v.realEstateValue, percentage: (v.realEstateValue / totalAssets) * 100 });
@@ -136,7 +155,7 @@ export default function NetWorthCalculator() {
   };
 
   const getLiabilityBreakdown = (v: FormValues, totalLiabilities: number) => {
-    const breakdown = [];
+    const breakdown: { category: string; amount: number; percentage: number }[] = [];
     if (v.mortgageDebt && v.mortgageDebt > 0) breakdown.push({ category: 'Mortgage', amount: v.mortgageDebt, percentage: (v.mortgageDebt / totalLiabilities) * 100 });
     if (v.creditCardDebt && v.creditCardDebt > 0) breakdown.push({ category: 'Credit Cards', amount: v.creditCardDebt, percentage: (v.creditCardDebt / totalLiabilities) * 100 });
     if (v.studentLoanDebt && v.studentLoanDebt > 0) breakdown.push({ category: 'Student Loans', amount: v.studentLoanDebt, percentage: (v.studentLoanDebt / totalLiabilities) * 100 });
@@ -148,9 +167,9 @@ export default function NetWorthCalculator() {
   const onSubmit = (values: FormValues) => {
     const { totalAssets, totalLiabilities, netWorth } = calculate(values);
     if (totalAssets === 0 && totalLiabilities === 0) { setResult(null); return; }
-    
-    setResult({ 
-      totalAssets, 
+
+    setResult({
+      totalAssets,
       totalLiabilities,
       netWorth,
       interpretation: interpret(netWorth, totalAssets, totalLiabilities),
@@ -177,8 +196,8 @@ export default function NetWorthCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -186,122 +205,122 @@ export default function NetWorthCalculator() {
                     Assets
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField 
-                      control={form.control} 
-                      name="liquidAssets" 
+                    <FormField
+                      control={form.control}
+                      name="liquidAssets"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <PiggyBank className="h-4 w-4" />
                             Liquid Assets (Cash, Savings, Checking)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 50000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 50000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="investmentAssets" 
+                    <FormField
+                      control={form.control}
+                      name="investmentAssets"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <TrendingUp className="h-4 w-4" />
                             Investment Assets (Stocks, Bonds, 401k, IRA)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 100000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 100000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="realEstateValue" 
+                    <FormField
+                      control={form.control}
+                      name="realEstateValue"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Home className="h-4 w-4" />
                             Real Estate Value
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 300000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 300000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="vehicleValue" 
+                    <FormField
+                      control={form.control}
+                      name="vehicleValue"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Car className="h-4 w-4" />
                             Vehicle Value
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 25000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 25000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="otherAssets" 
+                    <FormField
+                      control={form.control}
+                      name="otherAssets"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Building className="h-4 w-4" />
                             Other Assets (Jewelry, Art, Collectibles)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 10000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 10000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    </div>
+                  </div>
                 </div>
 
                 <div>
@@ -310,132 +329,132 @@ export default function NetWorthCalculator() {
                     Liabilities
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField 
-                      control={form.control} 
-                      name="mortgageDebt" 
+                    <FormField
+                      control={form.control}
+                      name="mortgageDebt"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Home className="h-4 w-4" />
                             Mortgage Debt
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 200000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 200000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="creditCardDebt" 
+                    <FormField
+                      control={form.control}
+                      name="creditCardDebt"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <CreditCard className="h-4 w-4" />
                             Credit Card Debt
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 5000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 5000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="studentLoanDebt" 
+                    <FormField
+                      control={form.control}
+                      name="studentLoanDebt"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Building className="h-4 w-4" />
                             Student Loan Debt
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 30000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 30000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="autoLoanDebt" 
+                    <FormField
+                      control={form.control}
+                      name="autoLoanDebt"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Car className="h-4 w-4" />
                             Auto Loan Debt
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 15000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 15000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="otherDebt" 
+                    <FormField
+                      control={form.control}
+                      name="otherDebt"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <CreditCard className="h-4 w-4" />
                             Other Debt (Personal Loans, etc.)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 8000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 8000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    </div>
+                  </div>
                 </div>
-          </div>
+              </div>
               <Button type="submit" className="w-full md:w-auto">
                 Calculate My Net Worth
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
-      
+
       {result && (
         <div className="space-y-6">
           {/* Main Results Card */}
@@ -463,7 +482,7 @@ export default function NetWorthCalculator() {
                     Your total assets
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-red-50 dark:bg-red-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingDown className="h-5 w-5 text-red-600" />
@@ -476,7 +495,7 @@ export default function NetWorthCalculator() {
                     Your total debt
                   </p>
                 </div>
-                
+
                 <div className={`text-center p-6 rounded-lg ${result.netWorth >= 0 ? 'bg-green-50 dark:bg-green-950/20' : 'bg-red-50 dark:bg-red-950/20'}`}>
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <DollarSign className={`h-5 w-5 ${result.netWorth >= 0 ? 'text-green-600' : 'text-red-600'}`} />
@@ -547,7 +566,7 @@ export default function NetWorthCalculator() {
                             </div>
                           </div>
                         ))}
-                    </div>
+                      </div>
                     ) : (
                       <p className="text-sm text-muted-foreground">No liabilities entered</p>
                     )}
@@ -558,22 +577,30 @@ export default function NetWorthCalculator() {
               {/* Detailed Recommendations */}
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Smart Actions */}
                   <Card>
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
+                      <CardTitle className="flex items-center gap-2">
                         <Target className="h-5 w-5" />
-                        Financial Recommendations
+                        Smart Actions & Recommendations
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.recommendations.map((rec, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{rec}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <CardContent className="space-y-4">
+                      {result.recommendations.map((rec, index) => (
+                        <div key={index} className="p-4 bg-muted/50 rounded-lg space-y-2">
+                          <div className="flex items-start gap-2">
+                            <Check className="h-4 w-4 text-green-600 mt-1 shrink-0" />
+                            <h4 className="font-semibold">{rec.title}</h4>
+                          </div>
+                          <p className="text-sm text-muted-foreground pl-6 mb-2">{rec.description}</p>
+                          {rec.action && (
+                            <div className="flex items-center gap-2 pl-6 text-sm text-primary font-medium">
+                              <ArrowRight className="h-3 w-3" />
+                              {rec.action}
+                            </div>
+                          )}
+                        </div>
+                      ))}
                     </CardContent>
                   </Card>
 
@@ -595,12 +622,44 @@ export default function NetWorthCalculator() {
                       </ul>
                     </CardContent>
                   </Card>
-                    </div>
                 </div>
+
+                {/* Formula Used */}
+
+
+              </div>
             </CardContent>
-        </Card>
+          </Card>
         </div>
       )}
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Net Worth = Total Assets - Total Liabilities
+            </p>
+          </div>
+          <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ul className="space-y-1">
+              <li><span className="font-semibold">Net Worth</span> = Your overall financial health</li>
+              <li><span className="font-semibold">Total Assets</span> = Everything you own (cash, investments, property, etc.)</li>
+            </ul>
+            <ul className="space-y-1">
+              <li><span className="font-semibold">Total Liabilities</span> = Everything you owe (loans, credit card debt, mortgages, etc.)</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+
 
       {/* Educational Content */}
       <div className="space-y-6">
@@ -619,18 +678,18 @@ export default function NetWorthCalculator() {
                 Net worth is the difference between your total assets and total liabilities. It's a key indicator of your financial health and represents your true wealth. A positive net worth means you own more than you owe.
               </p>
             </div>
-              <div>
+            <div>
               <h4 className="font-semibold text-foreground mb-2">Assets vs Liabilities</h4>
               <p className="text-muted-foreground">
                 Assets are things you own that have value (cash, investments, property). Liabilities are debts you owe (loans, credit cards, mortgages). Your net worth increases when assets grow faster than liabilities.
               </p>
-              </div>
-              <div>
+            </div>
+            <div>
               <h4 className="font-semibold text-foreground mb-2">Why Net Worth Matters</h4>
               <p className="text-muted-foreground">
                 Net worth provides a complete picture of your financial position, helps track progress over time, and guides investment and debt management decisions. It's more important than income alone.
               </p>
-              </div>
+            </div>
           </CardContent>
         </Card>
 
@@ -693,118 +752,118 @@ export default function NetWorthCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Comprehensive Guide to Net Worth Calculation, Tracking, and Financial Health" />
-    <meta itemProp="description" content="An expert guide detailing the fundamental equation of Net Worth (Assets - Liabilities), its role as a key metric of financial health for individuals and businesses (Balance Sheet), and strategies for consistent wealth growth." />
-    <meta itemProp="keywords" content="net worth definition finance, how to calculate net worth, total assets vs total liabilities, personal balance sheet, tracking net worth growth, financial independence measurement, liquid net worth" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-net-worth-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Comprehensive Guide to Net Worth Calculation, Tracking, and Financial Health" />
+          <meta itemProp="description" content="An expert guide detailing the fundamental equation of Net Worth (Assets - Liabilities), its role as a key metric of financial health for individuals and businesses (Balance Sheet), and strategies for consistent wealth growth." />
+          <meta itemProp="keywords" content="net worth definition finance, how to calculate net worth, total assets vs total liabilities, personal balance sheet, tracking net worth growth, financial independence measurement, liquid net worth" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-net-worth-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Worth: The Single Metric of Financial Health</h1>
-    <p className="text-lg italic text-muted-foreground">Understand the foundational concept used by businesses and individuals alike to assess true economic standing at any given moment.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Worth: The Single Metric of Financial Health</h1>
+          <p className="text-lg italic text-muted-foreground">Understand the foundational concept used by businesses and individuals alike to assess true economic standing at any given moment.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">The Core Equation and Definition of Net Worth</a></li>
-        <li><a href="#assets" className="hover:underline">Component 1: Categorizing and Valuing Total Assets</a></li>
-        <li><a href="#liabilities" className="hover:underline">Component 2: Calculating Total Liabilities</a></li>
-        <li><a href="#applications" className="hover:underline">Net Worth in Personal Finance and Corporate Accounting</a></li>
-        <li><a href="#tracking" className="hover:underline">Strategic Significance and Tracking Net Worth Growth</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#definition" className="hover:underline">The Core Equation and Definition of Net Worth</a></li>
+            <li><a href="#assets" className="hover:underline">Component 1: Categorizing and Valuing Total Assets</a></li>
+            <li><a href="#liabilities" className="hover:underline">Component 2: Calculating Total Liabilities</a></li>
+            <li><a href="#applications" className="hover:underline">Net Worth in Personal Finance and Corporate Accounting</a></li>
+            <li><a href="#tracking" className="hover:underline">Strategic Significance and Tracking Net Worth Growth</a></li>
+          </ul>
+          <hr />
 
-    {/* THE CORE EQUATION AND DEFINITION OF NET WORTH */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Core Equation and Definition of Net Worth</h2>
-    <p><strong className="font-semibold">Net Worth (NW)</strong> is the value of all financial and non-financial assets owned, minus the total value of all outstanding liabilities (debts). It represents the true measure of an entity's wealth at a specific point in time—what the entity would own if it liquidated all assets and paid off all debts.</p>
+          {/* THE CORE EQUATION AND DEFINITION OF NET WORTH */}
+          <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Core Equation and Definition of Net Worth</h2>
+          <p><strong className="font-semibold">Net Worth (NW)</strong> is the value of all financial and non-financial assets owned, minus the total value of all outstanding liabilities (debts). It represents the true measure of an entity's wealth at a specific point in time—what the entity would own if it liquidated all assets and paid off all debts.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Fundamental Balance Sheet Equation</h3>
-    <p>Whether for a household or a major corporation, Net Worth is derived from the balance sheet identity:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'Net Worth = Total Assets - Total Liabilities'}
-        </p>
-    </div>
-    <p>In corporate accounting, Net Worth is often referred to as **Shareholders’ Equity** or **Owners’ Equity**, reflecting the residual claim owners have on the company's assets after all debts are satisfied.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Fundamental Balance Sheet Equation</h3>
+          <p>Whether for a household or a major corporation, Net Worth is derived from the balance sheet identity:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'Net Worth = Total Assets - Total Liabilities'}
+            </p>
+          </div>
+          <p>In corporate accounting, Net Worth is often referred to as **Shareholders’ Equity** or **Owners’ Equity**, reflecting the residual claim owners have on the company's assets after all debts are satisfied.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Positive, Negative, and Zero Net Worth</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Positive Net Worth:</strong> Assets exceed liabilities. This indicates solvency and financial health.</li>
-        <li><strong className="font-semibold">Negative Net Worth:</strong> Liabilities exceed assets. This is common early in life (due to student loans and mortgages) or for companies experiencing deep financial distress.</li>
-        <li><strong className="font-semibold">Zero Net Worth:</strong> Assets precisely equal liabilities. The entity is technically solvent but has no residual wealth.</li>
-    </ul>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Positive, Negative, and Zero Net Worth</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Positive Net Worth:</strong> Assets exceed liabilities. This indicates solvency and financial health.</li>
+            <li><strong className="font-semibold">Negative Net Worth:</strong> Liabilities exceed assets. This is common early in life (due to student loans and mortgages) or for companies experiencing deep financial distress.</li>
+            <li><strong className="font-semibold">Zero Net Worth:</strong> Assets precisely equal liabilities. The entity is technically solvent but has no residual wealth.</li>
+          </ul>
 
-<hr />
+          <hr />
 
-    {/* COMPONENT 1: CATEGORIZING AND VALUING TOTAL ASSETS */}
-    <h2 id="assets" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component 1: Categorizing and Valuing Total Assets</h2>
-    <p><strong className="font-semibold">Assets</strong> are anything of economic value owned by the entity. For accurate net worth calculation, assets must be valued at their current fair market value (FMV)—what they could realistically be sold for today—not their original purchase price (cost basis).</p>
+          {/* COMPONENT 1: CATEGORIZING AND VALUING TOTAL ASSETS */}
+          <h2 id="assets" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component 1: Categorizing and Valuing Total Assets</h2>
+          <p><strong className="font-semibold">Assets</strong> are anything of economic value owned by the entity. For accurate net worth calculation, assets must be valued at their current fair market value (FMV)—what they could realistically be sold for today—not their original purchase price (cost basis).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Asset Classification in Personal Finance</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Liquid Assets (Cash & Equivalents):</strong> Easily converted to cash. Includes checking accounts, savings accounts, money market funds, and highly liquid bonds/CDs.</li>
-        <li><strong className="font-semibold">Investment Assets:</strong> Held for appreciation or income generation. Includes stocks, bonds, mutual funds, 401(k) and IRA balances, and brokerage accounts.</li>
-        <li><strong className="font-semibold">Real Assets (Property):</strong> Less liquid. Includes the fair market value of primary residences, rental properties, and land. The value used should be the appraised value, not the original purchase price.</li>
-        <li><strong className="font-semibold">Personal Assets:</strong> Items like vehicles, jewelry, and expensive art. While part of net worth, these are often excluded from routine tracking due to high transaction costs and low resale value relative to purchase price.</li>
-    </ul>
-    <p>The valuation of non-liquid assets, particularly real estate, introduces the most subjectivity and potential error into the Net Worth calculation.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Asset Classification in Personal Finance</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Liquid Assets (Cash & Equivalents):</strong> Easily converted to cash. Includes checking accounts, savings accounts, money market funds, and highly liquid bonds/CDs.</li>
+            <li><strong className="font-semibold">Investment Assets:</strong> Held for appreciation or income generation. Includes stocks, bonds, mutual funds, 401(k) and IRA balances, and brokerage accounts.</li>
+            <li><strong className="font-semibold">Real Assets (Property):</strong> Less liquid. Includes the fair market value of primary residences, rental properties, and land. The value used should be the appraised value, not the original purchase price.</li>
+            <li><strong className="font-semibold">Personal Assets:</strong> Items like vehicles, jewelry, and expensive art. While part of net worth, these are often excluded from routine tracking due to high transaction costs and low resale value relative to purchase price.</li>
+          </ul>
+          <p>The valuation of non-liquid assets, particularly real estate, introduces the most subjectivity and potential error into the Net Worth calculation.</p>
 
-<hr />
+          <hr />
 
-    {/* COMPONENT 2: CALCULATING TOTAL LIABILITIES */}
-    <h2 id="liabilities" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component 2: Calculating Total Liabilities</h2>
-    <p><strong className="font-semibold">Liabilities</strong> are all financial obligations or debts owed to external parties. They represent claims against the entity's assets and must be totaled at their current outstanding principal balance.</p>
+          {/* COMPONENT 2: CALCULATING TOTAL LIABILITIES */}
+          <h2 id="liabilities" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component 2: Calculating Total Liabilities</h2>
+          <p><strong className="font-semibold">Liabilities</strong> are all financial obligations or debts owed to external parties. They represent claims against the entity's assets and must be totaled at their current outstanding principal balance.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Liability Classification</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Secured Debt:</strong> Debt tied to a specific asset (collateral). Examples include mortgages (secured by the home), auto loans, and secured personal loans.</li>
-        <li><strong className="font-semibold">Unsecured Debt:</strong> Debt not backed by collateral. Examples include credit card balances, medical debt, and most personal loans.</li>
-        <li><strong className="font-semibold">Long-Term Liabilities:</strong> Obligations due more than one year away, such as the remaining balance on a 30-year mortgage or term life insurance premiums.</li>
-        <li><strong className="font-semibold">Short-Term Liabilities (Current):</strong> Obligations due within the current year, such as credit card balances and utility bills.</li>
-    </ul>
-    <p>Crucially, only the <strong className="font-semibold">principal balance</strong> of the loan (the amount you must pay to zero out the debt today) should be included. Future interest payments, while part of the total debt cost, are not included in the current liability balance.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Liability Classification</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Secured Debt:</strong> Debt tied to a specific asset (collateral). Examples include mortgages (secured by the home), auto loans, and secured personal loans.</li>
+            <li><strong className="font-semibold">Unsecured Debt:</strong> Debt not backed by collateral. Examples include credit card balances, medical debt, and most personal loans.</li>
+            <li><strong className="font-semibold">Long-Term Liabilities:</strong> Obligations due more than one year away, such as the remaining balance on a 30-year mortgage or term life insurance premiums.</li>
+            <li><strong className="font-semibold">Short-Term Liabilities (Current):</strong> Obligations due within the current year, such as credit card balances and utility bills.</li>
+          </ul>
+          <p>Crucially, only the <strong className="font-semibold">principal balance</strong> of the loan (the amount you must pay to zero out the debt today) should be included. Future interest payments, while part of the total debt cost, are not included in the current liability balance.</p>
 
-<hr />
+          <hr />
 
-    {/* NET WORTH IN PERSONAL FINANCE AND CORPORATE ACCOUNTING */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Net Worth in Personal Finance and Corporate Accounting</h2>
-    <p>While the formula remains the same, the application of Net Worth differs slightly between personal and corporate contexts.</p>
+          {/* NET WORTH IN PERSONAL FINANCE AND CORPORATE ACCOUNTING */}
+          <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Net Worth in Personal Finance and Corporate Accounting</h2>
+          <p>While the formula remains the same, the application of Net Worth differs slightly between personal and corporate contexts.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Personal Finance: The Financial Health Snapshot</h3>
-    <p>For individuals, Net Worth is the definitive benchmark of financial progress. It directly measures the effectiveness of savings, investment, and debt reduction strategies. Financial Independence (FI) movements often use a target Net Worth (e.g., 25 times annual expenses) as the threshold for retirement, completely decoupling income from wealth.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Personal Finance: The Financial Health Snapshot</h3>
+          <p>For individuals, Net Worth is the definitive benchmark of financial progress. It directly measures the effectiveness of savings, investment, and debt reduction strategies. Financial Independence (FI) movements often use a target Net Worth (e.g., 25 times annual expenses) as the threshold for retirement, completely decoupling income from wealth.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Corporate Accounting: Shareholder Equity and Solvency</h3>
-    <p>In business, the Balance Sheet structure mandates: **Assets = Liabilities + Equity**. Equity (Net Worth) represents the portion of the company's value owned by the shareholders. Lenders and investors scrutinize a company’s equity:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Lending Decisions:</strong> Lenders assess net worth to determine solvency (ability to cover debts) and leverage ratios (how much debt the company uses relative to equity).</li>
-        <li><strong className="font-semibold">Valuation:</strong> A company's book value (Equity per share) is often used as a baseline for valuing stable, non-cyclical firms.</li>
-    </ul>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Corporate Accounting: Shareholder Equity and Solvency</h3>
+          <p>In business, the Balance Sheet structure mandates: **Assets = Liabilities + Equity**. Equity (Net Worth) represents the portion of the company's value owned by the shareholders. Lenders and investors scrutinize a company’s equity:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Lending Decisions:</strong> Lenders assess net worth to determine solvency (ability to cover debts) and leverage ratios (how much debt the company uses relative to equity).</li>
+            <li><strong className="font-semibold">Valuation:</strong> A company's book value (Equity per share) is often used as a baseline for valuing stable, non-cyclical firms.</li>
+          </ul>
 
-<hr />
+          <hr />
 
-    {/* STRATEGIC SIGNIFICANCE AND TRACKING NET WORTH GROWTH */}
-    <h2 id="tracking" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategic Significance and Tracking Net Worth Growth</h2>
-    <p>Tracking Net Worth consistently—ideally on a monthly or quarterly basis—is crucial for financial strategy. It shifts the focus from volatile monthly income to stable, long-term wealth accumulation.</p>
+          {/* STRATEGIC SIGNIFICANCE AND TRACKING NET WORTH GROWTH */}
+          <h2 id="tracking" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategic Significance and Tracking Net Worth Growth</h2>
+          <p>Tracking Net Worth consistently—ideally on a monthly or quarterly basis—is crucial for financial strategy. It shifts the focus from volatile monthly income to stable, long-term wealth accumulation.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Drivers of Net Worth Change</h3>
-    <p>Net Worth can increase in three primary ways:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Saving/Debt Reduction:</strong> Paying down liabilities (e.g., mortgage principal) or adding to liquid assets directly increases NW.</li>
-        <li><strong className="font-semibold">Investment Returns:</strong> Growth in the value of investment assets (e.g., stock market returns, real estate appreciation) increases NW.</li>
-        <li><strong className="font-semibold">Capital Injections:</strong> Receiving a large gift or inheritance directly increases NW.</li>
-    </ol>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Drivers of Net Worth Change</h3>
+          <p>Net Worth can increase in three primary ways:</p>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li><strong className="font-semibold">Saving/Debt Reduction:</strong> Paying down liabilities (e.g., mortgage principal) or adding to liquid assets directly increases NW.</li>
+            <li><strong className="font-semibold">Investment Returns:</strong> Growth in the value of investment assets (e.g., stock market returns, real estate appreciation) increases NW.</li>
+            <li><strong className="font-semibold">Capital Injections:</strong> Receiving a large gift or inheritance directly increases NW.</li>
+          </ol>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Tracking</h3>
-    <p>A positive trend in Net Worth confirms the effectiveness of the entire financial plan. A negative trend, despite steady income, signals that consumption or asset depreciation is outpacing savings and investment returns, necessitating immediate corrective action.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Tracking</h3>
+          <p>A positive trend in Net Worth confirms the effectiveness of the entire financial plan. A negative trend, despite steady income, signals that consumption or asset depreciation is outpacing savings and investment returns, necessitating immediate corrective action.</p>
 
-<hr />
+          <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Net Worth is the definitive, comprehensive metric of financial health, consolidating all assets and liabilities into a single, undeniable figure. Its calculation—Total Assets minus Total Liabilities—forms the bedrock of personal finance and corporate accounting.</p>
-    <p>For the individual, tracking Net Worth consistently transforms financial management from a focus on short-term cash flow into a strategic pursuit of long-term wealth accumulation, providing the clearest possible roadmap to financial independence.</p>
-</section>
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>Net Worth is the definitive, comprehensive metric of financial health, consolidating all assets and liabilities into a single, undeniable figure. Its calculation—Total Assets minus Total Liabilities—forms the bedrock of personal finance and corporate accounting.</p>
+          <p>For the individual, tracking Net Worth consistently transforms financial management from a focus on short-term cash flow into a strategic pursuit of long-term wealth accumulation, providing the clearest possible roadmap to financial independence.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -854,7 +913,22 @@ export default function NetWorthCalculator() {
             </div>
           </CardContent>
         </Card>
-    </div>
+
+        {/* Summary */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              Summary
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm text-muted-foreground">
+            <p>This tool calculates your net worth by subtracting your total liabilities from your total assets.</p>
+            <p>Recommendations, asset/liability breakdowns, formulas, guide content, and related tools provide comprehensive insights into your financial standing.</p>
+            <p>Regularly track your net worth to monitor financial progress and identify areas for improvement.</p>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
