@@ -79,7 +79,7 @@ export default function HospitalStayCostCalculator() {
   const onSubmit = (values: FormValues) => {
     const { specialty, lengthOfStay, insuranceCoverage, deductible, maxOutOfPocket, customDailyCost } = values;
 
-    const dailyCost = customDailyCost || COST_PER_DAY[specialty];
+    const dailyCost = customDailyCost || COST_PER_DAY[specialty as keyof typeof COST_PER_DAY];
     const totalBaseCost = dailyCost * lengthOfStay;
 
     const remainingDeductible = deductible;
