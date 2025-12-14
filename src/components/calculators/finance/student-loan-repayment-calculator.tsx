@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { GraduationCap, Calculator, DollarSign, TrendingUp, Info, AlertCircle, Target, Calendar, BookOpen, Users } from 'lucide-react';
+import { GraduationCap, Calculator, DollarSign, TrendingUp, Info, AlertCircle, Target, Calendar, BookOpen, Users, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -25,7 +25,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function StudentLoanRepaymentCalculator() {
-  const [result, setResult] = useState<{ 
+  const [result, setResult] = useState<{
     monthlyPayment: number;
     totalInterest: number;
     payoffTime: number;
@@ -40,33 +40,33 @@ export default function StudentLoanRepaymentCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      loanBalance: undefined, 
-      interestRate: undefined, 
-      repaymentPlan: undefined, 
+      loanBalance: undefined,
+      interestRate: undefined,
+      repaymentPlan: undefined,
       monthlyIncome: undefined,
       familySize: undefined,
       extraPayment: undefined,
       loanType: undefined
-    } 
+    }
   });
 
   const calculateStandardPayment = (balance: number, rate: number, term: number) => {
     const monthlyRate = rate / 100 / 12;
     const numPayments = term * 12;
-    
+
     if (monthlyRate === 0) {
       return balance / numPayments;
     }
-    
-    const payment = balance * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
-                   (Math.pow(1 + monthlyRate, numPayments) - 1);
-    
+
+    const payment = balance * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) /
+      (Math.pow(1 + monthlyRate, numPayments) - 1);
+
     return payment;
   };
 
   const calculateIncomeDrivenPayment = (balance: number, income: number, familySize: number, plan: string) => {
     const discretionaryIncome = Math.max(0, income - (1.5 * 15060 + (familySize - 1) * 5250)); // 2023 poverty guidelines
-    
+
     switch (plan) {
       case 'paye':
         return Math.min(discretionaryIncome * 0.10, calculateStandardPayment(balance, 6.5, 20));
@@ -91,7 +91,7 @@ export default function StudentLoanRepaymentCalculator() {
       const interestPayment = currentBalance * monthlyRate;
       const principalPayment = Math.min(payment - interestPayment, currentBalance);
       const actualPayment = principalPayment + interestPayment;
-      
+
       currentBalance -= principalPayment;
       month++;
 
@@ -109,10 +109,10 @@ export default function StudentLoanRepaymentCalculator() {
 
   const calculate = (v: FormValues) => {
     if (v.loanBalance == null || v.interestRate == null || v.repaymentPlan == null) return null;
-    
+
     let monthlyPayment = 0;
     let payoffTime = 0;
-    
+
     if (v.repaymentPlan === 'standard') {
       monthlyPayment = calculateStandardPayment(v.loanBalance, v.interestRate, 10);
       const amortization = calculateAmortization(v.loanBalance, v.interestRate, monthlyPayment);
@@ -131,17 +131,17 @@ export default function StudentLoanRepaymentCalculator() {
       const amortization = calculateAmortization(v.loanBalance, v.interestRate, monthlyPayment);
       payoffTime = amortization.totalMonths;
     }
-    
+
     const extraPayment = v.extraPayment || 0;
     const totalPayment = monthlyPayment + extraPayment;
-    
+
     const amortization = calculateAmortization(v.loanBalance, v.interestRate, totalPayment);
     const totalInterest = amortization.schedule.reduce((sum, payment) => sum + payment.interest, 0);
     const totalCost = v.loanBalance + totalInterest;
-    
-    return { 
-      monthlyPayment: totalPayment, 
-      totalInterest, 
+
+    return {
+      monthlyPayment: totalPayment,
+      totalInterest,
       payoffTime: amortization.totalMonths,
       totalCost,
       paymentSchedule: amortization.schedule.slice(0, 12)
@@ -163,7 +163,7 @@ export default function StudentLoanRepaymentCalculator() {
 
   const interpret = (monthlyPayment: number, loanBalance: number, payoffTime: number, plan: string) => {
     const paymentToIncome = monthlyPayment / (loanBalance * 0.1); // Rough estimate
-    
+
     if (paymentToIncome > 0.15) return 'High payment relative to income—consider income-driven plans.';
     if (payoffTime > 300) return 'Very long payoff time—consider refinancing or extra payments.';
     if (payoffTime > 120) return 'Long payoff time—review your repayment strategy.';
@@ -172,58 +172,58 @@ export default function StudentLoanRepaymentCalculator() {
 
   const getRecommendations = (plan: string, monthlyPayment: number, loanBalance: number, loanType: string) => {
     const recommendations = [];
-    
+
     if (plan === 'standard' && monthlyPayment > loanBalance * 0.01) {
       recommendations.push('Consider income-driven repayment plans if payment is too high');
       recommendations.push('Look into loan consolidation to simplify payments');
       recommendations.push('Apply for Public Service Loan Forgiveness if eligible');
     }
-    
+
     if (plan.includes('income') || ['paye', 'repaye', 'ibr', 'icr'].includes(plan)) {
       recommendations.push('Recertify your income annually to maintain plan eligibility');
       recommendations.push('Consider tax implications of loan forgiveness');
       recommendations.push('Track qualifying payments for forgiveness programs');
     }
-    
+
     if (loanType === 'federal') {
       recommendations.push('Explore federal loan forgiveness programs');
       recommendations.push('Consider Public Service Loan Forgiveness (PSLF)');
       recommendations.push('Look into Teacher Loan Forgiveness programs');
     }
-    
+
     recommendations.push('Make extra payments when possible to reduce total interest');
     recommendations.push('Consider refinancing if you have good credit and stable income');
     recommendations.push('Build emergency fund to avoid payment disruptions');
-    
+
     return recommendations;
   };
 
   const getWarningSigns = (plan: string, monthlyPayment: number, loanBalance: number) => {
     const signs = [];
-    
+
     if (monthlyPayment > loanBalance * 0.02) {
       signs.push('Payment may be too high for your income');
       signs.push('Risk of payment default');
       signs.push('Consider income-driven repayment options');
     }
-    
+
     if (plan === 'extended' || plan === 'graduated') {
       signs.push('Extended plans result in higher total interest costs');
       signs.push('Consider if you can afford higher payments');
     }
-    
+
     signs.push('Missing payments can lead to default and wage garnishment');
     signs.push('Interest continues to accrue during forbearance');
     signs.push('Private loans have fewer repayment options');
-    
+
     return signs;
   };
 
   const onSubmit = (values: FormValues) => {
     const calculation = calculate(values);
     if (!calculation) { setResult(null); return; }
-    
-    setResult({ 
+
+    setResult({
       ...calculation,
       planDescription: getPlanDescription(values.repaymentPlan!),
       interpretation: interpret(calculation.monthlyPayment, values.loanBalance!, calculation.payoffTime, values.repaymentPlan!),
@@ -247,8 +247,8 @@ export default function StudentLoanRepaymentCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -256,89 +256,89 @@ export default function StudentLoanRepaymentCalculator() {
                     Loan Details
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField 
-                      control={form.control} 
-                      name="loanBalance" 
+                    <FormField
+                      control={form.control}
+                      name="loanBalance"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <DollarSign className="h-4 w-4" />
                             Loan Balance
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 50000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 50000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="interestRate" 
+                    <FormField
+                      control={form.control}
+                      name="interestRate"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <TrendingUp className="h-4 w-4" />
                             Interest Rate (%)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 6.5" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 6.5"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="loanType" 
+                    <FormField
+                      control={form.control}
+                      name="loanType"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <BookOpen className="h-4 w-4" />
                             Loan Type
                           </FormLabel>
-                    <FormControl>
-                            <select 
-                              className="border rounded h-10 px-3 w-full bg-background" 
-                              value={field.value ?? ''} 
+                          <FormControl>
+                            <select
+                              className="border rounded h-10 px-3 w-full bg-background"
+                              value={field.value ?? ''}
                               onChange={(e) => field.onChange(e.target.value as any)}
                             >
                               <option value="">Select loan type</option>
                               <option value="federal">Federal Student Loan</option>
                               <option value="private">Private Student Loan</option>
-                  </select>
-                </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                            </select>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="repaymentPlan" 
+                    <FormField
+                      control={form.control}
+                      name="repaymentPlan"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Calendar className="h-4 w-4" />
                             Repayment Plan
                           </FormLabel>
-                    <FormControl>
-                            <select 
-                              className="border rounded h-10 px-3 w-full bg-background" 
-                              value={field.value ?? ''} 
+                          <FormControl>
+                            <select
+                              className="border rounded h-10 px-3 w-full bg-background"
+                              value={field.value ?? ''}
                               onChange={(e) => field.onChange(e.target.value as any)}
                             >
                               <option value="">Select repayment plan</option>
@@ -349,11 +349,11 @@ export default function StudentLoanRepaymentCalculator() {
                               <option value="repaye">REPAYE (Income-driven)</option>
                               <option value="ibr">IBR (Income-driven)</option>
                               <option value="icr">ICR (Income-driven)</option>
-                  </select>
-                </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                            </select>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
                 </div>
@@ -364,83 +364,83 @@ export default function StudentLoanRepaymentCalculator() {
                     Income Information (for Income-Driven Plans)
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField 
-                      control={form.control} 
-                      name="monthlyIncome" 
+                    <FormField
+                      control={form.control}
+                      name="monthlyIncome"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <DollarSign className="h-4 w-4" />
                             Monthly Income
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 4000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 4000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="familySize" 
+                    <FormField
+                      control={form.control}
+                      name="familySize"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Users className="h-4 w-4" />
                             Family Size
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="1" 
-                              placeholder="e.g., 2" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="1"
+                              placeholder="e.g., 2"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="extraPayment" 
+                    <FormField
+                      control={form.control}
+                      name="extraPayment"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <DollarSign className="h-4 w-4" />
                             Extra Payment (Optional)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 100" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 100"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
                 </div>
-          </div>
+              </div>
               <Button type="submit" className="w-full md:w-auto">
                 Calculate Repayment Plan
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -471,7 +471,7 @@ export default function StudentLoanRepaymentCalculator() {
                     {result.planDescription}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-red-50 dark:bg-red-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-red-600" />
@@ -483,21 +483,21 @@ export default function StudentLoanRepaymentCalculator() {
                   <p className="text-sm text-muted-foreground mt-1">
                     Interest over loan term
                   </p>
-                    </div>
-                
+                </div>
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <Calendar className="h-5 w-5 text-green-600" />
                     <span className="text-sm font-medium text-muted-foreground">Payoff Time</span>
-                        </div>
+                  </div>
                   <p className="text-3xl font-bold text-green-600">
                     {Math.floor(result.payoffTime / 12)} years {result.payoffTime % 12} months
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     {result.payoffTime} total months
                   </p>
-                        </div>
-                    </div>
+                </div>
+              </div>
 
               <div className="text-center p-6 bg-purple-50 dark:bg-purple-950/20 rounded-lg mb-6">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -555,50 +555,46 @@ export default function StudentLoanRepaymentCalculator() {
                 </CardContent>
               </Card>
 
-              {/* Detailed Recommendations */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Repayment Recommendations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.recommendations.map((rec, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{rec}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Smart Strategy
+                    </CardTitle>
+                    <CardDescription>Actionable steps to optimize your repayment</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.recommendations.map((rec, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{rec}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Warning Signs to Watch
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.warningSigns.map((sign, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{sign}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Risk Factors
+                    </CardTitle>
+                    <CardDescription>Potential issues to monitor</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.warningSigns.map((sign, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{sign}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </div>
             </CardContent>
-        </Card>
+          </Card>
         </div>
       )}
 
@@ -631,11 +627,39 @@ export default function StudentLoanRepaymentCalculator() {
                 Lower monthly payments over 25 years. Results in higher total interest paid but more manageable monthly payments. Available for loans over $30,000.
               </p>
             </div>
-              <div>
+            <div>
               <h4 className="font-semibold text-foreground mb-2">Graduated Repayment Plan</h4>
               <p className="text-muted-foreground">
                 Payments start low and increase every 2 years over 10 years. Good for borrowers who expect their income to increase over time.
               </p>
+            </div>
+          </CardContent>
+        </Card>
+
+
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+              <p className="font-mono text-sm text-center">
+                PMT = P × [ (r(1 + r)^n) / ((1 + r)^n - 1) ]
+              </p>
+            </div>
+            <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul className="space-y-1">
+                <li><span className="font-semibold">PMT</span> = Monthly Payment</li>
+                <li><span className="font-semibold">P</span> = Principal Loan Balance</li>
+              </ul>
+              <ul className="space-y-1">
+                <li><span className="font-semibold">r</span> = Monthly Interest Rate (Annual Rate / 12)</li>
+                <li><span className="font-semibold">n</span> = Total Number of Payments (Months)</li>
+              </ul>
             </div>
           </CardContent>
         </Card>
@@ -699,104 +723,104 @@ export default function StudentLoanRepaymentCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Student Loan Repayment: Amortization, Interest, and Payoff Strategies" />
-    <meta itemProp="description" content="An expert guide detailing the mechanics of student loan repayment, comparing standard vs. income-driven plans, calculating principal and interest components, and analyzing the impact of interest capitalization and loan consolidation." />
-    <meta itemProp="keywords" content="student loan repayment formula, loan amortization interest calculation, income-driven repayment (IDR), principal vs interest student loans, interest capitalization mechanics, total cost of student loans" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-student-loan-repayment-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Student Loan Repayment: Amortization, Interest, and Payoff Strategies" />
+          <meta itemProp="description" content="An expert guide detailing the mechanics of student loan repayment, comparing standard vs. income-driven plans, calculating principal and interest components, and analyzing the impact of interest capitalization and loan consolidation." />
+          <meta itemProp="keywords" content="student loan repayment formula, loan amortization interest calculation, income-driven repayment (IDR), principal vs interest student loans, interest capitalization mechanics, total cost of student loans" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-student-loan-repayment-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Student Loan Repayment: Mastering Amortization and Payoff Strategies</h1>
-    <p className="text-lg italic text-muted-foreground">Understand how your payment reduces principal, the impact of interest capitalization, and the critical differences between standard and income-driven repayment plans.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Student Loan Repayment: Mastering Amortization and Payoff Strategies</h1>
+          <p className="text-lg italic text-muted-foreground">Understand how your payment reduces principal, the impact of interest capitalization, and the critical differences between standard and income-driven repayment plans.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#amortization-basics" className="hover:underline">Loan Amortization: The Standard Repayment Model</a></li>
-        <li><a href="#interest-capitalization" className="hover:underline">The Mechanics of Interest Capitalization</a></li>
-        <li><a href="#payment-formula" className="hover:underline">The Student Loan Payment (PMT) Calculation</a></li>
-        <li><a href="#idr" className="hover:underline">Income-Driven Repayment (IDR) and Loan Forgiveness</a></li>
-        <li><a href="#strategies" className="hover:underline">Accelerating Payoff: Prepayment and Consolidation</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#amortization-basics" className="hover:underline">Loan Amortization: The Standard Repayment Model</a></li>
+            <li><a href="#interest-capitalization" className="hover:underline">The Mechanics of Interest Capitalization</a></li>
+            <li><a href="#payment-formula" className="hover:underline">The Student Loan Payment (PMT) Calculation</a></li>
+            <li><a href="#idr" className="hover:underline">Income-Driven Repayment (IDR) and Loan Forgiveness</a></li>
+            <li><a href="#strategies" className="hover:underline">Accelerating Payoff: Prepayment and Consolidation</a></li>
+          </ul>
+          <hr />
 
-    {/* LOAN AMORTIZATION: THE STANDARD REPAYMENT MODEL */}
-    <h2 id="amortization-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loan Amortization: The Standard Repayment Model</h2>
-    <p>Student loans, whether federal or private, are typically repaid through an <strong className="font-semibold">amortization schedule</strong>—a fixed process where a series of equal, periodic payments gradually pays off the principal balance and all accrued interest over a set period. The most common plan is the **Standard 10-Year Repayment Plan** for federal loans.</p>
+          {/* LOAN AMORTIZATION: THE STANDARD REPAYMENT MODEL */}
+          <h2 id="amortization-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loan Amortization: The Standard Repayment Model</h2>
+          <p>Student loans, whether federal or private, are typically repaid through an <strong className="font-semibold">amortization schedule</strong>—a fixed process where a series of equal, periodic payments gradually pays off the principal balance and all accrued interest over a set period. The most common plan is the **Standard 10-Year Repayment Plan** for federal loans.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interest and Principal Components</h3>
-    <p>Similar to mortgages, every student loan payment is divided into two parts: interest and principal. The interest due for a given month is calculated solely on the outstanding principal balance. The remaining portion of the payment reduces the principal:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Interest Paid:</strong> Outstanding Principal $\times$ (Annual Rate $\div$ 12)</li>
-        <li><strong className="font-semibold">Principal Paid:</strong> Fixed Monthly Payment $-$ Interest Paid</li>
-    </ul>
-    <p>In the early years of the loan, the majority of the monthly payment is consumed by interest. As the principal balance shrinks, the interest component decreases, and a larger share of the payment goes toward the principal, accelerating debt reduction later in the term.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Interest and Principal Components</h3>
+          <p>Similar to mortgages, every student loan payment is divided into two parts: interest and principal. The interest due for a given month is calculated solely on the outstanding principal balance. The remaining portion of the payment reduces the principal:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Interest Paid:</strong> Outstanding Principal $\times$ (Annual Rate $\div$ 12)</li>
+            <li><strong className="font-semibold">Principal Paid:</strong> Fixed Monthly Payment $-$ Interest Paid</li>
+          </ul>
+          <p>In the early years of the loan, the majority of the monthly payment is consumed by interest. As the principal balance shrinks, the interest component decreases, and a larger share of the payment goes toward the principal, accelerating debt reduction later in the term.</p>
 
-<hr />
+          <hr />
 
-    {/* THE MECHANICS OF INTEREST CAPITALIZATION */}
-    <h2 id="interest-capitalization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mechanics of Interest Capitalization</h2>
-    <p><strong className="font-semibold">Interest Capitalization</strong> is a critical financial event unique to student loans that significantly increases the total cost of borrowing. It occurs when unpaid interest is added to the principal balance, meaning the borrower begins accruing interest on the original debt plus the newly capitalized interest.</p>
+          {/* THE MECHANICS OF INTEREST CAPITALIZATION */}
+          <h2 id="interest-capitalization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mechanics of Interest Capitalization</h2>
+          <p><strong className="font-semibold">Interest Capitalization</strong> is a critical financial event unique to student loans that significantly increases the total cost of borrowing. It occurs when unpaid interest is added to the principal balance, meaning the borrower begins accruing interest on the original debt plus the newly capitalized interest.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">When Capitalization Occurs</h3>
-    <p>Capitalization is typically triggered by several events, primarily:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">End of Grace Period:</strong> For unsubsidized loans, interest accrues during school and is added to the principal when the grace period ends.</li>
-        <li><strong className="font-semibold">Default:</strong> Unpaid interest is capitalized when a loan defaults.</li>
-        <li><strong className="font-semibold">Income-Driven Repayment (IDR) Plan Shifts:</strong> If a borrower switches out of an IDR plan, or fails to recertify their income on time, accrued interest may capitalize, increasing the loan balance.</li>
-    </ol>
-    <p>Capitalization should be avoided whenever possible, as it directly increases the principal, thereby raising the interest cost for the remainder of the loan's life through negative compounding.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">When Capitalization Occurs</h3>
+          <p>Capitalization is typically triggered by several events, primarily:</p>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li><strong className="font-semibold">End of Grace Period:</strong> For unsubsidized loans, interest accrues during school and is added to the principal when the grace period ends.</li>
+            <li><strong className="font-semibold">Default:</strong> Unpaid interest is capitalized when a loan defaults.</li>
+            <li><strong className="font-semibold">Income-Driven Repayment (IDR) Plan Shifts:</strong> If a borrower switches out of an IDR plan, or fails to recertify their income on time, accrued interest may capitalize, increasing the loan balance.</li>
+          </ol>
+          <p>Capitalization should be avoided whenever possible, as it directly increases the principal, thereby raising the interest cost for the remainder of the loan's life through negative compounding.</p>
 
-<hr />
+          <hr />
 
-    {/* THE STUDENT LOAN PAYMENT (PMT) CALCULATION */}
-    <h2 id="payment-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Student Loan Payment (PMT) Calculation</h2>
-    <p>The fixed monthly payment for student loans under standard and extended plans is derived from the **Present Value of Annuity** formula. The total borrowed principal (P) is treated as the Present Value, and the formula solves for the fixed payment (PMT) required to pay off that value over the loan tenure (n) at the given interest rate (r).</p>
+          {/* THE STUDENT LOAN PAYMENT (PMT) CALCULATION */}
+          <h2 id="payment-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Student Loan Payment (PMT) Calculation</h2>
+          <p>The fixed monthly payment for student loans under standard and extended plans is derived from the **Present Value of Annuity** formula. The total borrowed principal (P) is treated as the Present Value, and the formula solves for the fixed payment (PMT) required to pay off that value over the loan tenure (n) at the given interest rate (r).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Formula for Fixed Monthly Payment</h3>
-    <p>The fixed payment for a fully amortizing loan is calculated as:</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'PMT = P * r * [ (1 + r)^n / ((1 + r)^n - 1) ]'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Formula for Fixed Monthly Payment</h3>
+          <p>The fixed payment for a fully amortizing loan is calculated as:</p>
 
-    <p>The term in brackets is the **Capital Recovery Factor**. It ensures the calculated payment amount recovers the initial principal investment (P) while covering all accrued interest over the entire schedule.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'PMT = P * r * [ (1 + r)^n / ((1 + r)^n - 1) ]'}
+            </p>
+          </div>
 
-<hr />
+          <p>The term in brackets is the **Capital Recovery Factor**. It ensures the calculated payment amount recovers the initial principal investment (P) while covering all accrued interest over the entire schedule.</p>
 
-    {/* INCOME-DRIVEN REPAYMENT (IDR) AND LOAN FORGIVENESS */}
-    <h2 id="idr" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Income-Driven Repayment (IDR) and Loan Forgiveness</h2>
-    <p><strong className="font-semibold">Income-Driven Repayment (IDR)</strong> plans are federal options (such as SAVE, PAYE, and IBR) designed for borrowers with low incomes relative to their debt. Unlike standard plans, the monthly payment under IDR is not based on the loan principal; it is based on the borrower’s discretionary income.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">IDR Payment Mechanics</h3>
-    <p>IDR payments are typically set at $10\%$ to $20\%$ of the borrower's **discretionary income** (defined as the amount of adjusted gross income (AGI) above $150\%$ or $225\%$ of the federal poverty line). Because the payment amount is often insufficient to cover the monthly accrued interest, the loan principal may increase over time.</p>
-    <p>The financial benefit of IDR is its promise of **loan forgiveness** for any remaining balance after a term of 20 or 25 years. However, the forgiven amount may be treated as taxable income (though temporary federal legislation sometimes exempts this tax).</p>
+          {/* INCOME-DRIVEN REPAYMENT (IDR) AND LOAN FORGIVENESS */}
+          <h2 id="idr" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Income-Driven Repayment (IDR) and Loan Forgiveness</h2>
+          <p><strong className="font-semibold">Income-Driven Repayment (IDR)</strong> plans are federal options (such as SAVE, PAYE, and IBR) designed for borrowers with low incomes relative to their debt. Unlike standard plans, the monthly payment under IDR is not based on the loan principal; it is based on the borrower’s discretionary income.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">IDR Payment Mechanics</h3>
+          <p>IDR payments are typically set at $10\%$ to $20\%$ of the borrower's **discretionary income** (defined as the amount of adjusted gross income (AGI) above $150\%$ or $225\%$ of the federal poverty line). Because the payment amount is often insufficient to cover the monthly accrued interest, the loan principal may increase over time.</p>
+          <p>The financial benefit of IDR is its promise of **loan forgiveness** for any remaining balance after a term of 20 or 25 years. However, the forgiven amount may be treated as taxable income (though temporary federal legislation sometimes exempts this tax).</p>
 
-    {/* ACCELERATING PAYOFF: PREPAYMENT AND CONSOLIDATION */}
-    <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Accelerating Payoff: Prepayment and Consolidation</h2>
-    <p>For most borrowers, the most effective strategy for minimizing total interest paid is to aggressively accelerate the repayment schedule beyond the minimum required payment.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Targeted Prepayment</h3>
-    <p>There are generally no penalties for prepaying federal or private student loans. Any payment exceeding the required fixed amount is applied directly to the principal balance. This practice is most effective when: 1) targeting the loan with the highest interest rate first, and 2) making the extra payments early in the loan term to maximize the benefit of reduced interest accrual over time.</p>
+          {/* ACCELERATING PAYOFF: PREPAYMENT AND CONSOLIDATION */}
+          <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Accelerating Payoff: Prepayment and Consolidation</h2>
+          <p>For most borrowers, the most effective strategy for minimizing total interest paid is to aggressively accelerate the repayment schedule beyond the minimum required payment.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Consolidation and Refinancing</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Federal Consolidation:</strong> Combines multiple federal loans into a single new federal loan. This simplifies payments and provides access to IDR plans, but the new interest rate is a weighted average of the old rates (it does not lower the rate).</li>
-        <li><strong className="font-semibold">Private Refinancing:</strong> Obtaining a new private loan to pay off existing federal and/or private loans. This is pursued to secure a lower interest rate, which dramatically reduces the total cost of borrowing. However, refinancing federal loans into a private loan forfeits access to critical federal benefits like IDR, forgiveness, and forbearance.</li>
-    </ul>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Targeted Prepayment</h3>
+          <p>There are generally no penalties for prepaying federal or private student loans. Any payment exceeding the required fixed amount is applied directly to the principal balance. This practice is most effective when: 1) targeting the loan with the highest interest rate first, and 2) making the extra payments early in the loan term to maximize the benefit of reduced interest accrual over time.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Consolidation and Refinancing</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Federal Consolidation:</strong> Combines multiple federal loans into a single new federal loan. This simplifies payments and provides access to IDR plans, but the new interest rate is a weighted average of the old rates (it does not lower the rate).</li>
+            <li><strong className="font-semibold">Private Refinancing:</strong> Obtaining a new private loan to pay off existing federal and/or private loans. This is pursued to secure a lower interest rate, which dramatically reduces the total cost of borrowing. However, refinancing federal loans into a private loan forfeits access to critical federal benefits like IDR, forgiveness, and forbearance.</li>
+          </ul>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Managing student loan debt is a long-term strategic decision rooted in the principles of loan amortization. The choice between the fixed payments of the Standard Plan and the flexibility of Income-Driven Repayment profoundly impacts both monthly cash flow and total lifetime cost.</p>
-    <p>Financial mastery of student debt requires two primary actions: diligently avoiding **interest capitalization** and strategically employing **prepayments** to leverage the reducing balance method. By understanding the core formulas and the trade-offs of consolidation, borrowers can accelerate debt freedom and significantly reduce the financial burden of their education.</p>
-</section>
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>Managing student loan debt is a long-term strategic decision rooted in the principles of loan amortization. The choice between the fixed payments of the Standard Plan and the flexibility of Income-Driven Repayment profoundly impacts both monthly cash flow and total lifetime cost.</p>
+          <p>Financial mastery of student debt requires two primary actions: diligently avoiding **interest capitalization** and strategically employing **prepayments** to leverage the reducing balance method. By understanding the core formulas and the trade-offs of consolidation, borrowers can accelerate debt freedom and significantly reduce the financial burden of their education.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -853,7 +877,22 @@ export default function StudentLoanRepaymentCalculator() {
             </div>
           </CardContent>
         </Card>
-    </div>
+      </div>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Student Loan Repayment Calculator estimates your monthly payments, total interest costs, and payoff time for various repayment plans.</p>
+          <p>It compares Standard, Extended, Graduated, and Income-Driven Repayment (IDR) options to help you choose the best strategy.</p>
+          <p>Factors like income, family size, and loan type (Federal vs. Private) are used to provide tailored recommendations and identify potential warning signs.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

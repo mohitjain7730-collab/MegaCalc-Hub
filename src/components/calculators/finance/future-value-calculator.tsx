@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, Calculator, DollarSign, Info, AlertCircle, Target, Calendar, BarChart, PiggyBank } from 'lucide-react';
+import { TrendingUp, Calculator, DollarSign, Info, AlertCircle, Target, Calendar, BarChart, PiggyBank, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -26,7 +26,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function FutureValueCalculator() {
-  const [result, setResult] = useState<{ 
+  const [result, setResult] = useState<{
     futureValue: number;
     totalContributions: number;
     totalInterest: number;
@@ -40,15 +40,15 @@ export default function FutureValueCalculator() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      presentValue: undefined, 
-      interestRate: undefined, 
-      timePeriod: undefined, 
+      presentValue: undefined,
+      interestRate: undefined,
+      timePeriod: undefined,
       compoundingFrequency: undefined,
       calculationType: undefined,
       paymentAmount: undefined,
       growthRate: undefined,
       additionalContributions: undefined
-    } 
+    }
   });
 
   const getCompoundingFrequency = (frequency: string) => {
@@ -71,11 +71,11 @@ export default function FutureValueCalculator() {
   const calculateAnnuityFV = (payment: number, rate: number, periods: number, compounding: number) => {
     const periodicRate = rate / 100 / compounding;
     const totalPeriods = periods * compounding;
-    
+
     if (periodicRate === 0) {
       return payment * totalPeriods;
     }
-    
+
     return payment * (Math.pow(1 + periodicRate, totalPeriods) - 1) / periodicRate;
   };
 
@@ -83,21 +83,21 @@ export default function FutureValueCalculator() {
     const periodicRate = rate / 100 / compounding;
     const periodicGrowth = growthRate / 100 / compounding;
     const totalPeriods = periods * compounding;
-    
+
     if (periodicRate === periodicGrowth) {
       return payment * totalPeriods;
     }
-    
+
     return payment * (Math.pow(1 + periodicRate, totalPeriods) - Math.pow(1 + periodicGrowth, totalPeriods)) / (periodicRate - periodicGrowth);
   };
 
   const calculate = (v: FormValues) => {
     if (v.interestRate == null || v.timePeriod == null || v.calculationType == null) return null;
-    
+
     const compounding = getCompoundingFrequency(v.compoundingFrequency || 'annual');
     let futureValue = 0;
     let totalContributions = 0;
-    
+
     switch (v.calculationType) {
       case 'single-amount':
         if (v.presentValue == null) return null;
@@ -120,18 +120,18 @@ export default function FutureValueCalculator() {
         totalContributions = totalContribs;
         break;
     }
-    
+
     const totalInterest = futureValue - totalContributions;
-    
+
     // Generate year-by-year breakdown
     const yearByYear = [];
     let runningBalance = 0;
     let totalContribs = 0;
-    
+
     for (let year = 1; year <= v.timePeriod; year++) {
       let yearContribution = 0;
       let yearInterest = 0;
-      
+
       if (v.calculationType === 'single-amount' && year === 1) {
         yearContribution = v.presentValue || 0;
         yearInterest = runningBalance * (v.interestRate! / 100);
@@ -145,23 +145,23 @@ export default function FutureValueCalculator() {
         yearInterest = runningBalance * (v.interestRate! / 100);
         runningBalance = (runningBalance + yearContribution) * (1 + v.interestRate! / 100);
       }
-      
+
       totalContribs += yearContribution;
-      yearByYear.push({ 
-        year, 
-        contribution: yearContribution, 
-        interest: yearInterest, 
-        balance: runningBalance 
+      yearByYear.push({
+        year,
+        contribution: yearContribution,
+        interest: yearInterest,
+        balance: runningBalance
       });
     }
-    
+
     return { futureValue, totalContributions, totalInterest, yearByYear: yearByYear.slice(0, 11) };
   };
 
   const interpret = (futureValue: number, totalContributions: number, interestRate: number) => {
     const totalInterest = futureValue - totalContributions;
     const interestPercentage = (totalInterest / totalContributions) * 100;
-    
+
     if (interestPercentage > 200) return 'Excellent growth potential with compound interest working powerfully over time.';
     if (interestPercentage > 100) return 'Strong growth potential with significant compound interest benefits.';
     if (interestPercentage > 50) return 'Good growth potential with moderate compound interest effects.';
@@ -179,7 +179,7 @@ export default function FutureValueCalculator() {
 
   const getRecommendations = (interestRate: number, futureValue: number, totalContributions: number, calculationType: string) => {
     const recommendations = [];
-    
+
     if (interestRate > 10) {
       recommendations.push('High interest rate offers excellent growth potential');
       recommendations.push('Consider the risk level of high-return investments');
@@ -193,53 +193,53 @@ export default function FutureValueCalculator() {
       recommendations.push('Consider if returns meet your financial goals');
       recommendations.push('Evaluate inflation impact on real returns');
     }
-    
+
     if (calculationType === 'annuity') {
       recommendations.push('Consider increasing regular contributions');
       recommendations.push('Set up automatic contributions for consistency');
       recommendations.push('Review contribution limits for tax-advantaged accounts');
     }
-    
+
     if (calculationType === 'growing-annuity') {
       recommendations.push('Ensure growth rate assumptions are realistic');
       recommendations.push('Consider economic conditions affecting growth');
       recommendations.push('Review historical growth patterns');
     }
-    
+
     recommendations.push('Start investing early to maximize compound interest');
     recommendations.push('Consider tax-advantaged retirement accounts');
     recommendations.push('Review and rebalance your portfolio regularly');
-    
+
     return recommendations;
   };
 
   const getWarningSigns = (interestRate: number, futureValue: number, totalContributions: number) => {
     const signs = [];
-    
+
     if (interestRate > 20) {
       signs.push('Very high interest rate may indicate unrealistic expectations');
       signs.push('Consider if the risk is appropriately assessed');
       signs.push('Review market conditions and comparable investments');
     }
-    
+
     if (interestRate < 2) {
       signs.push('Very low interest rate may not keep pace with inflation');
       signs.push('Consider higher-return investment options');
       signs.push('Review your investment strategy and goals');
     }
-    
+
     signs.push('Not accounting for inflation in return expectations');
     signs.push('Ignoring the impact of fees on returns');
     signs.push('Not considering tax implications of investment gains');
-    
+
     return signs;
   };
 
   const onSubmit = (values: FormValues) => {
     const calculation = calculate(values);
     if (!calculation) { setResult(null); return; }
-    
-    setResult({ 
+
+    setResult({
       ...calculation,
       interpretation: interpret(calculation.futureValue, calculation.totalContributions, values.interestRate!),
       recommendations: getRecommendations(values.interestRate!, calculation.futureValue, calculation.totalContributions, values.calculationType!),
@@ -263,8 +263,8 @@ export default function FutureValueCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -272,65 +272,65 @@ export default function FutureValueCalculator() {
                     Basic Parameters
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField 
-                      control={form.control} 
-                      name="interestRate" 
+                    <FormField
+                      control={form.control}
+                      name="interestRate"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <TrendingUp className="h-4 w-4" />
                             Interest Rate (%)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 8.5" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 8.5"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="timePeriod" 
+                    <FormField
+                      control={form.control}
+                      name="timePeriod"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Calendar className="h-4 w-4" />
                             Time Period (Years)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.1" 
-                              placeholder="e.g., 20" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.1"
+                              placeholder="e.g., 20"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="compoundingFrequency" 
+                    <FormField
+                      control={form.control}
+                      name="compoundingFrequency"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <BarChart className="h-4 w-4" />
                             Compounding Frequency
                           </FormLabel>
-                    <FormControl>
-                            <select 
-                              className="border rounded h-10 px-3 w-full bg-background" 
-                              value={field.value ?? ''} 
+                          <FormControl>
+                            <select
+                              className="border rounded h-10 px-3 w-full bg-background"
+                              value={field.value ?? ''}
                               onChange={(e) => field.onChange(e.target.value as any)}
                             >
                               <option value="">Select frequency</option>
@@ -339,36 +339,36 @@ export default function FutureValueCalculator() {
                               <option value="quarterly">Quarterly</option>
                               <option value="monthly">Monthly</option>
                               <option value="daily">Daily</option>
-                  </select>
-                </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                            </select>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="calculationType" 
+                    <FormField
+                      control={form.control}
+                      name="calculationType"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Target className="h-4 w-4" />
                             Calculation Type
                           </FormLabel>
-                    <FormControl>
-                            <select 
-                              className="border rounded h-10 px-3 w-full bg-background" 
-                              value={field.value ?? ''} 
+                          <FormControl>
+                            <select
+                              className="border rounded h-10 px-3 w-full bg-background"
+                              value={field.value ?? ''}
                               onChange={(e) => field.onChange(e.target.value as any)}
                             >
                               <option value="">Select calculation type</option>
                               <option value="single-amount">Single Amount</option>
                               <option value="annuity">Annuity</option>
                               <option value="growing-annuity">Growing Annuity</option>
-                  </select>
-                </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                            </select>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
                 </div>
@@ -379,106 +379,106 @@ export default function FutureValueCalculator() {
                     Investment Information
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField 
-                      control={form.control} 
-                      name="presentValue" 
+                    <FormField
+                      control={form.control}
+                      name="presentValue"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <DollarSign className="h-4 w-4" />
                             Present Value (for single amount)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 10000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 10000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="paymentAmount" 
+                    <FormField
+                      control={form.control}
+                      name="paymentAmount"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <DollarSign className="h-4 w-4" />
                             Payment Amount (for annuities)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 5000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 5000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="growthRate" 
+                    <FormField
+                      control={form.control}
+                      name="growthRate"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <TrendingUp className="h-4 w-4" />
                             Growth Rate (%) (for growing annuity)
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 3" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 3"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                    <FormField 
-                      control={form.control} 
-                      name="additionalContributions" 
+                    <FormField
+                      control={form.control}
+                      name="additionalContributions"
                       render={({ field }) => (
-                  <FormItem>
+                        <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <PiggyBank className="h-4 w-4" />
                             Additional Annual Contributions
                           </FormLabel>
-                    <FormControl>
-                            <Input 
-                              type="number" 
-                              step="0.01" 
-                              placeholder="e.g., 1000" 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          <FormControl>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              placeholder="e.g., 1000"
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                             />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                      )} 
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
                 </div>
-          </div>
+              </div>
               <Button type="submit" className="w-full md:w-auto">
                 Calculate Future Value
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -509,7 +509,7 @@ export default function FutureValueCalculator() {
                     Total value at end of period
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <PiggyBank className="h-5 w-5 text-green-600" />
@@ -522,7 +522,7 @@ export default function FutureValueCalculator() {
                     Amount you contributed
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-blue-600" />
@@ -578,50 +578,46 @@ export default function FutureValueCalculator() {
                 </CardContent>
               </Card>
 
-              {/* Detailed Recommendations */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Investment Recommendations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.recommendations.map((rec, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{rec}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Growth Strategy
+                    </CardTitle>
+                    <CardDescription>Maximizing your investment potential</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.recommendations.map((rec, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{rec}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Warning Signs to Watch
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.warningSigns.map((sign, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{sign}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Risk Factors
+                    </CardTitle>
+                    <CardDescription>Elements impacting future value</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.warningSigns.map((sign, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{sign}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
               </div>
             </CardContent>
-        </Card>
+          </Card>
         </div>
       )}
 
@@ -653,6 +649,48 @@ export default function FutureValueCalculator() {
               <p className="text-muted-foreground">
                 The time value of money principle states that money available today is worth more than the same amount in the future due to its potential earning capacity. This is why starting to invest early is so powerful.
               </p>
+            </div>
+          </CardContent>
+        </Card>
+
+
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p className="font-medium text-sm mb-2 text-center">Single Amount</p>
+                <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+                  <p className="font-mono text-sm text-center">
+                    FV = PV × (1 + r)^n
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p className="font-medium text-sm mb-2 text-center">Annuity</p>
+                <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+                  <p className="font-mono text-sm text-center">
+                    FV = PMT × [ ((1 + r)^n - 1) / r ]
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul className="space-y-1">
+                <li><span className="font-semibold">FV</span> = Future Value</li>
+                <li><span className="font-semibold">PV</span> = Present Value</li>
+                <li><span className="font-semibold">PMT</span> = Periodic Payment Amount</li>
+              </ul>
+              <ul className="space-y-1">
+                <li><span className="font-semibold">r</span> = Periodic Interest Rate (Rate / Frequency)</li>
+                <li><span className="font-semibold">n</span> = Total Number of Periods (Years × Frequency)</li>
+              </ul>
             </div>
           </CardContent>
         </Card>
@@ -716,125 +754,125 @@ export default function FutureValueCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Future Value (FV) Calculation, Compounding, and Investment Growth" />
-    <meta itemProp="description" content="An expert guide detailing the Future Value (FV) formula, its core role in the Time Value of Money (TVM), calculating the growth of a lump sum versus a series of payments (annuity), and its application in retirement and financial goal setting." />
-    <meta itemProp="keywords" content="future value formula explained, compounding cash flows, FV of a lump sum, FV of an annuity, time value of money, investment growth projection, effective annual rate (EAR)" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-future-value-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Future Value (FV) Calculation, Compounding, and Investment Growth" />
+          <meta itemProp="description" content="An expert guide detailing the Future Value (FV) formula, its core role in the Time Value of Money (TVM), calculating the growth of a lump sum versus a series of payments (annuity), and its application in retirement and financial goal setting." />
+          <meta itemProp="keywords" content="future value formula explained, compounding cash flows, FV of a lump sum, FV of an annuity, time value of money, investment growth projection, effective annual rate (EAR)" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-future-value-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Future Value (FV): Projecting Investment Growth Over Time</h1>
-    <p className="text-lg italic text-muted-foreground">Master the fundamental concept that quantifies the value of an investment at a specific point in the future, given a constant rate of return.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Future Value (FV): Projecting Investment Growth Over Time</h1>
+          <p className="text-lg italic text-muted-foreground">Master the fundamental concept that quantifies the value of an investment at a specific point in the future, given a constant rate of return.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#tvm-compounding" className="hover:underline">The Principle of Compounding and Time Value of Money (TVM)</a></li>
-        <li><a href="#lump-sum-fv" className="hover:underline">FV Calculation for a Single Lump Sum</a></li>
-        <li><a href="#annuity-fv" className="hover:underline">FV Calculation for an Annuity (Stream of Payments)</a></li>
-        <li><a href="#frequency" className="hover:underline">The Critical Role of Compounding Frequency</a></li>
-        <li><a href="#applications" className="hover:underline">Real-World Applications of Future Value</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#tvm-compounding" className="hover:underline">The Principle of Compounding and Time Value of Money (TVM)</a></li>
+            <li><a href="#lump-sum-fv" className="hover:underline">FV Calculation for a Single Lump Sum</a></li>
+            <li><a href="#annuity-fv" className="hover:underline">FV Calculation for an Annuity (Stream of Payments)</a></li>
+            <li><a href="#frequency" className="hover:underline">The Critical Role of Compounding Frequency</a></li>
+            <li><a href="#applications" className="hover:underline">Real-World Applications of Future Value</a></li>
+          </ul>
+          <hr />
 
-    {/* THE PRINCIPLE OF COMPOUNDING AND TIME VALUE OF MONEY (TVM) */}
-    <h2 id="tvm-compounding" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Principle of Compounding and Time Value of Money (TVM)</h2>
-    <p>The concept of <strong className="font-semibold">Future Value (FV)</strong> is the forward-looking counterpart to Present Value (PV) and is a core calculation within the <strong className="font-semibold">Time Value of Money (TVM)</strong> principle. FV quantifies how much a sum of money invested today will be worth at a specified date in the future, assuming it earns a constant rate of return (r).</p>
+          {/* THE PRINCIPLE OF COMPOUNDING AND TIME VALUE OF MONEY (TVM) */}
+          <h2 id="tvm-compounding" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Principle of Compounding and Time Value of Money (TVM)</h2>
+          <p>The concept of <strong className="font-semibold">Future Value (FV)</strong> is the forward-looking counterpart to Present Value (PV) and is a core calculation within the <strong className="font-semibold">Time Value of Money (TVM)</strong> principle. FV quantifies how much a sum of money invested today will be worth at a specified date in the future, assuming it earns a constant rate of return (r).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Compounding: The Engine of FV</h3>
-    <p>FV relies entirely on <strong className="font-semibold">compounding</strong>—the process where interest earned in one period is added to the principal, and in the next period, interest is earned on that new, larger principal. This geometric growth is why an investment's value grows exponentially rather than linearly over time.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Compounding: The Engine of FV</h3>
+          <p>FV relies entirely on <strong className="font-semibold">compounding</strong>—the process where interest earned in one period is added to the principal, and in the next period, interest is earned on that new, larger principal. This geometric growth is why an investment's value grows exponentially rather than linearly over time.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Key Components of FV Calculation</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Present Value (PV):</strong> The initial lump sum amount invested (or the value today).</li>
-        <li><strong className="font-semibold">Rate (r):</strong> The periodic interest rate or expected return rate (must be the rate per compounding period).</li>
-        <li><strong className="font-semibold">Number of Periods (t):</strong> The total number of compounding periods (e.g., 20 years multiplied by 12 months/year = 240 periods).</li>
-    </ul>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Key Components of FV Calculation</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Present Value (PV):</strong> The initial lump sum amount invested (or the value today).</li>
+            <li><strong className="font-semibold">Rate (r):</strong> The periodic interest rate or expected return rate (must be the rate per compounding period).</li>
+            <li><strong className="font-semibold">Number of Periods (t):</strong> The total number of compounding periods (e.g., 20 years multiplied by 12 months/year = 240 periods).</li>
+          </ul>
 
-<hr />
+          <hr />
 
-    {/* FV CALCULATION FOR A SINGLE LUMP SUM */}
-    <h2 id="lump-sum-fv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FV Calculation for a Single Lump Sum</h2>
-    <p>This formula calculates the future worth of a single, one-time investment made today. It isolates the effect of compounding over the investment period.</p>
+          {/* FV CALCULATION FOR A SINGLE LUMP SUM */}
+          <h2 id="lump-sum-fv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FV Calculation for a Single Lump Sum</h2>
+          <p>This formula calculates the future worth of a single, one-time investment made today. It isolates the effect of compounding over the investment period.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Single Cash Flow Formula</h3>
-    <p>The formula projects the Present Value (PV) forward using the periodic rate (r) and the number of periods (t):</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'FV = PV * (1 + r)^t'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Single Cash Flow Formula</h3>
+          <p>The formula projects the Present Value (PV) forward using the periodic rate (r) and the number of periods (t):</p>
 
-    <p>Where (1 + r) raised to the power of t is known as the **Future Value Interest Factor (FVIF)**. This factor is the multiplier that quantifies the growth due to compounding.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'FV = PV * (1 + r)^t'}
+            </p>
+          </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Example: Long-Term Growth</h3>
-    <p>If 10,000 dollars are invested today (PV) at an annual 8 percent return (r) for 30 years (t), the FV calculation shows the exponential power of time. The longer the duration (t), the faster the final value grows, as the compounding effect dominates the initial principal.</p>
+          <p>Where (1 + r) raised to the power of t is known as the **Future Value Interest Factor (FVIF)**. This factor is the multiplier that quantifies the growth due to compounding.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Example: Long-Term Growth</h3>
+          <p>If 10,000 dollars are invested today (PV) at an annual 8 percent return (r) for 30 years (t), the FV calculation shows the exponential power of time. The longer the duration (t), the faster the final value grows, as the compounding effect dominates the initial principal.</p>
 
-    {/* FV CALCULATION FOR AN ANNUITY (STREAM OF PAYMENTS) */}
-    <h2 id="annuity-fv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FV Calculation for an Annuity (Stream of Payments)</h2>
-    <p>When an individual makes a series of equal, regular payments (PMT), such as monthly contributions to a retirement account, the total future value is calculated using the <strong className="font-semibold">Future Value of an Annuity (FVA)</strong>.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Ordinary Annuity Formula (Payments at End of Period)</h3>
-    <p>This formula calculates the future value assuming contributions are made at the end of each compounding period (common for mutual fund SIPs or retirement payroll deductions):</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'FV_Ordinary = PMT * [ ((1 + r)^t - 1) / r ]'}
-        </p>
-    </div>
+          {/* FV CALCULATION FOR AN ANNUITY (STREAM OF PAYMENTS) */}
+          <h2 id="annuity-fv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FV Calculation for an Annuity (Stream of Payments)</h2>
+          <p>When an individual makes a series of equal, regular payments (PMT), such as monthly contributions to a retirement account, the total future value is calculated using the <strong className="font-semibold">Future Value of an Annuity (FVA)</strong>.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Annuity Due Adjustment (Payments at Beginning of Period)</h3>
-    <p>If contributions are made at the beginning of the period (Annuity Due), the payments compound for one extra period. This results in a higher FV. The adjustment is simple:</p>
-    <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
-        <p className="font-mono text-lg text-destructive font-bold">
-            {'FV_Due = FV_Ordinary * (1 + r)'}
-        </p>
-    </div>
-    <p>The FVA calculation is the foundation for determining the feasibility of retirement savings goals.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Ordinary Annuity Formula (Payments at End of Period)</h3>
+          <p>This formula calculates the future value assuming contributions are made at the end of each compounding period (common for mutual fund SIPs or retirement payroll deductions):</p>
 
-<hr />
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'FV_Ordinary = PMT * [ ((1 + r)^t - 1) / r ]'}
+            </p>
+          </div>
 
-    {/* THE CRITICAL ROLE OF COMPOUNDING FREQUENCY */}
-    <h2 id="frequency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of Compounding Frequency</h2>
-    <p>The frequency with which interest is compounded (e.g., annually, quarterly, or daily) significantly impacts the final Future Value. The higher the frequency, the greater the growth, which is measured by the <strong className="font-semibold">Effective Annual Rate (EAR)</strong>.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Annuity Due Adjustment (Payments at Beginning of Period)</h3>
+          <p>If contributions are made at the beginning of the period (Annuity Due), the payments compound for one extra period. This results in a higher FV. The adjustment is simple:</p>
+          <div className="overflow-x-auto my-4 p-2 bg-muted border rounded-lg inline-block">
+            <p className="font-mono text-lg text-destructive font-bold">
+              {'FV_Due = FV_Ordinary * (1 + r)'}
+            </p>
+          </div>
+          <p>The FVA calculation is the foundation for determining the feasibility of retirement savings goals.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Frequency Adjustment</h3>
-    <p>When compounding occurs $m$ times per year, the annual nominal rate and the number of years ($Y$) must be adjusted in the single lump sum formula:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'FV = PV * (1 + R_nom/m)^(Y * m)'}
-        </p>
-    </div>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Effective Annual Rate (EAR)</h3>
-    <p>The **Effective Annual Rate (EAR)** (or Annual Percentage Yield, APY) reflects the true annual return received after accounting for compounding. The more frequently compounding occurs, the higher the EAR will be relative to the stated nominal rate, leading to a higher final Future Value.</p>
+          {/* THE CRITICAL ROLE OF COMPOUNDING FREQUENCY */}
+          <h2 id="frequency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Critical Role of Compounding Frequency</h2>
+          <p>The frequency with which interest is compounded (e.g., annually, quarterly, or daily) significantly impacts the final Future Value. The higher the frequency, the greater the growth, which is measured by the <strong className="font-semibold">Effective Annual Rate (EAR)</strong>.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Frequency Adjustment</h3>
+          <p>When compounding occurs $m$ times per year, the annual nominal rate and the number of years ($Y$) must be adjusted in the single lump sum formula:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'FV = PV * (1 + R_nom/m)^(Y * m)'}
+            </p>
+          </div>
 
-    {/* REAL-WORLD APPLICATIONS OF FUTURE VALUE */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Real-World Applications of Future Value</h2>
-    <p>FV calculations are indispensable for forecasting and establishing realistic financial targets across a range of activities:</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Effective Annual Rate (EAR)</h3>
+          <p>The **Effective Annual Rate (EAR)** (or Annual Percentage Yield, APY) reflects the true annual return received after accounting for compounding. The more frequently compounding occurs, the higher the EAR will be relative to the stated nominal rate, leading to a higher final Future Value.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Retirement Planning</h3>
-    <p>FV is used to project the balance of a retirement account (401k, IRA) at the expected retirement age. This projection confirms if the current savings rate (PMT) and expected return (r) are sufficient to meet the **Target Retirement Corpus**.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. College Savings</h3>
-    <p>Parents use FVA to determine the necessary monthly contributions to fund future tuition costs, adjusting the required final value for projected inflation (the difference between nominal and real future value).</p>
+          {/* REAL-WORLD APPLICATIONS OF FUTURE VALUE */}
+          <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Real-World Applications of Future Value</h2>
+          <p>FV calculations are indispensable for forecasting and establishing realistic financial targets across a range of activities:</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">3. Capital Budgeting</h3>
-    <p>While Present Value (PV) is the primary tool for capital budgeting (NPV), firms use FV to forecast the value of reinvested cash flows, helping to compare mutually exclusive investment opportunities at a common terminal date.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">1. Retirement Planning</h3>
+          <p>FV is used to project the balance of a retirement account (401k, IRA) at the expected retirement age. This projection confirms if the current savings rate (PMT) and expected return (r) are sufficient to meet the **Target Retirement Corpus**.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">2. College Savings</h3>
+          <p>Parents use FVA to determine the necessary monthly contributions to fund future tuition costs, adjusting the required final value for projected inflation (the difference between nominal and real future value).</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Future Value is the definitive measure used to quantify the exponential power of compounding over time. It allows investors to project the growth of single investments and systematic contributions, translating immediate actions into long-term wealth outcomes.</p>
-    <p>Mastery of the FV and FVA formulas is key to disciplined financial planning, providing the necessary mathematical certainty to set achievable retirement goals and understand the profound non-linear benefit of starting to invest early.</p>
-</section>
+          <h3 className="text-xl font-semibold text-foreground mt-6">3. Capital Budgeting</h3>
+          <p>While Present Value (PV) is the primary tool for capital budgeting (NPV), firms use FV to forecast the value of reinvested cash flows, helping to compare mutually exclusive investment opportunities at a common terminal date.</p>
+
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>Future Value is the definitive measure used to quantify the exponential power of compounding over time. It allows investors to project the growth of single investments and systematic contributions, translating immediate actions into long-term wealth outcomes.</p>
+          <p>Mastery of the FV and FVA formulas is key to disciplined financial planning, providing the necessary mathematical certainty to set achievable retirement goals and understand the profound non-linear benefit of starting to invest early.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -884,7 +922,22 @@ export default function FutureValueCalculator() {
             </div>
           </CardContent>
         </Card>
-    </div>
+      </div>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Future Value Calculator projects the growth of your investments over time, accounting for the powerful effect of compound interest.</p>
+          <p>It supports single lump-sum investments, annuities (regular deposits), and growing annuities to model complex financial scenarios.</p>
+          <p>Use this tool to plan for retirement, education funding, or any long-term financial goal by visualizing how your money can grow.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
