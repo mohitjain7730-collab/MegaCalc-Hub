@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent } from 'lucide-react';
+import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -20,9 +20,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ReturnOnInvestmentCalculator() {
-  const [result, setResult] = useState<{ 
-    roi: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    roi: number;
+    interpretation: string;
     recommendation: string;
     performance: string;
     riskLevel: string;
@@ -68,7 +68,7 @@ export default function ReturnOnInvestmentCalculator() {
 
   const getInsights = (roi: number) => {
     const insights = [];
-    
+
     if (roi > 50) {
       insights.push('Exceptional investment performance and returns');
       insights.push('Strong competitive advantages or market opportunities');
@@ -95,11 +95,11 @@ export default function ReturnOnInvestmentCalculator() {
 
   const getConsiderations = (roi: number) => {
     const considerations = [];
-    
+
     considerations.push('Compare ROI with alternative investment opportunities');
     considerations.push('Consider the time horizon and risk profile of the investment');
     considerations.push('Evaluate the sustainability of high ROI levels');
-    
+
     if (roi > 50) {
       considerations.push('Very high ROI may not be sustainable long-term');
       considerations.push('Investigate if high ROI is due to temporary factors or competitive advantages');
@@ -129,9 +129,9 @@ export default function ReturnOnInvestmentCalculator() {
   const onSubmit = (values: FormValues) => {
     const roi = calculate(values);
     if (roi == null) { setResult(null); return; }
-    setResult({ 
-      roi, 
-      interpretation: interpret(roi), 
+    setResult({
+      roi,
+      interpretation: interpret(roi),
       recommendation: recommendation(roi),
       performance: getPerformance(roi),
       riskLevel: getRiskLevel(roi),
@@ -165,19 +165,19 @@ export default function ReturnOnInvestmentCalculator() {
                       Gain from Investment ($)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="e.g., 150000" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 150000"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="costOfInvestment" render={({ field }) => (
                   <FormItem>
                     <FormLabel className="flex items-center gap-2">
@@ -185,20 +185,20 @@ export default function ReturnOnInvestmentCalculator() {
                       Cost of Investment ($)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="e.g., 100000" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 100000"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
               </div>
-              
+
               <Button type="submit" className="w-full md:w-auto">
                 Calculate ROI
               </Button>
@@ -234,7 +234,7 @@ export default function ReturnOnInvestmentCalculator() {
                     {result.performance}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <BarChart3 className="h-5 w-5 text-muted-foreground" />
@@ -249,7 +249,7 @@ export default function ReturnOnInvestmentCalculator() {
                     {result.interpretation}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-green-600" />
@@ -264,47 +264,43 @@ export default function ReturnOnInvestmentCalculator() {
                 </div>
               </div>
 
-              {/* Detailed Analysis */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Key Insights
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.insights.map((insight, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{insight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Strategic Insights
+                    </CardTitle>
+                    <CardDescription>Performance enhancement opportunities</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.insights.map((insight, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{insight}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Important Considerations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.considerations.map((consideration, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{consideration}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Risk Assessment
+                    </CardTitle>
+                    <CardDescription>Critical factors to monitor</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.considerations.map((consideration, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
@@ -313,6 +309,23 @@ export default function ReturnOnInvestmentCalculator() {
 
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+              <p className="font-mono text-sm text-center">
+                ROI = ((Gain from Investment - Cost of Investment) / Cost of Investment) × 100
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Related Calculators Section */}
         <Card>
           <CardHeader>
@@ -372,111 +385,111 @@ export default function ReturnOnInvestmentCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Return on Investment (ROI): Calculation, Interpretation, and Investment Performance" />
-    <meta itemProp="description" content="An expert guide detailing the Return on Investment (ROI) formula, its core role as a profitability metric, its use in comparing different asset classes, and the difference between realized (historical) ROI and annualized ROI." />
-    <meta itemProp="keywords" content="return on investment formula explained, calculating ROI percentage, profitability metric finance, investment performance analysis, ROI vs IRR, annualized return on investment" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-11" /> 
-    <meta itemProp="url" content="/definitive-roi-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Return on Investment (ROI): Calculation, Interpretation, and Investment Performance" />
+          <meta itemProp="description" content="An expert guide detailing the Return on Investment (ROI) formula, its core role as a profitability metric, its use in comparing different asset classes, and the difference between realized (historical) ROI and annualized ROI." />
+          <meta itemProp="keywords" content="return on investment formula explained, calculating ROI percentage, profitability metric finance, investment performance analysis, ROI vs IRR, annualized return on investment" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-11-11" />
+          <meta itemProp="url" content="/definitive-roi-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Return on Investment (ROI): The Universal Measure of Profitability</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental metric that quantifies the efficiency and success of any investment by comparing gain against cost.</p>
-    
-
-[Image of Return on Investment (ROI) calculation concept]
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Return on Investment (ROI): The Universal Measure of Profitability</h1>
+          <p className="text-lg italic text-gray-700">Master the fundamental metric that quantifies the efficiency and success of any investment by comparing gain against cost.</p>
 
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">ROI: Definition and Core Significance</a></li>
-        <li><a href="#formula" className="hover:underline">The ROI Formula and Calculation</a></li>
-        <li><a href="#annualized" className="hover:underline">Annualized ROI vs. Cumulative ROI</a></li>
-        <li><a href="#limitations" className="hover:underline">Key Limitations and Alternatives (IRR)</a></li>
-        <li><a href="#applications" className="hover:underline">Applications in Business and Personal Finance</a></li>
-    </ul>
-<hr />
+          [Image of Return on Investment (ROI) calculation concept]
 
-    {/* ROI: DEFINITION AND CORE SIGNIFICANCE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ROI: Definition and Core Significance</h2>
-    <p>The **Return on Investment (ROI)** is a performance measure used to evaluate the efficiency or profitability of an investment or to compare the efficiency of different investments. It directly compares the net benefit generated by an investment to the cost of the investment.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Universal Metric</h3>
-    <p>ROI is the most widely used metric in finance and business because it is simple, intuitive, and universally applicable across different types of assets, including stocks, real estate, marketing campaigns, and capital expenditures (CapEx). The resulting figure is expressed as a percentage.</p>
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-blue-600">
+            <li><a href="#definition" className="hover:underline">ROI: Definition and Core Significance</a></li>
+            <li><a href="#formula" className="hover:underline">The ROI Formula and Calculation</a></li>
+            <li><a href="#annualized" className="hover:underline">Annualized ROI vs. Cumulative ROI</a></li>
+            <li><a href="#limitations" className="hover:underline">Key Limitations and Alternatives (IRR)</a></li>
+            <li><a href="#applications" className="hover:underline">Applications in Business and Personal Finance</a></li>
+          </ul>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Net Gain</h3>
-    <p>ROI always focuses on **Net Gain**—the profit after all costs are accounted for. A positive ROI indicates the investment is profitable, while a negative ROI indicates a net loss.</p>
+          {/* ROI: DEFINITION AND CORE SIGNIFICANCE */}
+          <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ROI: Definition and Core Significance</h2>
+          <p>The **Return on Investment (ROI)** is a performance measure used to evaluate the efficiency or profitability of an investment or to compare the efficiency of different investments. It directly compares the net benefit generated by an investment to the cost of the investment.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Universal Metric</h3>
+          <p>ROI is the most widely used metric in finance and business because it is simple, intuitive, and universally applicable across different types of assets, including stocks, real estate, marketing campaigns, and capital expenditures (CapEx). The resulting figure is expressed as a percentage.</p>
 
-    {/* THE ROI FORMULA AND CALCULATION */}
-    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The ROI Formula and Calculation</h2>
-    <p>ROI is calculated by taking the net gain of an investment, dividing it by the total cost of the investment, and then converting the result into a percentage.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Net Gain</h3>
+          <p>ROI always focuses on **Net Gain**—the profit after all costs are accounted for. A positive ROI indicates the investment is profitable, while a negative ROI indicates a net loss.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The standard formula for Return on Investment is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'ROI = [(Final Value - Initial Cost) / Initial Cost] * 100'}
-        </p>
-    </div>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Defining Total Investment Cost</h3>
-    <p>The **Initial Cost** must include all capital outlays associated with the investment, including the purchase price, transaction fees, commissions, and any necessary startup or renovation costs. Excluding these fees results in an artificially inflated ROI.</p>
+          {/* THE ROI FORMULA AND CALCULATION */}
+          <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The ROI Formula and Calculation</h2>
+          <p>ROI is calculated by taking the net gain of an investment, dividing it by the total cost of the investment, and then converting the result into a percentage.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Defining Net Gain</h3>
-    <p>The **Final Value** must include all returns, including capital appreciation and any intermediate cash flows received (e.g., dividends, rent, or coupons) during the holding period.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+          <p>The standard formula for Return on Investment is:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'ROI = [(Final Value - Initial Cost) / Initial Cost] * 100'}
+            </p>
+          </div>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Defining Total Investment Cost</h3>
+          <p>The **Initial Cost** must include all capital outlays associated with the investment, including the purchase price, transaction fees, commissions, and any necessary startup or renovation costs. Excluding these fees results in an artificially inflated ROI.</p>
 
-    {/* ANNUALIZED ROI VS. CUMULATIVE ROI */}
-    <h2 id="annualized" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Annualized ROI vs. Cumulative ROI</h2>
-    <p>The standard ROI calculation is a **Cumulative ROI**—it measures the total return over the entire holding period, regardless of length. This creates an apples-to-oranges problem when comparing investments with different durations, necessitating the **Annualized ROI**.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Defining Net Gain</h3>
+          <p>The **Final Value** must include all returns, including capital appreciation and any intermediate cash flows received (e.g., dividends, rent, or coupons) during the holding period.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Cumulative ROI (Total Return)</h3>
-    <p>This is the simple, non-time-weighted percentage that answers, "What was the total profit?" It is useful for assessing the final outcome of a project but not for comparing against a benchmark like the stock market (which is always quoted in annual terms).</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Annualized ROI (Time-Weighted)</h3>
-    <p>The Annualized ROI adjusts the total return to a single, yearly rate, making it comparable to metrics like Yield to Maturity (YTM) or Compounded Annual Growth Rate (CAGR).</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Annualized ROI = [ (1 + Cumulative ROI)^(1/Years Held) - 1 ] * 100'}
-        </p>
-    </div>
-    <p>This provides a truer measure of the investment's compounding performance over time.</p>
+          {/* ANNUALIZED ROI VS. CUMULATIVE ROI */}
+          <h2 id="annualized" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Annualized ROI vs. Cumulative ROI</h2>
+          <p>The standard ROI calculation is a **Cumulative ROI**—it measures the total return over the entire holding period, regardless of length. This creates an apples-to-oranges problem when comparing investments with different durations, necessitating the **Annualized ROI**.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Cumulative ROI (Total Return)</h3>
+          <p>This is the simple, non-time-weighted percentage that answers, "What was the total profit?" It is useful for assessing the final outcome of a project but not for comparing against a benchmark like the stock market (which is always quoted in annual terms).</p>
 
-    {/* KEY LIMITATIONS AND ALTERNATIVES (IRR) */}
-    <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Limitations and Alternatives (IRR)</h2>
-    <p>While simple, the ROI metric has a critical flaw that limits its use in complex capital budgeting decisions: its failure to account for the Time Value of Money (TVM).</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Annualized ROI (Time-Weighted)</h3>
+          <p>The Annualized ROI adjusts the total return to a single, yearly rate, making it comparable to metrics like Yield to Maturity (YTM) or Compounded Annual Growth Rate (CAGR).</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Annualized ROI = [ (1 + Cumulative ROI)^(1/Years Held) - 1 ] * 100'}
+            </p>
+          </div>
+          <p>This provides a truer measure of the investment's compounding performance over time.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Ignoring the Time Value of Money (TVM)</h3>
-    <p>The ROI calculation treats all cash flows as equal, regardless of when they are received. A dollar received in Year 1 is treated the same as a dollar received in Year 10. This is financially flawed because a dollar received today can be reinvested to earn returns, making it more valuable.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Internal Rate of Return (IRR)</h3>
-    <p>For large business investments with uneven cash flows and long durations, the **Internal Rate of Return (IRR)** or **Net Present Value (NPV)** are superior metrics. IRR and NPV address the TVM flaw by discounting future cash flows back to their present value, providing an economically accurate assessment of the project's intrinsic worth.</p>
+          {/* KEY LIMITATIONS AND ALTERNATIVES (IRR) */}
+          <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Limitations and Alternatives (IRR)</h2>
+          <p>While simple, the ROI metric has a critical flaw that limits its use in complex capital budgeting decisions: its failure to account for the Time Value of Money (TVM).</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Ignoring the Time Value of Money (TVM)</h3>
+          <p>The ROI calculation treats all cash flows as equal, regardless of when they are received. A dollar received in Year 1 is treated the same as a dollar received in Year 10. This is financially flawed because a dollar received today can be reinvested to earn returns, making it more valuable.</p>
 
-    {/* APPLICATIONS IN BUSINESS AND PERSONAL FINANCE */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Business and Personal Finance</h2>
-    <p>ROI remains a primary quick screening tool across various fields due to its simplicity.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Internal Rate of Return (IRR)</h3>
+          <p>For large business investments with uneven cash flows and long durations, the **Internal Rate of Return (IRR)** or **Net Present Value (NPV)** are superior metrics. IRR and NPV address the TVM flaw by discounting future cash flows back to their present value, providing an economically accurate assessment of the project's intrinsic worth.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Personal Investment Comparison</h3>
-    <p>Investors use ROI to compare different asset classes, such as: "Did my rental property achieve a better return than my stock portfolio last year?" The simple percentage allows for rapid portfolio rebalancing decisions.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Marketing and Advertising</h3>
-    <p>In business, **Marketing ROI** measures the profitability of advertising campaigns. The formula calculates (Revenue from Campaign - Cost of Campaign) / Cost of Campaign, providing a direct metric for allocating marketing capital efficiently.</p>
+          {/* APPLICATIONS IN BUSINESS AND PERSONAL FINANCE */}
+          <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Business and Personal Finance</h2>
+          <p>ROI remains a primary quick screening tool across various fields due to its simplicity.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Personal Investment Comparison</h3>
+          <p>Investors use ROI to compare different asset classes, such as: "Did my rental property achieve a better return than my stock portfolio last year?" The simple percentage allows for rapid portfolio rebalancing decisions.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Return on Investment (ROI) is the universal metric of efficiency, quantifying profit by dividing the **Net Gain** by the **Initial Cost**. Its simplicity makes it indispensable for rapid performance evaluation and comparing diverse investments.</p>
-    <p>While the **Cumulative ROI** reveals the total profit, savvy investors rely on **Annualized ROI** to properly assess compounding performance and recognize that, for complex, long-term decisions, metrics like the Internal Rate of Return (IRR) offer a more accurate assessment by accounting for the Time Value of Money.</p>
-</section>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Marketing and Advertising</h3>
+          <p>In business, **Marketing ROI** measures the profitability of advertising campaigns. The formula calculates (Revenue from Campaign - Cost of Campaign) / Cost of Campaign, providing a direct metric for allocating marketing capital efficiently.</p>
+
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>Return on Investment (ROI) is the universal metric of efficiency, quantifying profit by dividing the **Net Gain** by the **Initial Cost**. Its simplicity makes it indispensable for rapid performance evaluation and comparing diverse investments.</p>
+          <p>While the **Cumulative ROI** reveals the total profit, savvy investors rely on **Annualized ROI** to properly assess compounding performance and recognize that, for complex, long-term decisions, metrics like the Internal Rate of Return (IRR) offer a more accurate assessment by accounting for the Time Value of Money.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -562,6 +575,19 @@ export default function ReturnOnInvestmentCalculator() {
           </CardContent>
         </Card>
       </div>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Return on Investment (ROI) Calculator assesses the efficiency or profitability of an investment.</p>
+          <p>It measures the gain or loss generated on an investment relative to the amount of money invested.</p>
+          <p>Use this tool to compare the efficiency of different investments and make data-driven financial decisions.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

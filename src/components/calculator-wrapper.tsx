@@ -38,16 +38,18 @@ function getCalculatorImport(categorySlug: string, calculatorSlug: string): Prom
 
   // Helper to handle chunk errors gracefully
   const handleImportError = (error: any): Promise<{ default: ComponentType }> => {
+    console.error(`[CalculatorDebug] Error loading calculator ${categorySlug}/${calculatorSlug}:`, error);
     if (isChunkError(error)) {
       // For chunk errors, let the global handler manage reloads
       // Return loading component as fallback
-      console.warn('Chunk error in calculator import, using fallback');
+      console.warn('[CalculatorDebug] Chunk error detected, returning fallback');
       return Promise.resolve({ default: CalculatorLoading });
     }
     // For other errors, log and return loading component
-    console.error(`Failed to import calculator: ${categorySlug}/${calculatorSlug}`, error);
     return Promise.resolve({ default: CalculatorLoading });
   };
+
+  console.log(`[CalculatorDebug] Attempting to import: ${categorySlug}/${calculatorSlug}`);
 
   // Wellness calculators special handling
   if (categorySlug === 'wellness') {

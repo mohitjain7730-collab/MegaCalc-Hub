@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent } from 'lucide-react';
+import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -20,9 +20,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ReturnOnAssetsCalculator() {
-  const [result, setResult] = useState<{ 
-    roa: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    roa: number;
+    interpretation: string;
     recommendation: string;
     efficiency: string;
     riskLevel: string;
@@ -68,7 +68,7 @@ export default function ReturnOnAssetsCalculator() {
 
   const getInsights = (roa: number) => {
     const insights = [];
-    
+
     if (roa > 10) {
       insights.push('Exceptional asset utilization and operational efficiency');
       insights.push('Strong competitive advantages and operational excellence');
@@ -92,11 +92,11 @@ export default function ReturnOnAssetsCalculator() {
 
   const getConsiderations = (roa: number) => {
     const considerations = [];
-    
+
     considerations.push('Compare ROA with industry peers and historical performance');
     considerations.push('Consider the company\'s business model and asset intensity');
     considerations.push('Evaluate the sustainability of high ROA levels');
-    
+
     if (roa > 15) {
       considerations.push('Very high ROA may not be sustainable long-term');
       considerations.push('Investigate if high ROA is due to temporary factors or competitive advantages');
@@ -126,9 +126,9 @@ export default function ReturnOnAssetsCalculator() {
   const onSubmit = (values: FormValues) => {
     const roa = calculate(values);
     if (roa == null) { setResult(null); return; }
-    setResult({ 
-      roa, 
-      interpretation: interpret(roa), 
+    setResult({
+      roa,
+      interpretation: interpret(roa),
       recommendation: recommendation(roa),
       efficiency: getEfficiency(roa),
       riskLevel: getRiskLevel(roa),
@@ -152,55 +152,55 @@ export default function ReturnOnAssetsCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField control={form.control} name="netIncome" render={({ field }) => (
-              <FormItem>
+                <FormField control={form.control} name="netIncome" render={({ field }) => (
+                  <FormItem>
                     <FormLabel className="flex items-center gap-2">
                       <DollarSign className="h-4 w-4" />
                       Net Income ($)
                     </FormLabel>
-                <FormControl>
-                      <Input 
-                        type="number" 
+                    <FormControl>
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="e.g., 1000000" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 1000000"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-                
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+
                 <FormField control={form.control} name="totalAssets" render={({ field }) => (
-              <FormItem>
+                  <FormItem>
                     <FormLabel className="flex items-center gap-2">
                       <BarChart3 className="h-4 w-4" />
                       Total Assets ($)
                     </FormLabel>
-                <FormControl>
-                      <Input 
-                        type="number" 
+                    <FormControl>
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="e.g., 10000000" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 10000000"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
-              
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+
               <Button type="submit" className="w-full md:w-auto">
                 Calculate ROA
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -231,7 +231,7 @@ export default function ReturnOnAssetsCalculator() {
                     {result.efficiency}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <BarChart3 className="h-5 w-5 text-muted-foreground" />
@@ -246,7 +246,7 @@ export default function ReturnOnAssetsCalculator() {
                     {result.interpretation}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-green-600" />
@@ -261,47 +261,43 @@ export default function ReturnOnAssetsCalculator() {
                 </div>
               </div>
 
-              {/* Detailed Analysis */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Key Insights
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.insights.map((insight, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{insight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Strategic Insights
+                    </CardTitle>
+                    <CardDescription>Asset utilization opportunities</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.insights.map((insight, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{insight}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Important Considerations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.considerations.map((consideration, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{consideration}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Risk Assessment
+                    </CardTitle>
+                    <CardDescription>Critical factors to monitor</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.considerations.map((consideration, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
@@ -310,6 +306,26 @@ export default function ReturnOnAssetsCalculator() {
 
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+              <p className="font-mono text-sm text-center">
+                ROA = (Net Income / Total Assets) × 100
+              </p>
+            </div>
+            <div className="text-sm text-muted-foreground">
+              <p>Commonly analyzed using the DuPont Identity breakdown into Profit Margin × Asset Turnover</p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Related Calculators Section */}
         <Card>
           <CardHeader>
@@ -369,129 +385,129 @@ export default function ReturnOnAssetsCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Return on Assets (ROA): Calculation, Interpretation, and Asset Efficiency Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the Return on Assets (ROA) formula, its core role as a metric of management's efficiency in using company assets to generate profit, and its comparison to ROE (Return on Equity) and RONA (Return on Net Assets)." />
-    <meta itemProp="keywords" content="return on assets formula explained, calculating ROA, asset efficiency ratio, profitability metric finance, net income to total assets, ROA vs ROE, financial management ratio" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-11" /> 
-    <meta itemProp="url" content="/definitive-roa-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Return on Assets (ROA): Calculation, Interpretation, and Asset Efficiency Analysis" />
+          <meta itemProp="description" content="An expert guide detailing the Return on Assets (ROA) formula, its core role as a metric of management's efficiency in using company assets to generate profit, and its comparison to ROE (Return on Equity) and RONA (Return on Net Assets)." />
+          <meta itemProp="keywords" content="return on assets formula explained, calculating ROA, asset efficiency ratio, profitability metric finance, net income to total assets, ROA vs ROE, financial management ratio" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-11-11" />
+          <meta itemProp="url" content="/definitive-roa-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Return on Assets (ROA): Measuring Management's Asset Efficiency</h1>
-    <p className="text-lg italic text-gray-700">Master the critical metric that reveals how effectively a company uses its total asset base to generate net profits.</p>
-    
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Return on Assets (ROA): Measuring Management's Asset Efficiency</h1>
+          <p className="text-lg italic text-gray-700">Master the critical metric that reveals how effectively a company uses its total asset base to generate net profits.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">ROA: Definition and Core Significance</a></li>
-        <li><a href="#formula" className="hover:underline">The ROA Formula and Calculation</a></li>
-        <li><a href="#interpretation" className="hover:underline">Interpreting ROA and Industry Benchmarks</a></li>
-        <li><a href="#vs-roe" className="hover:underline">ROA vs. ROE: The Role of Financial Leverage</a></li>
-        <li><a href="#roa-dupoint" className="hover:underline">The ROA Component of DuPont Analysis</a></li>
-    </ul>
-<hr />
 
-    {/* ROA: DEFINITION AND CORE SIGNIFICANCE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ROA: Definition and Core Significance</h2>
-    <p>The **Return on Assets (ROA)** is a key profitability ratio that measures the net income generated by a company as a percentage of its total assets. It is the best indicator of management's ability to efficiently utilize the company's entire asset base (financed by both debt and equity) to earn profits.</p>
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-blue-600">
+            <li><a href="#definition" className="hover:underline">ROA: Definition and Core Significance</a></li>
+            <li><a href="#formula" className="hover:underline">The ROA Formula and Calculation</a></li>
+            <li><a href="#interpretation" className="hover:underline">Interpreting ROA and Industry Benchmarks</a></li>
+            <li><a href="#vs-roe" className="hover:underline">ROA vs. ROE: The Role of Financial Leverage</a></li>
+            <li><a href="#roa-dupoint" className="hover:underline">The ROA Component of DuPont Analysis</a></li>
+          </ul>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Measuring Operational Efficiency</h3>
-    <p>ROA answers the question: "For every dollar of assets owned—whether buildings, equipment, or inventory—how much net profit did the company generate?" It serves as a normalized measure of asset effectiveness, allowing investors to compare companies with different capital structures.</p>
+          {/* ROA: DEFINITION AND CORE SIGNIFICANCE */}
+          <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ROA: Definition and Core Significance</h2>
+          <p>The **Return on Assets (ROA)** is a key profitability ratio that measures the net income generated by a company as a percentage of its total assets. It is the best indicator of management's ability to efficiently utilize the company's entire asset base (financed by both debt and equity) to earn profits.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Importance to Stakeholders</h3>
-    <p>Both creditors and investors favor the ROA because it looks at all assets regardless of how they were financed. A high ROA suggests that the company is effectively translating its physical and financial investments into profitable outcomes.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Measuring Operational Efficiency</h3>
+          <p>ROA answers the question: "For every dollar of assets owned—whether buildings, equipment, or inventory—how much net profit did the company generate?" It serves as a normalized measure of asset effectiveness, allowing investors to compare companies with different capital structures.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Importance to Stakeholders</h3>
+          <p>Both creditors and investors favor the ROA because it looks at all assets regardless of how they were financed. A high ROA suggests that the company is effectively translating its physical and financial investments into profitable outcomes.</p>
 
-    {/* THE ROA FORMULA AND CALCULATION */}
-    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The ROA Formula and Calculation</h2>
-    <p>ROA is calculated by dividing the company's Net Income by its Average Total Assets for the period.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The standard formula for Return on Assets is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'ROA = Net Income / Average Total Assets'}
-        </p>
-    </div>
+          {/* THE ROA FORMULA AND CALCULATION */}
+          <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The ROA Formula and Calculation</h2>
+          <p>ROA is calculated by dividing the company's Net Income by its Average Total Assets for the period.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Numerator Adjustment</h3>
-    <p>For a more precise measure, some analysts add back the after-tax interest expense to Net Income in the numerator. This is done to prevent distortions caused by financial leverage, ensuring the numerator reflects the earnings available to all asset providers before financing costs are paid.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Adjusted ROA = (Net Income + Interest Expense * (1 - T)) / Average Total Assets'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+          <p>The standard formula for Return on Assets is:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'ROA = Net Income / Average Total Assets'}
+            </p>
+          </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Averaging the Denominator</h3>
-    <p>Best practice requires using the **Average Total Assets** (Assets at the start of the period plus Assets at the end of the period, divided by two). This smooths out potential distortions caused by large, one-time asset purchases or sales that occur mid-period.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Numerator Adjustment</h3>
+          <p>For a more precise measure, some analysts add back the after-tax interest expense to Net Income in the numerator. This is done to prevent distortions caused by financial leverage, ensuring the numerator reflects the earnings available to all asset providers before financing costs are paid.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Adjusted ROA = (Net Income + Interest Expense * (1 - T)) / Average Total Assets'}
+            </p>
+          </div>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Averaging the Denominator</h3>
+          <p>Best practice requires using the **Average Total Assets** (Assets at the start of the period plus Assets at the end of the period, divided by two). This smooths out potential distortions caused by large, one-time asset purchases or sales that occur mid-period.</p>
 
-    {/* INTERPRETING ROA AND INDUSTRY BENCHMARKS */}
-    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting ROA and Industry Benchmarks</h2>
-    <p>ROA is expressed as a percentage. A 5% ROA means the company generated 5 cents of profit for every dollar of assets it owned.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">General Benchmarks</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Below 5%:** Generally considered low or poor for established companies, signaling inefficient asset use.</li>
-        <li>**5% to 10%:** Considered acceptable or average for most large, stable industries.</li>
-        <li>**Above 10%:** Considered excellent, indicating superior management and asset efficiency.</li>
-    </ul>
+          {/* INTERPRETING ROA AND INDUSTRY BENCHMARKS */}
+          <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting ROA and Industry Benchmarks</h2>
+          <p>ROA is expressed as a percentage. A 5% ROA means the company generated 5 cents of profit for every dollar of assets it owned.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Industry Variations</h3>
-    <p>The significance of ROA is highly dependent on the industry's **asset intensity**:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Capital-Intensive Industries (e.g., Manufacturing, Utilities):** Naturally have high total asset bases. A lower ROA (e.g., 4% to 6%) is acceptable because their assets (factories, power grids) are necessary but expensive.</li>
-        <li>**Capital-Light Industries (e.g., Software, Services):** Have few tangible assets. They tend to have higher average ROAs (e.g., 10% to 15%) because they generate significant revenue and profit without large, corresponding asset bases.</li>
-    </ul>
+          <h3 className="text-xl font-semibold text-foreground mt-6">General Benchmarks</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>**Below 5%:** Generally considered low or poor for established companies, signaling inefficient asset use.</li>
+            <li>**5% to 10%:** Considered acceptable or average for most large, stable industries.</li>
+            <li>**Above 10%:** Considered excellent, indicating superior management and asset efficiency.</li>
+          </ul>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Industry Variations</h3>
+          <p>The significance of ROA is highly dependent on the industry's **asset intensity**:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>**Capital-Intensive Industries (e.g., Manufacturing, Utilities):** Naturally have high total asset bases. A lower ROA (e.g., 4% to 6%) is acceptable because their assets (factories, power grids) are necessary but expensive.</li>
+            <li>**Capital-Light Industries (e.g., Software, Services):** Have few tangible assets. They tend to have higher average ROAs (e.g., 10% to 15%) because they generate significant revenue and profit without large, corresponding asset bases.</li>
+          </ul>
 
-    {/* ROA VS. ROE: THE ROLE OF FINANCIAL LEVERAGE */}
-    <h2 id="vs-roe" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ROA vs. ROE: The Role of Financial Leverage</h2>
-    <p>Comparing ROA (Return on Assets) to ROE (Return on Equity) is essential for diagnosing the impact of financial leverage (debt) on shareholder returns.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">ROE and ROA Difference</h3>
-    <p>The difference between the two metrics is the inclusion of debt:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**ROA:** Measures return against *all* assets (financed by Debt + Equity).</li>
-        <li>**ROE:** Measures return only against *equity* (financed by shareholders).</li>
-    </ul>
-    <p>If a company has no debt, its total assets equal its equity, and **ROA must equal ROE**.</p>
+          {/* ROA VS. ROE: THE ROLE OF FINANCIAL LEVERAGE */}
+          <h2 id="vs-roe" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ROA vs. ROE: The Role of Financial Leverage</h2>
+          <p>Comparing ROA (Return on Assets) to ROE (Return on Equity) is essential for diagnosing the impact of financial leverage (debt) on shareholder returns.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Impact of Leverage</h3>
-    <p>If **ROE is higher than ROA**, it means the company is using **financial leverage (debt)** effectively. The return generated by the assets exceeds the cost of borrowing, amplifying the returns to the shareholders. This is known as positive leverage.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">ROE and ROA Difference</h3>
+          <p>The difference between the two metrics is the inclusion of debt:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>**ROA:** Measures return against *all* assets (financed by Debt + Equity).</li>
+            <li>**ROE:** Measures return only against *equity* (financed by shareholders).</li>
+          </ul>
+          <p>If a company has no debt, its total assets equal its equity, and **ROA must equal ROE**.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Impact of Leverage</h3>
+          <p>If **ROE is higher than ROA**, it means the company is using **financial leverage (debt)** effectively. The return generated by the assets exceeds the cost of borrowing, amplifying the returns to the shareholders. This is known as positive leverage.</p>
 
-    {/* THE ROA COMPONENT OF DUPONT ANALYSIS */}
-    <h2 id="roa-dupoint" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The ROA Component of DuPont Analysis</h2>
-    <p>The traditional **DuPont Analysis** (a breakdown of ROE) is often simplified into two main drivers of Return on Assets: profitability and asset efficiency.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Two-Part ROA Breakdown</h3>
-    <p>ROA can be separated into its fundamental drivers:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'ROA = Net Profit Margin * Asset Turnover'}
-        </p>
-    </div>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Net Profit Margin:</strong> Measures profitability (Net Income / Revenue).</li>
-        <li><strong className="font-semibold">Asset Turnover:</strong> Measures asset efficiency (Revenue / Average Total Assets).</li>
-    </ul>
+          {/* THE ROA COMPONENT OF DUPONT ANALYSIS */}
+          <h2 id="roa-dupoint" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The ROA Component of DuPont Analysis</h2>
+          <p>The traditional **DuPont Analysis** (a breakdown of ROE) is often simplified into two main drivers of Return on Assets: profitability and asset efficiency.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Diagnostic Power</h3>
-    <p>This breakdown allows analysts to pinpoint why ROA is high or low: a high ROA could be due to a high **Profit Margin** (e.g., Apple, pricing power) or high **Asset Turnover** (e.g., Walmart, high sales volume on low asset base).</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Two-Part ROA Breakdown</h3>
+          <p>ROA can be separated into its fundamental drivers:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'ROA = Net Profit Margin * Asset Turnover'}
+            </p>
+          </div>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Net Profit Margin:</strong> Measures profitability (Net Income / Revenue).</li>
+            <li><strong className="font-semibold">Asset Turnover:</strong> Measures asset efficiency (Revenue / Average Total Assets).</li>
+          </ul>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Diagnostic Power</h3>
+          <p>This breakdown allows analysts to pinpoint why ROA is high or low: a high ROA could be due to a high **Profit Margin** (e.g., Apple, pricing power) or high **Asset Turnover** (e.g., Walmart, high sales volume on low asset base).</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Return on Assets (ROA) is the definitive measure of **asset utilization efficiency**, calculating the profit generated by management for every dollar of total assets controlled.</p>
-    <p>ROA is crucial for benchmarking and operational analysis. By comparing ROA to ROE, investors can diagnose the impact of **financial leverage**. A strong ROA indicates superior management skill in converting capital investments into sustainable earnings, independent of how those assets were financed.</p>
-</section>
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>Return on Assets (ROA) is the definitive measure of **asset utilization efficiency**, calculating the profit generated by management for every dollar of total assets controlled.</p>
+          <p>ROA is crucial for benchmarking and operational analysis. By comparing ROA to ROE, investors can diagnose the impact of **financial leverage**. A strong ROA indicates superior management skill in converting capital investments into sustainable earnings, independent of how those assets were financed.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -577,6 +593,19 @@ export default function ReturnOnAssetsCalculator() {
           </CardContent>
         </Card>
       </div>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Return on Assets (ROA) Calculator measures a company's ability to generate profits from its total assets.</p>
+          <p>It helps assess how efficiently management is using the company's asset base to create value.</p>
+          <p>Use this tool to compare companies with different capital structures and identify those with superior asset utilization.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

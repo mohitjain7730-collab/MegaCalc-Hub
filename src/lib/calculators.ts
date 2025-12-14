@@ -7119,6 +7119,15 @@ export const calculators: Calculator[] = [
     metaTitle: 'Spending Pattern Analyzer & Budget Optimizer',
     metaDescription: 'Understand your money flow. Identify spending patterns, spot leaks, and optimize your budget for better financial health.',
   },
+  {
+    id: 10222,
+    name: 'Startup Runway Calculator with Hiring Plan',
+    description: 'Calculate startup runway with a dynamic hiring plan to see how headcount growth impacts cash flow.',
+    slug: 'startup-runway-with-hiring-plan-calculator',
+    category: 'finance',
+    metaTitle: 'Startup Runway Calculator with Hiring Plan',
+    metaDescription: 'Project your startup runway by factoring in dynamic hiring plans and revenue growth. Visualize cash flow survival dates.',
+  },
 
 ];
 

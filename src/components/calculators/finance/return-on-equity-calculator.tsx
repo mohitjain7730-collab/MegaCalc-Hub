@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent } from 'lucide-react';
+import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -20,9 +20,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ReturnOnEquityCalculator() {
-  const [result, setResult] = useState<{ 
-    roe: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    roe: number;
+    interpretation: string;
     recommendation: string;
     efficiency: string;
     riskLevel: string;
@@ -68,7 +68,7 @@ export default function ReturnOnEquityCalculator() {
 
   const getInsights = (roe: number) => {
     const insights = [];
-    
+
     if (roe > 20) {
       insights.push('Exceptional management efficiency in generating returns');
       insights.push('Strong competitive advantage and operational excellence');
@@ -92,11 +92,11 @@ export default function ReturnOnEquityCalculator() {
 
   const getConsiderations = (roe: number) => {
     const considerations = [];
-    
+
     considerations.push('Compare ROE with industry peers and historical performance');
     considerations.push('Consider the company\'s business model and competitive position');
     considerations.push('Evaluate the sustainability of high ROE levels');
-    
+
     if (roe > 25) {
       considerations.push('Very high ROE may not be sustainable long-term');
       considerations.push('Investigate if high ROE is due to temporary factors or competitive advantages');
@@ -126,9 +126,9 @@ export default function ReturnOnEquityCalculator() {
   const onSubmit = (values: FormValues) => {
     const roe = calculate(values);
     if (roe == null) { setResult(null); return; }
-    setResult({ 
-      roe, 
-      interpretation: interpret(roe), 
+    setResult({
+      roe,
+      interpretation: interpret(roe),
       recommendation: recommendation(roe),
       efficiency: getEfficiency(roe),
       riskLevel: getRiskLevel(roe),
@@ -152,55 +152,55 @@ export default function ReturnOnEquityCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField control={form.control} name="netIncome" render={({ field }) => (
-              <FormItem>
+                <FormField control={form.control} name="netIncome" render={({ field }) => (
+                  <FormItem>
                     <FormLabel className="flex items-center gap-2">
                       <DollarSign className="h-4 w-4" />
                       Net Income ($)
                     </FormLabel>
-                <FormControl>
-                      <Input 
-                        type="number" 
+                    <FormControl>
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="e.g., 1000000" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 1000000"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-                
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+
                 <FormField control={form.control} name="shareholdersEquity" render={({ field }) => (
-              <FormItem>
+                  <FormItem>
                     <FormLabel className="flex items-center gap-2">
                       <BarChart3 className="h-4 w-4" />
                       Shareholders' Equity ($)
                     </FormLabel>
-                <FormControl>
-                      <Input 
-                        type="number" 
+                    <FormControl>
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="e.g., 5000000" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 5000000"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
-              
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+
               <Button type="submit" className="w-full md:w-auto">
                 Calculate ROE
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -231,7 +231,7 @@ export default function ReturnOnEquityCalculator() {
                     {result.efficiency}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <BarChart3 className="h-5 w-5 text-muted-foreground" />
@@ -246,7 +246,7 @@ export default function ReturnOnEquityCalculator() {
                     {result.interpretation}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-green-600" />
@@ -261,47 +261,43 @@ export default function ReturnOnEquityCalculator() {
                 </div>
               </div>
 
-              {/* Detailed Analysis */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Key Insights
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.insights.map((insight, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{insight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Strategic Insights
+                    </CardTitle>
+                    <CardDescription>Efficiency enhancement opportunities</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.insights.map((insight, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{insight}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Important Considerations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.considerations.map((consideration, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{consideration}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Risk Assessment
+                    </CardTitle>
+                    <CardDescription>Critical factors to monitor</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.considerations.map((consideration, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
@@ -310,6 +306,26 @@ export default function ReturnOnEquityCalculator() {
 
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+              <p className="font-mono text-sm text-center">
+                ROE = (Net Income / Shareholders' Equity) × 100
+              </p>
+            </div>
+            <div className="text-sm text-muted-foreground">
+              <p>Commonly analyzed using the DuPont Identity: ROE = Profit Margin × Asset Turnover × Financial Leverage</p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Related Calculators Section */}
         <Card>
           <CardHeader>
@@ -369,119 +385,119 @@ export default function ReturnOnEquityCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Return on Equity (ROE): Calculation, DuPont Analysis, and Profitability Metric" />
-    <meta itemProp="description" content="An expert guide detailing the Return on Equity (ROE) formula, its core role as a profitability metric for shareholders, the mechanics of the DuPont Analysis (breaking ROE into profit, efficiency, and leverage), and its use in financial benchmarking." />
-    <meta itemProp="keywords" content="return on equity formula explained, calculating ROE, du pont analysis explained, shareholder return metric, profitability ratio finance, equity vs debt financing impact on ROE" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-11" /> 
-    <meta itemProp="url" content="/definitive-roe-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Return on Equity (ROE): Calculation, DuPont Analysis, and Profitability Metric" />
+          <meta itemProp="description" content="An expert guide detailing the Return on Equity (ROE) formula, its core role as a profitability metric for shareholders, the mechanics of the DuPont Analysis (breaking ROE into profit, efficiency, and leverage), and its use in financial benchmarking." />
+          <meta itemProp="keywords" content="return on equity formula explained, calculating ROE, du pont analysis explained, shareholder return metric, profitability ratio finance, equity vs debt financing impact on ROE" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-11-11" />
+          <meta itemProp="url" content="/definitive-roe-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Return on Equity (ROE): Measuring Shareholder Profitability</h1>
-    <p className="text-lg italic text-gray-700">Master the critical metric that reveals how effectively a company uses the capital invested by its shareholders to generate profits.</p>
-    
-
-[Image of Return on Equity calculation concept]
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Return on Equity (ROE): Measuring Shareholder Profitability</h1>
+          <p className="text-lg italic text-gray-700">Master the critical metric that reveals how effectively a company uses the capital invested by its shareholders to generate profits.</p>
 
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">ROE: Definition and Core Significance</a></li>
-        <li><a href="#formula" className="hover:underline">The ROE Formula and Calculation</a></li>
-        <li><a href="#du-pont" className="hover:underline">DuPont Analysis: Deconstructing the Drivers of ROE</a></li>
-        <li><a href="#leverage" className="hover:underline">The Impact of Financial Leverage on ROE</a></li>
-        <li><a href="#applications" className="hover:underline">Interpretation and Benchmarking</a></li>
-    </ul>
-<hr />
+          [Image of Return on Equity calculation concept]
 
-    {/* ROE: DEFINITION AND CORE SIGNIFICANCE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ROE: Definition and Core Significance</h2>
-    <p>The **Return on Equity (ROE)** is a vital financial performance measure that calculates the net income earned by a company as a percentage of the total shareholders' equity. It is the single most important profitability metric for common shareholders.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Shareholder Profitability Metric</h3>
-    <p>ROE answers the question: "For every dollar of equity capital invested in the company, how much profit did the company generate?" It serves as a direct indicator of the efficiency and effectiveness of management in utilizing the capital base provided by the owners.</p>
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-blue-600">
+            <li><a href="#definition" className="hover:underline">ROE: Definition and Core Significance</a></li>
+            <li><a href="#formula" className="hover:underline">The ROE Formula and Calculation</a></li>
+            <li><a href="#du-pont" className="hover:underline">DuPont Analysis: Deconstructing the Drivers of ROE</a></li>
+            <li><a href="#leverage" className="hover:underline">The Impact of Financial Leverage on ROE</a></li>
+            <li><a href="#applications" className="hover:underline">Interpretation and Benchmarking</a></li>
+          </ul>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Context</h3>
-    <p>A high ROE is generally desirable, but it must be viewed in context. It should be compared against the company's cost of equity (the return investors require) and the ROE of industry competitors. A company that generates an ROE below the required rate of return is functionally destroying shareholder value.</p>
+          {/* ROE: DEFINITION AND CORE SIGNIFICANCE */}
+          <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ROE: Definition and Core Significance</h2>
+          <p>The **Return on Equity (ROE)** is a vital financial performance measure that calculates the net income earned by a company as a percentage of the total shareholders' equity. It is the single most important profitability metric for common shareholders.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Shareholder Profitability Metric</h3>
+          <p>ROE answers the question: "For every dollar of equity capital invested in the company, how much profit did the company generate?" It serves as a direct indicator of the efficiency and effectiveness of management in utilizing the capital base provided by the owners.</p>
 
-    {/* THE ROE FORMULA AND CALCULATION */}
-    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The ROE Formula and Calculation</h2>
-    <p>ROE is calculated by dividing the company's Net Income by its Average Shareholders' Equity for the period.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Context</h3>
+          <p>A high ROE is generally desirable, but it must be viewed in context. It should be compared against the company's cost of equity (the return investors require) and the ROE of industry competitors. A company that generates an ROE below the required rate of return is functionally destroying shareholder value.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The standard formula for Return on Equity is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'ROE = Net Income / Average Shareholders\' Equity'}
-        </p>
-    </div>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Averaging the Denominator</h3>
-    <p>It is best practice to use the **Average Shareholders' Equity** (Equity at the start of the period plus Equity at the end of the period, divided by two). This mitigates potential distortions caused by large, one-time changes in equity (e.g., a major share buyback or new stock issuance) that occur mid-period.</p>
+          {/* THE ROE FORMULA AND CALCULATION */}
+          <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The ROE Formula and Calculation</h2>
+          <p>ROE is calculated by dividing the company's Net Income by its Average Shareholders' Equity for the period.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+          <p>The standard formula for Return on Equity is:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'ROE = Net Income / Average Shareholders\' Equity'}
+            </p>
+          </div>
 
-    {/* DU PONT ANALYSIS: DECONSTRUCTING THE DRIVERS OF ROE */}
-    <h2 id="du-pont" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DuPont Analysis: Deconstructing the Drivers of ROE</h2>
-    <p>The **DuPont Analysis** is a technique that breaks the ROE calculation into three fundamental components, allowing analysts to pinpoint the exact source of a company's profitability and management efficiency.</p>
-    
+          <h3 className="text-xl font-semibold text-foreground mt-6">Averaging the Denominator</h3>
+          <p>It is best practice to use the **Average Shareholders' Equity** (Equity at the start of the period plus Equity at the end of the period, divided by two). This mitigates potential distortions caused by large, one-time changes in equity (e.g., a major share buyback or new stock issuance) that occur mid-period.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Three-Component Formula</h3>
-    <p>The three components of ROE are Profitability, Asset Efficiency, and Financial Leverage:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'ROE = Net Profit Margin * Asset Turnover * Equity Multiplier'}
-        </p>
-    </div>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Net Profit Margin (Profitability)</h3>
-<p>Measures the <strong className="font-semibold">operating efficiency</strong>—how much net income is generated per dollar of sales. This is calculated as Net Income divided by Revenue.</p>
+          {/* DU PONT ANALYSIS: DECONSTRUCTING THE DRIVERS OF ROE */}
+          <h2 id="du-pont" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DuPont Analysis: Deconstructing the Drivers of ROE</h2>
+          <p>The **DuPont Analysis** is a technique that breaks the ROE calculation into three fundamental components, allowing analysts to pinpoint the exact source of a company's profitability and management efficiency.</p>
 
-<h3 className="text-xl font-semibold text-foreground mt-6">2. Asset Turnover (Asset Efficiency)</h3>
-<p>Measures the <strong className="font-semibold">utilization of assets</strong>—how effectively the company generates revenue from its assets. This is calculated as Revenue divided by Average Total Assets.</p>
 
-<h3 className="text-xl font-semibold text-foreground mt-6">3. Equity Multiplier (Financial Leverage)</h3>
-<p>Measures <strong className="font-semibold">financial risk</strong>—the extent to which assets are financed by debt versus equity. This is calculated as Average Total Assets divided by Average Shareholders' Equity.</p>
-<p>The DuPont framework provides diagnostic power: a high ROE can be traced back to strong profit margins, rapid asset turnover, or simply high leverage.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Three-Component Formula</h3>
+          <p>The three components of ROE are Profitability, Asset Efficiency, and Financial Leverage:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'ROE = Net Profit Margin * Asset Turnover * Equity Multiplier'}
+            </p>
+          </div>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">1. Net Profit Margin (Profitability)</h3>
+          <p>Measures the <strong className="font-semibold">operating efficiency</strong>—how much net income is generated per dollar of sales. This is calculated as Net Income divided by Revenue.</p>
 
-    {/* THE IMPACT OF FINANCIAL LEVERAGE ON ROE */}
-    <h2 id="leverage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Impact of Financial Leverage on ROE</h2>
-    <p>Financial leverage (debt) is the primary factor that causes the ROE to deviate from the Return on Assets (ROA). The Equity Multiplier quantifies this leverage effect.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">2. Asset Turnover (Asset Efficiency)</h3>
+          <p>Measures the <strong className="font-semibold">utilization of assets</strong>—how effectively the company generates revenue from its assets. This is calculated as Revenue divided by Average Total Assets.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">ROE vs. ROA</h3>
-    <p>If a company has **no debt**, Assets equal Equity, the Equity Multiplier is $1.0$, and **ROE equals ROA** (Return on Assets). Any use of debt increases the Equity Multiplier, making the ROE potentially higher than the ROA.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">3. Equity Multiplier (Financial Leverage)</h3>
+          <p>Measures <strong className="font-semibold">financial risk</strong>—the extent to which assets are financed by debt versus equity. This is calculated as Average Total Assets divided by Average Shareholders' Equity.</p>
+          <p>The DuPont framework provides diagnostic power: a high ROE can be traced back to strong profit margins, rapid asset turnover, or simply high leverage.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Positive Leverage</h3>
-    <p>If the return generated by the assets (ROA) is higher than the interest rate paid on the debt, the excess return accrues to the shareholders, resulting in **Positive Leverage** and an amplified ROE.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Risk of High Leverage</h3>
-    <p>While leverage boosts ROE in good times, it is a double-edged sword. If profitability declines, the mandatory interest payments must still be met. High leverage amplifies losses, creating a low and volatile ROE, and severely increasing the risk of insolvency.</p>
+          {/* THE IMPACT OF FINANCIAL LEVERAGE ON ROE */}
+          <h2 id="leverage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Impact of Financial Leverage on ROE</h2>
+          <p>Financial leverage (debt) is the primary factor that causes the ROE to deviate from the Return on Assets (ROA). The Equity Multiplier quantifies this leverage effect.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">ROE vs. ROA</h3>
+          <p>If a company has **no debt**, Assets equal Equity, the Equity Multiplier is $1.0$, and **ROE equals ROA** (Return on Assets). Any use of debt increases the Equity Multiplier, making the ROE potentially higher than the ROA.</p>
 
-    {/* INTERPRETATION AND BENCHMARKING */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation and Benchmarking</h2>
-    <p>ROE is the essential metric for investors to judge management and for companies to benchmark against competitors.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Positive Leverage</h3>
+          <p>If the return generated by the assets (ROA) is higher than the interest rate paid on the debt, the excess return accrues to the shareholders, resulting in **Positive Leverage** and an amplified ROE.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">ROE and Industry Context</h3>
-    <p>What constitutes a "good" ROE is entirely dependent on the industry. Capital-intensive industries (e.g., utilities) or sectors with slow asset turnover naturally have lower average ROEs than capital-light, high-turnover sectors (e.g., software or branded retail).</p>
-    <p>A sustainable ROE that consistently exceeds the average of its industry peers is a strong indicator of a company's competitive advantage and operational superiority.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Risk of High Leverage</h3>
+          <p>While leverage boosts ROE in good times, it is a double-edged sword. If profitability declines, the mandatory interest payments must still be met. High leverage amplifies losses, creating a low and volatile ROE, and severely increasing the risk of insolvency.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">ROE vs. Cost of Equity</h3>
-    <p>The ultimate test of management is whether the calculated ROE exceeds the investors' **Cost of Equity** (the return required by shareholders, often calculated via CAPM). If ROE is less than the Cost of Equity, the company is failing to meet shareholder expectations and is destroying value.</p>
+          <hr />
 
-<hr />
+          {/* INTERPRETATION AND BENCHMARKING */}
+          <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation and Benchmarking</h2>
+          <p>ROE is the essential metric for investors to judge management and for companies to benchmark against competitors.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Return on Equity (ROE) is the definitive measure of profitability from the shareholder's perspective, calculating the net income generated relative to the equity capital invested.</p>
-    <p>The **DuPont Analysis** provides the diagnostic power to deconstruct ROE into its three drivers—**Profit Margin**, **Asset Turnover**, and **Financial Leverage**—allowing investors to pinpoint whether high returns are sustainable and generated by operational excellence or inflated by excessive debt risk.</p>
-</section>
+          <h3 className="text-xl font-semibold text-foreground mt-6">ROE and Industry Context</h3>
+          <p>What constitutes a "good" ROE is entirely dependent on the industry. Capital-intensive industries (e.g., utilities) or sectors with slow asset turnover naturally have lower average ROEs than capital-light, high-turnover sectors (e.g., software or branded retail).</p>
+          <p>A sustainable ROE that consistently exceeds the average of its industry peers is a strong indicator of a company's competitive advantage and operational superiority.</p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">ROE vs. Cost of Equity</h3>
+          <p>The ultimate test of management is whether the calculated ROE exceeds the investors' **Cost of Equity** (the return required by shareholders, often calculated via CAPM). If ROE is less than the Cost of Equity, the company is failing to meet shareholder expectations and is destroying value.</p>
+
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>Return on Equity (ROE) is the definitive measure of profitability from the shareholder's perspective, calculating the net income generated relative to the equity capital invested.</p>
+          <p>The **DuPont Analysis** provides the diagnostic power to deconstruct ROE into its three drivers—**Profit Margin**, **Asset Turnover**, and **Financial Leverage**—allowing investors to pinpoint whether high returns are sustainable and generated by operational excellence or inflated by excessive debt risk.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -567,6 +583,19 @@ export default function ReturnOnEquityCalculator() {
           </CardContent>
         </Card>
       </div>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Return on Equity (ROE) Calculator measures a company's profitability relative to shareholders' equity.</p>
+          <p>It helps assess how efficiently management is using shareholder capital to generate profits.</p>
+          <p>Use this tool to compare companies within the same industry and identify those with superior management efficiency.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
