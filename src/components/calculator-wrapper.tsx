@@ -88,7 +88,7 @@ function getCalculatorImport(categorySlug: string, calculatorSlug: string): Prom
     case 'home-improvement': return import(`@/components/calculators/home-improvement/${calculatorSlug}`).catch(handleImportError);
     case 'parenting': return import(`@/components/calculators/parenting/${calculatorSlug}`).catch(handleImportError);
     case 'personal-budgeting': return import(`@/components/calculators/personal-budgeting/${calculatorSlug}`).catch(handleImportError);
-    case 'sports-training': return import(`@/components/calculators/sports-training/${calculatorSlug}`).catch(handleImportError);
+    case 'health-fitness': return import(`@/components/calculators/health-fitness/${calculatorSlug}`).catch(handleImportError);
     case 'technology': return import(`@/components/calculators/technology/${calculatorSlug}`).catch(handleImportError);
     case 'time-date': return import(`@/components/calculators/time-date/${calculatorSlug}`).catch(handleImportError);
     case 'travel-adventure': return import(`@/components/calculators/travel-adventure/${calculatorSlug}`).catch(handleImportError);
@@ -114,4 +114,3 @@ export function CalculatorWrapper({ categorySlug, calculatorSlug }: CalculatorWr
     </div>
   );
 }
-
