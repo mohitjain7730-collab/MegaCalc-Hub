@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, PlusCircle, XCircle } from 'lucide-react';
+import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, PlusCircle, XCircle, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -24,9 +24,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function DcfCalculator() {
-  const [result, setResult] = useState<{ 
-    dcf: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    dcf: number;
+    interpretation: string;
     recommendation: string;
     valuation: string;
     riskLevel: string;
@@ -53,12 +53,12 @@ export default function DcfCalculator() {
   const calculate = (v: FormValues) => {
     if (v.discountRate == null || v.terminalValue == null || v.cashFlows.some(cf => cf.value == null)) return null;
     const r = v.discountRate / 100;
-    
+
     let cashFlowPV = 0;
     v.cashFlows.forEach((cf, t) => {
       cashFlowPV += (cf.value || 0) / Math.pow(1 + r, t + 1);
     });
-    
+
     const terminalValuePV = v.terminalValue / Math.pow(1 + r, v.cashFlows.length);
     const dcf = cashFlowPV + terminalValuePV;
 
@@ -67,7 +67,7 @@ export default function DcfCalculator() {
 
   const interpret = (dcf: number, terminalValuePV: number, cashFlowPV: number) => {
     const terminalPercentage = (terminalValuePV / dcf) * 100;
-    
+
     if (terminalPercentage > 80) {
       return 'High reliance on terminal value suggests long-term growth assumptions are critical.';
     } else if (terminalPercentage > 50) {
@@ -86,7 +86,7 @@ export default function DcfCalculator() {
 
   const getRiskLevel = (dcf: number, terminalValuePV: number, cashFlowPV: number) => {
     const terminalPercentage = (terminalValuePV / dcf) * 100;
-    
+
     if (terminalPercentage > 80) return 'High';
     if (terminalPercentage > 50) return 'Moderate';
     return 'Low';
@@ -95,11 +95,11 @@ export default function DcfCalculator() {
   const getInsights = (dcf: number, terminalValuePV: number, cashFlowPV: number, discountRate: number) => {
     const insights = [];
     const terminalPercentage = (terminalValuePV / dcf) * 100;
-    
+
     if (terminalPercentage > 70) {
       insights.push('High terminal value dependency - verify long-term growth assumptions');
     }
-    
+
     if (cashFlowPV > terminalValuePV) {
       insights.push('Cash flow driven valuation - near-term performance is critical');
     }
@@ -120,15 +120,15 @@ export default function DcfCalculator() {
   const getConsiderations = (dcf: number, terminalValuePV: number, cashFlowPV: number) => {
     const considerations = [];
     const terminalPercentage = (terminalValuePV / dcf) * 100;
-    
+
     considerations.push('Verify cash flow projections are realistic and achievable');
     considerations.push('Review terminal value assumptions and growth rates');
     considerations.push('Consider sensitivity analysis with different discount rates');
-    
+
     if (terminalPercentage > 70) {
       considerations.push('High terminal value dependency requires careful growth rate validation');
     }
-    
+
     considerations.push('Account for market conditions and industry trends');
     considerations.push('Compare with market valuations and peer companies');
 
@@ -137,7 +137,7 @@ export default function DcfCalculator() {
 
   const recommendation = (dcf: number, terminalValuePV: number, cashFlowPV: number) => {
     const terminalPercentage = (terminalValuePV / dcf) * 100;
-    
+
     if (terminalPercentage > 80) {
       return 'High terminal value dependency - verify long-term assumptions carefully.';
     } else if (dcf > 1000000) {
@@ -152,9 +152,9 @@ export default function DcfCalculator() {
   const onSubmit = (values: FormValues) => {
     const calc = calculate(values);
     if (calc == null) { setResult(null); return; }
-    setResult({ 
-      dcf: calc.dcf, 
-      interpretation: interpret(calc.dcf, calc.terminalValuePV, calc.cashFlowPV), 
+    setResult({
+      dcf: calc.dcf,
+      interpretation: interpret(calc.dcf, calc.terminalValuePV, calc.cashFlowPV),
       recommendation: recommendation(calc.dcf, calc.terminalValuePV, calc.cashFlowPV),
       valuation: getValuation(calc.dcf),
       riskLevel: getRiskLevel(calc.dcf, calc.terminalValuePV, calc.cashFlowPV),
@@ -189,19 +189,19 @@ export default function DcfCalculator() {
                     Discount Rate (%)
                   </FormLabel>
                   <FormControl>
-                    <Input 
-                      type="number" 
+                    <Input
+                      type="number"
                       step="0.1"
-                      placeholder="e.g., 10" 
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                      placeholder="e.g., 10"
+                      {...field}
+                      value={field.value ?? ''}
+                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )} />
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -217,12 +217,12 @@ export default function DcfCalculator() {
                       <FormField control={form.control} name={`cashFlows.${index}.value`} render={({ field }) => (
                         <FormItem className="flex-grow">
                           <FormControl>
-                            <Input 
-                              type="number" 
+                            <Input
+                              type="number"
                               step="0.01"
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value))} 
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value))}
                             />
                           </FormControl>
                           <FormMessage />
@@ -240,7 +240,7 @@ export default function DcfCalculator() {
                   </Button>
                 </CardContent>
               </Card>
-              
+
               <FormField control={form.control} name="terminalValue" render={({ field }) => (
                 <FormItem>
                   <FormLabel className="flex items-center gap-2">
@@ -248,13 +248,13 @@ export default function DcfCalculator() {
                     Terminal Value
                   </FormLabel>
                   <FormControl>
-                    <Input 
-                      type="number" 
+                    <Input
+                      type="number"
                       step="0.01"
-                      placeholder="e.g., 500000" 
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                      placeholder="e.g., 500000"
+                      {...field}
+                      value={field.value ?? ''}
+                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -296,7 +296,7 @@ export default function DcfCalculator() {
                     {result.valuation}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <BarChart3 className="h-5 w-5 text-muted-foreground" />
@@ -311,7 +311,7 @@ export default function DcfCalculator() {
                     {result.interpretation}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-green-600" />
@@ -369,47 +369,43 @@ export default function DcfCalculator() {
                 </Card>
               </div>
 
-              {/* Detailed Analysis */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Key Insights
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.insights.map((insight, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{insight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Strategic Actions
+                    </CardTitle>
+                    <CardDescription>Value enhancement opportunities</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.insights.map((insight, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{insight}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Important Considerations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.considerations.map((consideration, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{consideration}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Risk Assessment
+                    </CardTitle>
+                    <CardDescription>Critical factors to monitor</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.considerations.map((consideration, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
@@ -418,6 +414,36 @@ export default function DcfCalculator() {
 
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used (DCF)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+              <p className="font-mono text-sm text-center mb-2">
+                DCF = Σ [CFt / (1 + r)^t] + [TV / (1 + r)^n]
+              </p>
+              <p className="font-mono text-xs text-center text-muted-foreground">
+                TV (Perpetuity) = [CFn * (1 + g)] / (r - g)
+              </p>
+            </div>
+            <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul className="space-y-1">
+                <li><span className="font-semibold">CFt</span> = Cash Flow in Year t</li>
+                <li><span className="font-semibold">r</span> = Discount Rate (WACC)</li>
+              </ul>
+              <ul className="space-y-1">
+                <li><span className="font-semibold">TV</span> = Terminal Value</li>
+                <li><span className="font-semibold">n</span> = Total Number of Years</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Related Calculators Section */}
         <Card>
           <CardHeader>
@@ -477,136 +503,136 @@ export default function DcfCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Discounted Cash Flow (DCF) Valuation, Formulas, and Intrinsic Value" />
-    <meta itemProp="description" content="An expert guide detailing the three core components of DCF: Free Cash Flow (FCF) forecasting, discounting using WACC, and Terminal Value calculation (Gordon Growth Model or Exit Multiple). The gold standard for business valuation." />
-    <meta itemProp="keywords" content="DCF valuation formula, free cash flow calculation, WACC discounting, terminal value formula, intrinsic value estimation, capital budgeting techniques, FCFE vs FCFF, valuation model" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-dcf-valuation-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Discounted Cash Flow (DCF) Valuation, Formulas, and Intrinsic Value" />
+          <meta itemProp="description" content="An expert guide detailing the three core components of DCF: Free Cash Flow (FCF) forecasting, discounting using WACC, and Terminal Value calculation (Gordon Growth Model or Exit Multiple). The gold standard for business valuation." />
+          <meta itemProp="keywords" content="DCF valuation formula, free cash flow calculation, WACC discounting, terminal value formula, intrinsic value estimation, capital budgeting techniques, FCFE vs FCFF, valuation model" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-dcf-valuation-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Discounted Cash Flow (DCF): Calculating Intrinsic Value</h1>
-    <p className="text-lg italic text-muted-foreground">Master the gold standard of business valuation, which converts a company's future potential into a single, concrete value today.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Discounted Cash Flow (DCF): Calculating Intrinsic Value</h1>
+          <p className="text-lg italic text-muted-foreground">Master the gold standard of business valuation, which converts a company's future potential into a single, concrete value today.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#concept" className="hover:underline">DCF Core Concept and the Valuation Principle</a></li>
-        <li><a href="#fcf" className="hover:underline">Step 1: Forecasting Free Cash Flow (FCF)</a></li>
-        <li><a href="#dcf-formula" className="hover:underline">Step 2: The Core DCF Formula and Discounting</a></li>
-        <li><a href="#tv" className="hover:underline">Step 3: Calculating Terminal Value (TV)</a></li>
-        <li><a href="#wacc" className="hover:underline">The Discount Rate: Weighted Average Cost of Capital (WACC)</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#concept" className="hover:underline">DCF Core Concept and the Valuation Principle</a></li>
+            <li><a href="#fcf" className="hover:underline">Step 1: Forecasting Free Cash Flow (FCF)</a></li>
+            <li><a href="#dcf-formula" className="hover:underline">Step 2: The Core DCF Formula and Discounting</a></li>
+            <li><a href="#tv" className="hover:underline">Step 3: Calculating Terminal Value (TV)</a></li>
+            <li><a href="#wacc" className="hover:underline">The Discount Rate: Weighted Average Cost of Capital (WACC)</a></li>
+          </ul>
+          <hr />
 
-    {/* DCF CORE CONCEPT AND THE VALUATION PRINCIPLE */}
-    <h2 id="concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DCF Core Concept and the Valuation Principle</h2>
-    <p>The <strong className="font-semibold">Discounted Cash Flow (DCF)</strong> method is an analytical valuation technique based on the principle that the value of an asset (in this case, a company) is the sum of the present value of its expected future cash flows.</p>
+          {/* DCF CORE CONCEPT AND THE VALUATION PRINCIPLE */}
+          <h2 id="concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DCF Core Concept and the Valuation Principle</h2>
+          <p>The <strong className="font-semibold">Discounted Cash Flow (DCF)</strong> method is an analytical valuation technique based on the principle that the value of an asset (in this case, a company) is the sum of the present value of its expected future cash flows.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Intrinsic Value vs. Market Value</h3>
-    <p>DCF aims to calculate the **Intrinsic Value** of a company—the actual value derived from its business operations and future cash-generating capacity. This value is then compared to the current **Market Value** (market capitalization). The premise is that if the Intrinsic Value is significantly higher than the Market Value, the stock is undervalued.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Intrinsic Value vs. Market Value</h3>
+          <p>DCF aims to calculate the **Intrinsic Value** of a company—the actual value derived from its business operations and future cash-generating capacity. This value is then compared to the current **Market Value** (market capitalization). The premise is that if the Intrinsic Value is significantly higher than the Market Value, the stock is undervalued.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Three Core Components of a DCF Model</h3>
-    <p>A typical DCF model is built in three stages:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Explicit Forecast Period (5-10 years):</strong> Projecting annual Free Cash Flows (FCF).</li>
-        <li><strong className="font-semibold">Terminal Value (TV):</strong> Estimating the value of all cash flows beyond the forecast period.</li>
-        <li><strong className="font-semibold">Discounting:</strong> Bringing all future cash flows (steps 1 and 2) back to the Present Value using the Discount Rate (WACC).</li>
-    </ol>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Three Core Components of a DCF Model</h3>
+          <p>A typical DCF model is built in three stages:</p>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li><strong className="font-semibold">Explicit Forecast Period (5-10 years):</strong> Projecting annual Free Cash Flows (FCF).</li>
+            <li><strong className="font-semibold">Terminal Value (TV):</strong> Estimating the value of all cash flows beyond the forecast period.</li>
+            <li><strong className="font-semibold">Discounting:</strong> Bringing all future cash flows (steps 1 and 2) back to the Present Value using the Discount Rate (WACC).</li>
+          </ol>
 
-<hr />
+          <hr />
 
-    {/* STEP 1: FORECASTING FREE CASH FLOW (FCF) */}
-    <h2 id="fcf" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 1: Forecasting Free Cash Flow (FCF)</h2>
-    <p>The most critical input in a DCF model is the **Free Cash Flow (FCF)**, which represents the cash a company generates after accounting for all operating expenses and capital expenditures (CapEx). It is the true cash available to the company’s investors (debt and equity holders).</p>
+          {/* STEP 1: FORECASTING FREE CASH FLOW (FCF) */}
+          <h2 id="fcf" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 1: Forecasting Free Cash Flow (FCF)</h2>
+          <p>The most critical input in a DCF model is the **Free Cash Flow (FCF)**, which represents the cash a company generates after accounting for all operating expenses and capital expenditures (CapEx). It is the true cash available to the company’s investors (debt and equity holders).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">FCF to Firm (FCFF) vs. FCF to Equity (FCFE)</h3>
-    <p>Most enterprise valuations use **FCF to Firm (FCFF)** because it represents the cash flow generated *before* any payments are made to providers of capital (both debt and equity). It is the standard input for an Enterprise Value calculation.</p>
-    <p>The calculation for FCFF is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'FCFF = EBIT * (1 - T) + D&A - CapEx - Increase in NWC'}
-        </p>
-    </div>
-    <p>Where EBIT is Earnings Before Interest and Taxes, T is the Tax Rate, D&A is Depreciation and Amortization, CapEx is Capital Expenditures, and NWC is Net Working Capital.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">FCF to Firm (FCFF) vs. FCF to Equity (FCFE)</h3>
+          <p>Most enterprise valuations use **FCF to Firm (FCFF)** because it represents the cash flow generated *before* any payments are made to providers of capital (both debt and equity). It is the standard input for an Enterprise Value calculation.</p>
+          <p>The calculation for FCFF is:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'FCFF = EBIT * (1 - T) + D&A - CapEx - Increase in NWC'}
+            </p>
+          </div>
+          <p>Where EBIT is Earnings Before Interest and Taxes, T is the Tax Rate, D&A is Depreciation and Amortization, CapEx is Capital Expenditures, and NWC is Net Working Capital.</p>
 
-<hr />
+          <hr />
 
-    {/* STEP 2: THE CORE DCF FORMULA AND DISCOUNTING */}
-    <h2 id="dcf-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 2: The Core DCF Formula and Discounting</h2>
-    <p>The core of the DCF process is discounting the projected Free Cash Flows (FCF) back to the present using the appropriate discount rate (r).</p>
+          {/* STEP 2: THE CORE DCF FORMULA AND DISCOUNTING */}
+          <h2 id="dcf-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 2: The Core DCF Formula and Discounting</h2>
+          <p>The core of the DCF process is discounting the projected Free Cash Flows (FCF) back to the present using the appropriate discount rate (r).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Discounting the Explicit Forecast Period</h3>
-    <p>The Present Value (PV) of the explicit forecast period is the sum of the PV of each year's expected cash flow:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'PV_{Forecast} = Sum [ FCF_t / (1 + r)^t ]'}
-        </p>
-    </div>
-    <p>Where r is the discount rate (WACC for FCFF) and t is the year of the cash flow. This step converts the projected income into a current, comparable dollar value.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Discounting the Explicit Forecast Period</h3>
+          <p>The Present Value (PV) of the explicit forecast period is the sum of the PV of each year's expected cash flow:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'PV_{Forecast} = Sum [ FCF_t / (1 + r)^t ]'}
+            </p>
+          </div>
+          <p>Where r is the discount rate (WACC for FCFF) and t is the year of the cash flow. This step converts the projected income into a current, comparable dollar value.</p>
 
-<hr />
+          <hr />
 
-    {/* STEP 3: CALCULATING TERMINAL VALUE (TV) */}
-    <h2 id="tv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 3: Calculating Terminal Value (TV)</h2>
-    <p>The **Terminal Value (TV)** is the present value of all cash flows a company is expected to generate *after* the explicit forecast period has ended. It often accounts for 60% to 80% of the total Enterprise Value, making its calculation highly sensitive.</p>
+          {/* STEP 3: CALCULATING TERMINAL VALUE (TV) */}
+          <h2 id="tv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 3: Calculating Terminal Value (TV)</h2>
+          <p>The **Terminal Value (TV)** is the present value of all cash flows a company is expected to generate *after* the explicit forecast period has ended. It often accounts for 60% to 80% of the total Enterprise Value, making its calculation highly sensitive.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Method 1: The Perpetuity (Gordon Growth) Model</h3>
-    <p>The preferred method assumes the company will grow at a constant, sustainable rate (g) forever. This growth rate (g) must be less than the discount rate (r).</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'TV_n = FCF_{n+1} / (r - g)'}
-        </p>
-    </div>
-    <p>Where the Terminal Value (TV) is the value at the end of the last forecast year, Cash flow in the first year of the perpetuity and WACC are used in the formula.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Method 1: The Perpetuity (Gordon Growth) Model</h3>
+          <p>The preferred method assumes the company will grow at a constant, sustainable rate (g) forever. This growth rate (g) must be less than the discount rate (r).</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'TV_n = FCF_{n+1} / (r - g)'}
+            </p>
+          </div>
+          <p>Where the Terminal Value (TV) is the value at the end of the last forecast year, Cash flow in the first year of the perpetuity and WACC are used in the formula.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Method 2: The Exit Multiple Method</h3>
-    <p>This method estimates the TV based on the average valuation multiples (e.g., Enterprise Value/EBITDA) of comparable publicly traded companies. While simpler, it is less theoretically rigorous as it relies on current market sentiment:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'TV_n = EBITDA_n * Exit Multiple'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Method 2: The Exit Multiple Method</h3>
+          <p>This method estimates the TV based on the average valuation multiples (e.g., Enterprise Value/EBITDA) of comparable publicly traded companies. While simpler, it is less theoretically rigorous as it relies on current market sentiment:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'TV_n = EBITDA_n * Exit Multiple'}
+            </p>
+          </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Final DCF Equation</h3>
-    <p>The two parts are then summed and added to the Present Value of any non-operating assets (e.g., cash) to determine the total Enterprise Value (EV):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'Enterprise Value = PV_{Forecast} + PV_{Terminal Value}'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Final DCF Equation</h3>
+          <p>The two parts are then summed and added to the Present Value of any non-operating assets (e.g., cash) to determine the total Enterprise Value (EV):</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'Enterprise Value = PV_{Forecast} + PV_{Terminal Value}'}
+            </p>
+          </div>
 
-<hr />
+          <hr />
 
-    {/* THE DISCOUNT RATE: WEIGHTED AVERAGE COST OF CAPITAL (WACC) */}
-    <h2 id="wacc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Discount Rate: Weighted Average Cost of Capital (WACC)</h2>
-    <p>The appropriate discount rate for discounting FCFF is the **Weighted Average Cost of Capital (WACC)**. WACC represents the blended cost of a company's financing sources (debt and equity), adjusted for the tax-deductibility of interest expense.</p>
+          {/* THE DISCOUNT RATE: WEIGHTED AVERAGE COST OF CAPITAL (WACC) */}
+          <h2 id="wacc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Discount Rate: Weighted Average Cost of Capital (WACC)</h2>
+          <p>The appropriate discount rate for discounting FCFF is the **Weighted Average Cost of Capital (WACC)**. WACC represents the blended cost of a company's financing sources (debt and equity), adjusted for the tax-deductibility of interest expense.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">WACC Formula</h3>
-    <p>WACC serves as the minimum rate of return a project must achieve to satisfy both its creditors and shareholders:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
-        </p>
-    </div>
-    <p>Where Re (Cost of Equity) is calculated using the **Capital Asset Pricing Model (CAPM)**, and Rd is the Cost of Debt.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">WACC Formula</h3>
+          <p>WACC serves as the minimum rate of return a project must achieve to satisfy both its creditors and shareholders:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
+            </p>
+          </div>
+          <p>Where Re (Cost of Equity) is calculated using the **Capital Asset Pricing Model (CAPM)**, and Rd is the Cost of Debt.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Equity Value</h3>
-    <p>The final step in a DCF valuation is converting the calculated **Enterprise Value (EV)** to **Equity Value** (or Market Capitalization):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'Equity Value = Enterprise Value + Cash - Debt'}
-        </p>
-    </div>
-    <p>Dividing the Equity Value by the number of outstanding shares yields the theoretical Intrinsic Value Per Share.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Equity Value</h3>
+          <p>The final step in a DCF valuation is converting the calculated **Enterprise Value (EV)** to **Equity Value** (or Market Capitalization):</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'Equity Value = Enterprise Value + Cash - Debt'}
+            </p>
+          </div>
+          <p>Dividing the Equity Value by the number of outstanding shares yields the theoretical Intrinsic Value Per Share.</p>
 
-<hr />
+          <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Discounted Cash Flow (DCF) model is the most comprehensive method for determining a company’s **Intrinsic Value**. Its precision relies on the rigor of its inputs, particularly the accurate forecasting of Free Cash Flow, the appropriate calculation of the WACC as the discount rate, and the justifiable estimation of the Terminal Value.</p>
-    <p>While subjective inputs make DCF sensitive, it remains the superior framework for investment decision-making because it links a company's current valuation directly to the future cash it is expected to generate for its owners.</p>
-</section>
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>The Discounted Cash Flow (DCF) model is the most comprehensive method for determining a company’s **Intrinsic Value**. Its precision relies on the rigor of its inputs, particularly the accurate forecasting of Free Cash Flow, the appropriate calculation of the WACC as the discount rate, and the justifiable estimation of the Terminal Value.</p>
+          <p>While subjective inputs make DCF sensitive, it remains the superior framework for investment decision-making because it links a company's current valuation directly to the future cash it is expected to generate for its owners.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -692,6 +718,19 @@ export default function DcfCalculator() {
           </CardContent>
         </Card>
       </div>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Discounted Cash Flow (DCF) Calculator determines the intrinsic value of an investment by estimating the present value of its expected future cash flows.</p>
+          <p>It accounts for the time value of money using a discount rate and includes a detailed analysis of terminal value contribution.</p>
+          <p>Use this tool to perform valuation analysis for stocks, businesses, or projects, helping you make informed investment decisions based on fundamental value.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

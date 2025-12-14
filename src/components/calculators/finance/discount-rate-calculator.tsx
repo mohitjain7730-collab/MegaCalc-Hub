@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent } from 'lucide-react';
+import { Calculator, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -21,9 +21,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function DiscountRateCalculator() {
-  const [result, setResult] = useState<{ 
-    discountRate: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    discountRate: number;
+    interpretation: string;
     recommendation: string;
     riskLevel: string;
     marketPremium: number;
@@ -68,7 +68,7 @@ export default function DiscountRateCalculator() {
 
   const getInsights = (discountRate: number, beta: number, marketPremium: number) => {
     const insights = [];
-    
+
     if (beta > 1.5) {
       insights.push('High beta indicates the investment is more volatile than the market');
     } else if (beta < 0.5) {
@@ -92,15 +92,15 @@ export default function DiscountRateCalculator() {
 
   const getConsiderations = (discountRate: number, beta: number) => {
     const considerations = [];
-    
+
     considerations.push('Verify beta reflects current market conditions and company fundamentals');
     considerations.push('Consider if risk-free rate matches your investment horizon');
     considerations.push('Review market return assumptions for accuracy');
-    
+
     if (beta > 1.5) {
       considerations.push('High beta investments require careful risk management');
     }
-    
+
     if (discountRate > 15) {
       considerations.push('High discount rate may require exceptional returns to justify investment');
     }
@@ -122,9 +122,9 @@ export default function DiscountRateCalculator() {
   const onSubmit = (values: FormValues) => {
     const calc = calculate(values);
     if (calc == null) { setResult(null); return; }
-    setResult({ 
-      discountRate: calc.discountRate, 
-      interpretation: interpret(calc.discountRate, values.beta), 
+    setResult({
+      discountRate: calc.discountRate,
+      interpretation: interpret(calc.discountRate, values.beta),
       recommendation: recommendation(calc.discountRate, values.beta),
       riskLevel: getRiskLevel(calc.discountRate, values.beta),
       marketPremium: calc.marketPremium,
@@ -158,19 +158,19 @@ export default function DiscountRateCalculator() {
                       Risk-Free Rate (%)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.1"
-                        placeholder="e.g., 4.5" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 4.5"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="beta" render={({ field }) => (
                   <FormItem>
                     <FormLabel className="flex items-center gap-2">
@@ -178,19 +178,19 @@ export default function DiscountRateCalculator() {
                       Investment Beta (β)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.1"
-                        placeholder="e.g., 1.2" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 1.2"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="marketReturn" render={({ field }) => (
                   <FormItem className="md:col-span-2">
                     <FormLabel className="flex items-center gap-2">
@@ -198,20 +198,20 @@ export default function DiscountRateCalculator() {
                       Expected Market Return (%)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.1"
-                        placeholder="e.g., 10" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 10"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
               </div>
-              
+
               <Button type="submit" className="w-full md:w-auto">
                 Calculate Discount Rate
               </Button>
@@ -247,7 +247,7 @@ export default function DiscountRateCalculator() {
                     Required Rate of Return
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <BarChart3 className="h-5 w-5 text-muted-foreground" />
@@ -262,7 +262,7 @@ export default function DiscountRateCalculator() {
                     {result.interpretation}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-blue-600" />
@@ -277,47 +277,43 @@ export default function DiscountRateCalculator() {
                 </div>
               </div>
 
-              {/* Detailed Analysis */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Key Insights
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.insights.map((insight, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{insight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Strategic Insights
+                    </CardTitle>
+                    <CardDescription>Optimization opportunities</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.insights.map((insight, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{insight}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Important Considerations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.considerations.map((consideration, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{consideration}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Risk Assessment
+                    </CardTitle>
+                    <CardDescription>Critical factors to monitor</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.considerations.map((consideration, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
@@ -326,6 +322,37 @@ export default function DiscountRateCalculator() {
 
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
+
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used (CAPM)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+              <p className="font-mono text-sm text-center">
+                Ra = Rf + βa × (Rm - Rf)
+              </p>
+            </div>
+            <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul className="space-y-1">
+                <li><span className="font-semibold">Ra</span> = Expected Return (Discount Rate)</li>
+                <li><span className="font-semibold">Rf</span> = Risk-Free Rate</li>
+              </ul>
+              <ul className="space-y-1">
+                <li><span className="font-semibold">βa</span> = Beta of the Asset</li>
+                <li><span className="font-semibold">(Rm - Rf)</span> = Market Risk Premium</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+
+
+
         {/* Related Calculators Section */}
         <Card>
           <CardHeader>
@@ -385,132 +412,132 @@ export default function DiscountRateCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to the Discount Rate: Calculation, WACC, and Risk Assessment in Valuation" />
-    <meta itemProp="description" content="An expert guide detailing the concept of the Discount Rate, its fundamental role in Present Value (PV) and Net Present Value (NPV), methods for its calculation (WACC, CAPM), and its function as the required rate of return that accounts for risk." />
-    <meta itemProp="keywords" content="discount rate formula explained, required rate of return, cost of capital, WACC calculation, CAPM formula, risk adjustment finance, time value of money, hurdle rate finance" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-discount-rate-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to the Discount Rate: Calculation, WACC, and Risk Assessment in Valuation" />
+          <meta itemProp="description" content="An expert guide detailing the concept of the Discount Rate, its fundamental role in Present Value (PV) and Net Present Value (NPV), methods for its calculation (WACC, CAPM), and its function as the required rate of return that accounts for risk." />
+          <meta itemProp="keywords" content="discount rate formula explained, required rate of return, cost of capital, WACC calculation, CAPM formula, risk adjustment finance, time value of money, hurdle rate finance" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-discount-rate-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Discount Rate: Quantifying Risk and Opportunity Cost in Valuation</h1>
-    <p className="text-lg italic text-muted-foreground">Master the single most critical variable in financial modeling that determines the current worth of future cash flows.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Discount Rate: Quantifying Risk and Opportunity Cost in Valuation</h1>
+          <p className="text-lg italic text-muted-foreground">Master the single most critical variable in financial modeling that determines the current worth of future cash flows.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#concept" className="hover:underline">Discount Rate: Definition and Economic Function</a></li>
-        <li><a href="#lump-sum" className="hover:underline">Role in Present Value (PV) and Valuation</a></li>
-        <li><a href="#wacc" className="hover:underline">Corporate Finance: The Weighted Average Cost of Capital (WACC)</a></li>
-        <li><a href="#capm" className="hover:underline">Equity Investment: The Capital Asset Pricing Model (CAPM)</a></li>
-        <li><a href="#sensitivity" className="hover:underline">Discount Rate Sensitivity and Risk Adjustment</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#concept" className="hover:underline">Discount Rate: Definition and Economic Function</a></li>
+            <li><a href="#lump-sum" className="hover:underline">Role in Present Value (PV) and Valuation</a></li>
+            <li><a href="#wacc" className="hover:underline">Corporate Finance: The Weighted Average Cost of Capital (WACC)</a></li>
+            <li><a href="#capm" className="hover:underline">Equity Investment: The Capital Asset Pricing Model (CAPM)</a></li>
+            <li><a href="#sensitivity" className="hover:underline">Discount Rate Sensitivity and Risk Adjustment</a></li>
+          </ul>
+          <hr />
 
-    {/* DISCOUNT RATE: DEFINITION AND ECONOMIC FUNCTION */}
-    <h2 id="concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Discount Rate: Definition and Economic Function</h2>
-    <p>The <strong className="font-semibold">Discount Rate</strong> is the rate used to calculate the present value of a series of future cash flows. It is simultaneously a measure of the <strong className="font-semibold">Time Value of Money (TVM)</strong>, the <strong className="font-semibold">Opportunity Cost</strong> of capital, and the **Risk** inherent in receiving the payment in the future.</p>
+          {/* DISCOUNT RATE: DEFINITION AND ECONOMIC FUNCTION */}
+          <h2 id="concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Discount Rate: Definition and Economic Function</h2>
+          <p>The <strong className="font-semibold">Discount Rate</strong> is the rate used to calculate the present value of a series of future cash flows. It is simultaneously a measure of the <strong className="font-semibold">Time Value of Money (TVM)</strong>, the <strong className="font-semibold">Opportunity Cost</strong> of capital, and the **Risk** inherent in receiving the payment in the future.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Discounting and the TVM</h3>
-    <p>In the context of the Time Value of Money, the discount rate is applied to future amounts to adjust for two economic realities:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Inflation:</strong> The erosion of purchasing power over time.</li>
-        <li><strong className="font-semibold">Risk/Uncertainty:</strong> The possibility that the promised cash flow may not be received (default risk).</li>
-    </ol>
-    <p>By using the discount rate, financial analysts convert uncertain future cash flows into a single, comparable figure called the **Present Value (PV)**.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Discounting and the TVM</h3>
+          <p>In the context of the Time Value of Money, the discount rate is applied to future amounts to adjust for two economic realities:</p>
+          <ol className="list-decimal ml-6 space-y-2">
+            <li><strong className="font-semibold">Inflation:</strong> The erosion of purchasing power over time.</li>
+            <li><strong className="font-semibold">Risk/Uncertainty:</strong> The possibility that the promised cash flow may not be received (default risk).</li>
+          </ol>
+          <p>By using the discount rate, financial analysts convert uncertain future cash flows into a single, comparable figure called the **Present Value (PV)**.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Required Rate of Return (The Hurdle)</h3>
-    <p>For an investor, the discount rate is synonymous with the <strong className="font-semibold">Required Rate of Return</strong> or **Hurdle Rate**. It is the minimum annual percentage return an investment must yield to justify its risk and cover the cost of financing. If a project's expected return is below the hurdle rate, it should be rejected.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Required Rate of Return (The Hurdle)</h3>
+          <p>For an investor, the discount rate is synonymous with the <strong className="font-semibold">Required Rate of Return</strong> or **Hurdle Rate**. It is the minimum annual percentage return an investment must yield to justify its risk and cover the cost of financing. If a project's expected return is below the hurdle rate, it should be rejected.</p>
 
-<hr />
+          <hr />
 
-    {/* ROLE IN PRESENT VALUE (PV) AND VALUATION */}
-    <h2 id="lump-sum" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Present Value (PV) and Valuation</h2>
-    <p>The discount rate ($r$) is the denominator in all Present Value calculations. A higher discount rate results in a lower Present Value, reflecting the fact that higher risk investments must offer a greater potential reward to be equally attractive.</p>
+          {/* ROLE IN PRESENT VALUE (PV) AND VALUATION */}
+          <h2 id="lump-sum" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Present Value (PV) and Valuation</h2>
+          <p>The discount rate ($r$) is the denominator in all Present Value calculations. A higher discount rate results in a lower Present Value, reflecting the fact that higher risk investments must offer a greater potential reward to be equally attractive.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">PV of a Single Cash Flow</h3>
-    <p>The core formula for discounting a single future lump sum demonstrates the inverse relationship between the discount rate and Present Value:</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'PV = FV / (1 + r)^n'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">PV of a Single Cash Flow</h3>
+          <p>The core formula for discounting a single future lump sum demonstrates the inverse relationship between the discount rate and Present Value:</p>
 
-    <p>For example, if an investment promises 1,000 dollars in 10 years, discounting at a 5 percent rate gives a much higher PV than discounting at a 10 percent rate. The 10 percent rate correctly implies the investor can earn more elsewhere or perceives higher risk.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'PV = FV / (1 + r)^n'}
+            </p>
+          </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">PV of a Perpetuity</h3>
-    <p>In the valuation of assets that generate infinite cash flows (perpetuities), the discount rate is the sole determinant of value, highlighting its absolute power in modeling:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'PV = Cash Flow / r'}
-        </p>
-    </div>
+          <p>For example, if an investment promises 1,000 dollars in 10 years, discounting at a 5 percent rate gives a much higher PV than discounting at a 10 percent rate. The 10 percent rate correctly implies the investor can earn more elsewhere or perceives higher risk.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">PV of a Perpetuity</h3>
+          <p>In the valuation of assets that generate infinite cash flows (perpetuities), the discount rate is the sole determinant of value, highlighting its absolute power in modeling:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'PV = Cash Flow / r'}
+            </p>
+          </div>
 
-    {/* CORPORATE FINANCE: THE WEIGHTED AVERAGE COST OF CAPITAL (WACC) */}
-    <h2 id="wacc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Corporate Finance: The Weighted Average Cost of Capital (WACC)</h2>
-    <p>In corporate finance, the appropriate discount rate for valuing an entire firm or an average-risk project is the <strong className="font-semibold">Weighted Average Cost of Capital (WACC)</strong>.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">WACC Mechanics</h3>
-    <p>WACC is the weighted average of the costs of all sources of long-term funding—debt, preferred stock, and common equity. It reflects the average rate the company pays to finance its assets.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
-        </p>
-    </div>
-    <p>Where:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>$Re$ = Cost of Equity (often calculated using CAPM).</li>
-        <li>$Rd$ = Cost of Debt.</li>
-        <li>$E/V$ and $D/V$ = Market value weights of Equity and Debt.</li>
-        <li>$T$ = Corporate tax rate (Cost of Debt is tax-deductible).</li>
-    </ul>
+          {/* CORPORATE FINANCE: THE WEIGHTED AVERAGE COST OF CAPITAL (WACC) */}
+          <h2 id="wacc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Corporate Finance: The Weighted Average Cost of Capital (WACC)</h2>
+          <p>In corporate finance, the appropriate discount rate for valuing an entire firm or an average-risk project is the <strong className="font-semibold">Weighted Average Cost of Capital (WACC)</strong>.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Hurdle for NPV</h3>
-    <p>WACC serves as the specific discount rate ($r$) used in Net Present Value (NPV) calculations. If a project's discounted cash flows (at the WACC rate) exceed the initial investment, the NPV is positive, confirming the project will add value above the cost of capital.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">WACC Mechanics</h3>
+          <p>WACC is the weighted average of the costs of all sources of long-term funding—debt, preferred stock, and common equity. It reflects the average rate the company pays to finance its assets.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'WACC = (E/V) * Re + (D/V) * Rd * (1 - T)'}
+            </p>
+          </div>
+          <p>Where:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>$Re$ = Cost of Equity (often calculated using CAPM).</li>
+            <li>$Rd$ = Cost of Debt.</li>
+            <li>$E/V$ and $D/V$ = Market value weights of Equity and Debt.</li>
+            <li>$T$ = Corporate tax rate (Cost of Debt is tax-deductible).</li>
+          </ul>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Hurdle for NPV</h3>
+          <p>WACC serves as the specific discount rate ($r$) used in Net Present Value (NPV) calculations. If a project's discounted cash flows (at the WACC rate) exceed the initial investment, the NPV is positive, confirming the project will add value above the cost of capital.</p>
 
-    {/* EQUITY INVESTMENT: THE CAPITAL ASSET PRICING MODEL (CAPM) */}
-    <h2 id="capm" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Equity Investment: The Capital Asset Pricing Model (CAPM)</h2>
-    <p>For valuing individual stocks or the equity portion of a firm, the discount rate used is the <strong className="font-semibold">Cost of Equity ($Re$)</strong>, which is typically calculated using the **Capital Asset Pricing Model (CAPM)**.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The CAPM Formula</h3>
-    <p>CAPM links a project's systematic (non-diversifiable) risk to its required rate of return:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'Re = Rf + Beta * (Rm - Rf)'}
-        </p>
-    </div>
-    <p>Where:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>$Rf$ = Risk-Free Rate (Return on long-term government bonds).</li>
-        <li>$Rm$ = Expected market return.</li>
-        <li>$Beta$ = Systematic Risk (Measures the asset's volatility relative to the overall market).</li>
-    </ul>
-    <p>This method ensures the discount rate correctly incorporates only the market risk that an investor cannot eliminate through diversification.</p>
+          {/* EQUITY INVESTMENT: THE CAPITAL ASSET PRICING MODEL (CAPM) */}
+          <h2 id="capm" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Equity Investment: The Capital Asset Pricing Model (CAPM)</h2>
+          <p>For valuing individual stocks or the equity portion of a firm, the discount rate used is the <strong className="font-semibold">Cost of Equity ($Re$)</strong>, which is typically calculated using the **Capital Asset Pricing Model (CAPM)**.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The CAPM Formula</h3>
+          <p>CAPM links a project's systematic (non-diversifiable) risk to its required rate of return:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'Re = Rf + Beta * (Rm - Rf)'}
+            </p>
+          </div>
+          <p>Where:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>$Rf$ = Risk-Free Rate (Return on long-term government bonds).</li>
+            <li>$Rm$ = Expected market return.</li>
+            <li>$Beta$ = Systematic Risk (Measures the asset's volatility relative to the overall market).</li>
+          </ul>
+          <p>This method ensures the discount rate correctly incorporates only the market risk that an investor cannot eliminate through diversification.</p>
 
-    {/* DISCOUNT RATE SENSITIVITY AND RISK ADJUSTMENT */}
-    <h2 id="sensitivity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Discount Rate Sensitivity and Risk Adjustment</h2>
-    <p>The discount rate is the primary mechanism for adjusting valuation models for risk. A small change in the discount rate can lead to a massive change in the Present Value, especially for projects with long time horizons.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The High Sensitivity Problem</h3>
-    <p>Because the discount rate is in the denominator of the PV formula and is raised to a high power (n), its impact is exponential. For instance, increasing the discount rate by just 1% on a 30-year cash flow can decrease its PV by 20% or more. This high sensitivity necessitates thorough **sensitivity analysis** on the chosen rate.</p>
+          {/* DISCOUNT RATE SENSITIVITY AND RISK ADJUSTMENT */}
+          <h2 id="sensitivity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Discount Rate Sensitivity and Risk Adjustment</h2>
+          <p>The discount rate is the primary mechanism for adjusting valuation models for risk. A small change in the discount rate can lead to a massive change in the Present Value, especially for projects with long time horizons.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Project-Specific Discount Rates</h3>
-    <p>Best practice dictates that a company should not use a single, universal WACC for all projects. Instead, high-risk projects (e.g., launching a new technology or entering an unstable foreign market) should be discounted using a rate higher than the company's WACC, while low-risk projects (e.g., upgrading existing equipment) may use a lower rate.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The High Sensitivity Problem</h3>
+          <p>Because the discount rate is in the denominator of the PV formula and is raised to a high power (n), its impact is exponential. For instance, increasing the discount rate by just 1% on a 30-year cash flow can decrease its PV by 20% or more. This high sensitivity necessitates thorough **sensitivity analysis** on the chosen rate.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Project-Specific Discount Rates</h3>
+          <p>Best practice dictates that a company should not use a single, universal WACC for all projects. Instead, high-risk projects (e.g., launching a new technology or entering an unstable foreign market) should be discounted using a rate higher than the company's WACC, while low-risk projects (e.g., upgrading existing equipment) may use a lower rate.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The discount rate is the single most important determinant of value in finance. It is the quantification of opportunity cost and risk, serving as the required rate of return that links future cash flows to their present-day worth.</p>
-    <p>Whether calculated as the comprehensive WACC for corporate projects or the CAPM for equity investments, selecting the appropriate, risk-adjusted discount rate is the foundational step for any rational investment decision, ensuring that capital is allocated efficiently to projects that truly maximize wealth.</p>
-</section>
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>The discount rate is the single most important determinant of value in finance. It is the quantification of opportunity cost and risk, serving as the required rate of return that links future cash flows to their present-day worth.</p>
+          <p>Whether calculated as the comprehensive WACC for corporate projects or the CAPM for equity investments, selecting the appropriate, risk-adjusted discount rate is the foundational step for any rational investment decision, ensuring that capital is allocated efficiently to projects that truly maximize wealth.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -596,6 +623,20 @@ export default function DiscountRateCalculator() {
           </CardContent>
         </Card>
       </div>
+
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Discount Rate Calculator uses the Capital Asset Pricing Model (CAPM) to determine the appropriate required rate of return for an asset.</p>
+          <p>It factors in the risk-free rate, the asset's volatility (beta), and the expected market return to quantify the opportunity cost of capital.</p>
+          <p>Use this tool to find the correct discount rate for your NPV and DCF valuation models, ensuring your analysis accurately reflects investment risk.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

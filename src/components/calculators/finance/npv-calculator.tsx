@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, PlusCircle, XCircle } from 'lucide-react';
+import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, PlusCircle, XCircle, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -25,9 +25,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function NpvCalculator() {
-  const [result, setResult] = useState<{ 
-    npv: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    npv: number;
+    interpretation: string;
     recommendation: string;
     profitability: string;
     riskLevel: string;
@@ -84,7 +84,7 @@ export default function NpvCalculator() {
 
   const getInsights = (npv: number, discountRate: number) => {
     const insights = [];
-    
+
     if (npv > 0) {
       insights.push('Investment creates value above the required return');
       insights.push('Consider proceeding with this investment opportunity');
@@ -107,7 +107,7 @@ export default function NpvCalculator() {
 
   const getConsiderations = (npv: number) => {
     const considerations = [];
-    
+
     if (npv > 0) {
       considerations.push('Verify cash flow projections are realistic and achievable');
       considerations.push('Consider sensitivity analysis with different discount rates');
@@ -134,9 +134,9 @@ export default function NpvCalculator() {
   const onSubmit = (values: FormValues) => {
     const npv = calculate(values);
     if (npv == null) { setResult(null); return; }
-    setResult({ 
-      npv, 
-      interpretation: interpret(npv), 
+    setResult({
+      npv,
+      interpretation: interpret(npv),
       recommendation: recommendation(npv),
       profitability: getProfitability(npv),
       riskLevel: getRiskLevel(npv),
@@ -169,19 +169,19 @@ export default function NpvCalculator() {
                     Discount Rate (%)
                   </FormLabel>
                   <FormControl>
-                    <Input 
-                      type="number" 
+                    <Input
+                      type="number"
                       step="0.1"
-                      placeholder="e.g., 10" 
-                      {...field} 
-                      value={field.value ?? ''} 
-                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                      placeholder="e.g., 10"
+                      {...field}
+                      value={field.value ?? ''}
+                      onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )} />
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -197,13 +197,13 @@ export default function NpvCalculator() {
                       <FormField control={form.control} name={`cashFlows.${index}.value`} render={({ field }) => (
                         <FormItem className="flex-grow">
                           <FormControl>
-                            <Input 
-                              type="number" 
+                            <Input
+                              type="number"
                               step="0.01"
-                              placeholder={`Cash Flow for Year ${index}`} 
-                              {...field} 
-                              value={field.value ?? ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value))} 
+                              placeholder={`Cash Flow for Year ${index}`}
+                              {...field}
+                              value={field.value ?? ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value))}
                             />
                           </FormControl>
                           <FormMessage />
@@ -257,7 +257,7 @@ export default function NpvCalculator() {
                     {result.profitability}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <BarChart3 className="h-5 w-5 text-muted-foreground" />
@@ -272,7 +272,7 @@ export default function NpvCalculator() {
                     {result.interpretation}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-green-600" />
@@ -287,47 +287,43 @@ export default function NpvCalculator() {
                 </div>
               </div>
 
-              {/* Detailed Analysis */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Key Insights
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.insights.map((insight, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{insight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Investment Insights
+                    </CardTitle>
+                    <CardDescription>Value creation analysis</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.insights.map((insight, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{insight}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Important Considerations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.considerations.map((consideration, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{consideration}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Strategic Considerations
+                    </CardTitle>
+                    <CardDescription>Risks and adjustments</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.considerations.map((consideration, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
@@ -336,6 +332,34 @@ export default function NpvCalculator() {
 
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
+
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+              <p className="font-mono text-sm text-center">
+                NPV = Σ [ CF_t / (1 + r)^t ] - Initial Investment
+              </p>
+            </div>
+            <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul className="space-y-1">
+                <li><span className="font-semibold">NPV</span> = Net Present Value</li>
+                <li><span className="font-semibold">CF_t</span> = Cash Flow at time t</li>
+              </ul>
+              <ul className="space-y-1">
+                <li><span className="font-semibold">r</span> = Discount Rate</li>
+                <li><span className="font-semibold">t</span> = Time Period</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Related Calculators Section */}
         <Card>
           <CardHeader>
@@ -395,114 +419,114 @@ export default function NpvCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Net Present Value (NPV): Calculation, Interpretation, and Capital Budgeting" />
-    <meta itemProp="description" content="An expert guide to the Net Present Value (NPV) method, detailing the formula for discounting cash flows, selecting the appropriate discount rate, and its use as the superior decision rule in corporate capital budgeting." />
-    <meta itemProp="keywords" content="net present value formula explained, NPV calculation steps, capital budgeting decision rule, discount rate WACC, time value of money, intrinsic value project, IRR vs NPV, mutually exclusive projects" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-net-present-value-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Net Present Value (NPV): Calculation, Interpretation, and Capital Budgeting" />
+          <meta itemProp="description" content="An expert guide to the Net Present Value (NPV) method, detailing the formula for discounting cash flows, selecting the appropriate discount rate, and its use as the superior decision rule in corporate capital budgeting." />
+          <meta itemProp="keywords" content="net present value formula explained, NPV calculation steps, capital budgeting decision rule, discount rate WACC, time value of money, intrinsic value project, IRR vs NPV, mutually exclusive projects" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-net-present-value-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Present Value (NPV): The Superior Capital Budgeting Rule</h1>
-    <p className="text-lg italic text-muted-foreground">Master the foundation of corporate investment—the metric that quantifies the true economic profit or loss of a project in today's dollars.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Net Present Value (NPV): The Superior Capital Budgeting Rule</h1>
+          <p className="text-lg italic text-muted-foreground">Master the foundation of corporate investment—the metric that quantifies the true economic profit or loss of a project in today's dollars.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#concept" className="hover:underline">NPV Concept and the Time Value of Money</a></li>
-        <li><a href="#calculation" className="hover:underline">The Net Present Value Formula and Mechanics</a></li>
-        <li><a href="#discount-rate" className="hover:underline">Selecting the Discount Rate (WACC)</a></li>
-        <li><a href="#decision" className="hover:underline">The NPV Decision Rule: Interpretation and Acceptance Criteria</a></li>
-        <li><a href="#applications" className="hover:underline">NPV vs. IRR and Advanced Capital Budgeting</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#concept" className="hover:underline">NPV Concept and the Time Value of Money</a></li>
+            <li><a href="#calculation" className="hover:underline">The Net Present Value Formula and Mechanics</a></li>
+            <li><a href="#discount-rate" className="hover:underline">Selecting the Discount Rate (WACC)</a></li>
+            <li><a href="#decision" className="hover:underline">The NPV Decision Rule: Interpretation and Acceptance Criteria</a></li>
+            <li><a href="#applications" className="hover:underline">NPV vs. IRR and Advanced Capital Budgeting</a></li>
+          </ul>
+          <hr />
 
-    {/* NPV CONCEPT AND THE TIME VALUE OF MONEY */}
-    <h2 id="concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">NPV Concept and the Time Value of Money</h2>
-    <p><strong className="font-semibold">Net Present Value (NPV)</strong> is the core valuation technique used in finance to determine the economic viability of a project or investment. It measures the difference between the present value of the project's expected cash inflows and the present value of its expected cash outflows (including the initial cost).</p>
+          {/* NPV CONCEPT AND THE TIME VALUE OF MONEY */}
+          <h2 id="concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">NPV Concept and the Time Value of Money</h2>
+          <p><strong className="font-semibold">Net Present Value (NPV)</strong> is the core valuation technique used in finance to determine the economic viability of a project or investment. It measures the difference between the present value of the project's expected cash inflows and the present value of its expected cash outflows (including the initial cost).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Discounting Future Value</h3>
-    <p>NPV is a direct application of the **Time Value of Money (TVM)**. Because a dollar received in the future is worth less than a dollar received today, the NPV method uses a rate (the discount rate) to adjust all future cash flows (FCF) to their current equivalent value. This adjustment ensures that the investment decision is based on an "apples-to-apples" comparison of current costs versus future benefits.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Discounting Future Value</h3>
+          <p>NPV is a direct application of the **Time Value of Money (TVM)**. Because a dollar received in the future is worth less than a dollar received today, the NPV method uses a rate (the discount rate) to adjust all future cash flows (FCF) to their current equivalent value. This adjustment ensures that the investment decision is based on an "apples-to-apples" comparison of current costs versus future benefits.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Goal of NPV</h3>
-    <p>The resulting NPV figure represents the net value added to the company or shareholder wealth by undertaking the project. If the NPV is positive, it means the project's discounted cash returns exceed the cost of the initial investment and the cost of the capital used to fund it.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Goal of NPV</h3>
+          <p>The resulting NPV figure represents the net value added to the company or shareholder wealth by undertaking the project. If the NPV is positive, it means the project's discounted cash returns exceed the cost of the initial investment and the cost of the capital used to fund it.</p>
 
-<hr />
+          <hr />
 
-    {/* THE NET PRESENT VALUE FORMULA AND MECHANICS */}
-    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Net Present Value Formula and Mechanics</h2>
-    <p>The NPV formula is the sum of the Present Values (PV) of all future cash flows, minus the initial investment (which is typically a cash outflow at time $t=0$).</p>
+          {/* THE NET PRESENT VALUE FORMULA AND MECHANICS */}
+          <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Net Present Value Formula and Mechanics</h2>
+          <p>The NPV formula is the sum of the Present Values (PV) of all future cash flows, minus the initial investment (which is typically a cash outflow at time $t=0$).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Core Formula</h3>
-    <p>For a project with a fixed initial cost and multiple subsequent cash flows, the formula is:</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'NPV = Sum [ CF_t / (1 + r)^t ] - Initial Investment'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Core Formula</h3>
+          <p>For a project with a fixed initial cost and multiple subsequent cash flows, the formula is:</p>
 
-    <p>Where:</p>
-<ul className="list-disc ml-6 space-y-2">
-    <li><strong className="font-semibold">CFt:</strong> Net cash flow at time t (can be positive or negative).</li>
-    <li><strong className="font-semibold">r:</strong> The discount rate (cost of capital).</li>
-    <li><strong className="font-semibold">t:</strong> The time period (year) of the cash flow.</li>
-    <li><strong className="font-semibold">Initial Investment:</strong> Cash flow at time t=0 (usually a negative value).</li>
-</ul>
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'NPV = Sum [ CF_t / (1 + r)^t ] - Initial Investment'}
+            </p>
+          </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Discounting the Cash Flows</h3>
-<p>Each individual future cash flow must be discounted back to the present value using the term {'1 / (1 + r)^t'}. The farther out the cash flow (higher t), the greater the discounting effect, demonstrating TVM's impact on long-term project viability.</p>
+          <p>Where:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">CFt:</strong> Net cash flow at time t (can be positive or negative).</li>
+            <li><strong className="font-semibold">r:</strong> The discount rate (cost of capital).</li>
+            <li><strong className="font-semibold">t:</strong> The time period (year) of the cash flow.</li>
+            <li><strong className="font-semibold">Initial Investment:</strong> Cash flow at time t=0 (usually a negative value).</li>
+          </ul>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Discounting the Cash Flows</h3>
+          <p>Each individual future cash flow must be discounted back to the present value using the term {'1 / (1 + r)^t'}. The farther out the cash flow (higher t), the greater the discounting effect, demonstrating TVM's impact on long-term project viability.</p>
 
-    {/* SELECTING THE DISCOUNT RATE (WACC) */}
-    <h2 id="discount-rate" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Selecting the Discount Rate (WACC)</h2>
-    <p>The discount rate ($r$) is the most sensitive and crucial input in the NPV calculation. For corporate projects, the appropriate discount rate is typically the firm’s <strong className="font-semibold">Weighted Average Cost of Capital (WACC)</strong>.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">WACC as the Hurdle Rate</h3>
-    <p>WACC represents the average rate of return the company pays to its long-term debt holders (creditors) and equity holders (investors). It serves as the <strong className="font-semibold">Hurdle Rate</strong>—the minimum return a project must generate to be worthwhile. If a project generates cash flows that, when discounted, result in a positive NPV, it means the project's return exceeds the cost of the financing used to fund it.</p>
+          {/* SELECTING THE DISCOUNT RATE (WACC) */}
+          <h2 id="discount-rate" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Selecting the Discount Rate (WACC)</h2>
+          <p>The discount rate ($r$) is the most sensitive and crucial input in the NPV calculation. For corporate projects, the appropriate discount rate is typically the firm’s <strong className="font-semibold">Weighted Average Cost of Capital (WACC)</strong>.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Project-Specific Risk Adjustment</h3>
-    <p>While WACC is the default rate, complex projects often require adjusting the discount rate to account for <strong className="font-semibold">project-specific risk</strong>. If a project is inherently riskier than the firm’s average business operations (e.g., entering a new market), a higher discount rate should be used. This higher rate reduces the NPV, correctly penalizing the project for its higher risk profile.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">WACC as the Hurdle Rate</h3>
+          <p>WACC represents the average rate of return the company pays to its long-term debt holders (creditors) and equity holders (investors). It serves as the <strong className="font-semibold">Hurdle Rate</strong>—the minimum return a project must generate to be worthwhile. If a project generates cash flows that, when discounted, result in a positive NPV, it means the project's return exceeds the cost of the financing used to fund it.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Project-Specific Risk Adjustment</h3>
+          <p>While WACC is the default rate, complex projects often require adjusting the discount rate to account for <strong className="font-semibold">project-specific risk</strong>. If a project is inherently riskier than the firm’s average business operations (e.g., entering a new market), a higher discount rate should be used. This higher rate reduces the NPV, correctly penalizing the project for its higher risk profile.</p>
 
-    {/* THE NPV DECISION RULE: INTERPRETATION AND ACCEPTANCE CRITERIA */}
-    <h2 id="decision" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The NPV Decision Rule: Interpretation and Acceptance Criteria</h2>
-    <p>The power of the NPV method lies in its simple, unambiguous decision rule, which directly maximizes shareholder value.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Acceptance Rule</h3>
-<p>The standard NPV decision rule is:</p>
-<ul className="list-disc ml-6 space-y-2">
-    <li><strong className="font-semibold">If NPV &gt; 0 (Positive):</strong> Accept the project. The investment is expected to generate a return greater than the cost of capital, thereby adding value to the firm.</li>
-    <li><strong className="font-semibold">If NPV = 0 (Zero):</strong> Indifference. The project is expected to generate a return exactly equal to the cost of capital (WACC).</li>
-    <li><strong className="font-semibold">If NPV &lt; 0 (Negative):</strong> Reject the project. The investment would destroy shareholder value, as its returns do not cover the cost of capital.</li>
-</ul>
+          {/* THE NPV DECISION RULE: INTERPRETATION AND ACCEPTANCE CRITERIA */}
+          <h2 id="decision" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The NPV Decision Rule: Interpretation and Acceptance Criteria</h2>
+          <p>The power of the NPV method lies in its simple, unambiguous decision rule, which directly maximizes shareholder value.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation as Value Added</h3>
-    <p>Unlike other metrics that provide a percentage return, NPV provides a value in dollars. A positive NPV of 1 million dollars means the project is expected to increase the total wealth of the firm by 1 million dollars in today's terms. This is why NPV is considered the most reliable measure for long-term investment decisions.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Acceptance Rule</h3>
+          <p>The standard NPV decision rule is:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">If NPV &gt; 0 (Positive):</strong> Accept the project. The investment is expected to generate a return greater than the cost of capital, thereby adding value to the firm.</li>
+            <li><strong className="font-semibold">If NPV = 0 (Zero):</strong> Indifference. The project is expected to generate a return exactly equal to the cost of capital (WACC).</li>
+            <li><strong className="font-semibold">If NPV &lt; 0 (Negative):</strong> Reject the project. The investment would destroy shareholder value, as its returns do not cover the cost of capital.</li>
+          </ul>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation as Value Added</h3>
+          <p>Unlike other metrics that provide a percentage return, NPV provides a value in dollars. A positive NPV of 1 million dollars means the project is expected to increase the total wealth of the firm by 1 million dollars in today's terms. This is why NPV is considered the most reliable measure for long-term investment decisions.</p>
 
-    {/* NPV VS. IRR AND ADVANCED CAPITAL BUDGETING */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">NPV vs. IRR and Advanced Capital Budgeting</h2>
-    <p>While the <strong className="font-semibold">Internal Rate of Return (IRR)</strong> is a popular metric, NPV is theoretically superior, especially when dealing with complex projects.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Superiority of NPV over IRR</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Reinvestment Rate Assumption:</strong> NPV assumes that cash flows are reinvested at the **Discount Rate ($r$ or WACC)**, which is economically realistic. IRR assumes cash flows are reinvested at the IRR itself, which is often overly optimistic, especially for high-IRR projects.</li>
-        <li><strong className="font-semibold">Mutually Exclusive Projects:</strong> When choosing between two projects, NPV correctly selects the project that adds the most absolute dollar value to the firm, even if a competing project has a higher IRR (the **Scale Problem**).</li>
-        <li><strong className="font-semibold">Non-Conventional Cash Flows:</strong> For projects with complex cash flow patterns (e.g., an intermediate cash outflow), IRR can yield multiple different rates, rendering the metric unreliable, whereas NPV always yields a single, definitive dollar value.</li>
-    </ul>
-    <p>Due to these factors, NPV should always be the primary decision criterion in corporate finance, with IRR used only as a supplementary measure of margin of safety.</p>
+          {/* NPV VS. IRR AND ADVANCED CAPITAL BUDGETING */}
+          <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">NPV vs. IRR and Advanced Capital Budgeting</h2>
+          <p>While the <strong className="font-semibold">Internal Rate of Return (IRR)</strong> is a popular metric, NPV is theoretically superior, especially when dealing with complex projects.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Superiority of NPV over IRR</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Reinvestment Rate Assumption:</strong> NPV assumes that cash flows are reinvested at the **Discount Rate ($r$ or WACC)**, which is economically realistic. IRR assumes cash flows are reinvested at the IRR itself, which is often overly optimistic, especially for high-IRR projects.</li>
+            <li><strong className="font-semibold">Mutually Exclusive Projects:</strong> When choosing between two projects, NPV correctly selects the project that adds the most absolute dollar value to the firm, even if a competing project has a higher IRR (the **Scale Problem**).</li>
+            <li><strong className="font-semibold">Non-Conventional Cash Flows:</strong> For projects with complex cash flow patterns (e.g., an intermediate cash outflow), IRR can yield multiple different rates, rendering the metric unreliable, whereas NPV always yields a single, definitive dollar value.</li>
+          </ul>
+          <p>Due to these factors, NPV should always be the primary decision criterion in corporate finance, with IRR used only as a supplementary measure of margin of safety.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Net Present Value is the single most rigorous measure for assessing the economic viability of capital investments. By discounting all future cash flows using the cost of capital, NPV adheres strictly to the Time Value of Money principle, providing the true current dollar value added to the firm.</p>
-    <p>A positive NPV guarantees that a project will generate returns exceeding the cost of its financing, thereby creating wealth for shareholders, solidifying its position as the theoretically correct and definitive decision rule in corporate capital budgeting.</p>
-</section>
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>Net Present Value is the single most rigorous measure for assessing the economic viability of capital investments. By discounting all future cash flows using the cost of capital, NPV adheres strictly to the Time Value of Money principle, providing the true current dollar value added to the firm.</p>
+          <p>A positive NPV guarantees that a project will generate returns exceeding the cost of its financing, thereby creating wealth for shareholders, solidifying its position as the theoretically correct and definitive decision rule in corporate capital budgeting.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -588,6 +612,19 @@ export default function NpvCalculator() {
           </CardContent>
         </Card>
       </div>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Net Present Value (NPV) Calculator determines the profitability of an investment by discounting future cash flows to their present value.</p>
+          <p>It helps in capital budgeting and investment analysis by accounting for the time value of money, ensuring you make apples-to-apples comparisons of costs and returns.</p>
+          <p>Use this tool to evaluate business projects, real estate investments, or any scenario involving initial costs and future returns.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
