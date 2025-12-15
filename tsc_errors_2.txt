@@ -1,0 +1,1 @@
+﻿src/components/calculators/employment/remote-work-time-zone-overlap-calculator.tsx(149,118): error TS2322: Type 'undefined' is not assignable to type 'number'.

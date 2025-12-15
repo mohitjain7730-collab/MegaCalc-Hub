@@ -1402,7 +1402,7 @@ export const health_fitness_calculators: Calculator[] = [
     "slug": "supplement-stack-roi-calculator",
     "category": "health-fitness",
     "metaTitle": "Supplement Stack ROI Calculator",
-    "metaDescription": 0
+    "metaDescription": ""
   },
   {
     "id": 7326,
@@ -1411,7 +1411,7 @@ export const health_fitness_calculators: Calculator[] = [
     "slug": "mitochondrial-health-index",
     "category": "health-fitness",
     "metaTitle": "Mitochondrial Health Index Calculator",
-    "metaDescription": 0
+    "metaDescription": ""
   },
   {
     "id": 7327,
@@ -1420,7 +1420,7 @@ export const health_fitness_calculators: Calculator[] = [
     "slug": "sleep-optimization-routine-score",
     "category": "health-fitness",
     "metaTitle": "Sleep Optimization Routine Score Calculator",
-    "metaDescription": 0
+    "metaDescription": ""
   },
   {
     "id": 7328,
@@ -1429,7 +1429,7 @@ export const health_fitness_calculators: Calculator[] = [
     "slug": "hrv-to-stress-correlation-estimator",
     "category": "health-fitness",
     "metaTitle": "HRV to Stress Correlation Estimator",
-    "metaDescription": 0
+    "metaDescription": ""
   },
   {
     "id": 7329,
@@ -1438,7 +1438,7 @@ export const health_fitness_calculators: Calculator[] = [
     "slug": "circadian-rhythm-alignment-score",
     "category": "health-fitness",
     "metaTitle": "Circadian Rhythm Alignment Score Calculator",
-    "metaDescription": 0
+    "metaDescription": ""
   },
   {
     "id": 5100,
