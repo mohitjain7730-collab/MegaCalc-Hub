@@ -7128,7 +7128,24 @@ export const calculators: Calculator[] = [
     metaTitle: 'Startup Runway Calculator with Hiring Plan',
     metaDescription: 'Project your startup runway by factoring in dynamic hiring plans and revenue growth. Visualize cash flow survival dates.',
   },
-
+  {
+    id: 10223,
+    name: 'Burn Rate Calculator for Pre-Revenue Startups',
+    description: 'Estimate your monthly burn rate and runway based on detailed expenses for early-stage startups.',
+    slug: 'burn-rate-calculator-pre-revenue',
+    category: 'finance',
+    metaTitle: 'Burn Rate Calculator for Pre-Revenue Startups',
+    metaDescription: 'Calculate monthly burn rate and runway for pre-revenue startups. Track expenses and plan your survival strategy.',
+  },
+  {
+    id: 10224,
+    name: 'Cash Flow Break-Even Calculator for Small Businesses',
+    description: 'Calculate the sales volume needed to cover all fixed costs and debt payments to achieve positive cash flow.',
+    slug: 'cash-flow-break-even-calculator-for-small-businesses',
+    category: 'finance',
+    metaTitle: 'Cash Flow Break-Even Calculator for Small Businesses',
+    metaDescription: 'Find your cash flow break-even point. Calculate sales needed to cover operating costs and debt service.',
+  },
 ];
 
 
