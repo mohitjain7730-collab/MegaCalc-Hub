@@ -1,8 +1,8 @@
+@import "react-day-picker/style.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "react-day-picker/style.css";
 
 /* Font family now handled by Next.js font optimization */
 body {

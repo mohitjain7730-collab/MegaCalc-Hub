@@ -6,51 +6,59 @@ const { platform } = require('os');
 const port = 9002;
 
 // Kill process on port 9002
+// Kill process on port 9002
 function killPort() {
   console.log(`Checking for process on port ${port}...`);
   try {
     if (platform() === 'win32') {
       // Windows command using taskkill (more reliable than PowerShell)
       console.log('Running taskkill logic...');
-      let portFree = false;
+      const timeout = 10000;
       const startTime = Date.now();
+      let portFree = false;
 
-      while (!portFree && (Date.now() - startTime < 5000)) {
+      while (Date.now() - startTime < timeout) {
         try {
           // Find PID occupying the port
           const output = execSync(`netstat -ano | findstr :${port}`, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] });
           const lines = output.trim().split(/[\r\n]+/);
-          let killedAny = false;
+          let pidsFound = [];
 
           lines.forEach(line => {
             const parts = line.trim().split(/\s+/);
             const pid = parts[parts.length - 1];
             if (pid && /^\d+$/.test(pid) && pid !== '0') {
-              console.log(`Found process ${pid} on port ${port}. Killing...`);
-              try {
-                execSync(`taskkill /PID ${pid} /F`, { stdio: 'ignore' });
-                killedAny = true;
-              } catch (e) {
-                // Ignore
-              }
+              if (!pidsFound.includes(pid)) pidsFound.push(pid);
             }
           });
 
-          if (!killedAny) {
-            // No valid PIDs found to kill, but findstr matched something? 
-            // Wait a bit.
+          if (pidsFound.length === 0) {
+            portFree = true;
+            console.log('Port 9002 is free.');
+            break;
           }
+
+          console.log(`Found processes ${pidsFound.join(', ')} on port ${port}. Killing...`);
+          pidsFound.forEach(pid => {
+            try {
+              execSync(`taskkill /PID ${pid} /F`, { stdio: 'ignore' });
+            } catch (e) { /* ignore */ }
+          });
+
           // Wait a bit before checking again
-          execSync('ping 127.0.0.1 -n 1 -w 500 > NUL 2>&1');
+          const stop = Date.now() + 500;
+          while (Date.now() < stop) { }
+
         } catch (error) {
           // findstr returns error => No process found on port w/ that pattern.
           portFree = true;
-          console.log('Port 9002 is free.');
+          console.log('Port 9002 is free (no netstat match).');
+          break;
         }
       }
 
       if (!portFree) {
-        console.error('Warning: Could not free port 9002 after 5 seconds.');
+        console.error('Warning: Could not free port 9002 after 10 seconds.');
       }
     } else {
       // Unix/Linux/Mac command
@@ -63,13 +71,9 @@ function killPort() {
         }
       );
     }
-    console.log('Port cleanup completed (or no process found).');
+    console.log('Port cleanup completed.');
   } catch (error) {
-    if (error.code === 'ETIMEDOUT') {
-      console.error('Warning: Port kill command timed out. Proceeding...');
-    } else {
-      console.log('Note: No process found on port or error ignored.');
-    }
+    console.error('Error during port cleanup:', error.message);
   }
 }
 

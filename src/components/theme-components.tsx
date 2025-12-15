@@ -21,6 +21,11 @@ import {
 } from '@/components/ui/dialog';
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  console.log('NextThemesProvider:', NextThemesProvider);
+  if (!NextThemesProvider) {
+    console.error('NextThemesProvider is undefined!');
+    return <>{children}</>;
+  }
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
 
