@@ -9,6 +9,18 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'day-of-the-week-calculator': lazy(() => import('./day-of-the-week-calculator')),
   'working-days-business-days-calculator': lazy(() => import('./working-days-business-days-calculator')),
   'world-time-zone-converter': lazy(() => import('./world-time-zone-converter')),
+
+  // Employment Calculators (categorized under Time & Date)
+  'contract-duration-calculator': lazy(() => import('../employment/contract-duration-calculator')),
+  'employment-anniversary-calculator': lazy(() => import('../employment/employment-anniversary-calculator')),
+  'freelance-billable-hours-calculator': lazy(() => import('../employment/freelance-billable-hours-calculator')),
+  'last-working-day-calculator': lazy(() => import('../employment/last-working-day-calculator')),
+  'night-shift-duration-calculator': lazy(() => import('../employment/night-shift-duration-calculator')),
+  'notice-period-calculator': lazy(() => import('../employment/notice-period-calculator')),
+  'probation-period-calculator': lazy(() => import('../employment/probation-period-calculator')),
+  'remote-work-time-zone-overlap-calculator': lazy(() => import('../employment/remote-work-time-zone-overlap-calculator')),
+  'shift-rotation-calculator': lazy(() => import('../employment/shift-rotation-calculator')),
+  'split-shift-hours-calculator': lazy(() => import('../employment/split-shift-hours-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
