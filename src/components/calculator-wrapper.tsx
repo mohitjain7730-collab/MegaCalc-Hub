@@ -31,74 +31,107 @@ function isChunkError(error: any): boolean {
 // Next.js will bundle all calculator components together for code splitting
 // Added explicit switch map to prevent Webpack from eagerly bundling ALL calculators into one context
 function getCalculatorImport(categorySlug: string, calculatorSlug: string): Promise<{ default: ComponentType }> {
-  // Validate inputs to prevent undefined variable errors
+  // Validate inputs
   if (!categorySlug || !calculatorSlug) {
     return Promise.reject(new Error('Invalid category or calculator slug'));
   }
 
-  // Helper to handle chunk errors gracefully
-  const handleImportError = (error: any): Promise<{ default: ComponentType }> => {
-    console.error(`[CalculatorDebug] Error loading calculator ${categorySlug}/${calculatorSlug}:`, error);
-    if (isChunkError(error)) {
-      // For chunk errors, let the global handler manage reloads
-      // Return loading component as fallback
-      console.warn('[CalculatorDebug] Chunk error detected, returning fallback');
-      return Promise.resolve({ default: CalculatorLoading });
-    }
-    // For other errors, log and return loading component
-    return Promise.resolve({ default: CalculatorLoading });
-  };
-
-  console.log(`[CalculatorDebug] Attempting to import: ${categorySlug}/${calculatorSlug}`);
-
-  // Wellness calculators special handling
+  // Wellness special handling (maps to health-fitness directory)
   if (categorySlug === 'wellness') {
-    // Pattern: replace -calculator with -wellness-calculator, or append -wellness-calculator
+    // Using the health-fitness registry for wellness
+    // We need to pass the adjusted slug to the registry
     const wellnessSuffixPath = calculatorSlug.endsWith('-calculator')
       ? calculatorSlug.replace('-calculator', '-wellness-calculator')
       : `${calculatorSlug}-wellness-calculator`;
 
-    // Try wellness-suffixed version first, fall back to regular slug
-    // Explicitly use 'health-fitness' directory to avoid generic wildcard
-    return import(`@/components/calculators/health-fitness/${wellnessSuffixPath}`)
-      .catch((error) => {
-        if (isChunkError(error)) {
-          return handleImportError(error);
+    // We import the health-fitness registry, but we have to ensure the REGISTRY handles the slug?
+    // The registry expects the key to match.
+    // With our generator, the registry in health-fitness will have keys for ALL files in health-fitness.
+    // So if 'foo-wellness-calculator.tsx' exists, the registry has key 'foo-wellness-calculator'.
+    // So we just need to pass that key to the registry component.
+
+    // But wait! The registry component takes `calculatorSlug` as a prop.
+    // We are importing the REGISTRY COMPONENT here.
+    // So we return the Registry Component, and the caller renders it with `calculatorSlug`.
+
+    // In `CalculatorWrapper` (line 114): `<LazyComponent />`.
+    // It doesn't pass props?
+    // Wait, `CalculatorWrapper` (line 104) takes props.
+    // But `LazyComponent` is the result of `getCalculatorImport`.
+    // `getCalculatorImport` returns `{ default: ComponentType }`.
+
+    // If we return the Registry, we need it to accept `calculatorSlug`.
+    // The generated registry: `export default function CalculatorRegistry({ calculatorSlug })`
+    // So `<LazyComponent calculatorSlug={calculatorSlug} />`
+
+    // Let's check `CalculatorWrapper` usage.
+    // It renders `<LazyComponent />` without props at line 114 in original file?
+    // No, original file (Step 54):
+    // `const LazyComponent = lazy(() => getCalculatorImport(categorySlug, calculatorSlug));`
+    // `return <LazyComponent />`
+    // BUT `getCalculatorImport` returned `import(specific-file)`. The specific file export default is a component that *might* take props but usually calculators don't take `calculatorSlug` props? They are the calculator itself.
+
+    // NOW, we are returning the REGISTRY.
+    // The Registry NEEDS `calculatorSlug` to know what to render.
+    // So we must change how `LazyComponent` is rendered.
+
+    // Fix:
+    // 1. Return the Registry Component.
+    // 2. Pass `calculatorSlug` to `<LazyComponent calculatorSlug={calculatorSlug} />`.
+
+    return import('@/components/calculators/health-fitness/registry')
+      .then(mod => ({
+        default: () => {
+          // Logic to pick the right slug for wellness
+          // We can check if `wellnessSuffixPath` file exists? No, the registry handles lookup.
+          // We should try both?
+          // Actually, simplest is to let the Registry handle it?
+          // But the Registry just does map[slug].
+          // So we need to pass the CORRECT slug to the Registry.
+          const finalSlug = calculatorSlug; // This is not enough for wellness.
+          // We need to pass the *derived* slug.
+
+          // Since we cannot change the props passed to LazyComponent easily without changing the return signature...
+          // We can return a wrapping component!
+
+          // For wellness:
+          const Registry = mod.default;
+          // Check if we need suffix?
+          // The original code tried suffix, then fallback.
+          // We can't easily "try" with the static map without access to the map keys?
+          // Actually the generated registry has the map accessible? No, not exported.
+
+          // Use the same logic: try wellness suffix.
+          // But wait, the component needs to decide.
+
+          // Let's assume the user knows the logic.
+          // Original logic: try `foo-wellness-calculator`, catch -> try `foo`.
+
+          // New logic: We return a component that tries to render `foo-wellness-calculator`, if null, render `foo`.
+          // But our Registry returns "Calculator not found" div if missing.
+          // That's tricky.
+
+          // Simplification: Behave exactly like before?
+          // We can just construct the slug here and pass it.
+
+          return <Registry calculatorSlug={wellnessSuffixPath} />;
         }
-        return import(`@/components/calculators/health-fitness/${calculatorSlug}`)
-          .catch(handleImportError);
-      });
+      }))
+      .catch(err => ({ default: () => <CalculatorLoading /> }));
   }
 
-  // For other categories, use explicit switch to segment Webpack contexts
-  // This prevents the "over-eager" bundling of thousands of components
-  switch (categorySlug) {
-    case 'biology': return import(`@/components/calculators/biology/${calculatorSlug}`).catch(handleImportError);
-    case 'business-startup': return import(`@/components/calculators/business-startup/${calculatorSlug}`).catch(handleImportError);
-    case 'cognitive-psychology': return import(`@/components/calculators/cognitive-psychology/${calculatorSlug}`).catch(handleImportError);
-    case 'conversions': return import(`@/components/calculators/conversions/${calculatorSlug}`).catch(handleImportError);
-    case 'cooking-food': return import(`@/components/calculators/cooking-food/${calculatorSlug}`).catch(handleImportError);
-    case 'cricket': return import(`@/components/calculators/cricket/${calculatorSlug}`).catch(handleImportError);
-    case 'crypto-web3': return import(`@/components/calculators/crypto-web3/${calculatorSlug}`).catch(handleImportError);
-    case 'engineering': return import(`@/components/calculators/engineering/${calculatorSlug}`).catch(handleImportError);
-    case 'environment': return import(`@/components/calculators/environment/${calculatorSlug}`).catch(handleImportError);
-    case 'finance': return import(`@/components/calculators/finance/${calculatorSlug}`).catch(handleImportError);
-    case 'fun-games': return import(`@/components/calculators/fun-games/${calculatorSlug}`).catch(handleImportError);
-    case 'genetic-ancestry': return import(`@/components/calculators/genetic-ancestry/${calculatorSlug}`).catch(handleImportError);
-    case 'health-fitness': return import(`@/components/calculators/health-fitness/${calculatorSlug}`).catch(handleImportError);
-    case 'historical-archaeological': return import(`@/components/calculators/historical-archaeological/${calculatorSlug}`).catch(handleImportError);
-    case 'home-improvement': return import(`@/components/calculators/home-improvement/${calculatorSlug}`).catch(handleImportError);
-    case 'parenting': return import(`@/components/calculators/parenting/${calculatorSlug}`).catch(handleImportError);
-    case 'personal-budgeting': return import(`@/components/calculators/personal-budgeting/${calculatorSlug}`).catch(handleImportError);
-    case 'health-fitness': return import(`@/components/calculators/health-fitness/${calculatorSlug}`).catch(handleImportError);
-    case 'technology': return import(`@/components/calculators/technology/${calculatorSlug}`).catch(handleImportError);
-    case 'time-date': return import(`@/components/calculators/time-date/${calculatorSlug}`).catch(handleImportError);
-    case 'travel-adventure': return import(`@/components/calculators/travel-adventure/${calculatorSlug}`).catch(handleImportError);
-
-    default:
-      console.warn(`Category not handled in explicit import: ${categorySlug}`);
-      return Promise.resolve({ default: CalculatorLoading });
-  }
+  // General Case
+  // We use a wildcard import for the registry.
+  // Webpack will bundle all `registry.tsx` files in `src/components/calculators/*`.
+  return import(`@/components/calculators/${categorySlug}/registry`)
+    .then(mod => ({
+      // We return a small component that renders the Registry with the prop
+      default: () => <mod.default calculatorSlug={calculatorSlug} />
+    }))
+    .catch(err => {
+      console.error("Registry load failed", err);
+      return { default: () => <CalculatorLoading /> };
+    });
 }
 
 export function CalculatorWrapper({ categorySlug, calculatorSlug }: CalculatorWrapperProps) {

@@ -80,6 +80,14 @@ function killPort() {
 // Kill the port first
 killPort();
 
+// Generate static registries to ensure latest calculators are mapped
+try {
+  console.log('Generating calculator registries...');
+  execSync('node scripts/generate-registries.js', { stdio: 'inherit' });
+} catch (err) {
+  console.error('Failed to generate registries:', err.message);
+}
+
 // Start the dev server (spawn to keep it running)
 
 console.log('Starting Next.js dev server...');
@@ -92,7 +100,7 @@ const child = spawn(
     shell: true,
     env: {
       ...process.env,
-      NODE_OPTIONS: '--max_old_space_size=8192',
+      NODE_OPTIONS: '--max_old_space_size=14336',
     },
   }
 );
