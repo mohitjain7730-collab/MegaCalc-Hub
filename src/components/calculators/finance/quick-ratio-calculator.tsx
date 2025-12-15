@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Zap, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, TrendingDown } from 'lucide-react';
+import { Zap, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, TrendingDown, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -25,9 +25,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function QuickRatioCalculator() {
-  const [result, setResult] = useState<{ 
-    ratio: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    ratio: number;
+    interpretation: string;
     liquidityLevel: string;
     recommendation: string;
     strength: string;
@@ -152,9 +152,9 @@ export default function QuickRatioCalculator() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField 
-                  control={form.control} 
-                  name="cash" 
+                <FormField
+                  control={form.control}
+                  name="cash"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
@@ -162,22 +162,22 @@ export default function QuickRatioCalculator() {
                         Cash ($)
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 200000" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 200000"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="marketableSecurities" 
+                <FormField
+                  control={form.control}
+                  name="marketableSecurities"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
@@ -185,22 +185,22 @@ export default function QuickRatioCalculator() {
                         Marketable Securities ($)
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 100000" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 100000"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="accountsReceivable" 
+                <FormField
+                  control={form.control}
+                  name="accountsReceivable"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
@@ -208,22 +208,22 @@ export default function QuickRatioCalculator() {
                         Accounts Receivable ($)
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 300000" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 300000"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="currentLiabilities" 
+                <FormField
+                  control={form.control}
+                  name="currentLiabilities"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
@@ -231,18 +231,18 @@ export default function QuickRatioCalculator() {
                         Current Liabilities ($)
                       </FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 400000" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 400000"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
               </div>
               <Button type="submit" className="w-full">
@@ -273,7 +273,7 @@ export default function QuickRatioCalculator() {
                 <p className="text-4xl font-bold text-primary">{result.ratio.toFixed(2)}</p>
                 <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
                   <Shield className="h-6 w-6 mx-auto mb-2 text-blue-600" />
@@ -305,43 +305,66 @@ export default function QuickRatioCalculator() {
             </CardContent>
           </Card>
 
-          {/* Insights Card */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="h-5 w-5" />
-                Key Insights
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-semibold mb-2 text-green-600">Strengths & Opportunities</h4>
-                  <ul className="space-y-1 text-sm">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-green-600 mt-1">•</span>
-                        <span>{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2 text-orange-600">Important Considerations</h4>
-                  <ul className="space-y-1 text-sm">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-orange-600 mt-1">•</span>
-                        <span>{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Liquidity optimization opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Quick Ratio = (Cash + Marketable Securities + Accounts Receivable) / Current Liabilities
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Also known as the Acid-Test Ratio, it measures liquidity by excluding inventory from current assets.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Related Calculators */}
       <Card>
@@ -440,118 +463,118 @@ export default function QuickRatioCalculator() {
 
       {/* Complete Guide Section */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to the Quick Ratio (Acid-Test): Calculation, Interpretation, and Liquidity Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the Quick Ratio formula, its role in assessing a company's immediate (or 'acid-test') short-term liquidity, interpreting ideal and dangerous thresholds, and its comparison to the less stringent Current Ratio." />
-    <meta itemProp="keywords" content="quick ratio formula explained, calculating acid-test ratio, immediate liquidity analysis, most liquid assets finance, ideal quick ratio threshold, current ratio vs quick ratio, solvency analysis" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-quick-ratio-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to the Quick Ratio (Acid-Test): Calculation, Interpretation, and Liquidity Analysis" />
+        <meta itemProp="description" content="An expert guide detailing the Quick Ratio formula, its role in assessing a company's immediate (or 'acid-test') short-term liquidity, interpreting ideal and dangerous thresholds, and its comparison to the less stringent Current Ratio." />
+        <meta itemProp="keywords" content="quick ratio formula explained, calculating acid-test ratio, immediate liquidity analysis, most liquid assets finance, ideal quick ratio threshold, current ratio vs quick ratio, solvency analysis" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-quick-ratio-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Quick Ratio (Acid-Test): Measuring Immediate Liquidity</h1>
-    <p className="text-lg italic text-muted-foreground">Master the critical solvency metric that assesses a company's ability to cover its short-term debts without relying on the sale of inventory.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Quick Ratio (Acid-Test): Measuring Immediate Liquidity</h1>
+        <p className="text-lg italic text-muted-foreground">Master the critical solvency metric that assesses a company's ability to cover its short-term debts without relying on the sale of inventory.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">Quick Ratio: Definition and Core Purpose</a></li>
-        <li><a href="#calculation" className="hover:underline">The Quick Ratio Formula and Components</a></li>
-        <li><a href="#interpretation" className="hover:underline">Interpreting the Ratio and Ideal Thresholds</a></li>
-        <li><a href="#current-ratio" className="hover:underline">Quick Ratio vs. Current Ratio (The Inventory Test)</a></li>
-        <li><a href="#applications" className="hover:underline">Role in Credit and Operational Analysis</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">Quick Ratio: Definition and Core Purpose</a></li>
+          <li><a href="#calculation" className="hover:underline">The Quick Ratio Formula and Components</a></li>
+          <li><a href="#interpretation" className="hover:underline">Interpreting the Ratio and Ideal Thresholds</a></li>
+          <li><a href="#current-ratio" className="hover:underline">Quick Ratio vs. Current Ratio (The Inventory Test)</a></li>
+          <li><a href="#applications" className="hover:underline">Role in Credit and Operational Analysis</a></li>
+        </ul>
+        <hr />
 
-    {/* QUICK RATIO: DEFINITION AND CORE PURPOSE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Quick Ratio: Definition and Core Purpose</h2>
-    <p>The **Quick Ratio**, formally known as the **Acid-Test Ratio**, is a stringent measure of a company’s short-term liquidity. It determines the firm’s ability to pay off its immediate liabilities (current liabilities) using only its **most liquid assets**.</p>
-    
+        {/* QUICK RATIO: DEFINITION AND CORE PURPOSE */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Quick Ratio: Definition and Core Purpose</h2>
+        <p>The **Quick Ratio**, formally known as the **Acid-Test Ratio**, is a stringent measure of a company’s short-term liquidity. It determines the firm’s ability to pay off its immediate liabilities (current liabilities) using only its **most liquid assets**.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The "Acid-Test" Metaphor</h3>
-    <p>The term "Acid-Test" is derived from historical mining practices where strong acid was used to quickly determine if a sample contained gold. Similarly, the Quick Ratio applies a rigorous test to liquidity by excluding the asset that is typically the least reliable for immediate conversion into cash: **Inventory**.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Immediate Solvency</h3>
-    <p>The Quick Ratio provides a more conservative and reliable snapshot of immediate financial stability compared to the Current Ratio. It assesses the firm's capacity to handle unexpected financial demands without resorting to sales, liquidation, or financing of its product stock.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The "Acid-Test" Metaphor</h3>
+        <p>The term "Acid-Test" is derived from historical mining practices where strong acid was used to quickly determine if a sample contained gold. Similarly, the Quick Ratio applies a rigorous test to liquidity by excluding the asset that is typically the least reliable for immediate conversion into cash: **Inventory**.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Immediate Solvency</h3>
+        <p>The Quick Ratio provides a more conservative and reliable snapshot of immediate financial stability compared to the Current Ratio. It assesses the firm's capacity to handle unexpected financial demands without resorting to sales, liquidation, or financing of its product stock.</p>
 
-    {/* THE QUICK RATIO FORMULA AND COMPONENTS */}
-    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Quick Ratio Formula and Components</h2>
-    <p>The Quick Ratio is calculated by dividing the Quick Assets (highly liquid Current Assets) by Total Current Liabilities.</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The formula for the Quick Ratio is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        {/* THE QUICK RATIO FORMULA AND COMPONENTS */}
+        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Quick Ratio Formula and Components</h2>
+        <p>The Quick Ratio is calculated by dividing the Quick Assets (highly liquid Current Assets) by Total Current Liabilities.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <p>The formula for the Quick Ratio is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Quick Ratio = Quick Assets / Total Current Liabilities'}
-        </p>
-    </div>
-    
-    <p>The calculation can also be expressed as:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+          </p>
+        </div>
+
+        <p>The calculation can also be expressed as:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Quick Ratio = (Current Assets - Inventory - Prepaid Expenses) / Total Current Liabilities'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Defining Quick Assets</h3>
-    <p>Quick Assets include the most liquid Current Assets, excluding those whose value or liquidation time is uncertain:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>Cash and Cash Equivalents (most liquid).</li>
-        <li>Accounts Receivable (money owed by customers, typically collected in under 90 days).</li>
-        <li>Marketable Securities (short-term investments easily sold on public markets).</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Defining Quick Assets</h3>
+        <p>Quick Assets include the most liquid Current Assets, excluding those whose value or liquidation time is uncertain:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Cash and Cash Equivalents (most liquid).</li>
+          <li>Accounts Receivable (money owed by customers, typically collected in under 90 days).</li>
+          <li>Marketable Securities (short-term investments easily sold on public markets).</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* INTERPRETING THE RATIO AND IDEAL THRESHOLDS */}
-    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the Ratio and Ideal Thresholds</h2>
-    <p>The Quick Ratio is expressed as a number (e.g., 1.5). A result of 1.5 means the company has $1.50$ in immediately usable assets for every $1.00$ in immediate liabilities.</p>
+        {/* INTERPRETING THE RATIO AND IDEAL THRESHOLDS */}
+        <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the Ratio and Ideal Thresholds</h2>
+        <p>The Quick Ratio is expressed as a number (e.g., 1.5). A result of 1.5 means the company has $1.50$ in immediately usable assets for every $1.00$ in immediate liabilities.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation Guidelines</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Ratio = 1.0:</strong> This is the general benchmark. It means the company has exactly enough highly liquid assets (excluding inventory) to cover its current liabilities.</li>
-        <li><strong className="font-semibold">Ratio &gt; 1.0:</strong> Considered a healthy buffer, indicating strong immediate liquidity.</li>
-        <li><strong className="font-semibold">Ratio &lt; 1.0 (Warning):</strong> The company must rely on selling inventory or obtaining new financing to pay its immediate debts. This signals potential liquidity problems.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation Guidelines</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Ratio = 1.0:</strong> This is the general benchmark. It means the company has exactly enough highly liquid assets (excluding inventory) to cover its current liabilities.</li>
+          <li><strong className="font-semibold">Ratio &gt; 1.0:</strong> Considered a healthy buffer, indicating strong immediate liquidity.</li>
+          <li><strong className="font-semibold">Ratio &lt; 1.0 (Warning):</strong> The company must rely on selling inventory or obtaining new financing to pay its immediate debts. This signals potential liquidity problems.</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Industry Specificity</h3>
-    <p>The ideal threshold for the Quick Ratio is highly industry-specific. Retail companies that carry minimal inventory (e.g., fast-food franchises) may naturally have a higher Quick Ratio than manufacturing companies that must hold large volumes of raw materials and finished goods.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Industry Specificity</h3>
+        <p>The ideal threshold for the Quick Ratio is highly industry-specific. Retail companies that carry minimal inventory (e.g., fast-food franchises) may naturally have a higher Quick Ratio than manufacturing companies that must hold large volumes of raw materials and finished goods.</p>
 
-<hr />
+        <hr />
 
-    {/* CURRENT RATIO VS. QUICK RATIO (THE INVENTORY TEST) */}
-    <h2 id="current-ratio" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Current Ratio vs. Quick Ratio (The Inventory Test)</h2>
-    <p>Analyzing both the Current Ratio and the Quick Ratio together provides a clearer picture of liquidity and the dependence on inventory.</p>
+        {/* CURRENT RATIO VS. QUICK RATIO (THE INVENTORY TEST) */}
+        <h2 id="current-ratio" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Current Ratio vs. Quick Ratio (The Inventory Test)</h2>
+        <p>Analyzing both the Current Ratio and the Quick Ratio together provides a clearer picture of liquidity and the dependence on inventory.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Inventory Difference</h3>
-    <p>The Current Ratio is always greater than or equal to the Quick Ratio. The difference between the two ratios highlights the degree to which the company’s short-term solvency relies on its inventory.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Inventory Difference</h3>
+        <p>The Current Ratio is always greater than or equal to the Quick Ratio. The difference between the two ratios highlights the degree to which the company’s short-term solvency relies on its inventory.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Analysis of Ratio Spread</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Large Spread (Current Ratio much higher than Quick Ratio):</strong> This indicates a heavy reliance on inventory. If the Quick Ratio is below 1.0, the company is highly vulnerable to unexpected economic shifts or poor inventory management (e.g., obsolescence).</li>
-        <li><strong className="font-semibold">Small Spread (Current Ratio close to Quick Ratio):</strong> This indicates the company holds very little inventory, or that its inventory is extremely small relative to its total assets. This is common in service-based industries.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Analysis of Ratio Spread</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Large Spread (Current Ratio much higher than Quick Ratio):</strong> This indicates a heavy reliance on inventory. If the Quick Ratio is below 1.0, the company is highly vulnerable to unexpected economic shifts or poor inventory management (e.g., obsolescence).</li>
+          <li><strong className="font-semibold">Small Spread (Current Ratio close to Quick Ratio):</strong> This indicates the company holds very little inventory, or that its inventory is extremely small relative to its total assets. This is common in service-based industries.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* ROLE IN CREDIT AND OPERATIONAL ANALYSIS */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Credit and Operational Analysis</h2>
-    <p>The Quick Ratio is a favorite among lenders and sophisticated investors because it measures financial stability under adverse conditions.</p>
+        {/* ROLE IN CREDIT AND OPERATIONAL ANALYSIS */}
+        <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Credit and Operational Analysis</h2>
+        <p>The Quick Ratio is a favorite among lenders and sophisticated investors because it measures financial stability under adverse conditions.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Creditworthiness Assessment</h3>
-    <p>Lenders use the Quick Ratio to determine the safety of granting short-term credit (e.g., lines of credit). A strong ratio gives the lender confidence that the borrower can repay the loan even if sales slow down dramatically and inventory remains unsold.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Creditworthiness Assessment</h3>
+        <p>Lenders use the Quick Ratio to determine the safety of granting short-term credit (e.g., lines of credit). A strong ratio gives the lender confidence that the borrower can repay the loan even if sales slow down dramatically and inventory remains unsold.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Operational Efficiency</h3>
-    <p>Management uses the ratio to monitor efficiency. A quick ratio that is too low may signal the need to liquidate slow-moving receivables or secure additional short-term financing. A ratio that is excessively high may suggest inefficient use of cash that could be better invested in growth opportunities.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Operational Efficiency</h3>
+        <p>Management uses the ratio to monitor efficiency. A quick ratio that is too low may signal the need to liquidate slow-moving receivables or secure additional short-term financing. A ratio that is excessively high may suggest inefficient use of cash that could be better invested in growth opportunities.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Quick Ratio (Acid-Test) is the most conservative and reliable measure of a company's **immediate liquidity**, specifically designed to exclude inventory and prepaid expenses.</p>
-    <p>A benchmark of **1.0 or higher** is generally sought, indicating the firm can meet all its current liabilities using only its cash, accounts receivable, and marketable securities. Analyzing the Quick Ratio alongside the Current Ratio provides essential insight into the financial flexibility and operational stability of the firm.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Quick Ratio (Acid-Test) is the most conservative and reliable measure of a company's **immediate liquidity**, specifically designed to exclude inventory and prepaid expenses.</p>
+        <p>A benchmark of **1.0 or higher** is generally sought, indicating the firm can meet all its current liabilities using only its cash, accounts receivable, and marketable securities. Analyzing the Quick Ratio alongside the Current Ratio provides essential insight into the financial flexibility and operational stability of the firm.</p>
+      </section>
 
       {/* FAQ Section */}
       <Card>
@@ -572,63 +595,63 @@ export default function QuickRatioCalculator() {
                 The Quick Ratio, also known as the Acid-Test Ratio, is a liquidity ratio that measures a company's ability to pay short-term obligations using only its most liquid assets. It excludes inventory and other less liquid current assets, providing a more conservative assessment of liquidity than the Current Ratio.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is considered a good Quick Ratio?</h4>
               <p className="text-muted-foreground">
                 Generally, a ratio of 1 or higher is considered good, indicating the company can cover its current liabilities without selling inventory. A ratio of 1.5 or higher is excellent, showing strong liquidity. Ratios below 0.5 may indicate potential liquidity problems, while ratios below 1 suggest reliance on inventory sales to meet obligations.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate the Quick Ratio?</h4>
               <p className="text-muted-foreground">
                 The formula is: Quick Ratio = (Cash + Marketable Securities + Accounts Receivable) ÷ Current Liabilities. This excludes inventory and other less liquid assets. Cash includes cash equivalents, marketable securities are short-term investments, and accounts receivable are amounts owed by customers.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does Quick Ratio differ from Current Ratio?</h4>
               <p className="text-muted-foreground">
                 The Quick Ratio excludes inventory and other less liquid assets, while the Current Ratio includes all current assets. The Quick Ratio is more conservative and provides a stricter test of liquidity. It assumes that inventory may not be easily convertible to cash, making it a better indicator of immediate liquidity.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Do Quick Ratios vary by industry?</h4>
               <p className="text-muted-foreground">
                 Yes, acceptable ratios vary significantly by industry. Service companies typically have higher ratios due to fewer inventory requirements. Retail companies may have lower ratios due to high inventory levels. Technology companies often have higher ratios due to cash-heavy business models. Always compare within the same industry.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of the Quick Ratio?</h4>
               <p className="text-muted-foreground">
                 The ratio doesn't consider the quality of accounts receivable or their collection timing. It's a snapshot in time and doesn't reflect cash flow patterns. It doesn't account for credit lines or other financing options. Seasonal businesses may have fluctuating ratios. It assumes all quick assets are equally liquid.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How can a company improve its Quick Ratio?</h4>
               <p className="text-muted-foreground">
                 Companies can improve the ratio by increasing cash through better cash management, improving receivables collection, or selling marketable securities. They can also reduce current liabilities by paying down short-term debt or extending payment terms. However, excessive liquidity may indicate inefficient capital allocation.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What if quick assets are less than current liabilities?</h4>
               <p className="text-muted-foreground">
                 A ratio below 1 indicates that quick assets are insufficient to cover current liabilities, suggesting potential liquidity problems. This means the company may need to sell inventory or rely on additional financing to meet short-term obligations. It's a warning sign for creditors and investors.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is the Quick Ratio important for investors?</h4>
               <p className="text-muted-foreground">
                 For investors, this ratio indicates the company's immediate financial flexibility and ability to meet obligations without disrupting operations. A strong ratio suggests lower bankruptcy risk and more predictable cash flows. It also indicates whether the company has sufficient liquidity for growth investments or unexpected expenses.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do creditors use the Quick Ratio?</h4>
               <p className="text-muted-foreground">
@@ -636,6 +659,19 @@ export default function QuickRatioCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Quick Ratio (Acid-Test) Calculator measures a company's ability to pay short-term obligations using its most liquid assets.</p>
+          <p>It provides a more conservative assessment of liquidity than the Current Ratio by excluding inventory.</p>
+          <p>Use this tool to evaluate immediate solvency and ensure the company can meet financial demands without selling inventory.</p>
         </CardContent>
       </Card>
     </div>

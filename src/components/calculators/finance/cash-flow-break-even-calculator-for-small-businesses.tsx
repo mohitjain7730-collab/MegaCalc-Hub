@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceDot } from 'recharts';
-import { DollarSign, TrendingUp, Info, ShoppingCart, RefreshCw, Landmark } from 'lucide-react';
+import { DollarSign, TrendingUp, Info, ShoppingCart, RefreshCw, Landmark, Check, ArrowRight, FunctionSquare, Shield, Target, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const formSchema = z.object({
@@ -29,6 +29,7 @@ interface CalculationResult {
     totalFixedOutflow: number;
     safetyMarginUnits?: number;
     safetyMarginRevenue?: number;
+    recommendations: { title: string; description: string; action?: string; level: 'success' | 'warning' | 'critical' }[];
 }
 
 export default function CashFlowBreakEvenCalculator() {
@@ -57,13 +58,23 @@ export default function CashFlowBreakEvenCalculator() {
         const contributionMargin = averageUnitPrice - variableCostPerUnit;
         const totalFixedOutflow = fixedOperatingCosts + monthlyDebtPayments;
 
+        const recommendations: { title: string; description: string; action?: string; level: 'success' | 'warning' | 'critical' }[] = [];
+
         if (contributionMargin <= 0) {
             // Handle loss per unit scenario
+            recommendations.push({
+                title: "Critical: Negative Contribution Margin",
+                description: "You are losing money on every unit sold. You cannot break even with volume.",
+                action: "Raise prices or cut variable costs immediately.",
+                level: 'critical'
+            });
+
             setResult({
                 contributionMargin,
                 breakEvenUnits: Infinity,
                 breakEvenRevenue: Infinity,
                 totalFixedOutflow,
+                recommendations
             });
             return;
         }
@@ -79,6 +90,31 @@ export default function CashFlowBreakEvenCalculator() {
             safetyMarginRevenue = safetyMarginUnits * averageUnitPrice;
         }
 
+        if (currentSalesVolume > breakEvenUnits) {
+            recommendations.push({
+                title: "Profitable Zone",
+                description: `You are above break-even by ${currentSalesVolume - breakEvenUnits} units. Every additional sale adds $${contributionMargin.toFixed(2)} directly to profit.`,
+                action: "Focus on scaling volume safely.",
+                level: 'success'
+            });
+        } else if (currentSalesVolume > 0) {
+            recommendations.push({
+                title: "Loss Zone",
+                description: `You are short by ${breakEvenUnits - currentSalesVolume} units to cover your costs.`,
+                action: "Review fixed costs or increase sales efforts.",
+                level: 'warning'
+            });
+        }
+
+        if (monthlyDebtPayments > 0 && monthlyDebtPayments > fixedOperatingCosts * 0.5) {
+            recommendations.push({
+                title: "High Debt Burden",
+                description: "Debt payments are a significant portion of your fixed outflows. This increases risk.",
+                action: "Consider refinancing for lower monthly payments.",
+                level: 'warning'
+            });
+        }
+
         setResult({
             contributionMargin,
             breakEvenUnits,
@@ -86,6 +122,7 @@ export default function CashFlowBreakEvenCalculator() {
             totalFixedOutflow,
             safetyMarginUnits: currentSalesVolume > 0 ? safetyMarginUnits : undefined,
             safetyMarginRevenue: currentSalesVolume > 0 ? safetyMarginRevenue : undefined,
+            recommendations
         });
     };
 
@@ -284,39 +321,36 @@ export default function CashFlowBreakEvenCalculator() {
                             </CardContent>
                         </Card>
 
-                        {/* Safety Margin Analysis */}
-                        {result.safetyMarginRevenue !== undefined && (
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle className="text-xl">Safety Margin</CardTitle>
-                                    <CardDescription>How close are you to the danger zone?</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className={cn("p-6 rounded-lg text-center border-2 mb-4",
-                                        result.safetyMarginUnits && result.safetyMarginUnits > 0 ? "border-green-100 bg-green-50 dark:bg-green-950/20 dark:border-green-900" : "border-red-100 bg-red-50 dark:bg-red-950/20 dark:border-red-900"
+                        {/* Recommendations */}
+                        <Card className="md:col-span-2">
+                            <CardHeader>
+                                <CardTitle className="flex items-center gap-2">
+                                    <Target className="h-5 w-5" />
+                                    Smart Actions & Recommendations
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent className="grid gap-4 md:grid-cols-2">
+                                {result.recommendations.map((rec, index) => (
+                                    <div key={index} className={cn("p-4 rounded-lg space-y-2 border",
+                                        rec.level === 'critical' ? "bg-red-50 border-red-200 dark:bg-red-950/20 dark:border-red-900" :
+                                            rec.level === 'warning' ? "bg-yellow-50 border-yellow-200 dark:bg-yellow-950/20 dark:border-yellow-900" :
+                                                "bg-green-50 border-green-200 dark:bg-green-950/20 dark:border-green-900"
                                     )}>
-                                        {result.safetyMarginUnits && result.safetyMarginUnits > 0 ? (
-                                            <>
-                                                <p className="text-green-700 dark:text-green-400 font-bold text-lg">Profit Zone</p>
-                                                <p className="text-sm text-green-600 dark:text-green-500 mt-1">
-                                                    You are selling <strong>{result.safetyMarginUnits} units</strong> above break-even.
-                                                </p>
-                                            </>
-                                        ) : result.safetyMarginUnits ? (
-                                            <>
-                                                <p className="text-red-700 dark:text-red-400 font-bold text-lg">Loss Zone</p>
-                                                <p className="text-sm text-red-600 dark:text-red-500 mt-1">
-                                                    You need <strong>{Math.abs(result.safetyMarginUnits)} more units</strong> just to break even.
-                                                </p>
-                                            </>
-                                        ) : null}
+                                        <div className="flex items-start gap-2">
+                                            {rec.level === 'success' ? <Check className="h-4 w-4 text-green-600 mt-1 shrink-0" /> : <Info className="h-4 w-4 mt-1 shrink-0" />}
+                                            <h4 className="font-semibold">{rec.title}</h4>
+                                        </div>
+                                        <p className="text-sm text-foreground/80 pl-6 mb-2">{rec.description}</p>
+                                        {rec.action && (
+                                            <div className="flex items-center gap-2 pl-6 text-sm font-medium">
+                                                <ArrowRight className="h-3 w-3" />
+                                                {rec.action}
+                                            </div>
+                                        )}
                                     </div>
-                                    <p className="text-sm text-muted-foreground">
-                                        <strong>Why this matters:</strong> A high safety margin means your business can withstand a drop in sales without losing money.
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        )}
+                                ))}
+                            </CardContent>
+                        </Card>
                     </div>
 
                     {/* Chart */}
@@ -375,65 +409,221 @@ export default function CashFlowBreakEvenCalculator() {
                         </Card>
                     )}
 
-                    {/* Educational Content */}
-                    <div className="space-y-6">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center gap-2">
-                                    <Info className="h-5 w-5" />
-                                    Guide: Cash Flow vs. Accounting Break-Even
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                <p className="text-sm text-muted-foreground">
-                                    Most break-even calculators only look at <strong>Expense based</strong> break-even (Revenue = Expenses).
-                                </p>
-                                <p className="text-sm text-muted-foreground">
-                                    However, small businesses often have <strong>Loan Payments</strong> (principal repayment) which are not "expenses" on the P&L but DOES take cash out of the bank.
-                                </p>
-                                <p className="text-sm font-medium">
-                                    This calculator uses the <strong>Cash Flow Break-Even</strong> method:
-                                </p>
-                                <div className="p-4 bg-muted rounded font-mono text-sm text-center">
-                                    Required Sales = (Fixed Expenses + <span className="text-primary font-bold">Debt Payments</span>) / Contribution Margin
-                                </div>
-                            </CardContent>
-                        </Card>
 
-                        {/* FAQ Section */}
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center gap-2">
-                                    <Info className="h-5 w-5" />
-                                    Frequently Asked Questions
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-6">
-                                <div className="space-y-4">
-                                    <div className="p-4 border rounded-lg">
-                                        <h4 className="font-semibold mb-2">My Contribution Margin is negative. What does that mean?</h4>
-                                        <p className="text-sm text-muted-foreground">
-                                            It means you are losing money on every single unit you sell (Price &lt; Variable Cost). No amount of volume will fix this; you must either raise prices or lower variable costs immediately.
-                                        </p>
-                                    </div>
-                                    <div className="p-4 border rounded-lg">
-                                        <h4 className="font-semibold mb-2">What counts as "Fixed Costs"?</h4>
-                                        <p className="text-sm text-muted-foreground">
-                                            Expenses that don't change based on how much you sell: Rent, salaried payroll, insurance, internet, software subscriptions.
-                                        </p>
-                                    </div>
-                                    <div className="p-4 border rounded-lg">
-                                        <h4 className="font-semibold mb-2">What counts as "Variable Costs"?</h4>
-                                        <p className="text-sm text-muted-foreground">
-                                            Expenses that go up when you sell more: Raw materials, shipping fees, packaging, credit card processing fees, sales commissions.
-                                        </p>
-                                    </div>
+
+
+                    {/* Formula Used */}
+                    <Card className="mb-6">
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2">
+                                <FunctionSquare className="h-5 w-5" />
+                                Formula Used
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+                                <p className="font-mono text-lg text-center">
+                                    Break-Even Units = Total Fixed Outflow / Contribution Margin
+                                </p>
+                            </div>
+                            <div className="text-sm text-muted-foreground grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul className="space-y-1">
+                                    <li><span className="font-semibold">Contribution Margin</span> = Price per Unit - Variable Cost per Unit</li>
+                                    <li><span className="font-semibold">Total Fixed Outflow</span> = Operating Costs + Debt Payments</li>
+                                </ul>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    {/* Related Calculators */}
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2">
+                                <Landmark className="h-5 w-5" />
+                                Related Calculators
+                            </CardTitle>
+                            <CardDescription>
+                                Explore other tools for financial analysis
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                                    <h4 className="font-semibold mb-2">
+                                        <a href="/category/finance/burn-rate-calculator" className="text-primary hover:underline">
+                                            Burn Rate Calculator
+                                        </a>
+                                    </h4>
+                                    <p className="text-sm text-muted-foreground">
+                                        Analyze cash burn and runway
+                                    </p>
                                 </div>
-                            </CardContent>
-                        </Card>
-                    </div>
+                                <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                                    <h4 className="font-semibold mb-2">
+                                        <a href="/category/finance/contribution-margin-calculator" className="text-primary hover:underline">
+                                            Contribution Margin
+                                        </a>
+                                    </h4>
+                                    <p className="text-sm text-muted-foreground">
+                                        Analyze profitability per unit
+                                    </p>
+                                </div>
+                                <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                                    <h4 className="font-semibold mb-2">
+                                        <a href="/category/finance/operating-cycle-calculator" className="text-primary hover:underline">
+                                            Operating Cycle
+                                        </a>
+                                    </h4>
+                                    <p className="text-sm text-muted-foreground">
+                                        Measure efficiency of cash flow
+                                    </p>
+                                </div>
+                                <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                                    <h4 className="font-semibold mb-2">
+                                        <a href="/category/finance/working-capital-calculator" className="text-primary hover:underline">
+                                            Working Capital
+                                        </a>
+                                    </h4>
+                                    <p className="text-sm text-muted-foreground">
+                                        Evaluate short-term financial health
+                                    </p>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    {/* Guide Section */}
+                    <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Article">
+                        {/* SEO & SCHEMA METADATA */}
+                        <meta itemProp="name" content="The Complete Guide to Cash Flow Break-Even Analysis" />
+                        <meta itemProp="description" content="Master break-even analysis for small businesses. Learn the difference between accounting and cash-flow break-even, how to calculate contribution margin, and strategies to reach profitability faster." />
+                        <meta itemProp="author" content="MegaCalc Financial Team" />
+
+                        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cash Flow Break-Even Analysis</h1>
+                        <p className="text-lg italic text-muted-foreground">Profit isn't just about accounting; it's about survival. Learn exactly when your business starts generating real cash.</p>
+
+                        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+                        <ul className="list-disc ml-6 space-y-2 text-primary">
+                            <li><a href="#what-is-break-even" className="hover:underline">What is the Break-Even Point?</a></li>
+                            <li><a href="#cash-flow-vs-accounting" className="hover:underline">Cash Flow vs. Accounting Break-Even: The Critical Difference</a></li>
+                            <li><a href="#contribution-margin" className="hover:underline">The Magic of Contribution Margin</a></li>
+                            <li><a href="#improving-break-even" className="hover:underline">How to Lower Your Break-Even Point</a></li>
+                            <li><a href="#safety-margin" className="hover:underline">Understanding the Margin of Safety</a></li>
+                        </ul>
+
+                        <hr className="my-8" />
+
+                        <h2 id="what-is-break-even" className="text-2xl font-bold text-foreground pt-4">What is the Break-Even Point?</h2>
+                        <p>
+                            The Break-Even Point (BEP) is the precise moment where your total revenue equals your total costs.
+                            At this point, you have made a profit of exactly $0. You haven't lost money, but you haven't made any either.
+                        </p>
+                        <div className="p-4 bg-muted border rounded-lg text-center my-6">
+                            <p className="font-mono text-xl text-primary font-bold">
+                                Sales below BEP = Loss
+                            </p>
+                            <p className="font-mono text-xl text-green-600 font-bold mt-2">
+                                Sales above BEP = Profit
+                            </p>
+                        </div>
+
+                        <h2 id="cash-flow-vs-accounting" className="text-2xl font-bold text-foreground pt-8">Cash Flow vs. Accounting Break-Even</h2>
+                        <p>
+                            Most standard calculators use "Accounting Break-Even," which includes non-cash expenses like depreciation but excludes cash outflows like loan principal payments.
+                            For a small business, <strong>Cash is King</strong>.
+                        </p>
+                        <table className="min-w-full divide-y divide-border border border-border my-4 text-sm">
+                            <thead className="bg-muted">
+                                <tr>
+                                    <th className="px-4 py-2 text-left font-medium">Metric</th>
+                                    <th className="px-4 py-2 text-left font-medium">Accounting Break-Even</th>
+                                    <th className="px-4 py-2 text-left font-medium">Cash Flow Break-Even (This Tool)</th>
+                                </tr>
+                            </thead>
+                            <tbody className="bg-card divide-y divide-border">
+                                <tr>
+                                    <td className="px-4 py-2 font-medium">Depreciation</td>
+                                    <td className="px-4 py-2 text-red-500">Included (Lowers Profit)</td>
+                                    <td className="px-4 py-2 text-green-500">Excluded (No Cash Out)</td>
+                                </tr>
+                                <tr>
+                                    <td className="px-4 py-2 font-medium">Loan Principal</td>
+                                    <td className="px-4 py-2 text-green-500">Excluded (Balance Sheet Item)</td>
+                                    <td className="px-4 py-2 text-red-500">Included (Must be Paid!)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            If you have a large business loan, your Accounting P&L might show a profit, but you could still run out of cash because you can't cover the loan payments.
+                            This calculator solves that by treating Debt Repayment as a "Fixed Cash Outflow."
+                        </p>
+
+                        <h2 id="contribution-margin" className="text-2xl font-bold text-foreground pt-8">The Magic of Contribution Margin</h2>
+                        <p>
+                            Contribution Margin is the amount of money remaining from each sale after deducting variable costs. This acts as the "contribution" towards paying off your fixed costs.
+                        </p>
+                        <p className="font-mono text-sm bg-muted p-2 rounded mt-2">Contribution Margin = Unit Price - Variable Cost per Unit</p>
+                        <p className="mt-2">
+                            <strong>Why it matters:</strong> If your Contribution Margin is negative, you lose money on every sale. Selling MORE units will just make you go bankrupt faster. You must fix your unit economics first.
+                        </p>
+
+                        <h2 id="improving-break-even" className="text-2xl font-bold text-foreground pt-8">How to Lower Your Break-Even Point</h2>
+                        <p>
+                            A lower break-even point means less risk. You can achieve this by:
+                        </p>
+                        <ul className="list-disc ml-6 space-y-2 mt-2">
+                            <li><strong>Raising Prices:</strong> Increases contribution margin (but may lower volume).</li>
+                            <li><strong>Lowering Variable Costs:</strong> Negotiate with suppliers or improve efficiency to increase margin per unit.</li>
+                            <li><strong>Lowering Fixed Costs:</strong> Reduce rent, salaries, or subscription bloat. This directly reduces the hurdle you need to jump every month.</li>
+                        </ul>
+
+                        <h2 id="safety-margin" className="text-2xl font-bold text-foreground pt-8">Understanding the Margin of Safety</h2>
+                        <p>
+                            The Margin of Safety tells you how much sales can drop before you start losing money.
+                        </p>
+                        <p className="mt-2">
+                            <em>Formula: (Current Sales - Break Even Sales) / Current Sales</em>
+                        </p>
+                        <p className="mt-2">
+                            A high margin of safety (e.g., &gt;20%) gives you a buffer against market downturns or seasonal slumps. A low margin (&lt;5%) means you are living on the edge.
+                        </p>
+                    </section>
+
+                    {/* FAQ Section */}
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2">
+                                <Info className="h-5 w-5" />
+                                Frequently Asked Questions
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-6">
+                            <div className="space-y-4">
+                                <div className="p-4 border rounded-lg">
+                                    <h4 className="font-semibold mb-2">My Contribution Margin is negative. What does that mean?</h4>
+                                    <p className="text-muted-foreground">
+                                        It means you are losing money on every single unit you sell (Price &lt; Variable Cost). No amount of volume will fix this; you must either raise prices or lower variable costs immediately.
+                                    </p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                    <h4 className="font-semibold mb-2">What counts as "Fixed Costs"?</h4>
+                                    <p className="text-muted-foreground">
+                                        Expenses that don't change based on how much you sell: Rent, salaried payroll, insurance, internet, software subscriptions.
+                                    </p>
+                                </div>
+                                <div className="p-4 border rounded-lg">
+                                    <h4 className="font-semibold mb-2">What counts as "Variable Costs"?</h4>
+                                    <p className="text-muted-foreground">
+                                        Expenses that go up when you sell more: Raw materials, shipping fees, packaging, credit card processing fees, sales commissions.
+                                    </p>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
                 </div>
             )}
+
+
         </div>
     );
 }

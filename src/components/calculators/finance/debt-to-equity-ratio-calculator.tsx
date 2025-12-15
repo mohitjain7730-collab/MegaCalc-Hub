@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent } from 'lucide-react';
+import { Calculator, DollarSign, TrendingUp, Target, Info, AlertCircle, BarChart3, Percent, Shield, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -20,9 +20,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function DebtToEquityRatioCalculator() {
-  const [result, setResult] = useState<{ 
-    debtToEquityRatio: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    debtToEquityRatio: number;
+    interpretation: string;
     recommendation: string;
     leverage: string;
     riskLevel: string;
@@ -66,7 +66,7 @@ export default function DebtToEquityRatioCalculator() {
 
   const getInsights = (ratio: number) => {
     const insights = [];
-    
+
     if (ratio > 2) {
       insights.push('High leverage increases financial risk and interest obligations');
       insights.push('May indicate aggressive growth strategy or financial stress');
@@ -90,11 +90,11 @@ export default function DebtToEquityRatioCalculator() {
 
   const getConsiderations = (ratio: number) => {
     const considerations = [];
-    
+
     considerations.push('Compare debt-to-equity ratio with industry peers and historical performance');
     considerations.push('Consider the company\'s business model and cash flow generation ability');
     considerations.push('Evaluate the cost of debt and interest coverage ratios');
-    
+
     if (ratio > 2) {
       considerations.push('High leverage requires strong cash flow to service debt obligations');
       considerations.push('Monitor interest rates and debt refinancing risks');
@@ -124,9 +124,9 @@ export default function DebtToEquityRatioCalculator() {
   const onSubmit = (values: FormValues) => {
     const ratio = calculate(values);
     if (ratio == null) { setResult(null); return; }
-    setResult({ 
-      debtToEquityRatio: ratio, 
-      interpretation: interpret(ratio), 
+    setResult({
+      debtToEquityRatio: ratio,
+      interpretation: interpret(ratio),
       recommendation: recommendation(ratio),
       leverage: getLeverage(ratio),
       riskLevel: getRiskLevel(ratio),
@@ -160,19 +160,19 @@ export default function DebtToEquityRatioCalculator() {
                       Total Debt ($)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="e.g., 2000000" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 2000000"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="shareholdersEquity" render={({ field }) => (
                   <FormItem>
                     <FormLabel className="flex items-center gap-2">
@@ -180,20 +180,20 @@ export default function DebtToEquityRatioCalculator() {
                       Shareholders' Equity ($)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="e.g., 5000000" 
-                        {...field} 
-                        value={field.value ?? ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                        placeholder="e.g., 5000000"
+                        {...field}
+                        value={field.value ?? ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
               </div>
-              
+
               <Button type="submit" className="w-full md:w-auto">
                 Calculate Debt-to-Equity Ratio
               </Button>
@@ -229,7 +229,7 @@ export default function DebtToEquityRatioCalculator() {
                     {result.leverage}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <BarChart3 className="h-5 w-5 text-muted-foreground" />
@@ -244,7 +244,7 @@ export default function DebtToEquityRatioCalculator() {
                     {result.interpretation}
                   </p>
                 </div>
-                
+
                 <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <TrendingUp className="h-5 w-5 text-green-600" />
@@ -259,47 +259,43 @@ export default function DebtToEquityRatioCalculator() {
                 </div>
               </div>
 
-              {/* Detailed Analysis */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <Target className="h-5 w-5" />
-                        Key Insights
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.insights.map((insight, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{insight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+              {/* Smart Actions & Recommendations */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                      <Target className="h-6 w-6" />
+                      Strategic Insights
+                    </CardTitle>
+                    <CardDescription>Leverage optimization opportunities</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.insights.map((insight, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium">{insight}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
 
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-lg">
-                        <AlertCircle className="h-5 w-5" />
-                        Important Considerations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {result.considerations.map((consideration, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{consideration}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                      <AlertCircle className="h-6 w-6" />
+                      Risk Assessment
+                    </CardTitle>
+                    <CardDescription>Critical factors to monitor</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {result.considerations.map((consideration, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
@@ -308,6 +304,23 @@ export default function DebtToEquityRatioCalculator() {
 
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
+        {/* Formula Used */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FunctionSquare className="h-5 w-5" />
+              Formula Used
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+              <p className="font-mono text-sm text-center">
+                Debt-to-Equity Ratio = Total Debt / Shareholders' Equity
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Related Calculators Section */}
         <Card>
           <CardHeader>
@@ -367,109 +380,109 @@ export default function DebtToEquityRatioCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to the Debt-to-Equity Ratio: Calculation, Interpretation, and Financial Leverage" />
-    <meta itemProp="description" content="An expert guide detailing the Debt-to-Equity (D/E) ratio formula, its role in measuring financial leverage, comparing industry benchmarks, and its impact on company risk, solvency, and equity vs. debt financing decisions." />
-    <meta itemProp="keywords" content="debt to equity ratio formula, calculating D/E ratio, financial leverage analysis, solvency ratio interpretation, shareholder equity vs total debt, debt financing risk metric" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-debt-to-equity-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to the Debt-to-Equity Ratio: Calculation, Interpretation, and Financial Leverage" />
+          <meta itemProp="description" content="An expert guide detailing the Debt-to-Equity (D/E) ratio formula, its role in measuring financial leverage, comparing industry benchmarks, and its impact on company risk, solvency, and equity vs. debt financing decisions." />
+          <meta itemProp="keywords" content="debt to equity ratio formula, calculating D/E ratio, financial leverage analysis, solvency ratio interpretation, shareholder equity vs total debt, debt financing risk metric" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-10-25" />
+          <meta itemProp="url" content="/definitive-debt-to-equity-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Debt-to-Equity Ratio: Measuring Financial Leverage and Risk</h1>
-    <p className="text-lg italic text-muted-foreground">Master the critical metric that quantifies a company's financial structure by comparing reliance on debt financing versus shareholder funding.</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Debt-to-Equity Ratio: Measuring Financial Leverage and Risk</h1>
+          <p className="text-lg italic text-muted-foreground">Master the critical metric that quantifies a company's financial structure by comparing reliance on debt financing versus shareholder funding.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">D/E Ratio: Definition and Core Function</a></li>
-        <li><a href="#calculation" className="hover:underline">The Debt-to-Equity Ratio Formula</a></li>
-        <li><a href="#interpretation" className="hover:underline">Interpreting the Ratio: Leverage, Risk, and Solvency</a></li>
-        <li><a href="#analysis" className="hover:underline">Financial Analysis: Industry Benchmarks and Trends</a></li>
-        <li><a href="#components" className="hover:underline">Refining the Calculation: Total vs. Long-Term Debt</a></li>
-    </ul>
-<hr />
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-primary">
+            <li><a href="#definition" className="hover:underline">D/E Ratio: Definition and Core Function</a></li>
+            <li><a href="#calculation" className="hover:underline">The Debt-to-Equity Ratio Formula</a></li>
+            <li><a href="#interpretation" className="hover:underline">Interpreting the Ratio: Leverage, Risk, and Solvency</a></li>
+            <li><a href="#analysis" className="hover:underline">Financial Analysis: Industry Benchmarks and Trends</a></li>
+            <li><a href="#components" className="hover:underline">Refining the Calculation: Total vs. Long-Term Debt</a></li>
+          </ul>
+          <hr />
 
-    {/* D/E RATIO: DEFINITION AND CORE FUNCTION */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">D/E Ratio: Definition and Core Function</h2>
-    <p>The **Debt-to-Equity (D/E) Ratio** is a key financial solvency ratio used to evaluate a company's financial leverage. It measures the proportion of a company’s assets that are financed by debt (liabilities) versus the proportion financed by shareholder funds (equity).</p>
+          {/* D/E RATIO: DEFINITION AND CORE FUNCTION */}
+          <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">D/E Ratio: Definition and Core Function</h2>
+          <p>The **Debt-to-Equity (D/E) Ratio** is a key financial solvency ratio used to evaluate a company's financial leverage. It measures the proportion of a company’s assets that are financed by debt (liabilities) versus the proportion financed by shareholder funds (equity).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Measuring Financial Leverage</h3>
-    <p>The D/E ratio is the most direct measure of **financial leverage**. A higher ratio indicates that a company relies more heavily on borrowing to fund its operations and growth. While leverage can magnify returns (positive leverage), it also dramatically increases the company's financial risk.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Measuring Financial Leverage</h3>
+          <p>The D/E ratio is the most direct measure of **financial leverage**. A higher ratio indicates that a company relies more heavily on borrowing to fund its operations and growth. While leverage can magnify returns (positive leverage), it also dramatically increases the company's financial risk.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Importance for Creditors and Investors</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Creditors:</strong> Use the D/E ratio to assess the company's risk of default. A high ratio signals higher bankruptcy risk because the company has a smaller equity buffer to absorb losses before creditors are affected.</li>
-        <li><strong className="font-semibold">Investors:</strong> Use the ratio to assess the risk taken on by management. They prefer a balance where debt is used strategically but not excessively.</li>
-    </ul>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Importance for Creditors and Investors</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Creditors:</strong> Use the D/E ratio to assess the company's risk of default. A high ratio signals higher bankruptcy risk because the company has a smaller equity buffer to absorb losses before creditors are affected.</li>
+            <li><strong className="font-semibold">Investors:</strong> Use the ratio to assess the risk taken on by management. They prefer a balance where debt is used strategically but not excessively.</li>
+          </ul>
 
-<hr />
+          <hr />
 
-    {/* THE DEBT-TO-EQUITY RATIO FORMULA */}
-    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Debt-to-Equity Ratio Formula</h2>
-    <p>The D/E ratio is derived directly from the company's Balance Sheet, comparing Total Liabilities (debt) against Total Shareholders' Equity.</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
-            {'Debt-to-Equity Ratio = Total Liabilities / Total Shareholders\' Equity'}
-        </p>
-    </div>
-    
-    <h3 className="text-xl font-semibold text-foreground mt-6">Defining the Components</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Total Liabilities:</strong> Includes both current liabilities (due within one year, e.g., accounts payable, short-term debt) and non-current liabilities (long-term debt, deferred taxes).</li>
-        <li><strong className="font-semibold">Total Shareholders' Equity:</strong> Includes common stock, retained earnings, and additional paid-in capital. It represents the residual claim owners have on the company's assets.</li>
-    </ul>
+          {/* THE DEBT-TO-EQUITY RATIO FORMULA */}
+          <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Debt-to-Equity Ratio Formula</h2>
+          <p>The D/E ratio is derived directly from the company's Balance Sheet, comparing Total Liabilities (debt) against Total Shareholders' Equity.</p>
 
-<hr />
+          <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+            <p className="font-mono text-xl text-destructive font-bold">
+              {'Debt-to-Equity Ratio = Total Liabilities / Total Shareholders\' Equity'}
+            </p>
+          </div>
 
-    {/* INTERPRETING THE RATIO: LEVERAGE, RISK, AND SOLVENCY */}
-    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the Ratio: Leverage, Risk, and Solvency</h2>
-    <p>The ratio's interpretation is relative, but general guidelines exist for assessing the balance between debt and equity financing.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Defining the Components</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Total Liabilities:</strong> Includes both current liabilities (due within one year, e.g., accounts payable, short-term debt) and non-current liabilities (long-term debt, deferred taxes).</li>
+            <li><strong className="font-semibold">Total Shareholders' Equity:</strong> Includes common stock, retained earnings, and additional paid-in capital. It represents the residual claim owners have on the company's assets.</li>
+          </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Ratio Interpretation</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">D/E = 1.0:</strong> Total debt equals total equity. This means creditors and shareholders have an equal claim on the company's assets.</li>
-        <li><strong className="font-semibold">D/E &gt; 1.0 (High Leverage):</strong> The company relies more on debt than on equity. While risky, this can be efficient if the company's return on invested capital exceeds its cost of debt.</li>
-        <li><strong className="font-semibold">D/E &lt; 1.0 (Low Leverage):</strong> The company relies more on equity. This is seen as financially conservative, indicating lower default risk, but may signal missed opportunities for growth financed by cheaper debt.</li>
-    </ul>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Magnification of Returns (Positive Leverage)</h3>
-    <p>If the return a company earns on its assets is higher than the interest rate it pays on its debt, the excess return accrues entirely to shareholders. This is known as **Positive Leverage**. A slightly higher D/E ratio is often desirable in stable industries where cash flows are predictable and the cost of debt is low.</p>
+          {/* INTERPRETING THE RATIO: LEVERAGE, RISK, AND SOLVENCY */}
+          <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the Ratio: Leverage, Risk, and Solvency</h2>
+          <p>The ratio's interpretation is relative, but general guidelines exist for assessing the balance between debt and equity financing.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Ratio Interpretation</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">D/E = 1.0:</strong> Total debt equals total equity. This means creditors and shareholders have an equal claim on the company's assets.</li>
+            <li><strong className="font-semibold">D/E &gt; 1.0 (High Leverage):</strong> The company relies more on debt than on equity. While risky, this can be efficient if the company's return on invested capital exceeds its cost of debt.</li>
+            <li><strong className="font-semibold">D/E &lt; 1.0 (Low Leverage):</strong> The company relies more on equity. This is seen as financially conservative, indicating lower default risk, but may signal missed opportunities for growth financed by cheaper debt.</li>
+          </ul>
 
-    {/* FINANCIAL ANALYSIS: INDUSTRY BENCHMARKS AND TRENDS */}
-    <h2 id="analysis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Analysis: Industry Benchmarks and Trends</h2>
-    <p>The D/E ratio is only meaningful when compared against industry peers, as different economic sectors have different optimal capital structures.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Magnification of Returns (Positive Leverage)</h3>
+          <p>If the return a company earns on its assets is higher than the interest rate it pays on its debt, the excess return accrues entirely to shareholders. This is known as **Positive Leverage**. A slightly higher D/E ratio is often desirable in stable industries where cash flows are predictable and the cost of debt is low.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Industry Variations</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Capital-Intensive Industries (e.g., Utilities, Telecom):</strong> Often have high D/E ratios (2.0 or higher). These companies have predictable cash flows, high tangible assets (collateral), and low growth, making debt financing safe and efficient.</li>
-        <li><strong className="font-semibold">Technology and Services (e.g., Software, Consulting):</strong> Typically have low D/E ratios (often below 0.5). These companies have fewer tangible assets, high growth potential, and volatile cash flows, making excessive debt financing highly risky.</li>
-    </ul>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Analyzing Trends</h3>
-    <p>Analysts pay close attention to the **trend** in the D/E ratio. A ratio that is consistently rising over several periods suggests that management is taking on increasing amounts of debt, potentially signaling over-optimism or financial strain. A stable ratio, even if high, suggests a consistent capital structure aligned with industry norms.</p>
+          {/* FINANCIAL ANALYSIS: INDUSTRY BENCHMARKS AND TRENDS */}
+          <h2 id="analysis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Analysis: Industry Benchmarks and Trends</h2>
+          <p>The D/E ratio is only meaningful when compared against industry peers, as different economic sectors have different optimal capital structures.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Industry Variations</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Capital-Intensive Industries (e.g., Utilities, Telecom):</strong> Often have high D/E ratios (2.0 or higher). These companies have predictable cash flows, high tangible assets (collateral), and low growth, making debt financing safe and efficient.</li>
+            <li><strong className="font-semibold">Technology and Services (e.g., Software, Consulting):</strong> Typically have low D/E ratios (often below 0.5). These companies have fewer tangible assets, high growth potential, and volatile cash flows, making excessive debt financing highly risky.</li>
+          </ul>
 
-    {/* REFINING THE CALCULATION: TOTAL VS. LONG-TERM DEBT */}
-    <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Refining the Calculation: Total vs. Long-Term Debt</h2>
-    <p>While the standard formula uses Total Liabilities, some analysts use refinements to focus on the long-term strategic debt that drives major investment decisions.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Analyzing Trends</h3>
+          <p>Analysts pay close attention to the **trend** in the D/E ratio. A ratio that is consistently rising over several periods suggests that management is taking on increasing amounts of debt, potentially signaling over-optimism or financial strain. A stable ratio, even if high, suggests a consistent capital structure aligned with industry norms.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Adjusting the Debt Component</h3>
-    <p>Some analysts prefer to calculate the D/E ratio using only **Interest-Bearing Debt** (bank loans, bonds, capital leases). This excludes operational liabilities like accounts payable and deferred taxes, providing a cleaner view of management's financing decisions regarding long-term capital structure.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Tangible Net Worth Adjustment</h3>
-    <p>When assessing a company heavily reliant on intangible assets, analysts sometimes use **Tangible Net Worth** (Total Equity minus Intangible Assets like goodwill) in the denominator. This conservative approach provides creditors with a clearer picture of the collateral available to them if the company were to liquidate.</p>
+          {/* REFINING THE CALCULATION: TOTAL VS. LONG-TERM DEBT */}
+          <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Refining the Calculation: Total vs. Long-Term Debt</h2>
+          <p>While the standard formula uses Total Liabilities, some analysts use refinements to focus on the long-term strategic debt that drives major investment decisions.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Adjusting the Debt Component</h3>
+          <p>Some analysts prefer to calculate the D/E ratio using only **Interest-Bearing Debt** (bank loans, bonds, capital leases). This excludes operational liabilities like accounts payable and deferred taxes, providing a cleaner view of management's financing decisions regarding long-term capital structure.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Debt-to-Equity Ratio is the indispensable metric for quantifying a company's **financial leverage** and solvency. It directly compares the financing provided by creditors (Total Debt) to that provided by owners (Shareholders' Equity).</p>
-    <p>A high D/E ratio signals aggressive growth or higher financial risk, while a low ratio suggests a more conservative structure. Ultimate interpretation requires comparing the ratio against industry benchmarks to determine if the company is using debt efficiently to maximize returns without jeopardizing its ability to meet its financial obligations.</p>
-</section>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Tangible Net Worth Adjustment</h3>
+          <p>When assessing a company heavily reliant on intangible assets, analysts sometimes use **Tangible Net Worth** (Total Equity minus Intangible Assets like goodwill) in the denominator. This conservative approach provides creditors with a clearer picture of the collateral available to them if the company were to liquidate.</p>
+
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>The Debt-to-Equity Ratio is the indispensable metric for quantifying a company's **financial leverage** and solvency. It directly compares the financing provided by creditors (Total Debt) to that provided by owners (Shareholders' Equity).</p>
+          <p>A high D/E ratio signals aggressive growth or higher financial risk, while a low ratio suggests a more conservative structure. Ultimate interpretation requires comparing the ratio against industry benchmarks to determine if the company is using debt efficiently to maximize returns without jeopardizing its ability to meet its financial obligations.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -555,6 +568,19 @@ export default function DebtToEquityRatioCalculator() {
           </CardContent>
         </Card>
       </div>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Debt-to-Equity Ratio Calculator measures a company's financial leverage by comparing its total liabilities to shareholder equity.</p>
+          <p>It helps investors and creditors assess the company's risk profile and long-term solvency.</p>
+          <p>Use this tool to evaluate capital structure and determine if a company is using debt effectively to finance growth.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

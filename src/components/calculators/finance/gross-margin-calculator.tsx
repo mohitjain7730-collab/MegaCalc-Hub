@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Percent, Shield, Package } from 'lucide-react';
+import { TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Percent, Shield, Package, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -21,9 +21,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function GrossMarginCalculator() {
-  const [result, setResult] = useState<{ 
-    margin: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    margin: number;
+    interpretation: string;
     efficiencyLevel: string;
     recommendation: string;
     strength: string;
@@ -208,48 +208,66 @@ export default function GrossMarginCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Pricing & cost optimization opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Gross Margin = ((Revenue - COGS) / Revenue) × 100
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Measures the percentage of revenue retained after incurring the direct costs associated with producing the goods sold.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -300,121 +318,121 @@ export default function GrossMarginCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Gross Margin Calculation, Interpretation, and Core Profitability Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the Gross Margin formula, its role in assessing a company's production efficiency and pricing power, and its crucial distinction from Operating Margin and Net Margin." />
-    <meta itemProp="keywords" content="gross margin formula explained, calculating gross profit, cost of goods sold COGS analysis, production efficiency metric, pricing power finance, gross profit margin vs operating margin" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-02" /> 
-    <meta itemProp="url" content="/definitive-gross-margin-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Gross Margin Calculation, Interpretation, and Core Profitability Analysis" />
+        <meta itemProp="description" content="An expert guide detailing the Gross Margin formula, its role in assessing a company's production efficiency and pricing power, and its crucial distinction from Operating Margin and Net Margin." />
+        <meta itemProp="keywords" content="gross margin formula explained, calculating gross profit, cost of goods sold COGS analysis, production efficiency metric, pricing power finance, gross profit margin vs operating margin" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-02" />
+        <meta itemProp="url" content="/definitive-gross-margin-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Gross Margin: Measuring Core Production Profitability</h1>
-    <p className="text-lg italic text-muted-foreground">Master the essential metric that reveals how much profit a company retains from sales after paying the direct costs of manufacturing or acquiring goods.</p>
-    
-
-    [Image of Gross Margin ratio diagram showing Gross Profit over Revenue]
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Gross Margin: Measuring Core Production Profitability</h1>
+        <p className="text-lg italic text-muted-foreground">Master the essential metric that reveals how much profit a company retains from sales after paying the direct costs of manufacturing or acquiring goods.</p>
 
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">Gross Margin: Definition and Core Purpose</a></li>
-        <li><a href="#calculation" className="hover:underline">The Gross Margin Formula and Components</a></li>
-        <li><a href="#cogs" className="hover:underline">Detailed Analysis of Cost of Goods Sold (COGS)</a></li>
-        <li><a href="#comparison" className="hover:underline">Comparison to Operating Margin and Net Margin</a></li>
-        <li><a href="#applications" className="hover:underline">Interpretation, Benchmarking, and Strategic Use</a></li>
-    </ul>
-<hr />
+        [Image of Gross Margin ratio diagram showing Gross Profit over Revenue]
 
-    {/* GROSS MARGIN: DEFINITION AND CORE PURPOSE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Gross Margin: Definition and Core Purpose</h2>
-    <p>The **Gross Margin** is a fundamental profitability metric that measures the percentage of revenue remaining after deducting the Cost of Goods Sold (COGS). It reflects a company's efficiency at producing a product or service and its pricing power in the market.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Direct Costs</h3>
-    <p>The Gross Margin calculation strictly focuses on **direct costs** associated with production. It is the first measure of profit on the Income Statement and is crucial because it isolates the core profitability of the product itself, before overhead costs like rent, salaries, or marketing expenses are factored in.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">Gross Margin: Definition and Core Purpose</a></li>
+          <li><a href="#calculation" className="hover:underline">The Gross Margin Formula and Components</a></li>
+          <li><a href="#cogs" className="hover:underline">Detailed Analysis of Cost of Goods Sold (COGS)</a></li>
+          <li><a href="#comparison" className="hover:underline">Comparison to Operating Margin and Net Margin</a></li>
+          <li><a href="#applications" className="hover:underline">Interpretation, Benchmarking, and Strategic Use</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Indicator of Pricing Power</h3>
-    <p>A consistently high Gross Margin suggests two things:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li>The company can command a premium price for its goods due to a strong brand or unique features (**pricing power**).</li>
-        <li>The company has achieved efficient production or purchasing of its raw materials, keeping COGS low.</li>
-    </ol>
-    <p>Conversely, a falling Gross Margin signals intense competition or rising raw material costs that the company cannot pass on to consumers.</p>
+        {/* GROSS MARGIN: DEFINITION AND CORE PURPOSE */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Gross Margin: Definition and Core Purpose</h2>
+        <p>The **Gross Margin** is a fundamental profitability metric that measures the percentage of revenue remaining after deducting the Cost of Goods Sold (COGS). It reflects a company's efficiency at producing a product or service and its pricing power in the market.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Direct Costs</h3>
+        <p>The Gross Margin calculation strictly focuses on **direct costs** associated with production. It is the first measure of profit on the Income Statement and is crucial because it isolates the core profitability of the product itself, before overhead costs like rent, salaries, or marketing expenses are factored in.</p>
 
-    {/* THE GROSS MARGIN FORMULA AND COMPONENTS */}
-    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Gross Margin Formula and Components</h2>
-    <p>The Gross Margin is calculated in two steps: first finding the Gross Profit, and then expressing that profit as a percentage of Net Sales (Revenue).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Indicator of Pricing Power</h3>
+        <p>A consistently high Gross Margin suggests two things:</p>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>The company can command a premium price for its goods due to a strong brand or unique features (**pricing power**).</li>
+          <li>The company has achieved efficient production or purchasing of its raw materials, keeping COGS low.</li>
+        </ol>
+        <p>Conversely, a falling Gross Margin signals intense competition or rising raw material costs that the company cannot pass on to consumers.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Calculating Gross Profit</h3>
-    <p>Gross Profit is the dollar amount remaining after deducting COGS from revenue:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <hr />
+
+        {/* THE GROSS MARGIN FORMULA AND COMPONENTS */}
+        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Gross Margin Formula and Components</h2>
+        <p>The Gross Margin is calculated in two steps: first finding the Gross Profit, and then expressing that profit as a percentage of Net Sales (Revenue).</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Calculating Gross Profit</h3>
+        <p>Gross Profit is the dollar amount remaining after deducting COGS from revenue:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Gross Profit = Net Sales - Cost of Goods Sold (COGS)'}
-        </p>
-    </div>
-    <p>Net Sales is the total revenue generated from sales, minus returns and discounts.</p>
+          </p>
+        </div>
+        <p>Net Sales is the total revenue generated from sales, minus returns and discounts.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Calculating Gross Margin Percentage</h3>
-    <p>The Gross Margin Percentage expresses the Gross Profit as a percentage of the revenue generated:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Calculating Gross Margin Percentage</h3>
+        <p>The Gross Margin Percentage expresses the Gross Profit as a percentage of the revenue generated:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Gross Margin % = (Gross Profit / Net Sales) * 100'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-<hr />
+        <hr />
 
-    {/* DETAILED ANALYSIS OF COST OF GOODS SOLD (COGS) */}
-    <h2 id="cogs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Detailed Analysis of Cost of Goods Sold (COGS)</h2>
-    <p>COGS is the most variable and scrutinized component of the Gross Margin calculation. It includes all direct costs necessary to bring a product or service to a sellable state.</p>
+        {/* DETAILED ANALYSIS OF COST OF GOODS SOLD (COGS) */}
+        <h2 id="cogs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Detailed Analysis of Cost of Goods Sold (COGS)</h2>
+        <p>COGS is the most variable and scrutinized component of the Gross Margin calculation. It includes all direct costs necessary to bring a product or service to a sellable state.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Components of COGS (for Manufacturing)</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Direct Materials:</strong> The raw goods that physically make up the product (e.g., steel for a car, fabric for a shirt).</li>
-        <li><strong className="font-semibold">Direct Labor:</strong> The wages paid to employees who physically assemble or create the product.</li>
-        <li><strong className="font-semibold">Manufacturing Overhead:</strong> Factory costs directly tied to production, such as utilities, maintenance, and factory depreciation.</li>
-    </ul>
-    <p>COGS explicitly excludes indirect costs, such as marketing, administrative salaries, and rent for the headquarters, which are categorized as operating expenses below the Gross Profit line.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Components of COGS (for Manufacturing)</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Direct Materials:</strong> The raw goods that physically make up the product (e.g., steel for a car, fabric for a shirt).</li>
+          <li><strong className="font-semibold">Direct Labor:</strong> The wages paid to employees who physically assemble or create the product.</li>
+          <li><strong className="font-semibold">Manufacturing Overhead:</strong> Factory costs directly tied to production, such as utilities, maintenance, and factory depreciation.</li>
+        </ul>
+        <p>COGS explicitly excludes indirect costs, such as marketing, administrative salaries, and rent for the headquarters, which are categorized as operating expenses below the Gross Profit line.</p>
 
-<hr />
+        <hr />
 
-    {/* COMPARISON TO OPERATING MARGIN AND NET MARGIN */}
-    <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Comparison to Operating Margin and Net Margin</h2>
-    <p>Gross Margin is distinct from the other two major profit margins, providing a specific layer of insight into business efficiency.</p>
+        {/* COMPARISON TO OPERATING MARGIN AND NET MARGIN */}
+        <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Comparison to Operating Margin and Net Margin</h2>
+        <p>Gross Margin is distinct from the other two major profit margins, providing a specific layer of insight into business efficiency.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Gross Margin vs. Operating Margin</h3>
-    <p>The difference between the Gross Margin and the Operating Margin lies in **Operating Expenses (OpEx)** (SG&A, R&D). A company can maintain a high Gross Margin but fail to translate it into a high Operating Margin if its overhead is excessive (e.g., poor marketing or administrative cost control).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Gross Margin vs. Operating Margin</h3>
+        <p>The difference between the Gross Margin and the Operating Margin lies in **Operating Expenses (OpEx)** (SG&A, R&D). A company can maintain a high Gross Margin but fail to translate it into a high Operating Margin if its overhead is excessive (e.g., poor marketing or administrative cost control).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Gross Margin vs. Net Margin</h3>
-    <p>Net Margin is the "bottom line" profit after **all** expenses are deducted, including taxes and interest. Gross Margin is always the highest percentage profit because it has the fewest costs subtracted. A positive Gross Margin is required for a company to have a chance at having a positive Net Margin.</p>
-    <p>The sequence shows efficiency reduction: **Gross Margin** ($\to$ Production Efficiency) $\to$ **Operating Margin** ($\to$ Management Efficiency) $\to$ **Net Margin** ($\to$ Financial Efficiency).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Gross Margin vs. Net Margin</h3>
+        <p>Net Margin is the "bottom line" profit after **all** expenses are deducted, including taxes and interest. Gross Margin is always the highest percentage profit because it has the fewest costs subtracted. A positive Gross Margin is required for a company to have a chance at having a positive Net Margin.</p>
+        <p>The sequence shows efficiency reduction: **Gross Margin** ($\to$ Production Efficiency) $\to$ **Operating Margin** ($\to$ Management Efficiency) $\to$ **Net Margin** ($\to$ Financial Efficiency).</p>
 
-<hr />
+        <hr />
 
-    {/* INTERPRETATION, BENCHMARKING, AND STRATEGIC USE */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation, Benchmarking, and Strategic Use</h2>
-    <p>Gross Margin is a primary tool for benchmarking competitors and for internal operational control.</p>
+        {/* INTERPRETATION, BENCHMARKING, AND STRATEGIC USE */}
+        <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation, Benchmarking, and Strategic Use</h2>
+        <p>Gross Margin is a primary tool for benchmarking competitors and for internal operational control.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Industry Variations</h3>
-    <p>The acceptable Gross Margin percentage varies significantly by sector:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**High Margins (e.g., Software, Luxury Goods):** Often 70% to 90%. High margins compensate for high fixed costs (R&D) or reflect strong brand differentiation.</li>
-        <li>**Low Margins (e.g., Grocery Retail, Airlines):** Often 20% to 30%. Low margins are offset by high sales volumes and rapid inventory turnover.</li>
-    </ul>
-    <p>A change in Gross Margin is a strong signal of a shift in competitive dynamics or raw material costs, forcing management to adjust pricing or supply chain strategy.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Industry Variations</h3>
+        <p>The acceptable Gross Margin percentage varies significantly by sector:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**High Margins (e.g., Software, Luxury Goods):** Often 70% to 90%. High margins compensate for high fixed costs (R&D) or reflect strong brand differentiation.</li>
+          <li>**Low Margins (e.g., Grocery Retail, Airlines):** Often 20% to 30%. Low margins are offset by high sales volumes and rapid inventory turnover.</li>
+        </ul>
+        <p>A change in Gross Margin is a strong signal of a shift in competitive dynamics or raw material costs, forcing management to adjust pricing or supply chain strategy.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Strategic Margin Management</h3>
-    <p>Management actively seeks to improve Gross Margin through: 1) Negotiating lower prices with suppliers, 2) Improving manufacturing yield and efficiency, or 3) Raising the sales price to the customer.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Strategic Margin Management</h3>
+        <p>Management actively seeks to improve Gross Margin through: 1) Negotiating lower prices with suppliers, 2) Improving manufacturing yield and efficiency, or 3) Raising the sales price to the customer.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Gross Margin is the indispensable metric for measuring a company's fundamental **production efficiency and pricing power**, calculated by deducting the Cost of Goods Sold (COGS) from Net Sales.</p>
-    <p>The resulting percentage reveals the viability of the core business model before overhead is considered. Continuous monitoring and improvement of the Gross Margin are essential for sustaining profitability and maintaining a competitive edge in any market.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Gross Margin is the indispensable metric for measuring a company's fundamental **production efficiency and pricing power**, calculated by deducting the Cost of Goods Sold (COGS) from Net Sales.</p>
+        <p>The resulting percentage reveals the viability of the core business model before overhead is considered. Continuous monitoring and improvement of the Gross Margin are essential for sustaining profitability and maintaining a competitive edge in any market.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -434,63 +452,63 @@ export default function GrossMarginCalculator() {
                 Gross Margin is a profitability ratio that measures how much profit a company makes on each dollar of sales after accounting for the direct costs of producing goods or services. It's calculated as (Revenue - COGS) ÷ Revenue × 100, expressed as a percentage.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is considered a good Gross Margin?</h4>
               <p className="text-muted-foreground">
                 Good gross margins vary by industry. Generally, margins above 40% are considered good, above 50% are excellent, and above 30% are adequate. Technology companies often have high margins (60-80%), while retail companies typically have lower margins (20-30%). Always compare within the same industry.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate Gross Margin?</h4>
               <p className="text-muted-foreground">
                 The formula is: Gross Margin = ((Revenue - COGS) ÷ Revenue) × 100. Revenue is the total sales amount, and COGS includes direct costs like materials, labor, and manufacturing overhead. Both figures are found on the income statement.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does negative Gross Margin mean?</h4>
               <p className="text-muted-foreground">
                 A negative gross margin means the company is selling products for less than it costs to produce them. This indicates serious pricing or cost management problems and is unsustainable in the long term. It requires immediate attention to pricing strategy or cost reduction.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Do Gross Margins vary by industry?</h4>
               <p className="text-muted-foreground">
                 Yes, gross margins vary significantly by industry. Software companies often have high margins due to low production costs. Manufacturing companies typically have moderate margins. Retail companies usually have lower margins due to high competition. Always compare within the same industry for meaningful analysis.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of Gross Margin?</h4>
               <p className="text-muted-foreground">
                 Gross margin only considers direct production costs and doesn't include operating expenses, interest, or taxes. It's a snapshot in time and doesn't reflect seasonal variations. It doesn't account for the quality of products or services. Compare with historical performance for better insights.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How can a company improve its Gross Margin?</h4>
               <p className="text-muted-foreground">
                 Companies can improve gross margin by increasing prices, reducing COGS through better supplier negotiations, improving production efficiency, reducing waste, or focusing on higher-margin products. However, these strategies should be balanced with market competitiveness and customer satisfaction.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does Gross Margin differ from Operating Margin?</h4>
               <p className="text-muted-foreground">
                 Gross Margin only considers direct production costs (COGS), while Operating Margin includes all operating expenses (SG&A, R&D, etc.). Gross Margin focuses on production efficiency, while Operating Margin reflects overall operational management. Operating Margin is always lower than Gross Margin.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is Gross Margin important for investors?</h4>
               <p className="text-muted-foreground">
                 For investors, gross margin indicates pricing power, cost efficiency, and competitive advantage. Higher margins suggest better ability to generate profits and weather cost increases. It helps assess the company's competitive positioning and management's effectiveness in pricing and cost control.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do creditors use Gross Margin?</h4>
               <p className="text-muted-foreground">
@@ -498,6 +516,19 @@ export default function GrossMarginCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Gross Margin Calculator evaluates your company's production efficiency and pricing power.</p>
+          <p>It calculates the profitability of your core products or services before operating expenses are considered.</p>
+          <p>Use this tool to optimize pricing strategies and manage production costs effectively.</p>
         </CardContent>
       </Card>
     </div>

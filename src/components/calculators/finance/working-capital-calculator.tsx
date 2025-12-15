@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Zap, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, TrendingDown } from 'lucide-react';
+import { Zap, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, TrendingDown, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -23,9 +23,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function WorkingCapitalCalculator() {
-  const [result, setResult] = useState<{ 
-    workingCapital: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    workingCapital: number;
+    interpretation: string;
     liquidityLevel: string;
     recommendation: string;
     strength: string;
@@ -144,62 +144,62 @@ export default function WorkingCapitalCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField 
-                  control={form.control} 
-                  name="currentAssets" 
+                <FormField
+                  control={form.control}
+                  name="currentAssets"
                   render={({ field }) => (
-              <FormItem>
+                    <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <DollarSign className="h-4 w-4" />
                         Total Current Assets ($)
                       </FormLabel>
-                <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 1000000" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      <FormControl>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 1000000"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-                  )} 
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="currentLiabilities" 
+                <FormField
+                  control={form.control}
+                  name="currentLiabilities"
                   render={({ field }) => (
-              <FormItem>
+                    <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <AlertCircle className="h-4 w-4" />
                         Total Current Liabilities ($)
                       </FormLabel>
-                <FormControl>
-                        <Input 
-                          type="number" 
-                          step="0.01" 
-                          placeholder="e.g., 500000" 
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                      <FormControl>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder="e.g., 500000"
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-                  )} 
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-          </div>
+              </div>
               <Button type="submit" className="w-full">
                 <Calculator className="mr-2 h-4 w-4" />
                 Calculate Working Capital
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -208,15 +208,15 @@ export default function WorkingCapitalCalculator() {
         <div className="space-y-6">
           {/* Main Result Card */}
           <Card>
-          <CardHeader>
+            <CardHeader>
               <div className="flex items-center gap-4">
-              <Landmark className="h-8 w-8 text-primary" />
+                <Landmark className="h-8 w-8 text-primary" />
                 <div>
-              <CardTitle>Working Capital</CardTitle>
+                  <CardTitle>Working Capital</CardTitle>
                   <CardDescription>Operational Liquidity Analysis</CardDescription>
                 </div>
-            </div>
-          </CardHeader>
+              </div>
+            </CardHeader>
             <CardContent className="space-y-6">
               <div className="text-center">
                 <p className={`text-4xl font-bold ${result.workingCapital >= 0 ? 'text-primary' : 'text-red-600'}`}>
@@ -224,7 +224,7 @@ export default function WorkingCapitalCalculator() {
                 </p>
                 <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
                   <Shield className="h-6 w-6 mx-auto mb-2 text-blue-600" />
@@ -255,46 +255,69 @@ export default function WorkingCapitalCalculator() {
                   <strong>Recommendation:</strong> {result.recommendation}
                 </AlertDescription>
               </Alert>
-          </CardContent>
-        </Card>
-
-          {/* Insights Card */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="h-5 w-5" />
-                Key Insights
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-semibold mb-2 text-green-600">Strengths & Opportunities</h4>
-                  <ul className="space-y-1 text-sm">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-green-600 mt-1">•</span>
-                        <span>{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2 text-orange-600">Important Considerations</h4>
-                  <ul className="space-y-1 text-sm">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-orange-600 mt-1">•</span>
-                        <span>{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
             </CardContent>
           </Card>
+
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Working capital optimization opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Working Capital = Current Assets - Current Liabilities
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Measures short-term liquidity by calculating the difference between current assets and current liabilities.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Related Calculators */}
       <Card>
@@ -393,122 +416,122 @@ export default function WorkingCapitalCalculator() {
 
       {/* Complete Guide Section */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Working Capital Calculation, Management, and Operational Liquidity" />
-    <meta itemProp="description" content="An expert guide detailing the Net Working Capital formula, its role in assessing a company's operational liquidity, the difference between positive and negative working capital, and management strategies for cash flow efficiency." />
-    <meta itemProp="keywords" content="working capital formula explained, net working capital calculation, operational liquidity metric, current assets vs current liabilities, positive vs negative working capital, working capital management strategies" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-02" /> 
-    <meta itemProp="url" content="/definitive-working-capital-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Working Capital Calculation, Management, and Operational Liquidity" />
+        <meta itemProp="description" content="An expert guide detailing the Net Working Capital formula, its role in assessing a company's operational liquidity, the difference between positive and negative working capital, and management strategies for cash flow efficiency." />
+        <meta itemProp="keywords" content="working capital formula explained, net working capital calculation, operational liquidity metric, current assets vs current liabilities, positive vs negative working capital, working capital management strategies" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-02" />
+        <meta itemProp="url" content="/definitive-working-capital-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Working Capital: Measuring Operational Liquidity and Efficiency</h1>
-    <p className="text-lg italic text-muted-foreground">Master the fundamental metric that assesses a company's short-term financial health and its ability to fund day-to-day operations.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Working Capital: Measuring Operational Liquidity and Efficiency</h1>
+        <p className="text-lg italic text-muted-foreground">Master the fundamental metric that assesses a company's short-term financial health and its ability to fund day-to-day operations.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">Working Capital: Definition and Core Function</a></li>
-        <li><a href="#calculation" className="hover:underline">The Net Working Capital Formula and Components</a></li>
-        <li><a href="#interpretation" className="hover:underline">Interpreting the Result: Positive vs. Negative W/C</a></li>
-        <li><a href="#management" className="hover:underline">Working Capital Management Strategies</a></li>
-        <li><a href="#cycle" className="hover:underline">The Cash Conversion Cycle and W/C Efficiency</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">Working Capital: Definition and Core Function</a></li>
+          <li><a href="#calculation" className="hover:underline">The Net Working Capital Formula and Components</a></li>
+          <li><a href="#interpretation" className="hover:underline">Interpreting the Result: Positive vs. Negative W/C</a></li>
+          <li><a href="#management" className="hover:underline">Working Capital Management Strategies</a></li>
+          <li><a href="#cycle" className="hover:underline">The Cash Conversion Cycle and W/C Efficiency</a></li>
+        </ul>
+        <hr />
 
-    {/* WORKING CAPITAL: DEFINITION AND CORE PURPOSE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Working Capital: Definition and Core Purpose</h2>
-    <p>Working Capital (often referred to as Net Working Capital) is a direct measure of a company's **operational liquidity** and short-term financial health. It represents the cash remaining if all current assets were immediately converted to cash and used to pay off all current liabilities.</p>
-    
+        {/* WORKING CAPITAL: DEFINITION AND CORE PURPOSE */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Working Capital: Definition and Core Purpose</h2>
+        <p>Working Capital (often referred to as Net Working Capital) is a direct measure of a company's **operational liquidity** and short-term financial health. It represents the cash remaining if all current assets were immediately converted to cash and used to pay off all current liabilities.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">A Measure of Operational Buffer</h3>
-    <p>The metric quantifies a firm's ability to cover its immediate, short-term obligations and fund day-to-day operations (like paying suppliers and employees) without having to raise new capital or sell long-term assets. A healthy amount of Working Capital provides an essential safety buffer against unexpected operational costs or revenue dips.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">A Measure of Operational Buffer</h3>
+        <p>The metric quantifies a firm's ability to cover its immediate, short-term obligations and fund day-to-day operations (like paying suppliers and employees) without having to raise new capital or sell long-term assets. A healthy amount of Working Capital provides an essential safety buffer against unexpected operational costs or revenue dips.</p>
 
-    {/* THE NET WORKING CAPITAL FORMULA AND COMPONENTS */}
-    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Net Working Capital Formula and Components</h2>
-    <p>Working Capital is a simple calculation derived from the current accounts on a company's Balance Sheet.</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The formula for Net Working Capital is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        {/* THE NET WORKING CAPITAL FORMULA AND COMPONENTS */}
+        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Net Working Capital Formula and Components</h2>
+        <p>Working Capital is a simple calculation derived from the current accounts on a company's Balance Sheet.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <p>The formula for Net Working Capital is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Working Capital = Total Current Assets - Total Current Liabilities'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Defining Current Assets (Quick Review)</h3>
-    <p>Current Assets are items expected to be converted to cash within one year:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>Cash and Cash Equivalents.</li>
-        <li>Accounts Receivable (A/R - money owed by customers).</li>
-        <li>Inventory (raw materials, finished goods).</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Defining Current Assets (Quick Review)</h3>
+        <p>Current Assets are items expected to be converted to cash within one year:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Cash and Cash Equivalents.</li>
+          <li>Accounts Receivable (A/R - money owed by customers).</li>
+          <li>Inventory (raw materials, finished goods).</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Defining Current Liabilities (Quick Review)</h3>
-    <p>Current Liabilities are obligations due for payment within one year:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>Accounts Payable (A/P - money owed to suppliers).</li>
-        <li>Short-Term Debt (current portion of long-term debt).</li>
-        <li>Accrued Expenses.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Defining Current Liabilities (Quick Review)</h3>
+        <p>Current Liabilities are obligations due for payment within one year:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Accounts Payable (A/P - money owed to suppliers).</li>
+          <li>Short-Term Debt (current portion of long-term debt).</li>
+          <li>Accrued Expenses.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* INTERPRETING THE RESULT: POSITIVE VS. NEGATIVE W/C */}
-    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the Result: Positive vs. Negative W/C</h2>
-    <p>The result of the Working Capital calculation can be positive, negative, or zero, with each result having distinct implications for financial stability and operational efficiency.</p>
+        {/* INTERPRETING THE RESULT: POSITIVE VS. NEGATIVE W/C */}
+        <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the Result: Positive vs. Negative W/C</h2>
+        <p>The result of the Working Capital calculation can be positive, negative, or zero, with each result having distinct implications for financial stability and operational efficiency.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Positive Working Capital (W/C &gt; 0)</h3>
-    <p>This is generally desired. It means the company has more liquid assets than short-term debts. This signals financial stability, ability to seize short-term investment opportunities, and a low risk of short-term liquidity default.</p>
-    <p>Note: A high positive working capital is not always ideal, as it may indicate that the company is inefficiently holding too much cash or carrying excessive, slow-moving inventory (a problem known as **Asset Bloat**).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Positive Working Capital (W/C &gt; 0)</h3>
+        <p>This is generally desired. It means the company has more liquid assets than short-term debts. This signals financial stability, ability to seize short-term investment opportunities, and a low risk of short-term liquidity default.</p>
+        <p>Note: A high positive working capital is not always ideal, as it may indicate that the company is inefficiently holding too much cash or carrying excessive, slow-moving inventory (a problem known as **Asset Bloat**).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. Negative Working Capital (W/C &lt; 0)</h3>
-    <p>Negative Working Capital means current liabilities exceed current assets. In theory, this signals short-term insolvency and high risk. However, it can be acceptable, and even strategic, in specific industries:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Retail/Fast-Moving Consumer Goods (FMCG):</strong> Companies like supermarkets often operate with negative working capital because they receive cash immediately from customers but do not pay suppliers (A/P) for 30-60 days. Their inventory turnover is so fast that the high A/P becomes a source of **free, short-term financing**.</li>
-        <li><strong className="font-semibold">Financial Stress:</strong> Outside of high-turnover industries, negative working capital is a serious warning sign of impending financial distress.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Negative Working Capital (W/C &lt; 0)</h3>
+        <p>Negative Working Capital means current liabilities exceed current assets. In theory, this signals short-term insolvency and high risk. However, it can be acceptable, and even strategic, in specific industries:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Retail/Fast-Moving Consumer Goods (FMCG):</strong> Companies like supermarkets often operate with negative working capital because they receive cash immediately from customers but do not pay suppliers (A/P) for 30-60 days. Their inventory turnover is so fast that the high A/P becomes a source of **free, short-term financing**.</li>
+          <li><strong className="font-semibold">Financial Stress:</strong> Outside of high-turnover industries, negative working capital is a serious warning sign of impending financial distress.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* WORKING CAPITAL MANAGEMENT STRATEGIES */}
-    <h2 id="management" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Working Capital Management Strategies</h2>
-    <p>The goal of Working Capital Management is to achieve the optimal balance—enough liquidity to cover operations, but not so much that excess cash is idling unproductively.</p>
+        {/* WORKING CAPITAL MANAGEMENT STRATEGIES */}
+        <h2 id="management" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Working Capital Management Strategies</h2>
+        <p>The goal of Working Capital Management is to achieve the optimal balance—enough liquidity to cover operations, but not so much that excess cash is idling unproductively.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Managing Current Assets</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Inventory Management:</strong> Reducing inventory holding times (reducing storage costs and risk of obsolescence).</li>
-        <li><strong className="font-semibold">Accounts Receivable (A/R):</strong> Speeding up collections from customers (e.g., offering discounts for early payment). A faster collection cycle improves the overall liquidity of the company.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Managing Current Assets</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Inventory Management:</strong> Reducing inventory holding times (reducing storage costs and risk of obsolescence).</li>
+          <li><strong className="font-semibold">Accounts Receivable (A/R):</strong> Speeding up collections from customers (e.g., offering discounts for early payment). A faster collection cycle improves the overall liquidity of the company.</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Managing Current Liabilities</h3>
-    <p>The primary strategy here is to strategically **stretch Accounts Payable (A/P)** without damaging supplier relationships. By taking advantage of the full payment period offered by suppliers, the company keeps cash in hand longer, effectively increasing the internal financial buffer.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Managing Current Liabilities</h3>
+        <p>The primary strategy here is to strategically **stretch Accounts Payable (A/P)** without damaging supplier relationships. By taking advantage of the full payment period offered by suppliers, the company keeps cash in hand longer, effectively increasing the internal financial buffer.</p>
 
-<hr />
+        <hr />
 
-    {/* THE CASH CONVERSION CYCLE AND W/C EFFICIENCY */}
-    <h2 id="cycle" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Cash Conversion Cycle and W/C Efficiency</h2>
-    <p>The **Cash Conversion Cycle (CCC)** is a metric that measures the efficiency of working capital management, calculating the time it takes for a dollar invested in inventory to convert back into a dollar of cash from sales.</p>
+        {/* THE CASH CONVERSION CYCLE AND W/C EFFICIENCY */}
+        <h2 id="cycle" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Cash Conversion Cycle and W/C Efficiency</h2>
+        <p>The **Cash Conversion Cycle (CCC)** is a metric that measures the efficiency of working capital management, calculating the time it takes for a dollar invested in inventory to convert back into a dollar of cash from sales.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The CCC Formula</h3>
-    <p>The cycle aggregates the key working capital periods into a single duration (measured in days):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The CCC Formula</h3>
+        <p>The cycle aggregates the key working capital periods into a single duration (measured in days):</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'CCC = Days Inventory Outstanding (DIO) + Days Sales Outstanding (DSO) - Days Payables Outstanding (DPO)'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpreting the CCC</h3>
-    <p>A **shorter CCC** indicates highly efficient working capital management, as the company converts its resources into cash quickly. A **negative CCC** (where the DPO exceeds the sum of DIO and DSO) means the company is selling goods and collecting cash before it even has to pay its suppliers. This is the ultimate sign of operational efficiency.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpreting the CCC</h3>
+        <p>A **shorter CCC** indicates highly efficient working capital management, as the company converts its resources into cash quickly. A **negative CCC** (where the DPO exceeds the sum of DIO and DSO) means the company is selling goods and collecting cash before it even has to pay its suppliers. This is the ultimate sign of operational efficiency.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Working Capital is the fundamental measure of a company’s **short-term operational liquidity**, calculated as the difference between Current Assets and Current Liabilities. It quantifies the firm's buffer to meet immediate obligations.</p>
-    <p>Optimal Working Capital Management seeks to minimize the **Cash Conversion Cycle (CCC)** by accelerating receivables and inventory turnover while strategically extending payables. This balance ensures the firm has sufficient financial flexibility to operate efficiently without tying up capital unnecessarily.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Working Capital is the fundamental measure of a company’s **short-term operational liquidity**, calculated as the difference between Current Assets and Current Liabilities. It quantifies the firm's buffer to meet immediate obligations.</p>
+        <p>Optimal Working Capital Management seeks to minimize the **Cash Conversion Cycle (CCC)** by accelerating receivables and inventory turnover while strategically extending payables. This balance ensures the firm has sufficient financial flexibility to operate efficiently without tying up capital unnecessarily.</p>
+      </section>
 
       {/* FAQ Section */}
       <Card>
@@ -529,63 +552,63 @@ export default function WorkingCapitalCalculator() {
                 Working Capital is the difference between a company's current assets and current liabilities. It represents the amount of capital available to fund day-to-day operations and indicates the company's short-term financial health and operational liquidity.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is considered good Working Capital?</h4>
               <p className="text-muted-foreground">
                 Positive working capital is generally good, indicating the company can cover its short-term obligations. The optimal amount varies by industry and business model. Generally, working capital should be sufficient to cover 1-3 months of operating expenses, but this depends on the company's cash conversion cycle and industry characteristics.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate Working Capital?</h4>
               <p className="text-muted-foreground">
                 The formula is: Working Capital = Current Assets - Current Liabilities. Current Assets include cash, accounts receivable, inventory, and other assets expected to be converted to cash within one year. Current Liabilities include accounts payable, short-term debt, and other obligations due within one year.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does negative Working Capital mean?</h4>
               <p className="text-muted-foreground">
                 Negative working capital means current liabilities exceed current assets, indicating potential liquidity problems. This suggests the company may struggle to meet its short-term obligations without additional financing or improved cash flow. However, some businesses (like retail) can operate with negative working capital due to fast inventory turnover.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Do Working Capital needs vary by industry?</h4>
               <p className="text-muted-foreground">
                 Yes, working capital requirements vary significantly by industry. Manufacturing companies typically need more working capital due to inventory requirements. Service companies may need less working capital. Retail companies often have negative working capital due to fast inventory turnover. Technology companies may have high working capital due to cash reserves.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of Working Capital?</h4>
               <p className="text-muted-foreground">
                 Working capital is a snapshot in time and doesn't reflect cash flow timing. It doesn't consider the quality of assets or liabilities. Seasonal businesses may have fluctuating working capital. It doesn't account for credit lines or other financing options. It may not reflect the true liquidity of specific assets.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How can a company improve its Working Capital?</h4>
               <p className="text-muted-foreground">
                 Companies can improve working capital by increasing current assets through better cash management, faster receivables collection, or inventory optimization. They can also reduce current liabilities by paying down short-term debt or extending payment terms with suppliers. However, excessive working capital may indicate inefficient capital allocation.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does Working Capital relate to Cash Flow?</h4>
               <p className="text-muted-foreground">
                 Working capital changes affect cash flow. Increases in working capital (more inventory, receivables) reduce cash flow, while decreases in working capital (faster collections, inventory reduction) increase cash flow. Working capital management is crucial for maintaining positive operating cash flow and business sustainability.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is Working Capital important for investors?</h4>
               <p className="text-muted-foreground">
                 For investors, working capital indicates the company's operational efficiency and short-term financial stability. Adequate working capital suggests the company can fund operations without external financing. It also indicates management's ability to optimize cash conversion cycles and maintain operational flexibility for growth opportunities.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do creditors use Working Capital?</h4>
               <p className="text-muted-foreground">
@@ -593,6 +616,19 @@ export default function WorkingCapitalCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Working Capital Calculator determines the capital available for daily operations and short-term obligations.</p>
+          <p>It helps assess a company's operational efficiency and short-term financial strength.</p>
+          <p>Use this tool to plan for operational needs and ensure liquidity for sustained business activities.</p>
         </CardContent>
       </Card>
     </div>

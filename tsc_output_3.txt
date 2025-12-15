@@ -1,0 +1,65 @@
+src/components/calculators/cricket/registry.tsx(7,51): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/batting-average-calculator.tsx' is not a module.
+src/components/calculators/cricket/registry.tsx(8,51): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/bowling-average-calculator.tsx' is not a module.
+src/components/calculators/cricket/registry.tsx(9,56): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/bowling-economy-rate-calculator.tsx' is not a module.
+src/components/calculators/cricket/registry.tsx(10,50): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/fantasy-points-calculator.tsx' is not a module.
+src/components/calculators/cricket/registry.tsx(11,48): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/net-run-rate-calculator.tsx' is not a module.
+src/components/calculators/cricket/registry.tsx(12,60): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/player-performance-index-calculator.tsx' is not a module.
+src/components/calculators/cricket/registry.tsx(13,53): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/required-run-rate-calculator.tsx' is not a module.
+src/components/calculators/cricket/registry.tsx(14,47): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/strike-rate-calculator.tsx' is not a module.
+src/components/calculators/cricket/registry.tsx(15,49): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/cricket/team-run-rate-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(12,60): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/alveolar-oxygen-gradient-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(17,56): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/andropause-onset-risk-estimator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(20,64): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/anxiety-level-estimator-gad7-simplified.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(23,56): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/arthritis-risk-score-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(34,55): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/blood-pressure-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(76,57): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/cancer-risk-lifestyle-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(82,49): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/cardiac-index-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(86,63): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/cardiovascular-disease-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(90,66): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/cha2ds2-vasc-stroke-risk-score-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(94,52): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/child-pugh-score-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(95,52): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/cholesterol-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(110,51): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/copd-risk-score-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(114,57): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/coronary-calcium-score-estimator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(115,75): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/corrected-qt-interval-bazett-fridericia-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(120,68): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/curb-65-pneumonia-severity-score-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(139,66): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/depression-severity-index-phq9-simplified.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(142,55): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/diabetes-risk-type2-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(157,64): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/endometriosis-pain-cycle-impact-tracker.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(159,59): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/estrogen-dominance-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(182,89): error TS2322: Type 'Promise<typeof import("D:/MegaCalc-Hub/src/components/calculators/health-fitness/food-protein-digestibility-corrected-amino-acid-score-pdcaas-calculator")>' is not assignable to type 'Promise<{ default: ComponentType<any>; }>'.
+  Property 'default' is missing in type 'typeof import("D:/MegaCalc-Hub/src/components/calculators/health-fitness/food-protein-digestibility-corrected-amino-acid-score-pdcaas-calculator")' but required in type '{ default: ComponentType<any>; }'.
+src/components/calculators/health-fitness/registry.tsx(183,71): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/fractional-excretion-of-sodium-fena-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(184,71): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/fractional-excretion-of-urea-feurea-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(185,54): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/fracture-risk-frax-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(188,61): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/gestational-diabetes-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(203,58): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/has-bled-bleeding-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(204,64): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/heart-attack-framingham-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(219,54): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/hypertension-stage-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(237,59): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/ivf-success-probability-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(242,56): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/kidney-function-egfr-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(251,56): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/liver-fat-nafld-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(277,69): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/meld-score-liver-disease-severity-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(288,59): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/metabolic-syndrome-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(316,53): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/osteoporosis-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(324,51): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/pao2-fio2-ratio-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(325,63): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/pcos-symptom-severity-score-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(355,66): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/progesterone-to-estrogen-ratio-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(357,67): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/prostate-health-score-psa-based-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(362,74): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/ransons-criteria-pancreatitis-severity-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(394,53): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/serum-osmolar-gap-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(395,47): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/shock-index-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(396,52): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/sleep-apnea-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(411,55): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/social-anxiety-score-estimator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(424,47): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/stroke-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(435,64): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/testosterone-deficiency-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(440,66): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/tidal-volume-ideal-body-weight-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(446,54): error TS2322: Type 'Promise<typeof import("D:/MegaCalc-Hub/src/components/calculators/health-fitness/training-stress-score-tss-calculator")>' is not assignable to type 'Promise<{ default: ComponentType<any>; }>'.
+  Property 'default' is missing in type 'typeof import("D:/MegaCalc-Hub/src/components/calculators/health-fitness/training-stress-score-tss-calculator")' but required in type '{ default: ComponentType<any>; }'.
+src/components/calculators/health-fitness/registry.tsx(468,59): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/waist-to-bmi-ratio-risk-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(473,67): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/wells-score-for-dvt-probability-calculator.tsx' is not a module.
+src/components/calculators/health-fitness/registry.tsx(474,70): error TS2306: File 'D:/MegaCalc-Hub/src/components/calculators/health-fitness/white-blood-cell-wbc-count-balance-calculator.tsx' is not a module.
+src/data/calculators/health-fitness.ts(1405,5): error TS2322: Type 'number' is not assignable to type 'string'.
+src/data/calculators/health-fitness.ts(1414,5): error TS2322: Type 'number' is not assignable to type 'string'.
+src/data/calculators/health-fitness.ts(1423,5): error TS2322: Type 'number' is not assignable to type 'string'.
+src/data/calculators/health-fitness.ts(1432,5): error TS2322: Type 'number' is not assignable to type 'string'.
+src/data/calculators/health-fitness.ts(1441,5): error TS2322: Type 'number' is not assignable to type 'string'.
