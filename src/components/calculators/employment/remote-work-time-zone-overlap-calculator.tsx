@@ -210,7 +210,14 @@ export default function TimeZoneOverlapCalculator() {
 
         <Card>
           <CardHeader><CardTitle className="flex items-center gap-2"><Landmark className="h-5 w-5" />Related Calculators</CardTitle></CardHeader>
-          <CardContent><ul className="list-disc pl-5 text-sm text-primary"><li><Link href="/employment/shift-rotation-calculator" className="hover:underline">Shift Rotation Calculator</Link></li></ul></CardContent>
+          <CardContent>
+            <ul className="list-disc pl-5 text-sm text-primary">
+              <li><Link href="/category/time-date/shift-rotation-calculator" className="hover:underline">Shift Rotation Calculator</Link></li>
+              <li><Link href="/category/time-date/night-shift-duration-calculator" className="hover:underline">Night Shift Duration Calculator</Link></li>
+              <li><Link href="/category/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
+              <li><Link href="/category/time-date/world-time-zone-converter" className="hover:underline">World Time Zone Converter</Link></li>
+            </ul>
+          </CardContent>
         </Card>
 
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
