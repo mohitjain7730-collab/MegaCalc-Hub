@@ -9,8 +9,15 @@ export interface Calculator {
   metaDescription?: string;
 }
 
+// ... imports
+import { conversion_calculators } from '@/data/calculators/conversion';
+
+// ... existing code
+
 export const calculators: Calculator[] = [
+  ...conversion_calculators,
   // Finance
+
   {
     id: 4701,
     name: 'Tangency Portfolio (Max Sharpe) Calculator',
