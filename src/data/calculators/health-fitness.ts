@@ -1503,15 +1503,7 @@ export const health_fitness_calculators: Calculator[] = [
     "metaTitle": "Diet Sustainability Score Calculator",
     "metaDescription": "Calculate diet sustainability score from restrictiveness, variety, social fit, cost, flexibility, and adherence duration to assess long-term maintainability."
   },
-  {
-    "id": 5069,
-    "name": "Blue Light Exposure Wellness Calculator",
-    "description": "Get general wellness insights about blue light exposure from screen hours, night hours, brightness, and filter reduction. This is a personal lifestyle insight, not a medical evaluation.",
-    "slug": "blue-light-exposure-calculator",
-    "category": "health-fitness",
-    "metaTitle": "Blue Light Exposure Wellness Calculator",
-    "metaDescription": "Get general wellness insights about blue light exposure from screen hours, night hours, brightness, and filter reduction. This is a personal lifestyle insight, not a medical evaluation."
-  },
+
   {
     "id": 5071,
     "name": "Hydration Tracker by Climate & Weight",
