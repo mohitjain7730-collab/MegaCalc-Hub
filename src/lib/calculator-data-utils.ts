@@ -3,6 +3,7 @@ import { Calculator } from '@/types';
 // Static map of category loaders
 const categoryLoaders: Record<string, () => Promise<{ [key: string]: Calculator[] }>> = {
     'business-startup': () => import('@/data/calculators/business-startup'),
+    'conversions': () => import('@/data/calculators/conversion'),
     'cooking-food': () => import('@/data/calculators/cooking-food'),
     'engineering': () => import('@/data/calculators/engineering'),
     'environment': () => import('@/data/calculators/environment'),
