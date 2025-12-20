@@ -36,3 +36,19 @@ export async function getCalculator(category: string, slug: string): Promise<Cal
         return undefined;
     }
 }
+
+export async function getCalculatorsByCategory(category: string): Promise<Calculator[]> {
+    const targetCategory = category === 'wellness' ? 'health-fitness' : category;
+
+    const loader = categoryLoaders[targetCategory];
+    if (!loader) return [];
+
+    try {
+        const module = await loader();
+        const calcs = Object.values(module)[0] as Calculator[];
+        return calcs;
+    } catch (error) {
+        console.error(`Failed to load calculators for category ${targetCategory}`, error);
+        return [];
+    }
+}
