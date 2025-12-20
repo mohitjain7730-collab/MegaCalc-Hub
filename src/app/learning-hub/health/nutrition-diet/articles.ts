@@ -1,19 +1,19 @@
 import 'server-only';
-import type { Article } from '../../../../types';
+import type { Article } from '@/types';
 import { getAllLearningArticles } from '@/lib/learning-hub-content';
 import { getAuthorForArticle } from '@/lib/article-authors';
 
 // Convert JSON article to Article format
 function convertJsonArticleToArticle(jsonArticle: any): Article {
   const publishedDate = new Date().toISOString().split('T')[0];
-  
+
   // Get author for schema
   const author = getAuthorForArticle(
     jsonArticle.title,
     jsonArticle.category || 'Learning hub> Health> nutrition & diet',
     jsonArticle.author
   );
-  
+
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "Article",

@@ -1,4 +1,4 @@
-import { Calculator } from '@/lib/calculators';
+import { Calculator } from '@/types';
 
 // Static map of category loaders
 const categoryLoaders: Record<string, () => Promise<{ [key: string]: Calculator[] }>> = {

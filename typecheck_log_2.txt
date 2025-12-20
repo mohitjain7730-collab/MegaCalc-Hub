@@ -1,0 +1,22 @@
+﻿src/app/learning-hub/finance/articles.ts(2,15): error TS2305: Module '"../../../types"' has no exported member 'Article'.
+src/app/learning-hub/health/nutrition-diet/articles.ts(2,15): error TS2305: Module '"../../../../types"' has no exported member 'Article'.
+src/components/calculators/conversions/data-transfer-speed-converter.tsx(225,33): error TS2322: Type '{ children: string; className_: string; }' is not assignable to type 'DetailedHTMLProps<TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>'.
+  Property 'className_' does not exist on type 'DetailedHTMLProps<TdHTMLAttributes<HTMLTableDataCellElement>, HTMLTableDataCellElement>'. Did you mean 'className'?
+src/components/calculators/health-fitness/registry.tsx(163,89): error TS2322: Type 'Promise<typeof import("D:/MegaCalc-Hub/src/components/calculators/health-fitness/food-protein-digestibility-corrected-amino-acid-score-pdcaas-calculator")>' is not assignable to type 'Promise<{ default: ComponentType<any>; }>'.
+  Property 'default' is missing in type 'typeof import("D:/MegaCalc-Hub/src/components/calculators/health-fitness/food-protein-digestibility-corrected-amino-acid-score-pdcaas-calculator")' but required in type '{ default: ComponentType<any>; }'.
+src/components/calculators/health-fitness/registry.tsx(402,54): error TS2322: Type 'Promise<typeof import("D:/MegaCalc-Hub/src/components/calculators/health-fitness/training-stress-score-tss-calculator")>' is not assignable to type 'Promise<{ default: ComponentType<any>; }>'.
+  Property 'default' is missing in type 'typeof import("D:/MegaCalc-Hub/src/components/calculators/health-fitness/training-stress-score-tss-calculator")' but required in type '{ default: ComponentType<any>; }'.
+src/components/category-search.tsx(10,15): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/components/learning-hub/article-search.tsx(9,15): error TS2305: Module '"@/types"' has no exported member 'Article'.
+src/data/calculators/business-startup.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/cooking-food.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/engineering.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/environment.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/finance.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/health-fitness.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/home-improvement.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/personal-budgeting.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/technology.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/time-date.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/travel-adventure.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?
+src/data/calculators/wellness.ts(1,10): error TS2724: '"@/lib/calculators"' has no exported member named 'Calculator'. Did you mean 'calculators'?

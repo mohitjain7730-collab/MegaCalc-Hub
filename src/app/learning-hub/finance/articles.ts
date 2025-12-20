@@ -1,19 +1,19 @@
 import 'server-only';
-import type { Article } from '../../../types';
+import type { Article } from '@/types';
 import { getAllLearningArticles } from '@/lib/learning-hub-content';
 import { getAuthorForArticle } from '@/lib/article-authors';
 
 // Convert JSON article to Article format
 function convertJsonArticleToArticle(jsonArticle: any): Article {
   const publishedDate = new Date().toISOString().split('T')[0];
-  
+
   // Get author for schema
   const author = getAuthorForArticle(
     jsonArticle.title,
     jsonArticle.category || 'Learning hub> Finance',
     jsonArticle.author
   );
-  
+
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -58,7 +58,7 @@ function convertJsonArticleToArticle(jsonArticle: any): Article {
 // This function is server-only and should only be called from server components
 function loadFinanceArticles() {
   const allJsonArticles = getAllLearningArticles();
-  
+
   const savingsArticles: Article[] = allJsonArticles
     .filter(article => article.category === 'Learning hub> Finance> savings & investment')
     .map(convertJsonArticleToArticle);
@@ -70,13 +70,13 @@ function loadFinanceArticles() {
   const articleContent: Record<string, Article> = [
     ...savingsArticles,
     ...retirementArticles,
-].reduce(
-  (acc, article) => {
-    acc[article.slug] = article;
-    return acc;
-  },
-  {} as Record<string, Article>
-);
+  ].reduce(
+    (acc, article) => {
+      acc[article.slug] = article;
+      return acc;
+    },
+    {} as Record<string, Article>
+  );
 
   return {
     savingsArticles,

@@ -7,7 +7,7 @@ import { Search, Construction } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import type { Calculator } from '@/lib/calculators';
+import type { Calculator } from '@/types';
 
 interface CategorySearchProps {
   calculators: Calculator[];
@@ -23,25 +23,25 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
       calc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       calc.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  
+
   const lengthConverters = filteredCalculators.filter(calc => [
-    'meters-to-feet-converter', 'feet-to-meters-converter', 'centimeters-to-inches-converter', 
-    'inches-to-centimeters-converter', 'millimeters-to-inches-converter', 'inches-to-millimeters-converter', 
-    'meters-to-yards-converter', 'yards-to-meters-converter', 'miles-to-kilometers-converter', 
-    'kilometers-to-miles-converter', 'nautical-miles-to-kilometers-converter', 'kilometers-to-nautical-miles-converter', 
-    'micrometers-to-millimeters-converter', 'nanometers-to-meters-converter', 'light-years-to-kilometers-converter', 
-    'parsecs-to-light-years-converter', 'astronomical-units-to-kilometers-converter', 'fathoms-to-meters-converter', 
+    'meters-to-feet-converter', 'feet-to-meters-converter', 'centimeters-to-inches-converter',
+    'inches-to-centimeters-converter', 'millimeters-to-inches-converter', 'inches-to-millimeters-converter',
+    'meters-to-yards-converter', 'yards-to-meters-converter', 'miles-to-kilometers-converter',
+    'kilometers-to-miles-converter', 'nautical-miles-to-kilometers-converter', 'kilometers-to-nautical-miles-converter',
+    'micrometers-to-millimeters-converter', 'nanometers-to-meters-converter', 'light-years-to-kilometers-converter',
+    'parsecs-to-light-years-converter', 'astronomical-units-to-kilometers-converter', 'fathoms-to-meters-converter',
     'chains-to-meters-converter', 'rods-to-feet-converter'
   ].includes(calc.slug));
-  
+
   const areaConverters = filteredCalculators.filter(calc => [
-    'square-meters-to-square-feet-converter', 'square-feet-to-square-meters-converter', 
-    'square-kilometers-to-square-miles-converter', 'square-miles-to-square-kilometers-converter', 
-    'acres-to-square-meters-converter', 'square-meters-to-acres-converter', 'hectares-to-acres-converter', 
-    'acres-to-hectares-converter', 'square-yards-to-square-feet-converter', 'square-feet-to-square-yards-converter', 
-    'square-inches-to-square-centimeters-converter', 'square-centimeters-to-square-inches-converter', 
-    'square-miles-to-acres-converter', 'acres-to-square-miles-converter', 'square-meters-to-square-yards-converter', 
-    'square-yards-to-square-meters-converter', 'square-centimeters-to-square-meters-converter', 
+    'square-meters-to-square-feet-converter', 'square-feet-to-square-meters-converter',
+    'square-kilometers-to-square-miles-converter', 'square-miles-to-square-kilometers-converter',
+    'acres-to-square-meters-converter', 'square-meters-to-acres-converter', 'hectares-to-acres-converter',
+    'acres-to-hectares-converter', 'square-yards-to-square-feet-converter', 'square-feet-to-square-yards-converter',
+    'square-inches-to-square-centimeters-converter', 'square-centimeters-to-square-inches-converter',
+    'square-miles-to-acres-converter', 'acres-to-square-miles-converter', 'square-meters-to-square-yards-converter',
+    'square-yards-to-square-meters-converter', 'square-centimeters-to-square-meters-converter',
     'square-meters-to-square-centimeters-converter', 'hectares-to-square-kilometers-converter', 'square-kilometers-to-hectares-converter'
   ].includes(calc.slug));
 
@@ -91,7 +91,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     'stones-to-kilograms-converter',
   ].includes(calc.slug));
 
-  const speedConverters = filteredCalculators.filter(calc => 
+  const speedConverters = filteredCalculators.filter(calc =>
     [
       'kilometers-per-hour-to-miles-per-hour-converter',
       'miles-per-hour-to-kilometers-per-hour-converter',
@@ -116,7 +116,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
-  const timeConverters = filteredCalculators.filter(calc => 
+  const timeConverters = filteredCalculators.filter(calc =>
     [
       'seconds-to-minutes-converter',
       'minutes-to-seconds-converter',
@@ -141,7 +141,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
-  const pressureConverters = filteredCalculators.filter(calc => 
+  const pressureConverters = filteredCalculators.filter(calc =>
     [
       'pascals-to-atmospheres-converter',
       'atmospheres-to-pascals-converter',
@@ -166,7 +166,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
-  const energyConverters = filteredCalculators.filter(calc => 
+  const energyConverters = filteredCalculators.filter(calc =>
     [
       'joules-to-kilojoules-converter',
       'kilojoules-to-joules-converter',
@@ -190,8 +190,8 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
       'joules-to-foot-pounds-converter',
     ].includes(calc.slug)
   );
-  
-  const powerConverters = filteredCalculators.filter(calc => 
+
+  const powerConverters = filteredCalculators.filter(calc =>
     [
       'watts-to-kilowatts-converter',
       'kilowatts-to-watts-converter',
@@ -216,7 +216,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
-  const otherUsefulConverters = filteredCalculators.filter(calc => 
+  const otherUsefulConverters = filteredCalculators.filter(calc =>
     [
       'shoe-size-converter',
       'cloth-size-converter',
@@ -229,28 +229,28 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     ].includes(calc.slug)
   );
 
-  const footballSoccerCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+  const footballSoccerCalculators: typeof filteredCalculators = filteredCalculators.filter(calc =>
     [].includes(calc.slug as never) // Add football/soccer calculators here when available
   );
 
-  const basketballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+  const basketballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc =>
     [].includes(calc.slug as never) // Add basketball calculators here when available
   );
 
-  const tennisCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+  const tennisCalculators: typeof filteredCalculators = filteredCalculators.filter(calc =>
     [].includes(calc.slug as never) // Add tennis calculators here when available
   );
 
-  const baseballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+  const baseballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc =>
     [].includes(calc.slug as never) // Add baseball calculators here when available
   );
 
-  const volleyballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc => 
+  const volleyballCalculators: typeof filteredCalculators = filteredCalculators.filter(calc =>
     [].includes(calc.slug as never) // Add volleyball calculators here when available
   );
 
-  const otherCalculators = filteredCalculators.filter(calc => 
-    !lengthConverters.find(c => c.id === calc.id) && 
+  const otherCalculators = filteredCalculators.filter(calc =>
+    !lengthConverters.find(c => c.id === calc.id) &&
     !areaConverters.find(c => c.id === calc.id) &&
     !volumeConverters.find(c => c.id === calc.id) &&
     !weightMassConverters.find(c => c.id === calc.id) &&
@@ -299,77 +299,77 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
 
       {filteredCalculators.length > 0 ? (
         <div className="space-y-8 sm:space-y-12">
-            {categorySlug === 'conversions' ? (
-                <>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Length Conversions</h2>
-                        {renderCalculatorGrid(lengthConverters, categorySlug, "No length converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Area Conversions</h2>
-                        {renderCalculatorGrid(areaConverters, categorySlug, "No area converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Volume Conversions</h2>
-                        {renderCalculatorGrid(volumeConverters, categorySlug, "No volume converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Weight/Mass Conversions</h2>
-                        {renderCalculatorGrid(weightMassConverters, categorySlug, "No weight/mass converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Speed Conversions</h2>
-                        {renderCalculatorGrid(speedConverters, categorySlug, "No speed converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Time conversion</h2>
-                        {renderCalculatorGrid(timeConverters, categorySlug, "No time converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Pressure conversion</h2>
-                        {renderCalculatorGrid(pressureConverters, categorySlug, "No pressure converters found.")}
-                    </div>
-                     <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Energy Conversions</h2>
-                        {renderCalculatorGrid(energyConverters, categorySlug, "No energy converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Power Conversions</h2>
-                        {renderCalculatorGrid(powerConverters, categorySlug, "No power converters found.")}
-                    </div>
-                    <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Other useful conversions</h2>
-                        {renderCalculatorGrid(otherUsefulConverters, categorySlug, "No other useful converters found.")}
-                    </div>
-                </>
-            ) : null}
+          {categorySlug === 'conversions' ? (
+            <>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Length Conversions</h2>
+                {renderCalculatorGrid(lengthConverters, categorySlug, "No length converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Area Conversions</h2>
+                {renderCalculatorGrid(areaConverters, categorySlug, "No area converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Volume Conversions</h2>
+                {renderCalculatorGrid(volumeConverters, categorySlug, "No volume converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Weight/Mass Conversions</h2>
+                {renderCalculatorGrid(weightMassConverters, categorySlug, "No weight/mass converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Speed Conversions</h2>
+                {renderCalculatorGrid(speedConverters, categorySlug, "No speed converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Time conversion</h2>
+                {renderCalculatorGrid(timeConverters, categorySlug, "No time converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Pressure conversion</h2>
+                {renderCalculatorGrid(pressureConverters, categorySlug, "No pressure converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Energy Conversions</h2>
+                {renderCalculatorGrid(energyConverters, categorySlug, "No energy converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Power Conversions</h2>
+                {renderCalculatorGrid(powerConverters, categorySlug, "No power converters found.")}
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">Other useful conversions</h2>
+                {renderCalculatorGrid(otherUsefulConverters, categorySlug, "No other useful converters found.")}
+              </div>
+            </>
+          ) : null}
 
-            {otherCalculators.length > 0 && categorySlug === 'conversions' && (
-                 <div>
-                    <div className="my-8"/>
-                    {renderCalculatorGrid(otherCalculators, categorySlug, "")}
-                </div>
-            )}
+          {otherCalculators.length > 0 && categorySlug === 'conversions' && (
+            <div>
+              <div className="my-8" />
+              {renderCalculatorGrid(otherCalculators, categorySlug, "")}
+            </div>
+          )}
 
-            {(categorySlug !== 'conversions' && filteredCalculators.length > 0) && (
-                <div>
-                    {renderCalculatorGrid(filteredCalculators, categorySlug, "")}
-                </div>
-            )}
+          {(categorySlug !== 'conversions' && filteredCalculators.length > 0) && (
+            <div>
+              {renderCalculatorGrid(filteredCalculators, categorySlug, "")}
+            </div>
+          )}
         </div>
       ) : (
         <Card className="w-full text-center shadow-md mt-8">
           <CardContent className="p-8">
-              <Construction className="mx-auto h-16 w-16 mb-6 text-primary" strokeWidth={1.5} />
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                {calculators.length > 0 ? 'No Calculators Found' : 'Calculators Coming Soon'}
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                 {calculators.length > 0 
-                  ? `Your search for "${searchQuery}" did not match any calculators in this category.`
-                  : `Individual calculators for the ${categoryName} category are being built.`
-                 }
-              </p>
+            <Construction className="mx-auto h-16 w-16 mb-6 text-primary" strokeWidth={1.5} />
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+              {calculators.length > 0 ? 'No Calculators Found' : 'Calculators Coming Soon'}
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              {calculators.length > 0
+                ? `Your search for "${searchQuery}" did not match any calculators in this category.`
+                : `Individual calculators for the ${categoryName} category are being built.`
+              }
+            </p>
           </CardContent>
         </Card>
       )}
@@ -377,6 +377,5 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
   );
 }
 
-    
 
-    
+

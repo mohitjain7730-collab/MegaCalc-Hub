@@ -1,4 +1,4 @@
-import { Calculator } from '@/lib/calculators';
+import { Calculator } from '@/types';
 
 export const time_date_calculators: Calculator[] = [
   {
