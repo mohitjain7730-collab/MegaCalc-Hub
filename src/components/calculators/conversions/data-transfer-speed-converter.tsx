@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Network, Info, Shield, TrendingUp, Landmark, ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
-import { convertDataTransferSpeed, DATA_TRANSFER_UNITS } from '@/lib/converters';
+import { convertDataTransferSpeed, DATA_TRANSFER_SPEED_UNITS } from '@/lib/converters';
 
 const formSchema = z.object({
   value: z.number().optional(),
@@ -100,7 +100,7 @@ export default function DataTransferSpeedConverter() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {DATA_TRANSFER_UNITS.map(u => <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>)}
+                          {DATA_TRANSFER_SPEED_UNITS.map(u => <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>)}
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -120,7 +120,7 @@ export default function DataTransferSpeedConverter() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {DATA_TRANSFER_UNITS.map(u => <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>)}
+                          {DATA_TRANSFER_SPEED_UNITS.map(u => <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>)}
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -141,7 +141,7 @@ export default function DataTransferSpeedConverter() {
                 {result.toPrecision(6)}
               </p>
               <p className="text-center text-sm text-muted-foreground mt-1">
-                {watchedValues.value} {DATA_TRANSFER_UNITS.find(u => u.value === watchedValues.fromUnit)?.label.split(' ')[0]} = {result.toPrecision(6)} {DATA_TRANSFER_UNITS.find(u => u.value === watchedValues.toUnit)?.label.split(' ')[0]}
+                {watchedValues.value} {DATA_TRANSFER_SPEED_UNITS.find(u => u.value === watchedValues.fromUnit)?.label.split(' ')[0]} = {result.toPrecision(6)} {DATA_TRANSFER_SPEED_UNITS.find(u => u.value === watchedValues.toUnit)?.label.split(' ')[0]}
               </p>
             </div>
           )}
@@ -222,7 +222,7 @@ export default function DataTransferSpeedConverter() {
                     <tbody>
                         <tr><td className="p-4 border">100 Mbps</td><td className="p-4 border">12.5 MB/s</td></tr>
                         <tr><td className="p-4 border">300 Mbps</td><td className="p-4 border">37.5 MB/s</td></tr>
-                        <tr><td className="p-4 border">500 Mbps</td><td className="p-4 border">62.5 MB/s</td></tr>
+                        <tr><td className_="p-4 border">500 Mbps</td><td className="p-4 border">62.5 MB/s</td></tr>
                         <tr><td className="p-4 border">1 Gbps (1,000 Mbps)</td><td className="p-4 border">125 MB/s</td></tr>
                         <tr><td className="p-4 border">To download a 5 MB song</td><td className="p-4 border">~0.4s on 100 Mbps</td></tr>
                         <tr><td className="p-4 border">To download a 1 GB movie</td><td className="p-4 border">~1m 20s on 100 Mbps</td></tr>

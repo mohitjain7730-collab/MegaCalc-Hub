@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FlaskConical, Info, Shield, TrendingUp, Landmark, ArrowRightLeft } from 'lucide-react';
 import Link from 'next/link';
-import { convertConcentration, CONCENTRATION_UNITS } from '@/lib/converters';
+import { convertChemicalConcentration, CHEMICAL_CONCENTRATION_UNITS } from '@/lib/converters';
 
 const formSchema = z.object({
   value: z.number().optional(),
@@ -38,7 +38,7 @@ export default function ConcentrationConverter() {
 
   useEffect(() => {
     if (watchedValues.value !== undefined && watchedValues.fromUnit && watchedValues.toUnit) {
-      const conversionResult = convertConcentration(watchedValues.value, watchedValues.fromUnit, watchedValues.toUnit);
+      const conversionResult = convertChemicalConcentration(watchedValues.value, watchedValues.fromUnit, watchedValues.toUnit);
       setResult(conversionResult);
     } else {
       setResult(null);
@@ -100,7 +100,7 @@ export default function ConcentrationConverter() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {CONCENTRATION_UNITS.map(u => <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>)}
+                          {CHEMICAL_CONCENTRATION_UNITS.map(u => <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>)}
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -120,7 +120,7 @@ export default function ConcentrationConverter() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {CONCENTRATION_UNITS.map(u => <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>)}
+                          {CHEMICAL_CONCENTRATION_UNITS.map(u => <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>)}
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -141,7 +141,7 @@ export default function ConcentrationConverter() {
                 {result.toPrecision(6)}
               </p>
               <p className="text-center text-sm text-muted-foreground mt-1">
-                {watchedValues.value} {CONCENTRATION_UNITS.find(u => u.value === watchedValues.fromUnit)?.label.split(' ')[0]} = {result.toPrecision(6)} {CONCENTRATION_UNITS.find(u => u.value === watchedValues.toUnit)?.label.split(' ')[0]}
+                {watchedValues.value} {CHEMICAL_CONCENTRATION_UNITS.find(u => u.value === watchedValues.fromUnit)?.label.split(' ')[0]} = {result.toPrecision(6)} {CHEMICAL_CONCENTRATION_UNITS.find(u => u.value === watchedValues.toUnit)?.label.split(' ')[0]}
               </p>
             </div>
           )}

@@ -1,12 +1,7 @@
-import type { Calculator as CoreCalculator } from './calculators';
+import type { Calculator } from '@/types';
 import type { Category as CoreCategory } from './categories';
 import { calculators } from './calculators';
-import { categories } from './categories';
 
-// Types for schema generation - extend core app types where needed
-export interface Calculator extends CoreCalculator {
-  keywords?: string[];
-}
 
 export type Category = CoreCategory;
 
@@ -151,7 +146,7 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
       "bestRating": "5",
       "worstRating": "1"
     },
-    "keywords": calculator.keywords?.join(", ") || `${calculator.name}, calculator, ${category.name}`,
+    "keywords": `${calculator.name}, calculator, ${category.name}`,
     "isPartOf": {
       "@type": "WebSite",
       "name": "Mycalculating.com",
@@ -341,59 +336,3 @@ export function generateHowToSchema(calculator: Calculator) {
     ]
   };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
