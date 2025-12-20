@@ -14,12 +14,11 @@ const categoryLoaders: Record<string, () => Promise<{ [key: string]: Calculator[
     'technology': () => import('@/data/calculators/technology'),
     'time-date': () => import('@/data/calculators/time-date'),
     'travel-adventure': () => import('@/data/calculators/travel-adventure'),
-    'wellness': () => import('@/data/calculators/wellness'),
+
 };
 
 export async function getCalculator(category: string, slug: string): Promise<Calculator | undefined> {
-    // Special handling for wellness (maps to health-fitness)
-    const targetCategory = category === 'wellness' ? 'health-fitness' : category;
+    const targetCategory = category;
 
     const loader = categoryLoaders[targetCategory];
     if (!loader) return undefined;
@@ -39,7 +38,7 @@ export async function getCalculator(category: string, slug: string): Promise<Cal
 }
 
 export async function getCalculatorsByCategory(category: string): Promise<Calculator[]> {
-    const targetCategory = category === 'wellness' ? 'health-fitness' : category;
+    const targetCategory = category;
 
     const loader = categoryLoaders[targetCategory];
     if (!loader) return [];

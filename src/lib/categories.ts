@@ -64,7 +64,7 @@ export interface Category {
   Icon: string;
 }
 
-export const icons: {[key: string]: LucideIcon} = {
+export const icons: { [key: string]: LucideIcon } = {
   Landmark,
   HeartPulse,
   Home,
@@ -134,12 +134,7 @@ export const categories: Category[] = [
     description: 'Track your fitness goals, BMI, and calorie intake.',
     Icon: 'HeartPulse',
   },
-  {
-    name: 'Wellness',
-    slug: 'wellness',
-    description: 'Tools for mental health, sleep, mindfulness, and overall wellbeing.',
-    Icon: 'Activity',
-  },
+
   {
     name: 'Conversions',
     slug: 'conversions',
