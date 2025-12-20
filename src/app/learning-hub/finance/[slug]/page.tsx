@@ -137,7 +137,7 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: article.publishedDate || undefined,
       authors: article.author ? [article.author] : undefined,
-      url: `https://mycalculating.com/learning-hub/finance/${article.slug}`,
+      url: `https://mycalculating.com/learning-hub/finance/${article.slug}`
     },
     twitter: {
       card: 'summary_large_image',
@@ -179,7 +179,7 @@ export default async function FinanceArticlePage({
     : markdownToHtml(article.content);
   
   // Determine breadcrumbs based on category
-  const categoryParts = (article.category || 'Learning hub> Finance').split('>').map(p => p.trim());
+  const categoryParts = (article.category || 'Learning hub> Finance').split('>').map((p: string) => p.trim());
   
   // Extract category for enhancements (e.g., "finance" from "Learning hub> Finance")
   const categorySlug = categoryParts.length > 1 
@@ -309,4 +309,3 @@ export default async function FinanceArticlePage({
     </>
   );
 }
-
