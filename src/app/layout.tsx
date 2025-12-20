@@ -11,6 +11,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Footer } from '@/components/footer';
 import { AnalyticsProvider } from '@/components/analytics-provider';
 import { ChunkErrorHandler } from '@/components/chunk-error-handler';
+import { ConditionalNoIndex } from '@/components/conditional-no-index';
 
 // Optimize font loading with Next.js font optimization (eliminates render-blocking CSS)
 const inter = Inter({
@@ -51,6 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
+        <ConditionalNoIndex />
         {/* Preconnect to Firebase domains for performance (LCP savings) */}
         <link rel="preconnect" href="https://firebase.googleapis.com" />
         <link rel="preconnect" href="https://firebaseapp.com" />
