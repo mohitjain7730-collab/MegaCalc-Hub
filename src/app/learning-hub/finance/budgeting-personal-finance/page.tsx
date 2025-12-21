@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Budgeting & Personal Finance - Finance Learning Hub',
+  description: 'Learn how to create budgets, track expenses, and manage your personal finances effectively.',
+  alternates: {
+    canonical: '/learning-hub/finance/budgeting-personal-finance',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

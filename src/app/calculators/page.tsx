@@ -1,5 +1,14 @@
 
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'All Calculators - MegaCalc Hub',
+  description: 'Browse our complete collection of calculators for finance, health, fitness, and more.',
+  alternates: {
+    canonical: '/calculators',
+  },
+};
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -50,24 +59,24 @@ export default function AllCalculatorsPage() {
                 <div className="flex items-center gap-4 mb-6">
                   <CategoryIcon name={category.Icon} className="h-8 w-8 text-primary" strokeWidth={1.5} />
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                     {String.fromCharCode(97 + categoryIndex)}. {category.name}
+                    {String.fromCharCode(97 + categoryIndex)}. {category.name}
                   </h2>
                 </div>
                 <div className="space-y-3">
                   {categoryCalculators.map((calc, calcIndex) => {
                     calculatorCount++;
                     return (
-                        <Link
+                      <Link
                         href={`/category/${category.slug}/${calc.slug}`}
                         key={calc.id}
                         className="group block"
-                        >
+                      >
                         <Card className="transition-all duration-200 ease-in-out group-hover:bg-muted/50 group-hover:border-primary/30">
-                            <CardHeader>
+                          <CardHeader>
                             <CardTitle className="text-lg group-hover:text-primary">{calculatorCount}. {calcIndex + 1}. {calc.name}</CardTitle>
-                            </CardHeader>
+                          </CardHeader>
                         </Card>
-                        </Link>
+                      </Link>
                     );
                   })}
                 </div>

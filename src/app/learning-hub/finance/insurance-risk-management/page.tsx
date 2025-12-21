@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Insurance & Risk Management - Finance Learning Hub',
+  description: 'Navigate health, life, auto, and property insurance to protect your financial future.',
+  alternates: {
+    canonical: '/learning-hub/finance/insurance-risk-management',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

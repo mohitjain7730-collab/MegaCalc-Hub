@@ -1,4 +1,13 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Retirement Planning - Finance Learning Hub',
+  description: 'Comprehensive guides on retirement planning, 401(k), IRAs, and long-term financial security.',
+  alternates: {
+    canonical: '/learning-hub/finance/retirement-planning',
+  },
+};
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { getRetirementArticlesList } from '../articles';
@@ -29,7 +38,7 @@ export default function RetirementPlanningPage() {
           </p>
         </div>
 
-        <ArticleSearch 
+        <ArticleSearch
           articles={articles}
           iconName="Target"
           searchPlaceholder='Try "401(k)", "Roth IRA", "retirement savings"...'

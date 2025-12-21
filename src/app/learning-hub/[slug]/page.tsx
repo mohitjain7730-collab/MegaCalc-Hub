@@ -78,6 +78,9 @@ export async function generateMetadata({
       title: article.title,
       description,
     },
+    alternates: {
+      canonical: `/learning-hub/${article.slug}`,
+    },
   };
 }
 

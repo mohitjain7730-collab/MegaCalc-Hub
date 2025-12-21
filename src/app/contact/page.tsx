@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     title: 'Contact Us & About | Mycalculating.com',
     description: 'Get in touch with Mycalculating.com. Learn about our mission to provide free, accurate online calculators.',
   },
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function ContactPage() {

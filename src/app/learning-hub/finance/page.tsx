@@ -1,4 +1,13 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Finance Learning Hub - MegaCalc Hub',
+  description: 'Explore finance articles and guides.',
+  alternates: {
+    canonical: '/learning-hub/finance',
+  },
+};
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -25,85 +34,85 @@ export default function FinancePage() {
       icon: 'Target',
       count: retirementArticles.length,
     },
-  {
-    name: 'Budgeting & Personal Finance',
-    slug: 'budgeting-personal-finance',
-    description: 'Learn how to create budgets, track expenses, and manage your personal finances effectively.',
-    icon: 'Scale',
-    count: 0,
-  },
-  {
-    name: 'Taxes & Tax Planning',
-    slug: 'taxes-tax-planning',
-    description: 'Understand tax strategies, deductions, credits, and year-round tax planning.',
-    icon: 'FileText',
-    count: 0,
-  },
-  {
-    name: 'Credit & Debt Management',
-    slug: 'credit-debt-management',
-    description: 'Master credit scores, debt payoff strategies, and responsible credit card usage.',
-    icon: 'CreditCard',
-    count: 0,
-  },
-  {
-    name: 'Insurance & Risk Management',
-    slug: 'insurance-risk-management',
-    description: 'Navigate health, life, auto, and property insurance to protect your financial future.',
-    icon: 'Shield',
-    count: 0,
-  },
-  {
-    name: 'Banking & Accounts',
-    slug: 'banking-accounts',
-    description: 'Choose the right bank accounts, understand fees, and optimize your banking strategy.',
-    icon: 'Landmark',
-    count: 0,
-  },
-  {
-    name: 'Real Estate & Mortgages',
-    slug: 'real-estate-mortgages',
-    description: 'Everything about buying a home, mortgages, refinancing, and real estate investing.',
-    icon: 'Home',
-    count: 0,
-  },
-  {
-    name: 'Loans & Lending',
-    slug: 'loans-lending',
-    description: 'Compare loan options, understand interest rates, and make informed borrowing decisions.',
-    icon: 'Handshake',
-    count: 0,
-  },
-  {
-    name: 'Stocks & Securities',
-    slug: 'stocks-securities',
-    description: 'Learn about stock investing, market analysis, and building a diversified portfolio.',
-    icon: 'TrendingUp',
-    count: 0,
-  },
-  {
-    name: 'Mutual Funds & ETFs',
-    slug: 'mutual-funds-etfs',
-    description: 'Understand mutual funds, ETFs, index funds, and passive investing strategies.',
-    icon: 'PieChart',
-    count: 0,
-  },
-  {
-    name: 'Business & Corporate Finance',
-    slug: 'business-corporate-finance',
-    description: 'Financial management for businesses, cash flow, profitability, and corporate strategies.',
-    icon: 'Briefcase',
-    count: 0,
-  },
-  {
-    name: 'Financial Ratios & Analysis',
-    slug: 'financial-ratios-analysis',
-    description: 'Master financial analysis, ratios, valuation methods, and investment metrics.',
-    icon: 'BarChart',
-    count: 0,
-  },
+    {
+      name: 'Budgeting & Personal Finance',
+      slug: 'budgeting-personal-finance',
+      description: 'Learn how to create budgets, track expenses, and manage your personal finances effectively.',
+      icon: 'Scale',
+      count: 0,
+    },
+    {
+      name: 'Taxes & Tax Planning',
+      slug: 'taxes-tax-planning',
+      description: 'Understand tax strategies, deductions, credits, and year-round tax planning.',
+      icon: 'FileText',
+      count: 0,
+    },
+    {
+      name: 'Credit & Debt Management',
+      slug: 'credit-debt-management',
+      description: 'Master credit scores, debt payoff strategies, and responsible credit card usage.',
+      icon: 'CreditCard',
+      count: 0,
+    },
+    {
+      name: 'Insurance & Risk Management',
+      slug: 'insurance-risk-management',
+      description: 'Navigate health, life, auto, and property insurance to protect your financial future.',
+      icon: 'Shield',
+      count: 0,
+    },
+    {
+      name: 'Banking & Accounts',
+      slug: 'banking-accounts',
+      description: 'Choose the right bank accounts, understand fees, and optimize your banking strategy.',
+      icon: 'Landmark',
+      count: 0,
+    },
+    {
+      name: 'Real Estate & Mortgages',
+      slug: 'real-estate-mortgages',
+      description: 'Everything about buying a home, mortgages, refinancing, and real estate investing.',
+      icon: 'Home',
+      count: 0,
+    },
+    {
+      name: 'Loans & Lending',
+      slug: 'loans-lending',
+      description: 'Compare loan options, understand interest rates, and make informed borrowing decisions.',
+      icon: 'Handshake',
+      count: 0,
+    },
+    {
+      name: 'Stocks & Securities',
+      slug: 'stocks-securities',
+      description: 'Learn about stock investing, market analysis, and building a diversified portfolio.',
+      icon: 'TrendingUp',
+      count: 0,
+    },
+    {
+      name: 'Mutual Funds & ETFs',
+      slug: 'mutual-funds-etfs',
+      description: 'Understand mutual funds, ETFs, index funds, and passive investing strategies.',
+      icon: 'PieChart',
+      count: 0,
+    },
+    {
+      name: 'Business & Corporate Finance',
+      slug: 'business-corporate-finance',
+      description: 'Financial management for businesses, cash flow, profitability, and corporate strategies.',
+      icon: 'Briefcase',
+      count: 0,
+    },
+    {
+      name: 'Financial Ratios & Analysis',
+      slug: 'financial-ratios-analysis',
+      description: 'Master financial analysis, ratios, valuation methods, and investment metrics.',
+      icon: 'BarChart',
+      count: 0,
+    },
   ];
-  
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
       <div className="w-full max-w-7xl mx-auto">

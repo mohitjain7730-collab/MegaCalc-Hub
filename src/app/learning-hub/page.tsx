@@ -1,4 +1,13 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Learning Hub - MegaCalc Hub',
+  description: 'Explore our educational content on finance, health, and more.',
+  alternates: {
+    canonical: '/learning-hub',
+  },
+};
 import {
   Card,
   CardDescription,

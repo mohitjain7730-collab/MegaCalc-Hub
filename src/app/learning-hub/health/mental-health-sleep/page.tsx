@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Mental Health & Sleep - Health Learning Hub',
+  description: 'Explore mental wellness, stress management, and sleep optimization.',
+  alternates: {
+    canonical: '/learning-hub/health/mental-health-sleep',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

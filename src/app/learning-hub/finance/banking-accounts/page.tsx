@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Banking & Accounts - Finance Learning Hub',
+  description: 'Choose the right bank accounts, understand fees, and optimize your banking strategy.',
+  alternates: {
+    canonical: '/learning-hub/finance/banking-accounts',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

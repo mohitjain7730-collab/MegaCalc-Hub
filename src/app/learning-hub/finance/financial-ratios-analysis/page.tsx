@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Financial Ratios & Analysis - Finance Learning Hub',
+  description: 'Master financial analysis, ratios, valuation methods, and investment metrics.',
+  alternates: {
+    canonical: '/learning-hub/finance/financial-ratios-analysis',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     title: 'Terms & Conditions | Mycalculating.com',
     description: 'Read our terms and conditions to understand the rules and regulations for using Mycalculating.com.',
   },
+  alternates: {
+    canonical: '/terms-conditions',
+  },
 };
 
 export default function TermsConditionsPage() {

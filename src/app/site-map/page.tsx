@@ -6,8 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CategoryIcon } from '@/components/category-icon';
 import { SitemapLink } from '@/components/sitemap-link';
+import { getCalculatorsByCategory } from '@/lib/calculator-data-utils';
 import { categories } from '@/lib/categories';
-import { calculators } from '@/lib/calculators';
 import { getFinanceArticles, getRetirementArticlesList } from '@/app/learning-hub/finance/articles';
 import { getNutritionArticles } from '@/app/learning-hub/health/nutrition-diet/articles';
 import { articles as LEARNING_HUB_BASE_ARTICLES } from '@/lib/learning-hub-articles';
@@ -15,17 +15,26 @@ import { articles as LEARNING_HUB_BASE_ARTICLES } from '@/lib/learning-hub-artic
 export const metadata: Metadata = {
   title: 'Sitemap - Mycalculating.com',
   description: 'Complete sitemap of all calculators and learning hub articles organized by category and topic.',
+  alternates: {
+    canonical: '/site-map',
+  },
 };
 
-export default function SitemapPage() {
+export default async function SitemapPage() {
   const FINANCE_ARTICLES = getFinanceArticles();
   const RETIREMENT_ARTICLES = getRetirementArticlesList();
   const NUTRITION_ARTICLES = getNutritionArticles();
-  // Group calculators by category
-  const calculatorsByCategory = categories.map((category) => ({
-    category,
-    calculators: calculators.filter((calc) => calc.category === category.slug),
-  })).filter((group) => group.calculators.length > 0);
+
+  // Dynamically fetch calculators for each category
+  const calculatorsByCategory = (await Promise.all(
+    categories.map(async (category) => {
+      const calcs = await getCalculatorsByCategory(category.slug);
+      return {
+        category,
+        calculators: calcs,
+      };
+    })
+  )).filter((group) => group.calculators.length > 0);
 
   // Finance sections (all sections from finance page)
   const financeSections = [
@@ -181,11 +190,11 @@ export default function SitemapPage() {
     },
   ];
 
-  const totalCalculators = calculators.length;
-  const totalArticles = 
-    FINANCE_ARTICLES.length + 
-    RETIREMENT_ARTICLES.length + 
-    NUTRITION_ARTICLES.length + 
+  const totalCalculators = calculatorsByCategory.reduce((acc, group) => acc + group.calculators.length, 0);
+  const totalArticles =
+    FINANCE_ARTICLES.length +
+    RETIREMENT_ARTICLES.length +
+    NUTRITION_ARTICLES.length +
     LEARNING_HUB_BASE_ARTICLES.length;
 
   return (
@@ -228,7 +237,7 @@ export default function SitemapPage() {
           <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 px-1">
             All calculators organized by category
           </p>
-          
+
           <Accordion type="multiple" className="w-full space-y-3 sm:space-y-4 md:space-y-6">
             {calculatorsByCategory.map(({ category, calculators: categoryCalculators }) => (
               <AccordionItem key={category.slug} value={category.slug} className="border rounded-lg overflow-hidden">
@@ -315,11 +324,11 @@ export default function SitemapPage() {
                       <CardContent className="pt-3 sm:pt-4 md:pt-6 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
                         <Accordion type="multiple" className="w-full space-y-4 sm:space-y-6">
                           {topic.sections.map((section) => {
-                            const sectionUrl = topic.topic === 'Finance' 
+                            const sectionUrl = topic.topic === 'Finance'
                               ? `/learning-hub/finance/${section.slug}`
                               : topic.topic === 'Health'
-                              ? `/learning-hub/health/${section.slug}`
-                              : null;
+                                ? `/learning-hub/health/${section.slug}`
+                                : null;
                             return (
                               <AccordionItem key={section.slug} value={section.slug} className="border-b last:border-b-0">
                                 <AccordionTrigger className="hover:no-underline py-2 sm:py-3">

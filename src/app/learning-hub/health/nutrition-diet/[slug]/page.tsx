@@ -26,15 +26,15 @@ function isHtmlContent(content: string): boolean {
 export const dynamicParams = true;
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params;
   const articleContent = getNutritionArticleContent();
   const article = articleContent[slug];
-  
+
   if (!article) {
     return {
       title: 'Article Not Found',
@@ -57,32 +57,35 @@ export async function generateMetadata({
       title: article.title,
       description: article.description,
     },
+    alternates: {
+      canonical: `/learning-hub/health/nutrition-diet/${article.slug}`,
+    },
   };
 }
 
-export default async function NutritionDietArticlePage({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export default async function NutritionDietArticlePage({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }) {
   const { slug } = await params;
-  
+
   const articleContent = getNutritionArticleContent();
   const article = articleContent[slug];
-  
+
   if (!article) {
     notFound();
   }
 
   const title = article.title || slugToTitle(slug);
-  
+
   // Get author information
   const author = getAuthorForArticle(
     article.title,
     article.category || 'Learning hub> Health> nutrition & diet',
     article.author
   );
-  const publishedDate = article.publishedDate 
+  const publishedDate = article.publishedDate
     ? new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
     : getDeterministicDate(article.title);
 
@@ -90,13 +93,13 @@ export default async function NutritionDietArticlePage({
   const rawContent = isHtmlContent(article.content)
     ? article.content
     : article.content;
-  
+
   // Extract category for enhancements
   const categorySlug = 'health-fitness'; // Health articles use health-fitness category
-  
+
   const formatted = formatArticleContent(
-    rawContent, 
-    author, 
+    rawContent,
+    author,
     publishedDate,
     slug, // topic/slug for deterministic enhancements
     categorySlug // category for content selection
@@ -145,7 +148,7 @@ export default async function NutritionDietArticlePage({
         a: match[2].replace(/<[^>]+>/g, '').trim()
       });
     }
-    
+
     if (faqs.length > 0) {
       faqSchema = {
         "@type": "FAQPage",
@@ -196,12 +199,12 @@ export default async function NutritionDietArticlePage({
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
           {/* Breadcrumbs */}
           <ArticleBreadcrumbs items={breadcrumbItems} />
-          
+
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-6">
             {title}
           </h1>
-          
-          <div 
+
+          <div
             className="article-content"
             dangerouslySetInnerHTML={{ __html: formatted.html }}
           />

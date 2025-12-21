@@ -1,4 +1,13 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Health Learning Hub - MegaCalc Hub',
+  description: 'Explore health articles and guides.',
+  alternates: {
+    canonical: '/learning-hub/health',
+  },
+};
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,57 +26,57 @@ export default function HealthPage() {
       icon: 'Apple',
       count: nutritionArticles.length,
     },
-  {
-    name: 'Weight & Metabolism',
-    slug: 'weight-metabolism',
-    description: 'Understand weight management, metabolic health, and body composition.',
-    icon: 'Scale',
-    count: 0,
-  },
-  {
-    name: 'Fitness & Sports',
-    slug: 'fitness-sports',
-    description: 'Explore exercise science, training programs, and athletic performance.',
-    icon: 'Activity',
-    count: 0,
-  },
-  {
-    name: 'Body Composition',
-    slug: 'body-composition',
-    description: 'Learn about muscle mass, body fat, and physical measurements.',
-    icon: 'Target',
-    count: 0,
-  },
-  {
-    name: "Women's Health",
-    slug: 'womens-health',
-    description: 'Comprehensive guides on women\'s health, hormones, and wellness.',
-    icon: 'HeartPulse',
-    count: 0,
-  },
-  {
-    name: 'Medical Risk Scores',
-    slug: 'medical-risk-scores',
-    description: 'Understand health risk assessments, screening tools, and preventive care.',
-    icon: 'Shield',
-    count: 0,
-  },
-  {
-    name: 'Mental Health & Sleep',
-    slug: 'mental-health-sleep',
-    description: 'Explore mental wellness, stress management, and sleep optimization.',
-    icon: 'Moon',
-    count: 0,
-  },
-  {
-    name: 'Longevity & Wellness',
-    slug: 'longevity-wellness',
-    description: 'Discover strategies for healthy aging and long-term wellness.',
-    icon: 'Leaf',
-    count: 0,
-  },
+    {
+      name: 'Weight & Metabolism',
+      slug: 'weight-metabolism',
+      description: 'Understand weight management, metabolic health, and body composition.',
+      icon: 'Scale',
+      count: 0,
+    },
+    {
+      name: 'Fitness & Sports',
+      slug: 'fitness-sports',
+      description: 'Explore exercise science, training programs, and athletic performance.',
+      icon: 'Activity',
+      count: 0,
+    },
+    {
+      name: 'Body Composition',
+      slug: 'body-composition',
+      description: 'Learn about muscle mass, body fat, and physical measurements.',
+      icon: 'Target',
+      count: 0,
+    },
+    {
+      name: "Women's Health",
+      slug: 'womens-health',
+      description: 'Comprehensive guides on women\'s health, hormones, and wellness.',
+      icon: 'HeartPulse',
+      count: 0,
+    },
+    {
+      name: 'Medical Risk Scores',
+      slug: 'medical-risk-scores',
+      description: 'Understand health risk assessments, screening tools, and preventive care.',
+      icon: 'Shield',
+      count: 0,
+    },
+    {
+      name: 'Mental Health & Sleep',
+      slug: 'mental-health-sleep',
+      description: 'Explore mental wellness, stress management, and sleep optimization.',
+      icon: 'Moon',
+      count: 0,
+    },
+    {
+      name: 'Longevity & Wellness',
+      slug: 'longevity-wellness',
+      description: 'Discover strategies for healthy aging and long-term wellness.',
+      icon: 'Leaf',
+      count: 0,
+    },
   ];
-  
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
       <div className="w-full max-w-7xl mx-auto">

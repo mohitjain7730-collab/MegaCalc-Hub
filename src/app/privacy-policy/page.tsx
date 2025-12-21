@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     title: 'Privacy Policy | Mycalculating.com',
     description: 'Read our comprehensive privacy policy to understand how Mycalculating.com collects, uses, and protects your personal information.',
   },
+  alternates: {
+    canonical: '/privacy-policy',
+  },
 };
 
 export default function PrivacyPolicyPage() {
@@ -56,7 +59,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-base leading-relaxed">
               We collect several types of information to provide and improve our services:
             </p>
-            
+
             <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">1.1 Automatically Collected Information</h3>
             <p className="text-base leading-relaxed">
               When you visit our website, we automatically collect certain information about your device and browsing behavior, including:
@@ -100,7 +103,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-base leading-relaxed">
               We use third-party services that may collect information used to identify you:
             </p>
-            
+
             <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">3.1 Firebase Analytics</h3>
             <p className="text-base leading-relaxed">
               We use Firebase Analytics, a Google service, for website analytics. This service collects information about your use of the website, including your IP address, time of visit, pages visited, and other standard log information. This information is used to evaluate website usage and compile statistical reports. For more information about how Google uses data, please visit{' '}
@@ -108,7 +111,7 @@ export default function PrivacyPolicyPage() {
                 Google's Privacy Policy
               </a>.
             </p>
-            
+
             <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">3.2 Other Third-Party Services</h3>
             <p className="text-base leading-relaxed">
               We may use other third-party services for analytics, hosting, and website functionality. These services have their own privacy policies governing the collection and use of your information.

@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Stocks & Securities - Finance Learning Hub',
+  description: 'Learn about stock investing, market analysis, and building a diversified portfolio.',
+  alternates: {
+    canonical: '/learning-hub/finance/stocks-securities',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

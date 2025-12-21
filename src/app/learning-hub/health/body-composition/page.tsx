@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Body Composition - Health Learning Hub',
+  description: 'Learn about muscle mass, body fat, and physical measurements.',
+  alternates: {
+    canonical: '/learning-hub/health/body-composition',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

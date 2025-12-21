@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Credit & Debt Management - Finance Learning Hub',
+  description: 'Master credit scores, debt payoff strategies, and responsible credit card usage.',
+  alternates: {
+    canonical: '/learning-hub/finance/credit-debt-management',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

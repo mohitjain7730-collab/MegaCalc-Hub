@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Women's Health - Health Learning Hub',
+  description: 'Comprehensive guides on women\'s health, hormones, and wellness.',
+  alternates: {
+    canonical: '/learning-hub/health/womens-health',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

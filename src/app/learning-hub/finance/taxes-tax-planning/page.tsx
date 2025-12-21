@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Taxes & Tax Planning - Finance Learning Hub',
+  description: 'Understand tax strategies, deductions, credits, and year-round tax planning.',
+  alternates: {
+    canonical: '/learning-hub/finance/taxes-tax-planning',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

@@ -1,4 +1,13 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Nutrition & Diet - Health Learning Hub',
+  description: 'Learn about healthy eating, meal planning, and nutritional science.',
+  alternates: {
+    canonical: '/learning-hub/health/nutrition-diet',
+  },
+};
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { getNutritionArticles } from './articles';
@@ -29,7 +38,7 @@ export default function NutritionDietPage() {
           </p>
         </div>
 
-        <ArticleSearch 
+        <ArticleSearch
           articles={articles}
           iconName="Apple"
           searchPlaceholder='Try "metabolic flexibility", "protein", "gut health"...'

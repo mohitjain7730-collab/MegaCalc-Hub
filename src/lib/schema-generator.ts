@@ -101,9 +101,10 @@ const getTodayDateString = () => {
 };
 
 // Calculator Schema
+// Calculator Schema
 export function generateCalculatorSchema(calculator: Calculator, category: Category) {
   const baseUrl = "https://mycalculating.com";
-  
+
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -114,8 +115,6 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
     "operatingSystem": "Web Browser",
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
     "softwareVersion": "1.0",
-    "datePublished": "2024-01-01",
-    "dateModified": getTodayDateString(),
     "author": {
       "@type": "Organization",
       "name": "Mycalculating.com"
@@ -123,7 +122,11 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
     "publisher": {
       "@type": "Organization",
       "name": "Mycalculating.com",
-      "url": baseUrl
+      "url": baseUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/logo.png`
+      }
     },
     "offers": {
       "@type": "Offer",
@@ -138,14 +141,6 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
       "Mobile-friendly",
       "Accurate results"
     ],
-    "screenshot": `${baseUrl}/screenshots/${calculator.slug}.png`,
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "1000",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
     "keywords": `${calculator.name}, calculator, ${category.name}`,
     "isPartOf": {
       "@type": "WebSite",
@@ -155,14 +150,16 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `${baseUrl}/category/${category.slug}/${calculator.slug}`
-    }
+    },
+    "datePublished": "2024-01-01",
+    "dateModified": getTodayDateString()
   };
 }
 
 // Category Page Schema
 export function generateCategorySchema(category: Category, categoryCalculators: Calculator[]) {
   const baseUrl = "https://mycalculating.com";
-  
+
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -209,7 +206,7 @@ export function generateCategorySchema(category: Category, categoryCalculators: 
 // Calculators Listing Page Schema
 export function generateCalculatorsListingSchema() {
   const baseUrl = "https://mycalculating.com";
-  
+
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",

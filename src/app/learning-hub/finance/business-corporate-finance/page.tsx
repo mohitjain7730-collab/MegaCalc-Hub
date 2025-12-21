@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Business & Corporate Finance - Finance Learning Hub',
+  description: 'Financial management for businesses, cash flow, profitability, and corporate strategies.',
+  alternates: {
+    canonical: '/learning-hub/finance/business-corporate-finance',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

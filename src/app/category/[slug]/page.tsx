@@ -1,4 +1,6 @@
 
+
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -11,9 +13,30 @@ import { CategorySearch } from '@/components/category-search';
 import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { generateCategorySchema } from '@/lib/schema-generator';
 
+
+
 // Use ISR for category pages - faster builds while maintaining LCP performance
 export const revalidate = 3600; // Revalidate every hour
 export const dynamicParams = true; // Allow dynamic params for on-demand generation
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const category = categories.find((c) => c.slug === slug);
+
+  if (!category) {
+    return {
+      title: 'Category Not Found',
+    };
+  }
+
+  return {
+    title: `${category.name} Calculators - Mycalculating.com`,
+    description: category.description,
+    alternates: {
+      canonical: `/category/${category.slug}`,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return categories.map((category) => ({

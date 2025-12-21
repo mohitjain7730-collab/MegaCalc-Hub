@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Longevity & Wellness - Health Learning Hub',
+  description: 'Discover strategies for healthy aging and long-term wellness.',
+  alternates: {
+    canonical: '/learning-hub/health/longevity-wellness',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

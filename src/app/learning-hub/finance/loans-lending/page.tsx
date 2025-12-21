@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Loans & Lending - Finance Learning Hub',
+  description: 'Compare loan options, understand interest rates, and make informed borrowing decisions.',
+  alternates: {
+    canonical: '/learning-hub/finance/loans-lending',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

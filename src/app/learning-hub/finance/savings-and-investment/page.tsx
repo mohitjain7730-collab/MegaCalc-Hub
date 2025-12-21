@@ -1,4 +1,13 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Savings & Investment - Finance Learning Hub',
+  description: 'Deep dives on building savings habits, optimizing emergency funds, and crafting U.S.-centric investment strategies.',
+  alternates: {
+    canonical: '/learning-hub/finance/savings-and-investment',
+  },
+};
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { getFinanceArticles } from '../articles';
@@ -29,7 +38,7 @@ export default function SavingsAndInvestmentPage() {
           </p>
         </div>
 
-        <ArticleSearch 
+        <ArticleSearch
           articles={articles}
           iconName="PiggyBank"
           searchPlaceholder='Try "Roth IRA limits", "ETFs", "emergency fund"...'

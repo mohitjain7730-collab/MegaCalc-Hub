@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Real Estate & Mortgages - Finance Learning Hub',
+  description: 'Everything about buying a home, mortgages, refinancing, and real estate investing.',
+  alternates: {
+    canonical: '/learning-hub/finance/real-estate-mortgages',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

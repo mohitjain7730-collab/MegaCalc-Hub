@@ -31,26 +31,26 @@ function markdownToHtml(markdown: string): string {
   // Convert headers (must be done before paragraph conversion)
   html = html.replace(/^### (.+)$/gim, '<h3 class="text-xl font-semibold mt-6 mb-2">$1</h3>');
   html = html.replace(/^## (.+)$/gim, '<h2 class="text-2xl font-semibold mt-8 mb-4">$1</h2>');
-  
+
   // Convert bold text first (must be before italic)
   html = html.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold">$1</strong>');
-  
+
   // Convert italic text (single asterisks that are not part of double asterisks)
   // Match single * only where it's not preceded or followed by another *
   html = html.replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '<em>$1</em>');
-  
+
   // Process lists - first mark list items
   const lines = html.split('\n');
   const processedLines: string[] = [];
   let inList = false;
   let listItems: string[] = [];
-  
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
-    
+
     // Check if line is a list item
     const listMatch = line.match(/^[\*\-\+]\s+(.+)$/);
-    
+
     if (listMatch) {
       if (!inList) {
         inList = true;
@@ -69,12 +69,12 @@ function markdownToHtml(markdown: string): string {
         inList = false;
         listItems = [];
       }
-      
+
       // Process non-list lines
       if (line) {
         // Already a header or other tag
         if (line.startsWith('<h') || line.startsWith('<ul') || line.startsWith('</ul') ||
-            line.startsWith('<li') || line.startsWith('</li')) {
+          line.startsWith('<li') || line.startsWith('</li')) {
           processedLines.push(line);
         } else {
           // Regular paragraph
@@ -83,24 +83,24 @@ function markdownToHtml(markdown: string): string {
       }
     }
   }
-  
+
   // Close any remaining list
   if (inList && listItems.length > 0) {
     processedLines.push('<ul class="list-disc space-y-2 my-4">');
     processedLines.push(...listItems);
     processedLines.push('</ul>');
   }
-  
+
   html = processedLines.join('\n');
-  
+
   // Restore code blocks
   codeBlocks.forEach((block, index) => {
     html = html.replace(`__CODE_BLOCK_${index}__`, block);
   });
-  
+
   // Convert inline code (last, after other processing)
   html = html.replace(/`([^`]+)`/g, '<code class="bg-muted px-1 py-0.5 rounded text-sm font-mono">$1</code>');
-  
+
   return html;
 }
 
@@ -113,15 +113,15 @@ function isHtmlContent(content: string): boolean {
 export const dynamicParams = true;
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params;
   const articleContent = getArticleContent();
   const article = articleContent[slug];
-  
+
   if (!article) {
     return {
       title: 'Article Not Found',
@@ -144,32 +144,35 @@ export async function generateMetadata({
       title: article.title,
       description: article.description,
     },
+    alternates: {
+      canonical: `/learning-hub/finance/${article.slug}`,
+    },
   };
 }
 
-export default async function FinanceArticlePage({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export default async function FinanceArticlePage({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }) {
   const { slug } = await params;
-  
+
   const articleContent = getArticleContent();
   const article = articleContent[slug];
-  
+
   if (!article) {
     notFound();
   }
 
   const title = article.title || slugToTitle(slug);
-  
+
   // Get author information
   const author = getAuthorForArticle(
     article.title,
     article.category || 'Learning hub> Finance',
     article.author
   );
-  const publishedDate = article.publishedDate 
+  const publishedDate = article.publishedDate
     ? new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
     : getDeterministicDate(article.title);
 
@@ -177,18 +180,18 @@ export default async function FinanceArticlePage({
   const rawContent = isHtmlContent(article.content)
     ? article.content
     : markdownToHtml(article.content);
-  
+
   // Determine breadcrumbs based on category
   const categoryParts = (article.category || 'Learning hub> Finance').split('>').map((p: string) => p.trim());
-  
+
   // Extract category for enhancements (e.g., "finance" from "Learning hub> Finance")
-  const categorySlug = categoryParts.length > 1 
+  const categorySlug = categoryParts.length > 1
     ? categoryParts[1].toLowerCase().replace(/\s+/g, '-')
     : 'finance';
-  
+
   const formatted = formatArticleContent(
-    rawContent, 
-    author, 
+    rawContent,
+    author,
     publishedDate,
     slug, // topic/slug for deterministic enhancements
     categorySlug // category for content selection
@@ -197,7 +200,7 @@ export default async function FinanceArticlePage({
     { label: 'Learning Hub', href: '/learning-hub' },
     { label: 'Finance', href: '/learning-hub/finance' },
   ];
-  
+
   // Add subcategory if exists
   if (categoryParts.length > 2) {
     const subcategory = categoryParts[2];
@@ -207,7 +210,7 @@ export default async function FinanceArticlePage({
       breadcrumbItems.push({ label: 'Retirement Planning', href: '/learning-hub/finance/retirement-planning' });
     }
   }
-  
+
   breadcrumbItems.push({ label: title, href: '' });
 
   // Build base URL for the article
@@ -245,7 +248,7 @@ export default async function FinanceArticlePage({
         a: match[2].replace(/<[^>]+>/g, '').trim()
       });
     }
-    
+
     if (faqs.length > 0) {
       faqSchema = {
         "@type": "FAQPage",
@@ -289,17 +292,17 @@ export default async function FinanceArticlePage({
                 Back to Savings & Investment
               </Link>
             </Button>
-            
+
             {/* Breadcrumbs */}
             <ArticleBreadcrumbs items={breadcrumbItems} />
-            
+
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-6">
               {title}
             </h1>
           </div>
 
           <article className="prose prose-slate dark:prose-invert max-w-none">
-            <div 
+            <div
               className="article-content"
               dangerouslySetInnerHTML={{ __html: formatted.html }}
             />

@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Medical Risk Scores - Health Learning Hub',
+  description: 'Understand health risk assessments, screening tools, and preventive care.',
+  alternates: {
+    canonical: '/learning-hub/health/medical-risk-scores',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

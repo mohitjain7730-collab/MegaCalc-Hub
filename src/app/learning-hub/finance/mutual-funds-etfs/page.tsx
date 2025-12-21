@@ -1,4 +1,14 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Mutual Funds & ETFs - Finance Learning Hub',
+  description: 'Understand mutual funds, ETFs, index funds, and passive investing strategies.',
+  alternates: {
+    canonical: '/learning-hub/finance/mutual-funds-etfs',
+  },
+};
+
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
