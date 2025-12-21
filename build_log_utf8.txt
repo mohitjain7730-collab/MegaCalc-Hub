@@ -1,0 +1,77 @@
+
+> nextn@0.1.0 build
+> cross-env NODE_OPTIONS=--max-old-space-size=6144 next build
+
+   ??? Next.js 15.3.6
+
+   Creating an optimized production build ...
+node.exe : Failed to 
+compile.
+At C:\Program Files\n
+odejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Failed    
+ to compile.:Stri    
+ng) [], RemoteEx    
+ception
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+./src/app/learning-hu
+b/health/womens-healt
+h/page.tsx
+Error:   [31mx[0m 
+Expected ',', got 's'
+   ,-[[36;1;4mD:\Meg
+aCalc-Hub\src\app\lea
+rning-hub\health\wome
+ns-health\page.tsx[0
+m:5:1]
+ [2m2[0m | import 
+type { Metadata } 
+from 'next';
+ [2m3[0m | 
+ [2m4[0m | export 
+const metadata: 
+Metadata = {
+ [2m5[0m |   
+title: 'Women's 
+Health - Health 
+Learning Hub',
+   : [35;1m         
+       ^[0m
+ [2m6[0m |   
+description: 
+'Comprehensive 
+guides on women\'s 
+health, hormones, 
+and wellness.',
+ [2m7[0m |   
+alternates: {
+ [2m8[0m |     
+canonical: '/learning
+-hub/health/womens-he
+alth',
+   `----
+
+Caused by:
+    Syntax Error
+
+Import trace for 
+requested module:
+./src/app/learning-hu
+b/health/womens-healt
+h/page.tsx
+
+
+> Build failed 
+because of webpack 
+errors
