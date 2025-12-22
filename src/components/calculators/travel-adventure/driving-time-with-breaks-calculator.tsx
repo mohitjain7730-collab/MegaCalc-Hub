@@ -59,7 +59,12 @@ const relatedCalculators = [
 ];
 
 export default function DrivingTimeWithBreaksCalculator() {
-    const [result, setResult] = useState<ReturnType<typeof calculateDrivingTimeWithBreaks> | null>(null);
+    const [result, setResult] = useState<{
+        driveTime: string;
+        breakTime: string;
+        totalTime: string;
+        numBreaks: number;
+    } | null>(null);
 
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
@@ -74,27 +79,11 @@ export default function DrivingTimeWithBreaksCalculator() {
     });
 
     const onSubmit = (data: FormValues) => {
-        // Adapter for the new signature: calculateDrivingTimeWithBreaks expects an object with specific keys
-        // My travel-utils signature: function calculateDrivingTimeWithBreaks(data: { distance: number, distanceUnit: 'kilometers'|'miles', speed: number, speedUnit: 'kmh'|'mph', drivingDuration: number, breakDuration: number })
-        // The raw calc passed `breakFrequency` as `drivingDuration` logic?
-        // Let's check travel-utils.ts: "drivingDuration" is the frequency of breaks ("Break Every (hours)").
-        // So map breakFrequency -> drivingDuration.
-
         const time = calculateDrivingTimeWithBreaks({
             ...data,
             drivingDuration: data.breakFrequency
         });
-        setResult({
-            ...time,
-            drivingTimeFormatted: time.driveTime,
-            totalBreakTimeFormatted: time.breakTime,
-            totalJourneyTimeFormatted: time.totalTime,
-            numberOfBreaks: time.numBreaks,
-            timeline: [] // The utility doesn't return timeline yet. I should add it or polyfill it here.
-        });
-        // Wait, the new utility DOES NOT return `timeline` array. The raw calculator expected it.
-        // I need to generate timeline here or update utility.
-        // I'll generate simplified timeline here.
+        setResult(time);
     };
 
     return (
@@ -216,16 +205,16 @@ export default function DrivingTimeWithBreaksCalculator() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                             <div className="p-4 bg-muted rounded-lg">
                                 <p className="text-sm text-muted-foreground">Driving Time</p>
-                                <p className="text-2xl font-bold text-primary">{result.drivingTimeFormatted}</p>
+                                <p className="text-2xl font-bold text-primary">{result.driveTime}</p>
                             </div>
                             <div className="p-4 bg-muted rounded-lg">
                                 <p className="text-sm text-muted-foreground">Break Time</p>
-                                <p className="text-2xl font-bold">{result.totalBreakTimeFormatted}</p>
-                                <p className="text-xs text-muted-foreground">{result.numberOfBreaks} break(s)</p>
+                                <p className="text-2xl font-bold">{result.breakTime}</p>
+                                <p className="text-xs text-muted-foreground">{result.numBreaks} break(s)</p>
                             </div>
                             <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg">
                                 <p className="text-sm text-muted-foreground">Total Journey Time</p>
-                                <p className="text-2xl font-bold text-green-600">{result.totalJourneyTimeFormatted}</p>
+                                <p className="text-2xl font-bold text-green-600">{result.totalTime}</p>
                             </div>
                         </div>
                     </CardContent>
