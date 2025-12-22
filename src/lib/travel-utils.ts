@@ -388,14 +388,15 @@ export function calculateLayoverTime(data: { arrivalTime: string, departureTime:
     const diffMs = d2.getTime() - d1.getTime();
     const diffMinutes = Math.floor(diffMs / 60000);
 
-    if (diffMinutes < 0) return { text: "Invalid times", isTight: false };
+    if (diffMinutes < 0) return { text: "Invalid times", isTight: false, totalMinutes: diffMinutes };
 
     const hours = Math.floor(diffMinutes / 60);
     const minutes = diffMinutes % 60;
 
     return {
         text: `${hours}h ${minutes}m`,
-        isTight: diffMinutes < 60 // Simple rule
+        isTight: diffMinutes < 60, // Simple rule
+        totalMinutes: diffMinutes
     };
 }
 

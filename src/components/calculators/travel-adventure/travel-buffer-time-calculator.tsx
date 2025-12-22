@@ -60,7 +60,7 @@ export default function TravelBufferTimeCalculator() {
 
     const onSubmit = (data: FormValues) => {
         // travel-utils signature: calculateBufferTime(baseMinutes: number, percentage: number)
-        const res = calculateBufferTime(data.baseTravelTime, data.bufferPercentage);
+        const res = calculateBufferTime({ travelTime: data.baseTravelTime, bufferPercentage: data.bufferPercentage });
         setResult(res);
     };
 
@@ -126,15 +126,15 @@ export default function TravelBufferTimeCalculator() {
                     <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                         <div className="p-4 bg-muted rounded-lg">
                             <p className="text-sm text-muted-foreground">Base Time</p>
-                            <p className="text-2xl font-bold">{result.baseTimeFormatted}</p>
+                            <p className="text-2xl font-bold">{result.original}</p>
                         </div>
                         <div className="p-4 bg-orange-50 dark:bg-orange-950/20 rounded-lg">
                             <p className="text-sm text-muted-foreground">Buffer Added</p>
-                            <p className="text-2xl font-bold text-orange-600">+{result.bufferTimeFormatted}</p>
+                            <p className="text-2xl font-bold text-orange-600">+{result.buffer}</p>
                         </div>
                         <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg">
                             <p className="text-sm text-muted-foreground">Total Padded Time</p>
-                            <p className="text-2xl font-bold text-green-600">{result.totalTimeFormatted}</p>
+                            <p className="text-2xl font-bold text-green-600">{result.total}</p>
                         </div>
                     </CardContent>
                 </Card>

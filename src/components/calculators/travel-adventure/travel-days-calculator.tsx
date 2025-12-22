@@ -63,8 +63,12 @@ export default function TravelDaysCalculator() {
 
     const onSubmit = (data: FormValues) => {
         // travel-utils expects (startDate, endDate)
-        const res = calculateTravelDays(data.startDate, data.endDate);
-        setResult(res);
+        const res = calculateTravelDays({ startDate: new Date(data.startDate), endDate: new Date(data.endDate) });
+        setResult({
+            totalDays: res.days,
+            totalNights: res.nights,
+            formatted: "" // Not used in success case
+        });
     };
 
     return (

@@ -62,8 +62,11 @@ export default function LayoverTimeCalculator() {
     });
 
     const onSubmit = (data: FormValues) => {
-        const res = calculateLayoverTime({ arrivalDateTime: data.arrivalDateTime, departureDateTime: data.departureDateTime });
-        setResult(res);
+        const res = calculateLayoverTime({ arrivalTime: data.arrivalDateTime, departureTime: data.departureDateTime });
+        setResult({
+            totalMinutes: res.totalMinutes,
+            formatted: res.text
+        });
     };
 
     return (
@@ -195,7 +198,7 @@ export default function LayoverTimeCalculator() {
                         <li><strong>Deplaning (15-30 minutes):</strong> It takes time to get off the aircraft, especially if you are seated at the back.</li>
                         <li><strong>Navigating the Airport (15-45 minutes):</strong> This includes walking to your next gate. For large international hubs like Dubai (DXB) or Atlanta (ATL), this can involve long walks, bus rides, or train journeys between terminals.</li>
                         <li><strong>Security and Immigration (Domestic vs. International):</strong>
-                            <ul class='list-disc pl-5 space-y-2 mt-2'>
+                            <ul className='list-disc pl-5 space-y-2 mt-2'>
                                 <li><strong>Domestic Layover:</strong> If you stay within the same terminal and don't exit the secure area, you usually don't need to go through security again.</li>
                                 <li><strong>International Layover:</strong> You will almost certainly have to go through immigration/passport control upon arrival and then a full security screening before proceeding to your connecting flight's gate. This can take anywhere from 30 minutes to over 2 hours during peak times.</li>
                             </ul>
