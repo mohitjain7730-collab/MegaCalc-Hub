@@ -68,9 +68,9 @@ export default function BackpackWeightCalculator() {
             bodyWeight: undefined,
             bodyWeightUnit: 'pounds',
             items: [
-                { name: 'Backpack', weight: undefined, unit: 'pounds' },
-                { name: 'Tent', weight: undefined, unit: 'pounds' },
-                { name: 'Sleeping Bag', weight: undefined, unit: 'grams' },
+                { name: 'Backpack', weight: 0, unit: 'pounds' },
+                { name: 'Tent', weight: 0, unit: 'pounds' },
+                { name: 'Sleeping Bag', weight: 0, unit: 'grams' },
                 { name: 'Water (1L)', weight: 1000, unit: 'grams' },
             ],
         },
@@ -183,7 +183,7 @@ export default function BackpackWeightCalculator() {
                                     variant="outline"
                                     size="sm"
                                     className="mt-4 flex items-center gap-2"
-                                    onClick={() => append({ name: '', weight: undefined, unit: 'grams' })}>
+                                    onClick={() => append({ name: '', weight: 0, unit: 'grams' })}>
                                     <PlusCircle className="h-4 w-4" /> Add Item
                                 </Button>
                             </div>
