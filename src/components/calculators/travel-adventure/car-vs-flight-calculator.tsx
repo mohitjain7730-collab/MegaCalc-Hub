@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Car, Plane, DollarSign, Calculator, Info, CheckCircle, ArrowRight, Fuel } from 'lucide-react';
+import { Car, Plane, DollarSign, Calculator, Info, CheckCircle, ArrowRight } from 'lucide-react';
 import {
     Select,
     SelectContent,

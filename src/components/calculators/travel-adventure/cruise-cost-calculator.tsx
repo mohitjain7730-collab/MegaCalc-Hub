@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Ship, DollarSign, Calculator, Info, Anchor, Wine, Ticket, ArrowRight } from 'lucide-react';
+import { Ship, DollarSign, Calculator, Info, Anchor, Wine, Ticket, ArrowRight, Map } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
