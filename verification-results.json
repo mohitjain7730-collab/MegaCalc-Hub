@@ -1,0 +1,29 @@
+{
+  "passed": [
+    "enterprise-value-calculator.tsx",
+    "ev-ebit-ebitda-multiple-calculator.tsx",
+    "sharpe-ratio-calculator.tsx",
+    "sortino-ratio-calculator.tsx",
+    "treynor-ratio-calculator.tsx",
+    "alpha-investment-calculator.tsx",
+    "volatility-standard-deviation-calculator.tsx",
+    "correlation-coefficient-calculator.tsx",
+    "beta-asset-calculator.tsx",
+    "portfolio-expected-return-calculator.tsx",
+    "capm-calculator.tsx",
+    "wacc-calculator.tsx",
+    "binomial-option-pricing-calculator.tsx",
+    "monte-carlo-portfolio-calculator.tsx",
+    "value-at-risk-calculator.tsx",
+    "conditional-value-at-risk-calculator.tsx",
+    "bond-yield-to-maturity-calculator.tsx",
+    "bond-price-calculator.tsx",
+    "bond-duration-calculator.tsx",
+    "bond-convexity-calculator.tsx",
+    "bond-yield-spread-calculator.tsx",
+    "yield-to-call-calculator.tsx"
+  ],
+  "failed": [],
+  "missingFiles": [],
+  "brokenLinks": []
+}

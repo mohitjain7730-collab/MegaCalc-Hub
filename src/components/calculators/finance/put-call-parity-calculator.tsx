@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bot, Calculator, Info, FileText, Globe } from 'lucide-react';
+import { Bot, Calculator, Info, FileText, Globe, Target, AlertCircle, Shield, DollarSign, TrendingUp, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
@@ -26,10 +26,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 interface Result {
-    leftSide: number;
-    rightSide: number;
-    difference: number;
-    arbitrage: string | null;
+  leftSide: number;
+  rightSide: number;
+  difference: number;
+  arbitrage: string | null;
 }
 
 export default function PutCallParityCalculator() {
@@ -51,22 +51,22 @@ export default function PutCallParityCalculator() {
   const onSubmit = (values: FormValues) => {
     const { stockPrice, strikePrice, callPrice, putPrice, rate, time, timeUnit } = values;
     const r = rate / 100;
-    
+
     let tInYears = time;
     if (timeUnit === 'months') tInYears /= 12;
     if (timeUnit === 'days') tInYears /= 365;
-    
+
     const leftSide = putPrice + stockPrice;
     const rightSide = callPrice + strikePrice * Math.exp(-r * tInYears);
     const difference = leftSide - rightSide;
-    
+
     let arbitrage = null;
     if (Math.abs(difference) > 0.01) { // Allowing for small rounding differences
-        if (difference > 0) {
-            arbitrage = "The protective put is overpriced. Strategy: Sell the put, sell the stock, buy the call, and invest the present value of the strike price.";
-        } else {
-            arbitrage = "The fiduciary call is overpriced. Strategy: Buy the put, buy the stock, sell the call, and borrow the present value of the strike price.";
-        }
+      if (difference > 0) {
+        arbitrage = "The protective put is overpriced. Strategy: Sell the put, sell the stock, buy the call, and invest the present value of the strike price.";
+      } else {
+        arbitrage = "The fiduciary call is overpriced. Strategy: Buy the put, buy the stock, sell the call, and borrow the present value of the strike price.";
+      }
     }
 
     setResult({ leftSide, rightSide, difference, arbitrage });
@@ -89,137 +89,137 @@ export default function PutCallParityCalculator() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField 
-                  control={form.control} 
-                  name="stockPrice" 
+                <FormField
+                  control={form.control}
+                  name="stockPrice"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Stock Price ($)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           step="any"
                           placeholder="e.g., 100"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="strikePrice" 
+                <FormField
+                  control={form.control}
+                  name="strikePrice"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Strike Price ($)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           step="any"
                           placeholder="e.g., 100"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="callPrice" 
+                <FormField
+                  control={form.control}
+                  name="callPrice"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Call Option Price ($)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           step="any"
                           placeholder="e.g., 5"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="putPrice" 
+                <FormField
+                  control={form.control}
+                  name="putPrice"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Put Option Price ($)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           step="any"
                           placeholder="e.g., 4"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="rate" 
+                <FormField
+                  control={form.control}
+                  name="rate"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Risk-Free Rate (%)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           step="any"
                           placeholder="e.g., 5"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
                 <div className="grid grid-cols-2 gap-2">
-                  <FormField 
-                    control={form.control} 
-                    name="time" 
+                  <FormField
+                    control={form.control}
+                    name="time"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Time to Expiration</FormLabel>
                         <FormControl>
-                          <Input 
-                            type="number" 
+                          <Input
+                            type="number"
                             step="any"
                             placeholder="e.g., 1"
-                            {...field} 
-                            value={field.value || ''} 
-                            onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                            {...field}
+                            value={field.value || ''}
+                            onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <FormField 
-                    control={form.control} 
-                    name="timeUnit" 
+                  <FormField
+                    control={form.control}
+                    name="timeUnit"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Unit</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue/>
+                              <SelectValue />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
@@ -229,7 +229,7 @@ export default function PutCallParityCalculator() {
                           </SelectContent>
                         </Select>
                       </FormItem>
-                    )} 
+                    )}
                   />
                 </div>
               </div>
@@ -277,6 +277,57 @@ export default function PutCallParityCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Arbitrage opportunities</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Put-call parity ensures options pricing consistency</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Identify mispriced options for potential arbitrage</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Create synthetic positions with equivalent payoffs</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to monitor</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Transaction costs may eliminate arbitrage profits</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Applies only to European options, not American</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Dividends affect parity calculations</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Understanding Inputs */}
       <Card>
         <CardHeader>
@@ -316,6 +367,26 @@ export default function PutCallParityCalculator() {
               Time remaining until option expiration. You can enter this in years, months, or days. The calculator converts to years for the discounting calculation.
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              P + S₀ = C + K × e^(-rT)
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Put + Stock = Call + Present Value of Strike. If unequal, arbitrage opportunity exists.
+          </p>
         </CardContent>
       </Card>
 
@@ -378,128 +449,128 @@ export default function PutCallParityCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Synthetic Positions and Arbitrage: Risk-Free Profit Mechanisms" />
-    <meta itemProp="description" content="An expert guide detailing how to create synthetic stock positions using options (calls/puts), the principle of put-call parity, and the mechanisms of arbitrage (risk-free profit) in derivative and equity markets." />
-    <meta itemProp="keywords" content="synthetic position formula, put-call parity explained, arbitrage opportunities finance, risk-free profit strategy, calculating synthetic stock price, options trading arbitrage" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-synthetic-arbitrage-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Synthetic Positions and Arbitrage: Risk-Free Profit Mechanisms" />
+        <meta itemProp="description" content="An expert guide detailing how to create synthetic stock positions using options (calls/puts), the principle of put-call parity, and the mechanisms of arbitrage (risk-free profit) in derivative and equity markets." />
+        <meta itemProp="keywords" content="synthetic position formula, put-call parity explained, arbitrage opportunities finance, risk-free profit strategy, calculating synthetic stock price, options trading arbitrage" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-synthetic-arbitrage-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Synthetic Positions and Arbitrage: Exploiting Market Parity</h1>
-    <p className="text-lg italic text-gray-700">Master the derivative strategies that replicate stock ownership and the mechanisms used to lock in risk-free profit from market mispricings.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Synthetic Positions and Arbitrage: Exploiting Market Parity</h1>
+        <p className="text-lg italic text-gray-700">Master the derivative strategies that replicate stock ownership and the mechanisms used to lock in risk-free profit from market mispricings.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#synthetic-basics" className="hover:underline">Synthetic Positions: The Concept of Replication</a></li>
-        <li><a href="#put-call-parity" className="hover:underline">Put-Call Parity: The Core Arbitrage Principle</a></li>
-        <li><a href="#arbitrage-mechanics" className="hover:underline">Arbitrage Mechanics and Risk-Free Profit</a></li>
-        <li><a href="#synthetic-types" className="hover:underline">Key Synthetic Positions and Their Formulas</a></li>
-        <li><a href="#limits" className="hover:underline">Limitations and Practical Barriers to Arbitrage</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li><a href="#synthetic-basics" className="hover:underline">Synthetic Positions: The Concept of Replication</a></li>
+          <li><a href="#put-call-parity" className="hover:underline">Put-Call Parity: The Core Arbitrage Principle</a></li>
+          <li><a href="#arbitrage-mechanics" className="hover:underline">Arbitrage Mechanics and Risk-Free Profit</a></li>
+          <li><a href="#synthetic-types" className="hover:underline">Key Synthetic Positions and Their Formulas</a></li>
+          <li><a href="#limits" className="hover:underline">Limitations and Practical Barriers to Arbitrage</a></li>
+        </ul>
+        <hr />
 
-    {/* SYNTHETIC POSITIONS: THE CONCEPT OF REPLICATION */}
-    <h2 id="synthetic-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Synthetic Positions: The Concept of Replication</h2>
-    <p>A <strong className="font-semibold">Synthetic Position</strong> is a derivatives strategy designed to replicate the risk and reward profile of a simpler security using a combination of other financial instruments (typically options). The goal is to create an identical position without actually trading the underlying asset.</p>
+        {/* SYNTHETIC POSITIONS: THE CONCEPT OF REPLICATION */}
+        <h2 id="synthetic-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Synthetic Positions: The Concept of Replication</h2>
+        <p>A <strong className="font-semibold">Synthetic Position</strong> is a derivatives strategy designed to replicate the risk and reward profile of a simpler security using a combination of other financial instruments (typically options). The goal is to create an identical position without actually trading the underlying asset.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Principle of No Arbitrage</h3>
-    <p>Synthetic replication is based on the <strong className="font-semibold">Law of One Price</strong>, which states that two securities or portfolios that generate the exact same cash flows in the future must trade at the same price today. If they do not, an arbitrage opportunity exists.</p>
-    <p>By combining a long call option and a short put option (both with the same strike price and expiration date), a trader can create a position that behaves exactly like owning the underlying stock. This is a <strong className="font-semibold">Synthetic Long Stock</strong> position.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Principle of No Arbitrage</h3>
+        <p>Synthetic replication is based on the <strong className="font-semibold">Law of One Price</strong>, which states that two securities or portfolios that generate the exact same cash flows in the future must trade at the same price today. If they do not, an arbitrage opportunity exists.</p>
+        <p>By combining a long call option and a short put option (both with the same strike price and expiration date), a trader can create a position that behaves exactly like owning the underlying stock. This is a <strong className="font-semibold">Synthetic Long Stock</strong> position.</p>
 
-<hr />
+        <hr />
 
-    {/* PUT-CALL PARITY: THE CORE ARBITRAGE PRINCIPLE */}
-    <h2 id="put-call-parity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Put-Call Parity: The Core Arbitrage Principle</h2>
-    <p><strong className="font-semibold">Put-Call Parity</strong> is a fundamental theorem in options pricing that defines the necessary relationship between the price of European put options, European call options, the underlying stock price, and the present value of the strike price (adjusted for the risk-free rate).</p>
+        {/* PUT-CALL PARITY: THE CORE ARBITRAGE PRINCIPLE */}
+        <h2 id="put-call-parity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Put-Call Parity: The Core Arbitrage Principle</h2>
+        <p><strong className="font-semibold">Put-Call Parity</strong> is a fundamental theorem in options pricing that defines the necessary relationship between the price of European put options, European call options, the underlying stock price, and the present value of the strike price (adjusted for the risk-free rate).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Put-Call Parity Formula</h3>
-    <p>The equation establishes the theoretical equivalence between two portfolios that both yield the underlying stock at expiration:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Put-Call Parity Formula</h3>
+        <p>The equation establishes the theoretical equivalence between two portfolios that both yield the underlying stock at expiration:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'C + PV(X) = P + S'}
-        </p>
-    </div>
-    <p>Where:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>$C$ = Price of the Call Option</li>
-        <li>$PV(X)$ = Present Value of the Strike Price (X), discounted at the risk-free rate ($r$).</li>
-        <li>$P$ = Price of the Put Option</li>
-        <li>$S$ = Price of the Underlying Stock</li>
-    </ul>
-    <p>This formula is the mathematical backbone for arbitrage strategies involving options. If the equality does not hold, a mispricing exists.</p>
+          </p>
+        </div>
+        <p>Where:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>$C$ = Price of the Call Option</li>
+          <li>$PV(X)$ = Present Value of the Strike Price (X), discounted at the risk-free rate ($r$).</li>
+          <li>$P$ = Price of the Put Option</li>
+          <li>$S$ = Price of the Underlying Stock</li>
+        </ul>
+        <p>This formula is the mathematical backbone for arbitrage strategies involving options. If the equality does not hold, a mispricing exists.</p>
 
-<hr />
+        <hr />
 
-    {/* ARBITRAGE MECHANICS AND RISK-FREE PROFIT */}
-    <h2 id="arbitrage-mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Arbitrage Mechanics and Risk-Free Profit</h2>
-    <p><strong className="font-semibold">Arbitrage</strong> is the simultaneous buying and selling of the same asset in different markets or forms to profit from a temporary price difference. Because the profit is locked in by executing two opposing trades simultaneously, it is theoretically <strong className="font-semibold">risk-free</strong>.</p>
+        {/* ARBITRAGE MECHANICS AND RISK-FREE PROFIT */}
+        <h2 id="arbitrage-mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Arbitrage Mechanics and Risk-Free Profit</h2>
+        <p><strong className="font-semibold">Arbitrage</strong> is the simultaneous buying and selling of the same asset in different markets or forms to profit from a temporary price difference. Because the profit is locked in by executing two opposing trades simultaneously, it is theoretically <strong className="font-semibold">risk-free</strong>.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Put-Call Parity Arbitrage Example</h3>
-    <p>If the market prices violate the Put-Call Parity relationship, an arbitrageur acts immediately:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Identify Mispricing:</strong> Assume $C + PV(X)$ is greater than $P + S$. The synthetic portfolio is overpriced.</li>
-        <li><strong className="font-semibold">Execute Trades:</strong> The arbitrageur sells the overpriced synthetic portfolio (Short Call, Buy Put, Borrow Money to buy Stock).</li>
-        <li><strong className="font-semibold">Lock in Profit:</strong> The arbitrageur buys the cheaper direct portfolio (Buy Stock). The profit is the difference between the two side of the equation, realized immediately at execution.</li>
-    </ol>
-    <p>Arbitrage opportunities are rare and fleeting, as sophisticated traders and automated algorithms instantly exploit these mispricings, quickly driving prices back to parity.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Put-Call Parity Arbitrage Example</h3>
+        <p>If the market prices violate the Put-Call Parity relationship, an arbitrageur acts immediately:</p>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li><strong className="font-semibold">Identify Mispricing:</strong> Assume $C + PV(X)$ is greater than $P + S$. The synthetic portfolio is overpriced.</li>
+          <li><strong className="font-semibold">Execute Trades:</strong> The arbitrageur sells the overpriced synthetic portfolio (Short Call, Buy Put, Borrow Money to buy Stock).</li>
+          <li><strong className="font-semibold">Lock in Profit:</strong> The arbitrageur buys the cheaper direct portfolio (Buy Stock). The profit is the difference between the two side of the equation, realized immediately at execution.</li>
+        </ol>
+        <p>Arbitrage opportunities are rare and fleeting, as sophisticated traders and automated algorithms instantly exploit these mispricings, quickly driving prices back to parity.</p>
 
-<hr />
+        <hr />
 
-    {/* KEY SYNTHETIC POSITIONS AND THEIR FORMULAS */}
-    <h2 id="synthetic-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Synthetic Positions and Their Formulas</h2>
-    <p>The Put-Call Parity formula can be algebraically rearranged to define any single instrument (S, C, or P) in terms of the other three, allowing traders to create a synthetic equivalent for any desired position.</p>
+        {/* KEY SYNTHETIC POSITIONS AND THEIR FORMULAS */}
+        <h2 id="synthetic-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Synthetic Positions and Their Formulas</h2>
+        <p>The Put-Call Parity formula can be algebraically rearranged to define any single instrument (S, C, or P) in terms of the other three, allowing traders to create a synthetic equivalent for any desired position.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Synthetic Long Stock (Buy Stock)</h3>
-    <p>Replicates owning the underlying stock. Used when options are mispriced relative to the stock price.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Synthetic Long Stock (Buy Stock)</h3>
+        <p>Replicates owning the underlying stock. Used when options are mispriced relative to the stock price.</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'S = C - P + PV(X)'}
-        </p>
-    </div>
-    <p>Strategy: Buy Call, Sell Put, Lend/Invest PV(X) at the risk-free rate.</p>
+          </p>
+        </div>
+        <p>Strategy: Buy Call, Sell Put, Lend/Invest PV(X) at the risk-free rate.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. Synthetic Long Call (Buy Call)</h3>
-    <p>Replicates buying a call option. Used when the put option and stock combination are cheaper than the call option itself.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Synthetic Long Call (Buy Call)</h3>
+        <p>Replicates buying a call option. Used when the put option and stock combination are cheaper than the call option itself.</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'C = P + S - PV(X)'}
-        </p>
-    </div>
-    <p>Strategy: Buy Put, Buy Stock, Borrow PV(X).</p>
+          </p>
+        </div>
+        <p>Strategy: Buy Put, Buy Stock, Borrow PV(X).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">3. Synthetic Long Put (Buy Put)</h3>
-    <p>Replicates buying a put option. Used for quick hedging or when the call option and stock combination are expensive.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">3. Synthetic Long Put (Buy Put)</h3>
+        <p>Replicates buying a put option. Used for quick hedging or when the call option and stock combination are expensive.</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'P = C - S + PV(X)'}
-        </p>
-    </div>
-    <p>Strategy: Buy Call, Sell Stock, Lend PV(X).</p>
+          </p>
+        </div>
+        <p>Strategy: Buy Call, Sell Stock, Lend PV(X).</p>
 
-<hr />
+        <hr />
 
-    {/* LIMITATIONS AND PRACTICAL BARRIERS TO ARBITRAGE */}
-    <h2 id="limits" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations and Practical Barriers to Arbitrage</h2>
-    <p>While arbitrage is theoretically risk-free, several real-world factors prevent retail traders from consistently exploiting these opportunities.</p>
+        {/* LIMITATIONS AND PRACTICAL BARRIERS TO ARBITRAGE */}
+        <h2 id="limits" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations and Practical Barriers to Arbitrage</h2>
+        <p>While arbitrage is theoretically risk-free, several real-world factors prevent retail traders from consistently exploiting these opportunities.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Transaction Costs</h3>
-    <p>Arbitrage requires simultaneous execution of multiple trades (e.g., buying a stock, selling a call, buying a put). The commissions and fees for these multiple transactions often consume the small profit margin created by the mispricing, making the net return negative.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Transaction Costs</h3>
+        <p>Arbitrage requires simultaneous execution of multiple trades (e.g., buying a stock, selling a call, buying a put). The commissions and fees for these multiple transactions often consume the small profit margin created by the mispricing, making the net return negative.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Liquidity and Timeliness</h3>
-    <p>Mispricings are usually small, lasting for milliseconds. Exploiting them requires near-instantaneous execution, which is dominated by high-frequency trading (HFT) firms. Furthermore, illiquid securities may not offer enough volume for the arbitrageur to execute all necessary legs of the trade at the required prices.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Liquidity and Timeliness</h3>
+        <p>Mispricings are usually small, lasting for milliseconds. Exploiting them requires near-instantaneous execution, which is dominated by high-frequency trading (HFT) firms. Furthermore, illiquid securities may not offer enough volume for the arbitrageur to execute all necessary legs of the trade at the required prices.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Dividend and Borrowing Costs</h3>
-    <p>The Put-Call Parity formula is simplified and does not fully account for dividends paid on the stock before expiration or the actual cost of borrowing money for the position, both of which can alter the arbitrage calculation and eliminate the theoretical profit.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Dividend and Borrowing Costs</h3>
+        <p>The Put-Call Parity formula is simplified and does not fully account for dividends paid on the stock before expiration or the actual cost of borrowing money for the position, both of which can alter the arbitrage calculation and eliminate the theoretical profit.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Synthetic positions and arbitrage are defined by the fundamental principle of <strong className="font-semibold">Put-Call Parity</strong>, which ensures that the cost of replicating a security must match the cost of the security itself.</p>
-    <p>Arbitrage strategies exploit fleeting violations of this parity through simultaneous buying and selling, locking in a theoretical risk-free profit. While inaccessible to most individual traders due to speed and transaction costs, the core concept remains the bedrock of derivatives pricing and market efficiency.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Synthetic positions and arbitrage are defined by the fundamental principle of <strong className="font-semibold">Put-Call Parity</strong>, which ensures that the cost of replicating a security must match the cost of the security itself.</p>
+        <p>Arbitrage strategies exploit fleeting violations of this parity through simultaneous buying and selling, locking in a theoretical risk-free profit. While inaccessible to most individual traders due to speed and transaction costs, the core concept remains the bedrock of derivatives pricing and market efficiency.</p>
+      </section>
 
       {/* FAQ */}
       <Card>
@@ -582,6 +653,21 @@ export default function PutCallParityCalculator() {
               Put-Call Parity is a specific application of the no-arbitrage principle to option pricing. It's one of many no-arbitrage relationships in finance. The principle that similar portfolios should have similar values (or arbitrage opportunities disappear) is fundamental to modern finance theory.
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>Put-Call Parity defines the relationship between put/call prices, stock price, and strike present value.</p>
+          <p>Violations indicate arbitrage opportunities; traders can profit by exploiting price differences.</p>
+          <p>Use this calculator to detect mispricings and construct risk-free synthetic positions.</p>
         </CardContent>
       </Card>
     </div>
