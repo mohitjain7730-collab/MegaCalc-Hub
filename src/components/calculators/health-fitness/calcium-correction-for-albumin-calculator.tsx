@@ -97,7 +97,7 @@ const relatedCalculators = [
   },
   {
     name: 'Calcium Intake Calculator',
-    slug: 'calcium-intake-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Calculate your daily calcium requirements.',
   },
   {

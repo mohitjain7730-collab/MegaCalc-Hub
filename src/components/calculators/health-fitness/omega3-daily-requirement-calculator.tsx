@@ -607,7 +607,7 @@ export default function Omega3DailyRequirementCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/vitamin-d-sun-exposure-calculator" className="text-primary hover:underline">
+                <Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Vitamin D Sun Exposure Calculator
                 </Link>
               </h4>
@@ -615,7 +615,7 @@ export default function Omega3DailyRequirementCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/magnesium-intake-calculator" className="text-primary hover:underline">
+                <Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Magnesium Intake Calculator
                 </Link>
               </h4>

@@ -94,7 +94,7 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Sleep Balance Check-In',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Assess weekly sleep balance and patterns.',
   },
   {

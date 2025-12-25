@@ -106,7 +106,7 @@ const relatedCalculators = [
   },
   {
     name: 'Iron Intake Calculator',
-    slug: 'iron-intake-calculator',
+    slug: 'protein-intake-calculator',
     description: 'Track nutrition that affects blood health.',
   },
 ];

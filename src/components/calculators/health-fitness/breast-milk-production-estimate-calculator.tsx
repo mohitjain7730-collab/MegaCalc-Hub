@@ -79,49 +79,49 @@ export default function BreastMilkProductionEstimateCalculator() {
           <CardDescription>Estimate breast milk production needs based on baby's age and weight</CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="babyAgeWeeks" render={({ field }) => (
-              <FormItem>
-                <FormLabel className="flex items-center gap-2"><Calendar className="h-4 w-4" /> Baby's Age (weeks)</FormLabel>
-                <FormControl>
-                  <Input type="number" step="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="babyWeightKg" render={({ field }) => (
-              <FormItem>
-                <FormLabel className="flex items-center gap-2"><Scale className="h-4 w-4" /> Baby's Weight (kg)</FormLabel>
-                <FormControl>
-                  <Input type="number" step="0.1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="feedingsPerDay" render={({ field }) => (
-              <FormItem>
-                <FormLabel className="flex items-center gap-2"><Baby className="h-4 w-4" /> Feedings Per Day</FormLabel>
-                <FormControl>
-                  <Input type="number" step="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="milkPerFeedingMl" render={({ field }) => (
-              <FormItem>
-                <FormLabel className="flex items-center gap-2"><Droplets className="h-4 w-4" /> Milk Per Feeding (ml)</FormLabel>
-                <FormControl>
-                  <Input type="number" step="5" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
-          <Button type="submit" className="w-full md:w-auto">Estimate Milk Production</Button>
-        </form>
-      </Form>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="babyAgeWeeks" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Calendar className="h-4 w-4" /> Baby's Age (weeks)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="babyWeightKg" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Scale className="h-4 w-4" /> Baby's Weight (kg)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="0.1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="feedingsPerDay" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Baby className="h-4 w-4" /> Feedings Per Day</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="1" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="milkPerFeedingMl" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex items-center gap-2"><Droplets className="h-4 w-4" /> Milk Per Feeding (ml)</FormLabel>
+                    <FormControl>
+                      <Input type="number" step="5" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Estimate Milk Production</Button>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -147,13 +147,13 @@ export default function BreastMilkProductionEstimateCalculator() {
             <Card>
               <CardHeader><CardTitle>Recommendations</CardTitle></CardHeader>
               <CardContent>
-                <ul className="space-y-2">{result.recommendations.map((r,i)=>(<li key={i} className="text-sm text-muted-foreground">{r}</li>))}</ul>
+                <ul className="space-y-2">{result.recommendations.map((r, i) => (<li key={i} className="text-sm text-muted-foreground">{r}</li>))}</ul>
               </CardContent>
             </Card>
             <Card>
               <CardHeader><CardTitle>Warning Signs</CardTitle></CardHeader>
               <CardContent>
-                <ul className="space-y-2">{result.warningSigns.map((w,i)=>(<li key={i} className="text-sm text-muted-foreground">{w}</li>))}</ul>
+                <ul className="space-y-2">{result.warningSigns.map((w, i) => (<li key={i} className="text-sm text-muted-foreground">{w}</li>))}</ul>
               </CardContent>
             </Card>
           </div>
@@ -161,7 +161,7 @@ export default function BreastMilkProductionEstimateCalculator() {
             <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Plan</CardTitle></CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
-                <table className="w-full text-sm"><thead><tr className="border-b"><th className="text-left p-2">Week</th><th className="text-left p-2">Focus</th></tr></thead><tbody>{result.plan.map(p=> (<tr key={p.week} className="border-b"><td className="p-2">{p.week}</td><td className="p-2">{p.focus}</td></tr>))}</tbody></table>
+                <table className="w-full text-sm"><thead><tr className="border-b"><th className="text-left p-2">Week</th><th className="text-left p-2">Focus</th></tr></thead><tbody>{result.plan.map(p => (<tr key={p.week} className="border-b"><td className="p-2">{p.week}</td><td className="p-2">{p.focus}</td></tr>))}</tbody></table>
               </div>
             </CardContent>
           </Card>
@@ -176,8 +176,8 @@ export default function BreastMilkProductionEstimateCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/postpartum-calorie-needs-calculator" className="text-primary hover:underline">Postpartum Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate calorie needs for breastfeeding.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/parenting/baby-feeding-amount-calculator" className="text-primary hover:underline">Baby Feeding Amount</Link></h4><p className="text-sm text-muted-foreground">Estimate daily feeding needs.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/pregnancy-weight-gain-calculator" className="text-primary hover:underline">Pregnancy Weight Gain</Link></h4><p className="text-sm text-muted-foreground">Track recommended weight gain.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/breast-milk-production-estimate-calculator" className="text-primary hover:underline">Baby Feeding Amount</Link></h4><p className="text-sm text-muted-foreground">Estimate daily feeding needs.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/ideal-body-weight-calculator" className="text-primary hover:underline">Pregnancy Weight Gain</Link></h4><p className="text-sm text-muted-foreground">Track recommended weight gain.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Protein Intake</Link></h4><p className="text-sm text-muted-foreground">Postpartum protein requirements.</p></div>
           </div>
         </CardContent>
@@ -208,7 +208,7 @@ export default function BreastMilkProductionEstimateCalculator() {
             ['How long should each breastfeeding session last?', 'Breastfeeding session length varies by baby and age. Newborns may feed for 20-45 minutes per session, while older babies may feed more efficiently in 10-20 minutes. Let baby finish the first breast before offering the second, as the hindmilk (higher in fat) comes later in the feeding. Feeding duration typically decreases as babies become more efficient at extracting milk.'],
             ['Does pumping affect milk production?', 'Pumping can help maintain or increase milk production, especially when done regularly and effectively. Pumping after feeds can stimulate additional production, and exclusive pumping can sustain milk supply. However, pumping output may not always reflect actual milk production, as babies are typically more efficient at removing milk than pumps. Consistent, frequent pumping sessions help maintain supply.'],
             ['When should I be concerned about milk production?', 'Concern is warranted if baby shows signs of inadequate intake: poor weight gain or weight loss, fewer than 6 wet diapers per day after the first week, constant feeding without satisfaction, excessive sleepiness or lethargy, or signs of dehydration. Additionally, if you experience persistent pain, engorgement that doesn\'t resolve, or other breastfeeding difficulties, consult with a lactation consultant or healthcare provider for assessment and support.'],
-          ].map(([q,a],i)=> (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
+          ].map(([q, a], i) => (<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}
         </CardContent>
       </Card>
     </div>

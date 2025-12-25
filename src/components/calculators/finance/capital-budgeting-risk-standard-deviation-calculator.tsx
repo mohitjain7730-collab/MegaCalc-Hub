@@ -97,7 +97,7 @@ export default function CapitalBudgetingRiskStandardDeviationCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/npv-calculator" className="text-primary hover:underline">NPV Calculator</a></h4><p className="text-sm text-muted-foreground">Project value.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/irr-calculator" className="text-primary hover:underline">IRR Calculator</a></h4><p className="text-sm text-muted-foreground">Return rate.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/financial-break-even-npv-zero-calculator" className="text-primary hover:underline">IRR Calculator</a></h4><p className="text-sm text-muted-foreground">Return rate.</p></div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/project-irr-vs-wacc-comparison-calculator" className="text-primary hover:underline">IRR vs WACC Comparison</a></h4><p className="text-sm text-muted-foreground">Project evaluation.</p></div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/sensitivity-analysis-what-if-calculator" className="text-primary hover:underline">Sensitivity Analysis</a></h4><p className="text-sm text-muted-foreground">Risk analysis.</p></div>
           </div>

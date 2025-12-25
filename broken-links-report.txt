@@ -1,0 +1,1499 @@
+﻿≡ƒöì Scanning calculator files for related calculator definitions...
+
+Working directory: D:\MegaCalc-Hub
+Found 349 calculator files with related calculator definitions.
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\conversions\height-converter.tsx
+Total links scanned: 5
+Γ£à Valid links: 4
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó BMI Calculator (bmi-calculator)
+    Error: Category mismatch: expected "health-fitness", got "health"
+    ≡ƒÆí Suggested fix: bmi-calculator (health-fitness)
+    Reason: Category corrected to match registry
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó BMI Calculator: bmi-calculator ΓåÆ bmi-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\acute-training-load-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Training Stress Score (TSS) (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Training Stress Score (TSS) (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\alcohol-metabolism-time-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Sleep Debt Calculator (sleep-debt-calculator)
+    Error: Slug "sleep-debt-calculator" not found in calculator registry
+    ≡ƒÆí Suggested fix: recovery-sleep-requirement-after-sleep-debt-calculator (health-fitness)
+    Reason: Similar slug found: "recovery-sleep-requirement-after-sleep-debt-calculator"
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Sleep Debt Calculator: recovery-sleep-requirement-after-sleep-debt-calculator ΓåÆ recovery-sleep-requirement-after-sleep-debt-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\anaerobic-power-output-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Anaerobic Threshold (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Anaerobic Threshold (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\anaerobic-threshold-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Maximum Lactate Steady State Calculator (maximum-lactate-steady-state-calculator)
+    Error: Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+  ΓÇó Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Maximum Lactate Steady State Calculator (maximum-lactate-steady-state-calculator)
+    Error: Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+  ΓÇó Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\blood-lactate-clearance-rate-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 1
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 3
+
+Γ¥î Invalid Links:
+  ΓÇó Anaerobic Threshold (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó MLSS Calculator (maximum-lactate-steady-state-calculator)
+    Error: Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+  ΓÇó Heart Rate Zones (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Anaerobic Threshold (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó MLSS Calculator (maximum-lactate-steady-state-calculator)
+    Error: Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+  ΓÇó Heart Rate Zones (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\blood-oxygen-saturation-estimator.tsx
+Total links scanned: 3
+Γ£à Valid links: 1
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+  ΓÇó Breathing Exercise Timer (breathing-exercise-timer)
+    Error: Slug "breathing-exercise-timer" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+  ΓÇó Breathing Exercise Timer (breathing-exercise-timer)
+    Error: Slug "breathing-exercise-timer" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\breast-milk-production-estimate-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Baby Feeding Amount (baby-feeding-amount-calculator)
+    Error: Slug "baby-feeding-amount-calculator" not found in calculator registry
+  ΓÇó Pregnancy Weight Gain (pregnancy-weight-gain-calculator)
+    Error: Slug "pregnancy-weight-gain-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Baby Feeding Amount (baby-feeding-amount-calculator)
+    Error: Slug "baby-feeding-amount-calculator" not found in calculator registry
+  ΓÇó Pregnancy Weight Gain (pregnancy-weight-gain-calculator)
+    Error: Slug "pregnancy-weight-gain-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\burnout-risk-score-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 1
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 3
+
+Γ¥î Invalid Links:
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+  ΓÇó Sleep Quality Score (sleep-quality-score-calculator)
+    Error: Slug "sleep-quality-score-calculator" not found in calculator registry
+  ΓÇó Recovery Readiness (recovery-readiness-score-calculator)
+    Error: Slug "recovery-readiness-score-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+  ΓÇó Sleep Quality Score (sleep-quality-score-calculator)
+    Error: Slug "sleep-quality-score-calculator" not found in calculator registry
+  ΓÇó Recovery Readiness (recovery-readiness-score-calculator)
+    Error: Slug "recovery-readiness-score-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\calcium-intake-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 0
+Γ¥î Invalid links: 4
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 4
+
+Γ¥î Invalid Links:
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator)
+    Error: Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+  ΓÇó Iron Intake Calculator (iron-intake-calculator)
+    Error: Slug "iron-intake-calculator" not found in calculator registry
+  ΓÇó Zinc Requirement Calculator (zinc-requirement-calculator)
+    Error: Slug "zinc-requirement-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator)
+    Error: Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+  ΓÇó Iron Intake Calculator (iron-intake-calculator)
+    Error: Slug "iron-intake-calculator" not found in calculator registry
+  ΓÇó Zinc Requirement Calculator (zinc-requirement-calculator)
+    Error: Slug "zinc-requirement-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\chronic-training-load-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Training Stress Score (TSS) (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Training Stress Score (TSS) (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\conception-probability-per-cycle-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 1
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 3
+
+Γ¥î Invalid Links:
+  ΓÇó IVF Success Probability (ivf-success-probability-calculator)
+    Error: Slug "ivf-success-probability-calculator" not found in calculator registry
+  ΓÇó Fertility Ovulation Calculator (fertility-ovulation-calculator)
+    Error: Slug "fertility-ovulation-calculator" not found in calculator registry
+  ΓÇó Pregnancy Weight Gain (pregnancy-weight-gain-calculator)
+    Error: Slug "pregnancy-weight-gain-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó IVF Success Probability (ivf-success-probability-calculator)
+    Error: Slug "ivf-success-probability-calculator" not found in calculator registry
+  ΓÇó Fertility Ovulation Calculator (fertility-ovulation-calculator)
+    Error: Slug "fertility-ovulation-calculator" not found in calculator registry
+  ΓÇó Pregnancy Weight Gain (pregnancy-weight-gain-calculator)
+    Error: Slug "pregnancy-weight-gain-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\cortisol-stress-response-estimator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Sleep Balance Check-In (sleep-debt-calculator-hf)
+    Error: Slug "sleep-debt-calculator-hf" not found in calculator registry
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Sleep Balance Check-In (sleep-debt-calculator-hf)
+    Error: Slug "sleep-debt-calculator-hf" not found in calculator registry
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\daily-activity-points-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Sleep Quality Calculator (sleep-quality-calculator)
+    Error: Slug "sleep-quality-calculator" not found in calculator registry
+  ΓÇó Hydration Calculator (hydration-calculator)
+    Error: Slug "hydration-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Sleep Quality Calculator (sleep-quality-calculator)
+    Error: Slug "sleep-quality-calculator" not found in calculator registry
+  ΓÇó Hydration Calculator (hydration-calculator)
+    Error: Slug "hydration-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\daily-antioxidant-orac-goal-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 0
+Γ¥î Invalid links: 4
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 4
+
+Γ¥î Invalid Links:
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó Sodium-to-Potassium Ratio Calculator (sodium-to-potassium-ratio-calculator)
+    Error: Slug "sodium-to-potassium-ratio-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó PDCAAS Calculator (pdcaas-calculator)
+    Error: Slug "pdcaas-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó Sodium-to-Potassium Ratio Calculator (sodium-to-potassium-ratio-calculator)
+    Error: Slug "sodium-to-potassium-ratio-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó PDCAAS Calculator (pdcaas-calculator)
+    Error: Slug "pdcaas-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\detox-juice-nutrient-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\emotional-wellbeing-index-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Memory Retention Percentage Wellness Tracker (memory-retention-percentage-tracker)
+    Error: Slug "memory-retention-percentage-tracker" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Memory Retention Percentage Wellness Tracker (memory-retention-percentage-tracker)
+    Error: Slug "memory-retention-percentage-tracker" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\fiber-intake-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 1
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 3
+
+Γ¥î Invalid Links:
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Antioxidant (ORAC) Goal Calculator (daily-antioxidant-orac-goal-calculator)
+    Error: Slug "daily-antioxidant-orac-goal-calculator" not found in calculator registry
+  ΓÇó Sodium-to-Potassium Ratio Calculator (sodium-to-potassium-ratio-calculator)
+    Error: Slug "sodium-to-potassium-ratio-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Antioxidant (ORAC) Goal Calculator (daily-antioxidant-orac-goal-calculator)
+    Error: Slug "daily-antioxidant-orac-goal-calculator" not found in calculator registry
+  ΓÇó Sodium-to-Potassium Ratio Calculator (sodium-to-potassium-ratio-calculator)
+    Error: Slug "sodium-to-potassium-ratio-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\foam-rolling-pressure-estimator.tsx
+Total links scanned: 2
+Γ£à Valid links: 1
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Recovery Heart Rate (recovery-heart-rate-calculator)
+    Error: Slug "recovery-heart-rate-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Recovery Heart Rate (recovery-heart-rate-calculator)
+    Error: Slug "recovery-heart-rate-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\fodmap-load-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\habit-streak-tracker-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Sleep Quality Calculator (sleep-quality-calculator)
+    Error: Slug "sleep-quality-calculator" not found in calculator registry
+  ΓÇó Hydration Calculator (hydration-calculator)
+    Error: Slug "hydration-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Sleep Quality Calculator (sleep-quality-calculator)
+    Error: Slug "sleep-quality-calculator" not found in calculator registry
+  ΓÇó Hydration Calculator (hydration-calculator)
+    Error: Slug "hydration-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\heart-rate-variability-hrv-score-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Recovery Heart Rhythm Check-In (recovery-heart-rate-calculator)
+    Error: Slug "recovery-heart-rate-calculator" not found in calculator registry
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Recovery Heart Rhythm Check-In (recovery-heart-rate-calculator)
+    Error: Slug "recovery-heart-rate-calculator" not found in calculator registry
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\hydration-sweat-rate-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Core Body Temperature Rise Calculator (core-body-temperature-rise-calculator)
+    Error: Slug "core-body-temperature-rise-calculator" not found in calculator registry
+  ΓÇó Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator)
+    Error: Slug "exercise-calorie-burn-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Core Body Temperature Rise Calculator (core-body-temperature-rise-calculator)
+    Error: Slug "core-body-temperature-rise-calculator" not found in calculator registry
+  ΓÇó Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator)
+    Error: Slug "exercise-calorie-burn-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\iron-intake-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 0
+Γ¥î Invalid links: 4
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 4
+
+Γ¥î Invalid Links:
+  ΓÇó Zinc Requirement Calculator (zinc-requirement-calculator)
+    Error: Slug "zinc-requirement-calculator" not found in calculator registry
+  ΓÇó Calcium Intake Calculator (calcium-intake-calculator)
+    Error: Slug "calcium-intake-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator)
+    Error: Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Zinc Requirement Calculator (zinc-requirement-calculator)
+    Error: Slug "zinc-requirement-calculator" not found in calculator registry
+  ΓÇó Calcium Intake Calculator (calcium-intake-calculator)
+    Error: Slug "calcium-intake-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator)
+    Error: Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\iron-loss-during-periods-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Iron Intake (iron-intake-calculator)
+    Error: Slug "iron-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Iron Intake (iron-intake-calculator)
+    Error: Slug "iron-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\lactate-accumulation-rate-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Anaerobic Threshold (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó Training Stress Score (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Anaerobic Threshold (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó Training Stress Score (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\magnesium-intake-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 0
+Γ¥î Invalid links: 4
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 4
+
+Γ¥î Invalid Links:
+  ΓÇó Calcium Intake Calculator (calcium-intake-calculator)
+    Error: Slug "calcium-intake-calculator" not found in calculator registry
+  ΓÇó Zinc Requirement Calculator (zinc-requirement-calculator)
+    Error: Slug "zinc-requirement-calculator" not found in calculator registry
+  ΓÇó Potassium Intake Calculator (potassium-intake-calculator)
+    Error: Slug "potassium-intake-calculator" not found in calculator registry
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Calcium Intake Calculator (calcium-intake-calculator)
+    Error: Slug "calcium-intake-calculator" not found in calculator registry
+  ΓÇó Zinc Requirement Calculator (zinc-requirement-calculator)
+    Error: Slug "zinc-requirement-calculator" not found in calculator registry
+  ΓÇó Potassium Intake Calculator (potassium-intake-calculator)
+    Error: Slug "potassium-intake-calculator" not found in calculator registry
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\maximum-lactate-steady-state-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Anaerobic Threshold Calculator (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Anaerobic Threshold Calculator (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\meditation-breathing-rate-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\menstrual-cycle-phase-tracker-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Fertility Ovulation Calculator (fertility-ovulation-calculator)
+    Error: Slug "fertility-ovulation-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Fertility Ovulation Calculator (fertility-ovulation-calculator)
+    Error: Slug "fertility-ovulation-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\mindful-minutes-tracking-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Meditation Time Progress Tracker (meditation-time-progress-tracker-calculator)
+    Error: Slug "meditation-time-progress-tracker-calculator" not found in calculator registry
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Meditation Time Progress Tracker (meditation-time-progress-tracker-calculator)
+    Error: Slug "meditation-time-progress-tracker-calculator" not found in calculator registry
+  ΓÇó Daily Stress Tendency Check-In (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\muscle-fiber-type-ratio-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Anaerobic Threshold (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Anaerobic Threshold (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\muscle-soreness-recovery-estimator.tsx
+Total links scanned: 4
+Γ£à Valid links: 1
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 3
+
+Γ¥î Invalid Links:
+  ΓÇó Sleep Quality Calculator (sleep-quality-calculator)
+    Error: Slug "sleep-quality-calculator" not found in calculator registry
+  ΓÇó Hydration Calculator (hydration-calculator)
+    Error: Slug "hydration-calculator" not found in calculator registry
+  ΓÇó Training Stress Score Calculator (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Sleep Quality Calculator (sleep-quality-calculator)
+    Error: Slug "sleep-quality-calculator" not found in calculator registry
+  ΓÇó Hydration Calculator (hydration-calculator)
+    Error: Slug "hydration-calculator" not found in calculator registry
+  ΓÇó Training Stress Score Calculator (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\myoglobin-oxygen-storage-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó OΓéé Cost per Watt (oxygen-cost-per-watt-efficiency-calculator)
+    Error: Slug "oxygen-cost-per-watt-efficiency-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó OΓéé Cost per Watt (oxygen-cost-per-watt-efficiency-calculator)
+    Error: Slug "oxygen-cost-per-watt-efficiency-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\neat-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Step Count to Distance (step-count-to-distance-calculator)
+    Error: Slug "step-count-to-distance-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Step Count to Distance (step-count-to-distance-calculator)
+    Error: Slug "step-count-to-distance-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\omega3-daily-requirement-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator)
+    Error: Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator)
+    Error: Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\oxygen-debt-epoc-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Training Stress Score (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Training Stress Score (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\paleo-compliance-score-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó Micronutrient Tracker (vitamin-mineral-rda-tracker-calculator)
+    Error: Slug "vitamin-mineral-rda-tracker-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó Micronutrient Tracker (vitamin-mineral-rda-tracker-calculator)
+    Error: Slug "vitamin-mineral-rda-tracker-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\pdcaas-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Amino Acid Blend Optimizer (amino-acid-blend-optimizer-calculator)
+    Error: Slug "amino-acid-blend-optimizer-calculator" not found in calculator registry
+  ΓÇó Antioxidant (ORAC) Goal Calculator (daily-antioxidant-orac-goal-calculator)
+    Error: Slug "daily-antioxidant-orac-goal-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Amino Acid Blend Optimizer (amino-acid-blend-optimizer-calculator)
+    Error: Slug "amino-acid-blend-optimizer-calculator" not found in calculator registry
+  ΓÇó Antioxidant (ORAC) Goal Calculator (daily-antioxidant-orac-goal-calculator)
+    Error: Slug "daily-antioxidant-orac-goal-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\plant-based-protein-gap-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó Iron Intake Calculator (iron-intake-calculator)
+    Error: Slug "iron-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó Iron Intake Calculator (iron-intake-calculator)
+    Error: Slug "iron-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\post-exercise-oxygen-consumption-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Training Stress Score (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó Recovery Heart Rate (recovery-heart-rate-calculator)
+    Error: Slug "recovery-heart-rate-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Training Stress Score (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó Recovery Heart Rate (recovery-heart-rate-calculator)
+    Error: Slug "recovery-heart-rate-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\power-to-heart-rate-efficiency-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Training Stress Score (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Training Stress Score (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\reaction-time-improvement-tracker.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Mental Fatigue Index Calculator (mental-fatigue-index-calculator)
+    Error: Slug "mental-fatigue-index-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Mental Fatigue Index Calculator (mental-fatigue-index-calculator)
+    Error: Slug "mental-fatigue-index-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\respiratory-quotient-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 1
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 3
+
+Γ¥î Invalid Links:
+  ΓÇó Anaerobic Threshold Calculator (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó Maximum Lactate Steady State Calculator (maximum-lactate-steady-state-calculator)
+    Error: Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+  ΓÇó Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Anaerobic Threshold Calculator (anaerobic-threshold-calculator)
+    Error: Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó Maximum Lactate Steady State Calculator (maximum-lactate-steady-state-calculator)
+    Error: Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+  ΓÇó Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\rest-vs-active-energy-burn-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 2
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Resting Metabolic Rate (resting-metabolic-rate-calculator)
+    Error: Slug "resting-metabolic-rate-calculator" not found in calculator registry
+  ΓÇó NEAT Calculator (non-exercise-activity-thermogenesis-calculator)
+    Error: Slug "non-exercise-activity-thermogenesis-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Resting Metabolic Rate (resting-metabolic-rate-calculator)
+    Error: Slug "resting-metabolic-rate-calculator" not found in calculator registry
+  ΓÇó NEAT Calculator (non-exercise-activity-thermogenesis-calculator)
+    Error: Slug "non-exercise-activity-thermogenesis-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\rowing-drag-factor-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Resting Metabolic Rate (resting-metabolic-rate-calculator)
+    Error: Slug "resting-metabolic-rate-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Resting Metabolic Rate (resting-metabolic-rate-calculator)
+    Error: Slug "resting-metabolic-rate-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\sodium-potassium-ratio-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 0
+Γ¥î Invalid links: 4
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 4
+
+Γ¥î Invalid Links:
+  ΓÇó Water Intake Calculator (water-intake-calculator)
+    Error: Slug "water-intake-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó Zinc Requirement Calculator (zinc-requirement-calculator)
+    Error: Slug "zinc-requirement-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Water Intake Calculator (water-intake-calculator)
+    Error: Slug "water-intake-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Fiber Intake Calculator (fiber-intake-calculator)
+    Error: Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó Zinc Requirement Calculator (zinc-requirement-calculator)
+    Error: Slug "zinc-requirement-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\sodium-to-potassium-ratio-calculator.tsx
+Total links scanned: 3
+Γ£à Valid links: 1
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Low-Sodium Diet Planner (low-sodium-diet-planner-calculator)
+    Error: Slug "low-sodium-diet-planner-calculator" not found in calculator registry
+  ΓÇó Potassium Intake Calculator (potassium-intake-calculator)
+    Error: Slug "potassium-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Low-Sodium Diet Planner (low-sodium-diet-planner-calculator)
+    Error: Slug "low-sodium-diet-planner-calculator" not found in calculator registry
+  ΓÇó Potassium Intake Calculator (potassium-intake-calculator)
+    Error: Slug "potassium-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\standing-vs-sitting-calorie-burn-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Calorie Burn Calculator (calorie-burn-calculator)
+    Error: Slug "calorie-burn-calculator" not found in calculator registry
+    ≡ƒÆí Suggested fix: standing-vs-sitting-calorie-burn-calculator (health-fitness)
+    Reason: Similar slug found: "standing-vs-sitting-calorie-burn-calculator"
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Calorie Burn Calculator: standing-vs-sitting-calorie-burn-calculator ΓåÆ standing-vs-sitting-calorie-burn-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\step-to-calorie-converter.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Calorie Burn Calculator (calorie-burn-calculator)
+    Error: Slug "calorie-burn-calculator" not found in calculator registry
+    ≡ƒÆí Suggested fix: standing-vs-sitting-calorie-burn-calculator (health-fitness)
+    Reason: Similar slug found: "standing-vs-sitting-calorie-burn-calculator"
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Calorie Burn Calculator: standing-vs-sitting-calorie-burn-calculator ΓåÆ standing-vs-sitting-calorie-burn-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\sweat-sodium-concentration-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 1
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 3
+
+Γ¥î Invalid Links:
+  ΓÇó Sweat Rate (hydration-sweat-rate-calculator)
+    Error: Slug "hydration-sweat-rate-calculator" not found in calculator registry
+  ΓÇó Heat Stress Risk (heat-stress-risk-calculator)
+    Error: Slug "heat-stress-risk-calculator" not found in calculator registry
+  ΓÇó Recovery Heart Rate (recovery-heart-rate-calculator)
+    Error: Slug "recovery-heart-rate-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Sweat Rate (hydration-sweat-rate-calculator)
+    Error: Slug "hydration-sweat-rate-calculator" not found in calculator registry
+  ΓÇó Heat Stress Risk (heat-stress-risk-calculator)
+    Error: Slug "heat-stress-risk-calculator" not found in calculator registry
+  ΓÇó Recovery Heart Rate (recovery-heart-rate-calculator)
+    Error: Slug "recovery-heart-rate-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\thyroid-function-basal-energy-calculator.tsx
+Total links scanned: 3
+Γ£à Valid links: 2
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Resting Metabolic Rate (resting-metabolic-rate-calculator)
+    Error: Slug "resting-metabolic-rate-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Resting Metabolic Rate (resting-metabolic-rate-calculator)
+    Error: Slug "resting-metabolic-rate-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\total-energy-expenditure-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator)
+    Error: Slug "exercise-calorie-burn-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator)
+    Error: Slug "exercise-calorie-burn-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\training-impulse-trimp-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Training Stress Score (TSS) (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Training Stress Score (TSS) (training-stress-score-calculator)
+    Error: Slug "training-stress-score-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\vitamin-d-sun-exposure-calculator.tsx
+Total links scanned: 3
+Γ£à Valid links: 1
+Γ¥î Invalid links: 2
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 2
+
+Γ¥î Invalid Links:
+  ΓÇó Calcium Intake Calculator (calcium-intake-calculator)
+    Error: Slug "calcium-intake-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Calcium Intake Calculator (calcium-intake-calculator)
+    Error: Slug "calcium-intake-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\vo2-per-kg-lean-mass-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 1
+
+Γ¥î Invalid Links:
+  ΓÇó Heart Rate Zones (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Heart Rate Zones (heart-rate-zone-training-calculator)
+    Error: Slug "heart-rate-zone-training-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\work-life-balance-time-allocation-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 0
+Γ¥î Invalid links: 4
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 4
+
+Γ¥î Invalid Links:
+  ΓÇó Meditation Time Progress Tracker Calculator (meditation-time-progress-tracker-calculator)
+    Error: Slug "meditation-time-progress-tracker-calculator" not found in calculator registry
+  ΓÇó Sleep Debt Calculator (sleep-debt-calculator-hf)
+    Error: Slug "sleep-debt-calculator-hf" not found in calculator registry
+  ΓÇó Stress Level Self-Assessment Calculator (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+  ΓÇó Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator)
+    Error: Slug "exercise-calorie-burn-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Meditation Time Progress Tracker Calculator (meditation-time-progress-tracker-calculator)
+    Error: Slug "meditation-time-progress-tracker-calculator" not found in calculator registry
+  ΓÇó Sleep Debt Calculator (sleep-debt-calculator-hf)
+    Error: Slug "sleep-debt-calculator-hf" not found in calculator registry
+  ΓÇó Stress Level Self-Assessment Calculator (stress-level-self-assessment-calculator)
+    Error: Slug "stress-level-self-assessment-calculator" not found in calculator registry
+  ΓÇó Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator)
+    Error: Slug "exercise-calorie-burn-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\zinc-requirement-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 1
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixed links: 0
+ΓÜá∩╕Å  Remaining issues: 3
+
+Γ¥î Invalid Links:
+  ΓÇó Iron Intake Calculator (iron-intake-calculator)
+    Error: Slug "iron-intake-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Calcium Intake Calculator (calcium-intake-calculator)
+    Error: Slug "calcium-intake-calculator" not found in calculator registry
+
+ΓÜá∩╕Å  Remaining Issues (Manual Review Required):
+  ΓÇó Iron Intake Calculator (iron-intake-calculator)
+    Error: Slug "iron-intake-calculator" not found in calculator registry
+  ΓÇó Magnesium Intake Calculator (magnesium-intake-calculator)
+    Error: Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó Calcium Intake Calculator (calcium-intake-calculator)
+    Error: Slug "calcium-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+≡ƒôè VALIDATION SUMMARY
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Total files scanned: 349
+Total links scanned: 949
+Γ£à Valid links: 838
+Γ¥î Invalid links: 111
+≡ƒöº Auto-fixable links: 4
+
+≡ƒÆí Run with --fix flag to automatically fix broken links.
+
+ΓÜá∩╕Å  Files requiring manual review: 54
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\acute-training-load-calculator.tsx
+    - Training Stress Score (TSS) (training-stress-score-calculator): Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\anaerobic-power-output-calculator.tsx
+    - Anaerobic Threshold (anaerobic-threshold-calculator): Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\anaerobic-threshold-calculator.tsx
+    - Maximum Lactate Steady State Calculator (maximum-lactate-steady-state-calculator): Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+    - Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator): Slug "heart-rate-zone-training-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\blood-lactate-clearance-rate-calculator.tsx
+    - Anaerobic Threshold (anaerobic-threshold-calculator): Slug "anaerobic-threshold-calculator" not found in calculator registry
+    - MLSS Calculator (maximum-lactate-steady-state-calculator): Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+    - Heart Rate Zones (heart-rate-zone-training-calculator): Slug "heart-rate-zone-training-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\blood-oxygen-saturation-estimator.tsx
+    - Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator): Slug "heart-rate-zone-training-calculator" not found in calculator registry
+    - Breathing Exercise Timer (breathing-exercise-timer): Slug "breathing-exercise-timer" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\breast-milk-production-estimate-calculator.tsx
+    - Baby Feeding Amount (baby-feeding-amount-calculator): Slug "baby-feeding-amount-calculator" not found in calculator registry
+    - Pregnancy Weight Gain (pregnancy-weight-gain-calculator): Slug "pregnancy-weight-gain-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\burnout-risk-score-calculator.tsx
+    - Daily Stress Tendency Check-In (stress-level-self-assessment-calculator): Slug "stress-level-self-assessment-calculator" not found in calculator registry
+    - Sleep Quality Score (sleep-quality-score-calculator): Slug "sleep-quality-score-calculator" not found in calculator registry
+    - Recovery Readiness (recovery-readiness-score-calculator): Slug "recovery-readiness-score-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\calcium-intake-calculator.tsx
+    - Magnesium Intake Calculator (magnesium-intake-calculator): Slug "magnesium-intake-calculator" not found in calculator registry
+    - Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator): Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+    - Iron Intake Calculator (iron-intake-calculator): Slug "iron-intake-calculator" not found in calculator registry
+    - Zinc Requirement Calculator (zinc-requirement-calculator): Slug "zinc-requirement-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\chronic-training-load-calculator.tsx
+    - Training Stress Score (TSS) (training-stress-score-calculator): Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\conception-probability-per-cycle-calculator.tsx
+    - IVF Success Probability (ivf-success-probability-calculator): Slug "ivf-success-probability-calculator" not found in calculator registry
+    - Fertility Ovulation Calculator (fertility-ovulation-calculator): Slug "fertility-ovulation-calculator" not found in calculator registry
+    - Pregnancy Weight Gain (pregnancy-weight-gain-calculator): Slug "pregnancy-weight-gain-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\cortisol-stress-response-estimator.tsx
+    - Sleep Balance Check-In (sleep-debt-calculator-hf): Slug "sleep-debt-calculator-hf" not found in calculator registry
+    - Daily Stress Tendency Check-In (stress-level-self-assessment-calculator): Slug "stress-level-self-assessment-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\daily-activity-points-calculator.tsx
+    - Sleep Quality Calculator (sleep-quality-calculator): Slug "sleep-quality-calculator" not found in calculator registry
+    - Hydration Calculator (hydration-calculator): Slug "hydration-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\daily-antioxidant-orac-goal-calculator.tsx
+    - Fiber Intake Calculator (fiber-intake-calculator): Slug "fiber-intake-calculator" not found in calculator registry
+    - Sodium-to-Potassium Ratio Calculator (sodium-to-potassium-ratio-calculator): Slug "sodium-to-potassium-ratio-calculator" not found in calculator registry
+    - Magnesium Intake Calculator (magnesium-intake-calculator): Slug "magnesium-intake-calculator" not found in calculator registry
+    - PDCAAS Calculator (pdcaas-calculator): Slug "pdcaas-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\detox-juice-nutrient-calculator.tsx
+    - Fiber Intake Calculator (fiber-intake-calculator): Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\emotional-wellbeing-index-calculator.tsx
+    - Memory Retention Percentage Wellness Tracker (memory-retention-percentage-tracker): Slug "memory-retention-percentage-tracker" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\fiber-intake-calculator.tsx
+    - Magnesium Intake Calculator (magnesium-intake-calculator): Slug "magnesium-intake-calculator" not found in calculator registry
+    - Antioxidant (ORAC) Goal Calculator (daily-antioxidant-orac-goal-calculator): Slug "daily-antioxidant-orac-goal-calculator" not found in calculator registry
+    - Sodium-to-Potassium Ratio Calculator (sodium-to-potassium-ratio-calculator): Slug "sodium-to-potassium-ratio-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\foam-rolling-pressure-estimator.tsx
+    - Recovery Heart Rate (recovery-heart-rate-calculator): Slug "recovery-heart-rate-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\fodmap-load-calculator.tsx
+    - Fiber Intake Calculator (fiber-intake-calculator): Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\habit-streak-tracker-calculator.tsx
+    - Sleep Quality Calculator (sleep-quality-calculator): Slug "sleep-quality-calculator" not found in calculator registry
+    - Hydration Calculator (hydration-calculator): Slug "hydration-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\heart-rate-variability-hrv-score-calculator.tsx
+    - Recovery Heart Rhythm Check-In (recovery-heart-rate-calculator): Slug "recovery-heart-rate-calculator" not found in calculator registry
+    - Daily Stress Tendency Check-In (stress-level-self-assessment-calculator): Slug "stress-level-self-assessment-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\hydration-sweat-rate-calculator.tsx
+    - Core Body Temperature Rise Calculator (core-body-temperature-rise-calculator): Slug "core-body-temperature-rise-calculator" not found in calculator registry
+    - Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator): Slug "exercise-calorie-burn-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\iron-intake-calculator.tsx
+    - Zinc Requirement Calculator (zinc-requirement-calculator): Slug "zinc-requirement-calculator" not found in calculator registry
+    - Calcium Intake Calculator (calcium-intake-calculator): Slug "calcium-intake-calculator" not found in calculator registry
+    - Magnesium Intake Calculator (magnesium-intake-calculator): Slug "magnesium-intake-calculator" not found in calculator registry
+    - Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator): Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\iron-loss-during-periods-calculator.tsx
+    - Iron Intake (iron-intake-calculator): Slug "iron-intake-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\lactate-accumulation-rate-calculator.tsx
+    - Anaerobic Threshold (anaerobic-threshold-calculator): Slug "anaerobic-threshold-calculator" not found in calculator registry
+    - Training Stress Score (training-stress-score-calculator): Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\magnesium-intake-calculator.tsx
+    - Calcium Intake Calculator (calcium-intake-calculator): Slug "calcium-intake-calculator" not found in calculator registry
+    - Zinc Requirement Calculator (zinc-requirement-calculator): Slug "zinc-requirement-calculator" not found in calculator registry
+    - Potassium Intake Calculator (potassium-intake-calculator): Slug "potassium-intake-calculator" not found in calculator registry
+    - Fiber Intake Calculator (fiber-intake-calculator): Slug "fiber-intake-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\maximum-lactate-steady-state-calculator.tsx
+    - Anaerobic Threshold Calculator (anaerobic-threshold-calculator): Slug "anaerobic-threshold-calculator" not found in calculator registry
+    - Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator): Slug "heart-rate-zone-training-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\meditation-breathing-rate-calculator.tsx
+    - Daily Stress Tendency Check-In (stress-level-self-assessment-calculator): Slug "stress-level-self-assessment-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\menstrual-cycle-phase-tracker-calculator.tsx
+    - Fertility Ovulation Calculator (fertility-ovulation-calculator): Slug "fertility-ovulation-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\mindful-minutes-tracking-calculator.tsx
+    - Meditation Time Progress Tracker (meditation-time-progress-tracker-calculator): Slug "meditation-time-progress-tracker-calculator" not found in calculator registry
+    - Daily Stress Tendency Check-In (stress-level-self-assessment-calculator): Slug "stress-level-self-assessment-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\muscle-fiber-type-ratio-calculator.tsx
+    - Anaerobic Threshold (anaerobic-threshold-calculator): Slug "anaerobic-threshold-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\muscle-soreness-recovery-estimator.tsx
+    - Sleep Quality Calculator (sleep-quality-calculator): Slug "sleep-quality-calculator" not found in calculator registry
+    - Hydration Calculator (hydration-calculator): Slug "hydration-calculator" not found in calculator registry
+    - Training Stress Score Calculator (training-stress-score-calculator): Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\myoglobin-oxygen-storage-calculator.tsx
+    - OΓéé Cost per Watt (oxygen-cost-per-watt-efficiency-calculator): Slug "oxygen-cost-per-watt-efficiency-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\neat-calculator.tsx
+    - Step Count to Distance (step-count-to-distance-calculator): Slug "step-count-to-distance-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\omega3-daily-requirement-calculator.tsx
+    - Vitamin D Sun Exposure Calculator (vitamin-d-sun-exposure-calculator): Slug "vitamin-d-sun-exposure-calculator" not found in calculator registry
+    - Magnesium Intake Calculator (magnesium-intake-calculator): Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\oxygen-debt-epoc-calculator.tsx
+    - Training Stress Score (training-stress-score-calculator): Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\paleo-compliance-score-calculator.tsx
+    - Fiber Intake Calculator (fiber-intake-calculator): Slug "fiber-intake-calculator" not found in calculator registry
+    - Micronutrient Tracker (vitamin-mineral-rda-tracker-calculator): Slug "vitamin-mineral-rda-tracker-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\pdcaas-calculator.tsx
+    - Amino Acid Blend Optimizer (amino-acid-blend-optimizer-calculator): Slug "amino-acid-blend-optimizer-calculator" not found in calculator registry
+    - Antioxidant (ORAC) Goal Calculator (daily-antioxidant-orac-goal-calculator): Slug "daily-antioxidant-orac-goal-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\plant-based-protein-gap-calculator.tsx
+    - Fiber Intake Calculator (fiber-intake-calculator): Slug "fiber-intake-calculator" not found in calculator registry
+    - Iron Intake Calculator (iron-intake-calculator): Slug "iron-intake-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\post-exercise-oxygen-consumption-calculator.tsx
+    - Training Stress Score (training-stress-score-calculator): Slug "training-stress-score-calculator" not found in calculator registry
+    - Recovery Heart Rate (recovery-heart-rate-calculator): Slug "recovery-heart-rate-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\power-to-heart-rate-efficiency-calculator.tsx
+    - Training Stress Score (training-stress-score-calculator): Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\reaction-time-improvement-tracker.tsx
+    - Mental Fatigue Index Calculator (mental-fatigue-index-calculator): Slug "mental-fatigue-index-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\respiratory-quotient-calculator.tsx
+    - Anaerobic Threshold Calculator (anaerobic-threshold-calculator): Slug "anaerobic-threshold-calculator" not found in calculator registry
+    - Maximum Lactate Steady State Calculator (maximum-lactate-steady-state-calculator): Slug "maximum-lactate-steady-state-calculator" not found in calculator registry
+    - Heart Rate Zone Training Calculator (heart-rate-zone-training-calculator): Slug "heart-rate-zone-training-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\rest-vs-active-energy-burn-calculator.tsx
+    - Resting Metabolic Rate (resting-metabolic-rate-calculator): Slug "resting-metabolic-rate-calculator" not found in calculator registry
+    - NEAT Calculator (non-exercise-activity-thermogenesis-calculator): Slug "non-exercise-activity-thermogenesis-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\rowing-drag-factor-calculator.tsx
+    - Resting Metabolic Rate (resting-metabolic-rate-calculator): Slug "resting-metabolic-rate-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\sodium-potassium-ratio-calculator.tsx
+    - Water Intake Calculator (water-intake-calculator): Slug "water-intake-calculator" not found in calculator registry
+    - Magnesium Intake Calculator (magnesium-intake-calculator): Slug "magnesium-intake-calculator" not found in calculator registry
+    - Fiber Intake Calculator (fiber-intake-calculator): Slug "fiber-intake-calculator" not found in calculator registry
+    - Zinc Requirement Calculator (zinc-requirement-calculator): Slug "zinc-requirement-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\sodium-to-potassium-ratio-calculator.tsx
+    - Low-Sodium Diet Planner (low-sodium-diet-planner-calculator): Slug "low-sodium-diet-planner-calculator" not found in calculator registry
+    - Potassium Intake Calculator (potassium-intake-calculator): Slug "potassium-intake-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\sweat-sodium-concentration-calculator.tsx
+    - Sweat Rate (hydration-sweat-rate-calculator): Slug "hydration-sweat-rate-calculator" not found in calculator registry
+    - Heat Stress Risk (heat-stress-risk-calculator): Slug "heat-stress-risk-calculator" not found in calculator registry
+    - Recovery Heart Rate (recovery-heart-rate-calculator): Slug "recovery-heart-rate-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\thyroid-function-basal-energy-calculator.tsx
+    - Resting Metabolic Rate (resting-metabolic-rate-calculator): Slug "resting-metabolic-rate-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\total-energy-expenditure-calculator.tsx
+    - Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator): Slug "exercise-calorie-burn-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\training-impulse-trimp-calculator.tsx
+    - Training Stress Score (TSS) (training-stress-score-calculator): Slug "training-stress-score-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\vitamin-d-sun-exposure-calculator.tsx
+    - Calcium Intake Calculator (calcium-intake-calculator): Slug "calcium-intake-calculator" not found in calculator registry
+    - Magnesium Intake Calculator (magnesium-intake-calculator): Slug "magnesium-intake-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\vo2-per-kg-lean-mass-calculator.tsx
+    - Heart Rate Zones (heart-rate-zone-training-calculator): Slug "heart-rate-zone-training-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\work-life-balance-time-allocation-calculator.tsx
+    - Meditation Time Progress Tracker Calculator (meditation-time-progress-tracker-calculator): Slug "meditation-time-progress-tracker-calculator" not found in calculator registry
+    - Sleep Debt Calculator (sleep-debt-calculator-hf): Slug "sleep-debt-calculator-hf" not found in calculator registry
+    - Stress Level Self-Assessment Calculator (stress-level-self-assessment-calculator): Slug "stress-level-self-assessment-calculator" not found in calculator registry
+    - Exercise Calorie Burn Calculator (exercise-calorie-burn-calculator): Slug "exercise-calorie-burn-calculator" not found in calculator registry
+  ΓÇó D:\MegaCalc-Hub\src\components\calculators\health-fitness\zinc-requirement-calculator.tsx
+    - Iron Intake Calculator (iron-intake-calculator): Slug "iron-intake-calculator" not found in calculator registry
+    - Magnesium Intake Calculator (magnesium-intake-calculator): Slug "magnesium-intake-calculator" not found in calculator registry
+    - Calcium Intake Calculator (calcium-intake-calculator): Slug "calcium-intake-calculator" not found in calculator registry
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+

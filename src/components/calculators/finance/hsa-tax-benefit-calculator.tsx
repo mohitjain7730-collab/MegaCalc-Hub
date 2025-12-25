@@ -428,9 +428,9 @@ export default function HsaTaxBenefitCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/finance/long-term-care-cost-estimator" className="hover:underline">Long-Term Care Cost Estimator</Link></li>
-              <li><Link href="/finance/copay-vs-deductible-breakeven-calculator" className="hover:underline">Copay vs Deductible Breakeven Calculator</Link></li>
-              <li><Link href="/finance/health-insurance-subsidy-eligibility-calculator" className="hover:underline">Health Insurance Subsidy Calculator</Link></li>
+              <li><Link href="/category/finance/long-term-care-cost-estimator" className="hover:underline">Long-Term Care Cost Estimator</Link></li>
+              <li><Link href="/category/finance/copay-vs-deductible-breakeven-calculator" className="hover:underline">Copay vs Deductible Breakeven Calculator</Link></li>
+              <li><Link href="/category/finance/health-insurance-subsidy-eligibility-calculator" className="hover:underline">Health Insurance Subsidy Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

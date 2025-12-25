@@ -137,7 +137,7 @@ export default function EquityEnterpriseValueBridgeCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/free-cash-flow-to-equity-calculator" className="text-primary hover:underline">Free Cash Flow to Equity</a></h4><p className="text-sm text-muted-foreground">Equity valuation.</p></div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/enterprise-value-calculator" className="text-primary hover:underline">Enterprise Value</a></h4><p className="text-sm text-muted-foreground">Business valuation.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/dcf-valuation-calculator" className="text-primary hover:underline">DCF Valuation</a></h4><p className="text-sm text-muted-foreground">Discounted cash flow.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/dcf-calculator" className="text-primary hover:underline">DCF Valuation</a></h4><p className="text-sm text-muted-foreground">Discounted cash flow.</p></div>
           </div>
         </CardContent>
       </Card>

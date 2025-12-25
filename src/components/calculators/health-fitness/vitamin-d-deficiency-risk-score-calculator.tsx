@@ -107,12 +107,12 @@ const relatedCalculators = [
   },
   {
     name: 'Calcium Intake Calculator',
-    slug: 'calcium-intake-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Track calcium that works with vitamin D.',
   },
   {
     name: 'Iron Intake Calculator',
-    slug: 'iron-intake-calculator',
+    slug: 'protein-intake-calculator',
     description: 'Monitor complete nutritional profile.',
   },
 ];

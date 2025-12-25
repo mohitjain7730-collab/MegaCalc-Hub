@@ -100,7 +100,7 @@ const relatedCalculators = [
   },
   {
     name: 'Daily Antioxidant (ORAC) Goal Calculator',
-    slug: 'daily-antioxidant-orac-goal-calculator',
+    slug: 'carbohydrate-intake-calculator',
     description: 'Look at antioxidant intake more closely.',
   },
   {

@@ -258,9 +258,9 @@ export default function MediterraneanDietComplianceCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/category/health-fitness/dash-diet-sodium-intake-calculator">DASH Diet Sodium Intake Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/low-sodium-diet-planner-calculator">Low-Sodium Diet Planner Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/vegan-protein-requirement-calculator">Vegan Protein Requirement Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/electrolyte-replacement-calculator">DASH Diet Sodium Intake Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/electrolyte-replacement-calculator">Low-Sodium Diet Planner Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/protein-intake-calculator">Vegan Protein Requirement Calculator</Link></p>
       </div>
     </div>
   );

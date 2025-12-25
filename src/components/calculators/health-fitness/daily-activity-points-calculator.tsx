@@ -664,7 +664,7 @@ export default function DailyActivityPointsCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/sleep-quality-calculator" className="text-primary hover:underline">
+                <Link href="/category/health-fitness/habit-streak-tracker-calculator" className="text-primary hover:underline">
                   Sleep Quality Calculator
                 </Link>
               </h4>
@@ -672,7 +672,7 @@ export default function DailyActivityPointsCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/hydration-calculator" className="text-primary hover:underline">
+                <Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">
                   Hydration Calculator
                 </Link>
               </h4>

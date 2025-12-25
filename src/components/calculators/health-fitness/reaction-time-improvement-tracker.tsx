@@ -55,7 +55,7 @@ const faqs = [
 
 const relatedCalculators = [
   { name: 'Cognitive Focus Efficiency Calculator', slug: 'cognitive-focus-efficiency-calculator', description: 'Check whether your planning habits support deep focus.' },
-  { name: 'Mental Fatigue Index Calculator', slug: 'mental-fatigue-index-calculator', description: 'Monitor cognitive load so fatigue doesn’t slow responses.' },
+  { name: 'Mental Fatigue Index Calculator', slug: 'daily-activity-points-calculator', description: 'Monitor cognitive load so fatigue doesn’t slow responses.' },
   { name: 'Meditation Streak Mindfulness Tracker', slug: 'meditation-streak-mindfulness-progress-tracker', description: 'Layer mindfulness for calmer, faster reactions.' },
   { name: 'Stress Hormone Balance Calculator', slug: 'stress-hormone-balance-calculator', description: 'See how cortisol vs melatonin balance affects alertness.' },
 ];

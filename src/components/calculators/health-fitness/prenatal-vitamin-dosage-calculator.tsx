@@ -101,22 +101,22 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Pregnancy Weight Gain Calculator',
-    slug: 'pregnancy-weight-gain-calculator',
+    slug: 'ideal-body-weight-calculator',
     description: 'Track recommended weight gain during pregnancy.',
   },
   {
     name: 'Iron Intake Calculator',
-    slug: 'iron-intake-calculator',
+    slug: 'protein-intake-calculator',
     description: 'Calculate daily iron requirements.',
   },
   {
     name: 'Calcium Intake Calculator',
-    slug: 'calcium-intake-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Understand bone health needs.',
   },
   {
     name: 'Vitamin D Sun Exposure Calculator',
-    slug: 'vitamin-d-sun-exposure-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Support Vitamin D status.',
   },
 ];

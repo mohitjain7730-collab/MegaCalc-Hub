@@ -109,7 +109,7 @@ const relatedCalculators = [
   },
   {
     name: 'Vitamin D Sun Exposure Calculator',
-    slug: 'vitamin-d-sun-exposure-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Evaluate safe sun exposure for vitamin D synthesis.',
   },
   {

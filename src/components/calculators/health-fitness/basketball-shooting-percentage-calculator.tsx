@@ -207,8 +207,8 @@ export default function BasketballShootingPercentageCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/category/health-fitness/tennis-serve-speed-calculator">Tennis Serve Speed Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/baseball-pitch-speed-calculator">Baseball Pitch Speed Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Tennis Serve Speed Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Baseball Pitch Speed Calculator</Link></p>
         <p><Link className="text-primary underline" href="/category/health-fitness/strength-to-weight-ratio-calculator">Strength-to-Weight Ratio</Link></p>
       </div>
     </div>

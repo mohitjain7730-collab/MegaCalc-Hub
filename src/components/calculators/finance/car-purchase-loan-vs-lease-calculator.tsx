@@ -93,7 +93,7 @@ export default function CarPurchaseLoanVsLeaseCalculator() {
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">Loan EMI Calculator</a></h4><p className="text-sm text-muted-foreground">Loan payments.</p></div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/amortization-schedule-generator" className="text-primary hover:underline">Amortization Schedule</a></h4><p className="text-sm text-muted-foreground">Payment breakdown.</p></div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/monthly-budget-planner-calculator" className="text-primary hover:underline">Monthly Budget Planner</a></h4><p className="text-sm text-muted-foreground">Budget impact.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/dti-ratio-calculator" className="text-primary hover:underline">Debt-to-Income Ratio</a></h4><p className="text-sm text-muted-foreground">Affordability check.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/dscr-calculator" className="text-primary hover:underline">Debt-to-Income Ratio</a></h4><p className="text-sm text-muted-foreground">Affordability check.</p></div>
           </div>
         </CardContent>
       </Card>

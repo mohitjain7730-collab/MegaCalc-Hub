@@ -560,7 +560,7 @@ export default function FoamRollingPressureEstimator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/doms-recovery-time-calculator" className="text-primary hover:underline">DOMS Recovery Time</Link></h4><p className="text-sm text-muted-foreground">Estimate recovery hours after hard sessions.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/recovery-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</Link></h4><p className="text-sm text-muted-foreground">Monitor autonomic recovery trends.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</Link></h4><p className="text-sm text-muted-foreground">Monitor autonomic recovery trends.</p></div>
           </div>
         </CardContent>
       </Card>

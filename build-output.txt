@@ -1,0 +1,117 @@
+﻿
+> nextn@0.1.0 build
+> cross-env NODE_OPTIONS=--max-old-space-size=6144 next build
+
+node.exe : Warning: 
+total number of 
+custom routes 
+exceeds 1000, this 
+can reduce 
+performance. Route 
+counts:
+At C:\Program Files\n
+odejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo   
+           : 
+NotSpecifi    ed: 
+(Warning: tota    l 
+.... Route count    
+s::String) [], Rem   
+ oteException
+    + 
+FullyQualifiedEr    
+rorId : NativeComm   
+ andError
+ 
+headers: 4
+rewrites: 0
+redirects: 1023
+See more info: https:
+//nextjs.org/docs/mes
+sages/max-custom-rout
+es-reached
+   Γû▓ Next.js 15.3.6
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 95s
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/1072) ...
+   Generating static pages (268/1072) 
+   Generating static pages (536/1072) 
+   Generating static pages (804/1072) 
+ Γ£ô Generating static pages (1072/1072)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                             Size  First Load JS  Revalidate  Expire
+Γöî Γùï /                                                                  995 B         554 kB
+Γö£ Γùï /_not-found                                                      1.14 kB         387 kB
+Γö£ ╞Æ /ai-tool/[[...path]]                                               247 B         386 kB
+Γö£ Γùï /calculators                                                       317 B         533 kB
+Γö£ ΓùÅ /category/[slug]                                                 2.82 kB         603 kB          1h      1y
+Γö£   Γö£ /category/finance                                                                              1h      1y
+Γö£   Γö£ /category/health-fitness                                                                       1h      1y
+Γö£   Γö£ /category/conversions                                                                          1h      1y
+Γö£   Γöö [+10 more paths]
+Γö£ ΓùÅ /category/[slug]/[calcSlug]                                      2.28 kB         602 kB
+Γö£   Γö£ /category/business-startup/dscr-calculator
+Γö£   Γö£ /category/business-startup/break-even-sales-dollar-calculator
+Γö£   Γö£ /category/business-startup/contribution-margin-calculator
+Γö£   Γöö [+1020 more paths]
+Γö£ Γùï /contact                                                           317 B         533 kB
+Γö£ Γùï /learning-hub                                                      317 B         533 kB
+Γö£ ╞Æ /learning-hub/[slug]                                             1.04 kB         533 kB
+Γö£ Γùï /learning-hub/finance                                              317 B         533 kB
+Γö£ ╞Æ /learning-hub/finance/[slug]                                       317 B         533 kB
+Γö£ Γùï /learning-hub/finance/banking-accounts                             317 B         533 kB
+Γö£ Γùï /learning-hub/finance/budgeting-personal-finance                   316 B         533 kB
+Γö£ Γùï /learning-hub/finance/business-corporate-finance                   317 B         533 kB
+Γö£ Γùï /learning-hub/finance/credit-debt-management                       317 B         533 kB
+Γö£ Γùï /learning-hub/finance/financial-ratios-analysis                    317 B         533 kB
+Γö£ Γùï /learning-hub/finance/insurance-risk-management                    317 B         533 kB
+Γö£ Γùï /learning-hub/finance/loans-lending                                317 B         533 kB
+Γö£ Γùï /learning-hub/finance/mutual-funds-etfs                            317 B         533 kB
+Γö£ Γùï /learning-hub/finance/real-estate-mortgages                        316 B         533 kB
+Γö£ Γùï /learning-hub/finance/retirement-planning                          324 B         553 kB
+Γö£ Γùï /learning-hub/finance/savings-and-investment                       325 B         553 kB
+Γö£ Γùï /learning-hub/finance/stocks-securities                            317 B         533 kB
+Γö£ Γùï /learning-hub/finance/taxes-tax-planning                           317 B         533 kB
+Γö£ Γùï /learning-hub/health                                               317 B         533 kB
+Γö£ Γùï /learning-hub/health/body-composition                              317 B         533 kB
+Γö£ Γùï /learning-hub/health/fitness-sports                                317 B         533 kB
+Γö£ Γùï /learning-hub/health/longevity-wellness                            317 B         533 kB
+Γö£ Γùï /learning-hub/health/medical-risk-scores                           317 B         533 kB
+Γö£ Γùï /learning-hub/health/mental-health-sleep                           317 B         533 kB
+Γö£ Γùï /learning-hub/health/nutrition-diet                                324 B         553 kB
+Γö£ ╞Æ /learning-hub/health/nutrition-diet/[slug]                         317 B         533 kB
+Γö£ Γùï /learning-hub/health/weight-metabolism                             317 B         533 kB
+Γö£ Γùï /learning-hub/health/womens-health                                 318 B         533 kB
+Γö£ Γùï /privacy-policy                                                    316 B         533 kB
+Γö£ Γùï /search                                                          1.29 kB         601 kB
+Γö£ Γùï /site-map                                                          561 B         601 kB
+Γö£ Γùï /sitemap.xml                                                       247 B         386 kB
+Γöö Γùï /terms-conditions                                                  317 B         533 kB
++ First Load JS shared by all                                         386 kB
+  Γö£ chunks/11561-4e465a05ca41e3f1.js                                 12.5 kB
+  Γö£ chunks/17706-51f401f186993e5a.js                                 11.5 kB
+  Γö£ chunks/59248-18af2d4afc15512f.js                                 53.2 kB
+  Γö£ chunks/common-12245e1e-ad0f2cca2739b097.js                       16.2 kB
+  Γö£ chunks/common-a00fb41b-9a8555a0a4c4552f.js                       32.8 kB
+  Γö£ chunks/common-c3373795-18887a8318dfa108.js                       10.3 kB
+  Γö£ chunks/common-de3a0100-cbc3fda5e54a9bc1.js                         10 kB
+  Γö£ chunks/common-e6f6df65-345c275086593c7b.js                       28.9 kB
+  Γö£ chunks/webpack-0fe2ebfbd76910ac.js                               18.7 kB
+  Γöö other shared chunks (total)                                       192 kB
+
+
+Γùï  (Static)   prerendered as static content
+ΓùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+╞Æ  (Dynamic)  server-rendered on demand
+

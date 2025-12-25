@@ -230,7 +230,7 @@ export default function OptimalPortfolioAllocationTwoAssetCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2"><a href="/category/finance/standard-deviation-calculator" className="text-primary hover:underline">Standard Deviation Calculator</a></h4>
+              <h4 className="font-semibold mb-2"><a href="/category/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">Standard Deviation Calculator</a></h4>
               <p className="text-sm text-muted-foreground">Measure volatility of returns.</p>
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">

@@ -170,8 +170,8 @@ export default function AssetLiabilityMatchingCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/duration-matching-calculator" className="text-primary hover:underline">Duration Matching</a></h4><p className="text-sm text-muted-foreground">Interest rate risk management.</p></div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/present-value-calculator" className="text-primary hover:underline">Present Value</a></h4><p className="text-sm text-muted-foreground">Cash flow discounting.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/net-present-value-calculator" className="text-primary hover:underline">Net Present Value</a></h4><p className="text-sm text-muted-foreground">Investment valuation.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/discounted-cash-flow-calculator" className="text-primary hover:underline">Discounted Cash Flow</a></h4><p className="text-sm text-muted-foreground">DCF valuation.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/npv-calculator" className="text-primary hover:underline">Net Present Value</a></h4><p className="text-sm text-muted-foreground">Investment valuation.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/dcf-calculator" className="text-primary hover:underline">Discounted Cash Flow</a></h4><p className="text-sm text-muted-foreground">DCF valuation.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -486,12 +486,12 @@ export default function BloodOxygenSaturationEstimator() {
             </Link>
           </p>
           <p>
-            <Link href="/category/health-fitness/heart-rate-zone-training-calculator" className="text-primary underline">
+            <Link href="/category/health-fitness/target-heart-rate-calculator" className="text-primary underline">
               Heart Rate Zone Training Calculator
             </Link>
           </p>
           <p>
-            <Link href="/category/health-fitness/breathing-exercise-timer" className="text-primary underline">
+            <Link href="/category/health-fitness/target-heart-rate-calculator" className="text-primary underline">
               Breathing Exercise Timer
             </Link>
           </p>

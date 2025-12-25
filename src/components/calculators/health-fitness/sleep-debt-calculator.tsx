@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-debt-calculator-hf';
+const baseUrl = 'https://mycalculating.com/category/health-fitness/habit-streak-tracker-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

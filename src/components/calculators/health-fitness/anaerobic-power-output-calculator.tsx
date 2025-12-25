@@ -146,7 +146,7 @@ export default function AnaerobicPowerOutputCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/one-rep-max-strength-calculator" className="text-primary hover:underline">One‑Rep Max</Link></h4><p className="text-sm text-muted-foreground">Strength baseline for power.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/critical-power-calculator" className="text-primary hover:underline">Critical Power</Link></h4><p className="text-sm text-muted-foreground">Sustainable power model.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/anaerobic-threshold-calculator" className="text-primary hover:underline">Anaerobic Threshold</Link></h4><p className="text-sm text-muted-foreground">Intensity domains.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">Anaerobic Threshold</Link></h4><p className="text-sm text-muted-foreground">Intensity domains.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/training-volume-calculator" className="text-primary hover:underline">Training Volume</Link></h4><p className="text-sm text-muted-foreground">Manage workload.</p></div>
           </div>
         </CardContent>

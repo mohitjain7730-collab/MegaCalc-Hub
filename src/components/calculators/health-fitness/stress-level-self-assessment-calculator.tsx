@@ -106,7 +106,7 @@ const relatedCalculators = [
   },
   {
     name: 'Sleep Balance Check-In',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Evaluate how stress may impact sleep patterns.',
   },
   {
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/stress-level-self-assessment-calculator';
+const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-activity-points-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

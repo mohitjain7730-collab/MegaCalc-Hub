@@ -173,7 +173,7 @@ export default function MenstrualCyclePhaseTrackerCalculator() {
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/pms-symptom-score-calculator" className="text-primary hover:underline">PMS Symptom Score</Link></h4><p className="text-sm text-muted-foreground">Assess PMS symptom severity.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/iron-loss-during-periods-calculator" className="text-primary hover:underline">Iron Loss During Periods</Link></h4><p className="text-sm text-muted-foreground">Estimate menstrual iron loss.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/conception-probability-per-cycle-calculator" className="text-primary hover:underline">Conception Probability</Link></h4><p className="text-sm text-muted-foreground">Estimate conception probability.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/fertility-ovulation-calculator" className="text-primary hover:underline">Fertility Ovulation Calculator</Link></h4><p className="text-sm text-muted-foreground">Track ovulation cycles.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/conception-probability-per-cycle-calculator" className="text-primary hover:underline">Fertility Ovulation Calculator</Link></h4><p className="text-sm text-muted-foreground">Track ovulation cycles.</p></div>
           </div>
         </CardContent>
       </Card>

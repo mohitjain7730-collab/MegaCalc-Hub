@@ -219,7 +219,7 @@ export default function ElectrolyteReplacementCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/weight-loss-calculator" className="text-primary hover:underline">
+                  <a href="/category/health-fitness/calorie-deficit-calculator" className="text-primary hover:underline">
                     Weight Loss Calculator
                   </a>
                 </h4>

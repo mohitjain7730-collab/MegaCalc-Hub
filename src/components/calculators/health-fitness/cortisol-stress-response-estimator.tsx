@@ -248,9 +248,9 @@ export default function CortisolStressResponseEstimator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/heart-rate-variability-hrv-score-calculator" className="text-primary hover:underline">Heart Rhythm Wellness Score</Link></h4><p className="text-sm text-muted-foreground">See how your heartbeat variation trends alongside your routines.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/sleep-debt-calculator-hf" className="text-primary hover:underline">Sleep Balance Check-In</Link></h4><p className="text-sm text-muted-foreground">Compare recent sleep time to your chosen target.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/habit-streak-tracker-calculator" className="text-primary hover:underline">Sleep Balance Check-In</Link></h4><p className="text-sm text-muted-foreground">Compare recent sleep time to your chosen target.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/meditation-breathing-rate-calculator" className="text-primary hover:underline">Meditation Breathing Rhythm Helper</Link></h4><p className="text-sm text-muted-foreground">Try a breathing pace that feels comfortable and calming.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/stress-level-self-assessment-calculator" className="text-primary hover:underline">Daily Stress Tendency Check-In</Link></h4><p className="text-sm text-muted-foreground">Gently rate how overloaded or steady recent days feel.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">Daily Stress Tendency Check-In</Link></h4><p className="text-sm text-muted-foreground">Gently rate how overloaded or steady recent days feel.</p></div>
           </div>
         </CardContent>
       </Card>

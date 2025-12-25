@@ -97,7 +97,7 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Sleep Debt Calculator',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Calculate current sleep debt accumulation.',
   },
   {

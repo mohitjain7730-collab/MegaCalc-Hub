@@ -105,7 +105,7 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Sleep Debt Calculator',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Assess sleep quality and recovery needs.',
   },
   {

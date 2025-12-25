@@ -110,7 +110,7 @@ const relatedCalculators = [
   },
   {
     name: 'Exercise Calorie Burn Calculator',
-    slug: 'exercise-calorie-burn-calculator',
+    slug: 'mets-calories-burned-calculator',
     description: 'Assess structured exercise alongside NEAT.',
   },
   {

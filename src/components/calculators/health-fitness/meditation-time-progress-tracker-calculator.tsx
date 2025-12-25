@@ -109,17 +109,17 @@ const relatedCalculators = [
   },
   {
     name: 'Daily Stress Tendency Check-In',
-    slug: 'stress-level-self-assessment-calculator',
+    slug: 'daily-activity-points-calculator',
     description: 'Assess how stress may relate to meditation practice.',
   },
   {
     name: 'Sleep Balance Check-In',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Explore how meditation may support sleep.',
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/meditation-time-progress-tracker-calculator';
+const baseUrl = 'https://mycalculating.com/category/health-fitness/habit-streak-tracker-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

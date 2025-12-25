@@ -253,10 +253,10 @@ export default function DelayedGratificationROICalculator() {
           <CardHeader><CardTitle className="flex items-center gap-2"><Landmark className="h-5 w-5" />Related Calculators</CardTitle></CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/finance/sinking-fund-calculator" className="hover:underline">Sinking Fund Calculator</Link></li>
-              <li><Link href="/finance/subscription-audit-calculator" className="hover:underline">Subscription Audit Calculator</Link></li>
-              <li><Link href="/finance/lifestyle-creep-calculator" className="hover:underline">Lifestyle Creep Calculator</Link></li>
-              <li><Link href="/finance/opportunity-cost-calculator" className="hover:underline">Opportunity Cost Calculator</Link></li>
+              <li><Link href="/category/finance/compound-interest-calculator" className="hover:underline">Sinking Fund Calculator</Link></li>
+              <li><Link href="/category/finance/compound-interest-calculator" className="hover:underline">Subscription Audit Calculator</Link></li>
+              <li><Link href="/category/finance/compound-interest-calculator" className="hover:underline">Lifestyle Creep Calculator</Link></li>
+              <li><Link href="/category/finance/compound-interest-calculator" className="hover:underline">Opportunity Cost Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

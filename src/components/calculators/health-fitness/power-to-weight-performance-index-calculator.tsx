@@ -113,7 +113,7 @@ const relatedCalculators = [
   },
   {
     name: 'Training Stress Score Calculator',
-    slug: 'training-stress-score-calculator',
+    slug: 'running-pace-calculator',
     description: 'Calculate training stress in power-based training.',
   },
 ];

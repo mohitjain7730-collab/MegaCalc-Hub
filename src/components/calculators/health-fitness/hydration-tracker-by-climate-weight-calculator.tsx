@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
   {
     name: 'Sweat Rate Calculator',
-    slug: 'hydration-sweat-rate-calculator',
+    slug: 'hydration-needs-calculator',
     description: 'Evaluate fluid loss during exercise.',
   },
   {

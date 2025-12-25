@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
   {
     name: 'Iron Intake Calculator',
-    slug: 'iron-intake-calculator',
+    slug: 'protein-intake-calculator',
     description: 'Track iron needs, especially important during follicular phase.',
   },
 ];

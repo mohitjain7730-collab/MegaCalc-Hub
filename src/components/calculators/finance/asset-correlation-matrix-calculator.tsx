@@ -210,7 +210,7 @@ export default function AssetCorrelationMatrixCalculator() {
               <p className="text-sm text-muted-foreground">Translate correlation into total risk.</p>
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2"><a href="/category/finance/standard-deviation-calculator" className="text-primary hover:underline">Standard Deviation Calculator</a></h4>
+              <h4 className="font-semibold mb-2"><a href="/category/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">Standard Deviation Calculator</a></h4>
               <p className="text-sm text-muted-foreground">Assess individual risk inputs.</p>
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">

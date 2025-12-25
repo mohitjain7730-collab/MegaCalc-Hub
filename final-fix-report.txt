@@ -1,0 +1,127 @@
+﻿≡ƒöì Scanning calculator files for related calculator definitions...
+
+Working directory: D:\MegaCalc-Hub
+Found 349 calculator files with related calculator definitions.
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\conversions\height-converter.tsx
+Total links scanned: 5
+Γ£à Valid links: 4
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó BMI Calculator (bmi-calculator)
+    Error: Category mismatch: expected "health-fitness", got "health"
+    ≡ƒÆí Suggested fix: bmi-calculator (health-fitness)
+    Reason: Category corrected to match registry
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó BMI Calculator: bmi-calculator ΓåÆ bmi-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+node.exe : ΓÜá∩╕Å  
+File D:\MegaCalc-Hub\
+src\components\calcul
+ators\conversions\hei
+ght-converter.tsx 
+uses hardcoded 
+links. Consider 
+migrating to 
+<RelatedCalculators> 
+component.
+At C:\Program Files\n
+odejs\npx.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (ΓÜá∩╕Å    
+  File D:...ors>     
+component.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\alcohol-metabolism-time-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Sleep Debt Calculator (recovery-sleep-requirement-after-sleep-debt-calculator)
+    Error: Category mismatch: expected "health-fitness", got "cognitive-psychology"
+    ≡ƒÆí Suggested fix: recovery-sleep-requirement-after-sleep-debt-calculator (health-fitness)
+    Reason: Category corrected to match registry
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Sleep Debt Calculator: recovery-sleep-requirement-after-sleep-debt-calculator ΓåÆ recovery-sleep-requirement-after-sleep-debt-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+ΓÜá∩╕Å  File D:\MegaC
+alc-Hub\src\component
+s\calculators\health-
+fitness\alcohol-metab
+olism-time-calculator
+.tsx uses hardcoded 
+links. Consider 
+migrating to 
+<RelatedCalculators> 
+component.
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\breast-milk-production-estimate-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Baby Feeding Amount (breast-milk-production-estimate-calculator)
+    Error: Category mismatch: expected "health-fitness", got "parenting"
+    ≡ƒÆí Suggested fix: breast-milk-production-estimate-calculator (health-fitness)
+    Reason: Category corrected to match registry
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Baby Feeding Amount: breast-milk-production-estimate-calculator ΓåÆ breast-milk-production-estimate-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+ΓÜá∩╕Å  File D:\MegaC
+alc-Hub\src\component
+s\calculators\health-
+fitness\breast-milk-p
+roduction-estimate-ca
+lculator.tsx uses 
+hardcoded links. 
+Consider migrating 
+to 
+<RelatedCalculators> 
+component.
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+≡ƒôè VALIDATION SUMMARY
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Total files scanned: 349
+Total links scanned: 917
+Γ£à Valid links: 914
+Γ¥î Invalid links: 3
+≡ƒöº Auto-fixable links: 3
+
+≡ƒöº Files fixed: 0
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+

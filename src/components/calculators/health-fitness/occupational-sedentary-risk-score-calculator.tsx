@@ -94,7 +94,7 @@ const relatedCalculators = [
   },
   {
     name: 'Hydration Sweat Rate Calculator',
-    slug: 'hydration-sweat-rate-calculator',
+    slug: 'hydration-needs-calculator',
     description: 'Proper hydration reduces joint stiffness during sedentary days.',
   },
   {
@@ -104,7 +104,7 @@ const relatedCalculators = [
   },
   {
     name: 'Stress Level Self-Assessment Calculator',
-    slug: 'stress-level-self-assessment-calculator',
+    slug: 'daily-activity-points-calculator',
     description: 'Correlate sedentary risk with perceived stress.',
   },
 ];

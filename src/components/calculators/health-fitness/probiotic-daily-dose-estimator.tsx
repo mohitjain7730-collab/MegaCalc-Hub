@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
   {
     name: 'Fiber Intake Calculator',
-    slug: 'fiber-intake-calculator',
+    slug: 'carbohydrate-intake-calculator',
     description: 'Calculate fiber to support probiotics.',
   },
 ];

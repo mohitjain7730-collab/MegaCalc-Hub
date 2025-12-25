@@ -104,7 +104,7 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Sleep Debt Calculator',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Measure weekly sleep debt to pair with your caffeine changes.',
   },
   {
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
   {
     name: 'Stress Level Self-Assessment Calculator',
-    slug: 'stress-level-self-assessment-calculator',
+    slug: 'daily-activity-points-calculator',
     description: 'Check how stress load influences stimulant cravings.',
   },
 ];

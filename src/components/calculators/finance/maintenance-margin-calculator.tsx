@@ -586,7 +586,7 @@ export default function MaintenanceMarginCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/risk-return-calculator" className="text-primary hover:underline">
+                <a href="/category/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">
                   Risk-Return Calculator
                 </a>
               </h4>
@@ -596,7 +596,7 @@ export default function MaintenanceMarginCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/position-size-calculator" className="text-primary hover:underline">
+                <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
                   Position Size Calculator
                 </a>
               </h4>

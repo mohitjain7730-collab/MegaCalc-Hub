@@ -445,10 +445,10 @@ export default function DentalCostComparisonCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
-              <li><Link href="/finance/hospital-stay-cost-by-specialty-calculator" className="hover:underline">Hospital Stay Cost Estimator</Link></li>
-              <li><Link href="/finance/health-insurance-subsidy-eligibility-calculator" className="hover:underline">Health Insurance Subsidy Calculator</Link></li>
-              <li><Link href="/finance/copay-vs-deductible-breakeven-calculator" className="hover:underline">Copay vs Deductible Breakeven Calculator</Link></li>
+              <li><Link href="/category/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
+              <li><Link href="/category/finance/hospital-stay-cost-by-specialty-calculator" className="hover:underline">Hospital Stay Cost Estimator</Link></li>
+              <li><Link href="/category/finance/health-insurance-subsidy-eligibility-calculator" className="hover:underline">Health Insurance Subsidy Calculator</Link></li>
+              <li><Link href="/category/finance/copay-vs-deductible-breakeven-calculator" className="hover:underline">Copay vs Deductible Breakeven Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

@@ -251,7 +251,7 @@ export default function VO2PerKgLeanMassCalculator() {
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Baseline aerobic capacity.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">Lean Body Mass Calculator</Link></h4><p className="text-sm text-muted-foreground">Estimate FFM.</p></div>
             <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/training-volume-calculator" className="text-primary hover:underline">Training Volume</Link></h4><p className="text-sm text-muted-foreground">Plan weekly load.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/heart-rate-zone-training-calculator" className="text-primary hover:underline">Heart Rate Zones</Link></h4><p className="text-sm text-muted-foreground">Target intensities.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">Heart Rate Zones</Link></h4><p className="text-sm text-muted-foreground">Target intensities.</p></div>
           </div>
         </CardContent>
       </Card>

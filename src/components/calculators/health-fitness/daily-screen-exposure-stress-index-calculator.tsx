@@ -98,7 +98,7 @@ const relatedCalculators = [
   },
   {
     name: 'Stress Level Self-Assessment Calculator',
-    slug: 'stress-level-self-assessment-calculator',
+    slug: 'daily-activity-points-calculator',
     description: 'Evaluate overall stress so you can compare it with digital load.',
   },
   {

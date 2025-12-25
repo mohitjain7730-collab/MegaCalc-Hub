@@ -383,7 +383,7 @@ export default function PdcaasCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/amino-acid-blend-optimizer-calculator" className="text-primary hover:underline">
+                <Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
                   Amino Acid Blend Optimizer
                 </Link>
               </h4>
@@ -399,7 +399,7 @@ export default function PdcaasCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/daily-antioxidant-orac-goal-calculator" className="text-primary hover:underline">
+                <Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
                   Antioxidant (ORAC) Goal Calculator
                 </Link>
               </h4>

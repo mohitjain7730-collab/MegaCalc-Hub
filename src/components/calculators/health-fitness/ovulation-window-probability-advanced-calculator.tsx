@@ -104,7 +104,7 @@ const relatedCalculators = [
   },
   {
     name: 'Fertility Ovulation Calculator',
-    slug: 'fertility-ovulation-calculator',
+    slug: 'conception-probability-per-cycle-calculator',
     description: 'Basic ovulation calculator for cycle tracking.',
   },
   {

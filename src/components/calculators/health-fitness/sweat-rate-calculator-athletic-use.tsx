@@ -100,7 +100,7 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Hydration Sweat Rate Calculator',
-    slug: 'hydration-sweat-rate-calculator',
+    slug: 'hydration-needs-calculator',
     description: 'Calculate sweat rate for general hydration planning.',
   },
   {
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
   {
     name: 'Exercise Calorie Burn Calculator',
-    slug: 'exercise-calorie-burn-calculator',
+    slug: 'mets-calories-burned-calculator',
     description: 'Calculate calories burned during athletic activities.',
   },
 ];

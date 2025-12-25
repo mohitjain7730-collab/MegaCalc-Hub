@@ -106,12 +106,12 @@ const relatedCalculators = [
   },
   {
     name: 'Training Stress Score Calculator',
-    slug: 'training-stress-score-calculator',
+    slug: 'running-pace-calculator',
     description: 'Quantify training load alongside recovery metrics.',
   },
   {
     name: 'Recovery Heart Rate Calculator',
-    slug: 'recovery-heart-rate-calculator',
+    slug: 'target-heart-rate-calculator',
     description: 'Measure heart rate recovery after exercise.',
   },
 ];

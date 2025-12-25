@@ -20,7 +20,7 @@ export function HeaderClient() {
                 </Link>
                 <div className="ml-auto flex items-center gap-2 sm:gap-4">
                     <Button asChild variant="ghost" className="px-2 sm:px-4">
-                        <Link href="/ai-tool">
+                        <Link href="/search">
                             <Sparkles className="h-4 w-4 sm:mr-2" />
                             <span className="hidden sm:inline-block">Try Our AI Tool</span>
                         </Link>

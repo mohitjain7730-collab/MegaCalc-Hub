@@ -133,7 +133,7 @@ const relatedCalculators = [
   },
   {
     name: 'Daily Stress Tendency Check-In',
-    slug: 'stress-level-self-assessment-calculator',
+    slug: 'daily-activity-points-calculator',
     description: 'Assess stress levels that may affect PMS symptoms.',
   },
 ];

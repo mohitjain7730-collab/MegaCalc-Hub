@@ -96,12 +96,12 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Exercise Calorie Burn Calculator',
-    slug: 'exercise-calorie-burn-calculator',
+    slug: 'mets-calories-burned-calculator',
     description: 'Compare cold-exposure energy use with more traditional activity.',
   },
   {
     name: 'Hydration Sweat Rate Calculator',
-    slug: 'hydration-sweat-rate-calculator',
+    slug: 'hydration-needs-calculator',
     description: 'Plan fluid intake for hot/cold exposure cycles.',
   },
   {

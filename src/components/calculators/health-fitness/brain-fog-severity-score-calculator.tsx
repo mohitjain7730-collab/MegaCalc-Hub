@@ -99,7 +99,7 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Mental Fatigue Wellness Index',
-    slug: 'mental-fatigue-index-calculator',
+    slug: 'daily-activity-points-calculator',
     description: 'Get wellness insights about overall mental fatigue that may contribute to brain fog.',
   },
   {

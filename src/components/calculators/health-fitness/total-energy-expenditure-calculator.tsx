@@ -493,7 +493,7 @@ export default function TotalEnergyExpenditureCalculator() {
         <div className="space-y-2">
           <p><Link href="/category/health-fitness/bmr-calculator" className="text-primary underline">BMR Calculator</Link></p>
           <p><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs Calculator</Link></p>
-          <p><Link href="/category/health-fitness/exercise-calorie-burn-calculator" className="text-primary underline">Exercise Calorie Burn Calculator</Link></p>
+          <p><Link href="/category/health-fitness/mets-calories-burned-calculator" className="text-primary underline">Exercise Calorie Burn Calculator</Link></p>
           <p><Link href="/category/health-fitness/macro-ratio-calculator" className="text-primary underline">Macro Ratio Calculator</Link></p>
         </div>
       </section>

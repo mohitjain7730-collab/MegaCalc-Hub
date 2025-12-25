@@ -344,7 +344,7 @@ export default function PutCallParityCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/options-profit-calculator" className="text-primary hover:underline">
+                <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
                   Options Profit Calculator
                 </a>
               </h4>

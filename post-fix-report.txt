@@ -1,0 +1,118 @@
+﻿≡ƒöì Scanning calculator files for related calculator definitions...
+
+Working directory: D:\MegaCalc-Hub
+Found 349 calculator files with related calculator definitions.
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\conversions\height-converter.tsx
+Total links scanned: 5
+Γ£à Valid links: 4
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó BMI Calculator (bmi-calculator)
+    Error: Category mismatch: expected "health-fitness", got "health"
+    ≡ƒÆí Suggested fix: bmi-calculator (health-fitness)
+    Reason: Category corrected to match registry
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó BMI Calculator: bmi-calculator ΓåÆ bmi-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\alcohol-metabolism-time-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Sleep Debt Calculator (sleep-debt-calculator)
+    Error: Slug "sleep-debt-calculator" not found in calculator registry
+    ≡ƒÆí Suggested fix: recovery-sleep-requirement-after-sleep-debt-calculator (health-fitness)
+    Reason: Similar slug found: "recovery-sleep-requirement-after-sleep-debt-calculator"
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Sleep Debt Calculator: recovery-sleep-requirement-after-sleep-debt-calculator ΓåÆ recovery-sleep-requirement-after-sleep-debt-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\breast-milk-production-estimate-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Baby Feeding Amount (breast-milk-production-estimate-calculator)
+    Error: Category mismatch: expected "health-fitness", got "parenting"
+    ≡ƒÆí Suggested fix: breast-milk-production-estimate-calculator (health-fitness)
+    Reason: Category corrected to match registry
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Baby Feeding Amount: breast-milk-production-estimate-calculator ΓåÆ breast-milk-production-estimate-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\standing-vs-sitting-calorie-burn-calculator.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Calorie Burn Calculator (calorie-burn-calculator)
+    Error: Slug "calorie-burn-calculator" not found in calculator registry
+    ≡ƒÆí Suggested fix: standing-vs-sitting-calorie-burn-calculator (health-fitness)
+    Reason: Similar slug found: "standing-vs-sitting-calorie-burn-calculator"
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Calorie Burn Calculator: standing-vs-sitting-calorie-burn-calculator ΓåÆ standing-vs-sitting-calorie-burn-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôè Calculator Link Validation Report
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Source: D:\MegaCalc-Hub\src\components\calculators\health-fitness\step-to-calorie-converter.tsx
+Total links scanned: 4
+Γ£à Valid links: 3
+Γ¥î Invalid links: 1
+≡ƒöº Auto-fixed links: 1
+ΓÜá∩╕Å  Remaining issues: 0
+
+Γ¥î Invalid Links:
+  ΓÇó Calorie Burn Calculator (calorie-burn-calculator)
+    Error: Slug "calorie-burn-calculator" not found in calculator registry
+    ≡ƒÆí Suggested fix: standing-vs-sitting-calorie-burn-calculator (health-fitness)
+    Reason: Similar slug found: "standing-vs-sitting-calorie-burn-calculator"
+
+≡ƒöº Auto-Fixed Links:
+  ΓÇó Calorie Burn Calculator: standing-vs-sitting-calorie-burn-calculator ΓåÆ standing-vs-sitting-calorie-burn-calculator
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+≡ƒôè VALIDATION SUMMARY
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Total files scanned: 349
+Total links scanned: 917
+Γ£à Valid links: 912
+Γ¥î Invalid links: 5
+≡ƒöº Auto-fixable links: 5
+
+≡ƒÆí Run with --fix flag to automatically fix broken links.
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+

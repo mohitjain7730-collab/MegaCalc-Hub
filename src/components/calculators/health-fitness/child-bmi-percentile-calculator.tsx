@@ -264,9 +264,9 @@ export default function ChildBMIPercentileCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/category/health-fitness/infant-growth-percentile-calculator">Infant Growth Percentile Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/toddler-calorie-requirement-calculator">Toddler Calorie Requirement Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/resting-metabolic-rate-calculator">Resting Metabolic Rate Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/bmi-calculator">Infant Growth Percentile Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/daily-calorie-needs-calculator">Toddler Calorie Requirement Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/bmr-calculator">Resting Metabolic Rate Calculator</Link></p>
       </div>
     </div>
   );

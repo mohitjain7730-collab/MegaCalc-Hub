@@ -107,7 +107,7 @@ const relatedCalculators = [
   },
   {
     name: 'Iron Intake Calculator',
-    slug: 'iron-intake-calculator',
+    slug: 'protein-intake-calculator',
     description: 'Calculate your daily iron requirements.',
   },
 ];

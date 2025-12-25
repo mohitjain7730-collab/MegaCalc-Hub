@@ -294,7 +294,7 @@ export default function ChronicTrainingLoadCalculator() {
               <p className="text-sm text-muted-foreground">Understand short-term fatigue alongside long-term fitness.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/training-stress-score-calculator" className="text-primary hover:underline">Training Stress Score (TSS)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/running-pace-calculator" className="text-primary hover:underline">Training Stress Score (TSS)</Link></h4>
               <p className="text-sm text-muted-foreground">Daily TSS values feed CTL calculations—plan each workout accordingly.</p>
             </div>
             <div className="p-4 border rounded">

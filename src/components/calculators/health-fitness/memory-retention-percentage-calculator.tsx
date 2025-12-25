@@ -60,7 +60,7 @@ const relatedCalculators = [
   { name: 'Emotional Wellbeing Index Calculator', slug: 'emotional-wellbeing-index-calculator', description: 'Check mood patterns that affect learning motivation.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/memory-retention-percentage-tracker';
+const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-activity-points-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -401,7 +401,7 @@ export default function MemoryRetentionPercentageTracker() {
         />
         <meta itemProp="author" content="Mycalculating.com" />
         <meta itemProp="datePublished" content="2024-01-01" />
-        <meta itemProp="url" content="/category/health-fitness/memory-retention-percentage-tracker" />
+        <meta itemProp="url" content="/category/health-fitness/daily-activity-points-calculator" />
 
         <h1
           className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"

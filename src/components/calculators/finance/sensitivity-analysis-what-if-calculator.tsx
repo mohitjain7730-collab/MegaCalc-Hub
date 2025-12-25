@@ -357,7 +357,7 @@ export default function SensitivityAnalysisCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/irr-calculator" className="text-primary hover:underline">
+                <a href="/category/finance/financial-break-even-npv-zero-calculator" className="text-primary hover:underline">
                   Internal Rate of Return (IRR) Calculator
                 </a>
               </h4>
@@ -367,7 +367,7 @@ export default function SensitivityAnalysisCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/break-even-point-calculator" className="text-primary hover:underline">
+                <a href="/category/finance/economic-break-even-quantity-calculator" className="text-primary hover:underline">
                   Break-Even Point Calculator
                 </a>
               </h4>

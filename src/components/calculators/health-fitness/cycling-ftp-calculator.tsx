@@ -53,7 +53,7 @@ export default function CyclingFtpCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/category/health-fitness/training-stress-score-calculator">Training Stress Score</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Training Stress Score</Link></p>
         <p><Link className="text-primary underline" href="/category/health-fitness/cycling-power-output-calculator">Cycling Power Output</Link></p>
       </div>
     </div>

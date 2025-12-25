@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
   {
     name: 'Sleep Debt Calculator',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Track sleep debt during restriction period.',
   },
 ];

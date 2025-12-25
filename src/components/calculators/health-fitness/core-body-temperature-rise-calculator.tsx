@@ -50,9 +50,9 @@ const faqs: [string, string][] = [
 ];
 
 const relatedCalculators = [
-  { title: 'Hydration Sweat Rate Calculator', href: '/category/health-fitness/hydration-sweat-rate-calculator', description: 'Estimate sweat losses during workouts to plan fluid replacement.' },
+  { title: 'Hydration Sweat Rate Calculator', href: '/category/health-fitness/hydration-needs-calculator', description: 'Estimate sweat losses during workouts to plan fluid replacement.' },
   { title: 'Hydration Needs Calculator', href: '/category/health-fitness/hydration-needs-calculator', description: 'Determine daily water intake targets for optimal thermoregulation.' },
-  { title: 'Exercise Calorie Burn Calculator', href: '/category/health-fitness/exercise-calorie-burn-calculator', description: 'Understand caloric cost of sessions as intensity changes.' },
+  { title: 'Exercise Calorie Burn Calculator', href: '/category/health-fitness/mets-calories-burned-calculator', description: 'Understand caloric cost of sessions as intensity changes.' },
   { title: 'Ice Bath Duration & Temperature Calculator', href: '/category/health-fitness/ice-bath-duration-temp-calculator', description: 'Calculate optimal cold exposure protocols for recovery and temperature regulation.' },
 ];
 

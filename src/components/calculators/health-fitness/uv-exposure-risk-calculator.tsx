@@ -106,12 +106,12 @@ const relatedCalculators = [
   },
   {
     name: 'Vitamin D Sun Exposure Calculator',
-    slug: 'vitamin-d-sun-exposure-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Evaluate safe sun exposure for vitamin D synthesis.',
   },
   {
     name: 'Daily Antioxidant (ORAC) Goal Calculator',
-    slug: 'daily-antioxidant-orac-goal-calculator',
+    slug: 'carbohydrate-intake-calculator',
     description: 'Support skin health with antioxidant protection.',
   },
 ];

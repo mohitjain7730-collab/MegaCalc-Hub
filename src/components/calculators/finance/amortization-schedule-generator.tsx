@@ -272,7 +272,7 @@ export default function AmortizationScheduleGenerator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/debt-to-income-ratio-calculator" className="text-primary hover:underline">
+                <a href="/category/finance/dscr-calculator" className="text-primary hover:underline">
                   Debt-to-Income Ratio Calculator
                 </a>
               </h4>

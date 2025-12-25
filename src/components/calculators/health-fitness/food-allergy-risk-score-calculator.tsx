@@ -274,9 +274,9 @@ export default function FoodAllergyRiskScoreCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/category/health-fitness/pregnancy-weight-gain-calculator">Pregnancy Weight Gain Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/breastfeeding-calorie-needs-calculator">Breastfeeding Calorie Needs Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/child-bmi-percentile-calculator">Child BMI Percentile Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/ideal-body-weight-calculator">Pregnancy Weight Gain Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/daily-calorie-needs-calculator">Breastfeeding Calorie Needs Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/bmi-calculator">Child BMI Percentile Calculator</Link></p>
       </div>
 
       <p className="mt-4 text-xs text-muted-foreground text-center">

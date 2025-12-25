@@ -95,7 +95,7 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Stress Level Self-Assessment Tool',
-    slug: 'stress-level-self-assessment-calculator',
+    slug: 'daily-activity-points-calculator',
     description: 'Gauge your general stress load alongside recovery planning.',
   },
   {
@@ -105,7 +105,7 @@ const relatedCalculators = [
   },
   {
     name: 'Sleep Debt Calculator',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Quantify lost sleep contributing to burnout.',
   },
   {

@@ -553,7 +553,7 @@ export default function StepToCalorieConverter() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/calorie-burn-calculator" className="text-primary hover:underline">
+                <Link href="/category/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">
                   Calorie Burn Calculator
                 </Link>
               </h4>

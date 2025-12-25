@@ -1,0 +1,80 @@
+﻿≡ƒöì Comprehensive Site Link Validation
+
+Valid URLs loaded: 1049 (categories: 13, calculators: 1023)
+
+≡ƒôü Scanning src\components/
+≡ƒôü Scanning src\app/
+≡ƒôü Scanning src\lib/
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+≡ƒôè VALIDATION SUMMARY
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Total files scanned: 1321
+Total internal links found: 2205
+Γ£à Valid links: 2183
+Γ¥î Broken links: 22
+
+Γ¥î BROKEN LINKS:
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+≡ƒôä src\components\calculators\finance\amortization-schedule-generator.tsx
+   Line 275: /category/finance/dti-calculator
+
+≡ƒôä src\components\calculators\finance\asset-correlation-matrix-calculator.tsx
+   Line 213: /category/finance/portfolio-standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\capex-payback-calculator.tsx
+   Line 221: /category/finance/internal-rate-of-return-calculator
+   Line 241: /category/finance/break-even-calculator
+
+≡ƒôä src\components\calculators\finance\capital-budgeting-risk-standard-deviation-calculator.tsx
+   Line 100: /category/finance/internal-rate-of-return-calculator
+
+≡ƒôä src\components\calculators\finance\car-purchase-loan-vs-lease-calculator.tsx
+   Line 96: /category/finance/dti-calculator
+
+≡ƒôä src\components\calculators\finance\credit-score-impact-estimator-debt-ratio-calculator.tsx
+   Line 96: /category/finance/dti-calculator
+
+≡ƒôä src\components\calculators\finance\credit-utilization-ratio-calculator.tsx
+   Line 83: /category/finance/dti-calculator
+
+≡ƒôä src\components\calculators\finance\debt-snowball-avalanche-repayment-calculator.tsx
+   Line 112: /category/finance/dti-calculator
+
+≡ƒôä src\components\calculators\finance\efficient-frontier-visualizer.tsx
+   Line 254: /category/finance/portfolio-standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\employer-health-plan-tax-savings-calculator.tsx
+   Line 368: /category/finance/income-tax-calculator
+
+≡ƒôä src\components\calculators\finance\financial-breakeven-npv-zero-calculator.tsx
+   Line 99: /category/finance/internal-rate-of-return-calculator
+
+≡ƒôä src\components\calculators\finance\maintenance-margin-calculator.tsx
+   Line 589: /category/finance/portfolio-standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\margin-leverage-calculator.tsx
+   Line 577: /category/finance/portfolio-standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\medical-equipment-depreciation-estimator.tsx
+   Line 360: /category/finance/loan-calculator
+
+≡ƒôä src\components\calculators\finance\optimal-portfolio-allocation-two-asset-calculator.tsx
+   Line 233: /category/finance/portfolio-standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\perpetuity-calculator.tsx
+   Line 619: /category/finance/annuity-calculator
+
+≡ƒôä src\components\calculators\finance\portfolio-diversification-benefit-calculator.tsx
+   Line 234: /category/finance/portfolio-standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\scenario-analysis-calculator.tsx
+   Line 344: /category/finance/internal-rate-of-return-calculator
+   Line 354: /category/finance/break-even-calculator
+
+≡ƒôä src\components\calculators\finance\sensitivity-analysis-what-if-calculator.tsx
+   Line 360: /category/finance/internal-rate-of-return-calculator
+   Line 370: /category/finance/break-even-calculator
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ

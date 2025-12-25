@@ -102,7 +102,7 @@ const relatedCalculators = [
   },
   {
     name: 'Fertility Ovulation Calculator',
-    slug: 'fertility-ovulation-calculator',
+    slug: 'conception-probability-per-cycle-calculator',
     description: 'Basic ovulation calculator to coordinate with mucus tracking.',
   },
   {

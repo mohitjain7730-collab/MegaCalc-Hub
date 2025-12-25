@@ -108,7 +108,7 @@ const relatedCalculators = [
   },
   {
     name: 'Mental Fatigue Index Calculator',
-    slug: 'mental-fatigue-index-calculator',
+    slug: 'daily-activity-points-calculator',
     description: 'Measure mental fatigue that affects processing speed.',
   },
   {

@@ -101,7 +101,7 @@ const relatedCalculators = [
   },
   {
     name: 'Iron Intake Calculator',
-    slug: 'iron-intake-calculator',
+    slug: 'protein-intake-calculator',
     description: 'Track iron intake that affects hemoglobin.',
   },
   {

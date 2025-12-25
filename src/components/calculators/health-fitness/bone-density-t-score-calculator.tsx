@@ -99,17 +99,17 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Calcium Intake Calculator',
-    slug: 'calcium-intake-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Assess daily calcium intake from foods.',
   },
   {
     name: 'Vitamin D Sun Exposure Calculator',
-    slug: 'vitamin-d-sun-exposure-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Calculate optimal sun exposure for vitamin D.',
   },
   {
     name: 'Exercise Calorie Burn Calculator',
-    slug: 'exercise-calorie-burn-calculator',
+    slug: 'mets-calories-burned-calculator',
     description: 'Track calories burned during exercise.',
   },
   {

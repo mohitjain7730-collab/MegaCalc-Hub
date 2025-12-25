@@ -357,7 +357,7 @@ export default function MedicalEquipmentDepreciationEstimator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/category/finance/business-loan-calculator" className="text-primary hover:underline">
+                                <a href="/category/finance/loan-to-value-ltv-ratio-calculator" className="text-primary hover:underline">
                                     Practice Loan
                                 </a>
                             </h4>

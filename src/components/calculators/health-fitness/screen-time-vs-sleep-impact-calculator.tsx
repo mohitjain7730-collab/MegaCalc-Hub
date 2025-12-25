@@ -150,12 +150,12 @@ const faqs: [string, string][] = [
 const relatedCalculators = [
   {
     name: 'Sleep Quality Calculator',
-    slug: 'sleep-quality-calculator',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Assess sleep quality to complement screen time impact analysis.',
   },
   {
     name: 'Sleep Balance Check-In',
-    slug: 'sleep-debt-calculator-hf',
+    slug: 'habit-streak-tracker-calculator',
     description: 'Calculate sleep balance to understand cumulative sleep patterns.',
   },
   {

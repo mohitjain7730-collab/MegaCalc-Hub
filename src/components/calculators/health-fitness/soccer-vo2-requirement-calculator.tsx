@@ -179,7 +179,7 @@ export default function SoccerVo2RequirementCalculator() {
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
         <p><Link className="text-primary underline" href="/category/health-fitness/vo2-max-calculator">VO₂ Max Calculator</Link></p>
         <p><Link className="text-primary underline" href="/category/health-fitness/target-heart-rate-calculator">Target Heart Rate Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/marathon-finish-time-predictor">Marathon Finish Time Predictor</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Marathon Finish Time Predictor</Link></p>
       </div>
     </div>
   );

@@ -194,7 +194,7 @@ export default function NoticePeriodCalculator() {
                 <li><strong className="text-foreground">Weeks:</strong> A 2-week notice adds 14 calendar days.</li>
                 <li><strong className="text-foreground">Months:</strong> A 1-month notice adds one calendar month.</li>
               </ul>
-              <p className="mt-2">This tool calculates the end of the notice period itself. Your actual last working day might be different if this date falls on a weekend or public holiday. Use the <Link href="/employment/last-working-day-calculator" className="text-primary hover:underline">Last Working Day Calculator</Link> for a more detailed analysis including holidays.</p>
+              <p className="mt-2">This tool calculates the end of the notice period itself. Your actual last working day might be different if this date falls on a weekend or public holiday. Use the <Link href="/category/time-date/last-working-day-calculator" className="text-primary hover:underline">Last Working Day Calculator</Link> for a more detailed analysis including holidays.</p>
             </div>
           </CardContent>
         </Card>

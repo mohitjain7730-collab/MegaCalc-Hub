@@ -155,7 +155,7 @@ export default function CreditDefaultSwapCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/credit-spread-calculator" className="text-primary hover:underline">
+                <a href="/category/finance/bond-price-calculator" className="text-primary hover:underline">
                   Credit Spread Calculator
                 </a>
               </h4>
@@ -165,7 +165,7 @@ export default function CreditDefaultSwapCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/bond-yield-calculator" className="text-primary hover:underline">
+                <a href="/category/finance/bond-price-calculator" className="text-primary hover:underline">
                   Bond Yield Calculator
                 </a>
               </h4>

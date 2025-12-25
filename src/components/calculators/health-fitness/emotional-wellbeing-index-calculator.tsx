@@ -56,7 +56,7 @@ const faqs = [
 const relatedCalculators = [
   { name: 'Meditation Streak Mindfulness Progress Tracker', slug: 'meditation-streak-mindfulness-progress-tracker', description: 'See how consistency in mindfulness shifts mood and stress.' },
   { name: 'Stress Hormone Balance Calculator', slug: 'stress-hormone-balance-calculator', description: 'Align cortisol vs melatonin to protect calm evenings.' },
-  { name: 'Memory Retention Percentage Wellness Tracker', slug: 'memory-retention-percentage-tracker', description: 'Track learning retention alongside emotional energy.' },
+  { name: 'Memory Retention Percentage Wellness Tracker', slug: 'daily-activity-points-calculator', description: 'Track learning retention alongside emotional energy.' },
   { name: 'Reaction Time Improvement Wellness Tracker', slug: 'reaction-time-improvement-tracker', description: 'Watch cognitive sharpness trends evolve as wellbeing shifts.' },
 ];
 

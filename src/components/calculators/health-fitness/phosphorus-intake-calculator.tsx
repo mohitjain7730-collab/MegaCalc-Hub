@@ -98,7 +98,7 @@ const faqs = [
 const relatedCalculators = [
   {
     name: 'Calcium Intake Calculator',
-    slug: 'calcium-intake-calculator',
+    slug: 'electrolyte-replacement-calculator',
     description: 'Assess calcium alongside phosphorus for bone health.',
   },
   {

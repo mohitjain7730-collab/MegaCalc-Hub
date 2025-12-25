@@ -616,7 +616,7 @@ export default function PerpetuityCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/growing-annuity-perpetuity-calculator" className="text-primary hover:underline">
+                  <a href="/category/finance/dividend-reinvestment-drip-calculator" className="text-primary hover:underline">
                     Growing Annuity/Perpetuity Calculator
                   </a>
                 </h4>

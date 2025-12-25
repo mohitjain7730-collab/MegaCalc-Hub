@@ -59,7 +59,7 @@ export default function HalfMarathonPaceCalculator() {
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
         <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Running Pace</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/marathon-finish-time-predictor">Marathon Predictor</Link></p>
+        <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Marathon Predictor</Link></p>
       </div>
     </div>
   );

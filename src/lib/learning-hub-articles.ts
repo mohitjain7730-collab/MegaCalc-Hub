@@ -899,7 +899,7 @@ const staticArticles: LearningHubArticle[] = [
 
       <h4 class="font-semibold mt-6 mb-2 text-lg">4. Related Calculators</h4>
       <ul class="list-disc list-inside space-y-1">
-        <li><a href="/category/cognitive-psychology/sleep-debt-calculator" class="text-primary underline">Sleep Debt Calculator</a></li>
+        <li><a href="/category/health-fitness/recovery-sleep-requirement-after-sleep-debt-calculator" class="text-primary underline">Sleep Debt Calculator</a></li>
       </ul>
     `
   },

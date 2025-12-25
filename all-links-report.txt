@@ -1,0 +1,282 @@
+﻿≡ƒöì Comprehensive Site Link Validation
+
+Valid URLs loaded: 1049 (categories: 13, calculators: 1023)
+
+≡ƒôü Scanning src\components/
+≡ƒôü Scanning src\app/
+≡ƒôü Scanning src\lib/
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+≡ƒôè VALIDATION SUMMARY
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+Total files scanned: 1321
+Total internal links found: 2222
+Γ£à Valid links: 2096
+Γ¥î Broken links: 126
+
+Γ¥î BROKEN LINKS:
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+≡ƒôä src\components\calculators\employment\notice-period-calculator.tsx
+   Line 197: /employment/last-working-day-calculator
+
+≡ƒôä src\components\calculators\finance\amortization-schedule-generator.tsx
+   Line 275: /category/finance/debt-to-income-ratio-calculator
+
+≡ƒôä src\components\calculators\finance\asset-correlation-matrix-calculator.tsx
+   Line 213: /category/finance/standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\asset-liability-matching-calculator.tsx
+   Line 173: /category/finance/net-present-value-calculator
+   Line 174: /category/finance/discounted-cash-flow-calculator
+
+≡ƒôä src\components\calculators\finance\breakeven-inflation-rate-calculator.tsx
+   Line 153: /category/finance/bond-yield-calculator
+   Line 183: /category/finance/interest-rate-converter
+
+≡ƒôä src\components\calculators\finance\capex-payback-calculator.tsx
+   Line 221: /category/finance/irr-calculator
+   Line 241: /category/finance/break-even-point-calculator
+
+≡ƒôä src\components\calculators\finance\capital-budgeting-risk-standard-deviation-calculator.tsx
+   Line 100: /category/finance/irr-calculator
+
+≡ƒôä src\components\calculators\finance\car-purchase-loan-vs-lease-calculator.tsx
+   Line 96: /category/finance/dti-ratio-calculator
+
+≡ƒôä src\components\calculators\finance\child-education-fund-calculator.tsx
+   Line 89: /category/finance/college-savings-goal-calculator
+
+≡ƒôä src\components\calculators\finance\copay-vs-deductible-breakeven-calculator.tsx
+   Line 297: /investment/hsa-tax-benefit-calculator
+   Line 298: /investment/health-plan-coverage-gap-estimator
+
+≡ƒôä src\components\calculators\finance\credit-default-swap-calculator.tsx
+   Line 158: /category/finance/credit-spread-calculator
+   Line 168: /category/finance/bond-yield-calculator
+
+≡ƒôä src\components\calculators\finance\credit-score-impact-estimator-debt-ratio-calculator.tsx
+   Line 96: /category/finance/dti-ratio-calculator
+
+≡ƒôä src\components\calculators\finance\credit-utilization-ratio-calculator.tsx
+   Line 83: /category/finance/dti-ratio-calculator
+
+≡ƒôä src\components\calculators\finance\debt-snowball-avalanche-repayment-calculator.tsx
+   Line 112: /category/finance/dti-ratio-calculator
+
+≡ƒôä src\components\calculators\finance\delayed-gratification-roi-calculator.tsx
+   Line 256: /finance/sinking-fund-calculator
+   Line 257: /finance/subscription-audit-calculator
+   Line 258: /finance/lifestyle-creep-calculator
+   Line 259: /finance/opportunity-cost-calculator
+
+≡ƒôä src\components\calculators\finance\dental-cost-comparison-calculator.tsx
+   Line 448: /finance/hsa-tax-benefit-calculator
+   Line 449: /finance/hospital-stay-cost-by-specialty-calculator
+   Line 450: /finance/health-insurance-subsidy-eligibility-calculator
+   Line 451: /finance/copay-vs-deductible-breakeven-calculator
+
+≡ƒôä src\components\calculators\finance\duration-matching-calculator.tsx
+   Line 158: /category/finance/yield-to-maturity-calculator
+
+≡ƒôä src\components\calculators\finance\efficient-frontier-visualizer.tsx
+   Line 254: /category/finance/standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\employer-health-plan-tax-savings-calculator.tsx
+   Line 368: /category/finance/paycheck-tax-calculator
+   Line 388: /category/finance/401k-calculator
+
+≡ƒôä src\components\calculators\finance\equity-enterprise-value-bridge-calculator.tsx
+   Line 140: /category/finance/dcf-valuation-calculator
+
+≡ƒôä src\components\calculators\finance\financial-breakeven-npv-zero-calculator.tsx
+   Line 99: /category/finance/irr-calculator
+
+≡ƒôä src\components\calculators\finance\free-cash-flow-to-equity-calculator.tsx
+   Line 143: /category/finance/dcf-valuation-calculator
+
+≡ƒôä src\components\calculators\finance\health-insurance-subsidy-eligibility-calculator.tsx
+   Line 344: /finance/copay-vs-deductible-breakeven-calculator
+   Line 345: /finance/hsa-tax-benefit-calculator
+   Line 346: /finance/health-plan-coverage-gap-estimator
+   Line 347: /finance/hospital-stay-cost-by-specialty-calculator
+
+≡ƒôä src\components\calculators\finance\health-plan-coverage-gap-estimator.tsx
+   Line 462: /finance/health-insurance-subsidy-eligibility-calculator
+   Line 463: /finance/prescription-refill-cost-estimator
+   Line 464: /finance/hsa-tax-benefit-calculator
+   Line 465: /finance/hospital-stay-cost-by-specialty-calculator
+
+≡ƒôä src\components\calculators\finance\hospital-stay-cost-by-specialty-calculator.tsx
+   Line 417: /finance/hsa-tax-benefit-calculator
+   Line 418: /finance/long-term-care-cost-estimator
+   Line 419: /finance/dental-cost-comparison-calculator
+   Line 420: /finance/health-plan-coverage-gap-estimator
+
+≡ƒôä src\components\calculators\finance\hsa-tax-benefit-calculator.tsx
+   Line 431: /finance/long-term-care-cost-estimator
+   Line 432: /finance/copay-vs-deductible-breakeven-calculator
+   Line 433: /finance/health-insurance-subsidy-eligibility-calculator
+
+≡ƒôä src\components\calculators\finance\long-term-care-cost-estimator.tsx
+   Line 412: /finance/hsa-tax-benefit-calculator
+   Line 413: /finance/hospital-stay-cost-by-specialty-calculator
+   Line 414: /finance/dental-cost-comparison-calculator
+
+≡ƒôä src\components\calculators\finance\maintenance-margin-calculator.tsx
+   Line 589: /category/finance/risk-return-calculator
+   Line 599: /category/finance/position-size-calculator
+
+≡ƒôä src\components\calculators\finance\margin-leverage-calculator.tsx
+   Line 577: /category/finance/risk-return-calculator
+   Line 587: /category/finance/position-size-calculator
+
+≡ƒôä src\components\calculators\finance\medical-equipment-depreciation-estimator.tsx
+   Line 360: /category/finance/business-loan-calculator
+
+≡ƒôä src\components\calculators\finance\net-worth-calculator.tsx
+   Line 721: /category/finance/emergency-fund-calculator
+
+≡ƒôä src\components\calculators\finance\optimal-portfolio-allocation-two-asset-calculator.tsx
+   Line 233: /category/finance/standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\perpetuity-calculator.tsx
+   Line 619: /category/finance/growing-annuity-perpetuity-calculator
+
+≡ƒôä src\components\calculators\finance\portfolio-diversification-benefit-calculator.tsx
+   Line 234: /category/finance/standard-deviation-calculator
+
+≡ƒôä src\components\calculators\finance\prescription-refill-cost-estimator.tsx
+   Line 374: /finance/hsa-tax-benefit-calculator
+   Line 375: /finance/health-plan-coverage-gap-estimator
+   Line 376: /finance/dental-cost-comparison-calculator
+
+≡ƒôä src\components\calculators\finance\put-call-parity-calculator.tsx
+   Line 347: /category/finance/options-profit-calculator
+
+≡ƒôä src\components\calculators\finance\savings-rate-vs-goal-timeline-visualizer.tsx
+   Line 372: /finance/spending-pattern-analyzer
+   Line 373: /finance/delayed-gratification-roi-calculator
+   Line 374: /finance/hsa-tax-benefit-calculator
+
+≡ƒôä src\components\calculators\finance\scenario-analysis-calculator.tsx
+   Line 344: /category/finance/irr-calculator
+   Line 354: /category/finance/break-even-point-calculator
+
+≡ƒôä src\components\calculators\finance\sensitivity-analysis-what-if-calculator.tsx
+   Line 360: /category/finance/irr-calculator
+   Line 370: /category/finance/break-even-point-calculator
+
+≡ƒôä src\components\calculators\finance\spending-pattern-analyzer.tsx
+   Line 293: /finance/savings-rate-vs-goal-timeline-visualizer
+   Line 294: /finance/delayed-gratification-roi-calculator
+   Line 295: /finance/hsa-tax-benefit-calculator
+
+≡ƒôä src\components\calculators\finance\tax-equivalent-yield-calculator.tsx
+   Line 114: /category/finance/yield-to-maturity-calculator
+
+≡ƒôä src\components\calculators\health-fitness\baseball-pitch-speed-calculator.tsx
+   Line 202: /category/health-fitness/tennis-serve-speed-calculator
+   Line 204: /category/health-fitness/basketball-shooting-percentage-calculator
+
+≡ƒôä src\components\calculators\health-fitness\basketball-shooting-percentage-calculator.tsx
+   Line 210: /category/health-fitness/tennis-serve-speed-calculator
+   Line 211: /category/health-fitness/baseball-pitch-speed-calculator
+
+≡ƒôä src\components\calculators\health-fitness\breastfeeding-calorie-needs-calculator.tsx
+   Line 273: /category/health-fitness/infant-growth-percentile-calculator
+   Line 274: /category/health-fitness/toddler-calorie-requirement-calculator
+
+≡ƒôä src\components\calculators\health-fitness\child-bmi-percentile-calculator.tsx
+   Line 267: /category/health-fitness/infant-growth-percentile-calculator
+   Line 268: /category/health-fitness/toddler-calorie-requirement-calculator
+
+≡ƒôä src\components\calculators\health-fitness\dash-diet-sodium-intake-calculator.tsx
+   Line 201: /category/health-fitness/mediterranean-diet-compliance-calculator
+   Line 202: /category/health-fitness/vegan-protein-requirement-calculator
+
+≡ƒôä src\components\calculators\health-fitness\due-date-calculator.tsx
+   Line 225: /category/health-fitness/breastfeeding-calorie-needs-calculator
+
+≡ƒôä src\components\calculators\health-fitness\electrolyte-replacement-calculator.tsx
+   Line 222: /category/health-fitness/weight-loss-calculator
+
+≡ƒôä src\components\calculators\health-fitness\fertility-ovulation-calculator.tsx
+   Line 222: /category/health-fitness/due-date-calculator
+   Line 224: /category/health-fitness/breastfeeding-calorie-needs-calculator
+
+≡ƒôä src\components\calculators\health-fitness\food-allergy-risk-score-calculator.tsx
+   Line 278: /category/health-fitness/breastfeeding-calorie-needs-calculator
+   Line 279: /category/health-fitness/child-bmi-percentile-calculator
+
+≡ƒôä src\components\calculators\health-fitness\gluten-intake-tracker-calculator.tsx
+   Line 291: /category/health-fitness/dash-diet-sodium-intake-calculator
+   Line 292: /category/health-fitness/mediterranean-diet-compliance-calculator
+
+≡ƒôä src\components\calculators\health-fitness\half-marathon-pace-calculator.tsx
+   Line 62: /category/health-fitness/marathon-finish-time-predictor
+
+≡ƒôä src\components\calculators\health-fitness\infant-growth-percentile-calculator.tsx
+   Line 304: /category/health-fitness/breastfeeding-calorie-needs-calculator
+   Line 305: /category/health-fitness/child-bmi-percentile-calculator
+   Line 306: /category/health-fitness/baby-sleep-needs-calculator
+
+≡ƒôä src\components\calculators\health-fitness\lactose-tolerance-estimator.tsx
+   Line 247: /category/health-fitness/vegan-protein-requirement-calculator
+   Line 248: /category/health-fitness/gluten-intake-tracker-calculator
+   Line 249: /category/health-fitness/mediterranean-diet-compliance-calculator
+
+≡ƒôä src\components\calculators\health-fitness\low-sodium-diet-planner-calculator.tsx
+   Line 194: /category/health-fitness/dash-diet-sodium-intake-calculator
+   Line 195: /category/health-fitness/mediterranean-diet-compliance-calculator
+   Line 196: /category/health-fitness/gluten-intake-tracker-calculator
+
+≡ƒôä src\components\calculators\health-fitness\mediterranean-diet-compliance-calculator.tsx
+   Line 261: /category/health-fitness/dash-diet-sodium-intake-calculator
+   Line 263: /category/health-fitness/vegan-protein-requirement-calculator
+
+≡ƒôä src\components\calculators\health-fitness\mets-calories-burned-calculator.tsx
+   Line 129: /category/health-fitness/calories-burned-running-calculator
+
+≡ƒôä src\components\calculators\health-fitness\physical-therapy-exercise-load-calculator.tsx
+   Line 126: /category/health-fitness/physical-therapy-session-intensity-calculator
+
+≡ƒôä src\components\calculators\health-fitness\postpartum-calorie-needs-calculator.tsx
+   Line 151: /category/health-fitness/breastfeeding-calorie-needs-calculator
+
+≡ƒôä src\components\calculators\health-fitness\pregnancy-weight-gain-calculator.tsx
+   Line 246: /category/health-fitness/due-date-calculator
+   Line 247: /category/health-fitness/breastfeeding-calorie-needs-calculator
+   Line 248: /category/health-fitness/food-allergy-risk-score-calculator
+
+≡ƒôä src\components\calculators\health-fitness\resting-metabolic-rate-calculator.tsx
+   Line 280: /category/health-fitness/child-bmi-percentile-calculator
+   Line 281: /category/health-fitness/toddler-calorie-requirement-calculator
+   Line 282: /category/health-fitness/breastfeeding-calorie-needs-calculator
+
+≡ƒôä src\components\calculators\health-fitness\running-pace-calculator.tsx
+   Line 148: /category/health-fitness/calories-burned-running-calculator
+
+≡ƒôä src\components\calculators\health-fitness\soccer-vo2-requirement-calculator.tsx
+   Line 182: /category/health-fitness/marathon-finish-time-predictor
+
+≡ƒôä src\components\calculators\health-fitness\swimming-swolf-score-calculator.tsx
+   Line 55: /category/health-fitness/triathlon-split-time-calculator
+
+≡ƒôä src\components\calculators\health-fitness\toddler-calorie-requirement-calculator.tsx
+   Line 297: /category/health-fitness/infant-growth-percentile-calculator
+   Line 298: /category/health-fitness/child-bmi-percentile-calculator
+   Line 299: /category/health-fitness/breastfeeding-calorie-needs-calculator
+
+≡ƒôä src\components\calculators\health-fitness\vegan-protein-requirement-calculator.tsx
+   Line 235: /category/health-fitness/mediterranean-diet-compliance-calculator
+   Line 236: /category/health-fitness/dash-diet-sodium-intake-calculator
+   Line 237: /category/health-fitness/lactose-tolerance-estimator
+
+≡ƒôä src\components\HeaderClient.tsx
+   Line 23: /ai-tool
+
+≡ƒôä src\lib\learning-hub-articles.ts
+   Line 902: /category/cognitive-psychology/sleep-debt-calculator
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
