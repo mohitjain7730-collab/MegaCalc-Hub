@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BarChart3, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, Activity } from 'lucide-react';
+import { BarChart3, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, Activity, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -22,9 +22,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CAPMCalculator() {
-  const [result, setResult] = useState<{ 
-    expectedReturn: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    expectedReturn: number;
+    interpretation: string;
     riskLevel: string;
     recommendation: string;
     strength: string;
@@ -222,48 +222,107 @@ export default function CAPMCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Investment opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Shield className="h-4 w-4 text-primary" />
+                Risk-Free Rate (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The return on a risk-free investment, typically the yield on government bonds (e.g., 10-year Treasury).
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Activity className="h-4 w-4 text-primary" />
+                Beta (Systematic Risk)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Measures the asset's volatility relative to the market. Beta = 1 means it moves with the market.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 text-primary" />
+                Market Return (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The expected return of the overall market (e.g., S&P 500 historical average ~10%).
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              E(Rᵢ) = Rғ + βᵢ × (Rₘ - Rғ)
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Expected return equals risk-free rate plus beta times the market risk premium. This calculates the minimum return required for the asset's risk level.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -314,107 +373,107 @@ export default function CAPMCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to the Capital Asset Pricing Model (CAPM): Calculation, Beta, and Expected Return" />
-    <meta itemProp="description" content="An expert guide detailing the CAPM formula, its role in calculating the required rate of return for an asset, the function of Beta as a measure of systematic risk, and the model's application in valuation and risk management." />
-    <meta itemProp="keywords" content="CAPM formula explained, calculating required return, systematic risk beta finance, risk-free rate, market risk premium, security market line SML, expected return asset" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-06" /> 
-    <meta itemProp="url" content="/definitive-capm-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to the Capital Asset Pricing Model (CAPM): Calculation, Beta, and Expected Return" />
+        <meta itemProp="description" content="An expert guide detailing the CAPM formula, its role in calculating the required rate of return for an asset, the function of Beta as a measure of systematic risk, and the model's application in valuation and risk management." />
+        <meta itemProp="keywords" content="CAPM formula explained, calculating required return, systematic risk beta finance, risk-free rate, market risk premium, security market line SML, expected return asset" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-06" />
+        <meta itemProp="url" content="/definitive-capm-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Capital Asset Pricing Model (CAPM): Calculating Expected Return</h1>
-    <p className="text-lg italic text-muted-foreground">Master the foundational model that defines the relationship between an asset's systematic risk and its required rate of return.</p>
-    
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Capital Asset Pricing Model (CAPM): Calculating Expected Return</h1>
+        <p className="text-lg italic text-muted-foreground">Master the foundational model that defines the relationship between an asset's systematic risk and its required rate of return.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">CAPM: Core Definition and Principle</a></li>
-        <li><a href="#formula" className="hover:underline">The CAPM Formula and Components</a></li>
-        <li><a href="#beta" className="hover:underline">The Role of Beta ($\beta$): Measuring Systematic Risk</a></li>
-        <li><a href="#premium" className="hover:underline">Market Risk Premium and Risk-Free Rate</a></li>
-        <li><a href="#applications" className="hover:underline">Applications in Valuation and Portfolio Management</a></li>
-    </ul>
-<hr />
 
-    {/* CAPM: CORE DEFINITION AND PRINCIPLE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">CAPM: Core Definition and Principle</h2>
-    <p>The **Capital Asset Pricing Model (CAPM)** is a foundational model in modern finance used to calculate the theoretically appropriate **required rate of return** for an asset, given its inherent risk. CAPM is based on the principle that investors must be compensated for two things: the time value of money and the systematic risk they assume.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">CAPM: Core Definition and Principle</a></li>
+          <li><a href="#formula" className="hover:underline">The CAPM Formula and Components</a></li>
+          <li><a href="#beta" className="hover:underline">The Role of Beta ($\beta$): Measuring Systematic Risk</a></li>
+          <li><a href="#premium" className="hover:underline">Market Risk Premium and Risk-Free Rate</a></li>
+          <li><a href="#applications" className="hover:underline">Applications in Valuation and Portfolio Management</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Risk and Return Relationship</h3>
-    <p>The model explicitly assumes that investors are rational and that they only need to be compensated for **Systematic Risk** (market risk), which cannot be eliminated through diversification. Unsystematic risk (specific risk) is ignored because a well-diversified portfolio should eliminate it.</p>
+        {/* CAPM: CORE DEFINITION AND PRINCIPLE */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">CAPM: Core Definition and Principle</h2>
+        <p>The **Capital Asset Pricing Model (CAPM)** is a foundational model in modern finance used to calculate the theoretically appropriate **required rate of return** for an asset, given its inherent risk. CAPM is based on the principle that investors must be compensated for two things: the time value of money and the systematic risk they assume.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">Risk and Return Relationship</h3>
+        <p>The model explicitly assumes that investors are rational and that they only need to be compensated for **Systematic Risk** (market risk), which cannot be eliminated through diversification. Unsystematic risk (specific risk) is ignored because a well-diversified portfolio should eliminate it.</p>
 
-    {/* THE CAPM FORMULA AND COMPONENTS */}
-    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The CAPM Formula and Components</h2>
-    <p>The CAPM formula calculates the required return ($R_i$) by adding the risk-free rate ($R_f$) to the market risk premium, scaled by the asset's beta ($\beta$).</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        {/* THE CAPM FORMULA AND COMPONENTS */}
+        <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The CAPM Formula and Components</h2>
+        <p>The CAPM formula calculates the required return ($R_i$) by adding the risk-free rate ($R_f$) to the market risk premium, scaled by the asset's beta ($\beta$).</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'R_i = R_f + β_i * (R_m - R_f)'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <p>Where:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>$R_i$ = Required rate of return for the asset.</li>
-        <li>$R_f$ = Risk-free rate.</li>
-        <li>$\beta_i$ = Beta of the asset.</li>
-        <li>$R_m$ = Expected return of the overall market.</li>
-    </ul>
+        <p>Where:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>$R_i$ = Required rate of return for the asset.</li>
+          <li>$R_f$ = Risk-free rate.</li>
+          <li>$\beta_i$ = Beta of the asset.</li>
+          <li>$R_m$ = Expected return of the overall market.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* THE ROLE OF BETA ($\beta$): MEASURING SYSTEMATIC RISK */}
-    <h2 id="beta" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Role of Beta ($\beta$): Measuring Systematic Risk</h2>
-    <p>**Beta ($\beta$)** is the measure of **systematic risk** within the CAPM model. It quantifies the expected volatility of the asset's return relative to the volatility of the overall market (the benchmark).</p>
+        {/* THE ROLE OF BETA ($\beta$): MEASURING SYSTEMATIC RISK */}
+        <h2 id="beta" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Role of Beta ($\beta$): Measuring Systematic Risk</h2>
+        <p>**Beta ($\beta$)** is the measure of **systematic risk** within the CAPM model. It quantifies the expected volatility of the asset's return relative to the volatility of the overall market (the benchmark).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpreting Beta</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Beta ($\beta$) = 1.0:** The asset moves exactly in line with the market.</li>
-        <li><strong className="font-semibold">Beta is greater than 1.0:</strong> The asset is more volatile than the market (higher systematic risk). It is expected to rise faster than the market during bull cycles and fall faster during bear cycles.</li>
-        <li><strong className="font-semibold">Beta is less than 1.0:</strong> The asset is less volatile than the market (lower systematic risk). It is often considered defensive.</li>
-        <li>**Beta ($\beta$) = 0:** The asset is completely uncorrelated with the market (e.g., a short-term Treasury bill).</li>
-    </ul>
-    <p>Beta is the scalar that adjusts the market risk premium to reflect the specific risk of the asset being analyzed.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpreting Beta</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**Beta ($\beta$) = 1.0:** The asset moves exactly in line with the market.</li>
+          <li><strong className="font-semibold">Beta is greater than 1.0:</strong> The asset is more volatile than the market (higher systematic risk). It is expected to rise faster than the market during bull cycles and fall faster during bear cycles.</li>
+          <li><strong className="font-semibold">Beta is less than 1.0:</strong> The asset is less volatile than the market (lower systematic risk). It is often considered defensive.</li>
+          <li>**Beta ($\beta$) = 0:** The asset is completely uncorrelated with the market (e.g., a short-term Treasury bill).</li>
+        </ul>
+        <p>Beta is the scalar that adjusts the market risk premium to reflect the specific risk of the asset being analyzed.</p>
 
-<hr />
+        <hr />
 
-    {/* MARKET RISK PREMIUM AND RISK-FREE RATE */}
-    <h2 id="premium" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Market Risk Premium and Risk-Free Rate</h2>
-    <p>The CAPM separates the risk-free return component from the risk premium component, allowing for detailed compensation analysis.</p>
+        {/* MARKET RISK PREMIUM AND RISK-FREE RATE */}
+        <h2 id="premium" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Market Risk Premium and Risk-Free Rate</h2>
+        <p>The CAPM separates the risk-free return component from the risk premium component, allowing for detailed compensation analysis.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Risk-Free Rate ($R_f$)</h3>
-    <p>The risk-free rate ($R_f$) compensates the investor for the **time value of money** and inflation. It is the minimum return an investor demands just to defer consumption. In practice, the $R_f$ is typically proxied by the yield on long-term U.S. government bonds (e.g., 10-year Treasury notes), as these are considered free of default risk.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Risk-Free Rate ($R_f$)</h3>
+        <p>The risk-free rate ($R_f$) compensates the investor for the **time value of money** and inflation. It is the minimum return an investor demands just to defer consumption. In practice, the $R_f$ is typically proxied by the yield on long-term U.S. government bonds (e.g., 10-year Treasury notes), as these are considered free of default risk.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Market Risk Premium ($R_m - R_f$)</h3>
-    <p>The **Market Risk Premium** is the extra return that investors, on average, expect to receive for holding a risky market portfolio ($R_m$) over a risk-free asset ($R_f$). This premium is the compensation for taking on average systematic risk. The entire second half of the CAPM formula scales this premium based on the asset's beta.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Market Risk Premium ($R_m - R_f$)</h3>
+        <p>The **Market Risk Premium** is the extra return that investors, on average, expect to receive for holding a risky market portfolio ($R_m$) over a risk-free asset ($R_f$). This premium is the compensation for taking on average systematic risk. The entire second half of the CAPM formula scales this premium based on the asset's beta.</p>
 
-<hr />
+        <hr />
 
-    {/* APPLICATIONS IN VALUATION AND PORTFOLIO MANAGEMENT */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Valuation and Portfolio Management</h2>
-    <p>The CAPM is central to determining the cost of equity and assessing investment performance.</p>
+        {/* APPLICATIONS IN VALUATION AND PORTFOLIO MANAGEMENT */}
+        <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Valuation and Portfolio Management</h2>
+        <p>The CAPM is central to determining the cost of equity and assessing investment performance.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Cost of Equity and WACC</h3>
-    <p>In corporate finance, the required rate of return calculated by CAPM is used as the **Cost of Equity** component of the **Weighted Average Cost of Capital (WACC)**. WACC is the key discount rate used in the Net Present Value (NPV) and Discounted Cash Flow (DCF) valuation models.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Cost of Equity and WACC</h3>
+        <p>In corporate finance, the required rate of return calculated by CAPM is used as the **Cost of Equity** component of the **Weighted Average Cost of Capital (WACC)**. WACC is the key discount rate used in the Net Present Value (NPV) and Discounted Cash Flow (DCF) valuation models.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Security Market Line (SML)</h3>
-    <p>The Security Market Line (SML) is the graphical representation of the CAPM formula. It plots risk (Beta) on the x-axis and expected return (R i) on the y-axis. The SML is used to determine if an asset is undervalued or overvalued:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Above SML:** The asset is generating a return higher than required for its risk (undervalued).</li>
-        <li>**Below SML:** The asset is generating a return lower than required for its risk (overvalued).</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Security Market Line (SML)</h3>
+        <p>The Security Market Line (SML) is the graphical representation of the CAPM formula. It plots risk (Beta) on the x-axis and expected return (R i) on the y-axis. The SML is used to determine if an asset is undervalued or overvalued:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**Above SML:** The asset is generating a return higher than required for its risk (undervalued).</li>
+          <li>**Below SML:** The asset is generating a return lower than required for its risk (overvalued).</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Capital Asset Pricing Model (CAPM) is the fundamental theoretical tool for calculating the **required rate of return** for any investment by linking return to systematic risk ($\beta$).</p>
-    <p>By scaling the **Market Risk Premium** by the asset's **Beta**, the CAPM provides the essential cost of equity used in corporate valuation, ensuring that projects and assets are only undertaken if their expected returns adequately compensate the investor for the market risk assumed.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Capital Asset Pricing Model (CAPM) is the fundamental theoretical tool for calculating the **required rate of return** for any investment by linking return to systematic risk ($\beta$).</p>
+        <p>By scaling the **Market Risk Premium** by the asset's **Beta**, the CAPM provides the essential cost of equity used in corporate valuation, ensuring that projects and assets are only undertaken if their expected returns adequately compensate the investor for the market risk assumed.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -434,63 +493,63 @@ export default function CAPMCalculator() {
                 The Capital Asset Pricing Model (CAPM) is a financial model that calculates the expected return of an asset based on its systematic risk. The formula is: Expected Return = Risk-Free Rate + Beta × (Market Return - Risk-Free Rate). It's used to determine appropriate returns for investments based on their risk level.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate CAPM?</h4>
               <p className="text-muted-foreground">
                 The CAPM formula is: E(R) = Rf + β × (Rm - Rf), where E(R) is expected return, Rf is risk-free rate, β is beta (systematic risk), and Rm is market return. You need the risk-free rate (typically government bond yield), the asset's beta, and the expected market return to calculate the expected return.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is the risk-free rate?</h4>
               <p className="text-muted-foreground">
                 The risk-free rate is the return on an investment with no risk of financial loss. It's typically represented by the yield on government bonds (like US Treasury bills). This rate serves as the baseline return that investors can earn without taking any risk.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is beta in CAPM?</h4>
               <p className="text-muted-foreground">
                 Beta measures the systematic risk of an asset relative to the market. A beta of 1 means the asset moves with the market, a beta greater than 1 means it's more volatile than the market, and a beta less than 1 means it's less volatile. Beta is calculated using historical price data.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the assumptions of CAPM?</h4>
               <p className="text-muted-foreground">
                 CAPM assumes efficient markets, rational investors, no transaction costs, unlimited borrowing and lending at the risk-free rate, and that all investors have the same expectations. These assumptions are often criticized as unrealistic, but CAPM remains widely used despite its limitations.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How is CAPM used in practice?</h4>
               <p className="text-muted-foreground">
                 CAPM is used to determine discount rates for valuation, evaluate investment performance, assess risk-adjusted returns, and make portfolio allocation decisions. It's commonly used in corporate finance for project evaluation and in portfolio management for risk assessment and performance measurement.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of CAPM?</h4>
               <p className="text-muted-foreground">
                 CAPM has several limitations: it assumes efficient markets, relies on historical beta which may not predict future risk, doesn't account for unsystematic risk, and assumes investors can borrow unlimited amounts at the risk-free rate. These assumptions often don't hold in real markets.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does CAPM relate to portfolio theory?</h4>
               <p className="text-muted-foreground">
                 CAPM is an extension of Modern Portfolio Theory. It provides a way to determine the expected return of individual assets based on their contribution to portfolio risk. CAPM helps investors understand the relationship between risk and return and make informed investment decisions.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is CAPM important for investors?</h4>
               <p className="text-muted-foreground">
                 CAPM is important for investors as it provides a systematic way to assess risk and determine appropriate returns. It helps evaluate whether investments are fairly priced, assess portfolio performance, and make informed decisions about risk-return trade-offs. It's a fundamental tool in investment analysis.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I interpret CAPM results?</h4>
               <p className="text-muted-foreground">
@@ -498,6 +557,21 @@ export default function CAPMCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The CAPM Calculator determines the required return for an asset based on its systematic risk (beta).</p>
+          <p>It establishes the minimum return investors should demand for the risk level of an investment.</p>
+          <p>Use this tool for valuation, cost of equity calculations, and investment decision-making.</p>
         </CardContent>
       </Card>
     </div>

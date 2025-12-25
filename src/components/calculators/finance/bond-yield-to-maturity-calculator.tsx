@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Percent, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, BarChart3, Activity } from 'lucide-react';
+import { Percent, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, BarChart3, Activity, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -24,9 +24,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function BondYieldToMaturityCalculator() {
-  const [result, setResult] = useState<{ 
+  const [result, setResult] = useState<{
     ytm: number;
-    interpretation: string; 
+    interpretation: string;
     yieldLevel: string;
     recommendation: string;
     strength: string;
@@ -61,45 +61,45 @@ export default function BondYieldToMaturityCalculator() {
 
   const calculateYTM = (values: FormValues): number => {
     const { currentPrice, faceValue, couponRate, years, paymentsPerYear } = values;
-    
+
     // Handle edge cases
     if (currentPrice <= 0 || faceValue <= 0 || years <= 0 || paymentsPerYear <= 0) {
       return 0;
     }
-    
+
     // Initial guess for YTM (use coupon rate as starting point)
     let ytm = couponRate / 100; // Convert to decimal
     const tolerance = 0.0001;
     const maxIterations = 100;
-    
+
     for (let i = 0; i < maxIterations; i++) {
       const price = bondPrice(ytm * 100, values); // Convert back to percentage for bondPrice function
       const priceDiff = price - currentPrice;
-      
+
       if (Math.abs(priceDiff) < tolerance) {
         break;
       }
-      
+
       // Newton-Raphson method for better convergence
       const y = ytm / paymentsPerYear;
       const c = (couponRate / 100) * faceValue / paymentsPerYear;
       const n = years * paymentsPerYear;
-      
+
       // Calculate derivative of bond price with respect to YTM
       let derivative = 0;
       for (let t = 1; t <= n; t++) {
         derivative -= (c * t) / (Math.pow(1 + y, t + 1) * paymentsPerYear);
       }
       derivative -= (faceValue * n) / (Math.pow(1 + y, n + 1) * paymentsPerYear);
-      
+
       // Avoid division by zero
       if (Math.abs(derivative) < 1e-10) {
         ytm += 0.01; // Small adjustment
         continue;
       }
-      
+
       const newYtm = ytm - priceDiff / derivative;
-      
+
       // Prevent extreme values
       if (newYtm < -0.5 || newYtm > 2.0) {
         ytm += (priceDiff > 0 ? -0.01 : 0.01);
@@ -107,13 +107,13 @@ export default function BondYieldToMaturityCalculator() {
         ytm = newYtm;
       }
     }
-    
+
     return ytm * 100; // Convert back to percentage
   };
 
   const interpret = (ytm: number, couponRate: number, currentPrice: number, faceValue: number) => {
     const premiumDiscount = ((currentPrice - faceValue) / faceValue) * 100;
-    
+
     if (ytm > couponRate) {
       if (premiumDiscount > 0) return 'Premium bond with YTM above coupon rate - attractive yield despite premium pricing.';
       return 'Discount bond with YTM above coupon rate - good value with higher yield than coupon.';
@@ -134,7 +134,7 @@ export default function BondYieldToMaturityCalculator() {
 
   const getRecommendation = (ytm: number, couponRate: number, currentPrice: number, faceValue: number) => {
     const premiumDiscount = ((currentPrice - faceValue) / faceValue) * 100;
-    
+
     if (ytm > couponRate && premiumDiscount <= 0) return 'Attractive investment - discount bond with higher yield than coupon rate.';
     if (ytm > couponRate && premiumDiscount > 0) return 'Consider investment - premium bond but YTM exceeds coupon rate.';
     if (ytm < couponRate && premiumDiscount > 0) return 'Evaluate carefully - premium bond with lower yield than coupon rate.';
@@ -154,7 +154,7 @@ export default function BondYieldToMaturityCalculator() {
     const insights = [];
     const premiumDiscount = ((currentPrice - faceValue) / faceValue) * 100;
     const yieldSpread = ytm - couponRate;
-    
+
     if (premiumDiscount > 0) {
       insights.push('Premium bond pricing');
       insights.push('Price above face value');
@@ -165,7 +165,7 @@ export default function BondYieldToMaturityCalculator() {
       insights.push('Par bond pricing');
       insights.push('Price equals face value');
     }
-    
+
     if (yieldSpread > 0) {
       insights.push('YTM exceeds coupon rate');
       insights.push('Attractive yield opportunity');
@@ -176,7 +176,7 @@ export default function BondYieldToMaturityCalculator() {
       insights.push('YTM equals coupon rate');
       insights.push('Fair value pricing');
     }
-    
+
     return insights;
   };
 
@@ -320,48 +320,108 @@ export default function BondYieldToMaturityCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Bond valuation opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4 text-primary" />
+                Current Bond Price ($)
+              </h4>
+              <p className="text-sm text-muted-foreground">Market price at which the bond is currently trading.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <BarChart3 className="h-4 w-4 text-primary" />
+                Face Value ($)
+              </h4>
+              <p className="text-sm text-muted-foreground">Par value repaid at maturity (typically $1,000).</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 text-primary" />
+                Coupon Rate (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">Annual interest rate paid on face value.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Activity className="h-4 w-4 text-primary" />
+                Years to Maturity
+              </h4>
+              <p className="text-sm text-muted-foreground">Time remaining until the bond matures.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Price = Σ[C/(1+YTM)^t] + F/(1+YTM)^n
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            YTM is the discount rate that equates bond price to present value of future cash flows (coupons + face value).
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -412,113 +472,113 @@ export default function BondYieldToMaturityCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Bond Yield to Maturity (YTM): Calculation, Interpretation, and Fixed Income Valuation" />
-    <meta itemProp="description" content="An expert guide detailing the Yield to Maturity (YTM) formula, its core role as a measure of a bond's internal rate of return (IRR), the relationship between bond price and YTM, and its application in fixed income portfolio management." />
-    <meta itemProp="keywords" content="yield to maturity formula explained, calculating bond YTM, internal rate of return bond, bond price yield relationship, current yield vs YTM, fixed income valuation" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-06" /> 
-    <meta itemProp="url" content="/definitive-bond-yield-to-maturity-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Bond Yield to Maturity (YTM): Calculation, Interpretation, and Fixed Income Valuation" />
+        <meta itemProp="description" content="An expert guide detailing the Yield to Maturity (YTM) formula, its core role as a measure of a bond's internal rate of return (IRR), the relationship between bond price and YTM, and its application in fixed income portfolio management." />
+        <meta itemProp="keywords" content="yield to maturity formula explained, calculating bond YTM, internal rate of return bond, bond price yield relationship, current yield vs YTM, fixed income valuation" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-06" />
+        <meta itemProp="url" content="/definitive-bond-yield-to-maturity-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Yield to Maturity (YTM): The True Return of a Bond</h1>
-    <p className="text-lg italic text-muted-foreground">Master the critical metric that quantifies the total expected rate of return on a bond, assuming it is held until its final maturity date.</p>
-    
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Yield to Maturity (YTM): The True Return of a Bond</h1>
+        <p className="text-lg italic text-muted-foreground">Master the critical metric that quantifies the total expected rate of return on a bond, assuming it is held until its final maturity date.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">YTM: Definition and Internal Rate of Return (IRR)</a></li>
-        <li><a href="#formula" className="hover:underline">The YTM Formula and Calculation Mechanics</a></li>
-        <li><a href="#price-yield" className="hover:underline">The Inverse Relationship Between Price and Yield</a></li>
-        <li><a href="#yield-types" className="hover:underline">YTM vs. Coupon Rate and Current Yield</a></li>
-        <li><a href="#assumptions" className="hover:underline">Key Assumptions and Limitations of YTM</a></li>
-    </ul>
-<hr />
 
-    {/* YTM: DEFINITION AND INTERNAL RATE OF RETURN (IRR) */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">YTM: Definition and Internal Rate of Return (IRR)</h2>
-    <p>The **Yield to Maturity (YTM)** is the single rate of return that equates the present value (PV) of a bond's future cash flows (coupon payments and the face value) to its current market price. It is the most comprehensive measure of a bond's total return.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">YTM: Definition and Internal Rate of Return (IRR)</a></li>
+          <li><a href="#formula" className="hover:underline">The YTM Formula and Calculation Mechanics</a></li>
+          <li><a href="#price-yield" className="hover:underline">The Inverse Relationship Between Price and Yield</a></li>
+          <li><a href="#yield-types" className="hover:underline">YTM vs. Coupon Rate and Current Yield</a></li>
+          <li><a href="#assumptions" className="hover:underline">Key Assumptions and Limitations of YTM</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">YTM as Internal Rate of Return (IRR)</h3>
-    <p>YTM is mathematically equivalent to the **Internal Rate of Return (IRR)** of a bond. If an investor purchases the bond at the current market price and holds it until maturity, YTM is the annualized rate of return they will earn, assuming all conditions of the bond contract are met.</p>
+        {/* YTM: DEFINITION AND INTERNAL RATE OF RETURN (IRR) */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">YTM: Definition and Internal Rate of Return (IRR)</h2>
+        <p>The **Yield to Maturity (YTM)** is the single rate of return that equates the present value (PV) of a bond's future cash flows (coupon payments and the face value) to its current market price. It is the most comprehensive measure of a bond's total return.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Key Bond Components</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Coupon Rate:</strong> The fixed annual percentage of the face value the issuer pays as interest.</li>
-        <li><strong className="font-semibold">Face Value (Par Value):</strong> The principal amount repaid at maturity (typically 1,000 dollars).</li>
-        <li><strong className="font-semibold">Current Price:</strong> The bond's price in the open market (the investment outlay).</li>
-        <li><strong className="font-semibold">Time to Maturity:</strong> The number of years remaining until the face value is repaid.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">YTM as Internal Rate of Return (IRR)</h3>
+        <p>YTM is mathematically equivalent to the **Internal Rate of Return (IRR)** of a bond. If an investor purchases the bond at the current market price and holds it until maturity, YTM is the annualized rate of return they will earn, assuming all conditions of the bond contract are met.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">Key Bond Components</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Coupon Rate:</strong> The fixed annual percentage of the face value the issuer pays as interest.</li>
+          <li><strong className="font-semibold">Face Value (Par Value):</strong> The principal amount repaid at maturity (typically 1,000 dollars).</li>
+          <li><strong className="font-semibold">Current Price:</strong> The bond's price in the open market (the investment outlay).</li>
+          <li><strong className="font-semibold">Time to Maturity:</strong> The number of years remaining until the face value is repaid.</li>
+        </ul>
 
-    {/* THE YTM FORMULA AND CALCULATION MECHANICS */}
-    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The YTM Formula and Calculation Mechanics</h2>
-    <p>YTM cannot be solved directly with a simple algebraic formula; it requires trial-and-error, financial calculators, or iterative numerical methods because the rate is embedded within the present value equation.</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity (The Valuation Equation)</h3>
-    <p>YTM is the discount rate ($r$) that makes the bond's current price equal to the sum of the present values of all future cash flows (coupon annuity plus face value lump sum):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        {/* THE YTM FORMULA AND CALCULATION MECHANICS */}
+        <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The YTM Formula and Calculation Mechanics</h2>
+        <p>YTM cannot be solved directly with a simple algebraic formula; it requires trial-and-error, financial calculators, or iterative numerical methods because the rate is embedded within the present value equation.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity (The Valuation Equation)</h3>
+        <p>YTM is the discount rate ($r$) that makes the bond's current price equal to the sum of the present values of all future cash flows (coupon annuity plus face value lump sum):</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Bond Price = PV (Coupons) + PV (Face Value)'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Bond Price Formula</h3>
-    <p>The detailed calculation discounts both parts of the cash flow stream:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Bond Price Formula</h3>
+        <p>The detailed calculation discounts both parts of the cash flow stream:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Bond Price = Sum [ C / (1+r)^t ] + F / (1+r)^T'}
-        </p>
-    </div>
-    <p>Where $C$ is the periodic coupon payment, $F$ is the face value, $r$ is the YTM, $t$ is the payment period, and $T$ is the total number of periods remaining.</p>
+          </p>
+        </div>
+        <p>Where $C$ is the periodic coupon payment, $F$ is the face value, $r$ is the YTM, $t$ is the payment period, and $T$ is the total number of periods remaining.</p>
 
-<hr />
+        <hr />
 
-    {/* THE INVERSE RELATIONSHIP BETWEEN PRICE AND YIELD */}
-    <h2 id="price-yield" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Inverse Relationship Between Price and Yield</h2>
-    <p>A fundamental principle in bond analysis is that **bond prices and yields move inversely**. As market interest rates rise, existing bond prices must fall to make their fixed coupon rates attractive to new investors, and vice versa.</p>
+        {/* THE INVERSE RELATIONSHIP BETWEEN PRICE AND YIELD */}
+        <h2 id="price-yield" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Inverse Relationship Between Price and Yield</h2>
+        <p>A fundamental principle in bond analysis is that **bond prices and yields move inversely**. As market interest rates rise, existing bond prices must fall to make their fixed coupon rates attractive to new investors, and vice versa.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Pricing Scenarios Based on YTM</h3>
-    <ul className="list-disc ml-6 space-y-2">
-    <li><strong className="font-semibold">Premium Bond (YTM &lt; Coupon Rate):</strong> The bond's market price is higher than its face value. This occurs when the market interest rate is lower than the bond's fixed coupon rate.</li>
-        <li><strong className="font-semibold">Par Bond (YTM = Coupon Rate):</strong> The bond's market price is exactly equal to its face value.</li>
-        <li><strong className="font-semibold">Discount Bond (YTM {'>'} Coupon Rate):</strong> The bond's market price is lower than its face value. This occurs when the market interest rate is higher than the bond's fixed coupon rate.</li>
-    </ul>
-    <p>A bond trading at a premium will have a YTM lower than its coupon rate, indicating the yield is "pulled down" by the eventual loss incurred when the bond matures at par value.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Pricing Scenarios Based on YTM</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Premium Bond (YTM &lt; Coupon Rate):</strong> The bond's market price is higher than its face value. This occurs when the market interest rate is lower than the bond's fixed coupon rate.</li>
+          <li><strong className="font-semibold">Par Bond (YTM = Coupon Rate):</strong> The bond's market price is exactly equal to its face value.</li>
+          <li><strong className="font-semibold">Discount Bond (YTM {'>'} Coupon Rate):</strong> The bond's market price is lower than its face value. This occurs when the market interest rate is higher than the bond's fixed coupon rate.</li>
+        </ul>
+        <p>A bond trading at a premium will have a YTM lower than its coupon rate, indicating the yield is "pulled down" by the eventual loss incurred when the bond matures at par value.</p>
 
-<hr />
+        <hr />
 
-    {/* YTM VS. COUPON RATE AND CURRENT YIELD */}
-    <h2 id="yield-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">YTM vs. Coupon Rate and Current Yield</h2>
-    <p>It is crucial to distinguish YTM from other common bond metrics, as YTM is the only one that reflects the total annualized return.</p>
+        {/* YTM VS. COUPON RATE AND CURRENT YIELD */}
+        <h2 id="yield-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">YTM vs. Coupon Rate and Current Yield</h2>
+        <p>It is crucial to distinguish YTM from other common bond metrics, as YTM is the only one that reflects the total annualized return.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Coupon Rate</h3>
-    <p>The Coupon Rate is simply the contractual interest rate set by the issuer at the time the bond is issued. It is fixed and based on the face value, not the market price. It is not an accurate indicator of current return.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Coupon Rate</h3>
+        <p>The Coupon Rate is simply the contractual interest rate set by the issuer at the time the bond is issued. It is fixed and based on the face value, not the market price. It is not an accurate indicator of current return.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Current Yield</h3>
-    <p>The Current Yield measures the annual coupon payment relative to the bond's **current market price** (Current Yield = Annual Coupon / Market Price). It is a simple return ratio but fails to account for either the time value of money or the eventual capital gain/loss at maturity.</p>
-    <p>YTM is the only metric that considers the time value of money, the current market price, the coupon rate, and the capital gain or loss that occurs when the bond matures at par value.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Current Yield</h3>
+        <p>The Current Yield measures the annual coupon payment relative to the bond's **current market price** (Current Yield = Annual Coupon / Market Price). It is a simple return ratio but fails to account for either the time value of money or the eventual capital gain/loss at maturity.</p>
+        <p>YTM is the only metric that considers the time value of money, the current market price, the coupon rate, and the capital gain or loss that occurs when the bond matures at par value.</p>
 
-<hr />
+        <hr />
 
-    {/* KEY ASSUMPTIONS AND LIMITATIONS OF YTM */}
-    <h2 id="assumptions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Assumptions and Limitations of YTM</h2>
-    <p>YTM is a powerful forecasting tool but relies on two major assumptions that may not hold true in the real world.</p>
+        {/* KEY ASSUMPTIONS AND LIMITATIONS OF YTM */}
+        <h2 id="assumptions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Assumptions and Limitations of YTM</h2>
+        <p>YTM is a powerful forecasting tool but relies on two major assumptions that may not hold true in the real world.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. The Reinvestment Assumption</h3>
-    <p>YTM assumes that all cash flows received from the bond (coupon payments) are immediately and continually reinvested at a rate exactly equal to the calculated YTM. If the actual interest rates available in the market are lower than the YTM, the investor's actual realized return will be lower than the YTM.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. The Reinvestment Assumption</h3>
+        <p>YTM assumes that all cash flows received from the bond (coupon payments) are immediately and continually reinvested at a rate exactly equal to the calculated YTM. If the actual interest rates available in the market are lower than the YTM, the investor's actual realized return will be lower than the YTM.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. Holding Period Assumption</h3>
-    <p>YTM is only realized if the investor holds the bond exactly until its maturity date. If the investor sells the bond early, the realized return will depend entirely on the market price at the time of sale, which could be higher or lower than the price predicted by the initial YTM calculation.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Holding Period Assumption</h3>
+        <p>YTM is only realized if the investor holds the bond exactly until its maturity date. If the investor sells the bond early, the realized return will depend entirely on the market price at the time of sale, which could be higher or lower than the price predicted by the initial YTM calculation.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Yield to Maturity (YTM) is the definitive measure of a bond's total return, mathematically equivalent to its **Internal Rate of Return (IRR)**. It is the discount rate that equates the bond's price to the present value of all its future cash flows.</p>
-    <p>Understanding YTM is essential for fixed income analysis, as it confirms the **inverse relationship between price and yield** and provides the necessary benchmark for evaluating investment returns against market interest rates.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Yield to Maturity (YTM) is the definitive measure of a bond's total return, mathematically equivalent to its **Internal Rate of Return (IRR)**. It is the discount rate that equates the bond's price to the present value of all its future cash flows.</p>
+        <p>Understanding YTM is essential for fixed income analysis, as it confirms the **inverse relationship between price and yield** and provides the necessary benchmark for evaluating investment returns against market interest rates.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -538,63 +598,63 @@ export default function BondYieldToMaturityCalculator() {
                 Yield to Maturity (YTM) is the total return anticipated on a bond if held until maturity. It's the internal rate of return (IRR) of an investment in a bond, considering the bond's current market price, par value, coupon interest rate, and time to maturity. YTM is expressed as an annual percentage rate.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate YTM?</h4>
               <p className="text-muted-foreground">
                 YTM is calculated using an iterative process that finds the discount rate that makes the present value of all future cash flows (coupon payments and face value) equal to the current bond price. The formula involves solving for the rate where: Current Price = Σ(Coupon Payment / (1 + YTM)^t) + Face Value / (1 + YTM)^n.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What's the difference between YTM and coupon rate?</h4>
               <p className="text-muted-foreground">
                 The coupon rate is the fixed interest rate paid annually on the bond's face value, while YTM is the total return including both coupon payments and any capital gain or loss from price changes. YTM considers the bond's current market price, while coupon rate is fixed at issuance. YTM can be higher or lower than the coupon rate depending on market conditions.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does it mean when YTM is higher than coupon rate?</h4>
               <p className="text-muted-foreground">
                 When YTM is higher than the coupon rate, it typically means the bond is trading at a discount (below face value). This occurs when market interest rates have risen since the bond was issued, making the bond less attractive. The higher YTM compensates for the discount and provides the total return including the capital gain from the discount.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does it mean when YTM is lower than coupon rate?</h4>
               <p className="text-muted-foreground">
                 When YTM is lower than the coupon rate, it typically means the bond is trading at a premium (above face value). This occurs when market interest rates have fallen since the bond was issued, making the bond more attractive. The lower YTM reflects the capital loss from the premium, reducing the total return.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does YTM change with interest rates?</h4>
               <p className="text-muted-foreground">
                 YTM and market interest rates move in opposite directions. When market rates rise, bond prices fall, increasing YTM. When market rates fall, bond prices rise, decreasing YTM. This inverse relationship is fundamental to bond pricing and helps investors understand how interest rate changes affect bond values.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the assumptions of YTM?</h4>
               <p className="text-muted-foreground">
                 YTM assumes that all coupon payments are reinvested at the YTM rate, the bond is held to maturity, there's no default risk, and interest rates remain constant. These assumptions may not hold in reality, making YTM a theoretical measure. Actual returns may differ due to reinvestment risk and interest rate changes.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I use YTM for investment decisions?</h4>
               <p className="text-muted-foreground">
                 Use YTM to compare bonds with different prices, coupon rates, and maturities. Compare YTM to current market interest rates and other investment opportunities. Consider YTM relative to your required rate of return and risk tolerance. YTM helps identify whether a bond offers attractive returns for its risk level.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What factors affect YTM calculations?</h4>
               <p className="text-muted-foreground">
                 Key factors include current bond price, face value, coupon rate, time to maturity, and payment frequency. Market interest rates, credit risk, and liquidity also affect YTM indirectly through their impact on bond prices. Changes in any of these factors will affect the calculated YTM.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is YTM important for bond investors?</h4>
               <p className="text-muted-foreground">
@@ -602,6 +662,21 @@ export default function BondYieldToMaturityCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>Yield to Maturity (YTM) is the total return anticipated on a bond if held until maturity, expressed as an annual rate.</p>
+          <p>It is the internal rate of return (IRR) that equates present value of cash flows to the current market price.</p>
+          <p>Use YTM to compare bonds with different prices, coupon rates, and maturities on a standardized basis.</p>
         </CardContent>
       </Card>
     </div>

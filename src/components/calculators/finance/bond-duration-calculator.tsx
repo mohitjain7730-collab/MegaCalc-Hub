@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, BarChart3, Percent } from 'lucide-react';
+import { Activity, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, BarChart3, Percent, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -24,10 +24,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function BondDurationCalculator() {
-  const [result, setResult] = useState<{ 
+  const [result, setResult] = useState<{
     macaulayDuration: number;
     modifiedDuration: number;
-    interpretation: string; 
+    interpretation: string;
     sensitivityLevel: string;
     recommendation: string;
     strength: string;
@@ -65,9 +65,9 @@ export default function BondDurationCalculator() {
     const y = yieldToMaturity / 100 / paymentsPerYear;
     const c = (couponRate / 100) * faceValue / paymentsPerYear;
     const n = years * paymentsPerYear;
-    
+
     const bondPrice = calculateBondPrice(values);
-    
+
     // Calculate Macaulay Duration
     let macaulayDuration = 0;
     for (let t = 1; t <= n; t++) {
@@ -75,13 +75,13 @@ export default function BondDurationCalculator() {
       macaulayDuration += (t * pv) / bondPrice;
     }
     macaulayDuration += (n * faceValue / Math.pow(1 + y, n)) / bondPrice;
-    
+
     // Convert to years
     macaulayDuration = macaulayDuration / paymentsPerYear;
-    
+
     // Calculate Modified Duration
     const modifiedDuration = macaulayDuration / (1 + y);
-    
+
     return { macaulayDuration, modifiedDuration };
   };
 
@@ -118,7 +118,7 @@ export default function BondDurationCalculator() {
 
   const getInsights = (macaulayDuration: number, modifiedDuration: number, years: number, couponRate: number) => {
     const insights = [];
-    
+
     if (macaulayDuration >= years * 0.8) {
       insights.push('High interest rate sensitivity');
       insights.push('Significant price volatility');
@@ -132,7 +132,7 @@ export default function BondDurationCalculator() {
       insights.push('Stable price characteristics');
       insights.push('Short-term bond characteristics');
     }
-    
+
     if (couponRate > 0) {
       insights.push('Coupon payments reduce duration');
       insights.push('Income stream provides stability');
@@ -140,10 +140,10 @@ export default function BondDurationCalculator() {
       insights.push('Zero-coupon bond characteristics');
       insights.push('Maximum duration for maturity');
     }
-    
+
     insights.push(`Modified duration: ${modifiedDuration.toFixed(2)}`);
     insights.push(`Price sensitivity to rate changes`);
-    
+
     return insights;
   };
 
@@ -184,9 +184,9 @@ export default function BondDurationCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField control={form.control} name="faceValue" render={({ field }) => (
                   <FormItem>
                     <FormLabel className="flex items-center gap-2">
@@ -247,13 +247,13 @@ export default function BondDurationCalculator() {
                     <FormMessage />
                   </FormItem>
                 )} />
-          </div>
+              </div>
               <Button type="submit" className="w-full">
                 <Calculator className="h-4 w-4 mr-2" />
                 Calculate Bond Duration
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -277,13 +277,13 @@ export default function BondDurationCalculator() {
             <CardContent>
               <div className="text-center space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                  <div>
                     <div className="text-3xl font-bold text-primary">
                       {result.macaulayDuration.toFixed(2)} years
                     </div>
                     <p className="text-sm text-muted-foreground">Macaulay Duration</p>
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                     <div className="text-3xl font-bold text-primary">
                       {result.modifiedDuration.toFixed(2)}
                     </div>
@@ -299,48 +299,108 @@ export default function BondDurationCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-        </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Duration profile opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4 text-primary" />
+                Face Value ($)
+              </h4>
+              <p className="text-sm text-muted-foreground">Par value repaid at maturity.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Percent className="h-4 w-4 text-primary" />
+                Coupon Rate (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">Annual interest rate paid on face value.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 text-primary" />
+                Yield to Maturity (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">Market discount rate for bond valuation.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <BarChart3 className="h-4 w-4 text-primary" />
+                Years to Maturity
+              </h4>
+              <p className="text-sm text-muted-foreground">Time remaining until the bond matures.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Modified Duration = Macaulay Duration / (1 + YTM/n)
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Macaulay Duration is the weighted average time to cash flow receipt; Modified Duration measures price sensitivity to rate changes.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -391,114 +451,114 @@ export default function BondDurationCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Bond Duration: Macaulay, Modified, and Interest Rate Risk Measurement" />
-    <meta itemProp="description" content="An expert guide detailing the Macaulay and Modified Duration formulas, their core role in measuring bond price sensitivity to interest rate changes (risk), and how duration is used for hedging and immunization strategies in fixed income portfolios." />
-    <meta itemProp="keywords" content="bond duration formula explained, macaulay duration calculation, modified duration interest rate risk, duration vs maturity, convexity bond finance, fixed income hedging" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-11" /> 
-    <meta itemProp="url" content="/definitive-bond-duration-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Bond Duration: Macaulay, Modified, and Interest Rate Risk Measurement" />
+        <meta itemProp="description" content="An expert guide detailing the Macaulay and Modified Duration formulas, their core role in measuring bond price sensitivity to interest rate changes (risk), and how duration is used for hedging and immunization strategies in fixed income portfolios." />
+        <meta itemProp="keywords" content="bond duration formula explained, macaulay duration calculation, modified duration interest rate risk, duration vs maturity, convexity bond finance, fixed income hedging" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-11" />
+        <meta itemProp="url" content="/definitive-bond-duration-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Bond Duration: The True Measure of Interest Rate Risk</h1>
-    <p className="text-lg italic text-gray-700">Master the critical metric that quantifies how sensitive a bond’s price is to changes in market interest rates.</p>
-    
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Bond Duration: The True Measure of Interest Rate Risk</h1>
+        <p className="text-lg italic text-gray-700">Master the critical metric that quantifies how sensitive a bond’s price is to changes in market interest rates.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">Duration: Definition and Distinction from Maturity</a></li>
-        <li><a href="#macaulay" className="hover:underline">Macaulay Duration: The Weighted Average Time</a></li>
-        <li><a href="#modified" className="hover:underline">Modified Duration: The Price Sensitivity Metric</a></li>
-        <li><a href="#drivers" className="hover:underline">Key Drivers of Duration (Coupon, Yield, Maturity)</a></li>
-        <li><a href="#applications" className="hover:underline">Applications in Hedging and Portfolio Management</a></li>
-    </ul>
-<hr />
 
-    {/* DURATION: DEFINITION AND DISTINCTION FROM MATURITY */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Duration: Definition and Distinction from Maturity</h2>
-    <p>**Duration** is a measure of the effective life of a bond. It is expressed in years and represents the weighted average time until the bond's cash flows (coupon payments and principal) are received. Duration is the single most important tool for assessing the **interest rate risk** of a fixed income security.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li><a href="#definition" className="hover:underline">Duration: Definition and Distinction from Maturity</a></li>
+          <li><a href="#macaulay" className="hover:underline">Macaulay Duration: The Weighted Average Time</a></li>
+          <li><a href="#modified" className="hover:underline">Modified Duration: The Price Sensitivity Metric</a></li>
+          <li><a href="#drivers" className="hover:underline">Key Drivers of Duration (Coupon, Yield, Maturity)</a></li>
+          <li><a href="#applications" className="hover:underline">Applications in Hedging and Portfolio Management</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Duration vs. Maturity</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Maturity:</strong> The actual contractual date on which the final principal is repaid. It is a fixed period.</li>
-        <li><strong className="font-semibold">Duration:</strong> The effective time it takes to recover the bond's price through its total cash flows. Duration is always less than the bond's maturity (except for zero-coupon bonds), because cash flows are received over time, not just at the end.</li>
-    </ul>
-    <p>A bond with a longer duration is more sensitive to interest rate changes and is therefore riskier.</p>
+        {/* DURATION: DEFINITION AND DISTINCTION FROM MATURITY */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Duration: Definition and Distinction from Maturity</h2>
+        <p>**Duration** is a measure of the effective life of a bond. It is expressed in years and represents the weighted average time until the bond's cash flows (coupon payments and principal) are received. Duration is the single most important tool for assessing the **interest rate risk** of a fixed income security.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">Duration vs. Maturity</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Maturity:</strong> The actual contractual date on which the final principal is repaid. It is a fixed period.</li>
+          <li><strong className="font-semibold">Duration:</strong> The effective time it takes to recover the bond's price through its total cash flows. Duration is always less than the bond's maturity (except for zero-coupon bonds), because cash flows are received over time, not just at the end.</li>
+        </ul>
+        <p>A bond with a longer duration is more sensitive to interest rate changes and is therefore riskier.</p>
 
-    {/* MACAULAY DURATION: THE WEIGHTED AVERAGE TIME */}
-    <h2 id="macaulay" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Macaulay Duration: The Weighted Average Time</h2>
-    <p>**Macaulay Duration** is the original duration measure. It calculates the weighted average time until all of a bond's cash flows are received, using the present value of each cash flow as the weight.</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Macaulay Formula (Concept)</h3>
-    <p>The formula finds the sum of the present value of all cash flows (CF) multiplied by the time (t) they are received, divided by the bond's current market price:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        {/* MACAULAY DURATION: THE WEIGHTED AVERAGE TIME */}
+        <h2 id="macaulay" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Macaulay Duration: The Weighted Average Time</h2>
+        <p>**Macaulay Duration** is the original duration measure. It calculates the weighted average time until all of a bond's cash flows are received, using the present value of each cash flow as the weight.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Macaulay Formula (Concept)</h3>
+        <p>The formula finds the sum of the present value of all cash flows (CF) multiplied by the time (t) they are received, divided by the bond's current market price:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'Macaulay Duration = [ Sum (t * PV(CF_t)) ] / Bond Price'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">YTM as the Discount Rate</h3>
-    <p>The Macaulay Duration calculation requires that each future cash flow ($CF_t$) be discounted using the bond's **Yield to Maturity (YTM)** ($r$) as the discount rate. This ensures that the time of cash flows is weighted according to its economic value today.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">YTM as the Discount Rate</h3>
+        <p>The Macaulay Duration calculation requires that each future cash flow ($CF_t$) be discounted using the bond's **Yield to Maturity (YTM)** ($r$) as the discount rate. This ensures that the time of cash flows is weighted according to its economic value today.</p>
 
-<hr />
+        <hr />
 
-    {/* MODIFIED DURATION: THE PRICE SENSITIVITY METRIC */}
-    <h2 id="modified" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Modified Duration: The Price Sensitivity Metric</h2>
-    <p>**Modified Duration** is the practical measure used by portfolio managers. It converts the Macaulay Duration into a direct, measurable percentage change in the bond's price for every 1% change in interest rates.</p>
+        {/* MODIFIED DURATION: THE PRICE SENSITIVITY METRIC */}
+        <h2 id="modified" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Modified Duration: The Price Sensitivity Metric</h2>
+        <p>**Modified Duration** is the practical measure used by portfolio managers. It converts the Macaulay Duration into a direct, measurable percentage change in the bond's price for every 1% change in interest rates.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>Modified Duration is directly derived from Macaulay Duration, adjusting for the periodic Yield to Maturity:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <p>Modified Duration is directly derived from Macaulay Duration, adjusting for the periodic Yield to Maturity:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'Modified Duration = Macaulay Duration / (1 + YTM / n_p)'}
-        </p>
-    </div>
-    <p>Where $n_p$ is the number of periods per year (e.g., 2 for semi-annual bonds). For a small change in YTM ($\Delta y$), the predicted price change ($\Delta P$) is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+          </p>
+        </div>
+        <p>Where $n_p$ is the number of periods per year (e.g., 2 for semi-annual bonds). For a small change in YTM ($\Delta y$), the predicted price change ($\Delta P$) is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'Percentage Price Change ≈ -Modified Duration * Change in YTM'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation as Interest Rate Risk</h3>
-    <p>A bond with a Modified Duration of 5.0 means its price is expected to fall by approximately 5% for every 1% increase in market interest rates. This makes Modified Duration the clearest, most actionable measure of a bond's **interest rate risk**.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation as Interest Rate Risk</h3>
+        <p>A bond with a Modified Duration of 5.0 means its price is expected to fall by approximately 5% for every 1% increase in market interest rates. This makes Modified Duration the clearest, most actionable measure of a bond's **interest rate risk**.</p>
 
-<hr />
+        <hr />
 
-    {/* KEY DRIVERS OF DURATION (COUPON, YIELD, MATURITY) */}
-    <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Drivers of Duration (Coupon, Yield, Maturity)</h2>
-    <p>Three primary factors dictate a bond's duration and, therefore, its risk profile. Duration is always highest when the investor receives the majority of the cash flows later.</p>
+        {/* KEY DRIVERS OF DURATION (COUPON, YIELD, MATURITY) */}
+        <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Drivers of Duration (Coupon, Yield, Maturity)</h2>
+        <p>Three primary factors dictate a bond's duration and, therefore, its risk profile. Duration is always highest when the investor receives the majority of the cash flows later.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Maturity (Positive Relationship)</h3>
-    <p>As the bond's time to maturity increases, its duration increases. This is the strongest driver, as longer-term bonds have greater exposure to future interest rate uncertainty.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Maturity (Positive Relationship)</h3>
+        <p>As the bond's time to maturity increases, its duration increases. This is the strongest driver, as longer-term bonds have greater exposure to future interest rate uncertainty.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. Coupon Rate (Inverse Relationship)</h3>
-    <p>A higher coupon rate means the investor receives larger cash flows earlier in the bond's life. This reduces the weighted average time until capital is recovered, thus **decreasing the bond's duration** and lowering its interest rate risk.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Coupon Rate (Inverse Relationship)</h3>
+        <p>A higher coupon rate means the investor receives larger cash flows earlier in the bond's life. This reduces the weighted average time until capital is recovered, thus **decreasing the bond's duration** and lowering its interest rate risk.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">3. Yield to Maturity (YTM) (Inverse Relationship)</h3>
-    <p>As the YTM increases, the Present Value of the distant cash flows decreases disproportionately. This effectively increases the weight given to the earlier, larger coupon payments, which **decreases the bond's duration**.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">3. Yield to Maturity (YTM) (Inverse Relationship)</h3>
+        <p>As the YTM increases, the Present Value of the distant cash flows decreases disproportionately. This effectively increases the weight given to the earlier, larger coupon payments, which **decreases the bond's duration**.</p>
 
-<hr />
+        <hr />
 
-    {/* APPLICATIONS IN HEDGING AND PORTFOLIO MANAGEMENT */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Hedging and Portfolio Management</h2>
-    <p>Duration is essential for fixed income portfolio management, guiding hedging strategies and portfolio construction.</p>
+        {/* APPLICATIONS IN HEDGING AND PORTFOLIO MANAGEMENT */}
+        <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Hedging and Portfolio Management</h2>
+        <p>Duration is essential for fixed income portfolio management, guiding hedging strategies and portfolio construction.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Immunization Strategy</h3>
-    <p>Portfolio managers use duration to **immunize** a portfolio—protect it against interest rate changes. If a fund needs to meet a specific liability date (e.g., in 7 years), the manager can build a portfolio whose Macaulay Duration matches that 7-year liability. This balances the price risk (loss when rates rise) with the reinvestment risk (gain when rates rise), ensuring the funds are available when needed.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Immunization Strategy</h3>
+        <p>Portfolio managers use duration to **immunize** a portfolio—protect it against interest rate changes. If a fund needs to meet a specific liability date (e.g., in 7 years), the manager can build a portfolio whose Macaulay Duration matches that 7-year liability. This balances the price risk (loss when rates rise) with the reinvestment risk (gain when rates rise), ensuring the funds are available when needed.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Convexity (The Secondary Risk Measure)</h3>
-    <p>Since the duration formula is a linear approximation of the bond's price-yield curve, it becomes less accurate for large changes in interest rates. **Convexity** is a secondary risk measure that quantifies the curvature of this relationship. Positive convexity is generally desirable as it means the bond's price will rise more when yields fall than it will fall when yields rise.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Convexity (The Secondary Risk Measure)</h3>
+        <p>Since the duration formula is a linear approximation of the bond's price-yield curve, it becomes less accurate for large changes in interest rates. **Convexity** is a secondary risk measure that quantifies the curvature of this relationship. Positive convexity is generally desirable as it means the bond's price will rise more when yields fall than it will fall when yields rise.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Duration is the definitive measure of a bond's **interest rate risk**. **Macaulay Duration** measures the weighted average time to cash flow receipt, while **Modified Duration** converts this into the predicted percentage change in price for every 1% movement in interest rates.</p>
-    <p>Understanding the inverse relationship between duration and coupon rate is crucial for managing risk. Portfolio managers rely on duration for **immunization strategies** and for setting risk exposure based on market rate expectations.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Duration is the definitive measure of a bond's **interest rate risk**. **Macaulay Duration** measures the weighted average time to cash flow receipt, while **Modified Duration** converts this into the predicted percentage change in price for every 1% movement in interest rates.</p>
+        <p>Understanding the inverse relationship between duration and coupon rate is crucial for managing risk. Portfolio managers rely on duration for **immunization strategies** and for setting risk exposure based on market rate expectations.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -518,63 +578,63 @@ export default function BondDurationCalculator() {
                 Bond duration measures the sensitivity of a bond's price to changes in interest rates. Macaulay Duration represents the weighted average time to receive cash flows, while Modified Duration measures the percentage change in bond price for a 1% change in yield. Duration is expressed in years and is a key risk measure.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What's the difference between Macaulay and Modified Duration?</h4>
               <p className="text-muted-foreground">
                 Macaulay Duration is the weighted average time to receive cash flows, expressed in years. Modified Duration is Macaulay Duration divided by (1 + yield), and it measures the percentage change in bond price for a 1% change in yield. Modified Duration is more commonly used for risk management and portfolio analysis.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does duration affect bond prices?</h4>
               <p className="text-muted-foreground">
                 Duration measures interest rate sensitivity. Higher duration bonds experience larger price changes when interest rates change. For example, a bond with Modified Duration of 5 will see approximately a 5% price change for every 1% change in yield. Duration helps predict price volatility.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What factors affect bond duration?</h4>
               <p className="text-muted-foreground">
                 Key factors include time to maturity (longer = higher duration), coupon rate (higher = lower duration), yield to maturity (higher = lower duration), and payment frequency. Zero-coupon bonds have the highest duration for a given maturity, while high-coupon bonds have lower duration.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I use duration for portfolio management?</h4>
               <p className="text-muted-foreground">
                 Use duration to assess portfolio interest rate risk, match assets and liabilities, immunize portfolios against rate changes, and optimize risk-return profiles. Calculate portfolio duration as the weighted average of individual bond durations. Adjust duration based on interest rate outlook.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is duration matching?</h4>
               <p className="text-muted-foreground">
                 Duration matching involves matching the duration of assets and liabilities to minimize interest rate risk. This strategy is used in immunization, where portfolio duration equals the investment horizon. Duration matching helps ensure that assets and liabilities respond similarly to interest rate changes.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does duration change over time?</h4>
               <p className="text-muted-foreground">
                 Duration generally decreases as bonds approach maturity, assuming constant yields. This is because there are fewer future cash flows to discount. Duration also changes with yield changes - higher yields reduce duration, while lower yields increase duration. Regular rebalancing may be needed.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of duration?</h4>
               <p className="text-muted-foreground">
                 Duration assumes small, parallel shifts in the yield curve and doesn't account for convexity effects. It may not accurately predict price changes for large rate movements. Duration doesn't consider credit risk changes, call features, or other bond characteristics that affect pricing.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I interpret duration results?</h4>
               <p className="text-muted-foreground">
                 Higher duration indicates greater interest rate sensitivity and price volatility. Compare duration to your risk tolerance and investment horizon. Use duration to assess whether a bond fits your portfolio's risk profile. Consider duration in the context of interest rate expectations.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is duration important for bond investors?</h4>
               <p className="text-muted-foreground">
@@ -582,6 +642,21 @@ export default function BondDurationCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>Bond duration measures sensitivity to interest rate changes: Macaulay Duration (weighted average time to cash flows) and Modified Duration (price sensitivity).</p>
+          <p>Higher duration = greater price volatility when rates change. Zero-coupon bonds have maximum duration for their maturity.</p>
+          <p>Use duration for portfolio risk management, immunization strategies, and matching assets to liabilities.</p>
         </CardContent>
       </Card>
     </div>

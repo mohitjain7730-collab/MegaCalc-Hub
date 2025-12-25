@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, BarChart3 } from 'lucide-react';
+import { Activity, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, BarChart3, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -23,10 +23,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function LeverageDebtRatioImpactCalculator() {
-  const [result, setResult] = useState<{ 
+  const [result, setResult] = useState<{
     debtToEquityRatio: number;
     debtToAssetsRatio: number;
-    interpretation: string; 
+    interpretation: string;
     leverageLevel: string;
     recommendation: string;
     strength: string;
@@ -46,11 +46,11 @@ export default function LeverageDebtRatioImpactCalculator() {
 
   const calculateLeverageRatios = (v: FormValues) => {
     if (v.totalDebt == null || v.totalEquity == null) return null;
-    
+
     const debtToEquityRatio = v.totalDebt / v.totalEquity;
     const totalAssets = v.totalDebt + v.totalEquity;
     const debtToAssetsRatio = v.totalDebt / totalAssets;
-    
+
     return { debtToEquityRatio, debtToAssetsRatio };
   };
 
@@ -155,23 +155,23 @@ export default function LeverageDebtRatioImpactCalculator() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit, (errors) => {
-          console.error('Form validation errors:', errors);
-        })} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="totalDebt" render={({ field }) => (
-              <FormItem>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit, (errors) => {
+              console.error('Form validation errors:', errors);
+            })} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="totalDebt" render={({ field }) => (
+                  <FormItem>
                     <FormLabel className="flex items-center gap-2">
                       <DollarSign className="h-4 w-4" />
                       Total Debt ($)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="Enter total debt" 
-                        value={Number.isFinite(field.value) ? field.value : ''} 
+                        placeholder="Enter total debt"
+                        value={Number.isFinite(field.value) ? field.value : ''}
                         onChange={e => {
                           const v = e.target.value;
                           const n = v === '' ? undefined : parseFloat(v);
@@ -192,11 +192,11 @@ export default function LeverageDebtRatioImpactCalculator() {
                       Total Equity ($)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="Enter total equity" 
-                        value={Number.isFinite(field.value) ? field.value : ''} 
+                        placeholder="Enter total equity"
+                        value={Number.isFinite(field.value) ? field.value : ''}
                         onChange={e => {
                           const v = e.target.value;
                           const n = v === '' ? undefined : parseFloat(v);
@@ -217,11 +217,11 @@ export default function LeverageDebtRatioImpactCalculator() {
                       Interest Rate (%)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="Enter interest rate" 
-                        value={Number.isFinite(field.value) ? field.value : ''} 
+                        placeholder="Enter interest rate"
+                        value={Number.isFinite(field.value) ? field.value : ''}
                         onChange={e => {
                           const v = e.target.value;
                           const n = v === '' ? undefined : parseFloat(v);
@@ -232,21 +232,21 @@ export default function LeverageDebtRatioImpactCalculator() {
                         ref={field.ref}
                       />
                     </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
+                    <FormMessage />
+                  </FormItem>
+                )} />
                 <FormField control={form.control} name="taxRate" render={({ field }) => (
-              <FormItem>
+                  <FormItem>
                     <FormLabel className="flex items-center gap-2">
                       <Shield className="h-4 w-4" />
                       Tax Rate (%)
                     </FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="0.01"
-                        placeholder="Enter tax rate" 
-                        value={Number.isFinite(field.value) ? field.value : ''} 
+                        placeholder="Enter tax rate"
+                        value={Number.isFinite(field.value) ? field.value : ''}
                         onChange={e => {
                           const v = e.target.value;
                           const n = v === '' ? undefined : parseFloat(v);
@@ -257,16 +257,16 @@ export default function LeverageDebtRatioImpactCalculator() {
                         ref={field.ref}
                       />
                     </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
               <Button type="submit" className="w-full">
                 <Calculator className="h-4 w-4 mr-2" />
                 Calculate Leverage Ratios
               </Button>
-        </form>
-      </Form>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
@@ -312,48 +312,111 @@ export default function LeverageDebtRatioImpactCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-          <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-          </CardHeader>
-          <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-          </CardContent>
-        </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Leverage optimization opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4 text-primary" />
+                Total Debt ($)
+              </h4>
+              <p className="text-sm text-muted-foreground">Total borrowed funds including loans, bonds, and other liabilities.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 text-primary" />
+                Total Equity ($)
+              </h4>
+              <p className="text-sm text-muted-foreground">Shareholder capital including retained earnings and contributed capital.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <BarChart3 className="h-4 w-4 text-primary" />
+                Interest Rate (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">Average interest rate on outstanding debt.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Shield className="h-4 w-4 text-primary" />
+                Tax Rate (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">Corporate tax rate for calculating tax shield benefits.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              D/E Ratio = Total Debt / Total Equity
+            </p>
+            <p className="font-mono text-sm text-center mt-2">
+              D/A Ratio = Total Debt / Total Assets
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            These ratios quantify financial leverage—how much debt vs. equity finances company assets.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -404,104 +467,104 @@ export default function LeverageDebtRatioImpactCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Financial Leverage, Debt Ratios, and Solvency Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the calculation and impact of key debt ratios (Debt-to-Equity, Debt-to-Assets) on company risk, return on equity (ROE), the concept of positive and negative leverage, and its role in corporate capital structure decisions." />
-    <meta itemProp="keywords" content="financial leverage calculator, debt ratio formula explained, debt to equity ratio interpretation, positive vs negative leverage, solvency risk analysis, return on equity leverage impact, corporate capital structure" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-06" /> 
-    <meta itemProp="url" content="/definitive-leverage-debt-ratio-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Financial Leverage, Debt Ratios, and Solvency Analysis" />
+        <meta itemProp="description" content="An expert guide detailing the calculation and impact of key debt ratios (Debt-to-Equity, Debt-to-Assets) on company risk, return on equity (ROE), the concept of positive and negative leverage, and its role in corporate capital structure decisions." />
+        <meta itemProp="keywords" content="financial leverage calculator, debt ratio formula explained, debt to equity ratio interpretation, positive vs negative leverage, solvency risk analysis, return on equity leverage impact, corporate capital structure" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-06" />
+        <meta itemProp="url" content="/definitive-leverage-debt-ratio-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Financial Leverage and Debt Ratios: Risk, Reward, and Capital Structure</h1>
-    <p className="text-lg italic text-muted-foreground">Master the metrics that quantify a company's reliance on borrowed capital and its ability to magnify shareholder returns.</p>
-    
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Financial Leverage and Debt Ratios: Risk, Reward, and Capital Structure</h1>
+        <p className="text-lg italic text-muted-foreground">Master the metrics that quantify a company's reliance on borrowed capital and its ability to magnify shareholder returns.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">Financial Leverage: Definition and Impact</a></li>
-        <li><a href="#debt-equity" className="hover:underline">Debt-to-Equity (D/E) Ratio Calculation</a></li>
-        <li><a href="#debt-assets" className="hover:underline">Debt-to-Assets Ratio Calculation</a></li>
-        <li><a href="#positive-negative" className="hover:underline">Positive vs. Negative Leverage</a></li>
-        <li><a href="#roe-impact" className="hover:underline">Impact on Return on Equity (ROE)</a></li>
-    </ul>
-<hr />
 
-    {/* FINANCIAL LEVERAGE: DEFINITION AND IMPACT */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Leverage: Definition and Impact</h2>
-    <p>Financial **Leverage** is the use of borrowed money (debt) to finance the purchase of assets. The goal of using leverage is to amplify the potential return on equity (ROE), magnifying the investor's gain when returns are positive, but also magnifying losses when returns are negative.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">Financial Leverage: Definition and Impact</a></li>
+          <li><a href="#debt-equity" className="hover:underline">Debt-to-Equity (D/E) Ratio Calculation</a></li>
+          <li><a href="#debt-assets" className="hover:underline">Debt-to-Assets Ratio Calculation</a></li>
+          <li><a href="#positive-negative" className="hover:underline">Positive vs. Negative Leverage</a></li>
+          <li><a href="#roe-impact" className="hover:underline">Impact on Return on Equity (ROE)</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Concept of Risk Amplification</h3>
-    <p>Leverage fundamentally increases the volatility of a company's earnings. A company with high financial leverage will experience wider fluctuations in its net income and ROE compared to an unleveraged company, even if both experience the same change in sales revenue. This risk is quantified through various **debt ratios**.</p>
+        {/* FINANCIAL LEVERAGE: DEFINITION AND IMPACT */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Leverage: Definition and Impact</h2>
+        <p>Financial **Leverage** is the use of borrowed money (debt) to finance the purchase of assets. The goal of using leverage is to amplify the potential return on equity (ROE), magnifying the investor's gain when returns are positive, but also magnifying losses when returns are negative.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Concept of Risk Amplification</h3>
+        <p>Leverage fundamentally increases the volatility of a company's earnings. A company with high financial leverage will experience wider fluctuations in its net income and ROE compared to an unleveraged company, even if both experience the same change in sales revenue. This risk is quantified through various **debt ratios**.</p>
 
-    {/* DEBT-TO-EQUITY (D/E) RATIO CALCULATION */}
-    <h2 id="debt-equity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Debt-to-Equity (D/E) Ratio Calculation</h2>
-    <p>The **Debt-to-Equity (D/E) Ratio** is the most common leverage ratio. It compares the total funds provided by creditors (debt) to the total funds provided by owners (equity).</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">D/E Ratio Formula</h3>
-    <p>The D/E ratio measures how much of the company's capital structure is financed by debt relative to equity:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        {/* DEBT-TO-EQUITY (D/E) RATIO CALCULATION */}
+        <h2 id="debt-equity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Debt-to-Equity (D/E) Ratio Calculation</h2>
+        <p>The **Debt-to-Equity (D/E) Ratio** is the most common leverage ratio. It compares the total funds provided by creditors (debt) to the total funds provided by owners (equity).</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">D/E Ratio Formula</h3>
+        <p>The D/E ratio measures how much of the company's capital structure is financed by debt relative to equity:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'D/E Ratio = Total Liabilities / Total Shareholders\' Equity'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation and Solvency</h3>
-    <p>A D/E ratio of $1.0$ means the company is financed equally by debt and equity. A **high D/E ratio** (e.g., $2.5$) signals high financial risk, as the company has a smaller equity cushion to absorb losses before becoming insolvent. Lenders use this ratio to assess the margin of safety.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation and Solvency</h3>
+        <p>A D/E ratio of $1.0$ means the company is financed equally by debt and equity. A **high D/E ratio** (e.g., $2.5$) signals high financial risk, as the company has a smaller equity cushion to absorb losses before becoming insolvent. Lenders use this ratio to assess the margin of safety.</p>
 
-<hr />
+        <hr />
 
-    {/* DEBT-TO-ASSETS RATIO CALCULATION */}
-    <h2 id="debt-assets" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Debt-to-Assets Ratio Calculation</h2>
-    <p>The **Debt-to-Assets Ratio** focuses on the percentage of a company’s total assets that are funded by debt. It is an alternative measure of solvency that shows the reliance on external funding.</p>
+        {/* DEBT-TO-ASSETS RATIO CALCULATION */}
+        <h2 id="debt-assets" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Debt-to-Assets Ratio Calculation</h2>
+        <p>The **Debt-to-Assets Ratio** focuses on the percentage of a company’s total assets that are funded by debt. It is an alternative measure of solvency that shows the reliance on external funding.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Debt-to-Assets Formula</h3>
-    <p>This ratio indicates the proportional claim creditors have on the firm's assets:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Debt-to-Assets Formula</h3>
+        <p>This ratio indicates the proportional claim creditors have on the firm's assets:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Debt-to-Assets Ratio = Total Liabilities / Total Assets'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation and Benchmarks</h3>
-    <p>A ratio of $0.5$ (or $50\%$) means half of the company's assets were purchased with borrowed money. A **high ratio** (e.g., $0.7$ or $70\%$) suggests that the firm has little equity remaining in its assets, increasing the risk of default during an economic downturn. Generally, lower ratios are considered safer.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation and Benchmarks</h3>
+        <p>A ratio of $0.5$ (or $50\%$) means half of the company's assets were purchased with borrowed money. A **high ratio** (e.g., $0.7$ or $70\%$) suggests that the firm has little equity remaining in its assets, increasing the risk of default during an economic downturn. Generally, lower ratios are considered safer.</p>
 
-<hr />
+        <hr />
 
-    {/* POSITIVE VS. NEGATIVE LEVERAGE */}
-    <h2 id="positive-negative" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Positive vs. Negative Leverage</h2>
-    <p>The financial impact of debt depends on the relationship between the **Return on Assets (ROA)** and the **Cost of Debt**.</p>
+        {/* POSITIVE VS. NEGATIVE LEVERAGE */}
+        <h2 id="positive-negative" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Positive vs. Negative Leverage</h2>
+        <p>The financial impact of debt depends on the relationship between the **Return on Assets (ROA)** and the **Cost of Debt**.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Positive Leverage (Value Creation)</h3>
-    <p>Positive leverage occurs when the **Return on Assets (ROA)** is **greater than the after-tax Cost of Debt**. The assets purchased with borrowed funds generate a return higher than the interest cost, and the excess profit accrues to the shareholders, amplifying the ROE.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Positive Leverage (Value Creation)</h3>
+        <p>Positive leverage occurs when the **Return on Assets (ROA)** is **greater than the after-tax Cost of Debt**. The assets purchased with borrowed funds generate a return higher than the interest cost, and the excess profit accrues to the shareholders, amplifying the ROE.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Negative Leverage (Value Destruction)</h3>
-    <p>Negative leverage occurs when the **ROA** is **less than the after-tax Cost of Debt**. The borrowed money is used to acquire assets that do not generate enough profit to cover the interest payments. The shortfall must be covered by shareholder equity, leading to a decrease in ROE.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Negative Leverage (Value Destruction)</h3>
+        <p>Negative leverage occurs when the **ROA** is **less than the after-tax Cost of Debt**. The borrowed money is used to acquire assets that do not generate enough profit to cover the interest payments. The shortfall must be covered by shareholder equity, leading to a decrease in ROE.</p>
 
-<hr />
+        <hr />
 
-    {/* IMPACT ON RETURN ON EQUITY (ROE) */}
-    <h2 id="roe-impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Impact on Return on Equity (ROE)</h2>
-    <p>The most direct measure of the effectiveness of leverage is its impact on the **Return on Equity (ROE)**, which is the final return generated for shareholders.</p>
+        {/* IMPACT ON RETURN ON EQUITY (ROE) */}
+        <h2 id="roe-impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Impact on Return on Equity (ROE)</h2>
+        <p>The most direct measure of the effectiveness of leverage is its impact on the **Return on Equity (ROE)**, which is the final return generated for shareholders.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The DuPont Analysis Component</h3>
-    <p>Leverage is explicitly incorporated into the <strong className="font-semibold">DuPont Analysis</strong> via the <strong className="font-semibold">Equity Multiplier</strong> (Total Assets divided by Total Equity), which is directly proportional to the D/E ratio. The full DuPont formula is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The DuPont Analysis Component</h3>
+        <p>Leverage is explicitly incorporated into the <strong className="font-semibold">DuPont Analysis</strong> via the <strong className="font-semibold">Equity Multiplier</strong> (Total Assets divided by Total Equity), which is directly proportional to the D/E ratio. The full DuPont formula is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'ROE = Net Profit Margin * Asset Turnover * Equity Multiplier'}
-        </p>
-    </div>
-    <p>The Equity Multiplier shows how much the ROE is being amplified by the use of debt. A company with high leverage will have a high Equity Multiplier, meaning small changes in Net Profit Margin will result in large changes in ROE.</p>
+          </p>
+        </div>
+        <p>The Equity Multiplier shows how much the ROE is being amplified by the use of debt. A company with high leverage will have a high Equity Multiplier, meaning small changes in Net Profit Margin will result in large changes in ROE.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Financial leverage, quantified by the **Debt-to-Equity Ratio** and **Debt-to-Assets Ratio**, is the primary mechanism for amplifying shareholder returns but carries the corresponding risk of amplifying losses.</p>
-    <p>Prudent financial management focuses on achieving **positive leverage**—ensuring the return generated by assets exceeds the cost of debt. By controlling debt ratios, companies balance risk and reward to maximize the **Return on Equity** without jeopardizing long-term solvency.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Financial leverage, quantified by the **Debt-to-Equity Ratio** and **Debt-to-Assets Ratio**, is the primary mechanism for amplifying shareholder returns but carries the corresponding risk of amplifying losses.</p>
+        <p>Prudent financial management focuses on achieving **positive leverage**—ensuring the return generated by assets exceeds the cost of debt. By controlling debt ratios, companies balance risk and reward to maximize the **Return on Equity** without jeopardizing long-term solvency.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -521,63 +584,63 @@ export default function LeverageDebtRatioImpactCalculator() {
                 Leverage ratios measure the extent to which a company uses debt to finance its operations. Common ratios include Debt-to-Equity (Total Debt ÷ Total Equity) and Debt-to-Assets (Total Debt ÷ Total Assets). These ratios help assess financial risk, creditworthiness, and the company's ability to meet debt obligations.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate Debt-to-Equity ratio?</h4>
               <p className="text-muted-foreground">
                 The Debt-to-Equity ratio is calculated as: Total Debt ÷ Total Equity. This ratio shows how much debt a company has relative to its equity. A ratio of 1.0 means equal amounts of debt and equity, while ratios above 1.0 indicate more debt than equity.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is considered a good Debt-to-Equity ratio?</h4>
               <p className="text-muted-foreground">
                 Good Debt-to-Equity ratios vary by industry. Generally, ratios below 0.5 are considered low leverage, 0.5-1.0 are moderate, and above 1.0 are high leverage. Technology companies often have lower ratios, while capital-intensive industries may have higher acceptable ratios. Compare to industry averages.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does high leverage mean?</h4>
               <p className="text-muted-foreground">
                 High leverage means a company has significant debt relative to its equity. This increases financial risk as the company must make regular debt payments regardless of performance. However, it can also amplify returns when the company performs well. High leverage requires careful risk management.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does low leverage mean?</h4>
               <p className="text-muted-foreground">
                 Low leverage means a company has minimal debt relative to its equity. This indicates conservative financial management and lower financial risk. However, it may also mean the company is not taking advantage of debt's tax benefits and potential for higher returns through financial leverage.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do leverage ratios affect credit ratings?</h4>
               <p className="text-muted-foreground">
                 Credit rating agencies use leverage ratios to assess a company's creditworthiness. Higher leverage ratios typically result in lower credit ratings and higher borrowing costs. Companies with low leverage ratios generally receive better credit ratings and can borrow at more favorable rates.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the benefits of debt financing?</h4>
               <p className="text-muted-foreground">
                 Debt financing provides tax benefits (interest is tax-deductible), allows companies to retain ownership control, and can amplify returns when performance is good. It's often cheaper than equity financing and provides predictable payment schedules. However, it increases financial risk and requires regular payments.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the risks of high leverage?</h4>
               <p className="text-muted-foreground">
                 High leverage increases financial risk, makes companies more vulnerable to economic downturns, and can lead to financial distress if cash flows decline. It reduces financial flexibility and may limit growth opportunities. Companies with high leverage must carefully manage cash flow and debt service requirements.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I optimize leverage ratios?</h4>
               <p className="text-muted-foreground">
                 Optimize leverage ratios by balancing the benefits of debt (tax advantages, lower cost) with the risks (financial distress, reduced flexibility). Consider industry standards, business cycle, growth opportunities, and cash flow stability. Regular monitoring and adjustment help maintain optimal capital structure.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why are leverage ratios important for investors?</h4>
               <p className="text-muted-foreground">
@@ -585,6 +648,21 @@ export default function LeverageDebtRatioImpactCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Leverage Calculator measures your company's reliance on debt financing through D/E and D/A ratios.</p>
+          <p>High leverage amplifies returns during good times but increases risk during downturns.</p>
+          <p>Use this tool to optimize capital structure and assess financial risk.</p>
         </CardContent>
       </Card>
     </div>

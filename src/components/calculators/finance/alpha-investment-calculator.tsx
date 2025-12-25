@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, Activity } from 'lucide-react';
+import { TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, Activity, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -23,9 +23,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function AlphaInvestmentCalculator() {
-  const [result, setResult] = useState<{ 
-    alpha: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    alpha: number;
+    interpretation: string;
     performanceLevel: string;
     recommendation: string;
     strength: string;
@@ -52,7 +52,7 @@ export default function AlphaInvestmentCalculator() {
 
     const expectedReturn = rf + beta * (rm - rf);
     const alpha = (rp - expectedReturn) * 100;
-    
+
     return alpha;
   };
 
@@ -244,48 +244,116 @@ export default function AlphaInvestmentCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Performance optimization opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4 text-primary" />
+                Portfolio Return (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The actual historical return of your portfolio over the measurement period.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Shield className="h-4 w-4 text-primary" />
+                Risk-Free Rate (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The return on a risk-free investment like Treasury bills.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <BarChart3 className="h-4 w-4 text-primary" />
+                Beta
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The portfolio's systematic risk relative to the market.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Activity className="h-4 w-4 text-primary" />
+                Market Return (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The benchmark market index return (e.g., S&P 500).
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Alpha = Portfolio Return − [Risk-Free Rate + Beta × (Market Return − Risk-Free Rate)]
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Measures excess return above what CAPM predicts based on systematic risk (beta).
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -336,112 +404,112 @@ export default function AlphaInvestmentCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Alpha: Calculation, Interpretation, and Investment Performance" />
-    <meta itemProp="description" content="An expert guide detailing the Alpha (Jensen's Alpha) formula, its core role in measuring active portfolio management skill, comparison to Beta, and its use in assessing risk-adjusted returns against the expected market return (CAPM)." />
-    <meta itemProp="keywords" content="alpha investment formula explained, calculating jensen's alpha, active return management, alpha vs beta risk, excess return portfolio, capital asset pricing model CAPM" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-06" /> 
-    <meta itemProp="url" content="/definitive-alpha-calculator-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Alpha: Calculation, Interpretation, and Investment Performance" />
+        <meta itemProp="description" content="An expert guide detailing the Alpha (Jensen's Alpha) formula, its core role in measuring active portfolio management skill, comparison to Beta, and its use in assessing risk-adjusted returns against the expected market return (CAPM)." />
+        <meta itemProp="keywords" content="alpha investment formula explained, calculating jensen's alpha, active return management, alpha vs beta risk, excess return portfolio, capital asset pricing model CAPM" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-06" />
+        <meta itemProp="url" content="/definitive-alpha-calculator-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Alpha: Measuring Manager Skill and Excess Return</h1>
-    <p className="text-lg italic text-muted-foreground">Master the crucial metric that quantifies the performance of an active investment strategy against its expected return, adjusted for market risk.</p>
-    
-
-    [Image of Alpha and Beta relationship]
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Alpha: Measuring Manager Skill and Excess Return</h1>
+        <p className="text-lg italic text-muted-foreground">Master the crucial metric that quantifies the performance of an active investment strategy against its expected return, adjusted for market risk.</p>
 
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">Alpha: Definition and Active Management</a></li>
-        <li><a href="#capm" className="hover:underline">The Capital Asset Pricing Model (CAPM) Baseline</a></li>
-        <li><a href="#calculation" className="hover:underline">The Alpha Formula (Jensen's Alpha)</a></li>
-        <li><a href="#interpretation" className="hover:underline">Interpreting Alpha: Positive, Negative, and Zero</a></li>
-        <li><a href="#vs-beta" className="hover:underline">Alpha vs. Beta: Risk and Reward Distinction</a></li>
-    </ul>
-<hr />
+        [Image of Alpha and Beta relationship]
 
-    {/* ALPHA: DEFINITION AND ACTIVE MANAGEMENT */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Alpha: Definition and Active Management</h2>
-    <p>In finance, **Alpha ($\alpha$)**, often referred to as **Jensen's Alpha**, is a measure used to determine the performance of an actively managed portfolio or fund compared to a benchmark index (e.g., S\&P 500), after adjusting for market risk. It represents the **excess return** generated solely by the portfolio manager's skill.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Goal of Active Management</h3>
-    <p>Active fund managers aim to generate positive Alpha. This means their strategic decisions (stock picking, market timing, active rotation) result in a return that is higher than the return expected based solely on the market's movement and the portfolio's inherent market risk (Beta).</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">Alpha: Definition and Active Management</a></li>
+          <li><a href="#capm" className="hover:underline">The Capital Asset Pricing Model (CAPM) Baseline</a></li>
+          <li><a href="#calculation" className="hover:underline">The Alpha Formula (Jensen's Alpha)</a></li>
+          <li><a href="#interpretation" className="hover:underline">Interpreting Alpha: Positive, Negative, and Zero</a></li>
+          <li><a href="#vs-beta" className="hover:underline">Alpha vs. Beta: Risk and Reward Distinction</a></li>
+        </ul>
+        <hr />
 
-<hr />
+        {/* ALPHA: DEFINITION AND ACTIVE MANAGEMENT */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Alpha: Definition and Active Management</h2>
+        <p>In finance, **Alpha ($\alpha$)**, often referred to as **Jensen's Alpha**, is a measure used to determine the performance of an actively managed portfolio or fund compared to a benchmark index (e.g., S\&P 500), after adjusting for market risk. It represents the **excess return** generated solely by the portfolio manager's skill.</p>
 
-    {/* THE CAPITAL ASSET PRICING MODEL (CAPM) BASELINE */}
-    <h2 id="capm" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Capital Asset Pricing Model (CAPM) Baseline</h2>
-    <p>Alpha cannot be calculated without first establishing the **expected return** of the portfolio based on its systematic risk. This baseline is provided by the **Capital Asset Pricing Model (CAPM)**.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Goal of Active Management</h3>
+        <p>Active fund managers aim to generate positive Alpha. This means their strategic decisions (stock picking, market timing, active rotation) result in a return that is higher than the return expected based solely on the market's movement and the portfolio's inherent market risk (Beta).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">CAPM Expected Return Formula</h3>
-    <p>CAPM states that the expected return of a security or portfolio ($R_p$) should equal the risk-free rate plus a market risk premium, scaled by the portfolio's Beta ($\beta$):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <hr />
+
+        {/* THE CAPITAL ASSET PRICING MODEL (CAPM) BASELINE */}
+        <h2 id="capm" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Capital Asset Pricing Model (CAPM) Baseline</h2>
+        <p>Alpha cannot be calculated without first establishing the **expected return** of the portfolio based on its systematic risk. This baseline is provided by the **Capital Asset Pricing Model (CAPM)**.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">CAPM Expected Return Formula</h3>
+        <p>CAPM states that the expected return of a security or portfolio ($R_p$) should equal the risk-free rate plus a market risk premium, scaled by the portfolio's Beta ($\beta$):</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'R_p = R_f + β * (R_m - R_f)'}
-        </p>
-    </div>
-    <p>Where $R_f$ is the risk-free rate and $(R_m - R_f)$ is the market risk premium. This CAPM result is the return a passive portfolio (like an index fund) would be expected to deliver for the amount of market risk it took.</p>
+          </p>
+        </div>
+        <p>Where $R_f$ is the risk-free rate and $(R_m - R_f)$ is the market risk premium. This CAPM result is the return a passive portfolio (like an index fund) would be expected to deliver for the amount of market risk it took.</p>
 
-<hr />
+        <hr />
 
-    {/* THE ALPHA FORMULA (JENSEN'S ALPHA) */}
-    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Alpha Formula (Jensen's Alpha)</h2>
-    <p>Jensen's Alpha is calculated by comparing the portfolio's actual historical return to the expected return calculated by the CAPM model.</p>
+        {/* THE ALPHA FORMULA (JENSEN'S ALPHA) */}
+        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Alpha Formula (Jensen's Alpha)</h2>
+        <p>Jensen's Alpha is calculated by comparing the portfolio's actual historical return to the expected return calculated by the CAPM model.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Alpha Calculation Identity</h3>
-    <p>Alpha ($\alpha$) is simply the difference between the actual return and the expected return:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Alpha Calculation Identity</h3>
+        <p>Alpha ($\alpha$) is simply the difference between the actual return and the expected return:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Alpha = Actual Return - Expected Return (via CAPM)'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Calculation Steps</h3>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li>Determine the actual historical return of the portfolio ($R_p$).</li>
-        <li>Determine the portfolio's historical Beta ($\beta$).</li>
-        <li>Calculate the expected return using the CAPM formula.</li>
-        <li>Subtract the expected return from the actual return.</li>
-    </ol>
-    <p>The result is the percentage of return that can be attributed solely to the manager's active strategy and stock selection ability.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Calculation Steps</h3>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>Determine the actual historical return of the portfolio ($R_p$).</li>
+          <li>Determine the portfolio's historical Beta ($\beta$).</li>
+          <li>Calculate the expected return using the CAPM formula.</li>
+          <li>Subtract the expected return from the actual return.</li>
+        </ol>
+        <p>The result is the percentage of return that can be attributed solely to the manager's active strategy and stock selection ability.</p>
 
-<hr />
+        <hr />
 
-    {/* INTERPRETING ALPHA: POSITIVE, NEGATIVE, AND ZERO */}
-    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Alpha: Positive, Negative, and Zero</h2>
-    <p>The sign and magnitude of Alpha directly measure the effectiveness of the portfolio manager's decisions relative to the market.</p>
+        {/* INTERPRETING ALPHA: POSITIVE, NEGATIVE, AND ZERO */}
+        <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Alpha: Positive, Negative, and Zero</h2>
+        <p>The sign and magnitude of Alpha directly measure the effectiveness of the portfolio manager's decisions relative to the market.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation Guidelines</h3>
-    <ul className="list-disc ml-6 space-y-2">
-    <ul className="list-disc ml-6 space-y-2">
-    <li><strong className="font-semibold">Positive Alpha (&gt; 0):</strong> The portfolio outperformed its benchmark and the market's expectation. The manager added value and demonstrated skill in stock selection or market timing.</li>
-    <li><strong className="font-semibold">Zero Alpha (= 0):</strong> The portfolio performed exactly as expected for the amount of market risk it took. The manager matched the benchmark's return but failed to add any value through active management.</li>
-    <li><strong className="font-semibold">Negative Alpha (&lt; 0):</strong> The portfolio underperformed its benchmark and market expectation. The manager's active decisions detracted value, meaning a passive index fund with the same Beta would have performed better.</li>
-</ul>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation Guidelines</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Positive Alpha (&gt; 0):</strong> The portfolio outperformed its benchmark and the market's expectation. The manager added value and demonstrated skill in stock selection or market timing.</li>
+            <li><strong className="font-semibold">Zero Alpha (= 0):</strong> The portfolio performed exactly as expected for the amount of market risk it took. The manager matched the benchmark's return but failed to add any value through active management.</li>
+            <li><strong className="font-semibold">Negative Alpha (&lt; 0):</strong> The portfolio underperformed its benchmark and market expectation. The manager's active decisions detracted value, meaning a passive index fund with the same Beta would have performed better.</li>
+          </ul>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* ALPHA VS. BETA: RISK AND REWARD DISTINCTION */}
-    <h2 id="vs-beta" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Alpha vs. Beta: Risk and Reward Distinction</h2>
-    <p>Alpha and Beta are often discussed together because they separate the two components of return in an actively managed portfolio: the passive return earned from market exposure and the active return earned from skill.</p>
+        {/* ALPHA VS. BETA: RISK AND REWARD DISTINCTION */}
+        <h2 id="vs-beta" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Alpha vs. Beta: Risk and Reward Distinction</h2>
+        <p>Alpha and Beta are often discussed together because they separate the two components of return in an actively managed portfolio: the passive return earned from market exposure and the active return earned from skill.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Beta ($\beta$): The Passive Return Driver</h3>
-    <p>Beta measures **Systematic Risk** (market risk). It indicates the portfolio's expected volatility relative to the market. A high Beta portfolio is expected to rise more than the market in a bull cycle but fall more in a bear cycle. The return generated due to Beta is considered a **passive return** because it requires no managerial skill.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Beta ($\beta$): The Passive Return Driver</h3>
+        <p>Beta measures **Systematic Risk** (market risk). It indicates the portfolio's expected volatility relative to the market. A high Beta portfolio is expected to rise more than the market in a bull cycle but fall more in a bear cycle. The return generated due to Beta is considered a **passive return** because it requires no managerial skill.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Alpha ($\alpha$): The Active Return Driver</h3>
-    <p>Alpha measures the **Active Return**—the residual return left over after accounting for the return generated by Beta. It is the metric professional investors use to justify management fees, as it is the pure measure of managerial value creation.</p>
-    <p>In essence, Beta is what you **must** accept to get market returns, and Alpha is what the manager **achieves** beyond that necessity.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Alpha ($\alpha$): The Active Return Driver</h3>
+        <p>Alpha measures the **Active Return**—the residual return left over after accounting for the return generated by Beta. It is the metric professional investors use to justify management fees, as it is the pure measure of managerial value creation.</p>
+        <p>In essence, Beta is what you **must** accept to get market returns, and Alpha is what the manager **achieves** beyond that necessity.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Alpha is the definitive measure of **active investment skill**, quantifying the excess return of a portfolio relative to its market-adjusted expectation (the CAPM baseline). A manager who consistently achieves positive Alpha is demonstrating superior stock selection ability.</p>
-    <p>By isolating performance beyond systematic risk ($\beta$), Alpha allows investors to determine if the fees associated with active management are justified by the value generated, making it the most important metric for evaluating fund performance.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Alpha is the definitive measure of **active investment skill**, quantifying the excess return of a portfolio relative to its market-adjusted expectation (the CAPM baseline). A manager who consistently achieves positive Alpha is demonstrating superior stock selection ability.</p>
+        <p>By isolating performance beyond systematic risk ($\beta$), Alpha allows investors to determine if the fees associated with active management are justified by the value generated, making it the most important metric for evaluating fund performance.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -461,63 +529,63 @@ export default function AlphaInvestmentCalculator() {
                 Alpha is a measure of investment performance that indicates how much a portfolio's returns exceed or fall short of the expected returns based on its risk level. It's calculated as Actual Return - Expected Return (based on CAPM). Positive alpha indicates superior risk-adjusted performance.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate Alpha?</h4>
               <p className="text-muted-foreground">
                 The formula is: Alpha = Portfolio Return - (Risk-Free Rate + Beta × (Market Return - Risk-Free Rate)). This compares the actual portfolio return to the expected return predicted by the CAPM model. The result shows how much the portfolio outperformed or underperformed relative to its risk level.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is considered good Alpha?</h4>
               <p className="text-muted-foreground">
                 Generally, alpha above 2% is considered good, above 5% is excellent, and above 0% is acceptable. Negative alpha indicates underperformance. However, what's considered good varies by market conditions, investment strategy, and risk tolerance. Compare alpha to appropriate benchmarks.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does positive Alpha mean?</h4>
               <p className="text-muted-foreground">
                 Positive alpha means the portfolio is outperforming its expected return based on its risk level. This indicates superior stock selection, market timing, or risk management. It suggests the investment strategy is adding value beyond what would be expected given the portfolio's systematic risk.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does negative Alpha mean?</h4>
               <p className="text-muted-foreground">
                 Negative alpha means the portfolio is underperforming its expected return based on its risk level. This indicates poor stock selection, market timing, or risk management. It suggests the investment strategy is destroying value relative to what would be expected given the portfolio's systematic risk.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does Alpha differ from Beta?</h4>
               <p className="text-muted-foreground">
                 Beta measures systematic risk relative to the market, while alpha measures risk-adjusted performance. Beta tells you how much the portfolio moves with the market, while alpha tells you how much value the portfolio manager is adding or subtracting through their investment decisions.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of Alpha?</h4>
               <p className="text-muted-foreground">
                 Alpha assumes the CAPM model is valid and that beta accurately captures systematic risk. It's based on historical data and may not predict future performance. Alpha can be influenced by luck, market conditions, and measurement errors. It doesn't account for transaction costs or management fees.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How can I improve my Alpha?</h4>
               <p className="text-muted-foreground">
                 You can improve alpha by improving stock selection through better fundamental analysis, enhancing market timing decisions, reducing transaction costs, or implementing more sophisticated risk management strategies. Focus on investments that provide returns above what would be expected given their risk level.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is Alpha important for investors?</h4>
               <p className="text-muted-foreground">
                 Alpha is crucial for investors as it measures the value added by active management. It helps evaluate fund managers, compare investment strategies, and assess whether active management is worth the additional costs. Positive alpha justifies higher fees, while negative alpha suggests passive investing might be better.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do fund managers use Alpha?</h4>
               <p className="text-muted-foreground">
@@ -525,6 +593,21 @@ export default function AlphaInvestmentCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Alpha Investment Calculator measures risk-adjusted performance beyond what CAPM predicts.</p>
+          <p>Positive alpha indicates superior stock selection and active management skill.</p>
+          <p>Use this tool to evaluate fund managers, compare strategies, and assess value added by active investing.</p>
         </CardContent>
       </Card>
     </div>

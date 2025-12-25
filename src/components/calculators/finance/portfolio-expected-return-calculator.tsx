@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, Activity, PlusCircle, XCircle } from 'lucide-react';
+import { TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, Activity, PlusCircle, XCircle, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -22,19 +22,19 @@ const assetSchema = z.object({
 const formSchema = z.object({
   assets: z.array(assetSchema),
 }).refine(data => {
-    const totalWeight = data.assets.reduce((sum, asset) => sum + (asset.weight || 0), 0);
-    return Math.abs(totalWeight - 100) < 0.01;
+  const totalWeight = data.assets.reduce((sum, asset) => sum + (asset.weight || 0), 0);
+  return Math.abs(totalWeight - 100) < 0.01;
 }, {
-    message: "Total portfolio weights must add up to 100%.",
-    path: ['assets'],
+  message: "Total portfolio weights must add up to 100%.",
+  path: ['assets'],
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function PortfolioExpectedReturnCalculator() {
-  const [result, setResult] = useState<{ 
-    expectedReturn: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    expectedReturn: number;
+    interpretation: string;
     returnLevel: string;
     recommendation: string;
     strength: string;
@@ -58,19 +58,19 @@ export default function PortfolioExpectedReturnCalculator() {
   });
 
   const calculateExpectedReturn = (assets: any[]) => {
-    const validAssets = assets.filter(asset => 
-      asset.return !== undefined && 
-      asset.weight !== undefined && 
-      !isNaN(asset.return) && 
+    const validAssets = assets.filter(asset =>
+      asset.return !== undefined &&
+      asset.weight !== undefined &&
+      !isNaN(asset.return) &&
       !isNaN(asset.weight)
     );
-    
+
     if (validAssets.length === 0) return null;
-    
+
     const expectedReturn = validAssets.reduce((sum, asset) => {
       return sum + (asset.return * asset.weight / 100);
     }, 0);
-    
+
     return expectedReturn;
   };
 
@@ -228,7 +228,7 @@ export default function PortfolioExpectedReturnCalculator() {
                   </Card>
                 ))}
               </div>
-              
+
               <Button
                 type="button"
                 variant="outline"
@@ -238,7 +238,7 @@ export default function PortfolioExpectedReturnCalculator() {
                 <PlusCircle className="h-4 w-4 mr-2" />
                 Add Another Asset
               </Button>
-              
+
               <Button type="submit" className="w-full">
                 <Calculator className="h-4 w-4 mr-2" />
                 Calculate Expected Return
@@ -279,48 +279,107 @@ export default function PortfolioExpectedReturnCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Return optimization opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4 text-primary" />
+                Asset Name
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Identifier for each asset in your portfolio (optional but helpful for tracking).
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <BarChart3 className="h-4 w-4 text-primary" />
+                Expected Return (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The projected annual return for each individual asset based on historical data or forecasts.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Activity className="h-4 w-4 text-primary" />
+                Portfolio Weight (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The percentage of your total portfolio allocated to each asset. Total must equal 100%.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              E(Rₚ) = Σ (wᵢ × E(Rᵢ))
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Portfolio expected return is the weighted average of individual asset returns, where each asset's return is multiplied by its portfolio weight.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -371,114 +430,114 @@ export default function PortfolioExpectedReturnCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Portfolio Expected Return: Calculation, MPT, and Weighted Average" />
-    <meta itemProp="description" content="An expert guide detailing the Portfolio Expected Return formula, its role in Modern Portfolio Theory (MPT), how to calculate the weighted average return for multiple assets, and its comparison to the required rate of return." />
-    <meta itemProp="keywords" content="portfolio expected return formula, calculating weighted average return, modern portfolio theory MPT, capital allocation line CAL, efficient frontier, investment forecasting" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-11" /> 
-    <meta itemProp="url" content="/definitive-portfolio-expected-return-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Portfolio Expected Return: Calculation, MPT, and Weighted Average" />
+        <meta itemProp="description" content="An expert guide detailing the Portfolio Expected Return formula, its role in Modern Portfolio Theory (MPT), how to calculate the weighted average return for multiple assets, and its comparison to the required rate of return." />
+        <meta itemProp="keywords" content="portfolio expected return formula, calculating weighted average return, modern portfolio theory MPT, capital allocation line CAL, efficient frontier, investment forecasting" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-11" />
+        <meta itemProp="url" content="/definitive-portfolio-expected-return-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Portfolio Expected Return: Forecasting Your Investment Strategy</h1>
-    <p className="text-lg italic text-gray-700">Master the foundational metric that estimates the total rate of return you anticipate generating from a diversified mix of assets.</p>
-    
-
-[Image of Expected Return vs Risk chart]
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Portfolio Expected Return: Forecasting Your Investment Strategy</h1>
+        <p className="text-lg italic text-gray-700">Master the foundational metric that estimates the total rate of return you anticipate generating from a diversified mix of assets.</p>
 
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">Expected Return: Definition and Core Concept</a></li>
-        <li><a href="#weighted-average" className="hover:underline">The Calculation: Weighted Average Return</a></li>
-        <li><a href="#inputs" className="hover:underline">Determining Asset Expected Returns</a></li>
-        <li><a href="#mpt" className="hover:underline">Role in Modern Portfolio Theory (MPT)</a></li>
-        <li><a href="#vs-required" className="hover:underline">Expected vs. Required Rate of Return</a></li>
-    </ul>
-<hr />
+        [Image of Expected Return vs Risk chart]
 
-    {/* EXPECTED RETURN: DEFINITION AND CORE CONCEPT */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Expected Return: Definition and Core Concept</h2>
-    <p>The **Portfolio Expected Return** ($E(R_p)$) is the statistically projected rate of return an investment portfolio is anticipated to yield over a specified time horizon. It is a crucial forecasting tool used in all investment strategies, particularly those based on diversification.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">A Probability-Weighted Average</h3>
-    <p>The expected return is always a probability-weighted average—it is the sum of all potential returns multiplied by their respective probabilities of occurring. For a portfolio of multiple assets, the portfolio's expected return is the weighted average of the individual expected returns of the component assets.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li><a href="#definition" className="hover:underline">Expected Return: Definition and Core Concept</a></li>
+          <li><a href="#weighted-average" className="hover:underline">The Calculation: Weighted Average Return</a></li>
+          <li><a href="#inputs" className="hover:underline">Determining Asset Expected Returns</a></li>
+          <li><a href="#mpt" className="hover:underline">Role in Modern Portfolio Theory (MPT)</a></li>
+          <li><a href="#vs-required" className="hover:underline">Expected vs. Required Rate of Return</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Forecasting</h3>
-    <p>Forecasting the expected return is essential for setting financial goals (e.g., retirement planning) and making capital allocation decisions. It provides the numerator for risk-adjusted metrics like the Sharpe Ratio and is plotted against risk (standard deviation) to create the Efficient Frontier.</p>
+        {/* EXPECTED RETURN: DEFINITION AND CORE CONCEPT */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Expected Return: Definition and Core Concept</h2>
+        <p>The **Portfolio Expected Return** ($E(R_p)$) is the statistically projected rate of return an investment portfolio is anticipated to yield over a specified time horizon. It is a crucial forecasting tool used in all investment strategies, particularly those based on diversification.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">A Probability-Weighted Average</h3>
+        <p>The expected return is always a probability-weighted average—it is the sum of all potential returns multiplied by their respective probabilities of occurring. For a portfolio of multiple assets, the portfolio's expected return is the weighted average of the individual expected returns of the component assets.</p>
 
-    {/* THE CALCULATION: WEIGHTED AVERAGE RETURN */}
-    <h2 id="weighted-average" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Calculation: Weighted Average Return</h2>
-    <p>For a portfolio containing multiple assets, the portfolio's expected return is the sum of the expected return of each asset multiplied by its respective portfolio weight.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Forecasting</h3>
+        <p>Forecasting the expected return is essential for setting financial goals (e.g., retirement planning) and making capital allocation decisions. It provides the numerator for risk-adjusted metrics like the Sharpe Ratio and is plotted against risk (standard deviation) to create the Efficient Frontier.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The formula for the portfolio's expected return is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <hr />
+
+        {/* THE CALCULATION: WEIGHTED AVERAGE RETURN */}
+        <h2 id="weighted-average" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Calculation: Weighted Average Return</h2>
+        <p>For a portfolio containing multiple assets, the portfolio's expected return is the sum of the expected return of each asset multiplied by its respective portfolio weight.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <p>The formula for the portfolio's expected return is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'E(R_p) = Sum [ w_i * E(R_i) ]'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <p>Where:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>$w_i$ = The weight (percentage) of asset i in the total portfolio.</li>
-        <li>$E(R_i)$ = The expected return of the individual asset i.</li>
-    </ul>
-    <p>The sum of all weights ($w_i$) must equal 1.0 (or 100%).</p>
+        <p>Where:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>$w_i$ = The weight (percentage) of asset i in the total portfolio.</li>
+          <li>$E(R_i)$ = The expected return of the individual asset i.</li>
+        </ul>
+        <p>The sum of all weights ($w_i$) must equal 1.0 (or 100%).</p>
 
-<hr />
+        <hr />
 
-    {/* DETERMINING ASSET EXPECTED RETURNS */}
-    <h2 id="inputs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Determining Asset Expected Returns</h2>
-    <p>The accuracy of the portfolio forecast hinges entirely on the methodology used to forecast the expected return for each individual asset ($E(R_i)$).</p>
+        {/* DETERMINING ASSET EXPECTED RETURNS */}
+        <h2 id="inputs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Determining Asset Expected Returns</h2>
+        <p>The accuracy of the portfolio forecast hinges entirely on the methodology used to forecast the expected return for each individual asset ($E(R_i)$).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Historical Average Return</h3>
-    <p>The simplest method assumes that the future will resemble the past. The expected return is estimated using the arithmetic average of the asset's historical returns over a long period (e.g., 30 years). While simple, this method fails to account for current market conditions or structural changes in the company/economy.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Historical Average Return</h3>
+        <p>The simplest method assumes that the future will resemble the past. The expected return is estimated using the arithmetic average of the asset's historical returns over a long period (e.g., 30 years). While simple, this method fails to account for current market conditions or structural changes in the company/economy.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. Forward-Looking Models (CAPM)</h3>
-    <p>The most rigorous method uses the **Capital Asset Pricing Model (CAPM)** to link the asset's expected return to its systematic risk (Beta):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Forward-Looking Models (CAPM)</h3>
+        <p>The most rigorous method uses the **Capital Asset Pricing Model (CAPM)** to link the asset's expected return to its systematic risk (Beta):</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'E(R_i) = R_f + β_i * (R_m - R_f)'}
-        </p>
-    </div>
-    <p>This model establishes the expected return based on risk principles, making it theoretically sound for equity markets.</p>
+          </p>
+        </div>
+        <p>This model establishes the expected return based on risk principles, making it theoretically sound for equity markets.</p>
 
-<hr />
+        <hr />
 
-    {/* ROLE IN MODERN PORTFOLIO THEORY (MPT) */}
-    <h2 id="mpt" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Modern Portfolio Theory (MPT)</h2>
-    <p>Expected return is one of the two core inputs (the other being variance/risk) necessary for **Modern Portfolio Theory (MPT)**, which focuses on constructing the most efficient portfolio mix.</p>
+        {/* ROLE IN MODERN PORTFOLIO THEORY (MPT) */}
+        <h2 id="mpt" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Modern Portfolio Theory (MPT)</h2>
+        <p>Expected return is one of the two core inputs (the other being variance/risk) necessary for **Modern Portfolio Theory (MPT)**, which focuses on constructing the most efficient portfolio mix.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Efficient Frontier</h3>
-    <p>MPT models plot portfolios based on their risk (standard deviation) and expected return. The **Efficient Frontier** is the curved line connecting all portfolios that offer the highest possible expected return for a given level of risk, or the lowest possible risk for a given expected return.</p>
-    <p>By calculating the expected return of various portfolio weightings, an investor can identify which mix of assets sits on the Efficient Frontier, maximizing the return potential of their risk budget.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Efficient Frontier</h3>
+        <p>MPT models plot portfolios based on their risk (standard deviation) and expected return. The **Efficient Frontier** is the curved line connecting all portfolios that offer the highest possible expected return for a given level of risk, or the lowest possible risk for a given expected return.</p>
+        <p>By calculating the expected return of various portfolio weightings, an investor can identify which mix of assets sits on the Efficient Frontier, maximizing the return potential of their risk budget.</p>
 
-<hr />
+        <hr />
 
-    {/* EXPECTED VS. REQUIRED RATE OF RETURN */}
-    <h2 id="vs-required" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Expected vs. Required Rate of Return</h2>
-    <p>It is vital to distinguish between the **Expected Rate of Return** (what the market projects) and the **Required Rate of Return** (what the investor demands).</p>
+        {/* EXPECTED VS. REQUIRED RATE OF RETURN */}
+        <h2 id="vs-required" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Expected vs. Required Rate of Return</h2>
+        <p>It is vital to distinguish between the **Expected Rate of Return** (what the market projects) and the **Required Rate of Return** (what the investor demands).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Required Rate of Return (R req - The Hurdle)</h3>
-    <p>This is the minimum return an investor demands to take on the risk associated with a security or project. It is often calculated using CAPM and is used as the discount rate in valuation. The Required Return is used to value the asset.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Required Rate of Return (R req - The Hurdle)</h3>
+        <p>This is the minimum return an investor demands to take on the risk associated with a security or project. It is often calculated using CAPM and is used as the discount rate in valuation. The Required Return is used to value the asset.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Investment Decision Rule</h3>
-    <p>The comparison between the two rates drives investment decisions:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>If Expected Return $\gt$ Required Return, the asset is considered **undervalued** and is a Buy.</li>
-        <li>If Expected Return $\lt$ Required Return, the asset is considered **overvalued** and is a Sell.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Investment Decision Rule</h3>
+        <p>The comparison between the two rates drives investment decisions:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>If Expected Return $\gt$ Required Return, the asset is considered **undervalued** and is a Buy.</li>
+          <li>If Expected Return $\lt$ Required Return, the asset is considered **overvalued** and is a Sell.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Portfolio Expected Return ($E(R_p)$) is the cornerstone of investment strategy, calculated as the **weighted average** of the anticipated returns of all assets within the portfolio.</p>
-    <p>Accurate forecasting, typically achieved through models like **CAPM**, is necessary for effective capital allocation. By comparing the Expected Return against the Required Rate of Return, investors can identify undervalued assets and construct portfolios that maximize returns along the **Efficient Frontier**.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Portfolio Expected Return ($E(R_p)$) is the cornerstone of investment strategy, calculated as the **weighted average** of the anticipated returns of all assets within the portfolio.</p>
+        <p>Accurate forecasting, typically achieved through models like **CAPM**, is necessary for effective capital allocation. By comparing the Expected Return against the Required Rate of Return, investors can identify undervalued assets and construct portfolios that maximize returns along the **Efficient Frontier**.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -498,63 +557,63 @@ export default function PortfolioExpectedReturnCalculator() {
                 Portfolio Expected Return is the weighted average of individual asset returns in your portfolio. It's calculated by multiplying each asset's expected return by its portfolio weight and summing the results. This provides an estimate of your portfolio's overall expected performance.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate Portfolio Expected Return?</h4>
               <p className="text-muted-foreground">
                 The formula is: Expected Return = Σ(Weighti × Returni). For each asset, multiply its portfolio weight (as a percentage) by its expected return (as a percentage), then sum all the results. This gives you the portfolio's overall expected return.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is considered a good expected return?</h4>
               <p className="text-muted-foreground">
                 Good expected returns depend on your risk tolerance and investment objectives. Generally, 8-12% is considered good for balanced portfolios, 12-15% for growth portfolios, and 4-6% for conservative portfolios. Consider your time horizon and risk tolerance when evaluating expected returns.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does asset allocation affect expected return?</h4>
               <p className="text-muted-foreground">
                 Asset allocation significantly affects expected return. Higher allocations to growth assets (stocks) typically increase expected returns but also increase risk. Conservative allocations (bonds) provide lower expected returns but more stability. The key is finding the right balance for your risk tolerance.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of expected return calculations?</h4>
               <p className="text-muted-foreground">
                 Expected returns are estimates based on historical data and assumptions, not guarantees. They don't account for market volatility, economic changes, or unexpected events. Past performance doesn't predict future results. Use expected returns as planning tools, not as promises of future performance.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How often should I recalculate expected returns?</h4>
               <p className="text-muted-foreground">
                 Recalculate expected returns whenever you change your asset allocation, add or remove assets, or when market conditions significantly change. Regular portfolio reviews (quarterly or annually) help ensure your expected returns align with your investment objectives and current market conditions.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How can I improve my portfolio's expected return?</h4>
               <p className="text-muted-foreground">
                 You can improve expected returns by increasing allocations to higher-return assets (within your risk tolerance), rebalancing regularly, and considering alternative investments. However, remember that higher expected returns typically come with higher risk. Balance return objectives with risk management.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is expected return important for portfolio management?</h4>
               <p className="text-muted-foreground">
                 Expected return is crucial for portfolio management as it helps set realistic performance expectations, guides asset allocation decisions, and provides a benchmark for evaluating portfolio performance. It's essential for financial planning, retirement planning, and investment goal setting.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I use expected return in financial planning?</h4>
               <p className="text-muted-foreground">
                 Use expected returns to project future portfolio values, calculate required savings rates, and assess whether your investment strategy can meet your financial goals. Consider different scenarios (conservative, moderate, aggressive) to understand the range of possible outcomes.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What's the difference between expected return and actual return?</h4>
               <p className="text-muted-foreground">
@@ -562,6 +621,21 @@ export default function PortfolioExpectedReturnCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Portfolio Expected Return Calculator computes the weighted average return of your portfolio.</p>
+          <p>It helps forecast performance based on individual asset returns and their allocation weights.</p>
+          <p>Use this tool for financial planning, goal setting, and comparing different asset allocation strategies.</p>
         </CardContent>
       </Card>
     </div>

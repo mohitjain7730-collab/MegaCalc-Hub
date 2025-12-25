@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BarChart3, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, Activity } from 'lucide-react';
+import { BarChart3, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, Activity, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -22,9 +22,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function TreynorRatioCalculator() {
-  const [result, setResult] = useState<{ 
-    treynorRatio: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    treynorRatio: number;
+    interpretation: string;
     riskLevel: string;
     recommendation: string;
     strength: string;
@@ -222,48 +222,107 @@ export default function TreynorRatioCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Systematic risk optimization opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4 text-primary" />
+                Portfolio Return (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The average annual return of your portfolio over the measurement period. Should align with the period used to calculate beta.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Shield className="h-4 w-4 text-primary" />
+                Risk-Free Rate (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The return on a risk-free investment, typically the yield on short-term government bonds like Treasury bills.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Activity className="h-4 w-4 text-primary" />
+                Beta (Systematic Risk)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Measures the portfolio's sensitivity to market movements. Beta = 1 means the portfolio moves with the market; greater than 1 is more volatile.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Treynor Ratio = (Portfolio Return - Risk-Free Rate) ÷ Beta
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Measures risk-adjusted return per unit of systematic (market) risk. Ideal for evaluating well-diversified portfolios where unsystematic risk has been eliminated.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -314,108 +373,108 @@ export default function TreynorRatioCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to the Treynor Ratio: Calculation, Interpretation, and Systematic Risk Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the Treynor Ratio formula, its role in measuring risk-adjusted performance by focusing solely on market (systematic) risk, and its comparison to the Sharpe Ratio and Jensen's Alpha." />
-    <meta itemProp="keywords" content="treynor ratio formula explained, systematic risk beta finance, risk-adjusted return metric, comparison to sharpe ratio, capital asset pricing model CAPM, treynor measure interpretation" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-06" /> 
-    <meta itemProp="url" content="/definitive-treynor-ratio-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to the Treynor Ratio: Calculation, Interpretation, and Systematic Risk Analysis" />
+        <meta itemProp="description" content="An expert guide detailing the Treynor Ratio formula, its role in measuring risk-adjusted performance by focusing solely on market (systematic) risk, and its comparison to the Sharpe Ratio and Jensen's Alpha." />
+        <meta itemProp="keywords" content="treynor ratio formula explained, systematic risk beta finance, risk-adjusted return metric, comparison to sharpe ratio, capital asset pricing model CAPM, treynor measure interpretation" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-06" />
+        <meta itemProp="url" content="/definitive-treynor-ratio-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Treynor Ratio: Measuring Performance Against Market Risk</h1>
-    <p className="text-lg italic text-muted-foreground">Master the specialized metric that assesses investment returns based exclusively on the systematic risk exposure of the portfolio.</p>
-    
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Treynor Ratio: Measuring Performance Against Market Risk</h1>
+        <p className="text-lg italic text-muted-foreground">Master the specialized metric that assesses investment returns based exclusively on the systematic risk exposure of the portfolio.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">Treynor Ratio: Definition and Core Focus</a></li>
-        <li><a href="#formula" className="hover:underline">The Treynor Ratio Formula and Components</a></li>
-        <li><a href="#beta" className="hover:underline">The Role of Beta ($\beta$): Measuring Systematic Risk</a></li>
-        <li><a href="#vs-sharpe" className="hover:underline">Treynor Ratio vs. Sharpe Ratio: The Key Distinction</a></li>
-        <li><a href="#interpretation" className="hover:underline">Interpretation and Benchmarking Performance</a></li>
-    </ul>
-<hr />
 
-    {/* TREYNOR RATIO: DEFINITION AND CORE FOCUS */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Treynor Ratio: Definition and Core Focus</h2>
-    <p>The **Treynor Ratio**, also known as the Treynor Measure or Reward-to-Volatility Ratio, is a risk-adjusted performance metric that evaluates the return generated by an investment portfolio relative to its **systematic risk**.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">Treynor Ratio: Definition and Core Focus</a></li>
+          <li><a href="#formula" className="hover:underline">The Treynor Ratio Formula and Components</a></li>
+          <li><a href="#beta" className="hover:underline">The Role of Beta ($\beta$): Measuring Systematic Risk</a></li>
+          <li><a href="#vs-sharpe" className="hover:underline">Treynor Ratio vs. Sharpe Ratio: The Key Distinction</a></li>
+          <li><a href="#interpretation" className="hover:underline">Interpretation and Benchmarking Performance</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Undiversifiable Risk</h3>
-    <p>Unlike the Sharpe Ratio, which uses standard deviation to measure total risk, the Treynor Ratio focuses solely on **Systematic Risk** (or market risk), quantified by the portfolio's **Beta ($\beta$)**. Systematic risk is the risk inherent in the entire market or economy and cannot be eliminated through diversification.</p>
-    <p>The ratio credits a portfolio manager only for the return earned that is necessary to compensate the investor for taking on this unavoidable market risk.</p>
+        {/* TREYNOR RATIO: DEFINITION AND CORE FOCUS */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Treynor Ratio: Definition and Core Focus</h2>
+        <p>The **Treynor Ratio**, also known as the Treynor Measure or Reward-to-Volatility Ratio, is a risk-adjusted performance metric that evaluates the return generated by an investment portfolio relative to its **systematic risk**.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">Focus on Undiversifiable Risk</h3>
+        <p>Unlike the Sharpe Ratio, which uses standard deviation to measure total risk, the Treynor Ratio focuses solely on **Systematic Risk** (or market risk), quantified by the portfolio's **Beta ($\beta$)**. Systematic risk is the risk inherent in the entire market or economy and cannot be eliminated through diversification.</p>
+        <p>The ratio credits a portfolio manager only for the return earned that is necessary to compensate the investor for taking on this unavoidable market risk.</p>
 
-    {/* THE TREYNOR RATIO FORMULA AND COMPONENTS */}
-    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Treynor Ratio Formula and Components</h2>
-    <p>The Treynor Ratio divides the portfolio's excess return (the reward) by its systematic risk (Beta).</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The formula for the Treynor Ratio (T) is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        {/* THE TREYNOR RATIO FORMULA AND COMPONENTS */}
+        <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Treynor Ratio Formula and Components</h2>
+        <p>The Treynor Ratio divides the portfolio's excess return (the reward) by its systematic risk (Beta).</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <p>The formula for the Treynor Ratio (T) is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'T = (R_p - R_f) / β_p'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <p>Where:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>$R_p$ = Portfolio Return (Average return over the period).</li>
-        <li>$R_f$ = Risk-Free Rate (Return of a risk-free asset, typically a Treasury bill).</li>
-        <li>$\beta_p$ = Beta of the Portfolio (Measure of systematic risk).</li>
-    </ul>
+        <p>Where:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>$R_p$ = Portfolio Return (Average return over the period).</li>
+          <li>$R_f$ = Risk-Free Rate (Return of a risk-free asset, typically a Treasury bill).</li>
+          <li>$\beta_p$ = Beta of the Portfolio (Measure of systematic risk).</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* THE ROLE OF BETA ($\beta$): MEASURING SYSTEMATIC RISK */}
-    <h2 id="beta" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Role of Beta ($\beta$): Measuring Systematic Risk</h2>
-    <p>Beta ($\beta$) is the denominator of the Treynor Ratio and is derived directly from the Capital Asset Pricing Model (CAPM). It measures the volatility of the portfolio relative to the volatility of the overall market.</p>
+        {/* THE ROLE OF BETA ($\beta$): MEASURING SYSTEMATIC RISK */}
+        <h2 id="beta" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Role of Beta ($\beta$): Measuring Systematic Risk</h2>
+        <p>Beta ($\beta$) is the denominator of the Treynor Ratio and is derived directly from the Capital Asset Pricing Model (CAPM). It measures the volatility of the portfolio relative to the volatility of the overall market.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation of Beta</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Beta ($\beta$) = 1.0:** The portfolio's price moves exactly in line with the market (e.g., the S&P 500).</li>
-        <li><strong className="font-semibold">Beta is greater than 1.0:</strong> The portfolio is more volatile than the market (higher systematic risk).</li>
-        <li><strong className="font-semibold">Beta is less than 1.0:</strong> The portfolio is less volatile than the market (lower systematic risk).</li>
-    </ul>
-    <p>By using Beta, the Treynor Ratio essentially assumes that the portfolio is fully diversified, and therefore, the only relevant risk is the unavoidable systematic risk.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation of Beta</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**Beta ($\beta$) = 1.0:** The portfolio's price moves exactly in line with the market (e.g., the S&P 500).</li>
+          <li><strong className="font-semibold">Beta is greater than 1.0:</strong> The portfolio is more volatile than the market (higher systematic risk).</li>
+          <li><strong className="font-semibold">Beta is less than 1.0:</strong> The portfolio is less volatile than the market (lower systematic risk).</li>
+        </ul>
+        <p>By using Beta, the Treynor Ratio essentially assumes that the portfolio is fully diversified, and therefore, the only relevant risk is the unavoidable systematic risk.</p>
 
-<hr />
+        <hr />
 
-    {/* TREYNOR RATIO VS. SHARPE RATIO: THE KEY DISTINCTION */}
-    <h2 id="vs-sharpe" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Treynor Ratio vs. Sharpe Ratio: The Key Distinction</h2>
-    <p>The difference between the Treynor Ratio and the Sharpe Ratio lies entirely in the type of risk used in the denominator.</p>
+        {/* TREYNOR RATIO VS. SHARPE RATIO: THE KEY DISTINCTION */}
+        <h2 id="vs-sharpe" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Treynor Ratio vs. Sharpe Ratio: The Key Distinction</h2>
+        <p>The difference between the Treynor Ratio and the Sharpe Ratio lies entirely in the type of risk used in the denominator.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Sharpe Ratio (Total Risk)</h3>
-    <p>The Sharpe Ratio uses **Standard Deviation ($\sigma$)** in the denominator, measuring the portfolio's **Total Risk** (Systematic Risk + Unsystematic Risk). It penalizes managers for any volatility, including the unique risks that good diversification should eliminate.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Sharpe Ratio (Total Risk)</h3>
+        <p>The Sharpe Ratio uses **Standard Deviation ($\sigma$)** in the denominator, measuring the portfolio's **Total Risk** (Systematic Risk + Unsystematic Risk). It penalizes managers for any volatility, including the unique risks that good diversification should eliminate.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Treynor Ratio (Systematic Risk)</h3>
-    <p>The Treynor Ratio uses **Beta ($\beta$)** in the denominator, measuring only **Systematic Risk**. It is primarily used to evaluate **well-diversified portfolios** because it only judges the returns against the risk that cannot be eliminated.</p>
-    <p>If a portfolio is not well-diversified (has high unsystematic risk), the Sharpe Ratio will be lower, providing a more conservative and accurate assessment of its overall risk-adjusted performance.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Treynor Ratio (Systematic Risk)</h3>
+        <p>The Treynor Ratio uses **Beta ($\beta$)** in the denominator, measuring only **Systematic Risk**. It is primarily used to evaluate **well-diversified portfolios** because it only judges the returns against the risk that cannot be eliminated.</p>
+        <p>If a portfolio is not well-diversified (has high unsystematic risk), the Sharpe Ratio will be lower, providing a more conservative and accurate assessment of its overall risk-adjusted performance.</p>
 
-<hr />
+        <hr />
 
-    {/* INTERPRETATION AND BENCHMARKING PERFORMANCE */}
-    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation and Benchmarking Performance</h2>
-    <p>The Treynor Ratio is expressed as a number (e.g., 0.50), representing the amount of excess return generated per unit of systematic risk taken.</p>
+        {/* INTERPRETATION AND BENCHMARKING PERFORMANCE */}
+        <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpretation and Benchmarking Performance</h2>
+        <p>The Treynor Ratio is expressed as a number (e.g., 0.50), representing the amount of excess return generated per unit of systematic risk taken.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Comparison Rule</h3>
-    <p>A **higher Treynor Ratio** signifies superior performance. When comparing mutual funds, the fund with the higher ratio is deemed to be more efficiently generating returns for the level of market risk assumed.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Comparison Rule</h3>
+        <p>A **higher Treynor Ratio** signifies superior performance. When comparing mutual funds, the fund with the higher ratio is deemed to be more efficiently generating returns for the level of market risk assumed.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Contextual Use</h3>
-    <p>The Treynor Ratio is best used when evaluating:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Highly Diversified Funds:** Its reliance on Beta is valid only if unsystematic risk has been effectively eliminated.</li>
-        <li>**Portfolios within a Larger Portfolio:** When a portfolio is just one component of a much larger, diversified asset base, its total risk is irrelevant, and only its systematic risk contribution (Beta) matters.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Contextual Use</h3>
+        <p>The Treynor Ratio is best used when evaluating:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**Highly Diversified Funds:** Its reliance on Beta is valid only if unsystematic risk has been effectively eliminated.</li>
+          <li>**Portfolios within a Larger Portfolio:** When a portfolio is just one component of a much larger, diversified asset base, its total risk is irrelevant, and only its systematic risk contribution (Beta) matters.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Treynor Ratio is a specialized risk-adjusted metric that isolates the performance of a portfolio by dividing the excess return by its **systematic risk ($\beta$)**. It answers how much return the portfolio provides for each unit of unavoidable market risk.</p>
-    <p>A higher Treynor Ratio indicates superior efficiency in managing market exposure. It is the preferred tool for evaluating the managerial skill of funds that are already assumed to be well-diversified.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Treynor Ratio is a specialized risk-adjusted metric that isolates the performance of a portfolio by dividing the excess return by its **systematic risk ($\beta$)**. It answers how much return the portfolio provides for each unit of unavoidable market risk.</p>
+        <p>A higher Treynor Ratio indicates superior efficiency in managing market exposure. It is the preferred tool for evaluating the managerial skill of funds that are already assumed to be well-diversified.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -435,63 +494,63 @@ export default function TreynorRatioCalculator() {
                 The Treynor Ratio is a risk-adjusted performance metric that measures how much excess return you receive for the systematic risk you take. It's calculated as (Portfolio Return - Risk-Free Rate) ÷ Beta. Unlike the Sharpe ratio, it focuses on market risk rather than total volatility.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate the Treynor Ratio?</h4>
               <p className="text-muted-foreground">
                 The formula is: Treynor Ratio = (Portfolio Return - Risk-Free Rate) ÷ Beta. Portfolio Return is the average return of your investment. Risk-Free Rate is typically the yield on government bonds. Beta measures the systematic risk relative to the market.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What is considered a good Treynor Ratio?</h4>
               <p className="text-muted-foreground">
                 Generally, a Treynor ratio above 10 is considered good, above 15 is excellent, and above 5 is acceptable. Since it focuses on systematic risk, it's typically higher than Sharpe ratios for the same investment. The threshold depends on market conditions and investment objectives.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does the Treynor Ratio differ from the Sharpe Ratio?</h4>
               <p className="text-muted-foreground">
                 The Sharpe ratio considers total volatility (systematic + unsystematic risk), while the Treynor ratio only considers systematic risk (beta). This makes the Treynor ratio more relevant for diversified portfolios where unsystematic risk has been eliminated. It typically provides higher values than the Sharpe ratio.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does a high Treynor Ratio mean?</h4>
               <p className="text-muted-foreground">
                 A high Treynor ratio indicates that the investment provides good returns relative to its systematic risk. This suggests effective management of market risk and that the investment is achieving returns without exposing investors to excessive systematic risk. It's particularly valuable for diversified portfolios.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does a low Treynor Ratio mean?</h4>
               <p className="text-muted-foreground">
                 A low Treynor ratio indicates that the investment has high systematic risk relative to its returns. This suggests that the investment may not be adequately compensating investors for the market risk they're taking. It may indicate poor systematic risk management or excessive market exposure.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of the Treynor Ratio?</h4>
               <p className="text-muted-foreground">
                 The Treynor ratio assumes the CAPM model is valid and that beta accurately captures systematic risk. It doesn't account for unsystematic risk, which may be relevant for undiversified portfolios. It's based on historical data and may not predict future performance. Beta can be unstable over time.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How can I improve my Treynor Ratio?</h4>
               <p className="text-muted-foreground">
                 You can improve the Treynor ratio by reducing systematic risk through better market timing, sector rotation, or hedging strategies. Focus on investments that provide higher returns with lower beta. Consider strategies that generate alpha while maintaining low systematic risk exposure.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is the Treynor Ratio important for portfolio management?</h4>
               <p className="text-muted-foreground">
                 The Treynor ratio is crucial for portfolio management as it helps optimize the risk-return trade-off specifically for systematic risk. It guides asset allocation decisions, helps identify investments with good systematic risk management, and provides a standardized way to compare strategies based on market risk.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do institutional investors use the Treynor Ratio?</h4>
               <p className="text-muted-foreground">
@@ -499,6 +558,21 @@ export default function TreynorRatioCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Treynor Ratio Calculator measures risk-adjusted performance relative to systematic (market) risk only.</p>
+          <p>It is ideal for evaluating well-diversified portfolios where unsystematic risk has been eliminated through diversification.</p>
+          <p>Use this tool to compare fund managers, optimize portfolio beta exposure, and assess market risk efficiency.</p>
         </CardContent>
       </Card>
     </div>

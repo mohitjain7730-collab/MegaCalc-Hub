@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Building2, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, CreditCard } from 'lucide-react';
+import { Building2, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, TrendingUp, Shield, CreditCard, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -22,9 +22,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function EnterpriseValueCalculator() {
-  const [result, setResult] = useState<{ 
-    enterpriseValue: number; 
-    interpretation: string; 
+  const [result, setResult] = useState<{
+    enterpriseValue: number;
+    interpretation: string;
     valuationLevel: string;
     recommendation: string;
     strength: string;
@@ -219,48 +219,107 @@ export default function EnterpriseValueCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Valuation optimization opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4 text-primary" />
+                Market Capitalization
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The total market value of a company's outstanding shares. Calculated as share price × shares outstanding. Found on financial websites or stock exchanges.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <CreditCard className="h-4 w-4 text-primary" />
+                Total Debt
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The sum of all short-term and long-term interest-bearing debt. Found on the balance sheet under liabilities. Includes bonds, loans, and other borrowings.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 text-primary" />
+                Cash & Cash Equivalents
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Cash on hand plus short-term investments that can be quickly converted to cash. Found on the balance sheet under current assets.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Enterprise Value = Market Capitalization + Total Debt - Cash & Cash Equivalents
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Measures the total value of a company's operations, representing the theoretical takeover price including debt assumptions and cash adjustments.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -311,119 +370,119 @@ export default function EnterpriseValueCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Enterprise Value (EV): Calculation, Interpretation, and Valuation Metric" />
-    <meta itemProp="description" content="An expert guide detailing the Enterprise Value (EV) formula, its core role as the true cost of acquiring a company, how to calculate Net Debt, and its use in valuation multiples (EV/EBITDA) and mergers & acquisitions (M&A) analysis." />
-    <meta itemProp="keywords" content="enterprise value formula explained, calculating EV, market capitalization vs EV, net debt calculation, EV to EBITDA multiple, acquisition cost metric, total value of the firm" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-12" /> 
-    <meta itemProp="url" content="/definitive-enterprise-value-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Enterprise Value (EV): Calculation, Interpretation, and Valuation Metric" />
+        <meta itemProp="description" content="An expert guide detailing the Enterprise Value (EV) formula, its core role as the true cost of acquiring a company, how to calculate Net Debt, and its use in valuation multiples (EV/EBITDA) and mergers & acquisitions (M&A) analysis." />
+        <meta itemProp="keywords" content="enterprise value formula explained, calculating EV, market capitalization vs EV, net debt calculation, EV to EBITDA multiple, acquisition cost metric, total value of the firm" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-12" />
+        <meta itemProp="url" content="/definitive-enterprise-value-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Enterprise Value (EV): The True Cost of Acquiring a Company</h1>
-    <p className="text-lg italic text-gray-700">Master the comprehensive valuation metric that quantifies the total price required to purchase all operating assets of a business.</p>
-    
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Enterprise Value (EV): The True Cost of Acquiring a Company</h1>
+        <p className="text-lg italic text-gray-700">Master the comprehensive valuation metric that quantifies the total price required to purchase all operating assets of a business.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">EV: Definition and Core Significance</a></li>
-        <li><a href="#formula" className="hover:underline">The Enterprise Value Formula and Components</a></li>
-        <li><a href="#net-debt" className="hover:underline">Calculating Net Debt and Non-Operating Assets</a></li>
-        <li><a href="#vs-mcap" className="hover:underline">EV vs. Market Capitalization: The Key Difference</a></li>
-        <li><a href="#multiples" className="hover:underline">Application in Valuation Multiples (EV/EBITDA)</a></li>
-    </ul>
-<hr />
 
-    {/* EV: DEFINITION AND CORE SIGNIFICANCE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">EV: Definition and Core Significance</h2>
-    <p>The **Enterprise Value (EV)** is a comprehensive measure of a company’s total value, often used as the theoretical takeover price in a merger or acquisition (M&A). It represents the market value of a company’s operating assets, attributable to both its equity and debt holders.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li><a href="#definition" className="hover:underline">EV: Definition and Core Significance</a></li>
+          <li><a href="#formula" className="hover:underline">The Enterprise Value Formula and Components</a></li>
+          <li><a href="#net-debt" className="hover:underline">Calculating Net Debt and Non-Operating Assets</a></li>
+          <li><a href="#vs-mcap" className="hover:underline">EV vs. Market Capitalization: The Key Difference</a></li>
+          <li><a href="#multiples" className="hover:underline">Application in Valuation Multiples (EV/EBITDA)</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Acquisition Cost Metric</h3>
-    <p>EV provides a truer economic value than Market Capitalization (Market Cap) because it accounts for the crucial financial reality that a buyer must assume the company’s debt but also immediately gains its cash reserves. EV is essentially the "sticker price" plus the net debt burden.</p>
+        {/* EV: DEFINITION AND CORE SIGNIFICANCE */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">EV: Definition and Core Significance</h2>
+        <p>The **Enterprise Value (EV)** is a comprehensive measure of a company’s total value, often used as the theoretical takeover price in a merger or acquisition (M&A). It represents the market value of a company’s operating assets, attributable to both its equity and debt holders.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Acquisition Cost Metric</h3>
+        <p>EV provides a truer economic value than Market Capitalization (Market Cap) because it accounts for the crucial financial reality that a buyer must assume the company’s debt but also immediately gains its cash reserves. EV is essentially the "sticker price" plus the net debt burden.</p>
 
-    {/* THE ENTERPRISE VALUE FORMULA AND COMPONENTS */}
-    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Enterprise Value Formula and Components</h2>
-    <p>The core formula for Enterprise Value starts with the value of the equity (Market Cap) and adjusts for the claims of non-equity holders (debt) and the presence of excess cash.</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The standard formula for Enterprise Value is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        {/* THE ENTERPRISE VALUE FORMULA AND COMPONENTS */}
+        <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Enterprise Value Formula and Components</h2>
+        <p>The core formula for Enterprise Value starts with the value of the equity (Market Cap) and adjusts for the claims of non-equity holders (debt) and the presence of excess cash.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <p>The standard formula for Enterprise Value is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'EV = Market Capitalization + Total Debt - Cash & Cash Equivalents'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Rationale for Components</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Add Debt:</strong> Debt holders (creditors) have a claim on the company's assets. When a firm is acquired, the acquirer assumes this liability, so the debt must be added to the price.</li>
-        <li><strong className="font-semibold">Subtract Cash:</strong> Cash is a non-operating asset. Upon acquisition, the buyer immediately gains control of the cash, which can be used to pay down the acquired debt. Therefore, cash reduces the net cost of the acquisition.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Rationale for Components</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Add Debt:</strong> Debt holders (creditors) have a claim on the company's assets. When a firm is acquired, the acquirer assumes this liability, so the debt must be added to the price.</li>
+          <li><strong className="font-semibold">Subtract Cash:</strong> Cash is a non-operating asset. Upon acquisition, the buyer immediately gains control of the cash, which can be used to pay down the acquired debt. Therefore, cash reduces the net cost of the acquisition.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* CALCULATING NET DEBT AND NON-OPERATING ASSETS */}
-    <h2 id="net-debt" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Net Debt and Non-Operating Assets</h2>
-    <p>For more rigorous analysis, the EV calculation is often simplified by using the **Net Debt** figure and including other non-operating balance sheet items.</p>
+        {/* CALCULATING NET DEBT AND NON-OPERATING ASSETS */}
+        <h2 id="net-debt" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Net Debt and Non-Operating Assets</h2>
+        <p>For more rigorous analysis, the EV calculation is often simplified by using the **Net Debt** figure and including other non-operating balance sheet items.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Net Debt Calculation</h3>
-    <p>**Net Debt** is the total debt (short-term and long-term interest-bearing liabilities) minus the total cash and cash equivalents. This single figure represents the amount of debt the buyer would effectively have to fund if they used the company's cash immediately to pay down the acquired debt.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Net Debt Calculation</h3>
+        <p>**Net Debt** is the total debt (short-term and long-term interest-bearing liabilities) minus the total cash and cash equivalents. This single figure represents the amount of debt the buyer would effectively have to fund if they used the company's cash immediately to pay down the acquired debt.</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'Net Debt = Total Debt - Cash'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Refined EV Formula</h3>
-    <p>Using Net Debt, the formula simplifies to:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Refined EV Formula</h3>
+        <p>Using Net Debt, the formula simplifies to:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'EV = Market Capitalization + Net Debt'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Other Non-Operating Adjustments</h3>
-    <p>For large transactions, the EV formula may include other adjustments for non-operating items found on the balance sheet:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Add:** Minority Interest (the value of subsidiaries not fully owned by the parent company).</li>
-        <li>**Add:** Capitalized Operating Leases (treating lease obligations as debt).</li>
-        <li>**Subtract:** Value of Non-Controlling Interest (NCI).</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Other Non-Operating Adjustments</h3>
+        <p>For large transactions, the EV formula may include other adjustments for non-operating items found on the balance sheet:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**Add:** Minority Interest (the value of subsidiaries not fully owned by the parent company).</li>
+          <li>**Add:** Capitalized Operating Leases (treating lease obligations as debt).</li>
+          <li>**Subtract:** Value of Non-Controlling Interest (NCI).</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* EV VS. MARKET CAPITALIZATION: THE KEY DIFFERENCE */}
-    <h2 id="vs-mcap" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">EV vs. Market Capitalization: The Key Difference</h2>
-    <p>Market Capitalization (Mcap) is the value of a company’s equity, whereas EV is the value of the firm's overall operations.</p>
+        {/* EV VS. MARKET CAPITALIZATION: THE KEY DIFFERENCE */}
+        <h2 id="vs-mcap" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">EV vs. Market Capitalization: The Key Difference</h2>
+        <p>Market Capitalization (Mcap) is the value of a company’s equity, whereas EV is the value of the firm's overall operations.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Market Capitalization (Equity Value)</h3>
-    <p>Mcap is calculated as: Share Price multiplied by Total Shares Outstanding. It represents the total amount investors paid for the stock and is used to measure the size of the publicly traded equity.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Market Capitalization (Equity Value)</h3>
+        <p>Mcap is calculated as: Share Price multiplied by Total Shares Outstanding. It represents the total amount investors paid for the stock and is used to measure the size of the publicly traded equity.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Difference in Scope</h3>
-    <p>EV is a better comparison metric for valuation because it is independent of the capital structure. If Company A and Company B have the same Market Cap but Company A has significantly more debt, Company A's EV will be much higher, reflecting the true, higher cost to acquire Company A's operational assets.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Difference in Scope</h3>
+        <p>EV is a better comparison metric for valuation because it is independent of the capital structure. If Company A and Company B have the same Market Cap but Company A has significantly more debt, Company A's EV will be much higher, reflecting the true, higher cost to acquire Company A's operational assets.</p>
 
-<hr />
+        <hr />
 
-    {/* APPLICATION IN VALUATION MULTIPLES (EV/EBITDA) */}
-    <h2 id="multiples" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Application in Valuation Multiples (EV/EBITDA)</h2>
-    <p>Enterprise Value is the preferred numerator for most valuation multiples because it matches the value of the firm's operations against the profitability generated by those operations (which is before debt/interest expenses).</p>
+        {/* APPLICATION IN VALUATION MULTIPLES (EV/EBITDA) */}
+        <h2 id="multiples" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Application in Valuation Multiples (EV/EBITDA)</h2>
+        <p>Enterprise Value is the preferred numerator for most valuation multiples because it matches the value of the firm's operations against the profitability generated by those operations (which is before debt/interest expenses).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">EV/EBITDA Ratio</h3>
-    <p>The **EV/EBITDA** ratio is the most commonly used valuation multiple in finance. It is preferred over the P/E ratio for benchmarking because:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**EV (Numerator):** Includes debt, reflecting the full acquisition cost.</li>
-        <li>**EBITDA (Denominator):** Excludes interest, taxes, and D\&A, reflecting cash flow available to all capital providers.</li>
-    </ul>
-    <p>By matching EV (value to all providers of capital) with EBITDA (profitability available to all providers of capital), the ratio provides a clean, cross-border, and cross-industry comparable valuation.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">EV/EBITDA Ratio</h3>
+        <p>The **EV/EBITDA** ratio is the most commonly used valuation multiple in finance. It is preferred over the P/E ratio for benchmarking because:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**EV (Numerator):** Includes debt, reflecting the full acquisition cost.</li>
+          <li>**EBITDA (Denominator):** Excludes interest, taxes, and D\&A, reflecting cash flow available to all capital providers.</li>
+        </ul>
+        <p>By matching EV (value to all providers of capital) with EBITDA (profitability available to all providers of capital), the ratio provides a clean, cross-border, and cross-industry comparable valuation.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Enterprise Value (EV) is the definitive measure of a company’s **total operational value**, calculated as Market Capitalization plus Net Debt. It represents the true cost of acquiring the entire business.</p>
-    <p>EV is the essential tool for **M&A analysis** and **valuation multiples** (such as EV/EBITDA) because it provides a reliable, capital-structure-neutral metric for comparing the efficiency and price of businesses across diverse markets.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Enterprise Value (EV) is the definitive measure of a company’s **total operational value**, calculated as Market Capitalization plus Net Debt. It represents the true cost of acquiring the entire business.</p>
+        <p>EV is the essential tool for **M&A analysis** and **valuation multiples** (such as EV/EBITDA) because it provides a reliable, capital-structure-neutral metric for comparing the efficiency and price of businesses across diverse markets.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -443,63 +502,63 @@ export default function EnterpriseValueCalculator() {
                 Enterprise Value (EV) is a comprehensive measure of a company's total value that accounts for both equity and debt. It's calculated as Market Capitalization + Total Debt - Cash and Cash Equivalents. EV represents the theoretical takeover price an acquirer would pay to buy the entire business.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate Enterprise Value?</h4>
               <p className="text-muted-foreground">
                 The formula is: EV = Market Capitalization + Total Debt - Cash and Cash Equivalents. Market Cap is calculated as Share Price × Number of Shares Outstanding. Total Debt includes all interest-bearing debt. Cash includes cash, cash equivalents, and short-term investments.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why is Enterprise Value important?</h4>
               <p className="text-muted-foreground">
                 EV provides a more accurate picture of a company's true value than market cap alone because it accounts for debt and cash. It's essential for valuation analysis, M&A transactions, and comparing companies with different capital structures. EV multiples are widely used in financial analysis.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does a high Enterprise Value mean?</h4>
               <p className="text-muted-foreground">
                 A high EV relative to market cap indicates significant debt or low cash position. This suggests the company has borrowed heavily or has limited cash reserves. It may indicate higher financial risk but doesn't necessarily mean the company is overvalued - it depends on the underlying business fundamentals.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What does a low Enterprise Value mean?</h4>
               <p className="text-muted-foreground">
                 A low EV relative to market cap indicates strong cash position or low debt. This suggests the company has significant cash reserves or minimal debt, providing financial flexibility. It may indicate a conservative capital structure and lower financial risk.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does Enterprise Value differ from Market Cap?</h4>
               <p className="text-muted-foreground">
                 Market Cap only considers equity value (share price × shares outstanding), while EV considers the entire business value including debt and excluding cash. EV provides a more comprehensive view of what it would cost to acquire the entire business, making it better for valuation comparisons.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are Enterprise Value multiples?</h4>
               <p className="text-muted-foreground">
                 EV multiples compare Enterprise Value to various financial metrics like EBITDA, EBIT, or Revenue. Common multiples include EV/EBITDA, EV/EBIT, and EV/Revenue. These multiples help assess valuation relative to operational performance and are widely used in financial analysis and M&A transactions.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do investors use Enterprise Value?</h4>
               <p className="text-muted-foreground">
                 Investors use EV for valuation analysis, comparing companies with different capital structures, and assessing takeover value. EV multiples help identify undervalued or overvalued companies. It's particularly useful for M&A analysis and comparing companies in the same industry with different debt levels.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the limitations of Enterprise Value?</h4>
               <p className="text-muted-foreground">
                 EV doesn't account for off-balance sheet items, contingent liabilities, or future growth prospects. It's a snapshot in time and doesn't reflect operational efficiency or management quality. EV should be used in conjunction with other financial metrics and qualitative factors for comprehensive analysis.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do creditors use Enterprise Value?</h4>
               <p className="text-muted-foreground">
@@ -507,6 +566,21 @@ export default function EnterpriseValueCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Enterprise Value Calculator determines the total value of a company's operations for M&A and valuation purposes.</p>
+          <p>It provides a more comprehensive view than market capitalization by accounting for debt and cash positions.</p>
+          <p>Use this tool to assess acquisition costs, compare companies, and calculate valuation multiples.</p>
         </CardContent>
       </Card>
     </div>
