@@ -57,7 +57,7 @@ export default function PortfolioDiversificationBenefitCalculator() {
     const s2 = v.s2 / 100;
     const cov = v.rho * s1 * s2;
     const weightedStd = (w1 * s1 + w2 * s2) * 100;
-    const variance = (w1*w1*s1*s1) + (w2*w2*s2*s2) + (2*w1*w2*cov);
+    const variance = (w1 * w1 * s1 * s1) + (w2 * w2 * s2 * s2) + (2 * w1 * w2 * cov);
     const portfolioStd = Math.sqrt(variance) * 100;
     const diversificationBenefitAbs = Math.max(0, weightedStd - portfolioStd);
     const diversificationBenefitPct = weightedStd > 0 ? (diversificationBenefitAbs / weightedStd) * 100 : 0;
@@ -250,19 +250,76 @@ export default function PortfolioDiversificationBenefitCalculator() {
         </CardContent>
       </Card>
 
-      {/* Guide Section */}
-      <Card>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Portfolio σ = √(w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρσ₁σ₂)
+            </p>
+            <p className="font-mono text-sm text-center mt-2">
+              Diversification Benefit = Weighted Avg σ - Portfolio σ
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            When correlation (ρ) is less than 1, portfolio risk is lower than the weighted average of individual risks.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
-            Complete Guide to Diversification Benefits
+            Understanding the Inputs
           </CardTitle>
         </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Placeholder: Add your full guide content describing diversification theory.</p>
-          <p>Discuss correlations, covariance, and practical considerations.</p>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Weights (%)</h4>
+              <p className="text-sm text-muted-foreground">Portfolio allocation to each asset. Should sum to 100%.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Standard Deviations (%)</h4>
+              <p className="text-sm text-muted-foreground">Volatility of each asset's returns (annualized).</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Correlation (ρ)</h4>
+              <p className="text-sm text-muted-foreground">How assets move together (-1 to +1). Lower = better diversification.</p>
+            </div>
+          </div>
         </CardContent>
       </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Portfolio Diversification Benefits</h1>
+        <p className="text-lg italic text-muted-foreground">Understand how combining assets reduces portfolio risk through diversification.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Diversification Benefit?</h2>
+        <p>Diversification benefit is the risk reduction achieved when combining assets that don't move in perfect lockstep. When correlation is below 1, the portfolio's volatility is less than the weighted average of individual volatilities.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The Mathematics of Diversification</h2>
+        <p>Portfolio variance includes a covariance term (2w₁w₂ρσ₁σ₂) that can reduce total risk when correlation is low or negative. This is the mathematical foundation of Modern Portfolio Theory.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Practical Applications</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Compare risk reduction from different asset combinations.</li>
+          <li>Evaluate whether adding a new asset improves portfolio efficiency.</li>
+          <li>Understand why correlations matter more than individual volatilities.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Diversification is a free lunch in investing—it reduces risk without necessarily reducing expected return. Use this calculator to quantify the benefit from combining assets with low correlation.</p>
+      </section>
 
       {/* FAQ Section */}
       <Card>
@@ -306,6 +363,21 @@ export default function PortfolioDiversificationBenefitCalculator() {
             <h4 className="font-semibold mb-2">How often should I reassess?</h4>
             <p className="text-muted-foreground">Reevaluate quarterly or during regime shifts; correlations can change meaningfully.</p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground">
+            The Portfolio Diversification Benefit Calculator quantifies risk reduction from combining assets with imperfect correlation. Lower correlation leads to greater diversification benefits, reducing portfolio volatility below the weighted average of individual asset risks.
+          </p>
         </CardContent>
       </Card>
     </div>

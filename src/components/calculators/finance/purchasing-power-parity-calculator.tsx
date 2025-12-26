@@ -67,7 +67,7 @@ export default function PurchasingPowerParityCalculator() {
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Mispricing vs Spot</p><p className={`text-2xl font-bold ${result.mispricingPct >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.mispricingPct.toFixed(3)}%</p></div>
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interp}</p></div>
             </div>
-            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s,i)=>(<li key={i}>{s}</li>))}</ul></div>
+            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s, i) => (<li key={i}>{s}</li>))}</ul></div>
           </CardContent>
         </Card>
       )}
@@ -84,10 +84,69 @@ export default function PurchasingPowerParityCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to PPP</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder for PPP guide.</p><p>Discuss absolute vs relative PPP and limitations.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              PPP Rate = Price (Domestic) / Price (Foreign)
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            The exchange rate implied by price levels of identical goods across countries.
+          </p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Domestic Price</h4>
+              <p className="text-sm text-muted-foreground">Price of the good in domestic currency.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Foreign Price</h4>
+              <p className="text-sm text-muted-foreground">Price of the same good in foreign currency.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Spot Rate</h4>
+              <p className="text-sm text-muted-foreground">Current market exchange rate for comparison.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Purchasing Power Parity</h1>
+        <p className="text-lg italic text-muted-foreground">Understand how price levels determine long-run exchange rates.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is PPP?</h2>
+        <p>Purchasing Power Parity suggests that exchange rates should adjust so identical goods cost the same across countries. It provides a benchmark for currency valuation.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Absolute vs. Relative PPP</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Absolute PPP:</strong> Uses price levels directly to imply exchange rates.</li>
+          <li><strong>Relative PPP:</strong> Uses inflation differentials over time.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>PPP is useful for long-run valuation analysis. Short-term deviations are common due to trade barriers and non-tradable goods.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>PPP and valuation</CardDescription></CardHeader>
@@ -103,6 +162,12 @@ export default function PurchasingPowerParityCalculator() {
           <div><h4 className="font-semibold mb-2">How do I interpret mispricing %?</h4><p className="text-muted-foreground">A positive value suggests domestic currency overvaluation vs PPP; negative implies undervaluation.</p></div>
           <div><h4 className="font-semibold mb-2">How often should I update prices?</h4><p className="text-muted-foreground">Update when CPI changes materially or when product prices change; quarterly is a practical cadence.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Purchasing Power Parity Calculator compares price-implied exchange rates to market spot rates. PPP provides a long-run anchor for currency valuation based on relative price levels.</p></CardContent>
       </Card>
     </div>
   );

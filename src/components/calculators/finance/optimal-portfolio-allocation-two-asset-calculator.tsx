@@ -62,7 +62,7 @@ export default function OptimalPortfolioAllocationTwoAssetCalculator() {
     const pVar = (w1Clamped * w1Clamped * s1 * s1) + (w2Clamped * w2Clamped * s2 * s2) + (2 * w1Clamped * w2Clamped * cov);
     const pStd = Math.sqrt(pVar) * 100;
 
-    const interpretation = `Minimum-variance allocation suggests ${ (w1Clamped*100).toFixed(1) }% in Asset 1 and ${ (w2Clamped*100).toFixed(1) }% in Asset 2.`;
+    const interpretation = `Minimum-variance allocation suggests ${(w1Clamped * 100).toFixed(1)}% in Asset 1 and ${(w2Clamped * 100).toFixed(1)}% in Asset 2.`;
     const suggestions = [
       'Consider constraints (e.g., no shorting, max weights).',
       'Revisit inputs periodically; expected returns and risk change over time.',
@@ -249,19 +249,76 @@ export default function OptimalPortfolioAllocationTwoAssetCalculator() {
         </CardContent>
       </Card>
 
-      {/* Guide Section */}
-      <Card>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              w₁ = (σ₂² - ρσ₁σ₂) / (σ₁² + σ₂² - 2ρσ₁σ₂)
+            </p>
+            <p className="font-mono text-sm text-center mt-2">
+              Portfolio σ = √(w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρσ₁σ₂)
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            This calculates the minimum-variance portfolio weights for two risky assets.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
-            Complete Guide to Two-Asset Optimization
+            Understanding the Inputs
           </CardTitle>
         </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Use this guide placeholder to add your comprehensive explanation later.</p>
-          <p>Include assumptions, formulas, and illustrative examples.</p>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Expected Returns</h4>
+              <p className="text-sm text-muted-foreground">Anticipated annual returns for each asset (use forward-looking estimates).</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Standard Deviations</h4>
+              <p className="text-sm text-muted-foreground">Volatility measure for each asset—higher means more risk.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Correlation (ρ)</h4>
+              <p className="text-sm text-muted-foreground">How assets move together. Lower correlation = better diversification.</p>
+            </div>
+          </div>
         </CardContent>
       </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Two-Asset Portfolio Optimization</h1>
+        <p className="text-lg italic text-muted-foreground">Learn how to calculate the minimum-variance portfolio for two risky assets.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Minimum-Variance Allocation?</h2>
+        <p>The minimum-variance portfolio is the combination of two assets that produces the lowest possible volatility. It's a key point on the efficient frontier.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The Power of Diversification</h2>
+        <p>When assets aren't perfectly correlated (ρ &lt; 1), combining them reduces total portfolio risk. The lower the correlation, the greater the risk reduction benefit.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Key Considerations</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>This calculator assumes no short-selling (weights between 0% and 100%).</li>
+          <li>Forward-looking estimates are more useful than historical averages.</li>
+          <li>Rebalancing is needed as weights drift over time.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Two-asset optimization is foundational for portfolio construction. Understanding how correlation and volatility interact helps you build better diversified portfolios.</p>
+      </section>
 
       {/* FAQ Section */}
       <Card>

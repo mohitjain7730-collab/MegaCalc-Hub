@@ -84,25 +84,49 @@ export default function CreditSpreadDurationCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Credit Spread Duration</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder for a comprehensive guide.</p><p>Cover measurement methods and relation to option-adjusted spread analytics.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" />Formula Used</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto"><p className="font-mono text-sm text-center">ΔPrice ≈ -Spread Duration × Δspread × Price</p></div>
+          <p className="text-sm text-muted-foreground">Linear approximation for price change from credit spread movement.</p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Understanding the Inputs</CardTitle></CardHeader>
+        <CardContent><div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Clean Price</h4><p className="text-sm text-muted-foreground">Current market price excluding accrued interest.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Spread Duration</h4><p className="text-sm text-muted-foreground">Sensitivity to credit spread changes in years.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Spread Change (bps)</h4><p className="text-sm text-muted-foreground">Expected change in credit spread in basis points.</p></div>
+        </div></CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Credit Spread Duration</h1>
+        <p className="text-lg italic">Credit spread duration isolates price sensitivity to credit spread changes, holding interest rates constant.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">OAS-Based Analysis</h2>
+        <p>For bonds with embedded options, use option-adjusted spread (OAS) duration rather than nominal spread duration for accurate risk assessment.</p>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Credit spread duration is essential for credit portfolio management, helping separate rate risk from credit risk.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Credit spread risk</CardDescription></CardHeader>
         <CardContent className="space-y-6">
-          <div><h4 className="font-semibold mb-2">What is credit spread duration?</h4><p className="text-muted-foreground">It measures a bond’s price sensitivity to changes in credit spread, holding interest rates constant.</p></div>
+          <div><h4 className="font-semibold mb-2">What is credit spread duration?</h4><p className="text-muted-foreground">It measures a bond's price sensitivity to changes in credit spread, holding interest rates constant.</p></div>
           <div><h4 className="font-semibold mb-2">How is it different from interest-rate duration?</h4><p className="text-muted-foreground">Rate duration captures sensitivity to risk-free yield; spread duration isolates the credit component.</p></div>
           <div><h4 className="font-semibold mb-2">Where do I get spread duration?</h4><p className="text-muted-foreground">From portfolio analytics systems or data vendors that compute OAS-based measures.</p></div>
           <div><h4 className="font-semibold mb-2">Is the price change linear?</h4><p className="text-muted-foreground">Only for small spread moves; large changes require convexity-of-spread adjustments.</p></div>
-          <div><h4 className="font-semibold mb-2">Should I use OAS or Z-spread?</h4><p className="text-muted-foreground">OAS-based duration is common as it adjusts for optionality; choose consistently across holdings.</p></div>
-          <div><h4 className="font-semibold mb-2">How often should I recalc?</h4><p className="text-muted-foreground">Recalculate after material changes in spreads, time, or cash flow profile.</p></div>
-          <div><h4 className="font-semibold mb-2">Can spread duration be negative?</h4><p className="text-muted-foreground">Rarely, but callable/puttable structures can create unusual sensitivities.</p></div>
-          <div><h4 className="font-semibold mb-2">How to aggregate across portfolio?</h4><p className="text-muted-foreground">Use market-value-weighted average spread duration for portfolio-level estimates.</p></div>
-          <div><h4 className="font-semibold mb-2">How do defaults impact the metric?</h4><p className="text-muted-foreground">Extreme credit events fall outside linear approximations; scenario analysis is recommended.</p></div>
-          <div><h4 className="font-semibold mb-2">What are typical values?</h4><p className="text-muted-foreground">Investment-grade corporates often show 3–6 years; high yield typically lower due to shorter maturities.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Credit Spread Duration Calculator estimates price impact from credit spread changes. Use it to decompose total bond risk into rate and credit components for better risk management.</p></CardContent>
       </Card>
     </div>
   );

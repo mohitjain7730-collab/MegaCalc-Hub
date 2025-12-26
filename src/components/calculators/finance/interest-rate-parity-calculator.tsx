@@ -72,7 +72,7 @@ export default function InterestRateParityCalculator() {
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Forward Premium</p><p className={`text-2xl font-bold ${result.forwardPremiumPct >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.forwardPremiumPct.toFixed(3)}%</p></div>
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interp}</p></div>
             </div>
-            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s,i)=>(<li key={i}>{s}</li>))}</ul></div>
+            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s, i) => (<li key={i}>{s}</li>))}</ul></div>
           </CardContent>
         </Card>
       )}
@@ -87,10 +87,65 @@ export default function InterestRateParityCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Interest Rate Parity</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder for the full guide.</p><p>Discuss covered vs. uncovered parity, compounding, and day count.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              F = S × (1 + r_d × t) / (1 + r_f × t)
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Forward rate is determined by spot rate and interest rate differential.
+          </p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Spot Rate & Time</h4>
+              <p className="text-sm text-muted-foreground">Current exchange rate and forward contract duration (years).</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Interest Rates (%)</h4>
+              <p className="text-sm text-muted-foreground">Domestic and foreign risk-free interest rates.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Interest Rate Parity</h1>
+        <p className="text-lg italic text-muted-foreground">Understand the no-arbitrage relationship between spot, forward, and interest rates.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Interest Rate Parity?</h2>
+        <p>Interest rate parity (IRP) is a no-arbitrage condition stating that the forward exchange rate should reflect the interest rate differential between two currencies.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Covered vs. Uncovered IRP</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Covered IRP:</strong> Uses forward contracts to lock in rates—no currency risk.</li>
+          <li><strong>Uncovered IRP:</strong> Assumes expected future spot equals forward—currency risk exists.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>IRP is fundamental to FX pricing. Use this calculator to determine theoretical forward rates based on interest differentials.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>FX forward pricing</CardDescription></CardHeader>
@@ -104,6 +159,12 @@ export default function InterestRateParityCalculator() {
           <div><h4 className="font-semibold mb-2">Can rates be negative?</h4><p className="text-muted-foreground">Yes; the formula still applies with negative r.</p></div>
           <div><h4 className="font-semibold mb-2">Should I round quotes?</h4><p className="text-muted-foreground">Round to market-appropriate precision; we show six decimals by default.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Interest Rate Parity Calculator computes theoretical forward FX rates from spot rates and interest rate differentials. IRP links FX markets and interest rates through a no-arbitrage relationship.</p></CardContent>
       </Card>
     </div>
   );

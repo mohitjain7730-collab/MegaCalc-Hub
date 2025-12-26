@@ -150,18 +150,70 @@ export default function InformationRatioCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Information Ratio = (Portfolio Return - Benchmark Return) / Tracking Error
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Measures active return per unit of active risk (tracking error).
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
-            Complete Guide to Information Ratio
+            Understanding the Inputs
           </CardTitle>
         </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Placeholder for your detailed guide content.</p>
-          <p>Add methodology, use cases, and caveats.</p>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Portfolio Return (%)</h4>
+              <p className="text-sm text-muted-foreground">Your portfolio's total return for the period.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Benchmark Return (%)</h4>
+              <p className="text-sm text-muted-foreground">The benchmark's return over the same period.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Tracking Error (%)</h4>
+              <p className="text-sm text-muted-foreground">Standard deviation of active returns (portfolio minus benchmark).</p>
+            </div>
+          </div>
         </CardContent>
       </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Information Ratio</h1>
+        <p className="text-lg italic text-muted-foreground">Learn how to measure risk-adjusted active performance relative to a benchmark.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Information Ratio?</h2>
+        <p>Information Ratio (IR) measures how much excess return (alpha) you generate per unit of active risk taken. It's the benchmark-relative equivalent of the Sharpe Ratio.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Interpreting IR Values</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>IR &gt; 0.5:</strong> Strong risk-adjusted outperformance.</li>
+          <li><strong>IR &gt; 1.0:</strong> Excellent—rare and difficult to sustain.</li>
+          <li><strong>IR &lt; 0:</strong> Underperforming the benchmark on a risk-adjusted basis.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>IR is essential for evaluating active managers. Higher IR means better risk-adjusted alpha generation relative to the benchmark.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -181,6 +233,12 @@ export default function InformationRatioCalculator() {
           <div><h4 className="font-semibold mb-2">What affects tracking error?</h4><p className="text-muted-foreground">Factor tilts, concentration, and timing differences typically increase tracking error.</p></div>
           <div><h4 className="font-semibold mb-2">Should I compare IR across managers?</h4><p className="text-muted-foreground">Yes, but ensure similar benchmarks, periods, and investment universes.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Information Ratio measures active return per unit of tracking error. A higher IR indicates more efficient alpha generation relative to benchmark deviations—essential for evaluating active managers.</p></CardContent>
       </Card>
     </div>
   );

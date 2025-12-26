@@ -58,8 +58,8 @@ export default function BetaAdjustedPortfolioReturnCalculator() {
     const interpretation = alpha > 0
       ? 'Positive alpha: the portfolio outperformed its CAPM-expected return for the given risk.'
       : alpha < 0
-      ? 'Negative alpha: the portfolio underperformed relative to its risk-adjusted benchmark.'
-      : 'Zero alpha: performance matched the CAPM expectation.';
+        ? 'Negative alpha: the portfolio underperformed relative to its risk-adjusted benchmark.'
+        : 'Zero alpha: performance matched the CAPM expectation.';
 
     const suggestions = [
       'Review factor exposures (size, value, momentum) beyond market beta.',
@@ -227,19 +227,84 @@ export default function BetaAdjustedPortfolioReturnCalculator() {
         </CardContent>
       </Card>
 
-      {/* Guide Section */}
-      <Card>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              CAPM Expected Return = Rf + β × (Rm - Rf)
+            </p>
+            <p className="font-mono text-sm text-center mt-2">
+              Alpha = Actual Return - CAPM Expected Return
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Where Rf is risk-free rate, β is portfolio beta, and Rm is market return.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
-            Complete Guide to Beta-Adjusted Returns
+            Understanding the Inputs
           </CardTitle>
         </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>This is a short placeholder for the complete guide. Replace with your detailed content.</p>
-          <p>Add comprehensive explanations, examples, and best practices here.</p>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Portfolio Actual Return</h4>
+              <p className="text-sm text-muted-foreground">Your portfolio's realized return over the measurement period.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Market Return</h4>
+              <p className="text-sm text-muted-foreground">Benchmark return (e.g., S&P 500) over the same period.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Risk-Free Rate</h4>
+              <p className="text-sm text-muted-foreground">Return on risk-free assets (e.g., Treasury bills).</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Portfolio Beta</h4>
+              <p className="text-sm text-muted-foreground">Sensitivity of portfolio returns to market movements. Beta of 1 = market risk.</p>
+            </div>
+          </div>
         </CardContent>
       </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Beta-Adjusted Portfolio Returns</h1>
+        <p className="text-lg italic text-muted-foreground">Learn how to measure risk-adjusted performance using CAPM and alpha.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Beta-Adjusted Return?</h2>
+        <p>Beta-adjusted return compares your actual performance to what CAPM predicts given your risk level. The difference is alpha—a measure of manager skill or stock selection ability.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Understanding Beta</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Beta = 1.0:</strong> Portfolio moves with the market.</li>
+          <li><strong>Beta &gt; 1.0:</strong> More volatile than market (higher risk/return potential).</li>
+          <li><strong>Beta &lt; 1.0:</strong> Less volatile (defensive positioning).</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Interpreting Alpha</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Positive Alpha:</strong> Outperformed risk-adjusted expectations—good stock selection or timing.</li>
+          <li><strong>Negative Alpha:</strong> Underperformed—returns didn't compensate for risk taken.</li>
+          <li><strong>Zero Alpha:</strong> Performance matched CAPM expectation exactly.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Beta-adjusted analysis is essential for evaluating whether returns are due to skill or simply taking more risk. Use it to assess portfolio managers and your own investment decisions.</p>
+      </section>
 
       {/* FAQ Section */}
       <Card>

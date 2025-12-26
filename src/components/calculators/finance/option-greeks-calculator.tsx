@@ -31,7 +31,7 @@ function erf(x: number) { // numerical approximation
   return sign * y;
 }
 
-function greeks(S: number, K: number, rPct: number, volPct: number, T: number, type: 'call'|'put') {
+function greeks(S: number, K: number, rPct: number, volPct: number, T: number, type: 'call' | 'put') {
   const r = rPct / 100; const sigma = volPct / 100;
   if (sigma === 0 || T === 0) return { delta: NaN, gamma: NaN, vega: NaN, theta: NaN, rho: NaN };
   const d1 = (Math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * Math.sqrt(T));
@@ -118,10 +118,34 @@ export default function OptionGreeksCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Option Greeks</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder guide content.</p><p>Explain interpretation and hedge usage for each Greek.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" />Formula Used</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto"><p className="font-mono text-sm text-center">Delta = ∂V/∂S, Gamma = ∂²V/∂S², Vega = ∂V/∂σ, Theta = ∂V/∂t, Rho = ∂V/∂r</p></div>
+          <p className="text-sm text-muted-foreground">Partial derivatives of option value with respect to underlying (S), volatility (σ), time (t), and rate (r).</p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Understanding the Inputs</CardTitle></CardHeader>
+        <CardContent><div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Spot & Strike</h4><p className="text-sm text-muted-foreground">Current price and option strike price.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Volatility & Rate</h4><p className="text-sm text-muted-foreground">Annualized implied volatility and risk-free rate.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Time & Type</h4><p className="text-sm text-muted-foreground">Years to expiry and call/put selection.</p></div>
+        </div></CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Option Greeks</h1>
+        <p className="text-lg italic">Greeks measure option price sensitivities: Delta for directional exposure, Gamma for convexity, Vega for volatility risk, Theta for time decay, Rho for rate sensitivity.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Hedging with Greeks</h2>
+        <p>Delta-neutral portfolios eliminate directional risk. Monitor Gamma for re-hedging frequency needs. Vega exposure matters during volatility events.</p>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Mastering Greeks is essential for options trading, portfolio risk management, and constructing sophisticated hedging strategies.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Greeks and risk management</CardDescription></CardHeader>
@@ -130,13 +154,13 @@ export default function OptionGreeksCalculator() {
           <div><h4 className="font-semibold mb-2">Why is gamma important?</h4><p className="text-muted-foreground">Gamma indicates how delta changes with spot; high gamma increases re-hedging needs.</p></div>
           <div><h4 className="font-semibold mb-2">What does vega represent?</h4><p className="text-muted-foreground">Sensitivity to volatility; expressed per 1% vol change in this tool.</p></div>
           <div><h4 className="font-semibold mb-2">Is theta always negative?</h4><p className="text-muted-foreground">For long options typically yes; short options earn time decay (positive theta).</p></div>
-          <div><h4 className="font-semibold mb-2">How is rho used?</h4><p className="text-muted-foreground">Rate sensitivity matters more for longer-dated options or deep ITM/OTM positions.</p></div>
-          <div><h4 className="font-semibold mb-2">Do Greeks assume constant vol?</h4><p className="text-muted-foreground">Black–Scholes assumes constant vol; in practice use surface/term structure for accuracy.</p></div>
-          <div><h4 className="font-semibold mb-2">How often to re-hedge?</h4><p className="text-muted-foreground">Depends on risk tolerance; higher gamma or vol requires more frequent adjustments.</p></div>
-          <div><h4 className="font-semibold mb-2">Can Greeks be aggregated?</h4><p className="text-muted-foreground">Yes—sum across positions to get portfolio-level exposure by Greek.</p></div>
-          <div><h4 className="font-semibold mb-2">Are Greeks linear?</h4><p className="text-muted-foreground">Only locally; use second-order terms (gamma, vomma) for larger shocks.</p></div>
-          <div><h4 className="font-semibold mb-2">Do dividends matter?</h4><p className="text-muted-foreground">This basic model ignores dividends; for equities, use dividend-adjusted formulas.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Option Greeks Calculator computes Delta, Gamma, Vega, Theta, and Rho using Black-Scholes. Use Greeks to understand and hedge option position risks.</p></CardContent>
       </Card>
     </div>
   );

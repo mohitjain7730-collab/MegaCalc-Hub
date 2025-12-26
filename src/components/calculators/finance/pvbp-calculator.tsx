@@ -78,10 +78,33 @@ export default function PVBPCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to PVBP</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder guide.</p><p>Explain hedging and aggregation.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" />Formula Used</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto"><p className="font-mono text-sm text-center">PVBP = Modified Duration × Price × 0.0001</p></div>
+          <p className="text-sm text-muted-foreground">Dollar price change for a 1 basis point (0.01%) yield move.</p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Understanding the Inputs</CardTitle></CardHeader>
+        <CardContent><div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Clean Price</h4><p className="text-sm text-muted-foreground">Market price excluding accrued interest.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Modified Duration</h4><p className="text-sm text-muted-foreground">Price sensitivity per 1% yield change.</p></div>
+        </div></CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to PVBP (DV01)</h1>
+        <p className="text-lg italic">PVBP (Price Value of a Basis Point), also known as DV01, measures dollar risk per basis point yield change.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Hedging Applications</h2>
+        <p>Match portfolio PVBP with hedge instrument PVBP to neutralize interest rate risk. Aggregate PVBPs across positions for total exposure.</p>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>PVBP is the standard metric for sizing interest rate hedges using Treasury futures or swaps.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>PVBP usage</CardDescription></CardHeader>
@@ -90,13 +113,13 @@ export default function PVBPCalculator() {
           <div><h4 className="font-semibold mb-2">Is PVBP constant?</h4><p className="text-muted-foreground">It changes with price and duration; recalc as market conditions change.</p></div>
           <div><h4 className="font-semibold mb-2">How do I use PVBP for hedging?</h4><p className="text-muted-foreground">Match portfolio PVBP with hedge PVBP using Treasuries or futures.</p></div>
           <div><h4 className="font-semibold mb-2">PVBP vs Dollar Duration?</h4><p className="text-muted-foreground">PVBP is per bp; dollar duration equals duration × price (per 1% move).</p></div>
-          <div><h4 className="font-semibold mb-2">Does convexity affect PVBP?</h4><p className="text-muted-foreground">PVBP is first-order; convexity adjusts for curvature at larger moves.</p></div>
-          <div><h4 className="font-semibold mb-2">Which duration should I use?</h4><p className="text-muted-foreground">Modified duration is standard for PVBP; effective duration for options.</p></div>
-          <div><h4 className="font-semibold mb-2">How to aggregate PVBP?</h4><p className="text-muted-foreground">Sum across positions with consistent sign conventions.</p></div>
-          <div><h4 className="font-semibold mb-2">Can PVBP be negative?</h4><p className="text-muted-foreground">For inverse floaters or short positions, PVBP can be negative.</p></div>
-          <div><h4 className="font-semibold mb-2">How does coupon affect PVBP?</h4><p className="text-muted-foreground">Higher coupon typically lowers duration and PVBP for the same price.</p></div>
-          <div><h4 className="font-semibold mb-2">What units?</h4><p className="text-muted-foreground">Dollar change per 1 bp move, in the same currency as price.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The PVBP Calculator determines dollar risk per basis point yield change. Use it to size hedges and measure portfolio rate sensitivity in dollar terms.</p></CardContent>
       </Card>
     </div>
   );

@@ -78,10 +78,33 @@ export default function DollarDurationCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Dollar Duration</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder guide.</p><p>Show relation to PVBP and hedging.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" />Formula Used</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto"><p className="font-mono text-sm text-center">Dollar Duration = Modified Duration × Price</p></div>
+          <p className="text-sm text-muted-foreground">Dollar price change for a 1% (100 bps) parallel yield shift.</p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Understanding the Inputs</CardTitle></CardHeader>
+        <CardContent><div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Clean Price</h4><p className="text-sm text-muted-foreground">Market price excluding accrued interest.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Modified Duration</h4><p className="text-sm text-muted-foreground">Measures price sensitivity per 1% yield change.</p></div>
+        </div></CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Dollar Duration</h1>
+        <p className="text-lg italic">Dollar duration translates percentage duration into absolute dollar terms for practical risk sizing.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Relationship to PVBP</h2>
+        <p>Divide dollar duration by 100 to get PVBP (DV01). Both metrics are essential for hedge ratio calculations.</p>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Dollar duration provides intuitive risk measurement in monetary terms for portfolio management and hedging.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Dollar duration</CardDescription></CardHeader>
@@ -90,13 +113,13 @@ export default function DollarDurationCalculator() {
           <div><h4 className="font-semibold mb-2">How do I convert to PVBP?</h4><p className="text-muted-foreground">Divide dollar duration by 100 to get per-basis-point value.</p></div>
           <div><h4 className="font-semibold mb-2">Can I sum across bonds?</h4><p className="text-muted-foreground">Yes—sum dollar durations to estimate portfolio rate sensitivity.</p></div>
           <div><h4 className="font-semibold mb-2">Which duration to use?</h4><p className="text-muted-foreground">Modified duration for bullet bonds; effective duration for options/structures.</p></div>
-          <div><h4 className="font-semibold mb-2">How often to update?</h4><p className="text-muted-foreground">Recalculate after significant rate or price moves.</p></div>
-          <div><h4 className="font-semibold mb-2">Does yield level matter?</h4><p className="text-muted-foreground">Duration itself changes with yield; dollar duration reflects this via price.</p></div>
-          <div><h4 className="font-semibold mb-2">Is sign important?</h4><p className="text-muted-foreground">Long bond positions have negative price change for yield rises (positive dollar duration magnitude).</p></div>
-          <div><h4 className="font-semibold mb-2">What about curve shifts?</h4><p className="text-muted-foreground">Dollar duration assumes parallel moves; for key-rate risk, use key-rate durations.</p></div>
-          <div><h4 className="font-semibold mb-2">How does convexity help?</h4><p className="text-muted-foreground">Convexity refines estimates for larger moves beyond linear duration.</p></div>
-          <div><h4 className="font-semibold mb-2">Units?</h4><p className="text-muted-foreground">Dollars (or local currency) per 1% change in yield.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Dollar Duration Calculator converts duration to dollar terms for intuitive risk assessment. Sum across positions to estimate total portfolio interest rate exposure.</p></CardContent>
       </Card>
     </div>
   );

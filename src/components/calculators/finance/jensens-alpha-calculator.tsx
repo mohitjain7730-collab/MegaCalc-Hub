@@ -91,7 +91,7 @@ export default function JensensAlphaCalculator() {
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Jensen’s Alpha</p><p className={`text-2xl font-bold ${result.alpha >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.alpha.toFixed(2)}%</p></div>
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interp}</p></div>
             </div>
-            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s,i)=>(<li key={i}>{s}</li>))}</ul></div>
+            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s, i) => (<li key={i}>{s}</li>))}</ul></div>
           </CardContent>
         </Card>
       )}
@@ -110,7 +110,23 @@ export default function JensensAlphaCalculator() {
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Jensen’s Alpha</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder for the full guide content.</p><p>Add methodology and examples.</p></CardContent>
+        {/* Formula Used */}
+        <Card className="mb-6">
+          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" />Formula Used</CardTitle></CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-4 bg-muted rounded-lg"><p className="font-mono text-sm text-center">α = Portfolio Return - [Rf + β × (Rm - Rf)]</p></div>
+          </CardContent>
+        </Card>
+        {/* Input Explanations */}
+        <Card className="mb-6">
+          <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Understanding the Inputs</CardTitle></CardHeader>
+          <CardContent><p className="text-sm text-muted-foreground">Enter portfolio return, market return, risk-free rate, and beta.</p></CardContent>
+        </Card>
+        {/* Complete SEO Guide */}
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 rounded-lg shadow-lg">
+          <h1 className="text-3xl font-extrabold text-foreground mb-4">Complete Guide to Jensen's Alpha</h1>
+          <p>Jensen's Alpha measures excess return above CAPM expectation, indicating manager skill.</p>
+        </section>
       </Card>
 
       <Card>
@@ -125,6 +141,12 @@ export default function JensensAlphaCalculator() {
           <div><h4 className="font-semibold mb-2">What if beta is unstable?</h4><p className="text-muted-foreground">Consider multi-factor models or shrinkage techniques to improve robustness.</p></div>
           <div><h4 className="font-semibold mb-2">Is alpha additive across funds?</h4><p className="text-muted-foreground">Not straightforward; diversification and correlations matter.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">Jensen's Alpha measures excess return above CAPM-expected return. Positive alpha indicates skill-based outperformance beyond systematic market exposure.</p></CardContent>
       </Card>
     </div>
   );

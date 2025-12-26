@@ -72,7 +72,7 @@ export default function ConvexityAdjustmentBondFuturesCalculator() {
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Convexity Adjustment</p><p className="text-2xl font-bold">{result.adjustment.toFixed(4)}</p></div>
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Estimated Futures Price</p><p className="text-2xl font-bold">{result.futuresPrice.toFixed(4)}</p></div>
             </div>
-            <div><h4 className="font-semibold mb-2">Notes</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.notes.map((s,i)=>(<li key={i}>{s}</li>))}</ul></div>
+            <div><h4 className="font-semibold mb-2">Notes</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.notes.map((s, i) => (<li key={i}>{s}</li>))}</ul></div>
           </CardContent>
         </Card>
       )}
@@ -89,23 +89,49 @@ export default function ConvexityAdjustmentBondFuturesCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Convexity Adjustment</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder for the guide content.</p><p>Explain difference between futures and forwards and the role of convexity.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" />Formula Used</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto"><p className="font-mono text-sm text-center">Adjustment = 0.5 × σ² × T × CF × Duration × Price</p></div>
+          <p className="text-sm text-muted-foreground">Futures price = Forward price + Convexity adjustment.</p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Understanding the Inputs</CardTitle></CardHeader>
+        <CardContent><div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Forward Price</h4><p className="text-sm text-muted-foreground">Price of underlying for forward delivery.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Yield Volatility</h4><p className="text-sm text-muted-foreground">Annualized yield volatility in percent.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">CTD Duration & CF</h4><p className="text-sm text-muted-foreground">Cheapest-to-deliver bond duration and conversion factor.</p></div>
+        </div></CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Convexity Adjustment</h1>
+        <p className="text-lg italic">The convexity adjustment accounts for the difference between forward and futures pricing due to daily settlement (marking to market).</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Why It Matters</h2>
+        <p>Without the adjustment, futures prices would diverge from forward prices. Higher volatility and longer tenors increase the adjustment magnitude.</p>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Understanding convexity adjustment is crucial for accurate bond futures pricing and hedging strategies.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Bond futures pricing</CardDescription></CardHeader>
         <CardContent className="space-y-6">
           <div><h4 className="font-semibold mb-2">Why is there a convexity adjustment?</h4><p className="text-muted-foreground">Because futures are marked to market; daily settlement changes effective financing.</p></div>
           <div><h4 className="font-semibold mb-2">Does higher volatility increase adjustment?</h4><p className="text-muted-foreground">Yes—adjustment scales with the square of yield volatility.</p></div>
-          <div><h4 className="font-semibold mb-2">Which duration should I use?</h4><p className="text-muted-foreground">Use the CTD bond’s duration adjusted by the conversion factor.</p></div>
+          <div><h4 className="font-semibold mb-2">Which duration should I use?</h4><p className="text-muted-foreground">Use the CTD bond's duration adjusted by the conversion factor.</p></div>
           <div><h4 className="font-semibold mb-2">Is this exact?</h4><p className="text-muted-foreground">No—use exchange-specific models for production use.</p></div>
-          <div><h4 className="font-semibold mb-2">What if conversion factor is 1?</h4><p className="text-muted-foreground">Then the CTD bond is close to the contract standard; adjustment still depends on duration and vol.</p></div>
-          <div><h4 className="font-semibold mb-2">Should I use yield or price volatility?</h4><p className="text-muted-foreground">Use yield volatility in this approximation; price vol requires mapping via duration/convexity.</p></div>
-          <div><h4 className="font-semibold mb-2">How sensitive is the result to duration?</h4><p className="text-muted-foreground">Highly—test a reasonable CTD range and monitor changes as the CTD shifts.</p></div>
-          <div><h4 className="font-semibold mb-2">Does the adjustment apply to all futures?</h4><p className="text-muted-foreground">Conceptually yes for interest-rate futures; parameters and conventions differ by contract.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Convexity Adjustment Calculator estimates the difference between forward and futures prices due to daily mark-to-market. Essential for accurate bond futures valuation and hedging.</p></CardContent>
       </Card>
     </div>
   );

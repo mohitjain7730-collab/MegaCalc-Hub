@@ -56,7 +56,7 @@ export default function EfficientFrontierVisualizer() {
       const w1 = i / (n - 1);
       const w2 = 1 - w1;
       const ret = w1 * v.r1 + w2 * v.r2;
-      const variance = (w1*w1*s1*s1) + (w2*w2*s2*s2) + (2*w1*w2*cov);
+      const variance = (w1 * w1 * s1 * s1) + (w2 * w2 * s2 * s2) + (2 * w1 * w2 * cov);
       const std = Math.sqrt(variance) * 100;
       pts.push({ w1, w2, ret, std });
     }
@@ -201,7 +201,7 @@ export default function EfficientFrontierVisualizer() {
                 {bestPoints.map((p, i) => (
                   <div key={i} className="p-4 border rounded-lg">
                     <p className="text-sm text-muted-foreground">w1 / w2</p>
-                    <p className="font-semibold">{(p.w1*100).toFixed(0)}% / {(p.w2*100).toFixed(0)}%</p>
+                    <p className="font-semibold">{(p.w1 * 100).toFixed(0)}% / {(p.w2 * 100).toFixed(0)}%</p>
                     <p className="text-sm text-muted-foreground">Return</p>
                     <p className="font-semibold">{p.ret.toFixed(2)}%</p>
                     <p className="text-sm text-muted-foreground">Std</p>
@@ -225,8 +225,8 @@ export default function EfficientFrontierVisualizer() {
                   <tbody>
                     {points.map((p, i) => (
                       <tr key={i} className="border-t">
-                        <td className="p-2">{(p.w1*100).toFixed(1)}%</td>
-                        <td className="p-2">{(p.w2*100).toFixed(1)}%</td>
+                        <td className="p-2">{(p.w1 * 100).toFixed(1)}%</td>
+                        <td className="p-2">{(p.w2 * 100).toFixed(1)}%</td>
                         <td className="p-2">{p.ret.toFixed(2)}</td>
                         <td className="p-2">{p.std.toFixed(2)}</td>
                       </tr>
@@ -270,19 +270,76 @@ export default function EfficientFrontierVisualizer() {
         </CardContent>
       </Card>
 
-      {/* Guide Section */}
-      <Card>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Portfolio Return = w₁·r₁ + w₂·r₂
+            </p>
+            <p className="font-mono text-sm text-center mt-2">
+              Portfolio σ = √(w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρσ₁σ₂)
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Generated across all weight combinations from 0% to 100% in Asset 1.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
-            Complete Guide to Efficient Frontiers
+            Understanding the Inputs
           </CardTitle>
         </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Placeholder: Add your complete guide content on efficient frontiers here.</p>
-          <p>Include methodology, assumptions, and interpretation tips.</p>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Expected Returns</h4>
+              <p className="text-sm text-muted-foreground">Anticipated annual returns for each asset.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Standard Deviations</h4>
+              <p className="text-sm text-muted-foreground">Volatility of each asset.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Correlation & Points</h4>
+              <p className="text-sm text-muted-foreground">Asset correlation and number of weight combinations to generate.</p>
+            </div>
+          </div>
         </CardContent>
       </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to the Efficient Frontier</h1>
+        <p className="text-lg italic text-muted-foreground">Understanding the set of optimal portfolios that offer maximum return for each risk level.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is the Efficient Frontier?</h2>
+        <p>The efficient frontier is the set of portfolios offering the highest expected return for each level of risk. Portfolios below the frontier are suboptimal—you can get more return for the same risk.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">How Correlation Shapes the Frontier</h2>
+        <p>Lower correlation between assets "bends" the frontier leftward, creating portfolios with lower risk for the same expected return. This is the mathematical basis for diversification benefits.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Using This Visualizer</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Enter your expected returns and volatilities for two assets.</li>
+          <li>Set the correlation coefficient between them.</li>
+          <li>Generate points to see the full range of possible portfolios.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>The efficient frontier is central to modern portfolio theory. This visualizer helps you understand how different weight combinations affect portfolio risk and return.</p>
+      </section>
 
       {/* FAQ Section */}
       <Card>

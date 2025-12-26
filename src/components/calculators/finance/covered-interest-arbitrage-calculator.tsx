@@ -72,7 +72,7 @@ export default function CoveredInterestArbitrageCalculator() {
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Deviation</p><p className={`text-2xl font-bold ${result.deviationPct >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.deviationPct.toFixed(3)}%</p></div>
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Opportunity</p><p className="font-medium">{result.opportunity}</p></div>
             </div>
-            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s,i)=>(<li key={i}>{s}</li>))}</ul></div>
+            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s, i) => (<li key={i}>{s}</li>))}</ul></div>
           </CardContent>
         </Card>
       )}
@@ -89,10 +89,68 @@ export default function CoveredInterestArbitrageCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Covered Interest Arbitrage</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder for arbitrage guide.</p><p>Describe cash-and-carry and reverse cash-and-carry steps.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Parity Forward = S × (1 + r_d × t) / (1 + r_f × t)
+            </p>
+            <p className="font-mono text-sm text-center mt-2">
+              Deviation = (Market Forward - Parity Forward) / Parity Forward
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Arbitrage exists if market forward deviates from interest rate parity.
+          </p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Spot & Forward Rates</h4>
+              <p className="text-sm text-muted-foreground">Current spot and market-quoted forward exchange rates.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Interest Rates & Time</h4>
+              <p className="text-sm text-muted-foreground">Domestic/foreign rates and forward contract tenor.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Covered Interest Arbitrage</h1>
+        <p className="text-lg italic text-muted-foreground">Identify risk-free FX arbitrage opportunities from parity deviations.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Covered Interest Arbitrage?</h2>
+        <p>Covered interest arbitrage exploits deviations between market forward rates and rates implied by interest rate parity. The "covered" aspect means using forwards to eliminate currency risk.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">How to Trade</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Forward too high:</strong> Sell forward, invest in foreign currency.</li>
+          <li><strong>Forward too low:</strong> Buy forward, invest in domestic currency.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>True arbitrage is rare due to transaction costs and capital constraints. This calculator helps identify theoretical opportunities.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Arbitrage mechanics</CardDescription></CardHeader>
@@ -106,6 +164,12 @@ export default function CoveredInterestArbitrageCalculator() {
           <div><h4 className="font-semibold mb-2">How do I annualize arbitrage returns?</h4><p className="text-muted-foreground">Scale the carry component by tenor (e.g., multiply monthly return by 12) while accounting for compounding.</p></div>
           <div><h4 className="font-semibold mb-2">Can forward-dealer margins erase the edge?</h4><p className="text-muted-foreground">Yes—include bid/ask on spot/forward, borrowing/lending spreads, and fees before concluding an opportunity exists.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Covered Interest Arbitrage Calculator identifies deviations between market forward rates and interest rate parity. Deviations represent potential risk-free arbitrage opportunities, though transaction costs often eliminate real profits.</p></CardContent>
       </Card>
     </div>
   );

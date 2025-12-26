@@ -73,7 +73,7 @@ export default function FinancialLeverageEffectCalculator() {
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Leverage Effect</p><p className={`text-2xl font-bold ${result.leverageEffect >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.leverageEffect.toFixed(2)}%</p></div>
               <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interpretation}</p></div>
             </div>
-            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s,i)=>(<li key={i}>{s}</li>))}</ul></div>
+            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s, i) => (<li key={i}>{s}</li>))}</ul></div>
           </CardContent>
         </Card>
       )}
@@ -88,10 +88,66 @@ export default function FinancialLeverageEffectCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Leverage Effect</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder for the guide content.</p><p>Explain ROA, ROE, interest tax shield, and risks.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              ROE = ROA + (D/E) × (ROA - r_d × (1 - Tax Rate))
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Leverage amplifies ROE when ROA exceeds the after-tax cost of debt.
+          </p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">ROA & Interest Rate (%)</h4>
+              <p className="text-sm text-muted-foreground">Return on assets and the borrowing cost on debt.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">D/E & Tax Rate</h4>
+              <p className="text-sm text-muted-foreground">Debt-to-equity ratio and effective tax rate for interest shield.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Financial Leverage Effect</h1>
+        <p className="text-lg italic text-muted-foreground">Understand how debt financing impacts return on equity.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is the Leverage Effect?</h2>
+        <p>Financial leverage amplifies ROE by using debt financing. When ROA exceeds the after-tax cost of debt, borrowing boosts shareholder returns. When ROA falls below debt cost, leverage destroys value.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Key Considerations</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Higher leverage increases both upside potential and downside risk.</li>
+          <li>The tax shield on interest reduces the effective cost of debt.</li>
+          <li>Rising rates or falling ROA can quickly reverse positive leverage effects.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Understanding leverage effects is crucial for capital structure decisions. This calculator helps quantify how debt impacts shareholder returns.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Leverage and returns</CardDescription></CardHeader>
@@ -105,6 +161,12 @@ export default function FinancialLeverageEffectCalculator() {
           <div><h4 className="font-semibold mb-2">How often should I reassess?</h4><p className="text-muted-foreground">Review quarterly or when ROA or rates change meaningfully.</p></div>
           <div><h4 className="font-semibold mb-2">Is this the DuPont model?</h4><p className="text-muted-foreground">Related—DuPont decomposes ROE; this focuses on the leverage term.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Financial Leverage Effect Calculator shows how debt financing impacts ROE. Leverage amplifies returns when ROA exceeds after-tax debt cost, but increases risk when profitability declines.</p></CardContent>
       </Card>
     </div>
   );

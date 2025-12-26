@@ -225,19 +225,66 @@ export default function AssetCorrelationMatrixCalculator() {
         </CardContent>
       </Card>
 
-      {/* Guide Section */}
-      <Card>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              ρ(A,B) = Cov(A,B) / (σ_A × σ_B)
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Pearson correlation coefficient measures linear relationship between two return series (-1 to +1).
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
-            Complete Guide to Correlation Matrices
+            Understanding the Inputs
           </CardTitle>
         </CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Placeholder: Add your in-depth guide covering Pearson correlation and use cases.</p>
-          <p>Include pitfalls, sample size effects, and rolling correlation analysis.</p>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Asset Names</h4>
+              <p className="text-sm text-muted-foreground">Labels for your assets (e.g., Stocks, Bonds, Gold).</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Return Series</h4>
+              <p className="text-sm text-muted-foreground">Historical percentage returns (comma/space separated). Use consistent periods.</p>
+            </div>
+          </div>
         </CardContent>
       </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Asset Correlation Matrices</h1>
+        <p className="text-lg italic text-muted-foreground">Learn how to compute and interpret correlation matrices for portfolio construction.</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is a Correlation Matrix?</h2>
+        <p>A correlation matrix shows pairwise correlations between all assets. It's symmetric (ρ(A,B) = ρ(B,A)) with 1s on the diagonal (each asset is perfectly correlated with itself).</p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Interpreting Correlations</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>+1:</strong> Perfect positive correlation—assets move in lockstep.</li>
+          <li><strong>0:</strong> No linear relationship.</li>
+          <li><strong>-1:</strong> Perfect negative correlation—assets move in opposite directions.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Correlation matrices are essential for portfolio optimization. Use them to identify diversification opportunities and understand how your assets relate to each other.</p>
+      </section>
 
       {/* FAQ Section */}
       <Card>
@@ -282,6 +329,12 @@ export default function AssetCorrelationMatrixCalculator() {
             <p className="text-muted-foreground">Yes, but microstructure noise may distort relationships; align frequency with horizon.</p>
           </div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Asset Correlation Matrix Calculator computes pairwise Pearson correlations from return series. Use it to identify diversification opportunities—lower correlations mean greater potential for risk reduction when combining assets.</p></CardContent>
       </Card>
     </div>
   );

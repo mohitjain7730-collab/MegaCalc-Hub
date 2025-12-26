@@ -85,10 +85,33 @@ export default function DurationGapCalculator() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Complete Guide to Duration Gap</CardTitle></CardHeader>
-        <CardContent className="prose prose-sm dark:prose-invert max-w-none"><p>Placeholder for duration gap guide.</p><p>Cover immunization and derivatives usage.</p></CardContent>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" />Formula Used</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto"><p className="font-mono text-sm text-center">Duration Gap = DA - (L/A) × DL</p></div>
+          <p className="text-sm text-muted-foreground">Where DA = asset duration, DL = liability duration, L/A = leverage ratio.</p>
+        </CardContent>
       </Card>
+
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Understanding the Inputs</CardTitle></CardHeader>
+        <CardContent><div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Asset & Liability Duration</h4><p className="text-sm text-muted-foreground">Weighted average durations of assets and liabilities.</p></div>
+          <div className="p-4 bg-muted/50 rounded-lg"><h4 className="font-semibold mb-2">Total Assets & Liabilities</h4><p className="text-sm text-muted-foreground">Market values used to compute leverage ratio.</p></div>
+        </div></CardContent>
+      </Card>
+
+      {/* Complete SEO Guide */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Duration Gap</h1>
+        <p className="text-lg italic">Duration gap quantifies balance sheet interest rate sensitivity. Positive gap means asset-sensitive; negative gap means liability-sensitive.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Immunization Strategy</h2>
+        <p>Setting duration gap to zero immunizes equity value from parallel rate shifts. Derivatives like interest rate swaps help fine-tune exposures.</p>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+        <p>Duration gap analysis is essential for banks, insurers, and pension funds managing interest rate risk.</p>
+      </section>
 
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Duration gap and ALM</CardDescription></CardHeader>
@@ -98,11 +121,13 @@ export default function DurationGapCalculator() {
           <div><h4 className="font-semibold mb-2">How to reduce it?</h4><p className="text-muted-foreground">Match durations or use swaps/futures to adjust exposures.</p></div>
           <div><h4 className="font-semibold mb-2">Does convexity matter?</h4><p className="text-muted-foreground">Yes—gap is a first-order measure; convexity further refines risk.</p></div>
           <div><h4 className="font-semibold mb-2">Is negative gap bad?</h4><p className="text-muted-foreground">Not inherently; it indicates liability sensitivity (benefits from rising rates).</p></div>
-          <div><h4 className="font-semibold mb-2">How often to update?</h4><p className="text-muted-foreground">After portfolio changes or significant yield curve shifts.</p></div>
-          <div><h4 className="font-semibold mb-2">How does leverage amplify gap risk?</h4><p className="text-muted-foreground">Higher liabilities relative to assets scale the impact of duration mismatches on equity value.</p></div>
-          <div><h4 className="font-semibold mb-2">Should I use Macaulay or modified duration?</h4><p className="text-muted-foreground">Use a consistent convention; modified duration ties more directly to price sensitivity.</p></div>
-          <div><h4 className="font-semibold mb-2">Does yield curve shape matter?</h4><p className="text-muted-foreground">Yes—parallel shift assumption is simplistic; use key-rate durations for curve risk.</p></div>
         </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card>
+        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
+        <CardContent><p className="text-muted-foreground">The Duration Gap Calculator measures balance sheet sensitivity to interest rate movements. Use it for ALM (Asset-Liability Management) to identify and hedge interest rate risk exposures.</p></CardContent>
       </Card>
     </div>
   );
