@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, CheckCircle, Info, DollarSign, Calculator, Globe, FileText } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Info, DollarSign, Calculator, Globe, FileText, Target, FunctionSquare, CheckCircle2, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { EmbedWidget } from '@/components/embed-widget';
 
@@ -36,29 +36,29 @@ const calculateBalloonLoan = (values: FormValues) => {
   // Convert to monthly values
   const monthlyRate = interestRate / 100 / 12;
   const totalPayments = balloonTerm * 12;
-  
+
   // Calculate regular payment (excluding balloon)
-  const regularPayment = (loanAmount - balloonPayment) * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
-                        (Math.pow(1 + monthlyRate, totalPayments) - 1);
-  
+  const regularPayment = (loanAmount - balloonPayment) * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) /
+    (Math.pow(1 + monthlyRate, totalPayments) - 1);
+
   // Calculate total interest
   const totalInterest = (regularPayment * totalPayments) + balloonPayment - loanAmount;
-  
+
   // Calculate balloon payment percentage
   const balloonPercentage = (balloonPayment / loanAmount) * 100;
-  
+
   // Calculate remaining balance at balloon term
   const remainingBalance = balloonPayment;
-  
+
   // Calculate total paid
   const totalPaid = (regularPayment * totalPayments) + balloonPayment;
-  
+
   // Calculate interest savings vs traditional loan
-  const traditionalPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, loanTerm * 12)) / 
-                           (Math.pow(1 + monthlyRate, loanTerm * 12) - 1);
+  const traditionalPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, loanTerm * 12)) /
+    (Math.pow(1 + monthlyRate, loanTerm * 12) - 1);
   const traditionalTotal = traditionalPayment * loanTerm * 12;
   const interestSavings = traditionalTotal - totalPaid;
-  
+
   return {
     regularPayment,
     balloonPayment,
@@ -113,12 +113,12 @@ const getBalloonStatus = (result: ReturnType<typeof calculateBalloonLoan>, value
 
 const getDetailedInterpretation = (result: ReturnType<typeof calculateBalloonLoan>, values: FormValues) => {
   const interpretations = [];
-  
+
   // Balloon payment analysis
   interpretations.push(`Your balloon payment of $${result.balloonPayment.toFixed(2)} represents ${result.balloonPercentage.toFixed(1)}% of the original loan amount`);
   interpretations.push(`Regular monthly payment: $${result.regularPayment.toFixed(2)}`);
   interpretations.push(`Total interest over the loan term: $${result.totalInterest.toFixed(2)}`);
-  
+
   // Risk assessment
   if (result.balloonPercentage > 50) {
     interpretations.push('High balloon payment risk - requires significant planning');
@@ -133,7 +133,7 @@ const getDetailedInterpretation = (result: ReturnType<typeof calculateBalloonLoa
     interpretations.push('Good balance between low payments and balloon risk');
     interpretations.push('Consider if this fits your financial situation');
   }
-  
+
   // Interest analysis
   if (result.interestSavings > 0) {
     interpretations.push(`You will save $${result.interestSavings.toFixed(2)} compared to a traditional loan`);
@@ -150,7 +150,7 @@ const getDetailedInterpretation = (result: ReturnType<typeof calculateBalloonLoa
 
 const getPersonalizedRecommendations = (result: ReturnType<typeof calculateBalloonLoan>, values: FormValues) => {
   const recommendations = [];
-  
+
   // Balloon payment planning
   if (result.balloonPercentage > 50) {
     recommendations.push('Start saving for the balloon payment immediately');
@@ -167,7 +167,7 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateBallo
     recommendations.push('Consider if you can afford the balloon payment when due');
     recommendations.push('Monitor your financial situation and adjust as needed');
   }
-  
+
   // Interest rate recommendations
   if (values.interestRate > 6) {
     recommendations.push('High interest rate - consider refinancing if rates drop');
@@ -182,7 +182,7 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateBallo
     recommendations.push('Consider if the lower payments are worth the balloon risk');
     recommendations.push('Plan for the balloon payment but enjoy the low payments');
   }
-  
+
   // Term recommendations
   if (values.balloonTerm < 5) {
     recommendations.push('Short balloon term - plan for the payment soon');
@@ -203,12 +203,12 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateBallo
 
 const getBalloonStrategies = (result: ReturnType<typeof calculateBalloonLoan>, values: FormValues) => {
   const strategies = [];
-  
+
   strategies.push('Start saving for the balloon payment immediately');
   strategies.push('Consider refinancing options well before the balloon date');
   strategies.push('Plan for selling the asset if you cannot afford the balloon payment');
   strategies.push('Set up a dedicated savings account for the balloon payment');
-  
+
   if (result.balloonPercentage > 50) {
     strategies.push('High balloon payment - consider if this loan is right for you');
     strategies.push('Plan for multiple payment options (refinance, sell, save)');
@@ -218,7 +218,7 @@ const getBalloonStrategies = (result: ReturnType<typeof calculateBalloonLoan>, v
     strategies.push('Consider your ability to make the balloon payment');
     strategies.push('Balance the benefits and risks');
   }
-  
+
   if (values.interestRate > 5) {
     strategies.push('High interest rate - monitor for refinancing opportunities');
     strategies.push('Consider if the balloon loan is worth the risk');
@@ -271,31 +271,31 @@ export default function BalloonPaymentLoanCalculator() {
                   <FormItem>
                     <FormLabel>Loan Amount ($)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.01" 
+                      <Input
+                        type="number"
+                        step="0.01"
                         placeholder="e.g., 300000"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
                     <p className="text-sm text-muted-foreground">Total amount of the loan</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="interestRate" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Interest Rate (%)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.01" 
+                      <Input
+                        type="number"
+                        step="0.01"
                         placeholder="e.g., 6.5"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -309,31 +309,31 @@ export default function BalloonPaymentLoanCalculator() {
                   <FormItem>
                     <FormLabel>Total Loan Term (years)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="1" 
+                      <Input
+                        type="number"
+                        step="1"
                         placeholder="e.g., 30"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
                     <p className="text-sm text-muted-foreground">Total length of the loan</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="balloonTerm" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Balloon Term (years)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="1" 
+                      <Input
+                        type="number"
+                        step="1"
                         placeholder="e.g., 5"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -347,26 +347,26 @@ export default function BalloonPaymentLoanCalculator() {
                   <FormItem>
                     <FormLabel>Balloon Payment ($)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.01" 
+                      <Input
+                        type="number"
+                        step="0.01"
                         placeholder="e.g., 250000"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
                     <p className="text-sm text-muted-foreground">Amount due at balloon term</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Payment Frequency</FormLabel>
                     <FormControl>
-                      <select 
-                        {...field} 
+                      <select
+                        {...field}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="monthly">Monthly</option>
@@ -468,6 +468,78 @@ export default function BalloonPaymentLoanCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Balloon loan advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Lower monthly payments than standard loans</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Ideal for short-term holdings or flips</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Better cash flow during the loan term</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertTriangle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Large final payment requires advance planning</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Refinancing risk if rates rise or credit drops</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Asset value may decline before balloon due</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              PMT = P × [r(1+r)^N] / [(1+r)^N - 1]<br />
+              Balloon = Remaining Balance at Maturity
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Payments calculated on phantom amortization; balloon is the residual principal.
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Related Calculators */}
       <Card>
         <CardHeader>
@@ -527,111 +599,111 @@ export default function BalloonPaymentLoanCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Balloon Payment Loans: Structure, Amortization, and Final Lump Sum Calculation" />
-    <meta itemProp="description" content="An expert guide detailing the structure of a Balloon Payment Loan, how monthly payments are calculated (using a phantom amortization period), and the formula for determining the final large lump sum due at maturity." />
-    <meta itemProp="keywords" content="balloon payment loan calculator, how balloon payment is calculated, partial amortization mortgage, interest rate risk balloon loan, negative amortization vs balloon, final lump sum payment formula" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-balloon-payment-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Balloon Payment Loans: Structure, Amortization, and Final Lump Sum Calculation" />
+        <meta itemProp="description" content="An expert guide detailing the structure of a Balloon Payment Loan, how monthly payments are calculated (using a phantom amortization period), and the formula for determining the final large lump sum due at maturity." />
+        <meta itemProp="keywords" content="balloon payment loan calculator, how balloon payment is calculated, partial amortization mortgage, interest rate risk balloon loan, negative amortization vs balloon, final lump sum payment formula" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-balloon-payment-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Balloon Payment Loans: Understanding the Final Lump Sum Liability</h1>
-    <p className="text-lg italic text-muted-foreground">Master the unique loan structure that offers low initial payments in exchange for a single, large principal payment due at maturity.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Balloon Payment Loans: Understanding the Final Lump Sum Liability</h1>
+        <p className="text-lg italic text-muted-foreground">Master the unique loan structure that offers low initial payments in exchange for a single, large principal payment due at maturity.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#structure" className="hover:underline">Loan Structure: Maturity vs. Amortization Period</a></li>
-        <li><a href="#payment-calc" className="hover:underline">Calculating the Monthly Payment (Partial Amortization)</a></li>
-        <li><a href="#balloon-calc" className="hover:underline">The Balloon Payment Formula and Final Principal Due</a></li>
-        <li><a href="#risks" className="hover:underline">Key Financial Risks and Borrower Suitability</a></li>
-        <li><a href="#comparison" className="hover:underline">Balloon Loans vs. Standard Mortgages and ARMs</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#structure" className="hover:underline">Loan Structure: Maturity vs. Amortization Period</a></li>
+          <li><a href="#payment-calc" className="hover:underline">Calculating the Monthly Payment (Partial Amortization)</a></li>
+          <li><a href="#balloon-calc" className="hover:underline">The Balloon Payment Formula and Final Principal Due</a></li>
+          <li><a href="#risks" className="hover:underline">Key Financial Risks and Borrower Suitability</a></li>
+          <li><a href="#comparison" className="hover:underline">Balloon Loans vs. Standard Mortgages and ARMs</a></li>
+        </ul>
+        <hr />
 
-    {/* LOAN STRUCTURE: MATURITY VS. AMORTIZATION PERIOD */}
-    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loan Structure: Maturity vs. Amortization Period</h2>
-    <p>A <strong className="font-semibold">Balloon Payment Loan</strong> is characterized by a significant discrepancy between its **Maturity Period** (the actual length of the loan) and its **Amortization Period** (the length of time used to calculate the payments).</p>
+        {/* LOAN STRUCTURE: MATURITY VS. AMORTIZATION PERIOD */}
+        <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loan Structure: Maturity vs. Amortization Period</h2>
+        <p>A <strong className="font-semibold">Balloon Payment Loan</strong> is characterized by a significant discrepancy between its **Maturity Period** (the actual length of the loan) and its **Amortization Period** (the length of time used to calculate the payments).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Maturity Period (Short Term)</h3>
-    <p>The **Maturity Period** is the actual, relatively short term of the loan, often 5, 7, or 10 years. This is the date when the final, large principal payment (the "balloon") is due.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Maturity Period (Short Term)</h3>
+        <p>The **Maturity Period** is the actual, relatively short term of the loan, often 5, 7, or 10 years. This is the date when the final, large principal payment (the "balloon") is due.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Amortization Period (Long Term)</h3>
-    <p>The **Amortization Period** (or **Phantom Amortization Period**) is a longer term, typically 30 years (360 months), used *only* for calculating the low, fixed monthly payment. The loan does not actually last 30 years; this term is used simply to keep the payment low through **partial amortization**.</p>
-    <p>Because the fixed monthly payments are calculated as if the loan will amortize over 30 years, they are too small to pay off the principal within the actual 5- or 7-year maturity period, resulting in a large remaining balance.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Amortization Period (Long Term)</h3>
+        <p>The **Amortization Period** (or **Phantom Amortization Period**) is a longer term, typically 30 years (360 months), used *only* for calculating the low, fixed monthly payment. The loan does not actually last 30 years; this term is used simply to keep the payment low through **partial amortization**.</p>
+        <p>Because the fixed monthly payments are calculated as if the loan will amortize over 30 years, they are too small to pay off the principal within the actual 5- or 7-year maturity period, resulting in a large remaining balance.</p>
 
-<hr />
+        <hr />
 
-    {/* CALCULATING THE MONTHLY PAYMENT (PARTIAL AMORTIZATION) */}
-    <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Monthly Payment (Partial Amortization)</h2>
-    <p>The low monthly payment (PMT) in a balloon loan is calculated using the long, phantom amortization term, despite the loan's actual short maturity.</p>
+        {/* CALCULATING THE MONTHLY PAYMENT (PARTIAL AMORTIZATION) */}
+        <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Monthly Payment (Partial Amortization)</h2>
+        <p>The low monthly payment (PMT) in a balloon loan is calculated using the long, phantom amortization term, despite the loan's actual short maturity.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Process</h3>
-    <p>The payment is calculated using the standard Loan Amortization Formula, substituting the long amortization period (e.g., 360 months) for the short maturity period (e.g., 60 months). This artificially reduces the principal component of the payment:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Process</h3>
+        <p>The payment is calculated using the standard Loan Amortization Formula, substituting the long amortization period (e.g., 360 months) for the short maturity period (e.g., 60 months). This artificially reduces the principal component of the payment:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'PMT = P * r * [ (1 + r)^N_amort / ((1 + r)^N_amort - 1) ]'}
-        </p>
-    </div>
-    <p>Where N amort is the full (e.g., 360-month) amortization period used for calculation.</p>
+          </p>
+        </div>
+        <p>Where N amort is the full (e.g., 360-month) amortization period used for calculation.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Partial Amortization</h3>
-    <p>During the short maturity period, the loan only partially amortizes. The monthly payment is larger than the monthly interest due, so the principal *does* shrink, but only slightly. This distinguishes the balloon loan from an **Interest-Only Loan**, where the principal remains fixed, and a **Negative Amortization Loan**, where the principal actually increases.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Partial Amortization</h3>
+        <p>During the short maturity period, the loan only partially amortizes. The monthly payment is larger than the monthly interest due, so the principal *does* shrink, but only slightly. This distinguishes the balloon loan from an **Interest-Only Loan**, where the principal remains fixed, and a **Negative Amortization Loan**, where the principal actually increases.</p>
 
-<hr />
+        <hr />
 
-    {/* THE BALLOON PAYMENT FORMULA AND FINAL PRINCIPAL DUE */}
-    <h2 id="balloon-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Balloon Payment Formula and Final Principal Due</h2>
-    <p>The **Balloon Payment** is the remaining outstanding principal balance at the exact moment the short maturity term expires. It represents the largest financial liability of the loan.</p>
+        {/* THE BALLOON PAYMENT FORMULA AND FINAL PRINCIPAL DUE */}
+        <h2 id="balloon-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Balloon Payment Formula and Final Principal Due</h2>
+        <p>The **Balloon Payment** is the remaining outstanding principal balance at the exact moment the short maturity term expires. It represents the largest financial liability of the loan.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating the Final Balance (The Balloon)</h3>
-    <p>The balloon payment (B) is calculated by finding the Present Value of the remaining payments that would have been due under the original phantom amortization schedule. It is simpler to calculate the remaining balance after N maturity payments have been made:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Calculating the Final Balance (The Balloon)</h3>
+        <p>The balloon payment (B) is calculated by finding the Present Value of the remaining payments that would have been due under the original phantom amortization schedule. It is simpler to calculate the remaining balance after N maturity payments have been made:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Balloon Payment = Remaining Principal Balance after N_{maturity} Payments'}
-        </p>
-    </div>
-    <p>This payment must be repaid in full at the loan's maturity. Failure to make this payment constitutes a default on the loan.</p>
+          </p>
+        </div>
+        <p>This payment must be repaid in full at the loan's maturity. Failure to make this payment constitutes a default on the loan.</p>
 
-<hr />
+        <hr />
 
-    {/* KEY FINANCIAL RISKS AND BORROWER SUITABILITY */}
-    <h2 id="risks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Financial Risks and Borrower Suitability</h2>
-    <p>Balloon loans carry significant risk due to the single, large final payment, making them suitable only for specific financing scenarios.</p>
+        {/* KEY FINANCIAL RISKS AND BORROWER SUITABILITY */}
+        <h2 id="risks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Financial Risks and Borrower Suitability</h2>
+        <p>Balloon loans carry significant risk due to the single, large final payment, making them suitable only for specific financing scenarios.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Refinancing Risk (The Primary Hazard)</h3>
-    <p>The largest risk is that the borrower cannot make the balloon payment and is unable to **refinance** the remaining principal when the loan matures. If interest rates have risen or the borrower's credit score has dropped, refinancing may be impossible or prohibitively expensive, leading to foreclosure.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Refinancing Risk (The Primary Hazard)</h3>
+        <p>The largest risk is that the borrower cannot make the balloon payment and is unable to **refinance** the remaining principal when the loan matures. If interest rates have risen or the borrower's credit score has dropped, refinancing may be impossible or prohibitively expensive, leading to foreclosure.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Market Value Risk</h3>
-    <p>If the asset (e.g., property) securing the loan has decreased in market value, the lender may be unwilling to refinance the full amount of the balloon payment, leaving the borrower with a large, immediate, uncovered liability.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Market Value Risk</h3>
+        <p>If the asset (e.g., property) securing the loan has decreased in market value, the lender may be unwilling to refinance the full amount of the balloon payment, leaving the borrower with a large, immediate, uncovered liability.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Borrower Profile Suitability</h3>
-    <p>Balloon loans are generally suitable for:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Flippers/Short-Term Holders:</strong> Investors who plan to sell the asset before the balloon payment is due.</li>
-        <li><strong className="font-semibold">Commercial Real Estate:</strong> Used when a commercial buyer expects a significant cash event (e.g., selling another property or securing a tenant) before the maturity date.</li>
-        <li><strong className="font-semibold">Bridge Financing:</strong> Used as temporary debt until long-term financing can be secured.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Borrower Profile Suitability</h3>
+        <p>Balloon loans are generally suitable for:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Flippers/Short-Term Holders:</strong> Investors who plan to sell the asset before the balloon payment is due.</li>
+          <li><strong className="font-semibold">Commercial Real Estate:</strong> Used when a commercial buyer expects a significant cash event (e.g., selling another property or securing a tenant) before the maturity date.</li>
+          <li><strong className="font-semibold">Bridge Financing:</strong> Used as temporary debt until long-term financing can be secured.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* BALLOON LOANS VS. STANDARD MORTGAGES AND ARMS */}
-    <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Balloon Loans vs. Standard Mortgages and ARMs</h2>
-    <p>Balloon loans achieve low payments through structural debt design, whereas other loan types achieve low payments through interest rate mechanisms.</p>
+        {/* BALLOON LOANS VS. STANDARD MORTGAGES AND ARMS */}
+        <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Balloon Loans vs. Standard Mortgages and ARMs</h2>
+        <p>Balloon loans achieve low payments through structural debt design, whereas other loan types achieve low payments through interest rate mechanisms.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Distinction from Fixed-Rate Loans</h3>
-    <p>A standard fixed-rate loan is **fully amortizing**—the monthly payments are large enough to reduce the principal to zero by the maturity date. A balloon loan is **partially amortizing**, leaving a residual balance.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Distinction from Fixed-Rate Loans</h3>
+        <p>A standard fixed-rate loan is **fully amortizing**—the monthly payments are large enough to reduce the principal to zero by the maturity date. A balloon loan is **partially amortizing**, leaving a residual balance.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Distinction from ARMs</h3>
-    <p>While an Adjustable Rate Mortgage (ARM) shifts interest rate risk to the borrower, an ARM is **fully amortizing** over its full term (e.g., 30 years). A balloon loan creates a massive **refinancing risk** by forcing the borrower to find new financing for the lump sum at the end of the short maturity period, regardless of the prevailing interest rate environment.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Distinction from ARMs</h3>
+        <p>While an Adjustable Rate Mortgage (ARM) shifts interest rate risk to the borrower, an ARM is **fully amortizing** over its full term (e.g., 30 years). A balloon loan creates a massive **refinancing risk** by forcing the borrower to find new financing for the lump sum at the end of the short maturity period, regardless of the prevailing interest rate environment.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Balloon Payment Loan is a specialized debt instrument defined by its use of a long, **phantom amortization period** to artificially reduce the fixed monthly payment, resulting in a single, large principal payment due at a short **maturity date**.</p>
-    <p>While providing superior cash flow in the short term, the financial viability of the loan relies entirely on the borrower's ability to pay off or refinance the **balloon payment** when it is due. This inherent **refinancing risk** makes it a highly specialized tool best reserved for strategic, short-term financing goals.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Balloon Payment Loan is a specialized debt instrument defined by its use of a long, **phantom amortization period** to artificially reduce the fixed monthly payment, resulting in a single, large principal payment due at a short **maturity date**.</p>
+        <p>While providing superior cash flow in the short term, the financial viability of the loan relies entirely on the borrower's ability to pay off or refinance the **balloon payment** when it is due. This inherent **refinancing risk** makes it a highly specialized tool best reserved for strategic, short-term financing goals.</p>
+      </section>
 
       {/* FAQ */}
       <Card>
@@ -702,7 +774,7 @@ export default function BalloonPaymentLoanCalculator() {
           </div>
         </CardContent>
       </Card>
-      
+
       <EmbedWidget categorySlug="finance" calculatorSlug="balloon-payment-loan-calculator" />
     </div>
   );

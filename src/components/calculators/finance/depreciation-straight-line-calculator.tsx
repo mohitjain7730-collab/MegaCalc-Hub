@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Landmark, Calculator, Info, TrendingUp, FileText, Building2 } from 'lucide-react';
+import { Landmark, Calculator, Info, TrendingUp, FileText, Building2, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 
 const formSchema = z.object({
   assetCost: z.number().positive(),
@@ -123,6 +123,77 @@ export default function DepreciationStraightLineCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Straight-line depreciation advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Simplest method with predictable annual expense</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Provides stable earnings representation</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Preferred for GAAP/IFRS financial reporting</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to monitor</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">May not match actual asset value decline</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Salvage value estimates may be inaccurate</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Differs from tax depreciation (MACRS)</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Annual Depreciation = (Asset Cost - Salvage Value) ÷ Useful Life
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Allocates the depreciable base evenly over the asset's useful life in years.
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
         {/* Understanding Inputs */}
@@ -214,122 +285,122 @@ export default function DepreciationStraightLineCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Straight-Line Depreciation: Calculation, Formula, and Accounting Method" />
-    <meta itemProp="description" content="An expert guide detailing the Straight-Line Depreciation formula, its role as the simplest method for allocating asset cost over its useful life, how to calculate annual expense, salvage value, and its impact on financial statements." />
-    <meta itemProp="keywords" content="straight line depreciation formula explained, calculating annual depreciation expense, useful life asset accounting, salvage value definition, depreciation methods comparison, financial reporting accounting" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-12" /> 
-    <meta itemProp="url" content="/definitive-straight-line-depreciation-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Straight-Line Depreciation: Calculation, Formula, and Accounting Method" />
+          <meta itemProp="description" content="An expert guide detailing the Straight-Line Depreciation formula, its role as the simplest method for allocating asset cost over its useful life, how to calculate annual expense, salvage value, and its impact on financial statements." />
+          <meta itemProp="keywords" content="straight line depreciation formula explained, calculating annual depreciation expense, useful life asset accounting, salvage value definition, depreciation methods comparison, financial reporting accounting" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-11-12" />
+          <meta itemProp="url" content="/definitive-straight-line-depreciation-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Straight-Line Depreciation: The Simplest Method for Asset Allocation</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental accounting method used to systematically expense the cost of a tangible asset over its useful life.</p>
-    
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Straight-Line Depreciation: The Simplest Method for Asset Allocation</h1>
+          <p className="text-lg italic text-gray-700">Master the fundamental accounting method used to systematically expense the cost of a tangible asset over its useful life.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">Depreciation: Core Concept and Purpose</a></li>
-        <li><a href="#formula" className="hover:underline">The Straight-Line Depreciation Formula</a></li>
-        <li><a href="#components" className="hover:underline">Key Components: Cost, Life, and Salvage Value</a></li>
-        <li><a href="#book-value" className="hover:underline">Calculating Accumulated Depreciation and Book Value</a></li>
-        <li><a href="#vs-accelerated" className="hover:underline">Straight-Line vs. Accelerated Depreciation</a></li>
-    </ul>
-<hr />
 
-    {/* DEPRECIATION: CORE CONCEPT AND PURPOSE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Depreciation: Core Concept and Purpose</h2>
-    <p>**Depreciation** is an accounting concept used to allocate the cost of a tangible asset (such as machinery, vehicles, or buildings) over its useful economic life. It is the process of matching the asset's expense to the revenue it helps generate (the **matching principle**).</p>
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-blue-600">
+            <li><a href="#definition" className="hover:underline">Depreciation: Core Concept and Purpose</a></li>
+            <li><a href="#formula" className="hover:underline">The Straight-Line Depreciation Formula</a></li>
+            <li><a href="#components" className="hover:underline">Key Components: Cost, Life, and Salvage Value</a></li>
+            <li><a href="#book-value" className="hover:underline">Calculating Accumulated Depreciation and Book Value</a></li>
+            <li><a href="#vs-accelerated" className="hover:underline">Straight-Line vs. Accelerated Depreciation</a></li>
+          </ul>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Non-Cash Expense</h3>
-    <p>Depreciation is a **non-cash expense**. It is an accounting entry that reduces net income but does not involve an actual outflow of cash in the current period. The cash outflow occurred when the asset was originally purchased.</p>
+          {/* DEPRECIATION: CORE CONCEPT AND PURPOSE */}
+          <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Depreciation: Core Concept and Purpose</h2>
+          <p>**Depreciation** is an accounting concept used to allocate the cost of a tangible asset (such as machinery, vehicles, or buildings) over its useful economic life. It is the process of matching the asset's expense to the revenue it helps generate (the **matching principle**).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Straight-Line Principle</h3>
-    <p>The **Straight-Line Method** is the simplest and most common form of depreciation. It assumes that the asset provides an equal amount of economic benefit or useful service in each year of its life. Therefore, the expense recorded each year is constant.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Non-Cash Expense</h3>
+          <p>Depreciation is a **non-cash expense**. It is an accounting entry that reduces net income but does not involve an actual outflow of cash in the current period. The cash outflow occurred when the asset was originally purchased.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Straight-Line Principle</h3>
+          <p>The **Straight-Line Method** is the simplest and most common form of depreciation. It assumes that the asset provides an equal amount of economic benefit or useful service in each year of its life. Therefore, the expense recorded each year is constant.</p>
 
-    {/* THE STRAIGHT-LINE DEPRECIATION FORMULA */}
-    <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Straight-Line Depreciation Formula</h2>
-    <p>The Straight-Line Method calculates the constant annual depreciation expense by determining the total depreciable cost and spreading it evenly over the useful life.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Annual Expense Identity</h3>
-    <p>The annual depreciation expense is calculated as:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Annual Depreciation = (Asset Cost - Salvage Value) / Useful Life (in Years)'}
-        </p>
-    </div>
+          {/* THE STRAIGHT-LINE DEPRECIATION FORMULA */}
+          <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Straight-Line Depreciation Formula</h2>
+          <p>The Straight-Line Method calculates the constant annual depreciation expense by determining the total depreciable cost and spreading it evenly over the useful life.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Depreciable Base</h3>
-    <p>The **Depreciable Base** is the total cost that will be expensed over the asset's life. It is calculated by subtracting the **Salvage Value** (residual value) from the original **Asset Cost**.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Depreciable Base = Asset Cost - Salvage Value'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Annual Expense Identity</h3>
+          <p>The annual depreciation expense is calculated as:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Annual Depreciation = (Asset Cost - Salvage Value) / Useful Life (in Years)'}
+            </p>
+          </div>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Depreciable Base</h3>
+          <p>The **Depreciable Base** is the total cost that will be expensed over the asset's life. It is calculated by subtracting the **Salvage Value** (residual value) from the original **Asset Cost**.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Depreciable Base = Asset Cost - Salvage Value'}
+            </p>
+          </div>
 
-    {/* KEY COMPONENTS: COST, LIFE, AND SALVAGE VALUE */}
-    <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Components: Cost, Life, and Salvage Value</h2>
-    <p>The three variables used in the formula are determined at the time the asset is placed into service.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Asset Cost</h3>
-    <p>The cost includes the purchase price plus all necessary costs incurred to get the asset ready for its intended use. This includes installation costs, transportation fees, and testing fees. These initial expenses are capitalized (added to the asset's cost) rather than immediately expensed.</p>
+          {/* KEY COMPONENTS: COST, LIFE, AND SALVAGE VALUE */}
+          <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Components: Cost, Life, and Salvage Value</h2>
+          <p>The three variables used in the formula are determined at the time the asset is placed into service.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. Useful Life</h3>
-    <p>The **Useful Life** is the period over which the company expects to use the asset. This is an estimate based on management's experience, not necessarily the asset's physical life. It is measured in years, but can also be measured in units of production or usage hours.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">1. Asset Cost</h3>
+          <p>The cost includes the purchase price plus all necessary costs incurred to get the asset ready for its intended use. This includes installation costs, transportation fees, and testing fees. These initial expenses are capitalized (added to the asset's cost) rather than immediately expensed.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">3. Salvage Value (Residual Value)</h3>
-    <p>The **Salvage Value** (or Residual Value) is the estimated net realizable value of the asset at the end of its useful life. This is the amount the company expects to sell the asset for when it is retired. If the asset is expected to be scrapped or have no residual value, the salvage value is zero.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">2. Useful Life</h3>
+          <p>The **Useful Life** is the period over which the company expects to use the asset. This is an estimate based on management's experience, not necessarily the asset's physical life. It is measured in years, but can also be measured in units of production or usage hours.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">3. Salvage Value (Residual Value)</h3>
+          <p>The **Salvage Value** (or Residual Value) is the estimated net realizable value of the asset at the end of its useful life. This is the amount the company expects to sell the asset for when it is retired. If the asset is expected to be scrapped or have no residual value, the salvage value is zero.</p>
 
-    {/* CALCULATING ACCUMULATED DEPRECIATION AND BOOK VALUE */}
-    <h2 id="book-value" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Accumulated Depreciation and Book Value</h2>
-    <p>Depreciation expense is tracked over time, creating two key figures on the Balance Sheet: Accumulated Depreciation and Net Book Value.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Accumulated Depreciation</h3>
-    <p>**Accumulated Depreciation** is the cumulative total of all depreciation expense recorded from the time the asset was acquired up to the present balance sheet date. It is a contra-asset account, meaning it is tracked on the asset side of the Balance Sheet but carries a negative balance.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Accumulated Depreciation = Annual Depreciation * Number of Years Used'}
-        </p>
-    </div>
+          {/* CALCULATING ACCUMULATED DEPRECIATION AND BOOK VALUE */}
+          <h2 id="book-value" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Accumulated Depreciation and Book Value</h2>
+          <p>Depreciation expense is tracked over time, creating two key figures on the Balance Sheet: Accumulated Depreciation and Net Book Value.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Net Book Value</h3>
-    <p>The **Net Book Value** is the current worth of the asset according to the company's accounting records. It is the original cost of the asset minus the accumulated depreciation.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Net Book Value = Asset Cost - Accumulated Depreciation'}
-        </p>
-    </div>
-    <p>When the asset is fully depreciated (at the end of its useful life), its Net Book Value will equal its Salvage Value.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Accumulated Depreciation</h3>
+          <p>**Accumulated Depreciation** is the cumulative total of all depreciation expense recorded from the time the asset was acquired up to the present balance sheet date. It is a contra-asset account, meaning it is tracked on the asset side of the Balance Sheet but carries a negative balance.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Accumulated Depreciation = Annual Depreciation * Number of Years Used'}
+            </p>
+          </div>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Net Book Value</h3>
+          <p>The **Net Book Value** is the current worth of the asset according to the company's accounting records. It is the original cost of the asset minus the accumulated depreciation.</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Net Book Value = Asset Cost - Accumulated Depreciation'}
+            </p>
+          </div>
+          <p>When the asset is fully depreciated (at the end of its useful life), its Net Book Value will equal its Salvage Value.</p>
 
-    {/* STRAIGHT-LINE VS. ACCELERATED DEPRECIATION */}
-    <h2 id="vs-accelerated" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Straight-Line vs. Accelerated Depreciation</h2>
-    <p>While the Straight-Line Method is the simplest, other methods, collectively known as **Accelerated Depreciation**, shift a larger portion of the expense to the early years of the asset's life.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Accelerated Methods (e.g., Double Declining Balance)</h3>
-    <p>Accelerated methods assume the asset is more productive or loses more value in its early years. These methods record a **higher depreciation expense** initially and a lower expense later. This is often preferred for tax reporting (reducing taxable income sooner) but can be misleading for financial reporting.</p>
+          {/* STRAIGHT-LINE VS. ACCELERATED DEPRECIATION */}
+          <h2 id="vs-accelerated" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Straight-Line vs. Accelerated Depreciation</h2>
+          <p>While the Straight-Line Method is the simplest, other methods, collectively known as **Accelerated Depreciation**, shift a larger portion of the expense to the early years of the asset's life.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Comparison of Impact</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Straight-Line:** Provides a smoother, more stable representation of profitability, preferred for financial statements (GAAP/IFRS).</li>
-        <li>**Accelerated:** Provides faster tax deductions but results in lower reported net income in the early years.</li>
-    </ul>
-    <p>Over the full useful life of the asset, the total amount of depreciation expense recorded is identical across all methods; only the timing of the expense allocation differs.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Accelerated Methods (e.g., Double Declining Balance)</h3>
+          <p>Accelerated methods assume the asset is more productive or loses more value in its early years. These methods record a **higher depreciation expense** initially and a lower expense later. This is often preferred for tax reporting (reducing taxable income sooner) but can be misleading for financial reporting.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Comparison of Impact</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>**Straight-Line:** Provides a smoother, more stable representation of profitability, preferred for financial statements (GAAP/IFRS).</li>
+            <li>**Accelerated:** Provides faster tax deductions but results in lower reported net income in the early years.</li>
+          </ul>
+          <p>Over the full useful life of the asset, the total amount of depreciation expense recorded is identical across all methods; only the timing of the expense allocation differs.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The **Straight-Line Depreciation** method is the simplest accounting standard, calculating a constant annual expense by dividing the **Depreciable Base** (Cost minus Salvage Value) by the **Useful Life**.</p>
-    <p>Its primary purpose is to systematically match the asset's cost to the revenue it generates. Tracking this expense is vital for calculating the asset's current **Net Book Value** and for providing a stable, predictable representation of profitability on the Income Statement.</p>
-</section>
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>The **Straight-Line Depreciation** method is the simplest accounting standard, calculating a constant annual expense by dividing the **Depreciable Base** (Cost minus Salvage Value) by the **Useful Life**.</p>
+          <p>Its primary purpose is to systematically match the asset's cost to the revenue it generates. Tracking this expense is vital for calculating the asset's current **Net Book Value** and for providing a stable, predictable representation of profitability on the Income Statement.</p>
+        </section>
         {/* FAQ Section */}
         <Card>
           <CardHeader>
@@ -411,6 +482,21 @@ export default function DepreciationStraightLineCalculator() {
                 Partial year depreciation applies when an asset is purchased mid-year. You prorate the annual depreciation based on how many months the asset was used. For example, if an asset is purchased in April and has annual depreciation of $12,000, the first year depreciation would be $9,000 (9 months / 12 months × $12,000).
               </p>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Summary */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              Summary
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm text-muted-foreground">
+            <p>Straight-line is the simplest depreciation method, allocating equal expense each year.</p>
+            <p>Depreciable base = Cost minus Salvage Value; divide by useful life for annual expense.</p>
+            <p>Best for assets that provide consistent benefits throughout their useful life.</p>
           </CardContent>
         </Card>
       </div>

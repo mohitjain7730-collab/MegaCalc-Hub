@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { DollarSign, AlertCircle, Target, Info, Landmark, Calculator, TrendingUp, Shield, BarChart3, Activity, Percent } from 'lucide-react';
+import { DollarSign, AlertCircle, Target, Info, Landmark, Calculator, TrendingUp, Shield, BarChart3, Activity, Percent, FunctionSquare, CheckCircle2, Globe } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -23,11 +23,11 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ZeroCouponBondValuationCalculator() {
-  const [result, setResult] = useState<{ 
+  const [result, setResult] = useState<{
     bondPrice: number;
     discountAmount: number;
     discountPercentage: number;
-    interpretation: string; 
+    interpretation: string;
     valuationLevel: string;
     recommendation: string;
     strength: string;
@@ -48,7 +48,7 @@ export default function ZeroCouponBondValuationCalculator() {
   const calculateZeroCouponBondPrice = (values: FormValues): number => {
     const { faceValue, yearsToMaturity, yieldToMaturity } = values;
     const ytm = yieldToMaturity / 100;
-    
+
     // Zero-coupon bond price formula: Price = Face Value / (1 + YTM)^years
     const bondPrice = faceValue / Math.pow(1 + ytm, yearsToMaturity);
     return bondPrice;
@@ -62,7 +62,7 @@ export default function ZeroCouponBondValuationCalculator() {
 
   const interpret = (bondPrice: number, faceValue: number, yearsToMaturity: number, yieldToMaturity: number) => {
     const { discountPercentage } = calculateDiscount(bondPrice, faceValue);
-    
+
     if (discountPercentage >= 50) return `Deep discount zero-coupon bond trading at ${discountPercentage.toFixed(1)}% below face value - significant discount for long-term investment.`;
     if (discountPercentage >= 25) return `Moderate discount zero-coupon bond trading at ${discountPercentage.toFixed(1)}% below face value - reasonable discount for investment.`;
     if (discountPercentage >= 10) return `Low discount zero-coupon bond trading at ${discountPercentage.toFixed(1)}% below face value - minimal discount for investment.`;
@@ -97,7 +97,7 @@ export default function ZeroCouponBondValuationCalculator() {
   const getInsights = (bondPrice: number, faceValue: number, yearsToMaturity: number, yieldToMaturity: number) => {
     const insights = [];
     const { discountPercentage } = calculateDiscount(bondPrice, faceValue);
-    
+
     if (discountPercentage >= 50) {
       insights.push('Deep discount opportunity');
       insights.push('High yield potential');
@@ -115,12 +115,12 @@ export default function ZeroCouponBondValuationCalculator() {
       insights.push('Low yield potential');
       insights.push('Limited capital appreciation');
     }
-    
+
     insights.push('Zero-coupon bond characteristics');
     insights.push('No periodic interest payments');
     insights.push('Maximum duration for maturity');
     insights.push('Compound growth to maturity');
-    
+
     return insights;
   };
 
@@ -137,7 +137,7 @@ export default function ZeroCouponBondValuationCalculator() {
   const onSubmit = (values: FormValues) => {
     const bondPrice = calculateZeroCouponBondPrice(values);
     const { discountAmount, discountPercentage } = calculateDiscount(bondPrice, values.faceValue);
-    
+
     setResult({
       bondPrice,
       discountAmount,
@@ -273,48 +273,101 @@ export default function ZeroCouponBondValuationCalculator() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" />
-                <CardTitle>Insights & Analysis</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Strengths & Opportunities
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{insight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-blue-600" />
-                    Important Considerations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.considerations.map((consideration, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{consideration}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Smart Actions & Recommendations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Zero-coupon bond opportunities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
+
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <DollarSign className="h-4 w-4 text-primary" />
+                Face Value ($)
+              </h4>
+              <p className="text-sm text-muted-foreground">The par value paid at maturity (typically $1,000).</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Activity className="h-4 w-4 text-primary" />
+                Years to Maturity
+              </h4>
+              <p className="text-sm text-muted-foreground">Time until the bond matures and pays face value.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <Percent className="h-4 w-4 text-primary" />
+                Yield to Maturity (%)
+              </h4>
+              <p className="text-sm text-muted-foreground">Annual discount rate used to calculate present value.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Price = Face Value / (1 + YTM)^Years
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            The price is the present value of the single face value payment, discounted at YTM.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -365,109 +418,109 @@ export default function ZeroCouponBondValuationCalculator() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Zero-Coupon Bond Valuation, Pricing, and Effective Interest Calculation" />
-    <meta itemProp="description" content="An expert guide detailing the Zero-Coupon Bond price formula, its core role in present value (PV) calculation, the mechanics of implicit interest (accretion), and its use in retirement planning and fixed income analysis." />
-    <meta itemProp="keywords" content="zero coupon bond valuation formula, calculating zero coupon bond price, implicit interest accretion, treasury strips pricing, deep discount bond analysis, present value of a lump sum" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-11" /> 
-    <meta itemProp="url" content="/definitive-zero-coupon-bond-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Zero-Coupon Bond Valuation, Pricing, and Effective Interest Calculation" />
+        <meta itemProp="description" content="An expert guide detailing the Zero-Coupon Bond price formula, its core role in present value (PV) calculation, the mechanics of implicit interest (accretion), and its use in retirement planning and fixed income analysis." />
+        <meta itemProp="keywords" content="zero coupon bond valuation formula, calculating zero coupon bond price, implicit interest accretion, treasury strips pricing, deep discount bond analysis, present value of a lump sum" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-11" />
+        <meta itemProp="url" content="/definitive-zero-coupon-bond-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Zero-Coupon Bond Valuation: Pricing the Lump Sum Payment</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental present value (PV) calculation that determines the price of a bond that pays no periodic interest.</p>
-    
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Zero-Coupon Bond Valuation: Pricing the Lump Sum Payment</h1>
+        <p className="text-lg italic text-gray-700">Master the fundamental present value (PV) calculation that determines the price of a bond that pays no periodic interest.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">Zero-Coupon Bonds: Definition and Structure</a></li>
-        <li><a href="#price-formula" className="hover:underline">The Valuation Formula (Single Lump Sum PV)</a></li>
-        <li><a href="#accretion" className="hover:underline">Interest Accretion and Implicit Return</a></li>
-        <li><a href="#duration" className="hover:underline">Risk Measurement: Duration and Convexity</a></li>
-        <li><a href="#applications" className="hover:underline">Applications in Portfolio and Retirement Planning</a></li>
-    </ul>
-<hr />
 
-    {/* ZERO-COUPON BONDS: DEFINITION AND STRUCTURE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Zero-Coupon Bonds: Definition and Structure</h2>
-    <p>A **Zero-Coupon Bond** is a debt security that does not pay periodic interest (coupons). Instead, it is issued at a deep discount to its face (par) value and pays the investor the full face value upon maturity.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li><a href="#definition" className="hover:underline">Zero-Coupon Bonds: Definition and Structure</a></li>
+          <li><a href="#price-formula" className="hover:underline">The Valuation Formula (Single Lump Sum PV)</a></li>
+          <li><a href="#accretion" className="hover:underline">Interest Accretion and Implicit Return</a></li>
+          <li><a href="#duration" className="hover:underline">Risk Measurement: Duration and Convexity</a></li>
+          <li><a href="#applications" className="hover:underline">Applications in Portfolio and Retirement Planning</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Single Cash Flow Structure</h3>
-    <p>The entire return to the investor comes from the capital appreciation realized over the life of the bond. The cash flows consist of only two parts:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li>The initial **Discounted Purchase Price** (the investment today).</li>
-        <li>The **Full Face Value** (the single lump sum received at maturity).</li>
-    </ol>
-    <p>Examples include U.S. Treasury STRIPS (Separate Trading of Registered Interest and Principal of Securities) and certain municipal bonds.</p>
+        {/* ZERO-COUPON BONDS: DEFINITION AND STRUCTURE */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Zero-Coupon Bonds: Definition and Structure</h2>
+        <p>A **Zero-Coupon Bond** is a debt security that does not pay periodic interest (coupons). Instead, it is issued at a deep discount to its face (par) value and pays the investor the full face value upon maturity.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Single Cash Flow Structure</h3>
+        <p>The entire return to the investor comes from the capital appreciation realized over the life of the bond. The cash flows consist of only two parts:</p>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>The initial **Discounted Purchase Price** (the investment today).</li>
+          <li>The **Full Face Value** (the single lump sum received at maturity).</li>
+        </ol>
+        <p>Examples include U.S. Treasury STRIPS (Separate Trading of Registered Interest and Principal of Securities) and certain municipal bonds.</p>
 
-    {/* THE VALUATION FORMULA (SINGLE LUMP SUM PV) */}
-    <h2 id="price-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Valuation Formula (Single Lump Sum PV)</h2>
-    <p>The price of a zero-coupon bond is simply the **Present Value (PV)** of the single face value payment received at maturity, discounted at the current Yield to Maturity (YTM).</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The formula discounts the Face Value (F) back over the total number of periods (T) using the Yield to Maturity ($r$), adjusted for compounding frequency ($n$):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        {/* THE VALUATION FORMULA (SINGLE LUMP SUM PV) */}
+        <h2 id="price-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Valuation Formula (Single Lump Sum PV)</h2>
+        <p>The price of a zero-coupon bond is simply the **Present Value (PV)** of the single face value payment received at maturity, discounted at the current Yield to Maturity (YTM).</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <p>The formula discounts the Face Value (F) back over the total number of periods (T) using the Yield to Maturity ($r$), adjusted for compounding frequency ($n$):</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'Bond Price = F / (1 + r/n)^(n*T)'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <p>Where:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>F = Face Value (Par Value, typically 1,000 dollars).</li>
-        <li>r = Annual Yield to Maturity (YTM, the discount rate).</li>
-        <li>n = Compounding frequency per year (usually 2 for semi-annual).</li>
-        <li>T = Years remaining until maturity.</li>
-    </ul>
+        <p>Where:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>F = Face Value (Par Value, typically 1,000 dollars).</li>
+          <li>r = Annual Yield to Maturity (YTM, the discount rate).</li>
+          <li>n = Compounding frequency per year (usually 2 for semi-annual).</li>
+          <li>T = Years remaining until maturity.</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Inverse Relationship with YTM</h3>
-    <p>Zero-coupon bonds exhibit a powerful inverse relationship between price and yield. Because there are no intermediate coupon payments to offset interest rate changes, the price of a zero-coupon bond is extremely sensitive to fluctuations in the YTM.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Inverse Relationship with YTM</h3>
+        <p>Zero-coupon bonds exhibit a powerful inverse relationship between price and yield. Because there are no intermediate coupon payments to offset interest rate changes, the price of a zero-coupon bond is extremely sensitive to fluctuations in the YTM.</p>
 
-<hr />
+        <hr />
 
-    {/* INTEREST ACCRETION AND IMPLICIT RETURN */}
-    <h2 id="accretion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interest Accretion and Implicit Return</h2>
-    <p>Although no cash interest is paid, the difference between the low purchase price and the face value is the total interest earned. This interest is recognized through a process called **Accretion**.</p>
+        {/* INTEREST ACCRETION AND IMPLICIT RETURN */}
+        <h2 id="accretion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interest Accretion and Implicit Return</h2>
+        <p>Although no cash interest is paid, the difference between the low purchase price and the face value is the total interest earned. This interest is recognized through a process called **Accretion**.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Accretion Mechanics</h3>
-    <p>Accretion is the gradual, systematic increase in the bond's book value (adjusted cost basis) from the purchase price up to the face value over the bond's life. Each year, a portion of the total interest is recognized (accrued) based on the bond's YTM.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Accretion Mechanics</h3>
+        <p>Accretion is the gradual, systematic increase in the bond's book value (adjusted cost basis) from the purchase price up to the face value over the bond's life. Each year, a portion of the total interest is recognized (accrued) based on the bond's YTM.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Tax Implications (Phantom Income)</h3>
-    <p>For taxable accounts, the accrued interest from accretion is generally **taxable income** for the investor each year, even though the investor receives no cash until maturity. This phenomenon is known as **Phantom Income** and is a major disadvantage of holding zero-coupon bonds in standard brokerage accounts, making them ideally suited for tax-deferred accounts (like IRAs and 401ks).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Tax Implications (Phantom Income)</h3>
+        <p>For taxable accounts, the accrued interest from accretion is generally **taxable income** for the investor each year, even though the investor receives no cash until maturity. This phenomenon is known as **Phantom Income** and is a major disadvantage of holding zero-coupon bonds in standard brokerage accounts, making them ideally suited for tax-deferred accounts (like IRAs and 401ks).</p>
 
-<hr />
+        <hr />
 
-    {/* DURATION: RISK MEASUREMENT AND CONVEXITY */}
-    <h2 id="duration" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Duration: Risk Measurement and Convexity</h2>
-    <p>Zero-coupon bonds carry the maximum possible interest rate risk for their given maturity, making duration a crucial analytical tool.</p>
+        {/* DURATION: RISK MEASUREMENT AND CONVEXITY */}
+        <h2 id="duration" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Duration: Risk Measurement and Convexity</h2>
+        <p>Zero-coupon bonds carry the maximum possible interest rate risk for their given maturity, making duration a crucial analytical tool.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Duration Equals Maturity</h3>
-    <p>For a zero-coupon bond, the **Macaulay Duration** is always **equal to its time to maturity**. Since the entire cash flow is received at the very end, the weighted average time to cash flow receipt equals the maturity period itself. This confirms that zero-coupon bonds are highly sensitive to interest rate changes.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Duration Equals Maturity</h3>
+        <p>For a zero-coupon bond, the **Macaulay Duration** is always **equal to its time to maturity**. Since the entire cash flow is received at the very end, the weighted average time to cash flow receipt equals the maturity period itself. This confirms that zero-coupon bonds are highly sensitive to interest rate changes.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Highest Convexity</h3>
-    <p>Zero-coupon bonds also exhibit the maximum possible **Convexity** for a bond of that maturity. This means that when interest rates fall, the price gain is significantly larger than the price loss when interest rates rise by the same amount, providing superior protection against falling interest rates.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Highest Convexity</h3>
+        <p>Zero-coupon bonds also exhibit the maximum possible **Convexity** for a bond of that maturity. This means that when interest rates fall, the price gain is significantly larger than the price loss when interest rates rise by the same amount, providing superior protection against falling interest rates.</p>
 
-<hr />
+        <hr />
 
-    {/* APPLICATIONS IN PORTFOLIO AND RETIREMENT PLANNING */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Portfolio and Retirement Planning</h2>
-    <p>Zero-coupon bonds are specialized instruments used for specific financial goals where certainty of future payment is required.</p>
+        {/* APPLICATIONS IN PORTFOLIO AND RETIREMENT PLANNING */}
+        <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Portfolio and Retirement Planning</h2>
+        <p>Zero-coupon bonds are specialized instruments used for specific financial goals where certainty of future payment is required.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Immunization and Liability Matching</h3>
-    <p>Zero-coupon bonds are ideal for **liability matching** (immunization). If a corporate pension fund knows it has a fixed liability (a pension payment) due in 15 years, it can purchase a zero-coupon bond maturing in 15 years. This perfectly matches the duration and maturity of the asset to the liability, locking in the required return and eliminating interest rate risk.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Immunization and Liability Matching</h3>
+        <p>Zero-coupon bonds are ideal for **liability matching** (immunization). If a corporate pension fund knows it has a fixed liability (a pension payment) due in 15 years, it can purchase a zero-coupon bond maturing in 15 years. This perfectly matches the duration and maturity of the asset to the liability, locking in the required return and eliminating interest rate risk.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Education and Retirement Funding</h3>
-    <p>These bonds are excellent for funding future, fixed-dollar expenses, such as a child's college tuition in 18 years. Purchasing zeros with a par value equal to the required tuition cost guarantees the necessary sum will be available on the target date, regardless of interim market fluctuations.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Education and Retirement Funding</h3>
+        <p>These bonds are excellent for funding future, fixed-dollar expenses, such as a child's college tuition in 18 years. Purchasing zeros with a par value equal to the required tuition cost guarantees the necessary sum will be available on the target date, regardless of interim market fluctuations.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Zero-coupon bond valuation is a straightforward **Present Value of a Single Lump Sum** calculation, discounting the face value back to the present using the Yield to Maturity.</p>
-    <p>Their primary risk measure is that their **Duration equals their Maturity**, indicating high sensitivity to interest rate changes. Due to the creation of **Phantom Income**, these bonds are best utilized in tax-deferred retirement accounts to facilitate precise long-term **liability matching** goals.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Zero-coupon bond valuation is a straightforward **Present Value of a Single Lump Sum** calculation, discounting the face value back to the present using the Yield to Maturity.</p>
+        <p>Their primary risk measure is that their **Duration equals their Maturity**, indicating high sensitivity to interest rate changes. Due to the creation of **Phantom Income**, these bonds are best utilized in tax-deferred retirement accounts to facilitate precise long-term **liability matching** goals.</p>
+      </section>
 
       <Card>
         <CardHeader>
@@ -487,63 +540,63 @@ export default function ZeroCouponBondValuationCalculator() {
                 A zero-coupon bond is a debt security that doesn't pay periodic interest but is sold at a discount to its face value and redeemed at face value at maturity. The investor's return comes from the difference between the purchase price and face value, which represents the compound interest earned over the bond's life.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate zero-coupon bond price?</h4>
               <p className="text-muted-foreground">
                 Zero-coupon bond price is calculated using the formula: Price = Face Value / (1 + YTM)^years. This formula discounts the face value back to the present using the yield to maturity and time to maturity. The longer the maturity and higher the yield, the lower the bond price.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the advantages of zero-coupon bonds?</h4>
               <p className="text-muted-foreground">
                 Advantages include: predictable returns, no reinvestment risk, maximum duration for maturity, compound growth, and suitability for long-term goals. They're ideal for retirement planning, educational savings, and other long-term financial objectives where predictable growth is desired.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the disadvantages of zero-coupon bonds?</h4>
               <p className="text-muted-foreground">
                 Disadvantages include: high interest rate sensitivity, no periodic income, potential tax implications on imputed interest, liquidity concerns, and credit risk. They're not suitable for investors needing regular income or those with short-term investment horizons.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How does duration affect zero-coupon bonds?</h4>
               <p className="text-muted-foreground">
                 Zero-coupon bonds have the maximum possible duration for their maturity, making them highly sensitive to interest rate changes. Duration equals the time to maturity, so a 10-year zero-coupon bond has a duration of 10 years. This high duration means significant price volatility with interest rate changes.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What are the tax implications?</h4>
               <p className="text-muted-foreground">
                 Zero-coupon bonds may have tax implications on imputed interest, even though no cash payments are received. Investors may owe taxes on the annual accretion of the bond's value. Consider tax-advantaged accounts or municipal zero-coupon bonds for tax efficiency.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I use zero-coupon bonds for financial planning?</h4>
               <p className="text-muted-foreground">
                 Use zero-coupon bonds for specific future financial needs like college tuition, retirement income, or major purchases. Calculate the present value needed and purchase bonds that mature when funds are needed. This provides predictable growth and eliminates reinvestment risk.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">What factors affect zero-coupon bond prices?</h4>
               <p className="text-muted-foreground">
                 Key factors include yield to maturity, time to maturity, credit quality, and market interest rates. Higher yields and longer maturities result in lower prices. Credit risk affects the required yield, while market interest rate changes cause significant price volatility due to high duration.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I evaluate zero-coupon bond investments?</h4>
               <p className="text-muted-foreground">
                 Evaluate based on yield to maturity, credit quality, liquidity, tax implications, and alignment with investment objectives. Compare yields to other fixed-income investments and consider the bond's role in your overall portfolio strategy. Assess whether the investment meets your risk tolerance and time horizon.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-lg mb-3">Why are zero-coupon bonds important for portfolio management?</h4>
               <p className="text-muted-foreground">
@@ -551,6 +604,78 @@ export default function ZeroCouponBondValuationCalculator() {
               </p>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Related Calculators */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe className="h-5 w-5" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other bond and fixed income calculators
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <Link href="/category/finance/bond-price-calculator" className="text-primary hover:underline">
+                  Bond Price Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate bond prices based on coupon rate and yield.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <Link href="/category/finance/bond-yield-to-maturity-calculator" className="text-primary hover:underline">
+                  Bond Yield to Maturity Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate the yield to maturity for bonds.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <Link href="/category/finance/bond-duration-calculator" className="text-primary hover:underline">
+                  Bond Duration Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate Macaulay and modified duration.
+              </p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <Link href="/category/finance/present-value-calculator" className="text-primary hover:underline">
+                  Present Value Calculator
+                </Link>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate present value of future cash flows.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>Zero-coupon bonds are issued at a discount and pay face value at maturity, with no periodic interest.</p>
+          <p>Duration equals maturity, making them highly sensitive to interest rate changes.</p>
+          <p>Use for liability matching, retirement planning, and when predictable future value is required.</p>
         </CardContent>
       </Card>
     </div>

@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Landmark, Calculator, Info, FileText, Building2, TrendingUp } from 'lucide-react';
+import { Landmark, Calculator, Info, FileText, Building2, TrendingUp, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const formSchema = z.object({
@@ -154,6 +154,78 @@ export default function DepreciationSumOfYearsDigitsCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Sum-of-Years depreciation advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Balanced acceleration between straight-line and DDB</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">More predictable expense pattern than DDB</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Tax shield benefit in early years</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to monitor</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">More complex than straight-line calculation</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Not typically allowed for US tax (use MACRS)</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Lower reported earnings in early years</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              SYD = n × (n + 1) ÷ 2<br />
+              Annual Depreciation = (Remaining Life / SYD) × Depreciable Base
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Uses declining fractions of a fixed depreciable base (Cost - Salvage).
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
         {/* Understanding Inputs */}
@@ -245,139 +317,139 @@ export default function DepreciationSumOfYearsDigitsCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Sum-of-the-Years' Digits (SYD) Depreciation: Calculation, Formula, and Accounting Method" />
-    <meta itemProp="description" content="An expert guide detailing the Sum-of-the-Years' Digits (SYD) formula, its core role as an accelerated method for allocating asset cost, how to calculate the annual expense, and its comparison to the straight-line and double-declining balance methods." />
-    <meta itemProp="keywords" content="sum of years digits depreciation formula explained, calculating SYD annual expense, accelerated depreciation method SYD, declining balance vs SYD, useful life accounting, financial reporting tax strategy" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-11" /> 
-    <meta itemProp="url" content="/definitive-syd-depreciation-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Sum-of-the-Years' Digits (SYD) Depreciation: Calculation, Formula, and Accounting Method" />
+          <meta itemProp="description" content="An expert guide detailing the Sum-of-the-Years' Digits (SYD) formula, its core role as an accelerated method for allocating asset cost, how to calculate the annual expense, and its comparison to the straight-line and double-declining balance methods." />
+          <meta itemProp="keywords" content="sum of years digits depreciation formula explained, calculating SYD annual expense, accelerated depreciation method SYD, declining balance vs SYD, useful life accounting, financial reporting tax strategy" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-11-11" />
+          <meta itemProp="url" content="/definitive-syd-depreciation-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Sum-of-the-Years' Digits (SYD) Depreciation: The Targeted Accelerated Method</h1>
-    <p className="text-lg italic text-gray-700">Master the accounting method that provides a precise, accelerated allocation of an asset's cost over its useful service life.</p>
-    
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Sum-of-the-Years' Digits (SYD) Depreciation: The Targeted Accelerated Method</h1>
+          <p className="text-lg italic text-gray-700">Master the accounting method that provides a precise, accelerated allocation of an asset's cost over its useful service life.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">SYD: Core Concept and Accelerated Principle</a></li>
-        <li><a href="#formula-sum" className="hover:underline">Step 1: Calculating the Sum of the Years' Digits</a></li>
-        <li><a href="#formula-expense" className="hover:underline">Step 2: Calculating the Annual Depreciation Expense</a></li>
-        <li><a href="#vs-ddb" className="hover:underline">SYD vs. Double-Declining Balance (DDB)</a></li>
-        <li><a href="#applications" className="hover:underline">Impact on Book Value and Financial Statements</a></li>
-    </ul>
-<hr />
 
-    {/* SYD: CORE CONCEPT AND ACCELERATED PRINCIPLE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">SYD: Core Concept and Accelerated Principle</h2>
-    <p>The **Sum-of-the-Years' Digits (SYD)** method is an **accelerated depreciation** technique that allocates a greater portion of an asset's cost to the earlier years of its useful life. This method is considered a more refined approach than the Double-Declining Balance (DDB) method.</p>
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-blue-600">
+            <li><a href="#definition" className="hover:underline">SYD: Core Concept and Accelerated Principle</a></li>
+            <li><a href="#formula-sum" className="hover:underline">Step 1: Calculating the Sum of the Years' Digits</a></li>
+            <li><a href="#formula-expense" className="hover:underline">Step 2: Calculating the Annual Depreciation Expense</a></li>
+            <li><a href="#vs-ddb" className="hover:underline">SYD vs. Double-Declining Balance (DDB)</a></li>
+            <li><a href="#applications" className="hover:underline">Impact on Book Value and Financial Statements</a></li>
+          </ul>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Matching Principle</h3>
-    <p>SYD adheres to the **matching principle** by recognizing higher depreciation expense when the asset is new, most productive, and arguably losing the most market value. The total depreciation expense recognized over the asset's entire life is identical to that of the straight-line method; only the *timing* of the expense is altered.</p>
+          {/* SYD: CORE CONCEPT AND ACCELERATED PRINCIPLE */}
+          <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">SYD: Core Concept and Accelerated Principle</h2>
+          <p>The **Sum-of-the-Years' Digits (SYD)** method is an **accelerated depreciation** technique that allocates a greater portion of an asset's cost to the earlier years of its useful life. This method is considered a more refined approach than the Double-Declining Balance (DDB) method.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Depreciable Base</h3>
-    <p>Similar to the straight-line method, the SYD calculation applies the accelerated rate to the asset's **Depreciable Base**, which is the total cost that will be expensed over the asset's life:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Depreciable Base = Asset Cost - Salvage Value'}
-        </p>
-    </div>
-    <p>This base remains constant throughout the SYD calculation.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Matching Principle</h3>
+          <p>SYD adheres to the **matching principle** by recognizing higher depreciation expense when the asset is new, most productive, and arguably losing the most market value. The total depreciation expense recognized over the asset's entire life is identical to that of the straight-line method; only the *timing* of the expense is altered.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Depreciable Base</h3>
+          <p>Similar to the straight-line method, the SYD calculation applies the accelerated rate to the asset's **Depreciable Base**, which is the total cost that will be expensed over the asset's life:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Depreciable Base = Asset Cost - Salvage Value'}
+            </p>
+          </div>
+          <p>This base remains constant throughout the SYD calculation.</p>
 
-    {/* STEP 1: CALCULATING THE SUM OF THE YEARS' DIGITS */}
-    <h2 id="formula-sum" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 1: Calculating the Sum of the Years' Digits</h2>
-    <p>The first unique step in the SYD method is calculating the denominator for the depreciation fraction, which is the sum of the digits representing the useful life of the asset.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Summation Formula</h3>
-    <p>If an asset has a useful life of $N$ years, the sum of the years' digits ($S$) is calculated as:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'S = N * (N + 1) / 2'}
-        </p>
-    </div>
-    <p>For example, for an asset with a 5-year life, the sum of the digits is $5 + 4 + 3 + 2 + 1 = 15$. Using the formula: $5 \times (5+1) / 2 = 15$. This sum remains the denominator for the entire depreciation schedule.</p>
+          {/* STEP 1: CALCULATING THE SUM OF THE YEARS' DIGITS */}
+          <h2 id="formula-sum" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 1: Calculating the Sum of the Years' Digits</h2>
+          <p>The first unique step in the SYD method is calculating the denominator for the depreciation fraction, which is the sum of the digits representing the useful life of the asset.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Summation Formula</h3>
+          <p>If an asset has a useful life of $N$ years, the sum of the years' digits ($S$) is calculated as:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'S = N * (N + 1) / 2'}
+            </p>
+          </div>
+          <p>For example, for an asset with a 5-year life, the sum of the digits is $5 + 4 + 3 + 2 + 1 = 15$. Using the formula: $5 \times (5+1) / 2 = 15$. This sum remains the denominator for the entire depreciation schedule.</p>
 
-    {/* STEP 2: CALCULATING THE ANNUAL DEPRECIATION EXPENSE */}
-    <h2 id="formula-expense" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 2: Calculating the Annual Depreciation Expense</h2>
-    <p>The annual depreciation expense is calculated by multiplying the constant Depreciable Base by a fractional rate that changes each year.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Annual Expense Identity</h3>
-    <p>The formula uses the remaining years of the asset's life as the numerator of the fraction:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Annual Depreciation = Depreciable Base * (Remaining Useful Life / Sum of the Years\' Digits)'}
-        </p>
-    </div>
+          {/* STEP 2: CALCULATING THE ANNUAL DEPRECIATION EXPENSE */}
+          <h2 id="formula-expense" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step 2: Calculating the Annual Depreciation Expense</h2>
+          <p>The annual depreciation expense is calculated by multiplying the constant Depreciable Base by a fractional rate that changes each year.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Declining Fraction</h3>
-    <p>For the 5-year asset example (Sum=15):</p>
-    <ul className="list-disc ml-6 space-y-2">
-          <li>Year 1: (5/15) multiplied by Depreciable Base</li>
-          <li>Year 2: (4/15) multiplied by Depreciable Base</li>
-          <li>Year 5: (1/15) multiplied by Depreciable Base</li>
-    </ul>
-    <p>This systematic decline in the fraction allocates the largest expense to the first year and the smallest expense to the last year.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Annual Expense Identity</h3>
+          <p>The formula uses the remaining years of the asset's life as the numerator of the fraction:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Annual Depreciation = Depreciable Base * (Remaining Useful Life / Sum of the Years\' Digits)'}
+            </p>
+          </div>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Declining Fraction</h3>
+          <p>For the 5-year asset example (Sum=15):</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>Year 1: (5/15) multiplied by Depreciable Base</li>
+            <li>Year 2: (4/15) multiplied by Depreciable Base</li>
+            <li>Year 5: (1/15) multiplied by Depreciable Base</li>
+          </ul>
+          <p>This systematic decline in the fraction allocates the largest expense to the first year and the smallest expense to the last year.</p>
 
-    {/* SYD VS. DOUBLE-DECLINING BALANCE (DDB) */}
-    <h2 id="vs-ddb" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">SYD vs. Double-Declining Balance (DDB)</h2>
-    <p>Both SYD and DDB are accelerated methods, but they differ significantly in their mechanism, resulting in different depreciation patterns.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Key Differences</h3>
-    <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
-        <thead className="bg-gray-50">
-            <tr>
+          {/* SYD VS. DOUBLE-DECLINING BALANCE (DDB) */}
+          <h2 id="vs-ddb" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">SYD vs. Double-Declining Balance (DDB)</h2>
+          <p>Both SYD and DDB are accelerated methods, but they differ significantly in their mechanism, resulting in different depreciation patterns.</p>
+
+          <h3 className="text-xl font-semibold text-foreground mt-6">Key Differences</h3>
+          <table className="min-w-full divide-y divide-gray-200 border border-gray-300 my-4">
+            <thead className="bg-gray-50">
+              <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Feature</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SYD Method</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DDB Method</th>
-            </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-            <tr>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              <tr>
                 <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Base Applied To</strong></td>
                 <td className="px-6 py-4 whitespace-nowrap">Constant Depreciable Base (Cost - Salvage)</td>
                 <td className="px-6 py-4 whitespace-nowrap">Declining Book Value (No initial Salvage subtraction)</td>
-            </tr>
-            <tr>
+              </tr>
+              <tr>
                 <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Expense Pattern</strong></td>
                 <td className="px-6 py-4 whitespace-nowrap">Expense declines at a constant arithmetic rate.</td>
                 <td className="px-6 py-4 whitespace-nowrap">Expense declines at a constant *percentage* rate (geometrically).</td>
-            </tr>
-            <tr>
+              </tr>
+              <tr>
                 <td className="px-6 py-4 whitespace-nowrap"><strong className="font-semibold">Salvage Treatment</strong></td>
                 <td className="px-6 py-4 whitespace-nowrap">Salvage value is subtracted upfront.</td>
                 <td className="px-6 py-4 whitespace-nowrap">Salvage value is a stopping point only.</td>
-            </tr>
-        </tbody>
-    </table>
+              </tr>
+            </tbody>
+          </table>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Total Expense Equality</h3>
-    <p>Like all recognized depreciation methods, the total cumulative depreciation expense over the asset's full useful life is exactly the same for SYD, DDB, and the straight-line method.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Total Expense Equality</h3>
+          <p>Like all recognized depreciation methods, the total cumulative depreciation expense over the asset's full useful life is exactly the same for SYD, DDB, and the straight-line method.</p>
 
-<hr />
+          <hr />
 
-    {/* IMPACT ON BOOK VALUE AND FINANCIAL STATEMENTS */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Impact on Book Value and Financial Statements</h2>
-    <p>The choice of SYD over the straight-line method creates an initial timing difference that affects the primary financial statements.</p>
+          {/* IMPACT ON BOOK VALUE AND FINANCIAL STATEMENTS */}
+          <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Impact on Book Value and Financial Statements</h2>
+          <p>The choice of SYD over the straight-line method creates an initial timing difference that affects the primary financial statements.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Income Statement Impact</h3>
-    <p>SYD records a higher depreciation expense in the early years compared to the straight-line method. This results in **lower reported net income** and **lower taxes** (a tax shield) in the early years. The effect reverses in the later years of the asset's life.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Income Statement Impact</h3>
+          <p>SYD records a higher depreciation expense in the early years compared to the straight-line method. This results in **lower reported net income** and **lower taxes** (a tax shield) in the early years. The effect reverses in the later years of the asset's life.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Balance Sheet Impact (Book Value)</h3>
-    <p>Since more accumulated depreciation is recorded earlier, the asset's **Net Book Value** (Cost minus Accumulated Depreciation) declines faster under the SYD method than under the straight-line method.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Balance Sheet Impact (Book Value)</h3>
+          <p>Since more accumulated depreciation is recorded earlier, the asset's **Net Book Value** (Cost minus Accumulated Depreciation) declines faster under the SYD method than under the straight-line method.</p>
 
-<hr />
+          <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The **Sum-of-the-Years' Digits (SYD)** method is an accelerated depreciation technique that allocates the asset's cost based on a declining fraction of the **Depreciable Base**. The denominator is the fixed **Sum of the Years' Digits**.</p>
-    <p>This method provides a more precise economic match than the straight-line method, resulting in higher expenses and a **tax shield** in the early years. It is used when management believes an asset is most productive or loses its market value most rapidly immediately after acquisition.</p>
-</section>
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>The **Sum-of-the-Years' Digits (SYD)** method is an accelerated depreciation technique that allocates the asset's cost based on a declining fraction of the **Depreciable Base**. The denominator is the fixed **Sum of the Years' Digits**.</p>
+          <p>This method provides a more precise economic match than the straight-line method, resulting in higher expenses and a **tax shield** in the early years. It is used when management believes an asset is most productive or loses its market value most rapidly immediately after acquisition.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -460,6 +532,21 @@ export default function DepreciationSumOfYearsDigitsCalculator() {
                 Advantages include accelerated depreciation providing larger early-year deductions, better matching of costs with revenues for assets that generate more income early, and a balanced acceleration between straight-line and DDB. Disadvantages include more complex calculations than straight-line, still less aggressive than DDB for maximum early deductions, and not typically allowed for tax purposes (MACRS is required).
               </p>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Summary */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              Summary
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm text-muted-foreground">
+            <p>SYD applies declining fractions to the depreciable base each year.</p>
+            <p>Provides moderate acceleration — faster than straight-line, slower than DDB.</p>
+            <p>Best for assets needing gradual early-year acceleration in depreciation expense.</p>
           </CardContent>
         </Card>
       </div>

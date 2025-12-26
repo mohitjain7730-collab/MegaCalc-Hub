@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Handshake, Calculator, Info, FileText, TrendingUp } from 'lucide-react';
+import { Handshake, Calculator, Info, FileText, TrendingUp, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const formSchema = z.object({
@@ -61,102 +61,102 @@ export default function ForwardRateAgreementCalculator() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField 
-                  control={form.control} 
-                  name="notional" 
+                <FormField
+                  control={form.control}
+                  name="notional"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Notional Amount</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           placeholder="e.g., 1000000"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="agreedRate" 
+                <FormField
+                  control={form.control}
+                  name="agreedRate"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Agreed Forward Rate (%)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           step="any"
                           placeholder="e.g., 4.5"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="marketRate" 
+                <FormField
+                  control={form.control}
+                  name="marketRate"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Market Rate at Settlement (%)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           step="any"
                           placeholder="e.g., 4.8"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="monthsFrom" 
+                <FormField
+                  control={form.control}
+                  name="monthsFrom"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Months from Today (start)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           placeholder="e.g., 6"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="monthsTo" 
+                <FormField
+                  control={form.control}
+                  name="monthsTo"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Months from Today (end)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           placeholder="e.g., 9"
-                          {...field} 
-                          value={field.value || ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                          {...field}
+                          value={field.value || ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
               </div>
               <Button type="submit">Calculate Settlement</Button>
@@ -192,6 +192,77 @@ export default function ForwardRateAgreementCalculator() {
           </CardContent>
         </Card>
       )}
+
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>FRA advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Locks in future borrowing or lending rates</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Customizable notional and maturity dates</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Effective hedging for interest rate exposure</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">OTC contracts carry counterparty credit risk</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Settlement occurs at start, not end of period</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Market rate movements determine payoff</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Settlement = Notional × [(R<sub>market</sub> − R<sub>FRA</sub>) × T] / [1 + R<sub>market</sub> × T]
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Settlement is discounted to present value at the fixing date.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Understanding Inputs */}
       <Card>
@@ -288,115 +359,115 @@ export default function ForwardRateAgreementCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Forward Rate Agreement (FRA) Pricing, Mechanics, and Calculation" />
-    <meta itemProp="description" content="An expert guide detailing the structure of a Forward Rate Agreement (FRA), the formula for its payoff, how the contract rate (FRA rate) is derived from the yield curve, and its use in hedging and speculating on future interest rates." />
-    <meta itemProp="keywords" content="forward rate agreement formula, FRA pricing mechanics, interest rate hedging, forward rate calculation yield curve, settlement amount FRA, FRA buyer vs seller" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-forward-rate-agreement-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Forward Rate Agreement (FRA) Pricing, Mechanics, and Calculation" />
+        <meta itemProp="description" content="An expert guide detailing the structure of a Forward Rate Agreement (FRA), the formula for its payoff, how the contract rate (FRA rate) is derived from the yield curve, and its use in hedging and speculating on future interest rates." />
+        <meta itemProp="keywords" content="forward rate agreement formula, FRA pricing mechanics, interest rate hedging, forward rate calculation yield curve, settlement amount FRA, FRA buyer vs seller" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-forward-rate-agreement-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Forward Rate Agreements (FRA): Pricing and Interest Rate Hedging</h1>
-    <p className="text-lg italic text-muted-foreground">Master the structure of the over-the-counter derivative used to lock in a borrowing or lending rate for a future period.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Forward Rate Agreements (FRA): Pricing and Interest Rate Hedging</h1>
+        <p className="text-lg italic text-muted-foreground">Master the structure of the over-the-counter derivative used to lock in a borrowing or lending rate for a future period.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#structure" className="hover:underline">FRA Structure and Terminology (n x m)</a></li>
-        <li><a href="#pricing" className="hover:underline">Pricing the FRA: Deriving the Contract Rate</a></li>
-        <li><a href="#settlement" className="hover:underline">Settlement Mechanics and Payoff Formula</a></li>
-        <li><a href="#applications" className="hover:underline">Market Applications: Hedging and Speculation</a></li>
-        <li><a href="#vs-futures" className="hover:underline">FRA vs. Interest Rate Futures</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#structure" className="hover:underline">FRA Structure and Terminology (n x m)</a></li>
+          <li><a href="#pricing" className="hover:underline">Pricing the FRA: Deriving the Contract Rate</a></li>
+          <li><a href="#settlement" className="hover:underline">Settlement Mechanics and Payoff Formula</a></li>
+          <li><a href="#applications" className="hover:underline">Market Applications: Hedging and Speculation</a></li>
+          <li><a href="#vs-futures" className="hover:underline">FRA vs. Interest Rate Futures</a></li>
+        </ul>
+        <hr />
 
-    {/* FRA STRUCTURE AND TERMINOLOGY (N X M) */}
-    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FRA Structure and Terminology (n x m)</h2>
-    <p>A **Forward Rate Agreement (FRA)** is an Over-the-Counter (OTC) contract between two parties that determines the interest rate to be applied to a notional principal amount for a specific period of time in the future. It is a commitment today regarding an interest rate that will only be used later.</p>
+        {/* FRA STRUCTURE AND TERMINOLOGY (N X M) */}
+        <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FRA Structure and Terminology (n x m)</h2>
+        <p>A **Forward Rate Agreement (FRA)** is an Over-the-Counter (OTC) contract between two parties that determines the interest rate to be applied to a notional principal amount for a specific period of time in the future. It is a commitment today regarding an interest rate that will only be used later.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">FRA Notation (n x m)</h3>
-    <p>FRAs are quoted using an "n x m" notation (read as "n by m") that defines the start and end of the forward period, measured in months from the settlement date (today):</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">n:</strong> The number of months until the forward contract begins (the fixing date).</li>
-        <li><strong className="font-semibold">m:</strong> The number of months until the forward contract expires.</li>
-    </ul>
-    <p>The duration of the actual borrowing/lending period under the contract is $(m - n)$ months. For example, a **3 x 6 FRA** begins in 3 months and expires in 6 months, locking in a rate for a 3-month period that begins 3 months from now.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">FRA Notation (n x m)</h3>
+        <p>FRAs are quoted using an "n x m" notation (read as "n by m") that defines the start and end of the forward period, measured in months from the settlement date (today):</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">n:</strong> The number of months until the forward contract begins (the fixing date).</li>
+          <li><strong className="font-semibold">m:</strong> The number of months until the forward contract expires.</li>
+        </ul>
+        <p>The duration of the actual borrowing/lending period under the contract is $(m - n)$ months. For example, a **3 x 6 FRA** begins in 3 months and expires in 6 months, locking in a rate for a 3-month period that begins 3 months from now.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Two Sides of the Contract</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Buyer (Fixed Rate Payer):</strong> Enters the FRA to protect against rising interest rates. The buyer pays the agreed-upon fixed FRA rate.</li>
-        <li><strong className="font-semibold">Seller (Floating Rate Payer):</strong> Enters the FRA to protect against falling interest rates. The seller pays the variable market rate (the reference rate) at the fixing date.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Two Sides of the Contract</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Buyer (Fixed Rate Payer):</strong> Enters the FRA to protect against rising interest rates. The buyer pays the agreed-upon fixed FRA rate.</li>
+          <li><strong className="font-semibold">Seller (Floating Rate Payer):</strong> Enters the FRA to protect against falling interest rates. The seller pays the variable market rate (the reference rate) at the fixing date.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* PRICING THE FRA: DERIVING THE CONTRACT RATE */}
-    <h2 id="pricing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Pricing the FRA: Deriving the Contract Rate</h2>
-    <p>The contract rate (or FRA rate) is set at the origination of the contract such that the theoretical initial Net Present Value (NPV) of the agreement is zero. This rate is derived directly from the current **Yield Curve** (the relationship between interest rates and maturity).</p>
+        {/* PRICING THE FRA: DERIVING THE CONTRACT RATE */}
+        <h2 id="pricing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Pricing the FRA: Deriving the Contract Rate</h2>
+        <p>The contract rate (or FRA rate) is set at the origination of the contract such that the theoretical initial Net Present Value (NPV) of the agreement is zero. This rate is derived directly from the current **Yield Curve** (the relationship between interest rates and maturity).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Forward Rate Formula (No Arbitrage)</h3>
-    <p>The FRA rate is the implied forward rate between two zero-coupon bonds (or spot rates) on the yield curve. It ensures that an investor who invests for the short period ($n$ months) and then reinvests at the forward rate for the longer period ($m-n$ months) earns the same return as if they invested for the long period ($m$ months) today.</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Forward Rate Formula (No Arbitrage)</h3>
+        <p>The FRA rate is the implied forward rate between two zero-coupon bonds (or spot rates) on the yield curve. It ensures that an investor who invests for the short period ($n$ months) and then reinvests at the forward rate for the longer period ($m-n$ months) earns the same return as if they invested for the long period ($m$ months) today.</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'FRA Rate = [(1 + R_long * T_long) / (1 + R_short * T_short) - 1] / (T_long - T_short)'}
-        </p>
-    </div>
-    <p>Where R long and R short are the spot rates for the longer and shorter time periods, respectively, and T represents time in years (or fraction of a year).</p>
+          </p>
+        </div>
+        <p>Where R long and R short are the spot rates for the longer and shorter time periods, respectively, and T represents time in years (or fraction of a year).</p>
 
-<hr />
+        <hr />
 
-    {/* SETTLEMENT MECHANICS AND PAYOFF FORMULA */}
-    <h2 id="settlement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Settlement Mechanics and Payoff Formula</h2>
-    <p>FRAs are typically settled in cash at the start of the forward contract period (at time $n$), not at the end of the period ($m$). This early settlement necessitates discounting the cash flows back from time $m$ to time $n$.</p>
+        {/* SETTLEMENT MECHANICS AND PAYOFF FORMULA */}
+        <h2 id="settlement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Settlement Mechanics and Payoff Formula</h2>
+        <p>FRAs are typically settled in cash at the start of the forward contract period (at time $n$), not at the end of the period ($m$). This early settlement necessitates discounting the cash flows back from time $m$ to time $n$.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Fixing Date and Reference Rate</h3>
-    <p>On the **Fixing Date** ($n$), the actual **Reference Rate** (e.g., SOFR, LIBOR) is observed. The difference between this market rate and the contracted FRA rate determines the settlement amount.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Fixing Date and Reference Rate</h3>
+        <p>On the **Fixing Date** ($n$), the actual **Reference Rate** (e.g., SOFR, LIBOR) is observed. The difference between this market rate and the contracted FRA rate determines the settlement amount.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Settlement Payoff Formula</h3>
-    <p>The settlement is calculated as the present value of the difference in interest payments, paid at time $n$:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Settlement Payoff Formula</h3>
+        <p>The settlement is calculated as the present value of the difference in interest payments, paid at time $n$:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Settlement Amount = Notional * [ (R_reference - R_FRA) * T_period ] / [ 1 + R_reference * T_period ]'}
-        </p>
-    </div>
-    <p>Where R reference is the market rate at time n, R FRA is the fixed contract rate, and T period is the length of the contract period (m minus n).</p>
-    <ul className="list-disc ml-6 space-y-2">
-    <li>If R reference &gt; R FRA, the Buyer (fixed-rate payer) receives a payment from the Seller.</li>
-    <li>If R reference &lt; R FRA, the Seller receives a payment from the Buyer.</li>
-    </ul>
+          </p>
+        </div>
+        <p>Where R reference is the market rate at time n, R FRA is the fixed contract rate, and T period is the length of the contract period (m minus n).</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>If R reference &gt; R FRA, the Buyer (fixed-rate payer) receives a payment from the Seller.</li>
+          <li>If R reference &lt; R FRA, the Seller receives a payment from the Buyer.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* MARKET APPLICATIONS: HEDGING AND SPECULATION */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Market Applications: Hedging and Speculation</h2>
-    <p>FRAs are primarily used for hedging interest rate risk, but their structure also allows for simple speculation on the future direction of interest rates.</p>
+        {/* MARKET APPLICATIONS: HEDGING AND SPECULATION */}
+        <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Market Applications: Hedging and Speculation</h2>
+        <p>FRAs are primarily used for hedging interest rate risk, but their structure also allows for simple speculation on the future direction of interest rates.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Hedging Future Borrowing Costs</h3>
-    <p>A corporate treasurer who knows the firm will need to borrow money in three months for a period of three months (a 3 x 6 FRA) can purchase an FRA today to lock in the interest rate. This removes the uncertainty associated with market rate fluctuations between now and the borrowing date.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Hedging Future Borrowing Costs</h3>
+        <p>A corporate treasurer who knows the firm will need to borrow money in three months for a period of three months (a 3 x 6 FRA) can purchase an FRA today to lock in the interest rate. This removes the uncertainty associated with market rate fluctuations between now and the borrowing date.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Speculation</h3>
-    <p>Traders can use FRAs to speculate on the movement of the reference rate. A speculator who believes the market rate will be higher than the current FRA rate should **buy** the FRA. If they believe the market rate will be lower, they should **sell** the FRA.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Speculation</h3>
+        <p>Traders can use FRAs to speculate on the movement of the reference rate. A speculator who believes the market rate will be higher than the current FRA rate should **buy** the FRA. If they believe the market rate will be lower, they should **sell** the FRA.</p>
 
-<hr />
+        <hr />
 
-    {/* FRA VS. INTEREST RATE FUTURES */}
-    <h2 id="vs-futures" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FRA vs. Interest Rate Futures</h2>
-    <p>While both FRAs and Interest Rate Futures (e.g., Eurodollar futures) are used to manage future interest rate risk, they differ in market structure and liquidity.</p>
+        {/* FRA VS. INTEREST RATE FUTURES */}
+        <h2 id="vs-futures" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">FRA vs. Interest Rate Futures</h2>
+        <p>While both FRAs and Interest Rate Futures (e.g., Eurodollar futures) are used to manage future interest rate risk, they differ in market structure and liquidity.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Market Differences</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">FRA:</strong> OTC contract, customizable notional principal and maturity dates, higher counterparty risk, settled in cash.</li>
-        <li><strong className="font-semibold">Futures:</strong> Exchange-traded, standardized contracts, lower counterparty risk (due to clearinghouse), marked-to-market daily.</li>
-    </ul>
-    <p>FRAs are preferred by large institutional users who require tailored contracts not available on exchanges, despite the higher counterparty risk.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Market Differences</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">FRA:</strong> OTC contract, customizable notional principal and maturity dates, higher counterparty risk, settled in cash.</li>
+          <li><strong className="font-semibold">Futures:</strong> Exchange-traded, standardized contracts, lower counterparty risk (due to clearinghouse), marked-to-market daily.</li>
+        </ul>
+        <p>FRAs are preferred by large institutional users who require tailored contracts not available on exchanges, despite the higher counterparty risk.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Forward Rate Agreement (FRA) is an essential OTC instrument for managing short-term interest rate risk. Its pricing (the FRA rate) is derived from the **yield curve** to ensure initial pricing is fair.</p>
-    <p>The payoff is a cash settlement determined by the difference between the contracted FRA rate and the actual market reference rate on the **fixing date**. FRAs provide corporate hedgers with the crucial ability to lock in financing costs for future periods with precise customizability.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Forward Rate Agreement (FRA) is an essential OTC instrument for managing short-term interest rate risk. Its pricing (the FRA rate) is derived from the **yield curve** to ensure initial pricing is fair.</p>
+        <p>The payoff is a cash settlement determined by the difference between the contracted FRA rate and the actual market reference rate on the **fixing date**. FRAs provide corporate hedgers with the crucial ability to lock in financing costs for future periods with precise customizability.</p>
+      </section>
 
       {/* FAQ */}
       <Card>
@@ -479,6 +550,21 @@ export default function ForwardRateAgreementCalculator() {
               A swap is essentially a series of FRAs packaged together. An interest rate swap can be decomposed into a strip of forward rate agreements. The relationship is that each swap fixed-rate payment can be priced as the average of the corresponding forward rates, adjusted for payment frequency and day count conventions.
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>FRAs lock in interest rates for future borrowing or lending periods.</p>
+          <p>Settlement is based on the difference between agreed and market rates.</p>
+          <p>Useful for hedging short-term interest rate risk with OTC flexibility.</p>
         </CardContent>
       </Card>
     </div>

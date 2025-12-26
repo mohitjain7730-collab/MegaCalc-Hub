@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Drama, Calculator, Info, FileText, TrendingUp, Target } from 'lucide-react';
+import { Drama, Calculator, Info, FileText, TrendingUp, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const scenarioSchema = z.object({
@@ -47,7 +47,7 @@ export default function ScenarioAnalysisCalculator() {
   });
 
   const calculateNPV = (values: z.infer<typeof scenarioSchema>, discountRate: number, projectLife: number, initialInvestment: number) => {
-    if(!values.unitsSold || !values.pricePerUnit || !values.variableCost || values.fixedCosts === undefined) return 0;
+    if (!values.unitsSold || !values.pricePerUnit || !values.variableCost || values.fixedCosts === undefined) return 0;
     const annualCashFlow = (values.pricePerUnit * values.unitsSold) - (values.variableCost * values.unitsSold) - values.fixedCosts;
     let npv = -initialInvestment;
     for (let t = 1; t <= projectLife; t++) {
@@ -86,66 +86,66 @@ export default function ScenarioAnalysisCalculator() {
                   <CardTitle className="text-lg">Project Assumptions</CardTitle>
                 </CardHeader>
                 <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <FormField 
-                    control={form.control} 
-                    name="initialInvestment" 
+                  <FormField
+                    control={form.control}
+                    name="initialInvestment"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Initial Investment ($)</FormLabel>
                         <FormControl>
-                          <Input 
-                            type="number" 
+                          <Input
+                            type="number"
                             placeholder="e.g., 100000"
-                            {...field} 
-                            value={field.value ?? ''} 
-                            onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            {...field}
+                            value={field.value ?? ''}
+                            onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
-                    )} 
+                    )}
                   />
-                  <FormField 
-                    control={form.control} 
-                    name="projectLife" 
+                  <FormField
+                    control={form.control}
+                    name="projectLife"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Project Life (Years)</FormLabel>
                         <FormControl>
-                          <Input 
-                            type="number" 
+                          <Input
+                            type="number"
                             placeholder="e.g., 5"
-                            {...field} 
-                            value={field.value ?? ''} 
-                            onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                            {...field}
+                            value={field.value ?? ''}
+                            onChange={e => field.onChange(parseInt(e.target.value) || undefined)}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
-                    )} 
+                    )}
                   />
-                  <FormField 
-                    control={form.control} 
-                    name="discountRate" 
+                  <FormField
+                    control={form.control}
+                    name="discountRate"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Discount Rate (%)</FormLabel>
                         <FormControl>
-                          <Input 
-                            type="number" 
+                          <Input
+                            type="number"
                             placeholder="e.g., 10"
-                            {...field} 
-                            value={field.value ?? ''} 
-                            onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                            {...field}
+                            value={field.value ?? ''}
+                            onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
-                    )} 
+                    )}
                   />
                 </CardContent>
               </Card>
-              
+
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {['worstCase', 'baseCase', 'bestCase'].map(scenario => (
                   <Card key={scenario}>
@@ -153,87 +153,87 @@ export default function ScenarioAnalysisCalculator() {
                       <CardTitle className="text-lg">{scenario.replace('Case', ' Case')}</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <FormField 
-                        control={form.control} 
-                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.unitsSold` as any} 
+                      <FormField
+                        control={form.control}
+                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.unitsSold` as any}
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Units Sold/Year</FormLabel>
                             <FormControl>
-                              <Input 
-                                type="number" 
+                              <Input
+                                type="number"
                                 placeholder="e.g., 1000"
-                                {...field} 
-                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')} 
+                                {...field}
+                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')}
                                 onChange={e => field.onChange(parseInt(e.target.value) || undefined)}
                               />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
-                        )} 
+                        )}
                       />
-                      <FormField 
-                        control={form.control} 
-                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.pricePerUnit` as any} 
+                      <FormField
+                        control={form.control}
+                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.pricePerUnit` as any}
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Price/Unit ($)</FormLabel>
                             <FormControl>
-                              <Input 
-                                type="number" 
+                              <Input
+                                type="number"
                                 placeholder="e.g., 50"
-                                {...field} 
-                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')} 
+                                {...field}
+                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')}
                                 onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                               />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
-                        )} 
+                        )}
                       />
-                      <FormField 
-                        control={form.control} 
-                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.variableCost` as any} 
+                      <FormField
+                        control={form.control}
+                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.variableCost` as any}
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Variable Cost/Unit ($)</FormLabel>
                             <FormControl>
-                              <Input 
-                                type="number" 
+                              <Input
+                                type="number"
                                 placeholder="e.g., 25"
-                                {...field} 
-                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')} 
+                                {...field}
+                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')}
                                 onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                               />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
-                        )} 
+                        )}
                       />
-                      <FormField 
-                        control={form.control} 
-                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.fixedCosts` as any} 
+                      <FormField
+                        control={form.control}
+                        name={`${scenario as 'baseCase' | 'bestCase' | 'worstCase'}.fixedCosts` as any}
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Fixed Costs/Year ($)</FormLabel>
                             <FormControl>
-                              <Input 
-                                type="number" 
+                              <Input
+                                type="number"
                                 placeholder="e.g., 10000"
-                                {...field} 
-                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')} 
+                                {...field}
+                                value={typeof field.value === 'number' ? field.value : (field.value ?? '')}
                                 onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                               />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
-                        )} 
+                        )}
                       />
                     </CardContent>
                   </Card>
                 ))}
               </div>
-              
+
               <Button type="submit">Run Scenario Analysis</Button>
             </form>
           </Form>
@@ -255,16 +255,16 @@ export default function ScenarioAnalysisCalculator() {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
               {results.map(res => (
-                <div 
-                  key={res.name} 
+                <div
+                  key={res.name}
                   className={`p-6 rounded-lg border-2 ${res.npv < 0 ? 'bg-destructive/10 border-destructive/50' : 'bg-green-500/10 border-green-500/50'}`}
                 >
                   <p className="font-semibold mb-2">{res.name}</p>
                   <p className={`text-3xl font-bold ${res.npv < 0 ? 'text-destructive' : 'text-green-600'}`}>
-                    ${res.npv.toLocaleString(undefined, {maximumFractionDigits: 0})}
+                    ${res.npv.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                   </p>
-                  <Badge 
-                    variant={res.npv < 0 ? 'destructive' : 'default'} 
+                  <Badge
+                    variant={res.npv < 0 ? 'destructive' : 'default'}
                     className="mt-2"
                   >
                     {res.npv < 0 ? 'Not Viable' : 'Viable'}
@@ -275,6 +275,78 @@ export default function ScenarioAnalysisCalculator() {
           </CardContent>
         </Card>
       )}
+
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Scenario analysis advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Tests multiple correlated variables together</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Provides holistic risk assessment view</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Supports strategic planning and stress testing</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Scenario selection is subjective</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Limited number of scenarios tested</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Monte Carlo provides more comprehensive analysis</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Annual Cash Flow = (Price × Units) - (Variable Cost × Units) - Fixed Costs<br />
+              NPV = -Initial Investment + Σ [Cash Flowₜ / (1+r)ᵗ]
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Each scenario uses different assumptions for price, units, and costs.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Understanding Inputs */}
       <Card>
@@ -365,99 +437,99 @@ export default function ScenarioAnalysisCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Scenario Analysis: Financial Modeling, Stress Testing, and Risk Management" />
-    <meta itemProp="description" content="An expert guide detailing the methodology of Scenario Analysis, including its comparison to sensitivity analysis, structuring base, best, and worst-case scenarios, and its application in capital budgeting and financial forecasting." />
-    <meta itemProp="keywords" content="scenario analysis financial modeling, how to structure scenarios, stress testing risk management, best case worst case analysis, Monte Carlo simulation comparison, capital budgeting risk analysis" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-scenario-analysis-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Scenario Analysis: Financial Modeling, Stress Testing, and Risk Management" />
+        <meta itemProp="description" content="An expert guide detailing the methodology of Scenario Analysis, including its comparison to sensitivity analysis, structuring base, best, and worst-case scenarios, and its application in capital budgeting and financial forecasting." />
+        <meta itemProp="keywords" content="scenario analysis financial modeling, how to structure scenarios, stress testing risk management, best case worst case analysis, Monte Carlo simulation comparison, capital budgeting risk analysis" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-scenario-analysis-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Scenario Analysis: Modeling Outcomes and Managing Financial Risk</h1>
-    <p className="text-lg italic text-muted-foreground">Master the structured forecasting technique that quantifies the impact of major, interconnected changes on a project's profitability or a company's value.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Scenario Analysis: Modeling Outcomes and Managing Financial Risk</h1>
+        <p className="text-lg italic text-muted-foreground">Master the structured forecasting technique that quantifies the impact of major, interconnected changes on a project's profitability or a company's value.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">Scenario Analysis: Definition and Core Purpose</a></li>
-        <li><a href="#structure" className="hover:underline">Structuring Scenarios: Base, Best, and Worst Cases</a></li>
-        <li><a href="#methodology" className="hover:underline">Modeling Methodology and Output Metrics</a></li>
-        <li><a href="#vs-sensitivity" className="hover:underline">Scenario Analysis vs. Sensitivity Analysis</a></li>
-        <li><a href="#applications" className="hover:underline">Applications in Corporate Finance and Banking</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">Scenario Analysis: Definition and Core Purpose</a></li>
+          <li><a href="#structure" className="hover:underline">Structuring Scenarios: Base, Best, and Worst Cases</a></li>
+          <li><a href="#methodology" className="hover:underline">Modeling Methodology and Output Metrics</a></li>
+          <li><a href="#vs-sensitivity" className="hover:underline">Scenario Analysis vs. Sensitivity Analysis</a></li>
+          <li><a href="#applications" className="hover:underline">Applications in Corporate Finance and Banking</a></li>
+        </ul>
+        <hr />
 
-    {/* SCENARIO ANALYSIS: DEFINITION AND CORE PURPOSE */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Scenario Analysis: Definition and Core Purpose</h2>
-    <p>Scenario Analysis is a risk management technique that evaluates the potential outcomes of a decision (such as launching a new product or valuing a company) by simulating its performance under a limited number of plausible, predefined **future states** or scenarios.</p>
+        {/* SCENARIO ANALYSIS: DEFINITION AND CORE PURPOSE */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Scenario Analysis: Definition and Core Purpose</h2>
+        <p>Scenario Analysis is a risk management technique that evaluates the potential outcomes of a decision (such as launching a new product or valuing a company) by simulating its performance under a limited number of plausible, predefined **future states** or scenarios.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Holistic Risk Assessment</h3>
-    <p>Unlike other risk tools that test one variable at a time, scenario analysis tests the impact of multiple, interconnected variables changing simultaneously. For example, a "Recession" scenario would simultaneously lower sales growth, increase the cost of capital, and lengthen payment collection times.</p>
-    <p>The output provides a range of potential financial results (e.g., Net Present Value, Profit Margin, or Solvency) that corresponds to each predefined future state.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Holistic Risk Assessment</h3>
+        <p>Unlike other risk tools that test one variable at a time, scenario analysis tests the impact of multiple, interconnected variables changing simultaneously. For example, a "Recession" scenario would simultaneously lower sales growth, increase the cost of capital, and lengthen payment collection times.</p>
+        <p>The output provides a range of potential financial results (e.g., Net Present Value, Profit Margin, or Solvency) that corresponds to each predefined future state.</p>
 
-<hr />
+        <hr />
 
-    {/* STRUCTURING SCENARIOS: BASE, BEST, AND WORST CASES */}
-    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Structuring Scenarios: Base, Best, and Worst Cases</h2>
-    <p>Most models utilize three foundational scenarios to define the probable range of results, anchored by the central Base Case.</p>
+        {/* STRUCTURING SCENARIOS: BASE, BEST, AND WORST CASES */}
+        <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Structuring Scenarios: Base, Best, and Worst Cases</h2>
+        <p>Most models utilize three foundational scenarios to define the probable range of results, anchored by the central Base Case.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Base Case (Most Likely)</h3>
-    <p>The **Base Case** represents the central or expected outcome. It uses the analyst's most realistic assumptions for key drivers like GDP growth, inflation, market share, and interest rates. This scenario typically serves as the primary benchmark for valuing the project or company.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Base Case (Most Likely)</h3>
+        <p>The **Base Case** represents the central or expected outcome. It uses the analyst's most realistic assumptions for key drivers like GDP growth, inflation, market share, and interest rates. This scenario typically serves as the primary benchmark for valuing the project or company.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. Best Case (Optimistic)</h3>
-    <p>The **Best Case** incorporates a series of favorable assumptions (e.g., higher-than-expected sales, lower production costs, faster market adoption). It defines the upper boundary of the possible financial outcomes and provides a view of the maximum potential return.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Best Case (Optimistic)</h3>
+        <p>The **Best Case** incorporates a series of favorable assumptions (e.g., higher-than-expected sales, lower production costs, faster market adoption). It defines the upper boundary of the possible financial outcomes and provides a view of the maximum potential return.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">3. Worst Case (Pessimistic / Stress Test)</h3>
-    <p>The **Worst Case** incorporates adverse, but plausible, assumptions (e.g., economic recession, supply chain collapse, competitive entry). This scenario is used for **stress testing**—determining the resilience of the project or company and identifying the minimum acceptable return or the point of failure.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">3. Worst Case (Pessimistic / Stress Test)</h3>
+        <p>The **Worst Case** incorporates adverse, but plausible, assumptions (e.g., economic recession, supply chain collapse, competitive entry). This scenario is used for **stress testing**—determining the resilience of the project or company and identifying the minimum acceptable return or the point of failure.</p>
 
-<hr />
+        <hr />
 
-    {/* MODELING METHODOLOGY AND OUTPUT METRICS */}
-    <h2 id="methodology" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Modeling Methodology and Output Metrics</h2>
-    <p>The modeling process requires explicitly defining the relationship between the macroeconomic environment and the operational variables of the project being evaluated.</p>
+        {/* MODELING METHODOLOGY AND OUTPUT METRICS */}
+        <h2 id="methodology" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Modeling Methodology and Output Metrics</h2>
+        <p>The modeling process requires explicitly defining the relationship between the macroeconomic environment and the operational variables of the project being evaluated.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Mapping Drivers to Variables</h3>
-    <p>The key step is establishing the **links** between the external scenario (e.g., High Inflation) and the internal financial model variables (e.g., Cost of Goods Sold increases by 8%, and the Discount Rate increases by 150 basis points). All variables must be internally consistent within a single scenario.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Mapping Drivers to Variables</h3>
+        <p>The key step is establishing the **links** between the external scenario (e.g., High Inflation) and the internal financial model variables (e.g., Cost of Goods Sold increases by 8%, and the Discount Rate increases by 150 basis points). All variables must be internally consistent within a single scenario.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Output Metrics</h3>
-    <p>For each scenario, the model calculates a primary decision metric, typically:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Net Present Value (NPV):</strong> For capital budgeting projects, used to see if the project remains viable (NPV {'>'} 0) under adverse conditions.</li>
-        <li><strong className="font-semibold">Internal Rate of Return (IRR):</strong> Used to see if the project's return falls below the minimum required hurdle rate in the worst case.</li>
-        <li><strong className="font-semibold">Probability-Weighted Expected Value (PWEV):</strong> Advanced models assign a probability weight to each scenario and sum the weighted results to find a single expected value.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Output Metrics</h3>
+        <p>For each scenario, the model calculates a primary decision metric, typically:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Net Present Value (NPV):</strong> For capital budgeting projects, used to see if the project remains viable (NPV {'>'} 0) under adverse conditions.</li>
+          <li><strong className="font-semibold">Internal Rate of Return (IRR):</strong> Used to see if the project's return falls below the minimum required hurdle rate in the worst case.</li>
+          <li><strong className="font-semibold">Probability-Weighted Expected Value (PWEV):</strong> Advanced models assign a probability weight to each scenario and sum the weighted results to find a single expected value.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* SCENARIO ANALYSIS VS. SENSITIVITY ANALYSIS */}
-    <h2 id="vs-sensitivity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Scenario Analysis vs. Sensitivity Analysis</h2>
-    <p>While often confused, scenario analysis and sensitivity analysis serve fundamentally different purposes in risk assessment.</p>
+        {/* SCENARIO ANALYSIS VS. SENSITIVITY ANALYSIS */}
+        <h2 id="vs-sensitivity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Scenario Analysis vs. Sensitivity Analysis</h2>
+        <p>While often confused, scenario analysis and sensitivity analysis serve fundamentally different purposes in risk assessment.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Sensitivity Analysis (One Variable)</h3>
-    <p>Sensitivity Analysis isolates a single, key input variable (e.g., unit sales price or WACC) and tests how much the final metric (e.g., NPV) changes when that single variable moves by a fixed percentage. It identifies the **most critical variables** in the model.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Sensitivity Analysis (One Variable)</h3>
+        <p>Sensitivity Analysis isolates a single, key input variable (e.g., unit sales price or WACC) and tests how much the final metric (e.g., NPV) changes when that single variable moves by a fixed percentage. It identifies the **most critical variables** in the model.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Scenario Analysis (Multiple Variables)</h3>
-    <p>Scenario Analysis changes **multiple correlated variables simultaneously**. It answers the question, "What happens if the world changes in a specific, predefined way?" This makes it better suited for holistic risk assessment, as macroeconomic events rarely affect only one variable in isolation.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Scenario Analysis (Multiple Variables)</h3>
+        <p>Scenario Analysis changes **multiple correlated variables simultaneously**. It answers the question, "What happens if the world changes in a specific, predefined way?" This makes it better suited for holistic risk assessment, as macroeconomic events rarely affect only one variable in isolation.</p>
 
-<hr />
+        <hr />
 
-    {/* APPLICATIONS IN CORPORATE FINANCE AND BANKING */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Corporate Finance and Banking</h2>
-    <p>Scenario analysis is a compulsory tool in highly regulated and capital-intensive industries.</p>
+        {/* APPLICATIONS IN CORPORATE FINANCE AND BANKING */}
+        <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Applications in Corporate Finance and Banking</h2>
+        <p>Scenario analysis is a compulsory tool in highly regulated and capital-intensive industries.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Corporate Finance</h3>
-    <p>Companies use scenario analysis before undertaking large capital expenditures (CapEx), such as building a factory or acquiring a competitor. It determines the probability that the investment will fail to meet the company's financial targets under adverse economic conditions.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Corporate Finance</h3>
+        <p>Companies use scenario analysis before undertaking large capital expenditures (CapEx), such as building a factory or acquiring a competitor. It determines the probability that the investment will fail to meet the company's financial targets under adverse economic conditions.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Bank Stress Testing (Regulatory Requirement)</h3>
-    <p>Central banks and regulatory bodies (like the Federal Reserve) require major financial institutions to perform **stress tests**. These are extreme forms of scenario analysis (e.g., simulating a $50\%$ drop in real estate values combined with a $10\%$ unemployment rate) to ensure the institutions maintain sufficient capital reserves to survive a severe, systemic economic crisis.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Bank Stress Testing (Regulatory Requirement)</h3>
+        <p>Central banks and regulatory bodies (like the Federal Reserve) require major financial institutions to perform **stress tests**. These are extreme forms of scenario analysis (e.g., simulating a $50\%$ drop in real estate values combined with a $10\%$ unemployment rate) to ensure the institutions maintain sufficient capital reserves to survive a severe, systemic economic crisis.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Scenario Analysis is a sophisticated risk management methodology that evaluates financial outcomes under plausible, internally consistent, multiple-variable changes.</p>
-    <p>By structuring **Base, Best, and Worst-Case Scenarios** and calculating key metrics like NPV or IRR for each, analysts quantify the full range of potential financial results. This provides decision-makers with a robust understanding of the project's sensitivity to macro-level events, moving beyond single-variable analysis to holistic risk modeling.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Scenario Analysis is a sophisticated risk management methodology that evaluates financial outcomes under plausible, internally consistent, multiple-variable changes.</p>
+        <p>By structuring **Base, Best, and Worst-Case Scenarios** and calculating key metrics like NPV or IRR for each, analysts quantify the full range of potential financial results. This provides decision-makers with a robust understanding of the project's sensitivity to macro-level events, moving beyond single-variable analysis to holistic risk modeling.</p>
+      </section>
 
       {/* FAQ */}
       <Card>
@@ -540,6 +612,21 @@ export default function ScenarioAnalysisCalculator() {
               Update scenarios when major market conditions change, new information becomes available, assumptions prove incorrect, or at key decision points in the project lifecycle. Regular reviews (quarterly or semi-annually) help maintain relevance.
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>Scenario analysis evaluates project outcomes under different plausible future states.</p>
+          <p>Base, best, and worst cases define the range of potential financial outcomes.</p>
+          <p>Complements sensitivity analysis by testing correlated variable changes together.</p>
         </CardContent>
       </Card>
     </div>

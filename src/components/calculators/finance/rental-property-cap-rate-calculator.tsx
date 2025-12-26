@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Landmark, Calculator, Globe, FileText, Info, Home } from 'lucide-react';
+import { Landmark, Calculator, Globe, FileText, Info, Home, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
@@ -121,6 +121,78 @@ export default function RentalPropertyCapRateCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Cap rate advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Quick comparison of properties across markets</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Measures unleveraged return potential</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Helps identify underpriced opportunities</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">High cap rates may signal distress or risk</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Ignores debt service and tax implications</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Doesn't account for future appreciation</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Cap Rate = NOI / Property Value × 100<br />
+              NOI = Gross Rent − Operating Expenses
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Excludes mortgage payments to show property’s intrinsic yield.
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Related Calculators */}
       <Card>
         <CardHeader>
@@ -180,114 +252,114 @@ export default function RentalPropertyCapRateCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Rental Property Return, Cap Rate, and Cash-on-Cash Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the formulas and purpose of the Capitalization Rate (Cap Rate) and the impact of debt/leverage, Cash-on-Cash (CoC) return, and Net Operating Income (NOI) in real estate investment valuation." />
-    <meta itemProp="keywords" content="cap rate formula explained, how to calculate capitalization rate, net operating income (NOI), cash on cash return vs cap rate, rental property valuation, leveraged return real estate, investment property metrics" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-rental-property-return-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Rental Property Return, Cap Rate, and Cash-on-Cash Analysis" />
+        <meta itemProp="description" content="An expert guide detailing the formulas and purpose of the Capitalization Rate (Cap Rate) and the impact of debt/leverage, Cash-on-Cash (CoC) return, and Net Operating Income (NOI) in real estate investment valuation." />
+        <meta itemProp="keywords" content="cap rate formula explained, how to calculate capitalization rate, net operating income (NOI), cash on cash return vs cap rate, rental property valuation, leveraged return real estate, investment property metrics" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-rental-property-return-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Rental Property Returns: Cap Rate and Cash-on-Cash Analysis</h1>
-    <p className="text-lg italic text-muted-foreground">Master the primary metrics that determine property valuation, profitability, and the effectiveness of financial leverage in real estate investment.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Rental Property Returns: Cap Rate and Cash-on-Cash Analysis</h1>
+        <p className="text-lg italic text-muted-foreground">Master the primary metrics that determine property valuation, profitability, and the effectiveness of financial leverage in real estate investment.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#noi" className="hover:underline">Net Operating Income (NOI): The Profit Engine</a></li>
-        <li><a href="#cap-rate" className="hover:underline">Capitalization Rate (Cap Rate): Valuation and Benchmarking</a></li>
-        <li><a href="#coc" className="hover:underline">Cash-on-Cash (CoC) Return: Measuring Liquidity</a></li>
-        <li><a href="#leverage" className="hover:underline">The Impact of Debt (Leverage) on Returns</a></li>
-        <li><a href="#limits" className="hover:underline">Limitations of Cap Rate and Advanced Metrics</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#noi" className="hover:underline">Net Operating Income (NOI): The Profit Engine</a></li>
+          <li><a href="#cap-rate" className="hover:underline">Capitalization Rate (Cap Rate): Valuation and Benchmarking</a></li>
+          <li><a href="#coc" className="hover:underline">Cash-on-Cash (CoC) Return: Measuring Liquidity</a></li>
+          <li><a href="#leverage" className="hover:underline">The Impact of Debt (Leverage) on Returns</a></li>
+          <li><a href="#limits" className="hover:underline">Limitations of Cap Rate and Advanced Metrics</a></li>
+        </ul>
+        <hr />
 
-    {/* NET OPERATING INCOME (NOI): THE PROFIT ENGINE */}
-    <h2 id="noi" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Net Operating Income (NOI): The Profit Engine</h2>
-    <p>The foundation of all commercial and residential rental property valuation is the **Net Operating Income (NOI)**. NOI is the annual income generated by the property after deducting all operating expenses, but *before* accounting for debt service (mortgage payments) or income taxes.</p>
+        {/* NET OPERATING INCOME (NOI): THE PROFIT ENGINE */}
+        <h2 id="noi" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Net Operating Income (NOI): The Profit Engine</h2>
+        <p>The foundation of all commercial and residential rental property valuation is the **Net Operating Income (NOI)**. NOI is the annual income generated by the property after deducting all operating expenses, but *before* accounting for debt service (mortgage payments) or income taxes.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Calculating NOI</h3>
-    <p>NOI focuses purely on the property's efficiency as an asset, separate from how it is financed. The calculation is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Calculating NOI</h3>
+        <p>NOI focuses purely on the property's efficiency as an asset, separate from how it is financed. The calculation is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'NOI = Gross Rental Income - Operating Expenses'}
-        </p>
-    </div>
-    <p>Operating Expenses include property taxes, insurance, maintenance, property management fees, utilities (if paid by the owner), and a vacancy allowance (typically 5% to 10% of potential income). **Crucially, mortgage principal and interest are excluded from NOI.**</p>
+          </p>
+        </div>
+        <p>Operating Expenses include property taxes, insurance, maintenance, property management fees, utilities (if paid by the owner), and a vacancy allowance (typically 5% to 10% of potential income). **Crucially, mortgage principal and interest are excluded from NOI.**</p>
 
-<hr />
+        <hr />
 
-    {/* CAPITALIZATION RATE (CAP RATE): VALUATION AND BENCHMARKING */}
-    <h2 id="cap-rate" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Capitalization Rate (Cap Rate): Valuation and Benchmarking</h2>
-    <p>The <strong className="font-semibold">Capitalization Rate (Cap Rate)</strong> is a measure of the natural, unleveraged rate of return on a real estate investment. It is primarily used by investors to quickly value a property or compare the profitability of different assets.</p>
+        {/* CAPITALIZATION RATE (CAP RATE): VALUATION AND BENCHMARKING */}
+        <h2 id="cap-rate" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Capitalization Rate (Cap Rate): Valuation and Benchmarking</h2>
+        <p>The <strong className="font-semibold">Capitalization Rate (Cap Rate)</strong> is a measure of the natural, unleveraged rate of return on a real estate investment. It is primarily used by investors to quickly value a property or compare the profitability of different assets.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Cap Rate Formula</h3>
-    <p>Cap Rate is defined as the property's annual NOI divided by the purchase price (or current market value). It tells the investor the yield they would receive if they purchased the property with all cash (no debt):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Cap Rate Formula</h3>
+        <p>Cap Rate is defined as the property's annual NOI divided by the purchase price (or current market value). It tells the investor the yield they would receive if they purchased the property with all cash (no debt):</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Cap Rate = NOI / Property Value'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Using Cap Rate for Valuation</h3>
-    <p>The formula can be rearranged to estimate the appropriate market value of a property based on its income stream, provided the average Cap Rate for comparable properties in the area is known:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Using Cap Rate for Valuation</h3>
+        <p>The formula can be rearranged to estimate the appropriate market value of a property based on its income stream, provided the average Cap Rate for comparable properties in the area is known:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Property Value = NOI / Market Cap Rate'}
-        </p>
-    </div>
-    <p>This method is known as **Direct Capitalization** and is a fast and reliable way for appraisers and investors to determine value based on current market yield expectations.</p>
+          </p>
+        </div>
+        <p>This method is known as **Direct Capitalization** and is a fast and reliable way for appraisers and investors to determine value based on current market yield expectations.</p>
 
-<hr />
+        <hr />
 
-    {/* CASH-ON-CASH (CoC) RETURN: MEASURING LIQUIDITY */}
-    <h2 id="coc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cash-on-Cash (CoC) Return: Measuring Liquidity</h2>
-    <p>While Cap Rate ignores financing, the <strong className="font-semibold">Cash-on-Cash (CoC) Return</strong> is the liquidity metric that matters most to the borrower, as it measures the annual return relative to the actual capital they invested (their equity).</p>
+        {/* CASH-ON-CASH (CoC) RETURN: MEASURING LIQUIDITY */}
+        <h2 id="coc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cash-on-Cash (CoC) Return: Measuring Liquidity</h2>
+        <p>While Cap Rate ignores financing, the <strong className="font-semibold">Cash-on-Cash (CoC) Return</strong> is the liquidity metric that matters most to the borrower, as it measures the annual return relative to the actual capital they invested (their equity).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The CoC Formula (Leveraged Return)</h3>
-    <p>CoC Return is calculated by dividing the annual pre-tax cash flow *after* debt service by the total cash invested (down payment + closing costs + initial CapEx):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The CoC Formula (Leveraged Return)</h3>
+        <p>CoC Return is calculated by dividing the annual pre-tax cash flow *after* debt service by the total cash invested (down payment + closing costs + initial CapEx):</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'CoC Return = (NOI - Annual Debt Service) / Total Cash Invested'}
-        </p>
-    </div>
-    <p>This metric is the true gauge of the investment's performance from the investor's perspective. It answers the question: "How much cash did I get back this year for every dollar of my own money I put into the deal?"</p>
+          </p>
+        </div>
+        <p>This metric is the true gauge of the investment's performance from the investor's perspective. It answers the question: "How much cash did I get back this year for every dollar of my own money I put into the deal?"</p>
 
-<hr />
+        <hr />
 
-    {/* THE IMPACT OF DEBT (LEVERAGE) ON RETURNS */}
-    <h2 id="leverage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Impact of Debt (Leverage) on Returns</h2>
-    <p>The difference between the Cap Rate (unleveraged return) and the Cash-on-Cash Return (leveraged return) reveals the **Leverage Effect**—how debt magnifies profits or losses.</p>
+        {/* THE IMPACT OF DEBT (LEVERAGE) ON RETURNS */}
+        <h2 id="leverage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Impact of Debt (Leverage) on Returns</h2>
+        <p>The difference between the Cap Rate (unleveraged return) and the Cash-on-Cash Return (leveraged return) reveals the **Leverage Effect**—how debt magnifies profits or losses.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Positive Leverage</h3>
-    <p>If the **Cap Rate is greater than the cost of borrowing** (the mortgage interest rate), the investor is using <strong className="font-semibold">positive leverage</strong>. This borrowed money is earning a return greater than its cost, and the excess profit is channeled back to the investor, causing the CoC Return to be significantly **higher** than the Cap Rate.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Positive Leverage</h3>
+        <p>If the **Cap Rate is greater than the cost of borrowing** (the mortgage interest rate), the investor is using <strong className="font-semibold">positive leverage</strong>. This borrowed money is earning a return greater than its cost, and the excess profit is channeled back to the investor, causing the CoC Return to be significantly **higher** than the Cap Rate.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Negative Leverage</h3>
-    <p><strong className="font-semibold">Negative leverage</strong> occurs if the Cap Rate is less than the cost of borrowing. In this case, the property's cash flow is insufficient to cover the high-interest debt, causing the CoC Return to be **lower** than the Cap Rate. The debt is destroying the investor's return on equity.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Negative Leverage</h3>
+        <p><strong className="font-semibold">Negative leverage</strong> occurs if the Cap Rate is less than the cost of borrowing. In this case, the property's cash flow is insufficient to cover the high-interest debt, causing the CoC Return to be **lower** than the Cap Rate. The debt is destroying the investor's return on equity.</p>
 
-<hr />
+        <hr />
 
-    {/* LIMITATIONS OF CAP RATE AND ADVANCED METRICS */}
-    <h2 id="limits" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations of Cap Rate and Advanced Metrics</h2>
-    <p>While Cap Rate and CoC provide quick assessment tools, they have serious limitations for long-term investment analysis, particularly in ignoring the Time Value of Money and asset life.</p>
+        {/* LIMITATIONS OF CAP RATE AND ADVANCED METRICS */}
+        <h2 id="limits" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations of Cap Rate and Advanced Metrics</h2>
+        <p>While Cap Rate and CoC provide quick assessment tools, they have serious limitations for long-term investment analysis, particularly in ignoring the Time Value of Money and asset life.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">What Cap Rate Ignores</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Mortgage (Debt Service):</strong> Cap Rate is unleveraged and ignores the debt structure, making it unsuitable for personal investment analysis where debt is used.</li>
-        <li><strong className="font-semibold">Future Returns:</strong> Cap Rate does not account for future appreciation, tax benefits (depreciation), or principal reduction over time.</li>
-        <li><strong className="font-semibold">Time Value of Money (TVM):</strong> It treats the annual NOI as constant and does not discount future cash flows.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">What Cap Rate Ignores</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Mortgage (Debt Service):</strong> Cap Rate is unleveraged and ignores the debt structure, making it unsuitable for personal investment analysis where debt is used.</li>
+          <li><strong className="font-semibold">Future Returns:</strong> Cap Rate does not account for future appreciation, tax benefits (depreciation), or principal reduction over time.</li>
+          <li><strong className="font-semibold">Time Value of Money (TVM):</strong> It treats the annual NOI as constant and does not discount future cash flows.</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Internal Rate of Return (IRR)</h3>
-    <p>For professional investment decisions, the <strong className="font-semibold">Internal Rate of Return (IRR)</strong> is the gold standard. IRR measures the actual annualized rate of return on the capital invested over the entire holding period, factoring in the timing of all cash flows (initial investment, annual NOI, and the final sale price). The IRR is the only metric that truly captures the leveraged, long-term wealth created by the investment.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Internal Rate of Return (IRR)</h3>
+        <p>For professional investment decisions, the <strong className="font-semibold">Internal Rate of Return (IRR)</strong> is the gold standard. IRR measures the actual annualized rate of return on the capital invested over the entire holding period, factoring in the timing of all cash flows (initial investment, annual NOI, and the final sale price). The IRR is the only metric that truly captures the leveraged, long-term wealth created by the investment.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Successful real estate valuation hinges on the distinction between two powerful metrics: the **Capitalization Rate (Cap Rate)**, which measures the property's inherent, unleveraged profitability, and the **Cash-on-Cash (CoC) Return**, which measures the actual annual cash return on the investor's equity.</p>
-    <p>Investors must use Cap Rate for initial valuation comparison and CoC to confirm that debt is providing **positive leverage**. This dual analysis ensures the property is acquired at fair market value and performs optimally according to the investor's cash flow goals.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Successful real estate valuation hinges on the distinction between two powerful metrics: the **Capitalization Rate (Cap Rate)**, which measures the property's inherent, unleveraged profitability, and the **Cash-on-Cash (CoC) Return**, which measures the actual annual cash return on the investor's equity.</p>
+        <p>Investors must use Cap Rate for initial valuation comparison and CoC to confirm that debt is providing **positive leverage**. This dual analysis ensures the property is acquired at fair market value and performs optimally according to the investor's cash flow goals.</p>
+      </section>
 
       {/* FAQ */}
       <Card>

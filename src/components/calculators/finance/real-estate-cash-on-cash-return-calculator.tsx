@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Landmark, Calculator, Globe, FileText, Info, Home } from 'lucide-react';
+import { Landmark, Calculator, Globe, FileText, Info, Home, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
@@ -127,6 +127,78 @@ export default function RealEstateCashOnCashReturnCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Cash-on-cash advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Measures real return on your invested capital</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Shows impact of leverage on equity returns</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Easy comparison across leveraged investments</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Doesn't account for appreciation or exit value</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Vacancy and unexpected repairs affect returns</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Negative leverage can drag down equity returns</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Cash-on-Cash = Annual Cash Flow / Total Cash Invested × 100<br />
+              Annual Cash Flow = NOI − Debt Service
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Measures liquidity return on your actual invested equity.
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Related Calculators */}
       <Card>
         <CardHeader>
@@ -186,126 +258,126 @@ export default function RealEstateCashOnCashReturnCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Real Estate ROI and Cash-on-Cash Return: Calculation and Interpretation" />
-    <meta itemProp="description" content="An expert guide detailing the calculation and interpretation of key real estate investment metrics: overall Return on Investment (ROI) and Cash-on-Cash (CoC) return, the impact of leverage, and how to measure true annual profit." />
-    <meta itemProp="keywords" content="real estate ROI formula, cash on cash return calculation, leveraged return analysis, total investment cost real estate, measuring annual cash flow, profitability metrics rental property" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-real-estate-roi-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Real Estate ROI and Cash-on-Cash Return: Calculation and Interpretation" />
+        <meta itemProp="description" content="An expert guide detailing the calculation and interpretation of key real estate investment metrics: overall Return on Investment (ROI) and Cash-on-Cash (CoC) return, the impact of leverage, and how to measure true annual profit." />
+        <meta itemProp="keywords" content="real estate ROI formula, cash on cash return calculation, leveraged return analysis, total investment cost real estate, measuring annual cash flow, profitability metrics rental property" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-real-estate-roi-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Real Estate Returns: ROI and Cash-on-Cash Analysis</h1>
-    <p className="text-lg italic text-muted-foreground">Master the primary metrics for evaluating the profitability of a rental property investment and the effect of financial leverage.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Real Estate Returns: ROI and Cash-on-Cash Analysis</h1>
+        <p className="text-lg italic text-muted-foreground">Master the primary metrics for evaluating the profitability of a rental property investment and the effect of financial leverage.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#roi-basics" className="hover:underline">Overall Return on Investment (ROI) and Total Profitability</a></li>
-        <li><a href="#coc-basics" className="hover:underline">Cash-on-Cash (CoC) Return: Measuring Liquidity</a></li>
-        <li><a href="#net-income" className="hover:underline">Net Operating Income (NOI) and Net Cash Flow</a></li>
-        <li><a href="#leverage" className="hover:underline">The Impact of Leverage on Real Estate Returns</a></li>
-        <li><a href="#limitations" className="hover:underline">Limitations and Advanced Return Metrics</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#roi-basics" className="hover:underline">Overall Return on Investment (ROI) and Total Profitability</a></li>
+          <li><a href="#coc-basics" className="hover:underline">Cash-on-Cash (CoC) Return: Measuring Liquidity</a></li>
+          <li><a href="#net-income" className="hover:underline">Net Operating Income (NOI) and Net Cash Flow</a></li>
+          <li><a href="#leverage" className="hover:underline">The Impact of Leverage on Real Estate Returns</a></li>
+          <li><a href="#limitations" className="hover:underline">Limitations and Advanced Return Metrics</a></li>
+        </ul>
+        <hr />
 
-    {/* OVERALL RETURN ON INVESTMENT (ROI) AND TOTAL PROFITABILITY */}
-    <h2 id="roi-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overall Return on Investment (ROI) and Total Profitability</h2>
-    <p><strong className="font-semibold">Return on Investment (ROI)</strong> is a universal profitability metric used to measure the gain or loss generated on an investment relative to the total cost. In real estate, ROI is typically used to measure the gain over a multi-year holding period, including all sources of profit, such as appreciation and tax benefits.</p>
+        {/* OVERALL RETURN ON INVESTMENT (ROI) AND TOTAL PROFITABILITY */}
+        <h2 id="roi-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overall Return on Investment (ROI) and Total Profitability</h2>
+        <p><strong className="font-semibold">Return on Investment (ROI)</strong> is a universal profitability metric used to measure the gain or loss generated on an investment relative to the total cost. In real estate, ROI is typically used to measure the gain over a multi-year holding period, including all sources of profit, such as appreciation and tax benefits.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The ROI Formula</h3>
-    <p>The core ROI formula compares the total profit received over the investment period against the total initial cost:</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The ROI Formula</h3>
+        <p>The core ROI formula compares the total profit received over the investment period against the total initial cost:</p>
+
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'ROI = (Total Benefit - Total Cost) / Total Cost'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <p>In real estate, <strong className="font-semibold">Total Benefit</strong> includes: rental income earned, appreciation in property value, and principal paid down on the mortgage (equity gain). <strong className="font-semibold">Total Cost</strong> includes: the initial down payment, closing costs, renovation capital, and mortgage interest paid over the holding period.</p>
+        <p>In real estate, <strong className="font-semibold">Total Benefit</strong> includes: rental income earned, appreciation in property value, and principal paid down on the mortgage (equity gain). <strong className="font-semibold">Total Cost</strong> includes: the initial down payment, closing costs, renovation capital, and mortgage interest paid over the holding period.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Total Investment Cost (TIC)</h3>
-    <p>Accurately defining the Total Investment Cost (TIC) is crucial. It includes the purchase price plus **all capital expenditures (CapEx)** necessary to stabilize the property and make it rentable, such as renovation and necessary repairs, which are key drivers of the final ROI figure.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Total Investment Cost (TIC)</h3>
+        <p>Accurately defining the Total Investment Cost (TIC) is crucial. It includes the purchase price plus **all capital expenditures (CapEx)** necessary to stabilize the property and make it rentable, such as renovation and necessary repairs, which are key drivers of the final ROI figure.</p>
 
-<hr />
+        <hr />
 
-    {/* CASH-ON-CASH (CoC) RETURN: MEASURING LIQUIDITY */}
-    <h2 id="coc-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cash-on-Cash (CoC) Return: Measuring Liquidity</h2>
-    <p><strong className="font-semibold">Cash-on-Cash (CoC) Return</strong> is the most practical and immediate metric for measuring the annual performance and liquidity of an income-producing property. Unlike overall ROI, CoC focuses exclusively on the cash flow derived from operations relative to the actual cash invested by the owner.</p>
+        {/* CASH-ON-CASH (CoC) RETURN: MEASURING LIQUIDITY */}
+        <h2 id="coc-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cash-on-Cash (CoC) Return: Measuring Liquidity</h2>
+        <p><strong className="font-semibold">Cash-on-Cash (CoC) Return</strong> is the most practical and immediate metric for measuring the annual performance and liquidity of an income-producing property. Unlike overall ROI, CoC focuses exclusively on the cash flow derived from operations relative to the actual cash invested by the owner.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The CoC Formula</h3>
-    <p>CoC return is calculated by dividing the annual pre-tax cash flow generated by the property by the total cash actually invested in the property (excluding borrowed funds):</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The CoC Formula</h3>
+        <p>CoC return is calculated by dividing the annual pre-tax cash flow generated by the property by the total cash actually invested in the property (excluding borrowed funds):</p>
+
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'CoC Return = Annual Pre-Tax Cash Flow / Total Cash Invested'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <p>Where <strong className="font-semibold">Total Cash Invested</strong> includes the down payment, closing costs, and initial repair expenses. This metric is favored by investors because it gives a clear view of the investment's performance *relative to the capital at risk*.</p>
+        <p>Where <strong className="font-semibold">Total Cash Invested</strong> includes the down payment, closing costs, and initial repair expenses. This metric is favored by investors because it gives a clear view of the investment's performance *relative to the capital at risk*.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation as an Annual Yield</h3>
-    <p>CoC return is interpreted as an annual rate of return on the capital invested. If a property yields a 10% CoC return, the investor receives 10 cents back in cash flow for every dollar they put into the deal that year. This figure is directly comparable to the interest rate on a savings account or a bond yield.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interpretation as an Annual Yield</h3>
+        <p>CoC return is interpreted as an annual rate of return on the capital invested. If a property yields a 10% CoC return, the investor receives 10 cents back in cash flow for every dollar they put into the deal that year. This figure is directly comparable to the interest rate on a savings account or a bond yield.</p>
 
-<hr />
+        <hr />
 
-    {/* NET OPERATING INCOME (NOI) AND NET CASH FLOW */}
-    <h2 id="net-income" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Net Operating Income (NOI) and Net Cash Flow</h2>
-    <p>Accurate calculation of both NOI and Net Cash Flow is essential for deriving the two primary return metrics (ROI and CoC).</p>
+        {/* NET OPERATING INCOME (NOI) AND NET CASH FLOW */}
+        <h2 id="net-income" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Net Operating Income (NOI) and Net Cash Flow</h2>
+        <p>Accurate calculation of both NOI and Net Cash Flow is essential for deriving the two primary return metrics (ROI and CoC).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Net Operating Income (NOI)</h3>
-    <p><strong className="font-semibold">Net Operating Income (NOI)</strong> is the standard measure of a property's unleveraged (debt-free) operational income. It is calculated before accounting for debt service or taxes, focusing purely on the property's efficiency:</p>
-    
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Net Operating Income (NOI)</h3>
+        <p><strong className="font-semibold">Net Operating Income (NOI)</strong> is the standard measure of a property's unleveraged (debt-free) operational income. It is calculated before accounting for debt service or taxes, focusing purely on the property's efficiency:</p>
+
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'NOI = (Gross Rental Income + Other Income) - Total Operating Expenses'}
-        </p>
-    </div>
-    <p>Total Operating Expenses include property taxes, insurance, maintenance, property management fees, and utilities, but *exclude* mortgage payments, depreciation, and income taxes.</p>
+          </p>
+        </div>
+        <p>Total Operating Expenses include property taxes, insurance, maintenance, property management fees, and utilities, but *exclude* mortgage payments, depreciation, and income taxes.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Annual Pre-Tax Cash Flow (for CoC)</h3>
-    <p>To calculate the Cash-on-Cash Return, the **Annual Pre-Tax Cash Flow** is required. This metric takes NOI and accounts for the major expense associated with financing:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Annual Pre-Tax Cash Flow (for CoC)</h3>
+        <p>To calculate the Cash-on-Cash Return, the **Annual Pre-Tax Cash Flow** is required. This metric takes NOI and accounts for the major expense associated with financing:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Annual Cash Flow = NOI - Annual Debt Service'}
-        </p>
-    </div>
-    <p>The Annual Debt Service is the sum of all principal and interest payments made on the mortgage during the year.</p>
+          </p>
+        </div>
+        <p>The Annual Debt Service is the sum of all principal and interest payments made on the mortgage during the year.</p>
 
-<hr />
+        <hr />
 
-    {/* THE IMPACT OF LEVERAGE ON REAL ESTATE RETURNS */}
-    <h2 id="leverage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Impact of Leverage on Real Estate Returns</h2>
-    <p>Real estate is one of the few asset classes where debt (<strong className="font-semibold">financial leverage</strong>) is routinely used to magnify returns. This is precisely why CoC return is higher than the property's unleveraged cap rate.</p>
+        {/* THE IMPACT OF LEVERAGE ON REAL ESTATE RETURNS */}
+        <h2 id="leverage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Impact of Leverage on Real Estate Returns</h2>
+        <p>Real estate is one of the few asset classes where debt (<strong className="font-semibold">financial leverage</strong>) is routinely used to magnify returns. This is precisely why CoC return is higher than the property's unleveraged cap rate.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Magnifying Returns (Positive Leverage)</h3>
-    <p>If the return generated by the property (measured by the property's capitalization rate or overall yield) is **greater** than the cost of the borrowed funds (the mortgage interest rate), the investment is operating under **positive leverage**. This excess return accrues entirely to the investor's equity, significantly boosting the Cash-on-Cash Return.</p>
-    <p>Example: If the property yields 7% (NOI / Cost) but the mortgage rate is 5%, the 2% difference is multiplied across the entire borrowed principal, leading to a much higher CoC return on the small equity investment.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Magnifying Returns (Positive Leverage)</h3>
+        <p>If the return generated by the property (measured by the property's capitalization rate or overall yield) is **greater** than the cost of the borrowed funds (the mortgage interest rate), the investment is operating under **positive leverage**. This excess return accrues entirely to the investor's equity, significantly boosting the Cash-on-Cash Return.</p>
+        <p>Example: If the property yields 7% (NOI / Cost) but the mortgage rate is 5%, the 2% difference is multiplied across the entire borrowed principal, leading to a much higher CoC return on the small equity investment.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Negative Leverage Risk</h3>
-    <p><strong className="font-semibold">Negative leverage</strong> occurs when the return generated by the property is **less** than the cost of borrowing. In this scenario, the investor would be better off paying cash for the property or not buying it at all, as the debt is dragging down the CoC return below the unleveraged rate.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Negative Leverage Risk</h3>
+        <p><strong className="font-semibold">Negative leverage</strong> occurs when the return generated by the property is **less** than the cost of borrowing. In this scenario, the investor would be better off paying cash for the property or not buying it at all, as the debt is dragging down the CoC return below the unleveraged rate.</p>
 
-<hr />
+        <hr />
 
-    {/* LIMITATIONS AND ADVANCED RETURN METRICS */}
-    <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations and Advanced Return Metrics</h2>
-    <p>While CoC and ROI are powerful tools, they have limitations, particularly in their failure to account for the timing of cash flows, leading expert investors to rely on advanced metrics.</p>
+        {/* LIMITATIONS AND ADVANCED RETURN METRICS */}
+        <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations and Advanced Return Metrics</h2>
+        <p>While CoC and ROI are powerful tools, they have limitations, particularly in their failure to account for the timing of cash flows, leading expert investors to rely on advanced metrics.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Limitations of Simple ROI/CoC</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Time Value of Money (TVM):</strong> Both metrics are simple ratio calculations and do not discount future cash flows. They ignore that a dollar received today is worth more than a dollar received five years from now.</li>
-        <li><strong className="font-semibold">Holding Period:</strong> CoC only measures annual performance, not the total return realized upon sale of the asset.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Limitations of Simple ROI/CoC</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Time Value of Money (TVM):</strong> Both metrics are simple ratio calculations and do not discount future cash flows. They ignore that a dollar received today is worth more than a dollar received five years from now.</li>
+          <li><strong className="font-semibold">Holding Period:</strong> CoC only measures annual performance, not the total return realized upon sale of the asset.</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Internal Rate of Return (IRR)</h3>
-    <p>For professional investment evaluation, the <strong className="font-semibold">Internal Rate of Return (IRR)</strong> is the superior metric. IRR measures the actual annualized rate of return on the invested capital, taking into account the magnitude and timing of every single cash flow (initial investment, annual cash flow, and final sale proceeds). The IRR calculation is equivalent to finding the discount rate that makes the Net Present Value (NPV) of the project equal to zero.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Internal Rate of Return (IRR)</h3>
+        <p>For professional investment evaluation, the <strong className="font-semibold">Internal Rate of Return (IRR)</strong> is the superior metric. IRR measures the actual annualized rate of return on the invested capital, taking into account the magnitude and timing of every single cash flow (initial investment, annual cash flow, and final sale proceeds). The IRR calculation is equivalent to finding the discount rate that makes the Net Present Value (NPV) of the project equal to zero.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Evaluating real estate profitability requires distinguishing between the <strong className="font-semibold">Cash-on-Cash Return</strong> (the immediate, annual liquidity metric) and the broader <strong className="font-semibold">Overall ROI</strong> (the total, multi-year measure of wealth creation).</p>
-    <p>Cash-on-Cash is indispensable for operational planning, directly reflecting the benefit of financial leverage. Ultimately, investors must use CoC to ensure sufficient liquidity while employing time-sensitive metrics like IRR to make final, economically sound decisions that maximize long-term wealth.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Evaluating real estate profitability requires distinguishing between the <strong className="font-semibold">Cash-on-Cash Return</strong> (the immediate, annual liquidity metric) and the broader <strong className="font-semibold">Overall ROI</strong> (the total, multi-year measure of wealth creation).</p>
+        <p>Cash-on-Cash is indispensable for operational planning, directly reflecting the benefit of financial leverage. Ultimately, investors must use CoC to ensure sufficient liquidity while employing time-sensitive metrics like IRR to make final, economically sound decisions that maximize long-term wealth.</p>
+      </section>
 
       {/* FAQ */}
       <Card>

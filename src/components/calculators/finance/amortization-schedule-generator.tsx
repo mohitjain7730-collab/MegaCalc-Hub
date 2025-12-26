@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { CalendarDays, Calculator, Info, FileText, CreditCard, TrendingUp } from 'lucide-react';
+import { CalendarDays, Calculator, Info, FileText, CreditCard, TrendingUp, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const formSchema = z.object({
@@ -40,7 +40,7 @@ export default function AmortizationScheduleGenerator() {
     const r = (annualRate / 100) / paymentsPerYear;
     const n = loanTerm * paymentsPerYear;
     const M = loanAmount * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    
+
     let balance = loanAmount;
     const newSchedule: ScheduleItem[] = [];
 
@@ -73,81 +73,81 @@ export default function AmortizationScheduleGenerator() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField 
-                  control={form.control} 
-                  name="loanAmount" 
+                <FormField
+                  control={form.control}
+                  name="loanAmount"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Loan Amount ($)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           placeholder="e.g., 250000"
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="annualRate" 
+                <FormField
+                  control={form.control}
+                  name="annualRate"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Annual Interest Rate (%)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           placeholder="e.g., 6.5"
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} 
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="loanTerm" 
+                <FormField
+                  control={form.control}
+                  name="loanTerm"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Loan Term (Years)</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           placeholder="e.g., 30"
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseInt(e.target.value) || undefined)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
-                <FormField 
-                  control={form.control} 
-                  name="paymentsPerYear" 
+                <FormField
+                  control={form.control}
+                  name="paymentsPerYear"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Payments per Year</FormLabel>
                       <FormControl>
-                        <Input 
-                          type="number" 
+                        <Input
+                          type="number"
                           placeholder="e.g., 12"
-                          {...field} 
-                          value={field.value ?? ''} 
-                          onChange={e => field.onChange(parseInt(e.target.value) || undefined)} 
+                          {...field}
+                          value={field.value ?? ''}
+                          onChange={e => field.onChange(parseInt(e.target.value) || undefined)}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )} 
+                  )}
                 />
               </div>
               <Button type="submit">Generate Schedule</Button>
@@ -196,6 +196,77 @@ export default function AmortizationScheduleGenerator() {
           </CardContent>
         </Card>
       )}
+
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Amortization schedule advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">See exact interest vs principal breakdown</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Plan extra payments for maximum interest savings</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Track remaining balance at any point in time</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to monitor</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Early payments are mostly interest (front-loading)</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Variable rates may change payment amounts</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Check for prepayment penalties in loan terms</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              PMT = P × [ r(1+r)ⁿ / ((1+r)ⁿ - 1) ]
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            P = principal, r = periodic rate, n = total payments. Interest each period = Balance × r.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Understanding Inputs */}
       <Card>
@@ -286,117 +357,117 @@ export default function AmortizationScheduleGenerator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Loan Amortization Schedules: Calculation, Interest-Principal Split, and Debt Management" />
-    <meta itemProp="description" content="An expert guide detailing the structure of a loan amortization schedule, the formula for calculating fixed periodic payments (PMT), the mechanics of the interest-principal split, and how the schedule is affected by extra payments." />
-    <meta itemProp="keywords" content="loan amortization schedule formula, calculating fixed payment PMT, interest principal split amortization, front-loaded interest explained, reducing balance method, debt repayment schedule generator" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-12" /> 
-    <meta itemProp="url" content="/definitive-amortization-schedule-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Loan Amortization Schedules: Calculation, Interest-Principal Split, and Debt Management" />
+        <meta itemProp="description" content="An expert guide detailing the structure of a loan amortization schedule, the formula for calculating fixed periodic payments (PMT), the mechanics of the interest-principal split, and how the schedule is affected by extra payments." />
+        <meta itemProp="keywords" content="loan amortization schedule formula, calculating fixed payment PMT, interest principal split amortization, front-loaded interest explained, reducing balance method, debt repayment schedule generator" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-12" />
+        <meta itemProp="url" content="/definitive-amortization-schedule-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Amortization Schedule: Mapping Your Debt Repayment</h1>
-    <p className="text-lg italic text-gray-700">Master the structured table that details every fixed loan payment, revealing the precise allocation between interest and principal over the life of the debt.</p>
-    
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Amortization Schedule: Mapping Your Debt Repayment</h1>
+        <p className="text-lg italic text-gray-700">Master the structured table that details every fixed loan payment, revealing the precise allocation between interest and principal over the life of the debt.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">Amortization: Definition and Schedule Components</a></li>
-        <li><a href="#payment-calc" className="hover:underline">Calculating the Fixed Payment (PMT)</a></li>
-        <li><a href="#split" className="hover:underline">The Interest-Principal Split: Front-Loading Mechanics</a></li>
-        <li><a href="#interest-calc" className="hover:underline">The Reducing Balance Interest Calculation</a></li>
-        <li><a href="#extra-payments" className="hover:underline">Impact of Extra Payments on the Schedule</a></li>
-    </ul>
-<hr />
 
-    {/* AMORTIZATION: DEFINITION AND SCHEDULE COMPONENTS */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Amortization: Definition and Schedule Components</h2>
-    <p>**Amortization** is the process of gradually paying off a debt over a fixed period through a series of regular, equal installments. The **Amortization Schedule** is the detailed table that shows the exact financial breakdown of every single payment made over the life of the loan.</p>
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-blue-600">
+          <li><a href="#definition" className="hover:underline">Amortization: Definition and Schedule Components</a></li>
+          <li><a href="#payment-calc" className="hover:underline">Calculating the Fixed Payment (PMT)</a></li>
+          <li><a href="#split" className="hover:underline">The Interest-Principal Split: Front-Loading Mechanics</a></li>
+          <li><a href="#interest-calc" className="hover:underline">The Reducing Balance Interest Calculation</a></li>
+          <li><a href="#extra-payments" className="hover:underline">Impact of Extra Payments on the Schedule</a></li>
+        </ul>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Schedule Components</h3>
-    <p>Each row in the schedule represents one payment and tracks five columns:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Beginning Balance:</strong> The outstanding principal at the start of the period.</li>
-        <li><strong className="font-semibold">Fixed Payment (PMT):</strong> The constant total installment amount.</li>
-        <li><strong className="font-semibold">Interest Paid:</strong> The portion of the PMT covering the accrued interest.</li>
-        <li><strong className="font-semibold">Principal Paid:</strong> The portion of the PMT that reduces the loan balance.</li>
-        <li><strong className="font-semibold">Ending Balance:</strong> The remaining principal after the PMT is applied.</li>
-    </ol>
-    <p>The schedule must end with an **Ending Balance of zero** on the final payment date.</p>
+        {/* AMORTIZATION: DEFINITION AND SCHEDULE COMPONENTS */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Amortization: Definition and Schedule Components</h2>
+        <p>**Amortization** is the process of gradually paying off a debt over a fixed period through a series of regular, equal installments. The **Amortization Schedule** is the detailed table that shows the exact financial breakdown of every single payment made over the life of the loan.</p>
 
-<hr />
+        <h3 className="text-xl font-semibold text-foreground mt-6">Schedule Components</h3>
+        <p>Each row in the schedule represents one payment and tracks five columns:</p>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li><strong className="font-semibold">Beginning Balance:</strong> The outstanding principal at the start of the period.</li>
+          <li><strong className="font-semibold">Fixed Payment (PMT):</strong> The constant total installment amount.</li>
+          <li><strong className="font-semibold">Interest Paid:</strong> The portion of the PMT covering the accrued interest.</li>
+          <li><strong className="font-semibold">Principal Paid:</strong> The portion of the PMT that reduces the loan balance.</li>
+          <li><strong className="font-semibold">Ending Balance:</strong> The remaining principal after the PMT is applied.</li>
+        </ol>
+        <p>The schedule must end with an **Ending Balance of zero** on the final payment date.</p>
 
-    {/* CALCULATING THE FIXED PAYMENT (PMT) */}
-    <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Fixed Payment (PMT)</h2>
-    <p>The fixed monthly payment (PMT) is calculated using the **Present Value of Annuity** formula, ensuring that the stream of payments perfectly equals the original loan principal (PV) over the full term (n).</p>
+        <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The PMT formula is derived by rearranging the PVA equation, using the original loan principal (P), the periodic interest rate (r), and the total number of periods (n):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        {/* CALCULATING THE FIXED PAYMENT (PMT) */}
+        <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Fixed Payment (PMT)</h2>
+        <p>The fixed monthly payment (PMT) is calculated using the **Present Value of Annuity** formula, ensuring that the stream of payments perfectly equals the original loan principal (PV) over the full term (n).</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <p>The PMT formula is derived by rearranging the PVA equation, using the original loan principal (P), the periodic interest rate (r), and the total number of periods (n):</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'PMT = P * [ r * (1 + r)^n / ((1 + r)^n - 1) ]'}
-        </p>
-    </div>
-    <p>The term in brackets is the **Capital Recovery Factor**, the multiplier that calculates the fixed payment required to recover the principal plus interest.</p>
+          </p>
+        </div>
+        <p>The term in brackets is the **Capital Recovery Factor**, the multiplier that calculates the fixed payment required to recover the principal plus interest.</p>
 
-<hr />
+        <hr />
 
-    {/* THE INTEREST-PRINCIPAL SPLIT: FRONT-LOADING MECHANICS */}
-    <h2 id="split" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Interest-Principal Split: Front-Loading Mechanics</h2>
-    <p>The central feature of the amortization schedule is that the proportion of interest to principal within the fixed PMT changes with every payment made. This is known as the **front-loading of interest**.</p>
+        {/* THE INTEREST-PRINCIPAL SPLIT: FRONT-LOADING MECHANICS */}
+        <h2 id="split" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Interest-Principal Split: Front-Loading Mechanics</h2>
+        <p>The central feature of the amortization schedule is that the proportion of interest to principal within the fixed PMT changes with every payment made. This is known as the **front-loading of interest**.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Dynamic Shift</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Early Years:</strong> The outstanding principal balance is at its highest. Therefore, the interest portion of the PMT is maximized, and only a tiny portion reduces the principal.</li>
-        <li><strong className="font-semibold">Mid-Term:</strong> The interest portion and principal portion gradually become closer to equal.</li>
-        <li><strong className="font-semibold">Later Years:</strong> The outstanding principal is low. The interest portion of the PMT is minimized, and the vast majority of the payment goes toward rapidly paying down the remaining principal.</li>
-    </ul>
-    <p>This front-loaded structure means the borrower pays the majority of the total interest cost during the first third of the loan's life.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Dynamic Shift</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Early Years:</strong> The outstanding principal balance is at its highest. Therefore, the interest portion of the PMT is maximized, and only a tiny portion reduces the principal.</li>
+          <li><strong className="font-semibold">Mid-Term:</strong> The interest portion and principal portion gradually become closer to equal.</li>
+          <li><strong className="font-semibold">Later Years:</strong> The outstanding principal is low. The interest portion of the PMT is minimized, and the vast majority of the payment goes toward rapidly paying down the remaining principal.</li>
+        </ul>
+        <p>This front-loaded structure means the borrower pays the majority of the total interest cost during the first third of the loan's life.</p>
 
-<hr />
+        <hr />
 
-    {/* THE REDUCING BALANCE INTEREST CALCULATION */}
-    <h2 id="interest-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Reducing Balance Interest Calculation</h2>
-    <p>The amortization method relies on the **reducing balance method**, ensuring that interest is calculated fairly—only on the principal that is currently owed.</p>
+        {/* THE REDUCING BALANCE INTEREST CALCULATION */}
+        <h2 id="interest-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Reducing Balance Interest Calculation</h2>
+        <p>The amortization method relies on the **reducing balance method**, ensuring that interest is calculated fairly—only on the principal that is currently owed.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interest Calculation for Payment 'k'</h3>
-    <p>The interest due for the current payment is calculated based on the **Beginning Balance** of that specific period:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interest Calculation for Payment 'k'</h3>
+        <p>The interest due for the current payment is calculated based on the **Beginning Balance** of that specific period:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'Interest (k) = Beginning Balance (k) * Periodic Interest Rate (r)'}
-        </p>
-    </div>
-    <p>The Principal reduction for the period is then calculated as the remainder of the fixed payment:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
+          </p>
+        </div>
+        <p>The Principal reduction for the period is then calculated as the remainder of the fixed payment:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
+          <p className="font-mono text-xl text-red-700 font-bold">
             {'Principal Paid (k) = PMT - Interest (k)'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Updating the Schedule</h3>
-    <p>The **Ending Balance** for payment $k$ becomes the **Beginning Balance** for payment $k+1$, perpetuating the cycle until the balance hits zero. The total interest paid over the loan term is the sum of all individual interest components in the schedule.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Updating the Schedule</h3>
+        <p>The **Ending Balance** for payment $k$ becomes the **Beginning Balance** for payment $k+1$, perpetuating the cycle until the balance hits zero. The total interest paid over the loan term is the sum of all individual interest components in the schedule.</p>
 
-<hr />
+        <hr />
 
-    {/* IMPACT OF EXTRA PAYMENTS ON THE SCHEDULE */}
-    <h2 id="extra-payments" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Impact of Extra Payments on the Schedule</h2>
-    <p>An extra payment (or prepayment) immediately alters the amortization schedule, leading to significant savings in time and interest cost.</p>
+        {/* IMPACT OF EXTRA PAYMENTS ON THE SCHEDULE */}
+        <h2 id="extra-payments" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Impact of Extra Payments on the Schedule</h2>
+        <p>An extra payment (or prepayment) immediately alters the amortization schedule, leading to significant savings in time and interest cost.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Principal-Only Reduction</h3>
-    <p>A properly designated extra payment is applied $100\%$ toward the outstanding principal. This immediately reduces the **Beginning Balance** for all future periods, causing the following effects:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Reduced Interest Base:</strong> The next month’s interest is calculated on a much smaller principal amount.</li>
-        <li><strong className="font-semibold">Faster Payoff:</strong> Because the fixed PMT now covers the interest sooner, a larger portion is automatically directed to principal reduction, eliminating payments at the end of the loan's life and shortening the tenure.</li>
-    </ol>
-    <p>The amortization generator recalculates the entire schedule after the extra payment, showing the new, accelerated payoff date and the precise dollar amount of interest saved.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Principal-Only Reduction</h3>
+        <p>A properly designated extra payment is applied $100\%$ toward the outstanding principal. This immediately reduces the **Beginning Balance** for all future periods, causing the following effects:</p>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li><strong className="font-semibold">Reduced Interest Base:</strong> The next month’s interest is calculated on a much smaller principal amount.</li>
+          <li><strong className="font-semibold">Faster Payoff:</strong> Because the fixed PMT now covers the interest sooner, a larger portion is automatically directed to principal reduction, eliminating payments at the end of the loan's life and shortening the tenure.</li>
+        </ol>
+        <p>The amortization generator recalculates the entire schedule after the extra payment, showing the new, accelerated payoff date and the precise dollar amount of interest saved.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Amortization Schedule is the definitive tool for tracking and managing installment debt. It reveals the **fixed PMT** structure and the vital **front-loading of interest** inherent in loans like mortgages.</p>
-    <p>Understanding the reducing balance method empowers borrowers to utilize **prepayments** effectively. By applying surplus funds directly to the principal balance, the borrower shortens the loan term and minimizes the overall interest burden, accelerating their path to debt freedom.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Amortization Schedule is the definitive tool for tracking and managing installment debt. It reveals the **fixed PMT** structure and the vital **front-loading of interest** inherent in loans like mortgages.</p>
+        <p>Understanding the reducing balance method empowers borrowers to utilize **prepayments** effectively. By applying surplus funds directly to the principal balance, the borrower shortens the loan term and minimizes the overall interest burden, accelerating their path to debt freedom.</p>
+      </section>
 
       {/* FAQ */}
       <Card>
@@ -479,6 +550,21 @@ export default function AmortizationScheduleGenerator() {
               Refinancing replaces your existing loan with a new one, resetting the amortization schedule. If you refinance to a lower interest rate, you can reduce monthly payments or shorten the term. However, early payments in the new loan will again be mostly interest.
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The amortization schedule shows each payment broken down into principal and interest.</p>
+          <p>Early payments are mostly interest; later payments are mostly principal reduction.</p>
+          <p>Extra payments directly reduce principal, shortening the loan term and total interest paid.</p>
         </CardContent>
       </Card>
     </div>

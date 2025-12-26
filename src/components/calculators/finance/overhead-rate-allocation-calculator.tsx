@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Factory, Calculator, Info, TrendingUp, Target, FileText } from 'lucide-react';
+import { Factory, Calculator, Info, TrendingUp, Target, FileText, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const formSchema = z.object({
@@ -121,6 +121,77 @@ export default function OverheadRateAllocationCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Overhead allocation opportunities</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">POHR enables timely product costing decisions</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Proper allocation supports accurate pricing</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Cost driver selection impacts profitability analysis</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to monitor</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Actual overhead may differ from estimates</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Single plant-wide rate may distort costs</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Consider ABC for complex operations</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              POHR = Total Estimated Overhead Costs ÷ Total Estimated Allocation Base
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            The predetermined rate enables overhead costs to be applied to products as they are manufactured.
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Educational Content - Expanded Sections */}
       <div className="space-y-6">
         {/* Understanding Inputs */}
@@ -212,118 +283,118 @@ export default function OverheadRateAllocationCalculator() {
 
         {/* Guide Section */}
         <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinancialCalculator">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Overhead Rate Allocation: Calculation, Absorption, and Cost Accounting" />
-    <meta itemProp="description" content="An expert guide detailing the Overhead Rate Allocation formula, its core role in product costing, determining the basis for allocation (direct labor, machine hours), and its importance for accurate profitability and pricing decisions." />
-    <meta itemProp="keywords" content="overhead rate calculation formula, absorption costing explained, predetermined overhead rate, cost allocation base, activity-based costing ABC, overhead absorption rate, product cost analysis" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-11-12" /> 
-    <meta itemProp="url" content="/definitive-overhead-rate-guide" />
+          {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+          <meta itemProp="name" content="The Definitive Guide to Overhead Rate Allocation: Calculation, Absorption, and Cost Accounting" />
+          <meta itemProp="description" content="An expert guide detailing the Overhead Rate Allocation formula, its core role in product costing, determining the basis for allocation (direct labor, machine hours), and its importance for accurate profitability and pricing decisions." />
+          <meta itemProp="keywords" content="overhead rate calculation formula, absorption costing explained, predetermined overhead rate, cost allocation base, activity-based costing ABC, overhead absorption rate, product cost analysis" />
+          <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+          <meta itemProp="datePublished" content="2025-11-12" />
+          <meta itemProp="url" content="/definitive-overhead-rate-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Overhead Rate: Calculating and Allocating Indirect Costs</h1>
-    <p className="text-lg italic text-gray-700">Master the fundamental cost accounting metric used to assign factory-wide indirect expenses to specific products or services.</p>
-    
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Overhead Rate: Calculating and Allocating Indirect Costs</h1>
+          <p className="text-lg italic text-gray-700">Master the fundamental cost accounting metric used to assign factory-wide indirect expenses to specific products or services.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-blue-600">
-        <li><a href="#definition" className="hover:underline">Overhead: Definition and Necessity of Allocation</a></li>
-        <li><a href="#predetermined-rate" className="hover:underline">The Predetermined Overhead Rate Formula</a></li>
-        <li><a href="#allocation-base" className="hover:underline">Selecting the Allocation Base (Cost Driver)</a></li>
-        <li><a href="#absorption" className="hover:underline">Overhead Absorption and Product Costing</a></li>
-        <li><a href="#vs-abc" className="hover:underline">Activity-Based Costing (ABC) vs. Traditional Allocation</a></li>
-    </ul>
-<hr />
 
-    {/* OVERHEAD: DEFINITION AND NECESSITY OF ALLOCATION */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overhead: Definition and Necessity of Allocation</h2>
-    <p>**Overhead** refers to all indirect costs associated with running a business, particularly manufacturing a product. These costs cannot be directly traced to a specific unit of output (unlike direct labor or direct materials) but are essential for production.</p>
+          {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+          <ul className="list-disc ml-6 space-y-2 text-blue-600">
+            <li><a href="#definition" className="hover:underline">Overhead: Definition and Necessity of Allocation</a></li>
+            <li><a href="#predetermined-rate" className="hover:underline">The Predetermined Overhead Rate Formula</a></li>
+            <li><a href="#allocation-base" className="hover:underline">Selecting the Allocation Base (Cost Driver)</a></li>
+            <li><a href="#absorption" className="hover:underline">Overhead Absorption and Product Costing</a></li>
+            <li><a href="#vs-abc" className="hover:underline">Activity-Based Costing (ABC) vs. Traditional Allocation</a></li>
+          </ul>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Examples of Overhead Costs</h3>
-    <p>Overhead costs include:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>Factory rent and property taxes.</li>
-        <li>Utilities (electricity, gas) for the plant.</li>
-        <li>Supervisory salaries and maintenance wages.</li>
-        <li>Depreciation of factory equipment.</li>
-    </ul>
-    <p>For accurate inventory valuation and pricing decisions (cost accounting), these indirect costs must be systematically assigned (allocated) to every product unit manufactured during the period. Failure to allocate overhead leads to understating the true cost of inventory.</p>
+          {/* OVERHEAD: DEFINITION AND NECESSITY OF ALLOCATION */}
+          <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overhead: Definition and Necessity of Allocation</h2>
+          <p>**Overhead** refers to all indirect costs associated with running a business, particularly manufacturing a product. These costs cannot be directly traced to a specific unit of output (unlike direct labor or direct materials) but are essential for production.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Examples of Overhead Costs</h3>
+          <p>Overhead costs include:</p>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>Factory rent and property taxes.</li>
+            <li>Utilities (electricity, gas) for the plant.</li>
+            <li>Supervisory salaries and maintenance wages.</li>
+            <li>Depreciation of factory equipment.</li>
+          </ul>
+          <p>For accurate inventory valuation and pricing decisions (cost accounting), these indirect costs must be systematically assigned (allocated) to every product unit manufactured during the period. Failure to allocate overhead leads to understating the true cost of inventory.</p>
 
-    {/* THE PREDETERMINED OVERHEAD RATE FORMULA */}
-    <h2 id="predetermined-rate" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Predetermined Overhead Rate Formula</h2>
-    <p>Companies typically use a **Predetermined Overhead Rate (POHR)** to allocate costs. This rate is calculated *before* the start of the fiscal period to allow management to set prices and estimate costs throughout the year without waiting for final, actual overhead figures.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
-    <p>The POHR is calculated by dividing the estimated total overhead costs for the coming year by the estimated total volume of the chosen allocation base (cost driver):</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'POHR = Estimated Total Overhead Cost / Estimated Total Volume of Allocation Base'}
-        </p>
-    </div>
+          {/* THE PREDETERMINED OVERHEAD RATE FORMULA */}
+          <h2 id="predetermined-rate" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Predetermined Overhead Rate Formula</h2>
+          <p>Companies typically use a **Predetermined Overhead Rate (POHR)** to allocate costs. This rate is calculated *before* the start of the fiscal period to allow management to set prices and estimate costs throughout the year without waiting for final, actual overhead figures.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Applying the Rate (Costing)</h3>
-    <p>Once the POHR is established (e.g., 20 dollars per machine hour), it is applied to each job or product unit based on how much of the allocation base that unit consumes:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Overhead Applied = POHR * Actual Amount of Allocation Base Used'}
-        </p>
-    </div>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+          <p>The POHR is calculated by dividing the estimated total overhead costs for the coming year by the estimated total volume of the chosen allocation base (cost driver):</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'POHR = Estimated Total Overhead Cost / Estimated Total Volume of Allocation Base'}
+            </p>
+          </div>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Applying the Rate (Costing)</h3>
+          <p>Once the POHR is established (e.g., 20 dollars per machine hour), it is applied to each job or product unit based on how much of the allocation base that unit consumes:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Overhead Applied = POHR * Actual Amount of Allocation Base Used'}
+            </p>
+          </div>
 
-    {/* SELECTING THE ALLOCATION BASE (COST DRIVER) */}
-    <h2 id="allocation-base" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Selecting the Allocation Base (Cost Driver)</h2>
-    <p>The **Allocation Base** (or Cost Driver) is the factor that most closely correlates with the incurrence of overhead costs. Choosing the correct base is crucial for ensuring the allocated overhead is fair and accurate.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Common Cost Drivers</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Direct Labor Hours (DLH):</strong> Used when human labor is the primary source of complexity and time. Overhead costs like supervision and indirect labor correlate well with DLH.</li>
-        <li><strong className="font-semibold">Machine Hours (MH):</strong> Used when production is highly automated. Overhead costs like equipment depreciation, maintenance, and utilities correlate better with machine time.</li>
-        <li><strong className="font-semibold">Direct Material Dollars:</strong> Less common, used in processes where material handling and purchasing overhead is high.</li>
-    </ul>
+          {/* SELECTING THE ALLOCATION BASE (COST DRIVER) */}
+          <h2 id="allocation-base" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Selecting the Allocation Base (Cost Driver)</h2>
+          <p>The **Allocation Base** (or Cost Driver) is the factor that most closely correlates with the incurrence of overhead costs. Choosing the correct base is crucial for ensuring the allocated overhead is fair and accurate.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Causation Principle</h3>
-    <p>The best allocation base is the one that demonstrates a **cause-and-effect relationship** with the overhead costs. If machine time causes higher maintenance and electricity costs, machine hours should be the cost driver. Using an irrelevant base (e.g., allocating machine maintenance based on direct labor hours) leads to inaccurate product costing and skewed pricing decisions.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Common Cost Drivers</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong className="font-semibold">Direct Labor Hours (DLH):</strong> Used when human labor is the primary source of complexity and time. Overhead costs like supervision and indirect labor correlate well with DLH.</li>
+            <li><strong className="font-semibold">Machine Hours (MH):</strong> Used when production is highly automated. Overhead costs like equipment depreciation, maintenance, and utilities correlate better with machine time.</li>
+            <li><strong className="font-semibold">Direct Material Dollars:</strong> Less common, used in processes where material handling and purchasing overhead is high.</li>
+          </ul>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Causation Principle</h3>
+          <p>The best allocation base is the one that demonstrates a **cause-and-effect relationship** with the overhead costs. If machine time causes higher maintenance and electricity costs, machine hours should be the cost driver. Using an irrelevant base (e.g., allocating machine maintenance based on direct labor hours) leads to inaccurate product costing and skewed pricing decisions.</p>
 
-    {/* OVERHEAD ABSORPTION AND PRODUCT COSTING */}
-    <h2 id="absorption" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overhead Absorption and Product Costing</h2>
-    <p>**Overhead Absorption** is the process of applying the estimated overhead costs to the work in process (WIP) inventory, becoming part of the final inventory cost on the Balance Sheet.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Full Product Cost</h3>
-    <p>The total manufacturing cost assigned to a unit of inventory is the sum of all three cost components:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
-        <p className="font-mono text-xl text-red-700 font-bold">
-            {'Total Product Cost = Direct Materials + Direct Labor + Applied Overhead'}
-        </p>
-    </div>
-    <p>This full cost is used for calculating the cost of goods sold (COGS) on the Income Statement and setting the minimum acceptable selling price for products.</p>
+          {/* OVERHEAD ABSORPTION AND PRODUCT COSTING */}
+          <h2 id="absorption" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overhead Absorption and Product Costing</h2>
+          <p>**Overhead Absorption** is the process of applying the estimated overhead costs to the work in process (WIP) inventory, becoming part of the final inventory cost on the Balance Sheet.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Under- or Over-Applied Overhead</h3>
-    <p>Because the POHR is based on estimates, the total overhead applied to inventory during the year rarely matches the total **actual overhead costs** incurred. This difference is called the under- or over-applied overhead. This discrepancy must be adjusted at the end of the period, usually by adjusting the COGS figure.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">The Full Product Cost</h3>
+          <p>The total manufacturing cost assigned to a unit of inventory is the sum of all three cost components:</p>
+          <div className="overflow-x-auto my-6 p-4 bg-gray-500 border rounded-lg text-center">
+            <p className="font-mono text-xl text-red-700 font-bold">
+              {'Total Product Cost = Direct Materials + Direct Labor + Applied Overhead'}
+            </p>
+          </div>
+          <p>This full cost is used for calculating the cost of goods sold (COGS) on the Income Statement and setting the minimum acceptable selling price for products.</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">Under- or Over-Applied Overhead</h3>
+          <p>Because the POHR is based on estimates, the total overhead applied to inventory during the year rarely matches the total **actual overhead costs** incurred. This difference is called the under- or over-applied overhead. This discrepancy must be adjusted at the end of the period, usually by adjusting the COGS figure.</p>
 
-    {/* ACTIVITY-BASED COSTING (ABC) VS. TRADITIONAL ALLOCATION */}
-    <h2 id="vs-abc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Activity-Based Costing (ABC) vs. Traditional Allocation</h2>
-    <p>The POHR method (traditional costing) is simple but often inaccurate for complex environments. **Activity-Based Costing (ABC)** offers a more precise, multi-driver approach.</p>
+          <hr />
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Traditional Costing Flaw (Single Rate)</h3>
-    <p>The traditional method often uses a single, plant-wide POHR. This assumes that all products consume overhead resources at the same rate, which is false in modern, diverse manufacturing facilities (e.g., a simple product may require few setups, while a custom product requires many setups and inspections).</p>
+          {/* ACTIVITY-BASED COSTING (ABC) VS. TRADITIONAL ALLOCATION */}
+          <h2 id="vs-abc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Activity-Based Costing (ABC) vs. Traditional Allocation</h2>
+          <p>The POHR method (traditional costing) is simple but often inaccurate for complex environments. **Activity-Based Costing (ABC)** offers a more precise, multi-driver approach.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">ABC Methodology (Multiple Drivers)</h3>
-    <p>ABC refines allocation by assigning costs based on the specific activities that consume overhead (e.g., machine setup, quality inspection, engineering design). ABC uses a separate rate and base for each activity, providing highly accurate product costs, particularly for low-volume, complex products that consume disproportionate overhead.</p>
+          <h3 className="text-xl font-semibold text-foreground mt-6">Traditional Costing Flaw (Single Rate)</h3>
+          <p>The traditional method often uses a single, plant-wide POHR. This assumes that all products consume overhead resources at the same rate, which is false in modern, diverse manufacturing facilities (e.g., a simple product may require few setups, while a custom product requires many setups and inspections).</p>
 
-<hr />
+          <h3 className="text-xl font-semibold text-foreground mt-6">ABC Methodology (Multiple Drivers)</h3>
+          <p>ABC refines allocation by assigning costs based on the specific activities that consume overhead (e.g., machine setup, quality inspection, engineering design). ABC uses a separate rate and base for each activity, providing highly accurate product costs, particularly for low-volume, complex products that consume disproportionate overhead.</p>
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The **Predetermined Overhead Rate (POHR)** is the essential cost accounting tool used to assign all indirect manufacturing expenses to product inventory. It is calculated by dividing estimated total overhead costs by the chosen **allocation base** (cost driver).</p>
-    <p>Accurate overhead allocation is vital for determining the true **Total Product Cost**, ensuring correct inventory valuation, and setting profitable sales prices. While the traditional single-rate system is simple, sophisticated firms often rely on **Activity-Based Costing (ABC)** for greater precision in complex production environments.</p>
-</section>
+          <hr />
+
+          {/* CONCLUSION */}
+          <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+          <p>The **Predetermined Overhead Rate (POHR)** is the essential cost accounting tool used to assign all indirect manufacturing expenses to product inventory. It is calculated by dividing estimated total overhead costs by the chosen **allocation base** (cost driver).</p>
+          <p>Accurate overhead allocation is vital for determining the true **Total Product Cost**, ensuring correct inventory valuation, and setting profitable sales prices. While the traditional single-rate system is simple, sophisticated firms often rely on **Activity-Based Costing (ABC)** for greater precision in complex production environments.</p>
+        </section>
 
         {/* FAQ Section */}
         <Card>
@@ -406,6 +477,21 @@ export default function OverheadRateAllocationCalculator() {
                 Yes, service businesses can use overhead rates to allocate indirect costs to jobs or clients. Instead of manufacturing overhead, they allocate costs like office rent, administrative salaries, and support functions. The allocation base might be billable hours, service units, or revenue, depending on the nature of the service business.
               </p>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Summary */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              Summary
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm text-muted-foreground">
+            <p>Overhead rate allocation assigns indirect manufacturing costs to products based on consumption of cost drivers.</p>
+            <p>Common bases include machine hours and direct labor hours; choose the base most correlated with overhead.</p>
+            <p>Under/over-applied overhead is adjusted at period-end to ensure accurate cost of goods sold.</p>
           </CardContent>
         </Card>
       </div>

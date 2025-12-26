@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Handshake, PlusCircle, XCircle, Calculator, Info, FileText, TrendingUp } from 'lucide-react';
+import { Handshake, PlusCircle, XCircle, Calculator, Info, FileText, TrendingUp, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -29,9 +29,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 interface Result {
-    fixed: { totalInterest: number, monthlyPayment: number },
-    floating: { totalInterest: number },
-    chartData: { year: number, fixedInterest: number, floatingInterest: number }[]
+  fixed: { totalInterest: number, monthlyPayment: number },
+  floating: { totalInterest: number },
+  chartData: { year: number, fixedInterest: number, floatingInterest: number }[]
 }
 
 export default function FixedVsFloatingRateCalculator() {
@@ -54,43 +54,43 @@ export default function FixedVsFloatingRateCalculator() {
   });
 
   const calculateAmortization = (
-      principal: number,
-      termYears: number,
-      initialRate: number,
-      rateChanges: { year?: number; rate?: number }[] = []
+    principal: number,
+    termYears: number,
+    initialRate: number,
+    rateChanges: { year?: number; rate?: number }[] = []
   ) => {
-      const n = termYears * 12;
-      let balance = principal;
-      let totalInterest = 0;
-      let monthlyPayment = 0;
-      const interestPaidByYear: number[] = Array(termYears).fill(0);
-      
-      let currentRate = initialRate / 100 / 12;
+    const n = termYears * 12;
+    let balance = principal;
+    let totalInterest = 0;
+    let monthlyPayment = 0;
+    const interestPaidByYear: number[] = Array(termYears).fill(0);
 
-      for (let i = 0; i < n; i++) {
-          const year = Math.floor(i / 12) + 1;
-          const rateChange = rateChanges.find(rc => rc.year === year);
-          if (rateChange && rateChange.rate !== undefined && i % 12 === 0) {
-              currentRate = rateChange.rate / 100 / 12;
-          }
-          
-          if(i === 0 || (rateChange && rateChange.rate !== undefined && i % 12 === 0)) {
-            const remainingPeriods = n - i;
-            if (currentRate > 0) {
-                monthlyPayment = balance * (currentRate * Math.pow(1 + currentRate, remainingPeriods)) / (Math.pow(1 + currentRate, remainingPeriods) - 1);
-            } else {
-                monthlyPayment = balance / remainingPeriods;
-            }
-          }
+    let currentRate = initialRate / 100 / 12;
 
-          const interest = balance * currentRate;
-          const principalPaid = monthlyPayment - interest;
-          balance -= principalPaid;
-          totalInterest += interest;
-          interestPaidByYear[year - 1] += interest;
+    for (let i = 0; i < n; i++) {
+      const year = Math.floor(i / 12) + 1;
+      const rateChange = rateChanges.find(rc => rc.year === year);
+      if (rateChange && rateChange.rate !== undefined && i % 12 === 0) {
+        currentRate = rateChange.rate / 100 / 12;
       }
-      
-      return { totalInterest, monthlyPayment, interestPaidByYear };
+
+      if (i === 0 || (rateChange && rateChange.rate !== undefined && i % 12 === 0)) {
+        const remainingPeriods = n - i;
+        if (currentRate > 0) {
+          monthlyPayment = balance * (currentRate * Math.pow(1 + currentRate, remainingPeriods)) / (Math.pow(1 + currentRate, remainingPeriods) - 1);
+        } else {
+          monthlyPayment = balance / remainingPeriods;
+        }
+      }
+
+      const interest = balance * currentRate;
+      const principalPaid = monthlyPayment - interest;
+      balance -= principalPaid;
+      totalInterest += interest;
+      interestPaidByYear[year - 1] += interest;
+    }
+
+    return { totalInterest, monthlyPayment, interestPaidByYear };
   };
 
   const onSubmit = (values: FormValues) => {
@@ -99,15 +99,15 @@ export default function FixedVsFloatingRateCalculator() {
     const floatingRateData = calculateAmortization(values.principal, values.term, values.initialFloatingRate, validRateChanges);
 
     const chartData = Array.from({ length: values.term }, (_, i) => ({
-        year: i + 1,
-        fixedInterest: parseFloat(fixedRateData.interestPaidByYear.slice(0, i + 1).reduce((a, b) => a + b, 0).toFixed(0)),
-        floatingInterest: parseFloat(floatingRateData.interestPaidByYear.slice(0, i + 1).reduce((a, b) => a + b, 0).toFixed(0)),
+      year: i + 1,
+      fixedInterest: parseFloat(fixedRateData.interestPaidByYear.slice(0, i + 1).reduce((a, b) => a + b, 0).toFixed(0)),
+      floatingInterest: parseFloat(floatingRateData.interestPaidByYear.slice(0, i + 1).reduce((a, b) => a + b, 0).toFixed(0)),
     }));
 
     setResult({
-        fixed: { totalInterest: fixedRateData.totalInterest, monthlyPayment: fixedRateData.monthlyPayment },
-        floating: { totalInterest: floatingRateData.totalInterest },
-        chartData
+      fixed: { totalInterest: fixedRateData.totalInterest, monthlyPayment: fixedRateData.monthlyPayment },
+      floating: { totalInterest: floatingRateData.totalInterest },
+      chartData
     });
   };
 
@@ -132,43 +132,43 @@ export default function FixedVsFloatingRateCalculator() {
                   <CardTitle>Loan Details</CardTitle>
                 </CardHeader>
                 <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField 
-                    control={form.control} 
-                    name="principal" 
+                  <FormField
+                    control={form.control}
+                    name="principal"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Loan Principal ($)</FormLabel>
                         <FormControl>
-                          <Input 
-                            type="number" 
+                          <Input
+                            type="number"
                             placeholder="e.g., 300000"
-                            {...field} 
-                            value={field.value || ''} 
-                            onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                            {...field}
+                            value={field.value || ''}
+                            onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
-                    )} 
+                    )}
                   />
-                  <FormField 
-                    control={form.control} 
-                    name="term" 
+                  <FormField
+                    control={form.control}
+                    name="term"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Loan Term (Years)</FormLabel>
                         <FormControl>
-                          <Input 
-                            type="number" 
+                          <Input
+                            type="number"
                             placeholder="e.g., 30"
-                            {...field} 
-                            value={field.value || ''} 
-                            onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                            {...field}
+                            value={field.value || ''}
+                            onChange={e => field.onChange(parseInt(e.target.value) || 0)}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
-                    )} 
+                    )}
                   />
                 </CardContent>
               </Card>
@@ -179,25 +179,25 @@ export default function FixedVsFloatingRateCalculator() {
                     <CardTitle>Fixed Rate</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <FormField 
-                      control={form.control} 
-                      name="fixedRate" 
+                    <FormField
+                      control={form.control}
+                      name="fixedRate"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Annual Interest Rate (%)</FormLabel>
                           <FormControl>
-                            <Input 
-                              type="number" 
+                            <Input
+                              type="number"
                               step="any"
                               placeholder="e.g., 4.5"
-                              {...field} 
-                              value={field.value || ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                              {...field}
+                              value={field.value || ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                             />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
-                      )} 
+                      )}
                     />
                   </CardContent>
                 </Card>
@@ -207,83 +207,83 @@ export default function FixedVsFloatingRateCalculator() {
                     <CardTitle>Floating Rate</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <FormField 
-                      control={form.control} 
-                      name="initialFloatingRate" 
+                    <FormField
+                      control={form.control}
+                      name="initialFloatingRate"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Initial Annual Rate (%)</FormLabel>
                           <FormControl>
-                            <Input 
-                              type="number" 
+                            <Input
+                              type="number"
                               step="any"
                               placeholder="e.g., 3.5"
-                              {...field} 
-                              value={field.value || ''} 
-                              onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                              {...field}
+                              value={field.value || ''}
+                              onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                             />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
-                      )} 
+                      )}
                     />
                     <div>
                       <FormLabel>Projected Rate Changes</FormLabel>
                       {fields.map((field, index) => (
                         <div key={field.id} className="flex gap-2 items-center mt-2">
-                          <FormField 
-                            control={form.control} 
-                            name={`rateChanges.${index}.year`} 
+                          <FormField
+                            control={form.control}
+                            name={`rateChanges.${index}.year`}
                             render={({ field }) => (
                               <FormItem className="flex-1">
                                 <FormLabel className="text-xs">In Year</FormLabel>
                                 <FormControl>
-                                  <Input 
-                                    type="number" 
+                                  <Input
+                                    type="number"
                                     placeholder="e.g., 2"
-                                    {...field} 
-                                    value={field.value || ''} 
-                                    onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                                    {...field}
+                                    value={field.value || ''}
+                                    onChange={e => field.onChange(parseInt(e.target.value) || 0)}
                                   />
                                 </FormControl>
                               </FormItem>
-                            )} 
+                            )}
                           />
-                          <FormField 
-                            control={form.control} 
-                            name={`rateChanges.${index}.rate`} 
+                          <FormField
+                            control={form.control}
+                            name={`rateChanges.${index}.rate`}
                             render={({ field }) => (
                               <FormItem className="flex-1">
                                 <FormLabel className="text-xs">New Rate (%)</FormLabel>
                                 <FormControl>
-                                  <Input 
-                                    type="number" 
+                                  <Input
+                                    type="number"
                                     step="any"
                                     placeholder="e.g., 4.0"
-                                    {...field} 
-                                    value={field.value || ''} 
-                                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                                    {...field}
+                                    value={field.value || ''}
+                                    onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                                   />
                                 </FormControl>
                               </FormItem>
-                            )} 
+                            )}
                           />
-                          <Button 
-                            type="button" 
-                            variant="ghost" 
-                            size="icon" 
-                            onClick={() => remove(index)} 
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => remove(index)}
                             className="self-end"
                           >
                             <XCircle className="h-5 w-5 text-destructive" />
                           </Button>
                         </div>
                       ))}
-                      <Button 
-                        type="button" 
-                        variant="outline" 
-                        size="sm" 
-                        className="mt-2" 
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="mt-2"
                         onClick={() => append({ year: 0, rate: 0 })}
                       >
                         <PlusCircle className="mr-2 h-4 w-4" /> Add Rate Change
@@ -332,7 +332,7 @@ export default function FixedVsFloatingRateCalculator() {
                 <LineChart data={result.chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="year" unit=" yr" />
-                  <YAxis tickFormatter={(value) => `$${(value/1000)}k`} />
+                  <YAxis tickFormatter={(value) => `$${(value / 1000)}k`} />
                   <Tooltip formatter={(value: number) => `$${value.toLocaleString()}`} />
                   <Legend />
                   <Line type="monotone" name="Fixed Rate Interest" dataKey="fixedInterest" stroke="hsl(var(--muted-foreground))" strokeWidth={2} />
@@ -343,6 +343,78 @@ export default function FixedVsFloatingRateCalculator() {
           </CardContent>
         </Card>
       )}
+
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Fixed vs floating rate advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Compare total cost under different rate scenarios</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Fixed rates provide payment stability and predictability</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Floating rates may offer initial savings</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Floating rates expose you to interest rate risk</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Rate forecasts are inherently uncertain</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Consider rate caps and adjustment frequency</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Monthly Payment = P × [r(1+r)ⁿ] / [(1+r)ⁿ - 1]<br />
+              Where P = Principal, r = Monthly Rate, n = Payments
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Floating rate recalculates payment when rate changes occur.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Understanding Inputs */}
       <Card>
@@ -439,107 +511,107 @@ export default function FixedVsFloatingRateCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Fixed vs. Floating Interest Rates: Risk, Payment Structure, and Comparison Analysis" />
-    <meta itemProp="description" content="An expert guide detailing the key differences between fixed and floating interest rates, how payments are calculated under each, the allocation of interest rate risk, and the impact of market movements on total cost and monthly cash flow." />
-    <meta itemProp="keywords" content="fixed vs floating rate comparison, interest rate risk analysis, adjustable rate mortgage vs fixed, variable interest rate calculation, payment stability risk, loan cash flow analysis" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-fixed-vs-floating-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Fixed vs. Floating Interest Rates: Risk, Payment Structure, and Comparison Analysis" />
+        <meta itemProp="description" content="An expert guide detailing the key differences between fixed and floating interest rates, how payments are calculated under each, the allocation of interest rate risk, and the impact of market movements on total cost and monthly cash flow." />
+        <meta itemProp="keywords" content="fixed vs floating rate comparison, interest rate risk analysis, adjustable rate mortgage vs fixed, variable interest rate calculation, payment stability risk, loan cash flow analysis" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-fixed-vs-floating-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Fixed vs. Floating Interest Rates: Risk, Stability, and Cost Analysis</h1>
-    <p className="text-lg italic text-muted-foreground">Master the core difference between stable, predictable payments and flexible, market-driven financing, and how to choose the right structure for your risk profile.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Fixed vs. Floating Interest Rates: Risk, Stability, and Cost Analysis</h1>
+        <p className="text-lg italic text-muted-foreground">Master the core difference between stable, predictable payments and flexible, market-driven financing, and how to choose the right structure for your risk profile.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#structure" className="hover:underline">Rate Structure: Fixed vs. Floating Defined</a></li>
-        <li><a href="#payment-calc" className="hover:underline">Payment Calculation and Stability</a></li>
-        <li><a href="#risk-transfer" className="hover:underline">Interest Rate Risk Allocation</a></li>
-        <li><a href="#pricing-mechanics" className="hover:underline">Pricing Mechanics: Index and Margin</a></li>
-        <li><a href="#comparison-criteria" className="hover:underline">Choosing the Optimal Rate Structure</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#structure" className="hover:underline">Rate Structure: Fixed vs. Floating Defined</a></li>
+          <li><a href="#payment-calc" className="hover:underline">Payment Calculation and Stability</a></li>
+          <li><a href="#risk-transfer" className="hover:underline">Interest Rate Risk Allocation</a></li>
+          <li><a href="#pricing-mechanics" className="hover:underline">Pricing Mechanics: Index and Margin</a></li>
+          <li><a href="#comparison-criteria" className="hover:underline">Choosing the Optimal Rate Structure</a></li>
+        </ul>
+        <hr />
 
-    {/* RATE STRUCTURE: FIXED VS. FLOATING DEFINED */}
-    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Rate Structure: Fixed vs. Floating Defined</h2>
-    <p>Interest rates are the cost of borrowing money. The fundamental choice in nearly all debt instruments—from mortgages to corporate bonds—is whether that rate should be fixed for the life of the loan or allowed to vary with the market.</p>
+        {/* RATE STRUCTURE: FIXED VS. FLOATING DEFINED */}
+        <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Rate Structure: Fixed vs. Floating Defined</h2>
+        <p>Interest rates are the cost of borrowing money. The fundamental choice in nearly all debt instruments—from mortgages to corporate bonds—is whether that rate should be fixed for the life of the loan or allowed to vary with the market.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Interest Rate</h3>
-    <p>A **Fixed Rate** remains constant for the entire duration of the loan. The initial interest rate is determined at the loan's origination and is not subject to any external market fluctuations. This provides the borrower with absolute certainty regarding their monthly principal and interest payment.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Interest Rate</h3>
+        <p>A **Fixed Rate** remains constant for the entire duration of the loan. The initial interest rate is determined at the loan's origination and is not subject to any external market fluctuations. This provides the borrower with absolute certainty regarding their monthly principal and interest payment.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Floating (Variable) Interest Rate</h3>
-    <p>A **Floating Rate** (or Variable Rate) changes periodically (e.g., monthly, quarterly, or annually) based on movements in an external, publicly observable benchmark rate (the Index). The borrower's rate consists of the Index plus a fixed premium (the Margin).</p>
-    <p>Examples include Adjustable Rate Mortgages (ARMs), credit cards, and many corporate loans based on the Secured Overnight Financing Rate (SOFR).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Floating (Variable) Interest Rate</h3>
+        <p>A **Floating Rate** (or Variable Rate) changes periodically (e.g., monthly, quarterly, or annually) based on movements in an external, publicly observable benchmark rate (the Index). The borrower's rate consists of the Index plus a fixed premium (the Margin).</p>
+        <p>Examples include Adjustable Rate Mortgages (ARMs), credit cards, and many corporate loans based on the Secured Overnight Financing Rate (SOFR).</p>
 
-<hr />
+        <hr />
 
-    {/* PAYMENT CALCULATION AND STABILITY */}
-    <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Payment Calculation and Stability</h2>
-    <p>The choice of rate structure directly impacts the predictability and stability of the borrower's monthly cash flow, which is calculated using the standard loan amortization formula.</p>
+        {/* PAYMENT CALCULATION AND STABILITY */}
+        <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Payment Calculation and Stability</h2>
+        <p>The choice of rate structure directly impacts the predictability and stability of the borrower's monthly cash flow, which is calculated using the standard loan amortization formula.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Stability of Fixed Rate Payments</h3>
-    <p>For a fixed-rate loan, the monthly Principal and Interest (P&I) payment remains constant for the life of the loan (e.g., 360 payments for a 30-year mortgage). While the split between principal and interest changes monthly due to amortization, the total payment amount does not, providing maximum budget stability.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Stability of Fixed Rate Payments</h3>
+        <p>For a fixed-rate loan, the monthly Principal and Interest (P&I) payment remains constant for the life of the loan (e.g., 360 payments for a 30-year mortgage). While the split between principal and interest changes monthly due to amortization, the total payment amount does not, providing maximum budget stability.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Volatility of Floating Rate Payments</h3>
-    <p>For a floating-rate loan, the payment must be recalculated at every adjustment interval based on the current interest rate. A 1% increase in the benchmark rate will lead to an immediate and permanent increase in the borrower's monthly payment. This creates **Payment Volatility** and makes future budgeting uncertain.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Volatility of Floating Rate Payments</h3>
+        <p>For a floating-rate loan, the payment must be recalculated at every adjustment interval based on the current interest rate. A 1% increase in the benchmark rate will lead to an immediate and permanent increase in the borrower's monthly payment. This creates **Payment Volatility** and makes future budgeting uncertain.</p>
 
-<hr />
+        <hr />
 
-    {/* INTEREST RATE RISK ALLOCATION */}
-    <h2 id="risk-transfer" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interest Rate Risk Allocation</h2>
-    <p>The key financial difference between the two structures is who bears the **Interest Rate Risk**—the risk that market rates will move against the borrower's best interests.</p>
+        {/* INTEREST RATE RISK ALLOCATION */}
+        <h2 id="risk-transfer" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interest Rate Risk Allocation</h2>
+        <p>The key financial difference between the two structures is who bears the **Interest Rate Risk**—the risk that market rates will move against the borrower's best interests.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Rate: Lender Bears Risk</h3>
-    <p>The lender bears the risk that interest rates will rise. If market rates increase after the loan is issued, the lender is stuck receiving a lower rate until maturity. The borrower, having locked in the rate, is protected from rising costs.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Rate: Lender Bears Risk</h3>
+        <p>The lender bears the risk that interest rates will rise. If market rates increase after the loan is issued, the lender is stuck receiving a lower rate until maturity. The borrower, having locked in the rate, is protected from rising costs.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Floating Rate: Borrower Bears Risk</h3>
-    <p>The borrower bears the risk that interest rates will rise. If market rates increase, the borrower's payment increases immediately. The lender is protected from market risk because they receive a higher return when their cost of capital rises. The borrower is often compensated for taking this risk with a lower initial interest rate.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Floating Rate: Borrower Bears Risk</h3>
+        <p>The borrower bears the risk that interest rates will rise. If market rates increase, the borrower's payment increases immediately. The lender is protected from market risk because they receive a higher return when their cost of capital rises. The borrower is often compensated for taking this risk with a lower initial interest rate.</p>
 
-<hr />
+        <hr />
 
-    {/* PRICING MECHANICS: INDEX AND MARGIN */}
-    <h2 id="pricing-mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Pricing Mechanics: Index and Margin</h2>
-    <p>The rate for a floating loan is determined by two components, whereas a fixed rate is determined by the lender's forecast of future rates.</p>
+        {/* PRICING MECHANICS: INDEX AND MARGIN */}
+        <h2 id="pricing-mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Pricing Mechanics: Index and Margin</h2>
+        <p>The rate for a floating loan is determined by two components, whereas a fixed rate is determined by the lender's forecast of future rates.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Floating Rate Components</h3>
-    <p>The actual rate is the sum of a variable **Index** (the publicly observed benchmark, e.g., SOFR) and the fixed **Margin** (the premium added by the lender).</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Floating Rate Components</h3>
+        <p>The actual rate is the sum of a variable **Index** (the publicly observed benchmark, e.g., SOFR) and the fixed **Margin** (the premium added by the lender).</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Floating Rate = Index Rate + Margin'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Rate Pricing</h3>
-    <p>To set a fixed rate, the lender must factor in their **cost of capital** plus a **premium** for the risk they are assuming (the risk that rates will rise). This premium often makes the initial fixed rate higher than the initial floating rate, acting as an insurance cost for the borrower's payment stability.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Fixed Rate Pricing</h3>
+        <p>To set a fixed rate, the lender must factor in their **cost of capital** plus a **premium** for the risk they are assuming (the risk that rates will rise). This premium often makes the initial fixed rate higher than the initial floating rate, acting as an insurance cost for the borrower's payment stability.</p>
 
-<hr />
+        <hr />
 
-    {/* CHOOSING THE OPTIMAL RATE STRUCTURE */}
-    <h2 id="comparison-criteria" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Choosing the Optimal Rate Structure</h2>
-    <p>The decision to choose a fixed or floating rate depends heavily on the borrower's risk tolerance, financial forecast, and intended loan duration.</p>
+        {/* CHOOSING THE OPTIMAL RATE STRUCTURE */}
+        <h2 id="comparison-criteria" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Choosing the Optimal Rate Structure</h2>
+        <p>The decision to choose a fixed or floating rate depends heavily on the borrower's risk tolerance, financial forecast, and intended loan duration.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">When to Choose Fixed Rate</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**High Risk Aversion:** When budget predictability is the highest priority (e.g., first-time homebuyers with strict budgets).</li>
-        <li>**Long Duration:** For loans where the borrower intends to hold the debt for a long time (e.g., 30-year mortgage), locking in the rate provides long-term stability.</li>
-        <li>**Rising Rate Environment:** When the prevailing economic forecast suggests that market interest rates are likely to increase.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">When to Choose Fixed Rate</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**High Risk Aversion:** When budget predictability is the highest priority (e.g., first-time homebuyers with strict budgets).</li>
+          <li>**Long Duration:** For loans where the borrower intends to hold the debt for a long time (e.g., 30-year mortgage), locking in the rate provides long-term stability.</li>
+          <li>**Rising Rate Environment:** When the prevailing economic forecast suggests that market interest rates are likely to increase.</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">When to Choose Floating Rate</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Short Duration:** When the borrower plans to pay off or refinance the debt quickly, minimizing the exposure to potential rate increases.</li>
-        <li>**Falling Rate Environment:** When the economic forecast suggests interest rates are likely to decline, benefiting from the lower rates without refinancing.</li>
-        <li>**High Risk Tolerance:** When the borrower can comfortably absorb a potentially significant increase in the monthly payment.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">When to Choose Floating Rate</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**Short Duration:** When the borrower plans to pay off or refinance the debt quickly, minimizing the exposure to potential rate increases.</li>
+          <li>**Falling Rate Environment:** When the economic forecast suggests interest rates are likely to decline, benefiting from the lower rates without refinancing.</li>
+          <li>**High Risk Tolerance:** When the borrower can comfortably absorb a potentially significant increase in the monthly payment.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The comparison between fixed and floating interest rates centers on the allocation of **interest rate risk**. The fixed rate provides payment stability by transferring the risk to the lender, while the floating rate offers a lower initial cost by transferring the risk to the borrower.</p>
-    <p>Optimal selection requires the borrower to compare the initial **fixed rate premium** (the insurance cost) against the risk of **payment volatility** inherent in the floating rate's reliance on the fluctuating market index.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The comparison between fixed and floating interest rates centers on the allocation of **interest rate risk**. The fixed rate provides payment stability by transferring the risk to the lender, while the floating rate offers a lower initial cost by transferring the risk to the borrower.</p>
+        <p>Optimal selection requires the borrower to compare the initial **fixed rate premium** (the insurance cost) against the risk of **payment volatility** inherent in the floating rate's reliance on the fluctuating market index.</p>
+      </section>
 
       {/* FAQ */}
       <Card>
@@ -622,6 +694,21 @@ export default function FixedVsFloatingRateCalculator() {
               Ask about rate caps (periodic and lifetime), initial rate vs. fully indexed rate, adjustment frequency, rate index used, margin amount, conversion options, prepayment penalties, maximum payment increase limits, and how payments change when rates adjust. Compare total costs under different scenarios using this calculator to make an informed decision that aligns with your risk tolerance and financial goals.
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>Fixed rates provide payment certainty; floating rates offer potential savings.</p>
+          <p>The choice depends on rate outlook, risk tolerance, and loan duration.</p>
+          <p>Model multiple rate scenarios to understand the range of possible outcomes.</p>
         </CardContent>
       </Card>
     </div>

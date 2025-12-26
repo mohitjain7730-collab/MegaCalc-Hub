@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, TrendingUp, DollarSign, Calendar, Globe, FileText, Info } from 'lucide-react';
+import { Calculator, TrendingUp, DollarSign, Calendar, Globe, FileText, Info, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { EmbedWidget } from '@/components/embed-widget';
 
@@ -38,11 +38,11 @@ const calculateAmortization = (values: FormValues) => {
   // Convert to monthly values
   const monthlyRate = interestRate / 100 / 12;
   const totalPayments = loanTerm * 12;
-  
+
   // Calculate regular monthly payment
-  const monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
-                       (Math.pow(1 + monthlyRate, totalPayments) - 1);
-  
+  const monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) /
+    (Math.pow(1 + monthlyRate, totalPayments) - 1);
+
   // Calculate extra payment amount per period
   let extraPaymentPerPeriod = 0;
   if (extraPayment > 0) {
@@ -58,20 +58,20 @@ const calculateAmortization = (values: FormValues) => {
         break;
     }
   }
-  
+
   // Calculate amortization schedule
   let balance = loanAmount;
   let totalInterest = 0;
   let totalExtraPayments = 0;
   let actualPayments = 0;
   let extraPaymentApplied = false;
-  
+
   const schedule = [];
-  
+
   for (let month = 1; month <= totalPayments && balance > 0.01; month++) {
     const interestPayment = balance * monthlyRate;
     let principalPayment = monthlyPayment - interestPayment;
-    
+
     // Apply extra payment
     let currentExtraPayment = 0;
     if (extraPayment > 0 && !extraPaymentApplied) {
@@ -84,20 +84,20 @@ const calculateAmortization = (values: FormValues) => {
         currentExtraPayment = extraPayment;
       }
     }
-    
+
     // Apply extra payment to principal
     principalPayment += currentExtraPayment;
     totalExtraPayments += currentExtraPayment;
-    
+
     // Ensure we don't overpay
     if (principalPayment > balance) {
       principalPayment = balance;
     }
-    
+
     balance -= principalPayment;
     totalInterest += interestPayment;
     actualPayments++;
-    
+
     schedule.push({
       month,
       payment: monthlyPayment + currentExtraPayment,
@@ -107,20 +107,20 @@ const calculateAmortization = (values: FormValues) => {
       balance: Math.max(0, balance)
     });
   }
-  
+
   // Calculate savings
   const totalPaid = (monthlyPayment * actualPayments) + totalExtraPayments;
   const totalPaidWithoutExtra = monthlyPayment * totalPayments;
   const interestSavings = totalPaidWithoutExtra - totalPaid;
   const timeSavings = totalPayments - actualPayments;
-  
+
   // Calculate new payoff date
   const payoffDate = new Date();
   if (startDate) {
     payoffDate.setTime(new Date(startDate).getTime());
   }
   payoffDate.setMonth(payoffDate.getMonth() + actualPayments);
-  
+
   return {
     monthlyPayment,
     totalInterest,
@@ -177,13 +177,13 @@ const getAmortizationStatus = (result: ReturnType<typeof calculateAmortization>,
 
 const getDetailedInterpretation = (result: ReturnType<typeof calculateAmortization>, values: FormValues) => {
   const interpretations = [];
-  
+
   // Extra payment analysis
   if (values.extraPayment && values.extraPayment > 0) {
     interpretations.push(`Your extra payments of $${values.extraPayment.toFixed(2)} ${values.extraPaymentFrequency} will save you $${result.interestSavings.toFixed(2)} in interest`);
     interpretations.push(`You will pay off your loan ${result.timeSavings} months early`);
     interpretations.push(`Total extra payments: $${result.totalExtraPayments.toFixed(2)}`);
-    
+
     if (result.interestSavings > result.totalExtraPayments) {
       interpretations.push('Your extra payments will save you more in interest than you pay extra');
       interpretations.push('This is an excellent investment in your financial future');
@@ -199,12 +199,12 @@ const getDetailedInterpretation = (result: ReturnType<typeof calculateAmortizati
     interpretations.push('Consider making extra payments to save on interest');
     interpretations.push('Even small extra payments can make a significant difference');
   }
-  
+
   // Payment analysis
   interpretations.push(`Your monthly payment is $${result.monthlyPayment.toFixed(2)}`);
   interpretations.push(`Total interest over the life of the loan: $${result.totalInterest.toFixed(2)}`);
   interpretations.push(`Total amount paid: $${result.totalPaid.toFixed(2)}`);
-  
+
   // Time analysis
   if (result.actualPayments < values.loanTerm * 12) {
     interpretations.push(`Loan will be paid off in ${result.actualPayments} months instead of ${values.loanTerm * 12} months`);
@@ -218,7 +218,7 @@ const getDetailedInterpretation = (result: ReturnType<typeof calculateAmortizati
 
 const getPersonalizedRecommendations = (result: ReturnType<typeof calculateAmortization>, values: FormValues) => {
   const recommendations = [];
-  
+
   // Extra payment recommendations
   if (!values.extraPayment || values.extraPayment === 0) {
     recommendations.push('Consider making extra payments to save on interest');
@@ -231,7 +231,7 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateAmort
     recommendations.push('Monitor your progress and adjust as needed');
     recommendations.push('Consider making extra payments to principal only');
   }
-  
+
   // Payment frequency recommendations
   if (values.paymentFrequency === 'monthly') {
     recommendations.push('Consider bi-weekly payments to make one extra payment per year');
@@ -242,7 +242,7 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateAmort
     recommendations.push('You are already making one extra payment per year');
     recommendations.push('Consider additional extra payments if budget allows');
   }
-  
+
   // Budget recommendations
   if (result.monthlyPayment > values.loanAmount * 0.01) {
     recommendations.push('Your monthly payment is significant - ensure it fits your budget');
@@ -253,7 +253,7 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateAmort
     recommendations.push('Consider if you can afford to make extra payments');
     recommendations.push('Focus on building wealth through extra payments');
   }
-  
+
   // Interest rate recommendations
   if (values.interestRate > 6) {
     recommendations.push('High interest rate - extra payments are very beneficial');
@@ -274,12 +274,12 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateAmort
 
 const getPaymentStrategies = (result: ReturnType<typeof calculateAmortization>, values: FormValues) => {
   const strategies = [];
-  
+
   strategies.push('Make extra payments to principal only, not interest');
   strategies.push('Consider making one extra payment per year');
   strategies.push('Use tax refunds or bonuses for extra payments');
   strategies.push('Round up your monthly payment to the nearest $50 or $100');
-  
+
   if (values.interestRate > 5) {
     strategies.push('High interest rate - prioritize extra payments over other investments');
     strategies.push('Consider refinancing if rates have dropped significantly');
@@ -287,7 +287,7 @@ const getPaymentStrategies = (result: ReturnType<typeof calculateAmortization>, 
     strategies.push('Low interest rate - consider other investment opportunities');
     strategies.push('Balance extra payments with other financial goals');
   }
-  
+
   if (result.monthlyPayment > values.loanAmount * 0.01) {
     strategies.push('High monthly payment - ensure extra payments fit your budget');
     strategies.push('Build emergency fund before making extra payments');
@@ -341,31 +341,31 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
                   <FormItem>
                     <FormLabel>Loan Amount ($)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.01" 
+                      <Input
+                        type="number"
+                        step="0.01"
                         placeholder="e.g., 300000"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
                     <p className="text-sm text-muted-foreground">Total amount of the loan</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="interestRate" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Interest Rate (%)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.01" 
+                      <Input
+                        type="number"
+                        step="0.01"
                         placeholder="e.g., 6.5"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -379,31 +379,31 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
                   <FormItem>
                     <FormLabel>Loan Term (years)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="1" 
+                      <Input
+                        type="number"
+                        step="1"
                         placeholder="e.g., 30"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
                     <p className="text-sm text-muted-foreground">Length of the loan in years</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="extraPayment" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Extra Payment ($) - Optional</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.01" 
+                      <Input
+                        type="number"
+                        step="0.01"
                         placeholder="e.g., 200"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -417,8 +417,8 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
                   <FormItem>
                     <FormLabel>Extra Payment Frequency</FormLabel>
                     <FormControl>
-                      <select 
-                        {...field} 
+                      <select
+                        {...field}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="monthly">Monthly</option>
@@ -430,13 +430,13 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
                     <p className="text-sm text-muted-foreground">How often to make extra payments</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Payment Frequency</FormLabel>
                     <FormControl>
-                      <select 
-                        {...field} 
+                      <select
+                        {...field}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="monthly">Monthly</option>
@@ -454,11 +454,11 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
                 <FormItem>
                   <FormLabel>Loan Start Date - Optional</FormLabel>
                   <FormControl>
-                    <Input 
-                      type="date" 
-                      {...field} 
-                      value={field.value || ''} 
-                      onChange={e => field.onChange(e.target.value || '')} 
+                    <Input
+                      type="date"
+                      {...field}
+                      value={field.value || ''}
+                      onChange={e => field.onChange(e.target.value || '')}
                     />
                   </FormControl>
                   <FormMessage />
@@ -554,6 +554,78 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Extra payment advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Accelerate payoff and save significant interest</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Earlier in loan term = greater savings</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Build equity faster with principal reduction</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Some loans have prepayment penalties</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Ensure extra payments apply to principal only</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Consider opportunity cost vs investing</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              PMT = P × [r(1+r)ⁿ] / [(1+r)ⁿ - 1]<br />
+              Interest Saved = Original Total − Accelerated Total
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Extra payments reduce principal, lowering future interest charges.
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Related Calculators */}
       <Card>
         <CardHeader>
@@ -613,110 +685,110 @@ export default function LoanAmortizationExtraPaymentsCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Loan Amortization with Extra Payments: Payoff Acceleration and Interest Savings" />
-    <meta itemProp="description" content="An expert guide detailing the mechanics of extra loan payments, how principal-only payments accelerate payoff, calculation of total interest saved, and the impact of early payments on the amortization schedule of mortgages and installment loans." />
-    <meta itemProp="keywords" content="loan amortization extra payment calculator, principal reduction mortgage, total interest saved prepayment, calculating accelerated payoff time, loan acceleration strategy, debt reduction methods" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-loan-extra-payment-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Loan Amortization with Extra Payments: Payoff Acceleration and Interest Savings" />
+        <meta itemProp="description" content="An expert guide detailing the mechanics of extra loan payments, how principal-only payments accelerate payoff, calculation of total interest saved, and the impact of early payments on the amortization schedule of mortgages and installment loans." />
+        <meta itemProp="keywords" content="loan amortization extra payment calculator, principal reduction mortgage, total interest saved prepayment, calculating accelerated payoff time, loan acceleration strategy, debt reduction methods" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-loan-extra-payment-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Loan Amortization with Extra Payments: Accelerating Payoff and Maximizing Savings</h1>
-    <p className="text-lg italic text-muted-foreground">Master the financial strategy of prepayment to reduce total interest cost and shorten the loan tenure on mortgages and other installment debt.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Loan Amortization with Extra Payments: Accelerating Payoff and Maximizing Savings</h1>
+        <p className="text-lg italic text-muted-foreground">Master the financial strategy of prepayment to reduce total interest cost and shorten the loan tenure on mortgages and other installment debt.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#amortization" className="hover:underline">Amortization Basics: The Fixed Payment Structure</a></li>
-        <li><a href="#mechanics" className="hover:underline">Extra Payment Mechanics: Principal-Only Reduction</a></li>
-        <li><a href="#savings" className="hover:underline">Calculating Interest Savings and Reduced Term</a></li>
-        <li><a href="#strategies" className="hover:underline">Prepayment Strategies (Bi-Weekly and Lump Sum)</a></li>
-        <li><a href="#risk" className="hover:underline">Financial Considerations and Lender Restrictions</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#amortization" className="hover:underline">Amortization Basics: The Fixed Payment Structure</a></li>
+          <li><a href="#mechanics" className="hover:underline">Extra Payment Mechanics: Principal-Only Reduction</a></li>
+          <li><a href="#savings" className="hover:underline">Calculating Interest Savings and Reduced Term</a></li>
+          <li><a href="#strategies" className="hover:underline">Prepayment Strategies (Bi-Weekly and Lump Sum)</a></li>
+          <li><a href="#risk" className="hover:underline">Financial Considerations and Lender Restrictions</a></li>
+        </ul>
+        <hr />
 
-    {/* AMORTIZATION BASICS: THE FIXED PAYMENT STRUCTURE */}
-    <h2 id="amortization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Amortization Basics: The Fixed Payment Structure</h2>
-    <p>Loan amortization is the process of paying down debt with fixed, periodic installments (EMI or PMT). The initial amortization schedule is based on the original principal, the fixed interest rate, and the specified loan term.</p>
+        {/* AMORTIZATION BASICS: THE FIXED PAYMENT STRUCTURE */}
+        <h2 id="amortization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Amortization Basics: The Fixed Payment Structure</h2>
+        <p>Loan amortization is the process of paying down debt with fixed, periodic installments (EMI or PMT). The initial amortization schedule is based on the original principal, the fixed interest rate, and the specified loan term.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Interest-Principal Split</h3>
-    <p>Every fixed payment is split between **interest** (calculated on the remaining outstanding principal) and **principal** (the remainder of the payment, which reduces the balance). This split is heavily <strong className="font-semibold">front-loaded with interest</strong>: in the early years, the majority of the fixed payment goes toward interest.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Interest-Principal Split</h3>
+        <p>Every fixed payment is split between **interest** (calculated on the remaining outstanding principal) and **principal** (the remainder of the payment, which reduces the balance). This split is heavily <strong className="font-semibold">front-loaded with interest</strong>: in the early years, the majority of the fixed payment goes toward interest.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Reducing Balance Method</h3>
-    <p>The system relies on the <strong className="font-semibold">reducing balance method</strong>, meaning the interest charged in any given month is based on the lower, remaining principal balance from the previous month. The primary financial goal of extra payments is to shrink this principal balance faster, thus reducing the base on which the next month's interest is calculated.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Reducing Balance Method</h3>
+        <p>The system relies on the <strong className="font-semibold">reducing balance method</strong>, meaning the interest charged in any given month is based on the lower, remaining principal balance from the previous month. The primary financial goal of extra payments is to shrink this principal balance faster, thus reducing the base on which the next month's interest is calculated.</p>
 
-<hr />
+        <hr />
 
-    {/* EXTRA PAYMENT MECHANICS: PRINCIPAL-ONLY REDUCTION */}
-    <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Extra Payment Mechanics: Principal-Only Reduction</h2>
-    <p>An extra payment accelerates payoff because, when properly applied, $100\%$ of the additional amount goes directly toward reducing the principal balance.</p>
+        {/* EXTRA PAYMENT MECHANICS: PRINCIPAL-ONLY REDUCTION */}
+        <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Extra Payment Mechanics: Principal-Only Reduction</h2>
+        <p>An extra payment accelerates payoff because, when properly applied, $100\%$ of the additional amount goes directly toward reducing the principal balance.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Principal-Only Application</h3>
-    <p>When making an extra payment, the borrower must explicitly instruct the lender to apply the surplus funds to the **principal balance**. The standard fixed payment already covers all required interest and principal for that period; therefore, the extra amount is immediately subtracted from the loan's base, without accruing additional interest or covering future interest obligations.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Principal-Only Application</h3>
+        <p>When making an extra payment, the borrower must explicitly instruct the lender to apply the surplus funds to the **principal balance**. The standard fixed payment already covers all required interest and principal for that period; therefore, the extra amount is immediately subtracted from the loan's base, without accruing additional interest or covering future interest obligations.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Impact on the Next Payment</h3>
-    <p>The impact of a prepayment is not immediately visible in the current month's payment, but in the next month's interest calculation:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li>The principal balance is lower than it would have been under the standard schedule.</li>
-        <li>The next month's interest charge is calculated on this **lower balance**.</li>
-        <li>Since the fixed monthly payment remains the same, a smaller interest component means a larger portion of the fixed payment is automatically directed toward the principal, further accelerating debt reduction.</li>
-    </ol>
-    <p>This creates a compounding effect of debt reduction, turning the interest-heavy front end of the loan into a principal-heavy schedule.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Impact on the Next Payment</h3>
+        <p>The impact of a prepayment is not immediately visible in the current month's payment, but in the next month's interest calculation:</p>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>The principal balance is lower than it would have been under the standard schedule.</li>
+          <li>The next month's interest charge is calculated on this **lower balance**.</li>
+          <li>Since the fixed monthly payment remains the same, a smaller interest component means a larger portion of the fixed payment is automatically directed toward the principal, further accelerating debt reduction.</li>
+        </ol>
+        <p>This creates a compounding effect of debt reduction, turning the interest-heavy front end of the loan into a principal-heavy schedule.</p>
 
-<hr />
+        <hr />
 
-    {/* CALCULATING INTEREST SAVINGS AND REDUCED TERM */}
-    <h2 id="savings" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Interest Savings and Reduced Term</h2>
-    <p>The main financial benefit of prepayment is quantifying the total interest saved and the resulting shortened loan tenure.</p>
+        {/* CALCULATING INTEREST SAVINGS AND REDUCED TERM */}
+        <h2 id="savings" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Interest Savings and Reduced Term</h2>
+        <p>The main financial benefit of prepayment is quantifying the total interest saved and the resulting shortened loan tenure.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interest Savings Calculation</h3>
-    <p>The total interest saved is the difference between the total interest due under the original amortization schedule and the total interest due under the new, accelerated schedule:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interest Savings Calculation</h3>
+        <p>The total interest saved is the difference between the total interest due under the original amortization schedule and the total interest due under the new, accelerated schedule:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Total Interest Saved = Interest_{Original} - Interest_{Accelerated}'}
-        </p>
-    </div>
-    <p>A calculator tracks this by determining how many future interest payments are completely eliminated due to the shortened term.</p>
+          </p>
+        </div>
+        <p>A calculator tracks this by determining how many future interest payments are completely eliminated due to the shortened term.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Reduced Loan Term</h3>
-    <p>Every extra payment eliminates future payments entirely. The extra payment calculator determines the new, earlier **payoff date** by simulating the amortization schedule month-by-month until the principal balance reaches zero.</p>
-    <p>Prepayments made early in the loan's life provide the maximum reduction in term and the largest interest savings, as the principal-reducing effect has the longest time to compound.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Reduced Loan Term</h3>
+        <p>Every extra payment eliminates future payments entirely. The extra payment calculator determines the new, earlier **payoff date** by simulating the amortization schedule month-by-month until the principal balance reaches zero.</p>
+        <p>Prepayments made early in the loan's life provide the maximum reduction in term and the largest interest savings, as the principal-reducing effect has the longest time to compound.</p>
 
-<hr />
+        <hr />
 
-    {/* PREPAYMENT STRATEGIES (BI-WEEKLY AND LUMP SUM) */}
-    <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Prepayment Strategies (Bi-Weekly and Lump Sum)</h2>
-    <p>There are several structured methods for making extra payments, each offering a distinct benefit.</p>
+        {/* PREPAYMENT STRATEGIES (BI-WEEKLY AND LUMP SUM) */}
+        <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Prepayment Strategies (Bi-Weekly and Lump Sum)</h2>
+        <p>There are several structured methods for making extra payments, each offering a distinct benefit.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">1. Bi-Weekly Payment Plan</h3>
-    <p>Under a bi-weekly plan, the borrower pays half of their normal monthly payment every two weeks. Since there are 52 weeks in a year, this results in 26 half-payments, which is the equivalent of **one extra full monthly payment per year**.</p>
-    <p>The benefits are systematic debt reduction and a shortened loan term (a 30-year mortgage is typically paid off in 25-26 years), all without the need for large lump sums.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Bi-Weekly Payment Plan</h3>
+        <p>Under a bi-weekly plan, the borrower pays half of their normal monthly payment every two weeks. Since there are 52 weeks in a year, this results in 26 half-payments, which is the equivalent of **one extra full monthly payment per year**.</p>
+        <p>The benefits are systematic debt reduction and a shortened loan term (a 30-year mortgage is typically paid off in 25-26 years), all without the need for large lump sums.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">2. Fixed Monthly Addition</h3>
-    <p>This involves rounding up the fixed monthly payment (e.g., paying $1,200 instead of $1,150) or adding a fixed sum (e.g., $100) to every single payment. This is the simplest, most consistent method, maximizing interest savings through constant reduction of the principal base.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. Fixed Monthly Addition</h3>
+        <p>This involves rounding up the fixed monthly payment (e.g., paying $1,200 instead of $1,150) or adding a fixed sum (e.g., $100) to every single payment. This is the simplest, most consistent method, maximizing interest savings through constant reduction of the principal base.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">3. Annual Lump Sum Payment</h3>
-    <p>This involves using large, infrequent sums (like tax refunds, bonuses, or commissions) and applying them entirely to the principal once per year. The savings are substantial, as the one large payment immediately eliminates hundreds of dollars of future interest accrual.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">3. Annual Lump Sum Payment</h3>
+        <p>This involves using large, infrequent sums (like tax refunds, bonuses, or commissions) and applying them entirely to the principal once per year. The savings are substantial, as the one large payment immediately eliminates hundreds of dollars of future interest accrual.</p>
 
-<hr />
+        <hr />
 
-    {/* FINANCIAL CONSIDERATIONS AND LENDER RESTRICTIONS */}
-    <h2 id="risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Considerations and Lender Restrictions</h2>
-    <p>While prepaying debt is generally advisable, borrowers must confirm there are no restrictions and ensure the extra funds are best used on the loan.</p>
+        {/* FINANCIAL CONSIDERATIONS AND LENDER RESTRICTIONS */}
+        <h2 id="risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Considerations and Lender Restrictions</h2>
+        <p>While prepaying debt is generally advisable, borrowers must confirm there are no restrictions and ensure the extra funds are best used on the loan.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Prepayment Penalties</h3>
-    <p>Some mortgage and installment loans, particularly those with subprime or non-conventional terms, may impose a **prepayment penalty** (a fee for paying off the loan early). Borrowers must verify that their specific loan contract does not contain this clause before adopting an aggressive prepayment strategy.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Prepayment Penalties</h3>
+        <p>Some mortgage and installment loans, particularly those with subprime or non-conventional terms, may impose a **prepayment penalty** (a fee for paying off the loan early). Borrowers must verify that their specific loan contract does not contain this clause before adopting an aggressive prepayment strategy.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Opportunity Cost Analysis</h3>
-    <p>Prepaying a low-interest loan (e.g., a $3\%$ mortgage) may not be the optimal use of capital. If the borrower can earn a higher rate of return elsewhere (e.g., $8\%$ in the stock market), the funds may be better invested than used to pay off the low-interest debt. High-interest debt (like credit cards) should always be prioritized for prepayment.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Opportunity Cost Analysis</h3>
+        <p>Prepaying a low-interest loan (e.g., a $3\%$ mortgage) may not be the optimal use of capital. If the borrower can earn a higher rate of return elsewhere (e.g., $8\%$ in the stock market), the funds may be better invested than used to pay off the low-interest debt. High-interest debt (like credit cards) should always be prioritized for prepayment.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Loan amortization acceleration is the most effective strategy for debt management, working by ensuring every extra dollar is applied directly as a **principal-only reduction**.</p>
-    <p>The immediate effect is a reduction in the next month's interest calculation, creating a powerful, compounding force that rapidly shortens the loan term and maximizes total interest savings. Whether implemented through a bi-weekly schedule or fixed monthly additions, prepayment transforms debt from a decades-long interest burden into a manageable, short-term obligation.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Loan amortization acceleration is the most effective strategy for debt management, working by ensuring every extra dollar is applied directly as a **principal-only reduction**.</p>
+        <p>The immediate effect is a reduction in the next month's interest calculation, creating a powerful, compounding force that rapidly shortens the loan term and maximizes total interest savings. Whether implemented through a bi-weekly schedule or fixed monthly additions, prepayment transforms debt from a decades-long interest burden into a manageable, short-term obligation.</p>
+      </section>
 
       {/* FAQ */}
       <Card>

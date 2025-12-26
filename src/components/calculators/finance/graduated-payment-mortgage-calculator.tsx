@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, CheckCircle, Info, Home, Calculator, Globe, FileText } from 'lucide-react';
+import { TrendingUp, CheckCircle, Info, Home, Calculator, Globe, FileText, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { EmbedWidget } from '@/components/embed-widget';
 
@@ -37,18 +37,18 @@ const calculateGPM = (values: FormValues) => {
   const monthlyRate = interestRate / 100 / 12;
   const totalPayments = loanTerm * 12;
   const graduationPayments = graduationPeriod * 12;
-  
+
   // Calculate initial payment
-  const initialPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
-                        (Math.pow(1 + monthlyRate, totalPayments) - 1);
-  
+  const initialPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) /
+    (Math.pow(1 + monthlyRate, totalPayments) - 1);
+
   // Calculate graduated payments
   const graduatedPayment = initialPayment * (1 + graduationRate / 100);
-  
+
   // Calculate total interest
   let totalInterest = 0;
   let balance = loanAmount;
-  
+
   // First phase: initial payments
   for (let month = 1; month <= graduationPayments; month++) {
     const interestPayment = balance * monthlyRate;
@@ -56,7 +56,7 @@ const calculateGPM = (values: FormValues) => {
     balance -= principalPayment;
     totalInterest += interestPayment;
   }
-  
+
   // Second phase: graduated payments
   for (let month = graduationPayments + 1; month <= totalPayments && balance > 0.01; month++) {
     const interestPayment = balance * monthlyRate;
@@ -64,16 +64,16 @@ const calculateGPM = (values: FormValues) => {
     balance -= principalPayment;
     totalInterest += interestPayment;
   }
-  
+
   // Calculate total paid
   const totalPaid = (initialPayment * graduationPayments) + (graduatedPayment * (totalPayments - graduationPayments));
-  
+
   // Calculate interest savings vs traditional loan
-  const traditionalPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
-                           (Math.pow(1 + monthlyRate, totalPayments) - 1);
+  const traditionalPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) /
+    (Math.pow(1 + monthlyRate, totalPayments) - 1);
   const traditionalTotal = traditionalPayment * totalPayments;
   const interestSavings = traditionalTotal - totalPaid;
-  
+
   return {
     initialPayment,
     graduatedPayment,
@@ -127,12 +127,12 @@ const getGPMStatus = (result: ReturnType<typeof calculateGPM>, values: FormValue
 
 const getDetailedInterpretation = (result: ReturnType<typeof calculateGPM>, values: FormValues) => {
   const interpretations = [];
-  
+
   // Payment analysis
   interpretations.push(`Initial payment: $${result.initialPayment.toFixed(2)} for ${result.graduationPayments} months`);
   interpretations.push(`Graduated payment: $${result.graduatedPayment.toFixed(2)} for remaining ${result.totalPayments - result.graduationPayments} months`);
   interpretations.push(`Total interest over the loan term: $${result.totalInterest.toFixed(2)}`);
-  
+
   // Risk assessment
   const paymentIncrease = ((result.graduatedPayment - result.initialPayment) / result.initialPayment) * 100;
   if (paymentIncrease > 50) {
@@ -148,7 +148,7 @@ const getDetailedInterpretation = (result: ReturnType<typeof calculateGPM>, valu
     interpretations.push('Good balance between low initial payments and graduated risk');
     interpretations.push('Consider if this fits your financial situation');
   }
-  
+
   // Interest analysis
   if (result.interestSavings > 0) {
     interpretations.push(`You will save $${result.interestSavings.toFixed(2)} compared to a traditional loan`);
@@ -165,7 +165,7 @@ const getDetailedInterpretation = (result: ReturnType<typeof calculateGPM>, valu
 
 const getPersonalizedRecommendations = (result: ReturnType<typeof calculateGPM>, values: FormValues) => {
   const recommendations = [];
-  
+
   // Payment planning
   const paymentIncrease = ((result.graduatedPayment - result.initialPayment) / result.initialPayment) * 100;
   if (paymentIncrease > 50) {
@@ -183,7 +183,7 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateGPM>,
     recommendations.push('Consider if you can afford the graduated payment when due');
     recommendations.push('Monitor your financial situation and adjust as needed');
   }
-  
+
   // Interest rate recommendations
   if (values.interestRate > 6) {
     recommendations.push('High interest rate - consider refinancing if rates drop');
@@ -198,7 +198,7 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateGPM>,
     recommendations.push('Consider if the lower initial payments are worth the risk');
     recommendations.push('Plan for the graduated payment but enjoy the low initial payments');
   }
-  
+
   // Term recommendations
   if (values.graduationPeriod < 3) {
     recommendations.push('Short graduation period - plan for the payment increase soon');
@@ -219,12 +219,12 @@ const getPersonalizedRecommendations = (result: ReturnType<typeof calculateGPM>,
 
 const getGPMStrategies = (result: ReturnType<typeof calculateGPM>, values: FormValues) => {
   const strategies = [];
-  
+
   strategies.push('Start planning for the graduated payment immediately');
   strategies.push('Consider increasing your income or reducing expenses');
   strategies.push('Build up savings to cover the payment increase');
   strategies.push('Monitor your financial situation regularly');
-  
+
   const paymentIncrease = ((result.graduatedPayment - result.initialPayment) / result.initialPayment) * 100;
   if (paymentIncrease > 50) {
     strategies.push('High payment increase - consider if this loan is right for you');
@@ -235,7 +235,7 @@ const getGPMStrategies = (result: ReturnType<typeof calculateGPM>, values: FormV
     strategies.push('Consider your ability to make the graduated payment');
     strategies.push('Balance the benefits and risks');
   }
-  
+
   if (values.interestRate > 5) {
     strategies.push('High interest rate - monitor for refinancing opportunities');
     strategies.push('Consider if the GPM is worth the risk');
@@ -288,31 +288,31 @@ export default function GraduatedPaymentMortgageCalculator() {
                   <FormItem>
                     <FormLabel>Loan Amount ($)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.01" 
+                      <Input
+                        type="number"
+                        step="0.01"
                         placeholder="e.g., 300000"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
                     <p className="text-sm text-muted-foreground">Total amount of the loan</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="interestRate" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Interest Rate (%)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.01" 
+                      <Input
+                        type="number"
+                        step="0.01"
                         placeholder="e.g., 6.5"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -326,31 +326,31 @@ export default function GraduatedPaymentMortgageCalculator() {
                   <FormItem>
                     <FormLabel>Loan Term (years)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="1" 
+                      <Input
+                        type="number"
+                        step="1"
                         placeholder="e.g., 30"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
                     <p className="text-sm text-muted-foreground">Total length of the loan</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="graduationPeriod" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Graduation Period (years)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="1" 
+                      <Input
+                        type="number"
+                        step="1"
                         placeholder="e.g., 5"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseInt(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseInt(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -364,26 +364,26 @@ export default function GraduatedPaymentMortgageCalculator() {
                   <FormItem>
                     <FormLabel>Graduation Rate (%)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        step="0.1" 
+                      <Input
+                        type="number"
+                        step="0.1"
                         placeholder="e.g., 7.5"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
                     <p className="text-sm text-muted-foreground">Annual payment increase rate</p>
                   </FormItem>
                 )} />
-                
+
                 <FormField control={form.control} name="paymentFrequency" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Payment Frequency</FormLabel>
                     <FormControl>
-                      <select 
-                        {...field} 
+                      <select
+                        {...field}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="monthly">Monthly</option>
@@ -485,6 +485,78 @@ export default function GraduatedPaymentMortgageCalculator() {
         </Card>
       )}
 
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>GPM advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Lower initial payments for budget flexibility</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Ideal for early-career professionals expecting raises</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Qualify for larger loan amounts</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Negative amortization increases principal initially</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Payment shock if income doesn't grow as expected</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Higher total interest paid over loan life</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              PMTₙ = PMT₀ × (1 + Graduation Rate)^n<br />
+              Until payment covers interest + amortization
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Payments increase annually at graduation rate until loan fully amortizes.
+          </p>
+        </CardContent>
+      </Card>
+
       {/* Related Calculators */}
       <Card className="mt-8">
         <CardHeader>
@@ -544,102 +616,102 @@ export default function GraduatedPaymentMortgageCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Graduated Payment Mortgage (GPM): Structure, Negative Amortization, and Payment Calculation" />
-    <meta itemProp="description" content="An expert guide detailing the structure of a GPM, how initial payments are artificially lowered (the graduation rate), the mechanics of negative amortization, and the associated risks compared to a standard fixed-rate mortgage." />
-    <meta itemProp="keywords" content="graduated payment mortgage calculator, GPM payment structure, negative amortization explained, graduation rate mortgage, rising payment loan risk, mortgage payment schedule" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-gpm-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Graduated Payment Mortgage (GPM): Structure, Negative Amortization, and Payment Calculation" />
+        <meta itemProp="description" content="An expert guide detailing the structure of a GPM, how initial payments are artificially lowered (the graduation rate), the mechanics of negative amortization, and the associated risks compared to a standard fixed-rate mortgage." />
+        <meta itemProp="keywords" content="graduated payment mortgage calculator, GPM payment structure, negative amortization explained, graduation rate mortgage, rising payment loan risk, mortgage payment schedule" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-gpm-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Graduated Payment Mortgages (GPM): Understanding Rising Payments and Risk</h1>
-    <p className="text-lg italic text-muted-foreground">Master the specialized loan structure designed for borrowers who expect their income to increase significantly over the initial years of the loan.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Graduated Payment Mortgages (GPM): Understanding Rising Payments and Risk</h1>
+        <p className="text-lg italic text-muted-foreground">Master the specialized loan structure designed for borrowers who expect their income to increase significantly over the initial years of the loan.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#structure" className="hover:underline">GPM Structure: The Graduation Period and Rate</a></li>
-        <li><a href="#negative" className="hover:underline">The Mechanics of Negative Amortization</a></li>
-        <li><a href="#payment-calc" className="hover:underline">Calculating the Payment and Loan Balance Over Time</a></li>
-        <li><a href="#comparison" className="hover:underline">GPM vs. Standard Fixed-Rate Mortgage</a></li>
-        <li><a href="#risk" className="hover:underline">Financial Risks and Borrower Suitability</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#structure" className="hover:underline">GPM Structure: The Graduation Period and Rate</a></li>
+          <li><a href="#negative" className="hover:underline">The Mechanics of Negative Amortization</a></li>
+          <li><a href="#payment-calc" className="hover:underline">Calculating the Payment and Loan Balance Over Time</a></li>
+          <li><a href="#comparison" className="hover:underline">GPM vs. Standard Fixed-Rate Mortgage</a></li>
+          <li><a href="#risk" className="hover:underline">Financial Risks and Borrower Suitability</a></li>
+        </ul>
+        <hr />
 
-    {/* GPM STRUCTURE: THE GRADUATION PERIOD AND RATE */}
-    <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM Structure: The Graduation Period and Rate</h2>
-    <p>A <strong className="font-semibold">Graduated Payment Mortgage (GPM)</strong> is a type of fixed-interest loan where the monthly payments start low and increase annually for a predetermined period (the graduation period) before leveling off and remaining constant for the remainder of the term.</p>
+        {/* GPM STRUCTURE: THE GRADUATION PERIOD AND RATE */}
+        <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM Structure: The Graduation Period and Rate</h2>
+        <p>A <strong className="font-semibold">Graduated Payment Mortgage (GPM)</strong> is a type of fixed-interest loan where the monthly payments start low and increase annually for a predetermined period (the graduation period) before leveling off and remaining constant for the remainder of the term.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Graduation Mechanism</h3>
-    <p>GPMs are structured to help borrowers who anticipate significant income growth—such as recent medical school graduates or early-career professionals. The two critical variables are:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Graduation Period:</strong> The duration over which payments increase (typically 5, 7, or 10 years).</li>
-        <li><strong className="font-semibold">Graduation Rate:</strong> The fixed percentage by which the monthly payment increases each year during the graduation period (commonly 7.5% per year).</li>
-    </ul>
-    <p>Once the graduation period ends, the payment stabilizes at a level higher than a standard fixed-rate mortgage payment and stays constant until the loan is fully amortized.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Graduation Mechanism</h3>
+        <p>GPMs are structured to help borrowers who anticipate significant income growth—such as recent medical school graduates or early-career professionals. The two critical variables are:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Graduation Period:</strong> The duration over which payments increase (typically 5, 7, or 10 years).</li>
+          <li><strong className="font-semibold">Graduation Rate:</strong> The fixed percentage by which the monthly payment increases each year during the graduation period (commonly 7.5% per year).</li>
+        </ul>
+        <p>Once the graduation period ends, the payment stabilizes at a level higher than a standard fixed-rate mortgage payment and stays constant until the loan is fully amortized.</p>
 
-<hr />
+        <hr />
 
-    {/* THE MECHANICS OF NEGATIVE AMORTIZATION */}
-    <h2 id="negative" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mechanics of Negative Amortization</h2>
-    <p>The hallmark and main risk of a GPM is **Negative Amortization**. This occurs in the early years when the artificially low monthly payment is not sufficient to cover the full amount of interest accrued that month.</p>
+        {/* THE MECHANICS OF NEGATIVE AMORTIZATION */}
+        <h2 id="negative" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mechanics of Negative Amortization</h2>
+        <p>The hallmark and main risk of a GPM is **Negative Amortization**. This occurs in the early years when the artificially low monthly payment is not sufficient to cover the full amount of interest accrued that month.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">How Negative Amortization Works</h3>
-    <p>The interest shortfall is added to the principal balance of the loan. Instead of the principal decreasing with every payment (positive amortization), the principal balance temporarily increases. The borrower is effectively borrowing the difference between the interest due and the payment made.</p>
-    <p>Negative amortization continues until the monthly payment rises high enough to cover the interest and start paying down the loan balance. The outstanding loan balance must be tracked carefully, as it will temporarily exceed the original principal borrowed.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">How Negative Amortization Works</h3>
+        <p>The interest shortfall is added to the principal balance of the loan. Instead of the principal decreasing with every payment (positive amortization), the principal balance temporarily increases. The borrower is effectively borrowing the difference between the interest due and the payment made.</p>
+        <p>Negative amortization continues until the monthly payment rises high enough to cover the interest and start paying down the loan balance. The outstanding loan balance must be tracked carefully, as it will temporarily exceed the original principal borrowed.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Impact of the Cap</h3>
-    <p>GPMs typically have a **negative amortization cap**—a maximum percentage (e.g., $125\%$) of the original loan balance that the new principal can reach. If the balance hits this cap, the monthly payments must be immediately and dramatically increased to a fully amortizing schedule to ensure the cap is not breached, potentially causing a severe and sudden **payment shock**.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Impact of the Cap</h3>
+        <p>GPMs typically have a **negative amortization cap**—a maximum percentage (e.g., $125\%$) of the original loan balance that the new principal can reach. If the balance hits this cap, the monthly payments must be immediately and dramatically increased to a fully amortizing schedule to ensure the cap is not breached, potentially causing a severe and sudden **payment shock**.</p>
 
-<hr />
+        <hr />
 
-    {/* CALCULATING THE PAYMENT AND LOAN BALANCE OVER TIME */}
-    <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Payment and Loan Balance Over Time</h2>
-    <p>The GPM calculation is a complex variation of the standard loan amortization formula, requiring multiple steps to track the rising principal and the changing payment amount.</p>
+        {/* CALCULATING THE PAYMENT AND LOAN BALANCE OVER TIME */}
+        <h2 id="payment-calc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating the Payment and Loan Balance Over Time</h2>
+        <p>The GPM calculation is a complex variation of the standard loan amortization formula, requiring multiple steps to track the rising principal and the changing payment amount.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Three-Phase Calculation</h3>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li><strong className="font-semibold">Initial Payment Phase:</strong> The payment is fixed and low, and interest accrues faster than the payment (Negative Amortization occurs). The principal balance increases.</li>
-        <li><strong className="font-semibold">Transition Phase:</strong> The payment increases annually by the fixed graduation rate. The monthly payment eventually crosses the line where it covers the interest and begins to pay down the principal.</li>
-        <li><strong className="font-semibold">Fully Amortizing Phase:</strong> After the graduation period ends, the payment levels off and remains fixed until the entire, final principal balance (which is higher than the original loan amount) is paid off.</li>
-    </ol>
-    <p>The final, highest payment must be calculated to ensure the total debt is extinguished by the maturity date (e.g., in year 30).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Three-Phase Calculation</h3>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li><strong className="font-semibold">Initial Payment Phase:</strong> The payment is fixed and low, and interest accrues faster than the payment (Negative Amortization occurs). The principal balance increases.</li>
+          <li><strong className="font-semibold">Transition Phase:</strong> The payment increases annually by the fixed graduation rate. The monthly payment eventually crosses the line where it covers the interest and begins to pay down the principal.</li>
+          <li><strong className="font-semibold">Fully Amortizing Phase:</strong> After the graduation period ends, the payment levels off and remains fixed until the entire, final principal balance (which is higher than the original loan amount) is paid off.</li>
+        </ol>
+        <p>The final, highest payment must be calculated to ensure the total debt is extinguished by the maturity date (e.g., in year 30).</p>
 
-<hr />
+        <hr />
 
-    {/* GPM VS. STANDARD FIXED-RATE MORTGAGE */}
-    <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM vs. Standard Fixed-Rate Mortgage</h2>
-    <p>A GPM offers lower immediate payments but results in a significantly higher total interest cost and a slower rate of equity accumulation compared to a standard loan.</p>
+        {/* GPM VS. STANDARD FIXED-RATE MORTGAGE */}
+        <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">GPM vs. Standard Fixed-Rate Mortgage</h2>
+        <p>A GPM offers lower immediate payments but results in a significantly higher total interest cost and a slower rate of equity accumulation compared to a standard loan.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Total Cost Comparison</h3>
-    <p>While the initial payment is attractive, a GPM always costs the borrower more in the long run because:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>The borrower pays interest on a temporarily rising principal balance (negative amortization).</li>
-        <li>The amortization schedule is stretched out, meaning the borrower pays interest for a longer duration on the maximum possible principal balance.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Total Cost Comparison</h3>
+        <p>While the initial payment is attractive, a GPM always costs the borrower more in the long run because:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>The borrower pays interest on a temporarily rising principal balance (negative amortization).</li>
+          <li>The amortization schedule is stretched out, meaning the borrower pays interest for a longer duration on the maximum possible principal balance.</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Equity Accumulation</h3>
-    <p>Under a GPM, the homeowner does not begin building positive equity through principal reduction until several years into the loan (when positive amortization begins). A standard mortgage begins building equity from the very first payment (though slowly due to front-loaded interest).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Equity Accumulation</h3>
+        <p>Under a GPM, the homeowner does not begin building positive equity through principal reduction until several years into the loan (when positive amortization begins). A standard mortgage begins building equity from the very first payment (though slowly due to front-loaded interest).</p>
 
-<hr />
+        <hr />
 
-    {/* FINANCIAL RISKS AND BORROWER SUITABILITY */}
-    <h2 id="risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Risks and Borrower Suitability</h2>
-    <p>GPMs carry substantial risk and are only suitable for a niche group of borrowers who have high confidence in their future earning power.</p>
+        {/* FINANCIAL RISKS AND BORROWER SUITABILITY */}
+        <h2 id="risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Financial Risks and Borrower Suitability</h2>
+        <p>GPMs carry substantial risk and are only suitable for a niche group of borrowers who have high confidence in their future earning power.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Income Assumption Risk</h3>
-    <p>The primary risk is the failure of the borrower's income to rise as quickly as the GPM payment. If income stagnates, the borrower can quickly become unable to afford the escalating payment, potentially leading to default and foreclosure. The mortgage balance is also higher than the home's value for the first few years (negative equity).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Income Assumption Risk</h3>
+        <p>The primary risk is the failure of the borrower's income to rise as quickly as the GPM payment. If income stagnates, the borrower can quickly become unable to afford the escalating payment, potentially leading to default and foreclosure. The mortgage balance is also higher than the home's value for the first few years (negative equity).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Borrower Profile Suitability</h3>
-    <p>GPMs are typically appropriate only for young, first-time homeowners who anticipate rapid, certain income increases (e.g., through structured employment contracts or completing professional education) and who need the lowest possible payment in the present to qualify for the loan.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Borrower Profile Suitability</h3>
+        <p>GPMs are typically appropriate only for young, first-time homeowners who anticipate rapid, certain income increases (e.g., through structured employment contracts or completing professional education) and who need the lowest possible payment in the present to qualify for the loan.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Graduated Payment Mortgage (GPM) is a specialized financing tool defined by its scheduled, increasing payments and the inherent risk of **negative amortization** in its early years. While it offers a low initial payment, this short-term gain comes at the expense of a significantly higher total interest cost and delayed equity accumulation.</p>
-    <p>The viability of a GPM hinges entirely on the borrower's ability to sustain the payment escalation and manage the risk of the principal balance temporarily increasing above the original loan amount.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Graduated Payment Mortgage (GPM) is a specialized financing tool defined by its scheduled, increasing payments and the inherent risk of **negative amortization** in its early years. While it offers a low initial payment, this short-term gain comes at the expense of a significantly higher total interest cost and delayed equity accumulation.</p>
+        <p>The viability of a GPM hinges entirely on the borrower's ability to sustain the payment escalation and manage the risk of the principal balance temporarily increasing above the original loan amount.</p>
+      </section>
 
       {/* FAQ */}
       <Card className="mt-8">
@@ -717,7 +789,7 @@ export default function GraduatedPaymentMortgageCalculator() {
           </div>
         </CardContent>
       </Card>
-      
+
       <EmbedWidget categorySlug="finance" calculatorSlug="graduated-payment-mortgage-calculator" />
     </div>
   );

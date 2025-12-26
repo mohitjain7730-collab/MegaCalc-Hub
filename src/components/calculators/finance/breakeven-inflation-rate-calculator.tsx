@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, Calculator, Info, FileText, Globe } from 'lucide-react';
+import { TrendingUp, Calculator, Info, FileText, Globe, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 
 const formSchema = z.object({
   nominalYield: z.number(),
@@ -57,13 +57,13 @@ export default function BreakevenInflationRateCalculator() {
                   <FormItem>
                     <FormLabel>Nominal Bond Yield (%)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="any"
                         placeholder="e.g., 4.5"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -73,13 +73,13 @@ export default function BreakevenInflationRateCalculator() {
                   <FormItem>
                     <FormLabel>Real Yield (TIPS) (%)</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         step="any"
                         placeholder="e.g., 1.5"
-                        {...field} 
-                        value={field.value || ''} 
-                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)} 
+                        {...field}
+                        value={field.value || ''}
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -110,6 +110,78 @@ export default function BreakevenInflationRateCalculator() {
           </CardContent>
         </Card>
       )}
+
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Breakeven inflation advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Market-derived inflation expectation</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Guides asset allocation decisions</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Helps compare nominal vs TIPS investments</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">BEIR is not a guaranteed prediction</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Liquidity premiums may distort readings</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Tax treatment differences affect yield comparison</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              BEIR ≈ Nominal Yield − TIPS Yield (Real Yield)<br />
+              BEIR = [(1 + Nominal) / (1 + Real)] − 1
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            The market's implied expectation for average annual inflation.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Understanding Inputs */}
       <Card>
@@ -194,104 +266,104 @@ export default function BreakevenInflationRateCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to the Breakeven Inflation Rate: Calculation, Interpretation, and Market Expectations" />
-    <meta itemProp="description" content="An expert guide detailing the Breakeven Inflation Rate (BEIR) formula, its calculation using nominal and inflation-protected bond yields (TIPS), and its crucial role as a forward-looking market indicator of expected future inflation." />
-    <meta itemProp="keywords" content="breakeven inflation rate formula, calculating BEIR, nominal vs real yield, Treasury Inflation-Protected Securities (TIPS), inflation expectation indicator, bond market analysis" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-breakeven-inflation-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to the Breakeven Inflation Rate: Calculation, Interpretation, and Market Expectations" />
+        <meta itemProp="description" content="An expert guide detailing the Breakeven Inflation Rate (BEIR) formula, its calculation using nominal and inflation-protected bond yields (TIPS), and its crucial role as a forward-looking market indicator of expected future inflation." />
+        <meta itemProp="keywords" content="breakeven inflation rate formula, calculating BEIR, nominal vs real yield, Treasury Inflation-Protected Securities (TIPS), inflation expectation indicator, bond market analysis" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-breakeven-inflation-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Breakeven Inflation Rate: Market Expectations and Bond Yields</h1>
-    <p className="text-lg italic text-muted-foreground">Master the critical financial metric that reveals the market's consensus forecast for the average inflation rate over a specific period.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Breakeven Inflation Rate: Market Expectations and Bond Yields</h1>
+        <p className="text-lg italic text-muted-foreground">Master the critical financial metric that reveals the market's consensus forecast for the average inflation rate over a specific period.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#definition" className="hover:underline">Breakeven Inflation Rate (BEIR) Concept</a></li>
-        <li><a href="#calculation" className="hover:underline">Calculation Using Nominal and Real Yields</a></li>
-        <li><a href="#interpretation" className="hover:underline">Interpreting the BEIR and Market Forecasts</a></li>
-        <li><a href="#tips" className="hover:underline">Treasury Inflation-Protected Securities (TIPS)</a></li>
-        <li><a href="#applications" className="hover:underline">Investment Decisions and Limitations</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">Breakeven Inflation Rate (BEIR) Concept</a></li>
+          <li><a href="#calculation" className="hover:underline">Calculation Using Nominal and Real Yields</a></li>
+          <li><a href="#interpretation" className="hover:underline">Interpreting the BEIR and Market Forecasts</a></li>
+          <li><a href="#tips" className="hover:underline">Treasury Inflation-Protected Securities (TIPS)</a></li>
+          <li><a href="#applications" className="hover:underline">Investment Decisions and Limitations</a></li>
+        </ul>
+        <hr />
 
-    {/* BREAKEVEN INFLATION RATE (BEIR) CONCEPT */}
-    <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Breakeven Inflation Rate (BEIR) Concept</h2>
-    <p>The **Breakeven Inflation Rate (BEIR)** is a forward-looking metric derived from the financial markets. It represents the inflation rate required for an investor to be indifferent between holding a standard Treasury bond (nominal bond) and holding an inflation-protected Treasury bond (a Real Return bond, such as TIPS) with the same maturity.</p>
+        {/* BREAKEVEN INFLATION RATE (BEIR) CONCEPT */}
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Breakeven Inflation Rate (BEIR) Concept</h2>
+        <p>The **Breakeven Inflation Rate (BEIR)** is a forward-looking metric derived from the financial markets. It represents the inflation rate required for an investor to be indifferent between holding a standard Treasury bond (nominal bond) and holding an inflation-protected Treasury bond (a Real Return bond, such as TIPS) with the same maturity.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Indifference Point</h3>
-    <p>If the actual average inflation rate over the life of the bonds exceeds the BEIR, the investor would be better off holding the inflation-protected bond (TIPS). Conversely, if the actual inflation rate is less than the BEIR, the nominal bond would yield a higher return.</p>
-    <p>Because investors are generally rational, the BEIR is widely interpreted as the **market's consensus expectation** of the average annual inflation rate over the specific bond term (e.g., 5, 10, or 30 years).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Indifference Point</h3>
+        <p>If the actual average inflation rate over the life of the bonds exceeds the BEIR, the investor would be better off holding the inflation-protected bond (TIPS). Conversely, if the actual inflation rate is less than the BEIR, the nominal bond would yield a higher return.</p>
+        <p>Because investors are generally rational, the BEIR is widely interpreted as the **market's consensus expectation** of the average annual inflation rate over the specific bond term (e.g., 5, 10, or 30 years).</p>
 
-<hr />
+        <hr />
 
-    {/* CALCULATION USING NOMINAL AND REAL YIELDS */}
-    <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculation Using Nominal and Real Yields</h2>
-    <p>The BEIR is calculated by subtracting the yield of an inflation-protected security (Real Yield) from the yield of an equivalent, non-protected security (Nominal Yield).</p>
+        {/* CALCULATION USING NOMINAL AND REAL YIELDS */}
+        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculation Using Nominal and Real Yields</h2>
+        <p>The BEIR is calculated by subtracting the yield of an inflation-protected security (Real Yield) from the yield of an equivalent, non-protected security (Nominal Yield).</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Breakeven Inflation Rate Formula</h3>
-    <p>The relationship is based on the difference in the required compensation demanded by the market for protection against inflation:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Breakeven Inflation Rate Formula</h3>
+        <p>The relationship is based on the difference in the required compensation demanded by the market for protection against inflation:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'BEIR ≈ Nominal Treasury Yield - TIPS Yield (Real Yield)'}
-        </p>
-    </div>
-    <p>This formula provides a simple, direct approximation. For a more precise calculation, the formula should account for compounding, but the difference is often negligible for standard durations.</p>
+          </p>
+        </div>
+        <p>This formula provides a simple, direct approximation. For a more precise calculation, the formula should account for compounding, but the difference is often negligible for standard durations.</p>
 
-<hr />
+        <hr />
 
-    {/* INTERPRETING THE BEIR AND MARKET FORECASTS */}
-    <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the BEIR and Market Forecasts</h2>
-    <p>The BEIR is a crucial indicator for policymakers and investors because it provides a quantitative, market-driven forecast of expected inflation, free from government surveys or economists' subjective predictions.</p>
+        {/* INTERPRETING THE BEIR AND MARKET FORECASTS */}
+        <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting the BEIR and Market Forecasts</h2>
+        <p>The BEIR is a crucial indicator for policymakers and investors because it provides a quantitative, market-driven forecast of expected inflation, free from government surveys or economists' subjective predictions.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">BEIR as a Sentiment Indicator</h3>
-    <p>Changes in the BEIR reflect shifting market sentiment regarding economic growth and central bank policy:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>A **Rising BEIR** suggests the market expects higher inflation and faster economic growth in the future.</li>
-        <li>A **Falling BEIR** suggests the market anticipates lower inflation, potentially due to sluggish economic activity or successful central bank tightening policies.</li>
-    </ul>
-    <p>For example, if the 10-year BEIR rises from 2.0% to 2.5%, the bond market is signaling that it believes the average inflation rate over the next decade will be 0.5% higher than previously forecast.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">BEIR as a Sentiment Indicator</h3>
+        <p>Changes in the BEIR reflect shifting market sentiment regarding economic growth and central bank policy:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>A **Rising BEIR** suggests the market expects higher inflation and faster economic growth in the future.</li>
+          <li>A **Falling BEIR** suggests the market anticipates lower inflation, potentially due to sluggish economic activity or successful central bank tightening policies.</li>
+        </ul>
+        <p>For example, if the 10-year BEIR rises from 2.0% to 2.5%, the bond market is signaling that it believes the average inflation rate over the next decade will be 0.5% higher than previously forecast.</p>
 
-<hr />
+        <hr />
 
-    {/* TREASURY INFLATION-PROTECTED SECURITIES (TIPS) */}
-    <h2 id="tips" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Treasury Inflation-Protected Securities (TIPS)</h2>
-    <p>The "Real Yield" component of the BEIR calculation is derived from **Treasury Inflation-Protected Securities (TIPS)**, which are bonds explicitly designed to protect investors from inflation.</p>
+        {/* TREASURY INFLATION-PROTECTED SECURITIES (TIPS) */}
+        <h2 id="tips" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Treasury Inflation-Protected Securities (TIPS)</h2>
+        <p>The "Real Yield" component of the BEIR calculation is derived from **Treasury Inflation-Protected Securities (TIPS)**, which are bonds explicitly designed to protect investors from inflation.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">How TIPS Work</h3>
-    <p>TIPS principal value is adjusted semi-annually based on changes in the Consumer Price Index (CPI). When inflation rises, the principal increases, and subsequent coupon payments are paid on this larger principal amount. This adjustment ensures that the purchasing power of the investment is maintained.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">How TIPS Work</h3>
+        <p>TIPS principal value is adjusted semi-annually based on changes in the Consumer Price Index (CPI). When inflation rises, the principal increases, and subsequent coupon payments are paid on this larger principal amount. This adjustment ensures that the purchasing power of the investment is maintained.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">The Real Yield</h3>
-    <p>The yield quoted on a TIPS bond is the **Real Yield**—the return an investor receives above and beyond the inflation rate. Because the principal is adjusted for inflation, the TIPS yield represents a real rate of return, whereas a standard Treasury yield represents a nominal rate of return (real rate + expected inflation).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Real Yield</h3>
+        <p>The yield quoted on a TIPS bond is the **Real Yield**—the return an investor receives above and beyond the inflation rate. Because the principal is adjusted for inflation, the TIPS yield represents a real rate of return, whereas a standard Treasury yield represents a nominal rate of return (real rate + expected inflation).</p>
 
-<hr />
+        <hr />
 
-    {/* INVESTMENT DECISIONS AND LIMITATIONS */}
-    <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Investment Decisions and Limitations</h2>
-    <p>The BEIR is an essential tool for investors seeking to assess inflation risk but must be used with caution, as it has limitations.</p>
+        {/* INVESTMENT DECISIONS AND LIMITATIONS */}
+        <h2 id="applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Investment Decisions and Limitations</h2>
+        <p>The BEIR is an essential tool for investors seeking to assess inflation risk but must be used with caution, as it has limitations.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Investment Applications</h3>
-    <ul className="list-disc ml-6 space-y-2">
-        <li>**Asset Allocation:** A rising BEIR suggests investors should move away from standard fixed-income assets and into inflation-sensitive assets like real estate, commodities, or equities.</li>
-        <li>**Loan Strategy:** Debtors might prefer fixed-rate debt when the BEIR is low, locking in low interest costs against potentially rising future inflation.</li>
-        <li>**Forecasting:** It provides a necessary input for financial models that require long-term inflation assumptions (e.g., retirement planning or capital budgeting).</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Investment Applications</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>**Asset Allocation:** A rising BEIR suggests investors should move away from standard fixed-income assets and into inflation-sensitive assets like real estate, commodities, or equities.</li>
+          <li>**Loan Strategy:** Debtors might prefer fixed-rate debt when the BEIR is low, locking in low interest costs against potentially rising future inflation.</li>
+          <li>**Forecasting:** It provides a necessary input for financial models that require long-term inflation assumptions (e.g., retirement planning or capital budgeting).</li>
+        </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Limitations of BEIR</h3>
-    <p>The BEIR is not a perfect predictor of future inflation for two main reasons:</p>
-    <ol className="list-decimal ml-6 space-y-2">
-        <li>**Liquidity/Risk Premium:** The nominal and TIPS bonds are not perfect substitutes. Standard Treasury bonds may have higher liquidity, introducing a slight liquidity premium into their yield that is not directly related to inflation expectations.</li>
-        <li>**Taxes:** The annual principal adjustments on TIPS are generally taxable, creating a tax disadvantage that slightly distorts the true yield comparison.</li>
-    </ol>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Limitations of BEIR</h3>
+        <p>The BEIR is not a perfect predictor of future inflation for two main reasons:</p>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li>**Liquidity/Risk Premium:** The nominal and TIPS bonds are not perfect substitutes. Standard Treasury bonds may have higher liquidity, introducing a slight liquidity premium into their yield that is not directly related to inflation expectations.</li>
+          <li>**Taxes:** The annual principal adjustments on TIPS are generally taxable, creating a tax disadvantage that slightly distorts the true yield comparison.</li>
+        </ol>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The Breakeven Inflation Rate (BEIR) is the differential yield between a standard nominal bond and an inflation-protected bond (TIPS), serving as the market's consensus forecast for future average inflation over the bond's term.</p>
-    <p>The BEIR is the essential quantitative metric for assessing inflation risk in investment portfolios. By comparing the BEIR to the historical inflation rate, investors gain valuable insight into whether the market expects the cost of living to accelerate or decelerate in the coming years.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>The Breakeven Inflation Rate (BEIR) is the differential yield between a standard nominal bond and an inflation-protected bond (TIPS), serving as the market's consensus forecast for future average inflation over the bond's term.</p>
+        <p>The BEIR is the essential quantitative metric for assessing inflation risk in investment portfolios. By comparing the BEIR to the historical inflation rate, investors gain valuable insight into whether the market expects the cost of living to accelerate or decelerate in the coming years.</p>
+      </section>
 
       {/* FAQ */}
       <Card>
@@ -360,6 +432,21 @@ export default function BreakevenInflationRateCalculator() {
               Use nominal yields for comparing against nominal expenses, and real yields for inflation-adjusted planning. Breakeven rates help you understand the cost of inflation protection in your portfolio.
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>BEIR measures implied inflation expectations from bond market yields.</p>
+          <p>Comparing nominal and TIPS yields reveals the inflation premium.</p>
+          <p>Useful for portfolio allocation and long-term financial planning.</p>
         </CardContent>
       </Card>
     </div>

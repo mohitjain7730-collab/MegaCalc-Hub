@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Landmark, Calculator, Globe, FileText, Info, Home } from 'lucide-react';
+import { Landmark, Calculator, Globe, FileText, Info, Home, Target, FunctionSquare, CheckCircle2, AlertCircle, Shield } from 'lucide-react';
 import { EmbedWidget } from '@/components/embed-widget';
 
 const formSchema = z.object({
@@ -167,20 +167,92 @@ export default function MortgageRefinanceSavingsCalculator() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-              <div><p className="text-sm text-muted-foreground">Current Payment</p><p className="text-2xl font-bold">${res.currentPayment.toLocaleString(undefined,{maximumFractionDigits:2})}</p></div>
-              <div><p className="text-sm text-muted-foreground">New Payment</p><p className="text-2xl font-bold">${res.newPayment.toLocaleString(undefined,{maximumFractionDigits:2})}</p></div>
-              <div><p className="text-sm text-muted-foreground">Monthly Savings</p><p className="text-2xl font-bold">${res.monthlySavings.toLocaleString(undefined,{maximumFractionDigits:2})}</p></div>
+              <div><p className="text-sm text-muted-foreground">Current Payment</p><p className="text-2xl font-bold">${res.currentPayment.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p></div>
+              <div><p className="text-sm text-muted-foreground">New Payment</p><p className="text-2xl font-bold">${res.newPayment.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p></div>
+              <div><p className="text-sm text-muted-foreground">Monthly Savings</p><p className="text-2xl font-bold">${res.monthlySavings.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mt-6">
               <div><p className="text-sm text-muted-foreground">Breakeven</p><p className="text-xl font-semibold">{res.breakevenMonths === null ? 'N/A' : `${res.breakevenMonths} mo`}</p></div>
-              <div><p className="text-sm text-muted-foreground">Interest Remaining (Current)</p><p className="text-xl font-semibold">${res.totalInterestRemainingCurrent.toLocaleString(undefined,{maximumFractionDigits:0})}</p></div>
-              <div><p className="text-sm text-muted-foreground">Interest (New)</p><p className="text-xl font-semibold">${res.totalInterestNew.toLocaleString(undefined,{maximumFractionDigits:0})}</p></div>
+              <div><p className="text-sm text-muted-foreground">Interest Remaining (Current)</p><p className="text-xl font-semibold">${res.totalInterestRemainingCurrent.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p></div>
+              <div><p className="text-sm text-muted-foreground">Interest (New)</p><p className="text-xl font-semibold">${res.totalInterestNew.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p></div>
             </div>
-            <div className="text-center mt-6"><p className="text-sm text-muted-foreground">Estimated Lifetime Savings after costs</p><p className="text-2xl font-bold">${res.totalSavings.toLocaleString(undefined,{maximumFractionDigits:0})}</p></div>
+            <div className="text-center mt-6"><p className="text-sm text-muted-foreground">Estimated Lifetime Savings after costs</p><p className="text-2xl font-bold">${res.totalSavings.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p></div>
             <div className="mt-4 text-center"><CardDescription>{res.opinion}</CardDescription></div>
           </CardContent>
         </Card>
       )}
+
+      {/* Strategic Insights & Risk Assessment */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-primary">
+              <Target className="h-6 w-6" />
+              Strategic Insights
+            </CardTitle>
+            <CardDescription>Refinancing advantages</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Lower monthly payment frees up cash flow</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Shorter term builds equity faster</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+              <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+              <span className="text-sm font-medium">Significant interest savings over loan life</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+              <AlertCircle className="h-6 w-6" />
+              Risk Assessment
+            </CardTitle>
+            <CardDescription>Critical factors to consider</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Closing costs can take years to recoup</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Extending term increases total interest paid</span>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+              <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">May lose benefits if selling before breakeven</span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <FunctionSquare className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Monthly Savings = Old Payment − New Payment<br />
+              Breakeven Months = Closing Costs / Monthly Savings
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            Compare total interest saved against closing costs for net benefit.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Related Calculators */}
       <Card>
@@ -241,112 +313,112 @@ export default function MortgageRefinanceSavingsCalculator() {
 
       {/* Complete Guide */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-    {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
-    <meta itemProp="name" content="The Definitive Guide to Mortgage Refinance Savings Calculation: Breakeven Point and Net Benefit" />
-    <meta itemProp="description" content="An expert guide detailing how to calculate the net savings from mortgage refinancing, covering the breakeven point, total interest saved, closing cost amortization, and the analysis of loan term changes." />
-    <meta itemProp="keywords" content="mortgage refinance savings calculator, calculating breakeven point refinance, net present value of refinancing, total interest saved refinance, closing cost amortization refinance, debt service reduction" />
-    <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-    <meta itemProp="datePublished" content="2025-10-25" /> 
-    <meta itemProp="url" content="/definitive-mortgage-refinance-guide" />
+        {/* SEO & SCHEMA METADATA (HIGHLY OPTIMIZED) */}
+        <meta itemProp="name" content="The Definitive Guide to Mortgage Refinance Savings Calculation: Breakeven Point and Net Benefit" />
+        <meta itemProp="description" content="An expert guide detailing how to calculate the net savings from mortgage refinancing, covering the breakeven point, total interest saved, closing cost amortization, and the analysis of loan term changes." />
+        <meta itemProp="keywords" content="mortgage refinance savings calculator, calculating breakeven point refinance, net present value of refinancing, total interest saved refinance, closing cost amortization refinance, debt service reduction" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-10-25" />
+        <meta itemProp="url" content="/definitive-mortgage-refinance-guide" />
 
-    <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Mortgage Refinance Savings: Calculating Breakeven and Net Benefit</h1>
-    <p className="text-lg italic text-muted-foreground">Master the financial analysis required to determine if lowering your interest rate justifies the upfront cost of refinancing.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Mortgage Refinance Savings: Calculating Breakeven and Net Benefit</h1>
+        <p className="text-lg italic text-muted-foreground">Master the financial analysis required to determine if lowering your interest rate justifies the upfront cost of refinancing.</p>
 
-    {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
-    <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
-    <ul className="list-disc ml-6 space-y-2 text-primary">
-        <li><a href="#drivers" className="hover:underline">Primary Drivers of Refinance Savings</a></li>
-        <li><a href="#breakeven" className="hover:underline">The Breakeven Point Calculation</a></li>
-        <li><a href="#total-benefit" className="hover:underline">Calculating Total Interest Savings and Net Benefit</a></li>
-        <li><a href="#term-change" className="hover:underline">Impact of Changing the Loan Term</a></li>
-        <li><a href="#npv" className="hover:underline">Advanced Analysis: Net Present Value (NPV) of Refinancing</a></li>
-    </ul>
-<hr />
+        {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#drivers" className="hover:underline">Primary Drivers of Refinance Savings</a></li>
+          <li><a href="#breakeven" className="hover:underline">The Breakeven Point Calculation</a></li>
+          <li><a href="#total-benefit" className="hover:underline">Calculating Total Interest Savings and Net Benefit</a></li>
+          <li><a href="#term-change" className="hover:underline">Impact of Changing the Loan Term</a></li>
+          <li><a href="#npv" className="hover:underline">Advanced Analysis: Net Present Value (NPV) of Refinancing</a></li>
+        </ul>
+        <hr />
 
-    {/* PRIMARY DRIVERS OF REFINANCE SAVINGS */}
-    <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Primary Drivers of Refinance Savings</h2>
-    <p>Mortgage refinancing involves paying off an existing loan with a new loan, typically to achieve better terms. The potential for savings is driven by two key factors: the **Interest Rate Differential** and the **Loan Term**. Analysis requires comparing the future cash flow of the old loan versus the new loan.</p>
+        {/* PRIMARY DRIVERS OF REFINANCE SAVINGS */}
+        <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Primary Drivers of Refinance Savings</h2>
+        <p>Mortgage refinancing involves paying off an existing loan with a new loan, typically to achieve better terms. The potential for savings is driven by two key factors: the **Interest Rate Differential** and the **Loan Term**. Analysis requires comparing the future cash flow of the old loan versus the new loan.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Interest Rate Differential</h3>
-    <p>The core incentive for refinancing is a drop in the interest rate. The greater the difference between the existing mortgage rate (R old) and the new mortgage rate (R new), the larger the savings generated on the monthly payment and the total interest paid over the life of the loan.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Interest Rate Differential</h3>
+        <p>The core incentive for refinancing is a drop in the interest rate. The greater the difference between the existing mortgage rate (R old) and the new mortgage rate (R new), the larger the savings generated on the monthly payment and the total interest paid over the life of the loan.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Upfront Closing Costs</h3>
-    <p>Refinancing is not free. It involves **closing costs**, which typically range from 2% to 5% of the new loan principal. These costs (appraisal fees, title insurance, origination fees, etc.) are the financial hurdle that must be overcome by the projected monthly savings.</p>
-    <p>The total net savings is calculated as the total cash inflow (monthly payment reductions) minus the total cash outflow (closing costs).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Upfront Closing Costs</h3>
+        <p>Refinancing is not free. It involves **closing costs**, which typically range from 2% to 5% of the new loan principal. These costs (appraisal fees, title insurance, origination fees, etc.) are the financial hurdle that must be overcome by the projected monthly savings.</p>
+        <p>The total net savings is calculated as the total cash inflow (monthly payment reductions) minus the total cash outflow (closing costs).</p>
 
-<hr />
+        <hr />
 
-    {/* THE BREAKEVEN POINT CALCULATION */}
-    <h2 id="breakeven" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Breakeven Point Calculation</h2>
-    <p>The <strong className="font-semibold">Breakeven Point</strong> is the time, measured in months, required for the accumulated monthly savings to equal the total upfront closing costs of the new loan. It tells the homeowner the minimum amount of time they must remain in the home to benefit from the refinance.</p>
+        {/* THE BREAKEVEN POINT CALCULATION */}
+        <h2 id="breakeven" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Breakeven Point Calculation</h2>
+        <p>The <strong className="font-semibold">Breakeven Point</strong> is the time, measured in months, required for the accumulated monthly savings to equal the total upfront closing costs of the new loan. It tells the homeowner the minimum amount of time they must remain in the home to benefit from the refinance.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Breakeven Formula</h3>
-    <p>The calculation is based on dividing the total cost of the refinance by the net monthly savings realized:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Breakeven Formula</h3>
+        <p>The calculation is based on dividing the total cost of the refinance by the net monthly savings realized:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Breakeven Months = Total Closing Costs / (Old Monthly Payment - New Monthly Payment)'}
-        </p>
-    </div>
+          </p>
+        </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Refinance Decision Rule (Breakeven)</h3>
-    <p>The standard decision rule based on the breakeven point is:</p>
-    <ul className="list-disc ml-6 space-y-2">
-        <li><strong className="font-semibold">Refinance:</strong> If the expected number of months until the house is sold is **greater** than the Breakeven Months.</li>
-        <li><strong className="font-semibold">Avoid Refinancing:</strong> If the expected number of months until the house is sold is **less** than the Breakeven Months.</li>
-    </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Refinance Decision Rule (Breakeven)</h3>
+        <p>The standard decision rule based on the breakeven point is:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold">Refinance:</strong> If the expected number of months until the house is sold is **greater** than the Breakeven Months.</li>
+          <li><strong className="font-semibold">Avoid Refinancing:</strong> If the expected number of months until the house is sold is **less** than the Breakeven Months.</li>
+        </ul>
 
-<hr />
+        <hr />
 
-    {/* CALCULATING TOTAL INTEREST SAVINGS AND NET BENEFIT */}
-    <h2 id="total-benefit" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Total Interest Savings and Net Benefit</h2>
-    <p>The total benefit of refinancing is the sum of all monthly payment reductions over the entire remaining life of the mortgage, minus the upfront costs. This requires accurately forecasting the total interest paid under both scenarios.</p>
+        {/* CALCULATING TOTAL INTEREST SAVINGS AND NET BENEFIT */}
+        <h2 id="total-benefit" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Total Interest Savings and Net Benefit</h2>
+        <p>The total benefit of refinancing is the sum of all monthly payment reductions over the entire remaining life of the mortgage, minus the upfront costs. This requires accurately forecasting the total interest paid under both scenarios.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Total Interest Paid Calculation</h3>
-    <p>The total interest paid for any loan is calculated by taking the total of all payments (Monthly Payment $\times$ Total Months) and subtracting the initial principal borrowed. This must be calculated for both the old loan and the new loan.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Total Interest Paid Calculation</h3>
+        <p>The total interest paid for any loan is calculated by taking the total of all payments (Monthly Payment $\times$ Total Months) and subtracting the initial principal borrowed. This must be calculated for both the old loan and the new loan.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Net Savings Formula</h3>
-    <p>The true financial gain is the difference between the interest saved and the cost incurred:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">Net Savings Formula</h3>
+        <p>The true financial gain is the difference between the interest saved and the cost incurred:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'Net Savings = (Total Interest Old Loan - Total Interest New Loan) - Closing Costs'}
-        </p>
-    </div>
-    <p>If the Net Savings is positive, the refinance is financially beneficial over the full term.</p>
+          </p>
+        </div>
+        <p>If the Net Savings is positive, the refinance is financially beneficial over the full term.</p>
 
-<hr />
+        <hr />
 
-    {/* IMPACT OF CHANGING THE LOAN TERM */}
-    <h2 id="term-change" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Impact of Changing the Loan Term</h2>
-    <p>Refinancing often presents the option to change the loan term (e.g., refinancing a remaining 25-year mortgage into a new 15-year mortgage). This change has the most dramatic impact on the total interest cost.</p>
+        {/* IMPACT OF CHANGING THE LOAN TERM */}
+        <h2 id="term-change" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Impact of Changing the Loan Term</h2>
+        <p>Refinancing often presents the option to change the loan term (e.g., refinancing a remaining 25-year mortgage into a new 15-year mortgage). This change has the most dramatic impact on the total interest cost.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Shortening the Term (e.g., 30-year to 15-year)</h3>
-    <p>This strategy significantly increases the monthly payment (decreasing the monthly savings or creating a net outflow) but drastically reduces the **total interest paid**. This is a wealth-building strategy, as the borrower achieves equity faster and minimizes the interest burden.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Shortening the Term (e.g., 30-year to 15-year)</h3>
+        <p>This strategy significantly increases the monthly payment (decreasing the monthly savings or creating a net outflow) but drastically reduces the **total interest paid**. This is a wealth-building strategy, as the borrower achieves equity faster and minimizes the interest burden.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Lengthening the Term (e.g., 15-year to 30-year)</h3>
-    <p>This strategy is typically used for debt restructuring. It lowers the monthly payment, improving immediate cash flow, but increases the **total interest paid** over the life of the loan. While it provides immediate relief, it is financially detrimental in the long term.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Lengthening the Term (e.g., 15-year to 30-year)</h3>
+        <p>This strategy is typically used for debt restructuring. It lowers the monthly payment, improving immediate cash flow, but increases the **total interest paid** over the life of the loan. While it provides immediate relief, it is financially detrimental in the long term.</p>
 
-<hr />
+        <hr />
 
-    {/* ADVANCED ANALYSIS: NET PRESENT VALUE (NPV) OF REFINANCING */}
-    <h2 id="npv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Advanced Analysis: Net Present Value (NPV) of Refinancing</h2>
-    <p>For the most rigorous financial analysis, refinancing should be viewed as a capital budgeting decision, utilizing the **Net Present Value (NPV)** method.</p>
+        {/* ADVANCED ANALYSIS: NET PRESENT VALUE (NPV) OF REFINANCING */}
+        <h2 id="npv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Advanced Analysis: Net Present Value (NPV) of Refinancing</h2>
+        <p>For the most rigorous financial analysis, refinancing should be viewed as a capital budgeting decision, utilizing the **Net Present Value (NPV)** method.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">NPV Methodology</h3>
-    <p>The NPV calculation discounts all future cash flows (the difference between the old and new payments) back to the present using an appropriate discount rate (the required rate of return or opportunity cost). The formula is:</p>
-    <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-        <p className="font-mono text-xl text-destructive font-bold">
+        <h3 className="text-xl font-semibold text-foreground mt-6">NPV Methodology</h3>
+        <p>The NPV calculation discounts all future cash flows (the difference between the old and new payments) back to the present using an appropriate discount rate (the required rate of return or opportunity cost). The formula is:</p>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-xl text-destructive font-bold">
             {'NPV = Sum [ (Old PMT - New PMT)_t / (1 + r)^t ] - Closing Costs'}
-        </p>
-    </div>
-    <p>A positive NPV indicates that the present value of the savings exceeds the present value of the costs, making the refinance economically sound, even when accounting for the Time Value of Money.</p>
+          </p>
+        </div>
+        <p>A positive NPV indicates that the present value of the savings exceeds the present value of the costs, making the refinance economically sound, even when accounting for the Time Value of Money.</p>
 
-<hr />
+        <hr />
 
-    {/* CONCLUSION */}
-    <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Mortgage refinance analysis is fundamentally a comparison of future cash flows against current costs. The most crucial decision point is the **Breakeven Point**, which determines the minimum holding period required to recover the upfront closing fees.</p>
-    <p>While maximizing the interest rate differential generates the highest savings, the ultimate financial gain must always be weighed against the **loan term**. Savvy refinancing prioritizes shortening the loan term to minimize the total interest paid and rapidly build home equity.</p>
-</section>
+        {/* CONCLUSION */}
+        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <p>Mortgage refinance analysis is fundamentally a comparison of future cash flows against current costs. The most crucial decision point is the **Breakeven Point**, which determines the minimum holding period required to recover the upfront closing fees.</p>
+        <p>While maximizing the interest rate differential generates the highest savings, the ultimate financial gain must always be weighed against the **loan term**. Savvy refinancing prioritizes shortening the loan term to minimize the total interest paid and rapidly build home equity.</p>
+      </section>
 
       {/* FAQ */}
       <Card>
