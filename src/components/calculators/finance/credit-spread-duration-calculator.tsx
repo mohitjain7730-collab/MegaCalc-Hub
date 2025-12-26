@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Info, Activity } from 'lucide-react';
+import { Calculator, Info, Activity, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   cleanPrice: z.number().min(0).optional(),
@@ -19,7 +21,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CreditSpreadDurationCalculator() {
-  const [result, setResult] = useState<{ priceChange: number; newPrice: number; interpretation: string; suggestions: string[] } | null>(null);
+  const [result, setResult] = useState<{ priceChange: number; newPrice: number; interpretation: string; insights: string[]; considerations: string[] } | null>(null);
 
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { cleanPrice: undefined as unknown as number, spreadDurationYears: undefined as unknown as number, spreadChangeBps: undefined as unknown as number } });
 
@@ -29,7 +31,24 @@ export default function CreditSpreadDurationCalculator() {
     const priceChange = -v.spreadDurationYears * bp * v.cleanPrice; // linear approx
     const newPrice = v.cleanPrice + priceChange;
     const interpretation = v.spreadChangeBps > 0 ? 'Wider credit spreads reduce price.' : v.spreadChangeBps < 0 ? 'Tighter credit spreads increase price.' : 'No spread change; price unchanged by credit component.';
-    setResult({ priceChange, newPrice, interpretation, suggestions: ['Use spread duration from vendor analytics for accuracy.', 'Combine with interest-rate duration for total risk.', 'Check for non-linear effects at large spread moves.', 'Recompute after changes in coupon/yield or time-to-maturity.'] });
+
+    setResult({
+      priceChange,
+      newPrice,
+      interpretation,
+      insights: [
+        'Higher spread duration amplifies impact of credit deterioration.',
+        'Tightening spreads offer capital appreciation potential.',
+        'Use OAS duration for bonds with embedded options.'
+      ],
+      considerations: [
+        'Linear approximation fails for large spread shocks.',
+        'Credit risk often correlates with equity market stress.',
+        'Liquidity gaps can widen spreads beyond fundamental reasons.',
+        'Total return includes coupon income, not just price change.',
+        'Spread duration differs from interest rate duration.'
+      ]
+    });
   };
 
   const num = (ph: string, field: any) => (
@@ -60,16 +79,56 @@ export default function CreditSpreadDurationCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Credit spread sensitivity</CardDescription></CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Estimated Price Change</p><p className={`text-2xl font-bold ${result.priceChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.priceChange.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">New Price</p><p className="text-2xl font-bold">{result.newPrice.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interpretation}</p></div>
-            </div>
-          </CardContent>
-        </Card>
+        <>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Credit spread sensitivity</CardDescription></CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Estimated Price Change</p><p className={`text-2xl font-bold ${result.priceChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.priceChange.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">New Price</p><p className="text-2xl font-bold">{result.newPrice.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interpretation}</p></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Portfolio management</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       <Card>

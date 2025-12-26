@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Info, Globe } from 'lucide-react';
+import { Calculator, Info, Globe, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   spotRate: z.number().min(0).optional(),
@@ -19,7 +21,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CurrencyForwardPointsCalculator() {
-  const [result, setResult] = useState<{ points: number; premiumPct: number; interp: string } | null>(null);
+  const [result, setResult] = useState<{ points: number; premiumPct: number; interp: string; suggestions: string[] } | null>(null);
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { spotRate: undefined as unknown as number, forwardRate: undefined as unknown as number, quoteScale: undefined as unknown as number } });
 
   const onSubmit = (v: FormValues) => {
@@ -27,7 +29,7 @@ export default function CurrencyForwardPointsCalculator() {
     const points = (v.forwardRate - v.spotRate) * v.quoteScale;
     const premiumPct = ((v.forwardRate - v.spotRate) / v.spotRate) * 100;
     const interp = points === 0 ? 'No premium/discount.' : points > 0 ? 'Forward premium (quote currency stronger forward).' : 'Forward discount (quote currency weaker forward).';
-    setResult({ points, premiumPct, interp });
+    setResult({ points, premiumPct, interp, suggestions: ['Compare forward points across brokers to minimize spread.', 'Use points to calculate implied interest rate differentials.', 'Monitor central bank rate divergence driving point shifts.', 'Hedge currency risk if forward points erode trade margins.'] });
   };
 
   const num = (ph: string, field: any) => (
@@ -58,16 +60,64 @@ export default function CurrencyForwardPointsCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Forward points</CardDescription></CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Forward Points</p><p className="text-2xl font-bold">{result.points.toFixed(2)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Premium/Discount</p><p className={`text-2xl font-bold ${result.premiumPct >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.premiumPct.toFixed(3)}%</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interp}</p></div>
-            </div>
-          </CardContent>
-        </Card>
+        <>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Forward points</CardDescription></CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Forward Points</p><p className="text-2xl font-bold">{result.points.toFixed(2)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Premium/Discount</p><p className={`text-2xl font-bold ${result.premiumPct >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.premiumPct.toFixed(3)}%</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interp}</p></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Hedging optimization</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.suggestions.slice(0, 2).map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{s}</span>
+                  </div>
+                ))}
+                <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium">Positive carry trades rely on stable exchange rates</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.suggestions.slice(2).map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{s}</span>
+                  </div>
+                ))}
+                <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                  <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium text-red-800 dark:text-red-300">Wide bid-ask spreads in forward markets can erode theoretical gains</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       <Card>

@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Percent, DollarSign, Calendar, FunctionSquare, HelpCircle, Shield, Info } from 'lucide-react';
+import { Percent, DollarSign, Calendar, FunctionSquare, HelpCircle, Shield, Info, TrendingUp, AlertCircle, CheckCircle2, Target } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   beginningValue: z.number().min(0.0001).optional(),
@@ -19,13 +21,71 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CagrCalculator() {
-  const [result, setResult] = useState<{ cagrPct: number; interpretation: string } | null>(null);
+  const [result, setResult] = useState<{
+    cagrPct: number;
+    totalReturn: number;
+    growthMultiple: number;
+    performanceLevel: string;
+    interpretation: string;
+    recommendation: string;
+    insights: string[];
+    considerations: string[];
+  } | null>(null);
+
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { beginningValue: undefined, endingValue: undefined, years: undefined } });
+
+  const getPerformanceLevel = (cagr: number): string => {
+    if (cagr >= 25) return 'Exceptional';
+    if (cagr >= 15) return 'Strong';
+    if (cagr >= 10) return 'Market-like';
+    if (cagr >= 5) return 'Moderate';
+    if (cagr >= 0) return 'Low';
+    return 'Negative';
+  };
+
+  const getInsights = (cagr: number, years: number, totalReturn: number, multiple: number): string[] => {
+    const insights: string[] = [];
+    insights.push(`${cagr.toFixed(2)}% annualized return over ${years} years`);
+    insights.push(`Total return of ${totalReturn.toFixed(1)}% (${multiple.toFixed(2)}x your money)`);
+    if (cagr >= 10) {
+      insights.push('Outperforming typical market benchmarks');
+    } else if (cagr >= 7) {
+      insights.push('Tracking with historical market averages');
+    }
+    return insights;
+  };
+
+  const getConsiderations = (): string[] => [
+    'CAGR smooths volatility—actual annual returns vary',
+    'Past performance does not guarantee future results',
+    'Inflation reduces real purchasing power of returns',
+    'Compare against relevant benchmark over same period',
+    'Consider risk-adjusted returns (Sharpe ratio) for fuller picture'
+  ];
+
+  const getRecommendation = (cagr: number, years: number): string => {
+    if (cagr >= 20 && years < 3) return 'Strong short-term performance. Verify sustainability before extrapolating.';
+    if (cagr >= 15) return 'Excellent growth. Consider rebalancing if concentrated in single position.';
+    if (cagr < 5 && years > 5) return 'Below-market performance. Review strategy and consider alternatives.';
+    return 'Solid growth trajectory. Continue monitoring against benchmark.';
+  };
 
   const onSubmit = (v: FormValues) => {
     if (v.beginningValue == null || v.endingValue == null || v.years == null) { setResult(null); return; }
     const cagr = Math.pow(v.endingValue / v.beginningValue, 1 / v.years) - 1;
-    setResult({ cagrPct: Math.round(cagr * 10000) / 100, interpretation: 'Compound annual growth rate based on start, end, and time horizon.' });
+    const totalReturn = ((v.endingValue - v.beginningValue) / v.beginningValue) * 100;
+    const multiple = v.endingValue / v.beginningValue;
+    const cagrPct = Math.round(cagr * 10000) / 100;
+    setResult({
+      cagrPct,
+      totalReturn,
+      growthMultiple: multiple,
+      performanceLevel: getPerformanceLevel(cagrPct),
+      interpretation: `Your investment grew at ${cagrPct}% per year, turning every $1 into $${multiple.toFixed(2)} over ${v.years} years.`,
+      recommendation: getRecommendation(cagrPct, v.years),
+      insights: getInsights(cagrPct, v.years, totalReturn, multiple),
+      considerations: getConsiderations()
+    });
   };
 
   return (
@@ -53,10 +113,95 @@ export default function CagrCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle>Result</CardTitle><CardDescription>Annualized return</CardDescription></CardHeader>
-          <CardContent><div className="text-center p-6 bg-primary/5 rounded-lg"><div className="text-sm text-muted-foreground mb-1">CAGR</div><p className="text-3xl font-bold text-primary">{result.cagrPct}%</p></div><p className="text-sm mt-4">{result.interpretation}</p></CardContent>
-        </Card>
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <TrendingUp className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>CAGR Analysis</CardTitle>
+                  <CardDescription>Compounded annual growth rate</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-center">
+                <p className="text-4xl font-bold text-primary">{result.cagrPct}%</p>
+                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Percent className="h-6 w-6 mx-auto mb-2 text-blue-600" />
+                  <p className="font-semibold">Total Return</p>
+                  <p className="text-lg font-bold">{result.totalReturn.toFixed(1)}%</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <TrendingUp className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                  <p className="font-semibold">Growth Multiple</p>
+                  <p className="text-lg font-bold">{result.growthMultiple.toFixed(2)}x</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Calendar className="h-6 w-6 mx-auto mb-2 text-orange-600" />
+                  <p className="font-semibold">Annualized</p>
+                  <p className="text-lg font-bold">{result.cagrPct}%/yr</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Target className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                  <p className="font-semibold">Performance</p>
+                  <Badge variant={result.performanceLevel === 'Exceptional' || result.performanceLevel === 'Strong' ? 'default' : result.performanceLevel === 'Market-like' ? 'secondary' : result.performanceLevel === 'Moderate' ? 'outline' : 'destructive'}>
+                    {result.performanceLevel}
+                  </Badge>
+                </div>
+              </div>
+
+              <Alert>
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  <strong>Recommendation:</strong> {result.recommendation}
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Growth analysis</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       )}
 
       <Card>

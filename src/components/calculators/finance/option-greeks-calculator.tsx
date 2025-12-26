@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Info, Activity } from 'lucide-react';
+import { Calculator, Info, Activity, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   spot: z.number().min(0).optional(),
@@ -48,13 +50,28 @@ function greeks(S: number, K: number, rPct: number, volPct: number, T: number, t
 }
 
 export default function OptionGreeksCalculator() {
-  const [result, setResult] = useState<{ delta: number; gamma: number; vega: number; theta: number; rho: number } | null>(null);
+  const [result, setResult] = useState<{ delta: number; gamma: number; vega: number; theta: number; rho: number; insights: string[]; considerations: string[] } | null>(null);
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { spot: undefined as unknown as number, strike: undefined as unknown as number, rate: undefined as unknown as number, volatility: undefined as unknown as number, timeYears: undefined as unknown as number, optionType: undefined } });
 
   const onSubmit = (v: FormValues) => {
     if (v.spot === undefined || v.strike === undefined || v.rate === undefined || v.volatility === undefined || v.timeYears === undefined || v.optionType === undefined) { setResult(null); return; }
     const g = greeks(v.spot, v.strike, v.rate, v.volatility, v.timeYears, v.optionType);
-    setResult(g as any);
+
+    setResult({
+      ...g,
+      insights: [
+        `Delta of ${g.delta.toFixed(2)} indicates directional sensitivity; ${Math.abs(g.delta) > 0.5 ? 'high' : 'low'} probability of ITM expiry.`,
+        `Monitor Gamma (${g.gamma.toExponential(2)}) to anticipate delta changes.`,
+        `Vega exposure means volatility changes impact price significantly.`
+      ],
+      considerations: [
+        'Theta decay accelerates as expiry approaches (for ATM options).',
+        'Model assumes constant volatility and log-normal rates.',
+        'High gamma near expiry creates significant hedging risk.',
+        'Rho assumes parallel yield curve shifts.',
+        'Large bid-ask spreads can erode theoretical greek edges.'
+      ]
+    });
   };
 
   const num = (ph: string, field: any) => (
@@ -92,18 +109,58 @@ export default function OptionGreeksCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Greeks</CardDescription></CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Delta</p><p className="text-2xl font-bold">{result.delta.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Gamma</p><p className="text-2xl font-bold">{result.gamma.toExponential(2)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Vega (per 1%)</p><p className="text-2xl font-bold">{result.vega.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Theta (per day)</p><p className="text-2xl font-bold">{result.theta.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Rho (per 1%)</p><p className="text-2xl font-bold">{result.rho.toFixed(4)}</p></div>
-            </div>
-          </CardContent>
-        </Card>
+        <>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Option Sensitivity Metrics</CardDescription></CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Delta</p><p className="text-2xl font-bold text-primary">{result.delta.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Gamma</p><p className="text-2xl font-bold">{result.gamma.toExponential(2)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Vega</p><p className="text-2xl font-bold">{result.vega.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Theta</p><p className="text-2xl font-bold text-red-600 dark:text-red-400">{result.theta.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Rho</p><p className="text-2xl font-bold">{result.rho.toFixed(4)}</p></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Position management</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Greek sensitivities</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       <Card>

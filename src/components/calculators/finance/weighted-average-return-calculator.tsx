@@ -8,23 +8,75 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Percent, Plus, Trash2, FunctionSquare, HelpCircle, Shield, Info, DollarSign } from 'lucide-react';
+import { Percent, Plus, Trash2, FunctionSquare, HelpCircle, Shield, Info, DollarSign, TrendingUp, AlertCircle, CheckCircle2, Target } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const itemSchema = z.object({ weightPct: z.number().min(0).max(100).optional(), returnPct: z.number().min(-100).max(1000).optional() });
 const formSchema = z.object({ items: z.array(itemSchema).min(1) });
 type FormValues = z.infer<typeof formSchema>;
 
 export default function WeightedAverageReturnCalculator() {
-  const [result, setResult] = useState<{ weightedReturn: number; interpretation: string } | null>(null);
+  const [result, setResult] = useState<{
+    weightedReturn: number;
+    totalWeight: number;
+    assetCount: number;
+    performanceLevel: string;
+    interpretation: string;
+    recommendation: string;
+    insights: string[];
+    considerations: string[];
+  } | null>(null);
+
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { items: [{ weightPct: undefined as any, returnPct: undefined as any }] as any } });
   const { fields, append, remove } = useFieldArray({ control: form.control, name: 'items' });
+
+  const getPerformanceLevel = (ret: number): string => {
+    if (ret >= 20) return 'Exceptional';
+    if (ret >= 10) return 'Strong';
+    if (ret >= 5) return 'Moderate';
+    if (ret >= 0) return 'Low';
+    return 'Negative';
+  };
+
+  const getInsights = (ret: number, assets: number, totalW: number): string[] => {
+    const insights: string[] = [];
+    insights.push(`Portfolio weighted return of ${ret.toFixed(2)}%`);
+    insights.push(`Based on ${assets} asset(s) totaling ${totalW.toFixed(1)}% weight`);
+    if (ret >= 10) {
+      insights.push('Outperforming typical market benchmarks');
+    }
+    return insights;
+  };
+
+  const getConsiderations = (): string[] => [
+    'Weights should sum to 100% for accurate portfolio return',
+    'Individual asset risk not captured by weighted return alone',
+    'Correlation between assets affects true portfolio risk',
+    'Rebalancing impacts actual realized returns',
+    'Consider Sharpe ratio for risk-adjusted comparison'
+  ];
+
+  const getRecommendation = (ret: number, totalW: number): string => {
+    if (Math.abs(totalW - 100) > 1) return `Weights sum to ${totalW.toFixed(1)}%. Adjust to 100% for accurate portfolio return.`;
+    if (ret >= 15) return 'Strong portfolio performance. Review correlation to ensure diversification.';
+    return 'Moderate return. Evaluate individual holdings for optimization opportunities.';
+  };
 
   const onSubmit = (v: FormValues) => {
     const valid = v.items.filter(it => it.weightPct != null && it.returnPct != null);
     const totalW = valid.reduce((s, it) => s + (it.weightPct as number), 0);
     const wr = valid.reduce((s, it) => s + ((it.weightPct as number) / 100) * (it.returnPct as number), 0);
-    const interp = Math.abs(totalW - 100) < 0.01 ? 'Portfolio weights sum to 100%.' : `Weights sum to ${totalW}%; results scaled by provided weights.`;
-    setResult({ weightedReturn: Math.round(wr * 100) / 100, interpretation: interp });
+    setResult({
+      weightedReturn: Math.round(wr * 100) / 100,
+      totalWeight: totalW,
+      assetCount: valid.length,
+      performanceLevel: getPerformanceLevel(wr),
+      interpretation: `Your portfolio weighted return is ${wr.toFixed(2)}% based on ${valid.length} asset(s).`,
+      recommendation: getRecommendation(wr, totalW),
+      insights: getInsights(wr, valid.length, totalW),
+      considerations: getConsiderations()
+    });
   };
 
   return (
@@ -55,10 +107,95 @@ export default function WeightedAverageReturnCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle>Result</CardTitle><CardDescription>Portfolio weighted return</CardDescription></CardHeader>
-          <CardContent><div className="text-center p-6 bg-primary/5 rounded-lg"><div className="text-sm text-muted-foreground mb-1">Weighted Return</div><p className="text-3xl font-bold text-primary">{result.weightedReturn}%</p></div><p className="text-sm mt-4">{result.interpretation}</p></CardContent>
-        </Card>
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <TrendingUp className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Portfolio Return Analysis</CardTitle>
+                  <CardDescription>Weighted average across assets</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-center">
+                <p className={`text-4xl font-bold ${result.weightedReturn >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.weightedReturn}%</p>
+                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Percent className="h-6 w-6 mx-auto mb-2 text-blue-600" />
+                  <p className="font-semibold">Total Weight</p>
+                  <p className="text-lg font-bold">{result.totalWeight.toFixed(1)}%</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <DollarSign className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                  <p className="font-semibold">Assets</p>
+                  <p className="text-lg font-bold">{result.assetCount}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <TrendingUp className="h-6 w-6 mx-auto mb-2 text-orange-600" />
+                  <p className="font-semibold">Return</p>
+                  <p className="text-lg font-bold">{result.weightedReturn}%</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Target className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                  <p className="font-semibold">Performance</p>
+                  <Badge variant={result.performanceLevel === 'Exceptional' || result.performanceLevel === 'Strong' ? 'default' : result.performanceLevel === 'Moderate' ? 'secondary' : result.performanceLevel === 'Low' ? 'outline' : 'destructive'}>
+                    {result.performanceLevel}
+                  </Badge>
+                </div>
+              </div>
+
+              <Alert>
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  <strong>Recommendation:</strong> {result.recommendation}
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Portfolio analysis</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       )}
       <Card>
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Portfolio analytics</CardDescription></CardHeader>

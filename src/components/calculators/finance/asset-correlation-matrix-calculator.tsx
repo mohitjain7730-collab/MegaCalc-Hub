@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
-import { Calculator, Info, Grid } from 'lucide-react';
+import { Calculator, Info, Grid, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
 
 const formSchema = z.object({
   name1: z.string().min(1).default('Asset A'),
@@ -157,41 +157,98 @@ export default function AssetCorrelationMatrixCalculator() {
       </Card>
 
       {matrix && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
-              Correlation Matrix
-            </CardTitle>
-            <CardDescription>Symmetric Pearson correlation matrix</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="overflow-x-auto">
-              <table className="min-w-full text-sm">
-                <thead>
-                  <tr className="text-left">
-                    <th className="p-2">Asset</th>
-                    {labels.map((l, i) => (<th className="p-2" key={i}>{l}</th>))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {matrix.map((row, i) => (
-                    <tr className="border-t" key={i}>
-                      <td className="p-2 font-semibold">{labels[i]}</td>
-                      {row.map((v, j) => (
-                        <td className="p-2" key={j}>{Number.isFinite(v) ? v.toFixed(3) : 'N/A'}</td>
-                      ))}
+        <>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Calculator className="h-5 w-5" />
+                Correlation Matrix
+              </CardTitle>
+              <CardDescription>Symmetric Pearson correlation matrix</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-sm">
+                  <thead>
+                    <tr className="text-left">
+                      <th className="p-2">Asset</th>
+                      {labels.map((l, i) => (<th className="p-2" key={i}>{l}</th>))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Interpretation</h4>
-              <p className="text-muted-foreground">Values range from -1 (perfect inverse) to +1 (perfect positive). Lower correlations typically increase diversification benefits.</p>
-            </div>
-          </CardContent>
-        </Card>
+                  </thead>
+                  <tbody>
+                    {matrix.map((row, i) => (
+                      <tr className="border-t" key={i}>
+                        <td className="p-2 font-semibold">{labels[i]}</td>
+                        {row.map((v, j) => (
+                          <td className="p-2" key={j}>{Number.isFinite(v) ? v.toFixed(3) : 'N/A'}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Interpretation</h4>
+                <p className="text-muted-foreground">Values range from -1 (perfect inverse) to +1 (perfect positive). Lower correlations typically increase diversification benefits.</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Strategic Insights & Risk Assessment */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Correlation analysis takeaways</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium">Low correlation pairs offer strongest diversification benefits</span>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium">Negative correlations can hedge portfolio during downturns</span>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium">Use correlation matrix to optimize portfolio allocations</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                  <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium text-red-800 dark:text-red-300">Correlations are unstable and change over market regimes</span>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                  <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium text-red-800 dark:text-red-300">Crisis periods often see correlation spikes across all assets</span>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                  <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium text-red-800 dark:text-red-300">Sample size matters: correlation from short periods may be unreliable</span>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                  <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                  <span className="text-sm font-medium text-red-800 dark:text-red-300">Refresh correlation analysis periodically with recent data</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       {/* Related Calculators */}

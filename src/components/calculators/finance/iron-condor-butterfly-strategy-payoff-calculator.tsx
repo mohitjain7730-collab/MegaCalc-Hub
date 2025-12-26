@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Info, Activity } from 'lucide-react';
+import { Calculator, Info, Activity, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   lowerStrike1: z.number().min(0).optional(),
@@ -23,7 +25,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function IronCondorButterflyStrategyPayoffCalculator() {
-  const [result, setResult] = useState<{ profit: number; maxProfit: number; maxLoss: number; breakevens: number[]; interpretation: string; suggestions: string[] } | null>(null);
+  const [result, setResult] = useState<{ profit: number; maxProfit: number; maxLoss: number; breakevens: number[]; interpretation: string; insights: string[]; considerations: string[] } | null>(null);
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { lowerStrike1: undefined as unknown as number, lowerStrike2: undefined as unknown as number, upperStrike1: undefined as unknown as number, upperStrike2: undefined as unknown as number, netPremium: undefined as unknown as number, strategyType: undefined, finalPrice: undefined as unknown as number } });
 
   const onSubmit = (v: FormValues) => {
@@ -52,7 +54,28 @@ export default function IronCondorButterflyStrategyPayoffCalculator() {
       bes = [mid - Math.abs(v.netPremium), mid + Math.abs(v.netPremium)];
     }
     const interp = `${v.strategyType} profit at ${v.finalPrice}: ${profit >= 0 ? 'gain' : 'loss'} of ${Math.abs(profit).toFixed(2)}.`;
-    setResult({ profit, maxProfit: maxP, maxLoss: maxL, breakevens: bes, interpretation: interp, suggestions: ['Both strategies profit in narrow ranges; watch for large moves.', 'Monitor time decay; theta favors short options (iron condor).', 'Adjust strikes based on expected volatility and range.', 'Close early if profit targets reached or risk limits hit.'] });
+
+    setResult({
+      profit,
+      maxProfit: maxP,
+      maxLoss: maxL,
+      breakevens: bes,
+      interpretation: interp,
+      insights: [
+        `Max Profit of ${maxP.toFixed(2)} is achieved ${v.strategyType === 'iron-condor' ? 'within the body range.' : 'at the center strike.'}`,
+        `Risk is defined and capped at a Max Loss of ${Math.abs(maxL).toFixed(2)}.`,
+        v.strategyType === 'iron-condor'
+          ? 'Profits from low volatility and time decay (Theta).'
+          : 'Profits from price converging to a specific target.'
+      ],
+      considerations: [
+        'Four legs mean higher commission costs can erode profits.',
+        'Requires significant margin/collateral depending on broker.',
+        'Early assignment risk on short legs if options go ITM.',
+        'Managing four legs makes exit/adjustment more complex.',
+        'Success depends on price staying in (or moving to) a specific range.'
+      ]
+    });
   };
 
   const num = (ph: string, field: any) => (
@@ -87,19 +110,58 @@ export default function IronCondorButterflyStrategyPayoffCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Strategy payoff</CardDescription></CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Profit/Loss</p><p className={`text-2xl font-bold ${result.profit >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.profit.toFixed(2)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Max Profit</p><p className="text-2xl font-bold text-green-600">{result.maxProfit.toFixed(2)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Max Loss</p><p className="text-2xl font-bold text-red-600">{result.maxLoss.toFixed(2)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Breakevens</p><p className="text-2xl font-bold">{result.breakevens.map(b => b.toFixed(2)).join(', ')}</p></div>
-            </div>
-            <div><h4 className="font-semibold mb-2">Interpretation</h4><p className="text-muted-foreground">{result.interpretation}</p></div>
-            <div><h4 className="font-semibold mb-2">Suggestions</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.suggestions.map((s, i) => (<li key={i}>{s}</li>))}</ul></div>
-          </CardContent>
-        </Card>
+        <>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Strategy payoff analysis</CardDescription></CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Profit/Loss</p><p className={`text-2xl font-bold ${result.profit >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.profit.toFixed(2)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Max Profit</p><p className="text-2xl font-bold text-green-600">{result.maxProfit.toFixed(2)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Max Loss</p><p className="text-2xl font-bold text-red-600">{result.maxLoss.toFixed(2)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Breakevens</p><p className="text-2xl font-bold">{result.breakevens.map(b => b.toFixed(2)).join(', ')}</p></div>
+              </div>
+              <div><h4 className="font-semibold mb-2">Interpretation</h4><p className="text-muted-foreground">{result.interpretation}</p></div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Trade structure</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Execution risks</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       <Card>

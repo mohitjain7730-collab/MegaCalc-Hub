@@ -8,36 +8,87 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { DollarSign, Percent, FunctionSquare, HelpCircle, Shield, Info, Hash } from 'lucide-react';
+import { DollarSign, Percent, FunctionSquare, HelpCircle, Shield, Info, Hash, TrendingUp, AlertCircle, CheckCircle2, Target } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   averageCost: z.number().min(0.0001).optional(),
   shares: z.number().min(0.0001).optional(),
   sellCommission: z.number().min(0).optional(),
-  taxRatePct: z.number().min(0).max(100).optional(), // applies to gains only
+  taxRatePct: z.number().min(0).max(100).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function BreakEvenStockSalePriceCalculator() {
-  const [result, setResult] = useState<{ price: number; interpretation: string } | null>(null);
+  const [result, setResult] = useState<{
+    price: number;
+    costBasis: number;
+    taxImpact: number;
+    commissionImpact: number;
+    priceLevel: string;
+    interpretation: string;
+    recommendation: string;
+    insights: string[];
+    considerations: string[];
+  } | null>(null);
+
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { averageCost: undefined, shares: undefined, sellCommission: undefined as any, taxRatePct: undefined as any } });
+
+  const getPriceLevel = (price: number, avgCost: number): string => {
+    const diff = ((price - avgCost) / avgCost) * 100;
+    if (diff > 5) return 'Above Cost';
+    if (diff > 0) return 'Near Cost';
+    return 'At Cost';
+  };
+
+  const getInsights = (price: number, avgCost: number, tax: number, comm: number): string[] => {
+    const insights: string[] = [];
+    insights.push(`Break-even price is $${price.toFixed(4)} per share`);
+    if (tax > 0) {
+      insights.push(`Tax adds $${(comm > 0 ? tax : 0).toFixed(2)} to your break-even requirement`);
+    }
+    if (comm > 0) {
+      insights.push(`Commission adds $${(comm / 100).toFixed(4)} per share to break-even`);
+    }
+    return insights;
+  };
+
+  const getConsiderations = (): string[] => [
+    'Break-even ignores opportunity cost of capital',
+    'Tax rates vary by holding period and jurisdiction',
+    'Losses may offset gains for tax purposes',
+    'Consider wash sale rules when selling at a loss',
+    'Factor in time value when deciding to exit'
+  ];
+
+  const getRecommendation = (price: number, avgCost: number, taxRate: number): string => {
+    if (price > avgCost * 1.1) return 'Significant premium needed. Consider tax-loss harvesting opportunities.';
+    if (taxRate > 30) return 'High tax rate impacts break-even. Consider holding for long-term rates.';
+    return 'Set limit orders at your break-even price for zero-loss exits.';
+  };
 
   const onSubmit = (v: FormValues) => {
     if (v.averageCost == null || v.shares == null || v.sellCommission == null || v.taxRatePct == null) { setResult(null); return; }
-    // Break-even equation: (P*shares - commission - tax_on_gain) = cost_basis
-    // tax_on_gain = max(0, (P - cost_per_share) * shares) * tax
-    // Solve for P; piecewise because tax applies only if P > cost.
     const basis = v.averageCost * v.shares;
     const t = v.taxRatePct / 100;
-    // Assume P >= cost (typical case); P*sh - comm - (P - cost)*sh*t = basis
-    // => P*sh*(1 - t) + cost*sh*t - comm = basis => P = (basis + comm - cost*sh*t) / (sh*(1 - t))
     let price = (basis + v.sellCommission - v.averageCost * v.shares * t) / (v.shares * (1 - t || 1));
     if (price < v.averageCost) {
-      // In loss region taxes do not apply on negative gain (ignoring deductions): P*sh - comm = basis
       price = (basis + v.sellCommission) / v.shares;
     }
-    setResult({ price, interpretation: 'Sale price per share required to break even after commission and taxes on gains.' });
+    const taxImpact = price > v.averageCost ? (price - v.averageCost) * v.shares * t : 0;
+    setResult({
+      price,
+      costBasis: basis,
+      taxImpact,
+      commissionImpact: v.sellCommission,
+      priceLevel: getPriceLevel(price, v.averageCost),
+      interpretation: `To break even after $${v.sellCommission.toFixed(2)} commission and ${v.taxRatePct}% tax on gains, sell at $${price.toFixed(4)} per share.`,
+      recommendation: getRecommendation(price, v.averageCost, v.taxRatePct),
+      insights: getInsights(price, v.averageCost, taxImpact, v.sellCommission),
+      considerations: getConsiderations()
+    });
   };
 
   return (
@@ -68,13 +119,95 @@ export default function BreakEvenStockSalePriceCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle>Result</CardTitle><CardDescription>Required sale price</CardDescription></CardHeader>
-          <CardContent>
-            <div className="text-center p-6 bg-primary/5 rounded-lg"><div className="text-sm text-muted-foreground mb-1">Break-even Price</div><p className="text-3xl font-bold text-primary">${result.price.toFixed(4)}</p></div>
-            <p className="text-sm mt-4">{result.interpretation}</p>
-          </CardContent>
-        </Card>
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <Target className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Break-even Analysis</CardTitle>
+                  <CardDescription>Required sale price for zero profit/loss</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-center">
+                <p className="text-4xl font-bold text-primary">${result.price.toFixed(4)}</p>
+                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <DollarSign className="h-6 w-6 mx-auto mb-2 text-blue-600" />
+                  <p className="font-semibold">Cost Basis</p>
+                  <p className="text-lg font-bold">${result.costBasis.toLocaleString()}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Percent className="h-6 w-6 mx-auto mb-2 text-orange-600" />
+                  <p className="font-semibold">Tax Impact</p>
+                  <p className="text-lg font-bold">${result.taxImpact.toFixed(2)}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <TrendingUp className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                  <p className="font-semibold">Commission</p>
+                  <p className="text-lg font-bold">${result.commissionImpact.toFixed(2)}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Target className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                  <p className="font-semibold">Price Level</p>
+                  <Badge variant={result.priceLevel === 'At Cost' ? 'secondary' : result.priceLevel === 'Near Cost' ? 'outline' : 'default'}>
+                    {result.priceLevel}
+                  </Badge>
+                </div>
+              </div>
+
+              <Alert>
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  <strong>Recommendation:</strong> {result.recommendation}
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Break-even analysis</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       )}
       <Card>
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Plan exits and taxes</CardDescription></CardHeader>

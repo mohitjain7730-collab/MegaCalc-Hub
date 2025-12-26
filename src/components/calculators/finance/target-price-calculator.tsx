@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Target, DollarSign, Percent, FunctionSquare, HelpCircle, Shield, Info, Calendar } from 'lucide-react';
+import { Target, DollarSign, Percent, FunctionSquare, HelpCircle, Shield, Info, Calendar, TrendingUp, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
 const formSchema = z.object({
@@ -20,14 +22,74 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function TargetPriceCalculator() {
-  const [result, setResult] = useState<{ targetSimple: number; targetAnnualized: number; interpretation: string } | null>(null);
+  const [result, setResult] = useState<{
+    targetSimple: number;
+    targetAnnualized: number;
+    appreciation: number;
+    annualizedReturn: number;
+    returnLevel: string;
+    interpretation: string;
+    recommendation: string;
+    insights: string[];
+    considerations: string[];
+  } | null>(null);
+
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { currentPrice: undefined, desiredReturnPct: undefined, holdingYears: undefined as any } });
+
+  const getReturnLevel = (returnPct: number): string => {
+    if (returnPct >= 50) return 'Aggressive';
+    if (returnPct >= 20) return 'Growth';
+    if (returnPct >= 10) return 'Moderate';
+    return 'Conservative';
+  };
+
+  const getInsights = (returnPct: number, years: number, currentPrice: number, targetPrice: number): string[] => {
+    const insights: string[] = [];
+    insights.push(`Target price of $${targetPrice.toFixed(2)} represents ${returnPct.toFixed(1)}% total return`);
+    if (years > 0) {
+      const annualized = (Math.pow(targetPrice / currentPrice, 1 / years) - 1) * 100;
+      insights.push(`This equals ${annualized.toFixed(1)}% annualized return over ${years} years`);
+    }
+    if (returnPct >= 50) {
+      insights.push('Aggressive target—ensure fundamentals support this growth');
+    } else if (returnPct >= 20) {
+      insights.push('Reasonable growth target with proper risk management');
+    }
+    return insights;
+  };
+
+  const getConsiderations = (): string[] => [
+    'Markets may not achieve your target within expected timeframe',
+    'Consider setting stop-loss alongside target price',
+    'Dividends add to total return beyond price appreciation',
+    'Valuation multiples may compress even with earnings growth',
+    'Revisit targets after major fundamental changes'
+  ];
+
+  const getRecommendation = (returnPct: number, years: number): string => {
+    if (returnPct > 30 && years <= 1) return 'Aggressive short-term target. Consider scaling out in stages.';
+    if (returnPct > 50) return 'Very ambitious target. Ensure strong conviction backed by fundamentals.';
+    if (years > 5) return 'Long-term target. Review annually and adjust for changing conditions.';
+    return 'Set limit orders at your target. Pair with stop-loss for risk management.';
+  };
 
   const onSubmit = (v: FormValues) => {
     if (v.currentPrice == null || v.desiredReturnPct == null || v.holdingYears == null) { setResult(null); return; }
     const targetSimple = v.currentPrice * (1 + v.desiredReturnPct / 100);
     const targetAnnualized = v.holdingYears > 0 ? v.currentPrice * Math.pow(1 + v.desiredReturnPct / 100, v.holdingYears) : targetSimple;
-    setResult({ targetSimple, targetAnnualized, interpretation: 'Target prices based on total desired return and annualized compounding over the holding period.' });
+    const appreciation = targetAnnualized - v.currentPrice;
+    const annualizedReturn = v.holdingYears > 0 ? (Math.pow(targetAnnualized / v.currentPrice, 1 / v.holdingYears) - 1) * 100 : v.desiredReturnPct;
+    setResult({
+      targetSimple,
+      targetAnnualized,
+      appreciation,
+      annualizedReturn,
+      returnLevel: getReturnLevel(v.desiredReturnPct),
+      interpretation: `To achieve ${v.desiredReturnPct}% return${v.holdingYears > 0 ? ` compounded over ${v.holdingYears} year(s)` : ''}, the stock needs to reach $${targetAnnualized.toFixed(2)}.`,
+      recommendation: getRecommendation(v.desiredReturnPct, v.holdingYears),
+      insights: getInsights(v.desiredReturnPct, v.holdingYears, v.currentPrice, targetAnnualized),
+      considerations: getConsiderations()
+    });
   };
 
   return (
@@ -55,16 +117,95 @@ export default function TargetPriceCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle>Result</CardTitle><CardDescription>Required prices</CardDescription></CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="text-center p-6 bg-primary/5 rounded-lg"><div className="text-sm text-muted-foreground mb-1">Simple Target Price</div><p className="text-3xl font-bold text-primary">${result.targetSimple.toFixed(2)}</p></div>
-              <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg"><div className="text-sm text-muted-foreground mb-1">Annualized Target Price</div><p className="text-3xl font-bold text-green-600">${result.targetAnnualized.toFixed(2)}</p></div>
-            </div>
-            <p className="text-sm mt-4">{result.interpretation}</p>
-          </CardContent>
-        </Card>
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <Target className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>Target Price Analysis</CardTitle>
+                  <CardDescription>Required prices for your return goals</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-center">
+                <p className="text-4xl font-bold text-primary">${result.targetAnnualized.toFixed(2)}</p>
+                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <DollarSign className="h-6 w-6 mx-auto mb-2 text-blue-600" />
+                  <p className="font-semibold">Simple Target</p>
+                  <p className="text-lg font-bold">${result.targetSimple.toFixed(2)}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <TrendingUp className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                  <p className="font-semibold">Appreciation</p>
+                  <p className="text-lg font-bold">${result.appreciation.toFixed(2)}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Percent className="h-6 w-6 mx-auto mb-2 text-orange-600" />
+                  <p className="font-semibold">Annualized</p>
+                  <p className="text-lg font-bold">{result.annualizedReturn.toFixed(1)}%</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Target className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                  <p className="font-semibold">Risk Profile</p>
+                  <Badge variant={result.returnLevel === 'Conservative' ? 'secondary' : result.returnLevel === 'Moderate' ? 'outline' : result.returnLevel === 'Growth' ? 'default' : 'destructive'}>
+                    {result.returnLevel}
+                  </Badge>
+                </div>
+              </div>
+
+              <Alert>
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  <strong>Recommendation:</strong> {result.recommendation}
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Target price optimization</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       )}
 
       <Card>

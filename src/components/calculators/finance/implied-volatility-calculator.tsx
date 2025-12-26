@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Info, Activity } from 'lucide-react';
+import { Calculator, Info, Activity, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   spot: z.number().min(0).optional(),
@@ -29,14 +31,31 @@ function bsPrice(S: number, K: number, rPct: number, sigma: number, T: number, t
 function impliedVol(S: number, K: number, rPct: number, T: number, type: 'call' | 'put', price: number) { let lo = 1e-4, hi = 5.0; for (let i = 0; i < 100; i++) { const mid = (lo + hi) / 2; const val = bsPrice(S, K, rPct, mid, T, type); if (val > price) hi = mid; else lo = mid; } return (lo + hi) / 2 * 100; }
 
 export default function ImpliedVolatilityCalculator() {
-  const [result, setResult] = useState<{ impliedVolPct: number; modelPrice: number; error: number; suggestions: string[] } | null>(null);
+  const [result, setResult] = useState<{ impliedVolPct: number; modelPrice: number; error: number; insights: string[]; considerations: string[] } | null>(null);
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { spot: undefined as unknown as number, strike: undefined as unknown as number, rate: undefined as unknown as number, timeYears: undefined as unknown as number, optionType: undefined, optionPrice: undefined as unknown as number } });
 
   const onSubmit = (v: FormValues) => {
     if (v.spot === undefined || v.strike === undefined || v.rate === undefined || v.timeYears === undefined || v.optionType === undefined || v.optionPrice === undefined) { setResult(null); return; }
     const iv = impliedVol(v.spot, v.strike, v.rate, v.timeYears, v.optionType, v.optionPrice);
     const model = bsPrice(v.spot, v.strike, v.rate, iv / 100, v.timeYears, v.optionType);
-    setResult({ impliedVolPct: iv, modelPrice: model, error: model - v.optionPrice, suggestions: ['Use consistent units and periodicity for inputs.', 'Check dividends and borrow costs; this simple model ignores them.', 'Compare across expiries/strikes to view the volatility surface.', 'Use mid-prices to reduce bid/ask bias in IV.'] });
+
+    setResult({
+      impliedVolPct: iv,
+      modelPrice: model,
+      error: model - v.optionPrice,
+      insights: [
+        `Implied Volatility of ${iv.toFixed(2)}% reflects market uncertainty.`,
+        'Compare across strikes to visualize the volatility smile/skew.',
+        'High IV rank relative to history suggests expensive premiums.'
+      ],
+      considerations: [
+        'Model assumes constant volatility over option life.',
+        'Uses simple Black-Scholes (ignores dividends/borrow cost).',
+        'Wide bid-ask spreads can distort IV estimates.',
+        'Very deep ITM/OTM options may yield unstable IVs.',
+        'Earnings/events can cause IV spikes independent of trends.'
+      ]
+    });
   };
 
   const num = (ph: string, field: any) => (
@@ -70,16 +89,56 @@ export default function ImpliedVolatilityCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Implied volatility</CardDescription></CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Implied Volatility</p><p className="text-2xl font-bold">{result.impliedVolPct.toFixed(2)}%</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Model Price (check)</p><p className="text-2xl font-bold">{result.modelPrice.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Pricing Error</p><p className="text-2xl font-bold">{result.error.toFixed(4)}</p></div>
-            </div>
-          </CardContent>
-        </Card>
+        <>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Volatility extraction</CardDescription></CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Implied Volatility (IV)</p><p className="text-2xl font-bold text-primary">{result.impliedVolPct.toFixed(2)}%</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Model Price Check</p><p className="text-2xl font-bold">{result.modelPrice.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Calibration Error</p><p className="text-2xl font-bold">{Math.abs(result.error).toExponential(2)}</p></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Market sentiment</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Model limitations</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       <Card>

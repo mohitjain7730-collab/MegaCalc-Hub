@@ -8,24 +8,82 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Percent, DollarSign, FunctionSquare, HelpCircle, Shield, Info, Calendar } from 'lucide-react';
+import { Percent, DollarSign, FunctionSquare, HelpCircle, Shield, Info, Calendar, TrendingUp, AlertCircle, CheckCircle2, Target } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   beginningValue: z.number().min(0.0001).optional(),
   endingValue: z.number().min(0).optional(),
-  income: z.number().min(0).optional(), // dividends, coupons, etc.
+  income: z.number().min(0).optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function HoldingPeriodReturnCalculator() {
-  const [result, setResult] = useState<{ hprPct: number; interpretation: string } | null>(null);
+  const [result, setResult] = useState<{
+    hprPct: number;
+    priceReturn: number;
+    incomeReturn: number;
+    totalGain: number;
+    performanceLevel: string;
+    interpretation: string;
+    recommendation: string;
+    insights: string[];
+    considerations: string[];
+  } | null>(null);
+
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { beginningValue: undefined, endingValue: undefined, income: 0 as any } });
+
+  const getPerformanceLevel = (hpr: number): string => {
+    if (hpr >= 50) return 'Exceptional';
+    if (hpr >= 20) return 'Strong';
+    if (hpr >= 10) return 'Moderate';
+    if (hpr >= 0) return 'Low';
+    return 'Negative';
+  };
+
+  const getInsights = (hpr: number, priceRet: number, incomeRet: number): string[] => {
+    const insights: string[] = [];
+    insights.push(`Total holding period return of ${hpr.toFixed(2)}%`);
+    if (incomeRet > 0) {
+      insights.push(`Income (dividends) contributed ${incomeRet.toFixed(2)}% of return`);
+    }
+    insights.push(`Price appreciation contributed ${priceRet.toFixed(2)}%`);
+    return insights;
+  };
+
+  const getConsiderations = (): string[] => [
+    'HPR does not annualize—compare periods of equal length',
+    'Reinvested dividends would compound total return',
+    'Timing of income affects true return with reinvestment',
+    'Inflation erodes purchasing power of nominal returns',
+    'Compare HPR against benchmark over same period'
+  ];
+
+  const getRecommendation = (hpr: number): string => {
+    if (hpr >= 30) return 'Strong return. Consider rebalancing to lock in gains.';
+    if (hpr < 0) return 'Negative return. Evaluate if thesis remains intact before adding.';
+    return 'Moderate return. Compare to benchmark to assess relative performance.';
+  };
 
   const onSubmit = (v: FormValues) => {
     if (v.beginningValue == null || v.endingValue == null || v.income == null) { setResult(null); return; }
-    const hpr = ((v.endingValue + v.income - v.beginningValue) / v.beginningValue) * 100;
-    setResult({ hprPct: Math.round(hpr * 100) / 100, interpretation: 'Total holding period return including income.' });
+    const totalGain = v.endingValue + v.income - v.beginningValue;
+    const hpr = (totalGain / v.beginningValue) * 100;
+    const priceReturn = ((v.endingValue - v.beginningValue) / v.beginningValue) * 100;
+    const incomeReturn = (v.income / v.beginningValue) * 100;
+    setResult({
+      hprPct: Math.round(hpr * 100) / 100,
+      priceReturn,
+      incomeReturn,
+      totalGain,
+      performanceLevel: getPerformanceLevel(hpr),
+      interpretation: `Your total holding period return is ${hpr.toFixed(2)}%, combining ${priceReturn.toFixed(2)}% price change and ${incomeReturn.toFixed(2)}% income return.`,
+      recommendation: getRecommendation(hpr),
+      insights: getInsights(hpr, priceReturn, incomeReturn),
+      considerations: getConsiderations()
+    });
   };
 
   return (
@@ -53,10 +111,95 @@ export default function HoldingPeriodReturnCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle>Result</CardTitle><CardDescription>Total return</CardDescription></CardHeader>
-          <CardContent><div className="text-center p-6 bg-primary/5 rounded-lg"><div className="text-sm text-muted-foreground mb-1">HPR</div><p className="text-3xl font-bold text-primary">{result.hprPct}%</p></div><p className="text-sm mt-4">{result.interpretation}</p></CardContent>
-        </Card>
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <TrendingUp className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>HPR Analysis</CardTitle>
+                  <CardDescription>Total holding period return breakdown</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-center">
+                <p className={`text-4xl font-bold ${result.hprPct >= 0 ? 'text-green-600' : 'text-red-600'}`}>{result.hprPct}%</p>
+                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Percent className="h-6 w-6 mx-auto mb-2 text-blue-600" />
+                  <p className="font-semibold">Price Return</p>
+                  <p className="text-lg font-bold">{result.priceReturn.toFixed(2)}%</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <DollarSign className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                  <p className="font-semibold">Income Return</p>
+                  <p className="text-lg font-bold">{result.incomeReturn.toFixed(2)}%</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <TrendingUp className="h-6 w-6 mx-auto mb-2 text-orange-600" />
+                  <p className="font-semibold">Total Gain</p>
+                  <p className="text-lg font-bold">${result.totalGain.toFixed(2)}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Target className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                  <p className="font-semibold">Performance</p>
+                  <Badge variant={result.performanceLevel === 'Exceptional' || result.performanceLevel === 'Strong' ? 'default' : result.performanceLevel === 'Moderate' ? 'secondary' : result.performanceLevel === 'Low' ? 'outline' : 'destructive'}>
+                    {result.performanceLevel}
+                  </Badge>
+                </div>
+              </div>
+
+              <Alert>
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  <strong>Recommendation:</strong> {result.recommendation}
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Return analysis</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors to monitor</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       )}
 
       <Card>

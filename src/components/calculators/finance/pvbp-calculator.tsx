@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Info, Activity } from 'lucide-react';
+import { Calculator, Info, Activity, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   cleanPrice: z.number().min(0).optional(),
@@ -18,14 +20,30 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function PVBPCalculator() {
-  const [result, setResult] = useState<{ pvbp: number; interpretation: string; suggestions: string[] } | null>(null);
+  const [result, setResult] = useState<{ pvbp: number; interpretation: string; insights: string[]; considerations: string[] } | null>(null);
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { cleanPrice: undefined as unknown as number, modifiedDuration: undefined as unknown as number } });
 
   const onSubmit = (v: FormValues) => {
     if (v.cleanPrice === undefined || v.modifiedDuration === undefined) { setResult(null); return; }
     const pvbp = v.modifiedDuration * v.cleanPrice * 0.0001; // per 1 bp
     const interpretation = 'Price change for a one basis point (0.01%) shift in yield.';
-    setResult({ pvbp, interpretation, suggestions: ['Use PVBP to size hedges with Treasury futures.', 'Aggregate PVBPs across holdings to manage total rate risk.', 'Recompute PVBP as price and duration change over time.', 'Combine with spread PVBP to separate rate vs credit risk.'] });
+
+    setResult({
+      pvbp,
+      interpretation,
+      insights: [
+        'Use PVBP to precisely size hedges with Treasury futures.',
+        'Aggregate PVBPs across holdings to manage total rate risk.',
+        'High PVBP implies significant dollar exposure to small rate moves.'
+      ],
+      considerations: [
+        'Recompute PVBP as price and duration change over time.',
+        'Combine with spread PVBP to separate rate vs credit risk.',
+        'Assumes parallel yield curve shifts.',
+        'Small PVBP changes can compound in large portfolios.',
+        'Convexity can alter PVBP in volatile markets.'
+      ]
+    });
   };
 
   const num = (ph: string, field: any) => (
@@ -55,15 +73,55 @@ export default function PVBPCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Dollar change per bp</CardDescription></CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">PVBP</p><p className="text-2xl font-bold">{result.pvbp.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interpretation}</p></div>
-            </div>
-          </CardContent>
-        </Card>
+        <>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Dollar change per bp</CardDescription></CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">PVBP (DV01)</p><p className="text-2xl font-bold">{result.pvbp.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interpretation}</p></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Risk management</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical factors</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       <Card>

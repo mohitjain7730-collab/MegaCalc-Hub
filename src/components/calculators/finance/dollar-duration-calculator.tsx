@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Info, Activity } from 'lucide-react';
+import { Calculator, Info, Activity, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   cleanPrice: z.number().min(0).optional(),
@@ -18,14 +20,30 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function DollarDurationCalculator() {
-  const [result, setResult] = useState<{ dollarDuration: number; interpretation: string; suggestions: string[] } | null>(null);
+  const [result, setResult] = useState<{ dollarDuration: number; interpretation: string; insights: string[]; considerations: string[] } | null>(null);
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { cleanPrice: undefined as unknown as number, modifiedDuration: undefined as unknown as number } });
 
   const onSubmit = (v: FormValues) => {
     if (v.cleanPrice === undefined || v.modifiedDuration === undefined) { setResult(null); return; }
     const dd = v.modifiedDuration * v.cleanPrice; // per 1% move
     const interpretation = 'Dollar price change for a 1% (100 bps) parallel shift in yield.';
-    setResult({ dollarDuration: dd, interpretation, suggestions: ['Use dollar duration to size macro hedges.', 'Divide dollar duration by 100 to approximate PVBP.', 'Update after price/curve moves to keep hedges aligned.', 'Combine with convexity for larger expected moves.'] });
+
+    setResult({
+      dollarDuration: dd,
+      interpretation,
+      insights: [
+        'Sum dollar durations across portfolio to estimate total rate risk.',
+        'Divide by 100 to get PVBP (DV01) for finer hedging.',
+        'Use dollar duration to determine hedge notional required.'
+      ],
+      considerations: [
+        'Assumes a parallel shift in the yield curve.',
+        'Dollar duration changes as yields and prices change (convexity).',
+        'Large rate moves require convexity adjustment.',
+        'Effective duration preferred for bonds with options.',
+        'Rebalance hedges frequently to maintain dollar neutrality.'
+      ]
+    });
   };
 
   const num = (ph: string, field: any) => (
@@ -55,15 +73,55 @@ export default function DollarDurationCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Dollar change per 1% move</CardDescription></CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Dollar Duration</p><p className="text-2xl font-bold">{result.dollarDuration.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interpretation}</p></div>
-            </div>
-          </CardContent>
-        </Card>
+        <>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Dollar change per 1% move</CardDescription></CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Dollar Duration</p><p className="text-2xl font-bold">{result.dollarDuration.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Interpretation</p><p className="font-medium">{result.interpretation}</p></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Hedging strategy</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Limitations</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       <Card>

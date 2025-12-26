@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Info, Activity } from 'lucide-react';
+import { Calculator, Info, Activity, Target, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 // Simplified convexity adjustment: Futures = Forward + 0.5 * sigma^2 * T * CF * Duration
 // This is an illustrative model (Hull-style approximation). Units are annualized.
@@ -23,7 +25,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ConvexityAdjustmentBondFuturesCalculator() {
-  const [result, setResult] = useState<{ adjustment: number; futuresPrice: number; notes: string[] } | null>(null);
+  const [result, setResult] = useState<{ adjustment: number; futuresPrice: number; insights: string[]; considerations: string[] } | null>(null);
 
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { forwardPrice: undefined as unknown as number, yieldVolatility: undefined as unknown as number, timeYears: undefined as unknown as number, conversionFactor: undefined as unknown as number, duration: undefined as unknown as number } });
 
@@ -32,7 +34,23 @@ export default function ConvexityAdjustmentBondFuturesCalculator() {
     const sigma = v.yieldVolatility / 100; // convert % to decimal
     const adj = 0.5 * sigma * sigma * v.timeYears * v.conversionFactor * v.duration * v.forwardPrice;
     const fut = v.forwardPrice + adj;
-    setResult({ adjustment: adj, futuresPrice: fut, notes: ['Illustrative formula; check exchange conventions.', 'Use appropriate volatility (yield vol) and duration for CTD.', 'Conversion factor aligns cash bond to futures contract.'] });
+
+    setResult({
+      adjustment: adj,
+      futuresPrice: fut,
+      insights: [
+        'Convexity adjustment increases with higher yield volatility.',
+        'Longer time to maturity magnifies the adjustment factor.',
+        'CTD duration is a primary driver of the basis gap.'
+      ],
+      considerations: [
+        'Model assumes constant volatility (rare in practice).',
+        'Check exchange-specific conversion factor formulas.',
+        'Large adjustments imply significant basis risk.',
+        'Market liquidity can distort theoretical pricing.',
+        'Monitor deliverable basket changes for CTD switches.'
+      ]
+    });
   };
 
   const num = (ph: string, field: any) => (
@@ -65,16 +83,55 @@ export default function ConvexityAdjustmentBondFuturesCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Futures vs forward</CardDescription></CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Convexity Adjustment</p><p className="text-2xl font-bold">{result.adjustment.toFixed(4)}</p></div>
-              <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Estimated Futures Price</p><p className="text-2xl font-bold">{result.futuresPrice.toFixed(4)}</p></div>
-            </div>
-            <div><h4 className="font-semibold mb-2">Notes</h4><ul className="list-disc pl-6 text-muted-foreground space-y-1">{result.notes.map((s, i) => (<li key={i}>{s}</li>))}</ul></div>
-          </CardContent>
-        </Card>
+        <>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Results & Insights</CardTitle><CardDescription>Futures vs Forward Analysis</CardDescription></CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Convexity Adjustment</p><p className="text-2xl font-bold text-primary">{result.adjustment.toFixed(4)}</p></div>
+                <div className="p-4 border rounded-lg"><p className="text-sm text-muted-foreground">Estimated Futures Price</p><p className="text-2xl font-bold">{result.futuresPrice.toFixed(4)}</p></div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Valuation drivers</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Critical assumptions</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((s, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{s}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </>
       )}
 
       <Card>

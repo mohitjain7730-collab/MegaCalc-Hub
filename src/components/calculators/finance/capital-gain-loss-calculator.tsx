@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { DollarSign, Percent, FunctionSquare, HelpCircle, Shield, Info, Hash } from 'lucide-react';
+import { DollarSign, Percent, FunctionSquare, HelpCircle, Shield, Info, Hash, TrendingUp, TrendingDown, AlertCircle, CheckCircle2, Target } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const formSchema = z.object({
   costBasis: z.number().min(0.0001).optional(),
@@ -20,8 +22,56 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CapitalGainLossCalculator() {
-  const [result, setResult] = useState<{ gain: number; gainPct: number; taxOwed: number; netProceeds: number } | null>(null);
+  const [result, setResult] = useState<{
+    gain: number;
+    gainPct: number;
+    taxOwed: number;
+    netProceeds: number;
+    gainType: string;
+    interpretation: string;
+    recommendation: string;
+    insights: string[];
+    considerations: string[];
+  } | null>(null);
+
   const form = useForm<FormValues>({ resolver: zodResolver(formSchema), defaultValues: { costBasis: undefined, sellProceeds: undefined, fees: undefined as any, taxRatePct: undefined as any } });
+
+  const getGainType = (gain: number, pct: number): string => {
+    if (gain > 0 && pct >= 50) return 'Large Gain';
+    if (gain > 0) return 'Gain';
+    if (gain === 0) return 'Break-even';
+    if (pct >= -20) return 'Small Loss';
+    return 'Large Loss';
+  };
+
+  const getInsights = (gain: number, pct: number, tax: number, net: number): string[] => {
+    const insights: string[] = [];
+    if (gain > 0) {
+      insights.push(`${pct.toFixed(1)}% return on your investment`);
+      insights.push(`Tax liability of $${tax.toFixed(2)} reduces net to $${net.toFixed(2)}`);
+    } else if (gain < 0) {
+      insights.push(`Loss of $${Math.abs(gain).toFixed(2)} (${Math.abs(pct).toFixed(1)}%)`);
+      insights.push('Losses can offset gains for tax purposes');
+    } else {
+      insights.push('Break-even—no gain or loss');
+    }
+    return insights;
+  };
+
+  const getConsiderations = (): string[] => [
+    'Short-term gains taxed at higher ordinary income rates',
+    'Long-term gains (>1 year) get preferential tax treatment',
+    'Losses can offset gains up to $3,000/year excess against income',
+    'Wash sale rules prevent immediate repurchase for tax loss',
+    'State taxes may add to federal tax liability'
+  ];
+
+  const getRecommendation = (gain: number, pct: number, taxRate: number): string => {
+    if (gain > 0 && pct > 30) return 'Strong gain. Consider holding for long-term rates if short-term.';
+    if (gain < 0 && pct < -30) return 'Significant loss. Evaluate tax-loss harvesting opportunities.';
+    if (gain < 0) return 'Small loss may be offset against gains. Review portfolio for rebalancing.';
+    return 'Moderate outcome. Consider your overall portfolio tax situation.';
+  };
 
   const onSubmit = (v: FormValues) => {
     if (v.costBasis == null || v.sellProceeds == null || v.fees == null || v.taxRatePct == null) { setResult(null); return; }
@@ -29,7 +79,17 @@ export default function CapitalGainLossCalculator() {
     const tax = grossGain > 0 ? grossGain * (v.taxRatePct / 100) : 0;
     const net = v.sellProceeds - v.fees - tax;
     const pct = v.costBasis > 0 ? (grossGain / v.costBasis) * 100 : 0;
-    setResult({ gain: Math.round(grossGain * 100) / 100, gainPct: Math.round(pct * 100) / 100, taxOwed: Math.round(tax * 100) / 100, netProceeds: Math.round(net * 100) / 100 });
+    setResult({
+      gain: Math.round(grossGain * 100) / 100,
+      gainPct: Math.round(pct * 100) / 100,
+      taxOwed: Math.round(tax * 100) / 100,
+      netProceeds: Math.round(net * 100) / 100,
+      gainType: getGainType(grossGain, pct),
+      interpretation: grossGain >= 0 ? `Gain of $${grossGain.toFixed(2)} (${pct.toFixed(1)}%) with $${tax.toFixed(2)} tax, netting $${net.toFixed(2)}.` : `Loss of $${Math.abs(grossGain).toFixed(2)} (${Math.abs(pct).toFixed(1)}%) with no tax liability.`,
+      recommendation: getRecommendation(grossGain, pct, v.taxRatePct),
+      insights: getInsights(grossGain, pct, tax, net),
+      considerations: getConsiderations()
+    });
   };
 
   return (
@@ -60,17 +120,95 @@ export default function CapitalGainLossCalculator() {
       </Card>
 
       {result && (
-        <Card>
-          <CardHeader><CardTitle>Result</CardTitle><CardDescription>Gross/Net outcome</CardDescription></CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="text-center p-6 bg-primary/5 rounded-lg"><div className="text-sm text-muted-foreground mb-1">Gain/Loss</div><p className="text-3xl font-bold text-primary">${result.gain.toLocaleString()}</p></div>
-              <div className="text-center p-6 bg-primary/5 rounded-lg"><div className="text-sm text-muted-foreground mb-1">Return %</div><p className="text-3xl font-bold text-primary">{result.gainPct}%</p></div>
-              <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg"><div className="text-sm text-muted-foreground mb-1">Tax Owed</div><p className="text-3xl font-bold text-green-600">${result.taxOwed.toLocaleString()}</p></div>
-              <div className="text-center p-6 bg-green-50 dark:bg-green-950/20 rounded-lg"><div className="text-sm text-muted-foreground mb-1">Net Proceeds</div><p className="text-3xl font-bold text-green-600">${result.netProceeds.toLocaleString()}</p></div>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="space-y-6">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                {result.gain >= 0 ? <TrendingUp className="h-8 w-8 text-green-600" /> : <TrendingDown className="h-8 w-8 text-red-600" />}
+                <div>
+                  <CardTitle>Capital {result.gain >= 0 ? 'Gain' : 'Loss'} Analysis</CardTitle>
+                  <CardDescription>Investment outcome breakdown</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="text-center">
+                <p className={`text-4xl font-bold ${result.gain >= 0 ? 'text-green-600' : 'text-red-600'}`}>${result.gain >= 0 ? '+' : ''}{result.gain.toLocaleString()}</p>
+                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Percent className="h-6 w-6 mx-auto mb-2 text-blue-600" />
+                  <p className="font-semibold">Return %</p>
+                  <p className="text-lg font-bold">{result.gainPct}%</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <DollarSign className="h-6 w-6 mx-auto mb-2 text-orange-600" />
+                  <p className="font-semibold">Tax Owed</p>
+                  <p className="text-lg font-bold">${result.taxOwed.toLocaleString()}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <TrendingUp className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                  <p className="font-semibold">Net Proceeds</p>
+                  <p className="text-lg font-bold">${result.netProceeds.toLocaleString()}</p>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Target className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                  <p className="font-semibold">Outcome</p>
+                  <Badge variant={result.gainType.includes('Gain') ? 'default' : result.gainType === 'Break-even' ? 'secondary' : 'destructive'}>
+                    {result.gainType}
+                  </Badge>
+                </div>
+              </div>
+
+              <Alert>
+                <Info className="h-4 w-4" />
+                <AlertDescription>
+                  <strong>Recommendation:</strong> {result.recommendation}
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-primary">
+                  <Target className="h-6 w-6" />
+                  Strategic Insights
+                </CardTitle>
+                <CardDescription>Tax and return analysis</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium">{insight}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
+                  <AlertCircle className="h-6 w-6" />
+                  Risk Assessment
+                </CardTitle>
+                <CardDescription>Tax considerations</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {result.considerations.map((consideration, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       )}
 
       <Card>
