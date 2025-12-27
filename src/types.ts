@@ -4,6 +4,7 @@ export interface Calculator {
   description: string;
   slug: string;
   category: string;
+  subcategory?: string;
   metaTitle?: string;
   metaDescription?: string;
 }

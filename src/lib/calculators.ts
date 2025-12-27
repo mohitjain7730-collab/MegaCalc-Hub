@@ -12,11 +12,13 @@ import { personal_budgeting_calculators } from '../data/calculators/personal-bud
 import { technology_calculators } from '../data/calculators/technology';
 import { time_date_calculators } from '../data/calculators/time-date';
 import { travel_adventure_calculators } from '../data/calculators/travel-adventure';
+import { education_calculators } from '../data/calculators/education';
 
 export const calculators: Calculator[] = [
   ...business_startup_calculators,
   ...conversion_calculators,
   ...cooking_food_calculators,
+  ...education_calculators,
   ...engineering_calculators,
   ...environment_calculators,
   ...finance_calculators,

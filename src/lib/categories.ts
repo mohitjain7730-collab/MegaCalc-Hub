@@ -57,11 +57,18 @@ import {
   Moon,
 } from 'lucide-react';
 
+export interface SubCategory {
+  name: string;
+  slug: string;
+  description: string;
+}
+
 export interface Category {
   name: string;
   slug: string;
   description: string;
   Icon: string;
+  subcategories?: SubCategory[];
 }
 
 export const icons: { [key: string]: LucideIcon } = {
@@ -158,6 +165,13 @@ export const categories: Category[] = [
     slug: 'education',
     description: 'Tools for students and teachers, from grades to study time.',
     Icon: 'BookOpen',
+    subcategories: [
+      {
+        name: 'Maths',
+        slug: 'maths',
+        description: 'Percentage, fraction, and other math calculators.',
+      },
+    ],
   },
   {
     name: 'Technology',

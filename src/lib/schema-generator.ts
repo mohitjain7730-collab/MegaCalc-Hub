@@ -203,6 +203,61 @@ export function generateCategorySchema(category: Category, categoryCalculators: 
   };
 }
 
+export function generateSubCategorySchema(category: Category, subcategory: { name: string; slug: string; description: string }, categoryCalculators: Calculator[]) {
+  const baseUrl = "https://mycalculating.com";
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `${subcategory.name} Calculators - ${category.name}`,
+    "description": `Free online ${subcategory.name.toLowerCase()} calculators. ${subcategory.description}`,
+    "url": `${baseUrl}/category/${category.slug}/${subcategory.slug}`,
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": `${subcategory.name} Calculators`,
+      "description": `Collection of ${subcategory.name.toLowerCase()} calculators`,
+      "numberOfItems": categoryCalculators.length,
+      "itemListElement": categoryCalculators.map((calc, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "WebApplication",
+          "name": calc.name,
+          "description": calc.description,
+          // Requirement: "point to 4 random calculators within the new education/maths path".
+          // The paths are /category/education/maths/[slug].
+          // So URL should include subcategory.
+          "url": `${baseUrl}/category/${category.slug}/${subcategory.slug}/${calc.slug}`,
+          "applicationCategory": "Calculator"
+        }
+      }))
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": baseUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": category.name,
+          "item": `${baseUrl}/category/${category.slug}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": subcategory.name,
+          "item": `${baseUrl}/category/${category.slug}/${subcategory.slug}`
+        }
+      ]
+    }
+  };
+}
+
 // Calculators Listing Page Schema
 export function generateCalculatorsListingSchema() {
   const baseUrl = "https://mycalculating.com";

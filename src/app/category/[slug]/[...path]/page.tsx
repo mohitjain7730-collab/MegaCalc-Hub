@@ -1,0 +1,267 @@
+
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
+import type { Metadata } from 'next';
+
+import { Button } from '@/components/ui/button';
+import { categories } from '@/lib/categories';
+import { getCalculator, getCalculatorsByCategory } from '@/lib/calculator-data-utils';
+import { calculators } from '@/lib/calculators';
+import { CategoryIcon } from '@/components/category-icon';
+import { EmbedWidget } from '@/components/embed-widget';
+import { CalculatorSidebar } from '@/components/calculator-sidebar';
+import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema, generateSubCategorySchema } from '@/lib/schema-generator';
+import { CalculatorWrapper } from '@/components/calculator-wrapper';
+import { CategorySearch } from '@/components/category-search';
+
+// Use ISR
+export const revalidate = 3600;
+
+// Dynamic params must be true for catch-all
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+    const isDev = process.env.NODE_ENV === 'development';
+    if (isDev) return [];
+
+    const params: { slug: string; path: string[] }[] = [];
+
+    // 1. Generate for Calculators (Level 2: /category/slug/calcSlug)
+    calculators.forEach((calc) => {
+        // Determine path based on if it has a subcategory or not
+        // Wait, existing calculators don't have subcategory in URL.
+        // New Maths calculators DO.
+        if (calc.category === 'education' && calc.subcategory === 'maths') {
+            // Path: /category/education/maths/calc
+            params.push({ slug: calc.category, path: ['maths', calc.slug] });
+        } else {
+            // Path: /category/cat/calc
+            params.push({ slug: calc.category, path: [calc.slug] });
+        }
+    });
+
+    // 2. Generate for Subcategories (Level 2: /category/slug/sub)
+    categories.forEach((category) => {
+        category.subcategories?.forEach((sub) => {
+            params.push({
+                slug: category.slug,
+                path: [sub.slug],
+            });
+        });
+    });
+
+    return params;
+}
+
+export async function generateMetadata({
+    params
+}: {
+    params: Promise<{ slug: string; path: string[] }>
+}): Promise<Metadata> {
+    const { slug, path } = await params;
+    const category = categories.find((c) => c.slug === slug);
+
+    if (!category) return { title: 'Not Found' };
+
+    // CHECK SUBCATEGORY: /category/[slug]/[sub]
+    if (path.length === 1) {
+        const subSlug = path[0];
+        const subcategory = category.subcategories?.find((s) => s.slug === subSlug);
+        if (subcategory) {
+            return {
+                title: `${subcategory.name} Calculators - ${category.name} - Mycalculating.com`,
+                description: subcategory.description,
+                alternates: {
+                    canonical: `/category/${category.slug}/${subcategory.slug}`,
+                },
+            };
+        }
+    }
+
+    // CHECK CALCULATOR
+    let calcSlug = '';
+    if (path.length === 1) calcSlug = path[0];
+    else if (path.length === 2) calcSlug = path[1];
+    else return { title: 'Not Found' };
+
+    const calculator = await getCalculator(slug, calcSlug);
+
+    if (!calculator) {
+        return {
+            title: 'Calculator Not Found',
+        };
+    }
+
+    const canonicalPath = path.length === 2 ? `${category.slug}/${path[0]}/${calculator.slug}` : `${category.slug}/${calculator.slug}`;
+    const canonicalUrl = `https://mycalculating.com/category/${canonicalPath}`;
+
+    return {
+        title: calculator.metaTitle || calculator.name,
+        description: calculator.metaDescription || calculator.description,
+        alternates: {
+            canonical: canonicalUrl,
+        },
+        openGraph: {
+            title: calculator.metaTitle || calculator.name,
+            description: calculator.metaDescription || calculator.description,
+            url: canonicalUrl,
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: calculator.metaTitle || calculator.name,
+            description: calculator.metaDescription || calculator.description,
+        },
+    };
+}
+
+export default async function CatchAllCategoryPage({ params }: { params: Promise<{ slug: string; path: string[] }> }) {
+    const { slug, path } = await params;
+    const category = categories.find((c) => c.slug === slug);
+
+    if (!category) notFound();
+
+    // --------------------------------------------------------------------------
+    // LOGIC BRANCH 1: SUBCATEGORY PAGE
+    // --------------------------------------------------------------------------
+    if (path.length === 1) {
+        const subSlug = path[0];
+        const subcategory = category.subcategories?.find((s) => s.slug === subSlug);
+
+        if (subcategory) {
+            const allCalculators = await getCalculatorsByCategory(category.slug);
+            const subcategoryCalculators = allCalculators.filter(c => c.subcategory === subSlug);
+
+            return (
+                <>
+                    <CalculatorSidebar currentCategorySlug={category.slug} />
+                    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-6 md:p-8 lg:pl-64">
+                        <script
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify(generateSubCategorySchema(category, subcategory, subcategoryCalculators))
+                            }}
+                        />
+                        <div className="w-full max-w-4xl">
+                            <div className="mb-6 sm:mb-8">
+                                <Button asChild variant="ghost" className='mb-3 sm:mb-4 text-sm sm:text-base'>
+                                    <Link href={`/category/${category.slug}`}>
+                                        <ArrowLeft className="mr-2 h-4 w-4" />
+                                        Back to {category.name}
+                                    </Link>
+                                </Button>
+                                <div className='flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4'>
+                                    <CategoryIcon name={category.Icon} className="h-10 w-10 sm:h-12 sm:w-12 text-primary flex-shrink-0" strokeWidth={1.5} />
+                                    <div className="flex-1 min-w-0">
+                                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground break-words">
+                                            {subcategory.name}
+                                        </h1>
+                                        <p className="text-sm sm:text-base text-muted-foreground mt-1 break-words">{subcategory.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <CategorySearch
+                                calculators={subcategoryCalculators}
+                                categoryName={subcategory.name}
+                                categorySlug={category.slug}
+                            />
+                        </div>
+                    </div>
+                </>
+            );
+        }
+    }
+
+    // --------------------------------------------------------------------------
+    // LOGIC BRANCH 2: CALCULATOR PAGE
+    // --------------------------------------------------------------------------
+    let calcSlug = '';
+    // if path is [calcSlug]
+    if (path.length === 1) calcSlug = path[0];
+    // if path is [subcategory, calcSlug]
+    else if (path.length === 2) calcSlug = path[1];
+    else notFound();
+
+    const calculator = await getCalculator(slug, calcSlug);
+    if (!calculator) notFound();
+
+    // Verification: If path has 2 segments, ensure the first one matches the calculator's subcategory?
+    // User might not care if we are loose here, but let's be safe.
+    if (path.length === 2 && calculator.subcategory !== path[0]) {
+        // e.g. /category/education/wrongsub/calc -> should 404
+        notFound();
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    const baseUrl = `https://mycalculating.com/category/${category.slug}/${path.join('/')}`;
+
+    const calculatorSchema = generateCalculatorSchema(calculator, category);
+    const faqSchema = generateFAQSchema(calculator);
+    const howToSchema = generateHowToSchema(calculator);
+
+    const comprehensiveSchema = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
+                    { '@type': 'ListItem', position: 2, name: category.name, item: `https://mycalculating.com/category/${category.slug}` },
+                    // Add Subcategory crumb if applicable
+                    ...(path.length === 2 ? [{ '@type': 'ListItem', position: 3, name: path[0], item: `https://mycalculating.com/category/${category.slug}/${path[0]}` }] : []),
+                    { '@type': 'ListItem', position: path.length === 2 ? 4 : 3, name: calculator.name, item: baseUrl },
+                ],
+            },
+            {
+                '@type': 'Article',
+                headline: calculator.name,
+                description: calculator.description,
+                author: { '@type': 'Organization', name: 'Mycalculating.com' },
+                publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
+                url: baseUrl,
+                mainEntityOfPage: { '@type': 'WebPage', '@id': baseUrl },
+                datePublished: '2024-01-01',
+                dateModified: today,
+            },
+            calculatorSchema,
+            faqSchema,
+            howToSchema,
+        ],
+    };
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(comprehensiveSchema) }}
+            />
+            <CalculatorSidebar currentCategorySlug={category.slug} />
+            <div className="flex flex-col items-center min-h-screen bg-secondary/50 p-4 sm:p-6 lg:pl-64">
+                <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate style={{ minHeight: '600px', width: '100%' }}>
+                    <div className="mb-8">
+                        <Button asChild variant="ghost" className="mb-4">
+                            <Link href={`/category/${category.slug}`}>
+                                <ArrowLeft className="mr-2 h-4 w-4" />
+                                Back to {category.name}
+                            </Link>
+                        </Button>
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+                            <CategoryIcon name={category.Icon} className="h-8 w-8 sm:h-10 sm:w-10 text-primary flex-shrink-0" strokeWidth={1.5} />
+                            <div className="flex-1 min-w-0">
+                                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground break-words">
+                                    {calculator.name}
+                                </h1>
+                                <p className="text-sm sm:text-base text-muted-foreground mt-1 break-words">{calculator.description}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <CalculatorWrapper categorySlug={category.slug} calculatorSlug={calculator.slug} />
+                    <EmbedWidget categorySlug={category.slug} calculatorSlug={calculator.slug} />
+                </div>
+            </div>
+        </>
+    );
+}
