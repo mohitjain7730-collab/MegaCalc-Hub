@@ -124,7 +124,7 @@ export function calculatePercentToGoal(current: number, goal: number): { percent
     return { percentComp: p.toFixed(2), remaining: rem.toFixed(2) };
 }
 
-export function calculatePercentageOfAPercentage(p1: number, p2: number): { result: string } {
+export function calculatePercentageOfPercentage(p1: number, p2: number): { result: string } {
     // x% of y% = (x/100) * (y/100) = (xy)/10000 -> shown as decimal or percentage?
     // "Percentage of a percentage" usually calculates p1% * p2%.
     // Example: 50% of 20% is 10%.

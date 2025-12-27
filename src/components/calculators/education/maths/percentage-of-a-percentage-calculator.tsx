@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { calculatePercentageOfPercentage } from '@/lib/percentage';
+import { calculatePercentageOfAPercentage } from '@/lib/percentage';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -36,7 +36,7 @@ export default function PercentageOfPercentageCalculator() {
     });
 
     const onSubmit = (data: FormValues) => {
-        const res = calculatePercentageOfPercentage(data.percentage1, data.percentage2);
+        const res = calculatePercentageOfAPercentage(data.percentage1, data.percentage2);
         setResult(res);
     };
 

@@ -29,7 +29,7 @@ const relatedCalculators = [
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function PercentToGoalCalculator() {
-    const [result, setResult] = useState<{ percentage: string } | null>(null);
+    const [result, setResult] = useState<{ percentComp: string; remaining: string } | null>(null);
 
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
@@ -41,7 +41,7 @@ export default function PercentToGoalCalculator() {
         setResult(res);
     };
 
-    const percentage = result ? parseFloat(result.percentage) : 0;
+    const percentage = result ? parseFloat(result.percentComp) : 0;
 
     return (
         <div className="space-y-8">
@@ -95,7 +95,7 @@ export default function PercentToGoalCalculator() {
                     <CardContent className="text-center space-y-4">
                         <div className="p-6 bg-primary/10 rounded-lg">
                             <p className="text-sm text-muted-foreground">Percentage of Goal Achieved</p>
-                            <p className="text-4xl font-bold text-primary">{result.percentage}%</p>
+                            <p className="text-4xl font-bold text-primary">{result.percentComp}%</p>
                         </div>
                         <div>
                             <Progress value={percentage > 100 ? 100 : percentage} className="w-full" />
