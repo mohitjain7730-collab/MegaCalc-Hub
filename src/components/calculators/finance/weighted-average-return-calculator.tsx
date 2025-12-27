@@ -253,77 +253,133 @@ export default function WeightedAverageReturnCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Weighted Average Return</h1>
-        <p className="text-lg italic text-muted-foreground">Learn how to calculate portfolio-level returns from individual component performance.</p>
+      <div itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Weighted Average Return</h1>
+          <meta itemProp="description" content="Calculate your portfolio's true performance using the Weighted Average Return method. Understand how asset allocation impacts your overall investment results." />
+          <meta itemProp="author" content="MegaCalc Hub" />
+          <meta itemProp="keywords" content="Weighted Average Return, Portfolio Performance, Investment Calculator, Asset Allocation, Finance Tools" />
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Weighted Average Return?</h2>
-        <p>Weighted average return combines individual asset returns based on their portfolio weights. It tells you how your portfolio performed overall by accounting for how much of your capital was allocated to each holding.</p>
+          <p className="text-lg italic text-muted-foreground">Learn how to calculate portfolio-level returns from individual component performance.</p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Why Weights Matter</h2>
-        <p>A stock that returns 50% but represents only 5% of your portfolio has less impact than one returning 10% that represents 50% of your holdings. Weighting captures this reality.</p>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is Weighted Average Return?</h2>
+          <p>Weighted average return combines individual asset returns based on their portfolio weights. It tells you how your portfolio performed overall by accounting for how much of your capital was allocated to each holding.</p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Equal-Weight vs. Cap-Weight</h2>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Equal-Weight:</strong> Each component has the same weight (e.g., 10% each in a 10-stock portfolio).</li>
-          <li><strong>Cap-Weight:</strong> Weights based on market capitalization or portfolio allocation percentages.</li>
-        </ul>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Why Weights Matter</h2>
+          <p>A stock that returns 50% but represents only 5% of your portfolio has less impact than one returning 10% that represents 50% of your holdings. Weighting captures this reality.</p>
 
-        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-        <p>Weighted average return is essential for understanding portfolio performance. It properly accounts for your actual allocation decisions.</p>
-      </section>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Equal-Weight vs. Cap-Weight</h2>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong>Equal-Weight:</strong> Each component has the same weight (e.g., 10% each in a 10-stock portfolio).</li>
+            <li><strong>Cap-Weight:</strong> Weights based on market capitalization or portfolio allocation percentages.</li>
+          </ul>
 
-      {/* FAQs */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Frequently Asked Questions
-          </CardTitle>
-          <CardDescription>Detailed answers about weighted returns</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h4 className="font-semibold text-lg mb-3">Should weights sum to 100%?</h4>
-            <p className="text-muted-foreground">Ideally yes for a complete portfolio. If not, the result reflects the provided scaling—useful for analyzing a subset of holdings.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-lg mb-3">Does this include risk or covariance?</h4>
-            <p className="text-muted-foreground">No. This is purely a return aggregator. Use portfolio variance or Sharpe ratio tools for risk analysis.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-lg mb-3">Can a weight be negative?</h4>
-            <p className="text-muted-foreground">Short positions can be modeled with negative weights, but this calculator expects non-negative inputs. Add shorts as separate considerations.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-lg mb-3">What about fees?</h4>
-            <p className="text-muted-foreground">Input net returns after fees for each component to get an accurate after-fee portfolio return.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-lg mb-3">What if weights change over time?</h4>
-            <p className="text-muted-foreground">This tool assumes a static snapshot. For time-varying weights, compute period by period and chain results together.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-lg mb-3">Does order of components matter?</h4>
-            <p className="text-muted-foreground">No. Only the weight-return pairs matter—the sum is commutative regardless of entry order.</p>
-          </div>
-        </CardContent>
-      </Card>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Calculating Your Portfolio Return</h2>
+          <p>The formula is simple: Sum of (Weight of Asset × Return of Asset). Repeat for all assets.</p>
+          <p>Example:
+            <br />Asset A (40% weight, 10% return) = 0.40 × 10 = 4%
+            <br />Asset B (60% weight, 5% return) = 0.60 × 5 = 3%
+            <br />Total Weighted Return = 4% + 3% = 7%
+          </p>
 
-      {/* Summary Section */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            Summary
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Weighted Average Return Calculator combines individual asset returns by their portfolio weights to get overall portfolio performance.</p>
-          <p>Ensure weights sum to 100% for complete portfolio analysis.</p>
-          <p>Input net-of-fee returns for accurate after-cost performance measurement.</p>
-        </CardContent>
-      </Card>
+          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+          <p>Weighted average return is essential for understanding portfolio performance. It properly accounts for your actual allocation decisions.</p>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Info className="h-5 w-5" />
+                Frequently Asked Questions
+              </CardTitle>
+              <CardDescription>Detailed answers about weighted returns</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Should weights always sum to 100%?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Ideally, yes. If your weights sum to less than 100%, it implies some capital is unallocated (cash) or missing from the calculation. If they sum to more than 100%, it implies leverage or a calculation error.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">How do I handle cash in this calculation?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Treat cash as another asset. Its weight is the percentage of cash in the portfolio, and its return is the interest rate earned (often close to 0%).</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can I use this for short positions?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Yes. Short positions effectively have negative weights in a typical long-only framework if you view them as "owing" the asset, but usually, in return attribution, you treat the short exposure weight as positive but the <em>return</em> contribution logic might differ (gaining when price drops). A simpler way is to input the realized return of the short leg directly.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What about fees and commissions?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">For the most accurate result, use "net returns" (after fees) for each asset. Alternatively, you can deduct a fixed percentage from the final weighted average to estimate the fee impact.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does rebalancing affect this?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Yes. If you rebalance, you change the weights. This calculator is a snapshot in time. For performance over a period with rebalancing, you need to calculate Time-Weighted Returns or link period returns.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the difference between this and ROI?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">ROI (Return on Investment) usually refers to the total gain/loss relative to initial cost. Weighted Average Return breaks down <em>how</em> that total return was achieved based on the components.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does this measure risk?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">No. This calculates performance (return). To measure risk, you need to look at standard deviation, beta, or portfolio variance, which account for how asset prices move together (correlation).</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can I use this for a bond portfolio?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Absolutely. Use the yield or total return of each bond and its weight in the portfolio.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Why doesn't my broker show the same number?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Brokers often use Time-Weighted Return (TWR) or Money-Weighted Return (MWR/IRR) which account for cash inflows and outflows differently than a simple weighted average of current holdings.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Summary Section */}
+        <div className="mt-8">
+          <Card className="mb-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-5 w-5" />
+                Summary
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2 text-sm text-muted-foreground">
+              <p>The Weighted Average Return Calculator combines individual asset returns by their portfolio weights to get overall portfolio performance.</p>
+              <p>Ensure weights sum to 100% for complete portfolio analysis.</p>
+              <p>Input net-of-fee returns for accurate after-cost performance measurement.</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }

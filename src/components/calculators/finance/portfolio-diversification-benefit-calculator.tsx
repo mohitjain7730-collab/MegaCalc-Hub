@@ -265,170 +265,210 @@ export default function PortfolioDiversificationBenefitCalculator() {
               </CardContent>
             </Card>
           </div>
+        </>
+      )}
 
-          {/* Related Calculators */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calculator className="h-5 w-5" />
-                Related Calculators
-              </CardTitle>
-              <CardDescription>More on risk management</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                  <h4 className="font-semibold mb-2"><a href="/category/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">Standard Deviation Calculator</a></h4>
-                  <p className="text-sm text-muted-foreground">Gauge single-asset risk.</p>
-                </div>
-                <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                  <h4 className="font-semibold mb-2"><a href="/category/finance/inflation-calculator" className="text-primary hover:underline">Inflation Calculator</a></h4>
-                  <p className="text-sm text-muted-foreground">Adjust returns for inflation impact.</p>
-                </div>
-                <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                  <h4 className="font-semibold mb-2"><a href="/category/finance/return-on-investment-calculator" className="text-primary hover:underline">ROI Calculator</a></h4>
-                  <p className="text-sm text-muted-foreground">Evaluate outcome vs. risk taken.</p>
-                </div>
-                <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                  <h4 className="font-semibold mb-2"><a href="/category/finance/portfolio-variance-calculator" className="text-primary hover:underline">Portfolio Variance Calculator</a></h4>
-                  <p className="text-sm text-muted-foreground">Estimate total volatility.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+      {/* Related Calculators */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>More on risk management</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2"><a href="/category/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">Standard Deviation Calculator</a></h4>
+              <p className="text-sm text-muted-foreground">Gauge single-asset risk.</p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2"><a href="/category/finance/inflation-calculator" className="text-primary hover:underline">Inflation Calculator</a></h4>
+              <p className="text-sm text-muted-foreground">Adjust returns for inflation impact.</p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2"><a href="/category/finance/return-on-investment-calculator" className="text-primary hover:underline">ROI Calculator</a></h4>
+              <p className="text-sm text-muted-foreground">Evaluate outcome vs. risk taken.</p>
+            </div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2"><a href="/category/finance/portfolio-variance-calculator" className="text-primary hover:underline">Portfolio Variance Calculator</a></h4>
+              <p className="text-sm text-muted-foreground">Estimate total volatility.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
-          {/* Formula Used */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calculator className="h-5 w-5" />
-                Formula Used
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="p-4 bg-muted rounded-lg overflow-x-auto">
-                <p className="font-mono text-sm text-center">
-                  Portfolio σ = √(w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρσ₁σ₂)
-                </p>
-                <p className="font-mono text-sm text-center mt-2">
-                  Diversification Benefit = Weighted Avg σ - Portfolio σ
-                </p>
-              </div>
-              <p className="text-sm text-muted-foreground mt-2">
-                When correlation (ρ) is less than 1, portfolio risk is lower than the weighted average of individual risks.
-              </p>
-            </CardContent>
-          </Card>
+      {/* Formula Used */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Formula Used
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <p className="font-mono text-sm text-center">
+              Portfolio σ = √(w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρσ₁σ₂)
+            </p>
+            <p className="font-mono text-sm text-center mt-2">
+              Benefit = Weighted Avg σ - Portfolio σ
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2">
+            When correlation (ρ) is less than 1, portfolio risk is lower than the weighted sum of parts.
+          </p>
+        </CardContent>
+      </Card>
 
-          {/* Input Explanations */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
-                Understanding the Inputs
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 bg-muted/50 rounded-lg">
-                  <h4 className="font-semibold mb-2">Weights (%)</h4>
-                  <p className="text-sm text-muted-foreground">Portfolio allocation to each asset. Should sum to 100%.</p>
-                </div>
-                <div className="p-4 bg-muted/50 rounded-lg">
-                  <h4 className="font-semibold mb-2">Standard Deviations (%)</h4>
-                  <p className="text-sm text-muted-foreground">Volatility of each asset's returns (annualized).</p>
-                </div>
-                <div className="p-4 bg-muted/50 rounded-lg">
-                  <h4 className="font-semibold mb-2">Correlation (ρ)</h4>
-                  <p className="text-sm text-muted-foreground">How assets move together (-1 to +1). Lower = better diversification.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+      {/* Input Explanations */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Weights (%)</h4>
+              <p className="text-sm text-muted-foreground">Portfolio allocation to each asset. Should sum to 100%.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Standard Deviations (%)</h4>
+              <p className="text-sm text-muted-foreground">Volatility of each asset's returns (annualized).</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <h4 className="font-semibold mb-2">Correlation (ρ)</h4>
+              <p className="text-sm text-muted-foreground">How assets move together (-1 to +1). Lower = better diversification.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
-          {/* Complete SEO Guide */}
-          <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-            <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Portfolio Diversification Benefits</h1>
-            <p className="text-lg italic text-muted-foreground">Understand how combining assets reduces portfolio risk through diversification.</p>
+      {/* Complete SEO Guide */}
+      <div itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Diversification Benefits</h1>
+          <meta itemProp="description" content="Quantify the risk reduction from portfolio diversification. Learn how asset correlation impacts portfolio volatility and efficiency." />
+          <meta itemProp="author" content="MegaCalc Hub" />
+          <meta itemProp="keywords" content="Diversification Benefit, Portfolio Risk, Correlation, Standard Deviation, Modern Portfolio Theory, Risk Reduction, Asset Allocation" />
 
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Diversification Benefit?</h2>
-            <p>Diversification benefit is the risk reduction achieved when combining assets that don't move in perfect lockstep. When correlation is below 1, the portfolio's volatility is less than the weighted average of individual volatilities.</p>
+          <p className="text-lg italic text-muted-foreground">Understand exactly how much risk you're removing by not putting all your eggs in one basket.</p>
 
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The Mathematics of Diversification</h2>
-            <p>Portfolio variance includes a covariance term (2w₁w₂ρσ₁σ₂) that can reduce total risk when correlation is low or negative. This is the mathematical foundation of Modern Portfolio Theory.</p>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is Diversification Benefit?</h2>
+          <p>Diversification benefit is the "free lunch" in finance: it's the reduction in portfolio risk (volatility) achieved by combining assets that don't move perfectly in sync. It allows you to maintain the same expected return while lowering your risk.</p>
 
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Practical Applications</h2>
-            <ul className="list-disc ml-6 space-y-2">
-              <li>Compare risk reduction from different asset combinations.</li>
-              <li>Evaluate whether adding a new asset improves portfolio efficiency.</li>
-              <li>Understand why correlations matter more than individual volatilities.</li>
-            </ul>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">The Role of Correlation</h2>
+          <p>The magic ingredient is <strong>correlation</strong>. If two assets rise and fall together (Correlation = +1), there is no diversification benefit. If they move independently (Correlation = 0) or inversely (Correlation &lt; 0), the benefit is substantial.</p>
 
-            <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-            <p>Diversification is a free lunch in investing—it reduces risk without necessarily reducing expected return. Use this calculator to quantify the benefit from combining assets with low correlation.</p>
-          </section>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Why It Matters</h2>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong>Smoother Ride:</strong> Lower volatility means smaller drawdowns during market turbulence.</li>
+            <li><strong>Compound Returns:</strong> Lower volatility reduces "volatility drag," effectively increasing your long-term compound growth rate.</li>
+            <li><strong>Efficiency:</strong> It allows you to take more risk where it pays (e.g., higher return assets) while hedging it elsewhere.</li>
+          </ul>
 
-          {/* FAQ Section */}
+          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+          <p>Don't just guess at diversification—measure it. Use this calculator to ensure your portfolio construction is mathematically sound and truly diversified.</p>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="mt-8">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Info className="h-5 w-5" />
                 Frequently Asked Questions
               </CardTitle>
-              <CardDescription>Diversification and correlation</CardDescription>
+              <CardDescription>Detailed answers for common questions</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div>
-                <h4 className="font-semibold mb-2">What is diversification benefit?</h4>
-                <p className="text-muted-foreground">The risk reduction achieved when combining assets versus holding them in isolation.</p>
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the "Diversification Benefit"?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">It represents the difference between the weighted average risk of your individual holdings and the actual risk of the combined portfolio. The difference is the risk that has been "diversified away."</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">Why doesn’t risk add linearly?</h4>
-                <p className="text-muted-foreground">Because combined variance includes covariance, which can offset volatility across assets.</p>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can diversification eliminate all risk?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">No. It can eliminate <em>unsystematic risk</em> (specific to a company or asset), but it cannot eliminate <em>systematic risk</em> (market-wide risk like recessions or interest rate hikes).</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">What correlations maximize benefit?</h4>
-                <p className="text-muted-foreground">Lower or negative correlations typically maximize diversification benefits.</p>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does adding more assets always help?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Not always. Adding an asset that is highly correlated with your existing portfolio adds complexity without significant risk reduction benefit. Use this calculator to test before adding.</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">Can correlations change?</h4>
-                <p className="text-muted-foreground">Yes. They are time-varying and may rise during stress, reducing benefits temporarily.</p>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is a good correlation number?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Ideally, you want correlations below 0.5 or even negative. Bonds often have low/negative correlation to stocks, which is why the 60/40 portfolio is popular.</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">Do I need many assets?</h4>
-                <p className="text-muted-foreground">Even two assets can provide benefit if their correlation is below 1.</p>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Do correlations change over time?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Yes! In times of extreme market stress (crashes), correlations often converge to 1 ("everything falls together"). This is a key risk to monitor.</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">Is lower risk always better?</h4>
-                <p className="text-muted-foreground">Not necessarily—consider return goals, constraints, and drawdown tolerance.</p>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does diversification hurt returns?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">It averages returns. You won't get the skyrocketing return of the single best winner, but you also won't suffer the total loss of the worst loser. It smooths the path of wealth accumulation.</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">What if weights don’t sum to 100%?</h4>
-                <p className="text-muted-foreground">Re-scale weights to 100% or adjust inputs to reflect your actual allocation.</p>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">How do I calculate standard deviation?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">You can use historical price data in Excel (STDEV function) or use our discrete Standard Deviation calculator to estimate it based on returns.</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">How often should I reassess?</h4>
-                <p className="text-muted-foreground">Reevaluate quarterly or during regime shifts; correlations can change meaningfully.</p>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Is 0% correlation possible?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Yes, assets that are fundamentally disconnected (e.g., weather futures vs. tech stocks) may have near-zero correlation.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What about negative correlation?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Negative correlation (-1) is the holy grail of hedging. When one asset zigs, the other zags. This provides the maximum possible diversification benefit.</p>
+                </div>
               </div>
             </CardContent>
           </Card>
+        </section>
 
-          {/* Summary Section */}
-          <Card>
+        {/* Summary Section */}
+        <div className="mt-8">
+          <Card className="mb-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
+                <Shield className="h-5 w-5" />
                 Summary
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                The Portfolio Diversification Benefit Calculator quantifies risk reduction from combining assets with imperfect correlation. Lower correlation leads to greater diversification benefits, reducing portfolio volatility below the weighted average of individual asset risks.
-              </p>
+            <CardContent className="space-y-2 text-sm text-muted-foreground">
+              <p>The Portfolio Diversification Benefit Calculator quantifies the exact risk reduction you get from combining assets.</p>
+              <p>It demonstrates that portfolio risk is often less than the sum of its parts due to imperfect correlation.</p>
+              <p>Use it to build more robust, efficient portfolios that can weather market volatility.</p>
             </CardContent>
           </Card>
-        </>
-      )}
+        </div>
+      </div>
     </div>
   );
 }

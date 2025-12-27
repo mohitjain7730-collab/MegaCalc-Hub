@@ -281,83 +281,139 @@ export default function BetaAdjustedPortfolioReturnCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Beta-Adjusted Portfolio Returns</h1>
-        <p className="text-lg italic text-muted-foreground">Learn how to measure risk-adjusted performance using CAPM and alpha.</p>
+      <div itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Beta & CAPM</h1>
+          <meta itemProp="description" content="Master risk-adjusted returns with our Beta Adjusted Portfolio Calculator. Understand CAPM, Alpha, and how to evaluate investment performance versus market risk." />
+          <meta itemProp="author" content="MegaCalc Hub" />
+          <meta itemProp="keywords" content="Beta Adjusted Return, CAPM Calculator, Portfolio Alpha, Investment Risk, Risk-Adjusted Performance, Sharpe Ratio, Treynor Ratio" />
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Beta-Adjusted Return?</h2>
-        <p>Beta-adjusted return compares your actual performance to what CAPM predicts given your risk level. The difference is alpha—a measure of manager skill or stock selection ability.</p>
+          <p className="text-lg italic text-muted-foreground">Learn how to measure risk-adjusted performance using CAPM and alpha.</p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Understanding Beta</h2>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Beta = 1.0:</strong> Portfolio moves with the market.</li>
-          <li><strong>Beta &gt; 1.0:</strong> More volatile than market (higher risk/return potential).</li>
-          <li><strong>Beta &lt; 1.0:</strong> Less volatile (defensive positioning).</li>
-        </ul>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is Beta-Adjusted Return?</h2>
+          <p>Beta-adjusted return compares your actual performance to what CAPM predicts given your risk level. The difference is alpha—a measure of manager skill or stock selection ability.</p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Interpreting Alpha</h2>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Positive Alpha:</strong> Outperformed risk-adjusted expectations—good stock selection or timing.</li>
-          <li><strong>Negative Alpha:</strong> Underperformed—returns didn't compensate for risk taken.</li>
-          <li><strong>Zero Alpha:</strong> Performance matched CAPM expectation exactly.</li>
-        </ul>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Understanding Beta</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="p-4 bg-muted/50 rounded-lg border">
+              <h3 className="font-bold text-primary mb-2">Beta = 1.0</h3>
+              <p className="text-sm">Portfolio moves in lockstep with the market. Expected return equals market return.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border">
+              <h3 className="font-bold text-green-600 mb-2">Beta &lt; 1.0</h3>
+              <p className="text-sm">Less volatile (defensive). Expected return is lower, but capital is safer.</p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border">
+              <h3 className="font-bold text-red-600 mb-2">Beta &gt; 1.0</h3>
+              <p className="text-sm">More volatile (aggressive). Higher potential return, but bigger drawdowns.</p>
+            </div>
+          </div>
 
-        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-        <p>Beta-adjusted analysis is essential for evaluating whether returns are due to skill or simply taking more risk. Use it to assess portfolio managers and your own investment decisions.</p>
-      </section>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Interpreting Alpha</h2>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong>Positive Alpha:</strong> Outperformed risk-adjusted expectations—good stock selection or timing.</li>
+            <li><strong>Negative Alpha:</strong> Underperformed—returns didn't compensate for risk taken.</li>
+            <li><strong>Zero Alpha:</strong> Performance matched CAPM expectation exactly (typical for index funds).</li>
+          </ul>
 
-      {/* FAQ Section */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Frequently Asked Questions
-          </CardTitle>
-          <CardDescription>Detailed answers for common portfolio questions</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h4 className="font-semibold mb-2">What is beta in portfolio management?</h4>
-            <p className="text-muted-foreground">Beta measures sensitivity of a portfolio’s returns to market movements (beta 1.0 ≈ market risk). Higher beta implies greater volatility versus the market.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">How is CAPM-expected return calculated?</h4>
-            <p className="text-muted-foreground">Using CAPM: expected return = risk-free rate + beta × (market return − risk-free rate).</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">What is alpha?</h4>
-            <p className="text-muted-foreground">Alpha is the difference between actual return and CAPM-expected return. Positive alpha indicates risk-adjusted outperformance.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Why adjust actual return by beta?</h4>
-            <p className="text-muted-foreground">Beta-adjusting normalizes return for market sensitivity, enabling fair comparisons across portfolios with different risk levels.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Which period should I use for beta?</h4>
-            <p className="text-muted-foreground">Use a recent window matching your investment horizon (e.g., 2–5 years) and a relevant benchmark index.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Can alpha be negative and still acceptable?</h4>
-            <p className="text-muted-foreground">Yes. If a portfolio targets lower risk or other objectives, slight negative alpha may be acceptable relative to goals.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Does CAPM work for all assets?</h4>
-            <p className="text-muted-foreground">CAPM is a simplification. Multi-factor models (e.g., Fama-French) can better explain returns across asset classes.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">How often should I recalculate beta?</h4>
-            <p className="text-muted-foreground">Re-estimate at least annually or after strategy changes, regime shifts, or major market events.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">What if beta is near zero?</h4>
-            <p className="text-muted-foreground">Beta-adjusted metrics become less meaningful; consider absolute/relative return or factor analysis instead.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Which benchmark should I pick?</h4>
-            <p className="text-muted-foreground">Choose a benchmark aligned with your portfolio’s asset mix and geography (e.g., S&P 500, MSCI ACWI).</p>
-          </div>
-        </CardContent>
-      </Card>
+          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+          <p>Beta-adjusted analysis is essential for evaluating whether returns are due to skill or simply taking more risk. Use it to assess portfolio managers and your own investment decisions.</p>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Info className="h-5 w-5" />
+                Frequently Asked Questions
+              </CardTitle>
+              <CardDescription>Detailed answers for common portfolio questions</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What does a Beta greater than 1 mean?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">It means the asset is more volatile than the market. If the market goes up 10%, a stock with a beta of 1.5 is expected to go up 15%. Conversely, if the market falls 10%, it's expected to fall 15%.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can Beta be negative?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Yes. A negative beta means the asset tends to move in the opposite direction of the market. Gold or inverse ETFs sometimes exhibit negative beta, serving as a hedge during market downturns.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">How is CAPM-expected return calculated?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">The formula is: <code>Expected Return = Risk-Free Rate + Beta × (Market Return − Risk-Free Rate)</code>. This compensates you for the time value of money (Rf) and the risk taken (Beta).</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is Alpha?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Alpha is the excess return above what CAPM predicts. Positive alpha implies the manager added value through skill. Negative alpha implies underperformance relative to the risk taken.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What are the limitations of CAPM?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">CAPM assumes markets are efficient, investors are rational, and beta is constant. In reality, markets have anomalies, behaviors differ, and beta changes over time. Multi-factor models often provide better explanations.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What should I use for the Risk-Free Rate?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Typically, the yield on a 3-month or 10-year US Treasury bond is used as a proxy for the risk-free rate, depending on the investment horizon.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">How often does Beta change?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Beta is not static. It changes as a company's business model, debt levels, or market conditions evolve. It's recommended to recalculate or check beta regularly (e.g., quarterly).</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Is a higher Beta always bad?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">No. High beta allows for higher expected returns in a bull market. It's only "bad" if you cannot tolerate the associated volatility or if the market turns bearish.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is Jensen's Alpha?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Jensen's Alpha is the technical name for the alpha calculated using the CAPM model, as done in this calculator. It measures the abnormal return of a portfolio over the theoretical expected return.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Summary Section */}
+        <div className="mt-8">
+          <Card className="mb-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="h-5 w-5" />
+                Summary
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2 text-sm text-muted-foreground">
+              <p>The Beta-Adjusted Portfolio Return Calculator helps you assess whether your portfolio's returns justify the risk taken.</p>
+              <p>It calculates the expected return based on market risk (beta) and compares it to your actual return to find Alpha.</p>
+              <p>Use this to separate luck and general market movements from true investment skill.</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }

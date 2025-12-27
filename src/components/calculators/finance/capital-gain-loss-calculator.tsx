@@ -281,47 +281,67 @@ export default function CapitalGainLossCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Capital Gains and Losses: Tax Calculations and Net Proceeds</h1>
-        <p className="text-lg italic text-muted-foreground">Understand how to calculate gains, estimate taxes, and determine net proceeds from stock sales.</p>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        {/* SEO & SCHEMA METADATA */}
+        <meta itemProp="name" content="The Definitive Guide to Capital Gains & Losses: Tax Calculation and Strategy" />
+        <meta itemProp="description" content="Master capital gains tax calculations. Understand the difference between short-term and long-term rates, how to harvest losses to offset gains, and calculate net proceeds." />
+        <meta itemProp="keywords" content="capital gains tax calculator, stock profit calculator, realize capital loss, short term vs long term tax rates, tax loss harvesting, net investment income tax, crypto tax calculator" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-15" />
+        <meta itemProp="url" content="/definitive-guide-capital-gains" />
+
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Capital Gains & Losses: Maximizing After-Tax Returns</h1>
+        <p className="text-lg italic text-muted-foreground">It's not what you make, it's what you keep. Learn how to calculate realized gains, estimate your tax bill, and strategically use losses to your advantage.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
           <li><a href="#what-is-gain" className="hover:underline">What is a Capital Gain?</a></li>
-          <li><a href="#tax-rates" className="hover:underline">Tax Rates: Short-Term vs. Long-Term</a></li>
-          <li><a href="#losses" className="hover:underline">Capital Losses and Tax Benefits</a></li>
-          <li><a href="#net-proceeds" className="hover:underline">Calculating Net Proceeds</a></li>
+          <li><a href="#tax-rates" className="hover:underline">Short-Term vs. Long-Term Rates</a></li>
+          <li><a href="#losses" className="hover:underline">Turning Losses into Assets</a></li>
+          <li><a href="#net-proceeds" className="hover:underline">Calculating Your "Take Home"</a></li>
+          <li><a href="#strategies" className="hover:underline">Tax Minimization Strategies</a></li>
         </ul>
         <hr />
 
-        <h2 id="what-is-gain" className="text-2xl font-bold text-foreground pt-8">What is a Capital Gain?</h2>
-        <p>A capital gain is the profit realized when you sell an asset for more than you paid for it. Capital gains are taxable income in most jurisdictions.</p>
+        <h2 id="what-is-gain" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is a Capital Gain?</h2>
+        <p>A capital gain occurs when you sell a capital asset (stocks, bonds, real estate, crypto) for more than its adjusted cost basis. It is the "profit" portion of your sale.</p>
+        <p><strong>Crucial Distinction:</strong> You only pay taxes on <em>realized</em> gains (when you sell). Paper gains (increase in value while holding) are not taxed, allowing your money to compound tax-deferred.</p>
 
-        <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Gain or Loss</h3>
-        <p>Gain = Sell Proceeds - Cost Basis - Fees. A positive result is a gain; negative is a loss.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation</h3>
+        <p className="font-mono bg-muted p-2 rounded">Net Gain/Loss = Sell Proceeds - (Original Cost + Buying Fees + Selling Fees)</p>
         <hr />
 
-        <h2 id="tax-rates" className="text-2xl font-bold text-foreground pt-8">Tax Rates: Short-Term vs. Long-Term</h2>
-        <h3 className="text-xl font-semibold text-foreground mt-6">Short-Term (≤1 Year)</h3>
-        <p>Taxed at ordinary income rates—up to 37% in the US. This applies to positions held one year or less.</p>
+        <h2 id="tax-rates" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Tax Rates: Time Matters</h2>
+        <p>The IRS incentivizes long-term investing by offering preferential tax rates.</p>
 
-        <h3 className="text-xl font-semibold text-foreground mt-6">Long-Term (&gt;1 Year)</h3>
-        <p>Taxed at preferential rates: 0%, 15%, or 20% depending on your taxable income. This incentivizes longer holding periods.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Short-Term (Held ≤ 1 Year)</h3>
+        <p>Taxed as <strong>Ordinary Income</strong>. This is added to your wages/salary and taxed at your marginal bracket (ranging from 10% to 37% in the US). It's the most expensive type of gain.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">Long-Term (Held &gt; 1 Year)</h3>
+        <p>Taxed at <strong>Capital Gains Rates</strong>. For most people, this is 15%. For lower incomes, it can be 0%. For high earners, it caps at 20%. This discount is significant—often half the tax rate of short-term gains.</p>
         <hr />
 
-        <h2 id="losses" className="text-2xl font-bold text-foreground pt-8">Capital Losses and Tax Benefits</h2>
-        <p>Capital losses aren't taxed—instead, they can offset gains. In the US, you can deduct up to $3,000 in net losses against ordinary income annually, with excess carried forward.</p>
+        <h2 id="losses" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Capital Losses and Tax Benefits</h2>
+        <p>Losses are painful, but they have a silver lining: they lower your tax bill.</p>
 
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Offset Gains:</strong> Losses first offset gains of the same type (short vs. short), then the other type.</li>
+          <li><strong>Deduction Limit:</strong> If your losses exceed <em>all</em> your gains for the year, you can deduct up to <strong>$3,000</strong> of the excess loss against your regular job income.</li>
+          <li><strong>Carryover:</strong> Any loss remaining after that carries forward to future years indefinitely. You never "lose" a loss deduction until it's used.</li>
+        </ul>
+        <hr />
+
+        <h2 id="net-proceeds" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculating Net Proceeds</h2>
+        <p>Investors often focus on the "Gross" sale amount. But your bank account only sees the "Net."</p>
+        <p><strong>Net Proceeds = Sell Price - Broker Commissions - Regulatory Fees - Estimated Taxes.</strong> This calculator helps you see that final, real number.</p>
+        <hr />
+
+        <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Tax Minimization Strategies</h2>
         <h3 className="text-xl font-semibold text-foreground mt-6">Tax-Loss Harvesting</h3>
-        <p>Strategically selling losing positions to offset gains elsewhere. Be aware of wash-sale rules that disallow losses if you repurchase the same or substantially identical security within 30 days.</p>
-        <hr />
+        <p>Subjectively "harvesting" losses involves selling losing positions before year-end to offset realized gains elsewhere in your portfolio. Just beware of the Wash Sale Rule.</p>
 
-        <h2 id="net-proceeds" className="text-2xl font-bold text-foreground pt-8">Calculating Net Proceeds</h2>
-        <p>Net Proceeds = Sell Proceeds - Fees - Taxes. This is what actually lands in your account after the sale.</p>
-        <hr />
-
-        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-        <p>Understanding capital gains taxation is essential for investment planning. Use long-term holding periods when possible, harvest losses strategically, and always account for taxes when calculating net returns.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Holding On</h3>
+        <p>Simply waiting until the 1-year mark passes before selling can boost your after-tax return by 10-20% purely due to the lower tax rate.</p>
       </section>
 
       {/* FAQs */}
@@ -337,42 +357,57 @@ export default function CapitalGainLossCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">What is cost basis?</h4>
             <p className="text-muted-foreground">
-              Cost basis is your total acquisition cost—the purchase price plus any commissions and fees you paid when buying. This is the baseline against which gains or losses are calculated.
+              Cost basis is your total acquisition cost—the purchase price plus any commissions and fees you paid when buying. This is the baseline against which gains or losses are calculated. You subtract this from your sale price to find your profit.
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-3">Are taxes applied on losses?</h4>
+            <h4 className="font-semibold text-lg mb-3">Does the "Net Investment Income Tax" (NIIT) apply?</h4>
             <p className="text-muted-foreground">
-              No. Losses aren't taxed—in fact, they can provide tax benefits. You can use losses to offset gains dollar-for-dollar, and deduct up to $3,000 in net losses against ordinary income annually.
+              High-income earners (Modified AGI &gt; $200k single/$250k married) may face an additional <strong>3.8%</strong> surtax on investment income (including capital gains) on top of the standard capital gains rates. This calculator estimates standard rates; be sure to factor in NIIT if you are a high earner.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Do I pay state taxes on capital gains?</h4>
+            <p className="text-muted-foreground">
+              Most individual US states tax capital gains as regular income. Some (like California) have high rates (up to 13.3%), while others (like Florida, Texas) have 0%. You must stack your state tax rate on top of the federal rate to get your true liability.
             </p>
           </div>
 
           <div>
             <h4 className="font-semibold text-lg mb-3">What's the difference between short-term and long-term gains?</h4>
             <p className="text-muted-foreground">
-              Short-term gains (assets held one year or less) are taxed at ordinary income rates up to 37%. Long-term gains (held over one year) qualify for preferential rates of 0%, 15%, or 20% depending on income.
+              <strong>Short-term:</strong> Held for 1 year or less. Taxed at ordinary income rates (expensive).<br />
+              <strong>Long-term:</strong> Held for more than 1 year (at least 1 year and 1 day). Taxed at preferential rates (0%, 15%, 20%). Holding for that extra day matters!
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How does this apply to Cryptocurrency?</h4>
+            <p className="text-muted-foreground">
+              In most jurisdictions (including the US), crypto is treated as property. Every trade (crypto-to-fiat OR crypto-to-crypto) is a taxable event triggering a capital gain or loss calculation. You need to track the cost basis of every coin individually.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does this work for Real Estate?</h4>
+            <p className="text-muted-foreground">
+              Yes, the math is the same (Sale - Cost - Expenses). However, real estate has a special exclusion for primary residences (Section 121 in the US) where you can exclude up to $250k/$500k of gains. This calculator doesn't auto-apply that exclusion.
             </p>
           </div>
 
           <div>
             <h4 className="font-semibold text-lg mb-3">Do fees reduce taxable gain?</h4>
             <p className="text-muted-foreground">
-              Yes. Transaction costs reduce your realized gain. If you bought at $1,000, paid $10 fees, sold at $1,200 with $10 fees, your gain is $1,200 - $1,010 - $10 = $180, not $200.
+              Yes! Transaction costs are deductible from your profit. If you bought at $1,000, paid $10 fees, sold at $1,200 with $10 fees, your taxable gain is $1,200 - $1,010 - $10 = $180, not $200. Always track your fees.
             </p>
           </div>
 
           <div>
             <h4 className="font-semibold text-lg mb-3">What about wash-sale rules?</h4>
             <p className="text-muted-foreground">
-              If you sell at a loss and repurchase the same (or substantially identical) security within 30 days before or after, the loss is disallowed for tax purposes. The disallowed loss adds to the cost basis of the new shares.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-lg mb-3">How do dividends affect gains?</h4>
-            <p className="text-muted-foreground">
-              Dividends are taxed separately as income. This calculator focuses on capital gains from selling shares. For total return, add dividend income received during the holding period.
+              If you sell at a loss and repurchase the same (or substantially identical) security within 30 days, the loss is disallowed for tax purposes. The loss isn't lost forever; it's added to the cost basis of the new shares, deferring the tax benefit until you finally sell the new position.
             </p>
           </div>
         </CardContent>

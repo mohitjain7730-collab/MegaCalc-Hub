@@ -180,42 +180,118 @@ export default function FinancialLeverageEffectCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Financial Leverage Effect</h1>
-        <p className="text-lg italic text-muted-foreground">Understand how debt financing impacts return on equity.</p>
+      <div itemScope itemType="https://schema.org/FinanceSummary">
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Financial Leverage Effect</h1>
+          <meta itemProp="description" content="Calculate how financial leverage impacts your Return on Equity (ROE). Understand the benefits and risks of using debt financing." />
+          <meta itemProp="author" content="MegaCalc Hub" />
+          <meta itemProp="keywords" content="Financial Leverage, ROE, ROA, Debt Financing, Capital Structure, Leverage Effect, Tax Shield, Bankruptcy Risk" />
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is the Leverage Effect?</h2>
-        <p>Financial leverage amplifies ROE by using debt financing. When ROA exceeds the after-tax cost of debt, borrowing boosts shareholder returns. When ROA falls below debt cost, leverage destroys value.</p>
+          <p className="text-lg italic text-muted-foreground">Leverage is a double-edged sword: it magnifies gains when times are good, but amplifies losses when markets turn against you.</p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Key Considerations</h2>
-        <ul className="list-disc ml-6 space-y-2">
-          <li>Higher leverage increases both upside potential and downside risk.</li>
-          <li>The tax shield on interest reduces the effective cost of debt.</li>
-          <li>Rising rates or falling ROA can quickly reverse positive leverage effects.</li>
-        </ul>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is Financial Leverage?</h2>
+          <p>Financial leverage involves using borrowed capital (debt) to finance investments. The goal is to increase the potential Return on Equity (ROE). It works because debt has a fixed cost (interest), while equity returns are residual (everything left over).</p>
 
-        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-        <p>Understanding leverage effects is crucial for capital structure decisions. This calculator helps quantify how debt impacts shareholder returns.</p>
-      </section>
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">The Golden Rule of Leverage</h2>
+          <p>Leverage creates value if and only if:</p>
+          <div className="bg-muted/50 p-4 rounded-lg my-4 font-mono font-bold text-center">
+            ROA (Return on Assets) &gt; After-Tax Cost of Debt
+          </div>
+          <p>If your business earns 10% on its assets, and you can borrow at 5%, the 5% spread goes straight to the shareholders, boosting ROE. This is "Positive Leverage." If assets only earn 3%, you still have to pay the 5% interest, which eats into shareholder capital. This is "Negative Leverage."</p>
 
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Leverage and returns</CardDescription></CardHeader>
-        <CardContent className="space-y-6">
-          <div><h4 className="font-semibold mb-2">When does leverage help?</h4><p className="text-muted-foreground">When ROA exceeds the after-tax cost of debt, leverage amplifies ROE.</p></div>
-          <div><h4 className="font-semibold mb-2">What if rates rise?</h4><p className="text-muted-foreground">Higher debt costs reduce the leverage benefit and can turn it negative.</p></div>
-          <div><h4 className="font-semibold mb-2">Is higher D/E always better?</h4><p className="text-muted-foreground">No—excessive leverage increases default risk and volatility of returns.</p></div>
-          <div><h4 className="font-semibold mb-2">How does tax rate matter?</h4><p className="text-muted-foreground">The interest tax shield lowers effective debt cost, improving leverage effect.</p></div>
-          <div><h4 className="font-semibold mb-2">Does ROA include interest?</h4><p className="text-muted-foreground">Use operating returns on assets (pre-interest) for ROA when analyzing leverage effect.</p></div>
-          <div><h4 className="font-semibold mb-2">Can leverage hurt valuation?</h4><p className="text-muted-foreground">Yes—if risk premiums rise, equity value can fall despite higher ROE.</p></div>
-          <div><h4 className="font-semibold mb-2">How often should I reassess?</h4><p className="text-muted-foreground">Review quarterly or when ROA or rates change meaningfully.</p></div>
-          <div><h4 className="font-semibold mb-2">Is this the DuPont model?</h4><p className="text-muted-foreground">Related—DuPont decomposes ROE; this focuses on the leverage term.</p></div>
-        </CardContent>
-      </Card>
+          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
+          <p>Prudent leverage is a powerful tool for wealth creation, used by everything from real estate investors to private equity firms. However, excessive leverage is the primary cause of corporate bankruptcy. Balance is key.</p>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Info className="h-5 w-5" />
+                Frequently Asked Questions
+              </CardTitle>
+              <CardDescription>Expert answers on debt and equity</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">How does leverage boost ROE?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Leverage allows you to control a larger asset base with the same amount of equity. If the asset return exceeds the borrowing cost, the surplus return on the borrowed portion accrues to the equity holders, mathematically increasing ROE.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the "Tax Shield"?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">In many jurisdictions, interest payments on debt are tax-deductible. This reduces the effective cost of debt. For example, if interest is 10% and tax is 30%, the real cost to the company is only 7% (10% * (1 - 0.30)).</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is "Negative Leverage"?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Negative leverage occurs when the return on investment (ROA) is lower than the cost of the borrowed money. In this scenario, borrowing money actively destroys shareholder value.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is an optimal Debt-to-Equity ratio?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">It varies by industry. Stable industries like utilities can handle high leverage (D/E 2.0+). Volatile industries like tech usually stick to low leverage (D/E &lt; 0.5) because their cash flows are unpredictable.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">How does inflation affect leverage?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Unexpected inflation benefits borrowers (leverage users) because they repay fixed debts with cheaper, inflated dollars. However, inflation often leads to higher interest rates, which increases the cost of new or floating-rate debt.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the difference between Operating and Financial Leverage?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Operating leverage relates to fixed costs in operations (e.g., factories). Financial leverage relates to fixed costs in financing (interest). Both magnify volatility of earnings, but from different sources.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What happens in bankruptcy?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Debt holders have priority claims. In bankruptcy, assets are sold to pay debt first. Equity holders get paid last, often receiving nothing if liabilities exceed assets. This is the ultimate risk of leverage.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can individuals use financial leverage?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Yes. The most common form is a mortgage (using debt to buy a house). Buying stocks on margin is another example. The same rules apply: if the asset appreciates faster than the interest rate, your net worth grows faster.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is "Deleveraging"?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Deleveraging is the process of reducing debt levels, either by paying down loans from cash flow or selling assets. Companies often deleverage after a major acquisition or during economic downturns to reduce risk.</p>
+                </div>
+              </div>
+
+              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <h4 className="font-semibold text-lg mb-3" itemProp="name">How does WACC relate to this?</h4>
+                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                  <p className="text-muted-foreground" itemProp="text">Debt is usually cheaper than equity (due to seniority and tax shields). Adding some debt lowers the Weighted Average Cost of Capital (WACC), increasing firm value—up to a point where bankruptcy risk rises too much.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+      </div>
 
       {/* Summary Section */}
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
-        <CardContent><p className="text-muted-foreground">The Financial Leverage Effect Calculator shows how debt financing impacts ROE. Leverage amplifies returns when ROA exceeds after-tax debt cost, but increases risk when profitability declines.</p></CardContent>
+        <CardContent><p className="text-muted-foreground">The Financial Leverage Effect Calculator quantifies how debt financing amplifies returns. When ROA exceeds the cost of debt, leverage acts as a multiplier for shareholder equity; when it falls below, it accelerates losses.</p></CardContent>
       </Card>
     </div>
   );
