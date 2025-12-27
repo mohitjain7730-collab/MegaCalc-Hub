@@ -179,118 +179,113 @@ export default function InterestRateParityCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <div itemScope itemType="https://schema.org/FinanceSummary">
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Interest Rate Parity</h1>
-          <meta itemProp="description" content="Master Interest Rate Parity (IRP): The fundamental rule linking interest rates, spot exchange rates, and forward exchange rates. Learn to calculate forward premiums and identify arbitrage opportunities." />
-          <meta itemProp="author" content="MegaCalc Hub" />
-          <meta itemProp="keywords" content="Interest Rate Parity, IRP, Forward Rate, Spot Rate, Arbitrage, FX Hedging, Covered Interest Parity, Uncovered Interest Parity" />
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        {/* SEO & SCHEMA METADATA */}
+        <meta itemProp="name" content="The Definitive Guide to Interest Rate Parity (IRP)" />
+        <meta itemProp="description" content="Calculate the theoretical Forward Exchange Rate. Understand how interest rate differentials create forward premiums and discounts in the Forex market." />
+        <meta itemProp="keywords" content="Interest Rate Parity, IRP, Forward Rate, Spot Rate, Arbitrage, FX Hedging, Covered Interest Parity, Uncovered Interest Parity, Carry Trade" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-15" />
+        <meta itemProp="url" content="/definitive-guide-irp" />
 
-          <p className="text-lg italic text-muted-foreground">Why do high-interest-rate currencies tend to trade at a forward discount? The answer lies in the no-arbitrage condition of Interest Rate Parity.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Interest Rate Parity: The Gravity of FX</h1>
+        <p className="text-lg italic text-muted-foreground">Why does the currency with the higher interest rate trade at a discount? It's not a paradox; it's the law of "No Arbitrage".</p>
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is Interest Rate Parity?</h2>
-          <p>Interest Rate Parity (IRP) is a fundamental theory in international finance which states that the interest rate differential between two countries is equal to the differential between the forward exchange rate and the spot exchange rate.</p>
-          <p>In simple terms, IRP ensures that the return on a hedged foreign investment is the same as the return on a domestic investment. If this weren't true, arbitrageurs would make risk-free profits until the prices aligned.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#logic" className="hover:underline">The "No Free Lunch" Rule</a></li>
+          <li><a href="#covered-vs-uncovered" className="hover:underline">Covered vs. Uncovered IRP</a></li>
+          <li><a href="#carry-trade" className="hover:underline">The Carry Trade</a></li>
+          <li><a href="#risk" className="hover:underline">The "Basis" Risk</a></li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Covered vs. Uncovered IRP</h2>
-          <ul className="list-disc ml-6 space-y-2">
-            <li><strong>Covered Interest Parity (CIP):</strong> Relates to the <em>contractual</em> forward rate available in the market. It generally holds very tightly due to arbitrage.</li>
-            <li><strong>Uncovered Interest Parity (UIP):</strong> Relates to the <em>expected future spot rate</em>. It suggests that high-interest currencies should depreciate to offset the yield advantage. Empirical evidence for UIP is mixed and often violated (the "Carry Trade").</li>
-          </ul>
+        <h2 id="logic" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "No Free Lunch" Rule</h2>
+        <p>Imagine the US interest rate is 5% and the Japanese rate is 0%.</p>
+        <p>You might think: "I'll borrow Yen at 0%, convert to USD, and invest at 5%. Free money!"</p>
+        <p><strong>Interest Rate Parity</strong> says: "Not so fast." To do this safely, you must lock in your exchange rate to convert the USD back to Yen in one year. Because everyone wants to do this trade, the <strong>Forward Rate</strong> for USD/JPY adjusts.</p>
+        <p>Specifically, the USD forward rate will trade at a ~5% discount to the spot rate, wiping out your profit. If it didn't, arbitrageurs would exploit it until it did.</p>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-          <p>Understanding IRP is essential for corporate treasurers hedging currency risk and traders looking for fair value in the forward markets. It is the anchor of FX pricing.</p>
-        </section>
+        <h2 id="covered-vs-uncovered" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Covered vs. Uncovered IRP</h2>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Covered IRP:</strong> You use a Forward Contract to lock in the rate. This relationship holds almost perfectly (~99.9%) in liquid markets.</li>
+          <li><strong>Uncovered IRP (UIP):</strong> You <em>don't</em> hedge. You hope the future spot rate matches the theoretical forward rate. Studies show UIP often fails in the short run, leading to the "Carry Trade" anomaly.</li>
+        </ul>
+        <hr />
 
-        {/* FAQ Section */}
-        <section className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
-                Frequently Asked Questions
-              </CardTitle>
-              <CardDescription>Expert answers on FX pricing</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is Interest Rate Parity?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">It is the concept that the difference in interest rates between two countries is equal to the expected change in exchange rates between their currencies. It prevents risk-free arbitrage opportunities.</p>
-                </div>
-              </div>
+        <h2 id="carry-trade" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Carry Trade</h2>
+        <p>The "Carry Trade" is betting against IRP. Investors borrow low-yielding currencies (like JPY) and buy high-yielding ones (like AUD or MXN) <em>without hedging</em>.</p>
+        <p>If the high-yield currency stays stable (or appreciates), they make massive returns. But when panic hits, these trades unwind violently, causing the high-yield currency to crash. It's like "picking up pennies in front of a steamroller."</p>
+      </section>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the difference between Covered and Uncovered IRP?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Covered IRP involves using a <strong>forward contract</strong> to lock in the exchange rate, eliminating risk. Uncovered IRP involves <strong>forecasting</strong> the future spot rate, leaving the investor exposed to currency risk.</p>
-                </div>
-              </div>
+      {/* FAQs */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>Advanced FX Concepts</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Why is the Forward Rate not a prediction?</h4>
+            <p className="text-muted-foreground">
+              The Forward Rate is a mathematical derivative of spot + interest rates. It is not a forecast of where the currency <em>will</em> go; it is the price you must pay today to remove uncertainty.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does IRP hold in the real world?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Covered IRP holds very well for major currencies due to efficient markets. Small deviations occur due to transaction costs, capital controls, and counterparty risk.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is the "Cross-Currency Basis"?</h4>
+            <p className="text-muted-foreground">
+              A slight violation of IRP due to dollar shortages. When banks are desperate for US Dollars, they will "overpay" in the FX swap market, creating a negative basis. This is a key indicator of global financial stress.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the "Carry Trade"?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">The Carry Trade involves borrowing in a low-interest currency to invest in a high-interest currency. It relies on <em>Uncovered</em> Interest Parity failing (i.e., the high-yield currency does not depreciate as much as predicted).</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does IRP apply to Cryptocurrencies?</h4>
+            <p className="text-muted-foreground">
+              Ideally, yes. The "funding rate" in crypto perp futures is essentially an IRP mechanism. If longs pay shorts 100% APR, the future price should be higher than the spot price to compensate.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How do I calculate the Forward Rate?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Forward Rate = Spot Rate × (1 + Domestic Interest Rate) / (1 + Foreign Interest Rate). Note: Pay attention to day counts (ACT/360 vs ACT/365) in professional settings.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How does Inflation fit in?</h4>
+            <p className="text-muted-foreground">
+              IRP links interest rates to exchange rates. <strong>Purchasing Power Parity (PPP)</strong> links inflation rates to exchange rates. In the long run, high inflation → high interest rates → depreciating currency (Fisher Effect).
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is a Forward Premium?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">A currency trades at a forward premium when its forward rate is higher than its spot rate. This typically happens when its interest rate is <em>lower</em> than the other currency's interest rate.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Can I use IRP to arbitrage?</h4>
+            <p className="text-muted-foreground">
+              As a retail trader, no. Transaction costs (bid-ask spreads) will eat your profits. Banks and HFT firms with near-zero fees are the ones keeping the market in line.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Why do central banks care about IRP?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Central banks monitor IRP to understand capital flows. Deviations can signal stress in the banking system or a shortage of dollar liquidity (as seen in the Cross-Currency Basis Swap market).</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Is IRP useful for hedging?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes. Importers and exporters use the forward rates derived from IRP to lock in costs and revenues, removing FX uncertainty from their business operations.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can interest rates be negative?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes. The formula handles negative rates correctly. If the foreign rate is negative and the domestic rate is positive, the forward discount on the domestic currency will be even steeper.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What assumptions does IRP make?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">It assumes zero transaction costs, no capital controls (free flow of capital), and comparable default risk between the assets of the two countries.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What creates a Forward Premium?</h4>
+            <p className="text-muted-foreground">
+              If the domestic interest rate is <em>lower</em> than the foreign rate, the domestic currency will trade at a <strong>Forward Premium</strong> (it is more expensive in the future).
+            </p>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Summary Section */}
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
-        <CardContent><p className="text-muted-foreground">The Interest Rate Parity Calculator computes theoretical forward FX rates based on the "no-arbitrage" principle. It shows how interest rate differentials mathematically dictate the discount or premium in the forward currency market.</p></CardContent>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>Interest Rate Parity is the glue that holds the global financial system together.</p>
+          <p>It ensures that money has the same "price" everywhere once you account for exchange rates.</p>
+          <p>Deviations from IRP are rare, but when they happen (like the Basis), they signal big trouble.</p>
+        </CardContent>
       </Card>
     </div>
   );

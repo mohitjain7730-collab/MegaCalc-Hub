@@ -349,126 +349,133 @@ export default function PortfolioDiversificationBenefitCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <div itemScope itemType="https://schema.org/FinanceSummary">
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Diversification Benefits</h1>
-          <meta itemProp="description" content="Quantify the risk reduction from portfolio diversification. Learn how asset correlation impacts portfolio volatility and efficiency." />
-          <meta itemProp="author" content="MegaCalc Hub" />
-          <meta itemProp="keywords" content="Diversification Benefit, Portfolio Risk, Correlation, Standard Deviation, Modern Portfolio Theory, Risk Reduction, Asset Allocation" />
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        {/* SEO & SCHEMA METADATA */}
+        <meta itemProp="name" content="The Definitive Guide to Portfolio Diversification: The Only Free Lunch" />
+        <meta itemProp="description" content="Quantify the benefits of diversification. Learn how correlation, covariance, and asset weighting reduce portfolio volatility without sacrificing expected returns." />
+        <meta itemProp="keywords" content="Portfolio Diversification Benefit, Correlation Coefficient, Unsystematic Risk, Portfolio Standard Deviation Formula, Volatility Reduction, Asset Allocation Strategy" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-15" />
+        <meta itemProp="url" content="/definitive-guide-diversification-benefit" />
 
-          <p className="text-lg italic text-muted-foreground">Understand exactly how much risk you're removing by not putting all your eggs in one basket.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Diversification: Why It Works Mathematically</h1>
+        <p className="text-lg italic text-muted-foreground">"Diversification is the only free lunch in investing." – Harry Markowitz. This calculator shows you exactly how big that lunch is.</p>
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is Diversification Benefit?</h2>
-          <p>Diversification benefit is the "free lunch" in finance: it's the reduction in portfolio risk (volatility) achieved by combining assets that don't move perfectly in sync. It allows you to maintain the same expected return while lowering your risk.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">What is Diversification Benefit?</a></li>
+          <li><a href="#systematic-vs-unsystematic" className="hover:underline">Systematic vs. Unsystematic Risk</a></li>
+          <li><a href="#correlation-spectrum" className="hover:underline">The Correlation Spectrum</a></li>
+          <li><a href="#limitations" className="hover:underline">When Diversification Fails</a></li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">The Role of Correlation</h2>
-          <p>The magic ingredient is <strong>correlation</strong>. If two assets rise and fall together (Correlation = +1), there is no diversification benefit. If they move independently (Correlation = 0) or inversely (Correlation &lt; 0), the benefit is substantial.</p>
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Diversification Benefit?</h2>
+        <p>It is the mathematical reduction in risk that occurs when you combine assets that do not move perfectly in sync.</p>
+        <p>If you hold two risky stocks that always move opposite to each other, your <em>average</em> return remains the same, but your volatility (risk) could theoretically drop to zero. That gap—between the weighted average risk and the actual portfolio risk—is the "Benefit."</p>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Why It Matters</h2>
-          <ul className="list-disc ml-6 space-y-2">
-            <li><strong>Smoother Ride:</strong> Lower volatility means smaller drawdowns during market turbulence.</li>
-            <li><strong>Compound Returns:</strong> Lower volatility reduces "volatility drag," effectively increasing your long-term compound growth rate.</li>
-            <li><strong>Efficiency:</strong> It allows you to take more risk where it pays (e.g., higher return assets) while hedging it elsewhere.</li>
-          </ul>
+        <h2 id="systematic-vs-unsystematic" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Systematic vs. Unsystematic Risk</h2>
+        <p>Diversification kills <strong>Unsystematic Risk</strong> (Company-specific problems like a CEO quitting or a factory fire). By holding 20-30 stocks, this risk virtually disappears.</p>
+        <p>It <em>cannot</em> kill <strong>Systematic Risk</strong> (Market-wide problems like interest rate hikes, inflation, or wars). This baseline risk remains, no matter how many stocks you buy.</p>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-          <p>Don't just guess at diversification—measure it. Use this calculator to ensure your portfolio construction is mathematically sound and truly diversified.</p>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
-                Frequently Asked Questions
-              </CardTitle>
-              <CardDescription>Detailed answers for common questions</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the "Diversification Benefit"?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">It represents the difference between the weighted average risk of your individual holdings and the actual risk of the combined portfolio. The difference is the risk that has been "diversified away."</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can diversification eliminate all risk?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">No. It can eliminate <em>unsystematic risk</em> (specific to a company or asset), but it cannot eliminate <em>systematic risk</em> (market-wide risk like recessions or interest rate hikes).</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does adding more assets always help?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Not always. Adding an asset that is highly correlated with your existing portfolio adds complexity without significant risk reduction benefit. Use this calculator to test before adding.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is a good correlation number?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Ideally, you want correlations below 0.5 or even negative. Bonds often have low/negative correlation to stocks, which is why the 60/40 portfolio is popular.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Do correlations change over time?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes! In times of extreme market stress (crashes), correlations often converge to 1 ("everything falls together"). This is a key risk to monitor.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does diversification hurt returns?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">It averages returns. You won't get the skyrocketing return of the single best winner, but you also won't suffer the total loss of the worst loser. It smooths the path of wealth accumulation.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How do I calculate standard deviation?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">You can use historical price data in Excel (STDEV function) or use our discrete Standard Deviation calculator to estimate it based on returns.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Is 0% correlation possible?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes, assets that are fundamentally disconnected (e.g., weather futures vs. tech stocks) may have near-zero correlation.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What about negative correlation?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Negative correlation (-1) is the holy grail of hedging. When one asset zigs, the other zags. This provides the maximum possible diversification benefit.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Summary Section */}
-        <div className="mt-8">
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Shield className="h-5 w-5" />
-                Summary
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 text-sm text-muted-foreground">
-              <p>The Portfolio Diversification Benefit Calculator quantifies the exact risk reduction you get from combining assets.</p>
-              <p>It demonstrates that portfolio risk is often less than the sum of its parts due to imperfect correlation.</p>
-              <p>Use it to build more robust, efficient portfolios that can weather market volatility.</p>
-            </CardContent>
-          </Card>
+        <h2 id="correlation-spectrum" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Correlation Spectrum</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+          <div className="p-4 bg-muted/50 rounded-lg border border-l-4 border-red-500">
+            <h3 className="font-bold mb-2">+1.0 (Perfect Positive)</h3>
+            <p className="text-sm">Two identical index funds. Zero diversification benefit. Risk is additive.</p>
+          </div>
+          <div className="p-4 bg-muted/50 rounded-lg border border-l-4 border-yellow-500">
+            <h3 className="font-bold mb-2">0.0 (Uncorrelated)</h3>
+            <p className="text-sm">Stocks vs. Rain in Brazil. Zero relationship. Significant risk reduction.</p>
+          </div>
+          <div className="p-4 bg-muted/50 rounded-lg border border-l-4 border-emerald-500">
+            <h3 className="font-bold mb-2">-1.0 (Perfect Negative)</h3>
+            <p className="text-sm">Safety. When one zigs, the other zags. Can create a zero-risk portfolio.</p>
+          </div>
         </div>
-      </div>
+        <hr />
+
+        <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">When Diversification Fails</h2>
+        <p>During financial crises (like 2008 or 2020), correlations tend to converge to 1. "In a crisis, all correlations go to one." This means diversification often disappears exactly when you need it most. This is why some investors use "Tail Risk Hedging" (buying insurance options) instead of just relying on diversification.</p>
+      </section>
+
+      {/* FAQs */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>Deep dive into risk mechanics</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does diversification lower returns?</h4>
+            <p className="text-muted-foreground">
+              Not expected returns. It lowers <em>variance</em> around that return. However, it does ensure you will never be the top performer (because you own the losers too), but you will never be the bottom performer (because you own the winners). It narrows the range of outcomes.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How many stocks do I need to be diversified?</h4>
+            <p className="text-muted-foreground">
+              Old finance textbooks said 20-30 stocks eliminatd 90% of unsystematic risk. Modern research suggests you might need more (50+) due to increased global correlation. An Index Fund (500+ stocks) is the simplest solution.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is "Di-worse-ification"?</h4>
+            <p className="text-muted-foreground">
+              A term coined by Peter Lynch. It means adding assets to your portfolio that you don't understand or that have poor expected returns, just for the sake of "diversification." Never buy junk just to be different.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Is International diversification necessary?</h4>
+            <p className="text-muted-foreground">
+              Debatable. US companies (S&P 500) generate ~40% of revenue overseas. Some argue that's enough global exposure. Others argue you need distinct Emerging Market exposure to capture different growth cycles.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How do I calculate covariance?</h4>
+            <p className="text-muted-foreground">
+              Covariance = Correlation × StdDev(A) × StdDev(B). It's the "raw" measure of how two variables move together. Correlation is just the standardized version (scaled between -1 and 1) that is easier for humans to understand.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does this work for Crypto?</h4>
+            <p className="text-muted-foreground">
+              Only if you diversify <em>outside</em> of crypto. Bitcoin and Ethereum have historically had very high correlation. To get a benefit, you would need to combine Crypto (high risk) with Stablecoins or Traditional Equities.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is the "Volatility Tax"?</h4>
+            <p className="text-muted-foreground">
+              It's the mathematical drag on compounding caused by variance. If you lose 50%, you need a 100% gain to get back to even. By reducing volatility (via diversification), you reduce this "tax," allowing your money to compound more efficiently over time.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Portfolio Diversification Benefit Calculator quantifies the immediate risk reduction from asset mixing.</p>
+          <p>It proves that a portfolio is greater than the sum of its parts—offering lower risk for the same return potential.</p>
+          <p>Use it to sanity-check your asset allocation and avoid unintended concentration risk.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

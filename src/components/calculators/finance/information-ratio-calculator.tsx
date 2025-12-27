@@ -241,138 +241,123 @@ export default function InformationRatioCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <div itemScope itemType="https://schema.org/FinanceSummary">
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Information Ratio</h1>
-          <meta itemProp="description" content="Master the Information Ratio: the gold standard for measuring active portfolio management skill. Learn to calculate, interpret, and optimize your risk-adjusted returns." />
-          <meta itemProp="author" content="MegaCalc Hub" />
-          <meta itemProp="keywords" content="Information Ratio, Active Return, Tracking Error, Risk-Adjusted Return, Portfolio Performance, Active Management, Alpha, Omega Ratio, Treynor Ratio" />
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        {/* SEO & SCHEMA METADATA */}
+        <meta itemProp="name" content="The Definitive Guide to the Information Ratio: Measuring Active Skill" />
+        <meta itemProp="description" content="Calculate and interpret the Information Ratio. Distinguish between luck and skill in active portfolio management by analyzing risk-adjusted active returns." />
+        <meta itemProp="keywords" content="Information Ratio, Active Return, Tracking Error, Risk-Adjusted Return, Portfolio Performance, Active Management, Alpha, Fundamental Law of Active Management" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-15" />
+        <meta itemProp="url" content="/definitive-guide-information-ratio" />
 
-          <p className="text-lg italic text-muted-foreground">The ultimate scorecard for active managers: estimating how much skill (alpha) you're getting for the extra risk you're taking.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Information Ratio: Are You Good, or Just Lucky?</h1>
+        <p className="text-lg italic text-muted-foreground">Any manager can beat the market by taking insane risks. The Information Ratio tells you who beat the market through skill.</p>
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is the Information Ratio?</h2>
-          <p>The Information Ratio (IR) is a metric used to measure the risk-adjusted returns of a financial portfolio relative to a specific benchmark. It answers a critical question: <em>"Was the deviation from the benchmark worth it?"</em></p>
-          <p>While the Sharpe Ratio measures return per unit of total risk, the Information Ratio measures <strong>active return</strong> per unit of <strong>active risk</strong> (tracking error). It isolates the manager's ability to generate excess returns through security selection or market timing.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#the-concept" className="hover:underline">The "Consistency" Metric</a></li>
+          <li><a href="#the-formula" className="hover:underline">Anatomy of the Formula</a></li>
+          <li><a href="#interpretation" className="hover:underline">What is a "Good" Score?</a></li>
+          <li><a href="#fundamental-law" className="hover:underline">The Fundamental Law of Active Management</a></li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">The Core Components</h2>
-          <ul className="list-disc ml-6 space-y-2">
-            <li><strong>Active Return (Alpha):</strong> The difference between the portfolio's return and the benchmark's return. (Rp - Rb)</li>
-            <li><strong>Tracking Error:</strong> The standard deviation of those active returns. It quantifies the "consistency" of the outperformance. A lower tracking error means the manager stays closer to the benchmark's risk profile.</li>
-          </ul>
+        <h2 id="the-concept" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "Consistency" Metric</h2>
+        <p>The Sharpe Ratio measures "Total Return per unit of Total Risk." The Information Ratio measures "Active Return per unit of Active Risk."</p>
+        <p>It answers a specific question: <em>"For every unit of deviation from the benchmark (Tracking Error), how much extra return (Alpha) did you generate?"</em> It is the ultimate litmus test for active managers.</p>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Interpreting Your Score</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-            <div className="bg-muted/30 p-4 rounded-lg">
-              <h3 className="font-bold text-primary mb-2">IR &lt; 0</h3>
-              <p className="text-sm">The manager underperformed the benchmark, or took risk that didn't pay off. A negative IR is generally a red flag for active management.</p>
-            </div>
-            <div className="bg-muted/30 p-4 rounded-lg">
-              <h3 className="font-bold text-primary mb-2">IR 0.0 - 0.5</h3>
-              <p className="text-sm">Modest outperformance. Typical for many active mutual funds after fees.</p>
-            </div>
-            <div className="bg-muted/30 p-4 rounded-lg">
-              <h3 className="font-bold text-primary mb-2">IR 0.5 - 1.0</h3>
-              <p className="text-sm">Good to Very Good. The manager is consistently adding value relative to the risk taken.</p>
-            </div>
-            <div className="bg-muted/30 p-4 rounded-lg">
-              <h3 className="font-bold text-primary mb-2">IR &gt; 1.0</h3>
-              <p className="text-sm">Exceptional. This level of consistency is rare and difficult to sustain over long periods (top quartile managers).</p>
-            </div>
+        <h2 id="the-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Anatomy of the Formula</h2>
+        <p className="font-mono bg-muted p-2 rounded text-center">IR = (Portfolio Return - Benchmark Return) / Tracking Error</p>
+        <ul className="list-disc ml-6 space-y-2 mt-4">
+          <li><strong>Numerator (Alpha):</strong> The excess return. If you made 12% and the market made 10%, your Alpha is +2%.</li>
+          <li><strong>Denominator (Tracking Error):</strong> The standard deviation of that Alpha. If your Alpha is usually +2%, but sometimes -5% and sometimes +10%, your Tracking Error is high. If your Alpha is steady at +0.15% every single month, your Tracking Error is low.</li>
+        </ul>
+        <hr />
+
+        <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is a "Good" Score?</h2>
+        <p>According to Grinold and Kahn (the godfathers of quantitative investing):</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>0.0 - 0.5:</strong> Average. Most mutual funds fall here after fees.</li>
+          <li><strong>0.5 - 0.75:</strong> Good. You are consistently adding value.</li>
+          <li><strong>0.75 - 1.0:</strong> Very Good. Top quartile managers.</li>
+          <li><strong>&gt; 1.0:</strong> Exceptional. Rare to sustain over long periods (e.g., Renaissance Technologies).</li>
+        </ul>
+        <hr />
+
+        <h2 id="fundamental-law" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Fundamental Law of Active Management</h2>
+        <p>This law states: <strong>IR ≈ IC × √Breadth</strong></p>
+        <p>Where <strong>IC</strong> is your skill (Information Coefficient) and <strong>Breadth</strong> is how many independent bets you make.</p>
+        <p><strong>The Insight:</strong> To get a high Information Ratio, you can either be extremely smart (High IC) like Warren Buffett by picking a few stocks perfectly, OR you can be slightly smart about thousands of stocks (High Breadth) like a Quant Fund.</p>
+      </section>
+
+      {/* FAQs */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>Advanced Performance Analysis</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Can I have a negative Information Ratio?</h4>
+            <p className="text-muted-foreground">
+              Yes. If you underperform the benchmark, your numerator is negative. A negative IR means you paid active fees to get worse results than a cheap index fund.
+            </p>
           </div>
 
-          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-          <p>The Information Ratio is the "consistency metric" for alpha. A high IR implies that the manager is beating the benchmark steadily, rather than through wild, lucky bets. Use it to distinguish skill from luck in active portfolio management.</p>
-        </section>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Why not just use Sharpe Ratio?</h4>
+            <p className="text-muted-foreground">
+              Sharpe is absolute. Information Ratio is relative. If the market is down -20% and you are down -15%, your Sharpe Ratio is terrible (negative), but your Information Ratio might be excellent (positive alpha).
+            </p>
+          </div>
 
-        {/* FAQ Section */}
-        <section className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
-                Frequently Asked Questions
-              </CardTitle>
-              <CardDescription>Expert answers on risk-adjusted performance</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How is it different from the Sharpe Ratio?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Sharpe Ratio compares return to a <em>risk-free rate</em> and divides by <em>total volatility</em>. Information Ratio compares return to a <em>benchmark</em> and divides by <em>tracking error</em> (active risk). Use Sharpe for absolute return comparisons, and IR for benchmark-relative comparisons.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Is a high Tracking Error bad?</h4>
+            <p className="text-muted-foreground">
+              Not necessarily. High Tracking Error just means you are "very different" from the benchmark. If you have high Tracking Error and high returns, you are a "high conviction" manager. If you have high Tracking Error and low returns, you are just gambling.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is considered a "good" Information Ratio?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Generally, an IR of 0.5 is considered good. An IR of 0.75 is very good, and 1.0 or higher is exceptional classification for active managers. Grinold and Kahn famously stated that top-quartile managers typically achieve an IR of 0.5.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How do fees affect IR?</h4>
+            <p className="text-muted-foreground">
+              Fees destroy IR. Since fees reduce the Numerator (Alpha) directly but don't change the Denominator (Risk), a 1% management fee can turn a "Good" IR of 0.5 into a "Bad" IR of 0.0 very easily.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can the Information Ratio be negative?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes. If a portfolio's return is less than the benchmark's return, the active return is negative, resulting in a negative IR. It means the manager failed to add value relative to the benchmark.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is "Closet Indexing"?</h4>
+            <p className="text-muted-foreground">
+              A manager with a very low Tracking Error (near 0) and low Alpha. They charge active fees but just hug the benchmark. Their IR will be near zero (or negative after fees).
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does benchmark choice matter?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Crucially. If you choose an "easy" benchmark (e.g., using S&P 500 for a high-risk tech fund), the IR will be artificially inflated. The benchmark must represent the investment universe and risk profile accurately.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the "Fundamental Law of Active Management"?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">It posits that Information Ratio ≈ Information Coefficient (skill) × √Breadth (number of independent bets). To increase IR, a manager needs either more skill or more opportunities to apply that skill.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Is a higher Tracking Error bad?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Not necessarily. High tracking error simply means "very different from the benchmark." If that difference leads to high returns, it's justified. If it leads to losses, it's just unrewarded risk.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How do fees impact the Information Ratio?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Fees reduce the active return (the numerator). Since active risk (denominator) remains the same, high fees directly degrade the Information Ratio. It's often calculated on a gross-of-fees basis to assess pure skill, but net-of-fees is what investors experience.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can I use it for passive index funds?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">For passive funds, you want the Active Return and Tracking Error to both be effectively zero. The IR isn't very useful there; typically, you just look for the lowest possible Tracking Error.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does it work for bond portfolios?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes, it is widely used in fixed income to compare managers against bond indices (like the Aggregate Bond Index), though active returns in bonds are often smaller than in equities.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Why annualize the inputs?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">To make comparisons standard. If you use monthly data, you multiply the monthly IR by √12 to get the annualized IR.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does IR work for Hedge Funds?</h4>
+            <p className="text-muted-foreground">
+              Sometimes, but be careful. Hedge funds often don't have a clear "benchmark." If the benchmark is "Cash" (Absolute Return), the Tracking Error becomes just Volatility, and the IR becomes the Sharpe Ratio.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Summary Section */}
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
-        <CardContent><p className="text-muted-foreground">The Information Ratio is the premier metric for evaluating active management skill. By normalizing excess returns by the risk taken to achieve them, it tells you not just <em>if</em> a manager beat the market, but <em>how efficiently</em> they did so.</p></CardContent>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <LineChart className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Information Ratio is the "Truth Serum" for active managers.</p>
+          <p>It reveals whether outperformance is a result of consistent skill or erratic luck.</p>
+          <p>Use it to justify active management fees—if the IR isn't above 0.5, you're likely better off in an index fund.</p>
+        </CardContent>
       </Card>
     </div>
   );

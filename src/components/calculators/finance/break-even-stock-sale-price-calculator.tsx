@@ -276,14 +276,14 @@ export default function BreakEvenStockSalePriceCalculator() {
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
         {/* SEO & SCHEMA METADATA */}
         <meta itemProp="name" content="The Definitive Guide to Break-Even Stock Price: Calculating Your Loss Limit" />
-        <meta itemProp="description" content="Calculate your true stock break-even price by accounting for trading commissions, fees, and capital gains taxes. Understand the math behind zero-loss exit strategies." />
-        <meta itemProp="keywords" content="break even stock calculator, stock exit price, trading break even formula, calculate trading fees, capital gains tax impact, zero loss strategy, investment recovery" />
+        <meta itemProp="description" content="Calculate your true stock break-even price by accounting for trading commissions, fees, and capital gains taxes. Understand the math behind zero-loss exit strategies, the impact of slippage, and when to use a scratch trade." />
+        <meta itemProp="keywords" content="break even stock calculator, stock exit price, trading break even formula, calculate trading fees, capital gains tax impact, zero loss strategy, investment recovery, scratch trade strategy" />
         <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
         <meta itemProp="datePublished" content="2025-11-15" />
         <meta itemProp="url" content="/definitive-guide-break-even-stock" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Break-Even Analysis: Precise Exit Planning</h1>
-        <p className="text-lg italic text-muted-foreground">Stop guessing. Calculate the exact price you need to exit a trade without losing a penny—covering all costs, commissions, and taxes.</p>
+        <p className="text-lg italic text-muted-foreground">Stop guessing. Calculate the exact price you need to exit a trade without losing a penny—covering all costs, commissions, and taxes. A must-have tool for disciplined traders.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
@@ -291,7 +291,7 @@ export default function BreakEvenStockSalePriceCalculator() {
           <li><a href="#hidden-costs" className="hover:underline">The Hidden Costs of Trading</a></li>
           <li><a href="#tax-impact" className="hover:underline">The Tax Paradox</a></li>
           <li><a href="#strategies" className="hover:underline">Break-Even Strategies</a></li>
-          <li><a href="#using-calculator" className="hover:underline">Using the Calculator Effectively</a></li>
+          <li><a href="#psychology" className="hover:underline">The Psychology of "The Scratch"</a></li>
         </ul>
         <hr />
 
@@ -299,7 +299,7 @@ export default function BreakEvenStockSalePriceCalculator() {
         <p>In trading, the "break-even price" is the specific price at which your net profit is exactly zero. It's the line in the sand where your trade recovers your initial capital and all associated expenses. Selling one cent below this price results in a realized loss; selling one cent above results in a realized gain.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Why It's Not Just Your Buy Price</h3>
-        <p>Many novice investors believe if they buy a stock at $50, their break-even is $50. This is incorrect. You must account for the friction of the market: transaction fees, commissions, spreads, and taxes.</p>
+        <p>Many novice investors believe if they buy a stock at $50, their break-even is $50. This is incorrect. You must account for the friction of the market: transaction fees, commissions, spreads, and taxes. Real break-even is always <em>higher</em> than your entry price for long positions (and <em>lower</em> for short positions).</p>
         <hr />
 
         <h2 id="hidden-costs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Hidden Costs of Trading</h2>
@@ -308,7 +308,7 @@ export default function BreakEvenStockSalePriceCalculator() {
           <li><strong>Buy Commissions:</strong> Added to your initial cost basis.</li>
           <li><strong>Sell Commissions:</strong> Deducted from your final proceeds.</li>
           <li><strong>Regulatory Fees:</strong> Small SEC fees (in the US) applied to sell orders.</li>
-          <li><strong>Slippage:</strong> The difference between the quoted price and your actual execution price.</li>
+          <li><strong>Slippage:</strong> The difference between the quoted price and your actual execution price. In fast markets, you might click "Sell" at $50.00 but get filled at $49.95.</li>
         </ul>
         <hr />
 
@@ -331,12 +331,9 @@ export default function BreakEvenStockSalePriceCalculator() {
         <p>If you own 100 shares and sell 50 at a profit, your break-even on the remaining 50 shares drops significantly (or can even become negative!), meaning you can hold the rest "risk-free" in terms of your original capital outlay.</p>
         <hr />
 
-        <h2 id="using-calculator" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using the Calculator Effectively</h2>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Commission Field:</strong> Sum up <em>both</em> your buy-side (if not in basis) and sell-side commissions.</li>
-          <li><strong>Tax Rate:</strong> Be conservative. Use your highest marginal short-term rate if unsure.</li>
-          <li><strong>Buffer:</strong> Always add 0.5% to the result to account for market execution slippage.</li>
-        </ul>
+        <h2 id="psychology" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Psychology of "The Scratch"</h2>
+        <p>Why is calculating break-even so important? Because preserving capital is the #1 rule of trading. Exiting a stalled trade at break-even feels like a waste of time, but it is a <strong>victory</strong>. It means you lived to fight another day with your capital intact.</p>
+        <p>Knowing your exact break-even point allows you to set your "Limit Sell" order precisely where it needs to be to just walk away clean.</p>
       </section>
 
       {/* FAQs */}
@@ -402,6 +399,20 @@ export default function BreakEvenStockSalePriceCalculator() {
             <h4 className="font-semibold text-lg mb-3">How do stock splits affect break-even?</h4>
             <p className="text-muted-foreground">
               Splits adjust shares and price inversely. Recalculate your input "Average Cost per Share" after the split (divide cost by split ratio), and the calculator will give you the correct new post-split break-even price.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does this apply to short selling?</h4>
+            <p className="text-muted-foreground">
+              Yes, but the math is inverted. For short selling, your break-even is typically <em>below</em> your entry price because you must cover the cost of borrowing the shares (short interest) and dividends valid while you are short.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What about "Wash Sales"?</h4>
+            <p className="text-muted-foreground">
+              If your current position is a result of a Wash Sale (you bought it back after selling at a loss within 30 days), your Cost Basis is artificially higher because the disallowed loss was added to it. You must use this <em>adjusted</em> cost basis to calculate your true break-even.
             </p>
           </div>
         </CardContent>

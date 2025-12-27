@@ -320,122 +320,121 @@ export default function EfficientFrontierVisualizer() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <div itemScope itemType="https://schema.org/FinanceSummary">
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Efficient Frontiers</h1>
-          <meta itemProp="description" content="Visualize the Efficient Frontier for your portfolio. Understand the risk-return trade-off and optimize your investment strategy using Modern Portfolio Theory." />
-          <meta itemProp="author" content="MegaCalc Hub" />
-          <meta itemProp="keywords" content="Efficient Frontier, Modern Portfolio Theory, Portfolio Optimization, Risk-Return Tradeoff, Asset Allocation, Markowitz Model" />
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        {/* SEO & SCHEMA METADATA */}
+        <meta itemProp="name" content="The Definitive Guide to the Efficient Frontier: Visualizing Financial Physics" />
+        <meta itemProp="description" content="Generate and visualize the Efficient Frontier for two assets. Master the risk-return tradeoff, understand portfolio dominance, and learn why diversification bends the curve." />
+        <meta itemProp="keywords" content="Efficient Frontier Graph, Portfolio Optimization, Risk Return Scatter Plot, Markowitz Bullet, Investment Frontier, Capital Allocation Line" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-15" />
+        <meta itemProp="url" content="/definitive-guide-efficient-frontier" />
 
-          <p className="text-lg italic text-muted-foreground">Understanding the set of optimal portfolios that offer maximum return for each risk level.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Efficient Frontier: Visualizing Financial Physics</h1>
+        <p className="text-lg italic text-muted-foreground">It's the most famous curve in finance. Understanding its shape is the key to understanding why "High Risk = High Return" is a dangerous oversimplification.</p>
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is the Efficient Frontier?</h2>
-          <p>The efficient frontier is the set of portfolios offering the highest expected return for each level of risk. Portfolios below the frontier are suboptimal—you can get more return for the same risk.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#the-shape" className="hover:underline">Why is it Curved?</a></li>
+          <li><a href="#dominance" className="hover:underline">The Concept of "Dominance"</a></li>
+          <li><a href="#cml" className="hover:underline">The Capital Market Line</a></li>
+          <li><a href="#limitations" className="hover:underline">The "Garbage In" Problem</a></li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">How Correlation Shapes the Frontier</h2>
-          <p>Lower correlation between assets "bends" the frontier leftward, creating portfolios with lower risk for the same expected return. This curvature represents the "free lunch" of diversification.</p>
+        <h2 id="the-shape" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why is it Curved?</h2>
+        <p>If assets were perfectly correlated (+1.0), the frontier would be a straight line. You would get zero "free" risk reduction.</p>
+        <p>The "Markowitz Bullet" shape (the curve) exists because assets sometimes zigzag. When one zigs while the other zags, the portfolio's volatility cancels out, <em>without</em> hurting the average return. This bending of the curve toward the left (lower risk) is the mathematical manifestation of diversification.</p>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Modern Portfolio Theory (MPT)</h2>
-          <p>Pioneered by Harry Markowitz, MPT demonstrates that an investment's risk and return should not be viewed alone, but by how it contributes to a portfolio's overall risk and return. The efficient frontier is the graphical representation of this concept.</p>
+        <h2 id="dominance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Concept of "Dominance"</h2>
+        <p>Look at the visualizer. Any point on the <strong>bottom half</strong> of the curve is "Dominated."</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Inefficient:</strong> Why would you accept 5% return for 10% risk, when you could move vertically up to the top half of the curve and get 8% return for the same 10% risk?</li>
+          <li><strong>Efficient:</strong> The top half of the curve is the "Efficient Frontier." Every point there is the best possible return for that specific risk level.</li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-          <p>The efficient frontier is central to modern portfolio theory. This visualizer helps you understand how different weight combinations affect portfolio risk and return, guiding you toward more efficient allocation.</p>
-        </section>
+        <h2 id="cml" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Capital Market Line (CML)</h2>
+        <p>In the real world, you also have a Risk-Free Asset (Cash/Treasuries). If you draw a straight line from the Risk-Free Rate (Y-axis intercept) that creates a tangent to the Efficient Frontier curve, you get the CML.</p>
+        <p><strong>The Insight:</strong> Theoretically, you should never pick a portfolio on the curve itself. You should hold the "Tangency Portfolio" (where the line touches the curve) and then mix it with Cash (to lower risk) or Leverage (to increase risk). This is the foundation of the "Two-Fund Separation Theorem."</p>
+        <hr />
 
-        {/* FAQ Section */}
-        <section className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
-                Frequently Asked Questions
-              </CardTitle>
-              <CardDescription>Detailed answers for common portfolio questions</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the Efficient Frontier?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">It represents the set of "best possible" portfolios—those that offer the maximum expected return for a defined level of risk or the minimum risk for a given level of expected return.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Why is the line curved?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">The curve exists because assets are rarely perfectly correlated. When correlation is less than 1, diversification reduces portfolio volatility, pushing the risk-return profile to the left (lower risk).</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the Global Minimum Variance Portfolio?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">This is the single point on the far left of the efficient frontier curve representing the portfolio with the absolute lowest possible standard deviation (risk) available from the given assets.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How does the Risk-Free Rate fit in?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">When a risk-free asset is introduced, the efficient frontier becomes a straight line (Capital Market Line) extending from the risk-free rate to the tangency point on the risky asset frontier.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can I be above the Efficient Frontier?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">No. By definition, the efficient frontier represents the maximum possible return for each risk level using the available assets. Points above it are impossible without leverage or better-performing assets.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Why do some visualizations show dots below the line?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Dots below the frontier represent inefficient portfolios. You could achieve higher returns with the same risk (or lower risk with the same return) by moving up to the frontier line.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What are the assumptions of this model?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">It assumes normal distribution of returns, constant correlations, rational investors, and no transaction costs or taxes. Real-world markets often deviate from these ideals.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How many assets can this visualize?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">This specific tool visualizes a two-asset universe. With three or more assets, the frontier becomes a surface or hyper-surface, but the 2D risk-return plot concept remains the same.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Is the frontier static?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">No. It shifts whenever expected returns, volatilities, or correlations change. It's a snapshot in time based on your inputs.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Summary Section */}
-        <div className="mt-8">
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <LineChart className="h-5 w-5" />
-                Summary
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 text-sm text-muted-foreground">
-              <p>The Efficient Frontier Visualizer plots the risk-return trade-off for various portfolio combinations.</p>
-              <p>It helps you identify the optimal asset mix that maximizes expected return for your risk tolerance.</p>
-              <p>Use it to understand the geometry of diversification and why "putting eggs in different baskets" works mathematically.</p>
-            </CardContent>
-          </Card>
+        <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "Garbage In" Problem</h2>
+        <p>This visualizer is beautiful, but dangerous. It assumes you <em>know</em> the future returns and correlations.</p>
+        <div className="bg-muted p-4 rounded-l-4 border-l-4 border-yellow-500 my-4">
+          <p className="font-bold">Warning:</p>
+          <p>A slight change in your Expected Return input (e.g., guessing 8% vs 9%) can radically shift the optimal weights. This sensitivity is why many pros prefer "Risk Parity" (ignoring return estimates) over "Mean-Variance Optimization" (this model).</p>
         </div>
-      </div>
+      </section>
+
+      {/* FAQs */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>Detailed answers about the Frontier</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does this apply to Crypto?</h4>
+            <p className="text-muted-foreground">
+              Yes, brutally so. Crypto assets are often highly correlated (Bitcoin moves, everything moves). This results in a very "flat" frontier with little curvature/diversification benefit, unless you mix Crypto with traditional assets like Bonds or Real Estate.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Why are there no points in the top-left corner?</h4>
+            <p className="text-muted-foreground">
+              The top-left represents "High Return, Low Risk." This is the "Unattainable Region." In efficient markets, you cannot structurally get returns significantly higher than the risk you take. If you see an investment there, it's widely likely a Ponzi scheme or has hidden tail risks.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How does time horizon affect this?</h4>
+            <p className="text-muted-foreground">
+              This is a single-period model (usually 1 year). Over 20-30 years, "risk" changes definition (volatility matters less, inflation matters more). The frontier for long-term investors might look different, favoring equities even more.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is the "Global Minimum Variance" point?</h4>
+            <p className="text-muted-foreground">
+              It is the "nose" of the bullet curve—the absolute left-most point. This is the portfolio for the ultimate pessimist who wants the smoothest possible ride, regardless of how much return they sacrifice (though usually, they don't sacrifice much!).
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Can the frontier shift effectively?</h4>
+            <p className="text-muted-foreground">
+              Yes. If central banks cut rates (Risk-Free rate drops) or productivity explodes (Expected Returns rise), the entire frontier shifts up. Conversely, in a recession, it might shift down and right (higher risk, lower returns).
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What about "Black Swans"?</h4>
+            <p className="text-muted-foreground">
+              This model uses Standard Deviation (bell curve) as the definition of risk. It fails to account for "Fat Tails" (events that should happen once in a trillion years happening every decade). Always assume the real risk is higher than the frontier suggests.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <LineChart className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Efficient Frontier Visualizer maps the universe of possible portfolios.</p>
+          <p>It demonstrates geometrically why diversification is the "only free lunch in finance"—bending the risk curve in your favor.</p>
+          <p>Use it to identify dominated (bad) portfolios and target the efficient (good) edge.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

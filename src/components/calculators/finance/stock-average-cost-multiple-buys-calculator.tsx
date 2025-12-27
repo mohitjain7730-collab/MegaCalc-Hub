@@ -296,75 +296,80 @@ export default function StockAverageCostMultipleBuysCalculator() {
         <meta itemProp="url" content="/definitive-guide-stock-average-cost" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Stock Average Cost: Managing Multiple Purchase Lots</h1>
-        <p className="text-lg italic text-muted-foreground">Master cost basis tracking for accurate tax reporting, performance measurement, and smarter investment decisions.</p>
+        <p className="text-lg italic text-muted-foreground">Master cost basis tracking for accurate tax reporting, performance measurement, and smarter investment decisions. Learn why the "Average Cost" method is a favorite for long-term investors.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
-          <li><a href="#what-is-cost-basis" className="hover:underline">What is Cost Basis?</a></li>
-          <li><a href="#why-average-cost" className="hover:underline">Why Use Average Cost?</a></li>
-          <li><a href="#cost-methods" className="hover:underline">Cost Basis Methods Explained</a></li>
-          <li><a href="#including-fees" className="hover:underline">Including Fees and Commissions</a></li>
-          <li><a href="#special-situations" className="hover:underline">Special Situations (Splits, DRIPs)</a></li>
-          <li><a href="#tax-implications" className="hover:underline">Tax Implications & Wash Sales</a></li>
+          <li><a href="#what-is-cost-basis" className="hover:underline">What is Cost Basis and Why It Matters</a></li>
+          <li><a href="#calculation-example" className="hover:underline">Step-by-Step Calculation Example</a></li>
+          <li><a href="#cost-methods" className="hover:underline">Average Cost vs. FIFO vs. Specific ID</a></li>
+          <li><a href="#dollar-cost-averaging" className="hover:underline">The Power of Dollar Cost Averaging (DCA)</a></li>
+          <li><a href="#tax-implications" className="hover:underline">Tax Implications & Wash Sale Rules</a></li>
         </ul>
         <hr />
 
-        <h2 id="what-is-cost-basis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Cost Basis?</h2>
-        <p>Cost basis is the original value of an asset for tax purposes, typically the purchase price plus any associated costs like commissions and fees. When you sell an investment, your capital gain or loss is calculated as the difference between your sale proceeds and your cost basis.</p>
+        <h2 id="what-is-cost-basis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Cost Basis and Why It Matters</h2>
+        <p><strong>Cost basis</strong> is essentially the original value of an asset for tax purposes. It includes the purchase price plus any associated costs like commissions and recording fees. It is the baseline used to determine whether you have a capital gain or loss when you sell.</p>
 
-        <p className="mt-4">When you buy a stock multiple times at different prices, you need a method to determine which cost to use when calculating gains or losses. This is where the <strong>average cost basis</strong> becomes a powerful and simple tool.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Why Cost Basis Matters</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Three Pillars of Cost Basis</h3>
         <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Tax Reporting:</strong> You must report accurate cost basis to the IRS to calculate taxable gains or deductible losses.</li>
-          <li><strong>Performance Tracking:</strong> Understanding your true break-even point helps you measure actual investment returns.</li>
-          <li><strong>Decision Making:</strong> Knowing your average price helps you decide whether to "average down" during dips or take profits during rallies.</li>
+          <li><strong>Tax Reporting:</strong> The IRS requires accurate basis reporting. If you overstate your basis, you pay too little tax (audit risk). If you understate it, you pay too much tax (wasting money).</li>
+          <li><strong>Performance Tracking:</strong> You can't know if you're "winning" if you don't know your starting line. Average cost gives you a single, clear break-even point for your entire position.</li>
+          <li><strong>Decision Making:</strong> Knowing your average cost helps you decide whether to "average down" (buy more at a lower price to lower your avg cost) or trim a position.</li>
         </ul>
         <hr />
 
-        <h2 id="why-average-cost" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why Use Average Cost?</h2>
-        <p>Average cost simplifies tracking when you've accumulated a position through many purchases over time. Instead of tracking the specific cost of each individual share, you calculate a weighted average across all purchases.</p>
+        <h2 id="calculation-example" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Step-by-Step Calculation Example</h2>
+        <p>Let's look at a real-world scenario to see how the mathematical weighted average works.</p>
 
-        <h3 className="text-xl font-semibold text-foreground mt-6">Benefits of Average Cost Method</h3>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Simplicity:</strong> One single number to track instead of dozens of conflicting share prices.</li>
-          <li><strong>Automatic:</strong> Most mutual funds and many brokerage platforms for ETFs default to or support this method.</li>
-          <li><strong>Smoothed Volatility:</strong> It reflects your average entry price, smoothing out the impact of buying at market peaks or valleys.</li>
+        <div className="my-6 p-4 bg-muted rounded-lg border">
+          <h4 className="font-semibold mb-2">Scenario: Buying TechCorp Stock</h4>
+          <ul className="list-disc ml-6 space-y-1 text-sm">
+            <li><strong>Purchase 1:</strong> 10 shares @ $100 = $1,000</li>
+            <li><strong>Purchase 2:</strong> 20 shares @ $110 = $2,200</li>
+            <li><strong>Purchase 3:</strong> 5 shares @ $120 = $600</li>
+          </ul>
+          <div className="mt-4 pt-4 border-t">
+            <p><strong>Total Shares:</strong> 10 + 20 + 5 = 35 shares</p>
+            <p><strong>Total Cost:</strong> $1,000 + $2,200 + $600 = $3,800</p>
+            <p className="mt-2 font-mono text-lg font-bold text-primary">Average Cost = $3,800 / 35 = $108.57 per share</p>
+          </div>
+        </div>
+        <p>Even though you bought some shares at $120, your break-even price is only $108.57. If the stock goes to $115, you are profitable on the <em>entire position</em>, not just the early lots.</p>
+        <hr />
+
+        <h2 id="cost-methods" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Average Cost vs. FIFO vs. Specific ID</h2>
+        <p>When you sell only <em>part</em> of your position, which shares are you selling? The method you choose dictates your tax bill.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">1. Average Cost Method</h3>
+        <p>You treat all shares as a single pool. Every share has the same cost ($108.57 in our example). Simple, set-it-and-forget-it, and required for most mutual funds.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">2. FIFO (First In, First Out)</h3>
+        <p>The default method at most brokerages. You sell the oldest shares first. In a rising market, these are usually your cheapest shares, which means you realize the <strong>largest capital gain</strong> (and highest tax bill) now.</p>
+
+        <h3 className="text-xl font-semibold text-foreground mt-6">3. Specific Identification</h3>
+        <p>The sniper approach. You tell your broker, "Sell the 5 shares I bought on Oct 12th @ $120." This allows you to sell high-cost shares to minimize gains or even realize a loss for tax harvesting, but requires meticulous record-keeping.</p>
+        <hr />
+
+        <h2 id="dollar-cost-averaging" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Power of Dollar Cost Averaging (DCA)</h2>
+        <p>This calculator is the perfect companion for a <strong>Dollar Cost Averaging</strong> strategy. DCA involves investing a fixed dollar amount at regular intervals, regardless of share price.</p>
+        <ul className="list-disc ml-6 space-y-2 mt-4">
+          <li>When prices are high, your fixed amount buys fewer shares.</li>
+          <li>When prices are low, your fixed amount buys <em>more</em> shares.</li>
+          <li><strong>Result:</strong> Your average cost per share often ends up <em>lower</em> than the average market price over the same period.</li>
         </ul>
         <hr />
 
-        <h2 id="cost-methods" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cost Basis Methods Explained</h2>
-        <p>While this calculator focuses on Average Cost, it's important to know the alternatives the IRS allows:</p>
+        <h2 id="tax-implications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Tax Implications & Wash Sale Rules</h2>
+        <p>Taxes are the friction that drags down returns. Understanding how cost basis interacts with taxes is crucial.</p>
 
-        <h3 className="text-xl font-semibold text-foreground mt-6">Average Cost</h3>
-        <p>Total cost of all shares divided by total shares owned. Simple, but offers less tax optimization flexibility than specific identification.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Wash Sale Trap</h3>
+        <p>A <strong>wash sale</strong> occurs if you sell stock at a loss and buy "substantially identical" stock within 30 days before or after the sale.
+          <br /><br />
+          <strong>Consequence:</strong> The IRS <em>disallows</em> your loss deduction. Instead, the loss is added to the cost basis of the new replacement shares. This isn't a disaster—it just defers your tax benefit—but it complicates your accounting significantly.</p>
 
-        <h3 className="text-xl font-semibold text-foreground mt-6">FIFO (First In, First Out)</h3>
-        <p>Assumes the first shares you bought are the first ones you sell. In a rising market, these older shares often have lower costs, resulting in higher taxable gains.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Specific Identification</h3>
-        <p>You tell your broker exactly which shares (lots) to sell. This offers maximum flexibility for tax optimization (e.g., selling highest-cost shares to minimize gains).</p>
-        <hr />
-
-        <h2 id="including-fees" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Including Fees and Commissions</h2>
-        <p>Transaction costs are a legitimate part of your cost basis. Including them gives you the true all-in cost per share and effectively reduces your taxable gain when you sell.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">What to Include</h3>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Commissions:</strong> Per-trade fees charged by your broker (though many are now $0).</li>
-          <li><strong>SEC Fees:</strong> Small regulatory fees charged on sell transactions.</li>
-          <li><strong>Exchange Fees:</strong> Charges specific to certain exchanges.</li>
-        </ul>
-        <hr />
-
-        <h2 id="special-situations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Special Situations</h2>
-        <p>Several corporate actions can complicate cost basis calculations.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Stock Splits</h3>
-        <p>When a stock splits, your total cost basis doesn't change, but the per-share cost works inversely. For a 2-for-1 split, your share count doubles and your per-share cost is cut exactly in half. Always update your records immediately after a split.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Dividend Reinvestment (DRIP)</h3>
-        <p>Each reinvested dividend creates a tiny new "lot" of shares with its own cost basis equal to the market price on the reinvestment day. Over years, this creates hundreds of tax lots. The Average Cost method is the sanity-saving solution for DRIP investors.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Including Fees</h3>
+        <p>Never forget to include trading fees in your cost basis. If you pay a $5 commission to buy, that's $5 less profit you'll validly report later. Our calculator allows you to input these fees to ensure your basis is "fully loaded" and accurate.</p>
       </section>
 
       {/* FAQs */}

@@ -325,122 +325,119 @@ export default function AssetCorrelationMatrixCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <div itemScope itemType="https://schema.org/FinanceSummary">
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Asset Correlation Matrices</h1>
-          <meta itemProp="description" content="Master portfolio construction with our Asset Correlation Matrix Calculator. Understand how assets interact to minimize risk and maximize diversification." />
-          <meta itemProp="author" content="MegaCalc Hub" />
-          <meta itemProp="keywords" content="Asset Correlation Matrix, Portfolio Diversification, Correlation Coefficient, Risk Management, Modern Portfolio Theory, Investment Analysis, Asset Allocation" />
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        {/* SEO & SCHEMA METADATA */}
+        <meta itemProp="name" content="The Definitive Guide to Asset Correlation: The Matrix of Diversification" />
+        <meta itemProp="description" content="Generate and interpret Asset Correlation Matrices. Learn how pairwise correlations drive portfolio risk and how to use this matrix for superior asset allocation." />
+        <meta itemProp="keywords" content="Asset Correlation Matrix, Pearson Correlation, Portfolio Optimization, Diversification Strategy, Correlation Coefficients, Risk Management Tools" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-15" />
+        <meta itemProp="url" content="/definitive-guide-correlation-matrix" />
 
-          <p className="text-lg italic text-muted-foreground">The secret weapon of professional portfolio managers: understanding how your investments interact with each other.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to the Correlation Matrix: The Map of the Market</h1>
+        <p className="text-lg italic text-muted-foreground">It looks like a simple grid of numbers. In reality, it is the treasure map that reveals whether your portfolio is a fortress or a house of cards.</p>
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is a Correlation Matrix?</h2>
-          <p>A correlation matrix is a table showing the correlation coefficients between potential pairs of assets. Each cell in the table shows the correlation between the two variables on the intersecting row and column.</p>
-          <p>It acts as a "diagnostic map" for your portfolio, revealing connected risks that might not be obvious when looking at assets in isolation.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#reading-the-matrix" className="hover:underline">How to Read the Matrix</a></li>
+          <li><a href="#heatmap" className="hover:underline">The "Heatmap" Mental Model</a></li>
+          <li><a href="#regimes" className="hover:underline">Why Correlations Lie (Regime Changes)</a></li>
+          <li><a href="#math" className="hover:underline">The Math Behind the Magic</a></li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Decoding the Numbers</h2>
-          <ul className="list-disc ml-6 space-y-2">
-            <li><strong>+1.0 (Perfect Positive):</strong> Assets move in perfect lockstep. If one goes up 5%, the other goes up (roughly) proportionally. Zero diversification benefit.</li>
-            <li><strong>0.0 (Uncorrelated):</strong> Assets move independently. The price movement of one tells you nothing about the other. High diversification benefit.</li>
-            <li><strong>-1.0 (Perfect Negative):</strong> Assets move in exact opposites. If one zigs, the other zags. Maximum hedging potential.</li>
-          </ul>
+        <h2 id="reading-the-matrix" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How to Read the Matrix</h2>
+        <p>A correlation matrix is always symmetric (Top-Right matches Bottom-Left) and always has 1.0 down the diagonal (Asset A is perfectly correlated with itself).</p>
+        <p><strong>The Golden Rule:</strong> You want low numbers in the "off-diagonal" cells.
+          <br />
+          - If you see lots of <strong>0.80+</strong>: You basically own the same asset five times.
+          <br />
+          - If you see <strong>0.20 to 0.50</strong>: You have a healthy, diversified portfolio.
+          <br />
+          - If you see <strong>Negative Numbers</strong>: You have powerful hedges in place.</p>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Why "Low Correlation" Matters</h2>
-          <p>The goal of diversification isn't just to "buy many things," but to buy things that <strong>behave differently</strong>. Combining assets with low or negative correlations significantly reduces overall portfolio volatility (standard deviation) without necessarily sacrificing returns.</p>
+        <h2 id="heatmap" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "Heatmap" Mental Model</h2>
+        <p>Professional traders often color-code these matrices:</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>Red (High Correlation, &gt; 0.7):</strong> "Danger Zone." If one crashes, they all crash.</li>
+          <li><strong>Yellow (Moderate, 0.3 - 0.7):</strong> "Standard Zone." Typical behavior for assets in the same economy (e.g., Tech Stocks vs. Bank Stocks).</li>
+          <li><strong>Green (Low/Negative, &lt; 0.3):</strong> "Safe Zone." These assets march to the beat of their own drum (e.g., Gold vs. Stocks, or Treasury Bonds vs. Crypto).</li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-          <p>Use this matrix to stress-test your portfolio construction. If all your assets have correlations above 0.8, you might be less diversified than you think.</p>
-        </section>
+        <h2 id="regimes" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why Correlations Lie (Regime Changes)</h2>
+        <p><strong>Crucial Warning:</strong> Correlations are not fixed laws of physics like gravity. They are statistical artifacts of the past.</p>
+        <p>During calm markets, Stocks and Bonds might have a correlation of -0.3 (great!). But during an "Inflation Shock" (like 2022), that correlation can flip to +0.6 (disastrous!). This is called a "Regime Change." Always stress-test your portfolio assuming correlations might rise when you least want them to.</p>
+      </section>
 
-        {/* FAQ Section */}
-        <section className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
-                Frequently Asked Questions
-              </CardTitle>
-              <CardDescription>Expert answers to your correlation questions</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How do I interpret a full matrix?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Look for the off-diagonal numbers. The diagonal will always be 1.0 (an asset correlates perfectly with itself). Low numbers off-diagonal indicate good diversifiers.</p>
-                </div>
-              </div>
+      {/* FAQs */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>Advanced Correlation Topics</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does correlation imply causation?</h4>
+            <p className="text-muted-foreground">
+              <strong>Never.</strong> Ice cream sales and shark attacks are highly correlated (both happen in summer), but eating ice cream doesn't cause shark attacks. Similarly, assets might move together just because of global liquidity, not because they directly impact each other.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is considered a "good" correlation for diversification?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Generally, correlations below 0.5 are considered good for diversification. Correlations below 0.3 or negative are excellent for effective risk reduction.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How many data points do I need?</h4>
+            <p className="text-muted-foreground">
+              Statistically, you want at least 30 observations to have any confidence. For monthly returns, that means 2.5 years of data. If you use fewer points (e.g., last 3 months), the correlation is just "noise" and likely random.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Why do correlations change during market crashes?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">In panic selling, investors often sell <em>everything</em> to raise cash, causing assets that are normally unrelated to fall together. This phenomenon is known as "correlation breakdown" or "convergence to 1."</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is "Spurious Correlation"?</h4>
+            <p className="text-muted-foreground">
+              It's a fake correlation that appears by random chance. If you compare thousands of random charts, you <em>will</em> find two that look identical purely by accident. This is a common trap in algorithmic trading.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How much historical data should I use?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">A common standard is 3 to 5 years of monthly data (36-60 observations). Using too little data (e.g., 3 months) creates statistical noise; too much (e.g., 20 years) may include irrelevant ancient history.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Is -1.0 correlation good?</h4>
+            <p className="text-muted-foreground">
+              It is the <em>best</em> for risk reduction, but it can be annoying for returns. If you have a perfect hedge, you maintain a flat line value. You usually want correlations that are low (0 to 0.2) or slightly negative, rather than perfectly negative, so your portfolio can still grow.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can I use daily instead of monthly returns?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes, but daily data can be noisy due to market microstructure issues (timing differences, non-trading days). Monthly or weekly data is often preferred for strategic asset allocation.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does this work for irregular time series?</h4>
+            <p className="text-muted-foreground">
+              No. The data points must be "synchronous" (same dates). You cannot correlate Bitcoin's 24/7 price with the NYSE's 9-5 price unless you align them (e.g., using "Daily Close" timestamps). This calculator assumes you impute aligned data.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the formula for correlation?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Correlation (ρ) = Covariance(A, B) / (Standard Deviation(A) × Standard Deviation(B)). It normalizes covariance to a range of -1 to +1.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does correlation imply causation?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">No. Two assets might correlate simply because they react to the same external factor (e.g., interest rates), not because one causes the other to move.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Is this useful for crypto?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Absolutely. Crypto assets often have high correlations with each other but varying correlations with stocks and gold, making this analysis vital for crypto portfolio construction.</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How do I fix a "N/A" result?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Ensure you have entered valid numerical data with at least 3 data points per series, and that no series is completely flat (variance cannot be zero).</p>
-                </div>
-              </div>
-
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can I paste data from Excel?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes, simply copy a column of returns from Excel or Google Sheets and paste it into the text areas. The calculator handles spaces and newlines automatically.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is "Beta" vs. "Correlation"?</h4>
+            <p className="text-muted-foreground">
+              Correlation measures <em>tightness</em> of fit (0 to 1). Beta measures <em>magnitude</em> of move. An asset can have high correlation (moves exactly with market) but low Beta (moves only half as much). Both are needed for full risk analysis.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Summary Section */}
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
-        <CardContent><p className="text-muted-foreground">The Asset Correlation Matrix Calculator computes pairwise Pearson correlations from return series. Use it to identify diversification opportunities—lower correlations mean greater potential for risk reduction when combining assets.</p></CardContent>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Grid className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Asset Correlation Matrix is the dashboard for diversification.</p>
+          <p>It exposes hidden risks where you thought you were safe, and highlights the true diversifiers in your portfolio.</p>
+          <p>Use it regularly, because correlations—unlike diamonds—are not forever.</p>
+        </CardContent>
       </Card>
     </div>
   );

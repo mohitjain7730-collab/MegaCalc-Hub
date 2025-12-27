@@ -199,42 +199,130 @@ export default function TrackingErrorCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Complete Guide to Tracking Error</h1>
-        <p className="text-lg italic text-muted-foreground">Understand active risk and how portfolios deviate from benchmarks.</p>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        {/* SEO & SCHEMA METADATA */}
+        <meta itemProp="name" content="The Definitive Guide to Tracking Error: Measuring Active Risk" />
+        <meta itemProp="description" content="Calculate Tracking Error (Active Risk) to understand portfolio deviation from benchmarks. Essential for evaluating active management consistency and closet indexing." />
+        <meta itemProp="keywords" content="Tracking Error, Active Risk, Portfolio Performance, Benchmark Deviation, Information Ratio, Closet Indexing, Standard Deviation" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-15" />
+        <meta itemProp="url" content="/definitive-guide-tracking-error" />
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is Tracking Error?</h2>
-        <p>Tracking error measures the volatility of the difference between portfolio and benchmark returns. Higher tracking error means more active risk—the portfolio deviates more from its benchmark.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Tracking Error: The Price of Being Different</h1>
+        <p className="text-lg italic text-muted-foreground">If you want to beat the market, you have to look different from the market. Tracking Error measures <em>how</em> different you look.</p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Interpreting Values</h2>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>Low TE (0-2%):</strong> Index-like behavior.</li>
-          <li><strong>Moderate TE (2-5%):</strong> Active management with some benchmark deviation.</li>
-          <li><strong>High TE (&gt;5%):</strong> Significant active bets.</li>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#definition" className="hover:underline">What is Active Risk?</a></li>
+          <li><a href="#ranges" className="hover:underline">Typical Ranges by Strategy</a></li>
+          <li><a href="#closet-indexing" className="hover:underline">The "Closet Indexer" Scam</a></li>
+          <li><a href="#limitations" className="hover:underline">Limitations & Warnings</a></li>
         </ul>
+        <hr />
 
-        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-        <p>Tracking error is essential for understanding active risk. Use it alongside Information Ratio to evaluate whether active bets are being rewarded.</p>
+        <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is "Active Risk"?</h2>
+        <p>Tracking Error is often called "Active Risk." It is defined as the <strong>Standard Deviation of the Active Returns</strong> (Portfolio Return minus Benchmark Return).</p>
+        <p>A simpler way to think about it: It measures the "volatility of the difference."</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li>If you own the exact S&P 500 ETF (SPY), your Tracking Error against the S&P 500 is <strong>0%</strong>.</li>
+          <li>If you own a concentric portfolio of 5 tech stocks, your Tracking Error against the S&P 500 might be <strong>15%</strong>.</li>
+        </ul>
+        <hr />
+
+        <h2 id="ranges" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Typical Ranges by Strategy</h2>
+        <p>Use these benchmarks to categorize a fund:</p>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left text-sm">
+            <thead>
+              <tr className="border-b">
+                <th className="p-2 font-bold">Tracking Error</th>
+                <th className="p-2 font-bold">Fund Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b"><td className="p-2">0.0% - 0.2%</td><td className="p-2">Passive Index Fund (ETF)</td></tr>
+              <tr className="border-b"><td className="p-2">0.5% - 2.0%</td><td className="p-2">Enhanced Index / Smart Beta</td></tr>
+              <tr className="border-b"><td className="p-2">3.0% - 8.0%</td><td className="p-2">True Active Management</td></tr>
+              <tr className="border-b"><td className="p-2">10.0% +</td><td className="p-2">Concentrated / Aggressive / Hedge Fund</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr />
+
+        <h2 id="closet-indexing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "Closet Indexer" Scam</h2>
+        <p>One of the biggest problems in the mutual fund industry is "Closet Indexing."</p>
+        <p>This happens when a manager charges high fees (e.g., 1.5%) for "active management," but builds a portfolio that basically mirrors the benchmark (Tracking Error &lt; 2%). They are hugging the index to avoid getting fired for underperformance, but their high fees guarantee they will lag the index. <strong>High fees + Low Tracking Error = Rip-off.</strong></p>
       </section>
 
+      {/* FAQs */}
       <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" /> Frequently Asked Questions</CardTitle><CardDescription>Active risk measurement</CardDescription></CardHeader>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>Advanced Risk metrics</CardDescription>
+        </CardHeader>
         <CardContent className="space-y-6">
-          <div><h4 className="font-semibold mb-2">What is tracking error?</h4><p className="text-muted-foreground">The standard deviation of the return differences between a portfolio and its benchmark.</p></div>
-          <div><h4 className="font-semibold mb-2">How many observations are needed?</h4><p className="text-muted-foreground">More is better; we require at least 3 pairs for a basic estimate.</p></div>
-          <div><h4 className="font-semibold mb-2">Should I use monthly or daily data?</h4><p className="text-muted-foreground">Match your investment horizon and be consistent across series.</p></div>
-          <div><h4 className="font-semibold mb-2">How do I annualize?</h4><p className="text-muted-foreground">Multiply by sqrt(periods per year) if your inputs are per-period returns.</p></div>
-          <div><h4 className="font-semibold mb-2">What increases tracking error?</h4><p className="text-muted-foreground">Concentration, active factor tilts, and timing differences.</p></div>
-          <div><h4 className="font-semibold mb-2">Is zero tracking error good?</h4><p className="text-muted-foreground">It indicates index-like behavior; whether that’s good depends on your goal.</p></div>
-          <div><h4 className="font-semibold mb-2">Can it be compared across funds?</h4><p className="text-muted-foreground">Yes, if benchmarks and measurement windows are comparable.</p></div>
-          <div><h4 className="font-semibold mb-2">Is TE symmetric to alpha?</h4><p className="text-muted-foreground">No. TE is risk; alpha is return relative to expectation.</p></div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Is high Tracking Error good or bad?</h4>
+            <p className="text-muted-foreground">
+              It is neutral. It just means "different." If you are right, high tracking error leads to massive outperformance. If you are wrong, it leads to massive underperformance. You cannot have high alpha without high tracking error.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How does it relate to Information Ratio?</h4>
+            <p className="text-muted-foreground">
+              Information Ratio is simply (Alpha / Tracking Error). It divides the reward (Alpha) by the risk taken to get it (Tracking Error). A manager with high Tracking Error but low Alpha has a terrible Information Ratio.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Can Tracking Error predict future returns?</h4>
+            <p className="text-muted-foreground">
+              No, it only predicts the <em>dispersion</em> of future returns relative to the benchmark. A high TE fund will likely be either at the top or bottom of the performance league table; a low TE fund will be in the middle using index-like returns.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is "Ex-Ante" vs. "Ex-Post" Tracking Error?</h4>
+            <p className="text-muted-foreground">
+              <strong>Ex-Post (this calculator):</strong> Based on historical realized returns.
+              <br />
+              <strong>Ex-Ante:</strong> A forward-looking estimate based on a factor risk model (like Barra) predicting how the current holdings <em>should</em> deviate from the benchmark.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does cash affect Tracking Error?</h4>
+            <p className="text-muted-foreground">
+              Yes. If a fund holds 10% Cash and the benchmark is 100% Equities, the cash drag will create tracking error whenever the market moves up or down (since cash stays flat).
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Why annualize it?</h4>
+            <p className="text-muted-foreground">
+              Standard practice. If calculated on monthly data, multiply by √12 (approx 3.46). If calculated on daily data, multiply by √252 (approx 15.87). This makes it comparable across different reporting periods.
+            </p>
+          </div>
         </CardContent>
       </Card>
 
       {/* Summary Section */}
-      <Card>
-        <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Summary</CardTitle></CardHeader>
-        <CardContent><p className="text-muted-foreground">Tracking Error measures the standard deviation of active returns (portfolio minus benchmark). Higher TE indicates more active risk and greater deviation from the benchmark strategy.</p></CardContent>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Activity className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>Tracking Error is the "Maverick Metric."</p>
+          <p>It tells you if a manager is truly active or just a "Closet Indexer" charging high fees for passive performance.</p>
+          <p>Use it to verify if a fund is behaving how it claims to behave.</p>
+        </CardContent>
       </Card>
     </div>
   );

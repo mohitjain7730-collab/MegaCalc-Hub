@@ -299,126 +299,141 @@ export default function OptimalPortfolioAllocationTwoAssetCalculator() {
       </Card>
 
       {/* Complete SEO Guide */}
-      <div itemScope itemType="https://schema.org/FinanceSummary">
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="name">The Definitive Guide to Optimal Asset Allocation</h1>
-          <meta itemProp="description" content="Calculate the optimal portfolio mix for two assets using modern portfolio theory. Minimize risk and maximize diversification." />
-          <meta itemProp="author" content="MegaCalc Hub" />
-          <meta itemProp="keywords" content="Optimal Portfolio Allocation, Efficient Frontier, Minimum Variance Portfolio, Asset Allocation Calculator, Portfolio Optimization" />
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
+        {/* SEO & SCHEMA METADATA */}
+        <meta itemProp="name" content="The Definitive Guide to Modern Portfolio Theory (MPT) & Asset Allocation" />
+        <meta itemProp="description" content="Calculate the optimal portfolio mix for two assets using modern portfolio theory. Learn about the Efficient Frontier, Sharpe Ratio, and the mathematics of diversification." />
+        <meta itemProp="keywords" content="Optimal Portfolio Allocation, Efficient Frontier, Minimum Variance Portfolio, Modern Portfolio Theory MPT, Sharpe Ratio, Expected Return Formula, Portfolio Standard Deviation" />
+        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
+        <meta itemProp="datePublished" content="2025-11-15" />
+        <meta itemProp="url" content="/definitive-guide-optimal-allocation" />
 
-          <p className="text-lg italic text-muted-foreground">Learn how to calculate the minimum-variance portfolio for two risky assets.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Asset Allocation: Building the Perfect Portfolio</h1>
+        <p className="text-lg italic text-muted-foreground">"Don't put all your eggs in one basket." That's the cliché. Here is the Nobel Prize-winning math that proves exactly how many eggs to put where.</p>
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">What is Minimum-Variance Allocation?</h2>
-          <p>The minimum-variance portfolio is the combination of two assets that produces the lowest possible volatility. It's a key point on the efficient frontier.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <ul className="list-disc ml-6 space-y-2 text-primary">
+          <li><a href="#mpt-basics" className="hover:underline">What is Modern Portfolio Theory?</a></li>
+          <li><a href="#efficient-frontier" className="hover:underline">The Efficient Frontier Explained</a></li>
+          <li><a href="#min-variance-vs-tangency" className="hover:underline">Minimum Variance vs. Maximum Sharpe</a></li>
+          <li><a href="#correlation-magic" className="hover:underline">The Magic of Correlation</a></li>
+          <li><a href="#rebalancing" className="hover:underline">The Rebalancing Bonus</a></li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">The Power of Diversification</h2>
-          <p>When assets aren't perfectly correlated (ρ &lt; 1), combining them reduces total portfolio risk. The lower the correlation, the greater the risk reduction benefit.</p>
+        <h2 id="mpt-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Modern Portfolio Theory (MPT)?</h2>
+        <p>Published by Harry Markowitz in 1952, MPT revolutionized finance by proving that an investor can construct a portfolio of multiple assets that will maximize returns for a given level of risk.</p>
+        <p><strong>Key Insight:</strong> Risk is not just about an individual stock's volatility. It's about how that stock interacts with the rest of your portfolio.</p>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4" itemProp="articleSection">Key Considerations</h2>
-          <ul className="list-disc ml-6 space-y-2">
-            <li>This calculator assumes no short-selling (weights between 0% and 100%).</li>
-            <li>Forward-looking estimates are more useful than historical averages.</li>
-            <li>Rebalancing is needed as weights drift over time due to price changes.</li>
-          </ul>
+        <h2 id="efficient-frontier" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Efficient Frontier Explained</h2>
+        <p>If you plot every possible combination of assets on a graph (Risk on X-axis, Return on Y-axis), the upper boundary of those dots creates a curve called the <strong>Efficient Frontier</strong>.</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>On the Line:</strong> Optimal. You are getting the max return for that risk.</li>
+          <li><strong>Below the Line:</strong> Inefficient. You are taking too much risk for too little return.</li>
+          <li><strong>Above the Line:</strong> Impossible (without leverage).</li>
+        </ul>
+        <hr />
 
-          <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-          <p>Two-asset optimization is foundational for portfolio construction. Understanding how correlation and volatility interact helps you build better diversified portfolios.</p>
-        </section>
+        <h2 id="min-variance-vs-tangency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Minimum Variance vs. Maximum Sharpe</h2>
+        <p>There are two "Optimal" portfolios:</p>
+        <ol className="list-decimal ml-6 space-y-2">
+          <li><strong>Minimum Variance Portfolio (MVP):</strong> The mix with the absolute lowest risk (volatility). This calculator solves for this. Great for risk-averse investors.</li>
+          <li><strong>Tangency Portfolio (Max Sharpe):</strong> The mix with the highest risk-adjusted return (Sharpe Ratio). It’s usually riskier than the MVP but offers better "bang for your buck."</li>
+        </ol>
+        <hr />
 
-        {/* FAQ Section */}
-        <section className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
-                Frequently Asked Questions
-              </CardTitle>
-              <CardDescription>Detailed answers for common portfolio questions</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is minimum-variance allocation?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">It’s the portfolio mix with the lowest possible variance (risk) for two assets, given their individual volatilities and correlation. It doesn't necessarily maximize return, but it minimizes fluctuation.</p>
-                </div>
-              </div>
+        <h2 id="correlation-magic" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Magic of Correlation</h2>
+        <p>The secret sauce is <strong>Correlation (ρ)</strong>, ranging from -1 to +1.</p>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong>ρ = +1.0:</strong> No diversification benefit. Risk is just the weighted average.</li>
+          <li><strong>ρ = 0.0:</strong> Strong diversification. Portfolio risk falls significantly below the weighted average.</li>
+          <li><strong>ρ = -1.0:</strong> Perfect hedge. You can theoretically construct a zero-risk portfolio.</li>
+        </ul>
+      </section>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Does a lower correlation always reduce risk?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes. As long as correlation is less than +1.0, combining assets will result in a portfolio standard deviation lower than the weighted average of the individual standard deviations.</p>
-                </div>
-              </div>
+      {/* FAQs */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>Detailed answers about portfolio optimization</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Why does the calculator suggest 100% in one asset?</h4>
+            <p className="text-muted-foreground">
+              If Asset A has much lower volatility than Asset B, and the correlation isn't low enough to offset it, the math will purely favor the safer asset. This is a "corner solution." To get a mix, you need either closer volatilities or lower correlation.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Are allocations constrained?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes, this calculator constrains weights between 0% and 100% (long-only). In a mathematical model without constraints, you might get weights &gt;100% (leverage) or &lt;0% (shorting).</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is the "Rebalancing Bonus"?</h4>
+            <p className="text-muted-foreground">
+              By maintaining a fixed asset allocation (e.g., 60/40), you are forced to sell high (the asset that rallied) and buy low (the asset that dropped). Over time, this contrarian discipline can generate returns slightly higher than a buy-and-hold strategy.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What is the Sharpe Ratio?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">The Sharpe Ratio measures excess return per unit of risk. While this calculator finds the <em>minimum risk</em> portfolio, the <em>optimal</em> portfolio is often defined as the one maximizing the Sharpe Ratio (tangency portfolio).</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Does this work for 3+ assets?</h4>
+            <p className="text-muted-foreground">
+              Conceptually, yes. The math just gets exponentially more complex (involving Matrices). You have to calculate the covariance of every asset with every other asset. This Two-Asset calculator is the building block for understanding the broader concept.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How do I handle a Risk-Free Asset?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">A risk-free asset has a standard deviation of 0 and correlation of 0 with everything. To optimize with a risk-free asset, you generally lever up or down the tangency portfolio along the Capital Market Line.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What inputs should I trust?</h4>
+            <p className="text-muted-foreground">
+              Garbage In, Garbage Out. Historical returns are notoriously poor predictors of future returns. Historical volatility is <em>somewhat</em> sticky (predictable). Correlations are unstable during crashes (they tend to go to 1). Be conservative with your estimates.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Why are my weights 100% and 0%?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">This "corner solution" happens when one asset is so much less risky than the other (and correlation isn't low enough) that the math prefers holding only the safer asset to minimize variance within the long-only constraint.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Is lower Standard Deviation always better?</h4>
+            <p className="text-muted-foreground">
+              Not if it kills your returns. A portfolio of 100% Cash has 0 standard deviation but near-zero real return. The goal is the <em>highest efficiency</em> (Sharpe Ratio), not just the lowest risk.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">How often should I rebalance?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Rebalancing quarterly or annually is standard. Without rebalancing, the higher-return asset will grow to a larger weight, potentially increasing portfolio risk beyond your target.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">How does inflation affect this?</h4>
+            <p className="text-muted-foreground">
+              MPT works with "Nominal" returns. To account for purchasing power, you should subtract expected inflation from your return inputs to optimize for "Real" returns.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">Can Expected Return be negative?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">Yes, this model accepts negative returns. For example, you might hold a hedging asset with negative expected returns to protect the portfolio during crashes.</p>
-                </div>
-              </div>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">Can I use this for Stock vs. Bond?</h4>
+            <p className="text-muted-foreground">
+              Absolutely. This is the classic 60/40 portfolio use case. Stocks usually have high return/high risk, bonds have lower return/lower risk, and they often have low correlation, making them perfect partners.
+            </p>
+          </div>
 
-              <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h4 className="font-semibold text-lg mb-3" itemProp="name">What inputs matter most?</h4>
-                <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <p className="text-muted-foreground" itemProp="text">For finding the minimum variance weights, only the Standard Deviations and Correlation matter. The Expected Returns determine the resulting portfolio return but do not affect the minimum-variance weight calculation itself.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
+          <div>
+            <h4 className="font-semibold text-lg mb-3">What is the Capital Market Line (CML)?</h4>
+            <p className="text-muted-foreground">
+              The CML is the line drawn from the risk-free rate to the Tangency Portfolio on the Efficient Frontier. It represents the best possible return for any level of risk if you can borrow or lend at the risk-free rate.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
 
-        {/* Summary Section */}
-        <div className="mt-8">
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5" />
-                Summary
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 text-sm text-muted-foreground">
-              <p>The Optimal Portfolio Allocation Calculator determines the ideal mix of two assets to minimize portfolio volatility.</p>
-              <p>It helps investors construct efficient portfolios by mathematically balancing risk and diversification benefits.</p>
-              <p>Use minimum-variance weights as a starting point for safer portfolio construction.</p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
+      {/* Summary Section */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>The Optimal Portfolio Allocation Calculator allows you to find the mathematically perfect balance between two investments.</p>
+          <p>By minimizing variance, you protect your capital from unnecessary volatility without sacrificing efficiency.</p>
+          <p>Use it to design the core "engine" of your long-term wealth strategy.</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
