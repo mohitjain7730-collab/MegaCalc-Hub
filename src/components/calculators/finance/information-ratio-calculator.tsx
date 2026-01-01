@@ -27,7 +27,8 @@ import {
   ArrowUpRight,
   Search,
   BookOpen,
-  Milestone
+  Milestone,
+  Layers
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
