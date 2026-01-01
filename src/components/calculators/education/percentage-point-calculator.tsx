@@ -150,21 +150,70 @@ export default function PercentagePointCalculator() {
                     <CardTitle>A Guide to Percentage Points vs. Percent Change</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6 text-muted-foreground leading-relaxed">
-                    <h2 className="text-xl font-bold text-foreground">The Crucial Distinction</h2>
-                    <p>The difference between a **"percentage point"** change and a **"percent change"** is one of the most common sources of confusion in statistics.</p>
+                    <h2 className="text-xl font-bold text-foreground">A Guide to Percentage Points vs. Percent Change</h2>
+                    <p>The difference between a **"percentage point"** change and a **"percent change"** is one of the most common sources of confusion in financial reporting and statistics. While they both describe changes in percentages, they measure very different things.</p>
+
+                    <h3 className="text-lg font-semibold text-foreground">The Crucial Distinction for Accurate Reporting</h3>
+                    <p>A percentage point is the simple arithmetic difference between two percentages. It is an **absolute** measure. A percentage change, on the other hand, is the relative change between the two values. It is a **proportional** measure.</p>
 
                     <Alert>
                         <Percent className="h-4 w-4" />
-                        <AlertTitle>Example: Interest Rate Increase</AlertTitle>
+                        <AlertTitle>Core Example: An Interest Rate Increase</AlertTitle>
                         <AlertDescription>
-                            A central bank raises its key interest rate from **10%** to **12%**.
+                            A central bank raises its key interest rate from **10%** to **12%**. This can be described in two ways, both technically correct but wildly different in scale.
                         </AlertDescription>
                     </Alert>
 
-                    <ul className="list-disc pl-5 mt-4 space-y-2">
-                        <li><strong>Percentage Point Change:</strong> 12% - 10% = 2 percentage points.</li>
-                        <li><strong>Percentage Change:</strong> ((12 - 10) / 10) * 100 = 20%.</li>
-                    </ul>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div className="p-4 bg-muted border rounded-lg">
+                            <h4 className="font-bold text-primary mb-2">Percentage Point Change</h4>
+                            <p className="text-sm font-mono mb-2">12% - 10% = 2</p>
+                            <p className="text-sm">The rate increased by **2 percentage points**. This is the absolute difference.</p>
+                        </div>
+                        <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
+                            <h4 className="font-bold text-primary mb-2">Percentage Change</h4>
+                            <p className="text-sm font-mono mb-2">((12 - 10) / 10) * 100 = 20%</p>
+                            <p className="text-sm">The rate increased by **20%**. This is how much the original 10% grew relative to itself.</p>
+                        </div>
+                    </div>
+
+                    <p className="mt-4 italic">Failing to clarify which metric you are using can lead to significant misunderstandings, especially in politics, business, and economics.</p>
+
+                    <h3 className="text-lg font-semibold text-foreground">Why the Distinction Matters</h3>
+                    <p>Using "percentage points" prevents ambiguity. If someone says "interest rates went up by 2%," it's unclear if they mean the rate is now 10.2% (a 2% increase of 10) or 12% (a 2 point increase). Saying "2 percentage points" leaves no room for doubt.</p>
+
+                    <div className="w-full overflow-x-auto shadow-sm border rounded-lg mt-4">
+                        <table className="w-full text-sm">
+                            <thead className="bg-muted text-left">
+                                <tr>
+                                    <th className="p-3 border-b">Initial %</th>
+                                    <th className="p-3 border-b">Final %</th>
+                                    <th className="p-3 border-b">Point Difference</th>
+                                    <th className="p-3 border-b">Percentage Change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="border-b">
+                                    <td className="p-3 font-medium">50%</td>
+                                    <td className="p-3">75%</td>
+                                    <td className="p-3 font-bold text-primary">25 pts</td>
+                                    <td className="p-3">50% increase</td>
+                                </tr>
+                                <tr className="border-b">
+                                    <td className="p-3 font-medium">4%</td>
+                                    <td className="p-3">5%</td>
+                                    <td className="p-3 font-bold text-primary">1 pt</td>
+                                    <td className="p-3">25% increase</td>
+                                </tr>
+                                <tr>
+                                    <td className="p-3 font-medium">1.0%</td>
+                                    <td className="p-3">0.5%</td>
+                                    <td className="p-3 font-bold text-destructive">-0.5 pts</td>
+                                    <td className="p-3">50% decrease</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </CardContent>
             </Card>
 
@@ -175,15 +224,39 @@ export default function PercentagePointCalculator() {
                 <CardContent>
                     <Accordion type="single" collapsible className="w-full">
                         <AccordionItem value="item-1">
-                            <AccordionTrigger>When should I use "percentage points"?</AccordionTrigger>
+                            <AccordionTrigger>When should I use "percentage points" instead of "percent"?</AccordionTrigger>
                             <AccordionContent>
-                                <p>Always use percentage points when describing the change in a value that is already a percentage.</p>
+                                <p>Always use percentage points when describing the absolute change in a value that is already a percentage (like interest rates, tax rates, or survey results). This prevents confusion with relative percentage change.</p>
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-2">
-                            <AccordionTrigger>Can the result be negative?</AccordionTrigger>
+                            <AccordionTrigger>What is the 'basis point' (bps) related to this?</AccordionTrigger>
                             <AccordionContent>
-                                <p>Yes. If the final percentage is smaller than the initial percentage, the difference will be negative, indicating a decrease.</p>
+                                <p>A basis point is a sub-unit of a percentage point. One percentage point equals 100 basis points. They are frequently used in finance for very small changes in interest rates (e.g., a "25 bps" hike is a 0.25 percentage point increase).</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Are percentage points always positive?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>No. If the final percentage is lower than the initial one, the difference is a negative number of percentage points, indicating a decrease.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-4">
+                            <AccordionTrigger>Can I say "a 2% point increase"?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>It's better to say "a 2 percentage point increase." While people might understand "2% point," it's technically redundant and can still be slightly confusing.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-5">
+                            <AccordionTrigger>Is there a symbol for percentage points?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>Unlike the percent symbol (%), there is no universally standard single-character symbol for percentage points. It is typically abbreviated as "pp" or "pts."</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-6">
+                            <AccordionTrigger>Why is this calculator useful for surveys?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>If a candidate's polling went from 40% to 44%, they gained 4 percentage points. Saying they gained "4%" is misleading because 44 is actually a 10% increase over 40. The percentage point measure accurately reflects the change in the share of the total vote.</p>
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
@@ -196,7 +269,7 @@ export default function PercentagePointCalculator() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        The Percentage Point Calculator provides the simple arithmetic difference between two percentage values, helping avoid the common confusion between absolute and relative change.
+                        The Percentage Point Calculator is a vital tool for anyone working with statistics, finance, or public policy. By providing the simple arithmetic difference between two percentage values, it helps maintain clarity and precision in communication. Understanding the difference between absolute point changes and relative percentage shifts is essential for accurate data reporting and avoiding common pitfalls in statistical interpretation.
                     </p>
                 </CardContent>
             </Card>

@@ -150,18 +150,63 @@ export default function PercentageOfPercentageCalculator() {
                     <CardTitle>A Guide to Understanding Nested Proportions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6 text-muted-foreground leading-relaxed">
-                    <h2 className="text-xl font-bold text-foreground">What Does "Percent of a Percent" Really Mean?</h2>
-                    <p>This calculation is an essential tool for dealing with data that involves a **subset of a subset**.</p>
+                    <h2 className="text-xl font-bold text-foreground font-title">A Guide to Understanding Nested Proportions</h2>
+                    <p>This calculation is an essential tool for dealing with data that involves a **subset of a subset**. Calculating a percentage of a percentage allows you to see the true impact or size of a niche group within a larger population.</p>
 
+                    <h3 className="text-lg font-semibold text-foreground">The Common Mistake: Accidental Addition</h3>
+                    <p>A frequent error when hearing "10% of 20%" is to think the answer is 30% or some other additive figure. In reality, a "percentage of a percentage" is always smaller than the base percentage (unless the first percentage is greater than 100%). You are taking a slice of an already-existing slice, meaning the final piece of the pie is naturally smaller.</p>
+
+                    <h3 className="text-lg font-semibold text-foreground">Real-World Example: Survey Data</h3>
+                    <p>Imagine a clear real-world scenario where this math is vital:</p>
                     <Alert>
                         <Percent className="h-4 w-4" />
-                        <AlertTitle>Real-World Example: Survey Data</AlertTitle>
+                        <AlertTitle>Dogs and Diets</AlertTitle>
                         <AlertDescription>
-                            A national survey finds that **40%** of the country's population owns a dog. A follow-up survey of only the dog owners finds that **20%** of them feed their dog a raw-food diet.
+                            A national survey finds that **40%** of the country's population owns a dog. A follow-up survey specifically of those dog owners finds that **20%** of them feed their dog a raw-food diet.
                         </AlertDescription>
                     </Alert>
+                    <p className="mt-4 italic font-semibold text-foreground underline decoration-primary underline-offset-4">The Question: What percentage of the TOTAL population follows this trend?</p>
+                    <ul className="list-disc pl-5 space-y-2">
+                        <li>Step 1: Convert to decimals: 0.40 (dog owners) and 0.20 (raw feeders).</li>
+                        <li>Step 2: Multiply: 0.40 * 0.20 = 0.08.</li>
+                        <li>Step 3: Convert back: 0.08 * 100 = 8%.</li>
+                    </ul>
+                    <p>The final answer is that 8% of the total population own a dog AND feed it a raw-food diet.</p>
 
-                    <p className="mt-4">The final answer is 20% OF 40%, which equals 8% of the total population.</p>
+                    <h3 className="text-lg font-semibold text-foreground">Another Application: Cascading Financial Effects</h3>
+                    <p>This logic is also critical in finance, such as when calculating commissions or taxes on already-discounted items.</p>
+                    <div className="w-full overflow-x-auto shadow-sm border rounded-lg">
+                        <table className="w-full text-sm">
+                            <thead className="bg-muted text-left">
+                                <tr>
+                                    <th className="p-3 border-b">Scenario</th>
+                                    <th className="p-3 border-b text-center">X%</th>
+                                    <th className="p-3 border-b text-center">of Y%</th>
+                                    <th className="p-3 border-b text-center">Final Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="border-b">
+                                    <td className="p-3 font-medium">Sales Commission</td>
+                                    <td className="p-3 text-center">5% Commission</td>
+                                    <td className="p-3 text-center">on 20% Net Profit</td>
+                                    <td className="p-3 text-center font-bold text-primary">1% of Sales</td>
+                                </tr>
+                                <tr className="border-b">
+                                    <td className="p-3 font-medium">Retail Discount</td>
+                                    <td className="p-3 text-center">15% Extra Off</td>
+                                    <td className="p-3 text-center">a 30% Sale Item</td>
+                                    <td className="p-3 text-center font-bold text-primary">10.5% Additional</td>
+                                </tr>
+                                <tr>
+                                    <td className="p-3 font-medium">Corporate Tax</td>
+                                    <td className="p-3 text-center">21% Tax Rate</td>
+                                    <td className="p-3 text-center">on 15% Margin</td>
+                                    <td className="p-3 text-center font-bold text-primary">3.15% Overall</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </CardContent>
             </Card>
 
@@ -174,13 +219,31 @@ export default function PercentageOfPercentageCalculator() {
                         <AccordionItem value="item-1">
                             <AccordionTrigger>Is "50% of 20%" the same as "20% of 50%"?</AccordionTrigger>
                             <AccordionContent>
-                                <p>Yes. Multiplication is commutative, so the order does not matter.</p>
+                                <p>Yes. Multiplication is commutative, which means the order of the numbers does not change the result. In both cases, the answer is 10%.</p>
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-2">
-                            <AccordionTrigger>How does this relate to "percentage points"?</AccordionTrigger>
+                            <AccordionTrigger>How is this different from "percentage points"?</AccordionTrigger>
                             <AccordionContent>
-                                <p>They are different. This calculator multiplies proportions, while a percentage point calculation finds the simple arithmetic difference between two percentages.</p>
+                                <p>They are very different. A percentage point is the simple arithmetic difference between two percentages (e.g., 20% to 25% is a 5 percentage point increase). A percentage of a percentage is multiplicative (e.g., 5% of 20% is 1%).</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Can I calculate three percentages in a row?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>Absolutely. You would simply repeat the multiplication process. To find 10% of 20% of 50%, you would multiply: `0.10 * 0.20 * 0.50 = 0.01`, or 1%.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-4">
+                            <AccordionTrigger>Why is the result always smaller than the starting percentages?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>Because you are multiplying two values that are less than 1. When you multiply two decimals (like 0.5 and 0.5), the resulting number is always smaller than the originals.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-5">
+                            <AccordionTrigger>When would I use this in real life?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>This is constant in business and statistics. It's used for calculating compound interest, tiered commission structures, sales tax on discounted items, and analyzing demographic subsets in research data.</p>
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
@@ -193,7 +256,7 @@ export default function PercentageOfPercentageCalculator() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        The Percentage of a Percentage Calculator is a specialized tool for determining a proportion of an existing proportion, often described as finding a "part of a part."
+                        The "Percentage of a Percentage Controller" is a specialized tool for determining a proportion of an existing proportion. Frequently described as finding a "part of a part," this calculation is critical for accurate financial analysis and proper interpretation of statistical data. Whether you are calculating niche survey results or complex business commissions, understanding the multiplicative relationship between percentages is essential for precision.
                     </p>
                 </CardContent>
             </Card>

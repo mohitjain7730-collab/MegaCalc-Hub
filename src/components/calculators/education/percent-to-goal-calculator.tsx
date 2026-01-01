@@ -161,17 +161,23 @@ export default function PercentToGoalCalculator() {
                 </CardHeader>
                 <CardContent className="space-y-6 text-muted-foreground leading-relaxed">
                     <h2 className="text-xl font-bold text-foreground">The Psychology of the Progress Bar</h2>
-                    <p>Visualizing progress is a core component of motivation and goal achievement. It provides tangible feedback and makes large goals feel manageable.</p>
+                    <p>The concept of "percent to goal" is more than just a mathematical calculation; it's a powerful psychological tool. Visualizing progress, such as with the progress bar this calculator provides, is a core component of motivation and goal achievement. It provides tangible feedback, reinforces positive behavior, and makes large, intimidating goals feel manageable.</p>
+                    <p>This principle is used everywhere, from fitness apps tracking your daily steps to fundraising thermometers showing how close a charity is to its target. By calculating your percent to goal, you're creating a personal progress bar for any objective in your life.</p>
 
-                    <h2 className="text-xl font-bold text-foreground">Real-World Applications</h2>
+                    <h2 className="text-xl font-bold text-foreground">Real-World Applications of Percent to Goal</h2>
+                    <p>This simple calculation is incredibly versatile and can be applied to almost any area where you're tracking progress:</p>
                     <ul className="list-disc pl-5 space-y-3">
-                        <li><strong>Personal Finance:</strong> Tracking savings goals.</li>
-                        <li><strong>Fitness:</strong> Training session completion.</li>
-                        <li><strong>Business:</strong> Sales targets.</li>
+                        <li><strong>Personal Finance:</strong> If you've saved $1,500 towards a $5,000 emergency fund, you are `(1500 / 5000) * 100 = 30%` of the way to your goal.</li>
+                        <li><strong>Fitness and Training:</strong> You're training for a 10km race and have just completed a 6.5km run. You've run `(6.5 / 10) * 100 = 65%` of the race distance.</li>
+                        <li><strong>Project Management:</strong> A team has completed 120 out of 200 required tasks for a project. They are `(120 / 200) * 100 = 60%` complete.</li>
+                        <li><strong>Sales and Business:</strong> A salesperson has made $40,000 in sales towards a quarterly quota of $50,000. They have achieved `(40000 / 50000) * 100 = 80%` of their goal.</li>
+                        <li><strong>Academics:</strong> A student has read 250 pages of a 400-page book. They are `(250 / 400) * 100 = 62.5%` of the way through.</li>
                     </ul>
 
                     <h2 className="text-xl font-bold text-foreground">Handling Scenarios Where You Exceed the Goal</h2>
-                    <p>Surpassing your goal results in a percentage greater than 100%, an excellent indicator of over-achievement.</p>
+                    <p>It's a great problem to have: what happens when your current value surpasses your goal value? In this case, your percentage will be greater than 100%. This is an excellent indicator of over-achievement.</p>
+                    <p>For example, if a fundraiser's goal was $10,000 and they raised $12,000, they achieved `(12000 / 10000) * 100 = 120%` of their goal. This is often referred to as a "stretch goal" and is a powerful motivator for teams and individuals.</p>
+                    <p>Our calculator's progress bar caps at 100% to provide a clear visual of goal completion, but it displays the actual percentage achieved, allowing you to celebrate and quantify how much you've exceeded expectations.</p>
                 </CardContent>
             </Card>
 
@@ -184,13 +190,31 @@ export default function PercentToGoalCalculator() {
                         <AccordionItem value="item-1">
                             <AccordionTrigger>What if my current value is negative?</AccordionTrigger>
                             <AccordionContent>
-                                <p>The calculator handles negative values, though interpretation depends on the context.</p>
+                                <p>The calculator can handle negative current values. This is common in scenarios like weight loss goals. For example, if your goal is to lose 20 lbs and you have lost 5 lbs so far, you could represent this as a current value of 5 and a goal of 20 (25% complete). Or, if you're tracking net worth and start at -$5,000 with a goal of $10,000, the math still works, but interpreting the percentage can be less intuitive.</p>
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-2">
                             <AccordionTrigger>Why can't the goal value be zero?</AccordionTrigger>
                             <AccordionContent>
-                                <p>Dividing by zero is undefined.</p>
+                                <p>Mathematically, dividing by zero is an undefined operation. A goal of zero doesn't make logical sense in this context either; you cannot measure progress towards a goal that requires no effort or change to achieve.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>How is this different from the 'Value Percentage Calculator'?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>They use very similar formulas but answer different questions. The 'Value Percentage Calculator' answers "What is 25% of 100?" (Result: 25). This 'Percent to Goal Calculator' answers the inverse question: "What percentage of 100 is 25?" (Result: 25%). It's a subtle but important difference in perspective, focused on progress rather than just finding a value.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-4">
+                            <AccordionTrigger>How can I calculate the remaining percentage to my goal?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>Once you have the percentage of the goal achieved, simply subtract that number from 100. If you are 70% of the way to your goal, you have `100 - 70 = 30%` remaining.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-5">
+                            <AccordionTrigger>Can I use this for goals that decrease?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>Yes. For example, if your goal is to reduce your screen time from 4 hours (240 minutes) to 1 hour (60 minutes), your total reduction goal is 180 minutes. If you have already reduced it by 30 minutes, your current value is 30 and your goal is 180. You are `(30 / 180) * 100 = 16.67%` of the way to your reduction goal.</p>
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
@@ -203,7 +227,7 @@ export default function PercentToGoalCalculator() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        The Percent to Goal Calculator translates your progress into an understandable percentage, providing a clear snapshot of your achievements.
+                        The Percent to Goal Calculator is a simple yet powerful motivational tool that translates your progress into an easily understandable percentage. By comparing your achievement to your ultimate target, it provides a clear snapshot of how far you've come and how far you have left to go. It's an essential calculator for personal finance, project management, fitness tracking, and any activity where progress is incremental and the final objective is clear.
                     </p>
                 </CardContent>
             </Card>

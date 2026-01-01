@@ -156,44 +156,57 @@ export default function PercentErrorCalculator() {
                     <p>In scientific and technical fields, it's crucial to understand the difference between precision and accuracy. Percent error is a direct measure of **accuracy**.</p>
                     <ul className="list-disc pl-5 space-y-2">
                         <li>**Accuracy** refers to how close a measured value is to the true or accepted value. A low percent error indicates high accuracy.</li>
-                        <li>**Precision** refers to how close multiple measurements of the same quantity are to each other.</li>
+                        <li>**Precision** refers to how close multiple measurements of the same quantity are to each other, regardless of how close they are to the true value.</li>
                     </ul>
 
                     <h2 className="text-xl font-bold text-foreground">Interpreting Percent Error</h2>
-                    <p>What constitutes an "acceptable" percent error depends heavily on the context:</p>
-                    <div className="w-full overflow-x-auto">
+                    <p>What constitutes an "acceptable" percent error depends heavily on the context of the work being performed. In some fields, a 10% error is perfectly normal, while in others, anything over 0.1% is considered a failure.</p>
+
+                    <div className="w-full overflow-x-auto shadow-sm border rounded-lg">
                         <table className="w-full text-sm">
-                            <thead className="text-left font-semibold text-foreground">
+                            <thead className="bg-muted text-left font-semibold text-foreground">
                                 <tr>
-                                    <th className="p-2 border-b">Field</th>
-                                    <th className="p-2 border-b">Typical Acceptable Error</th>
-                                    <th className="p-2 border-b">Reasoning</th>
+                                    <th className="p-3 border-b">Field</th>
+                                    <th className="p-3 border-b">Typical Acceptable Error</th>
+                                    <th className="p-3 border-b">Reasoning</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr className="border-b">
-                                    <td className="p-2 align-top">High School Chemistry</td>
-                                    <td className="p-2 align-top">5-10%</td>
-                                    <td className="p-2 align-top">Accounts for less precise equipment and basic experimental techniques.</td>
+                                    <td className="p-3 font-medium">High School Chemistry</td>
+                                    <td className="p-3">5-10%</td>
+                                    <td className="p-3">Accounts for less precise equipment and basic experimental techniques.</td>
                                 </tr>
                                 <tr className="border-b">
-                                    <td className="p-2 align-top">University Physics</td>
-                                    <td className="p-2 align-top">1-5%</td>
-                                    <td className="p-2 align-top">More sophisticated equipment and methods allow for greater accuracy.</td>
+                                    <td className="p-3 font-medium">University Physics Lab</td>
+                                    <td className="p-3">1-5%</td>
+                                    <td className="p-3">More sophisticated equipment and rigorous methods allow for greater accuracy.</td>
                                 </tr>
                                 <tr className="border-b">
-                                    <td className="p-2 align-top">Pharmaceutical Manufacturing</td>
-                                    <td className="p-2 align-top">{'<'} 0.1%</td>
-                                    <td className="p-2 align-top">Extremely high accuracy is required for safety and efficacy of medications.</td>
+                                    <td className="p-3 font-medium">Professional Engineering</td>
+                                    <td className="p-3">{'<'} 1%</td>
+                                    <td className="p-3">Safety and structural integrity require high precision and tight tolerances.</td>
+                                </tr>
+                                <tr className="border-b">
+                                    <td className="p-3 font-medium">Pharmaceutical Manufacturing</td>
+                                    <td className="p-3">{'<'} 0.1%</td>
+                                    <td className="p-3">Extremely high accuracy is required for the safety and efficacy of medications.</td>
+                                </tr>
+                                <tr>
+                                    <td className="p-3 font-medium">Aerospace Engineering</td>
+                                    <td className="p-3">{'<'} 0.01%</td>
+                                    <td className="p-3">Extreme precision is required for navigation and structural performance in space.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <h2 className="text-xl font-bold text-foreground">Sources of Error</h2>
-                    <ol className="list-decimal list-inside space-y-2">
-                        <li><strong>Systematic Errors:</strong> Consistent, repeatable errors usually caused by instrument problems or design issues.</li>
-                        <li><strong>Random Errors:</strong> Unpredictable fluctuations from various sources.</li>
+                    <h2 className="text-xl font-bold text-foreground">Common Sources of Error in Measurements</h2>
+                    <p>If you find a high percent error in your results, it's usually due to one of three types of error:</p>
+                    <ol className="list-decimal pl-5 space-y-3">
+                        <li><strong>Systematic Errors:</strong> These are consistent, repeatable errors usually caused by a problem with the measuring instrument (e.g., a scale that isn't zeroed) or a flawed experimental design.</li>
+                        <li><strong>Random Errors:</strong> These are unpredictable fluctuations that can occur due to environmental factors (temperature changes) or small, unintentional variations in how a person reads an instrument.</li>
+                        <li><strong>Human Error:</strong> These are simple mistakes, such as miscalculating a value, misreading a scale, or incorrectly recording data.</li>
                     </ol>
                 </CardContent>
             </Card>
@@ -207,19 +220,31 @@ export default function PercentErrorCalculator() {
                         <AccordionItem value="item-1">
                             <AccordionTrigger>Can percent error be negative?</AccordionTrigger>
                             <AccordionContent>
-                                <p>No. By using the absolute value, percent error is always expressed as a positive value. It measures magnitude, not direction.</p>
+                                <p>No. By convention, percent error is almost always expressed as a positive value. This is because we use the "absolute value" of the difference (the magnitude of the error), as we are usually interested in how *far off* the measurement is, regardless of whether it's too high or too low.</p>
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-2">
                             <AccordionTrigger>What's the difference between percent error and percent change?</AccordionTrigger>
                             <AccordionContent>
-                                <p>Percent error compares to a known true value. Percent change compares two experimental values over time.</p>
+                                <p>Percent error measures how close an experimental value is to a known, theoretical "true" value. Percent change is used to compare two different experimental or observed values, usually to show how a value has changed over time.</p>
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-3">
-                            <AccordionTrigger>What if I don't know the true value?</AccordionTrigger>
+                            <AccordionTrigger>What if the true value is zero?</AccordionTrigger>
                             <AccordionContent>
-                                <p>You cannot calculate percent error without a known benchmark.</p>
+                                <p>If the true (theoretical) value is zero, the percent error formula becomes mathematically undefined because you cannot divide by zero. In such cases, other statistical measures like "residual" or "absolute error" are used instead.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-4">
+                            <AccordionTrigger>Is a low percent error always good?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>Generally, yes, as it indicates high accuracy. However, a "too good to be true" low percent error can sometimes suggest that data was manipulated or that the experiment was not sensitive enough to detect real variations.</p>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-5">
+                            <AccordionTrigger>What is the difference between "Relative Error" and "Percent Error"?</AccordionTrigger>
+                            <AccordionContent>
+                                <p>Relative error is the ratio of the absolute error to the true value (expressed as a decimal). Percent error is simply the relative error multiplied by 100 to express it as a percentage.</p>
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
@@ -232,7 +257,7 @@ export default function PercentErrorCalculator() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        The Percent Error Calculator is a fundamental tool for quantifying measurement accuracy. By comparing observed values to theoretical benchmarks, it provides a standardized measure of deviation, crucial for validating experimental quality.
+                        The Percent Error Calculator is a fundamental tool for anyone involved in scientific research, engineering, or education. By quantifying the accuracy of experimental measurements relative to established benchmarks, it provides a standardized measure of data quality. Understanding percent error not only helps in validating results but also in identifying potential flaws in experimental design and equipment calibration, ultimately leading to more robust and reliable scientific outcomes.
                     </p>
                 </CardContent>
             </Card>
