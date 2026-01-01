@@ -67,7 +67,7 @@ export default function AllCalculatorsPage() {
                     calculatorCount++;
                     return (
                       <Link
-                        href={`/category/${category.slug}/${calc.slug}`}
+                        href={category.slug === 'education' ? `/category/education/maths/${calc.slug}` : `/category/education/${calc.slug}`}
                         key={calc.id}
                         className="group block"
                       >

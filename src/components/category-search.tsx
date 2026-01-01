@@ -271,7 +271,7 @@ export function CategorySearch({ calculators, categoryName, categorySlug }: Cate
     calcs.length > 0 ? (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {calcs.map((calc) => (
-          <Link href={`/category/${categorySlug}/${calc.slug}`} key={calc.id} className="group block h-full">
+          <Link href={categorySlug === 'education' ? `/category/education/maths/${calc.slug}` : `/category/${categorySlug}/${calc.slug}`} key={calc.id} className="group block h-full">
             <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
               <CardHeader>
                 <CardTitle className="text-base sm:text-lg break-words">{calc.name}</CardTitle>
