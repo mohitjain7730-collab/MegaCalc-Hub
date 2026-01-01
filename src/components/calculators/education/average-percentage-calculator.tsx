@@ -28,6 +28,16 @@ const relatedCalculators: { name: string; href: string }[] = [
     { name: 'Doubling Time', href: '/category/education/maths/doubling-time-calculator' },
     { name: 'Fraction to Percent', href: '/category/education/maths/fraction-to-percent-calculator' },
     { name: 'Fuel Cost', href: '/category/education/maths/fuel-cost-calculator' },
+    { name: 'Historic Change', href: '/category/education/maths/historic-change-calculator' },
+    { name: 'Investment Growth', href: '/category/education/maths/investment-growth-calculator' },
+    { name: 'Percentage of a Percentage', href: '/category/education/maths/percentage-of-a-percentage-calculator' },
+    { name: 'Percentage Point', href: '/category/education/maths/percentage-point-calculator' },
+    { name: 'Percent Error', href: '/category/education/maths/percent-error-calculator' },
+    { name: 'Percent to Goal', href: '/category/education/maths/percent-to-goal-calculator' },
+    { name: 'Relative Change', href: '/category/education/maths/relative-change-calculator' },
+    { name: 'Slope Percentage', href: '/category/education/maths/slope-percentage-calculator' },
+    { name: 'Time Percentage', href: '/category/education/maths/time-percentage-calculator' },
+    { name: 'Value Percentage', href: '/category/education/maths/value-percentage-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 const chartConfig = {
