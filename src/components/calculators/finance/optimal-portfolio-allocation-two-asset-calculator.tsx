@@ -8,434 +8,633 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calculator, Target, Info, LineChart } from 'lucide-react';
+import {
+  Zap,
+  TrendingUp,
+  AlertCircle,
+  Target,
+  Info,
+  Landmark,
+  Calculator,
+  DollarSign,
+  BarChart3,
+  Shield,
+  TrendingDown,
+  FunctionSquare,
+  CheckCircle2,
+  PieChart,
+  Layers,
+  ArrowRightLeft,
+  Activity,
+  ShieldCheck,
+  ZapOff
+} from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const formSchema = z.object({
-  r1: z.number().min(-100).max(100).optional(),
-  r2: z.number().min(-100).max(100).optional(),
-  s1: z.number().min(0).max(500).optional(),
-  s2: z.number().min(0).max(500).optional(),
-  rho: z.number().min(-1).max(1).optional(),
+  asset1Return: z.coerce.number({ invalid_type_error: "Return must be a number" }).min(-100).max(1000),
+  asset2Return: z.coerce.number({ invalid_type_error: "Return must be a number" }).min(-100).max(1000),
+  asset1Volatility: z.coerce.number({ invalid_type_error: "Volatility must be a number" }).min(0.01).max(500),
+  asset2Volatility: z.coerce.number({ invalid_type_error: "Volatility must be a number" }).min(0.01).max(500),
+  correlation: z.coerce.number({ invalid_type_error: "Correlation must be a number" }).min(-1).max(1),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-type Result = {
-  w1: number;
-  w2: number;
-  portfolioReturn: number;
-  portfolioStd: number;
-  interpretation: string;
-  suggestions: string[];
-};
-
-export default function OptimalPortfolioAllocationTwoAssetCalculator() {
-  const [result, setResult] = useState<Result | null>(null);
+export default function OptimalPortfolioAllocationCalculator() {
+  const [result, setResult] = useState<{
+    w1: number;
+    w2: number;
+    portfolioReturn: number;
+    portfolioVolatility: number;
+    diversificationBenefit: number;
+    allocationStrategy: string;
+    riskEfficiency: string;
+    diversificationLevel: string;
+    insights: string[];
+    riskAssessments: string[];
+  } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      r1: undefined as unknown as number,
-      r2: undefined as unknown as number,
-      s1: undefined as unknown as number,
-      s2: undefined as unknown as number,
-      rho: undefined as unknown as number,
+      asset1Return: 10,
+      asset2Return: 6,
+      asset1Volatility: 15,
+      asset2Volatility: 10,
+      correlation: 0.2,
     },
   });
 
-  const onSubmit = (v: FormValues) => {
-    if (
-      v.r1 === undefined || v.r2 === undefined ||
-      v.s1 === undefined || v.s2 === undefined || v.rho === undefined
-    ) {
-      setResult(null);
-      return;
-    }
-    const s1 = v.s1 / 100;
-    const s2 = v.s2 / 100;
-    const cov = v.rho * s1 * s2;
-    const denom = (s1 * s1) + (s2 * s2) - 2 * cov;
-    const w1 = denom === 0 ? 0.5 : ((s2 * s2) - cov) / denom; // minimum-variance weight
-    const w1Clamped = Math.min(1, Math.max(0, w1));
-    const w2Clamped = 1 - w1Clamped;
-    const pRet = w1Clamped * v.r1 + w2Clamped * v.r2;
-    const pVar = (w1Clamped * w1Clamped * s1 * s1) + (w2Clamped * w2Clamped * s2 * s2) + (2 * w1Clamped * w2Clamped * cov);
-    const pStd = Math.sqrt(pVar) * 100;
+  const onSubmit = (values: FormValues) => {
+    const { asset1Return, asset2Return, asset1Volatility, asset2Volatility, correlation } = values;
 
-    const interpretation = `Minimum-variance allocation suggests ${(w1Clamped * 100).toFixed(1)}% in Asset 1 and ${(w2Clamped * 100).toFixed(1)}% in Asset 2.`;
-    const suggestions = [
-      'Consider constraints (e.g., no shorting, max weights).',
-      'Revisit inputs periodically; expected returns and risk change over time.',
-      'If rho is low or negative, diversification benefits increase.',
-      'Stress test allocations with alternative scenarios.',
+    // Normalize to decimals for calculation
+    const r1 = asset1Return / 100;
+    const r2 = asset2Return / 100;
+    const s1 = asset1Volatility / 100;
+    const s2 = asset2Volatility / 100;
+    const rho = correlation;
+
+    // Minimum Variance Weight Formula: w1 = (s2^2 - rho*s1*s2) / (s1^2 + s2^2 - 2*rho*s1*s2)
+    const cov = rho * s1 * s2;
+    const numerator = Math.pow(s2, 2) - cov;
+    const denominator = Math.pow(s1, 2) + Math.pow(s2, 2) - 2 * cov;
+
+    let w1 = numerator / denominator;
+
+    // Clamp weights between 0 and 1 (Long-only constraint)
+    w1 = Math.max(0, Math.min(1, w1));
+    const w2 = 1 - w1;
+
+    // Portfolio Return
+    const pReturn = (w1 * r1 + w2 * r2) * 100;
+
+    // Portfolio Variance = w1^2*s1^2 + w2^2*s2^2 + 2*w1*w2*cov
+    const pVar = Math.pow(w1, 2) * Math.pow(s1, 2) + Math.pow(w2, 2) * Math.pow(s2, 2) + 2 * w1 * w2 * cov;
+    const pVolatility = Math.sqrt(pVar) * 100;
+
+    // Diversification Benefit: Weighted Avg Vol - Portfolio Vol
+    const weightedAvgVol = (w1 * s1 + w2 * s2) * 100;
+    const divBenefit = weightedAvgVol - pVolatility;
+
+    // Categorization
+    let allocationStrategy = "Balanced High-Variance";
+    if (w1 > 0.8) allocationStrategy = "Asset 1 Dominant";
+    else if (w2 > 0.8) allocationStrategy = "Asset 2 Dominant";
+    else if (Math.abs(w1 - 0.5) < 0.1) allocationStrategy = "Equal Weight Optimized";
+
+    let riskEfficiency = "Moderate";
+    const sharpeEstimate = pReturn / (pVolatility || 1);
+    if (sharpeEstimate > 1.2) riskEfficiency = "High";
+    else if (sharpeEstimate < 0.5) riskEfficiency = "Low";
+
+    let diversificationLevel = "Moderate";
+    if (rho < 0) diversificationLevel = "Exceptional (Inversed)";
+    else if (rho < 0.3) diversificationLevel = "Strong";
+    else if (rho > 0.8) diversificationLevel = "Weak";
+
+    const insights = [
+      `Optimal allocation suggests placing ${(w1 * 100).toFixed(1)}% in Asset 1.`,
+      `You achieved a volatility reduction of ${divBenefit.toFixed(2)}% via diversification.`,
+      rho < 0.2 ? "Low correlation significantly boosts risk-adjusted returns." : "High correlation limits the power of diversification.",
+      "Rebalancing to these weights can capture the 'volatility harvesting' premium."
     ];
 
-    setResult({ w1: w1Clamped, w2: w2Clamped, portfolioReturn: pRet, portfolioStd: pStd, interpretation, suggestions });
+    const riskAssessments = [
+      pVolatility > 20 ? "High absolute volatility: Expect significant drawdowns." : "Moderate volatility profile.",
+      Math.abs(w1 - 1) < 0.01 || w1 < 0.01 ? "Corner solution: Portfolio is highly concentrated in one asset." : "Well-distributed allocation.",
+      rho > 0.9 ? "Redundancy Alert: Assets are virtually identical; diversification is an illusion here." : "Assets provide distinct risk profiles.",
+      "Input sensitivity: Small changes in volatility estimates could shift weights drastically."
+    ];
+
+    setResult({
+      w1,
+      w2,
+      portfolioReturn: pReturn,
+      portfolioVolatility: pVolatility,
+      diversificationBenefit: divBenefit,
+      allocationStrategy,
+      riskEfficiency,
+      diversificationLevel,
+      insights,
+      riskAssessments
+    });
   };
 
   return (
     <div className="space-y-8">
-      <Card>
+      {/* Input Section */}
+      <Card className="border-t-4 border-t-primary shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5" />
-            Optimal Portfolio Allocation (Two Asset)
+            <PieChart className="h-5 w-5 text-primary" />
+            Asset Attributes & Correlation
           </CardTitle>
-          <CardDescription>Compute the minimum-variance mix for two risky assets.</CardDescription>
+          <CardDescription>
+            Enter expected returns and volatility to find the mathematically optimal mix
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField control={form.control} name="r1" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Asset 1 Expected Return (%)</FormLabel>
-                    <FormControl>
-                      <Input type="number" step="0.01" placeholder="e.g., 8" {...field}
-                        value={Number.isFinite(field.value as any) ? (field.value as any) : ''}
-                        onChange={e => {
-                          const v = e.target.value;
-                          const num = v === '' ? undefined : Number(v);
-                          field.onChange(Number.isFinite(num as any) ? num : undefined);
-                        }}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="r2" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Asset 2 Expected Return (%)</FormLabel>
-                    <FormControl>
-                      <Input type="number" step="0.01" placeholder="e.g., 6" {...field}
-                        value={Number.isFinite(field.value as any) ? (field.value as any) : ''}
-                        onChange={e => {
-                          const v = e.target.value;
-                          const num = v === '' ? undefined : Number(v);
-                          field.onChange(Number.isFinite(num as any) ? num : undefined);
-                        }}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="s1" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Asset 1 Standard Deviation (%)</FormLabel>
-                    <FormControl>
-                      <Input type="number" step="0.01" placeholder="e.g., 15" {...field}
-                        value={Number.isFinite(field.value as any) ? (field.value as any) : ''}
-                        onChange={e => {
-                          const v = e.target.value;
-                          const num = v === '' ? undefined : Number(v);
-                          field.onChange(Number.isFinite(num as any) ? num : undefined);
-                        }}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="s2" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Asset 2 Standard Deviation (%)</FormLabel>
-                    <FormControl>
-                      <Input type="number" step="0.01" placeholder="e.g., 10" {...field}
-                        value={Number.isFinite(field.value as any) ? (field.value as any) : ''}
-                        onChange={e => {
-                          const v = e.target.value;
-                          const num = v === '' ? undefined : Number(v);
-                          field.onChange(Number.isFinite(num as any) ? num : undefined);
-                        }}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="rho" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Correlation (ρ)</FormLabel>
-                    <FormControl>
-                      <Input type="number" step="0.01" placeholder="e.g., 0.3" {...field}
-                        value={Number.isFinite(field.value as any) ? (field.value as any) : ''}
-                        onChange={e => {
-                          const v = e.target.value;
-                          const num = v === '' ? undefined : Number(v);
-                          field.onChange(Number.isFinite(num as any) ? num : undefined);
-                        }}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="space-y-4 p-4 bg-muted/30 rounded-xl border border-dashed">
+                  <h3 className="text-sm font-bold flex items-center gap-2 uppercase tracking-wider text-muted-foreground">
+                    <Layers className="h-4 w-4" /> Asset 1 (High Growth)
+                  </h3>
+                  <FormField
+                    control={form.control}
+                    name="asset1Return"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Expected Return (%)</FormLabel>
+                        <FormControl>
+                          <Input type="number" step="0.01" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="asset1Volatility"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Volatility (Std Dev %)</FormLabel>
+                        <FormControl>
+                          <Input type="number" step="0.01" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="space-y-4 p-4 bg-muted/30 rounded-xl border border-dashed">
+                  <h3 className="text-sm font-bold flex items-center gap-2 uppercase tracking-wider text-muted-foreground">
+                    <Layers className="h-4 w-4" /> Asset 2 (Conservative)
+                  </h3>
+                  <FormField
+                    control={form.control}
+                    name="asset2Return"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Expected Return (%)</FormLabel>
+                        <FormControl>
+                          <Input type="number" step="0.01" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="asset2Volatility"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Volatility (Std Dev %)</FormLabel>
+                        <FormControl>
+                          <Input type="number" step="0.01" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="space-y-4 p-4 bg-primary/5 rounded-xl border border-primary/20 flex flex-col justify-center">
+                  <h3 className="text-sm font-bold flex items-center gap-2 uppercase tracking-wider text-primary">
+                    <ArrowRightLeft className="h-4 w-4" /> Market Synergy
+                  </h3>
+                  <FormField
+                    control={form.control}
+                    name="correlation"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Correlation (ρ)</FormLabel>
+                        <CardDescription className="mb-2">-1.0 (Inverse) to +1.0 (Same)</CardDescription>
+                        <FormControl>
+                          <Input type="number" step="0.01" min="-1" max="1" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="pt-2 text-[10px] text-muted-foreground italic">
+                    Lower correlation drastically improves the &quot;Efficiency Ratio&quot;.
+                  </div>
+                </div>
               </div>
-              <Button type="submit" className="w-full md:w-auto">Calculate</Button>
+              <Button type="submit" className="w-full h-12 text-lg shadow-xl hover:shadow-primary/20 transition-all font-bold">
+                <Calculator className="mr-2 h-5 w-5" />
+                Solve Minimum Variance Allocation
+              </Button>
             </form>
           </Form>
         </CardContent>
       </Card>
 
+      {/* Results Section */}
       {result && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <LineChart className="h-5 w-5" />
-              Results & Insights
-            </CardTitle>
-            <CardDescription>Minimum-variance allocation summary</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 border rounded-lg">
-                <p className="text-sm text-muted-foreground">Weight in Asset 1</p>
-                <p className="text-2xl font-bold">{(result.w1 * 100).toFixed(1)}%</p>
+        <div className="space-y-6 animate-in fade-in duration-700">
+          <Card className="overflow-hidden border-2 border-primary/10">
+            <CardHeader className="bg-primary/5 border-b">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary rounded-lg text-primary-foreground">
+                    <Activity className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-2xl tracking-tighter">Optimal Allocation Solution</CardTitle>
+                    <CardDescription>Mathematically derived minimum-risk weights</CardDescription>
+                  </div>
+                </div>
+                <Badge variant="secondary" className="h-8 px-4 text-xs font-black uppercase">{result.allocationStrategy}</Badge>
               </div>
-              <div className="p-4 border rounded-lg">
-                <p className="text-sm text-muted-foreground">Weight in Asset 2</p>
-                <p className="text-2xl font-bold">{(result.w2 * 100).toFixed(1)}%</p>
+            </CardHeader>
+            <CardContent className="pt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div className="p-6 bg-primary rounded-2xl text-primary-foreground shadow-inner flex flex-col items-center justify-center text-center">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 mb-1">Asset 1 Weight</p>
+                  <p className="text-4xl font-black">{(result.w1 * 100).toFixed(1)}%</p>
+                </div>
+                <div className="p-6 bg-muted rounded-2xl flex flex-col items-center justify-center text-center border-2 border-dashed">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1">Asset 2 Weight</p>
+                  <p className="text-4xl font-black">{(result.w2 * 100).toFixed(1)}%</p>
+                </div>
+                <div className="p-6 bg-muted rounded-2xl flex flex-col items-center justify-center text-center border">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1">Port. Return</p>
+                  <p className="text-3xl font-black text-foreground">{result.portfolioReturn.toFixed(2)}%</p>
+                </div>
+                <div className="p-6 bg-muted rounded-2xl flex flex-col items-center justify-center text-center border">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-1">Port. Volatility</p>
+                  <p className="text-3xl font-black text-foreground">{result.portfolioVolatility.toFixed(2)}%</p>
+                </div>
               </div>
-              <div className="p-4 border rounded-lg">
-                <p className="text-sm text-muted-foreground">Portfolio Std. Dev.</p>
-                <p className="text-2xl font-bold">{result.portfolioStd.toFixed(2)}%</p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="flex items-center gap-3 p-4 bg-green-50 dark:bg-green-900/10 rounded-xl border border-green-100">
+                  <ShieldCheck className="h-8 w-8 text-green-600" />
+                  <div>
+                    <p className="text-[10px] font-bold text-green-700 uppercase">Risk Efficiency</p>
+                    <p className="text-lg font-black text-green-900 dark:text-green-400">{result.riskEfficiency}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-blue-50 dark:bg-blue-900/10 rounded-xl border border-blue-100">
+                  <Zap className="h-8 w-8 text-blue-600" />
+                  <div>
+                    <p className="text-[10px] font-bold text-blue-700 uppercase">Div. Bonus</p>
+                    <p className="text-lg font-black text-blue-900 dark:text-blue-400">+{result.diversificationBenefit.toFixed(2)}%</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-purple-50 dark:bg-purple-900/10 rounded-xl border border-purple-100">
+                  <Target className="h-8 w-8 text-purple-600" />
+                  <div>
+                    <p className="text-[10px] font-bold text-purple-700 uppercase">Targeting</p>
+                    <p className="text-lg font-black text-purple-900 dark:text-purple-400">Low Variance</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border rounded-lg">
-                <p className="text-sm text-muted-foreground">Portfolio Expected Return</p>
-                <p className="text-2xl font-bold">{result.portfolioReturn.toFixed(2)}%</p>
-              </div>
-              <div className="p-4 border rounded-lg">
-                <p className="text-sm text-muted-foreground">Interpretation</p>
-                <p className="font-medium">{result.interpretation}</p>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Suggestions</h4>
-              <ul className="list-disc pl-6 text-muted-foreground space-y-1">
-                {result.suggestions.map((s, i) => (<li key={i}>{s}</li>))}
-              </ul>
-            </div>
-          </CardContent>
-        </Card>
+
+              <Alert className="border-primary/20 bg-primary/5 shadow-sm">
+                <Info className="h-4 w-4 text-primary" />
+                <AlertDescription className="font-semibold text-primary/80 italic">
+                  Diversification is the only &apos;free lunch&apos; in finance. By combining these assets, you&apos;ve reduced your risk by {result.diversificationBenefit.toFixed(2)}% compared to a simple weighted average of their volatilities.
+                </AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="h-full border shadow-sm">
+              <CardHeader className="pb-3 border-b">
+                <CardTitle className="text-lg flex items-center gap-2 text-primary">
+                  <CheckCircle2 className="h-5 w-5" />
+                  Optimization Matrix
+                </CardTitle>
+                <CardDescription>Strategic findings for your portfolio</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-4 space-y-3">
+                {result.insights.map((msg, i) => (
+                  <div key={i} className="flex gap-3 p-3 bg-muted/20 rounded-lg border border-transparent hover:border-primary/20 transition-all group">
+                    <div className="h-2 w-2 rounded-full bg-primary mt-1.5 shrink-0 group-hover:scale-125 transition-transform" />
+                    <span className="text-sm font-medium leading-tight">{msg}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border shadow-sm border-orange-100 dark:border-orange-900/20">
+              <CardHeader className="pb-3 border-b bg-orange-50/10">
+                <CardTitle className="text-lg flex items-center gap-2 text-orange-600">
+                  <ZapOff className="h-5 w-5" />
+                  Blind Spot Audit
+                </CardTitle>
+                <CardDescription>Critical risks and allocation warnings</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-4 space-y-3 font-medium">
+                {result.riskAssessments.map((msg, i) => (
+                  <div key={i} className="flex gap-3 p-3 bg-orange-50/30 dark:bg-orange-900/5 rounded-lg border border-orange-100 dark:border-orange-900/20">
+                    <AlertCircle className="h-4 w-4 text-orange-500 mt-1 shrink-0" />
+                    <span className="text-sm text-orange-900/80 dark:text-orange-300 leading-tight">{msg}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       )}
+
+      {/* Manual Formula Box */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-lg">
+            <FunctionSquare className="h-5 w-5 text-primary" />
+            Modern Portfolio Theory Mathematics
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-muted rounded-2xl border shadow-inner">
+            <div className="space-y-2">
+              <p className="text-[10px] font-black uppercase text-muted-foreground tracking-widest">Global Minimum Variance Weight</p>
+              <div className="py-4 px-2 bg-background rounded border font-mono text-sm md:text-base overflow-x-auto text-primary font-bold">
+                w<sub>1</sub>* = (σ<sub>2</sub><sup>2</sup> - σ<sub>12</sub>) / (σ<sub>1</sub><sup>2</sup> + σ<sub>2</sub><sup>2</sup> - 2σ<sub>12</sub>)
+              </div>
+            </div>
+            <div className="space-y-2">
+              <p className="text-[10px] font-black uppercase text-muted-foreground tracking-widest">Portfolio Volatility (Total Risk)</p>
+              <div className="py-4 px-2 bg-background rounded border font-mono text-sm md:text-base overflow-x-auto text-primary font-bold">
+                σ<sub>p</sub> = √(w<sub>1</sub><sup>2</sup>σ<sub>1</sub><sup>2</sup> + w<sub>2</sub><sup>2</sup>σ<sub>2</sub><sup>2</sup> + 2w<sub>1</sub>w<sub>2</sub>σ<sub>12</sub>)
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 p-4 text-xs text-muted-foreground bg-muted/20 rounded-lg">
+            <strong>Where:</strong> σ<sub>1</sub>, σ<sub>2</sub> are asset standard deviations; σ<sub>12</sub> is the covariance (ρ × σ<sub>1</sub> × σ<sub>2</sub>).
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Professional Guide Section */}
+      <section className="space-y-8 text-muted-foreground leading-relaxed bg-card p-6 md:p-12 rounded-3xl border shadow-2xl overflow-hidden relative" itemScope itemType="https://schema.org/FinanceSummary">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl opacity-50" />
+
+        <meta itemProp="name" content="The Definitive Guide to Two-Asset Portfolio Optimization & MPT" />
+        <meta itemProp="description" content="Master the science of asset allocation with our guide on Modern Portfolio Theory, Minimum Variance Portfolios, and the mathematics of diversification." />
+        <meta itemProp="keywords" content="Portfolio Allocation, Two Asset Optimization, Minimum Variance Portfolio, Diversification Benefit, Correlation Matrix, Modern Portfolio Theory, Risk Reduction" />
+
+        <div className="space-y-4">
+          <Badge className="bg-primary/20 text-primary border-primary/30 hover:bg-primary/30 transition-colors uppercase font-black tracking-widest px-4 py-1">Finance Expert Insight</Badge>
+          <h1 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter leading-none">The Science of Optimal Portfolio Allocation</h1>
+          <p className="text-xl md:text-2xl text-muted-foreground font-medium max-w-3xl">How to mathematically eliminate uncompensated risk and build a higher-efficiency wealth engine.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-extrabold text-foreground tracking-tight">Table of Contents</h2>
+            <ul className="space-y-4 font-bold text-primary">
+              <li><a href="#mpt" className="flex items-center gap-2 hover:translate-x-2 transition-transform"><ArrowRightLeft className="h-4 w-4" /> The Markowitz Revolution (MPT)</a></li>
+              <li><a href="#variance" className="flex items-center gap-2 hover:translate-x-2 transition-transform"><ArrowRightLeft className="h-4 w-4" /> Solving for Minimum Variance</a></li>
+              <li><a href="#correlation" className="flex items-center gap-2 hover:translate-x-2 transition-transform"><ArrowRightLeft className="h-4 w-4" /> Correlation: The Secret Lever</a></li>
+              <li><a href="#efficient-frontier" className="flex items-center gap-2 hover:translate-x-2 transition-transform"><ArrowRightLeft className="h-4 w-4" /> Mapping the Efficient Frontier</a></li>
+              <li><a href="#rebalancing" className="flex items-center gap-2 hover:translate-x-2 transition-transform"><ArrowRightLeft className="h-4 w-4" /> The Psychology of Rebalancing</a></li>
+            </ul>
+          </div>
+          <div className="bg-muted/40 p-8 rounded-2xl border border-dashed flex flex-col justify-center">
+            <h3 className="text-xl font-black text-foreground mb-4">&quot;Diversification is the only free lunch.&quot;</h3>
+            <p className="text-sm italic">- Harry Markowitz, Nobel Laureate</p>
+            <p className="text-xs mt-4 opacity-70 leading-relaxed text-muted-foreground">
+              By combining assets that don&apos;t move in perfect sync, you can achieve a portfolio volatility that is LOWER than that of any individual asset you own. This calculator finds that perfect mathematical &apos;sweet spot&apos;.
+            </p>
+          </div>
+        </div>
+
+        <hr className="my-4 opactiy-20" />
+
+        <div id="mpt" className="space-y-4">
+          <h2 className="text-3xl font-extrabold text-foreground tracking-tight">Modern Portfolio Theory (MPT) Explained</h2>
+          <p>
+            Before the 1950s, investors judged stocks solo. If a stock was risky, they avoided it. **Harry Markowitz** changed everything by proving that what matters is how an asset contributes to the **Portfolio&apos;s total risk**.
+          </p>
+          <p>
+            MPT demonstrates that by adding a high-risk asset to a low-risk portfolio, you can actually *lower* the total portfolio risk if those assets have low correlation. This counter-intuitive reality is the foundation of institutional wealth management.
+          </p>
+        </div>
+
+        <div id="variance" className="space-y-4">
+          <h2 className="text-3xl font-extrabold text-foreground tracking-tight">The Quest for Minimum Variance</h2>
+          <p>
+            The **Minimum Variance Portfolio (MVP)** is the combination of assets that results in the lowest possible standard deviation of returns. For risk-averse investors, this is the Holy Grail.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-6 bg-primary/5 rounded-2xl border-l-4 border-l-primary">
+              <h4 className="font-black mb-2 uppercase text-xs tracking-widest text-primary">The Logic</h4>
+              <p className="text-sm">We find the point where the risk of Asset 1 captures the hedging property of Asset 2, canceling out noise while retaining signal.</p>
+            </div>
+            <div className="p-6 bg-primary/5 rounded-2xl border-l-4 border-l-primary">
+              <h4 className="font-black mb-2 uppercase text-xs tracking-widest text-primary">The Benefit</h4>
+              <p className="text-sm">Avoiding "Volatility Drag". Smaller drawdowns allow for faster compounded recovery in bull markets.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="correlation" className="space-y-4">
+          <h2 className="text-3xl font-extrabold text-foreground tracking-tight">Correlation: The Secret Multiplier</h2>
+          <p>
+            Correlation (represented as ρ) measures how two assets move relative to each other.
+          </p>
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <li className="space-y-2">
+              <div className="h-1 bg-red-500 w-full" />
+              <strong className="text-foreground">+1.0 (Positive):</strong> Assets move together. No risk reduction; just a weighted average.
+            </li>
+            <li className="space-y-2">
+              <div className="h-1 bg-blue-500 w-full" />
+              <strong className="text-foreground">0.0 (Uncorrelated):</strong> Assets are independent. Significant risk reduction occurs here.
+            </li>
+            <li className="space-y-2">
+              <div className="h-1 bg-green-500 w-full" />
+              <strong className="text-foreground">-1.0 (Inverse):</strong> Assets move oppositely. The "Perfect Hedge" where risk can theoretically be zeroed.
+            </li>
+          </ul>
+        </div>
+
+        <Alert className="bg-primary/10 border-none shadow-xl">
+          <Shield className="h-6 w-6 text-primary" />
+          <AlertDescription className="text-lg font-bold text-primary">
+            Critical Insight: In a market crisis, correlations tend to &apos;spike&apos; to 1.0. This means traditional diversification often fails exactly when you need it most. Always stress-test with higher correlation inputs.
+          </AlertDescription>
+        </Alert>
+
+        <div id="efficient-frontier" className="space-y-4">
+          <h2 className="text-3xl font-extrabold text-foreground tracking-tight">The Efficient Frontier</h2>
+          <p>
+            For any two assets, there is a set of all possible risk-return combinations. The upper boundary of this set is the **Efficient Frontier**. Any portfolio built &apos;on&apos; this frontier is considered optimal because no other portfolio offers higher returns for that specific risk level.
+          </p>
+          <p>
+            This calculator solves for the **very bottom tip** of that frontier—the Global Minimum Variance point.
+          </p>
+        </div>
+
+        <div className="p-8 bg-muted rounded-2xl space-y-4 border">
+          <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+            <Calculator className="h-5 w-5" /> Summary for the Prudent Investor
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Optimal allocation is not about &quot;picking the winner.&quot; It is about constructing a robust machine that survives multiple market regimes. By using this tool, you move from speculative betting to institutional-grade engineering. Remember to re-calculate your weights at least twice a year as asset volatilities and correlations are dynamic, not static.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <Card id="faq">
+        <CardHeader>
+          <CardTitle className="text-2xl flex items-center gap-2">
+            <Info className="h-6 w-6 text-primary" />
+            Frequently Asked Questions
+          </CardTitle>
+          <CardDescription>Expert answers to the complexities of asset allocation math</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-left font-bold py-6">What is &apos;Standard Deviation&apos; in this context?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                Standard Deviation (Volatility) measures the range of expected outcomes. If an asset has a 10% return and a 15% standard deviation, it means that about 68% of the time, its return will fall between -5% (10-15) and +25% (10+15). High standard deviation implies high unpredictability.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="text-left font-bold py-6">Why does the calculator suggest a &apos;Corner Solution&apos; (100% in one asset)?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                If Asset 1 is significantly less risky than Asset 2, and the correlation isn&apos;t low enough to provide a hedge, the math will purely favor the safer asset. To fix this, either use a lower correlation input or ensure the risk profiles of the two assets are more comparable.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="text-left font-bold py-6">How do I determine the &apos;Expected Return&apos; for my assets?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                Financial analysts typically use three methods: 1. Historical Averages (last 10-20 years), 2. Fundamental Estimates (Dividend Yield + Earnings Growth), 3. Institutional Capital Market Assumptions (CMA) from firms like BlackRock or JP Morgan.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4">
+              <AccordionTrigger className="text-left font-bold py-6">What is the &quot;Minimum Variance Portfolio&quot;?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                The Minimum Variance Portfolio (MVP) is the specific mix of assets that results in the absolute lowest possible volatility for the entire portfolio. It is the &quot;Safest&quot; possible combination of those two risky assets.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5">
+              <AccordionTrigger className="text-left font-bold py-6">Does a lower correlation ALWAYS mean lower risk?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                Yes, mathematically. Holding two assets with lower correlation creates a &quot;cancellation effect&quot; for volatility spikes. The closer the correlation is to -1.0, the more dramatic the risk reduction.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-6">
+              <AccordionTrigger className="text-left font-bold py-6">Can I use this for more than two assets?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                This specific calculator uses the Two-Asset optimization formula. For 3+ assets, you need Matrix Algebra (Covariance Matrices). However, the principles remain identical: you seek the weights that minimize the total covariance of the set.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-7">
+              <AccordionTrigger className="text-left font-bold py-6">What is a &apos;Sharpe Ratio&apos; and how does it relate here?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                While this calculator finds the *Minimum Risk* portfolio, the Sharpe Ratio helps find the *Most Efficient* portfolio. It&apos;s calculated as (Return - RiskFreeRate) / Volatility. This calculator helps you see if your allocation results in a high-efficiency (high Sharpe) outcome.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-8">
+              <AccordionTrigger className="text-left font-bold py-6">How often should I re-calculate these weights?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                Institutional rebalancing usually happens quarterly or semi-annually. Re-running the calculation is vital if there is a major shift in interest rates or market sentiment, as these change the volatility and correlation environment.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-9">
+              <AccordionTrigger className="text-left font-bold py-6">Is this the same as &apos;Risk Parity&apos;?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                Not exactly. &apos;Risk Parity&apos; attempts to make each asset contribute an equal amount of Risk (volatility) to the portfolio. This calculator is &apos;Mean-Variance Optimization&apos;, which attempts to minimize *Total* Risk, regardless of which asset provides it.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-10">
+              <AccordionTrigger className="text-left font-bold py-6">What are the flaws of this model?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                The primary flaw is its assumption that returns are &apos;Normally Distributed&apos; (the Bell Curve). In reality, markets have &apos;Fat Tails&apos; (crashes happen more than math predicts). It also assumes correlations are constant, when they often breakdown during panics.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </CardContent>
+      </Card>
 
       {/* Related Calculators */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Calculator className="h-5 w-5" />
-            Related Calculators
+            <Calculator className="h-5 w-5 text-primary" />
+            Related Strategic Tools
           </CardTitle>
-          <CardDescription>Dive deeper into risk and return</CardDescription>
+          <CardDescription>Expand your financial modeling with these specialized toolkits</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2"><a href="/category/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">Standard Deviation Calculator</a></h4>
-              <p className="text-sm text-muted-foreground">Measure volatility of returns.</p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2"><a href="/category/finance/portfolio-variance-calculator" className="text-primary hover:underline">Portfolio Variance Calculator</a></h4>
-              <p className="text-sm text-muted-foreground">Estimate total risk across assets.</p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2"><a href="/category/finance/npv-calculator" className="text-primary hover:underline">Net Present Value (NPV)</a></h4>
-              <p className="text-sm text-muted-foreground">Link expected return to valuation.</p>
-            </div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-              <h4 className="font-semibold mb-2"><a href="/category/finance/return-on-investment-calculator" className="text-primary hover:underline">ROI Calculator</a></h4>
-              <p className="text-sm text-muted-foreground">Analyze performance outcomes.</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { title: "Efficient Frontier", desc: "Visualize the optimal curve", icon: <TrendingUp className="h-5 w-5 text-green-600" />, href: "/category/finance/efficient-frontier-visualizer" },
+              { title: "Portfolio Variance", desc: "Calculate total risk across N assets", icon: <Layers className="h-5 w-5 text-blue-600" />, href: "/category/finance/portfolio-variance-calculator" },
+              { title: "Correllation Heatmap", desc: "Asset interaction analysis", icon: <Activity className="h-5 w-5 text-orange-600" />, href: "/category/finance/asset-correlation-matrix-calculator" },
+              { title: "Sharpe Ratio", desc: "Risk-adjusted performance audit", icon: <Zap className="h-5 w-5 text-yellow-600" />, href: "/category/finance/sharpe-ratio-calculator" },
+              { title: "Lump Sum vs SIP", desc: "Compare entry strategies", icon: <DollarSign className="h-5 w-5 text-purple-600" />, href: "/category/finance/lump-sum-vs-sip-comparison-calculator" },
+              { title: "WACC Optimizer", desc: "Capital structure analysis", icon: <Target className="h-5 w-5 text-indigo-600" />, href: "/category/finance/wacc-calculator" },
+            ].map((calc, i) => (
+              <Link key={i} href={calc.href} className="group">
+                <Card className="h-full hover:border-primary/50 transition-all hover:bg-muted/30">
+                  <CardContent className="p-4 flex items-center gap-3">
+                    <div className="p-2 bg-muted rounded-lg group-hover:bg-primary/10 transition-colors">{calc.icon}</div>
+                    <div>
+                      <p className="font-bold text-sm tracking-tight group-hover:text-primary transition-colors">{calc.title}</p>
+                      <p className="text-[10px] text-muted-foreground">{calc.desc}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
           </div>
         </CardContent>
       </Card>
 
-      {/* Formula Used */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Calculator className="h-5 w-5" />
-            Formula Used
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
-            <p className="font-mono text-sm text-center">
-              w₁ = (σ₂² - ρσ₁σ₂) / (σ₁² + σ₂² - 2ρσ₁σ₂)
-            </p>
-            <p className="font-mono text-sm text-center mt-2">
-              Portfolio σ = √(w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρσ₁σ₂)
-            </p>
-          </div>
-          <p className="text-sm text-muted-foreground mt-2">
-            This calculates the minimum-variance portfolio weights for two risky assets.
-          </p>
-        </CardContent>
-      </Card>
-
-      {/* Input Explanations */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Understanding the Inputs
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <h4 className="font-semibold mb-2">Expected Returns</h4>
-              <p className="text-sm text-muted-foreground">Anticipated annual returns for each asset (use forward-looking estimates).</p>
-            </div>
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <h4 className="font-semibold mb-2">Standard Deviations</h4>
-              <p className="text-sm text-muted-foreground">Volatility measure for each asset—higher means more risk.</p>
-            </div>
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <h4 className="font-semibold mb-2">Correlation (ρ)</h4>
-              <p className="text-sm text-muted-foreground">How assets move together. Lower correlation = better diversification.</p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Complete SEO Guide */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-        {/* SEO & SCHEMA METADATA */}
-        <meta itemProp="name" content="The Definitive Guide to Modern Portfolio Theory (MPT) & Asset Allocation" />
-        <meta itemProp="description" content="Calculate the optimal portfolio mix for two assets using modern portfolio theory. Learn about the Efficient Frontier, Sharpe Ratio, and the mathematics of diversification." />
-        <meta itemProp="keywords" content="Optimal Portfolio Allocation, Efficient Frontier, Minimum Variance Portfolio, Modern Portfolio Theory MPT, Sharpe Ratio, Expected Return Formula, Portfolio Standard Deviation" />
-        <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
-        <meta itemProp="datePublished" content="2025-11-15" />
-        <meta itemProp="url" content="/definitive-guide-optimal-allocation" />
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Asset Allocation: Building the Perfect Portfolio</h1>
-        <p className="text-lg italic text-muted-foreground">"Don't put all your eggs in one basket." That's the cliché. Here is the Nobel Prize-winning math that proves exactly how many eggs to put where.</p>
-
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-        <ul className="list-disc ml-6 space-y-2 text-primary">
-          <li><a href="#mpt-basics" className="hover:underline">What is Modern Portfolio Theory?</a></li>
-          <li><a href="#efficient-frontier" className="hover:underline">The Efficient Frontier Explained</a></li>
-          <li><a href="#min-variance-vs-tangency" className="hover:underline">Minimum Variance vs. Maximum Sharpe</a></li>
-          <li><a href="#correlation-magic" className="hover:underline">The Magic of Correlation</a></li>
-          <li><a href="#rebalancing" className="hover:underline">The Rebalancing Bonus</a></li>
-        </ul>
-        <hr />
-
-        <h2 id="mpt-basics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Modern Portfolio Theory (MPT)?</h2>
-        <p>Published by Harry Markowitz in 1952, MPT revolutionized finance by proving that an investor can construct a portfolio of multiple assets that will maximize returns for a given level of risk.</p>
-        <p><strong>Key Insight:</strong> Risk is not just about an individual stock's volatility. It's about how that stock interacts with the rest of your portfolio.</p>
-        <hr />
-
-        <h2 id="efficient-frontier" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Efficient Frontier Explained</h2>
-        <p>If you plot every possible combination of assets on a graph (Risk on X-axis, Return on Y-axis), the upper boundary of those dots creates a curve called the <strong>Efficient Frontier</strong>.</p>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>On the Line:</strong> Optimal. You are getting the max return for that risk.</li>
-          <li><strong>Below the Line:</strong> Inefficient. You are taking too much risk for too little return.</li>
-          <li><strong>Above the Line:</strong> Impossible (without leverage).</li>
-        </ul>
-        <hr />
-
-        <h2 id="min-variance-vs-tangency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Minimum Variance vs. Maximum Sharpe</h2>
-        <p>There are two "Optimal" portfolios:</p>
-        <ol className="list-decimal ml-6 space-y-2">
-          <li><strong>Minimum Variance Portfolio (MVP):</strong> The mix with the absolute lowest risk (volatility). This calculator solves for this. Great for risk-averse investors.</li>
-          <li><strong>Tangency Portfolio (Max Sharpe):</strong> The mix with the highest risk-adjusted return (Sharpe Ratio). It’s usually riskier than the MVP but offers better "bang for your buck."</li>
-        </ol>
-        <hr />
-
-        <h2 id="correlation-magic" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Magic of Correlation</h2>
-        <p>The secret sauce is <strong>Correlation (ρ)</strong>, ranging from -1 to +1.</p>
-        <ul className="list-disc ml-6 space-y-2">
-          <li><strong>ρ = +1.0:</strong> No diversification benefit. Risk is just the weighted average.</li>
-          <li><strong>ρ = 0.0:</strong> Strong diversification. Portfolio risk falls significantly below the weighted average.</li>
-          <li><strong>ρ = -1.0:</strong> Perfect hedge. You can theoretically construct a zero-risk portfolio.</li>
-        </ul>
-      </section>
-
-      {/* FAQs */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Info className="h-5 w-5" />
-            Frequently Asked Questions
-          </CardTitle>
-          <CardDescription>Detailed answers about portfolio optimization</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h4 className="font-semibold text-lg mb-3">Why does the calculator suggest 100% in one asset?</h4>
-            <p className="text-muted-foreground">
-              If Asset A has much lower volatility than Asset B, and the correlation isn't low enough to offset it, the math will purely favor the safer asset. This is a "corner solution." To get a mix, you need either closer volatilities or lower correlation.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-lg mb-3">What is the "Rebalancing Bonus"?</h4>
-            <p className="text-muted-foreground">
-              By maintaining a fixed asset allocation (e.g., 60/40), you are forced to sell high (the asset that rallied) and buy low (the asset that dropped). Over time, this contrarian discipline can generate returns slightly higher than a buy-and-hold strategy.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-lg mb-3">Does this work for 3+ assets?</h4>
-            <p className="text-muted-foreground">
-              Conceptually, yes. The math just gets exponentially more complex (involving Matrices). You have to calculate the covariance of every asset with every other asset. This Two-Asset calculator is the building block for understanding the broader concept.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-lg mb-3">What inputs should I trust?</h4>
-            <p className="text-muted-foreground">
-              Garbage In, Garbage Out. Historical returns are notoriously poor predictors of future returns. Historical volatility is <em>somewhat</em> sticky (predictable). Correlations are unstable during crashes (they tend to go to 1). Be conservative with your estimates.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-lg mb-3">Is lower Standard Deviation always better?</h4>
-            <p className="text-muted-foreground">
-              Not if it kills your returns. A portfolio of 100% Cash has 0 standard deviation but near-zero real return. The goal is the <em>highest efficiency</em> (Sharpe Ratio), not just the lowest risk.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-lg mb-3">How does inflation affect this?</h4>
-            <p className="text-muted-foreground">
-              MPT works with "Nominal" returns. To account for purchasing power, you should subtract expected inflation from your return inputs to optimize for "Real" returns.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-lg mb-3">Can I use this for Stock vs. Bond?</h4>
-            <p className="text-muted-foreground">
-              Absolutely. This is the classic 60/40 portfolio use case. Stocks usually have high return/high risk, bonds have lower return/lower risk, and they often have low correlation, making them perfect partners.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-lg mb-3">What is the Capital Market Line (CML)?</h4>
-            <p className="text-muted-foreground">
-              The CML is the line drawn from the risk-free rate to the Tangency Portfolio on the Efficient Frontier. It represents the best possible return for any level of risk if you can borrow or lend at the risk-free rate.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Summary Section */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5" />
-            Summary
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Optimal Portfolio Allocation Calculator allows you to find the mathematically perfect balance between two investments.</p>
-          <p>By minimizing variance, you protect your capital from unnecessary volatility without sacrificing efficiency.</p>
-          <p>Use it to design the core "engine" of your long-term wealth strategy.</p>
+      {/* Final Summary */}
+      <Card className="bg-primary/5 border-primary/20 border-dashed">
+        <CardContent className="pt-6 text-sm text-center text-muted-foreground italic font-medium">
+          &quot;The most important work an investor does is determining the appropriate asset allocation&mdash;not the individual stock selection.&quot;
+          Use this calculator as a fundamental compass for your long-term wealth journeys.
         </CardContent>
       </Card>
     </div>
   );
 }
-
-
