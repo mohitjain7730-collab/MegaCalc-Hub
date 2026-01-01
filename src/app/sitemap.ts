@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const RETIREMENT_ARTICLES = getRetirementArticlesList();
   const NUTRITION_ARTICLES = getNutritionArticles();
   const baseUrl = 'https://mycalculating.com';
-  
+
   // Cache last modified date to avoid creating new Date() for every entry
   const now = new Date();
 
@@ -90,12 +90,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Optimize calculator pages generation - reuse date object
-  const calculatorPages = calculators.map((calculator) => ({
-    url: `${baseUrl}/category/${calculator.category}/${calculator.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.9,
-  }));
+  const calculatorPages = calculators.map((calculator) => {
+    const isEducationMaths = calculator.category === 'education' && calculator.subcategory === 'maths';
+    const path = isEducationMaths ? `${calculator.category}/maths/${calculator.slug}` : `${calculator.category}/${calculator.slug}`;
+    return {
+      url: `${baseUrl}/category/${path}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    };
+  });
 
   // Learning Hub pages
   const learningHubPages = [

@@ -192,6 +192,19 @@ export const categories: Category[] = [
     Icon: 'PiggyBank',
   },
   {
+    name: 'Education',
+    slug: 'education',
+    description: 'Calculators for students, teachers, and lifelong learners.',
+    Icon: 'BookOpen',
+    subcategories: [
+      {
+        name: 'Maths',
+        slug: 'maths',
+        description: 'Solve mathematical problems, from basic arithmetic to complex formulas.',
+      },
+    ],
+  },
+  {
     name: 'Business & Startup',
     slug: 'business-startup',
     description: 'Calculators for profit margin, breakeven, and more.',

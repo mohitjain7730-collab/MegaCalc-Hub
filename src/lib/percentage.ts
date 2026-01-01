@@ -22,23 +22,29 @@ export function calculateComparativeDifference(val1: number, val2: number): { di
     return { difference: diff.toFixed(2), percentageDifference: pDiff.toFixed(2) };
 }
 
-export function calculateCompoundingIncrease(principal: number, rate: number, years: number, compoundsPerYear: number = 1): { amount: string; interest: string } {
-    // A = P(1 + r/n)^(nt)
-    const r = rate / 100;
-    const n = compoundsPerYear;
-    const t = years;
-    const amount = principal * Math.pow((1 + r / n), (n * t));
-    const interest = amount - principal;
-    return { amount: amount.toFixed(2), interest: interest.toFixed(2) };
+export function calculateCompoundingIncrease(initialValue: number, growthRate: number, periods: number): { finalValue: string; totalGrowth: string; history: { period: number; value: number }[] } {
+    let currentValue = initialValue;
+    const history = [{ period: 0, value: initialValue }];
+
+    for (let i = 1; i <= periods; i++) {
+        currentValue = currentValue * (1 + growthRate / 100);
+        history.push({ period: i, value: parseFloat(currentValue.toFixed(2)) });
+    }
+
+    return {
+        finalValue: currentValue.toFixed(2),
+        totalGrowth: (currentValue - initialValue).toFixed(2),
+        history,
+    };
 }
 
-export function calculateDoublingTime(rate: number): { years: string; exactYears: string } {
+export function calculateDoublingTime(rate: number): { ruleOf72Time: string; exactTime: string } {
     // Rule of 72
-    if (rate === 0) return { years: 'Infinity', exactYears: 'Infinity' };
+    if (rate === 0) return { ruleOf72Time: 'Infinity', exactTime: 'Infinity' };
     const years = 72 / rate;
     // Exact formula: ln(2) / ln(1 + rate/100)
     const exact = Math.log(2) / Math.log(1 + rate / 100);
-    return { years: years.toFixed(2), exactYears: exact.toFixed(2) };
+    return { ruleOf72Time: years.toFixed(2), exactTime: exact.toFixed(2) };
 }
 
 export function calculateFractionToPercent(numerator: number, denominator: number): { percentage: string } {

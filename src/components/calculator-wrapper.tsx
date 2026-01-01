@@ -70,6 +70,13 @@ const registryLoaders: Record<string, (slug: string) => ComponentType> = {
     }).catch(() => CalculatorNotFound),
     { ssr: false, loading: () => <CalculatorLoading /> }
   ),
+  'education': (slug: string) => dynamic(
+    () => import('@/components/calculators/education/registry').then(mod => {
+      const Registry = mod.default;
+      return () => <Registry calculatorSlug={slug} />;
+    }).catch(() => CalculatorNotFound),
+    { ssr: false, loading: () => <CalculatorLoading /> }
+  ),
 
   'employment': (slug: string) => dynamic(
     () => import('@/components/calculators/employment/registry').then(mod => {

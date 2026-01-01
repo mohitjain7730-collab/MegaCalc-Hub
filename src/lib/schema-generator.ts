@@ -49,7 +49,9 @@ export function generateWebsiteSchema() {
           "@type": "WebApplication",
           "name": calc.name,
           "description": calc.description,
-          "url": `https://mycalculating.com/category/${calc.category}/${calc.slug}`,
+          "url": calc.category === 'education' && calc.subcategory === 'maths'
+            ? `https://mycalculating.com/category/${calc.category}/maths/${calc.slug}`
+            : `https://mycalculating.com/category/${calc.category}/${calc.slug}`,
           "applicationCategory": "Calculator",
           "operatingSystem": "Web Browser",
           "offers": {
@@ -110,7 +112,9 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
     "@type": "WebApplication",
     "name": calculator.name,
     "description": calculator.description,
-    "url": `${baseUrl}/category/${category.slug}/${calculator.slug}`,
+    "url": calculator.category === 'education' && calculator.subcategory === 'maths'
+      ? `${baseUrl}/category/${category.slug}/maths/${calculator.slug}`
+      : `${baseUrl}/category/${category.slug}/${calculator.slug}`,
     "applicationCategory": "Calculator",
     "operatingSystem": "Web Browser",
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
@@ -149,7 +153,9 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${baseUrl}/category/${category.slug}/${calculator.slug}`
+      "@id": calculator.category === 'education' && calculator.subcategory === 'maths'
+        ? `${baseUrl}/category/${category.slug}/maths/${calculator.slug}`
+        : `${baseUrl}/category/${category.slug}/${calculator.slug}`
     },
     "datePublished": "2024-01-01",
     "dateModified": getTodayDateString()
@@ -178,7 +184,9 @@ export function generateCategorySchema(category: Category, categoryCalculators: 
           "@type": "WebApplication",
           "name": calc.name,
           "description": calc.description,
-          "url": `${baseUrl}/category/${category.slug}/${calc.slug}`,
+          "url": calc.category === 'education' && calc.subcategory === 'maths'
+            ? `${baseUrl}/category/${category.slug}/maths/${calc.slug}`
+            : `${baseUrl}/category/${category.slug}/${calc.slug}`,
           "applicationCategory": "Calculator"
         }
       }))
@@ -280,7 +288,9 @@ export function generateCalculatorsListingSchema() {
           "@type": "WebApplication",
           "name": calc.name,
           "description": calc.description,
-          "url": `${baseUrl}/category/${calc.category}/${calc.slug}`,
+          "url": calc.category === 'education' && calc.subcategory === 'maths'
+            ? `${baseUrl}/category/${calc.category}/maths/${calc.slug}`
+            : `${baseUrl}/category/${calc.category}/${calc.slug}`,
           "applicationCategory": "Calculator"
         }
       }))
