@@ -5,7 +5,7 @@ const categoryLoaders: Record<string, () => Promise<{ [key: string]: Calculator[
     'business-startup': () => import('@/data/calculators/business-startup'),
     'conversions': () => import('@/data/calculators/conversion'),
     'cooking-food': () => import('@/data/calculators/cooking-food'),
-    'education': () => import('@/data/calculators/education'),
+
     'engineering': () => import('@/data/calculators/engineering'),
     'environment': () => import('@/data/calculators/environment'),
     'finance': () => import('@/data/calculators/finance'),

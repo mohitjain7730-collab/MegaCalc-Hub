@@ -160,19 +160,7 @@ export const categories: Category[] = [
     description: 'Solve complex engineering problems and conversions.',
     Icon: 'Construction',
   },
-  {
-    name: 'Education',
-    slug: 'education',
-    description: 'Tools for students and teachers, from grades to study time.',
-    Icon: 'BookOpen',
-    subcategories: [
-      {
-        name: 'Maths',
-        slug: 'maths',
-        description: 'Percentage, fraction, and other math calculators.',
-      },
-    ],
-  },
+
   {
     name: 'Technology',
     slug: 'technology',
