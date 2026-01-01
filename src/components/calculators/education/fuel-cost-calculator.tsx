@@ -56,6 +56,8 @@ const relatedCalculators: { name: string; href: string }[] = [
     { name: 'Compounding Increase', href: '/category/education/maths/compounding-increase-calculator' },
     { name: 'Doubling Time', href: '/category/education/maths/doubling-time-calculator' },
     { name: 'Fraction to Percent', href: '/category/education/maths/fraction-to-percent-calculator' },
+    { name: 'Historic Change', href: '/category/education/maths/historic-change-calculator' },
+    { name: 'Percent to Goal', href: '/category/education/maths/percent-to-goal-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 

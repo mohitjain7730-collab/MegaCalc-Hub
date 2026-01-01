@@ -9,6 +9,12 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
     'doubling-time-calculator': lazy(() => import('./doubling-time-calculator')),
     'fraction-to-percent-calculator': lazy(() => import('./fraction-to-percent-calculator')),
     'fuel-cost-calculator': lazy(() => import('./fuel-cost-calculator')),
+    'historic-change-calculator': lazy(() => import('./historic-change-calculator')),
+    'investment-growth-calculator': lazy(() => import('./investment-growth-calculator')),
+    'percent-error-calculator': lazy(() => import('./percent-error-calculator')),
+    'percent-to-goal-calculator': lazy(() => import('./percent-to-goal-calculator')),
+    'percentage-of-a-percentage-calculator': lazy(() => import('./percentage-of-a-percentage-calculator')),
+    'percentage-point-calculator': lazy(() => import('./percentage-point-calculator')),
 };
 
 export default function EducationRegistry({ calculatorSlug }: { calculatorSlug: string }) {
