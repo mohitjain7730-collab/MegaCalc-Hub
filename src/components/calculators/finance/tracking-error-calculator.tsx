@@ -441,10 +441,10 @@ export default function TrackingErrorCalculator() {
           <h2 className="text-5xl font-black text-foreground tracking-tighter underline underline-offset-8 decoration-primary/20 italic">Benchmark Tiers</h2>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 pt-10">
             {[
-              { range: "&lt; 0.5%", label: "ETF / Index", bg: "bg-muted" },
+              { range: "< 0.5%", label: "ETF / Index", bg: "bg-muted" },
               { range: "0.5 - 2%", label: "Enhanced Index", bg: "bg-primary/5" },
               { range: "3 - 8%", label: "Traditional Active", bg: "bg-primary/10" },
-              { range: "&gt; 8%", label: "High Conviction", bg: "bg-primary/20" },
+              { range: "> 8%", label: "High Conviction", bg: "bg-primary/20" },
             ].map((tier, i) => (
               <Card key={i} className={`${tier.bg} border-none rounded-[2rem] p-8 text-center space-y-2 group hover:scale-105 transition-transform`}>
                 <p className="text-2xl font-black tracking-tighter text-primary">{tier.range}</p>
@@ -480,16 +480,16 @@ export default function TrackingErrorCalculator() {
         <CardContent>
           <Accordion type="single" collapsible className="w-full">
             {[
-              { q: "Is a high Tracking Error &apos;good&apos; or &apos;bad&apos;?", a: "Neither. It is simply a measure of deviation. If the manager has high skill, you want higher TE to capture their insights. If they have low skill, you want zero TE to avoid paying for mistakes." },
-              { q: "How does Tracking Error relate to the Sharpe Ratio?", a: "Sharpe Ratio looks at total risk regardless of benchmark. Tracking Error only looks at risk relative to the index. You can have a stable fund with a high Sharpe Ratio that has high Tracking Error because it&apos;s invested in assets the index doesn&apos;t hold." },
-              { q: "What causes Tracking Error in Index Funds?", a: "Fees, transaction costs, and &apos;dividend drag&apos; (the time between the dividend payment and the fund reinvesting it) are the primary drivers of tracking error in passive ETFs." },
+              { q: "Is a high Tracking Error 'good' or 'bad'?", a: "Neither. It is simply a measure of deviation. If the manager has high skill, you want higher TE to capture their insights. If they have low skill, you want zero TE to avoid paying for mistakes." },
+              { q: "How does Tracking Error relate to the Sharpe Ratio?", a: "Sharpe Ratio looks at total risk regardless of benchmark. Tracking Error only looks at risk relative to the index. You can have a stable fund with a high Sharpe Ratio that has high Tracking Error because it's invested in assets the index doesn't hold." },
+              { q: "What causes Tracking Error in Index Funds?", a: "Fees, transaction costs, and 'dividend drag' (the time between the dividend payment and the fund reinvesting it) are the primary drivers of tracking error in passive ETFs." },
               { q: "Can Tracking Error be negative?", a: "No. Because it is a standard deviation (which involves squaring the values), tracking error is always a positive number or zero." },
-              { q: "Does cash holding increase Tracking Error?", a: "Significantly. If the market is volatile and you hold 10% Cash, your portfolio will under-react to every market move, creating a large standard deviation in the difference between your returns and the benchmark&apos;s." },
-              { q: "What is the &apos;Information Ratio&apos; formula?", a: "IR = Alpha / Tracking Error. It effectively tells you how much &apos;reward&apos; you got for every unit of &apos;being different&apos; (Tracking Error) you accepted." },
-              { q: "Does rebalancing affect Tracking Error?", a: "Yes. Frequent rebalancing to model weights reduces tracking error by cutting off &apos;drift&apos;. However, the transaction costs of rebalancing can then increase tracking error relative to the index." },
-              { q: "What&apos;s the difference between Ex-Ante and Ex-Post?", a: "Ex-Post is historical (what actually happened). Ex-Ante is predictive (based on today&apos;s holdings using a risk model like Barra to guess future deviation)." },
-              { q: "Why is 3 years of data standard?", a: "Mathematically, tracking error is a standard deviation. You need enough &apos;n&apos; (observations) to ensure that a few lucky months don&apos;t skew the results. 36 monthly points is the institutional minimum." },
-              { q: "What is &apos;Style Drift&apos;?", a: "Style drift is when a manager&apos;s tracking error suddenly spikes because they have changed their investment approach (e.g., a Value manager buying high-beta Momentum stocks). Tracking Error audits help catch this." }
+              { q: "Does cash holding increase Tracking Error?", a: "Significantly. If the market is volatile and you hold 10% Cash, your portfolio will under-react to every market move, creating a large standard deviation in the difference between your returns and the benchmark's." },
+              { q: "What is the 'Information Ratio' formula?", a: "IR = Alpha / Tracking Error. It effectively tells you how much 'reward' you got for every unit of 'being different' (Tracking Error) you accepted." },
+              { q: "Does rebalancing affect Tracking Error?", a: "Yes. Frequent rebalancing to model weights reduces tracking error by cutting off 'drift'. However, the transaction costs of rebalancing can then increase tracking error relative to the index." },
+              { q: "What's the difference between Ex-Ante and Ex-Post?", a: "Ex-Post is historical (what actually happened). Ex-Ante is predictive (based on today's holdings using a risk model like Barra to guess future deviation)." },
+              { q: "Why is 3 years of data standard?", a: "Mathematically, tracking error is a standard deviation. You need enough 'n' (observations) to ensure that a few lucky months don't skew the results. 36 monthly points is the institutional minimum." },
+              { q: "What is 'Style Drift'?", a: "Style drift is when a manager's tracking error suddenly spikes because they have changed their investment approach (e.g., a Value manager buying high-beta Momentum stocks). Tracking Error audits help catch this." }
             ].map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border-b last:border-none">
                 <AccordionTrigger className="text-left font-black text-xl py-8 group hover:text-primary transition-all underline-none">

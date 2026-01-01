@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Calculator,
@@ -484,15 +484,15 @@ export default function InformationRatioCalculator() {
           <Accordion type="single" collapsible className="w-full">
             {[
               { q: "What exactly is the difference between IR and Sharpe?", a: "Sharpe Ratio uses total volatility and risk-free rates (absolute efficiency). Information Ratio uses Tracking Error and benchmark returns (relative efficiency). IR is for active managers; Sharpe is for asset classes." },
-              { q: "Is a high Tracking Error always &apos;bad&apos;?", a: "No. High Tracking Error just means you are very different from the index. If that difference leads to consistent outperformance, your IR will remain high. It only becomes a problem when IR stays low (~0) while Tracking Error is high." },
-              { q: "Can IR be negative?", a: "Yes. If the portfolio return is lower than the benchmark, the IR will be negative. This suggests the manager&apos;s active &apos;skill&apos; is actually destroying value compared to a passive index fund." },
-              { q: "What is &apos;Closet Indexing&apos;?", a: "This describes managers who have low tracking error (move like the index) but charge active fees. Their IR is usually near zero or negative because their small alpha doesn&apos;t overcome their high fees." },
-              { q: "How does the &apos;Law of Small Numbers&apos; impact IR?", a: "Calculating IR over a very short period (e.g., 6 months) is highly unreliable. Random noise can cause a temporarily high IR that has no statistical significance for long-term skill." },
-              { q: "What benchmark should I choose?", a: "The benchmark must match the manager&apos;s mandate. Comparing a Small-Cap fund to the S&P 500 will give a &apos;fake&apos; Information Ratio because the returns are driven by size factors, not skill." },
-              { q: "What is the &apos;Information Coefficient&apos; (IC)?", a: "IC measures the correlation between a manager&apos;s predictions and the actual results. It is the core input for manager&apos;s skill in the Fundamental Law of Active Management." },
+              { q: "Is a high Tracking Error always 'bad'?", a: "No. High Tracking Error just means you are very different from the index. If that difference leads to consistent outperformance, your IR will remain high. It only becomes a problem when IR stays low (~0) while Tracking Error is high." },
+              { q: "Can IR be negative?", a: "Yes. If the portfolio return is lower than the benchmark, the IR will be negative. This suggests the manager's active 'skill' is actually destroying value compared to a passive index fund." },
+              { q: "What is 'Closet Indexing'?", a: "This describes managers who have low tracking error (move like the index) but charge active fees. Their IR is usually near zero or negative because their small alpha doesn't overcome their high fees." },
+              { q: "How does the 'Law of Small Numbers' impact IR?", a: "Calculating IR over a very short period (e.g., 6 months) is highly unreliable. Random noise can cause a temporarily high IR that has no statistical significance for long-term skill." },
+              { q: "What benchmark should I choose?", a: "The benchmark must match the manager's mandate. Comparing a Small-Cap fund to the S&P 500 will give a 'fake' Information Ratio because the returns are driven by size factors, not skill." },
+              { q: "What is the 'Information Coefficient' (IC)?", a: "IC measures the correlation between a manager's predictions and the actual results. It is the core input for manager's skill in the Fundamental Law of Active Management." },
               { q: "Do fees affect the Information Ratio?", a: "Significantly. IR should always be calculated net-of-fees. High fees lower the numerator (active return) without reducing the risk, leading to lower risk-adjusted efficiency for the end investor." },
-              { q: "What&apos;s the relationship between IR and Alpha?", a: "Alpha is the active return (the numerator). The Information Ratio is simply Alpha scaled by the volatility of that Alpha. It puts Alpha into context." },
-              { q: "How often should IR be re-calculated?", a: "Quarterly for monitoring, but decisions should be based on 3- to 5-year rolling windows to ensure &apos;Style Drift&apos; or luck isn&apos;t the primary driver of the score." }
+              { q: "What's the relationship between IR and Alpha?", a: "Alpha is the active return (the numerator). The Information Ratio is simply Alpha scaled by the volatility of that Alpha. It puts Alpha into context." },
+              { q: "How often should IR be re-calculated?", a: "Quarterly for monitoring, but decisions should be based on 3- to 5-year rolling windows to ensure 'Style Drift' or luck isn't the primary driver of the score." }
             ].map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border-b last:border-none">
                 <AccordionTrigger className="text-left font-black text-xl py-8 group hover:text-primary transition-all underline-none">

@@ -395,7 +395,7 @@ export default function JensensAlphaCalculator() {
             <div className="absolute -top-4 -right-4 p-8 opacity-10 rotate-12"><Zap className="h-32 w-32" /></div>
             <h3 className="text-3xl font-black text-foreground mb-8 leading-[1.1]">&quot;Price is what you pay; value (and Alpha) is what you get.&quot;</h3>
             <p className="text-lg italic font-bold opacity-80 leading-relaxed border-l-4 border-primary pl-6">
-              In finance, Jensen&apos;s Alpha is the forensic tool used to verify if a manager’s high returns are a result of genuine value-added or simply aggressive risk-taking.
+              In finance, Jensen&apos;s Alpha is the forensic tool used to verify if a manager&apos;s high returns are a result of genuine value-added or simply aggressive risk-taking.
             </p>
           </div>
         </div>
@@ -405,11 +405,11 @@ export default function JensensAlphaCalculator() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-6">
               <p className="text-xl font-medium leading-relaxed">
-                Jensen’s Alpha measures the difference between a portfolio&apos;s actual return and the return it **should have earned** according to the Capital Asset Pricing Model (CAPM).
+                Jensen&apos;s Alpha measures the difference between a portfolio&apos;s actual return and the return it **should have earned** according to the Capital Asset Pricing Model (CAPM).
               </p>
               <div className="p-10 bg-primary/5 rounded-[3rem] border-2 border-dashed border-primary/20 shadow-inner">
                 <p className="text-sm font-bold leading-relaxed italic opacity-80">
-                  &quot;If you have a Beta of 2.0, you are taking twice the market risk. You don’t have Alpha unless you return more than twice the risk premium.&quot;
+                  &quot;If you have a Beta of 2.0, you are taking twice the market risk. You don&apos;t have Alpha unless you return more than twice the risk premium.&quot;
                 </p>
               </div>
             </div>
