@@ -1,25 +1,6 @@
 'use client';
 
-import React, { lazy, Suspense } from 'react';
-
-// Loading fallback for lazy loaded calculators
-function CalculatorLoadingFallback() {
-  return (
-    <div className="space-y-4 p-4">
-      <div className="h-8 w-3/4 bg-muted animate-pulse rounded"></div>
-      <div className="h-4 w-1/2 bg-muted animate-pulse rounded"></div>
-      <div className="space-y-2 mt-6">
-        <div className="h-4 w-full bg-muted animate-pulse rounded"></div>
-        <div className="h-10 w-full bg-muted animate-pulse rounded"></div>
-      </div>
-      <div className="space-y-2">
-        <div className="h-4 w-full bg-muted animate-pulse rounded"></div>
-        <div className="h-10 w-full bg-muted animate-pulse rounded"></div>
-      </div>
-      <div className="h-12 w-full bg-muted animate-pulse rounded mt-4"></div>
-    </div>
-  );
-}
+import React, { lazy, useState, useEffect } from 'react';
 
 // Static map of calculators to avoid dynamic import context creation
 const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
@@ -462,9 +443,5 @@ export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug:
     return <div className="p-8 text-center text-muted-foreground">Calculator not found.</div>;
   }
 
-  return (
-    <Suspense fallback={<CalculatorLoadingFallback />}>
-      <Component />
-    </Suspense>
-  );
+  return <Component />;
 }

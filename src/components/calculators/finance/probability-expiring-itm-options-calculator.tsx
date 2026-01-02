@@ -12,7 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Zap, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, TrendingDown, FunctionSquare, CheckCircle2, Activity, Percent } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 import Link from 'next/link';
 
 const formSchema = z.object({
@@ -688,7 +688,7 @@ export default function ProbabilityExpiringITMOptionsCalculator() {
           <li>Consider spreads to define risk and reduce cost basis.</li>
         </ul>
 
-        <h3 className="text-xl font-semibold text-foreground mt-6">Low Probability Trades (<30%)</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Low Probability Trades (&lt;30%)</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li>OTM and far OTM options have low probability but cheap premiums.</li>
           <li>Asymmetric payoff potential—lottery ticket profile.</li>
@@ -719,7 +719,7 @@ export default function ProbabilityExpiringITMOptionsCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">What is ITM probability?</h4>
               <p className="text-muted-foreground">
-                ITM probability is the likelihood that an option will expire in-the-money, meaning it will have intrinsic value at expiration. For calls, this means spot > strike; for puts, spot < strike.It's calculated using the Black-Scholes d₂ term and represents risk-neutral probability.
+                ITM probability is the likelihood that an option will expire in-the-money, meaning it will have intrinsic value at expiration. For calls, this means spot &gt; strike; for puts, spot &lt; strike. It&apos;s calculated using the Black-Scholes d₂ term and represents risk-neutral probability.
               </p>
             </div>
 
