@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Shield, Percent, FunctionSquare, CheckCircle2 } from 'lucide-react';
+import { Activity, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Shield, Percent, FunctionSquare, CheckCircle2, BarChart3 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -33,6 +33,7 @@ export default function CostOfCarryFuturesCalculator() {
     arbitrageGap: number | null;
     impliedDirection: string;
     marketCondition: string;
+    interpretation: string;
     recommendation: string;
     insights: string[];
     risks: string[];

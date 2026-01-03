@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, TrendingUp, Info, Landmark, Calculator, DollarSign, PieChart, FunctionSquare, CheckCircle2, TrendingDown, ArrowUpRight } from 'lucide-react';
+import { Activity, TrendingUp, Info, Landmark, Calculator, DollarSign, PieChart, FunctionSquare, CheckCircle2, TrendingDown, ArrowUpRight, Shield } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
