@@ -8,10 +8,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, TrendingUp, AlertCircle, Info, Calculator, DollarSign, Shield, PieChart, FunctionSquare, CheckCircle2, Scale } from 'lucide-react';
+import { AlertTriangle, TrendingUp, AlertCircle, Info, Calculator, DollarSign, Shield, PieChart, FunctionSquare, CheckCircle2, Scale, Activity, BarChart3 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Link from 'next/link';
 
 const formSchema = z.object({
