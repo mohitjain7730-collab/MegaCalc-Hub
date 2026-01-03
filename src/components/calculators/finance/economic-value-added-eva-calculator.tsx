@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, TrendingUp, AlertCircle, Info, Landmark, Calculator, DollarSign, PieChart, FunctionSquare, CheckCircle2, TrendingDown, ArrowUpRight } from 'lucide-react';
+import { Activity, TrendingUp, Info, Landmark, Calculator, DollarSign, PieChart, FunctionSquare, CheckCircle2, TrendingDown, ArrowUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -489,7 +489,7 @@ export default function EconomicValueAddedEVACalculator() {
         <ol className="list-decimal ml-6 space-y-2 mt-4">
           <li><strong>Operational Efficiency:</strong> Increase NOPAT without using more capital (e.g., raise prices, cut costs).</li>
           <li><strong>Asset Efficiency:</strong> Generate the same NOPAT with less capital (e.g., reduce inventory days, sell unused factories).</li>
-          <li><strong>Profitable Growth:</strong> Invest new capital only in projects where ROIC > WACC.</li>
+          <li><strong>Profitable Growth:</strong> Invest new capital only in projects where ROIC &gt; WACC.</li>
           <li><strong>Liquidate Value Destroyers:</strong> Divest units where ROIC &lt; WACC.</li>
         </ol>
 

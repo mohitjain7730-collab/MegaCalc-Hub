@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, Percent, FunctionSquare, CheckCircle2 } from 'lucide-react';
+import { Activity, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Shield, Percent, FunctionSquare, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -614,7 +614,7 @@ export default function CostOfCarryFuturesCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">Why are gold futures always in Contango?</h4>
               <p className="text-muted-foreground">
-                Gold has significant storage costs and insurance costs, but it has zero industrial "convenience yield" (it mostly sits in vaults) and pays no dividends. Thus, `r + u` is always positive, making Futures > Spot (Contango).
+                Gold has significant storage costs and insurance costs, but it has zero industrial "convenience yield" (it mostly sits in vaults) and pays no dividends. Thus, `r + u` is always positive, making Futures &gt; Spot (Contango).
               </p>
             </div>
 

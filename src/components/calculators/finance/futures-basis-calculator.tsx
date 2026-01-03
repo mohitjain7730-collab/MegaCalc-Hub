@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Zap, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, TrendingDown, FunctionSquare, CheckCircle2, ArrowRightLeft } from 'lucide-react';
+import { Zap, TrendingUp, AlertCircle, Target, Info, Calculator, DollarSign, Shield, TrendingDown, FunctionSquare, CheckCircle2, ArrowRightLeft } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -513,14 +513,14 @@ export default function FuturesBasisCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">Is Contango bullish or bearish?</h4>
               <p className="text-muted-foreground">
-                Contango (Futures > Spot) is often a bearish signal for the spot price, as it suggests there is ample supply available now. However, it can also simply reflect high storage costs. For long-term investors using futures (like ETFs), Contango is detrimental because of the negative "roll yield."
+                Contango (Futures &gt; Spot) is often a bearish signal for the spot price, as it suggests there is ample supply available now. However, it can also simply reflect high storage costs. For long-term investors using futures (like ETFs), Contango is detrimental because of the negative "roll yield."
               </p>
             </div>
 
             <div>
               <h4 className="font-semibold text-lg mb-3">Is Backwardation bullish or bearish?</h4>
               <p className="text-muted-foreground">
-                Backwardation (Spot > Futures) is typically a bullish signal for the physical commodity. It implies a supply deficit or strong immediate demand. Investors rolling long futures positions in a backwardated market earn a positive "roll yield."
+                Backwardation (Spot &gt; Futures) is typically a bullish signal for the physical commodity. It implies a supply deficit or strong immediate demand. Investors rolling long futures positions in a backwardated market earn a positive "roll yield."
               </p>
             </div>
 
@@ -555,7 +555,7 @@ export default function FuturesBasisCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">Does negative basis always mean Contango?</h4>
               <p className="text-muted-foreground">
-                Using the standard formula (Spot - Futures), yes, a negative result means Futures > Spot, which is Contango. If you use the reverse formula (Futures - Spot), a positive result is Contango. Always check the sign convention being used in your specific market.
+                Using the standard formula (Spot - Futures), yes, a negative result means Futures &gt; Spot, which is Contango. If you use the reverse formula (Futures - Spot), a positive result is Contango. Always check the sign convention being used in your specific market.
               </p>
             </div>
           </div>

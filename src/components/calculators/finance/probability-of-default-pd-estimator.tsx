@@ -498,7 +498,7 @@ export default function ProbabilityOfDefaultPDEstimator() {
           <li><strong>Underlying Asset:</strong> The total value of the company's assets.</li>
         </ul>
         <p className="mt-4">
-          If Asset Value > Debt, shareholders keep the difference (Option is In the Money). <br />
+          If Asset Value &gt; Debt, shareholders keep the difference (Option is In the Money). <br />
           If Asset Value &lt; Debt, shareholders get nothing (Option is Worthless/Default).
         </p>
 
@@ -570,7 +570,7 @@ export default function ProbabilityOfDefaultPDEstimator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">What is a "good" Distance to Default?</h4>
               <p className="text-muted-foreground">
-                Generally, a DD > 4 is Investment Grade (very safe). A DD &lt; 2 is Speculative Grade (Junk).
+                Generally, a DD &gt; 4 is Investment Grade (very safe). A DD &lt; 2 is Speculative Grade (Junk).
               </p>
             </div>
 
