@@ -25,12 +25,7 @@ export function HeaderClient() {
                             <span className="hidden sm:inline-block">Try Our AI Tool</span>
                         </Link>
                     </Button>
-                    <Button asChild variant="ghost" className="px-2 sm:px-4">
-                        <Link href="/learning-hub">
-                            <BookOpen className="h-4 w-4 sm:mr-2" />
-                            <span className="hidden sm:inline-block">Learning Hub</span>
-                        </Link>
-                    </Button>
+
                     <ThemeToggle />
                 </div>
             </div>
