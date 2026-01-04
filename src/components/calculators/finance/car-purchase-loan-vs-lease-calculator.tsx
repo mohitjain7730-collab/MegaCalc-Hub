@@ -86,6 +86,12 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CarPurchaseLoanVsLeaseCalculator() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const [chartData, setChartData] = useState<any[]>([]);
   const [analysis, setAnalysis] = useState<any>(null);
 
@@ -430,38 +436,44 @@ export default function CarPurchaseLoanVsLeaseCalculator() {
             </CardHeader>
             <CardContent>
               <div className="h-[350px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
-                    <XAxis
-                      dataKey="year"
-                      label={{ value: 'Years', position: 'insideBottomRight', offset: -5 }}
-                    />
-                    <YAxis
-                      tickFormatter={(val) => `$${val / 1000}k`}
-                    />
-                    <RechartsTooltip
-                      formatter={(val: number) => fmt(val)}
-                      labelFormatter={(label) => `Year ${label}`}
-                      wrapperStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
-                    />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="buyNet"
-                      name="Net Cost (Buy)"
-                      stroke="#2563eb"
-                      strokeWidth={3}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="leaseNet"
-                      name="Net Cost (Lease)"
-                      stroke="#9333ea"
-                      strokeWidth={3}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
+                {isClient ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
+                      <XAxis
+                        dataKey="year"
+                        label={{ value: 'Years', position: 'insideBottomRight', offset: -5 }}
+                      />
+                      <YAxis
+                        tickFormatter={(val) => `$${val / 1000}k`}
+                      />
+                      <RechartsTooltip
+                        formatter={(val: number) => fmt(val)}
+                        labelFormatter={(label) => `Year ${label}`}
+                        wrapperStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
+                      />
+                      <Legend />
+                      <Line
+                        type="monotone"
+                        dataKey="buyNet"
+                        name="Net Cost (Buy)"
+                        stroke="#2563eb"
+                        strokeWidth={3}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="leaseNet"
+                        name="Net Cost (Lease)"
+                        stroke="#9333ea"
+                        strokeWidth={3}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-muted-foreground">
+                    Loading Chart...
+                  </div>
+                )}
               </div>
 
               <div className="mt-6 p-4 bg-muted rounded-lg border border-border">

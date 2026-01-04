@@ -77,6 +77,12 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function HouseDownPaymentSavingsCalculator() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const [chartData, setChartData] = useState<any[]>([]);
   const [analysis, setAnalysis] = useState<any>(null);
 
@@ -345,41 +351,47 @@ export default function HouseDownPaymentSavingsCalculator() {
             </CardHeader>
             <CardContent>
               <div className="h-[350px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
-                    <XAxis
-                      dataKey="yearDisplay"
-                      label={{ value: 'Years', position: 'insideBottomRight', offset: -5 }}
-                      minTickGap={30}
-                    />
-                    <YAxis
-                      tickFormatter={(val) => `$${val / 1000}k`}
-                    />
-                    <RechartsTooltip
-                      formatter={(val: number) => fmt(val)}
-                      labelFormatter={(label) => `Year ${label}`}
-                    />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="savingsKey"
-                      name="Your Savings"
-                      stroke="#10b981"
-                      strokeWidth={3}
-                      dot={false}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="goalKey"
-                      name="Required Down Payment"
-                      stroke="#8b5cf6"
-                      strokeWidth={3}
-                      strokeDasharray="5 5" // Dotted line for target
-                      dot={false}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
+                {isClient ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
+                      <XAxis
+                        dataKey="yearDisplay"
+                        label={{ value: 'Years', position: 'insideBottomRight', offset: -5 }}
+                        minTickGap={30}
+                      />
+                      <YAxis
+                        tickFormatter={(val) => `$${val / 1000}k`}
+                      />
+                      <RechartsTooltip
+                        formatter={(val: number) => fmt(val)}
+                        labelFormatter={(label) => `Year ${label}`}
+                      />
+                      <Legend />
+                      <Line
+                        type="monotone"
+                        dataKey="savingsKey"
+                        name="Your Savings"
+                        stroke="#10b981"
+                        strokeWidth={3}
+                        dot={false}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="goalKey"
+                        name="Required Down Payment"
+                        stroke="#8b5cf6"
+                        strokeWidth={3}
+                        strokeDasharray="5 5" // Dotted line for target
+                        dot={false}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-muted-foreground">
+                    Loading Chart...
+                  </div>
+                )}
               </div>
 
               {!analysis?.isPossibleIn10Years && (

@@ -79,6 +79,12 @@ type FormValues = z.infer<typeof formSchema>;
 const COLORS = ['#10b981', '#fbbf24', '#f87171']; // Green, Yellow, Red
 
 export default function CreditUtilizationRatioCalculator() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const [utilizationData, setUtilizationData] = useState<any[]>([]);
   const [analysis, setAnalysis] = useState<any>(null);
 
@@ -263,24 +269,30 @@ export default function CreditUtilizationRatioCalculator() {
             </CardHeader>
             <CardContent className="flex flex-col items-center">
               <div className="h-[250px] w-full max-w-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={utilizationData}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={60}
-                      outerRadius={80}
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      <Cell key="cell-used" fill={analysis?.zoneColor} />
-                      <Cell key="cell-free" fill="#e2e8f0" />
-                    </Pie>
-                    <RechartsTooltip formatter={(val: number) => fmt(val)} />
-                    <Legend verticalAlign="bottom" height={36} />
-                  </PieChart>
-                </ResponsiveContainer>
+                {isClient ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={utilizationData}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={60}
+                        outerRadius={80}
+                        paddingAngle={5}
+                        dataKey="value"
+                      >
+                        <Cell key="cell-used" fill={analysis?.zoneColor} />
+                        <Cell key="cell-free" fill="#e2e8f0" />
+                      </Pie>
+                      <RechartsTooltip formatter={(val: number) => fmt(val)} />
+                      <Legend verticalAlign="bottom" height={36} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-muted-foreground">
+                    Loading Chart...
+                  </div>
+                )}
               </div>
 
               <div className="w-full space-y-2 mt-4">
