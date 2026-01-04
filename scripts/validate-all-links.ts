@@ -1,8 +1,9 @@
+
 /**
  * Comprehensive Site Link Validator
  * 
  * Scans all internal links across the entire codebase and validates them
- * against existing pages (calculators, categories, learning-hub articles).
+ * against existing pages (calculators, categories).
  * 
  * Run with: npx tsx scripts/validate-all-links.ts
  */
@@ -23,12 +24,6 @@ validUrls.add('/terms-conditions');
 validUrls.add('/contact');
 validUrls.add('/search');
 validUrls.add('/site-map');
-validUrls.add('/learning-hub');
-validUrls.add('/learning-hub/finance');
-validUrls.add('/learning-hub/health');
-validUrls.add('/learning-hub/finance/savings-and-investment');
-validUrls.add('/learning-hub/finance/retirement-planning');
-validUrls.add('/learning-hub/health/nutrition-diet');
 
 // Add category pages
 for (const category of categories) {
@@ -90,11 +85,6 @@ function isValidUrl(url: string): boolean {
         // Check if calculator exists with this category and slug
         const exists = calculators.some(c => c.category === category && c.slug === slug);
         return exists;
-    }
-
-    // Check learning-hub articles (dynamic routes - trust them)
-    if (url.startsWith('/learning-hub/')) {
-        return true;
     }
 
     // Check category pages
