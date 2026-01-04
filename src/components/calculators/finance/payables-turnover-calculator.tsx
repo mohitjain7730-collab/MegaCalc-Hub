@@ -623,7 +623,7 @@ export default function PayablesTurnoverCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">What happens if DPO is too high?</h4>
               <p className="text-muted-foreground">
-                If DPO is excessively high (e.g., >90 days without agreement), suppliers may stop shipping goods, demand Cash on Delivery (COD), or charge late fees. It indicates you are funding your business on the backs of your vendors.
+                If DPO is excessively high (e.g., {'>'}90 days without agreement), suppliers may stop shipping goods, demand Cash on Delivery (COD), or charge late fees. It indicates you are funding your business on the backs of your vendors.
               </p>
             </div>
 
