@@ -608,7 +608,7 @@ export default function BalanceTransferCalculator() {
           </div>
           <div className="flex gap-4">
             <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-bold shrink-0">2</div>
-            <p><strong>Do The Math:</strong> Use this calculator. Ensure your savings > fee.</p>
+            <p><strong>Do The Math:</strong> Use this calculator. Ensure your savings &gt; fee.</p>
           </div>
           <div className="flex gap-4">
             <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-bold shrink-0">3</div>
