@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Zap, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, TrendingDown, FunctionSquare, CheckCircle2 } from 'lucide-react';
+import { Zap, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, TrendingDown, FunctionSquare, CheckCircle2, Users, Briefcase, AlertTriangle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -690,6 +690,94 @@ export default function CurrentRatioCalculator() {
           </div>
         </CardContent>
       </Card>
+      {/* Usage of this Calculator */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Briefcase className="h-5 w-5" />
+            Usage of this Calculator
+          </CardTitle>
+          <CardDescription>
+            Practical applications and real-world context
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Who should use */}
+          <div>
+            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
+              <Users className="h-5 w-5 text-blue-600" />
+              Who Should Use This Calculator?
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
+                <strong className="block text-primary mb-1">Small Business Owners</strong>
+                <span className="text-sm text-muted-foreground">To regularly check liquidity health and ensure you can meet upcoming payroll and supplier payments.</span>
+              </div>
+              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
+                <strong className="block text-primary mb-1">Stock Investors</strong>
+                <span className="text-sm text-muted-foreground">To screen potential investments. A ratio &lt; 1.0 is a red flag suggesting dilution risk (raising capital) or bankruptcy risk.</span>
+              </div>
+              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
+                <strong className="block text-primary mb-1">Credit Analysts</strong>
+                <span className="text-sm text-muted-foreground">To determine creditworthiness before approving a loan or extending trade credit terms.</span>
+              </div>
+              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
+                <strong className="block text-primary mb-1">Financial Students</strong>
+                <span className="text-sm text-muted-foreground">To understand the mechanics of balance sheet analysis and liquidity constraints.</span>
+              </div>
+            </div>
+          </div>
+
+          <hr className="border-border/50" />
+
+          {/* When it might be inaccurate */}
+          <div>
+            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
+              <AlertTriangle className="h-5 w-5 text-amber-600" />
+              Limitations & Accuracy nuances
+            </h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                <span><strong>Seasonal Variations:</strong> For retailers, the Current Ratio spikes during holiday inventory build-up and drops after sales. Calculating it in the "off-season" may give a misleadingly low value.</span>
+              </li>
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                <span><strong>Just-in-Time (JIT) Inventory:</strong> Modern firms (like Dell or Walmart) keep inventory extremely low intentionally. This lowers their Current Ratio, but it signals efficiency, not distress.</span>
+              </li>
+              <li className="flex gap-2">
+                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                <span><strong>"Window Dressing":</strong> Companies may pay off debts with cash right before the financial reporting date to artificially inflate the ratio for appearing healthier than they are.</span>
+              </li>
+            </ul>
+          </div>
+
+          <hr className="border-border/50" />
+
+          {/* Real World Examples */}
+          <div>
+            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
+              <Landmark className="h-5 w-5 text-green-600" />
+              Real-World Examples
+            </h4>
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
+                <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: The Tech Giant (Apple/Google)</h5>
+                <p className="text-sm text-green-700/80 dark:text-green-400">
+                  Often maintains a lower Current Ratio (around 1.0 - 1.2). Why? Because they hold massive cash reserves in <em>non-current</em> long-term investments for higher yields. They can liquidate these easily if needed, so a lower ratio is not a risk.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+                <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: The Heavy Manufacturer (Ford/GM)</h5>
+                <p className="text-sm text-blue-700/80 dark:text-blue-400">
+                  Typically requires a higher ratio (1.5 - 2.0). They carry significant raw material inventory and work-in-progress parts. If their ratio drops to 1.0, a simple supply chain delay could cause a liquidity crisis.
+                </p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       <Card className="mb-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
