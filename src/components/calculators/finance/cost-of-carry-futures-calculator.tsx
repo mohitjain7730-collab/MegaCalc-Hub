@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Shield, Percent, FunctionSquare, CheckCircle2, BarChart3 } from 'lucide-react';
+import { Briefcase, Activity, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Shield, Percent, FunctionSquare, CheckCircle2, BarChart3 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -460,6 +460,75 @@ export default function CostOfCarryFuturesCalculator() {
         </CardContent>
       </Card>
 
+      {/* Usage Section */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Briefcase className="h-5 w-5" />
+            Usage of this Calculator
+          </CardTitle>
+          <CardDescription>
+            Who needs theoretical futures pricing?
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Arbitrage Traders
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Compare the calculated Theoretical Price against the actual market price. If they diverge significantly, an arbitrage window (Cash-and-Carry) exists.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Portfolio Managers
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Estimate the "roll yield" cost or benefit when holding long-term commodity positions via futures contracts.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Corporate Hedgers
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Determine if the futures curve is offering "fair value" for hedging future production or consumption needs.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Students & Academics
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Visualize how interest rates, storage costs, and dividends interact to shape the futures forward curve.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 text-muted-foreground">
+          <p>
+            The <strong>Cost of Carry Futures Calculator</strong> is the engine behind accurate derivatives pricing.
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-sm">
+            <li>It proves that futures prices are not just "predictions" of the future, but mathematically linked to spot prices via holding costs.</li>
+            <li>It identifies whether a market <strong>Contango</strong> is justified by storage/interest costs, or excessive sentiment.</li>
+            <li>It serves as the baseline for identifying <strong>Arbitrage</strong> risks and opportunities.</li>
+          </ul>
+        </CardContent>
+      </Card>
+
       {/* Related Calculators */}
       <Card>
         <CardHeader>
@@ -685,20 +754,7 @@ export default function CostOfCarryFuturesCalculator() {
         </CardContent>
       </Card>
 
-      {/* Summary Footer */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            Summary
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Cost of Carry Futures Calculator computes the theoretical fair value of a futures contract.</p>
-          <p>It accounts for financing rates, storage costs, convenience yields, and dividends.</p>
-          <p>Use this tool to identify arbitrage opportunities and understand the drivers of Contango and Backwardation.</p>
-        </CardContent>
-      </Card>
+
     </div>
   );
 }

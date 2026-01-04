@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Handshake, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Shield, Clock, FunctionSquare, CheckCircle2, ArrowRight, Activity, BarChart3 } from 'lucide-react';
+import { Briefcase, Handshake, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, Shield, Clock, FunctionSquare, CheckCircle2, ArrowRight, Activity, BarChart3 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -420,6 +420,75 @@ export default function ForwardContractValueCalculator() {
         </CardContent>
       </Card>
 
+      {/* Usage Section */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Briefcase className="h-5 w-5" />
+            Usage of this Calculator
+          </CardTitle>
+          <CardDescription>
+            Why mark-to-market?
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Corporate Treasurers
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Monitor the value of FX or Commodity hedges. If a hedge is deeply "out of the money," it may require posting collateral or impact earnings reports.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Credit Risk Officers
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Assess counterparty exposure. A positive forward value represents a credit risk (if the counterparty defaults, you lose the profit).
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Fund Accountants
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Perform daily or monthly Mark-to-Market (MtM) valuations for Net Asset Value (NAV) calculations.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Speculators
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Determine the profit to be realized if a position is closed out early (by entering an offsetting contract).
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 text-muted-foreground">
+          <p>
+            The <strong>Forward Contract Value Calculator</strong> brings transparency to Over-the-Counter (OTC) derivatives.
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-sm">
+            <li>It distinguishes between the <strong>Initial Price</strong> (where value is zero) and the <strong>Current Value</strong> (which fluctuates).</li>
+            <li>It highlights how interest rates and spot prices push the value in favor of the Long or Short party.</li>
+            <li>It is the essential tool for managing the financial health of a derivatives book.</li>
+          </ul>
+        </CardContent>
+      </Card>
+
       {/* Related Calculators */}
       <Card>
         <CardHeader>
@@ -625,20 +694,7 @@ export default function ForwardContractValueCalculator() {
         </CardContent>
       </Card>
 
-      {/* Summary Footer */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            Summary
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Forward Contract Value Calculator determines the current financial worth of an open forward position.</p>
-          <p>It helps in Mark-to-Market (MtM) accounting and risk management.</p>
-          <p>Use this tool to track your exposure to spot price changes and interest rate movements.</p>
-        </CardContent>
-      </Card>
+
     </div>
   );
 }

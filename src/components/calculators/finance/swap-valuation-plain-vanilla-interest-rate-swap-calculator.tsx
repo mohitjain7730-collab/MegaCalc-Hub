@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRightLeft, TrendingUp, AlertCircle, Info, Landmark, Calculator, DollarSign, Shield, Clock, FunctionSquare, CheckCircle2, RefreshCw, BarChart3, Target, Activity } from 'lucide-react';
+import { Briefcase, ArrowRightLeft, TrendingUp, AlertCircle, Info, Landmark, Calculator, DollarSign, Shield, Clock, FunctionSquare, CheckCircle2, RefreshCw, BarChart3, Target, Activity } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -444,6 +444,75 @@ export default function SwapValuationCalculator() {
         </CardContent>
       </Card>
 
+      {/* Usage Section */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Briefcase className="h-5 w-5" />
+            Usage of this Calculator
+          </CardTitle>
+          <CardDescription>
+            Uses for corporates and banks
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Corporate Borrowers
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Companies with floating-rate debt use swaps to "fix" their interest payments. This calculator values that position to see if it's an asset or liability.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Pension Funds
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Funds receiving fixed coupons may swap to floating rates if they believe interest rates will rise (duration management).
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Real Estate Developers
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Developers often use swaps to convert variable construction loans into fixed-rate long-term financing certainty.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Auditors & Analysts
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Independently verify the "Mark-to-Market" value of off-balance-sheet derivatives reported by firms.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5" />
+            Summary
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 text-muted-foreground">
+          <p>
+            The <strong>Swap Valuation Calculator</strong> provides a "quick and dirty" Mark-to-Market (MtM) check using the flat-curve method.
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-sm">
+            <li>It helps Payer and Receiver counterparties understand who is currently "winning" the trade based on new market rates.</li>
+            <li>It quantifies the cash amount required to unwind or terminate the agreement today.</li>
+            <li>It highlights the sensitivity of the swap's value to small changes in interest rates (DV01 risk).</li>
+          </ul>
+        </CardContent>
+      </Card>
+
       {/* Related Calculators */}
       <Card>
         <CardHeader>
@@ -648,20 +717,7 @@ export default function SwapValuationCalculator() {
         </CardContent>
       </Card>
 
-      {/* Summary Footer */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            Summary
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Swap Valuation Calculator estimates the Mark-to-Market (MtM) value of a plain vanilla position.</p>
-          <p>It compares your contract rate to current market rates to determine asset or liability status.</p>
-          <p>Use this tool to monitor interest rate exposure and potential unwind costs.</p>
-        </CardContent>
-      </Card>
+
     </div>
   );
 }

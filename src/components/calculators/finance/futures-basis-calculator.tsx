@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Zap, TrendingUp, AlertCircle, Target, Info, Calculator, DollarSign, Shield, TrendingDown, FunctionSquare, CheckCircle2, ArrowRightLeft, Activity, Landmark, BarChart3 } from 'lucide-react';
+import { Briefcase, Zap, TrendingUp, AlertCircle, Target, Info, Calculator, DollarSign, Shield, TrendingDown, FunctionSquare, CheckCircle2, ArrowRightLeft, Activity, Landmark, BarChart3 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -375,10 +375,66 @@ export default function FuturesBasisCalculator() {
         </CardContent>
       </Card>
 
+      {/* Related Calculators */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" />
+            Related Financial Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other derivatives and pricing tools
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/category/finance/futures-margin-requirement-calculator" className="block">
+              <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <Shield className="h-5 w-5 text-purple-600" />
+                    <div>
+                      <p className="font-medium">Margin Requirement</p>
+                      <p className="text-sm text-muted-foreground">Calculate initial margin</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link href="/category/finance/implied-volatility-calculator" className="block">
+              <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <Activity className="h-5 w-5 text-orange-600" />
+                    <div>
+                      <p className="font-medium">Implied Volatility</p>
+                      <p className="text-sm text-muted-foreground">Option pricing inputs</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link href="/category/finance/convexity-adjustment-bond-futures-calculator" className="block">
+              <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <TrendingUp className="h-5 w-5 text-blue-600" />
+                    <div>
+                      <p className="font-medium">Convexity Adjustment</p>
+                      <p className="text-sm text-muted-foreground">Bond futures analytics</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+        </CardContent>
+      </Card >
+
       {/* Complete Guide Section */}
-      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Article">
+      < section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Article" >
         {/* SEO & SCHEMA METADATA */}
-        <meta itemProp="headline" content="The Definitive Guide to Futures Basis: Contango, Backwardation, and Hedging" />
+        < meta itemProp="headline" content="The Definitive Guide to Futures Basis: Contango, Backwardation, and Hedging" />
         <meta itemProp="description" content="A comprehensive guide to understanding Futures Basis, the critical relationship between spot and futures prices. Learn about Contango vs. Backwardation, convergence, and how to use basis for hedging and arbitrage." />
         <meta itemProp="keywords" content="futures basis, contango vs backwardation, spot vs futures, basis risk, arbitrage, hedging with futures, cost of carry model" />
         <meta itemProp="author" content="Financial Analyst Team" />
@@ -474,10 +530,10 @@ export default function FuturesBasisCalculator() {
           <li><strong>Short Hedger (Seller):</strong> Benefits if the basis strengthens (Spot rises relative to Futures).</li>
           <li><strong>Long Hedger (Buyer):</strong> Benefits if the basis weakens (Spot falls relative to Futures).</li>
         </ul>
-      </section>
+      </section >
 
       {/* FAQ Section */}
-      <Card>
+      < Card >
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
@@ -562,20 +618,85 @@ export default function FuturesBasisCalculator() {
         </CardContent>
       </Card>
 
-      {/* Summary Footer */}
-      <Card className="mb-6">
+      {/* Usage Section */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Briefcase className="h-5 w-5" />
+            Usage of this Calculator
+          </CardTitle>
+          <CardDescription>
+            Applications in trading and hedging
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Producers (Short Hedgers)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Farmers or Miners use this to decide when to lock in prices. A "Strong" basis is a signal to sell the cash commodity now rather than store it.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Consumers (Long Hedgers)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Airlines or Manufacturers look for a "Weak" basis to buy physical inventory cheap relative to futures.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Arbitrageurs
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Exploit "Cash-and-Carry" opportunities when the basis is sufficiently negative (Contango) to cover storage and interest costs.
+              </p>
+            </div>
+            <div className="p-4 bg-muted/50 rounded-lg border border-border/50">
+              <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" /> Market Analysts
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Monitor market structure (Contango/Backwardation) to gauge immediate supply tightness vs. long-term expectations.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Summary Section */}
+      <Card className="mb-8">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5" />
             Summary
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Futures Basis Calculator helps traders and hedgers analyze the relationship between spot and futures markets.</p>
-          <p>Understanding basis is crucial for evaluating market structure (Contango vs. Backwardation) and managing hedging efficiency.</p>
-          <p>Use this tool to identify potential arbitrage opportunities and assess supply/demand tightness.</p>
+        <CardContent className="space-y-4 text-muted-foreground">
+          <p>
+            The <strong>Futures Basis Calculator</strong> is a diagnostic tool for the health of a commodity or financial market.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+            <div className="flex flex-col gap-1 p-3 bg-card border rounded-md">
+              <span className="font-bold text-foreground">Basis &gt; 0 (Positive)</span>
+              <span>Backwardation. Spot is expensive. Supply shortage.</span>
+            </div>
+            <div className="flex flex-col gap-1 p-3 bg-card border rounded-md">
+              <span className="font-bold text-foreground">Basis &lt; 0 (Negative)</span>
+              <span>Contango. Futures are expensive. Cost of carry dominates.</span>
+            </div>
+            <div className="flex flex-col gap-1 p-3 bg-card border rounded-md">
+              <span className="font-bold text-foreground">Convergence</span>
+              <span>Basis must equal 0 at expiration.</span>
+            </div>
+          </div>
         </CardContent>
       </Card>
-    </div>
+
+
+    </div >
   );
 }
