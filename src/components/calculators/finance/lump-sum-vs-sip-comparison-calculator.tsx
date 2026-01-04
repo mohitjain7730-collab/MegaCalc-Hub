@@ -70,7 +70,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
     const sipInvested = v.sipMonthlyAmount * n;
 
     const diff = Math.abs(lumpSumFinal - sipFinal);
-    const winner = lumpSumFinal > sipFinal ? 'Lump Sum' : 'SIP';
+    const winner: 'Lump Sum' | 'SIP' = lumpSumFinal > sipFinal ? 'Lump Sum' : 'SIP';
     const percentDiff = (diff / Math.min(lumpSumFinal, sipFinal)) * 100;
 
     return { lumpSumFinal, sipFinal, lumpSumInvested, sipInvested, diff, winner, percentDiff };
@@ -91,7 +91,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
   };
 
   const getInsights = (winner: string, lsAmount: number, sipTotal: number) => {
-    const insights = [];
+    const insights: string[] = [];
     if (lsAmount > sipTotal * 1.5) insights.push('Comparing a large Lump Sum to a small SIP might be unfair; ensure total capital deployed is comparable for a true strategy test.');
     if (winner === 'Lump Sum') {
       insights.push('Time in the market generally beats timing the market.');
@@ -113,7 +113,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
     const insights = getInsights(winner, lumpSumInvested, sipInvested);
 
     // Risk factors based on the "Loser" or general context
-    const riskFactors = [];
+    const riskFactors: string[] = [];
     if (winner === 'Lump Sum') {
       riskFactors.push('Lump Sum Risk: Investing just before a crash takes years to recover.');
       riskFactors.push('Psychological Difficulty: Watching a large sum drop 20% is painful.');
