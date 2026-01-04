@@ -295,6 +295,78 @@ export default function CurrentRatioCalculator() {
         </div>
       )}
 
+      {/* Understanding the Inputs */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Inputs
+          </CardTitle>
+          <CardDescription>
+            Key components required for the Current Ratio calculation
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-100 dark:border-blue-900/20">
+              <h4 className="font-semibold mb-2 flex items-center gap-2 text-blue-700 dark:text-blue-300">
+                <DollarSign className="h-4 w-4" />
+                Current Assets
+              </h4>
+              <p className="text-sm text-muted-foreground mb-3">
+                Assets expected to be converted to cash, sold, or consumed within one year.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
+                  <span>Cash & Cash Equivalents</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
+                  <span>Accounts Receivable</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
+                  <span>Inventory / Stock</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
+                  <span>Short-term Investments</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
+              <h4 className="font-semibold mb-2 flex items-center gap-2 text-amber-700 dark:text-amber-300">
+                <AlertCircle className="h-4 w-4" />
+                Current Liabilities
+              </h4>
+              <p className="text-sm text-muted-foreground mb-3">
+                Financial obligations and debts that are due to be paid within one year.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
+                  <span>Accounts Payable</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
+                  <span>Short-term Debt</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
+                  <span>Accrued Expenses</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
+                  <span>Dividends Payable</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Formula Used */}
       <Card className="mb-6">
         <CardHeader>
