@@ -653,7 +653,7 @@ export default function InventoryTurnoverRatioCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">Can inventory turnover be too high?</h4>
               <p className="text-muted-foreground">
-                Yes. An extremely high ratio (e.g., >20x for non-perishables) might indicate inadequate stocking levels. This leads to "stockouts," where customers can't buy what they want, leading to lost revenue and customer dissatisfaction.
+                Yes. An extremely high ratio (e.g., &gt;20x for non-perishables) might indicate inadequate stocking levels. This leads to "stockouts," where customers can't buy what they want, leading to lost revenue and customer dissatisfaction.
               </p>
             </div>
 
