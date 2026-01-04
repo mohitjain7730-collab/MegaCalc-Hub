@@ -1,5 +1,5 @@
 import type { NextConfig } from 'next';
-import { calculators } from './src/lib/calculators';
+
 
 // @next/bundle-analyzer uses CommonJS exports, so we use require
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -95,16 +95,16 @@ const nextConfig: NextConfig = {
     if (!isServer) {
       // @ts-ignore
       config.output = config.output || {};
-      
+
       // Better chunk filename for cache busting and reliability
       // @ts-ignore
       if (!config.output.chunkFilename) {
         // @ts-ignore
-        config.output.chunkFilename = dev 
-          ? 'static/chunks/[name].js' 
+        config.output.chunkFilename = dev
+          ? 'static/chunks/[name].js'
           : 'static/chunks/[name].[contenthash:8].js';
       }
-      
+
       // Improve chunk loading with better error handling
       // @ts-ignore
       if (config.optimization && config.optimization.splitChunks) {
@@ -132,7 +132,7 @@ const nextConfig: NextConfig = {
     // Reduce infrastructure logging noise
     // @ts-ignore
     config.infrastructureLogging = { level: 'error' };
-    
+
     // Optimize bundle splitting
     if (!isServer) {
       config.optimization = {
@@ -320,21 +320,7 @@ const nextConfig: NextConfig = {
   // Redirects: Redirect old /calculator/{slug} routes to canonical /category/{category}/{slug} routes
   // Optimized: Only process redirects in production builds, cache in development
   async redirects() {
-    // In development, return empty array to speed up builds
-    // Redirects are only needed in production
-    if (process.env.NODE_ENV === 'development') {
-      return [];
-    }
-
-    // Create redirects for all calculators from /calculator/{slug} to /category/{category}/{slug}
-    // This runs only in production builds
-    const calculatorRedirects = calculators.map((calc) => ({
-      source: `/calculator/${calc.slug}`,
-      destination: `/category/${calc.category}/${calc.slug}`,
-      permanent: true, // 308 permanent redirect for SEO
-    }));
-
-    return calculatorRedirects;
+    return [];
   },
 };
 
