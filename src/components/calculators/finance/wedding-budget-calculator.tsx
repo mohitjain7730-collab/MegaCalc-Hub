@@ -302,7 +302,7 @@ export default function WeddingBudgetCalculator() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">
-                  ${analysis?.totalExpenses.toLocaleString()}
+                  ${(analysis?.totalExpenses || 0).toLocaleString()}
                 </div>
               </CardContent>
             </Card>
@@ -324,7 +324,7 @@ export default function WeddingBudgetCalculator() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold text-blue-700 dark:text-blue-300">
-                  ${analysis?.costPerGuest.toFixed(0)}
+                  ${(analysis?.costPerGuest || 0).toFixed(0)}
                 </div>
               </CardContent>
             </Card>

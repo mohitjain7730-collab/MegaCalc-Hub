@@ -315,7 +315,7 @@ export default function HouseDownPaymentSavingsCalculator() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold text-emerald-800 dark:text-emerald-200">
-                  {analysis?.yearsToGoal ? `${analysis.yearsToGoal.toFixed(1)} Years` : '> 10 Years'}
+                  {(analysis?.yearsToGoal !== null && analysis?.yearsToGoal !== undefined) ? `${Number(analysis.yearsToGoal).toFixed(1)} Years` : '> 10 Years'}
                 </div>
               </CardContent>
             </Card>
@@ -325,7 +325,7 @@ export default function HouseDownPaymentSavingsCalculator() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold">
-                  {analysis?.finalGoalAmount ? fmt(analysis.finalGoalAmount) : 'N/A'}
+                  {(analysis?.finalGoalAmount !== null && analysis?.finalGoalAmount !== undefined) ? fmt(analysis.finalGoalAmount) : 'N/A'}
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">Adjusted for inflation</p>
               </CardContent>
@@ -394,7 +394,7 @@ export default function HouseDownPaymentSavingsCalculator() {
                 )}
               </div>
 
-              {!analysis?.isPossibleIn10Years && (
+              {analysis && !analysis.isPossibleIn10Years && (
                 <Alert variant="destructive" className="mt-4">
                   <AlertTriangle className="h-4 w-4" />
                   <AlertTitle>Goal Unobtainable In 10 Years</AlertTitle>

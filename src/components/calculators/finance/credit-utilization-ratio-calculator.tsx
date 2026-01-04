@@ -241,7 +241,7 @@ export default function CreditUtilizationRatioCalculator() {
               </CardHeader>
               <CardContent>
                 <div className={`text-5xl font-black ${analysis?.color}`}>
-                  {analysis?.ratio.toFixed(1)}%
+                  {(analysis?.ratio || 0).toFixed(1)}%
                 </div>
                 <Badge variant="outline" className={`mt-2 ${analysis?.color} border-current`}>
                   {analysis?.status}

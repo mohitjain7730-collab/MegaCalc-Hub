@@ -418,8 +418,7 @@ export default function CarPurchaseLoanVsLeaseCalculator() {
                   <span className="text-2xl font-bold">{fmt(analysis?.leaseMonthlyTotal || 0)}</span>
                 </div>
                 <div className="flex justify-between items-baseline opacity-80">
-                  <span className="text-muted-foreground text-xs">Effective APR</span>
-                  <span className="text-sm font-mono">{analysis?.leaseAPR.toFixed(2)}%</span>
+                  <span className="text-sm font-mono">{(analysis?.leaseAPR || 0).toFixed(2)}%</span>
                 </div>
               </CardContent>
             </Card>
@@ -486,7 +485,7 @@ export default function CarPurchaseLoanVsLeaseCalculator() {
                 </p>
                 <p className="text-sm text-foreground/90 leading-relaxed mt-2">
                   <strong>Long Term ({form.getValues().ownershipYears} Years):</strong> {analysis?.cheaperLongTerm} wins.
-                  You save roughly <strong>{fmt(analysis?.savingsLongTerm)}</strong> by {analysis?.cheaperLongTerm.toLowerCase()}.
+                  You save roughly <strong>{fmt(analysis?.savingsLongTerm)}</strong> by {analysis?.cheaperLongTerm?.toLowerCase()}.
                 </p>
                 {analysis?.breakEvenYear !== 'Never' && (
                   <p className="text-sm text-emerald-600 mt-2 font-medium">
