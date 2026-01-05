@@ -516,7 +516,7 @@ export default function WorkingCapitalRequirementEstimator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/accounts-receivable-turnover-calculator" className="block">
+            <Link href="/category/finance/receivables-turnover-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -529,7 +529,7 @@ export default function WorkingCapitalRequirementEstimator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/accounts-payable-turnover-calculator" className="block">
+            <Link href="/category/finance/payables-turnover-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

@@ -449,14 +449,14 @@ export default function FixedAssetTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/total-asset-turnover-calculator" className="block">
+            <Link href="/category/finance/receivables-turnover-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Briefcase className="h-5 w-5 text-indigo-600" />
                     <div>
-                      <p className="font-medium">Total Asset Turnover</p>
-                      <p className="text-sm text-muted-foreground">Overall efficiency</p>
+                      <p className="font-medium">Receivables Turnover</p>
+                      <p className="text-sm text-muted-foreground">Collection efficiency</p>
                     </div>
                   </div>
                 </CardContent>
@@ -475,7 +475,7 @@ export default function FixedAssetTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/debt-service-coverage-ratio-calculator" className="block">
+            <Link href="/category/finance/dscr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -488,13 +488,13 @@ export default function FixedAssetTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/capex-calculator" className="block">
+            <Link href="/category/finance/free-cash-flow-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Building2 className="h-5 w-5 text-orange-600" />
                     <div>
-                      <p className="font-medium">CapEx Estimation</p>
+                      <p className="font-medium">Free Cash Flow</p>
                       <p className="text-sm text-muted-foreground">Investment planning</p>
                     </div>
                   </div>

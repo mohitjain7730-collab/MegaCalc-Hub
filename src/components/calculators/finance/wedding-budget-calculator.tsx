@@ -628,7 +628,7 @@ export default function WeddingBudgetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/loan-amortization-calculator" className="block">
+            <Link href="/category/finance/loan-emi-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

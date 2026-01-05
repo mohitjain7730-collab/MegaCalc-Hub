@@ -488,7 +488,7 @@ export default function BreakEvenAnalysisCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/roi-calculator" className="block">
+            <Link href="/category/finance/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -501,26 +501,26 @@ export default function BreakEvenAnalysisCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/markup-calculator" className="block">
+            <Link href="/category/finance/gross-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <TrendingUp className="h-5 w-5 text-indigo-600" />
                     <div>
-                      <p className="font-medium">Markup Calculator</p>
-                      <p className="text-sm text-muted-foreground">Pricing strategy</p>
+                      <p className="font-medium">Gross Margin</p>
+                      <p className="text-sm text-muted-foreground">Revenue minus COGS</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cash-flow-calculator" className="block">
+            <Link href="/category/finance/free-cash-flow-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Activity className="h-5 w-5 text-teal-600" />
                     <div>
-                      <p className="font-medium">Cash Flow</p>
+                      <p className="font-medium">Free Cash Flow</p>
                       <p className="text-sm text-muted-foreground">Inflow & Outflow</p>
                     </div>
                   </div>

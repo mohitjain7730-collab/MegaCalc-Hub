@@ -519,14 +519,14 @@ export default function InflationAdjustedSavingsGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cost-of-living-calculator" className="block">
+            <Link href="/category/finance/purchasing-power-parity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <DollarSign className="h-5 w-5 text-orange-600" />
                     <div>
-                      <p className="font-medium">Cost of Living</p>
-                      <p className="text-sm text-muted-foreground">Lifestyle comparison</p>
+                      <p className="font-medium">PPP Calculator</p>
+                      <p className="text-sm text-muted-foreground">Currency value comparison</p>
                     </div>
                   </div>
                 </CardContent>

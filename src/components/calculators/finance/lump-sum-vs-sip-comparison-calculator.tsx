@@ -482,13 +482,13 @@ export default function LumpSumVsSIPComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/lumpsum-calculator" className="block">
+            <Link href="/category/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <DollarSign className="h-5 w-5 text-blue-600" />
                     <div>
-                      <p className="font-medium">Lump Sum Calculator</p>
+                      <p className="font-medium">Compound Interest</p>
                       <p className="text-sm text-muted-foreground">One-time investment analysis</p>
                     </div>
                   </div>
@@ -534,7 +534,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/fd-calculator" className="block">
+            <Link href="/category/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

@@ -432,7 +432,7 @@ export default function CapitalBudgetingRiskCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/investment-return-roi-calculator" className="block">
+            <Link href="/category/finance/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -445,7 +445,7 @@ export default function CapitalBudgetingRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/net-present-value-npv-calculator" className="block">
+            <Link href="/category/finance/npv-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -458,13 +458,13 @@ export default function CapitalBudgetingRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/internal-rate-of-return-irr-calculator" className="block">
+            <Link href="/category/finance/project-irr-vs-wacc-comparison-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <BarChart3 className="h-5 w-5 text-indigo-600" />
                     <div>
-                      <p className="font-medium">IRR Calculator</p>
+                      <p className="font-medium">IRR vs WACC Calculator</p>
                       <p className="text-sm text-muted-foreground">Profitability rate</p>
                     </div>
                   </div>
@@ -484,26 +484,26 @@ export default function CapitalBudgetingRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/sharpe-ratio-calculator" className="block">
+            <Link href="/category/finance/information-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Activity className="h-5 w-5 text-teal-600" />
                     <div>
-                      <p className="font-medium">Sharpe Ratio</p>
+                      <p className="font-medium">Information Ratio</p>
                       <p className="text-sm text-muted-foreground">Risk-adjusted return</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/margin-of-safety-calculator" className="block">
+            <Link href="/category/finance/break-even-analysis-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <AlertCircle className="h-5 w-5 text-orange-600" />
                     <div>
-                      <p className="font-medium">Margin of Safety</p>
+                      <p className="font-medium">Break-Even Analysis</p>
                       <p className="text-sm text-muted-foreground">Risk buffer</p>
                     </div>
                   </div>

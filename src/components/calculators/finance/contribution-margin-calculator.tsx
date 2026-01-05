@@ -490,7 +490,7 @@ export default function ContributionMarginCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/ebitda-calculator" className="block">
+            <Link href="/category/finance/ebitda-ebit-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -503,7 +503,7 @@ export default function ContributionMarginCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/roi-calculator" className="block">
+            <Link href="/category/finance/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

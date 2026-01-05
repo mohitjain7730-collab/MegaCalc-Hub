@@ -458,7 +458,7 @@ export default function PassiveIncomeProjectionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/investment-return-calculator" className="block">
+            <Link href="/category/finance/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

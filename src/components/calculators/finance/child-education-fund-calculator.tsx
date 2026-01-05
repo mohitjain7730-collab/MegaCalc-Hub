@@ -547,14 +547,14 @@ export default function ChildEducationFundCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/step-up-sip-calculator" className="block">
+            <Link href="/category/finance/sip-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <Zap className="h-5 w-5 text-yellow-600" />
+                    <TrendingUp className="h-5 w-5 text-green-600" />
                     <div>
-                      <p className="font-medium">Step-Up SIP</p>
-                      <p className="text-sm text-muted-foreground">Increasing investments</p>
+                      <p className="font-medium">SIP Calculator</p>
+                      <p className="text-sm text-muted-foreground">Regular investment growth</p>
                     </div>
                   </div>
                 </CardContent>

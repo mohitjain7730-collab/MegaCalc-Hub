@@ -529,20 +529,20 @@ export default function IntermittentFasting52ScheduleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/macro-calculator" className="block">
+            <Link href="/category/health-fitness/macro-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Utensils className="h-5 w-5 text-green-600" />
                     <div>
-                      <p className="font-medium">Macro Calculator</p>
+                      <p className="font-medium">Macro Ratio Calc</p>
                       <p className="text-sm text-muted-foreground">Protein/Carb/Fat Split</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/keto-calculator" className="block">
+            <Link href="/category/health-fitness/keto-macro-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -568,7 +568,7 @@ export default function IntermittentFasting52ScheduleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/water-intake-calculator" className="block">
+            <Link href="/category/health-fitness/hydration-needs-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -581,7 +581,7 @@ export default function IntermittentFasting52ScheduleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/protein-calculator" className="block">
+            <Link href="/category/health-fitness/protein-intake-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

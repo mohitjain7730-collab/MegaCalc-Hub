@@ -491,7 +491,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/refinance-break-even-calculator" className="block">
+            <Link href="/category/finance/mortgage-refinance-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -504,7 +504,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/extra-payment-calculator" className="block">
+            <Link href="/category/finance/loan-amortization-extra-payments-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -530,7 +530,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/loan-to-value-ratio-calculator" className="block">
+            <Link href="/category/finance/loan-to-value-ltv-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -543,7 +543,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/debt-service-coverage-ratio-calculator" className="block">
+            <Link href="/category/finance/dscr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

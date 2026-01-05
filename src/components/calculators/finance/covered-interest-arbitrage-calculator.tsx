@@ -435,13 +435,13 @@ export default function CoveredInterestArbitrageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/black-scholes-option-calculator" className="block">
+            <Link href="/category/finance/black-scholes-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-purple-600" />
                     <div>
-                      <p className="font-medium">Black-Scholes Options</p>
+                      <p className="font-medium">Black-Scholes Calc</p>
                       <p className="text-sm text-muted-foreground">Derivative Pricing</p>
                     </div>
                   </div>

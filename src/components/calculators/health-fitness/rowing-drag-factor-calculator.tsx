@@ -503,7 +503,7 @@ export default function RowingDragFactorCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/one-rep-max-calculator" className="block">
+            <Link href="/category/health-fitness/one-rep-max-strength-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -516,13 +516,13 @@ export default function RowingDragFactorCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/pace-calculator" className="block">
+            <Link href="/category/health-fitness/running-pace-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Target className="h-5 w-5 text-blue-600" />
                     <div>
-                      <p className="font-medium">Pace Calculator</p>
+                      <p className="font-medium">Running Pace Calc</p>
                       <p className="text-sm text-muted-foreground">Split Times & Speed</p>
                     </div>
                   </div>
@@ -542,13 +542,13 @@ export default function RowingDragFactorCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/ideal-weight-calculator" className="block">
+            <Link href="/category/health-fitness/ideal-body-weight-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <BarChart3 className="h-5 w-5 text-orange-600" />
                     <div>
-                      <p className="font-medium">Ideal Weight</p>
+                      <p className="font-medium">Ideal Body Weight</p>
                       <p className="text-sm text-muted-foreground">Weight Management</p>
                     </div>
                   </div>

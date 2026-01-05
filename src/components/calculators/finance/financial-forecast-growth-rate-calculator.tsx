@@ -528,20 +528,20 @@ export default function FinancialForecastGrowthRateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/rule-of-72-calculator" className="block">
+            <Link href="/category/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Percent className="h-5 w-5 text-purple-600" />
                     <div>
-                      <p className="font-medium">Rule of 72</p>
-                      <p className="text-sm text-muted-foreground">Doubling time check</p>
+                      <p className="font-medium">Compound Interest</p>
+                      <p className="text-sm text-muted-foreground">Growth projection</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/roi-calculator" className="block">
+            <Link href="/category/finance/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

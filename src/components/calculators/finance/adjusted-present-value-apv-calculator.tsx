@@ -512,14 +512,14 @@ export default function AdjustedPresentValueAPVCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/irr-calculator" className="block">
+            <Link href="/category/finance/project-irr-vs-wacc-comparison-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Zap className="h-5 w-5 text-orange-600" />
                     <div>
-                      <p className="font-medium">IRR Calculator</p>
-                      <p className="text-sm text-muted-foreground">Internal Rate of Return</p>
+                      <p className="font-medium">IRR vs WACC Calc</p>
+                      <p className="text-sm text-muted-foreground">Project viability check</p>
                     </div>
                   </div>
                 </CardContent>

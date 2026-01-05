@@ -484,13 +484,13 @@ export default function InventoryTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/economic-order-quantity-calculator" className="block">
+            <Link href="/category/finance/economic-break-even-quantity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <Package className="h-5 w-5 text-teal-600" />
                     <div>
-                      <p className="font-medium">EOQ Calculator</p>
+                      <p className="font-medium">Econ Break-Even Qty</p>
                       <p className="text-sm text-muted-foreground">Order optimization</p>
                     </div>
                   </div>
