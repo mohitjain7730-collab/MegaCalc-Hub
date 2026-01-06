@@ -214,7 +214,7 @@ export default function RentVsBuyHomeCalculator() {
     }
 
     const difference = Math.abs(loopBuyCost - loopRentCost);
-    const betterOption = loopBuyCost < loopRentCost ? 'buy' : 'rent';
+    const betterOption: 'buy' | 'rent' = loopBuyCost < loopRentCost ? 'buy' : 'rent';
 
     // Insights Generation
     const insights = [];

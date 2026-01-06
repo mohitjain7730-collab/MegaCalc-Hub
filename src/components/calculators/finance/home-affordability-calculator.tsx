@@ -25,7 +25,9 @@ import {
   CheckCircle2,
   AlertTriangle,
   Wallet,
-  PiggyBank
+  PiggyBank,
+  ArrowRightLeft,
+  Users
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -89,7 +91,7 @@ export default function HomeAffordabilityCalculator() {
 
     // 3. Determine Limiting Factor
     const maxAllowedHousingPayment = Math.min(maxHousingFront, maxHousingBack);
-    const limitingFactor = maxHousingFront < maxHousingBack ? 'front-end' : 'back-end';
+    const limitingFactor: 'front-end' | 'back-end' = maxHousingFront < maxHousingBack ? 'front-end' : 'back-end';
 
     // 4. Subtract Non-Mortgage Housing Costs (Tax, Insurance, HOA)
     // Problem: Tax is usually % of Home Price. We don't know Home Price yet.
