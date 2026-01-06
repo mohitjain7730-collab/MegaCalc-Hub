@@ -11,6 +11,8 @@ import { calculators } from '@/lib/calculators';
 import { CategoryIcon } from '@/components/category-icon';
 import { EmbedWidget } from '@/components/embed-widget';
 import { CalculatorSidebar } from '@/components/calculator-sidebar';
+import { indexableCalculatorSlugs } from '@/lib/indexing-whitelist';
+
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema, generateSubCategorySchema } from '@/lib/schema-generator';
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
 import { CategorySearch } from '@/components/category-search';
@@ -96,11 +98,17 @@ export async function generateMetadata({
     const canonicalPath = path.length === 2 ? `${category.slug}/${path[0]}/${calculator.slug}` : `${category.slug}/${calculator.slug}`;
     const canonicalUrl = `https://mycalculating.com/category/${canonicalPath}`;
 
+    const isIndexable = indexableCalculatorSlugs.includes(calculator.slug);
+
     return {
         title: calculator.metaTitle || calculator.name,
         description: calculator.metaDescription || calculator.description,
         alternates: {
             canonical: canonicalUrl,
+        },
+        robots: {
+            index: isIndexable,
+            follow: true,
         },
         openGraph: {
             title: calculator.metaTitle || calculator.name,

@@ -44,6 +44,10 @@ export const metadata: Metadata = {
     'mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-capable': 'yes',
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 // Next.js 15: Separate viewport export
