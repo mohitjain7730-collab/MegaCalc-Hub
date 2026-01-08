@@ -29,4 +29,6 @@ export const indexableCalculatorSlugs = [
     'covered-interest-arbitrage-calculator',
     'currency-forward-points-calculator',
     'duration-gap-calculator',
+    'bond-price-calulator',
+    'bond-duration-calculator'
 ];
