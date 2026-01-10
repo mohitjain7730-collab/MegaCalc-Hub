@@ -31,4 +31,6 @@ export const indexableCalculatorSlugs = [
     'duration-gap-calculator',
     'bond-price-calculator',
     'bond-duration-calculator'
+    'bond-convexity-calculator',
+    'bond-yield-spread-calculator'
 ];
