@@ -32,5 +32,9 @@ export const indexableCalculatorSlugs = [
     'bond-price-calculator',
     'bond-duration-calculator',
     'bond-convexity-calculator',
-    'bond-yield-spread-calculator'
+    'bond-yield-spread-calculator',
+    'scenario-analysis-calculator',
+    'currency-exchange-calculator',
+    'amortization-schedule-generator',
+    'macrs-depreciation-calculator'
 ];
