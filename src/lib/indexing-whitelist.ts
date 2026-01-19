@@ -36,5 +36,10 @@ export const indexableCalculatorSlugs = [
     'scenario-analysis-calculator',
     'currency-exchange-calculator',
     'amortization-schedule-generator',
-    'macrs-depreciation-calculator'
+    'macrs-depreciation-calculator',
+    'sharpe-ratio-calculator',
+    'sortino-ratio-calculator',
+    'treynor-ratio-calculator',
+    'gross-margin-calculator',
+    'net-profit-margin-calculator'
 ];
