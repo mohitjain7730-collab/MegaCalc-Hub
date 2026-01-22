@@ -41,5 +41,10 @@ export const indexableCalculatorSlugs = [
     'sortino-ratio-calculator',
     'treynor-ratio-calculator',
     'gross-margin-calculator',
-    'net-profit-margin-calculator'
+    'net-profit-margin-calculator',
+    'retirement-savings-calculator',
+    'compound-interest-calculator',
+    'net-worth-calculator',
+    'credit-card-payoff-calculator',
+    'mortgage-payment-calculator'
 ];
