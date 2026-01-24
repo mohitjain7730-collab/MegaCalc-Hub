@@ -10,7 +10,6 @@ import { getCalculator, getCalculatorsByCategory } from '@/lib/calculator-data-u
 import { calculators } from '@/lib/calculators';
 import { CategoryIcon } from '@/components/category-icon';
 import { EmbedWidget } from '@/components/embed-widget';
-import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { indexableCalculatorSlugs } from '@/lib/indexing-whitelist';
 
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema, generateSubCategorySchema } from '@/lib/schema-generator';
@@ -143,8 +142,7 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
 
             return (
                 <>
-                    <CalculatorSidebar currentCategorySlug={category.slug} />
-                    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-6 md:p-8 lg:pl-64">
+                    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-6 md:p-8">
                         <script
                             type="application/ld+json"
                             dangerouslySetInnerHTML={{
@@ -245,8 +243,7 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(comprehensiveSchema) }}
             />
-            <CalculatorSidebar currentCategorySlug={category.slug} />
-            <div className="flex flex-col items-center min-h-screen bg-secondary/50 p-4 sm:p-6 lg:pl-64">
+            <div className="flex flex-col items-center min-h-screen bg-secondary/50 p-4 sm:p-6">
                 <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate style={{ minHeight: '600px', width: '100%' }}>
                     <div className="mb-8">
                         <Button asChild variant="ghost" className="mb-4">

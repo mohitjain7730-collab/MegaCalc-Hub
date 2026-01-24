@@ -10,7 +10,6 @@ import { categories } from '@/lib/categories';
 import { CategoryIcon } from '@/components/category-icon';
 import { getCalculatorsByCategory } from '@/lib/calculator-data-utils';
 import { CategorySearch } from '@/components/category-search';
-import { CalculatorSidebar } from '@/components/calculator-sidebar';
 import { generateCategorySchema } from '@/lib/schema-generator';
 import { CategoryCard } from '@/components/category-card';
 
@@ -61,8 +60,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
     return (
       <>
-        <CalculatorSidebar currentCategorySlug={category.slug} />
-        <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-6 md:p-8 lg:pl-64">
+        <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-6 md:p-8">
           <div className="w-full max-w-4xl">
             <div className="mb-6 sm:mb-8">
               <Button asChild variant="ghost" className='mb-3 sm:mb-4 text-sm sm:text-base'>
@@ -97,8 +95,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <CalculatorSidebar currentCategorySlug={category.slug} />
-      <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-6 md:p-8 lg:pl-64">
+      <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-6 md:p-8">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

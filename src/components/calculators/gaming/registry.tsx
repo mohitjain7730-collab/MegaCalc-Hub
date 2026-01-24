@@ -4,8 +4,8 @@ import React, { lazy, useState, useEffect } from 'react';
 
 // Static map of calculators to avoid dynamic import context creation
 const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  'roblox-pet-value-calculator': lazy(() => import('./roblox-pet-value-calculator')),
   'roblox-egg-hatch-odds-simulator': lazy(() => import('./roblox-egg-hatch-odds-simulator')),
+  'roblox-pet-value-calculator': lazy(() => import('./roblox-pet-value-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
