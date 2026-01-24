@@ -113,6 +113,13 @@ const registryLoaders: Record<string, (slug: string) => ComponentType> = {
     }).catch(() => CalculatorNotFound),
     { ssr: false, loading: () => <CalculatorLoading /> }
   ),
+  'gaming': (slug: string) => dynamic(
+    () => import('@/components/calculators/gaming/registry').then(mod => {
+      const Registry = mod.default;
+      return () => <Registry calculatorSlug={slug} />;
+    }).catch(() => CalculatorNotFound),
+    { ssr: false, loading: () => <CalculatorLoading /> }
+  ),
   'genetic-ancestry': (slug: string) => dynamic(
     () => import('@/components/calculators/genetic-ancestry/registry').then(mod => {
       const Registry = mod.default;

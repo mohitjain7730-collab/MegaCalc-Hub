@@ -55,6 +55,7 @@ import {
   Apple,
   Activity,
   Moon,
+  Grid3x3,
 } from 'lucide-react';
 
 export interface SubCategory {
@@ -126,6 +127,7 @@ export const icons: { [key: string]: LucideIcon } = {
   Apple,
   Activity,
   Moon,
+  Grid3x3,
 };
 
 export const categories: Category[] = [
@@ -215,5 +217,17 @@ export const categories: Category[] = [
     slug: 'time-date',
     description: 'Calculate durations, time zones, and important dates.',
     Icon: 'Calendar',
+  },
+  {
+    name: 'Gaming',
+    slug: 'gaming',
+    description: 'Calculators for gaming, Roblox, and virtual worlds.',
+    Icon: 'Gamepad2',
+  },
+  {
+    name: 'Others',
+    slug: 'others',
+    description: 'All other calculator categories in one place.',
+    Icon: 'Grid3x3',
   },
 ];

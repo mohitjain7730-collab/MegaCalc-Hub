@@ -65,8 +65,8 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Explore Categories</h2>
               <p className="mt-2 text-sm sm:text-base text-muted-foreground">Find the perfect tool for your needs.</p>
             </div>
-            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
-              {categories.map((category) => (
+            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+              {categories.filter((category) => category.slug === 'finance' || category.slug === 'gaming' || category.slug === 'others').map((category) => (
                 <CategoryCard key={category.slug} {...category} />
               ))}
             </div>

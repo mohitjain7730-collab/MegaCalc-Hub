@@ -45,7 +45,7 @@ export default function AllCalculatorsPage() {
         </div>
 
         <div className="space-y-12">
-          {categories.map((category, categoryIndex) => {
+          {categories.filter((category) => category.slug !== 'others').map((category, categoryIndex) => {
             const categoryCalculators = calculators.filter(
               (calc) => calc.category === category.slug
             );
