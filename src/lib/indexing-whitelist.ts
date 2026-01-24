@@ -46,5 +46,10 @@ export const indexableCalculatorSlugs = [
     'compound-interest-calculator',
     'net-worth-calculator',
     'credit-card-payoff-calculator',
-    'mortgage-payment-calculator'
+    'mortgage-payment-calculator',
+    'student-loan-repayment-calculator',
+    'inflation-calculator',
+    'annuity-payment-calculator',
+    'perpetuity-calculator',
+    'discount-rate-calculator'
 ];
