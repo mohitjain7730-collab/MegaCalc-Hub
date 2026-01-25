@@ -7,6 +7,7 @@ import { engineering_calculators } from '../data/calculators/engineering';
 import { environment_calculators } from '../data/calculators/environment';
 import { education_calculators } from '../data/calculators/education';
 import { finance_calculators } from '../data/calculators/finance';
+import { gaming_calculators } from '../data/calculators/gaming';
 import { health_fitness_calculators } from '../data/calculators/health-fitness';
 import { home_improvement_calculators } from '../data/calculators/home-improvement';
 import { personal_budgeting_calculators } from '../data/calculators/personal-budgeting';
@@ -25,6 +26,7 @@ export const calculators: Calculator[] = [
   ...engineering_calculators,
   ...environment_calculators,
   ...finance_calculators,
+  ...gaming_calculators,
   ...health_fitness_calculators,
   ...home_improvement_calculators,
   ...personal_budgeting_calculators,
