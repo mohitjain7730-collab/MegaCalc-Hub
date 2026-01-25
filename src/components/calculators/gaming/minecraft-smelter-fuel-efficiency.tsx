@@ -439,7 +439,7 @@ export default function MinecraftSmelterFuelEfficiency() {
             <strong>Fuel Needed</strong> = Items To Smelt / Items Per Fuel Unit (rounded up). This calculates how much fuel is needed to smelt a specific number of items. Use this to plan fuel requirements for smelting projects.
           </p>
           <p>
-            <strong>Fuel Efficiency Comparison</strong>: Compare items per fuel unit across different fuel types. Lava Bucket (100 items) > Blaze Rod (12 items) > Coal/Charcoal (8 items) > Cactus (0.5 items). Higher efficiency means more items smelted per fuel unit.
+            <strong>Fuel Efficiency Comparison</strong>: Compare items per fuel unit across different fuel types. Lava Bucket (100 items) &gt; Blaze Rod (12 items) &gt; Coal/Charcoal (8 items) &gt; Cactus (0.5 items). Higher efficiency means more items smelted per fuel unit.
           </p>
           <p>
             <strong>Efficiency Rating</strong> = Items Per Fuel Unit. This directly measures fuel efficiency. Higher values indicate more efficient fuels that smelt more items per unit. Use efficiency ratings to compare fuels and choose optimal fuel types.
