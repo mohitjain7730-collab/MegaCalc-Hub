@@ -52,6 +52,6 @@ export const indexableCalculatorSlugs = [
     'annuity-payment-calculator',
     'perpetuity-calculator',
     'discount-rate-calculator',
-    'Roblox-Pet-Value-Calculator',
-    'Roblox-Egg-Hatch-Odds-Simulator'
+    'roblox-pet-value-calculator',
+    'roblox-egg-hatch-odds-simulator'
 ];
