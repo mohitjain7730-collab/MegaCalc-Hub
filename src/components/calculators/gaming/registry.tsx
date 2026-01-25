@@ -12,6 +12,10 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'roblox-limited-item-resale-predictor': lazy(() => import('./roblox-limited-item-resale-predictor')),
   'roblox-inventory-value-estimator': lazy(() => import('./roblox-inventory-value-estimator')),
   'roblox-trade-tax-calculator': lazy(() => import('./roblox-trade-tax-calculator')),
+  'fortnite-dps-calculator': lazy(() => import('./fortnite-dps-calculator')),
+  'fortnite-build-material-cost-calculator': lazy(() => import('./fortnite-build-material-cost-calculator')),
+  'fortnite-storm-surge-timer': lazy(() => import('./fortnite-storm-surge-timer')),
+  'fortnite-xp-per-match-optimizer': lazy(() => import('./fortnite-xp-per-match-optimizer')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
