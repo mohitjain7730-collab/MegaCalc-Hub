@@ -20,6 +20,10 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'fortnite-loot-drop-odds-estimator': lazy(() => import('./fortnite-loot-drop-odds-estimator')),
   'fortnite-shield-potency-calculator': lazy(() => import('./fortnite-shield-potency-calculator')),
   'fortnite-victory-royale-probability-estimator': lazy(() => import('./fortnite-victory-royale-probability-estimator')),
+  'minecraft-farm-yield-calculator': lazy(() => import('./minecraft-farm-yield-calculator')),
+  'minecraft-enchanting-odds-predictor': lazy(() => import('./minecraft-enchanting-odds-predictor')),
+  'minecraft-villager-trade-tracker': lazy(() => import('./minecraft-villager-trade-tracker')),
+  'minecraft-smelter-fuel-efficiency': lazy(() => import('./minecraft-smelter-fuel-efficiency')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
