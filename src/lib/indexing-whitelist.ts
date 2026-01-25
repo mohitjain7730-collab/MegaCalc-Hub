@@ -53,5 +53,19 @@ export const indexableCalculatorSlugs = [
     'perpetuity-calculator',
     'discount-rate-calculator',
     'roblox-pet-value-calculator',
-    'roblox-egg-hatch-odds-simulator'
+    'roblox-egg-hatch-odds-simulator',
+    'roblox-trading-profit-analyzer',
+    'roblox-gamepass-roi-calculator',
+    'roblox-pet-dupe-value-calculator',
+    'roblox-limited-item-resale-predictor',
+    'roblox-inventory-value-estimator',
+    'roblox-trade-tax-calculator',
+    'fortnite-dps-calculator',
+    'fortnite-build-material-cost-calculator',
+    'fortnite-storm-surge-timer',
+    'fortnite-xp-per-match-optimizer',
+    'fortnite-reload-time-reducer-calculator',
+    'fortnite-loot-drop-odds-estimator',
+    'fortnite-shield-potency-calculator',
+    'fortnite-victory-royale-probability-estimator'
 ];

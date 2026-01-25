@@ -105,6 +105,16 @@ const relatedCalculators = [
     slug: 'fortnite-xp-per-match-optimizer',
     description: 'Optimize XP gains per match by calculating XP from eliminations, placement, and match performance.',
   },
+  {
+    name: 'Fortnite Shield Potency Calculator',
+    slug: 'fortnite-shield-potency-calculator',
+    description: 'Calculate shield effectiveness, damage absorption, and total effective health based on shield type and amount.',
+  },
+  {
+    name: 'Fortnite Victory Royale Probability Estimator',
+    slug: 'fortnite-victory-royale-probability-estimator',
+    description: 'Estimate your probability of winning a Victory Royale based on current placement, player count, and skill level.',
+  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-storm-surge-timer';

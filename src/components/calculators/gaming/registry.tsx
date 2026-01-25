@@ -16,6 +16,10 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'fortnite-build-material-cost-calculator': lazy(() => import('./fortnite-build-material-cost-calculator')),
   'fortnite-storm-surge-timer': lazy(() => import('./fortnite-storm-surge-timer')),
   'fortnite-xp-per-match-optimizer': lazy(() => import('./fortnite-xp-per-match-optimizer')),
+  'fortnite-reload-time-reducer-calculator': lazy(() => import('./fortnite-reload-time-reducer-calculator')),
+  'fortnite-loot-drop-odds-estimator': lazy(() => import('./fortnite-loot-drop-odds-estimator')),
+  'fortnite-shield-potency-calculator': lazy(() => import('./fortnite-shield-potency-calculator')),
+  'fortnite-victory-royale-probability-estimator': lazy(() => import('./fortnite-victory-royale-probability-estimator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
