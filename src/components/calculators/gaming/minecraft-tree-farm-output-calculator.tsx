@@ -41,7 +41,6 @@ const saplingsPerTree: Record<string, number> = {
   spruce: 2,
   birch: 2,
   jungle: 1,
-  jungle: 1,
   acacia: 2,
   dark_oak: 2,
   cherry: 2,
