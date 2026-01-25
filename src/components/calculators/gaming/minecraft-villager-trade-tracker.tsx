@@ -103,6 +103,21 @@ const relatedCalculators = [
     slug: 'minecraft-smelter-fuel-efficiency',
     description: 'Compare fuel efficiency for Minecraft smelting including coal, lava buckets, and cactus.',
   },
+  {
+    name: 'Minecraft Mob Farm XP Rate Calculator',
+    slug: 'minecraft-mob-farm-xp-rate-calculator',
+    description: 'Calculate XP generation rates for Minecraft mob farms based on mob spawn rates and kill rates.',
+  },
+  {
+    name: 'Minecraft Tree Farm Output Calculator',
+    slug: 'minecraft-tree-farm-output-calculator',
+    description: 'Calculate tree farm output based on sapling type, bone meal usage, and growth rates.',
+  },
+  {
+    name: 'Minecraft Nether Portal Linkage Estimator',
+    slug: 'minecraft-nether-portal-linkage-estimator',
+    description: 'Estimate nether portal linkage between overworld and nether coordinates.',
+  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-villager-trade-tracker';

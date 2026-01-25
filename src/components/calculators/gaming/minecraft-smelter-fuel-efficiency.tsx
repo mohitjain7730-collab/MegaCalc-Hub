@@ -112,6 +112,21 @@ const relatedCalculators = [
     slug: 'minecraft-villager-trade-tracker',
     description: 'Track villager trades and calculate emerald profit per trade based on trade costs and item values.',
   },
+  {
+    name: 'Minecraft Mob Farm XP Rate Calculator',
+    slug: 'minecraft-mob-farm-xp-rate-calculator',
+    description: 'Calculate XP generation rates for Minecraft mob farms based on mob spawn rates and kill rates.',
+  },
+  {
+    name: 'Minecraft Redstone Signal Delay Calculator',
+    slug: 'minecraft-redstone-signal-delay-calculator',
+    description: 'Calculate redstone signal delay based on repeater count and tick delay.',
+  },
+  {
+    name: 'Minecraft Tree Farm Output Calculator',
+    slug: 'minecraft-tree-farm-output-calculator',
+    description: 'Calculate tree farm output based on sapling type, bone meal usage, and growth rates.',
+  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-smelter-fuel-efficiency';
@@ -543,7 +558,7 @@ export default function MinecraftSmelterFuelEfficiency() {
         
         <p>Fuel efficiency comparison helps players understand relative efficiency and choose optimal fuels. Comparing fuels helps identify best options for different situations.</p>
 
-        <p>Efficiency ranking: Lava Bucket (100 items) > Blaze Rod (12 items) > Coal/Charcoal (8 items) > Cactus (0.5 items). Lava buckets are 12.5x more efficient than coal, while cactus is 16x less efficient than coal. These differences dramatically affect smelting capacity.</p>
+        <p>Efficiency ranking: Lava Bucket (100 items) &gt; Blaze Rod (12 items) &gt; Coal/Charcoal (8 items) &gt; Cactus (0.5 items). Lava buckets are 12.5x more efficient than coal, while cactus is 16x less efficient than coal. These differences dramatically affect smelting capacity.</p>
 
         <p>Capacity examples: 1 Lava Bucket = 100 items, 1 Blaze Rod = 12 items, 1 Coal = 8 items, 2 Cactus = 1 item. For 100 items: 1 lava bucket, ~8 blaze rods, 12.5 coal, or 200 cactus. Efficiency differences are significant and affect fuel requirements substantially.</p>
 

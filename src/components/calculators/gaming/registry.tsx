@@ -24,6 +24,11 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'minecraft-enchanting-odds-predictor': lazy(() => import('./minecraft-enchanting-odds-predictor')),
   'minecraft-villager-trade-tracker': lazy(() => import('./minecraft-villager-trade-tracker')),
   'minecraft-smelter-fuel-efficiency': lazy(() => import('./minecraft-smelter-fuel-efficiency')),
+  'minecraft-mob-farm-xp-rate-calculator': lazy(() => import('./minecraft-mob-farm-xp-rate-calculator')),
+  'minecraft-beacon-range-optimizer': lazy(() => import('./minecraft-beacon-range-optimizer')),
+  'minecraft-redstone-signal-delay-calculator': lazy(() => import('./minecraft-redstone-signal-delay-calculator')),
+  'minecraft-tree-farm-output-calculator': lazy(() => import('./minecraft-tree-farm-output-calculator')),
+  'minecraft-nether-portal-linkage-estimator': lazy(() => import('./minecraft-nether-portal-linkage-estimator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

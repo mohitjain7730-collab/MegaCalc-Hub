@@ -67,5 +67,14 @@ export const indexableCalculatorSlugs = [
     'fortnite-reload-time-reducer-calculator',
     'fortnite-loot-drop-odds-estimator',
     'fortnite-shield-potency-calculator',
-    'fortnite-victory-royale-probability-estimator'
+    'fortnite-victory-royale-probability-estimator',
+    'minecraft-farm-yield-calculator',
+    'minecraft-enchanting-odds-predictor',
+    'minecraft-villager-trade-tracker',
+    'minecraft-smelter-fuel-efficiency',
+    'minecraft-mob-farm-xp-rate-calculator',
+    'minecraft-beacon-range-optimizer',
+    'minecraft-redstone-signal-delay-calculator',
+    'minecraft-tree-farm-output-calculator',
+    'minecraft-nether-portal-linkage-estimator'
 ];
