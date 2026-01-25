@@ -497,7 +497,7 @@ export default function FortniteShieldPotencyCalculator() {
             <strong>Shield Effectiveness</strong> = (Shield Amount / Total Effective Health) × 100. This shows what percentage of your effective health is shield. Higher shield effectiveness means more protection and less health at risk. Full shield (100) with 100 health = 50% effectiveness.
           </p>
           <p>
-            <strong>Damage Absorption</strong>: Damage is absorbed by shield first, then health. If incoming damage ≤ shield amount, all damage is absorbed by shield. If incoming damage > shield amount, shield is depleted and remaining damage goes to health. Formula: Damage to Health = Max(0, Incoming Damage - Shield Amount).
+            <strong>Damage Absorption</strong>: Damage is absorbed by shield first, then health. If incoming damage ≤ shield amount, all damage is absorbed by shield. If incoming damage &gt; shield amount, shield is depleted and remaining damage goes to health. Formula: Damage to Health = Max(0, Incoming Damage - Shield Amount).
           </p>
           <p>
             <strong>Remaining Shield</strong> = Max(0, Shield Amount - Incoming Damage). This shows how much shield remains after taking damage. Shield is depleted first, protecting health from damage.
@@ -619,7 +619,7 @@ export default function FortniteShieldPotencyCalculator() {
         
         <p>Shield absorbs damage before health, providing protection that preserves your base health. Understanding damage absorption helps players evaluate shield value and plan survival strategies.</p>
 
-        <p>Damage absorption mechanics: Damage is absorbed by shield first, then health. If incoming damage ≤ shield amount, all damage is absorbed by shield. If incoming damage > shield amount, shield is depleted and remaining damage goes to health. This design protects health by using shield as a buffer.</p>
+        <p>Damage absorption mechanics: Damage is absorbed by shield first, then health. If incoming damage ≤ shield amount, all damage is absorbed by shield. If incoming damage &gt; shield amount, shield is depleted and remaining damage goes to health. This design protects health by using shield as a buffer.</p>
 
         <p>Absorption examples: With 50 shield and 100 health, taking 30 damage: 30 damage absorbed by shield (shield reduced to 20), 0 damage to health (health remains 100). Taking 75 damage: 50 damage absorbed by shield (shield depleted), 25 damage to health (health reduced to 75). Shield always protects health when available.</p>
 
