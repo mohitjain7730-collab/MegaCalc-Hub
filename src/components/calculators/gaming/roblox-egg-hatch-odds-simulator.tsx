@@ -99,6 +99,26 @@ const relatedCalculators = [
     slug: 'roblox-pet-value-calculator',
     description: 'Calculate the value of your Roblox pets based on rarity, age, and market trends.',
   },
+  {
+    name: '(Roblox) Trading Profit Analyzer',
+    slug: 'roblox-trading-profit-analyzer',
+    description: 'Analyze trading profits by comparing buy and sell prices, fees, and calculate ROI for Roblox trades.',
+  },
+  {
+    name: '(Roblox) Inventory Value Estimator',
+    slug: 'roblox-inventory-value-estimator',
+    description: 'Estimate the total value of your Roblox inventory including pets, limited items, and collectibles.',
+  },
+  {
+    name: '(Roblox) Trade Tax Calculator',
+    slug: 'roblox-trade-tax-calculator',
+    description: 'Calculate trading taxes and fees for Roblox trades, including platform fees and total transaction costs.',
+  },
+  {
+    name: '(Roblox) Limited Item Resale Predictor',
+    slug: 'roblox-limited-item-resale-predictor',
+    description: 'Predict future resale values of Roblox limited items based on historical trends, rarity, and market factors.',
+  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/gaming/roblox-egg-hatch-odds-simulator';

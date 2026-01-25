@@ -97,6 +97,26 @@ const relatedCalculators = [
     slug: 'roblox-egg-hatch-odds-simulator',
     description: 'Simulate and calculate the odds of hatching rare pets from Roblox eggs.',
   },
+  {
+    name: '(Roblox) Trading Profit Analyzer',
+    slug: 'roblox-trading-profit-analyzer',
+    description: 'Analyze trading profits by comparing buy and sell prices, fees, and calculate ROI for Roblox trades.',
+  },
+  {
+    name: '(Roblox) Inventory Value Estimator',
+    slug: 'roblox-inventory-value-estimator',
+    description: 'Estimate the total value of your Roblox inventory including pets, limited items, and collectibles.',
+  },
+  {
+    name: '(Roblox) Trade Tax Calculator',
+    slug: 'roblox-trade-tax-calculator',
+    description: 'Calculate trading taxes and fees for Roblox trades, including platform fees and total transaction costs.',
+  },
+  {
+    name: '(Roblox) Pet Dupe Value Calculator',
+    slug: 'roblox-pet-dupe-value-calculator',
+    description: 'Calculate the value of duplicated Roblox pets based on original value, dupe count, and market impact.',
+  },
 ];
 
 const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-value-calculator';
