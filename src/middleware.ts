@@ -4,18 +4,17 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname
 
-    // Check for unused image paths to return 410 Gone
-    // We explicitly check for specific directories to avoid accidental blocking of nextjs internals
-    // We use detailed checks to be safe.
+    // Return 410 Gone for unused image paths (e.g. /images/*.png) so crawlers stop
+    // requesting them. 410 > 404 for crawl efficiency. Includes malformed URLs
+    // like ...step2.png . png. Exclude only _next/* to avoid blocking Next.js internals.
     if (
         pathname.startsWith('/images/') ||
         pathname.startsWith('/assets/') ||
         pathname.startsWith('/static/') ||
         pathname.startsWith('/screenshots/')
     ) {
-        // Ensure we don't block _next/static
         if (!pathname.startsWith('/_next/')) {
-            return new NextResponse(null, { status: 410, statusText: "Gone" })
+            return new NextResponse(null, { status: 410, statusText: 'Gone' })
         }
     }
 

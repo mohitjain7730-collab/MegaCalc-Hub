@@ -67,7 +67,7 @@ export async function GET(
       });
     }
     
-    return new NextResponse('File not found', { status: 404 });
+    return new NextResponse('Gone', { status: 410, statusText: 'Gone' });
   } catch (error) {
     console.error('Error serving AI tool file:', error);
     return new NextResponse('Internal server error', { status: 500 });

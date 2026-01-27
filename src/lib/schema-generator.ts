@@ -351,13 +351,14 @@ export function generateFAQSchema(calculator: Calculator) {
 }
 
 // HowTo Schema for step-by-step calculators
+// Image URLs omitted: /images/*-guide.png, *-step1/2/3.png do not exist and returned 404.
+// We return 410 for /images/* to avoid crawl waste; no image refs in schema.
 export function generateHowToSchema(calculator: Calculator) {
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": `How to use ${calculator.name}`,
     "description": `Step-by-step guide to using the ${calculator.name}`,
-    "image": `https://mycalculating.com/images/${calculator.slug}-guide.png`,
     "totalTime": "PT2M",
     "estimatedCost": {
       "@type": "MonetaryAmount",
@@ -380,20 +381,17 @@ export function generateHowToSchema(calculator: Calculator) {
       {
         "@type": "HowToStep",
         "name": "Enter your values",
-        "text": "Input the required values in the calculator form",
-        "image": `https://mycalculating.com/images/${calculator.slug}-step1.png`
+        "text": "Input the required values in the calculator form"
       },
       {
         "@type": "HowToStep",
         "name": "Calculate",
-        "text": "The calculator will automatically compute and display your results",
-        "image": `https://mycalculating.com/images/${calculator.slug}-step2.png`
+        "text": "The calculator will automatically compute and display your results"
       },
       {
         "@type": "HowToStep",
         "name": "Review results",
-        "text": "Review the calculated results and any additional information provided",
-        "image": `https://mycalculating.com/images/${calculator.slug}-step3.png`
+        "text": "Review the calculated results and any additional information provided"
       }
     ]
   };
