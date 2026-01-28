@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { generateWebsiteSchema } from '@/lib/schema-generator';
 import { DeferredSchema } from '@/components/deferred-schema';
 import { calculators } from '@/lib/calculators';
+import { search } from '@/app/actions';
 
 // Force static generation for homepage to improve LCP
 export const dynamic = 'force-static';
