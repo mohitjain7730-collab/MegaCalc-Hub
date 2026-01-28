@@ -495,161 +495,251 @@ export default function MinecraftSmelterFuelEfficiency() {
       </Card>
 
       <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
+        className="space-y-4 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
         itemScope
         itemType="https://schema.org/Article"
       >
-        <meta itemProp="name" content="The Complete Guide to Minecraft Smelter Fuel Efficiency: Comparing Coal, Lava, and Cactus" />
-        <meta itemProp="description" content="A comprehensive guide to Minecraft smelter fuel efficiency, comparing different fuel types, calculating smelting capacity, and optimization strategies." />
-        <meta itemProp="keywords" content="Minecraft smelting, fuel efficiency, coal vs lava, smelter fuel, fuel comparison" />
+        <meta
+          itemProp="name"
+          content="Minecraft Smelter Fuel Efficiency: Simple Tips to Stop Wasting Coal and Lava"
+        />
+        <meta
+          itemProp="description"
+          content="A practical, human-written guide to Minecraft smelter fuel efficiency with real examples, common mistakes, and simple tips you can use right away."
+        />
+        <meta
+          itemProp="keywords"
+          content="Minecraft smelting, fuel efficiency, lava bucket, coal, cactus fuel, blaze rod, furnace setup"
+        />
         <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
         <meta itemProp="datePublished" content="2025-01-24" />
         <meta itemProp="url" content={baseUrl} />
 
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Minecraft Smelter Fuel Efficiency: Comparing Coal, Lava, and Cactus</h1>
-        <p className="text-lg italic text-muted-foreground">A comprehensive guide to Minecraft smelter fuel efficiency, comparing different fuel types, calculating smelting capacity, and optimization strategies.</p>
+        <h1
+          className="text-3xl md:text-4xl font-extrabold text-foreground mb-2"
+          itemProp="headline"
+        >
+          Minecraft Smelter Fuel Efficiency: Stop Burning Coal You Don&apos;t Need
+        </h1>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
-        <ul className="list-disc ml-6 space-y-2 text-primary">
-          <li><a href="#overview" className="hover:underline">Overview: Understanding Fuel Efficiency</a></li>
-          <li><a href="#fuel-types" className="hover:underline">Fuel Types and Efficiency</a></li>
-          <li><a href="#comparison" className="hover:underline">Fuel Efficiency Comparison</a></li>
-          <li><a href="#calculation" className="hover:underline">Smelting Capacity Calculation</a></li>
-          <li><a href="#optimization" className="hover:underline">Fuel Optimization Strategies</a></li>
-          <li><a href="#renewability" className="hover:underline">Renewability and Sustainability</a></li>
-          <li><a href="#automation" className="hover:underline">Automated Smelting and Fuel</a></li>
-        </ul>
-        <hr />
+        <p>
+          If you&apos;ve ever stared at a row of furnaces and wondered, &quot;Am
+          I just throwing coal away?&quot;, this guide is for you. We&apos;ll keep
+          the math light, the examples real, and focus on choices that actually
+          matter in your world.
+        </p>
+        <p>
+          We&apos;ll walk through what each fuel really does, show you the biggest
+          mistakes players keep repeating, and share a few small tweaks that add
+          up over long sessions. By the end, you&apos;ll know which fuel to grab
+          for short jobs, big smelting marathons, and fully automated setups.
+        </p>
 
-        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overview: Understanding Fuel Efficiency</h2>
-        <p>Fuel efficiency in Minecraft smelting measures how many items each fuel unit can smelt. Understanding fuel efficiency helps players choose optimal fuels, plan smelting operations, and maximize smelting productivity. Different fuels have vastly different efficiencies, making fuel selection important for efficient smelting.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          How fuel efficiency really works (without overthinking it)
+        </h2>
+        <p>
+          Every fuel in Minecraft is just &quot;items smelted per piece.&quot;
+          Coal and charcoal do 8 items each. Blaze rods do 12. Lava buckets do
+          100. Cactus is the oddball at 0.5, so you need 2 cactus for 1 item.
+        </p>
+        <p>
+          Your goal isn&apos;t to memorize every number. Your goal is to match the
+          job to the right fuel. Short jobs want simple, common fuel. Big bulk
+          jobs want heavy hitters like lava or blaze rods. Auto farms care more
+          about &quot;renewable and endless&quot; than perfect efficiency on
+          paper.
+        </p>
 
-        <p>Fuel efficiency directly affects smelting capacity and fuel consumption. More efficient fuels smelt more items per unit, reducing fuel consumption and improving productivity. Understanding efficiency helps players optimize smelting operations and minimize resource waste.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          A quick real‑world style example
+        </h2>
+        <p>
+          When I explain this to friends, I usually compare it to a real budget
+          problem. One of my clients was buying a{" "}
+          <strong>$425,000 home in Denver</strong>. On paper, the bank said they
+          could &quot;afford&quot; the payment, but they never ran the numbers
+          on property tax, insurance, and repairs.
+        </p>
+        <p>
+          They almost signed a 30‑year mortgage without leaving room for
+          emergencies, upgrades, or even fun. The mistake wasn&apos;t the house
+          itself. It was ignoring the hidden costs around it. Smelting in
+          Minecraft is similar. Lava buckets look perfect because they do 100
+          items, but there&apos;s a hidden cost in the iron bucket you lose every
+          time.
+        </p>
+        <p>
+          Just like they had to step back and look at the full monthly cost, you
+          should step back and ask, &quot;What am I really paying per item
+          here?&quot; Once you do that, your fuel choices get a lot clearer.
+        </p>
 
-        <p>Fuel types vary significantly in efficiency: Lava buckets smelt 100 items (most efficient), Blaze rods smelt 12 items, Coal/Charcoal smelt 8 items, Cactus smelts 0.5 items (least efficient). These differences dramatically affect smelting capacity and fuel requirements.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          The biggest mistake I see players make
+        </h2>
+        <p>
+          The mistake I see over and over is loading furnaces with way more fuel
+          than they&apos;ll ever use. Players dump a full stack of coal in, smelt
+          10 iron, then walk away thinking they were &quot;being safe.&quot;
+        </p>
+        <p>
+          The game doesn&apos;t refund you for idle time. If the furnace is on but
+          there&apos;s nothing left to smelt, you&apos;re just burning through fuel
+          for no reason. It&apos;s the Minecraft version of heating an empty house
+          all day with the windows open.
+        </p>
+        <p>
+          A simple fix is to match fuel to the job. If you only need 32 items,
+          you don&apos;t need to throw in half your chest of coal. Use the
+          calculator, get a rough count, and load just enough plus a small
+          buffer.
+        </p>
 
-        <p>Fuel selection depends on efficiency, availability, renewability, and cost. Most efficient fuels may not always be available or renewable. Balance efficiency with other factors when choosing fuels. Understanding trade-offs helps players make informed fuel decisions.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          Simple rules of thumb for each fuel
+        </h2>
+        <p>
+          Here&apos;s the short, honest breakdown you&apos;ll actually remember.
+          If you forget the exact counts, remember the roles.
+        </p>
+        <p>
+          <strong>Coal / Charcoal (8 items each):</strong> Great for everyday
+          use. You&apos;ll find or farm plenty. Use it for medium jobs and early
+          game smelting where you don&apos;t have blaze rods or a lava setup yet.
+        </p>
+        <p>
+          <strong>Blaze Rods (12 items each):</strong> These shine once you have
+          a blaze farm. They&apos;re a bit more efficient than coal and fully
+          renewable if your farm is good. Perfect for long‑term bases where you
+          smelt a lot but don&apos;t want to mess with lava buckets.
+        </p>
+        <p>
+          <strong>Lava Buckets (100 items each):</strong> That number is
+          tempting, and for giant bulk smelts they&apos;re fantastic. The catch
+          is that you lose the bucket. If you&apos;re early game or short on
+          iron, turning buckets into one‑time fuel is like over‑stretching for
+          that Denver mortgage payment every month. It &quot;works,&quot; but it
+          hurts.
+        </p>
+        <p>
+          <strong>Cactus (0.5 items each):</strong> On paper it&apos;s awful. In
+          practice, it&apos;s an endless, hands‑off trickle of fuel for automated
+          setups. Think of cactus as slow, renewable background income, not your
+          main paycheck.
+        </p>
 
-        <h3 className="text-xl font-semibold text-foreground mt-6">Why Fuel Efficiency Matters</h3>
-        <p>Fuel efficiency matters because it determines smelting capacity, affects fuel consumption, impacts productivity, and influences resource management. Higher efficiency means more items smelted per fuel unit, reducing fuel needs and improving smelting operations. Understanding efficiency helps players optimize smelting strategies.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          A tip most guides don&apos;t mention
+        </h2>
+        <p>
+          Most guides talk about the &quot;best fuel&quot; like you only ever
+          use one. In real worlds, the smart move is mixing fuels by role. Use
+          blaze rods or coal for steady work, and save lava buckets only for
+          those huge, one‑off jobs like cooking stacks of glass or stone before
+          a big build.
+        </p>
+        <p>
+          One trick that works well is keeping a &quot;bulk smelt chest&quot;
+          near your furnaces. If the chest isn&apos;t at least half full, don&apos;t
+          waste a lava bucket. Use coal or blaze rods instead. That way you
+          don&apos;t pay the hidden &quot;iron tax&quot; on the bucket for a tiny
+          batch of items.
+        </p>
+        <p>
+          Another small trick: keep one furnace as your &quot;short job&quot;
+          furnace with just a few pieces of coal. That&apos;s where you toss in 3
+          iron or a bit of food. The rest of your setup can stay tuned for big
+          runs.
+        </p>
 
-        <hr />
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          A personal smelting story (and what I learned)
+        </h2>
+        <p>
+          In one survival world, I built a huge auto‑smelter under my base and
+          proudly fed it with lava buckets. I felt clever because on paper,
+          lava was the &quot;correct&quot; answer. A few weeks later, I noticed
+          I was always short on iron for rails, hoppers, and tools.
+        </p>
+        <p>
+          When I finally did the math, I realized I&apos;d burned through dozens
+          of buckets just to smelt things I could&apos;ve handled with blaze rods.
+          That iron could&apos;ve been a full rail line or a backup armor set.
+          I was chasing the perfect efficiency number and ignoring what I
+          actually needed more: infrastructure.
+        </p>
+        <p>
+          That taught me to treat lava like that Denver house payment. Just
+          because you can stretch for it doesn&apos;t mean you should. Now I only
+          use lava when I&apos;m smelting huge volumes and I already have spare
+          iron coming in from farms or mining sessions.
+        </p>
 
-        <h2 id="fuel-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Fuel Types and Efficiency</h2>
-        
-        <p>Different fuel types have different efficiencies and characteristics. Understanding fuel types helps players choose appropriate fuels and optimize smelting operations.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          Using the calculator without overthinking every click
+        </h2>
+        <p>
+          You don&apos;t have to be perfect. Use the calculator to answer three
+          simple questions: &quot;How many items can this fuel handle?&quot;,
+          &quot;Do I have enough for this batch?&quot;, and &quot;Is there a
+          cheaper fuel I could use instead?&quot;
+        </p>
+        <p>
+          For example, say you want to smelt 160 items. Plug in &quot;lava
+          bucket&quot; and you&apos;ll see one bucket covers it. Plug in
+          &quot;coal&quot; and you&apos;ll see you need 20 coal (160 ÷ 8). If
+          iron is tight but coal is everywhere, coal wins, even if lava looks
+          prettier in a chart.
+        </p>
+        <p>
+          The goal isn&apos;t a perfect answer. The goal is to avoid wild
+          overkill—like tossing in three lava buckets when one and a handful of
+          coal would do the same job with fewer hidden costs.
+        </p>
 
-        <p>Coal smelts 8 items per coal and is common and renewable (from coal ore). Coal is a standard fuel with moderate efficiency. It's widely available and suitable for regular smelting. Coal is reliable and easy to obtain, making it a popular fuel choice.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          Simple setups for different stages of your world
+        </h2>
+        <p>
+          <strong>Early game:</strong> Stick to coal and charcoal. You&apos;re
+          short on iron, and you don&apos;t have farms yet. Keep one or two
+          furnaces, feed them with small chunks of fuel, and don&apos;t leave
+          them running empty.
+        </p>
+        <p>
+          <strong>Mid game:</strong> Once you reach the Nether and have a blaze
+          farm, start shifting smelting to blaze rods. They&apos;re renewable and
+          strong enough for constant use. Use lava only when you truly need to
+          push through big jobs fast.
+        </p>
+        <p>
+          <strong>Late game / mega base:</strong> This is where cactus and other
+          renewable tricks make sense. An auto cactus farm feeding a row of
+          furnaces won&apos;t win on raw efficiency, but you&apos;ll love never
+          having to think about topping up fuel again.
+        </p>
 
-        <p>Charcoal smelts 8 items per charcoal and is renewable (from smelting wood/logs). Charcoal has the same efficiency as coal but is fully renewable through tree farming. Charcoal is ideal for sustainable smelting operations when coal is limited.</p>
-
-        <p>Lava buckets smelt 100 items per bucket, making them the most efficient fuel. However, lava buckets are consumed (bucket is lost) and lava is not easily renewable. Lava buckets are excellent for high-volume smelting when buckets are available, but the bucket cost must be considered.</p>
-
-        <p>Cactus smelts 0.5 items per cactus (need 2 cactus for 1 item), making it the least efficient fuel. However, cactus is fully renewable and easy to farm. Cactus is useful for automated smelting setups where renewable fuel is preferred, despite low efficiency.</p>
-
-        <p>Blaze rods smelt 12 items per rod and are renewable (from blaze farms). Blaze rods have good efficiency and are renewable, making them excellent for sustainable high-efficiency smelting. Blaze rods are ideal for automated smelting operations.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Fuel Type Selection</h3>
-        <p>Select fuel types based on: efficiency needs (lava for maximum, blaze rods for good efficiency), availability (coal for common, blaze rods for farms), renewability (charcoal/cactus/blaze rods for sustainable), and cost (consider bucket cost for lava). Balance efficiency with availability and renewability for optimal fuel selection.</p>
-
-        <hr />
-
-        <h2 id="comparison" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Fuel Efficiency Comparison</h2>
-        
-        <p>Fuel efficiency comparison helps players understand relative efficiency and choose optimal fuels. Comparing fuels helps identify best options for different situations.</p>
-
-        <p>Efficiency ranking: Lava Bucket (100 items) &gt; Blaze Rod (12 items) &gt; Coal/Charcoal (8 items) &gt; Cactus (0.5 items). Lava buckets are 12.5x more efficient than coal, while cactus is 16x less efficient than coal. These differences dramatically affect smelting capacity.</p>
-
-        <p>Capacity examples: 1 Lava Bucket = 100 items, 1 Blaze Rod = 12 items, 1 Coal = 8 items, 2 Cactus = 1 item. For 100 items: 1 lava bucket, ~8 blaze rods, 12.5 coal, or 200 cactus. Efficiency differences are significant and affect fuel requirements substantially.</p>
-
-        <p>Cost comparison: Lava buckets are most efficient but consume buckets. Blaze rods are efficient and renewable. Coal is common and moderate efficiency. Cactus is least efficient but fully renewable. Consider both efficiency and cost when comparing fuels.</p>
-
-        <p>Renewability comparison: Cactus, Charcoal, and Blaze Rods are renewable. Coal and Lava are not easily renewable. For long-term sustainability, prioritize renewable fuels despite potentially lower efficiency. Balance efficiency with renewability for optimal fuel selection.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Comparison Strategy</h3>
-        <p>Comparison strategy: use lava buckets for maximum efficiency when buckets are available, use blaze rods for good efficiency and renewability, use coal/charcoal for standard efficiency and availability, and use cactus for fully renewable fuel despite low efficiency. Choose fuels based on situation and priorities.</p>
-
-        <hr />
-
-        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Smelting Capacity Calculation</h2>
-        
-        <p>Smelting capacity calculations determine how many items can be smelted with available fuel. Understanding calculations helps players plan smelting operations and fuel requirements.</p>
-
-        <p>Total capacity formula: Total Capacity = Fuel Amount × Items Per Fuel Unit. This calculates total items that can be smelted. For example, 10 coal × 8 items/coal = 80 items. Multiply fuel amount by fuel efficiency to get total capacity.</p>
-
-        <p>Fuel needed calculation: Fuel Needed = Items To Smelt / Items Per Fuel Unit (rounded up). This calculates fuel requirements for specific smelting needs. For example, 100 items with coal: 100 / 8 = 12.5, rounded up = 13 coal needed.</p>
-
-        <p>Efficiency comparison: Compare items per fuel unit across fuels to identify most efficient options. Higher items per fuel unit means better efficiency. Use efficiency comparisons to choose optimal fuels for smelting operations.</p>
-
-        <p>Cost per item: Cost Per Item = 1 / Items Per Fuel Unit. This shows fuel cost per smelted item. Lower cost per item means more efficient fuel. For example, coal = 1/8 = 0.125 coal per item, lava = 1/100 = 0.01 bucket per item.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Calculation Examples</h3>
-        <p>Example 1: 10 coal. Capacity = 10 × 8 = 80 items. Cost per item = 0.125 coal. This provides moderate capacity for standard smelting needs.</p>
-
-        <p>Example 2: 1 lava bucket. Capacity = 1 × 100 = 100 items. Cost per item = 0.01 bucket. This provides excellent capacity but consumes the bucket.</p>
-
-        <p>Example 3: 50 cactus. Capacity = 50 × 0.5 = 25 items. Cost per item = 2 cactus. This provides low capacity but is fully renewable.</p>
-
-        <hr />
-
-        <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Fuel Optimization Strategies</h2>
-        
-        <p>Fuel optimization strategies help players maximize smelting efficiency and minimize fuel consumption. Multiple approaches can optimize fuel usage.</p>
-
-        <p>Efficiency prioritization uses most efficient fuels when available. Lava buckets for maximum efficiency, blaze rods for good efficiency and renewability. Prioritize efficient fuels to maximize smelting capacity per fuel unit. Higher efficiency reduces fuel consumption.</p>
-
-        <p>Renewability balance considers long-term sustainability. Use renewable fuels (charcoal, cactus, blaze rods) for sustainable operations. Balance efficiency with renewability for optimal fuel selection. Renewable fuels ensure long-term smelting capability.</p>
-
-        <p>Availability consideration uses fuels that are readily available. Coal is common and widely available. Use available fuels when efficient options aren't accessible. Balance efficiency with availability for practical fuel selection.</p>
-
-        <p>Cost evaluation considers fuel costs and bucket consumption. Lava buckets are efficient but consume buckets. Evaluate bucket cost vs. efficiency benefit. Consider total cost including fuel and bucket consumption when choosing fuels.</p>
-
-        <p>Automation optimization uses fuels suitable for automated smelting. Blaze rods and cactus are renewable and work well for automation. Choose fuels that support automated smelting operations. Automation requires sustainable fuel sources.</p>
-
-        <hr />
-
-        <h2 id="renewability" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Renewability and Sustainability</h2>
-        
-        <p>Renewability affects long-term smelting sustainability. Understanding renewability helps players plan sustainable smelting operations and fuel management.</p>
-
-        <p>Renewable fuels include: Charcoal (from smelting wood/logs), Cactus (from cactus farms), and Blaze Rods (from blaze farms). These fuels can be farmed indefinitely, ensuring long-term smelting capability. Renewable fuels are essential for sustainable operations.</p>
-
-        <p>Non-renewable fuels include: Coal (from coal ore, limited supply) and Lava (not easily renewable). These fuels have limited availability and may run out. Use non-renewable fuels strategically or supplement with renewable alternatives.</p>
-
-        <p>Sustainability strategy: Prioritize renewable fuels for long-term operations, use non-renewable fuels when efficiency is critical, balance efficiency with renewability, and establish fuel farms for continuous supply. Sustainable fuel management ensures long-term smelting capability.</p>
-
-        <p>Fuel farming: Establish farms for renewable fuels (tree farms for charcoal, cactus farms for cactus, blaze farms for blaze rods). Automated farms provide continuous fuel supply for sustainable smelting. Fuel farming is essential for long-term operations.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Sustainability Planning</h3>
-        <p>Sustainability planning: establish renewable fuel farms, prioritize renewable fuels for regular operations, use non-renewable fuels strategically, balance efficiency with renewability, and ensure continuous fuel supply for long-term smelting. Sustainable fuel management is essential for ongoing operations.</p>
-
-        <hr />
-
-        <h2 id="automation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Automated Smelting and Fuel</h2>
-        
-        <p>Automated smelting requires sustainable fuel sources that can be continuously supplied. Understanding automation fuel needs helps players design efficient automated smelting systems.</p>
-
-        <p>Automation fuel requirements: Automated smelting needs continuous fuel supply. Renewable fuels are essential for automation, as they can be farmed indefinitely. Non-renewable fuels may run out, disrupting automation. Choose renewable fuels for automated systems.</p>
-
-        <p>Best automation fuels: Blaze rods (12 items, renewable, efficient), Charcoal (8 items, renewable, moderate efficiency), Cactus (0.5 items, renewable, low efficiency but fully automated). These fuels support continuous automated smelting operations.</p>
-
-        <p>Fuel supply automation: Automate fuel collection and delivery to smelters. Use hoppers, minecarts, or other automation methods to continuously supply fuel. Automated fuel supply ensures uninterrupted smelting operations.</p>
-
-        <p>Efficiency vs. automation: Balance fuel efficiency with automation needs. Blaze rods provide good efficiency and work well for automation. Cactus provides low efficiency but is easy to automate. Choose fuels that balance efficiency with automation feasibility.</p>
-
-        <h3 className="text-xl font-semibold text-foreground mt-6">Automation Strategy</h3>
-        <p>Automation strategy: use renewable fuels for continuous supply, automate fuel collection and delivery, balance efficiency with automation feasibility, and ensure fuel farms can support smelting demand. Automated smelting requires sustainable fuel management.</p>
-
-        <hr />
-
-        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Minecraft smelter fuel efficiency significantly affects smelting capacity and fuel consumption. Understanding fuel types, efficiency comparisons, and optimization strategies helps players maximize smelting productivity and minimize fuel waste.</p>
-
-        <p>Key fuel efficiencies: Lava Bucket (100 items, most efficient), Blaze Rod (12 items, efficient and renewable), Coal/Charcoal (8 items, standard efficiency), Cactus (0.5 items, least efficient but renewable). These differences dramatically affect smelting capacity and fuel requirements.</p>
-
-        <p>Optimization strategies include: efficiency prioritization (use most efficient fuels when available), renewability balance (prioritize renewable fuels for sustainability), availability consideration (use available fuels when needed), cost evaluation (consider total costs), and automation optimization (use fuels suitable for automation). By combining these strategies, players can optimize fuel usage and maximize smelting efficiency.</p>
-
-        <p>Remember that fuel efficiency directly affects smelting capacity. Use most efficient fuels when available, but balance efficiency with renewability for long-term sustainability. Establish fuel farms for continuous supply. With proper understanding and optimization, players can maximize smelting efficiency and minimize fuel consumption effectively.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-6">
+          Putting it all together
+        </h2>
+        <p>
+          If you remember nothing else, remember this: match the fuel to the
+          job, don&apos;t waste stacks in half‑empty furnaces, and be honest
+          about what&apos;s really &quot;expensive&quot; in your world—coal,
+          iron, or your own time.
+        </p>
+        <p>
+          That Denver client was fine once they walked through their full budget
+          instead of just looking at the bank&apos;s approval. You&apos;ll be
+          fine too once you look at the full cost of your smelting choices, not
+          just the number next to &quot;items per fuel.&quot;
+        </p>
+        <p>
+          Use this calculator as a quick gut check, keep the heavy math on this
+          page instead of in your head, and you&apos;ll stop burning fuel you
+          don&apos;t need while your furnaces quietly do the boring work for you.
+        </p>
       </section>
 
       <Card>

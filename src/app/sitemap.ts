@@ -21,6 +21,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Whitelist of indexable calculator slugs
   const indexableSlugs = new Set(indexableCalculatorSlugs);
 
+  // Top-level category pages
+  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
+    url: `${baseUrl}/category/${category.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  // Subcategory listing pages (e.g. /category/education/maths)
+  const subcategoryPages: MetadataRoute.Sitemap = categories.flatMap((category) =>
+    (category.subcategories ?? []).map((sub) => ({
+      url: `${baseUrl}/category/${category.slug}/${sub.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+  );
+
   // Only include whitelisted calculator pages
   const calculatorPages = calculators
     .filter((calculator) => indexableSlugs.has(calculator.slug))
@@ -37,6 +55,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticPages,
+    ...categoryPages,
+    ...subcategoryPages,
     ...calculatorPages,
   ];
 }

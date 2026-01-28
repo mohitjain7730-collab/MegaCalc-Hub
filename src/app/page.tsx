@@ -1,14 +1,15 @@
 
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Search, Gamepad2 } from 'lucide-react';
+
 import { CategoryCard } from '@/components/category-card';
 import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { Search } from 'lucide-react';
-import { search } from '@/app/actions';
 import { Input } from '@/components/ui/input';
 import { generateWebsiteSchema } from '@/lib/schema-generator';
 import { DeferredSchema } from '@/components/deferred-schema';
+import { calculators } from '@/lib/calculators';
 
 // Force static generation for homepage to improve LCP
 export const dynamic = 'force-static';
@@ -25,6 +26,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const schema = generateWebsiteSchema();
+
+  const featuredGamingCalculators = calculators
+    .filter((calculator) => calculator.category === 'gaming')
+    .slice(0, 6);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -72,6 +77,61 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {featuredGamingCalculators.length > 0 && (
+          <section className="py-10 sm:py-14 md:py-20 bg-background">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="flex items-center justify-between gap-3 mb-4 sm:mb-6">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <Gamepad2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+                  <div>
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-tight">
+                      Popular Gaming Calculators
+                    </h2>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
+                      Jump straight into our most useful gaming and Minecraft tools.
+                    </p>
+                  </div>
+                </div>
+                <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex">
+                  <Link href="/category/gaming">
+                    View all gaming calculators
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
+                {featuredGamingCalculators.map((calc) => (
+                  <Link
+                    key={calc.id}
+                    href={`/category/${calc.category}/${calc.slug}`}
+                    className="group rounded-lg border bg-card hover:border-primary/60 hover:shadow-sm transition-all p-3 sm:p-4 flex flex-col justify-between"
+                  >
+                    <div>
+                      <h3 className="font-semibold text-sm sm:text-base text-foreground group-hover:text-primary line-clamp-2">
+                        {calc.name}
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm text-muted-foreground line-clamp-3">
+                        {calc.metaDescription || calc.description}
+                      </p>
+                    </div>
+                    <span className="mt-2 text-[11px] sm:text-xs text-primary font-medium group-hover:underline">
+                      Open calculator
+                    </span>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-4 sm:mt-6 text-center sm:hidden">
+                <Button asChild variant="outline" size="sm">
+                  <Link href="/category/gaming">
+                    View all gaming calculators
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </section>
+        )}
       </main>
     </div>
   );
