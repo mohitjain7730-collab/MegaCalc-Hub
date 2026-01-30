@@ -9,17 +9,39 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Flame, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, FunctionSquare, CheckCircle2, Users, Briefcase, AlertTriangle } from 'lucide-react';
+import { Flame, TrendingUp, AlertCircle, Target, Info, Landmark, Calculator, DollarSign, BarChart3, Shield, FunctionSquare, CheckCircle2, Users, Briefcase, AlertTriangle, Building, Laptop, Megaphone, Scale, Calendar } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
 const formSchema = z.object({
   currentCash: z.number().min(0),
-  monthlyBurnRate: z.number().min(0.01),
-});
+  founderSalaries: z.number().min(0).optional().default(0),
+  employeeSalaries: z.number().min(0).optional().default(0),
+  rentAndUtilities: z.number().min(0).optional().default(0),
+  softwareAndTools: z.number().min(0).optional().default(0),
+  marketingAndAds: z.number().min(0).optional().default(0),
+  legalAndAdmin: z.number().min(0).optional().default(0),
+  miscellaneous: z.number().min(0).optional().default(0),
+  targetRunwayMonths: z.number().min(1).max(120).optional(),
+  expectedFundingAmount: z.number().min(0).optional(),
+  expectedFundingInMonths: z.number().min(1).max(60).optional(),
+}).refine((data) => {
+  const burn = (data.founderSalaries ?? 0) + (data.employeeSalaries ?? 0) + (data.rentAndUtilities ?? 0) + (data.softwareAndTools ?? 0) + (data.marketingAndAds ?? 0) + (data.legalAndAdmin ?? 0) + (data.miscellaneous ?? 0);
+  return burn > 0;
+}, { message: 'Enter at least one monthly expense (total burn must be > 0).', path: ['founderSalaries'] });
 
 type FormValues = z.infer<typeof formSchema>;
+
+const EXPENSE_LABELS: { key: keyof FormValues; label: string; icon: React.ElementType }[] = [
+  { key: 'founderSalaries', label: 'Founder salaries', icon: Users },
+  { key: 'employeeSalaries', label: 'Employee salaries', icon: Users },
+  { key: 'rentAndUtilities', label: 'Rent & utilities', icon: Building },
+  { key: 'softwareAndTools', label: 'Software & tools', icon: Laptop },
+  { key: 'marketingAndAds', label: 'Marketing & ads', icon: Megaphone },
+  { key: 'legalAndAdmin', label: 'Legal & admin', icon: Scale },
+  { key: 'miscellaneous', label: 'Miscellaneous', icon: DollarSign },
+];
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -37,7 +59,7 @@ const schemaMarkup = {
       name: 'Pre-Revenue Startup Runway Calculator',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'Calculate how many months your pre-revenue startup can run on current cash at a given monthly burn rate. Simple runway = cash ÷ burn.',
+      description: 'Calculate pre-revenue startup runway with detailed expense breakdown: current cash, monthly expenses by category, zero-cash date, and optional target runway or expected funding.',
       url: 'https://mycalculating.com/category/finance/pre-revenue-startup-runway-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -51,30 +73,68 @@ const schemaMarkup = {
   ],
 };
 
+function getTotalBurn(v: FormValues): number {
+  return (v.founderSalaries ?? 0) + (v.employeeSalaries ?? 0) + (v.rentAndUtilities ?? 0) + (v.softwareAndTools ?? 0) + (v.marketingAndAds ?? 0) + (v.legalAndAdmin ?? 0) + (v.miscellaneous ?? 0);
+}
+
 export default function PreRevenueStartupRunwayCalculator() {
   const [result, setResult] = useState<{
     runwayMonths: number;
     runwayYears: number;
+    totalMonthlyBurn: number;
+    zeroCashDate: string;
+    expenseBreakdown: { name: string; value: number; percent: number }[];
     interpretation: string;
     status: string;
     recommendation: string;
     strength: string;
     insights: string[];
     considerations: string[];
+    targetRunwayInfo?: { burnNeeded: number; cashNeeded: number; targetMonths: number };
+    extendedRunwayInfo?: { cashAtFunding: number; extendedRunwayMonths: number; fundingAmount: number; inMonths: number };
   } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       currentCash: undefined,
-      monthlyBurnRate: undefined,
+      founderSalaries: 0,
+      employeeSalaries: 0,
+      rentAndUtilities: 0,
+      softwareAndTools: 0,
+      marketingAndAds: 0,
+      legalAndAdmin: 0,
+      miscellaneous: 0,
+      targetRunwayMonths: undefined,
+      expectedFundingAmount: undefined,
+      expectedFundingInMonths: undefined,
     },
   });
 
   const calculate = (v: FormValues) => {
-    if (v.monthlyBurnRate <= 0) return null;
-    const runwayMonths = v.currentCash / v.monthlyBurnRate;
-    return { runwayMonths, runwayYears: runwayMonths / 12 };
+    const totalBurn = getTotalBurn(v);
+    if (totalBurn <= 0) return null;
+    const runwayMonths = v.currentCash / totalBurn;
+    const today = new Date();
+    const zeroDate = new Date(today);
+    zeroDate.setMonth(zeroDate.getMonth() + Math.floor(runwayMonths));
+    const zeroCashDate = zeroDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    const expenseBreakdown = EXPENSE_LABELS
+      .map(({ key, label }) => ({ name: label, value: (v[key] as number) ?? 0, percent: totalBurn > 0 ? ((v[key] as number) ?? 0) / totalBurn * 100 : 0 }))
+      .filter((e) => e.value > 0);
+    let targetRunwayInfo: { burnNeeded: number; cashNeeded: number; targetMonths: number } | undefined;
+    if (v.targetRunwayMonths != null && v.targetRunwayMonths > 0) {
+      const burnNeeded = v.currentCash / v.targetRunwayMonths;
+      const cashNeeded = Math.max(0, totalBurn * v.targetRunwayMonths - v.currentCash);
+      targetRunwayInfo = { burnNeeded, cashNeeded, targetMonths: v.targetRunwayMonths };
+    }
+    let extendedRunwayInfo: { cashAtFunding: number; extendedRunwayMonths: number; fundingAmount: number; inMonths: number } | undefined;
+    if (v.expectedFundingAmount != null && v.expectedFundingInMonths != null && v.expectedFundingAmount > 0 && v.expectedFundingInMonths > 0) {
+      const cashAtFunding = v.currentCash - totalBurn * v.expectedFundingInMonths + v.expectedFundingAmount;
+      const extendedRunwayMonths = totalBurn > 0 ? cashAtFunding / totalBurn : 0;
+      extendedRunwayInfo = { cashAtFunding, extendedRunwayMonths, fundingAmount: v.expectedFundingAmount, inMonths: v.expectedFundingInMonths };
+    }
+    return { runwayMonths, runwayYears: runwayMonths / 12, totalMonthlyBurn: totalBurn, zeroCashDate, expenseBreakdown, targetRunwayInfo, extendedRunwayInfo };
   };
 
   const interpret = (months: number) => {
@@ -109,7 +169,7 @@ export default function PreRevenueStartupRunwayCalculator() {
     return 'Very Weak';
   };
 
-  const getInsights = (months: number, cash: number, burn: number) => {
+  const getInsights = (months: number, cash: number, burn: number, personnelPercent?: number) => {
     const insights = [];
     if (months >= 18) {
       insights.push('Runway supports milestone-based fundraising');
@@ -125,6 +185,9 @@ export default function PreRevenueStartupRunwayCalculator() {
       insights.push('Use runway extension calculator to model new capital impact');
     }
     insights.push(`$${cash.toLocaleString()} ÷ $${burn.toLocaleString()}/mo = ${months.toFixed(1)} months`);
+    if (personnelPercent != null && personnelPercent > 75) {
+      insights.push(`Personnel (founder + employee) is ${Math.round(personnelPercent)}% of burn; consider contractors for flexibility.`);
+    }
     return insights;
   };
 
@@ -142,12 +205,22 @@ export default function PreRevenueStartupRunwayCalculator() {
       setResult({
         runwayMonths: calc.runwayMonths,
         runwayYears: calc.runwayYears,
+        totalMonthlyBurn: calc.totalMonthlyBurn,
+        zeroCashDate: calc.zeroCashDate,
+        expenseBreakdown: calc.expenseBreakdown,
         interpretation: interpret(calc.runwayMonths),
         status: getStatus(calc.runwayMonths),
         recommendation: getRecommendation(calc.runwayMonths),
         strength: getStrength(calc.runwayMonths),
-        insights: getInsights(calc.runwayMonths, values.currentCash, values.monthlyBurnRate),
+        insights: getInsights(
+          calc.runwayMonths,
+          values.currentCash,
+          calc.totalMonthlyBurn,
+          calc.totalMonthlyBurn > 0 ? ((values.founderSalaries ?? 0) + (values.employeeSalaries ?? 0)) / calc.totalMonthlyBurn * 100 : undefined,
+        ),
         considerations: getConsiderations(),
+        targetRunwayInfo: calc.targetRunwayInfo,
+        extendedRunwayInfo: calc.extendedRunwayInfo,
       });
     }
   };
@@ -163,22 +236,23 @@ export default function PreRevenueStartupRunwayCalculator() {
             Financial Parameters
           </CardTitle>
           <CardDescription>
-            Enter current cash and monthly burn rate to calculate pre-revenue startup runway (months of cash left)
+            Enter current cash and monthly expenses by category. Optionally set a target runway or expected funding to see planning scenarios.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-medium mb-3 flex items-center gap-2 text-foreground">
+                  <DollarSign className="h-4 w-4" />
+                  Cash position
+                </h4>
                 <FormField
                   control={form.control}
                   name="currentCash"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="flex items-center gap-2">
-                        <DollarSign className="h-4 w-4" />
-                        Current Cash ($)
-                      </FormLabel>
+                      <FormLabel>Current cash ($)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -193,30 +267,171 @@ export default function PreRevenueStartupRunwayCalculator() {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="monthlyBurnRate"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-2">
-                        <Flame className="h-4 w-4" />
-                        Monthly Burn Rate ($)
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          step="1000"
-                          placeholder="e.g., 50000"
-                          {...field}
-                          value={field.value ?? ''}
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
               </div>
+
+              <div className="border-t pt-6">
+                <h4 className="font-medium mb-3 flex items-center gap-2 text-foreground">
+                  <Flame className="h-4 w-4" />
+                  Monthly expenses ($)
+                </h4>
+                <p className="text-sm text-muted-foreground mb-4">Enter at least one category. Total burn = sum of all.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="founderSalaries"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal flex items-center gap-2">
+                          <Users className="h-4 w-4 text-muted-foreground" /> Founder salaries
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="number" step="100" placeholder="0" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="employeeSalaries"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal flex items-center gap-2">
+                          <Users className="h-4 w-4 text-muted-foreground" /> Employee salaries
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="number" step="100" placeholder="0" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="rentAndUtilities"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal flex items-center gap-2">
+                          <Building className="h-4 w-4 text-muted-foreground" /> Rent &amp; utilities
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="number" step="100" placeholder="0" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="softwareAndTools"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal flex items-center gap-2">
+                          <Laptop className="h-4 w-4 text-muted-foreground" /> Software &amp; tools
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="number" step="100" placeholder="0" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="marketingAndAds"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal flex items-center gap-2">
+                          <Megaphone className="h-4 w-4 text-muted-foreground" /> Marketing &amp; ads
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="number" step="100" placeholder="0" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="legalAndAdmin"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal flex items-center gap-2">
+                          <Scale className="h-4 w-4 text-muted-foreground" /> Legal &amp; admin
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="number" step="100" placeholder="0" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="miscellaneous"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal flex items-center gap-2">
+                          <DollarSign className="h-4 w-4 text-muted-foreground" /> Miscellaneous
+                        </FormLabel>
+                        <FormControl>
+                          <Input type="number" step="100" placeholder="0" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+
+              <div className="border-t pt-6">
+                <h4 className="font-medium mb-3 flex items-center gap-2 text-muted-foreground">
+                  <Calendar className="h-4 w-4" />
+                  Optional: planning scenarios
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="targetRunwayMonths"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal">Target runway (months)</FormLabel>
+                        <FormControl>
+                          <Input type="number" step="1" placeholder="e.g., 18" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value, 10))} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="expectedFundingAmount"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal">Expected funding ($)</FormLabel>
+                        <FormControl>
+                          <Input type="number" step="1000" placeholder="e.g., 500000" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseFloat(e.target.value))} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="expectedFundingInMonths"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-normal">Expected in (months)</FormLabel>
+                        <FormControl>
+                          <Input type="number" step="1" placeholder="e.g., 6" {...field} value={field.value ?? ''} onChange={e => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value, 10))} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+
               <Button type="submit" className="w-full">
                 <Calculator className="mr-2 h-4 w-4" />
                 Calculate Runway
@@ -242,17 +457,22 @@ export default function PreRevenueStartupRunwayCalculator() {
               <div className="text-center">
                 <p className="text-4xl font-bold text-primary">{result.runwayMonths.toFixed(1)} months</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {result.runwayYears.toFixed(2)} years
+                  {result.runwayYears.toFixed(2)} years · Zero cash: {result.zeroCashDate}
                 </p>
                 <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
                   <Shield className="h-6 w-6 mx-auto mb-2 text-blue-600" />
                   <p className="font-semibold">Runway Status</p>
                   <Badge variant={result.status === 'Excellent' || result.status === 'Strong' ? 'default' : result.status === 'Moderate' ? 'secondary' : 'destructive'}>
                     {result.status}
                   </Badge>
+                </div>
+                <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <Flame className="h-6 w-6 mx-auto mb-2 text-amber-600" />
+                  <p className="font-semibold">Total monthly burn</p>
+                  <p className="text-lg font-bold">${result.totalMonthlyBurn.toLocaleString()}</p>
                 </div>
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
                   <TrendingUp className="h-6 w-6 mx-auto mb-2 text-green-600" />
@@ -267,6 +487,39 @@ export default function PreRevenueStartupRunwayCalculator() {
                   <p className="text-lg font-bold">{result.runwayMonths < 12 ? 'Plan now' : 'Monitor'}</p>
                 </div>
               </div>
+
+              {result.expenseBreakdown.length > 0 && (
+                <div>
+                  <h4 className="font-semibold mb-2">Expense breakdown</h4>
+                  <div className="space-y-2">
+                    {result.expenseBreakdown.map((item) => (
+                      <div key={item.name} className="flex items-center justify-between text-sm">
+                        <span className="text-muted-foreground capitalize">{item.name}</span>
+                        <span className="font-medium">${item.value.toLocaleString()}/mo ({item.percent.toFixed(0)}%)</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {result.targetRunwayInfo && (
+                <Alert className="border-primary/30 bg-primary/5">
+                  <Target className="h-4 w-4" />
+                  <AlertDescription>
+                    <strong>To reach {result.targetRunwayInfo.targetMonths} months runway:</strong> Reduce monthly burn to ${result.targetRunwayInfo.burnNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })}/mo (current ${result.totalMonthlyBurn.toLocaleString()}/mo), or add ${result.targetRunwayInfo.cashNeeded.toLocaleString(undefined, { maximumFractionDigits: 0 })} in cash.
+                  </AlertDescription>
+                </Alert>
+              )}
+
+              {result.extendedRunwayInfo && result.extendedRunwayInfo.cashAtFunding > 0 && (
+                <Alert className="border-green-200 bg-green-50/50 dark:border-green-900/30 dark:bg-green-900/10">
+                  <TrendingUp className="h-4 w-4" />
+                  <AlertDescription>
+                    <strong>If you raise ${result.extendedRunwayInfo.fundingAmount.toLocaleString()} in {result.extendedRunwayInfo.inMonths} months:</strong> Cash at close ≈ ${result.extendedRunwayInfo.cashAtFunding.toLocaleString(undefined, { maximumFractionDigits: 0 })} → extended runway ≈ {result.extendedRunwayInfo.extendedRunwayMonths.toFixed(1)} months from then.
+                  </AlertDescription>
+                </Alert>
+              )}
+
               <Alert>
                 <Info className="h-4 w-4" />
                 <AlertDescription>
@@ -355,19 +608,19 @@ export default function PreRevenueStartupRunwayCalculator() {
             <div className="p-4 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2 text-amber-700 dark:text-amber-300">
                 <Flame className="h-4 w-4" />
-                Monthly Burn Rate
+                Monthly Expenses (by category)
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Total monthly cash expenses: salaries, rent, software, marketing, and other opex. Same as net burn when revenue is zero.
+                Enter recurring monthly costs by category. Total burn = sum of all; runway = cash ÷ total burn.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                  <span>Salaries, rent, software, marketing, legal, etc.</span>
+                  <span>Founder &amp; employee salaries, rent, software, marketing, legal, misc</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                  <span>Use same basis as burn rate calculator</span>
+                  <span>At least one category required; zero unused categories</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
@@ -375,7 +628,7 @@ export default function PreRevenueStartupRunwayCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                  <span>Runway = cash ÷ burn (months)</span>
+                  <span>Optional: target runway or expected funding for scenario planning</span>
                 </li>
               </ul>
             </div>
@@ -391,13 +644,16 @@ export default function PreRevenueStartupRunwayCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="p-4 bg-muted rounded-lg overflow-x-auto">
+          <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Runway (months) = Current Cash ÷ Monthly Burn Rate
+              Total monthly burn = Founder + Employee + Rent + Software + Marketing + Legal + Misc
+            </p>
+            <p className="font-mono text-sm text-center">
+              Runway (months) = Current Cash ÷ Total monthly burn
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            How many months your startup can operate on current cash at the current burn rate. Pre-revenue assumes no revenue; for revenue-growing startups use the runway calculator with revenue growth.
+            How many months your startup can operate on current cash at the current burn rate. Zero-cash date is when cash runs out at constant burn. Pre-revenue assumes no revenue; for revenue-growing startups use the runway calculator with revenue growth.
           </p>
         </CardContent>
       </Card>
