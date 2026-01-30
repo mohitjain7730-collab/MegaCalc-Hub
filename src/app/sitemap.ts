@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
-import { indexableCalculatorSlugs } from '@/lib/indexing-whitelist';
+import { indexableCalculatorSlugs, indexableCategorySlugs } from '@/lib/indexing-whitelist';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mycalculating.com';
@@ -20,24 +20,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Whitelist of indexable calculator slugs
   const indexableSlugs = new Set(indexableCalculatorSlugs);
+  
+  // Whitelist of indexable category slugs
+  const indexableCategorySet = new Set(indexableCategorySlugs);
 
-  // Top-level category pages
-  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${baseUrl}/category/${category.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
-
-  // Subcategory listing pages (e.g. /category/education/maths)
-  const subcategoryPages: MetadataRoute.Sitemap = categories.flatMap((category) =>
-    (category.subcategories ?? []).map((sub) => ({
-      url: `${baseUrl}/category/${category.slug}/${sub.slug}`,
+  // Top-level category pages - only include whitelisted categories
+  const categoryPages: MetadataRoute.Sitemap = categories
+    .filter((category) => indexableCategorySet.has(category.slug))
+    .map((category) => ({
+      url: `${baseUrl}/category/${category.slug}`,
       lastModified: now,
-      changeFrequency: 'monthly' as const,
+      changeFrequency: 'monthly',
       priority: 0.8,
-    })),
-  );
+    }));
+
+  // Subcategory listing pages (e.g. /category/education/maths) - only for whitelisted categories
+  const subcategoryPages: MetadataRoute.Sitemap = categories
+    .filter((category) => indexableCategorySet.has(category.slug))
+    .flatMap((category) =>
+      (category.subcategories ?? []).map((sub) => ({
+        url: `${baseUrl}/category/${category.slug}/${sub.slug}`,
+        lastModified: now,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      })),
+    );
 
   // Only include whitelisted calculator pages
   const calculatorPages = calculators

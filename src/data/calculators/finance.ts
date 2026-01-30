@@ -2162,6 +2162,24 @@ export const finance_calculators: Calculator[] = [
     "metaDescription": "Calculate startup runway - how long your cash will last based on current cash balance, monthly burn rate, and revenue."
   },
   {
+    "id": 10225,
+    "name": "Startup Runway Calculator with Revenue Growth",
+    "description": "Calculate startup runway accounting for revenue growth projections. Projects cash flow over time as revenue increases, showing path to profitability.",
+    "slug": "startup-runway-calculator-with-revenue-growth",
+    "category": "finance",
+    "metaTitle": "Startup Runway Calculator with Revenue Growth - Cash Flow Projections",
+    "metaDescription": "Calculate startup runway with revenue growth. Project cash flow over time as revenue increases, showing path to profitability and optimal fundraising timeline."
+  },
+  {
+    "id": 10226,
+    "name": "SaaS Burn Rate Calculator (Gross vs Net)",
+    "description": "Compare gross burn rate (total expenses) vs net burn rate (expenses minus revenue) for SaaS companies. Analyze revenue coverage and path to profitability.",
+    "slug": "saas-burn-rate-calculator-gross-vs-net",
+    "category": "finance",
+    "metaTitle": "SaaS Burn Rate Calculator - Gross vs Net Analysis",
+    "metaDescription": "Compare gross vs net burn rate for SaaS companies. Analyze how revenue offsets expenses and calculate margins for strategic financial planning."
+  },
+  {
     "id": 3320,
     "name": "Burn Rate Calculator",
     "description": "Calculate startup burn rate - monthly cash consumption rate based on cash balance changes over time.",

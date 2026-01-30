@@ -1,3 +1,8 @@
+export const indexableCategorySlugs = [
+    'finance',
+    'gaming',
+];
+
 export const indexableCalculatorSlugs = [
     'mortgage-refinance-savings-calculator',
     'mortgage-equity-heloc-calculator',
@@ -42,6 +47,8 @@ export const indexableCalculatorSlugs = [
     'treynor-ratio-calculator',
     'gross-margin-calculator',
     'net-profit-margin-calculator',
+    'startup-runway-calculator-with-revenue-growth',
+    'saas-burn-rate-calculator-gross-vs-net',
     'retirement-savings-calculator',
     'compound-interest-calculator',
     'net-worth-calculator',
