@@ -3,6 +3,14 @@ export const indexableCategorySlugs = [
     'gaming',
 ];
 
+/** Static page path segments to include in sitemap and indexing. '' = homepage. */
+export const indexableStaticPagePaths = [
+    '',                 // homepage
+    'privacy-policy',
+    'terms-conditions',
+    'contact',
+];
+
 export const indexableCalculatorSlugs = [
     'mortgage-refinance-savings-calculator',
     'mortgage-equity-heloc-calculator',
@@ -51,6 +59,10 @@ export const indexableCalculatorSlugs = [
     'saas-burn-rate-calculator-gross-vs-net',
     'saas-net-revenue-retention-nrr-calculator',
     'saas-customer-acquisition-cost-calculator',
+    'saas-cac-payback-period-calculator',
+    'monthly-burn-multiple-calculator',
+    'startup-cash-flow-break-even-calculator',
+    'pre-revenue-startup-runway-calculator',
     'retirement-savings-calculator',
     'compound-interest-calculator',
     'net-worth-calculator',

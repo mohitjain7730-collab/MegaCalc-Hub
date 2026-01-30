@@ -2918,6 +2918,24 @@ export const finance_calculators: Calculator[] = [
     "metaDescription": "Calculate SaaS CAC and adjusted CAC from spend and new customers. Target LTV:CAC ≥ 3:1 and monitor payback period."
   },
   {
+    "id": 10229,
+    "name": "SaaS CAC Payback Period Calculator",
+    "description": "Calculate how many months it takes to recover CAC from monthly gross profit per customer. Essential SaaS unit economics metric.",
+    "slug": "saas-cac-payback-period-calculator",
+    "category": "finance",
+    "metaTitle": "SaaS CAC Payback Period Calculator",
+    "metaDescription": "Calculate SaaS CAC payback period in months from CAC and monthly gross profit per customer. Target sub-12 months for efficiency."
+  },
+  {
+    "id": 10230,
+    "name": "Monthly Burn Multiple Calculator",
+    "description": "Calculate monthly burn multiple: net burn in a month divided by net new ARR in that month. Measures capital efficiency.",
+    "slug": "monthly-burn-multiple-calculator",
+    "category": "finance",
+    "metaTitle": "Monthly Burn Multiple Calculator",
+    "metaDescription": "Calculate monthly burn multiple from net burn and net new ARR. Target under 1.5x for strong capital efficiency."
+  },
+  {
     "id": 6506,
     "name": "LTV (Customer Lifetime Value) Calculator",
     "description": "Calculate LTV using ARPA, gross margin, churn rate, and discount rate.",
@@ -3231,5 +3249,23 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Cash Flow Break-Even Calculator for Small Businesses",
     "metaDescription": "Find your cash flow break-even point. Calculate sales needed to cover operating costs and debt service."
+  },
+  {
+    "id": 10231,
+    "name": "Startup Cash Flow Break-Even Calculator",
+    "description": "Calculate when your startup reaches cash flow break-even: revenue covers operating expenses. Uses current revenue and monthly growth rate.",
+    "slug": "startup-cash-flow-break-even-calculator",
+    "category": "finance",
+    "metaTitle": "Startup Cash Flow Break-Even Calculator",
+    "metaDescription": "Find when your startup reaches cash flow break-even. Enter opex, current revenue, and growth to get months to break-even."
+  },
+  {
+    "id": 10232,
+    "name": "Pre-Revenue Startup Runway Calculator",
+    "description": "Calculate how many months your pre-revenue startup can run on current cash at a given monthly burn rate. Runway = cash ÷ burn.",
+    "slug": "pre-revenue-startup-runway-calculator",
+    "category": "finance",
+    "metaTitle": "Pre-Revenue Startup Runway Calculator",
+    "metaDescription": "Calculate pre-revenue startup runway: months of cash left at current burn rate. Simple runway = cash ÷ burn."
   }
 ];

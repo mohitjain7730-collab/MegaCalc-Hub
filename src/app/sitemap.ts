@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { categories } from '@/lib/categories';
 import { calculators } from '@/lib/calculators';
-import { indexableCalculatorSlugs, indexableCategorySlugs } from '@/lib/indexing-whitelist';
+import { indexableCalculatorSlugs, indexableCategorySlugs, indexableStaticPagePaths } from '@/lib/indexing-whitelist';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mycalculating.com';
@@ -9,14 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Cache last modified date to avoid creating new Date() for every entry
   const now = new Date();
 
-  const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: now,
-      changeFrequency: 'yearly' as const,
-      priority: 1,
-    },
-  ];
+  const staticPages: MetadataRoute.Sitemap = indexableStaticPagePaths.map((path) => ({
+    url: path ? `${baseUrl}/${path}` : baseUrl,
+    lastModified: now,
+    changeFrequency: path === '' ? ('yearly' as const) : ('monthly' as const),
+    priority: path === '' ? 1 : 0.7,
+  }));
 
   // Whitelist of indexable calculator slugs
   const indexableSlugs = new Set(indexableCalculatorSlugs);
