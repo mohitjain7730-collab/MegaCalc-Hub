@@ -49,6 +49,8 @@ export const indexableCalculatorSlugs = [
     'net-profit-margin-calculator',
     'startup-runway-calculator-with-revenue-growth',
     'saas-burn-rate-calculator-gross-vs-net',
+    'saas-net-revenue-retention-nrr-calculator',
+    'saas-customer-acquisition-cost-calculator',
     'retirement-savings-calculator',
     'compound-interest-calculator',
     'net-worth-calculator',

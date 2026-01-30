@@ -2900,6 +2900,24 @@ export const finance_calculators: Calculator[] = [
     "metaDescription": "Measure CAC and adjusted CAC from sales/marketing spend, customers acquired, and onboarding costs."
   },
   {
+    "id": 10227,
+    "name": "SaaS Net Revenue Retention (NRR) Calculator",
+    "description": "Calculate Net Revenue Retention from beginning ARR, expansion, contraction, and churn. NRR above 100% means expansion from existing customers exceeds churn.",
+    "slug": "saas-net-revenue-retention-nrr-calculator",
+    "category": "finance",
+    "metaTitle": "SaaS Net Revenue Retention (NRR) Calculator",
+    "metaDescription": "Calculate SaaS Net Revenue Retention from beginning ARR, expansion, contraction, and churn. Target 110%+ for best-in-class."
+  },
+  {
+    "id": 10228,
+    "name": "SaaS Customer Acquisition Cost (CAC) Calculator",
+    "description": "Calculate Customer Acquisition Cost and adjusted CAC from sales and marketing spend and new customers. Pair with LTV and payback for unit economics.",
+    "slug": "saas-customer-acquisition-cost-calculator",
+    "category": "finance",
+    "metaTitle": "SaaS Customer Acquisition Cost (CAC) Calculator",
+    "metaDescription": "Calculate SaaS CAC and adjusted CAC from spend and new customers. Target LTV:CAC ≥ 3:1 and monitor payback period."
+  },
+  {
     "id": 6506,
     "name": "LTV (Customer Lifetime Value) Calculator",
     "description": "Calculate LTV using ARPA, gross margin, churn rate, and discount rate.",

@@ -309,6 +309,8 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'roth-ira-contribution-limit-calculator': lazy(() => import('./roth-ira-contribution-limit-calculator')),
   'runway-extension-calculator': lazy(() => import('./runway-extension-calculator')),
   'saas-cac-calculator': lazy(() => import('./saas-cac-calculator')),
+  'saas-customer-acquisition-cost-calculator': lazy(() => import('./saas-customer-acquisition-cost-calculator')),
+  'saas-net-revenue-retention-nrr-calculator': lazy(() => import('./saas-net-revenue-retention-nrr-calculator')),
   'safe-convertible-note-conversion-calculator': lazy(() => import('./safe-convertible-note-conversion-calculator')),
   'savings-goal-timeline-calculator': lazy(() => import('./savings-goal-timeline-calculator')),
   'savings-rate-vs-goal-timeline-visualizer': lazy(() => import('./savings-rate-vs-goal-timeline-visualizer')),
