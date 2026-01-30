@@ -21,6 +21,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Note: FAQPage schema is injected by the category page (generateFAQSchema). Do not add a second FAQPage here or Google will report "Duplicate field FAQPage".
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -40,14 +41,6 @@ const schemaMarkup = {
       description: 'Calculate how many months it takes to recover Customer Acquisition Cost from monthly gross profit per customer. Essential SaaS unit economics metric.',
       url: 'https://mycalculating.com/category/finance/saas-cac-payback-period-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        { '@type': 'Question', name: 'What is SaaS CAC payback period?', acceptedAnswer: { '@type': 'Answer', text: 'CAC payback period is the number of months required to recover the cost of acquiring a customer (CAC) from the monthly gross profit that customer generates. Formula: Payback (months) = CAC ÷ Monthly Gross Profit per Customer.' } },
-        { '@type': 'Question', name: 'What is a good CAC payback period for SaaS?', acceptedAnswer: { '@type': 'Answer', text: 'Sub-12 months is generally efficient; 12–18 months is common in growth stage; beyond 18 months can be risky unless churn is very low and LTV:CAC is strong (e.g. ≥3:1).' } },
-        { '@type': 'Question', name: 'Should I use gross profit or revenue per customer?', acceptedAnswer: { '@type': 'Answer', text: 'Use gross profit per customer (revenue × gross margin), not revenue. Gross profit reflects true unit economics after cost of revenue.' } },
-      ],
     },
   ],
 };

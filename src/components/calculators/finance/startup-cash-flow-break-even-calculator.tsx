@@ -22,6 +22,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Note: FAQPage schema is injected by the category page (generateFAQSchema). Do not add a second FAQPage here or Google will report "Duplicate field FAQPage".
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -41,13 +42,6 @@ const schemaMarkup = {
       description: 'Calculate when your startup reaches cash flow break-even: revenue covers operating expenses. Uses current revenue and monthly growth rate.',
       url: 'https://mycalculating.com/category/finance/startup-cash-flow-break-even-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        { '@type': 'Question', name: 'What is startup cash flow break-even?', acceptedAnswer: { '@type': 'Answer', text: 'Cash flow break-even is the point where monthly revenue equals monthly operating expenses, so net burn is zero. The startup stops consuming cash from that point (before growth reinvestment).' } },
-        { '@type': 'Question', name: 'How do I calculate months to break-even?', acceptedAnswer: { '@type': 'Answer', text: 'Break-even revenue equals monthly operating expenses. If current revenue is below that and you have a monthly growth rate, months to break-even = log(break-even revenue / current revenue) / log(1 + growth rate/100).' } },
-      ],
     },
   ],
 };

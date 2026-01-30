@@ -43,17 +43,10 @@ const EXPENSE_LABELS: { key: keyof FormValues; label: string; icon: React.Elemen
   { key: 'miscellaneous', label: 'Miscellaneous', icon: DollarSign },
 ];
 
+// Note: FAQPage schema is injected by the category page (generateFAQSchema). Do not add a second FAQPage here or Google will report "Duplicate field FAQPage".
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
-        { '@type': 'ListItem', position: 3, name: 'Pre-Revenue Startup Runway Calculator', item: 'https://mycalculating.com/category/finance/pre-revenue-startup-runway-calculator' },
-      ],
-    },
     {
       '@type': 'SoftwareApplication',
       name: 'Pre-Revenue Startup Runway Calculator',
@@ -62,13 +55,6 @@ const schemaMarkup = {
       description: 'Calculate pre-revenue startup runway with detailed expense breakdown: current cash, monthly expenses by category, zero-cash date, and optional target runway or expected funding.',
       url: 'https://mycalculating.com/category/finance/pre-revenue-startup-runway-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        { '@type': 'Question', name: 'What is pre-revenue startup runway?', acceptedAnswer: { '@type': 'Answer', text: 'Runway is how many months your startup can operate on current cash at the current monthly burn rate. Pre-revenue means no (or negligible) revenue, so runway = cash ÷ monthly burn.' } },
-        { '@type': 'Question', name: 'How do I calculate runway?', acceptedAnswer: { '@type': 'Answer', text: 'Runway (months) = Current Cash ÷ Monthly Burn Rate. Example: $500K cash and $50K/month burn = 10 months runway.' } },
-      ],
     },
   ],
 };

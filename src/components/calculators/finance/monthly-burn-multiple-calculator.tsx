@@ -21,6 +21,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Note: FAQPage schema is injected by the category page (generateFAQSchema). Do not add a second FAQPage here or Google will report "Duplicate field FAQPage".
 const schemaMarkup = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -40,14 +41,6 @@ const schemaMarkup = {
       description: 'Calculate monthly burn multiple: net burn in a month divided by net new ARR in that month. Measures how efficiently cash converts to recurring revenue.',
       url: 'https://mycalculating.com/category/finance/monthly-burn-multiple-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        { '@type': 'Question', name: 'What is monthly burn multiple?', acceptedAnswer: { '@type': 'Answer', text: 'Monthly burn multiple is net burn in a single month divided by net new ARR added in that same month. It measures how many dollars of burn it takes to add one dollar of ARR in that month. Lower is better; under 1.5 is often strong.' } },
-        { '@type': 'Question', name: 'What is a good monthly burn multiple?', acceptedAnswer: { '@type': 'Answer', text: 'Elite: under 1; Strong: 1–1.5; OK: 1.5–2.5; Risky: over 2.5. Benchmarks vary by stage and market.' } },
-        { '@type': 'Question', name: 'Should I use ARR or MRR for net new?', acceptedAnswer: { '@type': 'Answer', text: 'Use net new ARR for the month (change in ARR over the month). If you track MRR change, multiply by 12 to get net new ARR for consistency with standard burn multiple benchmarks.' } },
-      ],
     },
   ],
 };
