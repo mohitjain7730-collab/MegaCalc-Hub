@@ -119,7 +119,13 @@ export default function StartupRunwayCalculatorWithRevenueGrowth() {
     return 'Very Weak';
   };
 
-  const getInsights = (runwayMonths: number, projections: typeof result.monthlyProjections) => {
+  const getInsights = (runwayMonths: number, projections: Array<{
+    month: number;
+    cashBalance: number;
+    revenue: number;
+    burnRate: number;
+    netBurn: number;
+  }>) => {
     const insights = [];
     const lastProjection = projections[projections.length - 1];
     
