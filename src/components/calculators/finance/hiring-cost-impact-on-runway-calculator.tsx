@@ -67,7 +67,7 @@ export default function HiringCostImpactOnRunwayCalculator() {
       newMonthlyBurn: newBurn,
       runwayLostMonths,
       runwayChangePct,
-      oneTimeCostTotal,
+      oneTimeCostTotal: oneTimeTotal,
     };
   };
 
