@@ -2837,6 +2837,24 @@ export const finance_calculators: Calculator[] = [
     "metaDescription": "Model SAFE or convertible note conversion using valuation cap and discount to determine conversion price and ownership."
   },
   {
+    "id": 10237,
+    "name": "SAFE Note Conversion Calculator",
+    "description": "Calculate SAFE (Simple Agreement for Future Equity) conversion price, shares issued, and ownership using valuation cap and discount. No interest—principal only.",
+    "slug": "safe-note-conversion-calculator",
+    "category": "finance",
+    "metaTitle": "SAFE Note Conversion Calculator",
+    "metaDescription": "Compute SAFE conversion price, shares, and ownership from valuation cap and discount at a qualifying equity round. SAFE-specific, no interest."
+  },
+  {
+    "id": 10238,
+    "name": "Convertible Note Conversion Calculator",
+    "description": "Calculate convertible note conversion including accrued interest. Converts principal + interest at the lesser of cap or discount price.",
+    "slug": "convertible-note-conversion-calculator",
+    "category": "finance",
+    "metaTitle": "Convertible Note Conversion Calculator",
+    "metaDescription": "Compute convertible note conversion: accrued interest, conversion amount, conversion price, shares, and ownership. Note-specific with interest."
+  },
+  {
     "id": 6411,
     "name": "Equity Cap Table Generator",
     "description": "Generate a simplified cap table showing ownership percentages for founders, option pool, and investors.",
