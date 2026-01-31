@@ -21,27 +21,27 @@ const formSchema = z.object({
   numFounders: z.literal(2).or(z.literal(3)).or(z.literal(4)),
   // Co-founder 1
   name1: z.string().optional(),
-  idea1: z.number().min(0).max(100),
-  time1: z.number().min(0).max(100),
-  capital1: z.number().min(0).max(100),
+  idea1: z.number().min(0).max(100).optional(),
+  time1: z.number().min(0).max(100).optional(),
+  capital1: z.number().min(0).max(100).optional(),
   lead1: z.boolean().optional(),
   // Co-founder 2
   name2: z.string().optional(),
-  idea2: z.number().min(0).max(100),
-  time2: z.number().min(0).max(100),
-  capital2: z.number().min(0).max(100),
+  idea2: z.number().min(0).max(100).optional(),
+  time2: z.number().min(0).max(100).optional(),
+  capital2: z.number().min(0).max(100).optional(),
   lead2: z.boolean().optional(),
   // Co-founder 3
   name3: z.string().optional(),
-  idea3: z.number().min(0).max(100),
-  time3: z.number().min(0).max(100),
-  capital3: z.number().min(0).max(100),
+  idea3: z.number().min(0).max(100).optional(),
+  time3: z.number().min(0).max(100).optional(),
+  capital3: z.number().min(0).max(100).optional(),
   lead3: z.boolean().optional(),
   // Co-founder 4
   name4: z.string().optional(),
-  idea4: z.number().min(0).max(100),
-  time4: z.number().min(0).max(100),
-  capital4: z.number().min(0).max(100),
+  idea4: z.number().min(0).max(100).optional(),
+  time4: z.number().min(0).max(100).optional(),
+  capital4: z.number().min(0).max(100).optional(),
   lead4: z.boolean().optional(),
 });
 
@@ -170,10 +170,10 @@ export default function EquitySplitCalculatorForCoFounders() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       numFounders: 2,
-      name1: '', idea1: 50, time1: 50, capital1: 0, lead1: false,
-      name2: '', idea2: 50, time2: 50, capital2: 0, lead2: false,
-      name3: '', idea3: 33, time3: 33, capital3: 33, lead3: false,
-      name4: '', idea4: 25, time4: 25, capital4: 25, lead4: false,
+      name1: '', idea1: undefined, time1: undefined, capital1: undefined, lead1: false,
+      name2: '', idea2: undefined, time2: undefined, capital2: undefined, lead2: false,
+      name3: '', idea3: undefined, time3: undefined, capital3: undefined, lead3: false,
+      name4: '', idea4: undefined, time4: undefined, capital4: undefined, lead4: false,
     },
   });
 
