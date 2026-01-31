@@ -7,6 +7,7 @@ import { ArrowLeft } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { categories } from '@/lib/categories';
+import { indexableCategorySlugs } from '@/lib/indexing-whitelist';
 import { CategoryIcon } from '@/components/category-icon';
 import { getCalculatorsByCategory } from '@/lib/calculator-data-utils';
 import { CategorySearch } from '@/components/category-search';
@@ -109,11 +110,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
+  const isIndexable = indexableCategorySlugs.includes(category.slug);
+
   return {
     title: `${category.name} Calculators - Mycalculating.com`,
     description: category.description,
     alternates: {
       canonical: `/category/${category.slug}`,
+    },
+    robots: {
+      index: isIndexable,
+      follow: true,
     },
   };
 }

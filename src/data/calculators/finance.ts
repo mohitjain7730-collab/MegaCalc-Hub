@@ -3267,5 +3267,23 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Pre-Revenue Startup Runway Calculator",
     "metaDescription": "Calculate pre-revenue startup runway: months of cash left at current burn rate. Simple runway = cash ÷ burn."
+  },
+  {
+    "id": 10233,
+    "name": "Post-Funding Runway Extension Calculator",
+    "description": "After closing a round: see cash at close (burn until close), extended runway from new capital, and optional post-raise burn. Startup-specific.",
+    "slug": "post-funding-runway-extension-calculator",
+    "category": "finance",
+    "metaTitle": "Post-Funding Runway Extension Calculator",
+    "metaDescription": "Calculate runway after closing a round: cash at close, extended runway from new capital, and optional post-raise burn. Startup-specific."
+  },
+  {
+    "id": 10234,
+    "name": "Founder Dilution After Funding Calculator",
+    "description": "See founder ownership and dilution after a single funding round. Optional pre-money option pool. Startup-specific.",
+    "slug": "founder-dilution-after-funding-calculator",
+    "category": "finance",
+    "metaTitle": "Founder Dilution After Funding Calculator",
+    "metaDescription": "Calculate founder ownership and dilution after a single funding round, including optional pre-money option pool. Startup-specific."
   }
 ];
