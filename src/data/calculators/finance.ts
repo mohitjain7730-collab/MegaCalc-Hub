@@ -3321,5 +3321,23 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Startup Valuation (Pre-Money vs Post-Money) Calculator",
     "metaDescription": "Compare pre-money vs post-money valuation: post-money, investor %, price per 1%. Optional comparison scenario. Startup-specific."
+  },
+  {
+    "id": 10239,
+    "name": "ESOP Dilution Impact Calculator",
+    "description": "See how creating or expanding an employee option pool dilutes existing shareholders. Enter shares outstanding and new ESOP pool % to get post-ESOP fully diluted shares and dilution %.",
+    "slug": "esop-dilution-impact-calculator",
+    "category": "finance",
+    "metaTitle": "ESOP Dilution Impact Calculator - Option Pool Dilution",
+    "metaDescription": "Calculate ESOP dilution impact: post-ESOP fully diluted shares, new pool size, and dilution to existing shareholders. Size option pools for startups."
+  },
+  {
+    "id": 10240,
+    "name": "Hiring Cost Impact on Runway Calculator",
+    "description": "See how new hires affect runway. Enter current cash, monthly burn, cost per hire, and number of hires to get new runway and months lost. Optional one-time cost per hire.",
+    "slug": "hiring-cost-impact-on-runway-calculator",
+    "category": "finance",
+    "metaTitle": "Hiring Cost Impact on Runway Calculator - Startup Headcount",
+    "metaDescription": "Calculate how hiring affects startup runway: new monthly burn, new runway, and months lost. Fully loaded and one-time hire costs."
   }
 ];
