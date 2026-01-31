@@ -13,6 +13,7 @@ import { EmbedWidget } from '@/components/embed-widget';
 import { indexableCalculatorSlugs } from '@/lib/indexing-whitelist';
 
 import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema, generateSubCategorySchema, getCalculatorFAQContent, getCalculatorHowToContent } from '@/lib/schema-generator';
+import { getCalculatorSeoContent } from '@/lib/calculator-seo-content';
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
 import { CategorySearch } from '@/components/category-search';
 
@@ -208,6 +209,7 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
     const howToSchema = generateHowToSchema(calculator);
     const faqContent = getCalculatorFAQContent(calculator);
     const howToSteps = getCalculatorHowToContent(calculator);
+    const extendedSeoContent = getCalculatorSeoContent(calculator.slug);
 
     const comprehensiveSchema = {
         '@context': 'https://schema.org',
@@ -292,6 +294,47 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
                                 <p>{faq.answer}</p>
                             </div>
                         ))}
+                        {extendedSeoContent && (
+                            <>
+                                <h3>Calculator inputs and parameters</h3>
+                                <p>This calculator uses the following inputs:</p>
+                                <ul>
+                                    {extendedSeoContent.inputs.map((input, i) => (
+                                        <li key={i}>
+                                            <strong>{input.label}</strong>
+                                            {input.description ? ` — ${input.description}` : ''}
+                                        </li>
+                                    ))}
+                                </ul>
+                                {extendedSeoContent.formula && (
+                                    <>
+                                        <h3>Formula used</h3>
+                                        <p>{extendedSeoContent.formula}</p>
+                                        {extendedSeoContent.formulaExplanation && (
+                                            <p>{extendedSeoContent.formulaExplanation}</p>
+                                        )}
+                                    </>
+                                )}
+                                <h3>Results and output</h3>
+                                <p>The calculator displays the following results:</p>
+                                <ul>
+                                    {extendedSeoContent.results.map((result, i) => (
+                                        <li key={i}>{result}</li>
+                                    ))}
+                                </ul>
+                                {extendedSeoContent.sections && extendedSeoContent.sections.length > 0 && (
+                                    <>
+                                        <h3>Calculator details</h3>
+                                        {extendedSeoContent.sections.map((section, i) => (
+                                            <div key={i}>
+                                                <h4>{section.title}</h4>
+                                                <p>{section.content}</p>
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+                            </>
+                        )}
                     </section>
                 </div>
             </div>
