@@ -12,7 +12,7 @@ import { CategoryIcon } from '@/components/category-icon';
 import { EmbedWidget } from '@/components/embed-widget';
 import { indexableCalculatorSlugs } from '@/lib/indexing-whitelist';
 
-import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema, generateSubCategorySchema } from '@/lib/schema-generator';
+import { generateCalculatorSchema, generateFAQSchema, generateHowToSchema, generateSubCategorySchema, getCalculatorFAQContent, getCalculatorHowToContent } from '@/lib/schema-generator';
 import { CalculatorWrapper } from '@/components/calculator-wrapper';
 import { CategorySearch } from '@/components/category-search';
 
@@ -206,6 +206,8 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
     const calculatorSchema = generateCalculatorSchema(calculator, category);
     const faqSchema = generateFAQSchema(calculator);
     const howToSchema = generateHowToSchema(calculator);
+    const faqContent = getCalculatorFAQContent(calculator);
+    const howToSteps = getCalculatorHowToContent(calculator);
 
     const comprehensiveSchema = {
         '@context': 'https://schema.org',
@@ -265,6 +267,32 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
 
                     <CalculatorWrapper categorySlug={category.slug} calculatorSlug={calculator.slug} />
                     <EmbedWidget categorySlug={category.slug} calculatorSlug={calculator.slug} />
+
+                    {/* SEO: indexable text in page source for crawlers (visually hidden, no UI change) */}
+                    <section
+                        aria-hidden="true"
+                        className="sr-only"
+                        id="calculator-seo-content"
+                    >
+                        <h2>{calculator.name}</h2>
+                        <p>{calculator.description}</p>
+                        <h3>How to use {calculator.name}</h3>
+                        <p>Step-by-step guide to using the {calculator.name}:</p>
+                        <ol>
+                            {howToSteps.map((step, i) => (
+                                <li key={i}>
+                                    <strong>{step.name}.</strong> {step.text}
+                                </li>
+                            ))}
+                        </ol>
+                        <h3>Frequently asked questions</h3>
+                        {faqContent.map((faq, i) => (
+                            <div key={i}>
+                                <h4>{faq.question}</h4>
+                                <p>{faq.answer}</p>
+                            </div>
+                        ))}
+                    </section>
                 </div>
             </div>
         </>

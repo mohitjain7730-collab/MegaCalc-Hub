@@ -315,26 +315,31 @@ export function generateCalculatorsListingSchema() {
   };
 }
 
+// FAQ content for calculators (shared by schema and SEO HTML block)
+export function getCalculatorFAQContent(calculator: Calculator): { question: string; answer: string }[] {
+  return [
+    {
+      question: `How do I use the ${calculator.name}?`,
+      answer: `Simply enter your values in the input fields and the calculator will automatically compute the results. The ${calculator.name} is designed to be user-friendly and provide instant calculations.`,
+    },
+    {
+      question: `Is the ${calculator.name} free to use?`,
+      answer: `Yes, the ${calculator.name} is completely free to use. No registration or payment is required.`,
+    },
+    {
+      question: `Can I use this calculator on mobile devices?`,
+      answer: `Yes, the ${calculator.name} is fully responsive and works perfectly on mobile phones, tablets, and desktop computers.`,
+    },
+    {
+      question: `Are the results from ${calculator.name} accurate?`,
+      answer: `Yes, our calculators use standard formulas and are regularly tested for accuracy. However, results should be used for informational purposes and not as a substitute for professional advice.`,
+    },
+  ];
+}
+
 // FAQ Schema for calculators
 export function generateFAQSchema(calculator: Calculator) {
-  const faqs = [
-    {
-      "question": `How do I use the ${calculator.name}?`,
-      "answer": `Simply enter your values in the input fields and the calculator will automatically compute the results. The ${calculator.name} is designed to be user-friendly and provide instant calculations.`
-    },
-    {
-      "question": `Is the ${calculator.name} free to use?`,
-      "answer": `Yes, the ${calculator.name} is completely free to use. No registration or payment is required.`
-    },
-    {
-      "question": `Can I use this calculator on mobile devices?`,
-      "answer": `Yes, the ${calculator.name} is fully responsive and works perfectly on mobile phones, tablets, and desktop computers.`
-    },
-    {
-      "question": `Are the results from ${calculator.name} accurate?`,
-      "answer": `Yes, our calculators use standard formulas and are regularly tested for accuracy. However, results should be used for informational purposes and not as a substitute for professional advice.`
-    }
-  ];
+  const faqs = getCalculatorFAQContent(calculator);
 
   return {
     "@context": "https://schema.org",
@@ -350,49 +355,34 @@ export function generateFAQSchema(calculator: Calculator) {
   };
 }
 
+// HowTo step content for calculators (shared by schema and SEO HTML block)
+export function getCalculatorHowToContent(calculator: Calculator): { name: string; text: string }[] {
+  return [
+    { name: 'Enter your values', text: 'Input the required values in the calculator form' },
+    { name: 'Calculate', text: 'The calculator will automatically compute and display your results' },
+    { name: 'Review results', text: 'Review the calculated results and any additional information provided' },
+  ];
+}
+
 // HowTo Schema for step-by-step calculators
 // Image URLs omitted: /images/*-guide.png, *-step1/2/3.png do not exist and returned 404.
 // We return 410 for /images/* to avoid crawl waste; no image refs in schema.
 export function generateHowToSchema(calculator: Calculator) {
+  const steps = getCalculatorHowToContent(calculator);
+
   return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": `How to use ${calculator.name}`,
-    "description": `Step-by-step guide to using the ${calculator.name}`,
-    "totalTime": "PT2M",
-    "estimatedCost": {
-      "@type": "MonetaryAmount",
-      "currency": "USD",
-      "value": "0"
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    'name': `How to use ${calculator.name}`,
+    'description': `Step-by-step guide to using the ${calculator.name}`,
+    'totalTime': 'PT2M',
+    'estimatedCost': {
+      '@type': 'MonetaryAmount',
+      'currency': 'USD',
+      'value': '0',
     },
-    "supply": [
-      {
-        "@type": "HowToSupply",
-        "name": "Input values"
-      }
-    ],
-    "tool": [
-      {
-        "@type": "HowToTool",
-        "name": calculator.name
-      }
-    ],
-    "step": [
-      {
-        "@type": "HowToStep",
-        "name": "Enter your values",
-        "text": "Input the required values in the calculator form"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Calculate",
-        "text": "The calculator will automatically compute and display your results"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Review results",
-        "text": "Review the calculated results and any additional information provided"
-      }
-    ]
+    'supply': [{ '@type': 'HowToSupply', 'name': 'Input values' }],
+    'tool': [{ '@type': 'HowToTool', 'name': calculator.name }],
+    'step': steps.map((s) => ({ '@type': 'HowToStep', 'name': s.name, 'text': s.text })),
   };
 }
