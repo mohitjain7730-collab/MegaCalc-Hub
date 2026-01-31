@@ -49,14 +49,21 @@ export default function SafeNoteConversionCalculator() {
     },
   });
 
-  const calculate = (v: FormValues) => {
+  const calculate = (v: FormValues): {
+    capPrice: number;
+    discountPrice: number;
+    conversionPrice: number;
+    sharesIssued: number;
+    ownershipPercent: number;
+    conversionMethod: 'cap' | 'discount';
+  } => {
     const capPrice = v.valuationCap / v.preMoneyShares;
     const discountPrice = v.roundPricePerShare * (1 - v.discountPercent / 100);
     const conversionPrice = Math.min(capPrice, discountPrice);
     const sharesIssued = v.safeInvestment / conversionPrice;
     const postConversionShares = v.preMoneyShares + sharesIssued;
     const ownershipPercent = (sharesIssued / postConversionShares) * 100;
-    const conversionMethod = conversionPrice <= discountPrice && conversionPrice < capPrice ? 'discount' : 'cap';
+    const conversionMethod: 'cap' | 'discount' = conversionPrice <= discountPrice && conversionPrice < capPrice ? 'discount' : 'cap';
     return {
       capPrice,
       discountPrice,
