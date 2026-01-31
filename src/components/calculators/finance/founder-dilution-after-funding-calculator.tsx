@@ -481,33 +481,75 @@ export default function FounderDilutionAfterFundingCalculator() {
 
       {/* Complete Guide Section */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Article">
-        <meta itemProp="name" content="Founder Dilution After Funding: Post-Round Ownership and Dilution" />
-        <meta itemProp="description" content="Expert guide to founder ownership and dilution after a single funding round, including optional pre-money option pool." />
-        <meta itemProp="keywords" content="founder dilution, post-money valuation, option pool, startup funding, ownership after round" />
+        <meta itemProp="name" content="The Definitive Guide to Founder Dilution After Funding: Post-Round Ownership and Dilution" />
+        <meta itemProp="description" content="Expert guide to founder ownership and dilution after a single funding round: post-money valuation, investor ownership, optional pre-money option pool, and interpreting dilution." />
+        <meta itemProp="keywords" content="founder dilution, post-money valuation, option pool, startup funding, ownership after round, dilution percentage" />
         <meta itemProp="url" content="/category/finance/founder-dilution-after-funding-calculator" />
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Founder Dilution After Funding: Post-Round Ownership</h1>
-        <p className="text-lg italic text-muted-foreground">See founder ownership and dilution after a single funding round. Optional pre-money option pool. Startup-specific.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Founder Dilution After Funding: Post-Round Ownership and Dilution</h1>
+        <p className="text-lg italic text-muted-foreground">See founder ownership and dilution after a single funding round. Optional pre-money option pool. Startup-specific. Use this guide to interpret post-money valuation, investor %, founder % after, and dilution %.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
-          <li><a href="#fd-definition" className="hover:underline">What Is Founder Dilution After Funding?</a></li>
-          <li><a href="#fd-formula" className="hover:underline">Formulas and Components</a></li>
-          <li><a href="#fd-interpretation" className="hover:underline">Interpreting Results</a></li>
+          <li><a href="#fd-definition" className="hover:underline">Founder Dilution After Funding: Definition and Core Purpose</a></li>
+          <li><a href="#fd-formula" className="hover:underline">The Formulas and Components</a></li>
+          <li><a href="#fd-interpretation" className="hover:underline">Interpreting Results and Typical Dilution by Stage</a></li>
+          <li><a href="#fd-option-pool" className="hover:underline">Option Pool Pre-Money and Its Impact</a></li>
+          <li><a href="#fd-applications" className="hover:underline">Role in Term Sheet and Cap Table Planning</a></li>
           <li><a href="#fd-conclusion" className="hover:underline">Conclusion</a></li>
         </ul>
         <hr />
-        <h2 id="fd-definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is Founder Dilution After Funding?</h2>
-        <p>Founder dilution is the drop in founder ownership % after a round. New shares go to investors (and optionally an option pool), so founders own a smaller slice of a larger company. This calculator models a single round: pre-money valuation, investment, founder % before, and optional pre-money option pool.</p>
+        <h2 id="fd-definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Founder Dilution After Funding: Definition and Core Purpose</h2>
+        <p>Founder dilution is the drop in founder ownership percentage after a round. New shares go to investors (and optionally an option pool), so founders own a smaller slice of a larger company. This calculator models a single round: pre-money valuation, investment amount, founder ownership % before the round, and optional pre-money option pool.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Why Post-Round Ownership Matters</h3>
+        <p>Post-round founder ownership determines your stake in the company after the round closes. Dilution % measures how much of your pre-round ownership you gave up. Investors receive a percentage equal to investment ÷ post-money valuation; the rest of the company (after the new shares) is held by pre-money holders (founders, option pool, others) in proportion to their pre-round stakes.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Option Pool Pre-Money Matters</h3>
-        <p>Many rounds add or top up an option pool before the round (pre-money), which dilutes founders. Enter the pool % to see true founder % after the round.</p>
+        <p>Many rounds add or top up an option pool before the round (pre-money), which dilutes founders and other pre-money holders. The pool is typically expressed as a percentage of the pre-money cap. Enter the pool % in this calculator to see how it affects post-money ownership: the pool becomes a share of the company post-round, and founder % after reflects both investor dilution and (when modeled) pool dilution.</p>
         <hr />
-        <h2 id="fd-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Formulas and Components</h2>
-        <p>Post-money = Pre-money + Investment. Investor % = Investment / Post-money. Founder % after = Founder % before × (1 − Investor %). Dilution % = (Founder % before − Founder % after) / Founder % before × 100.</p>
+        <h2 id="fd-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Formulas and Components</h2>
+        <p>The calculator uses standard venture math: post-money = pre-money + investment; investor ownership = investment ÷ post-money; founder % after = founder % before × (1 − investor %).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-lg text-destructive font-bold">
+            Post-money = Pre-money + Investment
+          </p>
+          <p className="font-mono text-lg text-destructive font-bold mt-2">
+            Investor % = Investment ÷ Post-money
+          </p>
+          <p className="font-mono text-lg text-destructive font-bold mt-2">
+            Founder % after = Founder % before × (1 − Investor %)
+          </p>
+        </div>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Dilution Percentage</h3>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-lg text-destructive font-bold">
+            Dilution % = (Founder % before − Founder % after) ÷ Founder % before × 100
+          </p>
+        </div>
+        <p>Option pool (pre-money) is a percentage of the pre-money cap. Post-round, the pool represents optionPoolPct × (1 − Investor %) of the company (the same proportional dilution as other pre-money holders). This calculator shows founder % after from investor dilution; when you enter an option pool %, the result reflects that the pool exists and founders hold the remaining founder share of the pre-money slice.</p>
         <hr />
-        <h2 id="fd-interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Results</h2>
-        <p>Seed often 10–25% dilution, Series A 15–25%, Series B 10–20%. Higher dilution in one round can limit flexibility in later rounds; model multiple rounds in a cap table for full picture.</p>
+        <h2 id="fd-interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Results and Typical Dilution by Stage</h2>
+        <p>Dilution is expressed as a percentage. A result of 20% means founders gave up 20% of their pre-round ownership; they keep 80% of what they had (but of a larger company).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">General Interpretation Guidelines</h3>
+        <ul className="list-disc ml-6 space-y-2">
+          <li><strong className="font-semibold text-foreground">Dilution under 10%:</strong> Typical for small rounds or high pre-money. Founder ownership remains strong.</li>
+          <li><strong className="font-semibold text-foreground">Dilution 10–25%:</strong> Common for many seed and Series A rounds. Compare to benchmarks for your stage and market.</li>
+          <li><strong className="font-semibold text-foreground">Dilution above 25%:</strong> High for a single round. Ensure round size and use of capital justify it; model future rounds to avoid over-dilution.</li>
+        </ul>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Typical Dilution by Stage</h3>
+        <p>Seed rounds often dilute founders by 10–25%; Series A by 15–25%; Series B by 10–20%. These ranges vary by market, traction, and round size. Use this calculator to see where your round lands and to compare to typical benchmarks.</p>
+        <hr />
+        <h2 id="fd-option-pool" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Option Pool Pre-Money and Its Impact</h2>
+        <p>Investors often require an option pool to be created or topped up before the round (pre-money). That pool dilutes founders and other pre-money holders because it is part of the pre-money cap.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">How the Pool Is Modeled</h3>
+        <p>When you enter an option pool % (e.g. 10% pre-money), the calculator applies it so that post-round the pool represents that share of the company (adjusted for the new investor ownership). Founder % after in the basic model is founder % before × (1 − investor %); the pool is taken from the pre-money slice, so the founder&apos;s share of the company reflects both investor dilution and the existence of the pool. For a full cap table with exact share counts, use a dedicated cap table or option pool calculator.</p>
+        <hr />
+        <h2 id="fd-applications" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Term Sheet and Cap Table Planning</h2>
+        <p>Use this calculator before or after a term sheet to see post-money valuation, investor %, founder % after, and dilution %. It helps align round size and valuation with your ownership goals.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Multiple Rounds</h3>
+        <p>For multiple rounds, dilution compounds. Use a full cap table or multi-round dilution tool to track cumulative founder ownership. This calculator gives you the single-round snapshot that you can then feed into a cap table or repeat for a sequence of rounds.</p>
         <hr />
         <h2 id="fd-conclusion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Use this calculator to see founder ownership and dilution after a single funding round, including optional pre-money option pool. Pair with a post-funding runway calculator to plan both runway and ownership impact of the round.</p>
+        <p>Founder dilution after funding is the reduction in founder ownership % when new shares are issued to investors (and optionally an option pool). This calculator provides post-money valuation, investor ownership %, founder ownership % after, and founder dilution % for a single round, with optional pre-money option pool.</p>
+        <p>Use it to plan ownership impact of a round, compare to typical dilution by stage, and pair with a post-funding runway calculator to see both runway and dilution impact of the same round.</p>
       </section>
 
       {/* FAQ Section */}
@@ -521,12 +563,66 @@ export default function FounderDilutionAfterFundingCalculator() {
         </CardHeader>
         <CardContent>
           <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <div key={i}>
-                <h4 className="font-semibold text-lg mb-3">{faq.question}</h4>
-                <p className="text-muted-foreground">{faq.answer}</p>
-              </div>
-            ))}
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What is founder dilution after funding?</h4>
+              <p className="text-muted-foreground">
+                Founder dilution is the drop in founder ownership percentage after a round. New shares go to investors (and optionally an option pool), so founders own a smaller slice of a larger company. The dilution % is (founder % before − founder % after) ÷ founder % before × 100.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How is post-money valuation used?</h4>
+              <p className="text-muted-foreground">
+                Post-money = pre-money + investment. Investor ownership % = investment ÷ post-money. Founder % after = founder % before × (1 − investor %). So post-money valuation determines how much of the company the investor gets for their check, and the rest stays with pre-money holders (founders, option pool, others) in proportion to their pre-round stakes.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Why include option pool pre-money?</h4>
+              <p className="text-muted-foreground">
+                Many rounds add or top up an option pool before the round (pre-money), which dilutes founders. The pool is a percentage of the pre-money cap. Enter the pool % in this calculator to see how it affects post-round ownership; the pool becomes a share of the company post-money, and founder ownership reflects both investor and pool dilution.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What dilution is typical per round?</h4>
+              <p className="text-muted-foreground">
+                Seed often 10–25%, Series A 15–25%, Series B 10–20%. These ranges vary by market, traction, and round size. Higher dilution in one round can limit flexibility in later rounds; model multiple rounds in a cap table for a full picture of cumulative founder ownership.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How does this differ from Founder Dilution Calculator (by Funding Round)?</h4>
+              <p className="text-muted-foreground">
+                This calculator is focused on the single-round outcome: post-funding founder %, optional pre-money option pool, and explicit dilution %. The other is a simpler pre/post ownership view. Use this one when you want to model the option pool and see dilution % explicitly.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Do SAFEs and convertible notes affect dilution?</h4>
+              <p className="text-muted-foreground">
+                Yes. SAFEs and notes convert into equity at the round (often at a discount or cap), increasing the effective share count and diluting founders. This calculator models a single priced round; for SAFEs/notes, use a full cap table or SAFE conversion calculator to see combined dilution.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How can founders limit dilution?</h4>
+              <p className="text-muted-foreground">
+                Raise only the capital needed, negotiate valuation (higher pre-money means less dilution for the same check size), stage capital in tranches, and plan option pool timing (e.g. post-money pool dilutes investors too). Use this calculator to compare scenarios (e.g. different pre-money or raise size) and see the impact on founder % after.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What if I have multiple rounds?</h4>
+              <p className="text-muted-foreground">
+                Dilution compounds across rounds. Use this calculator for each round in sequence (using founder % after from one round as founder % before for the next), or use a full cap table tool to track share counts and ownership across multiple rounds and option grants.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Why is founder dilution important for investors?</h4>
+              <p className="text-muted-foreground">
+                Investors use founder dilution and post-round ownership to assess how much of the company they get for their investment and how much remains with founders. Understanding dilution helps founders negotiate round size and valuation and plan for future rounds so they retain meaningful ownership.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How do I use this with a post-funding runway calculator?</h4>
+              <p className="text-muted-foreground">
+                Use the same round: same raise size and (if relevant) same close timeline. The post-funding runway calculator shows how long the money lasts; this calculator shows post-round ownership and dilution. Together they give you runway and equity impact of the round for planning and investor discussions.
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>

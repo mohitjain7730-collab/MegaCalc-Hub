@@ -518,33 +518,69 @@ export default function PostFundingRunwayExtensionCalculator() {
 
       {/* Complete Guide Section */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Article">
-        <meta itemProp="name" content="Post-Funding Runway Extension: Cash at Close and Extended Runway" />
-        <meta itemProp="description" content="Expert guide to post-funding runway: cash at close, extended runway from new capital, and optional post-raise burn for startups." />
-        <meta itemProp="keywords" content="post-funding runway, cash at close, runway extension, startup runway, burn rate, funding round" />
+        <meta itemProp="name" content="The Definitive Guide to Post-Funding Runway: Cash at Close and Extended Runway" />
+        <meta itemProp="description" content="Expert guide to post-funding runway: cash at close, extended runway from new capital, interpreting results, and optional post-raise burn for startups." />
+        <meta itemProp="keywords" content="post-funding runway, cash at close, runway extension, startup runway, burn rate, funding round, months of runway" />
         <meta itemProp="url" content="/category/finance/post-funding-runway-extension-calculator" />
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Post-Funding Runway Extension: Plan Runway After Your Round</h1>
-        <p className="text-lg italic text-muted-foreground">After you close a round, see how much runway you get: cash at close (burn until close), new capital, and optional post-raise burn.</p>
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Post-Funding Runway: Cash at Close and Extended Runway</h1>
+        <p className="text-lg italic text-muted-foreground">After you close a round, see how much runway you get: cash at close (burn until close), new capital, and optional post-raise burn. Plan milestones and your next raise with realistic numbers.</p>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
-          <li><a href="#pf-definition" className="hover:underline">What Is Post-Funding Runway?</a></li>
-          <li><a href="#pf-formula" className="hover:underline">Formulas and Components</a></li>
-          <li><a href="#pf-interpretation" className="hover:underline">Interpreting Results</a></li>
+          <li><a href="#pf-definition" className="hover:underline">Post-Funding Runway: Definition and Core Purpose</a></li>
+          <li><a href="#pf-formula" className="hover:underline">The Formulas and Components</a></li>
+          <li><a href="#pf-interpretation" className="hover:underline">Interpreting Results and Target Runway</a></li>
+          <li><a href="#pf-vs-generic" className="hover:underline">Post-Funding Runway vs. Generic Runway Extension</a></li>
+          <li><a href="#pf-planning" className="hover:underline">Role in Fundraising and Milestone Planning</a></li>
           <li><a href="#pf-conclusion" className="hover:underline">Conclusion</a></li>
         </ul>
         <hr />
-        <h2 id="pf-definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is Post-Funding Runway?</h2>
-        <p>Post-funding runway is how many months your startup can operate after the round closes, using cash at close plus the new capital, at your planned post-close burn rate. This calculator models a single funding event: current cash, burn until close, timing to close, new capital, and optional higher burn after close.</p>
+        <h2 id="pf-definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Post-Funding Runway: Definition and Core Purpose</h2>
+        <p>Post-funding runway is how many months your startup can operate after the round closes, using cash at close plus the new capital, at your planned post-close burn rate. It answers: &quot;If we close in X months and raise $Y, how long does the money last?&quot;</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Cash at Close Matters</h3>
-        <p>Cash at close = current cash − (monthly burn until close × months until close). If you burn more or close later, you have less cash when the new money lands; the calculator reflects that so you see realistic extended runway.</p>
+        <p>Cash at close is the cash you have when the round actually closes—not today&apos;s balance. If you burn $80K per month and close in 3 months, you have already spent $240K by close. So cash at close = current cash − (monthly burn until close × months until close). If you burn more or close later, you have less cash when the new money lands; this calculator reflects that so you see realistic extended runway instead of an optimistic back-of-envelope number.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Why Model Post-Close Burn Separately?</h3>
+        <p>Many startups increase burn after a round (hiring, marketing, office). If you leave &quot;monthly burn after close&quot; blank, we use the same burn as until close. Enter a higher post-close burn to see how much runway you actually get once you scale spend—often 20–40% less than if burn stayed flat.</p>
         <hr />
-        <h2 id="pf-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Formulas and Components</h2>
-        <p>Runway today = Current cash ÷ Monthly burn until close. Runway after funding = (Cash at close + New funding at close) ÷ Monthly burn after close. Extension is the additional months from the new capital (and optional change in burn).</p>
+        <h2 id="pf-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Formulas and Components</h2>
+        <p>The calculator uses a small set of identities. Runway today tells you how long current cash lasts at current burn; cash at close and runway after funding tell you the picture at and after the round.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Cash at Close</h3>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-lg text-destructive font-bold">
+            Cash at close = Current cash − (Monthly burn until close × Months until close)
+          </p>
+        </div>
+        <p>Use the same &quot;monthly burn until close&quot; you expect to run at before the round closes. If you plan to cut burn, use the lower number; if you expect a one-off expense, consider it in your current cash or in a separate scenario.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Runway Today and Runway After Funding</h3>
+        <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+          <p className="font-mono text-lg text-destructive font-bold">
+            Runway today = Current cash ÷ Monthly burn until close
+          </p>
+          <p className="font-mono text-lg text-destructive font-bold mt-2">
+            Runway after funding = (Cash at close + New funding at close) ÷ Monthly burn after close
+          </p>
+        </div>
+        <p>Extension is the additional months you gain from the new capital (and from any change in burn). Zero-cash dates show when cash runs out before and after the round at constant burn.</p>
         <hr />
-        <h2 id="pf-interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Results</h2>
-        <p>Target 18–24 months post-close so you have time to hit milestones before the next raise. Less than 12 months leaves little buffer. If post-close burn is higher (e.g. hiring), enter it to see realistic runway.</p>
+        <h2 id="pf-interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Results and Target Runway</h2>
+        <p>Post-funding runway is expressed in months. A result of 24 months means you can run 24 months at your post-close burn rate before running out of cash (cash at close + new funding).</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Target Runway: The 18–24 Month Rule</h3>
+        <p>Many investors and founders target 18–24 months of runway after a round. That gives time to hit milestones (product, revenue, growth) before the next fundraise, and buffers for a 3–6 month raise process. Less than 12 months post-close is tight and increases pressure to raise again quickly or cut burn.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">When Extended Runway Is Short</h3>
+        <p>If runway after funding is under 12 months, consider raising more, reducing post-close burn, or extending the time to close (so you have more cash at close). You can also model a higher &quot;months until close&quot; to see how a delayed close reduces cash at close and thus extended runway.</p>
+        <hr />
+        <h2 id="pf-vs-generic" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Post-Funding Runway vs. Generic Runway Extension</h2>
+        <p>A generic runway extension calculator often asks for &quot;current cash,&quot; &quot;new funding,&quot; and &quot;burn.&quot; It does not model when the round closes or what happens to cash between now and close.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">What This Calculator Adds</h3>
+        <p>This tool is built for a single funding event: you specify months until close and burn until close, so cash at close is explicit. You can also set a different burn after close (e.g. post-hire). That gives a more accurate post-funding runway and extension, and avoids overstating runway by ignoring burn until close or post-raise spend.</p>
+        <hr />
+        <h2 id="pf-planning" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role in Fundraising and Milestone Planning</h2>
+        <p>Use post-funding runway to align the round size and close date with your plan: how long you need to hit the next milestone (e.g. Series A metrics) and when you want to start the next raise.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Scenario Testing</h3>
+        <p>Run scenarios: close in 3 vs. 6 months, same raise size; or same close date with higher post-close burn. You will see how sensitive extended runway is to timing and spend, and can adjust raise size or burn plans accordingly.</p>
         <hr />
         <h2 id="pf-conclusion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Use this calculator to plan runway after a single funding event: cash at close, extended runway from new capital, and optional post-raise burn. Pair with a founder dilution calculator to see both runway and ownership impact of the round.</p>
+        <p>Post-funding runway is the number of months your startup can run after the round closes, using cash at close plus new capital at your planned post-close burn. This calculator models a single funding event with explicit cash at close, optional post-raise burn, and extension in months.</p>
+        <p>Use it to plan runway after a round, stress-test close timing and burn, and pair with a founder dilution calculator to see both runway and ownership impact of the same round.</p>
       </section>
 
       {/* FAQ Section */}
@@ -558,12 +594,66 @@ export default function PostFundingRunwayExtensionCalculator() {
         </CardHeader>
         <CardContent>
           <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <div key={i}>
-                <h4 className="font-semibold text-lg mb-3">{faq.question}</h4>
-                <p className="text-muted-foreground">{faq.answer}</p>
-              </div>
-            ))}
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What is post-funding runway?</h4>
+              <p className="text-muted-foreground">
+                Post-funding runway is how many months your startup can operate after the round closes, using cash at close plus the new capital, at your planned post-close burn rate. It answers: if we close in X months and raise $Y, how long does the money last at our post-close burn?
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Why model burn until close separately?</h4>
+              <p className="text-muted-foreground">
+                Cash at close = current cash − (monthly burn × months until close). If you burn more or close later, you have less cash when the new money lands. Modeling burn until close and months to close gives you a realistic cash-at-close number and thus a realistic extended runway instead of assuming you add new funding to today&apos;s balance.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Should I increase burn after the round?</h4>
+              <p className="text-muted-foreground">
+                Many startups do (hiring, marketing). If you plan to increase burn after close, enter that in &quot;monthly burn after close&quot; so the calculator shows realistic post-funding runway. If you leave it blank, we use the same burn as until close, which can overstate runway if you actually scale spend.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What is a good extended runway target?</h4>
+              <p className="text-muted-foreground">
+                18–24 months post-close is common so you have time to hit milestones before the next raise and buffer for a 3–6 month fundraise. Less than 12 months leaves little room for slippage; consider raising more, cutting post-close burn, or accelerating close.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How does this differ from the generic Runway Extension Calculator?</h4>
+              <p className="text-muted-foreground">
+                This one is built for a single funding event: it models cash at close (burn until close, months until close), then adds new capital and optional post-raise burn to get post-funding runway and extension. A generic runway tool usually does not model when the round closes or different burn before vs. after close.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What if my close date slips?</h4>
+              <p className="text-muted-foreground">
+                Increase &quot;months until close&quot; and recalculate. You will see cash at close drop (more burn before close) and thus less extended runway. That shows why closing on time matters and how much runway you lose for each extra month of delay.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Does the calculator assume constant burn?</h4>
+              <p className="text-muted-foreground">
+                Yes. We use one burn until close and one burn after close. Actual burn can vary month to month; use the calculator for planning and run multiple scenarios (e.g. higher burn) to stress-test.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">How do I use this with a founder dilution calculator?</h4>
+              <p className="text-muted-foreground">
+                Use the same round: same raise size and (if you like) same close timeline. The post-funding runway calculator shows how long the money lasts; the founder dilution calculator shows post-round ownership and dilution. Together they give you runway and equity impact of the round.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">Why is cash at close sometimes zero or negative?</h4>
+              <p className="text-muted-foreground">
+                If (monthly burn until close × months until close) is greater than or equal to current cash, you run out of cash before the round closes. The calculator caps cash at close at zero. In that case you need to close sooner, cut burn, or secure bridge financing.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-3">What runway should I tell investors I are targeting?</h4>
+              <p className="text-muted-foreground">
+                Many founders and boards target 18–24 months of runway after a round. Use this calculator to check that your planned raise size and close date actually get you there at your expected post-close burn, and to explain your assumptions in the plan.
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>
