@@ -26,9 +26,8 @@ import {
   getFallbackCalculator,
   getAllCalculatorSlugs,
   type CalculatorLink,
-  type ValidationResult,
 } from '@/lib/calculator-link-validator';
-import { useEffect, useState, useMemo } from 'react';
+import { useMemo } from 'react';
 
 export interface RelatedCalculatorsProps {
   /**
@@ -79,10 +78,7 @@ export function RelatedCalculators({
   maxDisplay = 4,
   showWarnings = true,
 }: RelatedCalculatorsProps) {
-  const [validatedLinks, setValidatedLinks] = useState<CalculatorLink[]>([]);
-  const [hasWarnings, setHasWarnings] = useState(false);
-
-  // Validate links and apply fixes
+  // Validate links synchronously so content renders in initial HTML (no useEffect)
   const validationResult = useMemo(() => {
     if (!links || links.length === 0) {
       return null;
@@ -121,7 +117,7 @@ export function RelatedCalculators({
     finalLinks = finalLinks.slice(0, maxDisplay);
 
     // Log warnings in development
-    if (showWarnings && process.env.NODE_ENV === 'development' && report.invalidLinks.length > 0) {
+    if (showWarnings && typeof window !== 'undefined' && process.env.NODE_ENV === 'development' && report.invalidLinks.length > 0) {
       report.invalidLinks.forEach((result) => {
         console.warn(
           `⚠️ Related calculator link broken: ${result.link.slug}. ` +
@@ -131,17 +127,12 @@ export function RelatedCalculators({
             : 'No automatic fix available.')
         );
       });
-      setHasWarnings(true);
     }
 
-    return { report, finalLinks };
+    return { report, finalLinks, hasWarnings: report.invalidLinks.length > 0 };
   }, [links, currentSlug, currentCategory, maxDisplay, showWarnings]);
 
-  useEffect(() => {
-    if (validationResult) {
-      setValidatedLinks(validationResult.finalLinks);
-    }
-  }, [validationResult]);
+  const validatedLinks = validationResult?.finalLinks ?? [];
 
   // Don't render if no valid links
   if (!validatedLinks || validatedLinks.length === 0) {
@@ -171,7 +162,7 @@ export function RelatedCalculators({
             );
           })}
         </div>
-        {hasWarnings && process.env.NODE_ENV === 'development' && (
+        {validationResult?.hasWarnings && typeof window !== 'undefined' && process.env.NODE_ENV === 'development' && (
           <p className="mt-4 text-sm text-muted-foreground">
             ⚠️ Some related calculator links were invalid and have been filtered or replaced.
             Check the console for details.

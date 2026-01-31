@@ -1,8 +1,13 @@
-'use client';
+import Link from 'next/link';
+import { EmbedCopyButton } from './embed-copy-button';
 
 interface EmbedWidgetProps {
   categorySlug: string;
   calculatorSlug: string;
+}
+
+function formatCalculatorTitle(slug: string): string {
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
 export function EmbedWidget({ categorySlug, calculatorSlug }: EmbedWidgetProps) {
@@ -13,7 +18,7 @@ export function EmbedWidget({ categorySlug, calculatorSlug }: EmbedWidgetProps) 
     height="600" 
     style="border:1px solid #ccc; border-radius:8px;" 
     loading="lazy" 
-    title="${calculatorSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} Calculator by MyCalculating.com"
+    title="${formatCalculatorTitle(calculatorSlug)} Calculator by MyCalculating.com"
   ></iframe>
   <p style="text-align:center; font-size:12px; margin-top:4px;">
     <a href="https://mycalculating.com/category/${categorySlug}/${calculatorSlug}" target="_blank" rel="noopener">
@@ -21,10 +26,6 @@ export function EmbedWidget({ categorySlug, calculatorSlug }: EmbedWidgetProps) 
     </a>
   </p>
 </div>`;
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(embedCode);
-  };
 
   return (
     <div className="mt-12 p-6 bg-muted/50 rounded-lg border">
@@ -38,20 +39,15 @@ export function EmbedWidget({ categorySlug, calculatorSlug }: EmbedWidgetProps) 
         </code>
       </div>
       <div className="mt-4 flex gap-2">
-        <button 
-          onClick={handleCopyCode}
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm hover:bg-primary/90 transition-colors"
-        >
-          Copy Embed Code
-        </button>
-        <a 
+        <EmbedCopyButton embedCode={embedCode} />
+        <Link
           href={`/category/${categorySlug}/${calculatorSlug}`}
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md text-sm hover:bg-secondary/90 transition-colors"
         >
           Open in New Tab
-        </a>
+        </Link>
       </div>
     </div>
   );
