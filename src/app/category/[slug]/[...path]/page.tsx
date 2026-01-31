@@ -270,11 +270,10 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
                     <CalculatorWrapper categorySlug={category.slug} calculatorSlug={calculator.slug} />
                     <EmbedWidget categorySlug={category.slug} calculatorSlug={calculator.slug} />
 
-                    {/* SEO: full article-style content in page source for crawlers (visually hidden, no UI change) */}
-                    <section
-                        aria-hidden="true"
-                        className="sr-only"
+                    {/* SEO: server-rendered article content — visible in View Page Source and on page; only calculator UI is client-side */}
+                    <article
                         id="calculator-seo-content"
+                        className="mt-10 pt-8 border-t border-border prose prose-sm dark:prose-invert max-w-none prose-headings:font-semibold prose-h2:mt-8 prose-h2:mb-3 prose-h3:mt-6 prose-h3:mb-2 prose-p:my-2 prose-ul:my-2 prose-li:my-0.5"
                     >
                         <h2>{calculator.name}</h2>
                         <p>{calculator.description}</p>
@@ -405,10 +404,10 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
                                         <h3>{faq.question}</h3>
                                         <p>{faq.answer}</p>
                                     </div>
-                                ))}
+                                )                                )}
                             </>
                         )}
-                    </section>
+                    </article>
                 </div>
             </div>
         </>
