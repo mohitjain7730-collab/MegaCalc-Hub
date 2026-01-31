@@ -55,7 +55,16 @@ export default function ConvertibleNoteConversionCalculator() {
     },
   });
 
-  const calculate = (v: FormValues) => {
+  const calculate = (v: FormValues): {
+    accruedInterest: number;
+    conversionAmount: number;
+    capPrice: number;
+    discountPrice: number;
+    conversionPrice: number;
+    sharesIssued: number;
+    ownershipPercent: number;
+    conversionMethod: 'cap' | 'discount';
+  } => {
     const accruedInterest = v.principal * (v.interestRatePercent / 100) * (v.monthsToConversion / 12);
     const conversionAmount = v.principal + accruedInterest;
     const capPrice = v.valuationCap / v.preMoneyShares;
@@ -64,7 +73,7 @@ export default function ConvertibleNoteConversionCalculator() {
     const sharesIssued = conversionAmount / conversionPrice;
     const postConversionShares = v.preMoneyShares + sharesIssued;
     const ownershipPercent = (sharesIssued / postConversionShares) * 100;
-    const conversionMethod = conversionPrice <= discountPrice && conversionPrice < capPrice ? 'discount' : 'cap';
+    const conversionMethod: 'cap' | 'discount' = conversionPrice <= discountPrice && conversionPrice < capPrice ? 'discount' : 'cap';
     return {
       accruedInterest,
       conversionAmount,
