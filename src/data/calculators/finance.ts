@@ -3285,5 +3285,23 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Founder Dilution After Funding Calculator",
     "metaDescription": "Calculate founder ownership and dilution after a single funding round, including optional pre-money option pool. Startup-specific."
+  },
+  {
+    "id": 10235,
+    "name": "Equity Split Calculator for Co-Founders",
+    "description": "Suggest co-founder equity split from idea, time, capital, and lead role. Startup-specific. Use as a starting point and document with vesting.",
+    "slug": "equity-split-calculator-for-co-founders",
+    "category": "finance",
+    "metaTitle": "Equity Split Calculator for Co-Founders",
+    "metaDescription": "Calculate suggested co-founder equity split from idea, time, capital, and lead role. Startup-specific. Document with vesting."
+  },
+  {
+    "id": 10236,
+    "name": "Startup Valuation (Pre-Money vs Post-Money) Calculator",
+    "description": "Compare pre-money vs post-money: post-money valuation, investor ownership %, and price per 1%. Optional second scenario for side-by-side comparison. Startup-specific.",
+    "slug": "startup-valuation-pre-money-vs-post-money-calculator",
+    "category": "finance",
+    "metaTitle": "Startup Valuation (Pre-Money vs Post-Money) Calculator",
+    "metaDescription": "Compare pre-money vs post-money valuation: post-money, investor %, price per 1%. Optional comparison scenario. Startup-specific."
   }
 ];

@@ -220,20 +220,8 @@ export default function PostFundingRunwayExtensionCalculator() {
   });
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <Script id="post-funding-runway-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Clock className="h-5 w-5" />
-            Post-Funding Runway Extension Calculator
-          </CardTitle>
-          <CardDescription>
-            After you close a round: see cash at close, extended runway from new capital, and optional post-raise burn. Startup-specific.
-          </CardDescription>
-        </CardHeader>
-      </Card>
 
       <Card>
         <CardHeader>

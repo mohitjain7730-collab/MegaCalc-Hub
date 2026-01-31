@@ -215,7 +215,7 @@ export function CalculatorWrapper({ categorySlug, calculatorSlug }: CalculatorWr
   const CalculatorComponent = loader(calculatorSlug);
 
   return (
-    <div style={{ minHeight: '500px', width: '100%' }}>
+    <div className="w-full">
       <CalculatorComponent />
     </div>
   );
