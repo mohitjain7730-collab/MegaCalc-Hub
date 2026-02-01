@@ -103,5 +103,24 @@ export const indexableCalculatorSlugs = [
     'minecraft-beacon-range-optimizer',
     'minecraft-redstone-signal-delay-calculator',
     'minecraft-tree-farm-output-calculator',
-    'minecraft-nether-portal-linkage-estimator'
+    'minecraft-nether-portal-linkage-estimator',
+    // Finance – ratios, runway, unit economics, emergency fund
+    'return-on-assets-calculator',
+    'return-on-investment-calculator',
+    'debt-to-equity-ratio-calculator',
+    'interest-coverage-ratio-calculator',
+    'current-ratio-calculator',
+    'quick-ratio-calculator',
+    'working-capital-calculator',
+    'cash-conversion-cycle-calculator',
+    'free-cash-flow-calculator',
+    'operating-margin-calculator',
+    'esop-dilution-impact-calculator',
+    'hiring-cost-impact-on-runway-calculator',
+    'marketing-spend-impact-on-runway-calculator',
+    'unit-economics-calculator-startup',
+    'bootstrapped-startup-growth-calculator',
+    'emergency-fund-calculator-single-income-households',
+    'emergency-fund-calculator-dual-income-families',
+    'emergency-fund-calculator-freelancers'
 ];
