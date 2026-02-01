@@ -1,14 +1,19 @@
-'use client';
+import React from 'react';
+import type { ComponentType } from 'react';
 
-import React, { lazy, useState, useEffect } from 'react';
+import Calc503020BudgetCalculator from './50-30-20-budget-calculator';
+import DtiRatioCalculatorComponent_1 from './dti-ratio-calculator';
+import EmergencyFundGoalCalculatorComponent_2 from './emergency-fund-goal-calculator';
+import MonthlyBudgetSurplusDeficitCalculatorComponent_3 from './monthly-budget-surplus-deficit-calculator';
+import SavingsRateCalculatorComponent_4 from './savings-rate-calculator';
 
-// Static map of calculators to avoid dynamic import context creation
-const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  '50-30-20-budget-calculator': lazy(() => import('./50-30-20-budget-calculator')),
-  'dti-ratio-calculator': lazy(() => import('./dti-ratio-calculator')),
-  'emergency-fund-goal-calculator': lazy(() => import('./emergency-fund-goal-calculator')),
-  'monthly-budget-surplus-deficit-calculator': lazy(() => import('./monthly-budget-surplus-deficit-calculator')),
-  'savings-rate-calculator': lazy(() => import('./savings-rate-calculator')),
+// Static imports for SSR - full content in initial HTML for SEO
+const components: Record<string, ComponentType> = {
+  '50-30-20-budget-calculator': Calc503020BudgetCalculator,
+  'dti-ratio-calculator': DtiRatioCalculatorComponent_1,
+  'emergency-fund-goal-calculator': EmergencyFundGoalCalculatorComponent_2,
+  'monthly-budget-surplus-deficit-calculator': MonthlyBudgetSurplusDeficitCalculatorComponent_3,
+  'savings-rate-calculator': SavingsRateCalculatorComponent_4,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

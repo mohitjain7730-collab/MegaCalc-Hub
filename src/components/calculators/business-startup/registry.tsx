@@ -1,17 +1,25 @@
-'use client';
+import React from 'react';
+import type { ComponentType } from 'react';
 
-import React, { lazy, useState, useEffect } from 'react';
+import BreakEvenPointCalculatorComponent_0 from './break-even-point-calculator';
+import BreakEvenSalesDollarCalculatorComponent_1 from './break-even-sales-dollar-calculator';
+import ContributionMarginCalculatorComponent_2 from './contribution-margin-calculator';
+import CustomerAcquisitionCostCalculatorComponent_3 from './customer-acquisition-cost-calculator';
+import DscrCalculatorComponent_4 from './dscr-calculator';
+import LifetimeValueCalculatorComponent_5 from './lifetime-value-calculator';
+import OperatingLeverageCalculatorComponent_6 from './operating-leverage-calculator';
+import RoiCalculatorComponent_7 from './roi-calculator';
 
-// Static map of calculators to avoid dynamic import context creation
-const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  'break-even-point-calculator': lazy(() => import('./break-even-point-calculator')),
-  'break-even-sales-dollar-calculator': lazy(() => import('./break-even-sales-dollar-calculator')),
-  'contribution-margin-calculator': lazy(() => import('./contribution-margin-calculator')),
-  'customer-acquisition-cost-calculator': lazy(() => import('./customer-acquisition-cost-calculator')),
-  'dscr-calculator': lazy(() => import('./dscr-calculator')),
-  'lifetime-value-calculator': lazy(() => import('./lifetime-value-calculator')),
-  'operating-leverage-calculator': lazy(() => import('./operating-leverage-calculator')),
-  'roi-calculator': lazy(() => import('./roi-calculator')),
+// Static imports for SSR - full content in initial HTML for SEO
+const components: Record<string, ComponentType> = {
+  'break-even-point-calculator': BreakEvenPointCalculatorComponent_0,
+  'break-even-sales-dollar-calculator': BreakEvenSalesDollarCalculatorComponent_1,
+  'contribution-margin-calculator': ContributionMarginCalculatorComponent_2,
+  'customer-acquisition-cost-calculator': CustomerAcquisitionCostCalculatorComponent_3,
+  'dscr-calculator': DscrCalculatorComponent_4,
+  'lifetime-value-calculator': LifetimeValueCalculatorComponent_5,
+  'operating-leverage-calculator': OperatingLeverageCalculatorComponent_6,
+  'roi-calculator': RoiCalculatorComponent_7,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

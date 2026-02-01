@@ -1,438 +1,867 @@
-'use client';
+import React from 'react';
+import type { ComponentType } from 'react';
 
-import React, { lazy, useState, useEffect } from 'react';
+import AcuteTrainingLoadCalculatorComponent_0 from './acute-training-load-calculator';
+import AlbuminToCreatinineRatioCalculatorComponent_1 from './albumin-to-creatinine-ratio-calculator';
+import AlcoholCalorieImpactCalculatorComponent_2 from './alcohol-calorie-impact-calculator';
+import AlcoholMetabolismTimeCalculatorComponent_3 from './alcohol-metabolism-time-calculator';
+import AltitudeAcclimatizationOxygenNeedCalculatorComponent_4 from './altitude-acclimatization-oxygen-need-calculator';
+import AnaerobicCapacityCalculatorComponent_5 from './anaerobic-capacity-calculator';
+import AnaerobicPowerOutputCalculatorComponent_6 from './anaerobic-power-output-calculator';
+import AnaerobicThresholdCalculatorComponent_7 from './anaerobic-threshold-calculator';
+import AndroidVsGynoidFatRatioCalculatorComponent_8 from './android-vs-gynoid-fat-ratio-calculator';
+import AntiAgingNutritionScoreCalculatorComponent_9 from './anti-aging-nutrition-score-calculator';
+import AntioxidantDiversityIndexCalculatorComponent_10 from './antioxidant-diversity-index-calculator';
+import ArterialElasticityIndexCalculatorComponent_11 from './arterial-elasticity-index-calculator';
+import ArterialStiffnessIndexCalculatorComponent_12 from './arterial-stiffness-index-calculator';
+import AttentionSpanIndexCalculatorComponent_13 from './attention-span-index-calculator';
+import BabySleepNeedsCalculatorComponent_14 from './baby-sleep-needs-calculator';
+import BabySleepNeedsWellnessCalculatorComponent_15 from './baby-sleep-needs-wellness-calculator';
+import BalancedMealScoreCalculatorComponent_16 from './balanced-meal-score-calculator';
+import BaseballPitchSpeedCalculatorComponent_17 from './baseball-pitch-speed-calculator';
+import BasketballShootingPercentageCalculatorComponent_18 from './basketball-shooting-percentage-calculator';
+import BiologicalStressLoadAllostaticLoadCalculatorComponent_19 from './biological-stress-load-allostatic-load-calculator';
+import BloodFlowVelocityEstimatorComponent_20 from './blood-flow-velocity-estimator';
+import BloodLactateClearanceRateCalculatorComponent_21 from './blood-lactate-clearance-rate-calculator';
+import BloodOxygenSaturationEstimatorComponent_22 from './blood-oxygen-saturation-estimator';
+import BloodSugarSpikeEstimatorByMealTypeComponent_23 from './blood-sugar-spike-estimator-by-meal-type';
+import BloodSugarToHba1cConverterComponent_24 from './blood-sugar-to-hba1c-converter';
+import BloodUreaNitrogenBunRatioCalculatorComponent_25 from './blood-urea-nitrogen-bun-ratio-calculator';
+import BloodVolumeEstimatorComponent_26 from './blood-volume-estimator';
+import BlueLightExposureCalculatorComponent_27 from './blue-light-exposure-calculator';
+import BlueLightExposureWellnessCalculatorComponent_28 from './blue-light-exposure-wellness-calculator';
+import BlueZoneLifestyleScoreCalculatorComponent_29 from './blue-zone-lifestyle-score-calculator';
+import BmiCalculatorComponent_30 from './bmi-calculator';
+import BmrAdjustmentForAgeMuscleLossCalculatorComponent_31 from './bmr-adjustment-for-age-muscle-loss-calculator';
+import BmrCalculatorComponent_32 from './bmr-calculator';
+import BodyAdiposityIndexCalculatorComponent_33 from './body-adiposity-index-calculator';
+import BodyFatPercentageCalculatorComponent_34 from './body-fat-percentage-calculator';
+import BodySurfaceAreaCalculatorComponent_35 from './body-surface-area-calculator';
+import BodySurfaceAreaDuBoisCalculatorComponent_36 from './body-surface-area-du-bois-calculator';
+import BodyTemperatureRegulationEstimatorComponent_37 from './body-temperature-regulation-estimator';
+import BoneDensityTScoreCalculatorComponent_38 from './bone-density-t-score-calculator';
+import BoneStrengthLifestyleInsightToolComponent_39 from './bone-strength-lifestyle-insight-tool';
+import BrainFogSeverityScoreCalculatorComponent_40 from './brain-fog-severity-score-calculator';
+import BreakfastSkippingEffectOnMetabolismCalculatorComponent_41 from './breakfast-skipping-effect-on-metabolism-calculator';
+import BreastMilkProductionEstimateCalculatorComponent_42 from './breast-milk-production-estimate-calculator';
+import BreastfeedingCalorieNeedsCalculatorComponent_43 from './breastfeeding-calorie-needs-calculator';
+import BreathHoldCo2ToleranceCalculatorComponent_44 from './breath-hold-co2-tolerance-calculator';
+import BreathingPatternEfficiencyCalculatorComponent_45 from './breathing-pattern-efficiency-calculator';
+import BreathingRateEfficiencyCalculatorComponent_46 from './breathing-rate-efficiency-calculator';
+import BrownFatActivationEstimatorComponent_47 from './brown-fat-activation-estimator';
+import BulletproofCoffeeCalorieImpactCalculatorComponent_48 from './bulletproof-coffee-calorie-impact-calculator';
+import BurnoutRiskScoreCalculatorComponent_49 from './burnout-risk-score-calculator';
+import CaffeineCutoffSleepImpactCalculatorComponent_50 from './caffeine-cutoff-sleep-impact-calculator';
+import CaffeineCutoffSleepImpactWellnessCalculatorComponent_51 from './caffeine-cutoff-sleep-impact-wellness-calculator';
+import CaffeineHalfLifeCalculatorTimeBasedComponent_52 from './caffeine-half-life-calculator-time-based';
+import CaffeineIntakeCalculatorComponent_53 from './caffeine-intake-calculator';
+import CalciumCorrectionForAlbuminCalculatorComponent_54 from './calcium-correction-for-albumin-calculator';
+import CalciumIntakeCalculatorComponent_55 from './calcium-intake-calculator';
+import CaloricCostOfColdExposureCalculatorComponent_56 from './caloric-cost-of-cold-exposure-calculator';
+import CaloricDensityVsVolumeCalculatorComponent_57 from './caloric-density-vs-volume-calculator';
+import CalorieDeficitCalculatorComponent_58 from './calorie-deficit-calculator';
+import CalorieSurplusCalculatorComponent_59 from './calorie-surplus-calculator';
+import CaloriesBurnedCyclingCalculatorComponent_60 from './calories-burned-cycling-calculator';
+import CaloriesBurnedRunningCalculatorComponent_61 from './calories-burned-running-calculator';
+import CaloriesBurnedSwimmingCalculatorComponent_62 from './calories-burned-swimming-calculator';
+import CaloriesBurnedWalkingCalculatorComponent_63 from './calories-burned-walking-calculator';
+import CapillaryDensityEstimatorComponent_64 from './capillary-density-estimator';
+import CarbCyclingMacroCalculatorComponent_65 from './carb-cycling-macro-calculator';
+import CarbRefeedTimingCalculatorComponent_66 from './carb-refeed-timing-calculator';
+import CarbToFiberRatioCalculatorComponent_67 from './carb-to-fiber-ratio-calculator';
+import CarbohydrateIntakeCalculatorComponent_68 from './carbohydrate-intake-calculator';
+import CardiacOutputCalculatorComponent_69 from './cardiac-output-calculator';
+import CardiacOutputQCalculatorComponent_70 from './cardiac-output-q-calculator';
+import CardiometabolicAgeCalculatorComponent_71 from './cardiometabolic-age-calculator';
+import CarnivoreMicronutrientGapCalculatorComponent_72 from './carnivore-micronutrient-gap-calculator';
+import CellularHydrationScoreCalculatorComponent_73 from './cellular-hydration-score-calculator';
+import CentralNervousSystemCnsFatigueRecoveryCalculatorComponent_74 from './central-nervous-system-cns-fatigue-recovery-calculator';
+import CheatDayImpactOnWeeklyDeficitCalculatorComponent_75 from './cheat-day-impact-on-weekly-deficit-calculator';
+import CheatMealImpactOnWeeklyCaloriesCalculatorComponent_76 from './cheat-meal-impact-on-weekly-calories-calculator';
+import ChildBmiPercentileCalculatorComponent_77 from './child-bmi-percentile-calculator';
+import ChromiumDailyNeedEstimatorComponent_78 from './chromium-daily-need-estimator';
+import ChronicTrainingLoadCalculatorComponent_79 from './chronic-training-load-calculator';
+import CircadianRhythmAlignmentScoreComponent_80 from './circadian-rhythm-alignment-score';
+import CircadianRhythmDisruptionRiskCalculatorComponent_81 from './circadian-rhythm-disruption-risk-calculator';
+import ClimbingGradeDifficultyToCaloriesBurnedCalculatorComponent_82 from './climbing-grade-difficulty-to-calories-burned-calculator';
+import CognitiveAgeEstimatorComponent_83 from './cognitive-age-estimator';
+import CognitiveFocusEfficiencyCalculatorComponent_84 from './cognitive-focus-efficiency-calculator';
+import CognitiveFocusEfficiencyWellnessCalculatorComponent_85 from './cognitive-focus-efficiency-wellness-calculator';
+import CognitiveLoadBalanceCalculatorComponent_86 from './cognitive-load-balance-calculator';
+import CognitiveLoadEstimatorComponent_87 from './cognitive-load-estimator';
+import ColdExposureDurationEstimatorComponent_88 from './cold-exposure-duration-estimator';
+import CompleteAminoAcidProfileCalculatorComponent_89 from './complete-amino-acid-profile-calculator';
+import ConceptionProbabilityPerCycleCalculatorComponent_90 from './conception-probability-per-cycle-calculator';
+import ConfidenceCurveEstimatorComponent_91 from './confidence-curve-estimator';
+import CopperIntakeCalculatorComponent_92 from './copper-intake-calculator';
+import CoreBodyTemperatureRiseCalculatorComponent_93 from './core-body-temperature-rise-calculator';
+import CoreStrengthBalanceCalculatorComponent_94 from './core-strength-balance-calculator';
+import CortisolStressResponseEstimatorComponent_95 from './cortisol-stress-response-estimator';
+import CreatineLoadingMaintenanceDoseCalculatorComponent_96 from './creatine-loading-maintenance-dose-calculator';
+import CriticalPowerCalculatorComponent_97 from './critical-power-calculator';
+import CriticalSwimSpeedCalculatorComponent_98 from './critical-swim-speed-calculator';
+import CyclingCadenceOptimizerCalculatorComponent_99 from './cycling-cadence-optimizer-calculator';
+import CyclingFtpCalculatorComponent_100 from './cycling-ftp-calculator';
+import CyclingPowerOutputCalculatorComponent_101 from './cycling-power-output-calculator';
+import DailyActivityPointsCalculatorComponent_102 from './daily-activity-points-calculator';
+import DailyAntioxidantOracGoalCalculatorComponent_103 from './daily-antioxidant-orac-goal-calculator';
+import DailyCalorieNeedsCalculatorComponent_104 from './daily-calorie-needs-calculator';
+import DailyEnergyMoodSynchronizationTrackerComponent_105 from './daily-energy-mood-synchronization-tracker';
+import DailyMentalEnergyBudgetCalculatorComponent_106 from './daily-mental-energy-budget-calculator';
+import DailyMicronutrientCoverageCalculatorComponent_107 from './daily-micronutrient-coverage-calculator';
+import DailyScreenExposureStressIndexCalculatorComponent_108 from './daily-screen-exposure-stress-index-calculator';
+import DailyScreenExposureStressIndexWellnessCalculatorComponent_109 from './daily-screen-exposure-stress-index-wellness-calculator';
+import DailyScreenTimeImpactCalculatorComponent_110 from './daily-screen-time-impact-calculator';
+import DailyStressTendencyCheckInComponent_111 from './daily-stress-tendency-check-in';
+import DailyTestosteroneBoostingHabitsScoreCalculatorComponent_112 from './daily-testosterone-boosting-habits-score-calculator';
+import DashDietComplianceTrackerComponent_113 from './dash-diet-compliance-tracker';
+import DashDietSodiumIntakeCalculatorComponent_114 from './dash-diet-sodium-intake-calculator';
+import DecisionFatigueIndexCalculatorComponent_115 from './decision-fatigue-index-calculator';
+import DeepSleepRequirementEstimatorComponent_116 from './deep-sleep-requirement-estimator';
+import DetoxJuiceNutrientCalculatorComponent_117 from './detox-juice-nutrient-calculator';
+import DetoxPathwayEfficiencyCalculatorComponent_118 from './detox-pathway-efficiency-calculator';
+import DietBreakRefeedDayPlannerCalculatorComponent_119 from './diet-break-refeed-day-planner-calculator';
+import DietSustainabilityScoreCalculatorComponent_120 from './diet-sustainability-score-calculator';
+import DigitalBurnoutDetectorComponent_121 from './digital-burnout-detector';
+import DigitalEyeStrainSeverityIndexComponent_122 from './digital-eye-strain-severity-index';
+import DomsRecoveryTimeCalculatorComponent_123 from './doms-recovery-time-calculator';
+import DopamineRewardSensitivityIndexCalculatorComponent_124 from './dopamine-reward-sensitivity-index-calculator';
+import DueDateCalculatorComponent_125 from './due-date-calculator';
+import EatingWindowDurationCalculatorComponent_126 from './eating-window-duration-calculator';
+import ElectrolyteBalanceRestorationCalculatorComponent_127 from './electrolyte-balance-restoration-calculator';
+import ElectrolyteReplacementCalculatorComponent_128 from './electrolyte-replacement-calculator';
+import EmotionalBurnoutRecoveryCalculatorComponent_129 from './emotional-burnout-recovery-calculator';
+import EmotionalStabilityIndexCalculatorComponent_130 from './emotional-stability-index-calculator';
+import EmotionalWellbeingIndexCalculatorComponent_131 from './emotional-wellbeing-index-calculator';
+import EmpathyQuotientCalculatorComponent_132 from './empathy-quotient-calculator';
+import ErgonomicDeskSetupCalculatorComponent_133 from './ergonomic-desk-setup-calculator';
+import ExerciseCalorieBurnCalculatorComponent_134 from './exercise-calorie-burn-calculator';
+import ExerciseRecoveryScoreHrvSleepIntegrationComponent_135 from './exercise-recovery-score-hrv-sleep-integration';
+import FastingBenefitsProgressTrackerComponent_136 from './fasting-benefits-progress-tracker';
+import FatFreeMassIndexCalculatorComponent_137 from './fat-free-mass-index-calculator';
+import FatIntakeCalculatorComponent_138 from './fat-intake-calculator';
+import FatMassIndexCalculatorComponent_139 from './fat-mass-index-calculator';
+import FatOxidationPercentageCalculatorComponent_140 from './fat-oxidation-percentage-calculator';
+import FatQualityScoreSfaMufaPufaRatioCalculatorComponent_141 from './fat-quality-score-sfa-mufa-pufa-ratio-calculator';
+import FatToMuscleRecompositionTrackerComponent_142 from './fat-to-muscle-recomposition-tracker';
+import FertileCervicalMucusTrackingCalculatorComponent_143 from './fertile-cervical-mucus-tracking-calculator';
+import FertilityOvulationCalculatorComponent_144 from './fertility-ovulation-calculator';
+import FiberIntakeCalculatorComponent_145 from './fiber-intake-calculator';
+import FitnessAgeEstimatorVo2maxBmiComponent_146 from './fitness-age-estimator-vo2max-bmi';
+import FlexitarianScoreCalculatorComponent_147 from './flexitarian-score-calculator';
+import FlowStateReadinessCalculatorComponent_148 from './flow-state-readiness-calculator';
+import FluorideExposureCalculatorComponent_149 from './fluoride-exposure-calculator';
+import FoamRollingPressureEstimatorComponent_150 from './foam-rolling-pressure-estimator';
+import FocusRetentionTimeCalculatorComponent_151 from './focus-retention-time-calculator';
+import FodmapLoadCalculatorComponent_152 from './fodmap-load-calculator';
+import FollicularVsLutealPhaseNutritionPlannerCalculatorComponent_153 from './follicular-vs-luteal-phase-nutrition-planner-calculator';
+import FoodAllergyRiskScoreCalculatorComponent_154 from './food-allergy-risk-score-calculator';
+import FoodDiversityIndexCalculatorComponent_155 from './food-diversity-index-calculator';
+import FoodProteinDigestibilityCorrectedAminoAcidScorePdcaasCalculatorComponent_156 from './food-protein-digestibility-corrected-amino-acid-score-pdcaas-calculator';
+import FrameSizeCalculatorComponent_157 from './frame-size-calculator';
+import FunctionalMovementScoreCalculatorComponent_158 from './functional-movement-score-calculator';
+import GlutenFreeFiberReplacementPlannerComponent_159 from './gluten-free-fiber-replacement-planner';
+import GlutenIntakeTrackerCalculatorComponent_160 from './gluten-intake-tracker-calculator';
+import GlycemicIndexMealBlenderCalculatorComponent_161 from './glycemic-index-meal-blender-calculator';
+import GlycemicIndexMealOptimizerCalculatorComponent_162 from './glycemic-index-meal-optimizer-calculator';
+import GlycemicLoadCalculatorComponent_163 from './glycemic-load-calculator';
+import GlycogenReplenishmentEstimatorPostWorkoutComponent_164 from './glycogen-replenishment-estimator-post-workout';
+import GlycogenStorageCapacityCalculatorComponent_165 from './glycogen-storage-capacity-calculator';
+import GolfHandicapCalculatorComponent_166 from './golf-handicap-calculator';
+import GratitudeFrequencyTrackerComponent_167 from './gratitude-frequency-tracker';
+import GratitudeMoodCorrelationTrackerComponent_168 from './gratitude-mood-correlation-tracker';
+import GutMicrobiomeDiversityScoreCalculatorComponent_169 from './gut-microbiome-diversity-score-calculator';
+import HabitStreakTrackerCalculatorComponent_170 from './habit-streak-tracker-calculator';
+import HalfMarathonPaceCalculatorComponent_171 from './half-marathon-pace-calculator';
+import HappinessIndexCalculatorComponent_172 from './happiness-index-calculator';
+import HeartRateVariabilityHrvScoreCalculatorComponent_173 from './heart-rate-variability-hrv-score-calculator';
+import HeartRateZoneTrainingCalculatorComponent_174 from './heart-rate-zone-training-calculator';
+import HeartRhythmWellnessScoreComponent_175 from './heart-rhythm-wellness-score';
+import HeartWorkloadRatePressureProductCalculatorComponent_176 from './heart-workload-rate-pressure-product-calculator';
+import HemoglobinHbLevelEstimatorComponent_177 from './hemoglobin-hb-level-estimator';
+import HipToShoulderRatioCalculatorComponent_178 from './hip-to-shoulder-ratio-calculator';
+import HrvRecoveryOptimizationScoreCalculatorComponent_179 from './hrv-recovery-optimization-score-calculator';
+import HrvResilienceIndexComponent_180 from './hrv-resilience-index';
+import HrvToStressCorrelationEstimatorComponent_181 from './hrv-to-stress-correlation-estimator';
+import HydrationBalanceWithAlcoholIntakeCalculatorComponent_182 from './hydration-balance-with-alcohol-intake-calculator';
+import HydrationNeedsCalculatorComponent_183 from './hydration-needs-calculator';
+import HydrationRecoveryAfterWorkoutCalculatorComponent_184 from './hydration-recovery-after-workout-calculator';
+import HydrationSweatRateCalculatorComponent_185 from './hydration-sweat-rate-calculator';
+import HydrationTrackerByClimateWeightCalculatorComponent_186 from './hydration-tracker-by-climate-weight-calculator';
+import IceBathDurationTempCalculatorComponent_187 from './ice-bath-duration-temp-calculator';
+import IdealBodyWeightCalculatorComponent_188 from './ideal-body-weight-calculator';
+import IdealWaistSizeCalculatorComponent_189 from './ideal-waist-size-calculator';
+import ImmuneFunctionRecoveryRateCalculatorComponent_190 from './immune-function-recovery-rate-calculator';
+import ImmuneRecoveryTimePostIllnessCalculatorComponent_191 from './immune-recovery-time-post-illness-calculator';
+import InfantGrowthPercentileCalculatorComponent_192 from './infant-growth-percentile-calculator';
+import InjuryPreventionWarmupTimeCalculatorComponent_193 from './injury-prevention-warmup-time-calculator';
+import InjuryRecoveryTimelineCalculatorComponent_194 from './injury-recovery-timeline-calculator';
+import InsulinResponseEstimatorComponent_195 from './insulin-response-estimator';
+import InterMealSpacingImpactCalculatorComponent_196 from './inter-meal-spacing-impact-calculator';
+import IntermittentColdExposureCalorieBurnEstimatorComponent_197 from './intermittent-cold-exposure-calorie-burn-estimator';
+import IntermittentFasting52ScheduleCalculatorComponent_198 from './intermittent-fasting-5-2-schedule-calculator';
+import IntermittentFastingCalculatorComponent_199 from './intermittent-fasting-calculator';
+import IodineDeficiencyRiskCalculatorComponent_200 from './iodine-deficiency-risk-calculator';
+import IronDeficiencyAnemiaRiskCalculatorComponent_201 from './iron-deficiency-anemia-risk-calculator';
+import IronIntakeCalculatorComponent_202 from './iron-intake-calculator';
+import IronLossDuringPeriodsCalculatorComponent_203 from './iron-loss-during-periods-calculator';
+import JetLagRecoveryDurationCalculatorComponent_204 from './jet-lag-recovery-duration-calculator';
+import KetoMacroCalculatorComponent_205 from './keto-macro-calculator';
+import KetogenicNetCarbLimitCalculatorComponent_206 from './ketogenic-net-carb-limit-calculator';
+import KidneyFunctionCreatinineClearanceCrclCalculatorComponent_207 from './kidney-function-creatinine-clearance-crcl-calculator';
+import LactateAccumulationRateCalculatorComponent_208 from './lactate-accumulation-rate-calculator';
+import LactoseToleranceEstimatorComponent_209 from './lactose-tolerance-estimator';
+import LateNightEatingImpactScoreCalculatorComponent_210 from './late-night-eating-impact-score-calculator';
+import LeanBodyMassCalculatorComponent_211 from './lean-body-mass-calculator';
+import LifespanExpectancyCalculatorComponent_212 from './lifespan-expectancy-calculator';
+import LifespanExtensionStrategyScoreCalculatorComponent_213 from './lifespan-extension-strategy-score-calculator';
+import LimbCircumferenceRatioCalculatorComponent_214 from './limb-circumference-ratio-calculator';
+import LiverEnzymeAltAstRatioCalculatorComponent_215 from './liver-enzyme-alt-ast-ratio-calculator';
+import LonelinessRiskEstimatorComponent_216 from './loneliness-risk-estimator';
+import LonelinessRiskIndexComponent_217 from './loneliness-risk-index';
+import LongevityPredictorLifestyleCalculatorComponent_218 from './longevity-predictor-lifestyle-calculator';
+import LongevityScoreEstimatorComponent_219 from './longevity-score-estimator';
+import LowFodmapTolerancePlannerCalculatorComponent_220 from './low-fodmap-tolerance-planner-calculator';
+import LowSodiumDietPlannerCalculatorComponent_221 from './low-sodium-diet-planner-calculator';
+import MacroRatioCalculatorComponent_222 from './macro-ratio-calculator';
+import MagnesiumIntakeCalculatorComponent_223 from './magnesium-intake-calculator';
+import MaleFertilitySpermHealthIndexCalculatorComponent_224 from './male-fertility-sperm-health-index-calculator';
+import ManganeseRequirementCalculatorComponent_225 from './manganese-requirement-calculator';
+import MarathonFinishTimePredictorComponent_226 from './marathon-finish-time-predictor';
+import MaximalAerobicSpeedMasCalculatorComponent_227 from './maximal-aerobic-speed-mas-calculator';
+import MaximumLactateSteadyStateCalculatorComponent_228 from './maximum-lactate-steady-state-calculator';
+import MealCalorieBreakdownCalculatorComponent_229 from './meal-calorie-breakdown-calculator';
+import MealGlycemicLoadCalculatorComponent_230 from './meal-glycemic-load-calculator';
+import MealTimingAndInsulinResponseCalculatorComponent_231 from './meal-timing-and-insulin-response-calculator';
+import MeanCorpuscularVolumeMcvCalculatorComponent_232 from './mean-corpuscular-volume-mcv-calculator';
+import MeditationBreathingRateCalculatorComponent_233 from './meditation-breathing-rate-calculator';
+import MeditationBreathingRhythmHelperComponent_234 from './meditation-breathing-rhythm-helper';
+import MeditationStreakMindfulnessProgressTrackerComponent_235 from './meditation-streak-mindfulness-progress-tracker';
+import MeditationStressReductionImpactCalculatorComponent_236 from './meditation-stress-reduction-impact-calculator';
+import MeditationTimeProgressTrackerCalculatorComponent_237 from './meditation-time-progress-tracker-calculator';
+import MeditationTimeProgressTrackerComponent_238 from './meditation-time-progress-tracker';
+import MediterraneanDietComplianceCalculatorComponent_239 from './mediterranean-diet-compliance-calculator';
+import MediterraneanDietScoreCalculatorComponent_240 from './mediterranean-diet-score-calculator';
+import MemoryRetentionPercentageCalculatorComponent_241 from './memory-retention-percentage-calculator';
+import MenopauseSymptomIndexCalculatorComponent_242 from './menopause-symptom-index-calculator';
+import MenopauseSymptomIndexWellnessCalculatorComponent_243 from './menopause-symptom-index-wellness-calculator';
+import MenstrualCyclePhaseTrackerCalculatorComponent_244 from './menstrual-cycle-phase-tracker-calculator';
+import MenstrualPhaseWorkoutIntensityPlannerComponent_245 from './menstrual-phase-workout-intensity-planner';
+import MentalEnergyDrainPredictorComponent_246 from './mental-energy-drain-predictor';
+import MentalFatigueAccumulationTrackerComponent_247 from './mental-fatigue-accumulation-tracker';
+import MentalProcessingSpeedTestCalculatorComponent_248 from './mental-processing-speed-test-calculator';
+import MentalRecoveryFromStressEstimatorComponent_249 from './mental-recovery-from-stress-estimator';
+import MetabolicAdaptationRateCalculatorComponent_250 from './metabolic-adaptation-rate-calculator';
+import MetsCaloriesBurnedCalculatorComponent_251 from './mets-calories-burned-calculator';
+import MicrobreakFrequencyCalculatorForDeskJobsComponent_252 from './microbreak-frequency-calculator-for-desk-jobs';
+import MindfulMinutesConsistencyTrackerComponent_253 from './mindful-minutes-consistency-tracker';
+import MindfulMinutesTrackingCalculatorComponent_254 from './mindful-minutes-tracking-calculator';
+import MindfulnessConsistencyScoreCalculatorComponent_255 from './mindfulness-consistency-score-calculator';
+import MitochondrialHealthIndexComponent_256 from './mitochondrial-health-index';
+import MotivationMomentumCalculatorComponent_257 from './motivation-momentum-calculator';
+import MultitaskingEfficiencyCalculatorComponent_258 from './multitasking-efficiency-calculator';
+import MuscleFiberTypeRatioCalculatorComponent_259 from './muscle-fiber-type-ratio-calculator';
+import MuscleMassPercentageCalculatorComponent_260 from './muscle-mass-percentage-calculator';
+import MuscleRecoveryTimeByAgeCalculatorComponent_261 from './muscle-recovery-time-by-age-calculator';
+import MuscleSorenessRecoveryEstimatorComponent_262 from './muscle-soreness-recovery-estimator';
+import MuscularImbalanceRatioCalculatorComponent_263 from './muscular-imbalance-ratio-calculator';
+import MyoglobinOxygenStorageCalculatorComponent_264 from './myoglobin-oxygen-storage-calculator';
+import NadPlusOptimizationEstimatorComponent_265 from './nad-plus-optimization-estimator';
+import NapDurationEfficiencyCalculatorComponent_266 from './nap-duration-efficiency-calculator';
+import NeatCalculatorComponent_267 from './neat-calculator';
+import NeatImpactCalculatorComponent_268 from './neat-impact-calculator';
+import NetCarbsVsTotalCarbsCalculatorComponent_269 from './net-carbs-vs-total-carbs-calculator';
+import NutrientAbsorptionEfficiencyCalculatorComponent_270 from './nutrient-absorption-efficiency-calculator';
+import NutrientDensityToCalorieRatioCalculatorComponent_271 from './nutrient-density-to-calorie-ratio-calculator';
+import OccupationalSedentaryRiskScoreCalculatorComponent_272 from './occupational-sedentary-risk-score-calculator';
+import OccupationalSedentaryRiskScoreWellnessCalculatorComponent_273 from './occupational-sedentary-risk-score-wellness-calculator';
+import Omega6ToOmega3BalanceCalculatorComponent_274 from './omega-6-to-omega-3-balance-calculator';
+import Omega3DailyRequirementCalculatorComponent_275 from './omega3-daily-requirement-calculator';
+import OneRepMaxStrengthCalculatorComponent_276 from './one-rep-max-strength-calculator';
+import OptimalBedtimeByChronotypeCalculatorComponent_277 from './optimal-bedtime-by-chronotype-calculator';
+import OvulationWindowProbabilityAdvancedCalculatorComponent_278 from './ovulation-window-probability-advanced-calculator';
+import OxidativeStressIndexCalculatorComponent_279 from './oxidative-stress-index-calculator';
+import OxygenAdvantageEfficiencyScoreComponent_280 from './oxygen-advantage-efficiency-score';
+import OxygenDebtEpocCalculatorComponent_281 from './oxygen-debt-epoc-calculator';
+import OxygenPulseEfficiencyCalculatorComponent_282 from './oxygen-pulse-efficiency-calculator';
+import PaleoComplianceScoreCalculatorComponent_283 from './paleo-compliance-score-calculator';
+import PaleoDietNutrientCoverageCalculatorComponent_284 from './paleo-diet-nutrient-coverage-calculator';
+import PdcaasCalculatorComponent_285 from './pdcaas-calculator';
+import PerimenopauseTransitionStageEstimatorComponent_286 from './perimenopause-transition-stage-estimator';
+import PeripheralResistanceIndexCalculatorComponent_287 from './peripheral-resistance-index-calculator';
+import PhoneDependencyIndexComponent_288 from './phone-dependency-index';
+import PhosphorusIntakeCalculatorComponent_289 from './phosphorus-intake-calculator';
+import PhysicalTherapyExerciseLoadCalculatorComponent_290 from './physical-therapy-exercise-load-calculator';
+import PhysicalTherapySessionIntensityCalculatorComponent_291 from './physical-therapy-session-intensity-calculator';
+import PlantBasedOmega3ConversionCalculatorComponent_292 from './plant-based-omega-3-conversion-calculator';
+import PlantBasedProteinGapCalculatorComponent_293 from './plant-based-protein-gap-calculator';
+import PlateletCountRiskAnalyzerComponent_294 from './platelet-count-risk-analyzer';
+import PmsSymptomScoreCalculatorComponent_295 from './pms-symptom-score-calculator';
+import PmsSymptomScoreWellnessCalculatorComponent_296 from './pms-symptom-score-wellness-calculator';
+import PonderalIndexCalculatorComponent_297 from './ponderal-index-calculator';
+import PositiveEmotionRatioCalculatorComponent_298 from './positive-emotion-ratio-calculator';
+import PositiveVsNegativeThoughtRatioCalculatorComponent_299 from './positive-vs-negative-thought-ratio-calculator';
+import PostExerciseOxygenConsumptionCalculatorComponent_300 from './post-exercise-oxygen-consumption-calculator';
+import PostInjuryMobilityProgressCalculatorComponent_301 from './post-injury-mobility-progress-calculator';
+import PostSurgeryCalorieNeedsCalculatorComponent_302 from './post-surgery-calorie-needs-calculator';
+import PostpartumCalorieNeedsCalculatorComponent_303 from './postpartum-calorie-needs-calculator';
+import PostpartumHormonalRecoveryCalculatorComponent_304 from './postpartum-hormonal-recovery-calculator';
+import PostureCorrectionProgressCalculatorComponent_305 from './posture-correction-progress-calculator';
+import PostureScoreCalculatorComponent_306 from './posture-score-calculator';
+import PowerToHeartRateEfficiencyCalculatorComponent_307 from './power-to-heart-rate-efficiency-calculator';
+import PowerToWeightPerformanceIndexCalculatorComponent_308 from './power-to-weight-performance-index-calculator';
+import PrebioticFiberTargetCalculatorComponent_309 from './prebiotic-fiber-target-calculator';
+import PregnancyWeightGainCalculatorComponent_310 from './pregnancy-weight-gain-calculator';
+import PrenatalVitaminDosageCalculatorComponent_311 from './prenatal-vitamin-dosage-calculator';
+import PrenatalVitaminDosageWellnessCalculatorComponent_312 from './prenatal-vitamin-dosage-wellness-calculator';
+import ProbioticDailyDoseEstimatorComponent_313 from './probiotic-daily-dose-estimator';
+import ProgressiveOverloadCalculatorComponent_314 from './progressive-overload-calculator';
+import ProteinDigestibilityScoreDiaasCalculatorComponent_315 from './protein-digestibility-score-diaas-calculator';
+import ProteinIntakeCalculatorComponent_316 from './protein-intake-calculator';
+import PulsePressureAnalyzerComponent_317 from './pulse-pressure-analyzer';
+import RangeOfMotionProgressCalculatorComponent_318 from './range-of-motion-progress-calculator';
+import ReactionTimeBenchmarkCalculatorComponent_319 from './reaction-time-benchmark-calculator';
+import ReactionTimeImprovementTrackerComponent_320 from './reaction-time-improvement-tracker';
+import RecoveryHeartRateCalculatorComponent_321 from './recovery-heart-rate-calculator';
+import RecoverySleepRequirementAfterSleepDebtCalculatorComponent_322 from './recovery-sleep-requirement-after-sleep-debt-calculator';
+import RedBloodCellCountEffectOnVo2MaxCalculatorComponent_323 from './red-blood-cell-count-effect-on-vo2-max-calculator';
+import RedBloodCellCountToOxygenCapacityCalculatorComponent_324 from './red-blood-cell-count-to-oxygen-capacity-calculator';
+import RedLightTherapyDoseCalculatorComponent_325 from './red-light-therapy-dose-calculator';
+import RelationshipSatisfactionScoreComponent_326 from './relationship-satisfaction-score';
+import RelativeFatMassCalculatorComponent_327 from './relative-fat-mass-calculator';
+import RemSleepPercentageCalculatorComponent_328 from './rem-sleep-percentage-calculator';
+import ResilienceScoreCalculatorComponent_329 from './resilience-score-calculator';
+import RespiratoryQuotientCalculatorComponent_330 from './respiratory-quotient-calculator';
+import RestTimeBetweenSetsCalculatorComponent_331 from './rest-time-between-sets-calculator';
+import RestVsActiveEnergyBurnCalculatorComponent_332 from './rest-vs-active-energy-burn-calculator';
+import RestingMetabolicRateCalculatorComponent_333 from './resting-metabolic-rate-calculator';
+import RestingRecoveryDayEstimatorComponent_334 from './resting-recovery-day-estimator';
+import ReverseDietingCalorieIncreasePlannerComponent_335 from './reverse-dieting-calorie-increase-planner';
+import RowingDragFactorCalculatorComponent_336 from './rowing-drag-factor-calculator';
+import RowingSplitCalculatorComponent_337 from './rowing-split-calculator';
+import RunningEconomyCalculatorComponent_338 from './running-economy-calculator';
+import RunningPaceCalculatorComponent_339 from './running-pace-calculator';
+import SatietyIndexCalculatorComponent_340 from './satiety-index-calculator';
+import SatietyVsEnergyDensityGraphCalculatorComponent_341 from './satiety-vs-energy-density-graph-calculator';
+import SaunaDetoxEffectivenessScoreComponent_342 from './sauna-detox-effectiveness-score';
+import SaunaSessionDetoxScoreCalculatorComponent_343 from './sauna-session-detox-score-calculator';
+import ScreenTimeVsSleepImpactCalculatorComponent_344 from './screen-time-vs-sleep-impact-calculator';
+import ScreenTimeVsSleepImpactWellnessCalculatorComponent_345 from './screen-time-vs-sleep-impact-wellness-calculator';
+import ScreenToSleepTimeImpactEstimatorComponent_346 from './screen-to-sleep-time-impact-estimator';
+import SeasonalEnergyExpenditureCalculatorComponent_347 from './seasonal-energy-expenditure-calculator';
+import SeleniumIntakeCalculatorComponent_348 from './selenium-intake-calculator';
+import SelfEsteemGrowthTrackerComponent_349 from './self-esteem-growth-tracker';
+import SleepBalanceCheckInComponent_350 from './sleep-balance-check-in';
+import SleepConsistencyScoreCalculatorComponent_351 from './sleep-consistency-score-calculator';
+import SleepCycleAlarmTimeOptimizerComponent_352 from './sleep-cycle-alarm-time-optimizer';
+import SleepDebtCalculatorComponent_353 from './sleep-debt-calculator';
+import SleepEfficiencyCalculatorComponent_354 from './sleep-efficiency-calculator';
+import SleepOptimizationRoutineScoreComponent_355 from './sleep-optimization-routine-score';
+import SleepPhaseDelaySyndromeDspdRiskCalculatorComponent_356 from './sleep-phase-delay-syndrome-dspd-risk-calculator';
+import SleepPositionPressureCalculatorComponent_357 from './sleep-position-pressure-calculator';
+import SleepQualityVsLongevityCorrelationCalculatorComponent_358 from './sleep-quality-vs-longevity-correlation-calculator';
+import SleepQualityVsProductivityCorrelationCalculatorComponent_359 from './sleep-quality-vs-productivity-correlation-calculator';
+import SleepQualityVsScreenExposureAnalyzerComponent_360 from './sleep-quality-vs-screen-exposure-analyzer';
+import SleepRestrictionAdaptationCalculatorComponent_361 from './sleep-restriction-adaptation-calculator';
+import SleepTimeInBedWellnessIndexComponent_362 from './sleep-time-in-bed-wellness-index';
+import SoccerVo2RequirementCalculatorComponent_363 from './soccer-vo2-requirement-calculator';
+import SocialConnectionScoreCalculatorComponent_364 from './social-connection-score-calculator';
+import SodiumPotassiumRatioCalculatorComponent_365 from './sodium-potassium-ratio-calculator';
+import SodiumToPotassiumRatioCalculatorComponent_366 from './sodium-to-potassium-ratio-calculator';
+import SomatotypeCalculatorComponent_367 from './somatotype-calculator';
+import SpineLoadL4L5PressureCalculatorComponent_368 from './spine-load-l4-l5-pressure-calculator';
+import StandingVsSittingCalorieBurnCalculatorComponent_369 from './standing-vs-sitting-calorie-burn-calculator';
+import StepToCalorieConverterComponent_370 from './step-to-calorie-converter';
+import StepToHeartRateEfficiencyCalculatorComponent_371 from './step-to-heart-rate-efficiency-calculator';
+import StrengthToWeightRatioCalculatorComponent_372 from './strength-to-weight-ratio-calculator';
+import StressHormoneBalanceCalculatorComponent_373 from './stress-hormone-balance-calculator';
+import StressLevelSelfAssessmentCalculatorComponent_374 from './stress-level-self-assessment-calculator';
+import StrokeIndexCardiacFunctionCalculatorComponent_375 from './stroke-index-cardiac-function-calculator';
+import StrokeVolumeCalculatorComponent_376 from './stroke-volume-calculator';
+import SugarIntakeCalculatorComponent_377 from './sugar-intake-calculator';
+import SupplementStackRoiCalculatorComponent_378 from './supplement-stack-roi-calculator';
+import SweatRateCalculatorAthleticUseComponent_379 from './sweat-rate-calculator-athletic-use';
+import SweatSodiumConcentrationCalculatorComponent_380 from './sweat-sodium-concentration-calculator';
+import SwimStrokeRateCalculatorComponent_381 from './swim-stroke-rate-calculator';
+import SwimmingLapTimeCalculatorComponent_382 from './swimming-lap-time-calculator';
+import SwimmingSwolfScoreCalculatorComponent_383 from './swimming-swolf-score-calculator';
+import TargetHeartRateCalculatorComponent_384 from './target-heart-rate-calculator';
+import TennisServeSpeedCalculatorComponent_385 from './tennis-serve-speed-calculator';
+import TestosteroneToCortisolRatioCalculatorComponent_386 from './testosterone-to-cortisol-ratio-calculator';
+import ThermicEffectOfFoodCalculatorComponent_387 from './thermic-effect-of-food-calculator';
+import ThyroidFunctionBasalEnergyCalculatorComponent_388 from './thyroid-function-basal-energy-calculator';
+import ThyroidFunctionTshT3T4BalanceCalculatorComponent_389 from './thyroid-function-tsh-t3-t4-balance-calculator';
+import ToddlerCalorieRequirementCalculatorComponent_390 from './toddler-calorie-requirement-calculator';
+import TotalEnergyExpenditureCalculatorComponent_391 from './total-energy-expenditure-calculator';
+import TrainingFatigueIndexCalculatorComponent_392 from './training-fatigue-index-calculator';
+import TrainingImpulseTrimpCalculatorComponent_393 from './training-impulse-trimp-calculator';
+import TrainingStressScoreCalculatorComponent_394 from './training-stress-score-calculator';
+import TrainingStressScoreTssCalculatorComponent_395 from './training-stress-score-tss-calculator';
+import TrainingVolumeCalculatorComponent_396 from './training-volume-calculator';
+import TriathlonSplitTimeCalculatorComponent_397 from './triathlon-split-time-calculator';
+import UvExposureRiskCalculatorComponent_398 from './uv-exposure-risk-calculator';
+import VeganNutrientCompletenessCalculatorComponent_399 from './vegan-nutrient-completeness-calculator';
+import VeganProteinRequirementCalculatorComponent_400 from './vegan-protein-requirement-calculator';
+import VitaminARetinolEquivalentCalculatorComponent_401 from './vitamin-a-retinol-equivalent-calculator';
+import VitaminB12DailyRequirementCalculatorComponent_402 from './vitamin-b12-daily-requirement-calculator';
+import VitaminCImmunityBoostScoreCalculatorComponent_403 from './vitamin-c-immunity-boost-score-calculator';
+import VitaminDDeficiencyRiskScoreCalculatorComponent_404 from './vitamin-d-deficiency-risk-score-calculator';
+import VitaminDSunExposureCalculatorComponent_405 from './vitamin-d-sun-exposure-calculator';
+import VitaminDSynthesisFromSunlightEstimatorComponent_406 from './vitamin-d-synthesis-from-sunlight-estimator';
+import VitaminDeficiencyRiskEstimatorComponent_407 from './vitamin-deficiency-risk-estimator';
+import VitaminEAlphaTocopherolCalculatorComponent_408 from './vitamin-e-alpha-tocopherol-calculator';
+import VitaminKDailyNeedsEstimatorComponent_409 from './vitamin-k-daily-needs-estimator';
+import VitaminMineralRdaTrackerCalculatorComponent_410 from './vitamin-mineral-rda-tracker-calculator';
+import Vo2KineticsCalculatorComponent_411 from './vo2-kinetics-calculator';
+import Vo2MaxCalculatorComponent_412 from './vo2-max-calculator';
+import Vo2MaxEstimationCalculatorComponent_413 from './vo2-max-estimation-calculator';
+import Vo2PerKgLeanMassCalculatorComponent_414 from './vo2-per-kg-lean-mass-calculator';
+import Vo2RecoveryHalfTimeCalculatorComponent_415 from './vo2-recovery-half-time-calculator';
+import Vo2ReserveCalculatorComponent_416 from './vo2-reserve-calculator';
+import WaistToHeightRatioCalculatorComponent_417 from './waist-to-height-ratio-calculator';
+import WaistToHipRatioCalculatorComponent_418 from './waist-to-hip-ratio-calculator';
+import WaterFastingElectrolyteNeedsCalculatorComponent_419 from './water-fasting-electrolyte-needs-calculator';
+import WaterFootprintOfFoodCalculatorComponent_420 from './water-footprint-of-food-calculator';
+import WholeFoodVsProcessedCalorieRatioCalculatorComponent_421 from './whole-food-vs-processed-calorie-ratio-calculator';
+import WorkBurnoutRecoveryTimeCalculatorComponent_422 from './work-burnout-recovery-time-calculator';
+import WorkLifeBalanceTimeAllocationCalculatorComponent_423 from './work-life-balance-time-allocation-calculator';
+import WorkStressFatigueIndexComponent_424 from './work-stress-fatigue-index';
+import WorkdayBalanceOverloadTendencyScoreComponent_425 from './workday-balance-overload-tendency-score';
+import WorkingMemoryCapacityEstimatorComponent_426 from './working-memory-capacity-estimator';
+import WorkplacePostureRiskCalculatorComponent_427 from './workplace-posture-risk-calculator';
+import ZincRequirementCalculatorComponent_428 from './zinc-requirement-calculator';
 
-// Static map of calculators to avoid dynamic import context creation
-const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  'acute-training-load-calculator': lazy(() => import('./acute-training-load-calculator')),
-  'albumin-to-creatinine-ratio-calculator': lazy(() => import('./albumin-to-creatinine-ratio-calculator')),
-  'alcohol-calorie-impact-calculator': lazy(() => import('./alcohol-calorie-impact-calculator')),
-  'alcohol-metabolism-time-calculator': lazy(() => import('./alcohol-metabolism-time-calculator')),
-  'altitude-acclimatization-oxygen-need-calculator': lazy(() => import('./altitude-acclimatization-oxygen-need-calculator')),
-  'anaerobic-capacity-calculator': lazy(() => import('./anaerobic-capacity-calculator')),
-  'anaerobic-power-output-calculator': lazy(() => import('./anaerobic-power-output-calculator')),
-  'anaerobic-threshold-calculator': lazy(() => import('./anaerobic-threshold-calculator')),
-  'android-vs-gynoid-fat-ratio-calculator': lazy(() => import('./android-vs-gynoid-fat-ratio-calculator')),
-  'anti-aging-nutrition-score-calculator': lazy(() => import('./anti-aging-nutrition-score-calculator')),
-  'antioxidant-diversity-index-calculator': lazy(() => import('./antioxidant-diversity-index-calculator')),
-  'arterial-elasticity-index-calculator': lazy(() => import('./arterial-elasticity-index-calculator')),
-  'arterial-stiffness-index-calculator': lazy(() => import('./arterial-stiffness-index-calculator')),
-  'attention-span-index-calculator': lazy(() => import('./attention-span-index-calculator')),
-  'baby-sleep-needs-calculator': lazy(() => import('./baby-sleep-needs-calculator')),
-  'baby-sleep-needs-wellness-calculator': lazy(() => import('./baby-sleep-needs-wellness-calculator')),
-  'balanced-meal-score-calculator': lazy(() => import('./balanced-meal-score-calculator')),
-  'baseball-pitch-speed-calculator': lazy(() => import('./baseball-pitch-speed-calculator')),
-  'basketball-shooting-percentage-calculator': lazy(() => import('./basketball-shooting-percentage-calculator')),
-  'biological-stress-load-allostatic-load-calculator': lazy(() => import('./biological-stress-load-allostatic-load-calculator')),
-  'blood-flow-velocity-estimator': lazy(() => import('./blood-flow-velocity-estimator')),
-  'blood-lactate-clearance-rate-calculator': lazy(() => import('./blood-lactate-clearance-rate-calculator')),
-  'blood-oxygen-saturation-estimator': lazy(() => import('./blood-oxygen-saturation-estimator')),
-  'blood-sugar-spike-estimator-by-meal-type': lazy(() => import('./blood-sugar-spike-estimator-by-meal-type')),
-  'blood-sugar-to-hba1c-converter': lazy(() => import('./blood-sugar-to-hba1c-converter')),
-  'blood-urea-nitrogen-bun-ratio-calculator': lazy(() => import('./blood-urea-nitrogen-bun-ratio-calculator')),
-  'blood-volume-estimator': lazy(() => import('./blood-volume-estimator')),
-  'blue-light-exposure-calculator': lazy(() => import('./blue-light-exposure-calculator')),
-  'blue-light-exposure-wellness-calculator': lazy(() => import('./blue-light-exposure-wellness-calculator')),
-  'blue-zone-lifestyle-score-calculator': lazy(() => import('./blue-zone-lifestyle-score-calculator')),
-  'bmi-calculator': lazy(() => import('./bmi-calculator')),
-  'bmr-adjustment-for-age-muscle-loss-calculator': lazy(() => import('./bmr-adjustment-for-age-muscle-loss-calculator')),
-  'bmr-calculator': lazy(() => import('./bmr-calculator')),
-  'body-adiposity-index-calculator': lazy(() => import('./body-adiposity-index-calculator')),
-  'body-fat-percentage-calculator': lazy(() => import('./body-fat-percentage-calculator')),
-  'body-surface-area-calculator': lazy(() => import('./body-surface-area-calculator')),
-  'body-surface-area-du-bois-calculator': lazy(() => import('./body-surface-area-du-bois-calculator')),
-  'body-temperature-regulation-estimator': lazy(() => import('./body-temperature-regulation-estimator')),
-  'bone-density-t-score-calculator': lazy(() => import('./bone-density-t-score-calculator')),
-  'bone-strength-lifestyle-insight-tool': lazy(() => import('./bone-strength-lifestyle-insight-tool')),
-  'brain-fog-severity-score-calculator': lazy(() => import('./brain-fog-severity-score-calculator')),
-  'breakfast-skipping-effect-on-metabolism-calculator': lazy(() => import('./breakfast-skipping-effect-on-metabolism-calculator')),
-  'breast-milk-production-estimate-calculator': lazy(() => import('./breast-milk-production-estimate-calculator')),
-  'breastfeeding-calorie-needs-calculator': lazy(() => import('./breastfeeding-calorie-needs-calculator')),
-  'breath-hold-co2-tolerance-calculator': lazy(() => import('./breath-hold-co2-tolerance-calculator')),
-  'breathing-pattern-efficiency-calculator': lazy(() => import('./breathing-pattern-efficiency-calculator')),
-  'breathing-rate-efficiency-calculator': lazy(() => import('./breathing-rate-efficiency-calculator')),
-  'brown-fat-activation-estimator': lazy(() => import('./brown-fat-activation-estimator')),
-  'bulletproof-coffee-calorie-impact-calculator': lazy(() => import('./bulletproof-coffee-calorie-impact-calculator')),
-  'burnout-risk-score-calculator': lazy(() => import('./burnout-risk-score-calculator')),
-  'caffeine-cutoff-sleep-impact-calculator': lazy(() => import('./caffeine-cutoff-sleep-impact-calculator')),
-  'caffeine-cutoff-sleep-impact-wellness-calculator': lazy(() => import('./caffeine-cutoff-sleep-impact-wellness-calculator')),
-  'caffeine-half-life-calculator-time-based': lazy(() => import('./caffeine-half-life-calculator-time-based')),
-  'caffeine-intake-calculator': lazy(() => import('./caffeine-intake-calculator')),
-  'calcium-correction-for-albumin-calculator': lazy(() => import('./calcium-correction-for-albumin-calculator')),
-  'calcium-intake-calculator': lazy(() => import('./calcium-intake-calculator')),
-  'caloric-cost-of-cold-exposure-calculator': lazy(() => import('./caloric-cost-of-cold-exposure-calculator')),
-  'caloric-density-vs-volume-calculator': lazy(() => import('./caloric-density-vs-volume-calculator')),
-  'calorie-deficit-calculator': lazy(() => import('./calorie-deficit-calculator')),
-  'calorie-surplus-calculator': lazy(() => import('./calorie-surplus-calculator')),
-  'calories-burned-cycling-calculator': lazy(() => import('./calories-burned-cycling-calculator')),
-  'calories-burned-running-calculator': lazy(() => import('./calories-burned-running-calculator')),
-  'calories-burned-swimming-calculator': lazy(() => import('./calories-burned-swimming-calculator')),
-  'calories-burned-walking-calculator': lazy(() => import('./calories-burned-walking-calculator')),
-  'capillary-density-estimator': lazy(() => import('./capillary-density-estimator')),
-  'carb-cycling-macro-calculator': lazy(() => import('./carb-cycling-macro-calculator')),
-  'carb-refeed-timing-calculator': lazy(() => import('./carb-refeed-timing-calculator')),
-  'carb-to-fiber-ratio-calculator': lazy(() => import('./carb-to-fiber-ratio-calculator')),
-  'carbohydrate-intake-calculator': lazy(() => import('./carbohydrate-intake-calculator')),
-  'cardiac-output-calculator': lazy(() => import('./cardiac-output-calculator')),
-  'cardiac-output-q-calculator': lazy(() => import('./cardiac-output-q-calculator')),
-  'cardiometabolic-age-calculator': lazy(() => import('./cardiometabolic-age-calculator')),
-  'carnivore-micronutrient-gap-calculator': lazy(() => import('./carnivore-micronutrient-gap-calculator')),
-  'cellular-hydration-score-calculator': lazy(() => import('./cellular-hydration-score-calculator')),
-  'central-nervous-system-cns-fatigue-recovery-calculator': lazy(() => import('./central-nervous-system-cns-fatigue-recovery-calculator')),
-  'cheat-day-impact-on-weekly-deficit-calculator': lazy(() => import('./cheat-day-impact-on-weekly-deficit-calculator')),
-  'cheat-meal-impact-on-weekly-calories-calculator': lazy(() => import('./cheat-meal-impact-on-weekly-calories-calculator')),
-  'child-bmi-percentile-calculator': lazy(() => import('./child-bmi-percentile-calculator')),
-  'chromium-daily-need-estimator': lazy(() => import('./chromium-daily-need-estimator')),
-  'chronic-training-load-calculator': lazy(() => import('./chronic-training-load-calculator')),
-  'circadian-rhythm-alignment-score': lazy(() => import('./circadian-rhythm-alignment-score')),
-  'circadian-rhythm-disruption-risk-calculator': lazy(() => import('./circadian-rhythm-disruption-risk-calculator')),
-  'climbing-grade-difficulty-to-calories-burned-calculator': lazy(() => import('./climbing-grade-difficulty-to-calories-burned-calculator')),
-  'cognitive-age-estimator': lazy(() => import('./cognitive-age-estimator')),
-  'cognitive-focus-efficiency-calculator': lazy(() => import('./cognitive-focus-efficiency-calculator')),
-  'cognitive-focus-efficiency-wellness-calculator': lazy(() => import('./cognitive-focus-efficiency-wellness-calculator')),
-  'cognitive-load-balance-calculator': lazy(() => import('./cognitive-load-balance-calculator')),
-  'cognitive-load-estimator': lazy(() => import('./cognitive-load-estimator')),
-  'cold-exposure-duration-estimator': lazy(() => import('./cold-exposure-duration-estimator')),
-  'complete-amino-acid-profile-calculator': lazy(() => import('./complete-amino-acid-profile-calculator')),
-  'conception-probability-per-cycle-calculator': lazy(() => import('./conception-probability-per-cycle-calculator')),
-  'confidence-curve-estimator': lazy(() => import('./confidence-curve-estimator')),
-  'copper-intake-calculator': lazy(() => import('./copper-intake-calculator')),
-  'core-body-temperature-rise-calculator': lazy(() => import('./core-body-temperature-rise-calculator')),
-  'core-strength-balance-calculator': lazy(() => import('./core-strength-balance-calculator')),
-  'cortisol-stress-response-estimator': lazy(() => import('./cortisol-stress-response-estimator')),
-  'creatine-loading-maintenance-dose-calculator': lazy(() => import('./creatine-loading-maintenance-dose-calculator')),
-  'critical-power-calculator': lazy(() => import('./critical-power-calculator')),
-  'critical-swim-speed-calculator': lazy(() => import('./critical-swim-speed-calculator')),
-  'cycling-cadence-optimizer-calculator': lazy(() => import('./cycling-cadence-optimizer-calculator')),
-  'cycling-ftp-calculator': lazy(() => import('./cycling-ftp-calculator')),
-  'cycling-power-output-calculator': lazy(() => import('./cycling-power-output-calculator')),
-  'daily-activity-points-calculator': lazy(() => import('./daily-activity-points-calculator')),
-  'daily-antioxidant-orac-goal-calculator': lazy(() => import('./daily-antioxidant-orac-goal-calculator')),
-  'daily-calorie-needs-calculator': lazy(() => import('./daily-calorie-needs-calculator')),
-  'daily-energy-mood-synchronization-tracker': lazy(() => import('./daily-energy-mood-synchronization-tracker')),
-  'daily-mental-energy-budget-calculator': lazy(() => import('./daily-mental-energy-budget-calculator')),
-  'daily-micronutrient-coverage-calculator': lazy(() => import('./daily-micronutrient-coverage-calculator')),
-  'daily-screen-exposure-stress-index-calculator': lazy(() => import('./daily-screen-exposure-stress-index-calculator')),
-  'daily-screen-exposure-stress-index-wellness-calculator': lazy(() => import('./daily-screen-exposure-stress-index-wellness-calculator')),
-  'daily-screen-time-impact-calculator': lazy(() => import('./daily-screen-time-impact-calculator')),
-  'daily-stress-tendency-check-in': lazy(() => import('./daily-stress-tendency-check-in')),
-  'daily-testosterone-boosting-habits-score-calculator': lazy(() => import('./daily-testosterone-boosting-habits-score-calculator')),
-  'dash-diet-compliance-tracker': lazy(() => import('./dash-diet-compliance-tracker')),
-  'dash-diet-sodium-intake-calculator': lazy(() => import('./dash-diet-sodium-intake-calculator')),
-  'decision-fatigue-index-calculator': lazy(() => import('./decision-fatigue-index-calculator')),
-  'deep-sleep-requirement-estimator': lazy(() => import('./deep-sleep-requirement-estimator')),
-  'detox-juice-nutrient-calculator': lazy(() => import('./detox-juice-nutrient-calculator')),
-  'detox-pathway-efficiency-calculator': lazy(() => import('./detox-pathway-efficiency-calculator')),
-  'diet-break-refeed-day-planner-calculator': lazy(() => import('./diet-break-refeed-day-planner-calculator')),
-  'diet-sustainability-score-calculator': lazy(() => import('./diet-sustainability-score-calculator')),
-  'digital-burnout-detector': lazy(() => import('./digital-burnout-detector')),
-  'digital-eye-strain-severity-index': lazy(() => import('./digital-eye-strain-severity-index')),
-  'doms-recovery-time-calculator': lazy(() => import('./doms-recovery-time-calculator')),
-  'dopamine-reward-sensitivity-index-calculator': lazy(() => import('./dopamine-reward-sensitivity-index-calculator')),
-  'due-date-calculator': lazy(() => import('./due-date-calculator')),
-  'eating-window-duration-calculator': lazy(() => import('./eating-window-duration-calculator')),
-  'electrolyte-balance-restoration-calculator': lazy(() => import('./electrolyte-balance-restoration-calculator')),
-  'electrolyte-replacement-calculator': lazy(() => import('./electrolyte-replacement-calculator')),
-  'emotional-burnout-recovery-calculator': lazy(() => import('./emotional-burnout-recovery-calculator')),
-  'emotional-stability-index-calculator': lazy(() => import('./emotional-stability-index-calculator')),
-  'emotional-wellbeing-index-calculator': lazy(() => import('./emotional-wellbeing-index-calculator')),
-  'empathy-quotient-calculator': lazy(() => import('./empathy-quotient-calculator')),
-  'ergonomic-desk-setup-calculator': lazy(() => import('./ergonomic-desk-setup-calculator')),
-  'exercise-calorie-burn-calculator': lazy(() => import('./exercise-calorie-burn-calculator')),
-  'exercise-recovery-score-hrv-sleep-integration': lazy(() => import('./exercise-recovery-score-hrv-sleep-integration')),
-  'fasting-benefits-progress-tracker': lazy(() => import('./fasting-benefits-progress-tracker')),
-  'fat-free-mass-index-calculator': lazy(() => import('./fat-free-mass-index-calculator')),
-  'fat-intake-calculator': lazy(() => import('./fat-intake-calculator')),
-  'fat-mass-index-calculator': lazy(() => import('./fat-mass-index-calculator')),
-  'fat-oxidation-percentage-calculator': lazy(() => import('./fat-oxidation-percentage-calculator')),
-  'fat-quality-score-sfa-mufa-pufa-ratio-calculator': lazy(() => import('./fat-quality-score-sfa-mufa-pufa-ratio-calculator')),
-  'fat-to-muscle-recomposition-tracker': lazy(() => import('./fat-to-muscle-recomposition-tracker')),
-  'fertile-cervical-mucus-tracking-calculator': lazy(() => import('./fertile-cervical-mucus-tracking-calculator')),
-  'fertility-ovulation-calculator': lazy(() => import('./fertility-ovulation-calculator')),
-  'fiber-intake-calculator': lazy(() => import('./fiber-intake-calculator')),
-  'fitness-age-estimator-vo2max-bmi': lazy(() => import('./fitness-age-estimator-vo2max-bmi')),
-  'flexitarian-score-calculator': lazy(() => import('./flexitarian-score-calculator')),
-  'flow-state-readiness-calculator': lazy(() => import('./flow-state-readiness-calculator')),
-  'fluoride-exposure-calculator': lazy(() => import('./fluoride-exposure-calculator')),
-  'foam-rolling-pressure-estimator': lazy(() => import('./foam-rolling-pressure-estimator')),
-  'focus-retention-time-calculator': lazy(() => import('./focus-retention-time-calculator')),
-  'fodmap-load-calculator': lazy(() => import('./fodmap-load-calculator')),
-  'follicular-vs-luteal-phase-nutrition-planner-calculator': lazy(() => import('./follicular-vs-luteal-phase-nutrition-planner-calculator')),
-  'food-allergy-risk-score-calculator': lazy(() => import('./food-allergy-risk-score-calculator')),
-  'food-diversity-index-calculator': lazy(() => import('./food-diversity-index-calculator')),
-  'food-protein-digestibility-corrected-amino-acid-score-pdcaas-calculator': lazy(() => import('./food-protein-digestibility-corrected-amino-acid-score-pdcaas-calculator')),
-  'frame-size-calculator': lazy(() => import('./frame-size-calculator')),
-  'functional-movement-score-calculator': lazy(() => import('./functional-movement-score-calculator')),
-  'gluten-free-fiber-replacement-planner': lazy(() => import('./gluten-free-fiber-replacement-planner')),
-  'gluten-intake-tracker-calculator': lazy(() => import('./gluten-intake-tracker-calculator')),
-  'glycemic-index-meal-blender-calculator': lazy(() => import('./glycemic-index-meal-blender-calculator')),
-  'glycemic-index-meal-optimizer-calculator': lazy(() => import('./glycemic-index-meal-optimizer-calculator')),
-  'glycemic-load-calculator': lazy(() => import('./glycemic-load-calculator')),
-  'glycogen-replenishment-estimator-post-workout': lazy(() => import('./glycogen-replenishment-estimator-post-workout')),
-  'glycogen-storage-capacity-calculator': lazy(() => import('./glycogen-storage-capacity-calculator')),
-  'golf-handicap-calculator': lazy(() => import('./golf-handicap-calculator')),
-  'gratitude-frequency-tracker': lazy(() => import('./gratitude-frequency-tracker')),
-  'gratitude-mood-correlation-tracker': lazy(() => import('./gratitude-mood-correlation-tracker')),
-  'gut-microbiome-diversity-score-calculator': lazy(() => import('./gut-microbiome-diversity-score-calculator')),
-  'habit-streak-tracker-calculator': lazy(() => import('./habit-streak-tracker-calculator')),
-  'half-marathon-pace-calculator': lazy(() => import('./half-marathon-pace-calculator')),
-  'happiness-index-calculator': lazy(() => import('./happiness-index-calculator')),
-  'heart-rate-variability-hrv-score-calculator': lazy(() => import('./heart-rate-variability-hrv-score-calculator')),
-  'heart-rate-zone-training-calculator': lazy(() => import('./heart-rate-zone-training-calculator')),
-  'heart-rhythm-wellness-score': lazy(() => import('./heart-rhythm-wellness-score')),
-  'heart-workload-rate-pressure-product-calculator': lazy(() => import('./heart-workload-rate-pressure-product-calculator')),
-  'hemoglobin-hb-level-estimator': lazy(() => import('./hemoglobin-hb-level-estimator')),
-  'hip-to-shoulder-ratio-calculator': lazy(() => import('./hip-to-shoulder-ratio-calculator')),
-  'hrv-recovery-optimization-score-calculator': lazy(() => import('./hrv-recovery-optimization-score-calculator')),
-  'hrv-resilience-index': lazy(() => import('./hrv-resilience-index')),
-  'hrv-to-stress-correlation-estimator': lazy(() => import('./hrv-to-stress-correlation-estimator')),
-  'hydration-balance-with-alcohol-intake-calculator': lazy(() => import('./hydration-balance-with-alcohol-intake-calculator')),
-  'hydration-needs-calculator': lazy(() => import('./hydration-needs-calculator')),
-  'hydration-recovery-after-workout-calculator': lazy(() => import('./hydration-recovery-after-workout-calculator')),
-  'hydration-sweat-rate-calculator': lazy(() => import('./hydration-sweat-rate-calculator')),
-  'hydration-tracker-by-climate-weight-calculator': lazy(() => import('./hydration-tracker-by-climate-weight-calculator')),
-  'ice-bath-duration-temp-calculator': lazy(() => import('./ice-bath-duration-temp-calculator')),
-  'ideal-body-weight-calculator': lazy(() => import('./ideal-body-weight-calculator')),
-  'ideal-waist-size-calculator': lazy(() => import('./ideal-waist-size-calculator')),
-  'immune-function-recovery-rate-calculator': lazy(() => import('./immune-function-recovery-rate-calculator')),
-  'immune-recovery-time-post-illness-calculator': lazy(() => import('./immune-recovery-time-post-illness-calculator')),
-  'infant-growth-percentile-calculator': lazy(() => import('./infant-growth-percentile-calculator')),
-  'injury-prevention-warmup-time-calculator': lazy(() => import('./injury-prevention-warmup-time-calculator')),
-  'injury-recovery-timeline-calculator': lazy(() => import('./injury-recovery-timeline-calculator')),
-  'insulin-response-estimator': lazy(() => import('./insulin-response-estimator')),
-  'inter-meal-spacing-impact-calculator': lazy(() => import('./inter-meal-spacing-impact-calculator')),
-  'intermittent-cold-exposure-calorie-burn-estimator': lazy(() => import('./intermittent-cold-exposure-calorie-burn-estimator')),
-  'intermittent-fasting-5-2-schedule-calculator': lazy(() => import('./intermittent-fasting-5-2-schedule-calculator')),
-  'intermittent-fasting-calculator': lazy(() => import('./intermittent-fasting-calculator')),
-  'iodine-deficiency-risk-calculator': lazy(() => import('./iodine-deficiency-risk-calculator')),
-  'iron-deficiency-anemia-risk-calculator': lazy(() => import('./iron-deficiency-anemia-risk-calculator')),
-  'iron-intake-calculator': lazy(() => import('./iron-intake-calculator')),
-  'iron-loss-during-periods-calculator': lazy(() => import('./iron-loss-during-periods-calculator')),
-  'jet-lag-recovery-duration-calculator': lazy(() => import('./jet-lag-recovery-duration-calculator')),
-  'keto-macro-calculator': lazy(() => import('./keto-macro-calculator')),
-  'ketogenic-net-carb-limit-calculator': lazy(() => import('./ketogenic-net-carb-limit-calculator')),
-  'kidney-function-creatinine-clearance-crcl-calculator': lazy(() => import('./kidney-function-creatinine-clearance-crcl-calculator')),
-  'lactate-accumulation-rate-calculator': lazy(() => import('./lactate-accumulation-rate-calculator')),
-  'lactose-tolerance-estimator': lazy(() => import('./lactose-tolerance-estimator')),
-  'late-night-eating-impact-score-calculator': lazy(() => import('./late-night-eating-impact-score-calculator')),
-  'lean-body-mass-calculator': lazy(() => import('./lean-body-mass-calculator')),
-  'lifespan-expectancy-calculator': lazy(() => import('./lifespan-expectancy-calculator')),
-  'lifespan-extension-strategy-score-calculator': lazy(() => import('./lifespan-extension-strategy-score-calculator')),
-  'limb-circumference-ratio-calculator': lazy(() => import('./limb-circumference-ratio-calculator')),
-  'liver-enzyme-alt-ast-ratio-calculator': lazy(() => import('./liver-enzyme-alt-ast-ratio-calculator')),
-  'loneliness-risk-estimator': lazy(() => import('./loneliness-risk-estimator')),
-  'loneliness-risk-index': lazy(() => import('./loneliness-risk-index')),
-  'longevity-predictor-lifestyle-calculator': lazy(() => import('./longevity-predictor-lifestyle-calculator')),
-  'longevity-score-estimator': lazy(() => import('./longevity-score-estimator')),
-  'low-fodmap-tolerance-planner-calculator': lazy(() => import('./low-fodmap-tolerance-planner-calculator')),
-  'low-sodium-diet-planner-calculator': lazy(() => import('./low-sodium-diet-planner-calculator')),
-  'macro-ratio-calculator': lazy(() => import('./macro-ratio-calculator')),
-  'magnesium-intake-calculator': lazy(() => import('./magnesium-intake-calculator')),
-  'male-fertility-sperm-health-index-calculator': lazy(() => import('./male-fertility-sperm-health-index-calculator')),
-  'manganese-requirement-calculator': lazy(() => import('./manganese-requirement-calculator')),
-  'marathon-finish-time-predictor': lazy(() => import('./marathon-finish-time-predictor')),
-  'maximal-aerobic-speed-mas-calculator': lazy(() => import('./maximal-aerobic-speed-mas-calculator')),
-  'maximum-lactate-steady-state-calculator': lazy(() => import('./maximum-lactate-steady-state-calculator')),
-  'meal-calorie-breakdown-calculator': lazy(() => import('./meal-calorie-breakdown-calculator')),
-  'meal-glycemic-load-calculator': lazy(() => import('./meal-glycemic-load-calculator')),
-  'meal-timing-and-insulin-response-calculator': lazy(() => import('./meal-timing-and-insulin-response-calculator')),
-  'mean-corpuscular-volume-mcv-calculator': lazy(() => import('./mean-corpuscular-volume-mcv-calculator')),
-  'meditation-breathing-rate-calculator': lazy(() => import('./meditation-breathing-rate-calculator')),
-  'meditation-breathing-rhythm-helper': lazy(() => import('./meditation-breathing-rhythm-helper')),
-  'meditation-streak-mindfulness-progress-tracker': lazy(() => import('./meditation-streak-mindfulness-progress-tracker')),
-  'meditation-stress-reduction-impact-calculator': lazy(() => import('./meditation-stress-reduction-impact-calculator')),
-  'meditation-time-progress-tracker-calculator': lazy(() => import('./meditation-time-progress-tracker-calculator')),
-  'meditation-time-progress-tracker': lazy(() => import('./meditation-time-progress-tracker')),
-  'mediterranean-diet-compliance-calculator': lazy(() => import('./mediterranean-diet-compliance-calculator')),
-  'mediterranean-diet-score-calculator': lazy(() => import('./mediterranean-diet-score-calculator')),
-  'memory-retention-percentage-calculator': lazy(() => import('./memory-retention-percentage-calculator')),
-  'menopause-symptom-index-calculator': lazy(() => import('./menopause-symptom-index-calculator')),
-  'menopause-symptom-index-wellness-calculator': lazy(() => import('./menopause-symptom-index-wellness-calculator')),
-  'menstrual-cycle-phase-tracker-calculator': lazy(() => import('./menstrual-cycle-phase-tracker-calculator')),
-  'menstrual-phase-workout-intensity-planner': lazy(() => import('./menstrual-phase-workout-intensity-planner')),
-  'mental-energy-drain-predictor': lazy(() => import('./mental-energy-drain-predictor')),
-  'mental-fatigue-accumulation-tracker': lazy(() => import('./mental-fatigue-accumulation-tracker')),
-  'mental-processing-speed-test-calculator': lazy(() => import('./mental-processing-speed-test-calculator')),
-  'mental-recovery-from-stress-estimator': lazy(() => import('./mental-recovery-from-stress-estimator')),
-  'metabolic-adaptation-rate-calculator': lazy(() => import('./metabolic-adaptation-rate-calculator')),
-  'mets-calories-burned-calculator': lazy(() => import('./mets-calories-burned-calculator')),
-  'microbreak-frequency-calculator-for-desk-jobs': lazy(() => import('./microbreak-frequency-calculator-for-desk-jobs')),
-  'mindful-minutes-consistency-tracker': lazy(() => import('./mindful-minutes-consistency-tracker')),
-  'mindful-minutes-tracking-calculator': lazy(() => import('./mindful-minutes-tracking-calculator')),
-  'mindfulness-consistency-score-calculator': lazy(() => import('./mindfulness-consistency-score-calculator')),
-  'mitochondrial-health-index': lazy(() => import('./mitochondrial-health-index')),
-  'motivation-momentum-calculator': lazy(() => import('./motivation-momentum-calculator')),
-  'multitasking-efficiency-calculator': lazy(() => import('./multitasking-efficiency-calculator')),
-  'muscle-fiber-type-ratio-calculator': lazy(() => import('./muscle-fiber-type-ratio-calculator')),
-  'muscle-mass-percentage-calculator': lazy(() => import('./muscle-mass-percentage-calculator')),
-  'muscle-recovery-time-by-age-calculator': lazy(() => import('./muscle-recovery-time-by-age-calculator')),
-  'muscle-soreness-recovery-estimator': lazy(() => import('./muscle-soreness-recovery-estimator')),
-  'muscular-imbalance-ratio-calculator': lazy(() => import('./muscular-imbalance-ratio-calculator')),
-  'myoglobin-oxygen-storage-calculator': lazy(() => import('./myoglobin-oxygen-storage-calculator')),
-  'nad-plus-optimization-estimator': lazy(() => import('./nad-plus-optimization-estimator')),
-  'nap-duration-efficiency-calculator': lazy(() => import('./nap-duration-efficiency-calculator')),
-  'neat-calculator': lazy(() => import('./neat-calculator')),
-  'neat-impact-calculator': lazy(() => import('./neat-impact-calculator')),
-  'net-carbs-vs-total-carbs-calculator': lazy(() => import('./net-carbs-vs-total-carbs-calculator')),
-  'nutrient-absorption-efficiency-calculator': lazy(() => import('./nutrient-absorption-efficiency-calculator')),
-  'nutrient-density-to-calorie-ratio-calculator': lazy(() => import('./nutrient-density-to-calorie-ratio-calculator')),
-  'occupational-sedentary-risk-score-calculator': lazy(() => import('./occupational-sedentary-risk-score-calculator')),
-  'occupational-sedentary-risk-score-wellness-calculator': lazy(() => import('./occupational-sedentary-risk-score-wellness-calculator')),
-  'omega-6-to-omega-3-balance-calculator': lazy(() => import('./omega-6-to-omega-3-balance-calculator')),
-  'omega3-daily-requirement-calculator': lazy(() => import('./omega3-daily-requirement-calculator')),
-  'one-rep-max-strength-calculator': lazy(() => import('./one-rep-max-strength-calculator')),
-  'optimal-bedtime-by-chronotype-calculator': lazy(() => import('./optimal-bedtime-by-chronotype-calculator')),
-  'ovulation-window-probability-advanced-calculator': lazy(() => import('./ovulation-window-probability-advanced-calculator')),
-  'oxidative-stress-index-calculator': lazy(() => import('./oxidative-stress-index-calculator')),
-  'oxygen-advantage-efficiency-score': lazy(() => import('./oxygen-advantage-efficiency-score')),
-  'oxygen-debt-epoc-calculator': lazy(() => import('./oxygen-debt-epoc-calculator')),
-  'oxygen-pulse-efficiency-calculator': lazy(() => import('./oxygen-pulse-efficiency-calculator')),
-  'paleo-compliance-score-calculator': lazy(() => import('./paleo-compliance-score-calculator')),
-  'paleo-diet-nutrient-coverage-calculator': lazy(() => import('./paleo-diet-nutrient-coverage-calculator')),
-  'pdcaas-calculator': lazy(() => import('./pdcaas-calculator')),
-  'perimenopause-transition-stage-estimator': lazy(() => import('./perimenopause-transition-stage-estimator')),
-  'peripheral-resistance-index-calculator': lazy(() => import('./peripheral-resistance-index-calculator')),
-  'phone-dependency-index': lazy(() => import('./phone-dependency-index')),
-  'phosphorus-intake-calculator': lazy(() => import('./phosphorus-intake-calculator')),
-  'physical-therapy-exercise-load-calculator': lazy(() => import('./physical-therapy-exercise-load-calculator')),
-  'physical-therapy-session-intensity-calculator': lazy(() => import('./physical-therapy-session-intensity-calculator')),
-  'plant-based-omega-3-conversion-calculator': lazy(() => import('./plant-based-omega-3-conversion-calculator')),
-  'plant-based-protein-gap-calculator': lazy(() => import('./plant-based-protein-gap-calculator')),
-  'platelet-count-risk-analyzer': lazy(() => import('./platelet-count-risk-analyzer')),
-  'pms-symptom-score-calculator': lazy(() => import('./pms-symptom-score-calculator')),
-  'pms-symptom-score-wellness-calculator': lazy(() => import('./pms-symptom-score-wellness-calculator')),
-  'ponderal-index-calculator': lazy(() => import('./ponderal-index-calculator')),
-  'positive-emotion-ratio-calculator': lazy(() => import('./positive-emotion-ratio-calculator')),
-  'positive-vs-negative-thought-ratio-calculator': lazy(() => import('./positive-vs-negative-thought-ratio-calculator')),
-  'post-exercise-oxygen-consumption-calculator': lazy(() => import('./post-exercise-oxygen-consumption-calculator')),
-  'post-injury-mobility-progress-calculator': lazy(() => import('./post-injury-mobility-progress-calculator')),
-  'post-surgery-calorie-needs-calculator': lazy(() => import('./post-surgery-calorie-needs-calculator')),
-  'postpartum-calorie-needs-calculator': lazy(() => import('./postpartum-calorie-needs-calculator')),
-  'postpartum-hormonal-recovery-calculator': lazy(() => import('./postpartum-hormonal-recovery-calculator')),
-  'posture-correction-progress-calculator': lazy(() => import('./posture-correction-progress-calculator')),
-  'posture-score-calculator': lazy(() => import('./posture-score-calculator')),
-  'power-to-heart-rate-efficiency-calculator': lazy(() => import('./power-to-heart-rate-efficiency-calculator')),
-  'power-to-weight-performance-index-calculator': lazy(() => import('./power-to-weight-performance-index-calculator')),
-  'prebiotic-fiber-target-calculator': lazy(() => import('./prebiotic-fiber-target-calculator')),
-  'pregnancy-weight-gain-calculator': lazy(() => import('./pregnancy-weight-gain-calculator')),
-  'prenatal-vitamin-dosage-calculator': lazy(() => import('./prenatal-vitamin-dosage-calculator')),
-  'prenatal-vitamin-dosage-wellness-calculator': lazy(() => import('./prenatal-vitamin-dosage-wellness-calculator')),
-  'probiotic-daily-dose-estimator': lazy(() => import('./probiotic-daily-dose-estimator')),
-  'progressive-overload-calculator': lazy(() => import('./progressive-overload-calculator')),
-  'protein-digestibility-score-diaas-calculator': lazy(() => import('./protein-digestibility-score-diaas-calculator')),
-  'protein-intake-calculator': lazy(() => import('./protein-intake-calculator')),
-  'pulse-pressure-analyzer': lazy(() => import('./pulse-pressure-analyzer')),
-  'range-of-motion-progress-calculator': lazy(() => import('./range-of-motion-progress-calculator')),
-  'reaction-time-benchmark-calculator': lazy(() => import('./reaction-time-benchmark-calculator')),
-  'reaction-time-improvement-tracker': lazy(() => import('./reaction-time-improvement-tracker')),
-  'recovery-heart-rate-calculator': lazy(() => import('./recovery-heart-rate-calculator')),
-  'recovery-sleep-requirement-after-sleep-debt-calculator': lazy(() => import('./recovery-sleep-requirement-after-sleep-debt-calculator')),
-  'red-blood-cell-count-effect-on-vo2-max-calculator': lazy(() => import('./red-blood-cell-count-effect-on-vo2-max-calculator')),
-  'red-blood-cell-count-to-oxygen-capacity-calculator': lazy(() => import('./red-blood-cell-count-to-oxygen-capacity-calculator')),
-  'red-light-therapy-dose-calculator': lazy(() => import('./red-light-therapy-dose-calculator')),
-  'relationship-satisfaction-score': lazy(() => import('./relationship-satisfaction-score')),
-  'relative-fat-mass-calculator': lazy(() => import('./relative-fat-mass-calculator')),
-  'rem-sleep-percentage-calculator': lazy(() => import('./rem-sleep-percentage-calculator')),
-  'resilience-score-calculator': lazy(() => import('./resilience-score-calculator')),
-  'respiratory-quotient-calculator': lazy(() => import('./respiratory-quotient-calculator')),
-  'rest-time-between-sets-calculator': lazy(() => import('./rest-time-between-sets-calculator')),
-  'rest-vs-active-energy-burn-calculator': lazy(() => import('./rest-vs-active-energy-burn-calculator')),
-  'resting-metabolic-rate-calculator': lazy(() => import('./resting-metabolic-rate-calculator')),
-  'resting-recovery-day-estimator': lazy(() => import('./resting-recovery-day-estimator')),
-  'reverse-dieting-calorie-increase-planner': lazy(() => import('./reverse-dieting-calorie-increase-planner')),
-  'rowing-drag-factor-calculator': lazy(() => import('./rowing-drag-factor-calculator')),
-  'rowing-split-calculator': lazy(() => import('./rowing-split-calculator')),
-  'running-economy-calculator': lazy(() => import('./running-economy-calculator')),
-  'running-pace-calculator': lazy(() => import('./running-pace-calculator')),
-  'satiety-index-calculator': lazy(() => import('./satiety-index-calculator')),
-  'satiety-vs-energy-density-graph-calculator': lazy(() => import('./satiety-vs-energy-density-graph-calculator')),
-  'sauna-detox-effectiveness-score': lazy(() => import('./sauna-detox-effectiveness-score')),
-  'sauna-session-detox-score-calculator': lazy(() => import('./sauna-session-detox-score-calculator')),
-  'screen-time-vs-sleep-impact-calculator': lazy(() => import('./screen-time-vs-sleep-impact-calculator')),
-  'screen-time-vs-sleep-impact-wellness-calculator': lazy(() => import('./screen-time-vs-sleep-impact-wellness-calculator')),
-  'screen-to-sleep-time-impact-estimator': lazy(() => import('./screen-to-sleep-time-impact-estimator')),
-  'seasonal-energy-expenditure-calculator': lazy(() => import('./seasonal-energy-expenditure-calculator')),
-  'selenium-intake-calculator': lazy(() => import('./selenium-intake-calculator')),
-  'self-esteem-growth-tracker': lazy(() => import('./self-esteem-growth-tracker')),
-  'sleep-balance-check-in': lazy(() => import('./sleep-balance-check-in')),
-  'sleep-consistency-score-calculator': lazy(() => import('./sleep-consistency-score-calculator')),
-  'sleep-cycle-alarm-time-optimizer': lazy(() => import('./sleep-cycle-alarm-time-optimizer')),
-  'sleep-debt-calculator': lazy(() => import('./sleep-debt-calculator')),
-  'sleep-efficiency-calculator': lazy(() => import('./sleep-efficiency-calculator')),
-  'sleep-optimization-routine-score': lazy(() => import('./sleep-optimization-routine-score')),
-  'sleep-phase-delay-syndrome-dspd-risk-calculator': lazy(() => import('./sleep-phase-delay-syndrome-dspd-risk-calculator')),
-  'sleep-position-pressure-calculator': lazy(() => import('./sleep-position-pressure-calculator')),
-  'sleep-quality-vs-longevity-correlation-calculator': lazy(() => import('./sleep-quality-vs-longevity-correlation-calculator')),
-  'sleep-quality-vs-productivity-correlation-calculator': lazy(() => import('./sleep-quality-vs-productivity-correlation-calculator')),
-  'sleep-quality-vs-screen-exposure-analyzer': lazy(() => import('./sleep-quality-vs-screen-exposure-analyzer')),
-  'sleep-restriction-adaptation-calculator': lazy(() => import('./sleep-restriction-adaptation-calculator')),
-  'sleep-time-in-bed-wellness-index': lazy(() => import('./sleep-time-in-bed-wellness-index')),
-  'soccer-vo2-requirement-calculator': lazy(() => import('./soccer-vo2-requirement-calculator')),
-  'social-connection-score-calculator': lazy(() => import('./social-connection-score-calculator')),
-  'sodium-potassium-ratio-calculator': lazy(() => import('./sodium-potassium-ratio-calculator')),
-  'sodium-to-potassium-ratio-calculator': lazy(() => import('./sodium-to-potassium-ratio-calculator')),
-  'somatotype-calculator': lazy(() => import('./somatotype-calculator')),
-  'spine-load-l4-l5-pressure-calculator': lazy(() => import('./spine-load-l4-l5-pressure-calculator')),
-  'standing-vs-sitting-calorie-burn-calculator': lazy(() => import('./standing-vs-sitting-calorie-burn-calculator')),
-  'step-to-calorie-converter': lazy(() => import('./step-to-calorie-converter')),
-  'step-to-heart-rate-efficiency-calculator': lazy(() => import('./step-to-heart-rate-efficiency-calculator')),
-  'strength-to-weight-ratio-calculator': lazy(() => import('./strength-to-weight-ratio-calculator')),
-  'stress-hormone-balance-calculator': lazy(() => import('./stress-hormone-balance-calculator')),
-  'stress-level-self-assessment-calculator': lazy(() => import('./stress-level-self-assessment-calculator')),
-  'stroke-index-cardiac-function-calculator': lazy(() => import('./stroke-index-cardiac-function-calculator')),
-  'stroke-volume-calculator': lazy(() => import('./stroke-volume-calculator')),
-  'sugar-intake-calculator': lazy(() => import('./sugar-intake-calculator')),
-  'supplement-stack-roi-calculator': lazy(() => import('./supplement-stack-roi-calculator')),
-  'sweat-rate-calculator-athletic-use': lazy(() => import('./sweat-rate-calculator-athletic-use')),
-  'sweat-sodium-concentration-calculator': lazy(() => import('./sweat-sodium-concentration-calculator')),
-  'swim-stroke-rate-calculator': lazy(() => import('./swim-stroke-rate-calculator')),
-  'swimming-lap-time-calculator': lazy(() => import('./swimming-lap-time-calculator')),
-  'swimming-swolf-score-calculator': lazy(() => import('./swimming-swolf-score-calculator')),
-  'target-heart-rate-calculator': lazy(() => import('./target-heart-rate-calculator')),
-  'tennis-serve-speed-calculator': lazy(() => import('./tennis-serve-speed-calculator')),
-  'testosterone-to-cortisol-ratio-calculator': lazy(() => import('./testosterone-to-cortisol-ratio-calculator')),
-  'thermic-effect-of-food-calculator': lazy(() => import('./thermic-effect-of-food-calculator')),
-  'thyroid-function-basal-energy-calculator': lazy(() => import('./thyroid-function-basal-energy-calculator')),
-  'thyroid-function-tsh-t3-t4-balance-calculator': lazy(() => import('./thyroid-function-tsh-t3-t4-balance-calculator')),
-  'toddler-calorie-requirement-calculator': lazy(() => import('./toddler-calorie-requirement-calculator')),
-  'total-energy-expenditure-calculator': lazy(() => import('./total-energy-expenditure-calculator')),
-  'training-fatigue-index-calculator': lazy(() => import('./training-fatigue-index-calculator')),
-  'training-impulse-trimp-calculator': lazy(() => import('./training-impulse-trimp-calculator')),
-  'training-stress-score-calculator': lazy(() => import('./training-stress-score-calculator')),
-  'training-stress-score-tss-calculator': lazy(() => import('./training-stress-score-tss-calculator')),
-  'training-volume-calculator': lazy(() => import('./training-volume-calculator')),
-  'triathlon-split-time-calculator': lazy(() => import('./triathlon-split-time-calculator')),
-  'uv-exposure-risk-calculator': lazy(() => import('./uv-exposure-risk-calculator')),
-  'vegan-nutrient-completeness-calculator': lazy(() => import('./vegan-nutrient-completeness-calculator')),
-  'vegan-protein-requirement-calculator': lazy(() => import('./vegan-protein-requirement-calculator')),
-  'vitamin-a-retinol-equivalent-calculator': lazy(() => import('./vitamin-a-retinol-equivalent-calculator')),
-  'vitamin-b12-daily-requirement-calculator': lazy(() => import('./vitamin-b12-daily-requirement-calculator')),
-  'vitamin-c-immunity-boost-score-calculator': lazy(() => import('./vitamin-c-immunity-boost-score-calculator')),
-  'vitamin-d-deficiency-risk-score-calculator': lazy(() => import('./vitamin-d-deficiency-risk-score-calculator')),
-  'vitamin-d-sun-exposure-calculator': lazy(() => import('./vitamin-d-sun-exposure-calculator')),
-  'vitamin-d-synthesis-from-sunlight-estimator': lazy(() => import('./vitamin-d-synthesis-from-sunlight-estimator')),
-  'vitamin-deficiency-risk-estimator': lazy(() => import('./vitamin-deficiency-risk-estimator')),
-  'vitamin-e-alpha-tocopherol-calculator': lazy(() => import('./vitamin-e-alpha-tocopherol-calculator')),
-  'vitamin-k-daily-needs-estimator': lazy(() => import('./vitamin-k-daily-needs-estimator')),
-  'vitamin-mineral-rda-tracker-calculator': lazy(() => import('./vitamin-mineral-rda-tracker-calculator')),
-  'vo2-kinetics-calculator': lazy(() => import('./vo2-kinetics-calculator')),
-  'vo2-max-calculator': lazy(() => import('./vo2-max-calculator')),
-  'vo2-max-estimation-calculator': lazy(() => import('./vo2-max-estimation-calculator')),
-  'vo2-per-kg-lean-mass-calculator': lazy(() => import('./vo2-per-kg-lean-mass-calculator')),
-  'vo2-recovery-half-time-calculator': lazy(() => import('./vo2-recovery-half-time-calculator')),
-  'vo2-reserve-calculator': lazy(() => import('./vo2-reserve-calculator')),
-  'waist-to-height-ratio-calculator': lazy(() => import('./waist-to-height-ratio-calculator')),
-  'waist-to-hip-ratio-calculator': lazy(() => import('./waist-to-hip-ratio-calculator')),
-  'water-fasting-electrolyte-needs-calculator': lazy(() => import('./water-fasting-electrolyte-needs-calculator')),
-  'water-footprint-of-food-calculator': lazy(() => import('./water-footprint-of-food-calculator')),
-  'whole-food-vs-processed-calorie-ratio-calculator': lazy(() => import('./whole-food-vs-processed-calorie-ratio-calculator')),
-  'work-burnout-recovery-time-calculator': lazy(() => import('./work-burnout-recovery-time-calculator')),
-  'work-life-balance-time-allocation-calculator': lazy(() => import('./work-life-balance-time-allocation-calculator')),
-  'work-stress-fatigue-index': lazy(() => import('./work-stress-fatigue-index')),
-  'workday-balance-overload-tendency-score': lazy(() => import('./workday-balance-overload-tendency-score')),
-  'working-memory-capacity-estimator': lazy(() => import('./working-memory-capacity-estimator')),
-  'workplace-posture-risk-calculator': lazy(() => import('./workplace-posture-risk-calculator')),
-  'zinc-requirement-calculator': lazy(() => import('./zinc-requirement-calculator')),
+// Static imports for SSR - full content in initial HTML for SEO
+const components: Record<string, ComponentType> = {
+  'acute-training-load-calculator': AcuteTrainingLoadCalculatorComponent_0,
+  'albumin-to-creatinine-ratio-calculator': AlbuminToCreatinineRatioCalculatorComponent_1,
+  'alcohol-calorie-impact-calculator': AlcoholCalorieImpactCalculatorComponent_2,
+  'alcohol-metabolism-time-calculator': AlcoholMetabolismTimeCalculatorComponent_3,
+  'altitude-acclimatization-oxygen-need-calculator': AltitudeAcclimatizationOxygenNeedCalculatorComponent_4,
+  'anaerobic-capacity-calculator': AnaerobicCapacityCalculatorComponent_5,
+  'anaerobic-power-output-calculator': AnaerobicPowerOutputCalculatorComponent_6,
+  'anaerobic-threshold-calculator': AnaerobicThresholdCalculatorComponent_7,
+  'android-vs-gynoid-fat-ratio-calculator': AndroidVsGynoidFatRatioCalculatorComponent_8,
+  'anti-aging-nutrition-score-calculator': AntiAgingNutritionScoreCalculatorComponent_9,
+  'antioxidant-diversity-index-calculator': AntioxidantDiversityIndexCalculatorComponent_10,
+  'arterial-elasticity-index-calculator': ArterialElasticityIndexCalculatorComponent_11,
+  'arterial-stiffness-index-calculator': ArterialStiffnessIndexCalculatorComponent_12,
+  'attention-span-index-calculator': AttentionSpanIndexCalculatorComponent_13,
+  'baby-sleep-needs-calculator': BabySleepNeedsCalculatorComponent_14,
+  'baby-sleep-needs-wellness-calculator': BabySleepNeedsWellnessCalculatorComponent_15,
+  'balanced-meal-score-calculator': BalancedMealScoreCalculatorComponent_16,
+  'baseball-pitch-speed-calculator': BaseballPitchSpeedCalculatorComponent_17,
+  'basketball-shooting-percentage-calculator': BasketballShootingPercentageCalculatorComponent_18,
+  'biological-stress-load-allostatic-load-calculator': BiologicalStressLoadAllostaticLoadCalculatorComponent_19,
+  'blood-flow-velocity-estimator': BloodFlowVelocityEstimatorComponent_20,
+  'blood-lactate-clearance-rate-calculator': BloodLactateClearanceRateCalculatorComponent_21,
+  'blood-oxygen-saturation-estimator': BloodOxygenSaturationEstimatorComponent_22,
+  'blood-sugar-spike-estimator-by-meal-type': BloodSugarSpikeEstimatorByMealTypeComponent_23,
+  'blood-sugar-to-hba1c-converter': BloodSugarToHba1cConverterComponent_24,
+  'blood-urea-nitrogen-bun-ratio-calculator': BloodUreaNitrogenBunRatioCalculatorComponent_25,
+  'blood-volume-estimator': BloodVolumeEstimatorComponent_26,
+  'blue-light-exposure-calculator': BlueLightExposureCalculatorComponent_27,
+  'blue-light-exposure-wellness-calculator': BlueLightExposureWellnessCalculatorComponent_28,
+  'blue-zone-lifestyle-score-calculator': BlueZoneLifestyleScoreCalculatorComponent_29,
+  'bmi-calculator': BmiCalculatorComponent_30,
+  'bmr-adjustment-for-age-muscle-loss-calculator': BmrAdjustmentForAgeMuscleLossCalculatorComponent_31,
+  'bmr-calculator': BmrCalculatorComponent_32,
+  'body-adiposity-index-calculator': BodyAdiposityIndexCalculatorComponent_33,
+  'body-fat-percentage-calculator': BodyFatPercentageCalculatorComponent_34,
+  'body-surface-area-calculator': BodySurfaceAreaCalculatorComponent_35,
+  'body-surface-area-du-bois-calculator': BodySurfaceAreaDuBoisCalculatorComponent_36,
+  'body-temperature-regulation-estimator': BodyTemperatureRegulationEstimatorComponent_37,
+  'bone-density-t-score-calculator': BoneDensityTScoreCalculatorComponent_38,
+  'bone-strength-lifestyle-insight-tool': BoneStrengthLifestyleInsightToolComponent_39,
+  'brain-fog-severity-score-calculator': BrainFogSeverityScoreCalculatorComponent_40,
+  'breakfast-skipping-effect-on-metabolism-calculator': BreakfastSkippingEffectOnMetabolismCalculatorComponent_41,
+  'breast-milk-production-estimate-calculator': BreastMilkProductionEstimateCalculatorComponent_42,
+  'breastfeeding-calorie-needs-calculator': BreastfeedingCalorieNeedsCalculatorComponent_43,
+  'breath-hold-co2-tolerance-calculator': BreathHoldCo2ToleranceCalculatorComponent_44,
+  'breathing-pattern-efficiency-calculator': BreathingPatternEfficiencyCalculatorComponent_45,
+  'breathing-rate-efficiency-calculator': BreathingRateEfficiencyCalculatorComponent_46,
+  'brown-fat-activation-estimator': BrownFatActivationEstimatorComponent_47,
+  'bulletproof-coffee-calorie-impact-calculator': BulletproofCoffeeCalorieImpactCalculatorComponent_48,
+  'burnout-risk-score-calculator': BurnoutRiskScoreCalculatorComponent_49,
+  'caffeine-cutoff-sleep-impact-calculator': CaffeineCutoffSleepImpactCalculatorComponent_50,
+  'caffeine-cutoff-sleep-impact-wellness-calculator': CaffeineCutoffSleepImpactWellnessCalculatorComponent_51,
+  'caffeine-half-life-calculator-time-based': CaffeineHalfLifeCalculatorTimeBasedComponent_52,
+  'caffeine-intake-calculator': CaffeineIntakeCalculatorComponent_53,
+  'calcium-correction-for-albumin-calculator': CalciumCorrectionForAlbuminCalculatorComponent_54,
+  'calcium-intake-calculator': CalciumIntakeCalculatorComponent_55,
+  'caloric-cost-of-cold-exposure-calculator': CaloricCostOfColdExposureCalculatorComponent_56,
+  'caloric-density-vs-volume-calculator': CaloricDensityVsVolumeCalculatorComponent_57,
+  'calorie-deficit-calculator': CalorieDeficitCalculatorComponent_58,
+  'calorie-surplus-calculator': CalorieSurplusCalculatorComponent_59,
+  'calories-burned-cycling-calculator': CaloriesBurnedCyclingCalculatorComponent_60,
+  'calories-burned-running-calculator': CaloriesBurnedRunningCalculatorComponent_61,
+  'calories-burned-swimming-calculator': CaloriesBurnedSwimmingCalculatorComponent_62,
+  'calories-burned-walking-calculator': CaloriesBurnedWalkingCalculatorComponent_63,
+  'capillary-density-estimator': CapillaryDensityEstimatorComponent_64,
+  'carb-cycling-macro-calculator': CarbCyclingMacroCalculatorComponent_65,
+  'carb-refeed-timing-calculator': CarbRefeedTimingCalculatorComponent_66,
+  'carb-to-fiber-ratio-calculator': CarbToFiberRatioCalculatorComponent_67,
+  'carbohydrate-intake-calculator': CarbohydrateIntakeCalculatorComponent_68,
+  'cardiac-output-calculator': CardiacOutputCalculatorComponent_69,
+  'cardiac-output-q-calculator': CardiacOutputQCalculatorComponent_70,
+  'cardiometabolic-age-calculator': CardiometabolicAgeCalculatorComponent_71,
+  'carnivore-micronutrient-gap-calculator': CarnivoreMicronutrientGapCalculatorComponent_72,
+  'cellular-hydration-score-calculator': CellularHydrationScoreCalculatorComponent_73,
+  'central-nervous-system-cns-fatigue-recovery-calculator': CentralNervousSystemCnsFatigueRecoveryCalculatorComponent_74,
+  'cheat-day-impact-on-weekly-deficit-calculator': CheatDayImpactOnWeeklyDeficitCalculatorComponent_75,
+  'cheat-meal-impact-on-weekly-calories-calculator': CheatMealImpactOnWeeklyCaloriesCalculatorComponent_76,
+  'child-bmi-percentile-calculator': ChildBmiPercentileCalculatorComponent_77,
+  'chromium-daily-need-estimator': ChromiumDailyNeedEstimatorComponent_78,
+  'chronic-training-load-calculator': ChronicTrainingLoadCalculatorComponent_79,
+  'circadian-rhythm-alignment-score': CircadianRhythmAlignmentScoreComponent_80,
+  'circadian-rhythm-disruption-risk-calculator': CircadianRhythmDisruptionRiskCalculatorComponent_81,
+  'climbing-grade-difficulty-to-calories-burned-calculator': ClimbingGradeDifficultyToCaloriesBurnedCalculatorComponent_82,
+  'cognitive-age-estimator': CognitiveAgeEstimatorComponent_83,
+  'cognitive-focus-efficiency-calculator': CognitiveFocusEfficiencyCalculatorComponent_84,
+  'cognitive-focus-efficiency-wellness-calculator': CognitiveFocusEfficiencyWellnessCalculatorComponent_85,
+  'cognitive-load-balance-calculator': CognitiveLoadBalanceCalculatorComponent_86,
+  'cognitive-load-estimator': CognitiveLoadEstimatorComponent_87,
+  'cold-exposure-duration-estimator': ColdExposureDurationEstimatorComponent_88,
+  'complete-amino-acid-profile-calculator': CompleteAminoAcidProfileCalculatorComponent_89,
+  'conception-probability-per-cycle-calculator': ConceptionProbabilityPerCycleCalculatorComponent_90,
+  'confidence-curve-estimator': ConfidenceCurveEstimatorComponent_91,
+  'copper-intake-calculator': CopperIntakeCalculatorComponent_92,
+  'core-body-temperature-rise-calculator': CoreBodyTemperatureRiseCalculatorComponent_93,
+  'core-strength-balance-calculator': CoreStrengthBalanceCalculatorComponent_94,
+  'cortisol-stress-response-estimator': CortisolStressResponseEstimatorComponent_95,
+  'creatine-loading-maintenance-dose-calculator': CreatineLoadingMaintenanceDoseCalculatorComponent_96,
+  'critical-power-calculator': CriticalPowerCalculatorComponent_97,
+  'critical-swim-speed-calculator': CriticalSwimSpeedCalculatorComponent_98,
+  'cycling-cadence-optimizer-calculator': CyclingCadenceOptimizerCalculatorComponent_99,
+  'cycling-ftp-calculator': CyclingFtpCalculatorComponent_100,
+  'cycling-power-output-calculator': CyclingPowerOutputCalculatorComponent_101,
+  'daily-activity-points-calculator': DailyActivityPointsCalculatorComponent_102,
+  'daily-antioxidant-orac-goal-calculator': DailyAntioxidantOracGoalCalculatorComponent_103,
+  'daily-calorie-needs-calculator': DailyCalorieNeedsCalculatorComponent_104,
+  'daily-energy-mood-synchronization-tracker': DailyEnergyMoodSynchronizationTrackerComponent_105,
+  'daily-mental-energy-budget-calculator': DailyMentalEnergyBudgetCalculatorComponent_106,
+  'daily-micronutrient-coverage-calculator': DailyMicronutrientCoverageCalculatorComponent_107,
+  'daily-screen-exposure-stress-index-calculator': DailyScreenExposureStressIndexCalculatorComponent_108,
+  'daily-screen-exposure-stress-index-wellness-calculator': DailyScreenExposureStressIndexWellnessCalculatorComponent_109,
+  'daily-screen-time-impact-calculator': DailyScreenTimeImpactCalculatorComponent_110,
+  'daily-stress-tendency-check-in': DailyStressTendencyCheckInComponent_111,
+  'daily-testosterone-boosting-habits-score-calculator': DailyTestosteroneBoostingHabitsScoreCalculatorComponent_112,
+  'dash-diet-compliance-tracker': DashDietComplianceTrackerComponent_113,
+  'dash-diet-sodium-intake-calculator': DashDietSodiumIntakeCalculatorComponent_114,
+  'decision-fatigue-index-calculator': DecisionFatigueIndexCalculatorComponent_115,
+  'deep-sleep-requirement-estimator': DeepSleepRequirementEstimatorComponent_116,
+  'detox-juice-nutrient-calculator': DetoxJuiceNutrientCalculatorComponent_117,
+  'detox-pathway-efficiency-calculator': DetoxPathwayEfficiencyCalculatorComponent_118,
+  'diet-break-refeed-day-planner-calculator': DietBreakRefeedDayPlannerCalculatorComponent_119,
+  'diet-sustainability-score-calculator': DietSustainabilityScoreCalculatorComponent_120,
+  'digital-burnout-detector': DigitalBurnoutDetectorComponent_121,
+  'digital-eye-strain-severity-index': DigitalEyeStrainSeverityIndexComponent_122,
+  'doms-recovery-time-calculator': DomsRecoveryTimeCalculatorComponent_123,
+  'dopamine-reward-sensitivity-index-calculator': DopamineRewardSensitivityIndexCalculatorComponent_124,
+  'due-date-calculator': DueDateCalculatorComponent_125,
+  'eating-window-duration-calculator': EatingWindowDurationCalculatorComponent_126,
+  'electrolyte-balance-restoration-calculator': ElectrolyteBalanceRestorationCalculatorComponent_127,
+  'electrolyte-replacement-calculator': ElectrolyteReplacementCalculatorComponent_128,
+  'emotional-burnout-recovery-calculator': EmotionalBurnoutRecoveryCalculatorComponent_129,
+  'emotional-stability-index-calculator': EmotionalStabilityIndexCalculatorComponent_130,
+  'emotional-wellbeing-index-calculator': EmotionalWellbeingIndexCalculatorComponent_131,
+  'empathy-quotient-calculator': EmpathyQuotientCalculatorComponent_132,
+  'ergonomic-desk-setup-calculator': ErgonomicDeskSetupCalculatorComponent_133,
+  'exercise-calorie-burn-calculator': ExerciseCalorieBurnCalculatorComponent_134,
+  'exercise-recovery-score-hrv-sleep-integration': ExerciseRecoveryScoreHrvSleepIntegrationComponent_135,
+  'fasting-benefits-progress-tracker': FastingBenefitsProgressTrackerComponent_136,
+  'fat-free-mass-index-calculator': FatFreeMassIndexCalculatorComponent_137,
+  'fat-intake-calculator': FatIntakeCalculatorComponent_138,
+  'fat-mass-index-calculator': FatMassIndexCalculatorComponent_139,
+  'fat-oxidation-percentage-calculator': FatOxidationPercentageCalculatorComponent_140,
+  'fat-quality-score-sfa-mufa-pufa-ratio-calculator': FatQualityScoreSfaMufaPufaRatioCalculatorComponent_141,
+  'fat-to-muscle-recomposition-tracker': FatToMuscleRecompositionTrackerComponent_142,
+  'fertile-cervical-mucus-tracking-calculator': FertileCervicalMucusTrackingCalculatorComponent_143,
+  'fertility-ovulation-calculator': FertilityOvulationCalculatorComponent_144,
+  'fiber-intake-calculator': FiberIntakeCalculatorComponent_145,
+  'fitness-age-estimator-vo2max-bmi': FitnessAgeEstimatorVo2maxBmiComponent_146,
+  'flexitarian-score-calculator': FlexitarianScoreCalculatorComponent_147,
+  'flow-state-readiness-calculator': FlowStateReadinessCalculatorComponent_148,
+  'fluoride-exposure-calculator': FluorideExposureCalculatorComponent_149,
+  'foam-rolling-pressure-estimator': FoamRollingPressureEstimatorComponent_150,
+  'focus-retention-time-calculator': FocusRetentionTimeCalculatorComponent_151,
+  'fodmap-load-calculator': FodmapLoadCalculatorComponent_152,
+  'follicular-vs-luteal-phase-nutrition-planner-calculator': FollicularVsLutealPhaseNutritionPlannerCalculatorComponent_153,
+  'food-allergy-risk-score-calculator': FoodAllergyRiskScoreCalculatorComponent_154,
+  'food-diversity-index-calculator': FoodDiversityIndexCalculatorComponent_155,
+  'food-protein-digestibility-corrected-amino-acid-score-pdcaas-calculator': FoodProteinDigestibilityCorrectedAminoAcidScorePdcaasCalculatorComponent_156,
+  'frame-size-calculator': FrameSizeCalculatorComponent_157,
+  'functional-movement-score-calculator': FunctionalMovementScoreCalculatorComponent_158,
+  'gluten-free-fiber-replacement-planner': GlutenFreeFiberReplacementPlannerComponent_159,
+  'gluten-intake-tracker-calculator': GlutenIntakeTrackerCalculatorComponent_160,
+  'glycemic-index-meal-blender-calculator': GlycemicIndexMealBlenderCalculatorComponent_161,
+  'glycemic-index-meal-optimizer-calculator': GlycemicIndexMealOptimizerCalculatorComponent_162,
+  'glycemic-load-calculator': GlycemicLoadCalculatorComponent_163,
+  'glycogen-replenishment-estimator-post-workout': GlycogenReplenishmentEstimatorPostWorkoutComponent_164,
+  'glycogen-storage-capacity-calculator': GlycogenStorageCapacityCalculatorComponent_165,
+  'golf-handicap-calculator': GolfHandicapCalculatorComponent_166,
+  'gratitude-frequency-tracker': GratitudeFrequencyTrackerComponent_167,
+  'gratitude-mood-correlation-tracker': GratitudeMoodCorrelationTrackerComponent_168,
+  'gut-microbiome-diversity-score-calculator': GutMicrobiomeDiversityScoreCalculatorComponent_169,
+  'habit-streak-tracker-calculator': HabitStreakTrackerCalculatorComponent_170,
+  'half-marathon-pace-calculator': HalfMarathonPaceCalculatorComponent_171,
+  'happiness-index-calculator': HappinessIndexCalculatorComponent_172,
+  'heart-rate-variability-hrv-score-calculator': HeartRateVariabilityHrvScoreCalculatorComponent_173,
+  'heart-rate-zone-training-calculator': HeartRateZoneTrainingCalculatorComponent_174,
+  'heart-rhythm-wellness-score': HeartRhythmWellnessScoreComponent_175,
+  'heart-workload-rate-pressure-product-calculator': HeartWorkloadRatePressureProductCalculatorComponent_176,
+  'hemoglobin-hb-level-estimator': HemoglobinHbLevelEstimatorComponent_177,
+  'hip-to-shoulder-ratio-calculator': HipToShoulderRatioCalculatorComponent_178,
+  'hrv-recovery-optimization-score-calculator': HrvRecoveryOptimizationScoreCalculatorComponent_179,
+  'hrv-resilience-index': HrvResilienceIndexComponent_180,
+  'hrv-to-stress-correlation-estimator': HrvToStressCorrelationEstimatorComponent_181,
+  'hydration-balance-with-alcohol-intake-calculator': HydrationBalanceWithAlcoholIntakeCalculatorComponent_182,
+  'hydration-needs-calculator': HydrationNeedsCalculatorComponent_183,
+  'hydration-recovery-after-workout-calculator': HydrationRecoveryAfterWorkoutCalculatorComponent_184,
+  'hydration-sweat-rate-calculator': HydrationSweatRateCalculatorComponent_185,
+  'hydration-tracker-by-climate-weight-calculator': HydrationTrackerByClimateWeightCalculatorComponent_186,
+  'ice-bath-duration-temp-calculator': IceBathDurationTempCalculatorComponent_187,
+  'ideal-body-weight-calculator': IdealBodyWeightCalculatorComponent_188,
+  'ideal-waist-size-calculator': IdealWaistSizeCalculatorComponent_189,
+  'immune-function-recovery-rate-calculator': ImmuneFunctionRecoveryRateCalculatorComponent_190,
+  'immune-recovery-time-post-illness-calculator': ImmuneRecoveryTimePostIllnessCalculatorComponent_191,
+  'infant-growth-percentile-calculator': InfantGrowthPercentileCalculatorComponent_192,
+  'injury-prevention-warmup-time-calculator': InjuryPreventionWarmupTimeCalculatorComponent_193,
+  'injury-recovery-timeline-calculator': InjuryRecoveryTimelineCalculatorComponent_194,
+  'insulin-response-estimator': InsulinResponseEstimatorComponent_195,
+  'inter-meal-spacing-impact-calculator': InterMealSpacingImpactCalculatorComponent_196,
+  'intermittent-cold-exposure-calorie-burn-estimator': IntermittentColdExposureCalorieBurnEstimatorComponent_197,
+  'intermittent-fasting-5-2-schedule-calculator': IntermittentFasting52ScheduleCalculatorComponent_198,
+  'intermittent-fasting-calculator': IntermittentFastingCalculatorComponent_199,
+  'iodine-deficiency-risk-calculator': IodineDeficiencyRiskCalculatorComponent_200,
+  'iron-deficiency-anemia-risk-calculator': IronDeficiencyAnemiaRiskCalculatorComponent_201,
+  'iron-intake-calculator': IronIntakeCalculatorComponent_202,
+  'iron-loss-during-periods-calculator': IronLossDuringPeriodsCalculatorComponent_203,
+  'jet-lag-recovery-duration-calculator': JetLagRecoveryDurationCalculatorComponent_204,
+  'keto-macro-calculator': KetoMacroCalculatorComponent_205,
+  'ketogenic-net-carb-limit-calculator': KetogenicNetCarbLimitCalculatorComponent_206,
+  'kidney-function-creatinine-clearance-crcl-calculator': KidneyFunctionCreatinineClearanceCrclCalculatorComponent_207,
+  'lactate-accumulation-rate-calculator': LactateAccumulationRateCalculatorComponent_208,
+  'lactose-tolerance-estimator': LactoseToleranceEstimatorComponent_209,
+  'late-night-eating-impact-score-calculator': LateNightEatingImpactScoreCalculatorComponent_210,
+  'lean-body-mass-calculator': LeanBodyMassCalculatorComponent_211,
+  'lifespan-expectancy-calculator': LifespanExpectancyCalculatorComponent_212,
+  'lifespan-extension-strategy-score-calculator': LifespanExtensionStrategyScoreCalculatorComponent_213,
+  'limb-circumference-ratio-calculator': LimbCircumferenceRatioCalculatorComponent_214,
+  'liver-enzyme-alt-ast-ratio-calculator': LiverEnzymeAltAstRatioCalculatorComponent_215,
+  'loneliness-risk-estimator': LonelinessRiskEstimatorComponent_216,
+  'loneliness-risk-index': LonelinessRiskIndexComponent_217,
+  'longevity-predictor-lifestyle-calculator': LongevityPredictorLifestyleCalculatorComponent_218,
+  'longevity-score-estimator': LongevityScoreEstimatorComponent_219,
+  'low-fodmap-tolerance-planner-calculator': LowFodmapTolerancePlannerCalculatorComponent_220,
+  'low-sodium-diet-planner-calculator': LowSodiumDietPlannerCalculatorComponent_221,
+  'macro-ratio-calculator': MacroRatioCalculatorComponent_222,
+  'magnesium-intake-calculator': MagnesiumIntakeCalculatorComponent_223,
+  'male-fertility-sperm-health-index-calculator': MaleFertilitySpermHealthIndexCalculatorComponent_224,
+  'manganese-requirement-calculator': ManganeseRequirementCalculatorComponent_225,
+  'marathon-finish-time-predictor': MarathonFinishTimePredictorComponent_226,
+  'maximal-aerobic-speed-mas-calculator': MaximalAerobicSpeedMasCalculatorComponent_227,
+  'maximum-lactate-steady-state-calculator': MaximumLactateSteadyStateCalculatorComponent_228,
+  'meal-calorie-breakdown-calculator': MealCalorieBreakdownCalculatorComponent_229,
+  'meal-glycemic-load-calculator': MealGlycemicLoadCalculatorComponent_230,
+  'meal-timing-and-insulin-response-calculator': MealTimingAndInsulinResponseCalculatorComponent_231,
+  'mean-corpuscular-volume-mcv-calculator': MeanCorpuscularVolumeMcvCalculatorComponent_232,
+  'meditation-breathing-rate-calculator': MeditationBreathingRateCalculatorComponent_233,
+  'meditation-breathing-rhythm-helper': MeditationBreathingRhythmHelperComponent_234,
+  'meditation-streak-mindfulness-progress-tracker': MeditationStreakMindfulnessProgressTrackerComponent_235,
+  'meditation-stress-reduction-impact-calculator': MeditationStressReductionImpactCalculatorComponent_236,
+  'meditation-time-progress-tracker-calculator': MeditationTimeProgressTrackerCalculatorComponent_237,
+  'meditation-time-progress-tracker': MeditationTimeProgressTrackerComponent_238,
+  'mediterranean-diet-compliance-calculator': MediterraneanDietComplianceCalculatorComponent_239,
+  'mediterranean-diet-score-calculator': MediterraneanDietScoreCalculatorComponent_240,
+  'memory-retention-percentage-calculator': MemoryRetentionPercentageCalculatorComponent_241,
+  'menopause-symptom-index-calculator': MenopauseSymptomIndexCalculatorComponent_242,
+  'menopause-symptom-index-wellness-calculator': MenopauseSymptomIndexWellnessCalculatorComponent_243,
+  'menstrual-cycle-phase-tracker-calculator': MenstrualCyclePhaseTrackerCalculatorComponent_244,
+  'menstrual-phase-workout-intensity-planner': MenstrualPhaseWorkoutIntensityPlannerComponent_245,
+  'mental-energy-drain-predictor': MentalEnergyDrainPredictorComponent_246,
+  'mental-fatigue-accumulation-tracker': MentalFatigueAccumulationTrackerComponent_247,
+  'mental-processing-speed-test-calculator': MentalProcessingSpeedTestCalculatorComponent_248,
+  'mental-recovery-from-stress-estimator': MentalRecoveryFromStressEstimatorComponent_249,
+  'metabolic-adaptation-rate-calculator': MetabolicAdaptationRateCalculatorComponent_250,
+  'mets-calories-burned-calculator': MetsCaloriesBurnedCalculatorComponent_251,
+  'microbreak-frequency-calculator-for-desk-jobs': MicrobreakFrequencyCalculatorForDeskJobsComponent_252,
+  'mindful-minutes-consistency-tracker': MindfulMinutesConsistencyTrackerComponent_253,
+  'mindful-minutes-tracking-calculator': MindfulMinutesTrackingCalculatorComponent_254,
+  'mindfulness-consistency-score-calculator': MindfulnessConsistencyScoreCalculatorComponent_255,
+  'mitochondrial-health-index': MitochondrialHealthIndexComponent_256,
+  'motivation-momentum-calculator': MotivationMomentumCalculatorComponent_257,
+  'multitasking-efficiency-calculator': MultitaskingEfficiencyCalculatorComponent_258,
+  'muscle-fiber-type-ratio-calculator': MuscleFiberTypeRatioCalculatorComponent_259,
+  'muscle-mass-percentage-calculator': MuscleMassPercentageCalculatorComponent_260,
+  'muscle-recovery-time-by-age-calculator': MuscleRecoveryTimeByAgeCalculatorComponent_261,
+  'muscle-soreness-recovery-estimator': MuscleSorenessRecoveryEstimatorComponent_262,
+  'muscular-imbalance-ratio-calculator': MuscularImbalanceRatioCalculatorComponent_263,
+  'myoglobin-oxygen-storage-calculator': MyoglobinOxygenStorageCalculatorComponent_264,
+  'nad-plus-optimization-estimator': NadPlusOptimizationEstimatorComponent_265,
+  'nap-duration-efficiency-calculator': NapDurationEfficiencyCalculatorComponent_266,
+  'neat-calculator': NeatCalculatorComponent_267,
+  'neat-impact-calculator': NeatImpactCalculatorComponent_268,
+  'net-carbs-vs-total-carbs-calculator': NetCarbsVsTotalCarbsCalculatorComponent_269,
+  'nutrient-absorption-efficiency-calculator': NutrientAbsorptionEfficiencyCalculatorComponent_270,
+  'nutrient-density-to-calorie-ratio-calculator': NutrientDensityToCalorieRatioCalculatorComponent_271,
+  'occupational-sedentary-risk-score-calculator': OccupationalSedentaryRiskScoreCalculatorComponent_272,
+  'occupational-sedentary-risk-score-wellness-calculator': OccupationalSedentaryRiskScoreWellnessCalculatorComponent_273,
+  'omega-6-to-omega-3-balance-calculator': Omega6ToOmega3BalanceCalculatorComponent_274,
+  'omega3-daily-requirement-calculator': Omega3DailyRequirementCalculatorComponent_275,
+  'one-rep-max-strength-calculator': OneRepMaxStrengthCalculatorComponent_276,
+  'optimal-bedtime-by-chronotype-calculator': OptimalBedtimeByChronotypeCalculatorComponent_277,
+  'ovulation-window-probability-advanced-calculator': OvulationWindowProbabilityAdvancedCalculatorComponent_278,
+  'oxidative-stress-index-calculator': OxidativeStressIndexCalculatorComponent_279,
+  'oxygen-advantage-efficiency-score': OxygenAdvantageEfficiencyScoreComponent_280,
+  'oxygen-debt-epoc-calculator': OxygenDebtEpocCalculatorComponent_281,
+  'oxygen-pulse-efficiency-calculator': OxygenPulseEfficiencyCalculatorComponent_282,
+  'paleo-compliance-score-calculator': PaleoComplianceScoreCalculatorComponent_283,
+  'paleo-diet-nutrient-coverage-calculator': PaleoDietNutrientCoverageCalculatorComponent_284,
+  'pdcaas-calculator': PdcaasCalculatorComponent_285,
+  'perimenopause-transition-stage-estimator': PerimenopauseTransitionStageEstimatorComponent_286,
+  'peripheral-resistance-index-calculator': PeripheralResistanceIndexCalculatorComponent_287,
+  'phone-dependency-index': PhoneDependencyIndexComponent_288,
+  'phosphorus-intake-calculator': PhosphorusIntakeCalculatorComponent_289,
+  'physical-therapy-exercise-load-calculator': PhysicalTherapyExerciseLoadCalculatorComponent_290,
+  'physical-therapy-session-intensity-calculator': PhysicalTherapySessionIntensityCalculatorComponent_291,
+  'plant-based-omega-3-conversion-calculator': PlantBasedOmega3ConversionCalculatorComponent_292,
+  'plant-based-protein-gap-calculator': PlantBasedProteinGapCalculatorComponent_293,
+  'platelet-count-risk-analyzer': PlateletCountRiskAnalyzerComponent_294,
+  'pms-symptom-score-calculator': PmsSymptomScoreCalculatorComponent_295,
+  'pms-symptom-score-wellness-calculator': PmsSymptomScoreWellnessCalculatorComponent_296,
+  'ponderal-index-calculator': PonderalIndexCalculatorComponent_297,
+  'positive-emotion-ratio-calculator': PositiveEmotionRatioCalculatorComponent_298,
+  'positive-vs-negative-thought-ratio-calculator': PositiveVsNegativeThoughtRatioCalculatorComponent_299,
+  'post-exercise-oxygen-consumption-calculator': PostExerciseOxygenConsumptionCalculatorComponent_300,
+  'post-injury-mobility-progress-calculator': PostInjuryMobilityProgressCalculatorComponent_301,
+  'post-surgery-calorie-needs-calculator': PostSurgeryCalorieNeedsCalculatorComponent_302,
+  'postpartum-calorie-needs-calculator': PostpartumCalorieNeedsCalculatorComponent_303,
+  'postpartum-hormonal-recovery-calculator': PostpartumHormonalRecoveryCalculatorComponent_304,
+  'posture-correction-progress-calculator': PostureCorrectionProgressCalculatorComponent_305,
+  'posture-score-calculator': PostureScoreCalculatorComponent_306,
+  'power-to-heart-rate-efficiency-calculator': PowerToHeartRateEfficiencyCalculatorComponent_307,
+  'power-to-weight-performance-index-calculator': PowerToWeightPerformanceIndexCalculatorComponent_308,
+  'prebiotic-fiber-target-calculator': PrebioticFiberTargetCalculatorComponent_309,
+  'pregnancy-weight-gain-calculator': PregnancyWeightGainCalculatorComponent_310,
+  'prenatal-vitamin-dosage-calculator': PrenatalVitaminDosageCalculatorComponent_311,
+  'prenatal-vitamin-dosage-wellness-calculator': PrenatalVitaminDosageWellnessCalculatorComponent_312,
+  'probiotic-daily-dose-estimator': ProbioticDailyDoseEstimatorComponent_313,
+  'progressive-overload-calculator': ProgressiveOverloadCalculatorComponent_314,
+  'protein-digestibility-score-diaas-calculator': ProteinDigestibilityScoreDiaasCalculatorComponent_315,
+  'protein-intake-calculator': ProteinIntakeCalculatorComponent_316,
+  'pulse-pressure-analyzer': PulsePressureAnalyzerComponent_317,
+  'range-of-motion-progress-calculator': RangeOfMotionProgressCalculatorComponent_318,
+  'reaction-time-benchmark-calculator': ReactionTimeBenchmarkCalculatorComponent_319,
+  'reaction-time-improvement-tracker': ReactionTimeImprovementTrackerComponent_320,
+  'recovery-heart-rate-calculator': RecoveryHeartRateCalculatorComponent_321,
+  'recovery-sleep-requirement-after-sleep-debt-calculator': RecoverySleepRequirementAfterSleepDebtCalculatorComponent_322,
+  'red-blood-cell-count-effect-on-vo2-max-calculator': RedBloodCellCountEffectOnVo2MaxCalculatorComponent_323,
+  'red-blood-cell-count-to-oxygen-capacity-calculator': RedBloodCellCountToOxygenCapacityCalculatorComponent_324,
+  'red-light-therapy-dose-calculator': RedLightTherapyDoseCalculatorComponent_325,
+  'relationship-satisfaction-score': RelationshipSatisfactionScoreComponent_326,
+  'relative-fat-mass-calculator': RelativeFatMassCalculatorComponent_327,
+  'rem-sleep-percentage-calculator': RemSleepPercentageCalculatorComponent_328,
+  'resilience-score-calculator': ResilienceScoreCalculatorComponent_329,
+  'respiratory-quotient-calculator': RespiratoryQuotientCalculatorComponent_330,
+  'rest-time-between-sets-calculator': RestTimeBetweenSetsCalculatorComponent_331,
+  'rest-vs-active-energy-burn-calculator': RestVsActiveEnergyBurnCalculatorComponent_332,
+  'resting-metabolic-rate-calculator': RestingMetabolicRateCalculatorComponent_333,
+  'resting-recovery-day-estimator': RestingRecoveryDayEstimatorComponent_334,
+  'reverse-dieting-calorie-increase-planner': ReverseDietingCalorieIncreasePlannerComponent_335,
+  'rowing-drag-factor-calculator': RowingDragFactorCalculatorComponent_336,
+  'rowing-split-calculator': RowingSplitCalculatorComponent_337,
+  'running-economy-calculator': RunningEconomyCalculatorComponent_338,
+  'running-pace-calculator': RunningPaceCalculatorComponent_339,
+  'satiety-index-calculator': SatietyIndexCalculatorComponent_340,
+  'satiety-vs-energy-density-graph-calculator': SatietyVsEnergyDensityGraphCalculatorComponent_341,
+  'sauna-detox-effectiveness-score': SaunaDetoxEffectivenessScoreComponent_342,
+  'sauna-session-detox-score-calculator': SaunaSessionDetoxScoreCalculatorComponent_343,
+  'screen-time-vs-sleep-impact-calculator': ScreenTimeVsSleepImpactCalculatorComponent_344,
+  'screen-time-vs-sleep-impact-wellness-calculator': ScreenTimeVsSleepImpactWellnessCalculatorComponent_345,
+  'screen-to-sleep-time-impact-estimator': ScreenToSleepTimeImpactEstimatorComponent_346,
+  'seasonal-energy-expenditure-calculator': SeasonalEnergyExpenditureCalculatorComponent_347,
+  'selenium-intake-calculator': SeleniumIntakeCalculatorComponent_348,
+  'self-esteem-growth-tracker': SelfEsteemGrowthTrackerComponent_349,
+  'sleep-balance-check-in': SleepBalanceCheckInComponent_350,
+  'sleep-consistency-score-calculator': SleepConsistencyScoreCalculatorComponent_351,
+  'sleep-cycle-alarm-time-optimizer': SleepCycleAlarmTimeOptimizerComponent_352,
+  'sleep-debt-calculator': SleepDebtCalculatorComponent_353,
+  'sleep-efficiency-calculator': SleepEfficiencyCalculatorComponent_354,
+  'sleep-optimization-routine-score': SleepOptimizationRoutineScoreComponent_355,
+  'sleep-phase-delay-syndrome-dspd-risk-calculator': SleepPhaseDelaySyndromeDspdRiskCalculatorComponent_356,
+  'sleep-position-pressure-calculator': SleepPositionPressureCalculatorComponent_357,
+  'sleep-quality-vs-longevity-correlation-calculator': SleepQualityVsLongevityCorrelationCalculatorComponent_358,
+  'sleep-quality-vs-productivity-correlation-calculator': SleepQualityVsProductivityCorrelationCalculatorComponent_359,
+  'sleep-quality-vs-screen-exposure-analyzer': SleepQualityVsScreenExposureAnalyzerComponent_360,
+  'sleep-restriction-adaptation-calculator': SleepRestrictionAdaptationCalculatorComponent_361,
+  'sleep-time-in-bed-wellness-index': SleepTimeInBedWellnessIndexComponent_362,
+  'soccer-vo2-requirement-calculator': SoccerVo2RequirementCalculatorComponent_363,
+  'social-connection-score-calculator': SocialConnectionScoreCalculatorComponent_364,
+  'sodium-potassium-ratio-calculator': SodiumPotassiumRatioCalculatorComponent_365,
+  'sodium-to-potassium-ratio-calculator': SodiumToPotassiumRatioCalculatorComponent_366,
+  'somatotype-calculator': SomatotypeCalculatorComponent_367,
+  'spine-load-l4-l5-pressure-calculator': SpineLoadL4L5PressureCalculatorComponent_368,
+  'standing-vs-sitting-calorie-burn-calculator': StandingVsSittingCalorieBurnCalculatorComponent_369,
+  'step-to-calorie-converter': StepToCalorieConverterComponent_370,
+  'step-to-heart-rate-efficiency-calculator': StepToHeartRateEfficiencyCalculatorComponent_371,
+  'strength-to-weight-ratio-calculator': StrengthToWeightRatioCalculatorComponent_372,
+  'stress-hormone-balance-calculator': StressHormoneBalanceCalculatorComponent_373,
+  'stress-level-self-assessment-calculator': StressLevelSelfAssessmentCalculatorComponent_374,
+  'stroke-index-cardiac-function-calculator': StrokeIndexCardiacFunctionCalculatorComponent_375,
+  'stroke-volume-calculator': StrokeVolumeCalculatorComponent_376,
+  'sugar-intake-calculator': SugarIntakeCalculatorComponent_377,
+  'supplement-stack-roi-calculator': SupplementStackRoiCalculatorComponent_378,
+  'sweat-rate-calculator-athletic-use': SweatRateCalculatorAthleticUseComponent_379,
+  'sweat-sodium-concentration-calculator': SweatSodiumConcentrationCalculatorComponent_380,
+  'swim-stroke-rate-calculator': SwimStrokeRateCalculatorComponent_381,
+  'swimming-lap-time-calculator': SwimmingLapTimeCalculatorComponent_382,
+  'swimming-swolf-score-calculator': SwimmingSwolfScoreCalculatorComponent_383,
+  'target-heart-rate-calculator': TargetHeartRateCalculatorComponent_384,
+  'tennis-serve-speed-calculator': TennisServeSpeedCalculatorComponent_385,
+  'testosterone-to-cortisol-ratio-calculator': TestosteroneToCortisolRatioCalculatorComponent_386,
+  'thermic-effect-of-food-calculator': ThermicEffectOfFoodCalculatorComponent_387,
+  'thyroid-function-basal-energy-calculator': ThyroidFunctionBasalEnergyCalculatorComponent_388,
+  'thyroid-function-tsh-t3-t4-balance-calculator': ThyroidFunctionTshT3T4BalanceCalculatorComponent_389,
+  'toddler-calorie-requirement-calculator': ToddlerCalorieRequirementCalculatorComponent_390,
+  'total-energy-expenditure-calculator': TotalEnergyExpenditureCalculatorComponent_391,
+  'training-fatigue-index-calculator': TrainingFatigueIndexCalculatorComponent_392,
+  'training-impulse-trimp-calculator': TrainingImpulseTrimpCalculatorComponent_393,
+  'training-stress-score-calculator': TrainingStressScoreCalculatorComponent_394,
+  'training-stress-score-tss-calculator': TrainingStressScoreTssCalculatorComponent_395,
+  'training-volume-calculator': TrainingVolumeCalculatorComponent_396,
+  'triathlon-split-time-calculator': TriathlonSplitTimeCalculatorComponent_397,
+  'uv-exposure-risk-calculator': UvExposureRiskCalculatorComponent_398,
+  'vegan-nutrient-completeness-calculator': VeganNutrientCompletenessCalculatorComponent_399,
+  'vegan-protein-requirement-calculator': VeganProteinRequirementCalculatorComponent_400,
+  'vitamin-a-retinol-equivalent-calculator': VitaminARetinolEquivalentCalculatorComponent_401,
+  'vitamin-b12-daily-requirement-calculator': VitaminB12DailyRequirementCalculatorComponent_402,
+  'vitamin-c-immunity-boost-score-calculator': VitaminCImmunityBoostScoreCalculatorComponent_403,
+  'vitamin-d-deficiency-risk-score-calculator': VitaminDDeficiencyRiskScoreCalculatorComponent_404,
+  'vitamin-d-sun-exposure-calculator': VitaminDSunExposureCalculatorComponent_405,
+  'vitamin-d-synthesis-from-sunlight-estimator': VitaminDSynthesisFromSunlightEstimatorComponent_406,
+  'vitamin-deficiency-risk-estimator': VitaminDeficiencyRiskEstimatorComponent_407,
+  'vitamin-e-alpha-tocopherol-calculator': VitaminEAlphaTocopherolCalculatorComponent_408,
+  'vitamin-k-daily-needs-estimator': VitaminKDailyNeedsEstimatorComponent_409,
+  'vitamin-mineral-rda-tracker-calculator': VitaminMineralRdaTrackerCalculatorComponent_410,
+  'vo2-kinetics-calculator': Vo2KineticsCalculatorComponent_411,
+  'vo2-max-calculator': Vo2MaxCalculatorComponent_412,
+  'vo2-max-estimation-calculator': Vo2MaxEstimationCalculatorComponent_413,
+  'vo2-per-kg-lean-mass-calculator': Vo2PerKgLeanMassCalculatorComponent_414,
+  'vo2-recovery-half-time-calculator': Vo2RecoveryHalfTimeCalculatorComponent_415,
+  'vo2-reserve-calculator': Vo2ReserveCalculatorComponent_416,
+  'waist-to-height-ratio-calculator': WaistToHeightRatioCalculatorComponent_417,
+  'waist-to-hip-ratio-calculator': WaistToHipRatioCalculatorComponent_418,
+  'water-fasting-electrolyte-needs-calculator': WaterFastingElectrolyteNeedsCalculatorComponent_419,
+  'water-footprint-of-food-calculator': WaterFootprintOfFoodCalculatorComponent_420,
+  'whole-food-vs-processed-calorie-ratio-calculator': WholeFoodVsProcessedCalorieRatioCalculatorComponent_421,
+  'work-burnout-recovery-time-calculator': WorkBurnoutRecoveryTimeCalculatorComponent_422,
+  'work-life-balance-time-allocation-calculator': WorkLifeBalanceTimeAllocationCalculatorComponent_423,
+  'work-stress-fatigue-index': WorkStressFatigueIndexComponent_424,
+  'workday-balance-overload-tendency-score': WorkdayBalanceOverloadTendencyScoreComponent_425,
+  'working-memory-capacity-estimator': WorkingMemoryCapacityEstimatorComponent_426,
+  'workplace-posture-risk-calculator': WorkplacePostureRiskCalculatorComponent_427,
+  'zinc-requirement-calculator': ZincRequirementCalculatorComponent_428,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

@@ -1,19 +1,29 @@
-'use client';
+import React from 'react';
+import type { ComponentType } from 'react';
 
-import React, { lazy, useState, useEffect } from 'react';
+import ContractDurationCalculatorComponent_0 from './contract-duration-calculator';
+import EmploymentAnniversaryCalculatorComponent_1 from './employment-anniversary-calculator';
+import FreelanceBillableHoursCalculatorComponent_2 from './freelance-billable-hours-calculator';
+import LastWorkingDayCalculatorComponent_3 from './last-working-day-calculator';
+import NightShiftDurationCalculatorComponent_4 from './night-shift-duration-calculator';
+import NoticePeriodCalculatorComponent_5 from './notice-period-calculator';
+import ProbationPeriodCalculatorComponent_6 from './probation-period-calculator';
+import RemoteWorkTimeZoneOverlapCalculatorComponent_7 from './remote-work-time-zone-overlap-calculator';
+import ShiftRotationCalculatorComponent_8 from './shift-rotation-calculator';
+import SplitShiftHoursCalculatorComponent_9 from './split-shift-hours-calculator';
 
-// Static map of calculators to avoid dynamic import context creation
-const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  'contract-duration-calculator': lazy(() => import('./contract-duration-calculator')),
-  'employment-anniversary-calculator': lazy(() => import('./employment-anniversary-calculator')),
-  'freelance-billable-hours-calculator': lazy(() => import('./freelance-billable-hours-calculator')),
-  'last-working-day-calculator': lazy(() => import('./last-working-day-calculator')),
-  'night-shift-duration-calculator': lazy(() => import('./night-shift-duration-calculator')),
-  'notice-period-calculator': lazy(() => import('./notice-period-calculator')),
-  'probation-period-calculator': lazy(() => import('./probation-period-calculator')),
-  'remote-work-time-zone-overlap-calculator': lazy(() => import('./remote-work-time-zone-overlap-calculator')),
-  'shift-rotation-calculator': lazy(() => import('./shift-rotation-calculator')),
-  'split-shift-hours-calculator': lazy(() => import('./split-shift-hours-calculator')),
+// Static imports for SSR - full content in initial HTML for SEO
+const components: Record<string, ComponentType> = {
+  'contract-duration-calculator': ContractDurationCalculatorComponent_0,
+  'employment-anniversary-calculator': EmploymentAnniversaryCalculatorComponent_1,
+  'freelance-billable-hours-calculator': FreelanceBillableHoursCalculatorComponent_2,
+  'last-working-day-calculator': LastWorkingDayCalculatorComponent_3,
+  'night-shift-duration-calculator': NightShiftDurationCalculatorComponent_4,
+  'notice-period-calculator': NoticePeriodCalculatorComponent_5,
+  'probation-period-calculator': ProbationPeriodCalculatorComponent_6,
+  'remote-work-time-zone-overlap-calculator': RemoteWorkTimeZoneOverlapCalculatorComponent_7,
+  'shift-rotation-calculator': ShiftRotationCalculatorComponent_8,
+  'split-shift-hours-calculator': SplitShiftHoursCalculatorComponent_9,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

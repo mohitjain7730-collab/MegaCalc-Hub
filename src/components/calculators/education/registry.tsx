@@ -1,25 +1,41 @@
-'use client';
+import React from 'react';
+import type { ComponentType } from 'react';
 
-import React, { lazy, useState, useEffect } from 'react';
+import AveragePercentageCalculatorComponent_0 from './average-percentage-calculator';
+import ComparativeDifferenceCalculatorComponent_1 from './comparative-difference-calculator';
+import CompoundingIncreaseCalculatorComponent_2 from './compounding-increase-calculator';
+import DoublingTimeCalculatorComponent_3 from './doubling-time-calculator';
+import FractionToPercentCalculatorComponent_4 from './fraction-to-percent-calculator';
+import FuelCostCalculatorComponent_5 from './fuel-cost-calculator';
+import HistoricChangeCalculatorComponent_6 from './historic-change-calculator';
+import InvestmentGrowthCalculatorComponent_7 from './investment-growth-calculator';
+import PercentErrorCalculatorComponent_8 from './percent-error-calculator';
+import PercentToGoalCalculatorComponent_9 from './percent-to-goal-calculator';
+import PercentageOfAPercentageCalculatorComponent_10 from './percentage-of-a-percentage-calculator';
+import PercentagePointCalculatorComponent_11 from './percentage-point-calculator';
+import RelativeChangeCalculatorComponent_12 from './relative-change-calculator';
+import SlopePercentageCalculatorComponent_13 from './slope-percentage-calculator';
+import TimePercentageCalculatorComponent_14 from './time-percentage-calculator';
+import ValuePercentageCalculatorComponent_15 from './value-percentage-calculator';
 
-// Static map of calculators to avoid dynamic import context creation
-const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  'average-percentage-calculator': lazy(() => import('./average-percentage-calculator')),
-  'comparative-difference-calculator': lazy(() => import('./comparative-difference-calculator')),
-  'compounding-increase-calculator': lazy(() => import('./compounding-increase-calculator')),
-  'doubling-time-calculator': lazy(() => import('./doubling-time-calculator')),
-  'fraction-to-percent-calculator': lazy(() => import('./fraction-to-percent-calculator')),
-  'fuel-cost-calculator': lazy(() => import('./fuel-cost-calculator')),
-  'historic-change-calculator': lazy(() => import('./historic-change-calculator')),
-  'investment-growth-calculator': lazy(() => import('./investment-growth-calculator')),
-  'percent-error-calculator': lazy(() => import('./percent-error-calculator')),
-  'percent-to-goal-calculator': lazy(() => import('./percent-to-goal-calculator')),
-  'percentage-of-a-percentage-calculator': lazy(() => import('./percentage-of-a-percentage-calculator')),
-  'percentage-point-calculator': lazy(() => import('./percentage-point-calculator')),
-  'relative-change-calculator': lazy(() => import('./relative-change-calculator')),
-  'slope-percentage-calculator': lazy(() => import('./slope-percentage-calculator')),
-  'time-percentage-calculator': lazy(() => import('./time-percentage-calculator')),
-  'value-percentage-calculator': lazy(() => import('./value-percentage-calculator')),
+// Static imports for SSR - full content in initial HTML for SEO
+const components: Record<string, ComponentType> = {
+  'average-percentage-calculator': AveragePercentageCalculatorComponent_0,
+  'comparative-difference-calculator': ComparativeDifferenceCalculatorComponent_1,
+  'compounding-increase-calculator': CompoundingIncreaseCalculatorComponent_2,
+  'doubling-time-calculator': DoublingTimeCalculatorComponent_3,
+  'fraction-to-percent-calculator': FractionToPercentCalculatorComponent_4,
+  'fuel-cost-calculator': FuelCostCalculatorComponent_5,
+  'historic-change-calculator': HistoricChangeCalculatorComponent_6,
+  'investment-growth-calculator': InvestmentGrowthCalculatorComponent_7,
+  'percent-error-calculator': PercentErrorCalculatorComponent_8,
+  'percent-to-goal-calculator': PercentToGoalCalculatorComponent_9,
+  'percentage-of-a-percentage-calculator': PercentageOfAPercentageCalculatorComponent_10,
+  'percentage-point-calculator': PercentagePointCalculatorComponent_11,
+  'relative-change-calculator': RelativeChangeCalculatorComponent_12,
+  'slope-percentage-calculator': SlopePercentageCalculatorComponent_13,
+  'time-percentage-calculator': TimePercentageCalculatorComponent_14,
+  'value-percentage-calculator': ValuePercentageCalculatorComponent_15,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

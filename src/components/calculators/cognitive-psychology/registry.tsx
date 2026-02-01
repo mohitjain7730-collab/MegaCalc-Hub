@@ -1,19 +1,29 @@
-'use client';
+import React from 'react';
+import type { ComponentType } from 'react';
 
-import React, { lazy, useState, useEffect } from 'react';
+import AttentionSpanEstimatorComponent_0 from './attention-span-estimator';
+import CognitiveLoadCalculatorComponent_1 from './cognitive-load-calculator';
+import EmotionalValenceScoringCalculatorComponent_2 from './emotional-valence-scoring-calculator';
+import IqScoreEstimatorComponent_3 from './iq-score-estimator';
+import MemorySpanCalculatorComponent_4 from './memory-span-calculator';
+import MentalFatigueIndexCalculatorComponent_5 from './mental-fatigue-index-calculator';
+import PersonalityTraitCalculatorComponent_6 from './personality-trait-calculator';
+import SleepDebtCalculatorComponent_7 from './sleep-debt-calculator';
+import StressLevelIndexCalculatorComponent_8 from './stress-level-index-calculator';
+import StroopEffectReactionTimeCalculatorComponent_9 from './stroop-effect-reaction-time-calculator';
 
-// Static map of calculators to avoid dynamic import context creation
-const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  'attention-span-estimator': lazy(() => import('./attention-span-estimator')),
-  'cognitive-load-calculator': lazy(() => import('./cognitive-load-calculator')),
-  'emotional-valence-scoring-calculator': lazy(() => import('./emotional-valence-scoring-calculator')),
-  'iq-score-estimator': lazy(() => import('./iq-score-estimator')),
-  'memory-span-calculator': lazy(() => import('./memory-span-calculator')),
-  'mental-fatigue-index-calculator': lazy(() => import('./mental-fatigue-index-calculator')),
-  'personality-trait-calculator': lazy(() => import('./personality-trait-calculator')),
-  'sleep-debt-calculator': lazy(() => import('./sleep-debt-calculator')),
-  'stress-level-index-calculator': lazy(() => import('./stress-level-index-calculator')),
-  'stroop-effect-reaction-time-calculator': lazy(() => import('./stroop-effect-reaction-time-calculator')),
+// Static imports for SSR - full content in initial HTML for SEO
+const components: Record<string, ComponentType> = {
+  'attention-span-estimator': AttentionSpanEstimatorComponent_0,
+  'cognitive-load-calculator': CognitiveLoadCalculatorComponent_1,
+  'emotional-valence-scoring-calculator': EmotionalValenceScoringCalculatorComponent_2,
+  'iq-score-estimator': IqScoreEstimatorComponent_3,
+  'memory-span-calculator': MemorySpanCalculatorComponent_4,
+  'mental-fatigue-index-calculator': MentalFatigueIndexCalculatorComponent_5,
+  'personality-trait-calculator': PersonalityTraitCalculatorComponent_6,
+  'sleep-debt-calculator': SleepDebtCalculatorComponent_7,
+  'stress-level-index-calculator': StressLevelIndexCalculatorComponent_8,
+  'stroop-effect-reaction-time-calculator': StroopEffectReactionTimeCalculatorComponent_9,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

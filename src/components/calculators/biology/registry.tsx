@@ -1,17 +1,25 @@
-'use client';
+import React from 'react';
+import type { ComponentType } from 'react';
 
-import React, { lazy, useState, useEffect } from 'react';
+import AnnealingTemperatureCalculatorComponent_0 from './annealing-temperature-calculator';
+import CellDilutionCalculatorComponent_1 from './cell-dilution-calculator';
+import CellDoublingTimeCalculatorComponent_2 from './cell-doubling-time-calculator';
+import DnaConcentrationCalculatorComponent_3 from './dna-concentration-calculator';
+import GenerationTimeCalculatorComponent_4 from './generation-time-calculator';
+import LigationCalculatorComponent_5 from './ligation-calculator';
+import LogReductionCalculatorComponent_6 from './log-reduction-calculator';
+import ProteinConcentrationCalculatorComponent_7 from './protein-concentration-calculator';
 
-// Static map of calculators to avoid dynamic import context creation
-const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-  'annealing-temperature-calculator': lazy(() => import('./annealing-temperature-calculator')),
-  'cell-dilution-calculator': lazy(() => import('./cell-dilution-calculator')),
-  'cell-doubling-time-calculator': lazy(() => import('./cell-doubling-time-calculator')),
-  'dna-concentration-calculator': lazy(() => import('./dna-concentration-calculator')),
-  'generation-time-calculator': lazy(() => import('./generation-time-calculator')),
-  'ligation-calculator': lazy(() => import('./ligation-calculator')),
-  'log-reduction-calculator': lazy(() => import('./log-reduction-calculator')),
-  'protein-concentration-calculator': lazy(() => import('./protein-concentration-calculator')),
+// Static imports for SSR - full content in initial HTML for SEO
+const components: Record<string, ComponentType> = {
+  'annealing-temperature-calculator': AnnealingTemperatureCalculatorComponent_0,
+  'cell-dilution-calculator': CellDilutionCalculatorComponent_1,
+  'cell-doubling-time-calculator': CellDoublingTimeCalculatorComponent_2,
+  'dna-concentration-calculator': DnaConcentrationCalculatorComponent_3,
+  'generation-time-calculator': GenerationTimeCalculatorComponent_4,
+  'ligation-calculator': LigationCalculatorComponent_5,
+  'log-reduction-calculator': LogReductionCalculatorComponent_6,
+  'protein-concentration-calculator': ProteinConcentrationCalculatorComponent_7,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
