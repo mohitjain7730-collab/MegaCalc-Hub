@@ -130,5 +130,11 @@ export const indexableCalculatorSlugs = [
     'cost-of-delaying-savings-by-1-year-calculator',
     'side-income-impact-on-savings-calculator',
     'expense-reduction-vs-income-increase-calculator',
-    'sip-vs-lump-sum-return-difference-calculator'
+    'sip-vs-lump-sum-return-difference-calculator',
+    'investment-delay-cost-calculator',
+    'inflation-adjusted-return-calculator',
+    'asset-allocation-drift-calculator',
+    'rebalancing-frequency-impact-calculator',
+    'sequence-of-returns-risk-calculator',
+    'compounding-loss-from-early-withdrawal-calculator'
 ];

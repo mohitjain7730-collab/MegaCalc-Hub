@@ -394,6 +394,12 @@ const CostOfDelayingSavingsBy1YearCalculatorComponent_388 = dynamic(() => import
 const SideIncomeImpactOnSavingsCalculatorComponent_389 = dynamic(() => import('./side-income-impact-on-savings-calculator'));
 const ExpenseReductionVsIncomeIncreaseCalculatorComponent_390 = dynamic(() => import('./expense-reduction-vs-income-increase-calculator'));
 const SipVsLumpSumReturnDifferenceCalculatorComponent_391 = dynamic(() => import('./sip-vs-lump-sum-return-difference-calculator'));
+const InvestmentDelayCostCalculatorComponent_392 = dynamic(() => import('./investment-delay-cost-calculator'));
+const InflationAdjustedReturnCalculatorComponent_393 = dynamic(() => import('./inflation-adjusted-return-calculator'));
+const AssetAllocationDriftCalculatorComponent_394 = dynamic(() => import('./asset-allocation-drift-calculator'));
+const RebalancingFrequencyImpactCalculatorComponent_395 = dynamic(() => import('./rebalancing-frequency-impact-calculator'));
+const SequenceOfReturnsRiskCalculatorComponent_396 = dynamic(() => import('./sequence-of-returns-risk-calculator'));
+const CompoundingLossFromEarlyWithdrawalCalculatorComponent_397 = dynamic(() => import('./compounding-loss-from-early-withdrawal-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {
@@ -526,6 +532,12 @@ const components: Record<string, ComponentType> = {
   'side-income-impact-on-savings-calculator': SideIncomeImpactOnSavingsCalculatorComponent_389,
   'expense-reduction-vs-income-increase-calculator': ExpenseReductionVsIncomeIncreaseCalculatorComponent_390,
   'sip-vs-lump-sum-return-difference-calculator': SipVsLumpSumReturnDifferenceCalculatorComponent_391,
+  'investment-delay-cost-calculator': InvestmentDelayCostCalculatorComponent_392,
+  'inflation-adjusted-return-calculator': InflationAdjustedReturnCalculatorComponent_393,
+  'asset-allocation-drift-calculator': AssetAllocationDriftCalculatorComponent_394,
+  'rebalancing-frequency-impact-calculator': RebalancingFrequencyImpactCalculatorComponent_395,
+  'sequence-of-returns-risk-calculator': SequenceOfReturnsRiskCalculatorComponent_396,
+  'compounding-loss-from-early-withdrawal-calculator': CompoundingLossFromEarlyWithdrawalCalculatorComponent_397,
   'employer-health-plan-tax-savings-calculator': EmployerHealthPlanTaxSavingsCalculatorComponent_117,
   'enterprise-value-bridge-calculator': EnterpriseValueBridgeCalculatorComponent_118,
   'enterprise-value-calculator': EnterpriseValueCalculatorComponent_119,

@@ -3465,5 +3465,59 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "SIP vs Lump Sum Return Difference Calculator",
     "metaDescription": "Compare FV of lump sum vs SIP with same total invested and same period. See dollar and percentage return difference."
+  },
+  {
+    "id": 10255,
+    "name": "Investment Delay Cost Calculator",
+    "description": "Calculate the dollar cost of delaying a lump-sum investment by X years. Same lump sum, same end date—compare FV if you invest now vs after the delay.",
+    "slug": "investment-delay-cost-calculator",
+    "category": "finance",
+    "metaTitle": "Investment Delay Cost Calculator",
+    "metaDescription": "See how much you lose by waiting to invest a lump sum. Compare FV if you invest now vs after a delay (same end date)."
+  },
+  {
+    "id": 10256,
+    "name": "Inflation-Adjusted Return Calculator (Real Return)",
+    "description": "Convert nominal (stated) return to real (inflation-adjusted) return. See purchasing power growth and optional future value in today's dollars.",
+    "slug": "inflation-adjusted-return-calculator",
+    "category": "finance",
+    "metaTitle": "Inflation-Adjusted Return Calculator (Real Return)",
+    "metaDescription": "Convert nominal return to real (inflation-adjusted) return. See purchasing power growth and FV in today's dollars."
+  },
+  {
+    "id": 10257,
+    "name": "Asset Allocation Drift Calculator",
+    "description": "See how much your portfolio allocation has drifted from target when you do not rebalance. Enter initial value, target % stocks, returns, and years.",
+    "slug": "asset-allocation-drift-calculator",
+    "category": "finance",
+    "metaTitle": "Asset Allocation Drift Calculator",
+    "metaDescription": "Calculate allocation drift from target when you do not rebalance. See current vs target allocation and when to rebalance."
+  },
+  {
+    "id": 10258,
+    "name": "Rebalancing Frequency Impact Calculator",
+    "description": "Compare terminal value with rebalancing (annual, semi-annual, quarterly, monthly) vs without rebalancing. See the impact of rebalancing frequency on portfolio value.",
+    "slug": "rebalancing-frequency-impact-calculator",
+    "category": "finance",
+    "metaTitle": "Rebalancing Frequency Impact Calculator",
+    "metaDescription": "Compare rebalancing vs no rebalancing. See rebalancing bonus or cost and how frequency affects terminal value."
+  },
+  {
+    "id": 10259,
+    "name": "Sequence of Returns Risk Calculator",
+    "description": "See how the order of returns affects a portfolio with withdrawals. Compare bad years first vs good years first—same average return, different outcome.",
+    "slug": "sequence-of-returns-risk-calculator",
+    "category": "finance",
+    "metaTitle": "Sequence of Returns Risk Calculator",
+    "metaDescription": "See how order of returns affects portfolio with withdrawals. Compare bad years first vs good years first."
+  },
+  {
+    "id": 10260,
+    "name": "Compounding Loss from Early Withdrawal Calculator",
+    "description": "See how much future growth you give up by withdrawing money early. Enter amount withdrawn, expected return, and years remaining—get the compounding loss in dollars.",
+    "slug": "compounding-loss-from-early-withdrawal-calculator",
+    "category": "finance",
+    "metaTitle": "Compounding Loss from Early Withdrawal Calculator",
+    "metaDescription": "See how much future growth you give up by withdrawing early. Get compounding loss in dollars and percentage."
   }
 ];
