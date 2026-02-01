@@ -3375,5 +3375,23 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Emergency Fund Calculator for Single Income Households - 6–12 Months",
     "metaDescription": "Calculate emergency fund target for single-income households: 6–12 months of essential expenses, no backup earner. Risk-adjusted recommendations."
+  },
+  {
+    "id": 10245,
+    "name": "Emergency Fund Calculator for Dual Income Families",
+    "description": "Calculate emergency fund target for dual-income families: recommended 3–9 months of essential expenses when one income can cover while the other searches. Includes housing, food, utilities, debt, insurance, and risk factors (earner stability, dependents).",
+    "slug": "emergency-fund-calculator-dual-income-families",
+    "category": "finance",
+    "metaTitle": "Emergency Fund Calculator for Dual Income Families - 3–9 Months",
+    "metaDescription": "Calculate emergency fund target for dual-income families: 3–9 months of essential expenses, one income as backup. Risk-adjusted recommendations."
+  },
+  {
+    "id": 10246,
+    "name": "Emergency Fund Calculator for Freelancers",
+    "description": "Calculate emergency fund target for freelancers: recommended 6–12+ months of essential expenses given variable income, no employer benefits, and client concentration risk. Includes housing, food, utilities, debt, insurance, and freelancer-specific risk factors.",
+    "slug": "emergency-fund-calculator-freelancers",
+    "category": "finance",
+    "metaTitle": "Emergency Fund Calculator for Freelancers - 6–12+ Months",
+    "metaDescription": "Calculate emergency fund target for freelancers: 6–12+ months of essential expenses, variable income and client concentration. Risk-adjusted recommendations."
   }
 ];

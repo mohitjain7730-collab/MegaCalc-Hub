@@ -384,6 +384,8 @@ const MarketingSpendImpactOnRunwayCalculatorComponent_378 = dynamic(() => import
 const UnitEconomicsCalculatorStartupComponent_379 = dynamic(() => import('./unit-economics-calculator-startup'));
 const BootstrappedStartupGrowthCalculatorComponent_380 = dynamic(() => import('./bootstrapped-startup-growth-calculator'));
 const EmergencyFundCalculatorSingleIncomeHouseholdsComponent_381 = dynamic(() => import('./emergency-fund-calculator-single-income-households'));
+const EmergencyFundCalculatorDualIncomeFamiliesComponent_382 = dynamic(() => import('./emergency-fund-calculator-dual-income-families'));
+const EmergencyFundCalculatorFreelancersComponent_383 = dynamic(() => import('./emergency-fund-calculator-freelancers'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {
@@ -506,6 +508,8 @@ const components: Record<string, ComponentType> = {
   'emergency-fund-calculator': EmergencyFundCalculatorComponent_115,
   'emergency-fund-requirement-calculator': EmergencyFundRequirementCalculatorComponent_116,
   'emergency-fund-calculator-single-income-households': EmergencyFundCalculatorSingleIncomeHouseholdsComponent_381,
+  'emergency-fund-calculator-dual-income-families': EmergencyFundCalculatorDualIncomeFamiliesComponent_382,
+  'emergency-fund-calculator-freelancers': EmergencyFundCalculatorFreelancersComponent_383,
   'employer-health-plan-tax-savings-calculator': EmployerHealthPlanTaxSavingsCalculatorComponent_117,
   'enterprise-value-bridge-calculator': EnterpriseValueBridgeCalculatorComponent_118,
   'enterprise-value-calculator': EnterpriseValueCalculatorComponent_119,
