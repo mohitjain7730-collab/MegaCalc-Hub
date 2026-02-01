@@ -3339,5 +3339,23 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Hiring Cost Impact on Runway Calculator - Startup Headcount",
     "metaDescription": "Calculate how hiring affects startup runway: new monthly burn, new runway, and months lost. Fully loaded and one-time hire costs."
+  },
+  {
+    "id": 10241,
+    "name": "Marketing Spend Impact on Runway Calculator",
+    "description": "See how additional marketing spend affects runway. Enter current cash, monthly burn, and additional monthly marketing spend to get new runway, months lost, and percentage impact. Optional one-time campaign cost.",
+    "slug": "marketing-spend-impact-on-runway-calculator",
+    "category": "finance",
+    "metaTitle": "Marketing Spend Impact on Runway Calculator - Startup Marketing",
+    "metaDescription": "Calculate how marketing spend affects startup runway: new monthly burn, new runway, and months lost. Recurring and one-time marketing costs."
+  },
+  {
+    "id": 10242,
+    "name": "Unit Economics Calculator (Startup)",
+    "description": "Calculate startup unit economics: LTV (Lifetime Value), LTV:CAC ratio, CAC payback period in months, contribution margin per customer, and customer lifetime. Uses ARPU, gross margin %, monthly churn %, and CAC.",
+    "slug": "unit-economics-calculator-startup",
+    "category": "finance",
+    "metaTitle": "Unit Economics Calculator (Startup) - LTV, CAC, Payback",
+    "metaDescription": "Calculate LTV, LTV:CAC ratio, CAC payback, and contribution margin from ARPU, gross margin, churn, and CAC. Startup unit economics benchmarks."
   }
 ];

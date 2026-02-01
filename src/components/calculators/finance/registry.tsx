@@ -380,6 +380,8 @@ const WorkingCapitalCalculatorComponent_374 = dynamic(() => import('./working-ca
 const WorkingCapitalRequirementEstimatorComponent_375 = dynamic(() => import('./working-capital-requirement-estimator'));
 const YieldToCallCalculatorComponent_376 = dynamic(() => import('./yield-to-call-calculator'));
 const ZeroCouponBondValuationCalculatorComponent_377 = dynamic(() => import('./zero-coupon-bond-valuation-calculator'));
+const MarketingSpendImpactOnRunwayCalculatorComponent_378 = dynamic(() => import('./marketing-spend-impact-on-runway-calculator'));
+const UnitEconomicsCalculatorStartupComponent_379 = dynamic(() => import('./unit-economics-calculator-startup'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {
@@ -602,6 +604,7 @@ const components: Record<string, ComponentType> = {
   'margin-leverage-calculator-fixed': MarginLeverageCalculatorFixedComponent_216,
   'margin-leverage-calculator': MarginLeverageCalculatorComponent_217,
   'margin-of-safety-calculator': MarginOfSafetyCalculatorComponent_218,
+  'marketing-spend-impact-on-runway-calculator': MarketingSpendImpactOnRunwayCalculatorComponent_378,
   'market-value-added-mva-calculator': MarketValueAddedMvaCalculatorComponent_219,
   'maximum-drawdown-calculator': MaximumDrawdownCalculatorComponent_220,
   'mean-variance-optimization-calculator': MeanVarianceOptimizationCalculatorComponent_221,
@@ -746,6 +749,7 @@ const components: Record<string, ComponentType> = {
   'tracking-difference-calculator': TrackingDifferenceCalculatorComponent_360,
   'tracking-error-calculator': TrackingErrorCalculatorComponent_361,
   'treynor-ratio-calculator': TreynorRatioCalculatorComponent_362,
+  'unit-economics-calculator-startup': UnitEconomicsCalculatorStartupComponent_379,
   'value-at-risk-calculator': ValueAtRiskCalculatorComponent_363,
   'value-at-risk-historical-simulation-calculator': ValueAtRiskHistoricalSimulationCalculatorComponent_364,
   'volatility-standard-deviation-calculator': VolatilityStandardDeviationCalculatorComponent_365,
