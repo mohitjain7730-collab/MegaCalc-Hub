@@ -331,7 +331,8 @@ export default function DividendReinvestmentGrowthCalculator() {
                 <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
                   <AlertCircle className="h-6 w-6" />
                   Considerations
-                </CardHeader>
+                </CardTitle>
+              </CardHeader>
                 <CardContent className="space-y-4">
                   {result.considerations.map((c, i) => (
                     <div key={i} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
