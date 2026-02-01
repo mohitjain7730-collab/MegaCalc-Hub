@@ -3393,5 +3393,77 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Emergency Fund Calculator for Freelancers - 6–12+ Months",
     "metaDescription": "Calculate emergency fund target for freelancers: 6–12+ months of essential expenses, variable income and client concentration. Risk-adjusted recommendations."
+  },
+  {
+    "id": 10247,
+    "name": "Emergency Fund Calculator for Business Owners",
+    "description": "Calculate emergency fund target for business owners: recommended 6–12+ months of personal essential expenses given income tied to business, revenue concentration, and industry risk. Includes housing, food, utilities, debt, insurance, and business-owner risk factors.",
+    "slug": "emergency-fund-calculator-business-owners",
+    "category": "finance",
+    "metaTitle": "Emergency Fund Calculator for Business Owners - 6–12+ Months",
+    "metaDescription": "Calculate emergency fund target for business owners: 6–12+ months of personal essential expenses, income from business. Risk-adjusted recommendations."
+  },
+  {
+    "id": 10248,
+    "name": "Paycheck-to-Paycheck Risk Calculator",
+    "description": "Assess paycheck-to-paycheck risk: expense-to-income ratio, months of buffer from liquid savings, and risk level. See how close income is to covering essential expenses and how much buffer you have.",
+    "slug": "paycheck-to-paycheck-risk-calculator",
+    "category": "finance",
+    "metaTitle": "Paycheck-to-Paycheck Risk Calculator - Expense Ratio & Buffer",
+    "metaDescription": "Assess paycheck-to-paycheck risk: expense-to-income ratio, months of buffer, and risk level. Reduce risk with savings and lower expense ratio."
+  },
+  {
+    "id": 10249,
+    "name": "Monthly Savings Gap Calculator",
+    "description": "Calculate the gap between required monthly savings to reach a goal and your current monthly savings. See how much more to save per month or how long it would take at your current rate.",
+    "slug": "monthly-savings-gap-calculator",
+    "category": "finance",
+    "metaTitle": "Monthly Savings Gap Calculator - Required vs Current",
+    "metaDescription": "Calculate required monthly savings, the gap (shortfall or surplus), and months to goal at your current rate. Close the gap by increasing savings or adjusting timeline."
+  },
+  {
+    "id": 10250,
+    "name": "Lifestyle Inflation Calculator",
+    "description": "See how lifestyle inflation—spending more as income rises instead of saving the raise—impacts your savings. Compare income and savings rate before vs after a raise.",
+    "slug": "lifestyle-inflation-calculator",
+    "category": "finance",
+    "metaTitle": "Lifestyle Inflation Calculator - Save the Raise",
+    "metaDescription": "Compare spending and savings before vs after a raise. See lifestyle inflation amount and savings sacrificed. Resist lifestyle creep by saving the raise."
+  },
+  {
+    "id": 10251,
+    "name": "Cost of Delaying Savings by 1 Year Calculator",
+    "description": "See how much less you end up with if you delay starting to save by one year. Compares future value starting now vs starting in 1 year.",
+    "slug": "cost-of-delaying-savings-by-1-year-calculator",
+    "category": "finance",
+    "metaTitle": "Cost of Delaying Savings by 1 Year Calculator",
+    "metaDescription": "See the dollar and percentage cost of delaying savings by exactly one year. Compare future value start now vs start in 1 year."
+  },
+  {
+    "id": 10252,
+    "name": "Side Income Impact on Savings Calculator",
+    "description": "See how side income boosts your savings. Enter current savings, side income, and % to save; get additional monthly and annual savings and months sooner to goal.",
+    "slug": "side-income-impact-on-savings-calculator",
+    "category": "finance",
+    "metaTitle": "Side Income Impact on Savings Calculator",
+    "metaDescription": "Calculate additional monthly and annual savings from side income and how many months sooner you could reach a savings goal."
+  },
+  {
+    "id": 10253,
+    "name": "Expense Reduction vs Income Increase Calculator",
+    "description": "Compare two ways to add the same amount to monthly savings: cut expenses (1:1) or increase income. Shows exact expense cut or gross income needed with optional marginal tax rate.",
+    "slug": "expense-reduction-vs-income-increase-calculator",
+    "category": "finance",
+    "metaTitle": "Expense Reduction vs Income Increase Calculator",
+    "metaDescription": "Compare cutting expenses (1:1) vs increasing income to add the same monthly savings. See exact expense cut or gross income needed with optional tax rate."
+  },
+  {
+    "id": 10254,
+    "name": "SIP vs Lump Sum Return Difference Calculator",
+    "description": "Compare future value of investing the same total as lump sum at start vs equal monthly SIP. Same cash outlay, same period, same return; only timing differs.",
+    "slug": "sip-vs-lump-sum-return-difference-calculator",
+    "category": "finance",
+    "metaTitle": "SIP vs Lump Sum Return Difference Calculator",
+    "metaDescription": "Compare FV of lump sum vs SIP with same total invested and same period. See dollar and percentage return difference."
   }
 ];

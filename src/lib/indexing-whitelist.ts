@@ -122,5 +122,13 @@ export const indexableCalculatorSlugs = [
     'bootstrapped-startup-growth-calculator',
     'emergency-fund-calculator-single-income-households',
     'emergency-fund-calculator-dual-income-families',
-    'emergency-fund-calculator-freelancers'
+    'emergency-fund-calculator-freelancers',
+    'emergency-fund-calculator-business-owners',
+    'paycheck-to-paycheck-risk-calculator',
+    'monthly-savings-gap-calculator',
+    'lifestyle-inflation-calculator',
+    'cost-of-delaying-savings-by-1-year-calculator',
+    'side-income-impact-on-savings-calculator',
+    'expense-reduction-vs-income-increase-calculator',
+    'sip-vs-lump-sum-return-difference-calculator'
 ];

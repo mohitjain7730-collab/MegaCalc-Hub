@@ -386,6 +386,14 @@ const BootstrappedStartupGrowthCalculatorComponent_380 = dynamic(() => import('.
 const EmergencyFundCalculatorSingleIncomeHouseholdsComponent_381 = dynamic(() => import('./emergency-fund-calculator-single-income-households'));
 const EmergencyFundCalculatorDualIncomeFamiliesComponent_382 = dynamic(() => import('./emergency-fund-calculator-dual-income-families'));
 const EmergencyFundCalculatorFreelancersComponent_383 = dynamic(() => import('./emergency-fund-calculator-freelancers'));
+const EmergencyFundCalculatorBusinessOwnersComponent_384 = dynamic(() => import('./emergency-fund-calculator-business-owners'));
+const PaycheckToPaycheckRiskCalculatorComponent_385 = dynamic(() => import('./paycheck-to-paycheck-risk-calculator'));
+const MonthlySavingsGapCalculatorComponent_386 = dynamic(() => import('./monthly-savings-gap-calculator'));
+const LifestyleInflationCalculatorComponent_387 = dynamic(() => import('./lifestyle-inflation-calculator'));
+const CostOfDelayingSavingsBy1YearCalculatorComponent_388 = dynamic(() => import('./cost-of-delaying-savings-by-1-year-calculator'));
+const SideIncomeImpactOnSavingsCalculatorComponent_389 = dynamic(() => import('./side-income-impact-on-savings-calculator'));
+const ExpenseReductionVsIncomeIncreaseCalculatorComponent_390 = dynamic(() => import('./expense-reduction-vs-income-increase-calculator'));
+const SipVsLumpSumReturnDifferenceCalculatorComponent_391 = dynamic(() => import('./sip-vs-lump-sum-return-difference-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {
@@ -510,6 +518,14 @@ const components: Record<string, ComponentType> = {
   'emergency-fund-calculator-single-income-households': EmergencyFundCalculatorSingleIncomeHouseholdsComponent_381,
   'emergency-fund-calculator-dual-income-families': EmergencyFundCalculatorDualIncomeFamiliesComponent_382,
   'emergency-fund-calculator-freelancers': EmergencyFundCalculatorFreelancersComponent_383,
+  'emergency-fund-calculator-business-owners': EmergencyFundCalculatorBusinessOwnersComponent_384,
+  'paycheck-to-paycheck-risk-calculator': PaycheckToPaycheckRiskCalculatorComponent_385,
+  'monthly-savings-gap-calculator': MonthlySavingsGapCalculatorComponent_386,
+  'lifestyle-inflation-calculator': LifestyleInflationCalculatorComponent_387,
+  'cost-of-delaying-savings-by-1-year-calculator': CostOfDelayingSavingsBy1YearCalculatorComponent_388,
+  'side-income-impact-on-savings-calculator': SideIncomeImpactOnSavingsCalculatorComponent_389,
+  'expense-reduction-vs-income-increase-calculator': ExpenseReductionVsIncomeIncreaseCalculatorComponent_390,
+  'sip-vs-lump-sum-return-difference-calculator': SipVsLumpSumReturnDifferenceCalculatorComponent_391,
   'employer-health-plan-tax-savings-calculator': EmployerHealthPlanTaxSavingsCalculatorComponent_117,
   'enterprise-value-bridge-calculator': EnterpriseValueBridgeCalculatorComponent_118,
   'enterprise-value-calculator': EnterpriseValueCalculatorComponent_119,
