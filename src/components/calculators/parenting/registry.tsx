@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import BabyFeedingAmountCalculatorComponent_0 from './baby-feeding-amount-calculator';
-import ChildcareCostAffordabilityCalculatorComponent_1 from './childcare-cost-affordability-calculator';
-import CollegeSavingsGoalCalculatorComponent_2 from './college-savings-goal-calculator';
-import DueDateCalculatorComponent_3 from './due-date-calculator';
+const BabyFeedingAmountCalculatorComponent_0 = dynamic(() => import('./baby-feeding-amount-calculator'));
+const ChildcareCostAffordabilityCalculatorComponent_1 = dynamic(() => import('./childcare-cost-affordability-calculator'));
+const CollegeSavingsGoalCalculatorComponent_2 = dynamic(() => import('./college-savings-goal-calculator'));
+const DueDateCalculatorComponent_3 = dynamic(() => import('./due-date-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

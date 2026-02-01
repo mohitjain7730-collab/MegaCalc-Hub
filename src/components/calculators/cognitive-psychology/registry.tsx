@@ -1,16 +1,17 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import AttentionSpanEstimatorComponent_0 from './attention-span-estimator';
-import CognitiveLoadCalculatorComponent_1 from './cognitive-load-calculator';
-import EmotionalValenceScoringCalculatorComponent_2 from './emotional-valence-scoring-calculator';
-import IqScoreEstimatorComponent_3 from './iq-score-estimator';
-import MemorySpanCalculatorComponent_4 from './memory-span-calculator';
-import MentalFatigueIndexCalculatorComponent_5 from './mental-fatigue-index-calculator';
-import PersonalityTraitCalculatorComponent_6 from './personality-trait-calculator';
-import SleepDebtCalculatorComponent_7 from './sleep-debt-calculator';
-import StressLevelIndexCalculatorComponent_8 from './stress-level-index-calculator';
-import StroopEffectReactionTimeCalculatorComponent_9 from './stroop-effect-reaction-time-calculator';
+const AttentionSpanEstimatorComponent_0 = dynamic(() => import('./attention-span-estimator'));
+const CognitiveLoadCalculatorComponent_1 = dynamic(() => import('./cognitive-load-calculator'));
+const EmotionalValenceScoringCalculatorComponent_2 = dynamic(() => import('./emotional-valence-scoring-calculator'));
+const IqScoreEstimatorComponent_3 = dynamic(() => import('./iq-score-estimator'));
+const MemorySpanCalculatorComponent_4 = dynamic(() => import('./memory-span-calculator'));
+const MentalFatigueIndexCalculatorComponent_5 = dynamic(() => import('./mental-fatigue-index-calculator'));
+const PersonalityTraitCalculatorComponent_6 = dynamic(() => import('./personality-trait-calculator'));
+const SleepDebtCalculatorComponent_7 = dynamic(() => import('./sleep-debt-calculator'));
+const StressLevelIndexCalculatorComponent_8 = dynamic(() => import('./stress-level-index-calculator'));
+const StroopEffectReactionTimeCalculatorComponent_9 = dynamic(() => import('./stroop-effect-reaction-time-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

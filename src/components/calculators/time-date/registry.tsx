@@ -1,11 +1,12 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import AgeCalculatorComponent_0 from './age-calculator';
-import DateDifferenceCalculatorComponent_1 from './date-difference-calculator';
-import DayOfTheWeekCalculatorComponent_2 from './day-of-the-week-calculator';
-import WorkingDaysBusinessDaysCalculatorComponent_3 from './working-days-business-days-calculator';
-import WorldTimeZoneConverterComponent_4 from './world-time-zone-converter';
+const AgeCalculatorComponent_0 = dynamic(() => import('./age-calculator'));
+const DateDifferenceCalculatorComponent_1 = dynamic(() => import('./date-difference-calculator'));
+const DayOfTheWeekCalculatorComponent_2 = dynamic(() => import('./day-of-the-week-calculator'));
+const WorkingDaysBusinessDaysCalculatorComponent_3 = dynamic(() => import('./working-days-business-days-calculator'));
+const WorldTimeZoneConverterComponent_4 = dynamic(() => import('./world-time-zone-converter'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

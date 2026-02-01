@@ -1,16 +1,17 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import ContractDurationCalculatorComponent_0 from './contract-duration-calculator';
-import EmploymentAnniversaryCalculatorComponent_1 from './employment-anniversary-calculator';
-import FreelanceBillableHoursCalculatorComponent_2 from './freelance-billable-hours-calculator';
-import LastWorkingDayCalculatorComponent_3 from './last-working-day-calculator';
-import NightShiftDurationCalculatorComponent_4 from './night-shift-duration-calculator';
-import NoticePeriodCalculatorComponent_5 from './notice-period-calculator';
-import ProbationPeriodCalculatorComponent_6 from './probation-period-calculator';
-import RemoteWorkTimeZoneOverlapCalculatorComponent_7 from './remote-work-time-zone-overlap-calculator';
-import ShiftRotationCalculatorComponent_8 from './shift-rotation-calculator';
-import SplitShiftHoursCalculatorComponent_9 from './split-shift-hours-calculator';
+const ContractDurationCalculatorComponent_0 = dynamic(() => import('./contract-duration-calculator'));
+const EmploymentAnniversaryCalculatorComponent_1 = dynamic(() => import('./employment-anniversary-calculator'));
+const FreelanceBillableHoursCalculatorComponent_2 = dynamic(() => import('./freelance-billable-hours-calculator'));
+const LastWorkingDayCalculatorComponent_3 = dynamic(() => import('./last-working-day-calculator'));
+const NightShiftDurationCalculatorComponent_4 = dynamic(() => import('./night-shift-duration-calculator'));
+const NoticePeriodCalculatorComponent_5 = dynamic(() => import('./notice-period-calculator'));
+const ProbationPeriodCalculatorComponent_6 = dynamic(() => import('./probation-period-calculator'));
+const RemoteWorkTimeZoneOverlapCalculatorComponent_7 = dynamic(() => import('./remote-work-time-zone-overlap-calculator'));
+const ShiftRotationCalculatorComponent_8 = dynamic(() => import('./shift-rotation-calculator'));
+const SplitShiftHoursCalculatorComponent_9 = dynamic(() => import('./split-shift-hours-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

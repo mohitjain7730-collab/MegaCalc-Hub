@@ -1,22 +1,23 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import AveragePercentageCalculatorComponent_0 from './average-percentage-calculator';
-import ComparativeDifferenceCalculatorComponent_1 from './comparative-difference-calculator';
-import CompoundingIncreaseCalculatorComponent_2 from './compounding-increase-calculator';
-import DoublingTimeCalculatorComponent_3 from './doubling-time-calculator';
-import FractionToPercentCalculatorComponent_4 from './fraction-to-percent-calculator';
-import FuelCostCalculatorComponent_5 from './fuel-cost-calculator';
-import HistoricChangeCalculatorComponent_6 from './historic-change-calculator';
-import InvestmentGrowthCalculatorComponent_7 from './investment-growth-calculator';
-import PercentErrorCalculatorComponent_8 from './percent-error-calculator';
-import PercentToGoalCalculatorComponent_9 from './percent-to-goal-calculator';
-import PercentageOfAPercentageCalculatorComponent_10 from './percentage-of-a-percentage-calculator';
-import PercentagePointCalculatorComponent_11 from './percentage-point-calculator';
-import RelativeChangeCalculatorComponent_12 from './relative-change-calculator';
-import SlopePercentageCalculatorComponent_13 from './slope-percentage-calculator';
-import TimePercentageCalculatorComponent_14 from './time-percentage-calculator';
-import ValuePercentageCalculatorComponent_15 from './value-percentage-calculator';
+const AveragePercentageCalculatorComponent_0 = dynamic(() => import('./average-percentage-calculator'));
+const ComparativeDifferenceCalculatorComponent_1 = dynamic(() => import('./comparative-difference-calculator'));
+const CompoundingIncreaseCalculatorComponent_2 = dynamic(() => import('./compounding-increase-calculator'));
+const DoublingTimeCalculatorComponent_3 = dynamic(() => import('./doubling-time-calculator'));
+const FractionToPercentCalculatorComponent_4 = dynamic(() => import('./fraction-to-percent-calculator'));
+const FuelCostCalculatorComponent_5 = dynamic(() => import('./fuel-cost-calculator'));
+const HistoricChangeCalculatorComponent_6 = dynamic(() => import('./historic-change-calculator'));
+const InvestmentGrowthCalculatorComponent_7 = dynamic(() => import('./investment-growth-calculator'));
+const PercentErrorCalculatorComponent_8 = dynamic(() => import('./percent-error-calculator'));
+const PercentToGoalCalculatorComponent_9 = dynamic(() => import('./percent-to-goal-calculator'));
+const PercentageOfAPercentageCalculatorComponent_10 = dynamic(() => import('./percentage-of-a-percentage-calculator'));
+const PercentagePointCalculatorComponent_11 = dynamic(() => import('./percentage-point-calculator'));
+const RelativeChangeCalculatorComponent_12 = dynamic(() => import('./relative-change-calculator'));
+const SlopePercentageCalculatorComponent_13 = dynamic(() => import('./slope-percentage-calculator'));
+const TimePercentageCalculatorComponent_14 = dynamic(() => import('./time-percentage-calculator'));
+const ValuePercentageCalculatorComponent_15 = dynamic(() => import('./value-percentage-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

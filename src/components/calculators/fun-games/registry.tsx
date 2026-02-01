@@ -1,16 +1,17 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import BirthdayCompatibilityCalculatorComponent_0 from './birthday-compatibility-calculator';
-import CrushCompatibilityCalculatorComponent_1 from './crush-compatibility-calculator';
-import FriendshipCompatibilityCalculatorComponent_2 from './friendship-compatibility-calculator';
-import FuturePartnerNameGeneratorComponent_3 from './future-partner-name-generator';
-import LovePercentageCalculatorComponent_4 from './love-percentage-calculator';
-import MarriageCompatibilityCalculatorComponent_5 from './marriage-compatibility-calculator';
-import NameCompatibilityCalculatorComponent_6 from './name-compatibility-calculator';
-import RelationshipStrengthTestComponent_7 from './relationship-strength-test';
-import RomanticQuizCalculatorComponent_8 from './romantic-quiz-calculator';
-import ZodiacMatchCalculatorComponent_9 from './zodiac-match-calculator';
+const BirthdayCompatibilityCalculatorComponent_0 = dynamic(() => import('./birthday-compatibility-calculator'));
+const CrushCompatibilityCalculatorComponent_1 = dynamic(() => import('./crush-compatibility-calculator'));
+const FriendshipCompatibilityCalculatorComponent_2 = dynamic(() => import('./friendship-compatibility-calculator'));
+const FuturePartnerNameGeneratorComponent_3 = dynamic(() => import('./future-partner-name-generator'));
+const LovePercentageCalculatorComponent_4 = dynamic(() => import('./love-percentage-calculator'));
+const MarriageCompatibilityCalculatorComponent_5 = dynamic(() => import('./marriage-compatibility-calculator'));
+const NameCompatibilityCalculatorComponent_6 = dynamic(() => import('./name-compatibility-calculator'));
+const RelationshipStrengthTestComponent_7 = dynamic(() => import('./relationship-strength-test'));
+const RomanticQuizCalculatorComponent_8 = dynamic(() => import('./romantic-quiz-calculator'));
+const ZodiacMatchCalculatorComponent_9 = dynamic(() => import('./zodiac-match-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

@@ -1,15 +1,16 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import BattingAverageCalculatorComponent_0 from './batting-average-calculator';
-import BowlingAverageCalculatorComponent_1 from './bowling-average-calculator';
-import BowlingEconomyRateCalculatorComponent_2 from './bowling-economy-rate-calculator';
-import FantasyPointsCalculatorComponent_3 from './fantasy-points-calculator';
-import NetRunRateCalculatorComponent_4 from './net-run-rate-calculator';
-import PlayerPerformanceIndexCalculatorComponent_5 from './player-performance-index-calculator';
-import RequiredRunRateCalculatorComponent_6 from './required-run-rate-calculator';
-import StrikeRateCalculatorComponent_7 from './strike-rate-calculator';
-import TeamRunRateCalculatorComponent_8 from './team-run-rate-calculator';
+const BattingAverageCalculatorComponent_0 = dynamic(() => import('./batting-average-calculator'));
+const BowlingAverageCalculatorComponent_1 = dynamic(() => import('./bowling-average-calculator'));
+const BowlingEconomyRateCalculatorComponent_2 = dynamic(() => import('./bowling-economy-rate-calculator'));
+const FantasyPointsCalculatorComponent_3 = dynamic(() => import('./fantasy-points-calculator'));
+const NetRunRateCalculatorComponent_4 = dynamic(() => import('./net-run-rate-calculator'));
+const PlayerPerformanceIndexCalculatorComponent_5 = dynamic(() => import('./player-performance-index-calculator'));
+const RequiredRunRateCalculatorComponent_6 = dynamic(() => import('./required-run-rate-calculator'));
+const StrikeRateCalculatorComponent_7 = dynamic(() => import('./strike-rate-calculator'));
+const TeamRunRateCalculatorComponent_8 = dynamic(() => import('./team-run-rate-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

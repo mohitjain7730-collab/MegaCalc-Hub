@@ -1,30 +1,31 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import BackpackWeightCalculatorComponent_0 from './backpack-weight-calculator';
-import BusVsTrainCostCalculatorComponent_1 from './bus-vs-train-cost-calculator';
-import CarVsFlightCalculatorComponent_2 from './car-vs-flight-calculator';
-import CostPerMileCalculatorComponent_3 from './cost-per-mile-calculator';
-import CruiseCostCalculatorComponent_4 from './cruise-cost-calculator';
-import DistanceBetweenCitiesCalculatorComponent_5 from './distance-between-cities-calculator';
-import DrivingTimeWithBreaksCalculatorComponent_6 from './driving-time-with-breaks-calculator';
-import EvChargingCostCalculatorComponent_7 from './ev-charging-cost-calculator';
-import FlightDurationCalculatorComponent_8 from './flight-duration-calculator';
-import FuelCostCalculatorComponent_9 from './fuel-cost-calculator';
-import GroupExpenseSplitterComponent_10 from './group-expense-splitter';
-import HikingCalorieCalculatorComponent_11 from './hiking-calorie-calculator';
-import HikingTimeCalculatorComponent_12 from './hiking-time-calculator';
-import HotelCostCalculatorComponent_13 from './hotel-cost-calculator';
-import ItineraryTimePlannerComponent_14 from './itinerary-time-planner';
-import JetLagCalculatorComponent_15 from './jet-lag-calculator';
-import LayoverTimeCalculatorComponent_16 from './layover-time-calculator';
-import MultiStopRoutePlannerComponent_17 from './multi-stop-route-planner';
-import RentalCarCostCalculatorComponent_18 from './rental-car-cost-calculator';
-import TimeZoneDifferenceCalculatorComponent_19 from './time-zone-difference-calculator';
-import TravelBufferTimeCalculatorComponent_20 from './travel-buffer-time-calculator';
-import TravelDaysCalculatorComponent_21 from './travel-days-calculator';
-import TravelTimeCalculatorComponent_22 from './travel-time-calculator';
-import TripBudgetCalculatorComponent_23 from './trip-budget-calculator';
+const BackpackWeightCalculatorComponent_0 = dynamic(() => import('./backpack-weight-calculator'));
+const BusVsTrainCostCalculatorComponent_1 = dynamic(() => import('./bus-vs-train-cost-calculator'));
+const CarVsFlightCalculatorComponent_2 = dynamic(() => import('./car-vs-flight-calculator'));
+const CostPerMileCalculatorComponent_3 = dynamic(() => import('./cost-per-mile-calculator'));
+const CruiseCostCalculatorComponent_4 = dynamic(() => import('./cruise-cost-calculator'));
+const DistanceBetweenCitiesCalculatorComponent_5 = dynamic(() => import('./distance-between-cities-calculator'));
+const DrivingTimeWithBreaksCalculatorComponent_6 = dynamic(() => import('./driving-time-with-breaks-calculator'));
+const EvChargingCostCalculatorComponent_7 = dynamic(() => import('./ev-charging-cost-calculator'));
+const FlightDurationCalculatorComponent_8 = dynamic(() => import('./flight-duration-calculator'));
+const FuelCostCalculatorComponent_9 = dynamic(() => import('./fuel-cost-calculator'));
+const GroupExpenseSplitterComponent_10 = dynamic(() => import('./group-expense-splitter'));
+const HikingCalorieCalculatorComponent_11 = dynamic(() => import('./hiking-calorie-calculator'));
+const HikingTimeCalculatorComponent_12 = dynamic(() => import('./hiking-time-calculator'));
+const HotelCostCalculatorComponent_13 = dynamic(() => import('./hotel-cost-calculator'));
+const ItineraryTimePlannerComponent_14 = dynamic(() => import('./itinerary-time-planner'));
+const JetLagCalculatorComponent_15 = dynamic(() => import('./jet-lag-calculator'));
+const LayoverTimeCalculatorComponent_16 = dynamic(() => import('./layover-time-calculator'));
+const MultiStopRoutePlannerComponent_17 = dynamic(() => import('./multi-stop-route-planner'));
+const RentalCarCostCalculatorComponent_18 = dynamic(() => import('./rental-car-cost-calculator'));
+const TimeZoneDifferenceCalculatorComponent_19 = dynamic(() => import('./time-zone-difference-calculator'));
+const TravelBufferTimeCalculatorComponent_20 = dynamic(() => import('./travel-buffer-time-calculator'));
+const TravelDaysCalculatorComponent_21 = dynamic(() => import('./travel-days-calculator'));
+const TravelTimeCalculatorComponent_22 = dynamic(() => import('./travel-time-calculator'));
+const TripBudgetCalculatorComponent_23 = dynamic(() => import('./trip-budget-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

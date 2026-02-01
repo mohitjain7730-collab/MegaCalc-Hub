@@ -1,16 +1,17 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import BeamBendingCalculatorComponent_0 from './beam-bending-calculator';
-import CantileverBeamDeflectionCalculatorComponent_1 from './cantilever-beam-deflection-calculator';
-import CompressiveStressCalculatorComponent_2 from './compressive-stress-calculator';
-import ElectricalPowerCalculatorComponent_3 from './electrical-power-calculator';
-import HeatTransferCalculatorComponent_4 from './heat-transfer-calculator';
-import HydraulicPipeFlowCalculatorComponent_5 from './hydraulic-pipe-flow-calculator';
-import NaturalFrequencyCalculatorComponent_6 from './natural-frequency-calculator';
-import ReynoldsNumberCalculatorComponent_7 from './reynolds-number-calculator';
-import ShearStressCalculatorComponent_8 from './shear-stress-calculator';
-import ThermalExpansionCalculatorComponent_9 from './thermal-expansion-calculator';
+const BeamBendingCalculatorComponent_0 = dynamic(() => import('./beam-bending-calculator'));
+const CantileverBeamDeflectionCalculatorComponent_1 = dynamic(() => import('./cantilever-beam-deflection-calculator'));
+const CompressiveStressCalculatorComponent_2 = dynamic(() => import('./compressive-stress-calculator'));
+const ElectricalPowerCalculatorComponent_3 = dynamic(() => import('./electrical-power-calculator'));
+const HeatTransferCalculatorComponent_4 = dynamic(() => import('./heat-transfer-calculator'));
+const HydraulicPipeFlowCalculatorComponent_5 = dynamic(() => import('./hydraulic-pipe-flow-calculator'));
+const NaturalFrequencyCalculatorComponent_6 = dynamic(() => import('./natural-frequency-calculator'));
+const ReynoldsNumberCalculatorComponent_7 = dynamic(() => import('./reynolds-number-calculator'));
+const ShearStressCalculatorComponent_8 = dynamic(() => import('./shear-stress-calculator'));
+const ThermalExpansionCalculatorComponent_9 = dynamic(() => import('./thermal-expansion-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

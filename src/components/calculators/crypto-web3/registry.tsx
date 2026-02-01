@@ -1,11 +1,12 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import CryptoApyCalculatorComponent_0 from './crypto-apy-calculator';
-import CryptoMiningProfitabilityCalculatorComponent_1 from './crypto-mining-profitability-calculator';
-import CryptoStakingRewardCalculatorComponent_2 from './crypto-staking-reward-calculator';
-import CryptoTaxLiabilityCalculatorComponent_3 from './crypto-tax-liability-calculator';
-import NftMintingCostCalculatorComponent_4 from './nft-minting-cost-calculator';
+const CryptoApyCalculatorComponent_0 = dynamic(() => import('./crypto-apy-calculator'));
+const CryptoMiningProfitabilityCalculatorComponent_1 = dynamic(() => import('./crypto-mining-profitability-calculator'));
+const CryptoStakingRewardCalculatorComponent_2 = dynamic(() => import('./crypto-staking-reward-calculator'));
+const CryptoTaxLiabilityCalculatorComponent_3 = dynamic(() => import('./crypto-tax-liability-calculator'));
+const NftMintingCostCalculatorComponent_4 = dynamic(() => import('./nft-minting-cost-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

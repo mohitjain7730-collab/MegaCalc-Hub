@@ -1,14 +1,15 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import AnnealingTemperatureCalculatorComponent_0 from './annealing-temperature-calculator';
-import CellDilutionCalculatorComponent_1 from './cell-dilution-calculator';
-import CellDoublingTimeCalculatorComponent_2 from './cell-doubling-time-calculator';
-import DnaConcentrationCalculatorComponent_3 from './dna-concentration-calculator';
-import GenerationTimeCalculatorComponent_4 from './generation-time-calculator';
-import LigationCalculatorComponent_5 from './ligation-calculator';
-import LogReductionCalculatorComponent_6 from './log-reduction-calculator';
-import ProteinConcentrationCalculatorComponent_7 from './protein-concentration-calculator';
+const AnnealingTemperatureCalculatorComponent_0 = dynamic(() => import('./annealing-temperature-calculator'));
+const CellDilutionCalculatorComponent_1 = dynamic(() => import('./cell-dilution-calculator'));
+const CellDoublingTimeCalculatorComponent_2 = dynamic(() => import('./cell-doubling-time-calculator'));
+const DnaConcentrationCalculatorComponent_3 = dynamic(() => import('./dna-concentration-calculator'));
+const GenerationTimeCalculatorComponent_4 = dynamic(() => import('./generation-time-calculator'));
+const LigationCalculatorComponent_5 = dynamic(() => import('./ligation-calculator'));
+const LogReductionCalculatorComponent_6 = dynamic(() => import('./log-reduction-calculator'));
+const ProteinConcentrationCalculatorComponent_7 = dynamic(() => import('./protein-concentration-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import AncestryCompositionEstimatorComponent_0 from './ancestry-composition-estimator';
-import GenealogyTimelineGeneratorComponent_1 from './genealogy-timeline-generator';
-import GeneticTraitProbabilityCalculatorComponent_2 from './genetic-trait-probability-calculator';
-import PedigreeAnalysisCalculatorComponent_3 from './pedigree-analysis-calculator';
+const AncestryCompositionEstimatorComponent_0 = dynamic(() => import('./ancestry-composition-estimator'));
+const GenealogyTimelineGeneratorComponent_1 = dynamic(() => import('./genealogy-timeline-generator'));
+const GeneticTraitProbabilityCalculatorComponent_2 = dynamic(() => import('./genetic-trait-probability-calculator'));
+const PedigreeAnalysisCalculatorComponent_3 = dynamic(() => import('./pedigree-analysis-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

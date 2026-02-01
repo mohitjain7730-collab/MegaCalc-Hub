@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import CarbonFootprintReductionCalculatorComponent_0 from './carbon-footprint-reduction-calculator';
-import RecyclingImpactCalculatorComponent_1 from './recycling-impact-calculator';
-import SustainableDietImpactCalculatorComponent_2 from './sustainable-diet-impact-calculator';
-import WaterUsageEfficiencyCalculatorComponent_3 from './water-usage-efficiency-calculator';
+const CarbonFootprintReductionCalculatorComponent_0 = dynamic(() => import('./carbon-footprint-reduction-calculator'));
+const RecyclingImpactCalculatorComponent_1 = dynamic(() => import('./recycling-impact-calculator'));
+const SustainableDietImpactCalculatorComponent_2 = dynamic(() => import('./sustainable-diet-impact-calculator'));
+const WaterUsageEfficiencyCalculatorComponent_3 = dynamic(() => import('./water-usage-efficiency-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

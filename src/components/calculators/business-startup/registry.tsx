@@ -1,14 +1,15 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import BreakEvenPointCalculatorComponent_0 from './break-even-point-calculator';
-import BreakEvenSalesDollarCalculatorComponent_1 from './break-even-sales-dollar-calculator';
-import ContributionMarginCalculatorComponent_2 from './contribution-margin-calculator';
-import CustomerAcquisitionCostCalculatorComponent_3 from './customer-acquisition-cost-calculator';
-import DscrCalculatorComponent_4 from './dscr-calculator';
-import LifetimeValueCalculatorComponent_5 from './lifetime-value-calculator';
-import OperatingLeverageCalculatorComponent_6 from './operating-leverage-calculator';
-import RoiCalculatorComponent_7 from './roi-calculator';
+const BreakEvenPointCalculatorComponent_0 = dynamic(() => import('./break-even-point-calculator'));
+const BreakEvenSalesDollarCalculatorComponent_1 = dynamic(() => import('./break-even-sales-dollar-calculator'));
+const ContributionMarginCalculatorComponent_2 = dynamic(() => import('./contribution-margin-calculator'));
+const CustomerAcquisitionCostCalculatorComponent_3 = dynamic(() => import('./customer-acquisition-cost-calculator'));
+const DscrCalculatorComponent_4 = dynamic(() => import('./dscr-calculator'));
+const LifetimeValueCalculatorComponent_5 = dynamic(() => import('./lifetime-value-calculator'));
+const OperatingLeverageCalculatorComponent_6 = dynamic(() => import('./operating-leverage-calculator'));
+const RoiCalculatorComponent_7 = dynamic(() => import('./roi-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {

@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import type { ComponentType } from 'react';
 
-import AncientCivilizationTimelineGeneratorComponent_0 from './ancient-civilization-timeline-generator';
-import ArchaeologicalSiteExcavationCalculatorComponent_1 from './archaeological-site-excavation-calculator';
-import ArtifactDatingCalculatorComponent_2 from './artifact-dating-calculator';
-import HistoricalPopulationDensityCalculatorComponent_3 from './historical-population-density-calculator';
+const AncientCivilizationTimelineGeneratorComponent_0 = dynamic(() => import('./ancient-civilization-timeline-generator'));
+const ArchaeologicalSiteExcavationCalculatorComponent_1 = dynamic(() => import('./archaeological-site-excavation-calculator'));
+const ArtifactDatingCalculatorComponent_2 = dynamic(() => import('./artifact-dating-calculator'));
+const HistoricalPopulationDensityCalculatorComponent_3 = dynamic(() => import('./historical-population-density-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {
