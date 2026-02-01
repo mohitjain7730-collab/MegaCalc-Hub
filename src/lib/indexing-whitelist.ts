@@ -136,5 +136,9 @@ export const indexableCalculatorSlugs = [
     'asset-allocation-drift-calculator',
     'rebalancing-frequency-impact-calculator',
     'sequence-of-returns-risk-calculator',
-    'compounding-loss-from-early-withdrawal-calculator'
+    'compounding-loss-from-early-withdrawal-calculator',
+    'long-term-vs-short-term-capital-gain-comparison-calculator',
+    'tax-drag-on-investment-returns-calculator',
+    'dividend-reinvestment-growth-calculator',
+    'retirement-gap-calculator'
 ];

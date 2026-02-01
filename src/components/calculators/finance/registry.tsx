@@ -400,6 +400,10 @@ const AssetAllocationDriftCalculatorComponent_394 = dynamic(() => import('./asse
 const RebalancingFrequencyImpactCalculatorComponent_395 = dynamic(() => import('./rebalancing-frequency-impact-calculator'));
 const SequenceOfReturnsRiskCalculatorComponent_396 = dynamic(() => import('./sequence-of-returns-risk-calculator'));
 const CompoundingLossFromEarlyWithdrawalCalculatorComponent_397 = dynamic(() => import('./compounding-loss-from-early-withdrawal-calculator'));
+const LongTermVsShortTermCapitalGainComparisonCalculatorComponent_398 = dynamic(() => import('./long-term-vs-short-term-capital-gain-comparison-calculator'));
+const TaxDragOnInvestmentReturnsCalculatorComponent_399 = dynamic(() => import('./tax-drag-on-investment-returns-calculator'));
+const DividendReinvestmentGrowthCalculatorComponent_400 = dynamic(() => import('./dividend-reinvestment-growth-calculator'));
+const RetirementGapCalculatorComponent_401 = dynamic(() => import('./retirement-gap-calculator'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {
@@ -538,6 +542,10 @@ const components: Record<string, ComponentType> = {
   'rebalancing-frequency-impact-calculator': RebalancingFrequencyImpactCalculatorComponent_395,
   'sequence-of-returns-risk-calculator': SequenceOfReturnsRiskCalculatorComponent_396,
   'compounding-loss-from-early-withdrawal-calculator': CompoundingLossFromEarlyWithdrawalCalculatorComponent_397,
+  'long-term-vs-short-term-capital-gain-comparison-calculator': LongTermVsShortTermCapitalGainComparisonCalculatorComponent_398,
+  'tax-drag-on-investment-returns-calculator': TaxDragOnInvestmentReturnsCalculatorComponent_399,
+  'dividend-reinvestment-growth-calculator': DividendReinvestmentGrowthCalculatorComponent_400,
+  'retirement-gap-calculator': RetirementGapCalculatorComponent_401,
   'employer-health-plan-tax-savings-calculator': EmployerHealthPlanTaxSavingsCalculatorComponent_117,
   'enterprise-value-bridge-calculator': EnterpriseValueBridgeCalculatorComponent_118,
   'enterprise-value-calculator': EnterpriseValueCalculatorComponent_119,

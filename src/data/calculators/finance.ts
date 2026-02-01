@@ -3519,5 +3519,41 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Compounding Loss from Early Withdrawal Calculator",
     "metaDescription": "See how much future growth you give up by withdrawing early. Get compounding loss in dollars and percentage."
+  },
+  {
+    "id": 10261,
+    "name": "Long-Term vs Short-Term Capital Gain Comparison Calculator",
+    "description": "Compare after-tax proceeds from selling an asset as long-term vs short-term capital gain. See how much more you keep with long-term rates.",
+    "slug": "long-term-vs-short-term-capital-gain-comparison-calculator",
+    "category": "finance",
+    "metaTitle": "Long-Term vs Short-Term Capital Gain Comparison Calculator",
+    "metaDescription": "Compare after-tax proceeds from long-term vs short-term capital gain. See how much you save with long-term rates."
+  },
+  {
+    "id": 10262,
+    "name": "Tax Drag on Investment Returns Calculator",
+    "description": "See how taxes reduce your investment return. Enter nominal return, dividend yield, and tax rates on dividends and capital gains—get after-tax return and optional FV impact.",
+    "slug": "tax-drag-on-investment-returns-calculator",
+    "category": "finance",
+    "metaTitle": "Tax Drag on Investment Returns Calculator",
+    "metaDescription": "See how taxes reduce your return. Get tax drag, after-tax return, and optional FV impact."
+  },
+  {
+    "id": 10263,
+    "name": "Dividend Reinvestment Growth Calculator",
+    "description": "Project long-term portfolio growth with dividend reinvestment (DRIP). Enter initial investment, contributions, yield, dividend growth rate, and price appreciation—get future value, total dividends, shares accumulated, and effective CAGR.",
+    "slug": "dividend-reinvestment-growth-calculator",
+    "category": "finance",
+    "metaTitle": "Dividend Reinvestment Growth Calculator",
+    "metaDescription": "Project portfolio growth with DRIP. Get future value, total dividends, shares, and effective CAGR."
+  },
+  {
+    "id": 10264,
+    "name": "Retirement Gap Calculator",
+    "description": "Find your retirement shortfall or surplus. Enter age, target income, savings, contributions, return and inflation—get required nest egg, projected savings, gap, and monthly savings to close the gap.",
+    "slug": "retirement-gap-calculator",
+    "category": "finance",
+    "metaTitle": "Retirement Gap Calculator",
+    "metaDescription": "Calculate retirement gap: required nest egg vs projected savings, and monthly savings to close the gap."
   }
 ];
