@@ -382,6 +382,8 @@ const YieldToCallCalculatorComponent_376 = dynamic(() => import('./yield-to-call
 const ZeroCouponBondValuationCalculatorComponent_377 = dynamic(() => import('./zero-coupon-bond-valuation-calculator'));
 const MarketingSpendImpactOnRunwayCalculatorComponent_378 = dynamic(() => import('./marketing-spend-impact-on-runway-calculator'));
 const UnitEconomicsCalculatorStartupComponent_379 = dynamic(() => import('./unit-economics-calculator-startup'));
+const BootstrappedStartupGrowthCalculatorComponent_380 = dynamic(() => import('./bootstrapped-startup-growth-calculator'));
+const EmergencyFundCalculatorSingleIncomeHouseholdsComponent_381 = dynamic(() => import('./emergency-fund-calculator-single-income-households'));
 
 // Static imports for SSR - full content in initial HTML for SEO
 const components: Record<string, ComponentType> = {
@@ -414,6 +416,7 @@ const components: Record<string, ComponentType> = {
   'bond-price-calculator': BondPriceCalculatorComponent_26,
   'bond-yield-spread-calculator': BondYieldSpreadCalculatorComponent_27,
   'bond-yield-to-maturity-calculator': BondYieldToMaturityCalculatorComponent_28,
+  'bootstrapped-startup-growth-calculator': BootstrappedStartupGrowthCalculatorComponent_380,
   'break-even-analysis-calculator': BreakEvenAnalysisCalculatorComponent_29,
   'break-even-stock-sale-price-calculator': BreakEvenStockSalePriceCalculatorComponent_30,
   'breakeven-inflation-rate-calculator': BreakevenInflationRateCalculatorComponent_31,
@@ -502,6 +505,7 @@ const components: Record<string, ComponentType> = {
   'efficient-frontier-visualizer': EfficientFrontierVisualizerComponent_114,
   'emergency-fund-calculator': EmergencyFundCalculatorComponent_115,
   'emergency-fund-requirement-calculator': EmergencyFundRequirementCalculatorComponent_116,
+  'emergency-fund-calculator-single-income-households': EmergencyFundCalculatorSingleIncomeHouseholdsComponent_381,
   'employer-health-plan-tax-savings-calculator': EmployerHealthPlanTaxSavingsCalculatorComponent_117,
   'enterprise-value-bridge-calculator': EnterpriseValueBridgeCalculatorComponent_118,
   'enterprise-value-calculator': EnterpriseValueCalculatorComponent_119,

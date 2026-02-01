@@ -3357,5 +3357,23 @@ export const finance_calculators: Calculator[] = [
     "category": "finance",
     "metaTitle": "Unit Economics Calculator (Startup) - LTV, CAC, Payback",
     "metaDescription": "Calculate LTV, LTV:CAC ratio, CAC payback, and contribution margin from ARPU, gross margin, churn, and CAC. Startup unit economics benchmarks."
+  },
+  {
+    "id": 10243,
+    "name": "Bootstrapped Startup Growth Calculator",
+    "description": "Calculate bootstrapped startup growth: months to reach target monthly revenue at compound monthly growth rate, revenue at 6/12/24 months, and optional profit/reinvestment capacity. No external funding assumed.",
+    "slug": "bootstrapped-startup-growth-calculator",
+    "category": "finance",
+    "metaTitle": "Bootstrapped Startup Growth Calculator - Compound Revenue Growth",
+    "metaDescription": "Calculate months to target revenue at compound monthly growth rate. Revenue at 6, 12, 24 months. Bootstrapped growth without external funding."
+  },
+  {
+    "id": 10244,
+    "name": "Emergency Fund Calculator for Single Income Households",
+    "description": "Calculate emergency fund target for single-income households: recommended 6–12 months of essential expenses, no backup earner. Includes housing, food, utilities, debt, insurance, and risk factors (income stability, dependents).",
+    "slug": "emergency-fund-calculator-single-income-households",
+    "category": "finance",
+    "metaTitle": "Emergency Fund Calculator for Single Income Households - 6–12 Months",
+    "metaDescription": "Calculate emergency fund target for single-income households: 6–12 months of essential expenses, no backup earner. Risk-adjusted recommendations."
   }
 ];
