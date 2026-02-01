@@ -1,31 +1,31 @@
 
-
 import React from 'react';
 import type { ComponentType } from 'react';
+import dynamic from 'next/dynamic';
 
-import BiologyRegistry from '@/components/calculators/biology/registry';
-import BusinessStartupRegistry from '@/components/calculators/business-startup/registry';
-import CognitivePsychologyRegistry from '@/components/calculators/cognitive-psychology/registry';
-import ConversionsRegistry from '@/components/calculators/conversions/registry';
-import CookingFoodRegistry from '@/components/calculators/cooking-food/registry';
-import CricketRegistry from '@/components/calculators/cricket/registry';
-import CryptoWeb3Registry from '@/components/calculators/crypto-web3/registry';
-import EducationRegistry from '@/components/calculators/education/registry';
-import EmploymentRegistry from '@/components/calculators/employment/registry';
-import EngineeringRegistry from '@/components/calculators/engineering/registry';
-import EnvironmentRegistry from '@/components/calculators/environment/registry';
-import FinanceRegistry from '@/components/calculators/finance/registry';
-import FunGamesRegistry from '@/components/calculators/fun-games/registry';
-import GamingRegistry from '@/components/calculators/gaming/registry';
-import GeneticAncestryRegistry from '@/components/calculators/genetic-ancestry/registry';
-import HealthFitnessRegistry from '@/components/calculators/health-fitness/registry';
-import HistoricalArchaeologicalRegistry from '@/components/calculators/historical-archaeological/registry';
-import HomeImprovementRegistry from '@/components/calculators/home-improvement/registry';
-import ParentingRegistry from '@/components/calculators/parenting/registry';
-import PersonalBudgetingRegistry from '@/components/calculators/personal-budgeting/registry';
-import TechnologyRegistry from '@/components/calculators/technology/registry';
-import TimeDateRegistry from '@/components/calculators/time-date/registry';
-import TravelAdventureRegistry from '@/components/calculators/travel-adventure/registry';
+const BiologyRegistry = dynamic(() => import('@/components/calculators/biology/registry'));
+const BusinessStartupRegistry = dynamic(() => import('@/components/calculators/business-startup/registry'));
+const CognitivePsychologyRegistry = dynamic(() => import('@/components/calculators/cognitive-psychology/registry'));
+const ConversionsRegistry = dynamic(() => import('@/components/calculators/conversions/registry'));
+const CookingFoodRegistry = dynamic(() => import('@/components/calculators/cooking-food/registry'));
+const CricketRegistry = dynamic(() => import('@/components/calculators/cricket/registry'));
+const CryptoWeb3Registry = dynamic(() => import('@/components/calculators/crypto-web3/registry'));
+const EducationRegistry = dynamic(() => import('@/components/calculators/education/registry'));
+const EmploymentRegistry = dynamic(() => import('@/components/calculators/employment/registry'));
+const EngineeringRegistry = dynamic(() => import('@/components/calculators/engineering/registry'));
+const EnvironmentRegistry = dynamic(() => import('@/components/calculators/environment/registry'));
+const FinanceRegistry = dynamic(() => import('@/components/calculators/finance/registry'));
+const FunGamesRegistry = dynamic(() => import('@/components/calculators/fun-games/registry'));
+const GamingRegistry = dynamic(() => import('@/components/calculators/gaming/registry'));
+const GeneticAncestryRegistry = dynamic(() => import('@/components/calculators/genetic-ancestry/registry'));
+const HealthFitnessRegistry = dynamic(() => import('@/components/calculators/health-fitness/registry'));
+const HistoricalArchaeologicalRegistry = dynamic(() => import('@/components/calculators/historical-archaeological/registry'));
+const HomeImprovementRegistry = dynamic(() => import('@/components/calculators/home-improvement/registry'));
+const ParentingRegistry = dynamic(() => import('@/components/calculators/parenting/registry'));
+const PersonalBudgetingRegistry = dynamic(() => import('@/components/calculators/personal-budgeting/registry'));
+const TechnologyRegistry = dynamic(() => import('@/components/calculators/technology/registry'));
+const TimeDateRegistry = dynamic(() => import('@/components/calculators/time-date/registry'));
+const TravelAdventureRegistry = dynamic(() => import('@/components/calculators/travel-adventure/registry'));
 
 interface CalculatorWrapperProps {
   categorySlug: string;
@@ -40,7 +40,7 @@ function CalculatorNotFound() {
   );
 }
 
-// Static registry map - server-rendered for SEO
+// Static registry map - server-rendered for SEO using dynamic imports to split chunks
 const registries: Record<string, ComponentType<{ calculatorSlug: string }>> = {
   biology: BiologyRegistry,
   'business-startup': BusinessStartupRegistry,
