@@ -18,44 +18,9 @@ import { CalculatorWrapper } from '@/components/calculator-wrapper';
 import { CalculatorSeoArticle } from '@/components/calculator-seo-article';
 import { CategorySearch } from '@/components/category-search';
 
-// Use ISR
-export const revalidate = 3600;
-
-// Dynamic params must be true for catch-all
+// Force server-side rendering so all content is in the initial HTML
+export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
-
-export async function generateStaticParams() {
-    const isDev = process.env.NODE_ENV === 'development';
-    if (isDev) return [];
-
-    const params: { slug: string; path: string[] }[] = [];
-
-    // 1. Generate for Calculators (Level 2: /category/slug/calcSlug)
-    calculators.forEach((calc) => {
-        // Determine path based on if it has a subcategory or not
-        // Wait, existing calculators don't have subcategory in URL.
-        // New Maths calculators DO.
-        if (calc.category === 'education' && calc.subcategory === 'maths') {
-            // Path: /category/education/maths/calc
-            params.push({ slug: calc.category, path: ['maths', calc.slug] });
-        } else {
-            // Path: /category/cat/calc
-            params.push({ slug: calc.category, path: [calc.slug] });
-        }
-    });
-
-    // 2. Generate for Subcategories (Level 2: /category/slug/sub)
-    categories.forEach((category) => {
-        category.subcategories?.forEach((sub) => {
-            params.push({
-                slug: category.slug,
-                path: [sub.slug],
-            });
-        });
-    });
-
-    return params;
-}
 
 export async function generateMetadata({
     params

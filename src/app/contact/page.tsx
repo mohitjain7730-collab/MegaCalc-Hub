@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft, Mail, Globe, MessageSquare, Calculator } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Contact Us & About | Mycalculating.com',
   description: 'Get in touch with Mycalculating.com. Learn about our mission to provide free, accurate online calculators and tools for finance, health, and more.',

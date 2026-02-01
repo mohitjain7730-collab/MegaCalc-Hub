@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 
 const ThemeToggle = dynamic(
     () => import("@/components/ThemeToggle").then((mod) => mod.ThemeToggle),
-    { ssr: false }
+    { ssr: true }
 );
 
 export function HeaderClient() {

@@ -10,6 +10,8 @@ import { getCalculatorsByCategory } from '@/lib/calculator-data-utils';
 import { categories } from '@/lib/categories';
 
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Sitemap - Mycalculating.com',
   description: 'Complete sitemap of all calculators and learning hub articles organized by category and topic.',

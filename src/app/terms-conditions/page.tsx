@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Terms & Conditions | Mycalculating.com',
   description: 'Read our terms and conditions to understand the rules and regulations for using Mycalculating.com free online calculators and tools.',

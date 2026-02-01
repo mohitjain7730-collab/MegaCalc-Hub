@@ -96,9 +96,9 @@ const categorySeoContent: Record<
   },
 };
 
-// Use ISR for category pages - faster builds while maintaining LCP performance
-export const revalidate = 3600; // Revalidate every hour
-export const dynamicParams = true; // Allow dynamic params for on-demand generation
+// Force server-side rendering so all content is in the initial HTML
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -123,12 +123,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       follow: true,
     },
   };
-}
-
-export async function generateStaticParams() {
-  return categories.map((category) => ({
-    slug: category.slug,
-  }));
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {

@@ -1,24 +1,33 @@
-
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
 import { calculators } from '@/lib/calculators';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, SearchX } from 'lucide-react';
 
-function SearchResults() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get('q');
+export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'Search - Mycalculating.com',
+  description: 'Search our calculators.',
+  alternates: {
+    canonical: '/search',
+  },
+};
+
+interface SearchPageProps {
+  searchParams: Promise<{ q?: string }>;
+}
+
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const { q: query } = await searchParams;
 
   const filteredCalculators = query
     ? calculators.filter(
-      (calc) =>
-        calc.name.toLowerCase().includes(query.toLowerCase()) ||
-        calc.description.toLowerCase().includes(query.toLowerCase())
-    )
+        (calc) =>
+          calc.name.toLowerCase().includes(query.toLowerCase()) ||
+          calc.description.toLowerCase().includes(query.toLowerCase())
+      )
     : [];
 
   return (
@@ -32,7 +41,7 @@ function SearchResults() {
             </Link>
           </Button>
           <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-            Search Results for "{query}"
+            Search Results {query ? `for "${query}"` : ''}
           </h1>
         </div>
 
@@ -40,7 +49,11 @@ function SearchResults() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCalculators.map((calc) => (
               <Link
-                href={calc.category === 'education' && calc.subcategory === 'maths' ? `/category/education/maths/${calc.slug}` : `/category/${calc.category}/${calc.slug}`}
+                href={
+                  calc.category === 'education' && calc.subcategory === 'maths'
+                    ? `/category/education/maths/${calc.slug}`
+                    : `/category/${calc.category}/${calc.slug}`
+                }
                 key={calc.id}
                 className="group block h-full"
               >
@@ -61,7 +74,9 @@ function SearchResults() {
                 No Results Found
               </h2>
               <p className="text-lg text-muted-foreground">
-                We couldn't find any calculators matching your search for "{query}".
+                {query
+                  ? `We couldn't find any calculators matching your search for "${query}".`
+                  : 'Enter a search term to find calculators.'}
               </p>
             </CardContent>
           </Card>
@@ -69,12 +84,4 @@ function SearchResults() {
       </div>
     </div>
   );
-}
-
-export default function SearchPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <SearchResults />
-    </Suspense>
-  )
 }

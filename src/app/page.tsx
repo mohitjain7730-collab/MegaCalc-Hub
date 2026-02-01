@@ -8,12 +8,11 @@ import { categories } from '@/lib/categories';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { generateWebsiteSchema } from '@/lib/schema-generator';
-import { DeferredSchema } from '@/components/deferred-schema';
 import { calculators } from '@/lib/calculators';
 import { search } from '@/app/actions';
 
-// Force static generation for homepage to improve LCP
-export const dynamic = 'force-static';
+// Force server-side rendering so all content is in the initial HTML
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -34,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <DeferredSchema schema={schema} id="website-schema" />
+      <script type="application/ld+json" id="website-schema" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <main className="flex-1">
         <section className="relative w-full py-12 sm:py-16 md:py-24 lg:py-32 hero-pattern">
           <div className="container mx-auto text-center px-4 sm:px-6">
