@@ -6,13 +6,11 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Zap, Skull, Shield, Sword, Crown, Info } from 'lucide-react';
+import { Zap, Skull, Shield, Sword, Crown, Info, BookOpen, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 
 const formSchema = z.object({
     bestPetPower: z.number().min(1).default(100), // Power of strongest pet (e.g. 100q)
@@ -150,7 +148,7 @@ const faqs = [
     },
     {
         question: "Why does my damage fluctuate?",
-        answer: "Damage numbers have a random variance (RNG) in every hit (Crit hits dealing more). Also, server lag can effective DPS lower than theoretical power.",
+        answer: "Damage numbers have a random variance (RNG) in every hit (Crit hits dealing more). Also, server lag can make effective DPS lower than theoretical power.",
     },
 ];
 
@@ -245,11 +243,11 @@ export default function RobloxPetSimPowerCalc() {
                                         name="bestPetPower"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Best Pet Raw Power (Numbers)</FormLabel>
+                                                <FormLabel>Best Pet Raw Power (Number)</FormLabel>
                                                 <FormControl>
                                                     <Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                                                 </FormControl>
-                                                <FormDescription>Example: 1,000,000 for 1m</FormDescription>
+                                                <FormDescription>Example: 1000000 for 1m</FormDescription>
                                             </FormItem>
                                         )}
                                     />
@@ -363,21 +361,33 @@ export default function RobloxPetSimPowerCalc() {
                 </div>
             </div>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Info className="h-5 w-5" />
-                        How to Use
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <ul className="list-disc pl-5 space-y-2">
-                        {steps.map((step, i) => (
-                            <li key={i}>{step}</li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BookOpen className="h-5 w-5 text-red-500" />
+                            Understanding the Inputs
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Best Pet Power:</strong> Enter the power of your strongest pet (e.g. 500q). This is the 'Anchor' for your team.</p>
+                        <p><strong>Huge/Titanic Count:</strong> These pets copy the Anchor pet's power. Huges do ~150%, Titanics ~300%.</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BrainCircuit className="h-5 w-5 text-red-500" />
+                            Formula Used
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Team DPS Calculation:</strong></p>
+                        <code className="bg-muted px-2 py-1 rounded block w-fit">Total = BestPet + &sum;(Huge &times; 1.5) + &sum;(Titanic &times; 3)</code>
+                        <p>We then apply your total Enchant Multiplier (e.g. +300% from Super Teamwork).</p>
+                    </CardContent>
+                </Card>
+            </div>
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -417,12 +427,10 @@ export default function RobloxPetSimPowerCalc() {
                 <h2 className="text-2xl font-bold text-foreground pt-8">Titanic Pets: The Ultimate Weapon</h2>
                 <p>Titanic Pets are huge, rideable, and expensive. But stat-wise, they are monsters. They usually scale at <strong>2x or 3x</strong> your best pet's damage. A team of Titanics will obliterate any chest in the game instantly.</p>
 
-                <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <p>To maximize DPS:</p>
-                <p>1. Get ONE "Shiny Dark Matter" Mythical from the latest egg (Best Stat Pet).</p>
-                <p>2. Fill the rest of your slots with Huge/Titanic Pets (Amplifiers).</p>
-                <p>3. Roll "Super Teamwork" on all Huge Pets.</p>
-                <p>4. Roll "Strength V" or "Royalty" on your Stat Pet.</p>
+                <div className="bg-muted p-6 rounded-xl mt-8">
+                    <h3 className="text-xl font-bold mb-2">Summary</h3>
+                    <p>Damage is exponential in Pet Sim X. The winning strategy is simple: Get one "God Tier" stat pet (Shiny DM) to act as the anchor, and then fill every other slot with Huge Pets that copy that anchor's power. Add Super Teamwork enchants, and you become unstoppable.</p>
+                </div>
             </section>
 
             <Card>

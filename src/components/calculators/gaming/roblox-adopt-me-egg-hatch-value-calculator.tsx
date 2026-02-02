@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Egg, DollarSign, TrendingUp, TrendingDown, HelpCircle, Package, Info } from 'lucide-react';
+import { Egg, DollarSign, TrendingUp, TrendingDown, HelpCircle, Package, Info, BookOpen, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -302,21 +302,33 @@ export default function RobloxAdoptMeEggValue() {
                 </div>
             </div>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Info className="h-5 w-5" />
-                        How to Use
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <ul className="list-disc pl-5 space-y-2">
-                        {steps.map((step, i) => (
-                            <li key={i}>{step}</li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BookOpen className="h-5 w-5 text-orange-500" />
+                            Understanding the Inputs
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Egg Name:</strong> Select whether your egg is a "Permanent" egg (Royal) or "Limited" egg (Urban/Danger). Limited eggs often have higher sealed value.</p>
+                        <p><strong>Quantity:</strong> How many eggs do you own? We calculate the total portfolio value.</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BrainCircuit className="h-5 w-5 text-orange-500" />
+                            Formula Used
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p>We compare <strong>Trading Value VS Expected Value</strong>:</p>
+                        <code className="bg-muted px-2 py-1 rounded block w-fit">EV = &sum; (Odds<sub>pet</sub> &times; Value<sub>pet</sub>)</code>
+                        <p>If EV is lower than the Sealed Price, the verdict is "Do Not Hatch".</p>
+                    </CardContent>
+                </Card>
+            </div>
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -357,8 +369,10 @@ export default function RobloxAdoptMeEggValue() {
                 <p>There is only ONE time when hatching is statistically profitable: <strong>The Update Hour.</strong></p>
                 <p>When a new egg is released (Wait... 0 minutes!), the demand for the new pets is infinite. If you hatch a Legendary in the first 15 minutes of an update, you can trade it for a Shadow Dragon or massive value. But after 24 hours, the value stabilizes and hatching becomes a loss again.</p>
 
-                <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <p>If you want to be rich, <strong>TRADE</strong> your eggs. If you want to have fun and don't care about value, <strong>HATCH</strong> them. Just know that the math is against you.</p>
+                <div className="bg-muted p-6 rounded-xl mt-8">
+                    <h3 className="text-xl font-bold mb-2">Summary</h3>
+                    <p>Mathematically, you should almost ALWAYS trade sealed eggs rather than hatching them. The only exception is during the first hour of a new update. For old eggs (Aussie, Fossil, Ocean), strictly keep them sealed to preserve value.</p>
+                </div>
             </section>
 
             <Card>
@@ -394,4 +408,8 @@ export default function RobloxAdoptMeEggValue() {
             </Card>
         </div>
     );
+}
+
+function FormDescription({ className, children }: { className?: string; children: React.ReactNode }) {
+    return <p className={`text-sm text-muted-foreground ${className}`}>{children}</p>;
 }

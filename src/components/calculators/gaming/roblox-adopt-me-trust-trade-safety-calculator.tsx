@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { ShieldAlert, ShieldCheck, Lock, AlertTriangle, UserX, Info } from 'lucide-react';
+import { ShieldAlert, ShieldCheck, Lock, AlertTriangle, UserX, Info, BookOpen, Calculator, Siren } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -83,7 +83,7 @@ const calculateSafety = (values: FormValues): ResultPayload => {
 
     // Override for specific keywords
     if (values.tradeType === 'trust') {
-        explanation = "There is no such thing as a valid 'Trust Trade'. It is a made-up term by scammers.";
+        explanation = "There is no such thing as a valid 'Trust Trade'. It is a made-up term by scammers. You give the item, they leave.";
     }
     if (values.tradeType === 'fail_trade') {
         explanation = "Fail Trades are patched or fake. The trade will go through and you will lose your pet.";
@@ -357,21 +357,31 @@ export default function RobloxAdoptMeTrustTrade() {
                 </div>
             </div>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Info className="h-5 w-5" />
-                        How to Verify
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <ul className="list-disc pl-5 space-y-2">
-                        {steps.map((step, i) => (
-                            <li key={i}>{step}</li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BookOpen className="h-5 w-5 text-red-500" />
+                            Understanding the Inputs
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Trade Pattern:</strong> Select the exact scenario being proposed. "Trust Trade" implies giving items with no guarantee. "Cross Trade" involves outside items.</p>
+                        <p><strong>Partner & Promise:</strong> Who is asking? What are they offering? High-value promises (like Robux) from Strangers are red flags.</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <Siren className="h-5 w-5 text-red-500" />
+                            The Logic Used
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p>This calculator uses a <strong>Cumulative Risk Score</strong> model. Every red flag (e.g. "Add After", "Stranger", "Robux Promised") adds points. Any score over 70 is deemed a "Critical Risk".</p>
+                    </CardContent>
+                </Card>
+            </div>
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -396,18 +406,19 @@ export default function RobloxAdoptMeTrustTrade() {
                 </blockquote>
                 <p><strong>The Psychology:</strong> They appeal to your greed (Free Shadow Dragon) and your ego (Proving you are "good").</p>
                 <p><strong>The Reality:</strong> As soon as you give them the Unicorn, they leave the server and block you. There is no Shadow Dragon. It was never real.</p>
+                <p><strong>The Formula:</strong> <code>Your Greed + Their Lie = You Lose Pet</code></p>
 
                 <h2 className="text-2xl font-bold text-foreground pt-8">The "Fail Trade" Myth</h2>
                 <p>Scammers will tell you to put your best pet in, plus a food item, and accept. They claim the trade will "fail" because the food is glitched, and your pet will be duplicated.</p>
                 <p><strong>Why it works:</strong> It sounds like a secret cheat code.</p>
-                <p><strong>Why it's fake:</strong> Adopt Me developers patch glitches instantly. The trade UI works perfectly. You accept, they get your pet. End of story.</p>
+                <p><strong>Why it's fake:</strong> Adopt Me developers patch glitches instantly. The trade UI works perfectly. You accept, they get your pet. The food does not stop the trade. Do not test it.</p>
 
                 <h2 className="text-2xl font-bold text-foreground pt-8">The "Fake YouTuber" Setup</h2>
                 <p>You see someone with a display name like "CookieSwirlC_Fan" or even "Official_Admin". They claim they are filming a video and need you to give them a pet for the thumbnail.</p>
                 <p><strong>Checklist to spot fakes:</strong></p>
                 <ul className="list-disc pl-6 space-y-2">
                     <li><strong>Star Creator Badge:</strong> Real YouTubers have a special Star icon next to their name in the leaderboard. If they don't have it, they are fake.</li>
-                    <li><strong>Chat Color:</strong> Admins and Developers have special chat text colors.</li>
+                    <li><strong>Chat Color:</strong> Admins and Developers have special chat text colors (Blue or Orange).</li>
                     <li><strong>Behavior:</strong> Real influencers give items <em>away</em>. They never ask fans to give <em>them</em> items.</li>
                 </ul>
 
@@ -419,8 +430,10 @@ export default function RobloxAdoptMeTrustTrade() {
                     <li>It is a bannable offense. If the moderation bot detects chat logs discussing "Paypal" or "Robux" linked to a trade, you will be auto-banned.</li>
                 </ol>
 
-                <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <p>Use this calculator whenever a trade feels weird. If the Risk Score is high, trust your gut and walk away. A missed trade is better than a stolen inventory.</p>
+                <div className="bg-muted p-6 rounded-xl mt-8">
+                    <h3 className="text-xl font-bold mb-2">Summary</h3>
+                    <p>Scammers rely on you ignoring your instinct because of greed (the promise of free items). If a trade sounds too good to be true, it is a scam. Always trade normally, using the official 9-slot trade window, and never click links sent in chat.</p>
+                </div>
             </section>
 
             <Card>
@@ -456,4 +469,8 @@ export default function RobloxAdoptMeTrustTrade() {
             </Card>
         </div>
     );
+}
+
+function FormDescription({ className, children }: { className?: string; children: React.ReactNode }) {
+    return <p className={`text-sm text-muted-foreground ${className}`}>{children}</p>;
 }

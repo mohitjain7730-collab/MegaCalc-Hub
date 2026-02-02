@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { GraduationCap, Timer, BookOpen, Star, Info, Zap } from 'lucide-react';
+import { GraduationCap, Timer, BookOpen, Star, Info, Zap, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -299,21 +299,32 @@ export default function RobloxPSXMasteryCalc() {
                 </div>
             )}
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Info className="h-5 w-5" />
-                        How to Use
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <ul className="list-disc pl-5 space-y-2">
-                        {steps.map((step, i) => (
-                            <li key={i}>{step}</li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BookOpen className="h-5 w-5 text-purple-600" />
+                            Understanding the Inputs
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Current Level:</strong> Input your exact level (1-99). The XP curve is exponential, so levels 90-99 take much longer than 1-50.</p>
+                        <p><strong>Speed (Actions/Min):</strong> How many actions (e.g. Eggs Opened) you perform per minute. Use an Auto-Clicker for max speed.</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BrainCircuit className="h-5 w-5 text-purple-600" />
+                            Formula Used
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>XP Remaining:</strong> Scaled exponentially based on level.</p>
+                        <code className="bg-muted px-2 py-1 rounded block w-fit">Time = XP_Remaining / (XP_Per_Action &times; Actions_Per_Min)</code>
+                    </CardContent>
+                </Card>
+            </div>
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -348,12 +359,10 @@ export default function RobloxPSXMasteryCalc() {
                 <h2 className="text-2xl font-bold text-foreground pt-8">Hardcore Mastery</h2>
                 <p>When you unlock Hardcore Mode, masteries apply there too. Grinding mastery in Normal Mode is recommended taking it into Hardcore, as Normal Mode resources (coins/diamonds) are cheaper and easier to get.</p>
 
-                <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <ul className="list-disc pl-6 space-y-2">
-                    <li>Use Auto-Clickers for Enchanting and Converting.</li>
-                    <li>Focus on Lootbag Mastery first for income.</li>
-                    <li>Always be hatching eggs when AFK to cap Egg Mastery.</li>
-                </ul>
+                <div className="bg-muted p-6 rounded-xl mt-8">
+                    <h3 className="text-xl font-bold mb-2">Summary</h3>
+                    <p>Mastery is a long-term grind, but essential for maximizing your account's efficiency. By focusing on Lootbag and Enchanting Mastery first, you set yourself up for infinite wealth in the late game.</p>
+                </div>
             </section>
 
             <Card>

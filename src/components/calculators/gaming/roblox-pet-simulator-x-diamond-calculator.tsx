@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Gem, Coins, Timer, Sparkles, TrendingUp, Info, Lock } from 'lucide-react';
+import { Gem, Coins, Timer, Sparkles, TrendingUp, Info, Lock, BookOpen, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -389,21 +389,33 @@ export default function RobloxPetSimDiamondCalc() {
                 </div>
             </div>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Info className="h-5 w-5" />
-                        How to Use
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <ul className="list-disc pl-5 space-y-2">
-                        {steps.map((step, i) => (
-                            <li key={i}>{step}</li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BookOpen className="h-5 w-5 text-cyan-500" />
+                            Understanding the Inputs
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Farming Zone:</strong> Select the area you are grinding in (e.g. Diamond Mine). Deeper areas yield significantly more gems.</p>
+                        <p><strong>Enchant Multiplier:</strong> Estimate the total boost from your pet enchants. 'Diamonds V' adds +50% per pet.</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BrainCircuit className="h-5 w-5 text-cyan-500" />
+                            Formula Used
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Yield Formula:</strong></p>
+                        <code className="bg-muted px-2 py-1 rounded block w-fit">Yield = (Base Area Rate &times; (1 + Boosts) &times; Enchants) + Rank Bonus</code>
+                        <p>We assume perfect AFK efficiency (breaking chests instantly).</p>
+                    </CardContent>
+                </Card>
+            </div>
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -449,15 +461,10 @@ export default function RobloxPetSimDiamondCalc() {
                 </div>
                 <p>To maximize income, you need high Damage (to break objects fast for Lootbags) AND high Diamond Enchants (for Raw Gems).</p>
 
-                <h2 className="text-2xl font-bold text-foreground pt-8">Bank Interest: Passive Income</h2>
-                <p>Always max out your Bank Tier. The highest tiers give decent interest ratings. If you hold 100 Billion gems, the daily interest alone can fund your hatching addiction.</p>
-                <p><strong>Warning:</strong> Be careful who you invite to your bank. Bank theft is common. Only invite IRL friends or no one at all (Solo Bank is safest).</p>
-
-                <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <p>1. Unlock Diamond Mine.</p>
-                <p>2. Enchant a full team with Diamonds V or Royalty.</p>
-                <p>3. Activate Triple Diamonds + Server Triple Damage.</p>
-                <p>4. AFK on the biggest chest you can break quickly (Tick-breaking is best).</p>
+                <div className="bg-muted p-6 rounded-xl mt-8">
+                    <h3 className="text-xl font-bold mb-2">Summary</h3>
+                    <p>Diamonds are the lifeblood of the economy. By optimizing your loadout with Diamond Enchants and AFK farming the Mystic Mine, you can earn billions daily, allowing you to buy Huge Pets from the trading plaza without spending Robux.</p>
+                </div>
             </section>
 
             <Card>

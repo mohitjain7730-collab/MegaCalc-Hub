@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RefreshCcw, ArrowUpCircle, Lock, Trophy, FastForward, Info, CheckCircle2 } from 'lucide-react';
+import { RefreshCcw, ArrowUpCircle, Lock, Trophy, FastForward, Info, CheckCircle2, BookOpen, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -278,21 +278,33 @@ export default function RobloxPSXRebirthCalc() {
                 </div>
             )}
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Info className="h-5 w-5" />
-                        How to Use
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <ul className="list-disc pl-5 space-y-2">
-                        {steps.map((step, i) => (
-                            <li key={i}>{step}</li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BookOpen className="h-5 w-5 text-green-500" />
+                            Understanding the Inputs
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Next Goal:</strong> Select the Rebirth stage you want to reach (e.g. Rebirth 2 unlocks the Banking system).</p>
+                        <p><strong>Coin Income:</strong> Enter your estimated coins per minute. Use 'Cartoon Coins' enchants to boost this number.</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BrainCircuit className="h-5 w-5 text-green-500" />
+                            Formula Used
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Time Calculation:</strong></p>
+                        <code className="bg-muted px-2 py-1 rounded block w-fit">Time = Cost / Income_Per_Minute</code>
+                        <p>We calculate how long you need to AFK grind to afford the upgrade.</p>
+                    </CardContent>
+                </Card>
+            </div>
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -326,8 +338,10 @@ export default function RobloxPSXRebirthCalc() {
                     <li><strong>Friend Bonus:</strong> Playing with friends gives a Coin multiplier. Join a server with people on your friends list.</li>
                 </ol>
 
-                <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <p>Rebirth immediately when you have the coins. Holding off only delays your access to higher damage and better worlds. The cost is temporary; the +75% damage boost is forever.</p>
+                <div className="bg-muted p-6 rounded-xl mt-8">
+                    <h3 className="text-xl font-bold mb-2">Summary</h3>
+                    <p>Rebirths are the primary progression gates in Pet Simulator X. By rebirthing, you gain essential tools like Teleportation and Banking, and you unlock the damage multipliers required to break higher-level chests. Do not delay your rebirths.</p>
+                </div>
             </section>
 
             <Card>

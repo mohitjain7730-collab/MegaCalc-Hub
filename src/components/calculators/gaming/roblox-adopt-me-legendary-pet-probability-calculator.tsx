@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Dice5, Percent, AlertCircle, HelpCircle, Trophy, Target, Info } from 'lucide-react';
+import { Dice5, Percent, AlertCircle, HelpCircle, Trophy, Target, Info, BookOpen, Calculator, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -69,7 +69,7 @@ const calculateProbabilities = (values: FormValues): ResultPayload => {
     const eggsFor99 = Math.ceil(Math.log(0.01) / Math.log(1 - p));
 
     let luck = "Average";
-    if (expected < 0.5) luck = "You need lots of Luck!";
+    if (expected < 0.5) luck = "High Luck Needed";
     else if (expected < 1.5) luck = "Coin Flip Territory";
     else if (expected >= 3) luck = "Statistically Likely";
 
@@ -117,7 +117,7 @@ const faqs = [
     },
     {
         question: "Are 'Retired Eggs' better?",
-        answer: "Retired Eggs (available in the VIP room) have the exact same 3% Legendary odds as the standard Pet Egg, but they contain a different pool of pets (Red Dragon, Unicorn, etc.) that are otherwise unobtainable from the shop.",
+        answer: "Retired Eggs (available in the VIP room) have the exact same 3% Legendary odds as standard Pet Eggs, but they contain a different pool of pets (Red Dragon, Unicorn, etc.) that are otherwise unobtainable from the shop.",
     },
 ];
 
@@ -332,21 +332,33 @@ export default function RobloxAdoptMeLegendaryProb() {
                 </div>
             </div>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Info className="h-5 w-5" />
-                        How It Works
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <ul className="list-disc pl-5 space-y-2">
-                        {steps.map((step, i) => (
-                            <li key={i}>{step}</li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BookOpen className="h-5 w-5 text-purple-500" />
+                            Understanding the Inputs
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Egg Type:</strong> Choose the specific egg you are hatching. Different eggs have different "Legendary Rates" (e.g., Royal Egg is 8%, Pet Egg is 3%).</p>
+                        <p><strong>Number of Eggs:</strong> The total amount of eggs you intend to open in one session. The more eggs you open, the higher your cumulative probability.</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BrainCircuit className="h-5 w-5 text-purple-500" />
+                            Formula Used
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p>We use the <strong>Binomial Probability Formula</strong> for "At Least One Success":</p>
+                        <code className="bg-muted px-2 py-1 rounded block w-fit">P(X &ge; 1) = 1 - (1 - p)<sup>n</sup></code>
+                        <p>Where <em>p</em> is the hatching odds (e.g., 0.08) and <em>n</em> is the number of eggs.</p>
+                    </CardContent>
+                </Card>
+            </div>
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -361,15 +373,15 @@ export default function RobloxAdoptMeLegendaryProb() {
                 <p className="text-lg italic text-muted-foreground">Why hatching 100 Royal Eggs isn't a guarantee: The harsh truth about probability and RNG.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Understanding the "Hatch Rate"</h2>
-                <p> every time you open an egg in <em>Adopt Me!</em>, the game rolls a digital die. If that die lands on specific numbers, you get a Legendary. If not, you get a Common or Uncommon.</p>
-                <p>The rates are fixed by the developers. For a Royal Egg, the rate is <strong>8%</strong>. This means out of 100 eggs, <em>on average</em>, 8 will be Legendary.</p>
+                <p>Every time you open an egg in <em>Adopt Me!</em>, the game rolls a digital die. If that die lands on specific numbers, you get a Legendary. If not, you get a Common or Uncommon.</p>
+                <p>The rates are fixed by the developers. For a Royal Egg, the rate is <strong>8%</strong>. This means out of 100 eggs, <em>on average</em>, 8 will be Legendary. However, average does not mean guaranteed.</p>
 
                 <h3 className="text-xl font-bold text-red-500 mt-4">The Gambler's Fallacy</h3>
                 <p>Many players believe: "I hatched 10 eggs and got zero Legendaries, so my next egg MUST be Legendary!"</p>
                 <p><strong>This is false.</strong> Each egg is an independent event. The game does not care about your past failures. Even if you open 50 bad eggs in a row, the 51st egg still has only an 8% chance. This calculator uses the <strong>Binomial Distribution</strong> model to show you the <em>collective</em> probability of success over many attempts.</p>
 
                 <h2 className="text-2xl font-bold text-foreground pt-8">Royal Egg vs. Cracked Egg: The Math</h2>
-                <p>Which egg gets you more Legendaries for your money?</p>
+                <p>Which egg gets you more Legendaries for your money? Let's break down the cost efficiency.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
                     <div className="bg-muted p-4 rounded">
                         <h4 className="font-bold">Royal Egg ($1450)</h4>
@@ -385,7 +397,7 @@ export default function RobloxAdoptMeLegendaryProb() {
                 <p><strong>Verdict:</strong> The Royal Egg is mathematically roughly <strong>25% more efficient</strong> for hunting Legendaries specifically. However, for filling your journal with random pets, Cracked Eggs offer more volume.</p>
 
                 <h2 className="text-2xl font-bold text-foreground pt-8">The "99% Certainty" Rule</h2>
-                <p>If you want to be "virtually guaranteed" (99% sure) that you will get at least one Legendary, you need to hatch:</p>
+                <p>If you want to be "virtually guaranteed" (99% sure) that you will get at least one Legendary, you need to hatch a specific amount of eggs. This is often more than people expect:</p>
                 <ul className="list-disc pl-6 space-y-2">
                     <li><strong>Royal Eggs:</strong> 56 Eggs (~$81,000 Bucks)</li>
                     <li><strong>Urban/Desert Eggs (5%):</strong> 90 Eggs (~$67,500 Bucks)</li>
@@ -394,6 +406,12 @@ export default function RobloxAdoptMeLegendaryProb() {
                 </ul>
                 <p>This shows that Gumball Machine eggs (like Desert/Urban) are often the sweet spot for value, as they are cheaper than Royal eggs but have decent odds (usually 5%).</p>
 
+                <h2 className="text-2xl font-bold text-foreground pt-8">Strategies for Grinding Bucks</h2>
+                <p>Since odds are fixed, the only way to improve your outcomes is to hatch MORE eggs. This requires more money.</p>
+                <p>1. <strong>Play as a Baby:</strong> You get paid double (once for yourself, once for your pet) if you take care of both needs.</p>
+                <p>2. <strong>Grinding Rooms:</strong> Build a shower, piano, feeder, and bed near your house entrance to complete tasks instantly.</p>
+                <p>3. <strong>Task Board:</strong> Always complete the daily RGB RGB tasks for big Buck bonuses.</p>
+
                 <h2 className="text-2xl font-bold text-foreground pt-8">RNG Myths Debunked</h2>
                 <p><strong>Myth:</strong> "Hatching at night gives better luck."</p>
                 <p><strong>Fact:</strong> Time of day has no impact on code.</p>
@@ -401,8 +419,10 @@ export default function RobloxAdoptMeLegendaryProb() {
                 <p><strong>Myth:</strong> "If I pay Robux, I get better odds."</p>
                 <p><strong>Fact:</strong> Robux eggs (like the Diamond Egg) have their own separate odds table, but buying bucks with Robux to buy Royal Eggs does not change the Royal Egg's internal rate.</p>
 
-                <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <p>Use this calculator to set realistic expectations. Don't spend your last 1,500 bucks on a Royal Egg expecting a miracle. Save up for a batch of 10 or 20 to give yourself a statistically fair fight.</p>
+                <div className="bg-muted p-6 rounded-xl mt-8">
+                    <h3 className="text-xl font-bold mb-2">Summary</h3>
+                    <p>Hatching Legendaries is a numbers game. Ignore superstitions and focus on efficiency. Royal Eggs are the best value for Legendaries, but Gumball Machine eggs offers the best resale value. Plan to spend at least $50,000 to $80,000 bucks to guarantee a success.</p>
+                </div>
             </section>
 
             <Card>
@@ -438,4 +458,8 @@ export default function RobloxAdoptMeLegendaryProb() {
             </Card>
         </div>
     );
+}
+
+function FormDescription({ className, children }: { className?: string; children: React.ReactNode }) {
+    return <p className={`text-sm text-muted-foreground ${className}`}>{children}</p>;
 }

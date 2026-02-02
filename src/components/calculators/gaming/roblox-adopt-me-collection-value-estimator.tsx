@@ -6,12 +6,11 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Briefcase, TrendingUp, Layers, Info, Gem, CircleDollarSign } from 'lucide-react';
+import { Briefcase, TrendingUp, Layers, Info, Gem, CircleDollarSign, BookOpen, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Separator } from "@/components/ui/separator";
 
 // Base Values (Standardized Unit: 1 = Low Tier Legendary, e.g. Dragon)
 // These are approximations for bulk estimation.
@@ -347,21 +346,33 @@ export default function RobloxAdoptMeCollectionValue() {
                 </div>
             </div>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Info className="h-5 w-5" />
-                        How to Use
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground space-y-2">
-                    <ul className="list-disc pl-5 space-y-2">
-                        {steps.map((step, i) => (
-                            <li key={i}>{step}</li>
-                        ))}
-                    </ul>
-                </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BookOpen className="h-5 w-5 text-blue-600" />
+                            Understanding the Inputs
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p><strong>Singles:</strong> Count only your normal pets. Ignore Commons/Uncommons unless you have hundreds.</p>
+                        <p><strong>Neons/Megas:</strong> These are worth exponentially more. A Mega Legendary is often worth 20-30x a normal one due to the time effort.</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                            <BrainCircuit className="h-5 w-5 text-blue-600" />
+                            Formula Used
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2 text-sm text-muted-foreground">
+                        <p>We use a <strong>Standardized Point System</strong> where 1 Point = 1 Low Tier Legendary (e.g. Dragon).</p>
+                        <code className="bg-muted px-2 py-1 rounded block w-fit">Total = &sum; (Qty &times; Multiplier)</code>
+                        <p>Neon Multiplier: 5x | Mega Multiplier: 20x</p>
+                    </CardContent>
+                </Card>
+            </div>
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -403,8 +414,10 @@ export default function RobloxAdoptMeCollectionValue() {
                     <li><strong>Use Alts for Storage:</strong> If you accept a "9+" trade (giving 9 pets for 1 big pet), you will have excess junk. Move the junk to an alt account to keep your main inventory clean for screenshots.</li>
                 </ul>
 
-                <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <p>Your goal is not just "More Pets". It is "Better Pets". Use this estimator to track your Total Points, but always focus on condensing those points into the fewest number of pets possible.</p>
+                <div className="bg-muted p-6 rounded-xl mt-8">
+                    <h3 className="text-xl font-bold mb-2">Summary</h3>
+                    <p>Total inventory value is a vanity metric. What matters is your ability to consolidate spread-out value into dense assets (High Tiers). Use this calculator to track your progress, but focus on the quality of your pets, not just the quantity.</p>
+                </div>
             </section>
 
             <Card>
@@ -440,4 +453,8 @@ export default function RobloxAdoptMeCollectionValue() {
             </Card>
         </div>
     );
+}
+
+function FormDescription({ className, children }: { className?: string; children: React.ReactNode }) {
+    return <p className={`text-sm text-muted-foreground ${className}`}>{children}</p>;
 }
