@@ -244,4 +244,22 @@ export const gaming_calculators: Calculator[] = [
     metaTitle: 'Valorant Rank Progression Calculator - Games to Immortal',
     metaDescription: 'Calculate how many games of Valorant you need to reach your target rank based on win rate and RR gains. Free Valorant climbing calculator.',
   },
+  {
+    id: 10028,
+    name: 'Roblox Adopt Me Neon Pet Value Calculator',
+    description: 'Calculate the trading value of Neon pets in Roblox Adopt Me based on rarity, aging time, and demand.',
+    slug: 'roblox-adopt-me-neon-pet-value-calculator',
+    category: 'gaming',
+    metaTitle: 'Roblox Adopt Me Neon Pet Value Calculator - Calculate Neon Values',
+    metaDescription: 'Calculate the trading value of Neon pets in Roblox Adopt Me based on rarity, aging time, and demand. Free Adopt Me value calculator.',
+  },
+  {
+    id: 10029,
+    name: 'Roblox Adopt Me Mega Neon Value Calculator',
+    description: 'Calculate the trading value of Mega Neon pets in Roblox Adopt Me. Convert single or neon values to Mega estimations.',
+    slug: 'roblox-adopt-me-mega-neon-value-calculator',
+    category: 'gaming',
+    metaTitle: 'Roblox Adopt Me Mega Neon Value Calculator - Mega Value Estimator',
+    metaDescription: 'Calculate the trading value of Mega Neon pets in Roblox Adopt Me. Convert single or neon values to Mega estimations. Free Adopt Me Mega calculator.',
+  },
 ];

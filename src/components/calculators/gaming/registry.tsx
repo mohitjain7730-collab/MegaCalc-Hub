@@ -21,6 +21,8 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'minecraft-smelter-fuel-efficiency': lazy(() => import('./minecraft-smelter-fuel-efficiency')),
   'minecraft-tree-farm-output-calculator': lazy(() => import('./minecraft-tree-farm-output-calculator')),
   'minecraft-villager-trade-tracker': lazy(() => import('./minecraft-villager-trade-tracker')),
+  'roblox-adopt-me-neon-pet-value-calculator': lazy(() => import('./roblox-adopt-me-neon-pet-value-calculator')),
+  'roblox-adopt-me-mega-neon-value-calculator': lazy(() => import('./roblox-adopt-me-mega-neon-value-calculator')),
   'roblox-egg-hatch-odds-simulator': lazy(() => import('./roblox-egg-hatch-odds-simulator')),
   'roblox-gamepass-roi-calculator': lazy(() => import('./roblox-gamepass-roi-calculator')),
   'roblox-inventory-value-estimator': lazy(() => import('./roblox-inventory-value-estimator')),

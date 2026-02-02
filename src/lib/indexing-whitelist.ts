@@ -87,6 +87,8 @@ export const indexableCalculatorSlugs = [
     'roblox-limited-item-resale-predictor',
     'roblox-inventory-value-estimator',
     'roblox-trade-tax-calculator',
+    'roblox-adopt-me-neon-pet-value-calculator',
+    'roblox-adopt-me-mega-neon-value-calculator',
     'fortnite-dps-calculator',
     'fortnite-build-material-cost-calculator',
     'fortnite-storm-surge-timer',
