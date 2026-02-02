@@ -33,6 +33,8 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'roblox-adopt-me-collection-value-estimator': lazy(() => import('./roblox-adopt-me-collection-value-estimator')),
   'roblox-pet-simulator-x-diamond-calculator': lazy(() => import('./roblox-pet-simulator-x-diamond-calculator')),
   'roblox-pet-simulator-x-pet-power-calculator': lazy(() => import('./roblox-pet-simulator-x-pet-power-calculator')),
+  'roblox-pet-simulator-x-rebirth-calculator': lazy(() => import('./roblox-pet-simulator-x-rebirth-calculator')),
+  'roblox-pet-simulator-x-mastery-calculator': lazy(() => import('./roblox-pet-simulator-x-mastery-calculator')),
   'roblox-egg-hatch-odds-simulator': lazy(() => import('./roblox-egg-hatch-odds-simulator')),
   'roblox-gamepass-roi-calculator': lazy(() => import('./roblox-gamepass-roi-calculator')),
   'roblox-inventory-value-estimator': lazy(() => import('./roblox-inventory-value-estimator')),

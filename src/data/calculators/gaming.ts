@@ -352,4 +352,22 @@ export const gaming_calculators: Calculator[] = [
     metaTitle: 'Roblox Pet Simulator X Pet Power Calculator - Team DPS',
     metaDescription: 'Calculate your total team damage in Pet Simulator X. Compare Huge and Dark Matter power levels. Free damage calculator.',
   },
+  {
+    id: 10040,
+    name: 'Roblox Pet Simulator X Rebirth Calculator',
+    description: 'Calculate costs and rewards for Rebirths in Pet Simulator X. Plan your progression to Hardcore Mode.',
+    slug: 'roblox-pet-simulator-x-rebirth-calculator',
+    category: 'gaming',
+    metaTitle: 'Roblox Pet Simulator X Rebirth Calculator - Rewards Guide',
+    metaDescription: 'Calculate costs and rewards for Rebirths in Pet Simulator X. Plan your progression to Hardcore Mode/The Void. Free progression tool.',
+  },
+  {
+    id: 10041,
+    name: 'Roblox Pet Simulator X Mastery Calculator',
+    description: 'Calculate time and XP needed to max out Mastery Skills in Pet Simulator X to Level 99.',
+    slug: 'roblox-pet-simulator-x-mastery-calculator',
+    category: 'gaming',
+    metaTitle: 'Roblox Pet Simulator X Mastery Calculator - Level 99 Sim',
+    metaDescription: 'Calculate time and XP needed to max out Mastery Skills in Pet Simulator X to Level 99. Optimize Lootbag and Enchant Mastery.',
+  },
 ];

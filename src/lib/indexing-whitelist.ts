@@ -99,6 +99,8 @@ export const indexableCalculatorSlugs = [
     'roblox-adopt-me-collection-value-estimator',
     'roblox-pet-simulator-x-diamond-calculator',
     'roblox-pet-simulator-x-pet-power-calculator',
+    'roblox-pet-simulator-x-rebirth-calculator',
+    'roblox-pet-simulator-x-mastery-calculator',
     'fortnite-dps-calculator',
     'fortnite-build-material-cost-calculator',
     'fortnite-storm-surge-timer',
