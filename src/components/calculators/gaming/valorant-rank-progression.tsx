@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Gamepad2, Trophy, Clock, Target, ArrowRight, TrendingUp, BarChart2, ShieldCheck } from 'lucide-react';
+import { Gamepad2, Trophy, Clock, Target, ArrowRight, TrendingUp, BarChart2, ShieldCheck, Shield, Activity } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -23,12 +23,8 @@ const ranks = [
     { id: 'diamond', label: 'Diamond', baseRR: 1500 },
     { id: 'ascendant', label: 'Ascendant', baseRR: 1800 },
     { id: 'immortal', label: 'Immortal', baseRR: 2100 },
-    { id: 'radiant', label: 'Radiant', baseRR: 2500 } // Arbitrary cap for progression calc
+    { id: 'radiant', label: 'Radiant', baseRR: 2500 }
 ];
-
-// Each rank tier has 3 subdivisions (1, 2, 3) of 100 RR each, except Radiant.
-// To simplify user input, we can ask for Rank (e.g. Silver) and Tier (1, 2, 3).
-// Total RR = Base(Rank) + (Tier-1)*100 + CurrentRR
 
 const formSchema = z.object({
     currentRank: z.string(),
@@ -51,58 +47,133 @@ type ResultPayload = {
     totalGames: number;
     winRate: number;
     timeEstimateHours: number;
+    recommendations: string[];
+    plan: { label: string; detail: string }[];
+};
+
+const steps = [
+    'Select your current Rank and Tier (e.g., Silver 2).',
+    'Input your current RR (0-99).',
+    'Choose your ambitious Target Rank (e.g., Ascendant).',
+    'Adjust your Win Rate slider (be realistic! 50-55% is standard).',
+    'Review the "Total Games" calculation to see the grind ahead.',
+];
+
+const relatedCalculators = [
+    {
+        name: 'Valorant RR Predictor',
+        slug: 'valorant-rr-predictor',
+        description: 'Predict your Valorant Rank Rating (RR) gain or loss per match based on performance and outcome.',
+    },
+    {
+        name: 'Fortnite Victory Royale Probability Estimator',
+        slug: 'fortnite-victory-royale-probability-estimator',
+        description: 'Estimate your probability of winning a Victory Royale based on current placement and skill.',
+    },
+    {
+        name: 'Minecraft Villager Trade Tracker',
+        slug: 'minecraft-villager-trade-tracker',
+        description: 'Track villager trades and calculate emerald profit per trade based on trade costs.',
+    },
+    {
+        name: 'Roblox Trading Profit Analyzer',
+        slug: 'roblox-trading-profit-analyzer',
+        description: 'Analyze trading profits by comparing buy and sell prices and fees.',
+    },
+];
+
+const faqs = [
+    {
+        question: 'How is "Net RR" calculated?',
+        answer: 'Net RR is the average amount of rank rating you gain per match played, factoring in both wins and losses. Formula: (Win% × WinRR) - (Loss% × LossRR). If you win 50% of games gaining 20 and losing 20, your Net RR is 0 (you will not climb).',
+    },
+    {
+        question: 'Why does the result say "Infinity" games?',
+        answer: 'If your Win Rate is too low or your Loss Penalty is too high, your "Net RR" becomes negative. This means statistically, you are de-ranking. You must increase your Win Rate or MMR (Win/Loss Variance) to climb. It is mathematically impossible to reach a higher rank with negative expected value.',
+    },
+    {
+        question: 'What is a good Win Rate for climbing?',
+        answer: '51-55% is a healthy climbing rate. 60%+ is "smurfing" territory or very rapid climbing. Anything below 50% usually relies on having very high MMR (gaining 25, losing 15) to climb. A 52% win rate is standard for consistent progression.',
+    },
+    {
+        question: 'How long does a Valorant match take?',
+        answer: 'The average competitive match lasts 30-40 minutes including agent select and overtime. This calculator assumes an average of 35 minutes per game. Ranking up requires hundreds of hours; it is a marathon, not a sprint.',
+    },
+    {
+        question: 'Does this account for double rank-ups?',
+        answer: 'No, this calculator assumes a linear progression. Double rank-ups happen when your MMR is significantly higher than your rank (e.g., Gold 1 climbing to Gold 3 instantly), which would speed up this process considerably.',
+    },
+    {
+        question: 'How does a "Loss Streak" affect this?',
+        answer: 'Loss streaks lower your MMR, which reduces your future specific RR gains. However, this calculator uses averages. In reality, a loss streak might make the climb slightly longer than predicted because you have to repair your MMR before you start climbing optimally again.',
+    },
+    {
+        question: 'What is the "Hidden MMR" impact?',
+        answer: 'Your Hidden MMR determines your +/- RR. If your MMR is high, you might gain +25 and lose -15. If it is low, you gain +15 and lose -25. Adjust the "RR Gain/Win" inputs in this calculator to reflect your actual current MMR state for better accuracy.',
+    }
+];
+
+const baseUrl = 'https://mycalculating.com/category/gaming/valorant-rank-progression';
+
+const schemaMarkup = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
+                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+                { '@type': 'ListItem', position: 3, name: 'Valorant Rank Progression Calculator', item: baseUrl },
+            ],
+        },
+        {
+            '@type': 'SoftwareApplication',
+            name: 'Valorant Rank Progression Calculator',
+            applicationCategory: 'Calculator',
+            operatingSystem: 'Web Browser',
+            description: 'Calculate how many games of Valorant you need to reach your target rank based on win rate and RR gains.',
+            url: baseUrl,
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        },
+    ],
 };
 
 const calculateProgression = (values: FormValues): ResultPayload => {
-    // Helper to get total cumulative RR
     const getAbsoluteRR = (rankId: string, tier: number, rr: number) => {
         const rank = ranks.find(r => r.id === rankId);
         if (!rank) return 0;
-        // Immortal+ logic is simpler (depends on regional leaderboards), but for calculator we treat it as linear
-        // Standard: Rank Base + ((Tier-1)*100) + RR
         return rank.baseRR + ((tier - 1) * 100) + rr;
     };
 
-    // For Target, we assume they want to reach the *start* of that rank (Tier 1, 0 RR)
-    // Unless target is same as current, then maybe next tier?
-    // Let's assume start of Target Rank Tier 1.
-
-    // Correction: "Target Rank" usually implies reaching the next major milestone.
-    // Let's assume user wants to reach [Target Rank] 1 with 10 RR (safe buffer).
-
     const currentAbsoluteRR = getAbsoluteRR(values.currentRank, values.currentTier, values.currentRR);
-    // Target is start of target rank
     const targetRankObj = ranks.find(r => r.id === values.targetRank);
     const targetAbsoluteRR = targetRankObj ? targetRankObj.baseRR : 0;
 
     const totalRRNeeded = Math.max(0, targetAbsoluteRR - currentAbsoluteRR);
 
-    // Net RR Calculation
-    // Expected Value per match = (Win% * WinRR) - (Loss% * LossRR)
+    // Expected Value per match
     const winProb = values.winRate / 100;
     const lossProb = 1 - winProb;
     const netRR = (winProb * values.avgWinRR) - (lossProb * values.avgLossRR);
 
-    if (netRR <= 0) {
-        // Infinite/Impossible at current rate
-        return {
-            totalRRNeeded,
-            netRRPerMatch: netRR,
-            estimatedGames: Infinity,
-            estimatedWins: 0,
-            estimatedLosses: 0,
-            totalGames: Infinity,
-            winRate: values.winRate,
-            timeEstimateHours: Infinity
-        };
-    }
+    const isImpossible = netRR <= 0;
+    const totalGames = isImpossible ? Infinity : Math.ceil(totalRRNeeded / netRR);
+    const estimatedWins = isImpossible ? 0 : Math.ceil(totalGames * winProb);
+    const estimatedLosses = isImpossible ? 0 : Math.floor(totalGames * lossProb);
+    const timeEstimateHours = isImpossible ? Infinity : Math.ceil((totalGames * 35) / 60);
 
-    const totalGames = Math.ceil(totalRRNeeded / netRR);
-    const estimatedWins = Math.ceil(totalGames * winProb);
-    const estimatedLosses = Math.floor(totalGames * lossProb);
+    const recommendations = [
+        `Distance to Goal: ${totalRRNeeded} RR. You are typically ${Math.ceil(totalRRNeeded / 100)} rank tiers away.`,
+        `Net Gain: ${netRR.toFixed(2)} RR per game. ${netRR > 3 ? "Fast climbing speed." : netRR > 0 ? "Slow and steady climb." : "Stagnant or falling."}`,
+        `Volume Required: ${totalGames === Infinity ? "Infinite" : totalGames} games. At this winrate, you will need to play consistently.`,
+        `Consistency is Key: A 5% increase in winrate reduces games needed significantly.`
+    ];
 
-    // Assume avg game time 35 mins
-    const timeEstimateHours = Math.ceil((totalGames * 35) / 60);
+    const plan = [
+        { label: 'Weekly Goal', detail: `Play ${Math.min(20, Math.ceil(totalGames / 4))} games/week to reach target in a month.` },
+        { label: 'Expectation', detail: `You will likely lose ${estimatedLosses} games. Don't tilt. It's part of the math.` },
+        { label: 'Focus', detail: 'Improve Round Win % to boost your MMR, which increases your +/- RR efficiency.' }
+    ];
 
     return {
         totalRRNeeded,
@@ -112,7 +183,9 @@ const calculateProgression = (values: FormValues): ResultPayload => {
         estimatedLosses,
         totalGames,
         winRate: values.winRate,
-        timeEstimateHours
+        timeEstimateHours,
+        recommendations,
+        plan
     };
 };
 
@@ -127,7 +200,7 @@ export default function ValorantRankProgression() {
             currentRR: 50,
             targetRank: 'platinum',
             avgWinRR: 19,
-            avgLossRR: 15, // Usually slightly favored if not boosted
+            avgLossRR: 15,
             winRate: 51,
         },
     });
@@ -136,23 +209,13 @@ export default function ValorantRankProgression() {
         setResult(calculateProgression(values));
     };
 
-    // Custom validation or error handling if Target < Current
     const currentRankIdx = ranks.findIndex(r => r.id === form.getValues().currentRank);
     const targetRankIdx = ranks.findIndex(r => r.id === form.getValues().targetRank);
     const isTargetLower = targetRankIdx <= currentRankIdx && targetRankIdx !== -1;
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500">
-            <Script id="valorant-rank-progression-schema" type="application/ld+json" dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                    '@context': 'https://schema.org',
-                    '@type': 'SoftwareApplication',
-                    name: 'Valorant Rank Progression Calculator',
-                    applicationCategory: 'GameApplication',
-                    operatingSystem: 'Any',
-                    description: 'Calculate how many games of Valorant you need to win to reach your dream rank.'
-                })
-            }} />
+            <Script id="valorant-rank-progression-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
 
             <Card className="border-l-4 border-l-red-500 shadow-xl overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
@@ -162,7 +225,7 @@ export default function ValorantRankProgression() {
                         Valorant Rank Progression
                     </CardTitle>
                     <CardDescription>
-                        Calculate the grind. Find out exactly how many games it takes to reach Immortal.
+                        Calculate the grind. Find out exactly how many games it takes to reach Immortal based on your stats.
                     </CardDescription>
                 </CardHeader>
             </Card>
@@ -306,7 +369,7 @@ export default function ValorantRankProgression() {
                                             {result.totalGames === Infinity ? "∞" : result.totalGames}
                                         </div>
                                         <p className="text-xs text-slate-500">
-                                            ~{result.timeEstimateHours} hours of playtime
+                                            ~{result.timeEstimateHours === Infinity ? "Forever" : result.timeEstimateHours} hours of playtime
                                         </p>
                                     </CardContent>
                                 </Card>
@@ -316,7 +379,7 @@ export default function ValorantRankProgression() {
                                     </CardHeader>
                                     <CardContent>
                                         <div className="text-4xl font-black tracking-tight text-red-600 dark:text-red-400 mb-1">
-                                            {result.netRRPerMatch > 0 ? '+' : ''}{result.netRRPerMatch.toFixed(1)}
+                                            {result.netRRPerMatch > 0 ? '+' : ''}{result.netRRPerMatch.toFixed(2)}
                                         </div>
                                         <p className="text-xs text-red-600/70 dark:text-red-400/70">
                                             Expected value based on {result.winRate}% WR
@@ -330,7 +393,6 @@ export default function ValorantRankProgression() {
                                     <CardTitle>Journey Visualization</CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-8">
-                                    {/* Simple visual timeline */}
                                     <div className="relative pt-6 pb-2">
                                         <div className="flex justify-between items-center mb-2 font-bold text-sm">
                                             <span className="flex items-center gap-1 text-slate-500"><Target className="w-4 h-4" /> Start: {form.getValues().currentRank}</span>
@@ -344,19 +406,39 @@ export default function ValorantRankProgression() {
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm bg-muted/30 p-4 rounded-lg">
-                                        <div className="space-y-1">
-                                            <p className="font-semibold flex items-center gap-2"><Clock className="w-4 h-4" /> Grind Time</p>
-                                            <p className="text-muted-foreground">At 3 games/day, this will take approximately <span className="text-foreground font-bold">{result.totalGames === Infinity ? 'Forever' : Math.ceil(result.totalGames / 3)} days</span>.</p>
-                                        </div>
-                                        <div className="space-y-1">
-                                            <p className="font-semibold flex items-center gap-2"><BarChart2 className="w-4 h-4" /> Consistency</p>
-                                            <p className="text-muted-foreground">You need to earn <span className="text-foreground font-bold">{result.totalRRNeeded} RR</span> total. A 1% increase in Win Rate saves about {Math.ceil(result.totalGames * 0.1)} games.</p>
-                                        </div>
-                                        <div className="space-y-1">
-                                            <p className="font-semibold flex items-center gap-2"><ShieldCheck className="w-4 h-4" /> Reality Check</p>
-                                            <p className="text-muted-foreground">{result.netRRPerMatch < 0.5 ? "Progress will be very slow. Try to improve individual performance to boost RR gains." : "You are on a healthy climbing trajectory."}</p>
-                                        </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <Card>
+                                            <CardHeader>
+                                                <CardTitle className="text-base flex items-center gap-2">
+                                                    <Target className="h-4 w-4" />
+                                                    Reality Check
+                                                </CardTitle>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
+                                                    {result.recommendations.map((rec, idx) => (
+                                                        <li key={idx}>{rec}</li>
+                                                    ))}
+                                                </ul>
+                                            </CardContent>
+                                        </Card>
+                                        <Card>
+                                            <CardHeader>
+                                                <CardTitle className="text-base flex items-center gap-2">
+                                                    <Activity className="h-4 w-4" />
+                                                    Action plan
+                                                </CardTitle>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <ul className="space-y-1 text-sm text-muted-foreground">
+                                                    {result.plan.map((step) => (
+                                                        <li key={step.label}>
+                                                            <span className="font-semibold">{step.label}:</span> {step.detail}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </CardContent>
+                                        </Card>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -372,6 +454,162 @@ export default function ValorantRankProgression() {
                     )}
                 </div>
             </div>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Shield className="h-5 w-5" />
+                        Formula
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-muted-foreground space-y-2">
+                    <p>
+                        <strong>Total RR Needed</strong> = (Target Rank Base RR) - (Current Rank Base RR + Current Tier RR).
+                    </p>
+                    <p>
+                        <strong>Net RR Per Match</strong> = (Win% × Avg Win RR) - (Loss% × Avg Loss RR). This is the "Expected Value" of playing one match.
+                    </p>
+                    <p>
+                        <strong>Total Games Required</strong> = Total RR Needed / Net RR Per Match.
+                    </p>
+                    <p>
+                        <strong>Example:</strong> If you gain 20 on wins and lose 20 on losses with a 51% win rate, your Net RR is +0.4 per match. It will take 250 matches to gain 100 RR (one tier).
+                    </p>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Steps</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+                        {steps.map((step) => (
+                            <li key={step}>{step}</li>
+                        ))}
+                    </ul>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Related calculators</CardTitle>
+                </CardHeader>
+                <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {relatedCalculators.map((calc) => (
+                        <div key={calc.slug} className="p-4 border rounded">
+                            <h4 className="font-semibold mb-1">
+                                <Link href={`/category/gaming/${calc.slug}`} className="text-primary hover:underline">
+                                    {calc.name}
+                                </Link>
+                            </h4>
+                            <p className="text-sm text-muted-foreground">{calc.description}</p>
+                        </div>
+                    ))}
+                </CardContent>
+            </Card>
+
+            <section
+                className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
+                itemScope
+                itemType="https://schema.org/Article"
+            >
+                <meta itemProp="name" content="The Math Behind Climbing: Valorant Rank Progression Guide" />
+                <meta itemProp="description" content="Calculate exactly how many games you need to reach your dream rank in Valorant. Understanding Net RR and the importance of win rate." />
+                <meta itemProp="keywords" content="Valorant Rank Calculator, Valorant Grind, Games to Immortal, Rank Progression" />
+                <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
+                <meta itemProp="datePublished" content="2025-01-25" />
+                <meta itemProp="url" content={baseUrl} />
+
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Math Behind Climbing: Valorant Rank Progression Guide</h1>
+                <p className="text-lg italic text-muted-foreground">Why a 51% win rate is enough to climb, but 55% changes everything. The mathematical reality of reaching Immortal.</p>
+
+                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+                <ul className="list-disc ml-6 space-y-2 text-primary">
+                    <li><a href="#mathematics" className="hover:underline">The Mathematics of the Grind</a></li>
+                    <li><a href="#winrate-impact" className="hover:underline">Win Rate vs. Volume (The Exponential Curve)</a></li>
+                    <li><a href="#variance" className="hover:underline">Variance and Streaks (The "Losers Queue" Myth)</a></li>
+                    <li><a href="#strategy" className="hover:underline">Optimizing Your Climb</a></li>
+                    <li><a href="#mental" className="hover:underline">The Mental Game: Handling Tilt</a></li>
+                    <li><a href="#distribution" className="hover:underline">Rank Distribution Realities</a></li>
+                    <li><a href="#resets" className="hover:underline">Episode Resets and Their Impact</a></li>
+                </ul>
+                <hr className="my-6" />
+
+                <h2 id="mathematics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mathematics of the Grind</h2>
+                <p>Ranking up in Valorant is fundamentally a function of <strong>Net RR</strong> over time. Many players believe that if they simply "play enough," they will rank up. This is statistically false.</p>
+                <p>Your Net RR is calculated as: <code>(Win % × Avg Win RR) - (Loss % × Avg Loss RR)</code>.</p>
+                <p>If you lose as much RR as you gain (e.g., +20 / -20) and have a 50% win rate, your Net RR is exactly 0. You will stay in Silver 2 forever, regardless of whether you play 10 games or 1,000 games. To climb, you must break this equilibrium by either (a) increasing your Win Rate above 50%, or (b) increasing your MMR so you gain more per win.</p>
+
+                <h2 id="winrate-impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Win Rate vs. Volume (The Exponential Curve)</h2>
+                <p>Small improvements in Win Rate have massive, exponential impacts on the speed of your climb. Consider a player trying to gain 400 RR (climbing from Silver to Platinum):</p>
+                <ul className="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>51% Win Rate (The Grinder):</strong> With balanced gains (+20/-20), you net 0.4 RR per game. It will take <strong>1,000 games</strong> to reach your goal.</li>
+                    <li><strong>53% Win Rate (The Improver):</strong> You net 1.2 RR per game. It takes <strong>333 games</strong>. You just saved 667 hours of gameplay by winning 2 more games per 100.</li>
+                    <li><strong>55% Win Rate (The Climber):</strong> You net 2.0 RR per game. It takes <strong>200 games</strong>. The grind is 5x faster than at 51%.</li>
+                    <li><strong>60% Win Rate (The Smurf):</strong> You net 4.0 RR per game. It takes <strong>100 games</strong>.</li>
+                </ul>
+                <p><strong>The takeaway:</strong> Stop spamming games on autopilot. Playing 3 games at peak focus (55% WR chance) is infinitely more valuable than spamming 8 games while tired (50% WR chance).</p>
+
+                <h2 id="variance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Variance and Streaks (The "Losers Queue" Myth)</h2>
+                <p>A 55% win rate does not mean you win 5.5 games out of every 10 consistently. True randomness involves "clumping," or streaks.</p>
+                <p>Over a 100-game sample with a 55% win rate, there is a statistical certainty that you will experience a <strong>5-game losing streak</strong>. Most players interpret this as "The system is rigged" or "Losers Queue." It isn't. It is standard variance.</p>
+                <p>The "Expected Losses" figure in our calculator is crucial. If you are projected to play 300 games to reach Immortal, you <em>will</em> lose approximately 135 of them. Accepting that you are going to lose 135 games—and that some of them will be 13-0 stomps or have AFK teammates—is the key to mental resilience.</p>
+
+                <h2 id="strategy" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Optimizing Your Climb</h2>
+                <h3 className="text-xl font-semibold mt-4">1. Duo Queue vs Solo Queue</h3>
+                <p>Solo queue is heavy variation. You might get a Radiant smurf or a thrower. Duo queueing stabilizes this variance. By guaranteeing one reliable teammate, you control 20% of your team's variables. Statistical analysis shows Duos typically have a 2-3% higher win rate than pure Solos.</p>
+                <h3 className="text-xl font-semibold mt-4">2. The "Two Loss Rule"</h3>
+                <p>If you lose two games in a row, <strong>stop playing Ranked</strong>. Studies on cognitive performance show that frustration (tilt) lowers reaction time and decision-making quality. Continuing to play while trying to "earn back" your lost RR usually leads to a spiral.</p>
+
+                <h2 id="mental" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mental Game: Handling Tilt</h2>
+                <p>Tilt is not just anger; it is an optimized state of failure. When tilted, you wide-swing more, you communicate less, and you give up rounds earlier.</p>
+                <p>The calculator measures "Time Estimate" in hours. This is a long-term project. Ranking up is like going to the gym; you don't get fit in one day, and you don't hit Radiant in one night. View your RR as a stock market graph: it will have dips, but as long as the long-term trend is up, you are succeeding.</p>
+
+                <h2 id="distribution" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Rank Distribution Realities</h2>
+                <p>Understanding where you sit is important. As of recent episodes:</p>
+                <ul className="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>Iron - Silver:</strong> Contains ~50% of the player base.</li>
+                    <li><strong>Gold - Platinum:</strong> The "average" competitive player. Top ~30%.</li>
+                    <li><strong>Diamond - Ascendant:</strong> High elo. Top ~10%.</li>
+                    <li><strong>Immortal+:</strong> The elite. Top ~1% or less.</li>
+                </ul>
+                <p>Moving from Silver to Gold is statistically easier than moving from Ascendant 1 to Ascendant 2. The skill gap widens exponentially at the top.</p>
+
+                <h2 id="resets" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Episode Resets and Their Impact</h2>
+                <p>At the start of every Episode (every ~6 months), everyone performs a "Hard Reset." Your visible rank will drop significantly (often 3-5 tiers), but your MMR stays roughly the same.</p>
+                <p>This means your first 50 games of a new Episode will have massive RR gains (+25/-10) as the system tries to push you back to your old rank. Use this period wisely! High win rates during the start of an Episode are worth "double" due to this volatility.</p>
+
+                <hr className="my-8" />
+                <p className="text-sm"><em>Note: This calculator assumes a standard competitive environment. Double rank-ups, smurf detection bonuses, and severe MMR disparities can alter the timeline significantly.</em></p>
+            </section>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>FAQs</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                    {faqs.map((faq) => (
+                        <div key={faq.question}>
+                            <h4 className="font-semibold">{faq.question}</h4>
+                            <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                        </div>
+                    ))}
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Shield className="h-5 w-5" />
+                        Summary
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm text-muted-foreground">
+                    <p>The Valorant Rank Progression Calculator estimates the total number of competitive matches required to reach a specific target rank. By inputting Current Rank, Target Rank, Win Rate, and Average RR Gains/Losses, users can see the "Total Games" count and "Estimated Hours" required.</p>
+                    <p>The tool highlights the critical relationship between Win Rate and climbing speed—improving win rate by just a few percentage points typically reduces the required grind time exponentially. It serves as a reality check for players setting long-term ranking goals.</p>
+                </CardContent>
+            </Card>
         </div>
     );
 }
