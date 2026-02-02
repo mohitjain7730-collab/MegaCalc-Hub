@@ -91,6 +91,8 @@ export const indexableCalculatorSlugs = [
     'roblox-adopt-me-mega-neon-value-calculator',
     'roblox-adopt-me-age-up-time-calculator',
     'roblox-adopt-me-pet-aging-speed-calculator',
+    'roblox-adopt-me-trade-win-loss-calculator',
+    'roblox-adopt-me-bucks-to-robux-converter',
     'fortnite-dps-calculator',
     'fortnite-build-material-cost-calculator',
     'fortnite-storm-surge-timer',

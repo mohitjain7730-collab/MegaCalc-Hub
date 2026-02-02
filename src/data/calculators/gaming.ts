@@ -280,4 +280,22 @@ export const gaming_calculators: Calculator[] = [
     metaTitle: 'Roblox Adopt Me Pet Aging Speed Calculator - Optimize Grinding Speed',
     metaDescription: 'Optimize your pet aging strategy in Adopt Me. Calculate speedups from 2x weekends, family method, and alt accounts. Free efficiency calculator.',
   },
+  {
+    id: 10032,
+    name: 'Roblox Adopt Me Trade Win/Loss Calculator',
+    description: 'Calculate if your Adopt Me trade is a Win, Fair, or Loss. Analyze value differences and demand.',
+    slug: 'roblox-adopt-me-trade-win-loss-calculator',
+    category: 'gaming',
+    metaTitle: 'Roblox Adopt Me Trade Win/Loss Calculator (W/F/L) - Avoid Scams',
+    metaDescription: 'Calculate if your Adopt Me trade is a Win, Fair, or Loss. Analyze value differences and demand. Free WFL calculator for Adopt Me traders.',
+  },
+  {
+    id: 10033,
+    name: 'Roblox Adopt Me Bucks to Robux Converter',
+    description: 'Convert Roblox Adopt Me Bucks to Robux value. Compare Shop Rates vs Ride Potion trading values.',
+    slug: 'roblox-adopt-me-bucks-to-robux-converter',
+    category: 'gaming',
+    metaTitle: 'Roblox Adopt Me Bucks to Robux Converter - Real Exchange Rates',
+    metaDescription: 'Convert Roblox Adopt Me Bucks to Robux value. Compare Shop Rates vs Ride Potion trading values. Free Adopt Me currency calculator.',
+  },
 ];

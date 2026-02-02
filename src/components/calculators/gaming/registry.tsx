@@ -25,6 +25,8 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'roblox-adopt-me-mega-neon-value-calculator': lazy(() => import('./roblox-adopt-me-mega-neon-value-calculator')),
   'roblox-adopt-me-neon-pet-value-calculator': lazy(() => import('./roblox-adopt-me-neon-pet-value-calculator')),
   'roblox-adopt-me-pet-aging-speed-calculator': lazy(() => import('./roblox-adopt-me-pet-aging-speed-calculator')),
+  'roblox-adopt-me-trade-win-loss-calculator': lazy(() => import('./roblox-adopt-me-trade-win-loss-calculator')),
+  'roblox-adopt-me-bucks-to-robux-converter': lazy(() => import('./roblox-adopt-me-bucks-to-robux-converter')),
   'roblox-egg-hatch-odds-simulator': lazy(() => import('./roblox-egg-hatch-odds-simulator')),
   'roblox-gamepass-roi-calculator': lazy(() => import('./roblox-gamepass-roi-calculator')),
   'roblox-inventory-value-estimator': lazy(() => import('./roblox-inventory-value-estimator')),

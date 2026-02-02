@@ -483,7 +483,7 @@ export default function RobloxAdoptMeAgeUpTime() {
 
                 <h3 className="text-xl font-bold mt-6 mb-2">2. The "Reset Character" Teleport</h3>
                 <p>Travel time is the enemy. If you are at the Campsite (far side of map) and get a "Sleep" task (needs your house), do not run back.</p>
-                <p>Open the Roblox menu > <strong>Reset Character</strong>. You will respawn in your house instantly. Your pet is unequipped, but you just re-equip it and put it in the bed. This saves ~45 seconds of running.</p>
+                <p>Open the Roblox menu &gt; <strong>Reset Character</strong>. You will respawn in your house instantly. Your pet is unequipped, but you just re-equip it and put it in the bed. This saves ~45 seconds of running.</p>
 
                 <h3 className="text-xl font-bold mt-6 mb-2">3. The "Food Stacking" Method</h3>
                 <p>Never buy food from the Grocery Store or Farm Shop if you are grinding. It wastes time and money.</p>

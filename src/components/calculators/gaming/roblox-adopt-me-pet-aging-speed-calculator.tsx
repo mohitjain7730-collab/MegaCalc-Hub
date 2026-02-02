@@ -391,10 +391,10 @@ export default function RobloxAdoptMeAgingSpeed() {
                 <h3 className="text-xl font-bold mt-4">Step-by-Step Setup:</h3>
                 <ol className="list-decimal pl-6 space-y-2 my-4">
                     <li><strong>Device Check:</strong> You need two devices (e.g., PC + Phone) OR one PC running two Roblox instances (using Roblox Account Manager).</li>
-                    <li><strong>Create Family:</strong> On your Main Account, click [Family] > [Create Family].</li>
+                    <li><strong>Create Family:</strong> On your Main Account, click [Family] &gt; [Create Family].</li>
                     <li><strong>Invite Alt:</strong> Log into your Alt Account. Join the same server. Invite Alt to Family.</li>
                     <li><strong>Equip Pets:</strong> Main Account takes out Pet A. Alt Account takes out Pet B.</li>
-                    <li><strong>The "Carry" Mechanic:</strong> On Main Account, walk to Alt. Click [Interact] > [Pick Up]. Then click [Pick Up Pet] on the Alt's pet.</li>
+                    <li><strong>The "Carry" Mechanic:</strong> On Main Account, walk to Alt. Click [Interact] &gt; [Pick Up]. Then click [Pick Up Pet] on the Alt's pet.</li>
                 </ol>
                 <p><strong>Result:</strong> You are now holding your pet AND the Alt's pet. When you initiate a task (like School), BOTH pets enter the room and gain XP. You are now playing at <strong>200% Efficiency</strong>.</p>
 
