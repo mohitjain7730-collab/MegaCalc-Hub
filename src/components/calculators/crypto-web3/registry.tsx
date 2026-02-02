@@ -1,20 +1,14 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const CryptoApyCalculatorComponent_0 = dynamic(() => import('./crypto-apy-calculator'));
-const CryptoMiningProfitabilityCalculatorComponent_1 = dynamic(() => import('./crypto-mining-profitability-calculator'));
-const CryptoStakingRewardCalculatorComponent_2 = dynamic(() => import('./crypto-staking-reward-calculator'));
-const CryptoTaxLiabilityCalculatorComponent_3 = dynamic(() => import('./crypto-tax-liability-calculator'));
-const NftMintingCostCalculatorComponent_4 = dynamic(() => import('./nft-minting-cost-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'crypto-apy-calculator': CryptoApyCalculatorComponent_0,
-  'crypto-mining-profitability-calculator': CryptoMiningProfitabilityCalculatorComponent_1,
-  'crypto-staking-reward-calculator': CryptoStakingRewardCalculatorComponent_2,
-  'crypto-tax-liability-calculator': CryptoTaxLiabilityCalculatorComponent_3,
-  'nft-minting-cost-calculator': NftMintingCostCalculatorComponent_4,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'crypto-apy-calculator': lazy(() => import('./crypto-apy-calculator')),
+  'crypto-mining-profitability-calculator': lazy(() => import('./crypto-mining-profitability-calculator')),
+  'crypto-staking-reward-calculator': lazy(() => import('./crypto-staking-reward-calculator')),
+  'crypto-tax-liability-calculator': lazy(() => import('./crypto-tax-liability-calculator')),
+  'nft-minting-cost-calculator': lazy(() => import('./nft-minting-cost-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

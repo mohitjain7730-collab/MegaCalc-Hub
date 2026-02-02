@@ -1,30 +1,19 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const BeamBendingCalculatorComponent_0 = dynamic(() => import('./beam-bending-calculator'));
-const CantileverBeamDeflectionCalculatorComponent_1 = dynamic(() => import('./cantilever-beam-deflection-calculator'));
-const CompressiveStressCalculatorComponent_2 = dynamic(() => import('./compressive-stress-calculator'));
-const ElectricalPowerCalculatorComponent_3 = dynamic(() => import('./electrical-power-calculator'));
-const HeatTransferCalculatorComponent_4 = dynamic(() => import('./heat-transfer-calculator'));
-const HydraulicPipeFlowCalculatorComponent_5 = dynamic(() => import('./hydraulic-pipe-flow-calculator'));
-const NaturalFrequencyCalculatorComponent_6 = dynamic(() => import('./natural-frequency-calculator'));
-const ReynoldsNumberCalculatorComponent_7 = dynamic(() => import('./reynolds-number-calculator'));
-const ShearStressCalculatorComponent_8 = dynamic(() => import('./shear-stress-calculator'));
-const ThermalExpansionCalculatorComponent_9 = dynamic(() => import('./thermal-expansion-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'beam-bending-calculator': BeamBendingCalculatorComponent_0,
-  'cantilever-beam-deflection-calculator': CantileverBeamDeflectionCalculatorComponent_1,
-  'compressive-stress-calculator': CompressiveStressCalculatorComponent_2,
-  'electrical-power-calculator': ElectricalPowerCalculatorComponent_3,
-  'heat-transfer-calculator': HeatTransferCalculatorComponent_4,
-  'hydraulic-pipe-flow-calculator': HydraulicPipeFlowCalculatorComponent_5,
-  'natural-frequency-calculator': NaturalFrequencyCalculatorComponent_6,
-  'reynolds-number-calculator': ReynoldsNumberCalculatorComponent_7,
-  'shear-stress-calculator': ShearStressCalculatorComponent_8,
-  'thermal-expansion-calculator': ThermalExpansionCalculatorComponent_9,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'beam-bending-calculator': lazy(() => import('./beam-bending-calculator')),
+  'cantilever-beam-deflection-calculator': lazy(() => import('./cantilever-beam-deflection-calculator')),
+  'compressive-stress-calculator': lazy(() => import('./compressive-stress-calculator')),
+  'electrical-power-calculator': lazy(() => import('./electrical-power-calculator')),
+  'heat-transfer-calculator': lazy(() => import('./heat-transfer-calculator')),
+  'hydraulic-pipe-flow-calculator': lazy(() => import('./hydraulic-pipe-flow-calculator')),
+  'natural-frequency-calculator': lazy(() => import('./natural-frequency-calculator')),
+  'reynolds-number-calculator': lazy(() => import('./reynolds-number-calculator')),
+  'shear-stress-calculator': lazy(() => import('./shear-stress-calculator')),
+  'thermal-expansion-calculator': lazy(() => import('./thermal-expansion-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

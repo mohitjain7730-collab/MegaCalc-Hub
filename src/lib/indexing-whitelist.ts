@@ -104,6 +104,8 @@ export const indexableCalculatorSlugs = [
     'minecraft-redstone-signal-delay-calculator',
     'minecraft-tree-farm-output-calculator',
     'minecraft-nether-portal-linkage-estimator',
+    'valorant-rr-predictor',
+    'valorant-rank-progression',
     // Finance – ratios, runway, unit economics, emergency fund
     'return-on-assets-calculator',
     'return-on-investment-calculator',

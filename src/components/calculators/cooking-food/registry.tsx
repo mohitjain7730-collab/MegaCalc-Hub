@@ -1,20 +1,14 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const BriningSolutionCalculatorComponent_0 = dynamic(() => import('./brining-solution-calculator'));
-const CookingTimeAdjusterComponent_1 = dynamic(() => import('./cooking-time-adjuster'));
-const MeatThawingTimeCalculatorComponent_2 = dynamic(() => import('./meat-thawing-time-calculator'));
-const RecipeIngredientConverterComponent_3 = dynamic(() => import('./recipe-ingredient-converter'));
-const RecipeNutritionCalculatorComponent_4 = dynamic(() => import('./recipe-nutrition-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'brining-solution-calculator': BriningSolutionCalculatorComponent_0,
-  'cooking-time-adjuster': CookingTimeAdjusterComponent_1,
-  'meat-thawing-time-calculator': MeatThawingTimeCalculatorComponent_2,
-  'recipe-ingredient-converter': RecipeIngredientConverterComponent_3,
-  'recipe-nutrition-calculator': RecipeNutritionCalculatorComponent_4,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'brining-solution-calculator': lazy(() => import('./brining-solution-calculator')),
+  'cooking-time-adjuster': lazy(() => import('./cooking-time-adjuster')),
+  'meat-thawing-time-calculator': lazy(() => import('./meat-thawing-time-calculator')),
+  'recipe-ingredient-converter': lazy(() => import('./recipe-ingredient-converter')),
+  'recipe-nutrition-calculator': lazy(() => import('./recipe-nutrition-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

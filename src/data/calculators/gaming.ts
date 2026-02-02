@@ -226,4 +226,22 @@ export const gaming_calculators: Calculator[] = [
     metaTitle: 'Minecraft Nether Portal Linkage Estimator - Calculate Portal Coordinates',
     metaDescription: 'Estimate nether portal linkage between overworld and nether coordinates based on coordinate conversion and portal placement. Free Minecraft portal calculator.',
   },
+  {
+    id: 10026,
+    name: 'Valorant RR Predictor',
+    description: 'Predict your Valorant Rank Rating (RR) gain or loss per match based on performance, match outcome, and current rank.',
+    slug: 'valorant-rr-predictor',
+    category: 'gaming',
+    metaTitle: 'Valorant RR Predictor - Estimate Rank Rating Gains & Losses',
+    metaDescription: 'Predict your Valorant Rank Rating (RR) gain or loss per match based on performance, match outcome, and current rank. Free Valorant rank calculator.',
+  },
+  {
+    id: 10027,
+    name: 'Valorant Rank Progression Calculator',
+    description: 'Calculate how many games of Valorant you need to reach your target rank based on win rate and RR gains.',
+    slug: 'valorant-rank-progression',
+    category: 'gaming',
+    metaTitle: 'Valorant Rank Progression Calculator - Games to Immortal',
+    metaDescription: 'Calculate how many games of Valorant you need to reach your target rank based on win rate and RR gains. Free Valorant climbing calculator.',
+  },
 ];

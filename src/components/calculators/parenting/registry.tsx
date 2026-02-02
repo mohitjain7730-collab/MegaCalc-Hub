@@ -1,18 +1,13 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const BabyFeedingAmountCalculatorComponent_0 = dynamic(() => import('./baby-feeding-amount-calculator'));
-const ChildcareCostAffordabilityCalculatorComponent_1 = dynamic(() => import('./childcare-cost-affordability-calculator'));
-const CollegeSavingsGoalCalculatorComponent_2 = dynamic(() => import('./college-savings-goal-calculator'));
-const DueDateCalculatorComponent_3 = dynamic(() => import('./due-date-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'baby-feeding-amount-calculator': BabyFeedingAmountCalculatorComponent_0,
-  'childcare-cost-affordability-calculator': ChildcareCostAffordabilityCalculatorComponent_1,
-  'college-savings-goal-calculator': CollegeSavingsGoalCalculatorComponent_2,
-  'due-date-calculator': DueDateCalculatorComponent_3,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'baby-feeding-amount-calculator': lazy(() => import('./baby-feeding-amount-calculator')),
+  'childcare-cost-affordability-calculator': lazy(() => import('./childcare-cost-affordability-calculator')),
+  'college-savings-goal-calculator': lazy(() => import('./college-savings-goal-calculator')),
+  'due-date-calculator': lazy(() => import('./due-date-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

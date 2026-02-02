@@ -1,18 +1,13 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const CarbonFootprintReductionCalculatorComponent_0 = dynamic(() => import('./carbon-footprint-reduction-calculator'));
-const RecyclingImpactCalculatorComponent_1 = dynamic(() => import('./recycling-impact-calculator'));
-const SustainableDietImpactCalculatorComponent_2 = dynamic(() => import('./sustainable-diet-impact-calculator'));
-const WaterUsageEfficiencyCalculatorComponent_3 = dynamic(() => import('./water-usage-efficiency-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'carbon-footprint-reduction-calculator': CarbonFootprintReductionCalculatorComponent_0,
-  'recycling-impact-calculator': RecyclingImpactCalculatorComponent_1,
-  'sustainable-diet-impact-calculator': SustainableDietImpactCalculatorComponent_2,
-  'water-usage-efficiency-calculator': WaterUsageEfficiencyCalculatorComponent_3,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'carbon-footprint-reduction-calculator': lazy(() => import('./carbon-footprint-reduction-calculator')),
+  'recycling-impact-calculator': lazy(() => import('./recycling-impact-calculator')),
+  'sustainable-diet-impact-calculator': lazy(() => import('./sustainable-diet-impact-calculator')),
+  'water-usage-efficiency-calculator': lazy(() => import('./water-usage-efficiency-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

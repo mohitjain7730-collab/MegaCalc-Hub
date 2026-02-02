@@ -1,18 +1,13 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const AncestryCompositionEstimatorComponent_0 = dynamic(() => import('./ancestry-composition-estimator'));
-const GenealogyTimelineGeneratorComponent_1 = dynamic(() => import('./genealogy-timeline-generator'));
-const GeneticTraitProbabilityCalculatorComponent_2 = dynamic(() => import('./genetic-trait-probability-calculator'));
-const PedigreeAnalysisCalculatorComponent_3 = dynamic(() => import('./pedigree-analysis-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'ancestry-composition-estimator': AncestryCompositionEstimatorComponent_0,
-  'genealogy-timeline-generator': GenealogyTimelineGeneratorComponent_1,
-  'genetic-trait-probability-calculator': GeneticTraitProbabilityCalculatorComponent_2,
-  'pedigree-analysis-calculator': PedigreeAnalysisCalculatorComponent_3,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'ancestry-composition-estimator': lazy(() => import('./ancestry-composition-estimator')),
+  'genealogy-timeline-generator': lazy(() => import('./genealogy-timeline-generator')),
+  'genetic-trait-probability-calculator': lazy(() => import('./genetic-trait-probability-calculator')),
+  'pedigree-analysis-calculator': lazy(() => import('./pedigree-analysis-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

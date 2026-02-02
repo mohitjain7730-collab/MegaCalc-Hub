@@ -1,18 +1,13 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const AncientCivilizationTimelineGeneratorComponent_0 = dynamic(() => import('./ancient-civilization-timeline-generator'));
-const ArchaeologicalSiteExcavationCalculatorComponent_1 = dynamic(() => import('./archaeological-site-excavation-calculator'));
-const ArtifactDatingCalculatorComponent_2 = dynamic(() => import('./artifact-dating-calculator'));
-const HistoricalPopulationDensityCalculatorComponent_3 = dynamic(() => import('./historical-population-density-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'ancient-civilization-timeline-generator': AncientCivilizationTimelineGeneratorComponent_0,
-  'archaeological-site-excavation-calculator': ArchaeologicalSiteExcavationCalculatorComponent_1,
-  'artifact-dating-calculator': ArtifactDatingCalculatorComponent_2,
-  'historical-population-density-calculator': HistoricalPopulationDensityCalculatorComponent_3,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'ancient-civilization-timeline-generator': lazy(() => import('./ancient-civilization-timeline-generator')),
+  'archaeological-site-excavation-calculator': lazy(() => import('./archaeological-site-excavation-calculator')),
+  'artifact-dating-calculator': lazy(() => import('./artifact-dating-calculator')),
+  'historical-population-density-calculator': lazy(() => import('./historical-population-density-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

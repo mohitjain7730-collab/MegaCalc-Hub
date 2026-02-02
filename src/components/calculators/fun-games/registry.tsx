@@ -1,30 +1,19 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const BirthdayCompatibilityCalculatorComponent_0 = dynamic(() => import('./birthday-compatibility-calculator'));
-const CrushCompatibilityCalculatorComponent_1 = dynamic(() => import('./crush-compatibility-calculator'));
-const FriendshipCompatibilityCalculatorComponent_2 = dynamic(() => import('./friendship-compatibility-calculator'));
-const FuturePartnerNameGeneratorComponent_3 = dynamic(() => import('./future-partner-name-generator'));
-const LovePercentageCalculatorComponent_4 = dynamic(() => import('./love-percentage-calculator'));
-const MarriageCompatibilityCalculatorComponent_5 = dynamic(() => import('./marriage-compatibility-calculator'));
-const NameCompatibilityCalculatorComponent_6 = dynamic(() => import('./name-compatibility-calculator'));
-const RelationshipStrengthTestComponent_7 = dynamic(() => import('./relationship-strength-test'));
-const RomanticQuizCalculatorComponent_8 = dynamic(() => import('./romantic-quiz-calculator'));
-const ZodiacMatchCalculatorComponent_9 = dynamic(() => import('./zodiac-match-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'birthday-compatibility-calculator': BirthdayCompatibilityCalculatorComponent_0,
-  'crush-compatibility-calculator': CrushCompatibilityCalculatorComponent_1,
-  'friendship-compatibility-calculator': FriendshipCompatibilityCalculatorComponent_2,
-  'future-partner-name-generator': FuturePartnerNameGeneratorComponent_3,
-  'love-percentage-calculator': LovePercentageCalculatorComponent_4,
-  'marriage-compatibility-calculator': MarriageCompatibilityCalculatorComponent_5,
-  'name-compatibility-calculator': NameCompatibilityCalculatorComponent_6,
-  'relationship-strength-test': RelationshipStrengthTestComponent_7,
-  'romantic-quiz-calculator': RomanticQuizCalculatorComponent_8,
-  'zodiac-match-calculator': ZodiacMatchCalculatorComponent_9,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'birthday-compatibility-calculator': lazy(() => import('./birthday-compatibility-calculator')),
+  'crush-compatibility-calculator': lazy(() => import('./crush-compatibility-calculator')),
+  'friendship-compatibility-calculator': lazy(() => import('./friendship-compatibility-calculator')),
+  'future-partner-name-generator': lazy(() => import('./future-partner-name-generator')),
+  'love-percentage-calculator': lazy(() => import('./love-percentage-calculator')),
+  'marriage-compatibility-calculator': lazy(() => import('./marriage-compatibility-calculator')),
+  'name-compatibility-calculator': lazy(() => import('./name-compatibility-calculator')),
+  'relationship-strength-test': lazy(() => import('./relationship-strength-test')),
+  'romantic-quiz-calculator': lazy(() => import('./romantic-quiz-calculator')),
+  'zodiac-match-calculator': lazy(() => import('./zodiac-match-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

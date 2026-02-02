@@ -1,60 +1,36 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const RobloxEggHatchOddsSimulatorComponent_0 = dynamic(() => import('./roblox-egg-hatch-odds-simulator'));
-const RobloxPetValueCalculatorComponent_1 = dynamic(() => import('./roblox-pet-value-calculator'));
-const RobloxTradingProfitAnalyzerComponent_2 = dynamic(() => import('./roblox-trading-profit-analyzer'));
-const RobloxGamepassRoiCalculatorComponent_3 = dynamic(() => import('./roblox-gamepass-roi-calculator'));
-const RobloxPetDupeValueCalculatorComponent_4 = dynamic(() => import('./roblox-pet-dupe-value-calculator'));
-const RobloxLimitedItemResalePredictorComponent_5 = dynamic(() => import('./roblox-limited-item-resale-predictor'));
-const RobloxInventoryValueEstimatorComponent_6 = dynamic(() => import('./roblox-inventory-value-estimator'));
-const RobloxTradeTaxCalculatorComponent_7 = dynamic(() => import('./roblox-trade-tax-calculator'));
-const FortniteDpsCalculatorComponent_8 = dynamic(() => import('./fortnite-dps-calculator'));
-const FortniteBuildMaterialCostCalculatorComponent_9 = dynamic(() => import('./fortnite-build-material-cost-calculator'));
-const FortniteStormSurgeTimerComponent_10 = dynamic(() => import('./fortnite-storm-surge-timer'));
-const FortniteXpPerMatchOptimizerComponent_11 = dynamic(() => import('./fortnite-xp-per-match-optimizer'));
-const FortniteReloadTimeReducerCalculatorComponent_12 = dynamic(() => import('./fortnite-reload-time-reducer-calculator'));
-const FortniteLootDropOddsEstimatorComponent_13 = dynamic(() => import('./fortnite-loot-drop-odds-estimator'));
-const FortniteShieldPotencyCalculatorComponent_14 = dynamic(() => import('./fortnite-shield-potency-calculator'));
-const FortniteVictoryRoyaleProbabilityEstimatorComponent_15 = dynamic(() => import('./fortnite-victory-royale-probability-estimator'));
-const MinecraftFarmYieldCalculatorComponent_16 = dynamic(() => import('./minecraft-farm-yield-calculator'));
-const MinecraftEnchantingOddsPredictorComponent_17 = dynamic(() => import('./minecraft-enchanting-odds-predictor'));
-const MinecraftVillagerTradeTrackerComponent_18 = dynamic(() => import('./minecraft-villager-trade-tracker'));
-const MinecraftSmelterFuelEfficiencyComponent_19 = dynamic(() => import('./minecraft-smelter-fuel-efficiency'));
-const MinecraftMobFarmXpRateCalculatorComponent_20 = dynamic(() => import('./minecraft-mob-farm-xp-rate-calculator'));
-const MinecraftBeaconRangeOptimizerComponent_21 = dynamic(() => import('./minecraft-beacon-range-optimizer'));
-const MinecraftRedstoneSignalDelayCalculatorComponent_22 = dynamic(() => import('./minecraft-redstone-signal-delay-calculator'));
-const MinecraftTreeFarmOutputCalculatorComponent_23 = dynamic(() => import('./minecraft-tree-farm-output-calculator'));
-const MinecraftNetherPortalLinkageEstimatorComponent_24 = dynamic(() => import('./minecraft-nether-portal-linkage-estimator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'roblox-egg-hatch-odds-simulator': RobloxEggHatchOddsSimulatorComponent_0,
-  'roblox-pet-value-calculator': RobloxPetValueCalculatorComponent_1,
-  'roblox-trading-profit-analyzer': RobloxTradingProfitAnalyzerComponent_2,
-  'roblox-gamepass-roi-calculator': RobloxGamepassRoiCalculatorComponent_3,
-  'roblox-pet-dupe-value-calculator': RobloxPetDupeValueCalculatorComponent_4,
-  'roblox-limited-item-resale-predictor': RobloxLimitedItemResalePredictorComponent_5,
-  'roblox-inventory-value-estimator': RobloxInventoryValueEstimatorComponent_6,
-  'roblox-trade-tax-calculator': RobloxTradeTaxCalculatorComponent_7,
-  'fortnite-dps-calculator': FortniteDpsCalculatorComponent_8,
-  'fortnite-build-material-cost-calculator': FortniteBuildMaterialCostCalculatorComponent_9,
-  'fortnite-storm-surge-timer': FortniteStormSurgeTimerComponent_10,
-  'fortnite-xp-per-match-optimizer': FortniteXpPerMatchOptimizerComponent_11,
-  'fortnite-reload-time-reducer-calculator': FortniteReloadTimeReducerCalculatorComponent_12,
-  'fortnite-loot-drop-odds-estimator': FortniteLootDropOddsEstimatorComponent_13,
-  'fortnite-shield-potency-calculator': FortniteShieldPotencyCalculatorComponent_14,
-  'fortnite-victory-royale-probability-estimator': FortniteVictoryRoyaleProbabilityEstimatorComponent_15,
-  'minecraft-farm-yield-calculator': MinecraftFarmYieldCalculatorComponent_16,
-  'minecraft-enchanting-odds-predictor': MinecraftEnchantingOddsPredictorComponent_17,
-  'minecraft-villager-trade-tracker': MinecraftVillagerTradeTrackerComponent_18,
-  'minecraft-smelter-fuel-efficiency': MinecraftSmelterFuelEfficiencyComponent_19,
-  'minecraft-mob-farm-xp-rate-calculator': MinecraftMobFarmXpRateCalculatorComponent_20,
-  'minecraft-beacon-range-optimizer': MinecraftBeaconRangeOptimizerComponent_21,
-  'minecraft-redstone-signal-delay-calculator': MinecraftRedstoneSignalDelayCalculatorComponent_22,
-  'minecraft-tree-farm-output-calculator': MinecraftTreeFarmOutputCalculatorComponent_23,
-  'minecraft-nether-portal-linkage-estimator': MinecraftNetherPortalLinkageEstimatorComponent_24,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'fortnite-build-material-cost-calculator': lazy(() => import('./fortnite-build-material-cost-calculator')),
+  'fortnite-dps-calculator': lazy(() => import('./fortnite-dps-calculator')),
+  'fortnite-loot-drop-odds-estimator': lazy(() => import('./fortnite-loot-drop-odds-estimator')),
+  'fortnite-reload-time-reducer-calculator': lazy(() => import('./fortnite-reload-time-reducer-calculator')),
+  'fortnite-shield-potency-calculator': lazy(() => import('./fortnite-shield-potency-calculator')),
+  'fortnite-storm-surge-timer': lazy(() => import('./fortnite-storm-surge-timer')),
+  'fortnite-victory-royale-probability-estimator': lazy(() => import('./fortnite-victory-royale-probability-estimator')),
+  'fortnite-xp-per-match-optimizer': lazy(() => import('./fortnite-xp-per-match-optimizer')),
+  'minecraft-beacon-range-optimizer': lazy(() => import('./minecraft-beacon-range-optimizer')),
+  'minecraft-enchanting-odds-predictor': lazy(() => import('./minecraft-enchanting-odds-predictor')),
+  'minecraft-farm-yield-calculator': lazy(() => import('./minecraft-farm-yield-calculator')),
+  'minecraft-mob-farm-xp-rate-calculator': lazy(() => import('./minecraft-mob-farm-xp-rate-calculator')),
+  'minecraft-nether-portal-linkage-estimator': lazy(() => import('./minecraft-nether-portal-linkage-estimator')),
+  'minecraft-redstone-signal-delay-calculator': lazy(() => import('./minecraft-redstone-signal-delay-calculator')),
+  'minecraft-smelter-fuel-efficiency': lazy(() => import('./minecraft-smelter-fuel-efficiency')),
+  'minecraft-tree-farm-output-calculator': lazy(() => import('./minecraft-tree-farm-output-calculator')),
+  'minecraft-villager-trade-tracker': lazy(() => import('./minecraft-villager-trade-tracker')),
+  'roblox-egg-hatch-odds-simulator': lazy(() => import('./roblox-egg-hatch-odds-simulator')),
+  'roblox-gamepass-roi-calculator': lazy(() => import('./roblox-gamepass-roi-calculator')),
+  'roblox-inventory-value-estimator': lazy(() => import('./roblox-inventory-value-estimator')),
+  'roblox-limited-item-resale-predictor': lazy(() => import('./roblox-limited-item-resale-predictor')),
+  'roblox-pet-dupe-value-calculator': lazy(() => import('./roblox-pet-dupe-value-calculator')),
+  'roblox-pet-value-calculator': lazy(() => import('./roblox-pet-value-calculator')),
+  'roblox-trade-tax-calculator': lazy(() => import('./roblox-trade-tax-calculator')),
+  'roblox-trading-profit-analyzer': lazy(() => import('./roblox-trading-profit-analyzer')),
+  'valorant-rank-progression': lazy(() => import('./valorant-rank-progression')),
+  'valorant-rr-predictor': lazy(() => import('./valorant-rr-predictor')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

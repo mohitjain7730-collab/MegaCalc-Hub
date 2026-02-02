@@ -1,30 +1,19 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const AttentionSpanEstimatorComponent_0 = dynamic(() => import('./attention-span-estimator'));
-const CognitiveLoadCalculatorComponent_1 = dynamic(() => import('./cognitive-load-calculator'));
-const EmotionalValenceScoringCalculatorComponent_2 = dynamic(() => import('./emotional-valence-scoring-calculator'));
-const IqScoreEstimatorComponent_3 = dynamic(() => import('./iq-score-estimator'));
-const MemorySpanCalculatorComponent_4 = dynamic(() => import('./memory-span-calculator'));
-const MentalFatigueIndexCalculatorComponent_5 = dynamic(() => import('./mental-fatigue-index-calculator'));
-const PersonalityTraitCalculatorComponent_6 = dynamic(() => import('./personality-trait-calculator'));
-const SleepDebtCalculatorComponent_7 = dynamic(() => import('./sleep-debt-calculator'));
-const StressLevelIndexCalculatorComponent_8 = dynamic(() => import('./stress-level-index-calculator'));
-const StroopEffectReactionTimeCalculatorComponent_9 = dynamic(() => import('./stroop-effect-reaction-time-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'attention-span-estimator': AttentionSpanEstimatorComponent_0,
-  'cognitive-load-calculator': CognitiveLoadCalculatorComponent_1,
-  'emotional-valence-scoring-calculator': EmotionalValenceScoringCalculatorComponent_2,
-  'iq-score-estimator': IqScoreEstimatorComponent_3,
-  'memory-span-calculator': MemorySpanCalculatorComponent_4,
-  'mental-fatigue-index-calculator': MentalFatigueIndexCalculatorComponent_5,
-  'personality-trait-calculator': PersonalityTraitCalculatorComponent_6,
-  'sleep-debt-calculator': SleepDebtCalculatorComponent_7,
-  'stress-level-index-calculator': StressLevelIndexCalculatorComponent_8,
-  'stroop-effect-reaction-time-calculator': StroopEffectReactionTimeCalculatorComponent_9,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'attention-span-estimator': lazy(() => import('./attention-span-estimator')),
+  'cognitive-load-calculator': lazy(() => import('./cognitive-load-calculator')),
+  'emotional-valence-scoring-calculator': lazy(() => import('./emotional-valence-scoring-calculator')),
+  'iq-score-estimator': lazy(() => import('./iq-score-estimator')),
+  'memory-span-calculator': lazy(() => import('./memory-span-calculator')),
+  'mental-fatigue-index-calculator': lazy(() => import('./mental-fatigue-index-calculator')),
+  'personality-trait-calculator': lazy(() => import('./personality-trait-calculator')),
+  'sleep-debt-calculator': lazy(() => import('./sleep-debt-calculator')),
+  'stress-level-index-calculator': lazy(() => import('./stress-level-index-calculator')),
+  'stroop-effect-reaction-time-calculator': lazy(() => import('./stroop-effect-reaction-time-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

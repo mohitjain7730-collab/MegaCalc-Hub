@@ -1,46 +1,27 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const ConcreteVolumeCalculatorComponent_0 = dynamic(() => import('./concrete-volume-calculator'));
-const CostEstimatorRenovationCalculatorComponent_1 = dynamic(() => import('./cost-estimator-renovation-calculator'));
-const DeckingMaterialsCalculatorComponent_2 = dynamic(() => import('./decking-materials-calculator'));
-const DoorCabinetHardwareCalculatorComponent_3 = dynamic(() => import('./door-cabinet-hardware-calculator'));
-const DrywallPlasterboardCalculatorComponent_4 = dynamic(() => import('./drywall-plasterboard-calculator'));
-const GardenLandscapeSoilMulchCalculatorComponent_5 = dynamic(() => import('./garden-landscape-soil-mulch-calculator'));
-const HvacSizingCalculatorComponent_6 = dynamic(() => import('./hvac-sizing-calculator'));
-const InsulationRValueCalculatorComponent_7 = dynamic(() => import('./insulation-r-value-calculator'));
-const LightingLayoutCalculatorComponent_8 = dynamic(() => import('./lighting-layout-calculator'));
-const PaintCoverageCalculatorComponent_9 = dynamic(() => import('./paint-coverage-calculator'));
-const PaintDryingCuringTimeCalculatorComponent_10 = dynamic(() => import('./paint-drying-curing-time-calculator'));
-const RoofingShingleCalculatorComponent_11 = dynamic(() => import('./roofing-shingle-calculator'));
-const StaircaseRiseRunCalculatorComponent_12 = dynamic(() => import('./staircase-rise-run-calculator'));
-const TileFlooringCalculatorComponent_13 = dynamic(() => import('./tile-flooring-calculator'));
-const WallFramingLumberCalculatorComponent_14 = dynamic(() => import('./wall-framing-lumber-calculator'));
-const WallpaperRollCalculatorComponent_15 = dynamic(() => import('./wallpaper-roll-calculator'));
-const WaterUsagePlumbingFlowCalculatorComponent_16 = dynamic(() => import('./water-usage-plumbing-flow-calculator'));
-const WindowGlassCurtainCoverageCalculatorComponent_17 = dynamic(() => import('./window-glass-curtain-coverage-calculator'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'concrete-volume-calculator': ConcreteVolumeCalculatorComponent_0,
-  'cost-estimator-renovation-calculator': CostEstimatorRenovationCalculatorComponent_1,
-  'decking-materials-calculator': DeckingMaterialsCalculatorComponent_2,
-  'door-cabinet-hardware-calculator': DoorCabinetHardwareCalculatorComponent_3,
-  'drywall-plasterboard-calculator': DrywallPlasterboardCalculatorComponent_4,
-  'garden-landscape-soil-mulch-calculator': GardenLandscapeSoilMulchCalculatorComponent_5,
-  'hvac-sizing-calculator': HvacSizingCalculatorComponent_6,
-  'insulation-r-value-calculator': InsulationRValueCalculatorComponent_7,
-  'lighting-layout-calculator': LightingLayoutCalculatorComponent_8,
-  'paint-coverage-calculator': PaintCoverageCalculatorComponent_9,
-  'paint-drying-curing-time-calculator': PaintDryingCuringTimeCalculatorComponent_10,
-  'roofing-shingle-calculator': RoofingShingleCalculatorComponent_11,
-  'staircase-rise-run-calculator': StaircaseRiseRunCalculatorComponent_12,
-  'tile-flooring-calculator': TileFlooringCalculatorComponent_13,
-  'wall-framing-lumber-calculator': WallFramingLumberCalculatorComponent_14,
-  'wallpaper-roll-calculator': WallpaperRollCalculatorComponent_15,
-  'water-usage-plumbing-flow-calculator': WaterUsagePlumbingFlowCalculatorComponent_16,
-  'window-glass-curtain-coverage-calculator': WindowGlassCurtainCoverageCalculatorComponent_17,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'concrete-volume-calculator': lazy(() => import('./concrete-volume-calculator')),
+  'cost-estimator-renovation-calculator': lazy(() => import('./cost-estimator-renovation-calculator')),
+  'decking-materials-calculator': lazy(() => import('./decking-materials-calculator')),
+  'door-cabinet-hardware-calculator': lazy(() => import('./door-cabinet-hardware-calculator')),
+  'drywall-plasterboard-calculator': lazy(() => import('./drywall-plasterboard-calculator')),
+  'garden-landscape-soil-mulch-calculator': lazy(() => import('./garden-landscape-soil-mulch-calculator')),
+  'hvac-sizing-calculator': lazy(() => import('./hvac-sizing-calculator')),
+  'insulation-r-value-calculator': lazy(() => import('./insulation-r-value-calculator')),
+  'lighting-layout-calculator': lazy(() => import('./lighting-layout-calculator')),
+  'paint-coverage-calculator': lazy(() => import('./paint-coverage-calculator')),
+  'paint-drying-curing-time-calculator': lazy(() => import('./paint-drying-curing-time-calculator')),
+  'roofing-shingle-calculator': lazy(() => import('./roofing-shingle-calculator')),
+  'staircase-rise-run-calculator': lazy(() => import('./staircase-rise-run-calculator')),
+  'tile-flooring-calculator': lazy(() => import('./tile-flooring-calculator')),
+  'wall-framing-lumber-calculator': lazy(() => import('./wall-framing-lumber-calculator')),
+  'wallpaper-roll-calculator': lazy(() => import('./wallpaper-roll-calculator')),
+  'water-usage-plumbing-flow-calculator': lazy(() => import('./water-usage-plumbing-flow-calculator')),
+  'window-glass-curtain-coverage-calculator': lazy(() => import('./window-glass-curtain-coverage-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

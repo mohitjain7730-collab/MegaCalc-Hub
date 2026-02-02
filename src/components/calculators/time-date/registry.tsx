@@ -1,20 +1,14 @@
-import dynamic from 'next/dynamic';
-import React from 'react';
-import type { ComponentType } from 'react';
+'use client';
 
-const AgeCalculatorComponent_0 = dynamic(() => import('./age-calculator'));
-const DateDifferenceCalculatorComponent_1 = dynamic(() => import('./date-difference-calculator'));
-const DayOfTheWeekCalculatorComponent_2 = dynamic(() => import('./day-of-the-week-calculator'));
-const WorkingDaysBusinessDaysCalculatorComponent_3 = dynamic(() => import('./working-days-business-days-calculator'));
-const WorldTimeZoneConverterComponent_4 = dynamic(() => import('./world-time-zone-converter'));
+import React, { lazy, useState, useEffect } from 'react';
 
-// Static imports for SSR - full content in initial HTML for SEO
-const components: Record<string, ComponentType> = {
-  'age-calculator': AgeCalculatorComponent_0,
-  'date-difference-calculator': DateDifferenceCalculatorComponent_1,
-  'day-of-the-week-calculator': DayOfTheWeekCalculatorComponent_2,
-  'working-days-business-days-calculator': WorkingDaysBusinessDaysCalculatorComponent_3,
-  'world-time-zone-converter': WorldTimeZoneConverterComponent_4,
+// Static map of calculators to avoid dynamic import context creation
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'age-calculator': lazy(() => import('./age-calculator')),
+  'date-difference-calculator': lazy(() => import('./date-difference-calculator')),
+  'day-of-the-week-calculator': lazy(() => import('./day-of-the-week-calculator')),
+  'working-days-business-days-calculator': lazy(() => import('./working-days-business-days-calculator')),
+  'world-time-zone-converter': lazy(() => import('./world-time-zone-converter')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
