@@ -262,4 +262,22 @@ export const gaming_calculators: Calculator[] = [
     metaTitle: 'Roblox Adopt Me Mega Neon Value Calculator - Mega Value Estimator',
     metaDescription: 'Calculate the trading value of Mega Neon pets in Roblox Adopt Me. Convert single or neon values to Mega estimations. Free Adopt Me Mega calculator.',
   },
+  {
+    id: 10030,
+    name: 'Roblox Adopt Me Age-Up Time Calculator',
+    description: 'Calculate exactly how long it takes to age pets in Roblox Adopt Me from Newborn to Full Grown.',
+    slug: 'roblox-adopt-me-age-up-time-calculator',
+    category: 'gaming',
+    metaTitle: 'Roblox Adopt Me Age-Up Time Calculator - Calculate Pet Aging Time',
+    metaDescription: 'Calculate exactly how long it takes to age pets in Roblox Adopt Me from Newborn to Full Grown. Estimate time for Neon and Mega Neon grinds.',
+  },
+  {
+    id: 10031,
+    name: 'Roblox Adopt Me Pet Aging Speed Calculator',
+    description: 'Optimize your pet aging strategy in Adopt Me. Calculate speedups from 2x weekends, family method, and alt accounts.',
+    slug: 'roblox-adopt-me-pet-aging-speed-calculator',
+    category: 'gaming',
+    metaTitle: 'Roblox Adopt Me Pet Aging Speed Calculator - Optimize Grinding Speed',
+    metaDescription: 'Optimize your pet aging strategy in Adopt Me. Calculate speedups from 2x weekends, family method, and alt accounts. Free efficiency calculator.',
+  },
 ];
