@@ -7,6 +7,10 @@ export interface Calculator {
   subcategory?: string;
   metaTitle?: string;
   metaDescription?: string;
+  faqs?: {
+    question: string;
+    answer: string;
+  }[];
 }
 
 export interface Article {

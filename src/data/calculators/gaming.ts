@@ -405,5 +405,35 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Pet Simulator X Golden/Rainbow Value Calculator',
     metaDescription: 'Calculate the value increase when converting pets to Golden, Rainbow, or Dark Matter in Pet Simulator X. Optimize fuse machine profits.',
+    faqs: [
+      {
+        question: "Is it worth converting to Golden?",
+        answer: "Yes. Golden pets deal 3x damage and are used to fuse into Rainbow pets. Even if you don't equip them, converting Normal -> Golden -> Rainbow is the fastest way to complete your Index.",
+      },
+      {
+        question: "How do I make a Rainbow Pet?",
+        answer: "You need 5 to 7 Golden Pets. Go to the Rainbow Machine in the Mine. Fusing 7 Golden Pets gives a 100% chance of getting the Rainbow version.",
+      },
+      {
+        question: "How do I make a Dark Matter Pet?",
+        answer: "Dark Matter pets are created in the Dark Matter Machine in the Dark Tech World. You input Rainbow Pets and wait (up to 5 days). You can shorten the time by inputting more Rainbow Pets or spending Robux.",
+      },
+      {
+        question: "Why are Shiny pets worth so much?",
+        answer: "Shiny pets are visual variants that deal +40% to +100% more damage. They are extremely rare. A Shiny Dark Matter pet is the strongest version of that pet possible, often fetching massive overpays.",
+      },
+      {
+        question: "Does converting remove enchants?",
+        answer: "Yes. When you put pets into the Golden or Rainbow or Dark Matter machine, the old pets are destroyed and a NEW pet is created. The new pet will have random enchants (or no enchants).",
+      },
+      {
+        question: "Can I fail a conversion?",
+        answer: "Yes, if you use fewer pets. For example, using only 1 Golden Pet to try to make a Rainbow Pet gives you an 18% chance. If it fails, you lose the pet.",
+      },
+      {
+        question: "What is 'Hardcore' Golden?",
+        answer: "It is the same process, but using Hardcore Pets. Hardcore Golden pets are trillions of times stronger than normal Golden pets.",
+      },
+    ],
   },
 ];

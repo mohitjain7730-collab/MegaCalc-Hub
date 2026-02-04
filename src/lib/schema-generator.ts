@@ -317,6 +317,9 @@ export function generateCalculatorsListingSchema() {
 
 // FAQ content for calculators (shared by schema and SEO HTML block)
 export function getCalculatorFAQContent(calculator: Calculator): { question: string; answer: string }[] {
+  if (calculator.faqs && calculator.faqs.length > 0) {
+    return calculator.faqs;
+  }
   return [
     {
       question: `How do I use the ${calculator.name}?`,

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Script from 'next/script';
+
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -113,38 +113,7 @@ const steps = [
     'Calculate the new estimated value.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-simulator-x-golden-pet-value-calculator';
 
-const schemaMarkup = {
-    '@context': 'https://schema.org',
-    '@graph': [
-        {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
-                { '@type': 'ListItem', position: 3, name: 'Pet Simulator X Golden Pet Value Calculator', item: baseUrl },
-            ],
-        },
-        {
-            '@type': 'SoftwareApplication',
-            name: 'Roblox Pet Simulator X Golden Pet Value Calculator',
-            applicationCategory: 'Calculator',
-            operatingSystem: 'Web Browser',
-            description: 'Calculate the value increase of converting pets to Golden, Rainbow, or Dark Matter in Pet Simulator X.',
-            url: baseUrl,
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        },
-        {
-            '@type': 'FAQPage',
-            mainEntity: faqs.map(f => ({
-                '@type': 'Question',
-                name: f.question,
-                acceptedAnswer: { '@type': 'Answer', text: f.answer },
-            })),
-        },
-    ],
-};
 
 export default function RobloxPSXGoldenCalc() {
     const [result, setResult] = useState<ResultPayload | null>(null);
@@ -165,7 +134,7 @@ export default function RobloxPSXGoldenCalc() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500 max-w-4xl mx-auto">
-            <Script id="psx-golden-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+
 
             <Card className="border-l-4 border-l-yellow-500 shadow-xl overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
