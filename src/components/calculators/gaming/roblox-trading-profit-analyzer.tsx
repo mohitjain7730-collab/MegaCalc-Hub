@@ -136,6 +136,36 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Roblox Trading Profit Analysis: Maximizing Returns and Understanding ROI',
+      description: 'A comprehensive guide to analyzing Roblox trading profits, calculating ROI, understanding fees, and optimizing trading strategies for maximum returns.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Roblox Trading Profit Analyzer',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -206,17 +236,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Review this trade: ${netProfit >= 0 ? 'profit' : 'loss'} of ${Math.abs(netProfit).toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, ${roi.toFixed(1)}% ROI over ${holdingPeriod} days. ${netProfit < 0 ? 'Analyze what went wrong and adjust strategy.' : 'Identify successful elements to replicate.'}` 
+    {
+      label: 'This Week',
+      detail: `Review this trade: ${netProfit >= 0 ? 'profit' : 'loss'} of ${Math.abs(netProfit).toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, ${roi.toFixed(1)}% ROI over ${holdingPeriod} days. ${netProfit < 0 ? 'Analyze what went wrong and adjust strategy.' : 'Identify successful elements to replicate.'}`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Track multiple trades to identify patterns. Calculate average ROI, profit margins, and daily ROI across all trades. Compare different trading strategies and item types to find what works best.' 
+    {
+      label: 'This Month',
+      detail: 'Track multiple trades to identify patterns. Calculate average ROI, profit margins, and daily ROI across all trades. Compare different trading strategies and item types to find what works best.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously improve trading skills: research market trends, negotiate better prices, minimize holding periods, account for all fees, and maintain detailed trade records. Use this calculator to evaluate every trade and optimize your strategy.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously improve trading skills: research market trends, negotiate better prices, minimize holding periods, account for all fees, and maintain detailed trade records. Use this calculator to evaluate every trade and optimize your strategy.'
     },
   ];
 
@@ -549,7 +579,7 @@ export default function RobloxTradingProfitAnalyzer() {
         <hr />
 
         <h2 id="profit" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Trading Profits</h2>
-        
+
         <p>Trading profits are the difference between what you pay for an item and what you receive when selling it, minus all associated costs. Gross profit is the simple difference: Sell Price - Buy Price. However, gross profit doesn't reflect actual profitability because it ignores trading fees and other costs.</p>
 
         <p>Net profit is the true measure of trading success. Net profit accounts for all costs: Net Profit = Sell Price - Buy Price - Trading Fees. This is the actual amount you gain (or lose) from a trade. Positive net profit means the trade was profitable, while negative net profit means you lost money.</p>
@@ -566,7 +596,7 @@ export default function RobloxTradingProfitAnalyzer() {
         <hr />
 
         <h2 id="fees" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trading Fees and Costs</h2>
-        
+
         <p>Trading fees are percentages charged by Roblox on transactions. These fees typically range from 5% to 10% and are deducted from the sale price. Fees help maintain the Roblox economy and platform operations, but they significantly impact trading profits.</p>
 
         <p>Fee calculation is straightforward: Trading Fees = Sell Price × (Fee Percentage / 100). For example, a 1,000 Robux sale with a 5% fee results in 50 Robux in fees. A 10% fee on the same sale results in 100 Robux in fees. Higher fees mean lower net profits.</p>
@@ -583,7 +613,7 @@ export default function RobloxTradingProfitAnalyzer() {
         <hr />
 
         <h2 id="roi" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Return on Investment (ROI)</h2>
-        
+
         <p>ROI (Return on Investment) measures trading profitability as a percentage of your initial investment. Formula: ROI = (Net Profit / Buy Price) × 100. ROI provides a standardized way to compare trades of different sizes and evaluate trading performance.</p>
 
         <p>Positive ROI indicates profit, while negative ROI indicates loss. A 50% ROI means you earned 50% more than your initial investment. A -20% ROI means you lost 20% of your investment. ROI helps you understand whether trades are profitable relative to the amount invested.</p>
@@ -600,7 +630,7 @@ export default function RobloxTradingProfitAnalyzer() {
         <hr />
 
         <h2 id="margins" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Profit Margins and Efficiency</h2>
-        
+
         <p>Profit margin shows net profit as a percentage of sell price: Profit Margin = (Net Profit / Sell Price) × 100. This metric indicates trading efficiency and helps evaluate whether sell prices are appropriate relative to profits.</p>
 
         <p>Higher profit margins indicate more efficient trades. A 20% profit margin means 20% of the sell price is profit. A 5% profit margin means only 5% is profit. Higher margins provide more buffer against price fluctuations and fee increases.</p>
@@ -612,7 +642,7 @@ export default function RobloxTradingProfitAnalyzer() {
         <hr />
 
         <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trading Strategies and Optimization</h2>
-        
+
         <p>Successful trading strategies combine research, timing, and discipline. Research market prices before buying to ensure you're getting good deals. Monitor price trends to identify optimal buy and sell times. Set minimum sell prices above break-even to ensure profitability.</p>
 
         <p>Buy low, sell high is the fundamental principle, but execution is complex. "Low" and "high" are relative to market conditions, not absolute values. Research helps identify when prices are relatively low (good buying opportunities) and relatively high (good selling opportunities).</p>
@@ -628,7 +658,7 @@ export default function RobloxTradingProfitAnalyzer() {
         <hr />
 
         <h2 id="analysis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Advanced Analysis Techniques</h2>
-        
+
         <p>Portfolio analysis evaluates overall trading performance across multiple trades. Calculate average ROI, average profit margin, and average daily ROI across all trades. Identify which item types, price ranges, and strategies generate the best results.</p>
 
         <p>Win rate analysis tracks the percentage of profitable trades. A 70% win rate means 70% of trades are profitable. High win rates with moderate ROI are often better than low win rates with high ROI, as consistency reduces risk.</p>

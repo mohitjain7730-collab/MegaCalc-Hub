@@ -8,7 +8,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'roblox-pet-value-calculator',
     category: 'gaming',
     metaTitle: '(Roblox) Pet Value Calculator - Calculate Roblox Pet Values',
-    metaDescription: 'Calculate the value of your Roblox pets based on rarity, age, and market trends. Free Roblox pet value calculator.',
+    metaDescription: 'A comprehensive guide to calculating and understanding Roblox pet values, including rarity tiers, age multipliers, demand factors, and trading strategies.',
   },
   {
     id: 10002,
@@ -17,7 +17,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'roblox-egg-hatch-odds-simulator',
     category: 'gaming',
     metaTitle: '(Roblox) Egg Hatch Odds Simulator - Calculate Hatch Probabilities',
-    metaDescription: 'Simulate and calculate the odds of hatching rare pets from Roblox eggs. Free Roblox egg hatch probability calculator.',
+    metaDescription: 'A comprehensive guide to Roblox egg hatching probabilities, including how to calculate odds, optimize strategies, and understand the mathematics behind pet acquisition.',
   },
   {
     id: 10003,
@@ -26,7 +26,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'roblox-trading-profit-analyzer',
     category: 'gaming',
     metaTitle: '(Roblox) Trading Profit Analyzer - Calculate Trading Profits and ROI',
-    metaDescription: 'Analyze trading profits by comparing buy and sell prices, fees, and calculate ROI for Roblox trades. Free Roblox trading calculator.',
+    metaDescription: 'A comprehensive guide to analyzing Roblox trading profits, calculating ROI, understanding fees, and optimizing trading strategies for maximum returns.',
   },
   {
     id: 10004,
@@ -35,7 +35,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'roblox-gamepass-roi-calculator',
     category: 'gaming',
     metaTitle: '(Roblox) Gamepass ROI Calculator - Calculate Gamepass Return on Investment',
-    metaDescription: 'Calculate return on investment for Roblox gamepasses based on purchase price, expected earnings, and time period. Free Roblox gamepass calculator.',
+    metaDescription: 'A comprehensive guide to calculating and optimizing Roblox gamepass ROI, including earnings estimation, payback period analysis, and investment strategies.',
   },
   {
     id: 10005,

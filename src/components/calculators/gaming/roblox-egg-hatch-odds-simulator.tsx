@@ -143,6 +143,36 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Ultimate Guide to Roblox Egg Hatching: Understanding Probabilities and Maximizing Your Chances',
+      description: 'A comprehensive guide to Roblox egg hatching probabilities, including how to calculate odds, optimize strategies, and understand the mathematics behind pet acquisition.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Roblox Egg Hatch Odds Simulator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -249,17 +279,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Plan your hatching strategy: ${numberOfHatches} hatches of ${eggType} eggs targeting ${targetRarity} pets. Expected cost: ${estimatedCost.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux. Success probability: ${(probabilityAtLeastOne * 100).toFixed(1)}%.` 
+    {
+      label: 'This Week',
+      detail: `Plan your hatching strategy: ${numberOfHatches} hatches of ${eggType} eggs targeting ${targetRarity} pets. Expected cost: ${estimatedCost.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux. Success probability: ${(probabilityAtLeastOne * 100).toFixed(1)}%.`
     },
-    { 
-      label: 'This Month', 
-      detail: `Monitor your results and adjust strategy. If you don\'t get your target pet, consider whether to continue with the same approach or switch to a different egg type. Track actual success rate vs. expected rate.` 
+    {
+      label: 'This Month',
+      detail: `Monitor your results and adjust strategy. If you don\'t get your target pet, consider whether to continue with the same approach or switch to a different egg type. Track actual success rate vs. expected rate.`
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Stay informed about Roblox updates that might affect hatch rates. Some events offer improved probabilities or special eggs. Join community discussions to learn about optimal hatching strategies and current market conditions.' 
+    {
+      label: 'Ongoing',
+      detail: 'Stay informed about Roblox updates that might affect hatch rates. Some events offer improved probabilities or special eggs. Join community discussions to learn about optimal hatching strategies and current market conditions.'
     },
   ];
 
@@ -592,7 +622,7 @@ export default function RobloxEggHatchOddsSimulator() {
         <hr />
 
         <h2 id="probability" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Hatch Probabilities</h2>
-        
+
         <p>Hatch probabilities determine your chances of obtaining specific pets. Each egg type has a probability distribution across rarity tiers. For example, a common egg might have a 60% chance for common pets, 25% for uncommon, 10% for rare, and smaller percentages for higher rarities. Higher-tier eggs shift these distributions toward rarer pets.</p>
 
         <p>The probability per hatch is fixed for each egg type and target rarity combination. This means that hatching 10 times with a 10% probability gives you a 10% chance per hatch, not a cumulative 100% chance. However, the probability of getting at least one success increases with more hatches, following the formula: P(at least one) = 1 - (1 - p)^n, where p is the probability per hatch and n is the number of hatches.</p>
@@ -611,7 +641,7 @@ export default function RobloxEggHatchOddsSimulator() {
         <hr />
 
         <h2 id="egg-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Egg Types and Probability Distributions</h2>
-        
+
         <p>Different egg types have different probability distributions and costs. Understanding these distributions helps you choose the right eggs for your goals. Common eggs are inexpensive (100 Robux) but have low probabilities for rare pets. Mythical eggs are expensive (12,000 Robux) but have much better odds for rare pets.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Common Eggs (100 Robux)</h3>
@@ -635,7 +665,7 @@ export default function RobloxEggHatchOddsSimulator() {
         <hr />
 
         <h2 id="calculations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Probability Calculations and Mathematics</h2>
-        
+
         <p>Understanding probability calculations helps you make informed decisions about hatching strategies. The key formulas involve calculating success probabilities, expected values, and cost-effectiveness. These calculations use standard probability theory to provide accurate predictions of outcomes.</p>
 
         <p>The probability of at least one success in n hatches is calculated as: P(at least one) = 1 - (1-p)^n, where p is the probability per hatch. This formula accounts for the need to avoid failure on all n attempts. As n increases, the probability approaches 1 (100%), but never reaches it for any finite n if p {'>'} 0.</p>
@@ -649,7 +679,7 @@ export default function RobloxEggHatchOddsSimulator() {
         <hr />
 
         <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Hatching Strategies and Optimization</h2>
-        
+
         <p>Optimal hatching strategies depend on your goals, budget, and risk tolerance. For common or uncommon pets, common eggs are usually most cost-effective. For rare or epic pets, rare or epic eggs often provide better value. For legendary or mythical pets, higher-tier eggs are usually necessary despite higher costs.</p>
 
         <p>Budget considerations are crucial. Higher-tier eggs provide better probabilities but cost significantly more. If you have a limited budget, you may need to accept lower probabilities with cheaper eggs or save for more hatches with higher-tier eggs. Calculate expected costs and ensure they align with your budget.</p>
@@ -665,7 +695,7 @@ export default function RobloxEggHatchOddsSimulator() {
         <hr />
 
         <h2 id="cost-analysis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cost Analysis and Budget Planning</h2>
-        
+
         <p>Cost analysis helps you determine whether hatching strategies are worth the investment. Calculate expected costs, expected successes, and cost per success. Compare these metrics across different egg types to find the most cost-effective approach for your goals.</p>
 
         <p>Expected cost is straightforward: Cost = Number of Hatches × Cost per Hatch. However, this doesn't account for probability. Expected cost per success is more meaningful: (Number of Hatches × Cost per Hatch) / Expected Successes. This metric allows direct comparison between different egg types.</p>
@@ -679,7 +709,7 @@ export default function RobloxEggHatchOddsSimulator() {
         <hr />
 
         <h2 id="advanced" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Advanced Concepts and Tips</h2>
-        
+
         <p>Understanding variance helps you interpret results. Even with good expected values, actual results will vary. A 10% probability doesn't guarantee success in 10 hatches - you might need 5, 10, 20, or more hatches. Plan for variance and don't get discouraged by temporary bad luck.</p>
 
         <p>Simulation tools help you understand outcomes. Running simulations shows you what actual results might look like, not just expected values. This helps you understand the range of possible outcomes and prepare for different scenarios. Our calculator includes simulation functionality for this purpose.</p>

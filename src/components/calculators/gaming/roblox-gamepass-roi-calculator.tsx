@@ -142,6 +142,36 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Roblox Gamepass ROI: Maximizing Returns on Virtual Investments',
+      description: 'A comprehensive guide to calculating and optimizing Roblox gamepass ROI, including earnings estimation, payback period analysis, and investment strategies.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Roblox Gamepass ROI Calculator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -219,17 +249,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Evaluate gamepass performance: ${netProfit >= 0 ? 'profit' : 'loss'} of ${Math.abs(netProfit).toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, ${roi.toFixed(1)}% ROI over ${daysActive} days. ${netProfit < 0 ? 'Analyze why earnings are below expectations and consider strategies to improve.' : 'Review what\'s working well and identify opportunities to optimize.'}` 
+    {
+      label: 'This Week',
+      detail: `Evaluate gamepass performance: ${netProfit >= 0 ? 'profit' : 'loss'} of ${Math.abs(netProfit).toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, ${roi.toFixed(1)}% ROI over ${daysActive} days. ${netProfit < 0 ? 'Analyze why earnings are below expectations and consider strategies to improve.' : 'Review what\'s working well and identify opportunities to optimize.'}`
     },
-    { 
-      label: 'This Month', 
-      detail: `Track earnings trends and compare to projections. Projected monthly earnings: ${projectedEarnings.month1.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux. Monitor game popularity, player counts, and gamepass utility to ensure continued performance.` 
+    {
+      label: 'This Month',
+      detail: `Track earnings trends and compare to projections. Projected monthly earnings: ${projectedEarnings.month1.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux. Monitor game popularity, player counts, and gamepass utility to ensure continued performance.`
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously monitor gamepass ROI: track actual vs. projected earnings, monitor game popularity and player engagement, evaluate gamepass utility and value, and use this calculator to analyze performance and make informed decisions about future gamepass purchases.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously monitor gamepass ROI: track actual vs. projected earnings, monitor game popularity and player engagement, evaluate gamepass utility and value, and use this calculator to analyze performance and make informed decisions about future gamepass purchases.'
     },
   ];
 
@@ -576,7 +606,7 @@ export default function RobloxGamepassROICalculator() {
         <hr />
 
         <h2 id="roi" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Gamepass ROI</h2>
-        
+
         <p>Gamepass ROI measures profitability as a percentage of the purchase price. Formula: ROI = ((Total Earnings - Purchase Price) / Purchase Price) × 100. Positive ROI means profit, negative ROI means loss. ROI helps compare gamepasses of different prices and evaluate investment performance.</p>
 
         <p>ROI calculation example: If you purchase a gamepass for 500 Robux and earn 1,500 Robux over 60 days, your net profit is 1,000 Robux, and ROI is 200%. This means you earned 200% more than your initial investment. A 50% ROI means you earned 50% more than your investment.</p>
@@ -593,7 +623,7 @@ export default function RobloxGamepassROICalculator() {
         <hr />
 
         <h2 id="earnings" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Estimating Daily Earnings</h2>
-        
+
         <p>Daily earnings estimation is the most challenging aspect of gamepass ROI calculation. Earnings depend on game popularity, player count, gamepass utility, conversion rates, and pricing. Research and analysis help create realistic estimates, but actual earnings may vary significantly.</p>
 
         <p>Game popularity is the primary driver of earnings. Popular games with many active players generate more gamepass purchases. Check game player counts, growth trends, and community engagement. Games with 10,000+ concurrent players typically generate more earnings than games with 100 concurrent players.</p>
@@ -612,7 +642,7 @@ export default function RobloxGamepassROICalculator() {
         <hr />
 
         <h2 id="payback" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Payback Period Analysis</h2>
-        
+
         <p>Payback period is the number of days needed to recover your initial investment. Formula: Payback Period = Purchase Price / Daily Earnings. After the payback period, all earnings are profit. Shorter payback periods reduce risk and improve time efficiency.</p>
 
         <p>Payback period example: If you purchase a gamepass for 500 Robux and earn 50 Robux per day, payback period is 10 days. After 10 days, you've recovered your investment, and all future earnings are profit. If you earn 10 Robux per day, payback period is 50 days.</p>
@@ -629,7 +659,7 @@ export default function RobloxGamepassROICalculator() {
         <hr />
 
         <h2 id="factors" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Factors Affecting Gamepass ROI</h2>
-        
+
         <p>Multiple factors affect gamepass ROI: game popularity and player count, gamepass utility and value, pricing strategy, conversion rates, game stability and longevity, developer support and updates, competition from other games, and market trends. Understanding these factors helps make informed investment decisions.</p>
 
         <p>Game popularity is the most important factor. Popular games with many active players generate more gamepass purchases. Monitor player counts, growth trends, and community engagement. Games with growing player bases are more attractive than games with declining player bases.</p>
@@ -645,7 +675,7 @@ export default function RobloxGamepassROICalculator() {
         <hr />
 
         <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Investment Strategies and Optimization</h2>
-        
+
         <p>Successful gamepass investment strategies combine research, analysis, and diversification. Research game popularity, player counts, and growth trends before purchasing. Analyze gamepass utility, pricing, and conversion potential. Diversify across multiple games to reduce risk.</p>
 
         <p>Focus on popular, growing games. Games with 5,000+ concurrent players and positive growth trends are more attractive than games with declining player bases. Monitor player counts, community engagement, and update frequency to identify promising games.</p>
@@ -661,7 +691,7 @@ export default function RobloxGamepassROICalculator() {
         <hr />
 
         <h2 id="analysis" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Advanced Analysis and Projections</h2>
-        
+
         <p>Projected earnings help evaluate long-term potential. Calculate earnings for different time periods (1 week, 1 month, 3 months, 6 months, 1 year) based on current daily earnings. These projections assume constant daily earnings, which may vary in practice.</p>
 
         <p>Earnings projections example: If daily earnings are 50 Robux, projected monthly earnings are 1,500 Robux (50 × 30), projected 3-month earnings are 4,500 Robux (50 × 90), and projected annual earnings are 18,250 Robux (50 × 365). These projections help evaluate long-term ROI potential.</p>

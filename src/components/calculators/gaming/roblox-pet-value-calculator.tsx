@@ -141,6 +141,36 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Roblox Pet Values: Understanding Rarity, Age, and Market Dynamics',
+      description: 'A comprehensive guide to calculating and understanding Roblox pet values, including rarity tiers, age multipliers, demand factors, and trading strategies.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Roblox Pet Value Calculator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -201,7 +231,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     `Demand Multiplier: ${demandMultiplier.toFixed(2)}x (${demandLevel}/100 demand). ${demandLevel >= 80 ? 'Very high demand - excellent market appeal!' : demandLevel >= 50 ? 'Moderate demand - decent market value.' : 'Low demand - consider waiting for market trends to improve.'}`,
     `Special Attributes Bonus: ${attributeBonus.toFixed(2)}x (${specialAttributes} attributes). ${specialAttributes > 0 ? 'Special attributes significantly increase value!' : 'No special attributes - consider pets with shiny or rainbow variants for higher value.'}`,
   ];
-  
+
   if (estimatedValue >= 20000) {
     recommendations.push('High-value pet detected! Consider holding for potential value appreciation or trading for other high-value items. Monitor market trends closely.');
   } else {
@@ -209,17 +239,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Verify current market prices for similar ${baseRarity} pets. Check trading forums and marketplaces to compare your estimated value (${estimatedValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}) with actual market prices.` 
+    {
+      label: 'This Week',
+      detail: `Verify current market prices for similar ${baseRarity} pets. Check trading forums and marketplaces to compare your estimated value (${estimatedValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}) with actual market prices.`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Monitor demand trends for your pet type. If demand is low, consider waiting for market conditions to improve. If demand is high, evaluate trading opportunities.' 
+    {
+      label: 'This Month',
+      detail: 'Monitor demand trends for your pet type. If demand is low, consider waiting for market conditions to improve. If demand is high, evaluate trading opportunities.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Keep track of your pet\'s age as it increases value over time. Stay updated on Roblox updates and events that might affect pet values. Join trading communities to stay informed about market trends.' 
+    {
+      label: 'Ongoing',
+      detail: 'Keep track of your pet\'s age as it increases value over time. Stay updated on Roblox updates and events that might affect pet values. Join trading communities to stay informed about market trends.'
     },
   ];
 
@@ -528,7 +558,7 @@ export default function RobloxPetValueCalculator() {
         <hr />
 
         <h2 id="rarity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Pet Rarity Tiers</h2>
-        
+
         <h3 className="text-xl font-semibold text-foreground mt-6">Common Pets (1.0x Multiplier)</h3>
         <p>Common pets are the most accessible tier in Roblox. They have a base multiplier of 1.0x, making them the baseline for value calculations. While common pets have limited individual value, they serve important roles in the economy: they're entry points for new players, components in fusion recipes, and sometimes required for specific game mechanics. Their abundance means they're rarely valuable on their own, but they can be useful in bulk trades or as stepping stones to rarer pets.</p>
 
@@ -553,7 +583,7 @@ export default function RobloxPetValueCalculator() {
         <hr />
 
         <h2 id="age" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How Pet Age Affects Value</h2>
-        
+
         <p>Pet age is a crucial factor in value determination. Older pets are generally more valuable because they represent historical significance, limited availability from past events, and often have nostalgic value for long-time players. The age multiplier formula accounts for this by gradually increasing value based on how many days old a pet is.</p>
 
         <p>The age multiplier follows a gradual curve: 1 + (Pet Age / 1000) × 0.5, capped at 2.0x. This means a pet that's 1000 days old would have a 1.5x age multiplier, while a pet that's 2000+ days old would reach the maximum 2.0x multiplier. This system rewards players who have held pets for extended periods and recognizes the historical value of older collectibles.</p>
@@ -565,7 +595,7 @@ export default function RobloxPetValueCalculator() {
         <hr />
 
         <h2 id="demand" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Market Demand and Popularity</h2>
-        
+
         <p>Market demand is perhaps the most volatile factor in pet valuation. Demand levels (0-100) reflect how popular and sought-after a pet is in the current market. High demand (80-100) can significantly increase a pet's value, while low demand (0-30) can suppress value even for rare pets. Demand is influenced by numerous factors including game updates, community trends, fusion recipes, and social media popularity.</p>
 
         <p>Game updates are major drivers of demand changes. When new content is released that features specific pets, demand for those pets can spike dramatically. For example, if a new game mode requires certain pets or if a fusion recipe is introduced that uses specific pets as components, demand for those pets will increase. Successful traders monitor game updates and patch notes to anticipate demand changes.</p>
@@ -579,7 +609,7 @@ export default function RobloxPetValueCalculator() {
         <hr />
 
         <h2 id="attributes" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Special Attributes and Variants</h2>
-        
+
         <p>Special attributes are unique visual or functional traits that make pets stand out from their base versions. Common special attributes include Shiny variants (with special visual effects), Rainbow variants (with colorful effects), Golden variants, and other unique appearances. Each special attribute adds a 20% bonus to the base value, meaning a pet with multiple special attributes can be significantly more valuable than its base version.</p>
 
         <p>Shiny pets are among the most common special variants. They feature distinctive visual effects that make them stand out. Shiny variants are typically rarer than base versions, making them more valuable. The combination of high base rarity and shiny attributes can result in extremely valuable pets that are highly sought after by collectors.</p>
@@ -593,7 +623,7 @@ export default function RobloxPetValueCalculator() {
         <hr />
 
         <h2 id="trading" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trading Strategies and Best Practices</h2>
-        
+
         <p>Successful Roblox pet trading requires understanding market dynamics, timing, and value assessment. The first principle is to always verify current market prices before making trades. While calculators provide estimates, actual market values can fluctuate based on real-time supply and demand. Use multiple sources including trading forums, marketplaces, and community resources to verify values.</p>
 
         <p>Timing is crucial in pet trading. Market conditions change frequently based on game updates, events, and community trends. Learning to identify when demand is increasing or decreasing can help you make better trading decisions. Consider holding pets during low-demand periods if you believe demand will increase, and consider selling during high-demand periods to maximize value.</p>
@@ -609,7 +639,7 @@ export default function RobloxPetValueCalculator() {
         <hr />
 
         <h2 id="market" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Market Trends and Value Fluctuations</h2>
-        
+
         <p>The Roblox pet market is dynamic and constantly evolving. Understanding market trends helps you make better trading decisions and anticipate value changes. Several factors drive market fluctuations: game updates, seasonal events, new pet releases, fusion recipe changes, and community trends.</p>
 
         <p>Game updates are major market movers. When Roblox releases new content, it can dramatically affect pet values. New games that feature specific pets, new fusion recipes, or changes to existing game mechanics can all impact demand. Major updates often create temporary market volatility as players adjust to new content and discover new strategies.</p>
