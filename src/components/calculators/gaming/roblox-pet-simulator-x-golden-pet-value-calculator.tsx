@@ -291,6 +291,24 @@ export default function RobloxPSXGoldenCalc() {
                 </Card>
             </div>
 
+            <Card>
+                <CardHeader>
+                    <CardTitle>Related calculators</CardTitle>
+                </CardHeader>
+                <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {relatedCalculators.map((calc) => (
+                        <div key={calc.slug} className="p-4 border rounded">
+                            <h4 className="font-semibold mb-1">
+                                <Link href={`/category/gaming/${calc.slug}`} className="text-primary hover:underline">
+                                    {calc.name}
+                                </Link>
+                            </h4>
+                            <p className="text-sm text-muted-foreground">{calc.description}</p>
+                        </div>
+                    ))}
+                </CardContent>
+            </Card>
+
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
                 itemScope
@@ -466,24 +484,6 @@ export default function RobloxPSXGoldenCalc() {
                     Use our calculator above to estimate the final value of your upgrades, and never waste a Shiny pet again!
                 </p>
             </section>
-
-            <Card>
-                <CardHeader>
-                    <CardTitle>Related calculators</CardTitle>
-                </CardHeader>
-                <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {relatedCalculators.map((calc) => (
-                        <div key={calc.slug} className="p-4 border rounded">
-                            <h4 className="font-semibold mb-1">
-                                <Link href={`/category/gaming/${calc.slug}`} className="text-primary hover:underline">
-                                    {calc.name}
-                                </Link>
-                            </h4>
-                            <p className="text-sm text-muted-foreground">{calc.description}</p>
-                        </div>
-                    ))}
-                </CardContent>
-            </Card>
 
             <Card>
                 <CardHeader>
