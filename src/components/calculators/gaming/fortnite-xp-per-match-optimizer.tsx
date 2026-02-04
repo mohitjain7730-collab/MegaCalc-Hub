@@ -151,6 +151,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Fortnite XP Optimization: Maximizing Experience Points Per Match',
+      description: 'A comprehensive guide to optimizing Fortnite XP per match, including elimination scoring, placement bonuses, survival rewards, and strategies for maximizing total experience points.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Fortnite XP Per Match Optimizer',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -253,17 +272,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Match', 
-      detail: `Match performance: ${totalXP.toLocaleString(undefined, { maximumFractionDigits: 0 })} XP earned. ${eliminations > 0 ? `${eliminations} eliminations, ` : ''}Place ${placement}. ${totalXP >= 600 ? 'Excellent performance - maintain this level.' : 'Focus on improving eliminations and placement for better XP.'}` 
+    {
+      label: 'This Match',
+      detail: `Match performance: ${totalXP.toLocaleString(undefined, { maximumFractionDigits: 0 })} XP earned. ${eliminations > 0 ? `${eliminations} eliminations, ` : ''}Place ${placement}. ${totalXP >= 600 ? 'Excellent performance - maintain this level.' : 'Focus on improving eliminations and placement for better XP.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize XP gains: focus on getting eliminations (50 XP each), achieving high placements (survive longer), dealing high damage (500+ for bonus), getting first blood bonuses, and winning matches for Victory Royale bonuses. Play consistently across multiple matches.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize XP gains: focus on getting eliminations (50 XP each), achieving high placements (survive longer), dealing high damage (500+ for bonus), getting first blood bonuses, and winning matches for Victory Royale bonuses. Play consistently across multiple matches.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize XP: balance aggressive play (eliminations) with survival (placement), deal high damage for bonuses, aim for special bonuses (first blood, victory), play consistently across matches, and track XP gains to identify improvement opportunities.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize XP: balance aggressive play (eliminations) with survival (placement), deal high damage for bonuses, aim for special bonuses (first blood, victory), play consistently across matches, and track XP gains to identify improvement opportunities.'
     },
   ];
 
@@ -615,7 +634,7 @@ export default function FortniteXPPerMatchOptimizer() {
         <hr />
 
         <h2 id="sources" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">XP Sources and Calculation</h2>
-        
+
         <p>Fortnite XP comes from multiple sources, each with different values and calculation methods. Understanding these sources helps players prioritize activities and optimize XP gains.</p>
 
         <p>Elimination XP is typically 50 XP per elimination, making it a consistent and significant XP source. Each elimination contributes directly to total XP. First blood (first elimination) may provide additional bonus XP (typically 25 XP). Eliminations are reliable XP sources that reward combat engagement.</p>
@@ -634,7 +653,7 @@ export default function FortniteXPPerMatchOptimizer() {
         <hr />
 
         <h2 id="eliminations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Elimination XP and Strategies</h2>
-        
+
         <p>Eliminations are a primary XP source, providing consistent XP per elimination. Understanding elimination XP helps players prioritize combat engagement and optimize XP gains.</p>
 
         <p>Elimination value is typically 50 XP per elimination, making each elimination valuable for XP. Multiple eliminations accumulate significant XP. For example, 10 eliminations provide 500 XP, which is substantial. Eliminations are reliable XP sources that directly contribute to progression.</p>
@@ -651,7 +670,7 @@ export default function FortniteXPPerMatchOptimizer() {
         <hr />
 
         <h2 id="placement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Placement XP and Survival</h2>
-        
+
         <p>Placement XP scales significantly with final position, making survival important for XP gains. Understanding placement XP helps players prioritize survival and optimize strategies.</p>
 
         <p>Placement scaling provides more XP for higher placements. Victory Royale provides maximum XP (typically 300 XP). Top 3 provides very high XP (180-200 XP). Top 10 provides high XP (140-150 XP). Top 25 provides moderate XP (70-100 XP). Lower placements provide minimal XP (10-70 XP).</p>
@@ -668,7 +687,7 @@ export default function FortniteXPPerMatchOptimizer() {
         <hr />
 
         <h2 id="bonuses" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Bonus XP and Special Rewards</h2>
-        
+
         <p>Special bonuses provide significant XP boosts for achieving milestones. Understanding bonus XP helps players prioritize goals and optimize XP gains.</p>
 
         <p>First Blood bonus provides additional XP for the first elimination of the match (typically 25 XP). This bonus rewards early engagement and aggressive play. Getting first blood provides both elimination XP and bonus XP, making it valuable for XP optimization. Aim for first blood when possible.</p>
@@ -685,7 +704,7 @@ export default function FortniteXPPerMatchOptimizer() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">XP Optimization Strategies</h2>
-        
+
         <p>XP optimization strategies help players maximize XP gains per match through balanced gameplay and strategic prioritization. Multiple approaches can optimize XP accumulation.</p>
 
         <p>Balanced playstyle combines aggressive play (eliminations) with strategic survival (placement). Engage enemies for elimination XP, but maintain survival for placement XP. Balance combat engagement with strategic positioning to maximize both XP sources. Don't sacrifice one entirely for the other.</p>
@@ -703,7 +722,7 @@ export default function FortniteXPPerMatchOptimizer() {
         <hr />
 
         <h2 id="maximization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Maximizing XP Per Match</h2>
-        
+
         <p>Maximizing XP per match requires balancing multiple factors and optimizing all XP sources. Several strategies help achieve maximum XP gains.</p>
 
         <p>High elimination counts provide substantial elimination XP. Aim for 5-10+ eliminations per match for significant elimination XP (250-500+ XP). Engage enemies regularly, improve combat skills, and prioritize eliminations. High elimination counts directly increase total XP.</p>

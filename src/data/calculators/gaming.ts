@@ -44,7 +44,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'roblox-pet-dupe-value-calculator',
     category: 'gaming',
     metaTitle: '(Roblox) Pet Dupe Value Calculator - Calculate Duplicated Pet Values',
-    metaDescription: 'Calculate the value of duplicated Roblox pets based on original value, dupe count, and market impact. Free Roblox pet dupe calculator.',
+    metaDescription: 'A comprehensive guide to understanding how pet duplication affects Roblox pet values, including dupe penalty calculations, value retention, and market impact analysis.',
   },
   {
     id: 10006,
@@ -53,7 +53,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'roblox-limited-item-resale-predictor',
     category: 'gaming',
     metaTitle: '(Roblox) Limited Item Resale Predictor - Predict Limited Item Values',
-    metaDescription: 'Predict future resale values of Roblox limited items based on historical trends, rarity, and market factors. Free Roblox limited item calculator.',
+    metaDescription: 'A comprehensive guide to predicting Roblox limited item resale values, including historical analysis, growth rate calculations, and market trend evaluation.',
   },
   {
     id: 10007,
@@ -62,7 +62,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'roblox-inventory-value-estimator',
     category: 'gaming',
     metaTitle: '(Roblox) Inventory Value Estimator - Calculate Total Inventory Value',
-    metaDescription: 'Estimate the total value of your Roblox inventory including pets, limited items, and collectibles. Free Roblox inventory calculator.',
+    metaDescription: 'A comprehensive guide to estimating Roblox inventory value, including category breakdowns, depreciation factors, and value optimization strategies.',
   },
   {
     id: 10008,
@@ -71,7 +71,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'roblox-trade-tax-calculator',
     category: 'gaming',
     metaTitle: '(Roblox) Trade Tax Calculator - Calculate Trading Taxes and Fees',
-    metaDescription: 'Calculate trading taxes and fees for Roblox trades, including platform fees and total transaction costs. Free Roblox trade tax calculator.',
+    metaDescription: 'A comprehensive guide to Roblox trading fees, including platform fees, additional costs, fee calculations, and cost optimization strategies.',
   },
   {
     id: 10009,
@@ -80,7 +80,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'fortnite-dps-calculator',
     category: 'gaming',
     metaTitle: 'Fortnite DPS Calculator - Calculate Weapon Damage Per Second',
-    metaDescription: 'Calculate damage per second (DPS) for Fortnite weapons based on damage, fire rate, and weapon stats. Free Fortnite DPS calculator.',
+    metaDescription: 'A comprehensive guide to Fortnite DPS calculations, including weapon damage output analysis, fire rate mechanics, headshot multipliers, and strategies for maximizing combat effectiveness.',
   },
   {
     id: 10010,
@@ -89,7 +89,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'fortnite-build-material-cost-calculator',
     category: 'gaming',
     metaTitle: 'Fortnite Build Material Cost Calculator - Calculate Building Costs',
-    metaDescription: 'Calculate the total material cost for building structures in Fortnite based on structure type, size, and material requirements. Free Fortnite building calculator.',
+    metaDescription: 'A comprehensive guide to calculating Fortnite building material costs, including resource collection methods, structure cost analysis, and strategies for efficient material management.',
   },
   {
     id: 10011,
@@ -98,7 +98,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'fortnite-storm-surge-timer',
     category: 'gaming',
     metaTitle: 'Fortnite Storm Surge Timer - Calculate Storm Surge Timing and Damage',
-    metaDescription: 'Calculate storm surge timing, damage intervals, and survival requirements in Fortnite competitive matches. Free Fortnite storm surge calculator.',
+    metaDescription: 'A comprehensive guide to Fortnite storm surge mechanics, including timing calculations, damage interval analysis, and survival strategies for competitive matches.',
   },
   {
     id: 10012,
@@ -107,7 +107,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'fortnite-xp-per-match-optimizer',
     category: 'gaming',
     metaTitle: 'Fortnite XP Per Match Optimizer - Maximize XP Gains',
-    metaDescription: 'Optimize XP gains per match by calculating XP from eliminations, placement, and match performance. Free Fortnite XP calculator.',
+    metaDescription: 'A comprehensive guide to optimizing Fortnite XP per match, including elimination scoring, placement bonuses, survival rewards, and strategies for maximizing total experience points.',
   },
   {
     id: 10013,
@@ -116,7 +116,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'fortnite-reload-time-reducer-calculator',
     category: 'gaming',
     metaTitle: 'Fortnite Reload Time Reducer Calculator - Calculate Reload Speed Improvements',
-    metaDescription: 'Calculate reload time reductions and improvements for Fortnite weapons based on reload speed modifiers and weapon stats. Free Fortnite reload calculator.',
+    metaDescription: 'A comprehensive guide to Fortnite reload time reduction, including reload speed modifier analysis, DPS impact calculations, and strategies for optimizing weapon performance.',
   },
   {
     id: 10014,
@@ -125,7 +125,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'fortnite-loot-drop-odds-estimator',
     category: 'gaming',
     metaTitle: 'Fortnite Loot Drop Odds Estimator - Calculate Loot Drop Probabilities',
-    metaDescription: 'Estimate loot drop odds and probabilities for Fortnite chests, supply drops, and loot sources based on rarity tiers and drop rates. Free Fortnite loot calculator.',
+    metaDescription: 'A comprehensive guide to Fortnite loot drop odds, including rarity tier probability analysis, expected value calculations, and strategies for optimizing loot collection.',
   },
   {
     id: 10015,
@@ -134,7 +134,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'fortnite-shield-potency-calculator',
     category: 'gaming',
     metaTitle: 'Fortnite Shield Potency Calculator - Calculate Shield Effectiveness',
-    metaDescription: 'Calculate shield effectiveness, damage absorption, and total effective health based on shield type, amount, and damage received. Free Fortnite shield calculator.',
+    metaDescription: 'A comprehensive guide to Fortnite shield mechanics, including effective health calculations, damage absorption analysis, and strategies for maximizing survival.',
   },
   {
     id: 10016,
@@ -143,7 +143,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'fortnite-victory-royale-probability-estimator',
     category: 'gaming',
     metaTitle: 'Fortnite Victory Royale Probability Estimator - Calculate Win Probability',
-    metaDescription: 'Estimate your probability of winning a Victory Royale based on current placement, player count, skill level, and match factors. Free Fortnite win probability calculator.',
+    metaDescription: 'A comprehensive guide to estimating Fortnite Victory Royale probability, including skill multiplier analysis, performance bonus calculations, and strategies for increasing win chances.',
   },
   {
     id: 10017,

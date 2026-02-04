@@ -134,6 +134,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Fortnite Reload Time Optimization: Maximizing Reload Speed',
+      description: 'A comprehensive guide to Fortnite reload time reduction, including reload speed modifier analysis, DPS impact calculations, and strategies for optimizing weapon performance.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Fortnite Reload Time Reducer Calculator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -199,17 +218,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   recommendations.push(`Weapon Assessment: ${status.replace('-', ' ').toUpperCase()}. ${reloadSpeedImprovement >= 25 ? 'Excellent reload speed improvement - prioritize this weapon/modifier combination for sustained combat.' : reloadSpeedImprovement >= 15 ? 'Good reload speed improvement - valuable for combat effectiveness.' : 'Moderate reload speed improvement - consider additional modifiers or different weapons for better performance.'}`);
 
   const plan = [
-    { 
-      label: 'This Match', 
-      detail: `Optimize reload performance: base ${baseReloadTime.toFixed(2)}s, reduced to ${reducedReloadTime.toFixed(2)}s (${reloadSpeedImprovement.toFixed(1)}% improvement). ${reloadSpeedImprovement >= 20 ? 'Excellent reload speed - use this weapon/modifier combination.' : 'Consider additional reload speed improvements for better performance.'}` 
+    {
+      label: 'This Match',
+      detail: `Optimize reload performance: base ${baseReloadTime.toFixed(2)}s, reduced to ${reducedReloadTime.toFixed(2)}s (${reloadSpeedImprovement.toFixed(1)}% improvement). ${reloadSpeedImprovement >= 20 ? 'Excellent reload speed - use this weapon/modifier combination.' : 'Consider additional reload speed improvements for better performance.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Test reload speed improvements: compare weapons with different reload times, test reload speed modifiers, evaluate effective DPS improvements, and identify optimal reload speed configurations for different weapon types.' 
+    {
+      label: 'This Week',
+      detail: 'Test reload speed improvements: compare weapons with different reload times, test reload speed modifiers, evaluate effective DPS improvements, and identify optimal reload speed configurations for different weapon types.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize reload performance: prioritize reload speed for weapons with small magazines, balance reload speed with other stats, use reload speed modifiers when available, and track reload performance to identify improvement opportunities.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize reload performance: prioritize reload speed for weapons with small magazines, balance reload speed with other stats, use reload speed modifiers when available, and track reload performance to identify improvement opportunities.'
     },
   ];
 
@@ -519,7 +538,7 @@ export default function FortniteReloadTimeReducerCalculator() {
         <hr />
 
         <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Reload Time Mechanics</h2>
-        
+
         <p>Reload time mechanics involve base reload times, reload speed modifiers, and their interactions. Understanding these mechanics helps players optimize reload performance and maximize combat effectiveness.</p>
 
         <p>Base reload time is the default reload duration for a weapon without modifiers. Base reload times vary by weapon type, with some weapons reloading faster than others. Understanding base reload times helps players choose weapons and evaluate reload speed improvements.</p>
@@ -538,7 +557,7 @@ export default function FortniteReloadTimeReducerCalculator() {
         <hr />
 
         <h2 id="modifiers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Reload Speed Modifiers</h2>
-        
+
         <p>Reload speed modifiers come from various sources and provide percentage-based reload time reductions. Understanding modifier sources and values helps players optimize reload performance and maximize combat effectiveness.</p>
 
         <p>Perk modifiers provide reload speed increases through weapon perks or character abilities. These modifiers typically range from 10-30% reload speed increase. Perk modifiers are consistent and reliable sources of reload speed improvements. Understanding available perks helps players optimize weapon builds.</p>
@@ -555,7 +574,7 @@ export default function FortniteReloadTimeReducerCalculator() {
         <hr />
 
         <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Reload Time Calculation</h2>
-        
+
         <p>Reload time calculations determine reduced reload times, time savings, and improvement percentages. Understanding calculations helps players evaluate reload speed improvements and optimize weapon performance.</p>
 
         <p>Reduced reload time formula: Reduced Time = Base Time / (1 + Speed Increase / 100). This calculates the new reload time after applying speed modifiers. Higher speed increases result in proportionally faster reloads. Understanding this formula helps players predict reload performance.</p>
@@ -572,7 +591,7 @@ export default function FortniteReloadTimeReducerCalculator() {
         <hr />
 
         <h2 id="dps-impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DPS Impact and Effectiveness</h2>
-        
+
         <p>Reload time reduction significantly impacts effective DPS by reducing downtime between magazines. Understanding DPS impact helps players evaluate reload speed improvements and optimize weapon performance.</p>
 
         <p>Effective DPS accounts for reload downtime: Effective DPS = (Damage Per Magazine) / (Time to Empty + Reload Time). Reducing reload time increases effective DPS by reducing downtime. The impact depends on fire rate, magazine size, and base reload time. Understanding effective DPS helps players evaluate reload speed improvements.</p>
@@ -589,7 +608,7 @@ export default function FortniteReloadTimeReducerCalculator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Reload Time Optimization Strategies</h2>
-        
+
         <p>Reload time optimization strategies help players maximize reload speed improvements and combat effectiveness. Multiple approaches can optimize reload performance.</p>
 
         <p>Weapon selection prioritizes weapons with faster base reload times when possible. Faster base reloads mean less downtime and higher effective DPS. However, balance reload time with other factors like damage and fire rate. Don't sacrifice damage entirely for reload speed.</p>
@@ -605,7 +624,7 @@ export default function FortniteReloadTimeReducerCalculator() {
         <hr />
 
         <h2 id="weapon-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Weapon Types and Reload Characteristics</h2>
-        
+
         <p>Different weapon types have different reload characteristics that affect reload speed importance. Understanding these characteristics helps players optimize reload performance for different weapon types.</p>
 
         <p>Assault rifles typically have moderate reload times (2-3 seconds) and moderate magazine sizes (20-30 rounds). Reload speed is moderately important for assault rifles. Modifiers provide noticeable improvements but are not critical. Balance reload speed with other stats.</p>

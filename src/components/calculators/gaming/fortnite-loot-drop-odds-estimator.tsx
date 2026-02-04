@@ -149,6 +149,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Fortnite Loot Drop Odds: Understanding Probabilities and Rarity Tiers',
+      description: 'A comprehensive guide to Fortnite loot drop odds, including rarity tier probability analysis, expected value calculations, and strategies for optimizing loot collection.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Fortnite Loot Drop Odds Estimator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -222,17 +241,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Match', 
-      detail: `Plan loot strategy: ${numberOfOpens} opens expected, ${(probabilityAtLeastOneLegendary * 100).toFixed(1)}% chance of legendary. ${probabilityAtLeastOneLegendary >= 0.5 ? 'Good odds - prioritize high-value loot sources.' : 'Moderate to lower odds - open more sources or use better drop rate sources.'}` 
+    {
+      label: 'This Match',
+      detail: `Plan loot strategy: ${numberOfOpens} opens expected, ${(probabilityAtLeastOneLegendary * 100).toFixed(1)}% chance of legendary. ${probabilityAtLeastOneLegendary >= 0.5 ? 'Good odds - prioritize high-value loot sources.' : 'Moderate to lower odds - open more sources or use better drop rate sources.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Track loot drop results: compare expected vs actual drops, identify which loot sources have best drop rates, test different loot source types, and optimize loot collection strategies based on drop rate data.' 
+    {
+      label: 'This Week',
+      detail: 'Track loot drop results: compare expected vs actual drops, identify which loot sources have best drop rates, test different loot source types, and optimize loot collection strategies based on drop rate data.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize loot collection: use drop rate data to prioritize loot sources, understand probability vs expected values, track actual drop results, and adapt strategies based on observed drop rates and probabilities.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize loot collection: use drop rate data to prioritize loot sources, understand probability vs expected values, track actual drop results, and adapt strategies based on observed drop rates and probabilities.'
     },
   ];
 
@@ -572,7 +591,7 @@ export default function FortniteLootDropOddsEstimator() {
         <hr />
 
         <h2 id="rarity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Rarity Tiers and Drop Rates</h2>
-        
+
         <p>Fortnite features five rarity tiers with different drop rates and item values. Understanding rarity tiers helps players understand drop odds and prioritize loot collection.</p>
 
         <p>Common (Gray) items have the highest drop rates, typically 60-70% for standard loot sources. Common items are the most frequent drops but have the lowest stats. They're reliable but not powerful. Common items are useful early game but often replaced by higher rarity items.</p>
@@ -591,7 +610,7 @@ export default function FortniteLootDropOddsEstimator() {
         <hr />
 
         <h2 id="probability" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Probability Calculations</h2>
-        
+
         <p>Probability calculations help players understand their chances of obtaining specific items across multiple opens. Understanding probability helps players set realistic expectations and plan loot collection strategies.</p>
 
         <p>Single open probability is simply the drop rate. For example, with 5% legendary drop rate, each open has a 5% chance of legendary. This is straightforward but doesn't account for multiple opens.</p>
@@ -610,7 +629,7 @@ export default function FortniteLootDropOddsEstimator() {
         <hr />
 
         <h2 id="expected" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Expected Values and Averages</h2>
-        
+
         <p>Expected values represent average outcomes over many trials, helping players understand typical results. Understanding expected values helps players set realistic expectations and plan loot collection.</p>
 
         <p>Expected drops formula: Expected = (Drop Rate / 100) × Number of Opens. This calculates the average number of drops you can expect for each rarity tier. For example, with 5% drop rate and 20 opens: Expected = 0.05 × 20 = 1.0 legendary.</p>
@@ -627,7 +646,7 @@ export default function FortniteLootDropOddsEstimator() {
         <hr />
 
         <h2 id="sources" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loot Source Types and Rates</h2>
-        
+
         <p>Different loot source types have different drop rates, affecting probability of obtaining rare items. Understanding source-specific rates helps players prioritize which sources to open.</p>
 
         <p>Standard chests typically have balanced drop rates favoring common and uncommon items. Legendary rates are typically 1-2%. Chests are common and reliable but have lower rates for rare items. Use chests for general loot collection.</p>
@@ -644,7 +663,7 @@ export default function FortniteLootDropOddsEstimator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Loot Collection Optimization</h2>
-        
+
         <p>Loot collection optimization helps players maximize chances of obtaining desired items while minimizing time spent. Multiple strategies can optimize loot collection.</p>
 
         <p>Source prioritization focuses on opening sources with best drop rates for desired rarities. Use supply drops and special sources for epic/legendary items. Use standard chests for general loot. Prioritize high-value sources when available.</p>
@@ -660,7 +679,7 @@ export default function FortniteLootDropOddsEstimator() {
         <hr />
 
         <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Collection Strategies and Planning</h2>
-        
+
         <p>Effective collection strategies help players obtain desired items efficiently while managing time and risk. Multiple approaches can optimize collection based on goals and constraints.</p>
 
         <p>Early game strategy focuses on quick loot collection from common sources. Prioritize speed over quality to get basic equipment quickly. Use floor loot and nearby chests for fast collection. Don't spend too much time on early loot collection.</p>

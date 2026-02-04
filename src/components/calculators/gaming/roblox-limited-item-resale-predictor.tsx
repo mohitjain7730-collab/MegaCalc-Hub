@@ -147,6 +147,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Roblox Limited Item Resale Prediction: Understanding Value Trends and Future Projections',
+      description: 'A comprehensive guide to predicting Roblox limited item resale values, including historical analysis, growth rate calculations, and market trend evaluation.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Roblox Limited Item Resale Predictor',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -170,7 +189,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const totalAppreciation = originalPrice > 0 ? ((currentValue / originalPrice) - 1) * 100 : 0;
 
   // Calculate annual growth rate from historical data
-  const annualGrowthRate = yearsSinceRelease > 0 
+  const annualGrowthRate = yearsSinceRelease > 0
     ? ((Math.pow(currentValue / originalPrice, 1 / yearsSinceRelease)) - 1) * 100
     : historicalGrowthRate;
 
@@ -244,17 +263,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Evaluate prediction: current value ${currentValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, predicted value in ${predictionPeriod} years: ${predictedValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux (${predictedAppreciation >= 0 ? '+' : ''}${predictedAppreciation.toFixed(1)}% change). Confidence: ${confidenceLevel.toFixed(0)}%.` 
+    {
+      label: 'This Week',
+      detail: `Evaluate prediction: current value ${currentValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, predicted value in ${predictionPeriod} years: ${predictedValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux (${predictedAppreciation >= 0 ? '+' : ''}${predictedAppreciation.toFixed(1)}% change). Confidence: ${confidenceLevel.toFixed(0)}%.`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Monitor actual value changes and compare to predictions. Track market conditions, game updates, and community trends that may affect value. Adjust predictions if growth rates change significantly.' 
+    {
+      label: 'This Month',
+      detail: 'Monitor actual value changes and compare to predictions. Track market conditions, game updates, and community trends that may affect value. Adjust predictions if growth rates change significantly.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously track limited item performance: compare actual values to predictions, monitor market trends and game updates, assess whether growth rates are sustainable, and use this calculator to refine predictions based on new data. Remember that predictions are estimates, not guarantees.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously track limited item performance: compare actual values to predictions, monitor market trends and game updates, assess whether growth rates are sustainable, and use this calculator to refine predictions based on new data. Remember that predictions are estimates, not guarantees.'
     },
   ];
 
@@ -639,7 +658,7 @@ export default function RobloxLimitedItemResalePredictor() {
         <hr />
 
         <h2 id="limited" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Limited Items</h2>
-        
+
         <p>Limited items are distinguished from regular items by their discontinued status. Once the sale period ends, no new copies are created, creating fixed or decreasing supply. This scarcity drives value appreciation, especially for popular items with high demand.</p>
 
         <p>Limited U (Unlimited) items were available for a longer period before being discontinued, resulting in higher initial supply. While still limited, they typically have lower growth rates than standard Limited items due to higher supply. However, they can still appreciate significantly over time.</p>
@@ -654,7 +673,7 @@ export default function RobloxLimitedItemResalePredictor() {
         <hr />
 
         <h2 id="growth" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Value Growth and Appreciation</h2>
-        
+
         <p>Limited items typically appreciate in value over time due to scarcity and demand. Growth rates vary by item, rarity, and market conditions. Understanding growth patterns helps predict future values and make informed investment decisions.</p>
 
         <p>Annual growth rates for limited items typically range from 5-30% for standard Limited items, 10-50% for Rare items, 20-100% for Epic items, and 50-200%+ for Legendary items. However, growth rates can decline over time as items become more expensive and markets mature.</p>
@@ -669,7 +688,7 @@ export default function RobloxLimitedItemResalePredictor() {
         <hr />
 
         <h2 id="prediction" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Prediction Methods and Calculations</h2>
-        
+
         <p>Prediction methods use historical data to project future values. The most common approach is compound growth based on historical growth rates. This assumes that historical trends continue into the future, which may or may not be accurate.</p>
 
         <p>Annual growth rate calculation: ((Current Value / Original Price)^(1 / Years Since Release) - 1) × 100. This calculates the average annual growth rate based on historical performance. If you have a specific historical growth rate, you can use that instead.</p>
@@ -686,7 +705,7 @@ export default function RobloxLimitedItemResalePredictor() {
         <hr />
 
         <h2 id="factors" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Factors Affecting Limited Item Values</h2>
-        
+
         <p>Multiple factors affect limited item values: rarity and scarcity (fewer items = higher value), demand and popularity (popular items appreciate more), game updates and events (can increase or decrease demand), community trends and social media (influence demand), overall Roblox economy health, and market sentiment and confidence.</p>
 
         <p>Rarity and scarcity are fundamental drivers. Items with lower supply and higher demand appreciate most. Items that become more scarce (through removals or decreased availability) may appreciate faster. Understanding supply and demand dynamics helps evaluate growth potential.</p>
@@ -700,7 +719,7 @@ export default function RobloxLimitedItemResalePredictor() {
         <hr />
 
         <h2 id="rarity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Rarity Tiers and Growth Patterns</h2>
-        
+
         <p>Different rarity tiers have different growth patterns. Limited items (standard) typically see 10-30% annual growth with moderate volatility. Limited U items see 5-15% annual growth with lower volatility due to higher supply. Rare items see 20-50% annual growth with higher volatility.</p>
 
         <p>Epic items see 30-100% annual growth with high volatility. These items have strong appreciation potential but also higher risk. Legendary items see 50-200%+ annual growth with very high volatility. These items offer exceptional growth potential but also exceptional risk.</p>
@@ -712,7 +731,7 @@ export default function RobloxLimitedItemResalePredictor() {
         <hr />
 
         <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Investment Strategies and Risk Management</h2>
-        
+
         <p>Successful limited item investment requires research, analysis, and risk management. Research historical performance, current market conditions, and growth trends. Analyze predictions, confidence levels, and risk factors. Manage risk through diversification, position sizing, and exit strategies.</p>
 
         <p>Focus on items with strong historical performance, positive growth trends, and reasonable confidence levels. Avoid items with declining values, negative growth rates, or very low confidence. Use predictions to identify opportunities, but verify with additional research.</p>

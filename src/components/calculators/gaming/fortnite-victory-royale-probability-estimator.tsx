@@ -143,6 +143,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Fortnite Victory Royale Probability: Understanding Win Chances and Factors',
+      description: 'A comprehensive guide to estimating Fortnite Victory Royale probability, including skill multiplier analysis, performance bonus calculations, and strategies for increasing win chances.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Fortnite Victory Royale Probability Estimator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -220,17 +239,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Match', 
-      detail: `Current probability: ${finalProbability.toFixed(1)}% (${playersRemaining} players remaining). ${finalProbability >= 25 ? 'Good probability - maintain advantages and play strategically.' : 'Lower probability - focus on improvements: get eliminations, improve loot, better positioning.'}` 
+    {
+      label: 'This Match',
+      detail: `Current probability: ${finalProbability.toFixed(1)}% (${playersRemaining} players remaining). ${finalProbability >= 25 ? 'Good probability - maintain advantages and play strategically.' : 'Lower probability - focus on improvements: get eliminations, improve loot, better positioning.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Improve win probability: practice to improve skill level, focus on getting eliminations, prioritize good loot collection, maintain good positioning, and make strategic decisions. Track probability factors to identify improvement areas.' 
+    {
+      label: 'This Week',
+      detail: 'Improve win probability: practice to improve skill level, focus on getting eliminations, prioritize good loot collection, maintain good positioning, and make strategic decisions. Track probability factors to identify improvement areas.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize Victory Royale probability: improve skill through practice and learning, get eliminations to reduce competition, obtain and maintain good loot, prioritize good positioning, survive longer to reduce player count, and make strategic decisions based on probability factors.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize Victory Royale probability: improve skill through practice and learning, get eliminations to reduce competition, obtain and maintain good loot, prioritize good positioning, survive longer to reduce player count, and make strategic decisions based on probability factors.'
     },
   ];
 
@@ -612,7 +631,7 @@ export default function FortniteVictoryRoyaleProbabilityEstimator() {
         <hr />
 
         <h2 id="factors" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Factors Affecting Win Probability</h2>
-        
+
         <p>Multiple factors affect Victory Royale probability, each contributing to overall win chances. Understanding these factors helps players identify improvement areas and optimize strategies.</p>
 
         <p>Placement and player count determine base probability. Higher placement (lower number) and fewer remaining players increase base probability. For example, being in top 10 with 10 players remaining provides 10% base probability, while being in top 5 with 5 players remaining provides 20% base probability. Placement directly affects win chances.</p>
@@ -631,7 +650,7 @@ export default function FortniteVictoryRoyaleProbabilityEstimator() {
         <hr />
 
         <h2 id="placement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Placement and Player Count</h2>
-        
+
         <p>Placement and player count directly affect base probability, which forms the foundation for all probability calculations. Understanding this relationship helps players evaluate win chances and plan strategies.</p>
 
         <p>Base probability formula: Base Probability = (1 / Players Remaining) × 100. This represents equal chance for all remaining players if all players are equal skill. Base probability increases as players are eliminated, naturally increasing win chances. Fewer remaining players mean higher base probability.</p>
@@ -648,7 +667,7 @@ export default function FortniteVictoryRoyaleProbabilityEstimator() {
         <hr />
 
         <h2 id="skill" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Skill Level and Multipliers</h2>
-        
+
         <p>Skill level significantly affects Victory Royale probability through multipliers that modify base probability. Understanding skill impact helps players evaluate win chances and identify improvement needs.</p>
 
         <p>Skill multipliers: Beginner = 0.5x (reduces probability by 50%), Intermediate = 1.0x (base probability), Advanced = 1.5x (increases probability by 50%), Expert = 2.0x (doubles probability). Higher skill levels dramatically increase win probability by improving combat effectiveness, decision-making, and strategic play.</p>
@@ -665,7 +684,7 @@ export default function FortniteVictoryRoyaleProbabilityEstimator() {
         <hr />
 
         <h2 id="performance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Performance Factors and Bonuses</h2>
-        
+
         <p>Performance factors provide bonus probability that adds to base probability, increasing win chances. Understanding performance factors helps players identify ways to increase probability and optimize strategies.</p>
 
         <p>Elimination bonus: Each elimination adds 1.5% bonus probability, capped at 15% maximum. Eliminations reduce competition (fewer players = higher base probability) and demonstrate combat effectiveness. More eliminations indicate better performance and higher win probability. Focus on getting eliminations to increase probability.</p>
@@ -682,7 +701,7 @@ export default function FortniteVictoryRoyaleProbabilityEstimator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Probability Optimization Strategies</h2>
-        
+
         <p>Probability optimization strategies help players increase Victory Royale probability through skill improvement, performance enhancement, and strategic play. Multiple approaches can optimize probability and win chances.</p>
 
         <p>Skill improvement provides the largest probability increases through skill multipliers. Practice regularly, learn from better players, analyze gameplay, focus on weak areas, and set improvement goals. Skill improvement is the most effective way to increase probability, providing 0.5x to 2.0x multipliers.</p>
@@ -698,7 +717,7 @@ export default function FortniteVictoryRoyaleProbabilityEstimator() {
         <hr />
 
         <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Victory Royale Strategies</h2>
-        
+
         <p>Effective Victory Royale strategies combine probability optimization with tactical play to maximize win chances. Multiple approaches can optimize strategies based on situation and playstyle.</p>
 
         <p>Early game strategy focuses on survival and loot collection. Prioritize survival over eliminations, collect good loot, avoid unnecessary risks, and position for mid game. Early game survival is essential for reaching late game with higher probability.</p>

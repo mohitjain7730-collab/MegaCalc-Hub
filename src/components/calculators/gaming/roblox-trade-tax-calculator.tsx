@@ -135,6 +135,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Roblox Trade Taxes: Understanding Fees and Transaction Costs',
+      description: 'A comprehensive guide to Roblox trading fees, including platform fees, additional costs, fee calculations, and cost optimization strategies.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Roblox Trade Tax Calculator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -199,17 +218,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Evaluate trade costs: total fees ${totalFees.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux (${feePercentage.toFixed(2)}%), net value ${netTradeValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux. ${netTradeValue > 0 ? 'Trade is profitable after fees.' : 'Fees exceed trade value - reconsider trade.'}` 
+    {
+      label: 'This Week',
+      detail: `Evaluate trade costs: total fees ${totalFees.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux (${feePercentage.toFixed(2)}%), net value ${netTradeValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux. ${netTradeValue > 0 ? 'Trade is profitable after fees.' : 'Fees exceed trade value - reconsider trade.'}`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Track trading costs across multiple trades. Calculate average fee percentage and total fees paid. Identify opportunities to reduce fees through better trade negotiation or avoiding high-fee trades.' 
+    {
+      label: 'This Month',
+      detail: 'Track trading costs across multiple trades. Calculate average fee percentage and total fees paid. Identify opportunities to reduce fees through better trade negotiation or avoiding high-fee trades.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize trading costs: account for fees in all trade calculations, negotiate trade values that account for fees, avoid unnecessary additional fees, use this calculator to evaluate all trades, and track total fees paid over time to optimize trading strategy.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize trading costs: account for fees in all trade calculations, negotiate trade values that account for fees, avoid unnecessary additional fees, use this calculator to evaluate all trades, and track total fees paid over time to optimize trading strategy.'
     },
   ];
 
@@ -528,7 +547,7 @@ export default function RobloxTradeTaxCalculator() {
         <hr />
 
         <h2 id="platform" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Platform Fees and Structure</h2>
-        
+
         <p>Platform fees are percentage-based charges on trade values. These fees typically range from 5% to 10%, depending on trade type, account status, and platform policies. Fees are deducted from trade proceeds, reducing the net value you receive.</p>
 
         <p>Fee calculation is straightforward: Platform Fee Amount = Trade Value × (Platform Fee Percentage / 100). For example, a 10,000 Robux trade with 5% platform fee results in 500 Robux in fees. A 10% fee on the same trade results in 1,000 Robux in fees.</p>
@@ -547,7 +566,7 @@ export default function RobloxTradeTaxCalculator() {
         <hr />
 
         <h2 id="additional" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Additional Fees and Costs</h2>
-        
+
         <p>Additional fees are extra costs beyond standard platform fees. These may include premium trading fees, expedited processing fees, verification fees, or other service charges. Not all trades have additional fees - only include fees that actually apply to your specific trade.</p>
 
         <p>Premium trading options may offer faster processing, better security, or additional features but often come with higher fees. Evaluate whether premium features justify additional costs. Standard trading options typically have lower total fees.</p>
@@ -562,7 +581,7 @@ export default function RobloxTradeTaxCalculator() {
         <hr />
 
         <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Fee Calculation Methods</h2>
-        
+
         <p>Fee calculations combine platform fees and additional fees to determine total costs. Understanding calculation methods helps accurately estimate trade costs and make informed decisions.</p>
 
         <p>Platform fee calculation: Platform Fee Amount = Trade Value × (Platform Fee / 100). This calculates the percentage-based platform fee. Higher trade values result in larger absolute fee amounts, even with the same percentage.</p>
@@ -581,7 +600,7 @@ export default function RobloxTradeTaxCalculator() {
         <hr />
 
         <h2 id="impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Fee Impact on Trades</h2>
-        
+
         <p>Fees significantly impact trade profitability by reducing net values. Understanding fee impact helps evaluate trades and make informed decisions about whether trades are worthwhile.</p>
 
         <p>Fee impact increases with trade value. A 5% fee on a 1,000 Robux trade reduces value by 50 Robux (5%). A 5% fee on a 100,000 Robux trade reduces value by 5,000 Robux (5%). While percentages are the same, absolute impacts differ significantly.</p>
@@ -598,7 +617,7 @@ export default function RobloxTradeTaxCalculator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cost Optimization Strategies</h2>
-        
+
         <p>Cost optimization strategies help minimize fees and maximize net trade values. Multiple approaches can reduce trading costs and improve profitability.</p>
 
         <p>Negotiate better trade values to offset fees. If you want 10,000 Robux net after 5% fees, negotiate approximately 10,526 Robux trade value. Factor fees into negotiations to ensure desired net values.</p>
@@ -616,7 +635,7 @@ export default function RobloxTradeTaxCalculator() {
         <hr />
 
         <h2 id="management" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Fee Management and Planning</h2>
-        
+
         <p>Effective fee management involves tracking costs, planning trades, and optimizing strategies. Regular fee analysis helps identify optimization opportunities and improve trading profitability.</p>
 
         <p>Track total fees paid over time. Calculate average fee percentages and total fees across multiple trades. Identify patterns and opportunities to reduce fees. Use tracking data to optimize future trades.</p>

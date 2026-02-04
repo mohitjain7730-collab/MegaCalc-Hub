@@ -172,6 +172,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Fortnite Building Material Costs: Understanding Resource Management',
+      description: 'A comprehensive guide to calculating Fortnite building material costs, including resource collection methods, structure cost analysis, and strategies for efficient material management.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Fortnite Build Material Cost Calculator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -260,17 +279,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Plan material collection: total cost ${totalCost.toLocaleString(undefined, { maximumFractionDigits: 0 })} materials. ${totalCost >= 1000 ? 'Focus on efficient harvesting - prioritize high-yield objects and plan collection routes.' : 'Standard harvesting should be sufficient - collect materials as you play.'}` 
+    {
+      label: 'This Week',
+      detail: `Plan material collection: total cost ${totalCost.toLocaleString(undefined, { maximumFractionDigits: 0 })} materials. ${totalCost >= 1000 ? 'Focus on efficient harvesting - prioritize high-yield objects and plan collection routes.' : 'Standard harvesting should be sufficient - collect materials as you play.'}`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Optimize building strategies: experiment with material mixes, test cost-effective builds, identify which structures need which materials, and develop efficient harvesting routines for different material types.' 
+    {
+      label: 'This Month',
+      detail: 'Optimize building strategies: experiment with material mixes, test cost-effective builds, identify which structures need which materials, and develop efficient harvesting routines for different material types.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize builds: use wood for quick builds and mobility, use stone for balanced defense, use metal sparingly for critical positions, balance cost with durability needs, and harvest materials efficiently during gameplay.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize builds: use wood for quick builds and mobility, use stone for balanced defense, use metal sparingly for critical positions, balance cost with durability needs, and harvest materials efficiently during gameplay.'
     },
   ];
 
@@ -721,7 +740,7 @@ export default function FortniteBuildMaterialCostCalculator() {
         <hr />
 
         <h2 id="materials" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Material Types and Costs</h2>
-        
+
         <p>Fortnite features three material types, each with distinct characteristics and costs. Understanding these differences helps players choose appropriate materials for different situations.</p>
 
         <p>Wood is the cheapest material at 10 materials per piece. It builds fastest, making it ideal for quick defensive structures and mobility builds (ramps, temporary cover). However, wood has the lowest durability, making it vulnerable to enemy fire. Use wood for temporary structures, quick builds, and situations where speed matters more than durability.</p>
@@ -736,7 +755,7 @@ export default function FortniteBuildMaterialCostCalculator() {
         <hr />
 
         <h2 id="collection" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Material Collection Methods</h2>
-        
+
         <p>Materials are collected by harvesting objects with your pickaxe. Different objects provide different material types and amounts. Understanding collection methods helps players gather materials efficiently and plan harvesting routes.</p>
 
         <p>Wood is collected from trees, wooden structures, wooden furniture, and wooden objects throughout the map. Trees provide the most wood per object, making them ideal for wood collection. Wooden structures in buildings also provide wood but typically less per object. Focus on trees for efficient wood harvesting.</p>
@@ -751,7 +770,7 @@ export default function FortniteBuildMaterialCostCalculator() {
         <hr />
 
         <h2 id="structures" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Structure Types and Costs</h2>
-        
+
         <p>Fortnite features four main structure types: Walls, Floors, Stairs, and Roofs. All structure types have the same material costs regardless of material type. Understanding structure costs helps players plan builds and calculate total material requirements.</p>
 
         <p>Walls are vertical structures used for defense and cover. Each wall costs 10/20/30 materials depending on material type (wood/stone/metal). Walls are essential for defensive builds and provide cover from enemy fire. Plan wall counts based on defensive needs and available materials.</p>
@@ -768,7 +787,7 @@ export default function FortniteBuildMaterialCostCalculator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cost Optimization Strategies</h2>
-        
+
         <p>Cost optimization strategies help players build effectively while minimizing material usage. Multiple approaches can reduce costs without significantly compromising build effectiveness.</p>
 
         <p>Material mixing optimizes costs by using appropriate materials for different structures. Use wood for temporary structures, quick builds, and mobility structures (ramps). Use stone for balanced defensive structures that need moderate durability. Use metal only for critical defensive positions that need maximum durability. This approach can reduce costs by 30-50% compared to using expensive materials for everything.</p>
@@ -785,7 +804,7 @@ export default function FortniteBuildMaterialCostCalculator() {
         <hr />
 
         <h2 id="management" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Material Management and Planning</h2>
-        
+
         <p>Effective material management ensures adequate resources for building while optimizing usage. Planning helps players manage materials efficiently and avoid running out during critical moments.</p>
 
         <p>Material limits require strategic management. With 999 max per type, large builds may require multiple harvesting sessions. Plan builds to stay within limits, or plan harvesting to collect materials as needed. Monitor material counts during gameplay to avoid shortages.</p>
@@ -799,7 +818,7 @@ export default function FortniteBuildMaterialCostCalculator() {
         <hr />
 
         <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Building Strategies by Material</h2>
-        
+
         <p>Different materials suit different building strategies. Understanding material characteristics helps players choose appropriate strategies for different situations.</p>
 
         <p>Wood strategies focus on speed and mobility. Use wood for quick defensive structures, mobility builds (ramps for high ground), temporary cover, and situations requiring fast construction. Wood's low cost and fast build speed make it ideal for aggressive playstyles and quick reactions.</p>

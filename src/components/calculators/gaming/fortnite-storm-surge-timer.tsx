@@ -139,6 +139,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Fortnite Storm Surge: Understanding Timing and Survival Strategies',
+      description: 'A comprehensive guide to Fortnite storm surge mechanics, including timing calculations, damage interval analysis, and survival strategies for competitive matches.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Fortnite Storm Surge Timer',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -203,17 +222,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Match', 
-      detail: `Monitor player count: ${currentPlayerCount} remaining, ${playersToEliminate > 0 ? `need ${playersToEliminate} eliminations. ${timeUntilSurge > 0 ? `Estimated ${Math.floor(timeUntilSurge / 60)}m ${Math.floor(timeUntilSurge % 60)}s until surge.` : 'Storm surge may activate soon.'} Deal damage aggressively to avoid storm surge targeting.` : 'Safe player count - continue normal gameplay.'}` 
+    {
+      label: 'This Match',
+      detail: `Monitor player count: ${currentPlayerCount} remaining, ${playersToEliminate > 0 ? `need ${playersToEliminate} eliminations. ${timeUntilSurge > 0 ? `Estimated ${Math.floor(timeUntilSurge / 60)}m ${Math.floor(timeUntilSurge % 60)}s until surge.` : 'Storm surge may activate soon.'} Deal damage aggressively to avoid storm surge targeting.` : 'Safe player count - continue normal gameplay.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Practice aggressive playstyles: engage enemies early, deal damage consistently, avoid passive play, and understand storm surge mechanics. Develop strategies to deal damage while maintaining survival.' 
+    {
+      label: 'This Week',
+      detail: 'Practice aggressive playstyles: engage enemies early, deal damage consistently, avoid passive play, and understand storm surge mechanics. Develop strategies to deal damage while maintaining survival.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize storm surge management: monitor player counts, deal damage to avoid targeting, balance aggression with survival, understand damage thresholds, and adapt playstyle based on match phase and player count.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize storm surge management: monitor player counts, deal damage to avoid targeting, balance aggression with survival, understand damage thresholds, and adapt playstyle based on match phase and player count.'
     },
   ];
 
@@ -548,7 +567,7 @@ export default function FortniteStormSurgeTimer() {
         <hr />
 
         <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Storm Surge Mechanics</h2>
-        
+
         <p>Storm surge mechanics involve player count thresholds, damage targeting, and periodic damage application. Understanding these mechanics helps players predict storm surge activation and avoid damage.</p>
 
         <p>Player count thresholds determine when storm surge activates. Typically, storm surge activates when player count exceeds 60-80 players at certain storm phases. The exact threshold varies by match phase and competitive settings. Once activated, storm surge continues until player count drops below the threshold.</p>
@@ -565,7 +584,7 @@ export default function FortniteStormSurgeTimer() {
         <hr />
 
         <h2 id="activation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Activation Conditions and Timing</h2>
-        
+
         <p>Storm surge activation depends on player count relative to thresholds. Understanding activation conditions helps players predict when storm surge will activate and prepare accordingly.</p>
 
         <p>Activation threshold is the player count that triggers storm surge. When current player count exceeds the threshold, storm surge activates. Typical thresholds are 60-80 players, varying by match phase. Early game phases may have higher thresholds, while later phases may have lower thresholds.</p>
@@ -582,7 +601,7 @@ export default function FortniteStormSurgeTimer() {
         <hr />
 
         <h2 id="damage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Damage System and Intervals</h2>
-        
+
         <p>Storm surge damage occurs at regular intervals with fixed damage per tick. Understanding damage intervals helps players calculate survival time and plan strategies.</p>
 
         <p>Damage per tick is typically 1-2 damage, though this can vary by competitive settings. Higher damage per tick makes storm surge more dangerous, requiring faster damage dealing or more healing. Lower damage per tick provides more time to deal damage or heal.</p>
@@ -601,7 +620,7 @@ export default function FortniteStormSurgeTimer() {
         <hr />
 
         <h2 id="avoidance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Avoiding Storm Surge Damage</h2>
-        
+
         <p>The best strategy for storm surge is to avoid it entirely by dealing damage to enemies. Players who deal damage are protected from storm surge targeting. Understanding avoidance strategies helps players stay safe and optimize gameplay.</p>
 
         <p>Deal damage to enemies to avoid targeting. Engage in combat, shoot enemies, and maintain active gameplay. Players with higher damage dealt are protected from storm surge. Even small amounts of damage can provide protection. Prioritize dealing damage over passive survival.</p>
@@ -618,7 +637,7 @@ export default function FortniteStormSurgeTimer() {
         <hr />
 
         <h2 id="survival" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Survival Strategies and Calculations</h2>
-        
+
         <p>If you're taking storm surge damage, survival strategies help you stay alive while dealing damage to avoid further targeting. Understanding survival calculations helps players plan strategies and manage health effectively.</p>
 
         <p>Survival time calculations help players understand how long they can survive storm surge damage. Formula: Survival Time = (Current Health / Damage Per Tick) × Tick Interval. This shows maximum survival time if taking continuous damage.</p>
@@ -635,7 +654,7 @@ export default function FortniteStormSurgeTimer() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Optimization Strategies</h2>
-        
+
         <p>Optimization strategies help players manage storm surge effectively, avoid damage, and improve competitive performance. Multiple approaches can optimize storm surge management.</p>
 
         <p>Early engagement builds damage totals for protection. Engage enemies early in the match to build damage dealt. Early damage provides protection from storm surge throughout the match. Don't wait until storm surge activates to start dealing damage.</p>

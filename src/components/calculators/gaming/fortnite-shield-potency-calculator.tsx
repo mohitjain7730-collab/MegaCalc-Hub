@@ -134,6 +134,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Fortnite Shield Potency: Understanding Shield Effectiveness and Protection',
+      description: 'A comprehensive guide to Fortnite shield mechanics, including effective health calculations, damage absorption analysis, and strategies for maximizing survival.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Fortnite Shield Potency Calculator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -234,17 +253,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Match', 
-      detail: `Manage shield: ${shieldAmount}/100 shield, ${totalEffectiveHealth} effective health. ${shieldAmount < 100 ? 'Prioritize shield collection to reach maximum protection.' : 'Maintain full shield for maximum survival capacity.'}` 
+    {
+      label: 'This Match',
+      detail: `Manage shield: ${shieldAmount}/100 shield, ${totalEffectiveHealth} effective health. ${shieldAmount < 100 ? 'Prioritize shield collection to reach maximum protection.' : 'Maintain full shield for maximum survival capacity.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize shield management: prioritize shield items, understand shield types and restoration amounts, balance shield with health, and use shield strategically to protect health during combat.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize shield management: prioritize shield items, understand shield types and restoration amounts, balance shield with health, and use shield strategically to protect health during combat.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize shield usage: maintain maximum shield when possible, use shield to absorb damage and protect health, prioritize shield items in loot collection, and understand shield effectiveness for optimal survival strategies.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize shield usage: maintain maximum shield when possible, use shield to absorb damage and protect health, prioritize shield items in loot collection, and understand shield effectiveness for optimal survival strategies.'
     },
   ];
 
@@ -582,7 +601,7 @@ export default function FortniteShieldPotencyCalculator() {
         <hr />
 
         <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Shield Mechanics and Types</h2>
-        
+
         <p>Fortnite features several shield types with different restoration amounts and maximum capacities. Understanding shield types helps players choose appropriate items and optimize shield management.</p>
 
         <p>Small Shield Potion restores 25 shield with a maximum capacity of 50 shield. Small shields are common and useful for partial shield restoration. They're ideal for early game when full shield items are unavailable. Use small shields to reach 50 shield, then use large shields to reach 100.</p>
@@ -599,7 +618,7 @@ export default function FortniteShieldPotencyCalculator() {
         <hr />
 
         <h2 id="effectiveness" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Shield Effectiveness and Calculation</h2>
-        
+
         <p>Shield effectiveness measures how much of your total effective health is shield protection. Understanding effectiveness helps players evaluate shield value and optimize protection strategies.</p>
 
         <p>Shield effectiveness formula: Effectiveness = (Shield Amount / Total Effective Health) × 100. This calculates what percentage of your effective health is shield. Higher effectiveness means more protection and less health at risk. Full shield (100) with 100 health = 50% effectiveness.</p>
@@ -616,7 +635,7 @@ export default function FortniteShieldPotencyCalculator() {
         <hr />
 
         <h2 id="absorption" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Damage Absorption and Protection</h2>
-        
+
         <p>Shield absorbs damage before health, providing protection that preserves your base health. Understanding damage absorption helps players evaluate shield value and plan survival strategies.</p>
 
         <p>Damage absorption mechanics: Damage is absorbed by shield first, then health. If incoming damage ≤ shield amount, all damage is absorbed by shield. If incoming damage &gt; shield amount, shield is depleted and remaining damage goes to health. This design protects health by using shield as a buffer.</p>
@@ -633,7 +652,7 @@ export default function FortniteShieldPotencyCalculator() {
         <hr />
 
         <h2 id="health" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Effective Health and Survival</h2>
-        
+
         <p>Effective health combines base health and shield amount, representing total damage capacity before elimination. Understanding effective health helps players evaluate survival capacity and plan strategies.</p>
 
         <p>Effective health formula: Effective Health = Base Health + Shield Amount. This represents your total damage capacity. For example, 100 health + 100 shield = 200 effective health, meaning you can survive 200 damage before elimination. Understanding effective health helps players evaluate survival capacity.</p>
@@ -650,7 +669,7 @@ export default function FortniteShieldPotencyCalculator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Shield Optimization Strategies</h2>
-        
+
         <p>Shield optimization strategies help players maximize shield protection and survival capacity. Multiple approaches can optimize shield management and usage.</p>
 
         <p>Shield collection prioritizes obtaining shield items to reach maximum shield (100). Prioritize large shield potions and Chug Jugs when available. Use small/medium shields to reach 50 shield early game. Always aim for maximum shield when possible for optimal protection.</p>
@@ -666,7 +685,7 @@ export default function FortniteShieldPotencyCalculator() {
         <hr />
 
         <h2 id="management" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Shield Management and Usage</h2>
-        
+
         <p>Effective shield management helps players maintain protection and maximize survival capacity. Understanding management strategies helps players optimize shield usage and combat performance.</p>
 
         <p>Early game management focuses on quick shield collection to reach at least 50 shield. Use small/medium shields when available. Prioritize shield collection alongside loot collection. Don't spend too much time on shield collection, but ensure you have some protection.</p>

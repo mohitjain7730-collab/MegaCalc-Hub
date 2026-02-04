@@ -143,6 +143,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Roblox Inventory Value Estimation: Understanding Your Collection\'s Worth',
+      description: 'A comprehensive guide to estimating Roblox inventory value, including category breakdowns, depreciation factors, and value optimization strategies.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Roblox Inventory Value Estimator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -209,17 +228,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Review inventory breakdown: total value ${netInventoryValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux. Largest category: ${valueByCategory.length > 0 ? valueByCategory.reduce((max, cat) => cat.percentage > max.percentage ? cat : max).category : 'N/A'}. Evaluate diversification and growth opportunities.` 
+    {
+      label: 'This Week',
+      detail: `Review inventory breakdown: total value ${netInventoryValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux. Largest category: ${valueByCategory.length > 0 ? valueByCategory.reduce((max, cat) => cat.percentage > max.percentage ? cat : max).category : 'N/A'}. Evaluate diversification and growth opportunities.`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Track inventory value changes. Compare current value to previous estimates. Monitor market trends for your item categories. Identify items that are appreciating or depreciating and adjust strategy accordingly.' 
+    {
+      label: 'This Month',
+      detail: 'Track inventory value changes. Compare current value to previous estimates. Monitor market trends for your item categories. Identify items that are appreciating or depreciating and adjust strategy accordingly.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously monitor and optimize inventory: update value estimates regularly, track market trends, invest in appreciating items, diversify across categories, and use calculators to evaluate potential investments and track overall performance.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously monitor and optimize inventory: update value estimates regularly, track market trends, invest in appreciating items, diversify across categories, and use calculators to evaluate potential investments and track overall performance.'
     },
   ];
 
@@ -552,7 +571,7 @@ export default function RobloxInventoryValueEstimator() {
         <hr />
 
         <h2 id="categories" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Inventory Categories and Components</h2>
-        
+
         <p>Roblox inventory consists of multiple categories, each with different characteristics and valuation methods. Understanding each category helps create accurate estimates and identify optimization opportunities.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Pets</h3>
@@ -573,7 +592,7 @@ export default function RobloxInventoryValueEstimator() {
         <hr />
 
         <h2 id="valuation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Valuation Methods and Techniques</h2>
-        
+
         <p>Accurate inventory valuation requires researching current market prices, using reliable sources, and accounting for market conditions. Multiple methods help create accurate estimates.</p>
 
         <p>Market price research involves checking trading platforms, marketplaces, and community resources for current prices. Use multiple sources and average prices for better accuracy. Check recent transactions to understand actual market values. Avoid using outdated prices or single sources.</p>
@@ -590,7 +609,7 @@ export default function RobloxInventoryValueEstimator() {
         <hr />
 
         <h2 id="depreciation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Depreciation and Risk Factors</h2>
-        
+
         <p>Depreciation factors account for potential value loss due to market volatility, price fluctuations, and risk. Understanding depreciation helps create realistic inventory valuations that account for market uncertainty.</p>
 
         <p>Depreciation factors range from 0% (no expected value loss) to 100% (complete value loss). Typical factors are 5-15% for stable items, 15-25% for moderate volatility, and 25-40% for high volatility. Use factors that reflect your items' volatility and market risk.</p>
@@ -604,7 +623,7 @@ export default function RobloxInventoryValueEstimator() {
         <hr />
 
         <h2 id="breakdown" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Category Breakdown and Analysis</h2>
-        
+
         <p>Category breakdown shows value distribution across inventory categories. Understanding breakdown helps identify diversification opportunities, concentration risks, and optimization strategies.</p>
 
         <p>Category percentages show what portion of total inventory each category represents. Categories with 50%+ of total value indicate concentration, which may increase risk. Diversified inventories spread value across multiple categories, reducing risk from category-specific declines.</p>
@@ -618,7 +637,7 @@ export default function RobloxInventoryValueEstimator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Inventory Optimization Strategies</h2>
-        
+
         <p>Inventory optimization involves balancing value, growth potential, risk, and diversification. Strategies help maximize inventory value while managing risk.</p>
 
         <p>Diversification reduces risk by spreading value across multiple categories and item types. Don't concentrate all value in one category or item type. Diversify across pets, limited items, collectibles, and other categories. Balance high-growth items with stable items.</p>
@@ -634,7 +653,7 @@ export default function RobloxInventoryValueEstimator() {
         <hr />
 
         <h2 id="tracking" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Value Tracking and Management</h2>
-        
+
         <p>Regular value tracking helps monitor inventory performance, identify trends, and optimize strategies. Track values over time to understand changes and make informed decisions.</p>
 
         <p>Tracking frequency depends on inventory size and market activity. Large inventories or active markets may require monthly tracking. Smaller inventories or stable markets may require quarterly tracking. Adjust frequency based on your needs.</p>

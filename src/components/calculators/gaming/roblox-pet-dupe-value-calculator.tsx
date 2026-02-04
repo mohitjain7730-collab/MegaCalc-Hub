@@ -133,6 +133,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Roblox Pet Duplication: Understanding Value Impact and Market Effects',
+      description: 'A comprehensive guide to understanding how pet duplication affects Roblox pet values, including dupe penalty calculations, value retention, and market impact analysis.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Roblox Pet Dupe Value Calculator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -208,17 +227,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Evaluate dupe impact: original value ${originalValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, current dupe value ${dupeValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, ${valueRetention.toFixed(1)}% retention. Monitor Roblox updates for duplicate removals or patches.` 
+    {
+      label: 'This Week',
+      detail: `Evaluate dupe impact: original value ${originalValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, current dupe value ${dupeValue.toLocaleString(undefined, { maximumFractionDigits: 0 })} Robux, ${valueRetention.toFixed(1)}% retention. Monitor Roblox updates for duplicate removals or patches.`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Track market conditions and price trends. Monitor dupe count changes - if duplicates are removed, value may recover. If more duplicates appear, value may decline further. Research Roblox response history for similar situations.' 
+    {
+      label: 'This Month',
+      detail: 'Track market conditions and price trends. Monitor dupe count changes - if duplicates are removed, value may recover. If more duplicates appear, value may decline further. Research Roblox response history for similar situations.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Stay informed about Roblox updates, exploit patches, and market trends. Duplicated pets are high-risk investments - only invest what you can afford to lose. Use this calculator to evaluate dupe impact before making trading decisions.' 
+    {
+      label: 'Ongoing',
+      detail: 'Stay informed about Roblox updates, exploit patches, and market trends. Duplicated pets are high-risk investments - only invest what you can afford to lose. Use this calculator to evaluate dupe impact before making trading decisions.'
     },
   ];
 
@@ -526,7 +545,7 @@ export default function RobloxPetDupeValueCalculator() {
         <hr />
 
         <h2 id="duplication" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Pet Duplication</h2>
-        
+
         <p>Pet duplication can occur through various methods: exploits that allow item duplication, glitches in trading systems, security vulnerabilities, or unintended game mechanics. Regardless of the method, the result is the same: multiple copies of pets that should be unique or rare.</p>
 
         <p>Roblox actively works to prevent and address duplications. When duplications are discovered, Roblox typically patches the exploit, removes duplicated items, and may take action against accounts involved in duplication. However, some duplicates may remain in circulation, affecting market values.</p>
@@ -543,7 +562,7 @@ export default function RobloxPetDupeValueCalculator() {
         <hr />
 
         <h2 id="impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Value Impact and Depreciation</h2>
-        
+
         <p>Duplication typically causes value depreciation through increased supply and reduced rarity perception. The extent of depreciation depends on dupe count, rarity tier, market impact, and market response. Value retention measures how much original value remains after duplication.</p>
 
         <p>Value retention above 70% indicates minimal impact - the pet maintains most of its value. Retention of 50-70% indicates moderate impact - the pet has lost some value but remains valuable. Retention of 30-50% indicates poor retention - significant value loss. Retention below 30% indicates severe depreciation - the pet has lost most of its value.</p>
@@ -560,7 +579,7 @@ export default function RobloxPetDupeValueCalculator() {
         <hr />
 
         <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dupe Value Calculation</h2>
-        
+
         <p>Dupe value calculation accounts for original value, dupe count, market impact, and rarity tier. The formula uses a diminishing returns model where the first few duplicates have the most impact, while additional duplicates have progressively less impact.</p>
 
         <p>The base rarity factor provides protection against value loss. Rarer pets have higher factors (Exclusive: 1000, Mythical: 500, Legendary: 200), meaning they're less affected by small dupe counts. Common pets have lower factors (Common: 10), meaning they're more affected by duplications.</p>
@@ -579,7 +598,7 @@ export default function RobloxPetDupeValueCalculator() {
         <hr />
 
         <h2 id="market" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Market Impact and Stability</h2>
-        
+
         <p>Market impact percentage reflects how much duplication has affected actual market prices. This is determined by researching current prices and comparing them to pre-duplication prices. Market impact can range from 0% (no price change) to 100% (complete value loss).</p>
 
         <p>Market stability represents how secure the pet's value is after duplication. Higher stability (70%+) means more secure value and lower volatility. Lower stability (below 50%) means high volatility and risk. Stability is calculated as (1 - Dupe Penalty) × 100.</p>
@@ -594,7 +613,7 @@ export default function RobloxPetDupeValueCalculator() {
         <hr />
 
         <h2 id="recovery" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Value Recovery and Risk</h2>
-        
+
         <p>Value recovery depends on Roblox actions, market conditions, and player confidence. If Roblox removes most duplicates and patches exploits, value may partially recover. However, full recovery is rare, especially for pets that experienced severe depreciation.</p>
 
         <p>Recovery potential varies by pet type and dupe severity. Pets with minimal depreciation (retention above 70%) have good recovery potential. Pets with moderate depreciation (retention 50-70%) have limited recovery potential. Pets with severe depreciation (retention below 50%) have poor recovery potential.</p>
@@ -609,7 +628,7 @@ export default function RobloxPetDupeValueCalculator() {
         <hr />
 
         <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trading Strategies for Duplicated Pets</h2>
-        
+
         <p>Trading duplicated pets requires careful risk management and strategy. Evaluate dupe impact before trading, monitor Roblox updates for duplicate removals, assess recovery potential based on market conditions, and only invest what you can afford to lose.</p>
 
         <p>Avoid buying duplicated pets unless you understand the risks. Prices may be lower, but values can continue declining if more duplicates appear or if Roblox takes action. Consider current dupe count, likelihood of additional duplications, Roblox response history, and your risk tolerance.</p>

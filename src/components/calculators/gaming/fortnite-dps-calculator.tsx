@@ -136,6 +136,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Fortnite DPS: Understanding Weapon Damage Per Second',
+      description: 'A comprehensive guide to Fortnite DPS calculations, including weapon damage output analysis, fire rate mechanics, headshot multipliers, and strategies for maximizing combat effectiveness.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to use the Fortnite DPS Calculator',
+      step: steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: step,
+      })),
+    },
   ],
 };
 
@@ -199,17 +218,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   recommendations.push(`Weapon Assessment: ${status.replace('-', ' ').replace('dps', 'DPS').toUpperCase()}. ${baseDPS >= 200 ? 'This weapon excels in direct combat and aggressive playstyles. Use it as your primary weapon for engagements.' : baseDPS >= 150 ? 'This weapon is strong and versatile. Use it as a primary or secondary weapon depending on situation.' : baseDPS >= 100 ? 'This weapon is functional but may be outclassed. Consider it as a backup or for specific situations.' : 'This weapon has lower damage output. Use it for specific situations or consider alternatives.'}`);
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Master weapon handling: base DPS ${baseDPS.toFixed(1)}, headshot DPS ${headshotDPS.toFixed(1)}. ${baseDPS >= 150 ? 'Focus on aggressive engagements and direct combat.' : 'Practice accuracy and positioning to maximize effectiveness.'}` 
+    {
+      label: 'This Week',
+      detail: `Master weapon handling: base DPS ${baseDPS.toFixed(1)}, headshot DPS ${headshotDPS.toFixed(1)}. ${baseDPS >= 150 ? 'Focus on aggressive engagements and direct combat.' : 'Practice accuracy and positioning to maximize effectiveness.'}`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Compare DPS across different weapons and rarities. Test weapons in various combat scenarios. Identify which weapons work best for your playstyle and adjust loadout accordingly.' 
+    {
+      label: 'This Month',
+      detail: 'Compare DPS across different weapons and rarities. Test weapons in various combat scenarios. Identify which weapons work best for your playstyle and adjust loadout accordingly.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize loadout: use DPS calculations to compare weapons, balance DPS with accuracy and range, adapt to meta changes, and practice with high-DPS weapons to maximize effectiveness in combat.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize loadout: use DPS calculations to compare weapons, balance DPS with accuracy and range, adapt to meta changes, and practice with high-DPS weapons to maximize effectiveness in combat.'
     },
   ];
 
@@ -539,7 +558,7 @@ export default function FortniteDPSCalculator() {
         <hr />
 
         <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DPS Calculation Methods</h2>
-        
+
         <p>DPS calculations use simple multiplication: Base DPS = Base Damage × Fire Rate. This fundamental formula provides the foundation for all DPS analysis. Understanding this calculation helps players compare weapons and understand damage output.</p>
 
         <p>Base damage is the damage dealt per shot when hitting the body (not headshots). This value varies by weapon type, rarity, and specific weapon model. Higher rarity weapons typically have higher base damage. Understanding base damage helps players evaluate weapon effectiveness.</p>
@@ -554,7 +573,7 @@ export default function FortniteDPSCalculator() {
         <hr />
 
         <h2 id="factors" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Factors Affecting DPS</h2>
-        
+
         <p>Multiple factors affect DPS and weapon effectiveness. Understanding these factors helps players make better weapon choices and optimize performance.</p>
 
         <p>Base damage directly affects DPS. Higher base damage means higher DPS, assuming fire rate remains constant. Base damage varies by weapon rarity, with legendary weapons typically having the highest damage. Players should prioritize higher damage weapons when possible.</p>
@@ -573,7 +592,7 @@ export default function FortniteDPSCalculator() {
         <hr />
 
         <h2 id="weapon-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Weapon Types and DPS Characteristics</h2>
-        
+
         <p>Different weapon types have distinct DPS characteristics based on their design and intended use. Understanding these characteristics helps players choose appropriate weapons for different situations.</p>
 
         <p>Assault rifles typically have moderate to high DPS (120-180) with balanced damage and fire rate. They're versatile weapons suitable for most combat ranges. ARs provide consistent damage output and are reliable primary weapons. Examples include the SCAR and AK-47 variants.</p>
@@ -592,7 +611,7 @@ export default function FortniteDPSCalculator() {
         <hr />
 
         <h2 id="headshots" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Headshot Multipliers and Impact</h2>
-        
+
         <p>Headshot multipliers significantly increase damage output, effectively doubling DPS when all shots hit the head. Most Fortnite weapons have a 2.0x headshot multiplier, meaning headshots deal double damage compared to body shots.</p>
 
         <p>Headshot DPS is calculated as: Headshot DPS = Base Damage × Headshot Multiplier × Fire Rate. For a weapon with 30 base damage, 2.0x multiplier, and 5 fire rate, headshot DPS is 300 (30 × 2.0 × 5 = 300), compared to 150 base DPS.</p>
@@ -609,7 +628,7 @@ export default function FortniteDPSCalculator() {
         <hr />
 
         <h2 id="reloads" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Reload Time and Effective DPS</h2>
-        
+
         <p>Reload time affects effective DPS by creating downtime between magazines. Effective DPS accounts for reload time, providing a more realistic sustained damage output over extended periods.</p>
 
         <p>Effective DPS is calculated as: Effective DPS = Damage Per Magazine / (Time to Empty Magazine + Reload Time). This formula accounts for both firing time and reload downtime, giving a more accurate representation of sustained damage.</p>
@@ -626,7 +645,7 @@ export default function FortniteDPSCalculator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DPS Optimization Strategies</h2>
-        
+
         <p>DPS optimization involves balancing multiple factors to maximize damage output while maintaining effectiveness. Several strategies help players optimize DPS and improve combat performance.</p>
 
         <p>Weapon selection is crucial for DPS optimization. Choose weapons with high base DPS for your preferred combat range. For close-range, prioritize SMGs or shotguns with high DPS. For medium-range, use assault rifles with moderate to high DPS. Consider both base DPS and effective DPS when selecting weapons.</p>
