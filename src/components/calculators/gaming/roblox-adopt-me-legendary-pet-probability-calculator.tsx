@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Script from 'next/script';
+
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -128,38 +128,7 @@ const steps = [
     'Review the "99% Confidence" number to see how many eggs you really need to be safe.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-legendary-pet-probability-calculator';
 
-const schemaMarkup = {
-    '@context': 'https://schema.org',
-    '@graph': [
-        {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
-                { '@type': 'ListItem', position: 3, name: 'Adopt Me Legendary Pet Probability Calculator', item: baseUrl },
-            ],
-        },
-        {
-            '@type': 'SoftwareApplication',
-            name: 'Roblox Adopt Me Legendary Pet Probability Calculator',
-            applicationCategory: 'Calculator',
-            operatingSystem: 'Web Browser',
-            description: 'Calculate your chances of hatching a Legendary pet in Adopt Me. Compare Royal, Cracked, and Gumball eggs.',
-            url: baseUrl,
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        },
-        {
-            '@type': 'FAQPage',
-            mainEntity: faqs.map(f => ({
-                '@type': 'Question',
-                name: f.question,
-                acceptedAnswer: { '@type': 'Answer', text: f.answer },
-            })),
-        },
-    ],
-};
 
 export default function RobloxAdoptMeLegendaryProb() {
     const [result, setResult] = useState<ResultPayload | null>(null);
@@ -179,7 +148,7 @@ export default function RobloxAdoptMeLegendaryProb() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500">
-            <Script id="adopt-me-prob-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+
 
             <Card className="border-l-4 border-l-purple-500 shadow-xl overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Script from 'next/script';
+
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -144,38 +144,7 @@ const steps = [
     'Get a Safety Verdict. If it says RED, block the user.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-trust-trade-safety-calculator';
 
-const schemaMarkup = {
-    '@context': 'https://schema.org',
-    '@graph': [
-        {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
-                { '@type': 'ListItem', position: 3, name: 'Adopt Me Trust Trade Safety Calculator', item: baseUrl },
-            ],
-        },
-        {
-            '@type': 'SoftwareApplication',
-            name: 'Roblox Adopt Me Trust Trade Safety Calculator',
-            applicationCategory: 'Calculator',
-            operatingSystem: 'Web Browser',
-            description: 'Analyze potential trade scams in Adopt Me. Detect Trust Trades, Fail Trades, and Fake YouTubers.',
-            url: baseUrl,
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        },
-        {
-            '@type': 'FAQPage',
-            mainEntity: faqs.map(f => ({
-                '@type': 'Question',
-                name: f.question,
-                acceptedAnswer: { '@type': 'Answer', text: f.answer },
-            })),
-        },
-    ],
-};
 
 export default function RobloxAdoptMeTrustTrade() {
     const [result, setResult] = useState<ResultPayload | null>(null);
@@ -196,7 +165,7 @@ export default function RobloxAdoptMeTrustTrade() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500">
-            <Script id="adopt-me-trust-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+
 
             <Card className="border-l-4 border-l-red-600 shadow-xl overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>

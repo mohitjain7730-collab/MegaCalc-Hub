@@ -288,6 +288,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Adopt Me Trade Win/Loss Calculator (W/F/L) - Avoid Scams',
     metaDescription: 'Calculate if your Adopt Me trade is a Win, Fair, or Loss. Analyze value differences and demand. Free WFL calculator for Adopt Me traders.',
+    faqs: [
+      {
+        question: "What is 'W/F/L' in Adopt Me trading?",
+        answer: "W/F/L stands for Win, Fair, Loss. It is the community standard for evaluating trades. A 'Win' means you gained value, 'Fair' means the values were equal, and 'Loss' means you gave away more than you received.",
+      },
+      {
+        question: "What are 'Happy Values'?",
+        answer: "'Happy Values' refers to a trade where you intentionally take a 'Loss' in mathematical value because you really want the specific pet (it makes you happy). For example, overpaying for a Cow because it's your Dream Pet (DP).",
+      },
+      {
+        question: "How do I know the numeric value of my pets?",
+        answer: "Since there are no official values, players use community value lists like Elvebredd, GG, or StarPets. Input the total numbers from those sites into this calculator to handle the math and demand percentages.",
+      },
+      {
+        question: "What does 'HTT' mean?",
+        answer: "HTT stands for 'Hard To Trade'. These are pets with low demand (like the Griffin or Metal Ox) that nobody wants. Even if their 'value' is high on paper, you should count them as worth 10-20% less because they are difficult to get rid of.",
+      },
+      {
+        question: "What is the '9-Slot' trading rule?",
+        answer: "You can only trade 9 items at once (or 18 with the license/updated trade menu). Be very careful with 'Trust Trades' or 'Add Afters' where someone asks you to give more than 18 items. These are almost always scams.",
+      },
+      {
+        question: "Why is 'Demand' important in this calculator?",
+        answer: "A High Tier pet like a Bat Dragon has high demand—people will overpay for it. A Low Demand pet like a Golden Rat is hard to swap. This calculator lets you adjust for 'Demand' to reveal the *real* trade outcome, not just the paper value.",
+      },
+      {
+        question: " What is a 'Shark' in Adopt Me?",
+        answer: "A 'Shark' is a predator trader who looks for inexperienced players (usually children) who don't know values. They try to convince you to trade a high-value pet (like a Shadow Dragon) for a low-value 'cool looking' pet (like a Minion Chick). This calculator helps you spot Sharks.",
+      },
+    ],
   },
   {
     id: 10033,
@@ -297,6 +327,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Adopt Me Bucks to Robux Converter - Real Exchange Rates',
     metaDescription: 'Convert Roblox Adopt Me Bucks to Robux value. Compare Shop Rates vs Ride Potion trading values. Free Adopt Me currency calculator.',
+    faqs: [
+      {
+        question: "Can I legally convert Adopt Me Bucks to Robux?",
+        answer: "No. There is no official feature to convert Adopt Me Bucks back into Robux. Once you spend Robux on Bucks, that money is locked in the game. The 'Bucks to Robux' calculation is theoretical for valuing your inventory.",
+      },
+      {
+        question: "Why is the 'Shop Rate' considered a bad deal?",
+        answer: "In the official shop, you pay a lot of Robux for a small amount of Bucks. Experienced players prefer buying Ride Potions (150 Robux) and trading them. A Ride Potion can often be traded for pets or items worth far more than the Bucks you would get buying cash directly.",
+      },
+      {
+        question: "What are Silk Bags?",
+        answer: "Silk Bags are an item that holds 1,000 Bucks. They were introduced to make trading cash easier. Before Silk Bags, players had to use Cash Registers or Lemonade Stands to transfer money, which was slow and risky.",
+      },
+      {
+        question: "Is buying Adopt Me Bucks on eBay safe?",
+        answer: "No. Buying in-game currency with real money (USD/EUR) violates the Roblox Terms of Service (TOS) and Adopt Me's rules. If caught, your account will be permanently banned. Never do it.",
+      },
+      {
+        question: "How much is 10,000 Bucks worth in Robux?",
+        answer: "At the official shop rate, 10,000 Bucks costs about 1,400 Robux ($17.50 USD). However, in trading value, it is worth significantly less because money is easy to grind for free.",
+      },
+      {
+        question: "What is the fastest way to earn Bucks without Robux?",
+        answer: "The fastest way is to play as a Baby and equip a pet. You get paid for your needs AND the pet's needs. This doubles your income to roughly $150-$200 Bucks per in-game day.",
+      },
+      {
+        question: "Can I give Bucks to my friend?",
+        answer: "Yes. You can use a Cash Register (limit $150 per transaction) or a Lemonade/Hot Dog Stand (limit $50 per purchase) to transfer funds. Or, trade Silk Bags (holds $1,000) for a faster, scam-proof transfer.",
+      },
+    ],
   },
   {
     id: 10034,
@@ -306,6 +366,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Adopt Me Legendary Pet Probability Calculator - Hatch Odds',
     metaDescription: 'Calculate your chances of hatching a Legendary pet in Adopt Me. Compare Royal, Cracked, and Gumball eggs. Free probability calculator.',
+    faqs: [
+      {
+        question: "What are the odds of hatching a Legendary from a Royal Egg?",
+        answer: "A Royal Egg has an 8% chance of hatching a Legendary. This is the highest odds of any permanent egg in the game, but it costs significantly more bucks (1,450) than others.",
+      },
+      {
+        question: "Is the Cracked Egg worth it?",
+        answer: "Mathematically, the Cracked Egg costs 350 Bucks and has a 1.5% Legendary chance. The Royal Egg costs 1450 Bucks (~4x more) for 8% chance (~5.3x odds). Therefore, Royal Eggs give you better 'Legendary per Buck' value, but Cracked Eggs are better for bulk-hatching Common/Uncommon pets for Neons.",
+      },
+      {
+        question: "Does the 'Gumball Machine' egg change odds?",
+        answer: "Most limited-time Gumball Machine eggs (like Urban, Desert, Garden) follow a standard probability distribution: roughly 5% Legendary, 10-15% Ultra-Rare. However, because the pets are limited, they often hold higher trading value regardless of the hatch odds.",
+      },
+      {
+        question: "Does the 'Lucky Clover' or '2x Luck' exist in Adopt Me?",
+        answer: "No. Adopt Me does not officially have 'Luck' stats or items that increase hatch chances. Any YouTuber claiming a 'glitch' to increase legendary odds is likely clickbaiting. The odds are fixed by the server code.",
+      },
+      {
+        question: "How many eggs do I need to guarantee a Legendary?",
+        answer: "There is no 'Guarantee' (pity system) in Adopt Me. However, statistically, if you hatch 58 Royal Eggs, you have a 99% probability of getting at least one Legendary. But it is possible, though unlucky, to hatch 100 and get zero.",
+      },
+      {
+        question: "What is the 'Pier Method' or 'Hatch Trick'?",
+        answer: "Players often have rituals (like resetting before hatching, or hatching at the pier). These are superstitions. They do not affect the RNG (Random Number Generator) of the game server.",
+      },
+      {
+        question: "Are 'Retired Eggs' better?",
+        answer: "Retired Eggs (available in the VIP room) have the exact same 3% Legendary odds as standard Pet Eggs, but they contain a different pool of pets (Red Dragon, Unicorn, etc.) that are otherwise unobtainable from the shop.",
+      },
+    ],
   },
   {
     id: 10035,
@@ -315,6 +405,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Adopt Me Egg Hatch Value Calculator - Hatch vs Trade',
     metaDescription: 'Determine if you should hatch or trade your Adopt Me eggs. Compare Expected Value vs Trading Value. Free value analysis calculator.',
+    faqs: [
+      {
+        question: "Why are Unhatched Eggs worth more than Hatched pets?",
+        answer: "This is due to the 'Gambler's Premium'. People will pay extra for the *chance* of getting a Legendary, even if the statistical average result is a low-value Common. Once you hatch it and get a Common, that 'potential' value disappears instantly.",
+      },
+      {
+        question: "Are old eggs like Aussie Eggs worth hatching?",
+        answer: "Almost never. An Aussie Egg currently trades for decent Legendaries. If you hatch it, you have a 30% chance of getting a Bandicoot (worth almost nothing). You destroy 90% of the value by hatching old eggs unless you get extremely lucky.",
+      },
+      {
+        question: "What is the best egg to buy for profit?",
+        answer: "The 'Gumball Machine' egg (the limited time one, currently Desert/Urban etc.) is usually the best. Buy them, hold them for 6 months until they leave the game, and their value will rise. Royal Eggs never leave, so they never rise in value.",
+      },
+      {
+        question: "How is 'Hatched Value' calculated?",
+        answer: "We take the probability of every pet in the egg (e.g. 5% Leg, 10% Ultra, etc.) and multiply it by the trading value of those pets. We sum it up to get the 'Expected Value' (EV) of one hatch.",
+      },
+      {
+        question: "When should I hatch an egg?",
+        answer: "Hatch eggs if you need 'fodder' pets to make Neons (Common/Uncommon) or if the egg is brand new (first hour of update) and hype is massive. Otherwise, trade them sealed.",
+      },
+      {
+        question: "Do Named Eggs (e.g. 'Named Jungle Egg') have more value?",
+        answer: "Yes, significantly. A 'Named' egg is an untouched egg from 2019 that still has a specific default name/ID. Collectors pay huge overpays for these. Do not hatch them.",
+      },
+      {
+        question: "Can I get a Diamond Pet from a Royal Egg?",
+        answer: "No. Diamond pets only come from the Diamond Egg (Star Rewards). Royal Eggs only contain the standard permanent Legendary pool (Dragon, Unicorn, Dragonfly, etc.).",
+      },
+    ],
   },
   {
     id: 10036,
@@ -324,6 +444,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Adopt Me Trust Trade Safety Calculator - Scam Detector',
     metaDescription: 'Analyze potential trade scams in Adopt Me. Detect Trust Trades, Fail Trades, and Fake YouTubers. Free safety tool.',
+    faqs: [
+      {
+        question: "What is a Trust Trade?",
+        answer: "A Trust Trade is a scam where one player asks another to give them an item for free, promising to give it back (or give something better) afterwards to 'prove trust'. 99.9% of the time, they will simply leave the game with your item.",
+      },
+      {
+        question: "Is 'Fail Trading' real?",
+        answer: "No. Scammers claim that if you put in a pet and food, and accept, the trade will 'fail' and duplicate the item. This is a lie. The trade will succeed, and they will take your pet. Do not test it.",
+      },
+      {
+        question: "Can I get banned for Cross-Trading?",
+        answer: "Yes. Cross-Trading (trading Adopt Me pets for Robux, Fortnite V-Bucks, or real money) is a direct violation of Roblox Terms of Service. If you are caught, your account will be banned and your inventory wiped.",
+      },
+      {
+        question: "How do I spot a fake YouTuber?",
+        answer: "Fake YouTubers have names like 'DreamCraft_Official123' or 'NotLeahAshe_Real'. They will ask you to trust trade for a video thumbnail. Real YouTubers never ask fans for free items for videos.",
+      },
+      {
+        question: "What is the 'Add After' scam?",
+        answer: "When a trade is too big (more than 18 items), scammers say 'Give me the good pets first, and I'll add the rest in the second trade'. They never do the second trade. Always use a middleman service from a trusted site if absolutely necessary, but generally, avoid '9+' trades.",
+      },
+      {
+        question: "Can Adopt Me Support get my pets back?",
+        answer: "Adopt Me Support generally does NOT return pets lost to scams like Trust Trades, because you willingly clicked 'Accept'. They only restore pets if verified hacking/account theft occurred. You are responsible for your own trades.",
+      },
+      {
+        question: "Is the 'Pick a Door' game safe?",
+        answer: "Usually no. Scammers build a house with 'Door 1' and 'Door 2'. You pay a pet to enter. One door has a prize, one has nothing. Often, both doors have nothing, or they kick you after you pay.",
+      },
+    ],
   },
   {
     id: 10037,
@@ -333,6 +483,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Adopt Me Collection Value Estimator - Net Worth Calculator',
     metaDescription: 'Estimate the total value of your Adopt Me pet collection. Track your inventory growth and wealth tier. Free wealth calculator.',
+    faqs: [
+      {
+        question: "How accurate is this estimated value?",
+        answer: "This calculator provides a 'Macro' view of your inventory health using standard multipliers (e.g., Neon = 5x Normal). It does not account for specific demand of specific pets (e.g., a Cow is worth more than a Dragon). Use it for tracking overall growth, not for specific trade offers.",
+      },
+      {
+        question: "What is an 'Inventory Dump'?",
+        answer: "An Inventory Dump is when you trade 9+ or 18+ random low-tier pets for one good High Tier pet. This is generally a good strategy to 'consolidate' your wealth, as high-tier pets are easier to trade.",
+      },
+      {
+        question: "Why are Neons worth more than 4 pets?",
+        answer: "A Neon pet requires 4 full-grown pets. Growing a Legendary from Newborn to Full Grown takes ~6-8 hours. Creating a Neon takes ~25-30 hours of gameplay. When you trade a Neon, you are being paid for that labor.",
+      },
+      {
+        question: "What defines a 'Rich' player in Adopt Me?",
+        answer: "Generally, owning a high-tier Mega Neon (like a Mega Crow, Giraffe, or Shadow Dragon) puts you in the top 1% of players. Owning a single Bat Dragon or Shadow Dragon makes you 'Rich' by normal server standards.",
+      },
+      {
+        question: "Should I trade my inventory for one big pet?",
+        answer: "Yes. In Adopt Me economics, 'Quality over Quantity' rules. One Shadow Dragon is safer and easier to trade than 500 Metal Oxen. Always try to upgrade multiple small pets into one larger pet.",
+      },
+      {
+        question: "How do I calculate value for Toys and Vehicles?",
+        answer: "Toys and Vehicles are much harder to value. Only a few specific items (Mono Moped, Cloud Car, Tombstone Ghostify, Candy Cannon) have high stable value. Most random toys are considered 'adds' with negligible value.",
+      },
+      {
+        question: "Does this calculator include Star Rewards?",
+        answer: "Yes, you can count Diamond or Golden pets under the 'Legendary' section. However, be aware that Star Reward pets lose value over time as more players unlock them.",
+      },
+    ],
   },
   {
     id: 10038,
