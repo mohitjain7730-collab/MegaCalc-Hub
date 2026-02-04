@@ -522,6 +522,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Pet Simulator X Diamond Calculator - AFK Farming Guide',
     metaDescription: 'Calculate your diamond farming rate in Pet Simulator X. Optimize AFK grinding with Diamond Mine strategies. Free gem calculator.',
+    faqs: [
+      {
+        question: "What is the fastest way to get Diamonds in Pet Sim X?",
+        answer: "The Diamond Mine (Mystic Mine) is currently the best AFK spot. You need to release a Huge Pet to enter the deeper levels, but the yield is significantly higher than Town or Tech World. Combine this with 'Diamond V' enchants on all pets.",
+      },
+      {
+        question: "Does the 'Diamonds V' enchant stack?",
+        answer: "Yes. If you have a team of 8 pets and all of them have Diamonds V (which gives +50% or +100% depending on update), it stacks additively. A full team of Diamond enchant pets is essential for AFK farming.",
+      },
+      {
+        question: "How does the Bank Interest work?",
+        answer: "The Bank pays interest on your deposited diamonds every 24 hours. Tier 1 banks give poor interest, but a maxed Tier 8 bank gives significant daily returns. However, putting diamonds in the bank means you can't spend them instantly.",
+      },
+      {
+        question: "Is the VIP Gamepass worth it for Diamonds?",
+        answer: "VIP gives you access to the VIP Rewards Chest (moderately useful for starters) and a 10% XP/Diamond boost. For endgame players earning billions, that 10% adds up, but for new players, the Trading Booth access (Pro Plaza) is usually more valuable.",
+      },
+      {
+        question: "What are 'Lootbags' and do they count?",
+        answer: "Lootbags drop when you break chests/creates. They contain diamonds and coins. Mastery Perks (Lootbag Mastery) can significantly increase the diamond output of these bags. This calculator estimates raw chest yield, but decent Lootbag Mastery can 2x your income.",
+      },
+      {
+        question: "Does Server Triple Damage help with Diamonds?",
+        answer: "Indirectly, yes. Higher damage means you break chests faster. Breaking 2x chests per minute equals 2x diamonds per minute. So Damage = Diamonds.",
+      },
+      {
+        question: "What is the 'Diamond Cap'?",
+        answer: "There is a soft cap on how many diamonds you can hold (usually in the trillions). Most trading happens with 'Huge Pets' or 'Titanic Pets' as currency once you reach the diamond cap.",
+      },
+    ],
   },
   {
     id: 10039,
@@ -531,6 +561,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Pet Simulator X Pet Power Calculator - Team DPS',
     metaDescription: 'Calculate your total team damage in Pet Simulator X. Compare Huge and Dark Matter power levels. Free damage calculator.',
+    faqs: [
+      {
+        question: "How does 'Best Friend' enchant work?",
+        answer: "The 'Best Friend' enchant/trait (found on Huge/Titanic pets) means the pet's power is always greater than your STRONGEST equipped pet. This means if you hatch a new strongest pet, ALL your Huge pets instantly become stronger too.",
+      },
+      {
+        question: "Is Strength V or Super Teamwork better?",
+        answer: "Super Teamwork is generally considered the best enchant in the game (God Tier). It adds +30% damage to ALL pets on your team. Strength V only adds +100% to THAT specific pet. A full team of Super Teamwork buffers creates massive multiplicative damage.",
+      },
+      {
+        question: "How strong is a Dark Matter pet?",
+        answer: "Dark Matter pets are roughly 3x stronger than their Rainbow versions. Rainbows are roughly 3x stronger than Gold versions. So Dark Matter is the pinnacle of non-Huge pets.",
+      },
+      {
+        question: "What does 'Shiny' do?",
+        answer: "Shiny is a rare modifier that can appear on any pet. Shiny pets deal roughly 40% (1.4x) to 100% (2x) more damage than their non-shiny counterparts depending on the update. A Shiny Dark Matter pet is often stronger than many low-level Huges.",
+      },
+      {
+        question: "What is a Titanic Pet compared to a Huge?",
+        answer: "A Titanic Pet is massive (rideable) and usually has the 'Titanic' trait, scaling significantly higher (often 2x or 3x) off your best pet than a standard Huge. They are the strongest entities in PSX.",
+      },
+      {
+        question: "Does 'Cartoon Coins' enchant increase damage?",
+        answer: "No. Cartoon Coins enchant only increases the currency you earn. It does not help you break the chest faster.",
+      },
+      {
+        question: "Why does my damage fluctuate?",
+        answer: "Damage numbers have a random variance (RNG) in every hit (Crit hits dealing more). Also, server lag can make effective DPS lower than theoretical power.",
+      },
+    ],
   },
   {
     id: 10040,
@@ -540,6 +600,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Pet Simulator X Rebirth Calculator - Rewards Guide',
     metaDescription: 'Calculate costs and rewards for Rebirths in Pet Simulator X. Plan your progression to Hardcore Mode/The Void. Free progression tool.',
+    faqs: [
+      {
+        question: "Does Rebirth reset my pets?",
+        answer: "No! Rebirthing in Pet Simulator X does NOT delete your pets, diamonds, or robux items. It only resets your 'Coins' (and sometimes area progress, depending on the update). Your inventory is safe.",
+      },
+      {
+        question: "Why should I do Rebirth 1?",
+        answer: "Rebirth 1 is essential because it unlocks the 'Teleport' button. Without it, you have to walk manually between every zone, which wastes hours of time. It also gives a permanent +15% damage boost.",
+      },
+      {
+        question: "What is Hardcore Mode?",
+        answer: "Hardcore Mode is unlocked after reaching 'The Void' (essentially Rebirth 3 equivalent content). It is a separate world where all enemies are 10x stronger, but the rewards (Hardcore Pets) are trillions of times stronger than normal pets.",
+      },
+      {
+        question: "Do I lose my Diamonds when I Rebirth?",
+        answer: "No. Diamonds (Gems) are never reset by Rebirths. Only specific world currencies (like Fantasy Coins or Tech Coins) might be reset depending on the specific rebirth mechanics of the update.",
+      },
+      {
+        question: "Is the +75% Damage Boost multiplicative?",
+        answer: "Yes. The permanent player damage boost stacks with your pet power. If you have 100 power and GET +75% boost, you deal 175 damage. This applies to ALL pets forever.",
+      },
+      {
+        question: "How do I get coins faster for Rebirth?",
+        answer: "Equip 'Cartoon Coins' or 'Fantasy Coins' enchants on your pets. These enchants can boost currency income by 100% or more. Also, use Triple Coin Boosts from the shop.",
+      },
+      {
+        question: "Can I undo a Rebirth?",
+        answer: "No, but there is no reason to. Rebirths are purely beneficial upgrades. You cannot downgrade.",
+      },
+    ],
   },
   {
     id: 10041,
@@ -549,6 +639,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Pet Simulator X Mastery Calculator - Level 99 Sim',
     metaDescription: 'Calculate time and XP needed to max out Mastery Skills in Pet Simulator X to Level 99. Optimize Lootbag and Enchant Mastery.',
+    faqs: [
+      {
+        question: "What is the best Mastery to max first?",
+        answer: "Lootbag Mastery is widely considered the best to max first. At Level 99, it gives a 2x multiplier to all lootbag rewards (Diamonds/Coins). This doubles your income permanently.",
+      },
+      {
+        question: "How do I farm Enchanting Mastery fast?",
+        answer: "Go to the Enchant machine. Select a weak pet you don't care about. Turn on an Auto-Clicker on the 'Enchant' button. Let it run overnight. You burn gems, but you gain massive mastery XP very quickly.",
+      },
+      {
+        question: "Does Mastery reset on Rebirth?",
+        answer: "No. Mastery levels are permanent improvements to your account. You keep them forever, even through major game updates usually.",
+      },
+      {
+        question: "What does Egg Mastery do?",
+        answer: "Egg Mastery Level 99 allows you to open Golden Eggs for the price of Normal Eggs (sometimes) and increases the speed of the hatching animation, allowing you to hatch more pets per hour.",
+      },
+      {
+        question: "Is there a max level for Mastery?",
+        answer: "Yes, currently the max level for all Masteries is Level 99. Reaching this unlocks the 'Hardcore' achievement benefits for that skill.",
+      },
+      {
+        question: "Do I need Auto-Hatch gamepass for Egg Mastery?",
+        answer: "It is highly recommended. Without Auto-Hatch, you have to click manually every few seconds. To open the 500,000+ eggs needed for Level 99, manual clicking is physically impossible/dangerous (RSI).",
+      },
+      {
+        question: "How to farm Chest Breaker Mastery?",
+        answer: "Go to a low-level area (spawn world). Equip weak pets. Break tiny chests instantly. Mastery is awarded per-break, not per-damage. So breaking 100 small chests is better than breaking 1 giant chest.",
+      },
+    ],
   },
   {
     id: 10042,
@@ -558,6 +678,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Pet Simulator X Trading Value Calculator - Fair Trade Checker',
     metaDescription: 'Check fair trade values in Pet Simulator X. Detect RAP manipulation and calculate flip profits. Avoid scams with RAP analysis.',
+    faqs: [
+      {
+        question: "How is RAP calculated?",
+        answer: "RAP (Recent Average Price) is an automatic value calculated by Roblox based on the last few sales of that specific item in the trading booth. It can be manipulated if someone buys their own pet on an alt account for a high price.",
+      },
+      {
+        question: "What is 'Demand' vs 'Value'?",
+        answer: "Value is what a spreadsheet or RAP says. Demand is how many people actually WANT the pet. A pet can have 10B Value, but if Demand is 'Low', nobody will trade for it. Always prioritize High Demand items.",
+      },
+      {
+        question: "What is a 'Duped' pet?",
+        answer: "A duped pet is a glitched copy. If you trade for one, the game's anti-cheat might delete it later, and you lose your items. Avoid trades that seem 'too good to be true'.",
+      },
+      {
+        question: "How much is the Trading Booth Tax?",
+        answer: "In Pet Simulator X, the tax is 1% if you are a VIP member, and slightly higher for non-VIPs (varies by update). Always factor in tax when flipping.",
+      },
+      {
+        question: "Is 'Cosmic Values' accurate?",
+        answer: "Cosmic Values (and similar tier lists) are generally trusted by the community for High Tier pets (Huges/Titanics). For low tier pets, rely on RAP.",
+      },
+      {
+        question: "What does 'Clean' mean?",
+        answer: "Clean means the pet is not duped. Traders often ask 'Is it clean?' before trading for high-value Titanics.",
+      },
+      {
+        question: "Why did my RAP go down?",
+        answer: "Market crashes happen. If a new update releases better pets, old pets lose value. This is called 'Deflation'.",
+      },
+    ],
   },
   {
     id: 10043,
@@ -567,6 +717,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Pet Simulator 99 Pet Value Calculator - Portfolio Tracker',
     metaDescription: 'Track your Pet Simulator 99 portfolio value. Analyze inflation trends and decide when to sell. Free PS99 inflation tool.',
+    faqs: [
+      {
+        question: "How is PS99 different from PSX economy?",
+        answer: "Pet Simulator 99 has a more deflationary economy at times due to stronger diamond sinks (Upgrades, Enchants, Machines). However, inflation still happens during update droughts when billions of gems are farmed with nothing to buy.",
+      },
+      {
+        question: "What items are 'Inflation Proof'?",
+        answer: "Items that are strictly limited in quantity (Titanics, Serial Numbered Huges, Exclusive Eggs) are inflation-proof. They will always rise in gem price as gems become less valuable.",
+      },
+      {
+        question: "Why do huge pets drop in value?",
+        answer: "When a new 'Active Huge' is added to the rotation (hatchable from the best egg), the supply of Huges increases, causing the price of low-tier cheek huges (like Rocks/Computers) to drop.",
+      },
+      {
+        question: "Does RAP update instantly?",
+        answer: "No. RAP updates every few hours based on batches of sales. In a fast-moving market (like right after an update drops), RAP is often wrong. Trust the 'Live Auction' prices more.",
+      },
+      {
+        question: "Is it better to hold Gems or Pets?",
+        answer: "In an inflationary economy (most of the time), holding Pets is better. If you hold 1 Billion gems for a month, it might only buy you 0.8 Huge Pets later. If you bought the Huge immediately, you still have 1 Huge.",
+      },
+      {
+        question: "What is 'Deflation'?",
+        answer: "Deflation is when prices drop. This happens when a new expensive update comes out (like Titanic Gifts) and everyone sells their pets to get raw gems to buy the new thing. Cash (Gems) is King during deflation.",
+      },
+      {
+        question: "What are 'Exclusives'?",
+        answer: "Exclusives are pets that were only available for Robux (or limited events). They scale off your best pet. They are generally good mid-tier investments for players who can't afford Huges yet.",
+      },
+    ],
   },
   {
     id: 10044,
@@ -576,6 +756,36 @@ export const gaming_calculators: Calculator[] = [
     category: 'gaming',
     metaTitle: 'Roblox Pet Simulator X Hatch Probability Calculator - Huge Odds',
     metaDescription: 'Calculate your odds of hatching a Huge Pet in Pet Simulator X. Factor in Luck passes and AFK time. Binomial probability calculator.',
+    faqs: [
+      {
+        question: "Does 'Ultra Lucky' work on Huge Pets?",
+        answer: "Generally, no. In Pet Simulator X, most Luck Gamepasses explicitly state they affect 'Base Egg Odds' (Rares, Epics, Legendaries, Mythicals). Huge Pets usually have a fixed server-side roll that is unaffected by your personal luck passes, unless an event specifically says '2x Huge Chance'.",
+      },
+      {
+        question: "What is 'Pity System'?",
+        answer: "Some eggs have a Pity System (e.g., hatch 5,000 eggs to guarantee a Huge). However, this is rare and usually only applies to specific Event Eggs or Exclusive Eggs (Robux eggs). Standard coins eggs do not have a hard pity for Huges.",
+      },
+      {
+        question: "Is Triple Hatch worth it?",
+        answer: "Yes. Triple Hatch (or Octuple Hatch) literally multiplies your speed by 3x or 8x. Since Huge Pets are a numbers game (quantity of hatches), hatching 8 eggs at once gives you 8x better chances per minute than hatching 1.",
+      },
+      {
+        question: "How accurate are the '1 in X' odds?",
+        answer: "The developers rarely publish exact numbers. The community estimates odds based on millions of hatches. A Base Huge is typically estimated at 1 in 10,000,000 or worse depending on the egg.",
+      },
+      {
+        question: "What is 'Server Luck'?",
+        answer: "Server Luck (often from Boosts) applies a multiplier to everyone in the server. This often DOES STACK with personal luck and event luck.",
+      },
+      {
+        question: "What is the 'Shiny' chance?",
+        answer: "Shiny chance is separate from rarity. It's roughly 1 in 500 to 1 in 1000 for any pet to spawn as Shiny. The 'Shiny Hunter' gamepass significantly improves this.",
+      },
+      {
+        question: "Can I hatch a Titanic F2P?",
+        answer: "Extremely unlikely. Titanics are almost exclusively from Exclusive Eggs (Robux) or Merchandise Codes. Very rarely, an event might offer a hatchable Titanic with odds like 1 in a Billion.",
+      },
+    ],
   },
   {
     id: 10045,

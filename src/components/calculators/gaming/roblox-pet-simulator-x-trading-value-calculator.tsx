@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Script from 'next/script';
+
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -143,38 +143,7 @@ const steps = [
     'Calculate the True Trade Value to see if you are overpaying.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-simulator-x-trading-value-calculator';
 
-const schemaMarkup = {
-    '@context': 'https://schema.org',
-    '@graph': [
-        {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
-                { '@type': 'ListItem', position: 3, name: 'Pet Simulator X Trading Value Calculator', item: baseUrl },
-            ],
-        },
-        {
-            '@type': 'SoftwareApplication',
-            name: 'Roblox Pet Simulator X Trading Value Calculator',
-            applicationCategory: 'Calculator',
-            operatingSystem: 'Web Browser',
-            description: 'Calculate the fair trade value of pets in Pet Simulator X. Avoid being scammed by RAP manipulation.',
-            url: baseUrl,
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        },
-        {
-            '@type': 'FAQPage',
-            mainEntity: faqs.map(f => ({
-                '@type': 'Question',
-                name: f.question,
-                acceptedAnswer: { '@type': 'Answer', text: f.answer },
-            })),
-        },
-    ],
-};
 
 export default function RobloxPSXTradingCalc() {
     const [result, setResult] = useState<ResultPayload | null>(null);
@@ -196,7 +165,7 @@ export default function RobloxPSXTradingCalc() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500 max-w-4xl mx-auto">
-            <Script id="psx-trade-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+
 
             <Card className="border-l-4 border-l-blue-500 shadow-xl overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>

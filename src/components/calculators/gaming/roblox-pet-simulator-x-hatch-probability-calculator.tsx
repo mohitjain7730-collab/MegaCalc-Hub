@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Script from 'next/script';
+
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -128,38 +128,7 @@ const steps = [
     'See your probability of success.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-simulator-x-hatch-probability-calculator';
 
-const schemaMarkup = {
-    '@context': 'https://schema.org',
-    '@graph': [
-        {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
-                { '@type': 'ListItem', position: 3, name: 'Pet Simulator X Hatch Probability Calculator', item: baseUrl },
-            ],
-        },
-        {
-            '@type': 'SoftwareApplication',
-            name: 'Roblox Pet Simulator X Hatch Probability Calculator',
-            applicationCategory: 'Calculator',
-            operatingSystem: 'Web Browser',
-            description: 'Calculate your odds of hatching a Huge Pet in Pet Simulator X. Factor in Luck passes and AFK time.',
-            url: baseUrl,
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        },
-        {
-            '@type': 'FAQPage',
-            mainEntity: faqs.map(f => ({
-                '@type': 'Question',
-                name: f.question,
-                acceptedAnswer: { '@type': 'Answer', text: f.answer },
-            })),
-        },
-    ],
-};
 
 export default function RobloxPSXHatchCalc() {
     const [result, setResult] = useState<ResultPayload | null>(null);
@@ -185,7 +154,7 @@ export default function RobloxPSXHatchCalc() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500 max-w-4xl mx-auto">
-            <Script id="psx-hatch-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+
 
             <Card className="border-l-4 border-l-pink-500 shadow-xl overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
