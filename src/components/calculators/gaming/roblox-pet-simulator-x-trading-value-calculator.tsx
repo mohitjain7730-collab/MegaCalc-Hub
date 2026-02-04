@@ -324,14 +324,8 @@ export default function RobloxPSXTradingCalc() {
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-                itemScope
-                itemType="https://schema.org/Article"
             >
-                <meta itemProp="name" content="Pet Simulator X Trading Guide: Avoiding Scams & RAP Manipulation" />
-                <meta itemProp="description" content="Learn how to trade safely in Pet Simulator X. Spot manipulated RAP, understand real value vs RAP, and flip pets for profit." />
-                <meta itemProp="keywords" content="Pet Simulator X Trading Values, PSX RAP Manipulation, How to Flip Pets PSX, Trading Booth Tax Guide" />
-
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Pet Simulator X Trading Guide: Avoiding Scams & RAP Manipulation</h1>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Pet Simulator X Trading Guide: Avoiding Scams & RAP Manipulation</h1>
                 <p className="text-lg italic text-muted-foreground">RAP is a lie. Real Traders know that Demand is the only truth.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">What is RAP Manipulation?</h2>

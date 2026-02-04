@@ -346,14 +346,8 @@ export default function RobloxPS99ValueCalc() {
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-                itemScope
-                itemType="https://schema.org/Article"
             >
-                <meta itemProp="name" content="Pet Simulator 99 Value Guide: Inflation & Economy" />
-                <meta itemProp="description" content="Master the PS99 economy. Learn how inflation works, when to hold Huges vs Gems, and portfolio management strategies." />
-                <meta itemProp="keywords" content="Pet Simulator 99 Value Calculator, PS99 Inflation Guide, Deflation ps99, Huge Pet Investment Strategy" />
-
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Pet Simulator 99 Value Guide: Inflation & Economy</h1>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Pet Simulator 99 Value Guide: Inflation & Economy</h1>
                 <p className="text-lg italic text-muted-foreground">In PS99, your Net Worth is more important than your Pet Power. Learn to grow your wealth.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The Inflation Cycle</h2>

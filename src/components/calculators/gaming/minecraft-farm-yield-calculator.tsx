@@ -156,6 +156,32 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Minecraft Farm Yield: Calculating Production and Efficiency',
+      description: 'A comprehensive guide to Minecraft farm yield, calculating resource production, optimizing farm size and growth rates, and maximizing agricultural efficiency.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/minecraft-farm-yield-calculator.png',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': baseUrl,
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -237,17 +263,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Week', 
-      detail: `Optimize farm: ${farmSize} blocks, ${yieldPerHour.toFixed(0)} items/hour. ${yieldPerHour >= 500 ? 'Excellent production - maintain current setup.' : 'Focus on: expanding farm size, obtaining Fortune III, or using bonemeal for better yields.'}` 
+    {
+      label: 'This Week',
+      detail: `Optimize farm: ${farmSize} blocks, ${yieldPerHour.toFixed(0)} items/hour. ${yieldPerHour >= 500 ? 'Excellent production - maintain current setup.' : 'Focus on: expanding farm size, obtaining Fortune III, or using bonemeal for better yields.'}`
     },
-    { 
-      label: 'This Month', 
-      detail: 'Improve farm efficiency: test different crop types, optimize farm layout, implement automation, compare yields with different Fortune levels, and track production rates to identify optimization opportunities.' 
+    {
+      label: 'This Month',
+      detail: 'Improve farm efficiency: test different crop types, optimize farm layout, implement automation, compare yields with different Fortune levels, and track production rates to identify optimization opportunities.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize farm production: maintain Fortune III enchantment, use bonemeal for maximum yields, expand farm size as needed, automate harvesting, optimize growth conditions, and track yields to ensure optimal performance.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize farm production: maintain Fortune III enchantment, use bonemeal for maximum yields, expand farm size as needed, automate harvesting, optimize growth conditions, and track yields to ensure optimal performance.'
     },
   ];
 
@@ -574,17 +600,8 @@ export default function MinecraftFarmYieldCalculator() {
 
       <section
         className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-        itemScope
-        itemType="https://schema.org/Article"
       >
-        <meta itemProp="name" content="The Complete Guide to Minecraft Farm Yields: Understanding Crop Production and Efficiency" />
-        <meta itemProp="description" content="A comprehensive guide to Minecraft farm yields, crop production rates, Fortune enchantment, and farm optimization strategies." />
-        <meta itemProp="keywords" content="Minecraft farm, crop yield, farm efficiency, Fortune enchantment, bonemeal, crop production" />
-        <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
-        <meta itemProp="datePublished" content="2025-01-24" />
-        <meta itemProp="url" content={baseUrl} />
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Minecraft Farm Yields: Understanding Crop Production and Efficiency</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">The Complete Guide to Minecraft Farm Yield: Calculating Production and Efficiency</h1>
         <p className="text-lg italic text-muted-foreground">A comprehensive guide to Minecraft farm yields, crop production rates, Fortune enchantment, and farm optimization strategies.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -599,7 +616,7 @@ export default function MinecraftFarmYieldCalculator() {
         </ul>
         <hr />
 
-        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overview: Understanding Farm Yields</h2>
+        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8">Overview: Understanding Farm Yields</h2>
         <p>Farm yields in Minecraft determine how many crops you can harvest from your farm over time. Understanding yields helps players plan farm sizes, optimize production rates, and maximize resource collection. Yield calculations consider farm size, crop type, growth time, Fortune enchantment, and bonemeal usage.</p>
 
         <p>Yield is calculated from multiple factors: farm size (number of crop blocks), crop type (different crops have different base yields), growth time (time for crops to mature), Fortune enchantment (increases harvest yields), and bonemeal usage (speeds up or eliminates growth time). These factors combine to determine total production rates.</p>
@@ -613,8 +630,8 @@ export default function MinecraftFarmYieldCalculator() {
 
         <hr />
 
-        <h2 id="crops" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Crop Types and Base Yields</h2>
-        
+        <h2 id="crops" className="text-2xl font-bold text-foreground pt-8">Crop Types and Base Yields</h2>
+
         <p>Different crop types have different base yields and characteristics. Understanding crop types helps players choose appropriate crops and optimize farm designs.</p>
 
         <p>Wheat provides 1 base yield per block, with additional seed drops (0-3 seeds per harvest). Wheat is versatile and used for bread, breeding animals, and trading. Wheat farms are common and reliable for food production.</p>
@@ -632,8 +649,8 @@ export default function MinecraftFarmYieldCalculator() {
 
         <hr />
 
-        <h2 id="growth" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Growth Time and Conditions</h2>
-        
+        <h2 id="growth" className="text-2xl font-bold text-foreground pt-8">Growth Time and Conditions</h2>
+
         <p>Growth time determines how quickly crops mature and can be harvested. Understanding growth time helps players optimize farm designs and maximize production rates.</p>
 
         <p>Natural growth time varies by crop: Wheat/Carrot/Potato/Beetroot typically take 20-30 minutes to mature under optimal conditions. Nether Wart grows faster, typically 10-15 minutes. Growth time depends on light level, hydration, and random tick rates.</p>
@@ -649,8 +666,8 @@ export default function MinecraftFarmYieldCalculator() {
 
         <hr />
 
-        <h2 id="fortune" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Fortune Enchantment and Yields</h2>
-        
+        <h2 id="fortune" className="text-2xl font-bold text-foreground pt-8">Fortune Enchantment and Yields</h2>
+
         <p>Fortune enchantment significantly increases crop yields by multiplying harvest drops. Understanding Fortune helps players maximize yields and optimize farm production.</p>
 
         <p>Fortune multipliers: Fortune I = 1.33x multiplier (33% increase), Fortune II = 1.67x multiplier (67% increase), Fortune III = 2.0x multiplier (100% increase, doubles yields). Higher Fortune levels dramatically increase yields, making Fortune III essential for maximum production.</p>
@@ -666,8 +683,8 @@ export default function MinecraftFarmYieldCalculator() {
 
         <hr />
 
-        <h2 id="bonemeal" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Bonemeal and Instant Growth</h2>
-        
+        <h2 id="bonemeal" className="text-2xl font-bold text-foreground pt-8">Bonemeal and Instant Growth</h2>
+
         <p>Bonemeal instantly grows crops, eliminating growth time and allowing immediate re-harvesting. Understanding bonemeal helps players maximize production rates and optimize farm efficiency.</p>
 
         <p>Bonemeal mechanics: Applying bonemeal to crops instantly advances growth stages, allowing immediate harvesting. This eliminates growth time, dramatically increasing yield per hour. Bonemeal is the most effective method for maximizing production rates.</p>
@@ -683,8 +700,8 @@ export default function MinecraftFarmYieldCalculator() {
 
         <hr />
 
-        <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Farm Optimization Strategies</h2>
-        
+        <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8">Farm Optimization Strategies</h2>
+
         <p>Farm optimization strategies help players maximize yields and production rates. Multiple approaches can optimize farm performance.</p>
 
         <p>Farm size optimization balances size with maintenance needs. Larger farms produce more but require more resources and maintenance. Optimal size depends on needs: Small (9-25 blocks) for personal use, Medium (50-100 blocks) for moderate needs, Large (200+ blocks) for extensive needs. Balance size with available resources and time.</p>
@@ -701,8 +718,8 @@ export default function MinecraftFarmYieldCalculator() {
 
         <hr />
 
-        <h2 id="efficiency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Efficiency and Production Rates</h2>
-        
+        <h2 id="efficiency" className="text-2xl font-bold text-foreground pt-8">Efficiency and Production Rates</h2>
+
         <p>Farm efficiency measures yield per block per time unit, helping compare different farm designs and optimize resource utilization. Understanding efficiency helps players optimize farm performance.</p>
 
         <p>Efficiency formula: Efficiency = Yield Per Hour / Farm Size. This measures items produced per block per hour. Higher efficiency means better resource utilization and more effective farm designs. Efficiency helps compare different farm layouts and optimize designs.</p>
@@ -718,7 +735,7 @@ export default function MinecraftFarmYieldCalculator() {
 
         <hr />
 
-        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
         <p>Minecraft farm yields determine resource production rates and farm efficiency. Understanding yields, Fortune enchantment, bonemeal usage, and optimization strategies helps players maximize production and optimize farm designs.</p>
 
         <p>Key factors affecting yields include: farm size, crop type, growth time, Fortune enchantment, and bonemeal usage. Fortune III doubles yields, while bonemeal eliminates growth time, dramatically increasing production rates. Understanding these factors helps players optimize farm performance.</p>
@@ -755,6 +772,6 @@ export default function MinecraftFarmYieldCalculator() {
           <p>Formulas use yield calculations: Base Yield = Farm Size × Base Yield Per Block, Fortune Multiplier = 1.0x-2.0x based on level, Total Yield = Base Yield × Fortune Multiplier, Cycles Per Hour = 60 / Growth Time, Yield Per Hour = Total Yield × Cycles Per Hour, Efficiency = Yield Per Hour / Farm Size. The guide covers crop types, growth time, Fortune enchantment, bonemeal usage, optimization strategies, and efficiency. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft farm yield calculations instantly.</p>
         </CardContent>
       </Card>
-    </div>
+    </div >
   );
 }

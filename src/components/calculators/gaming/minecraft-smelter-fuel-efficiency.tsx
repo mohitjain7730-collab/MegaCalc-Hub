@@ -151,6 +151,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'Minecraft Smelter Fuel Efficiency: Stop Burning Coal You Don\'t Need',
+      description: 'A practical, human-written guide to Minecraft smelter fuel efficiency with real examples, common mistakes, and simple tips you can use right away.',
+      author: { '@type': 'Person', name: 'MegaCalc Hub Gaming Team' },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/gaming-calculator-bg.jpg',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -222,17 +241,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Session', 
-      detail: `Fuel efficiency: ${itemsPerFuel} items per ${fuelType.replace('_', ' ')}, ${itemsSmelted.toFixed(0)} total capacity. ${itemsToSmelt > 0 ? (itemsSmelted >= itemsToSmelt ? 'Sufficient fuel for smelting needs.' : 'Insufficient fuel - obtain more fuel.') : 'Plan smelting based on available fuel capacity.'}` 
+    {
+      label: 'This Session',
+      detail: `Fuel efficiency: ${itemsPerFuel} items per ${fuelType.replace('_', ' ')}, ${itemsSmelted.toFixed(0)} total capacity. ${itemsToSmelt > 0 ? (itemsSmelted >= itemsToSmelt ? 'Sufficient fuel for smelting needs.' : 'Insufficient fuel - obtain more fuel.') : 'Plan smelting based on available fuel capacity.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize fuel usage: compare different fuel types for efficiency, identify most efficient fuels available, balance efficiency with availability and renewability, and plan fuel collection based on smelting needs.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize fuel usage: compare different fuel types for efficiency, identify most efficient fuels available, balance efficiency with availability and renewability, and plan fuel collection based on smelting needs.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize fuel efficiency: use most efficient fuels when available (lava buckets, blaze rods), balance efficiency with renewability for long-term sustainability, automate fuel collection for continuous smelting, and track fuel consumption to optimize smelting operations.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize fuel efficiency: use most efficient fuels when available (lava buckets, blaze rods), balance efficiency with renewability for long-term sustainability, automate fuel collection for continuous smelting, and track fuel consumption to optimize smelting operations.'
     },
   ];
 
@@ -494,31 +513,8 @@ export default function MinecraftSmelterFuelEfficiency() {
         </CardContent>
       </Card>
 
-      <section
-        className="space-y-4 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-        itemScope
-        itemType="https://schema.org/Article"
-      >
-        <meta
-          itemProp="name"
-          content="Minecraft Smelter Fuel Efficiency: Simple Tips to Stop Wasting Coal and Lava"
-        />
-        <meta
-          itemProp="description"
-          content="A practical, human-written guide to Minecraft smelter fuel efficiency with real examples, common mistakes, and simple tips you can use right away."
-        />
-        <meta
-          itemProp="keywords"
-          content="Minecraft smelting, fuel efficiency, lava bucket, coal, cactus fuel, blaze rod, furnace setup"
-        />
-        <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
-        <meta itemProp="datePublished" content="2025-01-24" />
-        <meta itemProp="url" content={baseUrl} />
-
-        <h1
-          className="text-3xl md:text-4xl font-extrabold text-foreground mb-2"
-          itemProp="headline"
-        >
+      <section className="space-y-4 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-2">
           Minecraft Smelter Fuel Efficiency: Stop Burning Coal You Don&apos;t Need
         </h1>
 

@@ -152,7 +152,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'minecraft-farm-yield-calculator',
     category: 'gaming',
     metaTitle: 'Minecraft Farm Yield Calculator - Calculate Crop Yields and Production',
-    metaDescription: 'Calculate crop yields, resource production rates, and farm efficiency for Minecraft farms based on farm size, crop type, and growth conditions. Free Minecraft farm calculator.',
+    metaDescription: 'A comprehensive guide to Minecraft farm yields, including crop growth rate analysis, harvest efficiency calculations, and strategies for maximizing food production.',
   },
   {
     id: 10018,
@@ -161,7 +161,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'minecraft-enchanting-odds-predictor',
     category: 'gaming',
     metaTitle: 'Minecraft Enchanting Odds Predictor - Calculate Enchantment Probabilities',
-    metaDescription: 'Predict enchanting odds and probabilities for Minecraft items based on enchantment levels, experience costs, and enchantment combinations. Free Minecraft enchanting calculator.',
+    metaDescription: 'A comprehensive guide to Minecraft enchanting odds, including enchantment probability analysis, experience cost optimization, and strategies for obtaining perfect gear.',
   },
   {
     id: 10019,
@@ -170,7 +170,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'minecraft-villager-trade-tracker',
     category: 'gaming',
     metaTitle: 'Minecraft Villager Trade Tracker - Calculate Emerald Profit Per Trade',
-    metaDescription: 'Track villager trades and calculate emerald profit per trade based on trade costs, item values, and trade frequency. Free Minecraft villager trade calculator.',
+    metaDescription: 'A comprehensive guide to Minecraft villager trading, including emerald profit analysis, trade cost optimization, and strategies for building efficient trading halls.',
   },
   {
     id: 10020,
@@ -179,7 +179,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'minecraft-smelter-fuel-efficiency',
     category: 'gaming',
     metaTitle: 'Minecraft Smelter Fuel Efficiency - Compare Coal vs Lava vs Cactus',
-    metaDescription: 'Compare fuel efficiency for Minecraft smelting including coal, lava buckets, and cactus, calculating items smelted per fuel unit. Free Minecraft smelting calculator.',
+    metaDescription: 'A comprehensive guide to Minecraft smelting fuel efficiency, including burn time analysis, cost-benefit calculations for different fuels, and strategies for optimizing furnace output.',
   },
   {
     id: 10021,
@@ -188,7 +188,7 @@ export const gaming_calculators: Calculator[] = [
     slug: 'minecraft-mob-farm-xp-rate-calculator',
     category: 'gaming',
     metaTitle: 'Minecraft Mob Farm XP Rate Calculator - Calculate XP Generation Rates',
-    metaDescription: 'Calculate XP generation rates for Minecraft mob farms based on mob spawn rates, kill rates, and XP per mob. Free Minecraft XP calculator.',
+    metaDescription: 'A comprehensive guide to Minecraft mob farm XP rates, including spawn rate analysis, kill efficiency calculations, and strategies for maximizing experience gain for faster leveling.',
   },
   {
     id: 10022,

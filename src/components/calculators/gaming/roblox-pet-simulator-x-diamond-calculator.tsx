@@ -388,14 +388,8 @@ export default function RobloxPetSimDiamondCalc() {
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-                itemScope
-                itemType="https://schema.org/Article"
             >
-                <meta itemProp="name" content="Pet Simulator X Diamond Guide: How to Earn Billions" />
-                <meta itemProp="description" content="The ultimate guide to farming Diamonds in Pet Simulator X. Learn about the Diamond Mine, AFK grinding, and stacking enchantments." />
-                <meta itemProp="keywords" content="Pet Simulator X Diamond Calculator, How to get Gems fast PSX, Diamond Mine Guide, Pet Sim X AFK Farming" />
-
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Pet Simulator X Diamond Guide: How to Earn Billions</h1>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Pet Simulator X Diamond Guide: How to Earn Billions</h1>
                 <p className="text-lg italic text-muted-foreground">Diamonds (Gems) are the currency of the rich. Here is the math behind infinite wealth.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The Meta: The Diamond Mine</h2>

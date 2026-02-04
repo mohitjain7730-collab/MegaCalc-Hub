@@ -143,6 +143,32 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Minecraft Enchanting: Odds, Probabilities, and Strategy',
+      description: 'A comprehensive guide to Minecraft enchanting odds, calculating probabilities, optimizing enchanting strategies, and maximizing enchantment quality.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/minecraft-enchanting-odds-predictor.png',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': baseUrl,
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -227,17 +253,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Session', 
-      detail: `Enchanting setup: Level ${enchantmentLevel}, ${bookshelfCount} bookshelves, ${(successProbability * 100).toFixed(1)}% success probability. ${enchantmentLevel >= 30 && bookshelfCount >= 15 ? 'Optimal setup - proceed with enchanting.' : 'Consider optimizing: use level 30 and ensure 15 bookshelves for maximum odds.'}` 
+    {
+      label: 'This Session',
+      detail: `Enchanting setup: Level ${enchantmentLevel}, ${bookshelfCount} bookshelves, ${(successProbability * 100).toFixed(1)}% success probability. ${enchantmentLevel >= 30 && bookshelfCount >= 15 ? 'Optimal setup - proceed with enchanting.' : 'Consider optimizing: use level 30 and ensure 15 bookshelves for maximum odds.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize enchanting: ensure 15 bookshelves for level 30 access, accumulate experience for level 30 enchanting, test different item types and levels, track enchantment results, and identify optimal enchanting strategies for different items.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize enchanting: ensure 15 bookshelves for level 30 access, accumulate experience for level 30 enchanting, test different item types and levels, track enchantment results, and identify optimal enchanting strategies for different items.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize enchanting: always use level 30 with 15 bookshelves for maximum odds, accumulate sufficient experience, understand enchantment probabilities and rarities, test different approaches, and track results to identify patterns and optimize strategies.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize enchanting: always use level 30 with 15 bookshelves for maximum odds, accumulate sufficient experience, understand enchantment probabilities and rarities, test different approaches, and track results to identify patterns and optimize strategies.'
     },
   ];
 
@@ -537,17 +563,8 @@ export default function MinecraftEnchantingOddsPredictor() {
 
       <section
         className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-        itemScope
-        itemType="https://schema.org/Article"
       >
-        <meta itemProp="name" content="The Complete Guide to Minecraft Enchanting Odds: Understanding Enchantment Probabilities" />
-        <meta itemProp="description" content="A comprehensive guide to Minecraft enchanting odds, enchantment probabilities, bookshelf mechanics, and optimization strategies." />
-        <meta itemProp="keywords" content="Minecraft enchanting, enchantment odds, bookshelves, enchantment probability, experience cost" />
-        <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
-        <meta itemProp="datePublished" content="2025-01-24" />
-        <meta itemProp="url" content={baseUrl} />
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Minecraft Enchanting Odds: Understanding Enchantment Probabilities</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">The Complete Guide to Minecraft Enchanting: Odds, Probabilities, and Strategy</h1>
         <p className="text-lg italic text-muted-foreground">A comprehensive guide to Minecraft enchanting odds, enchantment probabilities, bookshelf mechanics, and optimization strategies.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -577,7 +594,7 @@ export default function MinecraftEnchantingOddsPredictor() {
         <hr />
 
         <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Enchanting Mechanics</h2>
-        
+
         <p>Enchanting mechanics involve the enchanting table, experience costs, lapis lazuli requirements, and random enchantment generation. Understanding mechanics helps players optimize enchanting strategies and maximize results.</p>
 
         <p>Enchanting table offers 3 random options at different levels. Each option shows potential enchantments (though exact outcomes are random). Players choose one option, spending experience and lapis lazuli. Higher level options provide better enchantments but cost more. Understanding options helps players make informed choices.</p>
@@ -594,7 +611,7 @@ export default function MinecraftEnchantingOddsPredictor() {
         <hr />
 
         <h2 id="bookshelves" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Bookshelves and Maximum Levels</h2>
-        
+
         <p>Bookshelves around the enchanting table increase maximum enchantment level, enabling access to better enchantments. Understanding bookshelf mechanics helps players optimize enchanting setups and maximize enchantment potential.</p>
 
         <p>Bookshelf placement: Bookshelves must be within 2 blocks of the enchanting table, with air blocks between bookshelves and the table. Bookshelves can be placed in a 5×5 area around the table. Proper placement is essential for maximum level access.</p>
@@ -611,7 +628,7 @@ export default function MinecraftEnchantingOddsPredictor() {
         <hr />
 
         <h2 id="probabilities" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Enchantment Probabilities</h2>
-        
+
         <p>Enchantment probabilities determine likelihood of obtaining specific enchantments or quality enchantments. Understanding probabilities helps players optimize enchanting strategies and set realistic expectations.</p>
 
         <p>Level-based probability: Higher enchantment levels increase probability of better enchantments. Level 30 provides maximum probability of quality enchantments. Lower levels have reduced probabilities. Always use level 30 for maximum probability of good enchantments.</p>
@@ -628,7 +645,7 @@ export default function MinecraftEnchantingOddsPredictor() {
         <hr />
 
         <h2 id="rarity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Enchantment Rarity and Odds</h2>
-        
+
         <p>Enchantments have different rarities that affect their probabilities. Understanding rarity helps players set expectations and optimize enchanting strategies.</p>
 
         <p>Common enchantments have higher probabilities and are easier to obtain. Examples include Efficiency, Unbreaking, Protection. Common enchantments appear frequently at moderate to high levels. These are reliable enchantments that provide consistent benefits.</p>
@@ -645,7 +662,7 @@ export default function MinecraftEnchantingOddsPredictor() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Enchanting Optimization Strategies</h2>
-        
+
         <p>Enchanting optimization strategies help players maximize enchantment quality and efficiently use experience resources. Multiple approaches can optimize enchanting results.</p>
 
         <p>Level optimization always uses level 30 for maximum enchantment potential. Level 30 provides access to all enchantments and maximum probabilities. Never use lower levels when level 30 is available. Level 30 is essential for optimal enchanting.</p>
@@ -663,7 +680,7 @@ export default function MinecraftEnchantingOddsPredictor() {
         <hr />
 
         <h2 id="experience" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Experience Management and Costs</h2>
-        
+
         <p>Experience management is essential for enchanting, as higher levels cost more experience. Understanding experience costs helps players plan enchanting sessions and optimize resource usage.</p>
 
         <p>Experience cost equals enchantment level used. Level 1 costs 1 level, level 10 costs 10 levels, level 30 costs 30 levels. Higher levels cost significantly more experience. Always prepare sufficient experience for desired enchantment levels.</p>

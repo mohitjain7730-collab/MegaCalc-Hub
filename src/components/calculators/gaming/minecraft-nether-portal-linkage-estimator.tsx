@@ -138,6 +138,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Minecraft Nether Portal Linkage: Understanding Coordinate Conversion and Portal Networks',
+      description: 'A comprehensive guide to Minecraft nether portal linkage, calculating coordinate conversions, understanding portal search range, and planning portal networks.',
+      author: { '@type': 'Person', name: 'MegaCalc Hub Gaming Team' },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/gaming-calculator-bg.jpg',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -145,19 +164,19 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const overworldX = values.overworldX;
   const overworldY = values.overworldY ?? 64;
   const overworldZ = values.overworldZ;
-  
+
   // Calculate nether coordinates (overworld / 8)
   const calculatedNetherX = overworldX / 8;
   const calculatedNetherZ = overworldZ / 8;
-  
+
   // If nether coordinates provided, calculate overworld
   let netherX = values.netherX;
   let netherY = values.netherY ?? 64;
   let netherZ = values.netherZ;
-  
+
   let calculatedOverworldX = 0;
   let calculatedOverworldZ = 0;
-  
+
   if (netherX !== undefined && netherZ !== undefined) {
     calculatedOverworldX = netherX * 8;
     calculatedOverworldZ = netherZ * 8;
@@ -218,17 +237,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Session', 
-      detail: `Portal linkage: Distance ${distance.toFixed(1)} blocks, Accuracy ${linkageAccuracy.toFixed(1)}%. ${distance <= 128 ? 'Within search range - portals should link.' : 'Outside search range - reposition portals for proper linkage.'}` 
+    {
+      label: 'This Session',
+      detail: `Portal linkage: Distance ${distance.toFixed(1)} blocks, Accuracy ${linkageAccuracy.toFixed(1)}%. ${distance <= 128 ? 'Within search range - portals should link.' : 'Outside search range - reposition portals for proper linkage.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize portal network: calculate exact coordinates for all portals, place portals at calculated locations, ensure no other portals within 128 blocks, match Y coordinates when possible, and test portal linkage to verify connections.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize portal network: calculate exact coordinates for all portals, place portals at calculated locations, ensure no other portals within 128 blocks, match Y coordinates when possible, and test portal linkage to verify connections.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously maintain portal network: track portal coordinates, verify linkage accuracy, reposition portals if needed, plan portal networks for efficient travel, and understand 8:1 coordinate ratio for optimal portal placement.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously maintain portal network: track portal coordinates, verify linkage accuracy, reposition portals if needed, plan portal networks for efficient travel, and understand 8:1 coordinate ratio for optimal portal placement.'
     },
   ];
 
@@ -527,19 +546,8 @@ export default function MinecraftNetherPortalLinkageEstimator() {
         </CardContent>
       </Card>
 
-      <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-        itemScope
-        itemType="https://schema.org/Article"
-      >
-        <meta itemProp="name" content="The Complete Guide to Minecraft Nether Portal Linkage: Understanding Coordinate Conversion and Portal Networks" />
-        <meta itemProp="description" content="A comprehensive guide to Minecraft nether portal linkage, calculating coordinate conversions, understanding portal search range, and planning portal networks." />
-        <meta itemProp="keywords" content="Minecraft nether portal, portal linkage, coordinate conversion, nether coordinates, portal network" />
-        <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
-        <meta itemProp="datePublished" content="2025-01-24" />
-        <meta itemProp="url" content={baseUrl} />
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Minecraft Nether Portal Linkage: Understanding Coordinate Conversion and Portal Networks</h1>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">The Complete Guide to Minecraft Nether Portal Linkage: Understanding Coordinate Conversion and Portal Networks</h1>
         <p className="text-lg italic text-muted-foreground">A comprehensive guide to Minecraft nether portal linkage, calculating coordinate conversions, understanding portal search range, and planning portal networks.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -554,7 +562,7 @@ export default function MinecraftNetherPortalLinkageEstimator() {
         </ul>
         <hr />
 
-        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overview: Understanding Portal Linkage</h2>
+        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8">Overview: Understanding Portal Linkage</h2>
         <p>Nether portal linkage in Minecraft connects portals between overworld and nether dimensions. Understanding portal linkage helps players create efficient portal networks, ensure correct portal connections, and optimize travel routes. Linkage depends on coordinate conversion and portal search range.</p>
 
         <p>Portal linkage directly affects travel efficiency and network reliability. Correct linkage enables fast travel between dimensions. Incorrect linkage can create unexpected connections or require additional portals. Understanding linkage helps design reliable portal networks.</p>
@@ -568,8 +576,8 @@ export default function MinecraftNetherPortalLinkageEstimator() {
 
         <hr />
 
-        <h2 id="conversion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Coordinate Conversion</h2>
-        
+        <h2 id="conversion" className="text-2xl font-bold text-foreground pt-8">Coordinate Conversion</h2>
+
         <p>Coordinate conversion calculates corresponding coordinates between overworld and nether. Understanding conversion helps players place portals at correct locations.</p>
 
         <p>Overworld to nether: Nether X = Overworld X / 8, Nether Z = Overworld Z / 8, Nether Y = Overworld Y (Y stays the same). Divide overworld X and Z by 8 to find nether coordinates. Y coordinate remains unchanged.</p>
@@ -585,8 +593,8 @@ export default function MinecraftNetherPortalLinkageEstimator() {
 
         <hr />
 
-        <h2 id="search" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Portal Search Range</h2>
-        
+        <h2 id="search" className="text-2xl font-bold text-foreground pt-8">Portal Search Range</h2>
+
         <p>Portal search range determines how far the game searches for existing portals when entering a portal. Understanding search range helps players place portals for reliable linkage.</p>
 
         <p>Search range: 128 blocks in the other dimension. When entering a portal, the game searches for existing portals within 128 blocks of the calculated location. If no portal exists, a new one is created at the calculated location.</p>
@@ -600,8 +608,8 @@ export default function MinecraftNetherPortalLinkageEstimator() {
 
         <hr />
 
-        <h2 id="linkage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Linkage Mechanics</h2>
-        
+        <h2 id="linkage" className="text-2xl font-bold text-foreground pt-8">Linkage Mechanics</h2>
+
         <p>Linkage mechanics determine how portals connect between dimensions. Understanding mechanics helps players ensure correct portal connections.</p>
 
         <p>Linkage process: Player enters portal, game calculates target coordinates (overworld / 8 for nether), game searches for existing portals within 128 blocks, game uses closest portal or creates new one, player exits through linked portal. Understanding process helps predict portal behavior.</p>
@@ -615,8 +623,8 @@ export default function MinecraftNetherPortalLinkageEstimator() {
 
         <hr />
 
-        <h2 id="placement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Portal Placement Strategies</h2>
-        
+        <h2 id="placement" className="text-2xl font-bold text-foreground pt-8">Portal Placement Strategies</h2>
+
         <p>Portal placement strategies help players position portals for correct linkage. Multiple approaches can optimize portal placement.</p>
 
         <p>Exact placement positions portals at calculated coordinates for perfect linkage. Calculate exact coordinates (overworld / 8 for nether), place portals precisely at calculated locations, and verify placement for reliable connections. Exact placement ensures perfect linkage.</p>
@@ -629,8 +637,8 @@ export default function MinecraftNetherPortalLinkageEstimator() {
 
         <hr />
 
-        <h2 id="networks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Portal Network Planning</h2>
-        
+        <h2 id="networks" className="text-2xl font-bold text-foreground pt-8">Portal Network Planning</h2>
+
         <p>Portal network planning designs efficient portal systems for travel between multiple locations. Understanding network planning helps players create organized portal systems.</p>
 
         <p>Network design: Plan portal locations in both dimensions, calculate coordinates for all portals, ensure portals don't interfere with each other, organize portals for efficient travel, and test network for proper connections. Good network design ensures reliable travel.</p>
@@ -644,8 +652,8 @@ export default function MinecraftNetherPortalLinkageEstimator() {
 
         <hr />
 
-        <h2 id="troubleshooting" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Troubleshooting Portal Issues</h2>
-        
+        <h2 id="troubleshooting" className="text-2xl font-bold text-foreground pt-8">Troubleshooting Portal Issues</h2>
+
         <p>Troubleshooting portal issues helps players fix incorrect portal connections and ensure reliable linkage.</p>
 
         <p>Incorrect linkage: Check coordinate calculations, verify portal placement accuracy, ensure no other portals within 128 blocks, check Y coordinate differences, and reposition portals if needed. Troubleshooting incorrect linkage fixes connection problems.</p>

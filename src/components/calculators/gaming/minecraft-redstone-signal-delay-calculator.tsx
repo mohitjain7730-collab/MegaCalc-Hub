@@ -131,6 +131,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Minecraft Redstone Signal Delay: Understanding Timing and Circuit Design',
+      description: 'A comprehensive guide to Minecraft redstone signal delay, calculating repeater delays, understanding ticks, and optimizing circuit timing.',
+      author: { '@type': 'Person', name: 'MegaCalc Hub Gaming Team' },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/gaming-calculator-bg.jpg',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -195,17 +214,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Session', 
-      detail: `Signal delay: ${totalDelay} ticks (${delayInSeconds.toFixed(2)} seconds). ${totalDelay <= 2 ? 'Very fast - excellent for responsive circuits.' : totalDelay <= 10 ? 'Suitable delay for most circuits.' : 'Consider optimizing for faster response.'}` 
+    {
+      label: 'This Session',
+      detail: `Signal delay: ${totalDelay} ticks (${delayInSeconds.toFixed(2)} seconds). ${totalDelay <= 2 ? 'Very fast - excellent for responsive circuits.' : totalDelay <= 10 ? 'Suitable delay for most circuits.' : 'Consider optimizing for faster response.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize redstone circuits: minimize repeater count when possible, use 1-tick delay for faster signals, optimize circuit design to reduce component count, and calculate delays for synchronization when needed.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize redstone circuits: minimize repeater count when possible, use 1-tick delay for faster signals, optimize circuit design to reduce component count, and calculate delays for synchronization when needed.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize redstone timing: calculate delays for all signal paths, synchronize multiple signals by matching delays, optimize circuit design for minimal delay, and test timing to ensure proper circuit operation.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize redstone timing: calculate delays for all signal paths, synchronize multiple signals by matching delays, optimize circuit design for minimal delay, and test timing to ensure proper circuit operation.'
     },
   ];
 
@@ -461,19 +480,8 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
         </CardContent>
       </Card>
 
-      <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-        itemScope
-        itemType="https://schema.org/Article"
-      >
-        <meta itemProp="name" content="The Complete Guide to Minecraft Redstone Signal Delay: Understanding Timing and Circuit Design" />
-        <meta itemProp="description" content="A comprehensive guide to Minecraft redstone signal delay, calculating repeater delays, understanding ticks, and optimizing circuit timing." />
-        <meta itemProp="keywords" content="Minecraft redstone, signal delay, repeater delay, redstone ticks, circuit timing" />
-        <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
-        <meta itemProp="datePublished" content="2025-01-24" />
-        <meta itemProp="url" content={baseUrl} />
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Minecraft Redstone Signal Delay: Understanding Timing and Circuit Design</h1>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">The Complete Guide to Minecraft Redstone Signal Delay: Understanding Timing and Circuit Design</h1>
         <p className="text-lg italic text-muted-foreground">A comprehensive guide to Minecraft redstone signal delay, calculating repeater delays, understanding ticks, and optimizing circuit timing.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -488,7 +496,7 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
         </ul>
         <hr />
 
-        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overview: Understanding Signal Delay</h2>
+        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8">Overview: Understanding Signal Delay</h2>
         <p>Redstone signal delay in Minecraft is the time it takes for a signal to travel through redstone components. Understanding signal delay helps players design timing circuits, synchronize multiple signals, and optimize circuit responsiveness. Delay depends on repeater count, tick delay per repeater, and additional delays from other components.</p>
 
         <p>Signal delay directly affects circuit timing and responsiveness. Lower delay means faster signal transmission and more responsive circuits. Higher delay may be necessary for specific timing requirements or synchronization. Understanding delay helps balance speed with timing needs.</p>
@@ -502,8 +510,8 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <hr />
 
-        <h2 id="repeaters" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Repeaters and Delay</h2>
-        
+        <h2 id="repeaters" className="text-2xl font-bold text-foreground pt-8">Repeaters and Delay</h2>
+
         <p>Redstone repeaters are primary components that add delay to signals. Understanding repeaters helps players control signal timing and design circuits with specific delays.</p>
 
         <p>Repeater delay settings: Each repeater can delay signals by 1-4 ticks (right-click to adjust). 1 tick = minimum delay (fastest), 4 ticks = maximum delay (slowest). Adjustable delay allows precise timing control for different circuit needs.</p>
@@ -519,8 +527,8 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <hr />
 
-        <h2 id="ticks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Redstone Ticks and Timing</h2>
-        
+        <h2 id="ticks" className="text-2xl font-bold text-foreground pt-8">Redstone Ticks and Timing</h2>
+
         <p>Redstone ticks are the standard unit for measuring redstone timing in Minecraft. Understanding ticks helps players calculate precise delays and design timing circuits.</p>
 
         <p>Tick definition: 1 redstone tick = 0.1 seconds (1/10th of a second). There are 10 redstone ticks per second. Ticks are the fundamental unit for all redstone timing calculations.</p>
@@ -536,8 +544,8 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <hr />
 
-        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Delay Calculation</h2>
-        
+        <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8">Delay Calculation</h2>
+
         <p>Delay calculation determines total signal delay through redstone circuits. Understanding calculation helps players design circuits with precise timing.</p>
 
         <p>Repeater delay: Repeater Delay = Repeater Count × Tick Delay Per Repeater. This calculates delay from repeaters only. For example, 5 repeaters at 2 ticks each = 10 ticks repeater delay.</p>
@@ -553,8 +561,8 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <hr />
 
-        <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Delay Optimization Strategies</h2>
-        
+        <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8">Delay Optimization Strategies</h2>
+
         <p>Delay optimization strategies help players minimize signal delay for faster circuit responsiveness. Multiple approaches can optimize delay.</p>
 
         <p>Repeater optimization minimizes repeater count and uses minimum tick delay. Use 1-tick delay per repeater for fastest signals, minimize repeater count when possible, use repeaters only when needed (for range extension or timing), and optimize circuit design to reduce repeater requirements. Repeater optimization significantly reduces delay.</p>
@@ -567,8 +575,8 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <hr />
 
-        <h2 id="synchronization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Signal Synchronization</h2>
-        
+        <h2 id="synchronization" className="text-2xl font-bold text-foreground pt-8">Signal Synchronization</h2>
+
         <p>Signal synchronization ensures multiple signals arrive at the same time. Understanding synchronization helps players design circuits with coordinated timing.</p>
 
         <p>Synchronization principle: All signal paths must have equal total delay. Calculate delay for each path, add repeaters to faster paths to match slower paths, use same repeater count and tick delay for equal paths, and test timing to ensure synchronization. Equal delays ensure synchronized arrival.</p>
@@ -584,8 +592,8 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <hr />
 
-        <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Component Delays</h2>
-        
+        <h2 id="components" className="text-2xl font-bold text-foreground pt-8">Component Delays</h2>
+
         <p>Different redstone components add different delays. Understanding component delays helps players calculate total circuit delay accurately.</p>
 
         <p>Repeater delays: 1-4 ticks per repeater (adjustable). Repeaters are primary delay components. Delay depends on tick setting (right-click to adjust).</p>
@@ -605,7 +613,7 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <hr />
 
-        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
         <p>Minecraft redstone signal delay depends on repeater count, tick delay per repeater, and additional delays from other components. Understanding delay calculation, optimization strategies, and synchronization helps players design efficient and responsive redstone circuits.</p>
 
         <p>Key factors affecting delay include: repeater count (more repeaters = more delay), tick delay per repeater (1-4 ticks, adjustable), additional delay from other components, and circuit design (optimization can reduce delay). Understanding these factors helps optimize circuit timing.</p>

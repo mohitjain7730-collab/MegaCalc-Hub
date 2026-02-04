@@ -165,6 +165,25 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Minecraft Tree Farm Output: Understanding Production and Sustainability',
+      description: 'A comprehensive guide to Minecraft tree farm output, calculating logs per cycle, sapling sustainability, and optimizing production rates.',
+      author: { '@type': 'Person', name: 'MegaCalc Hub Gaming Team' },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/gaming-calculator-bg.jpg',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -241,17 +260,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Session', 
-      detail: `Tree farm output: ${totalLogs.toFixed(0)} logs per cycle, ${logsPerHour.toFixed(0)} logs/hour. ${sustainability ? 'Sustainable - can replant automatically.' : 'Not sustainable - need external saplings.'}` 
+    {
+      label: 'This Session',
+      detail: `Tree farm output: ${totalLogs.toFixed(0)} logs per cycle, ${logsPerHour.toFixed(0)} logs/hour. ${sustainability ? 'Sustainable - can replant automatically.' : 'Not sustainable - need external saplings.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize tree farm: increase sapling count for more production, improve growth rate (bone meal or better conditions), increase efficiency (automation, better design), ensure sustainability (enough saplings to replant), and choose optimal tree types for your needs.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize tree farm: increase sapling count for more production, improve growth rate (bone meal or better conditions), increase efficiency (automation, better design), ensure sustainability (enough saplings to replant), and choose optimal tree types for your needs.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize tree farm production: monitor production rates, maintain sustainability, automate farming for continuous production, optimize growth conditions, and track logs per hour to identify optimization opportunities.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize tree farm production: monitor production rates, maintain sustainability, automate farming for continuous production, optimize growth conditions, and track logs per hour to identify optimization opportunities.'
     },
   ];
 
@@ -560,19 +579,8 @@ export default function MinecraftTreeFarmOutputCalculator() {
         </CardContent>
       </Card>
 
-      <section
-        className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-        itemScope
-        itemType="https://schema.org/Article"
-      >
-        <meta itemProp="name" content="The Complete Guide to Minecraft Tree Farm Output: Understanding Production and Sustainability" />
-        <meta itemProp="description" content="A comprehensive guide to Minecraft tree farm output, calculating logs per cycle, sapling sustainability, and optimizing production rates." />
-        <meta itemProp="keywords" content="Minecraft tree farm, tree farm output, sapling sustainability, wood production, tree farming" />
-        <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
-        <meta itemProp="datePublished" content="2025-01-24" />
-        <meta itemProp="url" content={baseUrl} />
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Minecraft Tree Farm Output: Understanding Production and Sustainability</h1>
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">The Complete Guide to Minecraft Tree Farm Output: Understanding Production and Sustainability</h1>
         <p className="text-lg italic text-muted-foreground">A comprehensive guide to Minecraft tree farm output, calculating logs per cycle, sapling sustainability, and optimizing production rates.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -587,7 +595,7 @@ export default function MinecraftTreeFarmOutputCalculator() {
         </ul>
         <hr />
 
-        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overview: Understanding Tree Farm Output</h2>
+        <h2 id="overview" className="text-2xl font-bold text-foreground pt-8">Overview: Understanding Tree Farm Output</h2>
         <p>Tree farm output in Minecraft measures logs and saplings produced by tree farms. Understanding tree farm output helps players optimize wood production, ensure sapling sustainability, and design efficient automated farms. Output depends on sapling type, count, growth rate, and farm efficiency.</p>
 
         <p>Tree farm output directly affects wood availability and farm sustainability. Higher output means more logs for building and crafting. Sustainability ensures farms can replant themselves continuously. Understanding output helps balance production with sustainability needs.</p>
@@ -601,8 +609,8 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <hr />
 
-        <h2 id="tree-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Tree Types and Characteristics</h2>
-        
+        <h2 id="tree-types" className="text-2xl font-bold text-foreground pt-8">Tree Types and Characteristics</h2>
+
         <p>Different tree types have different characteristics affecting output. Understanding tree types helps players choose optimal trees for their farms.</p>
 
         <p>Oak trees: 4 logs per tree, 2 saplings per tree. Balanced logs and saplings. Good for general farming. Oak is common and easy to farm with reliable sapling yields.</p>
@@ -626,8 +634,8 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <hr />
 
-        <h2 id="production" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Production Calculation</h2>
-        
+        <h2 id="production" className="text-2xl font-bold text-foreground pt-8">Production Calculation</h2>
+
         <p>Production calculation determines logs and saplings produced by tree farms. Understanding calculation helps players plan farm size and production expectations.</p>
 
         <p>Trees grown: Trees Grown = Sapling Count × (Growth Rate / 100) × (Farm Efficiency / 100). This calculates how many trees actually grow per cycle. Higher values mean more production potential.</p>
@@ -645,8 +653,8 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <hr />
 
-        <h2 id="sustainability" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Sapling Sustainability</h2>
-        
+        <h2 id="sustainability" className="text-2xl font-bold text-foreground pt-8">Sapling Sustainability</h2>
+
         <p>Sapling sustainability ensures farms produce enough saplings to replant themselves. Understanding sustainability helps players design farms for continuous operation.</p>
 
         <p>Sustainability calculation: Net Saplings = Total Saplings - Sapling Count. Positive values mean sustainable (can replant), negative values mean unsustainable (need external saplings). Sustainability is essential for continuous farm operation.</p>
@@ -660,8 +668,8 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <hr />
 
-        <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Output Optimization Strategies</h2>
-        
+        <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8">Output Optimization Strategies</h2>
+
         <p>Output optimization strategies help players maximize tree farm production. Multiple approaches can optimize output.</p>
 
         <p>Tree type optimization uses high-log tree types (spruce, dark oak) for maximum wood production. Higher logs per tree means more production per cycle. Balance log yield with sapling sustainability for optimal selection.</p>
@@ -676,8 +684,8 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <hr />
 
-        <h2 id="bone-meal" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Bone Meal and Growth Acceleration</h2>
-        
+        <h2 id="bone-meal" className="text-2xl font-bold text-foreground pt-8">Bone Meal and Growth Acceleration</h2>
+
         <p>Bone meal accelerates tree growth, increasing production rates. Understanding bone meal usage helps players optimize growth speed and production.</p>
 
         <p>Bone meal effect: Bone meal increases growth rate by approximately 20% and accelerates growth cycles. Using bone meal significantly increases production per time unit. However, bone meal costs resources (bones or bone meal items).</p>
@@ -693,8 +701,8 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <hr />
 
-        <h2 id="automation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Automated Tree Farming</h2>
-        
+        <h2 id="automation" className="text-2xl font-bold text-foreground pt-8">Automated Tree Farming</h2>
+
         <p>Automated tree farming enables continuous production without manual intervention. Understanding automation helps players design efficient automated farms.</p>
 
         <p>Automation components: Automated farms use pistons or TNT to break trees, hoppers to collect items, dispensers to plant saplings, and redstone to coordinate operations. Automation enables continuous production.</p>
@@ -708,7 +716,7 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <hr />
 
-        <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+        <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
         <p>Minecraft tree farm output depends on sapling type, count, growth rate, farm efficiency, and bone meal usage. Understanding output calculation, sustainability, and optimization strategies helps players maximize wood production and ensure continuous farm operation.</p>
 
         <p>Key factors affecting output include: sapling type (different trees produce different logs and saplings), sapling count (more saplings = more production), growth rate (higher rate = more trees grow), farm efficiency (higher efficiency = more successful growths), and bone meal usage (accelerates growth). Understanding these factors helps optimize output.</p>

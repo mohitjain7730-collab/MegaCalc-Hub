@@ -142,6 +142,32 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Minecraft Villager Trading: Profit, Mechanics, and Strategy',
+      description: 'A comprehensive guide to Minecraft villager trading, calculating emerald profit, optimizing trade routes, and maximizing trading efficiency.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/minecraft-villager-trade-tracker.png',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': baseUrl,
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -214,17 +240,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Session', 
-      detail: `Track trade performance: ${emeraldProfit >= 0 ? '+' : ''}${emeraldProfit.toFixed(1)} emerald profit per trade, ${profitPerHour.toFixed(1)} emeralds/hour. ${emeraldProfit >= 5 ? 'Excellent trade - continue using this trade.' : emeraldProfit >= 1 ? 'Good trade - valuable for emerald generation.' : 'Consider finding better trades for higher profit.'}` 
+    {
+      label: 'This Session',
+      detail: `Track trade performance: ${emeraldProfit >= 0 ? '+' : ''}${emeraldProfit.toFixed(1)} emerald profit per trade, ${profitPerHour.toFixed(1)} emeralds/hour. ${emeraldProfit >= 5 ? 'Excellent trade - continue using this trade.' : emeraldProfit >= 1 ? 'Good trade - valuable for emerald generation.' : 'Consider finding better trades for higher profit.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize trading: identify highest-profit trades, level up villagers to unlock better trades, compare multiple trade options, increase trade frequency through automation, and track total emerald profit to identify optimal trading strategies.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize trading: identify highest-profit trades, level up villagers to unlock better trades, compare multiple trade options, increase trade frequency through automation, and track total emerald profit to identify optimal trading strategies.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize villager trading: track profit per trade for all trades, prioritize high-profit trades, level up villagers for better prices, automate trading for continuous profit, compare different villager professions, and maximize emerald generation through efficient trading.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize villager trading: track profit per trade for all trades, prioritize high-profit trades, level up villagers for better prices, automate trading for continuous profit, compare different villager professions, and maximize emerald generation through efficient trading.'
     },
   ];
 
@@ -560,7 +586,7 @@ export default function MinecraftVillagerTradeTracker() {
         <hr />
 
         <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trade Mechanics and Types</h2>
-        
+
         <p>Villager trades involve exchanging items and emeralds between players and villagers. Understanding trade mechanics helps players optimize trading strategies and maximize profit.</p>
 
         <p>Buying trades: Players pay emeralds to receive items from villagers. Profit = Item Value - Trade Cost. Positive profit means the item is worth more than you paid, making the trade profitable. Buying trades are valuable when item value exceeds trade cost.</p>
@@ -577,7 +603,7 @@ export default function MinecraftVillagerTradeTracker() {
         <hr />
 
         <h2 id="profit" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Emerald Profit Calculation</h2>
-        
+
         <p>Emerald profit calculation determines the emerald gain or loss from each trade. Understanding profit calculation helps players evaluate trade value and optimize trading strategies.</p>
 
         <p>Buying profit formula: Profit = Item Value - Trade Cost. This calculates profit when buying items from villagers. Positive profit means the item is worth more than you paid, making the trade profitable. Higher item values relative to trade costs increase profit.</p>
@@ -594,7 +620,7 @@ export default function MinecraftVillagerTradeTracker() {
         <hr />
 
         <h2 id="leveling" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Villager Leveling and Prices</h2>
-        
+
         <p>Villager leveling unlocks better trades and potentially better prices. Understanding leveling helps players optimize villager development and maximize trade value.</p>
 
         <p>Villager levels range from 1 (Novice) to 5 (Master). Each level unlocks new trades and may improve existing trade prices. Higher levels typically offer better trades with more favorable prices. Master level (5) villagers offer the best trades.</p>
@@ -611,7 +637,7 @@ export default function MinecraftVillagerTradeTracker() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trade Optimization Strategies</h2>
-        
+
         <p>Trade optimization strategies help players maximize emerald profit and trading efficiency. Multiple approaches can optimize trading performance.</p>
 
         <p>Profit tracking identifies highest-profit trades by calculating profit per trade for all available trades. Track profit for buying and selling directions, compare options, and prioritize highest-profit trades. Profit tracking helps identify optimal trades.</p>
@@ -627,7 +653,7 @@ export default function MinecraftVillagerTradeTracker() {
         <hr />
 
         <h2 id="frequency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trade Frequency and Automation</h2>
-        
+
         <p>Trade frequency determines how many trades can be completed per time unit, directly affecting total profit over time. Understanding frequency helps players optimize trading setups and maximize profit.</p>
 
         <p>Frequency impact: Higher trade frequency dramatically increases total profit, even with moderate profit per trade. For example, 2 emerald profit per trade at 50 trades/hour = 100 emeralds/hour, while 5 emerald profit per trade at 10 trades/hour = 50 emeralds/hour. Frequency can be more important than profit per trade for total profit.</p>
@@ -644,7 +670,7 @@ export default function MinecraftVillagerTradeTracker() {
         <hr />
 
         <h2 id="professions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Villager Professions and Best Trades</h2>
-        
+
         <p>Different villager professions offer different trades with varying profit potential. Understanding professions helps players identify best trades and optimize trading strategies.</p>
 
         <p>Farmer profession offers crop trades with good profit potential. Farmers buy crops and sell food items. Crop trades can be very profitable, especially with automated farms. Farmers are valuable for emerald generation through crop sales.</p>

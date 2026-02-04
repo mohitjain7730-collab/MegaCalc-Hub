@@ -360,14 +360,8 @@ export default function RobloxPetSimPowerCalc() {
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-                itemScope
-                itemType="https://schema.org/Article"
             >
-                <meta itemProp="name" content="Pet Simulator X Damage Guide: Huges, Titanics & Dark Matter" />
-                <meta itemProp="description" content="Understand how damage works in Pet Simulator X. Learn why Huge Pets are better than Dark Matter, and how Super Teamwork stacks." />
-                <meta itemProp="keywords" content="Pet Simulator X Damage Calculator, Huge vs Titanic Power, PSX Best Friend Enchant, Shiny Dark Matter Stats" />
-
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Pet Simulator X Damage Guide: Huges, Titanics & Dark Matter</h1>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Pet Simulator X Damage Guide: Huges, Titanics & Dark Matter</h1>
                 <p className="text-lg italic text-muted-foreground">Stop guessing. Here is exactly how strong your team really is.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The Hierarchy of Power</h2>

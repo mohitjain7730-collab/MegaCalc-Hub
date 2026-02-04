@@ -277,14 +277,8 @@ export default function RobloxPSXRebirthCalc() {
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-                itemScope
-                itemType="https://schema.org/Article"
             >
-                <meta itemProp="name" content="Pet Simulator X Rebirth Guide: Benefits & Requirements" />
-                <meta itemProp="description" content="Is Rebirth worth it in Pet Simulator X? Learn about permanent damage boosts, teleport unlock, and Hardcore Mode requirements." />
-                <meta itemProp="keywords" content="Pet Simulator X Rebirth Cost, PSX Teleport Unlock, Hardcore Mode Guide, Pet Sim X Damage Boost" />
-
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Pet Simulator X Rebirth Guide: Benefits & Requirements</h1>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Pet Simulator X Rebirth Guide: Benefits & Requirements</h1>
                 <p className="text-lg italic text-muted-foreground">Don't be scared to press the button. Rebirthing is the key to Endgame.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Why Rebirth?</h2>

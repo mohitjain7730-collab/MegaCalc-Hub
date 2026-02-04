@@ -151,6 +151,32 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Minecraft Beacon Range Optimization: Understanding Range, Effects, and Coverage',
+      description: 'A comprehensive guide to Minecraft beacon range optimization, understanding pyramid levels, effect combinations, and coverage area calculation.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/minecraft-beacon-range-optimizer.png',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': baseUrl,
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -220,17 +246,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Session', 
-      detail: `Beacon range: ${effectiveRange.toFixed(0)} blocks, ${blocksInRange.toLocaleString()} blocks² coverage. ${effectiveRange >= 100 ? 'Excellent range for large-area coverage.' : effectiveRange >= 75 ? 'Good range for medium-area coverage.' : 'Consider building pyramid for more range.'}` 
+    {
+      label: 'This Session',
+      detail: `Beacon range: ${effectiveRange.toFixed(0)} blocks, ${blocksInRange.toLocaleString()} blocks² coverage. ${effectiveRange >= 100 ? 'Excellent range for large-area coverage.' : effectiveRange >= 75 ? 'Good range for medium-area coverage.' : 'Consider building pyramid for more range.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize beacon setup: build higher pyramid levels for more range (Level 3-4 for maximum), enable 2 effects if needed (Level 3+), choose optimal effects for your needs, and position beacon centrally for maximum coverage.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize beacon setup: build higher pyramid levels for more range (Level 3-4 for maximum), enable 2 effects if needed (Level 3+), choose optimal effects for your needs, and position beacon centrally for maximum coverage.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize beacon coverage: build maximum pyramid (Level 4) for 150 block range, enable 2 effects for combined benefits, position beacons strategically for optimal coverage, and consider multiple beacons for very large areas.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize beacon coverage: build maximum pyramid (Level 4) for 150 block range, enable 2 effects for combined benefits, position beacons strategically for optimal coverage, and consider multiple beacons for very large areas.'
     },
   ];
 
@@ -506,17 +532,8 @@ export default function MinecraftBeaconRangeOptimizer() {
 
       <section
         className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-        itemScope
-        itemType="https://schema.org/Article"
       >
-        <meta itemProp="name" content="The Complete Guide to Minecraft Beacon Range Optimization: Understanding Range, Effects, and Coverage" />
-        <meta itemProp="description" content="A comprehensive guide to Minecraft beacon range optimization, understanding pyramid levels, effect combinations, and coverage area calculation." />
-        <meta itemProp="keywords" content="Minecraft beacon, beacon range, beacon pyramid, beacon effects, beacon coverage" />
-        <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
-        <meta itemProp="datePublished" content="2025-01-24" />
-        <meta itemProp="url" content={baseUrl} />
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Minecraft Beacon Range Optimization: Understanding Range, Effects, and Coverage</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">The Complete Guide to Minecraft Beacon Range Optimization: Understanding Range, Effects, and Coverage</h1>
         <p className="text-lg italic text-muted-foreground">A comprehensive guide to Minecraft beacon range optimization, understanding pyramid levels, effect combinations, and coverage area calculation.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -546,7 +563,7 @@ export default function MinecraftBeaconRangeOptimizer() {
         <hr />
 
         <h2 id="pyramid" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Pyramid Levels and Range</h2>
-        
+
         <p>Pyramid levels determine beacon range multipliers and effect count. Understanding pyramid levels helps players plan beacon setups and optimize range.</p>
 
         <p>Level 0 (No Pyramid): 50 blocks range (1x), 1 effect. No pyramid provides base range only. Suitable for small areas or temporary setups. Building even a small pyramid significantly increases range.</p>
@@ -565,7 +582,7 @@ export default function MinecraftBeaconRangeOptimizer() {
         <hr />
 
         <h2 id="effects" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Beacon Effects and Levels</h2>
-        
+
         <p>Beacon effects provide beneficial status effects to players within range. Understanding effects and levels helps players choose optimal effect combinations.</p>
 
         <p>Available effects include: Speed (increases movement speed), Haste (increases mining speed), Resistance (reduces damage), Jump Boost (increases jump height), Strength (increases attack damage), and Regeneration (restores health over time). Different effects suit different needs.</p>
@@ -582,7 +599,7 @@ export default function MinecraftBeaconRangeOptimizer() {
         <hr />
 
         <h2 id="coverage" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Coverage Area Calculation</h2>
-        
+
         <p>Coverage area calculation determines how much area beacon effects cover. Understanding coverage helps players plan beacon placement and optimize coverage for bases.</p>
 
         <p>Coverage formula: Area = π × (Range)². This calculates the circular area covered by beacon effects. Range increases dramatically increase coverage area because area scales with range squared. For example, doubling range quadruples coverage area.</p>
@@ -599,7 +616,7 @@ export default function MinecraftBeaconRangeOptimizer() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Range Optimization Strategies</h2>
-        
+
         <p>Range optimization strategies help players maximize beacon range and coverage. Multiple approaches can optimize range.</p>
 
         <p>Pyramid level optimization builds maximum pyramid (Level 4) for 150 block range. Higher pyramid levels provide significantly larger ranges. Level 4 pyramid provides maximum range and 2 effects. Build highest pyramid level feasible for maximum range.</p>
@@ -615,7 +632,7 @@ export default function MinecraftBeaconRangeOptimizer() {
         <hr />
 
         <h2 id="placement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Beacon Placement and Positioning</h2>
-        
+
         <p>Beacon placement and positioning significantly affect coverage and effectiveness. Understanding placement helps players optimize beacon setups.</p>
 
         <p>Central placement positions beacons in the center of areas to maximize coverage. Central placement maximizes coverage area and ensures even coverage distribution. Consider base layout when choosing central positions for optimal coverage.</p>
@@ -634,7 +651,7 @@ export default function MinecraftBeaconRangeOptimizer() {
         <hr />
 
         <h2 id="multiple" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Multiple Beacons and Coverage</h2>
-        
+
         <p>Multiple beacons can provide coverage for very large bases or areas. Understanding multiple beacon setups helps players plan comprehensive coverage.</p>
 
         <p>Coverage planning calculates how many beacons are needed for full coverage. Determine base size, calculate coverage per beacon, and plan beacon count and placement. Coverage planning ensures adequate beacon coverage for large bases.</p>

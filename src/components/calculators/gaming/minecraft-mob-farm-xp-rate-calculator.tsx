@@ -156,6 +156,32 @@ const schemaMarkup = {
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    {
+      '@type': 'Article',
+      headline: 'The Complete Guide to Minecraft Mob Farm XP Generation: Understanding XP Rates and Optimization',
+      description: 'A comprehensive guide to Minecraft mob farm XP generation, calculating XP rates, optimizing spawn and kill rates, and maximizing XP efficiency.',
+      author: {
+        '@type': 'Organization',
+        name: 'MegaCalc Hub Gaming Team',
+      },
+      datePublished: '2025-01-24',
+      image: 'https://mycalculating.com/assets/minecraft-mob-farm-xp-rate-calculator.png',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': baseUrl,
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    },
   ],
 };
 
@@ -227,17 +253,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { 
-      label: 'This Session', 
-      detail: `XP generation: ${xpPerHour.toFixed(0)} XP/hour, ${mobsPerHour.toFixed(0)} mobs/hour. ${xpPerHour >= 1000 ? 'Excellent rate - great for leveling.' : xpPerHour >= 200 ? 'Good rate - suitable for leveling.' : 'Consider optimizing farm for better rates.'}` 
+    {
+      label: 'This Session',
+      detail: `XP generation: ${xpPerHour.toFixed(0)} XP/hour, ${mobsPerHour.toFixed(0)} mobs/hour. ${xpPerHour >= 1000 ? 'Excellent rate - great for leveling.' : xpPerHour >= 200 ? 'Good rate - suitable for leveling.' : 'Consider optimizing farm for better rates.'}`
     },
-    { 
-      label: 'This Week', 
-      detail: 'Optimize mob farm: improve spawn rates (better farm design, lighting, spawn platforms), increase kill rates (efficient killing mechanisms), improve efficiency (reduce mob escapes), and consider higher-XP mobs (blaze, guardian) if feasible.' 
+    {
+      label: 'This Week',
+      detail: 'Optimize mob farm: improve spawn rates (better farm design, lighting, spawn platforms), increase kill rates (efficient killing mechanisms), improve efficiency (reduce mob escapes), and consider higher-XP mobs (blaze, guardian) if feasible.'
     },
-    { 
-      label: 'Ongoing', 
-      detail: 'Continuously optimize XP generation: monitor spawn and kill rates, maintain high efficiency, upgrade to better mob types when possible, automate killing for continuous XP, and track XP generation to identify optimization opportunities.' 
+    {
+      label: 'Ongoing',
+      detail: 'Continuously optimize XP generation: monitor spawn and kill rates, maintain high efficiency, upgrade to better mob types when possible, automate killing for continuous XP, and track XP generation to identify optimization opportunities.'
     },
   ];
 
@@ -544,17 +570,8 @@ export default function MinecraftMobFarmXPRateCalculator() {
 
       <section
         className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-        itemScope
-        itemType="https://schema.org/Article"
       >
-        <meta itemProp="name" content="The Complete Guide to Minecraft Mob Farm XP Generation: Understanding XP Rates and Optimization" />
-        <meta itemProp="description" content="A comprehensive guide to Minecraft mob farm XP generation, calculating XP rates, optimizing spawn and kill rates, and maximizing XP efficiency." />
-        <meta itemProp="keywords" content="Minecraft mob farm, XP generation, mob farm XP, XP rates, mob farming" />
-        <meta itemProp="author" content="MegaCalc Hub Gaming Team" />
-        <meta itemProp="datePublished" content="2025-01-24" />
-        <meta itemProp="url" content={baseUrl} />
-
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Minecraft Mob Farm XP Generation: Understanding XP Rates and Optimization</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">The Complete Guide to Minecraft Mob Farm XP Generation: Understanding XP Rates and Optimization</h1>
         <p className="text-lg italic text-muted-foreground">A comprehensive guide to Minecraft mob farm XP generation, calculating XP rates, optimizing spawn and kill rates, and maximizing XP efficiency.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -584,7 +601,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
         <hr />
 
         <h2 id="mechanics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">XP Generation Mechanics</h2>
-        
+
         <p>XP generation mechanics determine how mob farms produce experience points. Understanding mechanics helps players design effective farms and optimize XP rates.</p>
 
         <p>Spawn mechanics: Mobs spawn in dark areas within spawn chunks or player-loaded chunks. Spawn rates depend on available spawn spaces, mob cap, and spawn conditions. Higher spawn rates require more spawn platforms, proper lighting control, and efficient spawn area design.</p>
@@ -601,7 +618,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
         <hr />
 
         <h2 id="mob-types" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Mob Types and XP Values</h2>
-        
+
         <p>Different mob types provide different XP amounts when killed. Understanding mob types and XP values helps players choose optimal mobs for XP farming.</p>
 
         <p>Standard XP mobs (5 XP): Zombie, Skeleton, Spider, Creeper, Enderman, Witch. These mobs provide 5 XP per kill and are common and easy to farm. Standard XP mobs are good for general XP farming and are typically easier to design farms for.</p>
@@ -618,7 +635,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
         <hr />
 
         <h2 id="rates" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Spawn and Kill Rates</h2>
-        
+
         <p>Spawn and kill rates directly determine XP generation capacity. Understanding rates helps players optimize farms for maximum XP generation.</p>
 
         <p>Spawn rate measures how many mobs spawn per minute in the farm. Higher spawn rates require more spawn platforms, proper lighting control, and efficient spawn area design. Spawn rates are limited by mob cap and available spawn spaces. Optimize spawn rates by maximizing spawn platforms and maintaining proper spawn conditions.</p>
@@ -635,7 +652,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
         <hr />
 
         <h2 id="efficiency" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Farm Efficiency Optimization</h2>
-        
+
         <p>Farm efficiency measures how effectively spawned mobs are killed. Higher efficiency means more XP generation from the same spawn rate. Understanding efficiency helps players optimize farms for maximum XP output.</p>
 
         <p>Efficiency calculation: Efficiency = (Actual Kills / Spawned Mobs) × 100. 100% efficiency means all spawned mobs are killed. Lower efficiency accounts for mobs escaping, not being killed, or other inefficiencies. Real farms typically achieve 80-95% efficiency depending on design.</p>
@@ -652,7 +669,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
         <hr />
 
         <h2 id="optimization" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">XP Rate Optimization Strategies</h2>
-        
+
         <p>XP rate optimization strategies help players maximize XP generation from mob farms. Multiple approaches can optimize XP rates.</p>
 
         <p>Spawn rate optimization maximizes mob spawning. Increase spawn platforms for more spawn spaces, optimize lighting for proper spawn conditions, maintain spawn chunks for continuous spawning, and design efficient spawn areas. Higher spawn rates directly increase XP generation potential.</p>
@@ -668,7 +685,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
         <hr />
 
         <h2 id="design" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Mob Farm Design Principles</h2>
-        
+
         <p>Effective mob farm design maximizes XP generation through optimal spawn rates, kill rates, and efficiency. Understanding design principles helps players build efficient farms.</p>
 
         <p>Spawn area design maximizes spawn rates. Use multiple spawn platforms for more spawn spaces, maintain proper lighting (dark for hostile mobs), ensure adequate spawn area size, and optimize spawn platform spacing. Good spawn area design increases spawn rates significantly.</p>

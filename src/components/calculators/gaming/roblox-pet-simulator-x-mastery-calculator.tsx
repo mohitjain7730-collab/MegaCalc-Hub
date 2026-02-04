@@ -297,14 +297,8 @@ export default function RobloxPSXMasteryCalc() {
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-                itemScope
-                itemType="https://schema.org/Article"
             >
-                <meta itemProp="name" content="Pet Simulator X Mastery Guide: Fastest Way to Level 99" />
-                <meta itemProp="description" content="Max out your Masteries fast. Guides for Lootbag, Enchanting, and Egg Mastery AFK strategies." />
-                <meta itemProp="keywords" content="Pet Simulator X Mastery Guide, Level 99 Lootbag Mastery, AFK Enchanting PSX, Mastery Rewards List" />
-
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Pet Simulator X Mastery Guide: Fastest Way to Level 99</h1>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Pet Simulator X Mastery Guide: Fastest Way to Level 99</h1>
                 <p className="text-lg italic text-muted-foreground">Mastering skills isn't just for status. The Level 99 perks are game-breaking.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Why Level Mastery?</h2>

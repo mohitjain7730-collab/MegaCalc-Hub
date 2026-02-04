@@ -337,14 +337,8 @@ export default function RobloxPSXHatchCalc() {
 
             <section
                 className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
-                itemScope
-                itemType="https://schema.org/Article"
             >
-                <meta itemProp="name" content="Pet Simulator X Hatching Guide: Odds, Mythicals, & Huges" />
-                <meta itemProp="description" content="Calculate the real probability of hatching Huge Pets in Pet Simulator X. Understand the math behind AFK hatching and luck multipliers." />
-                <meta itemProp="keywords" content="Pet Simulator X Hatch Chance, How to get Huge Pet calculator, PSX hatch odds, Luck Gamepass calculator" />
-
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Pet Simulator X Hatching Guide: Odds, Mythicals, & Huges</h1>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Pet Simulator X Hatching Guide: Odds, Mythicals, & Huges</h1>
                 <p className="text-lg italic text-muted-foreground">Is it luck, or is it just math? Here is the truth about hatching Huges.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The "Gambler's Fallacy" in PSX</h2>
