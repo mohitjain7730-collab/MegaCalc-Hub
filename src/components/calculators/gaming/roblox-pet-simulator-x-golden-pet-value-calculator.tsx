@@ -318,170 +318,62 @@ export default function RobloxPSXGoldenCalc() {
                 <meta itemProp="description" content="Master the art of pet upgrading in Pet Simulator X. Comprehensive guide on Golden, Rainbow, and Dark Matter multipliers, Shiny bonuses, and trading strategies to maximize your gem profits." />
                 <meta itemProp="keywords" content="Pet Simulator X Golden Machine, Rainbow Pet Value, Dark Matter Multiplier, PSX Upgrade Guide, Shiny Pet Value, Roblox PSX Trading" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Ultimate Guide to Upgrading Pets in Pet Simulator X</h1>
-                <p className="text-lg italic text-muted-foreground">From a humble Cat to a server-destroying Dark Matter Galaxy Dragon: this is how you master the upgrade machines and dominate the trading economy.</p>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Mastering Pet Upgrades in Pet Simulator X</h1>
+                <p className="text-lg italic text-muted-foreground">Stop guessing your pet's value. Use the Golden, Rainbow, and Dark Matter multipliers to predict exactly how strong (and valuable) your inventory will become.</p>
 
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Introduction to Pet Tiers</h2>
+                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">How Pet Upgrades Work</h2>
                 <p>
-                    In <strong>Roblox Pet Simulator X (PSX)</strong>, your strength is determined by the pets you equip. While collecting rare pets is fun, the real power comes from <strong>upgrading</strong> them.
-                    Every pet in the game—strictly speaking, "stat pets" rather than Huges or Titanics—can exist in four primary states: <strong>Normal</strong>, <strong>Golden</strong>, <strong>Rainbow</strong>, and <strong>Dark Matter</strong>.
+                    In <strong>Roblox Pet Simulator X</strong>, upgrading pets is the primary way to increase your team's total damage output. While hatching rare pets is the first step, the <strong>Upgrade Machines</strong> (Golden, Rainbow, Dark Matter) are where the real power is forged.
                 </p>
                 <p>
-                    Understanding the math behind these upgrades is crucial not just for dealing more damage to chests, but for <strong>trading</strong>. A savvy player knows exactly when to sell a Rainbow pet versus when to cook it into a Dark Matter pet for maximum profit. This guide covers every mechanic, probability, and strategy you need.
-                </p>
-
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. The Golden Machine</h2>
-                <div className="p-4 border-l-4 border-yellow-500 bg-yellow-500/5 my-4">
-                    <h3 className="font-bold text-yellow-600">Quick Stats</h3>
-                    <ul className="list-disc pl-6 space-y-1 mt-2">
-                        <li><strong>Multiplier:</strong> ~3x stronger than Normal.</li>
-                        <li><strong>Location:</strong> Spawn World (Shop Area).</li>
-                        <li><strong>Cost:</strong> Gems + Normal Pets.</li>
-                        <li><strong>Requirement:</strong> Up to 7 Normal Pets.</li>
-                    </ul>
-                </div>
-                <p>
-                    The <strong>Golden Machine</strong> is the first upgrade station you encounter. It converts your standard pets into Golden variants.
-                    A Golden pet typically deals about <strong>300% (3x)</strong> the damage of its Normal counterpart. This is a massive jump for early-game players.
-                </p>
-                <h3 className="text-xl font-semibold text-foreground mt-4">The Probability Math</h3>
-                <p>
-                    You can insert anywhere from 1 to 7 pets into the machine. The success chance scales linearly (mostly).
-                </p>
-                <ul className="list-disc pl-6 space-y-2 mt-2">
-                    <li><strong>1 Pet:</strong> 13% Chance (High Risk, commonly used for "tech" gambling with trash pets).</li>
-                    <li><strong>2 Pets:</strong> 29% Chance.</li>
-                    <li><strong>3 Pets:</strong> 43% Chance.</li>
-                    <li><strong>4 Pets:</strong> 57% Chance.</li>
-                    <li><strong>5 Pets:</strong> 71% Chance.</li>
-                    <li><strong>6 Pets:</strong> 88% Chance (The gambler's sweet spot).</li>
-                    <li><strong>7 Pets:</strong> 100% Chance (Safe and recommended for valuable pets).</li>
-                </ul>
-                <p>
-                    <strong>Strategy Note:</strong> If you have a Mythical pet that is hard to hatch, <strong>ALWAYS use 6 or 7 pets</strong>. Losing a Mythical to a 57% fail chance is a devastating loss of value. For easier-to-get Legendaries, you might risk 3-4 pets to stretch your supply.
+                    This calculator uses the game's official multiplier logic to estimate the final value of your pets. Understanding these multipliers is critical for both <strong>Hardcore Mode progression</strong> and <strong>high-tier trading</strong>.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">2. The Rainbow Machine</h2>
-                <div className="p-4 border-l-4 border-pink-500 bg-pink-500/5 my-4">
-                    <h3 className="font-bold text-pink-600">Quick Stats</h3>
-                    <ul className="list-disc pl-6 space-y-1 mt-2">
-                        <li><strong>Multiplier:</strong> ~13x stronger than Normal (~4.3x stronger than Golden).</li>
-                        <li><strong>Location:</strong> Mine Area (Spawn World).</li>
-                        <li><strong>Cost:</strong> Gems + Golden Pets.</li>
-                        <li><strong>Requirement:</strong> Up to 7 Golden Pets.</li>
-                    </ul>
-                </div>
+                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Deep Dive: The Multipliers</h2>
+
+                <h3 className="text-xl font-semibold text-foreground mt-4">1. Golden Machine (3x Power)</h3>
                 <p>
-                    The <strong>Rainbow Machine</strong> is where pets start to get serious. A Rainbow pet is distinct with its shifting color palette and high damage output.
-                    Statistically, a Rainbow pet is roughly <strong>13 times stronger</strong> than the Normal version.
-                </p>
-                <h3 className="text-xl font-semibold text-foreground mt-4">The Fuse Logic</h3>
-                <p>
-                    The logic is identical to the Golden Machine but uses Golden Pets as fuel.
-                    Merging 7 Golden Pets guarantees a Rainbow Pet.
-                    This implies that <strong>1 Rainbow Pet = 49 Normal Pets</strong> (assuming 100% success rate paths for safety).
-                    This 49:1 ratio creates the baseline for trading values. If a Normal pet is worth 1m Gems, the Rainbow version should theoretically be worth at least 49m Gems purely based on material cost, plus a premium for the time and convenience.
+                    Located in the Shop area of Spawn World. Transforming a pet to Golden grants a <strong>300% (3x) damage boost</strong>.
+                    <br />
+                    <em>Strategy:</em> Golden pets are the most cost-effective upgrade for early game players. However, serious traders perform this step mainly as a bridge to Rainbow.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">3. The Dark Matter Machine</h2>
-                <div className="p-4 border-l-4 border-purple-600 bg-purple-600/5 my-4">
-                    <h3 className="font-bold text-purple-600">Quick Stats</h3>
-                    <ul className="list-disc pl-6 space-y-1 mt-2">
-                        <li><strong>Multiplier:</strong> ~45x stronger than Normal (~3.5x stronger than Rainbow).</li>
-                        <li><strong>Location:</strong> Dark Tech World.</li>
-                        <li><strong>Cost:</strong> Gems + Rainbow Pets + <strong>TIME</strong>.</li>
-                        <li><strong>Requirement:</strong> 1 to 6 Rainbow Pets.</li>
-                    </ul>
-                </div>
+                <h3 className="text-xl font-semibold text-foreground mt-4">2. Rainbow Machine (13x Power)</h3>
                 <p>
-                    The <strong>Dark Matter (DM)</strong> form is the pinnacle of the standard upgrade path. These pets have a deep purple/black galaxy texture and deal massive damage.
-                    A Dark Matter pet is approximately <strong>45x stronger</strong> than a Normal pet.
-                </p>
-                <h3 className="text-xl font-semibold text-foreground mt-4">The Time Gate Mechanic</h3>
-                <p>
-                    Unlike the Golden and Rainbow machines, the Dark Matter machine is <strong>not instant</strong>. It is an incubator.
-                    When you deposit a Rainbow Pet, it starts a conversion process that takes <strong>5 Days</strong>.
-                </p>
-                <p>
-                    You can reduce this time in two ways:
-                </p>
-                <ol className="list-decimal pl-6 space-y-2 mt-2">
-                    <li><strong>Add More Pets:</strong> Inputting more duplicates of the same Rainbow Pet reduces the timer.
-                        <ul className="list-disc pl-6 mt-1">
-                            <li>1 Rainbow = 5 Days</li>
-                            <li>6 Rainbows = 30 Minutes (Almost instant)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Spend Robux:</strong> You can instantly finish the incubation for roughly 800-1000 Robux (depending on time left).</li>
-                </ol>
-                <p>
-                    <strong>Trading Tip:</strong> The 5-day wait creates a massive value gap. A "fresh" Rainbow pet is worth significantly less than a "ready" Dark Matter pet.
-                    Impatient players will overpay for Dark Matter pets to use them <em>now</em> rather than next week.
-                    Smart traders always have their Dark Matter machine slots full, essentially "baking" profit over 5 days.
+                    Located in the Mine area of Spawn World. Rainbow pets are approximately <strong>13.5x stronger</strong> than their Normal counterparts.
+                    <br />
+                    <em>Strategy:</em> A Rainbow pet is often the "currency" of the trading plaza. It represents a significant investment of materials (typically 7 Golden pets, or 49 Normal pets).
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">The Shiny Bonus</h2>
+                <h3 className="text-xl font-semibold text-foreground mt-4">3. Dark Matter Machine (45x Power)</h3>
                 <p>
-                    Introduced later in the game's lifecycle, <strong>Shiny</strong> is a special attribute that any pet can have.
-                    A pet can be "Shiny Normal", "Shiny Golden", "Shiny Rainbow", or "Shiny Dark Matter".
-                </p>
-                <p>
-                    <strong>The Multiplier:</strong> A Shiny pet is roughly <strong>2.5x (150% stronger)</strong> than its non-shiny version.
-                </p>
-                <p>
-                    This completely changes the meta.
-                    A <strong>Shiny Rainbow</strong> pet is actually <em>stronger</em> (approx 32.5x total multiplier) than a standard Dark Matter pet (unless the DM is also Shiny).
-                    Actually, wait—let's check the math. Rainbow is 13x. Shiny Rainbow is 13 * 2.5 = 32.5x. Dark Matter is 45x.
-                    Okay, so a standard Dark Matter is still stronger than a Shiny Rainbow.
-                    However, a <strong>Shiny Dark Matter</strong> is the absolute god-tier, sitting at ~112.5x base power.
-                </p>
-                <p>
-                    <strong>Warning:</strong> When upgrading, if you mix Shiny pets with non-Shiny pets, you risk losing the Shiny status unless you are careful. Usually, the machine tries to preserve it if the primary slot is Shiny, but mechanics change. Always double-check before clicking "Fuse".
+                    Located in the Dark Tech World. Dark Matter pets are the pinnacle of non-Huge pets, boasting a massive <strong>45x damage multiplier</strong> compared to the Normal version.
+                    <br />
+                    <em>The Time Value:</em> Unlike others, this machine takes <strong>5 days</strong> to process. This "time cost" creates a premium in the trading market. A "ready-to-equip" Dark Matter pet is worth significantly more than the Rainbow ingredients used to make it.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Hardcore Mode: A Different Economy</h2>
+                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Advanced Mechanics: Shiny & Hardcore</h2>
+
+                <h3 className="text-lg font-bold text-foreground mt-2">The Shiny Multiplier</h3>
                 <p>
-                    Hardcore Mode pets look the same but are fundamentally different items. A "Hardcore Dark Matter Dog" deals trillions of times more damage than a "Normal Mode Dark Matter Dog".
-                    However, the <strong>multipliers remain the same</strong>. The relationship between Hardcore Normal and Hardcore Golden applies the same 3x logic.
-                </p>
-                <p>
-                    When using this calculator for Hardcore pets, simply input the Hardcore Base Value. The multipliers hold true.
+                    Any pet can spawn as "Shiny". This is a separate multiplier that stacks with the form.
+                    A <strong>Shiny pet deals 2.5x more damage</strong> than its non-shiny version.
+                    <br />
+                    This means a <strong>Shiny Dark Matter</strong> pet is effectively dealing <strong>112.5x damage</strong> (45 * 2.5) compared to a base Normal pet. This makes Shiny DMs the strongest stat pets in the entire game.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Mastery Perks</h2>
+                <h3 className="text-lg font-bold text-foreground mt-2">Hardcore vs. Normal</h3>
                 <p>
-                    As you convert pets, you level up your <strong>Converting Mastery</strong>. High mastery unlocks incredible perks:
-                </p>
-                <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Cheaper Conversions:</strong> Reduces the Gem cost of using the Golden/Rainbow machines.</li>
-                    <li><strong>Faster DM Brewing:</strong> Reduces the base time for Dark Matter incubation.</li>
-                    <li><strong>Example:</strong> At Max Mastery, you only need <strong>6 Golden Pets</strong> (instead of 7) to get a 100% chance for a Rainbow. This saves you 14% of your resources! This profit margin adds up when you are mass-converting thousands of Mythicals.</li>
-                </ul>
-
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Trading Strategy: The "Refusables" Market</h2>
-                <p>
-                    One of the best ways to make gems in Pet Simulator X is by flipping "stat pets".
-                </p>
-                <h3 className="text-lg font-bold text-foreground mt-2">1. The Rainbow Flip</h3>
-                <p>
-                    Buy cheap Golden pets from players who are too lazy to travel to the Mine. Convert them to Rainbows (using Mastery to save costs). Sell the Rainbows.
-                </p>
-                <h3 className="text-lg font-bold text-foreground mt-2">2. The Dark Matter Vault</h3>
-                <p>
-                    Buy Rainbow pets at market price. Put close to 15-20 of them into your Dark Matter machine (using upgrades to get more slots). Wait 5 days.
-                    When they come out, sell them. Since you added the value of "time", you can sell them for significantly more than the cost of the Rainbow inputs. It's passive income.
-                </p>
-                <h3 className="text-lg font-bold text-foreground mt-2">3. The Index Service</h3>
-                <p>
-                    Many players want to complete their Pet Index to equip more pets. They need the Golden, Rainbow, and DM versions of <em>every</em> pet.
-                    Selling "Index Fodder" (rare pets in all 4 forms) is a niche but profitable market.
+                    Hardcore Mode pets use the exact same multiplier logic (3x &rarr; 13x &rarr; 45x).
+                    The only difference is their base power. A Hardcore pet is inherently trillions of times stronger than a Normal pet. When using this calculator for Hardcore pets, simply input the displayed power—the upgrade math remains identical.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Conclusion</h2>
+                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Making Profit with this Calculator</h2>
                 <p>
-                    The upgrade machines in Pet Simulator X are more than just a way to get stronger—they are the engine of the game's economy.
-                    Whether you are a casual player wanting to blast through the Kawaii Temple or a Gem Billionaire playing the trading plaza, understanding the 3x, 13x, and 45x multipliers is key.
-                    Use our calculator above to estimate the final value of your upgrades, and never waste a Shiny pet again!
+                    Smart players use this tool to calculate <strong>Arbitrage Opportunities</strong>.
+                    <br />
+                    <em>Example:</em> If you see someone selling a Rainbow Pet for 1 Billion Gems, but the Dark Matter version sells for 5 Billion, you can buy the Rainbow, incubate it for free, and triple your investment.
+                    Always check the "Calculated Value" output above to see if an upgrade is worth the cost of the ingredients.
                 </p>
             </section>
 
@@ -677,6 +569,44 @@ export default function RobloxPSXGoldenCalc() {
                                     <li>Don't specificially upgrade "Shiny" pets if you don't know the fusion rules (You might lose the shiny).</li>
                                     <li>Don't upgrade low-tier pets (Cat, Dog) past Golden unless for Index.</li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+            {/* Section 5: Worked Examples */}
+            <Card>
+                <CardHeader>
+                    <CardTitle className="text-xl">5. Worked Examples</CardTitle>
+                    <CardDescription>See the calculator in action with these common scenarios.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-muted/30 rounded-lg border border-border">
+                            <h4 className="font-semibold text-lg mb-2">Scenario A: The Golden Convert</h4>
+                            <ul className="space-y-1 text-sm text-muted-foreground">
+                                <li><strong>Input Pet:</strong> Dog</li>
+                                <li><strong>Base Value:</strong> 100 Gems</li>
+                                <li><strong>Target:</strong> <span className="text-yellow-600 font-bold">Golden</span></li>
+                                <li><strong>Shiny?</strong> No</li>
+                            </ul>
+                            <div className="mt-3 pt-3 border-t">
+                                <p className="font-medium text-foreground">Result: 300 Gems</p>
+                                <p className="text-xs text-muted-foreground">Formula: 100 x 3 = 300</p>
+                            </div>
+                        </div>
+
+                        <div className="p-4 bg-muted/30 rounded-lg border border-border">
+                            <h4 className="font-semibold text-lg mb-2">Scenario B: The Shiny Dark Matter</h4>
+                            <ul className="space-y-1 text-sm text-muted-foreground">
+                                <li><strong>Input Pet:</strong> Galaxy Dragon</li>
+                                <li><strong>Base Value:</strong> 1 Billion</li>
+                                <li><strong>Target:</strong> <span className="text-purple-600 font-bold">Dark Matter</span></li>
+                                <li><strong>Shiny?</strong> <span className="text-indigo-500 font-bold">Yes</span></li>
+                            </ul>
+                            <div className="mt-3 pt-3 border-t">
+                                <p className="font-medium text-foreground">Result: 112.5 Billion Gems</p>
+                                <p className="text-xs text-muted-foreground">Formula: 1B x 45 (DM) x 2.5 (Shiny) = 112.5B</p>
                             </div>
                         </div>
                     </div>
