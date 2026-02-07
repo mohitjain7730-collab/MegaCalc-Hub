@@ -1,6 +1,7 @@
 export const indexableCategorySlugs = [
     'finance',
     'gaming',
+    'travel-adventure',
 ];
 
 /** Static page path segments to include in sitemap and indexing. '' = homepage. */
@@ -160,5 +161,30 @@ export const indexableCalculatorSlugs = [
     'long-term-vs-short-term-capital-gain-comparison-calculator',
     'tax-drag-on-investment-returns-calculator',
     'dividend-reinvestment-growth-calculator',
-    'retirement-gap-calculator'
+    'retirement-gap-calculator',
+    // Travel & Adventure
+    'travel-time-calculator',
+    'distance-between-cities-calculator',
+    'time-zone-difference-calculator',
+    'driving-time-with-breaks-calculator',
+    'flight-duration-calculator',
+    'itinerary-time-planner',
+    'jet-lag-calculator',
+    'layover-time-calculator',
+    'travel-buffer-time-calculator',
+    'travel-days-calculator',
+    'backpack-weight-calculator',
+    'bus-vs-train-cost-calculator',
+    'car-vs-flight-calculator',
+    'cost-per-mile-calculator',
+    'cruise-cost-calculator',
+    'ev-charging-cost-calculator',
+    'fuel-cost-calculator',
+    'group-expense-splitter',
+    'hiking-calorie-calculator',
+    'hiking-time-calculator',
+    'hotel-cost-calculator',
+    'multi-stop-route-planner',
+    'rental-car-cost-calculator',
+    'trip-budget-calculator',
 ];
