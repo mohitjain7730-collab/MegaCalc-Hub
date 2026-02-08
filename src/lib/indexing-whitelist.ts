@@ -162,6 +162,13 @@ export const indexableCalculatorSlugs = [
     'tax-drag-on-investment-returns-calculator',
     'dividend-reinvestment-growth-calculator',
     'retirement-gap-calculator',
+    // Advanced Finance/Corporate
+    'portfolio-expected-return-calculator',
+    'capm-calculator',
+    'wacc-calculator',
+    'leverage-debt-ratio-calculator',
+    'black-scholes-calculator',
+    'option-payoff-calculator',
     // Travel & Adventure
     'travel-time-calculator',
     'distance-between-cities-calculator',
