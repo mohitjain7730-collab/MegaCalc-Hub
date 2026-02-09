@@ -1,15 +1,23 @@
 'use client';
 
-import React, { lazy } from 'react';
+import React from 'react';
+import dynamic from 'next/dynamic';
 
 // Static map of calculators to avoid dynamic import context creation
-const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
-    'batting-average-calculator': lazy(() => import('./batting-average-calculator')),
-    'bowling-average-calculator': lazy(() => import('./bowling-average-calculator')),
+const BattingAverageCalculator = dynamic(() => import('./batting-average-calculator'));
+const BowlingAverageCalculator = dynamic(() => import('./bowling-average-calculator'));
+const StrikeRateCalculator = dynamic(() => import('./strike-rate-calculator'));
+const BowlingEconomyRateCalculator = dynamic(() => import('./bowling-economy-rate-calculator'));
+
+export const SportsTrainingRegistry: Record<string, React.ComponentType> = {
+    'batting-average-calculator': BattingAverageCalculator,
+    'bowling-average-calculator': BowlingAverageCalculator,
+    'strike-rate-calculator': StrikeRateCalculator,
+    'bowling-economy-rate-calculator': BowlingEconomyRateCalculator,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
-    const Component = components[calculatorSlug];
+    const Component = SportsTrainingRegistry[calculatorSlug];
 
     if (!Component) {
         console.warn(`Calculator not found in registry: ${calculatorSlug}`);

@@ -14,5 +14,19 @@ export const sports_training_calculators: Calculator[] = [
         "description": "Calculate cricket bowling average from total runs conceded and wickets taken.",
         "slug": "bowling-average-calculator",
         "category": "sports-training"
+    },
+    {
+        "id": 10003,
+        "name": "Strike Rate Calculator",
+        "description": "Calculate cricket batting strike rate from runs scored and balls faced.",
+        "slug": "strike-rate-calculator",
+        "category": "sports-training"
+    },
+    {
+        "id": 10004,
+        "name": "Bowling Economy Rate Calculator",
+        "description": "Calculate cricket bowling economy rate from runs conceded and overs bowled.",
+        "slug": "bowling-economy-rate-calculator",
+        "category": "sports-training"
     }
 ];
