@@ -17,6 +17,7 @@ const categoryLoaders: Record<string, () => Promise<{ [key: string]: Calculator[
     'time-date': () => import('@/data/calculators/time-date'),
     'travel-adventure': () => import('@/data/calculators/travel-adventure'),
     'education': () => import('@/data/calculators/education'),
+    'sports-training': () => import('@/data/calculators/sports-training'),
 };
 
 export async function getCalculator(category: string, slug: string): Promise<Calculator | undefined> {
