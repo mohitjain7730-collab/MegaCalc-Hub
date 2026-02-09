@@ -225,6 +225,12 @@ export const categories: Category[] = [
     Icon: 'Gamepad2',
   },
   {
+    name: 'Sports Training',
+    slug: 'sports-training',
+    description: 'Cricket statistics and sports performance calculators.',
+    Icon: 'Trophy',
+  },
+  {
     name: 'Others',
     slug: 'others',
     description: 'All other calculator categories in one place.',

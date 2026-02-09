@@ -383,7 +383,7 @@ export default function BattingAverageCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/cricket/bowling-average-calculator" className="block">
+            <Link href="/category/sports-training/bowling-average-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -396,7 +396,7 @@ export default function BattingAverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/cricket/strike-rate-calculator" className="block">
+            <Link href="/category/sports-training/strike-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -409,7 +409,7 @@ export default function BattingAverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/cricket/bowling-economy-rate-calculator" className="block">
+            <Link href="/category/sports-training/bowling-economy-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -422,7 +422,7 @@ export default function BattingAverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/cricket/net-run-rate-calculator" className="block">
+            <Link href="/category/sports-training/net-run-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -435,7 +435,7 @@ export default function BattingAverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/cricket/required-run-rate-calculator" className="block">
+            <Link href="/category/sports-training/required-run-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -448,7 +448,7 @@ export default function BattingAverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/cricket/fantasy-points-calculator" className="block">
+            <Link href="/category/sports-training/fantasy-points-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

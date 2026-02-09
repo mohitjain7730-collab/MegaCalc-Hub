@@ -8,7 +8,7 @@ const BusinessStartupRegistry = dynamic(() => import('@/components/calculators/b
 const CognitivePsychologyRegistry = dynamic(() => import('@/components/calculators/cognitive-psychology/registry'));
 const ConversionsRegistry = dynamic(() => import('@/components/calculators/conversions/registry'));
 const CookingFoodRegistry = dynamic(() => import('@/components/calculators/cooking-food/registry'));
-const CricketRegistry = dynamic(() => import('@/components/calculators/cricket/registry'));
+const SportsTrainingRegistry = dynamic(() => import('@/components/calculators/sports-training/registry'));
 const CryptoWeb3Registry = dynamic(() => import('@/components/calculators/crypto-web3/registry'));
 const EducationRegistry = dynamic(() => import('@/components/calculators/education/registry'));
 const EmploymentRegistry = dynamic(() => import('@/components/calculators/employment/registry'));
@@ -47,7 +47,7 @@ const registries: Record<string, ComponentType<{ calculatorSlug: string }>> = {
   'cognitive-psychology': CognitivePsychologyRegistry,
   conversions: ConversionsRegistry,
   'cooking-food': CookingFoodRegistry,
-  cricket: CricketRegistry,
+  'sports-training': SportsTrainingRegistry,
   'crypto-web3': CryptoWeb3Registry,
   education: EducationRegistry,
   employment: EmploymentRegistry,
