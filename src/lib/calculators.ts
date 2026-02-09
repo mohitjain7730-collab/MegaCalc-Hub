@@ -14,6 +14,7 @@ import { personal_budgeting_calculators } from '../data/calculators/personal-bud
 import { technology_calculators } from '../data/calculators/technology';
 import { time_date_calculators } from '../data/calculators/time-date';
 import { travel_adventure_calculators } from '../data/calculators/travel-adventure';
+import { sports_training_calculators } from '../data/calculators/sports-training';
 
 
 export * from './percentage';
@@ -33,4 +34,5 @@ export const calculators: Calculator[] = [
   ...technology_calculators,
   ...time_date_calculators,
   ...travel_adventure_calculators,
+  ...sports_training_calculators,
 ];
