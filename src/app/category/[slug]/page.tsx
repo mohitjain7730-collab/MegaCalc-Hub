@@ -136,7 +136,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   // Special handling for "Others" category - show all other categories
   if (category.slug === 'others') {
     const otherCategories = categories.filter(
-      (c) => c.slug !== 'finance' && c.slug !== 'others'
+      (c) => c.slug !== 'finance' && c.slug !== 'gaming' && c.slug !== 'others'
     );
 
     return (
