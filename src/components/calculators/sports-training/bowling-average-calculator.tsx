@@ -138,13 +138,20 @@ export default function BowlingAverageCalculator() {
 
   return (
     <div className="space-y-8">
+      {/* SEO-Optimized Header */}
+      <div className="space-y-3">
+        <h1 className="text-3xl md:text-4xl font-bold">Bowling Average Calculator</h1>
+        <p className="text-lg text-muted-foreground">
+          Calculate cricket bowling average to measure wicket-taking efficiency and performance.
+        </p>
+      </div>
 
       {/* Input Form */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Target className="h-5 w-5" />
-            Bowling Statistics
+            <h2 className="text-xl font-semibold">Bowling Statistics</h2>
           </CardTitle>
           <CardDescription>
             Enter runs conceded and wickets taken to calculate bowling average
@@ -219,8 +226,8 @@ export default function BowlingAverageCalculator() {
               <div className="flex items-center gap-4">
                 <Activity className="h-8 w-8 text-primary" />
                 <div>
-                  <CardTitle>Bowling Average</CardTitle>
-                  <CardDescription>Performance Analysis</CardDescription>
+                  <h2 className="text-2xl font-bold">Bowling Average</h2>
+                  <p className="text-muted-foreground">Performance Analysis</p>
                 </div>
               </div>
             </CardHeader>
@@ -492,7 +499,7 @@ export default function BowlingAverageCalculator() {
         <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
         <meta itemProp="datePublished" content="2026-02-09" />
 
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Bowling Average: Measuring Wicket-Taking Efficiency</h1>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Bowling Average: Measuring Wicket-Taking Efficiency</h2>
         <p className="text-lg italic text-muted-foreground">Master the fundamental metric that defines a bowler's effectiveness, economy, and overall contribution to the team's success across all formats of cricket.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -777,7 +784,7 @@ export default function BowlingAverageCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
-            Frequently Asked Questions
+            <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
           </CardTitle>
           <CardDescription>
             Common questions about bowling average in cricket
@@ -863,7 +870,7 @@ export default function BowlingAverageCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Briefcase className="h-5 w-5" />
-            Usage of this Calculator
+            <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
           </CardTitle>
           <CardDescription>
             Practical applications and real-world context
@@ -958,7 +965,7 @@ export default function BowlingAverageCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5" />
-            Summary
+            <h2 className="text-xl font-semibold">Summary</h2>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">

@@ -130,13 +130,20 @@ export default function BattingAverageCalculator() {
 
   return (
     <div className="space-y-8">
+      {/* SEO-Optimized Header */}
+      <div className="space-y-3">
+        <h1 className="text-3xl md:text-4xl font-bold">Batting Average Calculator</h1>
+        <p className="text-lg text-muted-foreground">
+          Calculate cricket batting average to measure consistency and performance across all formats.
+        </p>
+      </div>
 
       {/* Input Form */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Target className="h-5 w-5" />
-            Batting Statistics
+            <h2 className="text-xl font-semibold">Batting Statistics</h2>
           </CardTitle>
           <CardDescription>
             Enter your runs scored and times dismissed to calculate batting average
@@ -211,8 +218,8 @@ export default function BattingAverageCalculator() {
               <div className="flex items-center gap-4">
                 <Trophy className="h-8 w-8 text-primary" />
                 <div>
-                  <CardTitle>Batting Average</CardTitle>
-                  <CardDescription>Performance Analysis</CardDescription>
+                  <h2 className="text-2xl font-bold">Batting Average</h2>
+                  <p className="text-muted-foreground">Performance Analysis</p>
                 </div>
               </div>
             </CardHeader>
@@ -461,7 +468,7 @@ export default function BattingAverageCalculator() {
         <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
         <meta itemProp="datePublished" content="2026-02-09" />
 
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Batting Average: Measuring Consistency and Performance</h1>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Batting Average: Measuring Consistency and Performance</h2>
         <p className="text-lg italic text-muted-foreground">Master the fundamental metric that defines a batsman's reliability, consistency, and overall contribution to the team across all formats of cricket.</p>
 
         {/* TABLE OF CONTENTS */}
@@ -746,7 +753,7 @@ export default function BattingAverageCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Info className="h-5 w-5" />
-            Frequently Asked Questions
+            <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
           </CardTitle>
           <CardDescription>
             Common questions about batting average in cricket
@@ -832,7 +839,7 @@ export default function BattingAverageCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Briefcase className="h-5 w-5" />
-            Usage of this Calculator
+            <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
           </CardTitle>
           <CardDescription>
             Practical applications and real-world context
@@ -934,7 +941,7 @@ export default function BattingAverageCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Shield className="h-5 w-5" />
-            Summary
+            <h2 className="text-xl font-semibold">Summary</h2>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">

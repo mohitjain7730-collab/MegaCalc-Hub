@@ -149,13 +149,20 @@ export default function RequiredRunRateCalculator() {
 
     return (
         <div className="space-y-8">
+            {/* SEO-Optimized Header */}
+            <div className="space-y-3">
+                <h1 className="text-3xl md:text-4xl font-bold">Required Run Rate Calculator</h1>
+                <p className="text-lg text-muted-foreground">
+                    Calculate the run rate needed to win a cricket match based on runs required and balls remaining.
+                </p>
+            </div>
 
             {/* Input Form */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Target className="h-5 w-5" />
-                        Chase Requirements
+                        <h2 className="text-xl font-semibold">Chase Requirements</h2>
                     </CardTitle>
                     <CardDescription>
                         Enter runs needed and balls remaining to calculate required run rate
@@ -230,8 +237,8 @@ export default function RequiredRunRateCalculator() {
                             <div className="flex items-center gap-4">
                                 <Target className="h-8 w-8 text-primary" />
                                 <div>
-                                    <CardTitle>Required Run Rate</CardTitle>
-                                    <CardDescription>Chase Analysis</CardDescription>
+                                    <h2 className="text-2xl font-bold">Required Run Rate</h2>
+                                    <p className="text-muted-foreground">Chase Analysis</p>
                                 </div>
                             </div>
                         </CardHeader>
@@ -501,7 +508,7 @@ export default function RequiredRunRateCalculator() {
                 <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
                 <meta itemProp="datePublished" content="2026-02-10" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Required Run Rate in Cricket</h1>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Required Run Rate in Cricket</h2>
                 <p className="text-lg italic text-muted-foreground">Master the essential metric for chase planning and batting strategy in limited-overs cricket.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8">What is Required Run Rate?</h2>
@@ -594,7 +601,7 @@ export default function RequiredRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Frequently Asked Questions
+                        <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
                         Common questions about required run rate
@@ -680,7 +687,7 @@ export default function RequiredRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Usage of this Calculator
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -737,7 +744,7 @@ export default function RequiredRunRateCalculator() {
                     <div className="flex items-start gap-4">
                         <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
                         <div>
-                            <h3 className="font-semibold text-lg mb-2">Summary</h3>
+                            <h2 className="font-semibold text-lg mb-2">Summary</h2>
                             <p className="text-sm text-muted-foreground">
                                 The Required Run Rate Calculator determines the runs per over needed to achieve a target within remaining deliveries.
                             </p>

@@ -215,13 +215,20 @@ export default function CricketWinProbabilityCalculator() {
 
     return (
         <div className="space-y-8">
+            {/* SEO-Optimized Header */}
+            <div className="space-y-3">
+                <h1 className="text-3xl md:text-4xl font-bold">Cricket Win Probability Calculator</h1>
+                <p className="text-lg text-muted-foreground">
+                    Use this calculator to automatically estimate win probability based on runs needed, balls remaining, wickets in hand, and current match conditions.
+                </p>
+            </div>
 
             {/* Input Form */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Percent className="h-5 w-5" />
-                        Match Situation
+                        <h2 className="text-xl font-semibold">Enter Match Situation</h2>
                     </CardTitle>
                     <CardDescription>
                         Enter current match details to calculate win probability
@@ -442,6 +449,12 @@ export default function CricketWinProbabilityCalculator() {
             {/* Results */}
             {result && (
                 <div className="space-y-6">
+                    {/* Results Header */}
+                    <div>
+                        <h2 className="text-2xl font-bold">Calculated Win Probability</h2>
+                        <p className="text-muted-foreground mt-1">Statistical analysis of match outcome likelihood</p>
+                    </div>
+
                     {/* Main Result Card */}
                     <Card className="border-2 border-primary">
                         <CardHeader>
@@ -541,7 +554,7 @@ export default function CricketWinProbabilityCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        How Win Probability is Calculated
+                        <h2 className="text-xl font-semibold">How Win Probability is Calculated</h2>
                     </CardTitle>
                     <CardDescription>
                         Understanding the calculation methodology
@@ -592,7 +605,7 @@ export default function CricketWinProbabilityCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Calculator className="h-5 w-5" />
-                        Related Cricket Calculators
+                        <h2 className="text-xl font-semibold">Related Cricket Calculators</h2>
                     </CardTitle>
                     <CardDescription>
                         Explore other cricket performance analysis tools
@@ -691,7 +704,7 @@ export default function CricketWinProbabilityCalculator() {
                 <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
                 <meta itemProp="datePublished" content="2026-02-10" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Win Probability: Predicting Match Outcomes</h1>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Win Probability: Predicting Match Outcomes</h2>
                 <p className="text-lg italic text-muted-foreground">Learn how win probability is calculated in cricket, understand the key factors that influence match outcomes, and discover how to use probability analysis for strategic decision-making.</p>
 
                 {/* TABLE OF CONTENTS */}
@@ -933,7 +946,7 @@ export default function CricketWinProbabilityCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Frequently Asked Questions
+                        <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
                         Common questions about cricket win probability
@@ -1019,7 +1032,7 @@ export default function CricketWinProbabilityCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Usage of this Calculator
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
                     <CardDescription>
                         Practical applications and real-world context
@@ -1121,7 +1134,7 @@ export default function CricketWinProbabilityCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Shield className="h-5 w-5" />
-                        Summary
+                        <h2 className="text-xl font-semibold">Summary</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm text-muted-foreground">

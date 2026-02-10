@@ -278,13 +278,20 @@ export default function CricketPartnershipRunRateCalculator() {
 
     return (
         <div className="space-y-8">
+            {/* SEO-Optimized Header */}
+            <div className="space-y-3">
+                <h1 className="text-3xl md:text-4xl font-bold">Cricket Partnership Run Rate Calculator</h1>
+                <p className="text-lg text-muted-foreground">
+                    Use this calculator to automatically analyze batting partnerships, measure scoring pace, and evaluate partnership effectiveness based on runs, balls faced, and individual contributions.
+                </p>
+            </div>
 
             {/* Input Form */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Partnership Details
+                        <h2 className="text-xl font-semibold">Enter Partnership Performance</h2>
                     </CardTitle>
                     <CardDescription>
                         Enter partnership statistics to analyze run rate and performance
@@ -479,6 +486,12 @@ export default function CricketPartnershipRunRateCalculator() {
             {/* Results */}
             {result && (
                 <div className="space-y-6">
+                    {/* Results Header */}
+                    <div>
+                        <h2 className="text-2xl font-bold">Calculated Partnership Metrics</h2>
+                        <p className="text-muted-foreground mt-1">Detailed analysis of your partnership performance</p>
+                    </div>
+
                     {/* Main Result Card */}
                     <Card className="border-2 border-primary">
                         <CardHeader>
@@ -571,12 +584,12 @@ export default function CricketPartnershipRunRateCalculator() {
                 </div>
             )}
 
-            {/* Understanding Partnership Run Rate */}
+            {/* How Partnership Metrics Are Calculated */}
             <Card className="mb-6">
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Understanding Partnership Run Rate
+                        <h2 className="text-xl font-semibold">How Partnership Metrics Are Calculated</h2>
                     </CardTitle>
                     <CardDescription>
                         Key metrics for analyzing batting partnerships
@@ -621,7 +634,7 @@ export default function CricketPartnershipRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <FunctionSquare className="h-5 w-5" />
-                        Calculation Formulas
+                        <h2 className="text-xl font-semibold">Calculation Formulas</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -650,7 +663,7 @@ export default function CricketPartnershipRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Calculator className="h-5 w-5" />
-                        Related Cricket Calculators
+                        <h2 className="text-xl font-semibold">Related Cricket Calculators</h2>
                     </CardTitle>
                     <CardDescription>
                         Explore other cricket performance analysis tools
@@ -749,7 +762,7 @@ export default function CricketPartnershipRunRateCalculator() {
                 <meta itemProp="author" content="MegaCalc Cricket Strategy Team" />
                 <meta itemProp="datePublished" content="2026-02-10" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Partnership Run Rate: Building Championship Stands</h1>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Partnership Run Rate: Building Championship Stands</h2>
                 <p className="text-lg italic text-muted-foreground">Learn how to analyze batting partnerships, understand run rate dynamics, master strike rotation, and discover the strategies used by successful batting pairs to build match-winning stands.</p>
 
                 {/* TABLE OF CONTENTS */}
@@ -1026,7 +1039,7 @@ export default function CricketPartnershipRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Frequently Asked Questions
+                        <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
                         Common questions about cricket partnerships
@@ -1112,7 +1125,7 @@ export default function CricketPartnershipRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Usage of this Calculator
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
                     <CardDescription>
                         Practical applications and real-world context
@@ -1214,7 +1227,7 @@ export default function CricketPartnershipRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Shield className="h-5 w-5" />
-                        Summary
+                        <h2 className="text-xl font-semibold">Summary</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm text-muted-foreground">
