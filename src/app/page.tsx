@@ -71,7 +71,7 @@ export default function Home() {
               <p className="mt-2 text-sm sm:text-base text-muted-foreground">Find the perfect tool for your needs.</p>
             </div>
             <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-              {categories.filter((category) => category.slug === 'finance' || category.slug === 'gaming' || category.slug === 'others').map((category) => (
+              {categories.filter((category) => category.slug === 'finance' || category.slug === 'gaming' || category.slug === 'sports-training' || category.slug === 'others').map((category) => (
                 <CategoryCard key={category.slug} {...category} />
               ))}
             </div>
