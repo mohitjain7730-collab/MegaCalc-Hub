@@ -430,14 +430,14 @@ export default function StrikeRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/net-run-rate-calculator" className="block">
+                        <Link href="/category/sports-training/team-run-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
                                         <Shield className="h-5 w-5 text-green-600" />
                                         <div>
-                                            <p className="font-medium">Net Run Rate</p>
-                                            <p className="text-sm text-muted-foreground">Team performance</p>
+                                            <p className="font-medium">Team Run Rate</p>
+                                            <p className="text-sm text-muted-foreground">Scoring pace</p>
                                         </div>
                                     </div>
                                 </CardContent>
@@ -456,7 +456,7 @@ export default function StrikeRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/fantasy-points-calculator" className="block">
+                        <Link href="/category/sports-training/cricket-fantasy-points-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

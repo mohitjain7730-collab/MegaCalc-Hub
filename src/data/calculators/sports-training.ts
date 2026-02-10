@@ -64,5 +64,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "cricket-fantasy-points-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate fantasy cricket points instantly. Free fantasy points calculator with detailed scoring for runs, wickets, catches, bonuses, and captain/vice-captain multipliers for Dream11, MPL, and other platforms."
+    },
+    {
+        "id": 10009,
+        "name": "Cricket - Win Probability Calculator",
+        "description": "Calculate win probability in cricket matches based on runs needed, wickets remaining, and match conditions.",
+        "slug": "cricket-win-probability-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate cricket win probability instantly. Free win predictor analyzing runs needed, wickets in hand, run rates, pitch conditions, and team strength for T20, ODI, and Test matches."
+    },
+    {
+        "id": 10010,
+        "name": "Cricket - Partnership Run Rate Calculator",
+        "description": "Calculate partnership run rate and analyze batting partnership effectiveness with individual contributions.",
+        "slug": "cricket-partnership-run-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate cricket partnership run rate instantly. Free partnership analyzer with individual strike rates, contribution balance, format-specific benchmarks, and strategic recommendations."
     }
 ];

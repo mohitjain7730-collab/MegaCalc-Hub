@@ -469,14 +469,14 @@ export default function TeamRunRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/net-run-rate-calculator" className="block">
+                        <Link href="/category/sports-training/cricket-win-probability-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
                                         <Shield className="h-5 w-5 text-indigo-600" />
                                         <div>
-                                            <p className="font-medium">Net Run Rate</p>
-                                            <p className="text-sm text-muted-foreground">Tournament metric</p>
+                                            <p className="font-medium">Win Probability</p>
+                                            <p className="text-sm text-muted-foreground">Match prediction</p>
                                         </div>
                                     </div>
                                 </CardContent>
