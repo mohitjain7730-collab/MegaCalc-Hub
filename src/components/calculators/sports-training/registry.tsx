@@ -10,6 +10,8 @@ const StrikeRateCalculator = dynamic(() => import('./strike-rate-calculator'));
 const BowlingEconomyRateCalculator = dynamic(() => import('./bowling-economy-rate-calculator'));
 const RequiredRunRateCalculator = dynamic(() => import('./required-run-rate-calculator'));
 const TeamRunRateCalculator = dynamic(() => import('./team-run-rate-calculator'));
+const CricketPlayerPerformanceIndexCalculator = dynamic(() => import('./cricket-player-performance-index-calculator'));
+const CricketFantasyPointsCalculator = dynamic(() => import('./cricket-fantasy-points-calculator'));
 
 export const SportsTrainingRegistry: Record<string, React.ComponentType> = {
     'batting-average-calculator': BattingAverageCalculator,
@@ -18,6 +20,8 @@ export const SportsTrainingRegistry: Record<string, React.ComponentType> = {
     'bowling-economy-rate-calculator': BowlingEconomyRateCalculator,
     'required-run-rate-calculator': RequiredRunRateCalculator,
     'team-run-rate-calculator': TeamRunRateCalculator,
+    'cricket-player-performance-index-calculator': CricketPlayerPerformanceIndexCalculator,
+    'cricket-fantasy-points-calculator': CricketFantasyPointsCalculator,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

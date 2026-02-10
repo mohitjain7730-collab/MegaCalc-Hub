@@ -48,5 +48,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "team-run-rate-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate team run rate instantly. Free current run rate calculator with scoring pace analysis, performance benchmarks, and strategic insights for limited-overs cricket."
+    },
+    {
+        "id": 10007,
+        "name": "Cricket - Player Performance Index Calculator",
+        "description": "Calculate comprehensive cricket player performance index combining batting, bowling, and fielding statistics.",
+        "slug": "cricket-player-performance-index-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate cricket player performance index instantly. Free comprehensive calculator analyzing batting, bowling, and fielding stats with role-based scoring for all-rounders, batsmen, bowlers, and wicket-keepers."
+    },
+    {
+        "id": 10008,
+        "name": "Cricket - Fantasy Points Calculator",
+        "description": "Calculate fantasy cricket points based on batting, bowling, and fielding performance with captain and vice-captain multipliers.",
+        "slug": "cricket-fantasy-points-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate fantasy cricket points instantly. Free fantasy points calculator with detailed scoring for runs, wickets, catches, bonuses, and captain/vice-captain multipliers for Dream11, MPL, and other platforms."
     }
 ];
