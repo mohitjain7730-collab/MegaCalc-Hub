@@ -778,21 +778,414 @@ export default function CricketPlayerPerformanceIndexCalculator() {
                 </CardContent>
             </Card>
 
-            {/* Summary */}
-            <Card className="bg-primary/5 border-primary/20">
-                <CardContent className="pt-6">
-                    <div className="flex items-start gap-4">
-                        <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
+            {/* Complete Guide Section */}
+            <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Article">
+                {/* SEO & SCHEMA METADATA */}
+                <meta itemProp="name" content="The Complete Guide to Cricket Player Performance Index: Comprehensive Player Evaluation" />
+                <meta itemProp="description" content="An expert guide to understanding the Player Performance Index in cricket, including calculation methodology, role-based weighting, performance benchmarks, and how to use it for player evaluation and team selection." />
+                <meta itemProp="keywords" content="cricket performance index, player rating system, cricket statistics, all-rounder evaluation, player assessment, cricket analytics, performance metrics" />
+                <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
+                <meta itemProp="datePublished" content="2026-02-10" />
+
+                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Player Performance Index: Holistic Player Evaluation</h1>
+                <p className="text-lg italic text-muted-foreground">Master the comprehensive metric that evaluates cricket players across all disciplines - batting, bowling, and fielding - to determine overall value and contribution to the team.</p>
+
+                {/* TABLE OF CONTENTS */}
+                <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
+                <ul className="list-disc ml-6 space-y-2 text-primary">
+                    <li><a href="#definition" className="hover:underline">What is the Player Performance Index?</a></li>
+                    <li><a href="#calculation" className="hover:underline">How the Index is Calculated</a></li>
+                    <li><a href="#components" className="hover:underline">Understanding the Three Components</a></li>
+                    <li><a href="#role-weighting" className="hover:underline">Role-Based Weighting System</a></li>
+                    <li><a href="#interpretation" className="hover:underline">Interpreting Performance Scores</a></li>
+                    <li><a href="#advantages" className="hover:underline">Advantages Over Single-Metric Analysis</a></li>
+                    <li><a href="#limitations" className="hover:underline">Limitations and Context</a></li>
+                    <li><a href="#improvement" className="hover:underline">Using the Index for Player Development</a></li>
+                </ul>
+                <hr />
+
+                {/* WHAT IS PERFORMANCE INDEX */}
+                <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is the Player Performance Index?</h2>
+                <p>The <strong>Player Performance Index (PPI)</strong> is a comprehensive metric that evaluates a cricket player's overall contribution across all three disciplines of the game: batting, bowling, and fielding. Unlike traditional statistics that focus on a single aspect, the PPI provides a holistic view of a player's value to the team.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">The Need for Comprehensive Evaluation</h3>
+                <p>Cricket is unique among sports in requiring players to excel in multiple disciplines. A batsman who can't field becomes a liability. A bowler who contributes with the bat adds immense value. The PPI quantifies this multi-dimensional contribution into a single, comparable score out of 100.</p>
+
+                <p>The index is particularly valuable for:</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Evaluating all-rounders and their balance between disciplines</li>
+                    <li>Comparing players across different roles objectively</li>
+                    <li>Identifying hidden strengths and weaknesses</li>
+                    <li>Making informed team selection decisions</li>
+                    <li>Tracking player development over time</li>
+                </ul>
+
+                <hr />
+
+                {/* CALCULATION */}
+                <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How the Index is Calculated</h2>
+                <p>The Player Performance Index uses a weighted scoring system that combines three component scores:</p>
+
+                <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
+                    <p className="font-mono text-xl text-destructive font-bold">
+                        PPI = (Batting Score × Weight) + (Bowling Score × Weight) + (Fielding Score × Weight)
+                    </p>
+                </div>
+
+                <p>Each component is scored out of 100, and the weights vary based on the player's designated role. This ensures that specialists are evaluated primarily on their core skill while still accounting for secondary contributions.</p>
+
+                <hr />
+
+                {/* COMPONENTS */}
+                <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding the Three Components</h2>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">1. Batting Score (0-100)</h3>
+                <p>The batting component evaluates run-scoring ability through two key metrics:</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li><strong>Batting Average (60% weight):</strong> Measures consistency and reliability. Normalized against a benchmark of 50 runs per dismissal.</li>
+                    <li><strong>Strike Rate (40% weight):</strong> Measures scoring speed. Normalized against a benchmark of 150 runs per 100 balls.</li>
+                </ul>
+                <p className="mt-4">This 60-40 split reflects that consistency is slightly more valuable than speed in most formats, though both are essential for modern cricket.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">2. Bowling Score (0-100)</h3>
+                <p>The bowling component assesses wicket-taking and run-containment ability:</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li><strong>Bowling Average (50% weight):</strong> Measures wicket-taking efficiency. Lower is better - normalized against 50 runs per wicket.</li>
+                    <li><strong>Economy Rate (50% weight):</strong> Measures run containment. Lower is better - normalized against 10 runs per over.</li>
+                </ul>
+                <p className="mt-4">Equal weighting reflects that both taking wickets and containing runs are equally important for bowlers.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">3. Fielding Score (0-100)</h3>
+                <p>The fielding component rewards dismissals created through fielding:</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li><strong>Catches:</strong> 5 points each (maximum 30 points)</li>
+                    <li><strong>Run Outs:</strong> 7 points each (maximum 35 points)</li>
+                    <li><strong>Stumpings:</strong> 8 points each (maximum 35 points)</li>
+                </ul>
+                <p className="mt-4">Stumpings are valued highest as they require specialized wicket-keeping skills. The maximum cap ensures fielding doesn't disproportionately affect the overall index.</p>
+
+                <hr />
+
+                {/* ROLE WEIGHTING */}
+                <h2 id="role-weighting" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role-Based Weighting System</h2>
+                <p>The PPI adapts to different player roles by adjusting the importance of each component:</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">Batsman (Specialist)</h3>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Batting: 70% - Primary skill</li>
+                    <li>Bowling: 10% - Minimal contribution expected</li>
+                    <li>Fielding: 20% - Important supporting skill</li>
+                </ul>
+                <p className="mt-2">A specialist batsman is judged primarily on run-scoring, with fielding as a significant secondary factor.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">Bowler (Specialist)</h3>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Batting: 10% - Minimal contribution expected</li>
+                    <li>Bowling: 70% - Primary skill</li>
+                    <li>Fielding: 20% - Important supporting skill</li>
+                </ul>
+                <p className="mt-2">Specialist bowlers are evaluated mainly on wicket-taking and economy, with fielding contributing significantly.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">All-Rounder</h3>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Batting: 40% - Equal importance</li>
+                    <li>Bowling: 40% - Equal importance</li>
+                    <li>Fielding: 20% - Supporting skill</li>
+                </ul>
+                <p className="mt-2">All-rounders must excel in both batting and bowling to achieve high scores, reflecting their dual role.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">Wicket-Keeper</h3>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Batting: 40% - Important contribution</li>
+                    <li>Bowling: 10% - Rarely bowls</li>
+                    <li>Fielding: 50% - Specialized keeping skills</li>
+                </ul>
+                <p className="mt-2">Wicket-keepers are unique in having fielding as their primary skill, with batting as a crucial secondary contribution.</p>
+
+                <hr />
+
+                {/* INTERPRETATION */}
+                <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Performance Scores</h2>
+                <p>The PPI ranges from 0 to 100, with clear performance bands:</p>
+
+                <ul className="list-disc ml-6 space-y-2">
+                    <li><strong>80-100 (Outstanding A+):</strong> World-class player, elite performer across all relevant disciplines</li>
+                    <li><strong>70-79 (Excellent A):</strong> International quality, strong in primary role with good secondary skills</li>
+                    <li><strong>60-69 (Very Good B+):</strong> Solid international player, reliable in primary role</li>
+                    <li><strong>50-59 (Good B):</strong> Competent player, acceptable at international level</li>
+                    <li><strong>40-49 (Average C):</strong> Developing player or struggling at current level</li>
+                    <li><strong>30-39 (Below Average D):</strong> Significant improvement needed</li>
+                    <li><strong>0-29 (Poor F):</strong> Not performing at required standard</li>
+                </ul>
+
+                <p className="mt-4"><strong>Important Context:</strong> These benchmarks assume international cricket standards. For domestic or amateur cricket, adjust expectations downward by approximately 10-15 points.</p>
+
+                <hr />
+
+                {/* ADVANTAGES */}
+                <h2 id="advantages" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Advantages Over Single-Metric Analysis</h2>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">1. Captures Complete Value</h3>
+                <p>Traditional statistics like batting average or bowling average only tell part of the story. A batsman with a 45 average who can't field is less valuable than one with a 40 average who takes brilliant catches. The PPI captures this complete picture.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">2. Enables Cross-Role Comparison</h3>
+                <p>How do you compare a specialist batsman to an all-rounder? The PPI's role-based weighting allows fair comparison by evaluating each player against their role's expectations.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">3. Identifies Hidden Strengths</h3>
+                <p>A bowler who contributes 20-25 with the bat might not seem impressive, but if their bowling is excellent, the PPI reveals their true value as a lower-order contributor.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">4. Highlights Development Areas</h3>
+                <p>By breaking down the index into components, players and coaches can identify specific areas for improvement. An all-rounder with a 35 batting score but 65 bowling score knows exactly where to focus training.</p>
+
+                <hr />
+
+                {/* LIMITATIONS */}
+                <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations and Context</h2>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">1. Doesn't Account for Match Situation</h3>
+                <p>The PPI treats all runs and wickets equally. A match-winning 50 under pressure is statistically identical to a 50 in a dead rubber. Context-aware analysis is still needed.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">2. Format Agnostic</h3>
+                <p>The same benchmarks apply across formats, but a strike rate of 120 means different things in Test cricket versus T20. Consider format when interpreting scores.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">3. Sample Size Matters</h3>
+                <p>A player with 2 innings and 1 wicket can have inflated scores. The PPI is most reliable with a minimum of 10 innings and 20 overs bowled.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">4. Fielding Limitations</h3>
+                <p>The fielding component only captures dismissals, not ground fielding, throwing accuracy, or positioning. A brilliant fielder who rarely takes catches may be undervalued.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">5. Role Classification</h3>
+                <p>Some players don't fit neatly into roles. A batting all-rounder might be classified as "all-rounder" when they should be weighted more toward batting.</p>
+
+                <hr />
+
+                {/* IMPROVEMENT */}
+                <h2 id="improvement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using the Index for Player Development</h2>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">1. Identify Weak Points</h3>
+                <p>Calculate the PPI regularly and track component scores. If batting score is consistently below 40, focus training on technique, shot selection, and match awareness.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">2. Set Realistic Goals</h3>
+                <p>Use the PPI to set measurable improvement targets. For example: "Increase overall PPI from 52 to 60 by improving bowling economy from 7.5 to 6.0."</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">3. Balance Development</h3>
+                <p>All-rounders should aim for balanced component scores. If batting is 65 but bowling is 35, focus on bowling development to become a more complete player.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">4. Role Optimization</h3>
+                <p>If a player classified as "all-rounder" has batting 75 and bowling 25, they might be better suited as a "batsman" role, which would increase their PPI by emphasizing their strength.</p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-6">5. Track Progress Over Time</h3>
+                <p>Calculate PPI after each series or season. Consistent improvement indicates effective training and development.</p>
+
+                <hr />
+
+                {/* CONCLUSION */}
+                <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
+                <p>The Player Performance Index provides a sophisticated, multi-dimensional evaluation of cricket players that goes beyond traditional single-metric analysis. By combining batting, bowling, and fielding performance with role-based weighting, it offers a fair and comprehensive assessment of a player's overall value.</p>
+
+                <p>While the PPI has limitations and should be used alongside qualitative analysis and match context, it remains an invaluable tool for player evaluation, team selection, and development planning. Whether you're a player tracking your progress, a coach assessing your squad, or a selector making difficult decisions, the PPI provides objective, actionable insights into cricket performance.</p>
+            </section>
+
+            {/* FAQ Section */}
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Info className="h-5 w-5" />
+                        Frequently Asked Questions
+                    </CardTitle>
+                    <CardDescription>
+                        Common questions about the Player Performance Index
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div className="space-y-6">
                         <div>
-                            <h3 className="font-semibold text-lg mb-2">Summary</h3>
-                            <p className="text-sm text-muted-foreground">
-                                The Cricket Player Performance Index Calculator provides a comprehensive evaluation of player performance across batting, bowling, and fielding disciplines.
+                            <h4 className="font-semibold text-lg mb-3">What is a good Player Performance Index score?</h4>
+                            <p className="text-muted-foreground">
+                                For international cricket, a PPI above 70 indicates excellent performance, 60-70 is very good, 50-60 is good, and 40-50 is average. Scores above 80 are outstanding and typically reserved for world-class players. For domestic cricket, reduce these benchmarks by approximately 10-15 points.
                             </p>
-                            <p className="text-sm text-muted-foreground mt-2">
-                                It uses role-based weighting to generate a holistic performance score, helping identify strengths, weaknesses, and areas for improvement.
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">How is the PPI different from batting or bowling average?</h4>
+                            <p className="text-muted-foreground">
+                                Traditional averages measure only one aspect of performance. The PPI combines batting, bowling, and fielding into a single holistic score, weighted according to the player's role. This provides a complete picture of a player's value rather than just their primary skill.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">Why do different roles have different weightings?</h4>
+                            <p className="text-muted-foreground">
+                                Different roles have different expectations. A specialist batsman should be judged primarily on batting (70%), while an all-rounder must excel in both batting and bowling (40% each). This ensures fair comparison - a batsman isn't penalized for not taking wickets, and a bowler isn't penalized for not scoring runs.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">Can the PPI be used across different formats (Test, ODI, T20)?</h4>
+                            <p className="text-muted-foreground">
+                                Yes, but with caution. The same calculation applies to all formats, but interpretation differs. A strike rate of 120 is excellent in Test cricket but average in T20. When comparing players across formats, consider format-specific benchmarks for batting and bowling metrics.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">How many innings are needed for a reliable PPI?</h4>
+                            <p className="text-muted-foreground">
+                                For reliable results, players should have at least 10 batting innings and 20 overs bowled (for bowlers/all-rounders). Smaller sample sizes can produce misleading scores due to statistical variance. The PPI becomes more accurate with larger data sets.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">Does the PPI account for opposition quality?</h4>
+                            <p className="text-muted-foreground">
+                                No, the PPI treats all performances equally regardless of opposition strength. A player scoring heavily against weak teams will have the same PPI as one performing against strong teams. This is a limitation - qualitative analysis should supplement PPI evaluation.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">Why is fielding weighted at only 20% for most roles?</h4>
+                            <p className="text-muted-foreground">
+                                While fielding is important, it has less direct impact on match outcomes than batting and bowling. Additionally, the fielding score only captures dismissals (catches, run outs, stumpings), not general ground fielding. The 20% weight reflects this limited scope, except for wicket-keepers where it's 50%.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">Can a specialist batsman have a higher PPI than an all-rounder?</h4>
+                            <p className="text-muted-foreground">
+                                Absolutely. A specialist batsman who excels in batting (e.g., 85/100 batting score) can easily outscore an all-rounder with moderate scores in both disciplines (e.g., 55/100 batting, 55/100 bowling). The PPI evaluates players against their role's expectations, not absolute contribution.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">How should I use the PPI for team selection?</h4>
+                            <p className="text-muted-foreground">
+                                Use the PPI as one factor among many. Compare players in similar roles, consider recent form (last 10 innings), match conditions, and opposition. The PPI helps identify the best performers objectively, but team balance, experience, and match situation should also influence selection.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-lg mb-3">What's the difference between "Balanced All-Rounder" and "Elite All-Rounder" player types?</h4>
+                            <p className="text-muted-foreground">
+                                An "Elite All-Rounder" has both batting and bowling scores above 60, indicating excellence in both disciplines. A "Balanced All-Rounder" has both scores above 50 but below 60, showing competence in both areas. The distinction helps identify true all-round excellence versus balanced mediocrity.
                             </p>
                         </div>
                     </div>
+                </CardContent>
+            </Card>
+
+            {/* Usage of this Calculator */}
+            <Card className="mb-6">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Users className="h-5 w-5" />
+                        Usage of this Calculator
+                    </CardTitle>
+                    <CardDescription>
+                        Practical applications and real-world context
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                    {/* Who should use */}
+                    <div>
+                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
+                            <Users className="h-5 w-5 text-blue-600" />
+                            Who Should Use This Calculator?
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
+                                <strong className="block text-primary mb-1">Cricket Players</strong>
+                                <span className="text-sm text-muted-foreground">Track your overall performance across all disciplines, identify strengths and weaknesses, and set development goals.</span>
+                            </div>
+                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
+                                <strong className="block text-primary mb-1">Coaches & Selectors</strong>
+                                <span className="text-sm text-muted-foreground">Objectively evaluate players for team selection, compare candidates across different roles, and identify development priorities.</span>
+                            </div>
+                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
+                                <strong className="block text-primary mb-1">Cricket Analysts</strong>
+                                <span className="text-sm text-muted-foreground">Analyze player performance holistically, create player rankings, and provide data-driven insights for commentary or articles.</span>
+                            </div>
+                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
+                                <strong className="block text-primary mb-1">Fantasy Cricket Players</strong>
+                                <span className="text-sm text-muted-foreground">Evaluate all-rounders and multi-skilled players to build balanced fantasy teams with maximum point-scoring potential.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr className="border-border/50" />
+
+                    {/* Limitations */}
+                    <div>
+                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
+                            <AlertTriangle className="h-5 w-5 text-amber-600" />
+                            Limitations & When It May Be Misleading
+                        </h4>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li className="flex gap-2">
+                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                                <span><strong>Small Sample Size:</strong> PPI requires sufficient data (minimum 10 innings, 20 overs bowled) for accuracy. Early-career players or those with limited opportunities may have unreliable scores.</span>
+                            </li>
+                            <li className="flex gap-2">
+                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                                <span><strong>No Context Awareness:</strong> The index doesn't distinguish between runs scored in pressure situations versus easy conditions, or wickets taken against strong versus weak opposition.</span>
+                            </li>
+                            <li className="flex gap-2">
+                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                                <span><strong>Fielding Limitations:</strong> Only captures dismissals (catches, stumpings, run outs), not general fielding quality, athleticism, or ground fielding contributions.</span>
+                            </li>
+                            <li className="flex gap-2">
+                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                                <span><strong>Format Differences:</strong> The same benchmarks apply across Test, ODI, and T20, but these formats have different performance expectations. Interpret scores with format context.</span>
+                            </li>
+                            <li className="flex gap-2">
+                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
+                                <span><strong>Role Misclassification:</strong> Players who don't fit neatly into one role (e.g., batting all-rounders) may be evaluated against inappropriate expectations.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <hr className="border-border/50" />
+
+                    {/* Real World Examples */}
+                    <div>
+                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
+                            <Trophy className="h-5 w-5 text-green-600" />
+                            Real-World Examples
+                        </h4>
+                        <div className="space-y-3">
+                            <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
+                                <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example A: Elite All-Rounder</h5>
+                                <p className="text-sm text-green-700/80 dark:text-green-400">
+                                    Player scores 450 runs in 12 innings (10 dismissals), takes 18 wickets for 420 runs in 65 overs, and takes 8 catches. Batting Score: 67.5, Bowling Score: 68.2, Fielding Score: 40. As an all-rounder (40% batting, 40% bowling, 20% fielding): PPI = 67.5×0.4 + 68.2×0.4 + 40×0.2 = 62.3 (Very Good B+). This player is a valuable balanced all-rounder.
+                                </p>
+                            </div>
+                            <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+                                <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example B: Specialist Batsman</h5>
+                                <p className="text-sm text-blue-700/80 dark:text-blue-400">
+                                    Player scores 850 runs in 20 innings (18 dismissals) with strike rate 118, doesn't bowl, takes 5 catches. Batting Score: 82.4, Bowling Score: 0, Fielding Score: 25. As a batsman (70% batting, 10% bowling, 20% fielding): PPI = 82.4×0.7 + 0×0.1 + 25×0.2 = 62.7 (Very Good B+). Despite no bowling, excellent batting drives high PPI.
+                                </p>
+                            </div>
+                            <div className="p-4 rounded-lg bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20">
+                                <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-1">Example C: Wicket-Keeper Batsman</h5>
+                                <p className="text-sm text-purple-700/80 dark:text-purple-400">
+                                    Player scores 380 runs in 15 innings (12 dismissals), doesn't bowl, takes 12 catches and 3 stumpings. Batting Score: 54.2, Bowling Score: 0, Fielding Score: 84. As wicket-keeper (40% batting, 10% bowling, 50% fielding): PPI = 54.2×0.4 + 0×0.1 + 84×0.5 = 63.7 (Very Good B+). Excellent keeping compensates for moderate batting.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+            {/* Summary */}
+            <Card className="mb-6">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Shield className="h-5 w-5" />
+                        Summary
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm text-muted-foreground">
+                    <p>The Player Performance Index Calculator provides a comprehensive, multi-dimensional evaluation of cricket players across batting, bowling, and fielding disciplines.</p>
+                    <p>By using role-based weighting, it ensures fair comparison between specialists and all-rounders, providing objective insights into overall player value.</p>
+                    <p>Use this tool to track player development, make informed team selection decisions, and identify specific areas for improvement in your cricket performance.</p>
                 </CardContent>
             </Card>
         </div>
