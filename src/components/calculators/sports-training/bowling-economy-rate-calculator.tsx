@@ -138,13 +138,20 @@ export default function BowlingEconomyRateCalculator() {
 
     return (
         <div className="space-y-8">
+            {/* SEO-Optimized Header */}
+            <div className="space-y-3">
+                <h1 className="text-3xl md:text-4xl font-bold">Bowling Economy Rate Calculator</h1>
+                <p className="text-lg text-muted-foreground">
+                    Calculate cricket bowling economy rate (runs per over) to measure run containment.
+                </p>
+            </div>
 
             {/* Input Form */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <BarChart3 className="h-5 w-5" />
-                        Bowling Statistics
+                        <h2 className="text-xl font-semibold">Bowling Statistics</h2>
                     </CardTitle>
                     <CardDescription>
                         Enter runs conceded and overs bowled to calculate economy rate
@@ -219,8 +226,8 @@ export default function BowlingEconomyRateCalculator() {
                             <div className="flex items-center gap-4">
                                 <BarChart3 className="h-8 w-8 text-primary" />
                                 <div>
-                                    <CardTitle>Economy Rate</CardTitle>
-                                    <CardDescription>Run Containment Analysis</CardDescription>
+                                    <h2 className="text-2xl font-bold">Economy Rate</h2>
+                                    <p className="text-muted-foreground">Run Containment Analysis</p>
                                 </div>
                             </div>
                         </CardHeader>
@@ -430,19 +437,7 @@ export default function BowlingEconomyRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/net-run-rate-calculator" className="block">
-                            <Card className="hover:shadow-md transition-shadow cursor-pointer">
-                                <CardContent className="p-4">
-                                    <div className="flex items-center gap-3">
-                                        <Shield className="h-5 w-5 text-green-600" />
-                                        <div>
-                                            <p className="font-medium">Net Run Rate</p>
-                                            <p className="text-sm text-muted-foreground">Team performance</p>
-                                        </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </Link>
+
                         <Link href="/category/sports-training/required-run-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
@@ -481,7 +476,7 @@ export default function BowlingEconomyRateCalculator() {
                 <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
                 <meta itemProp="datePublished" content="2026-02-09" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Bowling Economy Rate</h1>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Bowling Economy Rate</h2>
                 <p className="text-lg italic text-muted-foreground">Master the critical metric that defines a bowler's run containment ability and value in limited-overs cricket.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8">What is Bowling Economy Rate?</h2>
@@ -543,7 +538,7 @@ export default function BowlingEconomyRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Frequently Asked Questions
+                        <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
                         Common questions about bowling economy rate
@@ -629,7 +624,7 @@ export default function BowlingEconomyRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Usage of this Calculator
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -704,7 +699,7 @@ export default function BowlingEconomyRateCalculator() {
                     <div className="flex items-start gap-4">
                         <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
                         <div>
-                            <h3 className="font-semibold text-lg mb-2">Summary</h3>
+                            <h2 className="font-semibold text-lg mb-2">Summary</h2>
                             <p className="text-sm text-muted-foreground">
                                 The Bowling Economy Rate Calculator measures a cricket bowler's run containment ability by calculating runs conceded per over.
                             </p>

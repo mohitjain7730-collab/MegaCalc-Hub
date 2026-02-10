@@ -150,13 +150,20 @@ export default function TeamRunRateCalculator() {
 
     return (
         <div className="space-y-8">
+            {/* SEO-Optimized Header */}
+            <div className="space-y-3">
+                <h1 className="text-3xl md:text-4xl font-bold">Team Run Rate Calculator</h1>
+                <p className="text-lg text-muted-foreground">
+                    Calculate current team run rate (runs per over) to assess scoring pace and match position.
+                </p>
+            </div>
 
             {/* Input Form */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <BarChart3 className="h-5 w-5" />
-                        Team Scoring Statistics
+                        <h2 className="text-xl font-semibold">Team Scoring Statistics</h2>
                     </CardTitle>
                     <CardDescription>
                         Enter runs scored and overs completed to calculate team run rate
@@ -231,8 +238,8 @@ export default function TeamRunRateCalculator() {
                             <div className="flex items-center gap-4">
                                 <BarChart3 className="h-8 w-8 text-primary" />
                                 <div>
-                                    <CardTitle>Team Run Rate</CardTitle>
-                                    <CardDescription>Scoring Performance Analysis</CardDescription>
+                                    <h2 className="text-2xl font-bold">Team Run Rate</h2>
+                                    <p className="text-muted-foreground">Scoring Performance Analysis</p>
                                 </div>
                             </div>
                         </CardHeader>
@@ -494,7 +501,7 @@ export default function TeamRunRateCalculator() {
                 <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
                 <meta itemProp="datePublished" content="2026-02-10" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Team Run Rate in Cricket</h1>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Team Run Rate in Cricket</h2>
                 <p className="text-lg italic text-muted-foreground">Master the fundamental metric that measures team scoring pace and batting performance in limited-overs cricket.</p>
 
                 <h2 className="text-2xl font-bold text-foreground mt-8">What is Team Run Rate?</h2>
@@ -569,7 +576,7 @@ export default function TeamRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Frequently Asked Questions
+                        <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
                         Common questions about team run rate
@@ -655,7 +662,7 @@ export default function TeamRunRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Usage of this Calculator
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -712,7 +719,7 @@ export default function TeamRunRateCalculator() {
                     <div className="flex items-start gap-4">
                         <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
                         <div>
-                            <h3 className="font-semibold text-lg mb-2">Summary</h3>
+                            <h2 className="font-semibold text-lg mb-2">Summary</h2>
                             <p className="text-sm text-muted-foreground">
                                 The Team Run Rate Calculator measures a cricket team's current scoring pace by calculating runs scored per over.
                             </p>

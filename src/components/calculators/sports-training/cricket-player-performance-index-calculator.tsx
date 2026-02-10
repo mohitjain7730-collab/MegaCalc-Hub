@@ -246,13 +246,20 @@ export default function CricketPlayerPerformanceIndexCalculator() {
 
     return (
         <div className="space-y-8">
+            {/* SEO-Optimized Header */}
+            <div className="space-y-3">
+                <h1 className="text-3xl md:text-4xl font-bold">Cricket Player Performance Index Calculator</h1>
+                <p className="text-lg text-muted-foreground">
+                    Use this calculator to automatically evaluate a cricket player's overall performance by combining batting, bowling, and fielding statistics into a single comprehensive index.
+                </p>
+            </div>
 
             {/* Input Form */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Award className="h-5 w-5" />
-                        Player Statistics
+                        <h2 className="text-xl font-semibold">Enter Player Statistics</h2>
                     </CardTitle>
                     <CardDescription>
                         Enter comprehensive player statistics to calculate performance index
@@ -508,6 +515,12 @@ export default function CricketPlayerPerformanceIndexCalculator() {
             {/* Results */}
             {result && (
                 <div className="space-y-6">
+                    {/* Results Header */}
+                    <div>
+                        <h2 className="text-2xl font-bold">Calculated Performance Index</h2>
+                        <p className="text-muted-foreground mt-1">Comprehensive analysis of player contributions</p>
+                    </div>
+
                     {/* Main Result Card */}
                     <Card className="border-2 border-primary">
                         <CardHeader>
@@ -614,7 +627,7 @@ export default function CricketPlayerPerformanceIndexCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        How the Performance Index Works
+                        <h2 className="text-xl font-semibold">How the Performance Index Works</h2>
                     </CardTitle>
                     <CardDescription>
                         Understanding the calculation methodology
@@ -668,7 +681,7 @@ export default function CricketPlayerPerformanceIndexCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <FunctionSquare className="h-5 w-5" />
-                        Performance Index Formula
+                        <h2 className="text-xl font-semibold">Performance Index Formula</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -688,7 +701,7 @@ export default function CricketPlayerPerformanceIndexCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Calculator className="h-5 w-5" />
-                        Related Cricket Calculators
+                        <h2 className="text-xl font-semibold">Related Cricket Calculators</h2>
                     </CardTitle>
                     <CardDescription>
                         Explore other cricket performance analysis tools
@@ -787,7 +800,7 @@ export default function CricketPlayerPerformanceIndexCalculator() {
                 <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
                 <meta itemProp="datePublished" content="2026-02-10" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Player Performance Index: Holistic Player Evaluation</h1>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Player Performance Index: Holistic Player Evaluation</h2>
                 <p className="text-lg italic text-muted-foreground">Master the comprehensive metric that evaluates cricket players across all disciplines - batting, bowling, and fielding - to determine overall value and contribution to the team.</p>
 
                 {/* TABLE OF CONTENTS */}
@@ -991,7 +1004,7 @@ export default function CricketPlayerPerformanceIndexCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Frequently Asked Questions
+                        <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
                         Common questions about the Player Performance Index
@@ -1077,7 +1090,7 @@ export default function CricketPlayerPerformanceIndexCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Usage of this Calculator
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
                     <CardDescription>
                         Practical applications and real-world context
@@ -1179,7 +1192,7 @@ export default function CricketPlayerPerformanceIndexCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Shield className="h-5 w-5" />
-                        Summary
+                        <h2 className="text-xl font-semibold">Summary</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm text-muted-foreground">

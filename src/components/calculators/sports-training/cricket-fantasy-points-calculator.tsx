@@ -212,13 +212,20 @@ export default function CricketFantasyPointsCalculator() {
 
     return (
         <div className="space-y-8">
+            {/* SEO-Optimized Header */}
+            <div className="space-y-3">
+                <h1 className="text-3xl md:text-4xl font-bold">Cricket Fantasy Points Calculator</h1>
+                <p className="text-lg text-muted-foreground">
+                    Use this calculator to automatically calculate standard fantasy cricket points based on batting, bowling, and fielding performance, including captain and vice-captain multipliers.
+                </p>
+            </div>
 
             {/* Input Form */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Star className="h-5 w-5" />
-                        Player Performance Data
+                        <h2 className="text-xl font-semibold">Enter Match Performance</h2>
                     </CardTitle>
                     <CardDescription>
                         Enter match statistics to calculate fantasy cricket points
@@ -581,6 +588,12 @@ export default function CricketFantasyPointsCalculator() {
             {/* Results */}
             {result && (
                 <div className="space-y-6">
+                    {/* Results Header */}
+                    <div>
+                        <h2 className="text-2xl font-bold">Calculated Fantasy Points</h2>
+                        <p className="text-muted-foreground mt-1">Detailed performance breakdown and scoring</p>
+                    </div>
+
                     {/* Main Result Card */}
                     <Card className="border-2 border-primary">
                         <CardHeader>
@@ -663,7 +676,7 @@ export default function CricketFantasyPointsCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Fantasy Points System
+                        <h2 className="text-xl font-semibold">Fantasy Points System</h2>
                     </CardTitle>
                     <CardDescription>
                         Standard fantasy cricket scoring rules
@@ -773,7 +786,7 @@ export default function CricketFantasyPointsCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Calculator className="h-5 w-5" />
-                        Related Cricket Calculators
+                        <h2 className="text-xl font-semibold">Related Cricket Calculators</h2>
                     </CardTitle>
                     <CardDescription>
                         Explore other cricket performance analysis tools
@@ -872,7 +885,7 @@ export default function CricketFantasyPointsCalculator() {
                 <meta itemProp="author" content="MegaCalc Fantasy Cricket Team" />
                 <meta itemProp="datePublished" content="2026-02-10" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Fantasy Cricket Points: Build Winning Teams</h1>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Fantasy Cricket Points: Build Winning Teams</h2>
                 <p className="text-lg italic text-muted-foreground">Learn how fantasy cricket points are calculated, master captain selection strategy, and discover the tactics used by top fantasy players to build championship-winning teams.</p>
 
                 {/* TABLE OF CONTENTS */}
@@ -1119,7 +1132,7 @@ export default function CricketFantasyPointsCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Frequently Asked Questions
+                        <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
                         Common questions about fantasy cricket points
@@ -1205,7 +1218,7 @@ export default function CricketFantasyPointsCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Usage of this Calculator
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
                     <CardDescription>
                         Practical applications and real-world context
@@ -1307,7 +1320,7 @@ export default function CricketFantasyPointsCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Shield className="h-5 w-5" />
-                        Summary
+                        <h2 className="text-xl font-semibold">Summary</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm text-muted-foreground">

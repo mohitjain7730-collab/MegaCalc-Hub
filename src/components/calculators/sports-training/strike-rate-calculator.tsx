@@ -138,13 +138,20 @@ export default function StrikeRateCalculator() {
 
     return (
         <div className="space-y-8">
+            {/* SEO-Optimized Header */}
+            <div className="space-y-3">
+                <h1 className="text-3xl md:text-4xl font-bold">Cricket Strike Rate Calculator</h1>
+                <p className="text-lg text-muted-foreground">
+                    Calculate batting strike rate (runs per 100 balls) to measure scoring speed and aggression.
+                </p>
+            </div>
 
             {/* Input Form */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Zap className="h-5 w-5" />
-                        Batting Statistics
+                        <h2 className="text-xl font-semibold">Batting Statistics</h2>
                     </CardTitle>
                     <CardDescription>
                         Enter runs scored and balls faced to calculate strike rate
@@ -219,8 +226,8 @@ export default function StrikeRateCalculator() {
                             <div className="flex items-center gap-4">
                                 <Zap className="h-8 w-8 text-primary" />
                                 <div>
-                                    <CardTitle>Strike Rate</CardTitle>
-                                    <CardDescription>Scoring Speed Analysis</CardDescription>
+                                    <h2 className="text-2xl font-bold">Strike Rate</h2>
+                                    <p className="text-muted-foreground">Scoring Speed Analysis</p>
                                 </div>
                             </div>
                         </CardHeader>
@@ -482,7 +489,7 @@ export default function StrikeRateCalculator() {
                 <meta itemProp="author" content="MegaCalc Cricket Analytics Team" />
                 <meta itemProp="datePublished" content="2026-02-09" />
 
-                <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Strike Rate: Measuring Scoring Speed and Impact</h1>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Strike Rate: Measuring Scoring Speed and Impact</h2>
                 <p className="text-lg italic text-muted-foreground">Master the essential metric that defines a batsman's scoring speed, aggression, and value in modern cricket, especially in limited-overs formats.</p>
 
                 {/* TABLE OF CONTENTS */}
@@ -673,7 +680,7 @@ export default function StrikeRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Info className="h-5 w-5" />
-                        Frequently Asked Questions
+                        <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
                         Common questions about strike rate in cricket
@@ -759,7 +766,7 @@ export default function StrikeRateCalculator() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
-                        Usage of this Calculator
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -834,7 +841,7 @@ export default function StrikeRateCalculator() {
                     <div className="flex items-start gap-4">
                         <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
                         <div>
-                            <h3 className="font-semibold text-lg mb-2">Summary</h3>
+                            <h2 className="font-semibold text-lg mb-2">Summary</h2>
                             <p className="text-sm text-muted-foreground">
                                 The Strike Rate Calculator measures a cricket batsman's scoring speed by calculating runs scored per 100 balls faced.
                             </p>
