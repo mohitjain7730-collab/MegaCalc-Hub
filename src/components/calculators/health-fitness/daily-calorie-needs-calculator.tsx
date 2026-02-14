@@ -25,15 +25,15 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const activityLevels = [
-    { name: 'Sedentary', description: 'Little or no exercise', multiplier: 1.2 },
-    { name: 'Lightly Active', description: 'Light exercise (1-3 days/week)', multiplier: 1.375 },
-    { name: 'Moderately Active', description: 'Moderate exercise (3-5 days/week)', multiplier: 1.55 },
-    { name: 'Very Active', description: 'Hard exercise (6-7 days/week)', multiplier: 1.725 },
-    { name: 'Extra Active', description: 'Very hard exercise & physical job', multiplier: 1.9 },
+  { name: 'Sedentary', description: 'Little or no exercise', multiplier: 1.2 },
+  { name: 'Lightly Active', description: 'Light exercise (1-3 days/week)', multiplier: 1.375 },
+  { name: 'Moderately Active', description: 'Moderate exercise (3-5 days/week)', multiplier: 1.55 },
+  { name: 'Very Active', description: 'Hard exercise (6-7 days/week)', multiplier: 1.725 },
+  { name: 'Extra Active', description: 'Very hard exercise & physical job', multiplier: 1.9 },
 ];
 
 export default function DailyCalorieNeedsCalculator() {
-  const [result, setResult] = useState<{tdee: number, bmr: number} | null>(null);
+  const [result, setResult] = useState<{ tdee: number, bmr: number } | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -65,19 +65,27 @@ export default function DailyCalorieNeedsCalculator() {
 
     const tdee = bmr * parseFloat(values.activityLevel);
 
-    setResult({tdee, bmr});
+    setResult({ tdee, bmr });
   };
-  
+
   const unit = form.watch('unit');
 
   const chartData = result ? activityLevels.map(level => ({
-      name: level.name,
-      calories: Math.round(result.bmr * level.multiplier),
-      description: level.description,
+    name: level.name,
+    calories: Math.round(result.bmr * level.multiplier),
+    description: level.description,
   })) : [];
 
   return (
     <div className="space-y-8">
+      {/* SEO-Optimized Header */}
+      <div className="space-y-3">
+        <h1 className="text-3xl md:text-4xl font-bold">Daily Calorie Needs Calculator (TDEE)</h1>
+        <p className="text-lg text-muted-foreground">
+          Scientifically estimate your Total Daily Energy Expenditure to lose, gain, or maintain weight effectively.
+        </p>
+      </div>
+
       {/* Input Form */}
       <Card>
         <CardHeader>
@@ -86,416 +94,354 @@ export default function DailyCalorieNeedsCalculator() {
             Calculate Your Daily Calorie Needs
           </CardTitle>
           <CardDescription>
-            Enter your details to get a personalized estimate of your Total Daily Energy Expenditure (TDEE)
+            Enter your details to get a personalized estimate of your daily caloric burn.
           </CardDescription>
         </CardHeader>
         <CardContent>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField control={form.control} name="unit" render={({ field }) => (
-                <FormItem><FormLabel>Units</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="metric">Metric (kg, cm)</SelectItem><SelectItem value="imperial">Imperial (lbs, in)</SelectItem></SelectContent></Select></FormItem>
-            )} />
-            <FormField control={form.control} name="gender" render={({ field }) => (
-                <FormItem><FormLabel>Gender</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="male">Male</SelectItem><SelectItem value="female">Female</SelectItem></SelectContent></Select></FormItem>
-            )} />
-            <FormField control={form.control} name="age" render={({ field }) => (
-                <FormItem><FormLabel>Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="weight" render={({ field }) => (
-                <FormItem><FormLabel>Weight ({unit === 'metric' ? 'kg' : 'lbs'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="height" render={({ field }) => (
-                <FormItem><FormLabel>Height ({unit === 'metric' ? 'cm' : 'in'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField control={form.control} name="activityLevel" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Activity Level</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
-                    <SelectContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="unit" render={({ field }) => (
+                  <FormItem><FormLabel>Units</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="metric">Metric (kg, cm)</SelectItem><SelectItem value="imperial">Imperial (lbs, in)</SelectItem></SelectContent></Select></FormItem>
+                )} />
+                <FormField control={form.control} name="gender" render={({ field }) => (
+                  <FormItem><FormLabel>Gender</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="male">Male</SelectItem><SelectItem value="female">Female</SelectItem></SelectContent></Select></FormItem>
+                )} />
+                <FormField control={form.control} name="age" render={({ field }) => (
+                  <FormItem><FormLabel>Age (years)</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseInt(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="weight" render={({ field }) => (
+                  <FormItem><FormLabel>Weight ({unit === 'metric' ? 'kg' : 'lbs'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="height" render={({ field }) => (
+                  <FormItem><FormLabel>Height ({unit === 'metric' ? 'cm' : 'in'})</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="activityLevel" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Activity Level</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+                      <SelectContent>
                         {activityLevels.map(level => (
-                            <SelectItem key={level.name} value={String(level.multiplier)}>{level.name}</SelectItem>
+                          <SelectItem key={level.name} value={String(level.multiplier)}>{level.name} ({level.description})</SelectItem>
                         ))}
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-            )} />
-          </div>
-          <Button type="submit">Calculate TDEE</Button>
-        </form>
-      </Form>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )} />
+              </div>
+              <Button type="submit" className="w-full md:w-auto">Calculate TDEE</Button>
+            </form>
+          </Form>
         </CardContent>
       </Card>
 
       {result && (
-        <Card>
-            <CardHeader>
-              <div className='flex items-center gap-4'>
-                <Flame className="h-8 w-8 text-primary" />
+        <Card className="border-primary/20 bg-primary/5">
+          <CardHeader>
+            <div className='flex items-center gap-4'>
+              <div className="p-3 bg-primary rounded-full text-primary-foreground">
+                <Flame className="h-6 w-6" />
+              </div>
+              <div>
+                <CardTitle>Your Daily Calorie Needs</CardTitle>
+                <CardDescription>Based on the Mifflin-St Jeor Equation</CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="text-center space-y-4">
                 <div>
-                  <CardTitle>Your TDEE Result</CardTitle>
-                  <CardDescription>Personalized calorie needs based on your inputs</CardDescription>
+                  <p className="text-sm text-muted-foreground uppercase tracking-wide font-semibold">Maintenance Calories (TDEE)</p>
+                  <p className="text-5xl font-extrabold text-primary">{result.tdee.toFixed(0)} <span className="text-xl text-muted-foreground font-normal">kcal/day</span></p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 pt-4">
+                  <div className="p-3 bg-background rounded-lg border">
+                    <p className="text-xs text-muted-foreground font-medium mb-1">Weight Loss (-500)</p>
+                    <p className="text-xl font-bold text-green-600">{(result.tdee - 500).toFixed(0)}</p>
+                  </div>
+                  <div className="p-3 bg-background rounded-lg border">
+                    <p className="text-xs text-muted-foreground font-medium mb-1">Weight Gain (+500)</p>
+                    <p className="text-xl font-bold text-orange-600">{(result.tdee + 500).toFixed(0)}</p>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-background/50 rounded-lg text-left text-sm border">
+                  <div className="flex justify-between items-center mb-1">
+                    <span>Basal Metabolic Rate (BMR)</span>
+                    <span className="font-semibold">{result.bmr.toFixed(0)} kcal</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Calories burned at complete rest.</p>
                 </div>
               </div>
-            </CardHeader>
-            <CardContent>
-                <div className="text-center space-y-2 mb-8">
-                    <p className="text-4xl font-bold">{result.tdee.toFixed(0)}</p>
-                    <CardDescription>Estimated calories/day to maintain your current weight.</CardDescription>
-                    <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                      <p className="text-sm text-muted-foreground">Basal Metabolic Rate (BMR): <span className="font-semibold text-foreground">{result.bmr.toFixed(0)} calories/day</span></p>
-                      <p className="text-xs text-muted-foreground mt-1">Your body burns this many calories at rest for basic functions.</p>
-                    </div>
-                </div>
-                <div>
-                    <h3 className="text-lg font-semibold text-center mb-4">Daily Calorie Needs by Activity Level</h3>
-                     <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 40 }}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} dy={10} />
-                                <YAxis />
-                                <Tooltip
-                                    content={({ active, payload, label }) => {
-                                        if (active && payload && payload.length) {
-                                            return (
-                                                <div className="bg-background border p-2 rounded-lg shadow-lg">
-                                                    <p className="font-bold">{label}</p>
-                                                    <p className='text-sm text-muted-foreground'>{payload[0].payload.description}</p>
-                                                    <p className="text-primary mt-1">{`Calories: ${payload[0].value}`}</p>
-                                                </div>
-                                            );
-                                        }
-                                        return null;
-                                    }}
-                                />
-                                <Bar dataKey="calories" fill="hsl(var(--primary))" name="Estimated Daily Calories" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
-                </div>
-            </CardContent>
+
+              <div className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={chartData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis dataKey="name" hide />
+                    <YAxis hide />
+                    <Tooltip
+                      cursor={{ fill: 'hsl(var(--muted))', opacity: 0.4 }}
+                      content={({ active, payload, label }) => {
+                        if (active && payload && payload.length) {
+                          return (
+                            <div className="bg-popover border p-3 rounded-lg shadow-lg">
+                              <p className="font-bold mb-1">{payload[0].payload.name}</p>
+                              <p className='text-xs text-muted-foreground mb-2'>{payload[0].payload.description}</p>
+                              <p className="text-primary font-bold">{`${payload[0].value} Calories`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar dataKey="calories" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+                <p className="text-center text-xs text-muted-foreground mt-2">Daily calorie needs across different activity levels</p>
+              </div>
+            </div>
+          </CardContent>
         </Card>
       )}
 
-      {/* Educational Content - Expanded Sections */}
-      <div className="space-y-6">
-        {/* Understanding the Inputs Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Info className="h-5 w-5" />
-              Understanding the Inputs
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Age</h4>
-              <p className="text-muted-foreground">
-                Age affects your metabolism. As you age, your basal metabolic rate naturally decreases, meaning you burn fewer calories at rest. This is why calorie needs typically decrease with age.
+      {/* Understanding the Inputs Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Info className="h-5 w-5" />
+            Understanding the Metrics
+          </CardTitle>
+          <CardDescription>
+            Key factors that influence your energy expenditure
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-100 dark:border-blue-900/20">
+              <h4 className="font-semibold mb-2 flex items-center gap-2 text-blue-700 dark:text-blue-300">
+                <Activity className="h-4 w-4" />
+                BMR (Basal Metabolic Rate)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                The number of calories your body burns performing basic life-sustaining functions like breathing, circulation, and cell production. This accounts for 60-75% of your total burn.
               </p>
             </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Gender</h4>
-              <p className="text-muted-foreground">
-                Men generally have higher calorie needs than women due to typically having more muscle mass and larger body size. The Mifflin-St Jeor equation uses different constants for men and women to account for these biological differences.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Weight and Height</h4>
-              <p className="text-muted-foreground">
-                Larger bodies require more energy to function. Weight and height are key factors in calculating your Basal Metabolic Rate (BMR), which is the foundation of your total calorie needs.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Activity Level</h4>
-              <p className="text-muted-foreground">
-                Your daily activity level determines how much you multiply your BMR to get your TDEE. Choose the level that best matches your typical weekly exercise and daily activity patterns. Be honest—overestimating can lead to eating more than you need.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
 
-        {/* Related Calculators Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BarChart3 className="h-5 w-5" />
-              Related Calculators
-            </CardTitle>
-            <CardDescription>
-              Explore other nutrition and fitness calculators to optimize your health journey
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">
-                    Macro Ratio Calculator
-                  </a>
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Calculate your optimal protein, carbs, and fat ratios based on your calorie needs.
-                </p>
-              </div>
-              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
-                    Protein Intake Calculator
-                  </a>
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Determine how much protein you need daily based on your body weight and fitness goals.
-                </p>
-              </div>
-              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
-                    Carbohydrate Intake Calculator
-                  </a>
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Find your optimal daily carbohydrate intake based on activity level and body weight.
-                </p>
-              </div>
-              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/fat-intake-calculator" className="text-primary hover:underline">
-                    Fat Intake Calculator
-                  </a>
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Calculate your daily fat requirements for optimal health and performance.
-                </p>
-              </div>
-              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/bmr-calculator" className="text-primary hover:underline">
-                    BMR Calculator
-                  </a>
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Calculate your Basal Metabolic Rate - the calories you burn at complete rest.
-                </p>
-              </div>
-              <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-                <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
-                    Body Fat Percentage Calculator
-                  </a>
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  Track your body composition and understand your muscle-to-fat ratio.
-                </p>
+            <div className="p-4 bg-orange-50 dark:bg-orange-900/10 rounded-lg border border-orange-100 dark:border-orange-900/20">
+              <h4 className="font-semibold mb-2 flex items-center gap-2 text-orange-700 dark:text-orange-300">
+                <Flame className="h-4 w-4" />
+                TDEE (Total Expenditure)
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Your total daily burn. It combines your BMR with calories burned through phsyical activity (exercise + daily movement) and the thermic effect of food.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Guide Section */}
+      <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-sm border" itemScope itemType="https://schema.org/Article">
+        <meta itemProp="headline" content="Complete Guide to Daily Calorie Needs (TDEE)" />
+        <h2 className="text-2xl font-bold text-foreground">Complete Guide to Daily Calorie Needs</h2>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-foreground">Why TDEE Matters</h3>
+          <p>
+            Your Total Daily Energy Expenditure (TDEE) is the most critical number for weight management. It acts as your nutritional "North Star."
+          </p>
+          <ul className="list-disc ml-5 space-y-2">
+            <li><strong>To Lose Weight:</strong> You must eat <em>below</em> your TDEE (Calorie Deficit).</li>
+            <li><strong>To Gain Weight:</strong> You must eat <em>above</em> your TDEE (Calorie Surplus).</li>
+            <li><strong>To Maintain Weight:</strong> You must eat <em>at</em> your TDEE.</li>
+          </ul>
         </div>
-      </div>
-          </CardContent>
-        </Card>
 
-        {/* Guide Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Flame className="h-5 w-5" />
-              Complete Guide to Daily Calorie Needs
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-        <h3 className='font-bold text-xl'>🥗 Daily Calorie Needs Calculator: Find Out How Many Calories You Need Per Day</h3>
-        <h4 className='font-bold text-lg'>🔍 What Is a Daily Calorie Needs Calculator?</h4>
-        <p>A Daily Calorie Needs Calculator helps you determine how many calories your body requires each day to maintain, lose, or gain weight. This calculation is based on your age, gender, height, weight, and activity level. Understanding your calorie needs is essential for creating a healthy diet plan, achieving weight goals, and maintaining overall wellness.</p>
-        <p>Whether your goal is fat loss, muscle gain, or simply healthy living, this calculator provides accurate estimates based on scientifically proven formulas like Mifflin-St Jeor or Harris-Benedict equations.</p>
-        
-        <h4 className='font-bold text-lg mt-4'>⚙️ How the Daily Calorie Needs Calculator Works</h4>
-        <p>The calculator estimates your Total Daily Energy Expenditure (TDEE) — the total number of calories you burn per day.</p>
-        <p>It uses two major components:</p>
-        <ul className="list-disc list-inside pl-4">
-            <li>Basal Metabolic Rate (BMR): Calories your body burns at rest to perform basic functions (breathing, blood circulation, etc.).</li>
-            <li>Activity Multiplier: Adjusts your BMR based on your lifestyle (sedentary, lightly active, very active, etc.).</li>
-        </ul>
+        <hr className="border-border/50 my-6" />
 
-        <h4 className='font-bold text-lg mt-4'>🧮 Formula Used for Calculation</h4>
-        <p><strong>1. Mifflin-St Jeor Equation (Most Accurate)</strong></p>
-        <p>For men:</p>
-        <p className="font-mono p-2 bg-muted rounded-md text-sm">BMR=(10×weight in kg)+(6.25×height in cm)−(5×age in years)+5</p>
-        <p>For women:</p>
-        <p className="font-mono p-2 bg-muted rounded-md text-sm">BMR=(10×weight in kg)+(6.25×height in cm)−(5×age in years)−161</p>
-        <p><strong>2. Activity Multiplier</strong></p>
-        <p>Multiply your BMR by an activity factor to get your Total Daily Energy Expenditure (TDEE):</p>
-        <Table>
-            <TableHeader><TableRow><TableHead>Activity Level</TableHead><TableHead>Description</TableHead><TableHead>Multiplier</TableHead></TableRow></TableHeader>
-            <TableBody>
-                <TableRow><TableCell>Sedentary</TableCell><TableCell>Little or no exercise</TableCell><TableCell>1.2</TableCell></TableRow>
-                <TableRow><TableCell>Lightly active</TableCell><TableCell>Light exercise/sports 1-3 days/week</TableCell><TableCell>1.375</TableCell></TableRow>
-                <TableRow><TableCell>Moderately active</TableCell><TableCell>Moderate exercise/sports 3-5 days/week</TableCell><TableCell>1.55</TableCell></TableRow>
-                <TableRow><TableCell>Very active</TableCell><TableCell>Hard exercise/sports 6-7 days/week</TableCell><TableCell>1.725</TableCell></TableRow>
-                <TableRow><TableCell>Extra active</TableCell><TableCell>Very hard exercise & physical job</TableCell><TableCell>1.9</TableCell></TableRow>
-            </TableBody>
-        </Table>
-        <p className="font-mono p-2 bg-muted rounded-md text-sm mt-2">TDEE = BMR × Activity Multiplier</p>
-        
-        <h4 className='font-bold text-lg mt-4'>🧘‍♀️ How Many Calories Should You Eat Per Day?</h4>
-        <p>Once you know your TDEE, you can adjust it based on your goal:</p>
-        <Table>
-            <TableHeader><TableRow><TableHead>Goal</TableHead><TableHead>Calorie Adjustment</TableHead><TableHead>Result</TableHead></TableRow></TableHeader>
-            <TableBody>
-                <TableRow><TableCell>Weight Loss</TableCell><TableCell>Subtract 500 kcal/day</TableCell><TableCell>~0.5 kg weight loss per week</TableCell></TableRow>
-                <TableRow><TableCell>Weight Gain</TableCell><TableCell>Add 500 kcal/day</TableCell><TableCell>~0.5 kg weight gain per week</TableCell></TableRow>
-                <TableRow><TableCell>Maintenance</TableCell><TableCell>Keep calories equal to TDEE</TableCell><TableCell>Weight remains stable</TableCell></TableRow>
-            </TableBody>
-        </Table>
-        <p>Example: If your TDEE = 2,500 calories/day, to lose weight, eat around 2,000 calories/day. To gain weight, eat around 3,000 calories/day.</p>
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-foreground">The Equations We Use</h3>
+          <p>
+            This calculator uses the <strong>Mifflin-St Jeor equation</strong>, widely considered the most accurate standard for BMR calculation in clinical settings.
+          </p>
+          <div className="bg-muted p-4 rounded-lg font-mono text-sm overflow-x-auto">
+            <p><strong>Men:</strong> (10 × weight in kg) + (6.25 × height in cm) - (5 × age in years) + 5</p>
+            <p className="mt-2"><strong>Women:</strong> (10 × weight in kg) + (6.25 × height in cm) - (5 × age in years) - 161</p>
+          </div>
+          <p>
+            Once BMR is calculated, we apply the Katch-McArdle activity multipliers to determine TDEE.
+          </p>
+        </div>
 
-        <h4 className='font-bold text-lg mt-4'>🍽️ Daily Calorie Needs by Gender and Age</h4>
-        <Table>
-            <TableHeader><TableRow><TableHead>Age Group</TableHead><TableHead>Men (kcal/day)</TableHead><TableHead>Women (kcal/day)</TableHead></TableRow></TableHeader>
-            <TableBody>
-                <TableRow><TableCell>18–25</TableCell><TableCell>2,400–3,000</TableCell><TableCell>1,800–2,200</TableCell></TableRow>
-                <TableRow><TableCell>26–45</TableCell><TableCell>2,400–2,800</TableCell><TableCell>1,800–2,200</TableCell></TableRow>
-                <TableRow><TableCell>46–65</TableCell><TableCell>2,200–2,600</TableCell><TableCell>1,800–2,000</TableCell></TableRow>
-                <TableRow><TableCell>65+</TableCell><TableCell>2,000–2,400</TableCell><TableCell>1,600–1,800</TableCell></TableRow>
-            </TableBody>
-        </Table>
-        <p>Note: These are general guidelines — use the calculator for a personalized estimate.</p>
-        
-        <h4 className='font-bold text-lg mt-4'>🥦 How to Use the Daily Calorie Needs Calculator</h4>
-        <ol className="list-decimal list-inside pl-4">
-            <li>Enter your gender, age, height, and weight.</li>
-            <li>Choose your activity level.</li>
-                <li>Click "Calculate." Instantly see your daily calorie needs.</li>
-            <li>Adjust your calorie intake based on your goals (gain, lose, or maintain weight).</li>
-        </ol>
-        
-        <h4 className='font-bold text-lg mt-4'>🧡 Why Knowing Your Calorie Needs Matters</h4>
-        <ul className="list-disc list-inside pl-4">
-            <li>Avoid Overeating: Helps prevent unintentional weight gain.</li>
-            <li>Support Fitness Goals: Ideal for people tracking macros or following fitness programs.</li>
-            <li>Improve Nutrition: Encourages mindful eating and balanced meal planning.</li>
-            <li>Track Progress: Essential for long-term weight management.</li>
-        </ul>
+        <hr className="border-border/50 my-6" />
 
-        <h4 className='font-bold text-lg mt-4'>🧂 Factors That Affect Your Calorie Needs</h4>
-        <ul className="list-disc list-inside pl-4">
-            <li>Age: Metabolism slows with age.</li>
-            <li>Gender: Men usually burn more calories due to higher muscle mass.</li>
-            <li>Body Composition: Muscle burns more calories than fat.</li>
-            <li>Activity Level: Physical activity significantly increases daily calorie burn.</li>
-            <li>Metabolic Rate: Varies from person to person.</li>
-            <li>Hormonal Health: Conditions like thyroid issues affect metabolism.</li>
-        </ul>
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-foreground">Choosing the Right Activity Level</h3>
+          <p>Most users overestimate their activity level. Be conservative relative to your choice.</p>
+          <ul className="space-y-3 mt-4">
+            <li className="flex gap-3">
+              <span className="font-bold min-w-[140px]">Sedentary:</span>
+              <span>Desk job, little to no exercise. (Most office workers fit here).</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold min-w-[140px]">Lightly Active:</span>
+              <span>Light exercise/sports 1-3 days/week.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold min-w-[140px]">Moderately Active:</span>
+              <span>Moderate exercise/sports 3-5 days/week.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold min-w-[140px]">Very Active:</span>
+              <span>Hard exercise/sports 6-7 days/week.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        <h4 className='font-bold text-lg mt-4'>💪 Tips to Manage Your Calorie Intake Effectively</h4>
-        <ul className="list-disc list-inside pl-4">
-            <li>Track Your Food: Use apps like MyFitnessPal or Yazio to log meals.</li>
-            <li>Choose Whole Foods: Focus on fruits, vegetables, lean protein, and whole grains.</li>
-            <li>Avoid Empty Calories: Minimize sugary drinks and junk foods.</li>
-            <li>Plan Your Meals: Helps control portion sizes and calorie intake.</li>
-            <li>Stay Hydrated: Water supports metabolism and appetite control.</li>
-            <li>Combine Diet with Exercise: The best way to balance calorie input and output.</li>
-        </ul>
-        
-        <h4 className='font-bold text-lg mt-4'>📈 Example Calorie Calculation</h4>
-            <p>Let's calculate for a 30-year-old woman, height 165 cm, weight 60 kg, moderately active:</p>
-        <p>BMR = (10×60) + (6.25×165) - (5×30) - 161 = 600 + 1031.25 - 150 - 161 = 1320 kcal/day</p>
-        <p>TDEE = 1320 × 1.55 = 2046 kcal/day</p>
-        <p>➡️ She needs ~2050 calories/day to maintain her weight.</p>
-        <p>If she wants to lose 0.5 kg per week: 2050 - 500 = 1550 calories/day</p>
-        
-        <h4 className='font-bold text-lg mt-4'>🌍 Regional Relevance: India, US, UK & Beyond</h4>
-            <p>Calorie needs don't change by country — but diet types and lifestyle patterns do. In India, many people have carb-rich diets (rice, chapati). A balanced mix of protein and fiber is essential for calorie control. In the US & UK, processed foods are common, so focusing on portion control and nutrient density helps. For office workers worldwide, light activity levels mean you should calculate conservatively to avoid overeating.</p>
-        
-        <h4 className='font-bold text-lg mt-4'>🏁 Conclusion</h4>
-            <p>A Daily Calorie Needs Calculator is your first step toward effective weight management and healthier living. By knowing your TDEE and adjusting your calorie intake, you can reach your fitness goals — whether it's losing weight, gaining muscle, or maintaining a healthy lifestyle.</p>
-        <p>Use the calculator daily, track your meals, and adjust your intake over time. Small, consistent efforts lead to sustainable results.</p>
-          </CardContent>
-        </Card>
+      {/* Usage Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Users className="h-5 w-5" />
+            Who Should Use This?
+          </CardTitle>
+          <CardDescription>Real-world applications of TDEE</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 border rounded-lg bg-muted/20">
+              <strong className="block mb-2 text-primary">Weight Watchers</strong>
+              <p className="text-sm text-muted-foreground">Calculate your maintenance calories, then subtract 500 to find your "cut" calories for sustainable fat loss.</p>
+            </div>
+            <div className="p-4 border rounded-lg bg-muted/20">
+              <strong className="block mb-2 text-primary">Bodybuilders</strong>
+              <p className="text-sm text-muted-foreground">Find your baseline to ensure you are in a slight surplus (200-300 kcals) to maximize muscle growth without excess fat.</p>
+            </div>
+            <div className="p-4 border rounded-lg bg-muted/20">
+              <strong className="block mb-2 text-primary">Athletes</strong>
+              <p className="text-sm text-muted-foreground">Ensure you are fueling enough to support performance and recovery. Under-eating kills performance.</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
-        {/* FAQ Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <HelpCircle className="h-5 w-5" />
-              Frequently Asked Questions
-            </CardTitle>
-            <CardDescription>
-              Common questions about daily calorie needs and TDEE calculation
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">How do I calculate my calorie needs manually?</h4>
-              <p className="text-muted-foreground">
-                Use the Mifflin-St Jeor formula: For men, BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) + 5. For women, subtract 161 instead of adding 5. Then multiply your BMR by your activity factor (1.2 for sedentary, 1.375 for lightly active, 1.55 for moderate, 1.725 for very active, or 1.9 for extra active).
+      {/* FAQ Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <HelpCircle className="h-5 w-5" />
+            Frequently Asked Questions
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">How accurate is this calculator?</h4>
+            <p className="text-muted-foreground">
+              It is an estimate based on averages. Individual metabolism can vary by 10-15% due to genetics, muscle mass, and hormonal health. Use this as a starting point and adjust based on your real-world progress over 2-3 weeks.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Should I eat back my exercise calories?</h4>
+            <p className="text-muted-foreground">
+              Generally, no. The activity multiplier already accounts for your exercise. Adding exercise calories on top of your TDEE often leads to "double counting" and overeating.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">Does muscle mass affect TDEE?</h4>
+            <p className="text-muted-foreground">
+              Yes! Muscle tissue burns more calories at rest than fat tissue. If you are very muscular, this calculator might slightly underestimate your needs.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-foreground mb-2">What happens if I eat below my BMR?</h4>
+            <p className="text-muted-foreground">
+              Consistently eating below your BMR is not recommended. It can lead to nutrient deficiencies, muscle loss, and metabolic adaptation (slowing down your metabolism).
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Related Calculators Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <BarChart3 className="h-5 w-5" />
+            Related Calculators
+          </CardTitle>
+          <CardDescription>
+            Explore other nutrition and fitness calculators to optimize your health journey
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">
+                  Macro Ratio Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate your optimal protein, carbs, and fat ratios based on your calorie needs.
               </p>
             </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Do calorie needs change daily?</h4>
-              <p className="text-muted-foreground">
-                Yes, slightly. Your calorie needs can vary day-to-day depending on your physical activity level, amount of sleep, stress levels, and even temperature. However, your baseline TDEE remains relatively stable, and small daily fluctuations usually average out over time.
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                  Protein Intake Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Determine how much protein you need daily based on your body weight and fitness goals.
               </p>
             </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">How often should I recalculate my calorie needs?</h4>
-              <p className="text-muted-foreground">
-                Recalculate your calorie needs whenever your weight changes by 3-5 kg (7-11 lbs), when your activity pattern significantly changes (e.g., starting a new workout program or changing jobs), or every few months as you age and your metabolism naturally changes.
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                  Carbohydrate Intake Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Find your optimal daily carbohydrate intake based on activity level and body weight.
               </p>
             </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Is eating below BMR safe?</h4>
-              <p className="text-muted-foreground">
-                No, eating consistently below your BMR is not recommended for long-term health. Your BMR represents the minimum calories your body needs to perform essential functions like breathing, circulation, and cell production. While short-term calorie deficits can be safe for weight loss, they should typically be 10-25% below your TDEE, not your BMR.
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/health-fitness/fat-intake-calculator" className="text-primary hover:underline">
+                  Fat Intake Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate your daily fat requirements for optimal health and performance.
               </p>
             </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Does metabolism slow with age?</h4>
-              <p className="text-muted-foreground">
-                Yes, metabolism naturally slows with age, primarily due to loss of muscle mass (sarcopenia) and changes in hormone levels. This is why the formula includes age as a factor. However, regular strength training, staying active, and maintaining muscle mass can help mitigate age-related metabolic decline.
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/health-fitness/bmr-calculator" className="text-primary hover:underline">
+                  BMR Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Calculate your Basal Metabolic Rate - the calories you burn at complete rest.
               </p>
             </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">What's the difference between BMR and TDEE?</h4>
-              <p className="text-muted-foreground">
-                BMR (Basal Metabolic Rate) is the number of calories your body burns at complete rest—just to maintain basic bodily functions. TDEE (Total Daily Energy Expenditure) includes your BMR plus all calories burned through daily activities, exercise, and the thermic effect of food. TDEE is what you use to determine how many calories to eat.
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+              <h4 className="font-semibold mb-2">
+                <a href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                  Body Fat Percentage Calculator
+                </a>
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Track your body composition and understand your muscle-to-fat ratio.
               </p>
             </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Why do I need more calories than the calculator suggests?</h4>
-              <p className="text-muted-foreground">
-                Several factors can cause actual calorie needs to differ from estimates: very high muscle mass, a physically demanding job, high amounts of daily movement (NEAT), genetic factors, or certain medical conditions. Start with the calculated TDEE and adjust based on your results—if you're losing weight when trying to maintain, increase calories; if gaining when trying to lose, decrease them.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Can I use this calculator if I'm pregnant or breastfeeding?</h4>
-              <p className="text-muted-foreground">
-                This calculator provides baseline estimates, but pregnancy and breastfeeding significantly increase calorie needs. Pregnant women typically need an additional 300-500 calories in the second and third trimesters, and breastfeeding women need an extra 400-500 calories per day. Always consult with a healthcare provider or registered dietitian for personalized guidance during these periods.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">What if my actual weight changes don't match the predicted changes?</h4>
-              <p className="text-muted-foreground">
-                Weight change predictions assume a consistent 500-calorie deficit or surplus equals about 0.5 kg (1 lb) per week. However, individual results vary due to water retention, muscle gain, hormonal fluctuations, and other factors. If your results differ significantly after 2-4 weeks, adjust your calorie intake by 100-200 calories and monitor for another few weeks.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Should I use metric or imperial units?</h4>
-              <p className="text-muted-foreground">
-                Either system works—the calculator converts between them automatically. Use whichever system you're more comfortable with. Just be consistent: if you measure your weight in pounds, also measure your height in inches for accuracy. The calculator will convert everything to metric internally for the formula calculations.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
