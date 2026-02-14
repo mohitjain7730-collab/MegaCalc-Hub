@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Info, CheckCircle2, TrendingDown, AlertCircle, FunctionSquare, Calculator, Shield, Activity, TrendingUp, Users, AlertTriangle, Briefcase, Landmark, Target, Zap } from 'lucide-react';
+import { Info, CheckCircle2, TrendingDown, AlertCircle, FunctionSquare, Calculator, Shield, Activity, TrendingUp, Users, AlertTriangle, Briefcase, Landmark, Target, Zap, Trophy } from 'lucide-react';
 import OverEconomyTrackerInteractive from './over-economy-tracker-interactive';
 
 export default function OverEconomyTracker() {
