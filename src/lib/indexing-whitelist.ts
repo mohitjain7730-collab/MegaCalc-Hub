@@ -2,6 +2,7 @@ export const indexableCategorySlugs = [
     'finance',
     'gaming',
     'travel-adventure',
+    'sports-training',
 ];
 
 /** Static page path segments to include in sitemap and indexing. '' = homepage. */
@@ -203,4 +204,19 @@ export const indexableCalculatorSlugs = [
     'multi-stop-route-planner',
     'rental-car-cost-calculator',
     'trip-budget-calculator',
+    // Sports Training
+    'batting-average-calculator',
+    'bowling-average-calculator',
+    'strike-rate-calculator',
+    'bowling-economy-rate-calculator',
+    'required-run-rate-calculator',
+    'team-run-rate-calculator',
+    'cricket-player-performance-index-calculator',
+    'cricket-fantasy-points-calculator',
+    'cricket-win-probability-calculator',
+    'cricket-partnership-run-rate-calculator',
+    'over-economy-tracker',
+    'boundary-percentage-calculator',
+    'dot-ball-percentage-calculator',
+    'bowling-strike-rate-calculator',
 ];
