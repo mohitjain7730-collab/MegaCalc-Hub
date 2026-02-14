@@ -1,42 +1,7 @@
-'use client';
-
-import { useState } from 'react';
-import Script from 'next/script';
 import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Gamepad2, Zap, Target, Activity, Shield } from 'lucide-react';
-
+import { Gamepad2, BrainCircuit, ArrowRight, Shield } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-
-const formSchema = z.object({
-  baseReloadTime: z.number({ invalid_type_error: 'Enter base reload time' }).min(0),
-  reloadSpeedModifier: z.number({ invalid_type_error: 'Enter reload speed modifier' }).min(0).max(100).optional(),
-  reloadSpeedPercentage: z.number({ invalid_type_error: 'Enter reload speed percentage' }).min(0).max(100).optional(),
-  magazineSize: z.number({ invalid_type_error: 'Enter magazine size' }).min(1).optional(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
-
-type ResultPayload = {
-  baseReloadTime: number;
-  reloadSpeedModifier: number;
-  reloadSpeedPercentage: number;
-  magazineSize: number;
-  reducedReloadTime: number;
-  timeSaved: number;
-  reloadSpeedImprovement: number;
-  effectiveDPSIncrease: number;
-  reloadsPerMinute: number;
-  status: 'minimal-improvement' | 'moderate-improvement' | 'significant-improvement' | 'major-improvement';
-  interpretation: string;
-  recommendations: string[];
-  plan: { label: string; detail: string }[];
-};
+import FortniteReloadTimeReducerCalculatorInteractive from './fortnite-reload-time-reducer-calculator-interactive';
 
 const steps = [
   'Enter the base reload time of the weapon in seconds.',
@@ -153,348 +118,42 @@ const schemaMarkup = {
         text: step,
       })),
     },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer
+        }
+      }))
+    }
   ],
 };
 
-const calculateResult = (values: FormValues): ResultPayload => {
-  const baseReloadTime = values.baseReloadTime;
-  const reloadSpeedModifier = values.reloadSpeedModifier ?? 0;
-  const reloadSpeedPercentage = values.reloadSpeedPercentage ?? 0;
-  const magazineSize = values.magazineSize ?? 0;
-
-  // Calculate effective reload speed increase
-  // If both are provided, use the higher one, or combine them
-  const effectiveSpeedIncrease = Math.max(reloadSpeedModifier, reloadSpeedPercentage);
-
-  // Reduced reload time = base time / (1 + speed increase / 100)
-  const reducedReloadTime = baseReloadTime / (1 + effectiveSpeedIncrease / 100);
-
-  // Time saved per reload
-  const timeSaved = baseReloadTime - reducedReloadTime;
-
-  // Reload speed improvement percentage
-  const reloadSpeedImprovement = baseReloadTime > 0 ? (timeSaved / baseReloadTime) * 100 : 0;
-
-  // Effective DPS increase (approximate, depends on fire rate and damage)
-  // This is a rough estimate: DPS increase ≈ (Time Saved / (Time to Empty + Reload Time)) × 100
-  // For a typical weapon: assume 2 seconds to empty, then calculate impact
-  const timeToEmpty = magazineSize > 0 ? magazineSize / 5 : 2; // Assume 5 shots per second average
-  const cycleTimeOriginal = timeToEmpty + baseReloadTime;
-  const cycleTimeReduced = timeToEmpty + reducedReloadTime;
-  const effectiveDPSIncrease = cycleTimeOriginal > 0 ? ((cycleTimeOriginal - cycleTimeReduced) / cycleTimeOriginal) * 100 : 0;
-
-  // Reloads per minute (if magazine size provided)
-  const reloadsPerMinute = reducedReloadTime > 0 ? 60 / (timeToEmpty + reducedReloadTime) : 0;
-
-  let status: ResultPayload['status'] = 'moderate-improvement';
-  let interpretation = 'Your reload time reduction has been calculated based on base reload time and speed modifiers.';
-
-  if (reloadSpeedImprovement >= 40) {
-    status = 'major-improvement';
-    interpretation = `Major improvement! Reload time reduced by ${reloadSpeedImprovement.toFixed(1)}% (${timeSaved.toFixed(2)}s saved). This is a significant improvement that dramatically increases effective DPS and combat effectiveness.`;
-  } else if (reloadSpeedImprovement >= 25) {
-    status = 'significant-improvement';
-    interpretation = `Significant improvement! Reload time reduced by ${reloadSpeedImprovement.toFixed(1)}% (${timeSaved.toFixed(2)}s saved). This provides substantial benefits for combat effectiveness and sustained DPS.`;
-  } else if (reloadSpeedImprovement >= 15) {
-    status = 'moderate-improvement';
-    interpretation = `Moderate improvement. Reload time reduced by ${reloadSpeedImprovement.toFixed(1)}% (${timeSaved.toFixed(2)}s saved). This provides noticeable benefits for combat effectiveness.`;
-  } else {
-    status = 'minimal-improvement';
-    interpretation = `Minimal improvement. Reload time reduced by ${reloadSpeedImprovement.toFixed(1)}% (${timeSaved.toFixed(2)}s saved). Consider higher reload speed modifiers for more significant improvements.`;
-  }
-
-  const recommendations = [
-    `Base Reload Time: ${baseReloadTime.toFixed(2)} seconds. ${baseReloadTime >= 3 ? 'Slow reloading weapon - reload speed improvements are very valuable.' : baseReloadTime >= 2 ? 'Moderate reload time - improvements are valuable.' : 'Fast reloading weapon - improvements are still beneficial but less critical.'}`,
-    `Reduced Reload Time: ${reducedReloadTime.toFixed(2)} seconds (${effectiveSpeedIncrease > 0 ? `${effectiveSpeedIncrease.toFixed(1)}% speed increase` : 'no modifier'}). ${reducedReloadTime < baseReloadTime * 0.7 ? 'Excellent reduction - reload time significantly improved.' : reducedReloadTime < baseReloadTime * 0.85 ? 'Good reduction - noticeable improvement.' : 'Moderate reduction - some improvement but could be better.'}`,
-    `Time Saved: ${timeSaved.toFixed(2)} seconds per reload. ${timeSaved >= 1 ? 'Significant time savings - very valuable for combat.' : timeSaved >= 0.5 ? 'Moderate time savings - valuable for combat.' : 'Small time savings - still beneficial but limited impact.'}`,
-    `Reload Speed Improvement: ${reloadSpeedImprovement.toFixed(1)}%. ${reloadSpeedImprovement >= 30 ? 'Excellent improvement - major combat advantage.' : reloadSpeedImprovement >= 20 ? 'Good improvement - significant combat advantage.' : reloadSpeedImprovement >= 10 ? 'Moderate improvement - noticeable combat advantage.' : 'Minimal improvement - consider higher modifiers.'}`,
-  ];
-
-  if (magazineSize > 0) {
-    recommendations.push(`Effective DPS Increase: ${effectiveDPSIncrease.toFixed(1)}% (estimated). ${effectiveDPSIncrease >= 15 ? 'Significant DPS increase - major combat advantage.' : effectiveDPSIncrease >= 10 ? 'Good DPS increase - noticeable combat advantage.' : 'Moderate DPS increase - some combat advantage.'}`);
-    recommendations.push(`Reloads Per Minute: ${reloadsPerMinute.toFixed(1)} (estimated). ${reloadsPerMinute >= 20 ? 'Very frequent reloads - reload speed is critical.' : reloadsPerMinute >= 15 ? 'Frequent reloads - reload speed is important.' : 'Moderate reload frequency - reload speed is beneficial.'}`);
-  }
-
-  recommendations.push(`Weapon Assessment: ${status.replace('-', ' ').toUpperCase()}. ${reloadSpeedImprovement >= 25 ? 'Excellent reload speed improvement - prioritize this weapon/modifier combination for sustained combat.' : reloadSpeedImprovement >= 15 ? 'Good reload speed improvement - valuable for combat effectiveness.' : 'Moderate reload speed improvement - consider additional modifiers or different weapons for better performance.'}`);
-
-  const plan = [
-    {
-      label: 'This Match',
-      detail: `Optimize reload performance: base ${baseReloadTime.toFixed(2)}s, reduced to ${reducedReloadTime.toFixed(2)}s (${reloadSpeedImprovement.toFixed(1)}% improvement). ${reloadSpeedImprovement >= 20 ? 'Excellent reload speed - use this weapon/modifier combination.' : 'Consider additional reload speed improvements for better performance.'}`
-    },
-    {
-      label: 'This Week',
-      detail: 'Test reload speed improvements: compare weapons with different reload times, test reload speed modifiers, evaluate effective DPS improvements, and identify optimal reload speed configurations for different weapon types.'
-    },
-    {
-      label: 'Ongoing',
-      detail: 'Continuously optimize reload performance: prioritize reload speed for weapons with small magazines, balance reload speed with other stats, use reload speed modifiers when available, and track reload performance to identify improvement opportunities.'
-    },
-  ];
-
-  return {
-    baseReloadTime,
-    reloadSpeedModifier: reloadSpeedModifier || 0,
-    reloadSpeedPercentage: reloadSpeedPercentage || 0,
-    magazineSize,
-    reducedReloadTime,
-    timeSaved,
-    reloadSpeedImprovement,
-    effectiveDPSIncrease,
-    reloadsPerMinute,
-    status,
-    interpretation,
-    recommendations,
-    plan,
-  };
-};
-
 export default function FortniteReloadTimeReducerCalculator() {
-  const [result, setResult] = useState<ResultPayload | null>(null);
-
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      baseReloadTime: undefined,
-      reloadSpeedModifier: undefined,
-      reloadSpeedPercentage: undefined,
-      magazineSize: undefined,
-    },
-  });
-
   return (
-    <div className="space-y-8">
-      <Script id="fortnite-reload-time-reducer-schema" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }} />
+    <div className="space-y-8 animate-in fade-in duration-500 max-w-4xl mx-auto">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+      />
 
-      <Card>
+      <Card className="border-l-4 border-l-green-500 shadow-xl overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Gamepad2 className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-2 text-2xl">
+            <Gamepad2 className="h-6 w-6 text-green-500" />
             Fortnite Reload Time Reducer Calculator
           </CardTitle>
-          <CardDescription>Calculate reload time reductions and improvements for Fortnite weapons based on reload speed modifiers and weapon stats.</CardDescription>
+          <CardDescription>
+            Calculate reload time reductions and improvements for Fortnite weapons based on reload speed modifiers and weapon stats.
+          </CardDescription>
         </CardHeader>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Input your weapon reload information</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit((values) => {
-              try {
-                setResult(calculateResult(values));
-              } catch (error) {
-                console.error('Error calculating result:', error);
-                alert('An error occurred while calculating. Please check the console for details.');
-              }
-            }, (errors) => {
-              console.log('Form validation errors:', errors);
-            })} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                  control={form.control}
-                  name="baseReloadTime"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Base Reload Time (seconds)</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="0.1" placeholder="e.g., 2.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="reloadSpeedModifier"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Reload Speed Modifier (0-100, optional)</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 20" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="reloadSpeedPercentage"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Reload Speed % Increase (0-100%, optional)</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 25" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="magazineSize"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Magazine Size (optional)</FormLabel>
-                      <FormControl>
-                        <Input type="number" step="1" placeholder="e.g., 30" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <Button type="submit" className="w-full md:w-auto">
-                Calculate Reload Time Reduction
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-
-      {result && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Zap className="h-5 w-5 text-primary" />
-              Interactive results
-            </CardTitle>
-            <CardDescription>See reduced reload time, time saved, improvement percentage, and DPS impact.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Reduced Reload Time</p>
-                <p className="text-2xl font-semibold text-primary">{result.reducedReloadTime.toFixed(2)}s</p>
-                <p className="text-xs text-muted-foreground">Seconds</p>
-              </div>
-              <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Time Saved</p>
-                <p className="text-2xl font-semibold text-primary">{result.timeSaved.toFixed(2)}s</p>
-                <p className="text-xs text-muted-foreground">Per reload</p>
-              </div>
-              <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Improvement</p>
-                <p className="text-2xl font-semibold text-primary">{result.reloadSpeedImprovement.toFixed(1)}%</p>
-                <p className="text-xs text-muted-foreground">Faster reload</p>
-              </div>
-              <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Status</p>
-                <p className="text-2xl font-semibold text-primary capitalize">{result.status.replace('-', ' ')}</p>
-                <p className="text-xs text-muted-foreground">{result.interpretation}</p>
-              </div>
-            </div>
-            {result.magazineSize > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 border rounded">
-                  <p className="text-sm text-muted-foreground">Effective DPS Increase</p>
-                  <p className="text-xl font-semibold text-primary">{result.effectiveDPSIncrease.toFixed(1)}%</p>
-                  <p className="text-xs text-muted-foreground">Estimated</p>
-                </div>
-                <div className="p-4 border rounded">
-                  <p className="text-sm text-muted-foreground">Reloads Per Minute</p>
-                  <p className="text-xl font-semibold text-primary">{result.reloadsPerMinute.toFixed(1)}</p>
-                  <p className="text-xs text-muted-foreground">Estimated</p>
-                </div>
-              </div>
-            )}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Target className="h-4 w-4" />
-                    Recommendations
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-disc pl-4 space-y-1 text-sm text-muted-foreground">
-                    {result.recommendations.map((rec, idx) => (
-                      <li key={idx}>{rec}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <Activity className="h-4 w-4" />
-                    Action plan
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-1 text-sm text-muted-foreground">
-                    {result.plan.map((step) => (
-                      <li key={step.label}>
-                        <span className="font-semibold">{step.label}:</span> {step.detail}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            Formula
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p>
-            <strong>Reduced Reload Time</strong> = Base Reload Time / (1 + Reload Speed Increase / 100). This formula calculates the new reload time after applying reload speed modifiers. Higher speed increases result in proportionally faster reloads.
-          </p>
-          <p>
-            <strong>Time Saved</strong> = Base Reload Time - Reduced Reload Time. This shows how much time is saved per reload. Time saved directly contributes to increased effective DPS by reducing downtime between magazines.
-          </p>
-          <p>
-            <strong>Reload Speed Improvement</strong> = (Time Saved / Base Reload Time) × 100. This shows the percentage improvement in reload speed. Higher percentages indicate greater improvements and more significant combat advantages.
-          </p>
-          <p>
-            <strong>Effective DPS Increase</strong> = ((Original Cycle Time - Reduced Cycle Time) / Original Cycle Time) × 100, where Cycle Time = Time to Empty Magazine + Reload Time. This estimates how much effective DPS increases due to reduced reload time. Higher increases indicate more significant combat advantages.
-          </p>
-          <p>
-            <strong>Reloads Per Minute</strong> = 60 / (Time to Empty Magazine + Reduced Reload Time). This calculates how many complete reload cycles can occur per minute with the reduced reload time. More reloads per minute indicate better sustained DPS potential.
-          </p>
-          <p>These formulas help you understand reload time reductions, calculate time savings, and estimate DPS improvements. Use reload speed modifiers to optimize weapon performance and increase combat effectiveness.</p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Steps</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-            {steps.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Related calculators</CardTitle>
-        </CardHeader>
-        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {relatedCalculators.map((calc) => (
-            <div key={calc.slug} className="p-4 border rounded">
-              <h4 className="font-semibold mb-1">
-                <Link href={`/category/gaming/${calc.slug}`} className="text-primary hover:underline">
-                  {calc.name}
-                </Link>
-              </h4>
-              <p className="text-sm text-muted-foreground">{calc.description}</p>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
+      <FortniteReloadTimeReducerCalculatorInteractive />
 
       <section
         className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg"
@@ -652,31 +311,55 @@ export default function FortniteReloadTimeReducerCalculator() {
         <p>Remember that reload speed is one factor among many. Balance reload speed with damage, fire rate, and other stats based on weapon characteristics and playstyle. Use calculators to evaluate reload speed improvements and their DPS impact. With proper understanding and optimization, players can maximize reload performance and improve combat effectiveness.</p>
       </section>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>FAQs</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {faqs.map((faq) => (
-            <div key={faq.question}>
-              <h4 className="font-semibold">{faq.question}</h4>
-              <p className="text-sm text-muted-foreground">{faq.answer}</p>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>FAQs</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.question}>
+                <h4 className="font-semibold text-sm">{faq.question}</h4>
+                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Related Calculators</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {relatedCalculators.map((calc) => (
+              <div key={calc.slug} className="group">
+                <h4 className="font-semibold text-sm flex items-center gap-2">
+                  <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity text-green-500" />
+                  <Link href={`/category/gaming/${calc.slug}`} className="text-foreground hover:text-green-500 transition-colors">
+                    {calc.name}
+                  </Link>
+                </h4>
+                <p className="text-xs text-muted-foreground ml-5">{calc.description}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
 
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            Summary
+            <BrainCircuit className="h-5 w-5" />
+            Summary for AI
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool calculates Fortnite reload time reductions based on base reload time (seconds), optional reload speed modifier (0-100), optional reload speed percentage increase (0-100%), and optional magazine size for DPS calculations.</p>
-          <p>Outputs include reduced reload time (after modifiers), time saved per reload (seconds), reload speed improvement percentage, effective DPS increase (estimated), reloads per minute (estimated), status assessment (minimal-improvement/moderate-improvement/significant-improvement/major-improvement), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use reload speed calculations: Reduced Time = Base Time / (1 + Speed Increase / 100), Time Saved = Base Time - Reduced Time, Improvement % = (Time Saved / Base Time) × 100, DPS Increase ≈ (Time Saved / Cycle Time) × 100. The guide covers reload time mechanics, modifiers, calculations, DPS impact, optimization strategies, and weapon type characteristics. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Fortnite reload time reduction calculations instantly.</p>
+          <p>
+            This tool calculates Fortnite reload time reductions based on base reload time, reload speed modifiers, and magazine size.
+            Inputs: Base reload time (seconds), reload speed modifier (0-100), reload speed % increase (0-100%), magazine size.
+            Outputs: Reduced reload time, time saved, reload speed improvement %, effective DPS increase (estimated), reloads per minute.
+          </p>
+          <p>It helps players optimize weapon reload performance, understand combat impact, and maximize effective DPS.</p>
         </CardContent>
       </Card>
     </div>
