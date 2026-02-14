@@ -201,7 +201,7 @@ export default function ProteinIntakeCalculator() {
             <div>
               <h4 className="font-semibold text-foreground mb-2">Can I eat more than the recommended range?</h4>
               <p className="text-muted-foreground">
-                You can, but diminishing returns set in. Consuming >2.5g/kg usually offers no additional muscle-building benefit and simply adds calories.
+                You can, but diminishing returns set in. Consuming &gt;2.5g/kg usually offers no additional muscle-building benefit and simply adds calories.
               </p>
             </div>
 
