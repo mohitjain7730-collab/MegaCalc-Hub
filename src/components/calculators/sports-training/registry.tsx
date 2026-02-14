@@ -26,6 +26,8 @@ export const SportsTrainingRegistry: Record<string, React.ComponentType> = {
     'cricket-fantasy-points-calculator': CricketFantasyPointsCalculator,
     'cricket-win-probability-calculator': CricketWinProbabilityCalculator,
     'cricket-partnership-run-rate-calculator': CricketPartnershipRunRateCalculator,
+    'boundary-percentage-calculator': dynamic(() => import('./boundary-percentage-calculator')),
+    'over-economy-tracker': dynamic(() => import('./over-economy-tracker')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
