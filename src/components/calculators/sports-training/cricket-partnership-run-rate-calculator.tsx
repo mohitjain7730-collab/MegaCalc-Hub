@@ -1,281 +1,9 @@
-'use client';
-
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trophy, TrendingUp, AlertCircle, Target, Info, Calculator, BarChart3, Shield, FunctionSquare, CheckCircle2, Activity, Zap, Users, AlertTriangle, Award } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-const formSchema = z.object({
-    // Partnership details
-    partnershipRuns: z.number().min(0),
-    ballsFaced: z.number().min(0),
-    // Individual contributions
-    player1Runs: z.number().min(0),
-    player2Runs: z.number().min(0),
-    player1Balls: z.number().min(0),
-    player2Balls: z.number().min(0),
-    // Match context
-    matchFormat: z.string(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Trophy, TrendingUp, AlertCircle, Target, Info, Calculator, BarChart3, Shield, FunctionSquare, CheckCircle2, Award, Zap, Activity, Users } from 'lucide-react';
+import CricketPartnershipRunRateCalculatorInteractive from './cricket-partnership-run-rate-calculator-interactive';
 
 export default function CricketPartnershipRunRateCalculator() {
-    const [result, setResult] = useState<{
-        partnershipRunRate: number;
-        runsPerBall: number;
-        oversCompleted: number;
-        player1StrikeRate: number;
-        player2StrikeRate: number;
-        dominantBatsman: string;
-        partnershipQuality: string;
-        performanceLevel: string;
-        insights: string[];
-        recommendations: string[];
-        projectedRuns: number;
-    } | null>(null);
-
-    const form = useForm<FormValues>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            partnershipRuns: undefined,
-            ballsFaced: undefined,
-            player1Runs: undefined,
-            player2Runs: undefined,
-            player1Balls: undefined,
-            player2Balls: undefined,
-            matchFormat: 't20',
-        },
-    });
-
-    const calculatePartnershipMetrics = (values: FormValues) => {
-        // Partnership run rate (per over)
-        const partnershipRunRate = values.ballsFaced > 0
-            ? (values.partnershipRuns / values.ballsFaced) * 6
-            : 0;
-
-        // Runs per ball
-        const runsPerBall = values.ballsFaced > 0
-            ? values.partnershipRuns / values.ballsFaced
-            : 0;
-
-        // Overs completed
-        const oversCompleted = values.ballsFaced / 6;
-
-        // Individual strike rates
-        const player1StrikeRate = values.player1Balls > 0
-            ? (values.player1Runs / values.player1Balls) * 100
-            : 0;
-
-        const player2StrikeRate = values.player2Balls > 0
-            ? (values.player2Runs / values.player2Balls) * 100
-            : 0;
-
-        // Determine dominant batsman
-        let dominantBatsman = 'Equal Partnership';
-        if (values.player1Runs > values.player2Runs * 1.5) {
-            dominantBatsman = 'Player 1 Dominant';
-        } else if (values.player2Runs > values.player1Runs * 1.5) {
-            dominantBatsman = 'Player 2 Dominant';
-        } else if (Math.abs(values.player1Runs - values.player2Runs) < values.partnershipRuns * 0.2) {
-            dominantBatsman = 'Balanced Partnership';
-        }
-
-        // Partnership quality
-        const partnershipQuality = getPartnershipQuality(partnershipRunRate, values.matchFormat);
-
-        // Performance level
-        const performanceLevel = getPerformanceLevel(partnershipRunRate, values.matchFormat);
-
-        // Insights
-        const insights = getInsights(
-            partnershipRunRate,
-            player1StrikeRate,
-            player2StrikeRate,
-            values.player1Runs,
-            values.player2Runs,
-            values.matchFormat
-        );
-
-        // Recommendations
-        const recommendations = getRecommendations(
-            partnershipRunRate,
-            player1StrikeRate,
-            player2StrikeRate,
-            values.matchFormat
-        );
-
-        // Projected runs if partnership continues for 10 overs
-        const projectedRuns = partnershipRunRate * 10;
-
-        return {
-            partnershipRunRate,
-            runsPerBall,
-            oversCompleted,
-            player1StrikeRate,
-            player2StrikeRate,
-            dominantBatsman,
-            partnershipQuality,
-            performanceLevel,
-            insights,
-            recommendations,
-            projectedRuns,
-        };
-    };
-
-    const getPartnershipQuality = (runRate: number, format: string): string => {
-        if (format === 't20') {
-            if (runRate >= 12) return 'Explosive';
-            if (runRate >= 9) return 'Excellent';
-            if (runRate >= 7) return 'Good';
-            if (runRate >= 5) return 'Moderate';
-            return 'Slow';
-        } else if (format === 'odi') {
-            if (runRate >= 8) return 'Explosive';
-            if (runRate >= 6) return 'Excellent';
-            if (runRate >= 5) return 'Good';
-            if (runRate >= 4) return 'Moderate';
-            return 'Slow';
-        } else { // Test
-            if (runRate >= 5) return 'Aggressive';
-            if (runRate >= 3.5) return 'Brisk';
-            if (runRate >= 2.5) return 'Steady';
-            if (runRate >= 1.5) return 'Cautious';
-            return 'Defensive';
-        }
-    };
-
-    const getPerformanceLevel = (runRate: number, format: string): string => {
-        if (format === 't20') {
-            if (runRate >= 10) return 'Outstanding';
-            if (runRate >= 8) return 'Very Good';
-            if (runRate >= 6) return 'Good';
-            return 'Below Par';
-        } else if (format === 'odi') {
-            if (runRate >= 7) return 'Outstanding';
-            if (runRate >= 5.5) return 'Very Good';
-            if (runRate >= 4.5) return 'Good';
-            return 'Below Par';
-        } else {
-            if (runRate >= 4) return 'Aggressive';
-            if (runRate >= 3) return 'Positive';
-            if (runRate >= 2) return 'Steady';
-            return 'Defensive';
-        }
-    };
-
-    const getInsights = (
-        partnershipRR: number,
-        p1SR: number,
-        p2SR: number,
-        p1Runs: number,
-        p2Runs: number,
-        format: string
-    ): string[] => {
-        const insights = [];
-
-        // Run rate insights
-        if (format === 't20' && partnershipRR > 10) {
-            insights.push('Partnership scoring at an explosive rate ideal for T20 cricket');
-        } else if (format === 'odi' && partnershipRR > 6) {
-            insights.push('Partnership maintaining excellent run rate for ODI format');
-        } else if (format === 'test' && partnershipRR > 4) {
-            insights.push('Aggressive partnership putting pressure on bowling team');
-        }
-
-        // Strike rate comparison
-        if (Math.abs(p1SR - p2SR) > 30) {
-            insights.push('Significant difference in strike rates between partners');
-        } else if (Math.abs(p1SR - p2SR) < 15) {
-            insights.push('Both batsmen scoring at similar pace - well-balanced partnership');
-        }
-
-        // Contribution balance
-        const totalRuns = p1Runs + p2Runs;
-        const contributionDiff = Math.abs(p1Runs - p2Runs) / totalRuns;
-        if (contributionDiff < 0.2) {
-            insights.push('Equal contribution from both batsmen strengthens partnership');
-        } else if (contributionDiff > 0.5) {
-            insights.push('One batsman dominating the scoring - consider rotating strike more');
-        }
-
-        // Strike rate quality
-        if (p1SR > 100 && p2SR > 100) {
-            insights.push('Both batsmen maintaining excellent strike rates');
-        } else if (p1SR < 70 || p2SR < 70) {
-            insights.push('At least one batsman struggling with scoring rate');
-        }
-
-        if (insights.length === 0) {
-            insights.push('Partnership progressing at a steady pace');
-        }
-
-        return insights;
-    };
-
-    const getRecommendations = (
-        partnershipRR: number,
-        p1SR: number,
-        p2SR: number,
-        format: string
-    ): string[] => {
-        const recommendations = [];
-
-        if (format === 't20') {
-            if (partnershipRR < 7) {
-                recommendations.push('Increase scoring rate - look for boundaries and rotate strike');
-                recommendations.push('Target weaker bowlers and exploit powerplay restrictions');
-            } else if (partnershipRR > 12) {
-                recommendations.push('Maintain aggressive approach while minimizing risks');
-                recommendations.push('Continue targeting boundaries but avoid reckless shots');
-            } else {
-                recommendations.push('Good scoring rate - maintain current approach');
-            }
-        } else if (format === 'odi') {
-            if (partnershipRR < 4.5) {
-                recommendations.push('Partnership needs to accelerate - increase boundary hitting');
-                recommendations.push('Rotate strike more frequently to maintain momentum');
-            } else if (partnershipRR > 7) {
-                recommendations.push('Excellent run rate - balance aggression with wicket preservation');
-            } else {
-                recommendations.push('Solid partnership - look to accelerate in final overs');
-            }
-        } else { // Test
-            if (partnershipRR < 2) {
-                recommendations.push('Very defensive approach - consider scoring opportunities');
-            } else if (partnershipRR > 4) {
-                recommendations.push('Aggressive batting - ensure shot selection remains disciplined');
-            } else {
-                recommendations.push('Good balance between attack and defense');
-            }
-        }
-
-        // Strike rate specific recommendations
-        if (Math.abs(p1SR - p2SR) > 40) {
-            recommendations.push('Large strike rate difference - struggling batsman should focus on rotation');
-        }
-
-        if (p1SR < 80 && p2SR < 80 && format !== 'test') {
-            recommendations.push('Both batsmen need to increase scoring rate through better shot selection');
-        }
-
-        return recommendations;
-    };
-
-    const onSubmit = (values: FormValues) => {
-        const metrics = calculatePartnershipMetrics(values);
-        setResult(metrics);
-    };
-
     return (
         <div className="space-y-8">
             {/* SEO-Optimized Header */}
@@ -286,303 +14,7 @@ export default function CricketPartnershipRunRateCalculator() {
                 </p>
             </div>
 
-            {/* Input Form */}
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Users className="h-5 w-5" />
-                        <h2 className="text-xl font-semibold">Enter Partnership Performance</h2>
-                    </CardTitle>
-                    <CardDescription>
-                        Enter partnership statistics to analyze run rate and performance
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            {/* Match Format */}
-                            <FormField
-                                control={form.control}
-                                name="matchFormat"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Match Format</FormLabel>
-                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                            <FormControl>
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Select format" />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent>
-                                                <SelectItem value="t20">T20 (20 overs)</SelectItem>
-                                                <SelectItem value="odi">ODI (50 overs)</SelectItem>
-                                                <SelectItem value="test">Test Match</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            {/* Partnership Statistics */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-semibold flex items-center gap-2">
-                                    <BarChart3 className="h-5 w-5 text-blue-600" />
-                                    Partnership Statistics
-                                </h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="partnershipRuns"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Partnership Runs</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        placeholder="e.g., 85"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="ballsFaced"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Balls Faced</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        placeholder="e.g., 54"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Player 1 Statistics */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-semibold flex items-center gap-2">
-                                    <Trophy className="h-5 w-5 text-orange-600" />
-                                    Player 1 Contribution
-                                </h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="player1Runs"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Runs Scored</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        placeholder="e.g., 45"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="player1Balls"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Balls Faced</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        placeholder="e.g., 28"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Player 2 Statistics */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-semibold flex items-center gap-2">
-                                    <Trophy className="h-5 w-5 text-green-600" />
-                                    Player 2 Contribution
-                                </h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="player2Runs"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Runs Scored</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        placeholder="e.g., 40"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="player2Balls"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Balls Faced</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        placeholder="e.g., 26"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                            </div>
-
-                            <Button type="submit" className="w-full">
-                                <Calculator className="mr-2 h-4 w-4" />
-                                Calculate Partnership Metrics
-                            </Button>
-                        </form>
-                    </Form>
-                </CardContent>
-            </Card>
-
-            {/* Results */}
-            {result && (
-                <div className="space-y-6">
-                    {/* Results Header */}
-                    <div>
-                        <h2 className="text-2xl font-bold">Calculated Partnership Metrics</h2>
-                        <p className="text-muted-foreground mt-1">Detailed analysis of your partnership performance</p>
-                    </div>
-
-                    {/* Main Result Card */}
-                    <Card className="border-2 border-primary">
-                        <CardHeader>
-                            <div className="flex items-center gap-4">
-                                <Users className="h-8 w-8 text-primary" />
-                                <div>
-                                    <CardTitle>Partnership Run Rate</CardTitle>
-                                    <CardDescription>{result.partnershipQuality} Partnership - {result.performanceLevel}</CardDescription>
-                                </div>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            <div className="text-center">
-                                <p className="text-6xl font-bold text-primary">{result.partnershipRunRate.toFixed(2)}</p>
-                                <p className="text-sm text-muted-foreground mt-1">Runs per Over</p>
-                                <Badge variant="default" className="mt-3 text-lg px-4 py-1">
-                                    {result.dominantBatsman}
-                                </Badge>
-                            </div>
-
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-200 dark:border-blue-900/20">
-                                    <BarChart3 className="h-6 w-6 mx-auto mb-2 text-blue-600" />
-                                    <p className="font-semibold text-sm text-muted-foreground">Runs/Ball</p>
-                                    <p className="text-xl font-bold text-blue-600">{result.runsPerBall.toFixed(2)}</p>
-                                </div>
-                                <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/10 rounded-lg border border-purple-200 dark:border-purple-900/20">
-                                    <Activity className="h-6 w-6 mx-auto mb-2 text-purple-600" />
-                                    <p className="font-semibold text-sm text-muted-foreground">Overs</p>
-                                    <p className="text-xl font-bold text-purple-600">{result.oversCompleted.toFixed(1)}</p>
-                                </div>
-                                <div className="text-center p-4 bg-orange-50 dark:bg-orange-900/10 rounded-lg border border-orange-200 dark:border-orange-900/20">
-                                    <Trophy className="h-6 w-6 mx-auto mb-2 text-orange-600" />
-                                    <p className="font-semibold text-sm text-muted-foreground">Player 1 SR</p>
-                                    <p className="text-xl font-bold text-orange-600">{result.player1StrikeRate.toFixed(1)}</p>
-                                </div>
-                                <div className="text-center p-4 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-200 dark:border-green-900/20">
-                                    <Trophy className="h-6 w-6 mx-auto mb-2 text-green-600" />
-                                    <p className="font-semibold text-sm text-muted-foreground">Player 2 SR</p>
-                                    <p className="text-xl font-bold text-green-600">{result.player2StrikeRate.toFixed(1)}</p>
-                                </div>
-                            </div>
-
-                            <Alert>
-                                <TrendingUp className="h-4 w-4" />
-                                <AlertDescription>
-                                    <strong>Projection:</strong> If this partnership continues for 10 overs at the current rate, it would add approximately <strong>{result.projectedRuns.toFixed(0)} runs</strong>.
-                                </AlertDescription>
-                            </Alert>
-                        </CardContent>
-                    </Card>
-
-                    {/* Insights */}
-                    <Card className="border-blue-100 bg-blue-50/10 dark:border-blue-900/20 dark:bg-blue-900/5">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2 text-xl text-blue-600 dark:text-blue-400">
-                                <CheckCircle2 className="h-6 w-6" />
-                                Partnership Insights
-                            </CardTitle>
-                            <CardDescription>Key observations about the partnership</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                            {result.insights.map((insight, index) => (
-                                <div key={index} className="flex items-start gap-3 p-3 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-100 dark:border-blue-900/20">
-                                    <CheckCircle2 className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
-                                    <span className="text-sm font-medium text-blue-800 dark:text-blue-300">{insight}</span>
-                                </div>
-                            ))}
-                        </CardContent>
-                    </Card>
-
-                    {/* Recommendations */}
-                    <Card className="border-green-100 bg-green-50/10 dark:border-green-900/20 dark:bg-green-900/5">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2 text-xl text-green-600 dark:text-green-400">
-                                <Target className="h-6 w-6" />
-                                Recommendations
-                            </CardTitle>
-                            <CardDescription>Strategic suggestions for the partnership</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                            {result.recommendations.map((recommendation, index) => (
-                                <div key={index} className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-100 dark:border-green-900/20">
-                                    <Target className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 shrink-0" />
-                                    <span className="text-sm font-medium text-green-800 dark:text-green-300">{recommendation}</span>
-                                </div>
-                            ))}
-                        </CardContent>
-                    </Card>
-                </div>
-            )}
+            <CricketPartnershipRunRateCalculatorInteractive />
 
             {/* How Partnership Metrics Are Calculated */}
             <Card className="mb-6">
@@ -800,175 +232,73 @@ export default function CricketPartnershipRunRateCalculator() {
 
                 {/* CALCULATION */}
                 <h2 id="calculation-metrics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculation and Key Metrics</h2>
+                <p>To fully analyze a partnership, several metrics are used:</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">Partnership Run Rate</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-6">1. Standard Calculation</h3>
                 <div className="p-3 bg-muted rounded-lg my-2">
-                    <p className="font-mono text-sm">Partnership Run Rate = Total Partnership Runs ÷ Overs Faced</p>
-                    <p className="text-xs mt-1">Example: 85 runs in 14.2 overs = 85 ÷ 14.33 = 5.93 RPO</p>
+                    <p className="font-mono text-sm">Run Rate = (Total Partnership Runs / Balls Faced) × 6</p>
                 </div>
+                <p>Example: 85 runs in 60 balls (10 overs) = 8.5 runs per over.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">Runs Per Ball</h3>
-                <div className="p-3 bg-muted rounded-lg my-2">
-                    <p className="font-mono text-sm">Runs Per Ball = Total Partnership Runs ÷ Balls Faced</p>
-                    <p className="text-xs mt-1">Example: 85 runs off 86 balls = 85 ÷ 86 = 0.99 runs per ball</p>
-                </div>
+                <h3 className="text-xl font-semibold text-foreground mt-6">2. Contribution Ratio</h3>
+                <p>Measures the balance of run-scoring between partners. Ideal partnerships often have a 50-50 or 60-40 split. Extreme imbalances (e.g., 80-20) can put pressure on one batsman.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">Individual Strike Rates</h3>
-                <div className="p-3 bg-muted rounded-lg my-2">
-                    <p className="font-mono text-sm">Strike Rate = (Runs Scored ÷ Balls Faced) × 100</p>
-                    <p className="text-xs mt-1">Example: 45 runs off 38 balls = (45 ÷ 38) × 100 = 118.4 SR</p>
-                </div>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Contribution Percentage</h3>
-                <div className="p-3 bg-muted rounded-lg my-2">
-                    <p className="font-mono text-sm">Contribution % = (Individual Runs ÷ Partnership Runs) × 100</p>
-                    <p className="text-xs mt-1">Example: 45 runs in 85-run partnership = (45 ÷ 85) × 100 = 52.9%</p>
-                </div>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Dominant Batsman</h3>
-                <p>The batsman who scores more runs or maintains a higher strike rate is considered dominant. However, the supporting batsman's role is equally crucial for partnership success.</p>
+                <h3 className="text-xl font-semibold text-foreground mt-6">3. Dot Ball Percentage</h3>
+                <p>The percentage of balls where no run is scored. Lower is better. High dot ball percentages build pressure even if boundaries are hit.</p>
 
                 <hr />
 
                 {/* PARTNERSHIP DYNAMICS */}
                 <h2 id="partnership-dynamics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Partnership Dynamics</h2>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">Strike Rotation</h3>
-                <p>Effective partnerships rotate strike consistently, preventing bowlers from settling into rhythm. Ideally, batsmen should exchange ends every 2-3 balls through singles and twos.</p>
-                <p className="mt-2"><strong>Benefits of Strike Rotation:</strong></p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Prevents bowlers from targeting one batsman repeatedly</li>
-                    <li>Keeps both batsmen engaged and in rhythm</li>
-                    <li>Forces field changes and disrupts bowling plans</li>
-                    <li>Reduces pressure from dot balls</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">Communication and Understanding</h3>
+                <p>The best pairs run intuitively. Calling for runs (Yes, No, Wait) must be decisive. Understanding a partner's strengths helps in strike rotation—giving the strike to the partner who is facing a favorable bowler.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">Communication</h3>
-                <p>Successful partnerships require constant communication about:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Running Between Wickets:</strong> Clear calls for singles, twos, and threes</li>
-                    <li><strong>Bowling Analysis:</strong> Sharing insights about bowler variations</li>
-                    <li><strong>Field Placements:</strong> Identifying gaps and scoring opportunities</li>
-                    <li><strong>Match Situation:</strong> Discussing required run rate and strategy</li>
-                    <li><strong>Mental Support:</strong> Encouraging each other during pressure moments</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">Strike Rotation</h3>
+                <p>Taking singles is as crucial as hitting boundaries. Rotating the strike disrupts the bowler's rhythm and prevents them from setting up a single batsman. It also keeps the scoreboard ticking during quiet overs.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Complementary Styles</h3>
-                <p>The best partnerships often feature complementary batting styles:</p>
+                <p>Effective partnerships often feature contrasting styles:</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Aggressor + Anchor:</strong> One attacks while other consolidates</li>
-                    <li><strong>Right-Left Combination:</strong> Forces bowling and field changes</li>
-                    <li><strong>Power + Placement:</strong> One hits boundaries, other rotates strike</li>
-                    <li><strong>Experience + Youth:</strong> Veteran guides younger partner</li>
+                    <li><strong>Aggressor vs. Anchor:</strong> One takes risks while the other provides stability (e.g., Kohli & Rohit).</li>
+                    <li><strong>Left-Hand vs. Right-Hand:</strong> Forces bowlers to constantly adjust their line and length.</li>
+                    <li><strong>Spin Player vs. Pace Player:</strong> Each dominates their preferred bowling type.</li>
                 </ul>
 
                 <hr />
 
                 {/* STRATEGIC IMPORTANCE */}
                 <h2 id="strategic-importance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategic Importance of Partnerships</h2>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Opening Partnership</h3>
-                <p>The opening partnership sets the tone for the innings. A strong start (50+ runs) provides:</p>
+                <p>Partnerships are the building blocks of any innings. Their strategic value shifts depending on the match situation:</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Platform for middle order to build on</li>
-                    <li>Psychological advantage over opposition</li>
-                    <li>Opportunity to see off new ball</li>
-                    <li>Momentum for the innings</li>
-                </ul>
-                <p className="mt-2"><strong>Benchmark:</strong> In T20s, 40+ in powerplay is good. In ODIs, 50+ in first 10 overs is solid. In Tests, surviving first hour is crucial.</p>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Middle-Order Rebuilding</h3>
-                <p>After early wickets, middle-order partnerships must:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Stabilize the innings and stop collapse</li>
-                    <li>Assess conditions and rebuild carefully</li>
-                    <li>Rotate strike without taking excessive risks</li>
-                    <li>Create platform for late acceleration</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Finishing Partnerships</h3>
-                <p>Late-innings partnerships (overs 15-20 in T20, 40-50 in ODI) focus on:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Maximizing run rate through boundaries</li>
-                    <li>Targeting specific bowlers and overs</li>
-                    <li>Taking calculated risks for big shots</li>
-                    <li>Capitalizing on fielding restrictions</li>
+                    <li><strong>Top Order (Overs 1-10):</strong> Laying the foundation. A strong opening stand protects the middle order from the new ball.</li>
+                    <li><strong>Middle Overs (Overs 11-40/15):</strong> Consolidation and rotation. Keeping the scoreboard moving without taking high risks.</li>
+                    <li><strong>Death Overs:</strong> Maximizing the total. Established partners can accelerate freely, knowing there are wickets in hand.</li>
                 </ul>
 
                 <hr />
 
                 {/* ROLE DISTRIBUTION */}
                 <h2 id="role-distribution" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Role Distribution in Partnerships</h2>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">The Aggressor</h3>
-                <p>Responsibilities:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Score boundaries to maintain run rate</li>
-                    <li>Put pressure on bowlers</li>
-                    <li>Target weaker bowlers aggressively</li>
-                    <li>Take calculated risks for quick runs</li>
-                </ul>
-                <p className="mt-2"><strong>Ideal Strike Rate:</strong> 120+ in T20, 90+ in ODI, 60+ in Tests</p>
+                <p>Successful partnerships often have defined roles that can switch over time:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">The Anchor</h3>
-                <p>Responsibilities:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Provide stability and occupy crease</li>
-                    <li>Rotate strike consistently</li>
-                    <li>Play out difficult bowlers</li>
-                    <li>Support aggressor by maintaining pressure</li>
-                </ul>
-                <p className="mt-2"><strong>Ideal Strike Rate:</strong> 100-110 in T20, 70-80 in ODI, 45-55 in Tests</p>
+                <p>Plays the long game, holds one end, minimizes risk, and ensures the team plays out the quota of overs.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">Flexible Roles</h3>
-                <p>In successful partnerships, roles aren't rigid. Batsmen should be able to switch between aggressor and anchor based on:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Who's seeing the ball better</li>
-                    <li>Match-ups with current bowler</li>
-                    <li>Match situation and required run rate</li>
-                    <li>Field placements and scoring opportunities</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">The Aggressor</h3>
+                <p>Takes on the bowlers, looks for boundaries, and utilizes the freedom provided by the Anchor's stability.</p>
+
+                <p className="mt-4"><strong>Dynamic Roles:</strong> In a great partnership, these roles are fluid. If the Aggressor struggles against a specific bowler, the Anchor takes over the attacking role.</p>
 
                 <hr />
 
                 {/* BUILDING PARTNERSHIPS */}
                 <h2 id="building-partnerships" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Building Successful Partnerships</h2>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Phase 1: Settlement (First 10-15 balls)</h3>
-                <p>Focus on getting your eye in:</p>
+                <p>Building a big partnership requires a phased approach:</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Watch the ball carefully, don't force shots</li>
-                    <li>Play to your strengths, avoid risky shots</li>
-                    <li>Communicate with partner about conditions</li>
-                    <li>Assess bowler's line, length, and variations</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Phase 2: Consolidation (Next 20-30 balls)</h3>
-                <p>Build the partnership foundation:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Rotate strike regularly through singles</li>
-                    <li>Identify scoring areas and gaps in field</li>
-                    <li>Target loose deliveries for boundaries</li>
-                    <li>Build pressure on bowlers through dot-ball minimization</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Phase 3: Acceleration (After Settlement)</h3>
-                <p>Once set, increase scoring rate:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Target specific bowlers for boundaries</li>
-                    <li>Take calculated risks on good deliveries</li>
-                    <li>Exploit field placements aggressively</li>
-                    <li>Maintain strike rotation while scoring boundaries</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Dealing with Pressure</h3>
-                <p>When partnership is under pressure (dot balls accumulating, required rate rising):</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Stay Calm:</strong> Don't panic, assess situation rationally</li>
-                    <li><strong>Communicate:</strong> Discuss strategy with partner</li>
-                    <li><strong>Target Weak Links:</strong> Identify easiest bowler to score off</li>
-                    <li><strong>Rotate Strike:</strong> Keep scoreboard moving with singles</li>
-                    <li><strong>One Big Over:</strong> Plan to target specific over for acceleration</li>
+                    <li><strong>Phase 1: Respect (0-15 runs):</strong> Get your eye in, judge the pitch, respect good bowling.</li>
+                    <li><strong>Phase 2: Rotate (15-50 runs):</strong> Focus on singles and doubles. Pierce gaps rather than hitting over the top.</li>
+                    <li><strong>Phase 3: Dominate (50+ runs):</strong> With both batsmen set, put pressure on the fielding captain. Manipulate the field and look for big overs.</li>
                 </ul>
 
                 <hr />
@@ -976,62 +306,26 @@ export default function CricketPartnershipRunRateCalculator() {
                 {/* FORMAT DIFFERENCES */}
                 <h2 id="format-differences" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Format-Specific Partnership Strategies</h2>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">T20 Partnerships</h3>
-                <p><strong>Characteristics:</strong> High risk, high reward. Partnerships rarely last more than 10 overs.</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Target Run Rate:</strong> 8-10 runs per over minimum</li>
-                    <li><strong>Powerplay Focus:</strong> Maximize first 6 overs (field restrictions)</li>
-                    <li><strong>Death Overs:</strong> Aim for 12-15 runs per over in final 5</li>
-                    <li><strong>Boundary Percentage:</strong> 40-50% of runs should come from boundaries</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">T20 Cricket</h3>
+                <p>Partnerships are short and intense. The "Anchor" role is diminishing; often both partners must be Aggressors. A 50-run partnership off 30 balls is gold.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">ODI Partnerships</h3>
-                <p><strong>Characteristics:</strong> Balance between aggression and consolidation. Partnerships can build over 20+ overs.</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Target Run Rate:</strong> 5-6 RPO in middle overs, 7-9 in death</li>
-                    <li><strong>Phase-Based:</strong> Powerplay (6 RPO), middle (5 RPO), death (8+ RPO)</li>
-                    <li><strong>Century Partnerships:</strong> 100+ run partnerships are match-winning</li>
-                    <li><strong>Strike Rotation:</strong> Critical in middle overs to prevent pressure</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">ODI Cricket</h3>
+                <p>Requires the classic "Build-Consolidate-Launch" rhythm. Middle-over partnerships (overs 11-40) that avoid dot balls are often match-winning.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">Test Partnerships</h3>
-                <p><strong>Characteristics:</strong> Patience and endurance. Partnerships can last entire sessions or days.</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Target Run Rate:</strong> 3-4 RPO is healthy, 2.5+ acceptable</li>
-                    <li><strong>Session-Based:</strong> Aim to bat entire session without losing wicket</li>
-                    <li><strong>Big Partnerships:</strong> 150+ run partnerships shift match momentum</li>
-                    <li><strong>Patience:</strong> Leave deliveries outside off, wait for scoring opportunities</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">Test Cricket</h3>
+                <p>Partnerships are about time as much as runs. Tire the bowlers, soften the ball, and break the opposition's morale. Strike rate is secondary to survival and accumulation.</p>
 
                 <hr />
 
                 {/* FAMOUS PARTNERSHIPS */}
                 <h2 id="famous-partnerships" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Famous Partnerships in Cricket History</h2>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Record Partnerships</h3>
-                <ul className="list-disc ml-6 space-y-2">
-                    <li><strong>413 - V.V.S. Laxman & Rahul Dravid (India vs. Australia, 2001):</strong> Match-winning partnership that turned around a Test match after following on</li>
-                    <li><strong>372 - Mahela Jayawardene & Kumar Sangakkara (Sri Lanka vs. South Africa, 2006):</strong> Record ODI partnership showcasing perfect strike rotation</li>
-                    <li><strong>229 - Hashim Amla & AB de Villiers (South Africa vs. West Indies, 2015):</strong> Record T20I partnership demonstrating controlled aggression</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">What Made Them Special</h3>
-                <p>These partnerships shared common traits:</p>
+                <p>History is replete with legendary duos who understood each other intuitively:</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Complementary Styles:</strong> Partners had different strengths that meshed perfectly</li>
-                    <li><strong>Excellent Communication:</strong> Constant dialogue about strategy and tactics</li>
-                    <li><strong>Pressure Handling:</strong> Thrived in high-pressure situations</li>
-                    <li><strong>Strike Rotation:</strong> Kept scoreboard moving without taking excessive risks</li>
-                    <li><strong>Match Awareness:</strong> Understood situation and adapted accordingly</li>
+                    <li><strong>Greenidge & Haynes (West Indies):</strong> The ultimate opening pair, combining aggression with technical perfection over a decade.</li>
+                    <li><strong>Sangakkara & Jayawardene (Sri Lanka):</strong> Masters of batting long and big, famous for their world-record 624-run stand.</li>
+                    <li><strong>Hayden & Langer (Australia):</strong> A left-handed duo that physically and mentally dominated opening attacks in Test cricket.</li>
+                    <li><strong>Tendulkar & Ganguly (India):</strong> The most prolific ODI opening pair, perfectly complementing each other's styles in the late 90s.</li>
                 </ul>
-
-                <hr />
-
-                {/* CONCLUSION */}
-                <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-                <p>Partnerships are the building blocks of successful innings in cricket. While individual brilliance captures headlines, it's the partnerships that provide the foundation for match-winning performances. Understanding partnership run rate, dynamics, and strategies helps teams build momentum, apply pressure, and ultimately win matches.</p>
-
-                <p>Use this calculator to analyze partnership effectiveness, identify dominant batsmen, assess scoring pace, and make informed strategic decisions about when to consolidate and when to accelerate. Remember that great partnerships are built on communication, complementary skills, and shared understanding of match situations.</p>
             </section>
 
             {/* FAQ Section */}
@@ -1042,180 +336,74 @@ export default function CricketPartnershipRunRateCalculator() {
                         <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
-                        Common questions about cricket partnerships
+                        Common questions about batting partnerships
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="space-y-6">
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What is a good partnership run rate in T20 cricket?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What is considered a "good" partnership run rate?</h4>
                             <p className="text-muted-foreground">
-                                In T20 cricket, a partnership run rate of 8-10 runs per over is considered good, 10-12 is excellent, and above 12 is exceptional. However, context matters - a 6 RPO partnership after early wickets can be valuable for stabilization, while 8 RPO in the powerplay might be below par.
+                                It depends on the format. In T20s, anything above 8.5 RPO is excellent. In ODIs, 5.5-6.0 RPO is a winning pace. In Tests, 3.0-3.5 RPO puts the team in a commanding position.
                             </p>
                         </div>
-
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">How important is strike rotation in partnerships?</h4>
+                            <h4 className="font-semibold text-lg mb-3">Does partnership average include not outs?</h4>
                             <p className="text-muted-foreground">
-                                Strike rotation is crucial for partnership success. It prevents bowlers from settling into rhythm, keeps both batsmen engaged, forces field changes, and maintains scoring pressure without excessive risk. Ideally, batsmen should rotate strike every 2-3 balls through singles and twos.
+                                Yes. The partnership average for a specific pair is calculated as Total Runs Scored Together / Total Number of Dismissals. If one partner remains not out, the innings counts towards runs but not the dismissal count.
                             </p>
                         </div>
-
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What makes a partnership "dominant" vs. "balanced"?</h4>
+                            <h4 className="font-semibold text-lg mb-3">Why are left-right batting combinations valued?</h4>
                             <p className="text-muted-foreground">
-                                A dominant partnership has one batsman contributing 60%+ of runs or maintaining significantly higher strike rate. A balanced partnership has both batsmen contributing 45-55% of runs with similar strike rates. Both can be effective - dominance works when one batsman is in exceptional form, while balance provides stability and flexibility.
+                                They disrupt the bowler's line and length. The bowler has to constantly adjust their aim and field placements, which often leads to mistakes and loose deliveries.
                             </p>
                         </div>
-
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">How do right-left batting combinations help partnerships?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What is the highest partnership in Test cricket?</h4>
                             <p className="text-muted-foreground">
-                                Right-left combinations force bowlers to constantly adjust line and length, disrupt rhythm, require field changes, and make it harder to bowl consistently. This creates more scoring opportunities and puts additional pressure on the bowling team. However, the benefits only materialize if both batsmen can score effectively.
+                                The highest partnership is 624 runs between Kumar Sangakkara and Mahela Jayawardene for Sri Lanka against South Africa in 2006.
                             </p>
                         </div>
-
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What's more important: partnership runs or partnership duration?</h4>
+                            <h4 className="font-semibold text-lg mb-3">How do I calculate the contribution ratio?</h4>
                             <p className="text-muted-foreground">
-                                It depends on format and match situation. In T20s, runs matter more than duration - a 50-run partnership in 4 overs is better than 50 in 8 overs. In Tests, duration can be equally important - batting 30 overs for 80 runs might be more valuable than 80 runs in 15 overs if you're saving a match. Context is key.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">How should partnerships handle pressure situations?</h4>
-                            <p className="text-muted-foreground">
-                                Under pressure (dot balls accumulating, required rate rising), partnerships should: (1) Stay calm and communicate, (2) Rotate strike to keep scoreboard moving, (3) Identify the weakest bowler to target, (4) Plan to attack one specific over for momentum shift, (5) Avoid rash shots that risk both wickets. One big over can release pressure.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">What's the ideal contribution split in a partnership?</h4>
-                            <p className="text-muted-foreground">
-                                There's no single ideal split. A 50-50 balanced partnership provides stability. A 60-40 split with one dominant batsman works when that player is in exceptional form. Even 70-30 can be effective if the supporting batsman rotates strike well and allows the dominant player to flourish. The key is both batsmen contributing positively.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">How do partnerships differ between batting first and chasing?</h4>
-                            <p className="text-muted-foreground">
-                                When batting first, partnerships can be more patient, building platform before accelerating. When chasing, partnerships must be aware of required run rate from the start. Chasing partnerships often have clearer targets and timelines, while first-innings partnerships have more flexibility to adapt based on conditions and opposition bowling.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">What's the most critical partnership in an innings?</h4>
-                            <p className="text-muted-foreground">
-                                The opening partnership sets the tone, but the most critical is often the first partnership after early wickets. If a team loses 2-3 early wickets, the next partnership must stabilize the innings and prevent collapse. This "rebuilding partnership" determines whether the team posts a competitive total or folds cheaply.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">Can a slow partnership ever be beneficial?</h4>
-                            <p className="text-muted-foreground">
-                                Yes, in specific contexts: (1) Test cricket when saving a match, (2) After early wickets when stabilization is needed, (3) Difficult pitch conditions where survival is priority, (4) Seeing off a dangerous spell from quality bowlers. However, in limited-overs cricket, even "slow" partnerships should maintain 4-5 RPO minimum to avoid excessive pressure later.
+                                Simply divide each player's runs by the total partnership runs. For example, in a 100-run partnership where P1 scores 60 and P2 scores 40, the ratio is 60:40 or 3:2.
                             </p>
                         </div>
                     </div>
                 </CardContent>
             </Card>
 
-            {/* Usage of this Calculator */}
-            <Card className="mb-6">
+            {/* Usage Section */}
+            <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
                         <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
-                    <CardDescription>
-                        Practical applications and real-world context
-                    </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                    {/* Who should use */}
-                    <div>
-                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-                            <Users className="h-5 w-5 text-blue-600" />
-                            Who Should Use This Calculator?
-                        </h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                                <strong className="block text-primary mb-1">Coaches & Team Analysts</strong>
-                                <span className="text-sm text-muted-foreground">Analyze partnership effectiveness, identify successful batting combinations, and plan strategic pairings.</span>
-                            </div>
-                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                                <strong className="block text-primary mb-1">Cricket Commentators</strong>
-                                <span className="text-sm text-muted-foreground">Provide real-time partnership analysis and context about scoring pace and contribution balance.</span>
-                            </div>
-                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                                <strong className="block text-primary mb-1">Players & Batsmen</strong>
-                                <span className="text-sm text-muted-foreground">Understand partnership dynamics, assess personal contribution, and improve strike rotation skills.</span>
-                            </div>
-                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                                <strong className="block text-primary mb-1">Cricket Statisticians</strong>
-                                <span className="text-sm text-muted-foreground">Track partnership records, analyze historical data, and identify trends in batting combinations.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr className="border-border/50" />
-
-                    {/* Limitations */}
-                    <div>
-                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-                            <AlertTriangle className="h-5 w-5 text-amber-600" />
-                            Limitations & When It May Be Misleading
-                        </h4>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>No Context of Match Situation:</strong> A 5 RPO partnership might be excellent after early collapse or poor on a flat pitch chasing a big total.</span>
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>Doesn't Account for Extras:</strong> Runs from wides, no-balls, and byes aren't attributed to batsmen but affect partnership total.</span>
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>Quality of Opposition Not Considered:</strong> Scoring 6 RPO against world-class bowling is more impressive than 8 RPO against weak attack.</span>
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>Pitch and Conditions Ignored:</strong> Partnership run rate should be evaluated relative to pitch difficulty and weather conditions.</span>
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>No Qualitative Assessment:</strong> Calculator can't measure communication quality, running between wickets, or psychological pressure handling.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <hr className="border-border/50" />
-
-                    {/* Real World Examples */}
-                    <div>
-                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-                            <Trophy className="h-5 w-5 text-green-600" />
-                            Real-World Examples
-                        </h4>
-                        <div className="space-y-3">
-                            <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-                                <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example A: Balanced T20 Partnership</h5>
-                                <p className="text-sm text-green-700/80 dark:text-green-400">
-                                    Partnership: 92 runs off 54 balls. Player A: 48 runs (28 balls, SR 171). Player B: 44 runs (26 balls, SR 169). Partnership RR: 10.2 RPO. This demonstrates a perfectly balanced partnership with both batsmen scoring at similar high strike rates, ideal for T20 cricket's demands.
-                                </p>
-                            </div>
-                            <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-                                <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example B: Dominant ODI Partnership</h5>
-                                <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                                    Partnership: 156 runs off 162 balls. Player A: 102 runs (98 balls, SR 104). Player B: 54 runs (64 balls, SR 84). Partnership RR: 5.8 RPO. Player A dominates with 65% contribution, while Player B provides crucial support by rotating strike and allowing the dominant batsman to flourish.
-                                </p>
-                            </div>
-                            <div className="p-4 rounded-lg bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20">
-                                <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-1">Example C: Test Match Rebuilding Partnership</h5>
-                                <p className="text-sm text-purple-700/80 dark:text-purple-400">
-                                    Partnership: 127 runs off 288 balls (48 overs). Player A: 68 runs (156 balls, SR 44). Player B: 59 runs (132 balls, SR 45). Partnership RR: 2.6 RPO. After early collapse, this patient partnership stabilized the innings, demonstrating that in Tests, occupying the crease and tiring bowlers can be more valuable than quick runs.
-                                </p>
+                <CardContent>
+                    <div className="space-y-6">
+                        <div>
+                            <h3 className="font-semibold text-lg mb-3">Who Should Use This Calculator?</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Coaches & Analysts</strong>
+                                    <span className="text-sm text-muted-foreground">To evaluate pair chemistry and identify the most effective batting combinations.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Players</strong>
+                                    <span className="text-sm text-muted-foreground">To analyze their own performance with specific partners and identify areas for improvement.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Broadcasters</strong>
+                                    <span className="text-sm text-muted-foreground">To provide real-time stats and depth to match covering and commentary.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Fantasy Players</strong>
+                                    <span className="text-sm text-muted-foreground">To predict which batting pairs are likely to score big points together.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1223,17 +411,20 @@ export default function CricketPartnershipRunRateCalculator() {
             </Card>
 
             {/* Summary */}
-            <Card className="mb-6">
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Shield className="h-5 w-5" />
-                        <h2 className="text-xl font-semibold">Summary</h2>
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm text-muted-foreground">
-                    <p>The Cricket Partnership Run Rate Calculator analyzes batting partnerships by measuring scoring pace, individual contributions, and partnership effectiveness across different match formats.</p>
-                    <p>Use this tool to evaluate partnership quality, identify dominant batsmen, assess strike rotation efficiency, and make strategic decisions about batting combinations and role distribution.</p>
-                    <p>Remember that successful partnerships combine complementary skills, excellent communication, and shared understanding of match situations to build match-winning stands.</p>
+            <Card className="bg-primary/5 border-primary/20">
+                <CardContent className="pt-6">
+                    <div className="flex items-start gap-4">
+                        <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
+                        <div>
+                            <h2 className="font-semibold text-lg mb-2">Summary</h2>
+                            <p className="text-sm text-muted-foreground">
+                                The Cricket Partnership Run Rate Calculator provides deep insights into the dynamics of batting pairs.
+                            </p>
+                            <p className="text-sm text-muted-foreground mt-2">
+                                By analyzing run rates, contribution ratios, and format-specific benchmarks, users can understand what makes a partnership tick and how to replicate that success in future matches.
+                            </p>
+                        </div>
+                    </div>
                 </CardContent>
             </Card>
         </div>

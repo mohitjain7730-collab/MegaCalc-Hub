@@ -1,218 +1,10 @@
-'use client';
-
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trophy, TrendingUp, AlertCircle, Target, Info, Calculator, BarChart3, Shield, FunctionSquare, CheckCircle2, Activity, Zap, Users, AlertTriangle, Award, TrendingDown, Percent } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-const formSchema = z.object({
-    // Match situation
-    runsNeeded: z.number().min(0),
-    ballsRemaining: z.number().min(1).max(300),
-    wicketsInHand: z.number().min(0).max(10),
-    currentRunRate: z.number().min(0),
-    requiredRunRate: z.number().min(0),
-    // Match format
-    matchFormat: z.string(),
-    // Additional factors
-    pitchCondition: z.string(),
-    teamStrength: z.string(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Trophy, TrendingUp, AlertCircle, Target, Info, Calculator, BarChart3, Shield, CheckCircle2, Award, Zap, Activity, Users } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import CricketWinProbabilityCalculatorInteractive from './cricket-win-probability-calculator-interactive';
 
 export default function CricketWinProbabilityCalculator() {
-    const [result, setResult] = useState<{
-        winProbability: number;
-        lossProbability: number;
-        tieProbability: number;
-        confidence: string;
-        matchSituation: string;
-        keyFactors: string[];
-        recommendations: string[];
-        pressureIndex: number;
-        difficultyRating: string;
-    } | null>(null);
-
-    const form = useForm<FormValues>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            runsNeeded: undefined,
-            ballsRemaining: undefined,
-            wicketsInHand: undefined,
-            currentRunRate: undefined,
-            requiredRunRate: undefined,
-            matchFormat: 't20',
-            pitchCondition: 'balanced',
-            teamStrength: 'average',
-        },
-    });
-
-    const calculateWinProbability = (values: FormValues): number => {
-        let baseProbability = 50;
-
-        // Factor 1: Run rate comparison (40% weight)
-        const rrDifference = values.currentRunRate - values.requiredRunRate;
-        const rrFactor = Math.min(Math.max(rrDifference * 5, -20), 20);
-        baseProbability += rrFactor;
-
-        // Factor 2: Wickets in hand (30% weight)
-        const wicketsFactor = ((values.wicketsInHand - 5) / 5) * 15;
-        baseProbability += wicketsFactor;
-
-        // Factor 3: Balls remaining vs runs needed (20% weight)
-        const runsPerBallNeeded = values.runsNeeded / values.ballsRemaining;
-        let difficultyFactor = 0;
-        if (runsPerBallNeeded < 1) difficultyFactor = 10;
-        else if (runsPerBallNeeded < 1.5) difficultyFactor = 5;
-        else if (runsPerBallNeeded < 2) difficultyFactor = 0;
-        else if (runsPerBallNeeded < 2.5) difficultyFactor = -5;
-        else difficultyFactor = -10;
-        baseProbability += difficultyFactor;
-
-        // Factor 4: Match format adjustment
-        if (values.matchFormat === 't20' && values.ballsRemaining < 12) {
-            baseProbability -= 5; // Death overs are harder
-        } else if (values.matchFormat === 'odi' && values.ballsRemaining < 30) {
-            baseProbability -= 3;
-        }
-
-        // Factor 5: Pitch condition (10% weight)
-        if (values.pitchCondition === 'batting-friendly') baseProbability += 5;
-        else if (values.pitchCondition === 'bowling-friendly') baseProbability -= 5;
-
-        // Factor 6: Team strength
-        if (values.teamStrength === 'strong') baseProbability += 5;
-        else if (values.teamStrength === 'weak') baseProbability -= 5;
-
-        // Ensure probability is between 0 and 100
-        return Math.min(Math.max(baseProbability, 0), 100);
-    };
-
-    const getConfidence = (probability: number, wickets: number, balls: number): string => {
-        if (probability > 85 || probability < 15) return 'Very High';
-        if (probability > 70 || probability < 30) return 'High';
-        if (probability > 55 || probability < 45) return 'Moderate';
-        return 'Low';
-    };
-
-    const getMatchSituation = (probability: number): string => {
-        if (probability >= 80) return 'Strong Position - Victory Highly Likely';
-        if (probability >= 65) return 'Comfortable Position - Favorites to Win';
-        if (probability >= 55) return 'Slight Advantage - Marginal Favorites';
-        if (probability >= 45) return 'Evenly Poised - Too Close to Call';
-        if (probability >= 35) return 'Under Pressure - Underdogs';
-        if (probability >= 20) return 'Difficult Situation - Unlikely to Win';
-        return 'Critical Situation - Victory Extremely Unlikely';
-    };
-
-    const getPressureIndex = (rrr: number, wickets: number, balls: number): number => {
-        const wicketPressure = (10 - wickets) * 10;
-        const rrrPressure = Math.min(rrr * 10, 50);
-        const timePressure = balls < 30 ? 20 : balls < 60 ? 10 : 0;
-        return Math.min(wicketPressure + rrrPressure + timePressure, 100);
-    };
-
-    const getDifficultyRating = (runsPerBall: number): string => {
-        if (runsPerBall < 0.5) return 'Very Easy';
-        if (runsPerBall < 1) return 'Easy';
-        if (runsPerBall < 1.5) return 'Moderate';
-        if (runsPerBall < 2) return 'Difficult';
-        if (runsPerBall < 2.5) return 'Very Difficult';
-        return 'Extremely Difficult';
-    };
-
-    const getKeyFactors = (values: FormValues, probability: number): string[] => {
-        const factors = [];
-
-        const runsPerBall = values.runsNeeded / values.ballsRemaining;
-        if (runsPerBall > 2) {
-            factors.push(`High required run rate of ${(runsPerBall * 6).toFixed(2)} per over puts immense pressure`);
-        } else if (runsPerBall < 1) {
-            factors.push(`Low required run rate of ${(runsPerBall * 6).toFixed(2)} per over favors batting team`);
-        }
-
-        if (values.wicketsInHand <= 3) {
-            factors.push('Limited wickets remaining increases risk of collapse');
-        } else if (values.wicketsInHand >= 7) {
-            factors.push('Plenty of wickets in hand provides cushion for aggressive batting');
-        }
-
-        if (values.ballsRemaining < 30) {
-            factors.push('Few balls remaining means limited room for error');
-        } else if (values.ballsRemaining > 100) {
-            factors.push('Ample time available to build innings strategically');
-        }
-
-        if (values.currentRunRate > values.requiredRunRate + 1) {
-            factors.push('Current run rate well ahead of required rate');
-        } else if (values.requiredRunRate > values.currentRunRate + 1) {
-            factors.push('Falling behind required run rate increases pressure');
-        }
-
-        if (factors.length === 0) {
-            factors.push('Match evenly balanced with no clear advantage');
-        }
-
-        return factors;
-    };
-
-    const getRecommendations = (values: FormValues, probability: number): string[] => {
-        const recommendations = [];
-        const runsPerBall = values.runsNeeded / values.ballsRemaining;
-
-        if (probability > 70) {
-            recommendations.push('Maintain current approach and avoid unnecessary risks');
-            recommendations.push('Rotate strike and look for singles to keep scoreboard ticking');
-            if (values.wicketsInHand > 5) {
-                recommendations.push('Set batsmen should look to accelerate in final overs');
-            }
-        } else if (probability > 50) {
-            recommendations.push('Balance risk and reward - mix rotation with boundaries');
-            recommendations.push('Target weaker bowlers and exploit field gaps');
-            recommendations.push('Avoid dot balls to maintain required run rate');
-        } else if (probability > 30) {
-            recommendations.push('Aggressive approach needed - look for boundaries');
-            recommendations.push('Take calculated risks against defensive fields');
-            if (values.wicketsInHand <= 4) {
-                recommendations.push('Partnerships crucial - avoid reckless shots');
-            }
-        } else {
-            recommendations.push('High-risk strategy required - attack from ball one');
-            recommendations.push('Target boundary hitting and maximize powerplay overs');
-            recommendations.push('Unconventional shots and innovative batting needed');
-        }
-
-        return recommendations;
-    };
-
-    const onSubmit = (values: FormValues) => {
-        const winProb = calculateWinProbability(values);
-        const lossProb = 100 - winProb - 0.5; // 0.5% for tie
-        const runsPerBall = values.runsNeeded / values.ballsRemaining;
-
-        setResult({
-            winProbability: winProb,
-            lossProbability: lossProb,
-            tieProbability: 0.5,
-            confidence: getConfidence(winProb, values.wicketsInHand, values.ballsRemaining),
-            matchSituation: getMatchSituation(winProb),
-            keyFactors: getKeyFactors(values, winProb),
-            recommendations: getRecommendations(values, winProb),
-            pressureIndex: getPressureIndex(values.requiredRunRate, values.wicketsInHand, values.ballsRemaining),
-            difficultyRating: getDifficultyRating(runsPerBall),
-        });
-    };
-
     return (
         <div className="space-y-8">
             {/* SEO-Optimized Header */}
@@ -223,331 +15,7 @@ export default function CricketWinProbabilityCalculator() {
                 </p>
             </div>
 
-            {/* Input Form */}
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Percent className="h-5 w-5" />
-                        <h2 className="text-xl font-semibold">Enter Match Situation</h2>
-                    </CardTitle>
-                    <CardDescription>
-                        Enter current match details to calculate win probability
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            {/* Match Format */}
-                            <FormField
-                                control={form.control}
-                                name="matchFormat"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Match Format</FormLabel>
-                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                            <FormControl>
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Select format" />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent>
-                                                <SelectItem value="t20">T20 (20 overs)</SelectItem>
-                                                <SelectItem value="odi">ODI (50 overs)</SelectItem>
-                                                <SelectItem value="test">Test Match</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            {/* Chase Details */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-semibold flex items-center gap-2">
-                                    <Target className="h-5 w-5 text-red-600" />
-                                    Chase Requirements
-                                </h3>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="runsNeeded"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Runs Needed</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        placeholder="e.g., 45"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="ballsRemaining"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Balls Remaining</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        placeholder="e.g., 36"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="wicketsInHand"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Wickets in Hand</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="1"
-                                                        min="0"
-                                                        max="10"
-                                                        placeholder="e.g., 6"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Run Rates */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-semibold flex items-center gap-2">
-                                    <BarChart3 className="h-5 w-5 text-blue-600" />
-                                    Run Rate Analysis
-                                </h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="currentRunRate"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Current Run Rate</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="0.1"
-                                                        placeholder="e.g., 7.5"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="requiredRunRate"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Required Run Rate</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="number"
-                                                        step="0.1"
-                                                        placeholder="e.g., 7.5"
-                                                        {...field}
-                                                        value={field.value ?? ''}
-                                                        onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Match Conditions */}
-                            <div className="space-y-4">
-                                <h3 className="text-lg font-semibold flex items-center gap-2">
-                                    <Shield className="h-5 w-5 text-green-600" />
-                                    Match Conditions
-                                </h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="pitchCondition"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Pitch Condition</FormLabel>
-                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                    <FormControl>
-                                                        <SelectTrigger>
-                                                            <SelectValue placeholder="Select condition" />
-                                                        </SelectTrigger>
-                                                    </FormControl>
-                                                    <SelectContent>
-                                                        <SelectItem value="batting-friendly">Batting Friendly</SelectItem>
-                                                        <SelectItem value="balanced">Balanced</SelectItem>
-                                                        <SelectItem value="bowling-friendly">Bowling Friendly</SelectItem>
-                                                    </SelectContent>
-                                                </Select>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="teamStrength"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Team Strength</FormLabel>
-                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                    <FormControl>
-                                                        <SelectTrigger>
-                                                            <SelectValue placeholder="Select strength" />
-                                                        </SelectTrigger>
-                                                    </FormControl>
-                                                    <SelectContent>
-                                                        <SelectItem value="strong">Strong</SelectItem>
-                                                        <SelectItem value="average">Average</SelectItem>
-                                                        <SelectItem value="weak">Weak</SelectItem>
-                                                    </SelectContent>
-                                                </Select>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                            </div>
-
-                            <Button type="submit" className="w-full">
-                                <Calculator className="mr-2 h-4 w-4" />
-                                Calculate Win Probability
-                            </Button>
-                        </form>
-                    </Form>
-                </CardContent>
-            </Card>
-
-            {/* Results */}
-            {result && (
-                <div className="space-y-6">
-                    {/* Results Header */}
-                    <div>
-                        <h2 className="text-2xl font-bold">Calculated Win Probability</h2>
-                        <p className="text-muted-foreground mt-1">Statistical analysis of match outcome likelihood</p>
-                    </div>
-
-                    {/* Main Result Card */}
-                    <Card className="border-2 border-primary">
-                        <CardHeader>
-                            <div className="flex items-center gap-4">
-                                <Trophy className="h-8 w-8 text-primary" />
-                                <div>
-                                    <CardTitle>Win Probability</CardTitle>
-                                    <CardDescription>{result.matchSituation}</CardDescription>
-                                </div>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            <div className="text-center">
-                                <p className="text-6xl font-bold text-primary">{result.winProbability.toFixed(1)}%</p>
-                                <p className="text-sm text-muted-foreground mt-1">Chance of Victory</p>
-                                <Badge variant="default" className="mt-3 text-lg px-4 py-1">
-                                    {result.confidence} Confidence
-                                </Badge>
-                            </div>
-
-                            {/* Probability Breakdown */}
-                            <div className="space-y-3">
-                                <div className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-200 dark:border-green-900/20">
-                                    <div className="flex items-center gap-3">
-                                        <TrendingUp className="h-6 w-6 text-green-600" />
-                                        <span className="font-semibold">Win Probability</span>
-                                    </div>
-                                    <span className="text-2xl font-bold text-green-600">{result.winProbability.toFixed(1)}%</span>
-                                </div>
-                                <div className="flex items-center justify-between p-4 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-200 dark:border-red-900/20">
-                                    <div className="flex items-center gap-3">
-                                        <TrendingDown className="h-6 w-6 text-red-600" />
-                                        <span className="font-semibold">Loss Probability</span>
-                                    </div>
-                                    <span className="text-2xl font-bold text-red-600">{result.lossProbability.toFixed(1)}%</span>
-                                </div>
-                            </div>
-
-                            {/* Pressure & Difficulty */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="text-center p-4 bg-orange-50 dark:bg-orange-900/10 rounded-lg border border-orange-200 dark:border-orange-900/20">
-                                    <AlertTriangle className="h-6 w-6 mx-auto mb-2 text-orange-600" />
-                                    <p className="font-semibold text-sm text-muted-foreground">Pressure Index</p>
-                                    <p className="text-2xl font-bold text-orange-600">{result.pressureIndex.toFixed(0)}/100</p>
-                                </div>
-                                <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/10 rounded-lg border border-purple-200 dark:border-purple-900/20">
-                                    <Target className="h-6 w-6 mx-auto mb-2 text-purple-600" />
-                                    <p className="font-semibold text-sm text-muted-foreground">Chase Difficulty</p>
-                                    <p className="text-lg font-bold text-purple-600">{result.difficultyRating}</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-
-                    {/* Key Factors */}
-                    <Card className="border-blue-100 bg-blue-50/10 dark:border-blue-900/20 dark:bg-blue-900/5">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2 text-xl text-blue-600 dark:text-blue-400">
-                                <Info className="h-6 w-6" />
-                                Key Factors
-                            </CardTitle>
-                            <CardDescription>Critical elements affecting win probability</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                            {result.keyFactors.map((factor, index) => (
-                                <div key={index} className="flex items-start gap-3 p-3 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-100 dark:border-blue-900/20">
-                                    <CheckCircle2 className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
-                                    <span className="text-sm font-medium text-blue-800 dark:text-blue-300">{factor}</span>
-                                </div>
-                            ))}
-                        </CardContent>
-                    </Card>
-
-                    {/* Recommendations */}
-                    <Card className="border-green-100 bg-green-50/10 dark:border-green-900/20 dark:bg-green-900/5">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2 text-xl text-green-600 dark:text-green-400">
-                                <Target className="h-6 w-6" />
-                                Strategic Recommendations
-                            </CardTitle>
-                            <CardDescription>Tactical approach for current situation</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                            {result.recommendations.map((recommendation, index) => (
-                                <div key={index} className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-100 dark:border-green-900/20">
-                                    <Target className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 shrink-0" />
-                                    <span className="text-sm font-medium text-green-800 dark:text-green-300">{recommendation}</span>
-                                </div>
-                            ))}
-                        </CardContent>
-                    </Card>
-                </div>
-            )}
+            <CricketWinProbabilityCalculatorInteractive />
 
             {/* How It Works */}
             <Card className="mb-6">
@@ -798,147 +266,106 @@ export default function CricketWinProbabilityCalculator() {
                 <h3 className="text-xl font-semibold text-foreground mt-6">4. Pitch Conditions</h3>
                 <p>Pitch behavior significantly affects scoring rates:</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Flat Pitch:</strong> Favors batting, increases win probability for chasing team</li>
-                    <li><strong>Turning Pitch:</strong> Favors spinners, makes scoring difficult</li>
-                    <li><strong>Seaming Pitch:</strong> Favors pace bowlers, especially with new ball</li>
-                    <li><strong>Deteriorating Pitch:</strong> Becomes harder to bat as match progresses</li>
+                    <li><strong>Batting-friendly (Flat):</strong> High scores are chaseable, favor batting team.</li>
+                    <li><strong>Bowling-friendly (Green/Dusty):</strong> Low scores are defensible, favor bowling team.</li>
+                    <li><strong>Deteriorating:</strong> Pitch gets harder to bat on over time, favoring the team bowling second.</li>
                 </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">5. Team Strength and Quality</h3>
-                <p>A stronger batting lineup has higher probability of chasing the same target compared to a weaker lineup. Similarly, a quality bowling attack can defend lower totals.</p>
 
                 <hr />
 
                 {/* INTERPRETATION */}
                 <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Probability Values</h2>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Probability Ranges</h3>
-                <ul className="list-disc ml-6 space-y-2">
-                    <li><strong>80-100%:</strong> Overwhelming favorite, match nearly decided</li>
-                    <li><strong>65-80%:</strong> Clear favorite, but not guaranteed</li>
-                    <li><strong>50-65%:</strong> Slight advantage, match still competitive</li>
-                    <li><strong>35-50%:</strong> Slight disadvantage, can still win with good performance</li>
-                    <li><strong>20-35%:</strong> Significant underdog, needs exceptional performance</li>
-                    <li><strong>0-20%:</strong> Extreme underdog, requires miracle</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Understanding Confidence Levels</h3>
-                <p>Win probability models also output confidence levels indicating reliability:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>High Confidence (80%+):</strong> Stable match situation, probability reliable</li>
-                    <li><strong>Medium Confidence (60-80%):</strong> Some uncertainty, probability indicative</li>
-                    <li><strong>Low Confidence (below 60%):</strong> Volatile situation, probability less reliable</li>
-                </ul>
+                <div className="overflow-x-auto my-4">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="bg-primary/10">
+                                <th className="p-3 border">Win Probability</th>
+                                <th className="p-3 border">Meaning</th>
+                                <th className="p-3 border">Typical Situation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="p-3 border font-medium">90-100%</td>
+                                <td className="p-3 border">Almost Certain Victory</td>
+                                <td className="p-3 border">Needing 20 runs off 30 balls with 8 wickets left.</td>
+                            </tr>
+                            <tr>
+                                <td className="p-3 border font-medium">70-89%</td>
+                                <td className="p-3 border">Strong Favorite</td>
+                                <td className="p-3 border">Needing 8 runs per over with wickets in hand.</td>
+                            </tr>
+                            <tr>
+                                <td className="p-3 border font-medium">40-69%</td>
+                                <td className="p-3 border">Balanced Match</td>
+                                <td className="p-3 border">Needing 10 runs per over; game could go either way.</td>
+                            </tr>
+                            <tr>
+                                <td className="p-3 border font-medium">10-39%</td>
+                                <td className="p-3 border">Underdog</td>
+                                <td className="p-3 border">Needing 12+ runs per over or lost key wickets.</td>
+                            </tr>
+                            <tr>
+                                <td className="p-3 border font-medium">0-9%</td>
+                                <td className="p-3 border">Near Defeat</td>
+                                <td className="p-3 border">Needing 20+ runs per over or only 1 wicket left.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <hr />
 
                 {/* STRATEGIC USE */}
                 <h2 id="strategic-use" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategic Applications</h2>
+                <p>Teams use win probability models to inform real-time decisions:</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">For Batting Teams</h3>
-                <p><strong>When Probability is High (70%+):</strong></p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Maintain steady approach, don't take unnecessary risks</li>
-                    <li>Rotate strike, keep scoreboard ticking</li>
-                    <li>Target weaker bowlers for boundaries</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">Defensive vs. Aggressive Fields</h3>
+                <p>If win probability > 80%, captains set defensive fields to cut off boundaries. If probability drops < 40%, they bring fielders in to hunt for wickets, as containment alone won't win.</p>
 
-                <p className="mt-4"><strong>When Probability is Medium (40-60%):</strong></p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Balance aggression with wicket preservation</li>
-                    <li>Look for partnerships to stabilize innings</li>
-                    <li>Calculate when to accelerate</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">Batting Powerplay Management</h3>
+                <p>Teams analyze at which over their probability is maximized by taking the Powerplay. Often, taking it immediately after a wicket stabilizes probability, whereas taking it with set batsmen spikes it.</p>
 
-                <p className="mt-4"><strong>When Probability is Low (below 30%):</strong></p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Aggressive approach required, take calculated risks</li>
-                    <li>Target boundaries, maximize every ball</li>
-                    <li>Look for momentum shifts through big overs</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">For Bowling Teams</h3>
-                <p><strong>When Probability is Low (opponent 70%+):</strong></p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Focus on taking wickets to create pressure</li>
-                    <li>Use best bowlers strategically</li>
-                    <li>Create dot ball pressure to force mistakes</li>
-                </ul>
-
-                <p className="mt-4"><strong>When Probability is High (opponent below 30%):</strong></p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Maintain discipline, don't give away easy runs</li>
-                    <li>Protect boundaries, force singles</li>
-                    <li>Keep pressure on batsmen</li>
-                </ul>
+                <h3 className="text-xl font-semibold text-foreground mt-6">DL/DLS Par Scores</h3>
+                <p>In rain-affected matches, the DLS par score is essentially the score at which win probability is 50%. Teams pace their innings to stay above this par score.</p>
 
                 <hr />
 
                 {/* PROBABILITY SHIFTS */}
                 <h2 id="probability-shifts" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Understanding Probability Shifts</h2>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Events That Cause Large Shifts</h3>
-                <ul className="list-disc ml-6 space-y-2">
-                    <li><strong>Wicket of Set Batsman:</strong> -10 to -15% probability shift</li>
-                    <li><strong>Big Over (15+ runs):</strong> +8 to +12% probability shift</li>
-                    <li><strong>Maiden Over in Death:</strong> -5 to -8% probability shift</li>
-                    <li><strong>Boundary in Final Over:</strong> +15 to +25% probability shift</li>
-                    <li><strong>Run Out of Key Player:</strong> -12 to -18% probability shift</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Momentum and Probability</h3>
-                <p>Probability shifts often lag behind momentum. A team hitting 3 consecutive boundaries hasn't just scored 18 runs - they've also gained psychological momentum that can lead to further success. Models struggle to capture this intangible factor.</p>
+                <p>Probability is volatile. Key events cause massive swings:</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div className="p-4 bg-red-50 dark:bg-red-900/10 border border-red-200 rounded-lg">
+                        <strong className="text-red-700 dark:text-red-400">Wicket Fall</strong>
+                        <p className="text-sm mt-1">Losing a set batsman can drop win probability by 15-25% instantly, especially in the death overs.</p>
+                    </div>
+                    <div className="p-4 bg-green-50 dark:bg-green-900/10 border border-green-200 rounded-lg">
+                        <strong className="text-green-700 dark:text-green-400">Big Over</strong>
+                        <p className="text-sm mt-1">Scoring 20 runs in an over reduces required rate significantly, potentially boosting probability by 10-20%.</p>
+                    </div>
+                </div>
 
                 <hr />
 
                 {/* LIMITATIONS */}
                 <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations and Considerations</h2>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">1. No Individual Player Context</h3>
-                <p>Win probability treats all batsmen and bowlers equally. A team with a world-class finisher at the crease has better chances than the model suggests.</p>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">2. Doesn't Account for Pressure</h3>
-                <p>High-pressure situations (finals, rivalries) can cause players to perform below their usual standards. Models based on historical data don't capture this.</p>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">3. Weather and Interruptions</h3>
-                <p>Rain interruptions, DLS adjustments, and changing light conditions can dramatically alter match dynamics in ways models can't predict.</p>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">4. Small Sample Sizes</h3>
-                <p>Unusual match situations (e.g., needing 30 runs off 6 balls) have limited historical precedent, making probability estimates less reliable.</p>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">5. Format Differences</h3>
-                <p>T20 matches are more volatile than ODIs. A 60% win probability in T20 is less certain than 60% in ODI due to the shorter format's higher variance.</p>
+                <p>While powerful, win probability models are not crystal balls:</p>
+                <ul className="list-disc ml-6 space-y-2 mt-2">
+                    <li><strong>Human Element:</strong> They cannot predict a dropped catch, a fielding error, or a sudden injury.</li>
+                    <li><strong>Player Form:</strong> They assume "average" player performance. A superstar in form might chase down an "impossible" target (e.g., Maxwell's 201* vs Afghanistan).</li>
+                    <li><strong>Dew Factor:</strong> Models may struggle to quantify the impact of wet balls on bowling accuracy in the second innings.</li>
+                </ul>
 
                 <hr />
 
                 {/* HISTORICAL CONTEXT */}
                 <h2 id="historical-context" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Historical Context and Famous Chases</h2>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">Improbable Victories</h3>
-                <p>Cricket history is filled with matches where teams won despite having less than 10% win probability:</p>
-
+                <p>Some matches defied win probability models entirely:</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>India vs. Australia, 2001 Kolkata Test:</strong> Following on, India had less than 5% win probability but won by 171 runs</li>
-                    <li><strong>England vs. New Zealand, 2019 World Cup Final:</strong> England needed 15 off final over with probability around 20%, won via super over</li>
-                    <li><strong>South Africa vs. Australia, 2006 ODI:</strong> SA needed 434 to win, probability was below 2%, but they chased it down</li>
+                    <li><strong>Australia vs South Africa (438 Game):</strong> At the break, chasing 434 was considered nearly impossible (<1% probability). South Africa won with 1 ball to spare.</li>
+                    <li><strong>India vs Australia (Brisbane 2021):</strong> Chasing 300+ on a Day 5 Gabba pitch with a B-team was statistically improbable, yet India won.</li>
+                    <li><strong>England vs Australia (Headingley 2019):</strong> With 1 wicket left and 70 runs needed, Stokes' probability was <2%, yet he led England to victory.</li>
                 </ul>
-
-                <h3 className="text-xl font-semibold text-foreground mt-6">What These Teach Us</h3>
-                <p>These improbable victories demonstrate that:</p>
-                <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>Win probability is not destiny - exceptional performances can overcome odds</li>
-                    <li>Momentum and belief matter more than statistics suggest</li>
-                    <li>Never give up until the final ball is bowled</li>
-                    <li>Models are guides, not guarantees</li>
-                </ul>
-
-                <hr />
-
-                {/* CONCLUSION */}
-                <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-                <p>Win probability is a powerful analytical tool that quantifies match situations and helps understand cricket's dynamic nature. By combining run rates, wickets, balls remaining, and contextual factors, it provides objective assessment of which team has the advantage.</p>
-
-                <p>However, win probability should be used as a guide, not gospel. Cricket's beauty lies in its unpredictability - the improbable victories, the momentum shifts, the individual brilliance that defies statistical expectations. Use win probability to inform your understanding, but never underestimate the human element that makes cricket endlessly fascinating.</p>
             </section>
 
             {/* FAQ Section */}
@@ -949,180 +376,74 @@ export default function CricketWinProbabilityCalculator() {
                         <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
                     </CardTitle>
                     <CardDescription>
-                        Common questions about cricket win probability
+                        Common questions about win probability
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="space-y-6">
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What does 50% win probability mean?</h4>
+                            <h4 className="font-semibold text-lg mb-3">How accurate are win probability calculators?</h4>
                             <p className="text-muted-foreground">
-                                50% win probability means the match is perfectly balanced - both teams have equal chances of winning from the current situation. This typically occurs when the required run rate equals the current run rate with a moderate number of wickets in hand (5-7) and reasonable balls remaining.
+                                Modern models are highly accurate, often predicting the winner correctly in 70-80% of matches once the second innings is midway through. However, T20s are inherently volatile and harder to predict than ODIs.
                             </p>
                         </div>
-
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">How accurate is win probability in cricket?</h4>
+                            <h4 className="font-semibold text-lg mb-3">Does this calculator use the Duckworth-Lewis-Stern (DLS) method?</h4>
                             <p className="text-muted-foreground">
-                                Sophisticated models trained on thousands of matches achieve 75-85% accuracy in predicting match outcomes. However, accuracy varies by match situation - stable situations (clear advantage) are more predictable than volatile situations (close match, few wickets). The model is a probability, not a guarantee.
+                                No, this calculator uses a simplified proprietary algorithm based on run rate, wickets, and balls remaining. DLS is a specific method for setting revised targets in rain-affected matches, though it uses similar underlying logic.
                             </p>
                         </div>
-
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">Why does win probability change so dramatically after a wicket?</h4>
+                            <h4 className="font-semibold text-lg mb-3">Why does a single wicket drop the probability so much?</h4>
                             <p className="text-muted-foreground">
-                                Wickets have compound effects: they remove a set batsman, bring in an unsettle new batsman, reduce batting depth, and increase pressure on remaining batsmen. A key wicket can shift probability by 10-20% because it affects both immediate and future scoring potential. The impact is larger when fewer wickets remain.
+                                Wickets represent resources. Losing a batsman means exposing the lower order (tailenders) who are less likely to score quickly. It also breaks partnerships and momentum, forcing the new batsman to start from scratch.
                             </p>
                         </div>
-
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">Can a team with 10% win probability still win?</h4>
+                            <h4 className="font-semibold text-lg mb-3">Can win probability ever be 100% before the game ends?</h4>
                             <p className="text-muted-foreground">
-                                Absolutely. 10% probability means that in 10 similar situations, the team would win once on average. Cricket history has many examples of teams winning from 5% or lower probability. Exceptional individual performances, momentum shifts, and opposition mistakes can overcome statistical odds.
+                                Mathematically, no, until the winning run is hit or the last wicket falls. However, statistically, if a team needs 2 runs from 60 balls with 10 wickets left, the model will essentially show 99.99% or round to 100%.
                             </p>
                         </div>
-
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">Is win probability more reliable in T20 or ODI cricket?</h4>
+                            <h4 className="font-semibold text-lg mb-3">Does the toss affect win probability?</h4>
                             <p className="text-muted-foreground">
-                                Win probability is generally more reliable in ODI cricket due to the longer format providing more data points and reducing variance. T20 matches are more volatile - a single big over can swing the match dramatically. A 70% probability in ODI is more certain than 70% in T20.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">How do pitch conditions affect win probability?</h4>
-                            <p className="text-muted-foreground">
-                                Pitch conditions significantly impact scoring rates. A flat batting pitch increases the chasing team's probability as boundaries are easier. A turning or seaming pitch favors bowlers, reducing the batting team's probability. Deteriorating pitches become harder to bat on, affecting second-innings chases negatively.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">What's the difference between win probability and required run rate?</h4>
-                            <p className="text-muted-foreground">
-                                Required run rate is a simple calculation (runs needed ÷ overs remaining), while win probability is a comprehensive assessment considering run rates, wickets, balls remaining, pitch, and team strength. Two teams needing the same run rate can have very different win probabilities based on wickets in hand and other factors.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">Why does win probability sometimes seem wrong?</h4>
-                            <p className="text-muted-foreground">
-                                Win probability is based on historical averages and doesn't account for specific player quality, current form, pressure situations, or intangibles like momentum. If a world-class finisher is at the crease, the actual probability may be higher than the model suggests. Models provide objective baselines but can't capture every nuance.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">At what point in a chase does win probability become most volatile?</h4>
-                            <p className="text-muted-foreground">
-                                The final 5 overs of a close chase (within 30-40 runs) with 3-5 wickets remaining is the most volatile period. Each ball can swing probability by 2-5%, and wickets or boundaries cause 10-20% swings. This is when matches are won or lost, and small events have outsized impacts.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-semibold text-lg mb-3">Should teams make decisions based on win probability?</h4>
-                            <p className="text-muted-foreground">
-                                Win probability should inform decisions but not dictate them. It's one tool among many. Captains should consider probability alongside player matchups, field restrictions, bowling changes, and match context. Use it to understand the situation objectively, but trust experience and instinct for final decisions.
+                                Before a ball is bowled, probability is usually 50-50. However, at certain venues with a strong bias (e.g., chasing at Wankhede Stadium), the team winning the toss might start with a slight statistical advantage (e.g., 55-45).
                             </p>
                         </div>
                     </div>
                 </CardContent>
             </Card>
 
-            {/* Usage of this Calculator */}
-            <Card className="mb-6">
+            {/* Usage Section */}
+            <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5" />
                         <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
                     </CardTitle>
-                    <CardDescription>
-                        Practical applications and real-world context
-                    </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                    {/* Who should use */}
-                    <div>
-                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-                            <Users className="h-5 w-5 text-blue-600" />
-                            Who Should Use This Calculator?
-                        </h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                                <strong className="block text-primary mb-1">Cricket Fans & Viewers</strong>
-                                <span className="text-sm text-muted-foreground">Understand match dynamics in real-time and predict likely outcomes during live matches.</span>
-                            </div>
-                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                                <strong className="block text-primary mb-1">Commentators & Analysts</strong>
-                                <span className="text-sm text-muted-foreground">Provide objective analysis of match situations and explain turning points to audiences.</span>
-                            </div>
-                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                                <strong className="block text-primary mb-1">Team Strategists</strong>
-                                <span className="text-sm text-muted-foreground">Inform tactical decisions about when to attack, defend, or take calculated risks.</span>
-                            </div>
-                            <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                                <strong className="block text-primary mb-1">Betting & Fantasy Players</strong>
-                                <span className="text-sm text-muted-foreground">Assess live match situations to inform betting decisions or fantasy substitutions.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr className="border-border/50" />
-
-                    {/* Limitations */}
-                    <div>
-                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-                            <AlertTriangle className="h-5 w-5 text-amber-600" />
-                            Limitations & When It May Be Misleading
-                        </h4>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>Player Quality Not Considered:</strong> Model treats all players equally. A team with elite finishers has better chances than probability suggests.</span>
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>Pressure Situations:</strong> Finals, rivalries, and high-stakes matches create pressure that affects performance unpredictably.</span>
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>Weather Interruptions:</strong> Rain, DLS adjustments, and changing conditions can invalidate probability calculations mid-match.</span>
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>Momentum Not Captured:</strong> Psychological momentum from consecutive boundaries or wickets isn't reflected in statistical models.</span>
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                                <span><strong>Unusual Situations:</strong> Rare scenarios (e.g., needing 36 off final over) have limited historical data, making estimates unreliable.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <hr className="border-border/50" />
-
-                    {/* Real World Examples */}
-                    <div>
-                        <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-                            <Trophy className="h-5 w-5 text-green-600" />
-                            Real-World Examples
-                        </h4>
-                        <div className="space-y-3">
-                            <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-                                <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example A: Comfortable Chase</h5>
-                                <p className="text-sm text-green-700/80 dark:text-green-400">
-                                    Team needs 72 runs from 60 balls with 8 wickets in hand. Required RR: 7.2, Current RR: 8.5. Win Probability: 78%. The team has wickets in hand, is scoring above required rate, and has plenty of time. This is a strong position with high probability of success.
-                                </p>
-                            </div>
-                            <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-                                <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example B: Tense Finish</h5>
-                                <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                                    Team needs 28 runs from 18 balls with 3 wickets in hand. Required RR: 9.3, Current RR: 7.8. Win Probability: 42%. Below required rate with limited wickets creates pressure. Probability is below 50% but still achievable with 1-2 big overs. Match hangs in balance.
-                                </p>
-                            </div>
-                            <div className="p-4 rounded-lg bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20">
-                                <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-1">Example C: Nearly Impossible</h5>
-                                <p className="text-sm text-purple-700/80 dark:text-purple-400">
-                                    Team needs 45 runs from 12 balls with 2 wickets in hand. Required RR: 22.5, Current RR: 6.0. Win Probability: 8%. Requires 3.75 runs per ball with minimal batting left. While not impossible (cricket has seen miracles), probability correctly identifies this as an extreme long shot requiring exceptional hitting.
-                                </p>
+                <CardContent>
+                    <div className="space-y-6">
+                        <div>
+                            <h3 className="font-semibold text-lg mb-3">Who Uses Win Probability?</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Broadcasters</strong>
+                                    <span className="text-sm text-muted-foreground">To show the "Worm" and "Win Predictor" graphics during live matches.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Betting Markets</strong>
+                                    <span className="text-sm text-muted-foreground">To set and adjust live odds as the match situation changes ball-by-ball.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Teams & Captains</strong>
+                                    <span className="text-sm text-muted-foreground">To decide when to use key bowlers or take the Powerplay/Surge.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Fans</strong>
+                                    <span className="text-sm text-muted-foreground">To understand the "state of the game" beyond just the score.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1130,17 +451,20 @@ export default function CricketWinProbabilityCalculator() {
             </Card>
 
             {/* Summary */}
-            <Card className="mb-6">
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Shield className="h-5 w-5" />
-                        <h2 className="text-xl font-semibold">Summary</h2>
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm text-muted-foreground">
-                    <p>The Cricket Win Probability Calculator provides objective analysis of match situations by combining run rates, wickets remaining, balls left, and contextual factors into a single probability estimate.</p>
-                    <p>Use this tool to understand match dynamics, identify critical moments, and make informed strategic decisions during limited-overs cricket matches.</p>
-                    <p>Remember that probability is a guide, not a guarantee - cricket's beauty lies in its unpredictability and the human performances that defy statistical expectations.</p>
+            <Card className="bg-primary/5 border-primary/20">
+                <CardContent className="pt-6">
+                    <div className="flex items-start gap-4">
+                        <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
+                        <div>
+                            <h2 className="font-semibold text-lg mb-2">Summary</h2>
+                            <p className="text-sm text-muted-foreground">
+                                The Cricket Win Probability Calculator gives you a professional-grade forecast of the match outcome.
+                            </p>
+                            <p className="text-sm text-muted-foreground mt-2">
+                                By weighing the required run rate against wickets in hand and overs remaining, it cuts through the noise to tell you exactly which team is in the driver's seat.
+                            </p>
+                        </div>
+                    </div>
                 </CardContent>
             </Card>
         </div>

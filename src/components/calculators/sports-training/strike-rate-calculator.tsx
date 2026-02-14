@@ -1,141 +1,9 @@
-'use client';
-
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trophy, TrendingUp, AlertCircle, Target, Info, Calculator, BarChart3, Shield, FunctionSquare, CheckCircle2, Zap, Activity, Users, AlertTriangle } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
-
-const formSchema = z.object({
-    runsScored: z.number().min(0),
-    ballsFaced: z.number().min(0),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Trophy, Info, Calculator, BarChart3, FunctionSquare, CheckCircle2, Zap, Target, Activity, Users, Shield, AlertTriangle, AlertCircle } from 'lucide-react';
+import StrikeRateCalculatorInteractive from './strike-rate-calculator-interactive';
 
 export default function StrikeRateCalculator() {
-    const [result, setResult] = useState<{
-        strikeRate: number;
-        interpretation: string;
-        performanceLevel: string;
-        recommendation: string;
-        rating: string;
-        insights: string[];
-        considerations: string[];
-    } | null>(null);
-
-    const form = useForm<FormValues>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            runsScored: undefined,
-            ballsFaced: undefined,
-        },
-    });
-
-    const calculate = (v: FormValues) => {
-        if (v.runsScored == null || v.ballsFaced == null) return null;
-        if (v.ballsFaced === 0) return 0;
-        return (v.runsScored / v.ballsFaced) * 100;
-    };
-
-    const interpret = (sr: number) => {
-        if (sr >= 150) return 'Explosive batting with exceptional scoring speed and aggression.';
-        if (sr >= 130) return 'Highly aggressive batting with excellent run-scoring rate.';
-        if (sr >= 100) return 'Strong strike rate indicating good balance between attack and defense.';
-        if (sr >= 80) return 'Moderate strike rate - suitable for Test cricket or building innings.';
-        if (sr >= 60) return 'Conservative approach - may need to accelerate in limited-overs formats.';
-        return 'Very slow scoring rate - significant improvement needed for modern cricket.';
-    };
-
-    const getPerformanceLevel = (sr: number) => {
-        if (sr >= 150) return 'Explosive';
-        if (sr >= 130) return 'Highly Aggressive';
-        if (sr >= 100) return 'Aggressive';
-        if (sr >= 80) return 'Balanced';
-        if (sr >= 60) return 'Conservative';
-        return 'Very Slow';
-    };
-
-    const getRecommendation = (sr: number) => {
-        if (sr >= 150) return 'Maintain aggressive intent while managing risk in crucial situations.';
-        if (sr >= 130) return 'Excellent scoring rate. Balance aggression with match awareness.';
-        if (sr >= 100) return 'Good strike rate. Look for opportunities to accelerate further.';
-        if (sr >= 80) return 'Work on rotating strike and finding boundaries more frequently.';
-        if (sr >= 60) return 'Increase scoring rate through better shot selection and risk assessment.';
-        return 'Fundamental work needed on scoring shots and match tempo awareness.';
-    };
-
-    const getRating = (sr: number) => {
-        if (sr >= 150) return 'Outstanding';
-        if (sr >= 130) return 'Excellent';
-        if (sr >= 100) return 'Good';
-        if (sr >= 80) return 'Fair';
-        if (sr >= 60) return 'Below Average';
-        return 'Poor';
-    };
-
-    const getInsights = (sr: number) => {
-        const insights = [];
-        if (sr >= 150) {
-            insights.push('Exceptional boundary-hitting ability');
-            insights.push('High-impact player in limited-overs cricket');
-            insights.push('Game-changing scoring speed');
-        } else if (sr >= 130) {
-            insights.push('Strong aggressive intent');
-            insights.push('Effective in powerplay and death overs');
-            insights.push('Valuable T20 and ODI asset');
-        } else if (sr >= 100) {
-            insights.push('Balanced run-scoring approach');
-            insights.push('Good rotation of strike');
-            insights.push('Adaptable to different formats');
-        } else if (sr >= 80) {
-            insights.push('Solid foundation building');
-            insights.push('Suitable for Test cricket');
-            insights.push('Needs acceleration in limited-overs');
-        } else if (sr >= 60) {
-            insights.push('Conservative batting style');
-            insights.push('Struggles with scoring pressure');
-            insights.push('Limited boundary options');
-        } else {
-            insights.push('Significant scoring difficulties');
-            insights.push('Lacks attacking shots');
-            insights.push('Puts pressure on batting partners');
-        }
-        return insights;
-    };
-
-    const getConsiderations = (sr: number) => {
-        const considerations = [];
-        considerations.push('Format of cricket significantly affects ideal strike rate');
-        considerations.push('Match situation dictates required scoring speed');
-        considerations.push('Pitch conditions impact scoring opportunities');
-        considerations.push('Quality of bowling attack affects strike rate');
-        considerations.push('Batting position influences expected strike rate');
-        return considerations;
-    };
-
-    const onSubmit = (values: FormValues) => {
-        const sr = calculate(values);
-        if (sr !== null) {
-            setResult({
-                strikeRate: sr,
-                interpretation: interpret(sr),
-                performanceLevel: getPerformanceLevel(sr),
-                recommendation: getRecommendation(sr),
-                rating: getRating(sr),
-                insights: getInsights(sr),
-                considerations: getConsiderations(sr)
-            });
-        }
-    };
-
     return (
         <div className="space-y-8">
             {/* SEO-Optimized Header */}
@@ -146,168 +14,7 @@ export default function StrikeRateCalculator() {
                 </p>
             </div>
 
-            {/* Input Form */}
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Zap className="h-5 w-5" />
-                        <h2 className="text-xl font-semibold">Batting Statistics</h2>
-                    </CardTitle>
-                    <CardDescription>
-                        Enter runs scored and balls faced to calculate strike rate
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <FormField
-                                    control={form.control}
-                                    name="runsScored"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="flex items-center gap-2">
-                                                <Trophy className="h-4 w-4" />
-                                                Runs Scored
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    type="number"
-                                                    step="1"
-                                                    placeholder="e.g., 85"
-                                                    {...field}
-                                                    value={field.value ?? ''}
-                                                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="ballsFaced"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="flex items-center gap-2">
-                                                <Target className="h-4 w-4" />
-                                                Balls Faced
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    type="number"
-                                                    step="1"
-                                                    placeholder="e.g., 65"
-                                                    {...field}
-                                                    value={field.value ?? ''}
-                                                    onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <Button type="submit" className="w-full">
-                                <Calculator className="mr-2 h-4 w-4" />
-                                Calculate Strike Rate
-                            </Button>
-                        </form>
-                    </Form>
-                </CardContent>
-            </Card>
-
-            {/* Results */}
-            {result && (
-                <div className="space-y-6">
-                    {/* Main Result Card */}
-                    <Card>
-                        <CardHeader>
-                            <div className="flex items-center gap-4">
-                                <Zap className="h-8 w-8 text-primary" />
-                                <div>
-                                    <h2 className="text-2xl font-bold">Strike Rate</h2>
-                                    <p className="text-muted-foreground">Scoring Speed Analysis</p>
-                                </div>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            <div className="text-center">
-                                <p className="text-4xl font-bold text-primary">{result.strikeRate.toFixed(2)}</p>
-                                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                                    <Shield className="h-6 w-6 mx-auto mb-2 text-blue-600" />
-                                    <p className="font-semibold">Performance Level</p>
-                                    <Badge variant={result.performanceLevel === 'Explosive' ? 'default' : result.performanceLevel === 'Highly Aggressive' ? 'secondary' : result.performanceLevel === 'Aggressive' ? 'outline' : 'destructive'}>
-                                        {result.performanceLevel}
-                                    </Badge>
-                                </div>
-                                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                                    <TrendingUp className="h-6 w-6 mx-auto mb-2 text-green-600" />
-                                    <p className="font-semibold">Overall Rating</p>
-                                    <Badge variant={result.rating === 'Outstanding' ? 'default' : result.rating === 'Excellent' ? 'secondary' : result.rating === 'Good' ? 'outline' : 'destructive'}>
-                                        {result.rating}
-                                    </Badge>
-                                </div>
-                                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                                    <BarChart3 className="h-6 w-6 mx-auto mb-2 text-purple-600" />
-                                    <p className="font-semibold">Runs Per 100 Balls</p>
-                                    <p className="text-lg font-bold">{result.strikeRate.toFixed(1)}</p>
-                                </div>
-                            </div>
-
-                            <Alert>
-                                <Info className="h-4 w-4" />
-                                <AlertDescription>
-                                    <strong>Recommendation:</strong> {result.recommendation}
-                                </AlertDescription>
-                            </Alert>
-                        </CardContent>
-                    </Card>
-
-                    {/* Smart Actions & Recommendations */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <Card className="h-full">
-                            <CardHeader>
-                                <CardTitle className="flex items-center gap-2 text-xl text-primary">
-                                    <Target className="h-6 w-6" />
-                                    Performance Insights
-                                </CardTitle>
-                                <CardDescription>Key strengths and indicators</CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                {result.insights.map((insight, index) => (
-                                    <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
-                                        <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                                        <span className="text-sm font-medium">{insight}</span>
-                                    </div>
-                                ))}
-                            </CardContent>
-                        </Card>
-
-                        <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
-                            <CardHeader>
-                                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
-                                    <AlertCircle className="h-6 w-6" />
-                                    Important Considerations
-                                </CardTitle>
-                                <CardDescription>Factors affecting accuracy</CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                {result.considerations.map((consideration, index) => (
-                                    <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
-                                        <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
-                                        <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
-                                    </div>
-                                ))}
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
-            )}
+            <StrikeRateCalculatorInteractive />
 
             {/* Understanding the Inputs */}
             <Card className="mb-6">
@@ -380,7 +87,7 @@ export default function StrikeRateCalculator() {
                         </p>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2">
-                        Measures a batsman's scoring speed by calculating the number of runs scored per 100 balls faced. A higher strike rate indicates faster scoring and more aggressive batting.
+                        Measures a batsman&apos;s scoring speed by calculating the number of runs scored per 100 balls faced. A higher strike rate indicates faster scoring and more aggressive batting.
                     </p>
                 </CardContent>
             </Card>
@@ -490,14 +197,14 @@ export default function StrikeRateCalculator() {
                 <meta itemProp="datePublished" content="2026-02-09" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Cricket Strike Rate: Measuring Scoring Speed and Impact</h2>
-                <p className="text-lg italic text-muted-foreground">Master the essential metric that defines a batsman's scoring speed, aggression, and value in modern cricket, especially in limited-overs formats.</p>
+                <p className="text-lg italic text-muted-foreground">Master the essential metric that defines a batsman&apos;s scoring speed, aggression, and value in modern cricket, especially in limited-overs formats.</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is Strike Rate in Cricket?</a></li>
                     <li><a href="#calculation" className="hover:underline">How to Calculate Strike Rate</a></li>
-                    <li><a href="#interpretation" className="hover:underline">Interpreting Strike Rate: What's Good?</a></li>
+                    <li><a href="#interpretation" className="hover:underline">Interpreting Strike Rate: What&apos;s Good?</a></li>
                     <li><a href="#formats" className="hover:underline">Format-Specific Benchmarks (Test, ODI, T20)</a></li>
                     <li><a href="#comparison" className="hover:underline">Strike Rate vs Batting Average</a></li>
                     <li><a href="#improvement" className="hover:underline">Strategies to Improve Strike Rate</a></li>
@@ -555,7 +262,7 @@ export default function StrikeRateCalculator() {
                 <hr />
 
                 {/* INTERPRETATION */}
-                <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8">Interpreting Strike Rate: What's Considered Good?</h2>
+                <h2 id="interpretation" className="text-2xl font-bold text-foreground pt-8">Interpreting Strike Rate: What&apos;s Considered Good?</h2>
 
                 <p>The interpretation of strike rate varies dramatically by format:</p>
 
@@ -668,11 +375,11 @@ export default function StrikeRateCalculator() {
 
                 {/* CONCLUSION */}
                 <h2 className="text-2xl font-bold text-foreground pt-8">Conclusion</h2>
-                <p>Strike rate has become one of cricket's most important statistics, especially in the modern era of limited-overs cricket. While batting average measures consistency, strike rate measures impact and scoring speed.</p>
+                <p>Strike rate has become one of cricket&apos;s most important statistics, especially in the modern era of limited-overs cricket. While batting average measures consistency, strike rate measures impact and scoring speed.</p>
 
-                <p>Understanding strike rate, its calculation, and format-specific benchmarks is essential for players, coaches, and fans. When used alongside batting average, strike rate provides a complete picture of a batsman's value and effectiveness.</p>
+                <p>Understanding strike rate, its calculation, and format-specific benchmarks is essential for players, coaches, and fans. When used alongside batting average, strike rate provides a complete picture of a batsman&apos;s value and effectiveness.</p>
 
-                <p>Whether you're a player looking to improve your scoring rate, a coach analyzing performance, or a fan evaluating players, the strike rate calculator and this guide provide the tools and knowledge for comprehensive cricket analysis.</p>
+                <p>Whether you&apos;re a player looking to improve your scoring rate, a coach analyzing performance, or a fan evaluating players, the strike rate calculator and this guide provide the tools and knowledge for comprehensive cricket analysis.</p>
             </section>
 
             {/* FAQ Section */}
@@ -710,7 +417,7 @@ export default function StrikeRateCalculator() {
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What's the difference between strike rate and run rate?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What&apos;s the difference between strike rate and run rate?</h4>
                             <p className="text-muted-foreground">
                                 Strike rate measures individual batsman performance (runs per 100 balls faced), while run rate measures team scoring speed (runs per over). Strike rate is a batsman statistic, run rate is a team statistic.
                             </p>
@@ -745,7 +452,7 @@ export default function StrikeRateCalculator() {
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What's a good strike rate for an opener?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What&apos;s a good strike rate for an opener?</h4>
                             <p className="text-muted-foreground">
                                 In Tests, 50-60 is good for openers. In ODIs, 85-100 is expected. In T20s, openers should aim for 130-150+, especially during powerplay overs when field restrictions favor aggressive batting.
                             </p>
@@ -798,15 +505,15 @@ export default function StrikeRateCalculator() {
                             <div className="space-y-3">
                                 <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                                     <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                                    <span><strong>Doesn't Measure Consistency:</strong> A high strike rate with low average indicates reckless batting. Both metrics should be considered together.</span>
+                                    <span><strong>Depends on Context:</strong> A high strike rate isn&apos;t always needed. Playing according to the situation is more important than raw numbers.</span>
                                 </div>
                                 <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                                     <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                                    <span><strong>Context Matters:</strong> Strike rate expectations vary by format, batting position, match situation, and pitch conditions.</span>
+                                    <span><strong>Ignores Consistency:</strong> Strike rate doesn&apos;t tell you how often a player scores. Check batting average for consistency.</span>
                                 </div>
                                 <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                                     <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                                    <span><strong>Small Sample Size:</strong> Strike rate from a single innings can be misleading. Evaluate over multiple matches for accuracy.</span>
+                                    <span><strong>Doesn&apos;t Show Impact:</strong> A 20-run cameo at 200 strike rate might be less valuable than a match-winning 80 at 130 strike rate.</span>
                                 </div>
                             </div>
                         </div>
@@ -816,18 +523,53 @@ export default function StrikeRateCalculator() {
                             <div className="space-y-4">
                                 <div className="p-4 bg-muted/50 rounded-lg">
                                     <p className="text-sm text-muted-foreground">
-                                        <strong className="text-foreground">Example 1 - T20 Explosive Innings:</strong> A batsman scores 85 runs off 50 balls in a T20 match. Strike Rate = (85 / 50) × 100 = 170. This is an exceptional T20 strike rate, indicating explosive batting that likely won the match for their team.
+                                        <strong className="text-foreground">Example 1 - T20 Blitz:</strong> A batsman scores 45 runs off 20 balls. Strike Rate = (45 / 20) × 100 = 225.00. This is an explosive innings, perfect for finishing games.
                                     </p>
                                 </div>
                                 <div className="p-4 bg-muted/50 rounded-lg">
                                     <p className="text-sm text-muted-foreground">
-                                        <strong className="text-foreground">Example 2 - ODI Balanced Innings:</strong> A batsman scores 95 runs off 105 balls in an ODI. Strike Rate = (95 / 105) × 100 = 90.48. This is a good ODI strike rate, showing a balance between accumulation and acceleration.
+                                        <strong className="text-foreground">Example 2 - ODI Anchor:</strong> A batsman scores 85 runs off 95 balls. Strike Rate = (85 / 95) × 100 = 89.47. This is a solid anchor innings in an ODI.
                                     </p>
                                 </div>
                                 <div className="p-4 bg-muted/50 rounded-lg">
                                     <p className="text-sm text-muted-foreground">
-                                        <strong className="text-foreground">Example 3 - Test Match Aggression:</strong> A Test batsman scores 120 runs off 150 balls. Strike Rate = (120 / 150) × 100 = 80. This is an aggressive Test cricket strike rate, showing positive intent while building a substantial innings.
+                                        <strong className="text-foreground">Example 3 - Test Matches:</strong> A batsman scores 60 runs off 120 balls. Strike Rate = (60 / 120) × 100 = 50.00. This is a typical, patient Test match innings.
                                     </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+            {/* Usage Section */}
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Users className="h-5 w-5" />
+                        <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="space-y-6">
+                        <div>
+                            <h3 className="font-semibold text-lg mb-3">Who Should Use This Calculator?</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Batsmen</strong>
+                                    <span className="text-sm text-muted-foreground">Monitor scoring speed and adapt play style.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Coaches</strong>
+                                    <span className="text-sm text-muted-foreground">Set strike rate targets for different match phases.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Fans</strong>
+                                    <span className="text-sm text-muted-foreground">Compare T20 power-hitters objectively.</span>
+                                </div>
+                                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                                    <strong className="block text-primary mb-1">Analysts</strong>
+                                    <span className="text-sm text-muted-foreground">Evaluate match-winning impact beyond just runs.</span>
                                 </div>
                             </div>
                         </div>
@@ -843,10 +585,10 @@ export default function StrikeRateCalculator() {
                         <div>
                             <h2 className="font-semibold text-lg mb-2">Summary</h2>
                             <p className="text-sm text-muted-foreground">
-                                The Strike Rate Calculator measures a cricket batsman's scoring speed by calculating runs scored per 100 balls faced.
+                                The Cricket Strike Rate Calculator helps you measure batting aggression and scoring speed by calculating runs per 100 balls.
                             </p>
                             <p className="text-sm text-muted-foreground mt-2">
-                                It is especially important in limited-overs cricket (ODI and T20) where scoring quickly is as valuable as scoring consistently.
+                                It provides insights into a player&apos;s impact in different formats, helping players and coaches set targets and improve performance.
                             </p>
                         </div>
                     </div>

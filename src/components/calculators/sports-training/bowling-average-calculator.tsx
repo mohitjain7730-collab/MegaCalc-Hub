@@ -1,141 +1,9 @@
-'use client';
-
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Target, TrendingUp, AlertCircle, Info, Calculator, BarChart3, Shield, FunctionSquare, CheckCircle2, Users, Briefcase, AlertTriangle, Activity, Zap } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
-
-const formSchema = z.object({
-  runsConceded: z.number().min(0),
-  wicketsTaken: z.number().min(0),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Target, AlertCircle, Info, Calculator, BarChart3, FunctionSquare, CheckCircle2, Zap, Activity, TrendingUp, Users } from 'lucide-react';
+import BowlingAverageCalculatorInteractive from './bowling-average-calculator-interactive';
 
 export default function BowlingAverageCalculator() {
-  const [result, setResult] = useState<{
-    average: number;
-    interpretation: string;
-    performanceLevel: string;
-    recommendation: string;
-    rating: string;
-    insights: string[];
-    considerations: string[];
-  } | null>(null);
-
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      runsConceded: undefined,
-      wicketsTaken: undefined,
-    },
-  });
-
-  const calculate = (v: FormValues) => {
-    if (v.runsConceded == null || v.wicketsTaken == null) return null;
-    if (v.wicketsTaken === 0) return Infinity; // No wickets scenario
-    return v.runsConceded / v.wicketsTaken;
-  };
-
-  const interpret = (avg: number) => {
-    if (avg === Infinity) return 'No wickets taken - unable to calculate average.';
-    if (avg <= 20) return 'World-class bowling performance with exceptional wicket-taking ability.';
-    if (avg <= 25) return 'Elite bowling average indicating top-tier performance.';
-    if (avg <= 30) return 'Strong bowling performance with good consistency.';
-    if (avg <= 35) return 'Moderate bowling average - acceptable performance.';
-    return 'Below-average bowling performance - requires improvement.';
-  };
-
-  const getPerformanceLevel = (avg: number) => {
-    if (avg === Infinity) return 'No Wickets';
-    if (avg <= 20) return 'World Class';
-    if (avg <= 25) return 'Elite';
-    if (avg <= 30) return 'Good';
-    if (avg <= 35) return 'Average';
-    return 'Below Average';
-  };
-
-  const getRecommendation = (avg: number) => {
-    if (avg === Infinity) return 'Focus on taking wickets. Work on variations and attacking lines.';
-    if (avg <= 20) return 'Maintain current form and continue attacking the stumps.';
-    if (avg <= 25) return 'Excellent performance. Focus on consistency in pressure situations.';
-    if (avg <= 30) return 'Work on variations and wicket-taking deliveries.';
-    if (avg <= 35) return 'Improve line, length, and develop more attacking options.';
-    return 'Fundamental technical work needed. Focus on basics and match awareness.';
-  };
-
-  const getRating = (avg: number) => {
-    if (avg === Infinity) return 'Needs Wickets';
-    if (avg <= 20) return 'Outstanding';
-    if (avg <= 25) return 'Excellent';
-    if (avg <= 30) return 'Good';
-    if (avg <= 35) return 'Fair';
-    return 'Needs Improvement';
-  };
-
-  const getInsights = (avg: number) => {
-    const insights = [];
-    if (avg === Infinity) {
-      insights.push('No wickets taken in the period');
-      insights.push('Focus on attacking bowling');
-      insights.push('Work with coach on wicket-taking strategies');
-    } else if (avg <= 20) {
-      insights.push('Exceptional wicket-taking ability');
-      insights.push('High consistency and effectiveness');
-      insights.push('Match-winning bowling capability');
-    } else if (avg <= 25) {
-      insights.push('Strong technical foundation');
-      insights.push('Reliable strike bowler');
-      insights.push('Good control under pressure');
-    } else if (avg <= 30) {
-      insights.push('Solid bowling foundation');
-      insights.push('Capable of regular breakthroughs');
-      insights.push('Potential for higher performance');
-    } else if (avg <= 35) {
-      insights.push('Developing bowling skills');
-      insights.push('Inconsistent wicket-taking');
-      insights.push('Requires tactical refinement');
-    } else {
-      insights.push('Significant improvement needed');
-      insights.push('Focus on basic technique');
-      insights.push('Build confidence through practice');
-    }
-    return insights;
-  };
-
-  const getConsiderations = (avg: number) => {
-    const considerations = [];
-    considerations.push('Format of cricket affects average (Test vs ODI vs T20)');
-    considerations.push('Quality of opposition batting impacts statistics');
-    considerations.push('Pitch and weather conditions vary significantly');
-    considerations.push('Role as strike bowler vs stock bowler matters');
-    considerations.push('Tail-end wickets can artificially lower average');
-    return considerations;
-  };
-
-  const onSubmit = (values: FormValues) => {
-    const avg = calculate(values);
-    if (avg !== null) {
-      setResult({
-        average: avg,
-        interpretation: interpret(avg),
-        performanceLevel: getPerformanceLevel(avg),
-        recommendation: getRecommendation(avg),
-        rating: getRating(avg),
-        insights: getInsights(avg),
-        considerations: getConsiderations(avg)
-      });
-    }
-  };
-
   return (
     <div className="space-y-8">
       {/* SEO-Optimized Header */}
@@ -146,184 +14,7 @@ export default function BowlingAverageCalculator() {
         </p>
       </div>
 
-      {/* Input Form */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5" />
-            <h2 className="text-xl font-semibold">Bowling Statistics</h2>
-          </CardTitle>
-          <CardDescription>
-            Enter runs conceded and wickets taken to calculate bowling average
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="runsConceded"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-2">
-                        <AlertCircle className="h-4 w-4" />
-                        Total Runs Conceded
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          step="1"
-                          placeholder="e.g., 850"
-                          {...field}
-                          value={field.value ?? ''}
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="wicketsTaken"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-2">
-                        <Zap className="h-4 w-4" />
-                        Total Wickets Taken
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          step="1"
-                          placeholder="e.g., 35"
-                          {...field}
-                          value={field.value ?? ''}
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                <Calculator className="mr-2 h-4 w-4" />
-                Calculate Bowling Average
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-
-      {/* Results */}
-      {result && result.average !== Infinity && (
-        <div className="space-y-6">
-          {/* Main Result Card */}
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Activity className="h-8 w-8 text-primary" />
-                <div>
-                  <h2 className="text-2xl font-bold">Bowling Average</h2>
-                  <p className="text-muted-foreground">Performance Analysis</p>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="text-center">
-                <p className="text-4xl font-bold text-primary">{result.average.toFixed(2)}</p>
-                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <Shield className="h-6 w-6 mx-auto mb-2 text-blue-600" />
-                  <p className="font-semibold">Performance Level</p>
-                  <Badge variant={result.performanceLevel === 'World Class' ? 'default' : result.performanceLevel === 'Elite' ? 'secondary' : result.performanceLevel === 'Good' ? 'outline' : 'destructive'}>
-                    {result.performanceLevel}
-                  </Badge>
-                </div>
-                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <TrendingUp className="h-6 w-6 mx-auto mb-2 text-green-600" />
-                  <p className="font-semibold">Overall Rating</p>
-                  <Badge variant={result.rating === 'Outstanding' ? 'default' : result.rating === 'Excellent' ? 'secondary' : result.rating === 'Good' ? 'outline' : 'destructive'}>
-                    {result.rating}
-                  </Badge>
-                </div>
-                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <BarChart3 className="h-6 w-6 mx-auto mb-2 text-purple-600" />
-                  <p className="font-semibold">Runs Per Wicket</p>
-                  <p className="text-lg font-bold">{result.average.toFixed(1)}</p>
-                </div>
-              </div>
-
-              <Alert>
-                <Info className="h-4 w-4" />
-                <AlertDescription>
-                  <strong>Recommendation:</strong> {result.recommendation}
-                </AlertDescription>
-              </Alert>
-            </CardContent>
-          </Card>
-
-          {/* Smart Actions & Recommendations */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl text-primary">
-                  <Target className="h-6 w-6" />
-                  Performance Insights
-                </CardTitle>
-                <CardDescription>Key strengths and indicators</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {result.insights.map((insight, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                    <span className="text-sm font-medium">{insight}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
-                  <AlertCircle className="h-6 w-6" />
-                  Important Considerations
-                </CardTitle>
-                <CardDescription>Factors affecting accuracy</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {result.considerations.map((consideration, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
-                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
-                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      )}
-
-      {result && result.average === Infinity && (
-        <Card className="border-amber-200 bg-amber-50/50 dark:border-amber-900/20 dark:bg-amber-900/5">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-amber-700 dark:text-amber-400">
-              <AlertCircle className="h-6 w-6" />
-              No Wickets Taken
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              Bowling average cannot be calculated when no wickets have been taken. Focus on developing wicket-taking deliveries and attacking bowling strategies.
-            </p>
-          </CardContent>
-        </Card>
-      )}
+      <BowlingAverageCalculatorInteractive />
 
       {/* Understanding the Inputs */}
       <Card className="mb-6">
@@ -491,7 +182,7 @@ export default function BowlingAverageCalculator() {
         </CardContent>
       </Card>
 
-      {/* Complete Guide Section - Part 1 */}
+      {/* Complete Guide Section */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Article">
         <meta itemProp="name" content="The Complete Guide to Cricket Bowling Average: Calculation, Interpretation, and Performance Analysis" />
         <meta itemProp="description" content="An expert guide to understanding bowling average in cricket, including calculation methods, performance benchmarks, format-specific variations, and how it compares to other bowling metrics like economy rate and strike rate." />
@@ -802,158 +493,70 @@ export default function BowlingAverageCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">How is bowling average calculated?</h4>
               <p className="text-muted-foreground">
-                Bowling average is calculated by dividing total runs conceded by the number of wickets taken. The formula is: Bowling Average = Runs Conceded / Wickets Taken. This includes all runs scored off the bowler's deliveries, including wides and no-balls, but excludes byes and leg-byes.
+                Bowling average is calculated by dividing total runs conceded by total wickets taken. The formula is: Bowling Average = Runs / Wickets. A lower number is better, as it means the bowler concedes fewer runs for each wicket.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-lg mb-3">What's the difference between bowling average and economy rate?</h4>
+              <h4 className="font-semibold text-lg mb-3">Does bowling average include byes and leg-byes?</h4>
               <p className="text-muted-foreground">
-                Bowling average measures runs conceded per wicket (wicket-taking efficiency), while economy rate measures runs conceded per over (run containment). Average is more important in Test cricket, while economy rate is crucial in T20s. Both are important in ODI cricket for evaluating a bowler's overall effectiveness.
+                No. Byes and leg-byes are credited to the batting team as "extras" and debited against the wicketkeeper or fielders, but they do NOT count as runs conceded by the bowler. Only runs off the bat, wides, and no-balls count against the bowler's average.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-lg mb-3">Who has the best bowling average in cricket history?</h4>
+              <h4 className="font-semibold text-lg mb-3">What is the difference between bowling average and economy rate?</h4>
               <p className="text-muted-foreground">
-                In Test cricket, several bowlers have averages under 21, including Malcolm Marshall (20.94), Dale Steyn (22.95), and Richard Hadlee (22.29). In ODI cricket, Joel Garner has an exceptional average of 18.84. In T20 internationals, several bowlers maintain averages in the low 20s.
+                Bowling average measures wickets (runs per wicket), while economy rate measures runs (runs per over). A bowler can have a great (low) average but poor (high) economy if they take many wickets but are expensive. Conversely, a bowler can be economical but rarely take wickets.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-lg mb-3">Does bowling position affect bowling average?</h4>
+              <h4 className="font-semibold text-lg mb-3">Does a run out count as a wicket for the bowler?</h4>
               <p className="text-muted-foreground">
-                Yes. Opening bowlers often face the best batsmen with a new ball, which can affect their average. Death bowlers in limited-overs cricket typically have higher averages as they bowl when batsmen attack. Spin bowlers in the middle overs may have better averages as they exploit tired batsmen and deteriorating pitches.
+                No. Run outs are considered team dismissals and are executed by fielders. They satisfy the "Dismissed" condition for the batsman's batting average, but are NOT credited to the bowler's wicket tally for bowling average calculations.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-lg mb-3">Can tail-end wickets inflate bowling statistics?</h4>
+              <h4 className="font-semibold text-lg mb-3">Who has the best bowling average in history?</h4>
               <p className="text-muted-foreground">
-                Yes, dismissing lower-order batsmen (numbers 8-11) who are typically weaker can artificially improve a bowler's average. This is why analysts often look at wickets of top-order batsmen separately. The best bowlers consistently dismiss quality batsmen, not just tail-enders.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-3">How many wickets are needed for a meaningful bowling average?</h4>
-              <p className="text-muted-foreground">
-                Generally, at least 20-30 wickets are needed before a bowling average becomes statistically meaningful. For international cricket, bowlers are typically evaluated after 20-30 matches. Small sample sizes can produce misleading averages—a bowler with 5 wickets for 80 runs (average 16) hasn't proven consistency.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-3">What if a bowler hasn't taken any wickets?</h4>
-              <p className="text-muted-foreground">
-                If a bowler has conceded runs but taken no wickets, their bowling average is technically infinite (or undefined). This situation occurs with new bowlers or those having a wicketless spell. The average can only be calculated once at least one wicket is taken.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-3">How do pitch conditions affect bowling average?</h4>
-              <p className="text-muted-foreground">
-                Pitch conditions significantly impact bowling averages. Green, seaming pitches favor pace bowlers and lower their averages. Dry, dusty pitches assist spin bowlers. Flat, batting-friendly pitches inflate bowling averages. When comparing bowlers, consider home vs. away averages and the conditions they typically bowl in.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-3">Is a low bowling average always good?</h4>
-              <p className="text-muted-foreground">
-                Generally yes, but context matters. In T20 cricket, a bowler with an average of 20 but an economy rate of 10 may be less valuable than one with an average of 25 and economy of 7, as containing runs is crucial. The best bowlers balance low average with good economy and strike rate across all formats.
+                George Lohmann (England) holds the best Test bowling average (minimum 2000 balls) at 10.75. In modern times, bowlers like Malcolm Marshall, Joel Garner, Glenn McGrath, and Dale Steyn have maintained exceptional averages around 20-22 over long careers.
               </p>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Usage of this Calculator */}
-      <Card className="mb-6">
+      {/* Usage Section */}
+      <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Briefcase className="h-5 w-5" />
+            <Users className="h-5 w-5" />
             <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
           </CardTitle>
-          <CardDescription>
-            Practical applications and real-world context
-          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-              <Users className="h-5 w-5 text-blue-600" />
-              Who Should Use This Calculator?
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                <strong className="block text-primary mb-1">Cricket Bowlers</strong>
-                <span className="text-sm text-muted-foreground">Track your wicket-taking efficiency across seasons, formats, and competitions to identify areas for improvement.</span>
-              </div>
-              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                <strong className="block text-primary mb-1">Coaches & Selectors</strong>
-                <span className="text-sm text-muted-foreground">Evaluate bowler performance objectively when making team selection decisions or planning bowling strategies.</span>
-              </div>
-              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                <strong className="block text-primary mb-1">Cricket Analysts</strong>
-                <span className="text-sm text-muted-foreground">Analyze bowler statistics for commentary, articles, or fantasy cricket team selection.</span>
-              </div>
-              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                <strong className="block text-primary mb-1">Cricket Fans</strong>
-                <span className="text-sm text-muted-foreground">Better understand bowler performance and compare bowlers across different eras and formats.</span>
-              </div>
-            </div>
-          </div>
-
-          <hr className="border-border/50" />
-
-          <div>
-            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-              <AlertTriangle className="h-5 w-5 text-amber-600" />
-              Limitations & When It May Be Misleading
-            </h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Tail-End Wickets:</strong> Bowlers who frequently dismiss lower-order batsmen (numbers 8-11) can have artificially low averages. These wickets are easier to obtain than dismissing top-order batsmen.</span>
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Small Sample Size:</strong> Averages based on fewer than 20-30 wickets can be highly volatile. A few good or bad performances can skew the average significantly.</span>
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Ignores Economy:</strong> In limited-overs cricket, a bowler with a low average but high economy rate (conceding many runs) may be less valuable than one with a slightly higher average but excellent economy.</span>
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Opposition Quality:</strong> Bowling average doesn't distinguish between wickets against strong vs. weak batting lineups. A bowler with a low average against weak teams may struggle against quality opposition.</span>
-              </li>
-            </ul>
-          </div>
-
-          <hr className="border-border/50" />
-
-          <div>
-            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-              <Activity className="h-5 w-5 text-green-600" />
-              Real-World Examples
-            </h4>
-            <div className="space-y-3">
-              <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-                <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example A: Test Match Specialist</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">
-                  A pace bowler concedes 1,200 runs and takes 55 wickets in 15 Test matches. Average = 1200 / 55 = 21.82. This is world-class for Test cricket, indicating exceptional wicket-taking ability and control. Such a bowler would be a key strike weapon for their team.
-                </p>
-              </div>
-              <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-                <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example B: T20 Death Bowler</h5>
-                <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                  A T20 specialist concedes 600 runs and takes 25 wickets in 30 matches. Average = 600 / 25 = 24.00. While this is a good average, if their economy rate is 8.5 (acceptable for death overs), they're valuable despite the moderate average, as death bowling is the hardest role.
-                </p>
-              </div>
-              <div className="p-4 rounded-lg bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20">
-                <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-1">Example C: Spin Bowler in Favorable Conditions</h5>
-                <p className="text-sm text-purple-700/80 dark:text-purple-400">
-                  A spin bowler playing primarily at home on turning pitches concedes 800 runs and takes 50 wickets. Average = 800 / 50 = 16.00. While this appears exceptional, it's important to check their away average—if it's significantly higher (e.g., 35), they may be pitch-dependent.
-                </p>
+        <CardContent>
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-lg mb-3">Who Should Use This Calculator?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <strong className="block text-primary mb-1">Bowlers</strong>
+                  <span className="text-sm text-muted-foreground">Track your wicket-taking efficiency over the season.</span>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <strong className="block text-primary mb-1">Selectors</strong>
+                  <span className="text-sm text-muted-foreground">Compare bowlers based on raw wicket-taking ability.</span>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <strong className="block text-primary mb-1">Statisticians</strong>
+                  <span className="text-sm text-muted-foreground">Maintain accurate records for tournaments and leagues.</span>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <strong className="block text-primary mb-1">Cricket Fans</strong>
+                  <span className="text-sm text-muted-foreground">Debate who the best bowler is with hard data.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -961,17 +564,20 @@ export default function BowlingAverageCalculator() {
       </Card>
 
       {/* Summary */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            <h2 className="text-xl font-semibold">Summary</h2>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Bowling Average Calculator measures a cricket bowler's efficiency by calculating the average runs conceded per wicket taken.</p>
-          <p>It is one of the most important metrics in cricket for evaluating bowling performance across all formats.</p>
-          <p>Use this tool to track your progress, compare bowlers, and make informed decisions about team selection and bowling strategies.</p>
+      <Card className="bg-primary/5 border-primary/20">
+        <CardContent className="pt-6">
+          <div className="flex items-start gap-4">
+            <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
+            <div>
+              <h2 className="font-semibold text-lg mb-2">Summary</h2>
+              <p className="text-sm text-muted-foreground">
+                The Bowling Average Calculator helps quantify a bowler's effectiveness by calculating runs conceded per wicket.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                It is a key performance indicator used alongside economy rate and strike rate to evaluate bowling talent at all levels of the game.
+              </p>
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>

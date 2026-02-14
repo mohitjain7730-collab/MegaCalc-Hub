@@ -1,133 +1,9 @@
-'use client';
-
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trophy, TrendingUp, AlertCircle, Target, Info, Calculator, BarChart3, Shield, FunctionSquare, CheckCircle2, Users, Briefcase, AlertTriangle, Activity } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
-
-const formSchema = z.object({
-  runsScored: z.number().min(0),
-  timesOut: z.number().min(0),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Trophy, AlertCircle, Info, Calculator, BarChart3, FunctionSquare, CheckCircle2, Activity, TrendingUp, Target, Users } from 'lucide-react';
+import BattingAverageCalculatorInteractive from './batting-average-calculator-interactive';
 
 export default function BattingAverageCalculator() {
-  const [result, setResult] = useState<{
-    average: number;
-    interpretation: string;
-    performanceLevel: string;
-    recommendation: string;
-    rating: string;
-    insights: string[];
-    considerations: string[];
-  } | null>(null);
-
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      runsScored: undefined,
-      timesOut: undefined,
-    },
-  });
-
-  const calculate = (v: FormValues) => {
-    if (v.runsScored == null || v.timesOut == null) return null;
-    if (v.timesOut === 0) return v.runsScored; // Not out scenario
-    return v.runsScored / v.timesOut;
-  };
-
-  const interpret = (avg: number) => {
-    if (avg >= 50) return 'World-class batting performance with exceptional consistency.';
-    if (avg >= 40) return 'Elite batting average indicating top-tier performance.';
-    if (avg >= 30) return 'Strong batting performance with good consistency.';
-    if (avg >= 20) return 'Moderate batting average - room for improvement.';
-    return 'Below-average performance - requires significant improvement.';
-  };
-
-  const getPerformanceLevel = (avg: number) => {
-    if (avg >= 50) return 'World Class';
-    if (avg >= 40) return 'Elite';
-    if (avg >= 30) return 'Good';
-    if (avg >= 20) return 'Average';
-    return 'Below Average';
-  };
-
-  const getRecommendation = (avg: number) => {
-    if (avg >= 50) return 'Maintain current form and focus on converting starts into big scores.';
-    if (avg >= 40) return 'Excellent performance. Work on consistency in pressure situations.';
-    if (avg >= 30) return 'Focus on shot selection and building longer innings.';
-    if (avg >= 20) return 'Work on technique and temperament to improve consistency.';
-    return 'Fundamental technical work needed. Focus on basics and match awareness.';
-  };
-
-  const getRating = (avg: number) => {
-    if (avg >= 50) return 'Outstanding';
-    if (avg >= 40) return 'Excellent';
-    if (avg >= 30) return 'Good';
-    if (avg >= 20) return 'Fair';
-    return 'Needs Improvement';
-  };
-
-  const getInsights = (avg: number) => {
-    const insights = [];
-    if (avg >= 50) {
-      insights.push('Exceptional run-scoring ability');
-      insights.push('High consistency and reliability');
-      insights.push('Match-winning capability');
-    } else if (avg >= 40) {
-      insights.push('Strong technical foundation');
-      insights.push('Reliable middle-order performer');
-      insights.push('Good temperament under pressure');
-    } else if (avg >= 30) {
-      insights.push('Solid batting foundation');
-      insights.push('Capable of building partnerships');
-      insights.push('Potential for higher performance');
-    } else if (avg >= 20) {
-      insights.push('Developing batting skills');
-      insights.push('Inconsistent performance patterns');
-      insights.push('Requires technical refinement');
-    } else {
-      insights.push('Significant improvement needed');
-      insights.push('Focus on basic technique');
-      insights.push('Build confidence through practice');
-    }
-    return insights;
-  };
-
-  const getConsiderations = (avg: number) => {
-    const considerations = [];
-    considerations.push('Format of cricket affects average (Test vs ODI vs T20)');
-    considerations.push('Quality of opposition impacts statistics');
-    considerations.push('Pitch and weather conditions vary significantly');
-    considerations.push('Role in batting order affects expectations');
-    considerations.push('Not-out innings inflate the average');
-    return considerations;
-  };
-
-  const onSubmit = (values: FormValues) => {
-    const avg = calculate(values);
-    if (avg !== null) {
-      setResult({
-        average: avg,
-        interpretation: interpret(avg),
-        performanceLevel: getPerformanceLevel(avg),
-        recommendation: getRecommendation(avg),
-        rating: getRating(avg),
-        insights: getInsights(avg),
-        considerations: getConsiderations(avg)
-      });
-    }
-  };
-
   return (
     <div className="space-y-8">
       {/* SEO-Optimized Header */}
@@ -138,168 +14,7 @@ export default function BattingAverageCalculator() {
         </p>
       </div>
 
-      {/* Input Form */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5" />
-            <h2 className="text-xl font-semibold">Batting Statistics</h2>
-          </CardTitle>
-          <CardDescription>
-            Enter your runs scored and times dismissed to calculate batting average
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="runsScored"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-2">
-                        <Trophy className="h-4 w-4" />
-                        Total Runs Scored
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          step="1"
-                          placeholder="e.g., 1250"
-                          {...field}
-                          value={field.value ?? ''}
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="timesOut"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-2">
-                        <AlertCircle className="h-4 w-4" />
-                        Times Dismissed
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          step="1"
-                          placeholder="e.g., 30"
-                          {...field}
-                          value={field.value ?? ''}
-                          onChange={e => field.onChange(parseFloat(e.target.value) || undefined)}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                <Calculator className="mr-2 h-4 w-4" />
-                Calculate Batting Average
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-
-      {/* Results */}
-      {result && (
-        <div className="space-y-6">
-          {/* Main Result Card */}
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4">
-                <Trophy className="h-8 w-8 text-primary" />
-                <div>
-                  <h2 className="text-2xl font-bold">Batting Average</h2>
-                  <p className="text-muted-foreground">Performance Analysis</p>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="text-center">
-                <p className="text-4xl font-bold text-primary">{result.average.toFixed(2)}</p>
-                <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <Shield className="h-6 w-6 mx-auto mb-2 text-blue-600" />
-                  <p className="font-semibold">Performance Level</p>
-                  <Badge variant={result.performanceLevel === 'World Class' ? 'default' : result.performanceLevel === 'Elite' ? 'secondary' : result.performanceLevel === 'Good' ? 'outline' : 'destructive'}>
-                    {result.performanceLevel}
-                  </Badge>
-                </div>
-                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <TrendingUp className="h-6 w-6 mx-auto mb-2 text-green-600" />
-                  <p className="font-semibold">Overall Rating</p>
-                  <Badge variant={result.rating === 'Outstanding' ? 'default' : result.rating === 'Excellent' ? 'secondary' : result.rating === 'Good' ? 'outline' : 'destructive'}>
-                    {result.rating}
-                  </Badge>
-                </div>
-                <div className="text-center p-4 bg-muted/50 rounded-lg">
-                  <BarChart3 className="h-6 w-6 mx-auto mb-2 text-purple-600" />
-                  <p className="font-semibold">Runs Per Dismissal</p>
-                  <p className="text-lg font-bold">{result.average.toFixed(1)}</p>
-                </div>
-              </div>
-
-              <Alert>
-                <Info className="h-4 w-4" />
-                <AlertDescription>
-                  <strong>Recommendation:</strong> {result.recommendation}
-                </AlertDescription>
-              </Alert>
-            </CardContent>
-          </Card>
-
-          {/* Smart Actions & Recommendations */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl text-primary">
-                  <Target className="h-6 w-6" />
-                  Performance Insights
-                </CardTitle>
-                <CardDescription>Key strengths and indicators</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {result.insights.map((insight, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                    <span className="text-sm font-medium">{insight}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <Card className="h-full border-red-100 bg-red-50/10 dark:border-red-900/20 dark:bg-red-900/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl text-red-600 dark:text-red-400">
-                  <AlertCircle className="h-6 w-6" />
-                  Important Considerations
-                </CardTitle>
-                <CardDescription>Factors affecting accuracy</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {result.considerations.map((consideration, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
-                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
-                    <span className="text-sm font-medium text-red-800 dark:text-red-300">{consideration}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      )}
+      <BattingAverageCalculatorInteractive />
 
       {/* Understanding the Inputs */}
       <Card className="mb-6">
@@ -799,137 +514,42 @@ export default function BattingAverageCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">Does batting position affect batting average?</h4>
               <p className="text-muted-foreground">
-                Yes, significantly. Top-order batsmen (1-3) typically face more balls and have more opportunities to score, but also face fresh bowlers. Middle-order batsmen (4-6) often bat in pressure situations. Lower-order batsmen (7-11) frequently remain not out, which can inflate their averages. When comparing players, consider their batting position.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-3">How many innings are needed for a meaningful batting average?</h4>
-              <p className="text-muted-foreground">
-                Generally, at least 20 innings (or 10 dismissals) are needed before a batting average becomes statistically meaningful. For international cricket, players are typically evaluated after 20-30 matches. Small sample sizes can produce misleading averages—a player with 100 runs in 2 dismissals (average 50) hasn't proven consistency.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-3">Can batting average be too high?</h4>
-              <p className="text-muted-foreground">
-                In Test cricket, a very high average is always positive. However, in limited-overs cricket, an extremely high average combined with a very low strike rate might indicate overly cautious batting that doesn't help the team win. Modern cricket values batsmen who balance average with strike rate—scoring runs both consistently AND quickly.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-3">How do pitch conditions affect batting average?</h4>
-              <p className="text-muted-foreground">
-                Pitch conditions significantly impact batting averages. Flat, hard pitches with true bounce favor batsmen and inflate averages. Green, seaming pitches or dusty, turning pitches make batting difficult and lower averages. When comparing players, consider where they played—home averages vs. away averages often differ significantly.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-3">What's the difference between career average and current form?</h4>
-              <p className="text-muted-foreground">
-                Career average is calculated across all innings in a player's career, providing a long-term measure of consistency. Current form is typically measured by average over the last 10-20 innings or the current season. A player's career average may be 40, but if their recent average is 25, they're in poor form. Both metrics are important for team selection.
+                Yes. Top-order batsmen (1-4) typically have higher averages because they face the best batting conditions and have more time to build innings. Lower-order batsmen (7-11) often have lower averages due to fewer opportunities, though frequent not-outs can artificially inflate their averages (the "finisher's advantage").
               </p>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Usage of this Calculator */}
-      <Card className="mb-6">
+      {/* Usage Section */}
+      <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Briefcase className="h-5 w-5" />
+            <Users className="h-5 w-5" />
             <h2 className="text-xl font-semibold">Usage of this Calculator</h2>
           </CardTitle>
-          <CardDescription>
-            Practical applications and real-world context
-          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
-          {/* Who should use */}
-          <div>
-            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-              <Users className="h-5 w-5 text-blue-600" />
-              Who Should Use This Calculator?
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                <strong className="block text-primary mb-1">Cricket Players</strong>
-                <span className="text-sm text-muted-foreground">Track your performance across seasons, formats, and competitions to identify strengths and areas for improvement.</span>
-              </div>
-              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                <strong className="block text-primary mb-1">Coaches & Selectors</strong>
-                <span className="text-sm text-muted-foreground">Evaluate player performance objectively when making team selection decisions or planning training programs.</span>
-              </div>
-              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                <strong className="block text-primary mb-1">Cricket Analysts</strong>
-                <span className="text-sm text-muted-foreground">Analyze player statistics for commentary, articles, or fantasy cricket team selection.</span>
-              </div>
-              <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
-                <strong className="block text-primary mb-1">Cricket Fans</strong>
-                <span className="text-sm text-muted-foreground">Better understand player performance and compare batsmen across different eras and formats.</span>
-              </div>
-            </div>
-          </div>
-
-          <hr className="border-border/50" />
-
-          {/* Limitations */}
-          <div>
-            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-              <AlertTriangle className="h-5 w-5 text-amber-600" />
-              Limitations & When It May Be Misleading
-            </h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Not-Out Inflation:</strong> Lower-order batsmen who frequently remain not out can have misleadingly high averages. A No. 9 batsman with average 35 is not equivalent to a No. 3 batsman with the same average.</span>
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Small Sample Size:</strong> Averages based on fewer than 10-15 dismissals can be highly volatile and don't represent true ability. One or two big scores can skew the average significantly.</span>
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Ignores Scoring Speed:</strong> In T20 and ODI cricket, a batsman who scores slowly (even with a high average) may be less valuable than one who scores quickly. Always consider strike rate alongside average in limited-overs formats.</span>
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Opposition Quality:</strong> Batting average doesn't distinguish between runs scored against strong vs. weak bowling attacks. A player with a high average against weak teams may struggle against quality opposition.</span>
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Match Context:</strong> Runs scored when the team is already winning are statistically equal to match-saving or match-winning innings, but have different value. Average doesn't capture clutch performance.</span>
-              </li>
-            </ul>
-          </div>
-
-          <hr className="border-border/50" />
-
-          {/* Real World Examples */}
-          <div>
-            <h4 className="flex items-center gap-2 font-semibold text-lg mb-3">
-              <Trophy className="h-5 w-5 text-green-600" />
-              Real-World Examples
-            </h4>
-            <div className="space-y-3">
-              <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-                <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example A: Test Cricket Specialist</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">
-                  A batsman scores 2,500 runs in 50 Test innings with 45 dismissals (5 not-outs). Average = 2500 / 45 = 55.55. This is world-class for Test cricket, indicating exceptional consistency and technique. Such a player would be a cornerstone of their team's batting lineup.
-                </p>
-              </div>
-              <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-                <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example B: T20 Power Hitter</h5>
-                <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                  A T20 batsman scores 800 runs in 40 innings with 32 dismissals (8 not-outs). Average = 800 / 32 = 25.00. While this seems modest, if their strike rate is 150+, they're extremely valuable in T20 cricket, as they score runs quickly when needed.
-                </p>
-              </div>
-              <div className="p-4 rounded-lg bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20">
-                <h5 className="font-semibold text-purple-800 dark:text-purple-300 mb-1">Example C: Lower-Order Batsman</h5>
-                <p className="text-sm text-purple-700/80 dark:text-purple-400">
-                  A No. 8 batsman scores 400 runs in 30 innings with only 12 dismissals (18 not-outs). Average = 400 / 12 = 33.33. While this average appears good, the high number of not-outs inflates it. This player's true batting ability is likely lower than the average suggests.
-                </p>
+        <CardContent>
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-semibold text-lg mb-3">Who Should Use This Calculator?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <strong className="block text-primary mb-1">Cricket Batsmen</strong>
+                  <span className="text-sm text-muted-foreground">Calculate your own average to track progress over a season.</span>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <strong className="block text-primary mb-1">Coaches</strong>
+                  <span className="text-sm text-muted-foreground">Evaluate player performance objectively for selection.</span>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <strong className="block text-primary mb-1">Scorers</strong>
+                  <span className="text-sm text-muted-foreground">Verify manual calculations for official records.</span>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <strong className="block text-primary mb-1">Fans</strong>
+                  <span className="text-sm text-muted-foreground">Compare stats of favorite players across different tournaments.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -937,17 +557,20 @@ export default function BattingAverageCalculator() {
       </Card>
 
       {/* Summary */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            <h2 className="text-xl font-semibold">Summary</h2>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Batting Average Calculator measures a cricket batsman's consistency by calculating the average runs scored per dismissal.</p>
-          <p>It is the most fundamental metric in cricket for evaluating batting performance across all formats.</p>
-          <p>Use this tool to track your progress, compare players, and make informed decisions about team selection and strategy.</p>
+      <Card className="bg-primary/5 border-primary/20">
+        <CardContent className="pt-6">
+          <div className="flex items-start gap-4">
+            <Info className="h-6 w-6 text-primary mt-1 shrink-0" />
+            <div>
+              <h2 className="font-semibold text-lg mb-2">Summary</h2>
+              <p className="text-sm text-muted-foreground">
+                The Batting Average Calculator is an essential tool for cricketers to measure scoring consistency.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                By simply inputting runs scored and times dismissed, it provides the most widely used metric for assessing batting skill, applicable to all levels of cricket.
+              </p>
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>
