@@ -7,7 +7,6 @@ import CricketWinProbabilityCalculatorInteractive from './cricket-win-probabilit
 export default function CricketWinProbabilityCalculator() {
     return (
         <div className="space-y-8">
-            {/* SEO-Optimized Header */}
             <div className="space-y-3">
                 <h1 className="text-3xl md:text-4xl font-bold">Cricket Win Probability Calculator</h1>
                 <p className="text-lg text-muted-foreground">
@@ -321,7 +320,7 @@ export default function CricketWinProbabilityCalculator() {
                 <p>Teams use win probability models to inform real-time decisions:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Defensive vs. Aggressive Fields</h3>
-                <p>If win probability > 80%, captains set defensive fields to cut off boundaries. If probability drops < 40%, they bring fielders in to hunt for wickets, as containment alone won't win.</p>
+                <p>If win probability &gt; 80%, captains set defensive fields to cut off boundaries. If probability drops &lt; 40%, they bring fielders in to hunt for wickets, as containment alone won't win.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Batting Powerplay Management</h3>
                 <p>Teams analyze at which over their probability is maximized by taking the Powerplay. Often, taking it immediately after a wicket stabilizes probability, whereas taking it with set batsmen spikes it.</p>
@@ -362,9 +361,9 @@ export default function CricketWinProbabilityCalculator() {
                 <h2 id="historical-context" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Historical Context and Famous Chases</h2>
                 <p>Some matches defied win probability models entirely:</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li><strong>Australia vs South Africa (438 Game):</strong> At the break, chasing 434 was considered nearly impossible (<1% probability). South Africa won with 1 ball to spare.</li>
+                    <li><strong>Australia vs South Africa (438 Game):</strong> At the break, chasing 434 was considered nearly impossible (&lt;1% probability). South Africa won with 1 ball to spare.</li>
                     <li><strong>India vs Australia (Brisbane 2021):</strong> Chasing 300+ on a Day 5 Gabba pitch with a B-team was statistically improbable, yet India won.</li>
-                    <li><strong>England vs Australia (Headingley 2019):</strong> With 1 wicket left and 70 runs needed, Stokes' probability was <2%, yet he led England to victory.</li>
+                    <li><strong>England vs Australia (Headingley 2019):</strong> With 1 wicket left and 70 runs needed, Stokes' probability was &lt;2%, yet he led England to victory.</li>
                 </ul>
             </section>
 
