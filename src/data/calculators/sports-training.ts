@@ -80,5 +80,37 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "cricket-partnership-run-rate-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate cricket partnership run rate instantly. Free partnership analyzer with individual strike rates, contribution balance, format-specific benchmarks, and strategic recommendations."
+    },
+    {
+        "id": 10011,
+        "name": "Cricket Boundary Percentage Calculator",
+        "description": "Calculate the percentage of runs scored in boundaries to analyze batting aggression.",
+        "slug": "boundary-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate cricket boundary percentage instantly. Analyze batting aggression and risk-taking by measuring the proportion of runs scored from fours and sixes."
+    },
+    {
+        "id": 10012,
+        "name": "Cricket Over Economy Tracker",
+        "description": "Track bowling economy rate over-by-over to analyze spell consistency.",
+        "slug": "over-economy-tracker",
+        "category": "sports-training",
+        "metaDescription": "Track cricket bowling economy rate over-by-over. Analyze spell consistency, identifying expensive overs and periods of control to optimize bowling performance."
+    },
+    {
+        "id": 10013,
+        "name": "Cricket Dot Ball Percentage Calculator",
+        "description": "Calculate the percentage of dot balls bowled to measure pressure building.",
+        "slug": "dot-ball-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate cricket dot ball percentage instantly. Measure a bowler's ability to build pressure and restrict scoring with this essential performance metric."
+    },
+    {
+        "id": 10014,
+        "name": "Cricket Bowling Strike Rate Calculator",
+        "description": "Calculate the average number of balls bowled per wicket taken.",
+        "slug": "bowling-strike-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate cricket bowling strike rate instantly. Determine the average number of deliveries required to take a wicket, a key metric for evaluating wicket-taking ability."
     }
 ];
