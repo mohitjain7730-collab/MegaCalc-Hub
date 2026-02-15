@@ -4,6 +4,10 @@ import React, { lazy, useState, useEffect } from 'react';
 
 // Static map of calculators to avoid dynamic import context creation
 const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'basketball-field-goal-percentage-calculator-interactive': lazy(() => import('./basketball-field-goal-percentage-calculator-interactive')),
+  'basketball-field-goal-percentage-calculator': lazy(() => import('./basketball-field-goal-percentage-calculator')),
+  'basketball-free-throw-percentage-calculator-interactive': lazy(() => import('./basketball-free-throw-percentage-calculator-interactive')),
+  'basketball-free-throw-percentage-calculator': lazy(() => import('./basketball-free-throw-percentage-calculator')),
   'batting-average-calculator-interactive': lazy(() => import('./batting-average-calculator-interactive')),
   'batting-average-calculator': lazy(() => import('./batting-average-calculator')),
   'boundary-percentage-calculator-interactive': lazy(() => import('./boundary-percentage-calculator-interactive')),

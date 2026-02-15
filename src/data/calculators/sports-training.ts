@@ -264,5 +264,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "football-offside-frequency-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate Football Offside Frequency instantly. Analyze striker timing, defensive line discipline, and tactical offside traps."
+    },
+    {
+        "id": 10034,
+        "name": "Basketball Field Goal Percentage Calculator",
+        "description": "Calculate basketball field goal percentage (FG%) to measure shooting efficiency.",
+        "slug": "basketball-field-goal-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Field Goal Percentage (FG%) instantly. Measure shooting efficiency, optimize shot selection, and analyze scoring impact with expert benchmarks."
+    },
+    {
+        "id": 10035,
+        "name": "Basketball Free Throw Percentage Calculator",
+        "description": "Calculate basketball free throw percentage (FT%) to measure shooting consistency from the line.",
+        "slug": "basketball-free-throw-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Free Throw Percentage (FT%) instantly. Measure shooting consistency, reliability under pressure, and clutch performance from the charity stripe."
     }
 ];
