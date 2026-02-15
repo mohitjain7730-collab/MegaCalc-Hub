@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trophy, AlertCircle, Info, Calculator, BarChart3, FunctionSquare, CheckCircle2, TrendingUp, Target, Users, Activity } from 'lucide-react';
+import { Trophy, AlertCircle, Info, Calculator, BarChart3, FunctionSquare, CheckCircle2, TrendingUp, Target, Users, Activity, Shield } from 'lucide-react';
 import BasketballFreeThrowPercentageCalculatorInteractive from './basketball-free-throw-percentage-calculator-interactive';
 
 export default function BasketballFreeThrowPercentageCalculator() {
