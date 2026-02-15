@@ -4,12 +4,16 @@ import React, { lazy, useState, useEffect } from 'react';
 
 // Static map of calculators to avoid dynamic import context creation
 const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'basketball-assist-to-turnover-ratio-calculator-interactive': lazy(() => import('./basketball-assist-to-turnover-ratio-calculator-interactive')),
+  'basketball-assist-to-turnover-ratio-calculator': lazy(() => import('./basketball-assist-to-turnover-ratio-calculator')),
   'basketball-field-goal-percentage-calculator-interactive': lazy(() => import('./basketball-field-goal-percentage-calculator-interactive')),
   'basketball-field-goal-percentage-calculator': lazy(() => import('./basketball-field-goal-percentage-calculator')),
   'basketball-free-throw-percentage-calculator-interactive': lazy(() => import('./basketball-free-throw-percentage-calculator-interactive')),
   'basketball-free-throw-percentage-calculator': lazy(() => import('./basketball-free-throw-percentage-calculator')),
   'basketball-player-efficiency-rating-calculator-interactive': lazy(() => import('./basketball-player-efficiency-rating-calculator-interactive')),
   'basketball-player-efficiency-rating-calculator': lazy(() => import('./basketball-player-efficiency-rating-calculator')),
+  'basketball-rebound-rate-calculator-interactive': lazy(() => import('./basketball-rebound-rate-calculator-interactive')),
+  'basketball-rebound-rate-calculator': lazy(() => import('./basketball-rebound-rate-calculator')),
   'basketball-true-shooting-percentage-calculator-interactive': lazy(() => import('./basketball-true-shooting-percentage-calculator-interactive')),
   'basketball-true-shooting-percentage-calculator': lazy(() => import('./basketball-true-shooting-percentage-calculator')),
   'batting-average-calculator-interactive': lazy(() => import('./batting-average-calculator-interactive')),
