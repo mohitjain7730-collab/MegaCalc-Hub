@@ -112,5 +112,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "bowling-strike-rate-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate cricket bowling strike rate instantly. Determine the average number of deliveries required to take a wicket, a key metric for evaluating wicket-taking ability."
+    },
+    {
+        "id": 10015,
+        "name": "Powerplay Run Rate Calculator",
+        "description": "Calculate powerplay run rate to measure batting aggression during field restriction overs.",
+        "slug": "powerplay-run-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate powerplay run rate instantly. Free calculator analyzing batting performance during field restrictions with format-specific benchmarks, strategic insights for ODI and T20 cricket."
+    },
+    {
+        "id": 10016,
+        "name": "Run Contribution Percentage Calculator",
+        "description": "Calculate individual run contribution percentage to measure batsman's impact on team total.",
+        "slug": "run-contribution-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate run contribution percentage instantly. Free calculator measuring individual batting impact, team balance analysis, and match-winning performance identification across all cricket formats."
     }
 ];
