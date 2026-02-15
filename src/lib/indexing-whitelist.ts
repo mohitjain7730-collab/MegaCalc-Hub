@@ -229,4 +229,6 @@ export const indexableCalculatorSlugs = [
     'football-pass-accuracy-calculator',
     'football-possession-percentage-calculator',
     'football-expected-goals-calculator',
+    'football-expected-assists-calculator',
+    'football-shot-accuracy-calculator',
 ];

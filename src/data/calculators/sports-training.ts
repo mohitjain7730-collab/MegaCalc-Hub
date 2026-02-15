@@ -176,5 +176,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "football-expected-goals-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate Football Expected Goals (xG) instantly. Advanced calculator for shot quality analysis, scoring probability, and attacking performance evaluation with expert guide."
+    },
+    {
+        "id": 10023,
+        "name": "Football Expected Assists (xA) Calculator",
+        "description": "Calculate Expected Assists (xA) to evaluate playmaking quality, creativity, and the likelihood of a pass becoming a goal assist.",
+        "slug": "football-expected-assists-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Expected Assists (xA) instantly. Analyze creativity, passing quality, and playmaking impact with detailed probability metrics."
+    },
+    {
+        "id": 10024,
+        "name": "Football Shot Accuracy Calculator",
+        "description": "Calculate shot accuracy percentage and analyze shooting efficiency to evaluate striker performance and finishing reliability.",
+        "slug": "football-shot-accuracy-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Shot Accuracy instantly. Measure striker efficiency, hitting the target percentage, and conversion reliability with expert finishing tips."
     }
 ];
