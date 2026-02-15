@@ -93,6 +93,7 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'currency-exchange-calculator': lazy(() => import('./currency-exchange-calculator')),
   'currency-forward-points-calculator': lazy(() => import('./currency-forward-points-calculator')),
   'currency-volatility-calculator': lazy(() => import('./currency-volatility-calculator')),
+  'current-ratio-calculator-interactive': lazy(() => import('./current-ratio-calculator-interactive')),
   'current-ratio-calculator': lazy(() => import('./current-ratio-calculator')),
   'dcf-calculator': lazy(() => import('./dcf-calculator')),
   'deal-value-vs-enterprise-value-bridge-calculator': lazy(() => import('./deal-value-vs-enterprise-value-bridge-calculator')),

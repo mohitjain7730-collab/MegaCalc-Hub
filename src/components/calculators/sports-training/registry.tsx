@@ -1,56 +1,58 @@
 'use client';
 
-import React from 'react';
-import dynamic from 'next/dynamic';
+import React, { lazy, useState, useEffect } from 'react';
 
 // Static map of calculators to avoid dynamic import context creation
-const BattingAverageCalculator = dynamic(() => import('./batting-average-calculator'));
-const BowlingAverageCalculator = dynamic(() => import('./bowling-average-calculator'));
-const StrikeRateCalculator = dynamic(() => import('./strike-rate-calculator'));
-const BowlingEconomyRateCalculator = dynamic(() => import('./bowling-economy-rate-calculator'));
-const RequiredRunRateCalculator = dynamic(() => import('./required-run-rate-calculator'));
-const TeamRunRateCalculator = dynamic(() => import('./team-run-rate-calculator'));
-const CricketPlayerPerformanceIndexCalculator = dynamic(() => import('./cricket-player-performance-index-calculator'));
-const CricketFantasyPointsCalculator = dynamic(() => import('./cricket-fantasy-points-calculator'));
-const CricketWinProbabilityCalculator = dynamic(() => import('./cricket-win-probability-calculator'));
-const CricketPartnershipRunRateCalculator = dynamic(() => import('./cricket-partnership-run-rate-calculator'));
-const PowerplayRunRateCalculator = dynamic(() => import('./powerplay-run-rate-calculator'));
-const RunContributionPercentageCalculator = dynamic(() => import('./run-contribution-percentage-calculator'));
-const TeamBattingAverageCalculator = dynamic(() => import('./team-batting-average-calculator'));
-const MatchImpactScoreCalculator = dynamic(() => import('./match-impact-score-calculator'));
-const FootballGoalConversionRateCalculator = dynamic(() => import('./football-goal-conversion-rate-calculator'));
-const FootballPassAccuracyCalculator = dynamic(() => import('./football-pass-accuracy-calculator'));
-
-export const SportsTrainingRegistry: Record<string, React.ComponentType> = {
-    'batting-average-calculator': BattingAverageCalculator,
-    'bowling-average-calculator': BowlingAverageCalculator,
-    'strike-rate-calculator': StrikeRateCalculator,
-    'bowling-economy-rate-calculator': BowlingEconomyRateCalculator,
-    'required-run-rate-calculator': RequiredRunRateCalculator,
-    'team-run-rate-calculator': TeamRunRateCalculator,
-    'cricket-player-performance-index-calculator': CricketPlayerPerformanceIndexCalculator,
-    'cricket-fantasy-points-calculator': CricketFantasyPointsCalculator,
-    'cricket-win-probability-calculator': CricketWinProbabilityCalculator,
-    'cricket-partnership-run-rate-calculator': CricketPartnershipRunRateCalculator,
-    'boundary-percentage-calculator': dynamic(() => import('./boundary-percentage-calculator')),
-    'over-economy-tracker': dynamic(() => import('./over-economy-tracker')),
-    'dot-ball-percentage-calculator': dynamic(() => import('./dot-ball-percentage-calculator')),
-    'bowling-strike-rate-calculator': dynamic(() => import('./bowling-strike-rate-calculator')),
-    'powerplay-run-rate-calculator': PowerplayRunRateCalculator,
-    'run-contribution-percentage-calculator': RunContributionPercentageCalculator,
-    'team-batting-average-calculator': TeamBattingAverageCalculator,
-    'match-impact-score-calculator': MatchImpactScoreCalculator,
-    'football-goal-conversion-rate-calculator': FootballGoalConversionRateCalculator,
-    'football-pass-accuracy-calculator': FootballPassAccuracyCalculator,
+const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'batting-average-calculator-interactive': lazy(() => import('./batting-average-calculator-interactive')),
+  'batting-average-calculator': lazy(() => import('./batting-average-calculator')),
+  'boundary-percentage-calculator-interactive': lazy(() => import('./boundary-percentage-calculator-interactive')),
+  'boundary-percentage-calculator': lazy(() => import('./boundary-percentage-calculator')),
+  'bowling-average-calculator-interactive': lazy(() => import('./bowling-average-calculator-interactive')),
+  'bowling-average-calculator': lazy(() => import('./bowling-average-calculator')),
+  'bowling-economy-rate-calculator-interactive': lazy(() => import('./bowling-economy-rate-calculator-interactive')),
+  'bowling-economy-rate-calculator': lazy(() => import('./bowling-economy-rate-calculator')),
+  'bowling-strike-rate-calculator-interactive': lazy(() => import('./bowling-strike-rate-calculator-interactive')),
+  'bowling-strike-rate-calculator': lazy(() => import('./bowling-strike-rate-calculator')),
+  'cricket-fantasy-points-calculator-interactive': lazy(() => import('./cricket-fantasy-points-calculator-interactive')),
+  'cricket-fantasy-points-calculator': lazy(() => import('./cricket-fantasy-points-calculator')),
+  'cricket-partnership-run-rate-calculator-interactive': lazy(() => import('./cricket-partnership-run-rate-calculator-interactive')),
+  'cricket-partnership-run-rate-calculator': lazy(() => import('./cricket-partnership-run-rate-calculator')),
+  'cricket-player-performance-index-calculator-interactive': lazy(() => import('./cricket-player-performance-index-calculator-interactive')),
+  'cricket-player-performance-index-calculator': lazy(() => import('./cricket-player-performance-index-calculator')),
+  'cricket-win-probability-calculator-interactive': lazy(() => import('./cricket-win-probability-calculator-interactive')),
+  'cricket-win-probability-calculator': lazy(() => import('./cricket-win-probability-calculator')),
+  'dot-ball-percentage-calculator-interactive': lazy(() => import('./dot-ball-percentage-calculator-interactive')),
+  'dot-ball-percentage-calculator': lazy(() => import('./dot-ball-percentage-calculator')),
+  'football-goal-conversion-rate-calculator-interactive': lazy(() => import('./football-goal-conversion-rate-calculator-interactive')),
+  'football-goal-conversion-rate-calculator': lazy(() => import('./football-goal-conversion-rate-calculator')),
+  'football-pass-accuracy-calculator-interactive': lazy(() => import('./football-pass-accuracy-calculator-interactive')),
+  'football-pass-accuracy-calculator': lazy(() => import('./football-pass-accuracy-calculator')),
+  'match-impact-score-calculator-interactive': lazy(() => import('./match-impact-score-calculator-interactive')),
+  'match-impact-score-calculator': lazy(() => import('./match-impact-score-calculator')),
+  'over-economy-tracker-interactive': lazy(() => import('./over-economy-tracker-interactive')),
+  'over-economy-tracker': lazy(() => import('./over-economy-tracker')),
+  'powerplay-run-rate-calculator-interactive': lazy(() => import('./powerplay-run-rate-calculator-interactive')),
+  'powerplay-run-rate-calculator': lazy(() => import('./powerplay-run-rate-calculator')),
+  'required-run-rate-calculator-interactive': lazy(() => import('./required-run-rate-calculator-interactive')),
+  'required-run-rate-calculator': lazy(() => import('./required-run-rate-calculator')),
+  'run-contribution-percentage-calculator-interactive': lazy(() => import('./run-contribution-percentage-calculator-interactive')),
+  'run-contribution-percentage-calculator': lazy(() => import('./run-contribution-percentage-calculator')),
+  'strike-rate-calculator-interactive': lazy(() => import('./strike-rate-calculator-interactive')),
+  'strike-rate-calculator': lazy(() => import('./strike-rate-calculator')),
+  'team-batting-average-calculator-interactive': lazy(() => import('./team-batting-average-calculator-interactive')),
+  'team-batting-average-calculator': lazy(() => import('./team-batting-average-calculator')),
+  'team-run-rate-calculator-interactive': lazy(() => import('./team-run-rate-calculator-interactive')),
+  'team-run-rate-calculator': lazy(() => import('./team-run-rate-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
-    const Component = SportsTrainingRegistry[calculatorSlug];
+  const Component = components[calculatorSlug];
 
-    if (!Component) {
-        console.warn(`Calculator not found in registry: ${calculatorSlug}`);
-        return <div className="p-8 text-center text-muted-foreground">Calculator not found.</div>;
-    }
+  if (!Component) {
+    console.warn(`Calculator not found in registry: ${calculatorSlug}`);
+    return <div className="p-8 text-center text-muted-foreground">Calculator not found.</div>;
+  }
 
-    return <Component />;
+  return <Component />;
 }
