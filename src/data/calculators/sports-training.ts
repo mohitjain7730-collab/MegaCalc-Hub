@@ -192,5 +192,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "football-shot-accuracy-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate Football Shot Accuracy instantly. Measure striker efficiency, hitting the target percentage, and conversion reliability with expert finishing tips."
+    },
+    {
+        "id": 10025,
+        "name": "Football Win Rate Calculator",
+        "description": "Calculate football team win rate to measure consistency and dominance.",
+        "slug": "football-win-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Win Rate instantly. Measure team dominance, consistency benchmarks, and season projections with expert analysis."
+    },
+    {
+        "id": 10026,
+        "name": "Football Clean Sheet Percentage Calculator",
+        "description": "Calculate clean sheet percentage to evaluate defensive solidity and goalkeeper performance.",
+        "slug": "football-clean-sheet-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Clean Sheet Percentage instantly. Measure defensive reliability, goalkeeper efficiency, and shut-out rates."
     }
 ];
