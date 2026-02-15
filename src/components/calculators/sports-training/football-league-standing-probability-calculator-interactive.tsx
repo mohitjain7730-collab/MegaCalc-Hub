@@ -274,7 +274,7 @@ export default function FootballLeagueStandingProbabilityCalculatorInteractive()
                                         <span className="text-sm font-medium">Win Rate</span>
                                         <span className="text-sm font-bold text-green-600">{result.winRate.toFixed(1)}%</span>
                                     </div>
-                                    <Progress value={result.winRate} className="h-2 bg-secondary" indicatorColor="bg-green-500" />
+                                    <Progress value={result.winRate} className="h-2 bg-secondary" indicatorClassName="bg-green-500" />
                                 </div>
                             </div>
 
