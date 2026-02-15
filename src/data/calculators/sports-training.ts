@@ -128,5 +128,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "run-contribution-percentage-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate run contribution percentage instantly. Free calculator measuring individual batting impact, team balance analysis, and match-winning performance identification across all cricket formats."
+    },
+    {
+        "id": 10017,
+        "name": "Cricket Team Batting Average Calculator",
+        "description": "Calculate team batting average to measure collective batting performance and batting depth.",
+        "slug": "team-batting-average-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate cricket team batting average instantly. Free calculator measuring collective batting performance, batting depth, and team batting strength across matches, series, and tournaments."
+    },
+    {
+        "id": 10018,
+        "name": "Cricket Match Impact Score Calculator",
+        "description": "Calculate comprehensive match impact score combining batting, bowling, and fielding performance.",
+        "slug": "match-impact-score-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate cricket match impact score instantly. Free comprehensive calculator combining batting, bowling, and fielding performance to measure all-round match contribution and identify match-winners."
     }
 ];
