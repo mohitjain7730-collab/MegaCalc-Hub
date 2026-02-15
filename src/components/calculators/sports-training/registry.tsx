@@ -6,6 +6,8 @@ import React, { lazy, useState, useEffect } from 'react';
 const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
   'basketball-assist-to-turnover-ratio-calculator-interactive': lazy(() => import('./basketball-assist-to-turnover-ratio-calculator-interactive')),
   'basketball-assist-to-turnover-ratio-calculator': lazy(() => import('./basketball-assist-to-turnover-ratio-calculator')),
+  'basketball-defensive-efficiency-calculator-interactive': lazy(() => import('./basketball-defensive-efficiency-calculator-interactive')),
+  'basketball-defensive-efficiency-calculator': lazy(() => import('./basketball-defensive-efficiency-calculator')),
   'basketball-field-goal-percentage-calculator-interactive': lazy(() => import('./basketball-field-goal-percentage-calculator-interactive')),
   'basketball-field-goal-percentage-calculator': lazy(() => import('./basketball-field-goal-percentage-calculator')),
   'basketball-free-throw-percentage-calculator-interactive': lazy(() => import('./basketball-free-throw-percentage-calculator-interactive')),
@@ -20,6 +22,8 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'basketball-true-shooting-percentage-calculator': lazy(() => import('./basketball-true-shooting-percentage-calculator')),
   'basketball-usage-rate-calculator-interactive': lazy(() => import('./basketball-usage-rate-calculator-interactive')),
   'basketball-usage-rate-calculator': lazy(() => import('./basketball-usage-rate-calculator')),
+  'basketball-win-shares-calculator-interactive': lazy(() => import('./basketball-win-shares-calculator-interactive')),
+  'basketball-win-shares-calculator': lazy(() => import('./basketball-win-shares-calculator')),
   'batting-average-calculator-interactive': lazy(() => import('./batting-average-calculator-interactive')),
   'batting-average-calculator': lazy(() => import('./batting-average-calculator')),
   'boundary-percentage-calculator-interactive': lazy(() => import('./boundary-percentage-calculator-interactive')),
