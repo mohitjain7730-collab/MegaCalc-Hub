@@ -208,5 +208,61 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "football-clean-sheet-percentage-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate Football Clean Sheet Percentage instantly. Measure defensive reliability, goalkeeper efficiency, and shut-out rates."
+    },
+    {
+        "id": 10027,
+        "name": "Football Save Percentage Calculator",
+        "description": "Calculate goalkeeper save percentage to measure shot-stopping ability and defensive reliability.",
+        "slug": "football-save-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Save Percentage instantly. Measure goalkeeper efficiency, shot-stopping ability, and defensive performance with expert analysis."
+    },
+    {
+        "id": 10028,
+        "name": "Football Goals per 90 Minutes Calculator",
+        "description": "Calculate average goals scored per 90 minutes to standardize scoring records across different playing times.",
+        "slug": "football-goals-per-90-minutes-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Goals per 90 Minutes instantly. Standardize scoring records, compare striker efficiency, and analyze goal-scoring performance."
+    },
+    {
+        "id": 10029,
+        "name": "Football Assists per 90 Calculator",
+        "description": "Calculate average assists per 90 minutes to measure playmaking efficiency regardless of minutes played.",
+        "slug": "football-assists-per-90-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Assists per 90 Minutes instantly. Standardize playmaking stats, compare creative efficiency, and analyze assist performance."
+    },
+    {
+        "id": 10030,
+        "name": "Football Team Points Per Game Calculator",
+        "description": "Calculate points per game (PPG) to measure team performance and project season totals.",
+        "slug": "football-team-points-per-game-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Points Per Game (PPG) instantly. Measure team performance, project final standings, and analyze season consistency."
+    },
+    {
+        "id": 10031,
+        "name": "Football League Standing Probability Calculator",
+        "description": "Calculate the probability of finishing in specific league positions based on current points and remaining games.",
+        "slug": "football-league-standing-probability-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football League Standing Probability instantly. Project finish positions, title chances, and relegation risks based on current form."
+    },
+    {
+        "id": 10032,
+        "name": "Football Fantasy Points Calculator",
+        "description": "Calculate fantasy football points based on standard FPL scoring rules for planning and analysis.",
+        "slug": "football-fantasy-points-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Fantasy Points instantly. Plan FPL strategies, analyze player potential, and maximize your fantasy team score."
+    },
+    {
+        "id": 10033,
+        "name": "Football Offside Frequency Calculator",
+        "description": "Calculate frequency of being caught offside to analyze timing of runs and defensive line efficiency.",
+        "slug": "football-offside-frequency-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Offside Frequency instantly. Analyze striker timing, defensive line discipline, and tactical offside traps."
     }
 ];
