@@ -160,5 +160,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "football-pass-accuracy-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate football pass accuracy instantly. Free calculator measuring ball retention, distribution quality, passing efficiency, and technical ability for all positions."
+    },
+    {
+        "id": 10021,
+        "name": "Football Possession Percentage Calculator",
+        "description": "Calculate football possession percentage to measure team control, territorial dominance, and tactical effectiveness.",
+        "slug": "football-possession-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate football possession percentage instantly. Analyze team control, tactical dominance, and ball retention with performance benchmarks and expert insights."
+    },
+    {
+        "id": 10022,
+        "name": "Football Expected Goals (xG) Calculator",
+        "description": "Calculate Expected Goals (xG) to measure shot quality, assess scoring opportunities, and analyze attacking performance.",
+        "slug": "football-expected-goals-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Football Expected Goals (xG) instantly. Advanced calculator for shot quality analysis, scoring probability, and attacking performance evaluation with expert guide."
     }
 ];

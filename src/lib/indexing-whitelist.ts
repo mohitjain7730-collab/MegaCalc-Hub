@@ -219,4 +219,14 @@ export const indexableCalculatorSlugs = [
     'boundary-percentage-calculator',
     'dot-ball-percentage-calculator',
     'bowling-strike-rate-calculator',
+    // Missing Cricket Calcs
+    'powerplay-run-rate-calculator',
+    'run-contribution-percentage-calculator',
+    'team-batting-average-calculator',
+    'match-impact-score-calculator',
+    // Football Calcs
+    'football-goal-conversion-rate-calculator',
+    'football-pass-accuracy-calculator',
+    'football-possession-percentage-calculator',
+    'football-expected-goals-calculator',
 ];
