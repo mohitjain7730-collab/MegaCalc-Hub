@@ -44,6 +44,8 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'football-league-standing-probability-calculator': lazy(() => import('./football-league-standing-probability-calculator')),
   'football-pass-accuracy-calculator-interactive': lazy(() => import('./football-pass-accuracy-calculator-interactive')),
   'football-pass-accuracy-calculator': lazy(() => import('./football-pass-accuracy-calculator')),
+  'football-offside-frequency-calculator-interactive': lazy(() => import('./football-offside-frequency-calculator-interactive')),
+  'football-offside-frequency-calculator': lazy(() => import('./football-offside-frequency-calculator')),
   'football-possession-percentage-calculator-interactive': lazy(() => import('./football-possession-percentage-calculator-interactive')),
   'football-possession-percentage-calculator': lazy(() => import('./football-possession-percentage-calculator')),
   'football-save-percentage-calculator-interactive': lazy(() => import('./football-save-percentage-calculator-interactive')),
