@@ -31,11 +31,17 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'football-expected-assists-calculator-interactive': lazy(() => import('./football-expected-assists-calculator-interactive')),
   'football-expected-assists-calculator': lazy(() => import('./football-expected-assists-calculator')),
   'football-expected-goals-calculator-interactive': lazy(() => import('./football-expected-goals-calculator-interactive')),
+
   'football-expected-goals-calculator': lazy(() => import('./football-expected-goals-calculator')),
+  'football-fantasy-points-calculator-interactive': lazy(() => import('./football-fantasy-points-calculator-interactive')),
+  'football-fantasy-points-calculator': lazy(() => import('./football-fantasy-points-calculator')),
   'football-goal-conversion-rate-calculator-interactive': lazy(() => import('./football-goal-conversion-rate-calculator-interactive')),
   'football-goal-conversion-rate-calculator': lazy(() => import('./football-goal-conversion-rate-calculator')),
   'football-goals-per-90-minutes-calculator-interactive': lazy(() => import('./football-goals-per-90-minutes-calculator-interactive')),
+
   'football-goals-per-90-minutes-calculator': lazy(() => import('./football-goals-per-90-minutes-calculator')),
+  'football-league-standing-probability-calculator-interactive': lazy(() => import('./football-league-standing-probability-calculator-interactive')),
+  'football-league-standing-probability-calculator': lazy(() => import('./football-league-standing-probability-calculator')),
   'football-pass-accuracy-calculator-interactive': lazy(() => import('./football-pass-accuracy-calculator-interactive')),
   'football-pass-accuracy-calculator': lazy(() => import('./football-pass-accuracy-calculator')),
   'football-possession-percentage-calculator-interactive': lazy(() => import('./football-possession-percentage-calculator-interactive')),
