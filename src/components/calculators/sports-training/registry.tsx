@@ -18,6 +18,8 @@ const PowerplayRunRateCalculator = dynamic(() => import('./powerplay-run-rate-ca
 const RunContributionPercentageCalculator = dynamic(() => import('./run-contribution-percentage-calculator'));
 const TeamBattingAverageCalculator = dynamic(() => import('./team-batting-average-calculator'));
 const MatchImpactScoreCalculator = dynamic(() => import('./match-impact-score-calculator'));
+const FootballGoalConversionRateCalculator = dynamic(() => import('./football-goal-conversion-rate-calculator'));
+const FootballPassAccuracyCalculator = dynamic(() => import('./football-pass-accuracy-calculator'));
 
 export const SportsTrainingRegistry: Record<string, React.ComponentType> = {
     'batting-average-calculator': BattingAverageCalculator,
@@ -38,6 +40,8 @@ export const SportsTrainingRegistry: Record<string, React.ComponentType> = {
     'run-contribution-percentage-calculator': RunContributionPercentageCalculator,
     'team-batting-average-calculator': TeamBattingAverageCalculator,
     'match-impact-score-calculator': MatchImpactScoreCalculator,
+    'football-goal-conversion-rate-calculator': FootballGoalConversionRateCalculator,
+    'football-pass-accuracy-calculator': FootballPassAccuracyCalculator,
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

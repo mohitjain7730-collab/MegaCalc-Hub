@@ -144,5 +144,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "match-impact-score-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate cricket match impact score instantly. Free comprehensive calculator combining batting, bowling, and fielding performance to measure all-round match contribution and identify match-winners."
+    },
+    {
+        "id": 10019,
+        "name": "Football - Goal Conversion Rate Calculator",
+        "description": "Calculate goal conversion rate to measure finishing efficiency and clinical ability in front of goal.",
+        "slug": "football-goal-conversion-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate football goal conversion rate instantly. Free calculator measuring finishing efficiency, clinical ability, and shot conversion percentage for strikers and forwards."
+    },
+    {
+        "id": 10020,
+        "name": "Football - Pass Accuracy Calculator",
+        "description": "Calculate pass accuracy to measure ball retention, distribution quality, and technical ability.",
+        "slug": "football-pass-accuracy-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate football pass accuracy instantly. Free calculator measuring ball retention, distribution quality, passing efficiency, and technical ability for all positions."
     }
 ];
