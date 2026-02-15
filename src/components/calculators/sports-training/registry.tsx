@@ -61,9 +61,18 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
   const Component = components[calculatorSlug];
 
+  useEffect(() => {
+    // Debug log to verify what slug is being received
+    console.log(`[CalculatorRegistry] Looking for: "${calculatorSlug}"`);
+    if (!components[calculatorSlug]) {
+      console.warn(`[CalculatorRegistry] Component not found for key: "${calculatorSlug}"`);
+      console.log(`[CalculatorRegistry] Available keys:`, Object.keys(components));
+    }
+  }, [calculatorSlug]);
+
   if (!Component) {
     console.warn(`Calculator not found in registry: ${calculatorSlug}`);
-    return <div className="p-8 text-center text-muted-foreground">Calculator not found.</div>;
+    return <div className="p-8 text-center text-muted-foreground">Calculator not found: {calculatorSlug}</div>;
   }
 
   return <Component />;
