@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Zap, AlertCircle, Info, Calculator, BarChart3, TrendingUp, Target, Users, CheckCircle2, FunctionSquare } from 'lucide-react';
+import { Zap, AlertCircle, Info, Calculator, BarChart3, TrendingUp, Target, Users, CheckCircle2, FunctionSquare, Activity } from 'lucide-react';
 import BasketballOffensiveEfficiencyCalculatorInteractive from './basketball-offensive-efficiency-calculator-interactive';
 
 export default function BasketballOffensiveEfficiencyCalculator() {
