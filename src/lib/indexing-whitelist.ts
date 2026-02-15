@@ -231,4 +231,13 @@ export const indexableCalculatorSlugs = [
     'football-expected-goals-calculator',
     'football-expected-assists-calculator',
     'football-shot-accuracy-calculator',
+    'football-win-rate-calculator',
+    'football-clean-sheet-percentage-calculator',
+    'football-save-percentage-calculator',
+    'football-goals-per-90-minutes-calculator',
+    'football-assists-per-90-calculator',
+    'football-team-points-per-game-calculator',
+    'football-league-standing-probability-calculator',
+    'football-fantasy-points-calculator',
+    'football-offside-frequency-calculator',
 ];
