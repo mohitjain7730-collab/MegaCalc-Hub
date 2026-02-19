@@ -122,33 +122,71 @@ export default function BaseballOnBasePercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        {/* Placeholder links for potentially future baseball calculators */}
-                        <div className="block opacity-50 cursor-not-allowed">
-                            <Card>
+                        <Link href="/category/sports-training/baseball-slugging-percentage-calculator" className="block">
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
-                                        <Target className="h-5 w-5 text-red-600" />
+                                        <BarChart3 className="h-5 w-5 text-red-600" />
                                         <div>
-                                            <p className="font-medium">OPS Calculator</p>
-                                            <p className="text-sm text-muted-foreground">Coming Soon</p>
+                                            <p className="font-medium">Slugging Percentage</p>
+                                            <p className="text-sm text-muted-foreground">Total Bases / At Bats</p>
                                         </div>
                                     </div>
                                 </CardContent>
                             </Card>
-                        </div>
-                        <div className="block opacity-50 cursor-not-allowed">
-                            <Card>
+                        </Link>
+                        <Link href="/category/sports-training/baseball-ops-calculator" className="block">
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
                                         <Shield className="h-5 w-5 text-indigo-600" />
                                         <div>
-                                            <p className="font-medium">wOBA Calculator</p>
-                                            <p className="text-sm text-muted-foreground">Coming Soon</p>
+                                            <p className="font-medium">OPS Calculator</p>
+                                            <p className="text-sm text-muted-foreground">OBP + Slugging</p>
                                         </div>
                                     </div>
                                 </CardContent>
                             </Card>
-                        </div>
+                        </Link>
+                        <Link href="/category/sports-training/baseball-era-calculator" className="block">
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                                <CardContent className="p-4">
+                                    <div className="flex items-center gap-3">
+                                        <Shield className="h-5 w-5 text-blue-600" />
+                                        <div>
+                                            <p className="font-medium">ERA Calculator</p>
+                                            <p className="text-sm text-muted-foreground">Run Prevention Stat</p>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Link>
+                        <Link href="/category/sports-training/baseball-whip-calculator" className="block">
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                                <CardContent className="p-4">
+                                    <div className="flex items-center gap-3">
+                                        <Users className="h-5 w-5 text-orange-600" />
+                                        <div>
+                                            <p className="font-medium">WHIP Calculator</p>
+                                            <p className="text-sm text-muted-foreground">Walks + Hits / IP</p>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Link>
+                        <Link href="/category/sports-training/football-goals-per-90-minutes-calculator" className="block">
+                            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                                <CardContent className="p-4">
+                                    <div className="flex items-center gap-3">
+                                        <Target className="h-5 w-5 text-green-600" />
+                                        <div>
+                                            <p className="font-medium">Goals Per 90</p>
+                                            <p className="text-sm text-muted-foreground">Scoring Rate</p>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     </div>
                 </CardContent>
             </Card>
