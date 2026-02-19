@@ -104,6 +104,14 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'tennis-win-ratio-calculator': lazy(() => import('./tennis-win-ratio-calculator')),
   'tennis-aces-per-match-calculator-interactive': lazy(() => import('./tennis-aces-per-match-calculator-interactive')),
   'tennis-aces-per-match-calculator': lazy(() => import('./tennis-aces-per-match-calculator')),
+  'tennis-double-fault-percentage-calculator-interactive': lazy(() => import('./tennis-double-fault-percentage-calculator-interactive')),
+  'tennis-double-fault-percentage-calculator': lazy(() => import('./tennis-double-fault-percentage-calculator')),
+  'tennis-serve-accuracy-calculator-interactive': lazy(() => import('./tennis-serve-accuracy-calculator-interactive')),
+  'tennis-serve-accuracy-calculator': lazy(() => import('./tennis-serve-accuracy-calculator')),
+  'tennis-return-points-won-calculator-interactive': lazy(() => import('./tennis-return-points-won-calculator-interactive')),
+  'tennis-return-points-won-calculator': lazy(() => import('./tennis-return-points-won-calculator')),
+  'tennis-hold-percentage-calculator-interactive': lazy(() => import('./tennis-hold-percentage-calculator-interactive')),
+  'tennis-hold-percentage-calculator': lazy(() => import('./tennis-hold-percentage-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
